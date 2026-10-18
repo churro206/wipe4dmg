@@ -21,12 +21,14 @@ import type {
   DamageSource,
   Effect,
   Element,
-  MultiplierPart,
-  SourcedNumber,
-  TimingPart,
   Weapon,
-  WeaponType,
 } from "../data/schema";
+import {
+  activeParts,
+  appliesToWeaponType,
+  combinedMultiplier,
+} from "./effectParts";
+import { requireValue } from "./requireValue";
 
 const MS_PER_SECOND = 1000;
 const MS_PER_MINUTE = 60_000;
@@ -109,13 +111,11 @@ export function simulate(
 
   const damageSource: DamageSource = "weapon";
   const multiplierFor = (element: Element) =>
-    combinedMultiplier(
-      multiplierParts,
-      buckets,
+    combinedMultiplier(multiplierParts, buckets, {
       damageSource,
       element,
-      weapon.weaponType,
-    );
+      weaponType: weapon.weaponType,
+    });
   const multiplier = multiplierFor(weapon.element);
 
   const damageInstances: TimedDamageInstance[] = [];
@@ -149,48 +149,6 @@ export function simulate(
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   return { shots, damageInstances, totalDamage };
-}
-
-/**
- * Returns the parts of all effects, split by type. Multiplier parts of an overridden effect are
- * dropped in the buckets of the overriding effect. Throws if a part refers to an unknown bucket.
- */
-function activeParts(
-  effects: Effect[],
-  buckets: Bucket[],
-): {
-  multiplierParts: MultiplierPart[];
-  timingParts: TimingPart[];
-  counterModifierParts: CounterModifierPart[];
-} {
-  const bucketIds = new Set(buckets.map((bucket) => bucket.id));
-  const multiplierParts: MultiplierPart[] = [];
-  const timingParts: TimingPart[] = [];
-  const counterModifierParts: CounterModifierPart[] = [];
-
-  for (const effect of effects) {
-    const overriddenBuckets = new Set(
-      effects
-        .filter((other) => other.overrides?.includes(effect.id))
-        .flatMap((other) => other.parts)
-        .flatMap((part) => (part.type === "multiplier" ? [part.bucketId] : [])),
-    );
-    for (const part of effect.parts) {
-      if (part.type === "timing") {
-        timingParts.push(part);
-        continue;
-      }
-      if (part.type === "counterModifier") {
-        counterModifierParts.push(part);
-        continue;
-      }
-      if (!bucketIds.has(part.bucketId)) {
-        throw new Error(`Unknown bucket "${part.bucketId}"`);
-      }
-      if (!overriddenBuckets.has(part.bucketId)) multiplierParts.push(part);
-    }
-  }
-  return { multiplierParts, timingParts, counterModifierParts };
 }
 
 /**
@@ -286,55 +244,4 @@ function thresholdDamageInstances(
     }
   }
   return result;
-}
-
-function appliesToWeaponType(
-  weaponTypes: WeaponType[] | undefined,
-  weaponType: WeaponType,
-): boolean {
-  return weaponTypes === undefined || weaponTypes.includes(weaponType);
-}
-
-/** Combines the matching parts per bucket by its stacking rule; buckets multiply with each other. */
-function combinedMultiplier(
-  parts: MultiplierPart[],
-  buckets: Bucket[],
-  damageSource: DamageSource,
-  element: Element,
-  weaponType: WeaponType,
-): number {
-  let total = 1;
-  for (const bucket of buckets) {
-    const values = parts
-      .filter(
-        (part) =>
-          part.bucketId === bucket.id &&
-          part.damageSources.includes(damageSource) &&
-          (part.elements === undefined || part.elements.includes(element)) &&
-          appliesToWeaponType(part.weaponTypes, weaponType),
-      )
-      .map((part) => requireValue(part.multiplier, "multiplier"));
-    if (values.length === 0) continue;
-
-    switch (bucket.stacking) {
-      case "highest":
-        total *= Math.max(...values);
-        break;
-      case "multiplicative":
-        total *= values.reduce((product, value) => product * value, 1);
-        break;
-      case "additive":
-        total *= 1 + values.reduce((sum, value) => sum + (value - 1), 0);
-        break;
-    }
-  }
-  return total;
-}
-
-/** Returns the value, or throws if it is missing (ADR 0002: never compute with guessed values). */
-function requireValue(sourced: SourcedNumber, field: string): number {
-  if (sourced.value === null) {
-    throw new Error(`${field} is missing (status "${sourced.source.status}")`);
-  }
-  return sourced.value;
 }

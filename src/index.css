@@ -5,7 +5,7 @@
   --border: #c9c6cf;
 
   font:
-    18px/1.5 system-ui,
+    16px/1.5 system-ui,
     "Segoe UI",
     Roboto,
     sans-serif;
@@ -27,24 +27,79 @@ body {
   margin: 0;
 }
 
+/* Two columns on large screens (PC first), one column below. */
 main {
-  max-width: 40rem;
+  max-width: 72rem;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 3rem;
+}
+
+@media (min-width: 60rem) {
+  main {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  header {
+    grid-column: 1 / -1;
+  }
+
+  .results {
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+  }
+}
+
+header h1 {
+  margin-bottom: 0;
+}
+
+header p {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 1.5rem 0 0.5rem;
 }
 
 label {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
-input {
+label.checkbox {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select {
   font: inherit;
-  max-width: 12rem;
+  max-width: 20rem;
   padding: 0.25rem 0.5rem;
   border: 1px solid var(--border);
   border-radius: 4px;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin: 0 0 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+
+legend {
+  padding: 0 0.25rem;
+  font-weight: 600;
 }
 
 .result {
@@ -56,6 +111,7 @@ dl.result {
   display: grid;
   grid-template-columns: max-content auto;
   gap: 0.25rem 1rem;
+  margin: 0;
 }
 
 dl.result dt {
@@ -67,6 +123,25 @@ dl.result dd {
   margin: 0;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+th,
+td {
+  text-align: right;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+th:first-child,
+td:first-child {
+  text-align: left;
+}
+
 .note {
   color: var(--muted);
+  font-size: 0.9rem;
 }
