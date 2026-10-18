@@ -1,0 +1,931 @@
+[
+  {
+    "id": "last-wish-kalli",
+    "activity": "Last Wish",
+    "name": "Kalli",
+    "damagePhaseSeconds": {
+      "value": 72,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "30s middle damage"
+  },
+  {
+    "id": "last-wish-shuro-chi",
+    "activity": "Last Wish",
+    "name": "Shuro Chi",
+    "damagePhaseSeconds": {
+      "value": 12.883,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "per break"
+  },
+  {
+    "id": "last-wish-morgeth",
+    "activity": "Last Wish",
+    "name": "Morgeth",
+    "damagePhaseSeconds": {
+      "value": 30,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "30s damage"
+  },
+  {
+    "id": "last-wish-riven",
+    "activity": "Last Wish",
+    "name": "Riven",
+    "damagePhaseSeconds": {
+      "value": 14.95,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "bottom floor damage"
+  },
+  {
+    "id": "garden-of-salvation-consecrated",
+    "activity": "Garden of Salvation",
+    "name": "Consecrated",
+    "damagePhaseSeconds": {
+      "value": 20.733,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "garden-of-salvation-sanctified",
+    "activity": "Garden of Salvation",
+    "name": "Sanctified",
+    "damagePhaseSeconds": {
+      "value": 17.417,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "includes ground, single tether"
+  },
+  {
+    "id": "deep-stone-crypt-crypt-security",
+    "activity": "Deep Stone Crypt",
+    "name": "Crypt Security",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"Variable\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "deep-stone-crypt-atraks",
+    "activity": "Deep Stone Crypt",
+    "name": "Atraks",
+    "damagePhaseSeconds": {
+      "value": 2.3,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "one floor"
+  },
+  {
+    "id": "deep-stone-crypt-taniks",
+    "activity": "Deep Stone Crypt",
+    "name": "Taniks",
+    "damagePhaseSeconds": {
+      "value": 14,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "one boop"
+  },
+  {
+    "id": "vault-of-glass-templar",
+    "activity": "Vault of Glass",
+    "name": "Templar",
+    "damagePhaseSeconds": {
+      "value": 15,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "no teleport"
+  },
+  {
+    "id": "vault-of-glass-atheon",
+    "activity": "Vault of Glass",
+    "name": "Atheon",
+    "damagePhaseSeconds": {
+      "value": 30,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "vow-of-the-disciple-caretaker",
+    "activity": "Vow of the Disciple",
+    "name": "Caretaker",
+    "damagePhaseSeconds": {
+      "value": 7.5,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "constant pace one plate one floor"
+  },
+  {
+    "id": "vow-of-the-disciple-rhulk",
+    "activity": "Vow of the Disciple",
+    "name": "Rhulk",
+    "damagePhaseSeconds": {
+      "value": 36,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "king-s-fall-warpriest",
+    "activity": "King's Fall",
+    "name": "Warpriest",
+    "damagePhaseSeconds": {
+      "value": 45,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "zero knight"
+  },
+  {
+    "id": "king-s-fall-golgoroth",
+    "activity": "King's Fall",
+    "name": "Golgoroth",
+    "damagePhaseSeconds": {
+      "value": 20,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "one bubble"
+  },
+  {
+    "id": "king-s-fall-daughters",
+    "activity": "King's Fall",
+    "name": "Daughters",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"Variable\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "king-s-fall-oryx",
+    "activity": "King's Fall",
+    "name": "Oryx",
+    "damagePhaseSeconds": {
+      "value": 24.783,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "root-of-nightmares-explicator",
+    "activity": "Root of Nightmares",
+    "name": "Explicator",
+    "damagePhaseSeconds": {
+      "value": 10,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "two plate"
+  },
+  {
+    "id": "root-of-nightmares-nezarec",
+    "activity": "Root of Nightmares",
+    "name": "Nezarec",
+    "damagePhaseSeconds": {
+      "value": 30,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "crota-s-end-ir-yut",
+    "activity": "Crota's End",
+    "name": "Ir Yut",
+    "damagePhaseSeconds": {
+      "value": 45,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "crota-s-end-crota",
+    "activity": "Crota's End",
+    "name": "Crota",
+    "damagePhaseSeconds": {
+      "value": 30,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "salvation-s-edge-herald",
+    "activity": "Salvation's Edge",
+    "name": "Herald",
+    "damagePhaseSeconds": {
+      "value": 30,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "salvation-s-edge-witness",
+    "activity": "Salvation's Edge",
+    "name": "Witness",
+    "damagePhaseSeconds": {
+      "value": 45,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "desert-perpetual-agraios",
+    "activity": "Desert Perpetual",
+    "name": "Agraios",
+    "damagePhaseSeconds": {
+      "value": 91.5,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "desert-perpetual-epoptes",
+    "activity": "Desert Perpetual",
+    "name": "Epoptes",
+    "damagePhaseSeconds": {
+      "value": 90.9,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "desert-perpetual-iatros",
+    "activity": "Desert Perpetual",
+    "name": "Iatros",
+    "damagePhaseSeconds": {
+      "value": 45.65,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "desert-perpetual-koregos",
+    "activity": "Desert Perpetual",
+    "name": "Koregos",
+    "damagePhaseSeconds": {
+      "value": 80,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "desert-perpetual-epic-agraios",
+    "activity": "Desert Perpetual - Epic",
+    "name": "Agraios",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "desert-perpetual-epic-epoptes",
+    "activity": "Desert Perpetual - Epic",
+    "name": "Epoptes",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "desert-perpetual-epic-iatros",
+    "activity": "Desert Perpetual - Epic",
+    "name": "Iatros",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "desert-perpetual-epic-koregos",
+    "activity": "Desert Perpetual - Epic",
+    "name": "Koregos",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "pantheon-argos",
+    "activity": "Pantheon",
+    "name": "Argos",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "pantheon-warpriest",
+    "activity": "Pantheon",
+    "name": "Warpriest",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "pantheon-gahlran",
+    "activity": "Pantheon",
+    "name": "Gahlran",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "pantheon-consecrated",
+    "activity": "Pantheon",
+    "name": "Consecrated",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "pantheon-calus",
+    "activity": "Pantheon",
+    "name": "Calus",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "pantheon-morgeth",
+    "activity": "Pantheon",
+    "name": "Morgeth",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "pantheon-insurrection-prime",
+    "activity": "Pantheon",
+    "name": "Insurrection Prime",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"?\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "the-shattered-throne-vorgeth",
+    "activity": "The Shattered Throne",
+    "name": "Vorgeth",
+    "damagePhaseSeconds": {
+      "value": 30,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "the-shattered-throne-dul-incaru",
+    "activity": "The Shattered Throne",
+    "name": "Dul Incaru",
+    "damagePhaseSeconds": {
+      "value": 45,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "pit-of-heresy-zulmak",
+    "activity": "Pit of Heresy",
+    "name": "Zulmak",
+    "damagePhaseSeconds": {
+      "value": 50,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "prophecy-phalanx-echo",
+    "activity": "Prophecy",
+    "name": "Phalanx Echo",
+    "damagePhaseSeconds": {
+      "value": 50,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "prophecy-kell-echo",
+    "activity": "Prophecy",
+    "name": "Kell Echo",
+    "damagePhaseSeconds": {
+      "value": 105,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "grasp-of-avarice-phry-zhia",
+    "activity": "Grasp of Avarice",
+    "name": "Phry'zhia",
+    "damagePhaseSeconds": {
+      "value": 30,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "grasp-of-avarice-avarokk",
+    "activity": "Grasp of Avarice",
+    "name": "Avarokk",
+    "damagePhaseSeconds": {
+      "value": 28,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "duality-gahlran",
+    "activity": "Duality",
+    "name": "Gahlran",
+    "damagePhaseSeconds": {
+      "value": 60,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "duality-ka-hok-emonut-uroa",
+    "activity": "Duality",
+    "name": "Ka'hok Emonut Uroa",
+    "damagePhaseSeconds": {
+      "value": null,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "missing",
+        "note": "Aegis: \"N/A\""
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "duality-caiatl",
+    "activity": "Duality",
+    "name": "Caiatl",
+    "damagePhaseSeconds": {
+      "value": 12,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "one bell"
+  },
+  {
+    "id": "spire-of-the-watcher-akelous",
+    "activity": "Spire of the Watcher",
+    "name": "Akelous",
+    "damagePhaseSeconds": {
+      "value": 27.817,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "spire-of-the-watcher-persys",
+    "activity": "Spire of the Watcher",
+    "name": "Persys",
+    "damagePhaseSeconds": {
+      "value": 22.967,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "ghosts-of-the-deep-ecthar",
+    "activity": "Ghosts of the Deep",
+    "name": "Ecthar",
+    "damagePhaseSeconds": {
+      "value": 40,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "ghosts-of-the-deep-simmumah",
+    "activity": "Ghosts of the Deep",
+    "name": "Simmumah",
+    "damagePhaseSeconds": {
+      "value": 45,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "warlord-s-ruin-rathil",
+    "activity": "Warlord's Ruin",
+    "name": "Rathil",
+    "damagePhaseSeconds": {
+      "value": 20,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "warlord-s-ruin-locus",
+    "activity": "Warlord's Ruin",
+    "name": "Locus",
+    "damagePhaseSeconds": {
+      "value": 15,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "one flame"
+  },
+  {
+    "id": "warlord-s-ruin-hefnd",
+    "activity": "Warlord's Ruin",
+    "name": "Hefnd",
+    "damagePhaseSeconds": {
+      "value": 20,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "one floor"
+  },
+  {
+    "id": "vesper-s-host-raneiks",
+    "activity": "Vesper's Host",
+    "name": "Raneiks",
+    "damagePhaseSeconds": {
+      "value": 15,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "vesper-s-host-puppeteer",
+    "activity": "Vesper's Host",
+    "name": "Puppeteer",
+    "damagePhaseSeconds": {
+      "value": 95,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "sundered-doctrine-zoetic-lockset",
+    "activity": "Sundered Doctrine",
+    "name": "Zoetic Lockset",
+    "damagePhaseSeconds": {
+      "value": 81.567,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "sundered-doctrine-kerrev",
+    "activity": "Sundered Doctrine",
+    "name": "Kerrev",
+    "damagePhaseSeconds": {
+      "value": 45.2,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": ""
+  },
+  {
+    "id": "equilibrium-harrow",
+    "activity": "Equilibrium",
+    "name": "Harrow",
+    "damagePhaseSeconds": {
+      "value": 33.167,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "no extension"
+  },
+  {
+    "id": "equilibrium-sere",
+    "activity": "Equilibrium",
+    "name": "Sere",
+    "damagePhaseSeconds": {
+      "value": 37.45,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Bosses, column Phase)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    },
+    "description": "five compels"
+  }
+]

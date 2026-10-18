@@ -225,3 +225,13 @@ export const Build = z.object({
   damagePhaseSeconds: z.number().positive(),
 });
 export type Build = z.infer<typeof Build>;
+
+/** Known boss with the length of one damage phase; source for the quick select. */
+export const Boss = z.object({
+  id: z.string(), // kebab-case from activity and name, e.g. "last-wish-kalli"
+  activity: z.string(),
+  name: z.string(),
+  damagePhaseSeconds: SourcedNumber, // null with status "missing" if the source has no number
+  description: z.string(), // what the phase covers, e.g. "30s middle damage"; may be empty
+});
+export type Boss = z.infer<typeof Boss>;
