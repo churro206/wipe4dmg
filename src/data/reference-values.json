@@ -18,7 +18,12 @@
     "description": "Total damage, full magazine dump without catalyst",
     "totalDamageMin": 24000,
     "totalDamageMax": 26000,
-    "conditions": ["no catalyst", "surges", "artifact perk Particle Reconstruction", "Weapons stat below 100"],
+    "conditions": [
+      "no catalyst",
+      "surges",
+      "artifact perk Particle Reconstruction",
+      "Weapons stat below 100"
+    ],
     "source": {
       "name": "blueberries.gg (Jul 6, 2026)",
       "url": "https://www.blueberries.gg/weapons/one-thousand-voices-exotic-catalyst/",
@@ -32,7 +37,12 @@
     "description": "Total damage, full magazine dump with catalyst",
     "totalDamageMin": 34000,
     "totalDamageMax": 36000,
-    "conditions": ["catalyst", "surges", "artifact perk Particle Reconstruction", "Weapons stat below 100"],
+    "conditions": [
+      "catalyst",
+      "surges",
+      "artifact perk Particle Reconstruction",
+      "Weapons stat below 100"
+    ],
     "source": {
       "name": "blueberries.gg (Jul 6, 2026)",
       "url": "https://www.blueberries.gg/weapons/one-thousand-voices-exotic-catalyst/",

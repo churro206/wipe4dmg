@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import type { Effect } from "../src/data/schema";
+import type { Effect, MultiplierPart } from "../src/data/schema";
 import raw from "../src/data/weapons/one-thousand-voices.json";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
@@ -14,14 +14,17 @@ const DAMAGE_PHASE_SECONDS = 600;
 
 const baseTotal = simulate(weapon, DAMAGE_PHASE_SECONDS).totalDamage;
 const byId = (id: string) => effects.find((e) => e.id === id)!;
-const multiplierOf = (effect: Effect) => effect.parts[0].multiplier.value!;
+const multiplierPartsOf = (effect: Effect) =>
+  effect.parts.filter((p): p is MultiplierPart => p.type === "multiplier");
+const multiplierOf = (effect: Effect) =>
+  multiplierPartsOf(effect)[0].multiplier.value!;
 
 /** Builds a test effect with one multiplier part. Values are test inputs, not game values. */
 function testEffect(
   id: string,
   bucketId: string,
   multiplier: number,
-  options: Partial<Effect["parts"][number]> = {},
+  options: Partial<MultiplierPart> = {},
 ): Effect {
   return {
     id,
@@ -43,10 +46,10 @@ function testEffect(
 }
 
 describe("data files", () => {
-  it("every effect refers to an existing bucket", () => {
+  it("every multiplier part refers to an existing bucket", () => {
     const bucketIds = new Set(buckets.map((b) => b.id));
     for (const effect of effects) {
-      for (const part of effect.parts) {
+      for (const part of multiplierPartsOf(effect)) {
         expect(bucketIds).toContain(part.bucketId);
       }
     }
@@ -153,7 +156,7 @@ describe("simulate: effects", () => {
 
   it("rejects an effect whose multiplier is missing", () => {
     const missing = testEffect("m", "empowering", 1.25);
-    missing.parts[0].multiplier.value = null;
+    multiplierPartsOf(missing)[0].multiplier.value = null;
     expect(() =>
       simulate(weapon, DAMAGE_PHASE_SECONDS, [missing], buckets),
     ).toThrow("multiplier");

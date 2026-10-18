@@ -69,7 +69,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| [Damage Stacking (Buckets)](damage-stacking.md) | Multiplier | Damage-Buffs fallen in die Kategorien Empowering Buffs, Debuffs, Weapon Surges und Amplification. Die Kategorien multiplizieren sich untereinander. | hoch | Court Stacking Guide | im Simulator (ohne Vorrangregeln) |
+| [Damage Stacking (Buckets)](damage-stacking.md) | Multiplier | Damage-Buffs fallen in die Kategorien Empowering Buffs, Debuffs, Weapon Surges und Amplification. Die Kategorien multiplizieren sich untereinander. | hoch | Court Stacking Guide | im Simulator |
 | Weapons Stat | Multiplier (Amplification) | Stat 101–200 erhöht den Waffenschaden gegen Bosse; Heavy bei 200: ×1,10. Stat 0–100 wirkt nur gegen normale Gegner. | hoch | Court; Aegis Spalte „200“ | katalogisiert |
 | Precision | Multiplier (Bedingung) | Schaden auf kritische Trefferzonen; Werte je Waffe | mittel (One Thousand Voices: keiner) | Quantum; Aegis | katalogisiert |
 | Gegnertyp | Bedingung | Manche Effekte wirken nicht gegen Bosse, z. B. Kinetic Intrinsic Buff, Weapons Stat 0–100; wir rechnen nur gegen Bosse | Filter: solche Effekte entfallen | Compendium „Game Mechanics“; Court | katalogisiert |
@@ -142,7 +142,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| [Particle Reconstruction](particle-reconstruction.md) | Timing Modifier, Multiplier (Debuff) | Artifact Perk für Fusion und Linear Fusion: füllt das Magazin aus den Reserves und gibt einen stapelnden Debuff bis etwa 28 %; 30-%-Weaken und Divinity überschreiben ihn | hoch (One Thousand Voices) | Court; Aegis | ausgearbeitet |
+| [Particle Reconstruction](particle-reconstruction.md) | Timing Modifier, Multiplier (Debuff) | Artifact Perk für Fusion und Linear Fusion: füllt das Magazin aus den Reserves und gibt einen stapelnden Debuff bis etwa 28 %; 30-%-Weaken und Divinity überschreiben ihn | hoch (One Thousand Voices) | Court; Aegis | im Simulator (Stufe 5 dauerhaft) |
 | Reload und Auto-Loading | Timing Modifier | Reload-Zeiten, Auto-Loading-Perks, Reload-Mods | hoch | Quantum; Aegis | katalogisiert |
 | Munition | Timing Modifier | Reserves, Reserve-Mods, Ammo Finder, Heavy-Ammo-Bricks; begrenzt lange Damage Phases | hoch | Quantum „Reserves“; Compendium „Armor Mods“ | katalogisiert |
 | Waffenwechsel (Swap) | Timing Modifier | Rotationen mit Waffenwechsel; Ready-, Fire- und Stow-Zeiten | hoch (für Rotationen) | Aegis „Swap“ | katalogisiert |

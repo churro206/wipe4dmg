@@ -31,10 +31,10 @@ Particle Reconstruction ist ein Artifact Perk (Tablet of Ruin) für Fusion Rifle
 
 ## Modell im Simulator
 
-Noch nicht abgebildet. Particle Reconstruction ist das wichtigste Beispiel für einen Effect mit zwei Teilen:
+Abgebildet seit v0.5 Schritt 3 (`src/data/effects.json`, Effect `particle-reconstruction`). Particle Reconstruction ist das wichtigste Beispiel für einen Effect mit zwei Teilen:
 
 - Teil 1, Timing Modifier: Reloads entfallen.
-- Teil 2, Debuff: Multiplier im Bucket `debuff`, wächst mit den Treffern bis Stufe 5; wird von stärkeren Debuffs überschrieben.
+- Teil 2, Debuff: Multiplier im Bucket `debuff`. Vereinfachung in v0.5: immer Stufe 5 (27,6 %), weil jeder Effect die ganze Damage Phase aktiv ist. Ein 30-%-Weaken gewinnt über die Regel „highest“, Divinity über `overrides`.
 
 ## Offene Fragen
 

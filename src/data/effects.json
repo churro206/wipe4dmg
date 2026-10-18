@@ -9,7 +9,12 @@
         "bucketId": "empowering",
         "multiplier": {
           "value": 1.25,
-          "source": { "name": "Court Stacking Guide (Empowering Buffs, PvE 25%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Empowering Buffs, PvE 25%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon"]
       }
@@ -25,7 +30,12 @@
         "bucketId": "empowering",
         "multiplier": {
           "value": 1.2,
-          "source": { "name": "Court Stacking Guide (Empowering Buffs, PvE 20%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Empowering Buffs, PvE 20%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon"]
       }
@@ -41,7 +51,12 @@
         "bucketId": "empowering",
         "multiplier": {
           "value": 1.2,
-          "source": { "name": "Court Stacking Guide (Radiant sources, PvE 20%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Radiant sources, PvE 20%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon"]
       }
@@ -57,7 +72,12 @@
         "bucketId": "empowering",
         "multiplier": {
           "value": 1.25,
-          "source": { "name": "Court Stacking Guide (Standing Behind Banner, PvE 25%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Standing Behind Banner, PvE 25%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon"]
       }
@@ -73,7 +93,12 @@
         "bucketId": "empowering",
         "multiplier": {
           "value": 1.35,
-          "source": { "name": "Court Stacking Guide (Lumina's Blessing of the Sky, PvE 35%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Lumina's Blessing of the Sky, PvE 35%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon"]
       }
@@ -89,7 +114,12 @@
         "bucketId": "debuff",
         "multiplier": {
           "value": 1.15,
-          "source": { "name": "Court Stacking Guide (Weaken, PvE 15%); Compendium Void", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Weaken, PvE 15%); Compendium Void",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon", "grenade", "melee", "super"]
       }
@@ -105,11 +135,18 @@
         "bucketId": "debuff",
         "multiplier": {
           "value": 1.15,
-          "source": { "name": "Court Stacking Guide (Divinity, PvE 15%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Divinity, PvE 15%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified",
+            "note": "Overrides Particle Reconstruction down to 15% (Compendium Artifact Perks; Court)."
+          }
         },
         "damageSources": ["weapon", "grenade", "melee", "super"]
       }
-    ]
+    ],
+    "overrides": ["particle-reconstruction"]
   },
   {
     "id": "tractor-cannon",
@@ -121,7 +158,12 @@
         "bucketId": "debuff",
         "multiplier": {
           "value": 1.3,
-          "source": { "name": "Court Stacking Guide (Tractor Cannon, PvE 30%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Tractor Cannon, PvE 30%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon", "grenade", "melee", "super"]
       }
@@ -137,7 +179,12 @@
         "bucketId": "debuff",
         "multiplier": {
           "value": 1.3,
-          "source": { "name": "Court Stacking Guide (Moebius Tether, PvE 30%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Moebius Tether, PvE 30%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon", "grenade", "melee", "super"]
       }
@@ -153,7 +200,12 @@
         "bucketId": "debuff",
         "multiplier": {
           "value": 1.35,
-          "source": { "name": "Court Stacking Guide (Deadfall Tether, PvE 35%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Deadfall Tether, PvE 35%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon", "grenade", "melee", "super"]
       }
@@ -169,7 +221,12 @@
         "bucketId": "surge",
         "multiplier": {
           "value": 1.17,
-          "source": { "name": "Court Stacking Guide (Instant 2x Surge, PvE 17%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Instant 2x Surge, PvE 17%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon"],
         "elements": ["solar"]
@@ -186,7 +243,13 @@
         "bucketId": "surge",
         "multiplier": {
           "value": 1.22,
-          "source": { "name": "Court Stacking Guide; Aegis Boss Damage (column Surge 1.220)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "unverified", "note": "Derived: Court lists 22% for surges such as Fr0st-EE5, Aegis assumes 1.22. Not stated as 3x directly." }
+          "source": {
+            "name": "Court Stacking Guide; Aegis Boss Damage (column Surge 1.220)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "unverified",
+            "note": "Derived: Court lists 22% for surges such as Fr0st-EE5, Aegis assumes 1.22. Not stated as 3x directly."
+          }
         },
         "damageSources": ["weapon"],
         "elements": ["solar"]
@@ -203,7 +266,12 @@
         "bucketId": "surge",
         "multiplier": {
           "value": 1.25,
-          "source": { "name": "Court Stacking Guide (Instant 4x Surge, PvE 25%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+          "source": {
+            "name": "Court Stacking Guide (Instant 4x Surge, PvE 25%)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified"
+          }
         },
         "damageSources": ["weapon"],
         "elements": ["solar"]
@@ -220,7 +288,13 @@
         "bucketId": "amplification",
         "multiplier": {
           "value": 1.1,
-          "source": { "name": "Destiny Data Compendium, Game Mechanics (Weapons stat: power weapons +0.1% per point above 100 against bosses); Aegis column 200 (1.100)", "url": "https://destiny2.science/data-compendium", "retrieved": "2026-10-18", "status": "verified", "note": "Value for power weapons only. Primary and special weapons get 15% at 200." }
+          "source": {
+            "name": "Destiny Data Compendium, Game Mechanics (Weapons stat: power weapons +0.1% per point above 100 against bosses); Aegis column 200 (1.100)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-18",
+            "status": "verified",
+            "note": "Value for power weapons only. Primary and special weapons get 15% at 200."
+          }
         },
         "damageSources": ["weapon"]
       }
@@ -236,10 +310,51 @@
         "bucketId": "amplification",
         "multiplier": {
           "value": 1.22,
-          "source": { "name": "Court Stacking Guide (Elemental Overdrive, PvE 22%); Compendium Artifact Perks", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified", "note": "UI shows it as surge, but it stacks with all other buffs." }
+          "source": {
+            "name": "Court Stacking Guide (Elemental Overdrive, PvE 22%); Compendium Artifact Perks",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-18",
+            "status": "verified",
+            "note": "UI shows it as surge, but it stacks with all other buffs."
+          }
         },
         "damageSources": ["weapon"],
         "elements": ["solar"]
+      }
+    ]
+  },
+  {
+    "id": "particle-reconstruction",
+    "name": "Particle Reconstruction",
+    "category": "artifact",
+    "parts": [
+      {
+        "type": "timing",
+        "change": "noReload",
+        "weaponTypes": ["fusionRifle", "linearFusionRifle"],
+        "source": {
+          "name": "Destiny Data Compendium, Artifact Perks (Particle Reconstruction)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "Hits refill 10% of the magazine, rounded up. Aegis measures One Thousand Voices without reloads (Distribution 11). See docs/mechanics/particle-reconstruction.md."
+        }
+      },
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "multiplier": {
+          "value": 1.276,
+          "source": {
+            "name": "Destiny Data Compendium, Artifact Perks (Particle Reconstruction)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-18",
+            "status": "verified",
+            "note": "Highest of 5 stacks (5%, 10.25%, 15.8%, 21.6%, 27.6%). v0.5 keeps every effect at full uptime, so the highest stack applies. 30% weakens override it."
+          }
+        },
+        "damageSources": ["weapon"],
+        "weaponTypes": ["fusionRifle", "linearFusionRifle"]
       }
     ]
   }

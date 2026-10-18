@@ -3,6 +3,7 @@
   "name": "One Thousand Voices",
   "manifestHash": 2069224589,
   "gameVersion": "9.7.0.1",
+  "weaponType": "fusionRifle",
   "element": "solar",
   "ammo": "heavy",
   "chargeTimeMs": {
@@ -59,7 +60,12 @@
       "name": "Shot (beam and explosion, without ignition)",
       "delayMs": {
         "value": 0,
-        "source": { "name": "definition", "retrieved": "2026-10-18", "status": "verified", "note": "The damage of a shot is placed at the shot time." }
+        "source": {
+          "name": "definition",
+          "retrieved": "2026-10-18",
+          "status": "verified",
+          "note": "The damage of a shot is placed at the shot time."
+        }
       },
       "damagePerTick": {
         "value": 2180,
@@ -73,11 +79,20 @@
       },
       "ticks": {
         "value": 1,
-        "source": { "name": "definition", "retrieved": "2026-10-18", "status": "verified", "note": "One value per shot." }
+        "source": {
+          "name": "definition",
+          "retrieved": "2026-10-18",
+          "status": "verified",
+          "note": "One value per shot."
+        }
       },
       "tickIntervalMs": {
         "value": 0,
-        "source": { "name": "definition", "retrieved": "2026-10-18", "status": "verified" }
+        "source": {
+          "name": "definition",
+          "retrieved": "2026-10-18",
+          "status": "verified"
+        }
       },
       "canPrecision": false,
       "requiresCatalyst": false
@@ -88,19 +103,34 @@
       "id": "ahamkaras-eye",
       "name": "Ahamkara's Eye",
       "description": "Charging this weapon unleashes a giant continuous beam.",
-      "source": { "name": "light.gg", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "verified" }
+      "source": {
+        "name": "light.gg",
+        "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
     },
     {
       "id": "unforeseen-repercussions",
       "name": "Unforeseen Repercussions",
       "description": "The beam superheats targets on impact and causes delayed scorching explosions.",
-      "source": { "name": "light.gg", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "verified" }
+      "source": {
+        "name": "light.gg",
+        "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
     },
     {
       "id": "fall-from-grace",
       "name": "Fall from Grace (catalyst)",
       "description": "+30 Stability, +20 Ammo Generation. Each detonation releases a Taken Seeker.",
-      "source": { "name": "Clarity via light.gg", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "verified" }
+      "source": {
+        "name": "Clarity via light.gg",
+        "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
     }
   ]
 }

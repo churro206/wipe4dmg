@@ -8,6 +8,7 @@
 // - A shot or damage instance counts if it happens at or before the end of the damage phase.
 //
 // Effects (ADR 0006, v0.5): every selected effect is active for the whole damage phase.
+// Timing parts change the shot plan, e.g. noReload removes all reloads.
 // Per bucket the stacking rule combines the multipliers; buckets multiply with each other.
 
 import type {
@@ -17,7 +18,9 @@ import type {
   Element,
   MultiplierPart,
   SourcedNumber,
+  TimingPart,
   Weapon,
+  WeaponType,
 } from "../data/schema";
 
 const MS_PER_SECOND = 1000;
@@ -65,14 +68,19 @@ export function simulate(
     );
   }
 
-  const multiplierParts = collectMultiplierParts(effects, buckets);
+  const { multiplierParts, timingParts } = activeParts(effects, buckets);
+  const noReload = timingParts.some(
+    (part) =>
+      part.change === "noReload" &&
+      appliesToWeaponType(part.weaponTypes, weapon.weaponType),
+  );
   const shotIntervalMs = MS_PER_MINUTE / fireRateRpm;
   const damagePhaseMs = damagePhaseSeconds * MS_PER_SECOND;
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
 
   const shots: Shot[] = [];
   for (let i = 0; i < totalShots; i++) {
-    const reloads = Math.floor(i / magazine);
+    const reloads = noReload ? 0 : Math.floor(i / magazine);
     const timeMs = chargeTimeMs + i * shotIntervalMs + reloads * reloadTimeMs;
     if (!isInPhase(timeMs)) break;
     shots.push({ timeMs });
@@ -95,6 +103,7 @@ export function simulate(
     buckets,
     damageSource,
     weapon.element,
+    weapon.weaponType,
   );
 
   const damageInstances: TimedDamageInstance[] = [];
@@ -121,19 +130,44 @@ export function simulate(
   return { shots, damageInstances, totalDamage };
 }
 
-/** Returns all multiplier parts of the effects; throws if a part refers to an unknown bucket. */
-function collectMultiplierParts(
+/**
+ * Returns the parts of all effects, split by type. Multiplier parts of an overridden effect are
+ * dropped in the buckets of the overriding effect. Throws if a part refers to an unknown bucket.
+ */
+function activeParts(
   effects: Effect[],
   buckets: Bucket[],
-): MultiplierPart[] {
+): { multiplierParts: MultiplierPart[]; timingParts: TimingPart[] } {
   const bucketIds = new Set(buckets.map((bucket) => bucket.id));
-  const parts = effects.flatMap((effect) => effect.parts);
-  for (const part of parts) {
-    if (!bucketIds.has(part.bucketId)) {
-      throw new Error(`Unknown bucket "${part.bucketId}"`);
+  const multiplierParts: MultiplierPart[] = [];
+  const timingParts: TimingPart[] = [];
+
+  for (const effect of effects) {
+    const overriddenBuckets = new Set(
+      effects
+        .filter((other) => other.overrides?.includes(effect.id))
+        .flatMap((other) => other.parts)
+        .flatMap((part) => (part.type === "multiplier" ? [part.bucketId] : [])),
+    );
+    for (const part of effect.parts) {
+      if (part.type === "timing") {
+        timingParts.push(part);
+        continue;
+      }
+      if (!bucketIds.has(part.bucketId)) {
+        throw new Error(`Unknown bucket "${part.bucketId}"`);
+      }
+      if (!overriddenBuckets.has(part.bucketId)) multiplierParts.push(part);
     }
   }
-  return parts;
+  return { multiplierParts, timingParts };
+}
+
+function appliesToWeaponType(
+  weaponTypes: WeaponType[] | undefined,
+  weaponType: WeaponType,
+): boolean {
+  return weaponTypes === undefined || weaponTypes.includes(weaponType);
 }
 
 /** Combines the matching parts per bucket by its stacking rule; buckets multiply with each other. */
@@ -142,6 +176,7 @@ function combinedMultiplier(
   buckets: Bucket[],
   damageSource: DamageSource,
   element: Element,
+  weaponType: WeaponType,
 ): number {
   let total = 1;
   for (const bucket of buckets) {
@@ -150,7 +185,8 @@ function combinedMultiplier(
         (part) =>
           part.bucketId === bucket.id &&
           part.damageSources.includes(damageSource) &&
-          (part.elements === undefined || part.elements.includes(element)),
+          (part.elements === undefined || part.elements.includes(element)) &&
+          appliesToWeaponType(part.weaponTypes, weaponType),
       )
       .map((part) => requireValue(part.multiplier, "multiplier"));
     if (values.length === 0) continue;

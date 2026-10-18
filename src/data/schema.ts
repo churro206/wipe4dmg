@@ -64,11 +64,33 @@ export const Element = z.enum([
 ]);
 export type Element = z.infer<typeof Element>;
 
+export const WeaponType = z.enum([
+  "autoRifle",
+  "bow",
+  "fusionRifle",
+  "glaive",
+  "grenadeLauncher",
+  "handCannon",
+  "linearFusionRifle",
+  "machineGun",
+  "pulseRifle",
+  "rocketLauncher",
+  "scoutRifle",
+  "shotgun",
+  "sidearm",
+  "submachineGun",
+  "sniperRifle",
+  "sword",
+  "traceRifle",
+]);
+export type WeaponType = z.infer<typeof WeaponType>;
+
 export const Weapon = z.object({
   id: z.string(),
   name: z.string(),
   manifestHash: z.number().int(),
   gameVersion: z.string(), // game version the data refers to, e.g. "9.7.0.5"
+  weaponType: WeaponType,
   element: Element,
   ammo: z.enum(["primary", "special", "heavy"]),
   chargeTimeMs: SourcedNumber, // time from the start of the damage phase to the first shot
@@ -99,8 +121,24 @@ export const MultiplierPart = z.object({
   multiplier: SourcedNumber, // e.g. 1.25
   damageSources: z.array(DamageSource).min(1),
   elements: z.array(Element).optional(), // omitted: all elements
+  weaponTypes: z.array(WeaponType).optional(), // omitted: all weapon types
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
+
+/** Effect part that changes the shot plan instead of damage (ADR 0006). */
+export const TimingPart = z.object({
+  type: z.literal("timing"),
+  change: z.enum(["noReload"]),
+  weaponTypes: z.array(WeaponType).optional(), // omitted: all weapon types
+  source: Source,
+});
+export type TimingPart = z.infer<typeof TimingPart>;
+
+export const EffectPart = z.discriminatedUnion("type", [
+  MultiplierPart,
+  TimingPart,
+]);
+export type EffectPart = z.infer<typeof EffectPart>;
 
 /**
  * Anything a build can switch on or off that changes damage or timing (ADR 0006).
@@ -116,7 +154,10 @@ export const Effect = z.object({
     "fireteamSupport",
     "weapon",
   ]),
-  parts: z.array(MultiplierPart).min(1),
+  parts: z.array(EffectPart).min(1),
+  // Effect ids whose multiplier parts in the same buckets are ignored while this effect is active,
+  // regardless of value, e.g. Divinity over Particle Reconstruction.
+  overrides: z.array(z.string()).optional(),
 });
 export type Effect = z.infer<typeof Effect>;
 
