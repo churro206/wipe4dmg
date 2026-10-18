@@ -1,5 +1,10 @@
 # Changelog
 
+## Unveröffentlicht (v1.0 in Arbeit)
+
+- Katalysator von One Thousand Voices: Taken Seeker als Damage over Time (Werte aus dem Compendium). Offene Abweichung zu Aegis: Modell ×1,26, Aegis ×1,371.
+- Diagramme mit Recharts (ADR 0007): Schaden nach Art (Donut mit Legende und Werten), Damage Curve (US-06), DPS je Länge der Damage Phase, Beitrag pro Bucket als Balken.
+
 ## 0.5.0 – 2026-10-18 (MVP)
 
 Manual Mode für One Thousand Voices (US-01 bis US-04).

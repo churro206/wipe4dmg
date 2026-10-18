@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import rawBosses from "../data/bosses.json";
 import rawBuckets from "../data/buckets.json";
 import rawEffects from "../data/effects.json";
 import type { Effect, EffectPart } from "../data/schema";
 import raw from "../data/weapons/one-thousand-voices.json";
+import {
+  damageByInstance,
+  damageCurve,
+  dpsByDamagePhase,
+} from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
 import { loadBosses, loadBuckets, loadEffects } from "../engine/loadData";
 import { loadWeapon } from "../engine/loadWeapon";
 import { simulate } from "../engine/simulate";
+import {
+  BreakdownChart,
+  DamageCurveChart,
+  DamageShareChart,
+  DpsByLengthChart,
+} from "./Charts";
 
 const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
@@ -24,6 +35,9 @@ const CATEGORIES: { id: Effect["category"]; label: string }[] = [
   { id: "fireteamSupport", label: "Fireteam Support" },
   { id: "weapon", label: "Waffe" },
 ];
+
+// Range of the DPS chart; it grows if the chosen damage phase is longer.
+const DPS_CHART_MIN_SECONDS = 120;
 
 const integer = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 });
 const seconds = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
@@ -62,6 +76,21 @@ function App() {
     ? breakdown(weapon, damagePhaseSeconds, selected, buckets, { catalyst })
     : [];
   const boss = bosses.find((b) => b.id === bossId);
+  const dpsChartSeconds = Math.max(
+    DPS_CHART_MIN_SECONDS,
+    isValid ? Math.ceil(damagePhaseSeconds) : 0,
+  );
+  const dpsPoints = useMemo(
+    () =>
+      dpsByDamagePhase(
+        weapon,
+        effects.filter((effect) => selectedIds.includes(effect.id)),
+        buckets,
+        { catalyst },
+        Array.from({ length: dpsChartSeconds }, (_, i) => i + 1),
+      ),
+    [selectedIds, catalyst, dpsChartSeconds],
+  );
 
   const selectBoss = (id: string) => {
     setBossId(id);
@@ -175,35 +204,52 @@ function App() {
               </dd>
             </dl>
 
+            {result.totalDamage > 0 && (
+              <DamageShareChart entries={damageByInstance(result)} />
+            )}
+            <DamageCurveChart
+              points={damageCurve(result, damagePhaseSeconds)}
+            />
+            <DpsByLengthChart
+              points={dpsPoints}
+              currentSeconds={damagePhaseSeconds}
+            />
+
             <h2>Breakdown</h2>
             {entries.length === 0 ? (
               <p className="note">Keine Multiplier gewählt.</p>
             ) : (
-              <table>
-                <thead>
-                  <tr>
-                    <th>Bucket</th>
-                    <th>Multiplier</th>
-                    <th>Total ohne</th>
-                    <th>Beitrag</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {entries.map((entry) => (
-                    <tr key={entry.bucketId}>
-                      <td>{entry.name}</td>
-                      <td>×{factor.format(entry.multiplier)}</td>
-                      <td>{integer.format(entry.totalDamageWithout)}</td>
-                      <td>
-                        +
-                        {integer.format(
-                          result.totalDamage - entry.totalDamageWithout,
-                        )}
-                      </td>
+              <>
+                <BreakdownChart
+                  entries={entries}
+                  totalDamage={result.totalDamage}
+                />
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Bucket</th>
+                      <th>Multiplier</th>
+                      <th>Total ohne</th>
+                      <th>Beitrag</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {entries.map((entry) => (
+                      <tr key={entry.bucketId}>
+                        <td>{entry.name}</td>
+                        <td>×{factor.format(entry.multiplier)}</td>
+                        <td>{integer.format(entry.totalDamageWithout)}</td>
+                        <td>
+                          +
+                          {integer.format(
+                            result.totalDamage - entry.totalDamageWithout,
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </>
             )}
           </>
         ) : (

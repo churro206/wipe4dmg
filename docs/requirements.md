@@ -62,7 +62,7 @@ Das MVP (v0.5) ist das erste Release mit echtem Nutzen. Das Walking Skeleton dav
 | --- | --- | --- | --- |
 | v0.1 Walking Skeleton | Waffe ohne Buffs, Total Damage, online per Link | Kette läuft durch | abgeschlossen 2026-10-18 |
 | v0.5 MVP | Manual Mode, Breakdown, US-01 bis US-04 | Ergebnisse stimmen mit den Werten der Datenquelle überein (`tests/gate.test.ts`) | abgeschlossen 2026-10-18 |
-| v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, Fähigkeiten und Supers, US-05 bis US-09, US-14 | Freunde testen v1.0 | offen |
+| v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, Fähigkeiten und Supers, US-05 bis US-09, US-14 | Freunde testen v1.0 | in Arbeit (Katalysator, Damage Curve) |
 | v1.x Erweiterung | Speichern im Browser, weitere Waffen, Discord Bot, US-10, US-11, US-13 | – | offen |
 
 Ein Release startet erst, wenn das Gate davor erfüllt ist. Das Gate vor v1.0 vergleicht unsere Ergebnisse mit den Gesamtwerten der Datenquelle, z. B. Total Damage pro Magazin.
