@@ -4,14 +4,16 @@
 
 Die App berechnet den Total Damage eines Builds in Destiny 2.
 Die erste Waffe ist One Thousand Voices. Später folgen fast alle Waffen.
-Die Zahlen sollen dem Spiel auf wenige Prozent entsprechen.
+Die Unterschiede zwischen Builds sollen stimmen. Absolute Zahlen müssen nicht mit dem Spiel übereinstimmen.
+Die Spielwerte kommen aus frei zugänglichen Community-Quellen, möglichst automatisch übernommen (ADR 0005).
 Zielgruppe: der Projektinhaber und seine Freunde, vor allem am PC.
+Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 
 ## Dokumente
 
 - `docs/requirements.md`: Produktvision, User Stories, Releaseplan, Glossary, Risiken.
 - `docs/adr/`: Architecture Decision Records. Lies alle ADRs vor größeren Änderungen.
-- `docs/data-sources.md`: Datenlage und offene Messungen.
+- `docs/data-sources.md`: Datenquellen, Messbedingungen und Messprotokoll.
 
 ## Sprache
 

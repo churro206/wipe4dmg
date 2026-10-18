@@ -4,9 +4,11 @@ Oct 18, 2026 · @Leon
 
 ## Produktvision
 
-Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in Destiny 2. Die Zahlen sollen dem Spiel auf wenige Prozent entsprechen.
+Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in Destiny 2. Die App soll die Unterschiede zwischen Builds richtig abbilden. Absolute Zahlen müssen nicht mit dem Spiel übereinstimmen.
 
 **Zielgruppe:** Ich und meine Freunde. Alle Nutzer kennen Destiny 2 gut. Alle Nutzer arbeiten vor allem am PC.
+
+**Projektrahmen:** Das Projekt ist privat und nicht kommerziell. Es dient nur dem Spaß für mich und meine Freunde. Die App wird nicht beworben; nur Freunde bekommen den Link.
 
 **Problem:** Spieler testen Builds heute mühsam am Schießstand oder vertrauen fremden Ranglisten. Die App rechnet einen Build in Sekunden durch und zeigt, woher der Schaden kommt.
 
@@ -19,7 +21,8 @@ Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in 
 | Erste Waffe | One Thousand Voices (schwere Fusionswaffe, Strahl und verzögerte Explosion) |
 | Klassen | Titan, Jäger, Warlock |
 | Geräte | Vor allem PC, Layout für große Bildschirme |
-| Genauigkeit | Absolute Zahlen sollen dem Spiel auf wenige Prozent entsprechen |
+| Genauigkeit | Relative Unterschiede zwischen Builds sollen stimmen; absolute Zahlen folgen den Messbedingungen der Datenquelle |
+| Datenquellen | Frei zugängliche Community-Daten, möglichst automatisch übernommen (ADR 0005); eigene Messungen nur als Stichprobe |
 | Programmiererfahrung | Grundlagen; Claude erklärt jede Änderung |
 | Zeitbudget | Mehr als 10 Stunden pro Woche |
 | Spielstand | Keine Sandbox-Änderungen seit 9.7.0; Wartungs-Patches möglich (zuletzt 9.7.0.5); jede Weapon trägt eine gameVersion |
@@ -27,7 +30,7 @@ Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in 
 
 ## User Stories
 
-Die erste Version enthält nur den Manual Mode. Der Breakdown gehört dazu, weil wir absolute Zahlen nur mit ihr prüfen können.
+Die erste Version enthält nur den Manual Mode. Der Breakdown gehört dazu, weil wir die Ergebnisse nur mit ihm prüfen können.
 
 | ID | User Story | Priorität |
 | --- | --- | --- |
@@ -51,11 +54,11 @@ Das MVP (v0.5) ist das erste Release mit echtem Nutzen. Das Walking Skeleton dav
 | Release | Inhalt | Gate zum nächsten Release |
 | --- | --- | --- |
 | v0.1 Walking Skeleton | Waffe ohne Buffs, Total Damage, online per Link | Kette läuft durch |
-| v0.5 MVP | Manual Mode, Breakdown, US-01 bis US-04 | Referenzwerte stimmen |
+| v0.5 MVP | Manual Mode, Breakdown, US-01 bis US-04 | Ergebnisse stimmen mit den Werten der Datenquelle überein |
 | v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, US-05 bis US-09 | Freunde testen v1.0 |
 | v1.x Erweiterung | Speichern im Browser, weitere Waffen, US-10, US-11 | – |
 
-Ein Release startet erst, wenn das Gate davor erfüllt ist. Das Gate vor v1.0 verlangt Referenzwerte vom Schießstand.
+Ein Release startet erst, wenn das Gate davor erfüllt ist. Das Gate vor v1.0 vergleicht unsere Ergebnisse mit den Gesamtwerten der Datenquelle, z. B. Total Damage pro Magazin.
 
 ## Glossary
 
@@ -67,6 +70,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Breakdown | Share of each bucket in the total damage of a build |
 | Bucket | Group of multipliers with one stacking rule; only the highest value per bucket applies, and buckets multiply with each other |
 | Build | Complete selection of subclass, armor, artifact perks and fireteam support for one weapon |
+| Burn | Damage over time that scorch deals to a target; each tick is a damage instance |
 | Damage Curve | Cumulative damage over the damage phase |
 | Damage Instance | Single hit with a timestamp and a damage value; the explosion of One Thousand Voices is a separate, delayed damage instance |
 | Damage Phase | Time span in seconds in which the simulator sums up damage (community: DPS phase) |
@@ -75,12 +79,14 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Empowering Buff | Effect on the player that increases the damage dealt, e.g. Well of Radiance or Radiant |
 | Engine | Simulator plus optimizer; contains only pure functions |
 | Fireteam Support | Empowering buff or debuff that another fireteam member provides |
+| Ignition | Solar explosion when a target reaches enough scorch stacks; a separate damage instance |
 | Intrinsic | Fixed exotic perk of a weapon, including its catalyst effect |
 | Manual Mode | App mode in which the user sets one build and runs the simulator once |
 | Multiplier | Factor by which an effect changes damage, e.g. 1.25 |
 | Optimizer | App mode that runs the simulator for all builds and ranks the best builds |
 | Reload | Refilling the magazine after its last shot; takes the reload time of the weapon |
 | Rotation | Sequence of shots, reloads and buff activations in the damage phase |
+| Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |
 | Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |
 | Simulator | Part of the engine that computes one build over the damage phase |
 | Surge | Armor mod effect that increases weapon damage of one damage type; forms its own bucket |
@@ -88,18 +94,17 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 
 ## Risiken und offene Fragen
 
-Das größte Risiko ist die Forderung nach absoluten Zahlen. Eine stimmige Rangfolge ist deutlich leichter zu erreichen.
+Das größte Risiko ist die Abhängigkeit von Community-Daten. Wir messen nicht selbst und übernehmen Fehler und Lücken der Quellen.
 
 | Risiko | Folge | Gegenmaßnahme |
 | --- | --- | --- |
-| Absolute Zahlen hängen von Boss DR und Level-Differenz ab | Abweichungen gegenüber dem Spiel | Diese Faktoren als eigene Datenwerte führen; erst gegen Schießstand-Dummies prüfen, dann gegen Bosse |
-| Strahl und Explosion von One Thousand Voices sind schlecht dokumentiert | Falscher Grundschaden | Beide Damage Instances am Schießstand einzeln messen |
-| Animations- und Ladezeiten fehlen in den Quellen | Falsche Rotation | Zeiten framegenau aus Videos ermitteln |
+| Eine Community-Tabelle ändert ihren Aufbau | Der automatische Import liefert falsche oder keine Werte | Zod prüft jede importierte Data File; Tests schlagen fehl, statt falsche Zahlen zu veröffentlichen |
+| Eine Community-Tabelle wird nicht mehr gepflegt | Werte veralten nach Sandbox-Änderungen | Jede Weapon trägt eine gameVersion; Quelle und Abrufdatum stehen im `source`-Objekt |
+| Quellen messen unter verschiedenen Bedingungen | Werte aus verschiedenen Quellen sind nicht vergleichbar | Pro Wertart eine Hauptquelle; Messbedingungen in docs/data-sources.md festhalten |
 | Großer Gesamtumfang | Projekt bleibt unfertig | Streng nach Releaseplan arbeiten; Should- und Could-Stories erst nach dem MVP |
 
 **Offene Fragen:**
 
-- [ ] Welche Schadenswerte haben Beam, Explosion und Taken Seeker? (Messplan in docs/data-sources.md)
+- [ ] Was bedeuten die Spalten der Aegis-Tabelle genau (Base, peak Rate, TtE, Distribution)?
 - [ ] Welche Boss-Typen und Damage Phases sollen als Schnellwahl erscheinen?
 - [ ] Welcher Fireteam Support ist für die erste Version relevant?
-- [ ] Wie messen wir Referenzwerte am Schießstand, damit sie reproduzierbar sind?

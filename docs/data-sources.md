@@ -1,43 +1,47 @@
-# Datenlage One Thousand Voices
+# Datenquellen
 
 Stand: 2026-10-18 · Spielversion: 9.7.0.5
 
-## Ergebnis
+Die Spielwerte kommen aus frei zugänglichen Community-Quellen (ADR 0005). Eigene Messungen sind nur Stichproben.
 
-Die Struktur der Waffe ist gut dokumentiert. Die Schadenswerte fehlen fast vollständig.
-Wir müssen Beam, Explosion und Taken Seeker selbst messen.
+## Hauptquellen
 
-## Bekannte Werte
+Alle Quellen sind über [destiny2.science](https://www.destiny2.science/) verlinkt. Die Google Sheets lassen sich pro Reiter als CSV herunterladen.
 
-| Wert | Wert in Data File | Status | Quelle |
+| Wertart | Quelle | Stand | Inhalt |
 | --- | --- | --- | --- |
-| Magazine | 4 | verified | [light.gg](https://www.light.gg/db/items/2069224589/one-thousand-voices/) |
-| Charge Time | 1000 (Annahme: ms) | unverified | [light.gg](https://www.light.gg/db/items/2069224589/one-thousand-voices/) |
-| Reload Time | 2,47 s | unverified (2022) | [gamersdecide.com](https://www.gamersdecide.com/articles/destiny-2-best-gambit-weapons) |
-| Explosion Delay | 0,75 s | unverified | [destinygamewiki](https://d2.destinygamewiki.com/wiki/Unforeseen_Repercussions) |
-| Taken Seeker | 22 Ticks, alle 0,25 s, max. 5 pro Ziel | verified | Clarity via [light.gg](https://www.light.gg/db/items/2069224589/one-thousand-voices/) |
-| Katalysator | +30 Stability, +20 Ammo Generation | verified | Clarity via [light.gg](https://www.light.gg/db/items/2069224589/one-thousand-voices/) |
-| Blight-Bonus | +100 % Tick-Schaden auf Blighted Targets (Witherhoard) | verified | Clarity via [light.gg](https://www.light.gg/db/items/2069224589/one-thousand-voices/) |
-| Reserves | fehlt | missing | – |
-| Strahldauer | nicht im Schema | missing | – |
-| Schaden Beam, Explosion, Seeker | fehlt | missing | – |
+| Waffenschaden, Shots, Zeiten | [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage) | Changelog 2026-10-12; One Thousand Voices getestet auf 9.7.0.3 | Reiter „Weapons“: Grundschaden pro Shot, Multiplier, Shots gesamt, Zeit bis leer |
+| Buffs, Debuffs, Stacking | [Destiny Data Compendium](https://destiny2.science/data-compendium) | noch nicht geprüft | Werte für Perks, Mods, Subklassen, Spielmechaniken |
+| Weitere Waffen (Reserve) | [Quantum Damage-ics](https://destiny2.science/quantum-damage-ics) | 9.7.0.1 | Normierte Schadenswerte vieler Waffen |
+
+## One Thousand Voices bei Aegis
+
+Abgerufen am 2026-10-18. Die Werte sind noch nicht in der Data File.
+
+| Wert | Aegis |
+| --- | --- |
+| Grundschaden pro Shot (Durchschnitt) | 2459 |
+| mit Ember of Ashes / mit Katalysator / beides | 2885 / 3372 / 3765 |
+| Einzelwerte | 639 pro Shot, 50 Impact, 2814 Ignition; Katalysator: 25 pro Seeker-Tick (50 auf Blighted Targets), 192 Missile |
+| Shots gesamt | 11 |
+| Charge Time | 1000 ms |
+| peak Rate / TtE | 1,733 / 18,33 s |
+| Multiplier (Spalten Surge, Buff, Debuff, 200) | 1,22 / 1,35 / 1,30 / 1,10 |
+
+**Offen:** Die genaue Bedeutung von „Base“, „peak Rate“, „TtE“ und „Distribution“ ist noch nicht geklärt. Die Tabelle verlinkt dazu ein Erklärvideo („How does this spreadsheet work?“).
 
 ## Wichtige Erkenntnisse
 
 - **Name:** Die Waffe heißt „One Thousand Voices", Community-Kurzform „1K Voices".
-- **Katalysator:** Der Katalysator kam mit Monument of Triumph (9.7.0) ins Spiel. Er ist Teil des Buffs, den die Community der Waffe zuschreibt. Ein Community-Test zeigt etwa 40 % mehr Total Damage mit Katalysator ([blueberries.gg](https://www.blueberries.gg/weapons/one-thousand-voices-exotic-catalyst/)).
-- **Schießstand:** Seit 9.7.0 hat der Schießstand statische Ziele, die Schaden wie ein Boss skalieren. Die Ziele haben eine DPS-Anzeige und ein rotes (base) und gelbes (precision) Ziel ([Patch Notes 9.7.0](https://shatteredvault.com/destiny-2-update-9-7-0/)). Diese Ziele sind unsere wichtigste Messquelle.
-- **Spielstand nicht vollständig eingefroren:** Bungie liefert weiter Wartungs-Patches. Patch 9.7.0.5 vom 7. Oktober 2026 betraf nur Exploits ([Patch Notes 9.7.0.5](https://shatteredvault.com/destiny-2-update-9-7-0-5/)). Deshalb trägt jede Weapon das Feld `gameVersion`.
+- **Damage Instances:** Ein Shot erzeugt Beam, Explosion und Burn (Scorch-Ticks). Hat das Ziel genug Scorch Stacks, folgt eine Ignition. Mit Katalysator kommen Taken Seeker dazu.
+- **Katalysator:** Der Katalysator kam mit Monument of Triumph (9.7.0) ins Spiel. Ein Community-Test zeigt etwa 40 % mehr Total Damage mit Katalysator ([blueberries.gg](https://www.blueberries.gg/weapons/one-thousand-voices-exotic-catalyst/)).
+- **Schießstand:** Seit 9.7.0 hat der Schießstand statische Ziele, die Schaden wie ein Boss skalieren ([Patch Notes 9.7.0](https://shatteredvault.com/destiny-2-update-9-7-0/)).
+- **Spielstand nicht vollständig eingefroren:** Bungie liefert weiter Wartungs-Patches, zuletzt 9.7.0.5 am 7. Oktober 2026 ([Patch Notes 9.7.0.5](https://shatteredvault.com/destiny-2-update-9-7-0-5/)). Deshalb trägt jede Weapon das Feld `gameVersion`.
 
-## Messplan am Schießstand
+## Messprotokoll (Stichproben)
 
-Miss jeden Wert dreimal. Notiere Spielversion und Datum.
+| Datum | Spielversion | Bedingungen | Ergebnis |
+| --- | --- | --- | --- |
+| 2026-10-18 | nicht notiert | Schießstand, Dummy „Carl“; kein Artefakt, keine Aspects und Fragments, kein Surge; Weapons-Stat 130 (+2,9 % Heavy-Schaden PvE); Katalysator-Status nicht notiert | Ein Shot: 1408 Total Damage. Beam-Tick 10, Explosion-Tick 129, Burn-Tick 16. Ein Magazin: 6263 Total Damage, DPS-Anzeige 887. |
 
-1. **Beam:** Ein Schuss ohne Buffs auf das rote Ziel. Notiere jede einzelne Schadenszahl des Strahls.
-2. **Explosion:** Gleicher Schuss. Notiere die Schadenszahl der Explosion getrennt.
-3. **Precision:** Wiederhole Schritt 1 und 2 auf dem gelben Ziel.
-4. **Taken Seeker:** Mit Katalysator. Notiere die Schadenszahl eines Ticks.
-5. **Reserves:** Lies die maximale Reserve ohne Mods ab.
-6. **Zeiten:** Nimm ein Video mit 60 FPS auf. Miss Charge Time, Strahldauer, Zeit bis zur Explosion und Reload Time framegenau.
-   Die Strahldauer ist die Zeit vom ersten bis zum letzten Beam-Treffer eines Shots. Der Simulator rechnet bis zur Messung ohne sie.
-7. **Magazine Dump:** Leere ein Magazin ohne Buffs. Notiere den Wert der DPS-Anzeige als ersten Referenzwert.
+Die Stichprobe liegt etwa um den Faktor 1,6 unter Aegis. Das ist nach ADR 0005 akzeptiert, weil nur relative Unterschiede zählen.
