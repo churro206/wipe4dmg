@@ -239,7 +239,7 @@ export function BreakdownChart({
             type="number"
             tickFormatter={(d: number) => integer.format(d)}
           />
-          <YAxis {...axisProps} type="category" dataKey="name" width={120} />
+          <YAxis {...axisProps} type="category" dataKey="name" width={136} />
           <Tooltip
             {...tooltipProps}
             cursor={{ fill: "var(--grid)" }}
