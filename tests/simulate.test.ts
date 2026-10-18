@@ -7,6 +7,8 @@ import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
 
 const weapon = loadWeapon(raw);
+// Without intrinsic parts (scorch, ignition): these tests check the damage of the shots only.
+const shotsOnly = { ...weapon, intrinsicParts: [] };
 // Expected values come from the data files, so the tests contain no game values.
 const chargeTimeMs = weapon.chargeTimeMs.value!;
 const shotIntervalMs = 60_000 / weapon.fireRateRpm.value!;
@@ -78,7 +80,7 @@ describe("simulate: shots", () => {
 
 describe("simulate: damage", () => {
   it("creates the damage instances of each shot at the shot time plus delay", () => {
-    const withDelay = structuredClone(weapon);
+    const withDelay = structuredClone(shotsOnly);
     withDelay.damageInstances[0].delayMs.value = 500;
     const { shots, damageInstances } = simulate(
       withDelay,
@@ -94,7 +96,7 @@ describe("simulate: damage", () => {
   });
 
   it("creates one damage instance per tick", () => {
-    const withTicks = structuredClone(weapon);
+    const withTicks = structuredClone(shotsOnly);
     withTicks.damageInstances[0].ticks.value = 3;
     withTicks.damageInstances[0].tickIntervalMs.value = 250;
     const { shots, damageInstances } = simulate(
@@ -110,7 +112,7 @@ describe("simulate: damage", () => {
   });
 
   it("counts a shot whose delayed damage falls after the damage phase, but not its damage", () => {
-    const withDelay = structuredClone(weapon);
+    const withDelay = structuredClone(shotsOnly);
     withDelay.damageInstances[0].delayMs.value = 500;
     const result = simulate(withDelay, chargeTimeMs / 1000);
     expect(result.shots).toHaveLength(1);
@@ -139,11 +141,11 @@ describe("simulate: damage", () => {
 describe("simulate: reference values", () => {
   const referenceValues = ReferenceValue.array().parse(rawReferenceValues);
 
-  it("matches the Quantum Damage-ics total damage without effects", () => {
+  it("matches the Quantum Damage-ics total damage without effects and ignitions", () => {
     const reference = referenceValues.find(
       (r) => r.id === "quantum-no-effects",
     )!;
-    const { totalDamage } = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS);
+    const { totalDamage } = simulate(shotsOnly, LONG_DAMAGE_PHASE_SECONDS);
     expect(totalDamage).toBeGreaterThanOrEqual(reference.totalDamageMin);
     expect(totalDamage).toBeLessThanOrEqual(reference.totalDamageMax);
   });

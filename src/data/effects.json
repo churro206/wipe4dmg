@@ -357,5 +357,26 @@
         "weaponTypes": ["fusionRifle", "linearFusionRifle"]
       }
     ]
+  },
+  {
+    "id": "ember-of-ashes",
+    "name": "Ember of Ashes",
+    "category": "subclass",
+    "parts": [
+      {
+        "type": "counterModifier",
+        "counterId": "scorch",
+        "factor": {
+          "value": 1.5,
+          "source": {
+            "name": "Destiny Data Compendium, Solar (Ember of Ashes)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-18",
+            "status": "verified",
+            "note": "Scorch stacks inflicted are increased by 50%, rounded up. Some sources are exceptions; One Thousand Voices lists x10+5."
+          }
+        }
+      }
+    ]
   }
 ]

@@ -85,6 +85,41 @@ export const WeaponType = z.enum([
 ]);
 export type WeaponType = z.infer<typeof WeaponType>;
 
+/** Counters on the target or the player (ADR 0006). */
+export const CounterId = z.enum(["scorch"]);
+export type CounterId = z.infer<typeof CounterId>;
+
+/** Part that adds stacks to a counter, here a number of applications after each shot (ADR 0006). */
+export const CounterPart = z.object({
+  type: z.literal("counter"),
+  counterId: CounterId,
+  trigger: z.literal("shot"),
+  stacks: SourcedNumber, // stacks per application
+  applicationsPerTrigger: SourcedNumber,
+  firstDelayMs: SourcedNumber, // from the shot to the first application
+  intervalMs: SourcedNumber, // between two applications
+});
+export type CounterPart = z.infer<typeof CounterPart>;
+
+/** Part that creates a damage instance when a counter reaches a threshold, then resets it (ADR 0006). */
+export const ThresholdPart = z.object({
+  type: z.literal("threshold"),
+  counterId: CounterId,
+  threshold: SourcedNumber,
+  cooldownMs: SourcedNumber, // after the threshold no stacks can be applied
+  damageInstanceId: z.string(), // e.g. "ignition"
+  damage: SourcedNumber,
+  element: Element,
+});
+export type ThresholdPart = z.infer<typeof ThresholdPart>;
+
+/** Fixed parts of a weapon that work without any selected effect, e.g. scorch from explosions. */
+export const IntrinsicPart = z.discriminatedUnion("type", [
+  CounterPart,
+  ThresholdPart,
+]);
+export type IntrinsicPart = z.infer<typeof IntrinsicPart>;
+
 export const Weapon = z.object({
   id: z.string(),
   name: z.string(),
@@ -99,6 +134,7 @@ export const Weapon = z.object({
   totalShots: SourcedNumber, // magazine plus reserves
   reloadTimeMs: SourcedNumber, // extra time after the last shot of a magazine, on top of the shot interval
   damageInstances: z.array(DamageInstance).min(1),
+  intrinsicParts: z.array(IntrinsicPart),
   intrinsics: z.array(
     z.object({
       id: z.string(),
@@ -125,6 +161,14 @@ export const MultiplierPart = z.object({
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 
+/** Effect part that scales the stacks of every application to a counter, rounded up. */
+export const CounterModifierPart = z.object({
+  type: z.literal("counterModifier"),
+  counterId: CounterId,
+  factor: SourcedNumber, // e.g. 1.5 for +50%
+});
+export type CounterModifierPart = z.infer<typeof CounterModifierPart>;
+
 /** Effect part that changes the shot plan instead of damage (ADR 0006). */
 export const TimingPart = z.object({
   type: z.literal("timing"),
@@ -137,6 +181,7 @@ export type TimingPart = z.infer<typeof TimingPart>;
 export const EffectPart = z.discriminatedUnion("type", [
   MultiplierPart,
   TimingPart,
+  CounterModifierPart,
 ]);
 export type EffectPart = z.infer<typeof EffectPart>;
 

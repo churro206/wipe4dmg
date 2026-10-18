@@ -7,7 +7,8 @@ import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
 
-const weapon = loadWeapon(raw);
+// Without intrinsic parts (scorch, ignition): totals compare the damage of the shots only.
+const weapon = { ...loadWeapon(raw), intrinsicParts: [] };
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const byId = (id: string) => effects.find((e) => e.id === id)!;

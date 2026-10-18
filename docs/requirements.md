@@ -26,7 +26,7 @@ Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in 
 | Gegner und Modus | Nur Bosse, nur PvE. Effekte, die nur gegen andere Gegner oder nur in PvP wirken, nehmen wir nicht auf. |
 | Schadensquellen | Waffen, Fähigkeiten und Supers des Spielers zählen zum Total Damage. |
 | Fireteam Support | Nur Buffs und Debuffs von Mitspielern, nicht ihr eigener Schaden. |
-| Laufzeit von Effects | In v0.5 ist jeder gewählte Effect die ganze Damage Phase aktiv. Laufzeiten kommen mit der Rotation (US-07). |
+| Laufzeit von Effects | In v0.5 ist jeder gewählte Effect die ganze Damage Phase aktiv. Laufzeiten kommen in Stufen: Dauer und Startzeitpunkt mit der Rotation (US-07), Auslöser und Cooldowns danach (ADR 0006). |
 | Effekte | Die Grundlage ist die Waffe ohne Effekte. Jeder Effekt ist einzeln schaltbar, damit man seinen Beitrag sieht. Das gilt auch für Effekte, die den Ablauf ändern, z. B. Particle Reconstruction (keine Reloads). |
 | Programmiererfahrung | Grundlagen; Claude erklärt jede Änderung |
 | Zeitbudget | Mehr als 10 Stunden pro Woche |

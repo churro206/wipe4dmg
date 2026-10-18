@@ -94,9 +94,9 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| [Scorch und Burn](scorch-and-ignition.md) | Threshold Trigger, Damage over Time | Stacks am Ziel; Burn-Tick alle 0,56 s, Schaden steigt mit den Stacks; bei 100 Stacks folgt eine Ignition, alle Stacks verfallen | hoch (One Thousand Voices) | Compendium „Solar“ | ausgearbeitet |
-| [Ignition](scorch-and-ignition.md) | Threshold Trigger | Solar-Explosion als eigene Damage Instance; mit bestimmten Fragments setzt sie Scorch bei Gegnern in der Nähe (Details offen) | hoch (One Thousand Voices) | Compendium; Quantum; Aegis | ausgearbeitet |
-| Ember of Ashes | Multiplier für Stacks | Scorch-Stacks +50 %, aufgerundet; Ausnahmen bei einigen Quellen | hoch (One Thousand Voices) | Compendium „Solar“; Aegis | katalogisiert |
+| [Scorch und Burn](scorch-and-ignition.md) | Threshold Trigger, Damage over Time | Stacks am Ziel; Burn-Tick alle 0,56 s, Schaden steigt mit den Stacks; bei 100 Stacks folgt eine Ignition, alle Stacks verfallen | hoch (One Thousand Voices) | Compendium „Solar“ | im Simulator (ohne Burn) |
+| [Ignition](scorch-and-ignition.md) | Threshold Trigger | Solar-Explosion als eigene Damage Instance; mit bestimmten Fragments setzt sie Scorch bei Gegnern in der Nähe (Details offen) | hoch (One Thousand Voices) | Compendium; Quantum; Aegis | im Simulator |
+| Ember of Ashes | Multiplier für Stacks | Scorch-Stacks +50 %, aufgerundet; Ausnahmen bei einigen Quellen | hoch (One Thousand Voices) | Compendium „Solar“; Aegis | im Simulator |
 | Dawn Chorus | Amplification | Erhöht Ignition-Schaden | mittel | Compendium; Aegis | katalogisiert |
 | Radiant | Multiplier (Empowering Buff) | 20 % Waffenschaden | hoch | Court | katalogisiert |
 | Restoration, Cure | – | Heilung, kein Schaden | niedrig | Compendium „Solar“ | katalogisiert |

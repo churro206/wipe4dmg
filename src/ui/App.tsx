@@ -41,7 +41,9 @@ function App() {
       ) : (
         <p className="result">Gib eine Damage Phase in Sekunden ein.</p>
       )}
-      <p className="note">Ohne Effekte und ohne Ignition.</p>
+      <p className="note">
+        Ohne Effekte. Ignitions sind enthalten, Burn-Schaden noch nicht.
+      </p>
     </main>
   );
 }

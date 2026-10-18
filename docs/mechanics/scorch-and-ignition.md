@@ -51,12 +51,13 @@ Mit Ember of Ashes bringt ein Shot 135 Stacks. Dann löst jeder Shot eine Igniti
 
 ## Modell im Simulator
 
-Noch nicht abgebildet. Vorschlag:
+Abgebildet seit v0.5 Schritt 4:
 
-- Zustand am Ziel: Scorch-Stacks und das Ende des Cooldowns.
-- Jede Explosion fügt Stacks hinzu. Bei 100 entsteht eine Damage Instance „ignition“, und der Cooldown beginnt.
-- Die heutige Damage Instance „shot“ (Quantum 2180, ohne Ignition) bleibt. Ignitions kommen als eigene Damage Instances dazu.
-- Burn bilden wir erst ab, wenn die Werte geklärt sind (siehe offene Fragen).
+- One Thousand Voices hat in `intrinsicParts` einen `counter`-Teil (9 Anwendungen à x10 Scorch, ab 0,7 s nach dem Shot) und einen `threshold`-Teil (bei 100 eine Ignition mit 890 Schaden, danach 1,6 s Cooldown).
+- Ember of Ashes ist ein Effect mit einem `counterModifier`-Teil (×1,5, aufgerundet).
+- Ignitions sind Waffenschaden: Waffen-Buffs wirken auf sie.
+- Nicht abgebildet: Burn-Schaden und der Verfall von Stacks.
+- Ergebnis ohne Effects: 5 Ignitions in 11 Shots, 28 430 Total Damage, genau wie Quantum. Mit Ember of Ashes: 8 Ignitions, 31 100 (+9,4 %).
 
 ## Offene Fragen
 
@@ -64,6 +65,9 @@ Noch nicht abgebildet. Vorschlag:
 - [ ] Verfallen Scorch-Stacks mit der Zeit? Unbestätigt: Laut einem Build-Beitrag (devtrackers.gg) halten Stacks etwa 4 s und verlieren dann 10 Stacks pro Sekunde. Ein Reddit-Test (Oktober 2026) meldet, dass die Dauer von der Schwierigkeit abhängt (Normal 14 Ticks, Master 9 Ticks), vermutlich ein Bug. Für One Thousand Voices spielt der Verfall kaum eine Rolle, weil alle 1,8 s neue Stacks kommen.
 - [ ] Die Stichprobe ergab Burn-Ticks von 16. Das passt nicht zur Skala des Compendiums: Explosion 129 im Spiel gegenüber 281 im Compendium, also Faktor 0,46.
 - [ ] Schaden pro Shot ohne Ignition: Compendium 10 × 22 + 9 × 281 = 2749, Quantum 2180, Aegis etwa 2054 (2459 minus 5/11 × 890 für Ignitions). Die Quellen treffen verschiedene Annahmen: Ziel, Power-Differenz, ob alle 9 Explosionen treffen. Quantum und Aegis liegen etwa 6 % auseinander. Weil nur relative Unterschiede zählen, rechnen wir mit einer Hauptquelle (Quantum) und vergleichen Faktoren statt absoluter Zahlen.
+
+- [ ] Aegis zeigt mit Ember of Ashes etwa +17 % pro Shot, unser Modell +9,4 %. Mögliche Gründe: Ember erhöht auch den Burn-Schaden, den wir noch nicht abbilden; Aegis rechnet mit Particle Reconstruction und 1,733 s Shot-Abstand.
+- [ ] Wirkt der Debuff von Particle Reconstruction auch auf Ignitions? Unser Modell sagt ja, weil die Ignition als Fusion-Rifle-Schaden zählt. Unbestätigt.
 
 ## Quellen
 
