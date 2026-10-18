@@ -5,6 +5,7 @@ import type {
   EffectPart,
   GuardianClass,
   ProviderKind,
+  Subclass,
 } from "../data/schema";
 import {
   compareResults,
@@ -14,6 +15,7 @@ import {
 } from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
 import { effectWindows } from "../engine/effectWindows";
+import { optimize, type OptimizerEntry } from "../engine/optimizer";
 import { effectsFor } from "../engine/providers";
 import { simulate } from "../engine/simulate";
 import {
@@ -22,8 +24,9 @@ import {
   describeBuild,
   effectsOf,
   linkFor,
-  selectionsForClass,
+  selectionsFor,
   stateFromLink,
+  SUBCLASS_LABELS,
   toggleSelection,
   windowsFor,
   type WindowInput,
@@ -34,6 +37,7 @@ import {
   DamageCurveChart,
   DamageShareChart,
   DpsByLengthChart,
+  RankingChart,
   RotationTimeline,
 } from "./Charts";
 import { activities, bosses, buckets, effects, weapon } from "./data";
@@ -63,6 +67,9 @@ const COMPARISON_LABELS = {
   ignitions: "Ignitions",
 } as const;
 
+// Number of builds the optimizer shows (US-08).
+const OPTIMIZER_LIMIT = 15;
+
 // Range of the DPS chart; it grows if the chosen damage phase is longer.
 const DPS_CHART_MIN_SECONDS = 120;
 
@@ -91,6 +98,12 @@ function App() {
   const [input, setInput] = useState(initial.input);
   const [bossId, setBossId] = useState("");
   const [guardianClass, setGuardianClass] = useState(initial.guardianClass);
+  const [subclass, setSubclass] = useState(initial.subclass);
+  const [optimizer, setOptimizer] = useState<{
+    forKey: string;
+    entries: OptimizerEntry[];
+  } | null>(null);
+  const [optimizing, setOptimizing] = useState(false);
   const [selections, setSelections] = useState(initial.selections);
   const [catalyst, setCatalyst] = useState(initial.catalyst);
   const [windowInputs, setWindowInputs] = useState(initial.windowInputs);
@@ -120,6 +133,7 @@ function App() {
   const currentBuild: Build = {
     weaponId: weapon.id,
     guardianClass,
+    subclass,
     catalyst,
     selections,
     effectWindows: options.effectWindows,
@@ -174,7 +188,54 @@ function App() {
   };
   const changeClass = (next: GuardianClass) => {
     setGuardianClass(next);
-    setSelections((current) => selectionsForClass(current, next));
+    setSelections((current) => selectionsFor(current, next, subclass));
+  };
+  const changeSubclass = (next: Subclass) => {
+    setSubclass(next);
+    setSelections((current) => selectionsFor(current, guardianClass, next));
+  };
+
+  // Optimizer: own effects vary, fireteam support and its windows stay as set.
+  const fireteamSelections = selections.filter(
+    (s) => s.provider === "fireteamSupport",
+  );
+  const fixedWindows = windowsFor(effectsOf(fireteamSelections), windowInputs);
+  // The ranking depends only on these inputs, not on the own effects.
+  const optimizerKey = JSON.stringify({
+    guardianClass,
+    fireteamSelections,
+    fixedWindows,
+    catalyst,
+    damagePhaseSeconds,
+  });
+  const runOptimizer = () => {
+    setOptimizing(true);
+    // Let the browser show the busy state before the calculation blocks it.
+    setTimeout(() => {
+      const entries = optimize({
+        weapon,
+        buckets,
+        effects,
+        guardianClass,
+        fixedSelections: fireteamSelections,
+        fixedWindows,
+        catalyst,
+        damagePhaseSeconds,
+        limit: OPTIMIZER_LIMIT,
+      });
+      setOptimizer({ forKey: optimizerKey, entries });
+      setOptimizing(false);
+    });
+  };
+  const buildOf = (entry: OptimizerEntry): Build => ({
+    ...currentBuild,
+    subclass: entry.subclass,
+    selections: entry.selections,
+    effectWindows: windowsFor(effectsOf(entry.selections), windowInputs),
+  });
+  const applyEntry = (entry: OptimizerEntry) => {
+    setSubclass(entry.subclass);
+    setSelections(entry.selections);
   };
   const setWindow = (effect: Effect, patch: Partial<WindowInput>) =>
     setWindowInputs((inputs) => ({
@@ -253,6 +314,19 @@ function App() {
             ))}
           </select>
         </label>
+        <label>
+          Subklasse
+          <select
+            value={subclass}
+            onChange={(event) => changeSubclass(event.target.value as Subclass)}
+          >
+            {(Object.keys(SUBCLASS_LABELS) as Subclass[]).map((id) => (
+              <option key={id} value={id}>
+                {SUBCLASS_LABELS[id]}
+              </option>
+            ))}
+          </select>
+        </label>
         <fieldset>
           <legend>Waffe</legend>
           <label className="checkbox">
@@ -266,13 +340,18 @@ function App() {
           </label>
         </fieldset>
         {PROVIDER_GROUPS.map(({ provider, label }) => {
-          const available = effectsFor(effects, provider, guardianClass);
+          const available = effectsFor(
+            effects,
+            provider,
+            guardianClass,
+            subclass,
+          );
           if (available.length === 0) return null;
           return (
             <fieldset key={provider}>
               <legend>
                 {provider === "subclass"
-                  ? `${label} (${CLASS_LABELS[guardianClass]})`
+                  ? `${label} (${CLASS_LABELS[guardianClass]}, ${SUBCLASS_LABELS[subclass]})`
                   : label}
               </legend>
               {available.map((effect) => (
@@ -441,7 +520,7 @@ function App() {
             <RotationTimeline
               rows={windows.map((w) => ({
                 ...w,
-                label: selected.find((e) => e.id === w.effectId)!.name,
+                label: selected.find((e) => e.id === w.effectId)!.shortName,
               }))}
               shotsMs={result.shots.map((s) => s.timeMs)}
               ignitionsMs={result.damageInstances
@@ -453,6 +532,98 @@ function App() {
               points={dpsPoints}
               currentSeconds={damagePhaseSeconds}
             />
+
+            <h2>Optimizer</h2>
+            <div className="toolbar">
+              <button
+                type="button"
+                onClick={runOptimizer}
+                disabled={optimizing}
+              >
+                {optimizing ? "Rechnet …" : "Optimizer starten"}
+              </button>
+            </div>
+            <p className="note">
+              Probiert alle erlaubten Kombinationen deiner eigenen Effects für{" "}
+              {CLASS_LABELS[guardianClass]} in allen Subklassen. Fireteam
+              Support und seine Zeitfenster bleiben wie eingestellt, eigene
+              Effects laufen mit ihrer Standarddauer. Effects ohne Nutzen lässt
+              er weg.
+            </p>
+            {optimizer && optimizer.forKey !== optimizerKey && (
+              <p className="note">
+                Die Liste gilt für einen früheren Stand. Starte den Optimizer
+                neu.
+              </p>
+            )}
+            {optimizer && optimizer.entries.length > 0 && (
+              <>
+                <RankingChart
+                  entries={optimizer.entries.map((entry, i) => ({
+                    label: `#${i + 1}`,
+                    totalDamage: entry.totalDamage,
+                  }))}
+                  currentTotal={result.totalDamage}
+                />
+                <table className="ranking">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Subklasse und eigene Effects</th>
+                      <th>Total Damage</th>
+                      <th>zu aktuell</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {optimizer.entries.map((entry, i) => {
+                      const own = effectsOf(
+                        entry.selections.filter(
+                          (s) => s.provider !== "fireteamSupport",
+                        ),
+                      );
+                      const relative =
+                        result.totalDamage > 0
+                          ? entry.totalDamage / result.totalDamage - 1
+                          : null;
+                      return (
+                        <tr key={i}>
+                          <td>{i + 1}</td>
+                          <td>
+                            {SUBCLASS_LABELS[entry.subclass]}:{" "}
+                            {own.length > 0
+                              ? own.map((e) => e.shortName).join(" · ")
+                              : "keine eigenen Effects"}
+                          </td>
+                          <td>{integer.format(entry.totalDamage)}</td>
+                          <td>
+                            {relative === null
+                              ? "–"
+                              : signedPercent.format(relative)}
+                          </td>
+                          <td>
+                            <div className="row-actions">
+                              <button
+                                type="button"
+                                onClick={() => applyEntry(entry)}
+                              >
+                                Übernehmen
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => setComparison(buildOf(entry))}
+                              >
+                                Als Vergleich
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </>
+            )}
 
             <h2>Breakdown</h2>
             {entries.length === 0 ? (

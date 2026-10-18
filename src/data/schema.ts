@@ -209,6 +209,17 @@ export const EffectPart = z.discriminatedUnion("type", [
 export type EffectPart = z.infer<typeof EffectPart>;
 
 export const GuardianClass = z.enum(["titan", "hunter", "warlock"]);
+
+/** Subclass of a build: one element, or Prismatic. */
+export const Subclass = z.enum([
+  "arc",
+  "solar",
+  "void",
+  "stasis",
+  "strand",
+  "prismatic",
+]);
+export type Subclass = z.infer<typeof Subclass>;
 export type GuardianClass = z.infer<typeof GuardianClass>;
 
 /** Way a build gets an effect: itself (subclass, armor, artifact) or from a teammate. */
@@ -223,6 +234,7 @@ export type ProviderKind = z.infer<typeof ProviderKind>;
 export const Provider = z.object({
   kind: ProviderKind,
   classes: z.array(GuardianClass).optional(), // omitted: every class
+  subclasses: z.array(Subclass).optional(), // only for kind subclass; omitted: every subclass
 });
 export type Provider = z.infer<typeof Provider>;
 
@@ -234,6 +246,7 @@ export const Effect = z.object({
   id: z.string(),
   name: z.string(),
   code: z.number().int().positive(), // short code for build links; never reused
+  shortName: z.string(), // for tight spaces, e.g. the optimizer ranking
   providers: z.array(Provider).min(1),
   // A build provides at most one effect of a group itself, e.g. one surge level or one super.
   // Effects from teammates are not limited by groups.
@@ -282,6 +295,7 @@ export type ReferenceMultiplier = z.infer<typeof ReferenceMultiplier>;
 export const Build = z.object({
   weaponId: z.string(),
   guardianClass: GuardianClass,
+  subclass: Subclass,
   catalyst: z.boolean(),
   // Selected effects with their provider; the same effect may come from two providers.
   selections: z.array(

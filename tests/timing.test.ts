@@ -29,6 +29,7 @@ const noReloadFor = (weaponType: "rocketLauncher"): Effect => ({
   id: "test-no-reload",
   name: "test",
   code: 9001,
+  shortName: "test",
   providers: [{ kind: "artifact" }],
   parts: [
     {

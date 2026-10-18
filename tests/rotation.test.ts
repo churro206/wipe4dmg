@@ -32,6 +32,7 @@ function testEffect(
     id,
     name: id,
     code: 9001,
+    shortName: "test",
     providers: [{ kind: "subclass" }],
     parts: [
       {

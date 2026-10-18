@@ -20,6 +20,7 @@ const registry: LinkRegistry = {
 const build: Build = {
   weaponId: "one-thousand-voices",
   guardianClass: "warlock",
+  subclass: "solar",
   catalyst: true,
   damagePhaseSeconds: 72,
   selections: [
@@ -116,6 +117,14 @@ describe("encodeLink and decodeLink", () => {
     const arbitraryBuild = fc
       .record({
         guardianClass: fc.constantFrom("titan", "hunter", "warlock"),
+        subclass: fc.constantFrom(
+          "arc",
+          "solar",
+          "void",
+          "stasis",
+          "strand",
+          "prismatic",
+        ),
         catalyst: fc.boolean(),
         damagePhaseMs: fc.integer({ min: 0, max: 600_000 }),
         picks: fc.uniqueArray(

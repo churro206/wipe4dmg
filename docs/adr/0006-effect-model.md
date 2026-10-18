@@ -37,7 +37,9 @@ Das heutige Effect-Schema kennt nur einen Multiplier mit Bucket und Dauer. Die A
 - Ein Effect hat eine Liste von Anbietern (`providers`): eigene Subklasse, Rüstung, Artefakt oder Fireteam Support. Ein Anbieter kann auf Klassen beschränkt sein, z. B. Well of Radiance als eigene Subklasse nur für Warlock, als Fireteam Support für alle.
 - Ein Build wählt Effects zusammen mit ihrem Anbieter. Für die Engine zählt jeder Effect einmal; im Bucket gilt ohnehin die Stacking-Regel.
 - Eine Ausschlussgruppe (`exclusiveGroup`) begrenzt eigene Effects auf einen pro Gruppe, z. B. ein Super oder eine Surge-Stufe. Effects von Mitspielern sind nicht begrenzt.
-- Offen: Subklassen-Elemente. Eigene Effects verschiedener Elemente (z. B. Weaken über Void und Well of Radiance über Solar) lassen sich heute noch kombinieren.
+- Ein Anbieter „Subklasse“ kann auf Subklassen beschränkt sein (`subclasses`), z. B. Well of Radiance nur Solar, Tether nur Void, Radiant Solar und Prismatic (Quelle: Compendium, Reiter je Element). Ein Build hat genau eine Subklasse.
+- Der Optimizer (US-08) probiert für die gewählte Klasse alle Subklassen und alle erlaubten Kombinationen eigener Effects. Fireteam Support und seine Zeitfenster bleiben fest, eigene Effects laufen mit ihrer Standarddauer. Builds mit eigenen Effects ohne Nutzen fallen weg.
+- Noch nicht abgebildet: Plätze für Aspects und Fragments sowie Exotic-Rüstung (eines pro Build).
 
 ## Laufzeit von Effects (Ergänzung 2026-10-18)
 

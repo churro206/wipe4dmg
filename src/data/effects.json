@@ -3,10 +3,12 @@
     "id": "well-of-radiance",
     "code": 1,
     "name": "Well of Radiance (standing inside)",
+    "shortName": "Well",
     "providers": [
       {
         "kind": "subclass",
-        "classes": ["warlock"]
+        "classes": ["warlock"],
+        "subclasses": ["solar"]
       },
       {
         "kind": "fireteamSupport"
@@ -44,6 +46,7 @@
     "id": "empowering-rift",
     "code": 2,
     "name": "Empowering Rift",
+    "shortName": "Rift",
     "providers": [
       {
         "kind": "subclass",
@@ -83,9 +86,11 @@
     "id": "radiant",
     "code": 3,
     "name": "Radiant",
+    "shortName": "Radiant",
     "providers": [
       {
-        "kind": "subclass"
+        "kind": "subclass",
+        "subclasses": ["solar", "prismatic"]
       },
       {
         "kind": "fireteamSupport"
@@ -112,10 +117,12 @@
     "id": "banner-shield",
     "code": 4,
     "name": "Banner Shield (Weapons of Light)",
+    "shortName": "Banner",
     "providers": [
       {
         "kind": "subclass",
-        "classes": ["titan"]
+        "classes": ["titan"],
+        "subclasses": ["void"]
       },
       {
         "kind": "fireteamSupport"
@@ -143,6 +150,7 @@
     "id": "lumina-noble-rounds",
     "code": 5,
     "name": "Lumina (Blessing of the Sky)",
+    "shortName": "Lumina",
     "providers": [
       {
         "kind": "fireteamSupport"
@@ -179,9 +187,11 @@
     "id": "weaken",
     "code": 6,
     "name": "Weaken",
+    "shortName": "Weaken",
     "providers": [
       {
-        "kind": "subclass"
+        "kind": "subclass",
+        "subclasses": ["void", "prismatic"]
       },
       {
         "kind": "fireteamSupport"
@@ -208,6 +218,7 @@
     "id": "divinity",
     "code": 7,
     "name": "Divinity",
+    "shortName": "Divinity",
     "providers": [
       {
         "kind": "fireteamSupport"
@@ -236,6 +247,7 @@
     "id": "tractor-cannon",
     "code": 8,
     "name": "Tractor Cannon",
+    "shortName": "Tractor",
     "providers": [
       {
         "kind": "fireteamSupport"
@@ -272,10 +284,12 @@
     "id": "moebius-tether",
     "code": 9,
     "name": "Moebius Tether",
+    "shortName": "Moebius",
     "providers": [
       {
         "kind": "subclass",
-        "classes": ["hunter"]
+        "classes": ["hunter"],
+        "subclasses": ["void"]
       },
       {
         "kind": "fireteamSupport"
@@ -303,10 +317,12 @@
     "id": "deadfall-tether",
     "code": 10,
     "name": "Deadfall Tether",
+    "shortName": "Deadfall",
     "providers": [
       {
         "kind": "subclass",
-        "classes": ["hunter"]
+        "classes": ["hunter"],
+        "subclasses": ["void"]
       },
       {
         "kind": "fireteamSupport"
@@ -334,6 +350,7 @@
     "id": "solar-surge-2x",
     "code": 11,
     "name": "Solar Surge 2x",
+    "shortName": "Surge 2x",
     "providers": [
       {
         "kind": "armor"
@@ -362,6 +379,7 @@
     "id": "solar-surge-3x",
     "code": 12,
     "name": "Solar Surge 3x",
+    "shortName": "Surge 3x",
     "providers": [
       {
         "kind": "armor"
@@ -391,6 +409,7 @@
     "id": "solar-surge-4x",
     "code": 13,
     "name": "Solar Surge 4x",
+    "shortName": "Surge 4x",
     "providers": [
       {
         "kind": "armor"
@@ -419,6 +438,7 @@
     "id": "weapons-stat-200",
     "code": 14,
     "name": "Weapons stat 200 (power weapons against bosses)",
+    "shortName": "Weapons 200",
     "providers": [
       {
         "kind": "armor"
@@ -446,6 +466,7 @@
     "id": "elemental-overdrive-solar",
     "code": 15,
     "name": "Elemental Overdrive (solar pickup)",
+    "shortName": "Overdrive",
     "providers": [
       {
         "kind": "artifact"
@@ -483,6 +504,7 @@
     "id": "particle-reconstruction",
     "code": 16,
     "name": "Particle Reconstruction",
+    "shortName": "Particle Rec.",
     "providers": [
       {
         "kind": "artifact"
@@ -523,9 +545,11 @@
     "id": "ember-of-ashes",
     "code": 17,
     "name": "Ember of Ashes",
+    "shortName": "Ember",
     "providers": [
       {
-        "kind": "subclass"
+        "kind": "subclass",
+        "subclasses": ["solar"]
       }
     ],
     "parts": [

@@ -508,3 +508,62 @@ export function CompareCurveChart({
     </figure>
   );
 }
+
+/**
+ * Optimizer ranking (US-08): one bar per build, best first; the reference line marks the current
+ * build. One series, so one color; the ranking table below is the table view.
+ */
+export function RankingChart({
+  entries,
+  currentTotal,
+}: {
+  entries: { label: string; totalDamage: number }[];
+  currentTotal: number;
+}) {
+  return (
+    <figure className="chart">
+      <figcaption>Rangliste nach Total Damage</figcaption>
+      <ResponsiveContainer width="100%" height={40 + entries.length * 24}>
+        <BarChart
+          data={entries}
+          layout="vertical"
+          margin={{ top: 20, right: 16, left: 8 }}
+          barCategoryGap={4}
+        >
+          <CartesianGrid {...gridProps} vertical horizontal={false} />
+          <XAxis
+            {...axisProps}
+            type="number"
+            tickFormatter={(d: number) => integer.format(d)}
+          />
+          <YAxis {...axisProps} type="category" dataKey="label" width={40} />
+          <Tooltip
+            {...tooltipProps}
+            cursor={{ fill: "var(--grid)" }}
+            formatter={(value) => [
+              integer.format(Number(value)),
+              "Total Damage",
+            ]}
+          />
+          <ReferenceLine
+            x={currentTotal}
+            stroke="var(--muted)"
+            label={{
+              value: "aktuell",
+              position: "top",
+              fill: "var(--muted)",
+              fontSize: 12,
+            }}
+          />
+          <Bar
+            dataKey="totalDamage"
+            fill="var(--series-1)"
+            radius={[0, 4, 4, 0]}
+            maxBarSize={16}
+            isAnimationActive={false}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </figure>
+  );
+}

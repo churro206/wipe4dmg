@@ -5,6 +5,7 @@ import type {
   Effect,
   GuardianClass,
   ProviderKind,
+  Subclass,
 } from "../data/schema";
 import { decodeLink, encodeLink } from "../engine/buildLink";
 import type { EffectWindowInput } from "../engine/effectWindows";
@@ -17,6 +18,15 @@ export type WindowInput = { start: string; duration: string };
 
 export const LINK_PARAM = "b";
 export const DEFAULT_CLASS: GuardianClass = "warlock";
+export const DEFAULT_SUBCLASS: Subclass = "solar";
+export const SUBCLASS_LABELS: Record<Subclass, string> = {
+  arc: "Arc",
+  solar: "Solar",
+  void: "Void",
+  stasis: "Stasis",
+  strand: "Strand",
+  prismatic: "Prismatic",
+};
 export const CLASS_LABELS: Record<GuardianClass, string> = {
   titan: "Titan",
   hunter: "Jäger",
@@ -74,15 +84,17 @@ export function toggleSelection(
   return [...kept, { effectId: effect.id, provider }];
 }
 
-/** Keeps only selections the class can still provide, e.g. after switching the class. */
-export function selectionsForClass(
+/** Keeps only selections class and subclass can still provide, e.g. after switching them. */
+export function selectionsFor(
   selections: Selection[],
   guardianClass: GuardianClass,
+  subclass: Subclass,
 ): Selection[] {
   return selections.filter((s) => {
     const effect = effectById(s.effectId);
     return (
-      effect !== undefined && canProvide(effect, s.provider, guardianClass)
+      effect !== undefined &&
+      canProvide(effect, s.provider, guardianClass, subclass)
     );
   });
 }
@@ -114,12 +126,13 @@ export function describeBuild(build: Build): string {
   const names = effectsOf(build.selections).map((effect) => effect.name);
   if (build.catalyst) names.unshift("Katalysator");
   const what = names.length > 0 ? names.join(", ") : "ohne Effects";
-  return `${CLASS_LABELS[build.guardianClass]}: ${what}`;
+  return `${CLASS_LABELS[build.guardianClass]} ${SUBCLASS_LABELS[build.subclass]}: ${what}`;
 }
 
 export type LinkState = {
   input: string;
   guardianClass: GuardianClass;
+  subclass: Subclass;
   selections: Selection[];
   catalyst: boolean;
   windowInputs: Record<string, WindowInput>;
@@ -132,6 +145,7 @@ export function stateFromLink(search: string): LinkState {
   const empty: LinkState = {
     input: "",
     guardianClass: DEFAULT_CLASS,
+    subclass: DEFAULT_SUBCLASS,
     selections: [],
     catalyst: false,
     windowInputs: {},
@@ -149,6 +163,7 @@ export function stateFromLink(search: string): LinkState {
     return {
       input: String(build.damagePhaseSeconds),
       guardianClass: build.guardianClass,
+      subclass: build.subclass,
       selections: build.selections,
       catalyst: build.catalyst,
       windowInputs: Object.fromEntries(

@@ -1,16 +1,30 @@
 // Build link (US-05, ADR 0003): a build, and optionally a comparison, packed into a short
 // base64url text without a server. Layout (all numbers as unsigned LEB128 varints):
 //   version (2) | build | hasComparison (0 or 1) | build of the comparison
-//   build = weapon code | class | catalyst (0 or 1) | damage phase in ms | selection count |
+//   build = weapon code | class | subclass | catalyst (0 or 1) | damage phase in ms |
+//           selection count |
 //           per selection: effect code | provider | start in ms | duration in ms + 1 (0: until end)
 // Codes come from the Data Files and are never reused, so old links stay readable.
 // Pure functions without browser APIs, so the Discord bot (US-13) can read the same links.
 
-import { Build, type GuardianClass, type ProviderKind } from "../data/schema";
+import {
+  Build,
+  type GuardianClass,
+  type ProviderKind,
+  type Subclass,
+} from "../data/schema";
 
 const FORMAT_VERSION = 2;
 const MS_PER_SECOND = 1000;
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
+const SUBCLASSES: Subclass[] = [
+  "arc",
+  "solar",
+  "void",
+  "stasis",
+  "strand",
+  "prismatic",
+];
 const PROVIDERS: ProviderKind[] = [
   "subclass",
   "armor",
@@ -72,6 +86,7 @@ export function decodeLink(text: string, registry: LinkRegistry): DecodedLink {
 function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
   writeVarint(bytes, codeOf(registry.weapons, build.weaponId, "weapon"));
   writeVarint(bytes, CLASSES.indexOf(build.guardianClass));
+  writeVarint(bytes, SUBCLASSES.indexOf(build.subclass));
   writeVarint(bytes, build.catalyst ? 1 : 0);
   writeVarint(bytes, Math.round(build.damagePhaseSeconds * MS_PER_SECOND));
   writeVarint(bytes, build.selections.length);
@@ -96,6 +111,7 @@ function readBuild(
   const weapon = registry.weapons.find((w) => w.code === weaponCode);
   if (!weapon) throw new Error(`Build link: unknown weapon code ${weaponCode}`);
   const guardianClass = CLASSES[reader.varint()];
+  const subclass = SUBCLASSES[reader.varint()];
   const catalyst = reader.varint() === 1;
   const damagePhaseSeconds = reader.varint() / MS_PER_SECOND;
 
@@ -122,6 +138,7 @@ function readBuild(
   return Build.parse({
     weaponId: weapon.id,
     guardianClass,
+    subclass,
     catalyst,
     selections,
     effectWindows,

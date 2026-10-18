@@ -224,3 +224,22 @@ button:disabled {
   font-size: 0.9rem;
   margin-bottom: 0.25rem;
 }
+
+.row-actions {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: flex-end;
+}
+
+.row-actions button {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.5rem;
+}
+
+table.ranking td:nth-child(2) {
+  text-align: left;
+}
+
+table.ranking td:nth-child(2) {
+  font-size: 0.85rem;
+}
