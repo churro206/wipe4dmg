@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
 import raw from "../src/data/weapons/one-thousand-voices.json";
 import {
+  compareResults,
   damageByInstance,
   damageCurve,
   dpsByDamagePhase,
@@ -83,5 +84,32 @@ describe("dpsByDamagePhase", () => {
         simulate(weapon, point.seconds, [], buckets).dps,
       );
     });
+  });
+});
+
+describe("compareResults", () => {
+  it("gives both values, the difference and the relative change per key figure", () => {
+    const a = simulate(weapon, DAMAGE_PHASE_SECONDS, [], buckets, {
+      catalyst: true,
+    });
+    const b = simulate(weapon, DAMAGE_PHASE_SECONDS, [], buckets);
+    const rows = compareResults(a, b);
+    const total = rows.find((r) => r.key === "totalDamage")!;
+    expect(total.a).toBe(a.totalDamage);
+    expect(total.b).toBe(b.totalDamage);
+    expect(total.difference).toBeCloseTo(a.totalDamage - b.totalDamage);
+    expect(total.relative).toBeCloseTo(a.totalDamage / b.totalDamage - 1);
+    expect(rows.map((r) => r.key)).toEqual([
+      "totalDamage",
+      "dps",
+      "shots",
+      "ignitions",
+    ]);
+  });
+
+  it("has no relative change when the comparison is zero", () => {
+    const empty = simulate(weapon, 0);
+    const [total] = compareResults(empty, empty);
+    expect(total.relative).toBeNull();
   });
 });

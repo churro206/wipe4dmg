@@ -69,3 +69,33 @@ export function dpsByDamagePhase(
     dps: simulate(weapon, seconds, effects, buckets, options).dps,
   }));
 }
+
+export type ComparisonRow = {
+  key: "totalDamage" | "dps" | "shots" | "ignitions";
+  a: number;
+  b: number;
+  difference: number; // a - b
+  relative: number | null; // a / b - 1; null if b is 0
+};
+
+/** Key figures of two simulations side by side (US-09). */
+export function compareResults(
+  a: SimulationResult,
+  b: SimulationResult,
+): ComparisonRow[] {
+  const ignitions = (result: SimulationResult) =>
+    result.damageInstances.filter((d) => d.id === "ignition").length;
+  const pairs: [ComparisonRow["key"], number, number][] = [
+    ["totalDamage", a.totalDamage, b.totalDamage],
+    ["dps", a.dps, b.dps],
+    ["shots", a.shots.length, b.shots.length],
+    ["ignitions", ignitions(a), ignitions(b)],
+  ];
+  return pairs.map(([key, valueA, valueB]) => ({
+    key,
+    a: valueA,
+    b: valueB,
+    difference: valueA - valueB,
+    relative: valueB === 0 ? null : valueA / valueB - 1,
+  }));
+}

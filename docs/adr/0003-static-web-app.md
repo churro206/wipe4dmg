@@ -12,7 +12,7 @@ Das Repository soll privat bleiben. GitHub Pages veröffentlicht private Reposit
 - Technik: TypeScript, Vite, React, Vitest, Zod.
 - Hosting: Cloudflare Pages mit Git-Verknüpfung zum privaten GitHub-Repository.
 - Cloudflare baut bei jedem Push auf `master` mit `npx vitest run && npm run build`. Ein fehlgeschlagener Test verhindert die Veröffentlichung.
-- Ein Build wird als URL-Parameter kodiert. Ein Link teilt den kompletten Build.
+- Ein Build wird als URL-Parameter kodiert. Ein Link teilt den kompletten Build. Format: `src/engine/buildLink.ts` (Version `v=1`), ein Vergleichs-Build steht unter `vs=`.
 - Gespeicherte Builds liegen im Browser (localStorage).
 
 ## Folgen

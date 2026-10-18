@@ -7,6 +7,7 @@
   --series-1: #2a78d6;
   --series-2: #eb6834;
   --series-3: #1baf7a;
+  --series-5: #e87ba4;
   --grid: #e1e0d9;
   --axis: #c3c2b7;
 
@@ -29,6 +30,7 @@
     --series-1: #3987e5;
     --series-2: #d95926;
     --series-3: #199e70;
+    --series-5: #d55181;
     --grid: #2c2c2a;
     --axis: #383835;
   }
@@ -191,4 +193,34 @@ table.rotation input {
 table.rotation td,
 table.rotation th {
   vertical-align: middle;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+button {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+button:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.legend-row {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
 }

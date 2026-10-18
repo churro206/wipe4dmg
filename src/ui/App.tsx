@@ -1,21 +1,24 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import rawBosses from "../data/bosses.json";
 import rawBuckets from "../data/buckets.json";
 import rawEffects from "../data/effects.json";
-import type { Effect, EffectPart } from "../data/schema";
+import type { Build, Effect, EffectPart } from "../data/schema";
 import raw from "../data/weapons/one-thousand-voices.json";
 import {
+  compareResults,
   damageByInstance,
   damageCurve,
   dpsByDamagePhase,
 } from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
+import { decodeBuild, encodeBuild } from "../engine/buildLink";
 import { effectWindows, type EffectWindowInput } from "../engine/effectWindows";
 import { loadBosses, loadBuckets, loadEffects } from "../engine/loadData";
 import { loadWeapon } from "../engine/loadWeapon";
 import { simulate } from "../engine/simulate";
 import {
   BreakdownChart,
+  CompareCurveChart,
   DamageCurveChart,
   DamageShareChart,
   DpsByLengthChart,
@@ -47,6 +50,26 @@ const percent = new Intl.NumberFormat("de-DE", {
   style: "percent",
   maximumFractionDigits: 0,
 });
+// Rotation inputs from a link keep up to millisecond precision.
+const secondsInput = new Intl.NumberFormat("de-DE", {
+  maximumFractionDigits: 3,
+  useGrouping: false,
+});
+const signedInteger = new Intl.NumberFormat("de-DE", {
+  maximumFractionDigits: 0,
+  signDisplay: "exceptZero",
+});
+const signedPercent = new Intl.NumberFormat("de-DE", {
+  style: "percent",
+  maximumFractionDigits: 1,
+  signDisplay: "exceptZero",
+});
+const COMPARISON_LABELS = {
+  totalDamage: "Total Damage",
+  dps: "DPS",
+  shots: "Shots",
+  ignitions: "Ignitions",
+} as const;
 const factor = new Intl.NumberFormat("de-DE", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 3,
@@ -108,14 +131,80 @@ function windowsFor(
   );
 }
 
+type LinkState = {
+  input: string;
+  selectedIds: string[];
+  catalyst: boolean;
+  windowInputs: Record<string, WindowInput>;
+  comparison: Build | null;
+  message: string | null;
+};
+
+/** Start state from the build link in the address (US-05); empty without a link. */
+function stateFromLink(search: string): LinkState {
+  const empty: LinkState = {
+    input: "",
+    selectedIds: [],
+    catalyst: false,
+    windowInputs: {},
+    comparison: null,
+    message: null,
+  };
+  if (search.replace(/^\?/, "") === "") return empty;
+  try {
+    const build = decodeBuild(search);
+    if (build.weaponId !== weapon.id) throw new Error(build.weaponId);
+    const vs = new URLSearchParams(search).get("vs");
+    const known = build.effectIds.filter((id) =>
+      effects.some((effect) => effect.id === id),
+    );
+    const unknown = build.effectIds.filter((id) => !known.includes(id));
+    return {
+      input: String(build.damagePhaseSeconds),
+      selectedIds: known,
+      catalyst: build.catalyst,
+      windowInputs: Object.fromEntries(
+        known.map((id) => {
+          const window = build.effectWindows[id] ?? { startMs: 0 };
+          return [
+            id,
+            {
+              start: secondsInput.format(window.startMs / 1000),
+              duration:
+                window.durationMs === undefined
+                  ? ""
+                  : secondsInput.format(window.durationMs / 1000),
+            },
+          ];
+        }),
+      ),
+      comparison: vs ? decodeBuild(vs) : null,
+      message:
+        unknown.length > 0
+          ? `Unbekannte Effects im Link ignoriert: ${unknown.join(", ")}`
+          : null,
+    };
+  } catch {
+    return { ...empty, message: "Der Link enthält keinen gültigen Build." };
+  }
+}
+
+/** Short text for a build, e.g. for the comparison. */
+function describeBuild(build: Build): string {
+  const names = selectedEffects(build.effectIds).map((effect) => effect.name);
+  if (build.catalyst) names.unshift("Katalysator");
+  return names.length > 0 ? names.join(", ") : "ohne Effects";
+}
+
 function App() {
-  const [input, setInput] = useState("");
+  const [initial] = useState(() => stateFromLink(window.location.search));
+  const [input, setInput] = useState(initial.input);
   const [bossId, setBossId] = useState("");
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  const [catalyst, setCatalyst] = useState(false);
-  const [windowInputs, setWindowInputs] = useState<Record<string, WindowInput>>(
-    {},
-  );
+  const [selectedIds, setSelectedIds] = useState(initial.selectedIds);
+  const [catalyst, setCatalyst] = useState(initial.catalyst);
+  const [windowInputs, setWindowInputs] = useState(initial.windowInputs);
+  const [comparison, setComparison] = useState(initial.comparison);
+  const [copiedLink, setCopiedLink] = useState("");
 
   const damagePhaseSeconds = Number(input);
   const isValid =
@@ -136,6 +225,44 @@ function App() {
     ? breakdown(weapon, damagePhaseSeconds, selected, buckets, options)
     : [];
   const boss = bosses.find((b) => b.id === bossId);
+
+  const currentBuild: Build = {
+    weaponId: weapon.id,
+    catalyst,
+    effectIds: selectedIds,
+    effectWindows: options.effectWindows,
+    damagePhaseSeconds: isValid ? damagePhaseSeconds : 0,
+  };
+  const link = isValid
+    ? encodeBuild(currentBuild) +
+      (comparison ? `&vs=${encodeURIComponent(encodeBuild(comparison))}` : "")
+    : "";
+  useEffect(() => {
+    window.history.replaceState(
+      null,
+      "",
+      link ? `?${link}` : window.location.pathname,
+    );
+  }, [link]);
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(window.location.href);
+    setCopiedLink(link);
+  };
+
+  // The comparison runs with the same damage phase as the current build.
+  const comparisonResult =
+    isValid && comparison
+      ? simulate(
+          weapon,
+          damagePhaseSeconds,
+          selectedEffects(comparison.effectIds),
+          buckets,
+          {
+            catalyst: comparison.catalyst,
+            effectWindows: comparison.effectWindows,
+          },
+        )
+      : null;
   const dpsChartSeconds = Math.max(
     DPS_CHART_MIN_SECONDS,
     isValid ? Math.ceil(damagePhaseSeconds) : 0,
@@ -314,6 +441,27 @@ function App() {
 
       <section className="results">
         <h2>Ergebnis</h2>
+        <div className="toolbar">
+          <button type="button" onClick={copyLink} disabled={!link}>
+            {copiedLink !== "" && copiedLink === link
+              ? "Link kopiert"
+              : "Link kopieren"}
+          </button>
+          {comparison ? (
+            <button type="button" onClick={() => setComparison(null)}>
+              Vergleich entfernen
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setComparison(currentBuild)}
+              disabled={!isValid}
+            >
+              Als Vergleich festhalten
+            </button>
+          )}
+        </div>
+        {initial.message && <p className="note">{initial.message}</p>}
         {result ? (
           <>
             <dl className="result">
@@ -331,6 +479,44 @@ function App() {
                 }
               </dd>
             </dl>
+
+            {comparison && comparisonResult && (
+              <div className="comparison">
+                <h2>Vergleich</h2>
+                <p className="note">
+                  Vergleich: {describeBuild(comparison)}. Gleiche Damage Phase (
+                  {seconds.format(damagePhaseSeconds)} s).
+                </p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Kennzahl</th>
+                      <th>Aktuell</th>
+                      <th>Vergleich</th>
+                      <th>Differenz</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {compareResults(result, comparisonResult).map((row) => (
+                      <tr key={row.key}>
+                        <td>{COMPARISON_LABELS[row.key]}</td>
+                        <td>{integer.format(row.a)}</td>
+                        <td>{integer.format(row.b)}</td>
+                        <td>
+                          {signedInteger.format(row.difference)}
+                          {row.relative !== null &&
+                            ` (${signedPercent.format(row.relative)})`}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <CompareCurveChart
+                  current={damageCurve(result, damagePhaseSeconds)}
+                  comparison={damageCurve(comparisonResult, damagePhaseSeconds)}
+                />
+              </div>
+            )}
 
             {result.totalDamage > 0 && (
               <DamageShareChart entries={damageByInstance(result)} />

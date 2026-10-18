@@ -261,12 +261,20 @@ export const ReferenceMultiplier = z.object({
 });
 export type ReferenceMultiplier = z.infer<typeof ReferenceMultiplier>;
 
-/** Input of the Simulator. Serialized into the URL for sharing. */
+/** Input of the Simulator. Serialized into the URL for sharing (src/engine/buildLink.ts). */
 export const Build = z.object({
   weaponId: z.string(),
   catalyst: z.boolean(),
   effectIds: z.array(z.string()),
-  damagePhaseSeconds: z.number().positive(),
+  // Rotation: start and duration per effect id; without duration until the end of the phase.
+  effectWindows: z.record(
+    z.string(),
+    z.object({
+      startMs: z.number().nonnegative(),
+      durationMs: z.number().nonnegative().optional(),
+    }),
+  ),
+  damagePhaseSeconds: z.number().nonnegative(),
 });
 export type Build = z.infer<typeof Build>;
 

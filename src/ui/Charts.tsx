@@ -413,3 +413,98 @@ export function RotationTimeline({
     </figure>
   );
 }
+
+/**
+ * Damage Curve of the current build and the comparison (US-09). Two series: legend above,
+ * direct labels at the line ends; the comparison table is the table view.
+ */
+export function CompareCurveChart({
+  current,
+  comparison,
+}: {
+  current: CurvePoint[];
+  comparison: CurvePoint[];
+}) {
+  const series = [
+    { name: "Aktuell", color: "var(--series-1)", points: current },
+    { name: "Vergleich", color: "var(--series-5)", points: comparison },
+  ].map((s) => ({
+    ...s,
+    data: s.points.map((p) => ({
+      seconds: p.timeMs / 1000,
+      totalDamage: p.totalDamage,
+    })),
+  }));
+  return (
+    <figure className="chart">
+      <figcaption>Damage Curve im Vergleich</figcaption>
+      <div className="legend-row">
+        {series.map((s) => (
+          <span key={s.name}>
+            <span className="swatch" style={{ background: s.color }} />
+            {s.name}
+          </span>
+        ))}
+      </div>
+      <ResponsiveContainer width="100%" height={220}>
+        <LineChart margin={{ top: 8, right: 72, left: 8 }}>
+          <CartesianGrid {...gridProps} />
+          <XAxis
+            {...axisProps}
+            dataKey="seconds"
+            type="number"
+            domain={[0, "dataMax"]}
+            allowDuplicatedCategory={false}
+            tickFormatter={(s: number) => `${seconds.format(s)} s`}
+          />
+          <YAxis
+            {...axisProps}
+            width={64}
+            tickFormatter={(d: number) => integer.format(d)}
+          />
+          <Tooltip
+            {...tooltipProps}
+            labelFormatter={(s) => `${seconds.format(Number(s))} s`}
+            formatter={(value, name) => [
+              integer.format(Number(value)),
+              String(name),
+            ]}
+          />
+          {series.map((s) => (
+            <Line
+              key={s.name}
+              name={s.name}
+              data={s.data}
+              type="stepAfter"
+              dataKey="totalDamage"
+              stroke={s.color}
+              strokeWidth={2}
+              dot={false}
+              isAnimationActive={false}
+              label={({
+                index,
+                x,
+                y,
+              }: {
+                index?: number;
+                x?: number | string;
+                y?: number | string;
+              }) =>
+                index === s.data.length - 1 ? (
+                  <text
+                    x={Number(x) + 6}
+                    y={Number(y) + 4}
+                    fill="var(--text)"
+                    fontSize={12}
+                  >
+                    {s.name}
+                  </text>
+                ) : null
+              }
+            />
+          ))}
+        </LineChart>
+      </ResponsiveContainer>
+    </figure>
+  );
+}
