@@ -19,6 +19,7 @@ Wir müssen Beam, Explosion und Taken Seeker selbst messen.
 | Katalysator | +30 Stability, +20 Ammo Generation | verified | Clarity via [light.gg](https://www.light.gg/db/items/2069224589/one-thousand-voices/) |
 | Blight-Bonus | +100 % Tick-Schaden auf Blighted Targets (Witherhoard) | verified | Clarity via [light.gg](https://www.light.gg/db/items/2069224589/one-thousand-voices/) |
 | Reserves | fehlt | missing | – |
+| Strahldauer | nicht im Schema | missing | – |
 | Schaden Beam, Explosion, Seeker | fehlt | missing | – |
 
 ## Wichtige Erkenntnisse
@@ -37,5 +38,6 @@ Miss jeden Wert dreimal. Notiere Spielversion und Datum.
 3. **Precision:** Wiederhole Schritt 1 und 2 auf dem gelben Ziel.
 4. **Taken Seeker:** Mit Katalysator. Notiere die Schadenszahl eines Ticks.
 5. **Reserves:** Lies die maximale Reserve ohne Mods ab.
-6. **Zeiten:** Nimm ein Video mit 60 FPS auf. Miss Charge Time, Zeit bis zur Explosion und Reload Time framegenau.
+6. **Zeiten:** Nimm ein Video mit 60 FPS auf. Miss Charge Time, Strahldauer, Zeit bis zur Explosion und Reload Time framegenau.
+   Die Strahldauer ist die Zeit vom ersten bis zum letzten Beam-Treffer eines Shots. Der Simulator rechnet bis zur Messung ohne sie.
 7. **Magazine Dump:** Leere ein Magazin ohne Buffs. Notiere den Wert der DPS-Anzeige als ersten Referenzwert.

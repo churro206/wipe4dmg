@@ -79,7 +79,9 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Manual Mode | App mode in which the user sets one build and runs the simulator once |
 | Multiplier | Factor by which an effect changes damage, e.g. 1.25 |
 | Optimizer | App mode that runs the simulator for all builds and ranks the best builds |
+| Reload | Refilling the magazine after its last shot; takes the reload time of the weapon |
 | Rotation | Sequence of shots, reloads and buff activations in the damage phase |
+| Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |
 | Simulator | Part of the engine that computes one build over the damage phase |
 | Surge | Armor mod effect that increases weapon damage of one damage type; forms its own bucket |
 | Total Damage | Sum of all damage instances in the damage phase |
