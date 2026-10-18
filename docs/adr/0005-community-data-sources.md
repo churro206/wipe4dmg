@@ -13,7 +13,8 @@ Das Projekt ist privat, nicht kommerziell und nur für den Projektinhaber und se
 ## Entscheidung
 
 - Spielwerte kommen aus frei zugänglichen Community-Quellen. Wir messen nicht selbst, außer für Stichproben.
-- Pro Wertart gibt es eine Hauptquelle. Für Waffenschaden ist das die Boss-Damage-Tabelle von Aegis.
+- Pro Wertart gibt es eine Hauptquelle. Für Waffen-Grundwerte (Schaden, Magazin, Feuerrate, Reload) ist das Quantum Damage-ics. Die Tabelle misst Waffen ohne Meta-Annahmen.
+- Weitere Quellen dienen zur Gegenprüfung, vor allem die Boss-Damage-Tabelle von Aegis. Aegis rechnet mit Meta-Annahmen wie Particle Reconstruction. Abweichungen zwischen Quellen stehen in `docs/data-sources.md`.
 - Wir übernehmen die Daten möglichst automatisch. Ein Import-Skript wandelt eine Quelle in Data Files um. Das Skript entsteht, sobald mehr als eine Waffe gebraucht wird.
 - Jeder übernommene Wert nennt die Quelle im `source`-Objekt (ADR 0002). Wir fragen die Autoren nicht um Erlaubnis.
 - Absolute Zahlen folgen den Messbedingungen der Hauptquelle. Wir rechnen sie nicht auf andere Ziele um.

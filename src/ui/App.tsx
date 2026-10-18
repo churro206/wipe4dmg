@@ -4,6 +4,7 @@ import { loadWeapon } from "../engine/loadWeapon";
 import { simulate } from "../engine/simulate";
 
 const weapon = loadWeapon(raw);
+const numberFormat = new Intl.NumberFormat("de-DE");
 
 function App() {
   const [input, setInput] = useState("");
@@ -12,6 +13,7 @@ function App() {
     input.trim() !== "" &&
     Number.isFinite(damagePhaseSeconds) &&
     damagePhaseSeconds >= 0;
+  const result = isValid ? simulate(weapon, damagePhaseSeconds) : null;
 
   return (
     <main>
@@ -29,12 +31,17 @@ function App() {
         />
       </label>
 
-      <p className="result">
-        {isValid
-          ? `Shots: ${simulate(weapon, damagePhaseSeconds).length}`
-          : "Gib eine Damage Phase in Sekunden ein."}
-      </p>
-      <p className="note">Reserves nicht berücksichtigt</p>
+      {result ? (
+        <dl className="result">
+          <dt>Total Damage</dt>
+          <dd>{numberFormat.format(result.totalDamage)}</dd>
+          <dt>Shots</dt>
+          <dd>{result.shots.length}</dd>
+        </dl>
+      ) : (
+        <p className="result">Gib eine Damage Phase in Sekunden ein.</p>
+      )}
+      <p className="note">Ohne Effekte und ohne Ignition.</p>
     </main>
   );
 }

@@ -23,6 +23,7 @@ Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in 
 | Geräte | Vor allem PC, Layout für große Bildschirme |
 | Genauigkeit | Relative Unterschiede zwischen Builds sollen stimmen; absolute Zahlen folgen den Messbedingungen der Datenquelle |
 | Datenquellen | Frei zugängliche Community-Daten, möglichst automatisch übernommen (ADR 0005); eigene Messungen nur als Stichprobe |
+| Effekte | Die Grundlage ist die Waffe ohne Effekte. Jeder Effekt ist einzeln schaltbar, damit man seinen Beitrag sieht. Das gilt auch für Effekte, die den Ablauf ändern, z. B. Particle Reconstruction (keine Reloads). |
 | Programmiererfahrung | Grundlagen; Claude erklärt jede Änderung |
 | Zeitbudget | Mehr als 10 Stunden pro Woche |
 | Spielstand | Keine Sandbox-Änderungen seit 9.7.0; Wartungs-Patches möglich (zuletzt 9.7.0.5); jede Weapon trägt eine gameVersion |
@@ -105,6 +106,6 @@ Das größte Risiko ist die Abhängigkeit von Community-Daten. Wir messen nicht 
 
 **Offene Fragen:**
 
-- [ ] Was bedeuten die Spalten der Aegis-Tabelle genau (Base, peak Rate, TtE, Distribution)?
+- [x] Was bedeuten die Spalten der Aegis-Tabelle? (geklärt in docs/data-sources.md)
 - [ ] Welche Boss-Typen und Damage Phases sollen als Schnellwahl erscheinen?
 - [ ] Welcher Fireteam Support ist für die erste Version relevant?

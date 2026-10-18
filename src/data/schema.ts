@@ -61,13 +61,19 @@ export const Weapon = z.object({
   gameVersion: z.string(), // game version the data refers to, e.g. "9.7.0.5"
   element: z.enum(["kinetic", "arc", "solar", "void", "stasis", "strand"]),
   ammo: z.enum(["primary", "special", "heavy"]),
-  chargeTimeMs: SourcedNumber,
+  chargeTimeMs: SourcedNumber, // time from the start of the damage phase to the first shot
+  fireRateRpm: SourcedNumber, // shots per minute within a magazine; for charged weapons the full cycle
   magazine: SourcedNumber,
-  reserves: SourcedNumber,
-  reloadTimeMs: SourcedNumber,
+  totalShots: SourcedNumber, // magazine plus reserves
+  reloadTimeMs: SourcedNumber, // extra time after the last shot of a magazine, on top of the shot interval
   damageInstances: z.array(DamageInstance).min(1),
   intrinsics: z.array(
-    z.object({ id: z.string(), name: z.string(), description: z.string(), source: Source }),
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      description: z.string(),
+      source: Source,
+    }),
   ),
 });
 export type Weapon = z.infer<typeof Weapon>;
@@ -80,7 +86,13 @@ export const Effect = z.object({
   multiplier: SourcedNumber, // e.g. 1.25
   durationMs: SourcedNumber, // value null + status "verified" = permanent
   appliesTo: z.array(z.string()), // DamageInstance ids, or ["all"]
-  category: z.enum(["subclass", "armor", "artifact", "fireteamSupport", "weapon"]),
+  category: z.enum([
+    "subclass",
+    "armor",
+    "artifact",
+    "fireteamSupport",
+    "weapon",
+  ]),
 });
 export type Effect = z.infer<typeof Effect>;
 

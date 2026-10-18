@@ -2,131 +2,85 @@
   "id": "one-thousand-voices",
   "name": "One Thousand Voices",
   "manifestHash": 2069224589,
-  "gameVersion": "9.7.0.5",
+  "gameVersion": "9.7.0.1",
   "element": "solar",
   "ammo": "heavy",
   "chargeTimeMs": {
     "value": 1000,
     "source": {
-      "name": "light.gg item page (stat Charge Time)",
-      "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+      "name": "Aegis Boss Damage sheet (Weapons tab, note \"1000ms charge\"); light.gg stat Charge Time 1000",
+      "url": "https://destiny2.science/boss-damage",
+      "retrieved": "2026-10-18",
+      "status": "verified"
+    }
+  },
+  "fireRateRpm": {
+    "value": 33,
+    "source": {
+      "name": "Quantum Damage-ics (heavy weapons tab, column rpm/spm)",
+      "url": "https://destiny2.science/quantum-damage-ics",
       "retrieved": "2026-10-18",
       "status": "unverified",
-      "note": "Stat value is 1000. Assumption: the stat equals milliseconds. Measure at the Shooting Range."
+      "note": "1818 ms per shot. Aegis uses 1733 ms (peak Rate 1.733 s), about 5 % faster."
     }
   },
   "magazine": {
     "value": 4,
     "source": {
-      "name": "light.gg item page (stat Magazine)",
-      "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+      "name": "Quantum Damage-ics (column Magazine Capacity); light.gg stat Magazine",
+      "url": "https://destiny2.science/quantum-damage-ics",
       "retrieved": "2026-10-18",
       "status": "verified"
     }
   },
-  "reserves": {
-    "value": null,
+  "totalShots": {
+    "value": 11,
     "source": {
-      "name": "none",
+      "name": "Quantum Damage-ics (column Reserves + Magazine); Aegis Boss Damage sheet (column #)",
+      "url": "https://destiny2.science/quantum-damage-ics",
       "retrieved": "2026-10-18",
-      "status": "missing",
-      "note": "Manifest values for reserves are unreliable. Count in game: maximum reserves without and with reserve mods."
+      "status": "verified",
+      "note": "Reserve mods have no effect on this weapon (Quantum Damage-ics)."
     }
   },
   "reloadTimeMs": {
-    "value": 2470,
+    "value": 1250,
     "source": {
-      "name": "gamersdecide.com (Reload Speed 30, 2.47 s)",
-      "url": "https://www.gamersdecide.com/articles/destiny-2-best-gambit-weapons",
+      "name": "Quantum Damage-ics (column Reload Speed)",
+      "url": "https://destiny2.science/quantum-damage-ics",
       "retrieved": "2026-10-18",
       "status": "unverified",
-      "note": "Source is from 2022. Measure frame-accurate from a video."
+      "note": "Only source. Fits Time to Empty 20.7 s = 10 x 1.818 s + 2 x 1.25 s. Aegis assumes Particle Reconstruction and has no reload time."
     }
   },
   "damageInstances": [
     {
-      "id": "beam",
-      "name": "Beam (Ahamkara's Eye)",
+      "id": "shot",
+      "name": "Shot (beam and explosion, without ignition)",
       "delayMs": {
         "value": 0,
-        "source": { "name": "definition", "retrieved": "2026-10-18", "status": "verified", "note": "Time zero of a shot is the first beam hit." }
+        "source": { "name": "definition", "retrieved": "2026-10-18", "status": "verified", "note": "The damage of a shot is placed at the shot time." }
       },
       "damagePerTick": {
-        "value": null,
-        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing", "note": "Measure on the boss-scaled static target of the Shooting Range." }
-      },
-      "ticks": {
-        "value": null,
-        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing", "note": "Beam is continuous. Count damage numbers per shot in a video." }
-      },
-      "tickIntervalMs": {
-        "value": null,
-        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing" }
-      },
-      "canPrecision": true,
-      "requiresCatalyst": false
-    },
-    {
-      "id": "explosion",
-      "name": "Delayed explosion (Unforeseen Repercussions)",
-      "delayMs": {
-        "value": 750,
+        "value": 2180,
         "source": {
-          "name": "d2.destinygamewiki.com (Unforeseen Repercussions)",
-          "url": "https://d2.destinygamewiki.com/wiki/Unforeseen_Repercussions",
+          "name": "Quantum Damage-ics (column Body Damage)",
+          "url": "https://destiny2.science/quantum-damage-ics",
           "retrieved": "2026-10-18",
           "status": "unverified",
-          "note": "Undated wiki entry. Same page states 1300% damage without a reference value."
+          "note": "Without scorch and ignition. Aegis: 2459 per shot on average including ignitions and with Particle Reconstruction."
         }
-      },
-      "damagePerTick": {
-        "value": null,
-        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing", "note": "Measure separately from the beam." }
       },
       "ticks": {
         "value": 1,
-        "source": { "name": "assumption", "retrieved": "2026-10-18", "status": "unverified" }
+        "source": { "name": "definition", "retrieved": "2026-10-18", "status": "verified", "note": "One value per shot." }
       },
       "tickIntervalMs": {
         "value": 0,
-        "source": { "name": "assumption", "retrieved": "2026-10-18", "status": "unverified" }
+        "source": { "name": "definition", "retrieved": "2026-10-18", "status": "verified" }
       },
       "canPrecision": false,
       "requiresCatalyst": false
-    },
-    {
-      "id": "takenSeeker",
-      "name": "Taken Seeker (catalyst Fall from Grace)",
-      "delayMs": {
-        "value": null,
-        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing", "note": "Time from detonation to the first seeker tick." }
-      },
-      "damagePerTick": {
-        "value": null,
-        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing" }
-      },
-      "ticks": {
-        "value": 22,
-        "source": {
-          "name": "Clarity community research via light.gg (last updated 2026-07-13)",
-          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
-          "retrieved": "2026-10-18",
-          "status": "verified",
-          "note": "One seeker per detonation. Max 5 seekers per target. Blighted targets take +100% tick damage."
-        }
-      },
-      "tickIntervalMs": {
-        "value": 250,
-        "source": {
-          "name": "Clarity community research via light.gg (last updated 2026-07-13)",
-          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
-          "retrieved": "2026-10-18",
-          "status": "verified",
-          "note": "Total duration 5.65 s."
-        }
-      },
-      "canPrecision": false,
-      "requiresCatalyst": true
     }
   ],
   "intrinsics": [

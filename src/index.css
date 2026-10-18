@@ -48,6 +48,21 @@ input {
   font-weight: 600;
 }
 
+dl.result {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 0.25rem 1rem;
+}
+
+dl.result dt {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+dl.result dd {
+  margin: 0;
+}
+
 .note {
   color: var(--muted);
 }

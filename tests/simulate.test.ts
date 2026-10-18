@@ -1,67 +1,182 @@
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
+import rawReferenceValues from "../src/data/reference-values.json";
+import { ReferenceValue } from "../src/data/schema";
 import raw from "../src/data/weapons/one-thousand-voices.json";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
 
 const weapon = loadWeapon(raw);
-// Expected values come from the data file, so the tests contain no game values.
+// Expected values come from the data files, so the tests contain no game values.
 const chargeTimeMs = weapon.chargeTimeMs.value!;
+const shotIntervalMs = 60_000 / weapon.fireRateRpm.value!;
 const magazine = weapon.magazine.value!;
+const totalShots = weapon.totalShots.value!;
 const reloadTimeMs = weapon.reloadTimeMs.value!;
 
-describe("simulate", () => {
-  it("returns no shots for a damage phase of 0 seconds", () => {
-    expect(simulate(weapon, 0)).toEqual([]);
+// Long enough to fire every shot.
+const LONG_DAMAGE_PHASE_SECONDS = 600;
+
+describe("simulate: shots", () => {
+  it("returns nothing for a damage phase of 0 seconds", () => {
+    expect(simulate(weapon, 0)).toEqual({
+      shots: [],
+      damageInstances: [],
+      totalDamage: 0,
+    });
+  });
+
+  it("fires the first shot after the charge time", () => {
+    const { shots } = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS);
+    expect(shots[0].timeMs).toBe(chargeTimeMs);
+  });
+
+  it("spaces shots within a magazine by the shot interval", () => {
+    const { shots } = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS);
+    for (let i = 1; i < magazine; i++) {
+      expect(shots[i].timeMs - shots[i - 1].timeMs).toBeCloseTo(shotIntervalMs);
+    }
   });
 
   it("reloads after the last shot of a magazine", () => {
-    const shots = simulate(weapon, 60);
-    expect(shots.length).toBeGreaterThan(magazine);
-
-    for (let i = 1; i < magazine; i++) {
-      expect(shots[i].timeMs - shots[i - 1].timeMs).toBe(chargeTimeMs);
-    }
-    expect(shots[magazine].timeMs - shots[magazine - 1].timeMs).toBe(
-      reloadTimeMs + chargeTimeMs,
+    const { shots } = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS);
+    expect(shots[magazine].timeMs - shots[magazine - 1].timeMs).toBeCloseTo(
+      shotIntervalMs + reloadTimeMs,
     );
   });
 
-  it.each([0.5, 1, 4, 7.47, 30, 120])(
-    "keeps every shot inside a damage phase of %s seconds",
+  it("never fires more than the total shots", () => {
+    const { shots } = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS);
+    expect(shots).toHaveLength(totalShots);
+  });
+
+  it.each([0.5, 1, 4, 7.47, 20, 120])(
+    "keeps every shot and damage instance inside a damage phase of %s seconds",
     (damagePhaseSeconds) => {
-      for (const shot of simulate(weapon, damagePhaseSeconds)) {
-        expect(shot.timeMs).toBeGreaterThanOrEqual(0);
-        expect(shot.timeMs).toBeLessThanOrEqual(damagePhaseSeconds * 1000);
+      const result = simulate(weapon, damagePhaseSeconds);
+      for (const event of [...result.shots, ...result.damageInstances]) {
+        expect(event.timeMs).toBeGreaterThanOrEqual(0);
+        expect(event.timeMs).toBeLessThanOrEqual(damagePhaseSeconds * 1000);
       }
     },
   );
 
-  it("never returns fewer shots for a longer damage phase", () => {
-    const seconds = fc.double({ min: 0, max: 600, noNaN: true });
+  it("never returns fewer shots or less total damage for a longer damage phase", () => {
+    const seconds = fc.double({ min: 0, max: 60, noNaN: true });
     fc.assert(
       fc.property(seconds, seconds, (a, b) => {
-        const [shorter, longer] = a <= b ? [a, b] : [b, a];
+        const shorter = simulate(weapon, Math.min(a, b));
+        const longer = simulate(weapon, Math.max(a, b));
         return (
-          simulate(weapon, shorter).length <= simulate(weapon, longer).length
+          shorter.shots.length <= longer.shots.length &&
+          shorter.totalDamage <= longer.totalDamage
         );
       }),
     );
   });
+});
 
-  it.each(["chargeTimeMs", "magazine", "reloadTimeMs"] as const)(
-    "rejects a weapon whose %s is missing",
+describe("simulate: damage", () => {
+  it("creates the damage instances of each shot at the shot time plus delay", () => {
+    const withDelay = structuredClone(weapon);
+    withDelay.damageInstances[0].delayMs.value = 500;
+    const { shots, damageInstances } = simulate(
+      withDelay,
+      LONG_DAMAGE_PHASE_SECONDS,
+    );
+    expect(damageInstances).toHaveLength(shots.length);
+    damageInstances.forEach((instance, i) => {
+      expect(instance.timeMs).toBe(shots[i].timeMs + 500);
+      expect(instance.damage).toBe(
+        weapon.damageInstances[0].damagePerTick.value,
+      );
+    });
+  });
+
+  it("creates one damage instance per tick", () => {
+    const withTicks = structuredClone(weapon);
+    withTicks.damageInstances[0].ticks.value = 3;
+    withTicks.damageInstances[0].tickIntervalMs.value = 250;
+    const { shots, damageInstances } = simulate(
+      withTicks,
+      LONG_DAMAGE_PHASE_SECONDS,
+    );
+    expect(damageInstances).toHaveLength(shots.length * 3);
+    expect(damageInstances.slice(0, 3).map((d) => d.timeMs)).toEqual([
+      shots[0].timeMs,
+      shots[0].timeMs + 250,
+      shots[0].timeMs + 500,
+    ]);
+  });
+
+  it("counts a shot whose delayed damage falls after the damage phase, but not its damage", () => {
+    const withDelay = structuredClone(weapon);
+    withDelay.damageInstances[0].delayMs.value = 500;
+    const result = simulate(withDelay, chargeTimeMs / 1000);
+    expect(result.shots).toHaveLength(1);
+    expect(result.damageInstances).toEqual([]);
+    expect(result.totalDamage).toBe(0);
+  });
+
+  it("sums all damage instances into the total damage", () => {
+    const { damageInstances, totalDamage } = simulate(weapon, 10);
+    const sum = damageInstances.reduce((total, d) => total + d.damage, 0);
+    expect(totalDamage).toBe(sum);
+    expect(totalDamage).toBeGreaterThan(0);
+  });
+
+  it("ignores damage instances that require the catalyst", () => {
+    const withCatalystInstance = structuredClone(weapon);
+    withCatalystInstance.damageInstances.push({
+      ...structuredClone(weapon.damageInstances[0]),
+      id: "catalystOnly",
+      requiresCatalyst: true,
+    });
+    expect(simulate(withCatalystInstance, 10)).toEqual(simulate(weapon, 10));
+  });
+});
+
+describe("simulate: reference values", () => {
+  const referenceValues = ReferenceValue.array().parse(rawReferenceValues);
+
+  it("matches the Quantum Damage-ics total damage without effects", () => {
+    const reference = referenceValues.find(
+      (r) => r.id === "quantum-no-effects",
+    )!;
+    const { totalDamage } = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS);
+    expect(totalDamage).toBeGreaterThanOrEqual(reference.totalDamageMin);
+    expect(totalDamage).toBeLessThanOrEqual(reference.totalDamageMax);
+  });
+});
+
+describe("simulate: invalid data", () => {
+  it.each([
+    "chargeTimeMs",
+    "fireRateRpm",
+    "magazine",
+    "totalShots",
+    "reloadTimeMs",
+  ] as const)("rejects a weapon whose %s is missing", (field) => {
+    const incomplete = structuredClone(weapon);
+    incomplete[field].value = null;
+    expect(() => simulate(incomplete, 30)).toThrow(field);
+  });
+
+  it.each(["delayMs", "damagePerTick", "ticks", "tickIntervalMs"] as const)(
+    "rejects a damage instance whose %s is missing",
     (field) => {
       const incomplete = structuredClone(weapon);
-      incomplete[field].value = null;
+      incomplete.damageInstances[0][field].value = null;
       expect(() => simulate(incomplete, 30)).toThrow(field);
     },
   );
 
   it.each([
-    ["chargeTimeMs", 0],
+    ["fireRateRpm", 0],
     ["magazine", 0],
     ["magazine", 1.5],
+    ["totalShots", -1],
+    ["totalShots", 1.5],
   ] as const)("rejects a weapon with %s = %s", (field, value) => {
     const invalid = structuredClone(weapon);
     invalid[field].value = value;

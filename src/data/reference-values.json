@@ -1,5 +1,19 @@
 [
   {
+    "id": "quantum-no-effects",
+    "description": "Theoretical total damage of all shots without effects and without ignition",
+    "totalDamageMin": 23980,
+    "totalDamageMax": 23980,
+    "conditions": ["no effects", "no catalyst", "no ignition", "full ammo"],
+    "source": {
+      "name": "Quantum Damage-ics (heavy weapons tab, column Theoretical Total Damage)",
+      "url": "https://destiny2.science/quantum-damage-ics",
+      "retrieved": "2026-10-18",
+      "status": "unverified",
+      "note": "11 shots x 2180 damage."
+    }
+  },
+  {
     "id": "blueberries-no-catalyst",
     "description": "Total damage, full magazine dump without catalyst",
     "totalDamageMin": 24000,
