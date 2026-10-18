@@ -1,8 +1,18 @@
 [
   {
     "id": "well-of-radiance",
+    "code": 1,
     "name": "Well of Radiance (standing inside)",
-    "category": "subclass",
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"]
+      },
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
+    "exclusiveGroup": "super",
     "parts": [
       {
         "type": "multiplier",
@@ -32,8 +42,17 @@
   },
   {
     "id": "empowering-rift",
+    "code": 2,
     "name": "Empowering Rift",
-    "category": "subclass",
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"]
+      },
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
     "parts": [
       {
         "type": "multiplier",
@@ -62,8 +81,16 @@
   },
   {
     "id": "radiant",
+    "code": 3,
     "name": "Radiant",
-    "category": "subclass",
+    "providers": [
+      {
+        "kind": "subclass"
+      },
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
     "parts": [
       {
         "type": "multiplier",
@@ -83,8 +110,18 @@
   },
   {
     "id": "banner-shield",
+    "code": 4,
     "name": "Banner Shield (Weapons of Light)",
-    "category": "fireteamSupport",
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"]
+      },
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
+    "exclusiveGroup": "super",
     "parts": [
       {
         "type": "multiplier",
@@ -104,8 +141,13 @@
   },
   {
     "id": "lumina-noble-rounds",
+    "code": 5,
     "name": "Lumina (Blessing of the Sky)",
-    "category": "fireteamSupport",
+    "providers": [
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
     "parts": [
       {
         "type": "multiplier",
@@ -135,8 +177,16 @@
   },
   {
     "id": "weaken",
+    "code": 6,
     "name": "Weaken",
-    "category": "subclass",
+    "providers": [
+      {
+        "kind": "subclass"
+      },
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
     "parts": [
       {
         "type": "multiplier",
@@ -156,8 +206,13 @@
   },
   {
     "id": "divinity",
+    "code": 7,
     "name": "Divinity",
-    "category": "fireteamSupport",
+    "providers": [
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
     "parts": [
       {
         "type": "multiplier",
@@ -179,8 +234,13 @@
   },
   {
     "id": "tractor-cannon",
+    "code": 8,
     "name": "Tractor Cannon",
-    "category": "fireteamSupport",
+    "providers": [
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
     "parts": [
       {
         "type": "multiplier",
@@ -210,8 +270,18 @@
   },
   {
     "id": "moebius-tether",
+    "code": 9,
     "name": "Moebius Tether",
-    "category": "fireteamSupport",
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"]
+      },
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
+    "exclusiveGroup": "super",
     "parts": [
       {
         "type": "multiplier",
@@ -231,8 +301,18 @@
   },
   {
     "id": "deadfall-tether",
+    "code": 10,
     "name": "Deadfall Tether",
-    "category": "fireteamSupport",
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"]
+      },
+      {
+        "kind": "fireteamSupport"
+      }
+    ],
+    "exclusiveGroup": "super",
     "parts": [
       {
         "type": "multiplier",
@@ -252,8 +332,14 @@
   },
   {
     "id": "solar-surge-2x",
+    "code": 11,
     "name": "Solar Surge 2x",
-    "category": "armor",
+    "providers": [
+      {
+        "kind": "armor"
+      }
+    ],
+    "exclusiveGroup": "solar-surge",
     "parts": [
       {
         "type": "multiplier",
@@ -274,8 +360,14 @@
   },
   {
     "id": "solar-surge-3x",
+    "code": 12,
     "name": "Solar Surge 3x",
-    "category": "armor",
+    "providers": [
+      {
+        "kind": "armor"
+      }
+    ],
+    "exclusiveGroup": "solar-surge",
     "parts": [
       {
         "type": "multiplier",
@@ -297,8 +389,14 @@
   },
   {
     "id": "solar-surge-4x",
+    "code": 13,
     "name": "Solar Surge 4x",
-    "category": "armor",
+    "providers": [
+      {
+        "kind": "armor"
+      }
+    ],
+    "exclusiveGroup": "solar-surge",
     "parts": [
       {
         "type": "multiplier",
@@ -319,8 +417,13 @@
   },
   {
     "id": "weapons-stat-200",
+    "code": 14,
     "name": "Weapons stat 200 (power weapons against bosses)",
-    "category": "armor",
+    "providers": [
+      {
+        "kind": "armor"
+      }
+    ],
     "parts": [
       {
         "type": "multiplier",
@@ -341,8 +444,13 @@
   },
   {
     "id": "elemental-overdrive-solar",
+    "code": 15,
     "name": "Elemental Overdrive (solar pickup)",
-    "category": "artifact",
+    "providers": [
+      {
+        "kind": "artifact"
+      }
+    ],
     "parts": [
       {
         "type": "multiplier",
@@ -373,8 +481,13 @@
   },
   {
     "id": "particle-reconstruction",
+    "code": 16,
     "name": "Particle Reconstruction",
-    "category": "artifact",
+    "providers": [
+      {
+        "kind": "artifact"
+      }
+    ],
     "parts": [
       {
         "type": "timing",
@@ -408,8 +521,13 @@
   },
   {
     "id": "ember-of-ashes",
+    "code": 17,
     "name": "Ember of Ashes",
-    "category": "subclass",
+    "providers": [
+      {
+        "kind": "subclass"
+      }
+    ],
     "parts": [
       {
         "type": "counterModifier",

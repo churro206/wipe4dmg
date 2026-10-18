@@ -1,106 +1,160 @@
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
+import rawEffects from "../src/data/effects.json";
 import type { Build } from "../src/data/schema";
-import { decodeBuild, encodeBuild } from "../src/engine/buildLink";
+import raw from "../src/data/weapons/one-thousand-voices.json";
+import {
+  decodeLink,
+  encodeLink,
+  type LinkRegistry,
+} from "../src/engine/buildLink";
+import { loadEffects } from "../src/engine/loadData";
+import { loadWeapon } from "../src/engine/loadWeapon";
+
+const registry: LinkRegistry = {
+  weapons: [loadWeapon(raw)],
+  effects: loadEffects(rawEffects),
+};
 
 // Test inputs, not game data.
 const build: Build = {
   weaponId: "one-thousand-voices",
+  guardianClass: "warlock",
   catalyst: true,
   damagePhaseSeconds: 72,
-  effectIds: ["well-of-radiance", "ember-of-ashes"],
+  selections: [
+    { effectId: "well-of-radiance", provider: "subclass" },
+    { effectId: "ember-of-ashes", provider: "subclass" },
+    { effectId: "solar-surge-4x", provider: "armor" },
+    { effectId: "particle-reconstruction", provider: "artifact" },
+    { effectId: "tractor-cannon", provider: "fireteamSupport" },
+  ],
   effectWindows: {
     "well-of-radiance": { startMs: 0, durationMs: 30_000 },
     "ember-of-ashes": { startMs: 0 },
+    "solar-surge-4x": { startMs: 0 },
+    "particle-reconstruction": { startMs: 0 },
+    "tractor-cannon": { startMs: 1500, durationMs: 10_000 },
   },
 };
+const comparison: Build = {
+  ...build,
+  catalyst: false,
+  guardianClass: "hunter",
+};
 
-describe("encodeBuild", () => {
-  it("writes a short, readable text", () => {
-    expect(encodeBuild(build)).toBe(
-      "v=1&w=one-thousand-voices&p=72&c=1&e=well-of-radiance:0:30,ember-of-ashes:0",
+describe("encodeLink and decodeLink", () => {
+  it("round-trips a build", () => {
+    expect(decodeLink(encodeLink({ build }, registry), registry)).toEqual({
+      build,
+      comparison: null,
+      unknownEffectCodes: [],
+    });
+  });
+
+  it("round-trips a build with a comparison", () => {
+    const decoded = decodeLink(
+      encodeLink({ build, comparison }, registry),
+      registry,
+    );
+    expect(decoded.build).toEqual(build);
+    expect(decoded.comparison).toEqual(comparison);
+  });
+
+  it("keeps a typical build short (5 effects with windows in about 45 characters)", () => {
+    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(48);
+  });
+
+  it("writes only URL-safe characters", () => {
+    expect(encodeLink({ build, comparison }, registry)).toMatch(
+      /^[A-Za-z0-9_-]+$/,
     );
   });
 
-  it("writes an empty effect list without effects", () => {
+  it("keeps milliseconds of decimal seconds", () => {
+    const decimal: Build = { ...build, damagePhaseSeconds: 12.883 };
     expect(
-      encodeBuild({
-        ...build,
-        effectIds: [],
-        effectWindows: {},
-        catalyst: false,
-      }),
-    ).toBe("v=1&w=one-thousand-voices&p=72&c=0&e=");
-  });
-});
-
-describe("decodeBuild", () => {
-  it("reads what encodeBuild writes", () => {
-    expect(decodeBuild(encodeBuild(build))).toEqual(build);
+      decodeLink(encodeLink({ build: decimal }, registry), registry).build,
+    ).toEqual(decimal);
   });
 
-  it("keeps decimal seconds", () => {
-    const decimal: Build = {
-      ...build,
-      damagePhaseSeconds: 12.883,
-      effectWindows: {
-        "well-of-radiance": { startMs: 1500, durationMs: 7250 },
-        "ember-of-ashes": { startMs: 0 },
-      },
+  it("skips unknown effect codes and reports them", () => {
+    const smaller: LinkRegistry = {
+      ...registry,
+      effects: registry.effects.filter((e) => e.id !== "tractor-cannon"),
     };
-    expect(decodeBuild(encodeBuild(decimal))).toEqual(decimal);
-  });
-
-  it("accepts a leading question mark", () => {
-    expect(decodeBuild("?" + encodeBuild(build))).toEqual(build);
+    const text = encodeLink({ build }, registry);
+    const decoded = decodeLink(text, smaller);
+    const tractorCode = registry.effects.find(
+      (e) => e.id === "tractor-cannon",
+    )!.code;
+    expect(decoded.unknownEffectCodes).toEqual([tractorCode]);
+    expect(decoded.build.selections.map((s) => s.effectId)).not.toContain(
+      "tractor-cannon",
+    );
+    expect(decoded.build.effectWindows["tractor-cannon"]).toBeUndefined();
   });
 
   it.each([
-    ["an unknown version", "v=2&w=x&p=1&c=0&e="],
-    ["a missing damage phase", "v=1&w=x&c=0&e="],
-    ["a negative damage phase", "v=1&w=x&p=-1&c=0&e="],
-    ["an invalid catalyst flag", "v=1&w=x&p=1&c=yes&e="],
-    ["an invalid effect window", "v=1&w=x&p=1&c=0&e=well:abc"],
-    ["an invalid effect id", "v=1&w=x&p=1&c=0&e=Well Of Radiance:0"],
-    ["text that is no build", "hello"],
+    ["an empty text", ""],
+    ["characters that are not base64url", "a+b/c"],
+    ["a cut-off link", encodeLink({ build }, registry).slice(0, 6)],
+    ["an unknown version", "Aw"],
   ])("rejects %s", (_, text) => {
-    expect(() => decodeBuild(text)).toThrow();
+    expect(() => decodeLink(text, registry)).toThrow();
   });
 
-  it("round-trips any build", () => {
-    const id = fc.stringMatching(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+  it("rejects an unknown weapon", () => {
+    expect(() =>
+      decodeLink(encodeLink({ build }, registry), { ...registry, weapons: [] }),
+    ).toThrow("weapon");
+  });
+
+  it("round-trips any build of known effects", () => {
+    const effectIds = registry.effects.map((e) => e.id);
     const millis = fc.integer({ min: 0, max: 600_000 });
     const arbitraryBuild = fc
       .record({
-        weaponId: id,
+        guardianClass: fc.constantFrom("titan", "hunter", "warlock"),
         catalyst: fc.boolean(),
-        damagePhaseSeconds: fc
-          .integer({ min: 0, max: 600_000 })
-          .map((ms) => ms / 1000),
-        windows: fc.uniqueArray(
+        damagePhaseMs: fc.integer({ min: 0, max: 600_000 }),
+        picks: fc.uniqueArray(
           fc.record({
-            id,
+            effectId: fc.constantFrom(...effectIds),
+            provider: fc.constantFrom(
+              "subclass",
+              "armor",
+              "artifact",
+              "fireteamSupport",
+            ),
             startMs: millis,
             durationMs: fc.option(millis, { nil: undefined }),
           }),
-          { selector: (w) => w.id, maxLength: 6 },
+          { selector: (p) => p.effectId, maxLength: 8 },
         ),
       })
-      .map(({ windows, ...rest }): Build => ({
+      .map(({ picks, damagePhaseMs, ...rest }): Build => ({
+        weaponId: "one-thousand-voices",
         ...rest,
-        effectIds: windows.map((w) => w.id),
+        damagePhaseSeconds: damagePhaseMs / 1000,
+        selections: picks.map(({ effectId, provider }) => ({
+          effectId,
+          provider,
+        })),
         effectWindows: Object.fromEntries(
-          windows.map((w) => [
-            w.id,
-            w.durationMs === undefined
-              ? { startMs: w.startMs }
-              : { startMs: w.startMs, durationMs: w.durationMs },
+          picks.map((p) => [
+            p.effectId,
+            p.durationMs === undefined
+              ? { startMs: p.startMs }
+              : { startMs: p.startMs, durationMs: p.durationMs },
           ]),
         ),
       }));
     fc.assert(
       fc.property(arbitraryBuild, (b) => {
-        expect(decodeBuild(encodeBuild(b))).toEqual(b);
+        expect(
+          decodeLink(encodeLink({ build: b }, registry), registry).build,
+        ).toEqual(b);
       }),
     );
   });

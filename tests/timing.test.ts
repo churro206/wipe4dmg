@@ -28,7 +28,8 @@ const debuffOf = (effect: Effect) => {
 const noReloadFor = (weaponType: "rocketLauncher"): Effect => ({
   id: "test-no-reload",
   name: "test",
-  category: "artifact",
+  code: 9001,
+  providers: [{ kind: "artifact" }],
   parts: [
     {
       type: "timing",

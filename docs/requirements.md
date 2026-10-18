@@ -90,7 +90,9 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Effect | Anything a build can switch on or off that changes damage or timing, e.g. a buff, debuff, surge, perk or artifact perk |
 | Empowering Buff | Effect on the player that increases the damage dealt, e.g. Well of Radiance or Radiant |
 | Engine | Simulator plus optimizer; contains only pure functions |
+| Exclusive Group | Effects of which a build can provide at most one itself, e.g. one surge level or one super |
 | Fireteam Support | Empowering buff or debuff that another fireteam member provides |
+| Guardian Class | Titan, Hunter or Warlock; decides which subclass effects a build can provide itself |
 | Ignition | Solar explosion when a target reaches enough scorch stacks; a separate damage instance |
 | Intrinsic | Fixed exotic perk of a weapon, including its catalyst effect |
 | Manual Mode | App mode in which the user sets one build and runs the simulator once |
@@ -98,6 +100,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Multiplier | Factor by which an effect changes damage, e.g. 1.25 |
 | Optimizer | App mode that runs the simulator for all builds and ranks the best builds |
 | Reload | Refilling the magazine after its last shot; takes the reload time of the weapon |
+| Provider | Way a build gets an effect: own subclass, armor, artifact, or fireteam support from a teammate |
 | Rotation | Sequence of shots, reloads and effect windows (start and duration of each effect) in the damage phase |
 | Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |
 | Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |

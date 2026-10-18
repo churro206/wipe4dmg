@@ -29,7 +29,8 @@ function testEffect(
   return {
     id,
     name: id,
-    category: "subclass",
+    code: 9001,
+    providers: [{ kind: "subclass" }],
     parts: [
       {
         type: "multiplier",

@@ -3,7 +3,8 @@
 ## Unveröffentlicht (v1.0 in Arbeit)
 
 - Katalysator von One Thousand Voices: Taken Seeker als Damage over Time (Werte aus dem Compendium). Offene Abweichung zu Aegis: Modell ×1,26, Aegis ×1,371.
-- Link teilen (US-05): Der Build steht lesbar in der Adresse, z. B. `?v=1&w=one-thousand-voices&p=72&c=1&e=well-of-radiance:0:30`, und lässt sich kopieren. Ein festgehaltener Vergleich steht unter `vs=` im selben Link.
+- Link teilen (US-05): Der Build steht kompakt in der Adresse, z. B. `?b=AgEBAcCyBAMKAAAADQEAAAEDALHqAQA` (etwa 30 bis 50 Zeichen), und lässt sich kopieren. Ein festgehaltener Vergleich steht im selben Link.
+- Klassen und Anbieter: Klasse wählbar; Effects nach eigener Subklasse, Rüstung, Artefakt und Fireteam Support. Well of Radiance, Rift, Banner und Tether gibt es auch von Mitspielern. Pro Build höchstens ein eigenes Super und eine Surge-Stufe.
 - Vergleich (US-09): aktueller Build gegen festgehaltenen Build bei gleicher Damage Phase; Kennzahlen mit Differenz und beide Damage Curves in einem Diagramm.
 - Rotation (US-07, Stufe B aus ADR 0006): Effects wirken nur in ihrem Zeitfenster. Start und Dauer sind pro Effect einstellbar, die Dauer ist aus Courts Tabelle vorbelegt (Well 30 s, Rift 15 s, Lumina 11 s, Tractor Cannon 10 s, Elemental Overdrive 7 s). Uptime pro Effect und Zeitleiste mit Zeitfenstern, Shots und Ignitions.
 - Diagramme mit Recharts (ADR 0007): Schaden nach Art (Donut mit Legende und Werten), Damage Curve (US-06), DPS je Länge der Damage Phase, Beitrag pro Bucket als Balken.

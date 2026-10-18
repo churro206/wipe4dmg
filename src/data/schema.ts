@@ -144,6 +144,7 @@ export type IntrinsicPart = z.infer<typeof IntrinsicPart>;
 
 export const Weapon = z.object({
   id: z.string(),
+  code: z.number().int().positive(), // short code for build links; never reused
   name: z.string(),
   manifestHash: z.number().int(),
   gameVersion: z.string(), // game version the data refers to, e.g. "9.7.0.5"
@@ -207,6 +208,24 @@ export const EffectPart = z.discriminatedUnion("type", [
 ]);
 export type EffectPart = z.infer<typeof EffectPart>;
 
+export const GuardianClass = z.enum(["titan", "hunter", "warlock"]);
+export type GuardianClass = z.infer<typeof GuardianClass>;
+
+/** Way a build gets an effect: itself (subclass, armor, artifact) or from a teammate. */
+export const ProviderKind = z.enum([
+  "subclass",
+  "armor",
+  "artifact",
+  "fireteamSupport",
+]);
+export type ProviderKind = z.infer<typeof ProviderKind>;
+
+export const Provider = z.object({
+  kind: ProviderKind,
+  classes: z.array(GuardianClass).optional(), // omitted: every class
+});
+export type Provider = z.infer<typeof Provider>;
+
 /**
  * Anything a build can switch on or off that changes damage or timing (ADR 0006).
  * Active in a window: start and duration (ADR 0006, stage B).
@@ -214,13 +233,11 @@ export type EffectPart = z.infer<typeof EffectPart>;
 export const Effect = z.object({
   id: z.string(),
   name: z.string(),
-  category: z.enum([
-    "subclass",
-    "armor",
-    "artifact",
-    "fireteamSupport",
-    "weapon",
-  ]),
+  code: z.number().int().positive(), // short code for build links; never reused
+  providers: z.array(Provider).min(1),
+  // A build provides at most one effect of a group itself, e.g. one surge level or one super.
+  // Effects from teammates are not limited by groups.
+  exclusiveGroup: z.string().optional(),
   parts: z.array(EffectPart).min(1),
   // Duration after its start; omitted if the effect lasts the whole damage phase or the duration
   // depends on the source (e.g. Radiant, tethers). The rotation can override start and duration.
@@ -264,8 +281,12 @@ export type ReferenceMultiplier = z.infer<typeof ReferenceMultiplier>;
 /** Input of the Simulator. Serialized into the URL for sharing (src/engine/buildLink.ts). */
 export const Build = z.object({
   weaponId: z.string(),
+  guardianClass: GuardianClass,
   catalyst: z.boolean(),
-  effectIds: z.array(z.string()),
+  // Selected effects with their provider; the same effect may come from two providers.
+  selections: z.array(
+    z.object({ effectId: z.string(), provider: ProviderKind }),
+  ),
   // Rotation: start and duration per effect id; without duration until the end of the phase.
   effectWindows: z.record(
     z.string(),

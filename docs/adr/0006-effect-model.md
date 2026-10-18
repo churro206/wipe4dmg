@@ -32,6 +32,13 @@ Das heutige Effect-Schema kennt nur einen Multiplier mit Bucket und Dauer. Die A
 6. **Jeder Teil hat ein `source`-Objekt** (ADR 0002).
 7. **Schrittweise Einführung:** v0.5 braucht nur `multiplier` und `timing`. `counter` und `threshold` kommen mit der Ignition. Damage Sources für Fähigkeiten kommen mit US-14.
 
+## Anbieter, Klassen und Ausschlussgruppen (Ergänzung 2026-10-18)
+
+- Ein Effect hat eine Liste von Anbietern (`providers`): eigene Subklasse, Rüstung, Artefakt oder Fireteam Support. Ein Anbieter kann auf Klassen beschränkt sein, z. B. Well of Radiance als eigene Subklasse nur für Warlock, als Fireteam Support für alle.
+- Ein Build wählt Effects zusammen mit ihrem Anbieter. Für die Engine zählt jeder Effect einmal; im Bucket gilt ohnehin die Stacking-Regel.
+- Eine Ausschlussgruppe (`exclusiveGroup`) begrenzt eigene Effects auf einen pro Gruppe, z. B. ein Super oder eine Surge-Stufe. Effects von Mitspielern sind nicht begrenzt.
+- Offen: Subklassen-Elemente. Eigene Effects verschiedener Elemente (z. B. Weaken über Void und Well of Radiance über Solar) lassen sich heute noch kombinieren.
+
 ## Laufzeit von Effects (Ergänzung 2026-10-18)
 
 Viele Damage Phases sind länger als einzelne Effects, z. B. Well of Radiance (30 s) bei Kalli (72 s). Die Laufzeit kommt in drei Stufen:
