@@ -54,12 +54,22 @@ export const DamageInstance = z.object({
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
 
+export const Element = z.enum([
+  "kinetic",
+  "arc",
+  "solar",
+  "void",
+  "stasis",
+  "strand",
+]);
+export type Element = z.infer<typeof Element>;
+
 export const Weapon = z.object({
   id: z.string(),
   name: z.string(),
   manifestHash: z.number().int(),
   gameVersion: z.string(), // game version the data refers to, e.g. "9.7.0.5"
-  element: z.enum(["kinetic", "arc", "solar", "void", "stasis", "strand"]),
+  element: Element,
   ammo: z.enum(["primary", "special", "heavy"]),
   chargeTimeMs: SourcedNumber, // time from the start of the damage phase to the first shot
   fireRateRpm: SourcedNumber, // shots per minute within a magazine; for charged weapons the full cycle
@@ -78,14 +88,27 @@ export const Weapon = z.object({
 });
 export type Weapon = z.infer<typeof Weapon>;
 
-/** A Buff, Debuff, Surge or Weapon Perk that changes damage. */
+/** What creates a damage instance. */
+export const DamageSource = z.enum(["weapon", "grenade", "melee", "super"]);
+export type DamageSource = z.infer<typeof DamageSource>;
+
+/** Effect part that multiplies damage (ADR 0006). */
+export const MultiplierPart = z.object({
+  type: z.literal("multiplier"),
+  bucketId: z.string(), // reference to Bucket.id
+  multiplier: SourcedNumber, // e.g. 1.25
+  damageSources: z.array(DamageSource).min(1),
+  elements: z.array(Element).optional(), // omitted: all elements
+});
+export type MultiplierPart = z.infer<typeof MultiplierPart>;
+
+/**
+ * Anything a build can switch on or off that changes damage or timing (ADR 0006).
+ * v0.5: every selected effect is active for the whole damage phase.
+ */
 export const Effect = z.object({
   id: z.string(),
   name: z.string(),
-  bucketId: z.string(), // reference to Bucket.id
-  multiplier: SourcedNumber, // e.g. 1.25
-  durationMs: SourcedNumber, // value null + status "verified" = permanent
-  appliesTo: z.array(z.string()), // DamageInstance ids, or ["all"]
   category: z.enum([
     "subclass",
     "armor",
@@ -93,6 +116,7 @@ export const Effect = z.object({
     "fireteamSupport",
     "weapon",
   ]),
+  parts: z.array(MultiplierPart).min(1),
 });
 export type Effect = z.infer<typeof Effect>;
 

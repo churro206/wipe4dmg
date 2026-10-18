@@ -26,6 +26,7 @@ Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in 
 | Gegner und Modus | Nur Bosse, nur PvE. Effekte, die nur gegen andere Gegner oder nur in PvP wirken, nehmen wir nicht auf. |
 | Schadensquellen | Waffen, Fähigkeiten und Supers des Spielers zählen zum Total Damage. |
 | Fireteam Support | Nur Buffs und Debuffs von Mitspielern, nicht ihr eigener Schaden. |
+| Laufzeit von Effects | In v0.5 ist jeder gewählte Effect die ganze Damage Phase aktiv. Laufzeiten kommen mit der Rotation (US-07). |
 | Effekte | Die Grundlage ist die Waffe ohne Effekte. Jeder Effekt ist einzeln schaltbar, damit man seinen Beitrag sieht. Das gilt auch für Effekte, die den Ablauf ändern, z. B. Particle Reconstruction (keine Reloads). |
 | Programmiererfahrung | Grundlagen; Claude erklärt jede Änderung |
 | Zeitbudget | Mehr als 10 Stunden pro Woche |
@@ -74,7 +75,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | --- | --- |
 | Amplification | Bucket of damage buffs outside empowering buffs, debuffs and surges, e.g. Weapons stat or Argent Ordnance (community term from the Court stacking guide) |
 | Boss DR | Damage resistance of a boss; reduces all incoming damage by a fixed factor |
-| Breakdown | Share of each bucket in the total damage of a build |
+| Breakdown | Per bucket: its multiplier and the total damage without that bucket |
 | Bucket | Group of multipliers with one stacking rule, e.g. only the highest value applies; buckets multiply with each other |
 | Build | Complete selection of subclass, armor, artifact perks and fireteam support for one weapon |
 | Burn | Damage over time that scorch deals to a target; each tick is a damage instance |
@@ -121,5 +122,5 @@ Das größte Risiko ist die Abhängigkeit von Community-Daten. Wir messen nicht 
 **Offene Fragen:**
 
 - [x] Was bedeuten die Spalten der Aegis-Tabelle? (geklärt in docs/data-sources.md)
-- [ ] Welche Boss-Typen und Damage Phases sollen als Schnellwahl erscheinen?
+- [x] Schnellwahl der Damage Phase: freie Eingabe plus die Damage Phases bekannter Bosse (Quelle: Aegis, Reiter „Bosses“, 61 Bosse). Keine festen Schritte wie 10, 20, 30 s.
 - [ ] Welcher Fireteam Support ist für die erste Version relevant?

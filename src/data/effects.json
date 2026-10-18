@@ -1,0 +1,246 @@
+[
+  {
+    "id": "well-of-radiance",
+    "name": "Well of Radiance (standing inside)",
+    "category": "subclass",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "multiplier": {
+          "value": 1.25,
+          "source": { "name": "Court Stacking Guide (Empowering Buffs, PvE 25%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon"]
+      }
+    ]
+  },
+  {
+    "id": "empowering-rift",
+    "name": "Empowering Rift",
+    "category": "subclass",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "multiplier": {
+          "value": 1.2,
+          "source": { "name": "Court Stacking Guide (Empowering Buffs, PvE 20%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon"]
+      }
+    ]
+  },
+  {
+    "id": "radiant",
+    "name": "Radiant",
+    "category": "subclass",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "multiplier": {
+          "value": 1.2,
+          "source": { "name": "Court Stacking Guide (Radiant sources, PvE 20%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon"]
+      }
+    ]
+  },
+  {
+    "id": "banner-shield",
+    "name": "Banner Shield (Weapons of Light)",
+    "category": "fireteamSupport",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "multiplier": {
+          "value": 1.25,
+          "source": { "name": "Court Stacking Guide (Standing Behind Banner, PvE 25%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon"]
+      }
+    ]
+  },
+  {
+    "id": "lumina-noble-rounds",
+    "name": "Lumina (Blessing of the Sky)",
+    "category": "fireteamSupport",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "multiplier": {
+          "value": 1.35,
+          "source": { "name": "Court Stacking Guide (Lumina's Blessing of the Sky, PvE 35%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon"]
+      }
+    ]
+  },
+  {
+    "id": "weaken",
+    "name": "Weaken",
+    "category": "subclass",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "multiplier": {
+          "value": 1.15,
+          "source": { "name": "Court Stacking Guide (Weaken, PvE 15%); Compendium Void", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon", "grenade", "melee", "super"]
+      }
+    ]
+  },
+  {
+    "id": "divinity",
+    "name": "Divinity",
+    "category": "fireteamSupport",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "multiplier": {
+          "value": 1.15,
+          "source": { "name": "Court Stacking Guide (Divinity, PvE 15%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon", "grenade", "melee", "super"]
+      }
+    ]
+  },
+  {
+    "id": "tractor-cannon",
+    "name": "Tractor Cannon",
+    "category": "fireteamSupport",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "multiplier": {
+          "value": 1.3,
+          "source": { "name": "Court Stacking Guide (Tractor Cannon, PvE 30%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon", "grenade", "melee", "super"]
+      }
+    ]
+  },
+  {
+    "id": "moebius-tether",
+    "name": "Moebius Tether",
+    "category": "fireteamSupport",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "multiplier": {
+          "value": 1.3,
+          "source": { "name": "Court Stacking Guide (Moebius Tether, PvE 30%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon", "grenade", "melee", "super"]
+      }
+    ]
+  },
+  {
+    "id": "deadfall-tether",
+    "name": "Deadfall Tether",
+    "category": "fireteamSupport",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "multiplier": {
+          "value": 1.35,
+          "source": { "name": "Court Stacking Guide (Deadfall Tether, PvE 35%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon", "grenade", "melee", "super"]
+      }
+    ]
+  },
+  {
+    "id": "solar-surge-2x",
+    "name": "Solar Surge 2x",
+    "category": "armor",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "surge",
+        "multiplier": {
+          "value": 1.17,
+          "source": { "name": "Court Stacking Guide (Instant 2x Surge, PvE 17%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon"],
+        "elements": ["solar"]
+      }
+    ]
+  },
+  {
+    "id": "solar-surge-3x",
+    "name": "Solar Surge 3x",
+    "category": "armor",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "surge",
+        "multiplier": {
+          "value": 1.22,
+          "source": { "name": "Court Stacking Guide; Aegis Boss Damage (column Surge 1.220)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "unverified", "note": "Derived: Court lists 22% for surges such as Fr0st-EE5, Aegis assumes 1.22. Not stated as 3x directly." }
+        },
+        "damageSources": ["weapon"],
+        "elements": ["solar"]
+      }
+    ]
+  },
+  {
+    "id": "solar-surge-4x",
+    "name": "Solar Surge 4x",
+    "category": "armor",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "surge",
+        "multiplier": {
+          "value": 1.25,
+          "source": { "name": "Court Stacking Guide (Instant 4x Surge, PvE 25%)", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified" }
+        },
+        "damageSources": ["weapon"],
+        "elements": ["solar"]
+      }
+    ]
+  },
+  {
+    "id": "weapons-stat-200",
+    "name": "Weapons stat 200 (power weapons against bosses)",
+    "category": "armor",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "multiplier": {
+          "value": 1.1,
+          "source": { "name": "Destiny Data Compendium, Game Mechanics (Weapons stat: power weapons +0.1% per point above 100 against bosses); Aegis column 200 (1.100)", "url": "https://destiny2.science/data-compendium", "retrieved": "2026-10-18", "status": "verified", "note": "Value for power weapons only. Primary and special weapons get 15% at 200." }
+        },
+        "damageSources": ["weapon"]
+      }
+    ]
+  },
+  {
+    "id": "elemental-overdrive-solar",
+    "name": "Elemental Overdrive (solar pickup)",
+    "category": "artifact",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "multiplier": {
+          "value": 1.22,
+          "source": { "name": "Court Stacking Guide (Elemental Overdrive, PvE 22%); Compendium Artifact Perks", "url": "https://destiny2.science/court-sheet", "retrieved": "2026-10-18", "status": "verified", "note": "UI shows it as surge, but it stacks with all other buffs." }
+        },
+        "damageSources": ["weapon"],
+        "elements": ["solar"]
+      }
+    ]
+  }
+]

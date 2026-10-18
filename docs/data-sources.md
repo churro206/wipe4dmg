@@ -12,6 +12,7 @@ Alle Quellen sind über [destiny2.science](https://www.destiny2.science/) verlin
 | --- | --- | --- | --- |
 | Hauptquelle Waffen-Grundwerte | [Quantum Damage-ics](https://destiny2.science/quantum-damage-ics) | Tabelle bis 9.7.0.1; One Thousand Voices zuletzt 2024/2025 aktualisiert, Katalysator fehlt | Schaden pro Shot, Magazin, Reserves, rpm, Reload Time, Zeit bis leer; ohne Meta-Annahmen |
 | Gegenprüfung, Multiplier | [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage) | Changelog 2026-10-12; One Thousand Voices getestet auf 9.7.0.3 | Grundschaden pro Shot mit Meta-Annahmen, Multiplier, Shots gesamt, Zeit bis leer |
+| Damage Phases bekannter Bosse | [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage), Reiter „Bosses“ | Changelog 2026-10-12 | 61 Bosse mit Aktivität, Länge der Damage Phase in Sekunden und Beschreibung |
 | Buffs, Debuffs, Stacking | [Destiny Data Compendium](https://destiny2.science/data-compendium) | noch nicht geprüft | Werte für Perks, Mods, Subklassen, Spielmechaniken |
 
 ## One Thousand Voices bei Quantum Damage-ics

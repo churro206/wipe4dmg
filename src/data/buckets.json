@@ -3,36 +3,70 @@
     "id": "empowering",
     "name": "Empowering Buff",
     "stacking": "highest",
-    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified", "note": "Verify with the Damage Stacking guide on destiny2.science." }
+    "source": {
+      "name": "Destiny Data Compendium, Artifact Perks (Prismatic Transfer: \"Doesn't stack with Radiant or other similar empowering buffs\"); Court Stacking Guide",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-18",
+      "status": "verified"
+    }
   },
   {
     "id": "debuff",
     "name": "Debuff",
     "stacking": "highest",
-    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified", "note": "Verify with the Damage Stacking guide on destiny2.science." }
+    "source": {
+      "name": "Court Stacking Guide (Global Debuffs)",
+      "url": "https://destiny2.science/court-sheet",
+      "retrieved": "2026-10-18",
+      "status": "verified",
+      "note": "Some debuffs override others regardless of value, e.g. Divinity over Particle Reconstruction. See docs/mechanics/damage-stacking.md."
+    }
   },
   {
     "id": "surge",
     "name": "Surge",
     "stacking": "highest",
-    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified", "note": "Surges scale with the number of mods. Model each mod count as its own effect." }
+    "source": {
+      "name": "Court Stacking Guide (Weapon Surges: \"the highest same-Element Surge always takes priority\")",
+      "url": "https://destiny2.science/court-sheet",
+      "retrieved": "2026-10-18",
+      "status": "verified",
+      "note": "Model each surge level (2x, 3x, 4x) as its own effect."
+    }
+  },
+  {
+    "id": "amplification",
+    "name": "Amplification",
+    "stacking": "multiplicative",
+    "source": {
+      "name": "Court Stacking Guide (Amplification Modifiers: stackable with empowering buffs, debuffs and surges)",
+      "url": "https://destiny2.science/court-sheet",
+      "retrieved": "2026-10-18",
+      "status": "unverified",
+      "note": "Stacking with other amplification effects is open; multiplicative is an assumption."
+    }
   },
   {
     "id": "weaponPerk",
     "name": "Weapon Perk",
     "stacking": "multiplicative",
-    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified" }
+    "source": {
+      "name": "Court Stacking Guide (Weapon Perks)",
+      "url": "https://destiny2.science/court-sheet",
+      "retrieved": "2026-10-18",
+      "status": "unverified",
+      "note": "Stacking of several perks on one weapon is open."
+    }
   },
   {
-    "id": "artifact",
-    "name": "Artifact Perk",
+    "id": "exoticIntrinsic",
+    "name": "Exotic Intrinsic",
     "stacking": "multiplicative",
-    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified", "note": "Check each artifact perk individually." }
-  },
-  {
-    "id": "exoticArmor",
-    "name": "Exotic Armor",
-    "stacking": "multiplicative",
-    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified" }
+    "source": {
+      "name": "Court Stacking Guide (Exotic Intrinsics)",
+      "url": "https://destiny2.science/court-sheet",
+      "retrieved": "2026-10-18",
+      "status": "unverified"
+    }
   }
 ]

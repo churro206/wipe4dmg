@@ -69,7 +69,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| [Damage Stacking (Buckets)](damage-stacking.md) | Multiplier | Damage-Buffs fallen in die Kategorien Empowering Buffs, Debuffs, Weapon Surges und Amplification. Die Kategorien multiplizieren sich untereinander. | hoch | Court Stacking Guide | ausgearbeitet |
+| [Damage Stacking (Buckets)](damage-stacking.md) | Multiplier | Damage-Buffs fallen in die Kategorien Empowering Buffs, Debuffs, Weapon Surges und Amplification. Die Kategorien multiplizieren sich untereinander. | hoch | Court Stacking Guide | im Simulator (ohne Vorrangregeln) |
 | Weapons Stat | Multiplier (Amplification) | Stat 101–200 erhöht den Waffenschaden gegen Bosse; Heavy bei 200: ×1,10. Stat 0–100 wirkt nur gegen normale Gegner. | hoch | Court; Aegis Spalte „200“ | katalogisiert |
 | Precision | Multiplier (Bedingung) | Schaden auf kritische Trefferzonen; Werte je Waffe | mittel (One Thousand Voices: keiner) | Quantum; Aegis | katalogisiert |
 | Gegnertyp | Bedingung | Manche Effekte wirken nicht gegen Bosse, z. B. Kinetic Intrinsic Buff, Weapons Stat 0–100; wir rechnen nur gegen Bosse | Filter: solche Effekte entfallen | Compendium „Game Mechanics“; Court | katalogisiert |

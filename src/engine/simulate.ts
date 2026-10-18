@@ -7,9 +7,18 @@
 // - The weapon fires at most totalShots shots.
 // - A shot or damage instance counts if it happens at or before the end of the damage phase.
 //
-// No effects yet: the result is the weapon on its own (v0.1).
+// Effects (ADR 0006, v0.5): every selected effect is active for the whole damage phase.
+// Per bucket the stacking rule combines the multipliers; buckets multiply with each other.
 
-import type { SourcedNumber, Weapon } from "../data/schema";
+import type {
+  Bucket,
+  DamageSource,
+  Effect,
+  Element,
+  MultiplierPart,
+  SourcedNumber,
+  Weapon,
+} from "../data/schema";
 
 const MS_PER_SECOND = 1000;
 const MS_PER_MINUTE = 60_000;
@@ -22,6 +31,8 @@ export type TimedDamageInstance = {
   id: string; // DamageInstance id from the weapon
   timeMs: number;
   damage: number;
+  damageSource: DamageSource;
+  element: Element;
 };
 
 export type SimulationResult = {
@@ -33,6 +44,8 @@ export type SimulationResult = {
 export function simulate(
   weapon: Weapon,
   damagePhaseSeconds: number,
+  effects: Effect[] = [],
+  buckets: Bucket[] = [],
 ): SimulationResult {
   const chargeTimeMs = requireValue(weapon.chargeTimeMs, "chargeTimeMs");
   const fireRateRpm = requireValue(weapon.fireRateRpm, "fireRateRpm");
@@ -52,6 +65,7 @@ export function simulate(
     );
   }
 
+  const multiplierParts = collectMultiplierParts(effects, buckets);
   const shotIntervalMs = MS_PER_MINUTE / fireRateRpm;
   const damagePhaseMs = damagePhaseSeconds * MS_PER_SECOND;
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
@@ -75,6 +89,14 @@ export function simulate(
       tickIntervalMs: requireValue(instance.tickIntervalMs, "tickIntervalMs"),
     }));
 
+  const damageSource: DamageSource = "weapon";
+  const multiplier = combinedMultiplier(
+    multiplierParts,
+    buckets,
+    damageSource,
+    weapon.element,
+  );
+
   const damageInstances: TimedDamageInstance[] = [];
   for (const shot of shots) {
     for (const instance of instances) {
@@ -85,7 +107,9 @@ export function simulate(
           damageInstances.push({
             id: instance.id,
             timeMs,
-            damage: instance.damage,
+            damage: instance.damage * multiplier,
+            damageSource,
+            element: weapon.element,
           });
         }
       }
@@ -95,6 +119,55 @@ export function simulate(
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   return { shots, damageInstances, totalDamage };
+}
+
+/** Returns all multiplier parts of the effects; throws if a part refers to an unknown bucket. */
+function collectMultiplierParts(
+  effects: Effect[],
+  buckets: Bucket[],
+): MultiplierPart[] {
+  const bucketIds = new Set(buckets.map((bucket) => bucket.id));
+  const parts = effects.flatMap((effect) => effect.parts);
+  for (const part of parts) {
+    if (!bucketIds.has(part.bucketId)) {
+      throw new Error(`Unknown bucket "${part.bucketId}"`);
+    }
+  }
+  return parts;
+}
+
+/** Combines the matching parts per bucket by its stacking rule; buckets multiply with each other. */
+function combinedMultiplier(
+  parts: MultiplierPart[],
+  buckets: Bucket[],
+  damageSource: DamageSource,
+  element: Element,
+): number {
+  let total = 1;
+  for (const bucket of buckets) {
+    const values = parts
+      .filter(
+        (part) =>
+          part.bucketId === bucket.id &&
+          part.damageSources.includes(damageSource) &&
+          (part.elements === undefined || part.elements.includes(element)),
+      )
+      .map((part) => requireValue(part.multiplier, "multiplier"));
+    if (values.length === 0) continue;
+
+    switch (bucket.stacking) {
+      case "highest":
+        total *= Math.max(...values);
+        break;
+      case "multiplicative":
+        total *= values.reduce((product, value) => product * value, 1);
+        break;
+      case "additive":
+        total *= 1 + values.reduce((sum, value) => sum + (value - 1), 0);
+        break;
+    }
+  }
+  return total;
 }
 
 /** Returns the value, or throws if it is missing (ADR 0002: never compute with guessed values). */
