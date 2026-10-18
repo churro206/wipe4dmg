@@ -14,6 +14,7 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 - `docs/requirements.md`: Produktvision, User Stories, Releaseplan, Glossary, Risiken.
 - `docs/adr/`: Architecture Decision Records. Lies alle ADRs vor größeren Änderungen.
 - `docs/data-sources.md`: Datenquellen, Messbedingungen und Messprotokoll.
+- `docs/mechanics/`: Wissen über Mechanics von Destiny 2. Lies `docs/mechanics/README.md` vor Änderungen an Effects oder am Simulator.
 
 ## Sprache
 

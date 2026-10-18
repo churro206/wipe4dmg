@@ -67,22 +67,26 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 
 | Term | Meaning |
 | --- | --- |
+| Amplification | Bucket of damage buffs outside empowering buffs, debuffs and surges, e.g. Weapons stat or Argent Ordnance (community term from the Court stacking guide) |
 | Boss DR | Damage resistance of a boss; reduces all incoming damage by a fixed factor |
 | Breakdown | Share of each bucket in the total damage of a build |
-| Bucket | Group of multipliers with one stacking rule; only the highest value per bucket applies, and buckets multiply with each other |
+| Bucket | Group of multipliers with one stacking rule, e.g. only the highest value applies; buckets multiply with each other |
 | Build | Complete selection of subclass, armor, artifact perks and fireteam support for one weapon |
 | Burn | Damage over time that scorch deals to a target; each tick is a damage instance |
 | Damage Curve | Cumulative damage over the damage phase |
 | Damage Instance | Single hit with a timestamp and a damage value; the explosion of One Thousand Voices is a separate, delayed damage instance |
+| Damage over Time | Mechanic category: an effect deals damage in ticks over a duration, e.g. burn or Taken Seeker |
 | Damage Phase | Time span in seconds in which the simulator sums up damage (community: DPS phase) |
 | Data File | JSON file with game data; contains no logic |
 | Debuff | Effect on the target that increases the damage it takes, e.g. Tether or Divinity |
+| Effect | Anything a build can switch on or off that changes damage or timing, e.g. a buff, debuff, surge, perk or artifact perk |
 | Empowering Buff | Effect on the player that increases the damage dealt, e.g. Well of Radiance or Radiant |
 | Engine | Simulator plus optimizer; contains only pure functions |
 | Fireteam Support | Empowering buff or debuff that another fireteam member provides |
 | Ignition | Solar explosion when a target reaches enough scorch stacks; a separate damage instance |
 | Intrinsic | Fixed exotic perk of a weapon, including its catalyst effect |
 | Manual Mode | App mode in which the user sets one build and runs the simulator once |
+| Mechanic | Game rule that changes damage or timing; documented in docs/mechanics |
 | Multiplier | Factor by which an effect changes damage, e.g. 1.25 |
 | Optimizer | App mode that runs the simulator for all builds and ranks the best builds |
 | Reload | Refilling the magazine after its last shot; takes the reload time of the weapon |
@@ -90,7 +94,11 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |
 | Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |
 | Simulator | Part of the engine that computes one build over the damage phase |
-| Surge | Armor mod effect that increases weapon damage of one damage type; forms its own bucket |
+| Stacking Resource | Mechanic category: a counter on the player that builds up and decays, e.g. Bolt Charge or Armor Charge |
+| Surge | Effect that increases weapon damage of one damage type; armor mods, exotics and artifact perks share it; forms its own bucket |
+| Target State | Mechanic category: a state on the target that other effects check, e.g. Blind or Blight |
+| Threshold Trigger | Mechanic category: stacks or damage on a target trigger an event at a threshold, e.g. scorch to ignition or Jolt |
+| Timing Modifier | Mechanic category: an effect changes shots, reloads or ammo instead of damage, e.g. Particle Reconstruction |
 | Total Damage | Sum of all damage instances in the damage phase |
 
 ## Risiken und offene Fragen
