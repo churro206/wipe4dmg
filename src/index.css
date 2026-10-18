@@ -183,3 +183,12 @@ table.legend td {
   margin-right: 0.5rem;
   vertical-align: -0.05rem;
 }
+
+table.rotation input {
+  max-width: 5rem;
+}
+
+table.rotation td,
+table.rotation th {
+  vertical-align: middle;
+}

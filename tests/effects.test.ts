@@ -174,8 +174,14 @@ describe("simulate: effects", () => {
       (product, e) => product * multiplierOf(e),
       baseTotal,
     );
+    // Whole damage phase for every effect: this test is about stacking, not about durations.
+    const wholePhase = Object.fromEntries(
+      chosen.map((e) => [e.id, { startMs: 0 }]),
+    );
     expect(
-      simulate(weapon, DAMAGE_PHASE_SECONDS, chosen, buckets).totalDamage,
+      simulate(weapon, DAMAGE_PHASE_SECONDS, chosen, buckets, {
+        effectWindows: wholePhase,
+      }).totalDamage,
     ).toBeCloseTo(expected);
   });
 });

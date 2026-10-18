@@ -260,3 +260,156 @@ export function BreakdownChart({
     </figure>
   );
 }
+
+// Range steps for the time axis of the rotation timeline; the smallest step with at most 6 ticks wins.
+const TIME_STEPS_SECONDS = [1, 2, 5, 10, 15, 20, 30, 60, 120];
+const MAX_TIME_TICKS = 6;
+// Longer effect names are cut with an ellipsis; the full name shows on hover.
+const MAX_LABEL_CHARS = 24;
+
+/**
+ * Rotation timeline (US-07): one bar per effect window, the shots as thin marks and the
+ * ignitions as dots. Bars carry a native tooltip; the rotation table is the table view.
+ */
+export function RotationTimeline({
+  rows,
+  shotsMs,
+  ignitionsMs,
+  damagePhaseSeconds,
+}: {
+  rows: { label: string; startMs: number; endMs: number; uptime: number }[];
+  shotsMs: number[];
+  ignitionsMs: number[];
+  damagePhaseSeconds: number;
+}) {
+  const width = 560;
+  const labelWidth = 170;
+  const rowHeight = 26;
+  const axisHeight = 22;
+  const plotWidth = width - labelWidth - 12;
+  const phaseMs = Math.max(damagePhaseSeconds * 1000, 1);
+  const x = (ms: number) =>
+    labelWidth + (Math.min(Math.max(ms, 0), phaseMs) / phaseMs) * plotWidth;
+
+  const lines = [
+    ...rows.map((row) => ({ kind: "effect" as const, row })),
+    { kind: "shots" as const },
+    ...(ignitionsMs.length > 0 ? [{ kind: "ignitions" as const }] : []),
+  ];
+  const plotHeight = lines.length * rowHeight;
+  const step =
+    TIME_STEPS_SECONDS.find((s) => damagePhaseSeconds / s <= MAX_TIME_TICKS) ??
+    TIME_STEPS_SECONDS[TIME_STEPS_SECONDS.length - 1];
+  const ticks = Array.from(
+    { length: Math.floor(damagePhaseSeconds / step) + 1 },
+    (_, i) => i * step,
+  );
+
+  return (
+    <figure className="chart">
+      <figcaption>Rotation</figcaption>
+      <svg
+        viewBox={`0 0 ${width} ${plotHeight + axisHeight}`}
+        width="100%"
+        role="img"
+        aria-label="Zeitleiste: Zeitfenster der Effects, Shots und Ignitions"
+      >
+        {ticks.map((t) => (
+          <g key={t}>
+            <line
+              x1={x(t * 1000)}
+              x2={x(t * 1000)}
+              y1={0}
+              y2={plotHeight}
+              stroke="var(--grid)"
+            />
+            <text
+              x={x(t * 1000)}
+              y={plotHeight + 15}
+              textAnchor="middle"
+              fill="var(--muted)"
+              fontSize={11}
+            >
+              {seconds.format(t)} s
+            </text>
+          </g>
+        ))}
+        <line
+          x1={labelWidth}
+          x2={labelWidth + plotWidth}
+          y1={plotHeight}
+          y2={plotHeight}
+          stroke="var(--axis)"
+        />
+        {lines.map((line, i) => {
+          const y = i * rowHeight;
+          const middle = y + rowHeight / 2;
+          const label =
+            line.kind === "effect"
+              ? line.row.label
+              : line.kind === "shots"
+                ? "Shots"
+                : "Ignitions";
+          return (
+            <g key={label + i}>
+              <text
+                x={labelWidth - 8}
+                y={middle + 4}
+                textAnchor="end"
+                fill="var(--text)"
+                fontSize={12}
+              >
+                <title>{label}</title>
+                {label.length > MAX_LABEL_CHARS
+                  ? `${label.slice(0, MAX_LABEL_CHARS - 1)}…`
+                  : label}
+              </text>
+              {line.kind === "effect" && line.row.endMs > line.row.startMs && (
+                <rect
+                  x={x(line.row.startMs)}
+                  y={middle - 6}
+                  width={x(line.row.endMs) - x(line.row.startMs)}
+                  height={12}
+                  rx={4}
+                  fill="var(--muted)"
+                >
+                  <title>
+                    {`${label}: ${seconds.format(line.row.startMs / 1000)}–${seconds.format(line.row.endMs / 1000)} s (${percent.format(line.row.uptime)})`}
+                  </title>
+                </rect>
+              )}
+              {line.kind === "shots" &&
+                shotsMs.map((ms) => (
+                  <line
+                    key={ms}
+                    x1={x(ms)}
+                    x2={x(ms)}
+                    y1={middle - 7}
+                    y2={middle + 7}
+                    stroke="var(--series-1)"
+                    strokeWidth={2}
+                  >
+                    <title>{`Shot bei ${seconds.format(ms / 1000)} s`}</title>
+                  </line>
+                ))}
+              {line.kind === "ignitions" &&
+                ignitionsMs.map((ms) => (
+                  <circle
+                    key={ms}
+                    cx={x(ms)}
+                    cy={middle}
+                    r={4}
+                    fill="var(--series-2)"
+                    stroke="var(--bg)"
+                    strokeWidth={2}
+                  >
+                    <title>{`Ignition bei ${seconds.format(ms / 1000)} s`}</title>
+                  </circle>
+                ))}
+            </g>
+          );
+        })}
+      </svg>
+    </figure>
+  );
+}

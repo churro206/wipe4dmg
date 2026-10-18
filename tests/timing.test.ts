@@ -113,6 +113,7 @@ describe("simulate: timing effects", () => {
       DAMAGE_PHASE_SECONDS,
       [particleReconstruction, tractor],
       buckets,
+      { effectWindows: { "tractor-cannon": { startMs: 0 } } },
     );
     expect(totalDamage).toBeCloseTo(baseTotal * debuffOf(tractor));
   });

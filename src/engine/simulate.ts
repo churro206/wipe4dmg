@@ -7,8 +7,9 @@
 // - The weapon fires at most totalShots shots.
 // - A shot or damage instance counts if it happens at or before the end of the damage phase.
 //
-// Effects (ADR 0006, v0.5): every selected effect is active for the whole damage phase.
-// Timing parts change the shot plan, e.g. noReload removes all reloads.
+// Effects (ADR 0006, stage B): each selected effect is active in its window (start and duration,
+// see effectWindows.ts); the parts are evaluated at the time of each shot, reload and damage instance.
+// Timing parts change the shot plan, e.g. noReload skips the reloads that start inside the window.
 // Per bucket the stacking rule combines the multipliers; buckets multiply with each other.
 //
 // Intrinsic parts of the weapon add stacks to counters after each shot (e.g. scorch). At a threshold
@@ -19,7 +20,6 @@
 import type {
   Bucket,
   CounterId,
-  CounterModifierPart,
   DamageOverTimePart,
   DamageSource,
   Effect,
@@ -30,7 +30,9 @@ import {
   activeParts,
   appliesToWeaponType,
   combinedMultiplier,
+  type ActiveParts,
 } from "./effectParts";
+import { resolveWindows, type EffectWindowOptions } from "./effectWindows";
 import { requireValue } from "./requireValue";
 
 const MS_PER_SECOND = 1000;
@@ -50,7 +52,7 @@ export type TimedDamageInstance = {
   element: Element;
 };
 
-export type SimulationOptions = {
+export type SimulationOptions = EffectWindowOptions & {
   catalyst?: boolean; // default: without catalyst
 };
 
@@ -87,25 +89,44 @@ export function simulate(
     );
   }
 
-  const { multiplierParts, timingParts, counterModifierParts } = activeParts(
-    effects,
-    buckets,
-  );
-  const noReload = timingParts.some(
-    (part) =>
-      part.change === "noReload" &&
-      appliesToWeaponType(part.weaponTypes, weapon.weaponType),
-  );
+  // Validates the buckets of all parts once, even of effects outside their window.
+  activeParts(effects, buckets);
+  const windows = resolveWindows(effects, options);
+  const partsCache = new Map<string, ActiveParts>();
+  const partsAt = (timeMs: number): ActiveParts => {
+    const active = effects.filter((effect) => {
+      const window = windows.get(effect.id)!;
+      return window.startMs <= timeMs && timeMs < window.endMs;
+    });
+    const key = active.map((effect) => effect.id).join("|");
+    let parts = partsCache.get(key);
+    if (!parts) {
+      parts = activeParts(active, buckets);
+      partsCache.set(key, parts);
+    }
+    return parts;
+  };
+  const noReloadAt = (timeMs: number) =>
+    partsAt(timeMs).timingParts.some(
+      (part) =>
+        part.change === "noReload" &&
+        appliesToWeaponType(part.weaponTypes, weapon.weaponType),
+    );
   const shotIntervalMs = MS_PER_MINUTE / fireRateRpm;
   const damagePhaseMs = damagePhaseSeconds * MS_PER_SECOND;
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
 
+  // A reload starts with the last shot of a magazine; a noReload part active then skips it.
   const shots: Shot[] = [];
+  let shotMs = chargeTimeMs;
   for (let i = 0; i < totalShots; i++) {
-    const reloads = noReload ? 0 : Math.floor(i / magazine);
-    const timeMs = chargeTimeMs + i * shotIntervalMs + reloads * reloadTimeMs;
-    if (!isInPhase(timeMs)) break;
-    shots.push({ timeMs });
+    if (i > 0) {
+      const previousMs = shotMs;
+      shotMs += shotIntervalMs;
+      if (i % magazine === 0 && !noReloadAt(previousMs)) shotMs += reloadTimeMs;
+    }
+    if (!isInPhase(shotMs)) break;
+    shots.push({ timeMs: shotMs });
   }
 
   const instances = weapon.damageInstances
@@ -119,13 +140,19 @@ export function simulate(
     }));
 
   const damageSource: DamageSource = "weapon";
-  const multiplierFor = (element: Element) =>
-    combinedMultiplier(multiplierParts, buckets, {
+  const multiplierAt = (timeMs: number, element: Element) =>
+    combinedMultiplier(partsAt(timeMs).multiplierParts, buckets, {
       damageSource,
       element,
       weaponType: weapon.weaponType,
     });
-  const multiplier = multiplierFor(weapon.element);
+  const counterFactorAt = (counterId: CounterId, timeMs: number) =>
+    partsAt(timeMs)
+      .counterModifierParts.filter((part) => part.counterId === counterId)
+      .reduce(
+        (product, part) => product * requireValue(part.factor, "factor"),
+        1,
+      );
 
   const damageInstances: TimedDamageInstance[] = [];
   for (const shot of shots) {
@@ -137,7 +164,7 @@ export function simulate(
           damageInstances.push({
             id: instance.id,
             timeMs,
-            damage: instance.damage * multiplier,
+            damage: instance.damage * multiplierAt(timeMs, weapon.element),
             damageSource,
             element: weapon.element,
           });
@@ -149,16 +176,16 @@ export function simulate(
     ...thresholdDamageInstances(
       weapon,
       shots,
-      counterModifierParts,
+      counterFactorAt,
       isInPhase,
-      multiplierFor,
+      multiplierAt,
     ),
   );
   for (const part of weapon.intrinsicParts) {
     if (part.type !== "damageOverTime") continue;
     if (part.requiresCatalyst && !catalyst) continue;
     damageInstances.push(
-      ...damageOverTimeInstances(part, shots, isInPhase, multiplier, weapon),
+      ...damageOverTimeInstances(part, shots, isInPhase, multiplierAt, weapon),
     );
   }
   damageInstances.sort((a, b) => a.timeMs - b.timeMs);
@@ -191,7 +218,7 @@ function damageOverTimeInstances(
   part: DamageOverTimePart,
   shots: Shot[],
   isInPhase: (timeMs: number) => boolean,
-  multiplier: number,
+  multiplierAt: (timeMs: number, element: Element) => number,
   weapon: Weapon,
 ): TimedDamageInstance[] {
   const count = requireValue(
@@ -220,7 +247,7 @@ function damageOverTimeInstances(
     result.push({
       id: part.id,
       timeMs,
-      damage: damage * multiplier,
+      damage: damage * multiplierAt(timeMs, weapon.element),
       damageSource: "weapon",
       element: weapon.element,
     });
@@ -244,16 +271,16 @@ function damageOverTimeInstances(
 
 /**
  * Applies the counter parts of the weapon after each shot in time order and creates a damage
- * instance whenever a counter reaches its threshold. Counter modifiers scale the stacks of each
- * application, rounded up. Not modeled yet: decay of stacks over time
+ * instance whenever a counter reaches its threshold. Counter modifiers active at the time of an
+ * application scale its stacks, rounded up. Not modeled yet: decay of stacks over time
  * (docs/mechanics/scorch-and-ignition.md).
  */
 function thresholdDamageInstances(
   weapon: Weapon,
   shots: Shot[],
-  modifiers: CounterModifierPart[],
+  counterFactorAt: (counterId: CounterId, timeMs: number) => number,
   isInPhase: (timeMs: number) => boolean,
-  multiplierFor: (element: Element) => number,
+  multiplierAt: (timeMs: number, element: Element) => number,
 ): TimedDamageInstance[] {
   const thresholds = weapon.intrinsicParts.flatMap((part) =>
     part.type === "threshold"
@@ -282,19 +309,12 @@ function thresholdDamageInstances(
     );
     const firstDelayMs = requireValue(part.firstDelayMs, "firstDelayMs");
     const intervalMs = requireValue(part.intervalMs, "intervalMs");
-    const factor = modifiers
-      .filter((modifier) => modifier.counterId === part.counterId)
-      .reduce(
-        (product, modifier) =>
-          product * requireValue(modifier.factor, "factor"),
-        1,
-      );
-    const scaledStacks = Math.ceil(stacks * factor - ROUNDING_TOLERANCE);
     for (const timeMs of triggerTimes(shots, count, firstDelayMs, intervalMs)) {
+      const factor = counterFactorAt(part.counterId, timeMs);
       applications.push({
         timeMs,
         counterId: part.counterId,
-        stacks: scaledStacks,
+        stacks: Math.ceil(stacks * factor - ROUNDING_TOLERANCE),
       });
     }
   }
@@ -324,7 +344,9 @@ function thresholdDamageInstances(
       result.push({
         id: reached.part.damageInstanceId,
         timeMs: application.timeMs,
-        damage: reached.damage * multiplierFor(reached.part.element),
+        damage:
+          reached.damage *
+          multiplierAt(application.timeMs, reached.part.element),
         damageSource: "weapon",
         element: reached.part.element,
       });

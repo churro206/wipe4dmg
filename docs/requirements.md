@@ -26,7 +26,7 @@ Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in 
 | Gegner und Modus | Nur Bosse, nur PvE. Effekte, die nur gegen andere Gegner oder nur in PvP wirken, nehmen wir nicht auf. |
 | Schadensquellen | Waffen, Fähigkeiten und Supers des Spielers zählen zum Total Damage. |
 | Fireteam Support | Nur Buffs und Debuffs von Mitspielern, nicht ihr eigener Schaden. |
-| Laufzeit von Effects | In v0.5 ist jeder gewählte Effect die ganze Damage Phase aktiv. Laufzeiten kommen in Stufen: Dauer und Startzeitpunkt mit der Rotation (US-07), Auslöser und Cooldowns danach (ADR 0006). |
+| Laufzeit von Effects | Jeder gewählte Effect ist in seinem Zeitfenster aktiv: Start und Dauer aus der Rotation, Dauer vorbelegt aus den Data Files (US-07). Auslöser und Cooldowns kommen später (ADR 0006, Stufe C). |
 | Effekte | Die Grundlage ist die Waffe ohne Effekte. Jeder Effekt ist einzeln schaltbar, damit man seinen Beitrag sieht. Das gilt auch für Effekte, die den Ablauf ändern, z. B. Particle Reconstruction (keine Reloads). |
 | Programmiererfahrung | Grundlagen; Claude erklärt jede Änderung |
 | Zeitbudget | Mehr als 10 Stunden pro Woche |
@@ -62,7 +62,7 @@ Das MVP (v0.5) ist das erste Release mit echtem Nutzen. Das Walking Skeleton dav
 | --- | --- | --- | --- |
 | v0.1 Walking Skeleton | Waffe ohne Buffs, Total Damage, online per Link | Kette läuft durch | abgeschlossen 2026-10-18 |
 | v0.5 MVP | Manual Mode, Breakdown, US-01 bis US-04 | Ergebnisse stimmen mit den Werten der Datenquelle überein (`tests/gate.test.ts`) | abgeschlossen 2026-10-18 |
-| v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, Fähigkeiten und Supers, US-05 bis US-09, US-14 | Freunde testen v1.0 | in Arbeit (Katalysator, Damage Curve) |
+| v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, Fähigkeiten und Supers, US-05 bis US-09, US-14 | Freunde testen v1.0 | in Arbeit (Katalysator, Damage Curve, Rotation) |
 | v1.x Erweiterung | Speichern im Browser, weitere Waffen, Discord Bot, US-10, US-11, US-13 | – | offen |
 
 Ein Release startet erst, wenn das Gate davor erfüllt ist. Das Gate vor v1.0 vergleicht unsere Ergebnisse mit den Gesamtwerten der Datenquelle, z. B. Total Damage pro Magazin.
@@ -98,7 +98,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Multiplier | Factor by which an effect changes damage, e.g. 1.25 |
 | Optimizer | App mode that runs the simulator for all builds and ranks the best builds |
 | Reload | Refilling the magazine after its last shot; takes the reload time of the weapon |
-| Rotation | Sequence of shots, reloads and buff activations in the damage phase |
+| Rotation | Sequence of shots, reloads and effect windows (start and duration of each effect) in the damage phase |
 | Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |
 | Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |
 | Simulator | Part of the engine that computes one build over the damage phase |
@@ -108,6 +108,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Threshold Trigger | Mechanic category: stacks or damage on a target trigger an event at a threshold, e.g. scorch to ignition or Jolt |
 | Timing Modifier | Mechanic category: an effect changes shots, reloads or ammo instead of damage, e.g. Particle Reconstruction |
 | Total Damage | Sum of all damage instances of the player (weapons, abilities, supers) in the damage phase |
+| Uptime | Share of the damage phase in which an effect is active; set by its start and duration in the rotation |
 
 ## Risiken und offene Fragen
 

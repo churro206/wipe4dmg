@@ -10,6 +10,7 @@ import {
   dpsByDamagePhase,
 } from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
+import { effectWindows, type EffectWindowInput } from "../engine/effectWindows";
 import { loadBosses, loadBuckets, loadEffects } from "../engine/loadData";
 import { loadWeapon } from "../engine/loadWeapon";
 import { simulate } from "../engine/simulate";
@@ -18,6 +19,7 @@ import {
   DamageCurveChart,
   DamageShareChart,
   DpsByLengthChart,
+  RotationTimeline,
 } from "./Charts";
 
 const weapon = loadWeapon(raw);
@@ -41,6 +43,10 @@ const DPS_CHART_MIN_SECONDS = 120;
 
 const integer = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 });
 const seconds = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
+const percent = new Intl.NumberFormat("de-DE", {
+  style: "percent",
+  maximumFractionDigits: 0,
+});
 const factor = new Intl.NumberFormat("de-DE", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 3,
@@ -57,46 +63,112 @@ function describePart(part: EffectPart): string {
   }
 }
 
+type WindowInput = { start: string; duration: string };
+
+/** Seconds from an input field; undefined if empty or invalid. Accepts a decimal comma. */
+function secondsOf(text: string): number | undefined {
+  const value = Number(text.replace(",", "."));
+  return text.trim() !== "" && Number.isFinite(value) && value >= 0
+    ? value
+    : undefined;
+}
+
+/** Default rotation input: start 0, duration from the data file or empty (until the end). */
+function defaultWindow(effect: Effect): WindowInput {
+  const durationMs = effect.durationMs?.value;
+  return {
+    start: "0",
+    duration: durationMs == null ? "" : seconds.format(durationMs / 1000),
+  };
+}
+
+function selectedEffects(ids: string[]): Effect[] {
+  return effects.filter((effect) => ids.includes(effect.id));
+}
+
+/** Effect windows for the engine from the rotation inputs (seconds) of the selected effects. */
+function windowsFor(
+  selected: Effect[],
+  inputs: Record<string, WindowInput>,
+): Record<string, EffectWindowInput> {
+  return Object.fromEntries(
+    selected.map((effect) => {
+      const input = inputs[effect.id] ?? defaultWindow(effect);
+      const durationSeconds = secondsOf(input.duration);
+      return [
+        effect.id,
+        {
+          startMs: (secondsOf(input.start) ?? 0) * 1000,
+          ...(durationSeconds === undefined
+            ? {}
+            : { durationMs: durationSeconds * 1000 }),
+        },
+      ];
+    }),
+  );
+}
+
 function App() {
   const [input, setInput] = useState("");
   const [bossId, setBossId] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [catalyst, setCatalyst] = useState(false);
+  const [windowInputs, setWindowInputs] = useState<Record<string, WindowInput>>(
+    {},
+  );
 
   const damagePhaseSeconds = Number(input);
   const isValid =
     input.trim() !== "" &&
     Number.isFinite(damagePhaseSeconds) &&
     damagePhaseSeconds >= 0;
-  const selected = effects.filter((effect) => selectedIds.includes(effect.id));
+  const selected = selectedEffects(selectedIds);
+  const windowInputOf = (effect: Effect) =>
+    windowInputs[effect.id] ?? defaultWindow(effect);
+  const options = {
+    catalyst,
+    effectWindows: windowsFor(selected, windowInputs),
+  };
   const result = isValid
-    ? simulate(weapon, damagePhaseSeconds, selected, buckets, { catalyst })
+    ? simulate(weapon, damagePhaseSeconds, selected, buckets, options)
     : null;
   const entries = isValid
-    ? breakdown(weapon, damagePhaseSeconds, selected, buckets, { catalyst })
+    ? breakdown(weapon, damagePhaseSeconds, selected, buckets, options)
     : [];
   const boss = bosses.find((b) => b.id === bossId);
   const dpsChartSeconds = Math.max(
     DPS_CHART_MIN_SECONDS,
     isValid ? Math.ceil(damagePhaseSeconds) : 0,
   );
-  const dpsPoints = useMemo(
-    () =>
-      dpsByDamagePhase(
-        weapon,
-        effects.filter((effect) => selectedIds.includes(effect.id)),
-        buckets,
-        { catalyst },
-        Array.from({ length: dpsChartSeconds }, (_, i) => i + 1),
-      ),
-    [selectedIds, catalyst, dpsChartSeconds],
-  );
+  const dpsPoints = useMemo(() => {
+    const chosen = selectedEffects(selectedIds);
+    return dpsByDamagePhase(
+      weapon,
+      chosen,
+      buckets,
+      { catalyst, effectWindows: windowsFor(chosen, windowInputs) },
+      Array.from({ length: dpsChartSeconds }, (_, i) => i + 1),
+    );
+  }, [selectedIds, windowInputs, catalyst, dpsChartSeconds]);
 
   const selectBoss = (id: string) => {
     setBossId(id);
     const chosen = bosses.find((b) => b.id === id);
     if (chosen) setInput(String(chosen.damagePhaseSeconds.value));
   };
+  const setWindow = (effect: Effect, patch: Partial<WindowInput>) =>
+    setWindowInputs((inputs) => ({
+      ...inputs,
+      [effect.id]: {
+        ...(inputs[effect.id] ?? defaultWindow(effect)),
+        ...patch,
+      },
+    }));
+  const windows = isValid
+    ? effectWindows(selected, damagePhaseSeconds, options)
+    : [];
+  const uptimeOf = (effect: Effect) =>
+    windows.find((w) => w.effectId === effect.id)?.uptime;
   const toggle = (id: string) =>
     setSelectedIds((ids) =>
       ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id],
@@ -182,6 +254,62 @@ function App() {
             </fieldset>
           );
         })}
+
+        {selected.length > 0 && (
+          <>
+            <h2>Rotation</h2>
+            <table className="rotation">
+              <thead>
+                <tr>
+                  <th>Effect</th>
+                  <th>Start (s)</th>
+                  <th>Dauer (s)</th>
+                  <th>Uptime</th>
+                </tr>
+              </thead>
+              <tbody>
+                {selected.map((effect) => {
+                  const input = windowInputOf(effect);
+                  const uptime = uptimeOf(effect);
+                  return (
+                    <tr key={effect.id}>
+                      <td>{effect.name}</td>
+                      <td>
+                        <input
+                          inputMode="decimal"
+                          aria-label={`Start von ${effect.name} in Sekunden`}
+                          value={input.start}
+                          onChange={(event) =>
+                            setWindow(effect, { start: event.target.value })
+                          }
+                        />
+                      </td>
+                      <td>
+                        <input
+                          inputMode="decimal"
+                          placeholder="bis Ende"
+                          aria-label={`Dauer von ${effect.name} in Sekunden`}
+                          value={input.duration}
+                          onChange={(event) =>
+                            setWindow(effect, { duration: event.target.value })
+                          }
+                        />
+                      </td>
+                      <td>
+                        {uptime === undefined ? "–" : percent.format(uptime)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <p className="note">
+              Dauer leer heißt: bis zum Ende der Damage Phase. Vorbelegt ist die
+              Dauer aus den Daten. Frischt ein Mitspieler einen Effect auf, trag
+              eine längere Dauer ein.
+            </p>
+          </>
+        )}
       </section>
 
       <section className="results">
@@ -210,6 +338,17 @@ function App() {
             <DamageCurveChart
               points={damageCurve(result, damagePhaseSeconds)}
             />
+            <RotationTimeline
+              rows={windows.map((w) => ({
+                ...w,
+                label: selected.find((e) => e.id === w.effectId)!.name,
+              }))}
+              shotsMs={result.shots.map((s) => s.timeMs)}
+              ignitionsMs={result.damageInstances
+                .filter((d) => d.id === "ignition")
+                .map((d) => d.timeMs)}
+              damagePhaseSeconds={damagePhaseSeconds}
+            />
             <DpsByLengthChart
               points={dpsPoints}
               currentSeconds={damagePhaseSeconds}
@@ -228,7 +367,7 @@ function App() {
                   <thead>
                     <tr>
                       <th>Bucket</th>
-                      <th>Multiplier</th>
+                      <th>Multiplier (aktiv)</th>
                       <th>Total ohne</th>
                       <th>Beitrag</th>
                     </tr>
@@ -258,7 +397,7 @@ function App() {
           </p>
         )}
         <p className="note">
-          Alle gewählten Effects sind die ganze Damage Phase aktiv. Ignitions
+          Effects sind in ihrem Zeitfenster aus der Rotation aktiv. Ignitions
           sind enthalten, Burn-Schaden noch nicht.
         </p>
       </section>

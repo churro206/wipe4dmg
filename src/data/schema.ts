@@ -209,7 +209,7 @@ export type EffectPart = z.infer<typeof EffectPart>;
 
 /**
  * Anything a build can switch on or off that changes damage or timing (ADR 0006).
- * v0.5: every selected effect is active for the whole damage phase.
+ * Active in a window: start and duration (ADR 0006, stage B).
  */
 export const Effect = z.object({
   id: z.string(),
@@ -222,6 +222,9 @@ export const Effect = z.object({
     "weapon",
   ]),
   parts: z.array(EffectPart).min(1),
+  // Duration after its start; omitted if the effect lasts the whole damage phase or the duration
+  // depends on the source (e.g. Radiant, tethers). The rotation can override start and duration.
+  durationMs: SourcedNumber.optional(),
   // Effect ids whose multiplier parts in the same buckets are ignored while this effect is active,
   // regardless of value, e.g. Divinity over Particle Reconstruction.
   overrides: z.array(z.string()).optional(),

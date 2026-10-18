@@ -3,6 +3,7 @@
 ## Unveröffentlicht (v1.0 in Arbeit)
 
 - Katalysator von One Thousand Voices: Taken Seeker als Damage over Time (Werte aus dem Compendium). Offene Abweichung zu Aegis: Modell ×1,26, Aegis ×1,371.
+- Rotation (US-07, Stufe B aus ADR 0006): Effects wirken nur in ihrem Zeitfenster. Start und Dauer sind pro Effect einstellbar, die Dauer ist aus Courts Tabelle vorbelegt (Well 30 s, Rift 15 s, Lumina 11 s, Tractor Cannon 10 s, Elemental Overdrive 7 s). Uptime pro Effect und Zeitleiste mit Zeitfenstern, Shots und Ignitions.
 - Diagramme mit Recharts (ADR 0007): Schaden nach Art (Donut mit Legende und Werten), Damage Curve (US-06), DPS je Länge der Damage Phase, Beitrag pro Bucket als Balken.
 
 ## 0.5.0 – 2026-10-18 (MVP)

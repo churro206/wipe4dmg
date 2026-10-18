@@ -37,8 +37,10 @@ Das heutige Effect-Schema kennt nur einen Multiplier mit Bucket und Dauer. Die A
 Viele Damage Phases sind länger als einzelne Effects, z. B. Well of Radiance (30 s) bei Kalli (72 s). Die Laufzeit kommt in drei Stufen:
 
 - **Stufe A (v0.5):** Jeder gewählte Effect ist die ganze Damage Phase aktiv.
-- **Stufe B (mit der Rotation, US-07):** Effects bekommen eine Dauer in den Data Files und einen Startzeitpunkt in der Rotation (Standard: Beginn der Damage Phase). Der Simulator berechnet den Multiplier pro Damage Instance aus den Effects, die zu ihrem Zeitpunkt aktiv sind. Der Breakdown zeigt die Uptime.
+- **Stufe B (mit der Rotation, US-07, umgesetzt 2026-10-18):** Effects bekommen eine Dauer in den Data Files und einen Startzeitpunkt in der Rotation (Standard: Beginn der Damage Phase). Der Simulator berechnet den Multiplier pro Damage Instance aus den Effects, die zu ihrem Zeitpunkt aktiv sind. Der Breakdown zeigt die Uptime.
 - **Stufe C:** Auffrischbare Effects bekommen Auslöser und Cooldowns, z. B. Radiant bei jedem Nahkampftreffer. Stacks mit Verfall nutzen `counter`-Teile.
+
+Umsetzung von Stufe B: Effects ohne Dauer in den Data Files (z. B. Radiant, Tether, Surges über Armor Charge) laufen standardmäßig bis zum Ende der Damage Phase. In der Rotation lassen sich Start und Dauer jedes Effects ändern; so lässt sich ein Auffrischen durch Mitspieler vorerst über eine längere Dauer abbilden. Ein Timing-Teil wie `noReload` wirkt auf Reloads, die in seinem Zeitfenster beginnen.
 
 Ein pauschaler Uptime-Faktor pro Effect ist ausdrücklich verworfen: Er verliert die Überlappung gleichzeitig aktiver Effects.
 

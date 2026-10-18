@@ -18,7 +18,17 @@
         },
         "damageSources": ["weapon"]
       }
-    ]
+    ],
+    "durationMs": {
+      "value": 30000,
+      "source": {
+        "name": "Court Stacking Guide (Well of Radiance, 30s)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-18",
+        "status": "verified",
+        "note": "Base duration; up to 40 s at Super stat 200."
+      }
+    }
   },
   {
     "id": "empowering-rift",
@@ -39,7 +49,16 @@
         },
         "damageSources": ["weapon"]
       }
-    ]
+    ],
+    "durationMs": {
+      "value": 15000,
+      "source": {
+        "name": "Court Stacking Guide (Empowering Rift, 15s)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    }
   },
   {
     "id": "radiant",
@@ -102,7 +121,17 @@
         },
         "damageSources": ["weapon"]
       }
-    ]
+    ],
+    "durationMs": {
+      "value": 11000,
+      "source": {
+        "name": "Court Stacking Guide (Lumina, 11s)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-18",
+        "status": "verified",
+        "note": "Noble Rounds refresh the duration; set a longer duration in the rotation if a teammate keeps it up."
+      }
+    }
   },
   {
     "id": "weaken",
@@ -167,7 +196,17 @@
         },
         "damageSources": ["weapon", "grenade", "melee", "super"]
       }
-    ]
+    ],
+    "durationMs": {
+      "value": 10000,
+      "source": {
+        "name": "Court Stacking Guide (Tractor Cannon, 10s)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-18",
+        "status": "verified",
+        "note": "Per hit; refreshable."
+      }
+    }
   },
   {
     "id": "moebius-tether",
@@ -321,7 +360,16 @@
         "damageSources": ["weapon"],
         "elements": ["solar"]
       }
-    ]
+    ],
+    "durationMs": {
+      "value": 7000,
+      "source": {
+        "name": "Court Stacking Guide (Elemental Overdrive, 7s)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-18",
+        "status": "verified"
+      }
+    }
   },
   {
     "id": "particle-reconstruction",
