@@ -50,6 +50,8 @@ Die erste Version enthält nur den Manual Mode. Der Breakdown gehört dazu, weil
 | US-10 | Als Spieler will ich Builds im Browser speichern, damit ich sie später wieder öffne. | Could |
 | US-11 | Als Spieler will ich weitere exotische Waffen auswählen, damit die App mehr Builds abdeckt. | Could |
 | US-12 | Als Spieler will ich mein Inventar über die Bungie-API importieren, damit die App nur verfügbare Ausrüstung nutzt. | Won't (v1) |
+| US-13 | Als Spieler will ich Builds über einen Discord Bot berechnen, damit ich sie direkt im Discord meiner Gruppe vergleiche. Der Bot führt die Engine in Node.js auf einem Raspberry Pi aus. | Could |
+| US-14 | Als Spieler will ich, dass Fähigkeiten und Supers in den Total Damage eingehen, damit ich ganze Builds vergleiche. | Should |
 
 ## Releaseplan
 
@@ -59,8 +61,8 @@ Das MVP (v0.5) ist das erste Release mit echtem Nutzen. Das Walking Skeleton dav
 | --- | --- | --- |
 | v0.1 Walking Skeleton | Waffe ohne Buffs, Total Damage, online per Link | Kette läuft durch |
 | v0.5 MVP | Manual Mode, Breakdown, US-01 bis US-04 | Ergebnisse stimmen mit den Werten der Datenquelle überein |
-| v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, US-05 bis US-09 | Freunde testen v1.0 |
-| v1.x Erweiterung | Speichern im Browser, weitere Waffen, US-10, US-11 | – |
+| v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, Fähigkeiten und Supers, US-05 bis US-09, US-14 | Freunde testen v1.0 |
+| v1.x Erweiterung | Speichern im Browser, weitere Waffen, Discord Bot, US-10, US-11, US-13 | – |
 
 Ein Release startet erst, wenn das Gate davor erfüllt ist. Das Gate vor v1.0 vergleicht unsere Ergebnisse mit den Gesamtwerten der Datenquelle, z. B. Total Damage pro Magazin.
 
@@ -80,6 +82,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Damage Instance | Single hit with a timestamp and a damage value; the explosion of One Thousand Voices is a separate, delayed damage instance |
 | Damage over Time | Mechanic category: an effect deals damage in ticks over a duration, e.g. burn or Taken Seeker |
 | Damage Phase | Time span in seconds in which the simulator sums up damage (community: DPS phase) |
+| Damage Source | What creates a damage instance: weapon, grenade, melee or super |
 | Data File | JSON file with game data; contains no logic |
 | Debuff | Effect on the target that increases the damage it takes, e.g. Tether or Divinity |
 | Effect | Anything a build can switch on or off that changes damage or timing, e.g. a buff, debuff, surge, perk or artifact perk |

@@ -1,6 +1,6 @@
 # Mechanics: Übersicht
 
-Stand: 2026-10-18 · Spielversion: 9.7.0.5 · Phase 1 (Katalog)
+Stand: 2026-10-18 · Spielversion: 9.7.0.5 · Phase 2 (Beispiele pro Kategorie ausgearbeitet)
 
 Dieser Ordner sammelt unser Wissen über die Mechanics von Destiny 2. Die Übersicht hier ist der Einstieg: Arbeitsweise, Taxonomie, Katalog und Folgen für die Architektur.
 
@@ -69,7 +69,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| Damage Stacking (Buckets) | Multiplier | Damage-Buffs fallen in die Kategorien Empowering Buffs, Debuffs, Weapon Surges und Amplification. Die Kategorien multiplizieren sich untereinander. | hoch | Court Stacking Guide | katalogisiert |
+| [Damage Stacking (Buckets)](damage-stacking.md) | Multiplier | Damage-Buffs fallen in die Kategorien Empowering Buffs, Debuffs, Weapon Surges und Amplification. Die Kategorien multiplizieren sich untereinander. | hoch | Court Stacking Guide | ausgearbeitet |
 | Weapons Stat | Multiplier (Amplification) | Stat 101–200 erhöht den Waffenschaden gegen Bosse; Heavy bei 200: ×1,10. Stat 0–100 wirkt nur gegen normale Gegner. | hoch | Court; Aegis Spalte „200“ | katalogisiert |
 | Precision | Multiplier (Bedingung) | Schaden auf kritische Trefferzonen; Werte je Waffe | mittel (One Thousand Voices: keiner) | Quantum; Aegis | katalogisiert |
 | Gegnertyp | Bedingung | Manche Effekte wirken nicht gegen Bosse, z. B. Kinetic Intrinsic Buff, Weapons Stat 0–100; wir rechnen nur gegen Bosse | Filter: solche Effekte entfallen | Compendium „Game Mechanics“; Court | katalogisiert |
@@ -94,8 +94,8 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| Scorch und Burn | Threshold Trigger, Damage over Time | Stacks am Ziel; Burn-Tick alle 0,56 s, Schaden steigt mit den Stacks; bei 100 Stacks folgt eine Ignition, alle Stacks verfallen | hoch (One Thousand Voices) | Compendium „Solar“ | katalogisiert |
-| Ignition | Threshold Trigger | Solar-Explosion als eigene Damage Instance; mit bestimmten Fragments setzt sie Scorch bei Gegnern in der Nähe (Details offen) | hoch (One Thousand Voices) | Compendium; Quantum; Aegis | katalogisiert |
+| [Scorch und Burn](scorch-and-ignition.md) | Threshold Trigger, Damage over Time | Stacks am Ziel; Burn-Tick alle 0,56 s, Schaden steigt mit den Stacks; bei 100 Stacks folgt eine Ignition, alle Stacks verfallen | hoch (One Thousand Voices) | Compendium „Solar“ | ausgearbeitet |
+| [Ignition](scorch-and-ignition.md) | Threshold Trigger | Solar-Explosion als eigene Damage Instance; mit bestimmten Fragments setzt sie Scorch bei Gegnern in der Nähe (Details offen) | hoch (One Thousand Voices) | Compendium; Quantum; Aegis | ausgearbeitet |
 | Ember of Ashes | Multiplier für Stacks | Scorch-Stacks +50 %, aufgerundet; Ausnahmen bei einigen Quellen | hoch (One Thousand Voices) | Compendium „Solar“; Aegis | katalogisiert |
 | Dawn Chorus | Amplification | Erhöht Ignition-Schaden | mittel | Compendium; Aegis | katalogisiert |
 | Radiant | Multiplier (Empowering Buff) | 20 % Waffenschaden | hoch | Court | katalogisiert |
@@ -105,7 +105,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| Bolt Charge | Stacking Resource | Stacks lösen Blitzschläge aus | mittel bis hoch | Aegis „Bolt Charge“; Compendium „Arc“ | katalogisiert |
+| [Bolt Charge](bolt-charge.md) | Stacking Resource | Stacks lösen Blitzschläge aus | mittel bis hoch | Aegis „Bolt Charge“; Compendium „Arc“ | ausgearbeitet |
 | Jolt | Threshold Trigger | Nach einer Schadensschwelle Kettenblitz an Gegner in der Nähe; 0,8 s Cooldown | mittel | Compendium „Arc“ | katalogisiert |
 | Blind | Target State | Gegner handlungsunfähig; mit Arc Compounding +15 % Arc-Schaden | niedrig bis mittel | Compendium; Court | katalogisiert |
 | Amplified | Target State (Spieler) | Bewegung und Handling, Voraussetzung für andere Effekte | niedrig | Compendium „Arc“ | katalogisiert |
@@ -142,7 +142,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| Particle Reconstruction | Timing Modifier, Multiplier (Debuff) | Artifact Perk für Fusion und Linear Fusion: füllt das Magazin aus den Reserves und gibt einen stapelnden Debuff bis etwa 28 %; 30-%-Weaken und Divinity überschreiben ihn | hoch (One Thousand Voices) | Court; Aegis | katalogisiert |
+| [Particle Reconstruction](particle-reconstruction.md) | Timing Modifier, Multiplier (Debuff) | Artifact Perk für Fusion und Linear Fusion: füllt das Magazin aus den Reserves und gibt einen stapelnden Debuff bis etwa 28 %; 30-%-Weaken und Divinity überschreiben ihn | hoch (One Thousand Voices) | Court; Aegis | ausgearbeitet |
 | Reload und Auto-Loading | Timing Modifier | Reload-Zeiten, Auto-Loading-Perks, Reload-Mods | hoch | Quantum; Aegis | katalogisiert |
 | Munition | Timing Modifier | Reserves, Reserve-Mods, Ammo Finder, Heavy-Ammo-Bricks; begrenzt lange Damage Phases | hoch | Quantum „Reserves“; Compendium „Armor Mods“ | katalogisiert |
 | Waffenwechsel (Swap) | Timing Modifier | Rotationen mit Waffenwechsel; Ready-, Fire- und Stow-Zeiten | hoch (für Rotationen) | Aegis „Swap“ | katalogisiert |
@@ -154,12 +154,12 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| Fähigkeiten und Supers | Damage Instance | Granaten, Nahkampf und Supers machen eigenen Schaden; zählen zum Total Damage | hoch | Aegis „Abilities“; Compendium | katalogisiert |
+| [Fähigkeiten und Supers](abilities-and-supers.md) | Damage Instance | Granaten, Nahkampf und Supers machen eigenen Schaden; zählen zum Total Damage | hoch | Aegis „Abilities“; Compendium | ausgearbeitet |
 | Mehrere Spieler | Multiplier, Damage Instance | Nur Buffs und Debuffs von Mitspielern (Fireteam Support), nicht ihr Schaden; Skalierung mehrerer gleicher Quellen | mittel | Aegis „Scaling“ | katalogisiert |
 
 ## Folgen für die Architektur
 
-Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1. Sie sind noch keine Entscheidungen. Entschieden wird im ADR nach Phase 2.
+Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1 und 2. Der Vorschlag für die Entscheidung steht in ADR 0006 (`docs/adr/0006-effect-model.md`).
 
 1. **Effects sind mehr als Multiplier.** Das heutige Effect-Schema kennt nur `multiplier`. Gebraucht werden mindestens Multiplier, Timing Modifier, Damage over Time und Threshold Trigger.
 2. **Ein Effect kann mehrere Teile haben.** Particle Reconstruction ist ein Debuff und ein Timing Modifier.
