@@ -51,6 +51,7 @@ export type SimulationResult = {
   shots: Shot[];
   damageInstances: TimedDamageInstance[];
   totalDamage: number;
+  dps: number; // total damage per second of the damage phase; 0 for an empty damage phase
 };
 
 export function simulate(
@@ -148,7 +149,8 @@ export function simulate(
   damageInstances.sort((a, b) => a.timeMs - b.timeMs);
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
-  return { shots, damageInstances, totalDamage };
+  const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;
+  return { shots, damageInstances, totalDamage, dps };
 }
 
 /**

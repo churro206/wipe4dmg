@@ -25,6 +25,7 @@ describe("simulate: shots", () => {
       shots: [],
       damageInstances: [],
       totalDamage: 0,
+      dps: 0,
     });
   });
 
@@ -118,6 +119,11 @@ describe("simulate: damage", () => {
     expect(result.shots).toHaveLength(1);
     expect(result.damageInstances).toEqual([]);
     expect(result.totalDamage).toBe(0);
+  });
+
+  it("computes the DPS as total damage per second of the damage phase", () => {
+    const result = simulate(weapon, 20);
+    expect(result.dps).toBeCloseTo(result.totalDamage / 20);
   });
 
   it("sums all damage instances into the total damage", () => {

@@ -86,6 +86,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Damage Source | What creates a damage instance: weapon, grenade, melee or super |
 | Data File | JSON file with game data; contains no logic |
 | Debuff | Effect on the target that increases the damage it takes, e.g. Tether or Divinity |
+| DPS | Damage per second: total damage divided by the damage phase in seconds (Aegis instead divides by the time until the ammo is empty) |
 | Effect | Anything a build can switch on or off that changes damage or timing, e.g. a buff, debuff, surge, perk or artifact perk |
 | Empowering Buff | Effect on the player that increases the damage dealt, e.g. Well of Radiance or Radiant |
 | Engine | Simulator plus optimizer; contains only pure functions |

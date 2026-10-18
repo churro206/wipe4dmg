@@ -149,6 +149,8 @@ function App() {
             <dl className="result">
               <dt>Total Damage</dt>
               <dd>{integer.format(result.totalDamage)}</dd>
+              <dt>DPS</dt>
+              <dd>{integer.format(result.dps)}</dd>
               <dt>Shots</dt>
               <dd>{result.shots.length}</dd>
               <dt>Ignitions</dt>
