@@ -43,7 +43,7 @@ Noch nicht abgebildet. Fähigkeiten sind eine zweite Art von Schadensquelle nebe
 
 ## Offene Fragen
 
-- [ ] Welche Fähigkeiten und Supers sind für Boss-Damage-Phasen wichtig? (Prüfung durch den Projektinhaber)
+- [x] Welche Supers? Alle Supers sollen abgedeckt werden (Entscheidung 2026-10-18). Für Granaten und Nahkampf gilt dasselbe, sobald US-14 umgesetzt wird.
 - [ ] Hauptquelle für Fähigkeiten: Aegis (misst gegen Bosse, Stat 100 und 200) oder Compendium (Grundwerte)?
 - [ ] Wie bilden wir Energie und Cooldowns ab, ohne die ganze Fähigkeiten-Ökonomie zu simulieren?
 

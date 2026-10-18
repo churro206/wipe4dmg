@@ -40,7 +40,7 @@ Noch nicht abgebildet. Particle Reconstruction ist das wichtigste Beispiel für 
 
 - [ ] Wie schnell erreicht One Thousand Voices die Stufe 5? Bringt jeder Beam-Tick einen Stack oder jeder Shot?
 - [ ] Ist der Shot-Abstand mit dem Perk wirklich kürzer (Aegis 1,733 s), oder messen Aegis und Quantum (1,818 s) nur verschieden?
-- [ ] Nach welcher Zahl von Treffern lädt One Thousand Voices nach, und reicht das wirklich für 11 Shots ohne Reload?
+- [ ] Nach welcher Zahl von Treffern lädt One Thousand Voices nach? Aegis misst 11 Shots ohne Reload. Die Compendium-Regel (10 % des Magazins pro Auslösung, aufgerundet, also 1 Schuss) passt dazu, wenn ein Shot mit seinen 10 Beam-Ticks mindestens eine Auslösung bringt. Eine weitere Quelle haben wir nicht gefunden (Web-Suche 2026-10-18).
 
 ## Quellen
 

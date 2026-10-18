@@ -1,6 +1,6 @@
 # ADR 0006: Effect-Modell der Engine
 
-Status: vorgeschlagen · Datum: 2026-10-18
+Status: angenommen · Datum: 2026-10-18
 
 ## Kontext
 
@@ -14,7 +14,7 @@ Phase 2 der Wissenssammlung (`docs/mechanics/`) hat gezeigt: Effects sind mehr a
 
 Das heutige Effect-Schema kennt nur einen Multiplier mit Bucket und Dauer. Die App rechnet nur gegen Bosse und nur PvE.
 
-## Entscheidung (Vorschlag)
+## Entscheidung
 
 1. **Ein Effect besteht aus einem oder mehreren Teilen.** Jeder Teil hat einen Typ:
    - `multiplier`: Bucket, Faktor, gilt für bestimmte Damage Sources, Waffentypen oder Elemente

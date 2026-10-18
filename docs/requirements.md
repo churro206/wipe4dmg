@@ -51,7 +51,7 @@ Die erste Version enthält nur den Manual Mode. Der Breakdown gehört dazu, weil
 | US-11 | Als Spieler will ich weitere exotische Waffen auswählen, damit die App mehr Builds abdeckt. | Could |
 | US-12 | Als Spieler will ich mein Inventar über die Bungie-API importieren, damit die App nur verfügbare Ausrüstung nutzt. | Won't (v1) |
 | US-13 | Als Spieler will ich Builds über einen Discord Bot berechnen, damit ich sie direkt im Discord meiner Gruppe vergleiche. Der Bot führt die Engine in Node.js auf einem Raspberry Pi aus. | Could |
-| US-14 | Als Spieler will ich, dass Fähigkeiten und Supers in den Total Damage eingehen, damit ich ganze Builds vergleiche. | Should |
+| US-14 | Als Spieler will ich, dass Fähigkeiten und Supers in den Total Damage eingehen, damit ich ganze Builds vergleiche. Alle Supers sollen abgedeckt sein. | Should |
 
 ## Releaseplan
 

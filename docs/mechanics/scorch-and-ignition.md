@@ -14,7 +14,7 @@ Scorch sind Stacks am Ziel. Ein gescorchtes Ziel nimmt Burn-Schaden in Ticks. Be
 4. **Ignition:** Erreicht ein Ziel 100 Stacks, folgt eine Ignition. Alle Stacks verfallen.
 5. **Cooldown:** Nach einer Ignition lässt sich 1,6 s lang kein Scorch auftragen.
 6. **Ember of Ashes:** Scorch-Stacks +50 %, aufgerundet (x10 → x15). Einige Quellen sind ausgenommen.
-7. **Herkunft zählt:** Trägt eine Waffe den Scorch auf, zählen Burn und Ignition als Waffenschaden. Sie profitieren dann von Waffen-Buffs wie Damage Perks, Weapons Stat und Radiant.
+7. **Herkunft zählt:** Trägt eine Waffe den Scorch auf, zählen Burn und Ignition als Waffenschaden. Sie profitieren dann von Waffen-Buffs wie Damage Perks, Weapons Stat und Radiant. Hinweis aus einem YouTube-Kommentar (unbestätigt): Die Ignition von One Thousand Voices allein macht 2499 Schaden, mit einer zweiten Scorch-Quelle wie Helion nur 1351. Das passt zu dieser Regel und zum Bonus von 31,6 %.
 8. **One Thousand Voices:** Solar-Effekte, die die Waffe auslöst, machen 31,6 % mehr Schaden.
 9. Ignition-Buffs wie Dawn Chorus erhöhen den Ignition-Schaden.
 
@@ -61,9 +61,9 @@ Noch nicht abgebildet. Vorschlag:
 ## Offene Fragen
 
 - [ ] Die Formel im Compendium (2,7 + 0,175 × Stacks) passt nicht zu seiner eigenen Tabelle. Bei x30 ergäbe sie 7,95 statt 5. Mit 0,075 statt 0,175 passt die Tabelle.
-- [ ] Verfallen Scorch-Stacks mit der Zeit, wenn kein neuer Scorch kommt? Wie schnell?
+- [ ] Verfallen Scorch-Stacks mit der Zeit? Unbestätigt: Laut einem Build-Beitrag (devtrackers.gg) halten Stacks etwa 4 s und verlieren dann 10 Stacks pro Sekunde. Ein Reddit-Test (Oktober 2026) meldet, dass die Dauer von der Schwierigkeit abhängt (Normal 14 Ticks, Master 9 Ticks), vermutlich ein Bug. Für One Thousand Voices spielt der Verfall kaum eine Rolle, weil alle 1,8 s neue Stacks kommen.
 - [ ] Die Stichprobe ergab Burn-Ticks von 16. Das passt nicht zur Skala des Compendiums: Explosion 129 im Spiel gegenüber 281 im Compendium, also Faktor 0,46.
-- [ ] Laut Compendium bringt ein Shot 10 × 22 + 9 × 281 = 2749 Schaden. Quantum misst 2180. Treffen gegen einen Boss nicht alle 9 Explosionen?
+- [ ] Schaden pro Shot ohne Ignition: Compendium 10 × 22 + 9 × 281 = 2749, Quantum 2180, Aegis etwa 2054 (2459 minus 5/11 × 890 für Ignitions). Die Quellen treffen verschiedene Annahmen: Ziel, Power-Differenz, ob alle 9 Explosionen treffen. Quantum und Aegis liegen etwa 6 % auseinander. Weil nur relative Unterschiede zählen, rechnen wir mit einer Hauptquelle (Quantum) und vergleichen Faktoren statt absoluter Zahlen.
 
 ## Quellen
 

@@ -159,7 +159,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 ## Folgen für die Architektur
 
-Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1 und 2. Der Vorschlag für die Entscheidung steht in ADR 0006 (`docs/adr/0006-effect-model.md`).
+Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1 und 2. Die Entscheidung steht in ADR 0006 (`docs/adr/0006-effect-model.md`).
 
 1. **Effects sind mehr als Multiplier.** Das heutige Effect-Schema kennt nur `multiplier`. Gebraucht werden mindestens Multiplier, Timing Modifier, Damage over Time und Threshold Trigger.
 2. **Ein Effect kann mehrere Teile haben.** Particle Reconstruction ist ein Debuff und ein Timing Modifier.
