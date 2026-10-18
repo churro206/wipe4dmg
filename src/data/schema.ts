@@ -213,9 +213,28 @@ export const ReferenceValue = z.object({
   totalDamageMin: z.number(),
   totalDamageMax: z.number(),
   conditions: z.array(z.string()),
+  // Machine-readable conditions for the gate test; omitted if the conditions are unclear.
+  scenario: z
+    .object({
+      effectIds: z.array(z.string()),
+      damagePhaseSeconds: z.number().nonnegative(),
+      withIntrinsicParts: z.boolean(), // false: shots only, e.g. "without ignition"
+    })
+    .optional(),
   source: Source,
 });
 export type ReferenceValue = z.infer<typeof ReferenceValue>;
+
+/** Combined multiplier of a set of effects on the weapon's own damage, from a source. */
+export const ReferenceMultiplier = z.object({
+  id: z.string(),
+  description: z.string(),
+  effectIds: z.array(z.string()).min(1),
+  multiplierMin: z.number(),
+  multiplierMax: z.number(),
+  source: Source,
+});
+export type ReferenceMultiplier = z.infer<typeof ReferenceMultiplier>;
 
 /** Input of the Simulator. Serialized into the URL for sharing. */
 export const Build = z.object({

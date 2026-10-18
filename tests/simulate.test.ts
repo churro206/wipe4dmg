@@ -1,7 +1,5 @@
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import rawReferenceValues from "../src/data/reference-values.json";
-import { ReferenceValue } from "../src/data/schema";
 import raw from "../src/data/weapons/one-thousand-voices.json";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
@@ -141,19 +139,6 @@ describe("simulate: damage", () => {
       requiresCatalyst: true,
     });
     expect(simulate(withCatalystInstance, 10)).toEqual(simulate(weapon, 10));
-  });
-});
-
-describe("simulate: reference values", () => {
-  const referenceValues = ReferenceValue.array().parse(rawReferenceValues);
-
-  it("matches the Quantum Damage-ics total damage without effects and ignitions", () => {
-    const reference = referenceValues.find(
-      (r) => r.id === "quantum-no-effects",
-    )!;
-    const { totalDamage } = simulate(shotsOnly, LONG_DAMAGE_PHASE_SECONDS);
-    expect(totalDamage).toBeGreaterThanOrEqual(reference.totalDamageMin);
-    expect(totalDamage).toBeLessThanOrEqual(reference.totalDamageMax);
   });
 });
 

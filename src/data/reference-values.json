@@ -11,6 +11,11 @@
       "retrieved": "2026-10-18",
       "status": "unverified",
       "note": "11 shots x 2180 damage."
+    },
+    "scenario": {
+      "effectIds": [],
+      "damagePhaseSeconds": 600,
+      "withIntrinsicParts": false
     }
   },
   {
@@ -25,6 +30,11 @@
       "retrieved": "2026-10-18",
       "status": "unverified",
       "note": "11 shots x 2180 plus 5 ignitions x 890."
+    },
+    "scenario": {
+      "effectIds": [],
+      "damagePhaseSeconds": 600,
+      "withIntrinsicParts": true
     }
   },
   {

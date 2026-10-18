@@ -1,8 +1,7 @@
 import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import rawReferenceValues from "../src/data/reference-values.json";
-import { ReferenceValue, type Weapon } from "../src/data/schema";
+import type { Weapon } from "../src/data/schema";
 import raw from "../src/data/weapons/one-thousand-voices.json";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
@@ -11,7 +10,6 @@ import { simulate } from "../src/engine/simulate";
 const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
-const referenceValues = ReferenceValue.array().parse(rawReferenceValues);
 const byId = (id: string) => effects.find((e) => e.id === id)!;
 const LONG_DAMAGE_PHASE_SECONDS = 600;
 
@@ -49,15 +47,6 @@ function withScorch(
 }
 
 describe("simulate: scorch and ignition", () => {
-  it("matches the Quantum Damage-ics total damage with ignitions", () => {
-    const reference = referenceValues.find(
-      (r) => r.id === "quantum-with-ignition",
-    )!;
-    const { totalDamage } = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS);
-    expect(totalDamage).toBeGreaterThanOrEqual(reference.totalDamageMin);
-    expect(totalDamage).toBeLessThanOrEqual(reference.totalDamageMax);
-  });
-
   it("creates ignitions as weapon damage of their element", () => {
     const ignitions = ignitionsOf(simulate(weapon, LONG_DAMAGE_PHASE_SECONDS));
     expect(ignitions.length).toBeGreaterThan(0);

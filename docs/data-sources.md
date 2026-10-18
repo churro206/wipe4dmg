@@ -91,6 +91,11 @@ Folgerungen für One Thousand Voices:
 - **Schießstand:** Seit 9.7.0 hat der Schießstand statische Ziele, die Schaden wie ein Boss skalieren ([Patch Notes 9.7.0](https://shatteredvault.com/destiny-2-update-9-7-0/)).
 - **Spielstand nicht vollständig eingefroren:** Bungie liefert weiter Wartungs-Patches, zuletzt 9.7.0.5 am 7. Oktober 2026 ([Patch Notes 9.7.0.5](https://shatteredvault.com/destiny-2-update-9-7-0-5/)). Deshalb trägt jede Weapon das Feld `gameVersion`.
 
+## Prüfwerte
+
+- `src/data/reference-values.json`: Total Damage aus den Quellen. Werte mit `scenario` prüft der Gate-Test automatisch.
+- `src/data/reference-multipliers.json`: kombinierte Multiplier aus den Quellen, z. B. die Standard-Annahmen von Aegis (×2,355).
+
 ## Messprotokoll (Stichproben)
 
 | Datum | Spielversion | Bedingungen | Ergebnis |

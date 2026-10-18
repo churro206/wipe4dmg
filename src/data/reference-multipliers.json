@@ -1,0 +1,22 @@
+[
+  {
+    "id": "aegis-standard-assumptions",
+    "description": "Aegis standard assumptions for One Thousand Voices: Surge 3x, 35% empowering buff, 30% debuff, Weapons stat 200, with Particle Reconstruction (overridden by the 30% debuff)",
+    "effectIds": [
+      "solar-surge-3x",
+      "lumina-noble-rounds",
+      "tractor-cannon",
+      "weapons-stat-200",
+      "particle-reconstruction"
+    ],
+    "multiplierMin": 2.354,
+    "multiplierMax": 2.356,
+    "source": {
+      "name": "Aegis Boss Damage sheet (Weapons tab, One Thousand Voices with Particle Reconstruction: Single 5,791 / Base 2,459)",
+      "url": "https://destiny2.science/boss-damage",
+      "retrieved": "2026-10-18",
+      "status": "verified",
+      "note": "Columns Surge 1.220 x Buff 1.350 x Debuff 1.300 x 200 1.100 = 2.3552; Single / Base = 2.3550 (rounded values)."
+    }
+  }
+]
