@@ -72,10 +72,10 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 | Damage Stacking (Buckets) | Multiplier | Damage-Buffs fallen in die Kategorien Empowering Buffs, Debuffs, Weapon Surges und Amplification. Die Kategorien multiplizieren sich untereinander. | hoch | Court Stacking Guide | katalogisiert |
 | Weapons Stat | Multiplier (Amplification) | Stat 101–200 erhöht den Waffenschaden gegen Bosse; Heavy bei 200: ×1,10. Stat 0–100 wirkt nur gegen normale Gegner. | hoch | Court; Aegis Spalte „200“ | katalogisiert |
 | Precision | Multiplier (Bedingung) | Schaden auf kritische Trefferzonen; Werte je Waffe | mittel (One Thousand Voices: keiner) | Quantum; Aegis | katalogisiert |
-| Gegnertyp | Bedingung | Manche Effekte wirken nicht gegen Bosse, z. B. Kinetic Intrinsic Buff, Weapons Stat 0–100 | hoch | Compendium „Game Mechanics“; Court | katalogisiert |
+| Gegnertyp | Bedingung | Manche Effekte wirken nicht gegen Bosse, z. B. Kinetic Intrinsic Buff, Weapons Stat 0–100; wir rechnen nur gegen Bosse | Filter: solche Effekte entfallen | Compendium „Game Mechanics“; Court | katalogisiert |
 | Power-Differenz | Multiplier (global) | Schaden hängt von der Power-Differenz zum Gegner ab | niedrig (wirkt auf alle Builds gleich) | Mossy: Outgoing Damage Scaling | katalogisiert |
 | Boss-Werte | Bedingung | Boss DR, Lebenspunkte, Mechaniken je Boss | niedrig für relative Vergleiche | Aegis „Bosses“ | katalogisiert |
-| Champions | Target State | Barrier, Overload, Unstoppable | niedrig | Compendium „Game Mechanics“ | katalogisiert |
+| Champions | Target State | Barrier, Overload, Unstoppable | keine (nur Bosse) | Compendium „Game Mechanics“ | katalogisiert |
 
 ### Multiplier
 
@@ -154,8 +154,8 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| Fähigkeiten und Supers | Damage Instance | Granaten, Nahkampf und Supers machen eigenen Schaden | offen (siehe Fragen) | Aegis „Abilities“; Compendium | katalogisiert |
-| Mehrere Spieler | Multiplier, Damage Instance | Buffs und Debuffs von Mitspielern; Skalierung mehrerer Quellen | offen (siehe Fragen) | Aegis „Scaling“ | katalogisiert |
+| Fähigkeiten und Supers | Damage Instance | Granaten, Nahkampf und Supers machen eigenen Schaden; zählen zum Total Damage | hoch | Aegis „Abilities“; Compendium | katalogisiert |
+| Mehrere Spieler | Multiplier, Damage Instance | Nur Buffs und Debuffs von Mitspielern (Fireteam Support), nicht ihr Schaden; Skalierung mehrerer gleicher Quellen | mittel | Aegis „Scaling“ | katalogisiert |
 
 ## Folgen für die Architektur
 
@@ -165,15 +165,18 @@ Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1. Sie sind noch keine En
 2. **Ein Effect kann mehrere Teile haben.** Particle Reconstruction ist ein Debuff und ein Timing Modifier.
 3. **Die Buckets müssen zu Courts Kategorien passen.** `buckets.json` führt `artifact` als eigenen Bucket. Laut Court gehören Artifact Perks je nach Perk zu Debuff, Surge oder Amplification. Die Regeln innerhalb der Kategorien sind teils komplizierter als „der höchste gilt“: Ein 30-%-Weaken überschreibt Particle Reconstruction, Surges zählen Stacks.
 4. **Der Simulator braucht Zustand über die Zeit:** Stacks am Ziel (Scorch), Ressourcen am Spieler (Armor Charge, Bolt Charge) und Laufzeiten von Effekten.
-5. **Effekte haben Bedingungen:** Gegnertyp (Boss oder nicht), Waffentyp, Element, PvE oder PvP.
+5. **Effekte haben Bedingungen,** z. B. Waffentyp oder Element. Gegnertyp und Modus sind fest (Boss, PvE); Effekte ohne Wirkung auf Bosse filtern wir beim Import heraus.
 6. **Quellen nutzen verschiedene Einheiten.** Ignition: Compendium nennt Grundwerte, Quantum 890, Aegis 2814. Innerhalb einer Simulation darf deshalb pro Wertart nur eine Quelle rechnen.
+7. **Fähigkeiten und Supers sind eigene Schadensquellen** neben der Waffe. Der Simulator braucht dafür eigene Damage Instances mit Cooldowns und Energie für Fähigkeiten und Super.
 
 ## Offene Fragen an den Projektinhaber
 
-- [ ] Rechnet die App nur gegen Bosse? Viele Effekte hängen vom Gegnertyp ab.
-- [ ] Zählen Fähigkeiten und Supers zum Total Damage, oder nur Waffenschaden?
-- [ ] Bildet „Fireteam Support“ nur Buffs und Debuffs von Mitspielern ab, oder auch deren Schaden?
-- [ ] Nur PvE? Die Quellen führen PvE- und PvP-Werte getrennt.
+Beantwortet am 2026-10-18, festgehalten in `docs/requirements.md` (Rahmenbedingungen):
+
+- [x] Nur Bosse. Effekte, die nicht gegen Bosse wirken, nehmen wir nicht auf.
+- [x] Fähigkeiten und Supers zählen zum Total Damage.
+- [x] Fireteam Support umfasst nur Buffs und Debuffs von Mitspielern, nicht ihren Schaden.
+- [x] Nur PvE. PvP-Werte der Quellen ignorieren wir.
 
 ## Quellen
 
