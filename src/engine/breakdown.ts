@@ -2,7 +2,7 @@
 
 import type { Bucket, Effect, Weapon } from "../data/schema";
 import { activeParts, bucketMultipliers } from "./effectParts";
-import { simulate } from "./simulate";
+import { simulate, type SimulationOptions } from "./simulate";
 
 export type BreakdownEntry = {
   bucketId: string;
@@ -16,6 +16,7 @@ export function breakdown(
   damagePhaseSeconds: number,
   effects: Effect[],
   buckets: Bucket[],
+  options: SimulationOptions = {},
 ): BreakdownEntry[] {
   const { multiplierParts } = activeParts(effects, buckets);
   const entries = bucketMultipliers(multiplierParts, buckets, {
@@ -32,6 +33,7 @@ export function breakdown(
       damagePhaseSeconds,
       withoutBucket(effects, bucket.id),
       buckets,
+      options,
     ).totalDamage,
   }));
 }

@@ -13,11 +13,14 @@
 //
 // Intrinsic parts of the weapon add stacks to counters after each shot (e.g. scorch). At a threshold
 // a damage instance follows (e.g. ignition), the counter resets, and a cooldown blocks new stacks.
+// Damage over time parts release sources after each shot (e.g. Taken Seekers with the catalyst):
+// one impact, then ticks; a target holds only a limited number of active sources.
 
 import type {
   Bucket,
   CounterId,
   CounterModifierPart,
+  DamageOverTimePart,
   DamageSource,
   Effect,
   Element,
@@ -47,6 +50,10 @@ export type TimedDamageInstance = {
   element: Element;
 };
 
+export type SimulationOptions = {
+  catalyst?: boolean; // default: without catalyst
+};
+
 export type SimulationResult = {
   shots: Shot[];
   damageInstances: TimedDamageInstance[];
@@ -59,7 +66,9 @@ export function simulate(
   damagePhaseSeconds: number,
   effects: Effect[] = [],
   buckets: Bucket[] = [],
+  options: SimulationOptions = {},
 ): SimulationResult {
+  const catalyst = options.catalyst ?? false;
   const chargeTimeMs = requireValue(weapon.chargeTimeMs, "chargeTimeMs");
   const fireRateRpm = requireValue(weapon.fireRateRpm, "fireRateRpm");
   const magazine = requireValue(weapon.magazine, "magazine");
@@ -99,9 +108,8 @@ export function simulate(
     shots.push({ timeMs });
   }
 
-  // Catalyst is not selectable yet, so catalyst-only damage instances never happen.
   const instances = weapon.damageInstances
-    .filter((instance) => !instance.requiresCatalyst)
+    .filter((instance) => catalyst || !instance.requiresCatalyst)
     .map((instance) => ({
       id: instance.id,
       delayMs: requireValue(instance.delayMs, "delayMs"),
@@ -146,11 +154,92 @@ export function simulate(
       multiplierFor,
     ),
   );
+  for (const part of weapon.intrinsicParts) {
+    if (part.type !== "damageOverTime") continue;
+    if (part.requiresCatalyst && !catalyst) continue;
+    damageInstances.push(
+      ...damageOverTimeInstances(part, shots, isInPhase, multiplier, weapon),
+    );
+  }
   damageInstances.sort((a, b) => a.timeMs - b.timeMs);
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;
   return { shots, damageInstances, totalDamage, dps };
+}
+
+/** Times of the applications or releases after each shot: first delay, then a fixed interval. */
+function triggerTimes(
+  shots: Shot[],
+  count: number,
+  firstDelayMs: number,
+  intervalMs: number,
+): number[] {
+  return shots.flatMap((shot) =>
+    Array.from(
+      { length: count },
+      (_, i) => shot.timeMs + firstDelayMs + i * intervalMs,
+    ),
+  );
+}
+
+/**
+ * Releases a damage over time source at each trigger time: an impact, then ticks. While the
+ * target already holds the maximum number of active sources, a release is lost.
+ */
+function damageOverTimeInstances(
+  part: DamageOverTimePart,
+  shots: Shot[],
+  isInPhase: (timeMs: number) => boolean,
+  multiplier: number,
+  weapon: Weapon,
+): TimedDamageInstance[] {
+  const count = requireValue(
+    part.applicationsPerTrigger,
+    "applicationsPerTrigger",
+  );
+  const firstDelayMs = requireValue(part.firstDelayMs, "firstDelayMs");
+  const intervalMs = requireValue(part.intervalMs, "intervalMs");
+  const impactDamage = requireValue(part.impactDamage, "impactDamage");
+  const tickDamage = requireValue(part.tickDamage, "tickDamage");
+  const ticks = requireValue(part.ticks, "ticks");
+  const tickIntervalMs = requireValue(part.tickIntervalMs, "tickIntervalMs");
+  const firstTickDelayMs = requireValue(
+    part.firstTickDelayMs,
+    "firstTickDelayMs",
+  );
+  const maxActive = requireValue(part.maxActivePerTarget, "maxActivePerTarget");
+
+  const releases = triggerTimes(shots, count, firstDelayMs, intervalMs).sort(
+    (a, b) => a - b,
+  );
+  let activeUntilMs: number[] = [];
+  const result: TimedDamageInstance[] = [];
+  const push = (timeMs: number, damage: number) => {
+    if (!isInPhase(timeMs)) return;
+    result.push({
+      id: part.id,
+      timeMs,
+      damage: damage * multiplier,
+      damageSource: "weapon",
+      element: weapon.element,
+    });
+  };
+
+  for (const releaseMs of releases) {
+    if (!isInPhase(releaseMs)) break;
+    activeUntilMs = activeUntilMs.filter((untilMs) => untilMs >= releaseMs);
+    if (activeUntilMs.length >= maxActive) continue;
+
+    const lastTickMs =
+      releaseMs + firstTickDelayMs + (ticks - 1) * tickIntervalMs;
+    activeUntilMs.push(lastTickMs);
+    push(releaseMs, impactDamage);
+    for (let tick = 0; tick < ticks; tick++) {
+      push(releaseMs + firstTickDelayMs + tick * tickIntervalMs, tickDamage);
+    }
+  }
+  return result;
 }
 
 /**
@@ -201,14 +290,12 @@ function thresholdDamageInstances(
         1,
       );
     const scaledStacks = Math.ceil(stacks * factor - ROUNDING_TOLERANCE);
-    for (const shot of shots) {
-      for (let i = 0; i < count; i++) {
-        applications.push({
-          timeMs: shot.timeMs + firstDelayMs + i * intervalMs,
-          counterId: part.counterId,
-          stacks: scaledStacks,
-        });
-      }
+    for (const timeMs of triggerTimes(shots, count, firstDelayMs, intervalMs)) {
+      applications.push({
+        timeMs,
+        counterId: part.counterId,
+        stacks: scaledStacks,
+      });
     }
   }
   applications.sort((a, b) => a.timeMs - b.timeMs);

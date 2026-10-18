@@ -47,6 +47,7 @@ function App() {
   const [input, setInput] = useState("");
   const [bossId, setBossId] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [catalyst, setCatalyst] = useState(false);
 
   const damagePhaseSeconds = Number(input);
   const isValid =
@@ -55,10 +56,10 @@ function App() {
     damagePhaseSeconds >= 0;
   const selected = effects.filter((effect) => selectedIds.includes(effect.id));
   const result = isValid
-    ? simulate(weapon, damagePhaseSeconds, selected, buckets)
+    ? simulate(weapon, damagePhaseSeconds, selected, buckets, { catalyst })
     : null;
   const entries = isValid
-    ? breakdown(weapon, damagePhaseSeconds, selected, buckets)
+    ? breakdown(weapon, damagePhaseSeconds, selected, buckets, { catalyst })
     : [];
   const boss = bosses.find((b) => b.id === bossId);
 
@@ -118,6 +119,18 @@ function App() {
         {boss?.description && <p className="note">{boss.description}</p>}
 
         <h2>Effects</h2>
+        <fieldset>
+          <legend>Waffe</legend>
+          <label className="checkbox">
+            <input
+              type="checkbox"
+              checked={catalyst}
+              onChange={() => setCatalyst((on) => !on)}
+            />
+            Katalysator
+            <span className="note">Taken Seeker</span>
+          </label>
+        </fieldset>
         {CATEGORIES.map((category) => {
           const inCategory = effects.filter((e) => e.category === category.id);
           if (inCategory.length === 0) return null;

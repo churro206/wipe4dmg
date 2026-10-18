@@ -179,6 +179,100 @@
         }
       },
       "element": "solar"
+    },
+    {
+      "type": "damageOverTime",
+      "id": "takenSeeker",
+      "requiresCatalyst": true,
+      "trigger": "shot",
+      "applicationsPerTrigger": {
+        "value": 9,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "verified",
+          "note": "Each detonation releases a Taken Seeker; 9 detonations per shot (see counter part)."
+        }
+      },
+      "firstDelayMs": {
+        "value": 700,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "verified",
+          "note": "Marked spots detonate 0.7 s after being created. The first spot is created by the first beam tick at the shot time."
+        }
+      },
+      "intervalMs": {
+        "value": 66.7,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "Derived: the beam lasts 0.6 s with 10 ticks, so about 0.6 s / 9 between ticks. Assumes evenly spaced ticks."
+        }
+      },
+      "impactDamage": {
+        "value": 84,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "Compendium scale. Ignition matches Compendium and Quantum 1:1 (676 x 1.316 = 890), so no conversion. Seeker travel time is not modeled: impact at the detonation."
+        }
+      },
+      "tickDamage": {
+        "value": 13,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "Compendium scale, see impactDamage. Blighted targets take +100% tick damage (not modeled yet)."
+        }
+      },
+      "ticks": {
+        "value": 22,
+        "source": {
+          "name": "Clarity community research via light.gg; Destiny Data Compendium",
+          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+          "retrieved": "2026-10-18",
+          "status": "verified"
+        }
+      },
+      "tickIntervalMs": {
+        "value": 250,
+        "source": {
+          "name": "Clarity community research via light.gg; Destiny Data Compendium",
+          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+          "retrieved": "2026-10-18",
+          "status": "verified"
+        }
+      },
+      "firstTickDelayMs": {
+        "value": 150,
+        "source": {
+          "name": "derived from Clarity via light.gg",
+          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "Total duration 5.65 s minus 22 ticks x 0.25 s = 0.15 s. Assumes the duration starts at the impact."
+        }
+      },
+      "maxActivePerTarget": {
+        "value": 5,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "\"An enemy can be afflicted by up to ~5 seekers at once.\" Assumption: further seekers deal neither impact nor ticks."
+        }
+      }
     }
   ],
   "intrinsics": [

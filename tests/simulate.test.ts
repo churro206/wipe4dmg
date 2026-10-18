@@ -140,6 +140,19 @@ describe("simulate: damage", () => {
     });
     expect(simulate(withCatalystInstance, 10)).toEqual(simulate(weapon, 10));
   });
+
+  it("includes damage instances that require the catalyst when it is selected", () => {
+    const withCatalystInstance = structuredClone(shotsOnly);
+    withCatalystInstance.damageInstances.push({
+      ...structuredClone(weapon.damageInstances[0]),
+      id: "catalystOnly",
+      requiresCatalyst: true,
+    });
+    const { damageInstances } = simulate(withCatalystInstance, 10, [], [], {
+      catalyst: true,
+    });
+    expect(damageInstances.some((d) => d.id === "catalystOnly")).toBe(true);
+  });
 });
 
 describe("simulate: invalid data", () => {

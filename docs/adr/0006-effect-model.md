@@ -22,6 +22,7 @@ Das heutige Effect-Schema kennt nur einen Multiplier mit Bucket und Dauer. Die A
    - `counter`: fügt einem Zähler am Ziel oder am Spieler Stacks hinzu, z. B. Scorch oder Bolt Charge
    - `threshold`: Bei einem Zählerstand entsteht eine Damage Instance, danach Reset und Cooldown, z. B. die Ignition
    - `counterModifier` (Ergänzung 2026-10-18): skaliert die Stacks jeder Anwendung eines Zählers, aufgerundet, z. B. Ember of Ashes
+   - `damageOverTime` (Ergänzung 2026-10-18): setzt nach jedem Shot Quellen mit Aufprall und Ticks frei, mit einer Höchstzahl aktiver Quellen pro Ziel, z. B. die Taken Seeker des Katalysators
 
    Feste Teile einer Waffe, die ohne gewählten Effect wirken, stehen in der Weapon unter `intrinsicParts`, z. B. Scorch durch die Explosionen von One Thousand Voices.
 2. **Jede Damage Instance kennt ihre Damage Source** (Waffe, Granate, Nahkampf, Super) und ihr Element. Multiplier-Teile filtern danach.

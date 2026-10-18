@@ -146,7 +146,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 | Reload und Auto-Loading | Timing Modifier | Reload-Zeiten, Auto-Loading-Perks, Reload-Mods | hoch | Quantum; Aegis | katalogisiert |
 | Munition | Timing Modifier | Reserves, Reserve-Mods, Ammo Finder, Heavy-Ammo-Bricks; begrenzt lange Damage Phases | hoch | Quantum „Reserves“; Compendium „Armor Mods“ | katalogisiert |
 | Waffenwechsel (Swap) | Timing Modifier | Rotationen mit Waffenwechsel; Ready-, Fire- und Stow-Zeiten | hoch (für Rotationen) | Aegis „Swap“ | katalogisiert |
-| Taken Seeker | Damage over Time | Katalysator von One Thousand Voices: 22 Ticks alle 0,25 s, höchstens 5 pro Ziel | hoch (mit Katalysator) | Clarity via light.gg | katalogisiert |
+| [Taken Seeker](taken-seeker.md) | Damage over Time | Katalysator von One Thousand Voices: 22 Ticks alle 0,25 s, höchstens 5 pro Ziel | hoch (mit Katalysator) | Clarity via light.gg | im Simulator (Abweichung zu Aegis offen) |
 | Blight | Target State | Taken-Seeker-Ticks machen +100 % Schaden auf Blighted Targets | mittel | Clarity via light.gg; Aegis | katalogisiert |
 | Armor Charge | Stacking Resource | Stacks verfallen nach Zeit; Voraussetzung für Surges und Argent-Perks | hoch | Compendium „Armor Mods“ | katalogisiert |
 

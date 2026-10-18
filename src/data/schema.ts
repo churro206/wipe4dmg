@@ -113,10 +113,32 @@ export const ThresholdPart = z.object({
 });
 export type ThresholdPart = z.infer<typeof ThresholdPart>;
 
+/**
+ * Part that releases a damage over time source after each shot, e.g. the Taken Seekers of the
+ * One Thousand Voices catalyst: one impact, then ticks (ADR 0006, category Damage over Time).
+ */
+export const DamageOverTimePart = z.object({
+  type: z.literal("damageOverTime"),
+  id: z.string(), // damage instance id, e.g. "takenSeeker"
+  requiresCatalyst: z.boolean(),
+  trigger: z.literal("shot"),
+  applicationsPerTrigger: SourcedNumber, // sources released per shot
+  firstDelayMs: SourcedNumber, // from the shot to the first release
+  intervalMs: SourcedNumber, // between two releases
+  impactDamage: SourcedNumber,
+  tickDamage: SourcedNumber,
+  ticks: SourcedNumber,
+  tickIntervalMs: SourcedNumber,
+  firstTickDelayMs: SourcedNumber, // from the impact to the first tick
+  maxActivePerTarget: SourcedNumber, // further releases are lost while this many are active
+});
+export type DamageOverTimePart = z.infer<typeof DamageOverTimePart>;
+
 /** Fixed parts of a weapon that work without any selected effect, e.g. scorch from explosions. */
 export const IntrinsicPart = z.discriminatedUnion("type", [
   CounterPart,
   ThresholdPart,
+  DamageOverTimePart,
 ]);
 export type IntrinsicPart = z.infer<typeof IntrinsicPart>;
 

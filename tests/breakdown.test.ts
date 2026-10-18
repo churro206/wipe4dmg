@@ -78,6 +78,25 @@ describe("breakdown", () => {
   });
 });
 
+describe("breakdown with catalyst", () => {
+  it("passes the catalyst option to the simulation", () => {
+    const selected = pick("radiant");
+    const [empowering] = breakdown(
+      weapon,
+      DAMAGE_PHASE_SECONDS,
+      selected,
+      buckets,
+      {
+        catalyst: true,
+      },
+    );
+    expect(empowering.totalDamageWithout).toBeCloseTo(
+      simulate(weapon, DAMAGE_PHASE_SECONDS, [], buckets, { catalyst: true })
+        .totalDamage,
+    );
+  });
+});
+
 describe("loadBosses", () => {
   it("accepts the bosses data file", () => {
     expect(loadBosses(rawBosses).length).toBeGreaterThan(0);
