@@ -1,0 +1,152 @@
+{
+  "id": "one-thousand-voices",
+  "name": "One Thousand Voices",
+  "manifestHash": 2069224589,
+  "gameVersion": "9.7.0.5",
+  "element": "solar",
+  "ammo": "heavy",
+  "chargeTimeMs": {
+    "value": 1000,
+    "source": {
+      "name": "light.gg item page (stat Charge Time)",
+      "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+      "retrieved": "2026-10-18",
+      "status": "unverified",
+      "note": "Stat value is 1000. Assumption: the stat equals milliseconds. Measure at the Shooting Range."
+    }
+  },
+  "magazine": {
+    "value": 4,
+    "source": {
+      "name": "light.gg item page (stat Magazine)",
+      "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+      "retrieved": "2026-10-18",
+      "status": "verified"
+    }
+  },
+  "reserves": {
+    "value": null,
+    "source": {
+      "name": "none",
+      "retrieved": "2026-10-18",
+      "status": "missing",
+      "note": "Manifest values for reserves are unreliable. Count in game: maximum reserves without and with reserve mods."
+    }
+  },
+  "reloadTimeMs": {
+    "value": 2470,
+    "source": {
+      "name": "gamersdecide.com (Reload Speed 30, 2.47 s)",
+      "url": "https://www.gamersdecide.com/articles/destiny-2-best-gambit-weapons",
+      "retrieved": "2026-10-18",
+      "status": "unverified",
+      "note": "Source is from 2022. Measure frame-accurate from a video."
+    }
+  },
+  "damageInstances": [
+    {
+      "id": "beam",
+      "name": "Beam (Ahamkara's Eye)",
+      "delayMs": {
+        "value": 0,
+        "source": { "name": "definition", "retrieved": "2026-10-18", "status": "verified", "note": "Time zero of a shot is the first beam hit." }
+      },
+      "damagePerTick": {
+        "value": null,
+        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing", "note": "Measure on the boss-scaled static target of the Shooting Range." }
+      },
+      "ticks": {
+        "value": null,
+        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing", "note": "Beam is continuous. Count damage numbers per shot in a video." }
+      },
+      "tickIntervalMs": {
+        "value": null,
+        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing" }
+      },
+      "canPrecision": true,
+      "requiresCatalyst": false
+    },
+    {
+      "id": "explosion",
+      "name": "Delayed explosion (Unforeseen Repercussions)",
+      "delayMs": {
+        "value": 750,
+        "source": {
+          "name": "d2.destinygamewiki.com (Unforeseen Repercussions)",
+          "url": "https://d2.destinygamewiki.com/wiki/Unforeseen_Repercussions",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "Undated wiki entry. Same page states 1300% damage without a reference value."
+        }
+      },
+      "damagePerTick": {
+        "value": null,
+        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing", "note": "Measure separately from the beam." }
+      },
+      "ticks": {
+        "value": 1,
+        "source": { "name": "assumption", "retrieved": "2026-10-18", "status": "unverified" }
+      },
+      "tickIntervalMs": {
+        "value": 0,
+        "source": { "name": "assumption", "retrieved": "2026-10-18", "status": "unverified" }
+      },
+      "canPrecision": false,
+      "requiresCatalyst": false
+    },
+    {
+      "id": "takenSeeker",
+      "name": "Taken Seeker (catalyst Fall from Grace)",
+      "delayMs": {
+        "value": null,
+        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing", "note": "Time from detonation to the first seeker tick." }
+      },
+      "damagePerTick": {
+        "value": null,
+        "source": { "name": "none", "retrieved": "2026-10-18", "status": "missing" }
+      },
+      "ticks": {
+        "value": 22,
+        "source": {
+          "name": "Clarity community research via light.gg (last updated 2026-07-13)",
+          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+          "retrieved": "2026-10-18",
+          "status": "verified",
+          "note": "One seeker per detonation. Max 5 seekers per target. Blighted targets take +100% tick damage."
+        }
+      },
+      "tickIntervalMs": {
+        "value": 250,
+        "source": {
+          "name": "Clarity community research via light.gg (last updated 2026-07-13)",
+          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
+          "retrieved": "2026-10-18",
+          "status": "verified",
+          "note": "Total duration 5.65 s."
+        }
+      },
+      "canPrecision": false,
+      "requiresCatalyst": true
+    }
+  ],
+  "intrinsics": [
+    {
+      "id": "ahamkaras-eye",
+      "name": "Ahamkara's Eye",
+      "description": "Charging this weapon unleashes a giant continuous beam.",
+      "source": { "name": "light.gg", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "verified" }
+    },
+    {
+      "id": "unforeseen-repercussions",
+      "name": "Unforeseen Repercussions",
+      "description": "The beam superheats targets on impact and causes delayed scorching explosions.",
+      "source": { "name": "light.gg", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "verified" }
+    },
+    {
+      "id": "fall-from-grace",
+      "name": "Fall from Grace (catalyst)",
+      "description": "+30 Stability, +20 Ammo Generation. Each detonation releases a Taken Seeker.",
+      "source": { "name": "Clarity via light.gg", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "verified" }
+    }
+  ]
+}

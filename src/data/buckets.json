@@ -1,0 +1,38 @@
+[
+  {
+    "id": "empowering",
+    "name": "Empowering Buff",
+    "stacking": "highest",
+    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified", "note": "Verify with the Damage Stacking guide on destiny2.science." }
+  },
+  {
+    "id": "debuff",
+    "name": "Debuff",
+    "stacking": "highest",
+    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified", "note": "Verify with the Damage Stacking guide on destiny2.science." }
+  },
+  {
+    "id": "surge",
+    "name": "Surge",
+    "stacking": "highest",
+    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified", "note": "Surges scale with the number of mods. Model each mod count as its own effect." }
+  },
+  {
+    "id": "weaponPerk",
+    "name": "Weapon Perk",
+    "stacking": "multiplicative",
+    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified" }
+  },
+  {
+    "id": "artifact",
+    "name": "Artifact Perk",
+    "stacking": "multiplicative",
+    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified", "note": "Check each artifact perk individually." }
+  },
+  {
+    "id": "exoticArmor",
+    "name": "Exotic Armor",
+    "stacking": "multiplicative",
+    "source": { "name": "community convention", "retrieved": "2026-10-18", "status": "unverified" }
+  }
+]

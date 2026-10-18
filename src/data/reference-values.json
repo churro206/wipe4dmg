@@ -1,0 +1,30 @@
+[
+  {
+    "id": "blueberries-no-catalyst",
+    "description": "Total damage, full magazine dump without catalyst",
+    "totalDamageMin": 24000,
+    "totalDamageMax": 26000,
+    "conditions": ["no catalyst", "surges", "artifact perk Particle Reconstruction", "Weapons stat below 100"],
+    "source": {
+      "name": "blueberries.gg (Jul 6, 2026)",
+      "url": "https://www.blueberries.gg/weapons/one-thousand-voices-exotic-catalyst/",
+      "retrieved": "2026-10-18",
+      "status": "unverified",
+      "note": "Unclear: target type, number of surges, magazine or total ammo. Use only as plausibility check."
+    }
+  },
+  {
+    "id": "blueberries-catalyst",
+    "description": "Total damage, full magazine dump with catalyst",
+    "totalDamageMin": 34000,
+    "totalDamageMax": 36000,
+    "conditions": ["catalyst", "surges", "artifact perk Particle Reconstruction", "Weapons stat below 100"],
+    "source": {
+      "name": "blueberries.gg (Jul 6, 2026)",
+      "url": "https://www.blueberries.gg/weapons/one-thousand-voices-exotic-catalyst/",
+      "retrieved": "2026-10-18",
+      "status": "unverified",
+      "note": "Same open questions as above. Ratio catalyst/no catalyst is about 1.4."
+    }
+  }
+]
