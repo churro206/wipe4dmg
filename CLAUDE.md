@@ -28,7 +28,8 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 ```
 src/data/      Data Files (JSON) und Zod-Schema (schema.ts). Keine Logik.
 src/engine/    Simulator und Optimizer. Nur reine Funktionen, kein React.
-src/ui/        React-Oberfläche. Ruft nur die Engine auf.
+src/ui/        React-Oberfläche. Ruft nur die Engine auf. Komponenten in src/ui/components/.
+public/icons/  Icons aus dem Bungie-Manifest (ADR 0008), erzeugt von npm run import:icons.
 scripts/       Import-Skripte für Community-Quellen (ADR 0005). Reine Funktionen in scripts/lib/, getestet.
 tests/         Vitest-Tests für die Engine.
 ```
@@ -58,3 +59,4 @@ tests/         Vitest-Tests für die Engine.
 - `npm test`: Tests ausführen
 - `npm run build`: Produktionsversion bauen
 - `npm run import:bosses`: Bosse und Damage Phases aus der Aegis-Tabelle nach `src/data/bosses.json` übernehmen
+- `npm run import:icons`: Icons aus dem Bungie-Manifest laden (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)

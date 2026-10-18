@@ -13,6 +13,7 @@ Alle Quellen sind über [destiny2.science](https://www.destiny2.science/) verlin
 | Hauptquelle Waffen-Grundwerte | [Quantum Damage-ics](https://destiny2.science/quantum-damage-ics) | Tabelle bis 9.7.0.1; One Thousand Voices zuletzt 2024/2025 aktualisiert, Katalysator fehlt | Schaden pro Shot, Magazin, Reserves, rpm, Reload Time, Zeit bis leer; ohne Meta-Annahmen |
 | Gegenprüfung, Multiplier | [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage) | Changelog 2026-10-12; One Thousand Voices getestet auf 9.7.0.3 | Grundschaden pro Shot mit Meta-Annahmen, Multiplier, Shots gesamt, Zeit bis leer |
 | Damage Phases bekannter Bosse | [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage), Reiter „Bosses“ | Changelog 2026-10-12 | 61 Bosse mit Aktivität, Länge der Damage Phase in Sekunden und Beschreibung. Automatischer Import: `npm run import:bosses` → `src/data/bosses.json` (47 mit Zahl, 14 ohne: „?“, „Variable“, „N/A“) |
+| Icons | [Bungie Destiny 2 Manifest](https://www.bungie.net/en/Application) (ADR 0008) | Manifest 244213.26.06.29.2000-1, abgerufen 2026-10-18 | Icons für Effects, Waffe, Subklassen, Ignition, Taken Seeker. Zuordnung über `manifestRef` in `effects.json` und `src/data/icon-refs.json`; Import: `npm run import:icons` → `public/icons/`, `src/data/icons.json` |
 | Buffs, Debuffs, Stacking | [Destiny Data Compendium](https://destiny2.science/data-compendium) | noch nicht geprüft | Werte für Perks, Mods, Subklassen, Spielmechaniken |
 
 ## One Thousand Voices bei Quantum Damage-ics

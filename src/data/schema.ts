@@ -85,6 +85,38 @@ export const WeaponType = z.enum([
 ]);
 export type WeaponType = z.infer<typeof WeaponType>;
 
+/** Tables of the Bungie Destiny 2 manifest that hold the icons we use (ADR 0008). */
+export const ManifestTable = z.enum([
+  "DestinyInventoryItemDefinition",
+  "DestinySandboxPerkDefinition",
+  "DestinyTraitDefinition",
+  "DestinyStatDefinition",
+  "DestinyDamageTypeDefinition",
+]);
+export type ManifestTable = z.infer<typeof ManifestTable>;
+
+/** An entry of the Bungie manifest, e.g. the item of a super or a keyword trait. */
+export const ManifestRef = z.object({
+  table: ManifestTable,
+  hash: z.number().int().nonnegative(),
+});
+export type ManifestRef = z.infer<typeof ManifestRef>;
+
+/** Icon of something that is not an effect or weapon, e.g. a subclass or a kind of damage. */
+export const IconRef = z.object({
+  key: z.string(), // e.g. "subclass:warlock:solar", "damage:ignition"
+  manifestRef: ManifestRef,
+});
+export type IconRef = z.infer<typeof IconRef>;
+
+/** Written by the icon import: icon file per key, with the manifest version as source. */
+export const IconIndex = z.object({
+  manifestVersion: z.string(),
+  retrieved: z.string(),
+  icons: z.record(z.string(), z.string()), // key -> path below public/, e.g. icons/item-1.png
+});
+export type IconIndex = z.infer<typeof IconIndex>;
+
 /** Counters on the target or the player (ADR 0006). */
 export const CounterId = z.enum(["scorch"]);
 export type CounterId = z.infer<typeof CounterId>;
@@ -247,6 +279,7 @@ export const Effect = z.object({
   name: z.string(),
   code: z.number().int().positive(), // short code for build links; never reused
   shortName: z.string(), // for tight spaces, e.g. the optimizer ranking
+  manifestRef: ManifestRef.optional(), // icon source in the Bungie manifest (ADR 0008)
   providers: z.array(Provider).min(1),
   // A build provides at most one effect of a group itself, e.g. one surge level or one super.
   // Effects from teammates are not limited by groups.

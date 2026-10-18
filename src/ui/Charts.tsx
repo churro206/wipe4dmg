@@ -264,6 +264,8 @@ export function BreakdownChart({
 // Range steps for the time axis of the rotation timeline; the smallest step with at most 6 ticks wins.
 const TIME_STEPS_SECONDS = [1, 2, 5, 10, 15, 20, 30, 60, 120];
 const MAX_TIME_TICKS = 6;
+// Size of the effect icon in front of a timeline row.
+const ICON_SIZE = 18;
 // Longer effect names are cut with an ellipsis; the full name shows on hover.
 const MAX_LABEL_CHARS = 24;
 
@@ -277,7 +279,13 @@ export function RotationTimeline({
   ignitionsMs,
   damagePhaseSeconds,
 }: {
-  rows: { label: string; startMs: number; endMs: number; uptime: number }[];
+  rows: {
+    label: string;
+    iconUrl?: string;
+    startMs: number;
+    endMs: number;
+    uptime: number;
+  }[];
   shotsMs: number[];
   ignitionsMs: number[];
   damagePhaseSeconds: number;
@@ -352,8 +360,17 @@ export function RotationTimeline({
                 : "Ignitions";
           return (
             <g key={label + i}>
+              {line.kind === "effect" && line.row.iconUrl && (
+                <image
+                  href={line.row.iconUrl}
+                  x={labelWidth - ICON_SIZE - 6}
+                  y={middle - ICON_SIZE / 2}
+                  width={ICON_SIZE}
+                  height={ICON_SIZE}
+                />
+              )}
               <text
-                x={labelWidth - 8}
+                x={labelWidth - ICON_SIZE - 12}
                 y={middle + 4}
                 textAnchor="end"
                 fill="var(--text)"
@@ -504,65 +521,6 @@ export function CompareCurveChart({
             />
           ))}
         </LineChart>
-      </ResponsiveContainer>
-    </figure>
-  );
-}
-
-/**
- * Optimizer ranking (US-08): one bar per build, best first; the reference line marks the current
- * build. One series, so one color; the ranking table below is the table view.
- */
-export function RankingChart({
-  entries,
-  currentTotal,
-}: {
-  entries: { label: string; totalDamage: number }[];
-  currentTotal: number;
-}) {
-  return (
-    <figure className="chart">
-      <figcaption>Rangliste nach Total Damage</figcaption>
-      <ResponsiveContainer width="100%" height={40 + entries.length * 24}>
-        <BarChart
-          data={entries}
-          layout="vertical"
-          margin={{ top: 20, right: 16, left: 8 }}
-          barCategoryGap={4}
-        >
-          <CartesianGrid {...gridProps} vertical horizontal={false} />
-          <XAxis
-            {...axisProps}
-            type="number"
-            tickFormatter={(d: number) => integer.format(d)}
-          />
-          <YAxis {...axisProps} type="category" dataKey="label" width={40} />
-          <Tooltip
-            {...tooltipProps}
-            cursor={{ fill: "var(--grid)" }}
-            formatter={(value) => [
-              integer.format(Number(value)),
-              "Total Damage",
-            ]}
-          />
-          <ReferenceLine
-            x={currentTotal}
-            stroke="var(--muted)"
-            label={{
-              value: "aktuell",
-              position: "top",
-              fill: "var(--muted)",
-              fontSize: 12,
-            }}
-          />
-          <Bar
-            dataKey="totalDamage"
-            fill="var(--series-1)"
-            radius={[0, 4, 4, 0]}
-            maxBarSize={16}
-            isAnimationActive={false}
-          />
-        </BarChart>
       </ResponsiveContainer>
     </figure>
   );

@@ -1,7 +1,12 @@
 import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import { loadBuckets, loadEffects } from "../src/engine/loadData";
+import rawIcons from "../src/data/icons.json";
+import {
+  loadBuckets,
+  loadEffects,
+  loadIconIndex,
+} from "../src/engine/loadData";
 
 describe("loadBuckets", () => {
   it("accepts the buckets data file", () => {
@@ -22,5 +27,19 @@ describe("loadEffects", () => {
 
   it("rejects an effect without parts", () => {
     expect(() => loadEffects([{ ...rawEffects[0], parts: [] }])).toThrow();
+  });
+});
+
+describe("loadIconIndex", () => {
+  it("accepts the icons data file", () => {
+    expect(Object.keys(loadIconIndex(rawIcons).icons).length).toBeGreaterThan(
+      0,
+    );
+  });
+
+  it("rejects an index without icons", () => {
+    expect(() =>
+      loadIconIndex({ manifestVersion: "x", retrieved: "y" }),
+    ).toThrow();
   });
 });

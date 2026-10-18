@@ -4,6 +4,10 @@
     "code": 1,
     "name": "Well of Radiance (standing inside)",
     "shortName": "Well",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2274196887
+    },
     "providers": [
       {
         "kind": "subclass",
@@ -47,6 +51,10 @@
     "code": 2,
     "name": "Empowering Rift",
     "shortName": "Rift",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 383852321
+    },
     "providers": [
       {
         "kind": "subclass",
@@ -87,6 +95,10 @@
     "code": 3,
     "name": "Radiant",
     "shortName": "Radiant",
+    "manifestRef": {
+      "table": "DestinyTraitDefinition",
+      "hash": 157469667
+    },
     "providers": [
       {
         "kind": "subclass",
@@ -118,6 +130,10 @@
     "code": 4,
     "name": "Banner Shield (Weapons of Light)",
     "shortName": "Banner",
+    "manifestRef": {
+      "table": "DestinySandboxPerkDefinition",
+      "hash": 3112248479
+    },
     "providers": [
       {
         "kind": "subclass",
@@ -151,6 +167,10 @@
     "code": 5,
     "name": "Lumina (Blessing of the Sky)",
     "shortName": "Lumina",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 3512014804
+    },
     "providers": [
       {
         "kind": "fireteamSupport"
@@ -188,6 +208,10 @@
     "code": 6,
     "name": "Weaken",
     "shortName": "Weaken",
+    "manifestRef": {
+      "table": "DestinyTraitDefinition",
+      "hash": 3336638905
+    },
     "providers": [
       {
         "kind": "subclass",
@@ -219,6 +243,10 @@
     "code": 7,
     "name": "Divinity",
     "shortName": "Divinity",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 4103414242
+    },
     "providers": [
       {
         "kind": "fireteamSupport"
@@ -248,6 +276,10 @@
     "code": 8,
     "name": "Tractor Cannon",
     "shortName": "Tractor",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 3580904581
+    },
     "providers": [
       {
         "kind": "fireteamSupport"
@@ -285,6 +317,10 @@
     "code": 9,
     "name": "Moebius Tether",
     "shortName": "Moebius",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2722573681
+    },
     "providers": [
       {
         "kind": "subclass",
@@ -318,6 +354,10 @@
     "code": 10,
     "name": "Deadfall Tether",
     "shortName": "Deadfall",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2722573683
+    },
     "providers": [
       {
         "kind": "subclass",
@@ -351,6 +391,10 @@
     "code": 11,
     "name": "Solar Surge 2x",
     "shortName": "Surge 2x",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2283894334
+    },
     "providers": [
       {
         "kind": "armor"
@@ -380,6 +424,10 @@
     "code": 12,
     "name": "Solar Surge 3x",
     "shortName": "Surge 3x",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2283894334
+    },
     "providers": [
       {
         "kind": "armor"
@@ -410,6 +458,10 @@
     "code": 13,
     "name": "Solar Surge 4x",
     "shortName": "Surge 4x",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2283894334
+    },
     "providers": [
       {
         "kind": "armor"
@@ -439,6 +491,10 @@
     "code": 14,
     "name": "Weapons stat 200 (power weapons against bosses)",
     "shortName": "Weapons 200",
+    "manifestRef": {
+      "table": "DestinyStatDefinition",
+      "hash": 2996146975
+    },
     "providers": [
       {
         "kind": "armor"
@@ -467,6 +523,10 @@
     "code": 15,
     "name": "Elemental Overdrive (solar pickup)",
     "shortName": "Overdrive",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2659604390
+    },
     "providers": [
       {
         "kind": "artifact"
@@ -505,6 +565,10 @@
     "code": 16,
     "name": "Particle Reconstruction",
     "shortName": "Particle Rec.",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 1319563991
+    },
     "providers": [
       {
         "kind": "artifact"
@@ -546,6 +610,10 @@
     "code": 17,
     "name": "Ember of Ashes",
     "shortName": "Ember",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 1051276349
+    },
     "providers": [
       {
         "kind": "subclass",

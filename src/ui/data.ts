@@ -3,9 +3,15 @@
 import rawBosses from "../data/bosses.json";
 import rawBuckets from "../data/buckets.json";
 import rawEffects from "../data/effects.json";
+import rawIcons from "../data/icons.json";
 import raw from "../data/weapons/one-thousand-voices.json";
 import type { LinkRegistry } from "../engine/buildLink";
-import { loadBosses, loadBuckets, loadEffects } from "../engine/loadData";
+import {
+  loadBosses,
+  loadBuckets,
+  loadEffects,
+  loadIconIndex,
+} from "../engine/loadData";
 import { loadWeapon } from "../engine/loadWeapon";
 
 export const weapon = loadWeapon(raw);
@@ -16,3 +22,11 @@ export const bosses = loadBosses(rawBosses).filter(
 );
 export const activities = [...new Set(bosses.map((boss) => boss.activity))];
 export const linkRegistry: LinkRegistry = { weapons: [weapon], effects };
+
+const icons = loadIconIndex(rawIcons).icons;
+
+/** URL of an imported Bungie icon (ADR 0008), e.g. iconUrl("effect:radiant"); undefined if missing. */
+export function iconUrl(key: string): string | undefined {
+  const path = icons[key];
+  return path ? `${import.meta.env.BASE_URL}${path}` : undefined;
+}

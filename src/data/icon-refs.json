@@ -1,0 +1,149 @@
+[
+  {
+    "key": "subclass:hunter:arc",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 1334959255
+    }
+  },
+  {
+    "key": "subclass:hunter:solar",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2240888816
+    }
+  },
+  {
+    "key": "subclass:hunter:void",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2453351420
+    }
+  },
+  {
+    "key": "subclass:hunter:stasis",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 873720784
+    }
+  },
+  {
+    "key": "subclass:hunter:strand",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 3785442599
+    }
+  },
+  {
+    "key": "subclass:hunter:prismatic",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 4227925815
+    }
+  },
+  {
+    "key": "subclass:warlock:arc",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 1751782730
+    }
+  },
+  {
+    "key": "subclass:warlock:solar",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 3481861797
+    }
+  },
+  {
+    "key": "subclass:warlock:void",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2849050827
+    }
+  },
+  {
+    "key": "subclass:warlock:stasis",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 3291545503
+    }
+  },
+  {
+    "key": "subclass:warlock:strand",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 4204413574
+    }
+  },
+  {
+    "key": "subclass:warlock:prismatic",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 3357128662
+    }
+  },
+  {
+    "key": "subclass:titan:arc",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2932390016
+    }
+  },
+  {
+    "key": "subclass:titan:solar",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2550323932
+    }
+  },
+  {
+    "key": "subclass:titan:void",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2842471112
+    }
+  },
+  {
+    "key": "subclass:titan:stasis",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 613647804
+    }
+  },
+  {
+    "key": "subclass:titan:strand",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 242419885
+    }
+  },
+  {
+    "key": "subclass:titan:prismatic",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 1616346845
+    }
+  },
+  {
+    "key": "damage:ignition",
+    "manifestRef": {
+      "table": "DestinyTraitDefinition",
+      "hash": 3268862716
+    }
+  },
+  {
+    "key": "damage:takenSeeker",
+    "manifestRef": {
+      "table": "DestinySandboxPerkDefinition",
+      "hash": 860358313
+    }
+  },
+  {
+    "key": "catalyst:one-thousand-voices",
+    "manifestRef": {
+      "table": "DestinySandboxPerkDefinition",
+      "hash": 860358313
+    }
+  }
+]
