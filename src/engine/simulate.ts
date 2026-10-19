@@ -19,18 +19,22 @@
 //
 // Abilities (ADR 0009): each cast creates the damage instances of every ability component at the
 // cast time plus its delay and ticks. They carry the ability's kind as damage source, so only
-// multiplier parts for that source apply.
+// multiplier parts for that source apply. The stat of the ability's kind adds a multiplier in its
+// own bucket to the components that scale with it.
 
 import type {
   Ability,
+  AbilityStatScaling,
   Bucket,
   CounterId,
   DamageOverTimePart,
   DamageSource,
   Effect,
   Element,
+  MultiplierPart,
   Weapon,
 } from "../data/schema";
+import { abilityStatMultiplier } from "./abilityStats";
 import {
   activeParts,
   appliesToWeaponType,
@@ -64,9 +68,16 @@ export type AbilityCast = {
   castsMs: number[];
 };
 
+/** The value of a super, grenade or melee stat of the build with its scaling. */
+export type AbilityStatValue = {
+  scaling: AbilityStatScaling;
+  value: number;
+};
+
 export type SimulationOptions = EffectWindowOptions & {
   catalyst?: boolean; // default: without catalyst
   abilities?: AbilityCast[]; // default: no abilities
+  abilityStats?: AbilityStatValue[]; // default: no stat bonus
 };
 
 export type SimulationResult = {
@@ -201,13 +212,17 @@ export function simulate(
       ...damageOverTimeInstances(part, shots, isInPhase, multiplierAt, weapon),
     );
   }
+  const statParts = abilityStatParts(options.abilityStats ?? [], buckets);
   for (const cast of options.abilities ?? []) {
     damageInstances.push(
-      ...abilityDamageInstances(cast, isInPhase, (timeMs) =>
-        combinedMultiplier(partsAt(timeMs).multiplierParts, buckets, {
-          damageSource: cast.ability.kind,
-          element: cast.ability.element,
-        }),
+      ...abilityDamageInstances(cast, isInPhase, (timeMs, scalesWithStat) =>
+        combinedMultiplier(
+          scalesWithStat
+            ? [...partsAt(timeMs).multiplierParts, ...statParts]
+            : partsAt(timeMs).multiplierParts,
+          buckets,
+          { damageSource: cast.ability.kind, element: cast.ability.element },
+        ),
       ),
     );
   }
@@ -218,14 +233,39 @@ export function simulate(
   return { shots, damageInstances, totalDamage, dps };
 }
 
+/**
+ * Turns the stat values into multiplier parts for the abilities of the stat's kind. Throws if a
+ * stat refers to an unknown bucket.
+ */
+function abilityStatParts(
+  stats: AbilityStatValue[],
+  buckets: Bucket[],
+): MultiplierPart[] {
+  return stats.map(({ scaling, value }) => {
+    if (!buckets.some((bucket) => bucket.id === scaling.bucketId)) {
+      throw new Error(`Unknown bucket "${scaling.bucketId}"`);
+    }
+    return {
+      type: "multiplier",
+      bucketId: scaling.bucketId,
+      multiplier: {
+        value: abilityStatMultiplier(scaling, value),
+        source: scaling.damagePerPoint.source,
+      },
+      damageSources: [scaling.kind],
+    };
+  });
+}
+
 /** Damage instances of all components of an ability after each cast: delay, then ticks. */
 function abilityDamageInstances(
   { ability, castsMs }: AbilityCast,
   isInPhase: (timeMs: number) => boolean,
-  multiplierAt: (timeMs: number) => number,
+  multiplierAt: (timeMs: number, scalesWithStat: boolean) => number,
 ): TimedDamageInstance[] {
   const components = ability.components.map((component) => ({
     id: `${ability.id}.${component.id}`,
+    scalesWithStat: component.scalesWithAbilityStat,
     delayMs: requireValue(component.delayMs, "delayMs"),
     damage: requireValue(component.damagePerTick, "damagePerTick"),
     ticks: requireValue(component.ticks, "ticks"),
@@ -241,7 +281,8 @@ function abilityDamageInstances(
         result.push({
           id: component.id,
           timeMs,
-          damage: component.damage * multiplierAt(timeMs),
+          damage:
+            component.damage * multiplierAt(timeMs, component.scalesWithStat),
           damageSource: ability.kind,
           element: ability.element,
           abilityId: ability.id,

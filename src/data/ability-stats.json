@@ -1,0 +1,50 @@
+[
+  {
+    "kind": "super",
+    "bucketId": "abilityStat",
+    "bonusFromStat": 100,
+    "maxStat": 200,
+    "damagePerPoint": {
+      "value": 0.0045,
+      "source": {
+        "name": "Destiny Data Compendium, Game Mechanics, Armor Stats (enhanced benefit above 100)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-19",
+        "status": "verified",
+        "note": "\"Grants 0.45% increased Super Ability Damage per point above 100. Provides up to 45% increased Super Ability Damage at 200 points.\" Matches the median factor from stat 100 to 200 in the Aegis tab Abilties."
+      }
+    }
+  },
+  {
+    "kind": "grenade",
+    "bucketId": "abilityStat",
+    "bonusFromStat": 100,
+    "maxStat": 200,
+    "damagePerPoint": {
+      "value": 0.0065,
+      "source": {
+        "name": "Destiny Data Compendium, Game Mechanics, Armor Stats (enhanced benefit above 100)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-19",
+        "status": "verified",
+        "note": "\"Grants 0.65% [0.2%] increased Grenade Ability Damage per point above 100. Provides up to 65% [20%] increased Grenade Ability Damage at 200 points.\" (PvE value; PvP in brackets) Matches the median factor from stat 100 to 200 in the Aegis tab Abilties."
+      }
+    }
+  },
+  {
+    "kind": "melee",
+    "bucketId": "abilityStat",
+    "bonusFromStat": 100,
+    "maxStat": 200,
+    "damagePerPoint": {
+      "value": 0.003,
+      "source": {
+        "name": "Destiny Data Compendium, Game Mechanics, Armor Stats (enhanced benefit above 100)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-19",
+        "status": "verified",
+        "note": "\"Grants 0.3% [0.2%] more Melee Damage per point above 100. Provides up to 1.3x [20%] Melee Damage at 200 points. Works with Unpowered, Powered, and Glaive Melee Damage.\" (PvE value; PvP in brackets) Matches the median factor from stat 100 to 200 in the Aegis tab Abilties."
+      }
+    }
+  }
+]

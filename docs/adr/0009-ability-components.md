@@ -38,7 +38,7 @@ Geprüft und verworfen:
    - Components sind ungebufft, Buffs kommen nur über Effects.
    - Ein Paket führt `includedEffectIds` für die Buffs, die Aegis eingerechnet hat. Die Engine wendet diese Effects auf das Paket nicht noch einmal an.
 6. **Keyword-Schaden einer Ability** (z. B. Ignition einer Fusion Grenade) ist eine Component dieser Ability und trägt deren Damage Source. Ob er mit dem Ability Stat skaliert, steht pro Component (`scalesWithAbilityStat`).
-7. **Ability Stat:** vorerst nur 100 oder 200. Der Faktor bei 200 steht im Bucket `abilityStat` und wirkt nur auf Components mit `scalesWithAbilityStat`.
+7. **Ability Stat:** Jeder Wert von 0 bis 200. Laut Compendium („Game Mechanics“) steigt der Schaden linear pro Punkt über 100: Super +0,45 %, Grenade +0,65 %, Melee +0,3 %. Die Werte stehen in `ability-stats.json`, der Multiplier im Bucket `abilityStat`; er wirkt nur auf Components mit `scalesWithAbilityStat`. Bei 200 entspricht das dem Median der Aegis-Messungen (×1,447 / ×1,649 / ×1,300).
 8. **Super Window:** Ein Super mit Dauer blockiert in dieser Zeit die Shots der Waffe, wenn `blocksWeapon` gesetzt ist.
 9. Aspects und Exotics, die Abilities verändern, sind Effects. Ein Build hat höchstens eine Exotic-Rüstung (Exclusive Group `exotic-armor`).
 
@@ -49,7 +49,6 @@ Geprüft und verworfen:
 - Neue Data Files: `abilities.json` (Abilities), `aegis-abilities.json` (Aegis-Import, Gate), `compendium-abilities.json` (Snapshot).
 - Der Fallback auf Pakete beschränkt die Kombinationen auf die von Aegis getesteten. Das ist akzeptiert, weil Aegis die sinnvollen Kombinationen testet.
 - Grenzen:
-  - Stat-Zwischenwerte kommen später. Linear interpoliert wäre das eine Annahme mit Status `unverified`.
   - Energie und Cooldowns (ADR 0006, Stufe C) fehlen. Die Rotation legt die Casts fest.
   - Cast-Animationen ohne Quelle blockieren die Waffe nicht.
   - Woraus sich die ×2,30 von Aegis zusammensetzen, ist nicht dokumentiert. Wir übernehmen den Quotienten.

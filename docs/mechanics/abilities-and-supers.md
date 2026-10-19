@@ -9,7 +9,7 @@ Granaten, Nahkampf und Supers machen eigenen Schaden. Sie zählen zum Total Dama
 ## Regeln
 
 1. Jede Fähigkeit erzeugt eigene Damage Instances, oft mehrere: Aufprall, Explosion, Ticks.
-2. **Stat-Abhängigkeit:** Aegis misst jede Fähigkeit bei Stat 100 und bei Stat 200. Das Verhältnis steht in der Spalte „Multi“.
+2. **Stat-Abhängigkeit:** Über 100 Punkten steigt der Schaden linear pro Punkt (Compendium, „Game Mechanics“): Super +0,45 %, Grenade +0,65 %, Melee +0,3 % (multiplikativ). Aegis misst jede Fähigkeit bei Stat 100 und bei Stat 200; das Verhältnis steht in der Spalte „Multi“ und bestätigt die Werte.
 3. Fähigkeiten haben Cooldowns und Energie. In einer Damage Phase sind sie meist nur ein- oder zweimal verfügbar, außer es gibt Energie-Quellen.
 4. Fähigkeiten profitieren von anderen Buffs als Waffen. Laut Compendium wirken Nahkampf-Buffs zum Beispiel nicht auf Scorch und Ignition. Ob ein Effect auf Fähigkeiten wirkt, muss jeder Effect selbst angeben.
 5. **Fusion Grenade:** Explosion plus Scorch; mit Ember of Ashes und Touch of Flame folgt eine Ignition.
@@ -53,7 +53,7 @@ Entscheidung in ADR 0009 (`docs/adr/0009-ability-components.md`), Umsetzung läu
 
 - [x] Welche Supers? Alle Supers sollen abgedeckt werden (Entscheidung 2026-10-18). Für Granaten und Nahkampf gilt dasselbe, sobald US-14 umgesetzt wird.
 - [x] Hauptquelle für Fähigkeiten: Compendium für die Teile, Aegis als Gate und Fallback (ADR 0009, 2026-10-19).
-- [ ] Stat-Werte zwischen 100 und 200: Keine Quelle belegt den Verlauf. Vorerst nur 100 und 200.
+- [x] Stat-Werte zwischen 100 und 200: linear pro Punkt laut Compendium „Game Mechanics“ (2026-10-19), Data File `ability-stats.json`.
 - [ ] Wie bilden wir Energie und Cooldowns ab, ohne die ganze Fähigkeiten-Ökonomie zu simulieren?
 
 ## Quellen

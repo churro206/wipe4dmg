@@ -323,6 +323,19 @@ export const Ability = z.object({
 });
 export type Ability = z.infer<typeof Ability>;
 
+/**
+ * How the super, grenade or melee stat scales the damage of its abilities: a fixed bonus per point
+ * above a stat, e.g. +0.45% super damage per point above 100 (Compendium, Game Mechanics).
+ */
+export const AbilityStatScaling = z.object({
+  kind: AbilityKind,
+  bucketId: z.string(), // bucket of the stat multiplier, e.g. "abilityStat"
+  bonusFromStat: z.number().nonnegative(), // the damage bonus starts above this stat, e.g. 100
+  maxStat: z.number().positive(), // highest stat, e.g. 200
+  damagePerPoint: SourcedNumber, // e.g. 0.0045 for +0.45% per point
+});
+export type AbilityStatScaling = z.infer<typeof AbilityStatScaling>;
+
 /** Community or own reference value for tests. */
 export const ReferenceValue = z.object({
   id: z.string(),

@@ -68,5 +68,17 @@
       "retrieved": "2026-10-18",
       "status": "unverified"
     }
+  },
+  {
+    "id": "abilityStat",
+    "name": "Ability Stat",
+    "stacking": "multiplicative",
+    "source": {
+      "name": "Destiny Data Compendium, Game Mechanics (Melee stat: \"Damage increase is multiplicative\")",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-19",
+      "status": "unverified",
+      "note": "Stated for the melee stat; assumed for the super and grenade stats. Only one stat applies per ability, so the stacking rule inside the bucket does not matter."
+    }
   }
 ]
