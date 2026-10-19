@@ -57,7 +57,7 @@ export function parseCompendiumTab(
       entries.push({
         tab,
         section,
-        name: cells[0].split("\n")[0],
+        name: cells[0].replace(/\s*\n\s*/g, " "), // e.g. "Golden Gun:<br> Marksman"
         text: cells[1],
         extra: cells.slice(2).join("\n"),
       });

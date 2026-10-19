@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
+    "coverage": "vitest run tests/coverage.test.ts --update",
     "import:bosses": "node scripts/import-aegis-bosses.ts",
     "import:abilities": "node scripts/import-aegis-abilities.ts",
     "import:compendium": "node scripts/import-compendium.ts",

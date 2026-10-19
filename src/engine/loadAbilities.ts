@@ -27,10 +27,10 @@ export function loadAbilities(
 ): Ability[] {
   return AbilityData.array()
     .parse(raw)
-    .map(({ package: pkg, components, ...ability }) =>
+    .map(({ components, ...ability }) =>
       Ability.parse({
         ...ability,
-        components: pkg
+        components: ability.package
           ? packageComponents(
               ability.id,
               ability.aegisRowId!,
@@ -38,7 +38,7 @@ export function loadAbilities(
               aegisRows,
               abilityStats,
             )
-          : components,
+          : (components ?? []),
       }),
     );
 }

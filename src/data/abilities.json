@@ -5,6 +5,10 @@
     "name": "Thundercrash",
     "kind": "super",
     "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Thundercrash"
+    },
     "providers": [
       {
         "kind": "subclass",

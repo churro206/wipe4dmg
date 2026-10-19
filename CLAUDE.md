@@ -15,6 +15,9 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 - `docs/adr/`: Architecture Decision Records. Lies alle ADRs vor größeren Änderungen.
 - `docs/data-sources.md`: Datenquellen, Messbedingungen und Messprotokoll.
 - `docs/mechanics/`: Wissen über Mechanics von Destiny 2. Lies `docs/mechanics/README.md` vor Änderungen an Effects oder am Simulator.
+- `docs/guides/abilities.md`: Ablauf zum Anlegen und Aktualisieren von Abilities (ADR 0009). Lies ihn vor Änderungen an `abilities.json`.
+- `docs/coverage.md`: Abdeckung (generiert, nicht von Hand bearbeiten). Nach Änderungen an Data Files `npm run coverage` ausführen.
+- `docs/roadmap.md`: Woran gearbeitet wird; Quelle für die Website (US-15). Nach jedem abgeschlossenen Schritt aktualisieren.
 
 ## Sprache
 
@@ -61,4 +64,5 @@ tests/         Vitest-Tests für die Engine.
 - `npm run import:bosses`: Bosse und Damage Phases aus der Aegis-Tabelle nach `src/data/bosses.json` übernehmen
 - `npm run import:abilities`: Aegis-Reiter „Abilties“ nach `src/data/aegis-abilities.json` übernehmen (Gate und Fallback, ADR 0009)
 - `npm run import:compendium`: Texte der Compendium-Subklassen-Reiter nach `src/data/compendium-abilities.json` übernehmen; Tests prüfen damit zitierte Werte (ADR 0009)
+- `npm run coverage`: `docs/coverage.md` aus den Data Files neu schreiben (ein Test prüft, dass sie aktuell ist)
 - `npm run import:icons`: Icons aus dem Bungie-Manifest laden (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)

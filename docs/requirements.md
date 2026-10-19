@@ -53,6 +53,7 @@ Die erste Version enthält nur den Manual Mode. Der Breakdown gehört dazu, weil
 | US-12 | Als Spieler will ich mein Inventar über die Bungie-API importieren, damit die App nur verfügbare Ausrüstung nutzt. | Won't (v1) |
 | US-13 | Als Spieler will ich Builds über einen Discord Bot berechnen, damit ich sie direkt im Discord meiner Gruppe vergleiche. Der Bot führt die Engine in Node.js auf einem Raspberry Pi aus. | Could |
 | US-14 | Als Spieler will ich, dass Fähigkeiten und Supers in den Total Damage eingehen, damit ich ganze Builds vergleiche. Alle Supers sollen abgedeckt sein. | Should |
+| US-15 | Als Spieler will ich auf der Website nachlesen, wie der Rechner rechnet, welche Mechanics und Effects es gibt und was schon abgedeckt ist, damit ich den Ergebnissen vertraue und Lücken kenne. | Should |
 
 ## Releaseplan
 
@@ -62,7 +63,7 @@ Das MVP (v0.5) ist das erste Release mit echtem Nutzen. Das Walking Skeleton dav
 | --- | --- | --- | --- |
 | v0.1 Walking Skeleton | Waffe ohne Buffs, Total Damage, online per Link | Kette läuft durch | abgeschlossen 2026-10-18 |
 | v0.5 MVP | Manual Mode, Breakdown, US-01 bis US-04 | Ergebnisse stimmen mit den Werten der Datenquelle überein (`tests/gate.test.ts`) | abgeschlossen 2026-10-18 |
-| v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, Fähigkeiten und Supers, US-05 bis US-09, US-14 | Freunde testen v1.0 | in Arbeit (Katalysator, Damage Curve, Rotation, Link, Vergleich, Optimizer; offen: US-14) |
+| v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, Fähigkeiten und Supers, Wiki mit Abdeckung und „Wie rechnet der Rechner?“, US-05 bis US-09, US-14, US-15 | Freunde testen v1.0 | in Arbeit (Katalysator, Damage Curve, Rotation, Link, Vergleich, Optimizer; offen: US-14, US-15) |
 | v1.x Erweiterung | Speichern im Browser, weitere Waffen, Discord Bot, US-10, US-11, US-13 | – | offen |
 
 Ein Release startet erst, wenn das Gate davor erfüllt ist. Das Gate vor v1.0 vergleicht unsere Ergebnisse mit den Gesamtwerten der Datenquelle, z. B. Total Damage pro Magazin.
@@ -82,6 +83,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Bucket | Group of multipliers with one stacking rule, e.g. only the highest value applies; buckets multiply with each other |
 | Build | Complete selection of subclass, armor, artifact perks and fireteam support for one weapon |
 | Burn | Damage over time that scorch deals to a target; each tick is a damage instance |
+| Coverage | Which abilities, effects and mechanics the calculator models and how: own components, package, effect only or missing (docs/coverage.md, wiki page) |
 | Damage Curve | Cumulative damage over the damage phase |
 | Damage Instance | Single hit with a timestamp and a damage value; the explosion of One Thousand Voices is a separate, delayed damage instance |
 | Damage over Time | Mechanic category: an effect deals damage in ticks over a duration, e.g. burn or Taken Seeker |

@@ -464,7 +464,7 @@
     {
       "tab": "Solar",
       "section": "Glossary",
-      "name": "Solar Effect",
+      "name": "Solar Effect Damage Scaling",
       "text": "Solar Effect (Scorch | Ignition) damage can be increased through Perks and Exotics, but the source used for initially scorching will determine what it will be counted as.\n\nInflicting a Solar Effect with a Weapon, such as with Incandescent/Burning Ambition or through Exotic Weapons such as Tommy's Matchbook or Conditional Finality, will result in Solar Effects counting as Weapon Damage, benefitting from Weapon Buffs and Activity Modifiers that exclusively benefit Weapons, such as other Damage Perks, Weapon Stat, Radiant, and Solar Weapon Surges.\nNew Gear Bonus is applied permanently to all Weapons, so all Solar Effect Damage against Combatants will always be 5% higher than expected, on top of Combatant Rank Scalars.\n\nInflicting Solar Effects through abilities such as Fusion Grenades and Well of Radiance will result in the Solar Effects counting as Solar Ability Damage, with their damage only being increased by Grenade (Verity's Brow), and Super (Heart of the Flame) Damage Increases respectively. Melee Damage Buffs and 100+ Melee Stat do not increase Solar Effect Damage.\nEffects that increase all Ability Damage will benefit all Solar Effects that are initially applied through Solar Abilities.\n\nActivity Modifiers that increase all Solar Damage, such as Solar Surge, will also apply to Solar Effects, regardless of source.",
       "extra": ""
     },
@@ -709,14 +709,14 @@
     {
       "tab": "Solar",
       "section": "Super Abilities",
-      "name": "Golden Gun:",
+      "name": "Golden Gun: Deadshot",
       "text": "General Super Information\nDamage Resistance: 60% [0%]\nDamage Resistance +Knock'Em Down: 66% [15%]\nBase Duration: 12 seconds, or 8.34% Super Drain per Second\n\n6 Shot Golden Gun\nDeals 1453 [393] damage and inflicts x40+10 Scorch per shot, without the ability to score Precision Hits.\nDamage Falloff begins at 26m and decreases down to 34.5% damage at 100m. ADS Zoom has no effect on damage falloff (1x ADS scalar).\nRadiant's damage bonus affects its damage output.\n\nSuper Kills grant an additional bullet to the magazine and refund Super Energy.\nInitially refunds ~80% Super Energy per kill, decreasing by ~10% per kill, down to a minimum of ~12% Super Energy per kill.",
       "extra": "Tier 2 Super\n\nBase Cooldown:\n556 seconds"
     },
     {
       "tab": "Solar",
       "section": "Super Abilities",
-      "name": "Golden Gun:",
+      "name": "Golden Gun: Marksman",
       "text": "General Super Information\nDamage Resistance: 60% [0%]\nBase Duration: 12 seconds, or 8.34% Super Drain per Second\nBase Duration +Knock'Em Down: 16 seconds, or 6.25% Super Drain per Second.\n\n3 Shot Golden Gun\nDeals 1574 [426] damage and inflicts x40+10 Scorch per shot with a 2x Precision Multiplier.\nRadiant's damage bonus affects its damage output.\n\nOn Precision Hit:\nGrants a stack of Line'Em Up, up to a maximum of 2 stacks, and spawns 2 Orbs of Power. Buff lasts until Super End.\nLine'Em Up x1 | 45.8% increased damage, and 25?% Decreased Passive Super Drain.\nLine'Em Up x2 | 90% increased damage, and 50?% Decreased Passive Super Drain.\n\nPrecision Hit Orbs of Power Super Gains:\nNon-Boss Combatants = 3.57% Super Energy | Boss Combatants = 2.85% Super Energy | Boss + Star-Eater Scales = 2.5% Super Energy",
       "extra": "Tier 2 Super\n\nBase Cooldown:\n556 seconds"
     },
@@ -779,7 +779,7 @@
     {
       "tab": "Solar",
       "section": "Super Abilities",
-      "name": "Hammer of Sol",
+      "name": "Hammer of Sol (Sol Invictus Aspect)",
       "text": "General Super Information\nDamage Resistance: 90% [51%]\nBase Duration: 16.5 seconds, or 6.06% Super Drain per Second\nCreates a Sunspot on cast if grounded.\n\nLight Attack | Drains 9% Super Energy\nThrows a Hammer that deals 483 [?] damage and creates a Sunspot on impact. Has a 1.5 seconds delay between Hammer Throws.\nImpacts release 3 shrapnel, dealing up to 429 [?] damage each.\n\nSol Invictus Sunspot Buff Effects:\nDecreases Passive Drain by 40%, increasing duration to 27.5 seconds, or 3.63% Super Drain per second.\nLight Attacks drain 5.5% Super Energy and the delay between Hammer Throws is reduced to 1 second.",
       "extra": "Tier 2 Super\n\nBase Cooldown:\n556 seconds"
     },
@@ -1059,14 +1059,14 @@
     {
       "tab": "Void",
       "section": "Grenade Abilities",
-      "name": "Chaos Accelerant",
+      "name": "Chaos Accelerant (Charged)",
       "text": "Scans up to ↑4 enemies within 12 meters. Axion Bolts travel ↑?% faster and deal 25% increased damage. Triggers again after 1 second of landing.",
       "extra": ""
     },
     {
       "tab": "Void",
       "section": "Grenade Abilities",
-      "name": "Handheld Supernova",
+      "name": "Handheld Supernova Chaos Accelerant",
       "text": "While Magnetic Grenade, Void Spike, Suppressor Grenade, or Voidwall Grenade are equipped:\n\nPassively grants 1.154x Grenade Regeneration Speed.\n\nHolding [Grenade] for ? seconds prepares a Handheld Supernova for up to 4.5 seconds before it dissipates.\nReleasing [Grenade] shoots forward a short-range Void Blast that deals 150 [50] Damage and heavily knocks back enemies within 12.5 meters in a fan-shaped area.\nVoid Blast also releases 9 Void Bolts up to 12.5 meters ahead, each dealing 375 [15] Splash Damage and inflict Volatile over a 3 meter radius.\nDeals 75% decreased self-damage. Does not self-inflict Volatile.\n\nDeals up to 3,525 [185] Damage upon scoring 9 Void Bolt hits as well as the initial blast.",
       "extra": ""
     },
@@ -1087,7 +1087,7 @@
     {
       "tab": "Void",
       "section": "Grenade Abilities",
-      "name": "Chaos Accelerant",
+      "name": "Chaos Accelerant (Charged)",
       "text": "Adds 4 additional submunitions, totalling 12. Submunitions now strongly track enemies within 5 meters, and deal 25% increased damage towards Combatants.",
       "extra": ""
     },
@@ -1122,7 +1122,7 @@
     {
       "tab": "Void",
       "section": "Grenade Abilities",
-      "name": "Chaos Accelerant",
+      "name": "Chaos Accelerant (Charged)",
       "text": "Pulls enemies within ? meters after 0.617 seconds of impacting.\nAfter 1.2 seconds of being created, deals 78 [20] damage every 0.267 seconds up to 17+7 times over its 4.3+2.3 second duration to enemies within its 7 meter radius.\nThe 17th 24th tick has falloff and deals up to 54 [?] damage.\n\nDeals up to 1,380 [1,926] [340 [480]] damage with the Void Vortex field.",
       "extra": ""
     },
@@ -1150,14 +1150,14 @@
     {
       "tab": "Void",
       "section": "Super Abilities",
-      "name": "Shadowshot:",
+      "name": "Shadowshot: Deadfall",
       "text": "General Super Information\nDamage Resistance: 90% [53%]\n\nShadowshot fires a single Deadfall Anchor that attaches to surfaces and enemies, pulling all enemies within 12.5 metres towards it upon impact.\nVoid Anchor activates on a 1 second delay after it detects an enemy within 12.5 metres, or automatically after 30 seconds have passed.\n\nDeadfall Anchor:\nDeals 2,583 [?] Damage on impact, inflicting Deadfall Weaken and Suppression to enemies within ? meters. Counts as a Construct with ? HP.\nEnemies within 12.5 meters of the anchor are tethered. Tethered enemies are inflicted with Deadfall Weaken, Suppression, and Mark for 30 [10] seconds.\n50% of the Bodyshot (Base) Damage dealt to tethered enemies is also inflicted to other tethered enemies.\n\nDeadfall Weaken UNIQUELY increases damage taken by 35%.\n\nDeadfall Anchor lasts for 12 seconds by default. Tethered Enemy kills increase its duration by 0.5 seconds, up to a maximum of 25 seconds.",
       "extra": "Tier 4 Super\n\nBase Cooldown:\n455 seconds"
     },
     {
       "tab": "Void",
       "section": "Super Abilities",
-      "name": "Shadowshot:",
+      "name": "Shadowshot: Moebius Quiver",
       "text": "General Super Information\nDamage Resistance: 90% [53%]\nSuper Duration: 16 seconds [20 with Orpheus Rigs]\n\nShadowshot fires 3 Moebius Anchors up to 2 times per activation.\nDealing damage while Shadowshot is active linearly grants increased Moebius Anchor and Bow Weapon Damage.\nMaxes out at 127% increased Moebius Anchor Damage and 150% [75% Crossbow] increased Bow Weapon Damage after dealing ~3000 damage.\nDamage requirement IGNORES Power-Delta, but considers ACTUAL DAMAGE DEALT.\n\nMoebius Anchor:\nDeals 1,076 [?] Damage and inflicts Suppression, Volatile, and Weaken on impact. Counts as a Construct with ? HP.\nEnemies within 7 meters of the anchor are tethered. Deals 20% increased damage to tethered enemies. Tethered enemies are inflicted with Weaken and Suppression.\n50% of the Bodyshot (Base) Damage dealt to tethered enemies is also inflicted to other tethered enemies.\n\nMoebius Anchor lasts for 6 seconds by default. Tethered Enemy kills increase its duration by 0.5 seconds, up to a maximum of 25 seconds.",
       "extra": "Tier 3 Super\n\nBase Cooldown:\n500 seconds"
     },
@@ -1269,7 +1269,7 @@
     {
       "tab": "Void",
       "section": "Super Abilities",
-      "name": "Nova Bomb:",
+      "name": "Nova Bomb: Vortex",
       "text": "General Super Information\nDamage Resistance: 90% [49%]\n\nReleases a fast moving, arcing Nova Bomb that detonates on impact, dealing up to 3,021 [?] damage in a ? meter radius.\nCreates a singularity after 0.43 seconds of detonating, instantly pulling enemies inwards.\n\nSingularity deals 52 [?] damage every 0.13 seconds for 10 seconds to enemies within ? metres, and repeatedly pulls enemies within ? meters every ? seconds towards it.",
       "extra": "Tier 3 Super\n\nBase Cooldown:\n500 seconds"
     },

@@ -24,6 +24,9 @@ const html = [
       '<td class="s40">Tier 2 Super<br><br>556 seconds.</td>',
   ),
   row(
+    '<td class="s14"></td><td class="s23">Golden Gun:<br> Marksman</td><td class="s19" colspan="10">3 Shot Golden Gun<br>Deals 1574 [426] damage.</td>',
+  ),
+  row(
     '<td class="s14"></td><td class="s15" colspan="2">Aspect</td><td class="s15" colspan="10">Information</td><td class="s15">Fragment Slots</td>',
   ),
   row(
@@ -38,6 +41,7 @@ describe("parseCompendiumTab", () => {
   it("reads entries with name, text and the section above them", () => {
     expect(entries.map((e) => e.name)).toEqual([
       "Thundercrash",
+      "Golden Gun: Marksman",
       "Knock 'Em Down",
     ]);
     expect(entries[0]).toMatchObject({
@@ -45,7 +49,7 @@ describe("parseCompendiumTab", () => {
       section: "Super Abilities",
       extra: "Tier 2 Super\n\n556 seconds.",
     });
-    expect(entries[1].section).toBe("Aspect");
+    expect(entries[2].section).toBe("Aspect");
   });
 
   it("turns the cell HTML into plain text with line breaks and decoded characters", () => {
@@ -55,7 +59,11 @@ describe("parseCompendiumTab", () => {
     expect(entries[0].text).toContain(
       "dealing 180 [?] impact damage, as well as up to 8,260 [?] explosive damage",
     );
-    expect(entries[1].text).toBe("While & Radiant: grants more knives.");
+    expect(entries[2].text).toBe("While & Radiant: grants more knives.");
+  });
+
+  it("joins names that span several lines", () => {
+    expect(entries[1].name).toBe("Golden Gun: Marksman");
   });
 
   it("skips navigation rows and section titles", () => {

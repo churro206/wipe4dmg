@@ -351,7 +351,12 @@ const AbilityFields = z.object({
   // Aegis row (aegis-abilities.json) the ability is checked against without effects; for a
   // package also the source of its value.
   aegisRowId: z.string().optional(),
-  components: z.array(AbilityComponent).min(1),
+  // True if the value comes from the Aegis row as one package instead of own components.
+  package: z.literal(true).optional(),
+  // Compendium entry that describes the ability; the source of quotes and of the coverage list.
+  compendium: z.object({ tab: z.string(), entry: z.string() }).optional(),
+  // Empty only for supers that just grant effects, e.g. Ward of Dawn.
+  components: z.array(AbilityComponent),
 });
 const usageOnlyForSupers = (ability: {
   kind: AbilityKind;
@@ -361,12 +366,24 @@ const usageOnlyForSupersError = {
   message: "usage is only allowed for supers",
   path: ["usage"],
 };
+const damageOrGrants = (ability: {
+  components?: unknown[];
+  package?: true;
+  grantsEffectIds?: string[];
+}) =>
+  (ability.components?.length ?? 0) > 0 ||
+  ability.package === true ||
+  (ability.grantsEffectIds?.length ?? 0) > 0;
+const damageOrGrantsError = {
+  message: "an ability needs components, a package or granted effects",
+  path: ["components"],
+};
 
 /** Grenade, melee or super of a subclass with its ability components (ADR 0009). */
 export const Ability = AbilityFields.refine(
   usageOnlyForSupers,
   usageOnlyForSupersError,
-);
+).refine(damageOrGrants, damageOrGrantsError);
 export type Ability = z.infer<typeof Ability>;
 
 /**
@@ -374,12 +391,12 @@ export type Ability = z.infer<typeof Ability>;
  * or a package, i.e. the measured value per use of one Aegis row (ADR 0009, fallback).
  */
 export const AbilityData = AbilityFields.extend({
-  components: z.array(AbilityComponent).min(1).optional(),
-  package: z.literal(true).optional(),
+  components: z.array(AbilityComponent).optional(),
 })
   .refine(usageOnlyForSupers, usageOnlyForSupersError)
-  .refine((ability) => !ability.components !== !ability.package, {
-    message: "an ability needs either components or a package",
+  .refine(damageOrGrants, damageOrGrantsError)
+  .refine((ability) => !(ability.components && ability.package), {
+    message: "an ability has either components or a package",
   })
   .refine((ability) => !ability.package || ability.aegisRowId, {
     message: "a package needs an aegisRowId",
