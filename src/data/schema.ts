@@ -355,3 +355,27 @@ export const Boss = z.object({
   description: z.string(), // what the phase covers, e.g. "30s middle damage"; may be empty
 });
 export type Boss = z.infer<typeof Boss>;
+
+/** Category of a row in the Aegis tab "Abilties"; "miscellaneous" mixes keyword damage, aspects and exotics. */
+export const AegisAbilityCategory = z.enum(["super", "grenade", "melee", "miscellaneous"]);
+export type AegisAbilityCategory = z.infer<typeof AegisAbilityCategory>;
+
+/**
+ * One measured scenario from the Aegis tab "Abilties" (ADR 0009): damage per use of an ability
+ * without Aegis' standard multipliers ("visual Value"). Reference for the ability gate and the
+ * fallback package of an ability.
+ */
+export const AegisAbilityRow = z.object({
+  id: z.string(), // kebab-case from category, name and assumptions
+  category: AegisAbilityCategory,
+  name: z.string(), // e.g. "Golden Gun - Marksman"
+  assumptions: z.array(z.string()), // e.g. ["Knock Em Down", "Feast of Light x6"]
+  // Modelled effects that Aegis measured inside the value; the engine must not apply them again.
+  includedEffectIds: z.array(z.string()),
+  primaryTick: z.string(), // tick columns as text, e.g. "916"; for cross-checks only
+  secondaryTicks: z.string(), // e.g. "15 impact, 1592 ignition"
+  perUseStat100: SourcedNumber,
+  perUseStat200: SourcedNumber,
+  gameVersion: z.string(),
+});
+export type AegisAbilityRow = z.infer<typeof AegisAbilityRow>;

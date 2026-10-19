@@ -8,8 +8,8 @@ export const AEGIS_SHEET_URL = "https://destiny2.science/boss-damage";
 const REQUIRED_COLUMNS = ["Activity", "Boss", "Phase"] as const;
 const DESCRIPTION_COLUMN = "1 phase Description";
 
-const normalize = (text: string) => text.replace(/\s+/g, " ").trim();
-const slug = (text: string) =>
+export const normalize = (text: string) => text.replace(/\s+/g, " ").trim();
+export const slug = (text: string) =>
   text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
