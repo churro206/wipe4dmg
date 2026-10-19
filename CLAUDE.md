@@ -60,4 +60,5 @@ tests/         Vitest-Tests für die Engine.
 - `npm run build`: Produktionsversion bauen
 - `npm run import:bosses`: Bosse und Damage Phases aus der Aegis-Tabelle nach `src/data/bosses.json` übernehmen
 - `npm run import:abilities`: Aegis-Reiter „Abilties“ nach `src/data/aegis-abilities.json` übernehmen (Gate und Fallback, ADR 0009)
+- `npm run import:compendium`: Texte der Compendium-Subklassen-Reiter nach `src/data/compendium-abilities.json` übernehmen; Tests prüfen damit zitierte Werte (ADR 0009)
 - `npm run import:icons`: Icons aus dem Bungie-Manifest laden (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)

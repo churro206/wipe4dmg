@@ -11,6 +11,7 @@
     "test": "vitest",
     "import:bosses": "node scripts/import-aegis-bosses.ts",
     "import:abilities": "node scripts/import-aegis-abilities.ts",
+    "import:compendium": "node scripts/import-compendium.ts",
     "import:icons": "node --env-file-if-exists=.env.local scripts/import-bungie-icons.ts"
   },
   "dependencies": {

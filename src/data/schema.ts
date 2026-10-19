@@ -379,3 +379,20 @@ export const AegisAbilityRow = z.object({
   gameVersion: z.string(),
 });
 export type AegisAbilityRow = z.infer<typeof AegisAbilityRow>;
+
+/** One row of a Compendium subclass tab as plain text, e.g. the super "Thundercrash" (ADR 0009). */
+export const CompendiumEntry = z.object({
+  tab: z.string(), // e.g. "Arc"
+  section: z.string(), // title above the row, e.g. "Super Abilities" or "Aspect"
+  name: z.string(),
+  text: z.string(), // description with line breaks
+  extra: z.string(), // further cells, e.g. "Tier 2 Super\n\n556 seconds."
+});
+export type CompendiumEntry = z.infer<typeof CompendiumEntry>;
+
+/** Snapshot of the Compendium texts; quoted values in other Data Files are checked against it. */
+export const CompendiumSnapshot = z.object({
+  source: Source,
+  entries: z.array(CompendiumEntry),
+});
+export type CompendiumSnapshot = z.infer<typeof CompendiumSnapshot>;
