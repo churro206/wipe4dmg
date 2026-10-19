@@ -34,7 +34,7 @@ src/engine/    Simulator und Optimizer. Nur reine Funktionen, kein React.
 src/ui/        React-Oberfläche. Ruft nur die Engine auf. Komponenten in src/ui/components/.
 public/icons/  Icons aus dem Bungie-Manifest (ADR 0008), erzeugt von npm run import:icons.
 scripts/       Import-Skripte für Community-Quellen (ADR 0005). Reine Funktionen in scripts/lib/, getestet.
-tests/         Vitest-Tests für die Engine.
+tests/         Vitest-Tests für die Engine. Helfer für generierte Dokumente in tests/support/.
 ```
 
 ## Regeln
@@ -55,6 +55,37 @@ tests/         Vitest-Tests für die Engine.
 3. Schreibe zuerst die Tests, dann den Code.
 4. Führe `npm test` aus. Melde das Ergebnis.
 5. Fasse die Änderung in zwei bis drei Sätzen zusammen.
+
+## Aktueller Stand (2026-10-19)
+
+Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
+
+- **Release v1.0 in Arbeit.** Offen sind der Rest von US-14 (Fähigkeiten und Supers) und US-15 (Wiki). Danach testen die Freunde v1.0 (Gate).
+- **US-14, Entscheidung in ADR 0009:** Abilities bestehen aus Ability Components (Compendium). Fehlen Teile oder fällt die Ability durchs Gate, gilt ein Aegis-Paket. Aegis ist das Gate (±10 % bei Stat 100 und 200).
+- **Erledigt:**
+  - Importe für Aegis-Abilities, Compendium-Snapshot (mit Zitat-Check) und Manifest-Abilities.
+  - Engine: Abilities auf der Zeitachse, Ability Stat linear pro Punkt, Super Window (cast, shots, drain), `includedEffectIds` gegen doppelte Buffs, `grantsEffectIds`, Schaden und Breakdown pro Damage Source.
+  - Daten: 25 Supers, 26 Grenades und 24 Melees als Pakete. Lücken stehen mit Grund in `ability-gaps.json`. Klasse, Subklasse, Prismatic und Icons kommen aus dem Manifest.
+  - Link-Format 3. Format 2 bleibt lesbar.
+  - Fähigkeiten-Panel in der Oberfläche (6b).
+- **Erkenntnis:** Compendium-Teile haben das Gate bisher nicht bestanden (Thundercrash −12,5 %, Anzahl der Aftershocks unklar). Deshalb sind fast alle Abilities Pakete.
+- **Nächste Schritte (Masterplan):**
+  - **6c, Ergebnis:**
+    - Donut nach Damage Source; heute zeigt er noch „hammer-of-sol.package“.
+    - Breakdown-Tabelle pro Damage Source.
+    - Zeitleiste mit Ability-Zeilen und schraffiertem Super Window; Einsatzzeit einstellbar, weitere Casts über „+“.
+  - **6d, Optimizer:** probiert auch Super, Grenade und Melee.
+  - **6e, Wiki-Reiter (ADR 0010):**
+    - Abdeckung und Roadmap.
+    - „Wie rechnet der Rechner?“ (`docs/mechanics/how-it-works.md`, neu).
+    - Abschnitte „Für Spieler“ in `docs/mechanics`.
+  - **7, Abschluss v1.0:** Changelog, Releaseplan, Testlauf mit den Freunden.
+  - **v1.x:** Feast of Light und Banner of War als Effects (macht Bladefury nutzbar), Well-Mechanik (Waffenschaden zählt als Super-Schaden, Dauer mit Super-Stat), Line 'Em Up, fehlende Zeitwerte der Supers.
+- **Arbeitsstil des Inhabers:**
+  - Kleine Schritte: Plan, Freigabe („ok“), Tests zuerst.
+  - Nach jedem Schritt: Commit und Push.
+  - Vor Datenarbeit eine Tabelle zur Freigabe zeigen.
+- **UI-Check:** `npx vite preview --port 4173` plus Headless Chrome über das DevTools-Protokoll. Die Fallstricke stehen im Memory „UI check with headless Chrome“. Die Prüfskripte lagen im Scratchpad und sind nicht im Repo.
 
 ## Befehle
 

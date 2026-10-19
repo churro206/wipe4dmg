@@ -1,6 +1,6 @@
 # Datenquellen
 
-Stand: 2026-10-18 · Spielversion: 9.7.0.5
+Stand: 2026-10-19 · Spielversion: 9.7.0.5
 
 Die Spielwerte kommen aus frei zugänglichen Community-Quellen (ADR 0005). Eigene Messungen sind nur Stichproben.
 

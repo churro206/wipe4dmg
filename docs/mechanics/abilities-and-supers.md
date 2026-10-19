@@ -43,12 +43,14 @@ Granaten, Nahkampf und Supers machen eigenen Schaden. Sie zählen zum Total Dama
 
 ## Modell im Simulator
 
-Entscheidung in ADR 0009 (`docs/adr/0009-ability-components.md`), Umsetzung läuft:
+Entscheidung in ADR 0009 (`docs/adr/0009-ability-components.md`). Umgesetzt sind Engine, Daten und das Fähigkeiten-Panel. Offen sind Zeitleiste und Optimizer. Stand der Abdeckung: `docs/coverage.md`.
 
 - Eine Ability besteht aus Ability Components mit Werten aus dem Compendium. Fehlen Teile, gilt ein Paket mit dem Aegis-Gesamtwert pro Einsatz.
 - Aegis ist das Gate: jede abbildbare Zeile ohne Buffs, ±10 %.
 - Pakete führen ihre eingerechneten Effects mit; die Engine wendet sie nicht doppelt an.
-- Die Rotation entscheidet, wann eine Fähigkeit eingesetzt wird. Einfachster Fall: einmal zu Beginn der Damage Phase.
+- Die Rotation entscheidet, wann eine Fähigkeit eingesetzt wird. Heute: einmal zu Beginn der Damage Phase.
+- Ein Super mit Super Window (cast, shots, drain) pausiert die Waffe. Fehlt ein Zeitwert, ist das Window eine Schätzung.
+- Klasse, Subklasse und Prismatic kommen aus dem Bungie-Manifest (`manifest-abilities.json`).
 - Effects geben über `damageSources` an, ob sie auf Waffen, Granaten, Nahkampf oder Super wirken.
 
 ## Offene Fragen

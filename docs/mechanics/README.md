@@ -154,7 +154,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 | Mechanic | Kategorie | Kurzbeschreibung | Relevanz | Quelle | Status |
 | --- | --- | --- | --- | --- | --- |
-| [Fähigkeiten und Supers](abilities-and-supers.md) | Damage Instance | Granaten, Nahkampf und Supers machen eigenen Schaden; zählen zum Total Damage | hoch | Aegis „Abilities“; Compendium | ausgearbeitet |
+| [Fähigkeiten und Supers](abilities-and-supers.md) | Damage Instance | Granaten, Nahkampf und Supers machen eigenen Schaden; zählen zum Total Damage | hoch | Aegis „Abilities“; Compendium; Bungie-Manifest | umgesetzt (Aegis-Pakete, ADR 0009) |
 | Mehrere Spieler | Multiplier, Damage Instance | Nur Buffs und Debuffs von Mitspielern (Fireteam Support), nicht ihr Schaden; Skalierung mehrerer gleicher Quellen | mittel | Aegis „Scaling“ | katalogisiert |
 
 ## Folgen für die Architektur

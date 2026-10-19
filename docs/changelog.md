@@ -2,6 +2,17 @@
 
 ## Unveröffentlicht (v1.0 in Arbeit)
 
+- Fähigkeiten und Supers (US-14, ADR 0009):
+  - Drei Plätze für Super, Grenade und Melee mit Ingame-Icons, passend zu Klasse und Subklasse inklusive Prismatic.
+  - Stat-Regler 0 bis 200: Über 100 erhöht jeder Punkt den Schaden (Super +0,45 %, Grenade +0,65 %, Melee +0,3 %, laut Compendium).
+  - Werte: 25 Supers, 26 Grenades und 24 Melees als gemessener Wert pro Einsatz von Aegis, automatisch importiert und gegen Aegis geprüft. Lücken mit Grund in `docs/coverage.md`.
+  - Während eines Supers feuert die Waffe nicht (Super Window). Es ist exakt bei Hammer of Sol (7,8 s), Burning Maul und Chaos Reach, sonst eine Schätzung.
+  - Buffs, die Aegis schon eingerechnet hat (Radiant, Ember of Ashes, Tether), zählen nicht doppelt. Ein Super bringt seinen Effect mit, z. B. Well of Radiance oder den Tether.
+  - Ein Build hat ein Super: Der Super-Platz ersetzt eigene Super-Effects. Alte Links übernehmen sie auf den Super-Platz.
+- Link-Format 3 mit Fähigkeiten und Stats. Ältere Links funktionieren weiter.
+- Abdeckung und Roadmap als Dokumente (`docs/coverage.md`, `docs/roadmap.md`, US-15, ADR 0010).
+- Tether-Dauern laut Compendium: Deadfall 12 s, Moebius 6 s pro Salve.
+
 - Neue Oberfläche mit Ingame-Icons (ADR 0008): Effects als Icon-Kacheln mit Hover-Karte (Wirkung, Dauer, Quelle), Klasse und Subklasse als Schaltflächen mit Icons, Kennzahlen immer sichtbar, Ergebnis in Reitern (Übersicht, Rotation, Breakdown, Optimizer), Optimizer-Einträge als Karten mit Icon-Reihe, Fireteam Support einklappbar, Erklärungen als ⓘ.
 
 - Katalysator von One Thousand Voices: Taken Seeker als Damage over Time (Werte aus dem Compendium). Offene Abweichung zu Aegis: Modell ×1,26, Aegis ×1,371.
