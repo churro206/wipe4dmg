@@ -315,6 +315,56 @@ summary:focus-visible {
   width: 18rem;
 }
 
+/* Abilities: three slots (super, grenade, melee) with their stat, like the subclass screen */
+.ability-slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.ability-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.ability-slot .tile[aria-expanded="true"] {
+  border-color: var(--accent);
+}
+
+/* Stat: label, slider and number in one row inside the slot */
+label.ability-stat {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 3.2rem;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+}
+
+.ability-stat input[type="range"] {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+.ability-stat input[type="number"] {
+  width: 100%;
+  min-width: 0;
+  padding: 0.15rem 0.3rem;
+}
+
+.ability-options {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.icon.ability-none {
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
 details.fireteam summary {
   cursor: pointer;
   font-size: 0.85rem;

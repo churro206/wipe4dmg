@@ -12,7 +12,8 @@ Stand: 2026-10-19
 - ⏳ Super Window genauer: Bei vielen Supers fehlt in den Quellen der Abstand zwischen Angriffen oder Schüssen; dann gilt die Base Duration als Obergrenze
 - ✅ Grenades: 26 von 30, Melees: 24 von 26 (gemessener Gesamtwert von Aegis)
 - ✅ Icons und Zuordnung zu Klasse und Subklasse aus dem Bungie-Manifest, inklusive Prismatic
-- ⏳ Oberfläche: Plätze für Super, Grenade und Melee, Stat-Regler, Super Window in der Zeitleiste
+- ✅ Oberfläche: Plätze für Super, Grenade und Melee mit Icons, Stat-Regler 0 bis 200, Hover-Karte mit Herkunft des Werts
+- ⏳ Oberfläche: Schaden nach Quelle, Super Window in der Zeitleiste, mehrere Einsätze, Optimizer mit Fähigkeiten
 - ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
 
 ## Danach

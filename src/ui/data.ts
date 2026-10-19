@@ -30,10 +30,11 @@ export const bosses = loadBosses(rawBosses).filter(
 );
 export const activities = [...new Set(bosses.map((boss) => boss.activity))];
 export const abilityStats = loadAbilityStats(rawAbilityStats);
+export const aegisRows = loadAegisAbilityRows(rawAegisAbilities);
 // Packages take their values from the Aegis rows, providers from the manifest items (ADR 0009).
 export const abilities = loadAbilities(
   rawAbilities,
-  loadAegisAbilityRows(rawAegisAbilities),
+  aegisRows,
   abilityStats,
   loadManifestAbilities(rawManifestAbilities),
 );

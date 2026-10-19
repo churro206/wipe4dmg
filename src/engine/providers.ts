@@ -1,6 +1,8 @@
 // Providers (glossary): which effects a build can get itself or from a teammate, per class.
 
 import type {
+  Ability,
+  AbilityKind,
   Effect,
   GuardianClass,
   ProviderKind,
@@ -36,5 +38,23 @@ export function effectsFor(
 ): Effect[] {
   return effects.filter((effect) =>
     canProvide(effect, provider, guardianClass, subclass),
+  );
+}
+
+/** Abilities of one kind that a build of this class and subclass can use, in data order. */
+export function abilitiesFor(
+  abilities: Ability[],
+  kind: AbilityKind,
+  guardianClass: GuardianClass,
+  subclass: Subclass,
+): Ability[] {
+  return abilities.filter(
+    (ability) =>
+      ability.kind === kind &&
+      ability.providers.some(
+        (p) =>
+          (p.classes === undefined || p.classes.includes(guardianClass)) &&
+          (p.subclasses === undefined || p.subclasses.includes(subclass)),
+      ),
   );
 }

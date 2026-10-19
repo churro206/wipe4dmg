@@ -1,6 +1,7 @@
-// UI state of a build: selections per provider, rotation inputs and the build link (US-05).
+// UI state of a build: selections per provider, abilities, rotation inputs and the build link (US-05).
 
 import type {
+  AbilityKind,
   Build,
   Effect,
   GuardianClass,
@@ -9,12 +10,36 @@ import type {
 } from "../data/schema";
 import { decodeLink, encodeLink } from "../engine/buildLink";
 import type { EffectWindowInput } from "../engine/effectWindows";
-import { canProvide } from "../engine/providers";
-import { effects, linkRegistry, weapon } from "./data";
+import { abilitiesFor, canProvide } from "../engine/providers";
+import { abilities, abilityStats, effects, linkRegistry, weapon } from "./data";
 import { secondsInput } from "./format";
 
 export type Selection = Build["selections"][number];
 export type WindowInput = { start: string; duration: string };
+export type AbilityPick = NonNullable<Build["abilities"]>[number];
+/** Chosen ability per slot (super, grenade, melee). */
+export type AbilityChoice = Partial<Record<AbilityKind, AbilityPick>>;
+export type AbilityStatInputs = Record<AbilityKind, number>;
+
+export const ABILITY_KINDS: AbilityKind[] = ["super", "grenade", "melee"];
+export const ABILITY_KIND_LABELS: Record<AbilityKind, string> = {
+  super: "Super",
+  grenade: "Grenade",
+  melee: "Melee",
+};
+/** Stats where the damage bonus starts (100), i.e. no bonus; from ability-stats.json. */
+export const DEFAULT_ABILITY_STATS = Object.fromEntries(
+  abilityStats.map((s) => [s.kind, s.bonusFromStat]),
+) as AbilityStatInputs;
+/** Highest stat per kind (200), for the stat inputs. */
+export const MAX_ABILITY_STATS = Object.fromEntries(
+  abilityStats.map((s) => [s.kind, s.maxStat]),
+) as AbilityStatInputs;
+/** Effects that some ability grants, e.g. Well of Radiance; chosen through the super slot. */
+export const GRANTED_EFFECT_IDS = new Set(
+  abilities.flatMap((a) => a.grantsEffectIds ?? []),
+);
+const SUPER_GROUP = "super";
 
 export const LINK_PARAM = "b";
 export const DEFAULT_CLASS: GuardianClass = "warlock";
@@ -121,9 +146,118 @@ export function windowsFor(
   );
 }
 
+/** Abilities of the choice in slot order, for the build. */
+export function abilitiesOfChoice(choice: AbilityChoice): AbilityPick[] {
+  return ABILITY_KINDS.flatMap((kind) => {
+    const pick = choice[kind];
+    return pick ? [pick] : [];
+  });
+}
+
+/** The choice without the ability of one slot. */
+export function withoutSlot(
+  choice: AbilityChoice,
+  kind: AbilityKind,
+): AbilityChoice {
+  return Object.fromEntries(
+    Object.entries(choice).filter(([slot]) => slot !== kind),
+  );
+}
+
+/** Keeps only abilities class and subclass can still use, e.g. after switching them. */
+export function choiceFor(
+  choice: AbilityChoice,
+  guardianClass: GuardianClass,
+  subclass: Subclass,
+): AbilityChoice {
+  return Object.fromEntries(
+    ABILITY_KINDS.flatMap((kind) => {
+      const pick = choice[kind];
+      const usable = abilitiesFor(abilities, kind, guardianClass, subclass);
+      return pick && usable.some((a) => a.id === pick.abilityId)
+        ? [[kind, pick]]
+        : [];
+    }),
+  );
+}
+
+/** A build has one super: choosing a super removes own effects of the super group, e.g. Banner Shield. */
+export function withoutOwnSuperEffects(selections: Selection[]): Selection[] {
+  return selections.filter(
+    (s) =>
+      s.provider === "fireteamSupport" ||
+      effectById(s.effectId)?.exclusiveGroup !== SUPER_GROUP,
+  );
+}
+
+/** True if switching on this own effect must clear the super slot. */
+export function replacesSuper(effect: Effect, provider: ProviderKind): boolean {
+  return (
+    provider !== "fireteamSupport" && effect.exclusiveGroup === SUPER_GROUP
+  );
+}
+
+/**
+ * Links of format 2 chose a super as an own effect, e.g. Well of Radiance from the subclass. Such
+ * a selection becomes the super that grants it, cast at the start of its window.
+ */
+function migrateGrantedSelections(
+  build: Build,
+  choice: AbilityChoice,
+): { selections: Selection[]; choice: AbilityChoice } {
+  let next = choice;
+  const selections = build.selections.filter((selection) => {
+    if (selection.provider === "fireteamSupport") return true;
+    if (!GRANTED_EFFECT_IDS.has(selection.effectId) || next.super) return true;
+    const ability = abilitiesFor(
+      abilities,
+      "super",
+      build.guardianClass,
+      build.subclass,
+    ).find((a) => a.grantsEffectIds?.includes(selection.effectId));
+    if (!ability) return true;
+    const startMs = build.effectWindows[selection.effectId]?.startMs ?? 0;
+    next = { ...next, super: { abilityId: ability.id, castsMs: [startMs] } };
+    return false;
+  });
+  return { selections, choice: next };
+}
+
+/** The build of the UI state; abilities and stats only if an ability is chosen. */
+export function buildOfState(state: {
+  guardianClass: GuardianClass;
+  subclass: Subclass;
+  catalyst: boolean;
+  selections: Selection[];
+  windowInputs: Record<string, WindowInput>;
+  abilityChoice: AbilityChoice;
+  abilityStats: AbilityStatInputs;
+  damagePhaseSeconds: number;
+}): Build {
+  const picks = abilitiesOfChoice(state.abilityChoice);
+  return {
+    weaponId: weapon.id,
+    guardianClass: state.guardianClass,
+    subclass: state.subclass,
+    catalyst: state.catalyst,
+    selections: state.selections,
+    effectWindows: windowsFor(effectsOf(state.selections), state.windowInputs),
+    damagePhaseSeconds: state.damagePhaseSeconds,
+    ...(picks.length > 0
+      ? { abilities: picks, abilityStats: state.abilityStats }
+      : {}),
+  };
+}
+
 /** Short text for a build, e.g. for the comparison. */
 export function describeBuild(build: Build): string {
-  const names = effectsOf(build.selections).map((effect) => effect.name);
+  const names = [
+    ...(build.abilities ?? []).map(
+      (pick) =>
+        abilities.find((a) => a.id === pick.abilityId)?.name ?? pick.abilityId,
+    ),
+    ...effectsOf(build.selections).map((effect) => effect.name),
+  ];
   if (build.catalyst) names.unshift("Katalysator");
   const what = names.length > 0 ? names.join(", ") : "ohne Effects";
   return `${CLASS_LABELS[build.guardianClass]} ${SUBCLASS_LABELS[build.subclass]}: ${what}`;
@@ -136,6 +270,8 @@ export type LinkState = {
   selections: Selection[];
   catalyst: boolean;
   windowInputs: Record<string, WindowInput>;
+  abilityChoice: AbilityChoice;
+  abilityStats: AbilityStatInputs;
   comparison: Build | null;
   message: string | null;
 };
@@ -149,6 +285,8 @@ export function stateFromLink(search: string): LinkState {
     selections: [],
     catalyst: false,
     windowInputs: {},
+    abilityChoice: {},
+    abilityStats: DEFAULT_ABILITY_STATS,
     comparison: null,
     message: null,
   };
@@ -158,11 +296,24 @@ export function stateFromLink(search: string): LinkState {
     const { build, comparison, unknownEffectCodes, unknownAbilityCodes } =
       decodeLink(text, linkRegistry);
     if (build.weaponId !== weapon.id) throw new Error(build.weaponId);
+    const linked: AbilityChoice = Object.fromEntries(
+      (build.abilities ?? []).flatMap((pick) => {
+        const kind = abilities.find((a) => a.id === pick.abilityId)?.kind;
+        return kind ? [[kind, pick]] : [];
+      }),
+    );
+    const migrated = migrateGrantedSelections(build, linked);
     return {
       input: String(build.damagePhaseSeconds),
       guardianClass: build.guardianClass,
       subclass: build.subclass,
-      selections: build.selections,
+      selections: migrated.selections,
+      abilityChoice: choiceFor(
+        migrated.choice,
+        build.guardianClass,
+        build.subclass,
+      ),
+      abilityStats: build.abilityStats ?? DEFAULT_ABILITY_STATS,
       catalyst: build.catalyst,
       windowInputs: Object.fromEntries(
         Object.entries(build.effectWindows).map(([id, window]) => [

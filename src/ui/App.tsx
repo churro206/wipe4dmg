@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type {
+  AbilityKind,
   Build,
   Effect,
   GuardianClass,
@@ -13,14 +14,26 @@ import {
   dpsByDamagePhase,
 } from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
+import { abilitySimulation } from "../engine/buildAbilities";
 import { effectWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
-import { effectsFor } from "../engine/providers";
+import { abilitiesFor, effectsFor } from "../engine/providers";
 import { simulate, type SimulationResult } from "../engine/simulate";
 import type { SimulationOptions } from "../engine/simulate";
 import {
+  ABILITY_KIND_LABELS,
+  ABILITY_KINDS,
+  abilitiesOfChoice,
+  buildOfState,
+  choiceFor,
   CLASS_LABELS,
   defaultWindow,
+  GRANTED_EFFECT_IDS,
+  MAX_ABILITY_STATS,
+  replacesSuper,
+  withoutOwnSuperEffects,
+  withoutSlot,
+  type AbilityChoice,
   describeBuild,
   effectsOf,
   linkFor,
@@ -39,6 +52,7 @@ import {
   DpsByLengthChart,
   RotationTimeline,
 } from "./Charts";
+import { AbilityPicker } from "./components/AbilityPicker";
 import { EffectPicker } from "./components/EffectPicker";
 import { Icon } from "./components/Icon";
 import { InfoTip } from "./components/InfoTip";
@@ -47,7 +61,17 @@ import { RotationEditor } from "./components/RotationEditor";
 import { SegmentedControl } from "./components/SegmentedControl";
 import { SummaryBar } from "./components/SummaryBar";
 import { Tabs } from "./components/Tabs";
-import { activities, bosses, buckets, effects, iconUrl, weapon } from "./data";
+import {
+  abilities,
+  abilityStats,
+  activities,
+  aegisRows,
+  bosses,
+  buckets,
+  effects,
+  iconUrl,
+  weapon,
+} from "./data";
 import { PROVIDER_LABELS } from "./describe";
 import { factor, integer, seconds } from "./format";
 
@@ -68,6 +92,35 @@ const DPS_CHART_MIN_SECONDS = 120;
 const isFireteam = (s: { provider: ProviderKind }) =>
   s.provider === "fireteamSupport";
 
+/**
+ * Effects and simulator options of a build: its own and fireteam effects, plus the abilities with
+ * their casts and stats and the effects they grant (e.g. Well of Radiance from the super).
+ */
+function simulationOf(build: Build): {
+  selected: Effect[];
+  options: SimulationOptions;
+} {
+  const abilityPart = abilitySimulation(
+    build,
+    abilities,
+    abilityStats,
+    effects,
+  );
+  const own = effectsOf(build.selections);
+  return {
+    selected: [
+      ...own,
+      ...abilityPart.grantedEffects.filter((e) => !own.includes(e)),
+    ],
+    options: {
+      catalyst: build.catalyst,
+      effectWindows: { ...build.effectWindows, ...abilityPart.grantedWindows },
+      abilities: abilityPart.casts,
+      abilityStats: abilityPart.stats,
+    },
+  };
+}
+
 function App() {
   const [initial] = useState(() => stateFromLink(window.location.search));
   const [input, setInput] = useState(initial.input);
@@ -77,6 +130,13 @@ function App() {
   const [selections, setSelections] = useState(initial.selections);
   const [catalyst, setCatalyst] = useState(initial.catalyst);
   const [windowInputs, setWindowInputs] = useState(initial.windowInputs);
+  const [abilityChoice, setAbilityChoice] = useState<AbilityChoice>(
+    initial.abilityChoice,
+  );
+  const [abilityStatInputs, setAbilityStatInputs] = useState(
+    initial.abilityStats,
+  );
+  const [openSlot, setOpenSlot] = useState<AbilityKind | null>(null);
   const [comparison, setComparison] = useState(initial.comparison);
   const [copiedLink, setCopiedLink] = useState("");
   const [tab, setTab] = useState<TabId>("overview");
@@ -94,25 +154,22 @@ function App() {
     input.trim() !== "" &&
     Number.isFinite(damagePhaseSeconds) &&
     damagePhaseSeconds >= 0;
-  const selected = effectsOf(selections);
-  const options = {
-    catalyst,
-    effectWindows: windowsFor(selected, windowInputs),
-  };
-  const result = isValid
-    ? simulate(weapon, damagePhaseSeconds, selected, buckets, options)
-    : null;
-  const boss = bosses.find((b) => b.id === bossId);
-
-  const currentBuild: Build = {
-    weaponId: weapon.id,
+  const ownSelected = effectsOf(selections);
+  const currentBuild = buildOfState({
     guardianClass,
     subclass,
     catalyst,
     selections,
-    effectWindows: options.effectWindows,
+    windowInputs,
+    abilityChoice,
+    abilityStats: abilityStatInputs,
     damagePhaseSeconds: isValid ? damagePhaseSeconds : 0,
-  };
+  });
+  const { selected, options } = simulationOf(currentBuild);
+  const result = isValid
+    ? simulate(weapon, damagePhaseSeconds, selected, buckets, options)
+    : null;
+  const boss = bosses.find((b) => b.id === bossId);
   const link = linkFor(isValid ? currentBuild : null, comparison);
   useEffect(() => {
     window.history.replaceState(
@@ -127,17 +184,15 @@ function App() {
   };
 
   // The comparison runs with the same damage phase as the current build.
+  const comparisonInputs = comparison ? simulationOf(comparison) : null;
   const comparisonResult =
-    isValid && comparison
+    isValid && comparisonInputs
       ? simulate(
           weapon,
           damagePhaseSeconds,
-          effectsOf(comparison.selections),
+          comparisonInputs.selected,
           buckets,
-          {
-            catalyst: comparison.catalyst,
-            effectWindows: comparison.effectWindows,
-          },
+          comparisonInputs.options,
         )
       : null;
 
@@ -146,15 +201,35 @@ function App() {
     isValid ? Math.ceil(damagePhaseSeconds) : 0,
   );
   const dpsPoints = useMemo(() => {
-    const chosen = effectsOf(selections);
+    const inputs = simulationOf(
+      buildOfState({
+        guardianClass,
+        subclass,
+        catalyst,
+        selections,
+        windowInputs,
+        abilityChoice,
+        abilityStats: abilityStatInputs,
+        damagePhaseSeconds: 0,
+      }),
+    );
     return dpsByDamagePhase(
       weapon,
-      chosen,
+      inputs.selected,
       buckets,
-      { catalyst, effectWindows: windowsFor(chosen, windowInputs) },
+      inputs.options,
       Array.from({ length: dpsChartSeconds }, (_, i) => i + 1),
     );
-  }, [selections, windowInputs, catalyst, dpsChartSeconds]);
+  }, [
+    guardianClass,
+    subclass,
+    catalyst,
+    selections,
+    windowInputs,
+    abilityChoice,
+    abilityStatInputs,
+    dpsChartSeconds,
+  ]);
 
   const selectBoss = (id: string) => {
     setBossId(id);
@@ -164,10 +239,25 @@ function App() {
   const changeClass = (next: GuardianClass) => {
     setGuardianClass(next);
     setSelections((current) => selectionsFor(current, next, subclass));
+    setAbilityChoice((current) => choiceFor(current, next, subclass));
   };
   const changeSubclass = (next: Subclass) => {
     setSubclass(next);
     setSelections((current) => selectionsFor(current, guardianClass, next));
+    setAbilityChoice((current) => choiceFor(current, guardianClass, next));
+  };
+  // A build has one super: the super slot and own effects of the super group exclude each other.
+  const selectAbility = (kind: AbilityKind, abilityId: string | null) => {
+    setAbilityChoice((current) => {
+      const next = { ...current };
+      if (abilityId === null) delete next[kind];
+      else next[kind] = { abilityId, castsMs: [0] };
+      return next;
+    });
+    if (kind === "super" && abilityId !== null) {
+      setSelections(withoutOwnSuperEffects);
+    }
+    setOpenSlot(null);
   };
   const setWindow = (effect: Effect, patch: Partial<WindowInput>) =>
     setWindowInputs((inputs) => ({
@@ -179,8 +269,12 @@ function App() {
     }));
   const isSelected = (effect: Effect, provider: ProviderKind) =>
     selections.some((s) => s.effectId === effect.id && s.provider === provider);
-  const toggle = (effect: Effect, provider: ProviderKind) =>
+  const toggle = (effect: Effect, provider: ProviderKind) => {
+    if (replacesSuper(effect, provider) && !isSelected(effect, provider)) {
+      setAbilityChoice((current) => withoutSlot(current, "super"));
+    }
     setSelections((current) => toggleSelection(current, effect, provider));
+  };
   const windows = isValid
     ? effectWindows(selected, damagePhaseSeconds, options)
     : [];
@@ -215,12 +309,24 @@ function App() {
       setOptimizing(false);
     });
   };
-  const buildOf = (entry: OptimizerEntry): Build => ({
-    ...currentBuild,
-    subclass: entry.subclass,
-    selections: entry.selections,
-    effectWindows: windowsFor(effectsOf(entry.selections), windowInputs),
-  });
+  const choiceOf = (entry: OptimizerEntry): AbilityChoice => {
+    const choice = choiceFor(abilityChoice, guardianClass, entry.subclass);
+    const ownSuper = entry.selections.some((s) =>
+      effectsOf([s]).some((e) => replacesSuper(e, s.provider)),
+    );
+    return ownSuper ? withoutSlot(choice, "super") : choice;
+  };
+  const buildOf = (entry: OptimizerEntry): Build => {
+    const picks = abilitiesOfChoice(choiceOf(entry));
+    return {
+      ...currentBuild,
+      subclass: entry.subclass,
+      selections: entry.selections,
+      effectWindows: windowsFor(effectsOf(entry.selections), windowInputs),
+      abilities: picks.length > 0 ? picks : undefined,
+      abilityStats: picks.length > 0 ? abilityStatInputs : undefined,
+    };
+  };
 
   return (
     <>
@@ -293,6 +399,37 @@ function App() {
             onChange={changeSubclass}
           />
 
+          <h2>
+            Fähigkeiten
+            <InfoTip>
+              Super, Grenade und Melee mit ihrem Stat. Der Schaden pro Einsatz
+              kommt meist als gemessener Wert von Aegis; über 100 erhöht jeder
+              Stat-Punkt den Schaden (Super +0,45 %, Grenade +0,65 %, Melee +0,3
+              %). Jede Fähigkeit wird zu Beginn der Damage Phase eingesetzt;
+              während eines Supers feuert die Waffe nicht.
+            </InfoTip>
+          </h2>
+          <AbilityPicker
+            slots={ABILITY_KINDS.map((kind) => ({
+              kind,
+              label: ABILITY_KIND_LABELS[kind],
+              options: abilitiesFor(abilities, kind, guardianClass, subclass),
+              selected: abilities.find(
+                (a) => a.id === abilityChoice[kind]?.abilityId,
+              ),
+              stat: abilityStatInputs[kind],
+              maxStat: MAX_ABILITY_STATS[kind],
+            }))}
+            openKind={openSlot}
+            aegisRows={aegisRows}
+            effects={effects}
+            onOpen={setOpenSlot}
+            onSelect={selectAbility}
+            onStat={(kind, value) =>
+              setAbilityStatInputs((current) => ({ ...current, [kind]: value }))
+            }
+          />
+
           <h2>Waffe</h2>
           <div className="tile-grid">
             <span className="tile-wrap">
@@ -314,7 +451,7 @@ function App() {
               provider,
               guardianClass,
               subclass,
-            );
+            ).filter((effect) => !GRANTED_EFFECT_IDS.has(effect.id));
             if (available.length === 0) return null;
             return (
               <div key={provider}>
@@ -437,7 +574,7 @@ function App() {
                     damagePhaseSeconds={damagePhaseSeconds}
                   />
                   <RotationEditor
-                    effects={selected}
+                    effects={ownSelected}
                     windowInputOf={(effect) =>
                       windowInputs[effect.id] ?? defaultWindow(effect)
                     }
@@ -490,6 +627,7 @@ function App() {
                       onApply={(entry) => {
                         setSubclass(entry.subclass);
                         setSelections(entry.selections);
+                        setAbilityChoice(choiceOf(entry));
                       }}
                       onCompare={(entry) => setComparison(buildOf(entry))}
                     />
