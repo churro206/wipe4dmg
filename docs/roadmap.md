@@ -8,7 +8,8 @@ Stand: 2026-10-19
 
 - ✅ Rechenkern für Fähigkeiten: Schaden auf der Zeitachse, Stat 0 bis 200, Super Window (die Waffe pausiert während des Supers), keine doppelt gezählten Buffs
 - ✅ Automatischer Abgleich mit Aegis und dem Compendium nach jedem Patch
-- 🔄 Supers anlegen: 27 von 30, zunächst meist als gemessener Gesamtwert von Aegis
+- ✅ Supers: 25 von 31 mit Schaden (gemessener Gesamtwert von Aegis), Well of Radiance als Buff
+- ⏳ Super Window genauer: Bei vielen Supers fehlt in den Quellen der Abstand zwischen Angriffen oder Schüssen; dann gilt die Base Duration als Obergrenze
 - ⏳ Grenades und Melees
 - ⏳ Icons und Zuordnung zu Klasse und Subklasse, inklusive Prismatic
 - ⏳ Oberfläche: Plätze für Super, Grenade und Melee, Stat-Regler, Super Window in der Zeitleiste
@@ -16,7 +17,8 @@ Stand: 2026-10-19
 
 ## Danach
 
-- Song of Flame, Glacial Quake und Bladefury: fehlen noch, weil Aegis sie nur mit Buffs im Wert gemessen hat
+- Song of Flame, Glacial Quake, Bladefury und Hammer of Sol mit Sol Invictus: fehlen noch, weil Aegis sie nur mit Buffs im Wert gemessen hat
+- Ward of Dawn: Weapons of Light als Effect
 - Feast of Light und Banner of War als Effects
 - Well of Radiance: Der Waffenschaden des Casters zählt als Super-Schaden, die Dauer wächst mit dem Super-Stat
 - Golden Gun Marksman: Line 'Em Up bei Precision Hits

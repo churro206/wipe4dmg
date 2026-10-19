@@ -100,6 +100,7 @@ Eine Ability bekommt Teile aus dem Compendium nur, wenn sie das Gate gegen Aegis
 
 | Ability | Teile laut Compendium | Summe | Aegis visual Value | Ergebnis |
 | --- | --- | --- | --- | --- |
+| Twilight Arsenal | – | – | 9738 | Paket aus der Zeile „includes Tractor“: Aegis hat Tractor Cannon herausgerechnet (Full Modifiers ×2,99 statt ×2,30), deshalb `unverified`, aber normiert. |
 | Thundercrash | Impact 180, Explosion 8260, Aftershock 108 pro Sekunde für 4 s | 8872 | 10 136 | −12,5 %: Paket. Impact und Explosion stimmen genau mit den Aegis-Ticks überein (415 = 180 × 2,30, 18 997 = 8260 × 2,30). Die Aegis-Zeilen ergeben aber 16 bis 25 Aftershock-Ticks statt 4; die Anzahl ist nicht belegbar. |
 
 ## Prüfwerte

@@ -32,6 +32,8 @@ export function superWindowMs(usage: SuperUsage): SuperWindowLength {
       const baseMs = requireValue(usage.baseDurationMs, "baseDurationMs");
       const drain = usage.drainPerAttack.value;
       const intervalMs = usage.attackIntervalMs.value;
+      // A channel without attacks, e.g. Chaos Reach, lasts exactly its base duration.
+      if (drain === 0) return { durationMs: baseMs, exact: true };
       if (drain === null || intervalMs === null) {
         return { durationMs: baseMs, exact: false };
       }

@@ -16,6 +16,8 @@ export const Source = z.object({
     "missing", // still unknown; value is null
   ]),
   note: z.string().optional(),
+  // Exact text the value was taken from; Compendium quotes are checked against its snapshot.
+  quote: z.string().optional(),
 });
 export type Source = z.infer<typeof Source>;
 
@@ -353,6 +355,9 @@ const AbilityFields = z.object({
   aegisRowId: z.string().optional(),
   // True if the value comes from the Aegis row as one package instead of own components.
   package: z.literal(true).optional(),
+  // Effects inside the package value that the Aegis import could not recognise, e.g. the tether
+  // behind "includes debuff".
+  extraIncludedEffectIds: z.array(z.string()).optional(),
   // Compendium entry that describes the ability; the source of quotes and of the coverage list.
   compendium: z.object({ tab: z.string(), entry: z.string() }).optional(),
   // Empty only for supers that just grant effects, e.g. Ward of Dawn.
@@ -403,6 +408,23 @@ export const AbilityData = AbilityFields.extend({
     path: ["aegisRowId"],
   });
 export type AbilityData = z.infer<typeof AbilityData>;
+
+/** Why a known ability is not in abilities.json yet (coverage list, US-15). */
+export const GapReason = z.enum([
+  "aegisNotNormalised", // Aegis measured it only with buffs inside the value (Full Modifiers 1.00)
+  "aegisOnlyWithUnmodelledBuffs", // every Aegis row assumes a buff that is not an effect yet
+  "effectNotModelled", // the ability only grants a buff that is not an effect yet
+  "noUsableData", // no source gives a usable value
+]);
+export type GapReason = z.infer<typeof GapReason>;
+
+/** A Compendium ability that is knowingly not modelled, with the reason. */
+export const AbilityGap = z.object({
+  compendium: z.object({ tab: z.string(), entry: z.string() }),
+  reason: GapReason,
+  note: z.string(), // details for agents, e.g. which buffs are missing
+});
+export type AbilityGap = z.infer<typeof AbilityGap>;
 
 /**
  * How the super, grenade or melee stat scales the damage of its abilities: a fixed bonus per point

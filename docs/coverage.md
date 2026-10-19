@@ -10,7 +10,7 @@ Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen 
 
 | Art | ✅ Teile | 🟡 Paket | 🔵 Nur Buff | ❌ fehlt | Gesamt |
 | --- | --- | --- | --- | --- | --- |
-| Supers | 0 | 1 | 0 | 30 | 31 |
+| Supers | 0 | 25 | 1 | 5 | 31 |
 | Grenades | 0 | 0 | 0 | 30 | 30 |
 | Melees | 0 | 0 | 0 | 26 | 26 |
 | Effects | 17 modelliert | | | | |
@@ -19,37 +19,37 @@ Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen 
 
 | Element | Super | Modell | Super Window | Aegis-Zeile oder Grund |
 | --- | --- | --- | --- | --- |
-| Arc | Arc Staff | ❌ fehlt | – | noch nicht angelegt |
-| Arc | Gathering Storm | ❌ fehlt | – | noch nicht angelegt |
-| Arc | Storm's Edge | ❌ fehlt | – | noch nicht angelegt |
-| Arc | Fists of Havoc | ❌ fehlt | – | noch nicht angelegt |
+| Arc | Arc Staff | 🟡 Paket | Schätzung | `super-arc-staff-grounded-2l1h` |
+| Arc | Gathering Storm | 🟡 Paket | Schätzung | `super-gathering-storm` |
+| Arc | Storm's Edge | 🟡 Paket | blockiert nicht | `super-storm-s-edge-body` |
+| Arc | Fists of Havoc | 🟡 Paket | Schätzung | `super-fists-of-havoc-heavy-attacks` |
 | Arc | Thundercrash | 🟡 Paket | Schätzung | `super-thundercrash` |
-| Arc | Chaos Reach | ❌ fehlt | – | noch nicht angelegt |
-| Arc | Stormtrance | ❌ fehlt | – | noch nicht angelegt |
-| Solar | Blade Barrage | ❌ fehlt | – | noch nicht angelegt |
-| Solar | Golden Gun: Deadshot | ❌ fehlt | – | noch nicht angelegt |
-| Solar | Golden Gun: Marksman | ❌ fehlt | – | noch nicht angelegt |
-| Solar | Burning Maul | ❌ fehlt | – | noch nicht angelegt |
-| Solar | Hammer of Sol | ❌ fehlt | – | noch nicht angelegt |
-| Solar | Hammer of Sol (Sol Invictus Aspect) | ❌ fehlt | – | noch nicht angelegt |
+| Arc | Chaos Reach | 🟡 Paket | exakt | `super-chaos-reach` |
+| Arc | Stormtrance | 🟡 Paket | Schätzung | `super-stormtrance` |
+| Solar | Blade Barrage | 🟡 Paket | Schätzung | `super-blade-barrage` |
+| Solar | Golden Gun: Deadshot | 🟡 Paket | Schätzung | `super-golden-gun-deadshot-radiant-ember-of-ashes` |
+| Solar | Golden Gun: Marksman | 🟡 Paket | Schätzung | `super-golden-gun-marksman-radiant` |
+| Solar | Burning Maul | 🟡 Paket | exakt | `super-burning-maul-light-attacks-sol-invictus-ember-of-ashes` |
+| Solar | Hammer of Sol | 🟡 Paket | exakt | `super-hammer-of-sol` |
+| Solar | Hammer of Sol (Sol Invictus Aspect) | ❌ fehlt | – | Aegis misst nur mit Buffs, die noch kein Effect sind |
 | Solar | Song of Flame | ❌ fehlt | – | Aegis-Werte nicht normiert (Buffs im Wert) |
-| Solar | Daybreak | ❌ fehlt | – | noch nicht angelegt |
-| Solar | Well of Radiance | ❌ fehlt | – | keine Aegis-Messung |
-| Void | Spectral Blades | ❌ fehlt | – | noch nicht angelegt |
-| Void | Shadowshot: Deadfall | ❌ fehlt | – | noch nicht angelegt |
-| Void | Shadowshot: Moebius Quiver | ❌ fehlt | – | noch nicht angelegt |
-| Void | Sentinel Shield | ❌ fehlt | – | noch nicht angelegt |
-| Void | Twilight Arsenal | ❌ fehlt | – | noch nicht angelegt |
-| Void | Ward of Dawn | ❌ fehlt | – | keine Aegis-Messung |
-| Void | Nova Bomb: Cataclysm | ❌ fehlt | – | noch nicht angelegt |
-| Void | Nova Bomb: Vortex | ❌ fehlt | – | noch nicht angelegt |
-| Void | Nova Warp | ❌ fehlt | – | noch nicht angelegt |
-| Stasis | Silence & Squall | ❌ fehlt | – | noch nicht angelegt |
-| Stasis | Glacial Quake | ❌ fehlt | – | noch nicht angelegt |
-| Stasis | Winter's Wrath | ❌ fehlt | – | noch nicht angelegt |
-| Strand | Silkstrike | ❌ fehlt | – | noch nicht angelegt |
-| Strand | Bladefury | ❌ fehlt | – | noch nicht angelegt |
-| Strand | Needlestorm | ❌ fehlt | – | noch nicht angelegt |
+| Solar | Daybreak | 🟡 Paket | Schätzung | `super-daybreak-ember-of-ashes` |
+| Solar | Well of Radiance | 🔵 Nur Buff | Schätzung | – |
+| Void | Spectral Blades | 🟡 Paket | Schätzung | `super-spectral-blades-light-attacks` |
+| Void | Shadowshot: Deadfall | 🟡 Paket | Schätzung | `super-shadowshot-deadfall-tether-includes-debuff` |
+| Void | Shadowshot: Moebius Quiver | 🟡 Paket | Schätzung | `super-shadowshot-moebius-quiver-includes-debuff` |
+| Void | Sentinel Shield | 🟡 Paket | Schätzung | `super-sentinel-shield-light-attacks` |
+| Void | Twilight Arsenal | 🟡 Paket | Schätzung | `super-twilight-arsenal-includes-tractor` |
+| Void | Ward of Dawn | ❌ fehlt | – | gibt nur einen Buff, der noch kein Effect ist |
+| Void | Nova Bomb: Cataclysm | 🟡 Paket | Schätzung | `super-nova-bomb-cataclysm` |
+| Void | Nova Bomb: Vortex | 🟡 Paket | Schätzung | `super-nova-bomb-vortex` |
+| Void | Nova Warp | 🟡 Paket | Schätzung | `super-nova-warp` |
+| Stasis | Silence & Squall | 🟡 Paket | Schätzung | `super-silence-and-squall-whisper-of-fissures-whisper-of-durance` |
+| Stasis | Glacial Quake | ❌ fehlt | – | Aegis-Werte nicht normiert (Buffs im Wert) |
+| Stasis | Winter's Wrath | 🟡 Paket | Schätzung | `super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures` |
+| Strand | Silkstrike | 🟡 Paket | Schätzung | `super-silkstrike-light-attacks` |
+| Strand | Bladefury | ❌ fehlt | – | Aegis misst nur mit Buffs, die noch kein Effect sind |
+| Strand | Needlestorm | 🟡 Paket | Schätzung | `super-needlestorm` |
 
 ## Grenades
 
@@ -129,8 +129,8 @@ Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen 
 | Weaken | debuff | debuff +15 % | weapon, grenade, melee, super | ganze Phase oder Rotation |
 | Divinity | debuff | debuff +15 % | weapon, grenade, melee, super | ganze Phase oder Rotation |
 | Tractor Cannon | debuff | debuff +30 % | weapon, grenade, melee, super | 10 s |
-| Moebius Tether | debuff | debuff +30 % | weapon, grenade, melee, super | ganze Phase oder Rotation |
-| Deadfall Tether | debuff | debuff +35 % | weapon, grenade, melee, super | ganze Phase oder Rotation |
+| Moebius Tether | debuff | debuff +30 % | weapon, grenade, melee, super | 6 s |
+| Deadfall Tether | debuff | debuff +35 % | weapon, grenade, melee, super | 12 s |
 | Solar Surge 2x | surge | surge +17 % | weapon | ganze Phase oder Rotation |
 | Solar Surge 3x | surge | surge +22 % | weapon | ganze Phase oder Rotation |
 | Solar Surge 4x | surge | surge +25 % | weapon | ganze Phase oder Rotation |

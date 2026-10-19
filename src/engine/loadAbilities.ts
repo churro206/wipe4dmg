@@ -35,6 +35,7 @@ export function loadAbilities(
               ability.id,
               ability.aegisRowId!,
               ability.kind,
+              ability.extraIncludedEffectIds ?? [],
               aegisRows,
               abilityStats,
             )
@@ -47,6 +48,7 @@ function packageComponents(
   abilityId: string,
   aegisRowId: string,
   kind: AbilityStatScaling["kind"],
+  extraIncludedEffectIds: string[],
   aegisRows: AegisAbilityRow[],
   abilityStats: AbilityStatScaling[],
 ): AbilityComponent[] {
@@ -93,7 +95,9 @@ function packageComponents(
     ticks: { value: 1, source: modelSource },
     tickIntervalMs: { value: 0, source: modelSource },
     scalesWithAbilityStat: scales,
-    includedEffectIds: row.includedEffectIds,
+    includedEffectIds: [
+      ...new Set([...row.includedEffectIds, ...extraIncludedEffectIds]),
+    ],
   });
 
   if (atStat200 === null) {

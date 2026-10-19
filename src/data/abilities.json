@@ -31,5 +31,1124 @@
     },
     "aegisRowId": "super-thundercrash",
     "package": true
+  },
+  {
+    "id": "arc-staff",
+    "code": 2,
+    "name": "Arc Staff",
+    "kind": "super",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Arc Staff"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 20000,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Arc Staff",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 20 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Arc Staff",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "The Aegis row uses a 2L1H combo: light attacks drain 2.5%, heavy attacks 8%."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Arc Staff",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between attacks is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-arc-staff-grounded-2l1h",
+    "package": true
+  },
+  {
+    "id": "gathering-storm",
+    "code": 3,
+    "name": "Gathering Storm",
+    "kind": "super",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Gathering Storm"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Gathering Storm",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-gathering-storm",
+    "package": true
+  },
+  {
+    "id": "storms-edge",
+    "code": 4,
+    "name": "Storm's Edge",
+    "kind": "super",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Storm's Edge"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "super-storm-s-edge-body",
+    "package": true
+  },
+  {
+    "id": "fists-of-havoc",
+    "code": 5,
+    "name": "Fists of Havoc",
+    "kind": "super",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Fists of Havoc"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 25000,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Fists of Havoc",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 25 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": 0.12,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Fists of Havoc",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Heavy Attack | Drains 12% Super Energy."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Fists of Havoc",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between attacks is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-fists-of-havoc-heavy-attacks",
+    "package": true
+  },
+  {
+    "id": "chaos-reach",
+    "code": 6,
+    "name": "Chaos Reach",
+    "kind": "super",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Chaos Reach"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 4000,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Chaos Reach",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 4 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": 0,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Chaos Reach",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Channels a long range beam towards the reticle",
+          "note": "A channel without attacks."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Chaos Reach",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "No attacks."
+        }
+      }
+    },
+    "aegisRowId": "super-chaos-reach",
+    "package": true
+  },
+  {
+    "id": "stormtrance",
+    "code": 7,
+    "name": "Stormtrance",
+    "kind": "super",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Stormtrance"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 16000,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Stormtrance",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 16 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Stormtrance",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "\"Light Attack | Drains ?% Super Energy.\""
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Stormtrance",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Continuous chain lightning."
+        }
+      }
+    },
+    "aegisRowId": "super-stormtrance",
+    "package": true
+  },
+  {
+    "id": "blade-barrage",
+    "code": 8,
+    "name": "Blade Barrage",
+    "kind": "super",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Blade Barrage"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Blade Barrage",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-blade-barrage",
+    "package": true
+  },
+  {
+    "id": "golden-gun-deadshot",
+    "code": 9,
+    "name": "Golden Gun: Deadshot",
+    "kind": "super",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Golden Gun: Deadshot"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "usage": {
+      "type": "shots",
+      "shots": {
+        "value": 6,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Golden Gun: Deadshot",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "6 Shot Golden Gun"
+        }
+      },
+      "shotIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Golden Gun: Deadshot",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between shots is not in the Compendium or the manifest."
+        }
+      },
+      "baseDurationMs": {
+        "value": 12000,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Golden Gun: Deadshot",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 12 seconds"
+        }
+      }
+    },
+    "aegisRowId": "super-golden-gun-deadshot-radiant-ember-of-ashes",
+    "package": true
+  },
+  {
+    "id": "golden-gun-marksman",
+    "code": 10,
+    "name": "Golden Gun: Marksman",
+    "kind": "super",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Golden Gun: Marksman"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "usage": {
+      "type": "shots",
+      "shots": {
+        "value": 3,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Golden Gun: Marksman",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "3 Shot Golden Gun"
+        }
+      },
+      "shotIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Golden Gun: Marksman",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between shots is not in the Compendium or the manifest."
+        }
+      },
+      "baseDurationMs": {
+        "value": 12000,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Golden Gun: Marksman",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 12 seconds"
+        }
+      }
+    },
+    "aegisRowId": "super-golden-gun-marksman-radiant",
+    "package": true
+  },
+  {
+    "id": "burning-maul",
+    "code": 11,
+    "name": "Burning Maul",
+    "kind": "super",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Burning Maul"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 42000,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Burning Maul",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "increasing duration to 42 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": 0.04,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Burning Maul",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Light Attack | Drains 4% Super Energy."
+        }
+      },
+      "attackIntervalMs": {
+        "value": 670,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Burning Maul",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Has a 0.67 second delay between light attacks."
+        }
+      }
+    },
+    "aegisRowId": "super-burning-maul-light-attacks-sol-invictus-ember-of-ashes",
+    "package": true
+  },
+  {
+    "id": "hammer-of-sol",
+    "code": 12,
+    "name": "Hammer of Sol",
+    "kind": "super",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Hammer of Sol"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 21000,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Hammer of Sol",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 21 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": 0.12,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Hammer of Sol",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Light Attack | Drains 12% Super Energy"
+        }
+      },
+      "attackIntervalMs": {
+        "value": 1500,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Hammer of Sol",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Has a 1.5 seconds delay between Hammer Throws."
+        }
+      }
+    },
+    "aegisRowId": "super-hammer-of-sol",
+    "package": true
+  },
+  {
+    "id": "daybreak",
+    "code": 13,
+    "name": "Daybreak",
+    "kind": "super",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Daybreak"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 24000,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Daybreak",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 24 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": 0.065,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Daybreak",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Light Attack | Drains 6.5% Super Energy to launch a Daybreak Projectile."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Daybreak",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between attacks is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-daybreak-ember-of-ashes",
+    "package": true
+  },
+  {
+    "id": "well-of-radiance",
+    "code": 14,
+    "name": "Well of Radiance",
+    "kind": "super",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Well of Radiance"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Well of Radiance",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "grantsEffectIds": ["well-of-radiance"],
+    "components": []
+  },
+  {
+    "id": "spectral-blades",
+    "code": 15,
+    "name": "Spectral Blades",
+    "kind": "super",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Spectral Blades"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["void"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 23500,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Spectral Blades",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 23.5 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Spectral Blades",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "\"Light Attack | Drains 5?% Super Energy.\" is uncertain in the source."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Spectral Blades",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "\"Attacks ? times per second.\""
+        }
+      }
+    },
+    "aegisRowId": "super-spectral-blades-light-attacks",
+    "package": true
+  },
+  {
+    "id": "shadowshot-deadfall",
+    "code": 16,
+    "name": "Shadowshot: Deadfall",
+    "kind": "super",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Shadowshot: Deadfall"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["void"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Shadowshot: Deadfall",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "grantsEffectIds": ["deadfall-tether"],
+    "extraIncludedEffectIds": ["deadfall-tether"],
+    "aegisRowId": "super-shadowshot-deadfall-tether-includes-debuff",
+    "package": true
+  },
+  {
+    "id": "shadowshot-moebius-quiver",
+    "code": 17,
+    "name": "Shadowshot: Moebius Quiver",
+    "kind": "super",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Shadowshot: Moebius Quiver"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["void"]
+      }
+    ],
+    "usage": {
+      "type": "shots",
+      "shots": {
+        "value": 2,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Shadowshot: Moebius Quiver",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Shadowshot fires 3 Moebius Anchors up to 2 times per activation.",
+          "note": "Two volleys of three anchors."
+        }
+      },
+      "shotIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Shadowshot: Moebius Quiver",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between shots is not in the Compendium or the manifest."
+        }
+      },
+      "baseDurationMs": {
+        "value": 16000,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Shadowshot: Moebius Quiver",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Super Duration: 16 seconds"
+        }
+      }
+    },
+    "grantsEffectIds": ["moebius-tether"],
+    "extraIncludedEffectIds": ["moebius-tether"],
+    "aegisRowId": "super-shadowshot-moebius-quiver-includes-debuff",
+    "package": true
+  },
+  {
+    "id": "sentinel-shield",
+    "code": 18,
+    "name": "Sentinel Shield",
+    "kind": "super",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Sentinel Shield"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["void"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 17000,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Sentinel Shield",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 17 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": 0.045,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Sentinel Shield",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Light Attack | Drains 4.5% Super Energy per Attack.",
+          "note": "The final hit of a combo drains 2%."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Sentinel Shield",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between attacks is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-sentinel-shield-light-attacks",
+    "package": true
+  },
+  {
+    "id": "twilight-arsenal",
+    "code": 19,
+    "name": "Twilight Arsenal",
+    "kind": "super",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Twilight Arsenal"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["void"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Twilight Arsenal",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-twilight-arsenal-includes-tractor",
+    "package": true
+  },
+  {
+    "id": "nova-bomb-cataclysm",
+    "code": 20,
+    "name": "Nova Bomb: Cataclysm",
+    "kind": "super",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Nova Bomb: Cataclysm"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["void"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Nova Bomb: Cataclysm",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-nova-bomb-cataclysm",
+    "package": true
+  },
+  {
+    "id": "nova-bomb-vortex",
+    "code": 21,
+    "name": "Nova Bomb: Vortex",
+    "kind": "super",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Nova Bomb: Vortex"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["void"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Nova Bomb: Vortex",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-nova-bomb-vortex",
+    "package": true
+  },
+  {
+    "id": "nova-warp",
+    "code": 22,
+    "name": "Nova Warp",
+    "kind": "super",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Nova Warp"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["void"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 24500,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Nova Warp",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 24.5 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": 0.05,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Nova Warp",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Light Attack\nDrains 5% Super Energy."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Void, Nova Warp",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between attacks is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-nova-warp",
+    "package": true
+  },
+  {
+    "id": "silence-and-squall",
+    "code": 23,
+    "name": "Silence & Squall",
+    "kind": "super",
+    "element": "stasis",
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Silence & Squall"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["stasis"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis, Silence & Squall",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-silence-and-squall-whisper-of-fissures-whisper-of-durance",
+    "package": true
+  },
+  {
+    "id": "winters-wrath",
+    "code": 24,
+    "name": "Winter's Wrath",
+    "kind": "super",
+    "element": "stasis",
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Winter's Wrath"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["stasis"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 24500,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis, Winter's Wrath",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 24.5 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis, Winter's Wrath",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "The Aegis row uses a light/heavy cycle: light drains 4.5% per twin-shards, heavy does not drain."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis, Winter's Wrath",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between attacks is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures",
+    "package": true
+  },
+  {
+    "id": "silkstrike",
+    "code": 25,
+    "name": "Silkstrike",
+    "kind": "super",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Silkstrike"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["strand"]
+      }
+    ],
+    "usage": {
+      "type": "drain",
+      "baseDurationMs": {
+        "value": 24500,
+        "source": {
+          "name": "Destiny Data Compendium, Strand, Silkstrike",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Base Duration: 24.5 seconds"
+        }
+      },
+      "drainPerAttack": {
+        "value": 0.04,
+        "source": {
+          "name": "Destiny Data Compendium, Strand, Silkstrike",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "verified",
+          "quote": "Light Attack\nDrains 4% Super Energy."
+        }
+      },
+      "attackIntervalMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Strand, Silkstrike",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Time between attacks is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-silkstrike-light-attacks",
+    "package": true
+  },
+  {
+    "id": "needlestorm",
+    "code": 26,
+    "name": "Needlestorm",
+    "kind": "super",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Needlestorm"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["strand"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Strand, Needlestorm",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Cast animation is not in the Compendium."
+        }
+      }
+    },
+    "aegisRowId": "super-needlestorm",
+    "package": true
   }
 ]

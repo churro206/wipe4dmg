@@ -347,7 +347,18 @@
         },
         "damageSources": ["weapon", "grenade", "melee", "super"]
       }
-    ]
+    ],
+    "durationMs": {
+      "value": 6000,
+      "source": {
+        "name": "Destiny Data Compendium, Void, Shadowshot: Moebius Quiver",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-19",
+        "status": "verified",
+        "quote": "Moebius Anchor lasts for 6 seconds by default.",
+        "note": "Per volley; a second volley later can extend the tether. Set start and duration in the rotation for that."
+      }
+    }
   },
   {
     "id": "deadfall-tether",
@@ -384,7 +395,18 @@
         },
         "damageSources": ["weapon", "grenade", "melee", "super"]
       }
-    ]
+    ],
+    "durationMs": {
+      "value": 12000,
+      "source": {
+        "name": "Destiny Data Compendium, Void, Shadowshot: Deadfall",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-19",
+        "status": "verified",
+        "quote": "Deadfall Anchor lasts for 12 seconds by default.",
+        "note": "Tethered enemy kills extend it by 0.5 s, up to 25 s; bosses do not die during a damage phase."
+      }
+    }
   },
   {
     "id": "solar-surge-2x",

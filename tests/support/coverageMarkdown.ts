@@ -23,6 +23,10 @@ const WINDOW = {
 const REASON: Record<MissingReason, string> = {
   noAegisRow: "keine Aegis-Messung",
   aegisNotNormalised: "Aegis-Werte nicht normiert (Buffs im Wert)",
+  aegisOnlyWithUnmodelledBuffs:
+    "Aegis misst nur mit Buffs, die noch kein Effect sind",
+  effectNotModelled: "gibt nur einen Buff, der noch kein Effect ist",
+  noUsableData: "keine brauchbaren Daten",
   notYetModelled: "noch nicht angelegt",
 };
 const KINDS: { kind: AbilityKind; title: string }[] = [

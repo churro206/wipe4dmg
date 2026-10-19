@@ -3,9 +3,11 @@
 
 import type {
   Ability,
+  AbilityGap,
   AbilityKind,
   AegisAbilityRow,
   CompendiumEntry,
+  GapReason,
 } from "../data/schema";
 import { superWindowMs } from "./superWindow";
 
@@ -22,8 +24,8 @@ export type CoverageStatus =
   | "missing";
 
 export type MissingReason =
+  | GapReason // a known gap from ability-gaps.json
   | "noAegisRow" // Aegis has no measurement of this ability
-  | "aegisNotNormalised" // Aegis measured it only with buffs inside the value
   | "notYetModelled"; // usable data exists, the ability is not in abilities.json yet
 
 export type AbilityCoverageRow = {
@@ -42,6 +44,7 @@ export function abilityCoverage(
   entries: CompendiumEntry[],
   abilities: Ability[],
   aegisRows: AegisAbilityRow[],
+  gaps: AbilityGap[] = [],
 ): AbilityCoverageRow[] {
   // Aspect enhancements such as "Touch of Flame" sit in the ability sections without a cooldown.
   const abilityEntries = entries.filter(
@@ -59,6 +62,22 @@ export function abilityCoverage(
     }
   }
 
+  for (const gap of gaps) {
+    const { tab, entry } = gap.compendium;
+    if (!abilityEntries.some((e) => e.tab === tab && e.name === entry)) {
+      throw new Error(`Gap: no Compendium ability "${entry}" in tab ${tab}`);
+    }
+    if (
+      abilities.some(
+        (a) => a.compendium?.tab === tab && a.compendium.entry === entry,
+      )
+    ) {
+      throw new Error(
+        `Gap: "${entry}" is modelled; remove it from ability-gaps.json`,
+      );
+    }
+  }
+
   return abilityEntries.map((entry) => {
     const kind = SECTIONS[entry.section];
     const base = { kind, element: entry.tab, name: entry.name };
@@ -70,7 +89,12 @@ export function abilityCoverage(
       return {
         ...base,
         status: "missing",
-        reason: missingReason(entry, aegisRows),
+        reason:
+          gaps.find(
+            (g) =>
+              g.compendium.tab === entry.tab &&
+              g.compendium.entry === entry.name,
+          )?.reason ?? missingReason(entry, aegisRows),
       };
     }
     const status: CoverageStatus = ability.package
@@ -106,7 +130,7 @@ const nameKey = (name: string) =>
 function missingReason(
   entry: CompendiumEntry,
   aegisRows: AegisAbilityRow[],
-): MissingReason {
+): "noAegisRow" | "aegisNotNormalised" | "notYetModelled" {
   const key = nameKey(entry.name);
   const rows = aegisRows.filter((row) => {
     const rowKey = nameKey(row.name);

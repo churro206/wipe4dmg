@@ -79,7 +79,10 @@ describe("grantedEffectWindows", () => {
         effects,
       ),
     ).toEqual({
-      "moebius-tether": { startMs: 2000 },
+      "moebius-tether": {
+        startMs: 2000,
+        durationMs: byId("moebius-tether").durationMs!.value,
+      },
     });
   });
 
@@ -115,10 +118,11 @@ describe("grantedEffectWindows", () => {
     ).toEqual({});
   });
 
-  it("lets a granted debuff buff the weapon only after the cast", () => {
+  it("lets a granted debuff buff the weapon from the cast for its duration", () => {
     const castMs = 5000;
+    const endMs = castMs + byId("moebius-tether").durationMs!.value!;
     const casts = [{ ability: testSuper, castsMs: [castMs] }];
-    const result = simulate(weapon, 15, [byId("moebius-tether")], buckets, {
+    const result = simulate(weapon, 20, [byId("moebius-tether")], buckets, {
       abilities: casts,
       effectWindows: grantedEffectWindows(casts, effects),
     });
@@ -127,11 +131,14 @@ describe("grantedEffectWindows", () => {
     );
     const base = weapon.damageInstances[0].damagePerTick.value!;
     for (const shot of shots) {
-      const expected =
-        shot.timeMs < castMs ? base : base * multiplierOf("moebius-tether");
+      const buffed = shot.timeMs >= castMs && shot.timeMs < endMs;
+      const expected = buffed ? base * multiplierOf("moebius-tether") : base;
       expect(shot.damage, `${shot.timeMs} ms`).toBeCloseTo(expected);
     }
     expect(shots.some((s) => s.timeMs < castMs)).toBe(true);
-    expect(shots.some((s) => s.timeMs >= castMs)).toBe(true);
+    expect(shots.some((s) => s.timeMs >= castMs && s.timeMs < endMs)).toBe(
+      true,
+    );
+    expect(shots.some((s) => s.timeMs >= endMs)).toBe(true);
   });
 });

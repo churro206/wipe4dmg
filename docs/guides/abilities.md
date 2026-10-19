@@ -9,6 +9,7 @@ Für Agenten und Entwickler. Grundlage ist ADR 0009. Begriffe stehen im Glossary
 | `src/data/compendium-abilities.json` | Compendium, Subklassen-Reiter (`npm run import:compendium`) | Liste aller Abilities, Grundwerte der Teile, Super-Dauer, Verbrauch, Pausen |
 | `src/data/aegis-abilities.json` | Aegis, Reiter „Abilties“ (`npm run import:abilities`) | Gemessener Wert pro Einsatz bei Stat 100 und 200; Gate und Paket |
 | `src/data/ability-stats.json` | Compendium, Game Mechanics | Schaden pro Stat-Punkt über 100 |
+| `src/data/ability-gaps.json` | von Hand | Bekannte Lücken mit Grund, z. B. „Aegis misst nur mit Buffs, die noch kein Effect sind“. Erscheinen in der Abdeckung. |
 | Bungie-Manifest | `npm run import:icons` | Icons, später Klasse, Subklasse und Slot |
 
 Beide Importe sind automatisch. Werte nie abtippen, wenn ein Import sie liefert.
@@ -35,8 +36,9 @@ Beide Importe sind automatisch. Werte nie abtippen, wenn ein Import sie liefert.
    - `drain`: Roaming Supers. Base Duration, Verbrauch pro Angriff als Anteil (0,12 für 12 %), Abstand zwischen Angriffen. Werte aus dem Compendium; passend zur Ausführung der Aegis-Zeile. Ein Kanal ohne Angriffe hat Verbrauch 0.
    - Kein `usage`, wenn selbst die Base Duration fehlt; der Super blockiert dann nicht.
 6. **Klasse und Subklasse** in `providers`. Bis zum Manifest-Abgleich (Schritt 5) nur die Element-Subklasse eintragen.
-7. **Code** eindeutig und nie wiederverwenden (Build-Links).
-8. **Abschluss:**
+7. **Code** eindeutig und nie wiederverwenden (Build-Links). Compendium-Werte tragen ihr Zitat in `source.quote`; ein Test sucht es im Snapshot.
+8. **Lücke statt Ability:** Gibt es keine brauchbare Aegis-Zeile und keine vollständigen Teile, kommt die Ability mit Grund in `ability-gaps.json`. Ein Test verlangt, dass sie dort wieder verschwindet, sobald sie modelliert ist.
+9. **Abschluss:**
    - `npm run coverage` ausführen.
    - `npm test`, `npx tsc -b`, `npx eslint .`, `npx prettier --check src scripts tests`.
    - `docs/roadmap.md` aktualisieren.

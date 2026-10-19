@@ -5,8 +5,10 @@ import rawAbilities from "../src/data/abilities.json";
 import rawRows from "../src/data/aegis-abilities.json";
 import rawSnapshot from "../src/data/compendium-abilities.json";
 import rawEffects from "../src/data/effects.json";
+import rawGaps from "../src/data/ability-gaps.json";
 import {
   Ability,
+  AbilityGap,
   AegisAbilityRow,
   CompendiumSnapshot,
   type CompendiumEntry,
@@ -172,6 +174,36 @@ describe("abilityCoverage", () => {
     });
   });
 
+  it("takes the reason of a known gap from the gaps data file", () => {
+    const gaps = [
+      {
+        compendium: { tab: "Solar", entry: "Daybreak" },
+        reason: "aegisOnlyWithUnmodelledBuffs" as const,
+        note: "test",
+      },
+    ];
+    const withGaps = abilityCoverage(entries, abilities, rows, gaps);
+    expect(withGaps.find((c) => c.name === "Daybreak")!.reason).toBe(
+      "aegisOnlyWithUnmodelledBuffs",
+    );
+  });
+
+  it("fails for a gap that is modelled or not in the Compendium", () => {
+    const gap = (entry: string) => [
+      {
+        compendium: { tab: "Solar", entry },
+        reason: "noUsableData" as const,
+        note: "test",
+      },
+    ];
+    expect(() =>
+      abilityCoverage(entries, abilities, rows, gap("Blade Barrage")),
+    ).toThrow(/Blade Barrage/);
+    expect(() =>
+      abilityCoverage(entries, abilities, rows, gap("Nope")),
+    ).toThrow(/Nope/);
+  });
+
   it("fails if an ability links to an unknown Compendium entry", () => {
     const orphan = ability("orphan", "Orphan Super");
     expect(() => abilityCoverage(entries, [orphan], rows)).toThrow(
@@ -190,7 +222,12 @@ describe("docs/coverage.md", () => {
     );
     const snapshot = CompendiumSnapshot.parse(rawSnapshot);
     const expected = coverageMarkdown(
-      abilityCoverage(snapshot.entries, abilities, rows),
+      abilityCoverage(
+        snapshot.entries,
+        abilities,
+        rows,
+        AbilityGap.array().parse(rawGaps),
+      ),
       loadEffects(rawEffects),
     );
     await expect(expected).toMatchFileSnapshot("../docs/coverage.md");

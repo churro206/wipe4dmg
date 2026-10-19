@@ -2,9 +2,14 @@ import { describe, expect, it } from "vitest";
 import rawAbilityStats from "../src/data/ability-stats.json";
 import rawAbilities from "../src/data/abilities.json";
 import rawRows from "../src/data/aegis-abilities.json";
+import { hasQuote } from "../scripts/lib/compendiumAbilities";
+import rawSnapshot from "../src/data/compendium-abilities.json";
+import rawEffects from "../src/data/effects.json";
 import {
   AegisAbilityRow,
+  CompendiumSnapshot,
   type AegisAbilityRow as Row,
+  type Source,
 } from "../src/data/schema";
 import { loadAbilities } from "../src/engine/loadAbilities";
 import { loadAbilityStats } from "../src/engine/loadData";
@@ -70,6 +75,22 @@ describe("loadAbilities with an Aegis package", () => {
       expect(component.delayMs.value).toBe(0);
       expect(component.ticks.value).toBe(1);
     }
+  });
+
+  it("adds effects that the Aegis import could not recognise to the included effects", () => {
+    const ability = {
+      ...packageAbility("tagged"),
+      extraIncludedEffectIds: ["moebius-tether"],
+    };
+    const [loaded] = loadAbilities(
+      [ability],
+      [row("tagged", 1000, 1300, ["radiant"])],
+      abilityStats,
+    );
+    expect(loaded.components[0].includedEffectIds).toEqual([
+      "radiant",
+      "moebius-tether",
+    ]);
   });
 
   it("lets the whole package scale if Aegis measured the full stat factor", () => {
@@ -140,6 +161,53 @@ describe("abilities.json", () => {
   it("has unique ids and codes", () => {
     expect(new Set(abilities.map((a) => a.id)).size).toBe(abilities.length);
     expect(new Set(abilities.map((a) => a.code)).size).toBe(abilities.length);
+  });
+
+  it("quotes every value taken from the Compendium, and the quote is still in the snapshot", () => {
+    const entries = CompendiumSnapshot.parse(rawSnapshot).entries;
+    const sources = (value: unknown): Source[] =>
+      value && typeof value === "object"
+        ? [
+            ...("retrieved" in value && "status" in value
+              ? [value as Source]
+              : []),
+            ...Object.values(value).flatMap(sources),
+          ]
+        : [];
+    for (const ability of rawAbilities) {
+      for (const source of sources(ability)) {
+        if (
+          !source.name.startsWith("Destiny Data Compendium") ||
+          source.status === "missing"
+        )
+          continue;
+        expect(source.quote, `${ability.id}: ${source.name}`).toBeDefined();
+        const link = ability.compendium;
+        expect(
+          hasQuote(entries, {
+            tab: link.tab,
+            entry: link.entry,
+            quote: source.quote!,
+          }),
+          `${ability.id}: "${source.quote}"`,
+        ).toBe(true);
+      }
+    }
+  });
+
+  it("links every ability to the Compendium and grants only known effects", () => {
+    const effectIds = new Set(rawEffects.map((e) => e.id));
+    for (const ability of abilities) {
+      expect(ability.compendium, ability.id).toBeDefined();
+      for (const id of ability.grantsEffectIds ?? []) {
+        expect(effectIds, ability.id).toContain(id);
+      }
+      for (const component of ability.components) {
+        for (const id of component.includedEffectIds ?? []) {
+          expect(effectIds, ability.id).toContain(id);
+        }
+      }
+    }
   });
 
   it("contains Thundercrash", () => {

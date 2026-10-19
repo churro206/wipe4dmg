@@ -108,6 +108,13 @@ describe("superWindowMs", () => {
     expect(window.durationMs).toBeCloseTo(7836, 0);
   });
 
+  it("lasts exactly the base duration for a channel without attacks", () => {
+    expect(superWindowMs(drainUsage(0, null))).toEqual({
+      durationMs: 21_000,
+      exact: true,
+    });
+  });
+
   it("uses the base duration as upper bound if the attack values are unknown", () => {
     expect(superWindowMs(drainUsage(0.12, null))).toEqual({
       durationMs: 21_000,

@@ -44,9 +44,10 @@ describe("ability gate against Aegis", () => {
   for (const ability of gated) {
     const row = rows.find((r) => r.id === ability.aegisRowId);
 
-    it(`${ability.id} refers to a verified Aegis row`, () => {
+    it(`${ability.id} refers to an Aegis row that Aegis normalised`, () => {
       expect(row, ability.aegisRowId).toBeDefined();
-      expect(row!.perUseStat100.source.status).toBe("verified");
+      expect(row!.perUseStat100.source.status).not.toBe("missing");
+      expect(row!.perUseStat100.source.note).not.toContain("not normalised");
     });
 
     for (const [stat, value] of [
