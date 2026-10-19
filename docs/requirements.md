@@ -73,6 +73,9 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 
 | Term | Meaning |
 | --- | --- |
+| Ability | Grenade, melee or super of a subclass; creates its own damage instances through its ability components |
+| Ability Component | Part of an ability that creates damage instances, e.g. impact, explosion or ignition; an ability without verified parts has one component with the total per use from Aegis |
+| Ability Stat | Super, grenade or melee stat; at 200 instead of 100 it increases the damage of the matching ability components |
 | Amplification | Bucket of damage buffs outside empowering buffs, debuffs and surges, e.g. Weapons stat or Argent Ordnance (community term from the Court stacking guide) |
 | Boss DR | Damage resistance of a boss; reduces all incoming damage by a fixed factor |
 | Breakdown | Per bucket: its multiplier and the total damage without that bucket |
@@ -107,6 +110,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Simulator | Part of the engine that computes one build over the damage phase |
 | Stacking Resource | Mechanic category: a counter on the player that builds up and decays, e.g. Bolt Charge or Armor Charge |
 | Subclass | Ability set of a class with one element (Arc, Solar, Void, Stasis, Strand) or Prismatic; decides which own subclass effects a build can provide |
+| Super Window | Time in which a super with a duration is active; the weapon does not fire in it |
 | Surge | Effect that increases weapon damage of one damage type; armor mods, exotics and artifact perks share it; forms its own bucket |
 | Target State | Mechanic category: a state on the target that other effects check, e.g. Blind or Blight |
 | Threshold Trigger | Mechanic category: stacks or damage on a target trigger an event at a threshold, e.g. scorch to ignition or Jolt |

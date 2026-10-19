@@ -167,7 +167,7 @@ Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1 und 2. Die Entscheidung
 4. **Der Simulator braucht Zustand über die Zeit:** Stacks am Ziel (Scorch), Ressourcen am Spieler (Armor Charge, Bolt Charge) und Laufzeiten von Effekten.
 5. **Effekte haben Bedingungen,** z. B. Waffentyp oder Element. Gegnertyp und Modus sind fest (Boss, PvE); Effekte ohne Wirkung auf Bosse filtern wir beim Import heraus.
 6. **Quellen nutzen verschiedene Einheiten.** Ignition: Compendium nennt Grundwerte, Quantum 890, Aegis 2814. Innerhalb einer Simulation darf deshalb pro Wertart nur eine Quelle rechnen.
-7. **Fähigkeiten und Supers sind eigene Schadensquellen** neben der Waffe. Der Simulator braucht dafür eigene Damage Instances mit Cooldowns und Energie für Fähigkeiten und Super.
+7. **Fähigkeiten und Supers sind eigene Schadensquellen** neben der Waffe. Der Simulator braucht dafür eigene Damage Instances mit Cooldowns und Energie für Fähigkeiten und Super. Entscheidung: ADR 0009 (Ability Components aus dem Compendium, Aegis-Pakete als Fallback und Gate).
 
 ## Offene Fragen an den Projektinhaber
 
