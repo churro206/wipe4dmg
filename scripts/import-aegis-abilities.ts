@@ -2,6 +2,7 @@
 // Run: npm run import:abilities
 
 import { readFileSync, writeFileSync } from "node:fs";
+import { format } from "prettier";
 import { AegisAbilityRow, Effect } from "../src/data/schema.ts";
 import { parseAegisAbilities } from "./lib/aegisAbilities.ts";
 
@@ -21,8 +22,10 @@ const rows = AegisAbilityRow.array().parse(
   parseAegisAbilities(await response.text(), retrieved, effects),
 );
 
-writeFileSync(OUTPUT, JSON.stringify(rows, null, 2) + "\n");
-const count = (category: string) => rows.filter((r) => r.category === category).length;
+// Formatted like the rest of the repository, so a new import only shows real changes.
+writeFileSync(OUTPUT, await format(JSON.stringify(rows), { parser: "json" }));
+const count = (category: string) =>
+  rows.filter((r) => r.category === category).length;
 const withEffects = rows.filter((r) => r.includedEffectIds.length > 0).length;
 console.log(
   `Wrote ${rows.length} rows (super ${count("super")}, grenade ${count("grenade")}, melee ${count("melee")}, ` +

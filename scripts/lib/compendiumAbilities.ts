@@ -9,14 +9,22 @@ const MAX_SECTION_LENGTH = 40; // longer single cells are notes, not section tit
 /** Reference from a data value to the Compendium text it was taken from. */
 export type CompendiumQuote = { tab: string; entry: string; quote: string };
 
-const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', nbsp: " " };
+const ENTITIES: Record<string, string> = {
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  nbsp: " ",
+};
 
 /** Cell HTML to text: <br> becomes a line break, tags are removed, entities decoded, spaces collapsed. */
 function cellText(html: string): string {
   return html
     .replace(/<br\s*\/?>/g, "\n")
     .replace(/<[^>]*>/g, "")
-    .replace(/&#(\d+);/g, (_, code: string) => String.fromCharCode(Number(code)))
+    .replace(/&#(\d+);/g, (_, code: string) =>
+      String.fromCharCode(Number(code)),
+    )
     .replace(/&(\w+);/g, (match, name: string) => ENTITIES[name] ?? match)
     .split("\n")
     .map((line) => line.replace(/[ \t]+/g, " ").trim())
@@ -25,11 +33,18 @@ function cellText(html: string): string {
 }
 
 /** Parses one tab: each table row with a name and a description becomes an entry of the section above it. */
-export function parseCompendiumTab(html: string, tab: string): CompendiumEntry[] {
+export function parseCompendiumTab(
+  html: string,
+  tab: string,
+): CompendiumEntry[] {
   const rows = html
     .split(/<tr[^>]*>/)
     .slice(1)
-    .map((row) => [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map((m) => cellText(m[1])).filter((t) => t !== ""));
+    .map((row) =>
+      [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)]
+        .map((m) => cellText(m[1]))
+        .filter((t) => t !== ""),
+    );
 
   const entries: CompendiumEntry[] = [];
   let section = "";
@@ -48,11 +63,17 @@ export function parseCompendiumTab(html: string, tab: string): CompendiumEntry[]
       });
     }
   }
-  if (entries.length === 0) throw new Error(`No entries found in the Compendium tab "${tab}"`);
+  if (entries.length === 0)
+    throw new Error(`No entries found in the Compendium tab "${tab}"`);
   return entries;
 }
 
 /** True if an entry of that tab and name contains the quote exactly. */
-export function hasQuote(entries: CompendiumEntry[], { tab, entry, quote }: CompendiumQuote): boolean {
-  return entries.some((e) => e.tab === tab && e.name === entry && e.text.includes(quote));
+export function hasQuote(
+  entries: CompendiumEntry[],
+  { tab, entry, quote }: CompendiumQuote,
+): boolean {
+  return entries.some(
+    (e) => e.tab === tab && e.name === entry && e.text.includes(quote),
+  );
 }

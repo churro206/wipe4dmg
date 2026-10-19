@@ -33,9 +33,7 @@
     "id": "grenade-axion-bolt-chaos-accelerant",
     "category": "grenade",
     "name": "Axion Bolt",
-    "assumptions": [
-      "Chaos Accelerant"
-    ],
+    "assumptions": ["Chaos Accelerant"],
     "includedEffectIds": [],
     "primaryTick": "1764",
     "secondaryTicks": "15 secondary, 15 impact",
@@ -95,9 +93,7 @@
     "id": "grenade-electrified-snare-facet-of-courage",
     "category": "grenade",
     "name": "Electrified Snare",
-    "assumptions": [
-      "Facet of Courage"
-    ],
+    "assumptions": ["Facet of Courage"],
     "includedEffectIds": [],
     "primaryTick": "218",
     "secondaryTicks": "7 impact, 1709 secondary",
@@ -127,14 +123,8 @@
     "id": "grenade-firebolt-average-ember-of-ashes-with-ignition",
     "category": "grenade",
     "name": "Firebolt",
-    "assumptions": [
-      "average",
-      "Ember of Ashes",
-      "with ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes", "with ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "916",
     "secondaryTicks": "15 impact, 1592 ignition",
     "perUseStat100": {
@@ -193,9 +183,7 @@
     "id": "grenade-flux-6540-sticker-shock",
     "category": "grenade",
     "name": "Flux",
-    "assumptions": [
-      "6540 Sticker Shock"
-    ],
+    "assumptions": ["6540 Sticker Shock"],
     "includedEffectIds": [],
     "primaryTick": "4087",
     "secondaryTicks": "15 impact",
@@ -225,10 +213,7 @@
     "id": "grenade-freezing-singularity-facet-of-courage-facet-of-ruin",
     "category": "grenade",
     "name": "Freezing Singularity",
-    "assumptions": [
-      "Facet of Courage",
-      "Facet of Ruin"
-    ],
+    "assumptions": ["Facet of Courage", "Facet of Ruin"],
     "includedEffectIds": [],
     "primaryTick": "829",
     "secondaryTicks": "37 tick, 147/8 impact, 1208 final",
@@ -264,9 +249,7 @@
       "Touch of Flame",
       "with ignition"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "1738",
     "secondaryTicks": "1631 secondary, 14 impact, 1592 ignition 2259/2120 Sticker Shock",
     "perUseStat100": {
@@ -295,14 +278,8 @@
     "id": "grenade-fusion-average-ember-of-ashes-with-ignition",
     "category": "grenade",
     "name": "Fusion",
-    "assumptions": [
-      "average",
-      "Ember of Ashes",
-      "with ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes", "with ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "1738",
     "secondaryTicks": "14 impact, 1592 ignition 2259 Sticker Shock",
     "perUseStat100": {
@@ -331,11 +308,7 @@
     "id": "grenade-glacier-average-whisper-of-fissures-touch-of-winter",
     "category": "grenade",
     "name": "Glacier",
-    "assumptions": [
-      "average",
-      "Whisper of Fissures",
-      "Touch of Winter"
-    ],
+    "assumptions": ["average", "Whisper of Fissures", "Touch of Winter"],
     "includedEffectIds": [],
     "primaryTick": "363",
     "secondaryTicks": "52 Fissures",
@@ -365,10 +338,7 @@
     "id": "grenade-glacier-average-whisper-of-fissures",
     "category": "grenade",
     "name": "Glacier",
-    "assumptions": [
-      "average",
-      "Whisper of Fissures"
-    ],
+    "assumptions": ["average", "Whisper of Fissures"],
     "includedEffectIds": [],
     "primaryTick": "372",
     "secondaryTicks": "52 Fissures",
@@ -398,10 +368,7 @@
     "id": "grenade-hailfire-spike-facet-of-courage-facet-of-ruin",
     "category": "grenade",
     "name": "Hailfire Spike",
-    "assumptions": [
-      "Facet of Courage",
-      "Facet of Ruin"
-    ],
+    "assumptions": ["Facet of Courage", "Facet of Ruin"],
     "includedEffectIds": [],
     "primaryTick": "130",
     "secondaryTicks": "6 impact, 33 tick, 829 shatter, 1553 ignition",
@@ -431,14 +398,8 @@
     "id": "grenade-incendiary-average-ember-of-ashes-with-ignition",
     "category": "grenade",
     "name": "Incendiary",
-    "assumptions": [
-      "average",
-      "Ember of Ashes",
-      "with ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes", "with ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "2525",
     "secondaryTicks": "15 impact, 1592 ignition",
     "perUseStat100": {
@@ -467,10 +428,7 @@
     "id": "grenade-lightning-spark-of-magnitude-stuck-to-ground",
     "category": "grenade",
     "name": "Lightning",
-    "assumptions": [
-      "Spark of Magnitude",
-      "stuck to ground"
-    ],
+    "assumptions": ["Spark of Magnitude", "stuck to ground"],
     "includedEffectIds": [],
     "primaryTick": "879",
     "secondaryTicks": "15 impact",
@@ -530,11 +488,7 @@
     "id": "grenade-magnetic-average-chaos-accelerant-includes-volatile",
     "category": "grenade",
     "name": "Magnetic",
-    "assumptions": [
-      "average",
-      "Chaos Accelerant",
-      "includes volatile"
-    ],
+    "assumptions": ["average", "Chaos Accelerant", "includes volatile"],
     "includedEffectIds": [],
     "primaryTick": "895",
     "secondaryTicks": "216/1 volatile",
@@ -564,9 +518,7 @@
     "id": "grenade-magnetic-average",
     "category": "grenade",
     "name": "Magnetic",
-    "assumptions": [
-      "average"
-    ],
+    "assumptions": ["average"],
     "includedEffectIds": [],
     "primaryTick": "1154",
     "secondaryTicks": "1673 Sticker Shock, 16 impact",
@@ -596,11 +548,7 @@
     "id": "grenade-pulse-average-spark-of-magnitude-touch-of-thunder",
     "category": "grenade",
     "name": "Pulse",
-    "assumptions": [
-      "average",
-      "Spark of Magnitude",
-      "Touch of Thunder"
-    ],
+    "assumptions": ["average", "Spark of Magnitude", "Touch of Thunder"],
     "includedEffectIds": [],
     "primaryTick": "358",
     "secondaryTicks": "8 impact, 715 max",
@@ -630,9 +578,7 @@
     "id": "grenade-pulse-spark-of-magnitude",
     "category": "grenade",
     "name": "Pulse",
-    "assumptions": [
-      "Spark of Magnitude"
-    ],
+    "assumptions": ["Spark of Magnitude"],
     "includedEffectIds": [],
     "primaryTick": "366",
     "secondaryTicks": "586 pulse, 8 impact",
@@ -692,10 +638,7 @@
     "id": "grenade-scatter-average-chaos-accelerant",
     "category": "grenade",
     "name": "Scatter",
-    "assumptions": [
-      "average",
-      "Chaos Accelerant"
-    ],
+    "assumptions": ["average", "Chaos Accelerant"],
     "includedEffectIds": [],
     "primaryTick": "404",
     "secondaryTicks": "242/17 secondary",
@@ -725,9 +668,7 @@
     "id": "grenade-scatter-average",
     "category": "grenade",
     "name": "Scatter",
-    "assumptions": [
-      "average"
-    ],
+    "assumptions": ["average"],
     "includedEffectIds": [],
     "primaryTick": "275",
     "secondaryTicks": "165/17 secondary",
@@ -787,11 +728,7 @@
     "id": "grenade-shatter-average-touch-of-winter-whisper-of-fissures",
     "category": "grenade",
     "name": "Shatter",
-    "assumptions": [
-      "average",
-      "Touch of Winter",
-      "Whisper of Fissures"
-    ],
+    "assumptions": ["average", "Touch of Winter", "Whisper of Fissures"],
     "includedEffectIds": [],
     "primaryTick": "510",
     "secondaryTicks": "829/1528 secondary, 20 impact",
@@ -821,10 +758,7 @@
     "id": "grenade-shatter-average-whisper-of-fissures",
     "category": "grenade",
     "name": "Shatter",
-    "assumptions": [
-      "average",
-      "Whisper of Fissures"
-    ],
+    "assumptions": ["average", "Whisper of Fissures"],
     "includedEffectIds": [],
     "primaryTick": "510",
     "secondaryTicks": "829/1528 secondary, 20 impact",
@@ -920,9 +854,7 @@
       "Touch of Flame",
       "Sunbracers"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "184",
     "secondaryTicks": "147 impact, 293 glob, 1592 ignition",
     "perUseStat100": {
@@ -951,14 +883,8 @@
     "id": "grenade-solar-average-ember-of-ashes-touch-of-flame",
     "category": "grenade",
     "name": "Solar",
-    "assumptions": [
-      "average",
-      "Ember of Ashes",
-      "Touch of Flame"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes", "Touch of Flame"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "184",
     "secondaryTicks": "147 impact, 293 glob, 1592 ignition",
     "perUseStat100": {
@@ -987,12 +913,8 @@
     "id": "grenade-solar-ember-of-ashes",
     "category": "grenade",
     "name": "Solar",
-    "assumptions": [
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "184",
     "secondaryTicks": "147 impact",
     "perUseStat100": {
@@ -1021,11 +943,7 @@
     "id": "grenade-storm-average-spark-of-magnitude-touch-of-thunder",
     "category": "grenade",
     "name": "Storm",
-    "assumptions": [
-      "average",
-      "Spark of Magnitude",
-      "Touch of Thunder"
-    ],
+    "assumptions": ["average", "Spark of Magnitude", "Touch of Thunder"],
     "includedEffectIds": [],
     "primaryTick": "1171",
     "secondaryTicks": "413 tick",
@@ -1055,10 +973,7 @@
     "id": "grenade-storm-average-spark-of-magnitude",
     "category": "grenade",
     "name": "Storm",
-    "assumptions": [
-      "average",
-      "Spark of Magnitude"
-    ],
+    "assumptions": ["average", "Spark of Magnitude"],
     "includedEffectIds": [],
     "primaryTick": "1200",
     "secondaryTicks": "847 secondary",
@@ -1148,14 +1063,8 @@
     "id": "grenade-swarm-average-ember-of-ashes-with-ignition",
     "category": "grenade",
     "name": "Swarm",
-    "assumptions": [
-      "average",
-      "Ember of Ashes",
-      "with ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes", "with ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "135",
     "secondaryTicks": "126 secondary, 17 impact, 1592 ignition",
     "perUseStat100": {
@@ -1184,10 +1093,7 @@
     "id": "grenade-swarm-average-with-ignition",
     "category": "grenade",
     "name": "Swarm",
-    "assumptions": [
-      "average",
-      "with ignition"
-    ],
+    "assumptions": ["average", "with ignition"],
     "includedEffectIds": [],
     "primaryTick": "135",
     "secondaryTicks": "126 secondary, 17 impact, 1592 ignition",
@@ -1217,14 +1123,8 @@
     "id": "grenade-thermite-average-ember-of-ashes-with-ignition",
     "category": "grenade",
     "name": "Thermite",
-    "assumptions": [
-      "average",
-      "Ember of Ashes",
-      "with ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes", "with ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "579",
     "secondaryTicks": "variable secondary, 8 impact, 1592 ignition",
     "perUseStat100": {
@@ -1253,9 +1153,7 @@
     "id": "grenade-threadling-thread-of-evolution",
     "category": "grenade",
     "name": "Threadling",
-    "assumptions": [
-      "Thread of Evolution"
-    ],
+    "assumptions": ["Thread of Evolution"],
     "includedEffectIds": [],
     "primaryTick": "881",
     "secondaryTicks": "3/17 impact",
@@ -1321,9 +1219,7 @@
       "Wish-Dragon Teeth",
       "with ignition"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "2203",
     "secondaryTicks": "23 impact, 1553 ignition",
     "perUseStat100": {
@@ -1352,14 +1248,8 @@
     "id": "grenade-tripmine-average-ember-of-ashes-with-ignition",
     "category": "grenade",
     "name": "Tripmine",
-    "assumptions": [
-      "average",
-      "Ember of Ashes",
-      "with ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes", "with ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "1975",
     "secondaryTicks": "29 impact, 1592 ignition",
     "perUseStat100": {
@@ -1388,9 +1278,7 @@
     "id": "grenade-void-spike-echo-of-remnants",
     "category": "grenade",
     "name": "Void Spike",
-    "assumptions": [
-      "Echo of Remnants"
-    ],
+    "assumptions": ["Echo of Remnants"],
     "includedEffectIds": [],
     "primaryTick": "206",
     "secondaryTicks": "15 impact",
@@ -1420,9 +1308,7 @@
     "id": "grenade-void-wall-echo-of-remnants",
     "category": "grenade",
     "name": "Void Wall",
-    "assumptions": [
-      "Echo of Remnants"
-    ],
+    "assumptions": ["Echo of Remnants"],
     "includedEffectIds": [],
     "primaryTick": "257",
     "secondaryTicks": "440 secondary, 8 impact",
@@ -1452,10 +1338,7 @@
     "id": "grenade-vortex-echo-of-remnants-chaos-accelerant",
     "category": "grenade",
     "name": "Vortex",
-    "assumptions": [
-      "Echo of Remnants",
-      "Chaos Accelerant"
-    ],
+    "assumptions": ["Echo of Remnants", "Chaos Accelerant"],
     "includedEffectIds": [],
     "primaryTick": "414",
     "secondaryTicks": "166 tick, 9 impact, 145 final",
@@ -1485,9 +1368,7 @@
     "id": "grenade-vortex-echo-of-remnants",
     "category": "grenade",
     "name": "Vortex",
-    "assumptions": [
-      "Echo of Remnants"
-    ],
+    "assumptions": ["Echo of Remnants"],
     "includedEffectIds": [],
     "primaryTick": "414",
     "secondaryTicks": "166 tick, 9 impact, 115 final",
@@ -1607,10 +1488,7 @@
     "id": "melee-ballistic-slam-average-max-typical-catapult-lift-height",
     "category": "melee",
     "name": "Ballistic Slam",
-    "assumptions": [
-      "average",
-      "max typical Catapult Lift height"
-    ],
+    "assumptions": ["average", "max typical Catapult Lift height"],
     "includedEffectIds": [],
     "primaryTick": "833",
     "secondaryTicks": "",
@@ -1640,9 +1518,7 @@
     "id": "melee-base-necrotic-grip",
     "category": "melee",
     "name": "Base",
-    "assumptions": [
-      "Necrotic Grip"
-    ],
+    "assumptions": ["Necrotic Grip"],
     "includedEffectIds": [],
     "primaryTick": "207",
     "secondaryTicks": "299 final",
@@ -1672,9 +1548,7 @@
     "id": "melee-base-titan",
     "category": "melee",
     "name": "Base",
-    "assumptions": [
-      "titan"
-    ],
+    "assumptions": ["titan"],
     "includedEffectIds": [],
     "primaryTick": "456",
     "secondaryTicks": "",
@@ -1704,9 +1578,7 @@
     "id": "melee-base-warlock",
     "category": "melee",
     "name": "Base",
-    "assumptions": [
-      "warlock"
-    ],
+    "assumptions": ["warlock"],
     "includedEffectIds": [],
     "primaryTick": "207",
     "secondaryTicks": "",
@@ -1736,14 +1608,8 @@
     "id": "melee-celestial-fire-average-ember-of-ashes-with-ignition",
     "category": "melee",
     "name": "Celestial Fire",
-    "assumptions": [
-      "average",
-      "Ember of Ashes",
-      "with ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes", "with ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "389",
     "secondaryTicks": "1553 ignition",
     "perUseStat100": {
@@ -1772,9 +1638,7 @@
     "id": "melee-consecration-biotic-enhancements",
     "category": "melee",
     "name": "Consecration",
-    "assumptions": [
-      "Biotic Enhancements"
-    ],
+    "assumptions": ["Biotic Enhancements"],
     "includedEffectIds": [],
     "primaryTick": "153",
     "secondaryTicks": "1553 ignition, 1786 wave",
@@ -1864,9 +1728,7 @@
     "id": "melee-flechette-storm-includes-launch-damage",
     "category": "melee",
     "name": "Flechette Storm",
-    "assumptions": [
-      "includes launch damage"
-    ],
+    "assumptions": ["includes launch damage"],
     "includedEffectIds": [],
     "primaryTick": "244",
     "secondaryTicks": "308/6 lash",
@@ -1926,9 +1788,7 @@
     "id": "melee-glaive-adaptive-llh-combo",
     "category": "melee",
     "name": "Glaive - adaptive",
-    "assumptions": [
-      "LLH combo"
-    ],
+    "assumptions": ["LLH combo"],
     "includedEffectIds": [],
     "primaryTick": "261",
     "secondaryTicks": "466 heavy",
@@ -1958,10 +1818,7 @@
     "id": "melee-glaive-vexcalibur-llh-combo-perpetual-loophole",
     "category": "melee",
     "name": "Glaive - Vexcalibur",
-    "assumptions": [
-      "LLH combo",
-      "Perpetual Loophole"
-    ],
+    "assumptions": ["LLH combo", "Perpetual Loophole"],
     "includedEffectIds": [],
     "primaryTick": "314",
     "secondaryTicks": "559 heavy",
@@ -1991,10 +1848,7 @@
     "id": "melee-glaive-winterbite-average-llh-combo",
     "category": "melee",
     "name": "Glaive - Winterbite",
-    "assumptions": [
-      "average",
-      "LLH combo"
-    ],
+    "assumptions": ["average", "LLH combo"],
     "includedEffectIds": [],
     "primaryTick": "329",
     "secondaryTicks": "587 heavy, 829 shatter",
@@ -2054,12 +1908,8 @@
     "id": "melee-hammer-strike-ember-of-ashes",
     "category": "melee",
     "name": "Hammer Strike",
-    "assumptions": [
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "2019",
     "secondaryTicks": "1346 secondary",
     "perUseStat100": {
@@ -2088,11 +1938,7 @@
     "id": "melee-howl-of-the-storm-average-whisper-of-fissures-biotic-enhancements",
     "category": "melee",
     "name": "Howl of the Storm",
-    "assumptions": [
-      "average",
-      "Whisper of Fissures",
-      "Biotic Enhancements"
-    ],
+    "assumptions": ["average", "Whisper of Fissures", "Biotic Enhancements"],
     "includedEffectIds": [],
     "primaryTick": "662",
     "secondaryTicks": "1512 shatter, 52 Fissures",
@@ -2122,10 +1968,7 @@
     "id": "melee-howl-of-the-storm-average-whisper-of-fissures",
     "category": "melee",
     "name": "Howl of the Storm",
-    "assumptions": [
-      "average",
-      "Whisper of Fissures"
-    ],
+    "assumptions": ["average", "Whisper of Fissures"],
     "includedEffectIds": [],
     "primaryTick": "363",
     "secondaryTicks": "829 shatter, 52 Fissures",
@@ -2155,12 +1998,8 @@
     "id": "melee-incinerator-snap-ember-of-ashes",
     "category": "melee",
     "name": "Incinerator Snap",
-    "assumptions": [
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "206",
     "secondaryTicks": "1553 ignition",
     "perUseStat100": {
@@ -2189,15 +2028,8 @@
     "id": "melee-knife-trick-average-precision-ember-of-ashes-with-ignition",
     "category": "melee",
     "name": "Knife Trick",
-    "assumptions": [
-      "average",
-      "precision",
-      "Ember of Ashes",
-      "with ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "precision", "Ember of Ashes", "with ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "513",
     "secondaryTicks": "394 body, 1553 ignition",
     "perUseStat100": {
@@ -2256,9 +2088,7 @@
     "id": "melee-lightweight-knife-precision",
     "category": "melee",
     "name": "Lightweight Knife",
-    "assumptions": [
-      "precision"
-    ],
+    "assumptions": ["precision"],
     "includedEffectIds": [],
     "primaryTick": "938",
     "secondaryTicks": "626 body",
@@ -2288,9 +2118,7 @@
     "id": "melee-monte-carlo-bayonet-locked",
     "category": "melee",
     "name": "Monte Carlo",
-    "assumptions": [
-      "Bayonet Locked"
-    ],
+    "assumptions": ["Bayonet Locked"],
     "includedEffectIds": [],
     "primaryTick": "1739",
     "secondaryTicks": "",
@@ -2320,10 +2148,7 @@
     "id": "melee-penumbral-blast-average-facet-of-ruin",
     "category": "melee",
     "name": "Penumbral Blast",
-    "assumptions": [
-      "average",
-      "Facet of Ruin"
-    ],
+    "assumptions": ["average", "Facet of Ruin"],
     "includedEffectIds": [],
     "primaryTick": "383",
     "secondaryTicks": "829 shatter",
@@ -2413,9 +2238,7 @@
     "id": "melee-proximity-explosive-knife-precision",
     "category": "melee",
     "name": "Proximity Explosive Knife",
-    "assumptions": [
-      "precision"
-    ],
+    "assumptions": ["precision"],
     "includedEffectIds": [],
     "primaryTick": "610",
     "secondaryTicks": "622 explosion, 469 body",
@@ -2535,10 +2358,7 @@
     "id": "melee-shiver-strike-whisper-of-fissures-with-auto-shatter",
     "category": "melee",
     "name": "Shiver Strike",
-    "assumptions": [
-      "Whisper of Fissures",
-      "with auto shatter"
-    ],
+    "assumptions": ["Whisper of Fissures", "with auto shatter"],
     "includedEffectIds": [],
     "primaryTick": "435",
     "secondaryTicks": "187 secondary, 829 shatter, 52 Fissures",
@@ -2568,9 +2388,7 @@
     "id": "melee-snare-bomb-ticks-include-weaken",
     "category": "melee",
     "name": "Snare Bomb",
-    "assumptions": [
-      "ticks include weaken"
-    ],
+    "assumptions": ["ticks include weaken"],
     "includedEffectIds": [],
     "primaryTick": "221",
     "secondaryTicks": "55 impact, 42 max",
@@ -2630,9 +2448,7 @@
     "id": "melee-tempest-strike-includes-jolt",
     "category": "melee",
     "name": "Tempest Strike",
-    "assumptions": [
-      "includes jolt"
-    ],
+    "assumptions": ["includes jolt"],
     "includedEffectIds": [],
     "primaryTick": "1144",
     "secondaryTicks": "228 jolt",
@@ -2662,9 +2478,7 @@
     "id": "melee-threaded-spike-double-tick",
     "category": "melee",
     "name": "Threaded Spike",
-    "assumptions": [
-      "double tick"
-    ],
+    "assumptions": ["double tick"],
     "includedEffectIds": [],
     "primaryTick": "818",
     "secondaryTicks": "817 return",
@@ -2694,11 +2508,7 @@
     "id": "melee-throwing-hammer-forgemaster-perfect-recall-melee-range",
     "category": "melee",
     "name": "Throwing Hammer",
-    "assumptions": [
-      "Forgemaster",
-      "Perfect Recall",
-      "melee range"
-    ],
+    "assumptions": ["Forgemaster", "Perfect Recall", "melee range"],
     "includedEffectIds": [],
     "primaryTick": "1157",
     "secondaryTicks": "623/596 secondary",
@@ -2758,9 +2568,7 @@
     "id": "melee-thunderclap-fully-charged",
     "category": "melee",
     "name": "Thunderclap",
-    "assumptions": [
-      "fully charged"
-    ],
+    "assumptions": ["fully charged"],
     "includedEffectIds": [],
     "primaryTick": "3230",
     "secondaryTicks": "",
@@ -2790,9 +2598,7 @@
     "id": "melee-thunderclap-uncharged",
     "category": "melee",
     "name": "Thunderclap",
-    "assumptions": [
-      "uncharged"
-    ],
+    "assumptions": ["uncharged"],
     "includedEffectIds": [],
     "primaryTick": "1615",
     "secondaryTicks": "",
@@ -2822,9 +2628,7 @@
     "id": "melee-weighted-throwing-knife-precision",
     "category": "melee",
     "name": "Weighted Throwing Knife",
-    "assumptions": [
-      "precision"
-    ],
+    "assumptions": ["precision"],
     "includedEffectIds": [],
     "primaryTick": "1313",
     "secondaryTicks": "876 body",
@@ -2854,10 +2658,7 @@
     "id": "melee-withering-blade-average-facet-of-ruin",
     "category": "melee",
     "name": "Withering Blade",
-    "assumptions": [
-      "average",
-      "Facet of Ruin"
-    ],
+    "assumptions": ["average", "Facet of Ruin"],
     "includedEffectIds": [],
     "primaryTick": "681",
     "secondaryTicks": "829 shatter, 52 Fissures",
@@ -2887,10 +2688,7 @@
     "id": "miscellaneous-arc-soul-burst-amplified",
     "category": "miscellaneous",
     "name": "Arc Soul",
-    "assumptions": [
-      "burst",
-      "Amplified"
-    ],
+    "assumptions": ["burst", "Amplified"],
     "includedEffectIds": [],
     "primaryTick": "125",
     "secondaryTicks": "",
@@ -2920,9 +2718,7 @@
     "id": "miscellaneous-arc-soul-burst",
     "category": "miscellaneous",
     "name": "Arc Soul",
-    "assumptions": [
-      "burst"
-    ],
+    "assumptions": ["burst"],
     "includedEffectIds": [],
     "primaryTick": "125",
     "secondaryTicks": "",
@@ -2952,10 +2748,7 @@
     "id": "miscellaneous-ascension-includes-jolt-gifted-conviction",
     "category": "miscellaneous",
     "name": "Ascension",
-    "assumptions": [
-      "includes jolt",
-      "Gifted Conviction"
-    ],
+    "assumptions": ["includes jolt", "Gifted Conviction"],
     "includedEffectIds": [],
     "primaryTick": "414",
     "secondaryTicks": "260 secondary, 228 jolt",
@@ -2985,9 +2778,7 @@
     "id": "miscellaneous-ascension-includes-jolt",
     "category": "miscellaneous",
     "name": "Ascension",
-    "assumptions": [
-      "includes jolt"
-    ],
+    "assumptions": ["includes jolt"],
     "includedEffectIds": [],
     "primaryTick": "414",
     "secondaryTicks": "228 jolt",
@@ -3116,11 +2907,7 @@
     "id": "miscellaneous-child-of-the-old-gods-whole-duration-briarbinds-ticks-includes-weaken",
     "category": "miscellaneous",
     "name": "Child of the Old Gods",
-    "assumptions": [
-      "whole duration",
-      "Briarbinds",
-      "ticks includes weaken"
-    ],
+    "assumptions": ["whole duration", "Briarbinds", "ticks includes weaken"],
     "includedEffectIds": [],
     "primaryTick": "91",
     "secondaryTicks": "116 final",
@@ -3150,10 +2937,7 @@
     "id": "miscellaneous-child-of-the-old-gods-whole-duration-ticks-includes-weaken",
     "category": "miscellaneous",
     "name": "Child of the Old Gods",
-    "assumptions": [
-      "whole duration",
-      "ticks includes weaken"
-    ],
+    "assumptions": ["whole duration", "ticks includes weaken"],
     "includedEffectIds": [],
     "primaryTick": "89",
     "secondaryTicks": "",
@@ -3183,14 +2967,8 @@
     "id": "miscellaneous-crackshot-average-includes-ignition-ember-of-ashes",
     "category": "miscellaneous",
     "name": "Crackshot",
-    "assumptions": [
-      "average",
-      "includes ignition",
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "includes ignition", "Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "814",
     "secondaryTicks": "1553 ignition",
     "perUseStat100": {
@@ -3249,9 +3027,7 @@
     "id": "miscellaneous-exodus-rockets-volley",
     "category": "miscellaneous",
     "name": "Exodus Rockets",
-    "assumptions": [
-      "volley"
-    ],
+    "assumptions": ["volley"],
     "includedEffectIds": [],
     "primaryTick": "1243",
     "secondaryTicks": "3727 Turncoat",
@@ -3281,9 +3057,7 @@
     "id": "miscellaneous-gunpowder-gamble-direct-stick-and-shot",
     "category": "miscellaneous",
     "name": "Gunpowder Gamble",
-    "assumptions": [
-      "direct stick and shot"
-    ],
+    "assumptions": ["direct stick and shot"],
     "includedEffectIds": [],
     "primaryTick": "2329",
     "secondaryTicks": "187 submunition, 7 impact",
@@ -3313,10 +3087,7 @@
     "id": "miscellaneous-gunpowder-gamble-midair-detonation-most-submunitions-hit",
     "category": "miscellaneous",
     "name": "Gunpowder Gamble",
-    "assumptions": [
-      "midair detonation",
-      "most submunitions hit"
-    ],
+    "assumptions": ["midair detonation", "most submunitions hit"],
     "includedEffectIds": [],
     "primaryTick": "3494",
     "secondaryTicks": "187 submunition",
@@ -3346,9 +3117,7 @@
     "id": "miscellaneous-gunpowder-gamble-direct-stick",
     "category": "miscellaneous",
     "name": "Gunpowder Gamble",
-    "assumptions": [
-      "direct stick"
-    ],
+    "assumptions": ["direct stick"],
     "includedEffectIds": [],
     "primaryTick": "2329",
     "secondaryTicks": "7 impact",
@@ -3378,11 +3147,7 @@
     "id": "miscellaneous-hellion-average-consul-s-pitch-max-range",
     "category": "miscellaneous",
     "name": "Hellion",
-    "assumptions": [
-      "average",
-      "Consul's Pitch",
-      "max range"
-    ],
+    "assumptions": ["average", "Consul's Pitch", "max range"],
     "includedEffectIds": [],
     "primaryTick": "597",
     "secondaryTicks": "40 secondary, 1553 ignition",
@@ -3412,13 +3177,8 @@
     "id": "miscellaneous-hellion-average-ember-of-ashes",
     "category": "miscellaneous",
     "name": "Hellion",
-    "assumptions": [
-      "average",
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["average", "Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "497",
     "secondaryTicks": "1553 ignition",
     "perUseStat100": {
@@ -3447,9 +3207,7 @@
     "id": "miscellaneous-hellion-average",
     "category": "miscellaneous",
     "name": "Hellion",
-    "assumptions": [
-      "average"
-    ],
+    "assumptions": ["average"],
     "includedEffectIds": [],
     "primaryTick": "497",
     "secondaryTicks": "1553 ignition",
@@ -3509,9 +3267,7 @@
     "id": "miscellaneous-ionic-sentry-single-shot",
     "category": "miscellaneous",
     "name": "Ionic Sentry",
-    "assumptions": [
-      "single shot"
-    ],
+    "assumptions": ["single shot"],
     "includedEffectIds": [],
     "primaryTick": "417",
     "secondaryTicks": "",
@@ -3601,9 +3357,7 @@
     "id": "miscellaneous-mantle-of-battle-harmony-harmonic-munitions-explosion",
     "category": "miscellaneous",
     "name": "Mantle of Battle Harmony",
-    "assumptions": [
-      "Harmonic Munitions explosion"
-    ],
+    "assumptions": ["Harmonic Munitions explosion"],
     "includedEffectIds": [],
     "primaryTick": "270",
     "secondaryTicks": "",
@@ -3633,9 +3387,7 @@
     "id": "miscellaneous-shatter-auto-manual",
     "category": "miscellaneous",
     "name": "Shatter",
-    "assumptions": [
-      "auto/manual"
-    ],
+    "assumptions": ["auto/manual"],
     "includedEffectIds": [],
     "primaryTick": "829",
     "secondaryTicks": "52 Fissures",
@@ -3665,13 +3417,8 @@
     "id": "miscellaneous-shieldburst-ember-of-ashes-includes-ignition",
     "category": "miscellaneous",
     "name": "Shieldburst",
-    "assumptions": [
-      "Ember of Ashes",
-      "includes ignition"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Ember of Ashes", "includes ignition"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "1715",
     "secondaryTicks": "163 secondary, 1553 ignition",
     "perUseStat100": {
@@ -3730,9 +3477,7 @@
     "id": "miscellaneous-sword-storm-combo-all-10-hits",
     "category": "miscellaneous",
     "name": "Sword Storm Combo",
-    "assumptions": [
-      "all 10 hits"
-    ],
+    "assumptions": ["all 10 hits"],
     "includedEffectIds": [],
     "primaryTick": "299",
     "secondaryTicks": "260 min",
@@ -3762,9 +3507,7 @@
     "id": "miscellaneous-tangle-the-wanderer",
     "category": "miscellaneous",
     "name": "Tangle",
-    "assumptions": [
-      "The Wanderer"
-    ],
+    "assumptions": ["The Wanderer"],
     "includedEffectIds": [],
     "primaryTick": "746",
     "secondaryTicks": "7 impact, 622 secondary",
@@ -3794,9 +3537,7 @@
     "id": "miscellaneous-tangle-whirling-maelstrom",
     "category": "miscellaneous",
     "name": "Tangle",
-    "assumptions": [
-      "Whirling Maelstrom"
-    ],
+    "assumptions": ["Whirling Maelstrom"],
     "includedEffectIds": [],
     "primaryTick": "870",
     "secondaryTicks": "15 impact, 73 tick",
@@ -3826,10 +3567,7 @@
     "id": "miscellaneous-tangle-whirling-maelstrom-untold-greed-x5",
     "category": "miscellaneous",
     "name": "Tangle",
-    "assumptions": [
-      "Whirling Maelstrom",
-      "Untold Greed x5"
-    ],
+    "assumptions": ["Whirling Maelstrom", "Untold Greed x5"],
     "includedEffectIds": [],
     "primaryTick": "2391",
     "secondaryTicks": "41 impact, 200 tick",
@@ -3889,9 +3627,7 @@
     "id": "miscellaneous-threadling-thread-of-evolution",
     "category": "miscellaneous",
     "name": "Threadling",
-    "assumptions": [
-      "Thread of Evolution"
-    ],
+    "assumptions": ["Thread of Evolution"],
     "includedEffectIds": [],
     "primaryTick": "859",
     "secondaryTicks": "",
@@ -3951,9 +3687,7 @@
     "id": "miscellaneous-unbreakable-fully-charged",
     "category": "miscellaneous",
     "name": "Unbreakable",
-    "assumptions": [
-      "fully charged"
-    ],
+    "assumptions": ["fully charged"],
     "includedEffectIds": [],
     "primaryTick": "5714",
     "secondaryTicks": "",
@@ -3983,9 +3717,7 @@
     "id": "miscellaneous-unbreakable-uncharged",
     "category": "miscellaneous",
     "name": "Unbreakable",
-    "assumptions": [
-      "uncharged"
-    ],
+    "assumptions": ["uncharged"],
     "includedEffectIds": [],
     "primaryTick": "991",
     "secondaryTicks": "",
@@ -4015,9 +3747,7 @@
     "id": "miscellaneous-unravel-single-projectile",
     "category": "miscellaneous",
     "name": "Unravel",
-    "assumptions": [
-      "single projectile"
-    ],
+    "assumptions": ["single projectile"],
     "includedEffectIds": [],
     "primaryTick": "90",
     "secondaryTicks": "103 Improved",
@@ -4077,10 +3807,7 @@
     "id": "super-arc-staff-raiden-flux-grounded-2l1h",
     "category": "super",
     "name": "Arc Staff",
-    "assumptions": [
-      "Raiden Flux",
-      "grounded 2L1H"
-    ],
+    "assumptions": ["Raiden Flux", "grounded 2L1H"],
     "includedEffectIds": [],
     "primaryTick": "1809",
     "secondaryTicks": "8273 max heavy",
@@ -4110,10 +3837,7 @@
     "id": "super-arc-staff-feast-of-light-x6-grounded-2l1h",
     "category": "super",
     "name": "Arc Staff",
-    "assumptions": [
-      "Feast of Light x6",
-      "grounded 2L1H"
-    ],
+    "assumptions": ["Feast of Light x6", "grounded 2L1H"],
     "includedEffectIds": [],
     "primaryTick": "1501",
     "secondaryTicks": "5125 heavy",
@@ -4143,9 +3867,7 @@
     "id": "super-arc-staff-grounded-2l1h",
     "category": "super",
     "name": "Arc Staff",
-    "assumptions": [
-      "grounded 2L1H"
-    ],
+    "assumptions": ["grounded 2L1H"],
     "includedEffectIds": [],
     "primaryTick": "883",
     "secondaryTicks": "3015 heavy",
@@ -4175,10 +3897,7 @@
     "id": "super-blade-barrage-knock-em-down-shards-of-galanor",
     "category": "super",
     "name": "Blade Barrage",
-    "assumptions": [
-      "Knock Em Down",
-      "Shards of Galanor"
-    ],
+    "assumptions": ["Knock Em Down", "Shards of Galanor"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -4208,10 +3927,7 @@
     "id": "super-blade-barrage-knock-em-down-feast-of-light-x6",
     "category": "super",
     "name": "Blade Barrage",
-    "assumptions": [
-      "Knock Em Down",
-      "Feast of Light x6"
-    ],
+    "assumptions": ["Knock Em Down", "Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -4241,9 +3957,7 @@
     "id": "super-blade-barrage-knock-em-down",
     "category": "super",
     "name": "Blade Barrage",
-    "assumptions": [
-      "Knock Em Down"
-    ],
+    "assumptions": ["Knock Em Down"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -4338,10 +4052,7 @@
     "id": "super-bladefury-hlllhllllhllllh-feast-of-light-x6",
     "category": "super",
     "name": "Bladefury",
-    "assumptions": [
-      "HLLLHLLLLHLLLLH",
-      "Feast of Light x6"
-    ],
+    "assumptions": ["HLLLHLLLLHLLLLH", "Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -4413,9 +4124,7 @@
       "Ember of Ashes",
       "Sunfire Furnace x10"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4451,9 +4160,7 @@
       "Ember of Ashes",
       "Sunfire Furnace x10"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4489,9 +4196,7 @@
       "Ember of Ashes",
       "Biotic Enhancements"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4527,9 +4232,7 @@
       "Ember of Ashes",
       "Biotic Enhancements"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4564,9 +4267,7 @@
       "Ember of Ashes",
       "Pyrogale Gauntlets"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4595,14 +4296,8 @@
     "id": "super-burning-maul-heavy-attacks-sol-invictus-ember-of-ashes",
     "category": "super",
     "name": "Burning Maul",
-    "assumptions": [
-      "heavy attacks",
-      "Sol Invictus",
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["heavy attacks", "Sol Invictus", "Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4631,14 +4326,8 @@
     "id": "super-burning-maul-light-attacks-sol-invictus-ember-of-ashes",
     "category": "super",
     "name": "Burning Maul",
-    "assumptions": [
-      "light attacks",
-      "Sol Invictus",
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["light attacks", "Sol Invictus", "Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4667,10 +4356,7 @@
     "id": "super-chaos-reach-geomag-stabilizers-sol-invictus",
     "category": "super",
     "name": "Chaos Reach",
-    "assumptions": [
-      "Geomag Stabilizers",
-      "Sol Invictus"
-    ],
+    "assumptions": ["Geomag Stabilizers", "Sol Invictus"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -4700,9 +4386,7 @@
     "id": "super-chaos-reach-geomag-stabilizers",
     "category": "super",
     "name": "Chaos Reach",
-    "assumptions": [
-      "Geomag Stabilizers"
-    ],
+    "assumptions": ["Geomag Stabilizers"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -4762,14 +4446,8 @@
     "id": "super-daybreak-ember-of-ashes-dawn-chorus-spaced",
     "category": "super",
     "name": "Daybreak",
-    "assumptions": [
-      "Ember of Ashes",
-      "Dawn Chorus",
-      "spaced"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Ember of Ashes", "Dawn Chorus", "spaced"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4798,13 +4476,8 @@
     "id": "super-daybreak-ember-of-ashes-dawn-chorus",
     "category": "super",
     "name": "Daybreak",
-    "assumptions": [
-      "Ember of Ashes",
-      "Dawn Chorus"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Ember of Ashes", "Dawn Chorus"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4833,12 +4506,8 @@
     "id": "super-daybreak-ember-of-ashes",
     "category": "super",
     "name": "Daybreak",
-    "assumptions": [
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -4867,9 +4536,7 @@
     "id": "super-fists-of-havoc-heavy-attacks",
     "category": "super",
     "name": "Fists of Havoc",
-    "assumptions": [
-      "heavy attacks"
-    ],
+    "assumptions": ["heavy attacks"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -4899,9 +4566,7 @@
     "id": "super-fists-of-havoc-light-attacks",
     "category": "super",
     "name": "Fists of Havoc",
-    "assumptions": [
-      "light attacks"
-    ],
+    "assumptions": ["light attacks"],
     "includedEffectIds": [],
     "primaryTick": "1019",
     "secondaryTicks": "2659 Knockout",
@@ -4931,9 +4596,7 @@
     "id": "super-gathering-storm-feast-of-light-x6",
     "category": "super",
     "name": "Gathering Storm",
-    "assumptions": [
-      "Feast of Light x6"
-    ],
+    "assumptions": ["Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -4963,9 +4626,7 @@
     "id": "super-gathering-storm-raiju-s-harness",
     "category": "super",
     "name": "Gathering Storm",
-    "assumptions": [
-      "Raiju's Harness"
-    ],
+    "assumptions": ["Raiju's Harness"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5025,11 +4686,7 @@
     "id": "super-glacial-quake-heavy-attacks-feast-of-light-x6-hail-the-storm",
     "category": "super",
     "name": "Glacial Quake",
-    "assumptions": [
-      "heavy attacks",
-      "Feast of Light x6",
-      "Hail the Storm"
-    ],
+    "assumptions": ["heavy attacks", "Feast of Light x6", "Hail the Storm"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5059,10 +4716,7 @@
     "id": "super-glacial-quake-heavy-attacks-feast-of-light-x6",
     "category": "super",
     "name": "Glacial Quake",
-    "assumptions": [
-      "heavy attacks",
-      "Feast of Light x6"
-    ],
+    "assumptions": ["heavy attacks", "Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5092,10 +4746,7 @@
     "id": "super-glacial-quake-heavy-attacks-biotic-enhancements",
     "category": "super",
     "name": "Glacial Quake",
-    "assumptions": [
-      "heavy attacks",
-      "Biotic Enhancements"
-    ],
+    "assumptions": ["heavy attacks", "Biotic Enhancements"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5125,9 +4776,7 @@
     "id": "super-glacial-quake-heavy-attacks",
     "category": "super",
     "name": "Glacial Quake",
-    "assumptions": [
-      "heavy attacks"
-    ],
+    "assumptions": ["heavy attacks"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5157,10 +4806,7 @@
     "id": "super-glacial-quake-howl-heavy-cycle-extrapolated",
     "category": "super",
     "name": "Glacial Quake",
-    "assumptions": [
-      "Howl-heavy cycle",
-      "extrapolated"
-    ],
+    "assumptions": ["Howl-heavy cycle", "extrapolated"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5295,11 +4941,7 @@
     "id": "super-glacial-quake-light-attack-stasis-whisper-of-fissures",
     "category": "super",
     "name": "Glacial Quake",
-    "assumptions": [
-      "light attack",
-      "Stasis",
-      "Whisper of Fissures"
-    ],
+    "assumptions": ["light attack", "Stasis", "Whisper of Fissures"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5364,11 +5006,7 @@
     "id": "super-glacial-quake-light-attack-prismatic-facet-of-ruin",
     "category": "super",
     "name": "Glacial Quake",
-    "assumptions": [
-      "light attack",
-      "Prismatic",
-      "Facet of Ruin"
-    ],
+    "assumptions": ["light attack", "Prismatic", "Facet of Ruin"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5398,14 +5036,8 @@
     "id": "super-golden-gun-deadshot-radiant-ember-of-ashes",
     "category": "super",
     "name": "Golden Gun - Deadshot",
-    "assumptions": [
-      "Radiant",
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "radiant",
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Radiant", "Ember of Ashes"],
+    "includedEffectIds": ["radiant", "ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -5434,13 +5066,8 @@
     "id": "super-golden-gun-marksman-radiant-celestial-nighthawk",
     "category": "super",
     "name": "Golden Gun - Marksman",
-    "assumptions": [
-      "Radiant",
-      "Celestial Nighthawk"
-    ],
-    "includedEffectIds": [
-      "radiant"
-    ],
+    "assumptions": ["Radiant", "Celestial Nighthawk"],
+    "includedEffectIds": ["radiant"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -5469,13 +5096,8 @@
     "id": "super-golden-gun-marksman-radiant-feast-of-light-x6",
     "category": "super",
     "name": "Golden Gun - Marksman",
-    "assumptions": [
-      "Radiant",
-      "Feast of Light x6"
-    ],
-    "includedEffectIds": [
-      "radiant"
-    ],
+    "assumptions": ["Radiant", "Feast of Light x6"],
+    "includedEffectIds": ["radiant"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -5504,12 +5126,8 @@
     "id": "super-golden-gun-marksman-radiant",
     "category": "super",
     "name": "Golden Gun - Marksman",
-    "assumptions": [
-      "Radiant"
-    ],
-    "includedEffectIds": [
-      "radiant"
-    ],
+    "assumptions": ["Radiant"],
+    "includedEffectIds": ["radiant"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -5545,9 +5163,7 @@
       "Ember of Ashes",
       "max distance"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -5582,9 +5198,7 @@
       "Ember of Ashes",
       "max distance"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -5619,9 +5233,7 @@
       "Ember of Ashes",
       "Biotic Enhancements"
     ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -5685,11 +5297,7 @@
     "id": "super-hammer-of-sol-feast-of-light-x6-facet-of-courage-max-distance",
     "category": "super",
     "name": "Hammer of Sol",
-    "assumptions": [
-      "Feast of Light x6",
-      "Facet of Courage",
-      "max distance"
-    ],
+    "assumptions": ["Feast of Light x6", "Facet of Courage", "max distance"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5719,10 +5327,7 @@
     "id": "super-hammer-of-sol-feast-of-light-x6-max-distance",
     "category": "super",
     "name": "Hammer of Sol",
-    "assumptions": [
-      "Feast of Light x6",
-      "max distance"
-    ],
+    "assumptions": ["Feast of Light x6", "max distance"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5752,14 +5357,8 @@
     "id": "super-hammer-of-sol-roaring-flames-x3-sol-invictus-ember-of-ashes",
     "category": "super",
     "name": "Hammer of Sol",
-    "assumptions": [
-      "Roaring Flames x3",
-      "Sol Invictus",
-      "Ember of Ashes"
-    ],
-    "includedEffectIds": [
-      "ember-of-ashes"
-    ],
+    "assumptions": ["Roaring Flames x3", "Sol Invictus", "Ember of Ashes"],
+    "includedEffectIds": ["ember-of-ashes"],
     "primaryTick": "",
     "secondaryTicks": "",
     "perUseStat100": {
@@ -5788,10 +5387,7 @@
     "id": "super-hammer-of-sol-roaring-flames-x3-max-distance",
     "category": "super",
     "name": "Hammer of Sol",
-    "assumptions": [
-      "Roaring Flames x3",
-      "max distance"
-    ],
+    "assumptions": ["Roaring Flames x3", "max distance"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5821,9 +5417,7 @@
     "id": "super-hammer-of-sol-max-distance",
     "category": "super",
     "name": "Hammer of Sol",
-    "assumptions": [
-      "max distance"
-    ],
+    "assumptions": ["max distance"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5883,11 +5477,7 @@
     "id": "super-needlestorm-stylostixis-thread-of-evolution-pack-tactics-x2",
     "category": "super",
     "name": "Needlestorm",
-    "assumptions": [
-      "Stylostixis",
-      "Thread of Evolution",
-      "Pack Tactics x2"
-    ],
+    "assumptions": ["Stylostixis", "Thread of Evolution", "Pack Tactics x2"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5917,10 +5507,7 @@
     "id": "super-needlestorm-stylostixis-thread-of-evolution",
     "category": "super",
     "name": "Needlestorm",
-    "assumptions": [
-      "Stylostixis",
-      "Thread of Evolution"
-    ],
+    "assumptions": ["Stylostixis", "Thread of Evolution"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5950,10 +5537,7 @@
     "id": "super-needlestorm-feast-of-light-x6-pack-tactics-x2",
     "category": "super",
     "name": "Needlestorm",
-    "assumptions": [
-      "Feast of Light x6",
-      "Pack Tactics x2"
-    ],
+    "assumptions": ["Feast of Light x6", "Pack Tactics x2"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -5983,9 +5567,7 @@
     "id": "super-needlestorm-stylostixis",
     "category": "super",
     "name": "Needlestorm",
-    "assumptions": [
-      "Stylostixis"
-    ],
+    "assumptions": ["Stylostixis"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6015,9 +5597,7 @@
     "id": "super-needlestorm-feast-of-light-x6",
     "category": "super",
     "name": "Needlestorm",
-    "assumptions": [
-      "Feast of Light x6"
-    ],
+    "assumptions": ["Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6047,10 +5627,7 @@
     "id": "super-needlestorm-thread-of-evolution-pack-tactics-x2",
     "category": "super",
     "name": "Needlestorm",
-    "assumptions": [
-      "Thread of Evolution",
-      "Pack Tactics x2"
-    ],
+    "assumptions": ["Thread of Evolution", "Pack Tactics x2"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6080,9 +5657,7 @@
     "id": "super-needlestorm-thread-of-evolution",
     "category": "super",
     "name": "Needlestorm",
-    "assumptions": [
-      "Thread of Evolution"
-    ],
+    "assumptions": ["Thread of Evolution"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6142,9 +5717,7 @@
     "id": "super-nova-bomb-cataclysm-nova-bomb-lance-added",
     "category": "super",
     "name": "Nova Bomb - Cataclysm",
-    "assumptions": [
-      "Nova Bomb: Lance added"
-    ],
+    "assumptions": ["Nova Bomb: Lance added"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6174,9 +5747,7 @@
     "id": "super-nova-bomb-cataclysm-feast-of-light-x6",
     "category": "super",
     "name": "Nova Bomb - Cataclysm",
-    "assumptions": [
-      "Feast of Light x6"
-    ],
+    "assumptions": ["Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6296,10 +5867,7 @@
     "id": "super-sentinel-shield-aerial-lights-biotic-enhancements",
     "category": "super",
     "name": "Sentinel Shield",
-    "assumptions": [
-      "aerial lights",
-      "Biotic Enhancements"
-    ],
+    "assumptions": ["aerial lights", "Biotic Enhancements"],
     "includedEffectIds": [],
     "primaryTick": "2201",
     "secondaryTicks": "4186 heavy",
@@ -6329,10 +5897,7 @@
     "id": "super-sentinel-shield-light-attacks-biotic-enhancements",
     "category": "super",
     "name": "Sentinel Shield",
-    "assumptions": [
-      "light attacks",
-      "Biotic Enhancements"
-    ],
+    "assumptions": ["light attacks", "Biotic Enhancements"],
     "includedEffectIds": [],
     "primaryTick": "2201",
     "secondaryTicks": "2362 secondary, 4186 heavy",
@@ -6362,11 +5927,7 @@
     "id": "super-sentinel-shield-shield-throw-no-bounces-max-charge",
     "category": "super",
     "name": "Sentinel Shield",
-    "assumptions": [
-      "shield throw",
-      "no bounces",
-      "max charge"
-    ],
+    "assumptions": ["shield throw", "no bounces", "max charge"],
     "includedEffectIds": [],
     "primaryTick": "27908",
     "secondaryTicks": "",
@@ -6396,10 +5957,7 @@
     "id": "super-sentinel-shield-aerial-lights-starts-with-lh",
     "category": "super",
     "name": "Sentinel Shield",
-    "assumptions": [
-      "aerial lights",
-      "starts with LH"
-    ],
+    "assumptions": ["aerial lights", "starts with LH"],
     "includedEffectIds": [],
     "primaryTick": "1467",
     "secondaryTicks": "2791 heavy",
@@ -6429,9 +5987,7 @@
     "id": "super-sentinel-shield-light-attacks",
     "category": "super",
     "name": "Sentinel Shield",
-    "assumptions": [
-      "light attacks"
-    ],
+    "assumptions": ["light attacks"],
     "includedEffectIds": [],
     "primaryTick": "1467",
     "secondaryTicks": "1575 secondary, 2791 heavy",
@@ -6461,9 +6017,7 @@
     "id": "super-shadowshot-deadfall-tether-includes-debuff",
     "category": "super",
     "name": "Shadowshot: Deadfall Tether",
-    "assumptions": [
-      "includes debuff"
-    ],
+    "assumptions": ["includes debuff"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6493,11 +6047,7 @@
     "id": "super-shadowshot-moebius-quiver-full-bow-charge-feast-of-light-x6-includes-debuff",
     "category": "super",
     "name": "Shadowshot: Moebius Quiver",
-    "assumptions": [
-      "full bow charge",
-      "Feast of Light x6",
-      "includes debuff"
-    ],
+    "assumptions": ["full bow charge", "Feast of Light x6", "includes debuff"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6527,11 +6077,7 @@
     "id": "super-shadowshot-moebius-quiver-full-bow-charge-orpheus-rig-includes-debuff",
     "category": "super",
     "name": "Shadowshot: Moebius Quiver",
-    "assumptions": [
-      "full bow charge",
-      "Orpheus Rig",
-      "includes debuff"
-    ],
+    "assumptions": ["full bow charge", "Orpheus Rig", "includes debuff"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6561,10 +6107,7 @@
     "id": "super-shadowshot-moebius-quiver-feast-of-light-x6-includes-debuff",
     "category": "super",
     "name": "Shadowshot: Moebius Quiver",
-    "assumptions": [
-      "Feast of Light x6",
-      "includes debuff"
-    ],
+    "assumptions": ["Feast of Light x6", "includes debuff"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6594,10 +6137,7 @@
     "id": "super-shadowshot-moebius-quiver-orpheus-rig-includes-debuff",
     "category": "super",
     "name": "Shadowshot: Moebius Quiver",
-    "assumptions": [
-      "Orpheus Rig",
-      "includes debuff"
-    ],
+    "assumptions": ["Orpheus Rig", "includes debuff"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6627,10 +6167,7 @@
     "id": "super-shadowshot-moebius-quiver-full-bow-charge-includes-debuff",
     "category": "super",
     "name": "Shadowshot: Moebius Quiver",
-    "assumptions": [
-      "full bow charge",
-      "includes debuff"
-    ],
+    "assumptions": ["full bow charge", "includes debuff"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6660,9 +6197,7 @@
     "id": "super-shadowshot-moebius-quiver-includes-debuff",
     "category": "super",
     "name": "Shadowshot: Moebius Quiver",
-    "assumptions": [
-      "includes debuff"
-    ],
+    "assumptions": ["includes debuff"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6726,10 +6261,7 @@
     "id": "super-silence-and-squall-facet-of-ruin-feast-of-light-x6",
     "category": "super",
     "name": "Silence and Squall",
-    "assumptions": [
-      "Facet of Ruin",
-      "Feast of Light x6"
-    ],
+    "assumptions": ["Facet of Ruin", "Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6759,10 +6291,7 @@
     "id": "super-silence-and-squall-whisper-of-fissures-whisper-of-durance",
     "category": "super",
     "name": "Silence and Squall",
-    "assumptions": [
-      "Whisper of Fissures",
-      "Whisper of Durance"
-    ],
+    "assumptions": ["Whisper of Fissures", "Whisper of Durance"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6792,9 +6321,7 @@
     "id": "super-silence-and-squall-facet-of-ruin",
     "category": "super",
     "name": "Silence and Squall",
-    "assumptions": [
-      "Facet of Ruin"
-    ],
+    "assumptions": ["Facet of Ruin"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6824,10 +6351,7 @@
     "id": "super-silkstrike-light-attacks-feast-of-light-x6",
     "category": "super",
     "name": "Silkstrike",
-    "assumptions": [
-      "light attacks",
-      "Feast of Light x6"
-    ],
+    "assumptions": ["light attacks", "Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -6857,9 +6381,7 @@
     "id": "super-silkstrike-light-attacks",
     "category": "super",
     "name": "Silkstrike",
-    "assumptions": [
-      "light attacks"
-    ],
+    "assumptions": ["light attacks"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7030,11 +6552,7 @@
     "id": "super-song-of-flame-warlord-s-fury-celestial-fire-spam-ember-of-ashes",
     "category": "super",
     "name": "Song of Flame",
-    "assumptions": [
-      "Warlord's Fury",
-      "Celestial Fire spam",
-      "Ember of Ashes"
-    ],
+    "assumptions": ["Warlord's Fury", "Celestial Fire spam", "Ember of Ashes"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7099,11 +6617,7 @@
     "id": "super-song-of-flame-dawn-chorus-snap-spam-shieldcrush",
     "category": "super",
     "name": "Song of Flame",
-    "assumptions": [
-      "Dawn Chorus",
-      "snap spam",
-      "Shieldcrush"
-    ],
+    "assumptions": ["Dawn Chorus", "snap spam", "Shieldcrush"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7133,10 +6647,7 @@
     "id": "super-song-of-flame-dawn-chorus-snap-spam",
     "category": "super",
     "name": "Song of Flame",
-    "assumptions": [
-      "Dawn Chorus",
-      "snap spam"
-    ],
+    "assumptions": ["Dawn Chorus", "snap spam"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7166,11 +6677,7 @@
     "id": "super-song-of-flame-claws-of-ahamkara-necrotic-grip-snap-spam",
     "category": "super",
     "name": "Song of Flame",
-    "assumptions": [
-      "Claws of Ahamkara",
-      "Necrotic Grip",
-      "snap spam"
-    ],
+    "assumptions": ["Claws of Ahamkara", "Necrotic Grip", "snap spam"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7200,11 +6707,7 @@
     "id": "super-song-of-flame-wisp-snap-cycling-feast-of-light-x6-necrotic-grip",
     "category": "super",
     "name": "Song of Flame",
-    "assumptions": [
-      "wisp/snap cycling",
-      "Feast of Light x6",
-      "Necrotic Grip"
-    ],
+    "assumptions": ["wisp/snap cycling", "Feast of Light x6", "Necrotic Grip"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7234,9 +6737,7 @@
     "id": "super-song-of-flame-snap-spam",
     "category": "super",
     "name": "Song of Flame",
-    "assumptions": [
-      "snap spam"
-    ],
+    "assumptions": ["snap spam"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7266,9 +6767,7 @@
     "id": "super-song-of-flame-wisp-snap-cycling",
     "category": "super",
     "name": "Song of Flame",
-    "assumptions": [
-      "wisp/snap cycling"
-    ],
+    "assumptions": ["wisp/snap cycling"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7298,10 +6797,7 @@
     "id": "super-spectral-blades-light-attacks-feast-of-light-x6",
     "category": "super",
     "name": "Spectral Blades",
-    "assumptions": [
-      "light attacks",
-      "Feast of Light x6"
-    ],
+    "assumptions": ["light attacks", "Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7331,9 +6827,7 @@
     "id": "super-spectral-blades-light-attacks",
     "category": "super",
     "name": "Spectral Blades",
-    "assumptions": [
-      "light attacks"
-    ],
+    "assumptions": ["light attacks"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7363,10 +6857,7 @@
     "id": "super-storm-s-edge-body-feast-of-light-x6",
     "category": "super",
     "name": "Storm's Edge",
-    "assumptions": [
-      "body",
-      "Feast of Light x6"
-    ],
+    "assumptions": ["body", "Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7396,9 +6887,7 @@
     "id": "super-storm-s-edge-body",
     "category": "super",
     "name": "Storm's Edge",
-    "assumptions": [
-      "body"
-    ],
+    "assumptions": ["body"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "414/271 crit",
@@ -7428,9 +6917,7 @@
     "id": "super-stormtrance-ascending-amplitude",
     "category": "super",
     "name": "Stormtrance",
-    "assumptions": [
-      "Ascending Amplitude"
-    ],
+    "assumptions": ["Ascending Amplitude"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7460,9 +6947,7 @@
     "id": "super-stormtrance-feast-of-light-x6",
     "category": "super",
     "name": "Stormtrance",
-    "assumptions": [
-      "Feast of Light x6"
-    ],
+    "assumptions": ["Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7522,9 +7007,7 @@
     "id": "super-thundercrash-cuirass-of-the-falling-star",
     "category": "super",
     "name": "Thundercrash",
-    "assumptions": [
-      "Cuirass of the Falling Star"
-    ],
+    "assumptions": ["Cuirass of the Falling Star"],
     "includedEffectIds": [],
     "primaryTick": "29445",
     "secondaryTicks": "642 tick, 249 aftershock",
@@ -7554,9 +7037,7 @@
     "id": "super-thundercrash-feast-of-light-x6",
     "category": "super",
     "name": "Thundercrash",
-    "assumptions": [
-      "Feast of Light x6"
-    ],
+    "assumptions": ["Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "28495",
     "secondaryTicks": "622 tick, 373 aftershock",
@@ -7616,10 +7097,7 @@
     "id": "super-twilight-arsenal-axe-heavy-includes-weaken",
     "category": "super",
     "name": "Twilight Arsenal",
-    "assumptions": [
-      "axe heavy",
-      "includes weaken"
-    ],
+    "assumptions": ["axe heavy", "includes weaken"],
     "includedEffectIds": [],
     "primaryTick": "3396",
     "secondaryTicks": "2107 secondary",
@@ -7649,10 +7127,7 @@
     "id": "super-twilight-arsenal-axe-light-includes-weaken",
     "category": "super",
     "name": "Twilight Arsenal",
-    "assumptions": [
-      "axe light",
-      "includes weaken"
-    ],
+    "assumptions": ["axe light", "includes weaken"],
     "includedEffectIds": [],
     "primaryTick": "1475",
     "secondaryTicks": "",
@@ -7682,10 +7157,7 @@
     "id": "super-twilight-arsenal-feast-of-light-x6-includes-tractor",
     "category": "super",
     "name": "Twilight Arsenal",
-    "assumptions": [
-      "Feast of Light x6",
-      "includes Tractor"
-    ],
+    "assumptions": ["Feast of Light x6", "includes Tractor"],
     "includedEffectIds": [],
     "primaryTick": "6055",
     "secondaryTicks": "8477 secondary, 25 impact",
@@ -7715,9 +7187,7 @@
     "id": "super-twilight-arsenal-includes-tractor",
     "category": "super",
     "name": "Twilight Arsenal",
-    "assumptions": [
-      "includes Tractor"
-    ],
+    "assumptions": ["includes Tractor"],
     "includedEffectIds": [],
     "primaryTick": "4037",
     "secondaryTicks": "5652 secondary, 17 impact",
@@ -7747,11 +7217,7 @@
     "id": "super-winter-s-wrath-light-heavy-cycle-facet-of-ruin-feast-of-light-x6",
     "category": "super",
     "name": "Winter's Wrath",
-    "assumptions": [
-      "light heavy cycle",
-      "Facet of Ruin",
-      "Feast of Light x6"
-    ],
+    "assumptions": ["light heavy cycle", "Facet of Ruin", "Feast of Light x6"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",
@@ -7815,10 +7281,7 @@
     "id": "super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures",
     "category": "super",
     "name": "Winter's Wrath",
-    "assumptions": [
-      "light heavy cycle",
-      "Whisper of Fissures"
-    ],
+    "assumptions": ["light heavy cycle", "Whisper of Fissures"],
     "includedEffectIds": [],
     "primaryTick": "",
     "secondaryTicks": "",

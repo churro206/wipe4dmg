@@ -14,13 +14,17 @@ describe("aegis-abilities.json", () => {
   it("only names included effects that exist", () => {
     const effectIds = new Set(rawEffects.map((e) => e.id));
     for (const row of rows) {
-      for (const id of row.includedEffectIds) expect(effectIds, row.id).toContain(id);
+      for (const id of row.includedEffectIds)
+        expect(effectIds, row.id).toContain(id);
     }
   });
 
   it("covers supers, grenades and melees", () => {
     for (const category of ["super", "grenade", "melee"]) {
-      expect(rows.some((r) => r.category === category), category).toBe(true);
+      expect(
+        rows.some((r) => r.category === category),
+        category,
+      ).toBe(true);
     }
   });
 });
@@ -32,8 +36,8 @@ const csv = [
   ",,,,,,VISUAL - 100 stat,,,,,VISUAL - 200 stat,,,,,HEALTHBAR,,,,,,,VERIFICATION,,",
   '🖼️,Type,Subtype,"primary\nTick","secondary\nTicks",Modifiers,Boss,Wipe,#,Full Modifiers,"visual\nValue",Wipe,#,Full Modifiers,"visual\nValue",Multi,Boss,#,HP1,HP2,%,Full Modifiers,"healthbar\nValue",Patch,Ratio,Deviation',
   ',Grenade,Firebolt,916,"15 impact, 1592 ignition","average - Ember of Ashes, with ignition",C,5605,4,2.30,609.239,9265,4,2.30,1007.065,1.653,/,/,/,/,/,/,/,9.7.0.3,N/A,N/A',
-  ",Miscellaneous,Bolt Charge,932,\"622 secondary, 1398/932 Flashover\",,C,1559,1,2.30,677.826,/,1,2.30,N/A,N/A,/,/,/,/,/,/,/,9.7.0.3,N/A,N/A",
-  ",Miscellaneous,Bolt Charge,932,\"622 secondary, 1398/932 Flashover\",,C,1559,1,2.30,677.826,/,1,2.30,N/A,N/A,/,/,/,/,/,/,/,9.7.0.3,N/A,N/A",
+  ',Miscellaneous,Bolt Charge,932,"622 secondary, 1398/932 Flashover",,C,1559,1,2.30,677.826,/,1,2.30,N/A,N/A,/,/,/,/,/,/,/,9.7.0.3,N/A,N/A',
+  ',Miscellaneous,Bolt Charge,932,"622 secondary, 1398/932 Flashover",,C,1559,1,2.30,677.826,/,1,2.30,N/A,N/A,/,/,/,/,/,/,/,9.7.0.3,N/A,N/A',
   ',Super,Blade Barrage,,,"Knock Em Down, Feast of Light x6",C,51534,1,2.30,22406.087,73590,1,2.30,31995.652,1.428,/,/,/,/,/,/,/,9.7.0.3,N/A,N/A',
   ",Super,Blade Barrage,,,,C,21470,1,2.30,9334.783,31109,1,2.30,13525.652,1.449,/,/,/,/,/,/,/,9.7.0.3,N/A,N/A",
   ',Super,Golden Gun - Marksman,,,"Radiant, Feast of Light x6",C,36009,1,2.30,15656.087,52213,1,2.30,22701.304,1.450,/,/,/,/,/,/,/,9.7.0.3,N/A,N/A',
@@ -81,11 +85,9 @@ describe("parseAegisAbilities", () => {
   });
 
   it("splits a leading 'average -' into its own assumption", () => {
-    expect(byId("grenade-firebolt-average-ember-of-ashes-with-ignition").assumptions).toEqual([
-      "average",
-      "Ember of Ashes",
-      "with ignition",
-    ]);
+    expect(
+      byId("grenade-firebolt-average-ember-of-ashes-with-ignition").assumptions,
+    ).toEqual(["average", "Ember of Ashes", "with ignition"]);
   });
 
   it("keeps the tick columns as text for later cross-checks", () => {
@@ -95,10 +97,14 @@ describe("parseAegisAbilities", () => {
   });
 
   it("tags assumptions that are modelled effects as included effects", () => {
-    expect(byId("super-golden-gun-marksman-radiant-feast-of-light-x6").includedEffectIds).toEqual(["radiant"]);
-    expect(byId("grenade-firebolt-average-ember-of-ashes-with-ignition").includedEffectIds).toEqual([
-      "ember-of-ashes",
-    ]);
+    expect(
+      byId("super-golden-gun-marksman-radiant-feast-of-light-x6")
+        .includedEffectIds,
+    ).toEqual(["radiant"]);
+    expect(
+      byId("grenade-firebolt-average-ember-of-ashes-with-ignition")
+        .includedEffectIds,
+    ).toEqual(["ember-of-ashes"]);
     expect(byId("super-blade-barrage").includedEffectIds).toEqual([]);
   });
 
@@ -127,11 +133,18 @@ describe("parseAegisAbilities", () => {
   });
 
   it("rejects duplicate rows with different values", () => {
-    const conflicting = csv.replace("1559,1,2.30,677.826,/", "1600,1,2.30,695.652,/");
-    expect(() => parseAegisAbilities(conflicting, RETRIEVED, effects)).toThrow(/miscellaneous-bolt-charge/);
+    const conflicting = csv.replace(
+      "1559,1,2.30,677.826,/",
+      "1600,1,2.30,695.652,/",
+    );
+    expect(() => parseAegisAbilities(conflicting, RETRIEVED, effects)).toThrow(
+      /miscellaneous-bolt-charge/,
+    );
   });
 
   it("fails without the header row", () => {
-    expect(() => parseAegisAbilities("a,b\n1,2", RETRIEVED, effects)).toThrow(/header/);
+    expect(() => parseAegisAbilities("a,b\n1,2", RETRIEVED, effects)).toThrow(
+      /header/,
+    );
   });
 });

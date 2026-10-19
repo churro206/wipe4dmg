@@ -15,14 +15,19 @@ const TABS: Record<string, string> = {
   Strand: "1870531554",
   Prismatic: "1918152785",
 };
-const OUTPUT = new URL("../src/data/compendium-abilities.json", import.meta.url);
+const OUTPUT = new URL(
+  "../src/data/compendium-abilities.json",
+  import.meta.url,
+);
 
 const entries = [];
 for (const [tab, gid] of Object.entries(TABS)) {
   const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/htmlview/sheet?headers=true&gid=${gid}`;
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Download of tab ${tab} failed: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `Download of tab ${tab} failed: ${response.status} ${response.statusText}`,
+    );
   }
   const tabEntries = parseCompendiumTab(await response.text(), tab);
   console.log(`${tab}: ${tabEntries.length} entries`);
@@ -39,4 +44,6 @@ const snapshot = CompendiumSnapshot.parse({
   entries,
 });
 writeFileSync(OUTPUT, JSON.stringify(snapshot, null, 2) + "\n");
-console.log(`Wrote ${entries.length} entries to src/data/compendium-abilities.json`);
+console.log(
+  `Wrote ${entries.length} entries to src/data/compendium-abilities.json`,
+);

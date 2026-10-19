@@ -9,14 +9,28 @@ import { AEGIS_SHEET_URL, normalize, slug } from "./aegisBosses.ts";
 import { parseCsv } from "./csv.ts";
 
 const REQUIRED_COLUMNS = ["Type", "Subtype", "Modifiers", "Patch"] as const;
-const STAT_GROUPS = { stat100: "VISUAL - 100 stat", stat200: "VISUAL - 200 stat" } as const;
-const CATEGORIES: readonly AegisAbilityCategory[] = ["super", "grenade", "melee", "miscellaneous"];
-const SOURCE_NAME = "Aegis Boss Damage sheet (tab Abilties, column visual Value)";
+const STAT_GROUPS = {
+  stat100: "VISUAL - 100 stat",
+  stat200: "VISUAL - 200 stat",
+} as const;
+const CATEGORIES: readonly AegisAbilityCategory[] = [
+  "super",
+  "grenade",
+  "melee",
+  "miscellaneous",
+];
+const SOURCE_NAME =
+  "Aegis Boss Damage sheet (tab Abilties, column visual Value)";
 
 /** Effect name and id; a name may carry a remark in parentheses, e.g. "Well of Radiance (standing inside)". */
 export type EffectName = { id: string; name: string };
 
-type StatColumns = { wipe: number; uses: number; fullModifiers: number; value: number };
+type StatColumns = {
+  wipe: number;
+  uses: number;
+  fullModifiers: number;
+  value: number;
+};
 
 const toNumber = (text: string): number | null => {
   if (text === "" || text === "/" || text === "N/A") return null;
@@ -30,14 +44,23 @@ const splitAssumptions = (text: string): string[] =>
     .split(",")
     .map((part) => part.trim())
     .filter((part) => part !== "")
-    .flatMap((part) => (part.startsWith("average - ") ? ["average", part.slice(10).trim()] : [part]));
+    .flatMap((part) =>
+      part.startsWith("average - ")
+        ? ["average", part.slice(10).trim()]
+        : [part],
+    );
 
-const effectKey = (name: string) => name.replace(/\(.*?\)/g, "").trim().toLowerCase();
+const effectKey = (name: string) =>
+  name
+    .replace(/\(.*?\)/g, "")
+    .trim()
+    .toLowerCase();
 
 /** Index of the first column with this header at or after the start of a stat group. */
 function columnFrom(header: string[], name: string, start: number): number {
   const index = header.findIndex((cell, i) => i >= start && cell === name);
-  if (index < 0) throw new Error(`Column "${name}" not found after column ${start}`);
+  if (index < 0)
+    throw new Error(`Column "${name}" not found after column ${start}`);
   return index;
 }
 
@@ -51,9 +74,13 @@ export function parseAegisAbilities(
   effects: EffectName[],
 ): AegisAbilityRow[] {
   const rows = parseCsv(csv).map((row) => row.map(normalize));
-  const headerIndex = rows.findIndex((row) => REQUIRED_COLUMNS.every((column) => row.includes(column)));
+  const headerIndex = rows.findIndex((row) =>
+    REQUIRED_COLUMNS.every((column) => row.includes(column)),
+  );
   if (headerIndex < 1) {
-    throw new Error(`No header row with the columns ${REQUIRED_COLUMNS.join(", ")} found`);
+    throw new Error(
+      `No header row with the columns ${REQUIRED_COLUMNS.join(", ")} found`,
+    );
   }
   const header = rows[headerIndex];
   const groupRow = rows[headerIndex - 1];
@@ -68,7 +95,10 @@ export function parseAegisAbilities(
       value: columnFrom(header, "visual Value", start),
     };
   };
-  const columns = { stat100: statColumns(STAT_GROUPS.stat100), stat200: statColumns(STAT_GROUPS.stat200) };
+  const columns = {
+    stat100: statColumns(STAT_GROUPS.stat100),
+    stat200: statColumns(STAT_GROUPS.stat200),
+  };
   const at = {
     type: column("Type"),
     name: column("Subtype"),
@@ -78,19 +108,31 @@ export function parseAegisAbilities(
     patch: column("Patch"),
   };
 
-  const dataRows = rows.slice(headerIndex + 1).filter((row) => (row[at.type] ?? "") !== "");
-  const baseline = usualFullModifiers(dataRows, [columns.stat100, columns.stat200]);
-  const effectByKey = new Map(effects.map((effect) => [effectKey(effect.name), effect.id]));
+  const dataRows = rows
+    .slice(headerIndex + 1)
+    .filter((row) => (row[at.type] ?? "") !== "");
+  const baseline = usualFullModifiers(dataRows, [
+    columns.stat100,
+    columns.stat200,
+  ]);
+  const effectByKey = new Map(
+    effects.map((effect) => [effectKey(effect.name), effect.id]),
+  );
 
   const result = new Map<string, AegisAbilityRow>();
   for (const row of dataRows) {
     const category = row[at.type].toLowerCase() as AegisAbilityCategory;
-    if (!CATEGORIES.includes(category)) throw new Error(`Unknown ability type "${row[at.type]}"`);
+    if (!CATEGORIES.includes(category))
+      throw new Error(`Unknown ability type "${row[at.type]}"`);
     const name = row[at.name] ?? "";
     const assumptions = splitAssumptions(row[at.modifiers] ?? "");
     const id = slug([category, name, ...assumptions].join(" "));
-    const fullModifiers = [columns.stat100, columns.stat200].map((c) => toNumber(row[c.fullModifiers] ?? ""));
-    const atBaseline = fullModifiers.every((value) => value === null || value === baseline);
+    const fullModifiers = [columns.stat100, columns.stat200].map((c) =>
+      toNumber(row[c.fullModifiers] ?? ""),
+    );
+    const atBaseline = fullModifiers.every(
+      (value) => value === null || value === baseline,
+    );
 
     const ability: AegisAbilityRow = {
       id,
@@ -98,7 +140,13 @@ export function parseAegisAbilities(
       name,
       assumptions,
       includedEffectIds: atBaseline
-        ? [...new Set(assumptions.flatMap((a) => effectByKey.get(a.toLowerCase()) ?? []))]
+        ? [
+            ...new Set(
+              assumptions.flatMap(
+                (a) => effectByKey.get(a.toLowerCase()) ?? [],
+              ),
+            ),
+          ]
         : [],
       primaryTick: row[at.primaryTick] ?? "",
       secondaryTicks: row[at.secondaryTicks] ?? "",
@@ -130,18 +178,34 @@ function usualFullModifiers(rows: string[][], groups: StatColumns[]): number {
   return usual[0];
 }
 
-function perUse(row: string[], columns: StatColumns, baseline: number, retrieved: string): SourcedNumber {
+function perUse(
+  row: string[],
+  columns: StatColumns,
+  baseline: number,
+  retrieved: string,
+): SourcedNumber {
   const value = toNumber(row[columns.value] ?? "");
   const fullModifiers = toNumber(row[columns.fullModifiers] ?? "");
   const measurement = `Wipe ${row[columns.wipe]} / # ${row[columns.uses]} / Full Modifiers ${row[columns.fullModifiers]}`;
   const source = { name: SOURCE_NAME, url: AEGIS_SHEET_URL, retrieved };
   if (value === null) {
-    return { value: null, source: { ...source, status: "missing", note: `Aegis: "${row[columns.value]}"` } };
+    return {
+      value: null,
+      source: {
+        ...source,
+        status: "missing",
+        note: `Aegis: "${row[columns.value]}"`,
+      },
+    };
   }
   if (fullModifiers === 1) {
     return {
       value,
-      source: { ...source, status: "unverified", note: `${measurement}; not normalised, buffs are inside the value` },
+      source: {
+        ...source,
+        status: "unverified",
+        note: `${measurement}; not normalised, buffs are inside the value`,
+      },
     };
   }
   if (fullModifiers !== baseline) {
@@ -154,5 +218,8 @@ function perUse(row: string[], columns: StatColumns, baseline: number, retrieved
       },
     };
   }
-  return { value, source: { ...source, status: "verified", note: measurement } };
+  return {
+    value,
+    source: { ...source, status: "verified", note: measurement },
+  };
 }

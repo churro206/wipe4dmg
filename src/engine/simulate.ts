@@ -16,8 +16,13 @@
 // a damage instance follows (e.g. ignition), the counter resets, and a cooldown blocks new stacks.
 // Damage over time parts release sources after each shot (e.g. Taken Seekers with the catalyst):
 // one impact, then ticks; a target holds only a limited number of active sources.
+//
+// Abilities (ADR 0009): each cast creates the damage instances of every ability component at the
+// cast time plus its delay and ticks. They carry the ability's kind as damage source, so only
+// multiplier parts for that source apply.
 
 import type {
+  Ability,
   Bucket,
   CounterId,
   DamageOverTimePart,
@@ -45,15 +50,23 @@ export type Shot = {
 };
 
 export type TimedDamageInstance = {
-  id: string; // DamageInstance id from the weapon
+  id: string; // DamageInstance id from the weapon, or "<ability id>.<component id>"
   timeMs: number;
   damage: number;
   damageSource: DamageSource;
   element: Element;
+  abilityId?: string; // set for damage instances of an ability
+};
+
+/** An ability of the build and the times of its casts in the damage phase. */
+export type AbilityCast = {
+  ability: Ability;
+  castsMs: number[];
 };
 
 export type SimulationOptions = EffectWindowOptions & {
   catalyst?: boolean; // default: without catalyst
+  abilities?: AbilityCast[]; // default: no abilities
 };
 
 export type SimulationResult = {
@@ -188,11 +201,55 @@ export function simulate(
       ...damageOverTimeInstances(part, shots, isInPhase, multiplierAt, weapon),
     );
   }
+  for (const cast of options.abilities ?? []) {
+    damageInstances.push(
+      ...abilityDamageInstances(cast, isInPhase, (timeMs) =>
+        combinedMultiplier(partsAt(timeMs).multiplierParts, buckets, {
+          damageSource: cast.ability.kind,
+          element: cast.ability.element,
+        }),
+      ),
+    );
+  }
   damageInstances.sort((a, b) => a.timeMs - b.timeMs);
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;
   return { shots, damageInstances, totalDamage, dps };
+}
+
+/** Damage instances of all components of an ability after each cast: delay, then ticks. */
+function abilityDamageInstances(
+  { ability, castsMs }: AbilityCast,
+  isInPhase: (timeMs: number) => boolean,
+  multiplierAt: (timeMs: number) => number,
+): TimedDamageInstance[] {
+  const components = ability.components.map((component) => ({
+    id: `${ability.id}.${component.id}`,
+    delayMs: requireValue(component.delayMs, "delayMs"),
+    damage: requireValue(component.damagePerTick, "damagePerTick"),
+    ticks: requireValue(component.ticks, "ticks"),
+    tickIntervalMs: requireValue(component.tickIntervalMs, "tickIntervalMs"),
+  }));
+  const result: TimedDamageInstance[] = [];
+  for (const castMs of castsMs) {
+    for (const component of components) {
+      for (let tick = 0; tick < component.ticks; tick++) {
+        const timeMs =
+          castMs + component.delayMs + tick * component.tickIntervalMs;
+        if (!isInPhase(timeMs)) continue;
+        result.push({
+          id: component.id,
+          timeMs,
+          damage: component.damage * multiplierAt(timeMs),
+          damageSource: ability.kind,
+          element: ability.element,
+          abilityId: ability.id,
+        });
+      }
+    }
+  }
+  return result;
 }
 
 /** Times of the applications or releases after each shot: first delay, then a fixed interval. */

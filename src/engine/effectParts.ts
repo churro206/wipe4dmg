@@ -22,7 +22,7 @@ export type ActiveParts = {
 export type DamageTarget = {
   damageSource: DamageSource;
   element: Element;
-  weaponType: WeaponType;
+  weaponType?: WeaponType; // omitted for abilities
 };
 
 /**
@@ -60,11 +60,15 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
   return { multiplierParts, timingParts, counterModifierParts };
 }
 
+/** A part without weapon types applies to everything; a part with weapon types only to those weapons. */
 export function appliesToWeaponType(
   weaponTypes: WeaponType[] | undefined,
-  weaponType: WeaponType,
+  weaponType: WeaponType | undefined,
 ): boolean {
-  return weaponTypes === undefined || weaponTypes.includes(weaponType);
+  return (
+    weaponTypes === undefined ||
+    (weaponType !== undefined && weaponTypes.includes(weaponType))
+  );
 }
 
 /** Combines the matching parts per bucket by its stacking rule. Lists only buckets with matching parts. */

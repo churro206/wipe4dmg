@@ -294,6 +294,35 @@ export const Effect = z.object({
 });
 export type Effect = z.infer<typeof Effect>;
 
+/** Damage source of an ability; the weapon is not an ability. */
+export const AbilityKind = z.enum(["super", "grenade", "melee"]);
+export type AbilityKind = z.infer<typeof AbilityKind>;
+
+/** Part of an ability that creates damage instances after each cast, e.g. impact or explosion (ADR 0009). */
+export const AbilityComponent = z.object({
+  id: z.string(), // e.g. "impact", "explosion", "ignition"
+  name: z.string(),
+  delayMs: SourcedNumber, // time from the cast to the first hit
+  damagePerTick: SourcedNumber, // base damage without multipliers, Compendium scale
+  ticks: SourcedNumber, // number of ticks; 1 for a single hit
+  tickIntervalMs: SourcedNumber, // 0 for a single hit
+  // Whether the ability stat (super, grenade or melee) scales this part; keyword damage often does not.
+  scalesWithAbilityStat: z.boolean(),
+});
+export type AbilityComponent = z.infer<typeof AbilityComponent>;
+
+/** Grenade, melee or super of a subclass with its ability components (ADR 0009). */
+export const Ability = z.object({
+  id: z.string(),
+  code: z.number().int().positive(), // short code for build links; never reused
+  name: z.string(),
+  kind: AbilityKind,
+  element: Element,
+  providers: z.array(Provider).min(1), // classes and subclasses that have the ability
+  components: z.array(AbilityComponent).min(1),
+});
+export type Ability = z.infer<typeof Ability>;
+
 /** Community or own reference value for tests. */
 export const ReferenceValue = z.object({
   id: z.string(),
@@ -357,7 +386,12 @@ export const Boss = z.object({
 export type Boss = z.infer<typeof Boss>;
 
 /** Category of a row in the Aegis tab "Abilties"; "miscellaneous" mixes keyword damage, aspects and exotics. */
-export const AegisAbilityCategory = z.enum(["super", "grenade", "melee", "miscellaneous"]);
+export const AegisAbilityCategory = z.enum([
+  "super",
+  "grenade",
+  "melee",
+  "miscellaneous",
+]);
 export type AegisAbilityCategory = z.infer<typeof AegisAbilityCategory>;
 
 /**
