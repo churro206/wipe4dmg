@@ -36,7 +36,8 @@ Geprüft und verworfen:
 4. **Aegis ist das Gate:** Ein Test simuliert jede Aegis-Zeile, die sich abbilden lässt, ohne Buffs bei Stat 100 und 200. Das Ergebnis muss innerhalb von ±10 % des visual Value liegen.
 5. **Keine doppelte Zählung:**
    - Components sind ungebufft, Buffs kommen nur über Effects.
-   - Ein Paket führt `includedEffectIds` für die Buffs, die Aegis eingerechnet hat. Die Engine wendet diese Effects auf das Paket nicht noch einmal an.
+   - Eine Component führt `includedEffectIds` für die Buffs, die schon im Wert stecken (bei Paketen: die Aegis eingerechnet hat). Die Engine wendet diese Effects auf diese Component nicht noch einmal an, auf alle anderen Damage Instances schon.
+   - Eine Ability kann Effects mitbringen (`grantsEffectIds`), z. B. Moebius Quiver den Tether. Ihr Window startet beim ersten Cast und behält die Dauer aus `effects.json`.
 6. **Keyword-Schaden einer Ability** (z. B. Ignition einer Fusion Grenade) ist eine Component dieser Ability und trägt deren Damage Source. Ob er mit dem Ability Stat skaliert, steht pro Component (`scalesWithAbilityStat`).
 7. **Ability Stat:** Jeder Wert von 0 bis 200. Laut Compendium („Game Mechanics“) steigt der Schaden linear pro Punkt über 100: Super +0,45 %, Grenade +0,65 %, Melee +0,3 %. Die Werte stehen in `ability-stats.json`, der Multiplier im Bucket `abilityStat`; er wirkt nur auf Components mit `scalesWithAbilityStat`. Bei 200 entspricht das dem Median der Aegis-Messungen (×1,447 / ×1,649 / ×1,300).
 8. **Super Window:** Ein Super beschäftigt den Spieler so lange, wie er ihn so schnell wie möglich nutzt. Drei Arten (`usage`):

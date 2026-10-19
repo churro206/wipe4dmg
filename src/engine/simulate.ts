@@ -26,6 +26,7 @@
 
 import type {
   Ability,
+  AbilityComponent,
   AbilityStatScaling,
   Bucket,
   CounterId,
@@ -129,10 +130,18 @@ export function simulate(
   activeParts(effects, buckets);
   const windows = resolveWindows(effects, options);
   const partsCache = new Map<string, ActiveParts>();
-  const partsAt = (timeMs: number): ActiveParts => {
+  // Excluded effects are already inside a value, e.g. the included effects of an ability component.
+  const partsAt = (
+    timeMs: number,
+    excluded: readonly string[] = [],
+  ): ActiveParts => {
     const active = effects.filter((effect) => {
       const window = windows.get(effect.id)!;
-      return window.startMs <= timeMs && timeMs < window.endMs;
+      return (
+        window.startMs <= timeMs &&
+        timeMs < window.endMs &&
+        !excluded.includes(effect.id)
+      );
     });
     const key = active.map((effect) => effect.id).join("|");
     let parts = partsCache.get(key);
@@ -241,11 +250,12 @@ export function simulate(
   const statParts = abilityStatParts(options.abilityStats ?? [], buckets);
   for (const cast of options.abilities ?? []) {
     damageInstances.push(
-      ...abilityDamageInstances(cast, isInPhase, (timeMs, scalesWithStat) =>
+      ...abilityDamageInstances(cast, isInPhase, (timeMs, component) =>
         combinedMultiplier(
-          scalesWithStat
-            ? [...partsAt(timeMs).multiplierParts, ...statParts]
-            : partsAt(timeMs).multiplierParts,
+          [
+            ...partsAt(timeMs, component.includedEffectIds).multiplierParts,
+            ...(component.scalesWithAbilityStat ? statParts : []),
+          ],
           buckets,
           { damageSource: cast.ability.kind, element: cast.ability.element },
         ),
@@ -303,11 +313,11 @@ function abilityStatParts(
 function abilityDamageInstances(
   { ability, castsMs }: AbilityCast,
   isInPhase: (timeMs: number) => boolean,
-  multiplierAt: (timeMs: number, scalesWithStat: boolean) => number,
+  multiplierAt: (timeMs: number, component: AbilityComponent) => number,
 ): TimedDamageInstance[] {
   const components = ability.components.map((component) => ({
     id: `${ability.id}.${component.id}`,
-    scalesWithStat: component.scalesWithAbilityStat,
+    component,
     delayMs: requireValue(component.delayMs, "delayMs"),
     damage: requireValue(component.damagePerTick, "damagePerTick"),
     ticks: requireValue(component.ticks, "ticks"),
@@ -323,8 +333,7 @@ function abilityDamageInstances(
         result.push({
           id: component.id,
           timeMs,
-          damage:
-            component.damage * multiplierAt(timeMs, component.scalesWithStat),
+          damage: component.damage * multiplierAt(timeMs, component.component),
           damageSource: ability.kind,
           element: ability.element,
           abilityId: ability.id,

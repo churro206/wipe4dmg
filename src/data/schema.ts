@@ -308,6 +308,8 @@ export const AbilityComponent = z.object({
   tickIntervalMs: SourcedNumber, // 0 for a single hit
   // Whether the ability stat (super, grenade or melee) scales this part; keyword damage often does not.
   scalesWithAbilityStat: z.boolean(),
+  // Effects already inside the value, e.g. Radiant in an Aegis package; never applied again here.
+  includedEffectIds: z.array(z.string()).optional(),
 });
 export type AbilityComponent = z.infer<typeof AbilityComponent>;
 
@@ -346,6 +348,8 @@ export const Ability = z
     element: Element,
     providers: z.array(Provider).min(1), // classes and subclasses that have the ability
     usage: SuperUsage.optional(), // supers only; omitted: the super does not block the weapon
+    // Effects the ability applies on its first cast, e.g. the tether of Moebius Quiver.
+    grantsEffectIds: z.array(z.string()).optional(),
     components: z.array(AbilityComponent).min(1),
   })
   .refine((ability) => ability.kind === "super" || !ability.usage, {
