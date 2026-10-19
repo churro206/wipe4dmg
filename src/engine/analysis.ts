@@ -1,6 +1,6 @@
 // Derived views of a simulation result for charts: damage by instance, damage curve, DPS by length.
 
-import type { Bucket, Effect, Weapon } from "../data/schema";
+import type { Bucket, DamageSource, Effect, Weapon } from "../data/schema";
 import {
   simulate,
   type SimulationOptions,
@@ -26,6 +26,27 @@ export function damageByInstance(result: SimulationResult): DamageShare[] {
     damage,
     share: result.totalDamage > 0 ? damage / result.totalDamage : 0,
   }));
+}
+
+export type SourceShare = {
+  damageSource: DamageSource;
+  damage: number;
+  share: number; // of the total damage, 0 to 1
+};
+
+const SOURCE_ORDER: DamageSource[] = ["weapon", "super", "grenade", "melee"];
+
+/** Damage per damage source in the order weapon, super, grenade, melee; only sources with damage. */
+export function damageBySource(result: SimulationResult): SourceShare[] {
+  return SOURCE_ORDER.flatMap((damageSource) => {
+    const instances = result.damageInstances.filter(
+      (d) => d.damageSource === damageSource,
+    );
+    if (instances.length === 0) return [];
+    const damage = instances.reduce((sum, d) => sum + d.damage, 0);
+    const share = result.totalDamage > 0 ? damage / result.totalDamage : 0;
+    return [{ damageSource, damage, share }];
+  });
 }
 
 export type CurvePoint = {

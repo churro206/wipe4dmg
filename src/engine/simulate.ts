@@ -27,17 +27,15 @@
 import type {
   Ability,
   AbilityComponent,
-  AbilityStatScaling,
   Bucket,
   CounterId,
   DamageOverTimePart,
   DamageSource,
   Effect,
   Element,
-  MultiplierPart,
   Weapon,
 } from "../data/schema";
-import { abilityStatMultiplier } from "./abilityStats";
+import { abilityStatParts, type AbilityStatValue } from "./abilityStats";
 import {
   activeParts,
   appliesToWeaponType,
@@ -72,11 +70,7 @@ export type AbilityCast = {
   castsMs: number[];
 };
 
-/** The value of a super, grenade or melee stat of the build with its scaling. */
-export type AbilityStatValue = {
-  scaling: AbilityStatScaling;
-  value: number;
-};
+export type { AbilityStatValue };
 
 export type SimulationOptions = EffectWindowOptions & {
   catalyst?: boolean; // default: without catalyst
@@ -283,30 +277,6 @@ function superWindowsOf(casts: AbilityCast[]): SuperWindow[] {
       }));
     })
     .sort((a, b) => a.startMs - b.startMs);
-}
-
-/**
- * Turns the stat values into multiplier parts for the abilities of the stat's kind. Throws if a
- * stat refers to an unknown bucket.
- */
-function abilityStatParts(
-  stats: AbilityStatValue[],
-  buckets: Bucket[],
-): MultiplierPart[] {
-  return stats.map(({ scaling, value }) => {
-    if (!buckets.some((bucket) => bucket.id === scaling.bucketId)) {
-      throw new Error(`Unknown bucket "${scaling.bucketId}"`);
-    }
-    return {
-      type: "multiplier",
-      bucketId: scaling.bucketId,
-      multiplier: {
-        value: abilityStatMultiplier(scaling, value),
-        source: scaling.damagePerPoint.source,
-      },
-      damageSources: [scaling.kind],
-    };
-  });
 }
 
 /** Damage instances of all components of an ability after each cast: delay, then ticks. */
