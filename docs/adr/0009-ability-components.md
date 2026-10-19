@@ -39,7 +39,11 @@ Geprüft und verworfen:
    - Ein Paket führt `includedEffectIds` für die Buffs, die Aegis eingerechnet hat. Die Engine wendet diese Effects auf das Paket nicht noch einmal an.
 6. **Keyword-Schaden einer Ability** (z. B. Ignition einer Fusion Grenade) ist eine Component dieser Ability und trägt deren Damage Source. Ob er mit dem Ability Stat skaliert, steht pro Component (`scalesWithAbilityStat`).
 7. **Ability Stat:** Jeder Wert von 0 bis 200. Laut Compendium („Game Mechanics“) steigt der Schaden linear pro Punkt über 100: Super +0,45 %, Grenade +0,65 %, Melee +0,3 %. Die Werte stehen in `ability-stats.json`, der Multiplier im Bucket `abilityStat`; er wirkt nur auf Components mit `scalesWithAbilityStat`. Bei 200 entspricht das dem Median der Aegis-Messungen (×1,447 / ×1,649 / ×1,300).
-8. **Super Window:** Ein Super mit Dauer blockiert in dieser Zeit die Shots der Waffe, wenn `blocksWeapon` gesetzt ist.
+8. **Super Window:** Ein Super beschäftigt den Spieler so lange, wie er ihn so schnell wie möglich nutzt. Drei Arten (`usage`):
+   - `cast`: nur die Cast-Animation, z. B. Nova Bomb oder Well of Radiance; die Wirkung läuft danach weiter.
+   - `shots`: bis zum letzten Schuss, z. B. Golden Gun; höchstens die Base Duration.
+   - `drain`: bis die Energie leer ist; sie sinkt pro Sekunde (Base Duration) und pro Angriff. Dauer = 1 / (1 / Base Duration + Verbrauch pro Angriff / Abstand zwischen Angriffen).
+   Im Super Window lädt und feuert die Waffe nicht; ein Shot, dessen Charge hineinfällt, rückt dahinter. Fehlt ein Wert, ist das Window eine Schätzung (`exact: false`): 0 für eine unbekannte Cast-Animation, sonst die Base Duration als Obergrenze.
 9. Aspects und Exotics, die Abilities verändern, sind Effects. Ein Build hat höchstens eine Exotic-Rüstung (Exclusive Group `exotic-armor`).
 
 ## Folgen

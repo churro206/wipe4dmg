@@ -21,6 +21,8 @@
 // cast time plus its delay and ticks. They carry the ability's kind as damage source, so only
 // multiplier parts for that source apply. The stat of the ability's kind adds a multiplier in its
 // own bucket to the components that scale with it.
+// A super with usage data keeps the player busy for its super window (superWindow.ts): the weapon
+// neither charges nor fires inside it, so a shot whose charge would overlap moves behind it.
 
 import type {
   Ability,
@@ -42,6 +44,7 @@ import {
   type ActiveParts,
 } from "./effectParts";
 import { resolveWindows, type EffectWindowOptions } from "./effectWindows";
+import { superWindowMs } from "./superWindow";
 import { requireValue } from "./requireValue";
 
 const MS_PER_SECOND = 1000;
@@ -80,9 +83,18 @@ export type SimulationOptions = EffectWindowOptions & {
   abilityStats?: AbilityStatValue[]; // default: no stat bonus
 };
 
+/** Time in which a super keeps the player busy; exact is false if a value of the super is missing. */
+export type SuperWindow = {
+  abilityId: string;
+  startMs: number;
+  endMs: number;
+  exact: boolean;
+};
+
 export type SimulationResult = {
   shots: Shot[];
   damageInstances: TimedDamageInstance[];
+  superWindows: SuperWindow[];
   totalDamage: number;
   dps: number; // total damage per second of the damage phase; 0 for an empty damage phase
 };
@@ -141,6 +153,19 @@ export function simulate(
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
 
   // A reload starts with the last shot of a magazine; a noReload part active then skips it.
+  const superWindows = superWindowsOf(options.abilities ?? []);
+  const blockingWindows = superWindows.filter((w) => w.endMs > w.startMs);
+  // Moves a shot behind every super window that overlaps its charge.
+  const afterSuperWindows = (timeMs: number) => {
+    let result = timeMs;
+    for (const window of blockingWindows) {
+      if (result >= window.startMs && result - chargeTimeMs < window.endMs) {
+        result = window.endMs + chargeTimeMs;
+      }
+    }
+    return result;
+  };
+
   const shots: Shot[] = [];
   let shotMs = chargeTimeMs;
   for (let i = 0; i < totalShots; i++) {
@@ -149,6 +174,7 @@ export function simulate(
       shotMs += shotIntervalMs;
       if (i % magazine === 0 && !noReloadAt(previousMs)) shotMs += reloadTimeMs;
     }
+    shotMs = afterSuperWindows(shotMs);
     if (!isInPhase(shotMs)) break;
     shots.push({ timeMs: shotMs });
   }
@@ -230,7 +256,23 @@ export function simulate(
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;
-  return { shots, damageInstances, totalDamage, dps };
+  return { shots, damageInstances, superWindows, totalDamage, dps };
+}
+
+/** Super windows of all super casts with usage data, sorted by start. */
+function superWindowsOf(casts: AbilityCast[]): SuperWindow[] {
+  return casts
+    .flatMap(({ ability, castsMs }) => {
+      if (ability.kind !== "super" || !ability.usage) return [];
+      const { durationMs, exact } = superWindowMs(ability.usage);
+      return castsMs.map((startMs) => ({
+        abilityId: ability.id,
+        startMs,
+        endMs: startMs + durationMs,
+        exact,
+      }));
+    })
+    .sort((a, b) => a.startMs - b.startMs);
 }
 
 /**

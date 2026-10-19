@@ -22,6 +22,7 @@ describe("simulate: shots", () => {
     expect(simulate(weapon, 0)).toEqual({
       shots: [],
       damageInstances: [],
+      superWindows: [],
       totalDamage: 0,
       dps: 0,
     });

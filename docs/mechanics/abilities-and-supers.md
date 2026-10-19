@@ -14,7 +14,9 @@ Granaten, Nahkampf und Supers machen eigenen Schaden. Sie zählen zum Total Dama
 4. Fähigkeiten profitieren von anderen Buffs als Waffen. Laut Compendium wirken Nahkampf-Buffs zum Beispiel nicht auf Scorch und Ignition. Ob ein Effect auf Fähigkeiten wirkt, muss jeder Effect selbst angeben.
 5. **Fusion Grenade:** Explosion plus Scorch; mit Ember of Ashes und Touch of Flame folgt eine Ignition.
 6. **Keyword-Schaden skaliert nicht immer mit:** Laut Compendium skalieren Melee-Buffs und der Melee-Stat weder Scorch noch Ignition. Grenade-Buffs (Verity's Brow) und Super-Buffs (Heart of the Flame) wirken dagegen auf Solar-Effekte ihrer Ability. Deshalb ist der Faktor von Stat 100 auf 200 bei Melees mit Ignition kleiner (Celestial Fire ×1,10 statt ×1,30).
-7. **Super-Dauer:** Supers mit Dauer verbrauchen Energie pro Sekunde und pro Angriff (Compendium: z. B. Hammer of Sol 21 s, 4,75 % pro Sekunde, 12 % pro Wurf, 1,5 s zwischen zwei Würfen). Während des Supers feuert die Waffe nicht.
+7. **Super-Dauer:** Drei Arten. Cast-Supers (Nova Bomb, Blade Barrage, Well of Radiance, Ward of Dawn …) sind nach der Animation vorbei, ihre Wirkung läuft weiter. Schuss-Supers (Golden Gun 6 / 3 Schuss, Moebius Quiver 2 Salven) enden mit dem letzten Schuss. Energie-Supers verbrauchen Energie pro Sekunde und pro Angriff (Compendium: z. B. Hammer of Sol 21 s, 4,75 % pro Sekunde, 12 % pro Wurf, 1,5 s zwischen zwei Würfen, also etwa 7,8 s bei Dauerfeuer). Während des Supers feuert die Waffe nicht.
+9. **Well of Radiance:** Laut Compendium zählt der Waffenschaden des Casters im Well als Super-Schaden. Der Super-Stat verlängert das Well auf bis zu 40 s bei 200 (Ward of Dawn: bis zu +10 s). Noch nicht abgebildet.
+10. **Golden Gun Marksman:** Precision Hits geben Line 'Em Up, bis zu +90 % Schaden bei x2. Noch nicht abgebildet.
 8. **Golden Gun:** 6 Schuss (Deadshot) oder 3 Schuss (Marksman) pro Super; Radiant erhöht den Schaden; bestimmte Exotics wie Celestial Nighthawk ändern den Schaden stark.
 
 ## Werte
@@ -55,6 +57,7 @@ Entscheidung in ADR 0009 (`docs/adr/0009-ability-components.md`), Umsetzung läu
 - [x] Hauptquelle für Fähigkeiten: Compendium für die Teile, Aegis als Gate und Fallback (ADR 0009, 2026-10-19).
 - [x] Stat-Werte zwischen 100 und 200: linear pro Punkt laut Compendium „Game Mechanics“ (2026-10-19), Data File `ability-stats.json`.
 - [ ] Wie bilden wir Energie und Cooldowns ab, ohne die ganze Fähigkeiten-Ökonomie zu simulieren?
+- [ ] Schussabstand von Golden Gun und Moebius Quiver, Cast-Animationen, Flugzeit von Thundercrash: fehlen in Compendium und Manifest. Bis dahin ist das Super Window eine Schätzung.
 
 ## Quellen
 

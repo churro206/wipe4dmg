@@ -311,16 +311,47 @@ export const AbilityComponent = z.object({
 });
 export type AbilityComponent = z.infer<typeof AbilityComponent>;
 
+/**
+ * How long a super keeps the player busy, i.e. its super window (ADR 0009). The player uses the
+ * super as fast as possible. Missing values make the window an estimate: 0 for an unknown cast
+ * animation, the base duration as upper bound otherwise.
+ */
+export const SuperUsage = z.discriminatedUnion("type", [
+  // Cast and done, e.g. Nova Bomb or Well of Radiance; its effects keep working afterwards.
+  z.object({ type: z.literal("cast"), castMs: SourcedNumber }),
+  // A fixed number of shots, e.g. Golden Gun; ends with the last shot.
+  z.object({
+    type: z.literal("shots"),
+    shots: SourcedNumber,
+    shotIntervalMs: SourcedNumber,
+    baseDurationMs: SourcedNumber,
+  }),
+  // Energy drains per second and per attack, e.g. Hammer of Sol; ends when the energy is empty.
+  z.object({
+    type: z.literal("drain"),
+    baseDurationMs: SourcedNumber, // without attacks
+    drainPerAttack: SourcedNumber, // share of the full energy, e.g. 0.12
+    attackIntervalMs: SourcedNumber, // shortest time between two attacks
+  }),
+]);
+export type SuperUsage = z.infer<typeof SuperUsage>;
+
 /** Grenade, melee or super of a subclass with its ability components (ADR 0009). */
-export const Ability = z.object({
-  id: z.string(),
-  code: z.number().int().positive(), // short code for build links; never reused
-  name: z.string(),
-  kind: AbilityKind,
-  element: Element,
-  providers: z.array(Provider).min(1), // classes and subclasses that have the ability
-  components: z.array(AbilityComponent).min(1),
-});
+export const Ability = z
+  .object({
+    id: z.string(),
+    code: z.number().int().positive(), // short code for build links; never reused
+    name: z.string(),
+    kind: AbilityKind,
+    element: Element,
+    providers: z.array(Provider).min(1), // classes and subclasses that have the ability
+    usage: SuperUsage.optional(), // supers only; omitted: the super does not block the weapon
+    components: z.array(AbilityComponent).min(1),
+  })
+  .refine((ability) => ability.kind === "super" || !ability.usage, {
+    message: "usage is only allowed for supers",
+    path: ["usage"],
+  });
 export type Ability = z.infer<typeof Ability>;
 
 /**
