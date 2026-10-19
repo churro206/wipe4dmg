@@ -9,6 +9,7 @@ import type {
   CompendiumEntry,
   GapReason,
 } from "../data/schema";
+import { abilityNameKey } from "./abilityNames";
 import { superWindowMs } from "./superWindow";
 
 const SECTIONS: Record<string, AbilityKind> = {
@@ -117,23 +118,13 @@ function windowRating(ability: Ability): "exact" | "estimate" | "none" {
   return superWindowMs(ability.usage).exact ? "exact" : "estimate";
 }
 
-/** Compendium and Aegis spell names differently, e.g. "Golden Gun: Deadshot" and "Golden Gun - Deadshot". */
-const nameKey = (name: string) =>
-  name
-    .toLowerCase()
-    .replace(/\(.*?\)/g, "")
-    .replace(/&/g, "and")
-    .replace(/\bgrenade\b/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-
 function missingReason(
   entry: CompendiumEntry,
   aegisRows: AegisAbilityRow[],
 ): "noAegisRow" | "aegisNotNormalised" | "notYetModelled" {
-  const key = nameKey(entry.name);
+  const key = abilityNameKey(entry.name);
   const rows = aegisRows.filter((row) => {
-    const rowKey = nameKey(row.name);
+    const rowKey = abilityNameKey(row.name);
     return rowKey.startsWith(key) || key.startsWith(rowKey);
   });
   if (rows.length === 0) return "noAegisRow";

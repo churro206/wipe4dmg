@@ -1,17 +1,34 @@
 import { existsSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { collectIconRefs, iconFileName } from "../scripts/lib/bungieIcons";
+import {
+  abilityIconRefs,
+  collectIconRefs,
+  iconFileName,
+} from "../scripts/lib/bungieIcons";
+import rawAbilities from "../src/data/abilities.json";
+import rawManifest from "../src/data/manifest-abilities.json";
 import rawEffects from "../src/data/effects.json";
 import rawIconRefs from "../src/data/icon-refs.json";
 import rawIcons from "../src/data/icons.json";
-import { IconIndex, IconRef } from "../src/data/schema";
+import {
+  AbilityData,
+  IconIndex,
+  IconRef,
+  ManifestAbilities,
+  type ManifestAbility,
+} from "../src/data/schema";
 import raw from "../src/data/weapons/one-thousand-voices.json";
 import { loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 
 const effects = loadEffects(rawEffects);
 const weapons = [loadWeapon(raw)];
-const extras = IconRef.array().parse(rawIconRefs);
+const manifestAbilities = ManifestAbilities.parse(rawManifest).abilities;
+const abilityRefs = abilityIconRefs(
+  AbilityData.array().parse(rawAbilities),
+  manifestAbilities,
+);
+const extras = [...IconRef.array().parse(rawIconRefs), ...abilityRefs];
 
 describe("collectIconRefs", () => {
   const refs = collectIconRefs(effects, weapons, extras);
@@ -35,6 +52,47 @@ describe("collectIconRefs", () => {
     expect(() =>
       collectIconRefs(effects, weapons, [...extras, extras[0]]),
     ).toThrow(extras[0].key);
+  });
+});
+
+describe("abilityIconRefs", () => {
+  // Manifest items in the format of manifest-abilities.json; hashes are test inputs.
+  const manifest: ManifestAbility[] = [
+    {
+      name: "Silence and Squall",
+      kind: "super",
+      guardianClass: "hunter",
+      subclass: "prismatic",
+      hash: 2,
+    },
+    {
+      name: "Silence and Squall",
+      kind: "super",
+      guardianClass: "hunter",
+      subclass: "stasis",
+      hash: 1,
+    },
+  ];
+  const ability = {
+    id: "silence-and-squall",
+    name: "Silence & Squall",
+    kind: "super" as const,
+    element: "stasis" as const,
+  };
+
+  it("uses the element item of the ability, despite another spelling", () => {
+    expect(abilityIconRefs([ability], manifest)).toEqual([
+      {
+        key: "ability:silence-and-squall",
+        manifestRef: { table: "DestinyInventoryItemDefinition", hash: 1 },
+      },
+    ]);
+  });
+
+  it("fails for an ability that is not in the manifest", () => {
+    expect(() =>
+      abilityIconRefs([{ ...ability, name: "Nope" }], manifest),
+    ).toThrow(/Nope/);
   });
 });
 
@@ -64,7 +122,8 @@ describe("iconFileName", () => {
 describe("icons data file", () => {
   const index = IconIndex.parse(rawIcons);
 
-  it("has an icon for every effect, weapon and extra", () => {
+  it("has an icon for every effect, weapon, ability and extra", () => {
+    expect(abilityRefs.length).toBeGreaterThan(0);
     for (const ref of collectIconRefs(effects, weapons, extras)) {
       expect(index.icons[ref.key], ref.key).toBeDefined();
     }

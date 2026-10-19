@@ -9,13 +9,6 @@
       "tab": "Arc",
       "entry": "Thundercrash"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["arc"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -42,13 +35,6 @@
       "tab": "Arc",
       "entry": "Arc Staff"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["arc"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -95,13 +81,6 @@
       "tab": "Arc",
       "entry": "Gathering Storm"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["arc"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -128,13 +107,6 @@
       "tab": "Arc",
       "entry": "Storm's Edge"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "super-storm-s-edge-body",
     "package": true
   },
@@ -148,13 +120,6 @@
       "tab": "Arc",
       "entry": "Fists of Havoc"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["arc"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -201,13 +166,6 @@
       "tab": "Arc",
       "entry": "Chaos Reach"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["arc"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -255,13 +213,6 @@
       "tab": "Arc",
       "entry": "Stormtrance"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["arc"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -308,13 +259,6 @@
       "tab": "Solar",
       "entry": "Blade Barrage"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["solar"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -341,13 +285,6 @@
       "tab": "Solar",
       "entry": "Golden Gun: Deadshot"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["solar"]
-      }
-    ],
     "usage": {
       "type": "shots",
       "shots": {
@@ -394,13 +331,6 @@
       "tab": "Solar",
       "entry": "Golden Gun: Marksman"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["solar"]
-      }
-    ],
     "usage": {
       "type": "shots",
       "shots": {
@@ -447,13 +377,6 @@
       "tab": "Solar",
       "entry": "Burning Maul"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["solar"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -500,13 +423,6 @@
       "tab": "Solar",
       "entry": "Hammer of Sol"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["solar"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -553,13 +469,6 @@
       "tab": "Solar",
       "entry": "Daybreak"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["solar"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -606,13 +515,6 @@
       "tab": "Solar",
       "entry": "Well of Radiance"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["solar"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -639,13 +541,6 @@
       "tab": "Void",
       "entry": "Spectral Blades"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["void"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -692,13 +587,6 @@
       "tab": "Void",
       "entry": "Shadowshot: Deadfall"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["void"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -727,13 +615,6 @@
       "tab": "Void",
       "entry": "Shadowshot: Moebius Quiver"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["void"]
-      }
-    ],
     "usage": {
       "type": "shots",
       "shots": {
@@ -783,13 +664,6 @@
       "tab": "Void",
       "entry": "Sentinel Shield"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["void"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -837,13 +711,6 @@
       "tab": "Void",
       "entry": "Twilight Arsenal"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["void"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -870,13 +737,6 @@
       "tab": "Void",
       "entry": "Nova Bomb: Cataclysm"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["void"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -903,13 +763,6 @@
       "tab": "Void",
       "entry": "Nova Bomb: Vortex"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["void"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -936,13 +789,6 @@
       "tab": "Void",
       "entry": "Nova Warp"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["void"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -989,13 +835,6 @@
       "tab": "Stasis",
       "entry": "Silence & Squall"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["stasis"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -1022,13 +861,6 @@
       "tab": "Stasis",
       "entry": "Winter's Wrath"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["stasis"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -1075,13 +907,6 @@
       "tab": "Strand",
       "entry": "Silkstrike"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["strand"]
-      }
-    ],
     "usage": {
       "type": "drain",
       "baseDurationMs": {
@@ -1128,13 +953,6 @@
       "tab": "Strand",
       "entry": "Needlestorm"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["strand"]
-      }
-    ],
     "usage": {
       "type": "cast",
       "castMs": {
@@ -1161,12 +979,6 @@
       "tab": "Arc",
       "entry": "Arcbolt Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "grenade-arcbolt",
     "package": true
   },
@@ -1180,12 +992,6 @@
       "tab": "Arc",
       "entry": "Flashbang Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "grenade-flashbang",
     "package": true
   },
@@ -1199,12 +1005,6 @@
       "tab": "Arc",
       "entry": "Flux Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "grenade-flux-6540-sticker-shock",
     "package": true
   },
@@ -1218,12 +1018,6 @@
       "tab": "Arc",
       "entry": "Lightning Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "grenade-lightning",
     "package": true
   },
@@ -1237,12 +1031,6 @@
       "tab": "Arc",
       "entry": "Pulse Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "grenade-pulse",
     "package": true
   },
@@ -1256,12 +1044,6 @@
       "tab": "Arc",
       "entry": "Skip Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "grenade-skip",
     "package": true
   },
@@ -1275,12 +1057,6 @@
       "tab": "Arc",
       "entry": "Storm Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "grenade-storm",
     "package": true
   },
@@ -1294,12 +1070,6 @@
       "tab": "Solar",
       "entry": "Firebolt Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "grenade-firebolt-average-ember-of-ashes-with-ignition",
     "package": true
   },
@@ -1313,12 +1083,6 @@
       "tab": "Solar",
       "entry": "Fusion Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "grenade-fusion-average-ember-of-ashes-with-ignition",
     "package": true
   },
@@ -1332,12 +1096,6 @@
       "tab": "Solar",
       "entry": "Incendiary Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "grenade-incendiary-average-ember-of-ashes-with-ignition",
     "package": true
   },
@@ -1351,12 +1109,6 @@
       "tab": "Solar",
       "entry": "Solar Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "grenade-solar-ember-of-ashes",
     "package": true
   },
@@ -1370,12 +1122,6 @@
       "tab": "Solar",
       "entry": "Swarm Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "grenade-swarm-average-with-ignition",
     "package": true
   },
@@ -1389,12 +1135,6 @@
       "tab": "Solar",
       "entry": "Thermite Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "grenade-thermite-average-ember-of-ashes-with-ignition",
     "package": true
   },
@@ -1408,12 +1148,6 @@
       "tab": "Solar",
       "entry": "Tripmine Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "grenade-tripmine-average-ember-of-ashes-with-ignition",
     "package": true
   },
@@ -1427,12 +1161,6 @@
       "tab": "Void",
       "entry": "Axion Bolt"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "grenade-axion-bolt",
     "package": true
   },
@@ -1446,12 +1174,6 @@
       "tab": "Void",
       "entry": "Magnetic Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "grenade-magnetic-average",
     "package": true
   },
@@ -1465,12 +1187,6 @@
       "tab": "Void",
       "entry": "Scatter Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "grenade-scatter-average",
     "package": true
   },
@@ -1484,12 +1200,6 @@
       "tab": "Void",
       "entry": "Suppressor Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "grenade-suppressor",
     "package": true
   },
@@ -1503,12 +1213,6 @@
       "tab": "Void",
       "entry": "Void Spike"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "grenade-void-spike-echo-of-remnants",
     "package": true
   },
@@ -1522,12 +1226,6 @@
       "tab": "Void",
       "entry": "Void Wall"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "grenade-void-wall-echo-of-remnants",
     "package": true
   },
@@ -1541,12 +1239,6 @@
       "tab": "Void",
       "entry": "Vortex Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "grenade-vortex",
     "package": true
   },
@@ -1560,12 +1252,6 @@
       "tab": "Stasis",
       "entry": "Glacier Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["stasis"]
-      }
-    ],
     "aegisRowId": "grenade-glacier-average-whisper-of-fissures",
     "package": true
   },
@@ -1579,12 +1265,6 @@
       "tab": "Stasis",
       "entry": "Shatter Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["stasis"]
-      }
-    ],
     "aegisRowId": "grenade-shatter-average-whisper-of-fissures",
     "package": true
   },
@@ -1598,12 +1278,6 @@
       "tab": "Strand",
       "entry": "Shackle Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["strand"]
-      }
-    ],
     "aegisRowId": "grenade-shackle",
     "package": true
   },
@@ -1617,12 +1291,6 @@
       "tab": "Strand",
       "entry": "Slicewire"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["strand"]
-      }
-    ],
     "aegisRowId": "grenade-slicewire",
     "package": true
   },
@@ -1636,12 +1304,6 @@
       "tab": "Strand",
       "entry": "Threadling Grenade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "subclasses": ["strand"]
-      }
-    ],
     "aegisRowId": "grenade-threadling",
     "package": true
   },
@@ -1655,13 +1317,6 @@
       "tab": "Arc",
       "entry": "Disorienting Blow"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "melee-disorienting-blow",
     "package": true
   },
@@ -1675,13 +1330,6 @@
       "tab": "Arc",
       "entry": "Ballistic Slam"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "melee-ballistic-slam-average-max-typical-catapult-lift-height",
     "package": true
   },
@@ -1695,13 +1343,6 @@
       "tab": "Arc",
       "entry": "Seismic Strike"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "melee-seismic-strike",
     "package": true
   },
@@ -1715,13 +1356,6 @@
       "tab": "Arc",
       "entry": "Thunderclap"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "melee-thunderclap-fully-charged",
     "package": true
   },
@@ -1735,13 +1369,6 @@
       "tab": "Arc",
       "entry": "Ball Lightning"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["arc"]
-      }
-    ],
     "aegisRowId": "melee-ball-lightning",
     "package": true
   },
@@ -1755,13 +1382,6 @@
       "tab": "Solar",
       "entry": "Knife Trick"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "melee-knife-trick-average-precision-ember-of-ashes-with-ignition",
     "package": true
   },
@@ -1775,13 +1395,6 @@
       "tab": "Solar",
       "entry": "Lightweight Knife"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "melee-lightweight-knife-precision",
     "package": true
   },
@@ -1795,13 +1408,6 @@
       "tab": "Solar",
       "entry": "Proximity Explosive Knife"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "melee-proximity-explosive-knife-precision",
     "package": true
   },
@@ -1815,13 +1421,6 @@
       "tab": "Solar",
       "entry": "Weighted Throwing Knife"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "melee-weighted-throwing-knife-precision",
     "package": true
   },
@@ -1835,13 +1434,6 @@
       "tab": "Solar",
       "entry": "Hammer Strike"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "melee-hammer-strike-ember-of-ashes",
     "package": true
   },
@@ -1855,13 +1447,6 @@
       "tab": "Solar",
       "entry": "Throwing Hammer"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "melee-throwing-hammer",
     "package": true
   },
@@ -1875,13 +1460,6 @@
       "tab": "Solar",
       "entry": "Celestial Fire"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "melee-celestial-fire-average-ember-of-ashes-with-ignition",
     "package": true
   },
@@ -1895,13 +1473,6 @@
       "tab": "Solar",
       "entry": "Incinerator Snap"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["solar"]
-      }
-    ],
     "aegisRowId": "melee-incinerator-snap-ember-of-ashes",
     "package": true
   },
@@ -1915,13 +1486,6 @@
       "tab": "Void",
       "entry": "Phantom Surge"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "melee-phantom-surge",
     "package": true
   },
@@ -1935,13 +1499,6 @@
       "tab": "Void",
       "entry": "Snare Bomb"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "melee-snare-bomb-ticks-include-weaken",
     "package": true
   },
@@ -1955,13 +1512,6 @@
       "tab": "Void",
       "entry": "Shield Bash"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "melee-shield-bash",
     "package": true
   },
@@ -1975,13 +1525,6 @@
       "tab": "Void",
       "entry": "Shield Throw"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "melee-shield-throw",
     "package": true
   },
@@ -1995,13 +1538,6 @@
       "tab": "Void",
       "entry": "Pocket Singularity"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["void"]
-      }
-    ],
     "aegisRowId": "melee-pocket-singularity",
     "package": true
   },
@@ -2015,13 +1551,6 @@
       "tab": "Stasis",
       "entry": "Withering Blade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["stasis"]
-      }
-    ],
     "aegisRowId": "melee-withering-blade-average-facet-of-ruin",
     "package": true
   },
@@ -2035,13 +1564,6 @@
       "tab": "Stasis",
       "entry": "Shiver Strike"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["stasis"]
-      }
-    ],
     "aegisRowId": "melee-shiver-strike-whisper-of-fissures-with-auto-shatter",
     "package": true
   },
@@ -2055,13 +1577,6 @@
       "tab": "Stasis",
       "entry": "Penumbral Blast"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["stasis"]
-      }
-    ],
     "aegisRowId": "melee-penumbral-blast-average-facet-of-ruin",
     "package": true
   },
@@ -2075,13 +1590,6 @@
       "tab": "Strand",
       "entry": "Threaded Spike"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["hunter"],
-        "subclasses": ["strand"]
-      }
-    ],
     "aegisRowId": "melee-threaded-spike-double-tick",
     "package": true
   },
@@ -2095,13 +1603,6 @@
       "tab": "Strand",
       "entry": "Frenzied Blade"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["titan"],
-        "subclasses": ["strand"]
-      }
-    ],
     "aegisRowId": "melee-frenzied-blade",
     "package": true
   },
@@ -2115,13 +1616,6 @@
       "tab": "Strand",
       "entry": "Arcane Needle"
     },
-    "providers": [
-      {
-        "kind": "subclass",
-        "classes": ["warlock"],
-        "subclasses": ["strand"]
-      }
-    ],
     "aegisRowId": "melee-arcane-needle",
     "package": true
   }

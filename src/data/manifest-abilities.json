@@ -1,0 +1,923 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+  "retrieved": "2026-10-19",
+  "abilities": [
+    {
+      "name": "Arc Staff",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 3769507633
+    },
+    {
+      "name": "Arcane Needle",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 3644045871
+    },
+    {
+      "name": "Arcane Needle",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "strand",
+      "hash": 2307689415
+    },
+    {
+      "name": "Arcbolt Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1582574009
+    },
+    {
+      "name": "Arcbolt Grenade",
+      "kind": "grenade",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 3897682694
+    },
+    {
+      "name": "Axion Bolt",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 3232422679
+    },
+    {
+      "name": "Ball Lightning",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 1232050830
+    },
+    {
+      "name": "Ballistic Slam",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 2708585276
+    },
+    {
+      "name": "Blade Barrage",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 375052471
+    },
+    {
+      "name": "Bladefury",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2529942642
+    },
+    {
+      "name": "Bladefury",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "strand",
+      "hash": 3574662354
+    },
+    {
+      "name": "Burning Maul",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 2747500760
+    },
+    {
+      "name": "Celestial Fire",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 1470370539
+    },
+    {
+      "name": "Chain Lightning",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 1232050831
+    },
+    {
+      "name": "Chain Lightning",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 3644045868
+    },
+    {
+      "name": "Chaos Reach",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 1081893461
+    },
+    {
+      "name": "Coldsnap Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 1399219
+    },
+    {
+      "name": "Coldsnap Grenade",
+      "kind": "grenade",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 4265391440
+    },
+    {
+      "name": "Combination Blow",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 2716335211
+    },
+    {
+      "name": "Combination Blow",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2657901005
+    },
+    {
+      "name": "Daybreak",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 2274196886
+    },
+    {
+      "name": "Disorienting Blow",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 2716335210
+    },
+    {
+      "name": "Duskfield Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 1399216
+    },
+    {
+      "name": "Duskfield Grenade",
+      "kind": "grenade",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 4051767608
+    },
+    {
+      "name": "Firebolt Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 2202441959
+    },
+    {
+      "name": "Fists of Havoc",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 119041299
+    },
+    {
+      "name": "Flashbang Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 2909720723
+    },
+    {
+      "name": "Flux Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 4198689901
+    },
+    {
+      "name": "Frenzied Blade",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1980796564
+    },
+    {
+      "name": "Frenzied Blade",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "strand",
+      "hash": 4094417246
+    },
+    {
+      "name": "Fusion Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 1013086087
+    },
+    {
+      "name": "Gathering Storm",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 3769507632
+    },
+    {
+      "name": "Glacial Quake",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2529942645
+    },
+    {
+      "name": "Glacial Quake",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "stasis",
+      "hash": 2021620139
+    },
+    {
+      "name": "Glacier Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 1399217
+    },
+    {
+      "name": "Glacier Grenade",
+      "kind": "grenade",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 934199459
+    },
+    {
+      "name": "Golden Gun: Deadshot",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 375052469
+    },
+    {
+      "name": "Golden Gun: Marksman",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2370269390
+    },
+    {
+      "name": "Golden Gun: Marksman",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 375052468
+    },
+    {
+      "name": "Grapple",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 2470512752
+    },
+    {
+      "name": "Grapple",
+      "kind": "grenade",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 1225978592
+    },
+    {
+      "name": "Hammer of Sol",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2529942647
+    },
+    {
+      "name": "Hammer of Sol",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 2747500761
+    },
+    {
+      "name": "Hammer Strike",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1980796562
+    },
+    {
+      "name": "Hammer Strike",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 852252788
+    },
+    {
+      "name": "Healing Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 1841016428
+    },
+    {
+      "name": "Healing Grenade",
+      "kind": "grenade",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 3040080535
+    },
+    {
+      "name": "Incendiary Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 2581086849
+    },
+    {
+      "name": "Incinerator Snap",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 3644045869
+    },
+    {
+      "name": "Incinerator Snap",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 1470370538
+    },
+    {
+      "name": "Knife Trick",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2657901004
+    },
+    {
+      "name": "Knife Trick",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 4016776972
+    },
+    {
+      "name": "Lightning Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 2994412667
+    },
+    {
+      "name": "Lightweight Knife",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 4016776974
+    },
+    {
+      "name": "Magnetic Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 1547656727
+    },
+    {
+      "name": "Magnetic Grenade",
+      "kind": "grenade",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 886607940
+    },
+    {
+      "name": "Needlestorm",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1869939001
+    },
+    {
+      "name": "Needlestorm",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "strand",
+      "hash": 1885339915
+    },
+    {
+      "name": "Nova Bomb: Cataclysm",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1869939004
+    },
+    {
+      "name": "Nova Bomb: Cataclysm",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 1656118682
+    },
+    {
+      "name": "Nova Bomb: Vortex",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 1656118681
+    },
+    {
+      "name": "Nova Warp",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 1656118680
+    },
+    {
+      "name": "Penumbral Blast",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 3644045867
+    },
+    {
+      "name": "Penumbral Blast",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "stasis",
+      "hash": 2543177538
+    },
+    {
+      "name": "Phantom Surge",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 1139822080
+    },
+    {
+      "name": "Pocket Singularity",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 3644045870
+    },
+    {
+      "name": "Pocket Singularity",
+      "kind": "melee",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 2299867342
+    },
+    {
+      "name": "Proximity Explosive Knife",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 4016776973
+    },
+    {
+      "name": "Pulse Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1713935764
+    },
+    {
+      "name": "Pulse Grenade",
+      "kind": "grenade",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1323461861
+    },
+    {
+      "name": "Scatter Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 1514173218
+    },
+    {
+      "name": "Seismic Strike",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 2708585277
+    },
+    {
+      "name": "Sentinel Shield",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 4260353952
+    },
+    {
+      "name": "Shackle Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 2809342386
+    },
+    {
+      "name": "Shackle Grenade",
+      "kind": "grenade",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1517917190
+    },
+    {
+      "name": "Shadowshot: Deadfall",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2370269389
+    },
+    {
+      "name": "Shadowshot: Deadfall",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 2722573683
+    },
+    {
+      "name": "Shadowshot: Moebius Quiver",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 2722573681
+    },
+    {
+      "name": "Shatter Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 1399218
+    },
+    {
+      "name": "Shield Bash",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 4220332375
+    },
+    {
+      "name": "Shield Throw",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1980796560
+    },
+    {
+      "name": "Shield Throw",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 4220332374
+    },
+    {
+      "name": "Shiver Strike",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1980796561
+    },
+    {
+      "name": "Shiver Strike",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "stasis",
+      "hash": 2028772231
+    },
+    {
+      "name": "Silence and Squall",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2370269391
+    },
+    {
+      "name": "Silence and Squall",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "stasis",
+      "hash": 2625980631
+    },
+    {
+      "name": "Silkstrike",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2370269384
+    },
+    {
+      "name": "Silkstrike",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "strand",
+      "hash": 2463983862
+    },
+    {
+      "name": "Skip Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 146194908
+    },
+    {
+      "name": "Slicewire Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 1377143502
+    },
+    {
+      "name": "Snare Bomb",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2657901007
+    },
+    {
+      "name": "Snare Bomb",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 1139822081
+    },
+    {
+      "name": "Solar Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 2216698406
+    },
+    {
+      "name": "Song of Flame",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1869939005
+    },
+    {
+      "name": "Song of Flame",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 2274196884
+    },
+    {
+      "name": "Spectral Blades",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 2722573682
+    },
+    {
+      "name": "Storm Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 2481624867
+    },
+    {
+      "name": "Storm Grenade",
+      "kind": "grenade",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 4241856103
+    },
+    {
+      "name": "Storm's Edge",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 3769507635
+    },
+    {
+      "name": "Storm's Edge",
+      "kind": "super",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2370269388
+    },
+    {
+      "name": "Stormtrance",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 1081893460
+    },
+    {
+      "name": "Stormtrance",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1869939007
+    },
+    {
+      "name": "Suppressor Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2265076177
+    },
+    {
+      "name": "Suppressor Grenade",
+      "kind": "grenade",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 3923577992
+    },
+    {
+      "name": "Swarm Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 3199702642
+    },
+    {
+      "name": "Swarm Grenade",
+      "kind": "grenade",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2842514288
+    },
+    {
+      "name": "Thermite Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 3969294337
+    },
+    {
+      "name": "Thermite Grenade",
+      "kind": "grenade",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2400634603
+    },
+    {
+      "name": "Threaded Spike",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2657901002
+    },
+    {
+      "name": "Threaded Spike",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "strand",
+      "hash": 1680616210
+    },
+    {
+      "name": "Threadling Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4228170798
+    },
+    {
+      "name": "Threadling Grenade",
+      "kind": "grenade",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 3994381207
+    },
+    {
+      "name": "Throwing Hammer",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 852252789
+    },
+    {
+      "name": "Thunderclap",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 2708585279
+    },
+    {
+      "name": "Thunderclap",
+      "kind": "melee",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1980796563
+    },
+    {
+      "name": "Thundercrash",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 119041298
+    },
+    {
+      "name": "Thundercrash",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2529942644
+    },
+    {
+      "name": "Tripmine Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 2946990961
+    },
+    {
+      "name": "Twilight Arsenal",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2529942646
+    },
+    {
+      "name": "Twilight Arsenal",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 4260353955
+    },
+    {
+      "name": "Void Spike",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 1255073825
+    },
+    {
+      "name": "Void Wall",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2809141585
+    },
+    {
+      "name": "Vortex Grenade",
+      "kind": "grenade",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 1016030582
+    },
+    {
+      "name": "Vortex Grenade",
+      "kind": "grenade",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1048847436
+    },
+    {
+      "name": "Ward of Dawn",
+      "kind": "super",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 4260353953
+    },
+    {
+      "name": "Weighted Throwing Knife",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 4016776975
+    },
+    {
+      "name": "Well of Radiance",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 2274196887
+    },
+    {
+      "name": "Winter's Wrath",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1869939006
+    },
+    {
+      "name": "Winter's Wrath",
+      "kind": "super",
+      "guardianClass": "warlock",
+      "subclass": "stasis",
+      "hash": 3683904166
+    },
+    {
+      "name": "Withering Blade",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2657901006
+    },
+    {
+      "name": "Withering Blade",
+      "kind": "melee",
+      "guardianClass": "hunter",
+      "subclass": "stasis",
+      "hash": 1341767667
+    }
+  ]
+}

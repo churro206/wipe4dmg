@@ -6,11 +6,13 @@ import rawRows from "../src/data/aegis-abilities.json";
 import rawSnapshot from "../src/data/compendium-abilities.json";
 import rawEffects from "../src/data/effects.json";
 import rawGaps from "../src/data/ability-gaps.json";
+import rawManifest from "../src/data/manifest-abilities.json";
 import {
   Ability,
   AbilityGap,
   AegisAbilityRow,
   CompendiumSnapshot,
+  ManifestAbilities,
   type CompendiumEntry,
 } from "../src/data/schema";
 import { abilityCoverage } from "../src/engine/coverage";
@@ -219,6 +221,7 @@ describe("docs/coverage.md", () => {
       rawAbilities,
       rows,
       loadAbilityStats(rawAbilityStats),
+      ManifestAbilities.parse(rawManifest).abilities,
     );
     const snapshot = CompendiumSnapshot.parse(rawSnapshot);
     const expected = coverageMarkdown(

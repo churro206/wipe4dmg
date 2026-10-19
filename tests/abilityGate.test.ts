@@ -6,8 +6,13 @@ import rawAbilityStats from "../src/data/ability-stats.json";
 import rawAbilities from "../src/data/abilities.json";
 import rawRows from "../src/data/aegis-abilities.json";
 import rawBuckets from "../src/data/buckets.json";
+import rawManifest from "../src/data/manifest-abilities.json";
 import raw from "../src/data/weapons/one-thousand-voices.json";
-import { AegisAbilityRow, type Ability } from "../src/data/schema";
+import {
+  AegisAbilityRow,
+  ManifestAbilities,
+  type Ability,
+} from "../src/data/schema";
 import { loadAbilities } from "../src/engine/loadAbilities";
 import { loadAbilityStats, loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
@@ -20,7 +25,12 @@ const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
 const abilityStats = loadAbilityStats(rawAbilityStats);
 const rows = AegisAbilityRow.array().parse(rawRows);
-const abilities = loadAbilities(rawAbilities, rows, abilityStats);
+const abilities = loadAbilities(
+  rawAbilities,
+  rows,
+  abilityStats,
+  ManifestAbilities.parse(rawManifest).abilities,
+);
 
 /** Damage of one cast of the ability alone, without effects, at the given stat. */
 function perUse(ability: Ability, stat: number): number {

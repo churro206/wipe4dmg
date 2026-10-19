@@ -347,6 +347,7 @@ const AbilityFields = z.object({
   kind: AbilityKind,
   element: Element,
   providers: z.array(Provider).min(1), // classes and subclasses that have the ability
+  manifestHash: z.number().int().optional(), // ability item in the Bungie manifest, for the icon
   usage: SuperUsage.optional(), // supers only; omitted: the super does not block the weapon
   // Effects the ability applies on its first cast, e.g. the tether of Moebius Quiver.
   grantsEffectIds: z.array(z.string()).optional(),
@@ -397,6 +398,8 @@ export type Ability = z.infer<typeof Ability>;
  */
 export const AbilityData = AbilityFields.extend({
   components: z.array(AbilityComponent).optional(),
+  // Omitted: derived from manifest-abilities.json, including Prismatic.
+  providers: z.array(Provider).min(1).optional(),
 })
   .refine(usageOnlyForSupers, usageOnlyForSupersError)
   .refine(damageOrGrants, damageOrGrantsError)
@@ -408,6 +411,27 @@ export const AbilityData = AbilityFields.extend({
     path: ["aegisRowId"],
   });
 export type AbilityData = z.infer<typeof AbilityData>;
+
+/**
+ * An ability item of the Bungie manifest (ADR 0008): its plug category names slot, class and
+ * subclass, e.g. "hunter.prism.supers". Grenades of an element are shared by all classes.
+ */
+export const ManifestAbility = z.object({
+  name: z.string(), // manifest spelling, e.g. "Silence and Squall"
+  kind: AbilityKind,
+  guardianClass: GuardianClass.nullable(), // null: every class
+  subclass: Subclass,
+  hash: z.number().int(),
+});
+export type ManifestAbility = z.infer<typeof ManifestAbility>;
+
+/** Ability items from the manifest, written by npm run import:icons. */
+export const ManifestAbilities = z.object({
+  manifestVersion: z.string(),
+  retrieved: z.string(),
+  abilities: z.array(ManifestAbility),
+});
+export type ManifestAbilities = z.infer<typeof ManifestAbilities>;
 
 /** Why a known ability is not in abilities.json yet (coverage list, US-15). */
 export const GapReason = z.enum([

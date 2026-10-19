@@ -10,7 +10,7 @@ Für Agenten und Entwickler. Grundlage ist ADR 0009. Begriffe stehen im Glossary
 | `src/data/aegis-abilities.json` | Aegis, Reiter „Abilties“ (`npm run import:abilities`) | Gemessener Wert pro Einsatz bei Stat 100 und 200; Gate und Paket |
 | `src/data/ability-stats.json` | Compendium, Game Mechanics | Schaden pro Stat-Punkt über 100 |
 | `src/data/ability-gaps.json` | von Hand | Bekannte Lücken mit Grund, z. B. „Aegis misst nur mit Buffs, die noch kein Effect sind“. Erscheinen in der Abdeckung. |
-| Bungie-Manifest | `npm run import:icons` | Icons, später Klasse, Subklasse und Slot |
+| `src/data/manifest-abilities.json` | Bungie-Manifest (`npm run import:icons`) | Slot, Klasse und Subklasse jeder Ability inklusive Prismatic, Hash für das Icon |
 
 Beide Importe sind automatisch. Werte nie abtippen, wenn ein Import sie liefert.
 
@@ -35,10 +35,11 @@ Beide Importe sind automatisch. Werte nie abtippen, wenn ein Import sie liefert.
    - `shots`: Golden Gun, Moebius Quiver. Anzahl, Schussabstand, Base Duration.
    - `drain`: Roaming Supers. Base Duration, Verbrauch pro Angriff als Anteil (0,12 für 12 %), Abstand zwischen Angriffen. Werte aus dem Compendium; passend zur Ausführung der Aegis-Zeile. Ein Kanal ohne Angriffe hat Verbrauch 0.
    - Kein `usage`, wenn selbst die Base Duration fehlt; der Super blockiert dann nicht.
-6. **Klasse und Subklasse** in `providers`. Bis zum Manifest-Abgleich (Schritt 5) nur die Element-Subklasse eintragen.
+6. **Klasse und Subklasse** nicht eintragen: Der Loader leitet `providers` aus `manifest-abilities.json` ab, inklusive Prismatic. Der Name darf anders geschrieben sein („Silence & Squall“ und „Silence and Squall“). Nur wenn das Manifest falsch ist, `providers` von Hand setzen und den Grund in `docs/data-sources.md` notieren.
 7. **Code** eindeutig und nie wiederverwenden (Build-Links). Compendium-Werte tragen ihr Zitat in `source.quote`; ein Test sucht es im Snapshot.
 8. **Lücke statt Ability:** Gibt es keine brauchbare Aegis-Zeile und keine vollständigen Teile, kommt die Ability mit Grund in `ability-gaps.json`. Ein Test verlangt, dass sie dort wieder verschwindet, sobald sie modelliert ist.
 9. **Abschluss:**
+   - `npm run import:icons` ausführen, damit die neue Ability ihr Icon bekommt (braucht `BUNGIE_API_KEY`).
    - `npm run coverage` ausführen.
    - `npm test`, `npx tsc -b`, `npx eslint .`, `npx prettier --check src scripts tests`.
    - `docs/roadmap.md` aktualisieren.

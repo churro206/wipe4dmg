@@ -1,16 +1,29 @@
-// Imports the icons for effects, weapons, subclasses and kinds of damage from the Bungie manifest
-// into public/icons and writes src/data/icons.json (ADR 0008).
+// Imports the icons for effects, weapons, abilities, subclasses and kinds of damage from the Bungie
+// manifest into public/icons and writes src/data/icons.json (ADR 0008). Before that it reads the
+// ability items of the manifest item table into src/data/manifest-abilities.json: slot, class and
+// subclass of every super, grenade and melee, including Prismatic (ADR 0009).
 // Needs BUNGIE_API_KEY, e.g. in .env.local (ignored by git). Run: npm run import:icons
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { format } from "prettier";
 import {
+  AbilityData,
   Effect,
   IconIndex,
   IconRef,
+  ManifestAbilities,
   Weapon,
   type ManifestRef,
 } from "../src/data/schema.ts";
-import { collectIconRefs, iconFileName } from "./lib/bungieIcons.ts";
+import {
+  abilityIconRefs,
+  collectIconRefs,
+  iconFileName,
+} from "./lib/bungieIcons.ts";
+import {
+  extractManifestAbilities,
+  type ManifestItem,
+} from "./lib/manifestAbilities.ts";
 
 const BUNGIE = "https://www.bungie.net";
 const ROOT = new URL("../", import.meta.url);
@@ -23,7 +36,12 @@ if (!apiKey) {
 }
 // Only the fields of the Bungie API responses this script reads.
 type Envelope<T> = { ErrorStatus: string; Message: string; Response: T };
-type Manifest = { version: string };
+type Manifest = {
+  version: string;
+  jsonWorldComponentContentPaths: {
+    en: { DestinyInventoryItemDefinition: string };
+  };
+};
 type Definition = {
   displayProperties?: { name?: string; icon?: string; hasIcon?: boolean };
 };
@@ -39,12 +57,39 @@ const api = async <T>(path: string): Promise<T> => {
   return body.Response;
 };
 
+const manifest = await api<Manifest>("/Destiny2/Manifest/");
+const retrieved = new Date().toISOString().slice(0, 10);
+
+// The item table is large (about 200 MB); it is read once and not stored.
+const itemTable = await fetch(
+  `${BUNGIE}${manifest.jsonWorldComponentContentPaths.en.DestinyInventoryItemDefinition}`,
+);
+if (!itemTable.ok)
+  throw new Error(`Item table download failed: ${itemTable.status}`);
+const manifestAbilities = ManifestAbilities.parse({
+  manifestVersion: manifest.version,
+  retrieved,
+  abilities: extractManifestAbilities(
+    (await itemTable.json()) as Record<string, ManifestItem>,
+  ),
+});
+writeFileSync(
+  new URL("src/data/manifest-abilities.json", ROOT),
+  await format(JSON.stringify(manifestAbilities), { parser: "json" }),
+);
+console.log(`Wrote ${manifestAbilities.abilities.length} ability items`);
+
 const refs = collectIconRefs(
   Effect.array().parse(readJson("src/data/effects.json")),
   [Weapon.parse(readJson("src/data/weapons/one-thousand-voices.json"))],
-  IconRef.array().parse(readJson("src/data/icon-refs.json")),
+  [
+    ...IconRef.array().parse(readJson("src/data/icon-refs.json")),
+    ...abilityIconRefs(
+      AbilityData.array().parse(readJson("src/data/abilities.json")),
+      manifestAbilities.abilities,
+    ),
+  ],
 );
-const manifest = await api<Manifest>("/Destiny2/Manifest/");
 mkdirSync(new URL("public/icons/", ROOT), { recursive: true });
 
 // The same manifest entry can serve several keys, e.g. the three surge levels.
@@ -79,7 +124,7 @@ for (const ref of refs) {
 }
 const index = IconIndex.parse({
   manifestVersion: manifest.version,
-  retrieved: new Date().toISOString().slice(0, 10),
+  retrieved,
   icons: Object.fromEntries(
     Object.entries(icons).sort(([a], [b]) => a.localeCompare(b)),
   ),

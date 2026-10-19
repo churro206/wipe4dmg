@@ -11,7 +11,7 @@ Stand: 2026-10-19
 - ✅ Supers: 25 von 31 mit Schaden (gemessener Gesamtwert von Aegis), Well of Radiance als Buff
 - ⏳ Super Window genauer: Bei vielen Supers fehlt in den Quellen der Abstand zwischen Angriffen oder Schüssen; dann gilt die Base Duration als Obergrenze
 - ✅ Grenades: 26 von 30, Melees: 24 von 26 (gemessener Gesamtwert von Aegis)
-- ⏳ Icons und Zuordnung zu Klasse und Subklasse, inklusive Prismatic
+- ✅ Icons und Zuordnung zu Klasse und Subklasse aus dem Bungie-Manifest, inklusive Prismatic
 - ⏳ Oberfläche: Plätze für Super, Grenade und Melee, Stat-Regler, Super Window in der Zeitleiste
 - ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
 

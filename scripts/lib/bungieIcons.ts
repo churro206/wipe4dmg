@@ -1,12 +1,15 @@
 // Which icons to import from the Bungie manifest and how to name the files (ADR 0008).
 
 import type {
+  AbilityKind,
   Effect,
   IconRef,
+  ManifestAbility,
   ManifestRef,
   ManifestTable,
   Weapon,
 } from "../../src/data/schema.ts";
+import { elementItem, itemsOfAbility } from "../../src/engine/abilityNames.ts";
 
 const TABLE_PREFIXES: Record<ManifestTable, string> = {
   DestinyInventoryItemDefinition: "item",
@@ -43,6 +46,30 @@ export function collectIconRefs(
     keys.add(ref.key);
   }
   return refs;
+}
+
+/** Icon refs of abilities: the manifest item of their element (ADR 0009); throws if there is none. */
+export function abilityIconRefs(
+  abilities: { id: string; name: string; kind: AbilityKind; element: string }[],
+  manifestAbilities: ManifestAbility[],
+): IconRef[] {
+  return abilities.map((ability) => {
+    const item = elementItem(
+      itemsOfAbility(manifestAbilities, ability),
+      ability.element,
+    );
+    if (!item)
+      throw new Error(
+        `${ability.id}: "${ability.name}" is not in the manifest abilities`,
+      );
+    return {
+      key: `ability:${ability.id}`,
+      manifestRef: {
+        table: "DestinyInventoryItemDefinition" as const,
+        hash: item.hash,
+      },
+    };
+  });
 }
 
 /** File below public/ for an icon, e.g. icons/item-123.png; keeps the image type. */

@@ -5,9 +5,12 @@ import rawRows from "../src/data/aegis-abilities.json";
 import { hasQuote } from "../scripts/lib/compendiumAbilities";
 import rawSnapshot from "../src/data/compendium-abilities.json";
 import rawEffects from "../src/data/effects.json";
+import rawManifest from "../src/data/manifest-abilities.json";
 import {
   AegisAbilityRow,
   CompendiumSnapshot,
+  ManifestAbilities,
+  type ManifestAbility,
   type AegisAbilityRow as Row,
   type Source,
 } from "../src/data/schema";
@@ -155,8 +158,103 @@ describe("loadAbilities with an Aegis package", () => {
   });
 });
 
+describe("loadAbilities with providers from the manifest", () => {
+  // Manifest items in the format of manifest-abilities.json; hashes are test inputs.
+  const manifest: ManifestAbility[] = [
+    {
+      name: "Silence and Squall",
+      kind: "super",
+      guardianClass: "hunter",
+      subclass: "stasis",
+      hash: 1,
+    },
+    {
+      name: "Silence and Squall",
+      kind: "super",
+      guardianClass: "hunter",
+      subclass: "prismatic",
+      hash: 2,
+    },
+    {
+      name: "Slicewire Grenade",
+      kind: "grenade",
+      guardianClass: null,
+      subclass: "strand",
+      hash: 3,
+    },
+    {
+      name: "Slicewire Grenade",
+      kind: "grenade",
+      guardianClass: "titan",
+      subclass: "prismatic",
+      hash: 4,
+    },
+    {
+      name: "Slicewire Grenade",
+      kind: "grenade",
+      guardianClass: "warlock",
+      subclass: "prismatic",
+      hash: 5,
+    },
+  ];
+  const ability = (name: string, kind: string, element: string) => ({
+    id: "test",
+    code: 1,
+    name,
+    kind,
+    element,
+    aegisRowId: "full",
+    package: true,
+  });
+  const load = (name: string, kind: string, element: string) =>
+    loadAbilities(
+      [ability(name, kind, element)],
+      [row("full", 1000, 1300)],
+      abilityStats,
+      manifest,
+    )[0];
+
+  it("gives a class ability its class with element and Prismatic, despite other spelling", () => {
+    expect(load("Silence & Squall", "super", "stasis").providers).toEqual([
+      {
+        kind: "subclass",
+        classes: ["hunter"],
+        subclasses: ["stasis", "prismatic"],
+      },
+    ]);
+  });
+
+  it("gives a shared grenade every class of its element and the Prismatic classes", () => {
+    expect(load("Slicewire", "grenade", "strand").providers).toEqual([
+      { kind: "subclass", subclasses: ["strand"] },
+      {
+        kind: "subclass",
+        classes: ["titan", "warlock"],
+        subclasses: ["prismatic"],
+      },
+    ]);
+  });
+
+  it("takes the manifest hash of the element item for the icon", () => {
+    expect(load("Silence & Squall", "super", "stasis").manifestHash).toBe(1);
+  });
+
+  it("fails if the manifest does not know the ability", () => {
+    expect(() => load("Nope", "super", "stasis")).toThrow(/Nope/);
+  });
+
+  it("keeps providers that the data file sets itself", () => {
+    expect(componentsOf([row("full", 1000, 1300)], "full")).toHaveLength(1);
+  });
+});
+
 describe("abilities.json", () => {
-  const abilities = loadAbilities(rawAbilities, rows, abilityStats);
+  const abilities = loadAbilities(
+    rawAbilities,
+    rows,
+    abilityStats,
+    ManifestAbilities.parse(rawManifest).abilities,
+  );
 
   it("has unique ids and codes", () => {
     expect(new Set(abilities.map((a) => a.id)).size).toBe(abilities.length);
