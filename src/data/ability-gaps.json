@@ -8,23 +8,43 @@
     "note": "Every Aegis row with Sol Invictus also assumes Roaring Flames x3, which is not an effect yet."
   },
   {
-    "compendium": { "tab": "Solar", "entry": "Song of Flame" },
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Song of Flame"
+    },
     "reason": "aegisNotNormalised",
     "note": "All Aegis rows have Full Modifiers 1.00, so their buffs are inside the values."
   },
   {
-    "compendium": { "tab": "Void", "entry": "Ward of Dawn" },
+    "compendium": {
+      "tab": "Void",
+      "entry": "Ward of Dawn"
+    },
     "reason": "effectNotModelled",
     "note": "Ward of Dawn deals no damage; its Weapons of Light buff is not an effect yet."
   },
   {
-    "compendium": { "tab": "Stasis", "entry": "Glacial Quake" },
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Glacial Quake"
+    },
     "reason": "aegisNotNormalised",
     "note": "Heavy attack rows have Full Modifiers 1.00; light attack rows measure a single attack, not the super."
   },
   {
-    "compendium": { "tab": "Strand", "entry": "Bladefury" },
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Bladefury"
+    },
     "reason": "aegisOnlyWithUnmodelledBuffs",
     "note": "Every Aegis row assumes Feast of Light or Banner of War, which are not effects yet."
+  },
+  {
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Grapple"
+    },
+    "reason": "noUsableData",
+    "note": "Aegis measures the grapple melee, which is melee damage; the grenade itself deals no damage."
   }
 ]

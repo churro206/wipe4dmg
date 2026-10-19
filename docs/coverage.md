@@ -11,8 +11,8 @@ Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen 
 | Art | ✅ Teile | 🟡 Paket | 🔵 Nur Buff | ❌ fehlt | Gesamt |
 | --- | --- | --- | --- | --- | --- |
 | Supers | 0 | 25 | 1 | 5 | 31 |
-| Grenades | 0 | 0 | 0 | 30 | 30 |
-| Melees | 0 | 0 | 0 | 26 | 26 |
+| Grenades | 0 | 26 | 0 | 4 | 30 |
+| Melees | 0 | 24 | 0 | 2 | 26 |
 | Effects | 17 modelliert | | | | |
 
 ## Supers
@@ -55,67 +55,67 @@ Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen 
 
 | Element | Grenade | Modell | Aegis-Zeile oder Grund |
 | --- | --- | --- | --- |
-| Arc | Arcbolt Grenade | ❌ fehlt | noch nicht angelegt |
-| Arc | Flashbang Grenade | ❌ fehlt | noch nicht angelegt |
-| Arc | Flux Grenade | ❌ fehlt | noch nicht angelegt |
-| Arc | Lightning Grenade | ❌ fehlt | noch nicht angelegt |
-| Arc | Pulse Grenade | ❌ fehlt | noch nicht angelegt |
-| Arc | Skip Grenade | ❌ fehlt | noch nicht angelegt |
-| Arc | Storm Grenade | ❌ fehlt | noch nicht angelegt |
-| Solar | Firebolt Grenade | ❌ fehlt | noch nicht angelegt |
-| Solar | Fusion Grenade | ❌ fehlt | noch nicht angelegt |
+| Arc | Arcbolt Grenade | 🟡 Paket | `grenade-arcbolt` |
+| Arc | Flashbang Grenade | 🟡 Paket | `grenade-flashbang` |
+| Arc | Flux Grenade | 🟡 Paket | `grenade-flux-6540-sticker-shock` |
+| Arc | Lightning Grenade | 🟡 Paket | `grenade-lightning` |
+| Arc | Pulse Grenade | 🟡 Paket | `grenade-pulse` |
+| Arc | Skip Grenade | 🟡 Paket | `grenade-skip` |
+| Arc | Storm Grenade | 🟡 Paket | `grenade-storm` |
+| Solar | Firebolt Grenade | 🟡 Paket | `grenade-firebolt-average-ember-of-ashes-with-ignition` |
+| Solar | Fusion Grenade | 🟡 Paket | `grenade-fusion-average-ember-of-ashes-with-ignition` |
 | Solar | Healing Grenade | ❌ fehlt | keine Aegis-Messung |
-| Solar | Incendiary Grenade | ❌ fehlt | noch nicht angelegt |
-| Solar | Solar Grenade | ❌ fehlt | noch nicht angelegt |
-| Solar | Swarm Grenade | ❌ fehlt | noch nicht angelegt |
-| Solar | Thermite Grenade | ❌ fehlt | noch nicht angelegt |
-| Solar | Tripmine Grenade | ❌ fehlt | noch nicht angelegt |
-| Void | Axion Bolt | ❌ fehlt | noch nicht angelegt |
-| Void | Magnetic Grenade | ❌ fehlt | noch nicht angelegt |
-| Void | Scatter Grenade | ❌ fehlt | noch nicht angelegt |
-| Void | Suppressor Grenade | ❌ fehlt | noch nicht angelegt |
-| Void | Void Spike | ❌ fehlt | noch nicht angelegt |
-| Void | Void Wall | ❌ fehlt | noch nicht angelegt |
-| Void | Vortex Grenade | ❌ fehlt | noch nicht angelegt |
+| Solar | Incendiary Grenade | 🟡 Paket | `grenade-incendiary-average-ember-of-ashes-with-ignition` |
+| Solar | Solar Grenade | 🟡 Paket | `grenade-solar-ember-of-ashes` |
+| Solar | Swarm Grenade | 🟡 Paket | `grenade-swarm-average-with-ignition` |
+| Solar | Thermite Grenade | 🟡 Paket | `grenade-thermite-average-ember-of-ashes-with-ignition` |
+| Solar | Tripmine Grenade | 🟡 Paket | `grenade-tripmine-average-ember-of-ashes-with-ignition` |
+| Void | Axion Bolt | 🟡 Paket | `grenade-axion-bolt` |
+| Void | Magnetic Grenade | 🟡 Paket | `grenade-magnetic-average` |
+| Void | Scatter Grenade | 🟡 Paket | `grenade-scatter-average` |
+| Void | Suppressor Grenade | 🟡 Paket | `grenade-suppressor` |
+| Void | Void Spike | 🟡 Paket | `grenade-void-spike-echo-of-remnants` |
+| Void | Void Wall | 🟡 Paket | `grenade-void-wall-echo-of-remnants` |
+| Void | Vortex Grenade | 🟡 Paket | `grenade-vortex` |
 | Stasis | Coldsnap Grenade | ❌ fehlt | keine Aegis-Messung |
 | Stasis | Duskfield Grenade | ❌ fehlt | keine Aegis-Messung |
-| Stasis | Glacier Grenade | ❌ fehlt | noch nicht angelegt |
-| Stasis | Shatter Grenade | ❌ fehlt | noch nicht angelegt |
-| Strand | Grapple | ❌ fehlt | noch nicht angelegt |
-| Strand | Shackle Grenade | ❌ fehlt | noch nicht angelegt |
-| Strand | Slicewire | ❌ fehlt | noch nicht angelegt |
-| Strand | Threadling Grenade | ❌ fehlt | noch nicht angelegt |
+| Stasis | Glacier Grenade | 🟡 Paket | `grenade-glacier-average-whisper-of-fissures` |
+| Stasis | Shatter Grenade | 🟡 Paket | `grenade-shatter-average-whisper-of-fissures` |
+| Strand | Grapple | ❌ fehlt | keine brauchbaren Daten |
+| Strand | Shackle Grenade | 🟡 Paket | `grenade-shackle` |
+| Strand | Slicewire | 🟡 Paket | `grenade-slicewire` |
+| Strand | Threadling Grenade | 🟡 Paket | `grenade-threadling` |
 
 ## Melees
 
 | Element | Melee | Modell | Aegis-Zeile oder Grund |
 | --- | --- | --- | --- |
 | Arc | Combination Blow | ❌ fehlt | keine Aegis-Messung |
-| Arc | Disorienting Blow | ❌ fehlt | noch nicht angelegt |
-| Arc | Ballistic Slam | ❌ fehlt | noch nicht angelegt |
-| Arc | Seismic Strike | ❌ fehlt | noch nicht angelegt |
-| Arc | Thunderclap | ❌ fehlt | noch nicht angelegt |
-| Arc | Ball Lightning | ❌ fehlt | noch nicht angelegt |
+| Arc | Disorienting Blow | 🟡 Paket | `melee-disorienting-blow` |
+| Arc | Ballistic Slam | 🟡 Paket | `melee-ballistic-slam-average-max-typical-catapult-lift-height` |
+| Arc | Seismic Strike | 🟡 Paket | `melee-seismic-strike` |
+| Arc | Thunderclap | 🟡 Paket | `melee-thunderclap-fully-charged` |
+| Arc | Ball Lightning | 🟡 Paket | `melee-ball-lightning` |
 | Arc | Chain Lightning | ❌ fehlt | keine Aegis-Messung |
-| Solar | Knife Trick | ❌ fehlt | noch nicht angelegt |
-| Solar | Lightweight Knife | ❌ fehlt | noch nicht angelegt |
-| Solar | Proximity Explosive Knife | ❌ fehlt | noch nicht angelegt |
-| Solar | Weighted Throwing Knife | ❌ fehlt | noch nicht angelegt |
-| Solar | Hammer Strike | ❌ fehlt | noch nicht angelegt |
-| Solar | Throwing Hammer | ❌ fehlt | noch nicht angelegt |
-| Solar | Celestial Fire | ❌ fehlt | noch nicht angelegt |
-| Solar | Incinerator Snap | ❌ fehlt | noch nicht angelegt |
-| Void | Phantom Surge | ❌ fehlt | noch nicht angelegt |
-| Void | Snare Bomb | ❌ fehlt | Aegis-Werte nicht normiert (Buffs im Wert) |
-| Void | Shield Bash | ❌ fehlt | noch nicht angelegt |
-| Void | Shield Throw | ❌ fehlt | noch nicht angelegt |
-| Void | Pocket Singularity | ❌ fehlt | noch nicht angelegt |
-| Stasis | Withering Blade | ❌ fehlt | noch nicht angelegt |
-| Stasis | Shiver Strike | ❌ fehlt | noch nicht angelegt |
-| Stasis | Penumbral Blast | ❌ fehlt | noch nicht angelegt |
-| Strand | Threaded Spike | ❌ fehlt | noch nicht angelegt |
-| Strand | Frenzied Blade | ❌ fehlt | noch nicht angelegt |
-| Strand | Arcane Needle | ❌ fehlt | noch nicht angelegt |
+| Solar | Knife Trick | 🟡 Paket | `melee-knife-trick-average-precision-ember-of-ashes-with-ignition` |
+| Solar | Lightweight Knife | 🟡 Paket | `melee-lightweight-knife-precision` |
+| Solar | Proximity Explosive Knife | 🟡 Paket | `melee-proximity-explosive-knife-precision` |
+| Solar | Weighted Throwing Knife | 🟡 Paket | `melee-weighted-throwing-knife-precision` |
+| Solar | Hammer Strike | 🟡 Paket | `melee-hammer-strike-ember-of-ashes` |
+| Solar | Throwing Hammer | 🟡 Paket | `melee-throwing-hammer` |
+| Solar | Celestial Fire | 🟡 Paket | `melee-celestial-fire-average-ember-of-ashes-with-ignition` |
+| Solar | Incinerator Snap | 🟡 Paket | `melee-incinerator-snap-ember-of-ashes` |
+| Void | Phantom Surge | 🟡 Paket | `melee-phantom-surge` |
+| Void | Snare Bomb | 🟡 Paket | `melee-snare-bomb-ticks-include-weaken` |
+| Void | Shield Bash | 🟡 Paket | `melee-shield-bash` |
+| Void | Shield Throw | 🟡 Paket | `melee-shield-throw` |
+| Void | Pocket Singularity | 🟡 Paket | `melee-pocket-singularity` |
+| Stasis | Withering Blade | 🟡 Paket | `melee-withering-blade-average-facet-of-ruin` |
+| Stasis | Shiver Strike | 🟡 Paket | `melee-shiver-strike-whisper-of-fissures-with-auto-shatter` |
+| Stasis | Penumbral Blast | 🟡 Paket | `melee-penumbral-blast-average-facet-of-ruin` |
+| Strand | Threaded Spike | 🟡 Paket | `melee-threaded-spike-double-tick` |
+| Strand | Frenzied Blade | 🟡 Paket | `melee-frenzied-blade` |
+| Strand | Arcane Needle | 🟡 Paket | `melee-arcane-needle` |
 
 ## Effects
 

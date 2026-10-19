@@ -1150,5 +1150,979 @@
     },
     "aegisRowId": "super-needlestorm",
     "package": true
+  },
+  {
+    "id": "arcbolt-grenade",
+    "code": 27,
+    "name": "Arcbolt Grenade",
+    "kind": "grenade",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Arcbolt Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "grenade-arcbolt",
+    "package": true
+  },
+  {
+    "id": "flashbang-grenade",
+    "code": 28,
+    "name": "Flashbang Grenade",
+    "kind": "grenade",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Flashbang Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "grenade-flashbang",
+    "package": true
+  },
+  {
+    "id": "flux-grenade",
+    "code": 29,
+    "name": "Flux Grenade",
+    "kind": "grenade",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Flux Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "grenade-flux-6540-sticker-shock",
+    "package": true
+  },
+  {
+    "id": "lightning-grenade",
+    "code": 30,
+    "name": "Lightning Grenade",
+    "kind": "grenade",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Lightning Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "grenade-lightning",
+    "package": true
+  },
+  {
+    "id": "pulse-grenade",
+    "code": 31,
+    "name": "Pulse Grenade",
+    "kind": "grenade",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Pulse Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "grenade-pulse",
+    "package": true
+  },
+  {
+    "id": "skip-grenade",
+    "code": 32,
+    "name": "Skip Grenade",
+    "kind": "grenade",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Skip Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "grenade-skip",
+    "package": true
+  },
+  {
+    "id": "storm-grenade",
+    "code": 33,
+    "name": "Storm Grenade",
+    "kind": "grenade",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Storm Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "grenade-storm",
+    "package": true
+  },
+  {
+    "id": "firebolt-grenade",
+    "code": 34,
+    "name": "Firebolt Grenade",
+    "kind": "grenade",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Firebolt Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "grenade-firebolt-average-ember-of-ashes-with-ignition",
+    "package": true
+  },
+  {
+    "id": "fusion-grenade",
+    "code": 35,
+    "name": "Fusion Grenade",
+    "kind": "grenade",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Fusion Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "grenade-fusion-average-ember-of-ashes-with-ignition",
+    "package": true
+  },
+  {
+    "id": "incendiary-grenade",
+    "code": 36,
+    "name": "Incendiary Grenade",
+    "kind": "grenade",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Incendiary Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "grenade-incendiary-average-ember-of-ashes-with-ignition",
+    "package": true
+  },
+  {
+    "id": "solar-grenade",
+    "code": 37,
+    "name": "Solar Grenade",
+    "kind": "grenade",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Solar Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "grenade-solar-ember-of-ashes",
+    "package": true
+  },
+  {
+    "id": "swarm-grenade",
+    "code": 38,
+    "name": "Swarm Grenade",
+    "kind": "grenade",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Swarm Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "grenade-swarm-average-with-ignition",
+    "package": true
+  },
+  {
+    "id": "thermite-grenade",
+    "code": 39,
+    "name": "Thermite Grenade",
+    "kind": "grenade",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Thermite Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "grenade-thermite-average-ember-of-ashes-with-ignition",
+    "package": true
+  },
+  {
+    "id": "tripmine-grenade",
+    "code": 40,
+    "name": "Tripmine Grenade",
+    "kind": "grenade",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Tripmine Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "grenade-tripmine-average-ember-of-ashes-with-ignition",
+    "package": true
+  },
+  {
+    "id": "axion-bolt-grenade",
+    "code": 41,
+    "name": "Axion Bolt",
+    "kind": "grenade",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Axion Bolt"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "grenade-axion-bolt",
+    "package": true
+  },
+  {
+    "id": "magnetic-grenade",
+    "code": 42,
+    "name": "Magnetic Grenade",
+    "kind": "grenade",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Magnetic Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "grenade-magnetic-average",
+    "package": true
+  },
+  {
+    "id": "scatter-grenade",
+    "code": 43,
+    "name": "Scatter Grenade",
+    "kind": "grenade",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Scatter Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "grenade-scatter-average",
+    "package": true
+  },
+  {
+    "id": "suppressor-grenade",
+    "code": 44,
+    "name": "Suppressor Grenade",
+    "kind": "grenade",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Suppressor Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "grenade-suppressor",
+    "package": true
+  },
+  {
+    "id": "void-spike-grenade",
+    "code": 45,
+    "name": "Void Spike",
+    "kind": "grenade",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Void Spike"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "grenade-void-spike-echo-of-remnants",
+    "package": true
+  },
+  {
+    "id": "void-wall-grenade",
+    "code": 46,
+    "name": "Void Wall",
+    "kind": "grenade",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Void Wall"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "grenade-void-wall-echo-of-remnants",
+    "package": true
+  },
+  {
+    "id": "vortex-grenade",
+    "code": 47,
+    "name": "Vortex Grenade",
+    "kind": "grenade",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Vortex Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "grenade-vortex",
+    "package": true
+  },
+  {
+    "id": "glacier-grenade",
+    "code": 48,
+    "name": "Glacier Grenade",
+    "kind": "grenade",
+    "element": "stasis",
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Glacier Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["stasis"]
+      }
+    ],
+    "aegisRowId": "grenade-glacier-average-whisper-of-fissures",
+    "package": true
+  },
+  {
+    "id": "shatter-grenade",
+    "code": 49,
+    "name": "Shatter Grenade",
+    "kind": "grenade",
+    "element": "stasis",
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Shatter Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["stasis"]
+      }
+    ],
+    "aegisRowId": "grenade-shatter-average-whisper-of-fissures",
+    "package": true
+  },
+  {
+    "id": "shackle-grenade",
+    "code": 50,
+    "name": "Shackle Grenade",
+    "kind": "grenade",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Shackle Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["strand"]
+      }
+    ],
+    "aegisRowId": "grenade-shackle",
+    "package": true
+  },
+  {
+    "id": "slicewire-grenade",
+    "code": 51,
+    "name": "Slicewire",
+    "kind": "grenade",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Slicewire"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["strand"]
+      }
+    ],
+    "aegisRowId": "grenade-slicewire",
+    "package": true
+  },
+  {
+    "id": "threadling-grenade",
+    "code": 52,
+    "name": "Threadling Grenade",
+    "kind": "grenade",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Threadling Grenade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "subclasses": ["strand"]
+      }
+    ],
+    "aegisRowId": "grenade-threadling",
+    "package": true
+  },
+  {
+    "id": "disorienting-blow",
+    "code": 53,
+    "name": "Disorienting Blow",
+    "kind": "melee",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Disorienting Blow"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "melee-disorienting-blow",
+    "package": true
+  },
+  {
+    "id": "ballistic-slam",
+    "code": 54,
+    "name": "Ballistic Slam",
+    "kind": "melee",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Ballistic Slam"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "melee-ballistic-slam-average-max-typical-catapult-lift-height",
+    "package": true
+  },
+  {
+    "id": "seismic-strike",
+    "code": 55,
+    "name": "Seismic Strike",
+    "kind": "melee",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Seismic Strike"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "melee-seismic-strike",
+    "package": true
+  },
+  {
+    "id": "thunderclap",
+    "code": 56,
+    "name": "Thunderclap",
+    "kind": "melee",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Thunderclap"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "melee-thunderclap-fully-charged",
+    "package": true
+  },
+  {
+    "id": "ball-lightning",
+    "code": 57,
+    "name": "Ball Lightning",
+    "kind": "melee",
+    "element": "arc",
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Ball Lightning"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "aegisRowId": "melee-ball-lightning",
+    "package": true
+  },
+  {
+    "id": "knife-trick",
+    "code": 58,
+    "name": "Knife Trick",
+    "kind": "melee",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Knife Trick"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "melee-knife-trick-average-precision-ember-of-ashes-with-ignition",
+    "package": true
+  },
+  {
+    "id": "lightweight-knife",
+    "code": 59,
+    "name": "Lightweight Knife",
+    "kind": "melee",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Lightweight Knife"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "melee-lightweight-knife-precision",
+    "package": true
+  },
+  {
+    "id": "proximity-explosive-knife",
+    "code": 60,
+    "name": "Proximity Explosive Knife",
+    "kind": "melee",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Proximity Explosive Knife"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "melee-proximity-explosive-knife-precision",
+    "package": true
+  },
+  {
+    "id": "weighted-throwing-knife",
+    "code": 61,
+    "name": "Weighted Throwing Knife",
+    "kind": "melee",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Weighted Throwing Knife"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "melee-weighted-throwing-knife-precision",
+    "package": true
+  },
+  {
+    "id": "hammer-strike",
+    "code": 62,
+    "name": "Hammer Strike",
+    "kind": "melee",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Hammer Strike"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "melee-hammer-strike-ember-of-ashes",
+    "package": true
+  },
+  {
+    "id": "throwing-hammer",
+    "code": 63,
+    "name": "Throwing Hammer",
+    "kind": "melee",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Throwing Hammer"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "melee-throwing-hammer",
+    "package": true
+  },
+  {
+    "id": "celestial-fire",
+    "code": 64,
+    "name": "Celestial Fire",
+    "kind": "melee",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Celestial Fire"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "melee-celestial-fire-average-ember-of-ashes-with-ignition",
+    "package": true
+  },
+  {
+    "id": "incinerator-snap",
+    "code": 65,
+    "name": "Incinerator Snap",
+    "kind": "melee",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Incinerator Snap"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["solar"]
+      }
+    ],
+    "aegisRowId": "melee-incinerator-snap-ember-of-ashes",
+    "package": true
+  },
+  {
+    "id": "phantom-surge",
+    "code": 66,
+    "name": "Phantom Surge",
+    "kind": "melee",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Phantom Surge"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "melee-phantom-surge",
+    "package": true
+  },
+  {
+    "id": "snare-bomb",
+    "code": 67,
+    "name": "Snare Bomb",
+    "kind": "melee",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Snare Bomb"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "melee-snare-bomb-ticks-include-weaken",
+    "package": true
+  },
+  {
+    "id": "shield-bash",
+    "code": 68,
+    "name": "Shield Bash",
+    "kind": "melee",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Shield Bash"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "melee-shield-bash",
+    "package": true
+  },
+  {
+    "id": "shield-throw",
+    "code": 69,
+    "name": "Shield Throw",
+    "kind": "melee",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Shield Throw"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "melee-shield-throw",
+    "package": true
+  },
+  {
+    "id": "pocket-singularity",
+    "code": 70,
+    "name": "Pocket Singularity",
+    "kind": "melee",
+    "element": "void",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Pocket Singularity"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["void"]
+      }
+    ],
+    "aegisRowId": "melee-pocket-singularity",
+    "package": true
+  },
+  {
+    "id": "withering-blade",
+    "code": 71,
+    "name": "Withering Blade",
+    "kind": "melee",
+    "element": "stasis",
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Withering Blade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["stasis"]
+      }
+    ],
+    "aegisRowId": "melee-withering-blade-average-facet-of-ruin",
+    "package": true
+  },
+  {
+    "id": "shiver-strike",
+    "code": 72,
+    "name": "Shiver Strike",
+    "kind": "melee",
+    "element": "stasis",
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Shiver Strike"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["stasis"]
+      }
+    ],
+    "aegisRowId": "melee-shiver-strike-whisper-of-fissures-with-auto-shatter",
+    "package": true
+  },
+  {
+    "id": "penumbral-blast",
+    "code": 73,
+    "name": "Penumbral Blast",
+    "kind": "melee",
+    "element": "stasis",
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Penumbral Blast"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["stasis"]
+      }
+    ],
+    "aegisRowId": "melee-penumbral-blast-average-facet-of-ruin",
+    "package": true
+  },
+  {
+    "id": "threaded-spike",
+    "code": 74,
+    "name": "Threaded Spike",
+    "kind": "melee",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Threaded Spike"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["hunter"],
+        "subclasses": ["strand"]
+      }
+    ],
+    "aegisRowId": "melee-threaded-spike-double-tick",
+    "package": true
+  },
+  {
+    "id": "frenzied-blade",
+    "code": 75,
+    "name": "Frenzied Blade",
+    "kind": "melee",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Frenzied Blade"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["strand"]
+      }
+    ],
+    "aegisRowId": "melee-frenzied-blade",
+    "package": true
+  },
+  {
+    "id": "arcane-needle",
+    "code": 76,
+    "name": "Arcane Needle",
+    "kind": "melee",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Arcane Needle"
+    },
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["warlock"],
+        "subclasses": ["strand"]
+      }
+    ],
+    "aegisRowId": "melee-arcane-needle",
+    "package": true
   }
 ]
