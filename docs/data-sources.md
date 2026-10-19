@@ -94,6 +94,14 @@ Folgerungen für One Thousand Voices:
 - **Schießstand:** Seit 9.7.0 hat der Schießstand statische Ziele, die Schaden wie ein Boss skalieren ([Patch Notes 9.7.0](https://shatteredvault.com/destiny-2-update-9-7-0/)).
 - **Spielstand nicht vollständig eingefroren:** Bungie liefert weiter Wartungs-Patches, zuletzt 9.7.0.5 am 7. Oktober 2026 ([Patch Notes 9.7.0.5](https://shatteredvault.com/destiny-2-update-9-7-0-5/)). Deshalb trägt jede Weapon das Feld `gameVersion`.
 
+## Abilities: Teile gegen Aegis (ADR 0009)
+
+Eine Ability bekommt Teile aus dem Compendium nur, wenn sie das Gate gegen Aegis besteht (±10 % bei Stat 100 und 200, `tests/abilityGate.test.ts`). Sonst gilt das Paket: der Wert pro Einsatz aus `aegis-abilities.json`, aufgeteilt in einen Anteil, der mit dem Ability Stat skaliert, und einen festen Anteil, sodass beide Aegis-Messpunkte getroffen werden.
+
+| Ability | Teile laut Compendium | Summe | Aegis visual Value | Ergebnis |
+| --- | --- | --- | --- | --- |
+| Thundercrash | Impact 180, Explosion 8260, Aftershock 108 pro Sekunde für 4 s | 8872 | 10 136 | −12,5 %: Paket. Impact und Explosion stimmen genau mit den Aegis-Ticks überein (415 = 180 × 2,30, 18 997 = 8260 × 2,30). Die Aegis-Zeilen ergeben aber 16 bis 25 Aftershock-Ticks statt 4; die Anzahl ist nicht belegbar. |
+
 ## Prüfwerte
 
 - `src/data/reference-values.json`: Total Damage aus den Quellen. Werte mit `scenario` prüft der Gate-Test automatisch.

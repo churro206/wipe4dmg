@@ -1,0 +1,151 @@
+import { describe, expect, it } from "vitest";
+import rawAbilityStats from "../src/data/ability-stats.json";
+import rawAbilities from "../src/data/abilities.json";
+import rawRows from "../src/data/aegis-abilities.json";
+import {
+  AegisAbilityRow,
+  type AegisAbilityRow as Row,
+} from "../src/data/schema";
+import { loadAbilities } from "../src/engine/loadAbilities";
+import { loadAbilityStats } from "../src/engine/loadData";
+
+const rows = AegisAbilityRow.array().parse(rawRows);
+const abilityStats = loadAbilityStats(rawAbilityStats);
+
+const source = {
+  name: "test",
+  retrieved: "2026-10-19",
+  status: "verified",
+} as const;
+// Test rows in the format of the Aegis import; values are test inputs, not game values.
+const row = (
+  id: string,
+  stat100: number,
+  stat200: number | null,
+  includedEffectIds: string[] = [],
+): Row => ({
+  id,
+  category: "melee",
+  name: id,
+  assumptions: [],
+  includedEffectIds,
+  primaryTick: "",
+  secondaryTicks: "",
+  perUseStat100: { value: stat100, source },
+  perUseStat200:
+    stat200 === null
+      ? { value: null, source: { ...source, status: "missing" } }
+      : { value: stat200, source },
+  gameVersion: "9.7.0.3",
+});
+const packageAbility = (aegisRowId: string) => ({
+  id: "test-melee",
+  code: 1,
+  name: "Test Melee",
+  kind: "melee",
+  element: "solar",
+  providers: [{ kind: "subclass" }],
+  aegisRowId,
+  package: true,
+});
+const meleePerPoint = abilityStats.find((s) => s.kind === "melee")!
+  .damagePerPoint.value!;
+const componentsOf = (testRows: Row[], aegisRowId: string) =>
+  loadAbilities([packageAbility(aegisRowId)], testRows, abilityStats)[0]
+    .components;
+
+describe("loadAbilities with an Aegis package", () => {
+  it("takes the value per use at stat 100 and the included effects from the Aegis row", () => {
+    const components = componentsOf(
+      [row("full", 1000, 1300, ["radiant"])],
+      "full",
+    );
+    const total = components.reduce(
+      (sum, c) => sum + c.damagePerTick.value!,
+      0,
+    );
+    expect(total).toBeCloseTo(1000);
+    for (const component of components) {
+      expect(component.includedEffectIds).toEqual(["radiant"]);
+      expect(component.delayMs.value).toBe(0);
+      expect(component.ticks.value).toBe(1);
+    }
+  });
+
+  it("lets the whole package scale if Aegis measured the full stat factor", () => {
+    const components = componentsOf(
+      [row("full", 1000, 1000 * (1 + 100 * meleePerPoint))],
+      "full",
+    );
+    expect(
+      components
+        .filter((c) => c.scalesWithAbilityStat)
+        .map((c) => c.damagePerTick.value),
+    ).toEqual([expect.closeTo(1000)]);
+  });
+
+  it("splits the package so that stat 100 and stat 200 match the Aegis values", () => {
+    // Factor 1.1 instead of 1.3: only a third scales, e.g. a melee whose ignition does not scale.
+    const components = componentsOf([row("partial", 1000, 1100)], "partial");
+    const atStat = (stat: number) =>
+      components.reduce(
+        (sum, c) =>
+          sum +
+          c.damagePerTick.value! *
+            (c.scalesWithAbilityStat ? 1 + meleePerPoint * (stat - 100) : 1),
+        0,
+      );
+    expect(atStat(100)).toBeCloseTo(1000);
+    expect(atStat(200)).toBeCloseTo(1100);
+  });
+
+  it("lets nothing scale if Aegis measured less damage at stat 200", () => {
+    const components = componentsOf([row("lower", 1000, 950)], "lower");
+    expect(components.every((c) => !c.scalesWithAbilityStat)).toBe(true);
+  });
+
+  it("lets the package scale fully if the value at stat 200 is missing, marked unverified", () => {
+    const components = componentsOf([row("no200", 1000, null)], "no200");
+    expect(components).toHaveLength(1);
+    expect(components[0].scalesWithAbilityStat).toBe(true);
+    expect(components[0].damagePerTick.source.status).toBe("unverified");
+  });
+
+  it("fails for an unknown Aegis row or a row without a value", () => {
+    expect(() => componentsOf([], "nope")).toThrow(/nope/);
+    const empty = {
+      ...row("empty", 0, 0),
+      perUseStat100: {
+        value: null,
+        source: { ...source, status: "missing" as const },
+      },
+    };
+    expect(() => componentsOf([empty], "empty")).toThrow(/empty/);
+  });
+
+  it("rejects an ability with both a package and components, or neither", () => {
+    const both = {
+      ...packageAbility("full"),
+      components: componentsOf([row("full", 1, 1.3)], "full"),
+    };
+    expect(() => loadAbilities([both], rows, abilityStats)).toThrow();
+    const neither = { ...packageAbility("full"), package: undefined };
+    expect(() => loadAbilities([neither], rows, abilityStats)).toThrow();
+  });
+});
+
+describe("abilities.json", () => {
+  const abilities = loadAbilities(rawAbilities, rows, abilityStats);
+
+  it("has unique ids and codes", () => {
+    expect(new Set(abilities.map((a) => a.id)).size).toBe(abilities.length);
+    expect(new Set(abilities.map((a) => a.code)).size).toBe(abilities.length);
+  });
+
+  it("contains Thundercrash", () => {
+    expect(abilities.find((a) => a.id === "thundercrash")).toMatchObject({
+      kind: "super",
+      element: "arc",
+    });
+  });
+});

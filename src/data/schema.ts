@@ -338,25 +338,54 @@ export const SuperUsage = z.discriminatedUnion("type", [
 ]);
 export type SuperUsage = z.infer<typeof SuperUsage>;
 
+const AbilityFields = z.object({
+  id: z.string(),
+  code: z.number().int().positive(), // short code for build links; never reused
+  name: z.string(),
+  kind: AbilityKind,
+  element: Element,
+  providers: z.array(Provider).min(1), // classes and subclasses that have the ability
+  usage: SuperUsage.optional(), // supers only; omitted: the super does not block the weapon
+  // Effects the ability applies on its first cast, e.g. the tether of Moebius Quiver.
+  grantsEffectIds: z.array(z.string()).optional(),
+  // Aegis row (aegis-abilities.json) the ability is checked against without effects; for a
+  // package also the source of its value.
+  aegisRowId: z.string().optional(),
+  components: z.array(AbilityComponent).min(1),
+});
+const usageOnlyForSupers = (ability: {
+  kind: AbilityKind;
+  usage?: SuperUsage;
+}) => ability.kind === "super" || !ability.usage;
+const usageOnlyForSupersError = {
+  message: "usage is only allowed for supers",
+  path: ["usage"],
+};
+
 /** Grenade, melee or super of a subclass with its ability components (ADR 0009). */
-export const Ability = z
-  .object({
-    id: z.string(),
-    code: z.number().int().positive(), // short code for build links; never reused
-    name: z.string(),
-    kind: AbilityKind,
-    element: Element,
-    providers: z.array(Provider).min(1), // classes and subclasses that have the ability
-    usage: SuperUsage.optional(), // supers only; omitted: the super does not block the weapon
-    // Effects the ability applies on its first cast, e.g. the tether of Moebius Quiver.
-    grantsEffectIds: z.array(z.string()).optional(),
-    components: z.array(AbilityComponent).min(1),
-  })
-  .refine((ability) => ability.kind === "super" || !ability.usage, {
-    message: "usage is only allowed for supers",
-    path: ["usage"],
-  });
+export const Ability = AbilityFields.refine(
+  usageOnlyForSupers,
+  usageOnlyForSupersError,
+);
 export type Ability = z.infer<typeof Ability>;
+
+/**
+ * An ability as written in abilities.json: either its own components (values from the Compendium)
+ * or a package, i.e. the measured value per use of one Aegis row (ADR 0009, fallback).
+ */
+export const AbilityData = AbilityFields.extend({
+  components: z.array(AbilityComponent).min(1).optional(),
+  package: z.literal(true).optional(),
+})
+  .refine(usageOnlyForSupers, usageOnlyForSupersError)
+  .refine((ability) => !ability.components !== !ability.package, {
+    message: "an ability needs either components or a package",
+  })
+  .refine((ability) => !ability.package || ability.aegisRowId, {
+    message: "a package needs an aegisRowId",
+    path: ["aegisRowId"],
+  });
+export type AbilityData = z.infer<typeof AbilityData>;
 
 /**
  * How the super, grenade or melee stat scales the damage of its abilities: a fixed bonus per point

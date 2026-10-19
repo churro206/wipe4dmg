@@ -1,0 +1,31 @@
+[
+  {
+    "id": "thundercrash",
+    "code": 1,
+    "name": "Thundercrash",
+    "kind": "super",
+    "element": "arc",
+    "providers": [
+      {
+        "kind": "subclass",
+        "classes": ["titan"],
+        "subclasses": ["arc"]
+      }
+    ],
+    "usage": {
+      "type": "cast",
+      "castMs": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Arc, Thundercrash",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-19",
+          "status": "missing",
+          "note": "Flight until impact: \"Base Duration: Up to 4.5 seconds\"; the time depends on the distance to the target."
+        }
+      }
+    },
+    "aegisRowId": "super-thundercrash",
+    "package": true
+  }
+]
