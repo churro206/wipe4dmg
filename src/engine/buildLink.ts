@@ -1,9 +1,12 @@
 // Build link (US-05, ADR 0003): a build, and optionally a comparison, packed into a short
 // base64url text without a server. Layout (all numbers as unsigned LEB128 varints):
-//   version (2) | build | hasComparison (0 or 1) | build of the comparison
+//   version (3) | build | hasComparison (0 or 1) | build of the comparison
 //   build = weapon code | class | subclass | catalyst (0 or 1) | damage phase in ms |
 //           selection count |
-//           per selection: effect code | provider | start in ms | duration in ms + 1 (0: until end)
+//           per selection: effect code | provider | start in ms | duration in ms + 1 (0: until end) |
+//           ability count | per ability: ability code | cast count | cast times in ms |
+//           hasStats (0 or 1) | super stat | grenade stat | melee stat
+// Format 2 ends the build after the selections; it is still read.
 // Codes come from the Data Files and are never reused, so old links stay readable.
 // Pure functions without browser APIs, so the Discord bot (US-13) can read the same links.
 
@@ -14,7 +17,8 @@ import {
   type Subclass,
 } from "../data/schema";
 
-const FORMAT_VERSION = 2;
+const FORMAT_VERSION = 3;
+const READABLE_VERSIONS = [2, 3];
 const MS_PER_SECOND = 1000;
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
 const SUBCLASSES: Subclass[] = [
@@ -37,6 +41,7 @@ const BASE64URL =
 export type LinkRegistry = {
   weapons: { id: string; code: number }[];
   effects: { id: string; code: number }[];
+  abilities: { id: string; code: number }[];
 };
 
 export type LinkContent = {
@@ -48,6 +53,7 @@ export type DecodedLink = {
   build: Build;
   comparison: Build | null;
   unknownEffectCodes: number[]; // effects of a newer version; skipped
+  unknownAbilityCodes: number[]; // abilities of a newer version; skipped
 };
 
 export function encodeLink(
@@ -70,17 +76,22 @@ export function encodeLink(
 export function decodeLink(text: string, registry: LinkRegistry): DecodedLink {
   const reader = new Reader(fromBase64url(text));
   const version = reader.varint();
-  if (version !== FORMAT_VERSION) {
+  if (!READABLE_VERSIONS.includes(version)) {
     throw new Error(`Build link: unknown version ${version}`);
   }
-  const unknownEffectCodes: number[] = [];
-  const build = readBuild(reader, registry, unknownEffectCodes);
+  const unknown = { effects: [] as number[], abilities: [] as number[] };
+  const build = readBuild(reader, registry, version, unknown);
   const comparison =
     reader.varint() === 1
-      ? readBuild(reader, registry, unknownEffectCodes)
+      ? readBuild(reader, registry, version, unknown)
       : null;
   if (!reader.done()) throw new Error("Build link: unexpected data at the end");
-  return { build, comparison, unknownEffectCodes };
+  return {
+    build,
+    comparison,
+    unknownEffectCodes: unknown.effects,
+    unknownAbilityCodes: unknown.abilities,
+  };
 }
 
 function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
@@ -100,12 +111,31 @@ function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
       window.durationMs === undefined ? 0 : Math.round(window.durationMs) + 1,
     );
   }
+  const abilities = build.abilities ?? [];
+  writeVarint(bytes, abilities.length);
+  for (const ability of abilities) {
+    writeVarint(
+      bytes,
+      codeOf(registry.abilities, ability.abilityId, "ability"),
+    );
+    writeVarint(bytes, ability.castsMs.length);
+    for (const castMs of ability.castsMs)
+      writeVarint(bytes, Math.round(castMs));
+  }
+  const stats = build.abilityStats;
+  writeVarint(bytes, stats ? 1 : 0);
+  if (stats) {
+    for (const value of [stats.super, stats.grenade, stats.melee]) {
+      writeVarint(bytes, Math.round(value));
+    }
+  }
 }
 
 function readBuild(
   reader: Reader,
   registry: LinkRegistry,
-  unknownEffectCodes: number[],
+  version: number,
+  unknown: { effects: number[]; abilities: number[] },
 ): Build {
   const weaponCode = reader.varint();
   const weapon = registry.weapons.find((w) => w.code === weaponCode);
@@ -125,7 +155,7 @@ function readBuild(
     const durationPlusOne = reader.varint();
     const effect = registry.effects.find((e) => e.code === code);
     if (!effect) {
-      unknownEffectCodes.push(code);
+      unknown.effects.push(code);
       continue;
     }
     selections.push({ effectId: effect.id, provider });
@@ -134,6 +164,8 @@ function readBuild(
         ? { startMs }
         : { startMs, durationMs: durationPlusOne - 1 };
   }
+  const abilityPart =
+    version >= 3 ? readAbilities(reader, registry, unknown) : {};
   // Zod rejects an invalid class or provider index (undefined).
   return Build.parse({
     weaponId: weapon.id,
@@ -143,7 +175,38 @@ function readBuild(
     selections,
     effectWindows,
     damagePhaseSeconds,
+    ...abilityPart,
   });
+}
+
+function readAbilities(
+  reader: Reader,
+  registry: LinkRegistry,
+  unknown: { abilities: number[] },
+): Pick<Build, "abilities" | "abilityStats"> {
+  const abilities: NonNullable<Build["abilities"]> = [];
+  const count = reader.varint();
+  for (let i = 0; i < count; i++) {
+    const code = reader.varint();
+    const castsMs = Array.from({ length: reader.varint() }, () =>
+      reader.varint(),
+    );
+    const ability = registry.abilities.find((a) => a.code === code);
+    if (ability) abilities.push({ abilityId: ability.id, castsMs });
+    else unknown.abilities.push(code);
+  }
+  const abilityStats =
+    reader.varint() === 1
+      ? {
+          super: reader.varint(),
+          grenade: reader.varint(),
+          melee: reader.varint(),
+        }
+      : undefined;
+  return {
+    ...(count > 0 ? { abilities } : {}),
+    ...(abilityStats ? { abilityStats } : {}),
+  };
 }
 
 function codeOf(

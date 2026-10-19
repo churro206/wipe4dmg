@@ -1,9 +1,12 @@
 import {
   AbilityStatScaling,
+  AegisAbilityRow,
   Boss,
   Bucket,
   Effect,
   IconIndex,
+  ManifestAbilities,
+  type ManifestAbility,
 } from "../data/schema";
 
 /** Validates the raw buckets Data File. Throws if it does not match the schema. */
@@ -29,4 +32,14 @@ export function loadIconIndex(raw: unknown): IconIndex {
 /** Validates the raw ability stats Data File (ADR 0009). */
 export function loadAbilityStats(raw: unknown): AbilityStatScaling[] {
   return AbilityStatScaling.array().parse(raw);
+}
+
+/** Validates the Aegis abilities Data File (ADR 0009). */
+export function loadAegisAbilityRows(raw: unknown): AegisAbilityRow[] {
+  return AegisAbilityRow.array().parse(raw);
+}
+
+/** Validates the manifest abilities Data File and returns its ability items (ADR 0008). */
+export function loadManifestAbilities(raw: unknown): ManifestAbility[] {
+  return ManifestAbilities.parse(raw).abilities;
 }

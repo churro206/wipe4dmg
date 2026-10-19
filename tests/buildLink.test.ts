@@ -1,5 +1,6 @@
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
+import rawAbilities from "../src/data/abilities.json";
 import rawEffects from "../src/data/effects.json";
 import type { Build } from "../src/data/schema";
 import raw from "../src/data/weapons/one-thousand-voices.json";
@@ -14,6 +15,7 @@ import { loadWeapon } from "../src/engine/loadWeapon";
 const registry: LinkRegistry = {
   weapons: [loadWeapon(raw)],
   effects: loadEffects(rawEffects),
+  abilities: rawAbilities.map(({ id, code }) => ({ id, code })),
 };
 
 // Test inputs, not game data.
@@ -50,6 +52,7 @@ describe("encodeLink and decodeLink", () => {
       build,
       comparison: null,
       unknownEffectCodes: [],
+      unknownAbilityCodes: [],
     });
   });
 
@@ -100,9 +103,76 @@ describe("encodeLink and decodeLink", () => {
     ["an empty text", ""],
     ["characters that are not base64url", "a+b/c"],
     ["a cut-off link", encodeLink({ build }, registry).slice(0, 6)],
-    ["an unknown version", "Aw"],
+    ["an unknown version", "BA"],
   ])("rejects %s", (_, text) => {
     expect(() => decodeLink(text, registry)).toThrow();
+  });
+
+  it("still reads links of format 2, which have no abilities", () => {
+    // Written by format 2 on 2026-10-19: Well of Radiance and Tractor Cannon with windows.
+    const decoded = decodeLink("AgECAQHAsgQCAQAAseoBCAPcC5FOAA", registry);
+    expect(decoded.build.selections.map((s) => s.effectId)).toEqual([
+      "well-of-radiance",
+      "tractor-cannon",
+    ]);
+    expect(decoded.build.effectWindows["tractor-cannon"]).toEqual({
+      startMs: 1500,
+      durationMs: 10_000,
+    });
+    expect(decoded.build.abilities).toBeUndefined();
+    expect(decoded.build.abilityStats).toBeUndefined();
+  });
+
+  describe("abilities (format 3)", () => {
+    const withAbilities: Build = {
+      ...build,
+      abilities: [
+        { abilityId: "well-of-radiance", castsMs: [0] },
+        { abilityId: "fusion-grenade", castsMs: [1500, 16_000] },
+        { abilityId: "celestial-fire", castsMs: [] },
+      ],
+      abilityStats: { super: 200, grenade: 150, melee: 100 },
+    };
+
+    it("round-trips abilities, their casts and the ability stats", () => {
+      expect(
+        decodeLink(encodeLink({ build: withAbilities }, registry), registry)
+          .build,
+      ).toEqual(withAbilities);
+    });
+
+    it("keeps such a build short", () => {
+      expect(
+        encodeLink({ build: withAbilities }, registry).length,
+      ).toBeLessThanOrEqual(72);
+    });
+
+    it("skips unknown ability codes and reports them", () => {
+      const smaller: LinkRegistry = {
+        ...registry,
+        abilities: registry.abilities.filter((a) => a.id !== "fusion-grenade"),
+      };
+      const decoded = decodeLink(
+        encodeLink({ build: withAbilities }, registry),
+        smaller,
+      );
+      const fusionCode = registry.abilities.find(
+        (a) => a.id === "fusion-grenade",
+      )!.code;
+      expect(decoded.unknownAbilityCodes).toEqual([fusionCode]);
+      expect(decoded.build.abilities!.map((a) => a.abilityId)).toEqual([
+        "well-of-radiance",
+        "celestial-fire",
+      ]);
+    });
+
+    it("rejects an unknown ability when writing", () => {
+      const unknown: Build = {
+        ...build,
+        abilities: [{ abilityId: "nope", castsMs: [0] }],
+      };
+      expect(() => encodeLink({ build: unknown }, registry)).toThrow("nope");
+    });
   });
 
   it("rejects an unknown weapon", () => {

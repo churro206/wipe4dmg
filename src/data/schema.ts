@@ -512,6 +512,23 @@ export const Build = z.object({
     }),
   ),
   damagePhaseSeconds: z.number().nonnegative(),
+  // Abilities with the times of their casts (ADR 0009); omitted in links of format 2.
+  abilities: z
+    .array(
+      z.object({
+        abilityId: z.string(),
+        castsMs: z.array(z.number().nonnegative()),
+      }),
+    )
+    .optional(),
+  // Super, grenade and melee stat; omitted: no stat bonus.
+  abilityStats: z
+    .object({
+      super: z.number().nonnegative(),
+      grenade: z.number().nonnegative(),
+      melee: z.number().nonnegative(),
+    })
+    .optional(),
 });
 export type Build = z.infer<typeof Build>;
 

@@ -155,10 +155,8 @@ export function stateFromLink(search: string): LinkState {
   const text = new URLSearchParams(search).get(LINK_PARAM);
   if (!text) return empty;
   try {
-    const { build, comparison, unknownEffectCodes } = decodeLink(
-      text,
-      linkRegistry,
-    );
+    const { build, comparison, unknownEffectCodes, unknownAbilityCodes } =
+      decodeLink(text, linkRegistry);
     if (build.weaponId !== weapon.id) throw new Error(build.weaponId);
     return {
       input: String(build.damagePhaseSeconds),
@@ -179,14 +177,25 @@ export function stateFromLink(search: string): LinkState {
         ]),
       ),
       comparison,
-      message:
-        unknownEffectCodes.length > 0
-          ? `${unknownEffectCodes.length} unbekannte Effects im Link ignoriert (neuere Version?).`
-          : null,
+      message: unknownMessage(
+        unknownEffectCodes.length,
+        unknownAbilityCodes.length,
+      ),
     };
   } catch {
     return { ...empty, message: "Der Link enthält keinen gültigen Build." };
   }
+}
+
+/** Hint about parts of a link from a newer version; null if everything is known. */
+function unknownMessage(effects: number, abilities: number): string | null {
+  const parts = [
+    effects > 0 ? `${effects} unbekannte Effects` : "",
+    abilities > 0 ? `${abilities} unbekannte Fähigkeiten` : "",
+  ].filter(Boolean);
+  return parts.length > 0
+    ? `${parts.join(" und ")} im Link ignoriert (neuere Version?).`
+    : null;
 }
 
 /** Link text for the address; empty if there is no valid build yet. */
