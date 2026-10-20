@@ -2,7 +2,8 @@
 // Start the app first: npm run build && npx vite preview --port 4173
 //
 // Usage: node scripts/ui-check.mjs <url> <out.png> [--dark|--light] [--width 1400] [--click "Text"]...
-//   --click  clicks the first button with exactly this text, e.g. a tab ("Breakdown" or "Wiki");
+//   --click  clicks the first button with exactly this text, e.g. a tab ("Breakdown" or "Wiki"),
+//            else the first button that contains it;
 //            repeat it to click several buttons in order.
 // Chrome: CHROME_PATH, otherwise the usual install paths on Windows, macOS and Linux.
 
@@ -107,7 +108,7 @@ try {
   for (const text of clicks) {
     // JSON.stringify quotes the text safely inside the expression.
     const clicked = await evaluate(
-      `(() => { const b = [...document.querySelectorAll("button")].find((b) => b.textContent.trim() === ${JSON.stringify(text)}); b?.click(); return !!b; })()`,
+      `(() => { const all = [...document.querySelectorAll("button")]; const t = ${JSON.stringify(text)}; const b = all.find((b) => b.textContent.trim() === t) ?? all.find((b) => b.textContent.includes(t)); b?.click(); return !!b; })()`,
     );
     if (!clicked) console.warn(`No button with text "${text}".`);
     await sleep(LOAD_MS);

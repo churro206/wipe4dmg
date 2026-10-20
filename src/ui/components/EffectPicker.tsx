@@ -1,5 +1,5 @@
 import { useId } from "react";
-import type { Effect, ProviderKind } from "../../data/schema";
+import type { Effect, Element, ProviderKind } from "../../data/schema";
 import {
   describeDuration,
   describeEffect,
@@ -7,7 +7,6 @@ import {
   effectIconKey,
   GROUP_LABELS,
 } from "../describe";
-import { weapon } from "../data";
 import { Icon } from "./Icon";
 
 /**
@@ -19,7 +18,9 @@ export function EffectPicker({
   provider,
   isSelected,
   onToggle,
+  weaponElement,
 }: {
+  weaponElement: Element; // surge icons follow the element of the weapon
   effects: Effect[];
   provider: ProviderKind;
   isSelected: (effect: Effect) => boolean;
@@ -34,6 +35,7 @@ export function EffectPicker({
           provider={provider}
           selected={isSelected(effect)}
           onToggle={() => onToggle(effect)}
+          weaponElement={weaponElement}
         />
       ))}
     </div>
@@ -45,8 +47,10 @@ function EffectTile({
   provider,
   selected,
   onToggle,
+  weaponElement,
 }: {
   effect: Effect;
+  weaponElement: Element;
   provider: ProviderKind;
   selected: boolean;
   onToggle: () => void;
@@ -66,7 +70,7 @@ function EffectTile({
         onClick={onToggle}
       >
         <Icon
-          iconKey={effectIconKey(effect, weapon.element)}
+          iconKey={effectIconKey(effect, weaponElement)}
           label={effect.shortName}
         />
         <span className="tile-label">{effect.shortName}</span>

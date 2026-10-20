@@ -1,9 +1,8 @@
-import type { GuardianClass } from "../../data/schema";
+import type { Element, GuardianClass } from "../../data/schema";
 import type { OptimizerEntry } from "../../engine/optimizer";
 import { effectsOf, SUBCLASS_LABELS } from "../buildState";
 import { levelBadge, effectIconKey } from "../describe";
 import { integer, signedPercent } from "../format";
-import { weapon } from "../data";
 import { Icon } from "./Icon";
 
 /**
@@ -16,7 +15,9 @@ export function OptimizerCards({
   currentTotal,
   onApply,
   onCompare,
+  weaponElement,
 }: {
+  weaponElement: Element; // surge icons follow the element of the weapon
   entries: OptimizerEntry[];
   guardianClass: GuardianClass;
   currentTotal: number;
@@ -49,7 +50,7 @@ export function OptimizerCards({
                 {own.map((effect) => (
                   <Icon
                     key={effect.id}
-                    iconKey={effectIconKey(effect, weapon.element)}
+                    iconKey={effectIconKey(effect, weaponElement)}
                     label={effect.shortName}
                     size={28}
                     badge={levelBadge(effect.shortName)}

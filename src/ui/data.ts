@@ -8,6 +8,8 @@ import rawBuckets from "../data/buckets.json";
 import rawEffects from "../data/effects.json";
 import rawIcons from "../data/icons.json";
 import rawManifestAbilities from "../data/manifest-abilities.json";
+import rawPackages from "../data/weapon-packages.json";
+import type { Weapon } from "../data/schema";
 import type { LinkRegistry } from "../engine/buildLink";
 import { loadAbilities } from "../engine/loadAbilities";
 import {
@@ -21,17 +23,21 @@ import {
 } from "../engine/loadData";
 import { loadWeapons } from "../engine/loadWeapon";
 
-// Every weapon Data File (ADR 0012). The UI still shows One Thousand Voices until the weapon
-// selection comes with the second weapon (W1).
-export const weapons = loadWeapons(
-  Object.values(
+// Hand-modelled weapons (ADR 0012) and imported packages (ADR 0013), sorted by name.
+export const weapons = loadWeapons([
+  ...Object.values(
     import.meta.glob("../data/weapons/*.json", {
       import: "default",
       eager: true,
     }),
   ),
-);
-export const weapon = weapons.find((w) => w.id === "one-thousand-voices")!;
+  ...rawPackages,
+]).sort((a, b) => a.name.localeCompare(b.name));
+export const DEFAULT_WEAPON_ID = "one-thousand-voices";
+/** The weapon of a build; One Thousand Voices if the id is unknown. */
+export const weaponById = (id: string): Weapon =>
+  weapons.find((w) => w.id === id) ??
+  weapons.find((w) => w.id === DEFAULT_WEAPON_ID)!;
 export const buckets = loadBuckets(rawBuckets);
 export const effects = loadEffects(rawEffects);
 export const bosses = loadBosses(rawBosses).filter(

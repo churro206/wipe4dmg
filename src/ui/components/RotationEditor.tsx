@@ -1,7 +1,6 @@
-import type { Effect } from "../../data/schema";
+import type { Effect, Element } from "../../data/schema";
 import type { WindowInput } from "../buildState";
 import { percent } from "../format";
-import { weapon } from "../data";
 import { effectIconKey } from "../describe";
 import { Icon } from "./Icon";
 import { InfoTip } from "./InfoTip";
@@ -12,7 +11,9 @@ export function RotationEditor({
   windowInputOf,
   uptimeOf,
   onChange,
+  weaponElement,
 }: {
+  weaponElement: Element; // surge icons follow the element of the weapon
   effects: Effect[];
   windowInputOf: (effect: Effect) => WindowInput;
   uptimeOf: (effect: Effect) => number | undefined;
@@ -49,7 +50,7 @@ export function RotationEditor({
               <td>
                 <span className="cell-with-icon">
                   <Icon
-                    iconKey={effectIconKey(effect, weapon.element)}
+                    iconKey={effectIconKey(effect, weaponElement)}
                     label={effect.shortName}
                     size={24}
                   />

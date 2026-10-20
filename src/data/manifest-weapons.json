@@ -18,6 +18,7 @@
       "mods": [],
       "catalyst": {
         "name": "Ace of Spades Catalyst",
+        "hash": 3708505013,
         "perks": ["Funeral Pyre"]
       },
       "description": "Reloading after a kill loads magazine with a few extra-damage bullets. Grants radar while aiming down sights.\nGrants radar while aiming down sights. Bonus damage after kill-reload.\nFirefly deals more damage while Memento Mori is active."
@@ -38,6 +39,7 @@
       "mods": [],
       "catalyst": {
         "name": "Ager's Scepter Catalyst",
+        "hash": 970163821,
         "perks": ["Will Given Form"]
       },
       "description": "Final blows with this weapon generate a slowing burst around the defeated target.\nFinal blows with this weapon slow nearby targets.\n[Alternate Weapon Action]  : Drain Super energy, overflowing the magazine and empowering the beam with bonus damage and the ability to slow and freeze targets until the magazine or Super energy runs out, or the weapon is stowed. Can only be activated when Super energy is full."
@@ -73,7 +75,11 @@
         "Quick Launch"
       ],
       "mods": [],
-      "catalyst": { "name": "Anarchy Catalyst", "perks": ["Jolting Feedback"] },
+      "catalyst": {
+        "name": "Anarchy Catalyst",
+        "hash": 1178660677,
+        "perks": ["Jolting Feedback"]
+      },
       "description": "Grenades stick to surfaces and chain Arc bolts to other mines.\nGrenades stick to surfaces and chain Arc bolts.\nDealing repeated damage with this weapon inflicts Jolt. \n\nWhile amplified, Jolt is applied faster."
     },
     {
@@ -90,7 +96,11 @@
         "Projection Fuse"
       ],
       "mods": [],
-      "catalyst": { "name": "Arbalest Catalyst", "perks": ["Genesis"] },
+      "catalyst": {
+        "name": "Arbalest Catalyst",
+        "hash": 1880379474,
+        "perks": ["Genesis"]
+      },
       "description": "Fires slugs that cause massive damage to combatant shields. Strong against [Shield-Piercing] Barrier Champions.\nBreaking a combatant's shield with this weapon fills its magazine from reserves. Energy weapons regenerate ammo on hit when matching the damage type to the combatant's shield."
     },
     {
@@ -108,7 +118,11 @@
         "Steady Rounds"
       ],
       "mods": [],
-      "catalyst": { "name": "Bad Juju Catalyst", "perks": ["Unending Curse"] },
+      "catalyst": {
+        "name": "Bad Juju Catalyst",
+        "hash": 1324340508,
+        "perks": ["Unending Curse"]
+      },
       "description": "Kills refill the magazine, increase damage for a short duration, and grant Super energy based on the strength of String of Curses. Fires full-auto.\nKills refill the magazine, increase damage, and grant Super energy.\nExtends the duration of String of Curses."
     },
     {
@@ -175,7 +189,11 @@
         "Liquid Coils"
       ],
       "mods": [],
-      "catalyst": { "name": "Bastion Catalyst", "perks": ["Cast No Shadows"] },
+      "catalyst": {
+        "name": "Bastion Catalyst",
+        "hash": 4273298922,
+        "perks": ["Cast No Shadows"]
+      },
       "description": "Rapidly fires 3 spreads of pure force.\n\nAfter a successful melee hit, this weapon gains increased damage, reduced charge time, and improved reload speed for a short duration. Hitting a target with most of the pellets in a burst increases melee damage for a short duration.\nCharge to fire 3 spreads of Kinetic slugs. Strong against [Stagger] Unstoppable Champions.\nDealing melee damage increases this weapon's handling and loads a small amount of ammo from reserves."
     },
     {
@@ -192,7 +210,11 @@
         "Tireless Blade"
       ],
       "mods": [],
-      "catalyst": { "name": "Black Talon Catalyst", "perks": ["Reversal"] },
+      "catalyst": {
+        "name": "Black Talon Catalyst",
+        "hash": 3810173190,
+        "perks": ["Reversal"]
+      },
       "description": "[Heavy Attack]  : Fire a Heavy projectile attack that suppresses targets. Hitting a target already suppressed spreads the effect to nearby targets.\n[Heavy Attack]  : Fire a projectile.\nDealing damage to Void debuffed targets increases this weapon's damage for a short time per each type of Void debuff affecting the target."
     },
     {
@@ -211,6 +233,7 @@
       "mods": ["Borealis Catalyst"],
       "catalyst": {
         "name": "Borealis Catalyst",
+        "hash": 2085058763,
         "perks": ["Shield Disorient"]
       },
       "description": "[Alternate Weapon Action]  : Changes this weapon's damage type, cycling between Void, Arc, and Solar. Grants this weapon temporarily increased damage when you apply or gain an elemental buff or debuff that matches this weapon's damage type.\n[Alternate Weapon Action]  : Changes this weapon's damage type.\nEnergy matched shield explosion disorients nearby combatants."
@@ -231,6 +254,7 @@
       "mods": [],
       "catalyst": {
         "name": "Buried Bloodline Catalyst",
+        "hash": 2199828458,
         "perks": ["Splitvein Lineage"]
       },
       "description": "Double fires tracking bolts. Landing bolts leeches health from the target.\nDouble fires tracking bolts that leech health.\nWhile Devour is active, this weapon weakens on hit."
@@ -251,6 +275,7 @@
       "mods": [],
       "catalyst": {
         "name": "Centrifuse Catalyst",
+        "hash": 1547782973,
         "perks": ["Static Buildup"]
       },
       "description": "Sprinting, sliding, and firing this weapon builds a temporary electrostatic charge, increasing range and reload speed. Final blows with high charge cause explosions, and maximum charge explosions blind targets.\nSprinting, sliding, and firing build a charge.\nWhile amplified, this weapon gradually gains overcharge."
@@ -269,7 +294,11 @@
         "Spread Shot Package"
       ],
       "mods": [],
-      "catalyst": { "name": "Cerberus+1 Catalyst", "perks": ["Focused Fire"] },
+      "catalyst": {
+        "name": "Cerberus+1 Catalyst",
+        "hash": 1380383475,
+        "perks": ["Focused Fire"]
+      },
       "description": "Shoots erratic bullets from all gun barrels at the same time.\nShoots from all four barrels.\nAfter a final blow with this weapon, [Alternate Weapon Action]  to return ammo to the magazine and swap to a tighter spread that deals increased damage."
     },
     {
@@ -333,7 +362,11 @@
         "Stormbringer"
       ],
       "mods": [],
-      "catalyst": { "name": "Cloudstrike Catalyst", "perks": ["Triple Tap"] },
+      "catalyst": {
+        "name": "Cloudstrike Catalyst",
+        "hash": 1409312565,
+        "perks": ["Triple Tap"]
+      },
       "description": "Precision final blows generate a lightning bolt at the target's location and grant a moderate amount of Bolt Charge.\nPrecision hits create a lightning storm.\nRapidly landing precision hits will return one round to the magazine."
     },
     {
@@ -352,6 +385,7 @@
       "mods": ["Coldheart Catalyst"],
       "catalyst": {
         "name": "Coldheart Catalyst",
+        "hash": 1249968539,
         "perks": ["Supercharged Magazine"]
       },
       "description": "This weapon shoots a steady cold-fusion-powered Arc laser, dealing more damage the longer it remains on a target.\nShoots a cold fusion-powered laser.\nWhile amplified, ammo is gradually transferred from reserves to the magazine. \n\nWhile in Speed Booster, ammo regenerates faster and overflows the magazine."
@@ -372,6 +406,7 @@
       "mods": [],
       "catalyst": {
         "name": "Collective Obligation Catalyst",
+        "hash": 2234507197,
         "perks": ["Repulsor Brace"]
       },
       "description": "This weapon stores Void debuffs when damaging foes, leeching them directly when the target is suppressed, weakened, or volatile. Once charged, [Alternate Weapon Action]  to cause damage from this weapon and to apply the stored debuffs.\nLeech Void debuffs.\nDefeating a Void-debuffed target grants an overshield."
@@ -392,6 +427,7 @@
       "mods": [],
       "catalyst": {
         "name": "Conditional Finality Catalyst",
+        "hash": 3616546635,
         "perks": ["Heal Clip", "Rimestealer"]
       },
       "description": "Dual barrels split into Stasis and Solar damage. Strong against [Stagger] Unstoppable Champions.\nFires Stasis and Solar pellets quickly. Strong against [Stagger] Unstoppable Champions.\nReloading shortly after dealing a final blow grants Cure to you and your nearby allies.\nDestroying a Stasis crystal or defeating a frozen target with this weapon grants you Frost Armor."
@@ -405,7 +441,11 @@
       "intrinsics": ["Banned Weapon"],
       "perks": ["Accurized Rounds", "Cruel Remedy", "Heavy Grip", "Smallbore"],
       "mods": ["Crimson Catalyst"],
-      "catalyst": { "name": "Crimson Catalyst", "perks": ["To the Pain"] },
+      "catalyst": {
+        "name": "Crimson Catalyst",
+        "hash": 1783582993,
+        "perks": ["To the Pain"]
+      },
       "description": "This weapon fires a 3-round burst.\nFires a three-round burst.\nWhile this weapon is equipped, taking damage increases handling and aim assist until the weapon is stowed.\n\nTaking more damage increases the effect."
     },
     {
@@ -424,6 +464,7 @@
       "mods": [],
       "catalyst": {
         "name": "Cryosthesia 77K Catalyst",
+        "hash": 1023764762,
         "perks": ["Cold Efficiency"]
       },
       "description": "[Alternate Weapon Action]  : Swap firing mode after a final blow to enable a charged shot.\n[Alternate Weapon Action]  : Swap fire mode.\nShattering a frozen target refills this weapon's magazine from reserves."
@@ -467,6 +508,7 @@
       "mods": ["D.A.R.C.I. Catalyst"],
       "catalyst": {
         "name": "D.A.R.C.I. Catalyst",
+        "hash": 2085058762,
         "perks": ["Networked Targeting"]
       },
       "description": "Aim at a target to view their health and other critical information in the scope.\nJolts targets when dealing damage. Strong against [Disruption] Overload Champions.\nShows critical information in scope. Strong against [Disruption] Overload Champions.\nWhile Personal Assistant is active, hits grant this weapon and nearby allies' non-Exotic Sniper Rifles increased overall weapon performance and precision damage. Granting maximum stacks of the effect to an ally grants this weapon bonus damage."
@@ -524,6 +566,7 @@
       ],
       "catalyst": {
         "name": "Dead Man's Tale Catalyst",
+        "hash": 1301843770,
         "perks": ["Dark-Forged Trigger"]
       },
       "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.\nPrecision hits grant bonus target acquisition and range.\nNo perk currently selected.\n\nMore perks become available as the weapon level increases.\nRemoves hipfire accuracy penalties while increasing rate of fire. At maximum stacks of Cranial Spike, hipfiring deals increased damage."
@@ -563,7 +606,11 @@
         "Tier 4 Upgrade",
         "Tier 5 Upgrade"
       ],
-      "catalyst": { "name": "Dead Messenger Catalyst", "perks": ["Turnabout"] },
+      "catalyst": {
+        "name": "Dead Messenger Catalyst",
+        "hash": 4259872956,
+        "perks": ["Turnabout"]
+      },
       "description": "One-shot handheld Grenade Launcher. Projectiles release a fan of three energy waves on contact with the ground.\nReleases three waves on impact.\nNo perk currently selected.\n\nMore perks become available as the weapon level increases.\nUsing this weapon to break the shield of a combatant or a Guardian using their Super will grant you an overshield."
     },
     {
@@ -580,7 +627,11 @@
         "Volatile Launch"
       ],
       "mods": [],
-      "catalyst": { "name": "Deathbringer Catalyst", "perks": ["Dead Weight"] },
+      "catalyst": {
+        "name": "Deathbringer Catalyst",
+        "hash": 1298151900,
+        "perks": ["Dead Weight"]
+      },
       "description": "Fires remotely detonated projectiles that drop Void orbs on combatants.\n[Shoot]  : Fire; release to detonate.\nIncreases how quickly Dark Descent reaches its full potential."
     },
     {
@@ -599,6 +650,7 @@
       "mods": [],
       "catalyst": {
         "name": "Delicate Tomb Catalyst",
+        "hash": 1719307618,
         "perks": ["Ionic Interment"]
       },
       "description": "Fires a wide horizontal spread when shot from the hip.\nFinal blows with this weapon have a chance to generate Ionic Traces. Powerful foes and opposing Guardians always generate Ionic Traces.\nHip shots fire widespread. Final blows generate Ionic Traces.\nCollecting an Ionic Trace partially reloads the magazine from reserves."
@@ -619,6 +671,7 @@
       "mods": [],
       "catalyst": {
         "name": "Deterministic Chaos Catalyst",
+        "hash": 3638234982,
         "perks": ["Target Lock"]
       },
       "description": "Strong against [Shield-Piercing] Barrier Champions. While holding down the trigger, every fourth Heavy Metal projectile also weakenstargets on impact. Releasing the trigger after a Vexadecimal projectile partially reloads this weapon's magazine from reserves.\nSustained fire weakens targets. Strong against [Shield-Piercing] Barrier Champions.\nDamage increases the longer this weapon remains on a target."
@@ -639,6 +692,7 @@
       "mods": [],
       "catalyst": {
         "name": "Devil's Ruin Catalyst",
+        "hash": 2732252706,
         "perks": ["Collective Action"]
       },
       "description": "Final blows create Firesprites. After picking up a Firesprite, [Alternate Weapon Action]  to enable a high-powered Solar laser beam mode. Strong against [Stagger] Unstoppable Champions.\nCharges to fire a high-powered laser. Strong against [Stagger] Unstoppable Champions.\nCollecting an Elemental pickup or destroying a Tangle grants this weapon a stacking period of increased damage. Throwing a Tangle provides additional time.\n\nElemental pickups include [Solar]Firesprites, [Void]Void Breaches, [Arc]Ionic Traces, [Stasis]Stasis Shards, and [Strand]Strand Tangles."
@@ -659,6 +713,7 @@
       "mods": [],
       "catalyst": {
         "name": "Divinity Catalyst",
+        "hash": 1517802577,
         "perks": ["Jolting Feedback", "Focused Fury"]
       },
       "description": "Sustained damage with this weapon envelops the target in a field that weakens and stuns them. Strong against [Disruption] Overload Champions.\nDealing repeated damage with this weapon inflicts Jolt. \n\nWhile amplified, Jolt is applied faster.\nDealing a portion of the magazine as precision damage grants this weapon bonus damage. The shot count is reset whenever the weapon is reloaded or stowed."
@@ -679,6 +734,7 @@
       "mods": [],
       "catalyst": {
         "name": "Dragon's Breath Catalyst",
+        "hash": 2924294393,
         "perks": ["Pyromancer"]
       },
       "description": "Rockets embed themselves in struck targets and periodically eject incendiary fuel that inflicts Scorch. The longer this weapon goes without firing, the more fuel the next rocket contains. Strong against [Stagger] Unstoppable Champions.\nRockets eject burning fuel. Strong against [Stagger] Unstoppable Champions.\nThis weapon replenishes its fuel faster. Defeating targets with this weapon causes them to periodically drop Firesprites."
@@ -697,7 +753,11 @@
         "Short-Action Stock"
       ],
       "mods": [],
-      "catalyst": { "name": "Duality Catalyst", "perks": [] },
+      "catalyst": {
+        "name": "Duality Catalyst",
+        "hash": 3591914291,
+        "perks": []
+      },
       "description": "Fires a pellet spread in hip-fire or a single high-damage slug while aiming.\nHip-fire pellets, aim to fire slugs."
     },
     {
@@ -737,6 +797,7 @@
       ],
       "catalyst": {
         "name": "Edge of Action Catalyst",
+        "hash": 1134515006,
         "perks": ["Repulsor Brace"]
       },
       "description": "Melee and projectile damage charge this weapon. When fully charged, [Alternate Weapon Action]  to enable a special projectile attack. Projectile final blows create a volatile detonation and grant Volatile Rounds.\nCharge weapon to enable special projectile attack.\nDefeating a Void-debuffed target grants an overshield."
@@ -778,6 +839,7 @@
       ],
       "catalyst": {
         "name": "Edge of Concurrence Catalyst",
+        "hash": 1731191722,
         "perks": ["Eddy Current"]
       },
       "description": "Melee and projectile damage charge this weapon. When fully charged, [Alternate Weapon Action]  to enable a special ranged attack. Sustained projectile damage causes targets to become jolted.\nCharge weapon to enable special projectile attack.\nTemporarily increases reload speed and handling after sprinting or while amplified. This effect is improved when you are amplified."
@@ -817,7 +879,11 @@
         "Tier 4 Upgrade",
         "Tier 5 Upgrade"
       ],
-      "catalyst": { "name": "Edge of Intent Catalyst", "perks": ["Heal Clip"] },
+      "catalyst": {
+        "name": "Edge of Intent Catalyst",
+        "hash": 2038196759,
+        "perks": ["Heal Clip"]
+      },
       "description": "Melee and projectile damage charge this weapon. When fully charged, [Alternate Weapon Action]  to enable a special projectile attack. Projectile final blows scorch nearby targets.\nCharge weapon to enable special projectile attack.\nReloading shortly after dealing a final blow grants Cure to you and your nearby allies."
     },
     {
@@ -857,6 +923,7 @@
       "mods": ["Arc Damage Mod", "Solar Damage Mod", "Void Damage Mod"],
       "catalyst": {
         "name": "Ergo Sum Catalyst",
+        "hash": 1497627200,
         "perks": ["Transcendent Steel"]
       },
       "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.\nStowing this weapon consumes all stacks, granting melee, grenade, and class ability energy.\nStowing weapon restores ability energy based on final blows.\nPowered heavy attacks cause nearby Sword-wielders to emit tracking micro-missiles with every attack.\nHeavy attacks grant micro-missiles to Sword-wielders.\nPowered heavy attacks mark nearby targets, causing them to explode upon death.\nStriking marked targets with a Light attack detonates them.\nHeavy attacks mark targets; light attacks detonate them.\nEvery five hits attach a delayed Solar explosive, scorching your target.\nEvery five hits attaches a delayed detonation.\nPowered heavy attacks charge the wielder, enabling them to resist Arc damage and chain lightning to nearby targets.\nHeavy attacks surge lightning from the user.\nRapid final blows create a lightning storm at the target's location.\nRapid final blows create a lightning storm.\nPowered heavy attacks emit projectiles that detonate with a delayed Void blast.\nHeavy attacks emit delayed detonating projectiles.\nDefeated targets drop insectoid robots that chase and explode close to other targets.\nFinal blows deploy homing robot grenades.\nDealing damage with a Transcendent grenade grants Ergo Sum ammo."
@@ -877,6 +944,7 @@
       "mods": [],
       "catalyst": {
         "name": "Eriana's Vow Catalyst",
+        "hash": 2984240082,
         "perks": ["More to Give"]
       },
       "description": "This weapon fires shield-piercing ammunition and comes with a scope. Strong against [Shield-Piercing] Barrier Champions. Breaking a matched shield or piercing a Champion's barrier will cause the target to ignite.\nThis weapon fires shield-piercing ammunition and comes with a scope. Strong against [Shield-Piercing] Barrier Champions.\nIncreases magazine size. Holstering this weapon automatically reloads it after a short period of time."
@@ -897,6 +965,7 @@
       "mods": [],
       "catalyst": {
         "name": "Euphony Catalyst",
+        "hash": 3703325290,
         "perks": ["Enlightened Action"]
       },
       "description": "Dealing sustained damage with this weapon spawns Threadlings at your target's location.\nSustained damage spawns Threadlings.\nDealing damage improves reload speed and handling."
@@ -915,7 +984,11 @@
         "Volatile Launch"
       ],
       "mods": [],
-      "catalyst": { "name": "Ex Diris Catalyst", "perks": ["Berserk Rush"] },
+      "catalyst": {
+        "name": "Ex Diris Catalyst",
+        "hash": 1826222780,
+        "perks": ["Berserk Rush"]
+      },
       "description": "This weapon enrages when dealing or taking sustained damage, gaining increased rate of fire while enraged.\nEnrages when dealing or sustaining damage.\nWeapon enrages faster while amplified. Final blows with this weapon make you amplified."
     },
     {
@@ -934,6 +1007,7 @@
       "mods": [],
       "catalyst": {
         "name": "Eyes of Tomorrow Catalyst",
+        "hash": 2835258088,
         "perks": ["Demolitionist", "Blast Distributor"]
       },
       "description": "This weapon is capable of tracking and firing at multiple targets simultaneously.\nTracks and fires at multiple targets simultaneously.\nKills with this weapon generate grenade energy. Activating your grenade ability reloads this weapon from reserves.\nDealing splash damage grants a bonus to Grenade stat."
@@ -969,7 +1043,11 @@
         "Thin the Herd"
       ],
       "mods": ["Fighting Lion Catalyst"],
-      "catalyst": { "name": "Fighting Lion Catalyst", "perks": ["Chimera"] },
+      "catalyst": {
+        "name": "Fighting Lion Catalyst",
+        "hash": 924149234,
+        "perks": ["Chimera"]
+      },
       "description": "Grenade projectiles will bounce off surfaces.\n[Shoot]  : Fire; release to detonate.\nGrenades bounce. Delayed detonation.\nAfter this weapon fires, equipped Kinetic and Power weapons gain a brief period of increased handling and accuracy."
     },
     {
@@ -988,6 +1066,7 @@
       "mods": [],
       "catalyst": {
         "name": "Final Warning Catalyst",
+        "hash": 77818606,
         "perks": ["String Theory"]
       },
       "description": "Holding down the trigger marks targets within range and loads multiple bullets, which fire in a burst with increased stability on trigger release. Hitting a marked target with a fully charged burst will unravel them.\nHold fire to load; release for a burst.\nHits against marked targets deal increased damage and have a chance to refund ammo to the magazine."
@@ -1008,6 +1087,7 @@
       "mods": [],
       "catalyst": {
         "name": "Finality's Auger Catalyst",
+        "hash": 818149482,
         "perks": ["Bait and Switch"]
       },
       "description": "[Alternate Weapon Action]  to fire a special projectile that deploys a Ruinscribe Turret. This projectile costs 3 ammo to fire. Aim the projectile skyward to provide the clearest sight lines for the turret which will automatically shoot at nearby targets.\nCreates a Ruinscribe Turret.\nDeal damage with all equipped weapons within a short time to give this weapon a damage boost."
@@ -1021,7 +1101,11 @@
       "intrinsics": ["Full Stop"],
       "perks": ["Flared Magwell", "Pace Yourself", "Smallbore", "Smooth Grip"],
       "mods": [],
-      "catalyst": { "name": "Forerunner Catalyst", "perks": ["The Rock"] },
+      "catalyst": {
+        "name": "Forerunner Catalyst",
+        "hash": 674410190,
+        "perks": ["The Rock"]
+      },
       "description": "Oversized Sidearm with extended-range, heavy-caliber rounds. Fires full auto with increased rate of fire. Deals increased precision damage to unshielded targets.\nDeals massively increased precision damage to unshielded targets.\nFor several seconds after a final blow, [Alternate Weapon Action]  to consume part of your ammo reserves, converting your next thrown grenade into a fragmentation grenade."
     },
     {
@@ -1038,7 +1122,11 @@
         "Volatile Launch"
       ],
       "mods": [],
-      "catalyst": { "name": "Gjallarhorn Catalyst", "perks": ["More Wolves"] },
+      "catalyst": {
+        "name": "Gjallarhorn Catalyst",
+        "hash": 2526801077,
+        "perks": ["More Wolves"]
+      },
       "description": "Rounds fired split into tracking micro-missiles upon detonation.\nCreates tracking micro-missiles on impact.\nIncreases magazine size. Final blows with Wolfpack Rounds spawn a faster, more powerful micro-missile at the target's location."
     },
     {
@@ -1057,6 +1145,7 @@
       "mods": [],
       "catalyst": {
         "name": "Grand Overture Catalyst",
+        "hash": 2094761202,
         "perks": ["Grand Overture Catalyst"]
       },
       "description": "Heavy slug launcher that charges, then fires full auto while the trigger is held.\nFully automatic, slow-firing slug launcher with a charge time.\nOmega Strike hits blind combatants. Defeating combatants with Omega Strike causes them to explode."
@@ -1077,6 +1166,7 @@
       "mods": ["Graviton Lance Catalyst"],
       "catalyst": {
         "name": "Graviton Lance Catalyst",
+        "hash": 615063266,
         "perks": ["Vorpal Weapon", "Turnabout"]
       },
       "description": "Second shot of a burst rips a hole through space-time, doing high damage and recoil with no falloff.\nSecond shot in burst does high damage.\nIncreased damage against bosses, vehicles, and Guardians with their Super active.\nUsing this weapon to break the shield of a combatant or a Guardian using their Super will grant you an overshield."
@@ -1146,7 +1236,11 @@
         "The Fundamentals"
       ],
       "mods": ["Hard Light Catalyst"],
-      "catalyst": { "name": "Hard Light Catalyst", "perks": ["Light Touch"] },
+      "catalyst": {
+        "name": "Hard Light Catalyst",
+        "hash": 1864989992,
+        "perks": ["Light Touch"]
+      },
       "description": "Rounds fired from this weapon have reduced damage falloff, overpenetrate targets, and ricochet off hard surfaces. Projectile damage increases after bounce.\nOverpenetrating ricocheting rounds. Bonus damage on bounce.\nThis weapon gains reload speed, handling, and aim down sight speed when you are amplified, radiant, or have Devour."
     },
     {
@@ -1186,7 +1280,11 @@
         "Transformative"
       ],
       "mods": [],
-      "catalyst": { "name": "Hawkmoon Catalyst", "perks": ["Hunter's Trance"] },
+      "catalyst": {
+        "name": "Hawkmoon Catalyst",
+        "hash": 383825919,
+        "perks": ["Hunter's Trance"]
+      },
       "description": "Final blows and precision hits with Hawkmoon grant stacks of Paracausal Charge, increasing damage versus combatants. The final round in the magazine greatly increases damage based on the number of stacks. Stowing Hawkmoon on the final round removes this bonus.\nFinal round damage for precision hits.\nIncreased magazine size. Grants increased handling, reload speed, and weapon range based on the number of stacks of Paracausal Charge."
     },
     {
@@ -1198,7 +1296,11 @@
       "intrinsics": ["Exhumation"],
       "perks": ["Burst Guard", "Jagged Edge", "Shot in the Dark"],
       "mods": [],
-      "catalyst": { "name": "Heartshadow Catalyst", "perks": ["Wraithwalk"] },
+      "catalyst": {
+        "name": "Heartshadow Catalyst",
+        "hash": 3072857252,
+        "perks": ["Wraithwalk"]
+      },
       "description": "Heavy attacks made with full Sword energy turn you invisible and fire exploding Void projectiles.\nCharged heavy attacks turn you invisible.\nFaster movement while invisible."
     },
     {
@@ -1217,6 +1319,7 @@
       "mods": [],
       "catalyst": {
         "name": "Heir Apparent Catalyst",
+        "hash": 1324556594,
         "perks": ["Legion's Bulwark"]
       },
       "description": "[Aim Down Sights]  : Spins up this weapon. This weapon can be fired only when fully spun up.\n[Aim Down Sights]  : Spin up.\nIncreases the Arc shield's durability and partially reloads the magazine if it is destroyed."
@@ -1253,6 +1356,7 @@
       "mods": [],
       "catalyst": {
         "name": "Hierarchy of Needs Catalyst",
+        "hash": 122307549,
         "perks": ["Panoptic Tessellation"]
       },
       "description": "Precision hits and final blows build Guidance Ring energy. Opposing Guardians grant additional energy. At full charge, hip firing creates a Guidance Ring.\nCharges and deploys a guidance system.\nDeploying a Guidance Ring or striking a target with a seeking projectile improves draw time, hip-fire accuracy, and reload speed for a moderate duration."
@@ -1290,6 +1394,7 @@
       "mods": [],
       "catalyst": {
         "name": "Izanagi's Burden Catalyst",
+        "hash": 529188544,
         "perks": ["Peerless Edge"]
       },
       "description": "[Alternate Weapon Action]  : Consume the magazine and load a round with additional range and damage.\n[Alternate Weapon Action]  : Consume the magazine and load a more powerful round.\nIncreases the damage bonus of Honed Edge when four bullets are consumed."
@@ -1310,6 +1415,7 @@
       "mods": [],
       "catalyst": {
         "name": "Jötunn Catalyst",
+        "hash": 862513617,
         "perks": ["Cornered", "Incandescent"]
       },
       "description": "Hold down the trigger to charge up a tracking shot that explodes and burns on impact.\nFaster charge time or draw time when surrounded by combatants.\nDefeating a target spreads scorch to those nearby.\nMore powerful combatants and opposing Guardians cause scorch in a larger radius."
@@ -1341,7 +1447,11 @@
       "intrinsics": ["Poison Arrows"],
       "perks": ["Compact Arrow Shaft", "Natural String", "Snapshot Sights"],
       "mods": [],
-      "catalyst": { "name": "Le Monarque Catalyst", "perks": ["Unrelenting"] },
+      "catalyst": {
+        "name": "Le Monarque Catalyst",
+        "hash": 466834938,
+        "perks": ["Unrelenting"]
+      },
       "description": "Arrows fired while perfectly drawn become poison arrows. Precision hits with poison arrows stun the combatant and spread poison to nearby ones. Strong against [Disruption] Overload Champions.\nFires poison arrows on perfect draw. Strong against [Disruption] Overload Champions.\nRapidly defeating targets triggers health regeneration. Guardians and powerful combatants count as more than one kill."
     },
     {
@@ -1371,6 +1481,7 @@
       "mods": [],
       "catalyst": {
         "name": "Leviathan's Breath Catalyst",
+        "hash": 2362217257,
         "perks": ["Colossal Quiver", "Archer's Tempo"]
       },
       "description": "Fires a massive heavy bolt that stuns unshielded combatants. Strong against [Stagger] Unstoppable Champions.\nMaximizes quiver size.\nDraw time decreases after every precision hit."
@@ -1391,6 +1502,7 @@
       "mods": [],
       "catalyst": {
         "name": "Lodestar Catalyst",
+        "hash": 2018366981,
         "perks": ["Supercharged Matrix"]
       },
       "description": "This weapon fires a low-intensity Arc beam with enhanced stability and accuracy.\nFires a stable beam of pure Arc energy.\nWhile amplified, this weapon gains greatly increased reload speed, aim assist, and movement while aiming down sights."
@@ -1411,6 +1523,7 @@
       "mods": [],
       "catalyst": {
         "name": "Lord of Wolves Catalyst",
+        "hash": 431220296,
         "perks": ["Fang and Claw"]
       },
       "description": "Fires a powerful short-range burst of Solar damage.\nPowerful short-range Solar burst.\nIncreases reload speed and stability. While Release the Wolves is active, damaging targets with this weapon applies Scorch. When aiming down sights, defeating a target spreads Scorch to those nearby."
@@ -1446,7 +1559,11 @@
         "Polymer Grip"
       ],
       "mods": [],
-      "catalyst": { "name": "Lumina Catalyst", "perks": ["Resonant Virtue"] },
+      "catalyst": {
+        "name": "Lumina Catalyst",
+        "hash": 2271572658,
+        "perks": ["Resonant Virtue"]
+      },
       "description": "Kills with this weapon leave behind Remnants. Absorbing a Remnant converts your next hipfired shot into an ally-seeking Noble Round and partially refills the magazine.\nAbsorbing Remnants allows you to fire ally-seeking Noble Rounds.\nGain two Remnants per final blow instead of one."
     },
     {
@@ -1465,6 +1582,7 @@
       "mods": [],
       "catalyst": {
         "name": "Malfeasance Catalyst",
+        "hash": 1234111636,
         "perks": ["Vorpal Weapon"]
       },
       "description": "Shoot tainted slugs that burrow into combatants. Stacking enough slugs causes them all to explode, stunning surviving combatants. Strong against  [Stagger] Unstoppable Champions.\nCombusts combatants with explosive slugs. Strong against  [Stagger] Unstoppable Champions.\nIncreased damage against bosses, vehicles, and Guardians with their Super active."
@@ -1483,7 +1601,11 @@
         "Impetus"
       ],
       "mods": ["Merciless Catalyst"],
-      "catalyst": { "name": "Merciless Catalyst", "perks": ["Heal Clip"] },
+      "catalyst": {
+        "name": "Merciless Catalyst",
+        "hash": 1149703256,
+        "perks": ["Heal Clip"]
+      },
       "description": "Hits with projectiles decrease this weapon's charge time for a short duration.\nHits decrease charge time.\nReloading shortly after dealing a final blow grants Cure to you and your nearby allies."
     },
     {
@@ -1502,6 +1624,7 @@
       "mods": [],
       "catalyst": {
         "name": "Microcosm Catalyst",
+        "hash": 2292872001,
         "perks": ["Thresh", "Stopping Power"]
       },
       "description": "Fires a beam of Kinetic light, dealing massive bonus damage to shields.\nBeam deals Kinetic damage with bonus damage to shields.\nKilling combatants with this weapon generates a small amount of Super energy.\nThis weapon's Kinetic ordinance can more easily stagger combatants, and grant increased target acquisition and damage against low-health targets."
@@ -1522,6 +1645,7 @@
       "mods": ["MIDA Multi-Tool Catalyst"],
       "catalyst": {
         "name": "MIDA Multi-Tool Catalyst",
+        "hash": 3466057365,
         "perks": ["Vital Intel"]
       },
       "description": "This weapon boosts movement speed. Radar stays active while aiming down sights.\nBoosts movement speed. Radar stays active while aiming.\nGain enhanced radar resolution and increased reload speed when combatants are in close proximity."
@@ -1542,6 +1666,7 @@
       "mods": [],
       "catalyst": {
         "name": "Monte Carlo Catalyst",
+        "hash": 2816578262,
         "perks": ["Stochastic Vengeance"]
       },
       "description": "Dealing damage with this weapon reduces your melee cooldown and grants a chance to fully charge your melee ability with each kill.\nWeapon damage reduces melee ability cooldown.\nAt 5 stacks of Markov Chain, [Alternate Weapon Action]  - switches between your melee attack and Monte Carlo's bayonet. Landing a bayonet melee hit grants melee energy."
@@ -1562,6 +1687,7 @@
       "mods": [],
       "catalyst": {
         "name": "Necrochasm Catalyst",
+        "hash": 1931066670,
         "perks": ["One for Thrall"]
       },
       "description": "Precision final blows with this weapon increase reload speed and trigger a Cursed Thrall explosion that inflicts corruption. Final blows with Cursed Thrall explosions refill the magazine.\nPrecision final blows trigger an explosion.\nHitting three separate targets increases damage, range, handling, and aim assist for a moderate duration."
@@ -1583,6 +1709,7 @@
       "mods": [],
       "catalyst": {
         "name": "New Land Beyond Catalyst",
+        "hash": 2861049498,
         "perks": ["Top Tier Mastery"]
       },
       "description": "Scoring precision hits increases this weapon's damage until the wielder's defeat.\n\nMassively increases ammo reserves.\nPrecision hits improve weapon performance.\nWhile this weapon is at high stacks of Master, new rounds are continually loaded into the magazine, and the benefits from Bullseye Bolster last longer."
@@ -1603,6 +1730,7 @@
       "mods": [],
       "catalyst": {
         "name": "New Malpais Catalyst",
+        "hash": 3466807461,
         "perks": ["Unraveling Blast"]
       },
       "description": "Rounds fired embed themselves in targets. [Alternate Weapon Action]  to detonate embedded rounds.\nDetonate explosive ammo.\nThis weapon's explosions unravel nearby targets."
@@ -1623,6 +1751,7 @@
       "mods": [],
       "catalyst": {
         "name": "No Time to Explain Catalyst",
+        "hash": 2145198832,
         "perks": ["Blast from the Side"]
       },
       "description": "Precision shots and shots against combatants slowed or frozen by Stasis will return to the magazine.\nCan return shots to the magazine and open a time portal.\nProjectiles from the time portal shoot more frequently."
@@ -1643,6 +1772,7 @@
       "mods": [],
       "catalyst": {
         "name": "One Thousand Voices Catalyst",
+        "hash": 82994288,
         "perks": ["Fall from Grace"]
       },
       "description": "Charging this weapon unleashes a giant continuous beam of death.\nUnleashes a beam of destruction.\nThe weapon has become partially Taken. Detonations produce Taken energy that aggressively seeks out nearby targets and Blights them."
@@ -1688,6 +1818,7 @@
       ],
       "catalyst": {
         "name": "Osteo Striga Catalyst",
+        "hash": 2132353550,
         "perks": ["Osteo Striga Catalyst"]
       },
       "description": "Fires a stream of sentient, toxic projectiles that track the targeted enemy.\nFires a stream of sentient projectiles.\nFinal blows with corruption return ammo to the magazine."
@@ -1742,6 +1873,7 @@
       ],
       "catalyst": {
         "name": "Outbreak Perfected Catalyst",
+        "hash": 3352275956,
         "perks": ["Disease Vector"]
       },
       "description": "This weapon creates SIVA nanite swarms on rapid hits and precision kills.\nNo perk currently selected.\n\nMore perks become available as the weapon level increases.\nIncreases nanite damage. Enemies that die with nanites attached to them generate additional nanites."
@@ -1760,7 +1892,11 @@
         "Worm Byproduct"
       ],
       "mods": [],
-      "catalyst": { "name": "Parasite Catalyst", "perks": ["Envious Arsenal"] },
+      "catalyst": {
+        "name": "Parasite Catalyst",
+        "hash": 4259872957,
+        "perks": ["Envious Arsenal"]
+      },
       "description": "This weapon fires Hive worms which explode on impact. The size and damage of the explosion scales with the number of enemies you've defeated just before firing this weapon.\nFires exploding Hive worms.\nDealing damage with both other weapons before readying this weapon refills it from reserves."
     },
     {
@@ -1772,7 +1908,11 @@
       "intrinsics": ["The Perfect Fifth"],
       "perks": ["Fitted Stock", "Smallbore", "Tactical Mag", "Zen Moment"],
       "mods": ["Polaris Lance Catalyst"],
-      "catalyst": { "name": "Polaris Lance Catalyst", "perks": ["Dragonfly"] },
+      "catalyst": {
+        "name": "Polaris Lance Catalyst",
+        "hash": 4067652714,
+        "perks": ["Dragonfly"]
+      },
       "description": "Precision hits return ammo to the mag. Landing 4 precision hits loads a delayed Solar explosive round that scorches targets for your next shot.\nPrecision hits load a scorching explosive round.\nPrecision kills create an elemental damage explosion."
     },
     {
@@ -1866,6 +2006,7 @@
       "mods": [],
       "catalyst": {
         "name": "Quicksilver Storm Catalyst",
+        "hash": 25023897,
         "perks": ["Nano-entanglement"]
       },
       "description": "Landing multiple hits turns your next shot into a homing micro-missile.\nLand multiple hits to fire homing micro-missiles.\nLanding multiple Missile Tracers loads a grenade. [Alternate Weapon Action]  to switch into Grenade Launcher mode.\nThis weapon's damage type becomes Strand. Final blows with grenades from this weapon create Tangles."
@@ -1879,7 +2020,11 @@
       "intrinsics": ["Rat Pack"],
       "perks": ["Smallbore", "Smooth Grip", "Tactical Mag", "Vermin"],
       "mods": ["Rat King Catalyst"],
-      "catalyst": { "name": "Rat King Catalyst", "perks": ["Infestation"] },
+      "catalyst": {
+        "name": "Rat King Catalyst",
+        "hash": 1758592809,
+        "perks": ["Infestation"]
+      },
       "description": "This fully automatic weapon becomes stronger when nearby allies also have it equipped. Stacks up to 6 times.\nFires full auto. Nearby Rat Kings increase strength.\nImproved aim assist and recoil direction. Refreshes health on Vermin invisibility trigger."
     },
     {
@@ -1898,6 +2043,7 @@
       "mods": [],
       "catalyst": {
         "name": "Red Death Reformed Catalyst",
+        "hash": 818393196,
         "perks": ["Helping Hand"]
       },
       "description": "Final blows with this weapon cure you and increase reload speed; reloading after final blows cures nearby allies.\nFinal blows with this weapon cure you and increase reload speed.\nFinal blows charge this weapon. When the weapon is charged, the next final blow creates a healing burst at your location and leaves a remnant behind that provides restoration to allies."
@@ -1976,6 +2122,7 @@
       "mods": ["Riskrunner Catalyst"],
       "catalyst": {
         "name": "Riskrunner Catalyst",
+        "hash": 484491717,
         "perks": ["Chain Reaction"]
       },
       "description": "When taking Arc Damage, this weapon becomes more powerful and resists incoming Arc Damage. Kills extend the time in this overcharged state.\nTaking Arc damage increases weapon power and Arc resistance.\nEach final blow with this weapon creates an elemental damage explosion."
@@ -1996,6 +2143,7 @@
       "mods": [],
       "catalyst": {
         "name": "Ruinous Effigy Catalyst",
+        "hash": 1206010521,
         "perks": ["Deconstruction"]
       },
       "description": "Final blows with this weapon collapse victims into Void Transmutation spheres.\nCollapses targets into spheres of Void energy.\nThis weapon gains increased damage after using a Transmutation sphere to damage powerful combatants or deal final blows."
@@ -2016,6 +2164,7 @@
       "mods": [],
       "catalyst": {
         "name": "Salvation's Grip Catalyst",
+        "hash": 2359854504,
         "perks": ["Rimestealer"]
       },
       "description": "[Shoot]  : Hold to charge; release to fire.\nThis weapon's charged projectiles create a pattern of Stasis crystals on impact and freeze nearby targets.\n\nStrong against [Stagger] Unstoppable Champions.\nThis weapon's projectiles create Stasis crystals and freeze nearby targets. Strong against [Stagger] Unstoppable Champions.\nDestroying a Stasis crystal or defeating a frozen target with this weapon grants you Frost Armor."
@@ -2114,6 +2263,7 @@
       "mods": ["Sleeper Simulant Catalyst"],
       "catalyst": {
         "name": "Sleeper Simulant Catalyst",
+        "hash": 136852797,
         "perks": ["Accelerated Coils", "Deeper Pockets"]
       },
       "description": "The weapon's laser overpenetrates enemies and refracts off hard surfaces.\nLaser overpenetrates and refracts.\nSpeeds up weapon charge.\nIncreased ammo reserves."
@@ -2132,7 +2282,11 @@
         "Short-Action Stock"
       ],
       "mods": [],
-      "catalyst": { "name": "Still Hunt Catalyst", "perks": ["Lucky Shot"] },
+      "catalyst": {
+        "name": "Still Hunt Catalyst",
+        "hash": 2993090545,
+        "perks": ["Lucky Shot"]
+      },
       "description": "Pick up Orbs of Power or land precision hits to charge this weapon's Super bar. Once full, [Alternate Weapon Action]  to fire Golden Gun shots.\nAcquire Orbs to fire Golden Gun shots.\nReloading after a precision final blow causes precision hits to refill a round from reserves."
     },
     {
@@ -2149,7 +2303,11 @@
         "Storm and Stress"
       ],
       "mods": ["Sturm Catalyst"],
-      "catalyst": { "name": "Sturm Catalyst", "perks": ["Helping Hands"] },
+      "catalyst": {
+        "name": "Sturm Catalyst",
+        "hash": 1824496860,
+        "perks": ["Helping Hands"]
+      },
       "description": "Final blows with this weapon fill the magazine of the equipped Energy weapon from reserves.\nFinal blows fill the magazine of Energy weapons.\nFinal blows with bonus damage rounds build and store charges which allow you to swap and stow Sturm and Together Forever weapons at a massively increased rate."
     },
     {
@@ -2166,7 +2324,11 @@
         "Textured Grip"
       ],
       "mods": ["Sunshot Catalyst"],
-      "catalyst": { "name": "Sunshot Catalyst", "perks": ["Loose Change"] },
+      "catalyst": {
+        "name": "Sunshot Catalyst",
+        "hash": 1824496861,
+        "perks": ["Loose Change"]
+      },
       "description": "This weapon fires explosive rounds and highlights targets that take damage from Sunshot.\nExplosive rounds. Highlights targets.\nApplying an elemental debuff to a target increases this weapon's reload speed, aim assist, and movement while aiming down sights for a short duration."
     },
     {
@@ -2186,6 +2348,7 @@
       "mods": ["SUROS Regime Catalyst"],
       "catalyst": {
         "name": "SUROS Regime Catalyst",
+        "hash": 1733620422,
         "perks": ["SUROS Ascendance"]
       },
       "description": "The bottom half of each magazine deals bonus damage and has a chance to return health on kill.\nHalf mag bonus damage and regens health.\nIncreased chance for kills to regen health."
@@ -2206,6 +2369,7 @@
       "mods": ["Sweet Business Catalyst"],
       "catalyst": {
         "name": "Sweet Business Catalyst",
+        "hash": 1249968538,
         "perks": ["Serious Business"]
       },
       "description": "Larger magazine. Increased accuracy when firing from the hip. Picking up Special or Heavy ammo immediately reloads this weapon.\nLarge mag. Increased hip fire accuracy.\nWhen this weapon is fully spun up, the flinch from incoming damage is greatly reduced."
@@ -2226,6 +2390,7 @@
       "mods": [],
       "catalyst": {
         "name": "Symmetry Catalyst",
+        "hash": 4218954970,
         "perks": ["Eddy Current", "Electric Styx"]
       },
       "description": "This weapon fires full auto.\n[Alternate Weapon Action]  : Swap to Arc Seeker mode. Arc Seekers track toward combatants you target.\n[Alternate Weapon Action]  : Swap firing modes.\nTemporarily increases reload speed and handling after sprinting or while amplified. This effect is improved when you are amplified.\nIncreases the maximum number of Dynamic Charge stacks."
@@ -2246,6 +2411,7 @@
       "mods": [],
       "catalyst": {
         "name": "Tarrabah Catalyst",
+        "hash": 3759764174,
         "perks": ["Ambitious Assassin"]
       },
       "description": "This weapon stores power when dealing or receiving damage; defeating combatants or dealing damage to Scorched combatants grants increased progress.\n[Alternate Weapon Action]  : Unleashes the beast when full, increasing outgoing damage and reducing incoming Solar damage.\nDamage and final blows charge the weapon. Unleashing this charge increases damage and rate of fire.\nOverflows the magazine based on the number of rapid kills before reloading."
@@ -2261,6 +2427,7 @@
       "mods": ["Telesto Catalyst"],
       "catalyst": {
         "name": "Telesto Catalyst",
+        "hash": 920755188,
         "perks": ["Deeper Pockets", "Harbinger Seethe"]
       },
       "description": "Fusion projectiles attach and detonate with a delayed Void blast.\nProjectiles attach and detonate.\nIncreased ammo reserves.\nAfter activating Harbinger's Pulse multiple times, [Alternate Weapon Action]  to cause a rain of projectiles on your next direct hit with this weapon."
@@ -2281,6 +2448,7 @@
       "mods": [],
       "catalyst": {
         "name": "Tessellation Catalyst",
+        "hash": 2538516770,
         "perks": ["Property: Unavoidable"]
       },
       "description": "This [weapon|instrument|topology] adapts its damage type to match your equipped grenade. Final blows grant grenade and Transcendence energy.\nDamage type matches your grenade.\nTargets near the blast of Property: Irreducible are [afflicted|burdened|cursed] with an elemental effect matching your equipped grenade's damage type."
@@ -2299,7 +2467,11 @@
         "The Roadborn"
       ],
       "mods": [],
-      "catalyst": { "name": "The Chaperone Catalyst", "perks": ["Triple Tap"] },
+      "catalyst": {
+        "name": "The Chaperone Catalyst",
+        "hash": 431220297,
+        "perks": ["Triple Tap"]
+      },
       "description": "Fires a single-slug precision round.\nSingle-slug precision round.\nRapidly landing precision hits will return one round to the magazine."
     },
     {
@@ -2330,6 +2502,7 @@
       "mods": [],
       "catalyst": {
         "name": "The Fourth Horseman Catalyst",
+        "hash": 2826187530,
         "perks": ["And Its Name Was Death"]
       },
       "description": "This weapon's rate of fire is increased significantly, and fires full auto. Final blows auto load ammo from reserves. Powerful targets fully reload the weapon.\nSignificantly increased rate of fire. Defeating targets auto loads from reserves.\nAdds an additional round to the magazine and increases reload speed."
@@ -2384,6 +2557,7 @@
       "mods": [],
       "catalyst": {
         "name": "The Lament Catalyst",
+        "hash": 1218164788,
         "perks": ["Burning Ambition"]
       },
       "description": "[Block]  : Hold to rev the blade.\n • Increases damage and adds [Shield-Piercing] shield piercing to all attacks.\n • Gain stacks when dealing damage with revved attacks.\n • Additional stacks increase the damage and damage resistance of heavy attacks.\nRev to empower; bypasses shields. Strong against [Shield-Piercing] Barrier Champions.\nDealing sustained damage scorches the target. Dealing damage to a scorched target inflicts scorch."
@@ -2404,6 +2578,7 @@
       "mods": [],
       "catalyst": {
         "name": "The Last Word Catalyst",
+        "hash": 3274907024,
         "perks": ["Killing Wind", "Envious Assassin"]
       },
       "description": "This weapon fires full auto. Hip-fire shots deal bonus precision damage while increasing reload speed and accuracy.\nThis weapon fires full auto and is more effective in hip-fire.\nFinal blows grant increased mobility, weapon range, and handling for a short duration.\nDefeating targets with other weapons before drawing this one transfers ammo to the magazine from reserves. This effect can overflow the magazine based on the number of targets defeated."
@@ -2424,6 +2599,7 @@
       "mods": [],
       "catalyst": {
         "name": "The Manticore Catalyst",
+        "hash": 2797384170,
         "perks": ["Flying Monster"]
       },
       "description": "Dealing damage while grounded charges antigrav repulsors. Dealing damage while airborne extends antigrav repulsors.\n[Alternate Weapon Action]  to disengage antigrav repulsors.\nGround damage charges; airborne damage extends.\nWhile you are airborne, sustained damage and final blows with this weapon to difficult combatants grant a Void overshield, reduce combatant accuracy, and return ammo to the magazine."
@@ -2439,6 +2615,7 @@
       "mods": [],
       "catalyst": {
         "name": "The Navigator Catalyst",
+        "hash": 3116569677,
         "perks": ["Gordian Knot"]
       },
       "description": "Firing this weapon at an ally grants Woven Mail to both the user and the target. Deals more damage while you have Woven Mail.\nFire at your allies to grant Woven Mail.\nSpecial reload and then fire to create a Grapple Tangle at the targeted point."
@@ -2478,6 +2655,7 @@
       "mods": [],
       "catalyst": {
         "name": "The Queenbreaker Catalyst",
+        "hash": 1061006937,
         "perks": ["Rewind Rounds"]
       },
       "description": "[Alternate Weapon Action]  to swap between scopes and alter this weapon's firing behavior. Strong against [Stagger] Unstoppable Champions.\nSwap between scopes to alter firing mode. Strong against [Stagger] Unstoppable Champions.\nWhen this weapon's magazine is empty, it refills from reserves based on the number of hits."
@@ -2530,7 +2708,11 @@
         "Textured Grip"
       ],
       "mods": [],
-      "catalyst": { "name": "Thorn Catalyst", "perks": ["Refined Soul"] },
+      "catalyst": {
+        "name": "Thorn Catalyst",
+        "hash": 4091235251,
+        "perks": ["Refined Soul"]
+      },
       "description": "Rounds pierce targets and inflict corruption. Final blows with this weapon leave behind Remnants.\nGrants bonus range and stability. Dealing a final blow or absorbing a Remnant grants additional increased weapon range, as well as increased mobility and handling for a short time."
     },
     {
@@ -2549,6 +2731,7 @@
       "mods": [],
       "catalyst": {
         "name": "Thunderlord Catalyst",
+        "hash": 1550063955,
         "perks": ["Return Stroke"]
       },
       "description": "Final blows with this weapon generate stunning lighting strikes from above. Lightning strikes grant a stack of Bolt Charge. Strong against [Disruption] Overload Champions.\nFinal blows generate lightning strikes and grant a stack of Bolt Charge. Strong against [Disruption] Overload Champions.\nCausing a lightning strike with this weapon partially reloads the magazine from reserves."
@@ -2564,6 +2747,7 @@
       "mods": [],
       "catalyst": {
         "name": "Ticuu's Divination Catalyst",
+        "hash": 3978937353,
         "perks": ["Causality Quiver"]
       },
       "description": "Hipfiring this weapon fires multiple tracking projectiles.\nTargets marked by these projectiles explode upon death, or when struck by another Sacred Flame's explosion.\nHipfired shots track targets.\nPerfectly drawn arrows that detonate Sacred Flames increase arrow damage.\n\nStriking targets unaffected by Sacred Flame instead refreshes Causality Arrows' duration."
@@ -2584,6 +2768,7 @@
       "mods": [],
       "catalyst": {
         "name": "Tommy's Matchbook Catalyst",
+        "hash": 4001063065,
         "perks": ["Heat of the Moment"]
       },
       "description": "Sustained fire with this weapon overheats it, increasing damage but burning the user.\nSustained fire overheats the weapon.\nWhile Ignition Trigger is active, final blows with this weapon cure you and sustained fire scorches your target."
@@ -2604,6 +2789,7 @@
       "mods": [],
       "catalyst": {
         "name": "Touch of Malice Catalyst",
+        "hash": 1557274655,
         "perks": ["Precision Instrument"]
       },
       "description": "The final round in the magazine deals bonus damage, drawing from the wielder's life force, and then regenerates itself. Defeating powerful combatants or multiple targets rapidly restores health.\nFinal round drains life force to deal extra damage.\nDealing sustained damage increases precision damage."
@@ -2624,6 +2810,7 @@
       "mods": ["Tractor Cannon Catalyst"],
       "catalyst": {
         "name": "Tractor Cannon Catalyst",
+        "hash": 456628589,
         "perks": ["Deeper Pockets"]
       },
       "description": "This weapon emits a powerful impulse that pushes targets away, suppressing their abilities and dramatically weakening them. Strong against [Disruption] Overload Champions.\nImpulse push that suppresses targets' abilities. Strong against [Disruption] Overload Champions.\nIncreased ammo reserves."
@@ -2644,6 +2831,7 @@
       "mods": [],
       "catalyst": {
         "name": "Traveler's Chosen Catalyst",
+        "hash": 3967134106,
         "perks": ["Osmosis", "Surplus"]
       },
       "description": "Final blows with this weapon grant stacks of Gathering Light.\n[Alternate Weapon Action]  : Consume stacks, granting melee, grenade, and class ability energy based on the number of stacks.\nFinal blows grant stacks.\n[Alternate Weapon Action]  : Refresh abilities.\nUsing your grenade ability partially refills the magazine and changes this weapon's damage type to match your grenade until you stow it.\nIncreases handling, reload speed, and stability for each fully charged ability."
@@ -2657,7 +2845,11 @@
       "intrinsics": ["Unrepentant"],
       "perks": ["Be the Danger", "Full Bore", "Ricochet Rounds", "Smooth Grip"],
       "mods": [],
-      "catalyst": { "name": "Trespasser Catalyst", "perks": ["Tunnel Vision"] },
+      "catalyst": {
+        "name": "Trespasser Catalyst",
+        "hash": 2895039606,
+        "perks": ["Tunnel Vision"]
+      },
       "description": "Reloading after defeating a target causes the next burst to be a longer, more powerful superburst.\nReloading after defeating a target grants a superburst.\nReloading after defeating a target greatly increases target acquisition and aim down sight speed for a short duration."
     },
     {
@@ -2671,6 +2863,7 @@
       "mods": [],
       "catalyst": {
         "name": "Trinity Ghoul Catalyst",
+        "hash": 3457865914,
         "perks": ["Forked Lightning"]
       },
       "description": "Fires an arrow that splits when released. Aiming down sights and fully drawing the bow both decrease the spread.\nFires an arrow that splits when released.\nLightning Rod now triggers from any Arc damage final blow."
@@ -2689,7 +2882,11 @@
         "Volatile Launch"
       ],
       "mods": [],
-      "catalyst": { "name": "Truth Catalyst", "perks": ["Reaper's Tithe"] },
+      "catalyst": {
+        "name": "Truth Catalyst",
+        "hash": 726894353,
+        "perks": ["Reaper's Tithe"]
+      },
       "description": "This weapon's rockets have tracking. Lock onto targets when aiming down sights. Landing hits with a full magazine grants ammo and boosts the next magazine with increased tracking strength, stability, fire rate, and cluster bombs.\nThis weapon's rockets have tracking.\nMultiple simultaneous final blows queue up a stacking damage buff. Timer starts on next weapon fire; final blows extend this timer."
     },
     {
@@ -2732,6 +2929,7 @@
       "mods": [],
       "catalyst": {
         "name": "Verglas Curve Catalyst",
+        "hash": 2689511581,
         "perks": ["Shiver Quiver"]
       },
       "description": "Final blows with this weapon grant Stasis arrows. Your next hip-fire shot will fire all of them in a single volley.\nFires Stasis arrows.\nFreezing or slowing a target grants this weapon faster draw speed for a short period of time."
@@ -2752,6 +2950,7 @@
       "mods": [],
       "catalyst": {
         "name": "Vex Mythoclast Catalyst",
+        "hash": 838219733,
         "perks": ["Calculated Balance"]
       },
       "description": "This weapon fires singular bolts in full auto. When the magazine is emptied, ammo is pulled from across timelines to refill it based on the number of shots landed.\nThis weapon fires full auto.\nWhile in full auto mode, final blows or rapid hits with this weapon grant bonus damage, accuracy, and stability for a short duration."
@@ -2818,7 +3017,11 @@
         "Last Stand"
       ],
       "mods": ["Vigilance Wing Catalyst"],
-      "catalyst": { "name": "Vigilance Wing Catalyst", "perks": ["Ensemble"] },
+      "catalyst": {
+        "name": "Vigilance Wing Catalyst",
+        "hash": 615063267,
+        "perks": ["Ensemble"]
+      },
       "description": "This weapon fires a 5-round burst. When a nearby ally is killed, gain health regeneration and increased movement speed.\n5-round burst. Heals on ally death.\nImproved handling and reload speed when allies are nearby."
     },
     {
@@ -2837,6 +3040,7 @@
       "mods": [],
       "catalyst": {
         "name": "Wavesplitter Catalyst",
+        "hash": 3156882011,
         "perks": ["Detonator Beam", "Attrition Orbs"]
       },
       "description": "Laser damage has three power levels that oscillate while the trigger is held down.\nPower levels fluctuate over time.\nDealing sustained damage creates an explosion around the target.\nDealing sustained damage creates an Orb of Power."
@@ -2921,6 +3125,7 @@
       "mods": [],
       "catalyst": {
         "name": "Wicked Implement Catalyst",
+        "hash": 961827406,
         "perks": ["Hadopelagic Tribute", "Headstone"]
       },
       "description": "Rapidly landing precision hits causes targets to become slowed. Strong against [Disruption] Overload Champions.\nRapid precision hits slow targets. Strong against [Disruption] Overload Champions.\nHolding down the trigger will fire this weapon at full auto.\nCollecting Stasis shards gradually overflows the magazine.\nPrecision final blows spawn a [Stasis] Stasis crystal at the victim's location."
@@ -2939,7 +3144,11 @@
         "Weighted Edge"
       ],
       "mods": [],
-      "catalyst": { "name": "Winterbite Catalyst", "perks": ["Rimestealer"] },
+      "catalyst": {
+        "name": "Winterbite Catalyst",
+        "hash": 580005458,
+        "perks": ["Rimestealer"]
+      },
       "description": "Fires a large ball of energy that locks onto nearby targets and freezes them. Strong against [Stagger] Unstoppable Champions.\nFires a projectile that freezes. Strong against [Stagger] Unstoppable Champions.\nDestroying a Stasis crystal or defeating a frozen target with this weapon grants you Frost Armor."
     },
     {
@@ -2951,7 +3160,11 @@
       "intrinsics": ["Queen's Wrath"],
       "perks": ["Anti-Taken Fletching", "Broadhead", "High Tension String"],
       "mods": [],
-      "catalyst": { "name": "Wish-Ender Catalyst", "perks": ["One for All"] },
+      "catalyst": {
+        "name": "Wish-Ender Catalyst",
+        "hash": 3457865915,
+        "perks": ["One for All"]
+      },
       "description": "While aiming down sights with a fully drawn Bow, combatants behind walls are highlighted and arrows pierce shields. Strong against [Shield-Piercing] Barrier Champions.\nWhen aiming down sights and fully drawn, gain Truesight. Strong against [Shield-Piercing] Barrier Champions.\nHitting three separate targets increases damage for a moderate duration."
     },
     {
@@ -3015,7 +3228,11 @@
         "Countermass"
       ],
       "mods": [],
-      "catalyst": { "name": "Witherhoard Catalyst", "perks": ["Silent Alarm"] },
+      "catalyst": {
+        "name": "Witherhoard Catalyst",
+        "hash": 2888418988,
+        "perks": ["Silent Alarm"]
+      },
       "description": "Projectiles fired by this weapon blight the target or nearby area on impact.\nWeapon impact causes blight.\nIncreases handling. Holstering this weapon automatically reloads it after a short period of time."
     },
     {
@@ -3089,6 +3306,7 @@
       "mods": [],
       "catalyst": {
         "name": "Xenophage Catalyst",
+        "hash": 2113691818,
         "perks": ["Chain Reaction", "Rampage"]
       },
       "description": "Fires high-powered explosive ammunition.\nEach final blow with this weapon creates an elemental damage explosion.\nKills with this weapon temporarily grant increased damage. Stacks 3x."

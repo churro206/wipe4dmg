@@ -7,6 +7,7 @@ import type {
   ProviderKind,
   Slot,
   Subclass,
+  Weapon,
 } from "../data/schema";
 import {
   compareResults,
@@ -65,6 +66,7 @@ import { RotationEditor } from "./components/RotationEditor";
 import { SegmentedControl } from "./components/SegmentedControl";
 import { StatSliders } from "./components/StatSliders";
 import { SummaryBar } from "./components/SummaryBar";
+import { WeaponPicker } from "./components/WeaponPicker";
 import { Tabs } from "./components/Tabs";
 import {
   abilities,
@@ -75,10 +77,16 @@ import {
   buckets,
   effects,
   iconUrl,
-  weapon,
+  weaponById,
+  weapons,
 } from "./data";
 import { effectIconKey, PROVIDER_LABELS } from "./describe";
 import { effectSections } from "./effectSections";
+import {
+  effectRelevantTo,
+  hasCatalyst,
+  hasIgnition,
+} from "../engine/weaponInfo";
 import { factor, integer, seconds } from "./format";
 
 const TABS = [
@@ -141,6 +149,8 @@ function App() {
   const [guardianClass, setGuardianClass] = useState(initial.guardianClass);
   const [subclass, setSubclass] = useState(initial.subclass);
   const [selections, setSelections] = useState(initial.selections);
+  const [weaponId, setWeaponId] = useState(initial.weaponId);
+  const weapon = weaponById(weaponId);
   const [catalyst, setCatalyst] = useState(initial.catalyst);
   const [windowInputs, setWindowInputs] = useState(initial.windowInputs);
   const [abilityChoice, setAbilityChoice] = useState<AbilityChoice>(
@@ -170,6 +180,7 @@ function App() {
     damagePhaseSeconds >= 0;
   const ownSelected = effectsOf(selections);
   const currentBuild = buildOfState({
+    weaponId,
     guardianClass,
     subclass,
     catalyst,
@@ -202,7 +213,7 @@ function App() {
   const comparisonResult =
     isValid && comparisonInputs
       ? simulate(
-          weapon,
+          weaponById(comparison!.weaponId),
           damagePhaseSeconds,
           comparisonInputs.selected,
           buckets,
@@ -217,6 +228,7 @@ function App() {
   const dpsPoints = useMemo(() => {
     const inputs = simulationOf(
       buildOfState({
+        weaponId,
         guardianClass,
         subclass,
         catalyst,
@@ -228,13 +240,14 @@ function App() {
       }),
     );
     return dpsByDamagePhase(
-      weapon,
+      weaponById(weaponId),
       inputs.selected,
       buckets,
       inputs.options,
       Array.from({ length: dpsChartSeconds }, (_, i) => i + 1),
     );
   }, [
+    weaponId,
     guardianClass,
     subclass,
     catalyst,
@@ -245,6 +258,10 @@ function App() {
     dpsChartSeconds,
   ]);
 
+  const changeWeapon = (id: string) => {
+    setWeaponId(id);
+    if (!hasCatalyst(weaponById(id))) setCatalyst(false);
+  };
   const selectBoss = (id: string) => {
     setBossId(id);
     const chosen = bosses.find((b) => b.id === id);
@@ -314,6 +331,7 @@ function App() {
   const fixedWindows = windowsFor(effectsOf(fireteamSelections), windowInputs);
   // The ranking depends only on these inputs, not on the own effects.
   const optimizerKey = JSON.stringify({
+    weaponId,
     guardianClass,
     fireteamSelections,
     fixedWindows,
@@ -359,8 +377,11 @@ function App() {
   };
 
   // Own effects by slot, in the order of the game screens (U3).
+  const shownEffects = effects.filter((effect) =>
+    effectRelevantTo(effect, weapon),
+  );
   const sections = effectSections(
-    effects,
+    shownEffects,
     guardianClass,
     subclass,
     GRANTED_EFFECT_IDS,
@@ -372,6 +393,7 @@ function App() {
       <>
         {heading}
         <EffectPicker
+          weaponElement={weapon.element}
           effects={section.effects}
           provider={section.provider}
           isSelected={(effect) => isSelected(effect, section.provider)}
@@ -446,27 +468,44 @@ function App() {
 
               <h2>Waffe</h2>
               <div className="tile-grid">
-                <span className="tile-wrap weapon-wrap">
-                  <div className="tile weapon-tile">
-                    <Icon iconKey={`weapon:${weapon.id}`} label={weapon.name} />
-                    <span className="tile-label">{weapon.name}</span>
-                  </div>
-                </span>
-                <span className="tile-wrap">
-                  <button
-                    type="button"
-                    className="tile"
-                    aria-pressed={catalyst}
-                    onClick={() => setCatalyst((on) => !on)}
-                  >
-                    <Icon
-                      iconKey={`catalyst:${weapon.id}`}
-                      label="Katalysator"
-                    />
-                    <span className="tile-label">Katalysator</span>
-                  </button>
-                </span>
+                <WeaponPicker
+                  weapons={weapons}
+                  selected={weapon}
+                  onSelect={changeWeapon}
+                />
+                {hasCatalyst(weapon) && (
+                  <span className="tile-wrap">
+                    <button
+                      type="button"
+                      className="tile"
+                      aria-pressed={catalyst}
+                      onClick={() => setCatalyst((on) => !on)}
+                    >
+                      <Icon
+                        iconKey={`catalyst:${weapon.id}`}
+                        label="Katalysator"
+                      />
+                      <span className="tile-label">Katalysator</span>
+                    </button>
+                  </span>
+                )}
               </div>
+              {weapon.options?.some((o) => o.kind === "catalyst") && (
+                <p className="note">
+                  Katalysator:{" "}
+                  {weapon.options
+                    .filter((o) => o.kind === "catalyst")
+                    .map(
+                      (o) =>
+                        `${o.name} ×${factor.format(o.factor.value ?? 1)}${
+                          o.durationSeconds !== null || o.condition !== null
+                            ? " (gilt hier die ganze Damage Phase; im Spiel begrenzt)"
+                            : ""
+                        }`,
+                    )
+                    .join(", ")}
+                </p>
+              )}
 
               <h2>Klasse</h2>
               <SegmentedControl
@@ -578,8 +617,9 @@ function App() {
                     ` (${fireteamSelections.length} gewählt)`}
                 </summary>
                 <EffectPicker
+                  weaponElement={weapon.element}
                   effects={effectsFor(
-                    effects,
+                    shownEffects,
                     "fireteamSupport",
                     guardianClass,
                   )}
@@ -594,7 +634,16 @@ function App() {
               <div className="results-head">
                 {result ? (
                   <SummaryBar
-                    rows={compareResults(result, comparisonResult ?? result)}
+                    rows={compareResults(
+                      result,
+                      comparisonResult ?? result,
+                    ).filter(
+                      (row) =>
+                        row.key !== "ignitions" ||
+                        hasIgnition(weapon) ||
+                        (comparison !== null &&
+                          hasIgnition(weaponById(comparison.weaponId))),
+                    )}
                     withComparison={comparisonResult !== null}
                   />
                 ) : (
@@ -622,9 +671,10 @@ function App() {
                     </button>
                   )}
                   <InfoTip>
-                    Effects wirken in ihrem Zeitfenster aus der Rotation.
-                    Ignitions und Taken Seeker sind enthalten, Burn-Schaden noch
-                    nicht.
+                    Effects wirken in ihrem Zeitfenster aus der Rotation.{" "}
+                    {weapon.intrinsicParts.length > 0
+                      ? "Ignitions und Taken Seeker sind enthalten, Burn-Schaden noch nicht."
+                      : "Der Schaden pro Shot ist ein gemessener Durchschnitt (Aegis) inklusive Intrinsic; Shots und Timing aus Aegis oder Quantum."}
                   </InfoTip>
                 </div>
                 {initial.message && <p className="note">{initial.message}</p>}
@@ -699,6 +749,7 @@ function App() {
                         damagePhaseSeconds={damagePhaseSeconds}
                       />
                       <RotationEditor
+                        weaponElement={weapon.element}
                         effects={ownSelected}
                         windowInputOf={(effect) =>
                           windowInputs[effect.id] ?? defaultWindow(effect)
@@ -740,6 +791,7 @@ function App() {
 
                   {tab === "breakdown" && (
                     <BreakdownPanel
+                      weapon={weapon}
                       result={result}
                       damagePhaseSeconds={damagePhaseSeconds}
                       selected={selected}
@@ -773,6 +825,7 @@ function App() {
                       )}
                       {optimizer && (
                         <OptimizerCards
+                          weaponElement={weapon.element}
                           entries={optimizer.entries}
                           guardianClass={guardianClass}
                           currentTotal={result.totalDamage}
@@ -793,11 +846,11 @@ function App() {
         )}
       </main>
       <footer>
-        wipe4dmg v{__APP_VERSION__} · Destiny-Inhalte und Icons © Bungie. Werte aus Community-Quellen (Quantum
-        Damage-ics, Aegis, Destiny Data Compendium, Court). Perk-Daten:{" "}
-        <a href="https://www.d2clarity.com">Clarity</a> (Feedback zu
-        Perk-Texten im{" "}
-        <a href="https://url.d2clarity.com/discord">Clarity-Discord</a>;
+        wipe4dmg v{__APP_VERSION__} · Destiny-Inhalte und Icons © Bungie. Werte
+        aus Community-Quellen (Quantum Damage-ics, Aegis, Destiny Data
+        Compendium, Court). Perk-Daten:{" "}
+        <a href="https://www.d2clarity.com">Clarity</a> (Feedback zu Perk-Texten
+        im <a href="https://url.d2clarity.com/discord">Clarity-Discord</a>;
         Änderungen durch uns sind gekennzeichnet).
       </footer>
     </>
@@ -808,11 +861,13 @@ function App() {
 const KIND_ORDER: AbilityKind[] = ["super", "grenade", "melee"];
 
 function BreakdownPanel({
+  weapon,
   result,
   damagePhaseSeconds,
   selected,
   options,
 }: {
+  weapon: Weapon;
   result: SimulationResult;
   damagePhaseSeconds: number;
   selected: Effect[];

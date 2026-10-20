@@ -231,6 +231,7 @@ export function extractManifestWeapons(
       catalyst: catalyst
         ? {
             name: nameOf(catalyst),
+            hash: catalyst.hash,
             perks: catalystPerks
               .map((perk) => perk.name ?? "")
               .filter((perk) => perk !== ""),

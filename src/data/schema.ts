@@ -525,8 +525,12 @@ export const ManifestWeapon = z.object({
   perks: z.array(z.string()), // socket category "Weapon Perks" with all options, without trackers
   mods: z.array(z.string()), // socket category "Weapon Mods", e.g. the parts of Praxic Blade
   catalyst: z
-    .object({ name: z.string(), perks: z.array(z.string()) })
-    .nullable(), // e.g. { name: "Truth Catalyst", perks: ["Reaper's Tithe"] }
+    .object({
+      name: z.string(),
+      hash: z.number().int(),
+      perks: z.array(z.string()),
+    })
+    .nullable(), // e.g. { name: "Truth Catalyst", hash: 726894353, perks: ["Reaper's Tithe"] }
   description: z.string(), // texts of intrinsic and catalyst perks, one per line
 });
 export type ManifestWeapon = z.infer<typeof ManifestWeapon>;

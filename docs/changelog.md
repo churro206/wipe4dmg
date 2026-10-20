@@ -3,6 +3,7 @@
 ## Unveröffentlicht
 
 - Versionsanzeige unten auf der Seite.
+- **Waffenauswahl:** 49 exotische Special- und Heavy-Waffen wählbar, mit Suche und Filter nach Waffentyp. Ein festgehaltener Vergleich behält seine Waffe, so lassen sich zwei Waffen vergleichen. Effects, die zur Waffe nicht passen, sind ausgeblendet (z. B. Ember of Ashes bei Truth). Der Katalysator erscheint nur bei Waffen mit Katalysator, mit Hinweis, wenn er im Spiel nur begrenzt wirkt.
 - Waffen-Pakete im Rechner vorbereitet: Der Katalysator wirkt bei importierten Waffen als Faktor (z. B. Truth ×1,40), schon eingerechnete Buffs zählen nicht doppelt.
 - Waffen-Import, Teil 5: Clarity als Quelle für Perks, Katalysatoren und Exotic-Rüstung (genannt im Footer und im Wiki). Katalysatoren werden erkannt; ändert ein Katalysator Munition oder Reload, gilt das Timing ohne Katalysator. Whisper of the Worm, Izanagi's Burden und D.A.R.C.I. sind jetzt Pakete, Thunderlord nutzt das Timing ohne Katalysator. 49 Pakete.
 - Waffen-Import, Teil 4: Aegis-Zeilen mit Meta-Builds zählen fürs Timing, wenn deren Annahmen laut Text Munition, Reload und Feuerrate nicht ändern (z. B. Dawn Chorus, Solar Fulmination); Argent Ordnance und Sniper's Meditation ändern sie und bleiben gesperrt. 47 Pakete.

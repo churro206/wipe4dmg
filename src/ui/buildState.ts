@@ -11,7 +11,14 @@ import type {
 import { decodeLink, encodeLink } from "../engine/buildLink";
 import type { EffectWindowInput } from "../engine/effectWindows";
 import { abilitiesFor, canProvide } from "../engine/providers";
-import { abilities, abilityStats, effects, linkRegistry, weapon } from "./data";
+import {
+  abilities,
+  abilityStats,
+  DEFAULT_WEAPON_ID,
+  effects,
+  linkRegistry,
+  weaponById,
+} from "./data";
 import { secondsInput } from "./format";
 import { replacedMessage } from "./describe";
 
@@ -226,6 +233,7 @@ function migrateGrantedSelections(
 
 /** The build of the UI state; abilities and stats only if an ability is chosen. */
 export function buildOfState(state: {
+  weaponId: string;
   guardianClass: GuardianClass;
   subclass: Subclass;
   catalyst: boolean;
@@ -237,7 +245,7 @@ export function buildOfState(state: {
 }): Build {
   const picks = abilitiesOfChoice(state.abilityChoice);
   return {
-    weaponId: weapon.id,
+    weaponId: state.weaponId,
     guardianClass: state.guardianClass,
     subclass: state.subclass,
     catalyst: state.catalyst,
@@ -260,12 +268,14 @@ export function describeBuild(build: Build): string {
     ...effectsOf(build.selections).map((effect) => effect.name),
   ];
   if (build.catalyst) names.unshift("Katalysator");
+  names.unshift(weaponById(build.weaponId).name);
   const what = names.length > 0 ? names.join(", ") : "ohne Effects";
   return `${CLASS_LABELS[build.guardianClass]} ${SUBCLASS_LABELS[build.subclass]}: ${what}`;
 }
 
 export type LinkState = {
   input: string;
+  weaponId: string;
   guardianClass: GuardianClass;
   subclass: Subclass;
   selections: Selection[];
@@ -281,6 +291,7 @@ export type LinkState = {
 export function stateFromLink(search: string): LinkState {
   const empty: LinkState = {
     input: "",
+    weaponId: DEFAULT_WEAPON_ID,
     guardianClass: DEFAULT_CLASS,
     subclass: DEFAULT_SUBCLASS,
     selections: [],
@@ -301,7 +312,6 @@ export function stateFromLink(search: string): LinkState {
       unknownAbilityCodes,
       replacedEffectCodes,
     } = decodeLink(text, linkRegistry);
-    if (build.weaponId !== weapon.id) throw new Error(build.weaponId);
     const linked: AbilityChoice = Object.fromEntries(
       (build.abilities ?? []).flatMap((pick) => {
         const kind = abilities.find((a) => a.id === pick.abilityId)?.kind;
@@ -311,6 +321,7 @@ export function stateFromLink(search: string): LinkState {
     const migrated = migrateGrantedSelections(build, linked);
     return {
       input: String(build.damagePhaseSeconds),
+      weaponId: build.weaponId,
       guardianClass: build.guardianClass,
       subclass: build.subclass,
       selections: migrated.selections,

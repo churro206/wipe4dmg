@@ -36,7 +36,11 @@ const truth: ManifestWeapon = {
   intrinsics: ["Prototype Trueseeker"],
   perks: ["Grenades and Horseshoes", "Volatile Launch"],
   mods: ["Backup Mag"],
-  catalyst: { name: "Truth Catalyst", perks: ["Reaper's Tithe"] },
+  catalyst: {
+    name: "Truth Catalyst",
+    hash: 726894353,
+    perks: ["Reaper's Tithe"],
+  },
   description: "This weapon's rockets have tracking.",
 };
 const eriana: ManifestWeapon = {

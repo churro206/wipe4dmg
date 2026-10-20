@@ -771,13 +771,75 @@ h3.sub {
   color: var(--muted);
 }
 
-/* Weapon tile: shows the weapon, not a toggle; two columns wide for its name */
+/* Weapon tile: opens the weapon picker; two columns wide for its name */
 .tile-wrap.weapon-wrap {
   grid-column: span 2;
 }
 
-.tile.weapon-tile {
-  cursor: default;
+.tile-sub {
+  display: block;
+  color: var(--muted);
+}
+
+/* Weapon picker (W1-6): a full row below the tiles with search, type filter and list */
+.weapon-picker {
+  grid-column: 1 / -1;
+  order: 99;
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.chips button {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.chips button[aria-pressed="true"],
+.weapon-list button[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  font-weight: 600;
+}
+
+.weapon-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 0.3rem;
+  max-height: 22rem;
+  overflow-y: auto;
+}
+
+.weapon-list button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 0.5rem;
+  align-items: center;
+  text-align: left;
+  padding: 0.25rem 0.4rem;
+}
+
+.weapon-list button .icon {
+  grid-row: span 2;
+}
+
+.weapon-list .muted {
+  font-size: 0.75rem;
+  color: var(--muted);
 }
 
 /* Place for a later part of the build, e.g. exotic armor */

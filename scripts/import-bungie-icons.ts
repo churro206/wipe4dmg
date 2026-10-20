@@ -7,7 +7,13 @@
 // manifest-terms.json (ADR 0013).
 // Needs BUNGIE_API_KEY, e.g. in .env.local (ignored by git). Run: npm run import:icons
 
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import { format } from "prettier";
 import {
   AbilityData,
@@ -148,13 +154,37 @@ console.log(
   `Wrote manifest types for ${Object.keys(manifestTerms.terms).length} assumption names`,
 );
 
+// Imported packages (ADR 0013); run npm run build:weapons first, then this again for new weapons.
+const packages = existsSync(new URL("src/data/weapon-packages.json", ROOT))
+  ? Weapon.array().parse(readJson("src/data/weapon-packages.json"))
+  : [];
+const catalystRefs: IconRef[] = packages.flatMap((weapon) => {
+  const catalyst = manifestWeapons.weapons.find(
+    (w) => w.name === weapon.name,
+  )?.catalyst;
+  return catalyst && weapon.options?.some((o) => o.kind === "catalyst")
+    ? [
+        {
+          key: `catalyst:${weapon.id}`,
+          manifestRef: {
+            table: "DestinyInventoryItemDefinition" as const,
+            hash: catalyst.hash,
+          },
+        },
+      ]
+    : [];
+});
 const refs = collectIconRefs(
   Effect.array().parse(readJson("src/data/effects.json")),
-  // Every weapon Data File (ADR 0012).
-  readdirSync(new URL("src/data/weapons/", ROOT))
-    .filter((file) => file.endsWith(".json"))
-    .map((file) => Weapon.parse(readJson(`src/data/weapons/${file}`))),
+  // Every weapon Data File (ADR 0012) and every imported package.
   [
+    ...readdirSync(new URL("src/data/weapons/", ROOT))
+      .filter((file) => file.endsWith(".json"))
+      .map((file) => Weapon.parse(readJson(`src/data/weapons/${file}`))),
+    ...packages,
+  ],
+  [
+    ...catalystRefs,
     ...IconRef.array().parse(readJson("src/data/icon-refs.json")),
     ...abilityIconRefs(
       AbilityData.array().parse(readJson("src/data/abilities.json")),

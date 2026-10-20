@@ -42,16 +42,13 @@ Keine Ingame-Tests pro Waffe (ADR 0011, Punkt 6).
 
 Ob ein Effect auf eine Waffe wirkt, ergibt sich aus seinen Parts (`effectAppliesToWeapon` in `src/engine/effectParts.ts`): Multiplier nach Element und Waffentyp, Timing nach Waffentyp, Zähler-Effects nur, wenn die Waffe den Zähler hat. Wirkt ein Effect nur auf bestimmte Waffen, gehört die Einschränkung in seine Parts (`weaponTypes`, `elements`), nicht in die Waffe.
 
-## Noch an One Thousand Voices gebunden (für W1)
+## Waffen in der Oberfläche (W1-6)
 
-Die Engine ist frei von Annahmen über One Thousand Voices (Test mit einer erfundenen Waffe in `tests/support/testWeapon.ts`). In der Oberfläche fehlt noch:
-
-- Waffenauswahl; die Komponenten importieren `weapon` direkt aus `src/ui/data.ts`.
-- Katalysator-Kachel nur zeigen, wenn die Waffe einen Katalysator hat.
-- Kennzahl „Ignitions“ (auch im Vergleich, `compareResults`) und Ignitions in der Zeitleiste nur bei Waffen mit Ignition.
-- Namen und Farben im Donut kommen aus einer festen Liste (`DAMAGE_KINDS` in `src/ui/Charts.tsx`); neue Damage Instances brauchen Name und Farbe.
-- Hinweistext „Ignitions und Taken Seeker sind enthalten“ in `App.tsx`.
-- Effects ausblenden, die weder auf die Waffe noch auf eine gewählte Ability wirken (ADR 0012, Punkt 5).
+- `src/ui/data.ts` lädt Handmodelle und Pakete (`weapon-packages.json`); `weaponById` fällt auf One Thousand Voices zurück.
+- Waffenauswahl mit Suche und Filter nach Waffentyp (`WeaponPicker`). Ein Vergleich behält seine eigene Waffe.
+- `src/engine/weaponInfo.ts`: Katalysator-Kachel nur bei `hasCatalyst`, Kennzahl „Ignitions“ nur bei `hasIgnition`, Effects nur bei `effectRelevantTo` (wirkt auf die Waffe oder auf Abilities).
+- Pakete haben eine Damage Instance „shot“; im Donut heißt sie „Shots“. Neue Handmodelle mit eigenen Damage Instances brauchen Name und Farbe in `DAMAGE_KINDS` (`src/ui/Charts.tsx`).
+- Icons: nach `npm run build:weapons` noch einmal `npm run import:icons`, damit neue Pakete ihr Waffen- und Katalysator-Icon bekommen.
 
 ## Nach einem Patch
 
