@@ -4,6 +4,8 @@
 // tests/weaponPackages.test.ts, since scripts cannot load the engine directly.
 
 import type {
+  AegisSustainedRow,
+  AegisSustainedSnapshot,
   AegisWeaponRow,
   AegisWeaponSnapshot,
   CompendiumEntry,
@@ -30,6 +32,7 @@ import {
 
 export type WeaponImportInputs = {
   aegis: AegisWeaponSnapshot;
+  sustained: AegisSustainedSnapshot;
   quantum: QuantumWeaponSnapshot;
   manifestVersion: string;
   manifest: ManifestWeapon[];
@@ -77,6 +80,7 @@ export type ReportWeapon = {
   totalShots: number | null;
   reloadSeconds: number | null;
   timeToEmptySeconds: number | null;
+  timingSource: "Aegis" | "Quantum" | null;
   quantumRpm: number | null;
   derivedRpm: number | null;
   scaleDeviation: number | null;
@@ -199,6 +203,112 @@ const blockingReason = (classes: ReportAssumption[]): string =>
     )
     .join("; ");
 
+/** Timing of a package; the simulator reaches timeToEmptySeconds with these values. */
+type Timing = {
+  rowId: string;
+  magazine: number;
+  totalShots: number;
+  reloadSeconds: number; // as the source states it
+  engineReloadSeconds: number; // what the simulator adds after the interval of the last shot
+  intervalSeconds: number;
+  timeToEmptySeconds: number;
+  note: string;
+};
+type TimingProblem = { problem: string };
+
+/**
+ * Aegis "Sustained" reloads right after the last shot of a magazine: time to empty =
+ * (shots − magazines) × interval + reloads × reload. The simulator counts one interval before each
+ * reload, so it gets reload − interval.
+ */
+export function timingFromAegis(
+  row: AegisSustainedRow,
+): Timing | TimingProblem {
+  const [magazine] = row.magazines;
+  const timeToEmpty = row.timeToEmptySeconds;
+  if (!magazine || timeToEmpty === null || row.shots < 1)
+    return {
+      problem: `Zeile „${row.id}“ ohne Magazin-Folge oder Zeit bis leer`,
+    };
+  const regular = row.magazines.every(
+    (m, i) =>
+      m === magazine || (i === row.magazines.length - 1 && m < magazine),
+  );
+  if (!regular)
+    return {
+      problem: `unregelmäßige Magazin-Folge ${row.magazines.join("-")}`,
+    };
+  const magazines = Math.ceil(row.shots / magazine);
+  const reloads = magazines - 1;
+  const reloadMs = row.reloadMs ?? row.swapMs;
+  if (reloads > 0 && reloadMs === null)
+    return { problem: "kein Reload in den Notizen" };
+  const reloadSeconds = (reloadMs ?? 0) / 1000;
+  const intervalSeconds =
+    row.shots > magazines
+      ? (timeToEmpty - reloads * reloadSeconds) / (row.shots - magazines)
+      : (row.peakRateSeconds ?? reloadSeconds);
+  const engineReloadSeconds = reloadSeconds - intervalSeconds;
+  if (intervalSeconds <= 0 || (reloads > 0 && engineReloadSeconds < 0))
+    return {
+      problem: `Zeit bis leer ${timeToEmpty} s passt nicht zu ${reloads} Reloads à ${reloadSeconds} s`,
+    };
+  return {
+    rowId: row.id,
+    magazine,
+    totalShots: row.shots,
+    reloadSeconds,
+    engineReloadSeconds: Math.max(0, engineReloadSeconds),
+    intervalSeconds,
+    timeToEmptySeconds: timeToEmpty,
+    note: `Derived: (TtE ${timeToEmpty} s − ${reloads} reloads × ${reloadSeconds} s) ÷ ${row.shots - magazines} intervals within magazines (ADR 0013)`,
+  };
+}
+
+/** Quantum counts one interval before each reload, like the simulator. */
+export function timingFromQuantum(
+  row: QuantumWeaponRow,
+): Timing | TimingProblem {
+  const { magazine, totalShots, reloadSeconds, timeToEmptySeconds, rpm } = row;
+  if (magazine === null || totalShots === null || reloadSeconds === null)
+    return {
+      problem: `ohne Magazin, Munition oder Reload (${JSON.stringify(row.textCells)})`,
+    };
+  const reloads = Math.ceil(totalShots / magazine) - 1;
+  let intervalSeconds: number;
+  let note: string;
+  if (timeToEmptySeconds !== null && totalShots > 1) {
+    intervalSeconds =
+      (timeToEmptySeconds - reloads * reloadSeconds) / (totalShots - 1);
+    note = `Derived: (Time to Empty ${timeToEmptySeconds} s − ${reloads} reloads × ${reloadSeconds} s) ÷ ${totalShots - 1} intervals (ADR 0013)`;
+    // With one shot per magazine the reloads fill the time; the interval does not matter.
+    if (intervalSeconds <= 0 && magazine === 1) intervalSeconds = 0.001;
+  } else if (rpm !== null) {
+    intervalSeconds = 60 / rpm;
+    note = "Quantum fire rate; no Time to Empty";
+  } else {
+    return { problem: "ohne Zeit bis leer und ohne rpm" };
+  }
+  if (intervalSeconds <= 0) return { problem: "abgeleiteter Abstand ≤ 0" };
+  return {
+    rowId: row.id,
+    magazine,
+    totalShots,
+    reloadSeconds,
+    engineReloadSeconds: reloadSeconds,
+    intervalSeconds,
+    timeToEmptySeconds:
+      timeToEmptySeconds ??
+      (totalShots - 1) * intervalSeconds + reloads * reloadSeconds,
+    note,
+  };
+}
+
+const minDeviation = (values: (number | null)[]): number | null => {
+  const known = values.filter((v): v is number => v !== null);
+  return known.length > 0 ? Math.min(...known) : null;
+};
+
 /** Builds packages, gaps, codes and the report from the inputs; pure, no file access. */
 export function buildWeaponImport(
   inputs: WeaponImportInputs,
@@ -209,6 +319,13 @@ export function buildWeaponImport(
     name: `${inputs.aegis.source.name}, row ${row.id}`,
     url: inputs.aegis.source.url,
     retrieved: inputs.aegis.source.retrieved,
+    status: "verified",
+    ...(note ? { note } : {}),
+  });
+  const sustainedSource = (rowId: string, note?: string): Source => ({
+    name: `${inputs.sustained.source.name}, row ${rowId}`,
+    url: inputs.sustained.source.url,
+    retrieved: inputs.sustained.source.retrieved,
     status: "verified",
     ...(note ? { note } : {}),
   });
@@ -244,6 +361,7 @@ export function buildWeaponImport(
       totalShots: null,
       reloadSeconds: null,
       timeToEmptySeconds: null,
+      timingSource: null,
       quantumRpm: null,
       derivedRpm: null,
       scaleDeviation: null,
@@ -410,20 +528,27 @@ export function buildWeaponImport(
       });
     }
 
-    // Timing from Quantum: the row without variant, else a variant that only describes the
-    // execution (e.g. "direct impact", "ADS"), else a catalyst row with a warning.
+    // Timing from two sources (point 7): Aegis "Sustained" first, Quantum second; both are compared.
+    const classifyLabel = (label: string) =>
+      classifyAssumption(label, {
+        weapon: manifest,
+        effects: effectNames,
+        armor: inputs.armor,
+        terms: inputs.terms,
+      }).kind;
+    const sustainedRows = inputs.sustained.rows
+      .filter((r) => r.name === manifest.name)
+      .filter((r) =>
+        r.assumptions.every((a) => BASE_KINDS.includes(classifyLabel(a))),
+      )
+      .sort((a, b) => a.assumptions.length - b.assumptions.length);
+    const aegisTimings = sustainedRows.map(timingFromAegis);
+    const aegis = aegisTimings.find((t): t is Timing => "intervalSeconds" in t);
+
+    // Quantum: the row without variant, else a variant that only describes the execution
+    // (e.g. "direct impact", "ADS"), else a catalyst row with a warning.
     const variantKinds = (row: QuantumWeaponRow) =>
-      row.variant === ""
-        ? []
-        : quantumLabel(row.variant).map(
-            (label) =>
-              classifyAssumption(label, {
-                weapon: manifest,
-                effects: effectNames,
-                armor: inputs.armor,
-                terms: inputs.terms,
-              }).kind,
-          );
+      row.variant === "" ? [] : quantumLabel(row.variant).map(classifyLabel);
     const candidates = inputs.quantum.rows
       .filter((r) => r.name === manifest.name)
       .map((row) => ({ row, kinds: variantKinds(row) }));
@@ -435,41 +560,81 @@ export function buildWeaponImport(
         (k) => k === "execution" || k === "intrinsic" || k === "catalyst",
       ),
     );
-    const quantum = (plain[0] ?? withCatalyst[0])?.row;
-    if (!quantum) {
-      gap(
+    const quantumRow = (plain[0] ?? withCatalyst[0])?.row;
+    const quantum = quantumRow ? timingFromQuantum(quantumRow) : null;
+    const quantumTiming =
+      quantum && "intervalSeconds" in quantum ? quantum : undefined;
+
+    const timing = aegis ?? quantumTiming;
+    if (!timing) {
+      const reasons = [
+        ...aegisTimings.map((t) => `Aegis: ${(t as TimingProblem).problem}`),
+        sustainedRows.length === 0 &&
+        inputs.sustained.rows.some((r) => r.name === manifest.name)
+          ? "Aegis: nur Zeilen mit fremden Annahmen"
+          : "",
+        quantum && "problem" in quantum ? `Quantum: ${quantum.problem}` : "",
         candidates.length === 0
           ? "keine Quantum-Zeile"
-          : `keine passende Quantum-Zeile (nur ${candidates.map(({ row }) => `„${row.variant}“`).join(", ")})`,
-      );
-      continue;
-    }
-    if (plain.length === 0)
-      entry.notes.push(
-        `⚠ Timing aus der Quantum-Zeile „${quantum.variant}“ mit Katalysator`,
-      );
-    else if (quantum.variant !== "")
-      entry.notes.push(`Timing aus der Quantum-Zeile „${quantum.variant}“`);
-    if (plain.length > 1)
-      entry.notes.push(
-        `${plain.length} passende Quantum-Zeilen, die erste gilt („${quantum.note}“)`,
-      );
-    entry.magazine = quantum.magazine;
-    entry.totalShots = quantum.totalShots;
-    entry.reloadSeconds = quantum.reloadSeconds;
-    entry.timeToEmptySeconds = quantum.timeToEmptySeconds;
-    entry.quantumRpm = quantum.rpm;
-    entry.scaleDeviation = scaleDeviation(base, quantum);
-    const { magazine, totalShots, reloadSeconds, timeToEmptySeconds, rpm } =
-      quantum;
-    if (magazine === null || totalShots === null || reloadSeconds === null) {
+          : !quantumRow
+            ? `keine passende Quantum-Zeile (nur ${candidates.map(({ row }) => `„${row.variant}“`).join(", ")})`
+            : "",
+      ].filter((r) => r !== "");
       gap(
-        `Quantum ohne Magazin, Munition oder Reload (${JSON.stringify(quantum.textCells)})`,
+        `kein Timing: ${reasons.join("; ") || "keine Aegis- und keine Quantum-Zeile"}`,
       );
       continue;
     }
+    if (quantumRow && timing === quantumTiming) {
+      if (plain.length === 0)
+        entry.notes.push(
+          `⚠ Timing aus der Quantum-Zeile „${quantumRow.variant}“ mit Katalysator`,
+        );
+      else if (quantumRow.variant !== "")
+        entry.notes.push(
+          `Timing aus der Quantum-Zeile „${quantumRow.variant}“`,
+        );
+    }
+    if (aegis && quantumTiming) {
+      const agree =
+        aegis.totalShots === quantumTiming.totalShots &&
+        Math.abs(aegis.timeToEmptySeconds - quantumTiming.timeToEmptySeconds) <=
+          TOLERANCE * quantumTiming.timeToEmptySeconds;
+      entry.notes.push(
+        agree
+          ? "Timing: Aegis und Quantum stimmen überein"
+          : `⚠ Timing: Aegis ${aegis.totalShots} Shots in ${de(aegis.timeToEmptySeconds, 1)} s, Quantum ${quantumTiming.totalShots} Shots in ${de(quantumTiming.timeToEmptySeconds, 1)} s; Aegis gilt`,
+      );
+    } else {
+      entry.notes.push(
+        `Timing nur aus ${timing === aegis ? "Aegis" : "Quantum"}`,
+      );
+    }
+    entry.timingSource = timing === aegis ? "Aegis" : "Quantum";
+    entry.magazine = timing.magazine;
+    entry.totalShots = timing.totalShots;
+    entry.reloadSeconds = timing.reloadSeconds;
+    entry.timeToEmptySeconds = timing.timeToEmptySeconds;
+    entry.quantumRpm = quantumRow?.rpm ?? null;
+    entry.derivedRpm = 60 / timing.intervalSeconds;
+    if (
+      timing.magazine > 1 &&
+      entry.quantumRpm !== null &&
+      Math.abs(entry.derivedRpm / entry.quantumRpm - 1) > RPM_HINT
+    )
+      entry.notes.push(
+        `abgeleitete Feuerrate ${de(entry.derivedRpm, 0)} statt ${entry.quantumRpm} rpm`,
+      );
+
+    // Scale (point 10): Aegis against Quantum, or against "Base" in Aegis "Sustained".
+    entry.scaleDeviation = minDeviation([
+      quantumRow ? scaleDeviation(base, quantumRow) : null,
+      sustainedRows[0]?.base
+        ? Math.abs(base.perShot / sustainedRows[0].base - 1)
+        : null,
+    ]);
     if (entry.scaleDeviation === null) {
-      gap("Skala nicht prüfbar: keine vergleichbaren Einzeltreffer");
+      gap("Skala nicht prüfbar: keine vergleichbaren Werte");
       continue;
     }
     if (entry.scaleDeviation > TOLERANCE) {
@@ -478,32 +643,11 @@ export function buildWeaponImport(
       );
       continue;
     }
-    const reloads = Math.ceil(totalShots / magazine) - 1;
-    let intervalSeconds: number;
-    let timingNote: string;
-    if (timeToEmptySeconds !== null && totalShots > 1) {
-      intervalSeconds =
-        (timeToEmptySeconds - reloads * reloadSeconds) / (totalShots - 1);
-      timingNote = `Derived: (Time to Empty ${timeToEmptySeconds} s − ${reloads} reloads × ${reloadSeconds} s) ÷ ${totalShots - 1} intervals (ADR 0013)`;
-    } else if (rpm !== null) {
-      intervalSeconds = 60 / rpm;
-      timingNote = "Quantum fire rate; no Time to Empty";
-      entry.notes.push("ohne Zeit bis leer: Abstand aus der rpm");
-    } else {
-      gap("Quantum ohne Zeit bis leer und ohne rpm");
-      continue;
-    }
-    if (intervalSeconds <= 0) {
-      gap("abgeleiteter Abstand ≤ 0");
-      continue;
-    }
-    const derivedRpm = 60 / intervalSeconds;
-    entry.derivedRpm = derivedRpm;
-    if (rpm !== null && Math.abs(derivedRpm / rpm - 1) > RPM_HINT)
-      entry.notes.push(
-        `abgeleitete Feuerrate ${derivedRpm.toFixed(0)} statt ${rpm} rpm`,
-      );
 
+    const timingSource = (note?: string): Source =>
+      timing === aegis
+        ? sustainedSource(aegis.rowId, note)
+        : quantumSource(quantumRow!, note);
     const id = slug(manifest.name);
     const weapon: Weapon = {
       id,
@@ -516,20 +660,21 @@ export function buildWeaponImport(
       ammo: manifest.ammo,
       chargeTimeMs: {
         value: 0,
-        source: quantumSource(
-          quantum,
-          "Quantum counts the time to empty from the first shot",
-        ),
+        source: timingSource("The time to empty counts from the first shot"),
       },
       fireRateRpm: {
-        value: Number(derivedRpm.toFixed(3)),
-        source: quantumSource(quantum, timingNote),
+        value: Number(entry.derivedRpm.toFixed(3)),
+        source: timingSource(timing.note),
       },
-      magazine: { value: magazine, source: quantumSource(quantum) },
-      totalShots: { value: totalShots, source: quantumSource(quantum) },
+      magazine: { value: timing.magazine, source: timingSource() },
+      totalShots: { value: timing.totalShots, source: timingSource() },
       reloadTimeMs: {
-        value: Math.round(reloadSeconds * 1000),
-        source: quantumSource(quantum),
+        value: Math.round(timing.engineReloadSeconds * 1000),
+        source: timingSource(
+          timing === aegis
+            ? `Reload ${timing.reloadSeconds} s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload`
+            : undefined,
+        ),
       },
       damageInstances: [
         {
@@ -625,10 +770,10 @@ export function renderWeaponImport(report: WeaponReport): string {
     "",
     "## Pakete",
     "",
-    "Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Zeit bis leer: Quantum. Die Feuerrate ist so abgeleitet, dass der Simulator die Zeit bis leer trifft. Skala: kleinste Abweichung Aegis gegen Quantum, über den Einzeltreffer oder den Mittelwert pro Shot.",
+    "Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Zeit bis leer: Aegis „Sustained“, sonst Quantum (Spalte Timing); stehen beide zur Verfügung, steht der Abgleich in den Hinweisen. Die Feuerrate ist so abgeleitet, dass der Simulator die Zeit bis leer trifft. Skala: kleinste Abweichung Aegis gegen Quantum, über den Einzeltreffer oder den Mittelwert pro Shot.",
     "",
-    "| Waffe | Typ | Element | Basiszeile (Annahmen) | pro Shot | Shots | Magazin | Reload | Zeit bis leer | rpm Quantum → abgeleitet | Skala | Hinweise |",
-    "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+    "| Waffe | Typ | Element | Basiszeile (Annahmen) | pro Shot | Timing | Shots | Magazin | Reload | Zeit bis leer | rpm Quantum → abgeleitet | Skala | Hinweise |",
+    "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ...packages
       .map((w) =>
         [
@@ -638,6 +783,7 @@ export function renderWeaponImport(report: WeaponReport): string {
           cell(w.baseRow!.assumptions.join(", ") || "keine") +
             ` (${w.baseRow!.shots} ${w.baseRow!.shots === 1 ? "Shot" : "Shots"})`,
           de(w.perShot!, 1),
+          w.timingSource ?? "–",
           w.totalShots,
           w.magazine,
           `${de(w.reloadSeconds!, 2)} s`,

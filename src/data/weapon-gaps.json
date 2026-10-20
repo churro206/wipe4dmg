@@ -1,6 +1,9 @@
 [
   { "name": "Anarchy", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
-  { "name": "Black Talon", "reason": "keine Quantum-Zeile" },
+  {
+    "name": "Black Talon",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
+  },
   {
     "name": "Choir of One",
     "reason": "Skala Aegis gegen Quantum weicht um 82.1 % ab"
@@ -9,79 +12,89 @@
     "name": "Conditional Finality",
     "reason": "Skala Aegis gegen Quantum weicht um 4.6 % ab"
   },
-  { "name": "Cull's Shadow", "reason": "keine Quantum-Zeile" },
+  {
+    "name": "Cull's Shadow",
+    "reason": "Skala Aegis gegen Quantum weicht um 25.8 % ab"
+  },
   { "name": "D.A.R.C.I.", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
   {
     "name": "Deathbringer",
     "reason": "Skala Aegis gegen Quantum weicht um 51.4 % ab"
   },
   { "name": "Divinity", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
-  { "name": "Dragon's Breath", "reason": "abgeleiteter Abstand ≤ 0" },
   {
     "name": "Duality",
-    "reason": "keine passende Quantum-Zeile (nur „cata, pellet“, „cata, slug“, „cata, On Black Wings x3“)"
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine passende Quantum-Zeile (nur „cata, pellet“, „cata, slug“, „cata, On Black Wings x3“)"
   },
-  { "name": "Ergo Sum", "reason": "keine Quantum-Zeile" },
+  {
+    "name": "Ergo Sum",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
+  },
   {
     "name": "Euphony",
     "reason": "Skala Aegis gegen Quantum weicht um 15.6 % ab"
   },
   {
     "name": "Ex Diris",
-    "reason": "keine passende Quantum-Zeile (nur „No Enrage“, „Max Enrage“)"
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine passende Quantum-Zeile (nur „No Enrage“, „Max Enrage“)"
   },
-  { "name": "Fafnir", "reason": "keine Quantum-Zeile" },
+  {
+    "name": "Fafnir",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
+  },
   {
     "name": "Finality's Auger",
-    "reason": "Quantum ohne Magazin, Munition oder Reload ({\"totalDamage\":\"#VALUE!\",\"totalShots\":\"???\",\"timeToEmptySeconds\":\"#NUM!\"})"
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; Quantum: ohne Magazin, Munition oder Reload ({\"totalDamage\":\"#VALUE!\",\"totalShots\":\"???\",\"timeToEmptySeconds\":\"#NUM!\"})"
   },
   {
     "name": "Grand Overture",
     "reason": "Skala Aegis gegen Quantum weicht um 12.9 % ab"
   },
-  { "name": "Heartshadow", "reason": "keine Quantum-Zeile" },
-  { "name": "Heirloom", "reason": "keine Quantum-Zeile" },
+  {
+    "name": "Heartshadow",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
+  },
+  {
+    "name": "Heirloom",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
+  },
   {
     "name": "Ice Breaker",
-    "reason": "Quantum ohne Magazin, Munition oder Reload ({\"totalShots\":\"N/A\",\"reloadSeconds\":\"N/A\"})"
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; Quantum: ohne Magazin, Munition oder Reload ({\"totalShots\":\"N/A\",\"reloadSeconds\":\"N/A\"})"
   },
   {
     "name": "Izanagi's Burden",
     "reason": "Skala Aegis gegen Quantum weicht um 154.2 % ab"
   },
-  { "name": "Jötunn", "reason": "keine Quantum-Zeile" },
   {
     "name": "Merciless",
     "reason": "Skala Aegis gegen Quantum weicht um 80.0 % ab"
   },
-  { "name": "New Malpais", "reason": "keine Quantum-Zeile" },
-  { "name": "Praxic Blade", "reason": "keine Quantum-Zeile" },
-  { "name": "Prometheus Lens", "reason": "keine Quantum-Zeile" },
+  {
+    "name": "New Malpais",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
+  },
+  { "name": "Praxic Blade", "reason": "kein Timing: keine Quantum-Zeile" },
+  { "name": "Prometheus Lens", "reason": "kein Timing: keine Quantum-Zeile" },
   {
     "name": "Salvation's Grip",
-    "reason": "keine passende Quantum-Zeile (nur „no charge, spamming“, „full charge, spamming“, „full charge, spamming“, „mix“, „full charge, spamming, WoF“, „full charge, spamming, WoF“, „mix, WoF“)"
+    "reason": "Skala Aegis gegen Quantum weicht um 58.8 % ab"
   },
   {
-    "name": "Slayer's Fang",
-    "reason": "Skala Aegis gegen Quantum weicht um 3.1 % ab"
+    "name": "Tessellation",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
   },
   {
-    "name": "Telesto",
-    "reason": "Skala Aegis gegen Quantum weicht um 3.5 % ab"
+    "name": "The Lament",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
   },
-  { "name": "Tessellation", "reason": "keine Quantum-Zeile" },
-  { "name": "The Lament", "reason": "keine Quantum-Zeile" },
   {
     "name": "The Prospector",
     "reason": "Skala Aegis gegen Quantum weicht um 23.1 % ab"
   },
   {
     "name": "The Queenbreaker",
-    "reason": "keine passende Quantum-Zeile (nur „Marksman Sights“, „Combat Sights“)"
-  },
-  {
-    "name": "Tractor Cannon",
-    "reason": "Skala Aegis gegen Quantum weicht um 5.3 % ab"
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine passende Quantum-Zeile (nur „Marksman Sights“, „Combat Sights“)"
   },
   {
     "name": "Two-Tailed Fox",
@@ -91,20 +104,22 @@
     "name": "Wavesplitter",
     "reason": "keine Aegis-Zeile ohne fremde Annahmen"
   },
-  { "name": "Whirling Ovation", "reason": "keine Quantum-Zeile" },
+  {
+    "name": "Whirling Ovation",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
+  },
   {
     "name": "Whisper of the Worm",
     "reason": "Skala Aegis gegen Quantum weicht um 9.1 % ab"
   },
   {
-    "name": "Winterbite",
-    "reason": "Skala Aegis gegen Quantum weicht um 22.7 % ab"
+    "name": "Witherhoard",
+    "reason": "kein Timing: keine passende Quantum-Zeile (nur „passive“, „passive“, „passive, ground“, „cata, single blight, boss“, „cata, single blight, floor“, „double blight“, „spamming, single blight“, „spamming, double blight“)"
   },
   {
-    "name": "Witherhoard",
-    "reason": "keine passende Quantum-Zeile (nur „passive“, „passive“, „passive, ground“, „cata, single blight, boss“, „cata, single blight, floor“, „double blight“, „spamming, single blight“, „spamming, double blight“)"
+    "name": "Wolfsbane",
+    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
   },
-  { "name": "Wolfsbane", "reason": "keine Quantum-Zeile" },
   {
     "name": "Worldline Zero",
     "reason": "keine Aegis-Zeile ohne fremde Annahmen"

@@ -3,6 +3,7 @@
 
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import {
+  AegisSustainedSnapshot,
   AegisWeaponSnapshot,
   CompendiumSnapshot,
   Effect,
@@ -23,6 +24,7 @@ export function loadWeaponImportInputs(): WeaponImportInputs {
   const codesFile = new URL("weapon-codes.json", DATA);
   return {
     aegis: AegisWeaponSnapshot.parse(read("aegis-weapons.json")),
+    sustained: AegisSustainedSnapshot.parse(read("aegis-sustained.json")),
     quantum: QuantumWeaponSnapshot.parse(read("quantum-weapons.json")),
     manifestVersion: manifest.manifestVersion,
     manifest: manifest.weapons,

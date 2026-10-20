@@ -791,3 +791,29 @@ export const QuantumWeaponSnapshot = z.object({
   rows: z.array(QuantumWeaponRow),
 });
 export type QuantumWeaponSnapshot = z.infer<typeof QuantumWeaponSnapshot>;
+
+/** One row of the Aegis tab "Sustained": a full ammo dump of one weapon (ADR 0013, point 7). */
+export const AegisSustainedRow = z.object({
+  id: z.string(), // kebab-case from name and assumptions
+  name: z.string(), // first line of the name cell, e.g. "Truth"
+  assumptions: z.array(z.string()), // further lines, e.g. ["Prototype Truthseeker", "Argent Ordnance"]
+  ammo: z.enum(["primary", "special", "heavy"]),
+  family: z.string(), // e.g. "rocket"
+  shots: z.number().int().nonnegative(), // column "#"
+  magazines: z.array(z.number().int().positive()), // column "Distribution", e.g. [3, 3, 3, 3, 2]
+  repeating: z.boolean(), // distribution ends with "...": the last value repeats
+  reloadMs: z.number().nullable(), // from the notes, e.g. "2134ms reload"
+  chargeMs: z.number().nullable(),
+  swapMs: z.number().nullable(), // swap instead of reload, e.g. Parasite with Envious Arsenal
+  notes: z.string(),
+  peakRateSeconds: z.number().nullable(), // column "peak Rate": time between two shots
+  timeToEmptySeconds: z.number().nullable(), // column "TtE"
+  base: z.number().nullable(), // column "Base": damage per shot without buffs
+});
+export type AegisSustainedRow = z.infer<typeof AegisSustainedRow>;
+
+export const AegisSustainedSnapshot = z.object({
+  source: Source,
+  rows: z.array(AegisSustainedRow),
+});
+export type AegisSustainedSnapshot = z.infer<typeof AegisSustainedSnapshot>;

@@ -14,6 +14,7 @@ import {
   Effect,
   IconIndex,
   IconRef,
+  AegisSustainedSnapshot,
   AegisWeaponSnapshot,
   ManifestAbilities,
   ManifestArmor,
@@ -133,9 +134,11 @@ await writeData("manifest-armor.json", manifestArmor);
 console.log(`Wrote ${manifestArmor.armor.length} exotic armor pieces`);
 
 // Names in the assumptions of the Aegis weapon rows (run npm run import:weapons first).
-const assumptionNames = AegisWeaponSnapshot.parse(
-  readJson("src/data/aegis-weapons.json"),
-).rows.flatMap((row) => row.assumptions.map(assumptionName));
+const assumptionNames = [
+  ...AegisWeaponSnapshot.parse(readJson("src/data/aegis-weapons.json")).rows,
+  ...AegisSustainedSnapshot.parse(readJson("src/data/aegis-sustained.json"))
+    .rows,
+].flatMap((row) => row.assumptions.map(assumptionName));
 const manifestTerms = ManifestTerms.parse({
   ...header,
   terms: lookupManifestTerms([...new Set(assumptionNames)], tables.items),

@@ -15,6 +15,10 @@
         "plugCategory": "v400.weapon.mod_damage"
       }
     ],
+    "Tactical Mag": [
+      { "itemType": "Magazine", "plugCategory": "magazines" },
+      { "itemType": "Enhanced Magazine", "plugCategory": "magazines" }
+    ],
     "Reaper's Tithe": [
       { "itemType": "Trait", "plugCategory": "frames" },
       { "itemType": "Enhanced Trait", "plugCategory": "frames" }
@@ -24,11 +28,21 @@
       { "itemType": "Intrinsic", "plugCategory": "intrinsics" },
       { "itemType": "Intrinsic", "plugCategory": "frames" }
     ],
+    "Facet of Command": [
+      {
+        "itemType": "Prismatic Fragment",
+        "plugCategory": "shared.prism.fragments"
+      }
+    ],
     "Dynamic Charge": [{ "itemType": "Trait", "plugCategory": "frames" }],
     "caster frame": [
       { "itemType": "Intrinsic", "plugCategory": "intrinsics" },
       { "itemType": "Intrinsic", "plugCategory": "frames" },
       { "itemType": "Enhanced Intrinsic", "plugCategory": "intrinsics" }
+    ],
+    "Archer's Tempo": [
+      { "itemType": "Trait", "plugCategory": "frames" },
+      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
     ],
     "Paracausal Shot": [
       { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
@@ -45,6 +59,7 @@
       { "itemType": "Intrinsic", "plugCategory": "frames" },
       { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
     ],
+    "Release the Wolves": [{ "itemType": "Trait", "plugCategory": "frames" }],
     "Target Lock": [
       { "itemType": "Trait", "plugCategory": "frames" },
       { "itemType": "Enhanced Trait", "plugCategory": "frames" }
@@ -57,9 +72,42 @@
       { "itemType": "Enhanced Trait", "plugCategory": "frames" },
       { "itemType": "Trait", "plugCategory": "frames" }
     ],
+    "Rally Barricade": [
+      {
+        "itemType": "Class Ability",
+        "plugCategory": "titan.arc.class_abilities"
+      },
+      {
+        "itemType": "Class Ability",
+        "plugCategory": "titan.strand.class_abilities"
+      },
+      {
+        "itemType": "Class Ability",
+        "plugCategory": "titan.solar.class_abilities"
+      },
+      {
+        "itemType": "Class Ability",
+        "plugCategory": "titan.void.class_abilities"
+      },
+      {
+        "itemType": "Class Ability",
+        "plugCategory": "titan.prism.class_abilities"
+      },
+      {
+        "itemType": "Class Ability",
+        "plugCategory": "titan.stasis.class_abilities"
+      }
+    ],
+    "Lucent Blades": [
+      { "itemType": "Chest Armor Mod", "plugCategory": "enhancements.v2_chest" }
+    ],
     "Hard Launch": [
       { "itemType": "Enhanced Launcher Barrel", "plugCategory": "tubes" },
       { "itemType": "Launcher Barrel", "plugCategory": "tubes" }
+    ],
+    "Triple Tap": [
+      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
+      { "itemType": "Trait", "plugCategory": "frames" }
     ],
     "Spring-Auger Bolts": [
       { "itemType": "Enhanced Bolt", "plugCategory": "bolts" },
@@ -68,12 +116,20 @@
     "Hail the Storm": [
       { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
     ],
+    "wave frame": [
+      { "itemType": "Enhanced Intrinsic", "plugCategory": "intrinsics" },
+      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+    ],
     "Conserve Momentum": [
       { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
     ],
     "Accelerated Coils": [
       { "itemType": "Battery", "plugCategory": "batteries" },
       { "itemType": "Enhanced Battery", "plugCategory": "batteries" }
+    ],
+    "Timelost Magazine": [
+      { "itemType": "Enhanced Origin Trait", "plugCategory": "origins" },
+      { "itemType": "Origin Trait", "plugCategory": "origins" }
     ],
     "Jolting Feedback": [
       { "itemType": "Enhanced Trait", "plugCategory": "frames" },
@@ -83,9 +139,23 @@
       { "itemType": "Enhanced Blade", "plugCategory": "blades" },
       { "itemType": "Blade", "plugCategory": "blades" }
     ],
+    "Assault Mag": [
+      { "itemType": "Magazine", "plugCategory": "magazines" },
+      { "itemType": "Enhanced Magazine", "plugCategory": "magazines" }
+    ],
+    "Trench Barrel": [
+      { "itemType": "Barrel", "plugCategory": "barrels" },
+      { "itemType": "Trait", "plugCategory": "frames" },
+      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+    ],
     "Temporal Unlimiter": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Ionized Heatsink": [
+      { "itemType": "Battery", "plugCategory": "batteries" },
+      { "itemType": "Enhanced Battery", "plugCategory": "batteries" }
+    ],
     "Lightning Seeker": [{ "itemType": "Trait", "plugCategory": "frames" }],
     "Shot in the Dark": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Paracausal Imbuement": [{ "itemType": "Trait", "plugCategory": "frames" }],
     "Cayde's Retribution": [
       { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
     ],
@@ -123,17 +193,38 @@
       { "itemType": "Trait", "plugCategory": "frames" },
       { "itemType": "Enhanced Trait", "plugCategory": "frames" }
     ],
+    "Particle Reconstruction": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
     "Celestial Nighthawk": [{ "itemType": "Helmet", "plugCategory": "" }],
     "Unplanned Reprieve": [
       { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
     ],
+    "Argent Ordnance": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
     "Spinning Up": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "High-Explosive Ordnance": [
+      { "itemType": "Magazine", "plugCategory": "magazines_gl" },
+      { "itemType": "Enhanced Magazine", "plugCategory": "magazines_gl" }
+    ],
     "Combat Sights": [{ "itemType": "Scope", "plugCategory": "scopes" }],
     "Marksman Sights": [{ "itemType": "Scope", "plugCategory": "scopes" }],
     "Taken Ambition": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Argent Blade": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
+    "Sniper's Meditation": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
     "Vorpal Weapon": [
       { "itemType": "Trait", "plugCategory": "frames" },
       { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+    ],
+    "Rewind Rounds": [
+      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
+      { "itemType": "Trait", "plugCategory": "frames" },
+      { "itemType": "Trait", "plugCategory": "" }
     ],
     "Death At First Glance": [
       { "itemType": "Trait", "plugCategory": "frames" }
@@ -148,14 +239,30 @@
       { "itemType": "Launcher Barrel", "plugCategory": "tubes" },
       { "itemType": "Enhanced Launcher Barrel", "plugCategory": "tubes" }
     ],
+    "Accelerated Assault": [
+      { "itemType": "Origin Trait", "plugCategory": "origins" }
+    ],
+    "Extended Mag": [
+      { "itemType": "Enhanced Magazine", "plugCategory": "magazines" },
+      { "itemType": "Magazine", "plugCategory": "magazines" }
+    ],
+    "Dawn Chorus": [{ "itemType": "Helmet", "plugCategory": "" }],
     "Property: Irreducible": [
       { "itemType": "Trait", "plugCategory": "frames" }
+    ],
+    "Guidance Ring": [
+      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
     ],
     "Explosive Light": [
       { "itemType": "Enhanced Trait", "plugCategory": "frames" },
       { "itemType": "Trait", "plugCategory": "frames" }
     ],
     "Supercharged Battery": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Impetus": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Solar Fulmination": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
+    "Cenotaph Mask": [{ "itemType": "Helmet", "plugCategory": "" }],
     "Focused Fury": [
       { "itemType": "Enhanced Trait", "plugCategory": "frames" },
       { "itemType": "Trait", "plugCategory": "frames" }
@@ -180,20 +287,68 @@
     "Harsh Refraction": [
       { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
     ],
+    "The Fundamentals": [
+      { "itemType": "Trait", "plugCategory": "frames" },
+      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+    ],
+    "Argent Quiver": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
+    "Enhanced Battery": [
+      { "itemType": "Battery", "plugCategory": "batteries" },
+      { "itemType": "Enhanced Battery", "plugCategory": "batteries" }
+    ],
+    "Sword Storm Combo": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
     "Charged Bolts": [
       { "itemType": "Enhanced Bolt", "plugCategory": "bolts" },
       { "itemType": "Bolt", "plugCategory": "bolts" }
     ],
+    "Envious Arsenal": [
+      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
+      { "itemType": "Trait", "plugCategory": "frames" }
+    ],
+    "Cast No Shadows": [
+      { "itemType": "Origin Trait", "plugCategory": "origins" },
+      { "itemType": "Enhanced Origin Trait", "plugCategory": "origins" }
+    ],
+    "Shoot to Loot": [
+      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
+      { "itemType": "Trait", "plugCategory": "frames" }
+    ],
     "Burning Ambition": [
       { "itemType": "Trait", "plugCategory": "frames" },
       { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+    ],
+    "Combination Argent Blade": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
     ],
     "Soul Devourer": [{ "itemType": "Trait", "plugCategory": "frames" }],
     "Sticky Grenades": [
       { "itemType": "Enhanced Magazine", "plugCategory": "magazines_gl" },
       { "itemType": "Magazine", "plugCategory": "magazines_gl" }
     ],
+    "Bait and Switch": [
+      { "itemType": "Trait", "plugCategory": "frames" },
+      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+    ],
+    "Incendiary Rifle Rounds": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
+    "Arc Compounding": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
+    "Kinetic Impacts": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
     "Transcendent": [{ "itemType": "Emblem", "plugCategory": "" }],
+    "Pack Tactics": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+    ],
+    "Corrupted Nucleosynthesis": [
+      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+    ],
     "Gyro Core": [
       {
         "itemType": "Power Core",
@@ -211,6 +366,9 @@
         "itemType": "Praxic Blade Form",
         "plugCategory": "v950.new.sword0.forms"
       }
+    ],
+    "Energy Acceleration": [
+      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
     ],
     "Implosion Rounds": [
       { "itemType": "Magazine", "plugCategory": "magazines_gl" },
@@ -232,6 +390,12 @@
         "plugCategory": "v950.new.sword0.stat_upgrades"
       }
     ],
-    "Pack Hunter": [{ "itemType": "Trait", "plugCategory": "frames" }]
+    "Pack Hunter": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Thread of Evolution": [
+      {
+        "itemType": "Strand Fragment",
+        "plugCategory": "shared.strand.fragments"
+      }
+    ]
   }
 }

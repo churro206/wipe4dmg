@@ -1,20 +1,23 @@
-// Imports the weapon sources for the weapon import (ADR 0013): the Aegis tab "Weapons" into
-// src/data/aegis-weapons.json and the Quantum tabs Primaries, Specials and Heavies into
+// Imports the weapon sources for the weapon import (ADR 0013): the Aegis tabs "Weapons" and
+// "Sustained" into src/data/aegis-weapons.json and aegis-sustained.json and the Quantum tabs Primaries, Specials and Heavies into
 // src/data/quantum-weapons.json.
 // Run: npm run import:weapons
 
 import { writeFileSync } from "node:fs";
 import { format } from "prettier";
 import {
+  AegisSustainedSnapshot,
   AegisWeaponSnapshot,
   QuantumWeaponSnapshot,
 } from "../src/data/schema.ts";
 import { AEGIS_SHEET_URL } from "./lib/aegisBosses.ts";
+import { parseAegisSustained } from "./lib/aegisSustained.ts";
 import { parseAegisWeapons } from "./lib/aegisWeapons.ts";
 import { parseQuantumWeapons, type QuantumTab } from "./lib/quantumWeapons.ts";
 
 const AEGIS_SHEET_ID = "1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4";
 const AEGIS_WEAPONS_GID = "2139128689";
+const AEGIS_SUSTAINED_GID = "1455724279";
 const QUANTUM_SHEET_ID = "1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI";
 const QUANTUM_TABS: Record<QuantumTab, string> = {
   primaries: "398985410",
@@ -58,6 +61,22 @@ const aegis = AegisWeaponSnapshot.parse({
 });
 await write("aegis-weapons.json", aegis);
 console.log(`Aegis: wrote ${aegis.rows.length} rows to aegis-weapons.json`);
+
+const sustained = AegisSustainedSnapshot.parse({
+  source: {
+    name: "Aegis Boss Damage sheet (tab Sustained)",
+    url: AEGIS_SHEET_URL,
+    retrieved,
+    status: "verified",
+  },
+  rows: parseAegisSustained(
+    await download(csvUrl(AEGIS_SHEET_ID, AEGIS_SUSTAINED_GID)),
+  ),
+});
+await write("aegis-sustained.json", sustained);
+console.log(
+  `Aegis: wrote ${sustained.rows.length} rows to aegis-sustained.json`,
+);
 
 const quantumRows = [];
 for (const [tab, gid] of Object.entries(QUANTUM_TABS) as [
