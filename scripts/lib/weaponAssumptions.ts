@@ -42,7 +42,7 @@ const MIN_LENGTH_FOR_SPELLING = 8; // short names differ too easily
 
 // Stage 3: how Aegis fired, or what the value includes or excludes. Patterns, not names.
 const EXECUTION: RegExp[] = [
-  /^(average|light|heavy|body|burst|volley|loaded|charged|uncharged|hitscan|hipfire|ads|aerial|direct impact|full mag|single mag|first mag|max height|per trap|double stick|single projectile|all three shots|both modes|power cycling|successive shots|standard target model|ground pool|no initial trace|no stacks|double hit throw)$/i,
+  /^(average|light|heavy|body|burst|volley|loaded|charged|uncharged|hitscan|hip-?fire|ads|aerial|direct impact|full mag|single mag|first mag|max height|per trap|double stick|single projectile|all three shots|both modes|power cycling|successive shots|standard target model|ground pool|no initial trace|no stacks|double hit throw)$/i,
   /\bcharged?\b/i, // "1/3 charge", "fully charged"
   /^projectile\b/i,
   /^\d+ (impact|shots?|bursts?)$/i,

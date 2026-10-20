@@ -178,6 +178,21 @@ export const IntrinsicPart = z.discriminatedUnion("type", [
 ]);
 export type IntrinsicPart = z.infer<typeof IntrinsicPart>;
 
+/**
+ * A selectable catalyst, perk or mod of an imported weapon (ADR 0013, point 8): a factor on the
+ * weapon's damage for the whole damage phase. Duration and condition from the Compendium tell
+ * where that is too generous.
+ */
+export const WeaponOption = z.object({
+  id: z.string(),
+  name: z.string(), // e.g. "Reaper's Tithe x4"
+  kind: z.enum(["catalyst", "perk", "weaponMod"]),
+  factor: SourcedNumber,
+  durationSeconds: z.number().positive().nullable(), // null: none found or permanent
+  condition: z.string().nullable(), // text from the Compendium, e.g. "simultaneously killed enemies"
+});
+export type WeaponOption = z.infer<typeof WeaponOption>;
+
 export const Weapon = z.object({
   id: z.string(),
   code: z.number().int().positive(), // short code for build links; never reused
@@ -202,8 +217,19 @@ export const Weapon = z.object({
       source: Source,
     }),
   ),
+  // Imported packages (ADR 0013): modelled effects Aegis measured inside the value per shot.
+  includedEffectIds: z.array(z.string()).optional(),
+  // Imported packages: catalyst, perks and mods as factors from the "with / without" rows.
+  options: z.array(WeaponOption).optional(),
 });
 export type Weapon = z.infer<typeof Weapon>;
+
+/** Why an exotic weapon in scope is not imported (ADR 0013, point 10). */
+export const WeaponGap = z.object({
+  name: z.string(),
+  reason: z.string(),
+});
+export type WeaponGap = z.infer<typeof WeaponGap>;
 
 /** What creates a damage instance. */
 export const DamageSource = z.enum(["weapon", "grenade", "melee", "super"]);
