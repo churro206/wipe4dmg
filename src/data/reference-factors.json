@@ -1,0 +1,44 @@
+[
+  {
+    "id": "aegis-otv-ember-of-ashes",
+    "description": "One Thousand Voices with Ember of Ashes compared to without, both with Particle Reconstruction",
+    "baseline": { "effectIds": ["particle-reconstruction"], "catalyst": false },
+    "variant": { "effectIds": ["particle-reconstruction", "ember-of-ashes"], "catalyst": false },
+    "factor": 1.173,
+    "source": {
+      "name": "Aegis Boss Damage sheet (Weapons tab, One Thousand Voices: Wipe 31,106 without / 36,499 with Ember of Ashes, 4 shots each)",
+      "url": "https://destiny2.science/boss-damage",
+      "retrieved": "2026-10-20",
+      "status": "verified",
+      "note": "36,499 / 31,106 = 1.1734; visual Value 2,885.296 / 2,458.972. Patch 9.7.0.3. Quantum Damage-ics agrees within 2 % (33,770 / 28,430 = 1.188, Heavies tab)."
+    }
+  },
+  {
+    "id": "aegis-otv-catalyst",
+    "description": "One Thousand Voices with catalyst (Taken Seekers) compared to without, both with Particle Reconstruction",
+    "baseline": { "effectIds": ["particle-reconstruction"], "catalyst": false },
+    "variant": { "effectIds": ["particle-reconstruction"], "catalyst": true },
+    "factor": 1.371,
+    "source": {
+      "name": "Aegis Boss Damage sheet (Weapons tab, One Thousand Voices: Wipe 31,106 over 4 shots without / 85,319 over 8 shots with catalyst)",
+      "url": "https://destiny2.science/boss-damage",
+      "retrieved": "2026-10-20",
+      "status": "verified",
+      "note": "(85,319 / 8) / (31,106 / 4) = 1.3714; visual Value 3,372 / 2,459. Patch 9.7.0.3. blueberries.gg measured about 1.4 (24-26k without, 34-36k with catalyst)."
+    }
+  },
+  {
+    "id": "aegis-otv-catalyst-with-ember-of-ashes",
+    "description": "One Thousand Voices with catalyst and Ember of Ashes compared to Ember of Ashes alone, both with Particle Reconstruction",
+    "baseline": { "effectIds": ["particle-reconstruction", "ember-of-ashes"], "catalyst": false },
+    "variant": { "effectIds": ["particle-reconstruction", "ember-of-ashes"], "catalyst": true },
+    "factor": 1.305,
+    "source": {
+      "name": "Aegis Boss Damage sheet (Weapons tab, One Thousand Voices: visual Value 2,885.296 with Ember of Ashes / 3,765 with Ember of Ashes and catalyst)",
+      "url": "https://destiny2.science/boss-damage",
+      "retrieved": "2026-10-20",
+      "status": "verified",
+      "note": "3,765 / 2,885.3 = 1.305. Patch 9.7.0.3."
+    }
+  }
+]

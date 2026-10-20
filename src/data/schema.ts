@@ -493,6 +493,21 @@ export const ReferenceMultiplier = z.object({
 });
 export type ReferenceMultiplier = z.infer<typeof ReferenceMultiplier>;
 
+/** Measured factor between two scenarios of the same weapon, e.g. with and without an effect (ADR 0011). */
+const ReferenceScenario = z.object({
+  effectIds: z.array(z.string()),
+  catalyst: z.boolean(),
+});
+export const ReferenceFactor = z.object({
+  id: z.string(),
+  description: z.string(),
+  baseline: ReferenceScenario,
+  variant: ReferenceScenario,
+  factor: z.number().positive(), // Total Damage of variant ÷ baseline
+  source: Source,
+});
+export type ReferenceFactor = z.infer<typeof ReferenceFactor>;
+
 /** Input of the Simulator. Serialized into the URL for sharing (src/engine/buildLink.ts). */
 export const Build = z.object({
   weaponId: z.string(),
