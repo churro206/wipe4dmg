@@ -35,6 +35,12 @@ Stand: 2026-10-20
 - Melee-Buffs: addieren sich untereinander (laut Court), brauchen eigenen Bucket
 - Import von Courts Stacking Guide mit Snapshot und Zitat-Check, wie beim Compendium
 
+## Als Nächstes (v1.1)
+
+- Weitere Waffen: Truth, danach Thunderlord; Waffenauswahl im Rechner
+- Exotic-Rüstung: Dawn Chorus und weitere Exotics mit großer Wirkung auf den Schaden (z. B. Mantle of Battle Harmony mit Surge 4x)
+- Plan: [Waffen und Exotic-Rüstung](plans/weapons-and-exotic-armor.md)
+
 ## Später (v1.x)
 
 - Optimizer mit Fähigkeiten: probiert auch Super, Grenade und Melee ([Plan](plans/optimizer-abilities.md)). Bis dahin übernimmt er die gewählten Abilities.

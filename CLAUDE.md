@@ -18,7 +18,7 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 - `docs/guides/abilities.md`: Ablauf zum Anlegen und Aktualisieren von Abilities (ADR 0009). Lies ihn vor Änderungen an `abilities.json`.
 - `docs/guides/measurements.md`: Ingame-Tests des Inhabers (Ember, Explosionen, Shot-Abstand, Particle Reconstruction, Radiant auf Golden Gun). Ergebnisse ins Messprotokoll, dann in Data Files und Gates.
 - `docs/coverage.md`: Abdeckung (generiert, nicht von Hand bearbeiten). Nach Änderungen an Data Files `npm run coverage` ausführen.
-- `docs/plans/`: Zurückgestellte Pläne, z. B. Optimizer mit Fähigkeiten.
+- `docs/plans/`: Pläne. **Aktuell: `weapons-and-exotic-armor.md` (v1.1, nächste Schritte).** Zurückgestellt: `optimizer-abilities.md`.
 - `docs/roadmap.md`: Woran gearbeitet wird; Quelle für die Website (US-15). Nach jedem abgeschlossenen Schritt aktualisieren.
 
 ## Sprache
@@ -63,6 +63,8 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 ## Aktueller Stand (2026-10-20)
 
 Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
+
+- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** 7 (v1.0 formal) → W0 Waffen-Fundament → W1 Truth → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. → W2 Thunderlord → v1.1. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
 
 - **Release v1.0 in Arbeit.** Offen sind der Rest von US-14 (Fähigkeiten und Supers) und US-15 (Wiki). Danach testen die Freunde v1.0 (Gate).
 - **US-14, Entscheidung in ADR 0009:** Abilities bestehen aus Ability Components (Compendium). Fehlen Teile oder fällt die Ability durchs Gate, gilt ein Aegis-Paket. Aegis ist das Gate (±10 % bei Stat 100 und 200).
