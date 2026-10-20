@@ -56,6 +56,8 @@ tests/         Vitest-Tests für die Engine. Helfer für generierte Dokumente in
 4. Führe `npm test` aus. Melde das Ergebnis.
 5. Fasse die Änderung in zwei bis drei Sätzen zusammen.
 
+Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. wenn ein Wunsch dem Ziel, den Regeln oder einem ADR widerspricht oder der Aufwand den Nutzen übersteigt.
+
 ## Aktueller Stand (2026-10-20)
 
 Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
