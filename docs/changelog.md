@@ -2,7 +2,7 @@
 
 ## Unveröffentlicht (v1.0 in Arbeit)
 
-- Wiki (US-15): Schalter „Rechner | Wiki“ oben rechts. Zeigt die Abdeckung und die Roadmap; Erklärungen zu Mechanics folgen.
+- Wiki (US-15): Schalter „Rechner | Wiki“ oben rechts. Startseite „Wie rechnet der Rechner?“ (Zeitachse, Buckets mit Beispiel, Quellen und Gates, Grenzen), dazu Abdeckung und Roadmap. Erklärungen zu einzelnen Mechanics folgen.
 - Fähigkeiten und Supers (US-14, ADR 0009):
   - Drei Plätze für Super, Grenade und Melee mit Ingame-Icons, passend zu Klasse und Subklasse inklusive Prismatic.
   - Stat-Regler 0 bis 200: Über 100 erhöht jeder Punkt den Schaden (Super +0,45 %, Grenade +0,65 %, Melee +0,3 %, laut Compendium).

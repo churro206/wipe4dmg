@@ -60,8 +60,10 @@ export function wikiPages(files: Record<string, string>): WikiPage[] {
       (!path.includes(MECHANICS_FOLDER) || id === MECHANICS_INDEX)
     )
       return [];
-    const body = isStatus ? withoutTitle(content) : playerSection(content);
-    if (body === null) return [];
+    const section = isStatus ? withoutTitle(content) : playerSection(content);
+    if (section === null) return [];
+    // Subheadings of "Für Spieler" (###) are the sections of the page (##).
+    const body = isStatus ? section : section.replace(/^#(#{2,}) /gm, "$1 ");
     const group: WikiGroup = isStatus
       ? "status"
       : id === START_ID

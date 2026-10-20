@@ -89,7 +89,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
     - ✅ Breakdown-Tabelle pro Damage Source (6c-2).
     - ✅ Zeitleiste mit Ability-Zeilen und schraffiertem Super Window; Einsatzzeit einstellbar, weitere Casts über „+“ (6c-3). Damit ist 6c fertig.
   - **6d, Optimizer mit Fähigkeiten:** auf v1.x verschoben (Inhaber, 2026-10-20). Plan in `docs/plans/optimizer-abilities.md`. Bis dahin übernimmt der Optimizer die gewählten Abilities.
-  - **6e, Wiki (ADR 0010):** 6e-1 erledigt: Schalter „Rechner | Wiki“ im Header, Markdown mit `marked`, Seiten aus `src/ui/wikiText.ts` (Abschnitt „Für Spieler“, Links ins Wiki). Offen:
+  - **6e, Wiki (ADR 0010):** 6e-1 erledigt: Schalter „Rechner | Wiki“ im Header, Markdown mit `marked`, Seiten aus `src/ui/wikiText.ts` (Abschnitt „Für Spieler“, Links ins Wiki). 6e-2 erledigt: `docs/mechanics/how-it-works.md`. Offen:
     - Abdeckung und Roadmap.
     - „Wie rechnet der Rechner?“ (`docs/mechanics/how-it-works.md`, neu).
     - Abschnitte „Für Spieler“ in `docs/mechanics`.

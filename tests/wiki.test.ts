@@ -1,3 +1,4 @@
+import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
   pageTitle,
@@ -111,6 +112,12 @@ describe("wikiPages", () => {
     expect(pages.some((p) => p.id === "README")).toBe(false);
   });
 
+  it("raises the headings of a player section by one level", () => {
+    const scorch = pages.find((p) => p.id === "scorch-and-ignition")!;
+    expect(scorch.markdown).toContain("\n## Beispiel\n");
+    expect(scorch.markdown).not.toContain("###");
+  });
+
   it("shows coverage and roadmap whole, without their level-1 heading", () => {
     const roadmap = pages.find((p) => p.id === "roadmap")!;
     expect(roadmap.title).toBe("Roadmap");
@@ -132,5 +139,27 @@ describe("wikiPages", () => {
       "status",
       "status",
     ]);
+  });
+});
+
+describe("wiki pages from the real documents", () => {
+  const docs = (path: string) => readFileSync(path, "utf8");
+  const mechanics = readdirSync("docs/mechanics").filter((f) =>
+    f.endsWith(".md"),
+  );
+  const files = Object.fromEntries([
+    ...mechanics.map((f) => [
+      `/docs/mechanics/${f}`,
+      docs(`docs/mechanics/${f}`),
+    ]),
+    ["/docs/coverage.md", docs("docs/coverage.md")],
+    ["/docs/roadmap.md", docs("docs/roadmap.md")],
+  ]);
+  const pages = wikiPages(files);
+
+  it("open with 'Wie rechnet der Rechner?'", () => {
+    expect(pages[0].id).toBe("how-it-works");
+    expect(pages[0].title).toBe("Wie rechnet der Rechner?");
+    expect(pages[0].markdown.length).toBeGreaterThan(0);
   });
 });
