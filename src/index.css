@@ -472,6 +472,18 @@ td:first-child {
   overflow-x: auto;
 }
 
+/* Column heads: icon above the name, so a wrapped name keeps its icon */
+table.breakdown thead th {
+  vertical-align: bottom;
+}
+
+.column-head {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
 table.breakdown tfoot th {
   border-bottom: none;
   border-top: 2px solid var(--border);

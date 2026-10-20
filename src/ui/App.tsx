@@ -754,7 +754,7 @@ function BreakdownPanel({
               {columns.map((column) => (
                 <th key={column.key} title={column.label}>
                   {column.abilityId ? (
-                    <span className="cell-with-icon">
+                    <span className="column-head">
                       <Icon
                         iconKey={`ability:${column.abilityId}`}
                         label={column.label}
