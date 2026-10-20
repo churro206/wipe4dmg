@@ -268,6 +268,26 @@ export const ProviderKind = z.enum([
 ]);
 export type ProviderKind = z.infer<typeof ProviderKind>;
 
+/** Where the game shows an own effect, e.g. Ember of Ashes as a fragment (U2). */
+export const Slot = z.enum([
+  "super",
+  "classAbility",
+  "aspect",
+  "fragment",
+  "mod",
+  "stat",
+  "artifact",
+]);
+export type Slot = z.infer<typeof Slot>;
+
+// Slots each own provider can fill; teammates provide effects without a slot.
+const SLOTS_OF: Record<ProviderKind, Slot[]> = {
+  subclass: ["super", "classAbility", "aspect", "fragment"],
+  armor: ["mod", "stat"],
+  artifact: ["artifact"],
+  fireteamSupport: [],
+};
+
 export const Provider = z.object({
   kind: ProviderKind,
   classes: z.array(GuardianClass).optional(), // omitted: every class
@@ -275,10 +295,18 @@ export const Provider = z.object({
 });
 export type Provider = z.infer<typeof Provider>;
 
-/**
- * Anything a build can switch on or off that changes damage or timing (ADR 0006).
- * Active in a window: start and duration (ADR 0006, stage B).
- */
+/** Provider of an effect: own effects also name their slot. */
+export const EffectProvider = Provider.extend({
+  slot: Slot.optional(), // required for own effects, see SLOTS_OF
+}).refine(
+  (p) =>
+    p.slot === undefined
+      ? SLOTS_OF[p.kind].length === 0
+      : SLOTS_OF[p.kind].includes(p.slot),
+  { message: "slot does not fit the provider kind", path: ["slot"] },
+);
+export type EffectProvider = z.infer<typeof EffectProvider>;
+
 /** Why an effect code was retired; the UI explains it when an old link is opened. */
 export const FormerCodeReason = z.enum(["onlyFromExoticArmor"]);
 export type FormerCodeReason = z.infer<typeof FormerCodeReason>;
@@ -288,6 +316,11 @@ export const FormerCode = z.object({
   name: z.string(), // name of the removed effect
   reason: FormerCodeReason,
 });
+
+/**
+ * Anything a build can switch on or off that changes damage or timing (ADR 0006).
+ * Active in a window: start and duration (ADR 0006, stage B).
+ */
 
 export const Effect = z.object({
   id: z.string(),
@@ -300,7 +333,7 @@ export const Effect = z.object({
   elementIconKey: z.string().optional(),
   // Codes of removed effects that old build links read as this effect; never reused.
   formerCodes: z.array(FormerCode).optional(),
-  providers: z.array(Provider).min(1),
+  providers: z.array(EffectProvider).min(1),
   // A build provides at most one effect of a group itself, e.g. one surge level or one super.
   // Effects from teammates are not limited by groups.
   exclusiveGroup: z.string().optional(),

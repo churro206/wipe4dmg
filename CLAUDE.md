@@ -92,7 +92,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
   - **6e, Wiki (ADR 0010):** 6e-1 erledigt: Schalter „Rechner | Wiki“ im Header, Markdown mit `marked`, Seiten aus `src/ui/wikiText.ts` (Abschnitt „Für Spieler“, Links ins Wiki). 6e-2 erledigt: `docs/mechanics/how-it-works.md` mit Abdeckung und Roadmap. Zurückgestellt (Inhaber): Abschnitte „Für Spieler“ in den übrigen Mechanics, schlanke Abdeckung für Spieler.
   - **U, Oberfläche wie im Spiel (vor dem Release, Inhaber 2026-10-20):**
     - ✅ U1 Surges: `surge-1x` bis `surge-3x` ohne Element (Annahme: passende Mods), Icon nach Element der Waffe (`elementIconKey`), 4x entfernt (nur über Exotic-Rüstung); alter Code 13 liest sich als 3x (`formerCodes`).
-    - U2: jeder Effect bekommt seinen Platz wie im Spiel (Aspect, Fragment, Class Ability, Mod, Stat, Artefakt, Fireteam). Tabelle zur Freigabe.
+    - ✅ U2: jeder eigene Effect hat einen Slot wie im Spiel (`EffectProvider.slot`: Super, Class Ability, Aspect, Fragment, Mod, Stat, Artefakt); Fireteam ohne Slot. Links unverändert.
     - U3: Reihenfolge Encounter → Waffe (+ Katalysator) → Klasse → Subklasse → Super, Class Ability, Grenade, Melee → Aspects → Fragments → Rüstung (Exotic folgt, Mods) → Stats als Block → Artefakt → Fireteam Support. ASCII-Skizze zur Freigabe.
   - **7, Abschluss v1.0:** Changelog, Releaseplan, Testlauf mit den Freunden.
   - **Danach weitere Waffen:** W0 Fundament (Waffenauswahl, Link-Format 4, Effects nach Waffentyp, ADR), dann Truth, dann Thunderlord (Reign Havoc, Blitze; Bolt Charge zunächst ohne, wie Aegis).

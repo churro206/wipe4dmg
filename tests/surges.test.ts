@@ -31,7 +31,7 @@ describe("surge levels", () => {
       surges.map((e) => (e.parts[0] as MultiplierPart).multiplier.value),
     ).toEqual([1.1, 1.17, 1.22]);
     for (const surge of surges) {
-      expect(surge.providers).toEqual([{ kind: "armor" }]);
+      expect(surge.providers).toEqual([{ kind: "armor", slot: "mod" }]);
     }
     expect(effects.some((e) => /4x/.test(e.id))).toBe(false);
   });

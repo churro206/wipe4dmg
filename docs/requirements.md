@@ -111,11 +111,12 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |
 | Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |
 | Simulator | Part of the engine that computes one build over the damage phase |
+| Slot | Place where the game shows an own effect: super, class ability, aspect, fragment (subclass), mod, stat (armor), artifact; effects from teammates have none |
 | Source Scale | Absolute damage level of one source; sources differ (Compendium weapon values are about 1.26 × Quantum), so values from different sources are combined only as ratios (ADR 0011) |
 | Stacking Resource | Mechanic category: a counter on the player that builds up and decays, e.g. Bolt Charge or Armor Charge |
 | Subclass | Ability set of a class with one element (Arc, Solar, Void, Stasis, Strand) or Prismatic; decides which own subclass effects a build can provide |
 | Super Window | Time in which a super with a duration is active; the weapon does not fire in it |
-| Surge | Effect that increases weapon damage of one damage type; armor mods, exotics and artifact perks share it; forms its own bucket |
+| Surge | Effect that increases weapon damage of one damage type; armor mods (1x to 3x, on the legs), exotics (4x) and artifact perks share it; forms its own bucket. Modelled as the level matching the weapon element |
 | Target State | Mechanic category: a state on the target that other effects check, e.g. Blind or Blight |
 | Threshold Trigger | Mechanic category: stacks or damage on a target trigger an event at a threshold, e.g. scorch to ignition or Jolt |
 | Timing Modifier | Mechanic category: an effect changes shots, reloads or ammo instead of damage, e.g. Particle Reconstruction |
