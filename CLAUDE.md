@@ -66,7 +66,7 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
 
 - **v1.0.0 veröffentlicht (Tag `v1.0.0`, Versionsanzeige im Footer aus `package.json` über `__APP_VERSION__`).**
-- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** ✅ 7 (v1.0 formal) → ✅ W0 Waffen-Fundament → W1 Waffen-Import (ADR 0013, Prüffälle Truth und Thunderlord) → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. (Court-Import) → v1.1. W2 entfällt. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
+- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** ✅ 7 (v1.0 formal) → ✅ W0 Waffen-Fundament → W1 Waffen-Import (ADR 0013; ✅ W1-1 Snapshots, weiter mit W1-2 Manifest; Prüffälle Truth und Thunderlord) → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. (Court-Import) → v1.1. W2 entfällt. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
 
 - **Gate v1.0 teilweise erfüllt:** Inhaber hat getestet, die Freunde testen parallel zu v1.1.
 - **US-14, Entscheidung in ADR 0009:** Abilities bestehen aus Ability Components (Compendium). Fehlen Teile oder fällt die Ability durchs Gate, gilt ein Aegis-Paket. Aegis ist das Gate (±10 % bei Stat 100 und 200).
@@ -114,6 +114,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
 - `npm run build`: Produktionsversion bauen
 - `npm run import:bosses`: Bosse und Damage Phases aus der Aegis-Tabelle nach `src/data/bosses.json` übernehmen
 - `npm run import:abilities`: Aegis-Reiter „Abilties“ nach `src/data/aegis-abilities.json` übernehmen (Gate und Fallback, ADR 0009)
-- `npm run import:compendium`: Texte der Compendium-Subklassen-Reiter nach `src/data/compendium-abilities.json` übernehmen; Tests prüfen damit zitierte Werte (ADR 0009)
+- `npm run import:compendium`: Texte der Compendium-Subklassen-Reiter nach `src/data/compendium-abilities.json` übernehmen; Tests prüfen damit zitierte Werte (ADR 0009). Außerdem „Exotic Weapons“ und „Weapon Perks“ nach `src/data/compendium-weapons.json` (ADR 0013)
+- `npm run import:weapons`: Aegis-Reiter „Weapons“ und Quantum-Reiter Primaries, Specials, Heavies als Snapshots nach `src/data/aegis-weapons.json` und `quantum-weapons.json` (ADR 0013)
 - `npm run coverage`: `docs/coverage.md` aus den Data Files neu schreiben (ein Test prüft, dass sie aktuell ist)
 - `npm run import:icons`: Icons und Ability-Zuordnung (Klasse, Subklasse, Prismatic) aus dem Bungie-Manifest laden (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen; lädt die etwa 200 MB große Item-Tabelle)

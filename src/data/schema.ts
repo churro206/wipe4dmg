@@ -659,3 +659,54 @@ export const CompendiumSnapshot = z.object({
   entries: z.array(CompendiumEntry),
 });
 export type CompendiumSnapshot = z.infer<typeof CompendiumSnapshot>;
+
+/** One row of the Aegis tab "Weapons": a measured scenario of one weapon (ADR 0013). */
+export const AegisWeaponRow = z.object({
+  id: z.string(), // kebab-case from weapon type, name and assumptions
+  weaponType: WeaponType,
+  name: z.string(), // weapon name for exotics, frame for legendaries, e.g. "Truth" or "Adaptive frame"
+  critShot: z.number().nullable(), // damage of one precision hit in the test, e.g. 5682
+  bodyShot: z.number().nullable(),
+  otherTicks: z.string(), // further damage as text, e.g. "490/36 cluster"; for cross-checks only
+  assumptions: z.array(z.string()), // e.g. ["average", "Prototype Truthseeker", "Reaper's Tithe x4"]
+  wipe: z.number(), // measured damage of all shots
+  shots: z.number().int().positive(),
+  fullModifiers: z.number().positive(), // standard multipliers of the test, e.g. 3.16
+  perShot: z.number(), // "visual Value": wipe ÷ shots ÷ full modifiers
+  gameVersion: z.string(),
+});
+export type AegisWeaponRow = z.infer<typeof AegisWeaponRow>;
+
+export const AegisWeaponSnapshot = z.object({
+  source: Source,
+  rows: z.array(AegisWeaponRow),
+});
+export type AegisWeaponSnapshot = z.infer<typeof AegisWeaponSnapshot>;
+
+/** One row of the Quantum tabs Primaries, Specials and Heavies (ADR 0013). */
+export const QuantumWeaponRow = z.object({
+  id: z.string(), // kebab-case from tab, weapon type, name and variant
+  tab: z.enum(["primaries", "specials", "heavies"]),
+  weaponType: WeaponType,
+  name: z.string(), // weapon name for exotics, frame for legendaries
+  variant: z.string(), // label in the first column, e.g. "cata"; empty for the base row
+  totalDamage: z.number().nullable(), // "Theoretical Total Damage"
+  magDamage: z.number().nullable(),
+  magazine: z.number().nullable(),
+  totalShots: z.number().nullable(), // "Reserves + Magazine"
+  rpm: z.number().nullable(),
+  reloadSeconds: z.number().nullable(),
+  timeToEmptySeconds: z.number().nullable(),
+  bodyDamage: z.number().nullable(),
+  precisionDamage: z.number().nullable(),
+  // Cells with text instead of a number, by column, e.g. { totalShots: "inf" }.
+  textCells: z.record(z.string(), z.string()),
+  note: z.string(),
+});
+export type QuantumWeaponRow = z.infer<typeof QuantumWeaponRow>;
+
+export const QuantumWeaponSnapshot = z.object({
+  source: Source,
+  rows: z.array(QuantumWeaponRow),
+});
+export type QuantumWeaponSnapshot = z.infer<typeof QuantumWeaponSnapshot>;
