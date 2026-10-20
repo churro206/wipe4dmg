@@ -18,7 +18,7 @@ Spieler vergleichen **Waffen in Kombination mit Exotic-Rüstung**. Das Feedback 
 
 | Schritt | Inhalt | Freigabe vorher |
 | --- | --- | --- |
-| **7** | v1.0 formal abschließen: `package.json` 1.0.0, Tag `v1.0.0`, Changelog mit Zusammenfassung für Spieler, Releaseplan. Klein. | Plan |
+| ✅ **7** | v1.0 formal abschließen: `package.json` 1.0.0, Tag `v1.0.0`, Changelog mit Zusammenfassung für Spieler, Releaseplan. Klein. | Plan |
 | **W0 Fundament** | Waffenauswahl in der Oberfläche; Waffe im Link (Format 4, Format 3 bleibt lesbar); Effects nach Waffentyp filtern (Particle Reconstruction nur Fusion Rifles, Ember of Ashes nur über Scorch); ADR „Waffen als Paket“ und Ablauf `docs/guides/weapons.md` (wie `abilities.md`); versteckte Annahmen von One Thousand Voices prüfen (z. B. `sourceScale`, Scorch). | Plan + ADR |
 | **W1 Truth** | Paket aus Aegis/Quantum: Schaden pro Rakete mit Cluster (Prototype Truthseeker), Magazin, Reload, Munition; Reaper's Tithe als Faktor aus „mit / ohne“; Gate gegen Aegis (±3 %, ADR 0011). Element und Argent Ordnance vorher klären. | Datentabelle |
 | **E0 Exotic-Rüstung, Fundament** | Slot „Exotic“ in der Rüstung, höchstens eine pro Build, nach Klasse; ein Exotic ist ein Bündel aus Effects; Bedingungen (z. B. Mantle: Surge 4x im Element des Supers). Schema, Tests, Link. | Plan + ADR |

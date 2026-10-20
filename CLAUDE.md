@@ -64,9 +64,10 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 
 Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
 
-- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** 7 (v1.0 formal) → W0 Waffen-Fundament → W1 Truth → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. → W2 Thunderlord → v1.1. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
+- **v1.0.0 veröffentlicht (Tag `v1.0.0`, Versionsanzeige im Footer aus `package.json` über `__APP_VERSION__`).**
+- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** ✅ 7 (v1.0 formal) → W0 Waffen-Fundament → W1 Truth → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. → W2 Thunderlord → v1.1. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
 
-- **Release v1.0 in Arbeit.** Offen sind der Rest von US-14 (Fähigkeiten und Supers) und US-15 (Wiki). Danach testen die Freunde v1.0 (Gate).
+- **Gate v1.0 teilweise erfüllt:** Inhaber hat getestet, die Freunde testen parallel zu v1.1.
 - **US-14, Entscheidung in ADR 0009:** Abilities bestehen aus Ability Components (Compendium). Fehlen Teile oder fällt die Ability durchs Gate, gilt ein Aegis-Paket. Aegis ist das Gate (±10 % bei Stat 100 und 200).
 - **Erledigt:**
   - Importe für Aegis-Abilities, Compendium-Snapshot (mit Zitat-Check) und Manifest-Abilities.

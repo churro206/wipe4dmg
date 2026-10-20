@@ -793,7 +793,7 @@ function App() {
         )}
       </main>
       <footer>
-        Destiny-Inhalte und Icons © Bungie. Werte aus Community-Quellen (Quantum
+        wipe4dmg v{__APP_VERSION__} · Destiny-Inhalte und Icons © Bungie. Werte aus Community-Quellen (Quantum
         Damage-ics, Aegis, Destiny Data Compendium, Court).
       </footer>
     </>

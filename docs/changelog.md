@@ -1,6 +1,23 @@
 # Changelog
 
-## Unveröffentlicht (v1.0 in Arbeit)
+## Unveröffentlicht
+
+- Versionsanzeige unten auf der Seite.
+
+## 1.0.0 – 2026-10-20 (Vollversion)
+
+Für Spieler, kurz gesagt:
+
+- **Fähigkeiten und Supers:** Super, Grenade und Melee mit Stats zählen mit, gemessen von Aegis. Während des Supers pausiert die Waffe.
+- **Rotation:** Jeder Buff und jede Ability hat ein Zeitfenster auf der Zeitleiste. Der Rechner zählt nur, was gerade aktiv ist.
+- **Vergleich und Link:** Zwei Builds nebeneinander, beide Damage Curves in einem Diagramm. Der Build steckt im Link zum Teilen.
+- **Optimizer:** probiert Subklassen und Effects und zeigt die 15 besten Builds.
+- **Oberfläche wie im Spiel:** Waffe, Klasse, Subklasse, Fähigkeiten, Fragmente, Rüstung, Stats, Artefakt, Fireteam Support. Ingame-Icons.
+- **Wiki:** „Wie rechnet der Rechner?“, Abdeckung und Roadmap.
+
+Einschränkungen: nur One Thousand Voices, noch keine Exotic-Rüstung, Optimizer ohne Fähigkeiten. Energie und Cooldowns prüft der Rechner nicht.
+
+Im Detail:
 
 - Oberfläche wie im Spiel: Encounter, Waffe mit Katalysator, Klasse, Subklasse, Fähigkeiten (mit Class Ability), Fragmente, Rüstung (Platz für Exotic, Mods), Stats als Block (Weapons, Super, Grenade, Melee), Artefakt, Fireteam Support.
 - Surges wie im Spiel: Surge 1x (neu, +10 %), 2x und 3x als Rüstungs-Mods, immer passend zum Element der Waffe; das Icon zeigt den Mod dieses Elements. Surge 4x gibt es nur über Exotic-Rüstung und ist entfernt, bis Exotic-Rüstung kommt. Alte Links mit Surge 4x öffnen mit Surge 3x und einem Hinweis.
@@ -23,10 +40,8 @@
 - Abdeckung und Roadmap als Dokumente (`docs/coverage.md`, `docs/roadmap.md`, US-15, ADR 0010).
 - Tether-Dauern laut Compendium: Deadfall 12 s, Moebius 6 s pro Salve.
 - Courts Stacking Guide vollständig abgeglichen: Surge 3x (22 %) und die Stacking-Regeln für Amplification, Weapon Perks und Exotic Intrinsics sind jetzt belegt. MossyMax geprüft, veraltet.
-
 - Neue Oberfläche mit Ingame-Icons (ADR 0008): Effects als Icon-Kacheln mit Hover-Karte (Wirkung, Dauer, Quelle), Klasse und Subklasse als Schaltflächen mit Icons, Kennzahlen immer sichtbar, Ergebnis in Reitern (Übersicht, Rotation, Breakdown, Optimizer), Optimizer-Einträge als Karten mit Icon-Reihe, Fireteam Support einklappbar, Erklärungen als ⓘ.
-
-- Katalysator von One Thousand Voices: Taken Seeker als Damage over Time (Werte aus dem Compendium). Offene Abweichung zu Aegis: Modell ×1,26, Aegis ×1,371.
+- Katalysator von One Thousand Voices: Taken Seeker als Damage over Time (Werte aus dem Compendium).
 - Link teilen (US-05): Der Build steht kompakt in der Adresse, z. B. `?b=AgEBAcCyBAMKAAAADQEAAAEDALHqAQA` (etwa 30 bis 50 Zeichen), und lässt sich kopieren. Ein festgehaltener Vergleich steht im selben Link.
 - Optimizer (US-08): Für die gewählte Klasse probiert er alle Subklassen und erlaubten Kombinationen eigener Effects und zeigt die 15 besten Builds als Balken und Tabelle. Jeder Eintrag lässt sich übernehmen oder als Vergleich festhalten. Effects ohne Nutzen lässt er weg.
 - Subklasse wählbar (Arc, Solar, Void, Stasis, Strand, Prismatic); eigene Subklassen-Effects passen zur Subklasse. Kurznamen für Effects in Rangliste und Zeitleiste.

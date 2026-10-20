@@ -4,7 +4,13 @@ Was der Rechner als Nächstes lernt. Die genaue Abdeckung steht in der [Abdeckun
 
 Stand: 2026-10-20
 
-## In Arbeit: Fähigkeiten und Supers (v1.0)
+## In Arbeit (v1.1)
+
+- Weitere Waffen: Truth, danach Thunderlord; Waffenauswahl im Rechner
+- Exotic-Rüstung: Dawn Chorus und weitere Exotics mit großer Wirkung auf den Schaden (z. B. Mantle of Battle Harmony mit Surge 4x)
+- Plan: [Waffen und Exotic-Rüstung](plans/weapons-and-exotic-armor.md)
+
+## Fertig in v1.0: Fähigkeiten und Supers
 
 - ✅ Rechenkern für Fähigkeiten: Schaden auf der Zeitachse, Stat 0 bis 200, Super Window (die Waffe pausiert während des Supers), keine doppelt gezählten Buffs
 - ✅ Automatischer Abgleich mit Aegis und dem Compendium nach jedem Patch
@@ -19,7 +25,7 @@ Stand: 2026-10-20
 - ✅ Oberfläche: Zeitleiste mit Fähigkeiten und schraffiertem Super Window, Einsatzzeiten einstellbar, weitere Einsätze über „+“
 - ✅ Surges: Stufen 1x bis 3x wie die Rüstungs-Mods, passend zum Element der Waffe (Icon nach Element). Surge 4x kommt mit Exotic-Rüstung.
 - ✅ Oberfläche wie im Spiel: Waffe mit Katalysator oben, dann Klasse, Subklasse, Fähigkeiten mit Class Ability, Fragmente, Rüstung (Exotic folgt, Mods), Stats als Block, Artefakt, Fireteam Support
-- ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
+- ✅ Wiki: „Wie rechnet der Rechner?“, Abdeckung und Roadmap. Erklärungen zu einzelnen Mechanics folgen.
 
 ## Danach
 
@@ -34,12 +40,6 @@ Stand: 2026-10-20
 - Expanding Abyss: hebt Weaken auf 25 %, Tractor Cannon und Moebius auf 35 %, Deadfall auf 40 %
 - Melee-Buffs: addieren sich untereinander (laut Court), brauchen eigenen Bucket
 - Import von Courts Stacking Guide mit Snapshot und Zitat-Check, wie beim Compendium
-
-## Als Nächstes (v1.1)
-
-- Weitere Waffen: Truth, danach Thunderlord; Waffenauswahl im Rechner
-- Exotic-Rüstung: Dawn Chorus und weitere Exotics mit großer Wirkung auf den Schaden (z. B. Mantle of Battle Harmony mit Surge 4x)
-- Plan: [Waffen und Exotic-Rüstung](plans/weapons-and-exotic-armor.md)
 
 ## Später (v1.x)
 
