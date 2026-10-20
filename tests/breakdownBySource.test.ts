@@ -115,6 +115,7 @@ describe("breakdown per damage source", () => {
     expect(stat.multipliersBySource).toEqual([
       {
         damageSource: "super",
+        abilityId: "test-super",
         multiplier: abilityStatMultiplier(superStat, 200),
       },
     ]);
@@ -143,5 +144,25 @@ describe("breakdown per damage source", () => {
       debuff.multipliersBySource.find((m) => m.damageSource === "weapon")!
         .multiplier,
     );
+  });
+
+  it("lists the multipliers per ability, so a buff for one ability shows only there", () => {
+    // Same test super under the id of Golden Gun, which Radiant applies to.
+    const goldenGun = Ability.parse({ ...testSuper, id: "golden-gun-marksman" });
+    const entries = breakdown(
+      weapon,
+      DAMAGE_PHASE_SECONDS,
+      pick("radiant"),
+      buckets,
+      { abilities: [{ ability: goldenGun, castsMs: [0] }] },
+    );
+    expect(entryOf(entries, "empowering").multipliersBySource).toEqual([
+      { damageSource: "weapon", multiplier: 1.2 },
+      { damageSource: "super", abilityId: "golden-gun-marksman", multiplier: 1.2 },
+    ]);
+    const other = breakdown(weapon, DAMAGE_PHASE_SECONDS, pick("radiant"), buckets, withSuper);
+    expect(
+      entryOf(other, "empowering").multipliersBySource.map((m) => m.damageSource),
+    ).toEqual(["weapon"]);
   });
 });

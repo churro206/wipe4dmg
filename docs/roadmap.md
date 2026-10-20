@@ -15,6 +15,7 @@ Stand: 2026-10-20
 - ✅ Oberfläche: Plätze für Super, Grenade und Melee mit Icons, Stat-Regler 0 bis 200, Hover-Karte mit Herkunft des Werts
 - ⏳ Korrekturen aus der Recherche vom 2026-10-20: ✅ Ember of Ashes (jetzt +19 % wie Quantum, vorher +9 %); ✅ Katalysator (jetzt ×1,39 wie Aegis und blueberries.gg, vorher ×1,26); ✅ Golden Gun: Radiant und Well wirken (+20 %), ohne sie ist Golden Gun nicht mehr zu stark
 - ✅ Oberfläche: Donut „Schaden nach Quelle“ mit Waffenteilen und je einem Stück pro Ability (Name und Icon)
+- ✅ Oberfläche: Breakdown-Tabelle mit einer Spalte pro Quelle (Waffe und jede Ability) und dem Schaden pro Quelle
 - ⏳ Oberfläche: Super Window in der Zeitleiste, mehrere Einsätze, Optimizer mit Fähigkeiten
 - ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
 

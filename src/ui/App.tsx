@@ -652,6 +652,8 @@ function App() {
 }
 
 /** Breakdown tab: contribution per bucket as bars and as a table. */
+const KIND_ORDER: AbilityKind[] = ["super", "grenade", "melee"];
+
 function BreakdownPanel({
   result,
   damagePhaseSeconds,
@@ -673,31 +675,96 @@ function BreakdownPanel({
   if (entries.length === 0) {
     return <p className="note">Keine Multiplier gewählt.</p>;
   }
+  // One column per damage source of the build: the weapon, then each ability (super, grenade, melee).
+  const shares = damageShares(result);
+  const castAbilities = [
+    ...new Map(
+      (options.abilities ?? []).map(({ ability }) => [ability.id, ability]),
+    ).values(),
+  ].sort((a, b) => KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind));
+  const columns = [
+    {
+      key: "weapon",
+      abilityId: undefined as string | undefined,
+      label: "Waffe",
+      damage: shares
+        .filter((s) => s.damageSource === "weapon")
+        .reduce((sum, s) => sum + s.damage, 0),
+    },
+    ...castAbilities.map((ability) => ({
+      key: ability.id,
+      abilityId: ability.id as string | undefined,
+      label: ability.name,
+      damage: shares.find((s) => s.abilityId === ability.id)?.damage ?? 0,
+    })),
+  ];
   return (
     <>
       <BreakdownChart entries={entries} totalDamage={result.totalDamage} />
-      <table>
-        <thead>
-          <tr>
-            <th>Bucket</th>
-            <th>Multiplier (aktiv)</th>
-            <th>Total ohne</th>
-            <th>Beitrag</th>
-          </tr>
-        </thead>
-        <tbody>
-          {entries.map((entry) => (
-            <tr key={entry.bucketId}>
-              <td>{entry.name}</td>
-              <td>×{factor.format(entry.multiplier)}</td>
-              <td>{integer.format(entry.totalDamageWithout)}</td>
-              <td>
-                +{integer.format(result.totalDamage - entry.totalDamageWithout)}
-              </td>
+      <div className="table-scroll">
+        <table className="breakdown">
+          <thead>
+            <tr>
+              <th>Bucket</th>
+              {columns.map((column) => (
+                <th key={column.key} title={column.label}>
+                  {column.abilityId ? (
+                    <span className="cell-with-icon">
+                      <Icon
+                        iconKey={`ability:${column.abilityId}`}
+                        label={column.label}
+                        size={20}
+                      />
+                      {column.label}
+                    </span>
+                  ) : (
+                    column.label
+                  )}
+                </th>
+              ))}
+              <th>Beitrag</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {entries.map((entry) => (
+              <tr key={entry.bucketId}>
+                <td>{entry.name}</td>
+                {columns.map((column) => {
+                  const match = entry.multipliersBySource.find((m) =>
+                    column.abilityId
+                      ? m.abilityId === column.abilityId
+                      : m.damageSource === "weapon",
+                  );
+                  return (
+                    <td key={column.key} className={match ? "" : "muted"}>
+                      {match ? `×${factor.format(match.multiplier)}` : "–"}
+                    </td>
+                  );
+                })}
+                <td>
+                  +
+                  {integer.format(
+                    result.totalDamage - entry.totalDamageWithout,
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Schaden</th>
+              {columns.map((column) => (
+                <th key={column.key}>{integer.format(column.damage)}</th>
+              ))}
+              <th>{integer.format(result.totalDamage)}</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p className="note">
+        Multiplier, wenn der Effect aktiv ist. „–“: Der Bucket wirkt nicht auf
+        diese Quelle. Beitrag: Total Damage minus Total Damage ohne den Bucket.
+      </p>
     </>
   );
 }

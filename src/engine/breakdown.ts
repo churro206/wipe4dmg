@@ -1,6 +1,7 @@
 // Breakdown (glossary): per bucket its multiplier and the total damage without that bucket.
 // A bucket can apply differently per damage source, e.g. surges only to the weapon and the ability
-// stat only to abilities, so the multiplier is listed for every damage source of the build.
+// stat only to abilities, so the multiplier is listed for every damage source of the build: the
+// weapon and each ability, since a buff can apply to single abilities (e.g. Radiant to Golden Gun).
 
 import type {
   Bucket,
@@ -18,8 +19,12 @@ export type BreakdownEntry = {
   bucketId: string;
   name: string;
   multiplier: number; // for the weapon's own damage; 1 if the bucket does not apply to it
-  // Every damage source of the build that the bucket applies to, weapon first.
-  multipliersBySource: { damageSource: DamageSource; multiplier: number }[];
+  // Every damage source of the build that the bucket applies to, weapon first, then each ability.
+  multipliersBySource: {
+    damageSource: DamageSource;
+    abilityId?: string; // set for an ability
+    multiplier: number;
+  }[];
   totalDamageWithout: number;
 };
 
@@ -49,7 +54,7 @@ export function breakdown(
     },
   ];
   for (const { ability } of options.abilities ?? []) {
-    if (!targets.some((t) => t.damageSource === ability.kind)) {
+    if (!targets.some((t) => t.abilityId === ability.id)) {
       targets.push({
         damageSource: ability.kind,
         element: ability.element,
@@ -59,14 +64,22 @@ export function breakdown(
   }
   const bySource = targets.map((target) => ({
     damageSource: target.damageSource,
+    abilityId: target.abilityId,
     entries: bucketMultipliers(parts, buckets, target),
   }));
 
   return buckets.flatMap((bucket) => {
     const multipliersBySource = bySource.flatMap(
-      ({ damageSource, entries }) => {
+      ({ damageSource, abilityId, entries }) => {
         const entry = entries.find((e) => e.bucket.id === bucket.id);
-        return entry ? [{ damageSource, multiplier: entry.multiplier }] : [];
+        if (!entry) return [];
+        return [
+          {
+            damageSource,
+            ...(abilityId ? { abilityId } : {}),
+            multiplier: entry.multiplier,
+          },
+        ];
       },
     );
     if (multipliersBySource.length === 0) return [];

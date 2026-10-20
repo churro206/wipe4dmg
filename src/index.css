@@ -463,6 +463,19 @@ td:first-child {
   text-align: left;
 }
 
+.table-scroll {
+  overflow-x: auto;
+}
+
+table.breakdown tfoot th {
+  border-bottom: none;
+  border-top: 2px solid var(--border);
+}
+
+td.muted {
+  color: var(--muted);
+}
+
 table.rotation input {
   max-width: 4.5rem;
 }
