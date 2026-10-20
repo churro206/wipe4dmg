@@ -1,11 +1,13 @@
-// Gate for abilities (ADR 0009): every ability with an Aegis row, simulated alone without effects,
-// must match the Aegis value per use at stat 100 and stat 200 within the tolerance.
+// Gate for abilities (ADR 0009): every ability with an Aegis row, simulated alone, must match the
+// Aegis value per use at stat 100 and stat 200 within the tolerance. Multipliers taken out of a
+// package (e.g. Radiant in Golden Gun) are active, as in the Aegis measurement.
 
 import { describe, expect, it } from "vitest";
 import rawAbilityStats from "../src/data/ability-stats.json";
 import rawAbilities from "../src/data/abilities.json";
 import rawRows from "../src/data/aegis-abilities.json";
 import rawBuckets from "../src/data/buckets.json";
+import rawEffects from "../src/data/effects.json";
 import rawManifest from "../src/data/manifest-abilities.json";
 import raw from "../src/data/weapons/one-thousand-voices.json";
 import {
@@ -14,7 +16,11 @@ import {
   type Ability,
 } from "../src/data/schema";
 import { loadAbilities } from "../src/engine/loadAbilities";
-import { loadAbilityStats, loadBuckets } from "../src/engine/loadData";
+import {
+  loadAbilityStats,
+  loadBuckets,
+  loadEffects,
+} from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
 
@@ -23,6 +29,7 @@ const LONG_DAMAGE_PHASE_SECONDS = 120;
 
 const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
+const effects = loadEffects(rawEffects);
 const abilityStats = loadAbilityStats(rawAbilityStats);
 const rows = AegisAbilityRow.array().parse(rawRows);
 const abilities = loadAbilities(
@@ -30,12 +37,17 @@ const abilities = loadAbilities(
   rows,
   abilityStats,
   ManifestAbilities.parse(rawManifest).abilities,
+  { effects, buckets },
 );
 
-/** Damage of one cast of the ability alone, without effects, at the given stat. */
+/** Damage of one cast of the ability alone at the given stat, with the effects Aegis measured. */
 function perUse(ability: Ability, stat: number): number {
   const scaling = abilityStats.find((s) => s.kind === ability.kind)!;
-  const result = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, [], buckets, {
+  const measuredIds = new Set(
+    ability.components.flatMap((c) => c.normalisedEffectIds ?? []),
+  );
+  const measured = effects.filter((e) => measuredIds.has(e.id));
+  const result = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, measured, buckets, {
     abilities: [{ ability, castsMs: [0] }],
     abilityStats: [{ scaling, value: stat }],
   });

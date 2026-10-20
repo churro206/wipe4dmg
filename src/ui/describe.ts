@@ -99,11 +99,20 @@ export function describeAbility(
   const included = [
     ...new Set(ability.components.flatMap((c) => c.includedEffectIds ?? [])),
   ];
+  const normalised = [
+    ...new Set(
+      ability.components.flatMap((c) => c.normalisedEffectIds ?? []),
+    ),
+  ];
   const lines = [
     ability.components.length === 0
       ? "Kein eigener Schaden, nur Buff"
       : ability.package
-        ? `Gemessener Wert von Aegis: ${integer.format(total)} pro Einsatz bei Stat 100`
+        ? `Gemessener Wert von Aegis${
+            normalised.length > 0
+              ? ` ohne ${normalised.map(nameOf).join(", ")}`
+              : ""
+          }: ${integer.format(total)} pro Einsatz bei Stat 100`
         : `Eigene Teile: ${ability.components.map((c) => c.name).join(", ")}`,
   ];
   if (aegisRow && aegisRow.assumptions.length > 0) {
@@ -116,6 +125,11 @@ export function describeAbility(
   }
   if (included.length > 0) {
     lines.push(`Schon enthalten: ${included.map(nameOf).join(", ")}`);
+  }
+  if (normalised.length > 0) {
+    lines.push(
+      `Herausgerechnet, wirkt nur im Build: ${normalised.map(nameOf).join(", ")}`,
+    );
   }
   if (ability.grantsEffectIds?.length) {
     lines.push(`Bringt mit: ${ability.grantsEffectIds.map(nameOf).join(", ")}`);

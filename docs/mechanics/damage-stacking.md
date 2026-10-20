@@ -30,7 +30,7 @@ Damage-Buffs gehören zu Kategorien (bei uns: Buckets). Innerhalb einer Kategori
     - Twilight Arsenal: nur Debuffs und der „Void Surge modifier“ (Compendium). Aegis rechnet trotzdem Facet of Courage und Limit Break ein; Widerspruch.
     - Andere Supers: Keine Quelle wendet Radiant, Well, Rift, Banner Shield oder Weapons of Light an. Das ist abgeleitet, getestet hat es niemand. Laut Bungie 9.7.0 gelten Empowering Buffs grundsätzlich nur für Waffenschaden.
     - Ausnahme außerhalb der Supers: Crackshot (Class Ability) bekommt Radiant +20 % (Compendium, Aegis).
-    - Im Modell gelten Radiant und Well bisher nur für Waffen. Golden Gun ist deshalb mit Radiant oder Well 20 % zu niedrig (bekannter Fehler).
+    - Im Modell (seit 2026-10-20): Radiant und Well haben einen zweiten Multiplier-Teil, ×1,2 nur für Golden Gun Deadshot und Marksman (Feld `abilityIds`). Das Aegis-Paket enthält Radiant (Abilities 15 935 ÷ Swap-Basis 13 279 = 1,200 bei Nighthawk); der Loader rechnet es heraus (ADR 0009, Punkt 5). Ohne Radiant oder Well ist Golden Gun damit 20 % schwächer, mit beiden zusammen bleibt es bei ×1,2.
 13. **Activity Surge und Overcharge** stapeln nicht miteinander. Activity Surges stapeln aber mit Armor Surges. (Aktivitätsabhängig, vorerst nicht im Umfang.)
 14. **Superstructure Defender** und ähnliche Raid-Mods zählen nicht als Debuff und stapeln mit Weaken. (Raid-spezifisch, vorerst nicht im Umfang.)
 

@@ -77,11 +77,11 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
 - **Recherche Wissenslücken (2026-10-20), ADR 0011:** Drei Fehler im Modell von One Thousand Voices, alle beim Zusammensetzen:
   - Ember of Ashes +9,4 % statt +17 %: selbst abgeleiteter Abstand der Explosionen (`intervalMs` 66,7) ließ Ignitions in den Cooldown fallen. **Korrigiert** (Explosionen gleichzeitig, ×1,188).
   - Katalysator ×1,26 statt ×1,37: Seeker über der Grenze von 5 müssen ihren Aufprall machen; Seeker-Werte sind in Compendium-Skala (etwa 1,26 × Quantum). **Korrigiert** (×1,392, neues Feld `sourceScale`).
-  - Golden Gun mit Radiant oder Well 20 % zu niedrig (Well zählt bei Golden Gun als Radiant).
+  - Golden Gun: Das Aegis-Paket enthält Radiant, ein Build ohne Radiant war 20 % zu hoch. **Korrigiert:** eingerechnete Multiplier werden herausgerechnet (ADR 0009, Punkt 5), Radiant und Well wirken auf Golden Gun (Feld `abilityIds`).
   - Neue Regel (ADR 0011): Quellen nur als Verhältnis mischen, abgeleitete Werte nur mit Gate.
 - **Erkenntnis:** Compendium-Teile haben das Gate bisher nicht bestanden (Thundercrash −12,5 %, Anzahl der Aftershocks unklar). Deshalb sind fast alle Abilities Pakete.
 - **Nächste Schritte (Masterplan):**
-  - **Korrekturen nach ADR 0011 (vor 6c):** Gate `tests/weaponEffectGate.test.ts`, Ember und Katalysator sind erledigt. Offen: Golden Gun mit Radiant und Well. Vor jeder Datenänderung eine Tabelle zeigen. Optional: Messprotokoll für Ingame-Tests.
+  - **Korrekturen nach ADR 0011:** erledigt (Gate `tests/weaponEffectGate.test.ts`, Ember, Katalysator, Golden Gun). Optional: Messprotokoll für Ingame-Tests.
   - **6c, Ergebnis:**
     - Donut nach Damage Source; heute zeigt er noch „hammer-of-sol.package“.
     - Breakdown-Tabelle pro Damage Source.

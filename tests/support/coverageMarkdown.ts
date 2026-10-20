@@ -102,7 +102,9 @@ export function coverageMarkdown(
         ? [
             {
               text: `${part.bucketId} +${percent(part.multiplier.value ?? NaN)}`,
-              sources: part.damageSources.join(", "),
+              sources:
+                part.damageSources.join(", ") +
+                (part.abilityIds ? ` (nur ${part.abilityIds.join(", ")})` : ""),
             },
           ]
         : part.type === "timing"

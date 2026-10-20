@@ -27,6 +27,7 @@ type SourceTarget = {
   damageSource: DamageSource;
   element: Element;
   weaponType?: WeaponType;
+  abilityId?: string;
 };
 
 export function breakdown(
@@ -49,7 +50,11 @@ export function breakdown(
   ];
   for (const { ability } of options.abilities ?? []) {
     if (!targets.some((t) => t.damageSource === ability.kind)) {
-      targets.push({ damageSource: ability.kind, element: ability.element });
+      targets.push({
+        damageSource: ability.kind,
+        element: ability.element,
+        abilityId: ability.id,
+      });
     }
   }
   const bySource = targets.map((target) => ({

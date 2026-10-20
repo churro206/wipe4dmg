@@ -217,6 +217,7 @@ export const MultiplierPart = z.object({
   damageSources: z.array(DamageSource).min(1),
   elements: z.array(Element).optional(), // omitted: all elements
   weaponTypes: z.array(WeaponType).optional(), // omitted: all weapon types
+  abilityIds: z.array(z.string()).optional(), // omitted: all abilities; set: only these abilities
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 
@@ -312,8 +313,11 @@ export const AbilityComponent = z.object({
   tickIntervalMs: SourcedNumber, // 0 for a single hit
   // Whether the ability stat (super, grenade or melee) scales this part; keyword damage often does not.
   scalesWithAbilityStat: z.boolean(),
-  // Effects already inside the value, e.g. Radiant in an Aegis package; never applied again here.
+  // Effects already inside the value, e.g. Ember of Ashes in an Aegis package; never applied again here.
   includedEffectIds: z.array(z.string()).optional(),
+  // Multiplier effects taken out of the value when loading, e.g. Radiant in a Golden Gun package;
+  // they apply again like any effect if the build has them (ADR 0009 point 5).
+  normalisedEffectIds: z.array(z.string()).optional(),
 });
 export type AbilityComponent = z.infer<typeof AbilityComponent>;
 

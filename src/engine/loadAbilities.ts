@@ -5,11 +5,17 @@
 // (200). The package is split into a part that scales with the ability stat and a fixed part, so that
 // both measurements are met exactly; in between the stat scales linearly per point.
 //
+// Included multipliers: an Aegis package may contain a multiplier effect, e.g. Radiant in Golden Gun.
+// With the effects at hand, the loader divides it out, so the effect applies only if the build has it.
+// Other included effects (e.g. Ember of Ashes, which changes scorch stacks) stay inside the value.
+//
 // Providers: without own providers, an ability gets its classes and subclasses from the manifest
 // ability items (manifest-abilities.json), including Prismatic, and the hash of its element item.
 
 import {
   Ability,
+  type Bucket,
+  type Effect,
   AbilityData,
   GuardianClass,
   Subclass,
@@ -22,6 +28,7 @@ import {
   type Source,
 } from "../data/schema";
 import { elementItem, itemsOfAbility } from "./abilityNames";
+import { activeParts, combinedMultiplier } from "./effectParts";
 import { requireValue } from "./requireValue";
 
 // Shares closer to 0 or 1 than this are treated as 0 or 1: Aegis rounds measured damage to whole
@@ -37,6 +44,7 @@ export function loadAbilities(
   aegisRows: AegisAbilityRow[],
   abilityStats: AbilityStatScaling[],
   manifestAbilities: ManifestAbility[] = [],
+  normalise?: { effects: Effect[]; buckets: Bucket[] },
 ): Ability[] {
   return AbilityData.array()
     .parse(raw)
@@ -54,6 +62,10 @@ export function loadAbilities(
               ability.extraIncludedEffectIds ?? [],
               aegisRows,
               abilityStats,
+            ).map((component) =>
+              normalise
+                ? withoutIncludedMultipliers(component, ability, normalise)
+                : component,
             )
           : (components ?? []),
       }),
@@ -166,6 +178,47 @@ function packageComponents(
       `${100 - percent}% fixed`,
     ),
   ];
+}
+
+/** Divides the included effects that are multipliers for this ability out of the component value. */
+function withoutIncludedMultipliers(
+  component: AbilityComponent,
+  ability: { id: string; kind: AbilityKind; element: Ability["element"] },
+  { effects, buckets }: { effects: Effect[]; buckets: Bucket[] },
+): AbilityComponent {
+  const kept: string[] = [];
+  const normalised: { id: string; factor: number }[] = [];
+  for (const id of component.includedEffectIds ?? []) {
+    const effect = effects.find((e) => e.id === id);
+    const factor = effect
+      ? combinedMultiplier(activeParts([effect], buckets).multiplierParts, buckets, {
+          damageSource: ability.kind,
+          element: ability.element,
+          abilityId: ability.id,
+        })
+      : 1;
+    if (factor === 1) kept.push(id);
+    else normalised.push({ id, factor });
+  }
+  if (normalised.length === 0) return component;
+
+  const factor = normalised.reduce((product, n) => product * n.factor, 1);
+  const value = requireValue(component.damagePerTick, "damagePerTick");
+  const source = component.damagePerTick.source;
+  return {
+    ...component,
+    damagePerTick: {
+      value: value / factor,
+      source: {
+        ...source,
+        note: `${source.note ?? ""}; taken out: ${normalised
+          .map((n) => `${n.id} x${n.factor}`)
+          .join(", ")} (ADR 0009 point 5)`,
+      },
+    },
+    includedEffectIds: kept,
+    normalisedEffectIds: normalised.map((n) => n.id),
+  };
 }
 
 function clampShare(share: number): number {

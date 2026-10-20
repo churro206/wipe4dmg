@@ -23,6 +23,7 @@ export type DamageTarget = {
   damageSource: DamageSource;
   element: Element;
   weaponType?: WeaponType; // omitted for abilities
+  abilityId?: string; // set for damage of an ability
 };
 
 /**
@@ -86,7 +87,10 @@ export function bucketMultipliers(
           part.damageSources.includes(target.damageSource) &&
           (part.elements === undefined ||
             part.elements.includes(target.element)) &&
-          appliesToWeaponType(part.weaponTypes, target.weaponType),
+          appliesToWeaponType(part.weaponTypes, target.weaponType) &&
+          (part.abilityIds === undefined ||
+            (target.abilityId !== undefined &&
+              part.abilityIds.includes(target.abilityId))),
       )
       .map((part) => requireValue(part.multiplier, "multiplier"));
     if (values.length === 0) continue;

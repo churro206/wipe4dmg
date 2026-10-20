@@ -33,6 +33,22 @@
           }
         },
         "damageSources": ["weapon"]
+      },
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "multiplier": {
+          "value": 1.2,
+          "source": {
+            "name": "Bungie Update 9.5.0 (\"When fired inside a Well of Radiance, Golden Gun now counts as Radiant for increased damage.\")",
+            "url": "https://destiny.bungie.org/patchnotes/328",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Golden Gun gets the Radiant value (20 %), not the 25 % of Well for weapons. With Radiant as well, the empowering bucket keeps the highest value, so 20 %."
+          }
+        },
+        "damageSources": ["super"],
+        "abilityIds": ["golden-gun-deadshot", "golden-gun-marksman"]
       }
     ],
     "durationMs": {
@@ -122,6 +138,22 @@
           }
         },
         "damageSources": ["weapon"]
+      },
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "multiplier": {
+          "value": 1.2,
+          "source": {
+            "name": "Destiny Data Compendium, Solar (Radiant: \"Increases Weapon Damage by 20% ... Also affects Golden Gun's Damage.\"); Court Stacking Guide (\"Radiant also increases Golden Gun Supers and Still Hunt's Golden Gun damage by 20%\")",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Aegis measures Golden Gun with Radiant: Abilities tab 15,935 / Swap tab base 13,279 = 1.200 (Celestial Nighthawk). The packages take Radiant out (ADR 0009 point 5)."
+          }
+        },
+        "damageSources": ["super"],
+        "abilityIds": ["golden-gun-deadshot", "golden-gun-marksman"]
       }
     ]
   },

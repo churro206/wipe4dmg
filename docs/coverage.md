@@ -121,9 +121,9 @@ Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen 
 
 | Effect | Bucket | Wirkung | Wirkt auf | Dauer |
 | --- | --- | --- | --- | --- |
-| Well of Radiance (standing inside) | empowering | empowering +25 % | weapon | 30 s |
+| Well of Radiance (standing inside) | empowering | empowering +25 %; empowering +20 % | weapon; super (nur golden-gun-deadshot, golden-gun-marksman) | 30 s |
 | Empowering Rift | empowering | empowering +20 % | weapon | 15 s |
-| Radiant | empowering | empowering +20 % | weapon | ganze Phase oder Rotation |
+| Radiant | empowering | empowering +20 %; empowering +20 % | weapon; super (nur golden-gun-deadshot, golden-gun-marksman) | ganze Phase oder Rotation |
 | Banner Shield (Weapons of Light) | empowering | empowering +25 % | weapon | ganze Phase oder Rotation |
 | Lumina (Blessing of the Sky) | empowering | empowering +35 % | weapon | 11 s |
 | Weaken | debuff | debuff +15 % | weapon, grenade, melee, super | ganze Phase oder Rotation |

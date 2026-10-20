@@ -251,7 +251,11 @@ export function simulate(
             ...(component.scalesWithAbilityStat ? statParts : []),
           ],
           buckets,
-          { damageSource: cast.ability.kind, element: cast.ability.element },
+          {
+            damageSource: cast.ability.kind,
+            element: cast.ability.element,
+            abilityId: cast.ability.id,
+          },
         ),
       ),
     );

@@ -37,6 +37,7 @@ export const abilities = loadAbilities(
   aegisRows,
   abilityStats,
   loadManifestAbilities(rawManifestAbilities),
+  { effects, buckets },
 );
 export const linkRegistry: LinkRegistry = {
   weapons: [weapon],
