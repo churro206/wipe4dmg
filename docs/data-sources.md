@@ -120,5 +120,10 @@ Ablauf der geplanten Tests: [Messprotokolle für Ingame-Tests](guides/measuremen
 | Datum | Spielversion | Bedingungen | Ergebnis |
 | --- | --- | --- | --- |
 | 2026-10-18 | nicht notiert | Schießstand, Dummy „Carl“; kein Artefakt, keine Aspects und Fragments, kein Surge; Weapons-Stat 130 (+2,9 % Heavy-Schaden PvE); Katalysator-Status nicht notiert | Ein Shot: 1408 Total Damage. Beam-Tick 10, Explosion-Tick 129, Burn-Tick 16. Ein Magazin: 6263 Total Damage, DPS-Anzeige 887. |
+| 2026-10-20 | nicht notiert | Test 1 (`docs/guides/measurements.md`): Schießstand, Carl, One Thousand Voices ohne Katalysator, Particle Reconstruction an | Ignitions in 4 Shots: ohne Ember of Ashes 2 von 4, mit Ember 4 von 4. Bestätigt Aegis und das Gate. |
+| 2026-10-20 | nicht notiert | Test 2: ein Shot, Aufnahme 60 fps | Explosionen kommen **gestaffelt**, nicht gleichzeitig. Abstand in Frames nicht notiert. |
+| 2026-10-20 | nicht notiert | Test 3: Abstand zwischen Beam-Starts | „1:45“ (Einheit unklar: 1,45 s oder 1 s 45 Frames = 1,75 s); mit oder ohne Particle Reconstruction nicht notiert. Rückfrage offen. |
+| 2026-10-20 | nicht notiert | Test 4: Ignition mit ÷ ohne Particle Reconstruction, ohne Ember | 1,27. Der Debuff wirkt auf Ignitions (erwartet 1,276). |
+| 2026-10-20 | nicht notiert | Test 5: Golden Gun, Körpertreffer mit ÷ ohne Radiant | 1,20. Radiant wirkt auf Golden Gun. |
 
 Die Stichprobe liegt etwa um den Faktor 1,6 unter Aegis. Das ist nach ADR 0005 akzeptiert, weil nur relative Unterschiede zählen.
