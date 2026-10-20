@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type {
   AbilityKind,
   Build,
   Effect,
   GuardianClass,
   ProviderKind,
+  Slot,
   Subclass,
 } from "../data/schema";
 import {
@@ -62,6 +63,7 @@ import { WikiView } from "./components/WikiView";
 import { AbilityCastEditor } from "./components/AbilityCastEditor";
 import { RotationEditor } from "./components/RotationEditor";
 import { SegmentedControl } from "./components/SegmentedControl";
+import { StatSliders } from "./components/StatSliders";
 import { SummaryBar } from "./components/SummaryBar";
 import { Tabs } from "./components/Tabs";
 import {
@@ -76,9 +78,9 @@ import {
   weapon,
 } from "./data";
 import { effectIconKey, PROVIDER_LABELS } from "./describe";
+import { effectSections } from "./effectSections";
 import { factor, integer, seconds } from "./format";
 
-const OWN_PROVIDERS: ProviderKind[] = ["subclass", "armor", "artifact"];
 const TABS = [
   { id: "overview", label: "Übersicht" },
   { id: "rotation", label: "Rotation" },
@@ -356,6 +358,29 @@ function App() {
     };
   };
 
+  // Own effects by slot, in the order of the game screens (U3).
+  const sections = effectSections(
+    effects,
+    guardianClass,
+    subclass,
+    GRANTED_EFFECT_IDS,
+  );
+  const pickerFor = (slot: Slot, heading: ReactNode) => {
+    const section = sections.find((s) => s.slot === slot);
+    if (!section) return null;
+    return (
+      <>
+        {heading}
+        <EffectPicker
+          effects={section.effects}
+          provider={section.provider}
+          isSelected={(effect) => isSelected(effect, section.provider)}
+          onToggle={(effect) => toggle(effect, section.provider)}
+        />
+      </>
+    );
+  };
+
   return (
     <>
       <main>
@@ -377,6 +402,7 @@ function App() {
         {view === "calculator" && (
           <>
             <section className="settings" aria-label="Build">
+              <h2>Encounter</h2>
               <div className="phase-row">
                 <label>
                   Damage Phase (s)
@@ -418,6 +444,30 @@ function App() {
               </div>
               {boss?.description && <p className="note">{boss.description}</p>}
 
+              <h2>Waffe</h2>
+              <div className="tile-grid">
+                <span className="tile-wrap weapon-wrap">
+                  <div className="tile weapon-tile">
+                    <Icon iconKey={`weapon:${weapon.id}`} label={weapon.name} />
+                    <span className="tile-label">{weapon.name}</span>
+                  </div>
+                </span>
+                <span className="tile-wrap">
+                  <button
+                    type="button"
+                    className="tile"
+                    aria-pressed={catalyst}
+                    onClick={() => setCatalyst((on) => !on)}
+                  >
+                    <Icon
+                      iconKey={`catalyst:${weapon.id}`}
+                      label="Katalysator"
+                    />
+                    <span className="tile-label">Katalysator</span>
+                  </button>
+                </span>
+              </div>
+
               <h2>Klasse</h2>
               <SegmentedControl
                 label="Klasse"
@@ -444,12 +494,10 @@ function App() {
               <h2>
                 Fähigkeiten
                 <InfoTip>
-                  Super, Grenade und Melee mit ihrem Stat. Der Schaden pro
-                  Einsatz kommt meist als gemessener Wert von Aegis; über 100
-                  erhöht jeder Stat-Punkt den Schaden (Super +0,45 %, Grenade
-                  +0,65 %, Melee +0,3 %). Jede Fähigkeit wird zu Beginn der
-                  Damage Phase eingesetzt; während eines Supers feuert die Waffe
-                  nicht.
+                  Super, Grenade und Melee. Der Schaden pro Einsatz kommt meist
+                  als gemessener Wert von Aegis; ihre Stats stehen unter
+                  „Stats“. Jede Fähigkeit wird zu Beginn der Damage Phase
+                  eingesetzt; während eines Supers feuert die Waffe nicht.
                 </InfoTip>
               </h2>
               <AbilityPicker
@@ -465,14 +513,50 @@ function App() {
                   selected: abilities.find(
                     (a) => a.id === abilityChoice[kind]?.abilityId,
                   ),
-                  stat: abilityStatInputs[kind],
-                  maxStat: MAX_ABILITY_STATS[kind],
                 }))}
                 openKind={openSlot}
                 aegisRows={aegisRows}
                 effects={effects}
                 onOpen={setOpenSlot}
                 onSelect={selectAbility}
+              />
+              {pickerFor("super", <h3 className="sub">Super</h3>)}
+              {pickerFor(
+                "classAbility",
+                <h3 className="sub">Class Ability</h3>,
+              )}
+              {pickerFor("aspect", <h2>Aspects</h2>)}
+              {pickerFor("fragment", <h2>Fragmente</h2>)}
+
+              <h2>Rüstung</h2>
+              <h3 className="sub">Exotic</h3>
+              <div className="tile-grid">
+                <span className="tile-wrap">
+                  <div
+                    className="tile placeholder"
+                    title="Exotic-Rüstung kommt in einer späteren Version."
+                  >
+                    <span
+                      className="icon ability-none"
+                      style={{ width: 40, height: 40 }}
+                    >
+                      ?
+                    </span>
+                    <span className="tile-label">folgt</span>
+                  </div>
+                </span>
+              </div>
+              {pickerFor("mod", <h3 className="sub">Mods</h3>)}
+
+              <h2>Stats</h2>
+              {pickerFor("stat", null)}
+              <StatSliders
+                rows={ABILITY_KINDS.map((kind) => ({
+                  kind,
+                  label: ABILITY_KIND_LABELS[kind],
+                  value: abilityStatInputs[kind],
+                  max: MAX_ABILITY_STATS[kind],
+                }))}
                 onStat={(kind, value) =>
                   setAbilityStatInputs((current) => ({
                     ...current,
@@ -481,44 +565,7 @@ function App() {
                 }
               />
 
-              <h2>Waffe</h2>
-              <div className="tile-grid">
-                <span className="tile-wrap">
-                  <button
-                    type="button"
-                    className="tile"
-                    aria-pressed={catalyst}
-                    onClick={() => setCatalyst((on) => !on)}
-                  >
-                    <Icon
-                      iconKey={`catalyst:${weapon.id}`}
-                      label="Katalysator"
-                    />
-                    <span className="tile-label">Katalysator</span>
-                  </button>
-                </span>
-              </div>
-
-              {OWN_PROVIDERS.map((provider) => {
-                const available = effectsFor(
-                  effects,
-                  provider,
-                  guardianClass,
-                  subclass,
-                ).filter((effect) => !GRANTED_EFFECT_IDS.has(effect.id));
-                if (available.length === 0) return null;
-                return (
-                  <div key={provider}>
-                    <h2>{PROVIDER_LABELS[provider]}</h2>
-                    <EffectPicker
-                      effects={available}
-                      provider={provider}
-                      isSelected={(effect) => isSelected(effect, provider)}
-                      onToggle={(effect) => toggle(effect, provider)}
-                    />
-                  </div>
-                );
-              })}
+              {pickerFor("artifact", <h2>Artefakt</h2>)}
 
               <details
                 className="fireteam"

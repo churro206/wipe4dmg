@@ -93,7 +93,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
   - **U, Oberfläche wie im Spiel (vor dem Release, Inhaber 2026-10-20):**
     - ✅ U1 Surges: `surge-1x` bis `surge-3x` ohne Element (Annahme: passende Mods), Icon nach Element der Waffe (`elementIconKey`), 4x entfernt (nur über Exotic-Rüstung); alter Code 13 liest sich als 3x (`formerCodes`).
     - ✅ U2: jeder eigene Effect hat einen Slot wie im Spiel (`EffectProvider.slot`: Super, Class Ability, Aspect, Fragment, Mod, Stat, Artefakt); Fireteam ohne Slot. Links unverändert.
-    - U3: Reihenfolge Encounter → Waffe (+ Katalysator) → Klasse → Subklasse → Super, Class Ability, Grenade, Melee → Aspects → Fragments → Rüstung (Exotic folgt, Mods) → Stats als Block → Artefakt → Fireteam Support. ASCII-Skizze zur Freigabe.
+    - ✅ U3 (`src/ui/effectSections.ts`, `StatSliders`): Reihenfolge Encounter → Waffe (+ Katalysator) → Klasse → Subklasse → Super, Class Ability, Grenade, Melee → Aspects → Fragments → Rüstung (Exotic folgt, Mods) → Stats als Block → Artefakt → Fireteam Support. Nächster Schritt: 7 (v1.0 an die Freunde).
   - **7, Abschluss v1.0:** Changelog, Releaseplan, Testlauf mit den Freunden.
   - **Danach weitere Waffen:** W0 Fundament (Waffenauswahl, Link-Format 4, Effects nach Waffentyp, ADR), dann Truth, dann Thunderlord (Reign Havoc, Blitze; Bolt Charge zunächst ohne, wie Aegis).
   - **v1.x:** Feast of Light und Banner of War als Effects (macht Bladefury nutzbar), Well-Mechanik (Waffenschaden zählt als Super-Schaden, Dauer mit Super-Stat), Line 'Em Up, fehlende Zeitwerte der Supers.

@@ -18,6 +18,7 @@ Stand: 2026-10-20
 - ✅ Oberfläche: Breakdown-Tabelle mit einer Spalte pro Quelle (Waffe und jede Ability) und dem Schaden pro Quelle
 - ✅ Oberfläche: Zeitleiste mit Fähigkeiten und schraffiertem Super Window, Einsatzzeiten einstellbar, weitere Einsätze über „+“
 - ✅ Surges: Stufen 1x bis 3x wie die Rüstungs-Mods, passend zum Element der Waffe (Icon nach Element). Surge 4x kommt mit Exotic-Rüstung.
+- ✅ Oberfläche wie im Spiel: Waffe mit Katalysator oben, dann Klasse, Subklasse, Fähigkeiten mit Class Ability, Fragmente, Rüstung (Exotic folgt, Mods), Stats als Block, Artefakt, Fireteam Support
 - ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
 
 ## Danach

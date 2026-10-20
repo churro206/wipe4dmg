@@ -13,12 +13,11 @@ export type AbilitySlot = {
   label: string; // e.g. "Super"
   options: Ability[]; // abilities of class and subclass
   selected: Ability | undefined;
-  stat: number;
-  maxStat: number;
 };
 
 /**
- * Three slots like the subclass screen in the game: super, grenade and melee, each with its stat.
+ * Three slots like the subclass screen in the game: super, grenade and melee. Their stats are in
+ * the stats block (StatSliders).
  * A click on a slot opens the icon grid of the abilities that fit class and subclass.
  */
 export function AbilityPicker({
@@ -28,7 +27,6 @@ export function AbilityPicker({
   effects,
   onOpen,
   onSelect,
-  onStat,
 }: {
   slots: AbilitySlot[];
   openKind: AbilityKind | null;
@@ -36,7 +34,6 @@ export function AbilityPicker({
   effects: Effect[];
   onOpen: (kind: AbilityKind | null) => void;
   onSelect: (kind: AbilityKind, abilityId: string | null) => void;
-  onStat: (kind: AbilityKind, value: number) => void;
 }) {
   const open = slots.find((slot) => slot.kind === openKind);
   const rowOf = (ability: Ability) =>
@@ -63,37 +60,6 @@ export function AbilityPicker({
               onClick={() => onOpen(slot.kind === openKind ? null : slot.kind)}
               ariaExpanded={slot.kind === openKind}
             />
-            <label className="ability-stat">
-              <span>Stat</span>
-              <input
-                type="range"
-                min={0}
-                max={slot.maxStat}
-                step={1}
-                value={slot.stat}
-                aria-label={`${slot.label}-Stat`}
-                onChange={(event) =>
-                  onStat(slot.kind, Number(event.target.value))
-                }
-              />
-              <input
-                type="number"
-                min={0}
-                max={slot.maxStat}
-                step={1}
-                value={slot.stat}
-                aria-label={`${slot.label}-Stat als Zahl`}
-                onChange={(event) => {
-                  const value = Number(event.target.value);
-                  if (Number.isFinite(value)) {
-                    onStat(
-                      slot.kind,
-                      Math.min(slot.maxStat, Math.max(0, value)),
-                    );
-                  }
-                }}
-              />
-            </label>
           </div>
         ))}
       </div>

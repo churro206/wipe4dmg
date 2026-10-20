@@ -320,7 +320,7 @@ summary:focus-visible {
   width: 18rem;
 }
 
-/* Abilities: three slots (super, grenade, melee) with their stat, like the subclass screen */
+/* Abilities: three slots (super, grenade, melee), like the subclass screen */
 .ability-slots {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -333,7 +333,7 @@ summary:focus-visible {
   gap: 0.3rem;
 }
 
-/* The tile fills the slot, so the stat rows line up even if a name wraps to two lines. */
+/* The tile fills the slot, so the tiles line up even if a name wraps to two lines. */
 .ability-slot > .tile-wrap {
   flex: 1;
 }
@@ -342,13 +342,20 @@ summary:focus-visible {
   border-color: var(--accent);
 }
 
-/* Stat: label, slider and number in one row inside the slot */
+/* Stats block: name, slider and number per row, like the character screen */
+.stat-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  max-width: 22rem;
+}
+
 label.ability-stat {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) 3.2rem;
+  grid-template-columns: 4.5rem minmax(0, 1fr) 3.6rem;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.75rem;
+  gap: 0.5rem;
 }
 
 .ability-stat input[type="range"] {
@@ -754,4 +761,28 @@ header > .segmented {
 
 .wiki-page td {
   text-align: left;
+}
+
+/* Sub-heading inside a section, e.g. "Class Ability" under the abilities or "Mods" under armor */
+h3.sub {
+  margin: 0.6rem 0 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Weapon tile: shows the weapon, not a toggle; two columns wide for its name */
+.tile-wrap.weapon-wrap {
+  grid-column: span 2;
+}
+
+.tile.weapon-tile {
+  cursor: default;
+}
+
+/* Place for a later part of the build, e.g. exotic armor */
+.tile.placeholder {
+  opacity: 0.55;
+  border-style: dashed;
+  cursor: default;
 }
