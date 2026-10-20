@@ -1,17 +1,27 @@
-// Exotic weapons from the Bungie manifest for the weapon import (ADR 0013): type, element, ammo,
-// intrinsic, perks and catalyst perks.
+// Exotic weapons and exotic armor from the Bungie manifest for the weapon import (ADR 0013):
+// weapon type, element, ammo, perk names and texts, armor intrinsics, and a name lookup over the
+// whole manifest for the assumptions of the Aegis rows.
 
 import { describe, expect, it } from "vitest";
 import {
+  extractExoticArmor,
   extractManifestWeapons,
+  lookupManifestTerms,
   type WeaponManifestTables,
 } from "../scripts/lib/manifestWeapons";
+import rawManifestArmor from "../src/data/manifest-armor.json";
+import rawManifestTerms from "../src/data/manifest-terms.json";
 import rawManifestWeapons from "../src/data/manifest-weapons.json";
-import { ManifestWeapons } from "../src/data/schema";
+import {
+  ManifestArmor,
+  ManifestTerms,
+  ManifestWeapons,
+} from "../src/data/schema";
 
 const INTRINSIC = 3956125808;
 const PERKS = 4241085061;
 const COSMETICS = 2048875504;
+const MODS = 2685412949;
 
 // Shaped like the manifest of 2026-10-20 (version 245114.26.10.13.2000-1); hashes of plugs and
 // plug sets are test input.
@@ -33,33 +43,69 @@ const weapon = (hash: number, name: string, sockets: number[]) => ({
       { socketCategoryHash: INTRINSIC, socketIndexes: [0] },
       { socketCategoryHash: PERKS, socketIndexes: [1, 2, 3] },
       { socketCategoryHash: COSMETICS, socketIndexes: [4] },
+      { socketCategoryHash: MODS, socketIndexes: [5] },
     ],
   },
 });
-const plug = (hash: number, name: string, plugCategoryIdentifier: string) => ({
+const plug = (
+  hash: number,
+  name: string,
+  plugCategoryIdentifier: string,
+  itemTypeDisplayName = "",
+  description = "",
+) => ({
   hash,
-  displayProperties: { name },
+  displayProperties: { name, description },
+  itemTypeDisplayName,
   plug: { plugCategoryIdentifier },
 });
 
 const tables: WeaponManifestTables = {
   items: {
-    1201830623: weapon(1201830623, "Truth", [10, 11, 12, 13, 14]),
-    10: plug(10, "Prototype Trueseeker", "intrinsics"),
-    11: plug(11, "Volatile Launch", "tubes"),
-    15: plug(15, "Hard Launch", "tubes"),
+    1201830623: weapon(1201830623, "Truth", [10, 11, 12, 13, 14, 17]),
+    10: plug(
+      10,
+      "Prototype Trueseeker",
+      "intrinsics",
+      "Intrinsic",
+      "This weapon's rockets have tracking.",
+    ),
+    11: plug(11, "Volatile Launch", "tubes", "Launcher Barrel"),
+    15: plug(15, "Hard Launch", "tubes", "Launcher Barrel"),
     16: plug(16, "Empty Traits Socket", "frames"), // placeholder, left out
-    12: plug(12, "Grenades and Horseshoes", "frames"),
+    12: plug(12, "Grenades and Horseshoes", "frames", "Trait"),
     13: plug(13, "Kill Tracker", "v400.plugs.weapons.masterworks.trackers"),
     14: plug(14, "Default Ornament", "exotic_all_skins"),
+    17: plug(17, "Backup Mag", "v400.weapon.mod_magazine", "Weapon Mod"),
     726894353: {
       hash: 726894353,
       displayProperties: { name: "Truth Catalyst" },
       traitIds: ["item.exotic_catalyst"],
       perks: [{ perkHash: 2225619423 }, { perkHash: 3469836202 }],
     },
-    // An armor piece and a legendary weapon are left out.
-    20: { hash: 20, displayProperties: { name: "Helm" }, itemType: 2 },
+    // Exotic leg armor of the hunter with an intrinsic that names a weapon type.
+    300: {
+      hash: 300,
+      displayProperties: { name: "Lucky Pants" },
+      itemType: 2,
+      itemSubType: 29,
+      classType: 1,
+      inventory: { tierType: 6 },
+      collectibleHash: 1,
+      sockets: {
+        socketEntries: [{ singleInitialItemHash: 30 }],
+        socketCategories: [{ socketCategoryHash: 1, socketIndexes: [0] }],
+      },
+    },
+    30: plug(
+      30,
+      "Illegally Modded Holster",
+      "intrinsics",
+      "Intrinsic",
+      "Hand Cannons ready faster and gain increased accuracy and bonus damage.",
+    ),
+    40: plug(40, "Harsh Refraction", "artifact_perks", "Artifact Perk"),
+    // A legendary weapon is left out.
     21: {
       ...weapon(21, "Legendary", [10]),
       inventory: { tierType: 5 },
@@ -69,13 +115,18 @@ const tables: WeaponManifestTables = {
     900: { reusablePlugItems: [{ plugItemHash: 15 }, { plugItemHash: 16 }] },
   },
   sandboxPerks: {
-    2225619423: { displayProperties: { name: "Reaper's Tithe" } },
+    2225619423: {
+      displayProperties: {
+        name: "Reaper's Tithe",
+        description: "Multiple simultaneous final blows queue up a buff.",
+      },
+    },
     3469836202: { displayProperties: { name: "" } },
   },
 };
 
 describe("extractManifestWeapons", () => {
-  it("reads type, element, ammo, intrinsic, perks and catalyst of an exotic weapon", () => {
+  it("reads type, element, ammo, perks, mods, catalyst and texts of an exotic weapon", () => {
     expect(extractManifestWeapons(tables)).toEqual([
       {
         hash: 1201830623,
@@ -85,7 +136,10 @@ describe("extractManifestWeapons", () => {
         ammo: "heavy",
         intrinsics: ["Prototype Trueseeker"],
         perks: ["Grenades and Horseshoes", "Hard Launch", "Volatile Launch"],
+        mods: ["Backup Mag"],
         catalyst: { name: "Truth Catalyst", perks: ["Reaper's Tithe"] },
+        description:
+          "This weapon's rockets have tracking.\nMultiple simultaneous final blows queue up a buff.",
       },
     ]);
   });
@@ -109,10 +163,46 @@ describe("extractManifestWeapons", () => {
   });
 });
 
-describe("manifest-weapons.json", () => {
-  const { weapons } = ManifestWeapons.parse(rawManifestWeapons);
+describe("extractExoticArmor", () => {
+  it("reads class, slot, intrinsic and its text", () => {
+    expect(extractExoticArmor(tables)).toEqual([
+      {
+        hash: 300,
+        name: "Lucky Pants",
+        guardianClass: "hunter",
+        slot: "legs",
+        intrinsics: ["Illegally Modded Holster"],
+        description:
+          "Hand Cannons ready faster and gain increased accuracy and bonus damage.",
+      },
+    ]);
+  });
+});
 
-  it("holds the test cases Truth and Thunderlord", () => {
+describe("lookupManifestTerms", () => {
+  it("finds the item type of a name anywhere in the manifest, ignoring case", () => {
+    expect(
+      lookupManifestTerms(
+        ["harsh refraction", "Illegally Modded Holster", "average"],
+        tables.items,
+      ),
+    ).toEqual({
+      "harsh refraction": [
+        { itemType: "Artifact Perk", plugCategory: "artifact_perks" },
+      ],
+      "Illegally Modded Holster": [
+        { itemType: "Intrinsic", plugCategory: "intrinsics" },
+      ],
+    });
+  });
+});
+
+describe("manifest data files", () => {
+  const { weapons } = ManifestWeapons.parse(rawManifestWeapons);
+  const { armor } = ManifestArmor.parse(rawManifestArmor);
+  const { terms } = ManifestTerms.parse(rawManifestTerms);
+
+  it("hold the test cases Truth and Thunderlord", () => {
     const truth = weapons.find((w) => w.name === "Truth");
     expect(truth).toMatchObject({
       weaponType: "rocketLauncher",
@@ -128,8 +218,21 @@ describe("manifest-weapons.json", () => {
     });
   });
 
-  it("has unique names and hashes", () => {
+  it("have unique names and hashes", () => {
     expect(new Set(weapons.map((w) => w.name)).size).toBe(weapons.length);
     expect(new Set(weapons.map((w) => w.hash)).size).toBe(weapons.length);
+    expect(new Set(armor.map((a) => a.name)).size).toBe(armor.length);
+  });
+
+  it("know Lucky Pants and its intrinsic", () => {
+    expect(armor.find((a) => a.name === "Lucky Pants")).toMatchObject({
+      guardianClass: "hunter",
+      slot: "legs",
+      intrinsics: ["Illegally Modded Holster"],
+    });
+    expect(terms["Illegally Modded Holster"]).toContainEqual({
+      itemType: "Intrinsic",
+      plugCategory: "intrinsics",
+    });
   });
 });

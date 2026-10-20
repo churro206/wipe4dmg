@@ -2,7 +2,9 @@
 // manifest into public/icons and writes src/data/icons.json (ADR 0008). Before that it reads the
 // ability items of the manifest item table into src/data/manifest-abilities.json: slot, class and
 // subclass of every super, grenade and melee, including Prismatic (ADR 0009), and the exotic
-// weapons with their perks into src/data/manifest-weapons.json (ADR 0013).
+// weapons with their perks, the exotic armor with its intrinsic and the item types of the names in
+// the Aegis weapon assumptions into manifest-weapons.json, manifest-armor.json and
+// manifest-terms.json (ADR 0013).
 // Needs BUNGIE_API_KEY, e.g. in .env.local (ignored by git). Run: npm run import:icons
 
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -12,7 +14,10 @@ import {
   Effect,
   IconIndex,
   IconRef,
+  AegisWeaponSnapshot,
   ManifestAbilities,
+  ManifestArmor,
+  ManifestTerms,
   ManifestWeapons,
   Weapon,
   type ManifestRef,
@@ -27,9 +32,12 @@ import {
   type ManifestItem,
 } from "./lib/manifestAbilities.ts";
 import {
+  extractExoticArmor,
   extractManifestWeapons,
+  lookupManifestTerms,
   type WeaponManifestTables,
 } from "./lib/manifestWeapons.ts";
+import { assumptionName } from "./lib/aegisWeapons.ts";
 
 const BUNGIE = "https://www.bungie.net";
 const ROOT = new URL("../", import.meta.url);
@@ -94,24 +102,48 @@ const table = async <T>(path: string): Promise<T> => {
     throw new Error(`Download of ${path} failed: ${response.status}`);
   return (await response.json()) as T;
 };
+const tables: WeaponManifestTables = {
+  items: items as WeaponManifestTables["items"],
+  plugSets: await table<WeaponManifestTables["plugSets"]>(
+    manifest.jsonWorldComponentContentPaths.en.DestinyPlugSetDefinition,
+  ),
+  sandboxPerks: await table<WeaponManifestTables["sandboxPerks"]>(
+    manifest.jsonWorldComponentContentPaths.en.DestinySandboxPerkDefinition,
+  ),
+};
+const writeData = async (file: string, data: unknown) =>
+  writeFileSync(
+    new URL(`src/data/${file}`, ROOT),
+    await format(JSON.stringify(data), { parser: "json" }),
+  );
+const header = { manifestVersion: manifest.version, retrieved };
+
 const manifestWeapons = ManifestWeapons.parse({
-  manifestVersion: manifest.version,
-  retrieved,
-  weapons: extractManifestWeapons({
-    items: items as WeaponManifestTables["items"],
-    plugSets: await table<WeaponManifestTables["plugSets"]>(
-      manifest.jsonWorldComponentContentPaths.en.DestinyPlugSetDefinition,
-    ),
-    sandboxPerks: await table<WeaponManifestTables["sandboxPerks"]>(
-      manifest.jsonWorldComponentContentPaths.en.DestinySandboxPerkDefinition,
-    ),
-  }),
+  ...header,
+  weapons: extractManifestWeapons(tables),
 });
-writeFileSync(
-  new URL("src/data/manifest-weapons.json", ROOT),
-  await format(JSON.stringify(manifestWeapons), { parser: "json" }),
-);
+await writeData("manifest-weapons.json", manifestWeapons);
 console.log(`Wrote ${manifestWeapons.weapons.length} exotic weapons`);
+
+const manifestArmor = ManifestArmor.parse({
+  ...header,
+  armor: extractExoticArmor(tables),
+});
+await writeData("manifest-armor.json", manifestArmor);
+console.log(`Wrote ${manifestArmor.armor.length} exotic armor pieces`);
+
+// Names in the assumptions of the Aegis weapon rows (run npm run import:weapons first).
+const assumptionNames = AegisWeaponSnapshot.parse(
+  readJson("src/data/aegis-weapons.json"),
+).rows.flatMap((row) => row.assumptions.map(assumptionName));
+const manifestTerms = ManifestTerms.parse({
+  ...header,
+  terms: lookupManifestTerms([...new Set(assumptionNames)], tables.items),
+});
+await writeData("manifest-terms.json", manifestTerms);
+console.log(
+  `Wrote manifest types for ${Object.keys(manifestTerms.terms).length} assumption names`,
+);
 
 const refs = collectIconRefs(
   Effect.array().parse(readJson("src/data/effects.json")),

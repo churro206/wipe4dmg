@@ -1,0 +1,1134 @@
+{
+  "manifestVersion": "245114.26.10.13.2000-1-bnet.66137",
+  "retrieved": "2026-10-20",
+  "armor": [
+    {
+      "hash": 3849355625,
+      "name": "Abeyant Leap",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Puppeteer's Control"],
+      "description": "Improves Drengr's Lash and spawns additional projectiles. These projectiles track targets more aggressively, travel farther, and suspend stronger. Gain Woven Mail when you suspend a target.\nImproved Drengr's Lash. Gain Woven Mail when suspending targets."
+    },
+    {
+      "hash": 3649264718,
+      "name": "ACD/0 Feedback Fence",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Fury Conductors"],
+      "description": "Melee hits grant Armor Charge, and you take less melee damage from combatants while you have Armor Charge. Taking melee damage causes you to emit a burst of damaging Arc energy that jolts targets, consuming your Armor Charge and dealing more damage based on the number of stacks consumed.\nMelee hits grant Armor Charge and store explosive Arc energy."
+    },
+    {
+      "hash": 3768376419,
+      "name": "Actium War Rig",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Auto-Loading Link"],
+      "description": "Steadily reloads a portion of your equipped Auto Rifle or Machine Gun's magazine from reserves. Final blows with Auto Rifles or Machine Guns boost their stability, ammo generation, and damage. Provides a moderate benefit to their airborne effectiveness.\nSteadily reloads your equipped Auto Rifle's or Machine Gun's mag."
+    },
+    {
+      "hash": 796577360,
+      "name": "Aeon Safe",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": [],
+      "description": ""
+    },
+    {
+      "hash": 859709617,
+      "name": "Aeon Soul",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": [],
+      "description": ""
+    },
+    {
+      "hash": 2615220262,
+      "name": "Aeon Swift",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": [],
+      "description": ""
+    },
+    {
+      "hash": 1407595207,
+      "name": "An Insurmountable Skullfort",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Transfusion Matrix"],
+      "description": "Final blows with Arc melees trigger health regeneration and fully restore a melee charge. Melee hits grant Arc melee energy.\nArc melee kills grant health and melee energy."
+    },
+    {
+      "hash": 81398002,
+      "name": "Antaeus Wards",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Reflective Vents"],
+      "description": "While sliding with full class ability energy, you gain a frontal shield that reflects incoming damage. After reflecting damage, your class ability energy is depleted based on the amount of damage reflected.\nSliding reflects projectiles."
+    },
+    {
+      "hash": 132452792,
+      "name": "Apotheosis Veil",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Insatiable"],
+      "description": "Immediately regenerate health, melee, grenade, and Rift energy for you and your nearby allies upon activating your Super. After your Super ends, temporarily gain greatly increased melee and grenade regen.\nAbility energy for you and allies on Super cast."
+    },
+    {
+      "hash": 523456396,
+      "name": "Arbor Warden",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Barri-nade"],
+      "description": "Using your class ability channels defensive Light inward, providing a grenade that creates a barricade on impact. Picking up Orbs of Power enhances your next Barri-nade, spawning more barricades on impact.\nUsing your class ability grants a Barricade grenade."
+    },
+    {
+      "hash": 2999866952,
+      "name": "Armamentarium",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["And Another Thing"],
+      "description": "Gain an additional grenade charge. Grenade final blows spawn an Orb of Power. Weapon final blows grant grenade energy. Activating your grenade ability reloads your equipped weapon from reserves.\nGain an additional grenade charge.\nYour grenade final blows create Orbs of Power."
+    },
+    {
+      "hash": 1203306857,
+      "name": "Ashen Wake",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Bring the Heat"],
+      "description": "Fusion Grenades gain increased throw speed, explode on impact, and stun Unstoppable Champions. Final blows with Fusion Grenades grant grenade energy.\nImproved Fusion Grenades."
+    },
+    {
+      "hash": 3400283633,
+      "name": "Assassin's Cowl",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Vanishing Execution"],
+      "description": "Powered melee final blows grant invisibility and restore a portion of health and shields. Finishers and final blows against more powerful targets increase the duration of the invisibility and the amount of health and shields restored.\nPowered melee kills and finishers grant invisibility and healing."
+    },
+    {
+      "hash": 4035625646,
+      "name": "Astrocyte Verse",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Move to Survive"],
+      "description": "With Blink equipped, use [Air Dodge]  while airborne to perform a Dark Blink.\n\nUsing Blink or Dark Blink grants Volatile Rounds. Blink travels farther, causes nearby targets to become volatile, and has a shorter cooldown. While your Nova Warp Super is active, Dark Blink does not cost Super energy. Provides a moderate benefit to airborne effectiveness for all weapons.\nGrants airborne movement and improves Blink."
+    },
+    {
+      "hash": 89619507,
+      "name": "Athrys's Embrace",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Skittering Stinger"],
+      "description": "Weighted Knife gains a second bounce. Rapid precision hits with your weapons grant Weighted Knife a significant damage bonus, bonus melee, and the ability to stun unshielded combatants for a short time.\n\nEmpowered Weighted Knife is strong against [Stagger] Unstoppable Champions.\nWeighted Knife bounces twice and deals bonus damage."
+    },
+    {
+      "hash": 2340803152,
+      "name": "Balance of Power",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Double Down"],
+      "description": "Your Threaded Specter has increased duration and durability, and damaging it releases additional Threadlings. While near your Threaded Specter, you do not appear on radar.\nImproves Threaded Specter."
+    },
+    {
+      "hash": 2109877638,
+      "name": "Ballidorse Wrathweavers",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Hearts of Ice"],
+      "description": "Targets frozen by your Winter's Wrath Super take increased Shatter damage. Allies in range of your Winter's Wrath shockwave and Frostpulse gain Frost Armor and deal increased damage with Stasis weapons. Granting these buffs to allies grants you Super energy.\nWinter's Wrath gives targets increased Shatter damage and buffs allies."
+    },
+    {
+      "hash": 1849901681,
+      "name": "Blastwave Striders",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Blastwave Striders"],
+      "description": "Gain resistance to your explosives. Defeat targets to charge this armor. Once charged, land a Shiver Strike melee attack or deal explosive self-damage to rocket jump backward and release a blast wave with deadly shrapnel projectiles. The wave freezes combatants and slows Guardians. Charged rocket jumps grant Frost Armor.\nBlast your boots to spray your targets with shrapnel."
+    },
+    {
+      "hash": 863908533,
+      "name": "Blight Ranger",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Voltaic Mirror"],
+      "description": "Guarding with your Arc Staff does not consume extra Super energy. [Super]  : Cancel Arc Staff early, temporarily increasing Arc weapon damage and creating a blinding burst. Reflected attacks increase the damage of the burst, extend your Super, and deal additional damage.\nAttacks you redirect with your Arc Staff deal massively increased damage."
+    },
+    {
+      "hash": 597039524,
+      "name": "Boots of the Assembler",
+      "guardianClass": "warlock",
+      "slot": "legs",
+      "intrinsics": ["Blessing of Order"],
+      "description": "Standing in a rift creates Noble Seekers that seek out allies and heal them. Standing in an empowering rift creates Noble Seekers that grant both you and your ally a damage bonus. When a Noble Seeker finds an ally, you gain class ability energy. Increases the airborne effectiveness stat of the Hand Cannon Lumina.\nRifts create beneficial seeker projectiles."
+    },
+    {
+      "hash": 768145972,
+      "name": "Briarbinds",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["One with the Void"],
+      "description": "Your Void Souls have a longer duration. They also gain escalating damage and durability as they defeat targets. You can retrieve your Void Souls by interacting with them, allowing them to be redeployed.\nImproves duration, damage, and durability of Void Souls."
+    },
+    {
+      "hash": 2851385306,
+      "name": "Cadmus Ridge Lancecap",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Lancer's Vigil"],
+      "description": "While a Stasis Super is equipped, rapid Stasis weapon damage or damage from behind your Rally Barricade will create a Diamond Lance near you. Thrown Diamond Lances create Stasis crystals. Your Diamond Lances deal more damage based on how much Frost Armor you have.\nImproves Diamond Lances."
+    },
+    {
+      "hash": 327385975,
+      "name": "Caliban's Hand",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Roast 'Em"],
+      "description": "Your Proximity Knife scorches targets it damages with its explosions, or ignites targets on final blow.\n\nAfter throwing a Proximity Knife, you gain increased melee regeneration until the knife explodes. Gain a small amount of melee energy when your Scorch damages a target, and Ignition final blows fully refund melee energy and can overflow into an additional knife charge.\nImproves Proximity Knife effectiveness and regeneration speed."
+    },
+    {
+      "hash": 3960926756,
+      "name": "Celestial Nighthawk",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Hawkeye Hack"],
+      "description": "Precision final blows reduce the cooldown of your Super. Modifies Golden Gun to fire a single, high-damage shot. Targets defeated by that shot give you Super energy and explode.\nGolden Gun fires one high-damage shot."
+    },
+    {
+      "hash": 3589022772,
+      "name": "Cenotaph Mask",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["High Priority"],
+      "description": "Steadily reloads a portion of your equipped Trace Rifle's magazine from reserves. Damaging a vehicle, boss, or Champion with a Trace Rifle marks them as the target. When an ally defeats the marked target, Special ammo is generated for you and Heavy ammo for your allies.\nImproves Trace Rifles."
+    },
+    {
+      "hash": 3545094011,
+      "name": "Chromatic Fire",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Crystalline Transistor"],
+      "description": "Final blows from Kinetic weapons create an explosion in the element of your equipped Super that deals damage and applies a matching elemental effect:\n• [Arc] Blinds targets.\n• [Solar] Scorches targets.\n• [Void] Weakens targets.\n• [Stasis] Slows targets.\n• [Strand] Severs targets.\nElemental final blows temporarily increase the explosion's size. Precision final blows always maximum the explosion's size.\nFinal blows from Kinetic weapons create an explosion in the element of your equipped Super."
+    },
+    {
+      "hash": 2551549824,
+      "name": "Citan's Ramparts",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Assault Barricade"],
+      "description": "You and allies can shoot through your Towering Barricade. Your Towering Barricade takes increased damage from Guardians.\nYou and your allies can shoot through your Towering Barricade."
+    },
+    {
+      "hash": 171695625,
+      "name": "Claws of Ahamkara",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["The Whispers"],
+      "description": "Gain an additional melee charge. Powered melee final blows spawn an Orb of Power.\nGain an additional melee charge.\nYour powered melee final blows create Orbs of Power."
+    },
+    {
+      "hash": 3261527845,
+      "name": "Contraverse Hold",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Chaotic Exchanger"],
+      "description": "Resist incoming damage while charging your Void grenade with Chaos Accelerant. Charged Void grenades return grenade energy on a hit and apply Weaken.\nImproved charging for Void grenades."
+    },
+    {
+      "hash": 3768376418,
+      "name": "Crest of Alpha Lupi",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Survival Well"],
+      "description": "Generates an additional Orb of Power from Supers. Generating a Barricade, or dealing sustained damage or defeating targets from behind one creates a healing pulse. Healing your allies grants Barricade energy.\nMore Orbs from Supers. Casting Barricade heals."
+    },
+    {
+      "hash": 925466718,
+      "name": "Crown of Tempests",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Conduction Tines"],
+      "description": "While you have an Arc ability equipped, Arc ability or Jolt final blows increase the recharge rate of your abilities and extend the duration of Stormtrance.\n\nWhile you have Conduction Tines, Ionic Sentry creates a Storm Grenade when it deploys.\nArc ability or Jolt final blows restore ability energy."
+    },
+    {
+      "hash": 4057875770,
+      "name": "Cuirass of the Falling Star",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Glorious Charge"],
+      "description": "Greatly increases your Thundercrash damage and grants you damage resistance after impact. Melee final blows while amplified grant you Super energy.\nIncreases Thundercrash damage."
+    },
+    {
+      "hash": 1008364980,
+      "name": "Cyrtarachne's Facade",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Acrobat's Focus"],
+      "description": "Activating Grapple grants Woven Mail. While active, Woven Mail provides flinch resistance and health when defeating targets.\nGain Woven Mail when activating Grapple. Increased flinch resistance and health while Woven Mail is active."
+    },
+    {
+      "hash": 3767088557,
+      "name": "Dawn Chorus",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Rites of Ember"],
+      "description": "Your Daybreak projectiles ignite targets on impact. Your Scorch deals additional damage, and builds to more powerful Ignitions. Dealing damage with Scorch or Ignitions grants melee energy.\nImproves Scorch, Ignitions, and Daybreak projectiles."
+    },
+    {
+      "hash": 1479082657,
+      "name": "Deimosuffusion",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Malevolent Grasp"],
+      "description": "While a Strand Super is equipped, casting Rift will suspend nearby combatants. Suspend deals damage over time, which heals you in the process. Targets who break free from suspension suffer additional damage. Defeating suspended targets heals you a moderate amount.\nImproves suspend, causing damage over time. Using your Rift also suspends nearby targets."
+    },
+    {
+      "hash": 2002759682,
+      "name": "Doom Fang Pauldron",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Horns of Doom"],
+      "description": "Defeating targets with Void damage has a chance to grant an escalating bonus to damage with Void weapons. Defeating targets with Void melee grants Super energy.\n\nWhile Sentinel Shield is active, defeating targets with melee attacks recharges Shield Throw, which extends your Super on hitting a target.\nDefeating targets with Void damage grants a bonus to Void weapons, and defeating targets with Void melee grants Super energy. Improves Sentinel Shield."
+    },
+    {
+      "hash": 1437375562,
+      "name": "Dunemarchers",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Linear Actuators"],
+      "description": "Increases sprint speed. Sprinting builds up a static charge. After melee-attacking a combatant, that charge will chain damage to nearby foes. Gain Bolt Charge per target hit by the chain.\nFaster sprinting and chain melee damage."
+    },
+    {
+      "hash": 3692827145,
+      "name": "Eternal Warrior",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Resolute"],
+      "description": "[Arc]Arc final blows grant an escalating damage bonus with Arc weapons. While using Fist of Havoc, activating your Super grants an overshield; final blows extend its duration. When it ends, gain a damage bonus to your Arc weapons.\nImproved Fist of Havoc. Arc final blows grant a weapon damage bonus."
+    },
+    {
+      "hash": 3481695565,
+      "name": "Eunoia",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Consul's Pitch"],
+      "description": "Hellion projectiles deal increased damage the further they travel eventually fracturing into scorching shrapnel.\nImproves Hellion."
+    },
+    {
+      "hash": 925466717,
+      "name": "Eye of Another World",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Cerebral Uplink"],
+      "description": "Highlights priority targets and improves the regeneration speed of your grenade, melee, and Rift abilities. Provides a small benefit to the airborne effectiveness stat of all weapons.\nMarks priority targets and buffs ability regen."
+    },
+    {
+      "hash": 3781549120,
+      "name": "Fallen Sunstar",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Ionic Conductor"],
+      "description": "Ionic traces you create move faster and grant you additional ability energy. Nearby allies also gain ability energy when you collect an ionic trace.\nImproved ionic traces"
+    },
+    {
+      "hash": 728668916,
+      "name": "Felwinter's Helm",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Warlord's End"],
+      "description": "Powered melee hits weaken targets. Powered melee final blows create a burst of energy that dramatically weakens nearby targets. Finishers and final blows against more powerful targets increase the radius of the burst and the length of the weakening effect.\nPowered melee kills create a burst of energy that weakens nearby enemies."
+    },
+    {
+      "hash": 671504994,
+      "name": "Foetracer",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Relentless Tracker"],
+      "description": "Damaging a powerful combatant or Guardian with an ability temporarily increases weapon damage of the same type. Defeating that marked target with damage that matches the element creates an Elemental pickup.\nImproves weapon damage after damaging a target with an ability."
+    },
+    {
+      "hash": 4010324161,
+      "name": "Fortune's Favor",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Kismet"],
+      "description": "After landing a final blow while at full health, or when out of combat for an extended duration, your shields will slowly recharge into an overshield. \n\nWhen you have an overshield, your weapons gain increased accuracy, stability, handling, and damage against combatants, and final blows will grant a short period of increased mobility once the overshield is depleted.\nAllows shields to slowly recharge into an overshield."
+    },
+    {
+      "hash": 1737050140,
+      "name": "Fr0st-EE5",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Rapid Cooldown"],
+      "description": "Increases grenade, melee, and dodge regeneration while sprinting.\n\nGain stacks of Frost Armor while sprinting. When you have Frost Armor, Stasis weapons deal additional damage.\nSprinting gives energy."
+    },
+    {
+      "hash": 2132672800,
+      "name": "Gemini Jester",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Misdirection"],
+      "description": "Dodging disorients nearby enemies and temporarily removes their radar.\nDodging disorients and removes enemy radars."
+    },
+    {
+      "hash": 3608857511,
+      "name": "Geomag Stabilizers",
+      "guardianClass": "warlock",
+      "slot": "legs",
+      "intrinsics": ["Close Enough"],
+      "description": "Damaging targets with Chaos Reach extends its duration. Collecting Ionic Traces grants you energy for Chaos Reach. Sprinting while near max Bolt Charge will grant stacks over time.\nExtended and more frequent Chaos Reach ."
+    },
+    {
+      "hash": 4177778015,
+      "name": "Getaway Artist",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Dynamic Duo"],
+      "description": "[Grenade]  : Convert your Arc grenade into a Arc Soul and become amplified. The Arc Soul functions as an autonomous turret.\nConsuming your Arc grenade grants an Arc Soul and amplifies you."
+    },
+    {
+      "hash": 1446374842,
+      "name": "Gifted Conviction",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["The Gift of Certainty"],
+      "description": "Activating Ascension or Tempest Strike throws bouncing explosives at nearby targets that jolt and damage them. Jolting nearby targets grants you damage resistance.\nImproves Ascension and Tempest Strike."
+    },
+    {
+      "hash": 407148246,
+      "name": "Graviton Forfeit",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Vanishing Shadow"],
+      "description": "Increases the duration of any invisibility effects. When you gain invisibility, your grenade, melee and class abilities recharge faster. At maximum stacks, you gain a Void Overshield as well.\nImproved invisibility."
+    },
+    {
+      "hash": 1168370783,
+      "name": "Gwisin Vest",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Roving Assassin"],
+      "description": "Each Spectral Blades hit or final blow you make before becoming invisible will restore more of your Super energy.\n\nExiting invisibility while near a target creates a cloud of weakening smoke around you.\nVanish after Spectral Blades kills for more Super energy."
+    },
+    {
+      "hash": 2447096246,
+      "name": "Gyrfalcon's Hauberk",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["See Me, Feel Me"],
+      "description": "Your Void weapons gain Volatile Rounds after you emerge from being invisible. When you are invisible and defeat a combatant while using a finisher, all of your weapons gain bonus damage; you and your nearby allies gain a reserve overshield and improved class ability regeneration. These reserve overshields can be deployed by using a class ability.\nAfter being invisible, your Void weapons gain Volatile Rounds. Finishers while invisible grant bonus damage for all weapons and a reserve overshield for allies."
+    },
+    {
+      "hash": 2094927311,
+      "name": "Hallowfire Heart",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Sunfire Furnace"],
+      "description": "While your Solar Super is charged, ability final blows cure you and give stacks of Sunfire Furnace.\n\nWhile Sunfire Furnace is active, grenade and Shieldburst final blows trigger an ignition. Each stack increases grenade regeneration, class ability regeneration, and Super damage. Upon exiting your Super, all stacks are converted into Super energy.\nEnhanced abilities with a charged Solar Super."
+    },
+    {
+      "hash": 3050442980,
+      "name": "Hazardous Propulsion",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Danger Close"],
+      "description": "Weapon precision hits or final blows have a chance to load a Kinetic Exodus micro-missile. Activating your class ability fires loaded Exodus micro-missiles. Damaging targets with Exodus micro-missiles temporarily increases the damage you deal with other micro-missiles and Rocket Launchers.\nPrecision weapon hits load micro-missiles. Activating a class ability fires them."
+    },
+    {
+      "hash": 502173648,
+      "name": "Heart of Inmost Light",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Overflowing Light"],
+      "description": "Using an ability (grenade, melee, or Barricade) empowers the other two abilities. Empowered means abilities have faster regen, melees and grenades do more damage, and Barricades have more hit points.\nUse one ability to briefly improve your other abilities."
+    },
+    {
+      "hash": 943320520,
+      "name": "Helm of Saint-14",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Starless Night"],
+      "description": "Weapons of Light persists after exiting Ward of Dawn. While Weapons of Light is active, final blows or sustained damage grant stacks of The Saint; Void and Kinetic damage sources also trigger a suppressing burst.\n \nPicking up Ward of Dawn consumes all stacks of The Saint and extends its duration based on how many stacks were consumed.\nWeapons of Light is improved; capable of extending Ward of Dawn's duration."
+    },
+    {
+      "hash": 4165710258,
+      "name": "Hoarfrost-Z",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Glacial Fortification"],
+      "description": "While you have a Stasis Super equipped, your Barricade becomes a wall of Stasis crystals that slows nearby targets when created. Standing behind this barricade will grant you and your allies increased weapon reload speed, stability, and range.\nReplaces Barricade with a wall of Stasis crystals."
+    },
+    {
+      "hash": 1734674241,
+      "name": "Icefall Mantle",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Glacial Guard"],
+      "description": "While you have a Stasis Super equipped, rapid Stasis final blows grant Frost Armor. You heal a small amount whenever you gain Frost Armor. Replaces your class ability with a burst of Stasis energy that freezes nearby combatants, slows nearby opponents, and grants you increased Frost Armor.\nStasis final blows and your class ability grant Frost Armor."
+    },
+    {
+      "hash": 900910759,
+      "name": "Karnstein Armlets",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Vampire's Caress"],
+      "description": "Melee and finisher final blows instantly grant cure and provide restoration for a short duration.\nMelee kills restore health for a short duration."
+    },
+    {
+      "hash": 858758105,
+      "name": "Khepri's Horn",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Solar Rampart"],
+      "description": "Solar final blows recharge your Barricade. While you have a Solar Super equipped, casting your Barricade unleashes waves of Solar energy that damage and scorch targets. Combatants damaged and Guardians defeated by these waves are enveloped in a Sunspot.\nSolar kills recharge a Solar blast Barricade."
+    },
+    {
+      "hash": 4002939008,
+      "name": "Khepri's Sting",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Touch of Venom"],
+      "description": "Defeating a weakened target releases a burst of weakening smoke and refunds Void melee ability energy.\nSpread weakening effects with smoke."
+    },
+    {
+      "hash": 3960926757,
+      "name": "Knucklehead Radar",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Upgraded Sensor Pack"],
+      "description": "Provides radar while you're aiming. Enhances your radar resolution while crouched. Visually marks targets. Deals more damage to low-health marked targets. Provides a small benefit to the airborne effectiveness stat of all weapons.\nProvides radar while you're aiming and marks targets, increasing damage to low-health marked targets."
+    },
+    {
+      "hash": 2749457084,
+      "name": "Liar's Handshake",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Cross Counter"],
+      "description": "Using your Arc melee ability or being hit by a melee attack will allow you to follow up with an extremely powerful melee counterpunch that will heal you.\nCross Counter regenerates health and deals extra damage."
+    },
+    {
+      "hash": 53126581,
+      "name": "Lion Rampant",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Jump Jets"],
+      "description": "Increases hip-fire range and accuracy for Primary ammo weapons. Grants additional aerial maneuverability and enables airborne firing during Lift. Increases the airborne effectiveness stat of all weapons.\nBuffs maneuverability, hip firing, and firing in Lift."
+    },
+    {
+      "hash": 4258262391,
+      "name": "Loreley Splendor Helm",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Cauterizing Flame"],
+      "description": "While you have a Solar Super equipped, casting your Barricade or becoming critically wounded with full class ability energy creates a Sunspot at your location.\nCreate a Sunspot when critically wounded or on Barricade cast."
+    },
+    {
+      "hash": 2405271939,
+      "name": "Lucky Pants",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Illegally Modded Holster"],
+      "description": "Improves sprint, slide, and airborne effectiveness while a Hand Cannon is equipped. For a short time after being drawn, Hand Cannons ready faster, are more accurate, and each hit against a combatant increases Hand Cannon damage.\nHand Cannons ready faster and gain increased accuracy and bonus damage."
+    },
+    {
+      "hash": 1803778317,
+      "name": "Lucky Raspberry",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Probability Matrix"],
+      "description": "Arcbolt Grenades have increased chaining capabilities and jolt targets hit. Damaging combatants with jolt or applying jolt to targets grants additional Arcbolt Grenade energy.\nImproves Arcbolt Grenades."
+    },
+    {
+      "hash": 418363297,
+      "name": "Lunafaction Boots",
+      "guardianClass": "warlock",
+      "slot": "legs",
+      "intrinsics": ["Alchemical Etchings"],
+      "description": "Increases hip-fire range and accuracy for Primary ammo weapons. Your Rifts gain the additional ability to increase weapon reload speeds. Empowering Rift makes weapons effective at longer ranges.\nRifts increase weapon reload speed. Empowering Rift increases range."
+    },
+    {
+      "hash": 2732820041,
+      "name": "Mantle of Battle Harmony",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Absorption Cells"],
+      "description": "Final blows or sustained damage with weapons matching your equipped Super damage type grant you Super energy. When your Super energy is full, you instead gain a temporary bonus to weapon damage of that type. When you've exhausted your Super, matching elemental weapons' damage temporarily causes explosions around the target.\nGain Super energy on elemental weapon takedowns."
+    },
+    {
+      "hash": 508515818,
+      "name": "Mask of Bakris",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Light Shift"],
+      "description": "While you have a Stasis or Arc Super equipped, your Dodge becomes a longer range, faster moving shift that partially cloaks you during use. After shifting, your Stasis and Arc weapons gain a stacking damage bonus for a short time. Final blows with this bonus active refund class ability energy.\nShift instead of dodge."
+    },
+    {
+      "hash": 2915174768,
+      "name": "Mask of Fealty",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Null Factor"],
+      "description": "Withering Blade hits and bounces create a small Stasis crystal and refund a portion of melee energy. Using Withering Blade to shatter crystals or frozen targets releases a spread of Withering Blades.\nWithering Blade creates Stasis crystals."
+    },
+    {
+      "hash": 4060352315,
+      "name": "Mask of the Quiet One",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Dreaded Visage"],
+      "description": "Grants ability energy when you are damaged. While you have a Void super equipped, rapid final blows and final blows while critically wounded grant Devour.\nGain ability energy when you are damaged. While you have a Void Super equipped, final blows grant Devour."
+    },
+    {
+      "hash": 1003391927,
+      "name": "Mataiodoxía",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Stylostixis"],
+      "description": "Targets damaged by Arcane Needle emit a suspending detonation when defeated. Landing multiple Arcane Needles or Needlestorm on the same target immediately triggers a larger, more powerful detonation. Defeating suspended targets grants melee energy. Your Arcane Needles are strong against [Shield-Piercing]Barrier Champions.\nArcane Needle causes suspending detonations."
+    },
+    {
+      "hash": 2574019120,
+      "name": "Mechaneer's Tricksleeves",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Spring-Loaded Mounting"],
+      "description": "Increases Sidearm airborne effectiveness, ready speed, and reload speed. While you're critically wounded, swapping to a Sidearm reloads it and increases its damage. While this effect is active, Sidearm final blows reload the weapon and extend the effect's duration.\nBoosts Sidearms, especially when you're wounded."
+    },
+    {
+      "hash": 2867399974,
+      "name": "Melas Panoplia",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Forge Master"],
+      "description": "Collecting a Firesprite or rapid Solar final blows make you a Forge Master, allowing you to recall your Throwing Hammer. After impacting a target, recall your hammer at full intensity to perform a Perfect Recall, causing an explosion of forge slag. Perfect Recalls and collecting Firesprites extend your time as a Forge Master.\nSummon your Throwing Hammer back to you."
+    },
+    {
+      "hash": 3182840395,
+      "name": "Mk. 44 Stand Asides",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Seriously, Watch Out"],
+      "description": "While your Juggernaut shield is active, you slowly gain Bolt Charge stacks over time and increased weapon ready speed. Sprinting while amplified creates an energizing field behind you that grants close by allies speed boost.\nImproves Juggernaut. Allies who follow closely gain speed boost."
+    },
+    {
+      "hash": 2647299044,
+      "name": "Moirai",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Webcatcher"],
+      "description": "Threaded Spike can bounce to Tangles, detonating them and returning immediately. Tangles detonated by Threaded Spike are rewoven and retrieved by it. Catches without a Tangle refund extra melee energy.\nThreaded Spike detonates Tangles and pulls them toward you."
+    },
+    {
+      "hash": 3688534631,
+      "name": "Mothkeeper's Wraps",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Winged Eclipse"],
+      "description": "Defeat targets to charge up cages of loyal moths that fly toward nearby targets or allies.\n \n[Grenade]  : Throw the cage of loyal moths, which are released on impact. Upon reaching targets, moths detonate in a blinding explosion; upon reaching allies, moths provide a Void overshield.\nLoyal moths damage targets and aid your allies."
+    },
+    {
+      "hash": 124786972,
+      "name": "Necrotic Grip",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Grasp of the Devourer"],
+      "description": "Damaging a target with a melee inflicts potent corruption that deals increasing damage over time. Defeating targets afflicted by corruption spreads the condition.\n\nProvides a moderate benefit to the airborne effectiveness stat of all Weapons of Sorrow.\nMelee hits inflict potent corruption that deals increasing damage over time."
+    },
+    {
+      "hash": 925466716,
+      "name": "Nezarec's Sin",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Abyssal Extractors"],
+      "description": "Void final blows increase ability energy recharge rate. Combatants affected by Soul Siphon are suppressed. Defeating suppressed targets grants more time to Abyssal Extractors.\nVoid kills increase ability regen."
+    },
+    {
+      "hash": 730200061,
+      "name": "No Backup Plans",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Force Multiplier"],
+      "description": "Shotgun and melee final blows start your health regeneration. While you have a defensive buff (Void Overshield, Amplified, Restoration, Frost Armor, Woven Mail), your Shotguns and melees deal additional damage and final blows with either extend the duration of those buffs. Provides a moderate benefit to Shotgun airborne effectiveness and reload speed.\nShotgun and melee final blows start health regeneration and extend defensive buffs."
+    },
+    {
+      "hash": 3982932616,
+      "name": "Nothing Manacles",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Scatter Charge"],
+      "description": "You gain an additional Scatter Grenade charge. Enables tracking for Scatter Grenade projectiles. Scatter Grenade final blows create additional Scatter Grenade projectiles.\nEnhanced Scatter Grenades."
+    },
+    {
+      "hash": 3883286571,
+      "name": "Oathkeeper",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Adamantine Brace"],
+      "description": "Bow perfect draw can be held indefinitely. Gain a bonus to the Bow's damage when released, based on how long perfect draw was held. Provides a moderate benefit to the airborne effectiveness stat of Bows.\nBow perfect draw can be held indefinitely for increased damage."
+    },
+    {
+      "hash": 4255001288,
+      "name": "Omnioculus",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Beyond The Veil"],
+      "description": "You gain a second Smoke Bomb charge and have damage resistance while invisible. When you make an ally invisible, they gain damage resistance while invisible and you gain melee energy.\nGuardians you make invisible gain damage resistance."
+    },
+    {
+      "hash": 1249787553,
+      "name": "One-Eyed Mask",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Vengeance"],
+      "description": "Highlights the target who dares to damage you. Track down and destroy them for an overshield.\nHighlight and defeat those that harm you for an overshield."
+    },
+    {
+      "hash": 3642110725,
+      "name": "Ophidia Spathe",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Scissor Fingers"],
+      "description": "Gain a second knife per charge. Getting a final blow with a throwing knife grants consecutive knives a temporary stacking damage bonus. Gambler's Dodge refreshes the bonus timer.\nGrants two knives per charge."
+    },
+    {
+      "hash": 507400048,
+      "name": "Ophidian Aspect",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Cobra Totemic"],
+      "description": "Improves melee range as well as ready speed and reload for weapons. Provides a small benefit to airborne effectiveness for all weapons.\nImproved weapon ready speed, reload, and melee range."
+    },
+    {
+      "hash": 2405271938,
+      "name": "Orpheus Rig",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Uncanny Arrows"],
+      "description": "Provides ability energy for each target tethered by Deadfall anchors. Moebius Quiver has an additional shot.\nGrants Deadfall and Moebius Quiver energy."
+    },
+    {
+      "hash": 2555349547,
+      "name": "Osmiomancy Gloves",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Fervid Coldsnap"],
+      "description": "Your Coldsnap grenades have an additional charge that recharges quicker on hits. The seeker spawned from Coldsnap grenades travels farther.\nYour Coldsnap grenades have an additional charge and recharge faster on hits. Seekers travel farther."
+    },
+    {
+      "hash": 53126580,
+      "name": "Peacekeepers",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Mecha Holster"],
+      "description": "While wielding a Submachine Gun, handling, airborne effectiveness, and movement are all improved, and damage against combatants will increase the longer you remain on target. Submachine Guns are reloaded when stowed.\nReloads stowed SMGs and allows instant ready."
+    },
+    {
+      "hash": 3450721096,
+      "name": "Peregrine Greaves",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Peregrine Strike"],
+      "description": "All shoulder charge abilities (Seismic Strike, Hammer Strike, or Shield Bash) deal bonus damage when activated in the air. Damaging mini-bosses, Tormentors, or Champions with your shoulder charge refunds your melee. Provides a small benefit to the airborne effectiveness stat of all weapons.\nBonus damage on airborne shoulder charge"
+    },
+    {
+      "hash": 2439379860,
+      "name": "Phoenix Cradle",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Beacons of Empowerment"],
+      "description": "Sol Invictus lasts twice as long. Allies who pass through your Sunspot are granted Sol Invictus and Restoration. Dealing sustained [Solar]Solar damage in a Sunspot extends the duration of the Sunspot. Applying Solar buffs to allies has a chance to create a Sunspot at your feet.\nImproves Sol Invictus and Sunspots."
+    },
+    {
+      "hash": 3545094010,
+      "name": "Phoenix Protocol",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Battle-Hearth"],
+      "description": "Kills and assists you make while standing in your Well of Radiance return Super energy.\nGain Super energy for kills and assists inside Well of Radiance."
+    },
+    {
+      "hash": 308767728,
+      "name": "Point-Contact Cannon Brace",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Hammer of the Gods"],
+      "description": "Defeating targets with your Thunderclap melee restores melee energy. Targets near you when you use your Thunderclap suffer lightning strikes and become jolted; being amplified increases the damage of these lightning strikes.\nGain melee energy and create lightning strikes with Thunderclap."
+    },
+    {
+      "hash": 4184605701,
+      "name": "Praxic Vestment",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Praxic Lift"],
+      "description": "You gain an air move jetpack. Weapon and Arc powered melee final blows build up Jetpack Fuel.\n\nWhile airborne, [Air Dodge] : Charge your jetpack.\n\nOn release, activate your jetpack with a forceful blast of exhausting Arc energy then fly forward a short distance based on the amount charged. Collide with a combatant to unleash a blinding blast of energy and gain a temporary bonus to your melee stat.\nGain a tactical air move."
+    },
+    {
+      "hash": 1978467312,
+      "name": "Precious Scars",
+      "guardianClass": "titan",
+      "slot": "helmet",
+      "intrinsics": ["Kintsugi"],
+      "description": "Final blows from weapons with a damage type matching your Super create a burst of healing around you that grants allies restoration. After reviving or being revived, you gain an aura that provides overshields to you and nearby allies.\nRevives grant overshields."
+    },
+    {
+      "hash": 3864952146,
+      "name": "Promethium Spur",
+      "guardianClass": "warlock",
+      "slot": "legs",
+      "intrinsics": ["Embers of Light"],
+      "description": "While a Solar Super is equipped, weapon final blows grant class ability energy. Defeating targets with your weapon while standing in a healing rift creates a pulse that grants Radiant to you and nearby allies; an empowering rift instead grants Cure to you and nearby allies. Daybreak final blows grant both effects.\nCreate combination Healing/Empowering Rifts."
+    },
+    {
+      "hash": 864224653,
+      "name": "Pyrogale Gauntlets",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Percussive Flames"],
+      "description": "Modifies Burning Maul into a single, high-damage slam of your hammer that creates several cyclones of flame. Consecration's second slam creates a cyclone of flame.\nBurning Maul and Consecration create flame cyclones."
+    },
+    {
+      "hash": 1709794165,
+      "name": "Radiant Dance Machines",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["The Dance"],
+      "description": "Moderately increases airborne effectiveness and hip fire mobility, range, and accuracy for weapons that use Primary ammo.\n\nFinal blows with Primary ammo weapons return dodge energy, which can overflow to create additional charges when full.\nImproved Primary weapon performance; final blows refund dodges."
+    },
+    {
+      "hash": 368733543,
+      "name": "Raiden Flux",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Synapse Junctions"],
+      "description": "Quick successive attacks with Arc Staff increase its damage output, duration and jolt targets hit.\nChained Arc Staff hits buff damage and duration."
+    },
+    {
+      "hash": 2767482390,
+      "name": "Raiju's Harness",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Mobius Conduit"],
+      "description": "Activating Gathering Storm calls down lightning on all nearby targets, jolting them while also amplifying allies. Defeating Arc debuffed targets grants a small amount of Gathering Storm energy.\nActivating Gathering Storm calls down lightning."
+    },
+    {
+      "hash": 511709874,
+      "name": "Rain of Fire",
+      "guardianClass": "warlock",
+      "slot": "legs",
+      "intrinsics": ["Soaring Fusilier"],
+      "description": "Air dodge reloads all of your weapons and improves the airborne effectiveness of Fusion Rifles and Linear Fusion Rifles; final blows with these weapons make you radiant. Provides a moderate benefit to the airborne effectiveness stat of Fusion Rifles and Linear Fusion Rifles.\nAir dodge reloads weapons. Fusion Rifle and Linear Fusion Rifle final blows make you radiant."
+    },
+    {
+      "hash": 2809120022,
+      "name": "Relativism",
+      "guardianClass": "hunter",
+      "slot": "classItem",
+      "intrinsics": ["Spirit of the Cyrtarachne", "Spirit of the Dragon"],
+      "description": "Your weapons ready quicker and are more stable. Using your class ability temporarily increases this benefit and reloads your equipped weapon from reserves.\nYour weapons ready quicker and are more stable. Class ability increases this benefit.\nGain Woven Mail when you use your grenade.\nGrenades grant Woven Mail."
+    },
+    {
+      "hash": 3793245444,
+      "name": "Renewal Grasps",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Depths of Duskfield"],
+      "description": "Your Duskfield grenades have a much larger effect radius. Allies inside the Duskfield gain Frost Armor and targets inside the area deal reduced damage.\nDuskfield grenades have a larger effect and reduce the damage that allies take."
+    },
+    {
+      "hash": 888791258,
+      "name": "Rime-coat Raiment",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Bleak Domain"],
+      "description": "Your Bleak Watcher turrets are enhanced with extended range and are surrounded by Stasis crystals and a storm. While standing in the storm, you are granted icicles over time. Icicles activate when you fire your weapons, applying Slow to targets they hit.\nBleak Watcher turrets are enhanced and grant icicle projectiles to weapons."
+    },
+    {
+      "hash": 2966741808,
+      "name": "Sanguine Alchemy",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Blood Magic"],
+      "description": "While standing in any rift, damaging a target will mark it. You deal extra damage to marked targets, and gain additional bonus damage with weapons that have a damage type matching your equipped Super. Weapon final blows while standing in any rift pause the rift's countdown, extending its duration.\nWeapon kills while in a rift extend the rift's duration."
+    },
+    {
+      "hash": 3987871714,
+      "name": "Sealed Ahamkara Grasps",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Nightmare Fuel"],
+      "description": "Powered melee and finisher final blows grant Nightmare Fuel, increasing handling and airborne effectiveness. While active, freshly drawn weapons deal additional damage and grant Nightmare Fuel on final blows. Gaining Nightmare Fuel reloads all holstered weapons.\nMelee and finisher final blows reload and enhance holstered weapons."
+    },
+    {
+      "hash": 4029987901,
+      "name": "Secant Filaments",
+      "guardianClass": "warlock",
+      "slot": "legs",
+      "intrinsics": ["Devouring Rift"],
+      "description": "While using a Void Super, casting an Empowering Rift will grant you Devour. Damage dealt by you and your allies from within your Empowering Rift will [Disruption] disrupt combatants. Defeating a target while Devour is active grants you class ability energy.\nEmpowering Rift grants Devour. Damage from inside it [Disruption] disrupts combatants."
+    },
+    {
+      "hash": 4268030601,
+      "name": "Second Chance",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Myrmidon's Reach"],
+      "description": "Gain a second charge of your Shield Throw melee. Your Shield Throws now weaken targets, create a Void Breach on final blows, and become shield-piercing, stunning [Shield-Piercing] Barrier Champions and refunding a Shield Throw charge when you do. Picking up a Void Breach grants you Shield Throw energy.\nImproves your Shield Throw melee."
+    },
+    {
+      "hash": 1429817243,
+      "name": "Severance Enclosure",
+      "guardianClass": "titan",
+      "slot": "chest",
+      "intrinsics": ["Spheromatik Trigger"],
+      "description": "Powered melee final blows unleash a damaging explosion. Finishers and final blows against more powerful targets increase the radius and damage of the explosion.\nPowered melee kills and finishers unleash explosions."
+    },
+    {
+      "hash": 3883286570,
+      "name": "Shards of Galanor",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Sharp Edges"],
+      "description": "Throwing Knife final blows decrease the cooldown of your Super. Hitting a single target with most Blade Barrage knives in a volley causes them to release a violent Solar explosion; releasing scorching Solar shrapnel. Hits and final blows with Blade Barrage will return Super energy after the Super ends.\nGet Super energy for Blade Barrage hits and kills."
+    },
+    {
+      "hash": 1611241895,
+      "name": "Shinobu's Vow",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["New Tricks"],
+      "description": "Gain an additional Skip Grenade charge. Skip Grenade damage grants Bolt Chargeand gaining Bolt Charge grants Skip Grenade energy. When Bolt Charge is ready, you heal nearby allies and enhance your next Skip Grenade.\nImproved Skip Grenade."
+    },
+    {
+      "hash": 3050017626,
+      "name": "Skull of Dire Ahamkara",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Actual Grandeur"],
+      "description": "After casting a Nova Bomb, briefly gain a free cast of a fast-moving but weaker Nova Bomb: Lance. Your Nova Bomb: Cataclysm is empowered if detonated with another Nova Bomb. \nNova Bomb final blows and weapon final blows while you have Devour grant Super energy.\nCasting Nova Bomb grants a free cast of a Nova Bomb: Lance."
+    },
+    {
+      "hash": 2273643087,
+      "name": "Solipsism",
+      "guardianClass": "warlock",
+      "slot": "classItem",
+      "intrinsics": ["Spirit of the Necrotic", "Spirit of the Swarm"],
+      "description": "Damaging a target with a melee inflicts potent corruption. Defeating targets afflicted by corruption spreads the condition.\nMelee hits inflict potent corruption.\nDestroying a Tangle spawns Threadlings.\nTangles spawn Threadlings."
+    },
+    {
+      "hash": 3617849232,
+      "name": "Speaker's Sight",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["The Lost Voice"],
+      "description": "Healing grenades spawn a Restorative Turret. Healing allies occasionally spawns an Orb of Power.\nHealing grenades spawn a Restorative Turret."
+    },
+    {
+      "hash": 1793346751,
+      "name": "Speedloader Slacks",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Tight Fit"],
+      "description": "Dodging instantly reloads all your weapons and grants increased reload and handling to you and nearby allies. While the buff is active, additional dodges increase the buff strength and refresh the timer, maxing out at 5 stacks. Dealing sustained damage grants class ability energy.\nDodging grants reload and handling for you and nearby allies. Dodge to increase gains, damage to get dodges."
+    },
+    {
+      "hash": 2405271937,
+      "name": "St0mp-EE5",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Hydraulic Boosters"],
+      "description": "Increases slide distance and improves High Jump, Strafe Jump, and Triple Jump. Take less damage from targets when airborne.\nBuffs slide and jumping."
+    },
+    {
+      "hash": 1006498763,
+      "name": "Star-Eater Scales",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Feast of Light"],
+      "description": "You gain additional Super energy from Orbs of Power you pick up. While your Super energy is full, picking up an Orb of Power overcharges your Super, causing you to gain a burst of healing when cast and a bonus to your Super damage. At maximum overcharge, you also gain an overshield.\nPick up Orbs of Power to overcharge your Super."
+    },
+    {
+      "hash": 599049453,
+      "name": "Starfire Protocol",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Fusion Harness"],
+      "description": "Fusion Grenades have an additional charge and recharge from empowered weapon damage, with empowered weapon final blows granting more energy. Defeating targets with Fusion Grenades grant Rift energy.\nExtra Fusion Grenade. Grenade kills charge Rift."
+    },
+    {
+      "hash": 266021826,
+      "name": "Stoicism",
+      "guardianClass": "titan",
+      "slot": "classItem",
+      "intrinsics": ["Spirit of Contact", "Spirit of Severance"],
+      "description": "Powered melee or finisher final blows unleash a damaging explosion.\nPowered melee final blows and finishers unleash explosions.\nDamaging a target with a powered melee causes all nearby targets to suffer lightning strikes and become jolted.\nPowered melee damage causes lightning strikes."
+    },
+    {
+      "hash": 1747063685,
+      "name": "Stormdancer's Brace",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Ascending Amplitude"],
+      "description": "Stormtrance hits and final blows increase the damage it deals. Refunds Super energy when it ends. While Stormtrance is equipped, ability damage while amplified grants Bolt Charge.\nEnhanced Stormtrance and amplified abilities."
+    },
+    {
+      "hash": 512777670,
+      "name": "Stronghold",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Clenched Fist"],
+      "description": "Maximizes guard stats on equipped Heavy ammo Swords. You take reduced damage while blocking with a Sword. Rapidly damaging targets after blocking shots with a Sword grants Restoration for a duration determined by the number of shots blocked.\nBonuses to guarding with Swords."
+    },
+    {
+      "hash": 950745251,
+      "name": "Sunbracers",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Helium Spirals"],
+      "description": "Increases the duration of Solar Grenades. Solar melee kills grant unlimited Solar Grenade energy for a brief time.\nSolar grenades burn longer. Melee kills restore them."
+    },
+    {
+      "hash": 2100136540,
+      "name": "Swarmers",
+      "guardianClass": "warlock",
+      "slot": "legs",
+      "intrinsics": ["Swarmers"],
+      "description": "Destroying a Tangle spawns a Threadling. Your Threadlings unravel targets that they damage.\nThreadlings spawn from Tangles and unravel targets."
+    },
+    {
+      "hash": 2002759681,
+      "name": "Synthoceps",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Biotic Enhancements"],
+      "description": "When you're surrounded, gain increased melee and Super damage, as well as improved weapon handling and reload speed.\nBeing surrounded buffs damage and weapon handling."
+    },
+    {
+      "hash": 2177224557,
+      "name": "The Bombardiers",
+      "guardianClass": "hunter",
+      "slot": "legs",
+      "intrinsics": ["Parting Gift"],
+      "description": "Dodging leaves behind an explosive that detonates after a short delay, damaging targets around it and creating a secondary effect based on your Super's element:\n• [Arc] Blinds targets.\n• [Solar] Scorches targets.\n• [Void] Suppresses targets.\n• [Stasis] Slows targets.\n• [Strand] Severs targets.\nDodging leaves behind an explosive that detonates after a short delay, damaging targets around it."
+    },
+    {
+      "hash": 368733541,
+      "name": "The Dragon's Shadow",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Wraithmetal Mail"],
+      "description": "Your weapons ready quicker and are more stable. Dodging temporarily increases this benefit, reloads your equipped weapon from reserves, grants improved movement speed, and increases your class ability stat.\nYour weapons ready quicker and are more stable. Dodging increases this benefit."
+    },
+    {
+      "hash": 4119704973,
+      "name": "The Path of Burning Steps",
+      "guardianClass": "titan",
+      "slot": "legs",
+      "intrinsics": ["Firewalker"],
+      "description": "Increase the damage of Solar weapons and Solar Ignitions based on the amount of Roaring Flames stacks you have. You are harder to suspend, slow, or freeze, and when you break out, you take no damage from doing so, creating a burst of Solar energy around yourself.\nRoaring Flames improves weapon and ignition damage. You are harder to suspend, slow, and freeze."
+    },
+    {
+      "hash": 1168370782,
+      "name": "The Sixth Coyote",
+      "guardianClass": "hunter",
+      "slot": "chest",
+      "intrinsics": ["Double Dodge"],
+      "description": "Gain a second dodge charge. Shortly after dodging, your next weapon final blow spawns an Orb of Power.\nGain a second dodge charge.\nShortly after using your class ability, your next weapon final blow spawns an Orb of Power."
+    },
+    {
+      "hash": 994038265,
+      "name": "The Stag",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["Dearly Departed"],
+      "description": "Your Rift provides damage reduction to allied Guardians standing in it. Grants Rift energy when you are critically wounded. On your death, creates a healing rift on your corpse.\nRift grants damage reduction. Grants Rift energy when critically wounded; creates healing rift on death."
+    },
+    {
+      "hash": 3337759189,
+      "name": "Transversive Steps",
+      "guardianClass": "warlock",
+      "slot": "legs",
+      "intrinsics": ["Strange Protractor"],
+      "description": "Sprint speed increased. After a short time sprinting, your currently equipped weapon is automatically reloaded.\nBuffs sprint. Sprinting reloads current weapon."
+    },
+    {
+      "hash": 1304266146,
+      "name": "Triton Vice",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Halberdier's Reach"],
+      "description": "Increases Glaive reload speed and melee damage when surrounded. Glaive melee final blows overflow a round to the magazine. Glaive projectile final blows detonate in an explosion.\nImproves Glaive melee. Glaive projectile final blows cause detonations."
+    },
+    {
+      "hash": 2046130360,
+      "name": "Ursa Furiosa",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Ursine Guard"],
+      "description": "Move faster while guarding with Sentinel Shield or the Unbreakable shield. Damage blocked with Sentinel Shield is converted to Super energy, and damage blocked with Unbreakable is converted to grenade energy.\nImproves Sentinel Shield and Unbreakable."
+    },
+    {
+      "hash": 2553961985,
+      "name": "Verity's Brow",
+      "guardianClass": "warlock",
+      "slot": "helmet",
+      "intrinsics": ["The Fourth Magic"],
+      "description": "Weapon final blows with a damage type matching your grenade grant Death Throes, which provide a grenade damage bonus and grant you grenade energy. When you have Death Throes and throw a grenade, nearby allies gain greatly increased grenade regeneration for a short time.\nWeapon final blows boost grenade damage."
+    },
+    {
+      "hash": 3139221735,
+      "name": "Vesper of Radius",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Planetary Torrent"],
+      "description": "Rifts periodically release Arc shockwaves. Final blows with these shockwaves create an Arc explosion. While an Arc Super is equipped, the shockwaves and subsequent explosions blind nearby targets. Rift energy recharges faster when you are surrounded by targets.\nRift periodically releases an Arc shockwave."
+    },
+    {
+      "hash": 1179169099,
+      "name": "Wings of Sacred Dawn",
+      "guardianClass": "warlock",
+      "slot": "chest",
+      "intrinsics": ["Tome of Dawn"],
+      "description": "While you have a [Solar]Solar Super equipped, aiming weapons while you're midair suspends you there for a short time. While this effect is active, you are more resistant to incoming damage and combatants are less accurate. Weapon hits extend this effect's duration, and [Solar]Solar weapon final blows provide Restoration and reload your other weapons from reserves. Provides a large benefit to the airborne effectiveness stat of all weapons.\nAiming in midair holds you in place while you have a Solar super equipped."
+    },
+    {
+      "hash": 900910756,
+      "name": "Winter's Guile",
+      "guardianClass": "warlock",
+      "slot": "gauntlets",
+      "intrinsics": ["Warlord's Sigil"],
+      "description": "Melee and finisher final blows increase melee damage. With maximum stacks, you gain vastly increased melee regeneration speed for a short time.\nMelee and finisher final blows increase melee damage."
+    },
+    {
+      "hash": 4157369212,
+      "name": "Wishful Ignorance",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Wish-Dragon's Talons"],
+      "description": "Gain an additional Frenzied Blade charge. Frenzied Blade and Flechette Storm briefly increase their damage with each strike. Pulses from your Banner of War return melee energy based on the number of allies healed.\nGain an additional Frenzied Blade charge. Banner of War grants melee energy."
+    },
+    {
+      "hash": 1203306856,
+      "name": "Wormgod Caress",
+      "guardianClass": "titan",
+      "slot": "gauntlets",
+      "intrinsics": ["Burning Fists"],
+      "description": "Defeating a target with melee or a finisher grants escalating melee damage, which decays over time. Higher levels of Burning Fists grant increased weapon damage.\nMelee kills increase melee damage."
+    },
+    {
+      "hash": 3721047650,
+      "name": "Wormhusk Crown",
+      "guardianClass": "hunter",
+      "slot": "helmet",
+      "intrinsics": ["Burning Souls"],
+      "description": "Activating your class ability grants Cure. Rapid [Solar]Solar final blows grant stacks of Burning Souls that increase Solar ability damage, increase the potency of Dodge's healing, and spreads the healing to nearby allies.\n[Solar]Solar final blows grant Burning Souls. Dodge applies Cure."
+    },
+    {
+      "hash": 405059572,
+      "name": "Young Ahamkara's Spine",
+      "guardianClass": "hunter",
+      "slot": "gauntlets",
+      "intrinsics": ["Wish-Dragon Teeth"],
+      "description": "Increases Tripmine Grenade duration and blast radius. Ability damage grants Tripmine Grenade energy.\nEnhanced Tripmines."
+    }
+  ]
+}

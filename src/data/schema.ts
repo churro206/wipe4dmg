@@ -496,11 +496,43 @@ export const ManifestWeapon = z.object({
   ammo: z.enum(["primary", "special", "heavy"]),
   intrinsics: z.array(z.string()), // socket category "Intrinsic Traits", e.g. "Prototype Trueseeker"
   perks: z.array(z.string()), // socket category "Weapon Perks" with all options, without trackers
+  mods: z.array(z.string()), // socket category "Weapon Mods", e.g. the parts of Praxic Blade
   catalyst: z
     .object({ name: z.string(), perks: z.array(z.string()) })
     .nullable(), // e.g. { name: "Truth Catalyst", perks: ["Reaper's Tithe"] }
+  description: z.string(), // texts of intrinsic and catalyst perks, one per line
 });
 export type ManifestWeapon = z.infer<typeof ManifestWeapon>;
+
+/** An exotic armor piece from the manifest with its intrinsic (ADR 0013). */
+export const ManifestArmorPiece = z.object({
+  hash: z.number().int(),
+  name: z.string(),
+  guardianClass: GuardianClass.nullable(), // null: any class
+  slot: z.enum(["helmet", "gauntlets", "chest", "legs", "classItem"]),
+  intrinsics: z.array(z.string()), // e.g. ["Illegally Modded Holster"]
+  description: z.string(), // texts of the intrinsics, one per line
+});
+export type ManifestArmorPiece = z.infer<typeof ManifestArmorPiece>;
+
+/** Exotic armor from the manifest, written by npm run import:icons. */
+export const ManifestArmor = z.object({
+  manifestVersion: z.string(),
+  retrieved: z.string(),
+  armor: z.array(ManifestArmorPiece),
+});
+export type ManifestArmor = z.infer<typeof ManifestArmor>;
+
+/** Item types of the names in the Aegis weapon assumptions, looked up in the whole manifest. */
+export const ManifestTerms = z.object({
+  manifestVersion: z.string(),
+  retrieved: z.string(),
+  terms: z.record(
+    z.string(),
+    z.array(z.object({ itemType: z.string(), plugCategory: z.string() })),
+  ),
+});
+export type ManifestTerms = z.infer<typeof ManifestTerms>;
 
 /** Exotic weapons from the manifest, written by npm run import:icons. */
 export const ManifestWeapons = z.object({

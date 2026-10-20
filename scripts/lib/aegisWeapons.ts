@@ -54,6 +54,13 @@ export const splitAssumptions = (text: string): string[] =>
     );
 
 /**
+ * Name of an assumption without stack count and remark: "Reaper's Tithe x4" → "Reaper's Tithe",
+ * "Impact Core (solar)" → "Impact Core".
+ */
+export const assumptionName = (assumption: string): string =>
+  assumption.replace(/\s+x\d+$/, "").replace(/\s*\([^)]*\)$/, "");
+
+/**
  * Parses the CSV of the tab "Weapons". Columns are found by their header names; "Wipe", "#",
  * "Full Modifiers" and "visual Value" are read from the group "VISUAL" in the row above, since the
  * group "HEALTHBAR" repeats some of them.
