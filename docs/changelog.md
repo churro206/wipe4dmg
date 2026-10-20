@@ -12,6 +12,7 @@
 - Link-Format 3 mit Fähigkeiten und Stats. Ältere Links funktionieren weiter.
 - Abdeckung und Roadmap als Dokumente (`docs/coverage.md`, `docs/roadmap.md`, US-15, ADR 0010).
 - Tether-Dauern laut Compendium: Deadfall 12 s, Moebius 6 s pro Salve.
+- Courts Stacking Guide vollständig abgeglichen: Surge 3x (22 %) und die Stacking-Regeln für Amplification, Weapon Perks und Exotic Intrinsics sind jetzt belegt. MossyMax geprüft, veraltet.
 
 - Neue Oberfläche mit Ingame-Icons (ADR 0008): Effects als Icon-Kacheln mit Hover-Karte (Wirkung, Dauer, Quelle), Klasse und Subklasse als Schaltflächen mit Icons, Kennzahlen immer sichtbar, Ergebnis in Reitern (Übersicht, Rotation, Breakdown, Optimizer), Optimizer-Einträge als Karten mit Icon-Reihe, Fireteam Support einklappbar, Erklärungen als ⓘ.
 

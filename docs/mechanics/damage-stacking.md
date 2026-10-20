@@ -1,6 +1,6 @@
 # Damage Stacking
 
-Kategorie: Multiplier · Spielversion: 9.7.0.3 · Zuletzt geprüft: 2026-10-18 · Vertrauen: hoch
+Kategorie: Multiplier · Spielversion: 9.7.0.3 · Zuletzt geprüft: 2026-10-20 · Vertrauen: hoch
 
 ## Kurzfassung
 
@@ -16,11 +16,15 @@ Damage-Buffs gehören zu Kategorien (bei uns: Buckets). Innerhalb einer Kategori
    - Divinity überschreibt Particle Reconstruction und setzt ihn auf 15 % herab, obwohl Particle Reconstruction bis 27,6 % erreicht.
 4. **Weapon Surges:** Pro Element gilt nur der stärkste Surge. Armor-Mods, Exotics und Artifact Perks teilen sich dieses System. Für eine Waffe zählt nur der Surge ihres Elements.
 5. **Surge-Stufen:** Surges zählen Stacks von 1x bis 4x. Die Stufe bestimmt den Multiplier, siehe Werte.
-6. **Amplification** stapelt mit Empowering Buffs, Debuffs und Surges. Elemental Overdrive „stacks with all other buffs“, obwohl die UI ihn als Surge anzeigt.
-7. **Weapons Stat** gegen Bosse: Power-Waffen +0,1 % pro Punkt über 100, maximal +10 % bei 200. Primary- und Special-Waffen +0,15 % pro Punkt, maximal +15 %. Court führt ihn unter Amplification.
-8. **Nur gegen Bosse:** Effekte, die nicht gegen Bosse wirken, entfallen, z. B. Sect of Force, Kinetic Intrinsic Buff, Weapons Stat 0–100.
-9. **Activity Surge und Overcharge** stapeln nicht miteinander. Activity Surges stapeln aber mit Armor Surges. (Aktivitätsabhängig, vorerst nicht im Umfang.)
-10. **Superstructure Defender** und ähnliche Raid-Mods zählen nicht als Debuff und stapeln mit Weaken. (Raid-spezifisch, vorerst nicht im Umfang.)
+6. **Amplification, Exotic Intrinsics, Weapon Perks, World & Activity** stapeln mit allem, auch untereinander: „Stacks with all other buffs and itself“ (Court, Damage Buff Categories). Elemental Overdrive „stacks with all other buffs“, obwohl die UI ihn als Surge anzeigt.
+7. **Ausnahme Melee:** „Melee-increasing damage modifiers are additive“ (Court). Buffs, die nur den Melee-Schaden erhöhen, addieren sich untereinander. Im Modell gibt es dafür noch keinen Bucket, weil noch kein Melee-Buff angelegt ist.
+8. **Weapons Stat** gegen Bosse: Power-Waffen +0,1 % pro Punkt über 100, maximal +10 % bei 200. Primary- und Special-Waffen +0,15 % pro Punkt, maximal +15 %. Court führt ihn unter Amplification.
+9. **Nur gegen Bosse:** Effekte, die nicht gegen Bosse wirken, entfallen, z. B. Sect of Force, Kinetic Intrinsic Buff, Weapons Stat 0–100.
+10. **Weaken verlängert 30-%-Debuffs:** Die Debuffs von Felwinter's Helm, Fafnir und Tractor Cannon lassen sich durch die meisten Weaken-Quellen verlängern, z. B. durch eine Void Soul. Tether funktioniert anders und lässt sich nicht verlängern. (Court)
+11. **Expanding Abyss** (Artifact Perk) hebt Weaken an: 15 → 25 %, 30 → 35 %, 35 → 40 %. Nur Void-Schaden, Divinity bleibt bei 15 %. (Court; noch nicht im Modell)
+12. **Buffs auf Supers:** Radiant erhöht auch Golden Gun und Still Hunt um 20 %. Kinetic und Solar Surges wirken nicht auf Golden Gun, ein Solar Surge wirkt aber auf Still Hunt. (Court; im Modell gelten Radiant und Surges nur für Waffen)
+13. **Activity Surge und Overcharge** stapeln nicht miteinander. Activity Surges stapeln aber mit Armor Surges. (Aktivitätsabhängig, vorerst nicht im Umfang.)
+14. **Superstructure Defender** und ähnliche Raid-Mods zählen nicht als Debuff und stapeln mit Weaken. (Raid-spezifisch, vorerst nicht im Umfang.)
 
 ## Werte
 
@@ -33,14 +37,16 @@ Damage-Buffs gehören zu Kategorien (bei uns: Buckets). Innerhalb einer Kategori
 | Tractor Cannon, Felwinter's Helm, Moebius Tether (Debuff) | 30 % | Court | 9.7.0.3 |
 | Deadfall Tether (Debuff) | 35 % | Court | 9.7.0.3 |
 | Divinity (Debuff) | 15 % | Court | 9.7.0.3 |
-| Surge 2x / 4x | 17 % / 25 % | Court (Ballidorse „Instant 2x“, 4x-Exotics) | 9.7.0.3 |
-| Surge 3x | 22 % (abgeleitet: Fr0st-EE5 und Heavy-Brick-Surge nennen 22 %, Aegis rechnet mit 1,22) | Court; Aegis | 9.7.0.3 |
-| Surge 1x | offen | – | – |
+| Surge 1x / 2x / 3x / 4x | 10 % / 17 % / 22 % / 25 % | Court (Surge-Mods, Eternal Warrior, Doom Fang Pauldron); Aegis 1,22 für 3x | 9.7.0.3 |
 | Argent Ordnance (Amplification) | 15 % | Court | 9.7.0.3 |
+| Banner of War (Amplification, Strand Titan Aspect) | offen (Wert im Compendium) | Court (nur Kategorie) | 9.7.0.3 |
+| Expanding Abyss: Weaken 15 / 30 / 35 % → | 25 / 35 / 40 % | Court | 9.7.0.3 |
+| Well of Radiance: Dauer bei Super-Stat 100 / 200 | 30 s / 40 s | Court | 9.7.0.3 |
+| Radiant nach dem Verlassen von Well (mit Ember of Solace) | 8 s (12 s) | Court | 9.7.0.3 |
 | Elemental Overdrive (Amplification) | 22 % | Court; Compendium | 9.7.0.3 |
 | Weapons Stat 200, Power-Waffe gegen Bosse | 10 % | Compendium „Game Mechanics“; Aegis Spalte „200“ (1,10) | 9.7.0.x |
 
-Stichprobe: Der Projektinhaber hat bei Weapons Stat 130 +2,9 % im Spiel abgelesen. Nach Regel 7 wären es 3 %.
+Stichprobe: Der Projektinhaber hat bei Weapons Stat 130 +2,9 % im Spiel abgelesen. Nach Regel 8 wären es 3 %.
 
 ## Wechselwirkungen
 
@@ -50,20 +56,21 @@ Stichprobe: Der Projektinhaber hat bei Weapons Stat 130 +2,9 % im Spiel abgelese
 
 ## Modell im Simulator
 
-Noch nicht abgebildet. Vorschlag für den ADR zum Effect-Modell:
+Abgebildet nach ADR 0006:
 
-- Buckets nach Courts Kategorien: `empowering`, `debuff`, `surge`, `amplification`, `weaponPerk`, `exoticIntrinsic`. Der heutige Bucket `artifact` entfällt, weil Artifact Perks zu verschiedenen Kategorien gehören.
-- Stacking-Regel pro Bucket wie heute (`highest`, `multiplicative`, `additive`), dazu Vorrangregeln zwischen einzelnen Effects, z. B. „Divinity überschreibt Particle Reconstruction“.
+- Buckets nach Courts Kategorien in `src/data/buckets.json`: `empowering`, `debuff`, `surge` (Stacking `highest`), `amplification`, `weaponPerk`, `exoticIntrinsic` (Stacking `multiplicative`, laut Court belegt), dazu `abilityStat`.
+- Vorrangregeln zwischen einzelnen Effects, z. B. „Divinity überschreibt Particle Reconstruction“.
 - Testfall aus Courts Beispiel: 1,25 × 1,22 × 1,25 × 1,33 × 1,35 × 1,25 ≈ 4,28.
+- Noch nicht abgebildet: Melee-Buffs (additiv), Expanding Abyss, Verlängerung von Debuffs durch Weaken, Radiant auf Golden Gun und Still Hunt.
 
 ## Offene Fragen
 
-- [ ] Multiplizieren sich mehrere Amplification-Effekte untereinander, oder gilt dort auch nur der stärkste?
-- [ ] Wie stapeln mehrere Weapon Perks auf einer Waffe?
-- [ ] Wie hoch ist ein 1x-Surge?
+- [x] Multiplizieren sich mehrere Amplification-Effekte untereinander? Ja, „and itself“ (Court, geprüft 2026-10-20).
+- [x] Wie stapeln mehrere Weapon Perks auf einer Waffe? Multiplikativ, „and itself“ (Court, geprüft 2026-10-20).
+- [x] Wie hoch ist ein 1x-Surge? 10 % (Court, geprüft 2026-10-20).
 
 ## Quellen
 
-- [Court's Everything Spreadsheet, Reiter „Stacking Guide“](https://destiny2.science/court-sheet), Daten vom 9. Juni 2026, geprüft für 9.7.0.3
+- [Court's Everything Spreadsheet, Reiter „Stacking Guide“](https://destiny2.science/court-sheet), Daten vom 9. Juni 2026, geprüft für 9.7.0.3. Der Kurzlink führt auf das Google Sheet „Destiny 2 Damage Buffs/Debuffs“ (`1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4`, Reiter-gid `2073397587`). CSV-Export gesperrt (401); `htmlview/sheet?gid=…` und gviz funktionieren. Vollständig gelesen am 2026-10-20: etwa 100 Effects, davon 17 im Modell.
 - [Destiny Data Compendium](https://destiny2.science/data-compendium), Reiter „Game Mechanics“ und „Artifact Perks“, abgerufen 2026-10-18
 - [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage), Reiter „Weapons“

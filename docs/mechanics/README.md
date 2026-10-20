@@ -183,9 +183,10 @@ Beantwortet am 2026-10-18, festgehalten in `docs/requirements.md` (Rahmenbedingu
 | Quelle | Inhalt | Stand | Zugriff |
 | --- | --- | --- | --- |
 | [Destiny Data Compendium](https://destiny2.science/data-compendium) | Keywords pro Element, Game Mechanics, Perks, Mods, Exotics, Artifact | laufend gepflegt | CSV-Export gesperrt; Abruf über die gviz-Schnittstelle (`/gviz/tq?tqx=out:csv&gid=<gid>`) |
-| [Court's Everything Spreadsheet](https://destiny2.science/court-sheet), Reiter „Stacking Guide“ | Damage-Buffs nach Kategorien mit PvE-Werten, Dauer, Stacking-Hinweisen | 9.7.0.3 (Daten vom 9. Juni 2026) | gviz-Schnittstelle |
+| [Court's Everything Spreadsheet](https://destiny2.science/court-sheet), Reiter „Stacking Guide“ | Damage-Buffs nach Kategorien mit PvE-Werten, Dauer, Stacking-Hinweisen (etwa 100 Effects, 17 im Modell) | 9.7.0.3 (Daten vom 9. Juni 2026), vollständig gelesen 2026-10-20 | CSV-Export gesperrt; `htmlview/sheet?gid=2073397587` oder gviz |
 | [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage) | Waffen, Fähigkeiten, Scaling, Swap, Bolt Charge, Bosse | Changelog 2026-10-12 | CSV-Export |
 | [Quantum Damage-ics](https://destiny2.science/quantum-damage-ics) | Waffen-Grundwerte, Reserves, Effektwerte | bis 9.7.0.1 | CSV-Export |
-| [Mossy: Outgoing Damage Scaling](https://destiny2.science/damage-scaling) | Power-Differenz und Schadensskalierung | nicht geprüft | – |
+| [Mossy: Outgoing Damage Scaling](https://destiny2.science/damage-scaling) | Power-Differenz, Faktoren pro Gegnertyp, Scorch-Ticks | v1.9.2 (Februar 2025, vor Edge of Fate); geprüft 2026-10-20: laut Autor veraltet, nur als Hinweis | `htmlview/sheet?gid=…` |
 | Clarity (über [light.gg](https://www.light.gg/) und DIM) | Genaue Perk-Beschreibungen | laufend | Webseite |
+| [Bungie Destiny 2 Manifest](https://www.bungie.net/en/Application) | Icons, Klasse und Subklasse der Abilities; später auch Archetype, Waffen-Stats (RPM, Magazine, Charge Time) und Perk-Pools pro Waffe. Kein Schaden pro Shot | laufend | API-Schlüssel, `npm run import:icons` |
 | Bungie-Patchnotes | Maßgeblich für Änderungen pro Version | laufend | Webseite |

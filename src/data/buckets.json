@@ -39,11 +39,11 @@
     "name": "Amplification",
     "stacking": "multiplicative",
     "source": {
-      "name": "Court Stacking Guide (Amplification Modifiers: stackable with empowering buffs, debuffs and surges)",
+      "name": "Court Stacking Guide (Damage Buff Categories, Amplification Modifiers: \"Stacks with all other buffs and itself\")",
       "url": "https://destiny2.science/court-sheet",
-      "retrieved": "2026-10-18",
-      "status": "unverified",
-      "note": "Stacking with other amplification effects is open; multiplicative is an assumption."
+      "retrieved": "2026-10-20",
+      "status": "verified",
+      "note": "Exception: melee-increasing modifiers are additive (Court: \"Melee-increasing damage modifiers are additive\"). No melee buff is modelled yet."
     }
   },
   {
@@ -51,11 +51,10 @@
     "name": "Weapon Perk",
     "stacking": "multiplicative",
     "source": {
-      "name": "Court Stacking Guide (Weapon Perks)",
+      "name": "Court Stacking Guide (Damage Buff Categories, Weapon Perks: \"Stacks with all other buffs and itself\")",
       "url": "https://destiny2.science/court-sheet",
-      "retrieved": "2026-10-18",
-      "status": "unverified",
-      "note": "Stacking of several perks on one weapon is open."
+      "retrieved": "2026-10-20",
+      "status": "verified"
     }
   },
   {
@@ -63,10 +62,10 @@
     "name": "Exotic Intrinsic",
     "stacking": "multiplicative",
     "source": {
-      "name": "Court Stacking Guide (Exotic Intrinsics)",
+      "name": "Court Stacking Guide (Damage Buff Categories, Exotic Intrinsics: \"Stacks with all other buffs and itself\")",
       "url": "https://destiny2.science/court-sheet",
-      "retrieved": "2026-10-18",
-      "status": "unverified"
+      "retrieved": "2026-10-20",
+      "status": "verified"
     }
   },
   {

@@ -56,7 +56,7 @@ tests/         Vitest-Tests für die Engine. Helfer für generierte Dokumente in
 4. Führe `npm test` aus. Melde das Ergebnis.
 5. Fasse die Änderung in zwei bis drei Sätzen zusammen.
 
-## Aktueller Stand (2026-10-19)
+## Aktueller Stand (2026-10-20)
 
 Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
 
@@ -68,6 +68,11 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
   - Daten: 25 Supers, 26 Grenades und 24 Melees als Pakete. Lücken stehen mit Grund in `ability-gaps.json`. Klasse, Subklasse, Prismatic und Icons kommen aus dem Manifest.
   - Link-Format 3. Format 2 bleibt lesbar.
   - Fähigkeiten-Panel in der Oberfläche (6b).
+- **Quellen-Abgleich (2026-10-20):**
+  - Courts Stacking Guide vollständig gelesen (etwa 100 Effects, 17 im Modell). Surge 1x bis 4x = 10/17/22/25 %. Amplification, Weapon Perks und Exotic Intrinsics stapeln auch untereinander; diese Buckets und `solar-surge-3x` sind jetzt `verified`.
+  - Neu und noch nicht im Modell: Melee-Buffs addieren sich, Expanding Abyss, Radiant auf Golden Gun und Still Hunt (Liste in `docs/mechanics/damage-stacking.md` und `docs/roadmap.md`).
+  - MossyMax ist veraltet (v1.9.2, Februar 2025), nur als Hinweis. Gemini schlug keine neue Quelle vor.
+  - Diese Änderungen wurden auf dem Laptop ohne Node.js gemacht: Auf der Workstation zuerst `npm test` und `npm run coverage` ausführen.
 - **Erkenntnis:** Compendium-Teile haben das Gate bisher nicht bestanden (Thundercrash −12,5 %, Anzahl der Aftershocks unklar). Deshalb sind fast alle Abilities Pakete.
 - **Nächste Schritte (Masterplan):**
   - **6c, Ergebnis:**

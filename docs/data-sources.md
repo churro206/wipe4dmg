@@ -1,6 +1,6 @@
 # Datenquellen
 
-Stand: 2026-10-19 · Spielversion: 9.7.0.5
+Stand: 2026-10-20 · Spielversion: 9.7.0.5
 
 Die Spielwerte kommen aus frei zugänglichen Community-Quellen (ADR 0005). Eigene Messungen sind nur Stichproben.
 
@@ -16,7 +16,9 @@ Alle Quellen sind über [destiny2.science](https://www.destiny2.science/) verlin
 | Icons | [Bungie Destiny 2 Manifest](https://www.bungie.net/en/Application) (ADR 0008) | Manifest 244213.26.06.29.2000-1, abgerufen 2026-10-18 | Icons für Effects, Waffe, Abilities, Subklassen, Ignition, Taken Seeker. Zuordnung über `manifestRef` in `effects.json` und `src/data/icon-refs.json`; Abilities über ihren Namen. Außerdem Slot, Klasse und Subklasse aller Abilities aus der Item-Tabelle (`plug.plugCategoryIdentifier`, z. B. `hunter.prism.supers`) → `src/data/manifest-abilities.json`. Import: `npm run import:icons` → `public/icons/`, `src/data/icons.json` |
 | Hauptquelle Ability Components | [Destiny Data Compendium](https://destiny2.science/data-compendium), Subklassen-Reiter (ADR 0009) | abgerufen 2026-10-19; Stand pro Eintrag unterschiedlich | Grundwerte der Teile von Grenades, Melees und Supers, Super-Dauer, Energieverbrauch pro Angriff. Gleiche Skala wie der „visual Value“ von Aegis. Snapshot der Texte: `npm run import:compendium` → `src/data/compendium-abilities.json` (CSV-Export gesperrt, daher htmlview). Jeder zitierte Wert wird per Test gegen den Snapshot geprüft; nach einem Patch zeigt ein neuer Import, welche Zitate nicht mehr stimmen |
 | Gate und Fallback Abilities | [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage), Reiter „Abilties“ (ADR 0009) | Patch 9.7.0.3 | 242 Zeilen (Super, Grenade, Melee, Miscellaneous): Schaden pro Einsatz ohne Standard-Multiplier („visual Value“, Wipe ÷ Anzahl ÷ Full Modifiers) bei Stat 100 und 200, Annahmen als Text. Automatischer Import: `npm run import:abilities` → `src/data/aegis-abilities.json`; Annahmen, die modellierte Effects sind, landen in `includedEffectIds`. Zeilen mit Full Modifiers 1,00 (nicht normiert) oder abweichend von ×2,30 sind `unverified` |
-| Buffs, Debuffs, Stacking | [Destiny Data Compendium](https://destiny2.science/data-compendium) | noch nicht geprüft | Werte für Perks, Mods, Subklassen, Spielmechaniken |
+| Buckets, Stacking, Effects | [Court's Stacking Guide](https://destiny2.science/court-sheet) (Google Sheet „Destiny 2 Damage Buffs/Debuffs“, Reiter-gid `2073397587`) | Daten vom 9. Juni 2026, geprüft für 9.7.0.3; vollständig gelesen 2026-10-20 | Kategorien und Stacking-Regeln, PvE-Werte und Dauer von etwa 100 Effects, davon 17 im Modell. CSV-Export gesperrt (401); `htmlview/sheet?gid=…` und gviz funktionieren |
+| Buffs, Debuffs, Stacking | [Destiny Data Compendium](https://destiny2.science/data-compendium) | laufend | Werte für Perks, Mods, Subklassen, Spielmechaniken |
+| Nur Hinweis | [MossyMax: Outgoing Damage Scaling](https://destiny2.science/damage-scaling) | v1.9.2 (Februar 2025, vor Edge of Fate); geprüft 2026-10-20 | Power-Differenz, Faktoren pro Gegnertyp, Waffen- und Scorch-Werte. Laut Autor veraltet („LOTS OF THIS IS PRETTY OUTDATED“). Für uns kaum nützlich: Power-Differenz wirkt auf alle Builds gleich, gegen Bosse sind die Faktoren nahe 1,0, Waffenwerte liefert Quantum aktueller |
 
 ## One Thousand Voices bei Quantum Damage-ics
 

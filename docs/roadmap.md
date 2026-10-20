@@ -2,7 +2,7 @@
 
 Was der Rechner als Nächstes lernt. Die genaue Abdeckung steht in [coverage.md](coverage.md).
 
-Stand: 2026-10-19
+Stand: 2026-10-20
 
 ## In Arbeit: Fähigkeiten und Supers (v1.0)
 
@@ -25,9 +25,14 @@ Stand: 2026-10-19
 - Well of Radiance: Der Waffenschaden des Casters zählt als Super-Schaden, die Dauer wächst mit dem Super-Stat
 - Golden Gun Marksman: Line 'Em Up bei Precision Hits
 - Fehlende Zeitwerte: Schussabstand von Golden Gun und Moebius Quiver, Flugzeit von Thundercrash
+- Radiant wirkt auch auf Golden Gun und Still Hunt (+20 %), Surges wirken nicht auf Golden Gun (laut Court)
+- Expanding Abyss: hebt Weaken auf 25 %, Tractor Cannon und Moebius auf 35 %, Deadfall auf 40 %
+- Melee-Buffs: addieren sich untereinander (laut Court), brauchen eigenen Bucket
+- Surge 1x (10 %) als Stufe
+- Import von Courts Stacking Guide mit Snapshot und Zitat-Check, wie beim Compendium
 
 ## Später (v1.x)
 
 - Builds im Browser speichern
-- Weitere exotische Waffen
+- Weitere exotische Waffen; dafür Archetype, Waffen-Stats und Perk-Pools aus dem Bungie-Manifest
 - Discord Bot

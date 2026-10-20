@@ -463,11 +463,10 @@
         "multiplier": {
           "value": 1.22,
           "source": {
-            "name": "Court Stacking Guide; Aegis Boss Damage (column Surge 1.220)",
+            "name": "Court Stacking Guide (Weapon Surges: surge stacks 1x/2x/3x/4x = 10%/17%/22%/25%, e.g. Eternal Warrior, Doom Fang Pauldron); Aegis Boss Damage (column Surge 1.220)",
             "url": "https://destiny2.science/court-sheet",
-            "retrieved": "2026-10-18",
-            "status": "unverified",
-            "note": "Derived: Court lists 22% for surges such as Fr0st-EE5, Aegis assumes 1.22. Not stated as 3x directly."
+            "retrieved": "2026-10-20",
+            "status": "verified"
           }
         },
         "damageSources": ["weapon"],
