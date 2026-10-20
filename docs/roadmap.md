@@ -17,7 +17,6 @@ Stand: 2026-10-20
 - ✅ Oberfläche: Donut „Schaden nach Quelle“ mit Waffenteilen und je einem Stück pro Ability (Name und Icon)
 - ✅ Oberfläche: Breakdown-Tabelle mit einer Spalte pro Quelle (Waffe und jede Ability) und dem Schaden pro Quelle
 - ✅ Oberfläche: Zeitleiste mit Fähigkeiten und schraffiertem Super Window, Einsatzzeiten einstellbar, weitere Einsätze über „+“
-- ⏳ Optimizer mit Fähigkeiten
 - ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
 
 ## Danach
@@ -37,6 +36,7 @@ Stand: 2026-10-20
 
 ## Später (v1.x)
 
+- Optimizer mit Fähigkeiten: probiert auch Super, Grenade und Melee (Plan: [plans/optimizer-abilities.md](plans/optimizer-abilities.md)). Bis dahin übernimmt er die gewählten Abilities.
 - Builds im Browser speichern
 - Weitere exotische Waffen; dafür Archetype, Waffen-Stats und Perk-Pools aus dem Bungie-Manifest
 - Discord Bot

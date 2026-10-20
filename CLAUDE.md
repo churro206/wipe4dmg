@@ -18,6 +18,7 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 - `docs/guides/abilities.md`: Ablauf zum Anlegen und Aktualisieren von Abilities (ADR 0009). Lies ihn vor Änderungen an `abilities.json`.
 - `docs/guides/measurements.md`: Ingame-Tests des Inhabers (Ember, Explosionen, Shot-Abstand, Particle Reconstruction, Radiant auf Golden Gun). Ergebnisse ins Messprotokoll, dann in Data Files und Gates.
 - `docs/coverage.md`: Abdeckung (generiert, nicht von Hand bearbeiten). Nach Änderungen an Data Files `npm run coverage` ausführen.
+- `docs/plans/`: Zurückgestellte Pläne, z. B. Optimizer mit Fähigkeiten.
 - `docs/roadmap.md`: Woran gearbeitet wird; Quelle für die Website (US-15). Nach jedem abgeschlossenen Schritt aktualisieren.
 
 ## Sprache
@@ -87,7 +88,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
     - ✅ Donut nach Damage Source (`damageShares`, 6c-1).
     - ✅ Breakdown-Tabelle pro Damage Source (6c-2).
     - ✅ Zeitleiste mit Ability-Zeilen und schraffiertem Super Window; Einsatzzeit einstellbar, weitere Casts über „+“ (6c-3). Damit ist 6c fertig.
-  - **6d, Optimizer:** probiert auch Super, Grenade und Melee.
+  - **6d, Optimizer mit Fähigkeiten:** auf v1.x verschoben (Inhaber, 2026-10-20). Plan in `docs/plans/optimizer-abilities.md`. Bis dahin übernimmt der Optimizer die gewählten Abilities.
   - **6e, Wiki-Reiter (ADR 0010):**
     - Abdeckung und Roadmap.
     - „Wie rechnet der Rechner?“ (`docs/mechanics/how-it-works.md`, neu).
