@@ -58,6 +58,7 @@ import { EffectPicker } from "./components/EffectPicker";
 import { Icon } from "./components/Icon";
 import { InfoTip } from "./components/InfoTip";
 import { OptimizerCards } from "./components/OptimizerCards";
+import { WikiView } from "./components/WikiView";
 import { AbilityCastEditor } from "./components/AbilityCastEditor";
 import { RotationEditor } from "./components/RotationEditor";
 import { SegmentedControl } from "./components/SegmentedControl";
@@ -85,6 +86,12 @@ const TABS = [
   { id: "optimizer", label: "Optimizer" },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
+// Calculator or wiki (US-15), switched in the header.
+const VIEWS = [
+  { value: "calculator", label: "Rechner" },
+  { value: "wiki", label: "Wiki" },
+] as const;
+type View = (typeof VIEWS)[number]["value"];
 
 // Number of builds the optimizer shows (US-08).
 const OPTIMIZER_LIMIT = 15;
@@ -144,6 +151,7 @@ function App() {
   const [comparison, setComparison] = useState(initial.comparison);
   const [copiedLink, setCopiedLink] = useState("");
   const [tab, setTab] = useState<TabId>("overview");
+  const [view, setView] = useState<View>("calculator");
   const [fireteamOpen, setFireteamOpen] = useState(() =>
     initial.selections.some(isFireteam),
   );
@@ -357,336 +365,383 @@ function App() {
             <h1>wipe4dmg</h1>
             <p>{weapon.name}</p>
           </div>
+          <SegmentedControl
+            label="Ansicht"
+            options={[...VIEWS]}
+            value={view}
+            onChange={setView}
+          />
         </header>
 
-        <section className="settings" aria-label="Build">
-          <div className="phase-row">
-            <label>
-              Damage Phase (s)
-              <input
-                type="number"
-                min="0"
-                step="any"
-                value={input}
-                onChange={(event) => {
-                  setInput(event.target.value);
-                  setBossId("");
-                }}
-              />
-            </label>
-            <label>
-              Boss
-              <select
-                value={bossId}
-                onChange={(event) => selectBoss(event.target.value)}
-              >
-                <option value="">– eigene Eingabe –</option>
-                {activities.map((activity) => (
-                  <optgroup key={activity} label={activity}>
-                    {bosses
-                      .filter((b) => b.activity === activity)
-                      .map((b) => (
-                        <option key={b.id} value={b.id}>
-                          {b.name} (
-                          {seconds.format(b.damagePhaseSeconds.value ?? NaN)} s)
-                        </option>
-                      ))}
-                  </optgroup>
-                ))}
-              </select>
-            </label>
-          </div>
-          {boss?.description && <p className="note">{boss.description}</p>}
-
-          <h2>Klasse</h2>
-          <SegmentedControl
-            label="Klasse"
-            options={(Object.keys(CLASS_LABELS) as GuardianClass[]).map(
-              (id) => ({ value: id, label: CLASS_LABELS[id] }),
-            )}
-            value={guardianClass}
-            onChange={changeClass}
-          />
-          <h2>Subklasse</h2>
-          <SegmentedControl
-            label="Subklasse"
-            options={(Object.keys(SUBCLASS_LABELS) as Subclass[]).map((id) => ({
-              value: id,
-              label: SUBCLASS_LABELS[id],
-              iconKey: `subclass:${guardianClass}:${id}`,
-            }))}
-            value={subclass}
-            onChange={changeSubclass}
-          />
-
-          <h2>
-            Fähigkeiten
-            <InfoTip>
-              Super, Grenade und Melee mit ihrem Stat. Der Schaden pro Einsatz
-              kommt meist als gemessener Wert von Aegis; über 100 erhöht jeder
-              Stat-Punkt den Schaden (Super +0,45 %, Grenade +0,65 %, Melee +0,3
-              %). Jede Fähigkeit wird zu Beginn der Damage Phase eingesetzt;
-              während eines Supers feuert die Waffe nicht.
-            </InfoTip>
-          </h2>
-          <AbilityPicker
-            slots={ABILITY_KINDS.map((kind) => ({
-              kind,
-              label: ABILITY_KIND_LABELS[kind],
-              options: abilitiesFor(abilities, kind, guardianClass, subclass),
-              selected: abilities.find(
-                (a) => a.id === abilityChoice[kind]?.abilityId,
-              ),
-              stat: abilityStatInputs[kind],
-              maxStat: MAX_ABILITY_STATS[kind],
-            }))}
-            openKind={openSlot}
-            aegisRows={aegisRows}
-            effects={effects}
-            onOpen={setOpenSlot}
-            onSelect={selectAbility}
-            onStat={(kind, value) =>
-              setAbilityStatInputs((current) => ({ ...current, [kind]: value }))
-            }
-          />
-
-          <h2>Waffe</h2>
-          <div className="tile-grid">
-            <span className="tile-wrap">
-              <button
-                type="button"
-                className="tile"
-                aria-pressed={catalyst}
-                onClick={() => setCatalyst((on) => !on)}
-              >
-                <Icon iconKey={`catalyst:${weapon.id}`} label="Katalysator" />
-                <span className="tile-label">Katalysator</span>
-              </button>
-            </span>
-          </div>
-
-          {OWN_PROVIDERS.map((provider) => {
-            const available = effectsFor(
-              effects,
-              provider,
-              guardianClass,
-              subclass,
-            ).filter((effect) => !GRANTED_EFFECT_IDS.has(effect.id));
-            if (available.length === 0) return null;
-            return (
-              <div key={provider}>
-                <h2>{PROVIDER_LABELS[provider]}</h2>
-                <EffectPicker
-                  effects={available}
-                  provider={provider}
-                  isSelected={(effect) => isSelected(effect, provider)}
-                  onToggle={(effect) => toggle(effect, provider)}
-                />
+        {view === "wiki" && <WikiView />}
+        {view === "calculator" && (
+          <>
+            <section className="settings" aria-label="Build">
+              <div className="phase-row">
+                <label>
+                  Damage Phase (s)
+                  <input
+                    type="number"
+                    min="0"
+                    step="any"
+                    value={input}
+                    onChange={(event) => {
+                      setInput(event.target.value);
+                      setBossId("");
+                    }}
+                  />
+                </label>
+                <label>
+                  Boss
+                  <select
+                    value={bossId}
+                    onChange={(event) => selectBoss(event.target.value)}
+                  >
+                    <option value="">– eigene Eingabe –</option>
+                    {activities.map((activity) => (
+                      <optgroup key={activity} label={activity}>
+                        {bosses
+                          .filter((b) => b.activity === activity)
+                          .map((b) => (
+                            <option key={b.id} value={b.id}>
+                              {b.name} (
+                              {seconds.format(
+                                b.damagePhaseSeconds.value ?? NaN,
+                              )}{" "}
+                              s)
+                            </option>
+                          ))}
+                      </optgroup>
+                    ))}
+                  </select>
+                </label>
               </div>
-            );
-          })}
+              {boss?.description && <p className="note">{boss.description}</p>}
 
-          <details
-            className="fireteam"
-            open={fireteamOpen}
-            onToggle={(event) => setFireteamOpen(event.currentTarget.open)}
-          >
-            <summary>
-              {PROVIDER_LABELS.fireteamSupport}
-              {fireteamSelections.length > 0 &&
-                ` (${fireteamSelections.length} gewählt)`}
-            </summary>
-            <EffectPicker
-              effects={effectsFor(effects, "fireteamSupport", guardianClass)}
-              provider="fireteamSupport"
-              isSelected={(effect) => isSelected(effect, "fireteamSupport")}
-              onToggle={(effect) => toggle(effect, "fireteamSupport")}
-            />
-          </details>
-        </section>
-
-        <section className="results" aria-label="Ergebnis">
-          <div className="results-head">
-            {result ? (
-              <SummaryBar
-                rows={compareResults(result, comparisonResult ?? result)}
-                withComparison={comparisonResult !== null}
+              <h2>Klasse</h2>
+              <SegmentedControl
+                label="Klasse"
+                options={(Object.keys(CLASS_LABELS) as GuardianClass[]).map(
+                  (id) => ({ value: id, label: CLASS_LABELS[id] }),
+                )}
+                value={guardianClass}
+                onChange={changeClass}
               />
-            ) : (
-              <p className="result">
-                Gib eine Damage Phase ein oder wähle einen Boss.
-              </p>
-            )}
-            <div className="toolbar">
-              <button type="button" onClick={copyLink} disabled={!link}>
-                {copiedLink !== "" && copiedLink === link
-                  ? "Link kopiert"
-                  : "Link kopieren"}
-              </button>
-              {comparison ? (
-                <button type="button" onClick={() => setComparison(null)}>
-                  Vergleich entfernen
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setComparison(currentBuild)}
-                  disabled={!isValid}
-                >
-                  Als Vergleich festhalten
-                </button>
-              )}
-              <InfoTip>
-                Effects wirken in ihrem Zeitfenster aus der Rotation. Ignitions
-                und Taken Seeker sind enthalten, Burn-Schaden noch nicht.
-              </InfoTip>
-            </div>
-            {initial.message && <p className="note">{initial.message}</p>}
-          </div>
+              <h2>Subklasse</h2>
+              <SegmentedControl
+                label="Subklasse"
+                options={(Object.keys(SUBCLASS_LABELS) as Subclass[]).map(
+                  (id) => ({
+                    value: id,
+                    label: SUBCLASS_LABELS[id],
+                    iconKey: `subclass:${guardianClass}:${id}`,
+                  }),
+                )}
+                value={subclass}
+                onChange={changeSubclass}
+              />
 
-          {result && (
-            <Tabs tabs={[...TABS]} active={tab} onChange={setTab}>
-              {tab === "overview" && (
-                <>
-                  {comparison && comparisonResult && (
-                    <div className="comparison">
-                      <p className="note">
-                        Vergleich: {describeBuild(comparison)}. Gleiche Damage
-                        Phase ({seconds.format(damagePhaseSeconds)} s).
-                      </p>
-                      <CompareCurveChart
-                        current={damageCurve(result, damagePhaseSeconds)}
-                        comparison={damageCurve(
-                          comparisonResult,
-                          damagePhaseSeconds,
-                        )}
-                      />
-                    </div>
-                  )}
-                  {result.totalDamage > 0 && (
-                    <DamageShareChart
-                      entries={damageShares(result)}
-                      abilityName={(id) =>
-                        abilities.find((a) => a.id === id)?.name ?? id
-                      }
+              <h2>
+                Fähigkeiten
+                <InfoTip>
+                  Super, Grenade und Melee mit ihrem Stat. Der Schaden pro
+                  Einsatz kommt meist als gemessener Wert von Aegis; über 100
+                  erhöht jeder Stat-Punkt den Schaden (Super +0,45 %, Grenade
+                  +0,65 %, Melee +0,3 %). Jede Fähigkeit wird zu Beginn der
+                  Damage Phase eingesetzt; während eines Supers feuert die Waffe
+                  nicht.
+                </InfoTip>
+              </h2>
+              <AbilityPicker
+                slots={ABILITY_KINDS.map((kind) => ({
+                  kind,
+                  label: ABILITY_KIND_LABELS[kind],
+                  options: abilitiesFor(
+                    abilities,
+                    kind,
+                    guardianClass,
+                    subclass,
+                  ),
+                  selected: abilities.find(
+                    (a) => a.id === abilityChoice[kind]?.abilityId,
+                  ),
+                  stat: abilityStatInputs[kind],
+                  maxStat: MAX_ABILITY_STATS[kind],
+                }))}
+                openKind={openSlot}
+                aegisRows={aegisRows}
+                effects={effects}
+                onOpen={setOpenSlot}
+                onSelect={selectAbility}
+                onStat={(kind, value) =>
+                  setAbilityStatInputs((current) => ({
+                    ...current,
+                    [kind]: value,
+                  }))
+                }
+              />
+
+              <h2>Waffe</h2>
+              <div className="tile-grid">
+                <span className="tile-wrap">
+                  <button
+                    type="button"
+                    className="tile"
+                    aria-pressed={catalyst}
+                    onClick={() => setCatalyst((on) => !on)}
+                  >
+                    <Icon
+                      iconKey={`catalyst:${weapon.id}`}
+                      label="Katalysator"
                     />
+                    <span className="tile-label">Katalysator</span>
+                  </button>
+                </span>
+              </div>
+
+              {OWN_PROVIDERS.map((provider) => {
+                const available = effectsFor(
+                  effects,
+                  provider,
+                  guardianClass,
+                  subclass,
+                ).filter((effect) => !GRANTED_EFFECT_IDS.has(effect.id));
+                if (available.length === 0) return null;
+                return (
+                  <div key={provider}>
+                    <h2>{PROVIDER_LABELS[provider]}</h2>
+                    <EffectPicker
+                      effects={available}
+                      provider={provider}
+                      isSelected={(effect) => isSelected(effect, provider)}
+                      onToggle={(effect) => toggle(effect, provider)}
+                    />
+                  </div>
+                );
+              })}
+
+              <details
+                className="fireteam"
+                open={fireteamOpen}
+                onToggle={(event) => setFireteamOpen(event.currentTarget.open)}
+              >
+                <summary>
+                  {PROVIDER_LABELS.fireteamSupport}
+                  {fireteamSelections.length > 0 &&
+                    ` (${fireteamSelections.length} gewählt)`}
+                </summary>
+                <EffectPicker
+                  effects={effectsFor(
+                    effects,
+                    "fireteamSupport",
+                    guardianClass,
                   )}
-                  <DamageCurveChart
-                    points={damageCurve(result, damagePhaseSeconds)}
-                  />
-                  <DpsByLengthChart
-                    points={dpsPoints}
-                    currentSeconds={damagePhaseSeconds}
-                  />
-                </>
-              )}
-
-              {tab === "rotation" && (
-                <>
-                  <RotationTimeline
-                    rows={windows.map((w) => {
-                      const effect = selected.find((e) => e.id === w.effectId)!;
-                      return {
-                        ...w,
-                        label: effect.shortName,
-                        iconUrl: iconUrl(`effect:${effect.id}`),
-                      };
-                    })}
-                    abilityRows={castRows.map(({ ability, castsMs }) => ({
-                      label: ability.name,
-                      iconUrl: iconUrl(`ability:${ability.id}`),
-                      kind: ability.kind,
-                      castsMs,
-                      windows: result.superWindows.filter(
-                        (w) => w.abilityId === ability.id,
-                      ),
-                    }))}
-                    shotsMs={result.shots.map((s) => s.timeMs)}
-                    ignitionsMs={result.damageInstances
-                      .filter((d) => d.id === "ignition")
-                      .map((d) => d.timeMs)}
-                    damagePhaseSeconds={damagePhaseSeconds}
-                  />
-                  <RotationEditor
-                    effects={ownSelected}
-                    windowInputOf={(effect) =>
-                      windowInputs[effect.id] ?? defaultWindow(effect)
-                    }
-                    uptimeOf={(effect) =>
-                      windows.find((w) => w.effectId === effect.id)?.uptime
-                    }
-                    onChange={setWindow}
-                  />
-                  <AbilityCastEditor
-                    rows={castRows}
-                    onChange={(ability, index, value) =>
-                      updateCasts(ability.kind, (casts) =>
-                        setCast(casts, index, value * 1000, damagePhaseSeconds * 1000),
-                      )
-                    }
-                    onAdd={(ability) =>
-                      updateCasts(ability.kind, (casts) =>
-                        addCast(casts, damagePhaseSeconds * 1000, CAST_GAP_MS),
-                      )
-                    }
-                    onRemove={(ability, index) =>
-                      updateCasts(ability.kind, (casts) => removeCast(casts, index))
-                    }
-                  />
-                </>
-              )}
-
-              {tab === "breakdown" && (
-                <BreakdownPanel
-                  result={result}
-                  damagePhaseSeconds={damagePhaseSeconds}
-                  selected={selected}
-                  options={options}
+                  provider="fireteamSupport"
+                  isSelected={(effect) => isSelected(effect, "fireteamSupport")}
+                  onToggle={(effect) => toggle(effect, "fireteamSupport")}
                 />
-              )}
+              </details>
+            </section>
 
-              {tab === "optimizer" && (
-                <>
-                  <div className="toolbar">
+            <section className="results" aria-label="Ergebnis">
+              <div className="results-head">
+                {result ? (
+                  <SummaryBar
+                    rows={compareResults(result, comparisonResult ?? result)}
+                    withComparison={comparisonResult !== null}
+                  />
+                ) : (
+                  <p className="result">
+                    Gib eine Damage Phase ein oder wähle einen Boss.
+                  </p>
+                )}
+                <div className="toolbar">
+                  <button type="button" onClick={copyLink} disabled={!link}>
+                    {copiedLink !== "" && copiedLink === link
+                      ? "Link kopiert"
+                      : "Link kopieren"}
+                  </button>
+                  {comparison ? (
+                    <button type="button" onClick={() => setComparison(null)}>
+                      Vergleich entfernen
+                    </button>
+                  ) : (
                     <button
                       type="button"
-                      onClick={runOptimizer}
-                      disabled={optimizing}
+                      onClick={() => setComparison(currentBuild)}
+                      disabled={!isValid}
                     >
-                      {optimizing ? "Rechnet …" : "Optimizer starten"}
+                      Als Vergleich festhalten
                     </button>
-                    <InfoTip>
-                      Probiert alle erlaubten Kombinationen deiner eigenen
-                      Effects für {CLASS_LABELS[guardianClass]} in allen
-                      Subklassen. Fireteam Support und seine Zeitfenster bleiben
-                      wie eingestellt, eigene Effects laufen mit ihrer
-                      Standarddauer. Effects ohne Nutzen lässt er weg.
-                    </InfoTip>
-                  </div>
-                  {optimizer && optimizer.forKey !== optimizerKey && (
-                    <p className="note">
-                      Die Liste gilt für einen früheren Stand. Starte den
-                      Optimizer neu.
-                    </p>
                   )}
-                  {optimizer && (
-                    <OptimizerCards
-                      entries={optimizer.entries}
-                      guardianClass={guardianClass}
-                      currentTotal={result.totalDamage}
-                      onApply={(entry) => {
-                        setSubclass(entry.subclass);
-                        setSelections(entry.selections);
-                        setAbilityChoice(choiceOf(entry));
-                      }}
-                      onCompare={(entry) => setComparison(buildOf(entry))}
+                  <InfoTip>
+                    Effects wirken in ihrem Zeitfenster aus der Rotation.
+                    Ignitions und Taken Seeker sind enthalten, Burn-Schaden noch
+                    nicht.
+                  </InfoTip>
+                </div>
+                {initial.message && <p className="note">{initial.message}</p>}
+              </div>
+
+              {result && (
+                <Tabs tabs={[...TABS]} active={tab} onChange={setTab}>
+                  {tab === "overview" && (
+                    <>
+                      {comparison && comparisonResult && (
+                        <div className="comparison">
+                          <p className="note">
+                            Vergleich: {describeBuild(comparison)}. Gleiche
+                            Damage Phase ({seconds.format(damagePhaseSeconds)}{" "}
+                            s).
+                          </p>
+                          <CompareCurveChart
+                            current={damageCurve(result, damagePhaseSeconds)}
+                            comparison={damageCurve(
+                              comparisonResult,
+                              damagePhaseSeconds,
+                            )}
+                          />
+                        </div>
+                      )}
+                      {result.totalDamage > 0 && (
+                        <DamageShareChart
+                          entries={damageShares(result)}
+                          abilityName={(id) =>
+                            abilities.find((a) => a.id === id)?.name ?? id
+                          }
+                        />
+                      )}
+                      <DamageCurveChart
+                        points={damageCurve(result, damagePhaseSeconds)}
+                      />
+                      <DpsByLengthChart
+                        points={dpsPoints}
+                        currentSeconds={damagePhaseSeconds}
+                      />
+                    </>
+                  )}
+
+                  {tab === "rotation" && (
+                    <>
+                      <RotationTimeline
+                        rows={windows.map((w) => {
+                          const effect = selected.find(
+                            (e) => e.id === w.effectId,
+                          )!;
+                          return {
+                            ...w,
+                            label: effect.shortName,
+                            iconUrl: iconUrl(`effect:${effect.id}`),
+                          };
+                        })}
+                        abilityRows={castRows.map(({ ability, castsMs }) => ({
+                          label: ability.name,
+                          iconUrl: iconUrl(`ability:${ability.id}`),
+                          kind: ability.kind,
+                          castsMs,
+                          windows: result.superWindows.filter(
+                            (w) => w.abilityId === ability.id,
+                          ),
+                        }))}
+                        shotsMs={result.shots.map((s) => s.timeMs)}
+                        ignitionsMs={result.damageInstances
+                          .filter((d) => d.id === "ignition")
+                          .map((d) => d.timeMs)}
+                        damagePhaseSeconds={damagePhaseSeconds}
+                      />
+                      <RotationEditor
+                        effects={ownSelected}
+                        windowInputOf={(effect) =>
+                          windowInputs[effect.id] ?? defaultWindow(effect)
+                        }
+                        uptimeOf={(effect) =>
+                          windows.find((w) => w.effectId === effect.id)?.uptime
+                        }
+                        onChange={setWindow}
+                      />
+                      <AbilityCastEditor
+                        rows={castRows}
+                        onChange={(ability, index, value) =>
+                          updateCasts(ability.kind, (casts) =>
+                            setCast(
+                              casts,
+                              index,
+                              value * 1000,
+                              damagePhaseSeconds * 1000,
+                            ),
+                          )
+                        }
+                        onAdd={(ability) =>
+                          updateCasts(ability.kind, (casts) =>
+                            addCast(
+                              casts,
+                              damagePhaseSeconds * 1000,
+                              CAST_GAP_MS,
+                            ),
+                          )
+                        }
+                        onRemove={(ability, index) =>
+                          updateCasts(ability.kind, (casts) =>
+                            removeCast(casts, index),
+                          )
+                        }
+                      />
+                    </>
+                  )}
+
+                  {tab === "breakdown" && (
+                    <BreakdownPanel
+                      result={result}
+                      damagePhaseSeconds={damagePhaseSeconds}
+                      selected={selected}
+                      options={options}
                     />
                   )}
-                </>
+
+                  {tab === "optimizer" && (
+                    <>
+                      <div className="toolbar">
+                        <button
+                          type="button"
+                          onClick={runOptimizer}
+                          disabled={optimizing}
+                        >
+                          {optimizing ? "Rechnet …" : "Optimizer starten"}
+                        </button>
+                        <InfoTip>
+                          Probiert alle erlaubten Kombinationen deiner eigenen
+                          Effects für {CLASS_LABELS[guardianClass]} in allen
+                          Subklassen. Fireteam Support und seine Zeitfenster
+                          bleiben wie eingestellt, eigene Effects laufen mit
+                          ihrer Standarddauer. Effects ohne Nutzen lässt er weg.
+                        </InfoTip>
+                      </div>
+                      {optimizer && optimizer.forKey !== optimizerKey && (
+                        <p className="note">
+                          Die Liste gilt für einen früheren Stand. Starte den
+                          Optimizer neu.
+                        </p>
+                      )}
+                      {optimizer && (
+                        <OptimizerCards
+                          entries={optimizer.entries}
+                          guardianClass={guardianClass}
+                          currentTotal={result.totalDamage}
+                          onApply={(entry) => {
+                            setSubclass(entry.subclass);
+                            setSelections(entry.selections);
+                            setAbilityChoice(choiceOf(entry));
+                          }}
+                          onCompare={(entry) => setComparison(buildOf(entry))}
+                        />
+                      )}
+                    </>
+                  )}
+                </Tabs>
               )}
-            </Tabs>
-          )}
-        </section>
+            </section>
+          </>
+        )}
       </main>
       <footer>
         Destiny-Inhalte und Icons © Bungie. Werte aus Community-Quellen (Quantum

@@ -1,6 +1,6 @@
 # Roadmap
 
-Was der Rechner als Nächstes lernt. Die genaue Abdeckung steht in [coverage.md](coverage.md).
+Was der Rechner als Nächstes lernt. Die genaue Abdeckung steht in der [Abdeckung](coverage.md).
 
 Stand: 2026-10-20
 
@@ -36,7 +36,7 @@ Stand: 2026-10-20
 
 ## Später (v1.x)
 
-- Optimizer mit Fähigkeiten: probiert auch Super, Grenade und Melee (Plan: [plans/optimizer-abilities.md](plans/optimizer-abilities.md)). Bis dahin übernimmt er die gewählten Abilities.
+- Optimizer mit Fähigkeiten: probiert auch Super, Grenade und Melee ([Plan](plans/optimizer-abilities.md)). Bis dahin übernimmt er die gewählten Abilities.
 - Builds im Browser speichern
 - Weitere exotische Waffen; dafür Archetype, Waffen-Stats und Perk-Pools aus dem Bungie-Manifest
 - Discord Bot

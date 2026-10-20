@@ -89,7 +89,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
     - ✅ Breakdown-Tabelle pro Damage Source (6c-2).
     - ✅ Zeitleiste mit Ability-Zeilen und schraffiertem Super Window; Einsatzzeit einstellbar, weitere Casts über „+“ (6c-3). Damit ist 6c fertig.
   - **6d, Optimizer mit Fähigkeiten:** auf v1.x verschoben (Inhaber, 2026-10-20). Plan in `docs/plans/optimizer-abilities.md`. Bis dahin übernimmt der Optimizer die gewählten Abilities.
-  - **6e, Wiki-Reiter (ADR 0010):**
+  - **6e, Wiki (ADR 0010):** 6e-1 erledigt: Schalter „Rechner | Wiki“ im Header, Markdown mit `marked`, Seiten aus `src/ui/wikiText.ts` (Abschnitt „Für Spieler“, Links ins Wiki). Offen:
     - Abdeckung und Roadmap.
     - „Wie rechnet der Rechner?“ (`docs/mechanics/how-it-works.md`, neu).
     - Abschnitte „Für Spieler“ in `docs/mechanics`.
@@ -99,7 +99,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
   - Kleine Schritte: Plan, Freigabe („ok“), Tests zuerst.
   - Nach jedem Schritt: Commit und Push.
   - Vor Datenarbeit eine Tabelle zur Freigabe zeigen.
-- **UI-Check:** `npx vite preview --port 4173` plus Headless Chrome über das DevTools-Protokoll. Die Fallstricke stehen im Memory „UI check with headless Chrome“. Die Prüfskripte lagen im Scratchpad und sind nicht im Repo.
+- **UI-Check:** `npm run build`, `npx vite preview --port 4173`, dann `node scripts/ui-check.mjs <url> <out.png> [--dark|--light] [--width 1400] [--click "Wiki"]`. Link-Parameter für Builds ist `?b=`.
 
 ## Befehle
 
