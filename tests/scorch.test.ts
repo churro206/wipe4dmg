@@ -137,3 +137,48 @@ describe("simulate: scorch and ignition", () => {
     expect(() => simulate(incomplete, 30)).toThrow(field);
   });
 });
+
+// In-game measurements of 2026-10-20 (docs/data-sources.md, Messprotokoll; docs/guides/measurements.md).
+describe("One Thousand Voices against the in-game measurements", () => {
+  const firstMagazine = (effectIds: string[]) => {
+    const result = simulate(
+      weapon,
+      LONG_DAMAGE_PHASE_SECONDS,
+      effectIds.map(byId),
+      buckets,
+    );
+    const lastShotMs = result.shots[3].timeMs;
+    // Explosions of the 4th shot come after it, so count until the next shot.
+    const endMs = result.shots[4].timeMs;
+    expect(lastShotMs).toBeLessThan(endMs);
+    return ignitionsOf(result).filter((d) => d.timeMs < endMs).length;
+  };
+
+  it("ignites 2 of 4 shots without Ember of Ashes (test 1)", () => {
+    expect(firstMagazine(["particle-reconstruction"])).toBe(2);
+  });
+
+  it("ignites 4 of 4 shots with Ember of Ashes (test 1)", () => {
+    expect(
+      firstMagazine(["particle-reconstruction", "ember-of-ashes"]),
+    ).toBe(4);
+  });
+
+  it("staggers the explosions of a shot (test 2)", () => {
+    expect(counterOf(weapon).intervalMs.value).toBeGreaterThan(0);
+  });
+
+  it("fires a shot about every 1.75 s (test 3: 1 s 45 frames)", () => {
+    const { shots } = simulate(
+      weapon,
+      LONG_DAMAGE_PHASE_SECONDS,
+      [byId("particle-reconstruction")],
+      buckets,
+    );
+    const measuredMs = 1750;
+    const oneFrameMs = 1000 / 60;
+    expect(Math.abs(shots[1].timeMs - shots[0].timeMs - measuredMs)).toBeLessThanOrEqual(
+      2 * oneFrameMs,
+    );
+  });
+});

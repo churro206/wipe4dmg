@@ -16,6 +16,10 @@ Diese Tests prüfen Annahmen, die heute nur durch ein Gate abgesichert sind (ADR
 
 Jeder Test dauert etwa 5 bis 10 Minuten. Test 1 ist der wichtigste.
 
+**Ergebnisse vom 2026-10-20** (Messprotokoll in `docs/data-sources.md`): Test 1 bestätigt (2/4, 4/4), Test 2 gestaffelt (etwa 30 bis 40 Frames), Test 3 1,75 s, Test 4 1,27, Test 5 1,20. Folge: Ignition-Cooldown 1,3 s statt 1,6 s, Shot-Abstand 1,733 s (Aegis).
+
+Nach ADR 0011, Regel 6 testen wir nur allgemeine Mechanics, keine einzelnen Waffen. Tests 2 und 3 waren einmalig, weil One Thousand Voices unsere Referenzwaffe ist.
+
 ---
 
 ## Test 1: Ignitions pro Magazin mit und ohne Ember of Ashes

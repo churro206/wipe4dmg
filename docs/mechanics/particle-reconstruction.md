@@ -21,7 +21,8 @@ Particle Reconstruction ist ein Artifact Perk (Tablet of Ruin) für Fusion Rifle
 | Debuff Stufe 1–5 | 5 % / 10,25 % / 15,8 % / 21,6 % / 27,6 % | Compendium „Artifact Perks“ | 9.7.0.x |
 | Debuff maximal | etwa 28 %, 10 s | Court | 9.7.0.3 |
 | Nachladung | 10 % des Magazins, aufgerundet | Compendium „Artifact Perks“ | 9.7.0.x |
-| One Thousand Voices: Shot-Abstand mit dem Perk | 1,733 s | Aegis (peak Rate) | 9.7.0.3 |
+| One Thousand Voices: Shot-Abstand mit dem Perk | 1,733 s; gemessen 1,75 s (1 s 45 Frames) | Aegis (peak Rate); eigene Messung 2026-10-20 | 9.7.0.3 |
+| Debuff auf Ignitions | ja, Ignition mit ÷ ohne Perk = 1,27 | eigene Messung 2026-10-20 | 9.7.0.x |
 | One Thousand Voices: Zeit bis leer mit dem Perk | 18,33 s | Aegis (TtE) | 9.7.0.3 |
 | Divinity überschreibt den Debuff | 15 % | Court; Compendium „Artifact Perks“ (abgerufen 2026-10-20) | 9.7.0.3 |
 | Debuff in Aegis-Zeilen von One Thousand Voices | pauschal ×1,30, nicht 27,6 % | Aegis „Weapons“ | 9.7.0.3 |
@@ -41,7 +42,7 @@ Abgebildet seit v0.5 Schritt 3 (`src/data/effects.json`, Effect `particle-recons
 ## Offene Fragen
 
 - [ ] Wie schnell erreicht One Thousand Voices die Stufe 5? Keine Quelle sagt, ob ein Stack pro Beam-Tick, Explosion oder Shot kommt (2026-10-20). Die Stufen sind genau 1,05^n − 1. Wahrscheinlich ein Stack pro Treffer, dann ist Stufe 5 nach etwa 0,3 s erreicht; unsere Vereinfachung „immer Stufe 5“ kostet höchstens einige Beam-Ticks. Ingame-Test: Beam-Ticks eines Shots frameweise ablesen, steigen sie um je 5 %?
-- [ ] Ist der Shot-Abstand mit dem Perk wirklich kürzer (Aegis 1,733 s), oder messen Aegis und Quantum (1,818 s) nur verschieden? Kein Hinweis, dass der Perk die Feuerrate ändert (2026-10-20). Aegis: 1,733 s sind genau 104 Frames bei 60 fps, TtE 18,33 s = 1,0 s + 10 × 1,733 s. Quantum: „33 rpm“ ist gerundet (60 / 33 = 1,818 s), Stand 2024/25. Vermutlich ist Aegis genauer. Ingame-Test: Frames zwischen Beam-Starts über 10 Shots.
+- [x] Shot-Abstand: Aegis 1,733 s stimmt, gemessen 1,75 s (2026-10-20). Quantum (1,818 s) rundet auf 33 RPM. Das Modell nutzt seit 2026-10-20 1,733 s.
 - [x] Nach welcher Zahl von Treffern lädt One Thousand Voices nach? Geklärt mit mittlerem bis hohem Vertrauen (2026-10-20): Alte Regel (Heresy) „50 % des Magazins, abgerundet, +1“ Treffer, bei 4 Schuss also 3 Treffer. Ein Shot hat 19 Treffer, das Magazin bleibt voll. Frühere Notiz: Aegis misst 11 Shots ohne Reload. Die Compendium-Regel (10 % des Magazins pro Auslösung, aufgerundet, also 1 Schuss) passt dazu, wenn ein Shot mit seinen 10 Beam-Ticks mindestens eine Auslösung bringt. Eine weitere Quelle haben wir nicht gefunden (Web-Suche 2026-10-18).
 
 ## Quellen

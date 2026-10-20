@@ -23,7 +23,7 @@ Damage-Buffs gehören zu Kategorien (bei uns: Buckets). Innerhalb einer Kategori
 10. **Weaken verlängert 30-%-Debuffs:** Die Debuffs von Felwinter's Helm, Fafnir und Tractor Cannon lassen sich durch die meisten Weaken-Quellen verlängern, z. B. durch eine Void Soul. Tether funktioniert anders und lässt sich nicht verlängern. (Court)
 11. **Expanding Abyss** (Artifact Perk) hebt Weaken an: 15 → 25 %, 30 → 35 %, 35 → 40 %. Nur Void-Schaden, Divinity bleibt bei 15 %. (Court; noch nicht im Modell)
 12. **Buffs auf Supers** (geprüft 2026-10-20):
-    - Radiant erhöht Golden Gun (Deadshot, Marksman, mit Celestial Nighthawk) um 20 % (Court; Compendium: „Also affects Golden Gun's Damage“).
+    - Radiant erhöht Golden Gun (Deadshot, Marksman, mit Celestial Nighthawk) um 20 % (Court; Compendium: „Also affects Golden Gun's Damage“). Gemessen 2026-10-20: 1,20.
     - Well of Radiance wirkt auf Golden Gun nur als Radiant, also 20 % statt 25 %: „When fired inside a Well of Radiance, Golden Gun now counts as Radiant for increased damage“ (Bungie, Update 9.5.0, Dezember 2025).
     - Surges, Elemental Overdrive und Weapons Stat wirken nicht auf Supers. Laut Compendium gelten sie nur für Waffenschaden. Aegis lässt die Spalte Surge bei allen Supers leer.
     - Still Hunt ist kein Super, sondern Waffenschaden („Golden Gun Mode is NOT a Super Ability for any purposes“, Compendium). Er bekommt alle Waffen-Buffs, auch Solar Surge und Weapons Stat.

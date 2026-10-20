@@ -82,7 +82,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
   - Neue Regel (ADR 0011): Quellen nur als Verhältnis mischen, abgeleitete Werte nur mit Gate.
 - **Erkenntnis:** Compendium-Teile haben das Gate bisher nicht bestanden (Thundercrash −12,5 %, Anzahl der Aftershocks unklar). Deshalb sind fast alle Abilities Pakete.
 - **Nächste Schritte (Masterplan):**
-  - **Korrekturen nach ADR 0011:** erledigt (Gate `tests/weaponEffectGate.test.ts`, Ember, Katalysator, Golden Gun). Ingame-Tests stehen in `docs/guides/measurements.md` (Inhaber hat keinen Katalysator).
+  - **Korrekturen nach ADR 0011:** erledigt (Gate `tests/weaponEffectGate.test.ts`, Ember, Katalysator, Golden Gun). Ingame-Tests vom 2026-10-20 eingearbeitet (Cooldown 1,3 s, Shot-Abstand 1,733 s, Explosionen gestaffelt). Regel (ADR 0011, 5 und 6): Waffen als Paket, Ingame-Tests nur für allgemeine Mechanics. Der Inhaber hat keinen Katalysator.
   - **6c, Ergebnis:**
     - Donut nach Damage Source; heute zeigt er noch „hammer-of-sol.package“.
     - Breakdown-Tabelle pro Damage Source.

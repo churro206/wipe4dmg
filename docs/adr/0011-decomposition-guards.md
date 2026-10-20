@@ -21,6 +21,9 @@ ADR 0009 schützt Abilities schon mit einem Gate gegen Aegis. Für Waffen und ih
 3. **Abgeleitete Werte nur mit Gate:** Ein selbst abgeleiteter Wert (Status `unverified` mit „Derived“ in der Notiz) darf nur in die Rechnung, wenn ein Gate ihn abdeckt. Sonst bleibt er `missing`, und das Modell nutzt die einfachste Annahme, die das Gate besteht.
 4. **Lückenregeln stehen in der Mechanic-Datei.** Ergänzen wir eine Regel, die keine Quelle nennt (z. B. was mit Seekern über der Grenze passiert), steht sie als Annahme unter „Modell im Simulator“ und hat ein Gate.
 
+5. **Waffen kommen als Paket** (Ergänzung 2026-10-20): Schaden pro Shot, Shots und Timing aus Aegis und Quantum, Perks und Katalysatoren als Faktoren aus deren „mit / ohne“-Zeilen. Eine Waffe wird nur zerlegt, wenn ihr Intrinsic mit Build-Entscheidungen zusammenspielt (z. B. One Thousand Voices mit Scorch und Ember of Ashes); auch dann gilt das Gate gegen die Quellen.
+6. **Ingame-Tests nur für allgemeine Mechanics**, die viele Waffen oder Abilities betreffen (z. B. Ignition-Cooldown, Particle Reconstruction, Radiant, Surges). Keine Tests pro Waffe. Ablauf: `docs/guides/measurements.md`.
+
 ## Folgen
 
 - Zerlegen bleibt das Ziel. Das Gate sagt, wann eine Zerlegung gut genug ist.

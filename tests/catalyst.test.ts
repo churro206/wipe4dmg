@@ -106,13 +106,13 @@ describe("simulate: catalyst (Taken Seeker)", () => {
       buckets,
       CATALYST,
     );
-    const firstShot = result.shots[0].timeMs;
-    const impactsDuringFirstShot = seekerInstances(result).filter(
+    const nextShot = result.shots[1].timeMs;
+    const impactsOfFirstShot = seekerInstances(result).filter(
       (d) =>
         d.damage === scaled(seeker, seeker.impactDamage.value) &&
-        d.timeMs < firstShot + 1000,
+        d.timeMs < nextShot,
     );
-    expect(impactsDuringFirstShot).toHaveLength(
+    expect(impactsOfFirstShot).toHaveLength(
       seeker.applicationsPerTrigger.value!,
     );
   });
@@ -125,15 +125,31 @@ describe("simulate: catalyst (Taken Seeker)", () => {
       buckets,
       CATALYST,
     );
-    const tickDamage = scaled(seeker, seeker.tickDamage.value);
-    const ticksByTime = new Map<number, number>();
-    for (const d of seekerInstances(result)) {
-      if (d.damage !== tickDamage) continue;
-      ticksByTime.set(d.timeMs, (ticksByTime.get(d.timeMs) ?? 0) + 1);
-    }
-    expect(Math.max(...ticksByTime.values())).toBe(
-      seeker.maxActivePerTarget.value!,
+    // A seeker ticks if a tick follows its impact after the first tick delay; it is active
+    // from its impact to its last tick.
+    const instances = seekerInstances(result);
+    const tickTimes = new Set(
+      instances
+        .filter((d) => d.damage === scaled(seeker, seeker.tickDamage.value))
+        .map((d) => d.timeMs),
     );
+    const firstTickDelay = seeker.firstTickDelayMs.value!;
+    const lastTickDelay =
+      firstTickDelay + (seeker.ticks.value! - 1) * seeker.tickIntervalMs.value!;
+    const ticking = instances
+      .filter(
+        (d) =>
+          d.damage === scaled(seeker, seeker.impactDamage.value) &&
+          tickTimes.has(d.timeMs + firstTickDelay),
+      )
+      .map((d) => [d.timeMs, d.timeMs + lastTickDelay] as const);
+    const mostActive = Math.max(
+      ...ticking.map(
+        ([start]) =>
+          ticking.filter(([from, to]) => from <= start && start <= to).length,
+      ),
+    );
+    expect(mostActive).toBe(seeker.maxActivePerTarget.value!);
   });
 
   it("converts seeker damage to the main source's scale", () => {
