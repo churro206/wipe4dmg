@@ -1,6 +1,6 @@
 {
   "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
-  "retrieved": "2026-10-19",
+  "retrieved": "2026-10-20",
   "icons": {
     "ability:arc-staff": "icons/item-3769507633.png",
     "ability:arcane-needle": "icons/item-2307689415.png",
@@ -91,9 +91,6 @@
     "effect:moebius-tether": "icons/item-2722573681.png",
     "effect:particle-reconstruction": "icons/item-1319563991.png",
     "effect:radiant": "icons/trait-157469667.png",
-    "effect:solar-surge-2x": "icons/item-2283894334.png",
-    "effect:solar-surge-3x": "icons/item-2283894334.png",
-    "effect:solar-surge-4x": "icons/item-2283894334.png",
     "effect:tractor-cannon": "icons/item-3580904581.jpg",
     "effect:weaken": "icons/trait-3336638905.png",
     "effect:weapons-stat-200": "icons/stat-2996146975.png",
@@ -116,6 +113,12 @@
     "subclass:warlock:stasis": "icons/item-3291545503.png",
     "subclass:warlock:strand": "icons/item-4204413574.png",
     "subclass:warlock:void": "icons/item-2849050827.png",
+    "surge:arc": "icons/item-2246316031.png",
+    "surge:kinetic": "icons/item-2318667184.png",
+    "surge:solar": "icons/item-2283894334.png",
+    "surge:stasis": "icons/item-2526922422.png",
+    "surge:strand": "icons/item-1501094193.png",
+    "surge:void": "icons/item-3914973263.png",
     "weapon:one-thousand-voices": "icons/item-2069224589.jpg"
   }
 }

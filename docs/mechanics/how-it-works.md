@@ -32,12 +32,12 @@ Buffs gehören zu **Buckets**. Die Regel:
 - **Im selben Bucket** zählt meist nur der stärkste Buff. Radiant (+20 %) und Well of Radiance (+25 %) zusammen ergeben +25 %, nicht +45 %.
 - **Verschiedene Buckets** werden miteinander **multipliziert**.
 
-Beispiel mit Well of Radiance (Empowering Buff, ×1,25), Weaken (Debuff, ×1,15) und Solar Surge 4x (Surge, ×1,25):
+Beispiel mit Well of Radiance (Empowering Buff, ×1,25), Weaken (Debuff, ×1,15) und Surge 3x (Surge, ×1,22):
 
 | Rechnung | Ergebnis |
 | --- | --- |
-| richtig: 1,25 × 1,15 × 1,25 | **×1,80** |
-| falsch: +25 % + 15 % + 25 % addiert | ×1,65 |
+| richtig: 1,25 × 1,15 × 1,22 | **×1,75** |
+| falsch: +25 % + 15 % + 22 % addiert | ×1,62 |
 
 Im Reiter „Breakdown“ siehst du für jeden Bucket, wie viel er zum Total Damage beiträgt. Mehr dazu steht unter [Damage Stacking](damage-stacking.md).
 

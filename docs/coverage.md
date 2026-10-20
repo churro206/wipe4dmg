@@ -131,9 +131,9 @@ Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen 
 | Tractor Cannon | debuff | debuff +30 % | weapon, grenade, melee, super | 10 s |
 | Moebius Tether | debuff | debuff +30 % | weapon, grenade, melee, super | 6 s |
 | Deadfall Tether | debuff | debuff +35 % | weapon, grenade, melee, super | 12 s |
-| Solar Surge 2x | surge | surge +17 % | weapon | ganze Phase oder Rotation |
-| Solar Surge 3x | surge | surge +22 % | weapon | ganze Phase oder Rotation |
-| Solar Surge 4x | surge | surge +25 % | weapon | ganze Phase oder Rotation |
+| Surge 1x | surge | surge +10 % | weapon | ganze Phase oder Rotation |
+| Surge 2x | surge | surge +17 % | weapon | ganze Phase oder Rotation |
+| Surge 3x | surge | surge +22 % | weapon | ganze Phase oder Rotation |
 | Weapons stat 200 (power weapons against bosses) | amplification | amplification +10 % | weapon | ganze Phase oder Rotation |
 | Elemental Overdrive (solar pickup) | amplification | amplification +22 % | weapon | 7 s |
 | Particle Reconstruction | –, debuff | Timing: noReload; debuff +27.6 % | weapon | ganze Phase oder Rotation |

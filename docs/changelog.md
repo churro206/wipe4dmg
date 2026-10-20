@@ -2,6 +2,7 @@
 
 ## Unveröffentlicht (v1.0 in Arbeit)
 
+- Surges wie im Spiel: Surge 1x (neu, +10 %), 2x und 3x als Rüstungs-Mods, immer passend zum Element der Waffe; das Icon zeigt den Mod dieses Elements. Surge 4x gibt es nur über Exotic-Rüstung und ist entfernt, bis Exotic-Rüstung kommt. Alte Links mit Surge 4x öffnen mit Surge 3x und einem Hinweis.
 - Wiki (US-15): Schalter „Rechner | Wiki“ oben rechts. Startseite „Wie rechnet der Rechner?“ (Zeitachse, Buckets mit Beispiel, Quellen und Gates, Grenzen), dazu Abdeckung und Roadmap. Erklärungen zu einzelnen Mechanics folgen.
 - Fähigkeiten und Supers (US-14, ADR 0009):
   - Drei Plätze für Super, Grenade und Melee mit Ingame-Icons, passend zu Klasse und Subklasse inklusive Prismatic.

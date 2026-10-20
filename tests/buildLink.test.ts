@@ -28,14 +28,14 @@ const build: Build = {
   selections: [
     { effectId: "well-of-radiance", provider: "subclass" },
     { effectId: "ember-of-ashes", provider: "subclass" },
-    { effectId: "solar-surge-4x", provider: "armor" },
+    { effectId: "surge-3x", provider: "armor" },
     { effectId: "particle-reconstruction", provider: "artifact" },
     { effectId: "tractor-cannon", provider: "fireteamSupport" },
   ],
   effectWindows: {
     "well-of-radiance": { startMs: 0, durationMs: 30_000 },
     "ember-of-ashes": { startMs: 0 },
-    "solar-surge-4x": { startMs: 0 },
+    "surge-3x": { startMs: 0 },
     "particle-reconstruction": { startMs: 0 },
     "tractor-cannon": { startMs: 1500, durationMs: 10_000 },
   },
@@ -53,6 +53,7 @@ describe("encodeLink and decodeLink", () => {
       comparison: null,
       unknownEffectCodes: [],
       unknownAbilityCodes: [],
+      replacedEffectCodes: [],
     });
   });
 

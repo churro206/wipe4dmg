@@ -167,7 +167,7 @@ describe("simulate: effects", () => {
   it("multiplies the effects from the data file across buckets", () => {
     // The same set Aegis assumes for its "Single" column: surge, buff, debuff, Weapons stat 200.
     const chosen = [
-      "solar-surge-3x",
+      "surge-3x",
       "lumina-noble-rounds",
       "tractor-cannon",
       "weapons-stat-200",

@@ -75,7 +75,7 @@ import {
   iconUrl,
   weapon,
 } from "./data";
-import { PROVIDER_LABELS } from "./describe";
+import { effectIconKey, PROVIDER_LABELS } from "./describe";
 import { factor, integer, seconds } from "./format";
 
 const OWN_PROVIDERS: ProviderKind[] = ["subclass", "armor", "artifact"];
@@ -631,7 +631,9 @@ function App() {
                           return {
                             ...w,
                             label: effect.shortName,
-                            iconUrl: iconUrl(`effect:${effect.id}`),
+                            iconUrl: iconUrl(
+                              effectIconKey(effect, weapon.element),
+                            ),
                           };
                         })}
                         abilityRows={castRows.map(({ ability, castsMs }) => ({

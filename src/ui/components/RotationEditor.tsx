@@ -1,6 +1,8 @@
 import type { Effect } from "../../data/schema";
 import type { WindowInput } from "../buildState";
 import { percent } from "../format";
+import { weapon } from "../data";
+import { effectIconKey } from "../describe";
 import { Icon } from "./Icon";
 import { InfoTip } from "./InfoTip";
 
@@ -47,7 +49,7 @@ export function RotationEditor({
               <td>
                 <span className="cell-with-icon">
                   <Icon
-                    iconKey={`effect:${effect.id}`}
+                    iconKey={effectIconKey(effect, weapon.element)}
                     label={effect.shortName}
                     size={24}
                   />

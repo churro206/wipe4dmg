@@ -35,7 +35,7 @@ describe("canProvide", () => {
   });
 
   it("lets every class provide an effect without class restriction", () => {
-    const surge = byId("solar-surge-4x");
+    const surge = byId("surge-3x");
     for (const guardianClass of ["titan", "hunter", "warlock"] as const) {
       expect(canProvide(surge, "armor", guardianClass)).toBe(true);
     }

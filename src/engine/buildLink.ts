@@ -7,11 +7,13 @@
 //           ability count | per ability: ability code | cast count | cast times in ms |
 //           hasStats (0 or 1) | super stat | grenade stat | melee stat
 // Format 2 ends the build after the selections; it is still read.
-// Codes come from the Data Files and are never reused, so old links stay readable.
+// Codes come from the Data Files and are never reused, so old links stay readable. A removed
+// effect keeps its code as a former code of the effect that replaces it.
 // Pure functions without browser APIs, so the Discord bot (US-13) can read the same links.
 
 import {
   Build,
+  type FormerCodeReason,
   type GuardianClass,
   type ProviderKind,
   type Subclass,
@@ -40,7 +42,11 @@ const BASE64URL =
 
 export type LinkRegistry = {
   weapons: { id: string; code: number }[];
-  effects: { id: string; code: number }[];
+  effects: {
+    id: string;
+    code: number;
+    formerCodes?: { code: number; reason: FormerCodeReason }[];
+  }[];
   abilities: { id: string; code: number }[];
 };
 
@@ -54,6 +60,13 @@ export type DecodedLink = {
   comparison: Build | null;
   unknownEffectCodes: number[]; // effects of a newer version; skipped
   unknownAbilityCodes: number[]; // abilities of a newer version; skipped
+  replacedEffectCodes: ReplacedEffect[]; // former codes, read as their replacement
+};
+
+export type ReplacedEffect = {
+  code: number;
+  effectId: string;
+  reason: FormerCodeReason;
 };
 
 export function encodeLink(
@@ -79,7 +92,7 @@ export function decodeLink(text: string, registry: LinkRegistry): DecodedLink {
   if (!READABLE_VERSIONS.includes(version)) {
     throw new Error(`Build link: unknown version ${version}`);
   }
-  const unknown = { effects: [] as number[], abilities: [] as number[] };
+  const unknown: Unknown = { effects: [], abilities: [], replaced: [] };
   const build = readBuild(reader, registry, version, unknown);
   const comparison =
     reader.varint() === 1
@@ -91,6 +104,7 @@ export function decodeLink(text: string, registry: LinkRegistry): DecodedLink {
     comparison,
     unknownEffectCodes: unknown.effects,
     unknownAbilityCodes: unknown.abilities,
+    replacedEffectCodes: unknown.replaced,
   };
 }
 
@@ -135,7 +149,7 @@ function readBuild(
   reader: Reader,
   registry: LinkRegistry,
   version: number,
-  unknown: { effects: number[]; abilities: number[] },
+  unknown: Unknown,
 ): Build {
   const weaponCode = reader.varint();
   const weapon = registry.weapons.find((w) => w.code === weaponCode);
@@ -154,12 +168,21 @@ function readBuild(
     const startMs = reader.varint();
     const durationPlusOne = reader.varint();
     const effect = registry.effects.find((e) => e.code === code);
-    if (!effect) {
+    const former = effect
+      ? undefined
+      : registry.effects.flatMap((e) =>
+          (e.formerCodes ?? [])
+            .filter((f) => f.code === code)
+            .map((f) => ({ code, effectId: e.id, reason: f.reason })),
+        )[0];
+    if (!effect && !former) {
       unknown.effects.push(code);
       continue;
     }
-    selections.push({ effectId: effect.id, provider });
-    effectWindows[effect.id] =
+    if (former) unknown.replaced.push(former);
+    const effectId = effect?.id ?? former!.effectId;
+    selections.push({ effectId, provider });
+    effectWindows[effectId] =
       durationPlusOne === 0
         ? { startMs }
         : { startMs, durationMs: durationPlusOne - 1 };
@@ -178,6 +201,12 @@ function readBuild(
     ...abilityPart,
   });
 }
+
+type Unknown = {
+  effects: number[];
+  abilities: number[];
+  replaced: ReplacedEffect[];
+};
 
 function readAbilities(
   reader: Reader,

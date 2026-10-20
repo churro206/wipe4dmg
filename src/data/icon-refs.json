@@ -145,5 +145,47 @@
       "table": "DestinySandboxPerkDefinition",
       "hash": 860358313
     }
+  },
+  {
+    "key": "surge:kinetic",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2318667184
+    }
+  },
+  {
+    "key": "surge:arc",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2246316031
+    }
+  },
+  {
+    "key": "surge:solar",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2283894334
+    }
+  },
+  {
+    "key": "surge:void",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 3914973263
+    }
+  },
+  {
+    "key": "surge:stasis",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 2526922422
+    }
+  },
+  {
+    "key": "surge:strand",
+    "manifestRef": {
+      "table": "DestinyInventoryItemDefinition",
+      "hash": 1501094193
+    }
   }
 ]

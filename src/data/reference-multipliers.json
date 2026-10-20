@@ -3,7 +3,7 @@
     "id": "aegis-standard-assumptions",
     "description": "Aegis standard assumptions for One Thousand Voices: Surge 3x, 35% empowering buff, 30% debuff, Weapons stat 200, with Particle Reconstruction (overridden by the 30% debuff)",
     "effectIds": [
-      "solar-surge-3x",
+      "surge-3x",
       "lumina-noble-rounds",
       "tractor-cannon",
       "weapons-stat-200",

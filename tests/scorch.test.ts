@@ -106,7 +106,7 @@ describe("simulate: scorch and ignition", () => {
   });
 
   it("applies weapon multipliers to ignitions", () => {
-    const surge = byId("solar-surge-4x");
+    const surge = byId("surge-3x");
     const surgePart = surge.parts[0];
     if (surgePart.type !== "multiplier") throw new Error("expected multiplier");
     const ignitions = ignitionsOf(

@@ -1,8 +1,9 @@
 import type { GuardianClass } from "../../data/schema";
 import type { OptimizerEntry } from "../../engine/optimizer";
 import { effectsOf, SUBCLASS_LABELS } from "../buildState";
-import { levelBadge } from "../describe";
+import { levelBadge, effectIconKey } from "../describe";
 import { integer, signedPercent } from "../format";
+import { weapon } from "../data";
 import { Icon } from "./Icon";
 
 /**
@@ -48,7 +49,7 @@ export function OptimizerCards({
                 {own.map((effect) => (
                   <Icon
                     key={effect.id}
-                    iconKey={`effect:${effect.id}`}
+                    iconKey={effectIconKey(effect, weapon.element)}
                     label={effect.shortName}
                     size={28}
                     badge={levelBadge(effect.shortName)}

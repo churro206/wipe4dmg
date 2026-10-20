@@ -84,7 +84,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 | Empowering Buffs | Multiplier | Well of Radiance und Banner Shield 25 %, Empowering Rift 20 %, Radiant 20 %, einige Exotics 35 % | hoch | Court Stacking Guide | katalogisiert |
 | Weaken und Powerful Weaken | Multiplier (Debuff) | Weaken 15 %; Tractor Cannon, Felwinter's und Moebius Tether 30 %, Deadfall Tether 35 %; stärkere Weaken überschreiben schwächere | hoch | Court; Compendium „Void“ | katalogisiert |
 | Divinity | Multiplier (Debuff) | 15 %, Precision-Käfig; überschreibt Particle Reconstruction | hoch | Court | katalogisiert |
-| Weapon Surges | Multiplier (Surge) | 1x bis 4x Stacks pro Element; 4x = 25 %; Armor-Mods brauchen Armor Charge; gleiches Element stapelt nicht, der höchste Wert gilt | hoch | Court | katalogisiert |
+| Weapon Surges | Multiplier (Surge) | 1x bis 4x Stacks pro Element; 4x = 25 % nur über Exotics; Armor-Mods (Beine, höchstens 3) brauchen Armor Charge; gleiches Element stapelt nicht, der höchste Wert gilt | hoch | Court | katalogisiert |
 | Amplification | Multiplier | Sonstige Buffs, die mit allen anderen Kategorien multiplizieren, z. B. Argent Ordnance 15 %, Elemental Overdrive 22 % | hoch | Court | katalogisiert |
 | Weapon Perks | Multiplier u. a. | Schadens-Perks legendärer Waffen; Aegis führt sie in der Spalte „Perk“ | hoch | Compendium „Weapon Perks“; Aegis | katalogisiert |
 | Artifact Perks | verschieden | Jede Saison neu; gehören je nach Perk zu verschiedenen Kategorien | hoch | Compendium „Artifact Perks“; Court | katalogisiert |

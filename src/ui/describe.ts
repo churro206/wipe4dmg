@@ -5,9 +5,12 @@ import type {
   AegisAbilityRow,
   Effect,
   EffectPart,
+  Element,
+  FormerCodeReason,
   ProviderKind,
   Source,
 } from "../data/schema";
+import type { ReplacedEffect } from "../engine/buildLink";
 import { superWindowMs } from "../engine/superWindow";
 import { factor, integer, seconds, secondsInput } from "./format";
 
@@ -20,8 +23,32 @@ export const PROVIDER_LABELS: Record<ProviderKind, string> = {
 
 export const GROUP_LABELS: Record<string, string> = {
   super: "ein Super",
-  "solar-surge": "eine Surge-Stufe",
+  surge: "eine Surge-Stufe",
 };
+
+/** Icon key of an effect; surges show the mod of the weapon element, as in the game. */
+export function effectIconKey(effect: Effect, weaponElement: Element): string {
+  return effect.elementIconKey
+    ? `${effect.elementIconKey}:${weaponElement}`
+    : `effect:${effect.id}`;
+}
+
+const FORMER_CODE_REASONS: Record<FormerCodeReason, string> = {
+  onlyFromExoticArmor: "gibt es nur über Exotic-Rüstung",
+};
+
+/** Hint for effects of an old link that were replaced, e.g. Surge 4x; null if none. */
+export function replacedMessage(
+  replaced: ReplacedEffect[],
+  effects: Effect[],
+): string | null {
+  const texts = replaced.map(({ code, effectId, reason }) => {
+    const effect = effects.find((e) => e.id === effectId)!;
+    const old = effect.formerCodes!.find((f) => f.code === code)!;
+    return `${old.name} ${FORMER_CODE_REASONS[reason]}; der Link nutzt jetzt ${effect.name}.`;
+  });
+  return texts.length > 0 ? texts.join(" ") : null;
+}
 
 const STATUS_LABELS: Record<Source["status"], string> = {
   verified: "geprüft",
@@ -100,9 +127,7 @@ export function describeAbility(
     ...new Set(ability.components.flatMap((c) => c.includedEffectIds ?? [])),
   ];
   const normalised = [
-    ...new Set(
-      ability.components.flatMap((c) => c.normalisedEffectIds ?? []),
-    ),
+    ...new Set(ability.components.flatMap((c) => c.normalisedEffectIds ?? [])),
   ];
   const lines = [
     ability.components.length === 0

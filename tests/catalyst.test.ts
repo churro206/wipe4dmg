@@ -171,7 +171,7 @@ describe("simulate: catalyst (Taken Seeker)", () => {
   });
 
   it("applies weapon multipliers to seeker damage", () => {
-    const surge = effects.find((e) => e.id === "solar-surge-4x")!;
+    const surge = effects.find((e) => e.id === "surge-3x")!;
     const part = surge.parts[0];
     if (part.type !== "multiplier") throw new Error("expected multiplier");
     const [impact] = seekerInstances(

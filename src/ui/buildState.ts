@@ -13,6 +13,7 @@ import type { EffectWindowInput } from "../engine/effectWindows";
 import { abilitiesFor, canProvide } from "../engine/providers";
 import { abilities, abilityStats, effects, linkRegistry, weapon } from "./data";
 import { secondsInput } from "./format";
+import { replacedMessage } from "./describe";
 
 export type Selection = Build["selections"][number];
 export type WindowInput = { start: string; duration: string };
@@ -293,8 +294,13 @@ export function stateFromLink(search: string): LinkState {
   const text = new URLSearchParams(search).get(LINK_PARAM);
   if (!text) return empty;
   try {
-    const { build, comparison, unknownEffectCodes, unknownAbilityCodes } =
-      decodeLink(text, linkRegistry);
+    const {
+      build,
+      comparison,
+      unknownEffectCodes,
+      unknownAbilityCodes,
+      replacedEffectCodes,
+    } = decodeLink(text, linkRegistry);
     if (build.weaponId !== weapon.id) throw new Error(build.weaponId);
     const linked: AbilityChoice = Object.fromEntries(
       (build.abilities ?? []).flatMap((pick) => {
@@ -328,10 +334,13 @@ export function stateFromLink(search: string): LinkState {
         ]),
       ),
       comparison,
-      message: unknownMessage(
-        unknownEffectCodes.length,
-        unknownAbilityCodes.length,
-      ),
+      message:
+        [
+          replacedMessage(replacedEffectCodes, effects),
+          unknownMessage(unknownEffectCodes.length, unknownAbilityCodes.length),
+        ]
+          .filter(Boolean)
+          .join(" ") || null,
     };
   } catch {
     return { ...empty, message: "Der Link enthält keinen gültigen Build." };

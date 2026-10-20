@@ -105,7 +105,7 @@ describe("optimize", () => {
     const handMade = simulate(
       weapon,
       input.damagePhaseSeconds,
-      ["tractor-cannon", "well-of-radiance", "solar-surge-4x"].map(byId),
+      ["tractor-cannon", "well-of-radiance", "surge-3x"].map(byId),
       buckets,
       { catalyst: true, effectWindows: input.fixedWindows },
     ).totalDamage;
@@ -121,7 +121,7 @@ describe("canProvide with subclass", () => {
   });
 
   it("ignores the subclass for armor and fireteam support", () => {
-    expect(canProvide(byId("solar-surge-4x"), "armor", "hunter", "arc")).toBe(
+    expect(canProvide(byId("surge-3x"), "armor", "hunter", "arc")).toBe(
       true,
     );
     expect(

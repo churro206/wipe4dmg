@@ -279,12 +279,27 @@ export type Provider = z.infer<typeof Provider>;
  * Anything a build can switch on or off that changes damage or timing (ADR 0006).
  * Active in a window: start and duration (ADR 0006, stage B).
  */
+/** Why an effect code was retired; the UI explains it when an old link is opened. */
+export const FormerCodeReason = z.enum(["onlyFromExoticArmor"]);
+export type FormerCodeReason = z.infer<typeof FormerCodeReason>;
+
+export const FormerCode = z.object({
+  code: z.number().int().positive(),
+  name: z.string(), // name of the removed effect
+  reason: FormerCodeReason,
+});
+
 export const Effect = z.object({
   id: z.string(),
   name: z.string(),
   code: z.number().int().positive(), // short code for build links; never reused
   shortName: z.string(), // for tight spaces, e.g. the optimizer ranking
   manifestRef: ManifestRef.optional(), // icon source in the Bungie manifest (ADR 0008)
+  // Icon that follows the weapon element instead: key "<elementIconKey>:<element>" in icon-refs.json,
+  // e.g. "surge" for the Weapon Surge mod of each element.
+  elementIconKey: z.string().optional(),
+  // Codes of removed effects that old build links read as this effect; never reused.
+  formerCodes: z.array(FormerCode).optional(),
   providers: z.array(Provider).min(1),
   // A build provides at most one effect of a group itself, e.g. one surge level or one super.
   // Effects from teammates are not limited by groups.

@@ -441,20 +441,47 @@
     }
   },
   {
-    "id": "solar-surge-2x",
-    "code": 11,
-    "name": "Solar Surge 2x",
-    "shortName": "Surge 2x",
-    "manifestRef": {
-      "table": "DestinyInventoryItemDefinition",
-      "hash": 2283894334
-    },
+    "id": "surge-1x",
+    "code": 18,
+    "name": "Surge 1x",
+    "shortName": "Surge 1x",
+    "elementIconKey": "surge",
     "providers": [
       {
         "kind": "armor"
       }
     ],
-    "exclusiveGroup": "solar-surge",
+    "exclusiveGroup": "surge",
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "surge",
+        "multiplier": {
+          "value": 1.1,
+          "source": {
+            "name": "Court Stacking Guide (Weapon Surges: surge stacks 1x/2x/3x/4x = 10%/17%/22%/25%; Armor Mods: 1x Surge stack per mod on the legs)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Weapon Surge leg armor mods, one stack per mod (at most 3). Modelled without element: the player wears the mods matching the weapon element (owner decision 2026-10-20)."
+          }
+        },
+        "damageSources": ["weapon"]
+      }
+    ]
+  },
+  {
+    "id": "surge-2x",
+    "code": 11,
+    "name": "Surge 2x",
+    "shortName": "Surge 2x",
+    "elementIconKey": "surge",
+    "providers": [
+      {
+        "kind": "armor"
+      }
+    ],
+    "exclusiveGroup": "surge",
     "parts": [
       {
         "type": "multiplier",
@@ -462,32 +489,36 @@
         "multiplier": {
           "value": 1.17,
           "source": {
-            "name": "Court Stacking Guide (Instant 2x Surge, PvE 17%)",
+            "name": "Court Stacking Guide (Instant 2x Surge, PvE 17%; Armor Mods: 1x Armor Charge with 2x Surge Mods provides 17%)",
             "url": "https://destiny2.science/court-sheet",
-            "retrieved": "2026-10-18",
-            "status": "verified"
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Weapon Surge leg armor mods, one stack per mod (at most 3). Modelled without element: the player wears the mods matching the weapon element (owner decision 2026-10-20)."
           }
         },
-        "damageSources": ["weapon"],
-        "elements": ["solar"]
+        "damageSources": ["weapon"]
       }
     ]
   },
   {
-    "id": "solar-surge-3x",
+    "id": "surge-3x",
     "code": 12,
-    "name": "Solar Surge 3x",
+    "name": "Surge 3x",
     "shortName": "Surge 3x",
-    "manifestRef": {
-      "table": "DestinyInventoryItemDefinition",
-      "hash": 2283894334
-    },
+    "elementIconKey": "surge",
+    "formerCodes": [
+      {
+        "code": 13,
+        "name": "Solar Surge 4x",
+        "reason": "onlyFromExoticArmor"
+      }
+    ],
     "providers": [
       {
         "kind": "armor"
       }
     ],
-    "exclusiveGroup": "solar-surge",
+    "exclusiveGroup": "surge",
     "parts": [
       {
         "type": "multiplier",
@@ -495,47 +526,14 @@
         "multiplier": {
           "value": 1.22,
           "source": {
-            "name": "Court Stacking Guide (Weapon Surges: surge stacks 1x/2x/3x/4x = 10%/17%/22%/25%, e.g. Eternal Warrior, Doom Fang Pauldron); Aegis Boss Damage (column Surge 1.220)",
+            "name": "Court Stacking Guide (Weapon Surges: surge stacks 1x/2x/3x/4x = 10%/17%/22%/25%); Aegis Boss Damage (column Surge 1.220)",
             "url": "https://destiny2.science/court-sheet",
             "retrieved": "2026-10-20",
-            "status": "verified"
+            "status": "verified",
+            "note": "Weapon Surge leg armor mods, one stack per mod (at most 3). Modelled without element: the player wears the mods matching the weapon element (owner decision 2026-10-20)."
           }
         },
-        "damageSources": ["weapon"],
-        "elements": ["solar"]
-      }
-    ]
-  },
-  {
-    "id": "solar-surge-4x",
-    "code": 13,
-    "name": "Solar Surge 4x",
-    "shortName": "Surge 4x",
-    "manifestRef": {
-      "table": "DestinyInventoryItemDefinition",
-      "hash": 2283894334
-    },
-    "providers": [
-      {
-        "kind": "armor"
-      }
-    ],
-    "exclusiveGroup": "solar-surge",
-    "parts": [
-      {
-        "type": "multiplier",
-        "bucketId": "surge",
-        "multiplier": {
-          "value": 1.25,
-          "source": {
-            "name": "Court Stacking Guide (Instant 4x Surge, PvE 25%)",
-            "url": "https://destiny2.science/court-sheet",
-            "retrieved": "2026-10-18",
-            "status": "verified"
-          }
-        },
-        "damageSources": ["weapon"],
-        "elements": ["solar"]
+        "damageSources": ["weapon"]
       }
     ]
   },

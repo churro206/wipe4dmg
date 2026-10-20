@@ -23,7 +23,7 @@ describe("breakdown", () => {
     const selected = pick(
       "tractor-cannon",
       "well-of-radiance",
-      "solar-surge-4x",
+      "surge-3x",
     );
     const ids = breakdown(weapon, DAMAGE_PHASE_SECONDS, selected, buckets).map(
       (entry) => entry.bucketId,

@@ -17,6 +17,7 @@ Stand: 2026-10-20
 - ✅ Oberfläche: Donut „Schaden nach Quelle“ mit Waffenteilen und je einem Stück pro Ability (Name und Icon)
 - ✅ Oberfläche: Breakdown-Tabelle mit einer Spalte pro Quelle (Waffe und jede Ability) und dem Schaden pro Quelle
 - ✅ Oberfläche: Zeitleiste mit Fähigkeiten und schraffiertem Super Window, Einsatzzeiten einstellbar, weitere Einsätze über „+“
+- ✅ Surges: Stufen 1x bis 3x wie die Rüstungs-Mods, passend zum Element der Waffe (Icon nach Element). Surge 4x kommt mit Exotic-Rüstung.
 - ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
 
 ## Danach
@@ -31,7 +32,6 @@ Stand: 2026-10-20
 - 13 Aegis-Pakete enthalten Ember of Ashes (z. B. Fusion Grenade, Hammer Strike): ohne Ember im Build sind sie zu hoch, weil Ember sich nicht als Faktor herausrechnen lässt
 - Expanding Abyss: hebt Weaken auf 25 %, Tractor Cannon und Moebius auf 35 %, Deadfall auf 40 %
 - Melee-Buffs: addieren sich untereinander (laut Court), brauchen eigenen Bucket
-- Surge 1x (10 %) als Stufe
 - Import von Courts Stacking Guide mit Snapshot und Zitat-Check, wie beim Compendium
 
 ## Später (v1.x)

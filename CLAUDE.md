@@ -73,7 +73,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
   - Link-Format 3. Format 2 bleibt lesbar.
   - Fähigkeiten-Panel in der Oberfläche (6b).
 - **Quellen-Abgleich (2026-10-20):**
-  - Courts Stacking Guide vollständig gelesen (etwa 100 Effects, 17 im Modell). Surge 1x bis 4x = 10/17/22/25 %. Amplification, Weapon Perks und Exotic Intrinsics stapeln auch untereinander; diese Buckets und `solar-surge-3x` sind jetzt `verified`.
+  - Courts Stacking Guide vollständig gelesen (etwa 100 Effects, 17 im Modell). Surge 1x bis 4x = 10/17/22/25 %. Amplification, Weapon Perks und Exotic Intrinsics stapeln auch untereinander; diese Buckets und `surge-3x` sind jetzt `verified`.
   - Neu und noch nicht im Modell: Melee-Buffs addieren sich, Expanding Abyss, Radiant auf Golden Gun und Still Hunt (Liste in `docs/mechanics/damage-stacking.md` und `docs/roadmap.md`).
   - MossyMax ist veraltet (v1.9.2, Februar 2025), nur als Hinweis. Gemini schlug keine neue Quelle vor.
 - **Recherche Wissenslücken (2026-10-20), ADR 0011:** Drei Fehler im Modell von One Thousand Voices, alle beim Zusammensetzen:
@@ -89,11 +89,13 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
     - ✅ Breakdown-Tabelle pro Damage Source (6c-2).
     - ✅ Zeitleiste mit Ability-Zeilen und schraffiertem Super Window; Einsatzzeit einstellbar, weitere Casts über „+“ (6c-3). Damit ist 6c fertig.
   - **6d, Optimizer mit Fähigkeiten:** auf v1.x verschoben (Inhaber, 2026-10-20). Plan in `docs/plans/optimizer-abilities.md`. Bis dahin übernimmt der Optimizer die gewählten Abilities.
-  - **6e, Wiki (ADR 0010):** 6e-1 erledigt: Schalter „Rechner | Wiki“ im Header, Markdown mit `marked`, Seiten aus `src/ui/wikiText.ts` (Abschnitt „Für Spieler“, Links ins Wiki). 6e-2 erledigt: `docs/mechanics/how-it-works.md`. Offen:
-    - Abdeckung und Roadmap.
-    - „Wie rechnet der Rechner?“ (`docs/mechanics/how-it-works.md`, neu).
-    - Abschnitte „Für Spieler“ in `docs/mechanics`.
+  - **6e, Wiki (ADR 0010):** 6e-1 erledigt: Schalter „Rechner | Wiki“ im Header, Markdown mit `marked`, Seiten aus `src/ui/wikiText.ts` (Abschnitt „Für Spieler“, Links ins Wiki). 6e-2 erledigt: `docs/mechanics/how-it-works.md` mit Abdeckung und Roadmap. Zurückgestellt (Inhaber): Abschnitte „Für Spieler“ in den übrigen Mechanics, schlanke Abdeckung für Spieler.
+  - **U, Oberfläche wie im Spiel (vor dem Release, Inhaber 2026-10-20):**
+    - ✅ U1 Surges: `surge-1x` bis `surge-3x` ohne Element (Annahme: passende Mods), Icon nach Element der Waffe (`elementIconKey`), 4x entfernt (nur über Exotic-Rüstung); alter Code 13 liest sich als 3x (`formerCodes`).
+    - U2: jeder Effect bekommt seinen Platz wie im Spiel (Aspect, Fragment, Class Ability, Mod, Stat, Artefakt, Fireteam). Tabelle zur Freigabe.
+    - U3: Reihenfolge Encounter → Waffe (+ Katalysator) → Klasse → Subklasse → Super, Class Ability, Grenade, Melee → Aspects → Fragments → Rüstung (Exotic folgt, Mods) → Stats als Block → Artefakt → Fireteam Support. ASCII-Skizze zur Freigabe.
   - **7, Abschluss v1.0:** Changelog, Releaseplan, Testlauf mit den Freunden.
+  - **Danach weitere Waffen:** W0 Fundament (Waffenauswahl, Link-Format 4, Effects nach Waffentyp, ADR), dann Truth, dann Thunderlord (Reign Havoc, Blitze; Bolt Charge zunächst ohne, wie Aegis).
   - **v1.x:** Feast of Light und Banner of War als Effects (macht Bladefury nutzbar), Well-Mechanik (Waffenschaden zählt als Super-Schaden, Dauer mit Super-Stat), Line 'Em Up, fehlende Zeitwerte der Supers.
 - **Arbeitsstil des Inhabers:**
   - Kleine Schritte: Plan, Freigabe („ok“), Tests zuerst.

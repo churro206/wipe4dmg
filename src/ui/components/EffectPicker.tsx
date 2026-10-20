@@ -4,8 +4,10 @@ import {
   describeDuration,
   describeEffect,
   describeSources,
+  effectIconKey,
   GROUP_LABELS,
 } from "../describe";
+import { weapon } from "../data";
 import { Icon } from "./Icon";
 
 /**
@@ -63,7 +65,10 @@ function EffectTile({
         aria-describedby={cardId}
         onClick={onToggle}
       >
-        <Icon iconKey={`effect:${effect.id}`} label={effect.shortName} />
+        <Icon
+          iconKey={effectIconKey(effect, weapon.element)}
+          label={effect.shortName}
+        />
         <span className="tile-label">{effect.shortName}</span>
       </button>
       <span role="tooltip" id={cardId} className="hover-card">
