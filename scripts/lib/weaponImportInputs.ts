@@ -5,6 +5,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import {
   AegisSustainedSnapshot,
   AegisWeaponSnapshot,
+  ClaritySnapshot,
   CompendiumSnapshot,
   Effect,
   ManifestArmor,
@@ -12,6 +13,7 @@ import {
   ManifestWeapons,
   QuantumWeaponSnapshot,
   Weapon,
+  WeaponOverride,
 } from "../../src/data/schema.ts";
 import type { WeaponImportInputs } from "./weaponPackages.ts";
 
@@ -37,6 +39,8 @@ export function loadWeaponImportInputs(): WeaponImportInputs {
     handModelled: readdirSync(new URL("weapons/", DATA))
       .filter((file) => file.endsWith(".json"))
       .map((file) => Weapon.parse(read(`weapons/${file}`))),
+    clarity: ClaritySnapshot.parse(read("clarity.json")).entries,
+    overrides: WeaponOverride.array().parse(read("weapon-overrides.json")),
     codes: existsSync(codesFile)
       ? (read("weapon-codes.json") as Record<string, number>)
       : {},

@@ -12,7 +12,6 @@
     "name": "Cull's Shadow",
     "reason": "Skala Aegis gegen Quantum weicht um 25.8 % ab"
   },
-  { "name": "D.A.R.C.I.", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
   {
     "name": "Deathbringer",
     "reason": "Skala Aegis gegen Quantum weicht um 51.4 % ab"
@@ -55,8 +54,8 @@
     "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; Quantum: ohne Magazin, Munition oder Reload ({\"totalShots\":\"N/A\",\"reloadSeconds\":\"N/A\"})"
   },
   {
-    "name": "Izanagi's Burden",
-    "reason": "Skala Aegis gegen Quantum weicht um 154.2 % ab"
+    "name": "Legend of Acrius",
+    "reason": "Skala nicht prüfbar: keine vergleichbaren Werte"
   },
   {
     "name": "Merciless",
@@ -78,7 +77,7 @@
   },
   {
     "name": "The Prospector",
-    "reason": "Skala Aegis gegen Quantum weicht um 23.1 % ab"
+    "reason": "Skala nicht prüfbar: keine vergleichbaren Werte"
   },
   {
     "name": "The Queenbreaker",
@@ -86,7 +85,7 @@
   },
   {
     "name": "Two-Tailed Fox",
-    "reason": "Skala Aegis gegen Quantum weicht um 36.4 % ab"
+    "reason": "Handmodell nötig: Scorch und Ignitions (wie One Thousand Voices)"
   },
   {
     "name": "Wavesplitter",
@@ -95,10 +94,6 @@
   {
     "name": "Whirling Ovation",
     "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
-  },
-  {
-    "name": "Whisper of the Worm",
-    "reason": "Skala Aegis gegen Quantum weicht um 9.1 % ab"
   },
   {
     "name": "Witherhoard",

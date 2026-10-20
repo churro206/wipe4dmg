@@ -1,0 +1,26 @@
+[
+  {
+    "weapon": "Sleeper Simulant",
+    "reason": "Aegis und Quantum messen nur mit Katalysator (16 Schuss, kürzere Charge Time). Ohne Katalysator: 14 Schuss und 250 ms längere Charge Time pro Schuss.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Sleeper Simulant Catalyst",
+        "text": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774)"
+      }
+    ],
+    "timing": { "from": "Aegis", "totalShots": 14, "addIntervalSeconds": 0.25 }
+  },
+  {
+    "weapon": "Two-Tailed Fox",
+    "reason": "Der Schaden hängt an Scorch und Ignitions (wie bei One Thousand Voices); Aegis zählt Ignitions mit, Quantum schätzt sie nur. Braucht ein Handmodell (ADR 0011, Punkt 5).",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Play with Your Prey",
+        "text": "Solar Rocket applies 60 Scorch (90 with Ember of Ashes)."
+      }
+    ],
+    "gap": "Handmodell nötig: Scorch und Ignitions (wie One Thousand Voices)"
+  }
+]

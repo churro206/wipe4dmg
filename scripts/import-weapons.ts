@@ -1,17 +1,20 @@
 // Imports the weapon sources for the weapon import (ADR 0013): the Aegis tabs "Weapons" and
-// "Sustained" into src/data/aegis-weapons.json and aegis-sustained.json and the Quantum tabs Primaries, Specials and Heavies into
-// src/data/quantum-weapons.json.
+// "Sustained" into src/data/aegis-weapons.json and aegis-sustained.json, the Quantum tabs
+// Primaries, Specials and Heavies into src/data/quantum-weapons.json, and the Clarity database
+// into src/data/clarity.json.
 // Run: npm run import:weapons
 
 import { writeFileSync } from "node:fs";
 import { format } from "prettier";
 import {
   AegisSustainedSnapshot,
+  ClaritySnapshot,
   AegisWeaponSnapshot,
   QuantumWeaponSnapshot,
 } from "../src/data/schema.ts";
 import { AEGIS_SHEET_URL } from "./lib/aegisBosses.ts";
 import { parseAegisSustained } from "./lib/aegisSustained.ts";
+import { parseClarity } from "./lib/clarity.ts";
 import { parseAegisWeapons } from "./lib/aegisWeapons.ts";
 import { parseQuantumWeapons, type QuantumTab } from "./lib/quantumWeapons.ts";
 
@@ -77,6 +80,21 @@ await write("aegis-sustained.json", sustained);
 console.log(
   `Aegis: wrote ${sustained.rows.length} rows to aegis-sustained.json`,
 );
+
+// Clarity: perk, catalyst and armor trait texts (credited on the site, ADR 0013).
+const CLARITY_URL =
+  "https://raw.githubusercontent.com/Database-Clarity/Live-Clarity-Database/live/descriptions/clarity.json";
+const clarity = ClaritySnapshot.parse({
+  source: {
+    name: "Clarity (Live-Clarity-Database, descriptions/clarity.json)",
+    url: "https://www.d2clarity.com",
+    retrieved,
+    status: "verified",
+  },
+  entries: parseClarity(JSON.parse(await download(CLARITY_URL))),
+});
+await write("clarity.json", clarity);
+console.log(`Clarity: wrote ${clarity.entries.length} entries to clarity.json`);
 
 const quantumRows = [];
 for (const [tab, gid] of Object.entries(QUANTUM_TABS) as [

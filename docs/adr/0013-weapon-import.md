@@ -62,6 +62,15 @@ ADR 0009 löst dasselbe Problem für Abilities: Import, Regel für die Basiszeil
 
 15. **Timing trotz fremder Annahmen:** Eine Aegis-„Sustained“-Zeile taugt fürs Timing, auch wenn sie fremde Annahmen enthält (meist Meta-Builds), solange keine davon das Timing ändert. Das entscheidet der Text der Annahme: Compendium (Weapon Perks), Manifest (Item-Beschreibung, Intrinsic der Exotic-Rüstung) oder unser Effect (nur Multiplier, keine Timing-Parts). Nennt der Text Munition, Reload, Magazin, Reserven, Feuerrate, Charge oder Swap, oder gibt es keinen Text, taugt die Zeile nicht. Die Prüftabelle nennt die Annahmen, die so zugelassen wurden.
 
+16. **Clarity als Quelle für Mechaniken** (Ergänzung 2026-10-20, Wunsch des Inhabers: Quellen suchen statt selbst ergründen). Die Live-Clarity-Database (Daten auch für DIM) hat für jeden Perk, Katalysator und jedes Exotic-Rüstungs-Perk Typ, Zugehörigkeit und genauen Text mit Zahlen (`npm run import:weapons` → `src/data/clarity.json`). Nutzungsbedingungen: kleine Projekte (mögliche Nutzerzahl unter 150) ohne Partnerschaft; Clarity mit Website und Discord nennen, eigene Änderungen kennzeichnen, Kopie aktuell halten. Der Inhaber hat entschieden: keine Partnerschaft (nur er und zwei Freunde, privater Discord-Bot). Daraus folgende Regeln:
+    - **Katalysator:** Einträge vom Typ „Weapon Catalyst Exotic“ der Waffe (z. B. Whispered Breathing) sind Katalysator, auch wenn das Manifest sie als Perk führt.
+    - **Katalysator ändert das Timing** (Text nennt Reload, Munition, Magazin, Charge …): Aegis „Sustained“ spielt mit Katalysator und gilt dann nicht fürs Paket; Quantum ohne Katalysator zuerst. Gibt es kein Timing ohne Katalysator, gilt das mit Katalysator und Warnung, solange der Katalysator die Gesamtmunition nicht ändert („Reserves by …“); sonst Lücke oder Override.
+    - **„refills the magazine“** im Intrinsic (White Nail): kein Reload, die ganze Munition ist ein Magazin.
+    - **Gestapeltes Intrinsic** („Honed Edge x4“) ist nicht die Basiszeile, wenn es eine Zeile ohne gibt.
+    - **Nur Katalysator-Zeilen bei Aegis:** Basis = Aegis-Wert ÷ Katalysator-Faktor aus Quantum (mit / ohne), als Verhältnis (ADR 0011, Punkt 1).
+    - Dauer und Bedingung von Optionen: Clarity zuerst, dann Compendium.
+17. **Overrides** (`src/data/weapon-overrides.json`): nur für Fälle, die keine Regel löst; jeder mit Begründung und wörtlichem Zitat aus Clarity oder Compendium, ein Test prüft das Zitat. Erste Fälle: Sleeper Simulant (beide Quellen nur mit Katalysator: 14 statt 16 Schuss, Charge 1024 statt 774 ms), Two-Tailed Fox (Lücke bis zum Handmodell: Scorch und Ignitions).
+
 ## Folgen
 
 - Eine neue Waffe kostet keine Recherche, solange sie die Regeln besteht. Nach einem Patch zeigt ein neuer Import, was sich geändert hat.

@@ -5,6 +5,8 @@
 
 import type {
   AegisSustainedRow,
+  ClarityEntry,
+  WeaponOverride,
   AegisSustainedSnapshot,
   AegisWeaponRow,
   AegisWeaponSnapshot,
@@ -25,6 +27,8 @@ import { assumptionName } from "./aegisWeapons.ts";
 import {
   abilityKindsNamed,
   armorForWeapon,
+  changesTiming,
+  clarityCatalysts,
   classifyAssumption,
   timingImpact,
   type AssumptionClass,
@@ -43,6 +47,8 @@ export type WeaponImportInputs = {
   effects: Effect[];
   handModelled: Weapon[];
   codes: Record<string, number>;
+  clarity: ClarityEntry[];
+  overrides: WeaponOverride[];
 };
 
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
@@ -174,19 +180,22 @@ function scaleDeviation(
   return deviations.length > 0 ? Math.min(...deviations) : null;
 }
 
-/** Duration and condition of an option from the Compendium tab Weapon Perks. */
+/** Duration and condition of an option: Clarity first, then the Compendium tab Weapon Perks. */
 function perkText(
   names: string[],
   compendium: CompendiumEntry[],
+  clarity: ClarityEntry[],
 ): { durationSeconds: number | null; condition: string | null } | null {
   for (const name of names) {
-    const entry = compendium.find(
-      (e) =>
-        e.tab === "Weapon Perks" && e.name.toLowerCase() === name.toLowerCase(),
-    );
-    if (!entry) continue;
-    const duration = DURATION.exec(entry.text);
-    const firstLine = entry.text.split("\n")[0];
+    const key = name.toLowerCase();
+    const text =
+      clarity.find((e) => e.name.toLowerCase() === key)?.text ??
+      compendium.find(
+        (e) => e.tab === "Weapon Perks" && e.name.toLowerCase() === key,
+      )?.text;
+    if (!text) continue;
+    const duration = DURATION.exec(text);
+    const firstLine = text.split("\n")[0];
     return {
       durationSeconds: duration ? Number(duration[1]) : null,
       condition: CONDITION_WORDS.test(firstLine) ? firstLine : null,
@@ -220,21 +229,25 @@ type TimingProblem = { problem: string };
 /**
  * Aegis "Sustained" reloads right after the last shot of a magazine: time to empty =
  * (shots − magazines) × interval + reloads × reload. The simulator counts one interval before each
- * reload, so it gets reload − interval.
+ * reload, so it gets reload − interval. Without reloads (an intrinsic refills the magazine) the
+ * whole ammo is one magazine.
  */
 export function timingFromAegis(
   row: AegisSustainedRow,
+  noReloads = false,
 ): Timing | TimingProblem {
-  const [magazine] = row.magazines;
   const timeToEmpty = row.timeToEmptySeconds;
+  const magazine = noReloads ? row.shots : row.magazines[0];
   if (!magazine || timeToEmpty === null || row.shots < 1)
     return {
       problem: `Zeile „${row.id}“ ohne Magazin-Folge oder Zeit bis leer`,
     };
-  const regular = row.magazines.every(
-    (m, i) =>
-      m === magazine || (i === row.magazines.length - 1 && m < magazine),
-  );
+  const regular =
+    noReloads ||
+    row.magazines.every(
+      (m, i) =>
+        m === magazine || (i === row.magazines.length - 1 && m < magazine),
+    );
   if (!regular)
     return {
       problem: `unregelmäßige Magazin-Folge ${row.magazines.join("-")}`,
@@ -269,8 +282,10 @@ export function timingFromAegis(
 /** Quantum counts one interval before each reload, like the simulator. */
 export function timingFromQuantum(
   row: QuantumWeaponRow,
+  noReloads = false,
 ): Timing | TimingProblem {
-  const { magazine, totalShots, reloadSeconds, timeToEmptySeconds, rpm } = row;
+  const { totalShots, reloadSeconds, timeToEmptySeconds, rpm } = row;
+  const magazine = noReloads ? totalShots : row.magazine;
   if (magazine === null || totalShots === null || reloadSeconds === null)
     return {
       problem: `ohne Magazin, Munition oder Reload (${JSON.stringify(row.textCells)})`,
@@ -303,6 +318,42 @@ export function timingFromQuantum(
       (totalShots - 1) * intervalSeconds + reloads * reloadSeconds,
     note,
   };
+}
+
+/** Applies an override (fewer shots, longer interval) and recomputes the time to empty. */
+function adjustTiming(
+  timing: Timing,
+  { totalShots, addIntervalSeconds }: NonNullable<WeaponOverride["timing"]>,
+): Timing {
+  const shots = totalShots ?? timing.totalShots;
+  const interval = timing.intervalSeconds + (addIntervalSeconds ?? 0);
+  const reloads = Math.ceil(shots / timing.magazine) - 1;
+  // The simulator adds interval + engine reload between magazines; keep the stated reload.
+  const engineReload = Math.max(
+    0,
+    timing.engineReloadSeconds - (addIntervalSeconds ?? 0),
+  );
+  return {
+    ...timing,
+    totalShots: shots,
+    intervalSeconds: interval,
+    engineReloadSeconds: engineReload,
+    timeToEmptySeconds: (shots - 1) * interval + reloads * engineReload,
+    note: `${timing.note}; override: ${totalShots ?? "same"} shots, +${addIntervalSeconds ?? 0} s per shot`,
+  };
+}
+
+/** Catalyst factor from the Quantum rows with and without catalyst ("cata"), or null. */
+function quantumCatalystFactor(
+  name: string,
+  rows: QuantumWeaponRow[],
+): number | null {
+  const plain = rows.find((r) => r.name === name && r.variant === "");
+  const cata = rows.find((r) => r.name === name && r.variant === "cata");
+  const metric = (r: QuantumWeaponRow | undefined) =>
+    r?.precisionDamage ?? r?.bodyDamage ?? null;
+  const [a, b] = [metric(cata), metric(plain)];
+  return a !== null && b !== null && b > 0 && a !== b ? a / b : null;
 }
 
 const minDeviation = (values: (number | null)[]): number | null => {
@@ -379,6 +430,32 @@ export function buildWeaponImport(
       gaps.push({ name: manifest.name, reason });
     };
 
+    const context = {
+      weapon: manifest,
+      effects: effectNames,
+      armor: inputs.armor,
+      terms: inputs.terms,
+      clarity: inputs.clarity,
+    };
+    const override = inputs.overrides.find((o) => o.weapon === manifest.name);
+    if (override) entry.notes.push(`Override: ${override.reason}`);
+    if (override?.gap) {
+      gap(override.gap);
+      continue;
+    }
+    const catalysts = clarityCatalysts(manifest.name, inputs.clarity);
+    const catalystChangesTiming = catalysts.some((c) => changesTiming(c.text));
+    const catalystChangesAmmo = catalysts.some((c) =>
+      /\breserves by \d|\+\d+ reserves\b/i.test(c.text),
+    );
+    // "refills the magazine" in the intrinsic (e.g. White Nail): no reloads.
+    const refillsMagazine = inputs.clarity.some(
+      (e) =>
+        e.itemName === manifest.name &&
+        e.type === "Weapon Frame Exotic" &&
+        /refills the magazine/i.test(e.text),
+    );
+
     const rows = inputs.aegis.rows.filter((r) => r.name === manifest.name);
     if (rows.length === 0) {
       gap("keine Aegis-Zeile");
@@ -390,12 +467,7 @@ export function buildWeaponImport(
         row.assumptions.map((assumption) => ({
           assumption,
           weapon: manifest.name,
-          ...classifyAssumption(assumption, {
-            weapon: manifest,
-            effects: effectNames,
-            armor: inputs.armor,
-            terms: inputs.terms,
-          }),
+          ...classifyAssumption(assumption, context),
         })),
       ]),
     );
@@ -420,12 +492,47 @@ export function buildWeaponImport(
       classesOf
         .get(row)!
         .filter((c) => c.kind === "perk" || c.kind === "weaponMod").length;
-    const base = [...allowed].sort(
+    const stackedOf = (row: AegisWeaponRow) =>
+      classesOf
+        .get(row)!
+        .filter((c) => c.kind === "intrinsic" && /\sx\d+$/.test(c.assumption))
+        .length;
+    let base = [...allowed].sort(
       (a, b) =>
+        stackedOf(a) - stackedOf(b) ||
         extrasOf(a) - extrasOf(b) ||
         b.shots - a.shots ||
         a.assumptions.length - b.assumptions.length,
     )[0];
+    if (!base) {
+      const catalystRow = rows.find(
+        (row) =>
+          classesOf.get(row)!.some((c) => c.kind === "catalyst") &&
+          classesOf
+            .get(row)!
+            .every((c) => BASE_KINDS.includes(c.kind) || c.kind === "catalyst"),
+      );
+      const factor = quantumCatalystFactor(manifest.name, inputs.quantum.rows);
+      if (catalystRow && factor !== null) {
+        const without = classesOf
+          .get(catalystRow)!
+          .filter((c) => c.kind !== "catalyst");
+        const synthetic: AegisWeaponRow = {
+          ...catalystRow,
+          id: `${catalystRow.id}-without-catalyst`,
+          critShot: null,
+          bodyShot: null,
+          assumptions: without.map((c) => c.assumption),
+          perShot: Number((catalystRow.perShot / factor).toFixed(3)),
+        };
+        rows.push(synthetic);
+        classesOf.set(synthetic, without);
+        base = synthetic;
+        entry.notes.push(
+          `Aegis misst nur mit Katalysator: Basis = ${de(catalystRow.perShot, 1)} ÷ ${de(factor, 3)} (Quantum mit / ohne Katalysator)`,
+        );
+      }
+    }
     if (!base) {
       for (const row of rows)
         entry.unusedRows.push({
@@ -498,10 +605,13 @@ export function buildWeaponImport(
       )!;
       const perkNames = extras.flatMap((c) =>
         /^catalyst$/i.test(c.assumption)
-          ? (manifest.catalyst?.perks ?? [])
+          ? [
+              ...(manifest.catalyst?.perks ?? []),
+              ...catalysts.map((c) => c.name),
+            ]
           : [assumptionName(c.assumption), c.similarTo ?? ""],
       );
-      const text = perkText(perkNames, inputs.compendium);
+      const text = perkText(perkNames, inputs.compendium, inputs.clarity);
       if (!text) notes.push("keine Dauer im Compendium gefunden");
       options.push({
         id,
@@ -531,12 +641,7 @@ export function buildWeaponImport(
 
     // Timing from two sources (point 7): Aegis "Sustained" first, Quantum second; both are compared.
     const classifyLabel = (label: string) =>
-      classifyAssumption(label, {
-        weapon: manifest,
-        effects: effectNames,
-        armor: inputs.armor,
-        terms: inputs.terms,
-      }).kind;
+      classifyAssumption(label, context).kind;
     // A row may carry foreign assumptions (meta builds) if their texts say nothing about ammo,
     // reload or fire rate (point 15); rows with fewer of them come first.
     const timingSources = {
@@ -547,21 +652,17 @@ export function buildWeaponImport(
     };
     const foreignOf = (row: AegisSustainedRow) =>
       row.assumptions.filter((a) => !BASE_KINDS.includes(classifyLabel(a)));
-    const sustainedRows = inputs.sustained.rows
+    if (catalystChangesTiming)
+      entry.notes.push(
+        "Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt",
+      );
+    const sustainedUsable = inputs.sustained.rows
       .filter((r) => r.name === manifest.name)
       .filter((r) =>
         foreignOf(r).every(
           (a) =>
-            timingImpact(
-              a,
-              classifyAssumption(a, {
-                weapon: manifest,
-                effects: effectNames,
-                armor: inputs.armor,
-                terms: inputs.terms,
-              }),
-              timingSources,
-            ) === "neutral",
+            timingImpact(a, classifyAssumption(a, context), timingSources) ===
+            "neutral",
         ),
       )
       .sort(
@@ -569,7 +670,15 @@ export function buildWeaponImport(
           foreignOf(a).length - foreignOf(b).length ||
           a.assumptions.length - b.assumptions.length,
       );
-    const aegisTimings = sustainedRows.map(timingFromAegis);
+    // Aegis "Sustained" plays with the catalyst. If the catalyst changes the timing, its rows
+    // only count as a fallback (below), unless an override asks for them.
+    const sustainedRows =
+      catalystChangesTiming && override?.timing?.from !== "Aegis"
+        ? []
+        : sustainedUsable;
+    const aegisTimings = sustainedRows.map((row) =>
+      timingFromAegis(row, refillsMagazine),
+    );
     const aegis = aegisTimings.find((t): t is Timing => "intervalSeconds" in t);
     const aegisRow = aegis
       ? sustainedRows.find((r) => r.id === aegis.rowId)
@@ -594,12 +703,40 @@ export function buildWeaponImport(
         (k) => k === "execution" || k === "intrinsic" || k === "catalyst",
       ),
     );
-    const quantumRow = (plain[0] ?? withCatalyst[0])?.row;
-    const quantum = quantumRow ? timingFromQuantum(quantumRow) : null;
+    const quantumRow = (
+      plain[0] ?? (catalystChangesTiming ? undefined : withCatalyst[0])
+    )?.row;
+    const quantum = quantumRow
+      ? timingFromQuantum(quantumRow, refillsMagazine)
+      : null;
+    if (refillsMagazine)
+      entry.notes.push(
+        "Intrinsic füllt das Magazin auf (Clarity): ohne Reload",
+      );
     const quantumTiming =
       quantum && "intervalSeconds" in quantum ? quantum : undefined;
 
-    const timing = aegis ?? quantumTiming;
+    let timing =
+      override?.timing?.from === "Quantum"
+        ? (quantumTiming ?? aegis)
+        : (aegis ?? quantumTiming);
+    if (!timing && catalystChangesTiming && !catalystChangesAmmo) {
+      const fallback =
+        sustainedUsable
+          .map((row) => timingFromAegis(row, refillsMagazine))
+          .find((t): t is Timing => "intervalSeconds" in t) ??
+        (withCatalyst[0]
+          ? timingFromQuantum(withCatalyst[0].row, refillsMagazine)
+          : undefined);
+      if (fallback && "intervalSeconds" in fallback) {
+        timing = fallback;
+        entry.notes.push(
+          "⚠ Timing mit Katalysator: keine Quelle ohne; der Katalysator ändert laut Clarity Magazin oder Reload, nicht die Munition",
+        );
+      }
+    }
+    if (timing && override?.timing)
+      timing = adjustTiming(timing, override.timing);
     if (!timing) {
       const reasons = [
         ...aegisTimings.map((t) => `Aegis: ${(t as TimingProblem).problem}`),
@@ -619,6 +756,9 @@ export function buildWeaponImport(
       );
       continue;
     }
+    const timingIsAegis = inputs.sustained.rows.some(
+      (r) => r.id === timing.rowId,
+    );
     if (quantumRow && timing === quantumTiming) {
       if (plain.length === 0)
         entry.notes.push(
@@ -640,11 +780,9 @@ export function buildWeaponImport(
           : `⚠ Timing: Aegis ${aegis.totalShots} Shots in ${de(aegis.timeToEmptySeconds, 1)} s, Quantum ${quantumTiming.totalShots} Shots in ${de(quantumTiming.timeToEmptySeconds, 1)} s; Aegis gilt`,
       );
     } else {
-      entry.notes.push(
-        `Timing nur aus ${timing === aegis ? "Aegis" : "Quantum"}`,
-      );
+      entry.notes.push(`Timing nur aus ${timingIsAegis ? "Aegis" : "Quantum"}`);
     }
-    entry.timingSource = timing === aegis ? "Aegis" : "Quantum";
+    entry.timingSource = timingIsAegis ? "Aegis" : "Quantum";
     entry.magazine = timing.magazine;
     entry.totalShots = timing.totalShots;
     entry.reloadSeconds = timing.reloadSeconds;
@@ -663,8 +801,8 @@ export function buildWeaponImport(
     // Scale (point 10): Aegis against Quantum, or against "Base" in Aegis "Sustained".
     entry.scaleDeviation = minDeviation([
       quantumRow ? scaleDeviation(base, quantumRow) : null,
-      sustainedRows[0]?.base
-        ? Math.abs(base.perShot / sustainedRows[0].base - 1)
+      sustainedUsable[0]?.base
+        ? Math.abs(base.perShot / sustainedUsable[0].base - 1)
         : null,
     ]);
     if (entry.scaleDeviation === null) {
@@ -678,10 +816,13 @@ export function buildWeaponImport(
       continue;
     }
 
+    const timingQuantumRow = inputs.quantum.rows.find(
+      (r) => r.id === timing.rowId,
+    );
     const timingSource = (note?: string): Source =>
-      timing === aegis
-        ? sustainedSource(aegis.rowId, note)
-        : quantumSource(quantumRow!, note);
+      timingIsAegis || !timingQuantumRow
+        ? sustainedSource(timing.rowId, note)
+        : quantumSource(timingQuantumRow, note);
     const id = slug(manifest.name);
     const weapon: Weapon = {
       id,
@@ -705,7 +846,7 @@ export function buildWeaponImport(
       reloadTimeMs: {
         value: Math.round(timing.engineReloadSeconds * 1000),
         source: timingSource(
-          timing === aegis
+          timingIsAegis
             ? `Reload ${timing.reloadSeconds} s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload`
             : undefined,
         ),

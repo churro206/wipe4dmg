@@ -794,7 +794,11 @@ function App() {
       </main>
       <footer>
         wipe4dmg v{__APP_VERSION__} · Destiny-Inhalte und Icons © Bungie. Werte aus Community-Quellen (Quantum
-        Damage-ics, Aegis, Destiny Data Compendium, Court).
+        Damage-ics, Aegis, Destiny Data Compendium, Court). Perk-Daten:{" "}
+        <a href="https://www.d2clarity.com">Clarity</a> (Feedback zu
+        Perk-Texten im{" "}
+        <a href="https://url.d2clarity.com/discord">Clarity-Discord</a>;
+        Änderungen durch uns sind gekennzeichnet).
       </footer>
     </>
   );

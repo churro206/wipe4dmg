@@ -937,6 +937,142 @@
     ]
   },
   {
+    "id": "d-a-r-c-i",
+    "code": 49,
+    "name": "D.A.R.C.I.",
+    "manifestHash": 3141979346,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "sniperRifle",
+    "element": "arc",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-d-a-r-c-i",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 180,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-d-a-r-c-i",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 18 s − 4 reloads × 2 s) ÷ 30 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 7,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-d-a-r-c-i",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 31,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-d-a-r-c-i",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 2000,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-d-a-r-c-i",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-d-a-r-c-i-average-target-acquired-networked-targeting-x5-with-spaced-jolt-without-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 824.797,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-d-a-r-c-i-average-target-acquired-networked-targeting-x5-with-spaced-jolt-without-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, Target Acquired, with spaced jolt"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-d-a-r-c-i-average-target-acquired-networked-targeting-x5-with-spaced-jolt-without-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-d-a-r-c-i-average-target-acquired-networked-targeting-x5-with-spaced-jolt-without-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "personal-assistant",
+        "name": "Personal Assistant",
+        "description": "Aim at a target to view their health and other critical information in the scope.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "networked-targeting-x5",
+        "name": "Networked Targeting x5",
+        "kind": "catalyst",
+        "factor": {
+          "value": 1.0603,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-d-a-r-c-i-average-target-acquired-networked-targeting-x5-with-spaced-jolt",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value 874.534 / 824.797 (base row sniper-rifle-d-a-r-c-i-average-target-acquired-networked-targeting-x5-with-spaced-jolt-without-catalyst)"
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ]
+  },
+  {
     "id": "dead-messenger",
     "code": 30,
     "name": "Dead Messenger",
@@ -1885,49 +2021,48 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-euphony",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
+        "status": "unverified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 40.504,
+      "value": 42.493,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-euphony",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 31.483 s − 3 reloads × 2.1 s) ÷ 17 intervals within magazines (ADR 0013)"
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 32.2 s − 3 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 6,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-euphony",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "totalShots": {
       "value": 21,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-euphony",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "reloadTimeMs": {
-      "value": 619,
+      "value": 1320,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-euphony",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 2.1 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "unverified"
       }
     },
     "damageInstances": [
@@ -2120,49 +2255,48 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row forerunner",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-sidearm-forerunner",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
+        "status": "unverified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 212.014,
+      "value": 215.065,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row forerunner",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-sidearm-forerunner",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 24.777 s − 5 reloads × 1.333 s) ÷ 64 intervals within magazines (ADR 0013)"
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 27.4 s − 5 reloads × 1.63 s) ÷ 69 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 12,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row forerunner",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-sidearm-forerunner",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "totalShots": {
       "value": 70,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row forerunner",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-sidearm-forerunner",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "reloadTimeMs": {
-      "value": 1050,
+      "value": 1630,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row forerunner",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-sidearm-forerunner",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 1.333 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "unverified"
       }
     },
     "damageInstances": [
@@ -2355,49 +2489,48 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row heir-apparent",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-heir-apparent",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
+        "status": "unverified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 895.522,
+      "value": 903.292,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row heir-apparent",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-heir-apparent",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 37.779 s − 2 reloads × 4.25 s) ÷ 437 intervals within magazines (ADR 0013)"
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 36.3 s − 2 reloads × 3.57 s) ÷ 439 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 200,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row heir-apparent",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-heir-apparent",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "totalShots": {
       "value": 440,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row heir-apparent",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-heir-apparent",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "reloadTimeMs": {
-      "value": 4183,
+      "value": 3570,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row heir-apparent",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-heir-apparent",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 4.25 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "unverified"
       }
     },
     "damageInstances": [
@@ -2452,6 +2585,123 @@
         "id": "heavy-slug-thrower",
         "name": "Heavy Slug Thrower",
         "description": "[Aim Down Sights]  : Spins up this weapon. This weapon can be fired only when fully spun up.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "izanagi-s-burden",
+    "code": 50,
+    "name": "Izanagi's Burden",
+    "manifestHash": 3211806999,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "sniperRifle",
+    "element": "kinetic",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 114.228,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 17.9 s − 4 reloads × 1.98 s) ÷ 19 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 4,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 20,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1980,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-izanagi-s-burden",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 658.45,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-izanagi-s-burden",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-izanagi-s-burden",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-izanagi-s-burden",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "honed-edge",
+        "name": "Honed Edge",
+        "description": "[Alternate Weapon Action]  : Consume the magazine and load a round with additional range and damage.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -2570,123 +2820,6 @@
         "id": "charge-shot",
         "name": "Charge Shot",
         "description": "Hold down the trigger to charge up a tracking shot that explodes and burns on impact.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ]
-  },
-  {
-    "id": "legend-of-acrius",
-    "code": 23,
-    "name": "Legend of Acrius",
-    "manifestHash": 3580904580,
-    "gameVersion": "9.7.0.3",
-    "weaponType": "shotgun",
-    "element": "arc",
-    "ammo": "heavy",
-    "chargeTimeMs": {
-      "value": 0,
-      "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
-      }
-    },
-    "fireRateRpm": {
-      "value": 44.466,
-      "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Derived: (Time to Empty 21.1 s − 2 reloads × 0.43 s) ÷ 15 intervals (ADR 0013)"
-      }
-    },
-    "magazine": {
-      "value": 6,
-      "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified"
-      }
-    },
-    "totalShots": {
-      "value": 16,
-      "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified"
-      }
-    },
-    "reloadTimeMs": {
-      "value": 430,
-      "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified"
-      }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-legend-of-acrius-body",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1990.392,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-legend-of-acrius-body",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "visual Value; assumptions: body"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-legend-of-acrius-body",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-legend-of-acrius-body",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified"
-          }
-        },
-        "canPrecision": false,
-        "requiresCatalyst": false
-      }
-    ],
-    "intrinsicParts": [],
-    "intrinsics": [
-      {
-        "id": "shock-blast",
-        "name": "Shock Blast",
-        "description": "This weapon fires blasts of high-damage Arc energy that overpenetrates enemies.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -3763,49 +3896,48 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row slayer-s-fang-assault-mag-includes-submunitions",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-slayer-s-fang",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
+        "status": "unverified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 72.029,
+      "value": 75.802,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row slayer-s-fang-assault-mag-includes-submunitions",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-slayer-s-fang",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 23.592 s − 3 reloads × 1.2 s) ÷ 24 intervals within magazines (ADR 0013)"
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 23.4 s − 2 reloads × 1.41 s) ÷ 26 intervals (ADR 0013)"
       }
     },
     "magazine": {
-      "value": 9,
+      "value": 10,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row slayer-s-fang-assault-mag-includes-submunitions",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-slayer-s-fang",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "totalShots": {
-      "value": 28,
+      "value": 27,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row slayer-s-fang-assault-mag-includes-submunitions",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-slayer-s-fang",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "reloadTimeMs": {
-      "value": 367,
+      "value": 1410,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row slayer-s-fang-assault-mag-includes-submunitions",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-slayer-s-fang",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 1.2 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "unverified"
       }
     },
     "damageInstances": [
@@ -3923,13 +4055,13 @@
       }
     },
     "fireRateRpm": {
-      "value": 44.037,
+      "value": 37.209,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Derived: (TtE 22.5 s − 3 reloads × 2.05 s) ÷ 12 intervals within magazines (ADR 0013)"
+        "note": "Derived: (TtE 22.5 s − 3 reloads × 2.05 s) ÷ 12 intervals within magazines (ADR 0013); override: 14 shots, +0.25 s per shot"
       }
     },
     "magazine": {
@@ -3942,7 +4074,7 @@
       }
     },
     "totalShots": {
-      "value": 16,
+      "value": 14,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
         "url": "https://destiny2.science/boss-damage",
@@ -3951,7 +4083,7 @@
       }
     },
     "reloadTimeMs": {
-      "value": 687,
+      "value": 437,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
         "url": "https://destiny2.science/boss-damage",
@@ -4853,49 +4985,48 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
+        "status": "unverified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 664.635,
+      "value": 626.866,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 34.124 s − 0 reloads × 2.833 s) ÷ 378 intervals within magazines (ADR 0013)"
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 57.6 s − 6 reloads × 3.57 s) ÷ 378 intervals (ADR 0013)"
       }
     },
     "magazine": {
-      "value": 379,
+      "value": 62,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "totalShots": {
       "value": 379,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "reloadTimeMs": {
-      "value": 2743,
+      "value": 3570,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 2.833 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "unverified"
       }
     },
     "damageInstances": [
@@ -4971,49 +5102,48 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row tractor-cannon",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
+        "status": "unverified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 81.855,
+      "value": 90.586,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row tractor-cannon",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 14.161 s − 2 reloads × 1.583 s) ÷ 15 intervals within magazines (ADR 0013)"
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 14.2 s − 2 reloads × 1.47 s) ÷ 17 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 7,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row tractor-cannon",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "totalShots": {
       "value": 18,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row tractor-cannon",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "reloadTimeMs": {
-      "value": 850,
+      "value": 1470,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row tractor-cannon",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 1.583 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "unverified"
       }
     },
     "damageInstances": [
@@ -5209,7 +5339,7 @@
           }
         },
         "durationSeconds": 15,
-        "condition": "Grants stacks of Reaper's Tithe based on the amount of simultaneously killed enemies, up to a maximum of 4 stacks."
+        "condition": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)"
       }
     ]
   },
@@ -5225,49 +5355,48 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row vexcalibur-projectile",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-glaive-vexcalibur",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
+        "status": "unverified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 84.034,
+      "value": 94.815,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row vexcalibur-projectile",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-glaive-vexcalibur",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 23.61 s − 4 reloads × 1.083 s) ÷ 27 intervals within magazines (ADR 0013)"
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 28.1 s − 5 reloads × 1.57 s) ÷ 32 intervals (ADR 0013)"
       }
     },
     "magazine": {
-      "value": 7,
+      "value": 6,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row vexcalibur-projectile",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-glaive-vexcalibur",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "totalShots": {
-      "value": 32,
+      "value": 33,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row vexcalibur-projectile",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-glaive-vexcalibur",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "unverified"
       }
     },
     "reloadTimeMs": {
-      "value": 369,
+      "value": 1570,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row vexcalibur-projectile",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (specials), row specials-glaive-vexcalibur",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 1.083 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "unverified"
       }
     },
     "damageInstances": [
@@ -5361,6 +5490,175 @@
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
+      }
+    ]
+  },
+  {
+    "id": "whisper-of-the-worm",
+    "code": 51,
+    "name": "Whisper of the Worm",
+    "manifestHash": 1983149589,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "sniperRifle",
+    "element": "solar",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-whisper-of-the-worm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 70.032,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-whisper-of-the-worm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 31.7 s − 0 reloads × 1.98 s) ÷ 37 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 38,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-whisper-of-the-worm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 38,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-whisper-of-the-worm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1980,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-whisper-of-the-worm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-whisper-of-the-worm-whispered-breathing-without-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 849.938,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-whisper-of-the-worm-whispered-breathing-without-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-whisper-of-the-worm-whispered-breathing-without-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-whisper-of-the-worm-whispered-breathing-without-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "white-nail",
+        "name": "White Nail",
+        "description": "Higher base precision damage. Rapidly landing three precision hits will refill the magazine.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "white-nail-ii",
+        "name": "White Nail II",
+        "description": "Higher base precision damage. Rapidly landing three precision hits will refill the magazine.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "white-nail-iii",
+        "name": "White Nail III",
+        "description": "Higher base precision damage. Rapidly landing three precision hits will refill the magazine.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "white-nail-iv",
+        "name": "White Nail IV",
+        "description": "Higher base precision damage. Rapidly landing three precision hits will refill the magazine.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "whispered-breathing",
+        "name": "Whispered Breathing",
+        "kind": "catalyst",
+        "factor": {
+          "value": 1.4718,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-whisper-of-the-worm-whispered-breathing",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value 1250.909 / 849.938 (base row sniper-rifle-whisper-of-the-worm-whispered-breathing-without-catalyst)"
+          }
+        },
+        "durationSeconds": 1.2,
+        "condition": null
       }
     ]
   },

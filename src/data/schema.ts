@@ -823,3 +823,46 @@ export const AegisSustainedSnapshot = z.object({
   rows: z.array(AegisSustainedRow),
 });
 export type AegisSustainedSnapshot = z.infer<typeof AegisSustainedSnapshot>;
+
+/** One entry of the Clarity database: a perk, catalyst or armor trait with its text (ADR 0013). */
+export const ClarityEntry = z.object({
+  hash: z.number().int(), // manifest hash of the perk
+  name: z.string(),
+  type: z.string(), // e.g. "Weapon Catalyst Exotic", "Weapon Frame Exotic", "Armor Trait Exotic"
+  itemName: z.string().nullable(), // weapon or armor the perk belongs to, e.g. "Truth"
+  text: z.string(), // English description as plain text, one line per paragraph
+});
+export type ClarityEntry = z.infer<typeof ClarityEntry>;
+
+export const ClaritySnapshot = z.object({
+  source: Source,
+  entries: z.array(ClarityEntry),
+});
+export type ClaritySnapshot = z.infer<typeof ClaritySnapshot>;
+
+/**
+ * A decision of the weapon import that no rule makes (ADR 0013, point 7). It names its reason and
+ * quotes a snapshot; a test checks the quote is still there.
+ */
+export const WeaponOverride = z.object({
+  weapon: z.string(), // manifest name, e.g. "Sleeper Simulant"
+  reason: z.string(), // in German, shown in the review table
+  quotes: z
+    .array(
+      z.object({
+        source: z.enum(["clarity", "compendium"]),
+        entry: z.string(), // Clarity entry name, or the start of the Compendium entry name
+        text: z.string(), // exact text in that entry
+      }),
+    )
+    .min(1),
+  gap: z.string().optional(), // keep the weapon out with this reason
+  timing: z
+    .object({
+      from: z.enum(["Aegis", "Quantum"]), // use this source even if a rule would not
+      totalShots: z.number().int().positive().optional(),
+      addIntervalSeconds: z.number().optional(), // e.g. a longer charge without the catalyst
+    })
+    .optional(),
+});
+export type WeaponOverride = z.infer<typeof WeaponOverride>;

@@ -3,6 +3,7 @@
 
 import type {
   AbilityKind,
+  ClarityEntry,
   CompendiumEntry,
   Effect,
   ManifestArmorPiece,
@@ -37,7 +38,18 @@ export type AssumptionContext = {
   effects: { id: string; name: string }[];
   armor: ManifestArmorPiece[];
   terms: ManifestTerms["terms"];
+  // Clarity names the catalyst perks of a weapon, e.g. Whispered Breathing (not in the manifest).
+  clarity?: ClarityEntry[];
 };
+
+const CATALYST_TYPE = "Weapon Catalyst Exotic";
+
+/** Names of the catalyst entries Clarity lists for a weapon, e.g. ["Whisper Catalyst", "Whispered Breathing"]. */
+export const clarityCatalysts = (
+  weaponName: string,
+  clarity: ClarityEntry[] = [],
+): ClarityEntry[] =>
+  clarity.filter((e) => e.itemName === weaponName && e.type === CATALYST_TYPE);
 
 const MAX_SPELLING_DISTANCE = 2;
 const MIN_LENGTH_FOR_SPELLING = 8; // short names differ too easily
@@ -91,11 +103,18 @@ function distance(a: string, b: string): number {
 function fromSockets(
   name: string,
   weapon: ManifestWeapon,
+  clarity?: ClarityEntry[],
 ): AssumptionClass | null {
   if (/^catalyst$/i.test(name)) return { kind: "catalyst", stage: 1 };
   const lists: [AssumptionKind, string[]][] = [
     ["intrinsic", weapon.intrinsics],
-    ["catalyst", weapon.catalyst?.perks ?? []],
+    [
+      "catalyst",
+      [
+        ...(weapon.catalyst?.perks ?? []),
+        ...clarityCatalysts(weapon.name, clarity).map((e) => e.name),
+      ],
+    ],
     ["perk", weapon.perks],
     ["weaponMod", weapon.mods],
   ];
@@ -163,7 +182,7 @@ export function classifyAssumption(
 ): AssumptionClass {
   const name = assumptionName(assumption);
   return (
-    fromSockets(name, context.weapon) ??
+    fromSockets(name, context.weapon, context.clarity) ??
     fromEffects(name, context.effects) ??
     (EXECUTION.some((pattern) => pattern.test(name))
       ? { kind: "execution", stage: 3 }
@@ -227,6 +246,9 @@ export type TimingSources = Omit<AssumptionContext, "effects" | "weapon"> & {
   effects: Effect[];
 };
 
+/** True if a text names ammo, reload, fire rate, charge or the like. */
+export const changesTiming = (text: string): boolean => TIMING_WORDS.test(text);
+
 /**
  * Whether an assumption changes shots or time to empty: "timing" if its text names ammo, reload,
  * fire rate and the like (or a modelled effect has a timing part), "neutral" if its texts say
@@ -235,7 +257,7 @@ export type TimingSources = Omit<AssumptionContext, "effects" | "weapon"> & {
 export function timingImpact(
   assumption: string,
   assumptionClass: AssumptionClass,
-  { compendium, terms, armor, effects }: TimingSources,
+  { compendium, terms, armor, effects, clarity = [] }: TimingSources,
 ): "neutral" | "timing" | "unknown" {
   const name = assumptionName(assumption);
   const key = normalize(name);
@@ -247,6 +269,7 @@ export function timingImpact(
       ? "timing"
       : "neutral";
   const texts = [
+    ...clarity.filter((e) => normalize(e.name) === key).map((e) => e.text),
     ...compendium
       .filter((e) => e.tab === "Weapon Perks" && normalize(e.name) === key)
       .map((e) => e.text),

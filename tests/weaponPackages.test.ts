@@ -69,6 +69,9 @@ describe("Truth (expected from the hand table of 2026-10-20)", () => {
 });
 
 describe("Thunderlord", () => {
+  const entry = () =>
+    result.report.weapons.find((w) => w.name === "Thunderlord")!;
+
   it("is a package with Reign Havoc and lightning in the average per bullet", () => {
     const thunderlord = byName("Thunderlord")!;
     expect(value(thunderlord.damageInstances[0].damagePerTick)).toBeCloseTo(
@@ -78,13 +81,53 @@ describe("Thunderlord", () => {
     expect(value(thunderlord.totalShots)).toBe(379);
   });
 
-  it("takes the newer timing of Aegis 'post-nerf' and flags Quantum's older one", () => {
-    // Aegis: 379 bullets in 34.1 s, "assumes only one reload post-nerf"; Quantum: 57.6 s with
-    // 6 reloads. Point 7: the newer source wins, the difference stays visible (W1-4d checks it).
-    const entry = result.report.weapons.find((w) => w.name === "Thunderlord")!;
-    expect(entry.timingSource).toBe("Aegis");
-    expect(entry.timeToEmptySeconds).toBeCloseTo(34.124, 3);
-    expect(entry.notes.join(" ")).toContain("⚠ Timing: Aegis 379 Shots");
+  it("takes the Quantum timing without catalyst, since the catalyst refills ammo (Clarity)", () => {
+    // Aegis "Sustained" assumes the catalyst ("only one reload"); Clarity: "Triggering a
+    // Lightning Strike refills 5 ammo from reserves."
+    expect(entry().timingSource).toBe("Quantum");
+    expect(entry().timeToEmptySeconds).toBe(57.6);
+    expect(entry().notes.join(" ")).toContain("Katalysator ändert das Timing");
+  });
+});
+
+describe("investigated cases (W1-4d)", () => {
+  const entry = (name: string) =>
+    result.report.weapons.find((w) => w.name === name)!;
+
+  it("Whisper of the Worm: Whispered Breathing is the catalyst; base from Aegis ÷ Quantum factor", () => {
+    const whisper = byName("Whisper of the Worm")!;
+    // 1250.909 ÷ (1251 / 850) = 849.94, the Quantum value without catalyst
+    expect(value(whisper.damageInstances[0].damagePerTick)).toBeCloseTo(
+      849.94,
+      1,
+    );
+    const catalyst = whisper.options!.find((o) => o.kind === "catalyst")!;
+    expect(value(catalyst.factor)).toBeCloseTo(1251 / 850, 3);
+  });
+
+  it("Whisper of the Worm: White Nail refills the magazine, so no reloads", () => {
+    const whisper = byName("Whisper of the Worm")!;
+    expect(value(whisper.magazine)).toBe(38);
+    expect(entry("Whisper of the Worm").timeToEmptySeconds).toBe(31.7);
+  });
+
+  it("Izanagi's Burden: the stacked Honed Edge x4 is no base row", () => {
+    const izanagi = byName("Izanagi's Burden")!;
+    expect(value(izanagi.damageInstances[0].damagePerTick)).toBeCloseTo(
+      658.45,
+      2,
+    );
+  });
+
+  it("Sleeper Simulant: override to 14 shots without catalyst, 250 ms longer per shot", () => {
+    const sleeper = byName("Sleeper Simulant")!;
+    expect(value(sleeper.totalShots)).toBe(14);
+    expect(entry("Sleeper Simulant").notes.join(" ")).toContain("Override");
+  });
+
+  it("Two-Tailed Fox: gap until a hand model covers scorch and ignitions", () => {
+    expect(byName("Two-Tailed Fox")).toBeUndefined();
+    expect(entry("Two-Tailed Fox").gapReason).toContain("Handmodell");
   });
 });
 

@@ -6809,13 +6809,10 @@
       "totalShots": 30,
       "rpm": 250,
       "reloadSeconds": 1.92,
-      "timeToEmptySeconds": null,
+      "timeToEmptySeconds": 12,
       "bodyDamage": 677,
       "precisionDamage": null,
-      "textCells": {
-        "timeToEmptySeconds": "#ERROR!",
-        "precisionDamage": "N/A"
-      },
+      "textCells": { "precisionDamage": "N/A" },
       "note": ""
     },
     {

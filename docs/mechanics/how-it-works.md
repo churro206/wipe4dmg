@@ -47,9 +47,11 @@ Der Rechner erfindet keine Zahlen. Jeder Wert hat eine Quelle:
 
 | Quelle | Was wir daraus nehmen |
 | --- | --- |
-| Quantum Damage-ics | Schaden pro Shot, Ablauf der Waffe |
-| Aegis | gemessener Schaden von Supers, Grenades und Melees; Faktoren „mit / ohne“ für Perks und Katalysator |
+| Aegis | gemessener Schaden pro Shot der Waffen und von Supers, Grenades und Melees; Ablauf der Waffe („Sustained“); Faktoren „mit / ohne“ für Perks und Katalysator |
+| Quantum Damage-ics | Ablauf der Waffe (Magazin, Munition, Reload, Zeit bis leer), Gegenprobe zum Schaden |
 | Destiny Data Compendium | Einzelteile wie Explosionen, Ignitions und Taken Seeker |
+| [Clarity](https://www.d2clarity.com) | was Perks, Katalysatoren und Exotic-Rüstung genau tun, mit Zahlen. Rückmeldungen zu diesen Texten gern an Clarity über ihren [Discord](https://url.d2clarity.com/discord). Wir übernehmen die Texte nicht wörtlich, sondern leiten daraus Regeln ab (z. B. „Katalysator ändert das Timing“) |
+| Bungie-Manifest | Namen, Typen, Elemente, Perks und Icons |
 | Court (Stacking Guide) | welcher Buff in welchen Bucket gehört |
 | eigene Tests im Spiel | allgemeine Mechanics, z. B. wie schnell eine Ignition wieder möglich ist |
 
