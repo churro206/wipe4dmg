@@ -180,18 +180,27 @@ describe("extractExoticArmor", () => {
 });
 
 describe("lookupManifestTerms", () => {
-  it("finds the item type of a name anywhere in the manifest, ignoring case", () => {
+  it("finds item type and text of a name anywhere in the manifest, ignoring case", () => {
     expect(
       lookupManifestTerms(
         ["harsh refraction", "Illegally Modded Holster", "average"],
-        tables.items,
+        tables,
       ),
     ).toEqual({
       "harsh refraction": [
-        { itemType: "Artifact Perk", plugCategory: "artifact_perks" },
+        {
+          itemType: "Artifact Perk",
+          plugCategory: "artifact_perks",
+          description: "",
+        },
       ],
       "Illegally Modded Holster": [
-        { itemType: "Intrinsic", plugCategory: "intrinsics" },
+        {
+          itemType: "Intrinsic",
+          plugCategory: "intrinsics",
+          description:
+            "Hand Cannons ready faster and gain increased accuracy and bonus damage.",
+        },
       ],
     });
   });
@@ -230,9 +239,11 @@ describe("manifest data files", () => {
       slot: "legs",
       intrinsics: ["Illegally Modded Holster"],
     });
-    expect(terms["Illegally Modded Holster"]).toContainEqual({
-      itemType: "Intrinsic",
-      plugCategory: "intrinsics",
-    });
+    expect(terms["Illegally Modded Holster"]).toContainEqual(
+      expect.objectContaining({
+        itemType: "Intrinsic",
+        plugCategory: "intrinsics",
+      }),
+    );
   });
 });

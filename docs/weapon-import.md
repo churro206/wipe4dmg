@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **44 Pakete**, 35 Lücken, von Hand modelliert: One Thousand Voices.
+Umfang: exotische Special- und Heavy-Waffen. **47 Pakete**, 32 Lücken, von Hand modelliert: One Thousand Voices.
 
 ## Pakete
 
@@ -19,6 +19,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Buried Bloodline | sidearm | void | keine (1 Shot) | 322,4 | Quantum | 50 | 11 | 1,02 s | 31,1 s | 100 → 109 | 0,1 % | Timing nur aus Quantum |
 | Cloudstrike | sniperRifle | arc | average, with lightning strikes (36 Shots) | 664,4 | Quantum | 31 | 7 | 1,68 s | 17,9 s | 140 → 161 | 0,9 % | Timing nur aus Quantum |
 | Coldheart | traceRifle | arc | average, no initial trace (202 Shots) | 35,3 | Quantum | 505 | 101 | 1,44 s | 39,1 s | 900 → 907 | 1,0 % | Timing nur aus Quantum |
+| Conditional Finality | shotgun | stasis | average, body, both modes (12 Shots) | 1.422,2 | Quantum | 19 | 2 | 1,06 s | 19,4 s | 165 → 110 | 0,0 % | Timing nur aus Quantum; abgeleitete Feuerrate 110 statt 165 rpm |
 | Dead Messenger | grenadeLauncher | void | keine (1 Shot) | 1.383,7 | Aegis | 20 | 1 | 1,55 s | 29,5 s | 90 → 39 | 0,0 % | ⚠ Timing: Aegis 20 Shots in 29,5 s, Quantum 20 Shots in 32,4 s; Aegis gilt |
 | Delicate Tomb | fusionRifle | arc | hipfire (18 Shots) | 890,4 | Quantum | 26 | 6 | 1,32 s | 32,0 s | 56 → 56 | 0,6 % | Timing aus der Quantum-Zeile „Hip-fire“; Timing nur aus Quantum |
 | Deterministic Chaos | machineGun | void | average, with volatile damage, excludes weaken (48 Shots) | 126,5 | Quantum | 376 | 48 | 3,57 s | 86,3 s | 360 → 367 | 0,0 % | Timing aus der Quantum-Zeile „w/o weaken“; Timing nur aus Quantum |
@@ -27,6 +28,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Edge of Concurrence | glaive | arc | projectile (1 Shot) | 420,4 | Quantum | 33 | 7 | 1,57 s | 31,0 s | 80 → 78 | 0,1 % | Timing nur aus Quantum |
 | Edge of Intent | glaive | solar | projectile (1 Shot) | 553,8 | Quantum | 31 | 5 | 1,57 s | 50,8 s | 45 → 43 | 0,0 % | Timing nur aus Quantum |
 | Eriana's Vow | handCannon | solar | Death At First Glance (1 Shot) | 491,2 | Quantum | 35 | 9 | 1,66 s | 25,6 s | 90 → 99 | 0,0 % | Timing nur aus Quantum |
+| Euphony | linearFusionRifle | strand | burst, without threadlings (1 Shot) | 1.317,5 | Aegis | 21 | 6 | 2,10 s | 31,5 s | 42 → 41 | 0,0 % | Timing aus Aegis-Zeile mit Pack Tactics (simplified underestimate of 3 stack start) (laut Text ohne Einfluss auf das Timing); Timing: Aegis und Quantum stimmen überein |
 | Eyes of Tomorrow | rocketLauncher | solar | volley (1 Shot) | 2.703,6 | Quantum | 10 | 1 | 2,35 s | 29,3 s | 72 → 66 | 0,1 % | Timing nur aus Quantum |
 | Forerunner | sidearm | kinetic | keine (1 Shot) | 297,9 | Aegis | 70 | 12 | 1,33 s | 24,8 s | 200 → 212 | 0,0 % | ⚠ Timing: Aegis 70 Shots in 24,8 s, Quantum 70 Shots in 27,4 s; Aegis gilt |
 | Gjallarhorn | rocketLauncher | solar | keine (8 Shots) | 1.892,2 | Quantum | 11 | 2 | 2,35 s | 18,2 s | 47 → 93 | 0,9 % | Timing nur aus Quantum; abgeleitete Feuerrate 93 statt 47 rpm |
@@ -34,10 +36,11 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Jötunn | fusionRifle | solar | average, successive shots (10 Shots) | 1.048,3 | Aegis | 24 | 5 | 2,07 s | 31,7 s | – → 49 | 0,0 % | Timing nur aus Aegis |
 | Legend of Acrius | shotgun | arc | body (1 Shot) | 1.990,4 | Quantum | 16 | 6 | 0,43 s | 21,1 s | 55 → 44 | 0,0 % | ⚠ Timing aus der Quantum-Zeile „cata“ mit Katalysator; Timing nur aus Quantum |
 | Leviathan's Breath | bow | void | keine (6 Shots) | 2.170,1 | Quantum | 9 | 1 | 0,60 s | 17,4 s | 31 → 38 | 1,3 % | Timing nur aus Quantum |
-| Lord of Wolves | shotgun | solar | average, includes ignition/scorch (120 Shots) | 186,1 | Quantum | 189 | 30 | 0,92 s | 22,6 s | 640 → 660 | 2,7 % | Timing aus der Quantum-Zeile „ADS“; Timing nur aus Quantum |
+| Lord of Wolves | shotgun | solar | average, includes ignition/scorch (120 Shots) | 186,1 | Quantum | 189 | 30 | 0,92 s | 22,6 s | 640 → 660 | 0,0 % | Timing aus der Quantum-Zeile „ADS“; Timing nur aus Quantum |
 | Lorentz Driver | linearFusionRifle | void | keine (1 Shot) | 1.086,1 | Quantum | 21 | 6 | 1,32 s | 23,7 s | 58 → 61 | 0,0 % | Timing nur aus Quantum |
-| Microcosm | traceRifle | kinetic | keine (1 Shot) | 82,8 | Quantum | 385 | 120 | 1,44 s | 29,7 s | 900 → 908 | 0,1 % | Timing nur aus Quantum |
+| Microcosm | traceRifle | kinetic | keine (1 Shot) | 82,8 | Aegis | 385 | 120 | 1,12 s | 28,9 s | 900 → 896 | 0,1 % | Timing aus Aegis-Zeile mit Harsh Refraction (laut Text ohne Einfluss auf das Timing); Timing: Aegis und Quantum stimmen überein |
 | New Land Beyond | sniperRifle | kinetic | no stacks (20 Shots) | 1.029,0 | Quantum | 40 | 8 | 1,98 s | 72,7 s | 32 → 36 | 0,0 % | Timing aus der Quantum-Zeile „The Master 0x“; Timing nur aus Quantum |
+| New Malpais | pulseRifle | strand | average, 3 bursts, includes suspend, excludes unravel (3 Shots) | 1.159,9 | Aegis | 27 | 7 | 1,38 s | 24,7 s | – → 67 | 0,0 % | Timing nur aus Aegis |
 | Parasite | grenadeLauncher | solar | keine (1 Shot) | 2.133,4 | Quantum | 18 | 1 | 2,08 s | 35,4 s | 120 → 25.500 | 0,0 % | Timing nur aus Quantum |
 | Ruinous Effigy | traceRifle | void | keine (1 Shot) | 40,1 | Quantum | 470 | 94 | 1,44 s | 36,8 s | 900 → 907 | 0,4 % | Timing nur aus Quantum |
 | Service of Luzaku | machineGun | strand | keine (1 Shot) | 156,7 | Quantum | 300 | 47 | 3,57 s | 70,3 s | 360 → 367 | 0,2 % | Timing nur aus Quantum |
@@ -50,7 +53,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | The Fourth Horseman | shotgun | arc | body, full mag (1 Shot) | 4.197,6 | Quantum | 20 | 4 | 0,43 s | 12,2 s | 300 → 109 | 0,1 % | Timing nur aus Quantum; abgeleitete Feuerrate 109 statt 300 rpm |
 | The Navigator | traceRifle | strand | keine (1 Shot) | 28,6 | Quantum | 485 | 97 | 1,44 s | 37,8 s | 900 → 906 | 1,3 % | Timing nur aus Quantum |
 | The Wardcliff Coil | rocketLauncher | arc | average, volley, excludes Bolt Charge (1 Shot) | 2.403,2 | Quantum | 8 | 1 | 2,35 s | 21,4 s | 86 → 85 | 0,1 % | Timing nur aus Quantum |
-| Thunderlord | machineGun | arc | average, with lightning strikes, excludes Bolt Charge (127 Shots) | 113,9 | Quantum | 379 | 62 | 3,57 s | 57,6 s | 617 → 627 | 0,9 % | Timing nur aus Quantum |
+| Thunderlord | machineGun | arc | average, with lightning strikes, excludes Bolt Charge (127 Shots) | 113,9 | Aegis | 379 | 379 | 2,83 s | 34,1 s | 617 → 665 | 0,1 % | ⚠ Timing: Aegis 379 Shots in 34,1 s, Quantum 379 Shots in 57,6 s; Aegis gilt |
 | Tractor Cannon | shotgun | void | body (6 Shots) | 522,5 | Aegis | 18 | 7 | 1,58 s | 14,2 s | 80 → 82 | 0,1 % | Timing: Aegis und Quantum stimmen überein |
 | Truth | rocketLauncher | void | average, Prototype Truthseeker (9 Shots) | 2.179,3 | Quantum | 20 | 3 | 2,35 s | 17,4 s | 47 → 345 | 0,1 % | Timing nur aus Quantum; abgeleitete Feuerrate 345 statt 47 rpm |
 | Vexcalibur | glaive | void | projectile (1 Shot) | 573,2 | Aegis | 32 | 7 | 1,08 s | 23,6 s | 80 → 84 | 0,0 % | ⚠ Timing: Aegis 32 Shots in 23,6 s, Quantum 33 Shots in 28,1 s; Aegis gilt |
@@ -71,17 +74,15 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | --- | --- | --- |
 | Anarchy | grenadeLauncher | keine Aegis-Zeile ohne fremde Annahmen |
 | Black Talon | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
-| Choir of One | autoRifle | Skala Aegis gegen Quantum weicht um 82.1 % ab |
-| Conditional Finality | shotgun | Skala Aegis gegen Quantum weicht um 4.6 % ab |
+| Choir of One | autoRifle | Skala Aegis gegen Quantum weicht um 4.4 % ab |
 | Cull's Shadow | fusionRifle | Skala Aegis gegen Quantum weicht um 25.8 % ab |
 | D.A.R.C.I. | sniperRifle | keine Aegis-Zeile ohne fremde Annahmen |
 | Deathbringer | rocketLauncher | Skala Aegis gegen Quantum weicht um 51.4 % ab |
 | Divinity | traceRifle | keine Aegis-Zeile ohne fremde Annahmen |
 | Duality | shotgun | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine passende Quantum-Zeile (nur „cata, pellet“, „cata, slug“, „cata, On Black Wings x3“) |
 | Ergo Sum | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
-| Euphony | linearFusionRifle | Skala Aegis gegen Quantum weicht um 15.6 % ab |
-| Ex Diris | grenadeLauncher | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine passende Quantum-Zeile (nur „No Enrage“, „Max Enrage“) |
-| Fafnir | linearFusionRifle | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
+| Ex Diris | grenadeLauncher | kein Timing: Aegis: kein Reload in den Notizen; keine passende Quantum-Zeile (nur „No Enrage“, „Max Enrage“) |
+| Fafnir | linearFusionRifle | kein Timing: Aegis: kein Reload in den Notizen; keine Quantum-Zeile |
 | Finality's Auger | linearFusionRifle | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; Quantum: ohne Magazin, Munition oder Reload ({"totalDamage":"#VALUE!","totalShots":"???","timeToEmptySeconds":"#NUM!"}) |
 | Grand Overture | machineGun | Skala Aegis gegen Quantum weicht um 12.9 % ab |
 | Heartshadow | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
@@ -89,7 +90,6 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | Ice Breaker | sniperRifle | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; Quantum: ohne Magazin, Munition oder Reload ({"totalShots":"N/A","reloadSeconds":"N/A"}) |
 | Izanagi's Burden | sniperRifle | Skala Aegis gegen Quantum weicht um 154.2 % ab |
 | Merciless | fusionRifle | Skala Aegis gegen Quantum weicht um 80.0 % ab |
-| New Malpais | pulseRifle | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Praxic Blade | sword | kein Timing: keine Quantum-Zeile |
 | Prometheus Lens | traceRifle | kein Timing: keine Quantum-Zeile |
 | Salvation's Grip | grenadeLauncher | Skala Aegis gegen Quantum weicht um 58.8 % ab |

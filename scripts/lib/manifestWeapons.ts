@@ -275,32 +275,31 @@ export function extractExoticArmor(
 }
 
 /**
- * Item type and plug category of every manifest item with one of the names, ignoring case. The
+ * Item type, plug category and text of every manifest item with one of the names, ignoring case. The
  * weapon import uses this to tell what an Aegis assumption is (ADR 0013, point 3). Names without
  * a match are left out.
  */
 export function lookupManifestTerms(
   names: string[],
-  items: Record<string, ManifestWeaponItem>,
+  tables: WeaponManifestTables,
 ): ManifestTerms["terms"] {
   const wanted = new Map(names.map((name) => [name.toLowerCase(), name]));
   const found: ManifestTerms["terms"] = {};
-  for (const item of Object.values(items)) {
+  for (const item of Object.values(tables.items)) {
     const name = wanted.get(nameOf(item).toLowerCase());
     if (!name) continue;
     const match = {
       itemType: item.itemTypeDisplayName ?? "",
       plugCategory: item.plug?.plugCategoryIdentifier ?? "",
+      description: joinTexts(texts([item], tables)),
     };
     const list = (found[name] ??= []);
-    if (
-      !list.some(
-        (m) =>
-          m.itemType === match.itemType &&
-          m.plugCategory === match.plugCategory,
-      )
-    )
-      list.push(match);
+    const same = list.find(
+      (m) =>
+        m.itemType === match.itemType && m.plugCategory === match.plugCategory,
+    );
+    if (!same) list.push(match);
+    else if (!same.description) same.description = match.description;
   }
   return found;
 }

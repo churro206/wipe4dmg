@@ -6,11 +6,7 @@
   },
   {
     "name": "Choir of One",
-    "reason": "Skala Aegis gegen Quantum weicht um 82.1 % ab"
-  },
-  {
-    "name": "Conditional Finality",
-    "reason": "Skala Aegis gegen Quantum weicht um 4.6 % ab"
+    "reason": "Skala Aegis gegen Quantum weicht um 4.4 % ab"
   },
   {
     "name": "Cull's Shadow",
@@ -31,16 +27,12 @@
     "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
   },
   {
-    "name": "Euphony",
-    "reason": "Skala Aegis gegen Quantum weicht um 15.6 % ab"
-  },
-  {
     "name": "Ex Diris",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine passende Quantum-Zeile (nur „No Enrage“, „Max Enrage“)"
+    "reason": "kein Timing: Aegis: kein Reload in den Notizen; keine passende Quantum-Zeile (nur „No Enrage“, „Max Enrage“)"
   },
   {
     "name": "Fafnir",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
+    "reason": "kein Timing: Aegis: kein Reload in den Notizen; keine Quantum-Zeile"
   },
   {
     "name": "Finality's Auger",
@@ -69,10 +61,6 @@
   {
     "name": "Merciless",
     "reason": "Skala Aegis gegen Quantum weicht um 80.0 % ab"
-  },
-  {
-    "name": "New Malpais",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
   },
   { "name": "Praxic Blade", "reason": "kein Timing: keine Quantum-Zeile" },
   { "name": "Prometheus Lens", "reason": "kein Timing: keine Quantum-Zeile" },

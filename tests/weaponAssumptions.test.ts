@@ -7,6 +7,7 @@ import {
   abilityKindsNamed,
   armorForWeapon,
   classifyAssumption,
+  timingImpact,
   type AssumptionContext,
 } from "../scripts/lib/weaponAssumptions";
 import rawAegis from "../src/data/aegis-weapons.json";
@@ -14,11 +15,13 @@ import rawEffects from "../src/data/effects.json";
 import rawArmor from "../src/data/manifest-armor.json";
 import rawTerms from "../src/data/manifest-terms.json";
 import rawWeapons from "../src/data/manifest-weapons.json";
+import { loadEffects } from "../src/engine/loadData";
 import {
   AegisWeaponSnapshot,
   ManifestArmor,
   ManifestTerms,
   ManifestWeapons,
+  type CompendiumEntry,
   type ManifestArmorPiece,
   type ManifestWeapon,
 } from "../src/data/schema";
@@ -65,16 +68,28 @@ const context = (weapon: ManifestWeapon): AssumptionContext => ({
   armor: [luckyPants],
   terms: {
     "Illegally Modded Holster": [
-      { itemType: "Intrinsic", plugCategory: "intrinsics" },
+      { itemType: "Intrinsic", plugCategory: "intrinsics", description: "" },
     ],
     "Harsh Refraction": [
-      { itemType: "Artifact Perk", plugCategory: "artifact_perks" },
+      {
+        itemType: "Artifact Perk",
+        plugCategory: "artifact_perks",
+        description: "Rapid hits with Stasis weapons increase their damage.",
+      },
     ],
-    "Pack Hunter": [{ itemType: "Trait", plugCategory: "frames" }],
+    "Pack Hunter": [
+      { itemType: "Trait", plugCategory: "frames", description: "" },
+    ],
     "Impact Casing": [
-      { itemType: "Weapon Mod", plugCategory: "v400.weapon.mod_damage" },
+      {
+        itemType: "Weapon Mod",
+        plugCategory: "v400.weapon.mod_damage",
+        description: "",
+      },
     ],
-    "Celestial Nighthawk": [{ itemType: "Helmet", plugCategory: "" }],
+    "Celestial Nighthawk": [
+      { itemType: "Helmet", plugCategory: "", description: "" },
+    ],
   },
 });
 const kind = (assumption: string, weapon = truth) =>
@@ -149,6 +164,18 @@ describe("classifyAssumption, stage 3: execution", () => {
     "Linear Fusion Mode",
     "entire turret duration",
     "Missile Loaded",
+    "1H2L combo",
+    "heavy attacks",
+    "held down",
+    "average across both shots",
+    "assumes max frenzy",
+    "starts at 0 stacks",
+    "max projectile height",
+    "volleys when available",
+    "typical boss model",
+    "9 ammo consumed",
+    "two kills",
+    "simulated",
   ])("%s", (assumption) => {
     expect(kind(assumption)).toEqual({ kind: "execution", stage: 3 });
   });
@@ -239,5 +266,47 @@ describe("real data", () => {
         ).toBeTruthy();
       }
     }
+  });
+});
+
+describe("timingImpact (ADR 0013, point 15)", () => {
+  const effects = loadEffects(rawEffects);
+  const compendium: CompendiumEntry[] = [
+    {
+      tab: "Weapon Perks",
+      section: "Weapon Traits",
+      name: "Reaper's Tithe",
+      text: "Grants stacks of Reaper's Tithe based on the amount of simultaneously killed enemies.\n20% | 30% | 40% Increased Weapon Damage for 15 seconds.",
+      extra: "",
+    },
+    {
+      tab: "Weapon Perks",
+      section: "Weapon Traits",
+      name: "Envious Arsenal",
+      text: "Reloads this weapon from reserves when the other two weapons are empty.",
+      extra: "",
+    },
+  ];
+  const impact = (assumption: string, weapon = truth) =>
+    timingImpact(assumption, kind(assumption, weapon), {
+      ...context(weapon),
+      compendium,
+      effects,
+    });
+
+  it("calls a pure damage buff neutral", () => {
+    expect(impact("Reaper's Tithe x4")).toBe("neutral");
+    expect(impact("Harsh Refraction")).toBe("neutral");
+    expect(impact("Weaken")).toBe("neutral");
+  });
+
+  it("calls anything about reload, ammo, fire rate or readiness timing", () => {
+    expect(impact("Envious Arsenal")).toBe("timing");
+    expect(impact("Illegally Modded Holster", eriana)).toBe("timing"); // "ready faster"
+    expect(impact("Particle Reconstruction")).toBe("timing"); // timing part
+  });
+
+  it("is unknown without any text", () => {
+    expect(impact("blighted")).toBe("unknown");
   });
 });

@@ -141,7 +141,7 @@ const assumptionNames = [
 ].flatMap((row) => row.assumptions.map(assumptionName));
 const manifestTerms = ManifestTerms.parse({
   ...header,
-  terms: lookupManifestTerms([...new Set(assumptionNames)], tables.items),
+  terms: lookupManifestTerms([...new Set(assumptionNames)], tables),
 });
 await writeData("manifest-terms.json", manifestTerms);
 console.log(

@@ -3,6 +3,8 @@
 
 import type {
   AbilityKind,
+  CompendiumEntry,
+  Effect,
   ManifestArmorPiece,
   ManifestTerms,
   ManifestWeapon,
@@ -52,6 +54,14 @@ const EXECUTION: RegExp[] = [
   /\b(excluded|included)$/i,
   /\b(mode|modes|duration)$/i,
   /\b(loaded|ready)$/i, // states of the weapon, e.g. "Missile Loaded"
+  /^(\d+[LHR])+ combo$/i, // "1H2L combo"
+  /^(heavy|light) (attacks|spam)$/i,
+  /^(held down|precision|simulated|spaced\*?)$/i,
+  /^(average|assumes?|starts? at|hone before)\b/i, // "average across both shots", "assumes max frenzy"
+  /\b(height|uptime|consistency|when available)$/i, // "max projectile height", "volleys when available"
+  /\bboss (model|against wall)$/i, // "typical boss model"
+  /^\d+ ammo consumed$/i,
+  /^(one|two|three|\d+) kills?$/i,
 ];
 const INCLUDES = /\binclude[sd]?\b/i;
 const ARMOR_ITEM_TYPES =
@@ -206,4 +216,51 @@ export function abilityKindsNamed(
   return ABILITY_WORDS.filter(([, pattern]) => pattern.test(text))
     .map(([kind]) => kind)
     .sort();
+}
+
+// Words in a text that mean an assumption changes shots or time to empty (ADR 0013, point 15).
+const TIMING_WORDS =
+  /\b(reload\w*|ammo|ammunition|magazine|reserves?|fire rate|rate of fire|rounds per minute|rpm|charge time|charge rate|charges? faster|swap\w*|stow\w*|ready|readies|refill\w*|draw time)\b/i;
+
+export type TimingSources = Omit<AssumptionContext, "effects" | "weapon"> & {
+  compendium: CompendiumEntry[];
+  effects: Effect[];
+};
+
+/**
+ * Whether an assumption changes shots or time to empty: "timing" if its text names ammo, reload,
+ * fire rate and the like (or a modelled effect has a timing part), "neutral" if its texts say
+ * nothing of that, "unknown" without any text.
+ */
+export function timingImpact(
+  assumption: string,
+  assumptionClass: AssumptionClass,
+  { compendium, terms, armor, effects }: TimingSources,
+): "neutral" | "timing" | "unknown" {
+  const name = assumptionName(assumption);
+  const key = normalize(name);
+  const effect = effects.find(
+    (e) => e.id === assumptionClass.effectId || normalize(e.name) === key,
+  );
+  if (effect)
+    return effect.parts.some((part) => part.type === "timing")
+      ? "timing"
+      : "neutral";
+  const texts = [
+    ...compendium
+      .filter((e) => e.tab === "Weapon Perks" && normalize(e.name) === key)
+      .map((e) => e.text),
+    ...(
+      Object.entries(terms).find(([term]) => normalize(term) === key)?.[1] ?? []
+    ).map((m) => m.description),
+    ...armor
+      .filter(
+        (a) =>
+          normalize(a.name) === key ||
+          a.intrinsics.some((i) => normalize(i) === key),
+      )
+      .map((a) => a.description),
+  ].filter((text) => text.trim() !== "");
+  if (texts.length === 0) return "unknown";
+  return texts.some((text) => TIMING_WORDS.test(text)) ? "timing" : "neutral";
 }

@@ -555,7 +555,13 @@ export const ManifestTerms = z.object({
   retrieved: z.string(),
   terms: z.record(
     z.string(),
-    z.array(z.object({ itemType: z.string(), plugCategory: z.string() })),
+    z.array(
+      z.object({
+        itemType: z.string(),
+        plugCategory: z.string(),
+        description: z.string(), // item text, else the texts of its sandbox perks
+      }),
+    ),
   ),
 });
 export type ManifestTerms = z.infer<typeof ManifestTerms>;

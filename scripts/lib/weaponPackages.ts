@@ -26,6 +26,7 @@ import {
   abilityKindsNamed,
   armorForWeapon,
   classifyAssumption,
+  timingImpact,
   type AssumptionClass,
   type AssumptionKind,
 } from "./weaponAssumptions.ts";
@@ -536,14 +537,47 @@ export function buildWeaponImport(
         armor: inputs.armor,
         terms: inputs.terms,
       }).kind;
+    // A row may carry foreign assumptions (meta builds) if their texts say nothing about ammo,
+    // reload or fire rate (point 15); rows with fewer of them come first.
+    const timingSources = {
+      compendium: inputs.compendium,
+      terms: inputs.terms,
+      armor: inputs.armor,
+      effects: inputs.effects,
+    };
+    const foreignOf = (row: AegisSustainedRow) =>
+      row.assumptions.filter((a) => !BASE_KINDS.includes(classifyLabel(a)));
     const sustainedRows = inputs.sustained.rows
       .filter((r) => r.name === manifest.name)
       .filter((r) =>
-        r.assumptions.every((a) => BASE_KINDS.includes(classifyLabel(a))),
+        foreignOf(r).every(
+          (a) =>
+            timingImpact(
+              a,
+              classifyAssumption(a, {
+                weapon: manifest,
+                effects: effectNames,
+                armor: inputs.armor,
+                terms: inputs.terms,
+              }),
+              timingSources,
+            ) === "neutral",
+        ),
       )
-      .sort((a, b) => a.assumptions.length - b.assumptions.length);
+      .sort(
+        (a, b) =>
+          foreignOf(a).length - foreignOf(b).length ||
+          a.assumptions.length - b.assumptions.length,
+      );
     const aegisTimings = sustainedRows.map(timingFromAegis);
     const aegis = aegisTimings.find((t): t is Timing => "intervalSeconds" in t);
+    const aegisRow = aegis
+      ? sustainedRows.find((r) => r.id === aegis.rowId)
+      : undefined;
+    if (aegisRow && foreignOf(aegisRow).length > 0)
+      entry.notes.push(
+        `Timing aus Aegis-Zeile mit ${foreignOf(aegisRow).join(", ")} (laut Text ohne Einfluss auf das Timing)`,
+      );
 
     // Quantum: the row without variant, else a variant that only describes the execution
     // (e.g. "direct impact", "ADS"), else a catalyst row with a warning.

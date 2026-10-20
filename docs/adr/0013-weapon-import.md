@@ -50,6 +50,18 @@ ADR 0009 löst dasselbe Problem für Abilities: Import, Regel für die Basiszeil
 12. **Handmodell bleibt möglich:** Waffen, deren Intrinsic mit Build-Entscheidungen zusammenspielt (One Thousand Voices mit Scorch und Ember of Ashes), bleiben als eigene Data File in `src/data/weapons/` (ADR 0012). Sie gehen dem Import vor.
 13. **Codes:** Jede Waffe behält ihren Link-Code für immer. Der Import liest vergebene Codes aus `src/data/weapon-codes.json` und vergibt neue fortlaufend. Codes verschwundener Waffen werden nie neu vergeben.
 
+14. **Eine Wahrheit pro Feld** (Ergänzung 2026-10-20). Das Manifest kommt von Bungie und ist die Wahrheit für Struktur und Identität. Seine Stats sind aber Anzeigewerte, nicht die echten (Probe: alle Rocket Launcher zeigen 15 RPM statt etwa 47, Truth Magazin 1 statt 3, Thunderlord 450 statt 617 RPM, Xenophage Magazin 20 statt 13; der Inhaber bestätigt 13). Für Zahlen gelten deshalb die Messungen der Community.
+
+    | Feld | Hauptquelle | Gegenprobe |
+    | --- | --- | --- |
+    | Name, Typ, Element, Munition, Perks, Katalysator, Exotic-Rüstung, Texte | Manifest | – |
+    | Schaden pro Shot, Optionen | Aegis „Weapons“ | Quantum, Aegis „Sustained“ (Base) |
+    | Shots, Magazin, Reload, Zeit bis leer | Aegis „Sustained“, sonst Quantum | die andere Quelle; Manifest-Anzeige nur als Hinweis |
+    | Mechaniken mit Zahlen (0,2x, +40 %) | Compendium | Aegis „mit / ohne“ |
+    | Dauer und Bedingung von Optionen | Compendium | Manifest-Text |
+
+15. **Timing trotz fremder Annahmen:** Eine Aegis-„Sustained“-Zeile taugt fürs Timing, auch wenn sie fremde Annahmen enthält (meist Meta-Builds), solange keine davon das Timing ändert. Das entscheidet der Text der Annahme: Compendium (Weapon Perks), Manifest (Item-Beschreibung, Intrinsic der Exotic-Rüstung) oder unser Effect (nur Multiplier, keine Timing-Parts). Nennt der Text Munition, Reload, Magazin, Reserven, Feuerrate, Charge oder Swap, oder gibt es keinen Text, taugt die Zeile nicht. Die Prüftabelle nennt die Annahmen, die so zugelassen wurden.
+
 ## Folgen
 
 - Eine neue Waffe kostet keine Recherche, solange sie die Regeln besteht. Nach einem Patch zeigt ein neuer Import, was sich geändert hat.

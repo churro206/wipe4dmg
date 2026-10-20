@@ -3,6 +3,7 @@
 ## Unveröffentlicht
 
 - Versionsanzeige unten auf der Seite.
+- Waffen-Import, Teil 4: Aegis-Zeilen mit Meta-Builds zählen fürs Timing, wenn deren Annahmen laut Text Munition, Reload und Feuerrate nicht ändern (z. B. Dawn Chorus, Solar Fulmination); Argent Ordnance und Sniper's Meditation ändern sie und bleiben gesperrt. 47 Pakete.
 - Waffen-Import, Teil 3: Aegis-Reiter „Sustained“ als zweite Quelle für das Timing; beide Quellen werden verglichen, Abweichungen stehen in der Prüftabelle. 44 Pakete.
 - Waffen-Import, Teil 2: 38 exotische Special- und Heavy-Waffen als Pakete (Wert pro Shot von Aegis, Timing von Quantum), darunter Truth und Thunderlord; Truths Katalysator Reaper's Tithe als Option ×1,40 (markiert: 15 s, braucht gleichzeitige Kills). Prüftabelle `docs/weapon-import.md`. Noch nicht wählbar.
 - Waffen-Import, Teil 1 (ADR 0013): Snapshots der Waffen-Tabellen von Aegis und Quantum sowie der Compendium-Texte zu Exotic Weapons und Weapon Perks. Aus dem Bungie-Manifest 141 exotische Waffen mit Intrinsic, Perks und Katalysator sowie 141 Exotic-Rüstungen. Jede Annahme einer Aegis-Zeile wird automatisch eingeordnet (Intrinsic, Katalysator, Perk, Mod, Effect, Ausführung, Exotic-Rüstung, Artefakt); Rüstung, die einen Waffentyp nennt (z. B. Lucky Pants bei Hand Cannons), wird erkannt.

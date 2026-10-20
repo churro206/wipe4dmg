@@ -2,399 +2,1082 @@
   "manifestVersion": "245114.26.10.13.2000-1-bnet.66137",
   "retrieved": "2026-10-20",
   "terms": {
-    "Dual Speed Receiver": [{ "itemType": "Trait", "plugCategory": "frames" }],
-    "vortex frame": [
-      { "itemType": "Enhanced Intrinsic", "plugCategory": "intrinsics" },
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" },
-      { "itemType": "Intrinsic", "plugCategory": "frames" }
+    "Dual Speed Receiver": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "When aiming down sights, weapon rate of fire slows while weapon damage increases. Final blows while aiming down sights grant bonus Heavy ammo progress. [Alternate Weapon Action]  to swap to Spinning Up."
+      }
     ],
-    "Peacekeepers": [{ "itemType": "Leg Armor", "plugCategory": "" }],
+    "vortex frame": [
+      {
+        "itemType": "Enhanced Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "[Heavy Attack]  : Launch a heavy spin attack.\nHeavy attacks are stronger with full energy."
+      },
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "[Heavy Attack]  : Launch a heavy spin attack.\nHeavy attacks are stronger with full energy."
+      },
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "frames",
+        "description": "[Heavy Attack]  : Launch a heavy spin attack.\nHeavy attacks are stronger with full energy."
+      }
+    ],
+    "Peacekeepers": [
+      { "itemType": "Leg Armor", "plugCategory": "", "description": "" }
+    ],
     "Enhanced Impact": [
       {
         "itemType": "Enhanced Weapon Mod",
-        "plugCategory": "v400.weapon.mod_damage"
+        "plugCategory": "v400.weapon.mod_damage",
+        "description": "+10 Impact"
       }
     ],
     "Tactical Mag": [
-      { "itemType": "Magazine", "plugCategory": "magazines" },
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines" }
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines",
+        "description": "This weapon has multiple tactical improvements.\n  •  Slightly increases stability\n  •  Increases reload speed\n  •  Slightly increases magazine size"
+      },
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines",
+        "description": "This weapon has multiple tactical improvements.\n  •  Slightly increases stability\n  •  Increases reload speed\n  •  Slightly increases magazine size"
+      }
     ],
     "Reaper's Tithe": [
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Multiple simultaneous final blows queue up a stacking damage buff. Timer starts on next weapon fire; final blows extend this timer."
+      },
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Multiple simultaneous final blows queue up a stacking damage buff. Improved timer starts on next weapon fire; final blows extend this timer.\nMultiple simultaneous final blows queue up a stacking damage buff. Timer starts on next weapon fire; final blows extend this timer."
+      }
     ],
     "lightweight frame": [
-      { "itemType": "Enhanced Intrinsic", "plugCategory": "intrinsics" },
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" },
-      { "itemType": "Intrinsic", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "One-shot handheld Grenade Launcher with remote detonation. \n[Shoot]  : Fire; release to detonate.\nOne-shot, status effect grenades."
+      },
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "One-shot handheld Grenade Launcher with remote detonation. \n[Shoot]  : Fire; release to detonate.\nOne-shot, status effect grenades."
+      },
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "frames",
+        "description": "Fast movement.\n[Heavy Attack]  : Dash attack."
+      }
     ],
     "Facet of Command": [
       {
         "itemType": "Prismatic Fragment",
-        "plugCategory": "shared.prism.fragments"
+        "plugCategory": "shared.prism.fragments",
+        "description": "Freezing or suppressing a target reloads your equipped weapons and increases weapon stability, aim assist, and airborne effectiveness.\n\nDefeating frozen or suppressed targets creates a Stasis Shard or Void Breach."
       }
     ],
-    "Dynamic Charge": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Dynamic Charge": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Final blows and precision hits build up Dynamic Charge. Swapping to Arc Seeker mode increases damage and partially reloads the magazine based on the number of charges. Charged Arc Seeker hits grant, and can spend, Bolt Charge."
+      }
+    ],
     "caster frame": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" },
-      { "itemType": "Intrinsic", "plugCategory": "frames" },
-      { "itemType": "Enhanced Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "[Heavy Attack]  : Launch a heavy projectile attack.\nHeavy attacks are stronger with full energy."
+      },
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "frames",
+        "description": "[Heavy Attack]  : Launch a heavy projectile attack.\nHeavy attacks are stronger with full energy."
+      },
+      {
+        "itemType": "Enhanced Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "[Heavy Attack]  : Launch a heavy projectile attack.\nHeavy attacks are stronger with full energy."
+      }
     ],
     "Archer's Tempo": [
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Draw time decreases after every precision hit."
+      },
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Draw time substantially decreases after every precision hit for a longer duration."
+      }
     ],
     "Paracausal Shot": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Final blows and precision hits with Hawkmoon grant stacks of Paracausal Charge, increasing damage versus combatants. The final round in the magazine greatly increases damage based on the number of stacks. Stowing Hawkmoon on the final round removes this bonus.\nFinal round damage for precision hits."
+      }
     ],
     "Detonator Beam": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Dealing sustained damage creates an explosion around the target. Triggers faster."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Dealing sustained damage creates an explosion around the target."
+      }
     ],
     "Impact Casing": [
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines_gl" },
-      { "itemType": "Magazine", "plugCategory": "magazines_gl" }
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "Increased damage on direct hits.\n  •  Increases stability"
+      },
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "Increased damage on direct hits.\n  •  Increases stability"
+      }
     ],
     "wave sword frame": [
-      { "itemType": "Intrinsic", "plugCategory": "frames" },
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "frames",
+        "description": "Heavy attack deploys a shockwave uppercut and launches the user into the air.\nAn immediate follow-up swing after the uppercut deploys a homing strike that aggressively seeks a target."
+      },
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Heavy attack deploys a shockwave uppercut and launches the user into the air.\nAn immediate follow-up swing after the uppercut deploys a homing strike that aggressively seeks a target."
+      }
     ],
-    "Release the Wolves": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Release the Wolves": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "When firing from the hip, this weapon shoots in full auto and damage and rate of fire are increased, but accuracy and range are decreased."
+      }
+    ],
     "Target Lock": [
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Damage increases the longer this weapon remains on a target."
+      },
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Damage increases by an improved amount the longer this weapon remains on a target."
+      }
     ],
     "Spike Grenades": [
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines_gl" },
-      { "itemType": "Magazine", "plugCategory": "magazines_gl" }
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "Grenades fired from this weapon do increased damage on direct hits.\n  •  Increases stability"
+      },
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "Grenades fired from this weapon do increased damage on direct hits.\n  •  Increases stability"
+      }
     ],
     "Envious Assassin": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Defeating targets with other weapons before drawing this one transfers additional ammo to the magazine from reserves. This effect can overflow the magazine based on the number of targets defeated."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Defeating targets with other weapons before drawing this one transfers ammo to the magazine from reserves. This effect can overflow the magazine based on the number of targets defeated."
+      }
     ],
     "Rally Barricade": [
       {
         "itemType": "Class Ability",
-        "plugCategory": "titan.arc.class_abilities"
+        "plugCategory": "titan.arc.class_abilities",
+        "description": "Creates a small barrier that you can peek over while aiming down sights; increases weapon reload speed, stability, and range. Draws hostile fire when you stand behind it."
       },
       {
         "itemType": "Class Ability",
-        "plugCategory": "titan.strand.class_abilities"
+        "plugCategory": "titan.strand.class_abilities",
+        "description": "Creates a small barrier that you can peek over while aiming down sights; increases weapon reload speed, stability, and range. Draws hostile fire when you stand behind it."
       },
       {
         "itemType": "Class Ability",
-        "plugCategory": "titan.solar.class_abilities"
+        "plugCategory": "titan.solar.class_abilities",
+        "description": "Creates a small barrier that you can peek over while aiming down sights; increases weapon reload speed, stability, and range. Draws hostile fire when you stand behind it."
       },
       {
         "itemType": "Class Ability",
-        "plugCategory": "titan.void.class_abilities"
+        "plugCategory": "titan.void.class_abilities",
+        "description": "Creates a small barrier that you can peek over while aiming down sights; increases weapon reload speed, stability, and range. Draws hostile fire when you stand behind it."
       },
       {
         "itemType": "Class Ability",
-        "plugCategory": "titan.prism.class_abilities"
+        "plugCategory": "titan.prism.class_abilities",
+        "description": "Creates a small barrier that you can peek over while aiming down sights; increases weapon reload speed, stability, and range. Draws hostile fire when you stand behind it."
       },
       {
         "itemType": "Class Ability",
-        "plugCategory": "titan.stasis.class_abilities"
+        "plugCategory": "titan.stasis.class_abilities",
+        "description": "Creates a small barrier that you can peek over while aiming down sights; increases weapon reload speed, stability, and range. Draws hostile fire when you stand behind it."
       }
     ],
     "Lucent Blades": [
-      { "itemType": "Chest Armor Mod", "plugCategory": "enhancements.v2_chest" }
+      {
+        "itemType": "Chest Armor Mod",
+        "plugCategory": "enhancements.v2_chest",
+        "description": "Increases the energy recharge rate of your equipped Swords. Your equipped Glaives gain more energy from dealing damage with their ranged attacks."
+      }
     ],
     "Hard Launch": [
-      { "itemType": "Enhanced Launcher Barrel", "plugCategory": "tubes" },
-      { "itemType": "Launcher Barrel", "plugCategory": "tubes" }
+      {
+        "itemType": "Enhanced Launcher Barrel",
+        "plugCategory": "tubes",
+        "description": "This weapon's launch barrel is optimized for projectile speed.\n  •  Greatly increases projectile speed\n  •  Decreases stability\n  •  Slightly decreases blast radius"
+      },
+      {
+        "itemType": "Launcher Barrel",
+        "plugCategory": "tubes",
+        "description": "This weapon's launch barrel is optimized for projectile speed.\n  •  Greatly increases projectile speed\n  •  Decreases stability\n  •  Slightly decreases blast radius"
+      }
     ],
     "Triple Tap": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Landing precision hits will return one round to the magazine."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Rapidly landing precision hits will return one round to the magazine."
+      }
     ],
     "Spring-Auger Bolts": [
-      { "itemType": "Enhanced Bolt", "plugCategory": "bolts" },
-      { "itemType": "Bolt", "plugCategory": "bolts" }
+      {
+        "itemType": "Enhanced Bolt",
+        "plugCategory": "bolts",
+        "description": "Bolts release an impulse shortly after impact that deals a small amount of damage and has a high chance to cause flinch.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      },
+      {
+        "itemType": "Bolt",
+        "plugCategory": "bolts",
+        "description": "Bolts release an impulse shortly after impact that deals a small amount of damage and has a high chance to cause flinch.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      }
     ],
     "Hail the Storm": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Shattering frozen targets and Stasis crystals deals increased damage.\n\nShattering Stasis crystals releases shards of ice that damage and slow targets."
+      }
     ],
     "wave frame": [
-      { "itemType": "Enhanced Intrinsic", "plugCategory": "intrinsics" },
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Enhanced Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "One-shot handheld Grenade Launcher. Projectiles release a wave of energy when they contact the ground."
+      },
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "One-shot handheld Grenade Launcher. Projectiles release a wave of energy when they contact the ground."
+      }
     ],
     "Conserve Momentum": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Hits with projectiles decrease this weapon's charge time for a short duration.\nHits decrease charge time."
+      }
     ],
     "Accelerated Coils": [
-      { "itemType": "Battery", "plugCategory": "batteries" },
-      { "itemType": "Enhanced Battery", "plugCategory": "batteries" }
+      {
+        "itemType": "Battery",
+        "plugCategory": "batteries",
+        "description": "Speeds up charge.\n  •  Faster charge time\n  •  Decreases impact damage"
+      },
+      {
+        "itemType": "Enhanced Battery",
+        "plugCategory": "batteries",
+        "description": "Speeds up charge.\n  •  Faster charge time\n  •  Decreases impact damage"
+      }
     ],
     "Timelost Magazine": [
-      { "itemType": "Enhanced Origin Trait", "plugCategory": "origins" },
-      { "itemType": "Origin Trait", "plugCategory": "origins" }
+      {
+        "itemType": "Enhanced Origin Trait",
+        "plugCategory": "origins",
+        "description": "Final blows with this weapon grant improved bonus Super energy. When your Super expires, this weapon's magazine size is doubled for an improved long duration and reloads from reserves."
+      },
+      {
+        "itemType": "Origin Trait",
+        "plugCategory": "origins",
+        "description": "Final blows with this weapon grant bonus Super energy. When your Super expires, this weapon's magazine size is doubled for a long duration and reloads from reserves."
+      }
     ],
     "Jolting Feedback": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Dealing repeated damage with this weapon inflicts Jolt at an increased rate. \n\nWhile amplified, Jolt is applied faster.\nDealing repeated damage with this weapon inflicts Jolt. \n\nWhile amplified, Jolt is applied faster."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Dealing repeated damage with this weapon inflicts Jolt. \n\nWhile amplified, Jolt is applied faster."
+      }
     ],
     "Tempered Edge": [
-      { "itemType": "Enhanced Blade", "plugCategory": "blades" },
-      { "itemType": "Blade", "plugCategory": "blades" }
+      {
+        "itemType": "Enhanced Blade",
+        "plugCategory": "blades",
+        "description": "Increased sword damage and ammo."
+      },
+      {
+        "itemType": "Blade",
+        "plugCategory": "blades",
+        "description": "Increased sword damage and ammo."
+      }
     ],
     "Assault Mag": [
-      { "itemType": "Magazine", "plugCategory": "magazines" },
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines" }
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines",
+        "description": "This shotgun's magazine is optimized for quick combat.\n  •  Greatly increases stability\n  •  Increases rate of fire"
+      },
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines",
+        "description": "This shotgun's magazine is optimized for quick combat.\n  •  Greatly increases stability\n  •  Increases rate of fire"
+      }
     ],
     "Trench Barrel": [
-      { "itemType": "Barrel", "plugCategory": "barrels" },
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Barrel",
+        "plugCategory": "barrels",
+        "description": "After a successful melee hit, this weapon gains increased damage, handling, and reload speed for a short duration—or until three shots are fired."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "After a successful melee hit, this weapon gains increased damage, handling, and reload speed for a short duration—or until three shots are fired."
+      },
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "After a successful melee hit, this weapon gains increased damage, improved handling, and improved reload speed for a short duration—or until three shots are fired."
+      }
     ],
-    "Temporal Unlimiter": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Temporal Unlimiter": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Defeating targets builds stacks of Overcharge.\n\n[Alternate Weapon Action]  : When fully Overcharged, swap firing modes. In this mode, hold the trigger to charge up and fire Linear Fusion Rifle shots that cause an ignition on precision final blows."
+      }
+    ],
     "Ionized Heatsink": [
-      { "itemType": "Battery", "plugCategory": "batteries" },
-      { "itemType": "Enhanced Battery", "plugCategory": "batteries" }
+      {
+        "itemType": "Battery",
+        "plugCategory": "batteries",
+        "description": "A large, heavy battery. Increases the time it takes to vent, in exchange for greatly reduced heat generation."
+      },
+      {
+        "itemType": "Enhanced Battery",
+        "plugCategory": "batteries",
+        "description": "A large, heavy battery. Increases the time it takes to vent, in exchange for greatly reduced heat generation."
+      }
     ],
-    "Lightning Seeker": [{ "itemType": "Trait", "plugCategory": "frames" }],
-    "Shot in the Dark": [{ "itemType": "Trait", "plugCategory": "frames" }],
-    "Paracausal Imbuement": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Lightning Seeker": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "[Alternate Weapon Action]  : When weapon is fully charged, consume charge before firing to make your next shot track targets across the ground, jolting them and unleashing chain lightning on impact."
+      }
+    ],
+    "Shot in the Dark": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Remaining invisible grants this weapon increased damage for a brief duration.\n\nHitting a target with this weapon's projectiles while Shot in the Dark is active weakens them. Defeating a target with this weapon while Shot in the Dark is active turns you invisible once more.\nIncreases damage and weakens while invisible."
+      }
+    ],
+    "Paracausal Imbuement": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Final blows with this weapon grant Super energy. This weapon gains bonus damage once your Super expires."
+      }
+    ],
     "Cayde's Retribution": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Pick up Orbs of Power or land precision hits to charge this weapon's Super bar. Once full, [Alternate Weapon Action]  to fire Golden Gun shots.\nAcquire Orbs to fire Golden Gun shots."
+      }
     ],
-    "Target Acquired": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Target Acquired": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "When Personal Assistant is active, this weapon has better target acquisition and deals significantly more precision damage."
+      }
+    ],
     "The Perfect Fifth": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Precision hits return ammo to the mag. Landing 4 precision hits loads a delayed Solar explosive round that scorches targets for your next shot.\nPrecision hits load a scorching explosive round."
+      }
     ],
     "Ember of Ashes": [
-      { "itemType": "Solar Fragment", "plugCategory": "shared.solar.fragments" }
+      {
+        "itemType": "Solar Fragment",
+        "plugCategory": "shared.solar.fragments",
+        "description": "You apply more scorch stacks to targets."
+      }
     ],
-    "Pyrogenesis": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Pyrogenesis": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Solar laser scorches targets hit and ignites them when defeated."
+      }
+    ],
     "Appended Mag": [
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines" },
-      { "itemType": "Magazine", "plugCategory": "magazines" }
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines",
+        "description": "This weapon's magazine is built for higher capacity.\n  •  Increases magazine size"
+      },
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines",
+        "description": "This weapon's magazine is built for higher capacity.\n  •  Increases magazine size"
+      }
     ],
     "Serrated Bolts": [
-      { "itemType": "Bolt", "plugCategory": "bolts" },
-      { "itemType": "Enhanced Bolt", "plugCategory": "bolts" }
+      {
+        "itemType": "Bolt",
+        "plugCategory": "bolts",
+        "description": "Recovering a bolt from a living target deals damage.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      },
+      {
+        "itemType": "Enhanced Bolt",
+        "plugCategory": "bolts",
+        "description": "Recovering a bolt from a living target deals damage.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      }
     ],
     "Honed Edge": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" },
-      { "itemType": "Blade", "plugCategory": "blades" },
-      { "itemType": "Enhanced Blade", "plugCategory": "blades" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "[Alternate Weapon Action]  : Consume the magazine and load a round with additional range and damage.\n[Alternate Weapon Action]  : Consume the magazine and load a more powerful round."
+      },
+      {
+        "itemType": "Blade",
+        "plugCategory": "blades",
+        "description": "Increased sword damage."
+      },
+      {
+        "itemType": "Enhanced Blade",
+        "plugCategory": "blades",
+        "description": "Increased sword damage."
+      }
     ],
-    "Penance": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Penance": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Targets under the effects of Judgment long enough are struck with a burst of damage."
+      }
+    ],
     "Heavy Bolts": [
-      { "itemType": "Bolt", "plugCategory": "bolts" },
-      { "itemType": "Enhanced Bolt", "plugCategory": "bolts" }
+      {
+        "itemType": "Bolt",
+        "plugCategory": "bolts",
+        "description": "Bolts deal increased damage, but are slower and more affected by gravity.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      },
+      {
+        "itemType": "Enhanced Bolt",
+        "plugCategory": "bolts",
+        "description": "Bolts deal increased damage, but are slower and more affected by gravity.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      }
     ],
     "Enduring Blade": [
-      { "itemType": "Blade", "plugCategory": "blades" },
-      { "itemType": "Enhanced Blade", "plugCategory": "blades" }
+      {
+        "itemType": "Blade",
+        "plugCategory": "blades",
+        "description": "Greatly increased sword ammo at the cost of damage."
+      },
+      {
+        "itemType": "Enhanced Blade",
+        "plugCategory": "blades",
+        "description": "Greatly increased sword ammo at the cost of damage."
+      }
     ],
     "Cluster Bomb": [
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Rockets spawn cluster bombs upon detonation."
+      },
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Rockets spawn cluster bombs upon detonation. Blast radius is increased."
+      }
     ],
     "Particle Reconstruction": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Dealing sustained damage with Fusion Rifles or Linear Fusion Rifles partially refills the magazine from reserves and grants them bonus damage for a short duration against that target."
+      }
     ],
-    "Celestial Nighthawk": [{ "itemType": "Helmet", "plugCategory": "" }],
+    "Celestial Nighthawk": [
+      { "itemType": "Helmet", "plugCategory": "", "description": "" }
+    ],
     "Unplanned Reprieve": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Powered heavy attacks emit projectiles that detonate with a delayed Void blast.\nHeavy attacks emit delayed detonating projectiles."
+      }
     ],
     "Argent Ordnance": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Firing a Rocket Launcher consumes one stack of Armor Charge, granting increased damage and reload speed until you reload or stow your Rocket Launcher."
+      }
     ],
-    "Spinning Up": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Spinning Up": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Holding down the trigger increases rate of fire. Final blows while spun up grant bonus Special ammo progress.  [Alternate Weapon Action]  to swap to Dual Speed Receiver."
+      }
+    ],
     "High-Explosive Ordnance": [
-      { "itemType": "Magazine", "plugCategory": "magazines_gl" },
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines_gl" }
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "This weapon's projectiles are larger and travel faster.\n  •  Increases blast radius\n  •  Slightly increases projectile speed\n  •  Decreases magazine size"
+      },
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "This weapon's projectiles are larger and travel faster.\n  •  Increases blast radius\n  •  Slightly increases projectile speed\n  •  Decreases magazine size"
+      }
     ],
-    "Combat Sights": [{ "itemType": "Scope", "plugCategory": "scopes" }],
-    "Marksman Sights": [{ "itemType": "Scope", "plugCategory": "scopes" }],
-    "Taken Ambition": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Combat Sights": [
+      {
+        "itemType": "Scope",
+        "plugCategory": "scopes",
+        "description": "Low-zoom sights with faster charge time and handling. Fires a three-round burst that reduces charge time even further on sustained hits. Displays ability energy. Select this scope to spawn with it equipped by default."
+      }
+    ],
+    "Marksman Sights": [
+      {
+        "itemType": "Scope",
+        "plugCategory": "scopes",
+        "description": "Long-range sights with slower charge time and greater damage. Fires a single bolt that chains to nearby targets and blinds them on hit. Displays ammo and charge levels. Select this scope to spawn with it equipped by default."
+      }
+    ],
+    "Taken Ambition": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Blight generated increases the longer this weapon remains on a target. Blighted Seekers burrow into targets and explode."
+      }
+    ],
     "Argent Blade": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "While you have Armor Charge, dealing damage with a Sword consumes an Armor Charge and empowers your Sword for a short time, granting it bonus damage and energy charge rate."
+      }
     ],
     "Sniper's Meditation": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Sniper Rifle hits grant stacking Sniper Rifle damage, stability, and reload bonuses for a short time. Heavy ammo Sniper Rifle hits count as more than one."
+      }
     ],
     "Vorpal Weapon": [
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Increased damage against bosses, vehicles, and Guardians with their Super active."
+      },
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Increased damage against bosses, vehicles, and Guardians with their Super active. Stability is improved. Swords have improved guard resistance."
+      }
     ],
     "Rewind Rounds": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "When this weapon's magazine is empty, it more effectively refills from reserves based on the number of hits."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "When this weapon's magazine is empty, it refills from reserves based on the number of hits."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "",
+        "description": "When this weapon's magazine is empty, it refills from reserves based on the number of hits."
+      }
     ],
     "Death At First Glance": [
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Bonus damage when aiming down sights on the opening shot of an attack. This bonus is preserved if the shot deals precision damage or strikes an elemental shield."
+      }
     ],
     "Illegally Modded Holster": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Improves sprint, slide, and airborne effectiveness while a Hand Cannon is equipped. For a short time after being drawn, Hand Cannons ready faster, are more accurate, and each hit against a combatant increases Hand Cannon damage.\nHand Cannons ready faster and gain increased accuracy and bonus damage."
+      }
     ],
     "Upper Hand": [
-      { "itemType": "Trait", "plugCategory": "v950.new.sword0.masterwork" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "v950.new.sword0.masterwork",
+        "description": "Increases the damage of the thrown Sword and reflected shots while on higher ground than the target."
+      }
     ],
     "Confined Launch": [
-      { "itemType": "Launcher Barrel", "plugCategory": "tubes" },
-      { "itemType": "Enhanced Launcher Barrel", "plugCategory": "tubes" }
+      {
+        "itemType": "Launcher Barrel",
+        "plugCategory": "tubes",
+        "description": "This weapon's launch parameters are particularly stable.\n  •  Greatly increases stability\n  •  Increases blast radius\n  •  Decreases projectile speed"
+      },
+      {
+        "itemType": "Enhanced Launcher Barrel",
+        "plugCategory": "tubes",
+        "description": "This weapon's launch parameters are particularly stable.\n  •  Greatly increases stability\n  •  Increases blast radius\n  •  Decreases projectile speed"
+      }
     ],
     "Accelerated Assault": [
-      { "itemType": "Origin Trait", "plugCategory": "origins" }
+      {
+        "itemType": "Origin Trait",
+        "plugCategory": "origins",
+        "description": "Dealing sustained damage with this weapon further increases reload speed and Sword charge rate and increases damage."
+      }
     ],
     "Extended Mag": [
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines" },
-      { "itemType": "Magazine", "plugCategory": "magazines" }
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines",
+        "description": "This weapon has a greatly increased magazine size, but reloads much slower.\n  •  Greatly increases magazine size\n  •  Greatly decreases reload speed\n  •  Increases airborne effectiveness"
+      },
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines",
+        "description": "This weapon has a greatly increased magazine size, but reloads much slower.\n  •  Greatly increases magazine size\n  •  Greatly decreases reload speed\n  •  Increases airborne effectiveness"
+      }
     ],
-    "Dawn Chorus": [{ "itemType": "Helmet", "plugCategory": "" }],
+    "Dawn Chorus": [
+      { "itemType": "Helmet", "plugCategory": "", "description": "" }
+    ],
     "Property: Irreducible": [
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "[Alternate Weapon Action] : Consume your grenade to load a large [projectile|shape|language] that generates an elemental explosion on impact and deals increased damage while Transcendence is active."
+      }
     ],
     "Guidance Ring": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Precision hits and final blows build Guidance Ring energy. Opposing Guardians grant additional energy. At full charge, hip firing creates a Guidance Ring.\nCharges and deploys a guidance system."
+      }
     ],
     "Explosive Light": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Picking up an Orb of Power increases the next projectile's blast radius and damage. Increases the stack count limit.\nPicking up an Orb of Power increases the next projectile's blast radius and damage."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Picking up an Orb of Power increases the next projectile's blast radius and damage."
+      }
     ],
-    "Supercharged Battery": [{ "itemType": "Trait", "plugCategory": "frames" }],
-    "Impetus": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Supercharged Battery": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Collecting an Orb of Power grants a period of maximum power that starts with an automatic reload. Sustained fire in this mode suppresses targets."
+      }
+    ],
+    "Impetus": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Reloading immediately after a kill increases weapon damage for a short time."
+      }
+    ],
     "Solar Fulmination": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Your ignitions do increased damage in an increased radius."
+      }
     ],
-    "Cenotaph Mask": [{ "itemType": "Helmet", "plugCategory": "" }],
+    "Cenotaph Mask": [
+      { "itemType": "Helmet", "plugCategory": "", "description": "" }
+    ],
     "Focused Fury": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Dealing a portion of the magazine as precision damage grants this weapon bonus damage for an improved duration. The shot count is reset whenever the weapon is reloaded or stowed."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Dealing a portion of the magazine as precision damage grants this weapon bonus damage. The shot count is reset whenever the weapon is reloaded or stowed."
+      }
     ],
     "Composite Propellant": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "Rockets embed themselves in struck targets and periodically eject incendiary fuel that inflicts Scorch. The longer this weapon goes without firing, the more fuel the next rocket contains. Strong against [Stagger] Unstoppable Champions.\nRockets eject burning fuel. Strong against [Stagger] Unstoppable Champions."
+      }
     ],
     "Arc Conductor": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "When taking Arc Damage, this weapon becomes more powerful and resists incoming Arc Damage. Kills extend the time in this overcharged state.\nTaking Arc damage increases weapon power and Arc resistance."
+      }
     ],
     "Explosive Bolts": [
-      { "itemType": "Enhanced Bolt", "plugCategory": "bolts" },
-      { "itemType": "Bolt", "plugCategory": "bolts" }
+      {
+        "itemType": "Enhanced Bolt",
+        "plugCategory": "bolts",
+        "description": "Bolts explode shortly after hitting the environment or a target, but deal less damage on impact.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      },
+      {
+        "itemType": "Bolt",
+        "plugCategory": "bolts",
+        "description": "Bolts explode shortly after hitting the environment or a target, but deal less damage on impact.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      }
     ],
     "Ravenous Beast": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "This weapon stores power when dealing or receiving damage; defeating combatants or dealing damage to Scorched combatants grants increased progress.\n[Alternate Weapon Action]  : Unleashes the beast when full, increasing outgoing damage and reducing incoming Solar damage.\nDamage and final blows charge the weapon. Unleashing this charge increases damage and rate of fire."
+      }
     ],
     "Collective Action": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Collecting an Elemental pickup or destroying a Tangle grants this weapon a stacking period of further increased damage. Throwing a Tangle provides additional time.\n\nElemental pickups include [Solar]Firesprites, [Void]Void Breaches, [Arc]Ionic Traces, [Stasis]Stasis Shards, and [Strand]Strand Tangles."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Collecting an Elemental pickup or destroying a Tangle grants this weapon a stacking period of increased damage. Throwing a Tangle provides additional time.\n\nElemental pickups include [Solar]Firesprites, [Void]Void Breaches, [Arc]Ionic Traces, [Stasis]Stasis Shards, and [Strand]Strand Tangles."
+      }
     ],
     "Harsh Refraction": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Trace Rifles do more damage to targets afflicted by elemental debuffs matching their element type."
+      }
     ],
     "The Fundamentals": [
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "[Alternate Weapon Action]  : Changes this weapon's damage type, cycling between Void, Arc, and Solar. Grants this weapon temporarily increased damage when you apply or gain an elemental buff or debuff that matches this weapon's damage type.\n[Alternate Weapon Action]  : Change this weapon's damage type."
+      },
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "[Alternate Weapon Action]  : Changes this weapon's damage type, cycling between Void, Arc, and Solar. Grants this weapon temporarily increased damage when you apply or gain an elemental buff or debuff that matches this weapon's damage type.\n[Alternate Weapon Action]  : Changes this weapon's damage type."
+      }
     ],
     "Argent Quiver": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Reloading a Bow consumes one stack of Armor Charge, granting increased damage and reload speed for your next 3 shots or until you stow your Bow."
+      }
     ],
     "Enhanced Battery": [
-      { "itemType": "Battery", "plugCategory": "batteries" },
-      { "itemType": "Enhanced Battery", "plugCategory": "batteries" }
+      {
+        "itemType": "Battery",
+        "plugCategory": "batteries",
+        "description": "Strong battery life.\n  •  Increases magazine size"
+      },
+      {
+        "itemType": "Enhanced Battery",
+        "plugCategory": "batteries",
+        "description": "Strong battery life.\n  •  Increases magazine size"
+      }
     ],
     "Sword Storm Combo": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Performing three Sword light attacks followed by a heavy attack summons penumbral blades that surround you to damage and disorient combatants. Sword final blows extend the duration of these penumbral blades."
+      }
     ],
     "Charged Bolts": [
-      { "itemType": "Enhanced Bolt", "plugCategory": "bolts" },
-      { "itemType": "Bolt", "plugCategory": "bolts" }
+      {
+        "itemType": "Enhanced Bolt",
+        "plugCategory": "bolts",
+        "description": "Bolts attached to targets deal damage over time.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      },
+      {
+        "itemType": "Bolt",
+        "plugCategory": "bolts",
+        "description": "Bolts attached to targets deal damage over time.\n[###DestinyNamedSubstitutions.ui_player_action_interact_button###][###DestinyNamedSubstitutions.ui_player_action_interact_verb###] with the bolt to retrieve it."
+      }
     ],
     "Envious Arsenal": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Dealing damage with both other weapons before readying this weapon refills it from reserves. Increases ammo generation.\nDealing damage with both other weapons before readying this weapon refills it from reserves."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Dealing damage with both other weapons before readying this weapon refills it from reserves."
+      }
     ],
     "Cast No Shadows": [
-      { "itemType": "Origin Trait", "plugCategory": "origins" },
-      { "itemType": "Enhanced Origin Trait", "plugCategory": "origins" }
+      {
+        "itemType": "Origin Trait",
+        "plugCategory": "origins",
+        "description": "Dealing melee damage increases this weapon's handling and loads a small amount of ammo from reserves."
+      },
+      {
+        "itemType": "Enhanced Origin Trait",
+        "plugCategory": "origins",
+        "description": "Dealing melee damage increases this weapon's handling significantly and loads a small amount of ammo from reserves."
+      }
     ],
     "Shoot to Loot": [
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" },
-      { "itemType": "Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Shooting an Orb of Power picks it up. Shooting an ammo brick picks it up and automatically reloads all of your equipped weapons from reserves. Increases range."
+      },
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Shooting an Orb of Power picks it up. Shooting an ammo brick picks it up and automatically reloads all of your equipped weapons from reserves."
+      }
     ],
     "Burning Ambition": [
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Dealing sustained damage scorches the target. Dealing damage to a scorched target inflicts scorch."
+      },
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Dealing sustained damage more quickly scorches the target. Dealing damage to a scorched target inflicts scorch.\nDealing sustained damage scorches the target. Dealing damage to a scorched target inflicts scorch."
+      }
     ],
     "Combination Argent Blade": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Briefly pause after executing a light attack, then follow it up with a light or heavy attack to empower your Sword for a short time, granting it bonus damage and charge rate."
+      }
     ],
-    "Soul Devourer": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Soul Devourer": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Absorbing a Remnant strengthens Mark of the Devourer and partially refills the magazine."
+      }
+    ],
     "Sticky Grenades": [
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines_gl" },
-      { "itemType": "Magazine", "plugCategory": "magazines_gl" }
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "Grenades fired from this weapon attach on impact and detonate when enemies are in proximity.\nGrenades attach on impact; detonate when enemies are close."
+      },
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "Grenades fired from this weapon attach on impact and detonate when enemies are in proximity.\nGrenades attach on impact; detonate when enemies are close."
+      }
     ],
     "Bait and Switch": [
-      { "itemType": "Trait", "plugCategory": "frames" },
-      { "itemType": "Enhanced Trait", "plugCategory": "frames" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Deal damage with all equipped weapons within a short time to give this weapon a damage boost."
+      },
+      {
+        "itemType": "Enhanced Trait",
+        "plugCategory": "frames",
+        "description": "Deal damage with all equipped weapons within a short time to give this weapon a damage boost for an improved duration."
+      }
     ],
     "Incendiary Rifle Rounds": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Solar Sniper Rifle precision hits scorch targets."
+      }
     ],
     "Arc Compounding": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "[Arc] Arc sources deal increased damage to Blind targets."
+      }
     ],
     "Kinetic Impacts": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Sustained damage with a Grenade Launcher increases the reload speed of Grenade Launchers and triggers a damaging Kinetic shockwave.\n\nThis shockwave can stun [Stagger] Unstoppable Champions."
+      }
     ],
-    "Transcendent": [{ "itemType": "Emblem", "plugCategory": "" }],
+    "Transcendent": [
+      { "itemType": "Emblem", "plugCategory": "", "description": "" }
+    ],
     "Pack Tactics": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Dealing damage with Threadlings increases Threadling damage. At maximum stacks, Threadlings stun [Stagger] Unstoppable Champions."
+      }
     ],
     "Corrupted Nucleosynthesis": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "This weapon enrages when dealing or taking sustained damage, gaining increased rate of fire while enraged.\nEnrages when dealing or sustaining damage."
+      }
     ],
     "Gyro Core": [
       {
         "itemType": "Power Core",
-        "plugCategory": "v950.new.sword0.perk_upgrades"
+        "plugCategory": "v950.new.sword0.perk_upgrades",
+        "description": "Throw damage from this weapon applies an elemental effect that matches your equipped Super.\n\n• [Arc] Grants Bolt Charge.\n• [Solar] Scorches targets.\n• [Void] Weakens targets.\n• [Stasis] Slows targets.\n• [Strand] Severs targets."
       }
     ],
     "Impact Core": [
       {
         "itemType": "Power Core",
-        "plugCategory": "v950.new.sword0.perk_upgrades"
+        "plugCategory": "v950.new.sword0.perk_upgrades",
+        "description": "Melee damage from this weapon applies an elemental effect that matches your equipped Super.\n\n• [Arc] Grants Bolt Charge.\n• [Solar] Scorches targets.\n• [Void] Weakens targets.\n• [Stasis] Slows targets.\n• [Strand] Severs targets."
       }
     ],
     "Offensive Form": [
       {
         "itemType": "Praxic Blade Form",
-        "plugCategory": "v950.new.sword0.forms"
+        "plugCategory": "v950.new.sword0.forms",
+        "description": "Take an offensive form, adjusting your tang and grip to focus on your attack.\n\n• Landing three melee or throw attacks grants ammo to this weapon.\n• Increases damage against bosses and vehicles."
       }
     ],
     "Energy Acceleration": [
-      { "itemType": "Artifact Perk", "plugCategory": "artifact_perks" }
+      {
+        "itemType": "Artifact Perk",
+        "plugCategory": "artifact_perks",
+        "description": "Sustained damage with micro-missiles causes the combatant to emit a Kinetic shockwave that damages nearby combatants. Strong against [Stagger] Unstoppable Champions."
+      }
     ],
     "Implosion Rounds": [
-      { "itemType": "Magazine", "plugCategory": "magazines_gl" },
-      { "itemType": "Enhanced Magazine", "plugCategory": "magazines_gl" }
+      {
+        "itemType": "Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "This weapon's projectiles travel faster and have a controlled explosion.\n  •  Increases projectile speed\n  •  Greatly increases stability\n  •  Decreases blast radius"
+      },
+      {
+        "itemType": "Enhanced Magazine",
+        "plugCategory": "magazines_gl",
+        "description": "This weapon's projectiles travel faster and have a controlled explosion.\n  •  Increases projectile speed\n  •  Greatly increases stability\n  •  Decreases blast radius"
+      }
     ],
     "Jagged Edge": [
-      { "itemType": "Blade", "plugCategory": "blades" },
-      { "itemType": "Enhanced Blade", "plugCategory": "blades" }
+      {
+        "itemType": "Blade",
+        "plugCategory": "blades",
+        "description": "Increased damage at the cost of sword ammo."
+      },
+      {
+        "itemType": "Enhanced Blade",
+        "plugCategory": "blades",
+        "description": "Increased damage at the cost of sword ammo."
+      }
     ],
     "Whispered Breathing": [
-      { "itemType": "Trait", "plugCategory": "catalysts" }
+      {
+        "itemType": "Trait",
+        "plugCategory": "catalysts",
+        "description": "Aiming this weapon without firing for a brief moment grants bonus range and precision damage while it remains zoomed."
+      }
     ],
     "Hunter's Trace": [
-      { "itemType": "Intrinsic", "plugCategory": "intrinsics" }
+      {
+        "itemType": "Intrinsic",
+        "plugCategory": "intrinsics",
+        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.\nPrecision hits grant heavy rounds. Strong against [Shield-Piercing] Barrier Champions."
+      }
     ],
     "Forceful Blade III": [
       {
         "itemType": "Blade Focus",
-        "plugCategory": "v950.new.sword0.stat_upgrades"
+        "plugCategory": "v950.new.sword0.stat_upgrades",
+        "description": "Greatly improves impact."
       }
     ],
-    "Pack Hunter": [{ "itemType": "Trait", "plugCategory": "frames" }],
+    "Pack Hunter": [
+      {
+        "itemType": "Trait",
+        "plugCategory": "frames",
+        "description": "Gain increased handling and reload speed when standing near allies. Firing this weapon also grants Wolfpack Rounds to nearby allies wielding non-Exotic Rocket Launchers."
+      }
+    ],
     "Thread of Evolution": [
       {
         "itemType": "Strand Fragment",
-        "plugCategory": "shared.strand.fragments"
+        "plugCategory": "shared.strand.fragments",
+        "description": "Threadlings travel farther and deal additional damage.\n+10 Super ▲"
       }
     ]
   }

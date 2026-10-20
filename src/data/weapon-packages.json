@@ -820,6 +820,123 @@
     ]
   },
   {
+    "id": "conditional-finality",
+    "code": 46,
+    "name": "Conditional Finality",
+    "manifestHash": 3371017761,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "shotgun",
+    "element": "stasis",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-conditional-finality",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 109.533,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-conditional-finality",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 19.4 s − 9 reloads × 1.06 s) ÷ 18 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 2,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-conditional-finality",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 19,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-conditional-finality",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1060,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-shotgun-conditional-finality",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-conditional-finality-average-body-both-modes",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 1422.155,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-conditional-finality-average-body-both-modes",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, body, both modes"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-conditional-finality-average-body-both-modes",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-conditional-finality-average-body-both-modes",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "split-decision",
+        "name": "Split Decision",
+        "description": "Dual barrels split into Stasis and Solar damage. Strong against [Stagger] Unstoppable Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "dead-messenger",
     "code": 30,
     "name": "Dead Messenger",
@@ -1747,6 +1864,124 @@
         "id": "looks-can-kill",
         "name": "Looks Can Kill",
         "description": "This weapon fires shield-piercing ammunition and comes with a scope. Strong against [Shield-Piercing] Barrier Champions. Breaking a matched shield or piercing a Champion's barrier will cause the target to ignite.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "euphony",
+    "code": 47,
+    "name": "Euphony",
+    "manifestHash": 3284383335,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "linearFusionRifle",
+    "element": "strand",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 40.504,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 31.483 s − 3 reloads × 2.1 s) ÷ 17 intervals within magazines (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 6,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 21,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 619,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row euphony-starts-at-0-stacks-includes-threadlings-pack-tactics-simplified-underestimate-of-3-stack-start",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 2.1 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-euphony-burst-without-threadlings",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 1317.505,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-euphony-burst-without-threadlings",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: burst, without threadlings"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-euphony-burst-without-threadlings",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-euphony-burst-without-threadlings",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "unwound",
+        "name": "Unwound",
+        "description": "Dealing sustained damage with this weapon spawns Threadlings at your target's location.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -2824,48 +3059,49 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-trace-rifle-microcosm",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row microcosm-paracausal-imbuement-harsh-refraction",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "verified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 907.801,
+      "value": 895.522,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-trace-rifle-microcosm",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row microcosm-paracausal-imbuement-harsh-refraction",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Derived: (Time to Empty 29.7 s − 3 reloads × 1.44 s) ÷ 384 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "Derived: (TtE 28.878 s − 3 reloads × 1.117 s) ÷ 381 intervals within magazines (ADR 0013)"
       }
     },
     "magazine": {
       "value": 120,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-trace-rifle-microcosm",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row microcosm-paracausal-imbuement-harsh-refraction",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified"
       }
     },
     "totalShots": {
       "value": 385,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-trace-rifle-microcosm",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row microcosm-paracausal-imbuement-harsh-refraction",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified"
       }
     },
     "reloadTimeMs": {
-      "value": 1440,
+      "value": 1050,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-trace-rifle-microcosm",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row microcosm-paracausal-imbuement-harsh-refraction",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "Reload 1.117 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
     "damageInstances": [
@@ -3037,6 +3273,124 @@
         "id": "the-master",
         "name": "The Master",
         "description": "Scoring precision hits increases this weapon's damage until the wielder's defeat.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "new-malpais",
+    "code": 48,
+    "name": "New Malpais",
+    "manifestHash": 1736135946,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "pulseRifle",
+    "element": "strand",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 67.291,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 24.657 s − 3 reloads × 1.383 s) ÷ 23 intervals within magazines (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 7,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 27,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 491,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row new-malpais-assumes-suspend-tick-every-3-shots",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 1.383 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 1159.924,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, 3 bursts, includes suspend, excludes unravel"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "atomizing-rounds",
+        "name": "Atomizing Rounds",
+        "description": "Rounds fired embed themselves in targets. [Alternate Weapon Action]  to detonate embedded rounds.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -4499,48 +4853,49 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "verified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 626.866,
+      "value": 664.635,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Derived: (Time to Empty 57.6 s − 6 reloads × 3.57 s) ÷ 378 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "Derived: (TtE 34.124 s − 0 reloads × 2.833 s) ÷ 378 intervals within magazines (ADR 0013)"
       }
     },
     "magazine": {
-      "value": 62,
+      "value": 379,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified"
       }
     },
     "totalShots": {
       "value": 379,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified"
       }
     },
     "reloadTimeMs": {
-      "value": 3570,
+      "value": 2743,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row thunderlord-assumes-only-one-reload-post-nerf",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "Reload 2.833 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
     "damageInstances": [
