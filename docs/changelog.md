@@ -3,6 +3,7 @@
 ## Unveröffentlicht
 
 - Versionsanzeige unten auf der Seite.
+- Fundament für mehrere Waffen (ADR 0012): Der Rechner lädt jede Waffen-Datei; jede Waffe braucht einen Abgleich mit ihrer Quelle. Ablauf für neue Waffen in `docs/guides/weapons.md`.
 
 ## 1.0.0 – 2026-10-20 (Vollversion)
 

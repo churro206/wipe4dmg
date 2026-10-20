@@ -8,6 +8,7 @@ import type {
   Element,
   MultiplierPart,
   TimingPart,
+  Weapon,
   WeaponType,
 } from "../data/schema";
 import { requireValue } from "./requireValue";
@@ -70,6 +71,34 @@ export function appliesToWeaponType(
     weaponTypes === undefined ||
     (weaponType !== undefined && weaponTypes.includes(weaponType))
   );
+}
+
+/**
+ * Whether an effect changes the weapon (ADR 0012): a multiplier part for weapon damage of its
+ * element and weapon type, a timing part for its weapon type, or a counter modifier for a counter
+ * of the weapon (e.g. Ember of Ashes needs scorch).
+ */
+export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
+  const counterIds = new Set(
+    weapon.intrinsicParts.flatMap((part) =>
+      part.type === "damageOverTime" ? [] : [part.counterId],
+    ),
+  );
+  return effect.parts.some((part) => {
+    switch (part.type) {
+      case "multiplier":
+        return (
+          part.damageSources.includes("weapon") &&
+          (part.elements === undefined ||
+            part.elements.includes(weapon.element)) &&
+          appliesToWeaponType(part.weaponTypes, weapon.weaponType)
+        );
+      case "timing":
+        return appliesToWeaponType(part.weaponTypes, weapon.weaponType);
+      case "counterModifier":
+        return counterIds.has(part.counterId);
+    }
+  });
 }
 
 /** Combines the matching parts per bucket by its stacking rule. Lists only buckets with matching parts. */

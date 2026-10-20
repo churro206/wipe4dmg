@@ -6,6 +6,7 @@ Stand: 2026-10-20
 
 ## In Arbeit (v1.1)
 
+- ✅ Fundament für mehrere Waffen: jede Waffe als eigene Datei mit eigenem Abgleich gegen die Quellen
 - Weitere Waffen: Truth, danach Thunderlord; Waffenauswahl im Rechner
 - Exotic-Rüstung: Dawn Chorus und weitere Exotics mit großer Wirkung auf den Schaden (z. B. Mantle of Battle Harmony mit Surge 4x)
 - Plan: [Waffen und Exotic-Rüstung](plans/weapons-and-exotic-armor.md)

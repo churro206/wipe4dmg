@@ -4,7 +4,7 @@
 // subclass of every super, grenade and melee, including Prismatic (ADR 0009).
 // Needs BUNGIE_API_KEY, e.g. in .env.local (ignored by git). Run: npm run import:icons
 
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { format } from "prettier";
 import {
   AbilityData,
@@ -81,7 +81,10 @@ console.log(`Wrote ${manifestAbilities.abilities.length} ability items`);
 
 const refs = collectIconRefs(
   Effect.array().parse(readJson("src/data/effects.json")),
-  [Weapon.parse(readJson("src/data/weapons/one-thousand-voices.json"))],
+  // Every weapon Data File (ADR 0012).
+  readdirSync(new URL("src/data/weapons/", ROOT))
+    .filter((file) => file.endsWith(".json"))
+    .map((file) => Weapon.parse(readJson(`src/data/weapons/${file}`))),
   [
     ...IconRef.array().parse(readJson("src/data/icon-refs.json")),
     ...abilityIconRefs(

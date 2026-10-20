@@ -8,7 +8,6 @@ import rawBuckets from "../data/buckets.json";
 import rawEffects from "../data/effects.json";
 import rawIcons from "../data/icons.json";
 import rawManifestAbilities from "../data/manifest-abilities.json";
-import raw from "../data/weapons/one-thousand-voices.json";
 import type { LinkRegistry } from "../engine/buildLink";
 import { loadAbilities } from "../engine/loadAbilities";
 import {
@@ -20,9 +19,19 @@ import {
   loadIconIndex,
   loadManifestAbilities,
 } from "../engine/loadData";
-import { loadWeapon } from "../engine/loadWeapon";
+import { loadWeapons } from "../engine/loadWeapon";
 
-export const weapon = loadWeapon(raw);
+// Every weapon Data File (ADR 0012). The UI still shows One Thousand Voices until the weapon
+// selection comes with the second weapon (W1).
+export const weapons = loadWeapons(
+  Object.values(
+    import.meta.glob("../data/weapons/*.json", {
+      import: "default",
+      eager: true,
+    }),
+  ),
+);
+export const weapon = weapons.find((w) => w.id === "one-thousand-voices")!;
 export const buckets = loadBuckets(rawBuckets);
 export const effects = loadEffects(rawEffects);
 export const bosses = loadBosses(rawBosses).filter(
@@ -40,7 +49,7 @@ export const abilities = loadAbilities(
   { effects, buckets },
 );
 export const linkRegistry: LinkRegistry = {
-  weapons: [weapon],
+  weapons,
   effects,
   abilities,
 };

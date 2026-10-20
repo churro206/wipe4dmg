@@ -7,13 +7,11 @@ import rawEffects from "../src/data/effects.json";
 import rawReferenceMultipliers from "../src/data/reference-multipliers.json";
 import rawReferenceValues from "../src/data/reference-values.json";
 import { ReferenceMultiplier, ReferenceValue } from "../src/data/schema";
-import raw from "../src/data/weapons/one-thousand-voices.json";
 import { activeParts, combinedMultiplier } from "../src/engine/effectParts";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
-import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
+import { weaponById } from "./support/weapons";
 
-const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const byIds = (ids: string[]) =>
@@ -35,6 +33,7 @@ describe("gate: total damage", () => {
     "matches %s",
     (_, reference) => {
       const scenario = reference.scenario!;
+      const weapon = weaponById(reference.weaponId);
       const scenarioWeapon = scenario.withIntrinsicParts
         ? weapon
         : { ...weapon, intrinsicParts: [] };
@@ -60,8 +59,8 @@ describe("gate: multipliers", () => {
       );
       const multiplier = combinedMultiplier(multiplierParts, buckets, {
         damageSource: "weapon",
-        element: weapon.element,
-        weaponType: weapon.weaponType,
+        element: weaponById(reference.weaponId).element,
+        weaponType: weaponById(reference.weaponId).weaponType,
       });
       expect(multiplier).toBeGreaterThanOrEqual(reference.multiplierMin);
       expect(multiplier).toBeLessThanOrEqual(reference.multiplierMax);

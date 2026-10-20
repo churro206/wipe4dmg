@@ -1,6 +1,7 @@
 [
   {
     "id": "quantum-no-effects",
+    "weaponId": "one-thousand-voices",
     "description": "Theoretical total damage of all shots without effects and without ignition",
     "totalDamageMin": 23980,
     "totalDamageMax": 23980,
@@ -20,6 +21,7 @@
   },
   {
     "id": "quantum-with-ignition",
+    "weaponId": "one-thousand-voices",
     "description": "Theoretical total damage of all shots without effects, with ignitions",
     "totalDamageMin": 28430,
     "totalDamageMax": 28430,
@@ -39,6 +41,7 @@
   },
   {
     "id": "blueberries-no-catalyst",
+    "weaponId": "one-thousand-voices",
     "description": "Total damage, full magazine dump without catalyst",
     "totalDamageMin": 24000,
     "totalDamageMax": 26000,
@@ -58,6 +61,7 @@
   },
   {
     "id": "blueberries-catalyst",
+    "weaponId": "one-thousand-voices",
     "description": "Total damage, full magazine dump with catalyst",
     "totalDamageMin": 34000,
     "totalDamageMax": 36000,

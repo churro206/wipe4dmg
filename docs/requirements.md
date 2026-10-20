@@ -84,6 +84,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Bucket | Group of multipliers with one stacking rule, e.g. only the highest value applies; buckets multiply with each other |
 | Build | Complete selection of subclass, armor, artifact perks and fireteam support for one weapon |
 | Burn | Damage over time that scorch deals to a target; each tick is a damage instance |
+| Catalyst | Upgrade of an exotic weapon that adds or changes intrinsic parts; one switch in the build |
 | Coverage | Which abilities, effects and mechanics the calculator models and how: own components, package, effect only or missing (docs/coverage.md, wiki page) |
 | Damage Curve | Cumulative damage over the damage phase |
 | Damage Instance | Single hit with a timestamp and a damage value; the explosion of One Thousand Voices is a separate, delayed damage instance |
@@ -107,6 +108,8 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Multiplier | Factor by which an effect changes damage, e.g. 1.25 |
 | Optimizer | App mode that runs the simulator for all allowed combinations of own effects (class, subclass, exclusive groups) and ranks the best builds; fireteam support and effect windows stay fixed |
 | Reload | Refilling the magazine after its last shot; takes the reload time of the weapon |
+| Package | Measured total from a source that the calculator uses as one value instead of parts, e.g. an ability per cast or a weapon per shot (ADR 0009, ADR 0011) |
+| Perk | Trait of a weapon that changes its damage, e.g. Reaper's Tithe on Truth; stored in the weapon Data File, not as an effect (ADR 0012) |
 | Provider | Way a build gets an effect: own subclass, armor, artifact, or fireteam support from a teammate |
 | Rotation | Sequence of shots, reloads and effect windows (start and duration of each effect) in the damage phase |
 | Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |

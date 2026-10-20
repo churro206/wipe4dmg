@@ -1,6 +1,7 @@
 [
   {
     "id": "aegis-otv-ember-of-ashes",
+    "weaponId": "one-thousand-voices",
     "description": "One Thousand Voices with Ember of Ashes compared to without, both with Particle Reconstruction",
     "baseline": { "effectIds": ["particle-reconstruction"], "catalyst": false },
     "variant": { "effectIds": ["particle-reconstruction", "ember-of-ashes"], "catalyst": false },
@@ -15,6 +16,7 @@
   },
   {
     "id": "aegis-otv-catalyst",
+    "weaponId": "one-thousand-voices",
     "description": "One Thousand Voices with catalyst (Taken Seekers) compared to without, both with Particle Reconstruction",
     "baseline": { "effectIds": ["particle-reconstruction"], "catalyst": false },
     "variant": { "effectIds": ["particle-reconstruction"], "catalyst": true },
@@ -29,6 +31,7 @@
   },
   {
     "id": "aegis-otv-catalyst-with-ember-of-ashes",
+    "weaponId": "one-thousand-voices",
     "description": "One Thousand Voices with catalyst and Ember of Ashes compared to Ember of Ashes alone, both with Particle Reconstruction",
     "baseline": { "effectIds": ["particle-reconstruction", "ember-of-ashes"], "catalyst": false },
     "variant": { "effectIds": ["particle-reconstruction", "ember-of-ashes"], "catalyst": true },

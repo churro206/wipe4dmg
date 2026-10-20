@@ -15,6 +15,7 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 - `docs/adr/`: Architecture Decision Records. Lies alle ADRs vor größeren Änderungen.
 - `docs/data-sources.md`: Datenquellen, Messbedingungen und Messprotokoll.
 - `docs/mechanics/`: Wissen über Mechanics von Destiny 2. Lies `docs/mechanics/README.md` vor Änderungen an Effects oder am Simulator.
+- `docs/guides/weapons.md`: Ablauf zum Anlegen einer Waffe (ADR 0011, 0012), dazu die Liste der Stellen in der Oberfläche, die noch an One Thousand Voices hängen. Lies ihn vor Änderungen an `src/data/weapons/`.
 - `docs/guides/abilities.md`: Ablauf zum Anlegen und Aktualisieren von Abilities (ADR 0009). Lies ihn vor Änderungen an `abilities.json`.
 - `docs/guides/measurements.md`: Ingame-Tests des Inhabers (Ember, Explosionen, Shot-Abstand, Particle Reconstruction, Radiant auf Golden Gun). Ergebnisse ins Messprotokoll, dann in Data Files und Gates.
 - `docs/coverage.md`: Abdeckung (generiert, nicht von Hand bearbeiten). Nach Änderungen an Data Files `npm run coverage` ausführen.
@@ -65,7 +66,7 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
 
 - **v1.0.0 veröffentlicht (Tag `v1.0.0`, Versionsanzeige im Footer aus `package.json` über `__APP_VERSION__`).**
-- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** ✅ 7 (v1.0 formal) → W0 Waffen-Fundament → W1 Truth → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. → W2 Thunderlord → v1.1. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
+- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** ✅ 7 (v1.0 formal) → ✅ W0 Waffen-Fundament → W1 Truth → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. → W2 Thunderlord → v1.1. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
 
 - **Gate v1.0 teilweise erfüllt:** Inhaber hat getestet, die Freunde testen parallel zu v1.1.
 - **US-14, Entscheidung in ADR 0009:** Abilities bestehen aus Ability Components (Compendium). Fehlen Teile oder fällt die Ability durchs Gate, gilt ein Aegis-Paket. Aegis ist das Gate (±10 % bei Stat 100 und 200).
@@ -98,7 +99,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
     - ✅ U2: jeder eigene Effect hat einen Slot wie im Spiel (`EffectProvider.slot`: Super, Class Ability, Aspect, Fragment, Mod, Stat, Artefakt); Fireteam ohne Slot. Links unverändert.
     - ✅ U3 (`src/ui/effectSections.ts`, `StatSliders`): Reihenfolge Encounter → Waffe (+ Katalysator) → Klasse → Subklasse → Super, Class Ability, Grenade, Melee → Aspects → Fragments → Rüstung (Exotic folgt, Mods) → Stats als Block → Artefakt → Fireteam Support. Nächster Schritt: 7 (v1.0 an die Freunde).
   - **7, Abschluss v1.0:** Changelog, Releaseplan, Testlauf mit den Freunden.
-  - **Danach weitere Waffen:** W0 Fundament (Waffenauswahl, Link-Format 4, Effects nach Waffentyp, ADR), dann Truth, dann Thunderlord (Reign Havoc, Blitze; Bolt Charge zunächst ohne, wie Aegis).
+  - **Danach weitere Waffen:** ✅ W0 Fundament (ADR 0012, `loadWeapons`, Gate pro Waffe, `effectAppliesToWeapon`; kein Link-Format 4 nötig), dann Truth mit Waffenauswahl (W1), dann Thunderlord (Reign Havoc, Blitze; Bolt Charge zunächst ohne, wie Aegis).
   - **v1.x:** Feast of Light und Banner of War als Effects (macht Bladefury nutzbar), Well-Mechanik (Waffenschaden zählt als Super-Schaden, Dauer mit Super-Stat), Line 'Em Up, fehlende Zeitwerte der Supers.
 - **Arbeitsstil des Inhabers:**
   - Kleine Schritte: Plan, Freigabe („ok“), Tests zuerst.

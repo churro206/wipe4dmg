@@ -520,6 +520,7 @@ export type AbilityStatScaling = z.infer<typeof AbilityStatScaling>;
 /** Community or own reference value for tests. */
 export const ReferenceValue = z.object({
   id: z.string(),
+  weaponId: z.string(), // the weapon the value belongs to (ADR 0012)
   description: z.string(),
   totalDamageMin: z.number(),
   totalDamageMax: z.number(),
@@ -539,6 +540,7 @@ export type ReferenceValue = z.infer<typeof ReferenceValue>;
 /** Combined multiplier of a set of effects on the weapon's own damage, from a source. */
 export const ReferenceMultiplier = z.object({
   id: z.string(),
+  weaponId: z.string(),
   description: z.string(),
   effectIds: z.array(z.string()).min(1),
   multiplierMin: z.number(),
@@ -554,6 +556,7 @@ const ReferenceScenario = z.object({
 });
 export const ReferenceFactor = z.object({
   id: z.string(),
+  weaponId: z.string(),
   description: z.string(),
   baseline: ReferenceScenario,
   variant: ReferenceScenario,

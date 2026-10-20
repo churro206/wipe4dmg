@@ -7,10 +7,9 @@ import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import rawReferenceFactors from "../src/data/reference-factors.json";
 import { ReferenceFactor } from "../src/data/schema";
-import raw from "../src/data/weapons/one-thousand-voices.json";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
-import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
+import { weaponById } from "./support/weapons";
 
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 (Aegis and Quantum agree within 2 % on Ember of Ashes)
 const FULL_AMMO_SECONDS = 600;
@@ -19,7 +18,6 @@ const FULL_AMMO_SECONDS = 600;
 // its correction lands; the test then has to pass.
 const KNOWN_DEVIATIONS = new Set<string>([]);
 
-const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const references = ReferenceFactor.array().parse(rawReferenceFactors);
@@ -31,13 +29,20 @@ const byIds = (ids: string[]) =>
     return effect;
   });
 
-const totalDamage = (scenario: ReferenceFactor["baseline"]) =>
-  simulate(weapon, FULL_AMMO_SECONDS, byIds(scenario.effectIds), buckets, {
-    catalyst: scenario.catalyst,
-  }).totalDamage;
+const totalDamage = (weaponId: string, scenario: ReferenceFactor["baseline"]) =>
+  simulate(
+    weaponById(weaponId),
+    FULL_AMMO_SECONDS,
+    byIds(scenario.effectIds),
+    buckets,
+    {
+      catalyst: scenario.catalyst,
+    },
+  ).totalDamage;
 
 const modelFactor = (reference: ReferenceFactor) =>
-  totalDamage(reference.variant) / totalDamage(reference.baseline);
+  totalDamage(reference.weaponId, reference.variant) /
+  totalDamage(reference.weaponId, reference.baseline);
 
 describe("gate: weapon effect factors", () => {
   it("has references", () => {
