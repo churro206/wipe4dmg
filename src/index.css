@@ -472,15 +472,16 @@ td:first-child {
   overflow-x: auto;
 }
 
-/* Column heads: icon above the name, so a wrapped name keeps its icon */
+/* Column heads centred (as in scientific tables), icon above the name */
 table.breakdown thead th {
   vertical-align: bottom;
+  text-align: center;
 }
 
 .column-head {
   display: inline-flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.25rem;
 }
 
