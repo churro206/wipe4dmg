@@ -9,7 +9,7 @@ import type {
 } from "../data/schema";
 import {
   compareResults,
-  damageByInstance,
+  damageShares,
   damageCurve,
   dpsByDamagePhase,
 } from "../engine/analysis";
@@ -544,7 +544,12 @@ function App() {
                     </div>
                   )}
                   {result.totalDamage > 0 && (
-                    <DamageShareChart entries={damageByInstance(result)} />
+                    <DamageShareChart
+                      entries={damageShares(result)}
+                      abilityName={(id) =>
+                        abilities.find((a) => a.id === id)?.name ?? id
+                      }
+                    />
                   )}
                   <DamageCurveChart
                     points={damageCurve(result, damagePhaseSeconds)}

@@ -10,22 +10,41 @@ import {
 const MS_PER_SECOND = 1000;
 
 export type DamageShare = {
-  id: string; // damage instance id, e.g. "shot", "ignition", "takenSeeker"
+  id: string; // damage instance id of the weapon (e.g. "shot", "ignition") or the ability id
+  damageSource: DamageSource;
+  abilityId?: string; // set for an ability; all its components form one entry
   damage: number;
   share: number; // of the total damage, 0 to 1
 };
 
-/** Damage per damage instance id, ordered by the first damage instance of each id. */
-export function damageByInstance(result: SimulationResult): DamageShare[] {
-  const totals = new Map<string, number>();
+/**
+ * Damage per weapon damage instance id and per ability. Weapon entries come first, ordered by
+ * their first damage instance, then the abilities in the order super, grenade, melee.
+ */
+export function damageShares(result: SimulationResult): DamageShare[] {
+  const entries = new Map<string, Omit<DamageShare, "share">>();
   for (const instance of result.damageInstances) {
-    totals.set(instance.id, (totals.get(instance.id) ?? 0) + instance.damage);
+    const id = instance.abilityId ?? instance.id;
+    const entry = entries.get(id);
+    if (entry) {
+      entry.damage += instance.damage;
+    } else {
+      entries.set(id, {
+        id,
+        damageSource: instance.damageSource,
+        ...(instance.abilityId ? { abilityId: instance.abilityId } : {}),
+        damage: instance.damage,
+      });
+    }
   }
-  return [...totals].map(([id, damage]) => ({
-    id,
-    damage,
-    share: result.totalDamage > 0 ? damage / result.totalDamage : 0,
-  }));
+  const order = (e: Omit<DamageShare, "share">) =>
+    SOURCE_ORDER.indexOf(e.damageSource);
+  return [...entries.values()]
+    .sort((a, b) => order(a) - order(b))
+    .map((entry) => ({
+      ...entry,
+      share: result.totalDamage > 0 ? entry.damage / result.totalDamage : 0,
+    }));
 }
 
 export type SourceShare = {

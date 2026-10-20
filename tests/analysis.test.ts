@@ -3,10 +3,11 @@ import rawBuckets from "../src/data/buckets.json";
 import raw from "../src/data/weapons/one-thousand-voices.json";
 import {
   compareResults,
-  damageByInstance,
+  damageShares,
   damageCurve,
   dpsByDamagePhase,
 } from "../src/engine/analysis";
+import { Ability, type AbilityKind } from "../src/data/schema";
 import { loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
@@ -14,19 +15,47 @@ import { simulate } from "../src/engine/simulate";
 const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
 const DAMAGE_PHASE_SECONDS = 30;
+
+const source = {
+  name: "test",
+  retrieved: "2026-10-20",
+  status: "verified",
+} as const;
+const n = (value: number) => ({ value, source });
+const component = (id: string, damage: number) => ({
+  id,
+  name: id,
+  delayMs: n(0),
+  damagePerTick: n(damage),
+  ticks: n(1),
+  tickIntervalMs: n(0),
+  scalesWithAbilityStat: true,
+});
+// Test ability with two components; values are test inputs, not game values.
+const testAbility = (id: string, kind: AbilityKind) =>
+  Ability.parse({
+    id,
+    code: 1,
+    name: id,
+    kind,
+    element: "solar",
+    providers: [{ kind: "subclass" }],
+    components: [component("package", 2000), component("packageFixed", 1000)],
+  });
 const result = simulate(weapon, DAMAGE_PHASE_SECONDS, [], buckets, {
   catalyst: true,
 });
 
-describe("damageByInstance", () => {
-  const entries = damageByInstance(result);
+describe("damageShares", () => {
+  const entries = damageShares(result);
 
-  it("has one entry per damage instance id", () => {
+  it("has one entry per damage instance id of the weapon", () => {
     const ids = new Set(result.damageInstances.map((d) => d.id));
     expect(entries.map((e) => e.id).sort()).toEqual([...ids].sort());
+    expect(entries.every((e) => e.damageSource === "weapon")).toBe(true);
   });
 
-  it("sums the damage per id and adds up to the total damage", () => {
+  it("sums the damage per entry and adds up to the total damage", () => {
     const sum = entries.reduce((total, e) => total + e.damage, 0);
     expect(sum).toBeCloseTo(result.totalDamage);
   });
@@ -36,7 +65,7 @@ describe("damageByInstance", () => {
     expect(shares).toBeCloseTo(1);
   });
 
-  it("orders the entries by their first damage instance", () => {
+  it("orders the weapon entries by their first damage instance", () => {
     const firstTime = (id: string) =>
       result.damageInstances.find((d) => d.id === id)!.timeMs;
     const times = entries.map((e) => firstTime(e.id));
@@ -44,7 +73,40 @@ describe("damageByInstance", () => {
   });
 
   it("is empty without damage", () => {
-    expect(damageByInstance(simulate(weapon, 0))).toEqual([]);
+    expect(damageShares(simulate(weapon, 0))).toEqual([]);
+  });
+
+  describe("with abilities", () => {
+    const withAbilities = simulate(weapon, DAMAGE_PHASE_SECONDS, [], buckets, {
+      abilities: [
+        { ability: testAbility("test-melee", "melee"), castsMs: [0] },
+        { ability: testAbility("test-super", "super"), castsMs: [5000] },
+      ],
+    });
+    const shares = damageShares(withAbilities);
+
+    it("gives one entry per ability with all its components", () => {
+      const superEntry = shares.find((e) => e.id === "test-super")!;
+      expect(superEntry).toMatchObject({
+        damageSource: "super",
+        abilityId: "test-super",
+        damage: 3000,
+      });
+    });
+
+    it("puts the weapon first, then super, grenade and melee", () => {
+      expect(shares.map((e) => e.damageSource)).toEqual([
+        "weapon",
+        "weapon",
+        "super",
+        "melee",
+      ]);
+    });
+
+    it("still adds up to the total damage", () => {
+      const sum = shares.reduce((total, e) => total + e.damage, 0);
+      expect(sum).toBeCloseTo(withAbilities.totalDamage);
+    });
   });
 });
 

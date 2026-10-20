@@ -16,7 +16,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import type { AbilityKind } from "../data/schema";
 import type { CurvePoint, DamageShare } from "../engine/analysis";
+import { Icon } from "./components/Icon";
 import type { BreakdownEntry } from "../engine/breakdown";
 
 const integer = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 });
@@ -26,11 +28,16 @@ const percent = new Intl.NumberFormat("de-DE", {
 });
 const seconds = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
 
-// Color follows the kind of damage, never its rank (fixed slot per id).
+// Color follows the kind of damage, never its rank (fixed slot per weapon id or damage source).
 const DAMAGE_KINDS: Record<string, { label: string; color: string }> = {
   shot: { label: "Shots", color: "var(--series-1)" },
   ignition: { label: "Ignitions", color: "var(--series-2)" },
   takenSeeker: { label: "Taken Seeker", color: "var(--series-3)" },
+};
+const ABILITY_KINDS: Record<AbilityKind, { label: string; color: string }> = {
+  super: { label: "Super", color: "var(--series-7)" },
+  grenade: { label: "Grenade", color: "var(--series-5)" },
+  melee: { label: "Melee", color: "var(--series-4)" },
 };
 const kindOf = (id: string) =>
   DAMAGE_KINDS[id] ?? { label: id, color: "var(--muted)" };
@@ -57,47 +64,79 @@ const tooltipProps = {
   cursor: { stroke: "var(--axis)", strokeWidth: 1 },
 } as const;
 
-/** Donut: share of each kind of damage. Legend with values doubles as the table view. */
-export function DamageShareChart({ entries }: { entries: DamageShare[] }) {
+/** Label and color of a donut entry: weapon parts by id, abilities by name and damage source. */
+function shareStyle(
+  entry: DamageShare,
+  abilityName: (abilityId: string) => string,
+): { label: string; kind?: string; color: string } {
+  if (entry.damageSource === "weapon") return kindOf(entry.id);
+  const kind = ABILITY_KINDS[entry.damageSource];
+  return {
+    label: abilityName(entry.abilityId ?? entry.id),
+    kind: kind.label,
+    color: kind.color,
+  };
+}
+
+/** Donut: share of each damage source. Legend with values doubles as the table view. */
+export function DamageShareChart({
+  entries,
+  abilityName,
+}: {
+  entries: DamageShare[];
+  abilityName: (abilityId: string) => string;
+}) {
+  const styled = entries.map((entry) => ({
+    ...entry,
+    ...shareStyle(entry, abilityName),
+  }));
   return (
     <figure className="chart">
-      <figcaption>Schaden nach Art</figcaption>
+      <figcaption>Schaden nach Quelle</figcaption>
       <div className="donut">
         <ResponsiveContainer width="100%" height={180}>
           <PieChart>
             <Pie
-              data={entries}
+              data={styled}
               dataKey="damage"
-              nameKey="id"
+              nameKey="label"
               innerRadius="60%"
               outerRadius="95%"
               stroke="var(--bg)"
               strokeWidth={2}
               isAnimationActive={false}
             >
-              {entries.map((entry) => (
-                <Cell key={entry.id} fill={kindOf(entry.id).color} />
+              {styled.map((entry) => (
+                <Cell key={entry.id} fill={entry.color} />
               ))}
             </Pie>
             <Tooltip
               {...tooltipProps}
               formatter={(value, name) => [
                 integer.format(Number(value)),
-                kindOf(String(name)).label,
+                String(name),
               ]}
             />
           </PieChart>
         </ResponsiveContainer>
         <table className="legend">
           <tbody>
-            {entries.map((entry) => (
+            {styled.map((entry) => (
               <tr key={entry.id}>
                 <td>
                   <span
                     className="swatch"
-                    style={{ background: kindOf(entry.id).color }}
+                    style={{ background: entry.color }}
                   />
-                  {kindOf(entry.id).label}
+                  {entry.abilityId && (
+                    <Icon
+                      iconKey={`ability:${entry.abilityId}`}
+                      label={entry.label}
+                      size={20}
+                    />
+                  )}
+                  {entry.label}
+                  {entry.kind && <span className="kind">{entry.kind}</span>}
                 </td>
                 <td>{integer.format(entry.damage)}</td>
                 <td>{percent.format(entry.share)}</td>
