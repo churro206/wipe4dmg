@@ -115,6 +115,8 @@ Eine Ability bekommt Teile aus dem Compendium nur, wenn sie das Gate gegen Aegis
 
 ## Messprotokoll (Stichproben)
 
+Ablauf der geplanten Tests: [Messprotokolle für Ingame-Tests](guides/measurements.md).
+
 | Datum | Spielversion | Bedingungen | Ergebnis |
 | --- | --- | --- | --- |
 | 2026-10-18 | nicht notiert | Schießstand, Dummy „Carl“; kein Artefakt, keine Aspects und Fragments, kein Surge; Weapons-Stat 130 (+2,9 % Heavy-Schaden PvE); Katalysator-Status nicht notiert | Ein Shot: 1408 Total Damage. Beam-Tick 10, Explosion-Tick 129, Burn-Tick 16. Ein Magazin: 6263 Total Damage, DPS-Anzeige 887. |

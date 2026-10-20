@@ -16,6 +16,7 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 - `docs/data-sources.md`: Datenquellen, Messbedingungen und Messprotokoll.
 - `docs/mechanics/`: Wissen über Mechanics von Destiny 2. Lies `docs/mechanics/README.md` vor Änderungen an Effects oder am Simulator.
 - `docs/guides/abilities.md`: Ablauf zum Anlegen und Aktualisieren von Abilities (ADR 0009). Lies ihn vor Änderungen an `abilities.json`.
+- `docs/guides/measurements.md`: Ingame-Tests des Inhabers (Ember, Explosionen, Shot-Abstand, Particle Reconstruction, Radiant auf Golden Gun). Ergebnisse ins Messprotokoll, dann in Data Files und Gates.
 - `docs/coverage.md`: Abdeckung (generiert, nicht von Hand bearbeiten). Nach Änderungen an Data Files `npm run coverage` ausführen.
 - `docs/roadmap.md`: Woran gearbeitet wird; Quelle für die Website (US-15). Nach jedem abgeschlossenen Schritt aktualisieren.
 
@@ -81,7 +82,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
   - Neue Regel (ADR 0011): Quellen nur als Verhältnis mischen, abgeleitete Werte nur mit Gate.
 - **Erkenntnis:** Compendium-Teile haben das Gate bisher nicht bestanden (Thundercrash −12,5 %, Anzahl der Aftershocks unklar). Deshalb sind fast alle Abilities Pakete.
 - **Nächste Schritte (Masterplan):**
-  - **Korrekturen nach ADR 0011:** erledigt (Gate `tests/weaponEffectGate.test.ts`, Ember, Katalysator, Golden Gun). Optional: Messprotokoll für Ingame-Tests.
+  - **Korrekturen nach ADR 0011:** erledigt (Gate `tests/weaponEffectGate.test.ts`, Ember, Katalysator, Golden Gun). Ingame-Tests stehen in `docs/guides/measurements.md` (Inhaber hat keinen Katalysator).
   - **6c, Ergebnis:**
     - Donut nach Damage Source; heute zeigt er noch „hammer-of-sol.package“.
     - Breakdown-Tabelle pro Damage Source.
