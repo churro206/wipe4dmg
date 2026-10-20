@@ -63,6 +63,8 @@ Abgerufen am 2026-10-18. Nur zur Gegenprüfung; alle Zeilen setzen Particle Reco
 
 ## Aufbau der Aegis-Tabelle, Reiter „Weapons“
 
+Hinweis (2026-10-20): Der Reiter „Weapons“ hat heute die Spalten crit, body, other, Modifiers, Boss, Wipe, #, Full Modifiers und visual Value (= Wipe ÷ # ÷ Full Modifiers). Die Spalten unten (peak Rate, TtE, Base …) stehen im Reiter „Sustained“. Dort übernimmt Base den visual Value aus „Weapons“. Wipe ist eine Messung über ein Magazin; aus ihr lassen sich Ignitions zurückrechnen (siehe `docs/mechanics/scorch-and-ignition.md`).
+
 Die Bedeutung der Spalten ist aus den Zahlen abgeleitet und an One Thousand Voices, Sleeper Simulant, The Queenbreaker, Euphony und Gjallarhorn nachgerechnet.
 
 | Spalte | Bedeutung |

@@ -17,7 +17,7 @@ Granaten, Nahkampf und Supers machen eigenen Schaden. Sie zählen zum Total Dama
 7. **Super-Dauer:** Drei Arten. Cast-Supers (Nova Bomb, Blade Barrage, Well of Radiance, Ward of Dawn …) sind nach der Animation vorbei, ihre Wirkung läuft weiter. Schuss-Supers (Golden Gun 6 / 3 Schuss, Moebius Quiver 2 Salven) enden mit dem letzten Schuss. Energie-Supers verbrauchen Energie pro Sekunde und pro Angriff (Compendium: z. B. Hammer of Sol 21 s, 4,75 % pro Sekunde, 12 % pro Wurf, 1,5 s zwischen zwei Würfen, also etwa 7,8 s bei Dauerfeuer). Während des Supers feuert die Waffe nicht.
 9. **Well of Radiance:** Laut Compendium zählt der Waffenschaden des Casters im Well als Super-Schaden. Der Super-Stat verlängert das Well auf bis zu 40 s bei 200 (Ward of Dawn: bis zu +10 s). Noch nicht abgebildet.
 10. **Golden Gun Marksman:** Precision Hits geben Line 'Em Up, bis zu +90 % Schaden bei x2. Noch nicht abgebildet.
-8. **Golden Gun:** 6 Schuss (Deadshot) oder 3 Schuss (Marksman) pro Super; Radiant erhöht den Schaden; bestimmte Exotics wie Celestial Nighthawk ändern den Schaden stark.
+8. **Golden Gun:** 6 Schuss (Deadshot) oder 3 Schuss (Marksman) pro Super; Radiant erhöht den Schaden um 20 %, Well of Radiance zählt dabei als Radiant (siehe [Damage Stacking](damage-stacking.md), Regel 12); bestimmte Exotics wie Celestial Nighthawk ändern den Schaden stark.
 
 ## Werte
 

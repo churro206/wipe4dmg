@@ -22,7 +22,15 @@ Damage-Buffs gehören zu Kategorien (bei uns: Buckets). Innerhalb einer Kategori
 9. **Nur gegen Bosse:** Effekte, die nicht gegen Bosse wirken, entfallen, z. B. Sect of Force, Kinetic Intrinsic Buff, Weapons Stat 0–100.
 10. **Weaken verlängert 30-%-Debuffs:** Die Debuffs von Felwinter's Helm, Fafnir und Tractor Cannon lassen sich durch die meisten Weaken-Quellen verlängern, z. B. durch eine Void Soul. Tether funktioniert anders und lässt sich nicht verlängern. (Court)
 11. **Expanding Abyss** (Artifact Perk) hebt Weaken an: 15 → 25 %, 30 → 35 %, 35 → 40 %. Nur Void-Schaden, Divinity bleibt bei 15 %. (Court; noch nicht im Modell)
-12. **Buffs auf Supers:** Radiant erhöht auch Golden Gun und Still Hunt um 20 %. Kinetic und Solar Surges wirken nicht auf Golden Gun, ein Solar Surge wirkt aber auf Still Hunt. (Court; im Modell gelten Radiant und Surges nur für Waffen)
+12. **Buffs auf Supers** (geprüft 2026-10-20):
+    - Radiant erhöht Golden Gun (Deadshot, Marksman, mit Celestial Nighthawk) um 20 % (Court; Compendium: „Also affects Golden Gun's Damage“).
+    - Well of Radiance wirkt auf Golden Gun nur als Radiant, also 20 % statt 25 %: „When fired inside a Well of Radiance, Golden Gun now counts as Radiant for increased damage“ (Bungie, Update 9.5.0, Dezember 2025).
+    - Surges, Elemental Overdrive und Weapons Stat wirken nicht auf Supers. Laut Compendium gelten sie nur für Waffenschaden. Aegis lässt die Spalte Surge bei allen Supers leer.
+    - Still Hunt ist kein Super, sondern Waffenschaden („Golden Gun Mode is NOT a Super Ability for any purposes“, Compendium). Er bekommt alle Waffen-Buffs, auch Solar Surge und Weapons Stat.
+    - Twilight Arsenal: nur Debuffs und der „Void Surge modifier“ (Compendium). Aegis rechnet trotzdem Facet of Courage und Limit Break ein; Widerspruch.
+    - Andere Supers: Keine Quelle wendet Radiant, Well, Rift, Banner Shield oder Weapons of Light an. Das ist abgeleitet, getestet hat es niemand. Laut Bungie 9.7.0 gelten Empowering Buffs grundsätzlich nur für Waffenschaden.
+    - Ausnahme außerhalb der Supers: Crackshot (Class Ability) bekommt Radiant +20 % (Compendium, Aegis).
+    - Im Modell gelten Radiant und Well bisher nur für Waffen. Golden Gun ist deshalb mit Radiant oder Well 20 % zu niedrig (bekannter Fehler).
 13. **Activity Surge und Overcharge** stapeln nicht miteinander. Activity Surges stapeln aber mit Armor Surges. (Aktivitätsabhängig, vorerst nicht im Umfang.)
 14. **Superstructure Defender** und ähnliche Raid-Mods zählen nicht als Debuff und stapeln mit Weaken. (Raid-spezifisch, vorerst nicht im Umfang.)
 

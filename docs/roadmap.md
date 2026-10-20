@@ -13,6 +13,7 @@ Stand: 2026-10-20
 - ✅ Grenades: 26 von 30, Melees: 24 von 26 (gemessener Gesamtwert von Aegis)
 - ✅ Icons und Zuordnung zu Klasse und Subklasse aus dem Bungie-Manifest, inklusive Prismatic
 - ✅ Oberfläche: Plätze für Super, Grenade und Melee mit Icons, Stat-Regler 0 bis 200, Hover-Karte mit Herkunft des Werts
+- ⏳ Korrekturen aus der Recherche vom 2026-10-20: Ember of Ashes wirkt zu schwach (+9 % statt +17 %), der Katalysator auch (×1,26 statt ×1,37), Golden Gun bekommt Radiant und Well noch nicht
 - ⏳ Oberfläche: Schaden nach Quelle, Super Window in der Zeitleiste, mehrere Einsätze, Optimizer mit Fähigkeiten
 - ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
 
@@ -25,7 +26,6 @@ Stand: 2026-10-20
 - Well of Radiance: Der Waffenschaden des Casters zählt als Super-Schaden, die Dauer wächst mit dem Super-Stat
 - Golden Gun Marksman: Line 'Em Up bei Precision Hits
 - Fehlende Zeitwerte: Schussabstand von Golden Gun und Moebius Quiver, Flugzeit von Thundercrash
-- Radiant wirkt auch auf Golden Gun und Still Hunt (+20 %), Surges wirken nicht auf Golden Gun (laut Court)
 - Expanding Abyss: hebt Weaken auf 25 %, Tractor Cannon und Moebius auf 35 %, Deadfall auf 40 %
 - Melee-Buffs: addieren sich untereinander (laut Court), brauchen eigenen Bucket
 - Surge 1x (10 %) als Stufe

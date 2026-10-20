@@ -97,6 +97,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Engine | Simulator plus optimizer; contains only pure functions |
 | Exclusive Group | Effects of which a build can provide at most one itself, e.g. one surge level or one super |
 | Fireteam Support | Empowering buff or debuff that another fireteam member provides |
+| Gate | Automated check that compares a computed result with a measured total from a source, e.g. an Aegis row within ±10 %; a decomposed model counts only after it passes (ADR 0009, ADR 0011) |
 | Guardian Class | Titan, Hunter or Warlock; decides which subclass effects a build can provide itself |
 | Ignition | Solar explosion when a target reaches enough scorch stacks; a separate damage instance |
 | Intrinsic | Fixed exotic perk of a weapon, including its catalyst effect |
@@ -110,6 +111,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |
 | Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |
 | Simulator | Part of the engine that computes one build over the damage phase |
+| Source Scale | Absolute damage level of one source; sources differ (Compendium weapon values are about 1.26 × Quantum), so values from different sources are combined only as ratios (ADR 0011) |
 | Stacking Resource | Mechanic category: a counter on the player that builds up and decays, e.g. Bolt Charge or Armor Charge |
 | Subclass | Ability set of a class with one element (Arc, Solar, Void, Stasis, Strand) or Prismatic; decides which own subclass effects a build can provide |
 | Super Window | Time in which a super with a duration is active; the weapon does not fire in it |
