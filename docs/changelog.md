@@ -12,6 +12,7 @@
 - Link-Format 3 mit Fähigkeiten und Stats. Ältere Links funktionieren weiter.
 - Recherche zu Ember of Ashes, Katalysator, Particle Reconstruction und Buffs auf Supers: drei Fehler im Modell gefunden und dokumentiert. Neue Regel für zerlegte Werte (ADR 0011): Quellen nur als Verhältnis mischen, jede Zerlegung braucht ein Gate.
 - Korrigiert: Ember of Ashes bringt jetzt +19 % statt +9 % (jeder Shot zündet), der Katalysator ×1,39 statt ×1,26. Beide stimmen auf 2 % mit Aegis überein.
+- Rotation mit Fähigkeiten: eigene Zeile pro Ability in der Zeitleiste, Super Window schraffiert (gestrichelt, wenn geschätzt), Einsatzzeiten in Sekunden, weitere Einsätze über „+“. Energie und Cooldowns prüft der Rechner nicht.
 - Breakdown-Tabelle pro Quelle: Multiplier jedes Buckets für die Waffe und jede Ability, „–“ wo ein Bucket nicht wirkt, Schaden pro Quelle in der Fußzeile.
 - Donut „Schaden nach Quelle“: Shots, Ignitions und Taken Seeker der Waffe, dazu Super, Grenade und Melee mit Namen und Icon statt technischer IDs. Feste Farben pro Art, geprüft für hellen und dunklen Modus.
 - Ingame-Tests eingearbeitet: Shot-Abstand von One Thousand Voices 1,733 s statt 1,818 s (höhere DPS, gleicher Total Damage), Ignition-Cooldown 1,3 s statt 1,6 s, Explosionen gestaffelt.

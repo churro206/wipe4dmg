@@ -14,6 +14,7 @@ import {
   dpsByDamagePhase,
 } from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
+import { addCast, removeCast, setCast } from "../engine/buildAbilities";
 import { abilitySimulation } from "../engine/buildAbilities";
 import { effectWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
@@ -57,6 +58,7 @@ import { EffectPicker } from "./components/EffectPicker";
 import { Icon } from "./components/Icon";
 import { InfoTip } from "./components/InfoTip";
 import { OptimizerCards } from "./components/OptimizerCards";
+import { AbilityCastEditor } from "./components/AbilityCastEditor";
 import { RotationEditor } from "./components/RotationEditor";
 import { SegmentedControl } from "./components/SegmentedControl";
 import { SummaryBar } from "./components/SummaryBar";
@@ -86,6 +88,8 @@ type TabId = (typeof TABS)[number]["id"];
 
 // Number of builds the optimizer shows (US-08).
 const OPTIMIZER_LIMIT = 15;
+// "+" in the cast editor adds a cast this long after the last one; the user moves it as needed.
+const CAST_GAP_MS = 10_000;
 // Range of the DPS chart; it grows if the chosen damage phase is longer.
 const DPS_CHART_MIN_SECONDS = 120;
 
@@ -259,6 +263,17 @@ function App() {
     }
     setOpenSlot(null);
   };
+  // Cast times of the chosen abilities; "+" adds a cast this long after the last one (UI default).
+  const updateCasts = (
+    kind: AbilityKind,
+    change: (castsMs: number[]) => number[],
+  ) =>
+    setAbilityChoice((current) => {
+      const pick = current[kind];
+      return pick
+        ? { ...current, [kind]: { ...pick, castsMs: change(pick.castsMs) } }
+        : current;
+    });
   const setWindow = (effect: Effect, patch: Partial<WindowInput>) =>
     setWindowInputs((inputs) => ({
       ...inputs,
@@ -275,6 +290,11 @@ function App() {
     }
     setSelections((current) => toggleSelection(current, effect, provider));
   };
+  const castRows = ABILITY_KINDS.flatMap((kind) => {
+    const pick = abilityChoice[kind];
+    const ability = pick && abilities.find((a) => a.id === pick.abilityId);
+    return ability ? [{ ability, castsMs: pick.castsMs }] : [];
+  });
   const windows = isValid
     ? effectWindows(selected, damagePhaseSeconds, options)
     : [];
@@ -572,6 +592,15 @@ function App() {
                         iconUrl: iconUrl(`effect:${effect.id}`),
                       };
                     })}
+                    abilityRows={castRows.map(({ ability, castsMs }) => ({
+                      label: ability.name,
+                      iconUrl: iconUrl(`ability:${ability.id}`),
+                      kind: ability.kind,
+                      castsMs,
+                      windows: result.superWindows.filter(
+                        (w) => w.abilityId === ability.id,
+                      ),
+                    }))}
                     shotsMs={result.shots.map((s) => s.timeMs)}
                     ignitionsMs={result.damageInstances
                       .filter((d) => d.id === "ignition")
@@ -587,6 +616,22 @@ function App() {
                       windows.find((w) => w.effectId === effect.id)?.uptime
                     }
                     onChange={setWindow}
+                  />
+                  <AbilityCastEditor
+                    rows={castRows}
+                    onChange={(ability, index, value) =>
+                      updateCasts(ability.kind, (casts) =>
+                        setCast(casts, index, value * 1000, damagePhaseSeconds * 1000),
+                      )
+                    }
+                    onAdd={(ability) =>
+                      updateCasts(ability.kind, (casts) =>
+                        addCast(casts, damagePhaseSeconds * 1000, CAST_GAP_MS),
+                      )
+                    }
+                    onRemove={(ability, index) =>
+                      updateCasts(ability.kind, (casts) => removeCast(casts, index))
+                    }
                   />
                 </>
               )}

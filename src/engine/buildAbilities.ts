@@ -44,3 +44,38 @@ export function abilitySimulation(
     grantedWindows,
   };
 }
+
+// Cast times of one ability (ADR 0009: the rotation sets the casts; energy and cooldowns are not
+// checked). All return new sorted lists inside the damage phase.
+
+/** Adds a cast the given gap after the last one, at most at the end of the damage phase. */
+export function addCast(
+  castsMs: number[],
+  damagePhaseMs: number,
+  gapMs: number,
+): number[] {
+  if (castsMs.length === 0) return [0];
+  const last = Math.max(...castsMs);
+  return [...castsMs, Math.min(last + gapMs, damagePhaseMs)].sort(
+    (a, b) => a - b,
+  );
+}
+
+/** Removes one cast; an ability keeps at least one cast. */
+export function removeCast(castsMs: number[], index: number): number[] {
+  if (castsMs.length <= 1) return castsMs;
+  return castsMs.filter((_, i) => i !== index);
+}
+
+/** Moves one cast to a new time inside the damage phase. */
+export function setCast(
+  castsMs: number[],
+  index: number,
+  timeMs: number,
+  damagePhaseMs: number,
+): number[] {
+  const clamped = Math.min(Math.max(timeMs, 0), damagePhaseMs);
+  return castsMs
+    .map((ms, i) => (i === index ? clamped : ms))
+    .sort((a, b) => a - b);
+}

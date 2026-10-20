@@ -86,7 +86,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
   - **6c, Ergebnis:**
     - ✅ Donut nach Damage Source (`damageShares`, 6c-1).
     - ✅ Breakdown-Tabelle pro Damage Source (6c-2).
-    - Zeitleiste mit Ability-Zeilen und schraffiertem Super Window; Einsatzzeit einstellbar, weitere Casts über „+“.
+    - ✅ Zeitleiste mit Ability-Zeilen und schraffiertem Super Window; Einsatzzeit einstellbar, weitere Casts über „+“ (6c-3). Damit ist 6c fertig.
   - **6d, Optimizer:** probiert auch Super, Grenade und Melee.
   - **6e, Wiki-Reiter (ADR 0010):**
     - Abdeckung und Roadmap.

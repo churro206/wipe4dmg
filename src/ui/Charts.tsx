@@ -308,12 +308,23 @@ const ICON_SIZE = 18;
 // Longer effect names are cut with an ellipsis; the full name shows on hover.
 const MAX_LABEL_CHARS = 24;
 
+/** One timeline row per chosen ability: its casts and, for a super, its super windows. */
+export type AbilityTimelineRow = {
+  label: string;
+  iconUrl?: string;
+  kind: AbilityKind;
+  castsMs: number[];
+  windows: { startMs: number; endMs: number; exact: boolean }[];
+};
+
 /**
- * Rotation timeline (US-07): one bar per effect window, the shots as thin marks and the
- * ignitions as dots. Bars carry a native tooltip; the rotation table is the table view.
+ * Rotation timeline (US-07): one bar per effect window, one row per ability with its casts and
+ * hatched super windows, the shots as thin marks and the ignitions as dots. Marks carry a native
+ * tooltip; the rotation tables are the table view.
  */
 export function RotationTimeline({
   rows,
+  abilityRows,
   shotsMs,
   ignitionsMs,
   damagePhaseSeconds,
@@ -325,6 +336,7 @@ export function RotationTimeline({
     endMs: number;
     uptime: number;
   }[];
+  abilityRows: AbilityTimelineRow[];
   shotsMs: number[];
   ignitionsMs: number[];
   damagePhaseSeconds: number;
@@ -340,6 +352,7 @@ export function RotationTimeline({
 
   const lines = [
     ...rows.map((row) => ({ kind: "effect" as const, row })),
+    ...abilityRows.map((ability) => ({ kind: "ability" as const, ability })),
     { kind: "shots" as const },
     ...(ignitionsMs.length > 0 ? [{ kind: "ignitions" as const }] : []),
   ];
@@ -359,8 +372,29 @@ export function RotationTimeline({
         viewBox={`0 0 ${width} ${plotHeight + axisHeight}`}
         width="100%"
         role="img"
-        aria-label="Zeitleiste: Zeitfenster der Effects, Shots und Ignitions"
+        aria-label="Zeitleiste: Zeitfenster der Effects, Einsätze der Fähigkeiten, Shots und Ignitions"
       >
+        <defs>
+          {abilityRows.map((ability) => (
+            <pattern
+              key={ability.kind}
+              id={`hatch-${ability.kind}`}
+              width={6}
+              height={6}
+              patternUnits="userSpaceOnUse"
+              patternTransform="rotate(45)"
+            >
+              <line
+                x1={0}
+                y1={0}
+                x2={0}
+                y2={6}
+                stroke={ABILITY_KINDS[ability.kind].color}
+                strokeWidth={2}
+              />
+            </pattern>
+          ))}
+        </defs>
         {ticks.map((t) => (
           <g key={t}>
             <line
@@ -394,14 +428,22 @@ export function RotationTimeline({
           const label =
             line.kind === "effect"
               ? line.row.label
-              : line.kind === "shots"
-                ? "Shots"
-                : "Ignitions";
+              : line.kind === "ability"
+                ? line.ability.label
+                : line.kind === "shots"
+                  ? "Shots"
+                  : "Ignitions";
+          const rowIcon =
+            line.kind === "effect"
+              ? line.row.iconUrl
+              : line.kind === "ability"
+                ? line.ability.iconUrl
+                : undefined;
           return (
             <g key={label + i}>
-              {line.kind === "effect" && line.row.iconUrl && (
+              {rowIcon && (
                 <image
-                  href={line.row.iconUrl}
+                  href={rowIcon}
                   x={labelWidth - ICON_SIZE - 6}
                   y={middle - ICON_SIZE / 2}
                   width={ICON_SIZE}
@@ -434,6 +476,41 @@ export function RotationTimeline({
                   </title>
                 </rect>
               )}
+              {line.kind === "ability" &&
+                line.ability.windows.map((w) => (
+                  <rect
+                    key={`window-${w.startMs}`}
+                    x={x(w.startMs)}
+                    y={middle - 8}
+                    width={Math.max(x(w.endMs) - x(w.startMs), 1)}
+                    height={16}
+                    rx={2}
+                    fill={`url(#hatch-${line.ability.kind})`}
+                    stroke={ABILITY_KINDS[line.ability.kind].color}
+                    strokeWidth={1}
+                    strokeDasharray={w.exact ? undefined : "3 2"}
+                  >
+                    <title>
+                      {`Super Window ${seconds.format(w.startMs / 1000)}–${seconds.format(w.endMs / 1000)} s${w.exact ? "" : " (Schätzung)"}: Die Waffe feuert nicht`}
+                    </title>
+                  </rect>
+                ))}
+              {line.kind === "ability" &&
+                line.ability.castsMs.map((ms) => (
+                  <rect
+                    key={`cast-${ms}`}
+                    x={x(ms) - 5}
+                    y={middle - 5}
+                    width={10}
+                    height={10}
+                    transform={`rotate(45 ${x(ms)} ${middle})`}
+                    fill={ABILITY_KINDS[line.ability.kind].color}
+                    stroke="var(--bg)"
+                    strokeWidth={2}
+                  >
+                    <title>{`${label}: Einsatz bei ${seconds.format(ms / 1000)} s`}</title>
+                  </rect>
+                ))}
               {line.kind === "shots" &&
                 shotsMs.map((ms) => (
                   <line

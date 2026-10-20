@@ -4,7 +4,12 @@ import rawAbilities from "../src/data/abilities.json";
 import rawAegis from "../src/data/aegis-abilities.json";
 import rawEffects from "../src/data/effects.json";
 import rawManifest from "../src/data/manifest-abilities.json";
-import { abilitySimulation } from "../src/engine/buildAbilities";
+import {
+  abilitySimulation,
+  addCast,
+  removeCast,
+  setCast,
+} from "../src/engine/buildAbilities";
 import { loadAbilities } from "../src/engine/loadAbilities";
 import {
   loadAbilityStats,
@@ -117,5 +122,34 @@ describe("abilitySimulation", () => {
         effects,
       ),
     ).toThrow(/nope/);
+  });
+});
+
+describe("cast times", () => {
+  // Test inputs, not game values.
+  const PHASE_MS = 30_000;
+  const GAP_MS = 10_000;
+
+  it("adds a cast the gap after the last one", () => {
+    expect(addCast([0, 5_000], PHASE_MS, GAP_MS)).toEqual([0, 5_000, 15_000]);
+  });
+
+  it("keeps a new cast inside the damage phase", () => {
+    expect(addCast([25_000], PHASE_MS, GAP_MS)).toEqual([25_000, 30_000]);
+  });
+
+  it("starts at 0 without casts", () => {
+    expect(addCast([], PHASE_MS, GAP_MS)).toEqual([0]);
+  });
+
+  it("removes a cast but keeps at least one", () => {
+    expect(removeCast([0, 10_000], 0)).toEqual([10_000]);
+    expect(removeCast([10_000], 0)).toEqual([10_000]);
+  });
+
+  it("changes a cast, keeps it inside the damage phase and sorts the casts", () => {
+    expect(setCast([0, 10_000], 0, 12_000, PHASE_MS)).toEqual([10_000, 12_000]);
+    expect(setCast([0], 0, 45_000, PHASE_MS)).toEqual([PHASE_MS]);
+    expect(setCast([5_000], 0, -1, PHASE_MS)).toEqual([0]);
   });
 });

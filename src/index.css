@@ -333,6 +333,11 @@ summary:focus-visible {
   gap: 0.3rem;
 }
 
+/* The tile fills the slot, so the stat rows line up even if a name wraps to two lines. */
+.ability-slot > .tile-wrap {
+  flex: 1;
+}
+
 .ability-slot .tile[aria-expanded="true"] {
   border-color: var(--accent);
 }
@@ -478,6 +483,35 @@ td.muted {
 
 table.rotation input {
   max-width: 4.5rem;
+}
+
+/* Cast editor: one field per cast, with remove and add buttons */
+table.casts td:last-child {
+  text-align: left;
+}
+
+.casts-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cast {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.icon-button {
+  min-width: 1.6rem;
+  padding: 0.1rem 0.35rem;
+  line-height: 1.2;
+}
+
+table.casts .kind {
+  color: var(--muted);
+  margin-left: 0.35rem;
 }
 
 .cell-with-icon {
