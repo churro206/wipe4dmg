@@ -70,7 +70,7 @@ ADR 0009 löst dasselbe Problem für Abilities: Import, Regel für die Basiszeil
     - **Nur Katalysator-Zeilen bei Aegis:** Basis = Aegis-Wert ÷ Katalysator-Faktor aus Quantum (mit / ohne), als Verhältnis (ADR 0011, Punkt 1).
     - Dauer und Bedingung von Optionen: Clarity zuerst, dann Compendium.
 17. **Overrides** (`src/data/weapon-overrides.json`): nur für Fälle, die keine Regel löst; jeder mit Begründung und wörtlichem Zitat aus Clarity oder Compendium, ein Test prüft das Zitat. Erste Fälle: Sleeper Simulant (beide Quellen nur mit Katalysator: 14 statt 16 Schuss, Charge 1024 statt 774 ms), Two-Tailed Fox (Lücke bis zum Handmodell: Scorch und Ignitions).
-
+18. **Pakete im Simulator** (Ergänzung 2026-10-20): Der Katalysator-Schalter des Builds wendet die Katalysator-Optionen als Multiplier an; ihr Bucket steht in der Option (`bucketId`, Weapon Perk). Eingerechnete Effects, die nur multiplizieren, rechnet der Import heraus (Slayer's Fang: Wert ÷ 1,15 für Weaken); andere eingerechnete Effects (`includedEffectIds`) wendet der Simulator auf diese Waffe nicht noch einmal an. Wählbare Perk- und Mod-Optionen samt Link-Format 4 kommen erst, wenn der Import die erste liefert.
 ## Folgen
 
 - Eine neue Waffe kostet keine Recherche, solange sie die Regeln besteht. Nach einem Patch zeigt ein neuer Import, was sich geändert hat.

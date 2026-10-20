@@ -51,6 +51,8 @@ export type WeaponImportInputs = {
   overrides: WeaponOverride[];
 };
 
+// Catalysts, perks and mods of a weapon are weapon perks in Court's stacking guide.
+const OPTION_BUCKET = "weaponPerk";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
 const RPM_HINT = 0.25; // a derived fire rate this far from the Quantum rpm is worth a look
 const BASE_KINDS: AssumptionKind[] = [
@@ -544,9 +546,38 @@ export function buildWeaponImport(
     }
     entry.baseRow = base;
     entry.perShot = base.perShot;
-    entry.includedEffectIds = classesOf
+    // Included effects that only multiply weapon damage are taken out of the value, so they work
+    // like any effect when the build has them (as Radiant in Golden Gun, ADR 0009, point 5).
+    // Others (e.g. Ember of Ashes, which changes scorch) stay in and do not count twice.
+    const included = classesOf
       .get(base)!
       .flatMap((c) => (c.effectId ? [c.effectId] : []));
+    const normalised: string[] = [];
+    let normaliseFactor = 1;
+    for (const effectId of included) {
+      const effect = inputs.effects.find((e) => e.id === effectId);
+      if (!effect || effect.parts.some((p) => p.type !== "multiplier"))
+        continue;
+      const factor = effect.parts.reduce(
+        (product, p) =>
+          p.type === "multiplier" &&
+          p.damageSources.includes("weapon") &&
+          (p.elements === undefined || p.elements.includes(manifest.element)) &&
+          (p.weaponTypes === undefined ||
+            p.weaponTypes.includes(manifest.weaponType)) &&
+          p.multiplier.value !== null
+            ? product * p.multiplier.value
+            : product,
+        1,
+      );
+      normaliseFactor *= factor;
+      normalised.push(effectId);
+      entry.notes.push(
+        `herausgerechnet: ${effect.name} ×${de(factor, 3)} (wirkt nur, wenn der Build ihn hat)`,
+      );
+    }
+    entry.includedEffectIds = included.filter((id) => !normalised.includes(id));
+    entry.perShot = base.perShot / normaliseFactor;
 
     // Options: rows that add only catalyst, perk or mod assumptions to the base row.
     const options: WeaponOption[] = [];
@@ -617,6 +648,7 @@ export function buildWeaponImport(
         id,
         name,
         kind,
+        bucketId: OPTION_BUCKET,
         factor: {
           value: Number(factor.toFixed(4)),
           source: aegisSource(
@@ -860,7 +892,7 @@ export function buildWeaponImport(
             source: aegisSource(base, "Package: one value per shot"),
           },
           damagePerTick: {
-            value: base.perShot,
+            value: Number(entry.perShot!.toFixed(3)),
             source: aegisSource(
               base,
               `visual Value; assumptions: ${base.assumptions.join(", ") || "none"}`,

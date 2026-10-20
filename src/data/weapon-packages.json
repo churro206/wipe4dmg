@@ -1057,6 +1057,7 @@
         "id": "networked-targeting-x5",
         "name": "Networked Targeting x5",
         "kind": "catalyst",
+        "bucketId": "weaponPerk",
         "factor": {
           "value": 1.0603,
           "source": {
@@ -3955,7 +3956,7 @@
           }
         },
         "damagePerTick": {
-          "value": 1205.898,
+          "value": 1048.607,
           "source": {
             "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-slayer-s-fang-average-includes-submunitions-nightsworn-ticks-include-weaken",
             "url": "https://destiny2.science/boss-damage",
@@ -4032,8 +4033,7 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ],
-    "includedEffectIds": ["weaken"]
+    ]
   },
   {
     "id": "sleeper-simulant",
@@ -5328,6 +5328,7 @@
         "id": "reaper-s-tithe-x4",
         "name": "Reaper's Tithe x4",
         "kind": "catalyst",
+        "bucketId": "weaponPerk",
         "factor": {
           "value": 1.4,
           "source": {
@@ -5647,6 +5648,7 @@
         "id": "whispered-breathing",
         "name": "Whispered Breathing",
         "kind": "catalyst",
+        "bucketId": "weaponPerk",
         "factor": {
           "value": 1.4718,
           "source": {

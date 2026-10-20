@@ -33,6 +33,7 @@ import type {
   DamageSource,
   Effect,
   Element,
+  MultiplierPart,
   Weapon,
 } from "../data/schema";
 import { abilityStatParts, type AbilityStatValue } from "./abilityStats";
@@ -193,14 +194,31 @@ export function simulate(
     }));
 
   const damageSource: DamageSource = "weapon";
-  const multiplierAt = (timeMs: number, element: Element) =>
-    combinedMultiplier(partsAt(timeMs).multiplierParts, buckets, {
-      damageSource,
-      element,
-      weaponType: weapon.weaponType,
+  // Imported packages (ADR 0013): effects inside the value per shot do not count again, and the
+  // catalyst switch applies the catalyst options as multipliers in their bucket.
+  const included = weapon.includedEffectIds ?? [];
+  const bucketIds = new Set(buckets.map((bucket) => bucket.id));
+  const optionParts: MultiplierPart[] = (weapon.options ?? [])
+    .filter((option) => option.kind === "catalyst" && catalyst)
+    .map((option) => {
+      if (!bucketIds.has(option.bucketId)) {
+        throw new Error(`Unknown bucket "${option.bucketId}"`);
+      }
+      return {
+        type: "multiplier",
+        bucketId: option.bucketId,
+        multiplier: option.factor,
+        damageSources: [damageSource],
+      };
     });
+  const multiplierAt = (timeMs: number, element: Element) =>
+    combinedMultiplier(
+      [...partsAt(timeMs, included).multiplierParts, ...optionParts],
+      buckets,
+      { damageSource, element, weaponType: weapon.weaponType },
+    );
   const counterFactorAt = (counterId: CounterId, timeMs: number) =>
-    partsAt(timeMs)
+    partsAt(timeMs, included)
       .counterModifierParts.filter((part) => part.counterId === counterId)
       .reduce(
         (product, part) => product * requireValue(part.factor, "factor"),

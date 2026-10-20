@@ -188,6 +188,7 @@ export const WeaponOption = z.object({
   name: z.string(), // e.g. "Reaper's Tithe x4"
   kind: z.enum(["catalyst", "perk", "weaponMod"]),
   factor: SourcedNumber,
+  bucketId: z.string(), // bucket of the factor, e.g. "weaponPerk"
   durationSeconds: z.number().positive().nullable(), // null: none found or permanent
   condition: z.string().nullable(), // text from the Compendium, e.g. "simultaneously killed enemies"
 });
