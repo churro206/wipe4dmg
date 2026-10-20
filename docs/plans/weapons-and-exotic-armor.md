@@ -20,13 +20,13 @@ Spieler vergleichen **Waffen in Kombination mit Exotic-Rüstung**. Das Feedback 
 | --- | --- | --- |
 | ✅ **7** | v1.0 formal abschließen: `package.json` 1.0.0, Tag `v1.0.0`, Changelog mit Zusammenfassung für Spieler, Releaseplan. Klein. | Plan |
 | ✅ **W0 Fundament** | ADR 0012 „Mehrere Waffen“ und `docs/guides/weapons.md`. Alle Data Files in `src/data/weapons/` geladen (`loadWeapons`, Ids und Codes eindeutig); Gate-Werte mit `weaponId`, jede Waffe braucht ein Gate; `effectAppliesToWeapon`; Engine mit erfundener Testwaffe geprüft. Link-Format 3 enthält die Waffe schon, kein Format 4 nötig. Waffenauswahl und Oberfläche wandern nach W1 (Liste im Leitfaden). | Plan + ADR |
-| **W1 Truth** | Waffenauswahl und Oberfläche ohne One-Thousand-Voices-Annahmen (Liste in `docs/guides/weapons.md`). Paket aus Aegis/Quantum: Schaden pro Rakete mit Cluster (Prototype Truthseeker), Magazin, Reload, Munition; Reaper's Tithe als Faktor aus „mit / ohne“; Gate gegen Aegis (±3 %, ADR 0011). Element und Argent Ordnance vorher klären. | Datentabelle |
+| **W1 Waffen-Import** | ADR 0013: Snapshots von Aegis und Quantum, Arten der Annahmen (Test gegen unbekannte), Pakete, Optionen mit Dauer-Markierung, Gate automatisch, Prüftabelle `docs/weapon-import.md`, Waffenauswahl mit Suche, Oberfläche ohne One-Thousand-Voices-Annahmen (Liste in `docs/guides/weapons.md`). Prüffälle: Truth (Handtabelle vom 2026-10-20 als Erwartung) und Thunderlord. | Regeln (ADR 0013) freigegeben; Prüftabelle pro Import |
 | **E0 Exotic-Rüstung, Fundament** | Slot „Exotic“ in der Rüstung, höchstens eine pro Build, nach Klasse; ein Exotic ist ein Bündel aus Effects; Bedingungen (z. B. Mantle: Surge 4x im Element des Supers). Schema, Tests, Link. | Plan + ADR |
 | **E1 erste Exotics** | Dawn Chorus (Wunsch des Inhabers); dazu Kandidaten mit großer Wirkung auf Schaden: Mantle of Battle Harmony (Surge 4x), Celestial Nighthawk (Golden Gun), Cuirass of the Falling Star (Thundercrash). Jedes Exotic vorher recherchieren (Compendium, Court, Aegis). | Datentabelle pro Exotic |
-| **W2 Thunderlord** | Neue Mechanics: Feuerrate steigt bei Dauerfeuer (Reign Havoc), Blitze. Bolt Charge zunächst ohne, wie Aegis. | Datentabelle |
+| ~~W2 Thunderlord~~ | Entfällt: Reign Havoc und Blitze stecken im Aegis-Paket (ADR 0013). | – |
 | **v1.1** | Changelog, Testlauf mit den Freunden: Waffe × Exotic-Rüstung vergleichen. | – |
 
-Reihenfolge W1 vor E0, weil Truth das Waffen-Fundament mit wenig neuer Mechanik prüft. E0/E1 vor W2, weil der Inhaber Exotic-Rüstung als den eigentlichen Mehrwert sieht.
+Reihenfolge W1 vor E0: Der Waffen-Import liefert auf einen Schlag viele Waffen für den Vergleich Waffe × Exotic-Rüstung. Für Exotic-Rüstung gilt dasselbe Prinzip (Import statt Handarbeit): Courts Stacking Guide für Buffs, Aegis-Zeilen „with X“ für Abilities.
 
 ## Risiken und offene Fragen
 

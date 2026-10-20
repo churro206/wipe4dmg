@@ -66,7 +66,7 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
 
 - **v1.0.0 veröffentlicht (Tag `v1.0.0`, Versionsanzeige im Footer aus `package.json` über `__APP_VERSION__`).**
-- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** ✅ 7 (v1.0 formal) → ✅ W0 Waffen-Fundament → W1 Truth → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. → W2 Thunderlord → v1.1. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
+- **Weiter geht es mit `docs/plans/weapons-and-exotic-armor.md`:** ✅ 7 (v1.0 formal) → ✅ W0 Waffen-Fundament → W1 Waffen-Import (ADR 0013, Prüffälle Truth und Thunderlord) → E0 Exotic-Rüstung → E1 Dawn Chorus u. a. (Court-Import) → v1.1. W2 entfällt. Feedback des Inhabers zu v1.0: Bedienung passt; spannend wird Waffe × Exotic-Rüstung.
 
 - **Gate v1.0 teilweise erfüllt:** Inhaber hat getestet, die Freunde testen parallel zu v1.1.
 - **US-14, Entscheidung in ADR 0009:** Abilities bestehen aus Ability Components (Compendium). Fehlen Teile oder fällt die Ability durchs Gate, gilt ein Aegis-Paket. Aegis ist das Gate (±10 % bei Stat 100 und 200).
@@ -104,7 +104,7 @@ Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git 
 - **Arbeitsstil des Inhabers:**
   - Kleine Schritte: Plan, Freigabe („ok“), Tests zuerst.
   - Nach jedem Schritt: Commit und Push.
-  - Vor Datenarbeit eine Tabelle zur Freigabe zeigen.
+  - Vor Datenarbeit eine Tabelle zur Freigabe zeigen. Bei Importen (ADR 0009, ADR 0013): Regeln einmal freigeben, danach die Prüftabelle pro Import.
 - **UI-Check:** `npm run build`, `npx vite preview --port 4173`, dann `node scripts/ui-check.mjs <url> <out.png> [--dark|--light] [--width 1400] [--click "Wiki"]`. Link-Parameter für Builds ist `?b=`.
 
 ## Befehle

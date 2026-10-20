@@ -7,7 +7,7 @@ Stand: 2026-10-20
 ## In Arbeit (v1.1)
 
 - ✅ Fundament für mehrere Waffen: jede Waffe als eigene Datei mit eigenem Abgleich gegen die Quellen
-- Weitere Waffen: Truth, danach Thunderlord; Waffenauswahl im Rechner
+- Weitere Waffen automatisch aus Aegis und Quantum: zuerst exotische Special- und Heavy-Waffen (Truth, Thunderlord und bis zu 80 weitere), Waffenauswahl mit Suche. Perks, Mods und Katalysatoren als Schalter; Buffs mit kurzer Dauer sind markiert.
 - Exotic-Rüstung: Dawn Chorus und weitere Exotics mit großer Wirkung auf den Schaden (z. B. Mantle of Battle Harmony mit Surge 4x)
 - Plan: [Waffen und Exotic-Rüstung](plans/weapons-and-exotic-armor.md)
 
