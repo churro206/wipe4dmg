@@ -1,0 +1,2637 @@
+{
+  "manifestVersion": "245114.26.10.13.2000-1-bnet.66137",
+  "retrieved": "2026-10-20",
+  "weapons": [
+    {
+      "hash": 347366834,
+      "name": "Ace of Spades",
+      "weaponType": "handCannon",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Memento Mori"],
+      "perks": [
+        "Corkscrew Rifling",
+        "Firefly",
+        "High-Caliber Rounds",
+        "Smooth Grip"
+      ],
+      "catalyst": {
+        "name": "Ace of Spades Catalyst",
+        "perks": ["Funeral Pyre"]
+      }
+    },
+    {
+      "hash": 1833195496,
+      "name": "Ager's Scepter",
+      "weaponType": "traceRifle",
+      "element": "stasis",
+      "ammo": "special",
+      "intrinsics": ["Ager's Call"],
+      "perks": [
+        "Arrowhead Brake",
+        "Hand-Laid Stock",
+        "Particle Repeater",
+        "Rega's Refrain"
+      ],
+      "catalyst": {
+        "name": "Ager's Scepter Catalyst",
+        "perks": ["Will Given Form"]
+      }
+    },
+    {
+      "hash": 2350354266,
+      "name": "Alethonym",
+      "weaponType": "grenadeLauncher",
+      "element": "stasis",
+      "ammo": "primary",
+      "intrinsics": ["Harvester Spike"],
+      "perks": [
+        "Countermass",
+        "High-Velocity Rounds",
+        "Short-Action Stock",
+        "Vestigial Alchemy"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 2376481550,
+      "name": "Anarchy",
+      "weaponType": "grenadeLauncher",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Arc Traps"],
+      "perks": [
+        "Composite Stock",
+        "High-Velocity Rounds",
+        "Impromptu Ammunition",
+        "Quick Launch"
+      ],
+      "catalyst": { "name": "Anarchy Catalyst", "perks": ["Jolting Feedback"] }
+    },
+    {
+      "hash": 2130065553,
+      "name": "Arbalest",
+      "weaponType": "linearFusionRifle",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Compounding Force"],
+      "perks": [
+        "Composite Stock",
+        "Disruption Break",
+        "Extended Barrel",
+        "Projection Fuse"
+      ],
+      "catalyst": { "name": "Arbalest Catalyst", "perks": ["Genesis"] }
+    },
+    {
+      "hash": 2816212794,
+      "name": "Bad Juju",
+      "weaponType": "pulseRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["String of Curses"],
+      "perks": [
+        "Full Auto Trigger System",
+        "Hammer-Forged Rifling",
+        "Hip-Fire Grip",
+        "Short-Action Stock",
+        "Steady Rounds"
+      ],
+      "catalyst": { "name": "Bad Juju Catalyst", "perks": ["Unending Curse"] }
+    },
+    {
+      "hash": 1481594633,
+      "name": "Barrow-Dyad",
+      "weaponType": "submachineGun",
+      "element": "strand",
+      "ammo": "primary",
+      "intrinsics": [
+        "Panic Response",
+        "Panic Response II",
+        "Panic Response III",
+        "Panic Response IV",
+        "Panic Response V"
+      ],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Combat Grip",
+        "Corkscrew Rifling",
+        "Extended Barrel",
+        "Extended Mag",
+        "Flared Magwell",
+        "Fluted Barrel",
+        "Hammer-Forged Rifling",
+        "Hatchling Refit",
+        "Heavy Grip",
+        "High-Impact Reserves Refit",
+        "One for All Refit",
+        "Polygonal Rifling",
+        "Polymer Grip",
+        "Ricochet Rounds",
+        "Smallbore",
+        "Smooth Grip",
+        "Taken Ambition",
+        "Taken Divergence",
+        "Taken Resolution",
+        "Target Lock Refit",
+        "Textured Grip"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 2415517654,
+      "name": "Bastion",
+      "weaponType": "fusionRifle",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Saint's Fists"],
+      "perks": [
+        "Breakthrough",
+        "Composite Stock",
+        "Hammer-Forged Rifling",
+        "Liquid Coils"
+      ],
+      "catalyst": { "name": "Bastion Catalyst", "perks": ["Cast No Shadows"] }
+    },
+    {
+      "hash": 3766045777,
+      "name": "Black Talon",
+      "weaponType": "sword",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Crow's Wings"],
+      "perks": [
+        "Duelist's Trance",
+        "Heavy Guard",
+        "Tempered Edge",
+        "Tireless Blade"
+      ],
+      "catalyst": { "name": "Black Talon Catalyst", "perks": ["Reversal"] }
+    },
+    {
+      "hash": 3141979347,
+      "name": "Borealis",
+      "weaponType": "sniperRifle",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": ["The Fundamentals"],
+      "perks": [
+        "Corkscrew Rifling",
+        "Extended Mag",
+        "Hand-Laid Stock",
+        "Ionic Return"
+      ],
+      "catalyst": { "name": "Borealis Catalyst", "perks": ["Shield Disorient"] }
+    },
+    {
+      "hash": 3886719505,
+      "name": "Buried Bloodline",
+      "weaponType": "sidearm",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": ["Hungering Quarrel"],
+      "perks": [
+        "Flared Magwell",
+        "Hand-Laid Stock",
+        "Hard Launch",
+        "Violent Reanimation"
+      ],
+      "catalyst": {
+        "name": "Buried Bloodline Catalyst",
+        "perks": ["Splitvein Lineage"]
+      }
+    },
+    {
+      "hash": 1912669214,
+      "name": "Centrifuse",
+      "weaponType": "autoRifle",
+      "element": "arc",
+      "ammo": "primary",
+      "intrinsics": ["Overcharge Capacitor"],
+      "perks": [
+        "Appended Mag",
+        "Corkscrew Rifling",
+        "Hand-Laid Stock",
+        "Regenerative Motion"
+      ],
+      "catalyst": { "name": "Centrifuse Catalyst", "perks": ["Static Buildup"] }
+    },
+    {
+      "hash": 1541131350,
+      "name": "Cerberus+1",
+      "weaponType": "autoRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Four-Headed Dog"],
+      "perks": [
+        "Fluted Barrel",
+        "Full Bore",
+        "Rifled Barrel",
+        "Spread Shot Package"
+      ],
+      "catalyst": { "name": "Cerberus+1 Catalyst", "perks": ["Focused Fire"] }
+    },
+    {
+      "hash": 3698448090,
+      "name": "Choir of One",
+      "weaponType": "autoRifle",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": [
+        "Command Frame",
+        "Command Frame II",
+        "Command Frame III",
+        "Command Frame IV"
+      ],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Arrowhead Brake",
+        "Chambered Compensator",
+        "Composite Stock",
+        "Corkscrew Rifling",
+        "Destabilizing Rounds Refit",
+        "Extended Barrel",
+        "Fanatical Lance",
+        "Fitted Stock",
+        "Flared Magwell",
+        "Fluted Barrel",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Light Mag",
+        "Onslaught Refit",
+        "Polygonal Rifling",
+        "Short-Action Stock",
+        "Smallbore",
+        "Steady Rounds",
+        "Subsistence Refit"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 2603483885,
+      "name": "Cloudstrike",
+      "weaponType": "sniperRifle",
+      "element": "arc",
+      "ammo": "special",
+      "intrinsics": ["Mortal Polarity"],
+      "perks": [
+        "Alloy Magazine",
+        "Fluted Barrel",
+        "Hand-Laid Stock",
+        "Stormbringer"
+      ],
+      "catalyst": { "name": "Cloudstrike Catalyst", "perks": ["Triple Tap"] }
+    },
+    {
+      "hash": 1345867571,
+      "name": "Coldheart",
+      "weaponType": "traceRifle",
+      "element": "arc",
+      "ammo": "special",
+      "intrinsics": ["Cold Fusion"],
+      "perks": [
+        "Enhanced Battery",
+        "Extended Barrel",
+        "Hand-Laid Stock",
+        "Longest Winter"
+      ],
+      "catalyst": {
+        "name": "Coldheart Catalyst",
+        "perks": ["Supercharged Magazine"]
+      }
+    },
+    {
+      "hash": 3505113722,
+      "name": "Collective Obligation",
+      "weaponType": "pulseRifle",
+      "element": "void",
+      "ammo": "primary",
+      "intrinsics": ["Void Leech"],
+      "perks": [
+        "Arrowhead Brake",
+        "Flared Magwell",
+        "Hand-Laid Stock",
+        "Umbral Sustenance"
+      ],
+      "catalyst": {
+        "name": "Collective Obligation Catalyst",
+        "perks": ["Repulsor Brace"]
+      }
+    },
+    {
+      "hash": 3371017761,
+      "name": "Conditional Finality",
+      "weaponType": "shotgun",
+      "element": "stasis",
+      "ammo": "special",
+      "intrinsics": ["Split Decision"],
+      "perks": [
+        "Alloy Magazine",
+        "Paracausal Pellets",
+        "Shortened Barrel",
+        "Textured Grip"
+      ],
+      "catalyst": {
+        "name": "Conditional Finality Catalyst",
+        "perks": ["Heal Clip", "Rimestealer"]
+      }
+    },
+    {
+      "hash": 3437746471,
+      "name": "Crimson",
+      "weaponType": "handCannon",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Banned Weapon"],
+      "perks": ["Accurized Rounds", "Cruel Remedy", "Heavy Grip", "Smallbore"],
+      "catalyst": { "name": "Crimson Catalyst", "perks": ["To the Pain"] }
+    },
+    {
+      "hash": 603721696,
+      "name": "Cryosthesia 77K",
+      "weaponType": "sidearm",
+      "element": "stasis",
+      "ammo": "primary",
+      "intrinsics": ["LN2 Burst"],
+      "perks": [
+        "Liquid Cooling",
+        "Particle Repeater",
+        "Polygonal Rifling",
+        "Polymer Grip"
+      ],
+      "catalyst": {
+        "name": "Cryosthesia 77K Catalyst",
+        "perks": ["Cold Efficiency"]
+      }
+    },
+    {
+      "hash": 2200470033,
+      "name": "Cull's Shadow",
+      "weaponType": "fusionRifle",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Soulburn"],
+      "perks": [
+        "Blades of Unmaking",
+        "Fluted Barrel",
+        "High-Caliber Rounds",
+        "Short-Action Stock",
+        "Soulforge"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3141979346,
+      "name": "D.A.R.C.I.",
+      "weaponType": "sniperRifle",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Personal Assistant"],
+      "perks": [
+        "Extended Barrel",
+        "Extended Mag",
+        "Short-Action Stock",
+        "Target Acquired"
+      ],
+      "catalyst": {
+        "name": "D.A.R.C.I. Catalyst",
+        "perks": ["Networked Targeting"]
+      }
+    },
+    {
+      "hash": 2188764214,
+      "name": "Dead Man's Tale",
+      "weaponType": "scoutRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": [
+        "Cranial Spike",
+        "Cranial Spike II",
+        "Cranial Spike III",
+        "Cranial Spike IV"
+      ],
+      "perks": [
+        "Accurized Rounds",
+        "Armor-Piercing Rounds",
+        "Arrowhead Brake",
+        "Chambered Compensator",
+        "Composite Stock",
+        "Compulsive Reloader",
+        "Corkscrew Rifling",
+        "Dark-Forged Trigger",
+        "Extended Barrel",
+        "Fitted Stock",
+        "Flared Magwell",
+        "Fluted Barrel",
+        "Fourth Time's the Charm",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "High-Caliber Rounds",
+        "Killing Wind",
+        "Light Mag",
+        "Moving Target",
+        "Outlaw",
+        "Polygonal Rifling",
+        "Rapid Hit",
+        "Ricochet Rounds",
+        "Shoot to Loot",
+        "Short-Action Stock",
+        "Smallbore",
+        "Steady Rounds",
+        "Vorpal Weapon"
+      ],
+      "catalyst": {
+        "name": "Dead Man's Tale Catalyst",
+        "perks": ["Dark-Forged Trigger"]
+      }
+    },
+    {
+      "hash": 46125926,
+      "name": "Dead Messenger",
+      "weaponType": "grenadeLauncher",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": ["Trinary Vision"],
+      "perks": [
+        "Composite Stock",
+        "Confined Launch",
+        "Countermass",
+        "Demolitionist",
+        "Fitted Stock",
+        "Hand-Laid Stock",
+        "Hard Launch",
+        "High-Velocity Rounds",
+        "Implosion Rounds",
+        "Linear Compensator",
+        "Quick Launch",
+        "Short-Action Stock",
+        "Smart Drift Control",
+        "The Fundamentals",
+        "Thresh",
+        "Turnabout",
+        "Unrelenting",
+        "Volatile Launch"
+      ],
+      "catalyst": { "name": "Dead Messenger Catalyst", "perks": ["Turnabout"] }
+    },
+    {
+      "hash": 2232171099,
+      "name": "Deathbringer",
+      "weaponType": "rocketLauncher",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Dark Deliverance"],
+      "perks": [
+        "Alloy Casing",
+        "Composite Stock",
+        "Dark Descent",
+        "Volatile Launch"
+      ],
+      "catalyst": { "name": "Deathbringer Catalyst", "perks": ["Dead Weight"] }
+    },
+    {
+      "hash": 374573733,
+      "name": "Delicate Tomb",
+      "weaponType": "fusionRifle",
+      "element": "arc",
+      "ammo": "special",
+      "intrinsics": ["Traitor's Vessel"],
+      "perks": [
+        "Fluted Barrel",
+        "Liquid Coils",
+        "Short-Action Stock",
+        "Tempest Cascade"
+      ],
+      "catalyst": {
+        "name": "Delicate Tomb Catalyst",
+        "perks": ["Ionic Interment"]
+      }
+    },
+    {
+      "hash": 449318888,
+      "name": "Deterministic Chaos",
+      "weaponType": "machineGun",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Vexadecimal"],
+      "perks": [
+        "Composite Stock",
+        "Heavy Metal",
+        "Polygonal Rifling",
+        "Ricochet Rounds"
+      ],
+      "catalyst": {
+        "name": "Deterministic Chaos Catalyst",
+        "perks": ["Target Lock"]
+      }
+    },
+    {
+      "hash": 3824106094,
+      "name": "Devil's Ruin",
+      "weaponType": "sidearm",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Close the Gap"],
+      "perks": [
+        "Combat Grip",
+        "Extended Barrel",
+        "Projection Fuse",
+        "Pyrogenesis"
+      ],
+      "catalyst": {
+        "name": "Devil's Ruin Catalyst",
+        "perks": ["Collective Action"]
+      }
+    },
+    {
+      "hash": 4103414242,
+      "name": "Divinity",
+      "weaponType": "traceRifle",
+      "element": "arc",
+      "ammo": "special",
+      "intrinsics": ["Judgment"],
+      "perks": [
+        "Composite Stock",
+        "Particle Repeater",
+        "Penance",
+        "Polygonal Rifling"
+      ],
+      "catalyst": {
+        "name": "Divinity Catalyst",
+        "perks": ["Jolting Feedback", "Focused Fury"]
+      }
+    },
+    {
+      "hash": 17096506,
+      "name": "Dragon's Breath",
+      "weaponType": "rocketLauncher",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Composite Propellant"],
+      "perks": [
+        "Black Powder",
+        "High Octane",
+        "Short-Action Stock",
+        "Volatile Launch"
+      ],
+      "catalyst": {
+        "name": "Dragon's Breath Catalyst",
+        "perks": ["Pyromancer"]
+      }
+    },
+    {
+      "hash": 3460576091,
+      "name": "Duality",
+      "weaponType": "shotgun",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Compression Chamber"],
+      "perks": [
+        "Alloy Magazine",
+        "Corkscrew Rifling",
+        "On Black Wings",
+        "Short-Action Stock"
+      ],
+      "catalyst": { "name": "Duality Catalyst", "perks": [] }
+    },
+    {
+      "hash": 2535142413,
+      "name": "Edge of Action",
+      "weaponType": "glaive",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": ["Edge of Action"],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Auxiliary Reserves",
+        "Ballistic Tuning",
+        "Composite Stock",
+        "Edge of Action Catalyst",
+        "Extended Mag",
+        "Fitted Stock",
+        "Hand-Laid Stock",
+        "Light Mag",
+        "Lightweight Emitter",
+        "Low-Impedance Windings",
+        "Remote Shield",
+        "Short-Action Stock",
+        "Supercooled Accelerator",
+        "Swap Mag",
+        "Tempered Truss Rod"
+      ],
+      "catalyst": {
+        "name": "Edge of Action Catalyst",
+        "perks": ["Repulsor Brace"]
+      }
+    },
+    {
+      "hash": 542203595,
+      "name": "Edge of Concurrence",
+      "weaponType": "glaive",
+      "element": "arc",
+      "ammo": "special",
+      "intrinsics": ["Edge of Concurrence"],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Auxiliary Reserves",
+        "Ballistic Tuning",
+        "Composite Stock",
+        "Edge of Concurrence Catalyst",
+        "Extended Mag",
+        "Fitted Stock",
+        "Hand-Laid Stock",
+        "Light Mag",
+        "Lightning Seeker",
+        "Lightweight Emitter",
+        "Low-Impedance Windings",
+        "Short-Action Stock",
+        "Supercooled Accelerator",
+        "Swap Mag",
+        "Tempered Truss Rod"
+      ],
+      "catalyst": {
+        "name": "Edge of Concurrence Catalyst",
+        "perks": ["Eddy Current"]
+      }
+    },
+    {
+      "hash": 14194600,
+      "name": "Edge of Intent",
+      "weaponType": "glaive",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Edge of Intent"],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Auxiliary Reserves",
+        "Ballistic Tuning",
+        "Composite Stock",
+        "Edge of Intent Catalyst",
+        "Extended Mag",
+        "Fitted Stock",
+        "Hand-Laid Stock",
+        "Light Mag",
+        "Lightweight Emitter",
+        "Low-Impedance Windings",
+        "Restorative Turret",
+        "Short-Action Stock",
+        "Supercooled Accelerator",
+        "Swap Mag",
+        "Tempered Truss Rod"
+      ],
+      "catalyst": { "name": "Edge of Intent Catalyst", "perks": ["Heal Clip"] }
+    },
+    {
+      "hash": 1681583613,
+      "name": "Ergo Sum",
+      "weaponType": "sword",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": [
+        "Arc Conductor",
+        "Gathering Light",
+        "Insectoid Robot Grenades",
+        "Sacred Flame",
+        "Stormbringer",
+        "The Perfect Fifth",
+        "Unplanned Reprieve",
+        "Wolfpack Rounds"
+      ],
+      "perks": [
+        "Aggressive Frame",
+        "Balanced Guard",
+        "Burst Guard",
+        "Caster Frame",
+        "Enduring Blade",
+        "Enduring Guard",
+        "Heavy Guard",
+        "Honed Edge",
+        "Hungry Edge",
+        "Jagged Edge",
+        "Lightweight Frame",
+        "Swordmaster's Guard",
+        "Tempered Edge",
+        "Transcendent Duelist",
+        "Vortex Frame",
+        "Wave Sword Frame"
+      ],
+      "catalyst": {
+        "name": "Ergo Sum Catalyst",
+        "perks": ["Transcendent Steel"]
+      }
+    },
+    {
+      "hash": 3524313097,
+      "name": "Eriana's Vow",
+      "weaponType": "handCannon",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Looks Can Kill"],
+      "perks": [
+        "Accurized Rounds",
+        "Death at First Glance",
+        "Extended Barrel",
+        "Polymer Grip"
+      ],
+      "catalyst": { "name": "Eriana's Vow Catalyst", "perks": ["More to Give"] }
+    },
+    {
+      "hash": 3284383335,
+      "name": "Euphony",
+      "weaponType": "linearFusionRifle",
+      "element": "strand",
+      "ammo": "special",
+      "intrinsics": ["Unwound"],
+      "perks": [
+        "Arrowhead Brake",
+        "Particle Repeater",
+        "Short-Action Stock",
+        "Spindle"
+      ],
+      "catalyst": {
+        "name": "Euphony Catalyst",
+        "perks": ["Enlightened Action"]
+      }
+    },
+    {
+      "hash": 3821409356,
+      "name": "Ex Diris",
+      "weaponType": "grenadeLauncher",
+      "element": "arc",
+      "ammo": "special",
+      "intrinsics": ["Corrupted Nucleosynthesis"],
+      "perks": [
+        "Hand-Laid Stock",
+        "Loyal Moths",
+        "Nucleosynthetic Magazine",
+        "Volatile Launch"
+      ],
+      "catalyst": { "name": "Ex Diris Catalyst", "perks": ["Berserk Rush"] }
+    },
+    {
+      "hash": 2399110176,
+      "name": "Eyes of Tomorrow",
+      "weaponType": "rocketLauncher",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Eyes on All"],
+      "perks": [
+        "Adaptive Ordnance",
+        "Alloy Casing",
+        "Fitted Stock",
+        "Smart Drift Control"
+      ],
+      "catalyst": {
+        "name": "Eyes of Tomorrow Catalyst",
+        "perks": ["Demolitionist", "Blast Distributor"]
+      }
+    },
+    {
+      "hash": 2197778303,
+      "name": "Fafnir",
+      "weaponType": "linearFusionRifle",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Quantum Nova"],
+      "perks": [
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Projection Fuse",
+        "Subatomic Distortion"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3549153978,
+      "name": "Fighting Lion",
+      "weaponType": "grenadeLauncher",
+      "element": "void",
+      "ammo": "primary",
+      "intrinsics": ["Delayed Gratification"],
+      "perks": [
+        "Countermass",
+        "Implosion Rounds",
+        "Short-Action Stock",
+        "Thin the Herd"
+      ],
+      "catalyst": { "name": "Fighting Lion Catalyst", "perks": ["Chimera"] }
+    },
+    {
+      "hash": 3121540812,
+      "name": "Final Warning",
+      "weaponType": "sidearm",
+      "element": "strand",
+      "ammo": "primary",
+      "intrinsics": ["All at Once"],
+      "perks": [
+        "Combat Grip",
+        "Flared Magwell",
+        "Hammer-Forged Rifling",
+        "Pick Your Poison"
+      ],
+      "catalyst": {
+        "name": "Final Warning Catalyst",
+        "perks": ["String Theory"]
+      }
+    },
+    {
+      "hash": 331231237,
+      "name": "Finality's Auger",
+      "weaponType": "linearFusionRifle",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Ruinscribe's Forge"],
+      "perks": [
+        "Arrowhead Brake",
+        "Particle Repeater",
+        "Ruinscribe's Beacon",
+        "Short-Action Stock"
+      ],
+      "catalyst": {
+        "name": "Finality's Auger Catalyst",
+        "perks": ["Bait and Switch"]
+      }
+    },
+    {
+      "hash": 2179048386,
+      "name": "Forerunner",
+      "weaponType": "sidearm",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Full Stop"],
+      "perks": ["Flared Magwell", "Pace Yourself", "Smallbore", "Smooth Grip"],
+      "catalyst": { "name": "Forerunner Catalyst", "perks": ["The Rock"] }
+    },
+    {
+      "hash": 1363886209,
+      "name": "Gjallarhorn",
+      "weaponType": "rocketLauncher",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Wolfpack Rounds"],
+      "perks": [
+        "Alloy Casing",
+        "Pack Hunter",
+        "Short-Action Stock",
+        "Volatile Launch"
+      ],
+      "catalyst": { "name": "Gjallarhorn Catalyst", "perks": ["More Wolves"] }
+    },
+    {
+      "hash": 1763584999,
+      "name": "Grand Overture",
+      "weaponType": "machineGun",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Wrath of the Colossus"],
+      "perks": [
+        "Accurized Rounds",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Omega Strike"
+      ],
+      "catalyst": {
+        "name": "Grand Overture Catalyst",
+        "perks": ["Grand Overture Catalyst"]
+      }
+    },
+    {
+      "hash": 3628991658,
+      "name": "Graviton Lance",
+      "weaponType": "pulseRifle",
+      "element": "void",
+      "ammo": "primary",
+      "intrinsics": ["Black Hole"],
+      "perks": [
+        "Accurized Rounds",
+        "Cosmology",
+        "Fitted Stock",
+        "Hammer-Forged Rifling"
+      ],
+      "catalyst": {
+        "name": "Graviton Lance Catalyst",
+        "perks": ["Vorpal Weapon", "Turnabout"]
+      }
+    },
+    {
+      "hash": 648595258,
+      "name": "Graviton Spike",
+      "weaponType": "handCannon",
+      "element": "arc",
+      "ammo": "primary",
+      "intrinsics": [
+        "Temporal Manipulation",
+        "Temporal Manipulation II",
+        "Temporal Manipulation III",
+        "Temporal Manipulation IV"
+      ],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Arrowhead Brake",
+        "Chambered Compensator",
+        "Combat Grip",
+        "Corkscrew Rifling",
+        "Extended Barrel",
+        "Extended Mag",
+        "Flared Magwell",
+        "Fluted Barrel",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Heavy Grip",
+        "Polygonal Rifling",
+        "Polymer Grip",
+        "Rapid Hit Refit",
+        "Smallbore",
+        "Smooth Grip",
+        "Steady Rounds",
+        "Subsistence Refit",
+        "Tactical Mag",
+        "Temporal Alignment Refit",
+        "Temporal Anomaly",
+        "Textured Grip",
+        "Transcendent Zen Refit"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 4124984448,
+      "name": "Hard Light",
+      "weaponType": "autoRifle",
+      "element": "void",
+      "ammo": "primary",
+      "intrinsics": ["Volatile Light"],
+      "perks": [
+        "Alloy Magazine",
+        "Composite Stock",
+        "Polygonal Rifling",
+        "The Fundamentals"
+      ],
+      "catalyst": { "name": "Hard Light Catalyst", "perks": ["Light Touch"] }
+    },
+    {
+      "hash": 3856705927,
+      "name": "Hawkmoon",
+      "weaponType": "handCannon",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Paracausal Shot"],
+      "perks": [
+        "Alloy Magazine",
+        "Arrowhead Brake",
+        "Chambered Compensator",
+        "Combat Grip",
+        "Corkscrew Rifling",
+        "Extended Barrel",
+        "Eye of the Storm",
+        "Fluted Barrel",
+        "Full Bore",
+        "Full Choke",
+        "Hammer-Forged Rifling",
+        "Heavy Grip",
+        "Hip-Fire Grip",
+        "Killing Wind",
+        "Moving Target",
+        "Opening Shot",
+        "Polygonal Rifling",
+        "Polymer Grip",
+        "Quickdraw",
+        "Rangefinder",
+        "Rifled Barrel",
+        "Smallbore",
+        "Smooth Grip",
+        "Snapshot Sights",
+        "Surplus",
+        "Textured Grip",
+        "Transformative"
+      ],
+      "catalyst": { "name": "Hawkmoon Catalyst", "perks": ["Hunter's Trance"] }
+    },
+    {
+      "hash": 3664831848,
+      "name": "Heartshadow",
+      "weaponType": "sword",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Exhumation"],
+      "perks": ["Burst Guard", "Jagged Edge", "Shot in the Dark"],
+      "catalyst": { "name": "Heartshadow Catalyst", "perks": ["Wraithwalk"] }
+    },
+    {
+      "hash": 2084878005,
+      "name": "Heir Apparent",
+      "weaponType": "machineGun",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Heavy Slug Thrower"],
+      "perks": [
+        "Appended Mag",
+        "Armor of the Colossus",
+        "Combat Grip",
+        "Corkscrew Rifling"
+      ],
+      "catalyst": {
+        "name": "Heir Apparent Catalyst",
+        "perks": ["Legion's Bulwark"]
+      }
+    },
+    {
+      "hash": 1685137410,
+      "name": "Heirloom",
+      "weaponType": "bow",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Bolt Thrower"],
+      "perks": [
+        "Bullwhacker",
+        "Light Heatsink",
+        "Short-Action Stock",
+        "Ultralight Rail"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 4174431791,
+      "name": "Hierarchy of Needs",
+      "weaponType": "bow",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Guidance Ring"],
+      "perks": [
+        "Apollonic Tangent",
+        "Elastic String",
+        "Fiberglass Arrow Shaft"
+      ],
+      "catalyst": {
+        "name": "Hierarchy of Needs Catalyst",
+        "perks": ["Panoptic Tessellation"]
+      }
+    },
+    {
+      "hash": 1111334348,
+      "name": "Ice Breaker",
+      "weaponType": "sniperRifle",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["No Backpack"],
+      "perks": [
+        "Accurized Rounds",
+        "Composite Stock",
+        "Corkscrew Rifling",
+        "Ice Breaker"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3211806999,
+      "name": "Izanagi's Burden",
+      "weaponType": "sniperRifle",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Honed Edge"],
+      "perks": [
+        "Accurized Rounds",
+        "Chambered Compensator",
+        "Composite Stock",
+        "No Distractions"
+      ],
+      "catalyst": {
+        "name": "Izanagi's Burden Catalyst",
+        "perks": ["Peerless Edge"]
+      }
+    },
+    {
+      "hash": 417164956,
+      "name": "Jötunn",
+      "weaponType": "fusionRifle",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Charge Shot"],
+      "perks": [
+        "Liquid Coils",
+        "Polymer Grip",
+        "Shield Disorient",
+        "Volatile Launch"
+      ],
+      "catalyst": {
+        "name": "Jötunn Catalyst",
+        "perks": ["Cornered", "Incandescent"]
+      }
+    },
+    {
+      "hash": 4129629253,
+      "name": "Khvostov 7G-0X",
+      "weaponType": "autoRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["The Right Choice"],
+      "perks": [
+        "Alloy Magazine",
+        "Composite Stock",
+        "Eyes Up, Guardian",
+        "Hammer-Forged Rifling",
+        "Shoot to Loot"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3588934839,
+      "name": "Le Monarque",
+      "weaponType": "bow",
+      "element": "void",
+      "ammo": "primary",
+      "intrinsics": ["Poison Arrows"],
+      "perks": ["Compact Arrow Shaft", "Natural String", "Snapshot Sights"],
+      "catalyst": { "name": "Le Monarque Catalyst", "perks": ["Unrelenting"] }
+    },
+    {
+      "hash": 3580904580,
+      "name": "Legend of Acrius",
+      "weaponType": "shotgun",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Shock Blast"],
+      "perks": ["Accurized Rounds", "Fitted Stock", "Full Bore", "Long March"],
+      "catalyst": null
+    },
+    {
+      "hash": 2591746970,
+      "name": "Leviathan's Breath",
+      "weaponType": "bow",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Big-Game Hunter"],
+      "perks": [
+        "Chain Bowstring",
+        "Fiberglass Arrow Shaft",
+        "Leviathan's Sigh"
+      ],
+      "catalyst": {
+        "name": "Leviathan's Breath Catalyst",
+        "perks": ["Colossal Quiver", "Archer's Tempo"]
+      }
+    },
+    {
+      "hash": 3725585710,
+      "name": "Lodestar",
+      "weaponType": "traceRifle",
+      "element": "arc",
+      "ammo": "primary",
+      "intrinsics": ["Starlight Beam"],
+      "perks": [
+        "Arc Alignment",
+        "Composite Stock",
+        "Fluted Barrel",
+        "Phase Converter"
+      ],
+      "catalyst": {
+        "name": "Lodestar Catalyst",
+        "perks": ["Supercharged Matrix"]
+      }
+    },
+    {
+      "hash": 3413860063,
+      "name": "Lord of Wolves",
+      "weaponType": "shotgun",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Shrapnel Launcher"],
+      "perks": [
+        "Chambered Compensator",
+        "Composite Stock",
+        "Extended Mag",
+        "Release the Wolves"
+      ],
+      "catalyst": {
+        "name": "Lord of Wolves Catalyst",
+        "perks": ["Fang and Claw"]
+      }
+    },
+    {
+      "hash": 3761898871,
+      "name": "Lorentz Driver",
+      "weaponType": "linearFusionRifle",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": ["Lagrangian Sight"],
+      "perks": [
+        "Arrowhead Brake",
+        "Composite Stock",
+        "EM Anomaly",
+        "Enhanced Battery"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3512014804,
+      "name": "Lumina",
+      "weaponType": "handCannon",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Noble Rounds"],
+      "perks": [
+        "Accurized Rounds",
+        "Blessing of the Sky",
+        "Chambered Compensator",
+        "Polymer Grip"
+      ],
+      "catalyst": { "name": "Lumina Catalyst", "perks": ["Resonant Virtue"] }
+    },
+    {
+      "hash": 204878059,
+      "name": "Malfeasance",
+      "weaponType": "handCannon",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Explosive Shadow"],
+      "perks": [
+        "Corkscrew Rifling",
+        "Extended Mag",
+        "Heavy Grip",
+        "Taken Predator"
+      ],
+      "catalyst": { "name": "Malfeasance Catalyst", "perks": ["Vorpal Weapon"] }
+    },
+    {
+      "hash": 4190156464,
+      "name": "Merciless",
+      "weaponType": "fusionRifle",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Conserve Momentum"],
+      "perks": [
+        "Chambered Compensator",
+        "Extended Mag",
+        "Fitted Stock",
+        "Impetus"
+      ],
+      "catalyst": { "name": "Merciless Catalyst", "perks": ["Heal Clip"] }
+    },
+    {
+      "hash": 4207066264,
+      "name": "Microcosm",
+      "weaponType": "traceRifle",
+      "element": "kinetic",
+      "ammo": "heavy",
+      "intrinsics": ["Paracausal Beam"],
+      "perks": [
+        "Enhanced Battery",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Paracausal Imbuement"
+      ],
+      "catalyst": {
+        "name": "Microcosm Catalyst",
+        "perks": ["Thresh", "Stopping Power"]
+      }
+    },
+    {
+      "hash": 1331482397,
+      "name": "MIDA Multi-Tool",
+      "weaponType": "scoutRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["MIDA Multi-Tool"],
+      "perks": [
+        "Corkscrew Rifling",
+        "Hand-Laid Stock",
+        "High-Caliber Rounds",
+        "MIDA Software Package"
+      ],
+      "catalyst": {
+        "name": "MIDA Multi-Tool Catalyst",
+        "perks": ["Vital Intel"]
+      }
+    },
+    {
+      "hash": 4068264807,
+      "name": "Monte Carlo",
+      "weaponType": "autoRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Monte Carlo Method"],
+      "perks": [
+        "Composite Stock",
+        "Fluted Barrel",
+        "High-Caliber Rounds",
+        "Markov Chain"
+      ],
+      "catalyst": {
+        "name": "Monte Carlo Catalyst",
+        "perks": ["Stochastic Vengeance"]
+      }
+    },
+    {
+      "hash": 1034055198,
+      "name": "Necrochasm",
+      "weaponType": "autoRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Cursebringer"],
+      "perks": [
+        "Arrowhead Brake",
+        "Desperation",
+        "Hand-Laid Stock",
+        "Ricochet Rounds"
+      ],
+      "catalyst": { "name": "Necrochasm Catalyst", "perks": ["One for Thrall"] }
+    },
+    {
+      "hash": 2581676735,
+      "name": "New Land Beyond",
+      "weaponType": "sniperRifle",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["The Master"],
+      "perks": [
+        "Accurized Rounds",
+        "Bullseye Bolster",
+        "Horizon Ironsights",
+        "Short-Action Stock",
+        "Snapshot Sights"
+      ],
+      "catalyst": {
+        "name": "New Land Beyond Catalyst",
+        "perks": ["Top Tier Mastery"]
+      }
+    },
+    {
+      "hash": 1736135946,
+      "name": "New Malpais",
+      "weaponType": "pulseRifle",
+      "element": "strand",
+      "ammo": "special",
+      "intrinsics": ["Atomizing Rounds"],
+      "perks": [
+        "Fitted Stock",
+        "Hammer-Forged Rifling",
+        "Suspending Blast",
+        "Tactical Mag"
+      ],
+      "catalyst": {
+        "name": "New Malpais Catalyst",
+        "perks": ["Unraveling Blast"]
+      }
+    },
+    {
+      "hash": 1594120904,
+      "name": "No Time to Explain",
+      "weaponType": "pulseRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Rewind Again"],
+      "perks": [
+        "Accurized Rounds",
+        "Feeding Frenzy",
+        "Fluted Barrel",
+        "Time-Slip"
+      ],
+      "catalyst": {
+        "name": "No Time to Explain Catalyst",
+        "perks": ["Blast from the Side"]
+      }
+    },
+    {
+      "hash": 2069224589,
+      "name": "One Thousand Voices",
+      "weaponType": "fusionRifle",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Ahamkara's Eye"],
+      "perks": [
+        "Extended Barrel",
+        "Fitted Stock",
+        "Liquid Coils",
+        "Unforeseen Repercussions"
+      ],
+      "catalyst": {
+        "name": "One Thousand Voices Catalyst",
+        "perks": ["Fall from Grace"]
+      }
+    },
+    {
+      "hash": 46524085,
+      "name": "Osteo Striga",
+      "weaponType": "submachineGun",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Screaming Swarm"],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Arrowhead Brake",
+        "Chambered Compensator",
+        "Composite Stock",
+        "Corkscrew Rifling",
+        "Extended Barrel",
+        "Extended Mag",
+        "Fitted Stock",
+        "Flared Magwell",
+        "Fluted Barrel",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Osteo Striga Catalyst",
+        "Polygonal Rifling",
+        "Short-Action Stock",
+        "Smallbore",
+        "Steady Rounds",
+        "Tactical Mag",
+        "Toxic Overload"
+      ],
+      "catalyst": {
+        "name": "Osteo Striga Catalyst",
+        "perks": ["Osteo Striga Catalyst"]
+      }
+    },
+    {
+      "hash": 3824673936,
+      "name": "Outbreak Perfected",
+      "weaponType": "pulseRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": [
+        "The Corruption Spreads",
+        "The Corruption Spreads II",
+        "The Corruption Spreads III",
+        "The Corruption Spreads IV"
+      ],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Arrowhead Brake",
+        "Chambered Compensator",
+        "Composite Stock",
+        "Corkscrew Rifling",
+        "Disease Vector",
+        "Extended Barrel",
+        "Extended Mag",
+        "Fitted Stock",
+        "Flared Magwell",
+        "Fluted Barrel",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Headseeker",
+        "Outlaw",
+        "Parasitism",
+        "Polygonal Rifling",
+        "Rapid Hit",
+        "Rewind Rounds",
+        "Short-Action Stock",
+        "Smallbore",
+        "Steady Rounds",
+        "Tactical Mag"
+      ],
+      "catalyst": {
+        "name": "Outbreak Perfected Catalyst",
+        "perks": ["Disease Vector"]
+      }
+    },
+    {
+      "hash": 2812324400,
+      "name": "Parasite",
+      "weaponType": "grenadeLauncher",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Worm's Hunger"],
+      "perks": [
+        "Composite Stock",
+        "High-Explosive Ordnance",
+        "Volatile Launch",
+        "Worm Byproduct"
+      ],
+      "catalyst": { "name": "Parasite Catalyst", "perks": ["Envious Arsenal"] }
+    },
+    {
+      "hash": 3413074534,
+      "name": "Polaris Lance",
+      "weaponType": "scoutRifle",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["The Perfect Fifth"],
+      "perks": ["Fitted Stock", "Smallbore", "Tactical Mag", "Zen Moment"],
+      "catalyst": { "name": "Polaris Lance Catalyst", "perks": ["Dragonfly"] }
+    },
+    {
+      "hash": 3049715579,
+      "name": "Praxic Blade",
+      "weaponType": "sword",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Ranged Weapon"],
+      "perks": [
+        "Balanced Grip",
+        "Balanced Tang",
+        "Cormorant Combo",
+        "Cormorant Reversal",
+        "Defensive Grip",
+        "Deflection Tang",
+        "Fencing Tang",
+        "Offensive Grip"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 19024058,
+      "name": "Prometheus Lens",
+      "weaponType": "traceRifle",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Prismatic Inferno"],
+      "perks": [
+        "Chambered Compensator",
+        "Composite Stock",
+        "Flame Refraction",
+        "Projection Fuse"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 4293613902,
+      "name": "Quicksilver Storm",
+      "weaponType": "autoRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Missile Tracers"],
+      "perks": [
+        "Corkscrew Rifling",
+        "Grenade Chaser",
+        "Hand-Laid Stock",
+        "High-Caliber Rounds"
+      ],
+      "catalyst": {
+        "name": "Quicksilver Storm Catalyst",
+        "perks": ["Nano-entanglement"]
+      }
+    },
+    {
+      "hash": 2362471601,
+      "name": "Rat King",
+      "weaponType": "sidearm",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Rat Pack"],
+      "perks": ["Smallbore", "Smooth Grip", "Tactical Mag", "Vermin"],
+      "catalyst": { "name": "Rat King Catalyst", "perks": ["Infestation"] }
+    },
+    {
+      "hash": 427899681,
+      "name": "Red Death Reformed",
+      "weaponType": "pulseRifle",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Redemption"],
+      "perks": [
+        "Fitted Stock",
+        "Full Bore",
+        "High-Caliber Rounds",
+        "Inverse Relationship"
+      ],
+      "catalyst": {
+        "name": "Red Death Reformed Catalyst",
+        "perks": ["Helping Hand"]
+      }
+    },
+    {
+      "hash": 1473821207,
+      "name": "Revision Zero",
+      "weaponType": "pulseRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": [
+        "Hunter's Trace",
+        "Hunter's Trace II",
+        "Hunter's Trace III",
+        "Hunter's Trace IV"
+      ],
+      "perks": [
+        "4-Timer Refit",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Armor-Piercing Rounds",
+        "Arrowhead Brake",
+        "Chambered Compensator",
+        "Composite Stock",
+        "Corkscrew Rifling",
+        "Elemental Capacitor",
+        "Extended Barrel",
+        "Extended Mag",
+        "Eye of the Storm",
+        "Fitted Stock",
+        "Flared Magwell",
+        "Fluted Barrel",
+        "Frenzy Refit",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "High-Caliber Rounds",
+        "Häkke Heavy Burst Fire",
+        "Häkke Light Burst Fire",
+        "Light Mag",
+        "Moving Target",
+        "Outlaw Refit",
+        "Perpetual Motion",
+        "Polygonal Rifling",
+        "Pressurized Refit",
+        "Ricochet Rounds",
+        "Short-Action Stock",
+        "Slickdraw",
+        "Smallbore",
+        "Vorpal Weapon"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3089417789,
+      "name": "Riskrunner",
+      "weaponType": "submachineGun",
+      "element": "arc",
+      "ammo": "primary",
+      "intrinsics": ["Arc Conductor"],
+      "perks": [
+        "Arrowhead Brake",
+        "Extended Mag",
+        "Short-Action Stock",
+        "Superconductor"
+      ],
+      "catalyst": { "name": "Riskrunner Catalyst", "perks": ["Chain Reaction"] }
+    },
+    {
+      "hash": 1363238943,
+      "name": "Ruinous Effigy",
+      "weaponType": "traceRifle",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": ["Transmutation"],
+      "perks": [
+        "Composite Stock",
+        "Evolution",
+        "Hammer-Forged Rifling",
+        "Particle Repeater"
+      ],
+      "catalyst": {
+        "name": "Ruinous Effigy Catalyst",
+        "perks": ["Deconstruction"]
+      }
+    },
+    {
+      "hash": 370712896,
+      "name": "Salvation's Grip",
+      "weaponType": "grenadeLauncher",
+      "element": "stasis",
+      "ammo": "heavy",
+      "intrinsics": ["Cryocannon"],
+      "perks": [
+        "Alloy Casing",
+        "Linear Compensator",
+        "Polymer Grip",
+        "Shatter Shot"
+      ],
+      "catalyst": {
+        "name": "Salvation's Grip Catalyst",
+        "perks": ["Rimestealer"]
+      }
+    },
+    {
+      "hash": 4284533075,
+      "name": "Service of Luzaku",
+      "weaponType": "machineGun",
+      "element": "strand",
+      "ammo": "heavy",
+      "intrinsics": ["Dichotomous Thinking"],
+      "perks": [
+        "Accurized Rounds",
+        "Fluted Barrel",
+        "Hand-Laid Stock",
+        "Meaning-Making"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 4255268456,
+      "name": "Skyburner's Oath",
+      "weaponType": "scoutRifle",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Slug Rifle"],
+      "perks": [
+        "Extended Barrel",
+        "Extended Mag",
+        "For the Empire",
+        "Short-Action Stock"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 1047932517,
+      "name": "Slayer's Fang",
+      "weaponType": "shotgun",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": [
+        "Nightsworn Sight",
+        "Nightsworn Sight II",
+        "Nightsworn Sight III",
+        "Nightsworn Sight IV"
+      ],
+      "perks": [
+        "Accurized Rounds",
+        "Arrowhead Brake",
+        "Assault Mag",
+        "Cascade Point Refit",
+        "Composite Stock",
+        "Extended Barrel",
+        "Extended Mag",
+        "Fitted Stock",
+        "Flared Magwell",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Heart Piercer",
+        "Loose Change Refit",
+        "Polygonal Rifling",
+        "Repulsor Brace Refit",
+        "Short-Action Stock",
+        "Stats for All Refit",
+        "Steady Rounds"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 4036115577,
+      "name": "Sleeper Simulant",
+      "weaponType": "linearFusionRifle",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Dornröschen"],
+      "perks": [
+        "Composite Stock",
+        "Flared Magwell",
+        "Moving Target",
+        "Polygonal Rifling"
+      ],
+      "catalyst": {
+        "name": "Sleeper Simulant Catalyst",
+        "perks": ["Accelerated Coils", "Deeper Pockets"]
+      }
+    },
+    {
+      "hash": 2905188646,
+      "name": "Still Hunt",
+      "weaponType": "sniperRifle",
+      "element": "solar",
+      "ammo": "special",
+      "intrinsics": ["Cayde's Retribution"],
+      "perks": [
+        "Golden Munitions",
+        "Polygonal Rifling",
+        "Sharpshooter",
+        "Short-Action Stock"
+      ],
+      "catalyst": { "name": "Still Hunt Catalyst", "perks": ["Lucky Shot"] }
+    },
+    {
+      "hash": 2907129556,
+      "name": "Sturm",
+      "weaponType": "handCannon",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Accomplice"],
+      "perks": [
+        "Combat Grip",
+        "Extended Barrel",
+        "Extended Mag",
+        "Storm and Stress"
+      ],
+      "catalyst": { "name": "Sturm Catalyst", "perks": ["Helping Hands"] }
+    },
+    {
+      "hash": 2907129557,
+      "name": "Sunshot",
+      "weaponType": "handCannon",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Sunburn"],
+      "perks": [
+        "Accurized Rounds",
+        "Chambered Compensator",
+        "Sun Blast",
+        "Textured Grip"
+      ],
+      "catalyst": { "name": "Sunshot Catalyst", "perks": ["Loose Change"] }
+    },
+    {
+      "hash": 2856683562,
+      "name": "SUROS Regime",
+      "weaponType": "autoRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["SUROS Legacy"],
+      "perks": [
+        "Dual Speed Receiver",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Spinning Up",
+        "Tactical Mag"
+      ],
+      "catalyst": {
+        "name": "SUROS Regime Catalyst",
+        "perks": ["SUROS Ascendance"]
+      }
+    },
+    {
+      "hash": 1345867570,
+      "name": "Sweet Business",
+      "weaponType": "autoRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Payday"],
+      "perks": [
+        "Armor-Piercing Rounds",
+        "Business Time",
+        "Composite Stock",
+        "Polygonal Rifling"
+      ],
+      "catalyst": {
+        "name": "Sweet Business Catalyst",
+        "perks": ["Serious Business"]
+      }
+    },
+    {
+      "hash": 4017959782,
+      "name": "Symmetry",
+      "weaponType": "scoutRifle",
+      "element": "arc",
+      "ammo": "primary",
+      "intrinsics": ["Revolution"],
+      "perks": [
+        "Composite Stock",
+        "Dynamic Charge",
+        "Hammer-Forged Rifling",
+        "Particle Repeater"
+      ],
+      "catalyst": {
+        "name": "Symmetry Catalyst",
+        "perks": ["Eddy Current", "Electric Styx"]
+      }
+    },
+    {
+      "hash": 3110698812,
+      "name": "Tarrabah",
+      "weaponType": "submachineGun",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Ravenous Beast"],
+      "perks": [
+        "Armor-Piercing Rounds",
+        "Bottomless Appetite",
+        "Extended Barrel",
+        "Hand-Laid Stock"
+      ],
+      "catalyst": {
+        "name": "Tarrabah Catalyst",
+        "perks": ["Ambitious Assassin"]
+      }
+    },
+    {
+      "hash": 2208405142,
+      "name": "Telesto",
+      "weaponType": "fusionRifle",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": ["Unplanned Reprieve"],
+      "perks": ["Harbinger's Pulse", "Polymer Grip", "Projection Fuse"],
+      "catalyst": {
+        "name": "Telesto Catalyst",
+        "perks": ["Deeper Pockets", "Harbinger Seethe"]
+      }
+    },
+    {
+      "hash": 3561203890,
+      "name": "Tessellation",
+      "weaponType": "fusionRifle",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Property: Undecidable"],
+      "perks": [
+        "Composite Stock",
+        "Polygonal Rifling",
+        "Projection Fuse",
+        "Property: Irreducible"
+      ],
+      "catalyst": {
+        "name": "Tessellation Catalyst",
+        "perks": ["Property: Unavoidable"]
+      }
+    },
+    {
+      "hash": 3413860062,
+      "name": "The Chaperone",
+      "weaponType": "shotgun",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Precision Slug"],
+      "perks": [
+        "Accurized Rounds",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "The Roadborn"
+      ],
+      "catalyst": { "name": "The Chaperone Catalyst", "perks": ["Triple Tap"] }
+    },
+    {
+      "hash": 3899270607,
+      "name": "The Colony",
+      "weaponType": "grenadeLauncher",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Insectoid Robot Grenades"],
+      "perks": [
+        "Composite Stock",
+        "High-Velocity Rounds",
+        "Linear Compensator",
+        "Serve the Colony"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 1665952087,
+      "name": "The Fourth Horseman",
+      "weaponType": "shotgun",
+      "element": "arc",
+      "ammo": "special",
+      "intrinsics": ["Thunderer"],
+      "perks": ["Arrowhead Brake", "Assault Mag", "Broadside", "Fitted Stock"],
+      "catalyst": {
+        "name": "The Fourth Horseman Catalyst",
+        "perks": ["And Its Name Was Death"]
+      }
+    },
+    {
+      "hash": 2286143274,
+      "name": "The Huckleberry",
+      "weaponType": "submachineGun",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Ride the Bull"],
+      "perks": [
+        "Fluted Barrel",
+        "Rampage",
+        "Ricochet Rounds",
+        "Short-Action Stock"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3844694310,
+      "name": "The Jade Rabbit",
+      "weaponType": "scoutRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["The Fate of All Fools"],
+      "perks": [
+        "Firefly",
+        "High-Caliber Rounds",
+        "Polygonal Rifling",
+        "Shoot to Loot"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3487253372,
+      "name": "The Lament",
+      "weaponType": "sword",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Banshee's Wail"],
+      "perks": [
+        "Enduring Guard",
+        "Jagged Edge",
+        "Revved Consumption",
+        "Tireless Blade"
+      ],
+      "catalyst": {
+        "name": "The Lament Catalyst",
+        "perks": ["Burning Ambition"]
+      }
+    },
+    {
+      "hash": 1364093401,
+      "name": "The Last Word",
+      "weaponType": "handCannon",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Fan Fire"],
+      "perks": [
+        "Accurized Rounds",
+        "Corkscrew Rifling",
+        "Hip-Fire Grip",
+        "Textured Grip"
+      ],
+      "catalyst": {
+        "name": "The Last Word Catalyst",
+        "perks": ["Killing Wind", "Envious Assassin"]
+      }
+    },
+    {
+      "hash": 219145368,
+      "name": "The Manticore",
+      "weaponType": "submachineGun",
+      "element": "void",
+      "ammo": "primary",
+      "intrinsics": ["Soaring Fang"],
+      "perks": [
+        "Arrowhead Brake",
+        "Fitted Stock",
+        "Ricochet Rounds",
+        "Swooping Talons"
+      ],
+      "catalyst": {
+        "name": "The Manticore Catalyst",
+        "perks": ["Flying Monster"]
+      }
+    },
+    {
+      "hash": 1441805468,
+      "name": "The Navigator",
+      "weaponType": "traceRifle",
+      "element": "strand",
+      "ammo": "special",
+      "intrinsics": ["Protective Weave"],
+      "perks": ["Composite Stock", "Full Bore", "Light Battery", "Weft Cutter"],
+      "catalyst": {
+        "name": "The Navigator Catalyst",
+        "perks": ["Gordian Knot"]
+      }
+    },
+    {
+      "hash": 3549153979,
+      "name": "The Prospector",
+      "weaponType": "grenadeLauncher",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Excavation"],
+      "perks": [
+        "Augmented Drum",
+        "Full Auto Trigger System",
+        "Hand-Laid Stock",
+        "Volatile Launch"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 2044500762,
+      "name": "The Queenbreaker",
+      "weaponType": "linearFusionRifle",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Wire Rifle"],
+      "perks": [
+        "Combat Sights",
+        "Enhanced Battery",
+        "Fitted Stock",
+        "Hip-Fire Grip",
+        "Marksman Sights",
+        "Quickdraw"
+      ],
+      "catalyst": {
+        "name": "The Queenbreaker Catalyst",
+        "perks": ["Rewind Rounds"]
+      }
+    },
+    {
+      "hash": 1508896098,
+      "name": "The Wardcliff Coil",
+      "weaponType": "rocketLauncher",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Mad Scientist"],
+      "perks": [
+        "Composite Stock",
+        "Extended Mag",
+        "Mechanized Autoloader",
+        "Volatile Launch"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 2973900274,
+      "name": "Third Iteration",
+      "weaponType": "scoutRifle",
+      "element": "void",
+      "ammo": "primary",
+      "intrinsics": ["Tri-Planar Mass Driver"],
+      "perks": [
+        "Amalgamation Rounds",
+        "Composite Stock",
+        "Modified Heatsink",
+        "Smallbore"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3973202132,
+      "name": "Thorn",
+      "weaponType": "handCannon",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Mark of the Devourer"],
+      "perks": [
+        "Accurized Rounds",
+        "Corkscrew Rifling",
+        "Soul Devourer",
+        "Textured Grip"
+      ],
+      "catalyst": { "name": "Thorn Catalyst", "perks": ["Refined Soul"] }
+    },
+    {
+      "hash": 3325463374,
+      "name": "Thunderlord",
+      "weaponType": "machineGun",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Reign Havoc"],
+      "perks": [
+        "Armor-Piercing Rounds",
+        "Feeding Frenzy",
+        "Lightning Rounds",
+        "Polygonal Rifling"
+      ],
+      "catalyst": { "name": "Thunderlord Catalyst", "perks": ["Return Stroke"] }
+    },
+    {
+      "hash": 3260753130,
+      "name": "Ticuu's Divination",
+      "weaponType": "bow",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Sacred Flame"],
+      "perks": ["Causality Arrows", "Straight Fletching", "Tactile String"],
+      "catalyst": {
+        "name": "Ticuu's Divination Catalyst",
+        "perks": ["Causality Quiver"]
+      }
+    },
+    {
+      "hash": 776191470,
+      "name": "Tommy's Matchbook",
+      "weaponType": "autoRifle",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Ignition Trigger"],
+      "perks": [
+        "Extended Mag",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Heat Sink"
+      ],
+      "catalyst": {
+        "name": "Tommy's Matchbook Catalyst",
+        "perks": ["Heat of the Moment"]
+      }
+    },
+    {
+      "hash": 1802135586,
+      "name": "Touch of Malice",
+      "weaponType": "scoutRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Touch of Malice"],
+      "perks": [
+        "Charged with Blight",
+        "Flared Magwell",
+        "Hand-Laid Stock",
+        "Polygonal Rifling"
+      ],
+      "catalyst": {
+        "name": "Touch of Malice Catalyst",
+        "perks": ["Precision Instrument"]
+      }
+    },
+    {
+      "hash": 3580904581,
+      "name": "Tractor Cannon",
+      "weaponType": "shotgun",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Repulsor Force"],
+      "perks": [
+        "Composite Stock",
+        "Extended Barrel",
+        "Particle Repeater",
+        "The Scientific Method"
+      ],
+      "catalyst": {
+        "name": "Tractor Cannon Catalyst",
+        "perks": ["Deeper Pockets"]
+      }
+    },
+    {
+      "hash": 1853180924,
+      "name": "Traveler's Chosen",
+      "weaponType": "sidearm",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Gathering Light"],
+      "perks": [
+        "Armor-Piercing Rounds",
+        "Gift of the Traveler",
+        "QuickDot SAS",
+        "Short-Action Stock"
+      ],
+      "catalyst": {
+        "name": "Traveler's Chosen Catalyst",
+        "perks": ["Osmosis", "Surplus"]
+      }
+    },
+    {
+      "hash": 1234150730,
+      "name": "Trespasser",
+      "weaponType": "sidearm",
+      "element": "arc",
+      "ammo": "primary",
+      "intrinsics": ["Unrepentant"],
+      "perks": ["Be the Danger", "Full Bore", "Ricochet Rounds", "Smooth Grip"],
+      "catalyst": { "name": "Trespasser Catalyst", "perks": ["Tunnel Vision"] }
+    },
+    {
+      "hash": 814876685,
+      "name": "Trinity Ghoul",
+      "weaponType": "bow",
+      "element": "arc",
+      "ammo": "primary",
+      "intrinsics": ["Split Electron"],
+      "perks": ["Compact Arrow Shaft", "High Tension String", "Lightning Rod"],
+      "catalyst": {
+        "name": "Trinity Ghoul Catalyst",
+        "perks": ["Forked Lightning"]
+      }
+    },
+    {
+      "hash": 1201830623,
+      "name": "Truth",
+      "weaponType": "rocketLauncher",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Prototype Trueseeker"],
+      "perks": [
+        "Composite Stock",
+        "Grenades and Horseshoes",
+        "High-Velocity Rounds",
+        "Volatile Launch"
+      ],
+      "catalyst": { "name": "Truth Catalyst", "perks": ["Reaper's Tithe"] }
+    },
+    {
+      "hash": 253843484,
+      "name": "Turncoat",
+      "weaponType": "handCannon",
+      "element": "void",
+      "ammo": "primary",
+      "intrinsics": ["Latent Power"],
+      "perks": ["Accurized Rounds", "Heavy Grip", "Power Surge", "Smallbore"],
+      "catalyst": null
+    },
+    {
+      "hash": 2694576561,
+      "name": "Two-Tailed Fox",
+      "weaponType": "rocketLauncher",
+      "element": "void",
+      "ammo": "heavy",
+      "intrinsics": ["Twintails"],
+      "perks": [
+        "Composite Stock",
+        "Confined Launch",
+        "High-Velocity Rounds",
+        "Play with Your Prey"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3659414143,
+      "name": "Verglas Curve",
+      "weaponType": "bow",
+      "element": "stasis",
+      "ammo": "primary",
+      "intrinsics": ["Hail Barrage"],
+      "perks": ["Hail Storm", "Natural String", "Straight Fletching"],
+      "catalyst": {
+        "name": "Verglas Curve Catalyst",
+        "perks": ["Shiver Quiver"]
+      }
+    },
+    {
+      "hash": 4289226715,
+      "name": "Vex Mythoclast",
+      "weaponType": "fusionRifle",
+      "element": "solar",
+      "ammo": "primary",
+      "intrinsics": ["Timeless Mythoclast"],
+      "perks": [
+        "Arrowhead Brake",
+        "Hand-Laid Stock",
+        "Temporal Unlimiter",
+        "Volatile Battery"
+      ],
+      "catalyst": {
+        "name": "Vex Mythoclast Catalyst",
+        "perks": ["Calculated Balance"]
+      }
+    },
+    {
+      "hash": 3118061005,
+      "name": "Vexcalibur",
+      "weaponType": "glaive",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": [
+        "M1R Distribution Matrix",
+        "M1R Distribution Matrix II",
+        "M1R Distribution Matrix III",
+        "M1R Distribution Matrix IV"
+      ],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Auxiliary Reserves",
+        "Ballistic Tuning",
+        "Composite Stock",
+        "Extended Mag",
+        "Feedback Refit",
+        "Fitted Stock",
+        "Hand-Laid Stock",
+        "Immovable Refit",
+        "Light Mag",
+        "Lightweight Emitter",
+        "Low-Impedance Windings",
+        "Perpetual Loophole",
+        "Robber Refit",
+        "Short-Action Stock",
+        "Supercooled Accelerator",
+        "Swap Mag",
+        "Tempered Truss Rod"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 3628991659,
+      "name": "Vigilance Wing",
+      "weaponType": "pulseRifle",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Harsh Truths"],
+      "perks": [
+        "Alloy Magazine",
+        "Composite Stock",
+        "Corkscrew Rifling",
+        "Last Stand"
+      ],
+      "catalyst": { "name": "Vigilance Wing Catalyst", "perks": ["Ensemble"] }
+    },
+    {
+      "hash": 1852863732,
+      "name": "Wavesplitter",
+      "weaponType": "traceRifle",
+      "element": "void",
+      "ammo": "special",
+      "intrinsics": ["Harmonic Laser"],
+      "perks": [
+        "Enhanced Battery",
+        "Fitted Stock",
+        "Polygonal Rifling",
+        "Supercharged Battery"
+      ],
+      "catalyst": {
+        "name": "Wavesplitter Catalyst",
+        "perks": ["Detonator Beam", "Attrition Orbs"]
+      }
+    },
+    {
+      "hash": 1202007252,
+      "name": "Whirling Ovation",
+      "weaponType": "rocketLauncher",
+      "element": "strand",
+      "ammo": "heavy",
+      "intrinsics": ["Coronal Culmination"],
+      "perks": [
+        "Anticipation",
+        "Composite Stock",
+        "Hard Launch",
+        "Liquid Coils"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 1983149589,
+      "name": "Whisper of the Worm",
+      "weaponType": "sniperRifle",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": [
+        "White Nail",
+        "White Nail II",
+        "White Nail III",
+        "White Nail IV"
+      ],
+      "perks": [
+        "Accurized Rounds",
+        "Alloy Magazine",
+        "Arrowhead Brake",
+        "Chambered Compensator",
+        "Composite Stock",
+        "Corkscrew Rifling",
+        "Enlightened Action",
+        "Extended Barrel",
+        "Field Prep",
+        "Fitted Stock",
+        "Flared Magwell",
+        "Fluted Barrel",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Hand-Laid Stock",
+        "Mulligan",
+        "No Distractions",
+        "Polygonal Rifling",
+        "Short-Action Stock",
+        "Smallbore",
+        "Steady Rounds",
+        "Whispered Breathing"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 940371471,
+      "name": "Wicked Implement",
+      "weaponType": "scoutRifle",
+      "element": "stasis",
+      "ammo": "primary",
+      "intrinsics": ["Creeping Attrition"],
+      "perks": [
+        "Accurized Rounds",
+        "Corkscrew Rifling",
+        "Fitted Stock",
+        "Tithing Harvest"
+      ],
+      "catalyst": {
+        "name": "Wicked Implement Catalyst",
+        "perks": ["Hadopelagic Tribute", "Headstone"]
+      }
+    },
+    {
+      "hash": 3118061004,
+      "name": "Winterbite",
+      "weaponType": "glaive",
+      "element": "stasis",
+      "ammo": "heavy",
+      "intrinsics": ["Big Frigid Glaive"],
+      "perks": [
+        "Alloy Magazine",
+        "Supercooled Accelerator",
+        "Tilting at Windmills",
+        "Weighted Edge"
+      ],
+      "catalyst": { "name": "Winterbite Catalyst", "perks": ["Rimestealer"] }
+    },
+    {
+      "hash": 814876684,
+      "name": "Wish-Ender",
+      "weaponType": "bow",
+      "element": "kinetic",
+      "ammo": "primary",
+      "intrinsics": ["Queen's Wrath"],
+      "perks": ["Anti-Taken Fletching", "Broadhead", "High Tension String"],
+      "catalyst": { "name": "Wish-Ender Catalyst", "perks": ["One for All"] }
+    },
+    {
+      "hash": 2910326942,
+      "name": "Wish-Keeper",
+      "weaponType": "bow",
+      "element": "strand",
+      "ammo": "primary",
+      "intrinsics": [
+        "Snareweaver",
+        "Snareweaver II",
+        "Snareweaver III",
+        "Snareweaver IV"
+      ],
+      "perks": [
+        "Agile Bowstring",
+        "Carbon Arrow Shaft",
+        "Compact Arrow Shaft",
+        "Elastic String",
+        "Enduring Snare Refit",
+        "Fiberglass Arrow Shaft",
+        "Flexible String",
+        "Hatchling Refit",
+        "Heavy Grip",
+        "Helical Fletching",
+        "High Tension String",
+        "Multi-Threaded Snare Refit",
+        "Natural Fletching",
+        "Natural String",
+        "Polymer Grip",
+        "Polymer String",
+        "Silkbound Slayer",
+        "Smooth Grip",
+        "Straight Fletching",
+        "Tactile String",
+        "Textured Grip",
+        "Vorpal Weapon Refit"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 2357297366,
+      "name": "Witherhoard",
+      "weaponType": "grenadeLauncher",
+      "element": "kinetic",
+      "ammo": "special",
+      "intrinsics": ["Primeval's Torment"],
+      "perks": [
+        "Black Powder",
+        "Break the Bank",
+        "Composite Stock",
+        "Countermass"
+      ],
+      "catalyst": { "name": "Witherhoard Catalyst", "perks": ["Silent Alarm"] }
+    },
+    {
+      "hash": 1753923263,
+      "name": "Wolfsbane",
+      "weaponType": "sword",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": [
+        "Resurgence Directive",
+        "Resurgence Directive II",
+        "Resurgence Directive III",
+        "Resurgence Directive IV"
+      ],
+      "perks": [
+        "Attrition Orbs Refit",
+        "Burning Ambition Refit",
+        "Enduring Blade",
+        "Honed Edge",
+        "Hungry Edge",
+        "Jagged Edge",
+        "Nano-Assault",
+        "Rampager's Handle",
+        "Relentless Strikes Refit",
+        "SUBROUTINE: ~RECURSION",
+        "Tempered Edge",
+        "Tenacious Handle",
+        "Unyielding Handle"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 1864563948,
+      "name": "Worldline Zero",
+      "weaponType": "sword",
+      "element": "arc",
+      "ammo": "heavy",
+      "intrinsics": ["Tesseract"],
+      "perks": [
+        "Assassin's Blade",
+        "Infinite Guard",
+        "Tempered Edge",
+        "Tireless Blade"
+      ],
+      "catalyst": null
+    },
+    {
+      "hash": 1395261499,
+      "name": "Xenophage",
+      "weaponType": "machineGun",
+      "element": "solar",
+      "ammo": "heavy",
+      "intrinsics": ["Pyrotoxin Rounds"],
+      "perks": [
+        "Composite Stock",
+        "Full Bore",
+        "High-Caliber Rounds",
+        "Rangefinder"
+      ],
+      "catalyst": {
+        "name": "Xenophage Catalyst",
+        "perks": ["Chain Reaction", "Rampage"]
+      }
+    }
+  ]
+}

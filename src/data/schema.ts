@@ -487,6 +487,29 @@ export const ManifestAbilities = z.object({
 });
 export type ManifestAbilities = z.infer<typeof ManifestAbilities>;
 
+/** An exotic weapon from the manifest with the names of its perks (ADR 0013). */
+export const ManifestWeapon = z.object({
+  hash: z.number().int(),
+  name: z.string(),
+  weaponType: WeaponType,
+  element: Element,
+  ammo: z.enum(["primary", "special", "heavy"]),
+  intrinsics: z.array(z.string()), // socket category "Intrinsic Traits", e.g. "Prototype Trueseeker"
+  perks: z.array(z.string()), // socket category "Weapon Perks" with all options, without trackers
+  catalyst: z
+    .object({ name: z.string(), perks: z.array(z.string()) })
+    .nullable(), // e.g. { name: "Truth Catalyst", perks: ["Reaper's Tithe"] }
+});
+export type ManifestWeapon = z.infer<typeof ManifestWeapon>;
+
+/** Exotic weapons from the manifest, written by npm run import:icons. */
+export const ManifestWeapons = z.object({
+  manifestVersion: z.string(),
+  retrieved: z.string(),
+  weapons: z.array(ManifestWeapon),
+});
+export type ManifestWeapons = z.infer<typeof ManifestWeapons>;
+
 /** Why a known ability is not in abilities.json yet (coverage list, US-15). */
 export const GapReason = z.enum([
   "aegisNotNormalised", // Aegis measured it only with buffs inside the value (Full Modifiers 1.00)

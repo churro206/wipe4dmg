@@ -1,7 +1,8 @@
 // Imports the icons for effects, weapons, abilities, subclasses and kinds of damage from the Bungie
 // manifest into public/icons and writes src/data/icons.json (ADR 0008). Before that it reads the
 // ability items of the manifest item table into src/data/manifest-abilities.json: slot, class and
-// subclass of every super, grenade and melee, including Prismatic (ADR 0009).
+// subclass of every super, grenade and melee, including Prismatic (ADR 0009), and the exotic
+// weapons with their perks into src/data/manifest-weapons.json (ADR 0013).
 // Needs BUNGIE_API_KEY, e.g. in .env.local (ignored by git). Run: npm run import:icons
 
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -12,6 +13,7 @@ import {
   IconIndex,
   IconRef,
   ManifestAbilities,
+  ManifestWeapons,
   Weapon,
   type ManifestRef,
 } from "../src/data/schema.ts";
@@ -24,6 +26,10 @@ import {
   extractManifestAbilities,
   type ManifestItem,
 } from "./lib/manifestAbilities.ts";
+import {
+  extractManifestWeapons,
+  type WeaponManifestTables,
+} from "./lib/manifestWeapons.ts";
 
 const BUNGIE = "https://www.bungie.net";
 const ROOT = new URL("../", import.meta.url);
@@ -39,7 +45,11 @@ type Envelope<T> = { ErrorStatus: string; Message: string; Response: T };
 type Manifest = {
   version: string;
   jsonWorldComponentContentPaths: {
-    en: { DestinyInventoryItemDefinition: string };
+    en: {
+      DestinyInventoryItemDefinition: string;
+      DestinyPlugSetDefinition: string;
+      DestinySandboxPerkDefinition: string;
+    };
   };
 };
 type Definition = {
@@ -66,18 +76,42 @@ const itemTable = await fetch(
 );
 if (!itemTable.ok)
   throw new Error(`Item table download failed: ${itemTable.status}`);
+const items = (await itemTable.json()) as Record<string, ManifestItem>;
 const manifestAbilities = ManifestAbilities.parse({
   manifestVersion: manifest.version,
   retrieved,
-  abilities: extractManifestAbilities(
-    (await itemTable.json()) as Record<string, ManifestItem>,
-  ),
+  abilities: extractManifestAbilities(items),
 });
 writeFileSync(
   new URL("src/data/manifest-abilities.json", ROOT),
   await format(JSON.stringify(manifestAbilities), { parser: "json" }),
 );
 console.log(`Wrote ${manifestAbilities.abilities.length} ability items`);
+
+const table = async <T>(path: string): Promise<T> => {
+  const response = await fetch(`${BUNGIE}${path}`);
+  if (!response.ok)
+    throw new Error(`Download of ${path} failed: ${response.status}`);
+  return (await response.json()) as T;
+};
+const manifestWeapons = ManifestWeapons.parse({
+  manifestVersion: manifest.version,
+  retrieved,
+  weapons: extractManifestWeapons({
+    items: items as WeaponManifestTables["items"],
+    plugSets: await table<WeaponManifestTables["plugSets"]>(
+      manifest.jsonWorldComponentContentPaths.en.DestinyPlugSetDefinition,
+    ),
+    sandboxPerks: await table<WeaponManifestTables["sandboxPerks"]>(
+      manifest.jsonWorldComponentContentPaths.en.DestinySandboxPerkDefinition,
+    ),
+  }),
+});
+writeFileSync(
+  new URL("src/data/manifest-weapons.json", ROOT),
+  await format(JSON.stringify(manifestWeapons), { parser: "json" }),
+);
+console.log(`Wrote ${manifestWeapons.weapons.length} exotic weapons`);
 
 const refs = collectIconRefs(
   Effect.array().parse(readJson("src/data/effects.json")),

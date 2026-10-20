@@ -3,7 +3,7 @@
 ## Unveröffentlicht
 
 - Versionsanzeige unten auf der Seite.
-- Waffen-Import, Teil 1 (ADR 0013): Snapshots der Waffen-Tabellen von Aegis und Quantum sowie der Compendium-Texte zu Exotic Weapons und Weapon Perks.
+- Waffen-Import, Teil 1 (ADR 0013): Snapshots der Waffen-Tabellen von Aegis und Quantum sowie der Compendium-Texte zu Exotic Weapons und Weapon Perks. Aus dem Bungie-Manifest 141 exotische Waffen mit Intrinsic, Perks und Katalysator.
 - Fundament für mehrere Waffen (ADR 0012): Der Rechner lädt jede Waffen-Datei; jede Waffe braucht einen Abgleich mit ihrer Quelle. Ablauf für neue Waffen in `docs/guides/weapons.md`.
 
 ## 1.0.0 – 2026-10-20 (Vollversion)
