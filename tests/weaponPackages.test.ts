@@ -76,7 +76,15 @@ describe("Thunderlord", () => {
       3,
     );
     expect(value(thunderlord.totalShots)).toBe(379);
-    expect(value(thunderlord.fireRateRpm)).toBeCloseTo(627, 0);
+  });
+
+  it("takes the newer timing of Aegis 'post-nerf' and flags Quantum's older one", () => {
+    // Aegis: 379 bullets in 34.1 s, "assumes only one reload post-nerf"; Quantum: 57.6 s with
+    // 6 reloads. Point 7: the newer source wins, the difference stays visible (W1-4d checks it).
+    const entry = result.report.weapons.find((w) => w.name === "Thunderlord")!;
+    expect(entry.timingSource).toBe("Aegis");
+    expect(entry.timeToEmptySeconds).toBeCloseTo(34.124, 3);
+    expect(entry.notes.join(" ")).toContain("⚠ Timing: Aegis 379 Shots");
   });
 });
 
