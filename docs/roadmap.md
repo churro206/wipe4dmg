@@ -13,7 +13,7 @@ Stand: 2026-10-20
 - ✅ Grenades: 26 von 30, Melees: 24 von 26 (gemessener Gesamtwert von Aegis)
 - ✅ Icons und Zuordnung zu Klasse und Subklasse aus dem Bungie-Manifest, inklusive Prismatic
 - ✅ Oberfläche: Plätze für Super, Grenade und Melee mit Icons, Stat-Regler 0 bis 200, Hover-Karte mit Herkunft des Werts
-- ⏳ Korrekturen aus der Recherche vom 2026-10-20: Ember of Ashes wirkt zu schwach (+9 % statt +17 %), der Katalysator auch (×1,26 statt ×1,37), Golden Gun bekommt Radiant und Well noch nicht
+- ⏳ Korrekturen aus der Recherche vom 2026-10-20: ✅ Ember of Ashes (jetzt +19 % wie Quantum, vorher +9 %); offen: der Katalysator wirkt zu schwach (×1,26 statt ×1,37), Golden Gun bekommt Radiant und Well noch nicht
 - ⏳ Oberfläche: Schaden nach Quelle, Super Window in der Zeitleiste, mehrere Einsätze, Optimizer mit Fähigkeiten
 - ⏳ Wiki: „Wie rechnet der Rechner?“, Abdeckung, Effects und Mechanics
 

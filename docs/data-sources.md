@@ -111,7 +111,7 @@ Eine Ability bekommt Teile aus dem Compendium nur, wenn sie das Gate gegen Aegis
 
 - `src/data/reference-values.json`: Total Damage aus den Quellen. Werte mit `scenario` prüft der Gate-Test automatisch.
 - `src/data/reference-multipliers.json`: kombinierte Multiplier aus den Quellen, z. B. die Standard-Annahmen von Aegis (×2,355).
-- `src/data/reference-factors.json`: gemessene Faktoren „mit / ohne“ eines Effects an derselben Waffe, z. B. Ember of Ashes ×1,173 laut Aegis. Gate für Waffen-Effects mit ±3 % (ADR 0011, `tests/weaponEffectGate.test.ts`). Stand 2026-10-20 mit Particle Reconstruction: Modell Ember ×1,063, Katalysator ×1,260, Katalysator mit Ember ×1,245; alle drei sind bekannte Abweichungen.
+- `src/data/reference-factors.json`: gemessene Faktoren „mit / ohne“ eines Effects an derselben Waffe, z. B. Ember of Ashes ×1,173 laut Aegis. Gate für Waffen-Effects mit ±3 % (ADR 0011, `tests/weaponEffectGate.test.ts`). Stand 2026-10-20 mit Particle Reconstruction: Modell Ember ×1,188 (besteht), Katalysator ×1,260, Katalysator mit Ember ×1,219 (bekannte Abweichungen).
 
 ## Messprotokoll (Stichproben)
 

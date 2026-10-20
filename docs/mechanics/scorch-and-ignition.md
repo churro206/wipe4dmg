@@ -60,8 +60,8 @@ Abgebildet seit v0.5 Schritt 4:
 - Ember of Ashes ist ein Effect mit einem `counterModifier`-Teil (×1,5, aufgerundet).
 - Ignitions sind Waffenschaden: Waffen-Buffs wirken auf sie.
 - Nicht abgebildet: Burn-Schaden und der Verfall von Stacks.
-- Ergebnis ohne Effects: 5 Ignitions in 11 Shots, 28 430 Total Damage, genau wie Quantum. Mit Ember of Ashes: 8 Ignitions, 31 100 (+9,4 %).
-- **Bekannter Fehler (2026-10-20):** Aegis und Quantum messen mit Ember of Ashes eine Ignition pro Shot (+17 % bzw. +19 %). Unser Modell verteilt die 9 Explosionen mit 66,7 ms Abstand (`intervalMs`, selbst abgeleitet). Dann zündet erst die 7. Explosion, der Cooldown reicht in die ersten 3 bis 4 Explosionen des nächsten Shots, und nur 8 von 11 Shots zünden. Mit gleichzeitigen Explosionen („detonate after 0.7 seconds“) zünden 11 von 11, ohne Ember bleibt es bei 5 von 11. Korrektur nach ADR 0011.
+- Ergebnis ohne Effects: 5 Ignitions in 11 Shots, 28 430 Total Damage, genau wie Quantum. Mit Ember of Ashes: 11 Ignitions, ×1,188, genau wie Quantum; Aegis ×1,173 (Gate `tests/weaponEffectGate.test.ts`, ±3 %).
+- **Korrigiert (2026-10-20, ADR 0011):** Bis dahin verteilte das Modell die 9 Explosionen mit 66,7 ms Abstand (selbst abgeleitet: 0,6 s Beam ÷ 9). Dann zündete erst die 7. Explosion, der Cooldown reichte in die ersten 3 bis 4 Explosionen des nächsten Shots, und nur 8 von 11 Shots zündeten (+9,4 %). Jetzt explodieren alle 9 gleichzeitig (`intervalMs` 0), die einfachste Annahme, die das Gate besteht. Jeder Abstand bis etwa 33 ms ergäbe dasselbe. Gestaffelte Explosionen mit kürzerem Cooldown würden auch passen, siehe offene Fragen.
 
 ## Offene Fragen
 
@@ -70,7 +70,7 @@ Abgebildet seit v0.5 Schritt 4:
 - [ ] Die Stichprobe ergab Burn-Ticks von 16. Das passt nicht zur Skala des Compendiums: Explosion 129 im Spiel gegenüber 281 im Compendium, also Faktor 0,46.
 - [ ] Schaden pro Shot ohne Ignition: Compendium 10 × 22 + 9 × 281 = 2749, Quantum 2180, Aegis etwa 2054 (2459 minus 5/11 × 890 für Ignitions). Die Quellen treffen verschiedene Annahmen: Ziel, Power-Differenz, ob alle 9 Explosionen treffen. Quantum und Aegis liegen etwa 6 % auseinander. Weil nur relative Unterschiede zählen, rechnen wir mit einer Hauptquelle (Quantum) und vergleichen Faktoren statt absoluter Zahlen.
 
-- [x] Aegis zeigt mit Ember of Ashes etwa +17 % pro Shot, unser Modell +9,4 %. Geklärt (2026-10-20): Ember erhöht nur die Stacks; mit Ember zündet jeder Shot. Die Ursache liegt im Abstand der Explosionen in unserem Modell, siehe „Modell im Simulator“. Burn und Particle Reconstruction erklären die Differenz nicht: Der Rest ohne Ignitions ist bei Aegis mit und ohne Ember fast gleich.
+- [x] Aegis zeigt mit Ember of Ashes etwa +17 % pro Shot, unser Modell damals +9,4 %. Geklärt und korrigiert (2026-10-20): Ember erhöht nur die Stacks; mit Ember zündet jeder Shot. Die Ursache liegt im Abstand der Explosionen in unserem Modell, siehe „Modell im Simulator“. Burn und Particle Reconstruction erklären die Differenz nicht: Der Rest ohne Ignitions ist bei Aegis mit und ohne Ember fast gleich.
 - [ ] Wirkt der Debuff von Particle Reconstruction auch auf Ignitions? Wahrscheinlich ja: Laut Compendium zählen Solar-Effekte einer Waffe „as Weapon Damage, benefitting from Weapon Buffs“. Für diesen Perk hat es niemand bestätigt. Aegis hilft hier nicht, weil es pauschal mit Debuff ×1,30 rechnet. Ingame-Test: Ignition-Zahl mit und ohne Perk vergleichen, erwartet etwa ×1,276.
 - [ ] Kommen die 9 Explosionen gleichzeitig oder nacheinander? Das Compendium sagt nur „detonate after 0.7 seconds“. Die Messungen von Aegis und Quantum passen nur zu (fast) gleichzeitigen Explosionen oder einem kürzeren Cooldown. Ingame-Test: ein Magazin mit Ember, Ignitions zählen (erwartet 4 von 4); Explosionen frameweise ansehen.
 

@@ -135,13 +135,13 @@
         }
       },
       "intervalMs": {
-        "value": 66.7,
+        "value": 0,
         "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices: marked spots \"detonate after 0.7 seconds\"); gate against Aegis and Quantum (ADR 0011)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
+          "retrieved": "2026-10-20",
           "status": "unverified",
-          "note": "Derived: the beam lasts 0.6 s with 10 ticks, so about 0.6 s / 9 between ticks. Assumes evenly spaced ticks."
+          "note": "Simplest assumption that passes the gate (ADR 0011, rule 3): all 9 explosions at once. Aegis and Quantum measure one ignition per shot with Ember of Ashes; the former derived 66.7 ms (0.6 s beam / 9) let the next shot's first explosions fall into the 1.6 s ignition cooldown. Any interval up to about 33 ms gives the same result. Open: staggered explosions with a shorter cooldown would also fit; in-game test in docs/mechanics/scorch-and-ignition.md."
         }
       }
     },
@@ -207,13 +207,13 @@
         }
       },
       "intervalMs": {
-        "value": 66.7,
+        "value": 0,
         "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices: marked spots \"detonate after 0.7 seconds\"); gate against Aegis and Quantum (ADR 0011)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
+          "retrieved": "2026-10-20",
           "status": "unverified",
-          "note": "Derived: the beam lasts 0.6 s with 10 ticks, so about 0.6 s / 9 between ticks. Assumes evenly spaced ticks."
+          "note": "Simplest assumption that passes the gate (ADR 0011, rule 3): all 9 explosions at once. Aegis and Quantum measure one ignition per shot with Ember of Ashes; the former derived 66.7 ms (0.6 s beam / 9) let the next shot's first explosions fall into the 1.6 s ignition cooldown. Any interval up to about 33 ms gives the same result. Open: staggered explosions with a shorter cooldown would also fit; in-game test in docs/mechanics/scorch-and-ignition.md."
         }
       },
       "impactDamage": {
