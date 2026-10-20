@@ -11,6 +11,7 @@
   - Ein Build hat ein Super: Der Super-Platz ersetzt eigene Super-Effects. Alte Links übernehmen sie auf den Super-Platz.
 - Link-Format 3 mit Fähigkeiten und Stats. Ältere Links funktionieren weiter.
 - Recherche zu Ember of Ashes, Katalysator, Particle Reconstruction und Buffs auf Supers: drei Fehler im Modell gefunden und dokumentiert. Neue Regel für zerlegte Werte (ADR 0011): Quellen nur als Verhältnis mischen, jede Zerlegung braucht ein Gate.
+- Korrigiert: Ember of Ashes bringt jetzt +19 % statt +9 % (jeder Shot zündet), der Katalysator ×1,39 statt ×1,26. Beide stimmen auf 2 % mit Aegis überein.
 - Abdeckung und Roadmap als Dokumente (`docs/coverage.md`, `docs/roadmap.md`, US-15, ADR 0010).
 - Tether-Dauern laut Compendium: Deadfall 12 s, Moebius 6 s pro Salve.
 - Courts Stacking Guide vollständig abgeglichen: Surge 3x (22 %) und die Stacking-Regeln für Amplification, Weapon Perks und Exotic Intrinsics sind jetzt belegt. MossyMax geprüft, veraltet.

@@ -44,7 +44,10 @@ Seit v1.0 Schritt 1: `damageOverTime`-Teil in `intrinsicParts` von One Thousand 
 
 - Freisetzung zu denselben Zeiten wie die Scorch-Anwendungen (9 pro Shot, ab 0,7 s).
 - Aufprall bei der Freisetzung (Flugzeit nicht abgebildet), erster Tick 0,15 s danach.
-- Sind schon 5 Seeker aktiv, macht ein neuer Seeker keinen Schaden. **Bekannter Fehler (2026-10-20):** Dadurch ergibt das Modell ×1,26 statt ×1,37. Dazu sind die Seeker-Werte in Compendium-Skala, der Shot in Quantum-Skala (Seeker etwa 26 % zu stark). Mit beiden Korrekturen (Aufprall immer, Werte als Verhältnis zur Explosion) ergibt eine Nachrechnung ×1,39 bis ×1,41. Korrektur nach ADR 0011.
+- **Annahme (ADR 0011, Regel 4):** Sind schon 5 Seeker aktiv, macht ein neuer Seeker nur seinen Aufprall, keine Ticks. Er ersetzt keinen alten Seeker. Keine Quelle nennt das; die Regel ist aus den Aegis-Messungen rekonstruiert.
+- **Skala:** Aufprall und Ticks stehen in Compendium-Skala (84 / 13). `sourceScale` 0,793 = Quantum-Shot 2180 ÷ Compendium-Shot 2749 rechnet sie auf die Skala von Quantum um.
+- **Gate** (`tests/weaponEffectGate.test.ts`, ±3 %): Katalysator ×1,392 gegen Aegis ×1,371 (+1,5 %), mit Ember ×1,330 gegen ×1,305 (+1,9 %). Nur beide Korrekturen zusammen treffen die Messung: die Regel allein ergäbe ×1,494, die Skala allein weniger als heute.
+- Bis 2026-10-20 machte ein Seeker über der Grenze gar keinen Schaden, und die Werte waren nicht umgerechnet (×1,26).
 - Waffen-Buffs wirken auf Aufprall und Ticks.
 
 ## Offene Fragen

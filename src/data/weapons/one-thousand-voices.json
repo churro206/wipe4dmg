@@ -223,7 +223,7 @@
           "url": "https://destiny2.science/data-compendium",
           "retrieved": "2026-10-18",
           "status": "unverified",
-          "note": "Compendium scale. Ignition matches Compendium and Quantum 1:1 (676 x 1.316 = 890), so no conversion. Seeker travel time is not modeled: impact at the detonation."
+          "note": "Compendium scale, converted with sourceScale (ADR 0011). Seeker travel time is not modeled: impact at the detonation."
         }
       },
       "tickDamage": {
@@ -233,7 +233,7 @@
           "url": "https://destiny2.science/data-compendium",
           "retrieved": "2026-10-18",
           "status": "unverified",
-          "note": "Compendium scale, see impactDamage. Blighted targets take +100% tick damage (not modeled yet)."
+          "note": "Compendium scale, converted with sourceScale (ADR 0011). Blighted targets take +100% tick damage (not modeled yet)."
         }
       },
       "ticks": {
@@ -271,7 +271,17 @@
           "url": "https://destiny2.science/data-compendium",
           "retrieved": "2026-10-18",
           "status": "unverified",
-          "note": "\"An enemy can be afflicted by up to ~5 seekers at once.\" Assumption: further seekers deal neither impact nor ticks."
+          "note": "\"An enemy can be afflicted by up to ~5 seekers at once.\" Assumption: further seekers deal neither impact nor ticks. Beyond the limit a seeker still deals its impact, but no ticks: reconstructed from Aegis (catalyst x1.371, with Ember x1.305), no source states it (docs/mechanics/taken-seeker.md, ADR 0011 rule 4)."
+        }
+      },
+      "sourceScale": {
+        "value": 0.793,
+        "source": {
+          "name": "Quantum Damage-ics (One Thousand Voices shot 2,180) / Destiny Data Compendium, Exotic Weapons (shot 10 x 22 beam + 9 x 281 explosion = 2,749)",
+          "url": "https://destiny2.science/quantum-damage-ics",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "2,180 / 2,749 = 0.793. Compendium weapon values are about 1.26 x Quantum; only the ignition matches 1:1. Ratio within one source per ADR 0011 rule 1. Gate: catalyst x1.392 vs Aegis x1.371."
         }
       }
     }

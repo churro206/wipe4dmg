@@ -164,7 +164,9 @@ export const DamageOverTimePart = z.object({
   ticks: SourcedNumber,
   tickIntervalMs: SourcedNumber,
   firstTickDelayMs: SourcedNumber, // from the impact to the first tick
-  maxActivePerTarget: SourcedNumber, // further releases are lost while this many are active
+  maxActivePerTarget: SourcedNumber, // further releases deal their impact, but no ticks
+  // Factor from the value source's scale to the main source's scale (ADR 0011); 1 if omitted.
+  sourceScale: SourcedNumber.optional(),
 });
 export type DamageOverTimePart = z.infer<typeof DamageOverTimePart>;
 

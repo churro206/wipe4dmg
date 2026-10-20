@@ -21,6 +21,9 @@ const seekerOf = (w: Weapon): DamageOverTimePart => {
 const seeker = seekerOf(weapon);
 const seekerInstances = (result: ReturnType<typeof simulate>) =>
   result.damageInstances.filter((d) => d.id === seeker.id);
+/** Damage of an impact or tick after the conversion to the main source's scale (ADR 0011). */
+const scaled = (part: DamageOverTimePart, value: number | null) =>
+  value! * (part.sourceScale?.value ?? 1);
 
 /** Copy with one seeker per shot right at the shot and no limit; test input, not game data. */
 function oneSeekerPerShot(): Weapon {
@@ -65,9 +68,11 @@ describe("simulate: catalyst (Taken Seeker)", () => {
     );
     const instances = seekerInstances(result);
     const impacts = instances.filter(
-      (d) => d.damage === part.impactDamage.value,
+      (d) => d.damage === scaled(part, part.impactDamage.value),
     );
-    const ticks = instances.filter((d) => d.damage === part.tickDamage.value);
+    const ticks = instances.filter(
+      (d) => d.damage === scaled(part, part.tickDamage.value),
+    );
     expect(impacts).toHaveLength(result.shots.length);
     expect(ticks).toHaveLength(result.shots.length * part.ticks.value!);
   });
@@ -91,7 +96,9 @@ describe("simulate: catalyst (Taken Seeker)", () => {
     );
   });
 
-  it("keeps at most the allowed number of seekers active on the target", () => {
+  // The limit applies to the ticks only; every seeker still deals its impact. Reconstructed
+  // from the Aegis measurements (docs/mechanics/taken-seeker.md, ADR 0011 rule 4).
+  it("deals the impact of every seeker, also beyond the limit", () => {
     const result = simulate(
       weapon,
       LONG_DAMAGE_PHASE_SECONDS,
@@ -102,10 +109,48 @@ describe("simulate: catalyst (Taken Seeker)", () => {
     const firstShot = result.shots[0].timeMs;
     const impactsDuringFirstShot = seekerInstances(result).filter(
       (d) =>
-        d.damage === seeker.impactDamage.value && d.timeMs < firstShot + 1000,
+        d.damage === scaled(seeker, seeker.impactDamage.value) &&
+        d.timeMs < firstShot + 1000,
     );
     expect(impactsDuringFirstShot).toHaveLength(
+      seeker.applicationsPerTrigger.value!,
+    );
+  });
+
+  it("keeps at most the allowed number of seekers ticking on the target", () => {
+    const result = simulate(
+      weapon,
+      LONG_DAMAGE_PHASE_SECONDS,
+      [],
+      buckets,
+      CATALYST,
+    );
+    const tickDamage = scaled(seeker, seeker.tickDamage.value);
+    const ticksByTime = new Map<number, number>();
+    for (const d of seekerInstances(result)) {
+      if (d.damage !== tickDamage) continue;
+      ticksByTime.set(d.timeMs, (ticksByTime.get(d.timeMs) ?? 0) + 1);
+    }
+    expect(Math.max(...ticksByTime.values())).toBe(
       seeker.maxActivePerTarget.value!,
+    );
+  });
+
+  it("converts seeker damage to the main source's scale", () => {
+    expect(seeker.sourceScale?.value).toBeLessThan(1);
+    const [impact] = seekerInstances(
+      simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, [], buckets, CATALYST),
+    );
+    expect(impact.damage).toBeCloseTo(
+      seeker.impactDamage.value! * seeker.sourceScale!.value!,
+    );
+  });
+
+  it("rejects a seeker part whose source scale is missing", () => {
+    const incomplete = structuredClone(weapon);
+    seekerOf(incomplete).sourceScale!.value = null;
+    expect(() => simulate(incomplete, 30, [], buckets, CATALYST)).toThrow(
+      "sourceScale",
     );
   });
 
@@ -117,7 +162,7 @@ describe("simulate: catalyst (Taken Seeker)", () => {
       simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, [surge], buckets, CATALYST),
     );
     expect(impact.damage).toBeCloseTo(
-      seeker.impactDamage.value! * part.multiplier.value!,
+      scaled(seeker, seeker.impactDamage.value) * part.multiplier.value!,
     );
   });
 

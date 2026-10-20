@@ -17,10 +17,7 @@ const FULL_AMMO_SECONDS = 600;
 
 // Known model errors from the research on 2026-10-20 (docs/mechanics). Remove an id once
 // its correction lands; the test then has to pass.
-const KNOWN_DEVIATIONS = new Set([
-  "aegis-otv-catalyst",
-  "aegis-otv-catalyst-with-ember-of-ashes",
-]);
+const KNOWN_DEVIATIONS = new Set<string>([]);
 
 const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);

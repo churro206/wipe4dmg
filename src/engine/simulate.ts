@@ -331,7 +331,9 @@ function triggerTimes(
 
 /**
  * Releases a damage over time source at each trigger time: an impact, then ticks. While the
- * target already holds the maximum number of active sources, a release is lost.
+ * target already holds the maximum number of active sources, a release deals only its impact
+ * (reconstructed from Aegis, docs/mechanics/taken-seeker.md). Damage is converted to the main
+ * source's scale (ADR 0011).
  */
 function damageOverTimeInstances(
   part: DamageOverTimePart,
@@ -346,8 +348,12 @@ function damageOverTimeInstances(
   );
   const firstDelayMs = requireValue(part.firstDelayMs, "firstDelayMs");
   const intervalMs = requireValue(part.intervalMs, "intervalMs");
-  const impactDamage = requireValue(part.impactDamage, "impactDamage");
-  const tickDamage = requireValue(part.tickDamage, "tickDamage");
+  const sourceScale = part.sourceScale
+    ? requireValue(part.sourceScale, "sourceScale")
+    : 1;
+  const impactDamage =
+    requireValue(part.impactDamage, "impactDamage") * sourceScale;
+  const tickDamage = requireValue(part.tickDamage, "tickDamage") * sourceScale;
   const ticks = requireValue(part.ticks, "ticks");
   const tickIntervalMs = requireValue(part.tickIntervalMs, "tickIntervalMs");
   const firstTickDelayMs = requireValue(
@@ -375,12 +381,12 @@ function damageOverTimeInstances(
   for (const releaseMs of releases) {
     if (!isInPhase(releaseMs)) break;
     activeUntilMs = activeUntilMs.filter((untilMs) => untilMs >= releaseMs);
+    push(releaseMs, impactDamage);
     if (activeUntilMs.length >= maxActive) continue;
 
     const lastTickMs =
       releaseMs + firstTickDelayMs + (ticks - 1) * tickIntervalMs;
     activeUntilMs.push(lastTickMs);
-    push(releaseMs, impactDamage);
     for (let tick = 0; tick < ticks; tick++) {
       push(releaseMs + firstTickDelayMs + tick * tickIntervalMs, tickDamage);
     }
