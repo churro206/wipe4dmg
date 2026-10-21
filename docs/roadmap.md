@@ -11,6 +11,7 @@ Stand: 2026-10-21
 - ⏳ Die übrigen 30 Waffen (z. B. Schwerter, Merciless, Two-Tailed Fox): weitere Quellen erschließen; die Liste mit Gründen steht in der Prüftabelle
 - ✅ Logo: Schädel aus dem Todesbildschirm im Header und als Favicon
 - ⏳ Oberfläche näher am Spiel: Hover-Karte wie die Item-Ansicht, Element-Farben, Menü-Optik ([Vorbilder](ui-inspiration.md))
+- ⏳ Umbau der Engine für Keywords und Exotic-Effekte ([ADR 0015](adr/0015-unified-mechanics.md)): ✅ Vergleichsbasis aller Ergebnisse, ✅ Merkmale eines Treffers (Art des Treffers, Class Ability, Keyword, Skala der Werte); als Nächstes ein gemeinsamer Ablauf für alle Treffer, dann Scorch/Ignition, Jolt, Volatile Rounds und Bolt Charge
 - Exotic-Rüstung: Dawn Chorus und weitere Exotics mit großer Wirkung auf den Schaden (z. B. Mantle of Battle Harmony mit Surge 4x)
 - Plan: [Waffen und Exotic-Rüstung](plans/weapons-and-exotic-armor.md)
 

@@ -16,7 +16,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import type { AbilityKind } from "../data/schema";
+import type { AbilityKind, DamageSource } from "../data/schema";
 import type { CurvePoint, DamageShare } from "../engine/analysis";
 import { Icon } from "./components/Icon";
 import type { BreakdownEntry } from "../engine/breakdown";
@@ -34,10 +34,16 @@ const DAMAGE_KINDS: Record<string, { label: string; color: string }> = {
   ignition: { label: "Ignitions", color: "var(--series-2)" },
   takenSeeker: { label: "Taken Seeker", color: "var(--series-3)" },
 };
-const ABILITY_KINDS: Record<AbilityKind, { label: string; color: string }> = {
+// Class abilities and keywords get their own colors with the UI step (ADR 0015, U8).
+const ABILITY_KINDS: Record<
+  Exclude<DamageSource, "weapon">,
+  { label: string; color: string }
+> = {
   super: { label: "Super", color: "var(--series-7)" },
   grenade: { label: "Grenade", color: "var(--series-5)" },
   melee: { label: "Melee", color: "var(--series-4)" },
+  classAbility: { label: "Class Ability", color: "var(--muted)" },
+  keyword: { label: "Keyword", color: "var(--muted)" },
 };
 const kindOf = (id: string) =>
   DAMAGE_KINDS[id] ?? { label: id, color: "var(--muted)" };

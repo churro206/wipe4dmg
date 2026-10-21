@@ -53,9 +53,16 @@ export type SourceShare = {
   share: number; // of the total damage, 0 to 1
 };
 
-const SOURCE_ORDER: DamageSource[] = ["weapon", "super", "grenade", "melee"];
+const SOURCE_ORDER: DamageSource[] = [
+  "weapon",
+  "super",
+  "grenade",
+  "melee",
+  "classAbility",
+  "keyword",
+];
 
-/** Damage per damage source in the order weapon, super, grenade, melee; only sources with damage. */
+/** Damage per damage source in the order weapon, super, grenade, melee, class ability, keyword; only sources with damage. */
 export function damageBySource(result: SimulationResult): SourceShare[] {
   return SOURCE_ORDER.flatMap((damageSource) => {
     const instances = result.damageInstances.filter(

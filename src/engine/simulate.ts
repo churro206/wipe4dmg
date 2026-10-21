@@ -30,11 +30,13 @@ import type {
   Bucket,
   CounterId,
   DamageOverTimePart,
+  Delivery,
   DamageSource,
   Effect,
   Element,
   MultiplierPart,
   Weapon,
+  WeaponType,
 } from "../data/schema";
 import { abilityStatParts, type AbilityStatValue } from "./abilityStats";
 import {
@@ -63,6 +65,9 @@ export type TimedDamageInstance = {
   damageSource: DamageSource;
   element: Element;
   abilityId?: string; // set for damage instances of an ability
+  weaponType?: WeaponType; // set for damage instances of the weapon
+  keywordId?: string; // set for keyword damage, e.g. ignition (ADR 0015, point 5)
+  delivery?: Delivery; // impact, splash or dot, where the data names it
 };
 
 /** An ability of the build and the times of its casts in the damage phase. */
@@ -216,6 +221,7 @@ export function simulate(
     .filter((instance) => catalyst || !instance.requiresCatalyst)
     .map((instance) => ({
       id: instance.id,
+      delivery: instance.delivery,
       delayMs: requireValue(instance.delayMs, "delayMs"),
       damage: requireValue(instance.damagePerTick, "damagePerTick"),
       ticks: requireValue(instance.ticks, "ticks"),
@@ -267,6 +273,8 @@ export function simulate(
             damage: instance.damage * multiplierAt(timeMs, weapon.element),
             damageSource,
             element: weapon.element,
+            weaponType: weapon.weaponType,
+            ...(instance.delivery ? { delivery: instance.delivery } : {}),
           });
         }
       }
@@ -358,6 +366,9 @@ function abilityDamageInstances(
           damageSource: ability.kind,
           element: ability.element,
           abilityId: ability.id,
+          ...(component.component.delivery
+            ? { delivery: component.component.delivery }
+            : {}),
         });
       }
     }
@@ -426,6 +437,7 @@ function damageOverTimeInstances(
       damage: damage * multiplierAt(timeMs, weapon.element),
       damageSource: "weapon",
       element: weapon.element,
+      weaponType: weapon.weaponType,
     });
   };
 
@@ -525,6 +537,7 @@ function thresholdDamageInstances(
           multiplierAt(application.timeMs, reached.part.element),
         damageSource: "weapon",
         element: reached.part.element,
+        weaponType: weapon.weaponType,
       });
       counter.stacks = 0;
       counter.blockedUntilMs = application.timeMs + reached.cooldownMs;

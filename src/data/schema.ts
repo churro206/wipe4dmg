@@ -43,6 +43,14 @@ export const Bucket = z.object({
 });
 export type Bucket = z.infer<typeof Bucket>;
 
+/** How a hit reaches the target (ADR 0015, point 4); open where the sources do not name it. */
+export const Delivery = z.enum(["impact", "splash", "dot"]);
+export type Delivery = z.infer<typeof Delivery>;
+
+/** Scale of a damage value: the source it was measured in (ADR 0015, point 7). */
+export const DamageScale = z.enum(["aegisVisual", "quantum", "compendium"]);
+export type DamageScale = z.infer<typeof DamageScale>;
+
 /** One hit (or a series of ticks) caused by a single shot. */
 export const DamageInstance = z.object({
   id: z.string(), // e.g. "beam", "explosion", "takenSeeker"
@@ -53,6 +61,7 @@ export const DamageInstance = z.object({
   tickIntervalMs: SourcedNumber, // 0 for a single hit
   canPrecision: z.boolean(),
   requiresCatalyst: z.boolean(),
+  delivery: Delivery.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
 
@@ -233,7 +242,14 @@ export const WeaponGap = z.object({
 export type WeaponGap = z.infer<typeof WeaponGap>;
 
 /** What creates a damage instance. */
-export const DamageSource = z.enum(["weapon", "grenade", "melee", "super"]);
+export const DamageSource = z.enum([
+  "weapon",
+  "grenade",
+  "melee",
+  "super",
+  "classAbility",
+  "keyword", // e.g. ignition, jolt, volatile (ADR 0015, point 5)
+]);
 export type DamageSource = z.infer<typeof DamageSource>;
 
 /** Effect part that multiplies damage (ADR 0006). */
@@ -394,6 +410,7 @@ export const AbilityComponent = z.object({
   tickIntervalMs: SourcedNumber, // 0 for a single hit
   // Whether the ability stat (super, grenade or melee) scales this part; keyword damage often does not.
   scalesWithAbilityStat: z.boolean(),
+  delivery: Delivery.optional(),
   // Effects already inside the value, e.g. Ember of Ashes in an Aegis package; never applied again here.
   includedEffectIds: z.array(z.string()).optional(),
   // Multiplier effects taken out of the value when loading, e.g. Radiant in a Golden Gun package;
