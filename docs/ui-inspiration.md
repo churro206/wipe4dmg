@@ -22,7 +22,7 @@ Die Community rechnet mit Tabellen (Aegis, Court, Quantum). Vorbilder kommen des
 | --- | --- | --- |
 | Hover-Karte wie die Item-Ansicht: farbiger Kopf (Exotic gold, Legendary lila), Element-Icon, Perk-Text | Item-Inspektion | U5 |
 | Element-Farben als Akzent (Solar, Arc, Void, Stasis, Strand) nach Waffe oder Subklasse | Subklassen und Waffen | U5 |
-| ✅ Schrift: Neue Haas Grotesk Display Pro, wo installiert (kommerziell, wird nicht mitgeliefert); sonst Systemschrift | ganzes Spiel | U4 |
+| ✅ Schrift: Instrument Sans (frei, OFL, mitgeliefert über `@fontsource`), der freien Schrift am nächsten an Neue Haas Grotesk aus dem Spiel. Alle sehen dieselbe Schrift; Neue Haas selbst ist kommerziell und darf nicht mitgeliefert werden | ganzes Spiel | U4 |
 | Menü-Optik: dunkle, leicht durchsichtige Flächen, dünne helle Rahmen, Überschriften in Großbuchstaben mit Sperrung | Director, Inventar | U5 |
 | Subklassen-Bildschirm: Super als Raute in der Mitte, Grenade, Melee und Class Ability daneben, Aspects und Fragments als Slot-Reihen | Subklassen-Menü | mit E0 |
 | Charakter-Bildschirm: Waffe links, Rüstung mit Exotic rechts | Charakter-Menü | mit E0 |

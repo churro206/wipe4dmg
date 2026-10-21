@@ -17,9 +17,9 @@
   --axis: #c3c2b7;
   --shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 
-  /* Destiny 2's UI font where installed (commercial, never shipped); else the system font */
+  /* Instrument Sans: free, close to Destiny 2's Neue Haas Grotesk; shipped so everyone sees the same */
   font:
-    15px/1.45 "Neue Haas Grotesk Display Pro",
+    15px/1.45 "Instrument Sans",
     system-ui,
     "Segoe UI",
     Roboto,
@@ -134,7 +134,7 @@ select {
 
 .phase-row {
   display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr);
+  grid-template-columns: 8rem minmax(0, 1fr);
   gap: 0.75rem;
 }
 
