@@ -18,7 +18,7 @@ const ENTITIES: Record<string, string> = {
 };
 
 /** Cell HTML to text: <br> becomes a line break, tags are removed, entities decoded, spaces collapsed. */
-function cellText(html: string): string {
+export function cellText(html: string): string {
   return html
     .replace(/<br\s*\/?>/g, "\n")
     .replace(/<[^>]*>/g, "")

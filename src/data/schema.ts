@@ -752,6 +752,26 @@ export const CompendiumSnapshot = z.object({
 });
 export type CompendiumSnapshot = z.infer<typeof CompendiumSnapshot>;
 
+/** One buff or debuff of Court's Stacking Guide (ADR 0014); values stay text, e.g. "20%*\nat max". */
+export const CourtEntry = z.object({
+  category: z.string(), // e.g. "Global Debuffs" or "Exotic Intrinsics"
+  group: z.string(), // first cell of the row block, e.g. "WEAKEN SANDBOX SOURCES"; empty in name lists
+  name: z.string(),
+  itemType: z.string().nullable(), // e.g. "Hunter Chest"
+  requirement: z.string(), // column FOUND/REQUIREMENT
+  trigger: z.string(),
+  pve: z.string().nullable(), // PvE value; null in name lists without values
+  pveDuration: z.string().nullable(),
+  notes: z.string(),
+});
+export type CourtEntry = z.infer<typeof CourtEntry>;
+
+export const CourtSnapshot = z.object({
+  source: Source,
+  entries: z.array(CourtEntry),
+});
+export type CourtSnapshot = z.infer<typeof CourtSnapshot>;
+
 /** One row of the Aegis tab "Weapons": a measured scenario of one weapon (ADR 0013). */
 export const AegisWeaponRow = z.object({
   id: z.string(), // kebab-case from weapon type, name and assumptions

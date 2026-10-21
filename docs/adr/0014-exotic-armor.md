@@ -1,6 +1,6 @@
 # ADR 0014: Exotic-Rüstung
 
-Status: vorgeschlagen · Datum: 2026-10-21
+Status: angenommen · Datum: 2026-10-21
 
 ## Kontext
 

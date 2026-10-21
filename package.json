@@ -14,6 +14,7 @@
     "import:abilities": "node scripts/import-aegis-abilities.ts",
     "import:compendium": "node scripts/import-compendium.ts",
     "import:weapons": "node scripts/import-weapons.ts",
+    "import:court": "node scripts/import-court.ts",
     "build:weapons": "node scripts/build-weapons.ts",
     "import:icons": "node --max-old-space-size=4096 --env-file-if-exists=.env.local scripts/import-bungie-icons.ts"
   },
