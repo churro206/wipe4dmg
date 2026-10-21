@@ -6,9 +6,9 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Art | Anzahl |
 | --- | --- |
 | Ability-Varianten (Regel 1) | 15 |
-| Schadens-Buffs (Regeln 2 bis 4) | 41 |
+| Schadens-Buffs (Regeln 2 bis 4) | 42 |
 | Geben einen Effect (Regel 4c) | 2 |
-| Lücken (Regeln 3 bis 5) | 53 |
+| Lücken (Regeln 3 bis 5) | 52 |
 | Ohne Schadenswirkung (Regel 6) | 30 |
 
 ## Ability-Varianten (Regel 1)
@@ -54,6 +54,7 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Gwisin Vest | hunter | chest | 2 | Court Global Debuffs: 15% für 10s |
 | Gyrfalcon's Hauberk | hunter | chest | 2 | Court Empowering Buffs: 35% für 6s |
 | Hallowfire Heart | titan | chest | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „6.5% \| 13.6% \| 22% \| 32% \| 43% \| 57% \| 73% \| 93% \| 118% \| 150% Increased Super Damage“ |
+| Hazardous Propulsion | titan | chest | 2 | Court Empowering Buffs: 35% at 6x für 10s |
 | Heart of Inmost Light | titan | chest | 3 | exoticIntrinsic (Court-Liste); compendium: „35% [20%] Increased Grenade Damage“; clarity: „35% [20%] increased Grenade damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt) |
 | Khepri's Sting | hunter | gauntlets | 2 | Court Global Debuffs: 15% für 15s |
 | Knucklehead Radar | hunter | helmet | 3 | exoticIntrinsic (Court-Liste); compendium: „1% increased Weapon and Ability Damage“; compendium: „20% Increased Damage“; clarity: „20% increased damage“ |
@@ -61,7 +62,7 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Mantle of Battle Harmony | warlock | chest | 2 | Court Weapon Surges: 25% für 11s; Court Weapon Surges: 25% für 10s |
 | Mask of Bakris | hunter | helmet | 2 | Court Amplification Modifiers: 10% 21% 33% für 11s |
 | Mechaneer's Tricksleeves | hunter | gauntlets | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „100% [10%] increased Sidearm damage“; clarity: „100% [10%] increased damage“ |
-| No Backup Plans | titan | gauntlets | 4 | empowering („(Empowering Buff)“); compendium: „35% [10%] increased Shotgun damage“; clarity: „35% [10%] increased damage“; clarity: „30% [?%] increased damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt) |
+| No Backup Plans | titan | gauntlets | 2 | Court Empowering Buffs: 35% für ~ lasts duration of user buff |
 | Oathkeeper | hunter | gauntlets | 3 | exoticIntrinsic (Court-Liste); compendium: „200% increased impact damage“; clarity: „37.5% increased damage“ |
 | Peacekeepers | titan | legs | 3 | exoticIntrinsic (Court-Liste); compendium: „5% increased Submachine Gun Impact Damage“; clarity: „5% increased SMG damage“ |
 | Peregrine Greaves | titan | legs | 3 | exoticIntrinsic (Court-Liste); compendium: „250% increased impact damage“; compendium: „550% Increased Impact Damage“ |
@@ -73,7 +74,7 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Synthoceps | titan | gauntlets | 3 | exoticIntrinsic (Court-Liste); compendium: „50% Increased Super Damage“; clarity: „50% increased Super damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt) |
 | The Path of Burning Steps | titan | legs | 2 | Court Amplification Modifiers: 6% 9.2% 12.4% für ∞ |
 | Verity's Brow | warlock | helmet | 3 | exoticIntrinsic (Court-Liste); compendium: „40% [20%] increased Grenade Damage“; compendium: „55% [40%] increased Grenade Damage“; compendium: „70% [60%] increased Grenade Damage“; compendium: „85% [80%] increased Grenade Damage“; compendium: „100% increased Grenade Damage“; clarity: „40%\|55%\|70%\|85%\|100% increased Grenade damage“; clarity: „20%\|40%\|60%\|80%\|100% increased Grenade damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt) |
-| Wormgod Caress | titan | gauntlets | 4 | empowering („Weapon damage increases are Empowering Buffs“); compendium: „20% Increased Weapon Damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt) |
+| Wormgod Caress | titan | gauntlets | 2 | Court Empowering Buffs: 1x no bonus 2x 20% 3x 25% 4x 30% 5x 35% für 9.5s 10s 4s 4s 3s |
 | Wormhusk Crown | hunter | helmet | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); clarity: „15% Increased Solar Ability Damage“ |
 | Young Ahamkara's Spine | hunter | gauntlets | 3 | exoticIntrinsic (Court-Liste); compendium: „14% Increased Explosion Damage“; clarity: „14% increased Explosion damage“ |
 
@@ -99,7 +100,6 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Dunemarchers | titan | legs | 5 | Text nennt Schaden, aber keinen klaren Bonus |
 | Gemini Jester | hunter | legs | 5 | Text nennt Schaden, aber keinen klaren Bonus |
 | Getaway Artist | warlock | gauntlets | 5 | Text nennt Schaden, aber keinen klaren Bonus |
-| Hazardous Propulsion | titan | chest | 5 | Text nennt Schaden, aber keinen klaren Bonus |
 | Helm of Saint-14 | titan | helmet | 5 | Text nennt Schaden, aber keinen klaren Bonus |
 | Khepri's Horn | titan | helmet | 5 | Text nennt Schaden, aber keinen klaren Bonus |
 | Liar's Handshake | hunter | gauntlets | 3 | nur Melee-Boni (compendium: „400% increased Melee Damage“; clarity: „400% additional base Melee damage“); Melee-Buffs addieren sich, Modell fehlt |

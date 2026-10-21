@@ -49,6 +49,7 @@ const inputs: ArmorImportInputs = {
     piece("Ophidia Spathe"),
     piece("Lunafaction Boots"),
     piece("Rain of Fire"),
+    piece("Hazardous Propulsion"),
     piece("Boots of the Assembler"),
     piece("Wishful Ignorance"),
     piece("Athrys's Embrace"),
@@ -64,6 +65,7 @@ const inputs: ArmorImportInputs = {
   ],
   court: [
     court("Mantle of Battle Harmony", "Weapon Surges", "25%"),
+    court("Hazardous Propulsion*", "Empowering Buffs", "35%"),
     court("Synthoceps", "Exotic Intrinsics", null),
     court("Peacekeepers", "Exotic Intrinsics", null),
     court("Liar's Handshake", "Exotic Intrinsics", null),
@@ -259,6 +261,14 @@ describe("classifyExoticArmor", () => {
       rule: 1,
       aegisRowIds: ["super-thundercrash-cuirass"],
       bonuses: [{ percent: 55, source: "clarity" }],
+    });
+  });
+
+  it("rule 2 matches Court names with markers like *", () => {
+    expect(byName["Hazardous Propulsion"]).toMatchObject({
+      kind: "damageBuff",
+      rule: 2,
+      courtBuffs: [{ bucketId: "empowering", pve: "35%" }],
     });
   });
 

@@ -150,9 +150,11 @@ function statedBucket(text: string): ArmorBonusBucket | null {
     : null;
 }
 
-// Sources write some names with typographic apostrophes, e.g. "Fortune’s Favor".
-const sameName = (a: string, b: string) =>
-  a.replace(/’/g, "'") === b.replace(/’/g, "'");
+// Sources write some names with typographic apostrophes, e.g. "Fortune’s Favor", and Court marks
+// some with a trailing * or ^, e.g. "Hazardous Propulsion*".
+const plainName = (name: string) =>
+  name.replace(/’/g, "'").replace(/[*^]+$/, "").trim();
+const sameName = (a: string, b: string) => plainName(a) === plainName(b);
 
 const kebab = (name: string) =>
   name

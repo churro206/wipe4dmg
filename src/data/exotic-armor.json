@@ -1278,11 +1278,18 @@
     "guardianClass": "titan",
     "slot": "chest",
     "intrinsic": "Danger Close",
-    "kind": "gap",
-    "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Empowering Buffs: 35%\nat 6x für 10s",
     "aegisRowIds": [],
-    "courtBuffs": [],
+    "courtBuffs": [
+      {
+        "bucketId": "empowering",
+        "trigger": "Damaging targets with\nExodus Rockets (Class Ability)\n\n6x provides the highest buff",
+        "pve": "35%\nat 6x",
+        "pveDuration": "10s"
+      }
+    ],
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": []
@@ -1926,10 +1933,17 @@
     "slot": "gauntlets",
     "intrinsic": "Force Multiplier",
     "kind": "damageBuff",
-    "rule": 4,
-    "reason": "empowering („(Empowering Buff)“); compendium: „35% [10%] increased Shotgun damage“; clarity: „35% [10%] increased damage“; clarity: „30% [?%] increased damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt)",
+    "rule": 2,
+    "reason": "Court Empowering Buffs: 35% für ~\nlasts duration of user buff",
     "aegisRowIds": [],
-    "courtBuffs": [],
+    "courtBuffs": [
+      {
+        "bucketId": "empowering",
+        "trigger": "While having an active passive Elemental Buff: provides a damage buff to Shotguns only",
+        "pve": "35%",
+        "pveDuration": "~\nlasts duration of user buff"
+      }
+    ],
     "bonuses": [
       {
         "percent": 35,
@@ -1956,11 +1970,7 @@
         "melee": false
       }
     ],
-    "bonusBucket": {
-      "bucketId": "empowering",
-      "basis": "text",
-      "quote": "(Empowering Buff)"
-    },
+    "bonusBucket": null,
     "grantsEffectIds": []
   },
   {
@@ -3336,10 +3346,17 @@
     "slot": "gauntlets",
     "intrinsic": "Burning Fists",
     "kind": "damageBuff",
-    "rule": 4,
-    "reason": "empowering („Weapon damage increases are Empowering Buffs“); compendium: „20% Increased Weapon Damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt)",
+    "rule": 2,
+    "reason": "Court Empowering Buffs: 1x no bonus\n2x 20%\n3x 25%\n4x 30%\n5x 35% für 9.5s\n10s\n4s\n4s\n3s",
     "aegisRowIds": [],
-    "courtBuffs": [],
+    "courtBuffs": [
+      {
+        "bucketId": "empowering",
+        "trigger": "Melee, Glaive Melee, or Finisher kill adds a stack of 'Burning Fists' which increases weapon damage\n\nStacks decay over time and drop down a stack; higher stacks decay faster",
+        "pve": "1x no bonus\n2x 20%\n3x 25%\n4x 30%\n5x 35%",
+        "pveDuration": "9.5s\n10s\n4s\n4s\n3s"
+      }
+    ],
     "bonuses": [
       {
         "percent": 80,
@@ -3354,11 +3371,7 @@
         "melee": false
       }
     ],
-    "bonusBucket": {
-      "bucketId": "empowering",
-      "basis": "text",
-      "quote": "Weapon damage increases are Empowering Buffs"
-    },
+    "bonusBucket": null,
     "grantsEffectIds": []
   },
   {
