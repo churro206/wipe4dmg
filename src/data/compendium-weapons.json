@@ -2,7 +2,7 @@
   "source": {
     "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks)",
     "url": "https://destiny2.science/data-compendium",
-    "retrieved": "2026-10-20",
+    "retrieved": "2026-10-21",
     "status": "verified"
   },
   "entries": [
@@ -1291,7 +1291,7 @@
       "tab": "Weapon Perks",
       "section": "Weapon Traits",
       "name": "Chaos Reshaped",
-      "text": "After having maintained a state of dealing or receiving damage every 5 seconds for at least 12 ↑11.5 seconds:\nChaos Reshaped x1 | 20% Increased damage for 7 seconds.\nDealing or receiving damage refreshes the buff duration.\nBuff can be activated while stowed, and persists through stow.\n\nAfter maintaining Chaos Reshaped x1 for an additional 12 ↑11.5 seconds:\nChaos Reshaped x2 | 35% Increased damage for 7 seconds and triggers a healing effect while active.\nDealing or receiving damage refreshes the buff duration.\nBuff can be activated while stowed, and persists through stow.\n\nChaos Reshaped x2 Healing Effect\nCharges up a Healing-over-time effect at a rate of 5 HP/s while readied, AUTOMATICALLY TRIGGERING after charging 35 HP (7 seconds) or upon stowing the weapon.\nThe Healing Effect restores 5 HP/s equal to the charge built, effectively becoming constant if the weapon is readied for 7 seconds.\nHealing Effect prevents HP gains from non-Chaos Reshaped x2 sources above (200 - Healing Charge Built) Maximum HP if active.\nHealing Effect is not visually reduced by Brawn's Healing Penalties, resulting in a rubberbanding health bar as it triggers.\nIn practice, just takes this as a 5HP/s effect, as the missing \"already restored HP\" is covered by the Healing Effect anyway.\nI KEEP SEEING MORE POSTS ABOUT THIS. IT'S GETTING BLOWN WAY OUT OF PROPORTION\n\n↑Reduces the time needed in-combat to grant a stack of Chaos Reshaped to 11.5 seconds.",
+      "text": "After having maintained a state of dealing or receiving damage every 5 seconds for at least 12 ↑11.5 seconds:\nChaos Reshaped x1 | 20% Increased damage for 7 seconds.\nDealing or receiving damage refreshes the buff duration.\nBuff can be activated while stowed, and persists through stow.\n\nAfter maintaining Chaos Reshaped x1 for an additional 12 ↑11.5 seconds:\nChaos Reshaped x2 | 35% Increased damage for 7 seconds and triggers a healing effect while active.\nDealing or receiving damage refreshes the buff duration.\nBuff can be activated while stowed, and persists through stow.\n\nChaos Reshaped x2 Healing Effect\nCharges up a Healing-over-time effect at a rate of 5 HP/s while readied, AUTOMATICALLY TRIGGERING after charging 35 HP (7 seconds) or upon stowing the weapon.\nThe Healing Effect restores 5 HP/s equal to the charge built, effectively becoming constant if the weapon is readied for 7 seconds.\n\n↑Reduces the time needed in-combat to grant a stack of Chaos Reshaped to 11.5 seconds.",
       "extra": ""
     },
     {

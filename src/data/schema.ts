@@ -554,6 +554,47 @@ export const ManifestArmor = z.object({
 });
 export type ManifestArmor = z.infer<typeof ManifestArmor>;
 
+/** Kind of an exotic armor piece, set by the rules of the armor import (ADR 0014, point 5). */
+export const ExoticArmorKind = z.enum([
+  "abilityVariant", // Aegis measured an ability package with it
+  "damageBuff", // Court names its bucket
+  "gap", // damage effect without bucket or value, or unclear text
+  "noDamage", // survival, energy or movement only
+]);
+export type ExoticArmorKind = z.infer<typeof ExoticArmorKind>;
+
+/** A damage bonus quoted from a text, e.g. "Thundercrash deals 55% increased damage". */
+export const ArmorBonusQuote = z.object({
+  percent: z.number().positive(),
+  quote: z.string(),
+  source: z.enum(["compendium", "clarity"]),
+});
+export type ArmorBonusQuote = z.infer<typeof ArmorBonusQuote>;
+
+/** One exotic armor piece with the result of the armor import (ADR 0014). */
+export const ExoticArmorEntry = z.object({
+  id: z.string(), // kebab-case of the name
+  hash: z.number().int(),
+  name: z.string(),
+  guardianClass: GuardianClass.nullable(), // null: any class
+  slot: ManifestArmorPiece.shape.slot,
+  intrinsic: z.string().nullable(),
+  kind: ExoticArmorKind,
+  rule: z.number().int().positive(), // number of the first rule that matched
+  reason: z.string(), // why the rule matched, in German for the review table
+  aegisRowIds: z.array(z.string()), // ability packages that assume this exotic
+  courtBuffs: z.array(
+    z.object({
+      bucketId: z.string(),
+      trigger: z.string(),
+      pve: z.string().nullable(),
+      pveDuration: z.string().nullable(),
+    }),
+  ),
+  bonuses: z.array(ArmorBonusQuote),
+});
+export type ExoticArmorEntry = z.infer<typeof ExoticArmorEntry>;
+
 /** Item types of the names in the Aegis weapon assumptions, looked up in the whole manifest. */
 export const ManifestTerms = z.object({
   manifestVersion: z.string(),

@@ -1,0 +1,2736 @@
+[
+  {
+    "id": "abeyant-leap",
+    "hash": 3849355625,
+    "name": "Abeyant Leap",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Puppeteer's Control",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "acd-0-feedback-fence",
+    "hash": 3649264718,
+    "name": "ACD/0 Feedback Fence",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Fury Conductors",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "actium-war-rig",
+    "hash": 3768376419,
+    "name": "Actium War Rig",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Auto-Loading Link",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Amplification Modifiers: 1.6%\nper stack für ~",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "amplification",
+        "trigger": "Auto Rifle or Machine Gun kills grant a damage bonus to them\n\nStacks up to x10",
+        "pve": "1.6%\nper stack",
+        "pveDuration": "~"
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 15,
+        "quote": "15% increased Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 15,
+        "quote": "15% Increased Damage",
+        "source": "compendium"
+      },
+      { "percent": 1.5, "quote": "1.5% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "aeon-safe",
+    "hash": 796577360,
+    "name": "Aeon Safe",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": null,
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "aeon-soul",
+    "hash": 859709617,
+    "name": "Aeon Soul",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": null,
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "aeon-swift",
+    "hash": 2615220262,
+    "name": "Aeon Swift",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": null,
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "an-insurmountable-skullfort",
+    "hash": 1407595207,
+    "name": "An Insurmountable Skullfort",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Transfusion Matrix",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "antaeus-wards",
+    "hash": 81398002,
+    "name": "Antaeus Wards",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Reflective Vents",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „50% increased damage“; clarity: „50% increased damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 50,
+        "quote": "50% increased damage",
+        "source": "compendium"
+      },
+      { "percent": 50, "quote": "50% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "apotheosis-veil",
+    "hash": 132452792,
+    "name": "Apotheosis Veil",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Insatiable",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "arbor-warden",
+    "hash": 523456396,
+    "name": "Arbor Warden",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Barri-nade",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "armamentarium",
+    "hash": 2999866952,
+    "name": "Armamentarium",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "And Another Thing",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "ashen-wake",
+    "hash": 1203306857,
+    "name": "Ashen Wake",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Bring the Heat",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "assassins-cowl",
+    "hash": 3400283633,
+    "name": "Assassin's Cowl",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Vanishing Execution",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "astrocyte-verse",
+    "hash": 4035625646,
+    "name": "Astrocyte Verse",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Move to Survive",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "athryss-embrace",
+    "hash": 89619507,
+    "name": "Athrys's Embrace",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Skittering Stinger",
+    "kind": "gap",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic, aber kein Wert in Compendium oder Clarity",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "balance-of-power",
+    "hash": 2340803152,
+    "name": "Balance of Power",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Double Down",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "ballidorse-wrathweavers",
+    "hash": 2109877638,
+    "name": "Ballidorse Wrathweavers",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Hearts of Ice",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures-ballidorse-wrathweavers",
+    "aegisRowIds": [
+      "super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures-ballidorse-wrathweavers"
+    ],
+    "courtBuffs": [
+      {
+        "bucketId": "surge",
+        "trigger": "Instant 2x Surge Stacks:\nYou and Nearby Allies:\nFrostpulse Rift activation",
+        "pve": "17%",
+        "pveDuration": "11s"
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 150,
+        "quote": "150% increased Shatter Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 150,
+        "quote": "150% increased Shatter damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "blastwave-striders",
+    "hash": 1849901681,
+    "name": "Blastwave Striders",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Blastwave Striders",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "blight-ranger",
+    "hash": 863908533,
+    "name": "Blight Ranger",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Voltaic Mirror",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Weapon Surges: 25% für 21s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "surge",
+        "trigger": "Instant 4x Surge Stacks:\nArc Staff Super deactivation",
+        "pve": "25%",
+        "pveDuration": "21s"
+      },
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 400,
+        "quote": "400% increased damage",
+        "source": "compendium"
+      },
+      { "percent": 400, "quote": "400% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "boots-of-the-assembler",
+    "hash": 597039524,
+    "name": "Boots of the Assembler",
+    "guardianClass": "warlock",
+    "slot": "legs",
+    "intrinsic": "Blessing of Order",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "briarbinds",
+    "hash": 768145972,
+    "name": "Briarbinds",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "One with the Void",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: miscellaneous-child-of-the-old-gods-whole-duration-briarbinds-ticks-includes-weaken",
+    "aegisRowIds": [
+      "miscellaneous-child-of-the-old-gods-whole-duration-briarbinds-ticks-includes-weaken"
+    ],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 30,
+        "quote": "30% increased damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 100,
+        "quote": "100% increased damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 100,
+        "quote": "100% increased Void Soul damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "cadmus-ridge-lancecap",
+    "hash": 2851385306,
+    "name": "Cadmus Ridge Lancecap",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Lancer's Vigil",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „475% Increased Damage“; clarity: „damage is increased by 144%“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 475,
+        "quote": "475% Increased Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 144,
+        "quote": "damage is increased by 144%",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "calibans-hand",
+    "hash": 327385975,
+    "name": "Caliban's Hand",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Roast 'Em",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "celestial-nighthawk",
+    "hash": 3960926756,
+    "name": "Celestial Nighthawk",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Hawkeye Hack",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-golden-gun-marksman-radiant-celestial-nighthawk",
+    "aegisRowIds": ["super-golden-gun-marksman-radiant-celestial-nighthawk"],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 10,
+        "quote": "10% increased damage",
+        "source": "compendium"
+      },
+      { "percent": 85, "quote": "85% more damage", "source": "compendium" },
+      { "percent": 650, "quote": "650% increased damage", "source": "clarity" },
+      { "percent": 85, "quote": "85% more damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "cenotaph-mask",
+    "hash": 3589022772,
+    "name": "Cenotaph Mask",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "High Priority",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "chromatic-fire",
+    "hash": 3545094011,
+    "name": "Chromatic Fire",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Crystalline Transistor",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Global Debuffs: 15% für 6s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "debuff",
+        "trigger": "Precision kill causes a Void AOE which applies Weaken",
+        "pve": "15%",
+        "pveDuration": "6s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "citans-ramparts",
+    "hash": 2551549824,
+    "name": "Citan's Ramparts",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Assault Barricade",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „60% increased damage“; clarity: „60% increased damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 60,
+        "quote": "60% increased damage",
+        "source": "compendium"
+      },
+      { "percent": 60, "quote": "60% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "claws-of-ahamkara",
+    "hash": 171695625,
+    "name": "Claws of Ahamkara",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "The Whispers",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-song-of-flame-claws-of-ahamkara-necrotic-grip-snap-spam",
+    "aegisRowIds": [
+      "super-song-of-flame-claws-of-ahamkara-necrotic-grip-snap-spam"
+    ],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "contraverse-hold",
+    "hash": 3261527845,
+    "name": "Contraverse Hold",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Chaotic Exchanger",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Global Debuffs: 15% für 6s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "debuff",
+        "trigger": "Charged Grenade applies Weaken",
+        "pve": "15%",
+        "pveDuration": "6s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "crest-of-alpha-lupi",
+    "hash": 3768376418,
+    "name": "Crest of Alpha Lupi",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Survival Well",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "crown-of-tempests",
+    "hash": 925466718,
+    "name": "Crown of Tempests",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Conduction Tines",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "cuirass-of-the-falling-star",
+    "hash": 4057875770,
+    "name": "Cuirass of the Falling Star",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Glorious Charge",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-thundercrash-cuirass-of-the-falling-star",
+    "aegisRowIds": ["super-thundercrash-cuirass-of-the-falling-star"],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 55,
+        "quote": "55% increased damage",
+        "source": "compendium"
+      },
+      { "percent": 55, "quote": "55% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "cyrtarachnes-facade",
+    "hash": 1008364980,
+    "name": "Cyrtarachne's Facade",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Acrobat's Focus",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "dawn-chorus",
+    "hash": 3767088557,
+    "name": "Dawn Chorus",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Rites of Ember",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-daybreak-ember-of-ashes-dawn-chorus-spaced, super-daybreak-ember-of-ashes-dawn-chorus, super-song-of-flame-dawn-chorus-saint-s-fists-celestial-fire-spam-ember-of-ashes, super-song-of-flame-dawn-chorus-snap-spam-shieldcrush, super-song-of-flame-dawn-chorus-snap-spam",
+    "aegisRowIds": [
+      "super-daybreak-ember-of-ashes-dawn-chorus-spaced",
+      "super-daybreak-ember-of-ashes-dawn-chorus",
+      "super-song-of-flame-dawn-chorus-saint-s-fists-celestial-fire-spam-ember-of-ashes",
+      "super-song-of-flame-dawn-chorus-snap-spam-shieldcrush",
+      "super-song-of-flame-dawn-chorus-snap-spam"
+    ],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 100,
+        "quote": "100% increased damage",
+        "source": "compendium"
+      },
+      { "percent": 100, "quote": "100% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "deimosuffusion",
+    "hash": 1479082657,
+    "name": "Deimosuffusion",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Malevolent Grasp",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „112.5% increased damage“; clarity: „112.5% increased damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 112.5,
+        "quote": "112.5% increased damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 112.5,
+        "quote": "112.5% increased damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "doom-fang-pauldron",
+    "hash": 2002759682,
+    "name": "Doom Fang Pauldron",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Horns of Doom",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Weapon Surges: 10%\n17%\n22%\n25% für 11s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "surge",
+        "trigger": "Adds 1x Surge Stack:\n~2 Void Kills (average)\n\n(up to 4 stacks)",
+        "pve": "10%\n17%\n22%\n25%",
+        "pveDuration": "11s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "dunemarchers",
+    "hash": 1437375562,
+    "name": "Dunemarchers",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Linear Actuators",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "eternal-warrior",
+    "hash": 3692827145,
+    "name": "Eternal Warrior",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Resolute",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Weapon Surges: 10%\n17%\n22%\n25% für 11s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "surge",
+        "trigger": "Adds 1x Surge stack:\n~2 Arc Kills (average)\n\n(up to 4 stacks)",
+        "pve": "10%\n17%\n22%\n25%",
+        "pveDuration": "11s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "eunoia",
+    "hash": 3481695565,
+    "name": "Eunoia",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Consul's Pitch",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „20% increased damage“; clarity: „20% increased damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 20,
+        "quote": "20% increased damage",
+        "source": "compendium"
+      },
+      { "percent": 20, "quote": "20% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "eye-of-another-world",
+    "hash": 925466717,
+    "name": "Eye of Another World",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Cerebral Uplink",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "fallen-sunstar",
+    "hash": 3781549120,
+    "name": "Fallen Sunstar",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Ionic Conductor",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "felwinters-helm",
+    "hash": 728668916,
+    "name": "Felwinter's Helm",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Warlord's End",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Global Debuffs: 30% für ~; Court Global Debuffs: 15% für 6s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "debuff",
+        "trigger": "Powered Melee kill or Finisher applies a burst of Void energy",
+        "pve": "30%",
+        "pveDuration": "~"
+      },
+      {
+        "bucketId": "debuff",
+        "trigger": "Powered Melee hit applies Weaken",
+        "pve": "15%",
+        "pveDuration": "6s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "foetracer",
+    "hash": 671504994,
+    "name": "Foetracer",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Relentless Tracker",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Weapon Surges: 25% für 16s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "surge",
+        "trigger": "Instant 4x Surge Stacks:\nElemental Ability Damage hit on \"Powerful Combatants\" or Guardians",
+        "pve": "25%",
+        "pveDuration": "16s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "fortunes-favor",
+    "hash": 4010324161,
+    "name": "Fortune's Favor",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Kismet",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „15% increased damage“; compendium: „20% increased damage“; clarity: „15% increased weapon damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 15,
+        "quote": "15% increased damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 20,
+        "quote": "20% increased damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 15,
+        "quote": "15% increased weapon damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "fr0st-ee5",
+    "hash": 1737050140,
+    "name": "Fr0st-EE5",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Rapid Cooldown",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Weapon Surges: 22% für ~",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "surge",
+        "trigger": "Stasis Surge Stacks:\nWhile any stacks of Frost Armor are active",
+        "pve": "22%",
+        "pveDuration": "~"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "gemini-jester",
+    "hash": 2132672800,
+    "name": "Gemini Jester",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Misdirection",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "geomag-stabilizers",
+    "hash": 3608857511,
+    "name": "Geomag Stabilizers",
+    "guardianClass": "warlock",
+    "slot": "legs",
+    "intrinsic": "Close Enough",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-chaos-reach-geomag-stabilizers-sol-invictus, super-chaos-reach-geomag-stabilizers",
+    "aegisRowIds": [
+      "super-chaos-reach-geomag-stabilizers-sol-invictus",
+      "super-chaos-reach-geomag-stabilizers"
+    ],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "getaway-artist",
+    "hash": 4177778015,
+    "name": "Getaway Artist",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Dynamic Duo",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "gifted-conviction",
+    "hash": 1446374842,
+    "name": "Gifted Conviction",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "The Gift of Certainty",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: miscellaneous-ascension-includes-jolt-gifted-conviction",
+    "aegisRowIds": ["miscellaneous-ascension-includes-jolt-gifted-conviction"],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "graviton-forfeit",
+    "hash": 407148246,
+    "name": "Graviton Forfeit",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Vanishing Shadow",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "gwisin-vest",
+    "hash": 1168370783,
+    "name": "Gwisin Vest",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Roving Assassin",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Global Debuffs: 15% für 10s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "debuff",
+        "trigger": "Exiting Invisibility near an enemy causes a Weaking Smoke Cloud around you",
+        "pve": "15%",
+        "pveDuration": "10s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "gyrfalcons-hauberk",
+    "hash": 2447096246,
+    "name": "Gyrfalcon's Hauberk",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "See Me, Feel Me",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Empowering Buffs: 35% für 6s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "empowering",
+        "trigger": "Finishing while Invisible provides a damage buff",
+        "pve": "35%",
+        "pveDuration": "6s"
+      }
+    ],
+    "bonuses": [
+      { "percent": 35, "quote": "35% increased damage", "source": "compendium" }
+    ]
+  },
+  {
+    "id": "hallowfire-heart",
+    "hash": 2094927311,
+    "name": "Hallowfire Heart",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Sunfire Furnace",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „150% Increased Super Damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 150,
+        "quote": "150% Increased Super Damage",
+        "source": "compendium"
+      }
+    ]
+  },
+  {
+    "id": "hazardous-propulsion",
+    "hash": 3050442980,
+    "name": "Hazardous Propulsion",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Danger Close",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "heart-of-inmost-light",
+    "hash": 502173648,
+    "name": "Heart of Inmost Light",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Overflowing Light",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „50% Increased Melee Damage“; clarity: „50% increased Melee damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 50,
+        "quote": "50% Increased Melee Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 50,
+        "quote": "50% increased Melee damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "helm-of-saint-14",
+    "hash": 943320520,
+    "name": "Helm of Saint-14",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Starless Night",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "hoarfrost-z",
+    "hash": 4165710258,
+    "name": "Hoarfrost-Z",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Glacial Fortification",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "icefall-mantle",
+    "hash": 1734674241,
+    "name": "Icefall Mantle",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Glacial Guard",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "karnstein-armlets",
+    "hash": 900910759,
+    "name": "Karnstein Armlets",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Vampire's Caress",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "khepris-horn",
+    "hash": 858758105,
+    "name": "Khepri's Horn",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Solar Rampart",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "khepris-sting",
+    "hash": 4002939008,
+    "name": "Khepri's Sting",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Touch of Venom",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Global Debuffs: 15% für 15s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "debuff",
+        "trigger": "Killing a Weakened energy causes a Weakening Smoke Cloud around enemy death location",
+        "pve": "15%",
+        "pveDuration": "15s"
+      },
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "knucklehead-radar",
+    "hash": 3960926757,
+    "name": "Knucklehead Radar",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Upgraded Sensor Pack",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „20% Increased Damage“; clarity: „20% increased damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 20,
+        "quote": "20% Increased Damage",
+        "source": "compendium"
+      },
+      { "percent": 20, "quote": "20% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "liars-handshake",
+    "hash": 2749457084,
+    "name": "Liar's Handshake",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Cross Counter",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „400% increased Melee Damage“; clarity: „400% additional base Melee damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 400,
+        "quote": "400% increased Melee Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 400,
+        "quote": "400% additional base Melee damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "lion-rampant",
+    "hash": 53126581,
+    "name": "Lion Rampant",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Jump Jets",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "loreley-splendor-helm",
+    "hash": 4258262391,
+    "name": "Loreley Splendor Helm",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Cauterizing Flame",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "lucky-pants",
+    "hash": 2405271939,
+    "name": "Lucky Pants",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Illegally Modded Holster",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „45% increased Direct Impact damage“; compendium: „30% increased Direct Impact Damage“; clarity: „45% increased Direct Impact damage“; clarity: „30% increased damage“; clarity: „11% increased damage“; clarity: „5% increased damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 45,
+        "quote": "45% increased Direct Impact damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 30,
+        "quote": "30% increased Direct Impact Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 45,
+        "quote": "45% increased Direct Impact damage",
+        "source": "clarity"
+      },
+      { "percent": 30, "quote": "30% increased damage", "source": "clarity" },
+      { "percent": 11, "quote": "11% increased damage", "source": "clarity" },
+      { "percent": 5, "quote": "5% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "lucky-raspberry",
+    "hash": 1803778317,
+    "name": "Lucky Raspberry",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Probability Matrix",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "lunafaction-boots",
+    "hash": 418363297,
+    "name": "Lunafaction Boots",
+    "guardianClass": "warlock",
+    "slot": "legs",
+    "intrinsic": "Alchemical Etchings",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; clarity: „50% increased Damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      { "percent": 50, "quote": "50% increased Damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "mantle-of-battle-harmony",
+    "hash": 2732820041,
+    "name": "Mantle of Battle Harmony",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Absorption Cells",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Weapon Surges: 25% für 11s; Court Weapon Surges: 25% für 10s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "surge",
+        "trigger": "Instant 4x Surge Stacks:\nMatching Weapon Damage kill while matching Super is Charged",
+        "pve": "25%",
+        "pveDuration": "11s"
+      },
+      {
+        "bucketId": "surge",
+        "trigger": "Instant 4x Surge Stacks\nOn Super end:\nGrants Arc, Solar, Void, Stasis, and Strand Weapon Surges",
+        "pve": "25%",
+        "pveDuration": "10s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "mask-of-bakris",
+    "hash": 508515818,
+    "name": "Mask of Bakris",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Light Shift",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Amplification Modifiers: 10%\n21%\n33% für 11s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "amplification",
+        "trigger": "Light Shift (Class Ability activation) activation grants a stack\n\nStacks up to x3",
+        "pve": "10%\n21%\n33%",
+        "pveDuration": "11s"
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 10,
+        "quote": "10% Increased Weapon Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 10,
+        "quote": "10% increased Weapon Damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "mask-of-fealty",
+    "hash": 2915174768,
+    "name": "Mask of Fealty",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Null Factor",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "mask-of-the-quiet-one",
+    "hash": 4060352315,
+    "name": "Mask of the Quiet One",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Dreaded Visage",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "mataiodox-a",
+    "hash": 1003391927,
+    "name": "Mataiodoxía",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Stylostixis",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "mechaneers-tricksleeves",
+    "hash": 2574019120,
+    "name": "Mechaneer's Tricksleeves",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Spring-Loaded Mounting",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "melas-panoplia",
+    "hash": 2867399974,
+    "name": "Melas Panoplia",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Forge Master",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "mk-44-stand-asides",
+    "hash": 3182840395,
+    "name": "Mk. 44 Stand Asides",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Seriously, Watch Out",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "moirai",
+    "hash": 2647299044,
+    "name": "Moirai",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Webcatcher",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "mothkeepers-wraps",
+    "hash": 3688534631,
+    "name": "Mothkeeper's Wraps",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Winged Eclipse",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "necrotic-grip",
+    "hash": 124786972,
+    "name": "Necrotic Grip",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Grasp of the Devourer",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: melee-base-necrotic-grip, super-song-of-flame-claws-of-ahamkara-necrotic-grip-snap-spam, super-song-of-flame-wisp-snap-cycling-feast-of-light-x6-necrotic-grip",
+    "aegisRowIds": [
+      "melee-base-necrotic-grip",
+      "super-song-of-flame-claws-of-ahamkara-necrotic-grip-snap-spam",
+      "super-song-of-flame-wisp-snap-cycling-feast-of-light-x6-necrotic-grip"
+    ],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      { "percent": 11, "quote": "11% more damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "nezarecs-sin",
+    "hash": 925466716,
+    "name": "Nezarec's Sin",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Abyssal Extractors",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "no-backup-plans",
+    "hash": 730200061,
+    "name": "No Backup Plans",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Force Multiplier",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "nothing-manacles",
+    "hash": 3982932616,
+    "name": "Nothing Manacles",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Scatter Charge",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "oathkeeper",
+    "hash": 3883286571,
+    "name": "Oathkeeper",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Adamantine Brace",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „200% increased impact damage“; clarity: „37.5% increased damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 200,
+        "quote": "200% increased impact damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 37.5,
+        "quote": "37.5% increased damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "omnioculus",
+    "hash": 4255001288,
+    "name": "Omnioculus",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Beyond The Veil",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "one-eyed-mask",
+    "hash": 1249787553,
+    "name": "One-Eyed Mask",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Vengeance",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "ophidia-spathe",
+    "hash": 3642110725,
+    "name": "Ophidia Spathe",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Scissor Fingers",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „200% Increased Throwing Knife Damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 200,
+        "quote": "200% Increased Throwing Knife Damage",
+        "source": "compendium"
+      }
+    ]
+  },
+  {
+    "id": "ophidian-aspect",
+    "hash": 507400048,
+    "name": "Ophidian Aspect",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Cobra Totemic",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "orpheus-rig",
+    "hash": 2405271938,
+    "name": "Orpheus Rig",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Uncanny Arrows",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-shadowshot-moebius-quiver-full-bow-charge-orpheus-rig-includes-debuff, super-shadowshot-moebius-quiver-orpheus-rig-includes-debuff",
+    "aegisRowIds": [
+      "super-shadowshot-moebius-quiver-full-bow-charge-orpheus-rig-includes-debuff",
+      "super-shadowshot-moebius-quiver-orpheus-rig-includes-debuff"
+    ],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "osmiomancy-gloves",
+    "hash": 2555349547,
+    "name": "Osmiomancy Gloves",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Fervid Coldsnap",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "peacekeepers",
+    "hash": 53126580,
+    "name": "Peacekeepers",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Mecha Holster",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; clarity: „5% increased SMG damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      { "percent": 5, "quote": "5% increased SMG damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "peregrine-greaves",
+    "hash": 3450721096,
+    "name": "Peregrine Greaves",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Peregrine Strike",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „250% increased impact damage“; compendium: „550% Increased Impact Damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 250,
+        "quote": "250% increased impact damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 550,
+        "quote": "550% Increased Impact Damage",
+        "source": "compendium"
+      }
+    ]
+  },
+  {
+    "id": "phoenix-cradle",
+    "hash": 2439379860,
+    "name": "Phoenix Cradle",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Beacons of Empowerment",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "phoenix-protocol",
+    "hash": 3545094010,
+    "name": "Phoenix Protocol",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Battle-Hearth",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "point-contact-cannon-brace",
+    "hash": 308767728,
+    "name": "Point-Contact Cannon Brace",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Hammer of the Gods",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „Damage is increased by 100%“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 100,
+        "quote": "Damage is increased by 100%",
+        "source": "compendium"
+      }
+    ]
+  },
+  {
+    "id": "praxic-vestment",
+    "hash": 4184605701,
+    "name": "Praxic Vestment",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Praxic Lift",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "precious-scars",
+    "hash": 1978467312,
+    "name": "Precious Scars",
+    "guardianClass": "titan",
+    "slot": "helmet",
+    "intrinsic": "Kintsugi",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "promethium-spur",
+    "hash": 3864952146,
+    "name": "Promethium Spur",
+    "guardianClass": "warlock",
+    "slot": "legs",
+    "intrinsic": "Embers of Light",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "pyrogale-gauntlets",
+    "hash": 864224653,
+    "name": "Pyrogale Gauntlets",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Percussive Flames",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-burning-maul-roaring-flames-x3-sol-invictus-ember-of-ashes-pyrogale-gauntlets",
+    "aegisRowIds": [
+      "super-burning-maul-roaring-flames-x3-sol-invictus-ember-of-ashes-pyrogale-gauntlets"
+    ],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 650,
+        "quote": "650% increased damage",
+        "source": "compendium"
+      },
+      { "percent": 650, "quote": "650% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "radiant-dance-machines",
+    "hash": 1709794165,
+    "name": "Radiant Dance Machines",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "The Dance",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "raiden-flux",
+    "hash": 368733543,
+    "name": "Raiden Flux",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Synapse Junctions",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-arc-staff-raiden-flux-grounded-2l1h",
+    "aegisRowIds": ["super-arc-staff-raiden-flux-grounded-2l1h"],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      { "percent": 174, "quote": "174% increased damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "raijus-harness",
+    "hash": 2767482390,
+    "name": "Raiju's Harness",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Mobius Conduit",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-gathering-storm-raiju-s-harness",
+    "aegisRowIds": ["super-gathering-storm-raiju-s-harness"],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "rain-of-fire",
+    "hash": 511709874,
+    "name": "Rain of Fire",
+    "guardianClass": "warlock",
+    "slot": "legs",
+    "intrinsic": "Soaring Fusilier",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "relativism",
+    "hash": 2809120022,
+    "name": "Relativism",
+    "guardianClass": "hunter",
+    "slot": "classItem",
+    "intrinsic": "Spirit of the Cyrtarachne",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "renewal-grasps",
+    "hash": 3793245444,
+    "name": "Renewal Grasps",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Depths of Duskfield",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "rime-coat-raiment",
+    "hash": 888791258,
+    "name": "Rime-coat Raiment",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Bleak Domain",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "sanguine-alchemy",
+    "hash": 2966741808,
+    "name": "Sanguine Alchemy",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Blood Magic",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Weapon Surges: 25% für ~",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "surge",
+        "trigger": "Instant 4x Surge Stacks:\nWhile in any Rift or Well of Radiance",
+        "pve": "25%",
+        "pveDuration": "~"
+      },
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      { "percent": 10, "quote": "10% increased damage", "source": "compendium" }
+    ]
+  },
+  {
+    "id": "sealed-ahamkara-grasps",
+    "hash": 3987871714,
+    "name": "Sealed Ahamkara Grasps",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Nightmare Fuel",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Empowering Buffs: 35% für 7s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "empowering",
+        "trigger": "Powered Melees and Finisher kills grant Nightmare Fuel which grants a damage buff on freshly drawn weapons",
+        "pve": "35%",
+        "pveDuration": "7s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "secant-filaments",
+    "hash": 4029987901,
+    "name": "Secant Filaments",
+    "guardianClass": "warlock",
+    "slot": "legs",
+    "intrinsic": "Devouring Rift",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "second-chance",
+    "hash": 4268030601,
+    "name": "Second Chance",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Myrmidon's Reach",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Global Debuffs: 15% für 10s",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "debuff",
+        "trigger": "Shield Throw hit applies Weaken",
+        "pve": "15%",
+        "pveDuration": "10s"
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "severance-enclosure",
+    "hash": 1429817243,
+    "name": "Severance Enclosure",
+    "guardianClass": "titan",
+    "slot": "chest",
+    "intrinsic": "Spheromatik Trigger",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "shards-of-galanor",
+    "hash": 3883286570,
+    "name": "Shards of Galanor",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Sharp Edges",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-blade-barrage-knock-em-down-shards-of-galanor",
+    "aegisRowIds": ["super-blade-barrage-knock-em-down-shards-of-galanor"],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 25,
+        "quote": "Damage is increased by 25%",
+        "source": "compendium"
+      },
+      {
+        "percent": 140,
+        "quote": "140% increased damage",
+        "source": "compendium"
+      }
+    ]
+  },
+  {
+    "id": "shinobus-vow",
+    "hash": 1611241895,
+    "name": "Shinobu's Vow",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "New Tricks",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "skull-of-dire-ahamkara",
+    "hash": 3050017626,
+    "name": "Skull of Dire Ahamkara",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Actual Grandeur",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "solipsism",
+    "hash": 2273643087,
+    "name": "Solipsism",
+    "guardianClass": "warlock",
+    "slot": "classItem",
+    "intrinsic": "Spirit of the Necrotic",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "speakers-sight",
+    "hash": 3617849232,
+    "name": "Speaker's Sight",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "The Lost Voice",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "speedloader-slacks",
+    "hash": 1793346751,
+    "name": "Speedloader Slacks",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Tight Fit",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "st0mp-ee5",
+    "hash": 2405271937,
+    "name": "St0mp-EE5",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Hydraulic Boosters",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "star-eater-scales",
+    "hash": 1006498763,
+    "name": "Star-Eater Scales",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Feast of Light",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „70% increased Super Damage“; clarity: „70% increased Super damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 70,
+        "quote": "70% increased Super Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 70,
+        "quote": "70% increased Super damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "starfire-protocol",
+    "hash": 599049453,
+    "name": "Starfire Protocol",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Fusion Harness",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "stoicism",
+    "hash": 266021826,
+    "name": "Stoicism",
+    "guardianClass": "titan",
+    "slot": "classItem",
+    "intrinsic": "Spirit of Contact",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "stormdancers-brace",
+    "hash": 1747063685,
+    "name": "Stormdancer's Brace",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Ascending Amplitude",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; clarity: „200% bonus damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      { "percent": 200, "quote": "200% bonus damage", "source": "clarity" }
+    ]
+  },
+  {
+    "id": "stronghold",
+    "hash": 512777670,
+    "name": "Stronghold",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Clenched Fist",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "sunbracers",
+    "hash": 950745251,
+    "name": "Sunbracers",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Helium Spirals",
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: grenade-solar-average-ember-of-ashes-touch-of-flame-sunbracers",
+    "aegisRowIds": [
+      "grenade-solar-average-ember-of-ashes-touch-of-flame-sunbracers"
+    ],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "swarmers",
+    "hash": 2100136540,
+    "name": "Swarmers",
+    "guardianClass": "warlock",
+    "slot": "legs",
+    "intrinsic": "Swarmers",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "synthoceps",
+    "hash": 2002759681,
+    "name": "Synthoceps",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Biotic Enhancements",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „50% Increased Super Damage“; clarity: „50% increased Super damage“; clarity: „100% increased Glaive Melee damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 50,
+        "quote": "50% Increased Super Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 50,
+        "quote": "50% increased Super damage",
+        "source": "clarity"
+      },
+      {
+        "percent": 100,
+        "quote": "100% increased Glaive Melee damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "the-bombardiers",
+    "hash": 2177224557,
+    "name": "The Bombardiers",
+    "guardianClass": "hunter",
+    "slot": "legs",
+    "intrinsic": "Parting Gift",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "the-dragons-shadow",
+    "hash": 368733541,
+    "name": "The Dragon's Shadow",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Wraithmetal Mail",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "the-path-of-burning-steps",
+    "hash": 4119704973,
+    "name": "The Path of Burning Steps",
+    "guardianClass": "titan",
+    "slot": "legs",
+    "intrinsic": "Firewalker",
+    "kind": "damageBuff",
+    "rule": 2,
+    "reason": "Court Amplification Modifiers: 6%\n9.2%\n12.4% für ∞",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "amplification",
+        "trigger": "Roaring Flame stacks grant increased Solar Weapon damage\n\nStacks up to x3",
+        "pve": "6%\n9.2%\n12.4%",
+        "pveDuration": "∞"
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 6,
+        "quote": "6% Increased Weapon Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 15,
+        "quote": "15% Increased Ignition Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 9.2,
+        "quote": "9.2% Increased Weapon Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 20,
+        "quote": "20% Increased Ignition Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 12.4,
+        "quote": "12.4% Increased Weapon Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 24.9,
+        "quote": "24.9% Increased Ignition Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 12.4,
+        "quote": "12.4% increased Weapon Damage",
+        "source": "clarity"
+      },
+      {
+        "percent": 24.9,
+        "quote": "24.9% increased Ignition Damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "the-sixth-coyote",
+    "hash": 1168370782,
+    "name": "The Sixth Coyote",
+    "guardianClass": "hunter",
+    "slot": "chest",
+    "intrinsic": "Double Dodge",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "the-stag",
+    "hash": 994038265,
+    "name": "The Stag",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "Dearly Departed",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "transversive-steps",
+    "hash": 3337759189,
+    "name": "Transversive Steps",
+    "guardianClass": "warlock",
+    "slot": "legs",
+    "intrinsic": "Strange Protractor",
+    "kind": "noDamage",
+    "rule": 6,
+    "reason": "kein Schadenswort im Text",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "triton-vice",
+    "hash": 1304266146,
+    "name": "Triton Vice",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Halberdier's Reach",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „200% Increased Glaive Melee Damage“; clarity: „200% increased Glaive Melee Damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 200,
+        "quote": "200% Increased Glaive Melee Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 200,
+        "quote": "200% increased Glaive Melee Damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "ursa-furiosa",
+    "hash": 2046130360,
+    "name": "Ursa Furiosa",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Ursine Guard",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "veritys-brow",
+    "hash": 2553961985,
+    "name": "Verity's Brow",
+    "guardianClass": "warlock",
+    "slot": "helmet",
+    "intrinsic": "The Fourth Magic",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „100% increased Grenade Damage“; compendium: „170% Increased Grapple Melee Damage“; clarity: „100% increased Grenade damage“; clarity: „100% increased Grenade damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 100,
+        "quote": "100% increased Grenade Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 170,
+        "quote": "170% Increased Grapple Melee Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 100,
+        "quote": "100% increased Grenade damage",
+        "source": "clarity"
+      },
+      {
+        "percent": 100,
+        "quote": "100% increased Grenade damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "vesper-of-radius",
+    "hash": 3139221735,
+    "name": "Vesper of Radius",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Planetary Torrent",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "wings-of-sacred-dawn",
+    "hash": 1179169099,
+    "name": "Wings of Sacred Dawn",
+    "guardianClass": "warlock",
+    "slot": "chest",
+    "intrinsic": "Tome of Dawn",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": []
+  },
+  {
+    "id": "winters-guile",
+    "hash": 900910756,
+    "name": "Winter's Guile",
+    "guardianClass": "warlock",
+    "slot": "gauntlets",
+    "intrinsic": "Warlord's Sigil",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „400% increased Melee Damage“; clarity: „300% Additional Base Melee Damage“; clarity: „400% Additional Base Melee Damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 400,
+        "quote": "400% increased Melee Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 300,
+        "quote": "300% Additional Base Melee Damage",
+        "source": "clarity"
+      },
+      {
+        "percent": 400,
+        "quote": "400% Additional Base Melee Damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "wishful-ignorance",
+    "hash": 4157369212,
+    "name": "Wishful Ignorance",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Wish-Dragon's Talons",
+    "kind": "gap",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic, aber kein Wert in Compendium oder Clarity",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": []
+  },
+  {
+    "id": "wormgod-caress",
+    "hash": 1203306856,
+    "name": "Wormgod Caress",
+    "guardianClass": "titan",
+    "slot": "gauntlets",
+    "intrinsic": "Burning Fists",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; compendium: „80% increased Melee Damage“; compendium: „20% Increased Weapon Damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 80,
+        "quote": "80% increased Melee Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 20,
+        "quote": "20% Increased Weapon Damage",
+        "source": "compendium"
+      }
+    ]
+  },
+  {
+    "id": "wormhusk-crown",
+    "hash": 3721047650,
+    "name": "Wormhusk Crown",
+    "guardianClass": "hunter",
+    "slot": "helmet",
+    "intrinsic": "Burning Souls",
+    "kind": "gap",
+    "rule": 4,
+    "reason": "Bucket fehlt; clarity: „15% Increased Solar Ability Damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [],
+    "bonuses": [
+      {
+        "percent": 15,
+        "quote": "15% Increased Solar Ability Damage",
+        "source": "clarity"
+      }
+    ]
+  },
+  {
+    "id": "young-ahamkaras-spine",
+    "hash": 405059572,
+    "name": "Young Ahamkara's Spine",
+    "guardianClass": "hunter",
+    "slot": "gauntlets",
+    "intrinsic": "Wish-Dragon Teeth",
+    "kind": "damageBuff",
+    "rule": 3,
+    "reason": "Court Exotic Intrinsic; compendium: „14% Increased Explosion Damage“; clarity: „14% increased Explosion damage“",
+    "aegisRowIds": [],
+    "courtBuffs": [
+      {
+        "bucketId": "exoticIntrinsic",
+        "trigger": "",
+        "pve": null,
+        "pveDuration": null
+      }
+    ],
+    "bonuses": [
+      {
+        "percent": 14,
+        "quote": "14% Increased Explosion Damage",
+        "source": "compendium"
+      },
+      {
+        "percent": 14,
+        "quote": "14% increased Explosion damage",
+        "source": "clarity"
+      }
+    ]
+  }
+]

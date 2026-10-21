@@ -16,6 +16,7 @@
     "import:weapons": "node scripts/import-weapons.ts",
     "import:court": "node scripts/import-court.ts",
     "build:weapons": "node scripts/build-weapons.ts",
+    "build:armor": "node scripts/build-armor.ts",
     "import:icons": "node --max-old-space-size=4096 --env-file-if-exists=.env.local scripts/import-bungie-icons.ts"
   },
   "dependencies": {
