@@ -15,11 +15,16 @@ const DATA = new URL("../../src/data/", import.meta.url);
 const read = (file: string): unknown =>
   JSON.parse(readFileSync(new URL(file, DATA), "utf8"));
 
+const courtOf = (snapshot: CourtSnapshot) => ({
+  court: snapshot.entries,
+  courtCategories: snapshot.categories,
+});
+
 export function loadArmorImportInputs(): ArmorImportInputs {
   return {
     armor: ManifestArmor.parse(read("manifest-armor.json")).armor,
     aegisAbilities: AegisAbilityRow.array().parse(read("aegis-abilities.json")),
-    court: CourtSnapshot.parse(read("court-buffs.json")).entries,
+    ...courtOf(CourtSnapshot.parse(read("court-buffs.json"))),
     compendium: CompendiumSnapshot.parse(read("compendium-armor.json")).entries,
     clarity: ClaritySnapshot.parse(read("clarity.json")).entries.filter(
       (e) => e.type === "Armor Trait Exotic",

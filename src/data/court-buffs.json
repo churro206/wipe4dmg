@@ -6,6 +6,50 @@
     "status": "verified",
     "note": "Last Data Change: 9 June 2026"
   },
+  "categories": [
+    {
+      "name": "GLOBAL DEBUFFS",
+      "description": "An effect inflicted by us Guardians onto an enemy target\nCombatants or other Guardians",
+      "sources": "Void Sandbox\nSome Exotic Weapons & Armor\nMisc Sources (Artifact)",
+      "stacking": "Cannot stack with other Global Debuffs; highest takes precedence"
+    },
+    {
+      "name": "EMPOWERING BUFFS",
+      "description": "An effect applied directly onto a Guardian\nFom yourself and/or friendly Guardians",
+      "sources": "Solar Sandbox\nSome Exotics, Supers/Abilities, and Raid Mods\nMisc Sources (Artifact)",
+      "stacking": "Cannot stack with other Empowering Buffs; highest takes precedence"
+    },
+    {
+      "name": "WEAPON SURGES",
+      "description": "An effect applied directly onto a Guardian from the 'Armor Surge' system",
+      "sources": "Armor Charge System\nExotic Armor\nMisc Sources (Artifact)",
+      "stacking": "Cannot stack with other Weapon Surges; highest takes precedence"
+    },
+    {
+      "name": "AMPLIFICATION MODIFIERS",
+      "description": "An effect applied directly onto your Weapon or Ability\nUnrelated to Debuffing, Empowering, or Surging",
+      "sources": "Weapon Mods\nAspects & Fragments\nMisc Sources (Artifact)",
+      "stacking": "Stacks with all other buffs\nand itself"
+    },
+    {
+      "name": "EXOTICS INTRINSICS",
+      "description": "An effect from Exotics applied directly onto your Weapon or Ability\nUnrelated to Debuffing, Empowering, or Surging",
+      "sources": "Most Exotic Weapons\nMost Exotic Armor",
+      "stacking": "Stacks with all other buffs\nand itself"
+    },
+    {
+      "name": "WEAPON PERKS",
+      "description": "Triggering an effect activates a modifier for your Weapon",
+      "sources": "Weapon Perks & Origin Traits",
+      "stacking": "Stacks with all other buffs\nand itself"
+    },
+    {
+      "name": "WORLD & ACTIVITY",
+      "description": "The Destiny World Sandbox",
+      "sources": "Destiny World\nActivity Modifiers\nRaid/Dungeon Encounter Buffs",
+      "stacking": "Stacks with all other buffs\nand itself"
+    }
+  ],
   "entries": [
     {
       "category": "Global Debuffs",

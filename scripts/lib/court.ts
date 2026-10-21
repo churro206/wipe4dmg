@@ -2,7 +2,7 @@
 // Table categories (debuffs, empowering buffs, surges, amplification) carry PvE values; the category
 // "Exotic Intrinsics" only lists exotic armor by name, its values come from the Compendium.
 
-import type { CourtEntry } from "../../src/data/schema.ts";
+import type { CourtCategory, CourtEntry } from "../../src/data/schema.ts";
 import { cellText } from "./compendiumAbilities.ts";
 
 const CATEGORY_PREFIX = "Category: ";
@@ -24,9 +24,8 @@ function nameCell(text: string): {
   };
 }
 
-/** Parses the whole guide: table rows with values and exotic armor from name lists. */
-export function parseCourtSheet(html: string): CourtEntry[] {
-  const rows = html
+const rowsOf = (html: string): string[][] =>
+  html
     .split(/<tr[^>]*>/)
     .slice(1)
     .map((row) =>
@@ -35,6 +34,31 @@ export function parseCourtSheet(html: string): CourtEntry[] {
       ),
     );
 
+/** The overview "Damage Buff Categories": name, description, sources and stacking rule of each category. */
+export function parseCourtCategories(html: string): CourtCategory[] {
+  const rows = rowsOf(html);
+  const start = rows.findIndex((cells) => cells.includes("Modifier Category"));
+  if (start === -1)
+    throw new Error("No category overview found in Court's Stacking Guide");
+  const categories: CourtCategory[] = [];
+  for (const cells of rows.slice(start + 1)) {
+    if (cells.some((c) => c.startsWith(CATEGORY_PREFIX))) break;
+    const filled = cells.filter((c) => c !== "");
+    if (filled.length < 4) continue;
+    const [name, description, sources, stacking] = filled;
+    categories.push({
+      name: name.split("\n").join(" "),
+      description,
+      sources,
+      stacking,
+    });
+  }
+  return categories;
+}
+
+/** Parses the whole guide: table rows with values and exotic armor from name lists. */
+export function parseCourtSheet(html: string): CourtEntry[] {
+  const rows = rowsOf(html);
   const entries: CourtEntry[] = [];
   let category = "";
   let table = false;

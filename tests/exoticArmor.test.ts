@@ -44,6 +44,10 @@ const inputs: ArmorImportInputs = {
     piece("Synthoceps"),
     piece("Peacekeepers"),
     piece("Antaeus Wards"),
+    piece("Wormgod Caress"),
+    piece("Liar's Handshake"),
+    piece("Ophidia Spathe"),
+    piece("Lunafaction Boots"),
     piece("Dunemarchers"),
     piece("An Insurmountable Skullfort", "Melee kills restore health."),
   ],
@@ -58,15 +62,38 @@ const inputs: ArmorImportInputs = {
     court("Mantle of Battle Harmony", "Weapon Surges", "25%"),
     court("Synthoceps", "Exotic Intrinsics", null),
     court("Peacekeepers", "Exotic Intrinsics", null),
+    court("Liar's Handshake", "Exotic Intrinsics", null),
+  ],
+  courtCategories: [
+    {
+      name: "EXOTICS INTRINSICS",
+      description:
+        "An effect from Exotics applied directly onto your Weapon or Ability\nUnrelated to Debuffing, Empowering, or Surging",
+      sources: "Most Exotic Weapons\nMost Exotic Armor",
+      stacking: "Stacks with all other buffs\nand itself",
+    },
   ],
   compendium: [
     compendium(
       "Synthoceps",
-      "While surrounded: Melee damage is increased by 150%.",
+      "While surrounded: Super damage is increased by 50%.",
     ),
     compendium(
       "Antaeus Wards",
       "Reflected projectiles deal 25% increased damage.",
+    ),
+    compendium(
+      "Wormgod Caress",
+      "Grants 80% increased Melee Damage and 20% Increased Weapon Damage.",
+    ),
+    compendium("Liar's Handshake", "Deals 400% increased Melee Damage."),
+    compendium(
+      "Ophidia Spathe",
+      "Grants 200% Increased Throwing Knife Damage.",
+    ),
+    compendium(
+      "Lunafaction Boots",
+      "Empowering Rifts grant 100% [50%] Increased Damage Falloff Distance.",
     ),
   ],
   clarity: [
@@ -91,6 +118,13 @@ const inputs: ArmorImportInputs = {
       itemName: "Peacekeepers",
       text: "Submachine Guns reload while stowed.",
     },
+    {
+      hash: 4,
+      name: "Wormgod",
+      type: "Armor Trait Exotic",
+      itemName: "Wormgod Caress",
+      text: "Weapon damage increases are Empowering Buffs.",
+    },
   ],
 };
 
@@ -102,18 +136,44 @@ describe("bonusQuotes", () => {
         "clarity",
       ),
     ).toEqual([
-      { percent: 55, quote: "55% increased damage", source: "clarity" },
-      { percent: 100, quote: "100% more damage", source: "clarity" },
+      {
+        percent: 55,
+        quote: "55% increased damage",
+        source: "clarity",
+        melee: false,
+      },
+      {
+        percent: 100,
+        quote: "100% more damage",
+        source: "clarity",
+        melee: false,
+      },
     ]);
     expect(
       bonusQuotes("Melee damage is increased by 150%.", "compendium"),
     ).toEqual([
       {
         percent: 150,
-        quote: "damage is increased by 150%",
+        quote: "Melee damage is increased by 150%",
         source: "compendium",
+        melee: true,
       },
     ]);
+  });
+
+  it("marks bonuses on melee damage, knives included", () => {
+    expect(
+      bonusQuotes("200% Increased Throwing Knife Damage", "compendium"),
+    ).toMatchObject([{ percent: 200, melee: true }]);
+  });
+
+  it("ignores damage falloff distance", () => {
+    expect(
+      bonusQuotes(
+        "100% [50%] Increased Damage Falloff Distance.",
+        "compendium",
+      ),
+    ).toEqual([]);
   });
 
   it("ignores damage resistance", () => {
@@ -148,16 +208,52 @@ describe("classifyExoticArmor", () => {
       kind: "damageBuff",
       rule: 3,
       courtBuffs: [{ bucketId: "exoticIntrinsic", pve: null }],
-      bonuses: [{ percent: 150, source: "compendium" }],
+      bonusBucket: { bucketId: "exoticIntrinsic", basis: "court" },
+      bonuses: [{ percent: 50, source: "compendium" }],
     });
+  });
+
+  it("rule 3 with melee bonuses only is a gap: melee buffs add up, not modelled yet", () => {
+    expect(byName["Liar's Handshake"]).toMatchObject({ kind: "gap", rule: 3 });
+    expect(byName["Liar's Handshake"].reason).toContain("Melee");
   });
 
   it("rule 3 without a value is a gap", () => {
     expect(byName.Peacekeepers).toMatchObject({ kind: "gap", rule: 3 });
   });
 
-  it("rule 4: a damage bonus without a bucket is a gap", () => {
-    expect(byName["Antaeus Wards"]).toMatchObject({ kind: "gap", rule: 4 });
+  it("rule 4a: the text names the bucket", () => {
+    expect(byName["Wormgod Caress"]).toMatchObject({
+      kind: "damageBuff",
+      rule: 4,
+      bonusBucket: {
+        bucketId: "empowering",
+        basis: "text",
+        quote: "Weapon damage increases are Empowering Buffs",
+      },
+    });
+    expect(byName["Wormgod Caress"].reason).toContain("Melee");
+  });
+
+  it("rule 4b: otherwise Court's definition of exotic intrinsics names the bucket", () => {
+    expect(byName["Antaeus Wards"]).toMatchObject({
+      kind: "damageBuff",
+      rule: 4,
+      bonusBucket: {
+        bucketId: "exoticIntrinsic",
+        basis: "courtDefinition",
+        quote:
+          "An effect from Exotics applied directly onto your Weapon or Ability",
+      },
+    });
+  });
+
+  it("rule 4 with melee bonuses only is a gap", () => {
+    expect(byName["Ophidia Spathe"]).toMatchObject({ kind: "gap", rule: 4 });
+  });
+
+  it("damage falloff is no damage bonus", () => {
+    expect(byName["Lunafaction Boots"]).toMatchObject({ kind: "gap", rule: 5 });
   });
 
   it("rule 5: a text about damage without a clear bonus is a gap", () => {

@@ -568,8 +568,20 @@ export const ArmorBonusQuote = z.object({
   percent: z.number().positive(),
   quote: z.string(),
   source: z.enum(["compendium", "clarity"]),
+  // Melee buffs add up with each other (Compendium "Game Mechanics"); not modelled yet.
+  melee: z.boolean(),
 });
 export type ArmorBonusQuote = z.infer<typeof ArmorBonusQuote>;
+
+/** Bucket of the quoted bonuses and what names it (ADR 0014, point 4). */
+export const ArmorBonusBucket = z.object({
+  bucketId: z.string(),
+  // court: Court lists the exotic; text: the text names the bucket; courtDefinition: Court's
+  // definition of exotic intrinsics, which come from "Most Exotic Armor"
+  basis: z.enum(["court", "text", "courtDefinition"]),
+  quote: z.string(),
+});
+export type ArmorBonusBucket = z.infer<typeof ArmorBonusBucket>;
 
 /** One exotic armor piece with the result of the armor import (ADR 0014). */
 export const ExoticArmorEntry = z.object({
@@ -592,6 +604,7 @@ export const ExoticArmorEntry = z.object({
     }),
   ),
   bonuses: z.array(ArmorBonusQuote),
+  bonusBucket: ArmorBonusBucket.nullable(), // null if no bonus is usable or Court rows name the buckets
 });
 export type ExoticArmorEntry = z.infer<typeof ExoticArmorEntry>;
 
@@ -807,8 +820,18 @@ export const CourtEntry = z.object({
 });
 export type CourtEntry = z.infer<typeof CourtEntry>;
 
+/** One row of Court's overview "Damage Buff Categories", e.g. "EXOTICS INTRINSICS". */
+export const CourtCategory = z.object({
+  name: z.string(),
+  description: z.string(),
+  sources: z.string(), // e.g. "Most Exotic Weapons\nMost Exotic Armor"
+  stacking: z.string(),
+});
+export type CourtCategory = z.infer<typeof CourtCategory>;
+
 export const CourtSnapshot = z.object({
   source: Source,
+  categories: z.array(CourtCategory),
   entries: z.array(CourtEntry),
 });
 export type CourtSnapshot = z.infer<typeof CourtSnapshot>;

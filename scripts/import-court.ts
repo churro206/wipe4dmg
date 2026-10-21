@@ -4,7 +4,7 @@
 
 import { writeFileSync } from "node:fs";
 import { CourtSnapshot } from "../src/data/schema.ts";
-import { parseCourtSheet } from "./lib/court.ts";
+import { parseCourtCategories, parseCourtSheet } from "./lib/court.ts";
 
 const SHEET_ID = "1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4";
 const GID = "2073397587";
@@ -30,6 +30,7 @@ const snapshot = CourtSnapshot.parse({
     status: "verified",
     note: dataChange ? `Last Data Change: ${dataChange}` : undefined,
   },
+  categories: parseCourtCategories(html),
   entries,
 });
 writeFileSync(

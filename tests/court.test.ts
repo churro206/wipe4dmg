@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseCourtSheet } from "../scripts/lib/court";
+import { parseCourtCategories, parseCourtSheet } from "../scripts/lib/court";
 import rawSnapshot from "../src/data/court-buffs.json";
 import { CourtSnapshot } from "../src/data/schema";
 
@@ -23,6 +23,16 @@ const header = [
 ];
 const html = [
   '<table class="waffle"><tbody>',
+  row("", "Modifier Category", "", "Description", "Sources", "Stacking Rules"),
+  row(
+    "",
+    "EXOTICS<br>INTRINSICS",
+    "",
+    "",
+    "An effect from Exotics applied directly onto your Weapon or Ability<br>Unrelated to Debuffing, Empowering, or Surging",
+    "Most Exotic Weapons<br>Most Exotic Armor",
+    "Stacks with all other buffs<br>and itself",
+  ),
   row("", "Category: Global Debuffs<br><br>Overview of all Global Debuffs"),
   row("", "", ...header),
   row(
@@ -132,6 +142,20 @@ describe("parseCourtSheet", () => {
   });
 });
 
+describe("parseCourtCategories", () => {
+  it("reads the overview of damage buff categories", () => {
+    expect(parseCourtCategories(html)).toEqual([
+      {
+        name: "EXOTICS INTRINSICS",
+        description:
+          "An effect from Exotics applied directly onto your Weapon or Ability\nUnrelated to Debuffing, Empowering, or Surging",
+        sources: "Most Exotic Weapons\nMost Exotic Armor",
+        stacking: "Stacks with all other buffs\nand itself",
+      },
+    ]);
+  });
+});
+
 describe("Court snapshot", () => {
   const snapshot = CourtSnapshot.parse(rawSnapshot);
 
@@ -154,5 +178,17 @@ describe("Court snapshot", () => {
     expect(names).toContain("Cuirass of the Falling Star");
     expect(names).toContain("Dawn Chorus");
     expect(names).toContain("Celestial Nighthawk");
+  });
+
+  it("has the seven damage buff categories", () => {
+    expect(snapshot.categories.map((c) => c.name)).toEqual([
+      "GLOBAL DEBUFFS",
+      "EMPOWERING BUFFS",
+      "WEAPON SURGES",
+      "AMPLIFICATION MODIFIERS",
+      "EXOTICS INTRINSICS",
+      "WEAPON PERKS",
+      "WORLD & ACTIVITY",
+    ]);
   });
 });

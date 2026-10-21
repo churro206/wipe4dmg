@@ -2,14 +2,19 @@
 // 1 Aegis ability package assumes it → abilityVariant
 // 2 Court row with a value → damageBuff (bucket from Court's category)
 // 3 Court lists it as exotic intrinsic → damageBuff with the bonus from Compendium or Clarity, else gap
-// 4 a text names a damage bonus, no source names the bucket → gap
+// 4 a text names a damage bonus → damageBuff; bucket from the text (4a), else from Court's definition
+//   of exotic intrinsics (4b)
 // 5 a text names damage without a clear bonus → gap
 // 6 no damage word → noDamage
+// Bonuses on melee damage do not count in rules 3 and 4: melee buffs add up with each other
+// (Compendium "Game Mechanics"), which the model does not know yet.
 
 import type {
+  ArmorBonusBucket,
   ArmorBonusQuote,
   ClarityEntry,
   CompendiumEntry,
+  CourtCategory,
   CourtEntry,
   ExoticArmorEntry,
   ManifestArmorPiece,
@@ -19,6 +24,7 @@ export type ArmorImportInputs = {
   armor: ManifestArmorPiece[];
   aegisAbilities: { id: string; assumptions: string[] }[];
   court: CourtEntry[];
+  courtCategories: CourtCategory[];
   compendium: CompendiumEntry[]; // tab Exotic Armors
   clarity: ClarityEntry[];
 };
@@ -32,19 +38,30 @@ const BUCKET_OF_CATEGORY: Record<string, string> = {
   "Exotic Intrinsics": "exoticIntrinsic",
 };
 const INTRINSICS = "Exotic Intrinsics";
+const INTRINSICS_DEFINITION = "EXOTICS INTRINSICS"; // name in Court's category overview
 
-const NOT_A_BONUS = String.raw`(?!\s*(?:resist|reduction))`;
+const NOT_A_BONUS = String.raw`(?!\s*(?:resist|reduction|falloff|range|distance))`;
 const BONUS_PATTERNS = [
   // "55% increased damage", "70% increased Super Damage", "100% more damage"
   new RegExp(
     String.raw`(\d+(?:\.\d+)?)%\s+(?:increased|more|bonus|additional)\s+(?:[A-Za-z]+\s+){0,2}?damage${NOT_A_BONUS}`,
     "gi",
   ),
-  // "damage is increased by 150%"
-  /damage (?:is )?increased by (\d+(?:\.\d+)?)%/gi,
+  // "Melee damage is increased by 150%"
+  /(?:[A-Za-z]+\s+){0,2}?damage (?:is )?increased by (\d+(?:\.\d+)?)%/gi,
 ];
+const MELEE = /melee|knife|knives/i;
 const RESIST = /damage (resist(ance)?|reduction)/gi;
 const DAMAGE_WORD = /damage|surge|weaken|ignit|radiant|empower|amplif|debuff/i;
+// A sentence that names the bucket, e.g. "Weapon damage increases are Empowering Buffs."
+const STATED_BUCKET =
+  /[^.\n]*\b(?:are|is|counts? as)\s+(?:an?\s+)?(empowering buffs?|weapon surges?|global debuffs?|debuffs?|amplification modifiers?)/i;
+const BUCKET_OF_WORD: [RegExp, string][] = [
+  [/empower/i, "empowering"],
+  [/surge/i, "surge"],
+  [/debuff/i, "debuff"],
+  [/amplif/i, "amplification"],
+];
 
 /** Damage bonuses in a text, in order of appearance. */
 export function bonusQuotes(
@@ -54,11 +71,26 @@ export function bonusQuotes(
   return BONUS_PATTERNS.flatMap((pattern) =>
     [...text.matchAll(pattern)].map((m) => ({
       index: m.index,
-      bonus: { percent: Number(m[1]), quote: m[0], source },
+      bonus: {
+        percent: Number(m[1]),
+        quote: m[0],
+        source,
+        melee: MELEE.test(m[0]),
+      },
     })),
   )
     .sort((a, b) => a.index - b.index)
     .map((m) => m.bonus);
+}
+
+/** Bucket a text names itself (rule 4a). */
+function statedBucket(text: string): ArmorBonusBucket | null {
+  const match = STATED_BUCKET.exec(text);
+  if (!match) return null;
+  const bucket = BUCKET_OF_WORD.find(([word]) => word.test(match[1]));
+  return bucket
+    ? { bucketId: bucket[1], basis: "text", quote: match[0].trim() }
+    : null;
 }
 
 // Sources write some names with typographic apostrophes, e.g. "Fortune’s Favor".
@@ -72,19 +104,52 @@ const kebab = (name: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-type Verdict = Pick<ExoticArmorEntry, "kind" | "rule" | "reason">;
+const quoted = (bonuses: ArmorBonusQuote[]) =>
+  bonuses.map((b) => `${b.source}: „${b.quote}“`).join("; ");
+const MELEE_NOTE =
+  "Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt)";
+
+type Verdict = Pick<
+  ExoticArmorEntry,
+  "kind" | "rule" | "reason" | "bonusBucket"
+>;
+
+/** Verdict for a bonus from a text once its bucket is known (rules 3 and 4). */
+function textBonus(
+  rule: number,
+  bonuses: ArmorBonusQuote[],
+  bucket: ArmorBonusBucket,
+): Verdict {
+  const usable = bonuses.filter((b) => !b.melee);
+  const melee = bonuses.length > usable.length ? `; ${MELEE_NOTE}` : "";
+  if (usable.length === 0)
+    return {
+      kind: "gap",
+      rule,
+      reason: `nur Melee-Boni (${quoted(bonuses)}); Melee-Buffs addieren sich, Modell fehlt`,
+      bonusBucket: null,
+    };
+  return {
+    kind: "damageBuff",
+    rule,
+    reason: `${bucket.bucketId} (${bucket.basis === "court" ? "Court-Liste" : `„${bucket.quote}“`}); ${quoted(usable)}${melee}`,
+    bonusBucket: bucket,
+  };
+}
 
 function verdict(
   aegisRowIds: string[],
   court: CourtEntry[],
   bonuses: ArmorBonusQuote[],
   text: string,
+  intrinsicsDefinition: string,
 ): Verdict {
   if (aegisRowIds.length > 0)
     return {
       kind: "abilityVariant",
       rule: 1,
       reason: `Aegis-Paket: ${aegisRowIds.join(", ")}`,
+      bonusBucket: null,
     };
   const valued = court.filter(
     (e) => e.pve !== null && e.category !== INTRINSICS,
@@ -96,39 +161,58 @@ function verdict(
       reason: valued
         .map((e) => `Court ${e.category}: ${e.pve} für ${e.pveDuration}`)
         .join("; "),
+      bonusBucket: null,
     };
   if (court.some((e) => e.category === INTRINSICS))
     return bonuses.length > 0
-      ? {
-          kind: "damageBuff",
-          rule: 3,
-          reason: `Court Exotic Intrinsic; ${bonuses.map((b) => `${b.source}: „${b.quote}“`).join("; ")}`,
-        }
+      ? textBonus(3, bonuses, {
+          bucketId: "exoticIntrinsic",
+          basis: "court",
+          quote: INTRINSICS,
+        })
       : {
           kind: "gap",
           rule: 3,
           reason:
             "Court Exotic Intrinsic, aber kein Wert in Compendium oder Clarity",
+          bonusBucket: null,
         };
   if (bonuses.length > 0)
-    return {
-      kind: "gap",
-      rule: 4,
-      reason: `Bucket fehlt; ${bonuses.map((b) => `${b.source}: „${b.quote}“`).join("; ")}`,
-    };
+    return textBonus(
+      4,
+      bonuses,
+      statedBucket(text) ?? {
+        bucketId: "exoticIntrinsic",
+        basis: "courtDefinition",
+        quote: intrinsicsDefinition,
+      },
+    );
   if (DAMAGE_WORD.test(text.replace(RESIST, "")))
     return {
       kind: "gap",
       rule: 5,
       reason: "Text nennt Schaden, aber keinen klaren Bonus",
+      bonusBucket: null,
     };
-  return { kind: "noDamage", rule: 6, reason: "kein Schadenswort im Text" };
+  return {
+    kind: "noDamage",
+    rule: 6,
+    reason: "kein Schadenswort im Text",
+    bonusBucket: null,
+  };
 }
 
 /** One entry per exotic armor piece of the manifest, sorted by name. */
 export function classifyExoticArmor(
   inputs: ArmorImportInputs,
 ): ExoticArmorEntry[] {
+  const definition = inputs.courtCategories.find(
+    (c) => c.name === INTRINSICS_DEFINITION,
+  );
+  if (!definition)
+    throw new Error(`Court's category "${INTRINSICS_DEFINITION}" is missing`);
+  const intrinsicsDefinition = definition.description.split("\n")[0];
+
   return [...inputs.armor]
     .sort((a, b) => a.name.localeCompare(b.name, "en"))
     .map((piece) => {
@@ -150,6 +234,13 @@ export function classifyExoticArmor(
         ...bonusQuotes(compendiumText, "compendium"),
         ...bonusQuotes(clarityText, "clarity"),
       ];
+      const { bonusBucket, ...rest } = verdict(
+        aegisRowIds,
+        court,
+        bonuses,
+        [compendiumText, clarityText, piece.description].join("\n"),
+        intrinsicsDefinition,
+      );
       return {
         id: kebab(piece.name),
         hash: piece.hash,
@@ -157,12 +248,7 @@ export function classifyExoticArmor(
         guardianClass: piece.guardianClass,
         slot: piece.slot,
         intrinsic: piece.intrinsics[0] ?? null,
-        ...verdict(
-          aegisRowIds,
-          court,
-          bonuses,
-          [compendiumText, clarityText, piece.description].join("\n"),
-        ),
+        ...rest,
         aegisRowIds,
         courtBuffs: court.map((e) => ({
           bucketId: BUCKET_OF_CATEGORY[e.category],
@@ -171,13 +257,14 @@ export function classifyExoticArmor(
           pveDuration: e.pveDuration,
         })),
         bonuses,
+        bonusBucket,
       };
     });
 }
 
 const KIND_TITLES: [ExoticArmorEntry["kind"], string][] = [
   ["abilityVariant", "Ability-Varianten (Regel 1)"],
-  ["damageBuff", "Schadens-Buffs (Regeln 2 und 3)"],
+  ["damageBuff", "Schadens-Buffs (Regeln 2 bis 4)"],
   ["gap", "Lücken (Regeln 3 bis 5)"],
   ["noDamage", "Ohne Schadenswirkung (Regel 6)"],
 ];
