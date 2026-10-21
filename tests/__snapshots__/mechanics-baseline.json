@@ -1,0 +1,741 @@
+{
+  "weapons": {
+    "one-thousand-voices": {
+      "30s plain": 28430,
+      "30s buffed": 47864.75,
+      "30s plain catalyst": 39560.55,
+      "30s buffed catalyst": 66604.14,
+      "600s plain": 28430,
+      "600s buffed": 47864.75,
+      "600s plain catalyst": 39560.55,
+      "600s buffed catalyst": 66604.14
+    },
+    "ager-s-scepter": {
+      "30s plain": 14427.78,
+      "30s buffed": 24290.61,
+      "600s plain": 18034.72,
+      "600s buffed": 30363.26
+    },
+    "arbalest": {
+      "30s plain": 23894.75,
+      "30s buffed": 40229.2,
+      "600s plain": 23894.75,
+      "600s buffed": 40229.2
+    },
+    "bastion": {
+      "30s plain": 27056.03,
+      "30s buffed": 45551.53,
+      "600s plain": 33422.15,
+      "600s buffed": 56269.53
+    },
+    "borealis": {
+      "30s plain": 16647.26,
+      "30s buffed": 28027.33,
+      "600s plain": 16647.26,
+      "600s buffed": 28027.33
+    },
+    "buried-bloodline": {
+      "30s plain": 15476.16,
+      "30s buffed": 26055.66,
+      "600s plain": 16121,
+      "600s buffed": 27141.32
+    },
+    "cloudstrike": {
+      "30s plain": 20595.04,
+      "30s buffed": 34673.8,
+      "600s plain": 20595.04,
+      "600s buffed": 34673.8
+    },
+    "coldheart": {
+      "30s plain": 13746.48,
+      "30s buffed": 23143.58,
+      "600s plain": 17845.69,
+      "600s buffed": 30045
+    },
+    "conditional-finality": {
+      "30s plain": 27020.94,
+      "30s buffed": 45492.46,
+      "600s plain": 27020.94,
+      "600s buffed": 45492.46
+    },
+    "d-a-r-c-i": {
+      "30s plain": 25568.71,
+      "30s buffed": 43047.48,
+      "30s plain catalyst": 27110.5,
+      "30s buffed catalyst": 45643.24,
+      "600s plain": 25568.71,
+      "600s buffed": 43047.48,
+      "600s plain catalyst": 27110.5,
+      "600s buffed catalyst": 45643.24
+    },
+    "dead-messenger": {
+      "30s plain": 27674.86,
+      "30s buffed": 46593.39,
+      "600s plain": 27674.86,
+      "600s buffed": 46593.39
+    },
+    "delicate-tomb": {
+      "30s plain": 21370.44,
+      "30s buffed": 35979.27,
+      "600s plain": 23151.31,
+      "600s buffed": 38977.55
+    },
+    "deterministic-chaos": {
+      "30s plain": 17711.82,
+      "30s buffed": 29819.62,
+      "600s plain": 47568.89,
+      "600s buffed": 80086.98
+    },
+    "dragon-s-breath": {
+      "30s plain": 40980.43,
+      "30s buffed": 68994.66,
+      "600s plain": 40980.43,
+      "600s buffed": 68994.66
+    },
+    "edge-of-action": {
+      "30s plain": 12542.92,
+      "30s buffed": 21117.26,
+      "600s plain": 13990.18,
+      "600s buffed": 23553.87
+    },
+    "edge-of-concurrence": {
+      "30s plain": 13032.9,
+      "30s buffed": 21942.18,
+      "600s plain": 13873.73,
+      "600s buffed": 23357.81
+    },
+    "edge-of-intent": {
+      "30s plain": 10522.2,
+      "30s buffed": 17715.18,
+      "600s plain": 17167.8,
+      "600s buffed": 28903.71
+    },
+    "eriana-s-vow": {
+      "30s plain": 17191.69,
+      "30s buffed": 28943.92,
+      "600s plain": 17191.69,
+      "600s buffed": 28943.92
+    },
+    "euphony": {
+      "30s plain": 25032.6,
+      "30s buffed": 42144.88,
+      "600s plain": 27667.61,
+      "600s buffed": 46581.18
+    },
+    "eyes-of-tomorrow": {
+      "30s plain": 27035.57,
+      "30s buffed": 45517.09,
+      "600s plain": 27035.57,
+      "600s buffed": 45517.09
+    },
+    "forerunner": {
+      "30s plain": 20854.47,
+      "30s buffed": 35110.59,
+      "600s plain": 20854.47,
+      "600s buffed": 35110.59
+    },
+    "gjallarhorn": {
+      "30s plain": 20813.91,
+      "30s buffed": 35042.31,
+      "600s plain": 20813.91,
+      "600s buffed": 35042.31
+    },
+    "heir-apparent": {
+      "30s plain": 22312.28,
+      "30s buffed": 37564.95,
+      "600s plain": 24666.84,
+      "600s buffed": 41529.09
+    },
+    "izanagi-s-burden": {
+      "30s plain": 13169,
+      "30s buffed": 22171.33,
+      "600s plain": 13169,
+      "600s buffed": 22171.33
+    },
+    "j-tunn": {
+      "30s plain": 23063,
+      "30s buffed": 38828.86,
+      "600s plain": 25159.63,
+      "600s buffed": 42358.76
+    },
+    "leviathan-s-breath": {
+      "30s plain": 19531.07,
+      "30s buffed": 32882.51,
+      "600s plain": 19531.07,
+      "600s buffed": 32882.51
+    },
+    "lord-of-wolves": {
+      "30s plain": 35165.15,
+      "30s buffed": 59204.05,
+      "600s plain": 35165.15,
+      "600s buffed": 59204.05
+    },
+    "lorentz-driver": {
+      "30s plain": 22808.63,
+      "30s buffed": 38400.6,
+      "600s plain": 22808.63,
+      "600s buffed": 38400.6
+    },
+    "microcosm": {
+      "30s plain": 31895.71,
+      "30s buffed": 53699.62,
+      "600s plain": 31895.71,
+      "600s buffed": 53699.62
+    },
+    "new-land-beyond": {
+      "30s plain": 16463.36,
+      "30s buffed": 27717.71,
+      "600s plain": 41158.4,
+      "600s buffed": 69294.28
+    },
+    "new-malpais": {
+      "30s plain": 31317.95,
+      "30s buffed": 52726.9,
+      "600s plain": 31317.95,
+      "600s buffed": 52726.9
+    },
+    "parasite": {
+      "30s plain": 32001.58,
+      "30s buffed": 53877.87,
+      "600s plain": 38401.9,
+      "600s buffed": 64653.44
+    },
+    "ruinous-effigy": {
+      "30s plain": 15077.98,
+      "30s buffed": 25385.28,
+      "600s plain": 18847.47,
+      "600s buffed": 31731.6
+    },
+    "service-of-luzaku": {
+      "30s plain": 21944.72,
+      "30s buffed": 36946.13,
+      "600s plain": 47024.4,
+      "600s buffed": 79170.28
+    },
+    "slayer-s-fang": {
+      "30s plain": 28312.39,
+      "30s buffed": 47666.74,
+      "600s plain": 28312.39,
+      "600s buffed": 47666.74
+    },
+    "sleeper-simulant": {
+      "30s plain": 32599.53,
+      "30s buffed": 54884.57,
+      "600s plain": 32599.53,
+      "600s buffed": 54884.57
+    },
+    "still-hunt": {
+      "30s plain": 11852.1,
+      "30s buffed": 19954.2,
+      "600s plain": 13169,
+      "600s buffed": 22171.33
+    },
+    "telesto": {
+      "30s plain": 20797.29,
+      "30s buffed": 35014.31,
+      "600s plain": 20797.29,
+      "600s buffed": 35014.31
+    },
+    "the-chaperone": {
+      "30s plain": 13474.48,
+      "30s buffed": 22685.63,
+      "600s plain": 13474.48,
+      "600s buffed": 22685.63
+    },
+    "the-colony": {
+      "30s plain": 20845.85,
+      "30s buffed": 35096.07,
+      "600s plain": 20845.85,
+      "600s buffed": 35096.07
+    },
+    "the-fourth-horseman": {
+      "30s plain": 83952.88,
+      "30s buffed": 141343.07,
+      "600s plain": 83952.88,
+      "600s buffed": 141343.07
+    },
+    "the-navigator": {
+      "30s plain": 11109.99,
+      "30s buffed": 18704.78,
+      "600s plain": 13887.49,
+      "600s buffed": 23380.98
+    },
+    "the-wardcliff-coil": {
+      "30s plain": 19225.3,
+      "30s buffed": 32367.71,
+      "600s plain": 19225.3,
+      "600s buffed": 32367.71
+    },
+    "thunderlord": {
+      "30s plain": 23005.38,
+      "30s buffed": 38731.85,
+      "600s plain": 43163.55,
+      "600s buffed": 72670.16
+    },
+    "tractor-cannon": {
+      "30s plain": 9404.44,
+      "30s buffed": 15833.32,
+      "600s plain": 9404.44,
+      "600s buffed": 15833.32
+    },
+    "truth": {
+      "30s plain": 43585.78,
+      "30s buffed": 73381.02,
+      "30s plain catalyst": 61020.09,
+      "30s buffed catalyst": 102733.43,
+      "600s plain": 43585.78,
+      "600s buffed": 73381.02,
+      "600s plain catalyst": 61020.09,
+      "600s buffed catalyst": 102733.43
+    },
+    "vexcalibur": {
+      "30s plain": 18914.18,
+      "30s buffed": 31843.92,
+      "600s plain": 18914.18,
+      "600s buffed": 31843.92
+    },
+    "whisper-of-the-worm": {
+      "30s plain": 30597.77,
+      "30s buffed": 51514.4,
+      "30s plain catalyst": 45033.79,
+      "30s buffed catalyst": 75818.9,
+      "600s plain": 32297.64,
+      "600s buffed": 54376.31,
+      "600s plain catalyst": 47535.67,
+      "600s buffed catalyst": 80031.06
+    },
+    "winterbite": {
+      "30s plain": 24972.46,
+      "30s buffed": 42043.63,
+      "600s plain": 24972.46,
+      "600s buffed": 42043.63
+    },
+    "xenophage": {
+      "30s plain": 28721.28,
+      "30s buffed": 48355.14,
+      "600s plain": 28721.28,
+      "600s buffed": 48355.14
+    }
+  },
+  "abilities": {
+    "thundercrash": {
+      "stat 100": 38566.09,
+      "stat 200": 43127.33
+    },
+    "arc-staff": {
+      "stat 100": 37512.61,
+      "stat 200": 41599.78
+    },
+    "gathering-storm": {
+      "stat 100": 35636.96,
+      "stat 200": 37876.09
+    },
+    "storms-edge": {
+      "stat 100": 37843.91,
+      "stat 200": 42080.17
+    },
+    "fists-of-havoc": {
+      "stat 100": 43222.17,
+      "stat 200": 49878.65
+    },
+    "chaos-reach": {
+      "stat 100": 39334.78,
+      "stat 200": 44099.13
+    },
+    "stormtrance": {
+      "stat 100": 41475.22,
+      "stat 200": 46981.74
+    },
+    "blade-barrage": {
+      "stat 100": 37764.78,
+      "stat 200": 41965.44
+    },
+    "golden-gun-deadshot": {
+      "stat 100": 33668.77,
+      "stat 200": 36026.21
+    },
+    "golden-gun-marksman": {
+      "stat 100": 36105,
+      "stat 200": 39558.75
+    },
+    "burning-maul": {
+      "stat 100": 41189.57,
+      "stat 200": 45357.83
+    },
+    "hammer-of-sol": {
+      "stat 100": 37673.48,
+      "stat 200": 41833.04
+    },
+    "daybreak": {
+      "stat 100": 40614.78,
+      "stat 200": 46097.94
+    },
+    "well-of-radiance": {
+      "stat 100": 28430,
+      "stat 200": 28430
+    },
+    "spectral-blades": {
+      "stat 100": 40433.48,
+      "stat 200": 45835.04
+    },
+    "shadowshot-deadfall": {
+      "stat 100": 30505.04,
+      "stat 200": 31438.81
+    },
+    "shadowshot-moebius-quiver": {
+      "stat 100": 33364.11,
+      "stat 200": 35584.47
+    },
+    "sentinel-shield": {
+      "stat 100": 38574.35,
+      "stat 200": 43139.3
+    },
+    "twilight-arsenal": {
+      "stat 100": 38168.46,
+      "stat 200": 42550.77
+    },
+    "nova-bomb-cataclysm": {
+      "stat 100": 37719.13,
+      "stat 200": 41899.24
+    },
+    "nova-bomb-vortex": {
+      "stat 100": 37654.78,
+      "stat 200": 41760.87
+    },
+    "nova-warp": {
+      "stat 100": 45389.57,
+      "stat 200": 52934.78
+    },
+    "silence-and-squall": {
+      "stat 100": 39920.44,
+      "stat 200": 42945.22
+    },
+    "winters-wrath": {
+      "stat 100": 47932.17,
+      "stat 200": 51708.26
+    },
+    "silkstrike": {
+      "stat 100": 40723.48,
+      "stat 200": 46255.54
+    },
+    "needlestorm": {
+      "stat 100": 38349.57,
+      "stat 200": 42813.37
+    },
+    "arcbolt-grenade": {
+      "stat 100": 29054.35,
+      "stat 200": 29460.17
+    },
+    "flashbang-grenade": {
+      "stat 100": 29246.52,
+      "stat 200": 29777.26
+    },
+    "flux-grenade": {
+      "stat 100": 30213.48,
+      "stat 200": 31372.74
+    },
+    "lightning-grenade": {
+      "stat 100": 29965.22,
+      "stat 200": 30963.11
+    },
+    "pulse-grenade": {
+      "stat 100": 29866.52,
+      "stat 200": 30800.26
+    },
+    "skip-grenade": {
+      "stat 100": 28902.61,
+      "stat 200": 29209.8
+    },
+    "storm-grenade": {
+      "stat 100": 29320,
+      "stat 200": 29898.5
+    },
+    "firebolt-grenade": {
+      "stat 100": 29039.24,
+      "stat 200": 29435.24
+    },
+    "fusion-grenade": {
+      "stat 100": 29559.35,
+      "stat 200": 30293.42
+    },
+    "incendiary-grenade": {
+      "stat 100": 29929.35,
+      "stat 200": 30903.92
+    },
+    "solar-grenade": {
+      "stat 100": 29696.96,
+      "stat 200": 30520.48
+    },
+    "swarm-grenade": {
+      "stat 100": 29343.91,
+      "stat 200": 29937.96
+    },
+    "thermite-grenade": {
+      "stat 100": 30602.22,
+      "stat 200": 31878
+    },
+    "tripmine-grenade": {
+      "stat 100": 29672.39,
+      "stat 200": 30479.95
+    },
+    "axion-bolt-grenade": {
+      "stat 100": 29056.52,
+      "stat 200": 29463.76
+    },
+    "magnetic-grenade": {
+      "stat 100": 29440.44,
+      "stat 200": 30097.22
+    },
+    "scatter-grenade": {
+      "stat 100": 29379.83,
+      "stat 200": 29997.23
+    },
+    "suppressor-grenade": {
+      "stat 100": 29448.7,
+      "stat 200": 30110.85
+    },
+    "void-spike-grenade": {
+      "stat 100": 30138.26,
+      "stat 200": 31248.63
+    },
+    "void-wall-grenade": {
+      "stat 100": 31638.26,
+      "stat 200": 33723.63
+    },
+    "vortex-grenade": {
+      "stat 100": 29551.74,
+      "stat 200": 30280.87
+    },
+    "glacier-grenade": {
+      "stat 100": 29711.63,
+      "stat 200": 30222.94
+    },
+    "shatter-grenade": {
+      "stat 100": 31126.96,
+      "stat 200": 32331.83
+    },
+    "shackle-grenade": {
+      "stat 100": 28903.91,
+      "stat 200": 29211.96
+    },
+    "slicewire-grenade": {
+      "stat 100": 29554.78,
+      "stat 200": 30285.89
+    },
+    "threadling-grenade": {
+      "stat 100": 29294.78,
+      "stat 200": 29856.89
+    },
+    "disorienting-blow": {
+      "stat 100": 29495.22,
+      "stat 200": 29814.78
+    },
+    "ballistic-slam": {
+      "stat 100": 28792.17,
+      "stat 200": 28900.83
+    },
+    "seismic-strike": {
+      "stat 100": 29893.04,
+      "stat 200": 30331.96
+    },
+    "thunderclap": {
+      "stat 100": 29834.35,
+      "stat 200": 30255.65
+    },
+    "ball-lightning": {
+      "stat 100": 28628.7,
+      "stat 200": 28688.3
+    },
+    "knife-trick": {
+      "stat 100": 29554.57,
+      "stat 200": 29674.57
+    },
+    "lightweight-knife": {
+      "stat 100": 28837.83,
+      "stat 200": 28960.17
+    },
+    "proximity-explosive-knife": {
+      "stat 100": 28965.65,
+      "stat 200": 29126.35
+    },
+    "weighted-throwing-knife": {
+      "stat 100": 29000.87,
+      "stat 200": 29172.13
+    },
+    "hammer-strike": {
+      "stat 100": 30034.35,
+      "stat 200": 30475.65
+    },
+    "throwing-hammer": {
+      "stat 100": 28993.91,
+      "stat 200": 29163.09
+    },
+    "celestial-fire": {
+      "stat 100": 29193.04,
+      "stat 200": 29267.97
+    },
+    "incinerator-snap": {
+      "stat 100": 29573.91,
+      "stat 200": 29699.57
+    },
+    "phantom-surge": {
+      "stat 100": 29024.35,
+      "stat 200": 29202.65
+    },
+    "snare-bomb": {
+      "stat 100": 28661.76,
+      "stat 200": 28730.57
+    },
+    "shield-bash": {
+      "stat 100": 29893.04,
+      "stat 200": 30331.96
+    },
+    "shield-throw": {
+      "stat 100": 28664.78,
+      "stat 200": 28735.22
+    },
+    "pocket-singularity": {
+      "stat 100": 28855.65,
+      "stat 200": 28983.35
+    },
+    "withering-blade": {
+      "stat 100": 28917.61,
+      "stat 200": 29006.74
+    },
+    "shiver-strike": {
+      "stat 100": 28911.3,
+      "stat 200": 28990.44
+    },
+    "penumbral-blast": {
+      "stat 100": 28968.26,
+      "stat 200": 29018.26
+    },
+    "threaded-spike": {
+      "stat 100": 29140.87,
+      "stat 200": 29354.13
+    },
+    "frenzied-blade": {
+      "stat 100": 28942.17,
+      "stat 200": 29095.83
+    },
+    "arcane-needle": {
+      "stat 100": 28883.48,
+      "stat 200": 29019.52
+    }
+  },
+  "exoticArmorOnOneThousandVoices": {
+    "abeyant-leap": 28430,
+    "acd-0-feedback-fence": 28430,
+    "actium-war-rig": 28430,
+    "an-insurmountable-skullfort": 28430,
+    "antaeus-wards": 28430,
+    "apotheosis-veil": 28430,
+    "arbor-warden": 28430,
+    "ashen-wake": 28430,
+    "astrocyte-verse": 28430,
+    "balance-of-power": 28430,
+    "ballidorse-wrathweavers": 28430,
+    "blastwave-striders": 28430,
+    "blight-ranger": 28430,
+    "boots-of-the-assembler": 28430,
+    "briarbinds": 28430,
+    "cadmus-ridge-lancecap": 28430,
+    "calibans-hand": 28430,
+    "celestial-nighthawk": 28430,
+    "chromatic-fire": 28430,
+    "citans-ramparts": 28430,
+    "claws-of-ahamkara": 28430,
+    "contraverse-hold": 28430,
+    "crest-of-alpha-lupi": 28430,
+    "crown-of-tempests": 28430,
+    "cuirass-of-the-falling-star": 28430,
+    "dawn-chorus": 28430,
+    "deimosuffusion": 28430,
+    "doom-fang-pauldron": 28430,
+    "dunemarchers": 28430,
+    "eternal-warrior": 28430,
+    "eunoia": 28430,
+    "eye-of-another-world": 28430,
+    "fallen-sunstar": 28430,
+    "felwinters-helm": 28430,
+    "foetracer": 28430,
+    "fortunes-favor": 28430,
+    "fr0st-ee5": 28430,
+    "geomag-stabilizers": 28430,
+    "getaway-artist": 28430,
+    "gifted-conviction": 28430,
+    "graviton-forfeit": 28430,
+    "gwisin-vest": 28430,
+    "gyrfalcons-hauberk": 28430,
+    "hallowfire-heart": 28430,
+    "hazardous-propulsion": 28430,
+    "heart-of-inmost-light": 28430,
+    "icefall-mantle": 28430,
+    "khepris-horn": 28430,
+    "khepris-sting": 28430,
+    "knucklehead-radar": 28430,
+    "loreley-splendor-helm": 28430,
+    "lucky-pants": 28430,
+    "lucky-raspberry": 28430,
+    "lunafaction-boots": 28430,
+    "mantle-of-battle-harmony": 28430,
+    "mask-of-bakris": 28430,
+    "mask-of-fealty": 28430,
+    "mask-of-the-quiet-one": 28430,
+    "mataiodox-a": 28430,
+    "mechaneers-tricksleeves": 28430,
+    "melas-panoplia": 28430,
+    "mk-44-stand-asides": 28430,
+    "moirai": 28430,
+    "mothkeepers-wraps": 28430,
+    "necrotic-grip": 28430,
+    "nezarecs-sin": 28430,
+    "no-backup-plans": 28430,
+    "nothing-manacles": 28430,
+    "oathkeeper": 28430,
+    "omnioculus": 28430,
+    "orpheus-rig": 28430,
+    "osmiomancy-gloves": 28430,
+    "peacekeepers": 28430,
+    "peregrine-greaves": 28430,
+    "phoenix-cradle": 28430,
+    "phoenix-protocol": 28430,
+    "praxic-vestment": 28430,
+    "promethium-spur": 34116,
+    "pyrogale-gauntlets": 28430,
+    "radiant-dance-machines": 28430,
+    "raiden-flux": 28430,
+    "raijus-harness": 28430,
+    "rain-of-fire": 34116,
+    "renewal-grasps": 28430,
+    "rime-coat-raiment": 28430,
+    "sanguine-alchemy": 28430,
+    "sealed-ahamkara-grasps": 28430,
+    "secant-filaments": 28430,
+    "second-chance": 28430,
+    "severance-enclosure": 28430,
+    "shards-of-galanor": 28430,
+    "shinobus-vow": 28430,
+    "skull-of-dire-ahamkara": 28430,
+    "solipsism": 28430,
+    "speakers-sight": 28430,
+    "speedloader-slacks": 28430,
+    "star-eater-scales": 28430,
+    "starfire-protocol": 28430,
+    "stoicism": 28430,
+    "stormdancers-brace": 28430,
+    "stronghold": 28430,
+    "sunbracers": 28430,
+    "swarmers": 28430,
+    "synthoceps": 28430,
+    "the-bombardiers": 28430,
+    "the-path-of-burning-steps": 28430,
+    "the-stag": 28430,
+    "ursa-furiosa": 28430,
+    "veritys-brow": 28430,
+    "vesper-of-radius": 28430,
+    "wormgod-caress": 28430,
+    "wormhusk-crown": 28430,
+    "young-ahamkaras-spine": 28430
+  }
+}

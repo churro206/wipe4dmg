@@ -55,7 +55,7 @@ Eine Recherche (Skill `recherche`, 2026-10-21) hat den Umbau gegen die Quellen g
 - Energie und Cooldowns.
 - Unravel/Threadlings, Freeze/Shatter, Suspend.
 - Eigener Schaden ohne Keyword, z. B. The Bombardiers.
-- Heat-Waffen (Vent statt Magazin), falls sie im Import vorkommen. Das wird in Schritt U1 geprüft.
+- Heat-Waffen (Vent statt Magazin). Geprüft in U1: Keines der 49 Waffen-Pakete ist eine Heat-Waffe. Nur 13 allgemeine Aegis-Zeilen (z. B. „Balanced heat weapon - 450RPM primary“) kommen vor, und sie werden nicht als Paket gebaut. Ein Timing-Modell für Heat-Waffen ist erst nötig, wenn eine Heat-Waffe dazukommt.
 
 ## Folgen
 
