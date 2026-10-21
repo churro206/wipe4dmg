@@ -60,6 +60,7 @@ Entscheidung in ADR 0009 (`docs/adr/0009-ability-components.md`). Umgesetzt sind
 - [x] Stat-Werte zwischen 100 und 200: linear pro Punkt laut Compendium „Game Mechanics“ (2026-10-19), Data File `ability-stats.json`.
 - [ ] Wie bilden wir Energie und Cooldowns ab, ohne die ganze Fähigkeiten-Ökonomie zu simulieren?
 - [ ] Schussabstand von Golden Gun und Moebius Quiver, Cast-Animationen, Flugzeit von Thundercrash: fehlen in Compendium und Manifest. Bis dahin ist das Super Window eine Schätzung.
+  Gesucht 2026-10-21 ohne zitierbaren Wert: alle Aegis-Reiter, Compendium, Clarity, Destiny Wiki, Destinypedia, light.gg, Bungie-Patchnotes und -Forum, Google, YouTube. Reddit ist für den Agenten gesperrt. Betroffen: shots ohne Abstand (Golden Gun, Moebius Quiver) rechnen mit der vollen Dauer, cast ohne castMs mit 0 s, drain ohne Intervall mit der vollen Dauer. Modell des Inhabers, sobald Werte da sind: Cast + Schüsse × Schussabstand.
 
 ## Quellen
 
