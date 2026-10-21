@@ -1,6 +1,6 @@
-// ADR 0012: several weapons. Every Data File in src/data/weapons is loaded, ids and codes are
-// unique, every weapon has a gate, and the engine works for a weapon without the intrinsics of
-// One Thousand Voices.
+// ADR 0012: several weapons. Every weapon package is loaded, ids and codes are unique, gate values
+// name known weapons (the import gates every package itself, ADR 0013), and the engine works for a
+// weapon without the intrinsics of One Thousand Voices.
 
 import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
@@ -27,7 +27,7 @@ const buckets = loadBuckets(rawBuckets);
 const effect = (id: string) => effects.find((e) => e.id === id)!;
 
 describe("loadWeapons", () => {
-  it("loads every weapon Data File", () => {
+  it("loads every weapon package", () => {
     expect(weapons.map((w) => w.id)).toContain("one-thousand-voices");
     expect(weapons).toHaveLength(rawWeapons.length);
   });
@@ -56,15 +56,6 @@ describe("gate values name their weapon", () => {
   it("refers only to known weapons", () => {
     for (const reference of [...values, ...multipliers, ...factors]) {
       expect(ids, reference.id).toContain(reference.weaponId);
-    }
-  });
-
-  it("gives every weapon at least one total damage gate", () => {
-    for (const weapon of weapons) {
-      const gates = values.filter(
-        (r) => r.weaponId === weapon.id && r.scenario !== undefined,
-      );
-      expect(gates.length, weapon.id).toBeGreaterThan(0);
     }
   });
 });

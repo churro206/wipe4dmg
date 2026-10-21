@@ -73,6 +73,7 @@ import {
   abilityStats,
   activities,
   aegisRows,
+  keywords,
   bosses,
   buckets,
   effects,
@@ -138,6 +139,7 @@ function simulationOf(build: Build): {
       effectWindows: { ...build.effectWindows, ...abilityPart.grantedWindows },
       abilities: abilityPart.casts,
       abilityStats: abilityPart.stats,
+      keywords,
     },
   };
 }
@@ -352,6 +354,7 @@ function App() {
         catalyst,
         damagePhaseSeconds,
         limit: OPTIMIZER_LIMIT,
+        keywords,
       });
       setOptimizer({ forKey: optimizerKey, entries });
       setOptimizing(false);

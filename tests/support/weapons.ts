@@ -1,14 +1,10 @@
-// All weapon Data Files, loaded like the UI does (ADR 0012).
+// All weapons the UI loads: the imported packages (ADR 0013, ADR 0015 point 11: no hand models).
 
-import { readdirSync, readFileSync } from "node:fs";
+import rawPackages from "../../src/data/weapon-packages.json";
 import type { Weapon } from "../../src/data/schema";
 import { loadWeapons } from "../../src/engine/loadWeapon";
 
-const WEAPON_DIR = "src/data/weapons";
-
-export const rawWeapons: Record<string, unknown>[] = readdirSync(WEAPON_DIR)
-  .filter((file) => file.endsWith(".json"))
-  .map((file) => JSON.parse(readFileSync(`${WEAPON_DIR}/${file}`, "utf8")));
+export const rawWeapons: Record<string, unknown>[] = rawPackages;
 
 export const weapons = loadWeapons(rawWeapons);
 

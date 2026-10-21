@@ -287,3 +287,37 @@ describe("keywords of a weapon", () => {
     expect(effectAppliesToWeapon(effect("ember-of-ashes"), weapon)).toBe(false);
   });
 });
+
+describe("weapon options and keyword damage", () => {
+  it("a catalyst factor stays with the shots and does not scale the ignitions", () => {
+    const scorched = {
+      ...weapon,
+      intrinsicParts: [
+        {
+          type: "appliesKeyword" as const,
+          keywordId: "ignition" as const,
+          damageSources: ["weapon" as const],
+          stacks: { value: 100, source },
+          source,
+        },
+      ],
+      options: [
+        {
+          id: "catalyst",
+          name: "catalyst",
+          kind: "catalyst" as const,
+          factor: { value: 2, source },
+          bucketId: "weaponPerk",
+          durationSeconds: null,
+          condition: null,
+        },
+      ],
+    };
+    const ignition = (catalyst: boolean) =>
+      simulate(scorched, 30, [], buckets, {
+        keywords,
+        catalyst,
+      }).damageInstances.find((d) => d.keywordId === "ignition")!.damage;
+    expect(ignition(true)).toBeCloseTo(ignition(false));
+  });
+});

@@ -3535,6 +3535,182 @@
     ]
   },
   {
+    "id": "one-thousand-voices",
+    "code": 1,
+    "name": "One Thousand Voices",
+    "manifestHash": 2069224589,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "fusionRifle",
+    "element": "solar",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 32.967,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 20.7 s − 2 reloads × 1.25 s) ÷ 10 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 4,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 11,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1250,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Quantum, without ignitions)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 2180,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Total Damage / total shots; Does not consider Scorch; without ignition"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [
+      {
+        "type": "appliesKeyword",
+        "keywordId": "ignition",
+        "damageSources": ["weapon"],
+        "stacks": {
+          "value": 90,
+          "source": {
+            "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "quote": "inflicting x10+5 Scorch",
+            "note": "Per shot: Der Text nennt Scorch pro Explosion; ein Shot hat 9 Explosionen à x10, also x90 pro Shot."
+          }
+        },
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "quote": "inflicting x10+5 Scorch"
+        }
+      }
+    ],
+    "keywordBonuses": [
+      {
+        "keywordId": "ignition",
+        "factor": {
+          "value": 1.316,
+          "source": {
+            "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "quote": "Solar Effects that are initially applied by One Thousand Voices deal 31.6% increased damage"
+          }
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "ahamkara-s-eye",
+        "name": "Ahamkara's Eye",
+        "description": "Charging this weapon unleashes a giant continuous beam of death.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.4535,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-one-thousand-voices-average-catalyst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value 3372.292 / 2458.972 (base row fusion-rifle-one-thousand-voices-average)"
+          }
+        },
+        "durationSeconds": 5.65,
+        "condition": null
+      }
+    ]
+  },
+  {
     "id": "parasite",
     "code": 35,
     "name": "Parasite",
@@ -5341,6 +5517,147 @@
         },
         "durationSeconds": 15,
         "condition": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)"
+      }
+    ]
+  },
+  {
+    "id": "two-tailed-fox",
+    "code": 52,
+    "name": "Two-Tailed Fox",
+    "manifestHash": 2694576561,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "rocketLauncher",
+    "element": "void",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 183.051,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 24.1 s − 9 reloads × 2.35 s) ÷ 9 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 1,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 10,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 2350,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Quantum, without ignitions)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 2340,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Total Damage / total shots; Does not consider scorch; does not consider ignitions"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [
+      {
+        "type": "appliesKeyword",
+        "keywordId": "ignition",
+        "damageSources": ["weapon"],
+        "stacks": {
+          "value": 60,
+          "source": {
+            "name": "Destiny Data Compendium, Exotic Weapons (Two-Tailed Fox)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "quote": "inflicts x60+30 Scorch",
+            "note": "Base stacks before Ember of Ashes"
+          }
+        },
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (Two-Tailed Fox)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "quote": "inflicts x60+30 Scorch"
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "twintails",
+        "name": "Twintails",
+        "description": "Shoots two rockets, one Void and one Solar, that can track onto the same target. Strong against [Disruption] Overload Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
       }
     ]
   },

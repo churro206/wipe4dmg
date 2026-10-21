@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import rawRows from "../src/data/aegis-abilities.json";
 import rawAbilityStats from "../src/data/ability-stats.json";
 import rawBuckets from "../src/data/buckets.json";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { Ability, AegisAbilityRow, type AbilityKind } from "../src/data/schema";
 import { abilityStatMultiplier } from "../src/engine/abilityStats";
 import { loadAbilityStats, loadBuckets } from "../src/engine/loadData";

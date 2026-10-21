@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import rawAbilities from "../src/data/abilities.json";
 import rawEffects from "../src/data/effects.json";
 import type { Build } from "../src/data/schema";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import {
   decodeLink,
   encodeLink,

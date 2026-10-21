@@ -7,7 +7,11 @@ import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import rawReferenceFactors from "../src/data/reference-factors.json";
 import { ReferenceFactor } from "../src/data/schema";
+import rawAbilityRows from "../src/data/aegis-abilities.json";
+import rawKeywords from "../src/data/keywords.json";
+import { AegisAbilityRow } from "../src/data/schema";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
+import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate } from "../src/engine/simulate";
 import { weaponById } from "./support/weapons";
 
@@ -19,6 +23,10 @@ const FULL_AMMO_SECONDS = 600;
 const KNOWN_DEVIATIONS = new Set<string>([]);
 
 const buckets = loadBuckets(rawBuckets);
+const keywords = loadKeywords(
+  rawKeywords,
+  AegisAbilityRow.array().parse(rawAbilityRows),
+);
 const effects = loadEffects(rawEffects);
 const references = ReferenceFactor.array().parse(rawReferenceFactors);
 
@@ -37,6 +45,7 @@ const totalDamage = (weaponId: string, scenario: ReferenceFactor["baseline"]) =>
     buckets,
     {
       catalyst: scenario.catalyst,
+      keywords,
     },
   ).totalDamage;
 

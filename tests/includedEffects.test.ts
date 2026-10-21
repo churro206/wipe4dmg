@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { Ability } from "../src/data/schema";
 import { grantedEffectWindows } from "../src/engine/grantedEffects";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";

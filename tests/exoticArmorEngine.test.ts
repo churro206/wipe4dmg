@@ -12,7 +12,7 @@ import {
   Build,
   ExoticArmorEntry as ExoticArmorEntrySchema,
 } from "../src/data/schema";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { abilitySimulation } from "../src/engine/buildAbilities";
 import {
   exoticArmorEffects,

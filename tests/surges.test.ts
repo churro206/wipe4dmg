@@ -4,7 +4,7 @@ import rawEffects from "../src/data/effects.json";
 import rawIconRefs from "../src/data/icon-refs.json";
 import rawIcons from "../src/data/icons.json";
 import { Element, type MultiplierPart } from "../src/data/schema";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { decodeLink, encodeLink } from "../src/engine/buildLink";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";

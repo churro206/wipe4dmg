@@ -15,9 +15,13 @@ export function hasCatalyst(weapon: Weapon): boolean {
   );
 }
 
-/** Ignitions come from a threshold part, e.g. scorch of One Thousand Voices. */
+/** Ignitions come from scorch the weapon applies (ADR 0015) or from a threshold part. */
 export function hasIgnition(weapon: Weapon): boolean {
-  return weapon.intrinsicParts.some((p) => p.type === "threshold");
+  return weapon.intrinsicParts.some(
+    (p) =>
+      p.type === "threshold" ||
+      (p.type === "appliesKeyword" && p.keywordId === "ignition"),
+  );
 }
 
 /**

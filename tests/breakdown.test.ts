@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import rawBosses from "../src/data/bosses.json";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { breakdown } from "../src/engine/breakdown";
 import { loadBosses, loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
@@ -20,11 +20,7 @@ describe("breakdown", () => {
   });
 
   it("lists every bucket with an active multiplier, in bucket order", () => {
-    const selected = pick(
-      "tractor-cannon",
-      "well-of-radiance",
-      "surge-3x",
-    );
+    const selected = pick("tractor-cannon", "well-of-radiance", "surge-3x");
     const ids = breakdown(weapon, DAMAGE_PHASE_SECONDS, selected, buckets).map(
       (entry) => entry.bucketId,
     );

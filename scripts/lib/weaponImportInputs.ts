@@ -1,18 +1,18 @@
 // Reads the Data Files the weapon import needs (ADR 0013). Shared by npm run build:weapons and
 // the test that checks the generated files are current.
 
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import {
   AegisSustainedSnapshot,
   AegisWeaponSnapshot,
   ClaritySnapshot,
   CompendiumSnapshot,
   Effect,
+  KeywordData,
   ManifestArmor,
   ManifestTerms,
   ManifestWeapons,
   QuantumWeaponSnapshot,
-  Weapon,
   WeaponOverride,
 } from "../../src/data/schema.ts";
 import type { WeaponImportInputs } from "./weaponPackages.ts";
@@ -35,10 +35,7 @@ export function loadWeaponImportInputs(): WeaponImportInputs {
     compendium: CompendiumSnapshot.parse(read("compendium-weapons.json"))
       .entries,
     effects: Effect.array().parse(read("effects.json")),
-    // Hand-modelled weapons (ADR 0012) win over the import (ADR 0013, point 12).
-    handModelled: readdirSync(new URL("weapons/", DATA))
-      .filter((file) => file.endsWith(".json"))
-      .map((file) => Weapon.parse(read(`weapons/${file}`))),
+    keywords: KeywordData.array().parse(read("keywords.json")),
     clarity: ClaritySnapshot.parse(read("clarity.json")).entries,
     overrides: WeaponOverride.array().parse(read("weapon-overrides.json")),
     codes: existsSync(codesFile)

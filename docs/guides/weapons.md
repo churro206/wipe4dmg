@@ -2,6 +2,8 @@
 
 Für Agenten und Entwickler. Grundlage sind ADR 0011 (Punkte 5 und 6) und ADR 0012. Begriffe stehen im Glossary.
 
+> **Seit ADR 0015, Punkt 11 gibt es keine Handmodelle mehr.** Jede Waffe kommt aus `npm run build:weapons` (ADR 0013). Fehlt einer Waffe etwas, wird eine Regel im Import ergänzt oder ein Override mit Zitat (`weapon-overrides.json`) angelegt. Waffen mit Scorch (One Thousand Voices, Two-Tailed Fox) nehmen den Shot aus der Quantum-Zeile ohne Ignitions und setzen Scorch per `appliesKeyword`; die Ignitions entstehen im Keyword-Lauf. Das frühere Handmodell von One Thousand Voices liegt nur noch als Testdatei in `tests/fixtures/`. Der Ablauf unten beschreibt den alten Weg und bleibt als Hintergrund stehen.
+
 ## Quellen und ihre Rollen
 
 | Quelle | Was sie liefert | Rolle |
@@ -44,7 +46,7 @@ Ob ein Effect auf eine Waffe wirkt, ergibt sich aus seinen Parts (`effectApplies
 
 ## Waffen in der Oberfläche (W1-6)
 
-- `src/ui/data.ts` lädt Handmodelle und Pakete (`weapon-packages.json`); `weaponById` fällt auf One Thousand Voices zurück.
+- `src/ui/data.ts` lädt die Pakete (`weapon-packages.json`); `weaponById` fällt auf One Thousand Voices zurück.
 - Waffenauswahl mit Suche und Filter nach Waffentyp (`WeaponPicker`). Ein Vergleich behält seine eigene Waffe.
 - `src/engine/weaponInfo.ts`: Katalysator-Kachel nur bei `hasCatalyst`, Kennzahl „Ignitions“ nur bei `hasIgnition`, Effects nur bei `effectRelevantTo` (wirkt auf die Waffe oder auf Abilities).
 - Pakete haben eine Damage Instance „shot“; im Donut heißt sie „Shots“. Neue Handmodelle mit eigenen Damage Instances brauchen Name und Farbe in `DAMAGE_KINDS` (`src/ui/Charts.tsx`).

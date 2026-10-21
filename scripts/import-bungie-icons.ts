@@ -10,7 +10,6 @@
 import {
   existsSync,
   mkdirSync,
-  readdirSync,
   readFileSync,
   writeFileSync,
 } from "node:fs";
@@ -176,13 +175,8 @@ const catalystRefs: IconRef[] = packages.flatMap((weapon) => {
 });
 const refs = collectIconRefs(
   Effect.array().parse(readJson("src/data/effects.json")),
-  // Every weapon Data File (ADR 0012) and every imported package.
-  [
-    ...readdirSync(new URL("src/data/weapons/", ROOT))
-      .filter((file) => file.endsWith(".json"))
-      .map((file) => Weapon.parse(readJson(`src/data/weapons/${file}`))),
-    ...packages,
-  ],
+  // Every imported package (ADR 0013).
+  packages,
   [
     ...catalystRefs,
     ...IconRef.array().parse(readJson("src/data/icon-refs.json")),

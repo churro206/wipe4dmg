@@ -17,7 +17,7 @@ import {
   ManifestAbilities,
   type ManifestAbility,
 } from "../src/data/schema";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 

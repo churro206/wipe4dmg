@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { optimize, type OptimizerInput } from "../src/engine/optimizer";
@@ -121,9 +121,7 @@ describe("canProvide with subclass", () => {
   });
 
   it("ignores the subclass for armor and fireteam support", () => {
-    expect(canProvide(byId("surge-3x"), "armor", "hunter", "arc")).toBe(
-      true,
-    );
+    expect(canProvide(byId("surge-3x"), "armor", "hunter", "arc")).toBe(true);
     expect(
       canProvide(byId("well-of-radiance"), "fireteamSupport", "hunter", "arc"),
     ).toBe(true);

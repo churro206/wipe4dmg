@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import type { Weapon } from "../src/data/schema";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
@@ -159,9 +159,9 @@ describe("One Thousand Voices against the in-game measurements", () => {
   });
 
   it("ignites 4 of 4 shots with Ember of Ashes (test 1)", () => {
-    expect(
-      firstMagazine(["particle-reconstruction", "ember-of-ashes"]),
-    ).toBe(4);
+    expect(firstMagazine(["particle-reconstruction", "ember-of-ashes"])).toBe(
+      4,
+    );
   });
 
   it("staggers the explosions of a shot (test 2)", () => {
@@ -177,8 +177,8 @@ describe("One Thousand Voices against the in-game measurements", () => {
     );
     const measuredMs = 1750;
     const oneFrameMs = 1000 / 60;
-    expect(Math.abs(shots[1].timeMs - shots[0].timeMs - measuredMs)).toBeLessThanOrEqual(
-      2 * oneFrameMs,
-    );
+    expect(
+      Math.abs(shots[1].timeMs - shots[0].timeMs - measuredMs),
+    ).toBeLessThanOrEqual(2 * oneFrameMs);
   });
 });

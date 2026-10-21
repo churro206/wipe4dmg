@@ -1074,6 +1074,8 @@ export const WeaponOverride = z.object({
     )
     .min(1),
   gap: z.string().optional(), // keep the weapon out with this reason
+  // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
+  scorchStacksPerShot: z.number().int().positive().optional(),
   timing: z
     .object({
       from: z.enum(["Aegis", "Quantum"]), // use this source even if a rule would not

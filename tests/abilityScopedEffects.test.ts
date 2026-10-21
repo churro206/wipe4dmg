@@ -8,7 +8,7 @@ import rawRows from "../src/data/aegis-abilities.json";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import rawManifest from "../src/data/manifest-abilities.json";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import {
   AegisAbilityRow,
   ManifestAbilities,
@@ -89,10 +89,16 @@ describe("included multipliers in Aegis packages", () => {
     package: true,
   };
   const load = (includedEffectIds: string[]) =>
-    loadAbilities([testAbility], [testRow(includedEffectIds)], abilityStats, [], {
-      effects,
-      buckets,
-    })[0].components[0];
+    loadAbilities(
+      [testAbility],
+      [testRow(includedEffectIds)],
+      abilityStats,
+      [],
+      {
+        effects,
+        buckets,
+      },
+    )[0].components[0];
 
   it("takes an included multiplier that applies to the ability out of the value", () => {
     const component = load(["radiant"]);
@@ -149,9 +155,7 @@ describe("Golden Gun with Radiant and Well of Radiance", () => {
   });
 
   it("does not stack Radiant and Well of Radiance", () => {
-    expect(damageWith(["radiant", "well-of-radiance"])).toBeCloseTo(
-      aegisValue,
-    );
+    expect(damageWith(["radiant", "well-of-radiance"])).toBeCloseTo(aegisValue);
   });
 
   it("leaves Radiant on other supers unchanged", () => {

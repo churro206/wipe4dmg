@@ -7,6 +7,7 @@ import type {
   Build,
   Effect,
   GuardianClass,
+  Keyword,
   ProviderKind,
   Subclass,
   Weapon,
@@ -39,6 +40,7 @@ export type OptimizerInput = {
   catalyst: boolean;
   damagePhaseSeconds: number;
   limit: number;
+  keywords?: Keyword[]; // keywords.json, for weapons that apply keywords
 };
 
 export type OptimizerEntry = {
@@ -70,7 +72,11 @@ export function optimize(input: OptimizerInput): OptimizerEntry[] {
         input.damagePhaseSeconds,
         chosen,
         input.buckets,
-        { catalyst: input.catalyst, effectWindows: input.fixedWindows },
+        {
+          catalyst: input.catalyst,
+          effectWindows: input.fixedWindows,
+          keywords: input.keywords,
+        },
       );
       totals.set(keyOf(own), result.totalDamage);
       return { own, selections, result };

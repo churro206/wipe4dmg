@@ -9,7 +9,7 @@ import rawRows from "../src/data/aegis-abilities.json";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import rawManifest from "../src/data/manifest-abilities.json";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import {
   AegisAbilityRow,
   ManifestAbilities,
@@ -47,10 +47,16 @@ function perUse(ability: Ability, stat: number): number {
     ability.components.flatMap((c) => c.normalisedEffectIds ?? []),
   );
   const measured = effects.filter((e) => measuredIds.has(e.id));
-  const result = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, measured, buckets, {
-    abilities: [{ ability, castsMs: [0] }],
-    abilityStats: [{ scaling, value: stat }],
-  });
+  const result = simulate(
+    weapon,
+    LONG_DAMAGE_PHASE_SECONDS,
+    measured,
+    buckets,
+    {
+      abilities: [{ ability, castsMs: [0] }],
+      abilityStats: [{ scaling, value: stat }],
+    },
+  );
   return result.damageInstances
     .filter((d) => d.abilityId === ability.id)
     .reduce((sum, d) => sum + d.damage, 0);

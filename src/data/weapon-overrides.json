@@ -9,18 +9,27 @@
         "text": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774)"
       }
     ],
-    "timing": { "from": "Aegis", "totalShots": 14, "addIntervalSeconds": 0.25 }
+    "timing": {
+      "from": "Aegis",
+      "totalShots": 14,
+      "addIntervalSeconds": 0.25
+    }
   },
   {
-    "weapon": "Two-Tailed Fox",
-    "reason": "Der Schaden hängt an Scorch und Ignitions (wie bei One Thousand Voices); Aegis zählt Ignitions mit, Quantum schätzt sie nur. Braucht ein Handmodell (ADR 0011, Punkt 5).",
+    "weapon": "One Thousand Voices",
+    "reason": "Der Text nennt Scorch pro Explosion; ein Shot hat 9 Explosionen à x10, also x90 pro Shot.",
     "quotes": [
       {
-        "source": "clarity",
-        "entry": "Play with Your Prey",
-        "text": "Solar Rocket applies 60 Scorch (90 with Ember of Ashes)."
+        "source": "compendium",
+        "entry": "One Thousand Voices",
+        "text": "marks 9 delayed explosion spots"
+      },
+      {
+        "source": "compendium",
+        "entry": "One Thousand Voices",
+        "text": "inflicting x10+5 Scorch"
       }
     ],
-    "gap": "Handmodell nötig: Scorch und Ignitions (wie One Thousand Voices)"
+    "scorchStacksPerShot": 90
   }
 ]

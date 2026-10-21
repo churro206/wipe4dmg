@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import rawAbilityStats from "../src/data/ability-stats.json";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { Ability } from "../src/data/schema";
 import { damageBySource } from "../src/engine/analysis";
 import { abilityStatMultiplier } from "../src/engine/abilityStats";
@@ -148,7 +148,10 @@ describe("breakdown per damage source", () => {
 
   it("lists the multipliers per ability, so a buff for one ability shows only there", () => {
     // Same test super under the id of Golden Gun, which Radiant applies to.
-    const goldenGun = Ability.parse({ ...testSuper, id: "golden-gun-marksman" });
+    const goldenGun = Ability.parse({
+      ...testSuper,
+      id: "golden-gun-marksman",
+    });
     const entries = breakdown(
       weapon,
       DAMAGE_PHASE_SECONDS,
@@ -158,11 +161,23 @@ describe("breakdown per damage source", () => {
     );
     expect(entryOf(entries, "empowering").multipliersBySource).toEqual([
       { damageSource: "weapon", multiplier: 1.2 },
-      { damageSource: "super", abilityId: "golden-gun-marksman", multiplier: 1.2 },
+      {
+        damageSource: "super",
+        abilityId: "golden-gun-marksman",
+        multiplier: 1.2,
+      },
     ]);
-    const other = breakdown(weapon, DAMAGE_PHASE_SECONDS, pick("radiant"), buckets, withSuper);
+    const other = breakdown(
+      weapon,
+      DAMAGE_PHASE_SECONDS,
+      pick("radiant"),
+      buckets,
+      withSuper,
+    );
     expect(
-      entryOf(other, "empowering").multipliersBySource.map((m) => m.damageSource),
+      entryOf(other, "empowering").multipliersBySource.map(
+        (m) => m.damageSource,
+      ),
     ).toEqual(["weapon"]);
   });
 });

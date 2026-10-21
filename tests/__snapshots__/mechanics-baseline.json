@@ -1,15 +1,5 @@
 {
   "weapons": {
-    "one-thousand-voices": {
-      "30s plain": 28430,
-      "30s buffed": 47864.75,
-      "30s plain catalyst": 39560.55,
-      "30s buffed catalyst": 66604.14,
-      "600s plain": 28430,
-      "600s buffed": 47864.75,
-      "600s plain catalyst": 39560.55,
-      "600s buffed catalyst": 66604.14
-    },
     "ager-s-scepter": {
       "30s plain": 14427.78,
       "30s buffed": 24290.61,
@@ -194,6 +184,16 @@
       "600s plain": 31317.95,
       "600s buffed": 52726.9
     },
+    "one-thousand-voices": {
+      "30s plain": 28422.93,
+      "30s buffed": 47852.84,
+      "30s plain catalyst": 39297.86,
+      "30s buffed catalyst": 66161.87,
+      "600s plain": 28422.93,
+      "600s buffed": 47852.84,
+      "600s plain catalyst": 39297.86,
+      "600s buffed catalyst": 66161.87
+    },
     "parasite": {
       "30s plain": 32001.58,
       "30s buffed": 53877.87,
@@ -287,6 +287,12 @@
       "600s buffed": 73381.02,
       "600s plain catalyst": 61020.09,
       "600s buffed catalyst": 102733.43
+    },
+    "two-tailed-fox": {
+      "30s plain": 26776.09,
+      "30s buffed": 45080.22,
+      "600s plain": 26776.09,
+      "600s buffed": 45080.22
     },
     "vexcalibur": {
       "30s plain": 18914.18,

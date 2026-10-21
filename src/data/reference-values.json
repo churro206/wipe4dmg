@@ -23,15 +23,15 @@
     "id": "quantum-with-ignition",
     "weaponId": "one-thousand-voices",
     "description": "Theoretical total damage of all shots without effects, with ignitions",
-    "totalDamageMin": 28430,
-    "totalDamageMax": 28430,
+    "totalDamageMin": 28145,
+    "totalDamageMax": 28715,
     "conditions": ["no effects", "no catalyst", "with ignition", "full ammo"],
     "source": {
       "name": "Quantum Damage-ics (heavy weapons tab, column Theoretical Total Damage, note with ignition)",
       "url": "https://destiny2.science/quantum-damage-ics",
       "retrieved": "2026-10-18",
       "status": "unverified",
-      "note": "11 shots x 2180 plus 5 ignitions x 890."
+      "note": "11 shots x 2180 plus 5 ignitions x 890. Range ±1 %: the ignition comes from keywords.json (Aegis 675.2 x 1.316 from the Compendium = 888.6) instead of Quantum's 890 (ADR 0015, U4a-4)."
     },
     "scenario": {
       "effectIds": [],

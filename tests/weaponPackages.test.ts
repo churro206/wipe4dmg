@@ -12,13 +12,20 @@ import rawBuckets from "../src/data/buckets.json";
 import rawCodes from "../src/data/weapon-codes.json";
 import rawGaps from "../src/data/weapon-gaps.json";
 import rawPackages from "../src/data/weapon-packages.json";
-import { Weapon, WeaponGap } from "../src/data/schema";
+import rawAbilityRows from "../src/data/aegis-abilities.json";
+import rawKeywords from "../src/data/keywords.json";
+import { AegisAbilityRow, Weapon, WeaponGap } from "../src/data/schema";
+import { loadKeywords } from "../src/engine/loadKeywords";
 import { loadBuckets } from "../src/engine/loadData";
 import { simulate } from "../src/engine/simulate";
 
 const result = buildWeaponImport(loadWeaponImportInputs());
 const byName = (name: string) => result.packages.find((w) => w.name === name);
 const value = (n: { value: number | null }) => n.value;
+const keywords = loadKeywords(
+  rawKeywords,
+  AegisAbilityRow.array().parse(rawAbilityRows),
+);
 
 describe("Truth (expected from the hand table of 2026-10-20)", () => {
   const truth = byName("Truth")!;
@@ -124,19 +131,49 @@ describe("investigated cases (W1-4d)", () => {
     expect(value(sleeper.totalShots)).toBe(14);
     expect(entry("Sleeper Simulant").notes.join(" ")).toContain("Override");
   });
+});
 
-  it("Two-Tailed Fox: gap until a hand model covers scorch and ignitions", () => {
-    expect(byName("Two-Tailed Fox")).toBeUndefined();
-    expect(entry("Two-Tailed Fox").gapReason).toContain("Handmodell");
+describe("weapons with scorch (ADR 0015, U4a-4)", () => {
+  const otv = byName("One Thousand Voices")!;
+  const fox = byName("Two-Tailed Fox")!;
+  const total = (weapon: Weapon) =>
+    simulate(weapon, 600, [], loadBuckets(rawBuckets), { keywords })
+      .totalDamage;
+
+  it("take the shot from the Quantum row without ignitions", () => {
+    expect(value(otv.damageInstances[0].damagePerTick)).toBeCloseTo(2180, 3);
+    expect(value(fox.damageInstances[0].damagePerTick)).toBeCloseTo(2340, 3);
+  });
+
+  it("apply scorch per shot: x60 from the text, x90 from 9 explosions (override)", () => {
+    const stacks = (weapon: Weapon) =>
+      weapon.intrinsicParts.flatMap((p) =>
+        p.type === "appliesKeyword" ? [[p.keywordId, value(p.stacks!)]] : [],
+      );
+    expect(stacks(fox)).toEqual([["ignition", 60]]);
+    expect(stacks(otv)).toEqual([["ignition", 90]]);
+  });
+
+  it("take the ignition bonus of One Thousand Voices from its text", () => {
+    expect(otv.keywordBonuses).toMatchObject([
+      { keywordId: "ignition", factor: { value: 1.316 } },
+    ]);
+    expect(fox.keywordBonuses).toBeUndefined();
+  });
+
+  it("match the Quantum rows with ignitions within 3 %", () => {
+    expect(Math.abs(total(otv) / 28430 - 1)).toBeLessThan(0.03);
+    expect(Math.abs(total(fox) / 26950 - 1)).toBeLessThan(0.03);
+  });
+
+  it("take the catalyst of One Thousand Voices from Aegis with the ignitions taken out", () => {
+    const catalyst = otv.options!.find((o) => o.kind === "catalyst")!;
+    // (85319 - 4 x 2814) / 8 against (31106 - 2 x 2814) / 4, both Aegis rows
+    expect(value(catalyst.factor)).toBeCloseTo(1.4534, 3);
   });
 });
 
 describe("rules", () => {
-  it("leaves hand-modelled weapons to their Data File", () => {
-    expect(byName("One Thousand Voices")).toBeUndefined();
-    expect(result.report.handModelled).toContain("One Thousand Voices");
-  });
-
   it("names a reason for every gap", () => {
     for (const gap of result.gaps) expect(gap.reason, gap.name).not.toBe("");
   });
@@ -149,7 +186,9 @@ describe("rules", () => {
         (w) => w.name === weapon.name,
       )!.timeToEmptySeconds;
       if (timeToEmpty === null) continue;
-      const shots = simulate(weapon, timeToEmpty * 2, [], buckets).shots;
+      const shots = simulate(weapon, timeToEmpty * 2, [], buckets, {
+        keywords,
+      }).shots;
       expect(shots.at(-1)!.timeMs / 1000, weapon.name).toBeCloseTo(
         timeToEmpty,
         0,

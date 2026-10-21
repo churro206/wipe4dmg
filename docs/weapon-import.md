@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **49 Pakete**, 30 Lücken, von Hand modelliert: One Thousand Voices.
+Umfang: exotische Special- und Heavy-Waffen. **51 Pakete**, 29 Lücken.
 
 ## Pakete
 
@@ -42,6 +42,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Microcosm | traceRifle | kinetic | keine (1 Shot) | 82,8 | Aegis | 385 | 120 | 1,12 s | 28,9 s | 900 → 896 | 0,1 % | Timing aus Aegis-Zeile mit Harsh Refraction (laut Text ohne Einfluss auf das Timing); Timing: Aegis und Quantum stimmen überein |
 | New Land Beyond | sniperRifle | kinetic | no stacks (20 Shots) | 1.029,0 | Quantum | 40 | 8 | 1,98 s | 72,7 s | 32 → 36 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „The Master 0x“; Timing nur aus Quantum |
 | New Malpais | pulseRifle | strand | average, 3 bursts, includes suspend, excludes unravel (3 Shots) | 1.159,9 | Aegis | 27 | 7 | 1,38 s | 24,7 s | – → 67 | 0,0 % | Timing nur aus Aegis |
+| One Thousand Voices | fusionRifle | solar | average (4 Shots) | 2.180,0 | Quantum | 11 | 4 | 1,25 s | 20,7 s | 33 → 33 | 0,0 % | Override: Der Text nennt Scorch pro Explosion; ein Shot hat 9 Explosionen à x10, also x90 pro Shot.; Scorch: x90 pro Shot („inflicting x10+5 Scorch“, Override); Shot aus Quantum ohne Ignitions („Does not consider Scorch; without ignition“): 23.980 ÷ 11; Ignitions ×1,316 („Solar Effects that are initially applied by One Thousand Voices deal 31.6% increased damage“); Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; Skala: Shot aus Quantum, keine Prüfung gegen Aegis (Aegis zählt Ignitions mit) |
 | Parasite | grenadeLauncher | solar | keine (1 Shot) | 2.133,4 | Quantum | 18 | 1 | 2,08 s | 35,4 s | 120 → 25.500 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Ruinous Effigy | traceRifle | void | keine (1 Shot) | 40,1 | Quantum | 470 | 94 | 1,44 s | 36,8 s | 900 → 907 | 0,4 % | Timing nur aus Quantum |
 | Service of Luzaku | machineGun | strand | keine (1 Shot) | 156,7 | Quantum | 300 | 47 | 3,57 s | 70,3 s | 360 → 367 | 0,2 % | Timing nur aus Quantum |
@@ -57,6 +58,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Thunderlord | machineGun | arc | average, with lightning strikes, excludes Bolt Charge (127 Shots) | 113,9 | Quantum | 379 | 62 | 3,57 s | 57,6 s | 617 → 627 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Tractor Cannon | shotgun | void | body (6 Shots) | 522,5 | Quantum | 18 | 7 | 1,47 s | 14,2 s | 80 → 91 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Truth | rocketLauncher | void | average, Prototype Truthseeker (9 Shots) | 2.179,3 | Quantum | 20 | 3 | 2,35 s | 17,4 s | 47 → 345 | 0,1 % | Timing nur aus Quantum; abgeleitete Feuerrate 345 statt 47 rpm |
+| Two-Tailed Fox | rocketLauncher | void | average (2 Shots) | 2.340,0 | Quantum | 10 | 1 | 2,35 s | 24,1 s | 40 → 183 | 36,4 % | Scorch: x60 pro Shot („inflicts x60+30 Scorch“); Shot aus Quantum ohne Ignitions („Does not consider scorch; does not consider ignitions“): 23.400 ÷ 10; Timing nur aus Quantum; Skala: Shot aus Quantum, keine Prüfung gegen Aegis (Aegis zählt Ignitions mit) |
 | Vexcalibur | glaive | void | projectile (1 Shot) | 573,2 | Quantum | 33 | 6 | 1,57 s | 28,1 s | 80 → 95 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Whisper of the Worm | sniperRifle | solar | keine (1 Shot) | 849,9 | Quantum | 38 | 38 | 1,98 s | 31,7 s | 72 → 70 | 0,0 % | Aegis misst nur mit Katalysator: Basis = 1.250,9 ÷ 1,472 (Quantum mit / ohne Katalysator); Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing nur aus Quantum |
 | Winterbite | glaive | stasis | average, projectile, with shatter (18 Shots) | 1.469,0 | Aegis | 17 | 4 | 1,50 s | 24,0 s | 45 → 40 | 0,0 % | ⚠ Timing: Aegis 17 Shots in 24,0 s, Quantum 18 Shots in 23,9 s; Aegis gilt |
@@ -69,6 +71,7 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | Waffe | Option | Art | Faktor | Dauer | Bedingung | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- |
 | D.A.R.C.I. | ⚠ Networked Targeting x5 | Katalysator | ×1,060 | – | – | keine Dauer im Compendium gefunden |
+| One Thousand Voices | ⚠ catalyst | Katalysator | ×1,454 | 6 s | – | – |
 | Truth | ⚠ Reaper's Tithe x4 | Katalysator | ×1,400 | 15 s | Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks) | Faktor aus Einzeltreffern; Mittelwert pro Shot wäre ×1,448 (9 gegen 12 Shots) |
 | Whisper of the Worm | ⚠ Whispered Breathing | Katalysator | ×1,472 | 1 s | – | – |
 
@@ -100,7 +103,6 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | The Lament | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | The Prospector | grenadeLauncher | Skala nicht prüfbar: keine vergleichbaren Werte |
 | The Queenbreaker | linearFusionRifle | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine passende Quantum-Zeile (nur „Marksman Sights“, „Combat Sights“) |
-| Two-Tailed Fox | rocketLauncher | Handmodell nötig: Scorch und Ignitions (wie One Thousand Voices) |
 | Wavesplitter | traceRifle | keine Aegis-Zeile ohne fremde Annahmen |
 | Whirling Ovation | rocketLauncher | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Witherhoard | grenadeLauncher | kein Timing: keine passende Quantum-Zeile (nur „passive“, „passive“, „passive, ground“, „cata, single blight, boss“, „cata, single blight, floor“, „double blight“, „spamming, single blight“, „spamming, double blight“) |
@@ -144,6 +146,10 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | Izanagi's Burden | Honed Edge x4 | gleiche Annahmen wie die Basiszeile |
 | Lord of Wolves | average, includes ignition/scorch, Ember of Ashes | gleiche Annahmen wie die Basiszeile |
 | Merciless | Conserve Momentum x0, full mag | ohne Conserve Momentum x15 der Basiszeile |
+| One Thousand Voices | average, Ember of Ashes | gleiche Annahmen wie die Basiszeile |
+| One Thousand Voices | average, Ember of Ashes, catalyst | Katalysator: catalyst |
+| One Thousand Voices | average, blighted, catalyst | nicht modelliert: blighted; Katalysator: catalyst |
+| One Thousand Voices | average, Ember of Ashes, blighted, catalyst | nicht modelliert: blighted; Katalysator: catalyst |
 | Praxic Blade | average, 3L1H, Offensive Form, Forceful Blade III, Impact Core (solar), Ember of Ashes | gleiche Annahmen wie die Basiszeile |
 | Praxic Blade | average, 3L1H, Offensive Form, Forceful Blade III, Impact Core (solar) | gleiche Annahmen wie die Basiszeile |
 | Praxic Blade | average, double hit throw, Offensive Form, Forceful Blade III, Gyro Core (solar) | ohne 3L1H der Basiszeile |
@@ -184,6 +190,7 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | Ergo Sum | Transcendent | nicht modelliert, ohne Beleg |
 | Finality's Auger | marked | nicht modelliert, ohne Beleg |
 | Ice Breaker | shatter ignition | nicht modelliert, ohne Beleg |
+| One Thousand Voices | blighted | nicht modelliert, ohne Beleg |
 | Tessellation | Transcendent | nicht modelliert, ohne Beleg |
 | Truth | Prototype Truthseeker | Intrinsic „Prototype Trueseeker“ (ähnliche Schreibweise) |
 | Worldline Zero | Temporal Sprint | nicht modelliert, ohne Beleg |
@@ -195,6 +202,7 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 | Annahme | Art | Waffen |
 | --- | --- | --- |
 | Transcendent | nicht modelliert | Ergo Sum, Tessellation |
+| blighted | nicht modelliert | One Thousand Voices |
 | Burning Ambition | fremder Perk | Wolfsbane |
 | Celestial Nighthawk | Exotic-Rüstung | Still Hunt |
 | Hail the Storm | Artefakt | Salvation's Grip |
@@ -250,6 +258,7 @@ Exotic-Rüstung, deren Intrinsic den Waffentyp nennt, und Abilities, die Intrins
 | Lorentz Driver | Rain of Fire | – |
 | Merciless | Rain of Fire | – |
 | Microcosm | Cenotaph Mask | super |
+| One Thousand Voices | Rain of Fire | – |
 | Praxic Blade | Stronghold | – |
 | Prometheus Lens | Cenotaph Mask | – |
 | Ruinous Effigy | Cenotaph Mask | – |

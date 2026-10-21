@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import rawEffects from "../src/data/effects.json";
-import raw from "../src/data/weapons/one-thousand-voices.json";
+import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { canProvide, effectsFor } from "../src/engine/providers";

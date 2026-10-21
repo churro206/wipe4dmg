@@ -10,8 +10,8 @@ import rawRows from "../src/data/aegis-abilities.json";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import rawArmor from "../src/data/exotic-armor.json";
+import rawKeywords from "../src/data/keywords.json";
 import rawManifest from "../src/data/manifest-abilities.json";
-import rawPackages from "../src/data/weapon-packages.json";
 import {
   AegisAbilityRow,
   ExoticArmorEntry,
@@ -26,10 +26,12 @@ import {
   loadBuckets,
   loadEffects,
 } from "../src/engine/loadData";
-import { loadWeapons } from "../src/engine/loadWeapon";
+import { loadWeapon, loadWeapons } from "../src/engine/loadWeapon";
+import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate } from "../src/engine/simulate";
 import { hasCatalyst } from "../src/engine/weaponInfo";
-import { rawWeapons, weaponById } from "./support/weapons";
+import rawHandModel from "./fixtures/one-thousand-voices-hand-model.json";
+import { rawWeapons } from "./support/weapons";
 
 const SNAPSHOT = "./__snapshots__/mechanics-baseline.json";
 const DAMAGE_PHASES_SECONDS = [30, 600]; // a short damage phase and full ammo
@@ -48,8 +50,13 @@ const abilities = loadAbilities(
   { effects, buckets },
 );
 const armor = ExoticArmorEntry.array().parse(rawArmor);
-const weapons = loadWeapons([...rawWeapons, ...rawPackages]);
-const otv = weaponById("one-thousand-voices");
+const weapons = loadWeapons(rawWeapons);
+// Abilities and exotics run next to the former hand model, so their values stay comparable.
+const otv = loadWeapon(rawHandModel);
+const keywords = loadKeywords(
+  rawKeywords,
+  AegisAbilityRow.array().parse(rawRows),
+);
 const buffed = BUFFED_EFFECT_IDS.map((id) => effects.find((e) => e.id === id)!);
 
 const round = (value: number) => Math.round(value * 100) / 100;
@@ -75,7 +82,7 @@ function weaponTotals(weapon: Weapon): Record<string, number | string> {
         const key = `${seconds}s ${label}${catalyst ? " catalyst" : ""}`;
         result[key] = total(
           () =>
-            simulate(weapon, seconds, selected, buckets, { catalyst })
+            simulate(weapon, seconds, selected, buckets, { catalyst, keywords })
               .totalDamage,
         );
       }

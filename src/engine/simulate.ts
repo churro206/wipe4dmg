@@ -358,7 +358,17 @@ export function simulate(
   ) => {
     if (keyword.damageCategory === "inheritsSource") {
       if (source.damageSource === "weapon") {
-        return multiplierAt(timeMs, keyword.element);
+        // Weapon options (catalyst, perks) stay with the shots: their factors come from values
+        // per shot without the ignitions (ADR 0015, U4a-4).
+        return combinedMultiplier(
+          partsAt(timeMs, included).multiplierParts,
+          buckets,
+          {
+            damageSource,
+            element: keyword.element,
+            weaponType: weapon.weaponType,
+          },
+        );
       }
       if (
         source.damageSource !== "melee" &&

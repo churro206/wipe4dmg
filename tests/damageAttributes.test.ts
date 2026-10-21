@@ -7,7 +7,6 @@ import rawRows from "../src/data/aegis-abilities.json";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import rawManifest from "../src/data/manifest-abilities.json";
-import rawPackages from "../src/data/weapon-packages.json";
 import {
   AegisAbilityRow,
   DamageSource,
@@ -124,8 +123,8 @@ describe("scale of a damage value", () => {
   });
 
   it("is known for every damage value of weapons and abilities", () => {
-    const weaponValues = loadWeapons([...rawWeapons, ...rawPackages]).flatMap(
-      (w) => w.damageInstances.map((d) => [w.id, d.damagePerTick] as const),
+    const weaponValues = loadWeapons(rawWeapons).flatMap((w) =>
+      w.damageInstances.map((d) => [w.id, d.damagePerTick] as const),
     );
     const abilityValues = abilities.flatMap((a) =>
       a.components.map((c) => [a.id, c.damagePerTick] as const),

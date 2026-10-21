@@ -28,8 +28,9 @@ describe("hasCatalyst", () => {
 });
 
 describe("hasIgnition", () => {
-  it("is true only for weapons with a threshold part", () => {
+  it("is true for weapons that apply scorch or have a threshold part", () => {
     expect(hasIgnition(otv)).toBe(true);
+    expect(hasIgnition(pkg("Two-Tailed Fox"))).toBe(true);
     expect(hasIgnition(pkg("Truth"))).toBe(false);
   });
 });

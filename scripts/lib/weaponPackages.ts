@@ -12,6 +12,7 @@ import type {
   AegisWeaponSnapshot,
   CompendiumEntry,
   Effect,
+  KeywordData,
   ManifestArmorPiece,
   ManifestTerms,
   ManifestWeapon,
@@ -45,7 +46,7 @@ export type WeaponImportInputs = {
   terms: ManifestTerms["terms"];
   compendium: CompendiumEntry[];
   effects: Effect[];
-  handModelled: Weapon[];
+  keywords: KeywordData[];
   codes: Record<string, number>;
   clarity: ClarityEntry[];
   overrides: WeaponOverride[];
@@ -108,7 +109,6 @@ export type WeaponReport = {
   aegisRetrieved: string;
   quantumRetrieved: string;
   manifestVersion: string;
-  handModelled: string[];
   weapons: ReportWeapon[];
   assumptions: ReportAssumption[];
 };
@@ -204,6 +204,83 @@ function perkText(
     };
   }
   return null;
+}
+
+// Scorch from the Compendium text of an exotic weapon, e.g. "inflicts x60+30 Scorch" (base stacks
+// before Ember of Ashes), and a bonus on the ignitions it sets off (ADR 0015, U4a-4).
+const SCORCH = /\binflict(?:s|ing)? x(\d+)\+\d+ Scorch\b/i;
+const SCORCH_BONUS =
+  /Solar Effects that are initially applied by [^.]+? deal (\d+(?:\.\d+)?)% increased damage/i;
+// Quantum rows without ignitions, e.g. "Does not consider Scorch; without ignition".
+const WITHOUT_IGNITIONS = /without ignition|does not consider ignitions/i;
+const AEGIS_IGNITION_TICK = /\b(\d+) ignition\b/i;
+
+type ScorchRule = {
+  stacksPerShot: number;
+  quote: string;
+  bonus: { factor: number; quote: string } | null;
+  quantumRow: QuantumWeaponRow;
+};
+
+/**
+ * A weapon whose Compendium text applies scorch becomes a package with an appliesKeyword part, if
+ * Quantum has a row without ignitions: the shot comes from that row, the ignitions from the keyword
+ * run. An override may set the stacks per shot, e.g. 9 explosions of x10 for One Thousand Voices.
+ */
+function scorchRule(
+  weaponName: string,
+  compendium: CompendiumEntry[],
+  quantum: QuantumWeaponRow[],
+  override: WeaponOverride | undefined,
+): ScorchRule | null {
+  const text = compendium.find(
+    (e) => e.tab === "Exotic Weapons" && e.name.startsWith(weaponName),
+  )?.text;
+  const match = text ? SCORCH.exec(text) : null;
+  if (!text || !match) return null;
+  const quantumRow = quantum.find(
+    (r) =>
+      r.name === weaponName &&
+      r.variant === "" &&
+      WITHOUT_IGNITIONS.test(r.note),
+  );
+  if (!quantumRow) return null;
+  const bonus = SCORCH_BONUS.exec(text);
+  return {
+    stacksPerShot: override?.scorchStacksPerShot ?? Number(match[1]),
+    quote: match[0],
+    bonus: bonus
+      ? {
+          factor: Number((1 + Number(bonus[1]) / 100).toFixed(4)),
+          quote: bonus[0],
+        }
+      : null,
+    quantumRow,
+  };
+}
+
+/**
+ * Value per shot of an Aegis row without its ignitions. Aegis counts them in ("2814 ignition"); how
+ * many there were follows from the stacks per shot and the threshold, one ignition per full counter
+ * (the shots are further apart than the cooldown). Null if the row names no ignition.
+ */
+function perShotWithoutIgnitions(
+  row: AegisWeaponRow,
+  stacksPerShot: number,
+  threshold: number,
+): number | null {
+  const tick = AEGIS_IGNITION_TICK.exec(row.otherTicks)?.[1];
+  if (!tick) return null;
+  let stacks = 0;
+  let ignitions = 0;
+  for (let shot = 0; shot < row.shots; shot++) {
+    stacks += stacksPerShot;
+    if (stacks >= threshold) {
+      ignitions++;
+      stacks = 0;
+    }
+  }
+  return (row.wipe - ignitions * Number(tick)) / row.fullModifiers / row.shots;
 }
 
 const blockingReason = (classes: ReportAssumption[]): string =>
@@ -368,7 +445,6 @@ export function buildWeaponImport(
   inputs: WeaponImportInputs,
 ): WeaponImportResult {
   const effectNames = inputs.effects.map(({ id, name }) => ({ id, name }));
-  const handModelled = new Set(inputs.handModelled.map((w) => w.name));
   const aegisSource = (row: AegisWeaponRow, note?: string): Source => ({
     name: `${inputs.aegis.source.name}, row ${row.id}`,
     url: inputs.aegis.source.url,
@@ -392,15 +468,12 @@ export function buildWeaponImport(
   });
 
   const codes = { ...inputs.codes };
-  for (const weapon of inputs.handModelled) codes[weapon.id] ??= weapon.code;
   const packages: Weapon[] = [];
   const gaps: WeaponGap[] = [];
   const reportWeapons: ReportWeapon[] = [];
   const assumptions: ReportAssumption[] = [];
 
-  const scope = inputs.manifest.filter(
-    (w) => w.ammo !== "primary" && !handModelled.has(w.name),
-  );
+  const scope = inputs.manifest.filter((w) => w.ammo !== "primary");
   for (const manifest of scope) {
     const entry: ReportWeapon = {
       name: manifest.name,
@@ -579,6 +652,39 @@ export function buildWeaponImport(
     entry.includedEffectIds = included.filter((id) => !normalised.includes(id));
     entry.perShot = base.perShot / normaliseFactor;
 
+    // Scorch (ADR 0015, U4a-4): the shot from Quantum without ignitions, the ignitions from the
+    // keyword run. Aegis counts the ignitions into its rows.
+    const scorch = scorchRule(
+      manifest.name,
+      inputs.compendium,
+      inputs.quantum.rows,
+      override,
+    );
+    const ignitionThreshold = inputs.keywords.find(
+      (k) => k.trigger.type === "counter" && k.id === "ignition",
+    )?.trigger;
+    const withoutIgnitions = (row: AegisWeaponRow) =>
+      scorch &&
+      ignitionThreshold?.type === "counter" &&
+      ignitionThreshold.threshold.value
+        ? perShotWithoutIgnitions(
+            row,
+            scorch.stacksPerShot,
+            ignitionThreshold.threshold.value,
+          )
+        : null;
+    if (scorch) {
+      const q = scorch.quantumRow;
+      entry.perShot = q.totalDamage! / q.totalShots!;
+      entry.notes.push(
+        `Scorch: x${scorch.stacksPerShot} pro Shot („${scorch.quote}“${override?.scorchStacksPerShot ? ", Override" : ""}); Shot aus Quantum ohne Ignitions („${q.note}“): ${de(q.totalDamage!)} ÷ ${q.totalShots}`,
+      );
+      if (scorch.bonus)
+        entry.notes.push(
+          `Ignitions ×${de(scorch.bonus.factor, 3)} („${scorch.bonus.quote}“)`,
+        );
+    }
+
     // Options: rows that add only catalyst, perk or mod assumptions to the base row.
     const options: WeaponOption[] = [];
     for (const row of rows) {
@@ -617,7 +723,15 @@ export function buildWeaponImport(
           : null;
       const visual =
         row.shots === base.shots ? row.perShot / base.perShot : null;
-      const factor = perHit ?? visual;
+      // With scorch: values per shot without the ignitions Aegis counted in, so different numbers
+      // of shots compare.
+      const rowWithout = withoutIgnitions(row);
+      const baseWithout = withoutIgnitions(base);
+      const scorchFactor =
+        rowWithout !== null && baseWithout !== null && baseWithout > 0
+          ? rowWithout / baseWithout
+          : null;
+      const factor = scorchFactor ?? perHit ?? visual;
       if (factor === null) {
         entry.unusedRows.push({
           assumptions: row.assumptions,
@@ -837,11 +951,19 @@ export function buildWeaponImport(
         ? Math.abs(base.perShot / sustainedUsable[0].base - 1)
         : null,
     ]);
-    if (entry.scaleDeviation === null) {
+    if (scorch) {
+      entry.notes.push(
+        "Skala: Shot aus Quantum, keine Prüfung gegen Aegis (Aegis zählt Ignitions mit)",
+      );
+    } else if (entry.scaleDeviation === null) {
       gap("Skala nicht prüfbar: keine vergleichbaren Werte");
       continue;
     }
-    if (entry.scaleDeviation > TOLERANCE) {
+    if (
+      !scorch &&
+      entry.scaleDeviation !== null &&
+      entry.scaleDeviation > TOLERANCE
+    ) {
       gap(
         `Skala Aegis gegen Quantum weicht um ${(entry.scaleDeviation * 100).toFixed(1)} % ab`,
       );
@@ -856,6 +978,16 @@ export function buildWeaponImport(
         ? sustainedSource(timing.rowId, note)
         : quantumSource(timingQuantumRow, note);
     const id = slug(manifest.name);
+    const shotSource = (note?: string): Source =>
+      scorch ? quantumSource(scorch.quantumRow, note) : aegisSource(base, note);
+    const scorchSource = (quote: string, note?: string): Source => ({
+      name: `Destiny Data Compendium, Exotic Weapons (${manifest.name})`,
+      url: "https://destiny2.science/data-compendium",
+      retrieved: inputs.aegis.source.retrieved,
+      status: "verified",
+      quote,
+      ...(note ? { note } : {}),
+    });
     const weapon: Weapon = {
       id,
       code: codes[id] ?? 0, // set below
@@ -886,25 +1018,63 @@ export function buildWeaponImport(
       damageInstances: [
         {
           id: "shot",
-          name: "Shot (Aegis average)",
+          name: scorch
+            ? "Shot (Quantum, without ignitions)"
+            : "Shot (Aegis average)",
           delayMs: {
             value: 0,
-            source: aegisSource(base, "Package: one value per shot"),
+            source: shotSource("Package: one value per shot"),
           },
           damagePerTick: {
             value: Number(entry.perShot!.toFixed(3)),
-            source: aegisSource(
-              base,
-              `visual Value; assumptions: ${base.assumptions.join(", ") || "none"}`,
-            ),
+            source: scorch
+              ? quantumSource(
+                  scorch.quantumRow,
+                  `Total Damage / total shots; ${scorch.quantumRow.note}`,
+                )
+              : aegisSource(
+                  base,
+                  `visual Value; assumptions: ${base.assumptions.join(", ") || "none"}`,
+                ),
           },
-          ticks: { value: 1, source: aegisSource(base) },
-          tickIntervalMs: { value: 0, source: aegisSource(base) },
+          ticks: { value: 1, source: shotSource() },
+          tickIntervalMs: { value: 0, source: shotSource() },
           canPrecision: false,
           requiresCatalyst: false,
         },
       ],
-      intrinsicParts: [],
+      intrinsicParts: scorch
+        ? [
+            {
+              type: "appliesKeyword",
+              keywordId: "ignition",
+              damageSources: ["weapon"],
+              stacks: {
+                value: scorch.stacksPerShot,
+                source: scorchSource(
+                  scorch.quote,
+                  override?.scorchStacksPerShot
+                    ? `Per shot: ${override.reason}`
+                    : "Base stacks before Ember of Ashes",
+                ),
+              },
+              source: scorchSource(scorch.quote),
+            },
+          ]
+        : [],
+      ...(scorch?.bonus
+        ? {
+            keywordBonuses: [
+              {
+                keywordId: "ignition" as const,
+                factor: {
+                  value: scorch.bonus.factor,
+                  source: scorchSource(scorch.bonus.quote),
+                },
+              },
+            ],
+          }
+        : {}),
       intrinsics: manifest.intrinsics.map((name) => ({
         id: slug(name),
         name,
@@ -944,7 +1114,6 @@ export function buildWeaponImport(
       aegisRetrieved: inputs.aegis.source.retrieved,
       quantumRetrieved: inputs.quantum.source.retrieved,
       manifestVersion: inputs.manifestVersion,
-      handModelled: [...handModelled].sort(),
       weapons: reportWeapons,
       assumptions,
     },
@@ -973,7 +1142,7 @@ export function renderWeaponImport(report: WeaponReport): string {
     "",
     `Stand: Aegis ${report.aegisRetrieved}, Quantum ${report.quantumRetrieved} (Quantum nennt keinen Patch pro Zeile), Manifest ${report.manifestVersion}.`,
     "",
-    `Umfang: exotische Special- und Heavy-Waffen. **${packages.length} Pakete**, ${gaps.length} Lücken, von Hand modelliert: ${report.handModelled.join(", ") || "–"}.`,
+    `Umfang: exotische Special- und Heavy-Waffen. **${packages.length} Pakete**, ${gaps.length} Lücken.`,
     "",
     "## Pakete",
     "",

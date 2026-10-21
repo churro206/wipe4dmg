@@ -8,11 +8,19 @@ import rawReferenceMultipliers from "../src/data/reference-multipliers.json";
 import rawReferenceValues from "../src/data/reference-values.json";
 import { ReferenceMultiplier, ReferenceValue } from "../src/data/schema";
 import { activeParts, combinedMultiplier } from "../src/engine/effectParts";
+import rawAbilityRows from "../src/data/aegis-abilities.json";
+import rawKeywords from "../src/data/keywords.json";
+import { AegisAbilityRow } from "../src/data/schema";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
+import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate } from "../src/engine/simulate";
 import { weaponById } from "./support/weapons";
 
 const buckets = loadBuckets(rawBuckets);
+const keywords = loadKeywords(
+  rawKeywords,
+  AegisAbilityRow.array().parse(rawAbilityRows),
+);
 const effects = loadEffects(rawEffects);
 const byIds = (ids: string[]) =>
   ids.map((id) => {
@@ -42,6 +50,7 @@ describe("gate: total damage", () => {
         scenario.damagePhaseSeconds,
         byIds(scenario.effectIds),
         buckets,
+        { keywords },
       );
       expect(totalDamage).toBeGreaterThanOrEqual(reference.totalDamageMin);
       expect(totalDamage).toBeLessThanOrEqual(reference.totalDamageMax);
