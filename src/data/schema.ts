@@ -132,6 +132,17 @@ export type IconIndex = z.infer<typeof IconIndex>;
 export const CounterId = z.enum(["scorch"]);
 export type CounterId = z.infer<typeof CounterId>;
 
+/** Where a damage instance comes from; multiplier parts filter by it. */
+export const DamageSource = z.enum([
+  "weapon",
+  "grenade",
+  "melee",
+  "super",
+  "classAbility",
+  "keyword", // e.g. ignition, jolt, volatile (ADR 0015, point 5)
+]);
+export type DamageSource = z.infer<typeof DamageSource>;
+
 /** Keywords with damage of their own that the engine models (ADR 0015, point 5). */
 export const KeywordId = z.enum([
   "ignition",
@@ -160,6 +171,12 @@ export const KeywordTrigger = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("playerStacks"),
     stacks: SourcedNumber,
+    // hits that set it off: by damage source, or keyword damage of these keywords
+    dischargedBy: z.object({
+      damageSources: z.array(DamageSource),
+      keywordIds: z.array(KeywordId),
+      source: Source,
+    }),
   }),
 ]);
 export type KeywordTrigger = z.infer<typeof KeywordTrigger>;
@@ -295,15 +312,6 @@ export const WeaponGap = z.object({
 export type WeaponGap = z.infer<typeof WeaponGap>;
 
 /** What creates a damage instance. */
-export const DamageSource = z.enum([
-  "weapon",
-  "grenade",
-  "melee",
-  "super",
-  "classAbility",
-  "keyword", // e.g. ignition, jolt, volatile (ADR 0015, point 5)
-]);
-export type DamageSource = z.infer<typeof DamageSource>;
 
 /** Effect part that multiplies damage (ADR 0006). */
 export const MultiplierPart = z.object({
@@ -340,6 +348,7 @@ export const AppliesKeywordPart = z.object({
   weaponTypes: z.array(WeaponType).optional(),
   abilityIds: z.array(z.string()).optional(),
   durationMs: SourcedNumber.optional(), // replaces the duration of the keyword, e.g. of Unravel
+  stacks: SourcedNumber.optional(), // for keywords with stacks, e.g. x40 scorch or x4 bolt charge
   source: Source,
 });
 export type AppliesKeywordPart = z.infer<typeof AppliesKeywordPart>;

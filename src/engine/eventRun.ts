@@ -21,6 +21,8 @@ export type TargetState = {
   // End time of the last tick of each active damage over time source, per part id.
   activeSourcesUntilMs: Map<string, number[]>;
   keywords: Map<KeywordId, KeywordState>;
+  // Stacks on the player, e.g. bolt charge; kept here so every hit sees one state.
+  playerStacks: Map<KeywordId, number>;
 };
 
 export type Emit = (instance: TimedDamageInstance) => void;
@@ -53,6 +55,7 @@ export function runEvents(
     counters: new Map(),
     activeSourcesUntilMs: new Map(),
     keywords: new Map(),
+    playerStacks: new Map(),
   };
   const hits: TimedDamageInstance[] = [];
   let seq = 0;

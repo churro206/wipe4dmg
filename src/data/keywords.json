@@ -3,7 +3,10 @@
     "id": "ignition",
     "name": "Ignition",
     "element": "solar",
-    "compendium": { "tab": "Solar", "entry": "Ignition" },
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Ignition"
+    },
     "aegisRowId": "miscellaneous-ignition",
     "trigger": {
       "type": "counter",
@@ -37,7 +40,10 @@
     "id": "jolt",
     "name": "Jolt",
     "element": "arc",
-    "compendium": { "tab": "Arc", "entry": "Jolted" },
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Jolted"
+    },
     "aegisRowId": "miscellaneous-jolt",
     "trigger": {
       "type": "damageTaken",
@@ -81,7 +87,10 @@
     "id": "volatile",
     "name": "Volatile",
     "element": "void",
-    "compendium": { "tab": "Void", "entry": "Volatile" },
+    "compendium": {
+      "tab": "Void",
+      "entry": "Volatile"
+    },
     "aegisRowId": "miscellaneous-volatile",
     "trigger": {
       "type": "damageTaken",
@@ -125,7 +134,10 @@
     "id": "unravel",
     "name": "Unravel",
     "element": "strand",
-    "compendium": { "tab": "Strand", "entry": "Unravel" },
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Unravel"
+    },
     "aegisRowId": "miscellaneous-unravel-single-projectile",
     "trigger": {
       "type": "damageTaken",
@@ -169,7 +181,10 @@
     "id": "boltCharge",
     "name": "Bolt Charge",
     "element": "arc",
-    "compendium": { "tab": "Arc", "entry": "Bolt Charge" },
+    "compendium": {
+      "tab": "Arc",
+      "entry": "Bolt Charge"
+    },
     "aegisRowId": "miscellaneous-bolt-charge",
     "trigger": {
       "type": "playerStacks",
@@ -181,6 +196,18 @@
           "retrieved": "2026-10-21",
           "status": "verified",
           "quote": "scoring an Ability Hit or dealing Unpowered Melee Damage while at x10 Bolt Charge stacks"
+        }
+      },
+      "dischargedBy": {
+        "damageSources": ["grenade", "melee", "super", "classAbility"],
+        "keywordIds": ["volatile", "unravel"],
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Bolt Charge)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Volatile Explosions | Freeze Shatter (Not auto-shatter on Bosses) | Tangle Explosions | Threadlings | Unraveling Threads",
+          "note": "Ability hits set it off (\"scoring an Ability Hit or dealing Unpowered Melee Damage while at x10 Bolt Charge stacks\"), and the listed keyword damage. Jolt and ignitions from non-abilities do not (\"Do NOT trigger Discharge: Jolt's Chain Lightning | Scorch and Ignitions (from Non-Abilities)\"). Unpowered melee is not modelled."
         }
       }
     },

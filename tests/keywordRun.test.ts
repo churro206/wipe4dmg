@@ -8,6 +8,8 @@ import rawEffects from "../src/data/effects.json";
 import rawKeywords from "../src/data/keywords.json";
 import {
   AegisAbilityRow,
+  type Ability,
+  type DamageSource,
   type Effect,
   type KeywordId,
 } from "../src/data/schema";
@@ -110,5 +112,123 @@ describe("multipliers on keyword damage", () => {
     expect(volatileDamage([effect("surge-3x")])).toBeCloseTo(
       damageOf("volatile"),
     );
+  });
+});
+
+/** Effect that applies stacks of a keyword with every hit of the given sources; not game data. */
+const stacksOf = (
+  keywordId: KeywordId,
+  stacks: number,
+  damageSources: DamageSource[] = ["weapon"],
+): Effect => ({
+  id: `test-stacks-${keywordId}`,
+  name: "test",
+  code: 9102,
+  shortName: "test",
+  providers: [{ kind: "fireteamSupport" }],
+  parts: [
+    {
+      type: "appliesKeyword",
+      keywordId,
+      damageSources,
+      stacks: { value: stacks, source },
+      source,
+    },
+  ],
+});
+
+/** Ability with one hit right at the cast; not game data. */
+const testAbility = (kind: "grenade" | "melee"): Ability => ({
+  id: `test-${kind}`,
+  code: 9103,
+  name: "test",
+  kind,
+  element: "solar",
+  providers: [
+    { kind: "subclass", classes: ["warlock"], subclasses: ["solar"] },
+  ],
+  components: [
+    {
+      id: "hit",
+      name: "Hit",
+      delayMs: { value: 0, source },
+      damagePerTick: { value: 1000, source },
+      ticks: { value: 1, source },
+      tickIntervalMs: { value: 0, source },
+      scalesWithAbilityStat: false,
+    },
+  ],
+});
+
+describe("ignition through scorch stacks", () => {
+  it("goes off at x100 scorch, inheriting the bonuses of the weapon hit", () => {
+    // x40 per hit: 0 -> 40, 3000 -> 80, 6000 -> 120 = ignition; 9000 -> 40, 12000 -> 80
+    const plain = keywordHits([stacksOf("ignition", 40)]);
+    expect(plain.map((d) => d.timeMs)).toEqual([6000]);
+    expect(plain[0]).toMatchObject({
+      keywordId: "ignition",
+      element: "solar",
+      damage: damageOf("ignition"),
+    });
+    const shot = (selected: Effect[]) =>
+      run(selected).damageInstances.find((d) => d.damageSource === "weapon")!
+        .damage;
+    const surgeFactor = shot([effect("surge-3x")]) / shot([]);
+    const surged = keywordHits([stacksOf("ignition", 40), effect("surge-3x")]);
+    expect(surged[0].damage).toBeCloseTo(damageOf("ignition") * surgeFactor);
+  });
+
+  it("Ember of Ashes adds 50 % to the stacks, rounded up", () => {
+    const hits = keywordHits([
+      stacksOf("ignition", 40),
+      effect("ember-of-ashes"),
+    ]);
+    expect(hits.map((d) => d.timeMs)).toEqual([3000, 9000]);
+  });
+
+  it("melee buffs do not scale the ignition of a melee hit", () => {
+    const meleeBuff: Effect = {
+      id: "test-melee-buff",
+      name: "test",
+      code: 9104,
+      shortName: "test",
+      providers: [{ kind: "fireteamSupport" }],
+      parts: [
+        {
+          type: "multiplier",
+          bucketId: "empowering",
+          multiplier: { value: 2, source },
+          damageSources: ["melee"],
+        },
+      ],
+    };
+    const ignition = (selected: Effect[]) =>
+      keywordHits([stacksOf("ignition", 100, ["melee"]), ...selected], {
+        abilities: [{ ability: testAbility("melee"), castsMs: [0] }],
+      })[0];
+    expect(ignition([meleeBuff]).damage).toBeCloseTo(ignition([]).damage);
+  });
+});
+
+describe("bolt charge", () => {
+  const withGrenadeAt = (castMs: number) => ({
+    abilities: [{ ability: testAbility("grenade"), castsMs: [castMs] }],
+  });
+
+  it("an ability hit at x10 stacks discharges it after 0.5 s and uses up the stacks", () => {
+    const hits = keywordHits([stacksOf("boltCharge", 10)], withGrenadeAt(4000));
+    expect(hits.map((d) => d.timeMs)).toEqual([4500]);
+    expect(hits[0]).toMatchObject({
+      keywordId: "boltCharge",
+      element: "arc",
+      damage: damageOf("boltCharge"),
+    });
+  });
+
+  it("does not discharge below x10 stacks or without an ability hit", () => {
+    expect(
+      keywordHits([stacksOf("boltCharge", 4)], withGrenadeAt(4000)),
+    ).toEqual([]);
+    expect(keywordHits([stacksOf("boltCharge", 10)])).toEqual([]);
   });
 });

@@ -38,6 +38,7 @@ import type {
   Effect,
   Element,
   Keyword,
+  KeywordId,
   MultiplierPart,
   Weapon,
   WeaponType,
@@ -80,7 +81,7 @@ export type TimedDamageInstance = {
   element: Element;
   abilityId?: string; // set for damage instances of an ability
   weaponType?: WeaponType; // set for damage instances of the weapon
-  keywordId?: string; // set for keyword damage, e.g. ignition (ADR 0015, point 5)
+  keywordId?: KeywordId; // set for keyword damage, e.g. ignition (ADR 0015, point 5)
   delivery?: Delivery; // impact, splash or dot, where the data names it
 };
 
@@ -329,10 +330,28 @@ export function simulate(
     );
   }
   // Keyword damage (ADR 0015): parts for keyword damage apply, for an ability keyword also parts
-  // for all abilities at once; inheriting the bonuses of the source comes with ignition.
-  const keywordMultiplierAt = (timeMs: number, keyword: Keyword) => {
+  // for all abilities at once. Ignition inherits the bonuses of the hit that applied the scorch, in
+  // the element of the keyword; melee buffs do not count ("Melee Damage Buffs do not scale
+  // Ignition nor Scorch damage", Compendium), so a melee source counts like keyword damage.
+  const keywordMultiplierAt = (
+    timeMs: number,
+    keyword: Keyword,
+    source: TimedDamageInstance,
+  ) => {
     if (keyword.damageCategory === "inheritsSource") {
-      throw new Error(`Keyword "${keyword.id}" is not modelled yet`);
+      if (source.damageSource === "weapon") {
+        return multiplierAt(timeMs, keyword.element);
+      }
+      if (
+        source.damageSource !== "melee" &&
+        source.damageSource !== "keyword"
+      ) {
+        return combinedMultiplier(partsAt(timeMs).multiplierParts, buckets, {
+          damageSource: source.damageSource,
+          element: keyword.element,
+          abilityId: source.abilityId,
+        });
+      }
     }
     const parts = partsAt(timeMs)
       .multiplierParts.filter(
@@ -355,6 +374,7 @@ export function simulate(
       keywords: options.keywords ?? [],
       keywordPartsAt: (timeMs) => partsAt(timeMs).keywordParts,
       multiplierAt: keywordMultiplierAt,
+      stackFactorAt: counterFactorAt,
       isInPhase,
     }),
   );

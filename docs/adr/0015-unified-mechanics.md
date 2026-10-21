@@ -59,6 +59,8 @@ Eine Recherche (Skill `recherche`, 2026-10-21) hat den Umbau gegen die Quellen g
 - Volatile und andere Keywords, die beim Auslösen entfernt werden: Während des Cooldowns lassen sie sich nicht neu setzen (Compendium: „1 second cooldown before Volatile can be reapplied“).
 - Global Debuffs (Court) wirken auf jeden Schaden. Ihre Teile nennen deshalb auch `classAbility` und `keyword`. Auf Keyword-Schaden wirken Teile für `keyword`. Bei einem Ability-Keyword (Volatile, „Void Ability Damage“) wirken zusätzlich Teile, die für Grenade, Melee und Super zugleich gelten.
 - Annahmen bei Unravel, beide als `unverified` markiert: Der setzende Treffer zählt mit, wie bei Jolt, denn das Compendium sagt dazu nichts. Aegis misst nur ein Projektil („single projectile“, 39,1). Wie viele der drei Fäden einen einzelnen Boss treffen, ist offen; gezählt wird eines.
+- Ignition (U4a-3): Scorch-Stapel aus `appliesKeyword`-Teilen landen im selben Zähler wie das Scorch der Waffe. Counter Modifier wie Ember of Ashes wirken darauf, aufgerundet. Die Ignition erbt die Boni des Treffers, der den Zähler voll gemacht hat, im Element Solar. Ist dieser Treffer ein Melee oder ein Keyword-Treffer, zählt die Ignition wie Keyword-Schaden (Compendium: „Melee Damage Buffs do not scale Ignition nor Scorch damage“). Den Bonus des Ability-Stats erbt sie nicht.
+- Bolt Charge (U4a-3): Die Stapel sind auf die Auslöse-Zahl (x10) begrenzt. Das Compendium beschreibt Stapel über x10 nur als Energie-Gewinn. Entladen wird sie durch Ability-Treffer und durch Volatile- und Unravel-Schaden, nicht durch Jolt oder Ignition (Compendium: „Triggers Discharge“ / „Do NOT trigger Discharge“). Unpowered Melee ist nicht modelliert.
 
 ## Bewusst später
 
