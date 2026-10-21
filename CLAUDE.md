@@ -63,7 +63,15 @@ tests/         Vitest-Tests für die Engine. Helfer für generierte Dokumente in
 
 Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. wenn ein Wunsch dem Ziel, den Regeln oder einem ADR widerspricht oder der Aufwand den Nutzen übersteigt.
 
-## Aktueller Stand (2026-10-20)
+## Aktueller Stand (2026-10-21)
+
+**Neu am 2026-10-21 (zuerst lesen):**
+- **Jetzt: Umbau nach ADR 0015 „Einheitliches Mechanik-Modell“ (angenommen).** Plan: U1 Snapshot-Test aller Waffen-Pakete und Gate-Builds als Vergleichsbasis (dazu prüfen, ob Heat-Waffen im Import sind) → U2 Merkmale der Damage Instance (`delivery`, `classAbility`, `keyword`) und Skala-Felder → U3 Ereignis-Lauf mit Ziel- und Spieler-Zustand → U4 Auslöser, `appliesKeyword`, `keywords.json` (Scorch/Ignition, Jolt, Volatile, Bolt Charge; Datentabelle zur Freigabe) → U5 eingebackene Keywords aus Ability-Paketen herausrechnen → U6 Exotic-Effekte erzeugen (Ziel aus Zitat, Court-Stufen, Bedingungen, Ability-Varianten), Exotic Class Items mit zwei Perks (nur Prismatic), Melee-Bucket additiv → U7 Timing (`refillOnCast`, Class Ability in der Rotation, `magazineRefill`; weggelassen: Reload Speed ohne Faktor, Magazin nach Sprint) → U8 Link-Format 4 und Auswahl „Exotic“ in der Oberfläche.
+- **Exotic-Rüstung (ADR 0014):** `npm run import:court` (Court-Snapshot mit Kategorien), Compendium-Reiter „Exotic Armors“, `npm run build:armor` ordnet 141 Exotics per Regeln ein (Prüftabelle `docs/armor-import.md`): 15 Ability-Varianten, 42 Schadens-Buffs, 2 Effect-Geber, 2 Waffen-Timing, 31 eigener Schaden (später), 21 nur Energie (Lücke), 14 Lücken (7 Melee, 7 Timing), 14 ohne Wirkung. Engine: `Build.exoticArmorId`, `src/engine/exoticArmor.ts`, Ability-Varianten (`variantOf`, `exoticArmorId`), Timing `reloadDuration` (nur stärkster Faktor), Bedingung `weaponMatchesSuperElement`. Weapons of Light: `banner-shield` umbenannt, ganze Phase aktiv (Annahme: wird aufgefrischt).
+- **Entscheidungen des Inhabers:** Exotics, die Schaden in keiner Weise beeinflussen, fallen weg; Energie-Exotics als Lücke; eigene Damage Instances von Exotics später; Reddit-Einzelwerte vom Inhaber erlaubt (ADR 0014, Punkt 9). Super-Zeitwerte (Golden Gun, Cast) weiter ohne Quelle.
+- **Arbeitsweise:** Skill `recherche` (`.claude/skills/recherche/SKILL.md`, Quellenkatalog) vor jeder Lücke; große Umbauten vorher per Recherche absichern. Oberfläche U4 erledigt (Logo, Instrument Sans, `docs/ui-inspiration.md`).
+
+**Stand bis 2026-10-20:**
 
 Für die nächste Session. Details: `docs/roadmap.md`, `docs/coverage.md`, `git log`.
 

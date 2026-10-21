@@ -1,6 +1,6 @@
 # ADR 0015: Einheitliches Mechanik-Modell
 
-Status: vorgeschlagen · Datum: 2026-10-21
+Status: angenommen · Datum: 2026-10-21
 
 ## Kontext
 
