@@ -9,10 +9,10 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Schadens-Buffs (Regeln 2 bis 4) | 42 |
 | Geben einen Effect (Regel 4c) | 2 |
 | Waffen-Timing (Regel 5) | 2 |
-| Eigener Schaden, kommt später (Regel 5) | 25 |
-| Nur Energie, Modell fehlt (Regel 5) | 18 |
-| Lücken (Regeln 3 bis 5) | 26 |
-| Ohne Schadenswirkung (Regeln 5 und 6) | 11 |
+| Eigener Schaden, kommt später (Regel 5) | 31 |
+| Nur Energie, Modell fehlt (Regel 5) | 21 |
+| Lücken (Regeln 3 bis 5) | 14 |
+| Ohne Schadenswirkung (Regeln 5 und 6) | 14 |
 
 ## Ability-Varianten (Regel 1)
 
@@ -101,27 +101,33 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | --- | --- | --- | --- | --- |
 | Abeyant Leap | titan | legs | 5 | eigener Schaden („detonat“), Damage Instances von Exotics kommen später |
 | ACD/0 Feedback Fence | titan | gauntlets | 5 | eigener Schaden („Jolt“), Damage Instances von Exotics kommen später |
+| Arbor Warden | titan | chest | 5 | eigener Schaden („Bolt Charge“), Damage Instances von Exotics kommen später |
 | Ashen Wake | titan | gauntlets | 5 | eigener Schaden („detonat“), Damage Instances von Exotics kommen später |
+| Balance of Power | hunter | legs | 5 | eigener Schaden („Threadling“), Damage Instances von Exotics kommen später |
 | Blastwave Striders | titan | legs | 5 | eigener Schaden („dealing 623“), Damage Instances von Exotics kommen später |
 | Caliban's Hand | hunter | gauntlets | 5 | eigener Schaden („Scorch“), Damage Instances von Exotics kommen später |
 | Crown of Tempests | warlock | helmet | 5 | eigener Schaden („Jolt“), Damage Instances von Exotics kommen später |
 | Dunemarchers | titan | legs | 5 | eigener Schaden („deals 220“), Damage Instances von Exotics kommen später |
 | Khepri's Horn | titan | helmet | 5 | eigener Schaden („deals 480“), Damage Instances von Exotics kommen später |
+| Loreley Splendor Helm | titan | helmet | 5 | eigener Schaden („Sunspot“), Damage Instances von Exotics kommen später |
 | Lucky Raspberry | hunter | chest | 5 | eigener Schaden („Jolt“), Damage Instances von Exotics kommen später |
 | Mask of Fealty | hunter | helmet | 5 | eigener Schaden („Projectile“), Damage Instances von Exotics kommen später |
 | Mataiodoxía | warlock | chest | 5 | eigener Schaden („Deals 269“), Damage Instances von Exotics kommen später |
 | Melas Panoplia | titan | gauntlets | 5 | eigener Schaden („explosion“), Damage Instances von Exotics kommen später |
+| Mk. 44 Stand Asides | titan | legs | 5 | eigener Schaden („Bolt Charge“), Damage Instances von Exotics kommen später |
 | Moirai | hunter | chest | 5 | eigener Schaden („detonat“), Damage Instances von Exotics kommen später |
 | Mothkeeper's Wraps | hunter | gauntlets | 5 | eigener Schaden („detonat“), Damage Instances von Exotics kommen später |
 | Nothing Manacles | warlock | gauntlets | 5 | eigener Schaden („explosion“), Damage Instances von Exotics kommen später |
+| Phoenix Cradle | titan | legs | 5 | eigener Schaden („Sunspot“), Damage Instances von Exotics kommen später |
 | Praxic Vestment | titan | chest | 5 | eigener Schaden („Deals up to 168“), Damage Instances von Exotics kommen später |
 | Renewal Grasps | hunter | gauntlets | 5 | eigener Schaden („deal 50“), Damage Instances von Exotics kommen später |
 | Rime-coat Raiment | warlock | chest | 5 | eigener Schaden („Projectile“), Damage Instances von Exotics kommen später |
 | Severance Enclosure | titan | chest | 5 | eigener Schaden („Explosion“), Damage Instances von Exotics kommen später |
-| Shinobu's Vow | hunter | gauntlets | 5 | eigener Schaden („explosion“), Damage Instances von Exotics kommen später |
+| Shinobu's Vow | hunter | gauntlets | 5 | eigener Schaden („Bolt Charge“), Damage Instances von Exotics kommen später |
 | Skull of Dire Ahamkara | warlock | helmet | 5 | eigener Schaden („deals up to 2269“), Damage Instances von Exotics kommen später |
+| Solipsism | warlock | classItem | 5 | eigener Schaden („Threadling“), Damage Instances von Exotics kommen später |
 | Stoicism | titan | classItem | 5 | eigener Schaden („explosion“), Damage Instances von Exotics kommen später |
-| Swarmers | warlock | legs | 5 | eigener Schaden („Unravel“), Damage Instances von Exotics kommen später |
+| Swarmers | warlock | legs | 5 | eigener Schaden („Threadling“), Damage Instances von Exotics kommen später |
 | The Bombardiers | hunter | legs | 5 | eigener Schaden („explodes“), Damage Instances von Exotics kommen später |
 | Vesper of Radius | warlock | chest | 5 | eigener Schaden („deals 360“), Damage Instances von Exotics kommen später |
 
@@ -133,18 +139,21 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Apotheosis Veil | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Astrocyte Verse | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Crest of Alpha Lupi | titan | chest | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Eye of Another World | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Fallen Sunstar | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Getaway Artist | warlock | gauntlets | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Graviton Forfeit | hunter | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Icefall Mantle | titan | gauntlets | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
-| Loreley Splendor Helm | titan | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Mask of the Quiet One | titan | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Nezarec's Sin | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Omnioculus | hunter | chest | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Osmiomancy Gloves | warlock | gauntlets | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Phoenix Protocol | warlock | chest | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Radiant Dance Machines | hunter | legs | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Secant Filaments | warlock | legs | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Speaker's Sight | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Starfire Protocol | warlock | chest | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Stronghold | titan | gauntlets | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | The Stag | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Ursa Furiosa | titan | gauntlets | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 
@@ -152,30 +161,18 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 
 | Exotic | Klasse | Slot | Regel | Grund |
 | --- | --- | --- | --- | --- |
-| Arbor Warden | titan | chest | 5 | Text nennt Schaden, aber keinen klaren Bonus |
-| Armamentarium | titan | chest | 5 | Timing ohne Faktor („Refill“), Modell fehlt |
+| Armamentarium | titan | chest | 5 | Timing ohne Faktor („On Grenade Ability Usage: Refills Magazine / Dissipates 100% Heat“), bei Grenade-Einsatz; Modell fehlt |
 | Athrys's Embrace | hunter | gauntlets | 3 | nur Melee-Boni (compendium: „300% [100%] increased Weighted Throwing Knife damage“; clarity: „300% [100%] Increased Damage“); Melee-Buffs addieren sich, Modell fehlt |
-| Balance of Power | hunter | legs | 5 | Text nennt Schaden, aber keinen klaren Bonus |
-| Cenotaph Mask | warlock | helmet | 5 | Timing ohne Faktor („refill“), Modell fehlt |
-| Gemini Jester | hunter | legs | 5 | Text nennt Schaden, aber keinen klaren Bonus |
-| Hoarfrost-Z | titan | chest | 5 | Timing ohne Faktor („reload“), Modell fehlt |
+| Cenotaph Mask | warlock | helmet | 5 | Timing ohne Faktor („Trace Rifles refill 4% of their Magazine every 0.7 seconds“), Modell fehlt |
+| Hoarfrost-Z | titan | chest | 5 | Timing ohne Faktor („When used with Thruster: Standing behind this barricade will grant you and your allies increased weapon reload speed, stability, and range“), Reload Speed ohne Faktor; Umrechnung in Zeit ohne Quelle |
 | Liar's Handshake | hunter | gauntlets | 3 | nur Melee-Boni (compendium: „400% increased Melee Damage“; clarity: „400% additional base Melee damage“); Melee-Buffs addieren sich, Modell fehlt |
-| Lion Rampant | titan | legs | 5 | Timing ohne Faktor („ammo“), Modell fehlt |
-| Mk. 44 Stand Asides | titan | legs | 5 | Text nennt Schaden, aber keinen klaren Bonus |
-| One-Eyed Mask | titan | helmet | 5 | Text nennt Schaden, aber keinen klaren Bonus |
 | Ophidia Spathe | hunter | chest | 4 | nur Melee-Boni (compendium: „67% \| 133% \| 200% Increased Throwing Knife Damage“); Melee-Buffs addieren sich, Modell fehlt |
-| Ophidian Aspect | warlock | gauntlets | 5 | Timing ohne Faktor („Reload“), Modell fehlt |
-| Phoenix Cradle | titan | legs | 5 | Text nennt Schaden, aber keinen klaren Bonus |
+| Ophidian Aspect | warlock | gauntlets | 5 | Timing ohne Faktor („Passively grants +35 Handling, +35 Reload Speed, and +10 Airborne Effectiveness“), Reload Speed ohne Faktor; Umrechnung in Zeit ohne Quelle |
 | Point-Contact Cannon Brace | titan | gauntlets | 4 | nur Melee-Boni (compendium: „Lightning Damage is increased by 100%“); Melee-Buffs addieren sich, Modell fehlt |
-| Precious Scars | titan | helmet | 5 | Text nennt Schaden, aber keinen klaren Bonus |
-| Radiant Dance Machines | hunter | legs | 5 | Timing ohne Faktor („ammo“), Modell fehlt |
-| Relativism | hunter | classItem | 5 | Timing ohne Faktor („reload“), Modell fehlt |
-| St0mp-EE5 | hunter | legs | 5 | Text nennt Schaden, aber keinen klaren Bonus |
-| Stronghold | titan | gauntlets | 5 | Timing ohne Faktor („Ammo“), Modell fehlt |
-| The Dragon's Shadow | hunter | chest | 5 | Timing ohne Faktor („Reload“), Modell fehlt |
-| Transversive Steps | warlock | legs | 5 | Timing ohne Faktor („Refill“), Modell fehlt |
+| Relativism | hunter | classItem | 5 | Timing ohne Faktor („Using your class ability temporarily increases this benefit and reloads your equipped weapon from reserves“), per Class Ability; Class Abilities sind nicht in der Rotation |
+| The Dragon's Shadow | hunter | chest | 5 | Timing ohne Faktor („On Class Ability Usage: Reloads all weapons and picks up Ammo Bricks within 15 meters“), per Class Ability; Class Abilities sind nicht in der Rotation |
+| Transversive Steps | warlock | legs | 5 | Timing ohne Faktor („Upon sprinting for 1.5 seconds: Refills 100% of Magazine/Dissipates 100% Heat of Readied Weapon“), Modell fehlt |
 | Triton Vice | hunter | gauntlets | 3 | nur Melee-Boni (compendium: „200% Increased Glaive Melee Damage“; clarity: „200% increased Glaive Melee Damage“); Melee-Buffs addieren sich, Modell fehlt |
-| Wings of Sacred Dawn | warlock | chest | 5 | Timing ohne Faktor („refill“), Modell fehlt |
 | Winter's Guile | warlock | gauntlets | 3 | nur Melee-Boni (compendium: „400% increased Melee Damage“; clarity: „67.5% \| 122% \| 166% \| 202% \| 228% \| 249% \| 265% \| 278% \| 289% \| 300% Additional Base Melee Damage“; clarity: „400% Additional Base Melee Damage“); Melee-Buffs addieren sich, Modell fehlt |
 | Wishful Ignorance | titan | gauntlets | 3 | nur Melee-Boni (compendium: „25% \| 60% \| 120% Increased Flechette Storm and Frenzied Blade damage“; clarity: „25%\|60%\|120% increased Frenzied Blade and Flechette Storm damage“); Melee-Buffs addieren sich, Modell fehlt |
 
@@ -188,9 +185,12 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Aeon Swift | hunter | gauntlets | 6 | kein Schadenswort im Text |
 | Assassin's Cowl | hunter | helmet | 6 | kein Schadenswort im Text |
 | Cyrtarachne's Facade | hunter | helmet | 6 | kein Schadenswort im Text |
-| Eye of Another World | warlock | helmet | 6 | kein Schadenswort im Text |
-| Graviton Forfeit | hunter | helmet | 6 | kein Schadenswort im Text |
+| Gemini Jester | hunter | legs | 6 | kein Schadenswort im Text |
 | Helm of Saint-14 | titan | helmet | 5 | verlängert banner-shield („Weapons of Light from Ward of Dawn can now persist“); das Modell hält auffrischbare Buffs ohnehin die ganze Damage Phase aktiv |
 | Karnstein Armlets | warlock | gauntlets | 6 | kein Schadenswort im Text |
-| Solipsism | warlock | classItem | 6 | kein Schadenswort im Text |
+| Lion Rampant | titan | legs | 6 | kein Schadenswort im Text |
+| One-Eyed Mask | titan | helmet | 6 | kein Schadenswort im Text |
+| Precious Scars | titan | helmet | 6 | kein Schadenswort im Text |
+| St0mp-EE5 | hunter | legs | 6 | kein Schadenswort im Text |
 | The Sixth Coyote | hunter | chest | 6 | kein Schadenswort im Text |
+| Wings of Sacred Dawn | warlock | chest | 5 | betrifft nur verstaute Waffen („Tome of Dawn: Solar Weapon Kills grant Restoration x1 for ? seconds and refill stowed weapons“); das Modell rechnet mit einer Waffe |

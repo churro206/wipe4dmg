@@ -64,12 +64,29 @@ const BONUS_PATTERNS = [
 ];
 const MELEE_WORDS = ["melee", "knife", "knives"];
 const RESIST = /damage (resist(ance)?|reduction)/gi;
+// Phrases that name damage without dealing or changing it: damage taken as a trigger, "~0 damage"
+const NOT_DEALT =
+  /(?:receiving|received|taking|takes|taken|take less|blocking)\s+damage|enemy that dealt damage|damage (?:taken|received|you|type|falloff)|deals? ~0 damage/gi;
+// Damage dealt only as a trigger, e.g. "Upon dealing Sword damage …"; checked after own damage
+const DEALING_TRIGGER = /dealing (?:[A-Za-z]+ ){0,2}damage/gi;
 const DAMAGE_WORD = /damage|surge|weaken|ignit|radiant|empower|amplif|debuff/i;
 const OWN_DAMAGE =
-  /\bdeal(?:s|ing)?\s+(?:up to\s+)?[\d,]+|explo(?:sion|des?)|detonat|projectile|scorch|ignit|\bjolt|unravel/i;
+  /\bdeal(?:s|ing)?\s+(?:up to\s+)?[\d,]+|explo(?:sion|des?)|detonat|projectile|scorch|ignit|\bjolt|unravel|bolt charge|sunspot|threadling/i;
+// Ammo types name weapons, not ammo, e.g. "weapons that use Primary ammo"
+const AMMO_TYPE = /\b(?:primary|special|heavy)\s+ammo\b/gi;
 const TIMING_WORD =
   /reload|magazine|\bammo\b|rate of fire|fire rate|\brpm\b|charge time|draw time|refill/i;
-const ENERGY = /\benergy\b/i;
+// Kind of a timing change without factor, for the reason of the gap
+const TIMING_KINDS: [RegExp, string][] = [
+  [
+    /class abilit/i,
+    "per Class Ability; Class Abilities sind nicht in der Rotation",
+  ],
+  [/grenade/i, "bei Grenade-Einsatz; Modell fehlt"],
+  [/reload speed/i, "Reload Speed ohne Faktor; Umrechnung in Zeit ohne Quelle"],
+  [/\bammo\b/i, "Munition; Modell fehlt"],
+];
+const ENERGY = /\benergy\b|regeneration/i;
 // "0.9x Reload Duration Multiplier", with stacked values before: "- | 0.925x | 0.89x Reload …"
 const RELOAD_FACTOR =
   /(?:(?:\d+(?:\.\d+)?\??x|-)\s*\|\s*)*\d+(?:\.\d+)?\??x\s+Reload Duration Multiplier/i;
@@ -323,21 +340,44 @@ function verdict(
       reason: `Reload ×${timing.factor} (${timing.source}: „${timing.quote}“)`,
       bonusBucket: null,
     };
-  const withoutResist = text.replace(RESIST, "");
-  if (OWN_DAMAGE.test(withoutResist))
+  const dealt = text.replace(RESIST, "").replace(NOT_DEALT, "");
+  const ownDamage = OWN_DAMAGE.exec(dealt);
+  if (ownDamage)
     return {
       kind: "ownDamage",
       rule: 5,
-      reason: `eigener Schaden („${OWN_DAMAGE.exec(withoutResist)![0]}“), Damage Instances von Exotics kommen später`,
+      reason: `eigener Schaden („${ownDamage[0]}“), Damage Instances von Exotics kommen später`,
       bonusBucket: null,
     };
-  if (TIMING_WORD.test(text))
+  const timingText = text.replace(AMMO_TYPE, "");
+  const timingWord = TIMING_WORD.exec(timingText);
+  if (timingWord) {
+    // the sentence of the timing word (decimal points do not end it) and the heading above it,
+    // e.g. "On Grenade Ability Usage:"
+    const sentence = [
+      headingAbove(timingText, timingWord.index),
+      timingText.split(/\.(?!\d)|\n/).find((s) => TIMING_WORD.test(s)),
+    ]
+      .filter((s) => s !== undefined && s.trim() !== "")
+      .map((s) => s!.trim())
+      .join(" ");
+    if (/stowed/i.test(sentence))
+      return {
+        kind: "noDamage",
+        rule: 5,
+        reason: `betrifft nur verstaute Waffen („${sentence}“); das Modell rechnet mit einer Waffe`,
+        bonusBucket: null,
+      };
+    const timingKind =
+      TIMING_KINDS.find(([pattern]) => pattern.test(sentence))?.[1] ??
+      "Modell fehlt";
     return {
       kind: "gap",
       rule: 5,
-      reason: `Timing ohne Faktor („${TIMING_WORD.exec(text)![0]}“), Modell fehlt`,
+      reason: `Timing ohne Faktor („${sentence}“), ${timingKind}`,
       bonusBucket: null,
     };
+  }
   if (ENERGY.test(text))
     return {
       kind: "energyOnly",
@@ -345,7 +385,7 @@ function verdict(
       reason: "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
       bonusBucket: null,
     };
-  if (DAMAGE_WORD.test(withoutResist))
+  if (DAMAGE_WORD.test(dealt.replace(DEALING_TRIGGER, "")))
     return {
       kind: "gap",
       rule: 5,

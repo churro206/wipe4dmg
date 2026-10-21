@@ -58,6 +58,15 @@ const inputs: ArmorImportInputs = {
     piece("Crest of Alpha Lupi"),
     piece("Helm of Saint-14"),
     piece("Gemini Jester"),
+    piece("Wings of Sacred Dawn"),
+    piece("One-Eyed Mask"),
+    piece("Mk. 44 Stand Asides"),
+    piece("Armamentarium"),
+    piece("Hoarfrost-Z"),
+    piece(
+      "Radiant Dance Machines",
+      "Increases hip fire range for weapons that use Primary ammo.",
+    ),
     piece("An Insurmountable Skullfort", "Melee kills restore health."),
   ],
   aegisAbilities: [
@@ -79,7 +88,10 @@ const inputs: ArmorImportInputs = {
   effects: [
     { id: "radiant", name: "Radiant" },
     { id: "lumina-noble-rounds", name: "Lumina (Blessing of the Sky)" },
-    { id: "banner-shield", name: "Weapons of Light (Banner Shield, Ward of Dawn)" },
+    {
+      id: "banner-shield",
+      name: "Weapons of Light (Banner Shield, Ward of Dawn)",
+    },
   ],
   meleeNames: ["Frenzied Blade", "Weighted Throwing Knife"],
   courtCategories: [
@@ -143,7 +155,24 @@ const inputs: ArmorImportInputs = {
     ),
     compendium(
       "Gemini Jester",
-      "Dodging makes nearby enemies lose track of you and takes away their radar.",
+      "Misdirection: Deals ~0 damage but counts as a Hit. Disorients Minors.",
+    ),
+    compendium(
+      "Wings of Sacred Dawn",
+      "Grants 15% Damage Resist. Solar Weapon Kills grant Restoration and refill stowed weapons.",
+    ),
+    compendium(
+      "One-Eyed Mask",
+      "Upon receiving damage: Highlights the first enemy that dealt damage. Killing it grants an Overshield.",
+    ),
+    compendium(
+      "Mk. 44 Stand Asides",
+      "While Juggernaut's Shield is active: Grants a stack of Bolt Charge every 1.5 seconds.",
+    ),
+    compendium("Armamentarium", "On Grenade Ability Usage: Refills Magazine."),
+    compendium(
+      "Hoarfrost-Z",
+      "Barricades grant allies increased weapon reload speed and stability.",
     ),
   ],
   clarity: [
@@ -406,6 +435,34 @@ describe("classifyExoticArmor", () => {
       rule: 5,
     });
     expect(byName["Helm of Saint-14"].reason).toContain("banner-shield");
+  });
+
+  it("rule 5: refilling stowed weapons only changes nothing for one weapon", () => {
+    expect(byName["Wings of Sacred Dawn"]).toMatchObject({
+      kind: "noDamage",
+      rule: 5,
+    });
+  });
+
+  it("rule 5: names the kind of timing a gap needs", () => {
+    expect(byName.Armamentarium).toMatchObject({ kind: "gap", rule: 5 });
+    expect(byName.Armamentarium.reason).toContain("Grenade");
+    expect(byName["Hoarfrost-Z"].reason).toContain("Reload Speed");
+  });
+
+  it("rule 5: Bolt Charge is own damage", () => {
+    expect(byName["Mk. 44 Stand Asides"]).toMatchObject({
+      kind: "ownDamage",
+      rule: 5,
+    });
+  });
+
+  it("damage received, ~0 damage and ammo types are no damage or timing", () => {
+    expect(byName["One-Eyed Mask"]).toMatchObject({ kind: "noDamage" });
+    expect(byName["Gemini Jester"]).toMatchObject({ kind: "noDamage" });
+    expect(byName["Radiant Dance Machines"]).toMatchObject({
+      kind: "noDamage",
+    });
   });
 
   it("rule 6: nothing about damage, timing or energy", () => {
