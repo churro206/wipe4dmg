@@ -7,6 +7,8 @@ import {
   ClaritySnapshot,
   CompendiumSnapshot,
   CourtSnapshot,
+  Effect,
+  ManifestAbilities,
   ManifestArmor,
 } from "../../src/data/schema.ts";
 import type { ArmorImportInputs } from "./exoticArmor.ts";
@@ -29,5 +31,13 @@ export function loadArmorImportInputs(): ArmorImportInputs {
     clarity: ClaritySnapshot.parse(read("clarity.json")).entries.filter(
       (e) => e.type === "Armor Trait Exotic",
     ),
+    effects: Effect.array().parse(read("effects.json")),
+    meleeNames: [
+      ...new Set(
+        ManifestAbilities.parse(read("manifest-abilities.json"))
+          .abilities.filter((a) => a.kind === "melee")
+          .map((a) => a.name),
+      ),
+    ],
   };
 }

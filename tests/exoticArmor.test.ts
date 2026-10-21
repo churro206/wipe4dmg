@@ -48,6 +48,10 @@ const inputs: ArmorImportInputs = {
     piece("Liar's Handshake"),
     piece("Ophidia Spathe"),
     piece("Lunafaction Boots"),
+    piece("Rain of Fire"),
+    piece("Boots of the Assembler"),
+    piece("Wishful Ignorance"),
+    piece("Athrys's Embrace"),
     piece("Dunemarchers"),
     piece("An Insurmountable Skullfort", "Melee kills restore health."),
   ],
@@ -63,7 +67,14 @@ const inputs: ArmorImportInputs = {
     court("Synthoceps", "Exotic Intrinsics", null),
     court("Peacekeepers", "Exotic Intrinsics", null),
     court("Liar's Handshake", "Exotic Intrinsics", null),
+    court("Wishful Ignorance", "Exotic Intrinsics", null),
+    court("Athrys's Embrace", "Exotic Intrinsics", null),
   ],
+  effects: [
+    { id: "radiant", name: "Radiant" },
+    { id: "lumina-noble-rounds", name: "Lumina (Blessing of the Sky)" },
+  ],
+  meleeNames: ["Frenzied Blade", "Weighted Throwing Knife"],
   courtCategories: [
     {
       name: "EXOTICS INTRINSICS",
@@ -87,6 +98,22 @@ const inputs: ArmorImportInputs = {
       "Grants 80% increased Melee Damage and 20% Increased Weapon Damage.",
     ),
     compendium("Liar's Handshake", "Deals 400% increased Melee Damage."),
+    compendium(
+      "Rain of Fire",
+      "Fusion Rifle Kills grant Radiant for 7.5 seconds.",
+    ),
+    compendium(
+      "Boots of the Assembler",
+      "Passively grants +30 Airborne Effectiveness to Lumina.\nEmpowering Rift Seeker: grants 35% [15%] increased damage for 5 seconds (Empowering Buff)",
+    ),
+    compendium(
+      "Wishful Ignorance",
+      "Wish-Dragon's Talons:\n25% | 60% | 120% Increased Flechette Storm and Frenzied Blade damage.",
+    ),
+    compendium(
+      "Athrys's Embrace",
+      "Strengthened Throwing Knife:\n300% [100%] increased Weighted Throwing Knife damage.",
+    ),
     compendium(
       "Ophidia Spathe",
       "Grants 200% Increased Throwing Knife Damage.",
@@ -165,6 +192,46 @@ describe("bonusQuotes", () => {
     expect(
       bonusQuotes("200% Increased Throwing Knife Damage", "compendium"),
     ).toMatchObject([{ percent: 200, melee: true }]);
+  });
+
+  it("skips the PvP value in brackets", () => {
+    expect(
+      bonusQuotes("grants 35% [15%] increased damage", "compendium"),
+    ).toMatchObject([{ percent: 35, quote: "35% [15%] increased damage" }]);
+  });
+
+  it("takes the highest of stacked values", () => {
+    expect(
+      bonusQuotes(
+        "25% | 60% | 120% Increased Flechette Storm and Frenzied Blade damage.",
+        "compendium",
+      ),
+    ).toMatchObject([{ percent: 120 }]);
+  });
+
+  it("marks bonuses that name a melee ability", () => {
+    expect(
+      bonusQuotes(
+        "Talons: 120% Increased Flechette Storm and Frenzied Blade damage.",
+        "compendium",
+        ["Frenzied Blade"],
+      ),
+    ).toMatchObject([{ melee: true }]);
+  });
+
+  it("marks bonuses below a melee heading, but not a weapon bonus next to a melee bonus", () => {
+    expect(
+      bonusQuotes(
+        "Strengthened Throwing Knife:\n• Deals 300% [100%] Increased Damage",
+        "clarity",
+      ),
+    ).toMatchObject([{ percent: 300, melee: true }]);
+    expect(
+      bonusQuotes(
+        "Burning Fists:\nx2 = 160% Melee Damage, and 20% Increased Weapon Damage.",
+        "compendium",
+      ),
+    ).toMatchObject([{ percent: 20, melee: false }]);
   });
 
   it("ignores damage falloff distance", () => {
@@ -252,6 +319,34 @@ describe("classifyExoticArmor", () => {
     expect(byName["Ophidia Spathe"]).toMatchObject({ kind: "gap", rule: 4 });
   });
 
+  it("rule 4c: the text grants a modelled effect", () => {
+    expect(byName["Rain of Fire"]).toMatchObject({
+      kind: "grantsEffect",
+      rule: 4,
+      grantsEffectIds: ["radiant"],
+    });
+  });
+
+  it("rule 4c ignores names after 'to', e.g. airborne effectiveness to Lumina", () => {
+    expect(byName["Boots of the Assembler"]).toMatchObject({
+      kind: "damageBuff",
+      rule: 4,
+      grantsEffectIds: [],
+      bonusBucket: { bucketId: "empowering", basis: "text" },
+      bonuses: [{ percent: 35 }],
+    });
+  });
+
+  it("melee abilities by name and knives with PvP values stay melee gaps", () => {
+    expect(byName["Wishful Ignorance"]).toMatchObject({ kind: "gap", rule: 3 });
+    expect(byName["Wishful Ignorance"].bonuses).toMatchObject([
+      { percent: 120, melee: true },
+    ]);
+    expect(byName["Athrys's Embrace"].bonuses).toMatchObject([
+      { percent: 300, melee: true },
+    ]);
+  });
+
   it("damage falloff is no damage bonus", () => {
     expect(byName["Lunafaction Boots"]).toMatchObject({ kind: "gap", rule: 5 });
   });
@@ -287,5 +382,7 @@ describe("generated files are current (run npm run build:armor)", () => {
     expect(kinds["Celestial Nighthawk"]).toBe("abilityVariant");
     expect(kinds["Dawn Chorus"]).toBe("abilityVariant");
     expect(kinds["Mantle of Battle Harmony"]).toBe("damageBuff");
+    expect(kinds["Rain of Fire"]).toBe("grantsEffect");
+    expect(kinds["Promethium Spur"]).toBe("grantsEffect");
   });
 });

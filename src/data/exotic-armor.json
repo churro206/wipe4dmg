@@ -12,7 +12,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "acd-0-feedback-fence",
@@ -27,7 +28,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "actium-war-rig",
@@ -57,7 +59,7 @@
       },
       {
         "percent": 15,
-        "quote": "15% Increased Damage",
+        "quote": "1.5% | 3% | 4.5% | 6% | 7.5% | 9% | 10.5% | 12% | 13.5% | 15% Increased Damage",
         "source": "compendium",
         "melee": false
       },
@@ -68,7 +70,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "aeon-safe",
@@ -83,7 +86,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "aeon-soul",
@@ -98,7 +102,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "aeon-swift",
@@ -113,7 +118,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "an-insurmountable-skullfort",
@@ -128,7 +134,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "antaeus-wards",
@@ -160,7 +167,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "apotheosis-veil",
@@ -175,7 +183,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "arbor-warden",
@@ -190,7 +199,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "armamentarium",
@@ -205,7 +215,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "ashen-wake",
@@ -220,7 +231,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "assassins-cowl",
@@ -235,7 +247,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "astrocyte-verse",
@@ -250,7 +263,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "athryss-embrace",
@@ -261,7 +275,7 @@
     "intrinsic": "Skittering Stinger",
     "kind": "gap",
     "rule": 3,
-    "reason": "Court Exotic Intrinsic, aber kein Wert in Compendium oder Clarity",
+    "reason": "nur Melee-Boni (compendium: „300% [100%] increased Weighted Throwing Knife damage“; clarity: „300% [100%] Increased Damage“); Melee-Buffs addieren sich, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [
       {
@@ -271,8 +285,22 @@
         "pveDuration": null
       }
     ],
-    "bonuses": [],
-    "bonusBucket": null
+    "bonuses": [
+      {
+        "percent": 300,
+        "quote": "300% [100%] increased Weighted Throwing Knife damage",
+        "source": "compendium",
+        "melee": true
+      },
+      {
+        "percent": 300,
+        "quote": "300% [100%] Increased Damage",
+        "source": "clarity",
+        "melee": true
+      }
+    ],
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "balance-of-power",
@@ -287,7 +315,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "ballidorse-wrathweavers",
@@ -324,7 +353,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "blastwave-striders",
@@ -339,7 +369,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "blight-ranger",
@@ -380,7 +411,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "boots-of-the-assembler",
@@ -389,13 +421,31 @@
     "guardianClass": "warlock",
     "slot": "legs",
     "intrinsic": "Blessing of Order",
-    "kind": "gap",
-    "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "kind": "damageBuff",
+    "rule": 4,
+    "reason": "empowering („(Empowering Buff)“); compendium: „35% [15%] increased damage“; clarity: „35% [15%] increased damage“",
     "aegisRowIds": [],
     "courtBuffs": [],
-    "bonuses": [],
-    "bonusBucket": null
+    "bonuses": [
+      {
+        "percent": 35,
+        "quote": "35% [15%] increased damage",
+        "source": "compendium",
+        "melee": false
+      },
+      {
+        "percent": 35,
+        "quote": "35% [15%] increased damage",
+        "source": "clarity",
+        "melee": false
+      }
+    ],
+    "bonusBucket": {
+      "bucketId": "empowering",
+      "basis": "text",
+      "quote": "(Empowering Buff)"
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "briarbinds",
@@ -427,18 +477,19 @@
       },
       {
         "percent": 100,
-        "quote": "100% increased damage",
+        "quote": "25% | 50% | 75% | 100% increased damage",
         "source": "compendium",
         "melee": false
       },
       {
         "percent": 100,
-        "quote": "100% increased Void Soul damage",
+        "quote": "25%|50%|75%|100% increased Void Soul damage",
         "source": "clarity",
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "cadmus-ridge-lancecap",
@@ -470,7 +521,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "calibans-hand",
@@ -485,7 +537,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "celestial-nighthawk",
@@ -532,7 +585,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "cenotaph-mask",
@@ -547,7 +601,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "chromatic-fire",
@@ -569,7 +624,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "citans-ramparts",
@@ -601,7 +657,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "claws-of-ahamkara",
@@ -618,7 +675,8 @@
     ],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "contraverse-hold",
@@ -640,7 +698,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "crest-of-alpha-lupi",
@@ -655,7 +714,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "crown-of-tempests",
@@ -670,7 +730,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "cuirass-of-the-falling-star",
@@ -702,10 +763,11 @@
         "percent": 55,
         "quote": "55% increased damage",
         "source": "clarity",
-        "melee": false
+        "melee": true
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "cyrtarachnes-facade",
@@ -720,7 +782,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "dawn-chorus",
@@ -761,7 +824,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "deimosuffusion",
@@ -793,7 +857,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "doom-fang-pauldron",
@@ -815,7 +880,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "dunemarchers",
@@ -830,7 +896,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "eternal-warrior",
@@ -852,7 +919,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "eunoia",
@@ -884,7 +952,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "eye-of-another-world",
@@ -899,7 +968,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "fallen-sunstar",
@@ -914,7 +984,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "felwinters-helm",
@@ -942,7 +1013,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "foetracer",
@@ -964,7 +1036,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "fortunes-favor",
@@ -1009,7 +1082,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "fr0st-ee5",
@@ -1031,7 +1105,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "gemini-jester",
@@ -1046,7 +1121,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "geomag-stabilizers",
@@ -1064,7 +1140,8 @@
     ],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "getaway-artist",
@@ -1079,7 +1156,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "gifted-conviction",
@@ -1094,7 +1172,8 @@
     "aegisRowIds": ["miscellaneous-ascension-includes-jolt-gifted-conviction"],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "graviton-forfeit",
@@ -1109,7 +1188,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "gwisin-vest",
@@ -1131,7 +1211,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "gyrfalcons-hauberk",
@@ -1160,7 +1241,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "hallowfire-heart",
@@ -1171,13 +1253,13 @@
     "intrinsic": "Sunfire Furnace",
     "kind": "damageBuff",
     "rule": 4,
-    "reason": "exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „150% Increased Super Damage“",
+    "reason": "exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „6.5% | 13.6% | 22% | 32% | 43% | 57% | 73% | 93% | 118% | 150% Increased Super Damage“",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [
       {
         "percent": 150,
-        "quote": "150% Increased Super Damage",
+        "quote": "6.5% | 13.6% | 22% | 32% | 43% | 57% | 73% | 93% | 118% | 150% Increased Super Damage",
         "source": "compendium",
         "melee": false
       }
@@ -1186,7 +1268,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "hazardous-propulsion",
@@ -1201,7 +1284,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "heart-of-inmost-light",
@@ -1210,9 +1294,9 @@
     "guardianClass": "titan",
     "slot": "chest",
     "intrinsic": "Overflowing Light",
-    "kind": "gap",
+    "kind": "damageBuff",
     "rule": 3,
-    "reason": "nur Melee-Boni (compendium: „50% Increased Melee Damage“; clarity: „50% increased Melee damage“); Melee-Buffs addieren sich, Modell fehlt",
+    "reason": "exoticIntrinsic (Court-Liste); compendium: „35% [20%] Increased Grenade Damage“; clarity: „35% [20%] increased Grenade damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt)",
     "aegisRowIds": [],
     "courtBuffs": [
       {
@@ -1224,6 +1308,12 @@
     ],
     "bonuses": [
       {
+        "percent": 35,
+        "quote": "35% [20%] Increased Grenade Damage",
+        "source": "compendium",
+        "melee": false
+      },
+      {
         "percent": 50,
         "quote": "50% Increased Melee Damage",
         "source": "compendium",
@@ -1231,12 +1321,23 @@
       },
       {
         "percent": 50,
-        "quote": "50% increased Melee damage",
+        "quote": "10% | 50% increased Melee damage",
         "source": "clarity",
         "melee": true
+      },
+      {
+        "percent": 35,
+        "quote": "35% [20%] increased Grenade damage",
+        "source": "clarity",
+        "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": {
+      "bucketId": "exoticIntrinsic",
+      "basis": "court",
+      "quote": "Exotic Intrinsics"
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "helm-of-saint-14",
@@ -1251,7 +1352,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "hoarfrost-z",
@@ -1266,7 +1368,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "icefall-mantle",
@@ -1281,7 +1384,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "karnstein-armlets",
@@ -1296,7 +1400,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "khepris-horn",
@@ -1311,7 +1416,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "khepris-sting",
@@ -1339,7 +1445,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "knucklehead-radar",
@@ -1350,7 +1457,7 @@
     "intrinsic": "Upgraded Sensor Pack",
     "kind": "damageBuff",
     "rule": 3,
-    "reason": "exoticIntrinsic (Court-Liste); compendium: „20% Increased Damage“; clarity: „20% increased damage“",
+    "reason": "exoticIntrinsic (Court-Liste); compendium: „1% increased Weapon and Ability Damage“; compendium: „20% Increased Damage“; clarity: „20% increased damage“",
     "aegisRowIds": [],
     "courtBuffs": [
       {
@@ -1361,6 +1468,12 @@
       }
     ],
     "bonuses": [
+      {
+        "percent": 1,
+        "quote": "1% increased Weapon and Ability Damage",
+        "source": "compendium",
+        "melee": false
+      },
       {
         "percent": 20,
         "quote": "20% Increased Damage",
@@ -1378,7 +1491,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "liars-handshake",
@@ -1413,7 +1527,8 @@
         "melee": true
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "lion-rampant",
@@ -1428,7 +1543,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "loreley-splendor-helm",
@@ -1443,7 +1559,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "lucky-pants",
@@ -1506,7 +1623,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "lucky-raspberry",
@@ -1521,7 +1639,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "lunafaction-boots",
@@ -1536,7 +1655,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "mantle-of-battle-harmony",
@@ -1564,7 +1684,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "mask-of-bakris",
@@ -1599,7 +1720,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "mask-of-fealty",
@@ -1614,7 +1736,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "mask-of-the-quiet-one",
@@ -1629,7 +1752,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "mataiodox-a",
@@ -1644,7 +1768,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "mechaneers-tricksleeves",
@@ -1653,13 +1778,31 @@
     "guardianClass": "hunter",
     "slot": "gauntlets",
     "intrinsic": "Spring-Loaded Mounting",
-    "kind": "gap",
-    "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "kind": "damageBuff",
+    "rule": 4,
+    "reason": "exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „100% [10%] increased Sidearm damage“; clarity: „100% [10%] increased damage“",
     "aegisRowIds": [],
     "courtBuffs": [],
-    "bonuses": [],
-    "bonusBucket": null
+    "bonuses": [
+      {
+        "percent": 100,
+        "quote": "100% [10%] increased Sidearm damage",
+        "source": "compendium",
+        "melee": false
+      },
+      {
+        "percent": 100,
+        "quote": "100% [10%] increased damage",
+        "source": "clarity",
+        "melee": false
+      }
+    ],
+    "bonusBucket": {
+      "bucketId": "exoticIntrinsic",
+      "basis": "courtDefinition",
+      "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "melas-panoplia",
@@ -1674,7 +1817,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "mk-44-stand-asides",
@@ -1689,7 +1833,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "moirai",
@@ -1704,7 +1849,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "mothkeepers-wraps",
@@ -1719,7 +1865,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "necrotic-grip",
@@ -1752,7 +1899,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "nezarecs-sin",
@@ -1767,7 +1915,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "no-backup-plans",
@@ -1776,13 +1925,43 @@
     "guardianClass": "titan",
     "slot": "gauntlets",
     "intrinsic": "Force Multiplier",
-    "kind": "gap",
-    "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "kind": "damageBuff",
+    "rule": 4,
+    "reason": "empowering („(Empowering Buff)“); compendium: „35% [10%] increased Shotgun damage“; clarity: „35% [10%] increased damage“; clarity: „30% [?%] increased damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt)",
     "aegisRowIds": [],
     "courtBuffs": [],
-    "bonuses": [],
-    "bonusBucket": null
+    "bonuses": [
+      {
+        "percent": 35,
+        "quote": "35% [10%] increased Shotgun damage",
+        "source": "compendium",
+        "melee": false
+      },
+      {
+        "percent": 30,
+        "quote": "30% [+?%] Increased Melee Damage",
+        "source": "compendium",
+        "melee": true
+      },
+      {
+        "percent": 35,
+        "quote": "35% [10%] increased damage",
+        "source": "clarity",
+        "melee": false
+      },
+      {
+        "percent": 30,
+        "quote": "30% [?%] increased damage",
+        "source": "clarity",
+        "melee": false
+      }
+    ],
+    "bonusBucket": {
+      "bucketId": "empowering",
+      "basis": "text",
+      "quote": "(Empowering Buff)"
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "nothing-manacles",
@@ -1797,7 +1976,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "oathkeeper",
@@ -1836,7 +2016,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "omnioculus",
@@ -1851,7 +2032,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "one-eyed-mask",
@@ -1866,7 +2048,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "ophidia-spathe",
@@ -1877,18 +2060,19 @@
     "intrinsic": "Scissor Fingers",
     "kind": "gap",
     "rule": 4,
-    "reason": "nur Melee-Boni (compendium: „200% Increased Throwing Knife Damage“); Melee-Buffs addieren sich, Modell fehlt",
+    "reason": "nur Melee-Boni (compendium: „67% | 133% | 200% Increased Throwing Knife Damage“); Melee-Buffs addieren sich, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [
       {
         "percent": 200,
-        "quote": "200% Increased Throwing Knife Damage",
+        "quote": "67% | 133% | 200% Increased Throwing Knife Damage",
         "source": "compendium",
         "melee": true
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "ophidian-aspect",
@@ -1903,7 +2087,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "orpheus-rig",
@@ -1921,7 +2106,8 @@
     ],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "osmiomancy-gloves",
@@ -1936,7 +2122,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "peacekeepers",
@@ -1947,7 +2134,7 @@
     "intrinsic": "Mecha Holster",
     "kind": "damageBuff",
     "rule": 3,
-    "reason": "exoticIntrinsic (Court-Liste); clarity: „5% increased SMG damage“",
+    "reason": "exoticIntrinsic (Court-Liste); compendium: „5% increased Submachine Gun Impact Damage“; clarity: „5% increased SMG damage“",
     "aegisRowIds": [],
     "courtBuffs": [
       {
@@ -1960,6 +2147,12 @@
     "bonuses": [
       {
         "percent": 5,
+        "quote": "5% increased Submachine Gun Impact Damage",
+        "source": "compendium",
+        "melee": false
+      },
+      {
+        "percent": 5,
         "quote": "5% increased SMG damage",
         "source": "clarity",
         "melee": false
@@ -1969,7 +2162,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "peregrine-greaves",
@@ -2008,7 +2202,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "phoenix-cradle",
@@ -2023,7 +2218,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "phoenix-protocol",
@@ -2038,7 +2234,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "point-contact-cannon-brace",
@@ -2047,9 +2244,9 @@
     "guardianClass": "titan",
     "slot": "gauntlets",
     "intrinsic": "Hammer of the Gods",
-    "kind": "damageBuff",
+    "kind": "gap",
     "rule": 4,
-    "reason": "exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „Lightning Damage is increased by 100%“",
+    "reason": "nur Melee-Boni (compendium: „Lightning Damage is increased by 100%“); Melee-Buffs addieren sich, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [
@@ -2057,14 +2254,11 @@
         "percent": 100,
         "quote": "Lightning Damage is increased by 100%",
         "source": "compendium",
-        "melee": false
+        "melee": true
       }
     ],
-    "bonusBucket": {
-      "bucketId": "exoticIntrinsic",
-      "basis": "courtDefinition",
-      "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    }
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "praxic-vestment",
@@ -2079,7 +2273,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "precious-scars",
@@ -2094,7 +2289,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "promethium-spur",
@@ -2103,13 +2299,14 @@
     "guardianClass": "warlock",
     "slot": "legs",
     "intrinsic": "Embers of Light",
-    "kind": "gap",
-    "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "kind": "grantsEffect",
+    "rule": 4,
+    "reason": "gibt radiant („grant 7 seconds (10 with Ember of Solace) of Radiant“)",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": ["radiant"]
   },
   {
     "id": "pyrogale-gauntlets",
@@ -2146,7 +2343,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "radiant-dance-machines",
@@ -2161,7 +2359,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "raiden-flux",
@@ -2185,12 +2384,13 @@
     "bonuses": [
       {
         "percent": 174,
-        "quote": "174% increased damage",
+        "quote": "40%|96%|174% increased damage",
         "source": "clarity",
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "raijus-harness",
@@ -2205,7 +2405,8 @@
     "aegisRowIds": ["super-gathering-storm-raiju-s-harness"],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "rain-of-fire",
@@ -2214,13 +2415,14 @@
     "guardianClass": "warlock",
     "slot": "legs",
     "intrinsic": "Soaring Fusilier",
-    "kind": "gap",
-    "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "kind": "grantsEffect",
+    "rule": 4,
+    "reason": "gibt radiant („grant Radiant“)",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": ["radiant"]
   },
   {
     "id": "relativism",
@@ -2235,7 +2437,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "renewal-grasps",
@@ -2250,7 +2453,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "rime-coat-raiment",
@@ -2265,7 +2469,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "sanguine-alchemy",
@@ -2300,7 +2505,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "sealed-ahamkara-grasps",
@@ -2321,8 +2527,22 @@
         "pveDuration": "7s"
       }
     ],
-    "bonuses": [],
-    "bonusBucket": null
+    "bonuses": [
+      {
+        "percent": 35,
+        "quote": "35% [20%] increased damage",
+        "source": "compendium",
+        "melee": true
+      },
+      {
+        "percent": 35,
+        "quote": "35% [20%] increased weapon damage",
+        "source": "clarity",
+        "melee": false
+      }
+    ],
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "secant-filaments",
@@ -2337,7 +2557,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "second-chance",
@@ -2359,7 +2580,8 @@
       }
     ],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "severance-enclosure",
@@ -2374,7 +2596,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "shards-of-galanor",
@@ -2402,7 +2625,8 @@
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "shinobus-vow",
@@ -2417,7 +2641,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "skull-of-dire-ahamkara",
@@ -2432,7 +2657,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "solipsism",
@@ -2447,7 +2673,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "speakers-sight",
@@ -2462,7 +2689,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "speedloader-slacks",
@@ -2477,7 +2705,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "st0mp-ee5",
@@ -2492,7 +2721,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "star-eater-scales",
@@ -2503,7 +2733,7 @@
     "intrinsic": "Feast of Light",
     "kind": "damageBuff",
     "rule": 3,
-    "reason": "exoticIntrinsic (Court-Liste); compendium: „70% increased Super Damage“; clarity: „70% increased Super damage“",
+    "reason": "exoticIntrinsic (Court-Liste); compendium: „18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; clarity: „18.2%|36.4%|54.6%|59.7%|64.8%|70% increased Super damage“",
     "aegisRowIds": [],
     "courtBuffs": [
       {
@@ -2516,13 +2746,13 @@
     "bonuses": [
       {
         "percent": 70,
-        "quote": "70% increased Super Damage",
+        "quote": "18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage",
         "source": "compendium",
         "melee": false
       },
       {
         "percent": 70,
-        "quote": "70% increased Super damage",
+        "quote": "18.2%|36.4%|54.6%|59.7%|64.8%|70% increased Super damage",
         "source": "clarity",
         "melee": false
       }
@@ -2531,7 +2761,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "starfire-protocol",
@@ -2546,7 +2777,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "stoicism",
@@ -2561,7 +2793,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "stormdancers-brace",
@@ -2594,7 +2827,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "stronghold",
@@ -2609,7 +2843,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "sunbracers",
@@ -2626,7 +2861,8 @@
     ],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "swarmers",
@@ -2641,7 +2877,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "synthoceps",
@@ -2670,10 +2907,22 @@
         "melee": false
       },
       {
+        "percent": 165,
+        "quote": "165% [100%] Increased Melee Damage",
+        "source": "compendium",
+        "melee": true
+      },
+      {
         "percent": 50,
         "quote": "50% increased Super damage",
         "source": "clarity",
         "melee": false
+      },
+      {
+        "percent": 165,
+        "quote": "165% [100%] increased Melee damage",
+        "source": "clarity",
+        "melee": true
       },
       {
         "percent": 100,
@@ -2686,7 +2935,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "the-bombardiers",
@@ -2701,7 +2951,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "the-dragons-shadow",
@@ -2716,7 +2967,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "the-path-of-burning-steps",
@@ -2776,18 +3028,19 @@
       },
       {
         "percent": 12.4,
-        "quote": "12.4% increased Weapon Damage",
+        "quote": "6%|9.2%|12.4% increased Weapon Damage",
         "source": "clarity",
         "melee": false
       },
       {
         "percent": 24.9,
-        "quote": "24.9% increased Ignition Damage",
+        "quote": "15%|20%|24.9% increased Ignition Damage",
         "source": "clarity",
         "melee": false
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "the-sixth-coyote",
@@ -2802,7 +3055,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "the-stag",
@@ -2817,7 +3071,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "transversive-steps",
@@ -2832,7 +3087,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "triton-vice",
@@ -2867,7 +3123,8 @@
         "melee": true
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "ursa-furiosa",
@@ -2882,7 +3139,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "veritys-brow",
@@ -2893,7 +3151,7 @@
     "intrinsic": "The Fourth Magic",
     "kind": "damageBuff",
     "rule": 3,
-    "reason": "exoticIntrinsic (Court-Liste); compendium: „100% increased Grenade Damage“; clarity: „100% increased Grenade damage“; clarity: „100% increased Grenade damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt)",
+    "reason": "exoticIntrinsic (Court-Liste); compendium: „40% [20%] increased Grenade Damage“; compendium: „55% [40%] increased Grenade Damage“; compendium: „70% [60%] increased Grenade Damage“; compendium: „85% [80%] increased Grenade Damage“; compendium: „100% increased Grenade Damage“; clarity: „40%|55%|70%|85%|100% increased Grenade damage“; clarity: „20%|40%|60%|80%|100% increased Grenade damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt)",
     "aegisRowIds": [],
     "courtBuffs": [
       {
@@ -2904,6 +3162,30 @@
       }
     ],
     "bonuses": [
+      {
+        "percent": 40,
+        "quote": "40% [20%] increased Grenade Damage",
+        "source": "compendium",
+        "melee": false
+      },
+      {
+        "percent": 55,
+        "quote": "55% [40%] increased Grenade Damage",
+        "source": "compendium",
+        "melee": false
+      },
+      {
+        "percent": 70,
+        "quote": "70% [60%] increased Grenade Damage",
+        "source": "compendium",
+        "melee": false
+      },
+      {
+        "percent": 85,
+        "quote": "85% [80%] increased Grenade Damage",
+        "source": "compendium",
+        "melee": false
+      },
       {
         "percent": 100,
         "quote": "100% increased Grenade Damage",
@@ -2918,13 +3200,13 @@
       },
       {
         "percent": 100,
-        "quote": "100% increased Grenade damage",
+        "quote": "40%|55%|70%|85%|100% increased Grenade damage",
         "source": "clarity",
         "melee": false
       },
       {
         "percent": 100,
-        "quote": "100% increased Grenade damage",
+        "quote": "20%|40%|60%|80%|100% increased Grenade damage",
         "source": "clarity",
         "melee": false
       }
@@ -2933,7 +3215,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "vesper-of-radius",
@@ -2948,7 +3231,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "wings-of-sacred-dawn",
@@ -2963,7 +3247,8 @@
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "winters-guile",
@@ -2974,7 +3259,7 @@
     "intrinsic": "Warlord's Sigil",
     "kind": "gap",
     "rule": 3,
-    "reason": "nur Melee-Boni (compendium: „400% increased Melee Damage“; clarity: „300% Additional Base Melee Damage“; clarity: „400% Additional Base Melee Damage“); Melee-Buffs addieren sich, Modell fehlt",
+    "reason": "nur Melee-Boni (compendium: „400% increased Melee Damage“; clarity: „67.5% | 122% | 166% | 202% | 228% | 249% | 265% | 278% | 289% | 300% Additional Base Melee Damage“; clarity: „400% Additional Base Melee Damage“); Melee-Buffs addieren sich, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [
       {
@@ -2993,7 +3278,7 @@
       },
       {
         "percent": 300,
-        "quote": "300% Additional Base Melee Damage",
+        "quote": "67.5% | 122% | 166% | 202% | 228% | 249% | 265% | 278% | 289% | 300% Additional Base Melee Damage",
         "source": "clarity",
         "melee": true
       },
@@ -3004,7 +3289,8 @@
         "melee": true
       }
     ],
-    "bonusBucket": null
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "wishful-ignorance",
@@ -3015,7 +3301,7 @@
     "intrinsic": "Wish-Dragon's Talons",
     "kind": "gap",
     "rule": 3,
-    "reason": "Court Exotic Intrinsic, aber kein Wert in Compendium oder Clarity",
+    "reason": "nur Melee-Boni (compendium: „25% | 60% | 120% Increased Flechette Storm and Frenzied Blade damage“; clarity: „25%|60%|120% increased Frenzied Blade and Flechette Storm damage“); Melee-Buffs addieren sich, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [
       {
@@ -3025,8 +3311,22 @@
         "pveDuration": null
       }
     ],
-    "bonuses": [],
-    "bonusBucket": null
+    "bonuses": [
+      {
+        "percent": 120,
+        "quote": "25% | 60% | 120% Increased Flechette Storm and Frenzied Blade damage",
+        "source": "compendium",
+        "melee": true
+      },
+      {
+        "percent": 120,
+        "quote": "25%|60%|120% increased Frenzied Blade and Flechette Storm damage",
+        "source": "clarity",
+        "melee": true
+      }
+    ],
+    "bonusBucket": null,
+    "grantsEffectIds": []
   },
   {
     "id": "wormgod-caress",
@@ -3058,7 +3358,8 @@
       "bucketId": "empowering",
       "basis": "text",
       "quote": "Weapon damage increases are Empowering Buffs"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "wormhusk-crown",
@@ -3084,7 +3385,8 @@
       "bucketId": "exoticIntrinsic",
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    }
+    },
+    "grantsEffectIds": []
   },
   {
     "id": "young-ahamkaras-spine",
@@ -3123,6 +3425,7 @@
       "bucketId": "exoticIntrinsic",
       "basis": "court",
       "quote": "Exotic Intrinsics"
-    }
+    },
+    "grantsEffectIds": []
   }
 ]

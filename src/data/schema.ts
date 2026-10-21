@@ -558,6 +558,7 @@ export type ManifestArmor = z.infer<typeof ManifestArmor>;
 export const ExoticArmorKind = z.enum([
   "abilityVariant", // Aegis measured an ability package with it
   "damageBuff", // Court names its bucket
+  "grantsEffect", // grants an effect the model knows, e.g. Radiant
   "gap", // damage effect without bucket or value, or unclear text
   "noDamage", // survival, energy or movement only
 ]);
@@ -605,6 +606,7 @@ export const ExoticArmorEntry = z.object({
   ),
   bonuses: z.array(ArmorBonusQuote),
   bonusBucket: ArmorBonusBucket.nullable(), // null if no bonus is usable or Court rows name the buckets
+  grantsEffectIds: z.array(z.string()), // effects of effects.json the texts say it grants (rule 4c)
 });
 export type ExoticArmorEntry = z.infer<typeof ExoticArmorEntry>;
 

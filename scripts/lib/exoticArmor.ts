@@ -2,8 +2,9 @@
 // 1 Aegis ability package assumes it → abilityVariant
 // 2 Court row with a value → damageBuff (bucket from Court's category)
 // 3 Court lists it as exotic intrinsic → damageBuff with the bonus from Compendium or Clarity, else gap
-// 4 a text names a damage bonus → damageBuff; bucket from the text (4a), else from Court's definition
-//   of exotic intrinsics (4b)
+// 4 a text grants an effect the model knows, e.g. Radiant → grantsEffect (4c); otherwise a text names a
+//   damage bonus → damageBuff with the bucket from the text (4a), else from Court's definition of
+//   exotic intrinsics (4b)
 // 5 a text names damage without a clear bonus → gap
 // 6 no damage word → noDamage
 // Bonuses on melee damage do not count in rules 3 and 4: melee buffs add up with each other
@@ -27,6 +28,8 @@ export type ArmorImportInputs = {
   courtCategories: CourtCategory[];
   compendium: CompendiumEntry[]; // tab Exotic Armors
   clarity: ClarityEntry[];
+  effects: { id: string; name: string }[]; // modelled effects, see effects.json
+  meleeNames: string[]; // melee abilities from the manifest, e.g. "Frenzied Blade"
 };
 
 // Court's categories (ADR 0006, point 3) to buckets in buckets.json.
@@ -40,22 +43,33 @@ const BUCKET_OF_CATEGORY: Record<string, string> = {
 const INTRINSICS = "Exotic Intrinsics";
 const INTRINSICS_DEFINITION = "EXOTICS INTRINSICS"; // name in Court's category overview
 
+const NUMBER = String.raw`(\d+(?:\.\d+)?)`;
 const NOT_A_BONUS = String.raw`(?!\s*(?:resist|reduction|falloff|range|distance))`;
 const BONUS_PATTERNS = [
-  // "55% increased damage", "70% increased Super Damage", "100% more damage"
+  // "55% increased damage", "70% increased Super Damage", "100% more damage", with stacked values
+  // before ("25% | 60% | 120% Increased …") and a PvP value after ("35% [15%] increased damage")
   new RegExp(
-    String.raw`(\d+(?:\.\d+)?)%\s+(?:increased|more|bonus|additional)\s+(?:[A-Za-z]+\s+){0,2}?damage${NOT_A_BONUS}`,
+    String.raw`(?:\d+(?:\.\d+)?%\s*\|\s*)*${NUMBER}%(?:\s*\[[^\]]*\])?\s+(?:increased|more|bonus|additional)\s+(?:[A-Za-z']+\s+){0,5}?damage${NOT_A_BONUS}`,
     "gi",
   ),
   // "Melee damage is increased by 150%"
-  /(?:[A-Za-z]+\s+){0,2}?damage (?:is )?increased by (\d+(?:\.\d+)?)%/gi,
+  new RegExp(
+    String.raw`(?:[A-Za-z]+\s+){0,2}?damage (?:is )?increased by ${NUMBER}%`,
+    "gi",
+  ),
 ];
-const MELEE = /melee|knife|knives/i;
+const MELEE_WORDS = ["melee", "knife", "knives"];
 const RESIST = /damage (resist(ance)?|reduction)/gi;
 const DAMAGE_WORD = /damage|surge|weaken|ignit|radiant|empower|amplif|debuff/i;
+const BUCKET_WORDS =
+  "empowering buffs?|weapon surges?|global debuffs?|debuffs?|amplification modifiers?";
 // A sentence that names the bucket, e.g. "Weapon damage increases are Empowering Buffs."
-const STATED_BUCKET =
-  /[^.\n]*\b(?:are|is|counts? as)\s+(?:an?\s+)?(empowering buffs?|weapon surges?|global debuffs?|debuffs?|amplification modifiers?)/i;
+const STATED_BUCKET = new RegExp(
+  String.raw`[^.\n]*\b(?:are|is|counts? as)\s+(?:an?\s+)?(${BUCKET_WORDS})`,
+  "i",
+);
+// The same in brackets, e.g. "(Empowering Buff)"
+const BRACKETED_BUCKET = new RegExp(String.raw`\((${BUCKET_WORDS})\)`, "i");
 const BUCKET_OF_WORD: [RegExp, string][] = [
   [/empower/i, "empowering"],
   [/surge/i, "surge"],
@@ -63,19 +77,42 @@ const BUCKET_OF_WORD: [RegExp, string][] = [
   [/amplif/i, "amplification"],
 ];
 
-/** Damage bonuses in a text, in order of appearance. */
+const escapeRegExp = (text: string) =>
+  text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** The heading of the block above a position, e.g. "Strengthened Throwing Knife:"; empty if none. */
+function headingAbove(text: string, index: number): string {
+  const lines = text.slice(0, index).split("\n").slice(0, -1).reverse();
+  for (const line of lines) {
+    if (line.trim() === "") return "";
+    if (line.trim().endsWith(":")) return line;
+  }
+  return "";
+}
+
+/** Damage bonuses in a text, in order of appearance; melee if the bonus or the heading above it names melee. */
 export function bonusQuotes(
   text: string,
   source: ArmorBonusQuote["source"],
+  meleeNames: string[] = [],
 ): ArmorBonusQuote[] {
+  const melee = new RegExp(
+    [...MELEE_WORDS, ...meleeNames.map(escapeRegExp)].join("|"),
+    "i",
+  );
   return BONUS_PATTERNS.flatMap((pattern) =>
     [...text.matchAll(pattern)].map((m) => ({
       index: m.index,
       bonus: {
-        percent: Number(m[1]),
+        // highest of stacked values, PvP values in brackets left out
+        percent: Math.max(
+          ...[
+            ...m[0].replace(/\[[^\]]*\]/g, "").matchAll(/(\d+(?:\.\d+)?)%/g),
+          ].map((n) => Number(n[1])),
+        ),
         quote: m[0],
         source,
-        melee: MELEE.test(m[0]),
+        melee: melee.test(m[0]) || melee.test(headingAbove(text, m.index)),
       },
     })),
   )
@@ -83,9 +120,29 @@ export function bonusQuotes(
     .map((m) => m.bonus);
 }
 
+/** Modelled effects a text grants, e.g. "grant Radiant for 7.5 seconds" (rule 4c). */
+export function grantedEffects(
+  text: string,
+  effects: ArmorImportInputs["effects"],
+): { id: string; quote: string }[] {
+  return effects.flatMap((effect) => {
+    // "Lumina (Blessing of the Sky)" may be named "Lumina" or "Blessing of the Sky";
+    // a name after "to" is a target, e.g. "grants +30 Airborne Effectiveness to Lumina"
+    const names = effect.name.split(/\s*[()]\s*/).filter((n) => n !== "");
+    for (const name of names) {
+      const match = new RegExp(
+        String.raw`\b(?:grants?|gains?)\b[^.\n]{0,60}?(?<!\bto )\b${escapeRegExp(name)}\b`,
+        "i",
+      ).exec(text);
+      if (match) return [{ id: effect.id, quote: match[0] }];
+    }
+    return [];
+  });
+}
+
 /** Bucket a text names itself (rule 4a). */
 function statedBucket(text: string): ArmorBonusBucket | null {
-  const match = STATED_BUCKET.exec(text);
+  const match = STATED_BUCKET.exec(text) ?? BRACKETED_BUCKET.exec(text);
   if (!match) return null;
   const bucket = BUCKET_OF_WORD.find(([word]) => word.test(match[1]));
   return bucket
@@ -141,6 +198,7 @@ function verdict(
   aegisRowIds: string[],
   court: CourtEntry[],
   bonuses: ArmorBonusQuote[],
+  granted: { id: string; quote: string }[],
   text: string,
   intrinsicsDefinition: string,
 ): Verdict {
@@ -177,6 +235,13 @@ function verdict(
             "Court Exotic Intrinsic, aber kein Wert in Compendium oder Clarity",
           bonusBucket: null,
         };
+  if (granted.length > 0)
+    return {
+      kind: "grantsEffect",
+      rule: 4,
+      reason: `gibt ${granted.map((g) => `${g.id} („${g.quote}“)`).join("; ")}`,
+      bonusBucket: null,
+    };
   if (bonuses.length > 0)
     return textBonus(
       4,
@@ -231,14 +296,17 @@ export function classifyExoticArmor(
         .filter((r) => r.assumptions.includes(piece.name))
         .map((r) => r.id);
       const bonuses = [
-        ...bonusQuotes(compendiumText, "compendium"),
-        ...bonusQuotes(clarityText, "clarity"),
+        ...bonusQuotes(compendiumText, "compendium", inputs.meleeNames),
+        ...bonusQuotes(clarityText, "clarity", inputs.meleeNames),
       ];
+      const texts = [compendiumText, clarityText].join("\n");
+      const granted = grantedEffects(texts, inputs.effects);
       const { bonusBucket, ...rest } = verdict(
         aegisRowIds,
         court,
         bonuses,
-        [compendiumText, clarityText, piece.description].join("\n"),
+        granted,
+        [texts, piece.description].join("\n"),
         intrinsicsDefinition,
       );
       return {
@@ -258,6 +326,7 @@ export function classifyExoticArmor(
         })),
         bonuses,
         bonusBucket,
+        grantsEffectIds: granted.map((g) => g.id),
       };
     });
 }
@@ -265,6 +334,7 @@ export function classifyExoticArmor(
 const KIND_TITLES: [ExoticArmorEntry["kind"], string][] = [
   ["abilityVariant", "Ability-Varianten (Regel 1)"],
   ["damageBuff", "Schadens-Buffs (Regeln 2 bis 4)"],
+  ["grantsEffect", "Geben einen Effect (Regel 4c)"],
   ["gap", "Lücken (Regeln 3 bis 5)"],
   ["noDamage", "Ohne Schadenswirkung (Regel 6)"],
 ];
