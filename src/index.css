@@ -17,8 +17,10 @@
   --axis: #c3c2b7;
   --shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 
+  /* Destiny 2's UI font where installed (commercial, never shipped); else the system font */
   font:
-    15px/1.45 system-ui,
+    15px/1.45 "Neue Haas Grotesk Display Pro",
+    system-ui,
     "Segoe UI",
     Roboto,
     sans-serif;
