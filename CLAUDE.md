@@ -20,6 +20,7 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 - `docs/guides/measurements.md`: Ingame-Tests des Inhabers (Ember, Explosionen, Shot-Abstand, Particle Reconstruction, Radiant auf Golden Gun). Ergebnisse ins Messprotokoll, dann in Data Files und Gates.
 - `docs/coverage.md`: Abdeckung (generiert, nicht von Hand bearbeiten). Nach Änderungen an Data Files `npm run coverage` ausführen.
 - `docs/plans/`: Pläne. **Aktuell: `weapons-and-exotic-armor.md` (v1.1, nächste Schritte).** Zurückgestellt: `optimizer-abilities.md`.
+- `docs/ui-inspiration.md`: Vorbilder für die Oberfläche (andere Tools, Destiny 2 selbst), Logo. Lies ihn vor Änderungen an der Oberfläche.
 - `docs/roadmap.md`: Woran gearbeitet wird; Quelle für die Website (US-15). Nach jedem abgeschlossenen Schritt aktualisieren.
 
 ## Sprache

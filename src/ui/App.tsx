@@ -407,11 +407,8 @@ function App() {
     <>
       <main>
         <header>
-          <Icon iconKey={`weapon:${weapon.id}`} label={weapon.name} size={48} />
-          <div>
-            <h1>wipe4dmg</h1>
-            <p>{weapon.name}</p>
-          </div>
+          <img src="/logo.png" alt="" width={48} height={48} />
+          <h1>wipe4dmg</h1>
           <SegmentedControl
             label="Ansicht"
             options={[...VIEWS]}

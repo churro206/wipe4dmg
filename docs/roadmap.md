@@ -2,13 +2,15 @@
 
 Was der Rechner als Nächstes lernt. Die genaue Abdeckung steht in der [Abdeckung](coverage.md).
 
-Stand: 2026-10-20
+Stand: 2026-10-21
 
 ## In Arbeit (v1.1)
 
 - ✅ Fundament für mehrere Waffen: jede Waffe als eigene Datei mit eigenem Abgleich gegen die Quellen
 - ✅ 49 exotische Special- und Heavy-Waffen automatisch aus Aegis, Quantum, Clarity und dem Bungie-Manifest, darunter Truth, Thunderlord, Gjallarhorn, Sleeper Simulant und Whisper of the Worm; Waffenauswahl mit Suche, Katalysator als Schalter mit Hinweis auf begrenzte Dauer
 - ⏳ Die übrigen 30 Waffen (z. B. Schwerter, Merciless, Two-Tailed Fox): weitere Quellen erschließen; die Liste mit Gründen steht in der Prüftabelle
+- ✅ Logo: Schädel aus dem Todesbildschirm im Header und als Favicon
+- ⏳ Oberfläche näher am Spiel: Hover-Karte wie die Item-Ansicht, Element-Farben, Menü-Optik ([Vorbilder](ui-inspiration.md))
 - Exotic-Rüstung: Dawn Chorus und weitere Exotics mit großer Wirkung auf den Schaden (z. B. Mantle of Battle Harmony mit Surge 4x)
 - Plan: [Waffen und Exotic-Rüstung](plans/weapons-and-exotic-armor.md)
 
