@@ -45,7 +45,7 @@ tests/         Vitest-Tests für die Engine. Helfer für generierte Dokumente in
 
 - Keine Zahlenwerte im Code. Alle Spielwerte stehen in `src/data`.
 - Jeder Wert in einer Data File hat ein `source`-Objekt. Unbekannte Werte sind `null` mit Status `missing`. Rate niemals Werte.
-- **Quellen zuerst:** Fehlt ein Wert oder eine Zuordnung, oder widersprechen sich Quellen, zuerst eine Community-Quelle suchen (Clarity, DIM-Daten, weitere Reiter von Aegis und Quantum, Compendium, Court, Manifest) und als Snapshot mit Regel einbinden. Mechaniken nicht selbst herleiten. Den Inhaber nur fragen, wenn Quellen sich widersprechen und keine Regel entscheidet, oder bei Entscheidungen, die ihm zustehen (Umfang, Oberfläche, Prioritäten). Overrides nur mit Zitat aus einem Snapshot.
+- **Quellen zuerst:** Fehlt ein Wert oder eine Zuordnung, oder widersprechen sich Quellen, zuerst eine Community-Quelle suchen (Clarity, DIM-Daten, weitere Reiter von Aegis und Quantum, Compendium, Court, Manifest) und als Snapshot mit Regel einbinden. Mechaniken nicht selbst herleiten. **Vor jeder gemeldeten Lücke den Skill `recherche` abarbeiten** (`.claude/skills/recherche/SKILL.md`: Quellenkatalog mit Reitern, Ablauf, Budget); eine Lücke nur mit Tabelle der geprüften Quellen melden. Den Inhaber nur fragen, wenn Quellen sich widersprechen und keine Regel entscheidet, oder bei Entscheidungen, die ihm zustehen (Umfang, Oberfläche, Prioritäten). Overrides nur mit Zitat aus einem Snapshot.
 - Jede Änderung an `src/engine` braucht einen Test. Schreibe den Test zuerst.
 - Pro Bucket zählt die Stacking-Regel aus `buckets.json`. Buckets multiplizieren sich untereinander.
 - Der Simulator arbeitet mit Damage Instances auf einer Zeitachse (ADR 0001).
