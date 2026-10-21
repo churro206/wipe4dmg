@@ -23,6 +23,9 @@
 // own bucket to the components that scale with it.
 // A super with usage data keeps the player busy for its super window (superWindow.ts): the weapon
 // neither charges nor fires inside it, so a shot whose charge would overlap moves behind it.
+//
+// All hits, counter applications and releases are events of one event run (eventRun.ts, ADR 0015):
+// they pass one target state in time order.
 
 import type {
   Ability,
@@ -46,6 +49,7 @@ import {
   type ActiveParts,
 } from "./effectParts";
 import { resolveWindows, type EffectWindowOptions } from "./effectWindows";
+import { runEvents, type RunEvent } from "./eventRun";
 import { superWindowMs } from "./superWindow";
 import { requireValue } from "./requireValue";
 
@@ -53,6 +57,13 @@ const MS_PER_SECOND = 1000;
 const MS_PER_MINUTE = 60_000;
 // Guards rounding up against floating point noise, e.g. 10 x 1.5 = 15.000000000000002.
 const ROUNDING_TOLERANCE = 1e-9;
+// Order of events at equal times in the event run (eventRun.ts).
+const EVENT_GROUP = {
+  weaponHit: 0,
+  threshold: 1,
+  damageOverTime: 2,
+  abilityHit: 3,
+} as const;
 
 export type Shot = {
   timeMs: number;
@@ -260,46 +271,44 @@ export function simulate(
         1,
       );
 
-  const damageInstances: TimedDamageInstance[] = [];
+  const events: RunEvent[] = [];
   for (const shot of shots) {
     for (const instance of instances) {
       for (let tick = 0; tick < instance.ticks; tick++) {
         const timeMs =
           shot.timeMs + instance.delayMs + tick * instance.tickIntervalMs;
-        if (isInPhase(timeMs)) {
-          damageInstances.push({
-            id: instance.id,
-            timeMs,
-            damage: instance.damage * multiplierAt(timeMs, weapon.element),
-            damageSource,
-            element: weapon.element,
-            weaponType: weapon.weaponType,
-            ...(instance.delivery ? { delivery: instance.delivery } : {}),
-          });
-        }
+        if (!isInPhase(timeMs)) continue;
+        events.push({
+          timeMs,
+          group: EVENT_GROUP.weaponHit,
+          handle: (_, emit) =>
+            emit({
+              id: instance.id,
+              timeMs,
+              damage: instance.damage * multiplierAt(timeMs, weapon.element),
+              damageSource,
+              element: weapon.element,
+              weaponType: weapon.weaponType,
+              ...(instance.delivery ? { delivery: instance.delivery } : {}),
+            }),
+        });
       }
     }
   }
-  damageInstances.push(
-    ...thresholdDamageInstances(
-      weapon,
-      shots,
-      counterFactorAt,
-      isInPhase,
-      multiplierAt,
-    ),
+  events.push(
+    ...thresholdEvents(weapon, shots, counterFactorAt, isInPhase, multiplierAt),
   );
   for (const part of weapon.intrinsicParts) {
     if (part.type !== "damageOverTime") continue;
     if (part.requiresCatalyst && !catalyst) continue;
-    damageInstances.push(
-      ...damageOverTimeInstances(part, shots, isInPhase, multiplierAt, weapon),
+    events.push(
+      ...damageOverTimeEvents(part, shots, isInPhase, multiplierAt, weapon),
     );
   }
   const statParts = abilityStatParts(options.abilityStats ?? [], buckets);
   for (const cast of options.abilities ?? []) {
-    damageInstances.push(
-      ...abilityDamageInstances(cast, isInPhase, (timeMs, component) =>
+    events.push(
+      ...abilityHitEvents(cast, isInPhase, (timeMs, component) =>
         combinedMultiplier(
           [
             ...partsAt(timeMs, component.includedEffectIds).multiplierParts,
@@ -315,7 +324,7 @@ export function simulate(
       ),
     );
   }
-  damageInstances.sort((a, b) => a.timeMs - b.timeMs);
+  const damageInstances = runEvents(events);
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;
@@ -338,12 +347,12 @@ function superWindowsOf(casts: AbilityCast[]): SuperWindow[] {
     .sort((a, b) => a.startMs - b.startMs);
 }
 
-/** Damage instances of all components of an ability after each cast: delay, then ticks. */
-function abilityDamageInstances(
+/** Hits of all components of an ability after each cast: delay, then ticks. */
+function abilityHitEvents(
   { ability, castsMs }: AbilityCast,
   isInPhase: (timeMs: number) => boolean,
   multiplierAt: (timeMs: number, component: AbilityComponent) => number,
-): TimedDamageInstance[] {
+): RunEvent[] {
   const components = ability.components.map((component) => ({
     id: `${ability.id}.${component.id}`,
     component,
@@ -352,7 +361,7 @@ function abilityDamageInstances(
     ticks: requireValue(component.ticks, "ticks"),
     tickIntervalMs: requireValue(component.tickIntervalMs, "tickIntervalMs"),
   }));
-  const result: TimedDamageInstance[] = [];
+  const result: RunEvent[] = [];
   for (const castMs of castsMs) {
     for (const component of components) {
       for (let tick = 0; tick < component.ticks; tick++) {
@@ -360,15 +369,21 @@ function abilityDamageInstances(
           castMs + component.delayMs + tick * component.tickIntervalMs;
         if (!isInPhase(timeMs)) continue;
         result.push({
-          id: component.id,
           timeMs,
-          damage: component.damage * multiplierAt(timeMs, component.component),
-          damageSource: ability.kind,
-          element: ability.element,
-          abilityId: ability.id,
-          ...(component.component.delivery
-            ? { delivery: component.component.delivery }
-            : {}),
+          group: EVENT_GROUP.abilityHit,
+          handle: (_, emit) =>
+            emit({
+              id: component.id,
+              timeMs,
+              damage:
+                component.damage * multiplierAt(timeMs, component.component),
+              damageSource: ability.kind,
+              element: ability.element,
+              abilityId: ability.id,
+              ...(component.component.delivery
+                ? { delivery: component.component.delivery }
+                : {}),
+            }),
         });
       }
     }
@@ -397,13 +412,13 @@ function triggerTimes(
  * (reconstructed from Aegis, docs/mechanics/taken-seeker.md). Damage is converted to the main
  * source's scale (ADR 0011).
  */
-function damageOverTimeInstances(
+function damageOverTimeEvents(
   part: DamageOverTimePart,
   shots: Shot[],
   isInPhase: (timeMs: number) => boolean,
   multiplierAt: (timeMs: number, element: Element) => number,
   weapon: Weapon,
-): TimedDamageInstance[] {
+): RunEvent[] {
   const count = requireValue(
     part.applicationsPerTrigger,
     "applicationsPerTrigger",
@@ -427,34 +442,35 @@ function damageOverTimeInstances(
   const releases = triggerTimes(shots, count, firstDelayMs, intervalMs).sort(
     (a, b) => a - b,
   );
-  let activeUntilMs: number[] = [];
-  const result: TimedDamageInstance[] = [];
-  const push = (timeMs: number, damage: number) => {
-    if (!isInPhase(timeMs)) return;
-    result.push({
-      id: part.id,
-      timeMs,
-      damage: damage * multiplierAt(timeMs, weapon.element),
-      damageSource: "weapon",
-      element: weapon.element,
-      weaponType: weapon.weaponType,
-    });
-  };
+  const hit = (timeMs: number, damage: number): TimedDamageInstance => ({
+    id: part.id,
+    timeMs,
+    damage: damage * multiplierAt(timeMs, weapon.element),
+    damageSource: "weapon",
+    element: weapon.element,
+    weaponType: weapon.weaponType,
+  });
 
-  for (const releaseMs of releases) {
-    if (!isInPhase(releaseMs)) break;
-    activeUntilMs = activeUntilMs.filter((untilMs) => untilMs >= releaseMs);
-    push(releaseMs, impactDamage);
-    if (activeUntilMs.length >= maxActive) continue;
+  return releases.filter(isInPhase).map((releaseMs) => ({
+    timeMs: releaseMs,
+    group: EVENT_GROUP.damageOverTime,
+    handle: (target, emit) => {
+      const activeUntilMs = (
+        target.activeSourcesUntilMs.get(part.id) ?? []
+      ).filter((untilMs) => untilMs >= releaseMs);
+      target.activeSourcesUntilMs.set(part.id, activeUntilMs);
+      emit(hit(releaseMs, impactDamage));
+      if (activeUntilMs.length >= maxActive) return;
 
-    const lastTickMs =
-      releaseMs + firstTickDelayMs + (ticks - 1) * tickIntervalMs;
-    activeUntilMs.push(lastTickMs);
-    for (let tick = 0; tick < ticks; tick++) {
-      push(releaseMs + firstTickDelayMs + tick * tickIntervalMs, tickDamage);
-    }
-  }
-  return result;
+      activeUntilMs.push(
+        releaseMs + firstTickDelayMs + (ticks - 1) * tickIntervalMs,
+      );
+      for (let tick = 0; tick < ticks; tick++) {
+        const timeMs = releaseMs + firstTickDelayMs + tick * tickIntervalMs;
+        if (isInPhase(timeMs)) emit(hit(timeMs, tickDamage));
+      }
+    },
+  }));
 }
 
 /**
@@ -463,13 +479,13 @@ function damageOverTimeInstances(
  * application scale its stacks, rounded up. Not modeled yet: decay of stacks over time
  * (docs/mechanics/scorch-and-ignition.md).
  */
-function thresholdDamageInstances(
+function thresholdEvents(
   weapon: Weapon,
   shots: Shot[],
   counterFactorAt: (counterId: CounterId, timeMs: number) => number,
   isInPhase: (timeMs: number) => boolean,
   multiplierAt: (timeMs: number, element: Element) => number,
-): TimedDamageInstance[] {
+): RunEvent[] {
   const thresholds = weapon.intrinsicParts.flatMap((part) =>
     part.type === "threshold"
       ? [
@@ -506,42 +522,38 @@ function thresholdDamageInstances(
       });
     }
   }
-  applications.sort((a, b) => a.timeMs - b.timeMs);
+  return applications
+    .filter((application) => isInPhase(application.timeMs))
+    .map((application) => ({
+      timeMs: application.timeMs,
+      group: EVENT_GROUP.threshold,
+      handle: (target, emit) => {
+        const counter = target.counters.get(application.counterId) ?? {
+          stacks: 0,
+          blockedUntilMs: -Infinity,
+        };
+        target.counters.set(application.counterId, counter);
+        if (application.timeMs < counter.blockedUntilMs) return;
 
-  const state = new Map<
-    CounterId,
-    { stacks: number; blockedUntilMs: number }
-  >();
-  const result: TimedDamageInstance[] = [];
-  for (const application of applications) {
-    if (!isInPhase(application.timeMs)) break;
-    const counter = state.get(application.counterId) ?? {
-      stacks: 0,
-      blockedUntilMs: -Infinity,
-    };
-    state.set(application.counterId, counter);
-    if (application.timeMs < counter.blockedUntilMs) continue;
-
-    counter.stacks += application.stacks;
-    const reached = thresholds.find(
-      (t) =>
-        t.part.counterId === application.counterId &&
-        counter.stacks >= t.threshold,
-    );
-    if (reached) {
-      result.push({
-        id: reached.part.damageInstanceId,
-        timeMs: application.timeMs,
-        damage:
-          reached.damage *
-          multiplierAt(application.timeMs, reached.part.element),
-        damageSource: "weapon",
-        element: reached.part.element,
-        weaponType: weapon.weaponType,
-      });
-      counter.stacks = 0;
-      counter.blockedUntilMs = application.timeMs + reached.cooldownMs;
-    }
-  }
-  return result;
+        counter.stacks += application.stacks;
+        const reached = thresholds.find(
+          (t) =>
+            t.part.counterId === application.counterId &&
+            counter.stacks >= t.threshold,
+        );
+        if (!reached) return;
+        emit({
+          id: reached.part.damageInstanceId,
+          timeMs: application.timeMs,
+          damage:
+            reached.damage *
+            multiplierAt(application.timeMs, reached.part.element),
+          damageSource: "weapon",
+          element: reached.part.element,
+          weaponType: weapon.weaponType,
+        });
+        counter.stacks = 0;
+        counter.blockedUntilMs = application.timeMs + reached.cooldownMs;
+      },
+    }));
 }
