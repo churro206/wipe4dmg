@@ -65,6 +65,8 @@ export function describePart(part: EffectPart): string {
       return "keine Reloads";
     case "counterModifier":
       return `Scorch ×${factor.format(part.factor.value ?? NaN)}`;
+    case "appliesKeyword":
+      return `setzt ${part.keywordId}`;
   }
 }
 

@@ -328,6 +328,22 @@ export const CounterModifierPart = z.object({
 });
 export type CounterModifierPart = z.infer<typeof CounterModifierPart>;
 
+/**
+ * Effect part that applies a keyword to the target with every matching hit, e.g. Volatile Rounds
+ * (ADR 0015, point 1). The filters work like those of a multiplier part.
+ */
+export const AppliesKeywordPart = z.object({
+  type: z.literal("appliesKeyword"),
+  keywordId: KeywordId,
+  damageSources: z.array(DamageSource).min(1),
+  elements: z.array(Element).optional(),
+  weaponTypes: z.array(WeaponType).optional(),
+  abilityIds: z.array(z.string()).optional(),
+  durationMs: SourcedNumber.optional(), // replaces the duration of the keyword, e.g. of Unravel
+  source: Source,
+});
+export type AppliesKeywordPart = z.infer<typeof AppliesKeywordPart>;
+
 /** Effect part that changes the shot plan instead of damage (ADR 0006). */
 export const TimingPart = z.object({
   type: z.literal("timing"),
@@ -343,6 +359,7 @@ export const EffectPart = z.discriminatedUnion("type", [
   MultiplierPart,
   TimingPart,
   CounterModifierPart,
+  AppliesKeywordPart,
 ]);
 export type EffectPart = z.infer<typeof EffectPart>;
 

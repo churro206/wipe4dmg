@@ -37,6 +37,7 @@ import type {
   DamageSource,
   Effect,
   Element,
+  Keyword,
   MultiplierPart,
   Weapon,
   WeaponType,
@@ -50,6 +51,7 @@ import {
 } from "./effectParts";
 import { resolveWindows, type EffectWindowOptions } from "./effectWindows";
 import { runEvents, type RunEvent } from "./eventRun";
+import { keywordOnHit } from "./keywordRun";
 import { superWindowMs } from "./superWindow";
 import { requireValue } from "./requireValue";
 
@@ -57,6 +59,7 @@ const MS_PER_SECOND = 1000;
 const MS_PER_MINUTE = 60_000;
 // Guards rounding up against floating point noise, e.g. 10 x 1.5 = 15.000000000000002.
 const ROUNDING_TOLERANCE = 1e-9;
+const ABILITY_DAMAGE_SOURCES: DamageSource[] = ["grenade", "melee", "super"];
 // Order of events at equal times in the event run (eventRun.ts).
 const EVENT_GROUP = {
   weaponHit: 0,
@@ -93,6 +96,7 @@ export type SimulationOptions = EffectWindowOptions & {
   catalyst?: boolean; // default: without catalyst
   abilities?: AbilityCast[]; // default: no abilities
   abilityStats?: AbilityStatValue[]; // default: no stat bonus
+  keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
 };
 
 /** Time in which a super keeps the player busy; exact is false if a value of the super is missing. */
@@ -324,7 +328,36 @@ export function simulate(
       ),
     );
   }
-  const damageInstances = runEvents(events);
+  // Keyword damage (ADR 0015): parts for keyword damage apply, for an ability keyword also parts
+  // for all abilities at once; inheriting the bonuses of the source comes with ignition.
+  const keywordMultiplierAt = (timeMs: number, keyword: Keyword) => {
+    if (keyword.damageCategory === "inheritsSource") {
+      throw new Error(`Keyword "${keyword.id}" is not modelled yet`);
+    }
+    const parts = partsAt(timeMs)
+      .multiplierParts.filter(
+        (part) =>
+          part.damageSources.includes("keyword") ||
+          (keyword.damageCategory === "ability" &&
+            ABILITY_DAMAGE_SOURCES.every((s) =>
+              part.damageSources.includes(s),
+            )),
+      )
+      .map((part) => ({ ...part, damageSources: ["keyword" as const] }));
+    return combinedMultiplier(parts, buckets, {
+      damageSource: "keyword",
+      element: keyword.element,
+    });
+  };
+  const damageInstances = runEvents(
+    events,
+    keywordOnHit({
+      keywords: options.keywords ?? [],
+      keywordPartsAt: (timeMs) => partsAt(timeMs).keywordParts,
+      multiplierAt: keywordMultiplierAt,
+      isInPhase,
+    }),
+  );
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;

@@ -126,11 +126,11 @@ Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen 
 | Radiant | empowering | empowering +20 %; empowering +20 % | weapon; super (nur golden-gun-deadshot, golden-gun-marksman) | ganze Phase oder Rotation |
 | Weapons of Light (Banner Shield, Ward of Dawn) | empowering | empowering +25 % | weapon | ganze Phase oder Rotation |
 | Lumina (Blessing of the Sky) | empowering | empowering +35 % | weapon | 11 s |
-| Weaken | debuff | debuff +15 % | weapon, grenade, melee, super | ganze Phase oder Rotation |
-| Divinity | debuff | debuff +15 % | weapon, grenade, melee, super | ganze Phase oder Rotation |
-| Tractor Cannon | debuff | debuff +30 % | weapon, grenade, melee, super | 10 s |
-| Moebius Tether | debuff | debuff +30 % | weapon, grenade, melee, super | 6 s |
-| Deadfall Tether | debuff | debuff +35 % | weapon, grenade, melee, super | 12 s |
+| Weaken | debuff | debuff +15 % | weapon, grenade, melee, super, classAbility, keyword | ganze Phase oder Rotation |
+| Divinity | debuff | debuff +15 % | weapon, grenade, melee, super, classAbility, keyword | ganze Phase oder Rotation |
+| Tractor Cannon | debuff | debuff +30 % | weapon, grenade, melee, super, classAbility, keyword | 10 s |
+| Moebius Tether | debuff | debuff +30 % | weapon, grenade, melee, super, classAbility, keyword | 6 s |
+| Deadfall Tether | debuff | debuff +35 % | weapon, grenade, melee, super, classAbility, keyword | 12 s |
 | Surge 1x | surge | surge +10 % | weapon | ganze Phase oder Rotation |
 | Surge 2x | surge | surge +17 % | weapon | ganze Phase oder Rotation |
 | Surge 3x | surge | surge +22 % | weapon | ganze Phase oder Rotation |

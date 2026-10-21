@@ -1,6 +1,7 @@
 // Effect parts (ADR 0006): splitting by type, overrides and the multiplier per bucket.
 
 import type {
+  AppliesKeywordPart,
   Bucket,
   CounterModifierPart,
   DamageSource,
@@ -17,6 +18,7 @@ export type ActiveParts = {
   multiplierParts: MultiplierPart[];
   timingParts: TimingPart[];
   counterModifierParts: CounterModifierPart[];
+  keywordParts: AppliesKeywordPart[];
 };
 
 /** What a damage instance is, as far as multiplier parts care. */
@@ -36,6 +38,7 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
   const multiplierParts: MultiplierPart[] = [];
   const timingParts: TimingPart[] = [];
   const counterModifierParts: CounterModifierPart[] = [];
+  const keywordParts: AppliesKeywordPart[] = [];
 
   for (const effect of effects) {
     const overriddenBuckets = new Set(
@@ -53,13 +56,17 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
         counterModifierParts.push(part);
         continue;
       }
+      if (part.type === "appliesKeyword") {
+        keywordParts.push(part);
+        continue;
+      }
       if (!bucketIds.has(part.bucketId)) {
         throw new Error(`Unknown bucket "${part.bucketId}"`);
       }
       if (!overriddenBuckets.has(part.bucketId)) multiplierParts.push(part);
     }
   }
-  return { multiplierParts, timingParts, counterModifierParts };
+  return { multiplierParts, timingParts, counterModifierParts, keywordParts };
 }
 
 /** A part without weapon types applies to everything; a part with weapon types only to those weapons. */
@@ -76,7 +83,7 @@ export function appliesToWeaponType(
 /**
  * Whether an effect changes the weapon (ADR 0012): a multiplier part for weapon damage of its
  * element and weapon type, a timing part for its weapon type, or a counter modifier for a counter
- * of the weapon (e.g. Ember of Ashes needs scorch).
+ * of the weapon (e.g. Ember of Ashes needs scorch), or a keyword its hits apply.
  */
 export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
   const counterIds = new Set(
@@ -97,6 +104,13 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
         return appliesToWeaponType(part.weaponTypes, weapon.weaponType);
       case "counterModifier":
         return counterIds.has(part.counterId);
+      case "appliesKeyword":
+        return (
+          part.damageSources.includes("weapon") &&
+          (part.elements === undefined ||
+            part.elements.includes(weapon.element)) &&
+          appliesToWeaponType(part.weaponTypes, weapon.weaponType)
+        );
     }
   });
 }

@@ -53,6 +53,13 @@ Eine Recherche (Skill `recherche`, 2026-10-21) hat den Umbau gegen die Quellen g
     - U6: `effects.json` wird aus dem Court-Snapshot und dem Compendium erzeugt, mit der Regelkette wie bei den Exotics.
     - U9 (nach U5): `build:abilities` erzeugt `abilities.json` aus dem Aegis-Snapshot und dem Manifest.
 
+## Regeln aus der Umsetzung (U4a)
+
+- Ein Keyword zählt den Schaden aller Treffer, nur nicht den seiner eigenen Treffer. So kann Jolt sich nicht selbst auslösen.
+- Volatile und andere Keywords, die beim Auslösen entfernt werden: Während des Cooldowns lassen sie sich nicht neu setzen (Compendium: „1 second cooldown before Volatile can be reapplied“).
+- Global Debuffs (Court) wirken auf jeden Schaden. Ihre Teile nennen deshalb auch `classAbility` und `keyword`. Auf Keyword-Schaden wirken Teile für `keyword`. Bei einem Ability-Keyword (Volatile, „Void Ability Damage“) wirken zusätzlich Teile, die für Grenade, Melee und Super zugleich gelten.
+- Annahmen bei Unravel, beide als `unverified` markiert: Der setzende Treffer zählt mit, wie bei Jolt, denn das Compendium sagt dazu nichts. Aegis misst nur ein Projektil („single projectile“, 39,1). Wie viele der drei Fäden einen einzelnen Boss treffen, ist offen; gezählt wird eines.
+
 ## Bewusst später
 
 - Mehrere Waffen und Swaps: Bolt Charge setzt beim Swap zurück, Rotationen aus Heavy und Special.

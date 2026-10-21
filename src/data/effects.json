@@ -271,7 +271,14 @@
             "status": "verified"
           }
         },
-        "damageSources": ["weapon", "grenade", "melee", "super"]
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ]
       }
     ]
   },
@@ -303,7 +310,14 @@
             "note": "Overrides Particle Reconstruction down to 15% (Compendium Artifact Perks; Court)."
           }
         },
-        "damageSources": ["weapon", "grenade", "melee", "super"]
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ]
       }
     ],
     "overrides": ["particle-reconstruction"]
@@ -335,7 +349,14 @@
             "status": "verified"
           }
         },
-        "damageSources": ["weapon", "grenade", "melee", "super"]
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ]
       }
     ],
     "durationMs": {
@@ -383,7 +404,14 @@
             "status": "verified"
           }
         },
-        "damageSources": ["weapon", "grenade", "melee", "super"]
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ]
       }
     ],
     "durationMs": {
@@ -432,7 +460,14 @@
             "status": "verified"
           }
         },
-        "damageSources": ["weapon", "grenade", "melee", "super"]
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ]
       }
     ],
     "durationMs": {
