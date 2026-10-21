@@ -30,4 +30,5 @@ Die Community rechnet mit Tabellen (Aegis, Court, Quantum). Vorbilder kommen des
 
 Schädel aus dem Todesbildschirm des Spiels („Your Light Fades Away“), vom Inhaber geliefert (2026-10-21).
 Er ist kein Icon im Bungie-Manifest (gesucht in allen Tabellen, Modifiern, Triumphs und Stat-Icons), deshalb liegt er als Datei vor:
-`public/logo.png` (96 px), `public/favicon-32.png`, `public/apple-touch-icon.png` (180 px), unverändert verkleinert aus 512 px.
+`public/logo.png` (96 px) ist der weiße Schädel auf durchsichtigem Grund (Schwarz herausgerechnet, sonst unverändert).
+Im hellen Modus wird er per CSS umgekehrt (schwarzer Schädel, Wahl des Inhabers). `public/favicon-32.png` hat einen dunklen Umriss, damit er in hellen und dunklen Browser-Tabs sichtbar ist. `public/apple-touch-icon.png` (180 px) füllen iPhones schwarz.

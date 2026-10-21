@@ -407,7 +407,7 @@ function App() {
     <>
       <main>
         <header>
-          <img src="/logo.png" alt="" width={48} height={48} />
+          <img className="logo" src="/logo.png" alt="" width={48} height={48} />
           <h1>wipe4dmg</h1>
           <SegmentedControl
             label="Ansicht"
