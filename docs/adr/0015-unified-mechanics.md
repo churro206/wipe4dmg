@@ -48,6 +48,11 @@ Eine Recherche (Skill `recherche`, 2026-10-21) hat den Umbau gegen die Quellen g
 9. **Einordnung und Laufzeit getrennt:** `exotic-armor.json` bleibt die Prüfliste. Die erzeugten Effects stehen in `exotic-armor-effects.json`.
 10. **Migration in kleinen Schritten.** Ein Snapshot-Test hält vorher die Total Damage aller Waffen-Pakete und Gate-Builds fest. Nach jedem Schritt bleiben alle Gates grün: One Thousand Voices, die Waffen-Pakete und die Aegis-Abilities mit ±10 %. Abweichungen sind nur dort erlaubt, wo der Schritt sie beabsichtigt, und werden begründet.
 
+11. **Keine Handmodelle.** Am Ende des Umbaus kommen Waffen, Effects, Abilities und Gate-Referenzen aus Importen mit Regeln. Von Hand bleiben nur Regeln (`buckets.json`) und Overrides mit Zitat. Ingame-Messungen gelten nur für allgemeine Mechaniken (ADR 0011).
+    - U4: One Thousand Voices und Two-Tailed Fox werden Pakete aus dem Import, Scorch kommt als Keyword dazu. `weapons/one-thousand-voices.json` und `sourceScale` entfallen. Die Gate-Referenzen entstehen aus Aegis-Zeilen mit Annahmen, z. B. „mit Ember“ ÷ „ohne“. Dabei ist ein Widerspruch zu klären: Ignition-Cooldown laut Ingame-Test 1,3 s, laut Compendium 1,6 s.
+    - U6: `effects.json` wird aus dem Court-Snapshot und dem Compendium erzeugt, mit der Regelkette wie bei den Exotics.
+    - U9 (nach U5): `build:abilities` erzeugt `abilities.json` aus dem Aegis-Snapshot und dem Manifest.
+
 ## Bewusst später
 
 - Mehrere Waffen und Swaps: Bolt Charge setzt beim Swap zurück, Rotationen aus Heavy und Special.
