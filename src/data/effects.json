@@ -163,8 +163,8 @@
   {
     "id": "banner-shield",
     "code": 4,
-    "name": "Banner Shield (Weapons of Light)",
-    "shortName": "Banner",
+    "name": "Weapons of Light (Banner Shield, Ward of Dawn)",
+    "shortName": "WoL",
     "manifestRef": {
       "table": "DestinySandboxPerkDefinition",
       "hash": 3112248479
@@ -188,7 +188,7 @@
         "multiplier": {
           "value": 1.25,
           "source": {
-            "name": "Court Stacking Guide (Standing Behind Banner, PvE 25%)",
+            "name": "Court Stacking Guide (Banner Shield and Weapons of Light from Ward of Dawn, both PvE 25%; kept up the whole damage phase, owner 2026-10-21)",
             "url": "https://destiny2.science/court-sheet",
             "retrieved": "2026-10-18",
             "status": "verified"

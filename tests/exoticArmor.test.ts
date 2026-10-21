@@ -79,7 +79,7 @@ const inputs: ArmorImportInputs = {
   effects: [
     { id: "radiant", name: "Radiant" },
     { id: "lumina-noble-rounds", name: "Lumina (Blessing of the Sky)" },
-    { id: "banner-shield", name: "Banner Shield (Weapons of Light)" },
+    { id: "banner-shield", name: "Weapons of Light (Banner Shield, Ward of Dawn)" },
   ],
   meleeNames: ["Frenzied Blade", "Weighted Throwing Knife"],
   courtCategories: [

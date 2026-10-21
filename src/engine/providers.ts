@@ -41,7 +41,10 @@ export function effectsFor(
   );
 }
 
-/** Abilities of one kind that a build of this class and subclass can use, in data order. */
+/**
+ * Abilities of one kind that a build of this class and subclass can use, in data order. Variants
+ * with exotic armor are not offered; they replace their ability while the exotic is worn.
+ */
 export function abilitiesFor(
   abilities: Ability[],
   kind: AbilityKind,
@@ -51,6 +54,7 @@ export function abilitiesFor(
   return abilities.filter(
     (ability) =>
       ability.kind === kind &&
+      ability.variantOf === undefined &&
       ability.providers.some(
         (p) =>
           (p.classes === undefined || p.classes.includes(guardianClass)) &&

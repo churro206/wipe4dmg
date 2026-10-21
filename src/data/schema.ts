@@ -245,6 +245,9 @@ export const MultiplierPart = z.object({
   elements: z.array(Element).optional(), // omitted: all elements
   weaponTypes: z.array(WeaponType).optional(), // omitted: all weapon types
   abilityIds: z.array(z.string()).optional(), // omitted: all abilities; set: only these abilities
+  // weaponMatchesSuperElement: only while the weapon has the element of the super, e.g. Mantle of
+  // Battle Harmony (ADR 0014)
+  condition: z.enum(["weaponMatchesSuperElement"]).optional(),
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 
@@ -259,7 +262,9 @@ export type CounterModifierPart = z.infer<typeof CounterModifierPart>;
 /** Effect part that changes the shot plan instead of damage (ADR 0006). */
 export const TimingPart = z.object({
   type: z.literal("timing"),
-  change: z.enum(["noReload"]),
+  // noReload: skips reloads; reloadDuration: reload time × factor (ADR 0014)
+  change: z.enum(["noReload", "reloadDuration"]),
+  factor: z.number().positive().optional(), // required for reloadDuration, e.g. 0.9
   weaponTypes: z.array(WeaponType).optional(), // omitted: all weapon types
   source: Source,
 });
@@ -304,13 +309,14 @@ export const Slot = z.enum([
   "mod",
   "stat",
   "artifact",
+  "exotic", // exotic armor (ADR 0014)
 ]);
 export type Slot = z.infer<typeof Slot>;
 
 // Slots each own provider can fill; teammates provide effects without a slot.
 const SLOTS_OF: Record<ProviderKind, Slot[]> = {
   subclass: ["super", "classAbility", "aspect", "fragment"],
-  armor: ["mod", "stat"],
+  armor: ["mod", "stat", "exotic"],
   artifact: ["artifact"],
   fireteamSupport: [],
 };
@@ -442,6 +448,10 @@ const AbilityFields = z.object({
   extraIncludedEffectIds: z.array(z.string()).optional(),
   // Compendium entry that describes the ability; the source of quotes and of the coverage list.
   compendium: z.object({ tab: z.string(), entry: z.string() }).optional(),
+  // Variant measured with an exotic armor piece (ADR 0014): replaces the ability `variantOf` while
+  // the build wears `exoticArmorId`, e.g. Thundercrash with Cuirass of the Falling Star.
+  variantOf: z.string().optional(),
+  exoticArmorId: z.string().optional(),
   // Empty only for supers that just grant effects, e.g. Ward of Dawn.
   components: z.array(AbilityComponent),
 });
@@ -731,6 +741,8 @@ export const Build = z.object({
   guardianClass: GuardianClass,
   subclass: Subclass,
   catalyst: z.boolean(),
+  // Exotic armor piece (exotic-armor.json, ADR 0014); omitted: none. At most one per build.
+  exoticArmorId: z.string().optional(),
   // Selected effects with their provider; the same effect may come from two providers.
   selections: z.array(
     z.object({ effectId: z.string(), provider: ProviderKind }),

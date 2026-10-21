@@ -20,7 +20,7 @@ export type AbilitySimulation = {
 };
 
 export function abilitySimulation(
-  build: Pick<Build, "abilities" | "abilityStats">,
+  build: Pick<Build, "abilities" | "abilityStats" | "exoticArmorId">,
   abilities: Ability[],
   abilityStats: AbilityStatScaling[],
   effects: Effect[],
@@ -28,7 +28,14 @@ export function abilitySimulation(
   const casts = (build.abilities ?? []).map(({ abilityId, castsMs }) => {
     const ability = abilities.find((a) => a.id === abilityId);
     if (!ability) throw new Error(`Unknown ability "${abilityId}"`);
-    return { ability, castsMs };
+    // A variant measured with the worn exotic armor replaces the ability (ADR 0014).
+    const variant = abilities.find(
+      (a) =>
+        a.variantOf === abilityId &&
+        build.exoticArmorId !== undefined &&
+        a.exoticArmorId === build.exoticArmorId,
+    );
+    return { ability: variant ?? ability, castsMs };
   });
   const stats = build.abilityStats
     ? abilityStats.map((scaling) => ({

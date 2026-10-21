@@ -1,0 +1,92 @@
+// Exotic armor of a build (ADR 0014): which pieces a class can wear and which effects they bring.
+// The kinds come from the armor import (exotic-armor.json); only kinds that change damage in the
+// model are selectable.
+
+import type {
+  Effect,
+  ExoticArmorEntry,
+  ExoticArmorKind,
+  GuardianClass,
+} from "../data/schema";
+
+const SELECTABLE: readonly ExoticArmorKind[] = [
+  "abilityVariant",
+  "damageBuff",
+  "grantsEffect",
+  "weaponTiming",
+];
+
+const fitsClass = (entry: ExoticArmorEntry, guardianClass: GuardianClass) =>
+  entry.guardianClass === null || entry.guardianClass === guardianClass;
+
+/** Selectable exotic armor of a class, in data order. */
+export function exoticArmorFor(
+  entries: ExoticArmorEntry[],
+  guardianClass: GuardianClass,
+): ExoticArmorEntry[] {
+  return entries.filter(
+    (entry) =>
+      SELECTABLE.includes(entry.kind) && fitsClass(entry, guardianClass),
+  );
+}
+
+/** The exotic armor of a build; throws if it is unknown, not selectable or of another class. */
+export function exoticArmorOf(
+  exoticArmorId: string | undefined,
+  entries: ExoticArmorEntry[],
+  guardianClass: GuardianClass,
+): ExoticArmorEntry | undefined {
+  if (exoticArmorId === undefined) return undefined;
+  const entry = entries.find((e) => e.id === exoticArmorId);
+  if (!entry) throw new Error(`Unknown exotic armor "${exoticArmorId}"`);
+  if (!SELECTABLE.includes(entry.kind))
+    throw new Error(
+      `Exotic armor "${entry.name}" is not selectable (${entry.kind})`,
+    );
+  if (!fitsClass(entry, guardianClass))
+    throw new Error(
+      `Exotic armor "${entry.name}" is not for the class ${guardianClass}`,
+    );
+  return entry;
+}
+
+/**
+ * Effects an exotic armor piece adds for the whole damage phase: the modelled effects its texts
+ * grant (rule 4c) and its quoted change of the shot plan (rule 5). Its damage bonuses become effect
+ * parts with E1.
+ */
+export function exoticArmorEffects(
+  entry: ExoticArmorEntry,
+  effects: Effect[],
+): Effect[] {
+  const granted = entry.grantsEffectIds.map((id) => {
+    const effect = effects.find((e) => e.id === id);
+    if (!effect) throw new Error(`Unknown effect "${id}" of "${entry.name}"`);
+    return effect;
+  });
+  if (!entry.timing) return granted;
+  const timing: Effect = {
+    id: `exotic-armor:${entry.id}`,
+    name: entry.name,
+    code: entry.hash, // not part of build links; the exotic itself is
+    shortName: entry.name,
+    providers: [{ kind: "armor", slot: "exotic" }],
+    parts: [
+      {
+        type: "timing",
+        change: entry.timing.change,
+        factor: entry.timing.factor,
+        source: {
+          name:
+            entry.timing.source === "compendium"
+              ? "Destiny Data Compendium (tab Exotic Armors)"
+              : "Clarity (Live-Clarity-Database)",
+          retrieved: "2026-10-21",
+          status: "verified",
+          note: `„${entry.timing.quote}“; several reload factors: only the strongest counts (no source for stacking)`,
+        },
+      },
+    ],
+  };
+  return [...granted, timing];
+}

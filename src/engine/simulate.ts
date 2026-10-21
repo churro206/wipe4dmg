@@ -124,6 +124,14 @@ export function simulate(
   // Validates the buckets of all parts once, even of effects outside their window.
   activeParts(effects, buckets);
   const windows = resolveWindows(effects, options);
+  // Conditions of multiplier parts (ADR 0014), fixed for one simulation.
+  const superElement = (options.abilities ?? []).find(
+    (cast) => cast.ability.kind === "super",
+  )?.ability.element;
+  const meetsCondition = (part: MultiplierPart) =>
+    part.condition === undefined ||
+    (part.condition === "weaponMatchesSuperElement" &&
+      superElement === weapon.element);
   const partsCache = new Map<string, ActiveParts>();
   // Excluded effects are already inside a value, e.g. the included effects of an ability component.
   const partsAt = (
@@ -141,7 +149,11 @@ export function simulate(
     const key = active.map((effect) => effect.id).join("|");
     let parts = partsCache.get(key);
     if (!parts) {
-      parts = activeParts(active, buckets);
+      const all = activeParts(active, buckets);
+      parts = {
+        ...all,
+        multiplierParts: all.multiplierParts.filter(meetsCondition),
+      };
       partsCache.set(key, parts);
     }
     return parts;
@@ -152,6 +164,22 @@ export function simulate(
         part.change === "noReload" &&
         appliesToWeaponType(part.weaponTypes, weapon.weaponType),
     );
+  // Reload time × factor of the strongest active reloadDuration part; no source says how several
+  // factors stack (ADR 0014).
+  const reloadMsAt = (timeMs: number) => {
+    const factors = partsAt(timeMs)
+      .timingParts.filter(
+        (part) =>
+          part.change === "reloadDuration" &&
+          appliesToWeaponType(part.weaponTypes, weapon.weaponType),
+      )
+      .map((part) => {
+        if (part.factor === undefined)
+          throw new Error("reloadDuration needs a factor");
+        return part.factor;
+      });
+    return reloadTimeMs * Math.min(1, ...factors);
+  };
   const shotIntervalMs = MS_PER_MINUTE / fireRateRpm;
   const damagePhaseMs = damagePhaseSeconds * MS_PER_SECOND;
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
@@ -176,7 +204,8 @@ export function simulate(
     if (i > 0) {
       const previousMs = shotMs;
       shotMs += shotIntervalMs;
-      if (i % magazine === 0 && !noReloadAt(previousMs)) shotMs += reloadTimeMs;
+      if (i % magazine === 0 && !noReloadAt(previousMs))
+        shotMs += reloadMsAt(previousMs);
     }
     shotMs = afterSuperWindows(shotMs);
     if (!isInPhase(shotMs)) break;
