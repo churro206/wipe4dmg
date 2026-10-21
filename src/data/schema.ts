@@ -249,11 +249,29 @@ export const DamageOverTimePart = z.object({
 });
 export type DamageOverTimePart = z.infer<typeof DamageOverTimePart>;
 
+/**
+ * Effect part that applies a keyword to the target with every matching hit, e.g. Volatile Rounds
+ * (ADR 0015, point 1). The filters work like those of a multiplier part.
+ */
+export const AppliesKeywordPart = z.object({
+  type: z.literal("appliesKeyword"),
+  keywordId: KeywordId,
+  damageSources: z.array(DamageSource).min(1),
+  elements: z.array(Element).optional(),
+  weaponTypes: z.array(WeaponType).optional(),
+  abilityIds: z.array(z.string()).optional(),
+  durationMs: SourcedNumber.optional(), // replaces the duration of the keyword, e.g. of Unravel
+  stacks: SourcedNumber.optional(), // for keywords with stacks, e.g. x40 scorch or x4 bolt charge
+  source: Source,
+});
+export type AppliesKeywordPart = z.infer<typeof AppliesKeywordPart>;
+
 /** Fixed parts of a weapon that work without any selected effect, e.g. scorch from explosions. */
 export const IntrinsicPart = z.discriminatedUnion("type", [
   CounterPart,
   ThresholdPart,
   DamageOverTimePart,
+  AppliesKeywordPart,
 ]);
 export type IntrinsicPart = z.infer<typeof IntrinsicPart>;
 
@@ -289,6 +307,11 @@ export const Weapon = z.object({
   reloadTimeMs: SourcedNumber, // extra time after the last shot of a magazine, on top of the shot interval
   damageInstances: z.array(DamageInstance).min(1),
   intrinsicParts: z.array(IntrinsicPart),
+  // Bonus on keyword damage that this weapon set off, e.g. "Solar Effects that are initially
+  // applied by One Thousand Voices deal 31.6% increased damage" (ADR 0015, U4a-4).
+  keywordBonuses: z
+    .array(z.object({ keywordId: KeywordId, factor: SourcedNumber }))
+    .optional(),
   intrinsics: z.array(
     z.object({
       id: z.string(),
@@ -335,23 +358,6 @@ export const CounterModifierPart = z.object({
   factor: SourcedNumber, // e.g. 1.5 for +50%
 });
 export type CounterModifierPart = z.infer<typeof CounterModifierPart>;
-
-/**
- * Effect part that applies a keyword to the target with every matching hit, e.g. Volatile Rounds
- * (ADR 0015, point 1). The filters work like those of a multiplier part.
- */
-export const AppliesKeywordPart = z.object({
-  type: z.literal("appliesKeyword"),
-  keywordId: KeywordId,
-  damageSources: z.array(DamageSource).min(1),
-  elements: z.array(Element).optional(),
-  weaponTypes: z.array(WeaponType).optional(),
-  abilityIds: z.array(z.string()).optional(),
-  durationMs: SourcedNumber.optional(), // replaces the duration of the keyword, e.g. of Unravel
-  stacks: SourcedNumber.optional(), // for keywords with stacks, e.g. x40 scorch or x4 bolt charge
-  source: Source,
-});
-export type AppliesKeywordPart = z.infer<typeof AppliesKeywordPart>;
 
 /** Effect part that changes the shot plan instead of damage (ADR 0006). */
 export const TimingPart = z.object({

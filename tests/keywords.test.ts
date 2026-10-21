@@ -13,6 +13,7 @@ import {
   type KeywordData as KeywordDataType,
   type SourcedNumber,
 } from "../src/data/schema";
+import { KEYWORD_COUNTERS } from "../src/engine/effectParts";
 import { loadKeywords } from "../src/engine/loadKeywords";
 
 const rows = AegisAbilityRow.array().parse(rawRows);
@@ -76,6 +77,17 @@ describe("keywords.json", () => {
         entry.id,
       ).toBe(true);
     }
+  });
+});
+
+describe("KEYWORD_COUNTERS", () => {
+  it("names the counter of every keyword that goes off by a counter", () => {
+    const fromData = Object.fromEntries(
+      data.flatMap((k) =>
+        k.trigger.type === "counter" ? [[k.id, k.trigger.counterId]] : [],
+      ),
+    );
+    expect(KEYWORD_COUNTERS).toEqual(fromData);
   });
 });
 

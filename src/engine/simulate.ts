@@ -29,6 +29,7 @@
 
 import type {
   Ability,
+  AppliesKeywordPart,
   AbilityComponent,
   Bucket,
   CounterId,
@@ -333,7 +334,24 @@ export function simulate(
   // for all abilities at once. Ignition inherits the bonuses of the hit that applied the scorch, in
   // the element of the keyword; melee buffs do not count ("Melee Damage Buffs do not scale
   // Ignition nor Scorch damage", Compendium), so a melee source counts like keyword damage.
+  // A keyword bonus of the weapon scales keyword damage its hits set off.
+  const weaponKeywordBonus = (keyword: Keyword, source: TimedDamageInstance) =>
+    source.damageSource === "weapon"
+      ? (weapon.keywordBonuses ?? [])
+          .filter((bonus) => bonus.keywordId === keyword.id)
+          .reduce(
+            (product, bonus) => product * requireValue(bonus.factor, "factor"),
+            1,
+          )
+      : 1;
   const keywordMultiplierAt = (
+    timeMs: number,
+    keyword: Keyword,
+    source: TimedDamageInstance,
+  ) =>
+    weaponKeywordBonus(keyword, source) *
+    sourceMultiplierAt(timeMs, keyword, source);
+  const sourceMultiplierAt = (
     timeMs: number,
     keyword: Keyword,
     source: TimedDamageInstance,
@@ -368,11 +386,17 @@ export function simulate(
       element: keyword.element,
     });
   };
+  const weaponKeywordParts = weapon.intrinsicParts.filter(
+    (part): part is AppliesKeywordPart => part.type === "appliesKeyword",
+  );
   const damageInstances = runEvents(
     events,
     keywordOnHit({
       keywords: options.keywords ?? [],
-      keywordPartsAt: (timeMs) => partsAt(timeMs).keywordParts,
+      keywordPartsAt: (timeMs) => [
+        ...weaponKeywordParts,
+        ...partsAt(timeMs).keywordParts,
+      ],
       multiplierAt: keywordMultiplierAt,
       stackFactorAt: counterFactorAt,
       isInPhase,

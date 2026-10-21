@@ -13,6 +13,7 @@ import {
   type Effect,
   type KeywordId,
 } from "../src/data/schema";
+import { effectAppliesToWeapon } from "../src/engine/effectParts";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate, type SimulationOptions } from "../src/engine/simulate";
@@ -230,5 +231,59 @@ describe("bolt charge", () => {
       keywordHits([stacksOf("boltCharge", 4)], withGrenadeAt(4000)),
     ).toEqual([]);
     expect(keywordHits([stacksOf("boltCharge", 10)])).toEqual([]);
+  });
+});
+
+describe("keywords of a weapon", () => {
+  const scorchWeapon = (bonus?: number) => ({
+    ...weapon,
+    intrinsicParts: [
+      {
+        type: "appliesKeyword" as const,
+        keywordId: "ignition" as const,
+        damageSources: ["weapon" as const],
+        stacks: { value: 40, source },
+        source,
+      },
+    ],
+    ...(bonus
+      ? {
+          keywordBonuses: [
+            {
+              keywordId: "ignition" as const,
+              factor: { value: bonus, source },
+            },
+          ],
+        }
+      : {}),
+  });
+  const ignitions = (
+    w: ReturnType<typeof scorchWeapon>,
+    selected: Effect[] = [],
+  ) =>
+    simulate(w, 30, selected, buckets, { keywords }).damageInstances.filter(
+      (d) => d.keywordId === "ignition",
+    );
+
+  it("an intrinsic part applies scorch with every shot", () => {
+    expect(ignitions(scorchWeapon()).map((d) => d.timeMs)).toEqual([6000]);
+  });
+
+  it("the weapon's keyword bonus scales its ignitions", () => {
+    expect(ignitions(scorchWeapon(1.316))[0].damage).toBeCloseTo(
+      damageOf("ignition") * 1.316,
+    );
+  });
+
+  it("counts as a weapon that Ember of Ashes changes", () => {
+    expect(
+      ignitions(scorchWeapon(), [effect("ember-of-ashes")]).map(
+        (d) => d.timeMs,
+      ),
+    ).toEqual([3000, 9000]);
+    expect(
+      effectAppliesToWeapon(effect("ember-of-ashes"), scorchWeapon()),
+    ).toBe(true);
+    expect(effectAppliesToWeapon(effect("ember-of-ashes"), weapon)).toBe(false);
   });
 });

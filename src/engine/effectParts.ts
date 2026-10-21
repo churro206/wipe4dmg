@@ -3,16 +3,23 @@
 import type {
   AppliesKeywordPart,
   Bucket,
+  CounterId,
   CounterModifierPart,
   DamageSource,
   Effect,
   Element,
+  KeywordId,
   MultiplierPart,
   TimingPart,
   Weapon,
   WeaponType,
 } from "../data/schema";
 import { requireValue } from "./requireValue";
+
+/** Counter that the stacks of a keyword fill (keywords.json, trigger "counter"). */
+export const KEYWORD_COUNTERS: Partial<Record<KeywordId, CounterId>> = {
+  ignition: "scorch",
+};
 
 export type ActiveParts = {
   multiplierParts: MultiplierPart[];
@@ -87,9 +94,14 @@ export function appliesToWeaponType(
  */
 export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
   const counterIds = new Set(
-    weapon.intrinsicParts.flatMap((part) =>
-      part.type === "damageOverTime" ? [] : [part.counterId],
-    ),
+    weapon.intrinsicParts.flatMap((part) => {
+      if (part.type === "damageOverTime") return [];
+      if (part.type === "appliesKeyword") {
+        const counterId = KEYWORD_COUNTERS[part.keywordId];
+        return counterId ? [counterId] : [];
+      }
+      return [part.counterId];
+    }),
   );
   return effect.parts.some((part) => {
     switch (part.type) {
