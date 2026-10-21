@@ -5,8 +5,12 @@
 // 4 a text grants an effect the model knows, e.g. Radiant → grantsEffect (4c); otherwise a text names a
 //   damage bonus → damageBuff with the bucket from the text (4a), else from Court's definition of
 //   exotic intrinsics (4b)
-// 5 a text names damage without a clear bonus → gap
-// 6 no damage word → noDamage
+// 5 without a damage bonus (owner, 2026-10-21: drop only what does not influence damage at all):
+//   extends an effect the model keeps up anyway (e.g. Weapons of Light) → noDamage;
+//   quoted Reload Duration Multiplier → weaponTiming; own damage → ownDamage (later);
+//   other timing (magazine, ammo, fire rate) → gap; energy only → energyOnly (kept as gap);
+//   other damage words → gap
+// 6 nothing of that → noDamage
 // Bonuses on melee damage do not count in rules 3 and 4: melee buffs add up with each other
 // (Compendium "Game Mechanics"), which the model does not know yet.
 
@@ -61,6 +65,15 @@ const BONUS_PATTERNS = [
 const MELEE_WORDS = ["melee", "knife", "knives"];
 const RESIST = /damage (resist(ance)?|reduction)/gi;
 const DAMAGE_WORD = /damage|surge|weaken|ignit|radiant|empower|amplif|debuff/i;
+const OWN_DAMAGE =
+  /\bdeal(?:s|ing)?\s+(?:up to\s+)?[\d,]+|explo(?:sion|des?)|detonat|projectile|scorch|ignit|\bjolt|unravel/i;
+const TIMING_WORD =
+  /reload|magazine|\bammo\b|rate of fire|fire rate|\brpm\b|charge time|draw time|refill/i;
+const ENERGY = /\benergy\b/i;
+// "0.9x Reload Duration Multiplier", with stacked values before: "- | 0.925x | 0.89x Reload …"
+const RELOAD_FACTOR =
+  /(?:(?:\d+(?:\.\d+)?\??x|-)\s*\|\s*)*\d+(?:\.\d+)?\??x\s+Reload Duration Multiplier/i;
+const EXTENDS = String.raw`[^.\n]{0,60}\b(?:can now persist|persists?|lasts? longer|extends?)\b`;
 const BUCKET_WORDS =
   "empowering buffs?|weapon surges?|global debuffs?|debuffs?|amplification modifiers?";
 // A sentence that names the bucket, e.g. "Weapon damage increases are Empowering Buffs."
@@ -140,6 +153,42 @@ export function grantedEffects(
   });
 }
 
+/** Quoted Reload Duration Multiplier, strongest of stacked values (rule 5). */
+export function reloadFactor(
+  text: string,
+  source: "compendium" | "clarity",
+): ExoticArmorEntry["timing"] {
+  const match = RELOAD_FACTOR.exec(text);
+  if (!match) return null;
+  const factors = [...match[0].matchAll(/(\d+(?:\.\d+)?)\??x/g)].map((m) =>
+    Number(m[1]),
+  );
+  return {
+    change: "reloadDuration",
+    factor: Math.min(...factors),
+    quote: match[0],
+    source,
+  };
+}
+
+/** Modelled effects a text only extends, e.g. "Weapons of Light … can now persist" (rule 5). */
+function extendedEffects(
+  text: string,
+  effects: ArmorImportInputs["effects"],
+): { id: string; quote: string }[] {
+  return effects.flatMap((effect) => {
+    const names = effect.name.split(/\s*[()]\s*/).filter((n) => n !== "");
+    for (const name of names) {
+      const match = new RegExp(
+        String.raw`\b${escapeRegExp(name)}\b${EXTENDS}`,
+        "i",
+      ).exec(text);
+      if (match) return [{ id: effect.id, quote: match[0] }];
+    }
+    return [];
+  });
+}
+
 /** Bucket a text names itself (rule 4a). */
 function statedBucket(text: string): ArmorBonusBucket | null {
   const match = STATED_BUCKET.exec(text) ?? BRACKETED_BUCKET.exec(text);
@@ -153,7 +202,10 @@ function statedBucket(text: string): ArmorBonusBucket | null {
 // Sources write some names with typographic apostrophes, e.g. "Fortune’s Favor", and Court marks
 // some with a trailing * or ^, e.g. "Hazardous Propulsion*".
 const plainName = (name: string) =>
-  name.replace(/’/g, "'").replace(/[*^]+$/, "").trim();
+  name
+    .replace(/’/g, "'")
+    .replace(/[*^]+$/, "")
+    .trim();
 const sameName = (a: string, b: string) => plainName(a) === plainName(b);
 
 const kebab = (name: string) =>
@@ -201,6 +253,8 @@ function verdict(
   court: CourtEntry[],
   bonuses: ArmorBonusQuote[],
   granted: { id: string; quote: string }[],
+  timing: ExoticArmorEntry["timing"],
+  effects: ArmorImportInputs["effects"],
   text: string,
   intrinsicsDefinition: string,
 ): Verdict {
@@ -254,7 +308,44 @@ function verdict(
         quote: intrinsicsDefinition,
       },
     );
-  if (DAMAGE_WORD.test(text.replace(RESIST, "")))
+  const extended = extendedEffects(text, effects);
+  if (extended.length > 0)
+    return {
+      kind: "noDamage",
+      rule: 5,
+      reason: `verlängert ${extended.map((e) => `${e.id} („${e.quote}“)`).join("; ")}; das Modell hält auffrischbare Buffs ohnehin die ganze Damage Phase aktiv`,
+      bonusBucket: null,
+    };
+  if (timing)
+    return {
+      kind: "weaponTiming",
+      rule: 5,
+      reason: `Reload ×${timing.factor} (${timing.source}: „${timing.quote}“)`,
+      bonusBucket: null,
+    };
+  const withoutResist = text.replace(RESIST, "");
+  if (OWN_DAMAGE.test(withoutResist))
+    return {
+      kind: "ownDamage",
+      rule: 5,
+      reason: `eigener Schaden („${OWN_DAMAGE.exec(withoutResist)![0]}“), Damage Instances von Exotics kommen später`,
+      bonusBucket: null,
+    };
+  if (TIMING_WORD.test(text))
+    return {
+      kind: "gap",
+      rule: 5,
+      reason: `Timing ohne Faktor („${TIMING_WORD.exec(text)![0]}“), Modell fehlt`,
+      bonusBucket: null,
+    };
+  if (ENERGY.test(text))
+    return {
+      kind: "energyOnly",
+      rule: 5,
+      reason: "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
+      bonusBucket: null,
+    };
+  if (DAMAGE_WORD.test(withoutResist))
     return {
       kind: "gap",
       rule: 5,
@@ -303,11 +394,16 @@ export function classifyExoticArmor(
       ];
       const texts = [compendiumText, clarityText].join("\n");
       const granted = grantedEffects(texts, inputs.effects);
+      const timing =
+        reloadFactor(compendiumText, "compendium") ??
+        reloadFactor(clarityText, "clarity");
       const { bonusBucket, ...rest } = verdict(
         aegisRowIds,
         court,
         bonuses,
         granted,
+        timing,
+        inputs.effects,
         [texts, piece.description].join("\n"),
         intrinsicsDefinition,
       );
@@ -329,6 +425,7 @@ export function classifyExoticArmor(
         bonuses,
         bonusBucket,
         grantsEffectIds: granted.map((g) => g.id),
+        timing,
       };
     });
 }
@@ -337,8 +434,11 @@ const KIND_TITLES: [ExoticArmorEntry["kind"], string][] = [
   ["abilityVariant", "Ability-Varianten (Regel 1)"],
   ["damageBuff", "Schadens-Buffs (Regeln 2 bis 4)"],
   ["grantsEffect", "Geben einen Effect (Regel 4c)"],
+  ["weaponTiming", "Waffen-Timing (Regel 5)"],
+  ["ownDamage", "Eigener Schaden, kommt später (Regel 5)"],
+  ["energyOnly", "Nur Energie, Modell fehlt (Regel 5)"],
   ["gap", "Lücken (Regeln 3 bis 5)"],
-  ["noDamage", "Ohne Schadenswirkung (Regel 6)"],
+  ["noDamage", "Ohne Schadenswirkung (Regeln 5 und 6)"],
 ];
 
 const cell = (text: string) => text.replace(/\|/g, "\\|").replace(/\n/g, " ");

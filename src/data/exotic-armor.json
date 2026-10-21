@@ -6,14 +6,15 @@
     "guardianClass": "titan",
     "slot": "legs",
     "intrinsic": "Puppeteer's Control",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "ownDamage",
+    "rule": 5,
+    "reason": "eigener Schaden („detonat“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "acd-0-feedback-fence",
@@ -22,14 +23,15 @@
     "guardianClass": "titan",
     "slot": "gauntlets",
     "intrinsic": "Fury Conductors",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („Jolt“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "actium-war-rig",
@@ -71,7 +73,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "aeon-safe",
@@ -87,7 +90,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "aeon-soul",
@@ -103,7 +107,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "aeon-swift",
@@ -119,7 +124,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "an-insurmountable-skullfort",
@@ -128,14 +134,15 @@
     "guardianClass": "titan",
     "slot": "helmet",
     "intrinsic": "Transfusion Matrix",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "energyOnly",
+    "rule": 5,
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "antaeus-wards",
@@ -168,7 +175,8 @@
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "apotheosis-veil",
@@ -177,14 +185,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "Insatiable",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "energyOnly",
+    "rule": 5,
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "arbor-warden",
@@ -200,7 +209,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "armamentarium",
@@ -209,14 +219,15 @@
     "guardianClass": "titan",
     "slot": "chest",
     "intrinsic": "And Another Thing",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Timing ohne Faktor („Refill“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "ashen-wake",
@@ -225,14 +236,15 @@
     "guardianClass": "titan",
     "slot": "gauntlets",
     "intrinsic": "Bring the Heat",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "ownDamage",
+    "rule": 5,
+    "reason": "eigener Schaden („detonat“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "assassins-cowl",
@@ -248,7 +260,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "astrocyte-verse",
@@ -257,14 +270,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "Move to Survive",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "athryss-embrace",
@@ -300,7 +314,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "balance-of-power",
@@ -316,7 +331,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "ballidorse-wrathweavers",
@@ -354,7 +370,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "blastwave-striders",
@@ -363,14 +380,15 @@
     "guardianClass": "titan",
     "slot": "legs",
     "intrinsic": "Blastwave Striders",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („dealing 623“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "blight-ranger",
@@ -412,7 +430,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "boots-of-the-assembler",
@@ -445,7 +464,8 @@
       "basis": "text",
       "quote": "(Empowering Buff)"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "briarbinds",
@@ -489,7 +509,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "cadmus-ridge-lancecap",
@@ -522,7 +543,8 @@
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "calibans-hand",
@@ -531,14 +553,15 @@
     "guardianClass": "hunter",
     "slot": "gauntlets",
     "intrinsic": "Roast 'Em",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („Scorch“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "celestial-nighthawk",
@@ -586,7 +609,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "cenotaph-mask",
@@ -595,14 +619,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "High Priority",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Timing ohne Faktor („refill“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "chromatic-fire",
@@ -625,7 +650,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "citans-ramparts",
@@ -658,7 +684,8 @@
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "claws-of-ahamkara",
@@ -676,7 +703,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "contraverse-hold",
@@ -699,7 +727,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "crest-of-alpha-lupi",
@@ -708,14 +737,15 @@
     "guardianClass": "titan",
     "slot": "chest",
     "intrinsic": "Survival Well",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "crown-of-tempests",
@@ -724,14 +754,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "Conduction Tines",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "ownDamage",
+    "rule": 5,
+    "reason": "eigener Schaden („Jolt“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "cuirass-of-the-falling-star",
@@ -767,7 +798,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "cyrtarachnes-facade",
@@ -783,7 +815,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "dawn-chorus",
@@ -825,7 +858,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "deimosuffusion",
@@ -858,7 +892,8 @@
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "doom-fang-pauldron",
@@ -881,7 +916,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "dunemarchers",
@@ -890,14 +926,15 @@
     "guardianClass": "titan",
     "slot": "legs",
     "intrinsic": "Linear Actuators",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („deals 220“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "eternal-warrior",
@@ -920,7 +957,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "eunoia",
@@ -953,7 +991,8 @@
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "eye-of-another-world",
@@ -969,7 +1008,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "fallen-sunstar",
@@ -978,14 +1018,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "Ionic Conductor",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "energyOnly",
+    "rule": 5,
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "felwinters-helm",
@@ -1014,7 +1055,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "foetracer",
@@ -1037,7 +1079,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "fortunes-favor",
@@ -1083,7 +1126,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "fr0st-ee5",
@@ -1106,7 +1150,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "gemini-jester",
@@ -1122,7 +1167,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "geomag-stabilizers",
@@ -1141,7 +1187,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "getaway-artist",
@@ -1150,14 +1197,15 @@
     "guardianClass": "warlock",
     "slot": "gauntlets",
     "intrinsic": "Dynamic Duo",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "gifted-conviction",
@@ -1173,7 +1221,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "graviton-forfeit",
@@ -1189,7 +1238,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "gwisin-vest",
@@ -1212,7 +1262,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "gyrfalcons-hauberk",
@@ -1242,7 +1293,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "hallowfire-heart",
@@ -1269,7 +1321,8 @@
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "hazardous-propulsion",
@@ -1292,7 +1345,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "heart-of-inmost-light",
@@ -1344,7 +1398,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "helm-of-saint-14",
@@ -1353,14 +1408,15 @@
     "guardianClass": "titan",
     "slot": "helmet",
     "intrinsic": "Starless Night",
-    "kind": "gap",
+    "kind": "noDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "verlängert banner-shield („Weapons of Light from Ward of Dawn can now persist“); das Modell hält auffrischbare Buffs ohnehin die ganze Damage Phase aktiv",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "hoarfrost-z",
@@ -1369,14 +1425,15 @@
     "guardianClass": "titan",
     "slot": "chest",
     "intrinsic": "Glacial Fortification",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Timing ohne Faktor („reload“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "icefall-mantle",
@@ -1385,14 +1442,15 @@
     "guardianClass": "titan",
     "slot": "gauntlets",
     "intrinsic": "Glacial Guard",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "energyOnly",
+    "rule": 5,
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "karnstein-armlets",
@@ -1408,7 +1466,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "khepris-horn",
@@ -1417,14 +1476,15 @@
     "guardianClass": "titan",
     "slot": "helmet",
     "intrinsic": "Solar Rampart",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („deals 480“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "khepris-sting",
@@ -1453,7 +1513,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "knucklehead-radar",
@@ -1499,7 +1560,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "liars-handshake",
@@ -1535,7 +1597,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "lion-rampant",
@@ -1546,12 +1609,13 @@
     "intrinsic": "Jump Jets",
     "kind": "gap",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "Timing ohne Faktor („ammo“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "loreley-splendor-helm",
@@ -1560,14 +1624,15 @@
     "guardianClass": "titan",
     "slot": "helmet",
     "intrinsic": "Cauterizing Flame",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "energyOnly",
+    "rule": 5,
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "lucky-pants",
@@ -1631,7 +1696,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "lucky-raspberry",
@@ -1640,14 +1706,15 @@
     "guardianClass": "hunter",
     "slot": "chest",
     "intrinsic": "Probability Matrix",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („Jolt“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "lunafaction-boots",
@@ -1656,14 +1723,20 @@
     "guardianClass": "warlock",
     "slot": "legs",
     "intrinsic": "Alchemical Etchings",
-    "kind": "gap",
+    "kind": "weaponTiming",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "Reload ×0.9 (compendium: „0.9x Reload Duration Multiplier“)",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": {
+      "change": "reloadDuration",
+      "factor": 0.9,
+      "quote": "0.9x Reload Duration Multiplier",
+      "source": "compendium"
+    }
   },
   {
     "id": "mantle-of-battle-harmony",
@@ -1692,7 +1765,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "mask-of-bakris",
@@ -1728,7 +1802,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "mask-of-fealty",
@@ -1737,14 +1812,15 @@
     "guardianClass": "hunter",
     "slot": "helmet",
     "intrinsic": "Null Factor",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "ownDamage",
+    "rule": 5,
+    "reason": "eigener Schaden („Projectile“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "mask-of-the-quiet-one",
@@ -1753,14 +1829,15 @@
     "guardianClass": "titan",
     "slot": "helmet",
     "intrinsic": "Dreaded Visage",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "mataiodox-a",
@@ -1769,14 +1846,15 @@
     "guardianClass": "warlock",
     "slot": "chest",
     "intrinsic": "Stylostixis",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („Deals 269“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "mechaneers-tricksleeves",
@@ -1809,7 +1887,8 @@
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "melas-panoplia",
@@ -1818,14 +1897,15 @@
     "guardianClass": "titan",
     "slot": "gauntlets",
     "intrinsic": "Forge Master",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („explosion“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "mk-44-stand-asides",
@@ -1841,7 +1921,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "moirai",
@@ -1850,14 +1931,15 @@
     "guardianClass": "hunter",
     "slot": "chest",
     "intrinsic": "Webcatcher",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („detonat“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "mothkeepers-wraps",
@@ -1866,14 +1948,15 @@
     "guardianClass": "hunter",
     "slot": "gauntlets",
     "intrinsic": "Winged Eclipse",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („detonat“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "necrotic-grip",
@@ -1907,7 +1990,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "nezarecs-sin",
@@ -1916,14 +2000,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "Abyssal Extractors",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "no-backup-plans",
@@ -1971,7 +2056,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "nothing-manacles",
@@ -1980,14 +2066,15 @@
     "guardianClass": "warlock",
     "slot": "gauntlets",
     "intrinsic": "Scatter Charge",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "ownDamage",
+    "rule": 5,
+    "reason": "eigener Schaden („explosion“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "oathkeeper",
@@ -2027,7 +2114,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "omnioculus",
@@ -2036,14 +2124,15 @@
     "guardianClass": "hunter",
     "slot": "chest",
     "intrinsic": "Beyond The Veil",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "energyOnly",
+    "rule": 5,
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "one-eyed-mask",
@@ -2059,7 +2148,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "ophidia-spathe",
@@ -2082,7 +2172,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "ophidian-aspect",
@@ -2091,14 +2182,15 @@
     "guardianClass": "warlock",
     "slot": "gauntlets",
     "intrinsic": "Cobra Totemic",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Timing ohne Faktor („Reload“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "orpheus-rig",
@@ -2117,7 +2209,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "osmiomancy-gloves",
@@ -2126,14 +2219,15 @@
     "guardianClass": "warlock",
     "slot": "gauntlets",
     "intrinsic": "Fervid Coldsnap",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "peacekeepers",
@@ -2173,7 +2267,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "peregrine-greaves",
@@ -2213,7 +2308,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "phoenix-cradle",
@@ -2229,7 +2325,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "phoenix-protocol",
@@ -2238,14 +2335,15 @@
     "guardianClass": "warlock",
     "slot": "chest",
     "intrinsic": "Battle-Hearth",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "energyOnly",
+    "rule": 5,
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "point-contact-cannon-brace",
@@ -2268,7 +2366,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "praxic-vestment",
@@ -2277,14 +2376,15 @@
     "guardianClass": "titan",
     "slot": "chest",
     "intrinsic": "Praxic Lift",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („Deals up to 168“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "precious-scars",
@@ -2300,7 +2400,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "promethium-spur",
@@ -2316,7 +2417,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": ["radiant"]
+    "grantsEffectIds": ["radiant"],
+    "timing": null
   },
   {
     "id": "pyrogale-gauntlets",
@@ -2354,7 +2456,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "radiant-dance-machines",
@@ -2365,12 +2468,13 @@
     "intrinsic": "The Dance",
     "kind": "gap",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "Timing ohne Faktor („ammo“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "raiden-flux",
@@ -2400,7 +2504,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "raijus-harness",
@@ -2416,7 +2521,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "rain-of-fire",
@@ -2432,7 +2538,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": ["radiant"]
+    "grantsEffectIds": ["radiant"],
+    "timing": null
   },
   {
     "id": "relativism",
@@ -2441,14 +2548,15 @@
     "guardianClass": "hunter",
     "slot": "classItem",
     "intrinsic": "Spirit of the Cyrtarachne",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Timing ohne Faktor („reload“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "renewal-grasps",
@@ -2457,14 +2565,15 @@
     "guardianClass": "hunter",
     "slot": "gauntlets",
     "intrinsic": "Depths of Duskfield",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („deal 50“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "rime-coat-raiment",
@@ -2473,14 +2582,15 @@
     "guardianClass": "warlock",
     "slot": "chest",
     "intrinsic": "Bleak Domain",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („Projectile“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "sanguine-alchemy",
@@ -2516,7 +2626,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "sealed-ahamkara-grasps",
@@ -2552,7 +2663,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "secant-filaments",
@@ -2561,14 +2673,15 @@
     "guardianClass": "warlock",
     "slot": "legs",
     "intrinsic": "Devouring Rift",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "second-chance",
@@ -2591,7 +2704,8 @@
     ],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "severance-enclosure",
@@ -2600,14 +2714,15 @@
     "guardianClass": "titan",
     "slot": "chest",
     "intrinsic": "Spheromatik Trigger",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („Explosion“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "shards-of-galanor",
@@ -2636,7 +2751,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "shinobus-vow",
@@ -2645,14 +2761,15 @@
     "guardianClass": "hunter",
     "slot": "gauntlets",
     "intrinsic": "New Tricks",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („explosion“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "skull-of-dire-ahamkara",
@@ -2661,14 +2778,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "Actual Grandeur",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („deals up to 2269“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "solipsism",
@@ -2684,7 +2802,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "speakers-sight",
@@ -2693,14 +2812,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "The Lost Voice",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "speedloader-slacks",
@@ -2709,14 +2829,20 @@
     "guardianClass": "hunter",
     "slot": "legs",
     "intrinsic": "Tight Fit",
-    "kind": "gap",
+    "kind": "weaponTiming",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "Reload ×0.89 (compendium: „- | 0.925x | 0.915x | 0.91x | 0.89x Reload Duration Multiplier“)",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": {
+      "change": "reloadDuration",
+      "factor": 0.89,
+      "quote": "- | 0.925x | 0.915x | 0.91x | 0.89x Reload Duration Multiplier",
+      "source": "compendium"
+    }
   },
   {
     "id": "st0mp-ee5",
@@ -2732,7 +2858,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "star-eater-scales",
@@ -2772,7 +2899,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "starfire-protocol",
@@ -2781,14 +2909,15 @@
     "guardianClass": "warlock",
     "slot": "chest",
     "intrinsic": "Fusion Harness",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "stoicism",
@@ -2797,14 +2926,15 @@
     "guardianClass": "titan",
     "slot": "classItem",
     "intrinsic": "Spirit of Contact",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („explosion“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "stormdancers-brace",
@@ -2838,7 +2968,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "stronghold",
@@ -2849,12 +2980,13 @@
     "intrinsic": "Clenched Fist",
     "kind": "gap",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "Timing ohne Faktor („Ammo“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "sunbracers",
@@ -2872,7 +3004,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "swarmers",
@@ -2881,14 +3014,15 @@
     "guardianClass": "warlock",
     "slot": "legs",
     "intrinsic": "Swarmers",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („Unravel“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "synthoceps",
@@ -2946,7 +3080,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "the-bombardiers",
@@ -2955,14 +3090,15 @@
     "guardianClass": "hunter",
     "slot": "legs",
     "intrinsic": "Parting Gift",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („explodes“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "the-dragons-shadow",
@@ -2971,14 +3107,15 @@
     "guardianClass": "hunter",
     "slot": "chest",
     "intrinsic": "Wraithmetal Mail",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Timing ohne Faktor („Reload“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "the-path-of-burning-steps",
@@ -3050,7 +3187,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "the-sixth-coyote",
@@ -3066,7 +3204,8 @@
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "the-stag",
@@ -3075,14 +3214,15 @@
     "guardianClass": "warlock",
     "slot": "helmet",
     "intrinsic": "Dearly Departed",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "energyOnly",
+    "rule": 5,
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "transversive-steps",
@@ -3091,14 +3231,15 @@
     "guardianClass": "warlock",
     "slot": "legs",
     "intrinsic": "Strange Protractor",
-    "kind": "noDamage",
-    "rule": 6,
-    "reason": "kein Schadenswort im Text",
+    "kind": "gap",
+    "rule": 5,
+    "reason": "Timing ohne Faktor („Refill“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "triton-vice",
@@ -3134,7 +3275,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "ursa-furiosa",
@@ -3143,14 +3285,15 @@
     "guardianClass": "titan",
     "slot": "gauntlets",
     "intrinsic": "Ursine Guard",
-    "kind": "gap",
+    "kind": "energyOnly",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "nur Energie; die Rotation legt die Casts fest, Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "veritys-brow",
@@ -3226,7 +3369,8 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "vesper-of-radius",
@@ -3235,14 +3379,15 @@
     "guardianClass": "warlock",
     "slot": "chest",
     "intrinsic": "Planetary Torrent",
-    "kind": "gap",
+    "kind": "ownDamage",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "eigener Schaden („deals 360“), Damage Instances von Exotics kommen später",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "wings-of-sacred-dawn",
@@ -3253,12 +3398,13 @@
     "intrinsic": "Tome of Dawn",
     "kind": "gap",
     "rule": 5,
-    "reason": "Text nennt Schaden, aber keinen klaren Bonus",
+    "reason": "Timing ohne Faktor („refill“), Modell fehlt",
     "aegisRowIds": [],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "winters-guile",
@@ -3300,7 +3446,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "wishful-ignorance",
@@ -3336,7 +3483,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "wormgod-caress",
@@ -3372,7 +3520,8 @@
       }
     ],
     "bonusBucket": null,
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "wormhusk-crown",
@@ -3399,7 +3548,8 @@
       "basis": "courtDefinition",
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   },
   {
     "id": "young-ahamkaras-spine",
@@ -3439,6 +3589,7 @@
       "basis": "court",
       "quote": "Exotic Intrinsics"
     },
-    "grantsEffectIds": []
+    "grantsEffectIds": [],
+    "timing": null
   }
 ]

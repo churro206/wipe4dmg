@@ -54,6 +54,10 @@ const inputs: ArmorImportInputs = {
     piece("Wishful Ignorance"),
     piece("Athrys's Embrace"),
     piece("Dunemarchers"),
+    piece("Speedloader Slacks"),
+    piece("Crest of Alpha Lupi"),
+    piece("Helm of Saint-14"),
+    piece("Gemini Jester"),
     piece("An Insurmountable Skullfort", "Melee kills restore health."),
   ],
   aegisAbilities: [
@@ -75,6 +79,7 @@ const inputs: ArmorImportInputs = {
   effects: [
     { id: "radiant", name: "Radiant" },
     { id: "lumina-noble-rounds", name: "Lumina (Blessing of the Sky)" },
+    { id: "banner-shield", name: "Banner Shield (Weapons of Light)" },
   ],
   meleeNames: ["Frenzied Blade", "Weighted Throwing Knife"],
   courtCategories: [
@@ -122,7 +127,23 @@ const inputs: ArmorImportInputs = {
     ),
     compendium(
       "Lunafaction Boots",
-      "Empowering Rifts grant 100% [50%] Increased Damage Falloff Distance.",
+      "+100 Reload Speed and 0.9x Reload Duration Multiplier. Empowering Rifts grant 100% [50%] Increased Damage Falloff Distance.",
+    ),
+    compendium(
+      "Speedloader Slacks",
+      "Tight Fit:\n+40 | +40 | +45 Reload Speed\n- | 0.925x | 0.89x Reload Duration Multiplier",
+    ),
+    compendium(
+      "Crest of Alpha Lupi",
+      "On Class Ability Usage: restores Health. Grants 20% Grenade Energy.",
+    ),
+    compendium(
+      "Helm of Saint-14",
+      "Weapons of Light from Ward of Dawn can now persist outside of the bubble for 15 seconds. Dealing damage grants stacks of The Saint.",
+    ),
+    compendium(
+      "Gemini Jester",
+      "Dodging makes nearby enemies lose track of you and takes away their radar.",
     ),
   ],
   clarity: [
@@ -138,7 +159,7 @@ const inputs: ArmorImportInputs = {
       name: "Dune",
       type: "Armor Trait Exotic",
       itemName: "Dunemarchers",
-      text: "Sprinting builds a linear damage charge.",
+      text: "Melee hits release chain lightning that deals 300 damage.",
     },
     {
       hash: 3,
@@ -357,12 +378,45 @@ describe("classifyExoticArmor", () => {
     ]);
   });
 
-  it("damage falloff is no damage bonus", () => {
-    expect(byName["Lunafaction Boots"]).toMatchObject({ kind: "gap", rule: 5 });
+  it("rule 5: a reload duration multiplier is weapon timing; damage falloff is no bonus", () => {
+    expect(byName["Lunafaction Boots"]).toMatchObject({
+      kind: "weaponTiming",
+      rule: 5,
+      bonuses: [],
+      timing: { change: "reloadDuration", factor: 0.9 },
+    });
   });
 
-  it("rule 5: a text about damage without a clear bonus is a gap", () => {
-    expect(byName.Dunemarchers).toMatchObject({ kind: "gap", rule: 5 });
+  it("rule 5: stacked reload factors take the strongest", () => {
+    expect(byName["Speedloader Slacks"].timing).toMatchObject({
+      factor: 0.89,
+    });
+  });
+
+  it("rule 5: energy only is kept as its own kind (owner, 2026-10-21)", () => {
+    expect(byName["Crest of Alpha Lupi"]).toMatchObject({
+      kind: "energyOnly",
+      rule: 5,
+    });
+  });
+
+  it("rule 5: extending a buff the model keeps up anyway changes nothing", () => {
+    expect(byName["Helm of Saint-14"]).toMatchObject({
+      kind: "noDamage",
+      rule: 5,
+    });
+    expect(byName["Helm of Saint-14"].reason).toContain("banner-shield");
+  });
+
+  it("rule 6: nothing about damage, timing or energy", () => {
+    expect(byName["Gemini Jester"]).toMatchObject({
+      kind: "noDamage",
+      rule: 6,
+    });
+  });
+
+  it("rule 5: own damage is kept as its own kind for later", () => {
+    expect(byName.Dunemarchers).toMatchObject({ kind: "ownDamage", rule: 5 });
   });
 
   it("rule 6: no damage word means no damage effect", () => {

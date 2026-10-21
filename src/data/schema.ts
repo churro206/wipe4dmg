@@ -559,6 +559,9 @@ export const ExoticArmorKind = z.enum([
   "abilityVariant", // Aegis measured an ability package with it
   "damageBuff", // Court names its bucket
   "grantsEffect", // grants an effect the model knows, e.g. Radiant
+  "weaponTiming", // changes the shot plan by a quoted factor, e.g. 0.9x Reload Duration Multiplier
+  "ownDamage", // deals damage of its own; damage instances of exotics come later (owner, 2026-10-21)
+  "energyOnly", // only ability or super energy; the rotation sets the casts (owner: keep as gap)
   "gap", // damage effect without bucket or value, or unclear text
   "noDamage", // survival, energy or movement only
 ]);
@@ -607,6 +610,15 @@ export const ExoticArmorEntry = z.object({
   bonuses: z.array(ArmorBonusQuote),
   bonusBucket: ArmorBonusBucket.nullable(), // null if no bonus is usable or Court rows name the buckets
   grantsEffectIds: z.array(z.string()), // effects of effects.json the texts say it grants (rule 4c)
+  // Quoted change of the shot plan (rule 5), strongest of stacked values.
+  timing: z
+    .object({
+      change: z.literal("reloadDuration"),
+      factor: z.number().positive(), // reload time × factor, e.g. 0.9
+      quote: z.string(),
+      source: z.enum(["compendium", "clarity"]),
+    })
+    .nullable(),
 });
 export type ExoticArmorEntry = z.infer<typeof ExoticArmorEntry>;
 
