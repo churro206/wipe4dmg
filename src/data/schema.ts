@@ -132,6 +132,59 @@ export type IconIndex = z.infer<typeof IconIndex>;
 export const CounterId = z.enum(["scorch"]);
 export type CounterId = z.infer<typeof CounterId>;
 
+/** Keywords with damage of their own that the engine models (ADR 0015, point 5). */
+export const KeywordId = z.enum([
+  "ignition",
+  "jolt",
+  "volatile",
+  "unravel",
+  "boltCharge",
+]);
+export type KeywordId = z.infer<typeof KeywordId>;
+
+/** What sets a keyword off: stacks of a counter, damage the target takes, or player stacks. */
+export const KeywordTrigger = z.discriminatedUnion("type", [
+  // e.g. ignition at x100 scorch
+  z.object({
+    type: z.literal("counter"),
+    counterId: CounterId,
+    threshold: SourcedNumber,
+  }),
+  // e.g. jolt after the target took 115 damage; whether the hit that applies it counts
+  z.object({
+    type: z.literal("damageTaken"),
+    threshold: SourcedNumber,
+    applyingHitCounts: z.boolean(),
+  }),
+  // e.g. bolt charge at x10 stacks on the player, set off by an ability hit
+  z.object({
+    type: z.literal("playerStacks"),
+    stacks: SourcedNumber,
+  }),
+]);
+export type KeywordTrigger = z.infer<typeof KeywordTrigger>;
+
+/** A keyword as written in keywords.json; the damage comes from its Aegis row when loading. */
+export const KeywordData = z.object({
+  id: KeywordId,
+  name: z.string(),
+  element: Element,
+  compendium: z.object({ tab: z.string(), entry: z.string() }), // source of the quotes
+  aegisRowId: z.string(), // damage per trigger, Aegis visual scale
+  trigger: KeywordTrigger,
+  delayMs: SourcedNumber.optional(), // from the trigger to the damage; 0 if omitted
+  cooldownMs: SourcedNumber.optional(), // between two triggers; none if omitted
+  durationMs: SourcedNumber.optional(), // of the debuff; open if the source sets it (unravel)
+  removedOnTrigger: z.boolean(), // the debuff or the stacks are gone after the trigger
+  // Which multipliers apply: those of abilities (volatile), only element-wide ones (bolt charge),
+  // or those of the source that applied it (ignition, without melee buffs).
+  damageCategory: z.enum(["ability", "generic", "inheritsSource"]),
+});
+export type KeywordData = z.infer<typeof KeywordData>;
+
+export const Keyword = KeywordData.extend({ damage: SourcedNumber });
+export type Keyword = z.infer<typeof Keyword>;
+
 /** Part that adds stacks to a counter, here a number of applications after each shot (ADR 0006). */
 export const CounterPart = z.object({
   type: z.literal("counter"),
