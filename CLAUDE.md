@@ -52,6 +52,7 @@ tests/         Vitest-Tests für die Engine. Helfer für generierte Dokumente in
 - `src/engine` nutzt keine Browser-APIs (kein `window`, kein `document`, kein `localStorage`).
   Der spätere Discord Bot führt die Engine in Node.js auf einem Raspberry Pi aus (US-13).
 - Baue keine Funktion auf Vorrat. Baue nur, was die aktuelle User Story braucht.
+- Nutze zum Suchen und Lesen die eingebauten Werkzeuge Grep, Glob und Read. Baue keine Shell-Pipelines mit sed, awk oder paste. Für Auswertungen schreibst du ein kurzes Skript in `scripts/` und führst es mit `npx tsx` aus.
 
 ## Arbeitsweise
 
