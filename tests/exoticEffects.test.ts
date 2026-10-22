@@ -227,10 +227,33 @@ describe("rules for the exotic damage buffs", () => {
     });
   });
 
-  it("creates effects only for the kinds always, preBuilt and triggered", () => {
+  it("buffs that need a state of the player (U6-2)", () => {
+    expect(effectOf("no-backup-plans").effect.parts[0]).toMatchObject({
+      bucketId: "empowering",
+      multiplier: { value: 1.35 },
+      weaponTypes: ["shotgun"],
+      requiresStatus: [
+        "amplified",
+        "frostArmor",
+        "wovenMail",
+        "voidOvershield",
+        "restoration",
+      ],
+    });
+    expect(effectOf("the-path-of-burning-steps").effect.parts[0]).toMatchObject({
+      elements: ["solar"],
+      requiresStatus: ["roaringFlames"],
+    });
+    // Fr0st-EE5 grants Frost Armor itself while sprinting
+    expect(effectOf("fr0st-ee5").effect.parts[0]).not.toHaveProperty("requiresStatus");
+  });
+
+  it("creates effects only for the generating kinds", () => {
     expect(result.effects.map((e) => e.effect.id)).toEqual(
       result.rows
-        .filter((r) => ["always", "preBuilt", "triggered"].includes(r.kind))
+        .filter((r) =>
+          ["always", "preBuilt", "triggered", "needsEffect"].includes(r.kind),
+        )
         .map((r) => r.effectId),
     );
   });

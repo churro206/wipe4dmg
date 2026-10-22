@@ -24,6 +24,8 @@ import {
   type ExoticArmorEffect,
   type ExoticArmorEntry,
   type MultiplierPart,
+  type StatusId,
+  type WeaponType,
   type Source,
 } from "../../src/data/schema.ts";
 import { sameName } from "./exoticArmor.ts";
@@ -49,7 +51,8 @@ export type ExoticEffectKind =
   | "needsEffect"
   | "abilityGap"
   | "hitStacks"
-  | "noText";
+  | "noText"
+  | "gap";
 
 /** One line of the review table docs/exotic-effects.md. */
 export type ExoticEffectRow = {
@@ -64,7 +67,9 @@ export type ExoticEffectRow = {
 
 // Court rows: what triggers the buff, in this order
 const NEEDS_EFFECT = /While (?:any stacks of|having an active)|Roaring Flame/i;
-const CLASS_ABILITY = /Class Ability|Exiting Invisibility/i;
+// also the class abilities of aspects, e.g. Quickfall (dodge) or the Void Soul from a rift
+const CLASS_ABILITY =
+  /Class Ability|Exiting Invisibility|Quickfall|Vanishing Step|Void Soul/i;
 const ROTATION =
   /\bSuper\b|\bRift\b|Well of Radiance|Grenade|Ability Damage hit|Shield Throw|Melee hit/i;
 const KILL = /\bkill(?:s|ing)?\b|\bFinish/i;
@@ -135,39 +140,86 @@ const elementOf = (text: string): Element | undefined =>
 
 const flat = (text: string) => text.replace(/\s+/g, " ").trim();
 
-type Verdict = Omit<ExoticEffectRow, "exoticArmorId" | "name" | "effectId"> & {
+export type Verdict = Omit<ExoticEffectRow, "exoticArmorId" | "name" | "effectId"> & {
   part?: MultiplierPart;
   durationMs?: { value: number; source: Source };
   trigger?: EffectTrigger;
 };
 
-/** Court against the quoted bonuses of the texts. */
-function courtCheck(percent: number, entry: ExoticArmorEntry): string {
-  if (entry.bonuses.length === 0) return "nur Court";
-  const quoted = entry.bonuses.map((b) => b.percent);
+/** Court against the bonuses quoted in the texts. */
+function courtCheck(percent: number, quoted: number[]): string {
+  if (quoted.length === 0) return "nur Court";
   return quoted.includes(percent)
     ? `Court = Text (${percent} %)`
     : `Abweichung: Court ${percent} %, Text ${[...new Set(quoted)].join(" / ")} %`;
 }
 
-function courtVerdict(
+// States the texts name (ADR 0015, U6-2), e.g. "While Amplified, Restoration, … is active"
+export const STATUS_NAMES: [StatusId, RegExp][] = [
+  ["amplified", /Amplified/i],
+  ["frostArmor", /Frost Armor/i],
+  ["roaringFlames", /Roaring Flame/i],
+  ["wovenMail", /Woven Mail/i],
+  ["voidOvershield", /Void Overshield/i],
+  ["restoration", /Restoration/i],
+];
+const statusesIn = (text: string) =>
+  STATUS_NAMES.filter(([, p]) => p.test(text)).map(([s]) => s);
+const WHILE_ACTIVE = /While [^:.\n]*\bis active/gi;
+const WEAPON_TYPES: [RegExp, WeaponType][] = [[/\bShotguns?\b/i, "shotgun"]];
+
+/** Verdict of one Court row with a value; quoted: the bonuses of the texts, for the check. */
+export function courtVerdict(
   row: ExoticArmorEntry["courtBuffs"][number],
-  entry: ExoticArmorEntry,
+  quoted: number[],
   text: string,
-  inputs: ExoticEffectInputs,
+  inputs: Pick<ExoticEffectInputs, "abilities" | "effects" | "sources">,
 ): Verdict {
   const court = inputs.sources.court;
   const trigger = flat(row.trigger);
   const value = `${flat(row.pve ?? "")} für ${flat(row.pveDuration ?? "")}`;
   const percent = Math.max(...numbers(row.pve ?? "", "%"));
-  const check = courtCheck(percent, entry);
-  if (NEEDS_EFFECT.test(trigger))
+  const check = courtCheck(percent, quoted);
+  if (NEEDS_EFFECT.test(trigger)) {
+    // the states from the trigger, else from a "While … is active" sentence of the text
+    const statuses = statusesIn(trigger).length
+      ? statusesIn(trigger)
+      : [
+          ...new Set(
+            [...text.matchAll(WHILE_ACTIVE)].flatMap((m) => statusesIn(m[0])),
+          ),
+        ];
+    // a state the exotic grants itself, e.g. Fr0st-EE5: "Grants a stack of Frost Armor"
+    const own = statuses.filter((s) =>
+      new RegExp(String.raw`grants? (?:a stack of |x\d+ )?${STATUS_NAMES.find(([id]) => id === s)![1].source}`, "i").test(text),
+    );
+    if (statuses.length === 0)
+      return { rule: 5, kind: "gap", reason: `Zustand unklar („${trigger}“)`, check };
+    const element = [...trigger.matchAll(new RegExp(ELEMENT, "gi"))].length === 1 ? elementOf(trigger) : undefined;
+    const weaponTypes = WEAPON_TYPES.filter(([p]) => p.test(trigger)).map(([, t]) => t);
+    const source: Source = {
+      ...court,
+      name: `Court Stacking Guide (${row.bucketId}, PvE ${flat(row.pve ?? "")}, ${flat(row.pveDuration ?? "")})`,
+      note: `„${trigger}“; while the player has ${statuses.join(" or ")} (ADR 0015, U6-2)`,
+    };
     return {
       rule: 5,
       kind: "needsEffect",
-      reason: `braucht einen anderen Buff („${trigger}“), U6-2`,
+      reason: `${row.bucketId} +${percent} %${element ? ` (${element})` : ""}${weaponTypes.length ? ` auf ${weaponTypes.join(", ")}` : ""}, ${
+        own.length ? `Zustand ${own.join(", ")} gibt das Exotic selbst` : `braucht ${statuses.join(" oder ")}`
+      } („${trigger}“)`,
       check,
+      part: {
+        type: "multiplier",
+        bucketId: row.bucketId,
+        multiplier: { value: factorOf(percent), source },
+        damageSources: ["weapon"],
+        ...(element ? { elements: [element] } : {}),
+        ...(weaponTypes.length ? { weaponTypes } : {}),
+        ...(own.length ? {} : { requiresStatus: statuses }),
+      },
     };
+  }
   if (CLASS_ABILITY.test(trigger))
     return {
       rule: 4,
@@ -261,7 +313,7 @@ const abilityNamed = (name: string, abilities: ExoticEffectInputs["abilities"]) 
 function rotationTrigger(
   trigger: string,
   text: string,
-  inputs: ExoticEffectInputs,
+  inputs: Pick<ExoticEffectInputs, "abilities" | "effects">,
 ): FoundTrigger | undefined {
   const refresh = !NOT_REFRESHABLE.test(text);
   const superEnd = /(?:^|:)\s*([A-Z][\w ]*?) Super deactivation|On Super end/i.exec(trigger);
@@ -311,6 +363,15 @@ function rotationTrigger(
         ...(element ? { elements: [element] } : {}),
       },
       label: `ab Treffer einer ${element ? `${element} ` : ""}Grenade`,
+    };
+  }
+  // "Void Grenade damage applies Weaken", e.g. Echo of Undermining
+  const grenadeDamage = /(Arc|Solar|Void|Stasis|Strand) Grenade damage applies/i.exec(trigger);
+  if (grenadeDamage) {
+    const element = grenadeDamage[1].toLowerCase() as Element;
+    return {
+      trigger: { on: "hit", refresh, abilityKinds: ["grenade"], elements: [element] },
+      label: `ab Treffer einer ${element} Grenade`,
     };
   }
   const hit = /([A-Z][\w ]*?) hit applies/.exec(trigger);
@@ -568,7 +629,12 @@ function textSuperEnd(
   };
 }
 
-const GENERATES: ExoticEffectKind[] = ["always", "preBuilt", "triggered"];
+export const GENERATES: string[] = [
+  "always",
+  "preBuilt",
+  "triggered",
+  "needsEffect",
+];
 
 /** Review rows of all damage buffs and the effects of those that are always active, prebuilt or triggered. */
 export function exoticEffects(inputs: ExoticEffectInputs): {
@@ -587,7 +653,9 @@ export function exoticEffects(inputs: ExoticEffectInputs): {
     const valued = entry.courtBuffs.filter((b) => b.pve !== null && b.pve.trim() !== "");
     const verdicts =
       valued.length > 0
-        ? valued.map((row) => courtVerdict(row, entry, text, inputs))
+        ? valued.map((row) =>
+            courtVerdict(row, entry.bonuses.map((b) => b.percent), text, inputs),
+          )
         : [textVerdict(entry, text, inputs)];
     const superEnd = textSuperEnd(entry, text, inputs);
     if (superEnd) verdicts.push(superEnd);
@@ -625,12 +693,13 @@ const KIND_TITLES: [ExoticEffectKind, string][] = [
   ["triggered", "Fenster aus der Rotation (Regel 4)"],
   ["rotation", "Auslöser in der Rotation, offen (Regel 4)"],
   ["classAbility", "Auslöser Class Ability, U7 (Regel 4)"],
-  ["needsEffect", "Braucht einen anderen Buff, U6-2 (Regel 5)"],
+  ["needsEffect", "Gilt mit einem Zustand, z. B. Amplified (Regel 5)"],
   ["abilityGap", "Ability nicht im Modell (Regel 6)"],
   ["hitStacks", "Stapel pro Waffentreffer, später (Regel 7)"],
   ["notAgainstBoss", "Wirkt nicht gegen einen Boss (Regel 1)"],
   ["ownDamage", "Eigener Schaden, später (Regel 2)"],
   ["noText", "Lücke (Regel 8)"],
+  ["gap", "Lücke, Zustand unklar (Regel 5)"],
 ];
 
 const cell = (text: string) => text.replace(/\|/g, "\\|").replace(/\n/g, " ");

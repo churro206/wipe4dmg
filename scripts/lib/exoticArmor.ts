@@ -37,7 +37,7 @@ export type ArmorImportInputs = {
 };
 
 // Court's categories (ADR 0006, point 3) to buckets in buckets.json.
-const BUCKET_OF_CATEGORY: Record<string, string> = {
+export const BUCKET_OF_CATEGORY: Record<string, string> = {
   "Global Debuffs": "debuff",
   "Empowering Buffs": "empowering",
   "Weapon Surges": "surge",
@@ -226,7 +226,7 @@ const plainName = (name: string) =>
 export const sameName = (a: string, b: string) =>
   plainName(a) === plainName(b);
 
-const kebab =(name: string) =>
+export const kebab = (name: string) =>
   name
     .toLowerCase()
     .replace(/['’]/g, "")

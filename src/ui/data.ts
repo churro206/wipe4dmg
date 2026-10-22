@@ -10,6 +10,7 @@ import rawEffects from "../data/effects.json";
 import rawIcons from "../data/icons.json";
 import rawKeywords from "../data/keywords.json";
 import rawManifestAbilities from "../data/manifest-abilities.json";
+import rawSubclassEffects from "../data/subclass-effects.json";
 import rawPackages from "../data/weapon-packages.json";
 import { AbilityKeyword, type Weapon } from "../data/schema";
 import type { LinkRegistry } from "../engine/buildLink";
@@ -23,6 +24,7 @@ import {
   loadEffects,
   loadIconIndex,
   loadManifestAbilities,
+  loadSubclassEffects,
 } from "../engine/loadData";
 import { loadWeapons } from "../engine/loadWeapon";
 
@@ -36,7 +38,11 @@ export const weaponById = (id: string): Weapon =>
   weapons.find((w) => w.id === id) ??
   weapons.find((w) => w.id === DEFAULT_WEAPON_ID)!;
 export const buckets = loadBuckets(rawBuckets);
-export const effects = loadEffects(rawEffects);
+// Effects of effects.json and of the aspects and fragments (ADR 0015, U6-2; prebuilt ones from U8).
+export const effects = [
+  ...loadEffects(rawEffects),
+  ...loadSubclassEffects(rawSubclassEffects),
+];
 export const bosses = loadBosses(rawBosses).filter(
   (boss) => boss.damagePhaseSeconds.value !== null,
 );

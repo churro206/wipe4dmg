@@ -12,12 +12,13 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Fenster aus der Rotation (Regel 4) | 10 |
 | Auslöser in der Rotation, offen (Regel 4) | 1 |
 | Auslöser Class Ability, U7 (Regel 4) | 4 |
-| Braucht einen anderen Buff, U6-2 (Regel 5) | 3 |
+| Gilt mit einem Zustand, z. B. Amplified (Regel 5) | 3 |
 | Ability nicht im Modell (Regel 6) | 3 |
 | Stapel pro Waffentreffer, später (Regel 7) | 3 |
 | Wirkt nicht gegen einen Boss (Regel 1) | 6 |
 | Eigener Schaden, später (Regel 2) | 1 |
 | Lücke (Regel 8) | 0 |
+| Lücke, Zustand unklar (Regel 5) | 0 |
 
 ## Immer aktiv (Regel 6)
 
@@ -78,13 +79,13 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Heart of Inmost Light | 4 | Auslöser Class Ability („On Grenade or Class Ability Usage“), U7 | Compendium 35 %, Clarity 35 % |
 | Mask of Bakris | 4 | Auslöser Class Ability („Light Shift (Class Ability activation) activation grants a stack Stacks up to x3“), U7 | Abweichung: Court 33 %, Text 10 % |
 
-## Braucht einen anderen Buff, U6-2 (Regel 5)
+## Gilt mit einem Zustand, z. B. Amplified (Regel 5)
 
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
-| Fr0st-EE5 | 5 | braucht einen anderen Buff („Stasis Surge Stacks: While any stacks of Frost Armor are active“), U6-2 | nur Court |
-| No Backup Plans | 5 | braucht einen anderen Buff („While having an active passive Elemental Buff: provides a damage buff to Shotguns only“), U6-2 | Court = Text (35 %) |
-| The Path of Burning Steps | 5 | braucht einen anderen Buff („Roaring Flame stacks grant increased Solar Weapon damage Stacks up to x3“), U6-2 | Court = Text (12.4 %) |
+| Fr0st-EE5 | 5 | surge +22 % (stasis), Zustand frostArmor gibt das Exotic selbst („Stasis Surge Stacks: While any stacks of Frost Armor are active“) | nur Court |
+| No Backup Plans | 5 | empowering +35 % auf shotgun, braucht amplified oder frostArmor oder wovenMail oder voidOvershield oder restoration („While having an active passive Elemental Buff: provides a damage buff to Shotguns only“) | Court = Text (35 %) |
+| The Path of Burning Steps | 5 | amplification +12.4 % (solar), braucht roaringFlames („Roaring Flame stacks grant increased Solar Weapon damage Stacks up to x3“) | Court = Text (12.4 %) |
 
 ## Ability nicht im Modell (Regel 6)
 

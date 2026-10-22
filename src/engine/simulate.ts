@@ -181,9 +181,16 @@ export function simulate(
     let parts = partsCache.get(key);
     if (!parts) {
       const all = activeParts(active, buckets);
+      // States of the player granted by the active effects (ADR 0015, U6-2)
+      const statuses = new Set(active.flatMap((e) => e.grantsStatus ?? []));
       parts = {
         ...all,
-        multiplierParts: all.multiplierParts.filter(meetsCondition),
+        multiplierParts: all.multiplierParts.filter(
+          (part) =>
+            meetsCondition(part) &&
+            (part.requiresStatus === undefined ||
+              part.requiresStatus.some((s) => statuses.has(s))),
+        ),
       };
       partsCache.set(key, parts);
     }

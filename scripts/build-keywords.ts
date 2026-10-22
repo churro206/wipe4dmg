@@ -11,6 +11,11 @@ import {
   findKeywordSources,
   renderKeywordSources,
 } from "./lib/keywordSources.ts";
+import { loadSubclassEffectInputs } from "./lib/subclassEffectInputs.ts";
+import {
+  renderSubclassEffects,
+  subclassEffects,
+} from "./lib/subclassEffects.ts";
 
 const ROOT = new URL("../", import.meta.url);
 const inputs = loadKeywordInputs();
@@ -26,4 +31,25 @@ writeFileSync(
 );
 console.log(
   `Wrote ${sources.length} keyword sources and ${abilities.entries.length} ability keywords (${abilities.gaps.length} gaps); review docs/keyword-sources.md`,
+);
+
+// Effects of the aspects and fragments (U6-2); those kept in effects.json are not written again.
+const subclassInputs = loadSubclassEffectInputs();
+const subclass = subclassEffects(subclassInputs);
+const kept = new Set(subclassInputs.effects.map((e) => e.id));
+const generated = subclass.effects.filter((e) => !kept.has(e.effect.id));
+writeFileSync(
+  new URL("src/data/subclass-effects.json", ROOT),
+  await format(JSON.stringify(generated), { parser: "json" }),
+);
+writeFileSync(
+  new URL("src/data/effect-codes.json", ROOT),
+  await format(JSON.stringify(subclass.codes), { parser: "json" }),
+);
+writeFileSync(
+  new URL("docs/subclass-effects.md", ROOT),
+  renderSubclassEffects(subclass.rows),
+);
+console.log(
+  `Wrote ${generated.length} subclass effects from ${subclass.rows.length} rows; review docs/subclass-effects.md`,
 );

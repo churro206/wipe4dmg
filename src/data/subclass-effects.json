@@ -1,0 +1,1180 @@
+[
+  {
+    "subclassItemId": "ascension",
+    "activation": "always",
+    "effect": {
+      "id": "ascension",
+      "code": 19,
+      "name": "Ascension",
+      "shortName": "Ascension",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 4194622039
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["arc"],
+          "classes": ["hunter"]
+        },
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["prismatic"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["amplified"]
+    }
+  },
+  {
+    "subclassItemId": "bastion",
+    "activation": "always",
+    "effect": {
+      "id": "bastion",
+      "code": 20,
+      "name": "Bastion",
+      "shortName": "Bastion",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1602994569
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["voidOvershield"]
+    }
+  },
+  {
+    "subclassItemId": "controlled-demolition",
+    "activation": "always",
+    "effect": {
+      "id": "controlled-demolition",
+      "code": 21,
+      "name": "Controlled Demolition",
+      "shortName": "Controlled Demolition",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1602994568
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "appliesKeyword",
+          "keywordId": "volatile",
+          "damageSources": ["grenade", "melee", "super", "classAbility"],
+          "elements": ["void"],
+          "source": {
+            "name": "Destiny Data Compendium (subclass tabs)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "note": "„inflicts Volatile“ (Void, Controlled Demolition)"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "subclassItemId": "diamond-lance",
+    "activation": "always",
+    "effect": {
+      "id": "diamond-lance",
+      "code": 22,
+      "name": "Diamond Lance",
+      "shortName": "Diamond Lance",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1262901522
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["prismatic"],
+          "classes": ["titan"]
+        },
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["stasis"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["frostArmor"]
+    }
+  },
+  {
+    "subclassItemId": "echo-of-instability",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "echo-of-instability",
+      "code": 23,
+      "name": "Echo of Instability",
+      "shortName": "Echo of Instability",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2661180600
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
+      ],
+      "parts": [
+        {
+          "type": "appliesKeyword",
+          "keywordId": "volatile",
+          "damageSources": ["weapon"],
+          "elements": ["void"],
+          "source": {
+            "name": "Destiny Data Compendium (subclass tabs)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "note": "„grant Volatile Rounds to Void Weapons“ (Void, Echo of Instability)"
+          }
+        }
+      ],
+      "durationMs": {
+        "value": 11250,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„grant Volatile Rounds to Void Weapons“ (Void, Echo of Instability)"
+        }
+      }
+    }
+  },
+  {
+    "subclassItemId": "echo-of-undermining",
+    "activation": "always",
+    "effect": {
+      "id": "echo-of-undermining",
+      "code": 24,
+      "name": "Echo of Undermining",
+      "shortName": "Echo of Undermining",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2272984668
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "debuff",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Court Stacking Guide (debuff, PvE 15%, 5s*)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Void Grenade damage applies Weaken“; window from the rotation (ADR 0015, U6-1b)"
+            }
+          },
+          "damageSources": [
+            "weapon",
+            "grenade",
+            "melee",
+            "super",
+            "classAbility",
+            "keyword"
+          ]
+        }
+      ],
+      "durationMs": {
+        "value": 5000,
+        "source": {
+          "name": "Court Stacking Guide (debuff, PvE 15%, 5s*)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Void Grenade damage applies Weaken“; window from the rotation (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": {
+        "on": "hit",
+        "refresh": true,
+        "abilityKinds": ["grenade"],
+        "elements": ["void"]
+      }
+    }
+  },
+  {
+    "subclassItemId": "echo-of-vigilance",
+    "activation": "always",
+    "effect": {
+      "id": "echo-of-vigilance",
+      "code": 25,
+      "name": "Echo of Vigilance",
+      "shortName": "Echo of Vigilance",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 3854948621
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
+      ],
+      "parts": [],
+      "grantsStatus": ["voidOvershield"]
+    }
+  },
+  {
+    "subclassItemId": "electrostatic-mind",
+    "activation": "always",
+    "effect": {
+      "id": "electrostatic-mind",
+      "code": 26,
+      "name": "Electrostatic Mind",
+      "shortName": "Electrostatic Mind",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1293395729
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["arc"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["amplified"]
+    }
+  },
+  {
+    "subclassItemId": "ember-of-mercy",
+    "activation": "always",
+    "effect": {
+      "id": "ember-of-mercy",
+      "code": 27,
+      "name": "Ember of Mercy",
+      "shortName": "Ember of Mercy",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 4180586737
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["solar"] }
+      ],
+      "parts": [],
+      "grantsStatus": ["restoration"]
+    }
+  },
+  {
+    "subclassItemId": "ember-of-torches",
+    "activation": "always",
+    "effect": {
+      "id": "ember-of-torches",
+      "code": 28,
+      "name": "Ember of Torches (Radiant)",
+      "shortName": "Ember of Torches",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 362132288
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["solar"] }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.2,
+            "source": {
+              "name": "Court Stacking Guide (Radiant sources, PvE 20%)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-18",
+              "status": "verified"
+            }
+          },
+          "damageSources": ["weapon"]
+        },
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.2,
+            "source": {
+              "name": "Destiny Data Compendium, Solar (Radiant: \"Increases Weapon Damage by 20% ... Also affects Golden Gun's Damage.\"); Court Stacking Guide (\"Radiant also increases Golden Gun Supers and Still Hunt's Golden Gun damage by 20%\")",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "Aegis measures Golden Gun with Radiant: Abilities tab 15,935 / Swap tab base 13,279 = 1.200 (Celestial Nighthawk). The packages take Radiant out (ADR 0009 point 5)."
+            }
+          },
+          "damageSources": ["super"],
+          "abilityIds": ["golden-gun-deadshot", "golden-gun-marksman"]
+        }
+      ],
+      "durationMs": {
+        "value": 8000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Powered Melee Hits grant Radiant for 8“ (Solar, Ember of Torches)"
+        }
+      },
+      "trigger": { "on": "hit", "refresh": true, "abilityKinds": ["melee"] }
+    }
+  },
+  {
+    "subclassItemId": "ensnaring-slam",
+    "activation": "always",
+    "effect": {
+      "id": "ensnaring-slam",
+      "code": 29,
+      "name": "Ensnaring Slam",
+      "shortName": "Ensnaring Slam",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 4249729126
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["strand"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["wovenMail"]
+    }
+  },
+  {
+    "subclassItemId": "facet-of-bravery",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "facet-of-bravery",
+      "code": 30,
+      "name": "Facet of Bravery",
+      "shortName": "Facet of Bravery",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 124726503
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
+      ],
+      "parts": [
+        {
+          "type": "appliesKeyword",
+          "keywordId": "volatile",
+          "damageSources": ["weapon"],
+          "elements": ["void"],
+          "source": {
+            "name": "Destiny Data Compendium (subclass tabs)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "note": "„grant Volatile Rounds to Void Weapons“ (Prismatic, Facet of Bravery)"
+          }
+        }
+      ],
+      "durationMs": {
+        "value": 11250,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„grant Volatile Rounds to Void Weapons“ (Prismatic, Facet of Bravery)"
+        }
+      }
+    }
+  },
+  {
+    "subclassItemId": "facet-of-bravery",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "facet-of-bravery-2",
+      "code": 31,
+      "name": "Facet of Bravery",
+      "shortName": "Facet of Bravery",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 124726503
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
+      ],
+      "parts": [
+        {
+          "type": "appliesKeyword",
+          "keywordId": "unravel",
+          "damageSources": ["weapon"],
+          "elements": ["strand"],
+          "source": {
+            "name": "Destiny Data Compendium (subclass tabs)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "note": "„grant Unraveling Rounds to Strand Weapons“ (Prismatic, Facet of Bravery)"
+          }
+        }
+      ],
+      "durationMs": {
+        "value": 11250,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„grant Unraveling Rounds to Strand Weapons“ (Prismatic, Facet of Bravery)"
+        }
+      }
+    }
+  },
+  {
+    "subclassItemId": "facet-of-dawn",
+    "activation": "always",
+    "effect": {
+      "id": "facet-of-dawn",
+      "code": 32,
+      "name": "Facet of Dawn (Radiant)",
+      "shortName": "Facet of Dawn",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2626922126
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.2,
+            "source": {
+              "name": "Court Stacking Guide (Radiant sources, PvE 20%)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-18",
+              "status": "verified"
+            }
+          },
+          "damageSources": ["weapon"]
+        },
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.2,
+            "source": {
+              "name": "Destiny Data Compendium, Solar (Radiant: \"Increases Weapon Damage by 20% ... Also affects Golden Gun's Damage.\"); Court Stacking Guide (\"Radiant also increases Golden Gun Supers and Still Hunt's Golden Gun damage by 20%\")",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "Aegis measures Golden Gun with Radiant: Abilities tab 15,935 / Swap tab base 13,279 = 1.200 (Celestial Nighthawk). The packages take Radiant out (ADR 0009 point 5)."
+            }
+          },
+          "damageSources": ["super"],
+          "abilityIds": ["golden-gun-deadshot", "golden-gun-marksman"]
+        }
+      ],
+      "durationMs": {
+        "value": 5000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Powered Melee Hits grant Radiant for 5“ (Prismatic, Facet of Dawn)"
+        }
+      },
+      "trigger": { "on": "hit", "refresh": true, "abilityKinds": ["melee"] }
+    }
+  },
+  {
+    "subclassItemId": "facet-of-dominance",
+    "activation": "always",
+    "effect": {
+      "id": "facet-of-dominance",
+      "code": 33,
+      "name": "Facet of Dominance",
+      "shortName": "Facet of Dominance",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 124726504
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "debuff",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Court Stacking Guide (debuff, PvE 15%, 5s*)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Void Grenade damage applies Weaken“; window from the rotation (ADR 0015, U6-1b)"
+            }
+          },
+          "damageSources": [
+            "weapon",
+            "grenade",
+            "melee",
+            "super",
+            "classAbility",
+            "keyword"
+          ]
+        }
+      ],
+      "durationMs": {
+        "value": 5000,
+        "source": {
+          "name": "Court Stacking Guide (debuff, PvE 15%, 5s*)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Void Grenade damage applies Weaken“; window from the rotation (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": {
+        "on": "hit",
+        "refresh": true,
+        "abilityKinds": ["grenade"],
+        "elements": ["void"]
+      }
+    }
+  },
+  {
+    "subclassItemId": "facet-of-dominance",
+    "activation": "always",
+    "effect": {
+      "id": "facet-of-dominance-2",
+      "code": 34,
+      "name": "Facet of Dominance",
+      "shortName": "Facet of Dominance",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 124726504
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
+      ],
+      "parts": [
+        {
+          "type": "appliesKeyword",
+          "keywordId": "jolt",
+          "damageSources": ["grenade"],
+          "elements": ["arc"],
+          "source": {
+            "name": "Destiny Data Compendium (subclass tabs)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "note": "„inflicts Jolt“ (Prismatic, Facet of Dominance)"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "subclassItemId": "facet-of-purpose",
+    "activation": "always",
+    "effect": {
+      "id": "facet-of-purpose",
+      "code": 35,
+      "name": "Facet of Purpose",
+      "shortName": "Facet of Purpose",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 124726498
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
+      ],
+      "parts": [],
+      "grantsStatus": ["restoration"]
+    }
+  },
+  {
+    "subclassItemId": "frostpulse",
+    "activation": "always",
+    "effect": {
+      "id": "frostpulse",
+      "code": 36,
+      "name": "Frostpulse",
+      "shortName": "Frostpulse",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 668903197
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["stasis"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["frostArmor"]
+    }
+  },
+  {
+    "subclassItemId": "glacial-harvest",
+    "activation": "always",
+    "effect": {
+      "id": "glacial-harvest",
+      "code": 37,
+      "name": "Glacial Harvest",
+      "shortName": "Glacial Harvest",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2651551055
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["stasis"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["frostArmor"]
+    }
+  },
+  {
+    "subclassItemId": "grim-harvest",
+    "activation": "always",
+    "effect": {
+      "id": "grim-harvest",
+      "code": 38,
+      "name": "Grim Harvest",
+      "shortName": "Grim Harvest",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1920417385
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["stasis"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["frostArmor"]
+    }
+  },
+  {
+    "subclassItemId": "heat-rises",
+    "activation": "always",
+    "effect": {
+      "id": "heat-rises",
+      "code": 39,
+      "name": "Heat Rises",
+      "shortName": "Heat Rises",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 83039194
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["restoration"]
+    }
+  },
+  {
+    "subclassItemId": "into-the-fray",
+    "activation": "always",
+    "effect": {
+      "id": "into-the-fray",
+      "code": 40,
+      "name": "Into the Fray",
+      "shortName": "Into the Fray",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 988980153
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["strand"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["wovenMail"]
+    }
+  },
+  {
+    "subclassItemId": "lightning-surge",
+    "activation": "always",
+    "effect": {
+      "id": "lightning-surge",
+      "code": 41,
+      "name": "Lightning Surge",
+      "shortName": "Lightning Surge",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1293395730
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["arc"],
+          "classes": ["warlock"]
+        },
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["prismatic"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["amplified"]
+    }
+  },
+  {
+    "subclassItemId": "on-the-prowl",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "on-the-prowl",
+      "code": 42,
+      "name": "On the Prowl",
+      "shortName": "On the Prowl",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 187655375
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "debuff",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Court Stacking Guide (debuff, PvE 15%, 6s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Killing priority target causes them to burst into a Weakening Smoke Cloud“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+            }
+          },
+          "damageSources": [
+            "weapon",
+            "grenade",
+            "melee",
+            "super",
+            "classAbility",
+            "keyword"
+          ]
+        }
+      ],
+      "durationMs": {
+        "value": 6000,
+        "source": {
+          "name": "Court Stacking Guide (debuff, PvE 15%, 6s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Killing priority target causes them to burst into a Weakening Smoke Cloud“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "subclassItemId": "on-your-mark",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "on-your-mark",
+      "code": 43,
+      "name": "On Your Mark",
+      "shortName": "On Your Mark",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 3066103999
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["restoration"],
+      "durationMs": {
+        "value": 3000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„grant Restoration“ (Solar, On Your Mark)"
+        }
+      }
+    }
+  },
+  {
+    "subclassItemId": "roaring-flames",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "roaring-flames",
+      "code": 44,
+      "name": "Roaring Flames",
+      "shortName": "Roaring Flames",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2984351204
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["roaringFlames"],
+      "durationMs": {
+        "value": 20000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„grant a stack of Roaring Flame“ (Solar, Roaring Flames)"
+        }
+      }
+    }
+  },
+  {
+    "subclassItemId": "shatterdive",
+    "activation": "always",
+    "effect": {
+      "id": "shatterdive",
+      "code": 45,
+      "name": "Shatterdive",
+      "shortName": "Shatterdive",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2934767476
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["stasis"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["frostArmor"]
+    }
+  },
+  {
+    "subclassItemId": "sol-invictus",
+    "activation": "always",
+    "effect": {
+      "id": "sol-invictus",
+      "code": 46,
+      "name": "Sol Invictus",
+      "shortName": "Sol Invictus",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2984351205
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["restoration"]
+    }
+  },
+  {
+    "subclassItemId": "soul-siphon",
+    "activation": "always",
+    "effect": {
+      "id": "soul-siphon",
+      "code": 47,
+      "name": "Soul Siphon",
+      "shortName": "Soul Siphon",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2321824286
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["voidOvershield"]
+    }
+  },
+  {
+    "subclassItemId": "spark-of-shock",
+    "activation": "always",
+    "effect": {
+      "id": "spark-of-shock",
+      "code": 48,
+      "name": "Spark of Shock",
+      "shortName": "Spark of Shock",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1727069364
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["arc"] }
+      ],
+      "parts": [
+        {
+          "type": "appliesKeyword",
+          "keywordId": "jolt",
+          "damageSources": ["grenade"],
+          "elements": ["arc"],
+          "source": {
+            "name": "Destiny Data Compendium (subclass tabs)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "note": "„inflict Jolt“ (Arc, Spark of Shock)"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "subclassItemId": "tectonic-harvest",
+    "activation": "always",
+    "effect": {
+      "id": "tectonic-harvest",
+      "code": 49,
+      "name": "Tectonic Harvest",
+      "shortName": "Tectonic Harvest",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2031919264
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["stasis"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["frostArmor"]
+    }
+  },
+  {
+    "subclassItemId": "thread-of-propagation",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "thread-of-propagation",
+      "code": 50,
+      "name": "Thread of Propagation",
+      "shortName": "Thread of Propagation",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 4208512210
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["strand"] }
+      ],
+      "parts": [
+        {
+          "type": "appliesKeyword",
+          "keywordId": "unravel",
+          "damageSources": ["weapon"],
+          "elements": ["strand"],
+          "source": {
+            "name": "Destiny Data Compendium (subclass tabs)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "note": "„Grants Unraveling Rounds to Strand Weapons“ (Strand, Thread of Propagation)"
+          }
+        }
+      ],
+      "durationMs": {
+        "value": 8000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Grants Unraveling Rounds to Strand Weapons“ (Strand, Thread of Propagation)"
+        }
+      }
+    }
+  },
+  {
+    "subclassItemId": "thread-of-warding",
+    "activation": "always",
+    "effect": {
+      "id": "thread-of-warding",
+      "code": 51,
+      "name": "Thread of Warding",
+      "shortName": "Thread of Warding",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 4208512222
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["strand"] }
+      ],
+      "parts": [],
+      "grantsStatus": ["wovenMail"]
+    }
+  },
+  {
+    "subclassItemId": "touch-of-flame",
+    "activation": "always",
+    "effect": {
+      "id": "touch-of-flame",
+      "code": 52,
+      "name": "Touch of Flame",
+      "shortName": "Touch of Flame",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 83039193
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["restoration"]
+    }
+  },
+  {
+    "subclassItemId": "unbreakable",
+    "activation": "always",
+    "effect": {
+      "id": "unbreakable",
+      "code": 53,
+      "name": "Unbreakable",
+      "shortName": "Unbreakable",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1262901521
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["prismatic"],
+          "classes": ["titan"]
+        },
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["voidOvershield"]
+    }
+  },
+  {
+    "subclassItemId": "weavewalk",
+    "activation": "always",
+    "effect": {
+      "id": "weavewalk",
+      "code": 54,
+      "name": "Weavewalk",
+      "shortName": "Weavewalk",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 262821312
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["strand"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "grantsStatus": ["wovenMail"]
+    }
+  },
+  {
+    "subclassItemId": "whisper-of-fractures",
+    "activation": "always",
+    "effect": {
+      "id": "whisper-of-fractures",
+      "code": 55,
+      "name": "Whisper of Fractures",
+      "shortName": "Whisper of Fractures",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 537774542
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["stasis"] }
+      ],
+      "parts": [],
+      "grantsStatus": ["frostArmor"]
+    }
+  }
+]

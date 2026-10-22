@@ -338,6 +338,20 @@ export type WeaponGap = z.infer<typeof WeaponGap>;
 
 /** What creates a damage instance. */
 
+/**
+ * A state of the player that effects grant and parts require (ADR 0015, U6-2), e.g. Amplified from
+ * Ascension for No Backup Plans. Without damage of its own.
+ */
+export const StatusId = z.enum([
+  "amplified",
+  "frostArmor",
+  "roaringFlames",
+  "wovenMail",
+  "voidOvershield",
+  "restoration",
+]);
+export type StatusId = z.infer<typeof StatusId>;
+
 /** Effect part that multiplies damage (ADR 0006). */
 export const MultiplierPart = z.object({
   type: z.literal("multiplier"),
@@ -355,6 +369,8 @@ export const MultiplierPart = z.object({
     .optional(),
   // Only with a super of these elements, e.g. Weaken from Chromatic Fire with a Void super
   superElements: z.array(Element).optional(),
+  // Only while one of these states is granted, e.g. No Backup Plans (ADR 0015, U6-2)
+  requiresStatus: z.array(StatusId).min(1).optional(),
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 
@@ -498,7 +514,9 @@ export const Effect = z.object({
   // A build provides at most one effect of a group itself, e.g. one surge level or one super.
   // Effects from teammates are not limited by groups.
   exclusiveGroup: z.string().optional(),
-  parts: z.array(EffectPart).min(1),
+  parts: z.array(EffectPart), // empty only for an effect that grants a state
+  // States the player has while the effect is active, e.g. Amplified (ADR 0015, U6-2)
+  grantsStatus: z.array(StatusId).min(1).optional(),
   // Duration after its start; omitted if the effect lasts the whole damage phase or the duration
   // depends on the source (e.g. Radiant, tethers). The rotation can override start and duration.
   durationMs: SourcedNumber.optional(),
@@ -508,6 +526,9 @@ export const Effect = z.object({
   // Effect ids whose multiplier parts in the same buckets are ignored while this effect is active,
   // regardless of value, e.g. Divinity over Particle Reconstruction.
   overrides: z.array(z.string()).optional(),
+}).refine((e) => e.parts.length > 0 || e.grantsStatus !== undefined, {
+  message: "an effect needs parts or a state it grants",
+  path: ["parts"],
 });
 export type Effect = z.infer<typeof Effect>;
 
@@ -807,6 +828,14 @@ export const ExoticArmorEffect = z.object({
   effect: Effect,
 });
 export type ExoticArmorEffect = z.infer<typeof ExoticArmorEffect>;
+
+/** An effect generated from an aspect or fragment (ADR 0015, U6-2), in subclass-effects.json. */
+export const SubclassEffect = z.object({
+  subclassItemId: z.string(), // kebab-case of the manifest name, e.g. "ember-of-torches"
+  activation: z.enum(["always", "preBuilt"]),
+  effect: Effect,
+});
+export type SubclassEffect = z.infer<typeof SubclassEffect>;
 
 /** Item types of the names in the Aegis weapon assumptions, looked up in the whole manifest. */
 export const ManifestTerms = z.object({

@@ -377,6 +377,35 @@
     }
   },
   {
+    "exoticArmorId": "fr0st-ee5",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:fr0st-ee5",
+      "name": "Fr0st-EE5",
+      "code": 1737050140,
+      "shortName": "Fr0st-EE5",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "surge",
+          "multiplier": {
+            "value": 1.22,
+            "source": {
+              "name": "Court Stacking Guide (surge, PvE 22%, ~)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Stasis Surge Stacks: While any stacks of Frost Armor are active“; while the player has frostArmor (ADR 0015, U6-2)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "elements": ["stasis"]
+        }
+      ]
+    }
+  },
+  {
     "exoticArmorId": "gyrfalcons-hauberk",
     "activation": "preBuilt",
     "effect": {
@@ -578,6 +607,42 @@
     }
   },
   {
+    "exoticArmorId": "no-backup-plans",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:no-backup-plans",
+      "name": "No Backup Plans",
+      "code": 730200061,
+      "shortName": "No Backup Plans",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.35,
+            "source": {
+              "name": "Court Stacking Guide (empowering, PvE 35%, ~ lasts duration of user buff)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„While having an active passive Elemental Buff: provides a damage buff to Shotguns only“; while the player has amplified or frostArmor or wovenMail or voidOvershield or restoration (ADR 0015, U6-2)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "weaponTypes": ["shotgun"],
+          "requiresStatus": [
+            "amplified",
+            "frostArmor",
+            "wovenMail",
+            "voidOvershield",
+            "restoration"
+          ]
+        }
+      ]
+    }
+  },
+  {
     "exoticArmorId": "sanguine-alchemy",
     "activation": "always",
     "effect": {
@@ -746,6 +811,36 @@
         }
       },
       "trigger": { "on": "cast", "refresh": true, "abilityKinds": ["super"] }
+    }
+  },
+  {
+    "exoticArmorId": "the-path-of-burning-steps",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:the-path-of-burning-steps",
+      "name": "The Path of Burning Steps",
+      "code": 4119704973,
+      "shortName": "The Path of Burning Steps",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "amplification",
+          "multiplier": {
+            "value": 1.124,
+            "source": {
+              "name": "Court Stacking Guide (amplification, PvE 6% 9.2% 12.4%, ∞)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Roaring Flame stacks grant increased Solar Weapon damage Stacks up to x3“; while the player has roaringFlames (ADR 0015, U6-2)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "elements": ["solar"],
+          "requiresStatus": ["roaringFlames"]
+        }
+      ]
     }
   },
   {
