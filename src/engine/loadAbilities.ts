@@ -28,6 +28,7 @@ import {
   type AegisAbilityRow,
   type ExoticArmorEntry,
   type Source,
+  type SuperTiming,
 } from "../data/schema";
 import { elementItem, itemsOfAbility } from "./abilityNames";
 import { activeParts, combinedMultiplier } from "./effectParts";
@@ -54,8 +55,13 @@ export function loadAbilities(
     ExoticArmorEntry,
     "id" | "name" | "kind" | "aegisRowIds" | "superShots"
   >[] = [],
+  // super-timings.json: hits and super window of supers used as fast as possible
+  superTimings: SuperTiming[] = [],
 ): Ability[] {
   const data = AbilityData.array().parse(raw);
+  for (const timing of superTimings)
+    if (!data.some((a) => a.id === timing.abilityId))
+      throw new Error(`super timing for unknown ability "${timing.abilityId}"`);
   // A variant row measures the same ability with the assumptions of the base row plus the exotic,
   // e.g. "Thundercrash" with "Cuirass of the Falling Star". It shares the code of its base: links
   // store the base, the worn exotic selects the variant.
@@ -108,7 +114,16 @@ export function loadAbilities(
       const own = abilityKeywords.filter(
         (k) => k.abilityId === (ability.variantOf ?? ability.id),
       );
-      const loaded = ability.package
+      // the variant's own timing, else the timing of its base
+      const baseId = ability.variantOf ?? ability.id;
+      const timing =
+        superTimings.find(
+          (t) =>
+            t.abilityId === baseId && t.exoticArmorId === ability.exoticArmorId,
+        ) ??
+        superTimings.find((t) => t.abilityId === baseId && !t.exoticArmorId);
+      const hits = timing ? requireValue(timing.hits, "hits") : 1;
+      const packaged = ability.package
         ? packageComponents(
             ability.id,
             ability.aegisRowId!,
@@ -123,8 +138,16 @@ export function loadAbilities(
               : component,
           )
         : (components ?? []);
+      if (timing && !ability.package && packaged.length > 0)
+        throw new Error(`${ability.id}: a super timing needs a package`);
+      const loaded = timing
+        ? packaged.map((c) => spreadOverHits(c, timing))
+        : packaged;
       return Ability.parse({
         ...ability,
+        ...(timing?.weaponReadyMs
+          ? { usage: { type: "timed", weaponReadyMs: timing.weaponReadyMs } }
+          : {}),
         ...(ability.providers
           ? {}
           : manifestProviders(ability, manifestAbilities)),
@@ -138,7 +161,18 @@ export function loadAbilities(
                 abilityIds: [ability.id],
                 // once per cast: only the first component applies it
                 damageInstanceIds: [`${ability.id}.${loaded[0].id}`],
-                ...(k.stacksPerUse ? { stacks: k.stacksPerUse } : {}),
+                // spread over the hits like the damage, e.g. x120 scorch per Golden Gun = x40 per shot
+                ...(k.stacksPerUse
+                  ? {
+                      stacks: {
+                        ...k.stacksPerUse,
+                        value:
+                          k.stacksPerUse.value === null
+                            ? null
+                            : k.stacksPerUse.value / hits,
+                      },
+                    }
+                  : {}),
                 source: k.source,
               })),
             }
@@ -272,6 +306,29 @@ function packageComponents(
       `${100 - percent}% fixed`,
     ),
   ];
+}
+
+/** Spreads a package component evenly over the hits of a super timing; the sum stays the same. */
+function spreadOverHits(
+  component: AbilityComponent,
+  timing: SuperTiming,
+): AbilityComponent {
+  const hits = requireValue(timing.hits, "hits");
+  const damage = requireValue(component.damagePerTick, "damagePerTick");
+  return {
+    ...component,
+    delayMs: timing.firstHitMs,
+    ticks: timing.hits,
+    tickIntervalMs: timing.hitIntervalMs,
+    damagePerTick: {
+      ...component.damagePerTick,
+      value: damage / hits,
+      source: {
+        ...component.damagePerTick.source,
+        note: `${component.damagePerTick.source.note ?? ""}; spread over ${hits} hits (super-timings.json)`,
+      },
+    },
+  };
 }
 
 /** Divides the included effects that are multipliers for this ability out of the component value. */

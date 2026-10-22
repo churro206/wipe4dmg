@@ -83,8 +83,8 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 - **Umbau nach ADR 0015:** U1–U5, U6-1, U6-1b, U6-2 (Aspects/Fragments, Zustände) und U8 (Exotic-Auswahl, Link-Format 4) sind fertig. **Offen:** U6-3 Exotic Class Items und Transcendence, U6-4 Melee-Bucket additiv, U7 Timing (Class Ability in der Rotation, `refillOnCast`, `magazineRefill`), U9 `build:abilities`, Ember of Ashes aus `effects.json` umziehen.
 - **Prüftabellen:** `docs/exotic-effects.md`, `docs/subclass-effects.md`, `docs/keyword-sources.md`, `docs/armor-import.md`, `docs/weapon-import.md`.
 - **Sprache der Website (2026-10-22):** Alles, was Spieler sehen, ist englisch: Texte in `src/ui`, die Abschnitte „## For players“ in `docs/mechanics/`, `docs/roadmap.md` und die generierte `docs/coverage.md`. Zahlen im Format `en-US`. Antworten an den Inhaber, Pläne, Prüftabellen, ADRs und der Changelog bleiben deutsch.
-- **Nächster Schritt:** U6-3, U6-4 und U7 als vertikale Scheiben (ADR 0016).
-- **Wartet auf den Inhaber:** Ingame-Messung des Schussabstands der Golden Gun (Marksman 3 Schüsse, Deadshot 6). Bis dahin ist ihr Super Window eine Schätzung mit 12 s.
+- **Super-Timing (2026-10-22):** `src/data/super-timings.json` aus Geminis Schätzungen (`docs/sources/gemini-super-timings.csv`, Status `unverified`, vom Inhaber freigegeben). Verifizierte Compendium-Werte haben Vorrang.
+- **Nächster Schritt (Reihenfolge des Inhabers):** 1. Aspects und Fragments, die eine Ability ändern, als Varianten aus Aegis-Zeilen (13 Fälle, z. B. Knock 'Em Down), mit Regel-Test über alle. 2. Jeder Catalyst, der den Schaden beeinflusst (auch Magazin, Munition, Reload), mit klaren Tooltips. Danach U6-3, U6-4, U7, U9.
 - **Danach:** gezielte Inventur der Lücken (11 Subklassen-Boni ohne Bucket-Quelle, Exotics ohne Wirkung), W1-7 Waffen-Lücken, E1 Dawn Chorus u. a., v1.1 mit Testlauf Waffe × Exotic-Rüstung.
 - **Entscheidungen des Inhabers:**
   - Exotics ohne jede Schadenswirkung fallen weg.
@@ -110,3 +110,11 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 - `npm run import:court`: Courts Stacking Guide als Snapshot nach `src/data/court-buffs.json` (ADR 0014; Werte von Debuffs, Empowering, Surges, Amplification und die Liste der Exotic Intrinsics)
 - `npm run coverage`: `docs/coverage.md` aus den Data Files neu schreiben (ein Test prüft, dass sie aktuell ist)
 - `npm run import:icons`: Icons, Ability-Zuordnung (Klasse, Subklasse, Prismatic) samt Aspects und Fragments, exotische Waffen mit Perks und Katalysator (`manifest-weapons.json`), Exotic-Rüstung mit Intrinsic (`manifest-armor.json`) und die Item-Typen der Aegis-Annahmen (`manifest-terms.json`, ADR 0013) aus dem Bungie-Manifest laden; nach `import:weapons` ausführen (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen; lädt die etwa 200 MB große Item-Tabelle)
+
+## Shell-Befehle
+
+- Ein Befehl pro Aufruf. Keine Ketten mit `&&`, `;` oder `|`, wenn ein einzelner Befehl genügt.
+- Kein `cd`. Verwende immer Pfade relativ zum Projektordner.
+- Kein `sed`, `awk` oder `paste`. Zum Suchen und Lesen nutzt du Grep, Glob und Read.
+- Temporäre Dateien legst du in `tmp/` im Projektordner ab. `tmp/` steht in `.gitignore`.
+- Externe Daten speicherst du einmal unter `docs/sources/` (zum Beispiel als CSV) und liest sie danach mit Read.

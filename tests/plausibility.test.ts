@@ -56,18 +56,20 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio).toBeLessThan(1.7);
   });
 
-  it("Celestial Nighthawk: one big shot, the super window ends with it", () => {
+  it("Celestial Nighthawk: one big shot, the super window ends soon after it", () => {
     const hunter = {
       guardianClass: "hunter" as const,
       subclass: "solar" as const,
       abilities: [{ abilityId: "golden-gun-marksman", castsMs: [0] }],
     };
     const withExotic = run({ ...hunter, exoticArmorId: "celestial-nighthawk" });
-    const ratio = damageOf(withExotic, "super") / damageOf(run(hunter), "super");
-    const window = withExotic.superWindows[0];
-    note("Golden Gun mit / ohne Nighthawk", `×${fmt(ratio)}, Fenster ${window.endMs - window.startMs} ms`, "ein Schuss mit viel mehr Schaden, Fenster 0");
+    const plain = run(hunter);
+    const ratio = damageOf(withExotic, "super") / damageOf(plain, "super");
+    const length = (r: SimulationResult) =>
+      r.superWindows[0].endMs - r.superWindows[0].startMs;
+    note("Golden Gun mit / ohne Nighthawk", `×${fmt(ratio)}, Fenster ${length(withExotic)} / ${length(plain)} ms`, "ein Schuss mit viel mehr Schaden, Fenster kürzer als mit 3 Schüssen");
     expect(ratio).toBeGreaterThan(1.5);
-    expect(window.endMs - window.startMs).toBe(0);
+    expect(length(withExotic)).toBeLessThan(length(plain));
   });
 
   it("well-known variants exist (Cuirass, Nighthawk, Dawn Chorus, Geomag)", () => {
@@ -160,13 +162,43 @@ describe("the UI offers what works", () => {
     expect(hidden.map((e) => e.id)).toEqual([]);
   });
 
-  it("the Golden Gun window stays an estimate until the shot interval is known", () => {
-    const window = run({
-      guardianClass: "hunter",
-      subclass: "solar",
-      abilities: [{ abilityId: "golden-gun-marksman", castsMs: [0] }],
-    }).superWindows[0];
-    note("Golden Gun Marksman Fenster", `${window.endMs} ms, exakt: ${window.exact}`, "kürzer als 12 s; Schussabstand fehlt (Messung)");
-    expect(window.exact).toBe(false);
+});
+
+describe("supers take time like in the game", () => {
+  const superRun = (
+    guardianClass: Build["guardianClass"],
+    subclass: Build["subclass"],
+    abilityId: string,
+  ) =>
+    run({ guardianClass, subclass, abilities: [{ abilityId, castsMs: [0] }] });
+  const hits = (r: SimulationResult) =>
+    r.damageInstances
+      .filter((d) => d.damageSource === "super")
+      .map((d) => d.timeMs);
+
+  it("Golden Gun Marksman: three shots, the ignition comes with the last one", () => {
+    const r = superRun("hunter", "solar", "golden-gun-marksman");
+    const shots = [...new Set(hits(r))];
+    const ignition = r.damageInstances.find((d) => d.keywordId === "ignition");
+    const window = r.superWindows[0];
+    note("Golden Gun Marksman: Schüsse, Ignition, Fenster", `${shots.join(" / ")} ms, Ignition ${ignition?.timeMs} ms, Fenster ${window.endMs} ms`, "3 Schüsse in gut 2 s, Ignition beim 3. Schuss");
+    expect(shots).toHaveLength(3);
+    expect(ignition?.timeMs).toBe(shots[2]);
+    expect(window.endMs).toBeLessThan(3000);
+  });
+
+  it("Daybreak: light attacks spread over the super, the weapon waits far less than 24 s", () => {
+    const r = superRun("warlock", "solar", "daybreak");
+    const window = r.superWindows[0];
+    note("Daybreak: Treffer, Fenster", `${new Set(hits(r)).size} Treffer, Fenster ${window.endMs} ms`, "etwa 15 Treffer, 12–14 s");
+    expect(new Set(hits(r)).size).toBeGreaterThan(10);
+    expect(window.endMs).toBeLessThan(15_000);
+  });
+
+  it("Nova Bomb: the bomb needs its cast before it hits", () => {
+    const r = superRun("warlock", "void", "nova-bomb-cataclysm");
+    note("Nova Bomb: Treffer, Fenster", `${hits(r)[0]} ms, Fenster ${r.superWindows[0].endMs} ms`, "Treffer nach etwa 1,5 s, Fenster knapp 2 s");
+    expect(hits(r)[0]).toBeGreaterThan(1000);
+    expect(r.superWindows[0].endMs).toBeGreaterThan(1000);
   });
 });

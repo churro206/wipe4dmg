@@ -16,7 +16,9 @@ Status: 2026-10-22
 - ⏳ Exotic class items with two perks (Prismatic) and Transcendence
 - ⏳ Melee buffs add up with each other (own bucket)
 - ⏳ Class ability in the Rotation; exotics that refill abilities or the magazine
-- ⏳ Golden Gun: time between shots (in-game measurement); until then its Super Window is an estimate of 12 s
+- ✅ Supers take time like in the game: hits spread over shots and light attacks (e.g. Golden Gun ignites with its third shot), the weapon waits only as long as the Super really blocks it (Daybreak about 13 s instead of 24 s, Nova Bomb about 1.8 s instead of 0 s). Timings are rough estimates and marked as such.
+- ⏳ Aspects and fragments that change an ability, e.g. Knock 'Em Down with 20 instead of 14 knives in Blade Barrage
+- ⏳ Every catalyst that changes damage output, including magazine, ammo and reload
 
 ## Done in v1.0: abilities and Supers
 

@@ -331,6 +331,8 @@ export function describeSuperWindow(ability: Ability): string {
   const { durationMs, exact } = superWindowMs(ability.usage);
   const length = `${seconds.format(durationMs / 1000)} s`;
   switch (ability.usage.type) {
+    case "timed":
+      return `Super Window: ${length}${exact ? "" : " (estimate)"}`;
     case "cast":
       return exact
         ? `Super Window: cast ${length}`

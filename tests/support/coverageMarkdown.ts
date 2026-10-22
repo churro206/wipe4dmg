@@ -12,7 +12,7 @@ import type {
 const STATUS: Record<CoverageStatus, string> = {
   components: "✅ Parts",
   package: "🟡 Package",
-  effectOnly: "🔵 Nur Buff",
+  effectOnly: "🔵 Buff only",
   missing: "❌ missing",
 };
 const WINDOW = {

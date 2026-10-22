@@ -1,0 +1,1085 @@
+[
+  {
+    "abilityId": "golden-gun-marksman",
+    "firstHitMs": {
+      "value": 1200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Marksman, base\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 400,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Marksman, base\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 3,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Marksman, base\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 2200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Marksman, base\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "golden-gun-marksman",
+    "exoticArmorId": "celestial-nighthawk",
+    "firstHitMs": {
+      "value": 1200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Marksman, Celestial Nighthawk\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Marksman, Celestial Nighthawk\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Marksman, Celestial Nighthawk\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 1300,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Marksman, Celestial Nighthawk\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "golden-gun-deadshot",
+    "firstHitMs": {
+      "value": 1200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Deadshot\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 400,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Deadshot\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 6,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Deadshot\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 3300,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Golden Gun Deadshot\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "shadowshot-moebius-quiver",
+    "firstHitMs": {
+      "value": 1400,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Moebius Quiver, base\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 1200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Moebius Quiver, base\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 2,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Moebius Quiver, base\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 2800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Moebius Quiver, base\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "shadowshot-moebius-quiver",
+    "exoticArmorId": "orpheus-rig",
+    "firstHitMs": {
+      "value": 1400,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Moebius Quiver, Orpheus Rig\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 1200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Moebius Quiver, Orpheus Rig\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 3,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Moebius Quiver, Orpheus Rig\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 4000,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Moebius Quiver, Orpheus Rig\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "daybreak",
+    "firstHitMs": {
+      "value": 1100,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Daybreak\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Daybreak\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 15,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Daybreak\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 13000,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Daybreak\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "silkstrike",
+    "firstHitMs": {
+      "value": 800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Silkstrike\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Silkstrike\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 25,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Silkstrike\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 13000,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Silkstrike\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "nova-warp",
+    "firstHitMs": {
+      "value": 1000,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Warp\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 700,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Warp\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 20,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Warp\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 14500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Warp\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "winters-wrath",
+    "firstHitMs": {
+      "value": 1200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Winter's Wrath\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 900,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Winter's Wrath\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 12,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Winter's Wrath\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 11500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Winter's Wrath\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "spectral-blades",
+    "firstHitMs": {
+      "value": 700,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Spectral Blades\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 400,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Spectral Blades\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 22,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Spectral Blades\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 9500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Spectral Blades\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "stormtrance",
+    "firstHitMs": {
+      "value": 800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Stormtrance\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 340,
+      "source": {
+        "name": "Destiny Data Compendium, Arc, Stormtrance",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-22",
+        "status": "verified",
+        "quote": "releasing chain lighting that deals 178 [90] damage every 0.34 seconds"
+      }
+    },
+    "hits": {
+      "value": 39,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Stormtrance\"; rough estimate, sources not checked; hits = (14000 - 800) / 340 + 1, last hit before the 14 s Gemini names"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 14500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Stormtrance\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "arc-staff",
+    "firstHitMs": {
+      "value": 700,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Arc Staff\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Arc Staff\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 18,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Arc Staff\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 9500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Arc Staff\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "fists-of-havoc",
+    "firstHitMs": {
+      "value": 800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Fists of Havoc\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Fists of Havoc\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 16,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Fists of Havoc\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 8500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Fists of Havoc\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "sentinel-shield",
+    "firstHitMs": {
+      "value": 800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Sentinel Shield\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Sentinel Shield\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 18,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Sentinel Shield\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 9500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Sentinel Shield\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "burning-maul",
+    "firstHitMs": {
+      "value": 1000,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Burning Maul\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 670,
+      "source": {
+        "name": "Destiny Data Compendium, Solar, Burning Maul",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-22",
+        "status": "verified",
+        "quote": "Has a 0.67 second delay between light attacks."
+      }
+    },
+    "hits": {
+      "value": 17,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Burning Maul\"; rough estimate, sources not checked; hits = (11989 - 1000) / 670 + 1 inside the Compendium window (drain model); window stays from usage"
+      }
+    }
+  },
+  {
+    "abilityId": "storms-edge",
+    "firstHitMs": {
+      "value": 1200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Storm's Edge\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 2300,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Storm's Edge\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 3,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Storm's Edge\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 8100,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Storm's Edge\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "nova-bomb-cataclysm",
+    "firstHitMs": {
+      "value": 1500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Bomb Cataclysm\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Bomb Cataclysm\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Bomb Cataclysm\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 1800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Bomb Cataclysm\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "nova-bomb-vortex",
+    "firstHitMs": {
+      "value": 1500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Bomb Vortex\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Bomb Vortex\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Bomb Vortex\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 1800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Nova Bomb Vortex\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "thundercrash",
+    "firstHitMs": {
+      "value": 1200,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Thundercrash\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Thundercrash\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Thundercrash\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 2000,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Thundercrash\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "blade-barrage",
+    "firstHitMs": {
+      "value": 1600,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Blade Barrage\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Blade Barrage\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Blade Barrage\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 2000,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Blade Barrage\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "needlestorm",
+    "firstHitMs": {
+      "value": 1500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Needlestorm\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Needlestorm\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Needlestorm\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 2000,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Needlestorm\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "twilight-arsenal",
+    "firstHitMs": {
+      "value": 1300,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Twilight Arsenal\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 900,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Twilight Arsenal\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 3,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Twilight Arsenal\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 3300,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Twilight Arsenal\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "shadowshot-deadfall",
+    "firstHitMs": {
+      "value": 1400,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Deadfall\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Deadfall\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Deadfall\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 1600,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Shadowshot Deadfall\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "silence-and-squall",
+    "firstHitMs": {
+      "value": 1300,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Silence and Squall\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 800,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Silence and Squall\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 2,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Silence and Squall\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 2300,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Silence and Squall\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "gathering-storm",
+    "firstHitMs": {
+      "value": 1400,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Gathering Storm\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Gathering Storm\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Gathering Storm\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 1700,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Gathering Storm\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "chaos-reach",
+    "firstHitMs": {
+      "value": 670,
+      "source": {
+        "name": "Destiny Data Compendium, Arc, Chaos Reach",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-22",
+        "status": "verified",
+        "quote": "Does not deal damage for the first 0.67 seconds of the animation."
+      }
+    },
+    "hitIntervalMs": {
+      "value": 130,
+      "source": {
+        "name": "Destiny Data Compendium, Arc, Chaos Reach",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-22",
+        "status": "verified",
+        "quote": "dealing 378 [?] damage every 0.13 seconds. Does not deal damage for the first 0.67 seconds of the animation."
+      }
+    },
+    "hits": {
+      "value": 26,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Chaos Reach, base\"; rough estimate, sources not checked; hits = (4000 - 670) / 130 + 1 inside the Compendium duration of 4 s; window stays from usage"
+      }
+    }
+  },
+  {
+    "abilityId": "chaos-reach",
+    "exoticArmorId": "geomag-stabilizers",
+    "firstHitMs": {
+      "value": 670,
+      "source": {
+        "name": "Destiny Data Compendium, Arc, Chaos Reach",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-22",
+        "status": "verified",
+        "quote": "Does not deal damage for the first 0.67 seconds of the animation."
+      }
+    },
+    "hitIntervalMs": {
+      "value": 130,
+      "source": {
+        "name": "Destiny Data Compendium, Arc, Chaos Reach",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-22",
+        "status": "verified",
+        "quote": "dealing 378 [?] damage every 0.13 seconds. Does not deal damage for the first 0.67 seconds of the animation."
+      }
+    },
+    "hits": {
+      "value": 62,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Chaos Reach, Geomag Stabilizers\"; rough estimate, sources not checked; hits = (8670 - 670) / 130 + 1"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 8670,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Chaos Reach, Geomag Stabilizers\"; rough estimate, sources not checked"
+      }
+    }
+  },
+  {
+    "abilityId": "well-of-radiance",
+    "firstHitMs": {
+      "value": 1300,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Well of Radiance\"; rough estimate, sources not checked"
+      }
+    },
+    "hitIntervalMs": {
+      "value": 0,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Well of Radiance\"; rough estimate, sources not checked"
+      }
+    },
+    "hits": {
+      "value": 1,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Well of Radiance\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 1500,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Well of Radiance\"; rough estimate, sources not checked"
+      }
+    }
+  }
+]

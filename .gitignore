@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Temporary files of the agent (CLAUDE.md, Shell-Befehle)
+tmp/
+
 # Personal Claude Code settings
 .claude/settings.local.json
 

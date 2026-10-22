@@ -133,6 +133,21 @@ describe("superWindowMs", () => {
     });
   });
 
+  it("lasts until the weapon is ready again for timed supers; an estimate is not exact", () => {
+    const timed = (status: "verified" | "unverified"): SuperUsage => ({
+      type: "timed",
+      weaponReadyMs: { value: 2200, source: { ...source, status } },
+    });
+    expect(superWindowMs(timed("verified"))).toEqual({
+      durationMs: 2200,
+      exact: true,
+    });
+    expect(superWindowMs(timed("unverified"))).toEqual({
+      durationMs: 2200,
+      exact: false,
+    });
+  });
+
   it("throws without a base duration", () => {
     const usage: SuperUsage = {
       ...shotsUsage(3, null),

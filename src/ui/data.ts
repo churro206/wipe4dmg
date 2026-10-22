@@ -11,6 +11,7 @@ import rawIcons from "../data/icons.json";
 import rawKeywords from "../data/keywords.json";
 import rawManifestAbilities from "../data/manifest-abilities.json";
 import rawSubclassEffects from "../data/subclass-effects.json";
+import rawSuperTimings from "../data/super-timings.json";
 import rawPackages from "../data/weapon-packages.json";
 import rawExoticArmorEffects from "../data/exotic-armor-effects.json";
 import rawExoticArmor from "../data/exotic-armor.json";
@@ -18,6 +19,7 @@ import {
   AbilityKeyword,
   ExoticArmorEffect,
   ExoticArmorEntry,
+  SuperTiming,
   type Weapon,
 } from "../data/schema";
 import type { LinkRegistry } from "../engine/buildLink";
@@ -64,7 +66,8 @@ export const keywords = loadKeywords(rawKeywords, aegisRows);
 // Exotic armor (ADR 0014) and the effects generated from its damage buffs (ADR 0015, U6).
 export const exoticArmor = ExoticArmorEntry.array().parse(rawExoticArmor);
 // Packages take their values from the Aegis rows, providers from the manifest items (ADR 0009),
-// keywords from ability-keywords.json (ADR 0015, U5), variants with exotic armor (ADR 0014).
+// keywords from ability-keywords.json (ADR 0015, U5), variants with exotic armor (ADR 0014), hits
+// and super windows from super-timings.json.
 export const abilities = loadAbilities(
   rawAbilities,
   aegisRows,
@@ -73,6 +76,7 @@ export const abilities = loadAbilities(
   { effects, buckets },
   AbilityKeyword.array().parse(rawAbilityKeywords),
   exoticArmor,
+  SuperTiming.array().parse(rawSuperTimings),
 );
 export const generatedExoticEffects = ExoticArmorEffect.array().parse(
   rawExoticArmorEffects,

@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Super-Timing:** Der Schaden einer Super verteilt sich auf ihre Schüsse und Angriffe, und die Waffe pausiert nur so lange, wie die Super sie wirklich blockiert (z. B. Daybreak etwa 13 s statt 24 s, Nova Bomb etwa 1,8 s statt 0 s). Die Ignition der Golden Gun kommt mit dem 3. Schuss statt bei 0 s. Die Zeiten sind grobe Schätzungen (Gemini-Recherche) und im Tooltip als „estimate“ markiert.
+
 - **Website auf Englisch:** alle Labels, Hover-Karten, das Wiki, die Roadmap und die Abdeckung; Zahlen im englischen Format (1,234 und ×1.56).
 - **Exotic-Rüstung wählbar:** unter „Rüstung“ mit Suche und Filter nach Slot, nur Exotics der gewählten Klasse. Ein Hinweis sagt, was das Exotic im Rechner tut. Viele wirken über die Rotation, z. B. Star-Eater Scales nach dem Super-Cast oder Foetracer nach einem Ability-Treffer. Kill-Buffs (z. B. Doom Fang, Khepri's Sting) gelten nur mit dem Schalter „Vorher aufgebaut“, weil ein Boss ohne Adds keine Kills liefert. Exotic und Schalter stehen im Build-Link (Format 4).
 - **Aspects und Fragments** aus allen Subklassen, per Regel aus Compendium und Court: z. B. Spark of Shock (Jolt), Echo of Undermining (Weaken nach Void-Grenade), Ember of Torches (Radiant nach Melee-Treffer), Zustände wie Amplified oder Woven Mail für Exotics wie No Backup Plans.

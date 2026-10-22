@@ -11,6 +11,12 @@ export type SuperWindowLength = {
 
 export function superWindowMs(usage: SuperUsage): SuperWindowLength {
   switch (usage.type) {
+    case "timed": {
+      const { value, source } = usage.weaponReadyMs;
+      return value === null
+        ? { durationMs: 0, exact: false }
+        : { durationMs: value, exact: source.status !== "unverified" };
+    }
     case "cast":
       return usage.castMs.value === null
         ? { durationMs: 0, exact: false }

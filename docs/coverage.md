@@ -34,7 +34,7 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Solar | Hammer of Sol (Sol Invictus Aspect) | ❌ missing | – | Aegis only measures with buffs that are not an effect yet |
 | Solar | Song of Flame | ❌ missing | – | Aegis values not normalised (buffs in the value) |
 | Solar | Daybreak | 🟡 Package | estimate | `super-daybreak-ember-of-ashes` |
-| Solar | Well of Radiance | 🔵 Nur Buff | estimate | – |
+| Solar | Well of Radiance | 🔵 Buff only | estimate | – |
 | Void | Spectral Blades | 🟡 Package | estimate | `super-spectral-blades-light-attacks` |
 | Void | Shadowshot: Deadfall | 🟡 Package | estimate | `super-shadowshot-deadfall-tether-includes-debuff` |
 | Void | Shadowshot: Moebius Quiver | 🟡 Package | estimate | `super-shadowshot-moebius-quiver-includes-debuff` |

@@ -573,8 +573,24 @@ export const SuperUsage = z.discriminatedUnion("type", [
     drainPerAttack: SourcedNumber, // share of the full energy, e.g. 0.12
     attackIntervalMs: SourcedNumber, // shortest time between two attacks
   }),
+  // From super-timings.json: the weapon is ready again this long after the cast.
+  z.object({ type: z.literal("timed"), weaponReadyMs: SourcedNumber }),
 ]);
 export type SuperUsage = z.infer<typeof SuperUsage>;
+
+/**
+ * Timing of a super used as fast as possible (super-timings.json): its package is spread evenly
+ * over the hits. Without weaponReadyMs the window from `usage` stays, e.g. Chaos Reach.
+ */
+export const SuperTiming = z.object({
+  abilityId: z.string(),
+  exoticArmorId: z.string().optional(), // timing of the variant with this exotic, e.g. Celestial Nighthawk
+  firstHitMs: SourcedNumber,
+  hitIntervalMs: SourcedNumber,
+  hits: SourcedNumber,
+  weaponReadyMs: SourcedNumber.optional(),
+});
+export type SuperTiming = z.infer<typeof SuperTiming>;
 
 const AbilityFields = z.object({
   id: z.string(),
