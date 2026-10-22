@@ -42,7 +42,7 @@ export function WeaponPicker({
           <span className="tile-label">
             {selected.name}
             <span className="tile-sub">
-              {WEAPON_TYPE_LABELS[selected.weaponType]} · wechseln
+              {WEAPON_TYPE_LABELS[selected.weaponType]} · change
             </span>
           </span>
         </button>

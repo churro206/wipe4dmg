@@ -59,7 +59,7 @@ export function ExoticPicker({
           <span className="tile-label">
             {selected?.name ?? "No exotic"}
             <span className="tile-sub">
-              {selected ? `${SLOT_LABELS[selected.slot]} · ` : ""}wechseln
+              {selected ? `${SLOT_LABELS[selected.slot]} · ` : ""}change
             </span>
           </span>
         </button>
