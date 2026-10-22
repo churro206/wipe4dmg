@@ -91,7 +91,11 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
   3. **Whisper of Fissures:** steckt in den Grundzeilen von Glacier, Shatter, Shiver Strike, Silence & Squall, Winter's Wrath. Aegis nennt „52 Fissures“ in den Ticks, Compendium: ein Zusatztreffer pro Shatter (25 [9]). Anteil herausnehmen wie bei Ember, das Fragment fügt ihn wieder hinzu. Supers ohne Ticks bleiben bekannte Ungenauigkeit (etwa 5 %).
   4. **Touch of Thunder:** Storm aus dem Aegis-Paar „average + Spark of Magnitude“ und „… + Touch of Thunder“ ableiten und gegenrechnen. Pulse, Flashbang und Lightning bleiben bekannte Lücken.
   5. **Facet of Courage:** +10 % auf Light-Abilities (Arc, Solar, Void) gegen Ziele mit Stasis- oder Strand-Debuff (Compendium, Clarity). **Entscheidung des Inhabers: eigener multiplikativer Bucket als Annahme.** Der Melee-Teil (+50 % des Grundschadens) gehört zu U6-4.
-- **Danach (Reihenfolge des Inhabers):** Jeder Catalyst, der den Schaden beeinflusst (auch Magazin, Munition, Reload), mit klaren Tooltips. Danach U6-3, U6-4, U7, U9.
+- **Danach (Plan freigegeben 2026-10-22, Datei `~/.claude/plans/immutable-crunching-barto.md`):**
+  1. Doppelzählung allgemein: Jolt/Volatile aus Paketen (Stormtrance, Pocket Singularity); ein Baustein für alle Keywords, der den Event-Run der Engine nutzt statt `superTriggers` nachzubauen; Regel-Test „jede Ability mit Keyword ergibt allein ihren Aegis-Wert“.
+  2. Catalysts (Magazin, Munition, Reload aus Quantum-Zeilen mit Catalyst), klare Tooltips, Regel-Test, Hinweis-Bug.
+  3. U7 Energie und Timing, **vorher ein ADR** (Casts bleiben einstellbar, Energie liefert den frühesten Zeitpunkt).
+  4. U6-4 Melee-Bucket additiv. 5. Aufräum-Commit: gemeinsames Werkzeug der vier Text-Regel-Bibliotheken, dann Exotics mit eigenem Schaden. 6. Waffen-Lücken. 7. U6-3. 8. Keywords ohne Modell, Boni ohne Bucket-Quelle.
 - **Danach:** gezielte Inventur der Lücken (11 Subklassen-Boni ohne Bucket-Quelle, Exotics ohne Wirkung), W1-7 Waffen-Lücken, E1 Dawn Chorus u. a., v1.1 mit Testlauf Waffe × Exotic-Rüstung.
 - **Entscheidungen des Inhabers:**
   - Exotics ohne jede Schadenswirkung fallen weg.
