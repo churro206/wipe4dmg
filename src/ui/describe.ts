@@ -193,12 +193,37 @@ function describePart(part: EffectPart): string {
   }
 }
 
-/** What an effect does, one line per part and state. */
+/** Damage per cast of an ability, all components and ticks. */
+const perUse = (a: Ability) =>
+  a.components.reduce(
+    (sum, c) => sum + (c.damagePerTick.value ?? 0) * (c.ticks.value ?? 0),
+    0,
+  );
+
+/** "Blade Barrage: 11,600 instead of 8,500 damage per cast" for each variant of the filter. */
+function variantLines(isVariant: (a: Ability) => boolean): string[] {
+  return abilities
+    .filter((a) => a.variantOf && isVariant(a))
+    .map((variant) => {
+      const base = abilities.find((a) => a.id === variant.variantOf)!;
+      return `${base.name}: ${integer.format(perUse(variant))} instead of ${integer.format(perUse(base))} damage per cast`;
+    });
+}
+
+/** What an effect does, one line per part, state and changed ability. */
 export function describeEffect(effect: Effect): string[] {
   return [
     ...effect.parts.map(describePart),
     ...(effect.grantsStatus
       ? [`Grants ${list(effect.grantsStatus.map((s) => STATE_LABELS[s]))}`]
+      : []),
+    ...(effect.changesAbilityIds
+      ? variantLines(
+          (a) =>
+            !a.exoticArmorId &&
+            a.requiresEffectIds?.length === 1 &&
+            a.requiresEffectIds[0] === effect.id,
+        )
       : []),
   ];
 }
@@ -242,17 +267,9 @@ export function describeExotic(
   effects: Effect[],
   generated: ExoticArmorEffect[],
 ): string[] {
-  const perUse = (a: Ability) =>
-    a.components.reduce(
-      (sum, c) => sum + (c.damagePerTick.value ?? 0) * (c.ticks.value ?? 0),
-      0,
-    );
-  const variants = abilities
-    .filter((a) => a.exoticArmorId === entry.id && a.variantOf)
-    .map((variant) => {
-      const base = abilities.find((a) => a.id === variant.variantOf)!;
-      return `${base.name}: ${integer.format(perUse(variant))} instead of ${integer.format(perUse(base))} damage per cast`;
-    });
+  const variants = variantLines(
+    (a) => a.exoticArmorId === entry.id && !a.requiresEffectIds,
+  );
   const preBuiltIds = new Set(
     generated
       .filter((g) => g.exoticArmorId === entry.id && g.activation === "preBuilt")

@@ -37,6 +37,12 @@ describe("hover card texts", () => {
     expect(describeEffect(effect("ascension"))).toEqual(["Grants Amplified"]);
   });
 
+  it("names the abilities an aspect changes, with damage per cast", () => {
+    expect(describeEffect(effect("knock-em-down"))).toEqual([
+      expect.stringMatching(/^Blade Barrage: [\d,]+ instead of [\d,]+ damage per cast$/),
+    ]);
+  });
+
   it("names conditions in words", () => {
     expect(
       describeEffect(effect("exotic-armor:no-backup-plans"))[0],

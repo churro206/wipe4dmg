@@ -7,10 +7,13 @@
 // E grants a state (Amplified, Frost Armor, …) → kept the whole damage phase (optimal play); from
 //   kills only → prebuilt with the duration of the text
 // F quoted bonuses: melee → U6-4; not on a boss → none; others → later (no source for the bucket)
+// G no effect from A to E, but Aegis measured an ability with it (base row plus only such items, e.g.
+//   Blade Barrage with Knock 'Em Down) → an effect that selects the ability variant
 // Without any of that: no damage.
 
 import type {
-  AbilityKind,
+  AbilityData,
+  AegisAbilityRow,
   CompendiumEntry,
   CourtEntry,
   DamageSource,
@@ -30,6 +33,7 @@ import {
 import { courtVerdict, STATUS_NAMES, type Verdict } from "./exoticEffects.ts";
 import type { KeywordSource } from "./keywordSources.ts";
 import { subclassItemNamed } from "./manifestAbilities.ts";
+import { nameKey, variantRows } from "../../src/engine/abilityVariants.ts";
 
 export type SubclassEffectInputs = {
   compendium: CompendiumEntry[]; // subclass tabs
@@ -37,7 +41,9 @@ export type SubclassEffectInputs = {
   court: CourtEntry[];
   keywordSources: KeywordSource[]; // findKeywordSources over the same entries
   effects: Effect[]; // effects.json: Radiant, Weaken, Well, and the effects kept there
-  abilities: { id: string; name: string; kind: AbilityKind }[];
+  abilities: (Pick<AbilityData, "id" | "name" | "kind"> &
+    Partial<Pick<AbilityData, "package" | "aegisRowId">>)[];
+  aegisRows: AegisAbilityRow[]; // rule G: rows of the abilities with an aspect or fragment
   meleeNames: string[];
   sources: { court: Source; compendium: Source; clarity: Source };
   codes: Record<string, number>; // effect-codes.json: codes once given stay
@@ -54,6 +60,7 @@ export type SubclassEffectKind =
   | "melee"
   | "notAgainstBoss"
   | "bonusLater"
+  | "abilityVariant"
   | "noText"
   | "noDamage";
 
@@ -327,15 +334,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
       });
       continue;
     }
-    const providers: EffectProvider[] = subclasses.map((subclass) => {
-      const classes = [...new Set(items.filter((i) => i.subclass === subclass).map((i) => i.guardianClass))];
-      return {
-        kind: "subclass",
-        slot: items[0].kind,
-        subclasses: [subclass],
-        ...(classes.includes(null) ? {} : { classes: classes as never }),
-      };
-    });
+    const providers = providersOf(items);
     let count = 0;
     for (const f of found) {
       const row: SubclassEffectRow = { ...base, rule: f.rule, kind: f.kind, reason: f.reason, check: f.check };
@@ -366,7 +365,72 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
       rows.push(row);
     }
   }
+
+  // G: items without an effect that Aegis measured an ability with
+  const withEffect = new Set(effects.map((e) => e.subclassItemId));
+  const eligible = new Map(
+    names
+      .filter((name) => !withEffect.has(kebab(name)))
+      .map((name) => [nameKey(name), name]),
+  );
+  const changes = new Map<string, { abilityIds: string[]; rowIds: string[] }>();
+  for (const ability of inputs.abilities.filter((a) => a.package)) {
+    const base = inputs.aegisRows.find((r) => r.id === ability.aegisRowId);
+    if (!base) continue;
+    for (const { row, extras } of variantRows(base, inputs.aegisRows, (a) => eligible.get(nameKey(a))))
+      for (const name of extras) {
+        const entry = changes.get(name) ?? { abilityIds: [], rowIds: [] };
+        if (!entry.abilityIds.includes(ability.id)) entry.abilityIds.push(ability.id);
+        entry.rowIds.push(row.id);
+        changes.set(name, entry);
+      }
+  }
+  for (const [name, { abilityIds, rowIds }] of changes) {
+    const id = kebab(name);
+    const items = inputs.subclassItems.filter((i) => i.name === name);
+    codes[id] ??= nextCode++;
+    effects.push({
+      subclassItemId: id,
+      activation: "always",
+      effect: {
+        id,
+        code: codes[id],
+        name,
+        shortName: name,
+        manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
+        providers: providersOf(items),
+        parts: [],
+        changesAbilityIds: abilityIds,
+      },
+    });
+    // the item now has damage: drop its "no damage" row
+    const noDamage = rows.findIndex((r) => r.id === id && r.kind === "noDamage");
+    if (noDamage >= 0) rows.splice(noDamage, 1);
+    rows.push({
+      id,
+      name,
+      subclasses: [...new Set(items.map((i) => i.subclass))].join(", "),
+      rule: "G",
+      kind: "abilityVariant",
+      reason: `ändert ${abilityIds.join(", ")} (Aegis-Zeilen ${rowIds.map((r) => `\`${r}\``).join(", ")})`,
+      check: "Aegis",
+      effectId: id,
+    });
+  }
   return { rows, effects, codes };
+}
+
+function providersOf(items: ManifestSubclassItem[]): EffectProvider[] {
+  const subclasses = [...new Set(items.map((i) => i.subclass))];
+  return subclasses.map((subclass) => {
+    const classes = [...new Set(items.filter((i) => i.subclass === subclass).map((i) => i.guardianClass))];
+    return {
+      kind: "subclass",
+      slot: items[0].kind,
+      subclasses: [subclass],
+      ...(classes.includes(null) ? {} : { classes: classes as never }),
+    };
+  });
 }
 
 const KIND_TITLES: [SubclassEffectKind, string][] = [
@@ -380,6 +444,7 @@ const KIND_TITLES: [SubclassEffectKind, string][] = [
   ["melee", "Melee-Bonus, U6-4"],
   ["notAgainstBoss", "Wirkt nicht gegen einen Boss"],
   ["bonusLater", "Bonus ohne Bucket-Quelle, Recherche in der Inventur"],
+  ["abilityVariant", "Ändert eine Ability (Aegis-Variante)"],
   ["noText", "Ohne Compendium-Text"],
   ["noDamage", "Ohne Schadenswirkung"],
 ];

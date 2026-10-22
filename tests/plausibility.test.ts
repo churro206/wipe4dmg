@@ -72,6 +72,20 @@ describe("exotic armor changes its abilities", () => {
     expect(length(withExotic)).toBeLessThan(length(plain));
   });
 
+  it("Knock 'Em Down: Blade Barrage throws 20 instead of 14 knives", () => {
+    const hunter = {
+      guardianClass: "hunter" as const,
+      subclass: "solar" as const,
+      abilities: [{ abilityId: "blade-barrage", castsMs: [0] }],
+    };
+    const ratio =
+      damageOf(run({ ...hunter, selections: [{ effectId: "knock-em-down", provider: "subclass" }] }), "super") /
+      damageOf(run(hunter), "super");
+    note("Blade Barrage mit / ohne Knock 'Em Down", `×${fmt(ratio)}`, "Aegis-Zeilen ×1,37; Compendium nennt ×1,43 (20 statt 14 Messer)");
+    expect(ratio).toBeGreaterThan(1.3);
+    expect(ratio).toBeLessThan(1.55);
+  });
+
   it("well-known variants exist (Cuirass, Nighthawk, Dawn Chorus, Geomag)", () => {
     for (const id of [
       "cuirass-of-the-falling-star",

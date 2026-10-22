@@ -20,21 +20,29 @@ export type AbilitySimulation = {
 };
 
 export function abilitySimulation(
-  build: Pick<Build, "abilities" | "abilityStats" | "exoticArmorId">,
+  build: Pick<Build, "abilities" | "abilityStats" | "exoticArmorId"> &
+    Partial<Pick<Build, "selections">>,
   abilities: Ability[],
   abilityStats: AbilityStatScaling[],
   effects: Effect[],
 ): AbilitySimulation {
+  const selected = new Set((build.selections ?? []).map((s) => s.effectId));
   const casts = (build.abilities ?? []).map(({ abilityId, castsMs }) => {
     const ability = abilities.find((a) => a.id === abilityId);
     if (!ability) throw new Error(`Unknown ability "${abilityId}"`);
-    // A variant measured with the worn exotic armor replaces the ability (ADR 0014).
-    const variant = abilities.find(
-      (a) =>
-        a.variantOf === abilityId &&
-        build.exoticArmorId !== undefined &&
-        a.exoticArmorId === build.exoticArmorId,
-    );
+    // A variant measured with the worn exotic armor and/or selected aspects and fragments replaces
+    // the ability (ADR 0014, U6-2 rule G); the one with the most of them wins.
+    const requirements = (a: Ability) =>
+      (a.exoticArmorId ? 1 : 0) + (a.requiresEffectIds?.length ?? 0);
+    const variant = abilities
+      .filter(
+        (a) =>
+          a.variantOf === abilityId &&
+          (a.exoticArmorId === undefined ||
+            a.exoticArmorId === build.exoticArmorId) &&
+          (a.requiresEffectIds ?? []).every((id) => selected.has(id)),
+      )
+      .sort((a, b) => requirements(b) - requirements(a))[0];
     return { ability: variant ?? ability, castsMs };
   });
   const stats = build.abilityStats

@@ -33,6 +33,8 @@ export function effectRelevantTo(effect: Effect, weapon: Weapon): boolean {
     effectAppliesToWeapon(effect, weapon) ||
     // states change other effects, e.g. Amplified for No Backup Plans (ADR 0015, U6-2)
     effect.grantsStatus !== undefined ||
+    // changes an ability, e.g. Knock 'Em Down for Blade Barrage (U6-2 rule G)
+    effect.changesAbilityIds !== undefined ||
     effect.parts.some(
       (part) =>
         (part.type === "multiplier" || part.type === "appliesKeyword") &&

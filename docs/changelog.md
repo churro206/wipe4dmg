@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Aspects und Fragments, die eine Ability ändern:** Knock 'Em Down (Blade Barrage ×1,37), Thread of Evolution, Spark of Magnitude, Chaos Accelerant, Echo of Remnants und Touch of Winter sind jetzt wählbar. Gewählt rechnet die Ability mit der Aegis-Messung mit diesem Aspect; der Tooltip nennt den Schaden pro Einsatz vorher und nachher.
+
 - **Super-Timing:** Der Schaden einer Super verteilt sich auf ihre Schüsse und Angriffe, und die Waffe pausiert nur so lange, wie die Super sie wirklich blockiert (z. B. Daybreak etwa 13 s statt 24 s, Nova Bomb etwa 1,8 s statt 0 s). Die Ignition der Golden Gun kommt mit dem 3. Schuss statt bei 0 s. Die Zeiten sind grobe Schätzungen (Gemini-Recherche) und im Tooltip als „estimate“ markiert.
 
 - **Website auf Englisch:** alle Labels, Hover-Karten, das Wiki, die Roadmap und die Abdeckung; Zahlen im englischen Format (1,234 und ×1.56).

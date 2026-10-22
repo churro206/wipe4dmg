@@ -31,6 +31,7 @@ import {
   type SuperTiming,
 } from "../data/schema";
 import { elementItem, itemsOfAbility } from "./abilityNames";
+import { nameKey, variantRows } from "./abilityVariants";
 import { activeParts, combinedMultiplier } from "./effectParts";
 import { requireValue } from "./requireValue";
 
@@ -62,51 +63,70 @@ export function loadAbilities(
   for (const timing of superTimings)
     if (!data.some((a) => a.id === timing.abilityId))
       throw new Error(`super timing for unknown ability "${timing.abilityId}"`);
-  // A variant row measures the same ability with the assumptions of the base row plus the exotic,
-  // e.g. "Thundercrash" with "Cuirass of the Falling Star". It shares the code of its base: links
-  // store the base, the worn exotic selects the variant.
+  // A variant row measures the same ability with the assumptions of the base row plus the exotic
+  // and/or aspects and fragments, e.g. "Thundercrash" with "Cuirass of the Falling Star" or "Blade
+  // Barrage" with "Knock Em Down". It shares the code of its base: links store the base, the worn
+  // exotic and the selected items choose the variant.
+  type Extra =
+    | { kind: "exotic"; id: string; name: string; superShots?: ExoticArmorEntry["superShots"] }
+    | { kind: "effect"; id: string; name: string };
+  const changing = (normalise?.effects ?? []).filter(
+    (e) => e.changesAbilityIds,
+  );
   const variants = data.flatMap((ability) => {
     const base = aegisRows.find((r) => r.id === ability.aegisRowId);
     if (!ability.package || !base) return [];
-    return exoticArmor
-      .filter((e) => e.kind === "abilityVariant")
-      .flatMap((exotic) =>
-        exotic.aegisRowIds
-          .map((id) => aegisRows.find((r) => r.id === id))
-          .filter(
-            (row): row is AegisAbilityRow =>
-              row !== undefined &&
-              row.category === base.category &&
-              row.name === base.name &&
-              sameSet(row.assumptions, [...base.assumptions, exotic.name]),
-          )
-          .map((row) => ({
-            ...ability,
-            id: `${ability.id}-with-${exotic.id}`,
-            name: `${ability.name} (${exotic.name})`,
-            aegisRowId: row.id,
-            variantOf: ability.id,
-            exoticArmorId: exotic.id,
-            // the exotic changes the shots, e.g. Celestial Nighthawk: one shot
-            ...(ability.usage?.type === "shots" && exotic.superShots
-              ? {
-                  usage: {
-                    ...ability.usage,
-                    shots: {
-                      value: exotic.superShots.value,
-                      source: {
-                        name: `Destiny Data Compendium, Exotic Armors (${exotic.name})`,
-                        url: "https://destiny2.science/data-compendium",
-                        retrieved: ability.usage.shots.source.retrieved,
-                        status: "verified" as const,
-                        quote: exotic.superShots.quote,
-                      },
+    const resolve = (assumption: string, row: AegisAbilityRow): Extra | undefined => {
+      const exotic = exoticArmor.find(
+        (e) =>
+          e.kind === "abilityVariant" &&
+          e.name === assumption &&
+          e.aegisRowIds.includes(row.id),
+      );
+      if (exotic)
+        return { kind: "exotic", id: exotic.id, name: exotic.name, superShots: exotic.superShots };
+      const effect = changing.find(
+        (e) =>
+          nameKey(e.name) === nameKey(assumption) &&
+          e.changesAbilityIds!.includes(ability.id),
+      );
+      return effect ? { kind: "effect", id: effect.id, name: effect.name } : undefined;
+    };
+    return variantRows(base, aegisRows, resolve).flatMap(({ row, extras }) => {
+      const exotics = extras.filter((e) => e.kind === "exotic");
+      if (exotics.length > 1) return [];
+      const exotic = exotics[0];
+      const effectIds = extras.filter((e) => e.kind === "effect").map((e) => e.id);
+      return [
+        {
+          ...ability,
+          id: `${ability.id}-with-${extras.map((e) => e.id).join("-")}`,
+          name: `${ability.name} (${extras.map((e) => e.name).join(" + ")})`,
+          aegisRowId: row.id,
+          variantOf: ability.id,
+          ...(exotic ? { exoticArmorId: exotic.id } : {}),
+          ...(effectIds.length ? { requiresEffectIds: effectIds } : {}),
+          // the exotic changes the shots, e.g. Celestial Nighthawk: one shot
+          ...(ability.usage?.type === "shots" && exotic?.superShots
+            ? {
+                usage: {
+                  ...ability.usage,
+                  shots: {
+                    value: exotic.superShots.value,
+                    source: {
+                      name: `Destiny Data Compendium, Exotic Armors (${exotic.name})`,
+                      url: "https://destiny2.science/data-compendium",
+                      retrieved: ability.usage.shots.source.retrieved,
+                      status: "verified" as const,
+                      quote: exotic.superShots.quote,
                     },
                   },
-                }
-              : {}),
-          })),
-      );
+                },
+              }
+            : {}),
+        },
+      ];
+    });
   });
   return [...data, ...variants]
     .map(({ components, ...ability }) => {
@@ -371,9 +391,6 @@ function withoutIncludedMultipliers(
     normalisedEffectIds: normalised.map((n) => n.id),
   };
 }
-
-const sameSet = (a: string[], b: string[]) =>
-  a.length === b.length && a.every((x) => b.includes(x));
 
 function clampShare(share: number): number {
   if (share >= 1 - SHARE_TOLERANCE) return 1;

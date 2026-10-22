@@ -4,6 +4,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import {
   AbilityData,
+  AegisAbilityRow,
   ClaritySnapshot,
   CompendiumSnapshot,
   CourtSnapshot,
@@ -28,6 +29,7 @@ export function loadSubclassEffectInputs(): SubclassEffectInputs {
     keywordSources: findKeywordSources(compendium.entries),
     effects: Effect.array().parse(read("effects.json")),
     abilities: AbilityData.array().parse(read("abilities.json")),
+    aegisRows: AegisAbilityRow.array().parse(read("aegis-abilities.json")),
     meleeNames: [
       ...new Set(manifest.abilities.filter((a) => a.kind === "melee").map((a) => a.name)),
     ],

@@ -84,7 +84,8 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 - **Prüftabellen:** `docs/exotic-effects.md`, `docs/subclass-effects.md`, `docs/keyword-sources.md`, `docs/armor-import.md`, `docs/weapon-import.md`.
 - **Sprache der Website (2026-10-22):** Alles, was Spieler sehen, ist englisch: Texte in `src/ui`, die Abschnitte „## For players“ in `docs/mechanics/`, `docs/roadmap.md` und die generierte `docs/coverage.md`. Zahlen im Format `en-US`. Antworten an den Inhaber, Pläne, Prüftabellen, ADRs und der Changelog bleiben deutsch.
 - **Super-Timing (2026-10-22):** `src/data/super-timings.json` aus Geminis Schätzungen (`docs/sources/gemini-super-timings.csv`, Status `unverified`, vom Inhaber freigegeben). Verifizierte Compendium-Werte haben Vorrang.
-- **Nächster Schritt (Reihenfolge des Inhabers):** 1. Aspects und Fragments, die eine Ability ändern, als Varianten aus Aegis-Zeilen (13 Fälle, z. B. Knock 'Em Down), mit Regel-Test über alle. 2. Jeder Catalyst, der den Schaden beeinflusst (auch Magazin, Munition, Reload), mit klaren Tooltips. Danach U6-3, U6-4, U7, U9.
+- **Aspect-Varianten (2026-10-22):** Regel G in `scripts/lib/subclassEffects.ts`, gemeinsamer Baustein `src/engine/abilityVariants.ts`. Regel-Test über alle Aegis-Zeilen in `tests/aspectVariants.test.ts` mit bekannten Lücken (Facet of Courage, Touch of Thunder). Whisper of Fissures steckt in den Grundzeilen von Glacier, Shatter, Silence & Squall und Winter's Wrath (zählt immer mit).
+- **Nächster Schritt (Reihenfolge des Inhabers):** Jeder Catalyst, der den Schaden beeinflusst (auch Magazin, Munition, Reload), mit klaren Tooltips. Danach U6-3, U6-4, U7, U9.
 - **Danach:** gezielte Inventur der Lücken (11 Subklassen-Boni ohne Bucket-Quelle, Exotics ohne Wirkung), W1-7 Waffen-Lücken, E1 Dawn Chorus u. a., v1.1 mit Testlauf Waffe × Exotic-Rüstung.
 - **Entscheidungen des Inhabers:**
   - Exotics ohne jede Schadenswirkung fallen weg.

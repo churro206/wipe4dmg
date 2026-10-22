@@ -1176,5 +1176,138 @@
       "parts": [],
       "grantsStatus": ["frostArmor"]
     }
+  },
+  {
+    "subclassItemId": "knock-em-down",
+    "activation": "always",
+    "effect": {
+      "id": "knock-em-down",
+      "code": 56,
+      "name": "Knock 'Em Down",
+      "shortName": "Knock 'Em Down",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 3066103998
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [],
+      "changesAbilityIds": ["blade-barrage"]
+    }
+  },
+  {
+    "subclassItemId": "thread-of-evolution",
+    "activation": "always",
+    "effect": {
+      "id": "thread-of-evolution",
+      "code": 57,
+      "name": "Thread of Evolution",
+      "shortName": "Thread of Evolution",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 4208512211
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["strand"] }
+      ],
+      "parts": [],
+      "changesAbilityIds": ["needlestorm", "threadling-grenade"]
+    }
+  },
+  {
+    "subclassItemId": "spark-of-magnitude",
+    "activation": "always",
+    "effect": {
+      "id": "spark-of-magnitude",
+      "code": 58,
+      "name": "Spark of Magnitude",
+      "shortName": "Spark of Magnitude",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1727069374
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["arc"] }
+      ],
+      "parts": [],
+      "changesAbilityIds": ["pulse-grenade"]
+    }
+  },
+  {
+    "subclassItemId": "chaos-accelerant",
+    "activation": "always",
+    "effect": {
+      "id": "chaos-accelerant",
+      "code": 59,
+      "name": "Chaos Accelerant",
+      "shortName": "Chaos Accelerant",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2321824285
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [],
+      "changesAbilityIds": [
+        "axion-bolt-grenade",
+        "scatter-grenade",
+        "vortex-grenade"
+      ]
+    }
+  },
+  {
+    "subclassItemId": "echo-of-remnants",
+    "activation": "always",
+    "effect": {
+      "id": "echo-of-remnants",
+      "code": 60,
+      "name": "Echo of Remnants",
+      "shortName": "Echo of Remnants",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2272984666
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
+      ],
+      "parts": [],
+      "changesAbilityIds": ["vortex-grenade"]
+    }
+  },
+  {
+    "subclassItemId": "touch-of-winter",
+    "activation": "always",
+    "effect": {
+      "id": "touch-of-winter",
+      "code": 61,
+      "name": "Touch of Winter",
+      "shortName": "Touch of Winter",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 4184589900
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["stasis"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [],
+      "changesAbilityIds": ["glacier-grenade", "shatter-grenade"]
+    }
   }
 ]

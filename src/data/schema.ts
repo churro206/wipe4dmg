@@ -514,9 +514,12 @@ export const Effect = z.object({
   // A build provides at most one effect of a group itself, e.g. one surge level or one super.
   // Effects from teammates are not limited by groups.
   exclusiveGroup: z.string().optional(),
-  parts: z.array(EffectPart), // empty only for an effect that grants a state
+  parts: z.array(EffectPart), // empty only for an effect that grants a state or changes abilities
   // States the player has while the effect is active, e.g. Amplified (ADR 0015, U6-2)
   grantsStatus: z.array(StatusId).min(1).optional(),
+  // Abilities with a variant measured with this aspect or fragment, e.g. Knock 'Em Down changes
+  // Blade Barrage (U6-2 rule G); the variant applies while the effect is selected.
+  changesAbilityIds: z.array(z.string()).min(1).optional(),
   // Duration after its start; omitted if the effect lasts the whole damage phase or the duration
   // depends on the source (e.g. Radiant, tethers). The rotation can override start and duration.
   durationMs: SourcedNumber.optional(),
@@ -526,8 +529,13 @@ export const Effect = z.object({
   // Effect ids whose multiplier parts in the same buckets are ignored while this effect is active,
   // regardless of value, e.g. Divinity over Particle Reconstruction.
   overrides: z.array(z.string()).optional(),
-}).refine((e) => e.parts.length > 0 || e.grantsStatus !== undefined, {
-  message: "an effect needs parts or a state it grants",
+}).refine(
+  (e) =>
+    e.parts.length > 0 ||
+    e.grantsStatus !== undefined ||
+    e.changesAbilityIds !== undefined,
+  {
+  message: "an effect needs parts, a state it grants or abilities it changes",
   path: ["parts"],
 });
 export type Effect = z.infer<typeof Effect>;
@@ -617,6 +625,8 @@ const AbilityFields = z.object({
   // the build wears `exoticArmorId`, e.g. Thundercrash with Cuirass of the Falling Star.
   variantOf: z.string().optional(),
   exoticArmorId: z.string().optional(),
+  // Variant measured with aspects or fragments (U6-2 rule G): applies while all are selected.
+  requiresEffectIds: z.array(z.string()).min(1).optional(),
   // Empty only for supers that just grant effects, e.g. Ward of Dawn.
   components: z.array(AbilityComponent),
   // Keywords its hits apply (ADR 0015, U5); set when loading from ability-keywords.json.
