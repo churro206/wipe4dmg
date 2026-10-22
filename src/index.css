@@ -15,6 +15,12 @@
   --series-7: #6250d6;
   --grid: #e1e0d9;
   --axis: #c3c2b7;
+  /* Subclass elements, for keyword damage such as Ignition (orange for Solar, as in the game) */
+  --element-solar: #eb6834;
+  --element-arc: #2a9fd6;
+  --element-void: #8a4fd0;
+  --element-strand: #1baf7a;
+  --element-stasis: #4a6fd6;
   --shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 
   /* Instrument Sans: free, close to Destiny 2's Neue Haas Grotesk; shipped so everyone sees the same */
@@ -45,6 +51,11 @@
     --series-7: #9085e9;
     --grid: #2c2c2a;
     --axis: #383835;
+    --element-solar: #d95926;
+    --element-arc: #3aaee3;
+    --element-void: #9d6ce0;
+    --element-strand: #199e70;
+    --element-stasis: #5b80e6;
     --shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   }
 }

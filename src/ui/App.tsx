@@ -74,7 +74,6 @@ import {
   abilities,
   abilityStats,
   activities,
-  aegisRows,
   baseEffects,
   keywords,
   bosses,
@@ -86,7 +85,7 @@ import {
   weaponById,
   weapons,
 } from "./data";
-import { effectIconKey, PROVIDER_LABELS } from "./describe";
+import { describeExotic, effectIconKey, PROVIDER_LABELS } from "./describe";
 import { effectSections } from "./effectSections";
 import {
   effectRelevantTo,
@@ -582,7 +581,6 @@ function App() {
                   ),
                 }))}
                 openKind={openSlot}
-                aegisRows={aegisRows}
                 effects={effects}
                 onOpen={setOpenSlot}
                 onSelect={selectAbility}
@@ -626,7 +624,15 @@ function App() {
                   </span>
                 )}
               </div>
-              {exotic && <p className="note">{exotic.reason}</p>}
+              {exotic && (
+                <ul className="note">
+                  {describeExotic(exotic, effects, generatedExoticEffects).map(
+                    (line) => (
+                      <li key={line}>{line}</li>
+                    ),
+                  )}
+                </ul>
+              )}
               {pickerFor("mod", <h3 className="sub">Mods</h3>)}
 
               <h2>Stats</h2>

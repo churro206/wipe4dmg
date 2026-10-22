@@ -3,7 +3,6 @@ import type { Effect, Element, ProviderKind } from "../../data/schema";
 import {
   describeDuration,
   describeEffect,
-  describeSources,
   effectIconKey,
   GROUP_LABELS,
 } from "../describe";
@@ -77,12 +76,11 @@ function EffectTile({
       </button>
       <span role="tooltip" id={cardId} className="hover-card">
         <strong>{effect.name}</strong>
-        <span>{describeEffect(effect)}</span>
-        <span>Dauer: {describeDuration(effect)}</span>
+        {describeEffect(effect).map((line) => (
+          <span key={line}>{line}</span>
+        ))}
+        <span>Aktiv: {describeDuration(effect)}</span>
         {group && <span>Pro Build nur {group}</span>}
-        <span className="hover-card-sources">
-          {describeSources(effect).join(" · ")}
-        </span>
       </span>
     </span>
   );

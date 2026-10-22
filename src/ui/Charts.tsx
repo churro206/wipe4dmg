@@ -20,6 +20,7 @@ import type { AbilityKind, DamageSource } from "../data/schema";
 import type { CurvePoint, DamageShare } from "../engine/analysis";
 import { Icon } from "./components/Icon";
 import type { BreakdownEntry } from "../engine/breakdown";
+import { keywords } from "./data";
 
 const integer = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat("de-DE", {
@@ -34,7 +35,6 @@ const DAMAGE_KINDS: Record<string, { label: string; color: string }> = {
   ignition: { label: "Ignitions", color: "var(--series-2)" },
   takenSeeker: { label: "Taken Seeker", color: "var(--series-3)" },
 };
-// Class abilities and keywords get their own colors with the UI step (ADR 0015, U8).
 const ABILITY_KINDS: Record<
   Exclude<DamageSource, "weapon">,
   { label: string; color: string }
@@ -43,10 +43,12 @@ const ABILITY_KINDS: Record<
   grenade: { label: "Grenade", color: "var(--series-5)" },
   melee: { label: "Melee", color: "var(--series-4)" },
   classAbility: { label: "Class Ability", color: "var(--muted)" },
-  keyword: { label: "Keyword", color: "var(--muted)" },
+  keyword: { label: "Effect", color: "var(--muted)" },
 };
 const kindOf = (id: string) =>
   DAMAGE_KINDS[id] ?? { label: id, color: "var(--muted)" };
+// Keyword damage, e.g. Ignition, in the color of its subclass element (U8)
+const keywordOf = (id: string) => keywords.find((k) => k.id === id);
 
 const axisProps = {
   stroke: "var(--axis)",
@@ -77,6 +79,14 @@ function shareStyle(
 ): { label: string; kind?: string; color: string } {
   if (entry.damageSource === "weapon") return kindOf(entry.id);
   const kind = ABILITY_KINDS[entry.damageSource];
+  const keyword =
+    entry.damageSource === "keyword" ? keywordOf(entry.id) : undefined;
+  if (keyword)
+    return {
+      label: keyword.name,
+      kind: kind.label,
+      color: `var(--element-${keyword.element})`,
+    };
   return {
     label: abilityName(entry.abilityId ?? entry.id),
     kind: kind.label,

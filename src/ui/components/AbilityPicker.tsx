@@ -2,10 +2,9 @@ import { useId } from "react";
 import type {
   Ability,
   AbilityKind,
-  AegisAbilityRow,
   Effect,
 } from "../../data/schema";
-import { describeAbility, describeAbilitySource } from "../describe";
+import { describeAbility } from "../describe";
 import { Icon } from "./Icon";
 
 export type AbilitySlot = {
@@ -23,21 +22,17 @@ export type AbilitySlot = {
 export function AbilityPicker({
   slots,
   openKind,
-  aegisRows,
   effects,
   onOpen,
   onSelect,
 }: {
   slots: AbilitySlot[];
   openKind: AbilityKind | null;
-  aegisRows: AegisAbilityRow[];
   effects: Effect[];
   onOpen: (kind: AbilityKind | null) => void;
   onSelect: (kind: AbilityKind, abilityId: string | null) => void;
 }) {
   const open = slots.find((slot) => slot.kind === openKind);
-  const rowOf = (ability: Ability) =>
-    aegisRows.find((row) => row.id === ability.aegisRowId);
   return (
     <div className="abilities">
       <div className="ability-slots">
@@ -48,15 +43,8 @@ export function AbilityPicker({
               label={slot.label}
               pressed={slot.kind === openKind}
               lines={
-                slot.selected
-                  ? describeAbility(
-                      slot.selected,
-                      rowOf(slot.selected),
-                      effects,
-                    )
-                  : []
+                slot.selected ? describeAbility(slot.selected, effects) : []
               }
-              source={slot.selected && describeAbilitySource(slot.selected)}
               onClick={() => onOpen(slot.kind === openKind ? null : slot.kind)}
               ariaExpanded={slot.kind === openKind}
             />
@@ -90,8 +78,7 @@ export function AbilityPicker({
               ability={ability}
               label={ability.name}
               pressed={open.selected?.id === ability.id}
-              lines={describeAbility(ability, rowOf(ability), effects)}
-              source={describeAbilitySource(ability)}
+              lines={describeAbility(ability, effects)}
               onClick={() => onSelect(open.kind, ability.id)}
             />
           ))}
@@ -119,7 +106,7 @@ function AbilityTile({
   label: string;
   pressed: boolean;
   lines: string[];
-  source: string | undefined;
+  source?: string;
   onClick: () => void;
   ariaExpanded?: boolean;
 }) {

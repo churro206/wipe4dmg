@@ -1,26 +1,7 @@
 import { useState } from "react";
 import type { Weapon, WeaponType } from "../../data/schema";
+import { WEAPON_TYPE_LABELS } from "../describe";
 import { Icon } from "./Icon";
-
-const WEAPON_TYPE_LABELS: Record<WeaponType, string> = {
-  autoRifle: "Auto Rifle",
-  bow: "Bow",
-  fusionRifle: "Fusion Rifle",
-  glaive: "Glaive",
-  grenadeLauncher: "Grenade Launcher",
-  handCannon: "Hand Cannon",
-  linearFusionRifle: "Linear Fusion Rifle",
-  machineGun: "Machine Gun",
-  pulseRifle: "Pulse Rifle",
-  rocketLauncher: "Rocket Launcher",
-  scoutRifle: "Scout Rifle",
-  shotgun: "Shotgun",
-  sidearm: "Sidearm",
-  submachineGun: "SMG",
-  sniperRifle: "Sniper Rifle",
-  sword: "Sword",
-  traceRifle: "Trace Rifle",
-};
 
 /**
  * The chosen weapon as a tile; a click opens a list with search and a filter by weapon type
