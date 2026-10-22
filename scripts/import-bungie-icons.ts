@@ -17,6 +17,8 @@ import { format } from "prettier";
 import {
   AbilityData,
   Effect,
+  ExoticArmorEntry,
+  SubclassEffect,
   IconIndex,
   IconRef,
   AegisSustainedSnapshot,
@@ -181,12 +183,31 @@ const catalystRefs: IconRef[] = packages.flatMap((weapon) => {
       ]
     : [];
 });
+// Exotic armor (U8): every piece of the manifest, key "armor:<id>" as in exotic-armor.json.
+const armorRefs: IconRef[] = ExoticArmorEntry.array()
+  .parse(readJson("src/data/exotic-armor.json"))
+  .map((entry) => ({
+    key: `armor:${entry.id}`,
+    manifestRef: {
+      table: "DestinyInventoryItemDefinition" as const,
+      hash: entry.hash,
+    },
+  }));
 const refs = collectIconRefs(
-  Effect.array().parse(readJson("src/data/effects.json")),
+  [
+    ...Effect.array().parse(readJson("src/data/effects.json")),
+    // aspects and fragments (ADR 0015, U6-2); those kept in effects.json are not written there
+    ...(existsSync(new URL("src/data/subclass-effects.json", ROOT))
+      ? SubclassEffect.array()
+          .parse(readJson("src/data/subclass-effects.json"))
+          .map((e) => e.effect)
+      : []),
+  ],
   // Every imported package (ADR 0013).
   packages,
   [
     ...catalystRefs,
+    ...armorRefs,
     ...IconRef.array().parse(readJson("src/data/icon-refs.json")),
     ...abilityIconRefs(
       AbilityData.array().parse(readJson("src/data/abilities.json")),
