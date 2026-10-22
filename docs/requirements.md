@@ -115,7 +115,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |
 | Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |
 | Simulator | Part of the engine that computes one build over the damage phase |
-| Slot | Place where the game shows an own effect: super, class ability, aspect, fragment (subclass), mod, stat (armor), artifact; effects from teammates have none |
+| Slot | Place where the game shows an own effect: super, class ability, aspect, fragment, buffs & debuffs (subclass), mod, stat (armor), artifact; effects from teammates have none. Buffs & debuffs are keywords of the subclass such as Radiant or Weaken that the build keeps up without a chosen item |
 | Source Scale | Absolute damage level of one source; sources differ (Compendium weapon values are about 1.26 × Quantum), so values from different sources are combined only as ratios (ADR 0011) |
 | Stacking Resource | Mechanic category: a counter on the player that builds up and decays, e.g. Bolt Charge or Armor Charge |
 | Subclass | Ability set of a class with one element (Arc, Solar, Void, Stasis, Strand) or Prismatic; decides which own subclass effects a build can provide |

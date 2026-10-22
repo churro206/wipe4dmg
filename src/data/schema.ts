@@ -430,6 +430,8 @@ export const Slot = z.enum([
   "classAbility",
   "aspect",
   "fragment",
+  // own empowering buffs and debuffs of the subclass, kept up without a chosen item, e.g. Radiant
+  "buffs",
   "mod",
   "stat",
   "artifact",
@@ -439,7 +441,7 @@ export type Slot = z.infer<typeof Slot>;
 
 // Slots each own provider can fill; teammates provide effects without a slot.
 const SLOTS_OF: Record<ProviderKind, Slot[]> = {
-  subclass: ["super", "classAbility", "aspect", "fragment"],
+  subclass: ["super", "classAbility", "aspect", "fragment", "buffs"],
   armor: ["mod", "stat", "exotic"],
   artifact: ["artifact"],
   fireteamSupport: [],

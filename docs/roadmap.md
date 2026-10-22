@@ -20,6 +20,7 @@ Status: 2026-10-22
 - ✅ Aspects and fragments that change an ability, from Aegis measurements: Knock 'Em Down (Blade Barrage), Thread of Evolution (Needlestorm, Threadling), Spark of Magnitude (Pulse), Chaos Accelerant (Axion Bolt, Scatter, Vortex), Echo of Remnants (Vortex), Touch of Winter (Glacier, Shatter)
 - ✅ Only aspects and fragments that change damage are offered. Items that only grant a state (e.g. Ascension, On Your Mark) appear when the exotic needs that state, such as No Backup Plans.
 - ✅ Ignition in Solar Supers counts once: the Aegis value of Golden Gun and Daybreak already holds the ignitions of its shots, so they are taken out of the package and come back from the Scorch of each hit. Daybreak ignites during the super (x50 Scorch per projectile).
+- ✅ Tidier picker: Radiant and Weaken in their own section “Buffs & Debuffs”, one tile per item (e.g. Facet of Dominance), game icons for every aspect and fragment
 - ⏳ Stormtrance and Pocket Singularity: Jolt and Volatile count twice (+14 %, +22 %)
 - ⏳ Facet of Courage and Touch of Thunder: Aegis only measured them together with other buffs
 - ⏳ Every catalyst that changes damage output, including magazine, ammo and reload

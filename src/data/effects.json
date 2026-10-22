@@ -120,7 +120,7 @@
     "providers": [
       {
         "kind": "subclass",
-        "slot": "fragment",
+        "slot": "buffs",
         "subclasses": ["solar", "prismatic"]
       },
       {
@@ -251,7 +251,7 @@
     "providers": [
       {
         "kind": "subclass",
-        "slot": "fragment",
+        "slot": "buffs",
         "subclasses": ["void", "prismatic"]
       },
       {

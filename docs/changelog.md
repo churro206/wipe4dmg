@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Auswahl aufgeräumt:** Radiant und Weaken stehen nicht mehr unter Fragments, sondern im eigenen Abschnitt „Buffs & Debuffs“. Ein Item mit zwei Wirkungen (Facet of Dominance: Weaken nach Void-Grenade, Jolt nach Arc-Grenade) hat nur noch eine Kachel. Die sechs Aspects und Fragments, die eine Ability ändern (z. B. Knock 'Em Down), haben ihr Icon aus dem Spiel statt Initialen. Regel-Tests: jedes Item erscheint einmal, unter Fragments stehen nur echte Fragments, jedes Item hat ein Icon.
+
 - **Ignition in Solar-Supers zählt nur einmal:** Golden Gun (Marksman, Deadshot) und Daybreak enthielten die Ignitions schon im Aegis-Wert und bekamen sie im Rechner noch einmal dazu. Der Anteil wird jetzt aus dem Paket genommen (Treffer aus dem Super-Timing, Abklingzeit der Ignition) und kommt über den Scorch jedes Treffers zurück. Daybreak setzt dabei x50 Scorch pro Geschoss statt einmal x60 und zündet etwa 5-mal. Regel-Test: jede Ability mit Ignition ergibt allein den Aegis-Wert (±2,5 %).
 
 - **Nur Aspects und Fragments, die wirken:** 25 Items, die nur einen Zustand geben (z. B. Ascension, On Your Mark, Sol Invictus, Touch of Flame), erscheinen nur noch, wenn das gewählte Exotic diesen Zustand braucht (No Backup Plans, Path of Burning Steps). Ein Regel-Test prüft, dass ohne Exotic jedes angebotene Item den Schaden ändert.

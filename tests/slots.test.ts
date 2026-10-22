@@ -19,9 +19,9 @@ describe("slots of own effects", () => {
     expect(slots).toEqual({
       "well-of-radiance": "super",
       "empowering-rift": "classAbility",
-      radiant: "fragment",
+      radiant: "buffs",
       "banner-shield": "super",
-      weaken: "fragment",
+      weaken: "buffs",
       "moebius-tether": "super",
       "deadfall-tether": "super",
       "surge-1x": "mod",

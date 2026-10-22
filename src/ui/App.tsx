@@ -561,6 +561,7 @@ function App() {
               )}
               {pickerFor("aspect", <h2>Aspects</h2>)}
               {pickerFor("fragment", <h2>Fragments</h2>)}
+              {pickerFor("buffs", <h2>Buffs &amp; Debuffs</h2>)}
 
               <h2>Armor</h2>
               <h3 className="sub">Exotic</h3>

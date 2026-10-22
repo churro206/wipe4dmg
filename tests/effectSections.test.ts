@@ -32,7 +32,8 @@ describe("effectSections", () => {
     expect(idsOf(effectSections(effects, "warlock", "solar", granted))).toEqual(
       [
         ["classAbility", ["empowering-rift"]],
-        ["fragment", ["radiant", "ember-of-ashes"]],
+        ["fragment", ["ember-of-ashes"]],
+        ["buffs", ["radiant"]],
         ["mod", ["surge-1x", "surge-2x", "surge-3x"]],
         ["stat", ["weapons-stat-200"]],
         ["artifact", ["elemental-overdrive-solar", "particle-reconstruction"]],
@@ -79,9 +80,27 @@ describe("effectSections", () => {
     expect(twice).toEqual([]);
   });
 
+  it("rule: fragments are only real fragment items, buffs such as Weaken have their own section", () => {
+    // A fragment is a socketed inventory item; Radiant and Weaken are traits (keywords) of the game.
+    const notItems = allEffects
+      .filter((e) =>
+        e.providers.some(
+          (p) => p.kind === "subclass" && ["aspect", "fragment"].includes(p.slot!),
+        ),
+      )
+      .filter((e) => e.manifestRef?.table !== "DestinyInventoryItemDefinition")
+      .map((e) => e.id);
+    expect(notItems).toEqual([]);
+    const sections = effectSections(allEffects, "titan", "prismatic", granted);
+    expect(
+      sections.find((s) => s.slot === "buffs")!.effects.map((e) => e.id),
+    ).toEqual(["radiant", "weaken"]);
+  });
+
   it("names the provider of each section for selections", () => {
     const sections = effectSections(effects, "warlock", "solar", granted);
     expect(sections.map((s) => s.provider)).toEqual([
+      "subclass",
       "subclass",
       "subclass",
       "armor",

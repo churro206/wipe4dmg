@@ -1,5 +1,6 @@
 // Own effects grouped by slot, in the order of the game screens (U3): subclass (super, class
-// ability, aspects, fragments), armor (mods, stats), artifact. Teammates have their own section.
+// ability, aspects, fragments, buffs & debuffs), armor (mods, stats), artifact. Teammates have their
+// own section.
 
 import type {
   Effect,
@@ -39,6 +40,7 @@ const SLOT_ORDER: { slot: Slot; provider: ProviderKind }[] = [
   { slot: "classAbility", provider: "subclass" },
   { slot: "aspect", provider: "subclass" },
   { slot: "fragment", provider: "subclass" },
+  { slot: "buffs", provider: "subclass" },
   { slot: "mod", provider: "armor" },
   { slot: "stat", provider: "armor" },
   { slot: "artifact", provider: "artifact" },
