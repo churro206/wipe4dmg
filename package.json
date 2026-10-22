@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
+    "sanity": "vitest run tests/plausibility.test.ts --silent=false",
     "coverage": "vitest run tests/coverage.test.ts --update",
     "import:bosses": "node scripts/import-aegis-bosses.ts",
     "import:abilities": "node scripts/import-aegis-abilities.ts",

@@ -21,6 +21,7 @@ import {
   type Weapon,
 } from "../data/schema";
 import type { LinkRegistry } from "../engine/buildLink";
+import type { GameData } from "../engine/buildSimulation";
 import { loadAbilities } from "../engine/loadAbilities";
 import { loadKeywords } from "../engine/loadKeywords";
 import {
@@ -76,6 +77,15 @@ export const abilities = loadAbilities(
 export const generatedExoticEffects = ExoticArmorEffect.array().parse(
   rawExoticArmorEffects,
 );
+// Everything a build refers to, for buildSimulation (src/engine/buildSimulation.ts).
+export const gameData: GameData = {
+  effects,
+  abilities,
+  abilityStats,
+  keywords,
+  exoticArmor,
+  exoticArmorEffects: generatedExoticEffects,
+};
 export const linkRegistry: LinkRegistry = {
   weapons,
   effects,

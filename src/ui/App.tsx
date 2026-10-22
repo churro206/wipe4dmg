@@ -17,11 +17,11 @@ import {
 } from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
 import { addCast, removeCast, setCast } from "../engine/buildAbilities";
-import { abilitySimulation } from "../engine/buildAbilities";
+import { buildSimulation } from "../engine/buildSimulation";
 import { effectWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
 import { abilitiesFor, effectsFor } from "../engine/providers";
-import { exoticArmorEffects, exoticArmorFor } from "../engine/exoticArmor";
+import { exoticArmorFor } from "../engine/exoticArmor";
 import { simulate, type SimulationResult } from "../engine/simulate";
 import type { SimulationOptions } from "../engine/simulate";
 import {
@@ -72,9 +72,9 @@ import { ExoticPicker } from "./components/ExoticPicker";
 import { Tabs } from "./components/Tabs";
 import {
   abilities,
-  abilityStats,
   activities,
   baseEffects,
+  gameData,
   keywords,
   bosses,
   buckets,
@@ -118,43 +118,8 @@ const DPS_CHART_MIN_SECONDS = 120;
 const isFireteam = (s: { provider: ProviderKind }) =>
   s.provider === "fireteamSupport";
 
-/**
- * Effects and simulator options of a build: its own and fireteam effects, plus the abilities with
- * their casts and stats and the effects they grant (e.g. Well of Radiance from the super).
- */
-function simulationOf(build: Build): {
-  selected: Effect[];
-  options: SimulationOptions;
-} {
-  const abilityPart = abilitySimulation(
-    build,
-    abilities,
-    abilityStats,
-    effects,
-  );
-  const own = effectsOf(build.selections);
-  // Exotic armor (U8): granted and generated effects, kill buffs only if built up before
-  const exotic = exoticArmor.find((e) => e.id === build.exoticArmorId);
-  const fromExotic = exotic
-    ? exoticArmorEffects(exotic, effects, generatedExoticEffects, {
-        preBuilt: build.exoticPreBuilt,
-      })
-    : [];
-  const extra = [...abilityPart.grantedEffects, ...fromExotic];
-  return {
-    selected: [
-      ...own,
-      ...extra.filter((e, i) => !own.includes(e) && extra.indexOf(e) === i),
-    ],
-    options: {
-      catalyst: build.catalyst,
-      effectWindows: { ...build.effectWindows, ...abilityPart.grantedWindows },
-      abilities: abilityPart.casts,
-      abilityStats: abilityPart.stats,
-      keywords,
-    },
-  };
-}
+// The one way from a build to the simulator inputs, shared with the tests (plan 2026-10-22).
+const simulationOf = (build: Build) => buildSimulation(build, gameData);
 
 function App() {
   const [initial] = useState(() => stateFromLink(window.location.search));
