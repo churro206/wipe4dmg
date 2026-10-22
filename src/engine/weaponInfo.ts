@@ -31,9 +31,11 @@ export function hasIgnition(weapon: Weapon): boolean {
 export function effectRelevantTo(effect: Effect, weapon: Weapon): boolean {
   return (
     effectAppliesToWeapon(effect, weapon) ||
+    // states change other effects, e.g. Amplified for No Backup Plans (ADR 0015, U6-2)
+    effect.grantsStatus !== undefined ||
     effect.parts.some(
       (part) =>
-        part.type === "multiplier" &&
+        (part.type === "multiplier" || part.type === "appliesKeyword") &&
         part.damageSources.some((source) => source !== "weapon"),
     )
   );

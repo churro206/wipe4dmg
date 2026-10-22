@@ -2,8 +2,9 @@
 
 import { describe, expect, it } from "vitest";
 import rawEffects from "../src/data/effects.json";
+import rawSubclass from "../src/data/subclass-effects.json";
 import rawPackages from "../src/data/weapon-packages.json";
-import { loadEffects } from "../src/engine/loadData";
+import { loadEffects, loadSubclassEffects } from "../src/engine/loadData";
 import { loadWeapons } from "../src/engine/loadWeapon";
 import {
   effectRelevantTo,
@@ -50,5 +51,12 @@ describe("effectRelevantTo", () => {
 
   it("keeps Radiant for a void weapon, since it buffs Golden Gun", () => {
     expect(effectRelevantTo(effect("radiant"), pkg("Truth"))).toBe(true);
+  });
+
+  it("keeps keywords on ability hits and states (U8): Spark of Shock, Lightning Surge", () => {
+    const subclass = loadSubclassEffects(rawSubclass, { preBuilt: true });
+    const of = (id: string) => subclass.find((e) => e.id === id)!;
+    expect(effectRelevantTo(of("spark-of-shock"), testWeapon)).toBe(true);
+    expect(effectRelevantTo(of("lightning-surge"), testWeapon)).toBe(true);
   });
 });
