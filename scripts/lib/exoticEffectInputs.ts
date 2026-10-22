@@ -7,6 +7,7 @@ import {
   ClaritySnapshot,
   CompendiumSnapshot,
   CourtSnapshot,
+  Effect,
   ExoticArmorEntry,
 } from "../../src/data/schema.ts";
 import type { ExoticEffectInputs } from "./exoticEffects.ts";
@@ -25,6 +26,7 @@ export function loadExoticEffectInputs(
     compendium: compendium.entries,
     clarity: clarity.entries.filter((e) => e.type === "Armor Trait Exotic"),
     abilities: AbilityData.array().parse(read("abilities.json")),
+    effects: Effect.array().parse(read("effects.json")),
     sources: {
       court: CourtSnapshot.parse(read("court-buffs.json")).source,
       compendium: compendium.source,

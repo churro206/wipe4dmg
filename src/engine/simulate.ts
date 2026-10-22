@@ -145,29 +145,38 @@ export function simulate(
 
   // Validates the buckets of all parts once, even of effects outside their window.
   activeParts(effects, buckets);
-  const windows = resolveWindows(effects, options);
-  // Conditions of multiplier parts (ADR 0014), fixed for one simulation.
+  const superWindows = superWindowsOf(options.abilities ?? []);
+  const windows = resolveWindows(effects, options, {
+    casts: options.abilities ?? [],
+    superWindows,
+    weaponElement: weapon.element,
+  });
+  // Conditions of multiplier parts (ADR 0014), fixed for one simulation. Windows of
+  // weaponMatchesTriggerElement come only from abilities of the weapon element (effectWindows.ts).
   const superElement = (options.abilities ?? []).find(
     (cast) => cast.ability.kind === "super",
   )?.ability.element;
   const meetsCondition = (part: MultiplierPart) =>
-    part.condition === undefined ||
-    (part.condition === "weaponMatchesSuperElement" &&
-      superElement === weapon.element);
+    (part.superElements === undefined ||
+      (superElement !== undefined &&
+        part.superElements.includes(superElement))) &&
+    (part.condition === undefined ||
+      part.condition === "weaponMatchesTriggerElement" ||
+      (part.condition === "weaponMatchesSuperElement" &&
+        superElement === weapon.element));
   const partsCache = new Map<string, ActiveParts>();
   // Excluded effects are already inside a value, e.g. the included effects of an ability component.
   const partsAt = (
     timeMs: number,
     excluded: readonly string[] = [],
   ): ActiveParts => {
-    const active = effects.filter((effect) => {
-      const window = windows.get(effect.id)!;
-      return (
-        window.startMs <= timeMs &&
-        timeMs < window.endMs &&
-        !excluded.includes(effect.id)
-      );
-    });
+    const active = effects.filter(
+      (effect) =>
+        !excluded.includes(effect.id) &&
+        windows
+          .get(effect.id)!
+          .some((w) => w.startMs <= timeMs && timeMs < w.endMs),
+    );
     const key = active.map((effect) => effect.id).join("|");
     let parts = partsCache.get(key);
     if (!parts) {
@@ -207,7 +216,6 @@ export function simulate(
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
 
   // A reload starts with the last shot of a magazine; a noReload part active then skips it.
-  const superWindows = superWindowsOf(options.abilities ?? []);
   const blockingWindows = superWindows.filter((w) => w.endMs > w.startMs);
   // Moves a shot behind every super window that overlaps its charge.
   const afterSuperWindows = (timeMs: number) => {

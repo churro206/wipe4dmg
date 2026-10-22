@@ -7,10 +7,11 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Art | Zeilen |
 | --- | --- |
 | Immer aktiv (Regel 6) | 2 |
-| Vorher aufgebaut, Option (Regel 3) | 9 |
+| Vorher aufgebaut, Option (Regel 3) | 10 |
 | Kill-Buff ohne Dauer (Regel 3) | 2 |
-| Auslöser in der Rotation, U6-1b (Regel 4) | 12 |
-| Auslöser Class Ability, U7 (Regel 4) | 3 |
+| Fenster aus der Rotation (Regel 4) | 10 |
+| Auslöser in der Rotation, offen (Regel 4) | 1 |
+| Auslöser Class Ability, U7 (Regel 4) | 4 |
 | Braucht einen anderen Buff, U6-2 (Regel 5) | 3 |
 | Ability nicht im Modell (Regel 6) | 3 |
 | Stapel pro Waffentreffer, später (Regel 7) | 3 |
@@ -29,6 +30,7 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
+| Chromatic Fire | 3 | vorher aufgebaut: debuff +15 % für 6 s, nur mit void Super („Precision kill causes a Void AOE which applies Weaken“) | nur Court |
 | Doom Fang Pauldron | 3 | vorher aufgebaut: surge +25 % für 11 s („Adds 1x Surge Stack: ~2 Void Kills (average) (up to 4 stacks)“) | nur Court |
 | Eternal Warrior | 3 | vorher aufgebaut: surge +25 % für 11 s („Adds 1x Surge stack: ~2 Arc Kills (average) (up to 4 stacks)“) | nur Court |
 | Gyrfalcon's Hauberk | 3 | vorher aufgebaut: empowering +35 % für 6 s („Finishing while Invisible provides a damage buff“) | Court = Text (35 %) |
@@ -46,22 +48,26 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Actium War Rig | 3 | Kill-Buff ohne Dauer in Court (1.6% per stack für ~; „Auto Rifle or Machine Gun kills grant a damage bonus to them Stacks up to x10“) | Abweichung: Court 1.6 %, Text 15 / 1.5 % |
 | Felwinter's Helm | 3 | Kill-Buff ohne Dauer in Court (30% für ~; „Powered Melee kill or Finisher applies a burst of Void energy“) | nur Court |
 
-## Auslöser in der Rotation, U6-1b (Regel 4)
+## Fenster aus der Rotation (Regel 4)
 
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
-| Blight Ranger | 4 | Auslöser in der Rotation („Instant 4x Surge Stacks: Arc Staff Super deactivation“), U6-1b | Abweichung: Court 25 %, Text 400 % |
-| Chromatic Fire | 4 | Auslöser in der Rotation („Precision kill causes a Void AOE which applies Weaken“; Debuff hängt vom Element des Supers ab), U6-1b | nur Court |
-| Contraverse Hold | 4 | Auslöser in der Rotation („Charged Grenade applies Weaken“), U6-1b | nur Court |
-| Felwinter's Helm | 4 | Auslöser in der Rotation („Powered Melee hit applies Weaken“), U6-1b | nur Court |
-| Foetracer | 4 | Auslöser in der Rotation („Instant 4x Surge Stacks: Elemental Ability Damage hit on "Powerful Combatants" or Guardians“), U6-1b | nur Court |
-| Heart of Inmost Light | 4 | Auslöser in der Rotation („Super Ability Cast“), U6-1b | Compendium 35 %, Clarity 35 % |
-| Mantle of Battle Harmony | 4 | Auslöser in der Rotation („Instant 4x Surge Stacks: Matching Weapon Damage kill while matching Super is Charged“), U6-1b | nur Court |
-| Mantle of Battle Harmony | 4 | Auslöser in der Rotation („Instant 4x Surge Stacks On Super end: Grants Arc, Solar, Void, Stasis, and Strand Weapon Surges“), U6-1b | nur Court |
-| Sanguine Alchemy | 4 | Auslöser in der Rotation („Instant 4x Surge Stacks: While in any Rift or Well of Radiance“), U6-1b | Abweichung: Court 25 %, Text 10 % |
-| Second Chance | 4 | Auslöser in der Rotation („Shield Throw hit applies Weaken“), U6-1b | nur Court |
-| Star-Eater Scales | 4 | Auslöser in der Rotation („On Super Cast“), U6-1b | Compendium 70 %, Clarity 70 % |
-| Stormdancer's Brace | 4 | Auslöser in der Rotation („Hits and Kills“), U6-1b | Compendium –, Clarity 200 % |
+| Blight Ranger | 4 | ab Ende von Arc Staff: surge +25 % für 21 s („Instant 4x Surge Stacks: Arc Staff Super deactivation“) | Abweichung: Court 25 %, Text 400 % |
+| Contraverse Hold | 4 | ab Treffer einer void Grenade: debuff +15 % für 6 s („Charged Grenade applies Weaken“) | nur Court |
+| Eternal Warrior | 4 | ab Ende von Fists of Havoc: surge +25 % (arc) für 30 s („On Fists of Havoc End: Grants x4 Arc Weapon Surge for 30“) | Court x4 = 25 % |
+| Felwinter's Helm | 4 | ab Treffer von jeder Melee: debuff +15 % für 6 s („Powered Melee hit applies Weaken“) | nur Court |
+| Foetracer | 4 | ab Treffer jeder Ability, Element der Ability, nicht auffrischbar: surge +25 % für 16 s („Instant 4x Surge Stacks: Elemental Ability Damage hit on "Powerful Combatants" or Guardians“) | nur Court |
+| Mantle of Battle Harmony | 4 | bis zum Super-Cast (Super geladen), passend zum Super: surge +25 % für 11 s („Instant 4x Surge Stacks: Matching Weapon Damage kill while matching Super is Charged“) | nur Court |
+| Mantle of Battle Harmony | 4 | ab Ende von jedem Super: surge +25 % für 10 s („Instant 4x Surge Stacks On Super end: Grants Arc, Solar, Void, Stasis, and Strand Weapon Surges“) | nur Court |
+| Sanguine Alchemy | 4 | ab Cast von Well of Radiance, solange Well steht, passend zum Super: surge +25 % für 30 s („Instant 4x Surge Stacks: While in any Rift or Well of Radiance“) | Abweichung: Court 25 %, Text 10 % |
+| Second Chance | 4 | ab Treffer von Shield Throw: debuff +15 % für 10 s („Shield Throw hit applies Weaken“) | nur Court |
+| Star-Eater Scales | 4 | ab jedem Super-Cast: +70 % auf super für 14 s („On Super Cast“ … „for 14 seconds“) | Compendium 70 %, Clarity 70 % |
+
+## Auslöser in der Rotation, offen (Regel 4)
+
+| Exotic | Regel | Grund | Gegenprobe |
+| --- | --- | --- | --- |
+| Stormdancer's Brace | 4 | Stapel aus Treffern in der Ability („Hits and Kills“); das Paket nennt keine Trefferzahl, keine Gegenprobe möglich | Compendium –, Clarity 200 % |
 
 ## Auslöser Class Ability, U7 (Regel 4)
 
@@ -69,6 +75,7 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | --- | --- | --- | --- |
 | Gwisin Vest | 4 | Auslöser Class Ability („Exiting Invisibility near an enemy causes a Weaking Smoke Cloud around you“), U7 | nur Court |
 | Hazardous Propulsion | 4 | Auslöser Class Ability („Damaging targets with Exodus Rockets (Class Ability) 6x provides the highest buff“), U7 | nur Court |
+| Heart of Inmost Light | 4 | Auslöser Class Ability („On Grenade or Class Ability Usage“), U7 | Compendium 35 %, Clarity 35 % |
 | Mask of Bakris | 4 | Auslöser Class Ability („Light Shift (Class Ability activation) activation grants a stack Stacks up to x3“), U7 | Abweichung: Court 33 %, Text 10 % |
 
 ## Braucht einen anderen Buff, U6-2 (Regel 5)

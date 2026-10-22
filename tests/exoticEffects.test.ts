@@ -40,16 +40,19 @@ describe("rules for the exotic damage buffs", () => {
     ["Wormhusk Crown", "preBuilt"],
     ["Wormgod Caress", "preBuilt"],
     ["Actium War Rig", "missingDuration"],
-    ["Chromatic Fire", "rotation"],
-    ["Contraverse Hold", "rotation"],
-    ["Foetracer", "rotation"],
-    ["Second Chance", "rotation"],
-    ["Heart of Inmost Light", "rotation"],
-    ["Star-Eater Scales", "rotation"],
+    ["Chromatic Fire", "preBuilt"],
+    ["Contraverse Hold", "triggered"],
+    ["Foetracer", "triggered"],
+    ["Second Chance", "triggered"],
+    ["Star-Eater Scales", "triggered"],
+    ["Blight Ranger", "triggered"],
+    ["Mantle of Battle Harmony", "triggered"],
+    ["Sanguine Alchemy", "triggered"],
+    ["Eternal Warrior", "triggered"],
+    // stacks from hits inside the super; the package names no hit count
     ["Stormdancer's Brace", "rotation"],
-    ["Blight Ranger", "rotation"],
-    ["Mantle of Battle Harmony", "rotation"],
-    ["Sanguine Alchemy", "rotation"],
+    // x2 needs the class ability
+    ["Heart of Inmost Light", "classAbility"],
     ["Mask of Bakris", "classAbility"],
     ["Hazardous Propulsion", "classAbility"],
     ["Gwisin Vest", "classAbility"],
@@ -72,8 +75,65 @@ describe("rules for the exotic damage buffs", () => {
   it("Felwinter's Helm: the kill burst has no duration, the weaken comes from a melee hit", () => {
     expect(kindsOf("Felwinter's Helm").sort()).toEqual([
       "missingDuration",
-      "rotation",
+      "triggered",
     ]);
+    expect(effectOf("felwinters-helm").effect.trigger).toEqual({
+      on: "hit",
+      refresh: true,
+      abilityKinds: ["melee"],
+    });
+  });
+
+  it("windows from the rotation (U6-1b)", () => {
+    const effect = (id: string) =>
+      result.effects.filter((e) => e.exoticArmorId === id).map((e) => e.effect);
+    expect(effect("star-eater-scales")[0]).toMatchObject({
+      trigger: { on: "cast", abilityKinds: ["super"] },
+      durationMs: { value: 14000 },
+      parts: [{ multiplier: { value: 1.7 }, damageSources: ["super"] }],
+    });
+    expect(effect("foetracer")[0]).toMatchObject({
+      trigger: { on: "hit", refresh: false },
+      durationMs: { value: 16000 },
+      parts: [{ bucketId: "surge", condition: "weaponMatchesTriggerElement" }],
+    });
+    expect(effect("contraverse-hold")[0].trigger).toMatchObject({
+      on: "hit",
+      abilityKinds: ["grenade"],
+      elements: ["void"],
+    });
+    expect(effect("second-chance")[0].trigger).toMatchObject({
+      abilityIds: ["shield-throw"],
+    });
+    expect(effect("blight-ranger")[0].trigger).toMatchObject({
+      on: "superEnd",
+      abilityIds: ["arc-staff"],
+    });
+    expect(effect("sanguine-alchemy")[0]).toMatchObject({
+      trigger: { on: "cast", abilityIds: ["well-of-radiance"] },
+      durationMs: { value: 30000 },
+      parts: [{ condition: "weaponMatchesSuperElement" }],
+    });
+    const [untilCast, superEnd] = effect("mantle-of-battle-harmony");
+    expect(untilCast).toMatchObject({
+      trigger: { on: "untilSuperCast" },
+      durationMs: { value: 11000 },
+      parts: [{ condition: "weaponMatchesSuperElement" }],
+    });
+    expect(superEnd.trigger).toEqual({ on: "superEnd", refresh: true });
+    expect(superEnd.parts[0]).not.toHaveProperty("elements");
+    expect(effect("eternal-warrior")[1]).toMatchObject({
+      trigger: { on: "superEnd", abilityIds: ["fists-of-havoc"] },
+      durationMs: { value: 30000 },
+      parts: [{ elements: ["arc"], multiplier: { value: 1.25 } }],
+    });
+  });
+
+  it("Chromatic Fire: Weaken only with a Void super", () => {
+    expect(effectOf("chromatic-fire")).toMatchObject({
+      activation: "preBuilt",
+      effect: { parts: [{ bucketId: "debuff", superElements: ["void"] }] },
+    });
   });
 
   it("a kill buff from Court takes the highest stage and its duration", () => {
@@ -167,10 +227,10 @@ describe("rules for the exotic damage buffs", () => {
     });
   });
 
-  it("creates effects only for the kinds always and preBuilt", () => {
+  it("creates effects only for the kinds always, preBuilt and triggered", () => {
     expect(result.effects.map((e) => e.effect.id)).toEqual(
       result.rows
-        .filter((r) => r.kind === "always" || r.kind === "preBuilt")
+        .filter((r) => ["always", "preBuilt", "triggered"].includes(r.kind))
         .map((r) => r.effectId),
     );
   });

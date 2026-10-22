@@ -348,8 +348,13 @@ export const MultiplierPart = z.object({
   weaponTypes: z.array(WeaponType).optional(), // omitted: all weapon types
   abilityIds: z.array(z.string()).optional(), // omitted: all abilities; set: only these abilities
   // weaponMatchesSuperElement: only while the weapon has the element of the super, e.g. Mantle of
-  // Battle Harmony (ADR 0014)
-  condition: z.enum(["weaponMatchesSuperElement"]).optional(),
+  // Battle Harmony (ADR 0014); weaponMatchesTriggerElement: only in windows opened by an ability of
+  // the weapon's element, e.g. Foetracer (ADR 0015, U6-1b)
+  condition: z
+    .enum(["weaponMatchesSuperElement", "weaponMatchesTriggerElement"])
+    .optional(),
+  // Only with a super of these elements, e.g. Weaken from Chromatic Fire with a Void super
+  superElements: z.array(Element).optional(),
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 
@@ -453,6 +458,26 @@ export const FormerCode = z.object({
   reason: FormerCodeReason,
 });
 
+/** Damage source of an ability; the weapon is not an ability. */
+export const AbilityKind = z.enum(["super", "grenade", "melee"]);
+export type AbilityKind = z.infer<typeof AbilityKind>;
+
+/**
+ * Event of the rotation that opens the window of an effect (ADR 0015, U6-1b):
+ * cast: the cast of an ability; hit: its first hit (cast plus the delay of its first component);
+ * superEnd: the end of the super window; untilSuperCast: from 0 s while the super is charged, so
+ * the window ends at the first super cast plus the duration (whole phase without a super cast).
+ */
+export const EffectTrigger = z.object({
+  on: z.enum(["cast", "hit", "superEnd", "untilSuperCast"]),
+  abilityKinds: z.array(AbilityKind).optional(), // omitted: any kind
+  abilityIds: z.array(z.string()).optional(), // omitted: any ability
+  elements: z.array(Element).optional(), // of the ability; omitted: any element
+  // true: a new trigger inside the window restarts its duration; false: it is ignored (Foetracer)
+  refresh: z.boolean(),
+});
+export type EffectTrigger = z.infer<typeof EffectTrigger>;
+
 /**
  * Anything a build can switch on or off that changes damage or timing (ADR 0006).
  * Active in a window: start and duration (ADR 0006, stage B).
@@ -477,15 +502,14 @@ export const Effect = z.object({
   // Duration after its start; omitted if the effect lasts the whole damage phase or the duration
   // depends on the source (e.g. Radiant, tethers). The rotation can override start and duration.
   durationMs: SourcedNumber.optional(),
+  // Opens a window of durationMs at each matching event of the rotation instead of one from 0 s
+  // (ADR 0015, U6-1b), e.g. Star-Eater Scales at each super cast.
+  trigger: EffectTrigger.optional(),
   // Effect ids whose multiplier parts in the same buckets are ignored while this effect is active,
   // regardless of value, e.g. Divinity over Particle Reconstruction.
   overrides: z.array(z.string()).optional(),
 });
 export type Effect = z.infer<typeof Effect>;
-
-/** Damage source of an ability; the weapon is not an ability. */
-export const AbilityKind = z.enum(["super", "grenade", "melee"]);
-export type AbilityKind = z.infer<typeof AbilityKind>;
 
 /** Part of an ability that creates damage instances after each cast, e.g. impact or explosion (ADR 0009). */
 export const AbilityComponent = z.object({

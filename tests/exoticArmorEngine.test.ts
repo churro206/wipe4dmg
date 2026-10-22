@@ -9,8 +9,10 @@ import type {
   ExoticArmorEntry,
   MultiplierPart,
 } from "../src/data/schema";
+import rawGenerated from "../src/data/exotic-armor-effects.json";
 import {
   Build,
+  ExoticArmorEffect as ExoticArmorEffectSchema,
   ExoticArmorEntry as ExoticArmorEntrySchema,
 } from "../src/data/schema";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
@@ -154,6 +156,37 @@ describe("effects of exotic armor", () => {
       exoticArmorEffects(entry({}), effects, all, { preBuilt }).map((e) => e.id);
     expect(ids()).toEqual(["test-always"]);
     expect(ids(true)).toEqual(["test-always", "test-prebuilt"]);
+  });
+
+  it("Star-Eater Scales: super damage +70 % for 14 s after each super cast", () => {
+    const starEater = armor.find((e) => e.id === "star-eater-scales")!;
+    const selected = exoticArmorEffects(
+      starEater,
+      effects,
+      ExoticArmorEffectSchema.array().parse(rawGenerated),
+    );
+    const hit = (delayMs: number) => ({
+      id: `hit-${delayMs}`,
+      name: "Hit",
+      delayMs: { value: delayMs, source },
+      damagePerTick: { value: 1000, source },
+      ticks: { value: 1, source },
+      tickIntervalMs: { value: 0, source },
+      scalesWithAbilityStat: false,
+    });
+    const superDamage = (withExotic: boolean) =>
+      simulate(weapon, 60, withExotic ? selected : [], buckets, {
+        abilities: [
+          {
+            ability: ability({ components: [hit(0), hit(20000)] }),
+            castsMs: [0],
+          },
+        ],
+      })
+        .damageInstances.filter((d) => d.damageSource === "super")
+        .map((d) => d.damage);
+    const plain = superDamage(false);
+    expect(superDamage(true).map((d, i) => d / plain[i])).toEqual([1.7, 1]);
   });
 
   it("turns a quoted reload duration multiplier into a timing part", () => {

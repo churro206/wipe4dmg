@@ -19,6 +19,7 @@ import {
   type ClarityEntry,
   type CompendiumEntry,
   type Effect,
+  type EffectTrigger,
   type Element,
   type ExoticArmorEffect,
   type ExoticArmorEntry,
@@ -32,6 +33,7 @@ export type ExoticEffectInputs = {
   compendium: CompendiumEntry[]; // tab Exotic Armors
   clarity: ClarityEntry[];
   abilities: { id: string; name: string; kind: AbilityKind }[]; // abilities.json
+  effects: Effect[]; // effects.json, e.g. the duration of Well of Radiance
   sources: { court: Source; compendium: Source; clarity: Source };
 };
 
@@ -41,6 +43,7 @@ export type ExoticEffectKind =
   | "missingDuration"
   | "notAgainstBoss"
   | "ownDamage"
+  | "triggered"
   | "rotation"
   | "classAbility"
   | "needsEffect"
@@ -67,6 +70,15 @@ const ROTATION =
 const KILL = /\bkill(?:s|ing)?\b|\bFinish/i;
 // A debuff whose element follows the equipped super, e.g. Chromatic Fire
 const SUPER_DEPENDENT = /based on the equipped Super/i;
+const NOT_REFRESHABLE = /not refreshable/i;
+const SUPER_CAST = /On Super Cast|Casting your Super/;
+// Element of the grenades an exotic overcharges, e.g. "overcharging a Void Grenade"
+const OVERCHARGED_ELEMENT =
+  /overcharging an? (Arc|Solar|Void|Stasis|Strand) Grenade/i;
+// A super end the text names besides Court, e.g. "On Fists of Havoc End: Grants x4 Arc Weapon
+// Surge for 30 [6] seconds"
+const TEXT_SUPER_END =
+  /On ([A-Z][\w ]+?) End:\s+Grants x4 (Arc|Solar|Void|Stasis|Strand) Weapon Surge for (\d+(?:\.\d+)?)/;
 
 // Texts without a Court value
 const NOT_AGAINST_BOSS =
@@ -78,10 +90,14 @@ const HIT_STACKS =
 const TEXT_TRIGGERS: [RegExp, "rotation" | "classAbility" | "kill"][] = [
   [
     // stacks built inside an ability, e.g. "Hits and Kills during Stormtrance grant a stack"
-    /On Super Cast|Super Ability Cast|Casting your Super|On (?:Grenade|Melee)[^:.\n]{0,40}(?:Usage|Cast)|\bHits and Kills\b/g,
+    // a class ability among the triggers needs U7, e.g. "On Grenade or Class Ability Usage"
+    /On [^:.\n]{0,40}Class Ability Usage/g,
+    "classAbility",
+  ],
+  [
+    /On Super Cast|Casting your Super|On (?:Grenade|Melee)[^:.\n]{0,40}(?:Usage|Cast)|\bHits and Kills\b/g,
     "rotation",
   ],
-  [/On Class Ability Usage/gi, "classAbility"],
   // "a kill, or upon being not receiving damage": the kill is not needed
   [
     /\b(?:Kills?|Killing|Finisher)\b(?!,? or (?:upon )?(?:being )?not (?:taking|receiving) damage)/gi,
@@ -122,6 +138,7 @@ const flat = (text: string) => text.replace(/\s+/g, " ").trim();
 type Verdict = Omit<ExoticEffectRow, "exoticArmorId" | "name" | "effectId"> & {
   part?: MultiplierPart;
   durationMs?: { value: number; source: Source };
+  trigger?: EffectTrigger;
 };
 
 /** Court against the quoted bonuses of the texts. */
@@ -137,8 +154,9 @@ function courtVerdict(
   row: ExoticArmorEntry["courtBuffs"][number],
   entry: ExoticArmorEntry,
   text: string,
-  court: Source,
+  inputs: ExoticEffectInputs,
 ): Verdict {
+  const court = inputs.sources.court;
   const trigger = flat(row.trigger);
   const value = `${flat(row.pve ?? "")} für ${flat(row.pveDuration ?? "")}`;
   const percent = Math.max(...numbers(row.pve ?? "", "%"));
@@ -157,40 +175,58 @@ function courtVerdict(
       reason: `Auslöser Class Ability („${trigger}“), U7`,
       check,
     };
-  if (ROTATION.test(trigger) || SUPER_DEPENDENT.test(text))
-    return {
-      rule: 4,
-      kind: "rotation",
-      reason: `Auslöser in der Rotation („${trigger}“${SUPER_DEPENDENT.test(text) ? "; Debuff hängt vom Element des Supers ab" : ""}), U6-1b`,
-      check,
-    };
-  if (!KILL.test(trigger))
+  const superDependent = SUPER_DEPENDENT.test(text);
+  const rotation = ROTATION.test(trigger) && !superDependent;
+  if (!rotation && !superDependent && !KILL.test(trigger))
     return {
       rule: 8,
       kind: "noText",
       reason: `Auslöser unklar („${trigger}“)`,
       check,
     };
-  const durations = numbers(row.pveDuration ?? "", "s");
-  if (durations.length === 0)
+  const found = rotation ? rotationTrigger(trigger, text, inputs) : undefined;
+  if (rotation && !found)
     return {
-      rule: 3,
-      kind: "missingDuration",
-      reason: `Kill-Buff ohne Dauer in Court (${value}; „${trigger}“)`,
+      rule: 4,
+      kind: "rotation",
+      reason: `Auslöser in der Rotation ohne Regel („${trigger}“)`,
       check,
     };
   // Court lists the stages in rising order; the duration of the highest stage comes last
-  const seconds = durations[durations.length - 1];
-  const element = row.bucketId === "surge" ? elementOf(trigger) : undefined;
+  const durations = numbers(row.pveDuration ?? "", "s");
+  const seconds =
+    durations.length > 0
+      ? durations[durations.length - 1]
+      : found?.durationMs !== undefined
+        ? found.durationMs.value / MS_PER_SECOND
+        : undefined;
+  if (seconds === undefined)
+    return {
+      rule: rotation ? 4 : 3,
+      kind: "missingDuration",
+      reason: `${rotation ? "Buff" : "Kill-Buff"} ohne Dauer in Court (${value}; „${trigger}“)`,
+      check,
+    };
+  // A surge in one named element; with a trigger condition the element follows the ability
+  const elements = [...trigger.matchAll(new RegExp(ELEMENT, "gi"))];
+  const element =
+    row.bucketId === "surge" && !found?.condition && elements.length === 1
+      ? elementOf(trigger)
+      : undefined;
+  // "Precision kill causes a Void AOE which applies Weaken": only with a super of that element
+  const superElement = superDependent ? elementOf(trigger) : undefined;
   const source: Source = {
     ...court,
     name: `Court Stacking Guide (${row.bucketId}, PvE ${flat(row.pve ?? "")}, ${flat(row.pveDuration ?? "")})`,
-    note: `„${trigger}“; prebuilt before the damage phase at the highest stage (ADR 0015)`,
+    note: `„${trigger}“; ${found ? `window from the rotation (ADR 0015, U6-1b)` : "prebuilt before the damage phase at the highest stage (ADR 0015)"}`,
   };
+  const target = `${row.bucketId} +${percent} % für ${seconds} s`;
   return {
-    rule: 3,
-    kind: "preBuilt",
-    reason: `vorher aufgebaut: ${row.bucketId} +${percent} % für ${seconds} s („${trigger}“)`,
+    rule: found ? 4 : 3,
+    kind: found ? "triggered" : "preBuilt",
+    reason: found
+      ? `${found.label}: ${target} („${trigger}“)`
+      : `vorher aufgebaut: ${target}${superElement ? `, nur mit ${superElement} Super` : ""} („${trigger}“)`,
     check,
     part: {
       type: "multiplier",
@@ -199,9 +235,99 @@ function courtVerdict(
       damageSources:
         row.bucketId === "debuff" ? [...DamageSource.options] : ["weapon"],
       ...(element ? { elements: [element] } : {}),
+      ...(found?.condition ? { condition: found.condition } : {}),
+      ...(superElement ? { superElements: [superElement] } : {}),
     },
-    durationMs: { value: seconds * MS_PER_SECOND, source },
+    durationMs: {
+      value: seconds * MS_PER_SECOND,
+      source: found?.durationMs && durations.length === 0 ? found.durationMs.source : source,
+    },
+    ...(found ? { trigger: found.trigger } : {}),
   };
+}
+
+type FoundTrigger = {
+  trigger: EffectTrigger;
+  label: string; // in German, for the review table
+  condition?: MultiplierPart["condition"];
+  durationMs?: { value: number; source: Source }; // when the window lasts as long as an effect
+};
+
+/** Ability of the model a trigger names, e.g. "Arc Staff" or "Shield Throw". */
+const abilityNamed = (name: string, abilities: ExoticEffectInputs["abilities"]) =>
+  abilities.find((a) => a.name.toLowerCase() === flat(name).toLowerCase());
+
+/** Window of a Court trigger in the rotation (rule 4); undefined if no rule fits. */
+function rotationTrigger(
+  trigger: string,
+  text: string,
+  inputs: ExoticEffectInputs,
+): FoundTrigger | undefined {
+  const refresh = !NOT_REFRESHABLE.test(text);
+  const superEnd = /(?:^|:)\s*([A-Z][\w ]*?) Super deactivation|On Super end/i.exec(trigger);
+  if (superEnd) {
+    const ability = superEnd[1] ? abilityNamed(superEnd[1], inputs.abilities) : undefined;
+    if (superEnd[1] && !ability) return undefined;
+    return {
+      trigger: { on: "superEnd", refresh, ...(ability ? { abilityIds: [ability.id] } : {}) },
+      label: `ab Ende von ${ability?.name ?? "jedem Super"}`,
+      ...(ability ? { condition: "weaponMatchesTriggerElement" } : {}),
+    };
+  }
+  if (/while matching Super is Charged/i.test(trigger))
+    return {
+      trigger: { on: "untilSuperCast", refresh },
+      label: "bis zum Super-Cast (Super geladen), passend zum Super",
+      condition: "weaponMatchesSuperElement",
+    };
+  const well = /Well of Radiance/.exec(trigger);
+  if (well) {
+    const ability = abilityNamed(well[0], inputs.abilities);
+    const effect = inputs.effects.find((e) => e.name.startsWith(well[0]));
+    if (!ability || !effect?.durationMs?.value) return undefined;
+    return {
+      trigger: { on: "cast", refresh, abilityIds: [ability.id] },
+      label: `ab Cast von ${ability.name}, solange Well steht, passend zum Super`,
+      condition: "weaponMatchesSuperElement",
+      durationMs: {
+        value: effect.durationMs.value!,
+        source: { ...effect.durationMs.source, note: `duration of ${effect.id} (effects.json)` },
+      },
+    };
+  }
+  if (/Ability Damage hit/i.test(trigger))
+    return {
+      trigger: { on: "hit", refresh },
+      label: `ab Treffer jeder Ability, Element der Ability${refresh ? "" : ", nicht auffrischbar"}`,
+      condition: "weaponMatchesTriggerElement",
+    };
+  if (/Charged Grenade/i.test(trigger)) {
+    const element = OVERCHARGED_ELEMENT.exec(text)?.[1].toLowerCase() as Element | undefined;
+    return {
+      trigger: {
+        on: "hit",
+        refresh,
+        abilityKinds: ["grenade"],
+        ...(element ? { elements: [element] } : {}),
+      },
+      label: `ab Treffer einer ${element ? `${element} ` : ""}Grenade`,
+    };
+  }
+  const hit = /([A-Z][\w ]*?) hit applies/.exec(trigger);
+  if (hit) {
+    const ability = abilityNamed(hit[1], inputs.abilities);
+    const kind = ability ? undefined : /melee/i.test(hit[1]) ? "melee" : undefined;
+    if (!ability && !kind) return undefined;
+    return {
+      trigger: {
+        on: "hit",
+        refresh,
+        ...(ability ? { abilityIds: [ability.id] } : { abilityKinds: [kind!] }),
+      },
+      label: `ab Treffer von ${ability?.name ?? "jeder Melee"}`,
+    };
+  }
+  return undefined;
 }
 
 /** Who a bonus says it names, e.g. "Hellion Projectiles" or "Enhanced Tripmine Grenades"; "" if none. */
@@ -309,11 +435,15 @@ function textVerdict(
   const trigger = TEXT_TRIGGERS.flatMap(([pattern, kind]) =>
     [...text.slice(0, index).matchAll(pattern)].map((m) => ({ kind, match: m })),
   ).sort((a, b) => end(b.match) - end(a.match))[0];
-  if (trigger?.kind === "rotation")
+  const superCast =
+    trigger?.kind === "rotation" && SUPER_CAST.test(trigger.match[0]);
+  if (trigger?.kind === "rotation" && !superCast)
     return {
       rule: 4,
       kind: "rotation",
-      reason: `Auslöser in der Rotation („${trigger.match[0]}“), U6-1b`,
+      reason: /Hits and Kills/.test(trigger.match[0])
+        ? `Stapel aus Treffern in der Ability („${trigger.match[0]}“); das Paket nennt keine Trefferzahl, keine Gegenprobe möglich`
+        : `Auslöser in der Rotation ohne Regel („${trigger.match[0]}“)`,
       check,
     };
   if (trigger?.kind === "classAbility")
@@ -351,7 +481,7 @@ function textVerdict(
     ...(ability ? { abilityIds: [ability.id] } : {}),
   };
   const target = `${damageSources.join(", ")}${element ? ` (${element})` : ""}${ability ? `, nur ${ability.name}` : ""}`;
-  if (trigger?.kind !== "kill")
+  if (trigger?.kind !== "kill" && !superCast)
     return {
       rule: 6,
       kind: "always",
@@ -362,12 +492,25 @@ function textVerdict(
   const duration = DURATION.exec(text.slice(trigger.match.index));
   if (!duration)
     return {
-      rule: 3,
+      rule: superCast ? 4 : 3,
       kind: "missingDuration",
-      reason: `Kill-Buff ohne Dauer im Text („${trigger.match[0]}“)`,
+      reason: `${superCast ? "Buff" : "Kill-Buff"} ohne Dauer im Text („${trigger.match[0]}“)`,
       check,
     };
   const seconds = Number(duration[1]);
+  if (superCast)
+    return {
+      rule: 4,
+      kind: "triggered",
+      reason: `ab jedem Super-Cast: +${bonus.percent} % auf ${target} für ${seconds} s („${trigger.match[0]}“ … „${duration[0]}“)`,
+      check,
+      part,
+      durationMs: {
+        value: seconds * MS_PER_SECOND,
+        source: { ...source, note: `„${duration[0]}“ after „${trigger.match[0]}“ (ADR 0015, U6-1b)` },
+      },
+      trigger: { on: "cast", refresh: true, abilityKinds: ["super"] },
+    };
   return {
     rule: 3,
     kind: "preBuilt",
@@ -381,7 +524,53 @@ function textVerdict(
   };
 }
 
-/** Review rows of all damage buffs and the effects of those that are always active or prebuilt. */
+/**
+ * A super end the text names besides the Court rows, e.g. Eternal Warrior: "On Fists of Havoc End:
+ * Grants x4 Arc Weapon Surge for 30 [6] seconds"; the value of x4 comes from the Court surge row.
+ */
+function textSuperEnd(
+  entry: ExoticArmorEntry,
+  text: string,
+  inputs: ExoticEffectInputs,
+): Verdict | undefined {
+  const match = TEXT_SUPER_END.exec(text);
+  const surge = entry.courtBuffs.find((b) => b.bucketId === "surge" && b.pve);
+  if (!match || !surge) return undefined;
+  const ability = abilityNamed(match[1], inputs.abilities);
+  const percent = Math.max(...numbers(surge.pve!, "%"));
+  const element = match[2].toLowerCase() as Element;
+  const seconds = Number(match[3]);
+  if (!ability)
+    return {
+      rule: 4,
+      kind: "rotation",
+      reason: `Super „${match[1]}“ nicht im Modell („${match[0]}“)`,
+      check: "nur Text",
+    };
+  const source: Source = {
+    ...inputs.sources.compendium,
+    note: `„${match[0]}“; x4 surge value from Court (${flat(surge.pve!)}) (ADR 0015, U6-1b)`,
+  };
+  return {
+    rule: 4,
+    kind: "triggered",
+    reason: `ab Ende von ${ability.name}: surge +${percent} % (${element}) für ${seconds} s („${match[0]}“)`,
+    check: `Court x4 = ${percent} %`,
+    part: {
+      type: "multiplier",
+      bucketId: "surge",
+      multiplier: { value: factorOf(percent), source },
+      damageSources: ["weapon"],
+      elements: [element],
+    },
+    durationMs: { value: seconds * MS_PER_SECOND, source },
+    trigger: { on: "superEnd", refresh: true, abilityIds: [ability.id] },
+  };
+}
+
+const GENERATES: ExoticEffectKind[] = ["always", "preBuilt", "triggered"];
+
+/** Review rows of all damage buffs and the effects of those that are always active, prebuilt or triggered. */
 export function exoticEffects(inputs: ExoticEffectInputs): {
   rows: ExoticEffectRow[];
   effects: ExoticArmorEffect[];
@@ -398,11 +587,13 @@ export function exoticEffects(inputs: ExoticEffectInputs): {
     const valued = entry.courtBuffs.filter((b) => b.pve !== null && b.pve.trim() !== "");
     const verdicts =
       valued.length > 0
-        ? valued.map((row) => courtVerdict(row, entry, text, inputs.sources.court))
+        ? valued.map((row) => courtVerdict(row, entry, text, inputs))
         : [textVerdict(entry, text, inputs)];
-    for (const { part, durationMs, ...verdict } of verdicts) {
+    const superEnd = textSuperEnd(entry, text, inputs);
+    if (superEnd) verdicts.push(superEnd);
+    for (const { part, durationMs, trigger, ...verdict } of verdicts) {
       const row: ExoticEffectRow = { exoticArmorId: entry.id, name: entry.name, ...verdict };
-      if (part && (verdict.kind === "always" || verdict.kind === "preBuilt")) {
+      if (part && GENERATES.includes(verdict.kind)) {
         const count = effects.filter((e) => e.exoticArmorId === entry.id).length;
         const effect: Effect = {
           id: `exotic-armor:${entry.id}${count > 0 ? `-${count + 1}` : ""}`,
@@ -412,8 +603,13 @@ export function exoticEffects(inputs: ExoticEffectInputs): {
           providers: [{ kind: "armor", slot: "exotic" }],
           parts: [part],
           ...(durationMs ? { durationMs } : {}),
+          ...(trigger ? { trigger } : {}),
         };
-        effects.push({ exoticArmorId: entry.id, activation: verdict.kind, effect });
+        effects.push({
+          exoticArmorId: entry.id,
+          activation: verdict.kind === "preBuilt" ? "preBuilt" : "always",
+          effect,
+        });
         row.effectId = effect.id;
       }
       rows.push(row);
@@ -426,7 +622,8 @@ const KIND_TITLES: [ExoticEffectKind, string][] = [
   ["always", "Immer aktiv (Regel 6)"],
   ["preBuilt", "Vorher aufgebaut, Option (Regel 3)"],
   ["missingDuration", "Kill-Buff ohne Dauer (Regel 3)"],
-  ["rotation", "Auslöser in der Rotation, U6-1b (Regel 4)"],
+  ["triggered", "Fenster aus der Rotation (Regel 4)"],
+  ["rotation", "Auslöser in der Rotation, offen (Regel 4)"],
   ["classAbility", "Auslöser Class Ability, U7 (Regel 4)"],
   ["needsEffect", "Braucht einen anderen Buff, U6-2 (Regel 5)"],
   ["abilityGap", "Ability nicht im Modell (Regel 6)"],
