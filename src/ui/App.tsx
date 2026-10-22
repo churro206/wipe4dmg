@@ -21,6 +21,7 @@ import { abilitySimulation } from "../engine/buildAbilities";
 import { effectWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
 import { abilitiesFor, effectsFor } from "../engine/providers";
+import { exoticArmorEffects, exoticArmorFor } from "../engine/exoticArmor";
 import { simulate, type SimulationResult } from "../engine/simulate";
 import type { SimulationOptions } from "../engine/simulate";
 import {
@@ -67,16 +68,20 @@ import { SegmentedControl } from "./components/SegmentedControl";
 import { StatSliders } from "./components/StatSliders";
 import { SummaryBar } from "./components/SummaryBar";
 import { WeaponPicker } from "./components/WeaponPicker";
+import { ExoticPicker } from "./components/ExoticPicker";
 import { Tabs } from "./components/Tabs";
 import {
   abilities,
   abilityStats,
   activities,
   aegisRows,
+  baseEffects,
   keywords,
   bosses,
   buckets,
   effects,
+  exoticArmor,
+  generatedExoticEffects,
   iconUrl,
   weaponById,
   weapons,
@@ -129,10 +134,18 @@ function simulationOf(build: Build): {
     effects,
   );
   const own = effectsOf(build.selections);
+  // Exotic armor (U8): granted and generated effects, kill buffs only if built up before
+  const exotic = exoticArmor.find((e) => e.id === build.exoticArmorId);
+  const fromExotic = exotic
+    ? exoticArmorEffects(exotic, effects, generatedExoticEffects, {
+        preBuilt: build.exoticPreBuilt,
+      })
+    : [];
+  const extra = [...abilityPart.grantedEffects, ...fromExotic];
   return {
     selected: [
       ...own,
-      ...abilityPart.grantedEffects.filter((e) => !own.includes(e)),
+      ...extra.filter((e, i) => !own.includes(e) && extra.indexOf(e) === i),
     ],
     options: {
       catalyst: build.catalyst,
@@ -162,6 +175,12 @@ function App() {
     initial.abilityStats,
   );
   const [openSlot, setOpenSlot] = useState<AbilityKind | null>(null);
+  const [exoticArmorId, setExoticArmorId] = useState(initial.exoticArmorId);
+  const [exoticPreBuilt, setExoticPreBuilt] = useState(initial.exoticPreBuilt);
+  const exotic = exoticArmor.find((e) => e.id === exoticArmorId);
+  const exoticHasPreBuilt = generatedExoticEffects.some(
+    (g) => g.exoticArmorId === exoticArmorId && g.activation === "preBuilt",
+  );
   const [comparison, setComparison] = useState(initial.comparison);
   const [copiedLink, setCopiedLink] = useState("");
   const [tab, setTab] = useState<TabId>("overview");
@@ -191,6 +210,8 @@ function App() {
     abilityChoice,
     abilityStats: abilityStatInputs,
     damagePhaseSeconds: isValid ? damagePhaseSeconds : 0,
+    exoticArmorId,
+    exoticPreBuilt,
   });
   const { selected, options } = simulationOf(currentBuild);
   const result = isValid
@@ -239,6 +260,8 @@ function App() {
         abilityChoice,
         abilityStats: abilityStatInputs,
         damagePhaseSeconds: 0,
+        exoticArmorId,
+        exoticPreBuilt,
       }),
     );
     return dpsByDamagePhase(
@@ -258,6 +281,8 @@ function App() {
     abilityChoice,
     abilityStatInputs,
     dpsChartSeconds,
+    exoticArmorId,
+    exoticPreBuilt,
   ]);
 
   const changeWeapon = (id: string) => {
@@ -271,6 +296,8 @@ function App() {
   };
   const changeClass = (next: GuardianClass) => {
     setGuardianClass(next);
+    if (exotic?.guardianClass && exotic.guardianClass !== next)
+      setExoticArmorId(undefined);
     setSelections((current) => selectionsFor(current, next, subclass));
     setAbilityChoice((current) => choiceFor(current, next, subclass));
   };
@@ -347,7 +374,8 @@ function App() {
       const entries = optimize({
         weapon,
         buckets,
-        effects,
+        // only effects.json: the generated aspects and fragments would multiply the combinations
+        effects: baseEffects,
         guardianClass,
         fixedSelections: fireteamSelections,
         fixedWindows,
@@ -570,21 +598,35 @@ function App() {
               <h2>Rüstung</h2>
               <h3 className="sub">Exotic</h3>
               <div className="tile-grid">
-                <span className="tile-wrap">
-                  <div
-                    className="tile placeholder"
-                    title="Exotic-Rüstung kommt in einer späteren Version."
-                  >
-                    <span
-                      className="icon ability-none"
-                      style={{ width: 40, height: 40 }}
+                <ExoticPicker
+                  entries={exoticArmorFor(exoticArmor, guardianClass)}
+                  selected={exotic}
+                  onSelect={(id) => {
+                    setExoticArmorId(id);
+                    setExoticPreBuilt(false);
+                  }}
+                />
+                {exoticHasPreBuilt && (
+                  <span className="tile-wrap">
+                    <button
+                      type="button"
+                      className="tile"
+                      aria-pressed={exoticPreBuilt}
+                      title="Kill-Buffs des Exotics vor der Damage Phase aufgebaut: aktiv ab 0 s für ihre Dauer, ohne Auffrischung (ein Boss, keine Adds)."
+                      onClick={() => setExoticPreBuilt((on) => !on)}
                     >
-                      ?
-                    </span>
-                    <span className="tile-label">folgt</span>
-                  </div>
-                </span>
+                      <span
+                        className="icon ability-none"
+                        style={{ width: 40, height: 40 }}
+                      >
+                        ↺
+                      </span>
+                      <span className="tile-label">Vorher aufgebaut</span>
+                    </button>
+                  </span>
+                )}
               </div>
+              {exotic && <p className="note">{exotic.reason}</p>}
               {pickerFor("mod", <h3 className="sub">Mods</h3>)}
 
               <h2>Stats</h2>

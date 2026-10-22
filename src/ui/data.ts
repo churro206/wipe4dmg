@@ -45,10 +45,13 @@ export const weaponById = (id: string): Weapon =>
   weapons.find((w) => w.id === id) ??
   weapons.find((w) => w.id === DEFAULT_WEAPON_ID)!;
 export const buckets = loadBuckets(rawBuckets);
-// Effects of effects.json and of the aspects and fragments (ADR 0015, U6-2; prebuilt ones from U8).
+// Effects of effects.json and of the aspects and fragments (ADR 0015, U6-2). An aspect or fragment
+// whose effect works only built up before the damage phase (e.g. Volatile Rounds after kills) counts
+// as built up when it is selected (owner, U8).
+export const baseEffects = loadEffects(rawEffects);
 export const effects = [
-  ...loadEffects(rawEffects),
-  ...loadSubclassEffects(rawSubclassEffects),
+  ...baseEffects,
+  ...loadSubclassEffects(rawSubclassEffects, { preBuilt: true }),
 ];
 export const bosses = loadBosses(rawBosses).filter(
   (boss) => boss.damagePhaseSeconds.value !== null,
@@ -69,7 +72,7 @@ export const abilities = loadAbilities(
 );
 // Exotic armor (ADR 0014) and the effects generated from its damage buffs (ADR 0015, U6).
 export const exoticArmor = ExoticArmorEntry.array().parse(rawExoticArmor);
-export const exoticArmorEffects = ExoticArmorEffect.array().parse(
+export const generatedExoticEffects = ExoticArmorEffect.array().parse(
   rawExoticArmorEffects,
 );
 export const linkRegistry: LinkRegistry = {

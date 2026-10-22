@@ -2,6 +2,9 @@
 
 ## Unveröffentlicht
 
+- **Exotic-Rüstung wählbar:** unter „Rüstung“ mit Suche und Filter nach Slot, nur Exotics der gewählten Klasse. Ein Hinweis sagt, was das Exotic im Rechner tut. Viele wirken über die Rotation, z. B. Star-Eater Scales nach dem Super-Cast oder Foetracer nach einem Ability-Treffer. Kill-Buffs (z. B. Doom Fang, Khepri's Sting) gelten nur mit dem Schalter „Vorher aufgebaut“, weil ein Boss ohne Adds keine Kills liefert. Exotic und Schalter stehen im Build-Link (Format 4).
+- **Aspects und Fragments** aus allen Subklassen, per Regel aus Compendium und Court: z. B. Spark of Shock (Jolt), Echo of Undermining (Weaken nach Void-Grenade), Ember of Torches (Radiant nach Melee-Treffer), Zustände wie Amplified oder Woven Mail für Exotics wie No Backup Plans.
+- **Keywords:** Ignition, Jolt, Volatile, Unravel und Bolt Charge als eigener Schaden; Abilities setzen sie mit ihren Treffern.
 - Versionsanzeige unten auf der Seite.
 - **Waffenauswahl:** 49 exotische Special- und Heavy-Waffen wählbar, mit Suche und Filter nach Waffentyp. Ein festgehaltener Vergleich behält seine Waffe, so lassen sich zwei Waffen vergleichen. Effects, die zur Waffe nicht passen, sind ausgeblendet (z. B. Ember of Ashes bei Truth). Der Katalysator erscheint nur bei Waffen mit Katalysator, mit Hinweis, wenn er im Spiel nur begrenzt wirkt.
 - Waffen-Pakete im Rechner vorbereitet: Der Katalysator wirkt bei importierten Waffen als Faktor (z. B. Truth ×1,40), schon eingerechnete Buffs zählen nicht doppelt.

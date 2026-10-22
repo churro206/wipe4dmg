@@ -13,6 +13,7 @@ import type { EffectWindowInput } from "../engine/effectWindows";
 import { abilitiesFor, canProvide } from "../engine/providers";
 import {
   abilities,
+  exoticArmor,
   abilityStats,
   DEFAULT_WEAPON_ID,
   effects,
@@ -242,6 +243,8 @@ export function buildOfState(state: {
   abilityChoice: AbilityChoice;
   abilityStats: AbilityStatInputs;
   damagePhaseSeconds: number;
+  exoticArmorId?: string;
+  exoticPreBuilt?: boolean;
 }): Build {
   const picks = abilitiesOfChoice(state.abilityChoice);
   return {
@@ -249,6 +252,10 @@ export function buildOfState(state: {
     guardianClass: state.guardianClass,
     subclass: state.subclass,
     catalyst: state.catalyst,
+    ...(state.exoticArmorId ? { exoticArmorId: state.exoticArmorId } : {}),
+    ...(state.exoticArmorId && state.exoticPreBuilt
+      ? { exoticPreBuilt: true }
+      : {}),
     selections: state.selections,
     effectWindows: windowsFor(effectsOf(state.selections), state.windowInputs),
     damagePhaseSeconds: state.damagePhaseSeconds,
@@ -267,6 +274,11 @@ export function describeBuild(build: Build): string {
     ),
     ...effectsOf(build.selections).map((effect) => effect.name),
   ];
+  const exotic = exoticArmor.find((e) => e.id === build.exoticArmorId);
+  if (exotic)
+    names.unshift(
+      `${exotic.name}${build.exoticPreBuilt ? " (vorher aufgebaut)" : ""}`,
+    );
   if (build.catalyst) names.unshift("Katalysator");
   names.unshift(weaponById(build.weaponId).name);
   const what = names.length > 0 ? names.join(", ") : "ohne Effects";
@@ -283,6 +295,8 @@ export type LinkState = {
   windowInputs: Record<string, WindowInput>;
   abilityChoice: AbilityChoice;
   abilityStats: AbilityStatInputs;
+  exoticArmorId: string | undefined;
+  exoticPreBuilt: boolean;
   comparison: Build | null;
   message: string | null;
 };
@@ -299,6 +313,8 @@ export function stateFromLink(search: string): LinkState {
     windowInputs: {},
     abilityChoice: {},
     abilityStats: DEFAULT_ABILITY_STATS,
+    exoticArmorId: undefined,
+    exoticPreBuilt: false,
     comparison: null,
     message: null,
   };
@@ -331,6 +347,8 @@ export function stateFromLink(search: string): LinkState {
         build.subclass,
       ),
       abilityStats: build.abilityStats ?? DEFAULT_ABILITY_STATS,
+      exoticArmorId: build.exoticArmorId,
+      exoticPreBuilt: build.exoticPreBuilt ?? false,
       catalyst: build.catalyst,
       windowInputs: Object.fromEntries(
         Object.entries(build.effectWindows).map(([id, window]) => [
