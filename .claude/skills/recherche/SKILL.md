@@ -12,11 +12,21 @@ Regeln aus `CLAUDE.md` gelten weiter: niemals raten, jeder Wert mit `source` und
 
 1. **Frage festlegen**, ein Satz pro Frage, z. B. „In welchem Bucket liegt der Bonus von Hallowfire Heart?“.
    Art der Frage: Wert · Bucket/Stacking · Bedingung/Dauer · Timing (RPM, Cast, Reload) · Zuordnung (Klasse, Slot, Element).
-2. **Snapshots im Projekt zuerst** (kostet keine Abrufe): `grep`/`node -e` über `src/data/*.json` (siehe Katalog, Spalte „Snapshot“).
+2. **Snapshots im Projekt zuerst** (kostet keine Abrufe): Grep/Read über `src/data/*.json`, Auswertungen als Skript `node scripts/<name>.ts` (siehe Katalog, Spalte „Snapshot“).
 3. **Online nur die Reiter aus dem Katalog, die zur Art der Frage passen.** Sheets per `htmlview/sheet?headers=true&gid=…` (CSV ist bei Court und Compendium gesperrt) mit `curl` in den Scratchpad, dann gezielt filtern; nie ganze Seiten in den Kontext laden.
 4. **Ergebnis mit Zitat**: Quelle, Reiter, genauer Text. Bei Widerspruch: Regel nach ADR 0011 (Verhältnis) oder ADR 0014 (Regelkette) anwenden.
 5. **Neue Quelle gefunden?** Als Snapshot mit Import-Skript und Test vorschlagen (Muster: `scripts/import-court.ts`, `scripts/lib/court.ts`). Den Katalog unten ergänzen.
 6. **Lücke nur mit Nachweis melden** (Definition of Done): Tabelle „Quelle | Reiter | Ergebnis“ mit jeder Quelle, die zur Art der Frage passt. Fehlt eine passende Quelle in der Tabelle, ist die Recherche nicht fertig.
+
+## Zerlegen und Gegenrechnen
+
+Steht ein Wert nicht direkt in einer Quelle, lässt er sich aber aus mehreren herleiten (z. B. ein Aegis-Paket in Treffer und Keyword-Schaden zerlegen), dann selbst herleiten und prüfen statt fragen:
+
+1. **Zerlegen:** Teile mit Anzahl, Zeitpunkt und Keywords aus den Texten (Compendium, Clarity) und Werten (Aegis, Quantum) bestimmen.
+2. **Nachstellen:** Die Messung der Quelle mit ihren Annahmen in der Engine nachstellen (gleiche Anzahl Einsätze, gleiche Buffs wie „Ember of Ashes“, Spielweise optimal wie bei Aegis).
+3. **Gegenrechnen:** Modell gegen Messung, Abweichung in Prozent. Toleranz: Abilities ±10 % (ADR 0009), Waffen ±3 % (ADR 0011).
+4. **Melden:** Eine Tabelle „Quelle | Modell | Abweichung“ mit der Zerlegung. Nichts darf doppelt zählen oder fehlen.
+5. **Nur bei Abweichung über der Toleranz** weiter recherchieren oder den Inhaber fragen.
 
 **Budget:** höchstens 10 Online-Abrufe pro Frage, Snapshots zählen nicht. Danach Stand melden und fragen, ob weitergesucht wird. Mehrere Fragen mit denselben Reitern bündeln.
 

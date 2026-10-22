@@ -45,14 +45,15 @@ tests/         Vitest-Tests für die Engine. Helfer für generierte Dokumente in
 
 - Keine Zahlenwerte im Code. Alle Spielwerte stehen in `src/data`.
 - Jeder Wert in einer Data File hat ein `source`-Objekt. Unbekannte Werte sind `null` mit Status `missing`. Rate niemals Werte.
-- **Quellen zuerst:** Fehlt ein Wert oder eine Zuordnung, oder widersprechen sich Quellen, zuerst eine Community-Quelle suchen (Clarity, DIM-Daten, weitere Reiter von Aegis und Quantum, Compendium, Court, Manifest) und als Snapshot mit Regel einbinden. Mechaniken nicht selbst herleiten. **Vor jeder gemeldeten Lücke den Skill `recherche` abarbeiten** (`.claude/skills/recherche/SKILL.md`: Quellenkatalog mit Reitern, Ablauf, Budget); eine Lücke nur mit Tabelle der geprüften Quellen melden. Den Inhaber nur fragen, wenn Quellen sich widersprechen und keine Regel entscheidet, oder bei Entscheidungen, die ihm zustehen (Umfang, Oberfläche, Prioritäten). Overrides nur mit Zitat aus einem Snapshot.
+- **Quellen zuerst:** Fehlt ein Wert oder eine Zuordnung, oder widersprechen sich Quellen, zuerst eine Community-Quelle suchen (Clarity, DIM-Daten, weitere Reiter von Aegis und Quantum, Compendium, Court, Manifest) und als Snapshot mit Regel einbinden. **Herleiten ist erlaubt und erwünscht, wenn eine Gegenrechnung gegen eine Quelle es prüft:** Das Modell muss die Messung, aus der etwas abgeleitet wurde, innerhalb der Toleranz wieder ergeben (Gate). Zerlegte Pakete werden immer gegengerechnet, damit nichts doppelt zählt oder fehlt (Ablauf „Zerlegen und Gegenrechnen“ im Skill `recherche`). **Vor jeder gemeldeten Lücke den Skill `recherche` abarbeiten** (`.claude/skills/recherche/SKILL.md`: Quellenkatalog mit Reitern, Ablauf, Budget); eine Lücke nur mit Tabelle der geprüften Quellen melden. Den Inhaber nur fragen, wenn die Gegenrechnung scheitert, Quellen sich widersprechen und keine Regel entscheidet, oder bei Entscheidungen, die ihm zustehen (Umfang, Oberfläche, Prioritäten). Overrides nur mit Zitat aus einem Snapshot.
+- **Spielweise:** Gespielt wird optimal wie von einem erfahrenen Spieler. Im Zweifel gelten die Annahmen von Aegis (z. B. Precision, „average“, vorher aufgebaute Buffs). Ein Boss, keine Adds (ADR 0015).
 - Jede Änderung an `src/engine` braucht einen Test. Schreibe den Test zuerst.
 - Pro Bucket zählt die Stacking-Regel aus `buckets.json`. Buckets multiplizieren sich untereinander.
 - Der Simulator arbeitet mit Damage Instances auf einer Zeitachse (ADR 0001).
 - `src/engine` nutzt keine Browser-APIs (kein `window`, kein `document`, kein `localStorage`).
   Der spätere Discord Bot führt die Engine in Node.js auf einem Raspberry Pi aus (US-13).
 - Baue keine Funktion auf Vorrat. Baue nur, was die aktuelle User Story braucht.
-- Nutze zum Suchen und Lesen die eingebauten Werkzeuge Grep, Glob und Read. Baue keine Shell-Pipelines mit sed, awk oder paste. Für Auswertungen schreibst du ein kurzes Skript in `scripts/` und führst es mit `npx tsx` aus.
+- Nutze zum Suchen und Lesen die eingebauten Werkzeuge Grep, Glob und Read. Baue keine Shell-Pipelines mit sed, awk oder paste. Für Auswertungen schreibst du ein kurzes Skript in `scripts/` und führst es mit `node scripts/<name>.ts` aus (Node führt TypeScript direkt aus, wie die npm-Skripte).
 
 ## Arbeitsweise
 
