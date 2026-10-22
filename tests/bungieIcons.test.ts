@@ -8,6 +8,7 @@ import {
 import rawAbilities from "../src/data/abilities.json";
 import rawManifest from "../src/data/manifest-abilities.json";
 import rawEffects from "../src/data/effects.json";
+import rawSubclassEffects from "../src/data/subclass-effects.json";
 import rawIconRefs from "../src/data/icon-refs.json";
 import rawIcons from "../src/data/icons.json";
 import {
@@ -18,7 +19,7 @@ import {
   type ManifestAbility,
 } from "../src/data/schema";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
-import { loadEffects } from "../src/engine/loadData";
+import { loadEffects, loadSubclassEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 
 const effects = loadEffects(rawEffects);
@@ -122,9 +123,15 @@ describe("iconFileName", () => {
 describe("icons data file", () => {
   const index = IconIndex.parse(rawIcons);
 
-  it("has an icon for every effect, weapon, ability and extra", () => {
+  // Aspects and fragments too: a new subclass item without a run of import:icons shows initials.
+  const allEffects = [
+    ...effects,
+    ...loadSubclassEffects(rawSubclassEffects, { preBuilt: true }),
+  ];
+
+  it("has an icon for every effect, aspect, fragment, weapon, ability and extra", () => {
     expect(abilityRefs.length).toBeGreaterThan(0);
-    for (const ref of collectIconRefs(effects, weapons, extras)) {
+    for (const ref of collectIconRefs(allEffects, weapons, extras)) {
       expect(index.icons[ref.key], ref.key).toBeDefined();
     }
   });
