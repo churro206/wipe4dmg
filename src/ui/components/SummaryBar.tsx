@@ -28,7 +28,7 @@ export function SummaryBar({
             {integer.format(row.a)}
             {withComparison && row.relative !== null && (
               <span className="delta">
-                {signedPercent.format(row.relative)} zum Vergleich
+                {signedPercent.format(row.relative)} vs. comparison
               </span>
             )}
           </dd>

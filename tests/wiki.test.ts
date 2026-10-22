@@ -15,7 +15,7 @@ Kategorie: Damage over Time
 
 Technisch.
 
-## Für Spieler
+## For players
 
 Scorch zündet bei 100 Stacks.
 
@@ -29,7 +29,7 @@ Ein Shot gibt 9 Explosionen.
 `;
 
 describe("playerSection", () => {
-  it("returns the text under 'Für Spieler' up to the next level-2 heading", () => {
+  it("returns the text under 'For players' up to the next level-2 heading", () => {
     expect(playerSection(mechanic)).toBe(
       "Scorch zündet bei 100 Stacks.\n\n### Beispiel\n\nEin Shot gibt 9 Explosionen.",
     );
@@ -82,13 +82,13 @@ describe("rewriteLinks", () => {
 describe("wikiPages", () => {
   const files = {
     "/docs/mechanics/how-it-works.md":
-      "# Wie rechnet der Rechner?\n\n## Für Spieler\n\nSo.\n",
+      "# Wie rechnet der Rechner?\n\n## For players\n\nSo.\n",
     "/docs/mechanics/scorch-and-ignition.md": mechanic,
     "/docs/mechanics/damage-stacking.md":
-      "# Damage Stacking\n\n## Für Spieler\n\nSiehe [Scorch](scorch-and-ignition.md).\n",
+      "# Damage Stacking\n\n## For players\n\nSiehe [Scorch](scorch-and-ignition.md).\n",
     "/docs/mechanics/bolt-charge.md": "# Bolt Charge\n\n## Regeln\n\n1. x\n",
     "/docs/mechanics/README.md":
-      "# Mechanics: Übersicht\n\n## Für Spieler\n\nNein.\n",
+      "# Mechanics: Übersicht\n\n## For players\n\nNein.\n",
     "/docs/coverage.md": "# Abdeckung des Rechners\n\nTabelle.\n",
     "/docs/roadmap.md": "# Roadmap\n\nSiehe [Abdeckung](coverage.md).\n",
   };
@@ -157,9 +157,9 @@ describe("wiki pages from the real documents", () => {
   ]);
   const pages = wikiPages(files);
 
-  it("open with 'Wie rechnet der Rechner?'", () => {
+  it("open with 'How does the calculator work?'", () => {
     expect(pages[0].id).toBe("how-it-works");
-    expect(pages[0].title).toBe("Wie rechnet der Rechner?");
+    expect(pages[0].title).toBe("How does the calculator work?");
     expect(pages[0].markdown.length).toBeGreaterThan(0);
   });
 });

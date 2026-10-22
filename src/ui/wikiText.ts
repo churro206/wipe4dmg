@@ -1,5 +1,5 @@
 // Wiki pages from the Markdown documents (US-15, ADR 0010). Mechanics show only their section
-// "Für Spieler"; coverage and roadmap show whole. Pure functions, no file access.
+// "For players"; coverage and roadmap show whole. Pure functions, no file access.
 
 export type WikiGroup = "start" | "mechanics" | "status";
 
@@ -10,13 +10,13 @@ export type WikiPage = {
   markdown: string; // body without the level-1 heading, links rewritten
 };
 
-const PLAYER_HEADING = "## Für Spieler";
+const PLAYER_HEADING = "## For players";
 const START_ID = "how-it-works";
 const STATUS_IDS = ["coverage", "roadmap"];
 const MECHANICS_FOLDER = "/mechanics/";
 const MECHANICS_INDEX = "README";
 
-/** Text under "## Für Spieler" up to the next level-2 heading, or null without the section. */
+/** Text under "## For players" up to the next level-2 heading, or null without the section. */
 export function playerSection(markdown: string): string | null {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const start = lines.findIndex((line) => line.trim() === PLAYER_HEADING);
@@ -62,7 +62,7 @@ export function wikiPages(files: Record<string, string>): WikiPage[] {
       return [];
     const section = isStatus ? withoutTitle(content) : playerSection(content);
     if (section === null) return [];
-    // Subheadings of "Für Spieler" (###) are the sections of the page (##).
+    // Subheadings of "For players" (###) are the sections of the page (##).
     const body = isStatus ? section : section.replace(/^#(#{2,}) /gm, "$1 ");
     const group: WikiGroup = isStatus
       ? "status"
@@ -81,7 +81,7 @@ export function wikiPages(files: Record<string, string>): WikiPage[] {
         order.indexOf(a.group) - order.indexOf(b.group) ||
         (a.group === "status"
           ? STATUS_IDS.indexOf(a.id) - STATUS_IDS.indexOf(b.id)
-          : a.title.localeCompare(b.title, "de")),
+          : a.title.localeCompare(b.title, "en")),
     );
 }
 

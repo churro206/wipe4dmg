@@ -95,7 +95,7 @@ import {
 import { factor, integer, seconds } from "./format";
 
 const TABS = [
-  { id: "overview", label: "Übersicht" },
+  { id: "overview", label: "Overview" },
   { id: "rotation", label: "Rotation" },
   { id: "breakdown", label: "Breakdown" },
   { id: "optimizer", label: "Optimizer" },
@@ -103,7 +103,7 @@ const TABS = [
 type TabId = (typeof TABS)[number]["id"];
 // Calculator or wiki (US-15), switched in the header.
 const VIEWS = [
-  { value: "calculator", label: "Rechner" },
+  { value: "calculator", label: "Calculator" },
   { value: "wiki", label: "Wiki" },
 ] as const;
 type View = (typeof VIEWS)[number]["value"];
@@ -405,7 +405,7 @@ function App() {
           <img className="logo" src="/logo.png" alt="" width={48} height={48} />
           <h1>wipe4dmg</h1>
           <SegmentedControl
-            label="Ansicht"
+            label="View"
             options={[...VIEWS]}
             value={view}
             onChange={setView}
@@ -437,7 +437,7 @@ function App() {
                     value={bossId}
                     onChange={(event) => selectBoss(event.target.value)}
                   >
-                    <option value="">– eigene Eingabe –</option>
+                    <option value="">– custom –</option>
                     {activities.map((activity) => (
                       <optgroup key={activity} label={activity}>
                         {bosses
@@ -458,7 +458,7 @@ function App() {
               </div>
               {boss?.description && <p className="note">{boss.description}</p>}
 
-              <h2>Waffe</h2>
+              <h2>Weapon</h2>
               <div className="tile-grid">
                 <WeaponPicker
                   weapons={weapons}
@@ -475,23 +475,23 @@ function App() {
                     >
                       <Icon
                         iconKey={`catalyst:${weapon.id}`}
-                        label="Katalysator"
+                        label="Catalyst"
                       />
-                      <span className="tile-label">Katalysator</span>
+                      <span className="tile-label">Catalyst</span>
                     </button>
                   </span>
                 )}
               </div>
               {weapon.options?.some((o) => o.kind === "catalyst") && (
                 <p className="note">
-                  Katalysator:{" "}
+                  Catalyst:{" "}
                   {weapon.options
                     .filter((o) => o.kind === "catalyst")
                     .map(
                       (o) =>
                         `${o.name} ×${factor.format(o.factor.value ?? 1)}${
                           o.durationSeconds !== null || o.condition !== null
-                            ? " (gilt hier die ganze Damage Phase; im Spiel begrenzt)"
+                            ? " (applies for the whole Damage Phase here; limited in game)"
                             : ""
                         }`,
                     )
@@ -499,18 +499,18 @@ function App() {
                 </p>
               )}
 
-              <h2>Klasse</h2>
+              <h2>Class</h2>
               <SegmentedControl
-                label="Klasse"
+                label="Class"
                 options={(Object.keys(CLASS_LABELS) as GuardianClass[]).map(
                   (id) => ({ value: id, label: CLASS_LABELS[id] }),
                 )}
                 value={guardianClass}
                 onChange={changeClass}
               />
-              <h2>Subklasse</h2>
+              <h2>Subclass</h2>
               <SegmentedControl
-                label="Subklasse"
+                label="Subclass"
                 options={(Object.keys(SUBCLASS_LABELS) as Subclass[]).map(
                   (id) => ({
                     value: id,
@@ -523,12 +523,13 @@ function App() {
               />
 
               <h2>
-                Fähigkeiten
+                Abilities
                 <InfoTip>
-                  Super, Grenade und Melee. Der Schaden pro Einsatz kommt meist
-                  als gemessener Wert von Aegis; ihre Stats stehen unter
-                  „Stats“. Jede Fähigkeit wird zu Beginn der Damage Phase
-                  eingesetzt; während eines Supers feuert die Waffe nicht.
+                  Super, Grenade and Melee. Damage per cast is mostly a
+                  measured value from Aegis; their stats are under “Stats”.
+                  Each ability is cast at the start of the Damage Phase, or
+                  when set in the Rotation; the weapon does not fire during a
+                  Super.
                 </InfoTip>
               </h2>
               <AbilityPicker
@@ -556,9 +557,9 @@ function App() {
                 <h3 className="sub">Class Ability</h3>,
               )}
               {pickerFor("aspect", <h2>Aspects</h2>)}
-              {pickerFor("fragment", <h2>Fragmente</h2>)}
+              {pickerFor("fragment", <h2>Fragments</h2>)}
 
-              <h2>Rüstung</h2>
+              <h2>Armor</h2>
               <h3 className="sub">Exotic</h3>
               <div className="tile-grid">
                 <ExoticPicker
@@ -575,7 +576,7 @@ function App() {
                       type="button"
                       className="tile"
                       aria-pressed={exoticPreBuilt}
-                      title="Kill-Buffs des Exotics vor der Damage Phase aufgebaut: aktiv ab 0 s für ihre Dauer, ohne Auffrischung (ein Boss, keine Adds)."
+                      title="Kill buffs of the exotic stacked before the Damage Phase: active from 0 s for their duration, without refresh (one boss, no adds)."
                       onClick={() => setExoticPreBuilt((on) => !on)}
                     >
                       <span
@@ -584,7 +585,7 @@ function App() {
                       >
                         ↺
                       </span>
-                      <span className="tile-label">Vorher aufgebaut</span>
+                      <span className="tile-label">Pre-stacked</span>
                     </button>
                   </span>
                 )}
@@ -617,7 +618,7 @@ function App() {
                 }
               />
 
-              {pickerFor("artifact", <h2>Artefakt</h2>)}
+              {pickerFor("artifact", <h2>Artifact</h2>)}
 
               <details
                 className="fireteam"
@@ -627,7 +628,7 @@ function App() {
                 <summary>
                   {PROVIDER_LABELS.fireteamSupport}
                   {fireteamSelections.length > 0 &&
-                    ` (${fireteamSelections.length} gewählt)`}
+                    ` (${fireteamSelections.length} selected)`}
                 </summary>
                 <EffectPicker
                   weaponElement={weapon.element}
@@ -643,7 +644,7 @@ function App() {
               </details>
             </section>
 
-            <section className="results" aria-label="Ergebnis">
+            <section className="results" aria-label="Result">
               <div className="results-head">
                 {result ? (
                   <SummaryBar
@@ -661,18 +662,18 @@ function App() {
                   />
                 ) : (
                   <p className="result">
-                    Gib eine Damage Phase ein oder wähle einen Boss.
+                    Enter a Damage Phase or pick a boss.
                   </p>
                 )}
                 <div className="toolbar">
                   <button type="button" onClick={copyLink} disabled={!link}>
                     {copiedLink !== "" && copiedLink === link
-                      ? "Link kopiert"
-                      : "Link kopieren"}
+                      ? "Link copied"
+                      : "Copy link"}
                   </button>
                   {comparison ? (
                     <button type="button" onClick={() => setComparison(null)}>
-                      Vergleich entfernen
+                      Remove comparison
                     </button>
                   ) : (
                     <button
@@ -680,14 +681,14 @@ function App() {
                       onClick={() => setComparison(currentBuild)}
                       disabled={!isValid}
                     >
-                      Als Vergleich festhalten
+                      Keep as comparison
                     </button>
                   )}
                   <InfoTip>
-                    Effects wirken in ihrem Zeitfenster aus der Rotation.{" "}
+                    Effects apply in their window from the Rotation.{" "}
                     {weapon.intrinsicParts.length > 0
-                      ? "Ignitions und Taken Seeker sind enthalten, Burn-Schaden noch nicht."
-                      : "Der Schaden pro Shot ist ein gemessener Durchschnitt (Aegis) inklusive Intrinsic; Shots und Timing aus Aegis oder Quantum."}
+                      ? "Ignitions and Taken Seeker are included, burn damage not yet."
+                      : "Damage per shot is a measured average (Aegis) including the intrinsic; shots and timing from Aegis or Quantum."}
                   </InfoTip>
                 </div>
                 {initial.message && <p className="note">{initial.message}</p>}
@@ -700,7 +701,7 @@ function App() {
                       {comparison && comparisonResult && (
                         <div className="comparison">
                           <p className="note">
-                            Vergleich: {describeBuild(comparison)}. Gleiche
+                            Comparison: {describeBuild(comparison)}. Same
                             Damage Phase ({seconds.format(damagePhaseSeconds)}{" "}
                             s).
                           </p>
@@ -820,20 +821,20 @@ function App() {
                           onClick={runOptimizer}
                           disabled={optimizing}
                         >
-                          {optimizing ? "Rechnet …" : "Optimizer starten"}
+                          {optimizing ? "Calculating …" : "Run optimizer"}
                         </button>
                         <InfoTip>
-                          Probiert alle erlaubten Kombinationen deiner eigenen
-                          Effects für {CLASS_LABELS[guardianClass]} in allen
-                          Subklassen. Fireteam Support und seine Zeitfenster
-                          bleiben wie eingestellt, eigene Effects laufen mit
-                          ihrer Standarddauer. Effects ohne Nutzen lässt er weg.
+                          Tries every allowed combination of your own
+                          effects for {CLASS_LABELS[guardianClass]} in all
+                          subclasses. Fireteam Support and its windows
+                          stay as set, your own effects run with
+                          their default duration. Effects without benefit are left out.
                         </InfoTip>
                       </div>
                       {optimizer && optimizer.forKey !== optimizerKey && (
                         <p className="note">
-                          Die Liste gilt für einen früheren Stand. Starte den
-                          Optimizer neu.
+                          This list is for an earlier build. Run the
+                          optimizer again.
                         </p>
                       )}
                       {optimizer && (
@@ -859,12 +860,12 @@ function App() {
         )}
       </main>
       <footer>
-        wipe4dmg v{__APP_VERSION__} · Destiny-Inhalte und Icons © Bungie. Werte
-        aus Community-Quellen (Quantum Damage-ics, Aegis, Destiny Data
-        Compendium, Court). Perk-Daten:{" "}
-        <a href="https://www.d2clarity.com">Clarity</a> (Feedback zu Perk-Texten
-        im <a href="https://url.d2clarity.com/discord">Clarity-Discord</a>;
-        Änderungen durch uns sind gekennzeichnet).
+        wipe4dmg v{__APP_VERSION__} · Destiny content and icons © Bungie. Values
+        from community sources (Quantum Damage-ics, Aegis, Destiny Data
+        Compendium, Court). Perk data:{" "}
+        <a href="https://www.d2clarity.com">Clarity</a> (feedback on perk texts
+        in the <a href="https://url.d2clarity.com/discord">Clarity Discord</a>;
+        our changes are marked).
       </footer>
     </>
   );
@@ -894,7 +895,7 @@ function BreakdownPanel({
     options,
   );
   if (entries.length === 0) {
-    return <p className="note">Keine Multiplier gewählt.</p>;
+    return <p className="note">No multipliers selected.</p>;
   }
   // One column per damage source of the build: the weapon, then each ability (super, grenade, melee).
   const shares = damageShares(result);
@@ -907,7 +908,7 @@ function BreakdownPanel({
     {
       key: "weapon",
       abilityId: undefined as string | undefined,
-      label: "Waffe",
+      label: "Weapon",
       damage: shares
         .filter((s) => s.damageSource === "weapon")
         .reduce((sum, s) => sum + s.damage, 0),
@@ -943,7 +944,7 @@ function BreakdownPanel({
                   )}
                 </th>
               ))}
-              <th>Beitrag</th>
+              <th>Contribution</th>
             </tr>
           </thead>
           <tbody>
@@ -973,7 +974,7 @@ function BreakdownPanel({
           </tbody>
           <tfoot>
             <tr>
-              <th>Schaden</th>
+              <th>Damage</th>
               {columns.map((column) => (
                 <th key={column.key}>{integer.format(column.damage)}</th>
               ))}
@@ -983,8 +984,8 @@ function BreakdownPanel({
         </table>
       </div>
       <p className="note">
-        Multiplier, wenn der Effect aktiv ist. „–“: Der Bucket wirkt nicht auf
-        diese Quelle. Beitrag: Total Damage minus Total Damage ohne den Bucket.
+        Multiplier while the effect is active. “–”: the bucket does not apply to
+        this source. Contribution: Total Damage minus Total Damage without the bucket.
       </p>
     </>
   );

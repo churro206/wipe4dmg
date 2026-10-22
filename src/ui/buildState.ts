@@ -63,7 +63,7 @@ export const SUBCLASS_LABELS: Record<Subclass, string> = {
 };
 export const CLASS_LABELS: Record<GuardianClass, string> = {
   titan: "Titan",
-  hunter: "Jäger",
+  hunter: "Hunter",
   warlock: "Warlock",
 };
 
@@ -277,11 +277,11 @@ export function describeBuild(build: Build): string {
   const exotic = exoticArmor.find((e) => e.id === build.exoticArmorId);
   if (exotic)
     names.unshift(
-      `${exotic.name}${build.exoticPreBuilt ? " (vorher aufgebaut)" : ""}`,
+      `${exotic.name}${build.exoticPreBuilt ? " (pre-stacked)" : ""}`,
     );
-  if (build.catalyst) names.unshift("Katalysator");
+  if (build.catalyst) names.unshift("Catalyst");
   names.unshift(weaponById(build.weaponId).name);
-  const what = names.length > 0 ? names.join(", ") : "ohne Effects";
+  const what = names.length > 0 ? names.join(", ") : "no effects";
   return `${CLASS_LABELS[build.guardianClass]} ${SUBCLASS_LABELS[build.subclass]}: ${what}`;
 }
 
@@ -372,18 +372,18 @@ export function stateFromLink(search: string): LinkState {
           .join(" ") || null,
     };
   } catch {
-    return { ...empty, message: "Der Link enthält keinen gültigen Build." };
+    return { ...empty, message: "The link does not contain a valid build." };
   }
 }
 
 /** Hint about parts of a link from a newer version; null if everything is known. */
 function unknownMessage(effects: number, abilities: number): string | null {
   const parts = [
-    effects > 0 ? `${effects} unbekannte Effects` : "",
-    abilities > 0 ? `${abilities} unbekannte Fähigkeiten` : "",
+    effects > 0 ? `${effects} unknown effects` : "",
+    abilities > 0 ? `${abilities} unknown abilities` : "",
   ].filter(Boolean);
   return parts.length > 0
-    ? `${parts.join(" und ")} im Link ignoriert (neuere Version?).`
+    ? `${parts.join(" and ")} in the link were ignored (newer version?).`
     : null;
 }
 

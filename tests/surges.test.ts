@@ -143,7 +143,7 @@ describe("replacedMessage", () => {
         effects,
       ),
     ).toBe(
-      "Solar Surge 4x gibt es nur über Exotic-Rüstung; der Link nutzt jetzt Surge 3x.",
+      "Solar Surge 4x is only available from exotic armor; the link now uses Surge 3x.",
     );
   });
 

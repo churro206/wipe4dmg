@@ -26,7 +26,7 @@ export function StatSliders({
             max={row.max}
             step={1}
             value={row.value}
-            aria-label={`${row.label}-Stat`}
+            aria-label={`${row.label} stat`}
             onChange={(event) => onStat(row.kind, Number(event.target.value))}
           />
           <input
@@ -35,7 +35,7 @@ export function StatSliders({
             max={row.max}
             step={1}
             value={row.value}
-            aria-label={`${row.label}-Stat als Zahl`}
+            aria-label={`${row.label} stat as a number`}
             onChange={(event) => {
               const value = Number(event.target.value);
               if (Number.isFinite(value)) {

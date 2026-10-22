@@ -54,7 +54,7 @@ export function AbilityPicker({
       {open && (
         <div
           className="tile-grid ability-options"
-          aria-label={`${open.label} wählen`}
+          aria-label={`Choose ${open.label}`}
         >
           <span className="tile-wrap">
             <button
@@ -69,7 +69,7 @@ export function AbilityPicker({
               >
                 –
               </span>
-              <span className="tile-label">keine</span>
+              <span className="tile-label">none</span>
             </button>
           </span>
           {open.options.map((ability) => (
@@ -84,7 +84,7 @@ export function AbilityPicker({
           ))}
           {open.options.length === 0 && (
             <p className="note">
-              Für diese Subklasse ist noch nichts im Rechner.
+              Nothing for this subclass in the calculator yet.
             </p>
           )}
         </div>
@@ -131,7 +131,7 @@ function AbilityTile({
         <span className="tile-label">
           {ariaExpanded === undefined
             ? label
-            : `${label}: ${ability?.name ?? "keine"}`}
+            : `${label}: ${ability?.name ?? "none"}`}
         </span>
       </button>
       {ability && (

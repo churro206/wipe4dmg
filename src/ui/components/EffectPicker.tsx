@@ -80,7 +80,7 @@ function EffectTile({
           <span key={line}>{line}</span>
         ))}
         <span>Aktiv: {describeDuration(effect)}</span>
-        {group && <span>Pro Build nur {group}</span>}
+        {group && <span>Only {group} per build</span>}
       </span>
     </span>
   );

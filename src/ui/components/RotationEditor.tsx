@@ -21,7 +21,7 @@ export function RotationEditor({
 }) {
   if (effects.length === 0) {
     return (
-      <p className="note">Wähle Effects, um ihre Zeitfenster festzulegen.</p>
+      <p className="note">Pick effects to set their windows.</p>
     );
   }
   return (
@@ -31,11 +31,11 @@ export function RotationEditor({
           <th>Effect</th>
           <th>Start (s)</th>
           <th>
-            Dauer (s){" "}
+            Duration (s){" "}
             <InfoTip>
-              Leer heißt: bis zum Ende der Damage Phase. Vorbelegt ist die Dauer
-              aus den Daten. Frischt ein Mitspieler einen Effect auf, trag eine
-              längere Dauer ein.
+              Empty means until the end of the Damage Phase. The default is the
+              duration from the data. If a teammate refreshes an effect, enter a
+              longer duration.
             </InfoTip>
           </th>
           <th>Uptime</th>
@@ -60,7 +60,7 @@ export function RotationEditor({
               <td>
                 <input
                   inputMode="decimal"
-                  aria-label={`Start von ${effect.name} in Sekunden`}
+                  aria-label={`Start of ${effect.name} in seconds`}
                   value={input.start}
                   onChange={(event) =>
                     onChange(effect, { start: event.target.value })
@@ -70,8 +70,8 @@ export function RotationEditor({
               <td>
                 <input
                   inputMode="decimal"
-                  placeholder="bis Ende"
-                  aria-label={`Dauer von ${effect.name} in Sekunden`}
+                  placeholder="to end"
+                  aria-label={`Duration of ${effect.name} in seconds`}
                   value={input.duration}
                   onChange={(event) =>
                     onChange(effect, { duration: event.target.value })

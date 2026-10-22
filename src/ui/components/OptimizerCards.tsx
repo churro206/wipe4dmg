@@ -74,10 +74,10 @@ export function OptimizerCards({
             </span>
             <span className="row-actions">
               <button type="button" onClick={() => onApply(entry)}>
-                Übernehmen
+                Apply
               </button>
               <button type="button" onClick={() => onCompare(entry)}>
-                Vergleichen
+                Compare
               </button>
             </span>
           </li>

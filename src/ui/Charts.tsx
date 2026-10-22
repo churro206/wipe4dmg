@@ -22,12 +22,12 @@ import { Icon } from "./components/Icon";
 import type { BreakdownEntry } from "../engine/breakdown";
 import { keywords } from "./data";
 
-const integer = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 });
-const percent = new Intl.NumberFormat("de-DE", {
+const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
+const percent = new Intl.NumberFormat("en-US", {
   style: "percent",
   maximumFractionDigits: 1,
 });
-const seconds = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 1 });
+const seconds = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
 
 // Color follows the kind of damage, never its rank (fixed slot per weapon id or damage source).
 const DAMAGE_KINDS: Record<string, { label: string; color: string }> = {
@@ -108,7 +108,7 @@ export function DamageShareChart({
   }));
   return (
     <figure className="chart">
-      <figcaption>Schaden nach Quelle</figcaption>
+      <figcaption>Damage by source</figcaption>
       <div className="donut">
         <ResponsiveContainer width="100%" height={180}>
           <PieChart>
@@ -221,7 +221,7 @@ export function DpsByLengthChart({
 }) {
   return (
     <figure className="chart">
-      <figcaption>DPS je Länge der Damage Phase</figcaption>
+      <figcaption>DPS by Damage Phase length</figcaption>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={points} margin={{ top: 24, right: 16, left: 8 }}>
           <CartesianGrid {...gridProps} />
@@ -246,7 +246,7 @@ export function DpsByLengthChart({
             x={currentSeconds}
             stroke="var(--muted)"
             label={{
-              value: "gewählt",
+              value: "selected",
               position: "top",
               fill: "var(--muted)",
               fontSize: 12,
@@ -280,7 +280,7 @@ export function BreakdownChart({
   }));
   return (
     <figure className="chart">
-      <figcaption>Beitrag pro Bucket</figcaption>
+      <figcaption>Contribution by bucket</figcaption>
       <ResponsiveContainer width="100%" height={40 + data.length * 36}>
         <BarChart
           data={data}
@@ -300,7 +300,7 @@ export function BreakdownChart({
             cursor={{ fill: "var(--grid)" }}
             formatter={(value) => [
               `+${integer.format(Number(value))}`,
-              "Beitrag",
+              "Contribution",
             ]}
           />
           <Bar
@@ -388,7 +388,7 @@ export function RotationTimeline({
         viewBox={`0 0 ${width} ${plotHeight + axisHeight}`}
         width="100%"
         role="img"
-        aria-label="Zeitleiste: Zeitfenster der Effects, Einsätze der Fähigkeiten, Shots und Ignitions"
+        aria-label="Timeline: effect windows, ability casts, shots and ignitions"
       >
         <defs>
           {abilityRows.map((ability) => (
@@ -507,7 +507,7 @@ export function RotationTimeline({
                     strokeDasharray={w.exact ? undefined : "3 2"}
                   >
                     <title>
-                      {`Super Window ${seconds.format(w.startMs / 1000)}–${seconds.format(w.endMs / 1000)} s${w.exact ? "" : " (Schätzung)"}: Die Waffe feuert nicht`}
+                      {`Super Window ${seconds.format(w.startMs / 1000)}–${seconds.format(w.endMs / 1000)} s${w.exact ? "" : " (estimate)"}: the weapon does not fire`}
                     </title>
                   </rect>
                 ))}
@@ -524,7 +524,7 @@ export function RotationTimeline({
                     stroke="var(--bg)"
                     strokeWidth={2}
                   >
-                    <title>{`${label}: Einsatz bei ${seconds.format(ms / 1000)} s`}</title>
+                    <title>{`${label}: cast at ${seconds.format(ms / 1000)} s`}</title>
                   </rect>
                 ))}
               {line.kind === "shots" &&
@@ -538,7 +538,7 @@ export function RotationTimeline({
                     stroke="var(--series-1)"
                     strokeWidth={2}
                   >
-                    <title>{`Shot bei ${seconds.format(ms / 1000)} s`}</title>
+                    <title>{`Shot at ${seconds.format(ms / 1000)} s`}</title>
                   </line>
                 ))}
               {line.kind === "ignitions" &&
@@ -552,7 +552,7 @@ export function RotationTimeline({
                     stroke="var(--bg)"
                     strokeWidth={2}
                   >
-                    <title>{`Ignition bei ${seconds.format(ms / 1000)} s`}</title>
+                    <title>{`Ignition at ${seconds.format(ms / 1000)} s`}</title>
                   </circle>
                 ))}
             </g>
@@ -575,8 +575,8 @@ export function CompareCurveChart({
   comparison: CurvePoint[];
 }) {
   const series = [
-    { name: "Aktuell", color: "var(--series-1)", points: current },
-    { name: "Vergleich", color: "var(--series-5)", points: comparison },
+    { name: "Current", color: "var(--series-1)", points: current },
+    { name: "Comparison", color: "var(--series-5)", points: comparison },
   ].map((s) => ({
     ...s,
     data: s.points.map((p) => ({
@@ -586,7 +586,7 @@ export function CompareCurveChart({
   }));
   return (
     <figure className="chart">
-      <figcaption>Damage Curve im Vergleich</figcaption>
+      <figcaption>Damage Curve compared</figcaption>
       <div className="legend-row">
         {series.map((s) => (
           <span key={s.name}>

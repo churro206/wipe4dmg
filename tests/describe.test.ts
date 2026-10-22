@@ -1,4 +1,4 @@
-// Plain German texts of the hover cards (U8): what an item does, without sources.
+// Plain English texts of the hover cards (U8): what an item does, without sources.
 
 import { describe, expect, it } from "vitest";
 import rawEffects from "../src/data/effects.json";
@@ -20,39 +20,39 @@ const effect = (id: string) => effects.find((e) => e.id === id)!;
 describe("hover card texts", () => {
   it("names the bonus, its target and its kind", () => {
     expect(describeEffect(effect("weaken"))).toEqual([
-      "+15 % Schaden aus allen Quellen (Debuff)",
+      "+15% damage from all sources (Debuff)",
     ]);
     expect(describeEffect(effect("surge-3x"))).toEqual([
-      "+22 % Waffenschaden (Surge)",
+      "+22% weapon damage (Surge)",
     ]);
   });
 
   it("explains keywords, scorch and states", () => {
     expect(describeEffect(effect("spark-of-shock"))).toEqual([
-      "Setzt Jolt bei Treffern von Arc-Grenades",
+      "Applies Jolt on hits from Arc Grenades",
     ]);
     expect(describeEffect(effect("ember-of-ashes"))).toEqual([
-      "+50 % Scorch-Stapel",
+      "+50% Scorch stacks",
     ]);
-    expect(describeEffect(effect("ascension"))).toEqual(["Gibt dir Amplified"]);
+    expect(describeEffect(effect("ascension"))).toEqual(["Grants Amplified"]);
   });
 
   it("names conditions in words", () => {
     expect(
       describeEffect(effect("exotic-armor:no-backup-plans"))[0],
-    ).toMatch(/Shotgun.*solange du Amplified, Frost Armor/);
+    ).toMatch(/Shotgun.*while you have Amplified, Frost Armor/);
   });
 
   it("explains when the effect is active", () => {
-    expect(describeDuration(effect("weaken"))).toBe("die ganze Damage Phase");
+    expect(describeDuration(effect("weaken"))).toBe("the whole Damage Phase");
     expect(describeDuration(effect("echo-of-undermining"))).toBe(
-      "5 s nach jedem Treffer einer Void-Grenade",
+      "5 s after each hit of a Void Grenade",
     );
     expect(describeDuration(effect("exotic-armor:star-eater-scales"))).toBe(
-      "14 s nach jedem Super-Cast",
+      "14 s after each Super cast",
     );
     expect(describeDuration(effect("exotic-armor:doom-fang-pauldron"))).toBe(
-      "ab Beginn der Damage Phase für 11 s",
+      "from the start of the Damage Phase for 11 s",
     );
   });
 

@@ -1,4 +1,4 @@
-// Short German texts for effects, sources and provider groups in the UI.
+// Short English texts for effects, sources and provider groups in the UI.
 
 import {
   DamageSource,
@@ -20,15 +20,15 @@ import { abilities } from "./data";
 import { integer, seconds, secondsInput } from "./format";
 
 export const PROVIDER_LABELS: Record<ProviderKind, string> = {
-  subclass: "Subklasse",
-  armor: "Rüstung",
-  artifact: "Artefakt",
+  subclass: "Subclass",
+  armor: "Armor",
+  artifact: "Artifact",
   fireteamSupport: "Fireteam Support",
 };
 
 export const GROUP_LABELS: Record<string, string> = {
-  super: "ein Super",
-  surge: "eine Surge-Stufe",
+  super: "one Super",
+  surge: "one Surge level",
 };
 
 /** Icon key of an effect; surges show the mod of the weapon element, as in the game. */
@@ -39,7 +39,7 @@ export function effectIconKey(effect: Effect, weaponElement: Element): string {
 }
 
 const FORMER_CODE_REASONS: Record<FormerCodeReason, string> = {
-  onlyFromExoticArmor: "gibt es nur über Exotic-Rüstung",
+  onlyFromExoticArmor: "is only available from exotic armor",
 };
 
 /** Hint for effects of an old link that were replaced, e.g. Surge 4x; null if none. */
@@ -50,7 +50,7 @@ export function replacedMessage(
   const texts = replaced.map(({ code, effectId, reason }) => {
     const effect = effects.find((e) => e.id === effectId)!;
     const old = effect.formerCodes!.find((f) => f.code === code)!;
-    return `${old.name} ${FORMER_CODE_REASONS[reason]}; der Link nutzt jetzt ${effect.name}.`;
+    return `${old.name} ${FORMER_CODE_REASONS[reason]}; the link now uses ${effect.name}.`;
   });
   return texts.length > 0 ? texts.join(" ") : null;
 }
@@ -85,7 +85,7 @@ const ELEMENT_LABELS: Record<Element, string> = {
   strand: "Strand",
 };
 const BUCKET_LABELS: Record<string, string> = {
-  empowering: "Empowering-Buff",
+  empowering: "Empowering Buff",
   debuff: "Debuff",
   surge: "Surge",
   amplification: "Amplification",
@@ -93,15 +93,15 @@ const BUCKET_LABELS: Record<string, string> = {
   weaponPerk: "Perk",
 };
 const SOURCE_DAMAGE: Record<DamageSource, string> = {
-  weapon: "Waffenschaden",
-  grenade: "Grenade-Schaden",
-  melee: "Melee-Schaden",
-  super: "Super-Schaden",
-  classAbility: "Class-Ability-Schaden",
-  keyword: "Keyword-Schaden",
+  weapon: "weapon damage",
+  grenade: "grenade damage",
+  melee: "melee damage",
+  super: "Super damage",
+  classAbility: "class ability damage",
+  keyword: "keyword damage",
 };
 const SOURCE_HITS: Record<DamageSource, string> = {
-  weapon: "Waffen",
+  weapon: "weapons",
   grenade: "Grenades",
   melee: "Melees",
   super: "Supers",
@@ -127,13 +127,13 @@ const STATE_LABELS: Record<StatusId, string> = {
 const list = (items: string[]) =>
   items.length <= 1
     ? (items[0] ?? "")
-    : `${items.slice(0, -1).join(", ")} oder ${items[items.length - 1]}`;
+    : `${items.slice(0, -1).join(", ")} or ${items[items.length - 1]}`;
 const percentOf = (value: number | null) =>
   integer.format(((value ?? 1) - 1) * 100);
 const nameOfAbility = (id: string) =>
   abilities.find((a) => a.id === id)?.name ?? id;
 
-/** Target of a part, e.g. "Waffenschaden (Solar, Shotgun)" or "Schaden aus allen Quellen". */
+/** Target of a part, e.g. "weapon damage (Solar, Shotgun)" or "damage from all sources". */
 function targetOf(part: {
   damageSources: DamageSource[];
   elements?: Element[];
@@ -142,7 +142,7 @@ function targetOf(part: {
 }): string {
   const all = DamageSource.options.every((s) => part.damageSources.includes(s));
   const base = all
-    ? "Schaden aus allen Quellen"
+    ? "damage from all sources"
     : list(part.damageSources.map((s) => SOURCE_DAMAGE[s]));
   const detail = [
     ...(part.elements ?? []).map((e) => ELEMENT_LABELS[e]),
@@ -157,38 +157,38 @@ function describePart(part: EffectPart): string {
     case "multiplier": {
       const conditions = [
         part.condition === "weaponMatchesSuperElement"
-          ? "wenn die Waffe das Element deines Supers hat"
+          ? "if the weapon matches the element of your Super"
           : part.condition === "weaponMatchesTriggerElement"
-            ? "im Element der auslösenden Ability"
+            ? "in the element of the triggering ability"
             : "",
         part.superElements
-          ? `nur mit ${list(part.superElements.map((e) => ELEMENT_LABELS[e]))}-Super`
+          ? `only with a ${list(part.superElements.map((e) => ELEMENT_LABELS[e]))} Super`
           : "",
         part.requiresStatus
-          ? `solange du ${list(part.requiresStatus.map((s) => STATE_LABELS[s]))} hast`
+          ? `while you have ${list(part.requiresStatus.map((s) => STATE_LABELS[s]))}`
           : "",
       ].filter(Boolean);
       const bucket = BUCKET_LABELS[part.bucketId];
-      return `+${percentOf(part.multiplier.value)} % ${targetOf(part)}${
+      return `+${percentOf(part.multiplier.value)}% ${targetOf(part)}${
         bucket ? ` (${bucket})` : ""
       }${conditions.length ? `, ${conditions.join(", ")}` : ""}`;
     }
     case "timing":
       return part.change === "noReload"
-        ? "Die Waffe muss nicht nachladen"
-        : `Nachladen dauert nur ${integer.format((part.factor ?? 1) * 100)} %`;
+        ? "The weapon does not need to reload"
+        : `Reloading takes only ${integer.format((part.factor ?? 1) * 100)}%`;
     case "counterModifier":
-      return `+${percentOf(part.factor.value)} % Scorch-Stapel`;
+      return `+${percentOf(part.factor.value)}% Scorch stacks`;
     case "appliesKeyword": {
       const hits = part.damageSources
         .map((s) =>
           part.elements?.length
-            ? `${list(part.elements.map((e) => ELEMENT_LABELS[e]))}-${SOURCE_HITS[s]}`
+            ? `${list(part.elements.map((e) => ELEMENT_LABELS[e]))} ${SOURCE_HITS[s]}`
             : SOURCE_HITS[s],
         )
         .join(", ");
       const stacks = part.stacks?.value ? `x${part.stacks.value} ` : "";
-      return `Setzt ${stacks}${KEYWORD_LABELS[part.keywordId] ?? part.keywordId} bei Treffern von ${hits}`;
+      return `Applies ${stacks}${KEYWORD_LABELS[part.keywordId] ?? part.keywordId} on hits from ${hits}`;
     }
   }
 }
@@ -198,40 +198,41 @@ export function describeEffect(effect: Effect): string[] {
   return [
     ...effect.parts.map(describePart),
     ...(effect.grantsStatus
-      ? [`Gibt dir ${list(effect.grantsStatus.map((s) => STATE_LABELS[s]))}`]
+      ? [`Grants ${list(effect.grantsStatus.map((s) => STATE_LABELS[s]))}`]
       : []),
   ];
 }
 
-/** When an effect is active, e.g. "5 s nach jedem Treffer einer Void-Grenade". */
+/** When an effect is active, e.g. "5 s after each hit of a Void Grenade". */
 export function describeDuration(effect: Effect): string {
   const durationMs = effect.durationMs?.value;
   const length =
     durationMs == null ? "" : `${secondsInput.format(durationMs / 1000)} s`;
   const trigger = effect.trigger;
   if (!trigger)
-    return length ? `ab Beginn der Damage Phase für ${length}` : "die ganze Damage Phase";
+    return length ? `from the start of the Damage Phase for ${length}` : "the whole Damage Phase";
   const elements = trigger.elements
-    ? `${list(trigger.elements.map((e) => ELEMENT_LABELS[e]))}-`
+    ? `${list(trigger.elements.map((e) => ELEMENT_LABELS[e]))} `
     : "";
+  const kinds = `${elements}${list((trigger.abilityKinds ?? []).map((k) => ABILITY_KIND_NAMES[k]))}`;
   const what = trigger.abilityIds
     ? list(trigger.abilityIds.map(nameOfAbility))
     : trigger.abilityKinds
-      ? `einer ${elements}${list(trigger.abilityKinds.map((k) => ABILITY_KIND_NAMES[k]))}`
-      : "einer Ability";
+      ? `${/^[AEIOU]/.test(kinds) ? "an" : "a"} ${kinds}`
+      : "an ability";
   switch (trigger.on) {
     case "cast":
       return trigger.abilityKinds?.includes("super") && !trigger.abilityIds
-        ? `${length} nach jedem Super-Cast`
-        : `${length} nach jedem Einsatz von ${what}`;
+        ? `${length} after each Super cast`
+        : `${length} after each cast of ${what}`;
     case "hit":
-      return `${length} nach jedem Treffer ${trigger.abilityIds ? `von ${what}` : what}${
-        trigger.refresh ? "" : ", nicht auffrischbar"
+      return `${length} after each hit of ${what}${
+        trigger.refresh ? "" : ", not refreshable"
       }`;
     case "superEnd":
-      return `${length} nach dem Ende ${trigger.abilityIds ? `von ${what}` : "des Supers"}`;
+      return `${length} after the end of ${trigger.abilityIds ? what : "the Super"}`;
     case "untilSuperCast":
-      return `ab Beginn, solange der Super geladen ist, bis ${length} nach dem Super-Cast`;
+      return `from the start while the Super is charged, until ${length} after the Super cast`;
   }
 }
 
@@ -250,7 +251,7 @@ export function describeExotic(
     .filter((a) => a.exoticArmorId === entry.id && a.variantOf)
     .map((variant) => {
       const base = abilities.find((a) => a.id === variant.variantOf)!;
-      return `${base.name}: ${integer.format(perUse(variant))} statt ${integer.format(perUse(base))} Schaden pro Einsatz`;
+      return `${base.name}: ${integer.format(perUse(variant))} instead of ${integer.format(perUse(base))} damage per cast`;
     });
   const preBuiltIds = new Set(
     generated
@@ -262,11 +263,11 @@ export function describeExotic(
   }).map(
     (effect) =>
       `${describeEffect(effect).join("; ")}, ${describeDuration(effect)}${
-        preBuiltIds.has(effect.id) ? " (mit „Vorher aufgebaut“)" : ""
+        preBuiltIds.has(effect.id) ? " (with “Pre-stacked”)" : ""
       }`,
   );
   const all = [...variants, ...lines];
-  return all.length > 0 ? all : ["Wirkt im Rechner noch nicht."];
+  return all.length > 0 ? all : ["Not modeled in the calculator yet."];
 }
 
 const ABILITY_KIND_NAMES: Record<Ability["kind"], string> = {
@@ -306,19 +307,19 @@ export function describeAbility(
     );
   const lines = [
     ability.components.length === 0
-      ? "Kein eigener Schaden, nur Buff"
-      : `${integer.format(total)} Schaden pro Einsatz (Stat 100, ohne Buffs)`,
+      ? "No damage of its own, buff only"
+      : `${integer.format(total)} damage per cast (stat 100, without buffs)`,
   ];
   if (total > 0 && scaling > 0) {
     lines.push(
-      `${integer.format((scaling / total) * 100)} % davon wachsen mit dem Stat`,
+      `${integer.format((scaling / total) * 100)}% of it scales with the stat`,
     );
   }
   if (ability.keywordParts?.length) {
     lines.push(...ability.keywordParts.map(describePart));
   }
   if (ability.grantsEffectIds?.length) {
-    lines.push(`Bringt mit: ${ability.grantsEffectIds.map(nameOf).join(", ")}`);
+    lines.push(`Includes: ${ability.grantsEffectIds.map(nameOf).join(", ")}`);
   }
   if (ability.kind === "super") lines.push(describeSuperWindow(ability));
   return lines;
@@ -326,22 +327,22 @@ export function describeAbility(
 
 /** How long the super keeps the weapon from firing, and whether that is exact. */
 export function describeSuperWindow(ability: Ability): string {
-  if (!ability.usage) return "Super Window: blockiert die Waffe nicht";
+  if (!ability.usage) return "Super Window: does not block the weapon";
   const { durationMs, exact } = superWindowMs(ability.usage);
   const length = `${seconds.format(durationMs / 1000)} s`;
   switch (ability.usage.type) {
     case "cast":
       return exact
-        ? `Super Window: Cast ${length}`
-        : "Super Window: nur Cast, Dauer unbekannt (zählt als 0 s)";
+        ? `Super Window: cast ${length}`
+        : "Super Window: cast only, duration unknown (counts as 0 s)";
     case "shots":
       return exact
-        ? `Super Window: ${length} bis zum letzten Schuss`
-        : `Super Window: höchstens ${length} (Schussabstand unbekannt)`;
+        ? `Super Window: ${length} until the last shot`
+        : `Super Window: at most ${length} (shot interval unknown)`;
     case "drain":
       return exact
-        ? `Super Window: ${length}, bis die Energie leer ist`
-        : `Super Window: höchstens ${length} (Verbrauch pro Angriff unbekannt)`;
+        ? `Super Window: ${length} until the energy runs out`
+        : `Super Window: at most ${length} (drain per attack unknown)`;
   }
 }
 

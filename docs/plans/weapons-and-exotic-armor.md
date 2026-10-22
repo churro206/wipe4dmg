@@ -40,5 +40,5 @@ Reihenfolge W1 vor E0: Der Waffen-Import liefert auf einen Schlag viele Waffen f
 ## Zurückgestellt (nicht in diesem Plan)
 
 - Optimizer mit Fähigkeiten (`docs/plans/optimizer-abilities.md`)
-- Abschnitte „Für Spieler“ in den übrigen Mechanic-Dateien; schlanke Abdeckung für Spieler im Wiki
+- Abschnitte „For players“ in den übrigen Mechanic-Dateien; schlanke Abdeckung für Spieler im Wiki
 - Lücke: 13 Aegis-Pakete enthalten Ember of Ashes

@@ -1,54 +1,49 @@
 # Roadmap
 
-Was der Rechner als Nächstes lernt. Die genaue Abdeckung steht in der [Abdeckung](coverage.md).
+What the calculator learns next. The exact coverage is listed under [Coverage](coverage.md).
 
-Stand: 2026-10-21
+Status: 2026-10-22
 
-## In Arbeit (v1.1)
+## In progress (v1.1)
 
-- ✅ Fundament für mehrere Waffen: jede Waffe als eigene Datei mit eigenem Abgleich gegen die Quellen
-- ✅ 49 exotische Special- und Heavy-Waffen automatisch aus Aegis, Quantum, Clarity und dem Bungie-Manifest, darunter Truth, Thunderlord, Gjallarhorn, Sleeper Simulant und Whisper of the Worm; Waffenauswahl mit Suche, Katalysator als Schalter mit Hinweis auf begrenzte Dauer
-- ⏳ Die übrigen 30 Waffen (z. B. Schwerter, Merciless, Two-Tailed Fox): weitere Quellen erschließen; die Liste mit Gründen steht in der Prüftabelle
-- ✅ Logo: Schädel aus dem Todesbildschirm im Header und als Favicon
-- ⏳ Oberfläche näher am Spiel: Hover-Karte wie die Item-Ansicht, Element-Farben, Menü-Optik ([Vorbilder](ui-inspiration.md))
-- ⏳ Umbau der Engine für Keywords und Exotic-Effekte ([ADR 0015](adr/0015-unified-mechanics.md)): ✅ Vergleichsbasis aller Ergebnisse, ✅ Merkmale eines Treffers (Art des Treffers, Class Ability, Keyword, Skala der Werte); ✅ gemeinsamer Ablauf für alle Treffer; als Nächstes Scorch/Ignition, Jolt, Volatile Rounds und Bolt Charge
-- Exotic-Rüstung: Dawn Chorus und weitere Exotics mit großer Wirkung auf den Schaden (z. B. Mantle of Battle Harmony mit Surge 4x)
-- Plan: [Waffen und Exotic-Rüstung](plans/weapons-and-exotic-armor.md)
+- ✅ 49 exotic Special and Heavy weapons from Aegis, Quantum, Clarity and the Bungie manifest, among them Truth, Thunderlord, Gjallarhorn, Sleeper Simulant and Whisper of the Worm; weapon picker with search, catalyst as a toggle with a note on limited duration
+- ⏳ The remaining 30 weapons (e.g. swords, Merciless, Two-Tailed Fox): more sources needed
+- ✅ Exotic armor: picker under “Armor” with search and slot filter. A note says what the exotic does in the calculator. Many work through the Rotation, e.g. Star-Eater Scales after the Super cast or Foetracer after an ability hit. Cuirass of the Falling Star and Celestial Nighthawk change their Super. Kill buffs only count with the “Pre-stacked” toggle, since one boss without adds gives no kills.
+- ✅ Aspects and fragments from all subclasses, e.g. Spark of Shock (Jolt), Echo of Undermining (Weaken after a Void grenade), Ember of Torches (Radiant after a melee hit); states such as Amplified or Woven Mail for exotics like No Backup Plans
+- ✅ Keywords: Ignition, Jolt, Volatile, Unravel and Bolt Charge as their own damage; abilities apply them with their hits
+- ✅ Hover cards explain what an item does; keyword damage shows as “Effect” in the color of its element
+- ✅ The whole website in English
+- ⏳ Exotic class items with two perks (Prismatic) and Transcendence
+- ⏳ Melee buffs add up with each other (own bucket)
+- ⏳ Class ability in the Rotation; exotics that refill abilities or the magazine
+- ⏳ Golden Gun: time between shots (in-game measurement); until then its Super Window is an estimate of 12 s
 
-## Fertig in v1.0: Fähigkeiten und Supers
+## Done in v1.0: abilities and Supers
 
-- ✅ Rechenkern für Fähigkeiten: Schaden auf der Zeitachse, Stat 0 bis 200, Super Window (die Waffe pausiert während des Supers), keine doppelt gezählten Buffs
-- ✅ Automatischer Abgleich mit Aegis und dem Compendium nach jedem Patch
-- ✅ Supers: 25 von 31 mit Schaden (gemessener Gesamtwert von Aegis), Well of Radiance als Buff
-- ⏳ Super Window genauer: Bei vielen Supers fehlt in den Quellen der Abstand zwischen Angriffen oder Schüssen; dann gilt die Base Duration als Obergrenze
-- ✅ Grenades: 26 von 30, Melees: 24 von 26 (gemessener Gesamtwert von Aegis)
-- ✅ Icons und Zuordnung zu Klasse und Subklasse aus dem Bungie-Manifest, inklusive Prismatic
-- ✅ Oberfläche: Plätze für Super, Grenade und Melee mit Icons, Stat-Regler 0 bis 200, Hover-Karte mit Herkunft des Werts
-- ⏳ Korrekturen aus der Recherche vom 2026-10-20: ✅ Ember of Ashes (jetzt +19 % wie Quantum, vorher +9 %); ✅ Katalysator (jetzt ×1,39 wie Aegis und blueberries.gg, vorher ×1,26); ✅ Golden Gun: Radiant und Well wirken (+20 %), ohne sie ist Golden Gun nicht mehr zu stark
-- ✅ Oberfläche: Donut „Schaden nach Quelle“ mit Waffenteilen und je einem Stück pro Ability (Name und Icon)
-- ✅ Oberfläche: Breakdown-Tabelle mit einer Spalte pro Quelle (Waffe und jede Ability) und dem Schaden pro Quelle
-- ✅ Oberfläche: Zeitleiste mit Fähigkeiten und schraffiertem Super Window, Einsatzzeiten einstellbar, weitere Einsätze über „+“
-- ✅ Surges: Stufen 1x bis 3x wie die Rüstungs-Mods, passend zum Element der Waffe (Icon nach Element). Surge 4x kommt mit Exotic-Rüstung.
-- ✅ Oberfläche wie im Spiel: Waffe mit Katalysator oben, dann Klasse, Subklasse, Fähigkeiten mit Class Ability, Fragmente, Rüstung (Exotic folgt, Mods), Stats als Block, Artefakt, Fireteam Support
-- ✅ Wiki: „Wie rechnet der Rechner?“, Abdeckung und Roadmap. Erklärungen zu einzelnen Mechanics folgen.
+- ✅ Ability damage on the timeline, stat 0 to 200, Super Window (the weapon pauses during the Super), no double-counted buffs
+- ✅ Automatic cross-check against Aegis and the Compendium after every patch
+- ✅ Supers: 25 of 31 with damage (total value measured by Aegis), Well of Radiance as a buff
+- ✅ Grenades: 26 of 30, Melees: 24 of 26 (total value measured by Aegis)
+- ✅ Icons and class and subclass assignment from the Bungie manifest, including Prismatic
+- ✅ Donut “Damage by source”, breakdown table with one column per source, timeline with abilities and hatched Super Window, cast times adjustable
+- ✅ Surges 1x to 3x like the armor mods, matching the weapon element
+- ✅ Layout like in game: weapon, class, subclass, abilities, aspects, fragments, armor, stats, artifact, Fireteam Support
+- ✅ Wiki: “How does the calculator work?”, coverage and roadmap
 
-## Danach
+## Next
 
-- Song of Flame, Glacial Quake, Bladefury und Hammer of Sol mit Sol Invictus: fehlen noch, weil Aegis sie nur mit Buffs im Wert gemessen hat
-- Ward of Dawn: Weapons of Light als Effect
-- Healing, Coldsnap und Duskfield Grenade, Grapple, Combination Blow und Chain Lightning: keine Aegis-Messung
-- Feast of Light und Banner of War als Effects
-- Well of Radiance: Der Waffenschaden des Casters zählt als Super-Schaden, die Dauer wächst mit dem Super-Stat
-- Golden Gun Marksman: Line 'Em Up bei Precision Hits
-- Fehlende Zeitwerte: Schussabstand von Golden Gun und Moebius Quiver, Flugzeit von Thundercrash
-- 13 Aegis-Pakete enthalten Ember of Ashes (z. B. Fusion Grenade, Hammer Strike): ohne Ember im Build sind sie zu hoch, weil Ember sich nicht als Faktor herausrechnen lässt
-- Expanding Abyss: hebt Weaken auf 25 %, Tractor Cannon und Moebius auf 35 %, Deadfall auf 40 %
-- Melee-Buffs: addieren sich untereinander (laut Court), brauchen eigenen Bucket
-- Import von Courts Stacking Guide mit Snapshot und Zitat-Check, wie beim Compendium
+- Song of Flame, Glacial Quake, Bladefury and Hammer of Sol with Sol Invictus: Aegis only measured them with buffs in the value
+- Ward of Dawn: Weapons of Light as an effect
+- Healing, Coldsnap and Duskfield Grenade, Grapple, Combination Blow and Chain Lightning: no Aegis measurement
+- Feast of Light and Banner of War as effects
+- Well of Radiance: the caster's weapon damage counts as Super damage, the duration grows with the Super stat
+- Missing timings: shot interval of Golden Gun and Moebius Quiver, travel time of Thundercrash
+- 13 Aegis packages include Ember of Ashes (e.g. Fusion Grenade, Hammer Strike): without Ember in the build they are too high
+- Expanding Abyss: raises Weaken to 25%, Tractor Cannon and Moebius to 35%, Deadfall to 40%
 
-## Später (v1.x)
+## Later (v1.x)
 
-- Optimizer mit Fähigkeiten: probiert auch Super, Grenade und Melee ([Plan](plans/optimizer-abilities.md)). Bis dahin übernimmt er die gewählten Abilities.
-- Builds im Browser speichern
-- Weitere exotische Waffen; dafür Archetype, Waffen-Stats und Perk-Pools aus dem Bungie-Manifest
-- Discord Bot
+- Optimizer with abilities: also tries Super, Grenade and Melee. Until then it keeps the chosen abilities.
+- Save builds in the browser
+- More exotic weapons
+- Discord bot

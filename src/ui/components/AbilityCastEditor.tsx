@@ -21,13 +21,13 @@ export function AbilityCastEditor({
     <table className="rotation casts">
       <thead>
         <tr>
-          <th>Fähigkeit</th>
+          <th>Ability</th>
           <th>
-            Einsätze (s){" "}
+            Casts (s){" "}
             <InfoTip>
-              Zeitpunkt jedes Einsatzes ab Beginn der Damage Phase. Energie und
-              Cooldowns prüft der Rechner nicht: Trag nur Einsätze ein, die im
-              Spiel möglich sind. Während eines Supers feuert die Waffe nicht.
+              Time of each cast from the start of the Damage Phase. The calculator
+              does not check energy or cooldowns: only enter casts that are
+              possible in game. The weapon does not fire during a Super.
             </InfoTip>
           </th>
         </tr>
@@ -55,7 +55,7 @@ export function AbilityCastEditor({
                       min={0}
                       step={0.1}
                       defaultValue={secondsInput.format(ms / 1000).replace(",", ".")}
-                      aria-label={`Einsatz ${index + 1} von ${ability.name} in Sekunden`}
+                      aria-label={`Cast ${index + 1} of ${ability.name} in seconds`}
                       onBlur={(event) => {
                         const value = Number(event.target.value);
                         if (Number.isFinite(value)) onChange(ability, index, value);
@@ -68,7 +68,7 @@ export function AbilityCastEditor({
                       <button
                         type="button"
                         className="icon-button"
-                        aria-label={`Einsatz ${index + 1} von ${ability.name} entfernen`}
+                        aria-label={`Remove cast ${index + 1} of ${ability.name}`}
                         onClick={() => onRemove(ability, index)}
                       >
                         ×
@@ -79,7 +79,7 @@ export function AbilityCastEditor({
                 <button
                   type="button"
                   className="icon-button"
-                  aria-label={`Einsatz von ${ability.name} hinzufügen`}
+                  aria-label={`Add a cast of ${ability.name}`}
                   onClick={() => onAdd(ability)}
                 >
                   +

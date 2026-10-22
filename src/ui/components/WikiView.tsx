@@ -16,7 +16,7 @@ const pages = wikiPages(files);
 const GROUP_LABELS: Record<WikiGroup, string | null> = {
   start: null,
   mechanics: "Mechanics",
-  status: "Stand",
+  status: "Status",
 };
 const WIKI_LINK = "#wiki/";
 

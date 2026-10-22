@@ -1,70 +1,68 @@
-# Wie rechnet der Rechner?
+# How does the calculator work?
 
-Kategorie: Einstieg · Spielversion: 9.7.0.5 · Zuletzt geprüft: 2026-10-20 · Vertrauen: hoch
+Kategorie: Einstieg · Spielversion: 9.7.0.5 · Zuletzt geprüft: 2026-10-22 · Vertrauen: hoch
 
-Einstiegsseite des Wikis (US-15, ADR 0010). Die Website zeigt nur den Abschnitt „Für Spieler“.
+Einstiegsseite des Wikis (US-15, ADR 0010). Die Website zeigt nur den Abschnitt „For players“, deshalb ist er englisch.
 
-## Für Spieler
+## For players
 
-### Was der Rechner berechnet
+### What the calculator computes
 
-Der Rechner berechnet den **Total Damage** eines Builds in einer **Damage Phase**, also in der Zeit, in der der Boss verwundbar ist. Ein Build besteht aus Waffe, Klasse, Subklasse, Super, Grenade, Melee und Effects wie Radiant, Surges oder Weaken.
+The calculator computes the **Total Damage** of a build in a **Damage Phase**, the time in which the boss is vulnerable. A build consists of weapon, class, subclass, Super, Grenade, Melee, aspects, fragments, exotic armor and effects such as Radiant, Surges or Weaken.
 
-Wichtig sind die **Unterschiede zwischen Builds**: Bringt Build A 15 % mehr als Build B, soll das stimmen. Die absoluten Zahlen können vom Spiel abweichen, z. B. weil Bosse unterschiedlich viel Schaden einstecken.
+What matters are the **differences between builds**: if build A deals 15% more than build B, that should be right. The absolute numbers can differ from the game, for example because bosses take different amounts of damage.
 
-Die erste Waffe ist One Thousand Voices. Weitere Waffen folgen.
+### The timeline
 
-### Die Zeitachse
+The calculator plays the Damage Phase like a recording. Every hit is a **Damage Instance** with its own point in time:
 
-Der Rechner spielt die Damage Phase wie eine Aufnahme ab. Jeder Treffer ist eine **Damage Instance** mit eigenem Zeitpunkt:
+- **Shots** follow the firing pattern of the weapon. One Thousand Voices, for example, fires every 1.733 s, and each beam causes 9 explosions.
+- **Scorch** builds up on the boss. At 100 stacks an **Ignition** follows, a big Solar explosion. After that the boss needs a moment before it takes Scorch again.
+- **Taken Seeker** from the One Thousand Voices catalyst fly to the boss and deal damage over time.
+- **Abilities** hit at their cast times from the Rotation. **The weapon does not fire during a Super.**
 
-- **Shots** im Abstand von 1,733 s. Jeder Beam von One Thousand Voices löst 9 Explosionen aus.
-- **Scorch** sammelt sich am Boss. Bei 100 Stacks folgt eine **Ignition**, eine große Solar-Explosion. Danach braucht der Boss kurz, bis er wieder Scorch annimmt.
-- **Taken Seeker** des Katalysators fliegen zum Boss und machen Schaden über Zeit.
-- **Abilities** treffen zu ihren Einsatzzeiten aus der Rotation. **Während eines Supers schießt die Waffe nicht.**
+Every effect has a window. Tractor Cannon, for example, lasts 10 s. A shot only gets the buffs that are active at its moment, so the order matters. The “Rotation” tab shows the timeline.
 
-Jeder Effect hat ein Zeitfenster. Tractor Cannon wirkt zum Beispiel 10 s. Ein Shot bekommt nur die Buffs, die in seinem Moment aktiv sind. Deshalb kommt es auf die Reihenfolge an. Im Reiter „Rotation“ siehst du die Zeitachse.
+### How buffs stack
 
-### Wie Buffs sich stapeln
+Buffs belong to **buckets**. The rule:
 
-Buffs gehören zu **Buckets**. Die Regel:
+- **Within the same bucket** usually only the strongest buff counts. Radiant (+20%) and Well of Radiance (+25%) together give +25%, not +45%.
+- **Different buckets** are **multiplied** with each other.
 
-- **Im selben Bucket** zählt meist nur der stärkste Buff. Radiant (+20 %) und Well of Radiance (+25 %) zusammen ergeben +25 %, nicht +45 %.
-- **Verschiedene Buckets** werden miteinander **multipliziert**.
+Example with Well of Radiance (Empowering Buff, ×1.25), Weaken (Debuff, ×1.15) and Surge 3x (Surge, ×1.22):
 
-Beispiel mit Well of Radiance (Empowering Buff, ×1,25), Weaken (Debuff, ×1,15) und Surge 3x (Surge, ×1,22):
-
-| Rechnung | Ergebnis |
+| Calculation | Result |
 | --- | --- |
-| richtig: 1,25 × 1,15 × 1,22 | **×1,75** |
-| falsch: +25 % + 15 % + 22 % addiert | ×1,62 |
+| right: 1.25 × 1.15 × 1.22 | **×1.75** |
+| wrong: +25% + 15% + 22% added | ×1.62 |
 
-Im Reiter „Breakdown“ siehst du für jeden Bucket, wie viel er zum Total Damage beiträgt. Mehr dazu steht unter [Damage Stacking](damage-stacking.md).
+The “Breakdown” tab shows how much each bucket contributes to the Total Damage.
 
-### Woher die Zahlen kommen
+### Where the numbers come from
 
-Der Rechner erfindet keine Zahlen. Jeder Wert hat eine Quelle:
+The calculator does not make up numbers. Every value has a source:
 
-| Quelle | Was wir daraus nehmen |
+| Source | What we take from it |
 | --- | --- |
-| Aegis | gemessener Schaden pro Shot der Waffen und von Supers, Grenades und Melees; Ablauf der Waffe („Sustained“); Faktoren „mit / ohne“ für Perks und Katalysator |
-| Quantum Damage-ics | Ablauf der Waffe (Magazin, Munition, Reload, Zeit bis leer), Gegenprobe zum Schaden |
-| Destiny Data Compendium | Einzelteile wie Explosionen, Ignitions und Taken Seeker |
-| [Clarity](https://www.d2clarity.com) | was Perks, Katalysatoren und Exotic-Rüstung genau tun, mit Zahlen. Rückmeldungen zu diesen Texten gern an Clarity über ihren [Discord](https://url.d2clarity.com/discord). Wir übernehmen die Texte nicht wörtlich, sondern leiten daraus Regeln ab (z. B. „Katalysator ändert das Timing“) |
-| Bungie-Manifest | Namen, Typen, Elemente, Perks und Icons |
-| Court (Stacking Guide) | welcher Buff in welchen Bucket gehört |
-| eigene Tests im Spiel | allgemeine Mechanics, z. B. wie schnell eine Ignition wieder möglich ist |
+| Aegis | measured damage per shot of weapons and of Supers, Grenades and Melees; weapon firing pattern (“Sustained”); “with / without” factors for perks and catalysts |
+| Quantum Damage-ics | weapon firing pattern (magazine, ammo, reload, time to empty), cross-check of the damage |
+| Destiny Data Compendium | single parts such as explosions, Ignitions and Taken Seeker; what aspects, fragments and exotic armor do |
+| [Clarity](https://www.d2clarity.com) | what perks, catalysts and exotic armor do exactly, with numbers. Feedback on these texts is welcome at Clarity via their [Discord](https://url.d2clarity.com/discord). We do not copy the texts but derive rules from them (e.g. “the catalyst changes the timing”) |
+| Bungie manifest | names, types, elements, perks and icons |
+| Court (Stacking Guide) | which buff belongs in which bucket |
+| own tests in game | general mechanics, e.g. how soon another Ignition is possible |
 
-**Gates** sind automatische Tests, die unser Modell mit den Messungen vergleichen. Eine Ability darf höchstens 10 % von Aegis abweichen, ein Waffen-Effect höchstens 3 %. Fällt ein Wert durch, suchen wir den Fehler im Modell.
+**Gates** are automatic tests that compare our model with the measurements. An ability may differ from Aegis by at most 10%, a weapon effect by at most 3%. If a value fails, we look for the error in the model.
 
-Viele Abilities rechnet der Rechner als **Paket**: ein von Aegis gemessener Gesamtwert pro Einsatz statt einzelner Treffer. Das ist genauer, solange die Einzelteile nicht sicher bekannt sind.
+The calculator models many abilities as a **package**: a total value per cast measured by Aegis instead of single hits. That is more accurate as long as the single parts are not known for sure.
 
-### Grenzen
+### Limits
 
-- **Energie und Cooldowns prüft der Rechner nicht.** Trag nur Einsätze ein, die im Spiel möglich sind.
-- **Burn-Schaden** von Scorch fehlt noch. Ignitions sind enthalten.
-- **Der Optimizer** probiert nur Subklassen und Effects. Super, Grenade und Melee übernimmt er aus deiner Auswahl.
-- **Einige Abilities fehlen**, und einige Pakete sind ohne Ember of Ashes etwas zu hoch. Was genau fehlt, steht in der [Abdeckung](../coverage.md). Was als Nächstes kommt, steht in der [Roadmap](../roadmap.md).
+- **The calculator does not check energy or cooldowns.** Only enter casts that are possible in game.
+- **Burn damage** from Scorch is still missing. Ignitions are included.
+- **The optimizer** only tries subclasses and effects. It takes Super, Grenade and Melee from your selection.
+- **Some abilities and exotics are missing**, and some packages are slightly too high without Ember of Ashes. What exactly is missing is listed under [Coverage](../coverage.md). What comes next is in the [Roadmap](../roadmap.md).
 
 ## Für Entwickler
 

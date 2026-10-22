@@ -48,16 +48,16 @@ export function WeaponPicker({
         </button>
       </span>
       {open && (
-        <div className="weapon-picker" role="group" aria-label="Waffe wählen">
+        <div className="weapon-picker" role="group" aria-label="Choose weapon">
           <input
             type="search"
-            placeholder="Waffe suchen"
-            aria-label="Waffe suchen"
+            placeholder="Search weapon"
+            aria-label="Search weapon"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             autoFocus
           />
-          <div className="chips" role="group" aria-label="Waffentyp">
+          <div className="chips" role="group" aria-label="Weapon type">
             {(["all", ...types] as const).map((t) => (
               <button
                 key={t}
@@ -65,7 +65,7 @@ export function WeaponPicker({
                 aria-pressed={type === t}
                 onClick={() => setType(t)}
               >
-                {t === "all" ? "Alle" : WEAPON_TYPE_LABELS[t]}
+                {t === "all" ? "All" : WEAPON_TYPE_LABELS[t]}
               </button>
             ))}
           </div>
@@ -89,7 +89,7 @@ export function WeaponPicker({
               </li>
             ))}
           </ul>
-          {shown.length === 0 && <p className="note">Keine Waffe gefunden.</p>}
+          {shown.length === 0 && <p className="note">No weapon found.</p>}
         </div>
       )}
     </>

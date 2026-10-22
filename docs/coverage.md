@@ -1,140 +1,140 @@
-# Abdeckung des Rechners
+# Coverage of the calculator
 
-Generiert mit `npm run coverage` aus den Data Files. Nicht von Hand bearbeiten.
+Generated with `npm run coverage` from the data files. Do not edit by hand.
 
-Legende: ✅ Teile = eigene Damage Instances aus dem Compendium, vom Gate gegen Aegis geprüft.
-🟡 Paket = gemessener Wert pro Einsatz aus Aegis (ADR 0009). 🔵 Nur Buff = Super ohne eigenen Schaden.
-❌ fehlt = noch nicht im Rechner, mit Grund. Super Window: exakt, Schätzung (ein Wert fehlt) oder blockiert nicht.
+Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Aegis by the gate.
+🟡 Package = measured value per cast from Aegis. 🔵 Buff only = Super without damage of its own.
+❌ missing = not in the calculator yet, with reason. Super Window: exact, estimate (a value is missing) or does not block.
 
-## Überblick
+## Overview
 
-| Art | ✅ Teile | 🟡 Paket | 🔵 Nur Buff | ❌ fehlt | Gesamt |
+| Kind | ✅ Parts | 🟡 Package | 🔵 Buff only | ❌ missing | Total |
 | --- | --- | --- | --- | --- | --- |
 | Supers | 0 | 25 | 1 | 5 | 31 |
 | Grenades | 0 | 26 | 0 | 4 | 30 |
 | Melees | 0 | 24 | 0 | 2 | 26 |
-| Effects | 17 modelliert | | | | |
+| Effects | 17 modelled | | | | |
 
 ## Supers
 
-| Element | Super | Modell | Super Window | Aegis-Zeile oder Grund |
+| Element | Super | Model | Super Window | Aegis row or reason |
 | --- | --- | --- | --- | --- |
-| Arc | Arc Staff | 🟡 Paket | Schätzung | `super-arc-staff-grounded-2l1h` |
-| Arc | Gathering Storm | 🟡 Paket | Schätzung | `super-gathering-storm` |
-| Arc | Storm's Edge | 🟡 Paket | blockiert nicht | `super-storm-s-edge-body` |
-| Arc | Fists of Havoc | 🟡 Paket | Schätzung | `super-fists-of-havoc-heavy-attacks` |
-| Arc | Thundercrash | 🟡 Paket | Schätzung | `super-thundercrash` |
-| Arc | Chaos Reach | 🟡 Paket | exakt | `super-chaos-reach` |
-| Arc | Stormtrance | 🟡 Paket | Schätzung | `super-stormtrance` |
-| Solar | Blade Barrage | 🟡 Paket | Schätzung | `super-blade-barrage` |
-| Solar | Golden Gun: Deadshot | 🟡 Paket | Schätzung | `super-golden-gun-deadshot-radiant-ember-of-ashes` |
-| Solar | Golden Gun: Marksman | 🟡 Paket | Schätzung | `super-golden-gun-marksman-radiant` |
-| Solar | Burning Maul | 🟡 Paket | exakt | `super-burning-maul-light-attacks-sol-invictus-ember-of-ashes` |
-| Solar | Hammer of Sol | 🟡 Paket | exakt | `super-hammer-of-sol` |
-| Solar | Hammer of Sol (Sol Invictus Aspect) | ❌ fehlt | – | Aegis misst nur mit Buffs, die noch kein Effect sind |
-| Solar | Song of Flame | ❌ fehlt | – | Aegis-Werte nicht normiert (Buffs im Wert) |
-| Solar | Daybreak | 🟡 Paket | Schätzung | `super-daybreak-ember-of-ashes` |
-| Solar | Well of Radiance | 🔵 Nur Buff | Schätzung | – |
-| Void | Spectral Blades | 🟡 Paket | Schätzung | `super-spectral-blades-light-attacks` |
-| Void | Shadowshot: Deadfall | 🟡 Paket | Schätzung | `super-shadowshot-deadfall-tether-includes-debuff` |
-| Void | Shadowshot: Moebius Quiver | 🟡 Paket | Schätzung | `super-shadowshot-moebius-quiver-includes-debuff` |
-| Void | Sentinel Shield | 🟡 Paket | Schätzung | `super-sentinel-shield-light-attacks` |
-| Void | Twilight Arsenal | 🟡 Paket | Schätzung | `super-twilight-arsenal-includes-tractor` |
-| Void | Ward of Dawn | ❌ fehlt | – | gibt nur einen Buff, der noch kein Effect ist |
-| Void | Nova Bomb: Cataclysm | 🟡 Paket | Schätzung | `super-nova-bomb-cataclysm` |
-| Void | Nova Bomb: Vortex | 🟡 Paket | Schätzung | `super-nova-bomb-vortex` |
-| Void | Nova Warp | 🟡 Paket | Schätzung | `super-nova-warp` |
-| Stasis | Silence & Squall | 🟡 Paket | Schätzung | `super-silence-and-squall-whisper-of-fissures-whisper-of-durance` |
-| Stasis | Glacial Quake | ❌ fehlt | – | Aegis-Werte nicht normiert (Buffs im Wert) |
-| Stasis | Winter's Wrath | 🟡 Paket | Schätzung | `super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures` |
-| Strand | Silkstrike | 🟡 Paket | Schätzung | `super-silkstrike-light-attacks` |
-| Strand | Bladefury | ❌ fehlt | – | Aegis misst nur mit Buffs, die noch kein Effect sind |
-| Strand | Needlestorm | 🟡 Paket | Schätzung | `super-needlestorm` |
+| Arc | Arc Staff | 🟡 Package | estimate | `super-arc-staff-grounded-2l1h` |
+| Arc | Gathering Storm | 🟡 Package | estimate | `super-gathering-storm` |
+| Arc | Storm's Edge | 🟡 Package | does not block | `super-storm-s-edge-body` |
+| Arc | Fists of Havoc | 🟡 Package | estimate | `super-fists-of-havoc-heavy-attacks` |
+| Arc | Thundercrash | 🟡 Package | estimate | `super-thundercrash` |
+| Arc | Chaos Reach | 🟡 Package | exact | `super-chaos-reach` |
+| Arc | Stormtrance | 🟡 Package | estimate | `super-stormtrance` |
+| Solar | Blade Barrage | 🟡 Package | estimate | `super-blade-barrage` |
+| Solar | Golden Gun: Deadshot | 🟡 Package | estimate | `super-golden-gun-deadshot-radiant-ember-of-ashes` |
+| Solar | Golden Gun: Marksman | 🟡 Package | estimate | `super-golden-gun-marksman-radiant` |
+| Solar | Burning Maul | 🟡 Package | exact | `super-burning-maul-light-attacks-sol-invictus-ember-of-ashes` |
+| Solar | Hammer of Sol | 🟡 Package | exact | `super-hammer-of-sol` |
+| Solar | Hammer of Sol (Sol Invictus Aspect) | ❌ missing | – | Aegis only measures with buffs that are not an effect yet |
+| Solar | Song of Flame | ❌ missing | – | Aegis values not normalised (buffs in the value) |
+| Solar | Daybreak | 🟡 Package | estimate | `super-daybreak-ember-of-ashes` |
+| Solar | Well of Radiance | 🔵 Nur Buff | estimate | – |
+| Void | Spectral Blades | 🟡 Package | estimate | `super-spectral-blades-light-attacks` |
+| Void | Shadowshot: Deadfall | 🟡 Package | estimate | `super-shadowshot-deadfall-tether-includes-debuff` |
+| Void | Shadowshot: Moebius Quiver | 🟡 Package | estimate | `super-shadowshot-moebius-quiver-includes-debuff` |
+| Void | Sentinel Shield | 🟡 Package | estimate | `super-sentinel-shield-light-attacks` |
+| Void | Twilight Arsenal | 🟡 Package | estimate | `super-twilight-arsenal-includes-tractor` |
+| Void | Ward of Dawn | ❌ missing | – | only gives a buff that is not an effect yet |
+| Void | Nova Bomb: Cataclysm | 🟡 Package | estimate | `super-nova-bomb-cataclysm` |
+| Void | Nova Bomb: Vortex | 🟡 Package | estimate | `super-nova-bomb-vortex` |
+| Void | Nova Warp | 🟡 Package | estimate | `super-nova-warp` |
+| Stasis | Silence & Squall | 🟡 Package | estimate | `super-silence-and-squall-whisper-of-fissures-whisper-of-durance` |
+| Stasis | Glacial Quake | ❌ missing | – | Aegis values not normalised (buffs in the value) |
+| Stasis | Winter's Wrath | 🟡 Package | estimate | `super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures` |
+| Strand | Silkstrike | 🟡 Package | estimate | `super-silkstrike-light-attacks` |
+| Strand | Bladefury | ❌ missing | – | Aegis only measures with buffs that are not an effect yet |
+| Strand | Needlestorm | 🟡 Package | estimate | `super-needlestorm` |
 
 ## Grenades
 
-| Element | Grenade | Modell | Aegis-Zeile oder Grund |
+| Element | Grenade | Model | Aegis row or reason |
 | --- | --- | --- | --- |
-| Arc | Arcbolt Grenade | 🟡 Paket | `grenade-arcbolt` |
-| Arc | Flashbang Grenade | 🟡 Paket | `grenade-flashbang` |
-| Arc | Flux Grenade | 🟡 Paket | `grenade-flux-6540-sticker-shock` |
-| Arc | Lightning Grenade | 🟡 Paket | `grenade-lightning` |
-| Arc | Pulse Grenade | 🟡 Paket | `grenade-pulse` |
-| Arc | Skip Grenade | 🟡 Paket | `grenade-skip` |
-| Arc | Storm Grenade | 🟡 Paket | `grenade-storm` |
-| Solar | Firebolt Grenade | 🟡 Paket | `grenade-firebolt-average-ember-of-ashes-with-ignition` |
-| Solar | Fusion Grenade | 🟡 Paket | `grenade-fusion-average-ember-of-ashes-with-ignition` |
-| Solar | Healing Grenade | ❌ fehlt | keine Aegis-Messung |
-| Solar | Incendiary Grenade | 🟡 Paket | `grenade-incendiary-average-ember-of-ashes-with-ignition` |
-| Solar | Solar Grenade | 🟡 Paket | `grenade-solar-ember-of-ashes` |
-| Solar | Swarm Grenade | 🟡 Paket | `grenade-swarm-average-with-ignition` |
-| Solar | Thermite Grenade | 🟡 Paket | `grenade-thermite-average-ember-of-ashes-with-ignition` |
-| Solar | Tripmine Grenade | 🟡 Paket | `grenade-tripmine-average-ember-of-ashes-with-ignition` |
-| Void | Axion Bolt | 🟡 Paket | `grenade-axion-bolt` |
-| Void | Magnetic Grenade | 🟡 Paket | `grenade-magnetic-average` |
-| Void | Scatter Grenade | 🟡 Paket | `grenade-scatter-average` |
-| Void | Suppressor Grenade | 🟡 Paket | `grenade-suppressor` |
-| Void | Void Spike | 🟡 Paket | `grenade-void-spike-echo-of-remnants` |
-| Void | Void Wall | 🟡 Paket | `grenade-void-wall-echo-of-remnants` |
-| Void | Vortex Grenade | 🟡 Paket | `grenade-vortex` |
-| Stasis | Coldsnap Grenade | ❌ fehlt | keine Aegis-Messung |
-| Stasis | Duskfield Grenade | ❌ fehlt | keine Aegis-Messung |
-| Stasis | Glacier Grenade | 🟡 Paket | `grenade-glacier-average-whisper-of-fissures` |
-| Stasis | Shatter Grenade | 🟡 Paket | `grenade-shatter-average-whisper-of-fissures` |
-| Strand | Grapple | ❌ fehlt | keine brauchbaren Daten |
-| Strand | Shackle Grenade | 🟡 Paket | `grenade-shackle` |
-| Strand | Slicewire | 🟡 Paket | `grenade-slicewire` |
-| Strand | Threadling Grenade | 🟡 Paket | `grenade-threadling` |
+| Arc | Arcbolt Grenade | 🟡 Package | `grenade-arcbolt` |
+| Arc | Flashbang Grenade | 🟡 Package | `grenade-flashbang` |
+| Arc | Flux Grenade | 🟡 Package | `grenade-flux-6540-sticker-shock` |
+| Arc | Lightning Grenade | 🟡 Package | `grenade-lightning` |
+| Arc | Pulse Grenade | 🟡 Package | `grenade-pulse` |
+| Arc | Skip Grenade | 🟡 Package | `grenade-skip` |
+| Arc | Storm Grenade | 🟡 Package | `grenade-storm` |
+| Solar | Firebolt Grenade | 🟡 Package | `grenade-firebolt-average-ember-of-ashes-with-ignition` |
+| Solar | Fusion Grenade | 🟡 Package | `grenade-fusion-average-ember-of-ashes-with-ignition` |
+| Solar | Healing Grenade | ❌ missing | no Aegis measurement |
+| Solar | Incendiary Grenade | 🟡 Package | `grenade-incendiary-average-ember-of-ashes-with-ignition` |
+| Solar | Solar Grenade | 🟡 Package | `grenade-solar-ember-of-ashes` |
+| Solar | Swarm Grenade | 🟡 Package | `grenade-swarm-average-with-ignition` |
+| Solar | Thermite Grenade | 🟡 Package | `grenade-thermite-average-ember-of-ashes-with-ignition` |
+| Solar | Tripmine Grenade | 🟡 Package | `grenade-tripmine-average-ember-of-ashes-with-ignition` |
+| Void | Axion Bolt | 🟡 Package | `grenade-axion-bolt` |
+| Void | Magnetic Grenade | 🟡 Package | `grenade-magnetic-average` |
+| Void | Scatter Grenade | 🟡 Package | `grenade-scatter-average` |
+| Void | Suppressor Grenade | 🟡 Package | `grenade-suppressor` |
+| Void | Void Spike | 🟡 Package | `grenade-void-spike-echo-of-remnants` |
+| Void | Void Wall | 🟡 Package | `grenade-void-wall-echo-of-remnants` |
+| Void | Vortex Grenade | 🟡 Package | `grenade-vortex` |
+| Stasis | Coldsnap Grenade | ❌ missing | no Aegis measurement |
+| Stasis | Duskfield Grenade | ❌ missing | no Aegis measurement |
+| Stasis | Glacier Grenade | 🟡 Package | `grenade-glacier-average-whisper-of-fissures` |
+| Stasis | Shatter Grenade | 🟡 Package | `grenade-shatter-average-whisper-of-fissures` |
+| Strand | Grapple | ❌ missing | no usable data |
+| Strand | Shackle Grenade | 🟡 Package | `grenade-shackle` |
+| Strand | Slicewire | 🟡 Package | `grenade-slicewire` |
+| Strand | Threadling Grenade | 🟡 Package | `grenade-threadling` |
 
 ## Melees
 
-| Element | Melee | Modell | Aegis-Zeile oder Grund |
+| Element | Melee | Model | Aegis row or reason |
 | --- | --- | --- | --- |
-| Arc | Combination Blow | ❌ fehlt | keine Aegis-Messung |
-| Arc | Disorienting Blow | 🟡 Paket | `melee-disorienting-blow` |
-| Arc | Ballistic Slam | 🟡 Paket | `melee-ballistic-slam-average-max-typical-catapult-lift-height` |
-| Arc | Seismic Strike | 🟡 Paket | `melee-seismic-strike` |
-| Arc | Thunderclap | 🟡 Paket | `melee-thunderclap-fully-charged` |
-| Arc | Ball Lightning | 🟡 Paket | `melee-ball-lightning` |
-| Arc | Chain Lightning | ❌ fehlt | keine Aegis-Messung |
-| Solar | Knife Trick | 🟡 Paket | `melee-knife-trick-average-precision-ember-of-ashes-with-ignition` |
-| Solar | Lightweight Knife | 🟡 Paket | `melee-lightweight-knife-precision` |
-| Solar | Proximity Explosive Knife | 🟡 Paket | `melee-proximity-explosive-knife-precision` |
-| Solar | Weighted Throwing Knife | 🟡 Paket | `melee-weighted-throwing-knife-precision` |
-| Solar | Hammer Strike | 🟡 Paket | `melee-hammer-strike-ember-of-ashes` |
-| Solar | Throwing Hammer | 🟡 Paket | `melee-throwing-hammer` |
-| Solar | Celestial Fire | 🟡 Paket | `melee-celestial-fire-average-ember-of-ashes-with-ignition` |
-| Solar | Incinerator Snap | 🟡 Paket | `melee-incinerator-snap-ember-of-ashes` |
-| Void | Phantom Surge | 🟡 Paket | `melee-phantom-surge` |
-| Void | Snare Bomb | 🟡 Paket | `melee-snare-bomb-ticks-include-weaken` |
-| Void | Shield Bash | 🟡 Paket | `melee-shield-bash` |
-| Void | Shield Throw | 🟡 Paket | `melee-shield-throw` |
-| Void | Pocket Singularity | 🟡 Paket | `melee-pocket-singularity` |
-| Stasis | Withering Blade | 🟡 Paket | `melee-withering-blade-average-facet-of-ruin` |
-| Stasis | Shiver Strike | 🟡 Paket | `melee-shiver-strike-whisper-of-fissures-with-auto-shatter` |
-| Stasis | Penumbral Blast | 🟡 Paket | `melee-penumbral-blast-average-facet-of-ruin` |
-| Strand | Threaded Spike | 🟡 Paket | `melee-threaded-spike-double-tick` |
-| Strand | Frenzied Blade | 🟡 Paket | `melee-frenzied-blade` |
-| Strand | Arcane Needle | 🟡 Paket | `melee-arcane-needle` |
+| Arc | Combination Blow | ❌ missing | no Aegis measurement |
+| Arc | Disorienting Blow | 🟡 Package | `melee-disorienting-blow` |
+| Arc | Ballistic Slam | 🟡 Package | `melee-ballistic-slam-average-max-typical-catapult-lift-height` |
+| Arc | Seismic Strike | 🟡 Package | `melee-seismic-strike` |
+| Arc | Thunderclap | 🟡 Package | `melee-thunderclap-fully-charged` |
+| Arc | Ball Lightning | 🟡 Package | `melee-ball-lightning` |
+| Arc | Chain Lightning | ❌ missing | no Aegis measurement |
+| Solar | Knife Trick | 🟡 Package | `melee-knife-trick-average-precision-ember-of-ashes-with-ignition` |
+| Solar | Lightweight Knife | 🟡 Package | `melee-lightweight-knife-precision` |
+| Solar | Proximity Explosive Knife | 🟡 Package | `melee-proximity-explosive-knife-precision` |
+| Solar | Weighted Throwing Knife | 🟡 Package | `melee-weighted-throwing-knife-precision` |
+| Solar | Hammer Strike | 🟡 Package | `melee-hammer-strike-ember-of-ashes` |
+| Solar | Throwing Hammer | 🟡 Package | `melee-throwing-hammer` |
+| Solar | Celestial Fire | 🟡 Package | `melee-celestial-fire-average-ember-of-ashes-with-ignition` |
+| Solar | Incinerator Snap | 🟡 Package | `melee-incinerator-snap-ember-of-ashes` |
+| Void | Phantom Surge | 🟡 Package | `melee-phantom-surge` |
+| Void | Snare Bomb | 🟡 Package | `melee-snare-bomb-ticks-include-weaken` |
+| Void | Shield Bash | 🟡 Package | `melee-shield-bash` |
+| Void | Shield Throw | 🟡 Package | `melee-shield-throw` |
+| Void | Pocket Singularity | 🟡 Package | `melee-pocket-singularity` |
+| Stasis | Withering Blade | 🟡 Package | `melee-withering-blade-average-facet-of-ruin` |
+| Stasis | Shiver Strike | 🟡 Package | `melee-shiver-strike-whisper-of-fissures-with-auto-shatter` |
+| Stasis | Penumbral Blast | 🟡 Package | `melee-penumbral-blast-average-facet-of-ruin` |
+| Strand | Threaded Spike | 🟡 Package | `melee-threaded-spike-double-tick` |
+| Strand | Frenzied Blade | 🟡 Package | `melee-frenzied-blade` |
+| Strand | Arcane Needle | 🟡 Package | `melee-arcane-needle` |
 
 ## Effects
 
-| Effect | Bucket | Wirkung | Wirkt auf | Dauer |
+| Effect | Bucket | Effect value | Applies to | Duration |
 | --- | --- | --- | --- | --- |
-| Well of Radiance (standing inside) | empowering | empowering +25 %; empowering +20 % | weapon; super (nur golden-gun-deadshot, golden-gun-marksman) | 30 s |
-| Empowering Rift | empowering | empowering +20 % | weapon | 15 s |
-| Radiant | empowering | empowering +20 %; empowering +20 % | weapon; super (nur golden-gun-deadshot, golden-gun-marksman) | ganze Phase oder Rotation |
-| Weapons of Light (Banner Shield, Ward of Dawn) | empowering | empowering +25 % | weapon | ganze Phase oder Rotation |
-| Lumina (Blessing of the Sky) | empowering | empowering +35 % | weapon | 11 s |
-| Weaken | debuff | debuff +15 % | weapon, grenade, melee, super, classAbility, keyword | ganze Phase oder Rotation |
-| Divinity | debuff | debuff +15 % | weapon, grenade, melee, super, classAbility, keyword | ganze Phase oder Rotation |
-| Tractor Cannon | debuff | debuff +30 % | weapon, grenade, melee, super, classAbility, keyword | 10 s |
-| Moebius Tether | debuff | debuff +30 % | weapon, grenade, melee, super, classAbility, keyword | 6 s |
-| Deadfall Tether | debuff | debuff +35 % | weapon, grenade, melee, super, classAbility, keyword | 12 s |
-| Surge 1x | surge | surge +10 % | weapon | ganze Phase oder Rotation |
-| Surge 2x | surge | surge +17 % | weapon | ganze Phase oder Rotation |
-| Surge 3x | surge | surge +22 % | weapon | ganze Phase oder Rotation |
-| Weapons stat 200 (power weapons against bosses) | amplification | amplification +10 % | weapon | ganze Phase oder Rotation |
-| Elemental Overdrive (solar pickup) | amplification | amplification +22 % | weapon | 7 s |
-| Particle Reconstruction | –, debuff | Timing: noReload; debuff +27.6 % | weapon | ganze Phase oder Rotation |
-| Ember of Ashes | – | scorch ×1.5 | weapon | ganze Phase oder Rotation |
+| Well of Radiance (standing inside) | empowering | empowering +25%; empowering +20% | weapon; super (only golden-gun-deadshot, golden-gun-marksman) | 30 s |
+| Empowering Rift | empowering | empowering +20% | weapon | 15 s |
+| Radiant | empowering | empowering +20%; empowering +20% | weapon; super (only golden-gun-deadshot, golden-gun-marksman) | whole phase or Rotation |
+| Weapons of Light (Banner Shield, Ward of Dawn) | empowering | empowering +25% | weapon | whole phase or Rotation |
+| Lumina (Blessing of the Sky) | empowering | empowering +35% | weapon | 11 s |
+| Weaken | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | whole phase or Rotation |
+| Divinity | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | whole phase or Rotation |
+| Tractor Cannon | debuff | debuff +30% | weapon, grenade, melee, super, classAbility, keyword | 10 s |
+| Moebius Tether | debuff | debuff +30% | weapon, grenade, melee, super, classAbility, keyword | 6 s |
+| Deadfall Tether | debuff | debuff +35% | weapon, grenade, melee, super, classAbility, keyword | 12 s |
+| Surge 1x | surge | surge +10% | weapon | whole phase or Rotation |
+| Surge 2x | surge | surge +17% | weapon | whole phase or Rotation |
+| Surge 3x | surge | surge +22% | weapon | whole phase or Rotation |
+| Weapons stat 200 (power weapons against bosses) | amplification | amplification +10% | weapon | whole phase or Rotation |
+| Elemental Overdrive (solar pickup) | amplification | amplification +22% | weapon | 7 s |
+| Particle Reconstruction | –, debuff | Timing: noReload; debuff +27.6% | weapon | whole phase or Rotation |
+| Ember of Ashes | – | scorch ×1.5 | weapon | whole phase or Rotation |

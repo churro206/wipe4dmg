@@ -2,6 +2,7 @@
 
 ## Unveröffentlicht
 
+- **Website auf Englisch:** alle Labels, Hover-Karten, das Wiki, die Roadmap und die Abdeckung; Zahlen im englischen Format (1,234 und ×1.56).
 - **Exotic-Rüstung wählbar:** unter „Rüstung“ mit Suche und Filter nach Slot, nur Exotics der gewählten Klasse. Ein Hinweis sagt, was das Exotic im Rechner tut. Viele wirken über die Rotation, z. B. Star-Eater Scales nach dem Super-Cast oder Foetracer nach einem Ability-Treffer. Kill-Buffs (z. B. Doom Fang, Khepri's Sting) gelten nur mit dem Schalter „Vorher aufgebaut“, weil ein Boss ohne Adds keine Kills liefert. Exotic und Schalter stehen im Build-Link (Format 4).
 - **Aspects und Fragments** aus allen Subklassen, per Regel aus Compendium und Court: z. B. Spark of Shock (Jolt), Echo of Undermining (Weaken nach Void-Grenade), Ember of Torches (Radiant nach Melee-Treffer), Zustände wie Amplified oder Woven Mail für Exotics wie No Backup Plans.
 - **Keywords:** Ignition, Jolt, Volatile, Unravel und Bolt Charge als eigener Schaden; Abilities setzen sie mit ihren Treffern.

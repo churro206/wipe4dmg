@@ -3,10 +3,10 @@ import type { ExoticArmorEntry } from "../../data/schema";
 import { Icon } from "./Icon";
 
 const SLOT_LABELS: Record<ExoticArmorEntry["slot"], string> = {
-  helmet: "Helm",
-  gauntlets: "Arme",
-  chest: "Brust",
-  legs: "Beine",
+  helmet: "Helmet",
+  gauntlets: "Arms",
+  chest: "Chest",
+  legs: "Legs",
   classItem: "Class Item",
 };
 
@@ -57,7 +57,7 @@ export function ExoticPicker({
             </span>
           )}
           <span className="tile-label">
-            {selected?.name ?? "Kein Exotic"}
+            {selected?.name ?? "No exotic"}
             <span className="tile-sub">
               {selected ? `${SLOT_LABELS[selected.slot]} · ` : ""}wechseln
             </span>
@@ -65,11 +65,11 @@ export function ExoticPicker({
         </button>
       </span>
       {open && (
-        <div className="weapon-picker" role="group" aria-label="Exotic wählen">
+        <div className="weapon-picker" role="group" aria-label="Choose exotic">
           <input
             type="search"
-            placeholder="Exotic suchen"
-            aria-label="Exotic suchen"
+            placeholder="Search exotic"
+            aria-label="Search exotic"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             autoFocus
@@ -82,7 +82,7 @@ export function ExoticPicker({
                 aria-pressed={slot === s}
                 onClick={() => setSlot(s)}
               >
-                {s === "all" ? "Alle" : SLOT_LABELS[s]}
+                {s === "all" ? "All" : SLOT_LABELS[s]}
               </button>
             ))}
           </div>
@@ -96,7 +96,7 @@ export function ExoticPicker({
                 <span className="icon ability-none" style={{ width: 32, height: 32 }}>
                   –
                 </span>
-                <span>Kein Exotic</span>
+                <span>No exotic</span>
                 <span className="muted" />
               </button>
             </li>
@@ -114,7 +114,7 @@ export function ExoticPicker({
               </li>
             ))}
           </ul>
-          {shown.length === 0 && <p className="note">Kein Exotic gefunden.</p>}
+          {shown.length === 0 && <p className="note">No exotic found.</p>}
         </div>
       )}
     </>

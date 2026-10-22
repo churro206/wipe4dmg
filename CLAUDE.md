@@ -21,7 +21,7 @@ Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
 - `docs/coverage.md`: Abdeckung (generiert, nicht von Hand bearbeiten). Nach Änderungen an Data Files `npm run coverage` ausführen.
 - `docs/plans/`: Pläne. **Aktuell: `weapons-and-exotic-armor.md` (v1.1, nächste Schritte).** Zurückgestellt: `optimizer-abilities.md`.
 - `docs/ui-inspiration.md`: Vorbilder für die Oberfläche (andere Tools, Destiny 2 selbst), Logo. Lies ihn vor Änderungen an der Oberfläche.
-- `docs/roadmap.md`: Woran gearbeitet wird und was erledigt ist; Quelle für die Website (US-15). Nach jedem abgeschlossenen Schritt aktualisieren. Den Verlauf vor 2026-10-22 findest du in der Git-Geschichte von `CLAUDE.md`.
+- `docs/roadmap.md`: Woran gearbeitet wird und was erledigt ist; Quelle für die Website (US-15), deshalb englisch. Nach jedem abgeschlossenen Schritt aktualisieren. Den Verlauf vor 2026-10-22 findest du in der Git-Geschichte von `CLAUDE.md`.
 
 ## Sprache
 
@@ -82,7 +82,8 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
 
 - **Umbau nach ADR 0015:** U1–U5, U6-1, U6-1b, U6-2 (Aspects/Fragments, Zustände) und U8 (Exotic-Auswahl, Link-Format 4) sind fertig. **Offen:** U6-3 Exotic Class Items und Transcendence, U6-4 Melee-Bucket additiv, U7 Timing (Class Ability in der Rotation, `refillOnCast`, `magazineRefill`), U9 `build:abilities`, Ember of Ashes aus `effects.json` umziehen.
 - **Prüftabellen:** `docs/exotic-effects.md`, `docs/subclass-effects.md`, `docs/keyword-sources.md`, `docs/armor-import.md`, `docs/weapon-import.md`.
-- **Nächster Schritt (Wunsch des Inhabers, 2026-10-22):** Die Website komplett auf Englisch, ohne Denglisch. Betroffen sind die Texte in `src/ui` (Labels, Tooltips in `describe.ts`, Wiki `wikiText.ts`, Changelog für Spieler). Antworten an den Inhaber, Pläne und Prüftabellen bleiben deutsch. Danach geht es weiter mit U6-3, U6-4 und U7 als vertikale Scheiben (ADR 0016).
+- **Sprache der Website (2026-10-22):** Alles, was Spieler sehen, ist englisch: Texte in `src/ui`, die Abschnitte „## For players“ in `docs/mechanics/`, `docs/roadmap.md` und die generierte `docs/coverage.md`. Zahlen im Format `en-US`. Antworten an den Inhaber, Pläne, Prüftabellen, ADRs und der Changelog bleiben deutsch.
+- **Nächster Schritt:** U6-3, U6-4 und U7 als vertikale Scheiben (ADR 0016).
 - **Wartet auf den Inhaber:** Ingame-Messung des Schussabstands der Golden Gun (Marksman 3 Schüsse, Deadshot 6). Bis dahin ist ihr Super Window eine Schätzung mit 12 s.
 - **Danach:** gezielte Inventur der Lücken (11 Subklassen-Boni ohne Bucket-Quelle, Exotics ohne Wirkung), W1-7 Waffen-Lücken, E1 Dawn Chorus u. a., v1.1 mit Testlauf Waffe × Exotic-Rüstung.
 - **Entscheidungen des Inhabers:**
