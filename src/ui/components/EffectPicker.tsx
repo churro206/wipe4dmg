@@ -6,6 +6,7 @@ import {
   effectIconKey,
   GROUP_LABELS,
 } from "../describe";
+import { tilesOf } from "../effectSections";
 import { Icon } from "./Icon";
 
 /**
@@ -27,34 +28,43 @@ export function EffectPicker({
 }) {
   return (
     <div className="tile-grid">
-      {effects.map((effect) => (
-        <EffectTile
-          key={effect.id}
-          effect={effect}
-          provider={provider}
-          selected={isSelected(effect)}
-          onToggle={() => onToggle(effect)}
-          weaponElement={weaponElement}
-        />
-      ))}
+      {tilesOf(effects).map((tile) => {
+        const selected = isSelected(tile[0]);
+        return (
+          <EffectTile
+            key={tile[0].id}
+            tile={tile}
+            provider={provider}
+            selected={selected}
+            // All effects of the item switch together.
+            onToggle={() =>
+              tile
+                .filter((effect) => isSelected(effect) === selected)
+                .forEach(onToggle)
+            }
+            weaponElement={weaponElement}
+          />
+        );
+      })}
     </div>
   );
 }
 
 function EffectTile({
-  effect,
+  tile,
   provider,
   selected,
   onToggle,
   weaponElement,
 }: {
-  effect: Effect;
+  tile: Effect[];
   weaponElement: Element;
   provider: ProviderKind;
   selected: boolean;
   onToggle: () => void;
 }) {
   const cardId = useId();
+  const effect = tile[0];
   const group =
     provider !== "fireteamSupport" && effect.exclusiveGroup
       ? (GROUP_LABELS[effect.exclusiveGroup] ?? effect.exclusiveGroup)
@@ -76,10 +86,12 @@ function EffectTile({
       </button>
       <span role="tooltip" id={cardId} className="hover-card">
         <strong>{effect.name}</strong>
-        {describeEffect(effect).map((line) => (
+        {tile.flatMap(describeEffect).map((line) => (
           <span key={line}>{line}</span>
         ))}
-        <span>Active: {describeDuration(effect)}</span>
+        {[...new Set(tile.map(describeDuration))].map((duration) => (
+          <span key={duration}>Active: {duration}</span>
+        ))}
         {group && <span>Only {group} per build</span>}
       </span>
     </span>

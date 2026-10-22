@@ -16,6 +16,24 @@ export type EffectSection = {
   effects: Effect[];
 };
 
+const itemKey = (effect: Effect) =>
+  effect.manifestRef
+    ? `${effect.manifestRef.table}:${effect.manifestRef.hash}`
+    : effect.id;
+
+/**
+ * One tile per item: an item with several triggers has several effects, e.g. Facet of Dominance
+ * (Weaken after Void grenades, Jolt after Arc grenades).
+ */
+export function tilesOf(effects: Effect[]): Effect[][] {
+  const byItem = new Map<string, Effect[]>();
+  for (const effect of effects) {
+    const key = itemKey(effect);
+    byItem.set(key, [...(byItem.get(key) ?? []), effect]);
+  }
+  return [...byItem.values()];
+}
+
 const SLOT_ORDER: { slot: Slot; provider: ProviderKind }[] = [
   { slot: "super", provider: "subclass" },
   { slot: "classAbility", provider: "subclass" },
