@@ -86,12 +86,15 @@ function EffectTile({
       </button>
       <span role="tooltip" id={cardId} className="hover-card">
         <strong>{effect.name}</strong>
-        {tile.flatMap(describeEffect).map((line) => (
-          <span key={line}>{line}</span>
-        ))}
-        {[...new Set(tile.map(describeDuration))].map((duration) => (
-          <span key={duration}>Active: {duration}</span>
-        ))}
+        {/* each effect of the item with its own active time below it */}
+        {tile
+          .flatMap((e) => [
+            ...describeEffect(e),
+            `Active: ${describeDuration(e)}`,
+          ])
+          .map((line, i) => (
+            <span key={i}>{line}</span>
+          ))}
         {group && <span>Only {group} per build</span>}
       </span>
     </span>
