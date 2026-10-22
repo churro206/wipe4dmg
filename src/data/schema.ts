@@ -261,6 +261,8 @@ export const AppliesKeywordPart = z.object({
   weaponTypes: z.array(WeaponType).optional(),
   abilityIds: z.array(z.string()).optional(),
   durationMs: SourcedNumber.optional(), // replaces the duration of the keyword, e.g. of Unravel
+  // Only these damage instances apply it, e.g. "fusion-grenade.package"; omitted: all matching hits.
+  damageInstanceIds: z.array(z.string()).optional(),
   stacks: SourcedNumber.optional(), // for keywords with stacks, e.g. x40 scorch or x4 bolt charge
   source: Source,
 });

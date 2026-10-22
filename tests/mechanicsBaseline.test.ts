@@ -4,6 +4,7 @@
 // the commit.
 
 import { describe, expect, it } from "vitest";
+import rawAbilityKeywords from "../src/data/ability-keywords.json";
 import rawAbilityStats from "../src/data/ability-stats.json";
 import rawAbilities from "../src/data/abilities.json";
 import rawRows from "../src/data/aegis-abilities.json";
@@ -13,6 +14,7 @@ import rawArmor from "../src/data/exotic-armor.json";
 import rawKeywords from "../src/data/keywords.json";
 import rawManifest from "../src/data/manifest-abilities.json";
 import {
+  AbilityKeyword,
   AegisAbilityRow,
   ExoticArmorEntry,
   ManifestAbilities,
@@ -48,6 +50,7 @@ const abilities = loadAbilities(
   abilityStats,
   ManifestAbilities.parse(rawManifest).abilities,
   { effects, buckets },
+  AbilityKeyword.array().parse(rawAbilityKeywords),
 );
 const armor = ExoticArmorEntry.array().parse(rawArmor);
 const weapons = loadWeapons(rawWeapons);
@@ -103,6 +106,7 @@ function abilityTotals(): Record<string, Record<string, number | string>> {
             simulate(otv, ABILITY_DAMAGE_PHASE_SECONDS, [], buckets, {
               abilities: [{ ability, castsMs: [0] }],
               abilityStats: [{ scaling, value: stat }],
+              keywords,
             }).totalDamage,
         ),
       ]),

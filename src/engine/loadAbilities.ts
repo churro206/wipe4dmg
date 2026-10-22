@@ -20,6 +20,7 @@ import {
   GuardianClass,
   Subclass,
   type AbilityComponent,
+  type AbilityKeyword,
   type AbilityKind,
   type ManifestAbility,
   type Provider,
@@ -45,31 +46,50 @@ export function loadAbilities(
   abilityStats: AbilityStatScaling[],
   manifestAbilities: ManifestAbility[] = [],
   normalise?: { effects: Effect[]; buckets: Bucket[] },
+  // ability-keywords.json (ADR 0015, U5): keyword parts, and keyword damage taken out of packages.
+  abilityKeywords: AbilityKeyword[] = [],
 ): Ability[] {
   return AbilityData.array()
     .parse(raw)
-    .map(({ components, ...ability }) =>
-      Ability.parse({
+    .map(({ components, ...ability }) => {
+      const own = abilityKeywords.filter((k) => k.abilityId === ability.id);
+      const loaded = ability.package
+        ? packageComponents(
+            ability.id,
+            ability.aegisRowId!,
+            ability.kind,
+            ability.extraIncludedEffectIds ?? [],
+            aegisRows,
+            abilityStats,
+            own,
+          ).map((component) =>
+            normalise
+              ? withoutIncludedMultipliers(component, ability, normalise)
+              : component,
+          )
+        : (components ?? []);
+      return Ability.parse({
         ...ability,
         ...(ability.providers
           ? {}
           : manifestProviders(ability, manifestAbilities)),
-        components: ability.package
-          ? packageComponents(
-              ability.id,
-              ability.aegisRowId!,
-              ability.kind,
-              ability.extraIncludedEffectIds ?? [],
-              aegisRows,
-              abilityStats,
-            ).map((component) =>
-              normalise
-                ? withoutIncludedMultipliers(component, ability, normalise)
-                : component,
-            )
-          : (components ?? []),
-      }),
-    );
+        components: loaded,
+        ...(own.length > 0
+          ? {
+              keywordParts: own.map((k) => ({
+                type: "appliesKeyword",
+                keywordId: k.keywordId,
+                damageSources: [ability.kind],
+                abilityIds: [ability.id],
+                // once per cast: only the first component applies it
+                damageInstanceIds: [`${ability.id}.${loaded[0].id}`],
+                ...(k.stacksPerUse ? { stacks: k.stacksPerUse } : {}),
+                source: k.source,
+              })),
+            }
+          : {}),
+      });
+    });
 }
 
 function packageComponents(
@@ -79,13 +99,23 @@ function packageComponents(
   extraIncludedEffectIds: string[],
   aegisRows: AegisAbilityRow[],
   abilityStats: AbilityStatScaling[],
+  abilityKeywords: AbilityKeyword[],
 ): AbilityComponent[] {
   const row = aegisRows.find((r) => r.id === aegisRowId);
   if (!row) throw new Error(`${abilityId}: unknown Aegis row "${aegisRowId}"`);
-  const atStat100 = requireValue(
-    row.perUseStat100,
-    `${aegisRowId} perUseStat100`,
+  // Keyword damage Aegis counted into the package, per use in visual value; the keyword run adds it
+  // back. It grows with the stat of a grenade or super, not of a melee (Aegis stat 200 / stat 100,
+  // ADR 0015 U5).
+  const baked = abilityKeywords.flatMap((k) =>
+    k.bakedInPackage ? [k.bakedInPackage] : [],
   );
+  const keywordPerUse = baked.reduce(
+    (sum, b) => sum + (b.triggers * b.tick) / (b.uses * b.fullModifiers),
+    0,
+  );
+  const atStat100 =
+    requireValue(row.perUseStat100, `${aegisRowId} perUseStat100`) -
+    keywordPerUse;
   const scaling = abilityStats.find((s) => s.kind === kind);
   if (!scaling) throw new Error(`${abilityId}: no stat scaling for "${kind}"`);
   const statFactor =
@@ -93,7 +123,12 @@ function packageComponents(
     requireValue(scaling.damagePerPoint, "damagePerPoint") *
       (scaling.maxStat - scaling.bonusFromStat);
 
-  const atStat200 = row.perUseStat200.value;
+  const atStat200 =
+    row.perUseStat200.value === null
+      ? null
+      : row.perUseStat200.value -
+        // melee buffs do not scale ignition (Compendium); Aegis melee rows match exactly this way
+        keywordPerUse * (kind === "melee" ? 1 : statFactor);
   const share =
     atStat200 === null
       ? 1
@@ -101,7 +136,11 @@ function packageComponents(
   const valueSource = (note: string): Source => ({
     ...row.perUseStat100.source,
     status: atStat200 === null ? "unverified" : row.perUseStat100.source.status,
-    note: `${row.perUseStat100.source.note ?? ""}; package ${aegisRowId}: ${note}`,
+    note: `${row.perUseStat100.source.note ?? ""}; package ${aegisRowId}: ${note}${
+      baked.length > 0
+        ? `; keyword damage taken out: ${baked.map((b) => b.note).join("; ")}`
+        : ""
+    }`,
   });
   const modelSource: Source = {
     name: "Package model (ADR 0009)",

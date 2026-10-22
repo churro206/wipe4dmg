@@ -48,6 +48,8 @@ const matches = (part: AppliesKeywordPart, hit: TimedDamageInstance) =>
   part.damageSources.includes(hit.damageSource) &&
   (part.elements === undefined || part.elements.includes(hit.element)) &&
   appliesToWeaponType(part.weaponTypes, hit.weaponType) &&
+  (part.damageInstanceIds === undefined ||
+    part.damageInstanceIds.includes(hit.id)) &&
   (part.abilityIds === undefined ||
     (hit.abilityId !== undefined && part.abilityIds.includes(hit.abilityId)));
 

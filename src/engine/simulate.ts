@@ -374,11 +374,17 @@ export function simulate(
         source.damageSource !== "melee" &&
         source.damageSource !== "keyword"
       ) {
-        return combinedMultiplier(partsAt(timeMs).multiplierParts, buckets, {
-          damageSource: source.damageSource,
-          element: keyword.element,
-          abilityId: source.abilityId,
-        });
+        // The ability stat counts too: Aegis measures the ignitions of a grenade growing with the
+        // grenade stat (ADR 0015, U5).
+        return combinedMultiplier(
+          [...partsAt(timeMs).multiplierParts, ...statParts],
+          buckets,
+          {
+            damageSource: source.damageSource,
+            element: keyword.element,
+            abilityId: source.abilityId,
+          },
+        );
       }
     }
     const parts = partsAt(timeMs)
@@ -396,9 +402,15 @@ export function simulate(
       element: keyword.element,
     });
   };
-  const weaponKeywordParts = weapon.intrinsicParts.filter(
-    (part): part is AppliesKeywordPart => part.type === "appliesKeyword",
-  );
+  // Keyword parts of the weapon and of the abilities in the build are always active (ADR 0015).
+  const weaponKeywordParts = [
+    ...weapon.intrinsicParts.filter(
+      (part): part is AppliesKeywordPart => part.type === "appliesKeyword",
+    ),
+    ...(options.abilities ?? []).flatMap(
+      (cast) => cast.ability.keywordParts ?? [],
+    ),
+  ];
   const damageInstances = runEvents(
     events,
     keywordOnHit({

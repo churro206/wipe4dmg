@@ -1,6 +1,7 @@
 // Data Files loaded once for the UI, validated by the engine loaders.
 
 import rawAbilities from "../data/abilities.json";
+import rawAbilityKeywords from "../data/ability-keywords.json";
 import rawAbilityStats from "../data/ability-stats.json";
 import rawAegisAbilities from "../data/aegis-abilities.json";
 import rawBosses from "../data/bosses.json";
@@ -10,7 +11,7 @@ import rawIcons from "../data/icons.json";
 import rawKeywords from "../data/keywords.json";
 import rawManifestAbilities from "../data/manifest-abilities.json";
 import rawPackages from "../data/weapon-packages.json";
-import type { Weapon } from "../data/schema";
+import { AbilityKeyword, type Weapon } from "../data/schema";
 import type { LinkRegistry } from "../engine/buildLink";
 import { loadAbilities } from "../engine/loadAbilities";
 import { loadKeywords } from "../engine/loadKeywords";
@@ -43,13 +44,15 @@ export const activities = [...new Set(bosses.map((boss) => boss.activity))];
 export const abilityStats = loadAbilityStats(rawAbilityStats);
 export const aegisRows = loadAegisAbilityRows(rawAegisAbilities);
 export const keywords = loadKeywords(rawKeywords, aegisRows);
-// Packages take their values from the Aegis rows, providers from the manifest items (ADR 0009).
+// Packages take their values from the Aegis rows, providers from the manifest items (ADR 0009),
+// keywords from ability-keywords.json (ADR 0015, U5).
 export const abilities = loadAbilities(
   rawAbilities,
   aegisRows,
   abilityStats,
   loadManifestAbilities(rawManifestAbilities),
   { effects, buckets },
+  AbilityKeyword.array().parse(rawAbilityKeywords),
 );
 export const linkRegistry: LinkRegistry = {
   weapons,

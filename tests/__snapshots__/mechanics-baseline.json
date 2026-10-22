@@ -333,8 +333,8 @@
       "stat 200": 41599.78
     },
     "gathering-storm": {
-      "stat 100": 35636.96,
-      "stat 200": 37876.09
+      "stat 100": 36231.74,
+      "stat 200": 38470.87
     },
     "storms-edge": {
       "stat 100": 37843.91,
@@ -349,20 +349,20 @@
       "stat 200": 44099.13
     },
     "stormtrance": {
-      "stat 100": 41475.22,
-      "stat 200": 46981.74
+      "stat 100": 41574.35,
+      "stat 200": 47080.87
     },
     "blade-barrage": {
       "stat 100": 37764.78,
       "stat 200": 41965.44
     },
     "golden-gun-deadshot": {
-      "stat 100": 33668.77,
-      "stat 200": 36026.21
+      "stat 100": 34343.99,
+      "stat 200": 37005.28
     },
     "golden-gun-marksman": {
-      "stat 100": 36105,
-      "stat 200": 39558.75
+      "stat 100": 36780.22,
+      "stat 200": 40537.81
     },
     "burning-maul": {
       "stat 100": 41189.57,
@@ -373,8 +373,8 @@
       "stat 200": 41833.04
     },
     "daybreak": {
-      "stat 100": 40614.78,
-      "stat 200": 46097.94
+      "stat 100": 41504.78,
+      "stat 200": 46987.94
     },
     "well-of-radiance": {
       "stat 100": 28430,
@@ -409,8 +409,8 @@
       "stat 200": 41760.87
     },
     "nova-warp": {
-      "stat 100": 45389.57,
-      "stat 200": 52934.78
+      "stat 100": 45483.48,
+      "stat 200": 53028.7
     },
     "silence-and-squall": {
       "stat 100": 39920.44,
@@ -457,32 +457,32 @@
       "stat 200": 29898.5
     },
     "firebolt-grenade": {
-      "stat 100": 29039.24,
-      "stat 200": 29435.24
+      "stat 100": 29756.2,
+      "stat 200": 30039.72
     },
     "fusion-grenade": {
-      "stat 100": 29559.35,
-      "stat 200": 30293.42
+      "stat 100": 30103.26,
+      "stat 200": 30612.38
     },
     "incendiary-grenade": {
-      "stat 100": 29929.35,
-      "stat 200": 30903.92
+      "stat 100": 30473.26,
+      "stat 200": 31222.88
     },
     "solar-grenade": {
-      "stat 100": 29696.96,
-      "stat 200": 30520.48
+      "stat 100": 30586.96,
+      "stat 200": 31410.48
     },
     "swarm-grenade": {
-      "stat 100": 29343.91,
-      "stat 200": 29937.96
+      "stat 100": 30003.19,
+      "stat 200": 30447.26
     },
     "thermite-grenade": {
-      "stat 100": 30602.22,
-      "stat 200": 31878
+      "stat 100": 31146.13,
+      "stat 200": 32196.96
     },
     "tripmine-grenade": {
-      "stat 100": 29672.39,
-      "stat 200": 30479.95
+      "stat 100": 30216.3,
+      "stat 200": 30798.9
     },
     "axion-bolt-grenade": {
       "stat 100": 29056.52,
@@ -553,8 +553,8 @@
       "stat 200": 28688.3
     },
     "knife-trick": {
-      "stat 100": 29554.57,
-      "stat 200": 29674.57
+      "stat 100": 30106.96,
+      "stat 200": 30226.96
     },
     "lightweight-knife": {
       "stat 100": 28837.83,
@@ -569,20 +569,20 @@
       "stat 200": 29172.13
     },
     "hammer-strike": {
-      "stat 100": 30034.35,
-      "stat 200": 30475.65
+      "stat 100": 30924.35,
+      "stat 200": 31365.65
     },
     "throwing-hammer": {
       "stat 100": 28993.91,
       "stat 200": 29163.09
     },
     "celestial-fire": {
-      "stat 100": 29193.04,
-      "stat 200": 29267.97
+      "stat 100": 29857.97,
+      "stat 200": 29932.9
     },
     "incinerator-snap": {
       "stat 100": 29573.91,
-      "stat 200": 29699.57
+      "stat 200": 29699.56
     },
     "phantom-surge": {
       "stat 100": 29024.35,
@@ -601,8 +601,8 @@
       "stat 200": 28735.22
     },
     "pocket-singularity": {
-      "stat 100": 28855.65,
-      "stat 200": 28983.35
+      "stat 100": 28949.57,
+      "stat 200": 29077.26
     },
     "withering-blade": {
       "stat 100": 28917.61,
