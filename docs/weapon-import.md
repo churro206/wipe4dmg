@@ -71,7 +71,7 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | Waffe | Option | Art | Faktor | Dauer | Bedingung | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- |
 | D.A.R.C.I. | ⚠ Networked Targeting x5 | Katalysator | ×1,060 | – | – | keine Dauer im Compendium gefunden |
-| One Thousand Voices | ⚠ catalyst | Katalysator | ×1,454 | 6 s | – | – |
+| One Thousand Voices | catalyst | Katalysator | ×1,454 | – | – | – |
 | Truth | ⚠ Reaper's Tithe x4 | Katalysator | ×1,400 | 15 s | Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks) | Faktor aus Einzeltreffern; Mittelwert pro Shot wäre ×1,448 (9 gegen 12 Shots) |
 | Whisper of the Worm | ⚠ Whispered Breathing | Katalysator | ×1,472 | 1 s | – | – |
 

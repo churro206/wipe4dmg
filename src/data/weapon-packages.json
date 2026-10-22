@@ -3705,7 +3705,7 @@
             "note": "visual Value 3372.292 / 2458.972 (base row fusion-rifle-one-thousand-voices-average)"
           }
         },
-        "durationSeconds": 5.65,
+        "durationSeconds": null,
         "condition": null
       }
     ]

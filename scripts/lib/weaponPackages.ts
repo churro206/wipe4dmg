@@ -68,6 +68,7 @@ const CONDITION_WORDS =
   /\b(kill|kills|killed|final blow|defeat|precision|while|after|when|hits?)\b/i;
 const DURATION =
   /\bfor (\d+(?:\.\d+)?)(?:\s*↑\s*\d+(?:\.\d+)?)?\s*(?:\[[^\]]*\]\s*)?seconds?\b/i;
+const TICKS = /\bticks?\b/i;
 
 export type ReportOption = {
   name: string;
@@ -196,7 +197,13 @@ function perkText(
         (e) => e.tab === "Weapon Perks" && e.name.toLowerCase() === key,
       )?.text;
     if (!text) continue;
-    const duration = DURATION.exec(text);
+    // A sentence about ticks gives how long damage over time lasts, not the perk (e.g. the Taken
+    // Seekers of One Thousand Voices: "22 ticks of damage, ... for 5.65 seconds").
+    const duration = text
+      .split(/(?<=[.!])\s+|\n/)
+      .filter((sentence) => !TICKS.test(sentence))
+      .map((sentence) => DURATION.exec(sentence))
+      .find((match) => match !== null);
     const firstLine = text.split("\n")[0];
     return {
       durationSeconds: duration ? Number(duration[1]) : null,

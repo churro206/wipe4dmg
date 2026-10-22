@@ -170,6 +170,9 @@ describe("weapons with scorch (ADR 0015, U4a-4)", () => {
     const catalyst = otv.options!.find((o) => o.kind === "catalyst")!;
     // (85319 - 4 x 2814) / 8 against (31106 - 2 x 2814) / 4, both Aegis rows
     expect(value(catalyst.factor)).toBeCloseTo(1.4534, 3);
+    // "dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds" is how long a
+    // seeker ticks, not how long the catalyst lasts.
+    expect(catalyst.durationSeconds).toBeNull();
   });
 });
 
