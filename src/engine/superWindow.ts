@@ -19,6 +19,8 @@ export function superWindowMs(usage: SuperUsage): SuperWindowLength {
       const baseMs = requireValue(usage.baseDurationMs, "baseDurationMs");
       const shots = usage.shots.value;
       const intervalMs = usage.shotIntervalMs.value;
+      // one shot needs no interval: the window ends with it
+      if (shots === 1) return { durationMs: 0, exact: true };
       if (shots === null || intervalMs === null) {
         return { durationMs: baseMs, exact: false };
       }

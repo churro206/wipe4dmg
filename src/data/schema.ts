@@ -805,6 +805,11 @@ export const ExoticArmorEntry = z.object({
   bonuses: z.array(ArmorBonusQuote),
   bonusBucket: ArmorBonusBucket.nullable(), // null if no bonus is usable or Court rows name the buckets
   grantsEffectIds: z.array(z.string()), // effects of effects.json the texts say it grants (rule 4c)
+  // Shots of the super it modifies, e.g. Celestial Nighthawk: "single high-damage shot" (rule 1)
+  superShots: z
+    .object({ value: z.number().int().positive(), quote: z.string() })
+    .nullable()
+    .optional(),
   // Quoted change of the shot plan (rule 5), strongest of stacked values.
   timing: z
     .object({

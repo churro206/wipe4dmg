@@ -101,6 +101,13 @@ describe("superWindowMs", () => {
     });
   });
 
+  it("ends with the one shot, without a shot interval (e.g. Celestial Nighthawk)", () => {
+    expect(superWindowMs(shotsUsage(1, null))).toEqual({
+      durationMs: 0,
+      exact: true,
+    });
+  });
+
   it("ends when passive drain and attacks use up the energy for drain supers", () => {
     // 1 / (1 / 21000 ms + 0.12 / 1500 ms) = 7836 ms
     const window = superWindowMs(drainUsage(0.12, 1500));

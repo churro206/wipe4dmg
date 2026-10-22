@@ -170,6 +170,15 @@ export function grantedEffects(
   });
 }
 
+// "a modified single high-damage shot version" of a super with shots (rule 1)
+const SINGLE_SHOT = /\bsingle (?:[\w-]+ ){0,3}shot\b/i;
+
+/** Shots of the super an ability variant modifies, e.g. Celestial Nighthawk; null if not named. */
+export function superShots(text: string): ExoticArmorEntry["superShots"] {
+  const match = SINGLE_SHOT.exec(text);
+  return match ? { value: 1, quote: match[0] } : null;
+}
+
 /** Quoted Reload Duration Multiplier, strongest of stacked values (rule 5). */
 export function reloadFactor(
   text: string,
@@ -466,6 +475,8 @@ export function classifyExoticArmor(
         bonuses,
         bonusBucket,
         grantsEffectIds: granted.map((g) => g.id),
+        superShots:
+          rest.kind === "abilityVariant" ? superShots(compendiumText) : null,
         timing,
       };
     });

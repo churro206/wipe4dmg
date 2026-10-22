@@ -14,6 +14,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -31,6 +32,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -74,6 +76,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -91,6 +94,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -108,6 +112,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -125,6 +130,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -142,6 +148,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -176,6 +183,7 @@
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -193,6 +201,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -210,6 +219,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -227,6 +237,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -244,6 +255,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -261,6 +273,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -278,6 +291,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -315,6 +329,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -332,6 +347,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -371,6 +387,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -388,6 +405,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -431,6 +449,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -465,6 +484,7 @@
       "quote": "(Empowering Buff)"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -510,6 +530,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -544,6 +565,7 @@
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -561,6 +583,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -610,6 +633,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": { "value": 1, "quote": "single high-damage shot" },
     "timing": null
   },
   {
@@ -627,6 +651,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -651,6 +676,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -685,6 +711,7 @@
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -704,6 +731,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -728,6 +756,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -745,6 +774,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -762,6 +792,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -799,6 +830,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -816,6 +848,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -859,6 +892,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -893,6 +927,7 @@
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -917,6 +952,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -934,6 +970,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -958,6 +995,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -992,6 +1030,7 @@
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1009,6 +1048,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1026,6 +1066,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1056,6 +1097,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1080,6 +1122,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1127,6 +1170,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1151,6 +1195,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1168,6 +1213,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1188,6 +1234,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1205,6 +1252,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1222,6 +1270,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1239,6 +1288,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1263,6 +1313,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1294,6 +1345,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1322,6 +1374,7 @@
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1346,6 +1399,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1399,6 +1453,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1416,6 +1471,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1433,6 +1489,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1450,6 +1507,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1467,6 +1525,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1484,6 +1543,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1514,6 +1574,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1561,6 +1622,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1598,6 +1660,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1615,6 +1678,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1632,6 +1696,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1697,6 +1762,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1714,6 +1780,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1731,6 +1798,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": {
       "change": "reloadDuration",
       "factor": 0.9,
@@ -1766,6 +1834,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1803,6 +1872,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1820,6 +1890,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1837,6 +1908,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1854,6 +1926,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1888,6 +1961,7 @@
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1905,6 +1979,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1922,6 +1997,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1939,6 +2015,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1956,6 +2033,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -1991,6 +2069,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2008,6 +2087,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2057,6 +2137,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2074,6 +2155,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2115,6 +2197,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2132,6 +2215,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2149,6 +2233,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2173,6 +2258,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2190,6 +2276,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2210,6 +2297,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2227,6 +2315,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2268,6 +2357,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2309,6 +2399,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2326,6 +2417,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2343,6 +2435,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2367,6 +2460,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2384,6 +2478,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2401,6 +2496,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2418,6 +2514,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": ["radiant"],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2457,6 +2554,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2474,6 +2572,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2505,6 +2604,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2522,6 +2622,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2539,6 +2640,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": ["radiant"],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2556,6 +2658,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2573,6 +2676,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2590,6 +2694,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2627,6 +2732,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2664,6 +2770,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2681,6 +2788,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2705,6 +2813,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2722,6 +2831,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2752,6 +2862,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2769,6 +2880,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2786,6 +2898,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2803,6 +2916,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2820,6 +2934,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2837,6 +2952,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": {
       "change": "reloadDuration",
       "factor": 0.89,
@@ -2859,6 +2975,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2900,6 +3017,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2917,6 +3035,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2934,6 +3053,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2969,6 +3089,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -2986,6 +3107,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3005,6 +3127,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3022,6 +3145,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3081,6 +3205,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3098,6 +3223,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3115,6 +3241,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3188,6 +3315,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3205,6 +3333,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3222,6 +3351,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3239,6 +3369,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3276,6 +3407,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3293,6 +3425,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3370,6 +3503,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3387,6 +3521,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3404,6 +3539,7 @@
     "bonuses": [],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3447,6 +3583,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3484,6 +3621,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3521,6 +3659,7 @@
     ],
     "bonusBucket": null,
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3549,6 +3688,7 @@
       "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   },
   {
@@ -3590,6 +3730,7 @@
       "quote": "Exotic Intrinsics"
     },
     "grantsEffectIds": [],
+    "superShots": null,
     "timing": null
   }
 ]

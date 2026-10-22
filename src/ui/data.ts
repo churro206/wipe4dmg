@@ -60,8 +60,10 @@ export const activities = [...new Set(bosses.map((boss) => boss.activity))];
 export const abilityStats = loadAbilityStats(rawAbilityStats);
 export const aegisRows = loadAegisAbilityRows(rawAegisAbilities);
 export const keywords = loadKeywords(rawKeywords, aegisRows);
+// Exotic armor (ADR 0014) and the effects generated from its damage buffs (ADR 0015, U6).
+export const exoticArmor = ExoticArmorEntry.array().parse(rawExoticArmor);
 // Packages take their values from the Aegis rows, providers from the manifest items (ADR 0009),
-// keywords from ability-keywords.json (ADR 0015, U5).
+// keywords from ability-keywords.json (ADR 0015, U5), variants with exotic armor (ADR 0014).
 export const abilities = loadAbilities(
   rawAbilities,
   aegisRows,
@@ -69,9 +71,8 @@ export const abilities = loadAbilities(
   loadManifestAbilities(rawManifestAbilities),
   { effects, buckets },
   AbilityKeyword.array().parse(rawAbilityKeywords),
+  exoticArmor,
 );
-// Exotic armor (ADR 0014) and the effects generated from its damage buffs (ADR 0015, U6).
-export const exoticArmor = ExoticArmorEntry.array().parse(rawExoticArmor);
 export const generatedExoticEffects = ExoticArmorEffect.array().parse(
   rawExoticArmorEffects,
 );

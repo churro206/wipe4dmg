@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ability variants with exotic armor > lists the generated variants 1`] = `
+[
+  "thundercrash-with-cuirass-of-the-falling-star",
+  "arc-staff-with-raiden-flux",
+  "gathering-storm-with-raijus-harness",
+  "chaos-reach-with-geomag-stabilizers",
+  "golden-gun-marksman-with-celestial-nighthawk",
+  "daybreak-with-dawn-chorus",
+  "shadowshot-moebius-quiver-with-orpheus-rig",
+  "winters-wrath-with-ballidorse-wrathweavers",
+]
+`;
