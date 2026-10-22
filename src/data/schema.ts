@@ -948,6 +948,8 @@ export const Build = z.object({
   catalyst: z.boolean(),
   // Exotic armor piece (exotic-armor.json, ADR 0014); omitted: none. At most one per build.
   exoticArmorId: z.string().optional(),
+  // The kill buffs of the exotic are built up before the damage phase (ADR 0015); omitted: off.
+  exoticPreBuilt: z.boolean().optional(),
   // Selected effects with their provider; the same effect may come from two providers.
   selections: z.array(
     z.object({ effectId: z.string(), provider: ProviderKind }),

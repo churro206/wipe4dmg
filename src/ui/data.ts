@@ -12,7 +12,14 @@ import rawKeywords from "../data/keywords.json";
 import rawManifestAbilities from "../data/manifest-abilities.json";
 import rawSubclassEffects from "../data/subclass-effects.json";
 import rawPackages from "../data/weapon-packages.json";
-import { AbilityKeyword, type Weapon } from "../data/schema";
+import rawExoticArmorEffects from "../data/exotic-armor-effects.json";
+import rawExoticArmor from "../data/exotic-armor.json";
+import {
+  AbilityKeyword,
+  ExoticArmorEffect,
+  ExoticArmorEntry,
+  type Weapon,
+} from "../data/schema";
 import type { LinkRegistry } from "../engine/buildLink";
 import { loadAbilities } from "../engine/loadAbilities";
 import { loadKeywords } from "../engine/loadKeywords";
@@ -60,10 +67,16 @@ export const abilities = loadAbilities(
   { effects, buckets },
   AbilityKeyword.array().parse(rawAbilityKeywords),
 );
+// Exotic armor (ADR 0014) and the effects generated from its damage buffs (ADR 0015, U6).
+export const exoticArmor = ExoticArmorEntry.array().parse(rawExoticArmor);
+export const exoticArmorEffects = ExoticArmorEffect.array().parse(
+  rawExoticArmorEffects,
+);
 export const linkRegistry: LinkRegistry = {
   weapons,
   effects,
   abilities,
+  exoticArmor,
 };
 
 const icons = loadIconIndex(rawIcons).icons;

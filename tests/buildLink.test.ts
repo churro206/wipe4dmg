@@ -2,6 +2,7 @@ import fc from "fast-check";
 import { describe, expect, it } from "vitest";
 import rawAbilities from "../src/data/abilities.json";
 import rawEffects from "../src/data/effects.json";
+import rawArmor from "../src/data/exotic-armor.json";
 import type { Build } from "../src/data/schema";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import {
@@ -16,6 +17,7 @@ const registry: LinkRegistry = {
   weapons: [loadWeapon(raw)],
   effects: loadEffects(rawEffects),
   abilities: rawAbilities.map(({ id, code }) => ({ id, code })),
+  exoticArmor: rawArmor.map(({ id, hash }) => ({ id, hash })),
 };
 
 // Test inputs, not game data.
@@ -53,6 +55,7 @@ describe("encodeLink and decodeLink", () => {
       comparison: null,
       unknownEffectCodes: [],
       unknownAbilityCodes: [],
+      unknownExoticArmorHashes: [],
       replacedEffectCodes: [],
     });
   });
@@ -66,8 +69,9 @@ describe("encodeLink and decodeLink", () => {
     expect(decoded.comparison).toEqual(comparison);
   });
 
-  it("keeps a typical build short (5 effects with windows in about 45 characters)", () => {
-    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(48);
+  it("keeps a typical build short (5 effects with windows in about 48 characters)", () => {
+    // format 4 adds two bytes for the exotic armor
+    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(51);
   });
 
   it("writes only URL-safe characters", () => {
@@ -173,6 +177,46 @@ describe("encodeLink and decodeLink", () => {
         abilities: [{ abilityId: "nope", castsMs: [0] }],
       };
       expect(() => encodeLink({ build: unknown }, registry)).toThrow("nope");
+    });
+  });
+
+  describe("exotic armor (format 4)", () => {
+    const withExotic: Build = {
+      ...build,
+      exoticArmorId: "star-eater-scales",
+      exoticPreBuilt: true,
+    };
+
+    it("round-trips the exotic and its prebuilt switch", () => {
+      expect(
+        decodeLink(encodeLink({ build: withExotic }, registry), registry).build,
+      ).toEqual(withExotic);
+      expect(
+        decodeLink(encodeLink({ build }, registry), registry).build,
+      ).toEqual(build);
+    });
+
+    it("skips an unknown exotic and reports its hash", () => {
+      const decoded = decodeLink(encodeLink({ build: withExotic }, registry), {
+        ...registry,
+        exoticArmor: [],
+      });
+      expect(decoded.build.exoticArmorId).toBeUndefined();
+      expect(decoded.unknownExoticArmorHashes).toEqual([
+        registry.exoticArmor!.find((e) => e.id === "star-eater-scales")!.hash,
+      ]);
+    });
+
+    it("still reads links of format 3", () => {
+      // written by format 3 on 2026-10-22: Ember of Ashes, Fusion Grenade at 1.5 s, stats
+      const decoded = decodeLink("AwECAQHAsgQBEQAAAAEjAdwLAcgBlgFkAA", registry);
+      expect(decoded.build).toMatchObject({
+        guardianClass: "warlock",
+        selections: [{ effectId: "ember-of-ashes", provider: "subclass" }],
+        abilities: [{ abilityId: "fusion-grenade", castsMs: [1500] }],
+        abilityStats: { super: 200, grenade: 150, melee: 100 },
+      });
+      expect(decoded.build.exoticArmorId).toBeUndefined();
     });
   });
 

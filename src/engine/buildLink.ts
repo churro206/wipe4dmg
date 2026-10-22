@@ -5,8 +5,10 @@
 //           selection count |
 //           per selection: effect code | provider | start in ms | duration in ms + 1 (0: until end) |
 //           ability count | per ability: ability code | cast count | cast times in ms |
-//           hasStats (0 or 1) | super stat | grenade stat | melee stat
-// Format 2 ends the build after the selections; it is still read.
+//           hasStats (0 or 1) | super stat | grenade stat | melee stat |
+//           exotic armor manifest hash (0: none) | exotic prebuilt (0 or 1)
+// Format 2 ends the build after the selections, format 3 after the stats; both are still read.
+// Exotic armor is written by its manifest hash, which Bungie keeps stable (U8).
 // Codes come from the Data Files and are never reused, so old links stay readable. A removed
 // effect keeps its code as a former code of the effect that replaces it.
 // Pure functions without browser APIs, so the Discord bot (US-13) can read the same links.
@@ -19,8 +21,8 @@ import {
   type Subclass,
 } from "../data/schema";
 
-const FORMAT_VERSION = 3;
-const READABLE_VERSIONS = [2, 3];
+const FORMAT_VERSION = 4;
+const READABLE_VERSIONS = [2, 3, 4];
 const MS_PER_SECOND = 1000;
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
 const SUBCLASSES: Subclass[] = [
@@ -48,6 +50,7 @@ export type LinkRegistry = {
     formerCodes?: { code: number; reason: FormerCodeReason }[];
   }[];
   abilities: { id: string; code: number }[];
+  exoticArmor?: { id: string; hash: number }[]; // omitted: none known
 };
 
 export type LinkContent = {
@@ -60,6 +63,7 @@ export type DecodedLink = {
   comparison: Build | null;
   unknownEffectCodes: number[]; // effects of a newer version; skipped
   unknownAbilityCodes: number[]; // abilities of a newer version; skipped
+  unknownExoticArmorHashes: number[]; // exotic armor of a newer version; skipped
   replacedEffectCodes: ReplacedEffect[]; // former codes, read as their replacement
 };
 
@@ -92,7 +96,12 @@ export function decodeLink(text: string, registry: LinkRegistry): DecodedLink {
   if (!READABLE_VERSIONS.includes(version)) {
     throw new Error(`Build link: unknown version ${version}`);
   }
-  const unknown: Unknown = { effects: [], abilities: [], replaced: [] };
+  const unknown: Unknown = {
+    effects: [],
+    abilities: [],
+    exoticArmor: [],
+    replaced: [],
+  };
   const build = readBuild(reader, registry, version, unknown);
   const comparison =
     reader.varint() === 1
@@ -104,6 +113,7 @@ export function decodeLink(text: string, registry: LinkRegistry): DecodedLink {
     comparison,
     unknownEffectCodes: unknown.effects,
     unknownAbilityCodes: unknown.abilities,
+    unknownExoticArmorHashes: unknown.exoticArmor,
     replacedEffectCodes: unknown.replaced,
   };
 }
@@ -143,7 +153,20 @@ function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
       writeVarint(bytes, Math.round(value));
     }
   }
+  const exotic = build.exoticArmorId;
+  writeVarint(
+    bytes,
+    exotic === undefined
+      ? 0
+      : ((registry.exoticArmor ?? []).find((e) => e.id === exotic)?.hash ??
+          fail(`Build link: unknown exotic armor "${exotic}"`)),
+  );
+  writeVarint(bytes, build.exoticPreBuilt ? 1 : 0);
 }
+
+const fail = (message: string): never => {
+  throw new Error(message);
+};
 
 function readBuild(
   reader: Reader,
@@ -189,6 +212,15 @@ function readBuild(
   }
   const abilityPart =
     version >= 3 ? readAbilities(reader, registry, unknown) : {};
+  const exoticPart: Pick<Build, "exoticArmorId" | "exoticPreBuilt"> = {};
+  if (version >= 4) {
+    const hash = reader.varint();
+    const preBuilt = reader.varint() === 1;
+    const exotic = (registry.exoticArmor ?? []).find((e) => e.hash === hash);
+    if (hash !== 0 && !exotic) unknown.exoticArmor.push(hash);
+    if (exotic) exoticPart.exoticArmorId = exotic.id;
+    if (exotic && preBuilt) exoticPart.exoticPreBuilt = true;
+  }
   // Zod rejects an invalid class or provider index (undefined).
   return Build.parse({
     weaponId: weapon.id,
@@ -199,12 +231,14 @@ function readBuild(
     effectWindows,
     damagePhaseSeconds,
     ...abilityPart,
+    ...exoticPart,
   });
 }
 
 type Unknown = {
   effects: number[];
   abilities: number[];
+  exoticArmor: number[];
   replaced: ReplacedEffect[];
 };
 
