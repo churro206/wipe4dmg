@@ -760,6 +760,18 @@ export const ExoticArmorEntry = z.object({
 });
 export type ExoticArmorEntry = z.infer<typeof ExoticArmorEntry>;
 
+/**
+ * An effect generated from a damage buff of an exotic armor piece (ADR 0015, U6-1), in
+ * exotic-armor-effects.json. always: active the whole damage phase; preBuilt: built up before the
+ * damage phase by kills, active from 0 s for its duration, an option that is off by default.
+ */
+export const ExoticArmorEffect = z.object({
+  exoticArmorId: z.string(),
+  activation: z.enum(["always", "preBuilt"]),
+  effect: Effect,
+});
+export type ExoticArmorEffect = z.infer<typeof ExoticArmorEffect>;
+
 /** Item types of the names in the Aegis weapon assumptions, looked up in the whole manifest. */
 export const ManifestTerms = z.object({
   manifestVersion: z.string(),

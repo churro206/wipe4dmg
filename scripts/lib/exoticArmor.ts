@@ -223,9 +223,10 @@ const plainName = (name: string) =>
     .replace(/’/g, "'")
     .replace(/[*^]+$/, "")
     .trim();
-const sameName = (a: string, b: string) => plainName(a) === plainName(b);
+export const sameName = (a: string, b: string) =>
+  plainName(a) === plainName(b);
 
-const kebab = (name: string) =>
+const kebab =(name: string) =>
   name
     .toLowerCase()
     .replace(/['’]/g, "")

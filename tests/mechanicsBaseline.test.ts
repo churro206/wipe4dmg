@@ -11,11 +11,13 @@ import rawRows from "../src/data/aegis-abilities.json";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import rawArmor from "../src/data/exotic-armor.json";
+import rawGenerated from "../src/data/exotic-armor-effects.json";
 import rawKeywords from "../src/data/keywords.json";
 import rawManifest from "../src/data/manifest-abilities.json";
 import {
   AbilityKeyword,
   AegisAbilityRow,
+  ExoticArmorEffect,
   ExoticArmorEntry,
   ManifestAbilities,
   type Effect,
@@ -53,6 +55,7 @@ const abilities = loadAbilities(
   AbilityKeyword.array().parse(rawAbilityKeywords),
 );
 const armor = ExoticArmorEntry.array().parse(rawArmor);
+const generated = ExoticArmorEffect.array().parse(rawGenerated);
 const weapons = loadWeapons(rawWeapons);
 // Abilities and exotics run next to the former hand model, so their values stay comparable.
 const otv = loadWeapon(rawHandModel);
@@ -115,16 +118,27 @@ function abilityTotals(): Record<string, Record<string, number | string>> {
   return result;
 }
 
-function exoticArmorTotals(): Record<string, number | string> {
+function exoticArmorTotals(preBuilt = false): Record<string, number | string> {
   return Object.fromEntries(
     armor
       .filter((entry) => entry.kind !== "noDamage" && entry.kind !== "gap")
+      .filter(
+        (entry) =>
+          !preBuilt ||
+          generated.some(
+            (g) => g.exoticArmorId === entry.id && g.activation === "preBuilt",
+          ),
+      )
       .map((entry) => [
         entry.id,
         total(
           () =>
-            simulate(otv, 600, exoticArmorEffects(entry, effects), buckets)
-              .totalDamage,
+            simulate(
+              otv,
+              600,
+              exoticArmorEffects(entry, effects, generated, { preBuilt }),
+              buckets,
+            ).totalDamage,
         ),
       ]),
   );
@@ -141,6 +155,8 @@ describe("mechanics baseline (ADR 0015)", () => {
       weapons: Object.fromEntries(weapons.map((w) => [w.id, weaponTotals(w)])),
       abilities: abilityTotals(),
       exoticArmorOnOneThousandVoices: exoticArmorTotals(),
+      // ADR 0015, U6-1: kill buffs built up before the damage phase
+      exoticArmorPreBuiltOnOneThousandVoices: exoticArmorTotals(true),
     };
     await expect(JSON.stringify(baseline, null, 2) + "\n").toMatchFileSnapshot(
       SNAPSHOT,

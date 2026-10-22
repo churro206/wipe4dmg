@@ -4,6 +4,7 @@
 
 import type {
   Effect,
+  ExoticArmorEffect,
   ExoticArmorEntry,
   ExoticArmorKind,
   GuardianClass,
@@ -51,19 +52,30 @@ export function exoticArmorOf(
 }
 
 /**
- * Effects an exotic armor piece adds for the whole damage phase: the modelled effects its texts
- * grant (rule 4c) and its quoted change of the shot plan (rule 5). Its damage bonuses become effect
- * parts with E1.
+ * Effects an exotic armor piece adds: the modelled effects its texts grant (rule 4c), the effects
+ * generated from its damage buffs (exotic-armor-effects.json, ADR 0015 U6-1; prebuilt ones only
+ * with the option) and its quoted change of the shot plan (rule 5).
  */
 export function exoticArmorEffects(
   entry: ExoticArmorEntry,
   effects: Effect[],
+  generated: ExoticArmorEffect[] = [],
+  { preBuilt = false }: { preBuilt?: boolean } = {},
 ): Effect[] {
-  const granted = entry.grantsEffectIds.map((id) => {
-    const effect = effects.find((e) => e.id === id);
-    if (!effect) throw new Error(`Unknown effect "${id}" of "${entry.name}"`);
-    return effect;
-  });
+  const granted = [
+    ...entry.grantsEffectIds.map((id) => {
+      const effect = effects.find((e) => e.id === id);
+      if (!effect) throw new Error(`Unknown effect "${id}" of "${entry.name}"`);
+      return effect;
+    }),
+    ...generated
+      .filter(
+        (g) =>
+          g.exoticArmorId === entry.id &&
+          (g.activation === "always" || preBuilt),
+      )
+      .map((g) => g.effect),
+  ];
   if (!entry.timing) return granted;
   const timing: Effect = {
     id: `exotic-armor:${entry.id}`,

@@ -5,6 +5,7 @@ import rawArmor from "../src/data/exotic-armor.json";
 import type {
   Ability,
   Effect,
+  ExoticArmorEffect,
   ExoticArmorEntry,
   MultiplierPart,
 } from "../src/data/schema";
@@ -136,6 +137,23 @@ describe("effects of exotic armor", () => {
     expect(exoticArmorEffects(rainOfFire, effects).map((e) => e.id)).toEqual([
       "radiant",
     ]);
+  });
+
+  it("adds its generated effects, prebuilt ones only with the option (ADR 0015, U6-1)", () => {
+    const generated = (activation: ExoticArmorEffect["activation"], id: string) => ({
+      exoticArmorId: "test-exotic",
+      activation,
+      effect: { ...effects.find((e) => e.id === "weaken")!, id },
+    });
+    const all = [
+      generated("always", "test-always"),
+      generated("preBuilt", "test-prebuilt"),
+      { ...generated("always", "other"), exoticArmorId: "other-exotic" },
+    ];
+    const ids = (preBuilt?: boolean) =>
+      exoticArmorEffects(entry({}), effects, all, { preBuilt }).map((e) => e.id);
+    expect(ids()).toEqual(["test-always"]);
+    expect(ids(true)).toEqual(["test-always", "test-prebuilt"]);
   });
 
   it("turns a quoted reload duration multiplier into a timing part", () => {

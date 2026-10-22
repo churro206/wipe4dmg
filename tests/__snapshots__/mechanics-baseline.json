@@ -665,7 +665,7 @@
     "fallen-sunstar": 28430,
     "felwinters-helm": 28430,
     "foetracer": 28430,
-    "fortunes-favor": 28430,
+    "fortunes-favor": 32694.5,
     "fr0st-ee5": 28430,
     "geomag-stabilizers": 28430,
     "getaway-artist": 28430,
@@ -743,5 +743,16 @@
     "wormgod-caress": 28430,
     "wormhusk-crown": 28430,
     "young-ahamkaras-spine": 28430
+  },
+  "exoticArmorPreBuiltOnOneThousandVoices": {
+    "doom-fang-pauldron": 28430,
+    "eternal-warrior": 28430,
+    "gyrfalcons-hauberk": 31030.5,
+    "hallowfire-heart": 28430,
+    "khepris-sting": 31446.5,
+    "sealed-ahamkara-grasps": 32105,
+    "veritys-brow": 28430,
+    "wormgod-caress": 29956,
+    "wormhusk-crown": 28430
   }
 }

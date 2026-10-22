@@ -1,0 +1,412 @@
+[
+  {
+    "exoticArmorId": "doom-fang-pauldron",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:doom-fang-pauldron",
+      "name": "Doom Fang Pauldron",
+      "code": 2002759682,
+      "shortName": "Doom Fang Pauldron",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "surge",
+          "multiplier": {
+            "value": 1.25,
+            "source": {
+              "name": "Court Stacking Guide (surge, PvE 10% 17% 22% 25%, 11s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Adds 1x Surge Stack: ~2 Void Kills (average) (up to 4 stacks)“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "elements": ["void"]
+        }
+      ],
+      "durationMs": {
+        "value": 11000,
+        "source": {
+          "name": "Court Stacking Guide (surge, PvE 10% 17% 22% 25%, 11s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Adds 1x Surge Stack: ~2 Void Kills (average) (up to 4 stacks)“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "eternal-warrior",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:eternal-warrior",
+      "name": "Eternal Warrior",
+      "code": 3692827145,
+      "shortName": "Eternal Warrior",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "surge",
+          "multiplier": {
+            "value": 1.25,
+            "source": {
+              "name": "Court Stacking Guide (surge, PvE 10% 17% 22% 25%, 11s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Adds 1x Surge stack: ~2 Arc Kills (average) (up to 4 stacks)“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "elements": ["arc"]
+        }
+      ],
+      "durationMs": {
+        "value": 11000,
+        "source": {
+          "name": "Court Stacking Guide (surge, PvE 10% 17% 22% 25%, 11s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Adds 1x Surge stack: ~2 Arc Kills (average) (up to 4 stacks)“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "fortunes-favor",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:fortunes-favor",
+      "name": "Fortune's Favor",
+      "code": 4010324161,
+      "shortName": "Fortune's Favor",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„15% increased damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["weapon"]
+        }
+      ]
+    }
+  },
+  {
+    "exoticArmorId": "gyrfalcons-hauberk",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:gyrfalcons-hauberk",
+      "name": "Gyrfalcon's Hauberk",
+      "code": 2447096246,
+      "shortName": "Gyrfalcon's Hauberk",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.35,
+            "source": {
+              "name": "Court Stacking Guide (empowering, PvE 35%, 6s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Finishing while Invisible provides a damage buff“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+            }
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "value": 6000,
+        "source": {
+          "name": "Court Stacking Guide (empowering, PvE 35%, 6s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Finishing while Invisible provides a damage buff“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "hallowfire-heart",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:hallowfire-heart",
+      "name": "Hallowfire Heart",
+      "code": 2094927311,
+      "shortName": "Hallowfire Heart",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 2.5,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„6.5% | 13.6% | 22% | 32% | 43% | 57% | 73% | 93% | 118% | 150% Increased Super Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["super"],
+          "elements": ["solar"]
+        }
+      ],
+      "durationMs": {
+        "value": 20000,
+        "source": {
+          "name": "Destiny Data Compendium (tab Exotic Armors)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„for 20 seconds“ after „Kills“; prebuilt before the damage phase (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "khepris-sting",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:khepris-sting",
+      "name": "Khepri's Sting",
+      "code": 4002939008,
+      "shortName": "Khepri's Sting",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "debuff",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Court Stacking Guide (debuff, PvE 15%, 15s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Killing a Weakened energy causes a Weakening Smoke Cloud around enemy death location“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+            }
+          },
+          "damageSources": [
+            "weapon",
+            "grenade",
+            "melee",
+            "super",
+            "classAbility",
+            "keyword"
+          ]
+        }
+      ],
+      "durationMs": {
+        "value": 15000,
+        "source": {
+          "name": "Court Stacking Guide (debuff, PvE 15%, 15s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Killing a Weakened energy causes a Weakening Smoke Cloud around enemy death location“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "sealed-ahamkara-grasps",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:sealed-ahamkara-grasps",
+      "name": "Sealed Ahamkara Grasps",
+      "code": 3987871714,
+      "shortName": "Sealed Ahamkara Grasps",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.35,
+            "source": {
+              "name": "Court Stacking Guide (empowering, PvE 35%, 7s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Powered Melees and Finisher kills grant Nightmare Fuel which grants a damage buff on freshly drawn weapons“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+            }
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "value": 7000,
+        "source": {
+          "name": "Court Stacking Guide (empowering, PvE 35%, 7s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Powered Melees and Finisher kills grant Nightmare Fuel which grants a damage buff on freshly drawn weapons“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "veritys-brow",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:veritys-brow",
+      "name": "Verity's Brow",
+      "code": 2553961985,
+      "shortName": "Verity's Brow",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 2,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„100% increased Grenade Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["grenade"]
+        }
+      ],
+      "durationMs": {
+        "value": 8000,
+        "source": {
+          "name": "Destiny Data Compendium (tab Exotic Armors)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„for 8 seconds“ after „Kill“; prebuilt before the damage phase (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "wormgod-caress",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:wormgod-caress",
+      "name": "Wormgod Caress",
+      "code": 1203306856,
+      "shortName": "Wormgod Caress",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.35,
+            "source": {
+              "name": "Court Stacking Guide (empowering, PvE 1x no bonus 2x 20% 3x 25% 4x 30% 5x 35%, 9.5s 10s 4s 4s 3s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Melee, Glaive Melee, or Finisher kill adds a stack of 'Burning Fists' which increases weapon damage Stacks decay over time and drop down a stack; higher stacks decay faster“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+            }
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "value": 3000,
+        "source": {
+          "name": "Court Stacking Guide (empowering, PvE 1x no bonus 2x 20% 3x 25% 4x 30% 5x 35%, 9.5s 10s 4s 4s 3s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Melee, Glaive Melee, or Finisher kill adds a stack of 'Burning Fists' which increases weapon damage Stacks decay over time and drop down a stack; higher stacks decay faster“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "wormhusk-crown",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:wormhusk-crown",
+      "name": "Wormhusk Crown",
+      "code": 3721047650,
+      "shortName": "Wormhusk Crown",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json)",
+              "url": "https://www.d2clarity.com",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "„15% Increased Solar Ability Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["grenade", "super", "classAbility"],
+          "elements": ["solar"]
+        }
+      ],
+      "durationMs": {
+        "value": 10000,
+        "source": {
+          "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json)",
+          "url": "https://www.d2clarity.com",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "„for 10 seconds“ after „kills“; prebuilt before the damage phase (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
+    "exoticArmorId": "young-ahamkaras-spine",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:young-ahamkaras-spine",
+      "name": "Young Ahamkara's Spine",
+      "code": 405059572,
+      "shortName": "Young Ahamkara's Spine",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.14,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„14% Increased Explosion Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["grenade"],
+          "abilityIds": ["tripmine-grenade"]
+        }
+      ]
+    }
+  }
+]
