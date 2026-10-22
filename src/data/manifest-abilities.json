@@ -1,6 +1,6 @@
 {
   "manifestVersion": "245114.26.10.13.2000-1-bnet.66137",
-  "retrieved": "2026-10-20",
+  "retrieved": "2026-10-22",
   "abilities": [
     {
       "name": "Arc Staff",
@@ -918,6 +918,1226 @@
       "guardianClass": "hunter",
       "subclass": "stasis",
       "hash": 1341767667
+    }
+  ],
+  "subclassItems": [
+    {
+      "name": "Arc Soul",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 1293395731
+    },
+    {
+      "name": "Ascension",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 4194622039
+    },
+    {
+      "name": "Ascension",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2835214901
+    },
+    {
+      "name": "Banner of War",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "strand",
+      "hash": 988980154
+    },
+    {
+      "name": "Bastion",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 1602994569
+    },
+    {
+      "name": "Bleak Watcher",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 790664813
+    },
+    {
+      "name": "Bleak Watcher",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "stasis",
+      "hash": 2642597904
+    },
+    {
+      "name": "Chaos Accelerant",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 2321824285
+    },
+    {
+      "name": "Child of the Old Gods",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 2321824287
+    },
+    {
+      "name": "Consecration",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1262901520
+    },
+    {
+      "name": "Consecration",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 2984351206
+    },
+    {
+      "name": "Controlled Demolition",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 1602994568
+    },
+    {
+      "name": "Crackshot",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 3066103997
+    },
+    {
+      "name": "Cryoclasm",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "stasis",
+      "hash": 2031919265
+    },
+    {
+      "name": "Diamond Lance",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1262901522
+    },
+    {
+      "name": "Diamond Lance",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "stasis",
+      "hash": 3866705246
+    },
+    {
+      "name": "Drengr's Lash",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1262901525
+    },
+    {
+      "name": "Drengr's Lash",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "strand",
+      "hash": 988980152
+    },
+    {
+      "name": "Echo of Cessation",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 3854948620
+    },
+    {
+      "name": "Echo of Dilation",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984656
+    },
+    {
+      "name": "Echo of Domineering",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984657
+    },
+    {
+      "name": "Echo of Exchange",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984667
+    },
+    {
+      "name": "Echo of Expulsion",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984665
+    },
+    {
+      "name": "Echo of Harvest",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2661180601
+    },
+    {
+      "name": "Echo of Instability",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2661180600
+    },
+    {
+      "name": "Echo of Leeching",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984670
+    },
+    {
+      "name": "Echo of Obscurity",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2661180602
+    },
+    {
+      "name": "Echo of Persistence",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984671
+    },
+    {
+      "name": "Echo of Provision",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984664
+    },
+    {
+      "name": "Echo of Remnants",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984666
+    },
+    {
+      "name": "Echo of Reprisal",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984669
+    },
+    {
+      "name": "Echo of Starvation",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2661180603
+    },
+    {
+      "name": "Echo of Undermining",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 2272984668
+    },
+    {
+      "name": "Echo of Vigilance",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "void",
+      "hash": 3854948621
+    },
+    {
+      "name": "Electrostatic Mind",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 1293395729
+    },
+    {
+      "name": "Ember of Ashes",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 1051276349
+    },
+    {
+      "name": "Ember of Beams",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132295
+    },
+    {
+      "name": "Ember of Benevolence",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132292
+    },
+    {
+      "name": "Ember of Blistering",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132301
+    },
+    {
+      "name": "Ember of Char",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132291
+    },
+    {
+      "name": "Ember of Combustion",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132289
+    },
+    {
+      "name": "Ember of Empyrean",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132294
+    },
+    {
+      "name": "Ember of Eruption",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 1051276348
+    },
+    {
+      "name": "Ember of Mercy",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 4180586737
+    },
+    {
+      "name": "Ember of Resolve",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 4180586736
+    },
+    {
+      "name": "Ember of Searing",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 1051276351
+    },
+    {
+      "name": "Ember of Singeing",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132293
+    },
+    {
+      "name": "Ember of Solace",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132300
+    },
+    {
+      "name": "Ember of Tempering",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132290
+    },
+    {
+      "name": "Ember of Torches",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 362132288
+    },
+    {
+      "name": "Ember of Wonder",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "solar",
+      "hash": 1051276350
+    },
+    {
+      "name": "Ensnaring Slam",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "strand",
+      "hash": 4249729126
+    },
+    {
+      "name": "Facet of Awakening",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726505
+    },
+    {
+      "name": "Facet of Balance",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922114
+    },
+    {
+      "name": "Facet of Blessing",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726496
+    },
+    {
+      "name": "Facet of Bravery",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726503
+    },
+    {
+      "name": "Facet of Command",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726497
+    },
+    {
+      "name": "Facet of Courage",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922124
+    },
+    {
+      "name": "Facet of Dawn",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922126
+    },
+    {
+      "name": "Facet of Defiance",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 74393640
+    },
+    {
+      "name": "Facet of Devotion",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922125
+    },
+    {
+      "name": "Facet of Dominance",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726504
+    },
+    {
+      "name": "Facet of Generosity",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922127
+    },
+    {
+      "name": "Facet of Grace",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922121
+    },
+    {
+      "name": "Facet of Honor",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726501
+    },
+    {
+      "name": "Facet of Hope",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922122
+    },
+    {
+      "name": "Facet of Justice",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922115
+    },
+    {
+      "name": "Facet of Mending",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726500
+    },
+    {
+      "name": "Facet of Protection",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922120
+    },
+    {
+      "name": "Facet of Purpose",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726498
+    },
+    {
+      "name": "Facet of Ruin",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726499
+    },
+    {
+      "name": "Facet of Sacrifice",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 124726502
+    },
+    {
+      "name": "Facet of Solitude",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "prismatic",
+      "hash": 2626922123
+    },
+    {
+      "name": "Feed the Void",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 790664815
+    },
+    {
+      "name": "Feed the Void",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 2321824284
+    },
+    {
+      "name": "Flechette Storm",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "strand",
+      "hash": 988980155
+    },
+    {
+      "name": "Flow State",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 4194622036
+    },
+    {
+      "name": "Frostpulse",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "stasis",
+      "hash": 668903197
+    },
+    {
+      "name": "Glacial Harvest",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "stasis",
+      "hash": 2651551055
+    },
+    {
+      "name": "Grim Harvest",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "stasis",
+      "hash": 1920417385
+    },
+    {
+      "name": "Gunpowder Gamble",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2835214903
+    },
+    {
+      "name": "Gunpowder Gamble",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 3066103996
+    },
+    {
+      "name": "Heat Rises",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 83039194
+    },
+    {
+      "name": "Hellion",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 790664814
+    },
+    {
+      "name": "Hellion",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 83039192
+    },
+    {
+      "name": "Howl of the Storm",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "stasis",
+      "hash": 1563930741
+    },
+    {
+      "name": "Icarus Dash",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 83039195
+    },
+    {
+      "name": "Iceflare Bolts",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "stasis",
+      "hash": 668903196
+    },
+    {
+      "name": "Into the Fray",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "strand",
+      "hash": 988980153
+    },
+    {
+      "name": "Ionic Sentry",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 1293395728
+    },
+    {
+      "name": "Juggernaut",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 1656549673
+    },
+    {
+      "name": "Knock 'Em Down",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 3066103998
+    },
+    {
+      "name": "Knockout",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 1656549674
+    },
+    {
+      "name": "Knockout",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1262901523
+    },
+    {
+      "name": "Lethal Current",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 4194622038
+    },
+    {
+      "name": "Lightning Surge",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 1293395730
+    },
+    {
+      "name": "Lightning Surge",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 790664812
+    },
+    {
+      "name": "Mindspun Invocation",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "strand",
+      "hash": 262821318
+    },
+    {
+      "name": "Offensive Bulwark",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 1602994570
+    },
+    {
+      "name": "On the Prowl",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 187655375
+    },
+    {
+      "name": "On Your Mark",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 3066103999
+    },
+    {
+      "name": "Roaring Flames",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 2984351204
+    },
+    {
+      "name": "Shatterdive",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "stasis",
+      "hash": 2934767476
+    },
+    {
+      "name": "Shieldburst",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 2984351207
+    },
+    {
+      "name": "Sol Invictus",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 2984351205
+    },
+    {
+      "name": "Soul Siphon",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 2321824286
+    },
+    {
+      "name": "Spark of Amplitude",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 3277705906
+    },
+    {
+      "name": "Spark of Beacons",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069367
+    },
+    {
+      "name": "Spark of Brilliance",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 3277705905
+    },
+    {
+      "name": "Spark of Discharge",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069362
+    },
+    {
+      "name": "Spark of Feedback",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 3277705907
+    },
+    {
+      "name": "Spark of Focus",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069360
+    },
+    {
+      "name": "Spark of Frequency",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069361
+    },
+    {
+      "name": "Spark of Haste",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 3478354817
+    },
+    {
+      "name": "Spark of Instinct",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 3478354816
+    },
+    {
+      "name": "Spark of Ions",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069363
+    },
+    {
+      "name": "Spark of Magnitude",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069374
+    },
+    {
+      "name": "Spark of Momentum",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069365
+    },
+    {
+      "name": "Spark of Recharge",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069375
+    },
+    {
+      "name": "Spark of Resistance",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069366
+    },
+    {
+      "name": "Spark of Shock",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 1727069364
+    },
+    {
+      "name": "Spark of Volts",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "arc",
+      "hash": 3277705904
+    },
+    {
+      "name": "Storm's Keep",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 1656549675
+    },
+    {
+      "name": "Stylish Executioner",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2835214900
+    },
+    {
+      "name": "Stylish Executioner",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 187655374
+    },
+    {
+      "name": "Tectonic Harvest",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "stasis",
+      "hash": 2031919264
+    },
+    {
+      "name": "Tempest Strike",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 4194622037
+    },
+    {
+      "name": "The Wanderer",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "strand",
+      "hash": 262821319
+    },
+    {
+      "name": "Thread of Ascent",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512216
+    },
+    {
+      "name": "Thread of Binding",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 3192552688
+    },
+    {
+      "name": "Thread of Continuity",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 3192552690
+    },
+    {
+      "name": "Thread of Evolution",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512211
+    },
+    {
+      "name": "Thread of Finality",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512217
+    },
+    {
+      "name": "Thread of Fury",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512219
+    },
+    {
+      "name": "Thread of Generation",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 3192552691
+    },
+    {
+      "name": "Thread of Isolation",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 3192552689
+    },
+    {
+      "name": "Thread of Mind",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512218
+    },
+    {
+      "name": "Thread of Propagation",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512210
+    },
+    {
+      "name": "Thread of Rebirth",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512220
+    },
+    {
+      "name": "Thread of Transmutation",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512221
+    },
+    {
+      "name": "Thread of Warding",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512222
+    },
+    {
+      "name": "Thread of Wisdom",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "strand",
+      "hash": 4208512223
+    },
+    {
+      "name": "Threaded Specter",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2835214897
+    },
+    {
+      "name": "Threaded Specter",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "strand",
+      "hash": 4249729125
+    },
+    {
+      "name": "Touch of Flame",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 83039193
+    },
+    {
+      "name": "Touch of Thunder",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 1656549672
+    },
+    {
+      "name": "Touch of Winter",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "stasis",
+      "hash": 4184589900
+    },
+    {
+      "name": "Trapper's Ambush",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 187655372
+    },
+    {
+      "name": "Unbreakable",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 1262901521
+    },
+    {
+      "name": "Unbreakable",
+      "kind": "aspect",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 1602994571
+    },
+    {
+      "name": "Vanishing Step",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 187655373
+    },
+    {
+      "name": "Weaver's Call",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 790664810
+    },
+    {
+      "name": "Weaver's Call",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "strand",
+      "hash": 262821317
+    },
+    {
+      "name": "Weavewalk",
+      "kind": "aspect",
+      "guardianClass": "warlock",
+      "subclass": "strand",
+      "hash": 262821312
+    },
+    {
+      "name": "Whirling Maelstrom",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "strand",
+      "hash": 4249729124
+    },
+    {
+      "name": "Whisper of Bonds",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 3469412974
+    },
+    {
+      "name": "Whisper of Chains",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 537774540
+    },
+    {
+      "name": "Whisper of Chill",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 2368990401
+    },
+    {
+      "name": "Whisper of Conduction",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 2483898429
+    },
+    {
+      "name": "Whisper of Durance",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 3469412969
+    },
+    {
+      "name": "Whisper of Fissures",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 3469412971
+    },
+    {
+      "name": "Whisper of Fractures",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 537774542
+    },
+    {
+      "name": "Whisper of Hedrons",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 3469412970
+    },
+    {
+      "name": "Whisper of Hunger",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 2483898431
+    },
+    {
+      "name": "Whisper of Impetus",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 537774543
+    },
+    {
+      "name": "Whisper of Refraction",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 3469412968
+    },
+    {
+      "name": "Whisper of Rending",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 2483898428
+    },
+    {
+      "name": "Whisper of Reversal",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 2368990400
+    },
+    {
+      "name": "Whisper of Rime",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 2483898430
+    },
+    {
+      "name": "Whisper of Shards",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 3469412975
+    },
+    {
+      "name": "Whisper of Torment",
+      "kind": "fragment",
+      "guardianClass": null,
+      "subclass": "stasis",
+      "hash": 537774541
+    },
+    {
+      "name": "Widow's Silk",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "strand",
+      "hash": 4249729127
+    },
+    {
+      "name": "Winter's Shroud",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2835214902
+    },
+    {
+      "name": "Winter's Shroud",
+      "kind": "aspect",
+      "guardianClass": "hunter",
+      "subclass": "stasis",
+      "hash": 2934767477
     }
   ]
 }

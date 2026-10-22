@@ -1,6 +1,6 @@
 {
   "manifestVersion": "245114.26.10.13.2000-1-bnet.66137",
-  "retrieved": "2026-10-20",
+  "retrieved": "2026-10-22",
   "icons": {
     "ability:arc-staff": "icons/item-3769507633.png",
     "ability:arcane-needle": "icons/item-2307689415.png",
@@ -79,7 +79,7 @@
     "ability:winters-wrath": "icons/item-3683904166.png",
     "ability:withering-blade": "icons/item-1341767667.png",
     "catalyst:d-a-r-c-i": "icons/item-2085058762.jpg",
-    "catalyst:one-thousand-voices": "icons/perk-860358313.png",
+    "catalyst:one-thousand-voices": "icons/item-82994288.jpg",
     "catalyst:truth": "icons/item-726894353.jpg",
     "damage:ignition": "icons/trait-3268862716.png",
     "damage:takenSeeker": "icons/perk-860358313.png",
@@ -167,6 +167,7 @@
     "weapon:thunderlord": "icons/item-3325463374.jpg",
     "weapon:tractor-cannon": "icons/item-3580904581.jpg",
     "weapon:truth": "icons/item-1201830623.jpg",
+    "weapon:two-tailed-fox": "icons/item-2694576561.jpg",
     "weapon:vexcalibur": "icons/item-3118061005.jpg",
     "weapon:whisper-of-the-worm": "icons/item-1983149589.jpg",
     "weapon:winterbite": "icons/item-3118061004.jpg",

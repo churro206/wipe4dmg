@@ -668,11 +668,23 @@ export const ManifestAbility = z.object({
 });
 export type ManifestAbility = z.infer<typeof ManifestAbility>;
 
+/** An aspect or fragment item from the manifest (ADR 0015, U6-2). */
+export const ManifestSubclassItem = z.object({
+  name: z.string(), // manifest spelling, e.g. "Ember of Ashes"
+  kind: z.enum(["aspect", "fragment"]),
+  guardianClass: GuardianClass.nullable(), // null: every class
+  subclass: Subclass,
+  hash: z.number().int(),
+});
+export type ManifestSubclassItem = z.infer<typeof ManifestSubclassItem>;
+
 /** Ability items from the manifest, written by npm run import:icons. */
 export const ManifestAbilities = z.object({
   manifestVersion: z.string(),
   retrieved: z.string(),
   abilities: z.array(ManifestAbility),
+  // aspects and fragments; missing in files written before U6-2
+  subclassItems: z.array(ManifestSubclassItem).optional(),
 });
 export type ManifestAbilities = z.infer<typeof ManifestAbilities>;
 

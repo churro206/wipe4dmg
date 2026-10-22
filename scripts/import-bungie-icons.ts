@@ -35,6 +35,8 @@ import {
 } from "./lib/bungieIcons.ts";
 import {
   extractManifestAbilities,
+  extractSubclassItems,
+  unreadSubclassCategories,
   type ManifestItem,
 } from "./lib/manifestAbilities.ts";
 import {
@@ -95,12 +97,18 @@ const manifestAbilities = ManifestAbilities.parse({
   manifestVersion: manifest.version,
   retrieved,
   abilities: extractManifestAbilities(items),
+  subclassItems: extractSubclassItems(items),
 });
+const unread = unreadSubclassCategories(items);
+if (unread.length > 0)
+  console.warn(`Plug categories of aspects or fragments not read: ${unread.join(", ")}`);
 writeFileSync(
   new URL("src/data/manifest-abilities.json", ROOT),
   await format(JSON.stringify(manifestAbilities), { parser: "json" }),
 );
-console.log(`Wrote ${manifestAbilities.abilities.length} ability items`);
+console.log(
+  `Wrote ${manifestAbilities.abilities.length} ability items and ${manifestAbilities.subclassItems!.length} aspects and fragments`,
+);
 
 const table = async <T>(path: string): Promise<T> => {
   const response = await fetch(`${BUNGIE}${path}`);

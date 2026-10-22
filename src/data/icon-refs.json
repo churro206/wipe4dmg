@@ -140,13 +140,6 @@
     }
   },
   {
-    "key": "catalyst:one-thousand-voices",
-    "manifestRef": {
-      "table": "DestinySandboxPerkDefinition",
-      "hash": 860358313
-    }
-  },
-  {
     "key": "surge:kinetic",
     "manifestRef": {
       "table": "DestinyInventoryItemDefinition",
