@@ -91,6 +91,7 @@ import {
   effectRelevantTo,
   hasCatalyst,
   hasIgnition,
+  neededStatuses,
 } from "../engine/weaponInfo";
 import { factor, integer, seconds } from "./format";
 
@@ -371,9 +372,11 @@ function App() {
     };
   };
 
-  // Own effects by slot, in the order of the game screens (U3).
+  // Own effects by slot, in the order of the game screens (U3). State-only items only show if
+  // the exotic needs their state, e.g. Ascension (Amplified) for No Backup Plans.
+  const needed = neededStatuses(selected);
   const shownEffects = effects.filter((effect) =>
-    effectRelevantTo(effect, weapon),
+    effectRelevantTo(effect, weapon, needed),
   );
   const sections = effectSections(
     shownEffects,

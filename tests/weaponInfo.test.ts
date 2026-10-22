@@ -10,6 +10,7 @@ import {
   effectRelevantTo,
   hasCatalyst,
   hasIgnition,
+  neededStatuses,
 } from "../src/engine/weaponInfo";
 import { testWeapon } from "./support/testWeapon";
 import { weaponById } from "./support/weapons";
@@ -57,6 +58,29 @@ describe("effectRelevantTo", () => {
     const subclass = loadSubclassEffects(rawSubclass, { preBuilt: true });
     const of = (id: string) => subclass.find((e) => e.id === id)!;
     expect(effectRelevantTo(of("spark-of-shock"), testWeapon)).toBe(true);
-    expect(effectRelevantTo(of("lightning-surge"), testWeapon)).toBe(true);
+    expect(
+      effectRelevantTo(of("lightning-surge"), testWeapon, new Set(["amplified"])),
+    ).toBe(true);
+  });
+
+  it("keeps a state-only item only if something needs its state (No Backup Plans needs Amplified)", () => {
+    const ascension = loadSubclassEffects(rawSubclass, { preBuilt: true }).find(
+      (e) => e.id === "ascension",
+    )!;
+    expect(effectRelevantTo(ascension, testWeapon)).toBe(false);
+    expect(
+      effectRelevantTo(ascension, testWeapon, new Set(["amplified"])),
+    ).toBe(true);
+  });
+});
+
+describe("neededStatuses", () => {
+  it("collects the states that parts of the given effects require", () => {
+    const surge = effect("surge-3x");
+    const needing = {
+      ...surge,
+      parts: surge.parts.map((p) => ({ ...p, requiresStatus: ["amplified" as const] })),
+    };
+    expect([...neededStatuses([effect("weaken"), needing])]).toEqual(["amplified"]);
   });
 });

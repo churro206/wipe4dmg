@@ -18,6 +18,7 @@ Status: 2026-10-22
 - ⏳ Class ability in the Rotation; exotics that refill abilities or the magazine
 - ✅ Supers take time like in the game: hits spread over shots and light attacks (e.g. Golden Gun ignites with its third shot), the weapon waits only as long as the Super really blocks it (Daybreak about 13 s instead of 24 s, Nova Bomb about 1.8 s instead of 0 s). Timings are rough estimates and marked as such.
 - ✅ Aspects and fragments that change an ability, from Aegis measurements: Knock 'Em Down (Blade Barrage), Thread of Evolution (Needlestorm, Threadling), Spark of Magnitude (Pulse), Chaos Accelerant (Axion Bolt, Scatter, Vortex), Echo of Remnants (Vortex), Touch of Winter (Glacier, Shatter)
+- ✅ Only aspects and fragments that change damage are offered. Items that only grant a state (e.g. Ascension, On Your Mark) appear when the exotic needs that state, such as No Backup Plans.
 - ⏳ Facet of Courage and Touch of Thunder: Aegis only measured them together with other buffs
 - ⏳ Every catalyst that changes damage output, including magazine, ammo and reload
 

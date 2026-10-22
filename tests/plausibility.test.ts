@@ -7,7 +7,7 @@ import { afterAll, describe, expect, it } from "vitest";
 import type { Build, Weapon } from "../src/data/schema";
 import { buildSimulation } from "../src/engine/buildSimulation";
 import { simulate, type SimulationResult } from "../src/engine/simulate";
-import { effectRelevantTo } from "../src/engine/weaponInfo";
+import { effectRelevantTo, neededStatuses } from "../src/engine/weaponInfo";
 import { buckets, gameData, weaponById, weapons } from "../src/ui/data";
 import rawSubclass from "../src/data/subclass-effects.json";
 import { loadSubclassEffects } from "../src/engine/loadData";
@@ -168,14 +168,51 @@ describe("keywords", () => {
 });
 
 describe("the UI offers what works", () => {
-  it("every generated aspect and fragment is shown for some weapon", () => {
-    const hidden = loadSubclassEffects(rawSubclass, { preBuilt: true }).filter(
-      (effect) => !weapons.some((w) => effectRelevantTo(effect, w)),
+  const subclassEffects = loadSubclassEffects(rawSubclass, { preBuilt: true });
+  const neededByExotics = neededStatuses(
+    gameData.exoticArmorEffects.map((g) => g.effect),
+  );
+
+  it("every generated aspect and fragment is shown for some weapon and exotic", () => {
+    const hidden = subclassEffects.filter(
+      (effect) => !weapons.some((w) => effectRelevantTo(effect, w, neededByExotics)),
     );
     note("Aspects/Fragments ausgeblendet", String(hidden.length), "0");
     expect(hidden.map((e) => e.id)).toEqual([]);
   });
 
+  it("rule: without an exotic, every shown aspect and fragment changes damage itself", () => {
+    const stateOnly = subclassEffects.filter(
+      (effect) =>
+        weapons.some((w) => effectRelevantTo(effect, w)) &&
+        effect.parts.length === 0 &&
+        effect.changesAbilityIds === undefined,
+    );
+    note("Ohne Exotic: angeboten, aber ohne Wirkung", String(stateOnly.length), "0 (z. B. On Your Mark, Ascension)");
+    expect(stateOnly.map((e) => e.id)).toEqual([]);
+  });
+
+  it("No Backup Plans: Ascension (Amplified) is offered and raises shotgun damage", () => {
+    const shotgun = weapons.find((w) => w.weaponType === "shotgun")!;
+    const hunter = {
+      guardianClass: "hunter" as const,
+      subclass: "arc" as const,
+      exoticArmorId: "no-backup-plans",
+    };
+    const needed = neededStatuses(
+      buildSimulation(
+        { weaponId: shotgun.id, catalyst: false, selections: [], effectWindows: {}, damagePhaseSeconds: 30, ...hunter },
+        gameData,
+      ).selected,
+    );
+    const ascension = subclassEffects.find((e) => e.id === "ascension")!;
+    const ratio =
+      damageOf(run({ ...hunter, selections: [{ effectId: "ascension", provider: "subclass" }] }, shotgun), "weapon") /
+      damageOf(run(hunter, shotgun), "weapon");
+    note("No Backup Plans: Ascension angeboten, Shotgun mit / ohne", `${effectRelevantTo(ascension, shotgun, needed)}, ×${fmt(ratio)}`, "true, ×1,35");
+    expect(effectRelevantTo(ascension, shotgun, needed)).toBe(true);
+    expect(ratio).toBeCloseTo(1.35, 2);
+  });
 });
 
 describe("supers take time like in the game", () => {
