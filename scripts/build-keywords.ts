@@ -1,25 +1,29 @@
-// Finds the keyword sources in the Compendium subclass texts (ADR 0015, U4b) and writes the review
-// table docs/keyword-sources.md. No download: run npm run import:compendium first.
+// Finds the keyword sources in the Compendium subclass texts (ADR 0015, U4b), derives the keywords of
+// the abilities (U5) and writes src/data/ability-keywords.json and the review table
+// docs/keyword-sources.md. No download: run npm run import:compendium and import:abilities first.
 // Run: npm run build:keywords
 
-import { readFileSync, writeFileSync } from "node:fs";
-import { CompendiumSnapshot } from "../src/data/schema.ts";
+import { writeFileSync } from "node:fs";
+import { format } from "prettier";
+import { loadKeywordInputs } from "./lib/keywordInputs.ts";
 import {
+  abilityKeywords,
   findKeywordSources,
   renderKeywordSources,
 } from "./lib/keywordSources.ts";
 
 const ROOT = new URL("../", import.meta.url);
-const compendium = CompendiumSnapshot.parse(
-  JSON.parse(
-    readFileSync(new URL("src/data/compendium-abilities.json", ROOT), "utf8"),
-  ),
+const inputs = loadKeywordInputs();
+const sources = findKeywordSources(inputs.compendium);
+const abilities = abilityKeywords(inputs);
+writeFileSync(
+  new URL("src/data/ability-keywords.json", ROOT),
+  await format(JSON.stringify(abilities.entries), { parser: "json" }),
 );
-const sources = findKeywordSources(compendium.entries);
 writeFileSync(
   new URL("docs/keyword-sources.md", ROOT),
-  renderKeywordSources(sources),
+  renderKeywordSources(sources, abilities),
 );
 console.log(
-  `Wrote ${sources.length} keyword sources; review docs/keyword-sources.md`,
+  `Wrote ${sources.length} keyword sources and ${abilities.entries.length} ability keywords (${abilities.gaps.length} gaps); review docs/keyword-sources.md`,
 );

@@ -4,11 +4,22 @@
 // a duration can be built up before it (ADR 0015).
 
 import type {
+  AbilityData,
+  AbilityKeyword,
+  AegisAbilityRow,
   CompendiumEntry,
   DamageSource,
   Element,
+  KeywordData,
   KeywordId,
 } from "../../src/data/schema.ts";
+
+export type KeywordInputs = {
+  compendium: CompendiumEntry[];
+  abilities: AbilityData[];
+  aegisRows: AegisAbilityRow[];
+  keywords: KeywordData[];
+};
 
 export type KeywordSourceKind =
   | "abilityHit" // the ability applies it with its own hits (U5)
@@ -25,6 +36,8 @@ export type KeywordSource = {
   name: string;
   keywordId: KeywordId;
   stacks: number | null; // scorch or bolt charge stacks
+  emberStacks: number | null; // bonus stacks with Ember of Ashes, the "+20" in "x40+20"
+  perShot: boolean; // the sentence says "per shot"
   kind: KeywordSourceKind;
   filter: { elements: Element[]; damageSources: DamageSource[] } | null;
   durationSeconds: number | null; // of a kill buff built up before the phase
@@ -39,9 +52,12 @@ const KEYWORD_NAMES: Record<string, KeywordId> = {
   unravel: "unravel",
   unraveling: "unravel",
 };
-// "inflicts x60+30 Scorch", "inflicting Jolt", "applies Unravel"
+// "inflicts x60+30 Scorch", "apply up to x100+50 [x50+25] Scorch", "damage and x60+30 Scorch by
+// scoring all 3 knives", "inflicting Jolt"; the number after "+" is the bonus of Ember of Ashes, the
+// bracket the PvP value.
 const APPLIES =
-  /\b(?:inflict(?:s|ing)?|appl(?:y|ies|ying))\s+(?:x(\d+)\+\d+\s+)?(Scorch|Jolt|Volatile|Unravel)\b/i;
+  /\b(?:inflict(?:s|ing)?|appl(?:y|ies|ying)|and(?=\s+x\d))\s+(?:up to\s+)?(?:x(\d+)\+(\d+(?:\.\d+)?)(?:\s*\[[^\]]*\])?\s+)?(Scorch|Jolt|Volatile|Unravel)\b/i;
+const PER_SHOT = /\bper shot\b/i;
 // "Grants x4 Bolt Charge"
 const BOLT_CHARGE = /\bgrants?\s+x(\d+)\s+Bolt Charge\b/i;
 // "grant Volatile Rounds to Void Weapons for 11.25 [7.5] seconds"
@@ -116,7 +132,7 @@ export function findKeywordSources(
         const isBolt = match === found[1];
         const keywordId: KeywordId = isBolt
           ? "boltCharge"
-          : KEYWORD_NAMES[(isRounds ? match[1] : match[2]).toLowerCase()];
+          : KEYWORD_NAMES[(isRounds ? match[1] : match[3]).toLowerCase()];
         const stacks = isBolt
           ? Number(match[1])
           : !isRounds && match[1]
@@ -128,6 +144,8 @@ export function findKeywordSources(
           name: entry.name,
           keywordId,
           stacks,
+          emberStacks: !isBolt && !isRounds && match[2] ? Number(match[2]) : null,
+          perShot: PER_SHOT.test(sentence),
           filter: null,
           durationSeconds: null,
           quote: match[0],
@@ -171,6 +189,132 @@ export function findKeywordSources(
   return result;
 }
 
+// ---------- keywords of abilities (U5) ----------
+
+export type AbilityKeywordGap = {
+  abilityId: string;
+  keywordId: KeywordId;
+  reason: string;
+};
+
+const WIPE = /Wipe (\d+) \/ # (\d+) \/ Full Modifiers ([\d.]+)/;
+const SHOTS = /\b(\d+) Shot\b/;
+const EMBER = /^Ember of Ashes$/i;
+// Name of a keyword's trigger in the Aegis ticks, e.g. "1592 ignition", "228 jolt".
+const TICK_NAMES: Record<KeywordId, string> = {
+  ignition: "ignition",
+  jolt: "jolt",
+  volatile: "volatile",
+  unravel: "unravel",
+  boltCharge: "bolt",
+};
+
+/**
+ * The keywords each modelled ability applies with its hits, from its Compendium entry:
+ * - stacks per use: the largest quoted stacks (a sentence "with all 9 drones" sums the hits); "per
+ *   shot" times the shots of "N Shot".
+ * - baked in the package: Aegis names keyword damage in the ticks ("1592 ignition"). How many
+ *   triggers the measurement had follows from the stacks of its uses (with the Ember bonus if Aegis
+ *   assumes Ember of Ashes): they add up, and each full counter is one trigger. No name in the
+ *   ticks means no keyword damage in the package.
+ */
+export function abilityKeywords(inputs: KeywordInputs): {
+  entries: AbilityKeyword[];
+  gaps: AbilityKeywordGap[];
+} {
+  const sources = findKeywordSources(inputs.compendium).filter(
+    (s) => s.kind === "abilityHit",
+  );
+  const entries: AbilityKeyword[] = [];
+  const gaps: AbilityKeywordGap[] = [];
+  for (const ability of inputs.abilities) {
+    const ref = ability.compendium;
+    if (!ref) continue;
+    const own = sources.filter((s) => s.tab === ref.tab && s.name === ref.entry);
+    const text =
+      inputs.compendium.find((e) => e.tab === ref.tab && e.name === ref.entry)
+        ?.text ?? "";
+    const row = inputs.aegisRows.find((r) => r.id === ability.aegisRowId);
+    for (const keywordId of [...new Set(own.map((s) => s.keywordId))]) {
+      const keyword = inputs.keywords.find((k) => k.id === keywordId);
+      if (!keyword) continue;
+      const gap = (reason: string) =>
+        gaps.push({ abilityId: ability.id, keywordId, reason });
+      const withStacks = own
+        .filter((s) => s.keywordId === keywordId && s.stacks !== null)
+        .sort((a, b) => b.stacks! - a.stacks!);
+      const needsStacks = keyword.trigger.type !== "damageTaken";
+      if (needsStacks && withStacks.length === 0) {
+        gap("Stapel ohne Zahl im Text");
+        continue;
+      }
+      if (keyword.trigger.type === "damageTaken" && !keyword.durationMs) {
+        gap("Dauer des Keywords hängt an der Quelle und fehlt im Text");
+        continue;
+      }
+      const chosen = withStacks[0] ?? own.find((s) => s.keywordId === keywordId)!;
+      const shots = chosen.perShot ? Number(SHOTS.exec(text)?.[1] ?? 1) : 1;
+      const source = {
+        name: `Destiny Data Compendium, ${ref.tab} (${ref.entry})`,
+        url: "https://destiny2.science/data-compendium",
+        retrieved: "2026-10-21",
+        status: "unverified" as const,
+        quote: chosen.quote,
+        note:
+          shots > 1
+            ? `Per shot times ${shots} shots ("${shots} Shot")`
+            : "Largest quoted stacks of the entry, as one hit per use",
+      };
+      const entry: AbilityKeyword = {
+        abilityId: ability.id,
+        keywordId,
+        ...(needsStacks
+          ? { stacksPerUse: { value: chosen.stacks! * shots, source } }
+          : {}),
+        source,
+      };
+
+      const tickName = TICK_NAMES[keywordId];
+      const tick = row
+        ? new RegExp(`\\b(\\d+) ${tickName}\\b`, "i").exec(row.secondaryTicks)
+        : null;
+      const wipe = row ? WIPE.exec(row.perUseStat100.source.note ?? "") : null;
+      if (row && tick && wipe) {
+        const uses = Number(wipe[2]);
+        if (keyword.trigger.type !== "counter" || !keyword.trigger.threshold.value) {
+          gap(`Aegis rechnet ${tickName} ein, Anzahl der Auslösungen unbekannt`);
+          continue;
+        }
+        const ember = row.assumptions.some((a) => EMBER.test(a));
+        const perUse =
+          (chosen.stacks! + (ember ? (chosen.emberStacks ?? 0) : 0)) * shots;
+        let stacks = 0;
+        let triggers = 0;
+        for (let use = 0; use < uses; use++) {
+          stacks += perUse;
+          if (stacks >= keyword.trigger.threshold.value) {
+            triggers++;
+            stacks = 0;
+          }
+        }
+        if (triggers === 0) {
+          gap(`Aegis rechnet ${tickName} ein, die Stapel reichen laut Text nicht`);
+          continue;
+        }
+        entry.bakedInPackage = {
+          triggers,
+          tick: Number(tick[1]),
+          uses,
+          fullModifiers: Number(wipe[3]),
+          note: `${uses} uses x${perUse} stacks${ember ? " (with Ember of Ashes)" : ""} -> ${triggers} trigger(s) in Aegis row ${row.id}`,
+        };
+      }
+      entries.push(entry);
+    }
+  }
+  return { entries, gaps };
+}
+
 // ---------- review table ----------
 
 const KIND_LABELS: Record<KeywordSourceKind, string> = {
@@ -185,8 +329,50 @@ const KIND_LABELS: Record<KeywordSourceKind, string> = {
 };
 const cell = (text: string) => text.replace(/\|/g, "\\|").replace(/\n/g, " ");
 
-/** The review table as Markdown. */
-export function renderKeywordSources(sources: KeywordSource[]): string {
+/** The review table as Markdown, with the keywords of the abilities (U5). */
+export function renderKeywordSources(
+  sources: KeywordSource[],
+  abilities: { entries: AbilityKeyword[]; gaps: AbilityKeywordGap[] },
+): string {
+  return `${renderSources(sources)}${renderAbilityKeywords(abilities)}`;
+}
+
+function renderAbilityKeywords({
+  entries,
+  gaps,
+}: {
+  entries: AbilityKeyword[];
+  gaps: AbilityKeywordGap[];
+}): string {
+  const lines = [
+    "",
+    "## Keywords der Abilities (U5)",
+    "",
+    "Stapel pro Einsatz: größte genannte Zahl des Eintrags („with all 9 drones“), „per shot“ mal Shots. Im Aegis-Paket eingerechnet: Aegis nennt den Keyword-Schaden in den Ticks; die Zahl der Auslösungen folgt aus den Stapeln aller Einsätze der Messung (mit Ember-Bonus, wenn Aegis Ember of Ashes annimmt). Beim Laden wird dieser Schaden aus dem Paket herausgerechnet, der Keyword-Lauf fügt ihn wieder hinzu.",
+    "",
+    "| Ability | Keyword | Stapel pro Einsatz | Im Paket eingerechnet | Zitat |",
+    "| --- | --- | --- | --- | --- |",
+    ...entries.map(
+      (e) =>
+        `| ${e.abilityId} | ${e.keywordId} | ${e.stacksPerUse?.value ?? "–"} | ${
+          e.bakedInPackage
+            ? cell(
+                `${e.bakedInPackage.triggers} × ${e.bakedInPackage.tick} (${e.bakedInPackage.note})`,
+              )
+            : "–"
+        } | „${cell(e.source.quote ?? "")}“ |`,
+    ),
+    "",
+    "### Lücken",
+    "",
+    "| Ability | Keyword | Grund |",
+    "| --- | --- | --- |",
+    ...gaps.map((g) => `| ${g.abilityId} | ${g.keywordId} | ${g.reason} |`),
+  ];
+  return lines.join("\n") + "\n";
+}
+
+function renderSources(sources: KeywordSource[]): string {
   const lines = [
     "# Keyword-Quellen: Prüftabelle",
     "",

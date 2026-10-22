@@ -4,7 +4,9 @@
 
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { loadKeywordInputs } from "../scripts/lib/keywordInputs";
 import {
+  abilityKeywords,
   findKeywordSources,
   renderKeywordSources,
 } from "../scripts/lib/keywordSources";
@@ -169,6 +171,6 @@ describe("the Compendium snapshot", () => {
   it("docs/keyword-sources.md is current (run npm run build:keywords)", () => {
     expect(
       readFileSync("docs/keyword-sources.md", "utf8").replace(/\r\n/g, "\n"),
-    ).toBe(renderKeywordSources(sources));
+    ).toBe(renderKeywordSources(sources, abilityKeywords(loadKeywordInputs())));
   });
 });

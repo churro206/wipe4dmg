@@ -1,0 +1,458 @@
+[
+  {
+    "abilityId": "gathering-storm",
+    "keywordId": "jolt",
+    "source": {
+      "name": "Destiny Data Compendium, Arc (Gathering Storm)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts jolt",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  },
+  {
+    "abilityId": "stormtrance",
+    "keywordId": "jolt",
+    "source": {
+      "name": "Destiny Data Compendium, Arc (Stormtrance)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflict jolt",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  },
+  {
+    "abilityId": "golden-gun-deadshot",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 240,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Golden Gun: Deadshot)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicts x40+10 Scorch",
+        "note": "Per shot times 6 shots (\"6 Shot\")"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Golden Gun: Deadshot)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts x40+10 Scorch",
+      "note": "Per shot times 6 shots (\"6 Shot\")"
+    }
+  },
+  {
+    "abilityId": "golden-gun-marksman",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 120,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Golden Gun: Marksman)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicts x40+10 Scorch",
+        "note": "Per shot times 3 shots (\"3 Shot\")"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Golden Gun: Marksman)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts x40+10 Scorch",
+      "note": "Per shot times 3 shots (\"3 Shot\")"
+    }
+  },
+  {
+    "abilityId": "burning-maul",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 3,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Burning Maul)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "apply x3+2 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Burning Maul)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "apply x3+2 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  },
+  {
+    "abilityId": "daybreak",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 60,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Daybreak)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicting x60+30 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Daybreak)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicting x60+30 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  },
+  {
+    "abilityId": "nova-warp",
+    "keywordId": "volatile",
+    "source": {
+      "name": "Destiny Data Compendium, Void (Nova Warp)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicting Volatile",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  },
+  {
+    "abilityId": "firebolt-grenade",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 20,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Firebolt Grenade)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflict x20+10 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Firebolt Grenade)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflict x20+10 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 1592,
+      "uses": 4,
+      "fullModifiers": 2.3,
+      "note": "4 uses x30 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row grenade-firebolt-average-ember-of-ashes-with-ignition"
+    }
+  },
+  {
+    "abilityId": "fusion-grenade",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 40,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Fusion Grenade)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflict x40+20 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Fusion Grenade)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflict x40+20 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 1592,
+      "uses": 2,
+      "fullModifiers": 2.3,
+      "note": "2 uses x60 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row grenade-fusion-average-ember-of-ashes-with-ignition"
+    }
+  },
+  {
+    "abilityId": "incendiary-grenade",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 60,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Incendiary Grenade)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicts x60+30 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Incendiary Grenade)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts x60+30 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 1592,
+      "uses": 2,
+      "fullModifiers": 2.3,
+      "note": "2 uses x90 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row grenade-incendiary-average-ember-of-ashes-with-ignition"
+    }
+  },
+  {
+    "abilityId": "solar-grenade",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 17,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Solar Grenade)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicts x17+4.5 [x10+10] Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Solar Grenade)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts x17+4.5 [x10+10] Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  },
+  {
+    "abilityId": "swarm-grenade",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 45,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Swarm Grenade)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicts x45+27 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Swarm Grenade)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts x45+27 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 1592,
+      "uses": 3,
+      "fullModifiers": 2.3,
+      "note": "3 uses x45 stacks -> 1 trigger(s) in Aegis row grenade-swarm-average-with-ignition"
+    }
+  },
+  {
+    "abilityId": "thermite-grenade",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 40,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Thermite Grenade)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicts x40+40 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Thermite Grenade)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts x40+40 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 10,
+      "tick": 1592,
+      "uses": 20,
+      "fullModifiers": 2.3,
+      "note": "20 uses x80 stacks (with Ember of Ashes) -> 10 trigger(s) in Aegis row grenade-thermite-average-ember-of-ashes-with-ignition"
+    }
+  },
+  {
+    "abilityId": "tripmine-grenade",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 40,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Tripmine Grenade)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicting x40+20 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Tripmine Grenade)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicting x40+20 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 1592,
+      "uses": 2,
+      "fullModifiers": 2.3,
+      "note": "2 uses x60 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row grenade-tripmine-average-ember-of-ashes-with-ignition"
+    }
+  },
+  {
+    "abilityId": "knife-trick",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 60,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Knife Trick)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "and x60+30 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Knife Trick)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "and x60+30 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 1553,
+      "uses": 2,
+      "fullModifiers": 2.3,
+      "note": "2 uses x90 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row melee-knife-trick-average-precision-ember-of-ashes-with-ignition"
+    }
+  },
+  {
+    "abilityId": "hammer-strike",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 40,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Hammer Strike)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicts x40+20 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Hammer Strike)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts x40+20 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  },
+  {
+    "abilityId": "celestial-fire",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 30,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Celestial Fire)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflict x30+15 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Celestial Fire)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflict x30+15 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 1553,
+      "uses": 3,
+      "fullModifiers": 2.3,
+      "note": "3 uses x45 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row melee-celestial-fire-average-ember-of-ashes-with-ignition"
+    }
+  },
+  {
+    "abilityId": "incinerator-snap",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 100,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Incinerator Snap)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "apply up to x100+50 [x50+25] Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Incinerator Snap)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "apply up to x100+50 [x50+25] Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 1553,
+      "uses": 1,
+      "fullModifiers": 2.3,
+      "note": "1 uses x150 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row melee-incinerator-snap-ember-of-ashes"
+    }
+  },
+  {
+    "abilityId": "pocket-singularity",
+    "keywordId": "volatile",
+    "source": {
+      "name": "Destiny Data Compendium, Void (Pocket Singularity)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicting Volatile",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  }
+]

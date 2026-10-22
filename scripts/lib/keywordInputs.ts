@@ -1,0 +1,25 @@
+// Reads the Data Files the keyword rules need (ADR 0015, U4b and U5). Shared by npm run build:keywords
+// and the tests that check the generated files are current.
+
+import { readFileSync } from "node:fs";
+import {
+  AbilityData,
+  AegisAbilityRow,
+  CompendiumSnapshot,
+  KeywordData,
+} from "../../src/data/schema.ts";
+import type { KeywordInputs } from "./keywordSources.ts";
+
+const DATA = new URL("../../src/data/", import.meta.url);
+const read = (file: string): unknown =>
+  JSON.parse(readFileSync(new URL(file, DATA), "utf8"));
+
+export function loadKeywordInputs(): KeywordInputs {
+  return {
+    compendium: CompendiumSnapshot.parse(read("compendium-abilities.json"))
+      .entries,
+    abilities: AbilityData.array().parse(read("abilities.json")),
+    aegisRows: AegisAbilityRow.array().parse(read("aegis-abilities.json")),
+    keywords: KeywordData.array().parse(read("keywords.json")),
+  };
+}
