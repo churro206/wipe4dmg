@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Ignition in Solar-Supers zählt nur einmal:** Golden Gun (Marksman, Deadshot) und Daybreak enthielten die Ignitions schon im Aegis-Wert und bekamen sie im Rechner noch einmal dazu. Der Anteil wird jetzt aus dem Paket genommen (Treffer aus dem Super-Timing, Abklingzeit der Ignition) und kommt über den Scorch jedes Treffers zurück. Daybreak setzt dabei x50 Scorch pro Geschoss statt einmal x60 und zündet etwa 5-mal. Regel-Test: jede Ability mit Ignition ergibt allein den Aegis-Wert (±2,5 %).
+
 - **Nur Aspects und Fragments, die wirken:** 25 Items, die nur einen Zustand geben (z. B. Ascension, On Your Mark, Sol Invictus, Touch of Flame), erscheinen nur noch, wenn das gewählte Exotic diesen Zustand braucht (No Backup Plans, Path of Burning Steps). Ein Regel-Test prüft, dass ohne Exotic jedes angebotene Item den Schaden ändert.
 
 - **Aspects und Fragments, die eine Ability ändern:** Knock 'Em Down (Blade Barrage ×1,37), Thread of Evolution, Spark of Magnitude, Chaos Accelerant, Echo of Remnants und Touch of Winter sind jetzt wählbar. Gewählt rechnet die Ability mit der Aegis-Messung mit diesem Aspect; der Tooltip nennt den Schaden pro Einsatz vorher und nachher.

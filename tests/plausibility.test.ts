@@ -238,6 +238,17 @@ describe("supers take time like in the game", () => {
     expect(window.endMs).toBeLessThan(3000);
   });
 
+  it("Daybreak ignites during the super: x50 Scorch per projectile", () => {
+    const r = run(
+      { guardianClass: "warlock", subclass: "solar", abilities: [{ abilityId: "daybreak", castsMs: [0] }] },
+      testWeapon,
+    );
+    const ignitions = r.damageInstances.filter((d) => d.keywordId === "ignition");
+    const end = r.superWindows[0].endMs;
+    note("Daybreak: Ignitions während der Super", `${ignitions.filter((d) => d.timeMs <= end).length}`, "etwa 5 (15 Geschosse × 50 Scorch, Abklingzeit)");
+    expect(ignitions.filter((d) => d.timeMs <= end).length).toBeGreaterThanOrEqual(4);
+  });
+
   it("Daybreak: light attacks spread over the super, the weapon waits far less than 24 s", () => {
     const r = superRun("warlock", "solar", "daybreak");
     const window = r.superWindows[0];

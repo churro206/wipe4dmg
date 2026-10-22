@@ -12,6 +12,7 @@ import type {
   Element,
   KeywordData,
   KeywordId,
+  SuperTiming,
 } from "../../src/data/schema.ts";
 
 export type KeywordInputs = {
@@ -19,6 +20,7 @@ export type KeywordInputs = {
   abilities: AbilityData[];
   aegisRows: AegisAbilityRow[];
   keywords: KeywordData[];
+  superTimings: SuperTiming[];
 };
 
 export type KeywordSourceKind =
@@ -210,6 +212,50 @@ const TICK_NAMES: Record<KeywordId, string> = {
 };
 
 /**
+ * Triggers of a counter keyword (Ignition) in one use of a super: its hits from super-timings.json
+ * add the stacks, a full counter goes off and resets, and no stacks land during the cooldown, as in
+ * the event run (keywordRun.ts). The value of one trigger is the keyword's own Aegis row.
+ */
+function superTriggers(
+  timing: SuperTiming,
+  stacksPerHit: number,
+  keyword: KeywordData,
+  aegisRows: AegisAbilityRow[],
+): { triggers: number; tick: number; note: string } | null {
+  if (keyword.trigger.type !== "counter") return null;
+  const threshold = keyword.trigger.threshold.value;
+  const tick = Number(
+    aegisRows.find((r) => r.id === keyword.aegisRowId)?.primaryTick,
+  );
+  const hits = timing.hits.value;
+  const first = timing.firstHitMs.value;
+  const interval = timing.hitIntervalMs.value;
+  if (!threshold || !tick || !hits || first === null || interval === null)
+    return null;
+  const cooldown = keyword.cooldownMs?.value ?? 0;
+  let stacks = 0;
+  let triggers = 0;
+  let blockedUntil = -Infinity;
+  for (let hit = 0; hit < hits; hit++) {
+    const timeMs = first + hit * interval;
+    if (timeMs < blockedUntil) continue;
+    stacks += stacksPerHit;
+    if (stacks >= threshold) {
+      triggers++;
+      stacks = 0;
+      blockedUntil = timeMs + cooldown;
+    }
+  }
+  return triggers === 0
+    ? null
+    : {
+        triggers,
+        tick,
+        note: `${hits} hits x${stacksPerHit} stacks every ${interval} ms, cooldown ${cooldown} ms -> ${triggers} trigger(s) of ${tick} (${keyword.aegisRowId})`,
+      };
+}
+
+/**
  * The keywords each modelled ability applies with its hits, from its Compendium entry:
  * - stacks per use: the largest quoted stacks (a sentence "with all 9 drones" sums the hits); "per
  *   shot" times the shots of "N Shot".
@@ -252,16 +298,37 @@ export function abilityKeywords(inputs: KeywordInputs): {
         gap("Dauer des Keywords hängt an der Quelle und fehlt im Text");
         continue;
       }
-      const chosen = withStacks[0] ?? own.find((s) => s.keywordId === keywordId)!;
-      const shots = chosen.perShot ? Number(SHOTS.exec(text)?.[1] ?? 1) : 1;
+      // A super with several hits (super-timings.json) applies stacks with every hit if the
+      // sentence says "per shot" or stands in the "Light Attack" paragraph, e.g. Daybreak x50 per
+      // projectile (not Phoenix Dive x60). Burning Maul's cyclone (Heavy Attack) stays one per use.
+      const timing = inputs.superTimings.find(
+        (t) => t.abilityId === ability.id && !t.exoticArmorId,
+      );
+      const hits = timing?.hits.value ?? 1;
+      const lightAttack = text
+        .split(/\n\s*\n/)
+        .filter((p) => p.trimStart().startsWith("Light Attack"));
+      const perHitSource = withStacks.find(
+        (s) => s.perShot || lightAttack.some((p) => p.includes(s.quote)),
+      );
+      const perHit = hits > 1 && perHitSource !== undefined;
+      const chosen =
+        (perHit ? perHitSource : withStacks[0]) ??
+        own.find((s) => s.keywordId === keywordId)!;
+      const shots = perHit
+        ? hits
+        : chosen.perShot
+          ? Number(SHOTS.exec(text)?.[1] ?? 1)
+          : 1;
       const source = {
         name: `Destiny Data Compendium, ${ref.tab} (${ref.entry})`,
         url: "https://destiny2.science/data-compendium",
         retrieved: "2026-10-21",
         status: "unverified" as const,
         quote: chosen.quote,
-        note:
-          shots > 1
+        note: perHit
+          ? `First quoted stacks per hit times ${hits} hits (super-timings.json)`
+          : shots > 1
             ? `Per shot times ${shots} shots ("${shots} Shot")`
             : "Largest quoted stacks of the entry, as one hit per use",
       };
@@ -308,6 +375,23 @@ export function abilityKeywords(inputs: KeywordInputs): {
           fullModifiers: Number(wipe[3]),
           note: `${uses} uses x${perUse} stacks${ember ? " (with Ember of Ashes)" : ""} -> ${triggers} trigger(s) in Aegis row ${row.id}`,
         };
+      } else if (row && wipe && timing && keyword.trigger.type === "counter") {
+        // A super row names no ticks, but its measurement holds the triggers of its hits: replay the
+        // hits with the keyword cooldown, and take the trigger value from the keyword's own Aegis row.
+        const baked = superTriggers(
+          timing,
+          (chosen.stacks! +
+            (row.assumptions.some((a) => EMBER.test(a)) ? (chosen.emberStacks ?? 0) : 0)),
+          keyword,
+          inputs.aegisRows,
+        );
+        if (baked)
+          entry.bakedInPackage = {
+            ...baked,
+            uses: 1,
+            fullModifiers: Number(wipe[3]),
+            note: `${baked.note} in Aegis row ${row.id}`,
+          };
       }
       entries.push(entry);
     }

@@ -135,10 +135,10 @@ Stapel pro Einsatz: größte genannte Zahl des Eintrags („with all 9 drones“
 | --- | --- | --- | --- | --- |
 | gathering-storm | jolt | – | – | „inflicts jolt“ |
 | stormtrance | jolt | – | – | „inflict jolt“ |
-| golden-gun-deadshot | ignition | 240 | – | „inflicts x40+10 Scorch“ |
-| golden-gun-marksman | ignition | 120 | – | „inflicts x40+10 Scorch“ |
+| golden-gun-deadshot | ignition | 240 | 1 × 1553 (6 hits x50 stacks every 400 ms, cooldown 1300 ms -> 1 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-deadshot-radiant-ember-of-ashes) | „inflicts x40+10 Scorch“ |
+| golden-gun-marksman | ignition | 120 | 1 × 1553 (3 hits x40 stacks every 400 ms, cooldown 1300 ms -> 1 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-marksman-radiant) | „inflicts x40+10 Scorch“ |
 | burning-maul | ignition | 3 | – | „apply x3+2 Scorch“ |
-| daybreak | ignition | 60 | – | „inflicting x60+30 Scorch“ |
+| daybreak | ignition | 750 | 5 × 1553 (15 hits x50 stacks every 800 ms, cooldown 1300 ms -> 5 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-daybreak-ember-of-ashes) | „inflicting x50+0 Scorch“ |
 | nova-warp | volatile | – | – | „inflicting Volatile“ |
 | firebolt-grenade | ignition | 20 | 1 × 1592 (4 uses x30 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row grenade-firebolt-average-ember-of-ashes-with-ignition) | „inflict x20+10 Scorch“ |
 | fusion-grenade | ignition | 40 | 1 × 1592 (2 uses x60 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row grenade-fusion-average-ember-of-ashes-with-ignition) | „inflict x40+20 Scorch“ |
