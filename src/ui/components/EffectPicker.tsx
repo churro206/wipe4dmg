@@ -79,7 +79,7 @@ function EffectTile({
         {describeEffect(effect).map((line) => (
           <span key={line}>{line}</span>
         ))}
-        <span>Aktiv: {describeDuration(effect)}</span>
+        <span>Active: {describeDuration(effect)}</span>
         {group && <span>Only {group} per build</span>}
       </span>
     </span>
