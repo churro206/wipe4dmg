@@ -27,7 +27,11 @@ export function loadArmorImportInputs(): ArmorImportInputs {
     armor: ManifestArmor.parse(read("manifest-armor.json")).armor,
     aegisAbilities: AegisAbilityRow.array().parse(read("aegis-abilities.json")),
     ...courtOf(CourtSnapshot.parse(read("court-buffs.json"))),
-    compendium: CompendiumSnapshot.parse(read("compendium-armor.json")).entries,
+    // tab Exotic Armors and the Spirit perks of the tab Exotic Class (ADR 0015, U6-3)
+    compendium: [
+      ...CompendiumSnapshot.parse(read("compendium-armor.json")).entries,
+      ...CompendiumSnapshot.parse(read("compendium-class.json")).entries,
+    ],
     clarity: ClaritySnapshot.parse(read("clarity.json")).entries.filter(
       (e) => e.type === "Armor Trait Exotic",
     ),

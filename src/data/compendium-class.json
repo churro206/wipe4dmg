@@ -1,0 +1,262 @@
+{
+  "source": {
+    "name": "Destiny Data Compendium (tab Exotic Class)",
+    "url": "https://destiny2.science/data-compendium",
+    "retrieved": "2026-10-23",
+    "status": "verified"
+  },
+  "entries": [
+    {
+      "tab": "Exotic Class",
+      "section": "any",
+      "name": "Spirit of the Assassin",
+      "text": "On Powered Melee Kill:\nGrants Void Invisibility for 7 seconds.\n\nOn Finisher:\nGrants Void Invisibility for 10 seconds",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "any",
+      "name": "Spirit of the Star-Eater",
+      "text": "Picking up an Orb of Power while Super is charged grants a stack of Feast of Light, up to a maximum of x6 stacks.\nSwapping to another Exotic Class Item with Star-Eaters will maintain the current Feast of Light stacks.\n\nOn Super Cast:\nConsumes all Feast of Light stacks, increasing Super Damage for 14 seconds.\n18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage.\n\nReduced effectiveness with certain Super Abilities.\nSong of Flame does not receive increased Solar Effect Damage.\nNova Bomb, Thundercrash, and Twilight Arsenal receive up to 50% Increased Super Damage.\nNeedlestorm receives up to 35% Increased Super Damage.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "any",
+      "name": "Spirit of the Inmost Light",
+      "text": "On Grenade or Class Ability Usage, or upon dealing Powered Melee Damage:\nGrants a stack of Empowered Abilities for the other two abilities for 5 seconds, up to 2 stacks.\ne.g.: Dealing Combination Blow damage -> Increased Grenade and Class Ability Regeneration.\n\nEmpowered Abilities:\nx1 = 400% [100%] | x2 = 800% [200%] Additional Base Grenade and Melee Regeneration Rate.\nx1 = 25% | x2 = 50% Additional Base Class Ability Regeneration Rate.\n\nBuff display is NOT accurate to the active ability regen.\nWith the example in mind, Class Ability Usage before Empowered x1 from Melee runs out will do the following:\nGrenade Empower will go to x2 and will have its duration refreshed. Melee will receive Empower x1 for 5 seconds, and Class Empower x1 won't be refreshed, despite the UI saying Empowered x2",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "any",
+      "name": "Spirit of the Synthoceps",
+      "text": "While within 15 metres of 3 enemies:\nGrants Biotic Enhancements for 5 seconds.\n\nBiotic Enhancements:\n165% [100%] Increased Melee Damage.\n\nDecreased effectiveness with Lightning Surge against Guardians.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "any",
+      "name": "Spirit of the Ophidian",
+      "text": "Passively grants +35 Handling.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "any",
+      "name": "Spirit of Verity",
+      "text": "Upon scoring a Grenade-Element Matching Weapon Kill:\nGrants a stack of Death Throes, up to 5 stacks, increasing Grenade Ability Damage and granting Bonus Grenade Ability Energy per second per stack.\nLoses 1 Death Throes stack upon expiring, rather than all of them.\nDeath Throes stack timer begins decaying after 2 seconds of gaining a stack.\n\nDeath Throes:\nx1 = 40% [20%] increased Grenade Damage, +0.5% Bonus Grenade Energy/s for 8 seconds.\nx2 = 55% [40%] increased Grenade Damage, +1% Bonus Grenade Energy/s for 7 seconds.\nx3 = 70% [60%] increased Grenade Damage, +1.5% Bonus Grenade Energy/s for 6 seconds.\nx4 = 85% [80%] increased Grenade Damage, +2% Bonus Grenade Energy/s for 5 seconds.\nx5 = 100% increased Grenade Damage, +2.5% Bonus Grenade Energy/s for 4 seconds.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of Caliban",
+      "text": "Powered Melee Kills trigger an Ignition.\nIgnition does not benefit from Melee Damage Increases.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of the Coyote",
+      "text": "Grants an extra Class Ability Charge.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of Galanor",
+      "text": "Super Hits and Kills refund Super Energy.\nRefunds up to 50% Super Energy.\nSilkstrike and Golden Gun can only refund up to 30%.\n\nNeeds testing across all 5 Super Abilities :(",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of the Cyrtarachne",
+      "text": "On Grenade Ability Usage:\nGrants Woven Mail for 10 seconds.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of Renewal",
+      "text": "While inside a Duskfield Grenade's Slowing Field:\nEnemies deal 50% [20%] decreased damage.\nUser and allies are immediately granted x1 Frost Armor.\nGrants an additional Frost Armor stack every 0.5 seconds.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of the Gyrfalcon",
+      "text": "Upon leaving Void Invisibility:\nGrants Volatile Rounds for 9 [3] seconds.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of the Dragon",
+      "text": "Passively grants +10 Stability and 0.?x Ready Duration Multiplier.\n\nOn Class Ability Usage:\nGrants Wraithmetal Mail for 9 seconds.\nReloads all weapons and picks up Ammo Bricks within 15 meters. Activates On-Reload Perks.\n\nWraithmetal Mail:\n+35 Stability and +? Handling.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of the Liar",
+      "text": "Receiving Melee Damage, or scoring a Powered Melee Hit grants Cross Counter for the next Melee Hit within 3 seconds.\n\nCross Counter grants 400% increased Basic and Arc Melee Damage.\nCross Counter's Melee Attack deals Arc Damage.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of the Foetracer",
+      "text": "Upon dealing Ability Damage to an Elite, Miniboss, Champion, Boss, or Guardian:\nGrants x4 Ability Element-Matching Weapon Surge for 16 [11] seconds.\nBuff is not refreshable.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "hunter",
+      "name": "Spirit of the Wormhusk",
+      "text": "On Class Ability Usage:\nGrants x2 Cure.\n\nUpon reaching 100% Counter Progress by scoring multiple Kills within 3 seconds of each:\nRank-And-File = 34% | Elite+ and Guardians = 50%\nGrants a stack of Burning Souls for 10 seconds, up to a maximum of 3 stacks.\nAll stacks expire at once. Retriggering Burning Souls refreshes the buff duration.\n\nBurning Souls: Class Ability Usage healing is enhanced and spreads to allies within 15? meters:\nx1 = x3 Cure.\nx2 = x1 Cure + Restoration x1 for 3 seconds.\nx3 = x2 Cure + Restoration x1 for 5 seconds.\nIf Restoration is active, then it will extend its duration by the corresponding duration.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of Hoarfrost",
+      "text": "On Barricade Placement:\nCreates a Stasis Wall that is 5 medium crystals wide. The middle crystal is a small crystal.\nOverrides Barricade Cooldown with Towering Barricade's?.\n\nOn Thruster Usage:\nSpawns 2 Stasis Crystals.\n\nDoes not provide Rally Barricade Bonuses, unlike the Exotic Armor version.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of Alpha Lupi",
+      "text": "On Barricade Placement or Thruster Usage:\nInstantly restores Health and Shields to the wielder and allies in Line of Sight within 12 metres.\nBarricade restores 160 Health and 110 Shields. Thruster restores 30 Health.\nIncurs a 5 second cooldown between healing pulses.\n\nHealing Allies grants ?% Class Ability Energy.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of Severance",
+      "text": "On Powered Melee Kill or Finisher:\nEnemy triggers a Kinetic Explosion, dealing up to 400 [?] damage over ? meters\nIncurs a 1 second cooldown between non-chaining explosions.\n\nSeverance Explosions from Powered Melee Kills can chain, creating weaker explosions that only deal up to 268 [?] damage in a ? meter radius.\nChaining Explosions do not have a cooldown.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of Contact",
+      "text": "Upon scoring a Powered Melee Hit:\nEnemies within 15 meters of the struck enemy are hit by lightning.\nLightning deals 181 [50] Arc Damage and inflicts Jolt.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of the Abeyant",
+      "text": "Enhances Drengr's Lash\n\nBarricade:\nCreates 2 additional Lashes.\nLashes now seek enemies more aggressively and travel ?% farther.\n\nThruster:\nKnot lasts up to ? seconds, lobbing itself towards enemies within ? meters, and detonates on contact.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of Scars",
+      "text": "Upon scoring a Super-Element Matching Weapon Kill:\nGrants x1 Restoration for 3+1.5 seconds to the wearer and allies within 15? metres.\nIncurs a 3 second cooldown between activations.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of the Bear",
+      "text": "While guarding with Unbreakable:\n15% Increased Movement Speed.\n\nUnbreakable grants up to 60% Grenade Ability Energy once it ends.\nScales from 15% Grenade Energy, up to 60% Grenade Energy after maxing out Unbreakable.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of the Armamentarium",
+      "text": "Grants an extra Grenade Ability Charge.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of the Eternal Warrior",
+      "text": "On Super End:\nGrants x4 Super-Element Matching Weapon Surge for 30 [6?] seconds.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "titan",
+      "name": "Spirit of the Horn",
+      "text": "On Barricade Placement:\nUnleashes 3 Tracking Solar Wave that travel up to 18.5 metres away.\nSolar Waves deal 480 [100] damage and applies x60 [x30] Scorch.\nSolar Waves spawn a Sunspot under the enemies on hit [kill].\n\nOn Thruster Usage:\nReleases a Solar Ball that explodes after ? seconds, releasing 4 Solar Waves in an X-pattern, using the aforementioned info.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of Apotheosis",
+      "text": "On Super Cast:\nFully restores Health, Grenade, Melee, and Class Ability Energy.\nCaster and Allies within ? meters are granted Cure x3.\n\nOn Super End:\n66% Fixed Bonus Grenade and Melee Ability Energy per second for 8 seconds.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of Harmony",
+      "text": "Upon scoring a Super-Element Matching Weapon Kill:\nGrants additional Super Energy based on the Enemy Tier.\nTier 1 Combatant = 1.5% | T2 = 2% | T3 = ?% | T4 = 2.5% | Guardian = ?%",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of Osmiomancy",
+      "text": "Coldsnap Grenades have better tracking, and travel 17.5% further and faster.\n\nColdsnap, Storm, Threadling, and Vortex Grenades grant Grenade Energy upon dealing damage.\nHealing Grenades grant Fixed Grenade Energy upon healing the user or an ally.\nVortex Grenades have a ~0.8s cooldown between energy gains on a single target.\n\nColdsnap Grenade Ability Energy:\nT1 Combatant = 10% | T2 = 22% | T3 = 34% | T4 = 50% | Guardian = 7%\n\nStorm, Healing, Threadling, and Vortex Grenade Ability Energy:\nT1 Combatant = 3% | T2 = 5.7% | T3 = 8.4% | T4 & Healing = 12% | Guardian = 5%",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of Starfire",
+      "text": "While Radiant, in a Well of Radiance or Empowering Rift:\nGrants 5% Fixed Grenade Energy per Weapon Hit.\nIncurs a 0.4 seconds cooldown between Grenade Energy Gains.\nGrants 15% Fixed Grenade Energy on Weapon Kill.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of the Stag",
+      "text": "Grants 25% [5%] Damage Resist to Guardians inside Rifts created by the wielder.\nStanding in a Rift that overlaps or is inside a Well of Radiance allow the Damage Resist to work in it.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of the Claw",
+      "text": "Grants an extra Melee Ability Charge.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of the Filaments",
+      "text": "Standing on Empowering Rifts created by the user grants Devour for 11 seconds.\nExiting, and then re-entering the same Empowering Rift refreshes the duration of Devour.\nSecant Filaments' Devour can be refreshed to 11 seconds.\n\nWhile Devour is active:\nKills grant 10% Class Ability Energy.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of the Swarm",
+      "text": "Upon destroying a Tangle:\nSpawns 2 Threadlings.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of the Necrotic",
+      "text": "Melee Hits inflict Potent Corruption.\nCorrupted enemies spread Potent Corruption on death in a 5 metre radius.\n\nPotent Corrupted Damage ticks every 0.52 [0.7] seconds up to 19 [?] times over 10 [?] seconds, dealing 32 [5?] Kinetic Damage every tick, totalling 640 [?] damage over its duration.",
+      "extra": ""
+    },
+    {
+      "tab": "Exotic Class",
+      "section": "warlock",
+      "name": "Spirit of Vesper",
+      "text": "After 1 second of placing a Rift:\nTriggers an Arc Shockwave that deals 360 [100] Arc Damage and staggers in a 7.5 metres radius.\nAdditional shockwaves occur every 5 seconds, until the Rift expires.\n\nWhile an Arc Super Ability is equipped, shockwaves blind.",
+      "extra": ""
+    }
+  ]
+}

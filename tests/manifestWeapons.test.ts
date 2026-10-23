@@ -4,6 +4,7 @@
 
 import { describe, expect, it } from "vitest";
 import {
+  extractClassPerks,
   extractExoticArmor,
   extractManifestWeapons,
   lookupManifestTerms,
@@ -197,6 +198,41 @@ describe("extractExoticArmor", () => {
         intrinsics: ["Illegally Modded Holster"],
         description:
           "Hand Cannons ready faster and gain increased accuracy and bonus damage.",
+      },
+    ]);
+  });
+});
+
+describe("extractClassPerks", () => {
+  const spirit = (hash: number, name: string, itemType: number, category: string) => ({
+    ...plug(hash, name, category, "", `Text of ${name}`),
+    itemType,
+  });
+  const perkTables: WeaponManifestTables = {
+    ...tables,
+    items: {
+      ...tables.items,
+      // the same name as mod (type 20) and as intrinsic twice: the intrinsic with the lowest hash
+      1: spirit(1, "Spirit of Verity", 20, "none"),
+      9: spirit(9, "Spirit of Verity", 19, "intrinsics"),
+      5: spirit(5, "Spirit of Verity", 19, "intrinsics"),
+    },
+  };
+
+  it("takes the intrinsic plug of each name and the class from the caller", () => {
+    expect(
+      extractClassPerks(perkTables, [
+        { name: "Spirit of Verity", guardianClass: null },
+        { name: "Spirit of Unknown", guardianClass: "titan" },
+      ]),
+    ).toEqual([
+      {
+        hash: 5,
+        name: "Spirit of Verity",
+        guardianClass: null,
+        slot: "classPerk",
+        intrinsics: [],
+        description: "Text of Spirit of Verity",
       },
     ]);
   });

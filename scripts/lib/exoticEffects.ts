@@ -589,7 +589,10 @@ function textVerdict(
     };
   const bonus = usable.reduce((a, b) => (b.percent > a.percent ? b : a));
   const index = indexOf(bonus.quote);
-  const ability = subjects.length ? abilityOf(subjects[0], inputs.abilities) : undefined;
+  // the subject of the chosen bonus, not of the first one: "70% increased Super Damage" for every
+  // super, then "Thundercrash receives up to 50%" (Spirit of the Star-Eater)
+  const subject = subjectOf(text, bonus.quote, index);
+  const ability = subject ? abilityOf(subject, inputs.abilities) : undefined;
 
   const end = (m: RegExpMatchArray) => m.index! + m[0].length;
   const trigger = TEXT_TRIGGERS.flatMap(([pattern, kind]) =>

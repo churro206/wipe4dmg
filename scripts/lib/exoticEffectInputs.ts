@@ -23,7 +23,11 @@ export function loadExoticEffectInputs(
   const clarity = ClaritySnapshot.parse(read("clarity.json"));
   return {
     armor,
-    compendium: compendium.entries,
+    // tab Exotic Armors and the Spirit perks of the tab Exotic Class (ADR 0015, U6-3)
+    compendium: [
+      ...compendium.entries,
+      ...CompendiumSnapshot.parse(read("compendium-class.json")).entries,
+    ],
     clarity: clarity.entries.filter((e) => e.type === "Armor Trait Exotic"),
     abilities: AbilityData.array().parse(read("abilities.json")),
     effects: Effect.array().parse(read("effects.json")),

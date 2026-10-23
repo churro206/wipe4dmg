@@ -14,6 +14,7 @@ import type {
 
 const WEAPON_ITEM_TYPE = 3;
 const ARMOR_ITEM_TYPE = 2;
+const INTRINSIC_ITEM_TYPE = 19;
 const EXOTIC_TIER = 6;
 const INTRINSIC_CATEGORY = 3956125808; // socket category "Intrinsic Traits"
 const PERK_CATEGORY = 4241085061; // socket category "Weapon Perks"
@@ -305,6 +306,39 @@ export function extractExoticArmor(
     });
   }
   return armor.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * The Spirit perks of the Exotic Class Items (ADR 0015, U6-3): the intrinsic plug of each name, the
+ * one with the lowest hash if the manifest has several. The manifest gives no class for them, so the
+ * Compendium section decides. Names without a plug are left out.
+ */
+export function extractClassPerks(
+  tables: WeaponManifestTables,
+  perks: { name: string; guardianClass: GuardianClass | null }[],
+): ManifestArmorPiece[] {
+  const plugsByName = new Map<string, ManifestWeaponItem>();
+  for (const item of Object.values(tables.items)) {
+    if (item.itemType !== INTRINSIC_ITEM_TYPE) continue;
+    if (item.plug?.plugCategoryIdentifier !== INTRINSIC_PLUG) continue;
+    const known = plugsByName.get(nameOf(item));
+    if (!known || item.hash < known.hash) plugsByName.set(nameOf(item), item);
+  }
+  return perks.flatMap(({ name, guardianClass }) => {
+    const item = plugsByName.get(name);
+    return item
+      ? [
+          {
+            hash: item.hash,
+            name,
+            guardianClass,
+            slot: "classPerk" as const,
+            intrinsics: [],
+            description: joinTexts(texts([item], tables)),
+          },
+        ]
+      : [];
+  });
 }
 
 /**

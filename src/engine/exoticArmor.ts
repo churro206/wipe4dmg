@@ -3,6 +3,7 @@
 // model are selectable, and pieces with an energy modifier (ability-energy.json, block 3).
 
 import type {
+  Build,
   Effect,
   EnergyData,
   ExoticArmorEffect,
@@ -29,15 +30,58 @@ const selectable = (entry: ExoticArmorEntry, energy: Energy | undefined) =>
 const fitsClass = (entry: ExoticArmorEntry, guardianClass: GuardianClass) =>
   entry.guardianClass === null || entry.guardianClass === guardianClass;
 
-/** Selectable exotic armor of a class, in data order. */
+/** Selectable exotic armor of a class, in data order; the Spirit perks are not pieces. */
 export function exoticArmorFor(
   entries: ExoticArmorEntry[],
   guardianClass: GuardianClass,
   energy?: Energy,
 ): ExoticArmorEntry[] {
   return entries.filter(
-    (entry) => selectable(entry, energy) && fitsClass(entry, guardianClass),
+    (entry) =>
+      entry.slot !== "classPerk" &&
+      selectable(entry, energy) &&
+      fitsClass(entry, guardianClass),
   );
+}
+
+/** Spirit perks of the Prismatic Exotic Class Item (ADR 0015, U6-3) a class can pick, in data order. */
+export function classPerksFor(
+  entries: ExoticArmorEntry[],
+  guardianClass: GuardianClass,
+): ExoticArmorEntry[] {
+  return entries.filter(
+    (entry) =>
+      entry.slot === "classPerk" &&
+      SELECTABLE.includes(entry.kind) &&
+      fitsClass(entry, guardianClass),
+  );
+}
+
+/**
+ * The Spirit perks of a build. They only work with Prismatic and replace the exotic piece (the class
+ * item is the build's exotic); throws if a perk is unknown, not selectable or of another class.
+ */
+export function classPerksOf(
+  build: Pick<Build, "classPerkIds" | "exoticArmorId" | "subclass" | "guardianClass">,
+  entries: ExoticArmorEntry[],
+): ExoticArmorEntry[] {
+  const ids = build.classPerkIds ?? [];
+  if (ids.length === 0) return [];
+  if (build.subclass !== "prismatic")
+    throw new Error("Exotic Class Item perks only work with Prismatic");
+  if (build.exoticArmorId !== undefined)
+    throw new Error("A build has one exotic: the class item or another piece");
+  if (new Set(ids).size !== ids.length)
+    throw new Error("The two perks of the class item differ");
+  const allowed = classPerksFor(entries, build.guardianClass);
+  return ids.map((id) => {
+    const perk = allowed.find((e) => e.id === id);
+    if (!perk)
+      throw new Error(
+        `Unknown class perk "${id}" or not selectable for ${build.guardianClass}`,
+      );
+    return perk;
+  });
 }
 
 /** The exotic armor of a build; throws if it is unknown, not selectable or of another class. */
@@ -50,6 +94,8 @@ export function exoticArmorOf(
   if (exoticArmorId === undefined) return undefined;
   const entry = entries.find((e) => e.id === exoticArmorId);
   if (!entry) throw new Error(`Unknown exotic armor "${exoticArmorId}"`);
+  if (entry.slot === "classPerk")
+    throw new Error(`"${entry.name}" is a class perk, not a piece`);
   if (!selectable(entry, energy))
     throw new Error(
       `Exotic armor "${entry.name}" is not selectable (${entry.kind})`,

@@ -944,6 +944,162 @@
     }
   },
   {
+    "exoticArmorId": "spirit-of-the-eternal-warrior",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:spirit-of-the-eternal-warrior",
+      "name": "Spirit of the Eternal Warrior",
+      "code": 3573490511,
+      "shortName": "Spirit of the Eternal Warrior",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "surge",
+          "multiplier": {
+            "value": 1.25,
+            "source": {
+              "name": "Court Stacking Guide (surge, PvE 25%, 30s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Instant 4x Surge Stacks: On Super end: Grants Weapon damage buff matching Super Element“; window from the rotation (ADR 0015, U6-1b)"
+            }
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "value": 30000,
+        "source": {
+          "name": "Court Stacking Guide (surge, PvE 25%, 30s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Instant 4x Surge Stacks: On Super end: Grants Weapon damage buff matching Super Element“; window from the rotation (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": { "on": "superEnd", "refresh": true }
+    }
+  },
+  {
+    "exoticArmorId": "spirit-of-the-foetracer",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:spirit-of-the-foetracer",
+      "name": "Spirit of the Foetracer",
+      "code": 3751917997,
+      "shortName": "Spirit of the Foetracer",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "surge",
+          "multiplier": {
+            "value": 1.25,
+            "source": {
+              "name": "Court Stacking Guide (surge, PvE 25%, 16s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Instant 4x Surge Stacks: Matching Elemental Ability Damage hit on \"Powerful Combatants\" and Guardians“; window from the rotation (ADR 0015, U6-1b)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "condition": "weaponMatchesTriggerElement"
+        }
+      ],
+      "durationMs": {
+        "value": 16000,
+        "source": {
+          "name": "Court Stacking Guide (surge, PvE 25%, 16s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Instant 4x Surge Stacks: Matching Elemental Ability Damage hit on \"Powerful Combatants\" and Guardians“; window from the rotation (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": { "on": "hit", "refresh": false }
+    }
+  },
+  {
+    "exoticArmorId": "spirit-of-the-star-eater",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:spirit-of-the-star-eater",
+      "name": "Spirit of the Star-Eater",
+      "code": 1476923955,
+      "shortName": "Spirit of the Star-Eater",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.7,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["super"]
+        }
+      ],
+      "durationMs": {
+        "value": 14000,
+        "source": {
+          "name": "Destiny Data Compendium (tab Exotic Armors)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„for 14 seconds“ after „On Super Cast“ (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": { "on": "cast", "refresh": true, "abilityKinds": ["super"] }
+    }
+  },
+  {
+    "exoticArmorId": "spirit-of-verity",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:spirit-of-verity",
+      "name": "Spirit of Verity",
+      "code": 1476923957,
+      "shortName": "Spirit of Verity",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 2,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„100% increased Grenade Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["grenade"]
+        }
+      ],
+      "durationMs": {
+        "value": 8000,
+        "source": {
+          "name": "Destiny Data Compendium (tab Exotic Armors)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„for 8 seconds“ after „Kill“; prebuilt before the damage phase (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
     "exoticArmorId": "star-eater-scales",
     "activation": "always",
     "effect": {

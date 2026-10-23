@@ -187,6 +187,29 @@ describe("exotic armor changes its abilities", () => {
     for (const ratio of ratios) expect(ratio).toBeGreaterThanOrEqual(0.999);
   });
 
+  it("Exotic Class Item: Spirit of the Eternal Warrior surges the weapon after the super, Star-Eater boosts the super", () => {
+    const prismatic = {
+      subclass: "prismatic" as const,
+      damagePhaseSeconds: 60,
+      abilities: [{ abilityId: "hammer-of-sol", castsMs: [0] }],
+    };
+    const base = run(prismatic);
+    const warrior = run({ ...prismatic, classPerkIds: ["spirit-of-the-eternal-warrior"] });
+    const starEater = run({ ...prismatic, classPerkIds: ["spirit-of-the-star-eater"] });
+    const surge = damageOf(warrior, "weapon") / damageOf(base, "weapon");
+    const superBoost = damageOf(starEater, "super") / damageOf(base, "super");
+    note(
+      "Class Item Eternal Warrior: Waffe nach dem Super (60 s)",
+      `×${fmt(surge)}`,
+      "mehr als ×1,05, höchstens ×1,25 (x4 Surge, 30 s)",
+    );
+    note("Class Item Star-Eater: Hammer of Sol", `×${fmt(superBoost)}`, "bis +70 %, Court/Compendium");
+    expect(surge).toBeGreaterThan(1.05);
+    expect(surge).toBeLessThanOrEqual(1.25);
+    expect(superBoost).toBeGreaterThan(1.5);
+    expect(superBoost).toBeLessThanOrEqual(1.7);
+  });
+
   it("well-known variants exist (Cuirass, Nighthawk, Dawn Chorus, Geomag)", () => {
     for (const id of [
       "cuirass-of-the-falling-star",

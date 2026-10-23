@@ -7,9 +7,9 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Art | Zeilen |
 | --- | --- |
 | Immer aktiv (Regel 6) | 2 |
-| Vorher aufgebaut, Option (Regel 3) | 10 |
+| Vorher aufgebaut, Option (Regel 3) | 11 |
 | Kill-Buff ohne Dauer (Regel 3) | 2 |
-| Fenster aus der Rotation (Regel 4) | 10 |
+| Fenster aus der Rotation (Regel 4) | 13 |
 | Auslöser in der Rotation, offen (Regel 4) | 1 |
 | Auslöser Class Ability, U7 (Regel 4) | 4 |
 | Gilt mit einem Zustand, z. B. Amplified (Regel 5) | 3 |
@@ -39,6 +39,7 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Hallowfire Heart | 3 | vorher aufgebaut: +150 % auf super (solar) für 20 s („Kills“ … „for 20 seconds“) | Compendium 150 %, Clarity – |
 | Khepri's Sting | 3 | vorher aufgebaut: debuff +15 % für 15 s („Killing a Weakened energy causes a Weakening Smoke Cloud around enemy death location“) | nur Court |
 | Sealed Ahamkara Grasps | 3 | vorher aufgebaut: empowering +35 % für 7 s („Powered Melees and Finisher kills grant Nightmare Fuel which grants a damage buff on freshly drawn weapons“) | Court = Text (35 %) |
+| Spirit of Verity | 3 | vorher aufgebaut: +100 % auf grenade für 8 s („Kill“ … „for 8 seconds“) | Compendium 100 %, Clarity – |
 | Verity's Brow | 3 | vorher aufgebaut: +100 % auf grenade für 8 s („Kill“ … „for 8 seconds“) | Compendium 100 %, Clarity 100 % |
 | Wormgod Caress | 3 | vorher aufgebaut: empowering +35 % für 3 s („Melee, Glaive Melee, or Finisher kill adds a stack of 'Burning Fists' which increases weapon damage Stacks decay over time and drop down a stack; higher stacks decay faster“) | Abweichung: Court 35 %, Text 80 / 20 % |
 | Wormhusk Crown | 3 | vorher aufgebaut: +15 % auf grenade, super, classAbility (solar) für 10 s („kills“ … „for 10 seconds“) | Compendium –, Clarity 15 % |
@@ -63,6 +64,9 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Mantle of Battle Harmony | 4 | ab Ende von jedem Super: surge +25 % für 10 s („Instant 4x Surge Stacks On Super end: Grants Arc, Solar, Void, Stasis, and Strand Weapon Surges“) | nur Court |
 | Sanguine Alchemy | 4 | ab Cast von Well of Radiance, solange Well steht, passend zum Super: surge +25 % für 30 s („Instant 4x Surge Stacks: While in any Rift or Well of Radiance“) | Abweichung: Court 25 %, Text 10 % |
 | Second Chance | 4 | ab Treffer von Shield Throw: debuff +15 % für 10 s („Shield Throw hit applies Weaken“) | nur Court |
+| Spirit of the Eternal Warrior | 4 | ab Ende von jedem Super: surge +25 % für 30 s („Instant 4x Surge Stacks: On Super end: Grants Weapon damage buff matching Super Element“) | nur Court |
+| Spirit of the Foetracer | 4 | ab Treffer jeder Ability, Element der Ability, nicht auffrischbar: surge +25 % für 16 s („Instant 4x Surge Stacks: Matching Elemental Ability Damage hit on "Powerful Combatants" and Guardians“) | nur Court |
+| Spirit of the Star-Eater | 4 | ab jedem Super-Cast: +70 % auf super für 14 s („On Super Cast“ … „for 14 seconds“) | Compendium 70 %, Clarity – |
 | Star-Eater Scales | 4 | ab jedem Super-Cast: +70 % auf super für 14 s („On Super Cast“ … „for 14 seconds“) | Compendium 70 %, Clarity 70 % |
 
 ## Auslöser in der Rotation, offen (Regel 4)

@@ -12,7 +12,7 @@ import type {
   Keyword,
 } from "../data/schema";
 import { abilitySimulation } from "./buildAbilities";
-import { exoticArmorEffects } from "./exoticArmor";
+import { classPerksOf, exoticArmorEffects } from "./exoticArmor";
 import type { SimulationOptions } from "./simulate";
 
 /** All loaded Data Files a build refers to. */
@@ -30,7 +30,8 @@ export type GameData = {
  * Effects and simulator options of a build: its selected effects, the abilities with the casts the
  * energy allows,
  * stats and granted effects (e.g. Well of Radiance from the super), and the exotic armor with its
- * ability variants and effects (prebuilt kill buffs only with the switch).
+ * ability variants and effects (prebuilt kill buffs only with the switch), and the perks of the
+ * Exotic Class Item.
  */
 export function buildSimulation(
   build: Build,
@@ -47,11 +48,14 @@ export function buildSimulation(
     build.selections.some((s) => s.effectId === effect.id),
   );
   const exotic = data.exoticArmor.find((e) => e.id === build.exoticArmorId);
-  const fromExotic = exotic
-    ? exoticArmorEffects(exotic, data.effects, data.exoticArmorEffects, {
-        preBuilt: build.exoticPreBuilt,
-      })
-    : [];
+  const fromExotic = [
+    ...(exotic ? [exotic] : []),
+    ...classPerksOf(build, data.exoticArmor),
+  ].flatMap((piece) =>
+    exoticArmorEffects(piece, data.effects, data.exoticArmorEffects, {
+      preBuilt: build.exoticPreBuilt,
+    }),
+  );
   const extra = [...abilityPart.grantedEffects, ...fromExotic];
   return {
     selected: [

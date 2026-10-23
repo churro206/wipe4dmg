@@ -26,7 +26,7 @@ import { buildSimulation } from "../engine/buildSimulation";
 import { effectWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
 import { abilitiesFor, effectsFor } from "../engine/providers";
-import { exoticArmorFor } from "../engine/exoticArmor";
+import { classPerksFor, exoticArmorFor } from "../engine/exoticArmor";
 import { simulate, type SimulationResult } from "../engine/simulate";
 import type { SimulationOptions } from "../engine/simulate";
 import {
@@ -73,6 +73,7 @@ import { SegmentedControl } from "./components/SegmentedControl";
 import { StatSliders } from "./components/StatSliders";
 import { SummaryBar } from "./components/SummaryBar";
 import { WeaponPicker } from "./components/WeaponPicker";
+import { ClassPerkPicker } from "./components/ClassPerkPicker";
 import { ExoticPicker } from "./components/ExoticPicker";
 import { Tabs } from "./components/Tabs";
 import {
@@ -150,9 +151,12 @@ function App() {
   const [openSlot, setOpenSlot] = useState<AbilityKind | null>(null);
   const [exoticArmorId, setExoticArmorId] = useState(initial.exoticArmorId);
   const [exoticPreBuilt, setExoticPreBuilt] = useState(initial.exoticPreBuilt);
+  const [classPerkIds, setClassPerkIds] = useState(initial.classPerkIds);
   const exotic = exoticArmor.find((e) => e.id === exoticArmorId);
   const exoticHasPreBuilt = generatedExoticEffects.some(
-    (g) => g.exoticArmorId === exoticArmorId && g.activation === "preBuilt",
+    (g) =>
+      (g.exoticArmorId === exoticArmorId || classPerkIds.includes(g.exoticArmorId)) &&
+      g.activation === "preBuilt",
   );
   const [comparison, setComparison] = useState(initial.comparison);
   const [copiedLink, setCopiedLink] = useState("");
@@ -184,6 +188,7 @@ function App() {
     abilityStats: abilityStatInputs,
     damagePhaseSeconds: isValid ? damagePhaseSeconds : 0,
     exoticArmorId,
+    classPerkIds,
     exoticPreBuilt,
   });
   const { selected, options } = simulationOf(currentBuild);
@@ -235,6 +240,7 @@ function App() {
         // energy over the whole chart; a shorter phase keeps the casts up to its end
         damagePhaseSeconds: dpsChartSeconds,
         exoticArmorId,
+        classPerkIds,
         exoticPreBuilt,
       }),
     );
@@ -256,6 +262,7 @@ function App() {
     abilityStatInputs,
     dpsChartSeconds,
     exoticArmorId,
+    classPerkIds,
     exoticPreBuilt,
   ]);
 
@@ -272,11 +279,17 @@ function App() {
     setGuardianClass(next);
     if (exotic?.guardianClass && exotic.guardianClass !== next)
       setExoticArmorId(undefined);
+    setClassPerkIds((current) =>
+      current.filter((id) =>
+        classPerksFor(exoticArmor, next).some((e) => e.id === id),
+      ),
+    );
     setSelections((current) => selectionsFor(current, next, subclass));
     setAbilityChoice((current) => choiceFor(current, next, subclass));
   };
   const changeSubclass = (next: Subclass) => {
     setSubclass(next);
+    if (next !== "prismatic") setClassPerkIds([]);
     setSelections((current) => selectionsFor(current, guardianClass, next));
     setAbilityChoice((current) => choiceFor(current, guardianClass, next));
   };
@@ -587,6 +600,7 @@ function App() {
                   selected={exotic}
                   onSelect={(id) => {
                     setExoticArmorId(id);
+                    if (id !== undefined) setClassPerkIds([]); // the class item is the exotic
                     setExoticPreBuilt(false);
                   }}
                 />
@@ -618,6 +632,35 @@ function App() {
                     ),
                   )}
                 </ul>
+              )}
+              {subclass === "prismatic" && (
+                <>
+                  <h3 className="sub">Exotic Class Item perks</h3>
+                  <ClassPerkPicker
+                    entries={classPerksFor(exoticArmor, guardianClass)}
+                    selectedIds={classPerkIds}
+                    describe={(entry) =>
+                      describeExotic(entry, effects, generatedExoticEffects)
+                    }
+                    onChange={(ids) => {
+                      setClassPerkIds(ids);
+                      if (ids.length > 0) setExoticArmorId(undefined);
+                      setExoticPreBuilt(false);
+                    }}
+                  />
+                  {classPerkIds.length > 0 && (
+                    <ul className="note">
+                      {classPerkIds.flatMap((id) => {
+                        const perk = exoticArmor.find((e) => e.id === id);
+                        return perk
+                          ? describeExotic(perk, effects, generatedExoticEffects).map(
+                              (line) => <li key={`${id}:${line}`}>{line}</li>,
+                            )
+                          : [];
+                      })}
+                    </ul>
+                  )}
+                </>
               )}
               {pickerFor("mod", <h3 className="sub">Mods</h3>)}
 

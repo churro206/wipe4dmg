@@ -6,9 +6,11 @@
 //           per selection: effect code | provider | start in ms | duration in ms + 1 (0: until end) |
 //           ability count | per ability: ability code | cast count | cast times in ms |
 //           hasStats (0 or 1) | super stat | grenade stat | melee stat |
-//           exotic armor manifest hash (0: none) | exotic prebuilt (0 or 1)
-// Format 2 ends the build after the selections, format 3 after the stats; both are still read.
-// Exotic armor is written by its manifest hash, which Bungie keeps stable (U8).
+//           exotic armor manifest hash (0: none) | exotic prebuilt (0 or 1) |
+//           class perk count | per class perk: manifest hash
+// Format 2 ends the build after the selections, format 3 after the stats, format 4 after the
+// prebuilt flag; all are still read.
+// Exotic armor and class perks are written by their manifest hash, which Bungie keeps stable (U8).
 // Codes come from the Data Files and are never reused, so old links stay readable. A removed
 // effect keeps its code as a former code of the effect that replaces it.
 // Pure functions without browser APIs, so the Discord bot (US-13) can read the same links.
@@ -21,8 +23,8 @@ import {
   type Subclass,
 } from "../data/schema";
 
-const FORMAT_VERSION = 4;
-const READABLE_VERSIONS = [2, 3, 4];
+const FORMAT_VERSION = 5;
+const READABLE_VERSIONS = [2, 3, 4, 5];
 const MS_PER_SECOND = 1000;
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
 const SUBCLASSES: Subclass[] = [
@@ -162,6 +164,15 @@ function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
           fail(`Build link: unknown exotic armor "${exotic}"`)),
   );
   writeVarint(bytes, build.exoticPreBuilt ? 1 : 0);
+  const perks = build.classPerkIds ?? [];
+  writeVarint(bytes, perks.length);
+  for (const perk of perks) {
+    writeVarint(
+      bytes,
+      (registry.exoticArmor ?? []).find((e) => e.id === perk)?.hash ??
+        fail(`Build link: unknown class perk "${perk}"`),
+    );
+  }
 }
 
 const fail = (message: string): never => {
@@ -212,7 +223,10 @@ function readBuild(
   }
   const abilityPart =
     version >= 3 ? readAbilities(reader, registry, unknown) : {};
-  const exoticPart: Pick<Build, "exoticArmorId" | "exoticPreBuilt"> = {};
+  const exoticPart: Pick<
+    Build,
+    "exoticArmorId" | "exoticPreBuilt" | "classPerkIds"
+  > = {};
   if (version >= 4) {
     const hash = reader.varint();
     const preBuilt = reader.varint() === 1;
@@ -220,6 +234,17 @@ function readBuild(
     if (hash !== 0 && !exotic) unknown.exoticArmor.push(hash);
     if (exotic) exoticPart.exoticArmorId = exotic.id;
     if (exotic && preBuilt) exoticPart.exoticPreBuilt = true;
+    if (version >= 5) {
+      const perks: string[] = [];
+      for (let i = 0, n = reader.varint(); i < n; i++) {
+        const perkHash = reader.varint();
+        const perk = (registry.exoticArmor ?? []).find((e) => e.hash === perkHash);
+        if (perk) perks.push(perk.id);
+        else unknown.exoticArmor.push(perkHash);
+      }
+      if (perks.length > 0) exoticPart.classPerkIds = perks;
+      if (perks.length > 0 && preBuilt) exoticPart.exoticPreBuilt = true;
+    }
   }
   // Zod rejects an invalid class or provider index (undefined).
   return Build.parse({

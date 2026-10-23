@@ -1129,6 +1129,278 @@
       "slot": "gauntlets",
       "intrinsics": ["Wish-Dragon Teeth"],
       "description": "Increases Tripmine Grenade duration and blast radius. Ability damage grants Tripmine Grenade energy.\nEnhanced Tripmines."
+    },
+    {
+      "hash": 1476923952,
+      "name": "Spirit of the Assassin",
+      "guardianClass": null,
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Finishers and powered melee final blows grant invisibility."
+    },
+    {
+      "hash": 1476923955,
+      "name": "Spirit of the Star-Eater",
+      "guardianClass": null,
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "While your Super energy is full, picking up an Orb of Power overcharges your Super, granting it bonus damage.\nOrbs of Power overcharge your Super."
+    },
+    {
+      "hash": 1476923954,
+      "name": "Spirit of the Ophidian",
+      "guardianClass": null,
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Weapons ready very quickly."
+    },
+    {
+      "hash": 1476923957,
+      "name": "Spirit of Verity",
+      "guardianClass": null,
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Weapon final blows with a damage type matching your grenade grant a stacking grenade damage bonus and improved grenade regeneration.\nWeapon final blows grant grenade damage."
+    },
+    {
+      "hash": 3751917996,
+      "name": "Spirit of Caliban",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Powered melee final blows trigger an ignition."
+    },
+    {
+      "hash": 3751917990,
+      "name": "Spirit of the Coyote",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Gain an additional class ability charge."
+    },
+    {
+      "hash": 3751917998,
+      "name": "Spirit of Galanor",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Hits and final blows with your Super will return Super energy after it ends.\nSuper hits return Super energy."
+    },
+    {
+      "hash": 3751917994,
+      "name": "Spirit of the Cyrtarachne",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Gain Woven Mail when you use your grenade.\nGrenades grant Woven Mail."
+    },
+    {
+      "hash": 3751917995,
+      "name": "Spirit of Renewal",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Allies inside the Duskfield grenade field gain Frost Armor and targets inside the field deal reduced damage.\nImproves Duskfield grenades."
+    },
+    {
+      "hash": 3751917993,
+      "name": "Spirit of the Gyrfalcon",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Your Void weapons gain volatile rounds after you emerge from being invisible.\nGain volatile rounds after being invisible."
+    },
+    {
+      "hash": 3751917999,
+      "name": "Spirit of the Dragon",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Your weapons ready quicker and are more stable. Using your class ability temporarily increases this benefit and reloads your equipped weapon from reserves.\nYour weapons ready quicker and are more stable. Class ability increases this benefit."
+    },
+    {
+      "hash": 3751917992,
+      "name": "Spirit of the Liar",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Dealing damage with a powered melee or being hit by a melee attack will allow you to follow up with an extremely powerful Arc melee counterpunch.\nCounterpunch deals extra damage."
+    },
+    {
+      "hash": 3751917997,
+      "name": "Spirit of the Foetracer",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Damaging a powerful combatant or Guardian with an ability grants you a temporary damage bonus for weapons matching that ability's element.\nAbilities grant bonus weapon damage."
+    },
+    {
+      "hash": 3751917991,
+      "name": "Spirit of the Wormhusk",
+      "guardianClass": "hunter",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Activating your class ability grants Cure. Rapidly defeating combatants grants Burning Souls that increase the potency of healing when using Dodge and spread the healing to nearby allies.\nDodging heals you."
+    },
+    {
+      "hash": 3573490508,
+      "name": "Spirit of Hoarfrost",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Your Barricade becomes a wall of Stasis crystals that slows nearby targets when created. Activating Thruster creates Stasis crystals.\nReplace Barricade with a wall of Stasis crystals."
+    },
+    {
+      "hash": 3573490501,
+      "name": "Spirit of Alpha Lupi",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Creates a healing pulse when your class ability is activated. Healing allies provides class ability energy.\nCasting your class ability heals you and nearby allies."
+    },
+    {
+      "hash": 3573490509,
+      "name": "Spirit of Severance",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Powered melee or finisher final blows unleash a damaging explosion.\nPowered melee final blows and finishers unleash explosions."
+    },
+    {
+      "hash": 3573490504,
+      "name": "Spirit of Contact",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Damaging a target with a powered melee causes all nearby targets to suffer lightning strikes and become jolted.\nPowered melee damage causes lightning strikes."
+    },
+    {
+      "hash": 3573490510,
+      "name": "Spirit of the Abeyant",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Improves Drengr's Lash. Drengr's Lash projectiles track targets more aggressively and travel farther.\nImproves Drengr's Lash."
+    },
+    {
+      "hash": 3573490507,
+      "name": "Spirit of Scars",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Final blows with weapons that have a damage type matching your Super's element create a burst of healing around you that grants allies restoration.\nWeapon final blows heal allies."
+    },
+    {
+      "hash": 3573490505,
+      "name": "Spirit of the Bear",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Move faster while guarding with the Unbreakable shield. Damage blocked with Unbreakable is converted to grenade energy.\nImproves Unbreakable."
+    },
+    {
+      "hash": 3573490500,
+      "name": "Spirit of the Armamentarium",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Gain an additional grenade charge."
+    },
+    {
+      "hash": 3573490511,
+      "name": "Spirit of the Eternal Warrior",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Gain bonus damage for weapons matching your Super's element when your Super ends.\nGain bonus weapon damage when your Super ends."
+    },
+    {
+      "hash": 3573490506,
+      "name": "Spirit of the Horn",
+      "guardianClass": "titan",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Your class ability unleashes waves of Solar energy that damage and scorch nearby targets. Combatants damaged and Guardians defeated by these waves are enveloped in a Sunspot.\nClass abilities unleash a Solar blast."
+    },
+    {
+      "hash": 183430250,
+      "name": "Spirit of Apotheosis",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Temporarily gain greatly increased melee and grenade regeneration after your Super ends.\nGain melee and grenade regeneration after your Super ends."
+    },
+    {
+      "hash": 183430254,
+      "name": "Spirit of Harmony",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Final blows with weapons that have a damage type matching your Super's element grant you Super energy.\nWeapon final blows grant Super energy."
+    },
+    {
+      "hash": 183430253,
+      "name": "Spirit of Osmiomancy",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Your grenades recharge quicker on hits. The seeker spawned from Coldsnap grenades travels farther.\nImproves grenades."
+    },
+    {
+      "hash": 183430249,
+      "name": "Spirit of Starfire",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Grenades recharge from empowered weapon damage, with empowered weapon final blows granting more energy.\nEmpowered weapon damage recharges grenades."
+    },
+    {
+      "hash": 183430248,
+      "name": "Spirit of the Stag",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Your Rift provides damage reduction to allies standing in it.\nRifts provides damage reduction."
+    },
+    {
+      "hash": 183430247,
+      "name": "Spirit of the Claw",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Gain an additional melee charge."
+    },
+    {
+      "hash": 183430255,
+      "name": "Spirit of the Filaments",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Casting an Empowering Rift will grant you Devour. Defeating a target while Devour is active grants class ability energy.\nEmpowering Rifts grant you Devour. Defeating a target while Devour is active grants class ability energy."
+    },
+    {
+      "hash": 183430246,
+      "name": "Spirit of the Swarm",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Destroying a Tangle spawns Threadlings.\nTangles spawn Threadlings."
+    },
+    {
+      "hash": 183430252,
+      "name": "Spirit of the Necrotic",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Damaging a target with a melee inflicts potent corruption. Defeating targets afflicted by corruption spreads the condition.\nMelee hits inflict potent corruption."
+    },
+    {
+      "hash": 183430251,
+      "name": "Spirit of Vesper",
+      "guardianClass": "warlock",
+      "slot": "classPerk",
+      "intrinsics": [],
+      "description": "Rifts periodically release Arc shockwaves."
     }
   ]
 }

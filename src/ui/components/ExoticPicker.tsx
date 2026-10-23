@@ -8,6 +8,7 @@ const SLOT_LABELS: Record<ExoticArmorEntry["slot"], string> = {
   chest: "Chest",
   legs: "Legs",
   classItem: "Class Item",
+  classPerk: "Class Item perk", // not offered here, see ClassPerkPicker
 };
 
 /**

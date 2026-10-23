@@ -70,8 +70,8 @@ describe("encodeLink and decodeLink", () => {
   });
 
   it("keeps a typical build short (5 effects with windows in about 48 characters)", () => {
-    // format 4 adds two bytes for the exotic armor
-    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(51);
+    // format 4 adds two bytes for the exotic armor, format 5 one byte for the class perks
+    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(52);
   });
 
   it("writes only URL-safe characters", () => {
@@ -149,7 +149,7 @@ describe("encodeLink and decodeLink", () => {
     it("keeps such a build short", () => {
       expect(
         encodeLink({ build: withAbilities }, registry).length,
-      ).toBeLessThanOrEqual(72);
+      ).toBeLessThanOrEqual(74); // format 5: one byte more for the class perks
     });
 
     it("skips unknown ability codes and reports them", () => {

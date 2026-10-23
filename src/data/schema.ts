@@ -838,7 +838,8 @@ export const ManifestArmorPiece = z.object({
   hash: z.number().int(),
   name: z.string(),
   guardianClass: GuardianClass.nullable(), // null: any class
-  slot: z.enum(["helmet", "gauntlets", "chest", "legs", "classItem"]),
+  // classPerk: a Spirit perk of the Prismatic Exotic Class Item (ADR 0015, U6-3), not a piece
+  slot: z.enum(["helmet", "gauntlets", "chest", "legs", "classItem", "classPerk"]),
   intrinsics: z.array(z.string()), // e.g. ["Illegally Modded Holster"]
   description: z.string(), // texts of the intrinsics, one per line
 });
@@ -1126,6 +1127,9 @@ export const Build = z.object({
   exoticArmorId: z.string().optional(),
   // The kill buffs of the exotic are built up before the damage phase (ADR 0015); omitted: off.
   exoticPreBuilt: z.boolean().optional(),
+  // The two Spirit perks of a Prismatic Exotic Class Item (ADR 0015, U6-3); it is the build's
+  // exotic, so not together with exoticArmorId. Omitted: none.
+  classPerkIds: z.array(z.string()).max(2).optional(),
   // Selected effects with their provider; the same effect may come from two providers.
   selections: z.array(
     z.object({ effectId: z.string(), provider: ProviderKind }),

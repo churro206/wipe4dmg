@@ -19,7 +19,8 @@ const effectOf = (id: string) =>
 
 describe("rules for the exotic damage buffs", () => {
   it("classifies every damage buff", () => {
-    expect(new Set(result.rows.map((r) => r.name)).size).toBe(42);
+    // 42 exotic pieces and 4 Spirit perks of the Exotic Class Item (U6-3)
+    expect(new Set(result.rows.map((r) => r.name)).size).toBe(46);
   });
 
   it.each([

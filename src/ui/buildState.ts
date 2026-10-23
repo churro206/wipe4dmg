@@ -10,6 +10,7 @@ import type {
 } from "../data/schema";
 import { decodeLink, encodeLink } from "../engine/buildLink";
 import type { EffectWindowInput } from "../engine/effectWindows";
+import { classPerksFor } from "../engine/exoticArmor";
 import { abilitiesFor, canProvide } from "../engine/providers";
 import {
   abilities,
@@ -244,16 +245,19 @@ export function buildOfState(state: {
   abilityStats: AbilityStatInputs;
   damagePhaseSeconds: number;
   exoticArmorId?: string;
+  classPerkIds?: string[];
   exoticPreBuilt?: boolean;
 }): Build {
   const picks = abilitiesOfChoice(state.abilityChoice);
+  const classPerkIds = state.classPerkIds ?? [];
   return {
     weaponId: state.weaponId,
     guardianClass: state.guardianClass,
     subclass: state.subclass,
     catalyst: state.catalyst,
     ...(state.exoticArmorId ? { exoticArmorId: state.exoticArmorId } : {}),
-    ...(state.exoticArmorId && state.exoticPreBuilt
+    ...(classPerkIds.length > 0 ? { classPerkIds } : {}),
+    ...(state.exoticPreBuilt && (state.exoticArmorId || classPerkIds.length > 0)
       ? { exoticPreBuilt: true }
       : {}),
     selections: state.selections,
@@ -275,14 +279,29 @@ export function describeBuild(build: Build): string {
     ...effectsOf(build.selections).map((effect) => effect.name),
   ];
   const exotic = exoticArmor.find((e) => e.id === build.exoticArmorId);
-  if (exotic)
+  const perks = (build.classPerkIds ?? []).flatMap((id) => {
+    const perk = exoticArmor.find((e) => e.id === id);
+    return perk ? [perk.name] : [];
+  });
+  const worn = exotic ? [exotic.name] : perks;
+  if (worn.length > 0)
     names.unshift(
-      `${exotic.name}${build.exoticPreBuilt ? " (pre-stacked)" : ""}`,
+      `${worn.join(" + ")}${build.exoticPreBuilt ? " (pre-stacked)" : ""}`,
     );
   if (build.catalyst) names.unshift("Catalyst");
   names.unshift(weaponById(build.weaponId).name);
   const what = names.length > 0 ? names.join(", ") : "no effects";
   return `${CLASS_LABELS[build.guardianClass]} ${SUBCLASS_LABELS[build.subclass]}: ${what}`;
+}
+
+/** The perks of a linked build that the engine accepts; a hand-edited link must not break the page. */
+function validClassPerks(build: Build): string[] {
+  if (build.subclass !== "prismatic" || build.exoticArmorId !== undefined)
+    return [];
+  const allowed = classPerksFor(exoticArmor, build.guardianClass);
+  return [...new Set(build.classPerkIds ?? [])].filter((id) =>
+    allowed.some((e) => e.id === id),
+  );
 }
 
 export type LinkState = {
@@ -296,6 +315,7 @@ export type LinkState = {
   abilityChoice: AbilityChoice;
   abilityStats: AbilityStatInputs;
   exoticArmorId: string | undefined;
+  classPerkIds: string[];
   exoticPreBuilt: boolean;
   comparison: Build | null;
   message: string | null;
@@ -314,6 +334,7 @@ export function stateFromLink(search: string): LinkState {
     abilityChoice: {},
     abilityStats: DEFAULT_ABILITY_STATS,
     exoticArmorId: undefined,
+    classPerkIds: [],
     exoticPreBuilt: false,
     comparison: null,
     message: null,
@@ -348,6 +369,7 @@ export function stateFromLink(search: string): LinkState {
       ),
       abilityStats: build.abilityStats ?? DEFAULT_ABILITY_STATS,
       exoticArmorId: build.exoticArmorId,
+      classPerkIds: validClassPerks(build),
       exoticPreBuilt: build.exoticPreBuilt ?? false,
       catalyst: build.catalyst,
       windowInputs: Object.fromEntries(

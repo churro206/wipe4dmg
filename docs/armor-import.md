@@ -6,13 +6,13 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Art | Anzahl |
 | --- | --- |
 | Ability-Varianten (Regel 1) | 15 |
-| Schadens-Buffs (Regeln 2 bis 4) | 42 |
+| Schadens-Buffs (Regeln 2 bis 4) | 46 |
 | Geben einen Effect (Regel 4c) | 2 |
 | Waffen-Timing (Regel 5) | 2 |
-| Eigener Schaden, kommt später (Regel 5) | 31 |
-| Nur Energie, Modell fehlt (Regel 5) | 21 |
-| Lücken (Regeln 3 bis 5) | 14 |
-| Ohne Schadenswirkung (Regeln 5 und 6) | 14 |
+| Eigener Schaden, kommt später (Regel 5) | 41 |
+| Nur Energie, Modell fehlt (Regel 5) | 28 |
+| Lücken (Regeln 3 bis 5) | 16 |
+| Ohne Schadenswirkung (Regeln 5 und 6) | 25 |
 
 ## Ability-Varianten (Regel 1)
 
@@ -72,6 +72,10 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Sanguine Alchemy | warlock | chest | 2 | Court Weapon Surges: 25% für ~ |
 | Sealed Ahamkara Grasps | hunter | gauntlets | 2 | Court Empowering Buffs: 35% für 7s |
 | Second Chance | titan | gauntlets | 2 | Court Global Debuffs: 15% für 10s |
+| Spirit of the Eternal Warrior | titan | classPerk | 2 | Court Weapon Surges: 25% für 30s |
+| Spirit of the Foetracer | hunter | classPerk | 2 | Court Weapon Surges: 25% für 16s |
+| Spirit of the Star-Eater | alle | classPerk | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „18.2% \| 36.4% \| 54.6% \| 59.7% \| 64.8% \| 70% increased Super Damage“; compendium: „50% Increased Super Damage“; compendium: „35% Increased Super Damage“ |
+| Spirit of Verity | alle | classPerk | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „40% [20%] increased Grenade Damage“; compendium: „55% [40%] increased Grenade Damage“; compendium: „70% [60%] increased Grenade Damage“; compendium: „85% [80%] increased Grenade Damage“; compendium: „100% increased Grenade Damage“ |
 | Star-Eater Scales | hunter | legs | 3 | exoticIntrinsic (Court-Liste); compendium: „18.2% \| 36.4% \| 54.6% \| 59.7% \| 64.8% \| 70% increased Super Damage“; clarity: „18.2%\|36.4%\|54.6%\|59.7%\|64.8%\|70% increased Super damage“ |
 | Stormdancer's Brace | warlock | chest | 3 | exoticIntrinsic (Court-Liste); clarity: „200% bonus damage“ |
 | Synthoceps | titan | gauntlets | 3 | exoticIntrinsic (Court-Liste); compendium: „50% Increased Super Damage“; clarity: „50% increased Super damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt) |
@@ -126,6 +130,16 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Shinobu's Vow | hunter | gauntlets | 5 | eigener Schaden („Bolt Charge“), Damage Instances von Exotics kommen später |
 | Skull of Dire Ahamkara | warlock | helmet | 5 | eigener Schaden („deals up to 2269“), Damage Instances von Exotics kommen später |
 | Solipsism | warlock | classItem | 5 | eigener Schaden („Threadling“), Damage Instances von Exotics kommen später |
+| Spirit of Caliban | hunter | classPerk | 5 | eigener Schaden („Ignit“), Damage Instances von Exotics kommen später |
+| Spirit of Contact | titan | classPerk | 5 | eigener Schaden („deals 181“), Damage Instances von Exotics kommen später |
+| Spirit of Osmiomancy | warlock | classPerk | 5 | eigener Schaden („Threadling“), Damage Instances von Exotics kommen später |
+| Spirit of Renewal | hunter | classPerk | 5 | eigener Schaden („deal 50“), Damage Instances von Exotics kommen später |
+| Spirit of Severance | titan | classPerk | 5 | eigener Schaden („Explosion“), Damage Instances von Exotics kommen später |
+| Spirit of the Abeyant | titan | classPerk | 5 | eigener Schaden („detonat“), Damage Instances von Exotics kommen später |
+| Spirit of the Horn | titan | classPerk | 5 | eigener Schaden („deal 480“), Damage Instances von Exotics kommen später |
+| Spirit of the Necrotic | warlock | classPerk | 5 | eigener Schaden („dealing 32“), Damage Instances von Exotics kommen später |
+| Spirit of the Swarm | warlock | classPerk | 5 | eigener Schaden („Threadling“), Damage Instances von Exotics kommen später |
+| Spirit of Vesper | warlock | classPerk | 5 | eigener Schaden („deals 360“), Damage Instances von Exotics kommen später |
 | Stoicism | titan | classItem | 5 | eigener Schaden („explosion“), Damage Instances von Exotics kommen später |
 | Swarmers | warlock | legs | 5 | eigener Schaden („Threadling“), Damage Instances von Exotics kommen später |
 | The Bombardiers | hunter | legs | 5 | eigener Schaden („explodes“), Damage Instances von Exotics kommen später |
@@ -152,6 +166,13 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Radiant Dance Machines | hunter | legs | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Secant Filaments | warlock | legs | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Speaker's Sight | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Spirit of Alpha Lupi | titan | classPerk | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Spirit of Apotheosis | warlock | classPerk | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Spirit of Galanor | hunter | classPerk | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Spirit of Harmony | warlock | classPerk | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Spirit of Starfire | warlock | classPerk | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Spirit of the Bear | titan | classPerk | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
+| Spirit of the Filaments | warlock | classPerk | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Starfire Protocol | warlock | chest | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | Stronghold | titan | gauntlets | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
 | The Stag | warlock | helmet | 5 | nur Energie; die Rotation legt die Casts fest, Modell fehlt |
@@ -170,6 +191,8 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Ophidian Aspect | warlock | gauntlets | 5 | Timing ohne Faktor („Passively grants +35 Handling, +35 Reload Speed, and +10 Airborne Effectiveness“), Reload Speed ohne Faktor; Umrechnung in Zeit ohne Quelle |
 | Point-Contact Cannon Brace | titan | gauntlets | 4 | nur Melee-Boni (compendium: „Lightning Damage is increased by 100%“); Melee-Buffs addieren sich, Modell fehlt |
 | Relativism | hunter | classItem | 5 | Timing ohne Faktor („Using your class ability temporarily increases this benefit and reloads your equipped weapon from reserves“), per Class Ability; Class Abilities sind nicht in der Rotation |
+| Spirit of the Dragon | hunter | classPerk | 5 | Timing ohne Faktor („On Class Ability Usage: Reloads all weapons and picks up Ammo Bricks within 15 meters“), per Class Ability; Class Abilities sind nicht in der Rotation |
+| Spirit of the Liar | hunter | classPerk | 4 | nur Melee-Boni (compendium: „400% increased Basic and Arc Melee Damage“); Melee-Buffs addieren sich, Modell fehlt |
 | The Dragon's Shadow | hunter | chest | 5 | Timing ohne Faktor („On Class Ability Usage: Reloads all weapons and picks up Ammo Bricks within 15 meters“), per Class Ability; Class Abilities sind nicht in der Rotation |
 | Transversive Steps | warlock | legs | 5 | Timing ohne Faktor („Upon sprinting for 1.5 seconds: Refills 100% of Magazine/Dissipates 100% Heat of Readied Weapon“), Modell fehlt |
 | Triton Vice | hunter | gauntlets | 3 | nur Melee-Boni (compendium: „200% Increased Glaive Melee Damage“; clarity: „200% increased Glaive Melee Damage“); Melee-Buffs addieren sich, Modell fehlt |
@@ -191,6 +214,17 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Lion Rampant | titan | legs | 6 | kein Schadenswort im Text |
 | One-Eyed Mask | titan | helmet | 6 | kein Schadenswort im Text |
 | Precious Scars | titan | helmet | 6 | kein Schadenswort im Text |
+| Spirit of Hoarfrost | titan | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of Scars | titan | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Armamentarium | titan | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Assassin | alle | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Claw | warlock | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Coyote | hunter | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Cyrtarachne | hunter | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Gyrfalcon | hunter | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Ophidian | alle | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Stag | warlock | classPerk | 6 | kein Schadenswort im Text |
+| Spirit of the Wormhusk | hunter | classPerk | 6 | kein Schadenswort im Text |
 | St0mp-EE5 | hunter | legs | 6 | kein Schadenswort im Text |
 | The Sixth Coyote | hunter | chest | 6 | kein Schadenswort im Text |
 | Wings of Sacred Dawn | warlock | chest | 5 | betrifft nur verstaute Waffen („Tome of Dawn: Solar Weapon Kills grant Restoration x1 for ? seconds and refill stowed weapons“); das Modell rechnet mit einer Waffe |

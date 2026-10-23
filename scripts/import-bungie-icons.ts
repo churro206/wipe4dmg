@@ -16,8 +16,10 @@ import {
 import { format } from "prettier";
 import {
   AbilityData,
+  CompendiumSnapshot,
   Effect,
   ExoticArmorEntry,
+  GuardianClass,
   SubclassEffect,
   IconIndex,
   IconRef,
@@ -43,6 +45,7 @@ import {
   type ManifestItem,
 } from "./lib/manifestAbilities.ts";
 import {
+  extractClassPerks,
   extractExoticArmor,
   extractManifestWeapons,
   lookupManifestTerms,
@@ -148,10 +151,23 @@ console.log(`Wrote ${manifestWeapons.weapons.length} exotic weapons`);
 
 const manifestArmor = ManifestArmor.parse({
   ...header,
-  armor: extractExoticArmor(tables),
+  armor: [
+    ...extractExoticArmor(tables),
+    // Spirit perks of the Exotic Class Items (run npm run import:compendium first)
+    ...extractClassPerks(
+      tables,
+      CompendiumSnapshot.parse(readJson("src/data/compendium-class.json")).entries.map(
+        (entry) => ({
+          name: entry.name,
+          guardianClass:
+            entry.section === "any" ? null : GuardianClass.parse(entry.section),
+        }),
+      ),
+    ),
+  ],
 });
 await writeData("manifest-armor.json", manifestArmor);
-console.log(`Wrote ${manifestArmor.armor.length} exotic armor pieces`);
+console.log(`Wrote ${manifestArmor.armor.length} exotic armor pieces and class perks`);
 
 // Names in the assumptions of the Aegis weapon rows (run npm run import:weapons first).
 const assumptionNames = [
