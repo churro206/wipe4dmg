@@ -863,6 +863,33 @@
     }
   },
   {
+    "weapon": "Heartshadow",
+    "reason": "Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
+        "text": "\"peakRateSeconds\":2.016"
+      },
+      {
+        "source": "aegis",
+        "entry": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
+        "text": "weaken excluded"
+      }
+    ],
+    "aegisWins": true,
+    "base": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
+    "timing": {
+      "from": "Aegis",
+      "values": {
+        "magazine": 14,
+        "totalShots": 14,
+        "intervalSeconds": 2.016,
+        "reloadSeconds": 0
+      }
+    }
+  },
+  {
     "weapon": "Anarchy",
     "reason": "Aegis misst nur mit Katalysator (Jolting Feedback). Quantum ohne ihn: „double-stick“, 84.458 für 29 Granaten = 2912 pro Granate, zwei Fallen kleben, neu schießen, wenn sie auslaufen. Katalysator: Aegis 3368,5 ÷ Quantum 2912 = ×1,157 (Jolt).",
     "quotes": [

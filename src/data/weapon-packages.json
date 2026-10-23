@@ -6530,6 +6530,126 @@
     }
   },
   {
+    "id": "heartshadow",
+    "code": 136,
+    "name": "Heartshadow",
+    "manifestHash": 3664831848,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "sword",
+    "element": "void",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 29.762,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Values of the override"
+      }
+    },
+    "magazine": {
+      "value": 14,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
+      }
+    },
+    "totalShots": {
+      "value": 14,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
+      }
+    },
+    "reloadTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 2754.88,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: heavy, Shot in the Dark, weaken excluded"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "exhumation",
+        "name": "Exhumation",
+        "description": "Heavy attacks made with full Sword energy turn you invisible and fire exploding Void projectiles.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Wraithwalk, Heartshadow Catalyst",
+      "description": "Increases reserves by 6 (57🠚63).\nGrants 50% increased movement speed while under the effects of Void Invisibility.",
+      "effect": "unknown"
+    }
+  },
+  {
     "id": "heir-apparent",
     "code": 9,
     "name": "Heir Apparent",

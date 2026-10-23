@@ -9,8 +9,9 @@ Status: 2026-10-23
 - ✅ 49 exotic Special and Heavy weapons from Aegis, Quantum, Clarity and the Bungie manifest, among them Truth, Thunderlord, Gjallarhorn, Sleeper Simulant and Whisper of the Worm; weapon picker with search, catalyst as a toggle with a note on limited duration
 - ✅ 40 exotic primaries (e.g. Bad Juju, Ace of Spades, Thorn, Le Monarque): unlimited ammo, they fire with reloads through the whole damage phase; pulse bursts count bullet by bullet; weapon picker filters by ammo
 - ✅ 131 of 141 exotic weapons, among them swords (The Lament, Black Talon, Ergo Sum: one hit per combo), Merciless, Outbreak Perfected, Witherhoard (a full blight per shot), Choir of One (5 ammo per projectile) and Touch of Malice (last round)
-- ✅ 135 of 141: Turncoat, Prometheus Lens, Fafnir and Anarchy, timing from the Bungie manifest and Quantum
-- ⏳ 6 exotic weapons still missing: the swords Heartshadow, Wolfsbane, Praxic Blade and Worldline Zero, and Barrow-Dyad and The Huckleberry (only measured with their catalyst or an unknown perk)
+- ✅ 136 of 141: Turncoat, Prometheus Lens, Fafnir, Anarchy and Heartshadow, timing from the Bungie manifest, Quantum and Aegis
+- ⏳ 5 exotic weapons still missing: the swords Wolfsbane, Praxic Blade and Worldline Zero, and Barrow-Dyad and The Huckleberry (only measured with their catalyst)
+- ✅ Choir of One with catalyst was 5 times too strong; fixed
 - ✅ Exotic armor: picker under “Armor” with search and slot filter. A note says what the exotic does in the calculator. Many work through the Rotation, e.g. Star-Eater Scales after the Super cast or Foetracer after an ability hit. Cuirass of the Falling Star and Celestial Nighthawk change their Super. Kill buffs only count with the “Pre-stacked” toggle, since one boss without adds gives no kills.
 - ✅ Aspects and fragments from all subclasses, e.g. Spark of Shock (Jolt), Echo of Undermining (Weaken after a Void grenade), Ember of Torches (Radiant after a melee hit); states such as Amplified or Woven Mail for exotics like No Backup Plans
 - ✅ Keywords: Ignition, Jolt, Volatile, Unravel and Bolt Charge as their own damage; abilities apply them with their hits

@@ -486,6 +486,16 @@
       "600s plain catalyst": 94607.85,
       "600s buffed catalyst": 159281.78
     },
+    "heartshadow": {
+      "30s plain": 38568.32,
+      "30s buffed": 64933.62,
+      "30s plain catalyst": 38568.32,
+      "30s buffed catalyst": 64933.62,
+      "600s plain": 38568.32,
+      "600s buffed": 64933.62,
+      "600s plain catalyst": 38568.32,
+      "600s buffed catalyst": 64933.62
+    },
     "heir-apparent": {
       "30s plain": 22312.28,
       "30s buffed": 37564.95,

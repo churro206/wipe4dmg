@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **135 Pakete**, 6 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **136 Pakete**, 5 Lücken.
 
 ## Pakete
 
@@ -61,6 +61,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Graviton Spike | handCannon | arc | stasis mode (1 Shot) | 176,6 | Quantum |  | 13 | 1,61 s | – | 150 → 95 | 0,8 % | Override: Aegis misst den Stasis-Modus (176,6); dazu passt Quantums „Stasis mode“ (Precision 178), nicht der Arc-Modus. Stasis macht mehr Schaden pro Sekunde.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-hand-cannon-graviton-spike-stasis-mode (Override); Timing nur aus Quantum; abgeleitete Feuerrate 95 statt 150 rpm |
 | Hard Light | autoRifle | void | keine (1 Shot) | 27,6 | Quantum |  | 49 | 1,12 s | – | 600 → 600 | 1,5 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Hawkmoon | handCannon | kinetic | keine (1 Shot) | 96,2 | Quantum |  | 8 | 1,64 s | – | – → 140 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by 1 (8🠚9)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Quantum; Katalysator-Timing: ∞ Shots, Magazin 9, Zeit bis leer – |
+| Heartshadow | sword | void | heavy, Shot in the Dark, weaken excluded (1 Shot) | 2.754,9 | Quantum | 14 | 14 | 0,00 s | 26,2 s | – → 30 | – | Override: Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Heir Apparent | machineGun | solar | keine (1 Shot) | 56,1 | Quantum | 440 | 200 | 3,57 s | 36,3 s | 900 → 903 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Heirloom | bow | solar | uncharged (1 Shot) | 855,7 | Aegis | 20 | 20 | 0,00 s | 22,5 s | – → 51 | 0,0 % | Override: Ungeladen wie die Basiszeile (Sustained Base 856 = Weapons 855,7): 20 Pfeile in 22,5 s, Bogen ohne Reload. Timing mit Argent Quiver (Reload Speed) wie bei Aegis.; Timing aus Zeile heirloom-uncharged-argent-quiver (Override); Timing nur aus Aegis |
 | Hierarchy of Needs | bow | solar | average, one ring (6 Shots) | 916,8 | Quantum |  | 1 | 0,60 s | – | 44 → 44 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
@@ -224,6 +225,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Graviton Spike | primary | unbekannt | – | Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another. |
 | Hard Light | primary | unbekannt | – | Grants 25 Stability. |
 | Hawkmoon | primary | Timing | Magazin 8 → 9, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 140 → 140 | Increases Magazine Size by 1 (8🠚9). |
+| Heartshadow | heavy | unbekannt | – | Increases reserves by 6 (57🠚63). |
 | Heir Apparent | heavy | keine | – | Arc Shield gains 75% [25%] Damage Resistance. |
 | Heirloom | special | keine | – | Scorch and Ignitions that originate from this weapon deal 5% increased damage. |
 | Hierarchy of Needs | primary | unbekannt | – | Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds: |
@@ -313,7 +315,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Waffe | Typ | Grund |
 | --- | --- | --- |
 | Barrow-Dyad | submachineGun | keine Aegis-Zeile ohne fremde Annahmen |
-| Heartshadow | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Praxic Blade | sword | kein Timing: keine Quantum-Zeile |
 | The Huckleberry | submachineGun | keine Aegis-Zeile ohne fremde Annahmen |
 | Wolfsbane | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
@@ -354,7 +355,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Graviton Spike | average, overcharging both modes, typical boss model, Temporal Alignment | nicht modelliert: Temporal Alignment |
 | Hawkmoon | Illegally Modded Holster, Paracausal Shot, full mag | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Hawkmoon | Illegally Modded Holster, Paracausal Shot, full mag, pre-stacked using heavy burst | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
-| Heartshadow | heavy, Shot in the Dark, weaken excluded | ohne light der Basiszeile |
+| Heartshadow | light | ohne heavy, Shot in the Dark, weaken excluded der Basiszeile |
 | Heirloom | average, 1/3 charge, with ignition, catalyst | Katalysator: catalyst |
 | Heirloom | average, 2/3 charge, with ignition, catalyst | Katalysator: catalyst |
 | Heirloom | average, fully charged, with ignition, catalyst | Katalysator: catalyst |
