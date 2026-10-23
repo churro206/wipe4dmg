@@ -3,6 +3,7 @@
 // package (e.g. Radiant in Golden Gun) are active, as in the Aegis measurement.
 
 import { describe, expect, it } from "vitest";
+import rawAbilityComponents from "../src/data/ability-components.json";
 import rawAbilityKeywords from "../src/data/ability-keywords.json";
 import rawAbilityStats from "../src/data/ability-stats.json";
 import rawAbilities from "../src/data/abilities.json";
@@ -13,7 +14,9 @@ import rawKeywords from "../src/data/keywords.json";
 import rawManifest from "../src/data/manifest-abilities.json";
 import rawSuperTimings from "../src/data/super-timings.json";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
+import { COMPONENT_TOLERANCE } from "../scripts/lib/abilityComponents";
 import {
+  AbilityComponents,
   AbilityKeyword,
   AegisAbilityRow,
   ManifestAbilities,
@@ -30,7 +33,7 @@ import {
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
 
-const TOLERANCE = 0.1; // ±10 %, ADR 0009
+const TOLERANCE = COMPONENT_TOLERANCE; // ±15 % (owner, 2026-10-23; ADR 0009 had ±10 %)
 const LONG_DAMAGE_PHASE_SECONDS = 120;
 
 // The weapon only stands by: no scorch of its own, so the keyword counters belong to the ability.
@@ -50,6 +53,7 @@ const abilities = loadAbilities(
   abilityKeywords,
   [],
   SuperTiming.array().parse(rawSuperTimings),
+  AbilityComponents.array().parse(rawAbilityComponents),
 );
 const CAST_GAP_MS = 5000; // further apart than every keyword cooldown
 // Known gap: the Aegis package probably holds the Jolt or Volatile damage, but rows without ticks
@@ -69,12 +73,15 @@ const BAKED_TOLERANCE = 0.025;
  */
 function perUse(ability: Ability, stat: number): number {
   const scaling = abilityStats.find((s) => s.kind === ability.kind)!;
-  const measuredIds = new Set(
-    ability.components.flatMap((c) => [
+  // components from the Compendium hold no effects; Aegis' assumptions (e.g. Ember) apply as effects
+  const row = rows.find((r) => r.id === ability.aegisRowId);
+  const measuredIds = new Set([
+    ...(ability.package ? [] : (row?.includedEffectIds ?? [])),
+    ...ability.components.flatMap((c) => [
       ...(c.normalisedEffectIds ?? []),
       ...(c.includedEffectIds ?? []),
     ]),
-  );
+  ]);
   const measured = effects.filter((e) => measuredIds.has(e.id));
   const baked = abilityKeywords.filter(
     (k) => k.abilityId === ability.id && k.bakedInPackage,
@@ -138,10 +145,12 @@ describe("ability gate against Aegis", () => {
     }
   }
 
-  it("rule: every ability with Ignition gives back the Aegis value (±2.5 %), nothing counts twice", () => {
+  it("rule: every package with Ignition gives back the Aegis value (±2.5 %), nothing counts twice", () => {
     const off = gated
-      .filter((a) =>
-        abilityKeywords.some((k) => k.abilityId === a.id && k.keywordId === "ignition"),
+      .filter(
+        (a) =>
+          a.package &&
+          abilityKeywords.some((k) => k.abilityId === a.id && k.keywordId === "ignition"),
       )
       .map((a) => {
         const row = rows.find((r) => r.id === a.aegisRowId)!;

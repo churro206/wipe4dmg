@@ -1,6 +1,7 @@
 // Data Files loaded once for the UI, validated by the engine loaders.
 
 import rawAbilities from "../data/abilities.json";
+import rawAbilityComponents from "../data/ability-components.json";
 import rawAbilityKeywords from "../data/ability-keywords.json";
 import rawAbilityStats from "../data/ability-stats.json";
 import rawAegisAbilities from "../data/aegis-abilities.json";
@@ -16,6 +17,7 @@ import rawPackages from "../data/weapon-packages.json";
 import rawExoticArmorEffects from "../data/exotic-armor-effects.json";
 import rawExoticArmor from "../data/exotic-armor.json";
 import {
+  AbilityComponents,
   AbilityKeyword,
   ExoticArmorEffect,
   ExoticArmorEntry,
@@ -65,7 +67,8 @@ export const aegisRows = loadAegisAbilityRows(rawAegisAbilities);
 export const keywords = loadKeywords(rawKeywords, aegisRows);
 // Exotic armor (ADR 0014) and the effects generated from its damage buffs (ADR 0015, U6).
 export const exoticArmor = ExoticArmorEntry.array().parse(rawExoticArmor);
-// Packages take their values from the Aegis rows, providers from the manifest items (ADR 0009),
+// Packages take their values from the Aegis rows unless ability-components.json has components
+// from the Compendium (U9), providers from the manifest items (ADR 0009),
 // keywords from ability-keywords.json (ADR 0015, U5), variants with exotic armor (ADR 0014), hits
 // and super windows from super-timings.json.
 export const abilities = loadAbilities(
@@ -77,6 +80,7 @@ export const abilities = loadAbilities(
   AbilityKeyword.array().parse(rawAbilityKeywords),
   exoticArmor,
   SuperTiming.array().parse(rawSuperTimings),
+  AbilityComponents.array().parse(rawAbilityComponents),
 );
 export const generatedExoticEffects = ExoticArmorEffect.array().parse(
   rawExoticArmorEffects,

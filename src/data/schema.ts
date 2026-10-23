@@ -596,6 +596,17 @@ export const AbilityComponent = z.object({
 export type AbilityComponent = z.infer<typeof AbilityComponent>;
 
 /**
+ * Components of an ability from its Compendium text (ability-components.json, npm run
+ * build:abilities). They replace the Aegis package of the base ability; values are per hit of the
+ * super timing (ADR 0009 point 2).
+ */
+export const AbilityComponents = z.object({
+  abilityId: z.string(),
+  components: z.array(AbilityComponent).min(1),
+});
+export type AbilityComponents = z.infer<typeof AbilityComponents>;
+
+/**
  * How long a super keeps the player busy, i.e. its super window (ADR 0009). The player uses the
  * super as fast as possible. Missing values make the window an estimate: 0 for an unknown cast
  * animation, the base duration as upper bound otherwise.

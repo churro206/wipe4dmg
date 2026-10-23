@@ -7,6 +7,14 @@ Verschoben aus `CLAUDE.md` (2026-10-23). Nach jedem Block aktualisieren. Für di
 Breite vor Genauigkeit, ganze Kategorien pro Block (Regel in `CLAUDE.md`). Modell: Plan mit Opus, Umsetzung nach Muster mit Sonnet.
 
 1. **Abilities aus Compendium-Teilen** (ADR 0009, U9 `build:abilities`) statt Aegis-Pakete zu zerlegen. Aegis bleibt Gate mit ±15 %. Keywords, Ember und Fragments (Whisper of Fissures, Touch of Thunder, Jolt in Stormtrance, Volatile in Pocket Singularity) kommen als eigene Teile dazu und zählen damit nicht doppelt. Opus: Plan und erste Ability als Muster, Sonnet: die restlichen.
+   - ✅ **Muster (2026-10-23, Opus):** Regeln R1–R3 in `scripts/lib/abilityComponents.ts`, `npm run build:abilities` schreibt `src/data/ability-components.json` und `docs/ability-import.md` (alle 75 mit Abweichung). Freigeschaltet über `COMPONENT_ABILITY_IDS`: Thundercrash (−12 %), Fusion Grenade (−4 %). Loader (`loadAbilities`, Parameter `abilityComponents`): Teile ersetzen das Paket der Basis, Werte pro Treffer des Super-Timings (`atHits`), Varianten = Basis-Teile × Aegis Variante ÷ Basis (`scaled`). Gate ±15 % (`COMPONENT_TOLERANCE`), simuliert Teile mit `row.includedEffectIds` als Effects. Szenario „Thundercrash from Compendium parts“ im Plausibilitäts-Gate.
+   - **Nächster Schritt (Sonnet):** `docs/ability-import.md` von oben durchgehen, Kategorie für Kategorie (erst Grenades und Melees, dann Supers). Pro Ability: Regel ergänzen oder erweitern (mit Test in `tests/abilityComponents.test.ts`), ID in `COMPONENT_ABILITY_IDS`, `npm run build:abilities`, Gate grün. Fällt eine durch, bleibt sie Paket (Zeile in „Bekannte Ungenauigkeiten“). Erst bei mehreren gleichen Fällen eine Regel, Einzelfälle in einer Override-Datei mit Zitat (noch nicht angelegt). Bekannte Baustellen aus der Tabelle:
+     - Namen „Hit“ für Werte ohne Wort davor; mehrere Werte im Text sind oft Alternativen (geladen/ungeladen, „with all/both“ als Gesamtwert, R3 aus dem Plan noch offen) statt Summanden, z. B. Flux, Incendiary, Skip, Magnetic, Scatter, Ballistic Slam („~1,000“ ist eine Obergrenze).
+     - Anzahlen aus Wörtern („Creates 5 Stasis Crystals“, Messer, Projektile) fehlen; Glacier: Aegis entspricht eher 7 Kristallen.
+     - Nova Bomb: Vortex ergibt 76,9 Ticks (Intervall falsch gelesen).
+     - Supers mit mehreren Treffern: `atHits` verbietet Ticks pro Treffer bei mehreren Treffern; Werte pro Angriff mit der Kombo von Aegis abgleichen.
+     - Fragments als Teile: `AbilityComponent.requiresEffectIds` (zählt nur mit Effect) plus Effects Whisper of Fissures (25 pro Shatter, Clarity) und Touch of Thunder. Erst bauen, wenn Glacier/Shatter oder Storm/Pulse drankommen.
+     - Stormtrance und Pocket Singularity als Teile: danach `KEYWORD_COUNTS_TWICE` in `tests/abilityGate.test.ts` leeren.
 2. **Alle Buffs, Debuffs, Mods und Artifact-Perks** aus Court und Compendium in einem Block, als Schalter (u. a. Feast of Light, Banner of War, Expanding Abyss). Sonnet.
 3. **Energie einfach:** Cooldown aus Compendium und Stat ergibt die Casts pro Damage Phase; Refunds als Prozent aus dem Text (ersetzt U7 mit langem ADR; kurze Notiz in ADR 0015 genügt). Plan Opus, Umsetzung Sonnet.
 4. **Restliche Exotics, Aspects, Fragments** in einem Block, `derived` aus dem Text; Facet of Courage, Melee-Bucket (U6-4), Exotics mit eigenem Schaden, Class Items (U6-3). Sonnet.
@@ -18,6 +26,8 @@ Breite vor Genauigkeit, ganze Kategorien pro Block (Regel in `CLAUDE.md`). Model
 - 26 Catalysts „unbekannt“, Symmetry-Grundwert vermutlich zu niedrig.
 - Reload-Faktor aus d2foundry nur relativ (absolut 0,44- bis 1,5-fach gegen Aegis).
 - Deadshot liegt bei Aegis 40 % unter dem Compendium (vermutlich Falloff).
+- Thundercrash aus Teilen 12 % unter Aegis: Aegis' Aftershock-Summe entspricht etwa 16 Ticks à 108, das Compendium nennt 4 („every second for 4 seconds“).
+- Abilities aus Teilen gegenüber ihren Paket-Varianten: Varianten skalieren alle Teile gleich (Aegis-Verhältnis), auch wenn das Exotic nur einen Teil ändert.
 
 ## Stand (2026-10-22)
 

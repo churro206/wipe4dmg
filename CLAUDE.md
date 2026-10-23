@@ -44,7 +44,7 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 ## Sparsam arbeiten (Inhaber, 2026-10-23, Claude Pro)
 
 - Ein Block pro Sitzung. Am Ende `docs/plans/current.md` so pflegen, dass der nächste Block nach `/clear` ohne Chat-Verlauf starten kann; dann `/clear` vorschlagen.
-- Modell: Pläne, ADRs und schwierige Herleitungen mit Opus, Umsetzung mit Sonnet. Beim Wechsel einen Satz dazu sagen.
+- Modell: Pläne, ADRs und schwierige Herleitungen mit Opus, Umsetzung mit Sonnet. Jede Antwort, die einen Schritt vorschlägt oder abschließt, nennt das empfohlene Modell für den nächsten Schritt (Inhaber, 2026-10-23).
 - Kleine Ausgaben: `npm run test:quiet`, `npm run facts`, große Dateien nur ausschnittweise lesen (Grep, dann Read mit `offset`), Changelog nur per Edit ergänzen.
 - Online und Browser nur im Budget des Skills `recherche`. Keine Subagents.
 
@@ -61,7 +61,7 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 - `npm run facts -- "<Name>"`: Name in allen Snapshots suchen, kompakt
 - `npm run coverage`: `docs/coverage.md` neu schreiben (generiert)
 - Import (lädt herunter): `import:weapons`, `import:compendium`, `import:court`, `import:abilities`, `import:bosses`, `import:reload`, `import:icons` (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)
-- Build (ohne Download, schreibt Data Files und Prüftabellen): `build:weapons`, `build:armor`, `build:keywords`
+- Build (ohne Download, schreibt Data Files und Prüftabellen): `build:weapons`, `build:armor`, `build:keywords`, `build:abilities`
 - Reihenfolge nach einem Patch: `docs/plans/current.md`, Abschnitt „Werkzeuge“
 
 ## Shell-Befehle

@@ -1,5 +1,6 @@
 // Loads abilities.json (ADR 0009). An ability with a package gets its components from one Aegis row,
-// so a new Aegis import updates it without copying values.
+// so a new Aegis import updates it without copying values. Components from the Compendium
+// (ability-components.json, U9) replace the package of the base ability; its variants stay packages.
 //
 // Stat split: Aegis measured the package at the stat where the bonus starts (100) and at the maximum
 // (200). The package is split into a part that scales with the ability stat and a fixed part, so that
@@ -20,6 +21,7 @@ import {
   GuardianClass,
   Subclass,
   type AbilityComponent,
+  type AbilityComponents,
   type AbilityKeyword,
   type AbilityKind,
   type ManifestAbility,
@@ -58,11 +60,16 @@ export function loadAbilities(
   >[] = [],
   // super-timings.json: hits and super window of supers used as fast as possible
   superTimings: SuperTiming[] = [],
+  // ability-components.json (U9): components from the Compendium replace the package of the base
+  abilityComponents: AbilityComponents[] = [],
 ): Ability[] {
   const data = AbilityData.array().parse(raw);
   for (const timing of superTimings)
     if (!data.some((a) => a.id === timing.abilityId))
       throw new Error(`super timing for unknown ability "${timing.abilityId}"`);
+  for (const entry of abilityComponents)
+    if (!data.some((a) => a.id === entry.abilityId && a.package))
+      throw new Error(`components for unknown package "${entry.abilityId}"`);
   // A variant row measures the same ability with the assumptions of the base row plus the exotic
   // and/or aspects and fragments, e.g. "Thundercrash" with "Cuirass of the Falling Star" or "Blade
   // Barrage" with "Knock Em Down". It shares the code of its base: links store the base, the worn
@@ -129,13 +136,39 @@ export function loadAbilities(
     });
   });
   return [...data, ...variants]
-    .map(({ components, ...ability }) => {
+    .map(({ components, ...withPackage }) => {
+      const baseId = withPackage.variantOf ?? withPackage.id;
       // a variant keeps the keywords of its base
-      const own = abilityKeywords.filter(
-        (k) => k.abilityId === (ability.variantOf ?? ability.id),
-      );
+      const own = abilityKeywords.filter((k) => k.abilityId === baseId);
+      // Package per use at stat 100 without keyword damage and included multipliers.
+      const packageSum = (a: AbilityData) =>
+        packageComponents(
+          a.id,
+          a.aegisRowId!,
+          a.kind,
+          a.extraIncludedEffectIds ?? [],
+          aegisRows,
+          abilityStats,
+          own,
+        )
+          .map((c) => (normalise ? withoutIncludedMultipliers(c, a, normalise) : c))
+          .reduce((sum, c) => sum + requireValue(c.damagePerTick, "damagePerTick"), 0);
+      const baseComponents = abilityComponents.find((e) => e.abilityId === baseId);
+      // A variant of an ability from components takes the base components times the Aegis ratio
+      // variant / base, so the measured difference stays (ADR 0011: sources only as ratios).
+      const fromText =
+        baseComponents && withPackage.variantOf
+          ? scaled(
+              baseComponents,
+              packageSum(withPackage) /
+                packageSum(data.find((a) => a.id === baseId)!),
+              withPackage.aegisRowId!,
+            )
+          : baseComponents;
+      const ability = fromText
+        ? { ...withPackage, package: undefined }
+        : withPackage;
       // the variant's own timing, else the timing of its base
-      const baseId = ability.variantOf ?? ability.id;
       const timing =
         superTimings.find(
           (t) =>
@@ -157,12 +190,14 @@ export function loadAbilities(
               ? withoutIncludedMultipliers(component, ability, normalise)
               : component,
           )
-        : (components ?? []);
-      if (timing && !ability.package && packaged.length > 0)
+        : (fromText?.components ?? components ?? []);
+      if (timing && !ability.package && !fromText && packaged.length > 0)
         throw new Error(`${ability.id}: a super timing needs a package`);
-      const loaded = timing
-        ? packaged.map((c) => spreadOverHits(c, timing))
-        : packaged;
+      const loaded = !timing
+        ? packaged
+        : fromText
+          ? packaged.map((c) => atHits(c, timing))
+          : packaged.map((c) => spreadOverHits(c, timing));
       return Ability.parse({
         ...ability,
         ...(timing?.weaponReadyMs
@@ -348,6 +383,54 @@ function spreadOverHits(
         note: `${component.damagePerTick.source.note ?? ""}; spread over ${hits} hits (super-timings.json)`,
       },
     },
+  };
+}
+
+/** Components of a base ability times the Aegis ratio of a variant, e.g. with Cuirass. */
+function scaled(
+  base: AbilityComponents,
+  factor: number,
+  aegisRowId: string,
+): AbilityComponents {
+  return {
+    ...base,
+    components: base.components.map((c) => ({
+      ...c,
+      damagePerTick: {
+        value: requireValue(c.damagePerTick, "damagePerTick") * factor,
+        source: {
+          ...c.damagePerTick.source,
+          status: "unverified",
+          note: `${c.damagePerTick.source.note ?? ""}; times x${factor.toFixed(3)}, Aegis ratio of ${aegisRowId} to the base row`,
+        },
+      },
+    })),
+  };
+}
+
+/**
+ * Places a component from the Compendium (values per hit) on the hits of a super timing: it starts
+ * at the first hit and, for several hits, repeats once per hit.
+ */
+function atHits(
+  component: AbilityComponent,
+  timing: SuperTiming,
+): AbilityComponent {
+  const hits = requireValue(timing.hits, "hits");
+  const ticks = requireValue(component.ticks, "ticks");
+  if (hits > 1 && ticks > 1)
+    throw new Error(`${component.id}: ticks per hit over several hits are not modelled`);
+  const firstHitMs = requireValue(timing.firstHitMs, "firstHitMs");
+  return {
+    ...component,
+    delayMs: {
+      value: requireValue(component.delayMs, "delayMs") + firstHitMs,
+      source: {
+        ...component.delayMs.source,
+        note: `${component.delayMs.source.note ?? ""}; plus first hit at ${firstHitMs} ms (super-timings.json)`,
+      },
+    },
+    ...(hits > 1 ? { ticks: timing.hits, tickIntervalMs: timing.hitIntervalMs } : {}),
   };
 }
 

@@ -51,7 +51,7 @@ Eine Recherche (Skill `recherche`, 2026-10-21) hat den Umbau gegen die Quellen g
 11. **Keine Handmodelle.** Am Ende des Umbaus kommen Waffen, Effects, Abilities und Gate-Referenzen aus Importen mit Regeln. Von Hand bleiben nur Regeln (`buckets.json`) und Overrides mit Zitat. Ingame-Messungen gelten nur für allgemeine Mechaniken (ADR 0011).
     - U4: One Thousand Voices und Two-Tailed Fox werden Pakete aus dem Import, Scorch kommt als Keyword dazu. `weapons/one-thousand-voices.json` und `sourceScale` entfallen. Die Gate-Referenzen entstehen aus Aegis-Zeilen mit Annahmen, z. B. „mit Ember“ ÷ „ohne“. Dabei ist ein Widerspruch zu klären: Ignition-Cooldown laut Ingame-Test 1,3 s, laut Compendium 1,6 s.
     - U6: `effects.json` wird aus dem Court-Snapshot und dem Compendium erzeugt, mit der Regelkette wie bei den Exotics.
-    - U9 (nach U5): `build:abilities` erzeugt `abilities.json` aus dem Aegis-Snapshot und dem Manifest.
+    - U9 (nach U5): `build:abilities` erzeugt die Ability Components aus dem Compendium-Text (`ability-components.json`); `abilities.json` bleibt von Hand (Inhaber, 2026-10-23, ADR 0009 Ergänzung).
 
 ## Regeln aus der Umsetzung (U4a)
 

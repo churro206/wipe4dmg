@@ -496,6 +496,20 @@ describe("supers take time like in the game", () => {
     expect(window.endMs).toBeLessThan(15_000);
   });
 
+  it("Thundercrash from Compendium parts: aftershocks follow the explosion for 4 s, about Aegis' value", () => {
+    const r = superRun("titan", "arc", "thundercrash");
+    const times = [...new Set(hits(r))];
+    const total = damageOf(r, "super");
+    note(
+      "Thundercrash: Treffer, Summe",
+      `${times.join(" / ")} ms, ${Math.round(total)}`,
+      "Einschlag, dann 4 Aftershocks im Sekundentakt; Aegis 10 136 (±15 %)",
+    );
+    expect(times).toHaveLength(5);
+    expect(times[4] - times[0]).toBeGreaterThanOrEqual(3500);
+    expect(total / 10136).toBeGreaterThan(0.85);
+  });
+
   it("Nova Bomb: the bomb needs its cast before it hits", () => {
     const r = superRun("warlock", "void", "nova-bomb-cataclysm");
     note(

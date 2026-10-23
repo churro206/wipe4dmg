@@ -248,6 +248,63 @@ describe("loadAbilities with providers from the manifest", () => {
   });
 });
 
+describe("loadAbilities with components from the Compendium (U9)", () => {
+  const component = (ticks: number) => ({
+    id: "hit",
+    name: "Hit",
+    delayMs: { value: 100, source },
+    damagePerTick: { value: 500, source },
+    ticks: { value: ticks, source },
+    tickIntervalMs: { value: ticks > 1 ? 1000 : 0, source },
+    scalesWithAbilityStat: true,
+  });
+  const timing = (hits: number) => ({
+    abilityId: "test-melee",
+    firstHitMs: { value: 1200, source },
+    hitIntervalMs: { value: 800, source },
+    hits: { value: hits, source },
+  });
+  const load = (ticks: number, timings: ReturnType<typeof timing>[] = []) =>
+    loadAbilities(
+      [packageAbility("full")],
+      [row("full", 1000, 1300)],
+      abilityStats,
+      [],
+      undefined,
+      [],
+      [],
+      timings,
+      [{ abilityId: "test-melee", components: [component(ticks)] }],
+    )[0];
+
+  it("replace the package of the base ability", () => {
+    const ability = load(1);
+    expect(ability.package).toBeUndefined();
+    expect(ability.components.map((c) => c.damagePerTick.value)).toEqual([500]);
+  });
+
+  it("start at the first hit of the super timing and repeat once per hit", () => {
+    const [c] = load(1, [timing(3)]).components;
+    expect([c.delayMs.value, c.ticks.value, c.tickIntervalMs.value]).toEqual([
+      1300, 3, 800,
+    ]);
+  });
+
+  it("keep their own ticks with a single hit, and refuse ticks over several hits", () => {
+    const [c] = load(4, [timing(1)]).components;
+    expect([c.delayMs.value, c.ticks.value]).toEqual([1300, 4]);
+    expect(() => load(4, [timing(2)])).toThrow(/ticks per hit/);
+  });
+
+  it("fail for an ability without a package", () => {
+    expect(() =>
+      loadAbilities([packageAbility("full")], [row("full", 1000, 1300)], abilityStats, [], undefined, [], [], [], [
+        { abilityId: "nope", components: [component(1)] },
+      ]),
+    ).toThrow(/nope/);
+  });
+});
+
 describe("abilities.json", () => {
   const abilities = loadAbilities(
     rawAbilities,

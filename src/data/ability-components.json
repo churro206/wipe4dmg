@@ -1,0 +1,192 @@
+[
+  {
+    "abilityId": "thundercrash",
+    "components": [
+      {
+        "id": "impact",
+        "name": "Impact",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 180,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Detonates on impact with a surface or enemy, dealing 180 impact damage, as well as up to 8,260 explosive damage over 10 meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "explosive",
+        "name": "Explosive",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 8260,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Detonates on impact with a surface or enemy, dealing 180 impact damage, as well as up to 8,260 explosive damage over 10 meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 750,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "0.75 seconds after"
+          }
+        },
+        "damagePerTick": {
+          "value": 108,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Explosion releases aftershocks 0.75 seconds after impact, dealing up to 108 damage every second for 4 seconds."
+          }
+        },
+        "ticks": {
+          "value": 4,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "every second for 4 seconds"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 1000,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Thundercrash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "every second for 4 seconds"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "fusion-grenade",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Fusion Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 738,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Fusion Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Explosion deals up to 738 damage and inflict x40+20 Scorch over 6 meters on detonation."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Fusion Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Fusion Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  }
+]

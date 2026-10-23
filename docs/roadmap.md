@@ -25,6 +25,7 @@ Status: 2026-10-23
 - ✅ Only aspects and fragments that change damage are offered. Items that only grant a state (e.g. Ascension, On Your Mark) appear when the exotic needs that state, such as No Backup Plans.
 - ✅ Ignition in Solar Supers counts once: the Aegis value of Golden Gun and Daybreak already holds the ignitions of its shots, so they are taken out of the package and come back from the Scorch of each hit. Daybreak ignites during the super (x50 Scorch per projectile).
 - ✅ Tidier picker: Radiant and Weaken in their own section “Buffs & Debuffs”, one tile per item (e.g. Facet of Dominance), game icons for every aspect and fragment
+- ⏳ Abilities built from their Compendium parts instead of one measured total, checked against Aegis (±15 %): Thundercrash (impact, explosion, aftershocks over 4 s) and Fusion Grenade so far; the others follow
 - ⏳ Stormtrance and Pocket Singularity: Jolt and Volatile count twice (+14 %, +22 %)
 - ⏳ Facet of Courage and Touch of Thunder: Aegis only measured them together with other buffs
 - ✅ Every weapon with a catalyst has the switch; its hover card says what it does here: damage (e.g. One Thousand Voices +45%), magazine and ammo (e.g. Gjallarhorn 1 → 2 rockets, Telesto 4 → 7), refills (Thunderlord, Cloudstrike), or no effect against one boss

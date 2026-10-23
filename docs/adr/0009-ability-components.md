@@ -48,6 +48,8 @@ Geprüft und verworfen:
    Im Super Window lädt und feuert die Waffe nicht; ein Shot, dessen Charge hineinfällt, rückt dahinter. Fehlt ein Wert, ist das Window eine Schätzung (`exact: false`): 0 für eine unbekannte Cast-Animation, sonst die Base Duration als Obergrenze.
 9. Aspects und Exotics, die Abilities verändern, sind Effects. Ein Build hat höchstens eine Exotic-Rüstung (Exclusive Group `exotic-armor`).
 
+**Ergänzung 2026-10-23 (U9, Inhaber):** Gate ±15 % statt ±10 %. Die Teile erzeugt `npm run build:abilities` nach Regeln aus dem Compendium-Text (`ability-components.json`, Prüftabelle `docs/ability-import.md`); `abilities.json` bleibt von Hand. Werte gelten pro Treffer des Super-Timings. Varianten einer Ability aus Teilen (Exotic, Aspect) erhalten die Teile der Basis mal Aegis Variante ÷ Basis (ADR 0011).
+
 ## Folgen
 
 - Dasselbe Muster wie bei One Thousand Voices: Einzelwerte aus einer Quelle, Gegenprüfung gegen Aegis.
