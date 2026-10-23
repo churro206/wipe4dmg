@@ -6,7 +6,9 @@ description: Quellen-Recherche für fehlende Spielwerte, Buckets, Stacking-Regel
 # Quellen-Recherche
 
 Ziel: Fehlendes Spielwissen selbst aus Community-Quellen beschaffen. Der Inhaber wird nicht auf die Suche geschickt.
-Regeln aus `CLAUDE.md` gelten weiter: niemals raten, jeder Wert mit `source` und Zitat, Mechaniken nicht selbst herleiten.
+Regeln aus `CLAUDE.md` gelten weiter: niemals raten, jeder Wert mit `source` und Zitat.
+
+**Eine Quelle genügt (Inhaber, 2026-10-23):** Ein Wert aus einer Quelle im Katalog gilt als bestätigt. Eine zweite Quelle ist ein Plus, keine Pflicht. Bei Konflikt die vertrauenswürdigere oder logisch stimmigere Quelle nehmen (Messung vor Text, Aegis vor Quantum bei Waffen, aktueller vor älter) und den Grund notieren. Zahlen aus Texten (Compendium, Clarity) dürfen ohne Messung genutzt werden, Status `derived`. Mechaniken aus vorhandenen Daten logisch zusammensetzen ist erwünscht. Einzelfälle, die in keine Regel passen, kommen mit Zitat und Herleitung in eine Override-Datei. Gemini-Antworten sind keine Quelle, nur Hinweise (2026-10-23: viele widersprachen Clarity).
 
 ## Ablauf
 

@@ -47,7 +47,9 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 
 - Keine Zahlenwerte im Code. Alle Spielwerte stehen in `src/data`.
 - Jeder Wert in einer Data File hat ein `source`-Objekt. Unbekannte Werte sind `null` mit Status `missing`. Rate niemals Werte.
-- **Quellen zuerst:** Fehlt ein Wert oder eine Zuordnung, oder widersprechen sich Quellen, zuerst eine Community-Quelle suchen (Clarity, DIM-Daten, weitere Reiter von Aegis und Quantum, Compendium, Court, Manifest) und als Snapshot mit Regel einbinden. **Herleiten ist erlaubt und erwünscht, wenn eine Gegenrechnung gegen eine Quelle es prüft:** Das Modell muss die Messung, aus der etwas abgeleitet wurde, innerhalb der Toleranz wieder ergeben (Gate). Zerlegte Pakete werden immer gegengerechnet, damit nichts doppelt zählt oder fehlt (Ablauf „Zerlegen und Gegenrechnen“ im Skill `recherche`). **Vor jeder gemeldeten Lücke den Skill `recherche` abarbeiten** (`.claude/skills/recherche/SKILL.md`: Quellenkatalog mit Reitern, Ablauf, Budget); eine Lücke nur mit Tabelle der geprüften Quellen melden. Den Inhaber nur fragen, wenn die Gegenrechnung scheitert, Quellen sich widersprechen und keine Regel entscheidet, oder bei Entscheidungen, die ihm zustehen (Umfang, Oberfläche, Prioritäten). Overrides nur mit Zitat aus einem Snapshot.
+- **Quellen zuerst:** Fehlt ein Wert oder eine Zuordnung, oder widersprechen sich Quellen, zuerst eine Community-Quelle suchen (Clarity, DIM-Daten, weitere Reiter von Aegis und Quantum, Compendium, Court, Manifest) und als Snapshot mit Regel einbinden. **Herleiten ist erlaubt und erwünscht, wenn eine Gegenrechnung gegen eine Quelle es prüft:** Das Modell muss die Messung, aus der etwas abgeleitet wurde, innerhalb der Toleranz wieder ergeben (Gate). Zerlegte Pakete werden immer gegengerechnet, damit nichts doppelt zählt oder fehlt (Ablauf „Zerlegen und Gegenrechnen“ im Skill `recherche`). **Vor jeder gemeldeten Lücke den Skill `recherche` abarbeiten** (`.claude/skills/recherche/SKILL.md`: Quellenkatalog mit Reitern, Ablauf, Budget); eine Lücke nur mit Tabelle der geprüften Quellen melden. Den Inhaber nur fragen bei Entscheidungen, die ihm zustehen (Umfang, Oberfläche, Annahmen über die Spielweise).
+- **Eine Quelle genügt (Inhaber, 2026-10-23):** Ein Wert aus einer Community-Quelle (Aegis, Quantum, Compendium, Clarity, Court, Manifest) gilt als bestätigt, nicht als geraten. Bestätigt eine zweite Quelle ihn, umso besser. Bei Konflikt gilt die vertrauenswürdigere oder logisch stimmigere Quelle; die Wahl steht mit Grund in der Prüftabelle. Gegenrechnen, wo eine Messung existiert; ohne Messung gelten Zahlen aus Texten (Compendium, Clarity) als Quelle mit Status `derived`. Bei Waffen gilt Aegis vor Quantum.
+- **Einzelfälle dürfen von Hand (Inhaber, 2026-10-23):** Passt eine Waffe oder ein Catalyst in keine allgemeine Regel, kommt ein Eintrag mit Wert, Quelle, Zitat und Herleitung in eine Override-Datei (z. B. `src/data/weapon-overrides.json`); ein Test prüft, dass jeder Eintrag Zitat und Herleitung hat. Erst wenn mehrere Fälle gleich sind, wird daraus eine Regel. Fremde Annahmen in Messungen (z. B. Artifact-Perks bei Aegis) werden mit ihrem Wert aus der Quelle herausgerechnet.
 - **Spielweise:** Gespielt wird optimal wie von einem erfahrenen Spieler. Im Zweifel gelten die Annahmen von Aegis (z. B. Precision, „average“, vorher aufgebaute Buffs). Ein Boss, keine Adds (ADR 0015).
 - Jede Änderung an `src/engine` braucht einen Test. Schreibe den Test zuerst.
 - Pro Bucket zählt die Stacking-Regel aus `buckets.json`. Buckets multiplizieren sich untereinander.
@@ -60,7 +62,7 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 ## Arbeitsweise
 
 1. Lies die User Story und die betroffenen Dateien.
-2. Schlage einen Plan vor und warte auf Freigabe.
+2. Schlage einen Plan vor und warte auf Freigabe. Innerhalb eines freigegebenen Blocks arbeitest du ohne weitere Freigaben durch und meldest am Ende mit Beleg (Inhaber, 2026-10-23). Eine Tabelle vor Datenarbeit nur, wenn eine neue Annahme über die Spielweise dazukommt.
 3. Schreibe zuerst die Tests, dann den Code.
 4. Prüfe mit dem Skill `pruefen` (Tests, `npm run sanity` mit Spielerblick, bei Oberfläche ein Screenshot). Melde das Ergebnis mit Beleg.
 5. Fasse die Änderung in zwei bis drei Sätzen zusammen.
@@ -103,7 +105,7 @@ Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. 
   - Ein Boss, keine Adds. Kill-Buffs des Exotics gelten nur mit dem Schalter „Vorher aufgebaut“ beim Exotic. Aspects und Fragments, die nur vorher aufgebaut wirken, gelten, sobald sie gewählt sind.
   - Die Rückwärtskompatibilität von Links hat keine hohe Priorität.
   - Tooltips erklären, was ein Item tut, ohne Quellen.
-- **Arbeitsstil:** kleine Schritte, Plan, Freigabe („ok“), Tests zuerst, nach jedem Schritt Commit und Push. Vor Datenarbeit eine Tabelle zur Freigabe zeigen. Der Inhaber achtet auf Tokens.
+- **Arbeitsstil:** Plan, Freigabe („ok“), dann den Block ohne Zwischenfragen durcharbeiten; Tests zuerst, nach jedem Block Commit und Push. Nicht zögerlich: vorhandene Quellen logisch zusammensetzen statt Lücken melden. Der Inhaber achtet auf Tokens.
 - **UI-Check:** `node scripts/ui-check.mjs https://wipe4dmg.pages.dev/?b=<link> <out.png> [--dark] [--width 1400] [--click "Text"]`. Cloudflare baut bei jedem Push auf `master`. Links für Builds erzeugst du mit `encodeLink(…, linkRegistry)` in einer kurzen Vitest-Datei.
 
 ## Befehle
