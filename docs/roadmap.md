@@ -29,7 +29,8 @@ Status: 2026-10-23
 - ⏳ Facet of Courage and Touch of Thunder: Aegis only measured them together with other buffs
 - ✅ Every weapon with a catalyst has the switch; its hover card says what it does here: damage (e.g. One Thousand Voices +45%), magazine and ammo (e.g. Gjallarhorn 1 → 2 rockets, Telesto 4 → 7), refills (Thunderlord, Cloudstrike), or no effect against one boss
 - ✅ 47 catalysts are marked “no effect against one boss” (they need kills, several enemies, allies, pickups or shields); Touch of Malice ×1.25, Graviton Lance and Wish-Keeper ×1.2 (Vorpal Weapon)
-- ⏳ About 50 catalysts are not in the calculator yet, e.g. Izanagi's Burden, Deterministic Chaos, reload speed stats
+- ✅ 20 more catalysts: Izanagi's Burden (Honed Edge shots), Ticuu's Divination ×1.87, Dead Man's Tale (hip-fire, ×1.27), Deterministic Chaos ×1.25 (Target Lock), Outbreak Perfected ×1.15, Revision Zero (Fourth Time's The Charm), Hierarchy of Needs (faster draw), The Chaperone (27 slugs instead of 18), Heartshadow (one more heavy); 10 more do nothing against one boss
+- ⏳ 32 catalysts are not in the calculator yet: about 12 only give reload speed (needs a model from reload stat to seconds), the rest need their own model (e.g. Symmetry, Lord of Wolves, Coldheart)
 
 ## Done in v1.0: abilities and Supers
 

@@ -602,8 +602,14 @@ function adjustTiming(
   { totalShots, addIntervalSeconds }: NonNullable<WeaponOverride["timing"]>,
 ): Timing {
   const shots = totalShots ?? timing.totalShots;
-  if (shots === null) throw new Error("override of an unlimited timing");
   const interval = timing.intervalSeconds + (addIntervalSeconds ?? 0);
+  // Unlimited ammo (primaries, Quantum): every shot takes longer, the reload stays.
+  if (shots === null)
+    return {
+      ...timing,
+      intervalSeconds: interval,
+      note: `${timing.note}; override: +${addIntervalSeconds ?? 0} s per shot`,
+    };
   const reloads = Math.ceil(shots / timing.magazine) - 1;
   // The simulator adds interval + engine reload between magazines; keep the stated reload.
   const engineReload = Math.max(
@@ -1442,6 +1448,25 @@ export function buildWeaponImport(
     }
     if (timingOverride?.catalystRow)
       catalystTiming = rowTiming(timingOverride.catalystRow, refillsMagazine);
+    if (timingOverride?.catalystValues) {
+      // The base timing with more ammo or a larger magazine; interval and reload stay.
+      const magazine =
+        timingOverride.catalystValues.magazine ?? timing.magazine;
+      const shots =
+        timingOverride.catalystValues.totalShots ?? timing.totalShots;
+      const reloads = shots === null ? 0 : Math.ceil(shots / magazine) - 1;
+      catalystTiming = {
+        ...timing,
+        magazine,
+        totalShots: shots,
+        timeToEmptySeconds:
+          shots === null
+            ? null
+            : (shots - 1) * timing.intervalSeconds +
+              reloads * timing.engineReloadSeconds,
+        note: `${timing.note}; with the catalyst: magazine ${magazine}, ${shots ?? "∞"} shots (override)`,
+      };
+    }
 
     if (quantumRow && timing === quantumTiming) {
       if (plain.length === 0)

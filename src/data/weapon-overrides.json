@@ -245,23 +245,31 @@
   },
   {
     "weapon": "Dead Man's Tale",
-    "reason": "Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt.",
+    "reason": "Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt. Catalyst aus der Hüfte: +27 % bei x5 Cranial Spike (Clarity), Timing aus Quantums Zeile „cata, x5 Cranial Spike“ (140 rpm, Reload 0,29 s).",
     "quotes": [
       {
         "source": "aegis",
         "entry": "scout-rifle-dead-man-s-tale-vorpal-weapon",
         "text": "Cranial Spike"
+      },
+      {
+        "source": "clarity",
+        "entry": "Dark-Forged Trigger",
+        "text": "27% [15%] increased damage at x5 Cranial Spike"
       }
     ],
     "aegisWins": true,
+    "catalystFactor": 1.27,
     "timing": {
       "from": "Quantum",
-      "row": "primaries-scout-rifle-dead-man-s-tale-base"
+      "row": "primaries-scout-rifle-dead-man-s-tale-base",
+      "catalystRow": "primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike"
     }
   },
   {
     "weapon": "Deathbringer",
-    "reason": "Aegis misst „max height“ (3900); dazu passt Quantums „max distance damage“ (3899), nicht „direct impact“.",
+    "reason": "Aegis misst „max height“ (3900); dazu passt Quantums „max distance damage“ (3899), nicht „direct impact“. Der Catalyst lässt den Höchstschaden nur 1 s früher erreichen; gemessen wird schon der Höchstschaden: keine Wirkung.",
+    "catalystEffect": "none",
     "quotes": [
       {
         "source": "quantum",
@@ -374,8 +382,19 @@
   },
   {
     "weapon": "Outbreak Perfected",
-    "reason": "Konflikt ohne klare Einheit: Aegis' Werte pro Burst liegen schon ohne Nanites beim Vierfachen von Quantum (398,1 ÷ 3 = 133 gegen 32 pro Kugel). Quantum nennt seine Annahme klar (4 Nanites alle 12 Schuss) und gilt deshalb: 80 pro Kugel (Precision).",
+    "reason": "Konflikt ohne klare Einheit: Aegis' Werte pro Burst liegen schon ohne Nanites beim Vierfachen von Quantum (398,1 ÷ 3 = 133 gegen 32 pro Kugel). Quantum nennt seine Annahme klar (4 Nanites alle 12 Schuss) und gilt deshalb: 80 pro Kugel (Precision). Catalyst: Nanites +25 % (Clarity); von 80 sind 48 Nanites (Quantum ohne Nanites 32): 32 + 48 × 1,25 = 92, also ×1,15.",
+    "catalystFactor": 1.15,
     "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Outbreak Perfected Catalyst",
+        "text": "Nanite Damage is increased by 25%"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-pulse-rifle-outbreak-perfected",
+        "text": "\"precisionDamage\":32"
+      },
       {
         "source": "aegis",
         "entry": "pulse-rifle-outbreak-perfected-average-per-burst-no-nanites-appended-mag-up-to-rewind-end",
@@ -395,8 +414,13 @@
   },
   {
     "weapon": "Revision Zero",
-    "reason": "Aegis misst den schweren 2er-Burst mit Vorpal Weapon (wipe 2298 = 2 × 1149); pro Kugel 76,2 gegen Quantum 64 ohne Vorpal (×1,15 = 73,6); Aegis gilt.",
+    "reason": "Aegis misst den schweren 2er-Burst mit Vorpal Weapon (wipe 2298 = 2 × 1149); pro Kugel 76,2 gegen Quantum 64 ohne Vorpal (×1,15 = 73,6); Aegis gilt. Catalyst: von vier Refits ist Fourth Time's The Charm der einzige, der am Boss wirkt (4 Precision Hits laden 2 Schuss nach); Timing aus Quantums „2-burst, mix, FTTC“ (Magazin 50 statt 26).",
     "quotes": [
+      {
+        "source": "quantum",
+        "entry": "primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+        "text": "\"magazine\":50"
+      },
       {
         "source": "aegis",
         "entry": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
@@ -413,7 +437,8 @@
     "bulletsPerShot": 2,
     "timing": {
       "from": "Quantum",
-      "row": "primaries-pulse-rifle-revision-zero-2-burst"
+      "row": "primaries-pulse-rifle-revision-zero-2-burst",
+      "catalystRow": "primaries-pulse-rifle-revision-zero-2-burst-mix-fttc"
     }
   },
   {
@@ -801,7 +826,8 @@
   },
   {
     "weapon": "Prometheus Lens",
-    "reason": "Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“).",
+    "reason": "Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.",
+    "catalystEffect": "none",
     "quotes": [
       {
         "source": "manifest",
@@ -886,7 +912,8 @@
         "totalShots": 14,
         "intervalSeconds": 2.016,
         "reloadSeconds": 0
-      }
+      },
+      "catalystValues": { "magazine": 15, "totalShots": 15 }
     }
   },
   {
@@ -917,5 +944,206 @@
       "from": "Quantum",
       "row": "heavies-grenade-launcher-anarchy-double-stick"
     }
+  },
+  {
+    "weapon": "Hierarchy of Needs",
+    "reason": "Catalyst: Guidance Ring und Treffer der Seeker halbieren 5 s lang die Draw Time; bei Dauerfeuer auf einen Boss immer aktiv. Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm).",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Hierarchy of Needs Catalyst",
+        "text": "50% decreased Draw Time"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-bow-hierarchy-of-needs-guidance-ring-cata",
+        "text": "\"rpm\":61"
+      }
+    ],
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-bow-hierarchy-of-needs",
+      "catalystRow": "primaries-bow-hierarchy-of-needs-guidance-ring-cata"
+    }
+  },
+  {
+    "weapon": "Izanagi's Burden",
+    "reason": "Catalyst: Honed Edge x4 +20 % (Clarity). Optimal gespielt schießt man damit Honed-Edge-Schüsse: Quantum „cata, 4x Honed Edge“ 14.910 gegen 13.180 normal, je 20 Shots, also ×1,131 pro Shot; Timing aus derselben Zeile (Reload 3,2 s).",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
+        "text": "\"totalDamage\":14910"
+      },
+      {
+        "source": "quantum",
+        "entry": "specials-sniper-rifle-izanagi-s-burden",
+        "text": "\"totalDamage\":13180"
+      }
+    ],
+    "catalystFactor": 1.131,
+    "timing": {
+      "from": "Quantum",
+      "row": "specials-sniper-rifle-izanagi-s-burden",
+      "catalystRow": "specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge"
+    }
+  },
+  {
+    "weapon": "Ticuu's Divination",
+    "reason": "Catalyst: x6 Causality Quiver +87 % Impact (Clarity); Quantum „cata, x6 Causality Arrows“ 391 gegen 209 Precision = ×1,871, passt zu Clarity.",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "primaries-bow-ticuu-s-divination-cata-x6-causality-arrows",
+        "text": "\"precisionDamage\":391"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-bow-ticuu-s-divination",
+        "text": "\"precisionDamage\":209"
+      }
+    ],
+    "catalystFactor": 1.871
+  },
+  {
+    "weapon": "Trinity Ghoul",
+    "reason": "Quantum misst nur mit Catalyst. Der Catalyst senkt die Draw Time von 756 auf 633 ms (Clarity): ohne ihn 0,123 s mehr pro Pfeil.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Trinity Ghoul Catalyst",
+        "text": "756ms🠚633ms"
+      }
+    ],
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-bow-trinity-ghoul-cata",
+      "addIntervalSeconds": 0.123,
+      "catalystRow": "primaries-bow-trinity-ghoul-cata"
+    }
+  },
+  {
+    "weapon": "The Chaperone",
+    "reason": "Catalyst: 3 Precision Hits laden 1 Schuss aus dem Nichts nach, nicht über das Grundmagazin (Clarity). Mit Slug-Precision: Munition 18 × 1,5 = 27, ein Magazin reicht für 6 + 2 + 1 = 9 Schuss.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "The Chaperone Catalyst",
+        "text": "Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air"
+      }
+    ],
+    "timing": {
+      "from": "Quantum",
+      "row": "specials-shotgun-the-chaperone",
+      "catalystValues": { "magazine": 9, "totalShots": 27 }
+    }
+  },
+  {
+    "weapon": "Deterministic Chaos",
+    "reason": "Catalyst gibt Target Lock; Clarity: ohne Fehlschuss im Mittel etwa +25 % über ein volles Magazin.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Target Lock",
+        "text": "roughly a 25% [15.85%] Damage Buff on average"
+      }
+    ],
+    "catalystFactor": 1.25
+  },
+  {
+    "weapon": "Ace of Spades",
+    "reason": "Catalyst verstärkt Firefly, das Precision Kills braucht; gegen einen Boss ohne Adds keine Wirkung.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Ace of Spades Catalyst",
+        "text": "Firefly's explosion damage is increased by 50%"
+      }
+    ],
+    "catalystEffect": "none"
+  },
+  {
+    "weapon": "Jötunn",
+    "reason": "Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Jötunn Catalyst",
+        "text": "Weapon Kills trigger a Solar explosion"
+      }
+    ],
+    "catalystEffect": "none"
+  },
+  {
+    "weapon": "Microcosm",
+    "reason": "Der Bonus wirkt nur gegen Ziele unter 30 % Leben; der Rechner führt kein Boss-Leben, Annahme: keine Wirkung.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Microcosm Catalyst",
+        "text": "low (under 30%) Health targets"
+      }
+    ],
+    "catalystEffect": "none"
+  },
+  {
+    "weapon": "Monte Carlo",
+    "reason": "Der Bajonett-Stich braucht volle Markov-Chain-Stacks, die nur Kills geben; gegen einen Boss ohne Adds keine Wirkung.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Monte Carlo Catalyst",
+        "text": "at maximum Markov Chain stacks"
+      }
+    ],
+    "catalystEffect": "none"
+  },
+  {
+    "weapon": "Still Hunt",
+    "reason": "Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Still Hunt Catalyst",
+        "text": "within ? seconds of a Precision Kill"
+      }
+    ],
+    "catalystEffect": "none"
+  },
+  {
+    "weapon": "Sturm",
+    "reason": "Handling und Range ändern den Boss-Schaden nicht, Helping Hands braucht Kills.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Sturm Catalyst",
+        "text": "Kills with Overcharged Rounds grants 2 stacks"
+      }
+    ],
+    "catalystEffect": "none"
+  },
+  {
+    "weapon": "The Last Word",
+    "reason": "Nachladen und Buffs brauchen Kills; gegen einen Boss ohne Adds keine Wirkung.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "The Last Word Catalyst",
+        "text": "after scoring kills with your other Weapons"
+      }
+    ],
+    "catalystEffect": "none"
+  },
+  {
+    "weapon": "Third Iteration",
+    "reason": "Die Explosion braucht Precision Kills; gegen einen Boss ohne Adds keine Wirkung.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Third Iteration Catalyst",
+        "text": "Precision Kills with Amalgamation Rounds trigger an explosion"
+      }
+    ],
+    "catalystEffect": "none"
   }
 ]

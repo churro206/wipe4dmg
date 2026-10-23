@@ -214,6 +214,17 @@ describe("catalysts from texts (2026-10-23)", () => {
     expect(on / off).toBeCloseTo(1.25, 2);
   });
 
+  it("The Chaperone: precision hits refill the magazine, 27 slugs instead of 18", () => {
+    const off = run({}, weaponById("the-chaperone")).totalDamage;
+    const on = run({ catalyst: true }, weaponById("the-chaperone")).totalDamage;
+    note(
+      "The Chaperone Catalyst an / aus",
+      fmt(on / off),
+      "> 1,3 (18 → 27 Slugs)",
+    );
+    expect(on / off).toBeGreaterThan(1.3);
+  });
+
   it("Wish-Ender: a catalyst that needs several enemies does nothing against one boss", () => {
     expect(weaponById("wish-ender").catalyst!.effect).toBe("none");
   });

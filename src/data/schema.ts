@@ -1288,6 +1288,13 @@ export const WeaponOverride = z.object({
       shots: z.number().int().positive().optional(),
       totalShots: z.number().int().positive().optional(),
       addIntervalSeconds: z.number().optional(), // e.g. a longer charge without the catalyst
+      // Timing with the catalyst: the base timing with these values instead (e.g. more reserves)
+      catalystValues: z
+        .object({
+          magazine: z.number().int().positive().optional(),
+          totalShots: z.number().int().positive().optional(),
+        })
+        .optional(),
       // Timing where no row has one: values the reason derives (manifest stats, Quantum's reload
       // per weapon type). The reload follows the interval of the last shot, as with Quantum.
       values: z

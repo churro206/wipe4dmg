@@ -39,7 +39,7 @@ describe("catalyst hover card", () => {
     expect(describeCatalyst(weaponById("winterbite"))).toContain(
       "No effect against one boss without adds",
     );
-    expect(describeCatalyst(weaponById("izanagi-s-burden"))).toContain(
+    expect(describeCatalyst(weaponById("borealis"))).toContain(
       "Not in the calculator yet: no source measured it",
     );
   });

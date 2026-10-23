@@ -118,7 +118,7 @@
     "catalyst": {
       "name": "Funeral Pyre, Ace of Spades Catalyst",
       "description": "Firefly's explosion damage is increased by 50% while Memento Mori is active.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -2919,10 +2919,70 @@
         }
       }
     ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.27,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-dead-man-s-tale-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt. Catalyst aus der Hüfte: +27 % bei x5 Cranial Spike (Clarity), Timing aus Quantums Zeile „cata, x5 Cranial Spike“ (140 rpm, Reload 0,29 s)."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
     "catalyst": {
       "name": "Dark-Forged Trigger, Dead Man's Tale Catalyst",
       "description": "While not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.\nWhile not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.",
-      "effect": "unknown"
+      "effect": "damageAndTiming",
+      "timing": {
+        "fireRateRpm": {
+          "value": 140,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 14,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 290,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
     }
   },
   {
@@ -3167,7 +3227,7 @@
     "catalyst": {
       "name": "Dead Weight, Deathbringer Catalyst",
       "description": "The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -3408,10 +3468,30 @@
         }
       }
     ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.25,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Catalyst gibt Target Lock; Clarity: ohne Fehlschuss im Mittel etwa +25 % über ein volles Magazin."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
     "catalyst": {
       "name": "Target Lock, Deterministic Chaos Catalyst",
       "description": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
-      "effect": "unknown"
+      "effect": "damage"
     }
   },
   {
@@ -6646,7 +6726,46 @@
     "catalyst": {
       "name": "Wraithwalk, Heartshadow Catalyst",
       "description": "Increases reserves by 6 (57🠚63).\nGrants 50% increased movement speed while under the effects of Void Invisibility.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 29.762,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row override",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Values of the override; with the catalyst: magazine 15, 15 shots (override)"
+          }
+        },
+        "magazine": {
+          "value": 15,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row override",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "totalShots": {
+          "value": 15,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row override",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row override",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        }
+      }
     }
   },
   {
@@ -7013,7 +7132,47 @@
     "catalyst": {
       "name": "Panoptic Tessellation, Hierarchy of Needs Catalyst",
       "description": "Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds:\n• 40% reduced Hip-Fire Accuracy Cone\n• 50% decreased Draw Time\n• 100 Reload Speed\n• ?% decreased Reload Animation Duration",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 61,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs-guidance-ring-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 1,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs-guidance-ring-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs-guidance-ring-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 600,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs-guidance-ring-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
     }
   },
   {
@@ -7250,10 +7409,69 @@
         }
       }
     ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.131,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-izanagi-s-burden",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Catalyst: Honed Edge x4 +20 % (Clarity). Optimal gespielt schießt man damit Honed-Edge-Schüsse: Quantum „cata, 4x Honed Edge“ 14.910 gegen 13.180 normal, je 20 Shots, also ×1,131 pro Shot; Timing aus derselben Zeile (Reload 3,2 s)."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
     "catalyst": {
       "name": "Peerless Edge, Izanagi's Burden Catalyst",
       "description": "Increases the damage bonus of Honed Edge x4 by 20%, granting the following values:\n• 155% [218%] increased bodyshot damage\n• 370% [487%] increased critical damage",
-      "effect": "unknown"
+      "effect": "damageAndTiming",
+      "timing": {
+        "fireRateRpm": {
+          "value": 114,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 22.8 s − 4 reloads × 3.2 s) ÷ 19 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 4,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 20,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 3200,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
     }
   },
   {
@@ -7376,7 +7594,7 @@
     "catalyst": {
       "name": "Cornered, Incandescent, Jötunn Catalyst",
       "description": "Grants the Cornered trait:\nGrants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies.\nBuff lingers for 1.5 seconds once no longer surrounded.\nAlso grants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -8813,7 +9031,7 @@
     "catalyst": {
       "name": "Thresh, Stopping Power, Microcosm Catalyst",
       "description": "Weapon Kills grant an additional 1% Super Energy.\nGrants the following benefits against low (under 30%) Health targets. Ignores Shield HP:\n• Increased Stagger Force\n• 7% to 15% increased damage, scaling with remaining Health\n• ? Increased Target Acquisition",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -9057,7 +9275,7 @@
     "catalyst": {
       "name": "Stochastic Vengeance, Monte Carlo Catalyst",
       "description": "Hold [Reload] while at maximum Markov Chain stacks to lock the bayonet.\nWhile Monte Carlo is held, it replaces your Melee Ability with a powerful glaive-like stab that deals 2,772 [140] melee damage. Stab can reach up to 7 meters away and grants 50% Melee Ability Energy on hit.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -10001,10 +10219,30 @@
         }
       }
     ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.15,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-outbreak-perfected-average-per-burst-max-nanites",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Konflikt ohne klare Einheit: Aegis' Werte pro Burst liegen schon ohne Nanites beim Vierfachen von Quantum (398,1 ÷ 3 = 133 gegen 32 pro Kugel). Quantum nennt seine Annahme klar (4 Nanites alle 12 Schuss) und gilt deshalb: 80 pro Kugel (Precision). Catalyst: Nanites +25 % (Clarity); von 80 sind 48 Nanites (Quantum ohne Nanites 32): 32 + 48 × 1,25 = 92, also ×1,15."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
     "catalyst": {
       "name": "Disease Vector, Outbreak Perfected Catalyst",
       "description": "Nanite Damage is increased by 25%.\nEnemies that die with Nanites attached to them release four Nanites around them, each dealing 13 [4] damage.\nNanite Damage is increased by 25%.\nEnemies that die with Nanites attached to them release four Nanites around them, each dealing 13 [4] damage.",
-      "effect": "unknown"
+      "effect": "damage"
     }
   },
   {
@@ -10266,7 +10504,7 @@
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“).; The time to empty counts from the first shot"
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
@@ -10275,7 +10513,7 @@
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“).; Values of the override"
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; Values of the override"
       }
     },
     "magazine": {
@@ -10284,7 +10522,7 @@
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“)."
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
       }
     },
     "totalShots": {
@@ -10293,7 +10531,7 @@
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“)."
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
       }
     },
     "reloadTimeMs": {
@@ -10302,7 +10540,7 @@
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“)."
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
       }
     },
     "damageInstances": [
@@ -10368,7 +10606,7 @@
     "catalyst": {
       "name": "Prometheus Catalyst",
       "description": "Grants 20 Stability and 20 Handling.\nGrants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -10889,7 +11127,47 @@
     "catalyst": {
       "name": "Pressurized Refit, Frenzy Refit, 4-Timer Refit, Outlaw Refit",
       "description": "Grants the Under Pressure trait:\nGrants linearly scaling benefits as the Magazine drops from 50% of its base capacity to empty:\n• 12.5% to 25% decreased Accuracy Cone Size\n• 0 to 30? Stability\nGrants the Feeding Frenzy trait:\nWeapon Kills grant 1 Stack of Feeding Frenzy for 3.5 seconds, increasing the Reload Speed of the weapon. Maximum of 5 Stacks.\nBonuses at 1|2|3|4|5 Stacks:\n• 8|50|60|75|100 Reload Speed\n• 2.5%|10%|13%|16%|20% decreased Reload Animation Duration\nGrants the Fourth Time's The Charm trait:\nScoring 4 Precision Hits within 2 seconds of each refills 2 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.\nGrants the Outlaw trait:\nPrecision Kills grant 70 Reload Speed with a 0.9x decreased Reload Animation Duration for 6 seconds.\nBuff is removed on stow.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 324,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 50,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1160,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
     }
   },
   {
@@ -11959,7 +12237,7 @@
     "catalyst": {
       "name": "Lucky Shot, Still Hunt Catalyst",
       "description": "Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'.\nScoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer. Additional precision hits during this timer continue to refill the magazine from reserves.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -12081,7 +12359,7 @@
     "catalyst": {
       "name": "Helping Hands, Sturm Catalyst",
       "description": "Grants 40 Handling and 20 Range.\nKills with Overcharged Rounds grants 2 stacks of 'Helping Hands'. Maximum of 6 stacks.\nHelping Hands grants 50% decreased Stow/Ready Animation Speed while active. Readying Sturm or a Together Forevever weapon consumes one stack.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -13097,7 +13375,46 @@
     "catalyst": {
       "name": "Triple Tap, The Chaperone Catalyst",
       "description": "Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 51.411,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-chaperone",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 20.7 s − 2 reloads × 0.43 s) ÷ 17 intervals (ADR 0013); with the catalyst: magazine 9, 27 shots (override)"
+          }
+        },
+        "magazine": {
+          "value": 9,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-chaperone",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 27,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-chaperone",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 430,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-chaperone",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
     }
   },
   {
@@ -13807,7 +14124,7 @@
     "catalyst": {
       "name": "Killing Wind, Envious Assassin, The Last Word Catalyst",
       "description": "Upon readying the weapon after scoring kills with your other Weapons:\nRefills and/or overfills the Magazine from reserves based on the amount of Weapon Kills scored.\nLoads 1 Ammo per kill achieved with other weapons.\nMaximum total overfill amount is 200% of the Magazine Capacity. Each activation can only load up to 100% of the Magazine Capacity into the magazine.\nOn Weapon Kill, for 5 seconds:\n• 50 Mobility\n• 40 Handling and 20 Range\n• 5% increased Damage Falloff Distance\nAdditional Kills extend the duration by 5 seconds, up to 8 seconds. Buff is removed on stow.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -14580,7 +14897,7 @@
     "catalyst": {
       "name": "Third Iteration Catalyst",
       "description": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.\nExplosive damage deals 20% damage at the edge of its radius.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -14982,10 +15299,30 @@
         }
       }
     ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.871,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-ticuu-s-divination-average-alternating-modes-6-stacks",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Catalyst: x6 Causality Quiver +87 % Impact (Clarity); Quantum „cata, x6 Causality Arrows“ 391 gegen 209 Precision = ×1,871, passt zu Clarity."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
     "catalyst": {
       "name": "Causality Quiver, Ticuu's Divination Catalyst",
       "description": "Triggering Sacred Flame explosions grants one stack of 'Causality Quiver' for 5.5 seconds. Marking enemies with Sacred Flame refreshes the buff. Maximum of 6 stacks.\nCausality Quiver increases the impact damage of your arrows (not the explosion) at 1|2|3|4|5|6 stacks:\n• PvE: 16%|31%|49%|67.5%|87%|87%\n• PvP: 3.6%|11%|12%|16%|23%|23%",
-      "effect": "unknown"
+      "effect": "damage"
     }
   },
   {
@@ -15717,13 +16054,13 @@
       }
     },
     "fireRateRpm": {
-      "value": 48,
+      "value": 43.7,
       "source": {
         "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf); override: +0.123 s per shot"
       }
     },
     "magazine": {
@@ -15816,7 +16153,47 @@
     "catalyst": {
       "name": "Forked Lightning, Trinity Ghoul Catalyst",
       "description": "Decreases Draw Time by 15% (756ms🠚633ms).\nLightning Rod is now granted after scoring any Arc kill. Trinity Ghoul must be held in order to receive Lightning Rod.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 48,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 1,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 600,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
     }
   },
   {
