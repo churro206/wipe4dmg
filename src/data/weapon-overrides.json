@@ -31,5 +31,502 @@
       }
     ],
     "scorchStacksPerShot": 90
+  },
+  {
+    "weapon": "Alethonym",
+    "reason": "Quantum hat nur „Passive“ und „Spam“ mit gleichem Timing; „Spam“ ist das schnellste Feuern wie Aegis' „average“. Skala: Aegis zählt Einschlag und Impale-Ticks pro Granate (337 impact, 237 tick), Quantum nur den Einschlag (102); Aegis gilt.",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "primaries-grenade-launcher-alethonym-spam",
+        "text": "\"variant\":\"Spam\""
+      },
+      {
+        "source": "aegis",
+        "entry": "grenade-launcher-alethonym-average",
+        "text": "337 impact, 237 tick"
+      }
+    ],
+    "aegisWins": true,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-grenade-launcher-alethonym-spam"
+    }
+  },
+  {
+    "weapon": "Cerberus+1",
+    "reason": "Aegis misst „point blank“; dazu passt Quantums „normal, close range“ (Precision 93 gegen Aegis 92,6 pro Schuss).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "auto-rifle-cerberus-1-point-blank",
+        "text": "point blank"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-auto-rifle-cerberus-1-normal-close-range-2",
+        "text": "Precision damage DPS"
+      }
+    ],
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-auto-rifle-cerberus-1-normal-close-range-2"
+    }
+  },
+  {
+    "weapon": "SUROS Regime",
+    "reason": "Optimal gespielt: Spinning Up macht mehr Schaden pro Sekunde (26,8 × 712 rpm) als Dual Speed Receiver (41,3 × 400 rpm); Timing aus Quantums Zeile desselben Modus.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "auto-rifle-suros-regime-average-spinning-up",
+        "text": "Spinning Up"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-auto-rifle-suros-regime-spinning-up",
+        "text": "\"rpm\":712"
+      }
+    ],
+    "base": "auto-rifle-suros-regime-average-spinning-up",
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-auto-rifle-suros-regime-spinning-up"
+    }
+  },
+  {
+    "weapon": "Duality",
+    "reason": "Quantum misst nur mit Katalysator; „cata, slug“ passt zu Aegis' ADS (Precision 1263 gegen 1262). Ohne Katalysator aus Clarity: Magazin 6 statt 8.",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "specials-shotgun-duality-cata-slug",
+        "text": "cata, slug"
+      },
+      {
+        "source": "clarity",
+        "entry": "Duality Catalyst",
+        "text": "increases Magazine Size by 2 (6🠚8)"
+      }
+    ],
+    "timing": {
+      "from": "Quantum",
+      "row": "specials-shotgun-duality-cata-slug",
+      "rowHasCatalyst": true
+    }
+  },
+  {
+    "weapon": "Ice Breaker",
+    "reason": "Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "ice-breaker-sniper-s-meditation",
+        "text": "\"base\":1223"
+      }
+    ],
+    "timing": { "from": "Aegis", "row": "ice-breaker-sniper-s-meditation" }
+  },
+  {
+    "weapon": "Finality's Auger",
+    "reason": "Aegis Sustained misst 21 Schuss in Magazinen à 6 mit 1800 ms Reload; Bait and Switch (Katalysator) steckt nicht im Grundwert (Sustained 1278 = Weapons 1277,8) und ändert das Timing nicht.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "finality-s-auger-bait-and-switch-linear-fusion-mode",
+        "text": "1800ms reload"
+      }
+    ],
+    "timing": {
+      "from": "Aegis",
+      "row": "finality-s-auger-bait-and-switch-linear-fusion-mode"
+    }
+  },
+  {
+    "weapon": "The Queenbreaker",
+    "reason": "Optimal gespielt: Combat Sights macht mehr Gesamtschaden (Quantum 41.328 gegen 31.626). Aegis Sustained misst mit Rewind Rounds (Katalysator, Magazin 11); ohne ihn Magazin 5 wie bei Quantum.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "the-queenbreaker-rewind-rounds-combat-sights",
+        "text": "550ms charge; 2283ms reload"
+      },
+      {
+        "source": "quantum",
+        "entry": "heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+        "text": "\"magazine\":5"
+      },
+      {
+        "source": "clarity",
+        "entry": "The Queenbreaker Catalyst",
+        "text": "Refills 60% of the number of Hits landed"
+      }
+    ],
+    "base": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
+    "timing": {
+      "from": "Aegis",
+      "row": "the-queenbreaker-rewind-rounds-combat-sights",
+      "rowHasCatalyst": true,
+      "magazine": 5
+    }
+  },
+  {
+    "weapon": "Witherhoard",
+    "reason": "Aegis' „direct impact“ zählt die volle Blight pro Schuss; dazu passt Quantums „passive“ (neu schießen, wenn die Blight ausläuft: 20 × 2046 = 40.920 gegen Quantum 41.180). Mit Katalysator lädt die Waffe weggesteckt nach (Quantum „cata, single blight, boss“, 50 s).",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "specials-grenade-launcher-witherhoard-passive",
+        "text": "reapply the frame after the DOT expires"
+      },
+      {
+        "source": "quantum",
+        "entry": "specials-grenade-launcher-witherhoard-cata-single-blight-boss",
+        "text": "auto-reload > boss before DOT expires"
+      },
+      {
+        "source": "clarity",
+        "entry": "Witherhoard Catalyst",
+        "text": "automatically loaded from reserves after 2 seconds of being stowed"
+      }
+    ],
+    "timing": {
+      "from": "Quantum",
+      "row": "specials-grenade-launcher-witherhoard-passive",
+      "catalystRow": "specials-grenade-launcher-witherhoard-cata-single-blight-boss"
+    }
+  },
+  {
+    "weapon": "Choir of One",
+    "reason": "Aegis misst den Projektil-Modus auf Abstand in zwei Reitern unterschiedlich (Weapons 661,4, Sustained 692); Schaden und Timing aus derselben Sustained-Zeile. Ein Projektil verbraucht 5 Munition (Clarity), Aegis und Quantum zählen Munition: 225 Munition = 45 Projektile, Magazin 25 = 5 (Quantum: 45 × 570 = 25.650 Total Damage). Quantum 570 gegen Aegis 692 pro Projektil; Aegis gilt.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "choir-of-one-projectile-mode-spaced",
+        "text": "1017ms reload"
+      },
+      {
+        "source": "clarity",
+        "entry": "Fanatical Lance",
+        "text": "Firing this gun consumes 5 ammo and launches a slow-traveling projectile"
+      },
+      {
+        "source": "quantum",
+        "entry": "specials-auto-rifle-choir-of-one",
+        "text": "\"totalDamage\":25650"
+      }
+    ],
+    "aegisWins": true,
+    "perShotFromTiming": true,
+    "timing": {
+      "from": "Aegis",
+      "row": "choir-of-one-projectile-mode-spaced",
+      "ammoPerShot": 5
+    }
+  },
+  {
+    "weapon": "Cull's Shadow",
+    "reason": "Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "cull-s-shadow-with-corruption",
+        "text": "533ms charge; 1983ms reload"
+      }
+    ],
+    "base": "fusion-rifle-cull-s-shadow-average-with-corruption",
+    "timing": { "from": "Aegis", "row": "cull-s-shadow-with-corruption" }
+  },
+  {
+    "weapon": "Dead Man's Tale",
+    "reason": "Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "scout-rifle-dead-man-s-tale-vorpal-weapon",
+        "text": "Cranial Spike"
+      }
+    ],
+    "aegisWins": true,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-scout-rifle-dead-man-s-tale-base"
+    }
+  },
+  {
+    "weapon": "Deathbringer",
+    "reason": "Aegis misst „max height“ (3900); dazu passt Quantums „max distance damage“ (3899), nicht „direct impact“.",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "heavies-rocket-launcher-deathbringer-max-distance-damage",
+        "text": "max distance damage"
+      }
+    ],
+    "timing": {
+      "from": "Quantum",
+      "row": "heavies-rocket-launcher-deathbringer-max-distance-damage"
+    }
+  },
+  {
+    "weapon": "Fighting Lion",
+    "reason": "Aegis' Mittel enthält Sekundärschaden und Volatile (388 secondary, 216 volatile), Quantums Einschlag nicht (581); Aegis gilt.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "grenade-launcher-fighting-lion-average-with-volatile-damage",
+        "text": "388 secondary, 216 volatile"
+      }
+    ],
+    "aegisWins": true,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-grenade-launcher-fighting-lion"
+    }
+  },
+  {
+    "weapon": "Final Warning",
+    "reason": "Der geladene Burst („ADS charged mark“, 230,5) braucht eine Ladezeit, die keine Quelle misst; Quantums 450 rpm gelten für Tap Fire. Deshalb Tap Fire: Aegis 109,8 = Quantum Precision 110.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "sidearm-final-warning-ads-tap-fire",
+        "text": "ADS tap fire"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-sidearm-final-warning",
+        "text": "\"precisionDamage\":110"
+      }
+    ],
+    "base": "sidearm-final-warning-ads-tap-fire",
+    "timing": { "from": "Quantum", "row": "primaries-sidearm-final-warning" }
+  },
+  {
+    "weapon": "Grand Overture",
+    "reason": "Optimal gespielt mit Raketen-Salven, wie Aegis Sustained „volleys when available“ (58 Schuss in 49,1 s, Quantum „w/ rockets“ 49 s); Schaden pro Schuss aus derselben Zeile (Mittel aus Kugeln und Raketen).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "grand-overture-volleys-when-available",
+        "text": "volleys when available"
+      },
+      {
+        "source": "quantum",
+        "entry": "heavies-machine-gun-grand-overture-w-rockets",
+        "text": "shoot 20 rounds > swap mode > shoot 20 rockets > reload"
+      }
+    ],
+    "aegisWins": true,
+    "perShotFromTiming": true,
+    "timing": {
+      "from": "Aegis",
+      "row": "grand-overture-volleys-when-available",
+      "noReloads": true
+    }
+  },
+  {
+    "weapon": "Graviton Spike",
+    "reason": "Aegis misst den Stasis-Modus (176,6); dazu passt Quantums „Stasis mode“ (Precision 178), nicht der Arc-Modus. Stasis macht mehr Schaden pro Sekunde.",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "primaries-hand-cannon-graviton-spike-stasis-mode",
+        "text": "Stasis mode"
+      }
+    ],
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-hand-cannon-graviton-spike-stasis-mode"
+    }
+  },
+  {
+    "weapon": "Malfeasance",
+    "reason": "Aegis' Mittel enthält die Slug-Explosionen (280 slug), Quantums Kugel nicht (86); Aegis gilt.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "hand-cannon-malfeasance-average-with-slugs-vorpal-weapon",
+        "text": "280 slug"
+      }
+    ],
+    "aegisWins": true,
+    "timing": { "from": "Quantum", "row": "primaries-hand-cannon-malfeasance" }
+  },
+  {
+    "weapon": "Merciless",
+    "reason": "Aegis' Weapons-Zeilen messen ein ganzes Magazin als einen Shot („full mag“); Schaden pro Bolzen und Timing aus Sustained (Base 1166, Quantum 1155).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "merciless",
+        "text": "1000ms charge; 1317ms reload"
+      }
+    ],
+    "perShotFromTiming": true,
+    "timing": { "from": "Aegis", "row": "merciless" }
+  },
+  {
+    "weapon": "Outbreak Perfected",
+    "reason": "Konflikt ohne klare Einheit: Aegis' Werte pro Burst liegen schon ohne Nanites beim Vierfachen von Quantum (398,1 ÷ 3 = 133 gegen 32 pro Kugel). Quantum nennt seine Annahme klar (4 Nanites alle 12 Schuss) und gilt deshalb: 80 pro Kugel (Precision).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "pulse-rifle-outbreak-perfected-average-per-burst-no-nanites-appended-mag-up-to-rewind-end",
+        "text": "average per burst - no nanites"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-pulse-rifle-outbreak-perfected-x4-nanites",
+        "text": "Assumes 4 nanites spawn every 12 shots."
+      }
+    ],
+    "perShot": 80,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-pulse-rifle-outbreak-perfected-x4-nanites"
+    }
+  },
+  {
+    "weapon": "Revision Zero",
+    "reason": "Aegis misst den schweren 2er-Burst mit Vorpal Weapon (wipe 2298 = 2 × 1149); pro Kugel 76,2 gegen Quantum 64 ohne Vorpal (×1,15 = 73,6); Aegis gilt.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
+        "text": "burst - heavy 2-burst mode"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-pulse-rifle-revision-zero-2-burst",
+        "text": "\"variant\":\"2-burst\""
+      }
+    ],
+    "base": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
+    "aegisWins": true,
+    "bulletsPerShot": 2,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-pulse-rifle-revision-zero-2-burst"
+    }
+  },
+  {
+    "weapon": "Riskrunner",
+    "reason": "Aegis 27,0 gegen Quantum 28 (3,4 %); Aegis gilt.",
+    "quotes": [
+      { "source": "aegis", "entry": "smg-riskrunner", "text": "\"perShot\":27" }
+    ],
+    "aegisWins": true,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-submachine-gun-riskrunner"
+    }
+  },
+  {
+    "weapon": "Salvation's Grip",
+    "reason": "Ungeladen ist optimal (mehr Schaden pro Sekunde als geladen); Aegis Sustained „uncharged“ (Base 795 = Weapons 794,9).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "salvation-s-grip-uncharged",
+        "text": "2117ms reload"
+      }
+    ],
+    "timing": { "from": "Aegis", "row": "salvation-s-grip-uncharged" }
+  },
+  {
+    "weapon": "The Prospector",
+    "reason": "Aegis Sustained misst mit derselben Ausführung wie die Basiszeile (Base 1035 = Weapons 1035,2); Quantum hat nur Zeilen mit Katalysator.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "the-prospector-typical-boss-model-arc-compounding-kinetic-impacts",
+        "text": "2083ms reload"
+      }
+    ],
+    "timing": {
+      "from": "Aegis",
+      "row": "the-prospector-typical-boss-model-arc-compounding-kinetic-impacts"
+    }
+  },
+  {
+    "weapon": "Tommy's Matchbook",
+    "reason": "Aegis' Mittel enthält den Ramp-up und die Ignitions (154/91 ramped, 2345 ignition); Aegis gilt.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "auto-rifle-tommy-s-matchbook-average-with-ignition",
+        "text": "2345 ignition"
+      }
+    ],
+    "aegisWins": true,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-auto-rifle-tommy-s-matchbook"
+    }
+  },
+  {
+    "weapon": "Touch of Malice",
+    "reason": "Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "scout-rifle-touch-of-malice",
+        "text": "2135/1094 final"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
+        "text": "This assumes always at 1 round"
+      }
+    ],
+    "perShot": 141.48,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-scout-rifle-touch-of-malice-touch-of-malice-tom"
+    }
+  },
+  {
+    "weapon": "Vex Mythoclast",
+    "reason": "Aegis 93,4 gegen Quantum 113 (Quantum ohne Linear-Schüsse, Ursache offen); Aegis gilt.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "fusion-rifle-vex-mythoclast",
+        "text": "Calculated Balance"
+      }
+    ],
+    "aegisWins": true,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-fusion-rifle-vex-mythoclast"
+    }
+  },
+  {
+    "weapon": "The Fourth Horseman",
+    "reason": "Aegis misst ein ganzes Magazin als einen Shot („full mag“, vier Werte 3085/3578/4102/4655); pro Schuss 4197,6 ÷ 4 = 1049,4. Quantum (612 body) zählt den Anstieg pro Schuss nicht; Aegis gilt.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "shotgun-the-fourth-horseman-body-full-mag",
+        "text": "3085/3578/4102/4655 body"
+      },
+      {
+        "source": "quantum",
+        "entry": "specials-shotgun-the-fourth-horseman",
+        "text": "\"magazine\":4"
+      }
+    ],
+    "aegisWins": true,
+    "perShot": 1049.41
+  },
+  {
+    "weapon": "Wish-Ender",
+    "reason": "Aegis' Mittel 522,9 entspricht Quantums Precision 523; die Skala-Prüfung über den Einzeltreffer passt nicht, weil Aegis Pierce und Seeker mitzählt.",
+    "quotes": [
+      { "source": "aegis", "entry": "bow-wish-ender", "text": "555 pierce" }
+    ],
+    "aegisWins": true,
+    "timing": { "from": "Quantum", "row": "primaries-bow-wish-ender" }
   }
 ]

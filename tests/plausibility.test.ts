@@ -18,7 +18,9 @@ const note = (scenario: string, value: string, expected: string) =>
   table.push(`| ${scenario} | ${value} | ${expected} |`);
 afterAll(() =>
   console.log(
-    ["| Szenario | Modell | Erwartung |", "| --- | --- | --- |", ...table].join("\n"),
+    ["| Szenario | Modell | Erwartung |", "| --- | --- | --- |", ...table].join(
+      "\n",
+    ),
   ),
 );
 
@@ -49,9 +51,15 @@ describe("exotic armor changes its abilities", () => {
   it("Cuirass of the Falling Star makes Thundercrash much stronger", () => {
     const cast = { abilities: [{ abilityId: "thundercrash", castsMs: [0] }] };
     const ratio =
-      damageOf(run({ ...cast, exoticArmorId: "cuirass-of-the-falling-star" }), "super") /
-      damageOf(run(cast), "super");
-    note("Thundercrash mit / ohne Cuirass", `×${fmt(ratio)}`, "deutlich mehr, Aegis ≈ ×1,56");
+      damageOf(
+        run({ ...cast, exoticArmorId: "cuirass-of-the-falling-star" }),
+        "super",
+      ) / damageOf(run(cast), "super");
+    note(
+      "Thundercrash mit / ohne Cuirass",
+      `×${fmt(ratio)}`,
+      "deutlich mehr, Aegis ≈ ×1,56",
+    );
     expect(ratio).toBeGreaterThan(1.4);
     expect(ratio).toBeLessThan(1.7);
   });
@@ -67,7 +75,11 @@ describe("exotic armor changes its abilities", () => {
     const ratio = damageOf(withExotic, "super") / damageOf(plain, "super");
     const length = (r: SimulationResult) =>
       r.superWindows[0].endMs - r.superWindows[0].startMs;
-    note("Golden Gun mit / ohne Nighthawk", `×${fmt(ratio)}, Fenster ${length(withExotic)} / ${length(plain)} ms`, "ein Schuss mit viel mehr Schaden, Fenster kürzer als mit 3 Schüssen");
+    note(
+      "Golden Gun mit / ohne Nighthawk",
+      `×${fmt(ratio)}, Fenster ${length(withExotic)} / ${length(plain)} ms`,
+      "ein Schuss mit viel mehr Schaden, Fenster kürzer als mit 3 Schüssen",
+    );
     expect(ratio).toBeGreaterThan(1.5);
     expect(length(withExotic)).toBeLessThan(length(plain));
   });
@@ -79,9 +91,18 @@ describe("exotic armor changes its abilities", () => {
       abilities: [{ abilityId: "blade-barrage", castsMs: [0] }],
     };
     const ratio =
-      damageOf(run({ ...hunter, selections: [{ effectId: "knock-em-down", provider: "subclass" }] }), "super") /
-      damageOf(run(hunter), "super");
-    note("Blade Barrage mit / ohne Knock 'Em Down", `×${fmt(ratio)}`, "Aegis-Zeilen ×1,37; Compendium nennt ×1,43 (20 statt 14 Messer)");
+      damageOf(
+        run({
+          ...hunter,
+          selections: [{ effectId: "knock-em-down", provider: "subclass" }],
+        }),
+        "super",
+      ) / damageOf(run(hunter), "super");
+    note(
+      "Blade Barrage mit / ohne Knock 'Em Down",
+      `×${fmt(ratio)}`,
+      "Aegis-Zeilen ×1,37; Compendium nennt ×1,43 (20 statt 14 Messer)",
+    );
     expect(ratio).toBeGreaterThan(1.3);
     expect(ratio).toBeLessThan(1.55);
   });
@@ -93,7 +114,10 @@ describe("exotic armor changes its abilities", () => {
       "dawn-chorus",
       "geomag-stabilizers",
     ])
-      expect(gameData.abilities.some((a) => a.exoticArmorId === id), id).toBe(true);
+      expect(
+        gameData.abilities.some((a) => a.exoticArmorId === id),
+        id,
+      ).toBe(true);
   });
 });
 
@@ -103,14 +127,22 @@ describe("primary weapons", () => {
     expect(juju?.ammo).toBe("primary");
     const short = run({ damagePhaseSeconds: 30 }, juju!).shots.length;
     const long = run({ damagePhaseSeconds: 300 }, juju!).shots.length;
-    note("Bad Juju: Shots in 30 s / 300 s", `${short} / ${long}`, "etwa ×10, nie leer");
+    note(
+      "Bad Juju: Shots in 30 s / 300 s",
+      `${short} / ${long}`,
+      "etwa ×10, nie leer",
+    );
     expect(long / short).toBeGreaterThan(9);
   });
 
   it("deal less boss damage than a heavy, but more than nothing", () => {
     const juju = run({}, weaponById("bad-juju")).totalDamage;
     const gjally = run({}, weaponById("gjallarhorn")).totalDamage;
-    note("Bad Juju / Gjallarhorn in 30 s", fmt(juju / gjally), "deutlich unter 1");
+    note(
+      "Bad Juju / Gjallarhorn in 30 s",
+      fmt(juju / gjally),
+      "deutlich unter 1",
+    );
     expect(juju / gjally).toBeLessThan(0.5);
     expect(juju).toBeGreaterThan(0);
   });
@@ -124,18 +156,52 @@ describe("primary weapons", () => {
   });
 });
 
+describe("all weapons (2026-10-23)", () => {
+  it("more than 115 of 141 exotic weapons are selectable", () => {
+    note("Wählbare exotische Waffen", String(weapons.length), "> 115 von 141");
+    expect(weapons.length).toBeGreaterThan(115);
+  });
+
+  // Catches a unit error in a source, e.g. a whole magazine or a 5-ammo projectile counted as one
+  // shot (Fourth Horseman ×4, Choir of One ×5 before the overrides).
+  it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1×", () => {
+    const gjally = run({}, weaponById("gjallarhorn")).totalDamage;
+    const ratios = weapons.map(
+      (w) => [w, run({}, w).totalDamage / gjally] as const,
+    );
+    const off = ratios
+      .filter(([w, r]) =>
+        w.ammo === "primary" ? r > 1 || r <= 0 : r < 0.3 || r > 2.5,
+      )
+      .map(([w, r]) => `${w.name} ${fmt(r)}`);
+    const top = [...ratios].sort((a, b) => b[1] - a[1])[0];
+    note(
+      "Stärkste Waffe / Gjallarhorn (30 s)",
+      `${top[0].name} ${fmt(top[1])}`,
+      "≤ 2,5",
+    );
+    expect(off).toEqual([]);
+  });
+});
+
 describe("catalysts", () => {
   it("Gjallarhorn: the catalyst's second rocket per magazine gives more damage in 30 s", () => {
     const off = run({}, weaponById("gjallarhorn")).totalDamage;
     const on = run({ catalyst: true }, weaponById("gjallarhorn")).totalDamage;
-    note("Gjallarhorn Catalyst an / aus (30 s)", fmt(on / off), "> 1 (Magazin 1 → 2)");
+    note(
+      "Gjallarhorn Catalyst an / aus (30 s)",
+      fmt(on / off),
+      "> 1 (Magazin 1 → 2)",
+    );
     expect(on / off).toBeGreaterThan(1.05);
   });
 
   it("Thunderlord: lightning strikes refill, so the catalyst empties the ammo sooner", () => {
     const shots = (catalyst: boolean) =>
-      run({ catalyst, damagePhaseSeconds: 50 }, weaponById("thunderlord")).shots
-        .at(-1)!.timeMs;
+      run(
+        { catalyst, damagePhaseSeconds: 50 },
+        weaponById("thunderlord"),
+      ).shots.at(-1)!.timeMs;
     note(
       "Thunderlord letzter Schuss ohne / mit Catalyst",
       `${(shots(false) / 1000).toFixed(1)} s / ${(shots(true) / 1000).toFixed(1)} s`,
@@ -177,8 +243,10 @@ describe("exotic effects from the rotation", () => {
       abilities: [{ abilityId: "golden-gun-marksman", castsMs: [0] }],
     };
     const ratio =
-      damageOf(run({ ...hunter, exoticArmorId: "star-eater-scales" }), "super") /
-      damageOf(run(hunter), "super");
+      damageOf(
+        run({ ...hunter, exoticArmorId: "star-eater-scales" }),
+        "super",
+      ) / damageOf(run(hunter), "super");
     note("Star-Eater auf Golden Gun", `×${fmt(ratio)}`, "×1,70");
     expect(ratio).toBeCloseTo(1.7, 2);
   });
@@ -194,9 +262,17 @@ describe("exotic effects from the rotation", () => {
         }),
         "weapon",
       );
-    const solar = weaponDamage("fusion-grenade", "foetracer") / weaponDamage("fusion-grenade");
-    const arc = weaponDamage("arcbolt-grenade", "foetracer") / weaponDamage("arcbolt-grenade");
-    note("Foetracer, Solar-Waffe mit Solar / Arc-Grenade", `×${fmt(solar)} / ×${fmt(arc)}`, "mehr / unverändert");
+    const solar =
+      weaponDamage("fusion-grenade", "foetracer") /
+      weaponDamage("fusion-grenade");
+    const arc =
+      weaponDamage("arcbolt-grenade", "foetracer") /
+      weaponDamage("arcbolt-grenade");
+    note(
+      "Foetracer, Solar-Waffe mit Solar / Arc-Grenade",
+      `×${fmt(solar)} / ×${fmt(arc)}`,
+      "mehr / unverändert",
+    );
     expect(solar).toBeGreaterThan(1.05);
     expect(arc).toBeCloseTo(1, 6);
   });
@@ -209,14 +285,20 @@ describe("keywords", () => {
         guardianClass: "warlock",
         subclass: "solar",
         abilities: [{ abilityId: "fusion-grenade", castsMs }],
-        selections: ember ? [{ effectId: "ember-of-ashes", provider: "subclass" }] : [],
+        selections: ember
+          ? [{ effectId: "ember-of-ashes", provider: "subclass" }]
+          : [],
       },
       testWeapon,
     ).damageInstances.filter((d) => d.keywordId === "ignition").length;
   it("three Fusion Grenades ignite once, with Ember of Ashes two already do", () => {
     const three = ignitions([0, 5000, 10000], false);
     const twoEmber = ignitions([0, 5000], true);
-    note("Ignitions: 3 Fusion / 2 Fusion mit Ember", `${three} / ${twoEmber}`, "1 / 1 (x40 bzw. x60 Scorch)");
+    note(
+      "Ignitions: 3 Fusion / 2 Fusion mit Ember",
+      `${three} / ${twoEmber}`,
+      "1 / 1 (x40 bzw. x60 Scorch)",
+    );
     expect(three).toBe(1);
     expect(twoEmber).toBe(1);
   });
@@ -230,7 +312,8 @@ describe("the UI offers what works", () => {
 
   it("every generated aspect and fragment is shown for some weapon and exotic", () => {
     const hidden = subclassEffects.filter(
-      (effect) => !weapons.some((w) => effectRelevantTo(effect, w, neededByExotics)),
+      (effect) =>
+        !weapons.some((w) => effectRelevantTo(effect, w, neededByExotics)),
     );
     note("Aspects/Fragments ausgeblendet", String(hidden.length), "0");
     expect(hidden.map((e) => e.id)).toEqual([]);
@@ -243,7 +326,11 @@ describe("the UI offers what works", () => {
         effect.parts.length === 0 &&
         effect.changesAbilityIds === undefined,
     );
-    note("Ohne Exotic: angeboten, aber ohne Wirkung", String(stateOnly.length), "0 (z. B. On Your Mark, Ascension)");
+    note(
+      "Ohne Exotic: angeboten, aber ohne Wirkung",
+      String(stateOnly.length),
+      "0 (z. B. On Your Mark, Ascension)",
+    );
     expect(stateOnly.map((e) => e.id)).toEqual([]);
   });
 
@@ -256,15 +343,34 @@ describe("the UI offers what works", () => {
     };
     const needed = neededStatuses(
       buildSimulation(
-        { weaponId: shotgun.id, catalyst: false, selections: [], effectWindows: {}, damagePhaseSeconds: 30, ...hunter },
+        {
+          weaponId: shotgun.id,
+          catalyst: false,
+          selections: [],
+          effectWindows: {},
+          damagePhaseSeconds: 30,
+          ...hunter,
+        },
         gameData,
       ).selected,
     );
     const ascension = subclassEffects.find((e) => e.id === "ascension")!;
     const ratio =
-      damageOf(run({ ...hunter, selections: [{ effectId: "ascension", provider: "subclass" }] }, shotgun), "weapon") /
-      damageOf(run(hunter, shotgun), "weapon");
-    note("No Backup Plans: Ascension angeboten, Shotgun mit / ohne", `${effectRelevantTo(ascension, shotgun, needed)}, ×${fmt(ratio)}`, "true, ×1,35");
+      damageOf(
+        run(
+          {
+            ...hunter,
+            selections: [{ effectId: "ascension", provider: "subclass" }],
+          },
+          shotgun,
+        ),
+        "weapon",
+      ) / damageOf(run(hunter, shotgun), "weapon");
+    note(
+      "No Backup Plans: Ascension angeboten, Shotgun mit / ohne",
+      `${effectRelevantTo(ascension, shotgun, needed)}, ×${fmt(ratio)}`,
+      "true, ×1,35",
+    );
     expect(effectRelevantTo(ascension, shotgun, needed)).toBe(true);
     expect(ratio).toBeCloseTo(1.35, 2);
   });
@@ -287,7 +393,11 @@ describe("supers take time like in the game", () => {
     const shots = [...new Set(hits(r))];
     const ignition = r.damageInstances.find((d) => d.keywordId === "ignition");
     const window = r.superWindows[0];
-    note("Golden Gun Marksman: Schüsse, Ignition, Fenster", `${shots.join(" / ")} ms, Ignition ${ignition?.timeMs} ms, Fenster ${window.endMs} ms`, "3 Schüsse in gut 2 s, Ignition beim 3. Schuss");
+    note(
+      "Golden Gun Marksman: Schüsse, Ignition, Fenster",
+      `${shots.join(" / ")} ms, Ignition ${ignition?.timeMs} ms, Fenster ${window.endMs} ms`,
+      "3 Schüsse in gut 2 s, Ignition beim 3. Schuss",
+    );
     expect(shots).toHaveLength(3);
     expect(ignition?.timeMs).toBe(shots[2]);
     expect(window.endMs).toBeLessThan(3000);
@@ -295,26 +405,46 @@ describe("supers take time like in the game", () => {
 
   it("Daybreak ignites during the super: x50 Scorch per projectile", () => {
     const r = run(
-      { guardianClass: "warlock", subclass: "solar", abilities: [{ abilityId: "daybreak", castsMs: [0] }] },
+      {
+        guardianClass: "warlock",
+        subclass: "solar",
+        abilities: [{ abilityId: "daybreak", castsMs: [0] }],
+      },
       testWeapon,
     );
-    const ignitions = r.damageInstances.filter((d) => d.keywordId === "ignition");
+    const ignitions = r.damageInstances.filter(
+      (d) => d.keywordId === "ignition",
+    );
     const end = r.superWindows[0].endMs;
-    note("Daybreak: Ignitions während der Super", `${ignitions.filter((d) => d.timeMs <= end).length}`, "etwa 5 (15 Geschosse × 50 Scorch, Abklingzeit)");
-    expect(ignitions.filter((d) => d.timeMs <= end).length).toBeGreaterThanOrEqual(4);
+    note(
+      "Daybreak: Ignitions während der Super",
+      `${ignitions.filter((d) => d.timeMs <= end).length}`,
+      "etwa 5 (15 Geschosse × 50 Scorch, Abklingzeit)",
+    );
+    expect(
+      ignitions.filter((d) => d.timeMs <= end).length,
+    ).toBeGreaterThanOrEqual(4);
   });
 
   it("Daybreak: light attacks spread over the super, the weapon waits far less than 24 s", () => {
     const r = superRun("warlock", "solar", "daybreak");
     const window = r.superWindows[0];
-    note("Daybreak: Treffer, Fenster", `${new Set(hits(r)).size} Treffer, Fenster ${window.endMs} ms`, "etwa 15 Treffer, 12–14 s");
+    note(
+      "Daybreak: Treffer, Fenster",
+      `${new Set(hits(r)).size} Treffer, Fenster ${window.endMs} ms`,
+      "etwa 15 Treffer, 12–14 s",
+    );
     expect(new Set(hits(r)).size).toBeGreaterThan(10);
     expect(window.endMs).toBeLessThan(15_000);
   });
 
   it("Nova Bomb: the bomb needs its cast before it hits", () => {
     const r = superRun("warlock", "void", "nova-bomb-cataclysm");
-    note("Nova Bomb: Treffer, Fenster", `${hits(r)[0]} ms, Fenster ${r.superWindows[0].endMs} ms`, "Treffer nach etwa 1,5 s, Fenster knapp 2 s");
+    note(
+      "Nova Bomb: Treffer, Fenster",
+      `${hits(r)[0]} ms, Fenster ${r.superWindows[0].endMs} ms`,
+      "Treffer nach etwa 1,5 s, Fenster knapp 2 s",
+    );
     expect(hits(r)[0]).toBeGreaterThan(1000);
     expect(r.superWindows[0].endMs).toBeGreaterThan(1000);
   });

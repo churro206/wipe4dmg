@@ -201,6 +201,8 @@ describe("primaries", () => {
     "Hierarchy of Needs":
       "Aegis shoots through the Guidance Ring; Quantum variant 'Guidance Ring' gives ×1.38",
     Hawkmoon: "Quantum's magazine damage includes the Paracausal Shot",
+    Alethonym:
+      "Aegis' average holds impact and impale ticks (337 impact, 237 tick), Quantum only the impact",
   };
   it("rule: one round of a primary deals 0.5 to 2 times the round of its Quantum timing row", () => {
     const inputs = loadWeaponImportInputs();
@@ -268,16 +270,83 @@ describe("catalysts", () => {
       .flatMap((r) => {
         const weapon = byName(r.name)!;
         const timeToEmpty = r.catalystTiming!.timeToEmptySeconds!;
-        const shots = simulate(weapon, timeToEmpty * 2, [], loadBuckets(rawBuckets), {
-          catalyst: true,
-          keywords,
-        }).shots;
+        const shots = simulate(
+          weapon,
+          timeToEmpty * 2,
+          [],
+          loadBuckets(rawBuckets),
+          {
+            catalyst: true,
+            keywords,
+          },
+        ).shots;
         const last = shots.at(-1)!.timeMs / 1000;
         return Math.abs(last / timeToEmpty - 1) > 0.03
           ? [`${r.name} ${last.toFixed(1)} s vs ${timeToEmpty.toFixed(1)} s`]
           : [];
       });
     expect(off).toEqual([]);
+  });
+});
+
+describe("gaps closed by overrides and rules (2026-10-23)", () => {
+  const perShot = (name: string) =>
+    value(byName(name)!.damageInstances[0].damagePerTick)!;
+
+  it("Alethonym: Quantum row 'Spam', one grenade per reload", () => {
+    const w = byName("Alethonym")!;
+    expect(value(w.magazine)).toBe(1);
+    expect(value(w.totalShots)).toBeNull();
+    expect(value(w.reloadTimeMs)).toBe(1620);
+  });
+
+  it("Cerberus+1: Quantum 'normal, close range' for Aegis 'point blank'", () => {
+    const w = byName("Cerberus+1")!;
+    expect(value(w.magazine)).toBe(31);
+    expect(value(w.fireRateRpm)).toBe(360);
+  });
+
+  it("SUROS Regime: Spinning Up (more damage per second than Dual Speed Receiver)", () => {
+    const w = byName("SUROS Regime")!;
+    expect(perShot("SUROS Regime")).toBeCloseTo(26.8, 0);
+    expect(value(w.fireRateRpm)).toBe(712);
+  });
+
+  it("Duality: Quantum measures with the catalyst (8 rounds); without it 6 (Clarity 6🠚8)", () => {
+    const w = byName("Duality")!;
+    expect(value(w.magazine)).toBe(6);
+    expect(value(w.catalyst!.timing!.magazine)).toBe(8);
+  });
+
+  it("Ex Diris: magazine 1 without a reload in the notes, the reload is inside the fire rate", () => {
+    expect(value(byName("Ex Diris")!.totalShots)).toBe(35);
+  });
+
+  it("Ice Breaker: 10 shots without reload, timing from Aegis", () => {
+    const w = byName("Ice Breaker")!;
+    expect(value(w.totalShots)).toBe(10);
+    expect(value(w.magazine)).toBe(10);
+  });
+
+  it("Finality's Auger: 21 shots in magazines of 6 (Aegis Sustained)", () => {
+    const w = byName("Finality's Auger")!;
+    expect(value(w.totalShots)).toBe(21);
+    expect(value(w.magazine)).toBe(6);
+  });
+
+  it("The Queenbreaker: Combat Sights (more total damage); magazine 5 without Rewind Rounds, Aegis timing with it", () => {
+    const w = byName("The Queenbreaker")!;
+    expect(perShot("The Queenbreaker")).toBeCloseTo(1966.5, 0);
+    expect(value(w.magazine)).toBe(5);
+    expect(value(w.catalyst!.timing!.magazine)).toBe(11);
+  });
+
+  it("Witherhoard: a full blight per shot (Quantum 'passive', 20 shots in 90 s); the catalyst reloads while stowed (50 s)", () => {
+    const w = byName("Witherhoard")!;
+    expect(value(w.totalShots)).toBe(20);
+    const report = result.report.weapons.find((r) => r.name === "Witherhoard")!;
+    expect(report.timeToEmptySeconds).toBeCloseTo(90, 0);
+    expect(report.catalystTiming!.timeToEmptySeconds).toBeCloseTo(50, 0);
   });
 });
 

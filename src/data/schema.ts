@@ -531,45 +531,49 @@ export type EffectTrigger = z.infer<typeof EffectTrigger>;
  * Active in a window: start and duration (ADR 0006, stage B).
  */
 
-export const Effect = z.object({
-  id: z.string(),
-  name: z.string(),
-  code: z.number().int().positive(), // short code for build links; never reused
-  shortName: z.string(), // for tight spaces, e.g. the optimizer ranking
-  manifestRef: ManifestRef.optional(), // icon source in the Bungie manifest (ADR 0008)
-  // Icon that follows the weapon element instead: key "<elementIconKey>:<element>" in icon-refs.json,
-  // e.g. "surge" for the Weapon Surge mod of each element.
-  elementIconKey: z.string().optional(),
-  // Codes of removed effects that old build links read as this effect; never reused.
-  formerCodes: z.array(FormerCode).optional(),
-  providers: z.array(EffectProvider).min(1),
-  // A build provides at most one effect of a group itself, e.g. one surge level or one super.
-  // Effects from teammates are not limited by groups.
-  exclusiveGroup: z.string().optional(),
-  parts: z.array(EffectPart), // empty only for an effect that grants a state or changes abilities
-  // States the player has while the effect is active, e.g. Amplified (ADR 0015, U6-2)
-  grantsStatus: z.array(StatusId).min(1).optional(),
-  // Abilities with a variant measured with this aspect or fragment, e.g. Knock 'Em Down changes
-  // Blade Barrage (U6-2 rule G); the variant applies while the effect is selected.
-  changesAbilityIds: z.array(z.string()).min(1).optional(),
-  // Duration after its start; omitted if the effect lasts the whole damage phase or the duration
-  // depends on the source (e.g. Radiant, tethers). The rotation can override start and duration.
-  durationMs: SourcedNumber.optional(),
-  // Opens a window of durationMs at each matching event of the rotation instead of one from 0 s
-  // (ADR 0015, U6-1b), e.g. Star-Eater Scales at each super cast.
-  trigger: EffectTrigger.optional(),
-  // Effect ids whose multiplier parts in the same buckets are ignored while this effect is active,
-  // regardless of value, e.g. Divinity over Particle Reconstruction.
-  overrides: z.array(z.string()).optional(),
-}).refine(
-  (e) =>
-    e.parts.length > 0 ||
-    e.grantsStatus !== undefined ||
-    e.changesAbilityIds !== undefined,
-  {
-  message: "an effect needs parts, a state it grants or abilities it changes",
-  path: ["parts"],
-});
+export const Effect = z
+  .object({
+    id: z.string(),
+    name: z.string(),
+    code: z.number().int().positive(), // short code for build links; never reused
+    shortName: z.string(), // for tight spaces, e.g. the optimizer ranking
+    manifestRef: ManifestRef.optional(), // icon source in the Bungie manifest (ADR 0008)
+    // Icon that follows the weapon element instead: key "<elementIconKey>:<element>" in icon-refs.json,
+    // e.g. "surge" for the Weapon Surge mod of each element.
+    elementIconKey: z.string().optional(),
+    // Codes of removed effects that old build links read as this effect; never reused.
+    formerCodes: z.array(FormerCode).optional(),
+    providers: z.array(EffectProvider).min(1),
+    // A build provides at most one effect of a group itself, e.g. one surge level or one super.
+    // Effects from teammates are not limited by groups.
+    exclusiveGroup: z.string().optional(),
+    parts: z.array(EffectPart), // empty only for an effect that grants a state or changes abilities
+    // States the player has while the effect is active, e.g. Amplified (ADR 0015, U6-2)
+    grantsStatus: z.array(StatusId).min(1).optional(),
+    // Abilities with a variant measured with this aspect or fragment, e.g. Knock 'Em Down changes
+    // Blade Barrage (U6-2 rule G); the variant applies while the effect is selected.
+    changesAbilityIds: z.array(z.string()).min(1).optional(),
+    // Duration after its start; omitted if the effect lasts the whole damage phase or the duration
+    // depends on the source (e.g. Radiant, tethers). The rotation can override start and duration.
+    durationMs: SourcedNumber.optional(),
+    // Opens a window of durationMs at each matching event of the rotation instead of one from 0 s
+    // (ADR 0015, U6-1b), e.g. Star-Eater Scales at each super cast.
+    trigger: EffectTrigger.optional(),
+    // Effect ids whose multiplier parts in the same buckets are ignored while this effect is active,
+    // regardless of value, e.g. Divinity over Particle Reconstruction.
+    overrides: z.array(z.string()).optional(),
+  })
+  .refine(
+    (e) =>
+      e.parts.length > 0 ||
+      e.grantsStatus !== undefined ||
+      e.changesAbilityIds !== undefined,
+    {
+      message:
+        "an effect needs parts, a state it grants or abilities it changes",
+      path: ["parts"],
+    },
+  );
 export type Effect = z.infer<typeof Effect>;
 
 /** Part of an ability that creates damage instances after each cast, e.g. impact or explosion (ADR 0009). */
@@ -1235,18 +1239,38 @@ export const WeaponOverride = z.object({
   quotes: z
     .array(
       z.object({
-        source: z.enum(["clarity", "compendium"]),
-        entry: z.string(), // Clarity entry name, or the start of the Compendium entry name
-        text: z.string(), // exact text in that entry
+        source: z.enum(["clarity", "compendium", "aegis", "quantum"]),
+        // Clarity entry name, the start of the Compendium entry name, or the id of an Aegis
+        // (Weapons, Sustained) or Quantum row
+        entry: z.string(),
+        text: z.string(), // exact text in that entry (for rows: in one of its cells)
       }),
     )
     .min(1),
   gap: z.string().optional(), // keep the weapon out with this reason
+  base: z.string().optional(), // id of the Aegis Weapons row to use as the base
+  // Aegis wins over Quantum where their scale differs (owner, 2026-10-23); the reason says what
+  // the Aegis value holds that Quantum's does not.
+  aegisWins: z.boolean().optional(),
+  // Damage per shot: the "Base" of the Sustained row of the timing (Aegis' own value for that
+  // execution), or a value derived in the reason; bullets per Aegis shot for bursts.
+  perShotFromTiming: z.boolean().optional(),
+  perShot: z.number().positive().optional(),
+  bulletsPerShot: z.number().int().min(2).optional(),
   // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
   scorchStacksPerShot: z.number().int().positive().optional(),
   timing: z
     .object({
       from: z.enum(["Aegis", "Quantum"]), // use this source even if a rule would not
+      row: z.string().optional(), // id of the Sustained or Quantum row of the timing
+      // The row plays with the catalyst: it is the timing with it; without it from "magazine",
+      // else from the numbers Clarity names ("6🠚8").
+      rowHasCatalyst: z.boolean().optional(),
+      magazine: z.number().int().positive().optional(),
+      catalystRow: z.string().optional(), // Quantum or Sustained row of the timing with catalyst
+      noReloads: z.boolean().optional(), // all ammo is one magazine (no reload, or inside the rate)
+      // One shot uses this much ammo, the row counts ammo (e.g. Choir of One: 5 per projectile)
+      ammoPerShot: z.number().int().min(2).optional(),
       totalShots: z.number().int().positive().optional(),
       addIntervalSeconds: z.number().optional(), // e.g. a longer charge without the catalyst
     })

@@ -363,6 +363,15 @@ export function timingFromAegis(
   noReloads = false,
 ): Timing | TimingProblem {
   const timeToEmpty = row.timeToEmptySeconds;
+  // A magazine of one without a reload in the notes (e.g. Ex Diris): the reload is inside the fire
+  // rate, so all ammo is one magazine.
+  if (
+    row.magazines.length > 0 &&
+    row.magazines.every((m) => m === 1) &&
+    row.reloadMs === null &&
+    row.swapMs === null
+  )
+    noReloads = true;
   const magazine = noReloads ? row.shots : row.magazines[0];
   if (!magazine || timeToEmpty === null || row.shots < 1)
     return {
@@ -413,7 +422,8 @@ export function timingFromQuantum(
   row: QuantumWeaponRow,
   noReloads = false,
 ): Timing | TimingProblem {
-  const { totalShots, reloadSeconds, timeToEmptySeconds, rpm } = row;
+  const { totalShots, timeToEmptySeconds, rpm } = row;
+  const reloadSeconds = row.reloadSeconds ?? (noReloads ? 0 : null);
   if (row.textCells.totalShots === "inf") {
     if (row.magazine === null || reloadSeconds === null || rpm === null)
       return {
@@ -577,9 +587,7 @@ function quantumCatalystFactor(
   rows: QuantumWeaponRow[],
 ): number | null {
   const plain = rows.find((r) => sameName(r.name, name) && r.variant === "");
-  const cata = rows.find(
-    (r) => sameName(r.name, name) && r.variant === "cata",
-  );
+  const cata = rows.find((r) => sameName(r.name, name) && r.variant === "cata");
   const metric = (r: QuantumWeaponRow | undefined) =>
     r?.precisionDamage ?? r?.bodyDamage ?? null;
   const [a, b] = [metric(cata), metric(plain)];
@@ -731,6 +739,14 @@ export function buildWeaponImport(
         b.shots - a.shots ||
         a.assumptions.length - b.assumptions.length,
     )[0];
+    if (override?.base) {
+      const named = rows.find((r) => r.id === override.base);
+      if (!named)
+        throw new Error(
+          `${manifest.name}: override base ${override.base} not found`,
+        );
+      base = named;
+    }
     if (!base) {
       const catalystRow = rows.find(
         (row) =>
@@ -818,7 +834,12 @@ export function buildWeaponImport(
       quantumPerRound !== undefined &&
       Math.abs(entry.perShot / bullets / quantumPerRound - 1) <
         Math.abs(entry.perShot / quantumPerRound - 1);
-    if (manifest.ammo === "primary" && bullets > 1 && hitAtQuantum) {
+    if (override?.bulletsPerShot) {
+      entry.perShot /= override.bulletsPerShot;
+      entry.notes.push(
+        `Aegis misst einen Burst aus ${override.bulletsPerShot} Kugeln (Override); Paket pro Kugel`,
+      );
+    } else if (manifest.ammo === "primary" && bullets > 1 && hitAtQuantum) {
       entry.perShot /= bullets;
       entry.notes.push(
         `Aegis misst einen Burst aus ${bullets} Kugeln (wipe ${de(base.wipe)} = ${bullets} × ${base.critShot}); Paket pro Kugel wie Quantums Magazin`,
@@ -1115,6 +1136,63 @@ export function buildWeaponImport(
         : (aegis ?? quantumTiming);
     // Set when the timing without catalyst comes back from a source with it.
     let derivedFrom: Timing | undefined;
+    // An override names the row of the timing (a Sustained or Quantum id).
+    const rowTiming = (id: string, noReloads: boolean): Timing => {
+      const sustainedRow = inputs.sustained.rows.find((r) => r.id === id);
+      const quantumById = inputs.quantum.rows.find((r) => r.id === id);
+      const t = sustainedRow
+        ? timingFromAegis(sustainedRow, noReloads)
+        : quantumById
+          ? timingFromQuantum(quantumById, noReloads)
+          : { problem: "Zeile nicht gefunden" };
+      if (!("intervalSeconds" in t))
+        throw new Error(
+          `${manifest.name}: override timing row ${id}: ${t.problem}`,
+        );
+      return t;
+    };
+    const timingOverride = override?.timing;
+    if (timingOverride?.row) {
+      // The named row shows its reloads; only the override drops them.
+      const fromRow = rowTiming(
+        timingOverride.row,
+        timingOverride.noReloads === true,
+      );
+      if (timingOverride.rowHasCatalyst) {
+        derivedFrom = fromRow;
+        if (timingOverride.magazine) {
+          const magazine = timingOverride.magazine;
+          const shots = fromRow.totalShots;
+          const reloads = shots === null ? 0 : Math.ceil(shots / magazine) - 1;
+          timing = {
+            ...fromRow,
+            magazine,
+            timeToEmptySeconds:
+              shots === null
+                ? null
+                : (shots - 1) * fromRow.intervalSeconds +
+                  reloads * fromRow.engineReloadSeconds,
+            note: `${fromRow.note}; without catalyst: magazine ${magazine} (override)`,
+          };
+        } else {
+          const derived = timingWithoutCatalyst(
+            fromRow,
+            catalysts.map((c) => c.text),
+          );
+          if (!derived)
+            throw new Error(
+              `${manifest.name}: Clarity names no magazine or reserves of the catalyst`,
+            );
+          timing = derived.timing;
+        }
+        entry.notes.push(
+          `Timing-Zeile ${timingOverride.row} spielt mit Katalysator; ohne ihn ${timingOverride.magazine ? `Magazin ${timingOverride.magazine} (Override)` : "aus Clarity zurückgerechnet"}`,
+        );
+      } else {
+        timing = fromRow;
+        entry.notes.push(`Timing aus Zeile ${timingOverride.row} (Override)`);
+      }
+    }
     if (!timing && fallbackCatalystTiming) {
       // Only sources with catalyst: back to the timing without it where Clarity names the numbers.
       const derived = timingWithoutCatalyst(
@@ -1134,8 +1212,41 @@ export function buildWeaponImport(
         );
       }
     }
-    if (timing && override?.timing)
-      timing = adjustTiming(timing, override.timing);
+    if (timing && timingOverride?.ammoPerShot) {
+      const k = timingOverride.ammoPerShot;
+      const shots = timing.totalShots === null ? null : timing.totalShots / k;
+      const magazine = timing.magazine / k;
+      if (
+        !Number.isInteger(magazine) ||
+        (shots !== null && !Number.isInteger(shots))
+      )
+        throw new Error(`${manifest.name}: ammo is no multiple of ${k}`);
+      const interval = timing.intervalSeconds * k;
+      // Aegis reloads right after the last shot (engine reload = reload − interval), Quantum not.
+      const engineReload =
+        timing.engineReloadSeconds === timing.reloadSeconds
+          ? timing.reloadSeconds
+          : Math.max(0, timing.reloadSeconds - interval);
+      const reloads = shots === null ? 0 : Math.ceil(shots / magazine) - 1;
+      timing = {
+        ...timing,
+        magazine,
+        totalShots: shots,
+        intervalSeconds: interval,
+        engineReloadSeconds: engineReload,
+        timeToEmptySeconds:
+          shots === null
+            ? null
+            : (shots - 1) * interval + reloads * engineReload,
+        note: `${timing.note}; ${k} ammo per shot (override)`,
+      };
+    }
+    if (
+      timing &&
+      (timingOverride?.totalShots !== undefined ||
+        timingOverride?.addIntervalSeconds !== undefined)
+    )
+      timing = adjustTiming(timing, timingOverride);
     if (!timing) {
       const reasons = [
         ...aegisTimings.map((t) => `Aegis: ${(t as TimingProblem).problem}`),
@@ -1218,6 +1329,8 @@ export function buildWeaponImport(
             : (timingWithCatalyst(timing, catalystTexts) ?? undefined);
       }
     }
+    if (timingOverride?.catalystRow)
+      catalystTiming = rowTiming(timingOverride.catalystRow, refillsMagazine);
 
     if (quantumRow && timing === quantumTiming) {
       if (plain.length === 0)
@@ -1263,22 +1376,58 @@ export function buildWeaponImport(
     // Scale (point 10): Aegis against Quantum, or against "Base" in Aegis "Sustained". The Quantum
     // row is the one of the timing, also a catalyst row taken as fallback.
     const scaleRow =
-      quantumRow ?? inputs.quantum.rows.find((r) => r.id === timing.rowId);
-    entry.scaleDeviation = minDeviation([
-      scaleRow ? scaleDeviation(base, scaleRow) : null,
-      sustainedUsable[0]?.base
-        ? Math.abs(base.perShot / sustainedUsable[0].base - 1)
-        : null,
-    ]);
+      inputs.quantum.rows.find((r) => r.id === timing.rowId) ?? quantumRow;
+    const timingSustainedRow = inputs.sustained.rows.find(
+      (r) => r.id === timing.rowId,
+    );
+    const scaleSustained = timingSustainedRow ?? sustainedUsable[0];
+    if (override?.perShotFromTiming) {
+      if (!timingSustainedRow?.base)
+        throw new Error(`${manifest.name}: timing row has no Base`);
+      entry.perShot = timingSustainedRow.base;
+      entry.notes.push(
+        `Schaden pro Shot aus „Base“ der Sustained-Zeile ${timingSustainedRow.id} (Override)`,
+      );
+    }
+    if (override?.perShot) {
+      entry.perShot = override.perShot;
+      entry.notes.push(
+        `Schaden pro Shot ${de(override.perShot, 1)} (Override)`,
+      );
+    }
+    // An overridden value per shot is checked against the hit of the Quantum row.
+    const quantumHit = scaleRow
+      ? (scaleRow.precisionDamage ?? scaleRow.bodyDamage)
+      : null;
+    entry.scaleDeviation =
+      override?.perShotFromTiming || override?.perShot
+        ? quantumHit
+          ? Math.abs(entry.perShot! / quantumHit - 1)
+          : null
+        : minDeviation([
+            scaleRow ? scaleDeviation(base, scaleRow) : null,
+            scaleSustained?.base
+              ? Math.abs(base.perShot / scaleSustained.base - 1)
+              : null,
+          ]);
     if (scorch) {
       entry.notes.push(
         "Skala: Shot aus Quantum, keine Prüfung gegen Aegis (Aegis zählt Ignitions mit)",
       );
-    } else if (entry.scaleDeviation === null) {
+    } else if (entry.scaleDeviation === null && !override?.aegisWins) {
       gap("Skala nicht prüfbar: keine vergleichbaren Werte");
       continue;
     }
     if (
+      !scorch &&
+      entry.scaleDeviation !== null &&
+      entry.scaleDeviation > TOLERANCE &&
+      override?.aegisWins
+    ) {
+      entry.notes.push(
+        `Skala weicht um ${(entry.scaleDeviation * 100).toFixed(1)} % ab; Aegis gilt (Override)`,
+      );
+    } else if (
       !scorch &&
       entry.scaleDeviation !== null &&
       entry.scaleDeviation > TOLERANCE
@@ -1481,7 +1630,10 @@ export function buildWeaponImport(
                         value: Number(
                           (60 / catalystTiming.intervalSeconds).toFixed(3),
                         ),
-                        source: timingSourceOf(catalystTiming, catalystTiming.note),
+                        source: timingSourceOf(
+                          catalystTiming,
+                          catalystTiming.note,
+                        ),
                       },
                       magazine: {
                         value: catalystTiming.magazine,
@@ -1639,9 +1791,7 @@ export function renderWeaponImport(report: WeaponReport): string {
           t
             ? `Magazin ${w.magazine} → ${t.magazine}, Shots ${w.totalShots ?? "∞"} → ${t.totalShots ?? "∞"}, Zeit bis leer ${w.timeToEmptySeconds === null ? "–" : de(w.timeToEmptySeconds, 1)} → ${t.timeToEmptySeconds === null ? "–" : de(t.timeToEmptySeconds, 1)} s, rpm ${de(w.derivedRpm ?? 0, 0)} → ${de(60 / t.intervalSeconds, 0)}`
             : "–",
-          cell(
-            (w.catalystText ?? "").split("\n")[0].slice(0, 120) || "–",
-          ),
+          cell((w.catalystText ?? "").split("\n")[0].slice(0, 120) || "–"),
         ].join(" | ")} |`;
       }),
     "",
