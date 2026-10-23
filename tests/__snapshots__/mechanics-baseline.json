@@ -123,12 +123,12 @@
     "choir-of-one": {
       "30s plain": 31140,
       "30s buffed": 52427.3,
-      "30s plain catalyst": 155700,
-      "30s buffed catalyst": 262136.52,
+      "30s plain catalyst": 31140,
+      "30s buffed catalyst": 52427.3,
       "600s plain": 31140,
       "600s buffed": 52427.3,
-      "600s plain catalyst": 155700,
-      "600s buffed catalyst": 262136.52
+      "600s plain catalyst": 31140,
+      "600s buffed catalyst": 52427.3
     },
     "cloudstrike": {
       "30s plain": 20595.04,

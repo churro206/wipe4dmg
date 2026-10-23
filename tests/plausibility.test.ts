@@ -182,6 +182,25 @@ describe("all weapons (2026-10-23)", () => {
     );
     expect(off).toEqual([]);
   });
+
+  // Catches a catalyst timing that skips a unit fix of the base (Choir of One ×5 with the catalyst,
+  // 2026-10-23); no catalyst more than doubles the damage in 30 s.
+  // Ager's Scepter: Will Given Form spends the Super for +80 % damage and a magazine of 192.
+  const STRONG_CATALYSTS = ["ager-s-scepter"];
+  it("rule: the catalyst changes the damage in 30 s by at most ×2", () => {
+    const off = weapons
+      .filter((w) => w.catalyst && !STRONG_CATALYSTS.includes(w.id))
+      .map(
+        (w) =>
+          [
+            w,
+            run({ catalyst: true }, w).totalDamage / run({}, w).totalDamage,
+          ] as const,
+      )
+      .filter(([, r]) => r > 2 || r < 0.9)
+      .map(([w, r]) => `${w.name} ${fmt(r)}`);
+    expect(off).toEqual([]);
+  });
 });
 
 describe("catalysts from texts (2026-10-23)", () => {

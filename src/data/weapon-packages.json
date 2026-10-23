@@ -1736,46 +1736,7 @@
     "catalyst": {
       "name": "Subsistence Refit, Destabilizing Rounds Refit, Onslaught Refit",
       "description": "Grants the Subsistence trait:\nWeapon Kills refill 10% of the magazine (rounded up) from reserves.\nSubmachine Gun and Auto Rifle Kills refill 17% of the magazine.\nGrants the Destablizing Rounds trait:\nWeapon Kills apply Volatile to enemies in a 7 meter radius around the target and grant Volatile Rounds for 3 seconds.\n1.5 second cooldown between activations.\nGrants the Onslaught trait:\nWeapon Kills grant a Stack of 'Onslaught' for 4.5 seconds. Maximum of 3 Stacks.\nBenefits at 1|2|3 Stacks of Onslaught:\n• 16.7% | 28.6% | 37.5% decreased Firing Delay\n• 15 | 25 | 35 Reload Speed",
-      "effect": "timing",
-      "timing": {
-        "fireRateRpm": {
-          "value": 1348.315,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "Derived: (TtE 17.748 s − 8 reloads × 1.017 s) ÷ 216 intervals within magazines (ADR 0013)"
-          }
-        },
-        "magazine": {
-          "value": 25,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified"
-          }
-        },
-        "totalShots": {
-          "value": 225,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified"
-          }
-        },
-        "reloadTimeMs": {
-          "value": 972,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified"
-          }
-        }
-      }
+      "effect": "none"
     }
   },
   {

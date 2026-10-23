@@ -1401,7 +1401,13 @@ export function buildWeaponImport(
     const back = plainHasCatalyst
       ? timingWithoutCatalyst(timing, catalystTexts)
       : null;
-    if (catalystNamesTiming) {
+    // An override that reshapes the timing (ammo per shot, combos, own values) is not in the raw
+    // rows with the catalyst; only its own catalyst row counts then.
+    const reshaped =
+      timingOverride?.ammoPerShot !== undefined ||
+      timingOverride?.shots !== undefined ||
+      timingOverride?.values !== undefined;
+    if (catalystNamesTiming && !reshaped) {
       if (derivedFrom) {
         catalystTiming = derivedFrom;
       } else if (back) {
