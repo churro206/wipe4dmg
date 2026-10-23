@@ -2,6 +2,23 @@
 
 Verschoben aus `CLAUDE.md` (2026-10-23). Nach jedem Block aktualisieren. Für die Website: `docs/roadmap.md`.
 
+## Reihenfolge (Inhaber, 2026-10-23, ersetzt die Listen „Danach“ unten)
+
+Breite vor Genauigkeit, ganze Kategorien pro Block (Regel in `CLAUDE.md`). Modell: Plan mit Opus, Umsetzung nach Muster mit Sonnet.
+
+1. **Abilities aus Compendium-Teilen** (ADR 0009, U9 `build:abilities`) statt Aegis-Pakete zu zerlegen. Aegis bleibt Gate mit ±15 %. Keywords, Ember und Fragments (Whisper of Fissures, Touch of Thunder, Jolt in Stormtrance, Volatile in Pocket Singularity) kommen als eigene Teile dazu und zählen damit nicht doppelt. Opus: Plan und erste Ability als Muster, Sonnet: die restlichen.
+2. **Alle Buffs, Debuffs, Mods und Artifact-Perks** aus Court und Compendium in einem Block, als Schalter (u. a. Feast of Light, Banner of War, Expanding Abyss). Sonnet.
+3. **Energie einfach:** Cooldown aus Compendium und Stat ergibt die Casts pro Damage Phase; Refunds als Prozent aus dem Text (ersetzt U7 mit langem ADR; kurze Notiz in ADR 0015 genügt). Plan Opus, Umsetzung Sonnet.
+4. **Restliche Exotics, Aspects, Fragments** in einem Block, `derived` aus dem Text; Facet of Courage, Melee-Bucket (U6-4), Exotics mit eigenem Schaden, Class Items (U6-3). Sonnet.
+5. **Gesamtprobe mit Meta-Builds** aus Aegis Sustained und Swap (10 bis 15 Builds im richtigen Verhältnis), danach Feinschliff nur, wo die Probe daneben liegt. Opus.
+
+## Bekannte Ungenauigkeiten
+
+- Super-Timings aus Geminis Schätzungen (`unverified`).
+- 26 Catalysts „unbekannt“, Symmetry-Grundwert vermutlich zu niedrig.
+- Reload-Faktor aus d2foundry nur relativ (absolut 0,44- bis 1,5-fach gegen Aegis).
+- Deadshot liegt bei Aegis 40 % unter dem Compendium (vermutlich Falloff).
+
 ## Stand (2026-10-22)
 
 - **Umbau nach ADR 0015:** U1–U5, U6-1, U6-1b, U6-2 (Aspects/Fragments, Zustände) und U8 (Exotic-Auswahl, Link-Format 4) sind fertig. **Offen:** U6-3 Exotic Class Items und Transcendence, U6-4 Melee-Bucket additiv, U7 Timing (Class Ability in der Rotation, `refillOnCast`, `magazineRefill`), U9 `build:abilities`, Ember of Ashes aus `effects.json` umziehen.
