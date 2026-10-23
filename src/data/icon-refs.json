@@ -1,5 +1,12 @@
 [
   {
+    "key": "effect:weapons-of-light",
+    "manifestRef": {
+      "table": "DestinySandboxPerkDefinition",
+      "hash": 3112248479
+    }
+  },
+  {
     "key": "subclass:hunter:arc",
     "manifestRef": {
       "table": "DestinyInventoryItemDefinition",

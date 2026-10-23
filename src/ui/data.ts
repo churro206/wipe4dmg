@@ -103,7 +103,17 @@ export const linkRegistry: LinkRegistry = {
   exoticArmor,
 };
 
-const icons = loadIconIndex(rawIcons).icons;
+const importedIcons = loadIconIndex(rawIcons).icons;
+// A variant with exotic armor or an effect (ADR 0014) shows the icon of its ability.
+const icons: Record<string, string> = {
+  ...Object.fromEntries(
+    abilities.flatMap((a) => {
+      const path = a.variantOf && importedIcons[`ability:${a.variantOf}`];
+      return path ? [[`ability:${a.id}`, path]] : [];
+    }),
+  ),
+  ...importedIcons,
+};
 
 /** URL of an imported Bungie icon (ADR 0008), e.g. iconUrl("effect:radiant"); undefined if missing. */
 export function iconUrl(key: string): string | undefined {

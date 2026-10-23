@@ -202,7 +202,14 @@ const armorRefs: IconRef[] = ExoticArmorEntry.array()
 const buffEffects = existsSync(new URL("src/data/buff-effects.json", ROOT))
   ? Effect.array().parse(readJson("src/data/buff-effects.json"))
   : [];
-const buffIcons = namedIconRefs(buffEffects, items);
+// Effects with the element icon or a hand ref in icon-refs.json need no item of their own.
+const handRefs = IconRef.array().parse(readJson("src/data/icon-refs.json"));
+const buffIcons = namedIconRefs(
+  buffEffects.filter(
+    (e) => !e.elementIconKey && !handRefs.some((r) => r.key === `effect:${e.id}`),
+  ),
+  items,
+);
 if (buffIcons.missing.length > 0)
   console.warn(`No manifest item with an icon for: ${buffIcons.missing.join(", ")}`);
 const refs = collectIconRefs(
@@ -221,7 +228,7 @@ const refs = collectIconRefs(
     ...catalystRefs,
     ...armorRefs,
     ...buffIcons.refs,
-    ...IconRef.array().parse(readJson("src/data/icon-refs.json")),
+    ...handRefs,
     ...abilityIconRefs(
       AbilityData.array().parse(readJson("src/data/abilities.json")),
       manifestAbilities.abilities,
