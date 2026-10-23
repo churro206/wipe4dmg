@@ -222,6 +222,65 @@ describe("primaries", () => {
   });
 });
 
+describe("catalysts", () => {
+  it("Telesto: 4 rounds per magazine without, 7 with the catalyst (Clarity 4🠚7)", () => {
+    const telesto = byName("Telesto")!;
+    expect(value(telesto.magazine)).toBe(4);
+    expect(value(telesto.catalyst!.timing!.magazine)).toBe(7);
+    expect(telesto.catalyst!.effect).toBe("timing");
+  });
+
+  it("Gjallarhorn: Quantum's plain row has the catalyst magazine 2; without it 1", () => {
+    const gjally = byName("Gjallarhorn")!;
+    expect(value(gjally.magazine)).toBe(1);
+    expect(value(gjally.catalyst!.timing!.magazine)).toBe(2);
+  });
+
+  it("Thunderlord: the catalyst refills from lightning strikes, so no reloads (Quantum cata)", () => {
+    const thunderlord = byName("Thunderlord")!;
+    const t = thunderlord.catalyst!.timing!;
+    expect(value(t.magazine)).toBe(value(t.totalShots));
+  });
+
+  it("rule: every package with a catalyst in the manifest or Clarity offers it", () => {
+    const inputs = loadWeaponImportInputs();
+    const missing = result.packages
+      .filter((w) => {
+        const m = inputs.manifest.find((x) => x.hash === w.manifestHash)!;
+        return m.catalyst !== null && w.catalyst === undefined;
+      })
+      .map((w) => w.name);
+    expect(missing).toEqual([]);
+  });
+
+  it("rule: a catalyst never lowers damage", () => {
+    const lower = result.packages.flatMap((w) =>
+      (w.options ?? [])
+        .filter((o) => o.kind === "catalyst" && value(o.factor)! < 1)
+        .map((o) => `${w.name} ×${value(o.factor)}`),
+    );
+    expect(lower).toEqual([]);
+  });
+
+  it("rule: with the catalyst, the simulator reaches its time to empty within ±3 %", () => {
+    const off = result.report.weapons
+      .filter((r) => r.catalystTiming?.timeToEmptySeconds)
+      .flatMap((r) => {
+        const weapon = byName(r.name)!;
+        const timeToEmpty = r.catalystTiming!.timeToEmptySeconds!;
+        const shots = simulate(weapon, timeToEmpty * 2, [], loadBuckets(rawBuckets), {
+          catalyst: true,
+          keywords,
+        }).shots;
+        const last = shots.at(-1)!.timeMs / 1000;
+        return Math.abs(last / timeToEmpty - 1) > 0.03
+          ? [`${r.name} ${last.toFixed(1)} s vs ${timeToEmpty.toFixed(1)} s`]
+          : [];
+      });
+    expect(off).toEqual([]);
+  });
+});
+
 describe("rules", () => {
   it("names a reason for every gap", () => {
     for (const gap of result.gaps) expect(gap.reason, gap.name).not.toBe("");

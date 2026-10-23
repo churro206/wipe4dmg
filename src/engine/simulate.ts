@@ -125,15 +125,17 @@ export function simulate(
   options: SimulationOptions = {},
 ): SimulationResult {
   const catalyst = options.catalyst ?? false;
+  // A catalyst that changes magazine, ammo or reload replaces the timing while it is on.
+  const timing = (catalyst && weapon.catalyst?.timing) || weapon;
   const chargeTimeMs = requireValue(weapon.chargeTimeMs, "chargeTimeMs");
-  const fireRateRpm = requireValue(weapon.fireRateRpm, "fireRateRpm");
-  const magazine = requireValue(weapon.magazine, "magazine");
+  const fireRateRpm = requireValue(timing.fireRateRpm, "fireRateRpm");
+  const magazine = requireValue(timing.magazine, "magazine");
   // Primary ammo is unlimited (Quantum: reserves "inf"); the damage phase ends the shots.
   const totalShots =
     weapon.ammo === "primary"
       ? Number.POSITIVE_INFINITY
-      : requireValue(weapon.totalShots, "totalShots");
-  const reloadTimeMs = requireValue(weapon.reloadTimeMs, "reloadTimeMs");
+      : requireValue(timing.totalShots, "totalShots");
+  const reloadTimeMs = requireValue(timing.reloadTimeMs, "reloadTimeMs");
 
   if (fireRateRpm <= 0) {
     throw new Error(`fireRateRpm must be positive, got ${fireRateRpm}`);

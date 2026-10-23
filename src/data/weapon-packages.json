@@ -114,7 +114,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Funeral Pyre, Ace of Spades Catalyst",
+      "description": "Firefly's explosion damage is increased by 50% while Memento Mori is active.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "ager-s-scepter",
@@ -231,7 +236,71 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.7632,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ager-s-scepter-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Precision (or body) damage with catalyst / without"
+          }
+        },
+        "durationSeconds": null,
+        "condition": "While at full Super Energy, Hold [Reload] to activate Will Given Form."
+      }
+    ],
+    "catalyst": {
+      "name": "Will Given Form, Ager's Scepter Catalyst",
+      "description": "While at full Super Energy, Hold [Reload] to activate Will Given Form.\nWill Given Form immediately takes away 20% Super Energy, then drains at a rate of 4% Super Energy per second to grant the following benefits:\n• Overfills the magazine from reserves to 192\n• 80% increased damage\n• 20 [0] slow stacks per hit\nEffect lasts until deactivated by holding [Reload] again, or until the magazine is emptied, super energy is drained, or the weapon is stowed.\nDoes not count as a super for related effects or buffs.",
+      "effect": "damageAndTiming",
+      "timing": {
+        "fireRateRpm": {
+          "value": 2898.204,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ager-s-scepter-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 12.9 s − 2 reloads × 1.44 s) ÷ 484 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 194,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ager-s-scepter-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 485,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ager-s-scepter-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1440,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ager-s-scepter-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "arbalest",
@@ -259,11 +328,11 @@
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Derived: (TtE 24.632 s − 3 reloads × 1.733 s) ÷ 18 intervals within magazines (ADR 0013)"
+        "note": "Derived: (TtE 24.632 s − 3 reloads × 1.733 s) ÷ 18 intervals within magazines (ADR 0013); without catalyst from Clarity: Magazine Size by one (5🠚6)"
       }
     },
     "magazine": {
-      "value": 6,
+      "value": 5,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row arbalest",
         "url": "https://destiny2.science/boss-damage",
@@ -272,7 +341,7 @@
       }
     },
     "totalShots": {
-      "value": 22,
+      "value": 21,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row arbalest",
         "url": "https://destiny2.science/boss-damage",
@@ -349,7 +418,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Genesis, Arbalest Catalyst",
+      "description": "Passively grants:\n• 20 Handling\n• Increases Magazine Size by one (5🠚6)\nRefills magazine from reserves upon breaking a PVE Combatant, Barrier Champion, or Player Shield.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 55.576,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row arbalest",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived: (TtE 24.632 s − 3 reloads × 1.733 s) ÷ 18 intervals within magazines (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 6,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row arbalest",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "totalShots": {
+          "value": 22,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row arbalest",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 653,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row arbalest",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "bad-juju",
@@ -466,7 +579,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Unending Curse, Bad Juju Catalyst",
+      "description": "String of Curses's maximum duration is increased by 2 seconds (5.5🠚7.5).",
+      "effect": "none"
+    }
   },
   {
     "id": "bastion",
@@ -583,7 +701,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Cast No Shadows, Bastion Catalyst",
+      "description": "Dealing Melee Damage refills 20% of the Magazine (rounded up) and grants ? Handling for ? seconds.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "borealis",
@@ -700,7 +823,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Shield Disorient, Borealis Catalyst",
+      "description": "Passively grants 20 Reload Speed.\nOn Matching Elemental Shield Break:\nExplosion disorients enemies within 7 meters for 5 seconds.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "buried-bloodline",
@@ -817,7 +945,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Splitvein Lineage, Buried Bloodline Catalyst",
+      "description": "While Devour is active, grants the following benefits:\n• Hits apply Weaken for 6 seconds\n• ? Reload Speed\n• ? Decreased Reload Animation Duration",
+      "effect": "unknown"
+    }
   },
   {
     "id": "centrifuse",
@@ -934,7 +1067,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Static Buildup, Centrifuse Catalyst",
+      "description": "While you are Amplified, Overcharge Capacitor will continuously build at a rate of 7% charge per second and no longer passively decay.",
+      "effect": "none"
+    }
   },
   {
     "id": "cloudstrike",
@@ -1051,7 +1189,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Triple Tap, Cloudstrike Catalyst",
+      "description": "Passively grants 25 Handling.\nGrants the Triple Tap trait:\nScoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 154.676,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-cloudstrike-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 23.4 s − 4 reloads × 1.68 s) ÷ 43 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 10,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-cloudstrike-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 44,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-cloudstrike-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1680,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-cloudstrike-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "coldheart",
@@ -1168,7 +1350,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Supercharged Magazine, Coldheart Catalyst",
+      "description": "Passively grants 20 Stability and 20 Reload Speed.\n(Yes, these are the same stats that are set to 100 when at 100% Fusion Energy)\nRefills 5% of the magazine (rounded up) every 1.5 seconds while Amplified.\nActivating Speed Booster increases this rate to once every 0.25 seconds, and allows the perk to overfill the magazine up to double its base capacity.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "collective-obligation",
@@ -1285,7 +1472,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Repulsor Brace, Collective Obligation Catalyst",
+      "description": "",
+      "effect": "none"
+    }
   },
   {
     "id": "conditional-finality",
@@ -1402,7 +1594,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Heal Clip, Rimestealer, Conditional Finality Catalyst",
+      "description": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.\nKilling Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
+      "effect": "none"
+    }
   },
   {
     "id": "crimson",
@@ -1519,7 +1716,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "To the Pain, Crimson Catalyst",
+      "description": "Passively grants 20 Range.\nEvery 30 points of damage taken with the weapon readied grants a Stack of 'To the Pain'. Maximum of 10 Stacks. Stowing the weapon removes all Stacks.\nEach Stack grants ? Handling and 2 Aim Assist, maxing out at ? Handling and 20 Aim Assist.\nSelf-damage and environmental damage do not count.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "cryosthesia-77k",
@@ -1636,7 +1838,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Cold Efficiency, Cryosthesia 77K Catalyst",
+      "description": "Shattering a Frozen enemy instantly refills the magazine.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "d-a-r-c-i",
@@ -1773,7 +1980,12 @@
         "durationSeconds": null,
         "condition": null
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Networked Targeting, D.A.R.C.I. Catalyst",
+      "description": "Passively grants 20 Stability.\nHits on Highlighted targets grants one stack of 'Networked Targeting' to you and allies within a 15 meter radius for 10.5 seconds. Maximum of 5 stacks.\nNetworked Targeting buffs D.A.R.C.I and Non-Exotic Sniper Rifles.\nBenefits at 1|2|3|4|5 Stacks:\n• 2.8%|6.1%|9.1%|12.5%|15.9% increased damage\n• ? Stability, Handling, Aim Assist, Flinch Resistance\nGranting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%.",
+      "effect": "damage"
+    }
   },
   {
     "id": "dead-messenger",
@@ -1891,7 +2103,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Turnabout, Dead Messenger Catalyst",
+      "description": "Grants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.",
+      "effect": "none"
+    }
   },
   {
     "id": "delicate-tomb",
@@ -2008,7 +2225,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Ionic Interment, Delicate Tomb Catalyst",
+      "description": "Picking up Ionic Traces refill 4 ammo from reserves.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "deterministic-chaos",
@@ -2125,7 +2347,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Target Lock, Deterministic Chaos Catalyst",
+      "description": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "devil-s-ruin",
@@ -2245,24 +2472,6 @@
     ],
     "options": [
       {
-        "id": "pyrogenesis-collective-action",
-        "name": "Pyrogenesis, Collective Action",
-        "kind": "catalyst",
-        "bucketId": "weaponPerk",
-        "factor": {
-          "value": 0.3502,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-devil-s-ruin-pyrogenesis-collective-action",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "Single hit 415 / 1185 (base row sidearm-devil-s-ruin)"
-          }
-        },
-        "durationSeconds": null,
-        "condition": "Charged Laser applies 20 Scorch (30 with Ember of Ashes) for every hit and triggers an Ignition on every kill."
-      },
-      {
         "id": "pyrogenesis",
         "name": "Pyrogenesis",
         "kind": "perk",
@@ -2280,7 +2489,12 @@
         "durationSeconds": null,
         "condition": "Charged Laser applies 20 Scorch (30 with Ember of Ashes) for every hit and triggers an Ignition on every kill."
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Collective Action, Devil's Ruin Catalyst",
+      "description": "Elemental Pickup Interactions grant 30% [10%] increased damage for a variable duration based on the pickup. Can be activated while stowed.\nIonic Traces, Stasis Shards, and Tangle Detonations grant the buff for 4 seconds. Throwing a held Tangle grants 4 additional seconds. Firesprites and Void Breaches grant the buff for 8 seconds.\nAdditional Pickups can extend the duration up to the maximum of 16 seconds.\nElemental Pickup Interactions:\n• Destroying a Tangle (or Elemental Orbs), either by shooting or throwing.\n• Collecting Firesprites, Ionic Traces, Stasis Shards, or Void Breaches\nDoes not trigger with Stasis Shards generated from Facet of Awakening or Facet of Command.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "dragon-s-breath",
@@ -2397,7 +2611,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Pyromancer, Dragon's Breath Catalyst",
+      "description": "Doubles the rate of passive Composite Propellant generation (6🠚3 Seconds per stack).\nKills generate Firesprites. These kills ignore the global Firesprite spawning cooldown.",
+      "effect": "none"
+    }
   },
   {
     "id": "edge-of-action",
@@ -2514,7 +2733,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Repulsor Brace, Edge of Action Catalyst",
+      "description": "Kills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence).",
+      "effect": "none"
+    }
   },
   {
     "id": "edge-of-concurrence",
@@ -2631,7 +2855,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Eddy Current, Edge of Concurrence Catalyst",
+      "description": "Grants the following after sprinting for 1.5 seconds with the weapon readied:\n• 20 Reload Speed\n• 0.95x Reload Duration Multiplier\n• ? Handling\n• 0.95x Handling Animation Duration Multiplier\nSprinting refreshes the buff duration.\nBeing Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "edge-of-intent",
@@ -2748,7 +2977,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Heal Clip, Edge of Intent Catalyst",
+      "description": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
+      "effect": "none"
+    }
   },
   {
     "id": "eriana-s-vow",
@@ -2776,11 +3010,11 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived: (Time to Empty 25.6 s − 3 reloads × 1.66 s) ÷ 34 intervals (ADR 0013)"
+        "note": "Derived: (Time to Empty 25.6 s − 3 reloads × 1.66 s) ÷ 34 intervals (ADR 0013); without catalyst from Clarity: magazine size by 3 (6🠚9)"
       }
     },
     "magazine": {
-      "value": 9,
+      "value": 6,
       "source": {
         "name": "Quantum Damage-ics (specials), row specials-hand-cannon-eriana-s-vow",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -2789,7 +3023,7 @@
       }
     },
     "totalShots": {
-      "value": 35,
+      "value": 32,
       "source": {
         "name": "Quantum Damage-ics (specials), row specials-hand-cannon-eriana-s-vow",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -2865,7 +3099,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "More to Give, Eriana's Vow Catalyst",
+      "description": "Increases the magazine size by 3 (6🠚9).\nRefills stowed weapon from reserves after 3.5 seconds of it being stowed.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 98.933,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-hand-cannon-eriana-s-vow",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 25.6 s − 3 reloads × 1.66 s) ÷ 34 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 9,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-hand-cannon-eriana-s-vow",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 35,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-hand-cannon-eriana-s-vow",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1660,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-hand-cannon-eriana-s-vow",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "euphony",
@@ -2982,7 +3260,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Enlightened Action, Euphony Catalyst",
+      "description": "Weapon Hits grant Stacks of Enlightened Action for 2 seconds. Maximum of 12 Stacks.\nStat bonuses at 1|2|…|12 Stacks:\n2|7|12|15|20|25|30|35|38|40|45|50 Handling and Reload Speed\nStacks granted per hit by Weapon Type:\n• Hand Cannons: 3 Stacks\n• Bows: ? Stacks\n• Automatic Weapons: 1 Stack",
+      "effect": "unknown"
+    }
   },
   {
     "id": "eyes-of-tomorrow",
@@ -3099,7 +3382,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Demolitionist, Blast Distributor, Eyes of Tomorrow Catalyst",
+      "description": "Dealing damage grants a stack of 'Blast Distributor' for 5 seconds, increasing your Grenade Stat by 10 per stack. Maximum of 5 stacks.\nKills grant 10% Grenade Ability Energy.\nUsing your Grenade Ability refills the Magazine with a 3 second cooldown.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "forerunner",
@@ -3216,7 +3504,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "The Rock, Forerunner Catalyst",
+      "description": "Holding [Reload] within 4 seconds of a kill consumes 4 ammo, refills the magazine, and grants 'The Rock'.\nThe Rock replaces your grenade ability with a tossed Kinetic grenade that explodes for 2072 [181] damage in a 9 meter radius, dealing 20% damage at the edge of its radius. Detonates 0.6 seconds after it slows down enough.\nThe Rock counts as a grenade ability and is buffed by, and triggers, grenade-associated effects.",
+      "effect": "none"
+    }
   },
   {
     "id": "gjallarhorn",
@@ -3244,11 +3537,11 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived: (Time to Empty 18.2 s − 5 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
+        "note": "Derived: (Time to Empty 18.2 s − 5 reloads × 2.35 s) ÷ 10 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 1 (1🠚2)"
       }
     },
     "magazine": {
-      "value": 2,
+      "value": 1,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-gjallarhorn",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -3257,7 +3550,7 @@
       }
     },
     "totalShots": {
-      "value": 11,
+      "value": 10,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-gjallarhorn",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -3333,7 +3626,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "More Wolves, Gjallarhorn Catalyst",
+      "description": "Increases Magazine Size by 1 (1🠚2).\nKills with Wolfpack Rounds spawn an upgraded Wolfpack Round that seeks targets ?% faster and deals 126.5% increased damage.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 93.023,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-gjallarhorn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 18.2 s − 5 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 2,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-gjallarhorn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 11,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-gjallarhorn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 2350,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-gjallarhorn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "hard-light",
@@ -3450,7 +3787,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Light Touch, Hard Light Catalyst",
+      "description": "Grants 25 Stability.\nWhile Amplified, Radiant, or Devour is active:\n• ? Handling\n• ? Reload Speed\n• ?% decreased Reload Animation Duration\n• ?% decreased ADS Animation Duration",
+      "effect": "unknown"
+    }
   },
   {
     "id": "hawkmoon",
@@ -3478,11 +3820,11 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf); without catalyst from Clarity: Magazine Size by 1 (8🠚9)"
       }
     },
     "magazine": {
-      "value": 9,
+      "value": 8,
       "source": {
         "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -3567,7 +3909,52 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Hunter's Trance, Hawkmoon Catalyst",
+      "description": "Increases Magazine Size by 1 (8🠚9).\nGrants the following benefits at 1|2|3|...|7| stacks of Paracausal Charge:\n• 8|14|22|26|28|29|30 Range\n• 15|25|35|40|50|50|50 Reload Speed\n• ? Handling\nClarity's Exotic Weapon Insights built by Hawkmoona Matata. Enjoy! ♥",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 140,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 9,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1640,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "heir-apparent",
@@ -3684,7 +4071,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Legion's Bulwark, Heir Apparent Catalyst",
+      "description": "Arc Shield gains 75% [25%] Damage Resistance.\nRefills 50% of the magazine upon Arc Shield being depleted.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "hierarchy-of-needs",
@@ -3801,7 +4193,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Panoptic Tessellation, Hierarchy of Needs Catalyst",
+      "description": "Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds:\n• 40% reduced Hip-Fire Accuracy Cone\n• 50% decreased Draw Time\n• 100 Reload Speed\n• ?% decreased Reload Animation Duration",
+      "effect": "unknown"
+    }
   },
   {
     "id": "izanagi-s-burden",
@@ -3918,7 +4315,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Peerless Edge, Izanagi's Burden Catalyst",
+      "description": "Increases the damage bonus of Honed Edge x4 by 20%, granting the following values:\n• 155% [218%] increased bodyshot damage\n• 370% [487%] increased critical damage",
+      "effect": "unknown"
+    }
   },
   {
     "id": "j-tunn",
@@ -4036,7 +4438,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Cornered, Incandescent, Jötunn Catalyst",
+      "description": "Grants the Cornered trait:\nGrants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies.\nBuff lingers for 1.5 seconds once no longer surrounded.\nAlso grants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "khvostov-7g-0x",
@@ -4153,7 +4560,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Khvostov Catalyst",
+      "description": "Scoring 25 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 🡅0.8% Super Energy.\nDoes not require Direct Hits. Hit counter persists through stow.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "le-monarque",
@@ -4270,7 +4682,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Unrelenting, Le Monarque Catalyst",
+      "description": "Grants 20 Reload Speed and 30 Stability.\nGrants the Unrelenting trait:\nStarts Health Regeneration and restores 65 HP upon reaching 100% Activation Progress with Weapon Kills within 5 seconds of each.\nActivation Progress by Enemy Rank:\n• Minor Combatants: 34%\n• Players: 67%\n• Elites, Minibosses, and Bosses: 100%",
+      "effect": "unknown"
+    }
   },
   {
     "id": "legend-of-acrius",
@@ -4298,11 +4715,11 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived: (Time to Empty 21.1 s − 2 reloads × 0.43 s) ÷ 15 intervals (ADR 0013)"
+        "note": "Derived: (Time to Empty 21.1 s − 2 reloads × 0.43 s) ÷ 15 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 2 (4🠚6)"
       }
     },
     "magazine": {
-      "value": 6,
+      "value": 4,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -4311,7 +4728,7 @@
       }
     },
     "totalShots": {
-      "value": 16,
+      "value": 14,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -4387,7 +4804,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Acrius Catalyst",
+      "description": "Grants 40 Reload Speed, 50 Ammo Generation, and increases Magazine Size by 2 (4🠚6).\nGrants the Trench Barrel trait:\nDealing Melee Damage grants the following for the next 3 shots within 5 seconds:\n• 30 Reload Speed and 30 Handling\n• 50% increased damage\nStowing the weapon removes the buff.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 44.466,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 21.1 s − 2 reloads × 0.43 s) ÷ 15 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 6,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 16,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 430,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "leviathan-s-breath",
@@ -4504,7 +4965,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Colossal Quiver, Archer's Tempo, Leviathan's Breath Catalyst",
+      "description": "Increases Reserves by 5 (9🠚14) and Ammo Generation by 80.\nPrecision Hits grant 43.7% decreased Draw Animation Speed for 3 seconds.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 70.27,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 18.9 s − 13 reloads × 0.6 s) ÷ 13 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 1,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 14,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 600,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "lodestar",
@@ -4621,7 +5126,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Supercharged Matrix, Lodestar Catalyst",
+      "description": "While Amplified:\n• 10 Aim Assist\n• ? Reload Speed\n• ?% decreased ADS Movement Speed Penalty",
+      "effect": "unknown"
+    }
   },
   {
     "id": "lord-of-wolves",
@@ -4738,7 +5248,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Fang and Claw, Lord of Wolves Catalyst",
+      "description": "Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration.\nHipfired shots apply 10 Scorch stacks (15 with Ember of Ashes) on hit with a 0.5 second cooldown.\nKills while ADS trigger a Solar explosion that applies 30 Scorch stacks (40 with Ember of Ashes) to enemies within an 8 meter radius.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "lorentz-driver",
@@ -4972,7 +5487,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Resonant Virtue, Lumina Catalyst",
+      "description": "Kills create an additional Remnant (1🠚2).",
+      "effect": "none"
+    }
   },
   {
     "id": "microcosm",
@@ -5090,7 +5610,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Thresh, Stopping Power, Microcosm Catalyst",
+      "description": "Weapon Kills grant an additional 1% Super Energy.\nGrants the following benefits against low (under 30%) Health targets. Ignores Shield HP:\n• Increased Stagger Force\n• 7% to 15% increased damage, scaling with remaining Health\n• ? Increased Target Acquisition",
+      "effect": "unknown"
+    }
   },
   {
     "id": "mida-multi-tool",
@@ -5207,7 +5732,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Vital Intel, MIDA Multi-Tool Catalyst",
+      "description": "While within 15 meters of an enemy, grants an Enhanced Radar, 20 Reload Speed, and 15% decreased Reload Animation Duration.\nBuff lingers for 4 seconds once the condition is no longer met.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "monte-carlo",
@@ -5324,7 +5854,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Stochastic Vengeance, Monte Carlo Catalyst",
+      "description": "Hold [Reload] while at maximum Markov Chain stacks to lock the bayonet.\nWhile Monte Carlo is held, it replaces your Melee Ability with a powerful glaive-like stab that deals 2,772 [140] melee damage. Stab can reach up to 7 meters away and grants 50% Melee Ability Energy on hit.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "necrochasm",
@@ -5441,7 +5976,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "One for Thrall, Necrochasm Catalyst",
+      "description": "Damaging 3 enemies within 3 seconds of each other grants the following benefits for 10 seconds:\n• 35% increased damage\n• ? Handling\n• ? Range\n• ? Aim Assist\nBuff can be refreshed.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "new-land-beyond",
@@ -5558,7 +6098,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Top Tier Mastery, New Land Beyond Catalyst",
+      "description": "While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on each shot.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "new-malpais",
@@ -5676,7 +6221,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Unraveling Blast, New Malpais Catalyst",
+      "description": "Embedded projectiles Unravel targets for 8 seconds upon detonation.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "no-time-to-explain",
@@ -5793,7 +6343,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Blast from the Side, No Time to Explain Catalyst",
+      "description": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
+      "effect": "none"
+    }
   },
   {
     "id": "one-thousand-voices",
@@ -5969,7 +6524,12 @@
         "durationSeconds": null,
         "condition": null
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Fall from Grace, One Thousand Voices Catalyst",
+      "description": "I gain 30 Stability and 20 Ammo Generation.\nEach of my detonations release a Taken Seeker which aggressively tracks and burrows into nearby targets, dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds.\nMy Taken Seekers can stun Overload Champions.\nMy foes can be afflicted by up to 5 seekers at once, and Blighted Enemies (directly impacted by Witherhoard) take 100% increased tick damage.\nI do not interact with Malfeasance or Wish-Ender.\n▛ Most of those who bargain with me do not win... ▟",
+      "effect": "damage"
+    }
   },
   {
     "id": "osteo-striga",
@@ -6086,7 +6646,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Osteo Striga Catalyst",
+      "description": "Grants 30 Reload and 20 Stability.\nPoison Kills instantly refill the magazine and can overfill it up to 300% total capacity.\n0.5 second cooldown between activations.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "parasite",
@@ -6203,7 +6768,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Envious Arsenal, Parasite Catalyst",
+      "description": "Dealing any damage with both of your other weapons refills the magazine from reserves upon readying the weapon.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "polaris-lance",
@@ -6320,7 +6890,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Dragonfly, Polaris Lance Catalyst",
+      "description": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.",
+      "effect": "none"
+    }
   },
   {
     "id": "quicksilver-storm",
@@ -6437,7 +7012,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Nano-entanglement, Quicksilver Storm Catalyst",
+      "description": "Converts this weapon's element into Strand damage.\nKills with Grenade Chaser grenades spawn a Tangle.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "rat-king",
@@ -6554,7 +7134,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Infestation, Rat King Catalyst",
+      "description": "Grants 20 Aim Assist and 20 Recoil Direction.\nFinishing a reload within 6 seconds of a kill begins Health Regeneration.",
+      "effect": "none"
+    }
   },
   {
     "id": "red-death-reformed",
@@ -6671,7 +7256,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Helping Hand, Red Death Reformed Catalyst",
+      "description": "Scoring 2 [1] kills grants 'Red Death Charged'.\nYour next kill with Red Death Reformed consumes this buff and triggers a burst of healing, granting 120 HP (Cure x2) to allies within a 7.5 meter radius of you.\nThis kill also spawns a Restoration Orb at your feet, granting you and allies Restoration x2 for 4 seconds (6 with Ember of Solace) on pickup.",
+      "effect": "none"
+    }
   },
   {
     "id": "ruinous-effigy",
@@ -6788,7 +7378,32 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.2927,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ruinous-effigy-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Precision (or body) damage with catalyst / without"
+          }
+        },
+        "durationSeconds": 7,
+        "condition": "Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] increased weapon damage for 7 seconds."
+      }
+    ],
+    "catalyst": {
+      "name": "Deconstruction, Ruinous Effigy Catalyst",
+      "description": "Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] increased weapon damage for 7 seconds.",
+      "effect": "damage"
+    }
   },
   {
     "id": "service-of-luzaku",
@@ -6905,7 +7520,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Service of Luzaku Catalyst",
+      "description": "Teeming Nests can be harvested into a collectible Tangle after spawning 6 Threadlings. This destroys the nest.\nThese tangles ignore the global Tangle cooldown.",
+      "effect": "none"
+    }
   },
   {
     "id": "slayer-s-fang",
@@ -7055,7 +7675,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Stats for All Refit, Cascade Point Refit, Repulsor Brace Refit, Loose Change Refit",
+      "description": "Grants the Stats For All trait:\nUpon damaging 3 Separate Enemies within 3 seconds of each, for 10 seconds:\n• 35 Handling and Reload Speed\n• 10 Stability and Range\n• 5% increased Damage Falloff Distance\n• 0.95x Reload Duration Multiplier\nBuff duration cannot be refreshed.\nGrants the Cascade Point trait:\nAfter scoring a kill or multiple Precision Hits within 5 seconds of each with a different weapon:\nReadying this weapon reduces its Firing Delay for 2.5 seconds.\nFiring Delay is reduced by 30% on SMGs and Machine Guns and by 40% on other archetypes.\nPrecision Hits requried per weapon archetype:\n• Bows, Linear Fusion/Sniper Rifles, Shotguns, Glaive Projectiles: 2 hits\n• Hand Cannons, Scout Rifles: 4 hits\n• Auto/Trace/Pulse Rifles, SMGs, Machine Guns, Sidearms: 6 hits\nGrants the Repulsor Brace trait:\nKills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence).\nGrants the Loose Change trait:\nApplying an Elemental Debuff grants the following benefits for 9 seconds:\n• 50 Reload Speed and 20 Aim Assist\n• 20% decreased ADS Movement Speed Penalty\nBuff can be activated while stowed.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "sleeper-simulant",
@@ -7173,7 +7798,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Accelerated Coils, Deeper Pockets, Sleeper Simulant Catalyst",
+      "description": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774) without reducing damage.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 44.037,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived: (TtE 22.5 s − 3 reloads × 2.05 s) ÷ 12 intervals within magazines (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 4,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "totalShots": {
+          "value": 16,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 687,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "still-hunt",
@@ -7290,7 +7959,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Lucky Shot, Still Hunt Catalyst",
+      "description": "Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'.\nScoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer. Additional precision hits during this timer continue to refill the magazine from reserves.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "sturm",
@@ -7407,7 +8081,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Helping Hands, Sturm Catalyst",
+      "description": "Grants 40 Handling and 20 Range.\nKills with Overcharged Rounds grants 2 stacks of 'Helping Hands'. Maximum of 6 stacks.\nHelping Hands grants 50% decreased Stow/Ready Animation Speed while active. Readying Sturm or a Together Forevever weapon consumes one stack.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "sunshot",
@@ -7524,7 +8203,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Loose Change, Sunshot Catalyst",
+      "description": "Grants 30 Range and 20 Stability.\nApplying an Elemental Debuff grants the following benefits for 9 seconds:\n• 50 Reload Speed and 20 Aim Assist\n• 20% decreased ADS Movement Speed Penalty\nBuff can be activated while stowed.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "sweet-business",
@@ -7641,7 +8325,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Serious Business, Sweet Business Catalyst",
+      "description": "Grants 25% increased Flinch Resistance while at maximum Rate of Fire.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "symmetry",
@@ -7758,7 +8447,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Eddy Current, Electric Styx, Symmetry Catalyst",
+      "description": "Grants 10 Reload Speed and 10 Handling.\nDynamic Charge's maximum stack count is is increased by 5 (15🠚20), allowing for up to 600% increased damage and 100% increased radius.\nGrants the Eddy Current trait:\nGrants the following after sprinting for 1.5 seconds with the weapon readied:\n• 20 Reload Speed\n• 0.95x Reload Duration Multiplier\n• ? Handling\n• 0.95x Handling Animation Duration Multiplier\nSprinting refreshes the buff duration.\nBeing Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "tarrabah",
@@ -7875,7 +8569,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Ambitious Assassin, Tarrabah Catalyst",
+      "description": "Reloading after scoring kills with Tarrabah overfills the magazine from reserves based on the number of Kills scored.\nTarrabah overfills the next magazine by 20% per kill scored, up to a maximum of 150% Base Magazine Capacity. Always rounds up.\nKill counter persists through stow.",
+      "effect": "none"
+    }
   },
   {
     "id": "telesto",
@@ -7903,11 +8602,11 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived: (Time to Empty 27.5 s − 2 reloads × 1.32 s) ÷ 18 intervals (ADR 0013)"
+        "note": "Derived: (Time to Empty 27.5 s − 2 reloads × 1.32 s) ÷ 18 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 3 (4🠚7)"
       }
     },
     "magazine": {
-      "value": 7,
+      "value": 4,
       "source": {
         "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -7916,7 +8615,7 @@
       }
     },
     "totalShots": {
-      "value": 19,
+      "value": 16,
       "source": {
         "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -7992,7 +8691,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Deeper Pockets, Harbinger Seethe, Telesto Catalyst",
+      "description": "Increases the Magazine Size by 3 (4🠚7) and grants 40 Ammo Generation.\nTriggering Harbinger's Pulse three times will cause Telesto to start smoking and short circuiting, granting access to 'Harbinger's Seethe'.\nHold [Reload] to slap your malfunctioning Telesto. On its next direct hit, it will spawn a Wormhole from the Telesto Dimmension, wildly spraying 22 Telesto Bolts over 2.25 seconds.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 43.443,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 27.5 s − 2 reloads × 1.32 s) ÷ 18 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 7,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 19,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1320,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "the-chaperone",
@@ -8109,7 +8852,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Triple Tap, The Chaperone Catalyst",
+      "description": "Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "the-colony",
@@ -8137,11 +8885,11 @@
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Derived: (TtE 15.243 s − 3 reloads × 2.05 s) ÷ 21 intervals within magazines (ADR 0013)"
+        "note": "Derived: (TtE 15.243 s − 3 reloads × 2.05 s) ÷ 21 intervals within magazines (ADR 0013); without catalyst from Clarity: Magazine Size by 1 (7🠚8)"
       }
     },
     "magazine": {
-      "value": 8,
+      "value": 7,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row the-colony",
         "url": "https://destiny2.science/boss-damage",
@@ -8150,7 +8898,7 @@
       }
     },
     "totalShots": {
-      "value": 25,
+      "value": 24,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row the-colony",
         "url": "https://destiny2.science/boss-damage",
@@ -8227,7 +8975,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Colony Catalyst",
+      "description": "Increases Magazine Size by 1 (7🠚8) and grants 30 Ammo Generation.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 138.568,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row the-colony",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived: (TtE 15.243 s − 3 reloads × 2.05 s) ÷ 21 intervals within magazines (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 8,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row the-colony",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "totalShots": {
+          "value": 25,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row the-colony",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1617,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row the-colony",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "the-fourth-horseman",
@@ -8344,7 +9136,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "And Its Name Was Death, The Fourth Horseman Catalyst",
+      "description": "Grants 40 Reload Speed and Increases Magazine Size by 1 (4🠚5)",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 105.458,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-fourth-horseman-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 12.1 s − 3 reloads × 0.43 s) ÷ 19 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 5,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-fourth-horseman-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 20,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-fourth-horseman-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 430,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-fourth-horseman-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "the-jade-rabbit",
@@ -8461,7 +9297,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Jade Rabbit Catalyst",
+      "description": "Grants 30 Stability.\nHold [Reload] to consume all Fate of All Fools stacks and load a Micro-Missile. Missile has a blast radius of 8 meters with a maximum damage falloff of 45%, and deals increased damage based on the number of stacks consumed.\nDeals 293 damage (122 impact/171 explosive) [?] at base, becoming heavily weighted towards explosive damage as the stacks increase.\nDamage is increased by 107%|157%|193%|223%|315%|345% at 2|3|4|5|10|15 Stacks, with a fully charged missile dealing 1304 (281 impact/1023 explosive) [?] damage.\nMicro-Missile deals no self damage and can be used for rocket jumping.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "the-last-word",
@@ -8578,7 +9419,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Killing Wind, Envious Assassin, The Last Word Catalyst",
+      "description": "Upon readying the weapon after scoring kills with your other Weapons:\nRefills and/or overfills the Magazine from reserves based on the amount of Weapon Kills scored.\nLoads 1 Ammo per kill achieved with other weapons.\nMaximum total overfill amount is 200% of the Magazine Capacity. Each activation can only load up to 100% of the Magazine Capacity into the magazine.\nOn Weapon Kill, for 5 seconds:\n• 50 Mobility\n• 40 Handling and 20 Range\n• 5% increased Damage Falloff Distance\nAdditional Kills extend the duration by 5 seconds, up to 8 seconds. Buff is removed on stow.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "the-manticore",
@@ -8695,7 +9541,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Flying Monster, The Manticore Catalyst",
+      "description": "While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield for 6 seconds (9 seconds with Echo of Persistance).\n1 second cooldown when activated by hits.\nNo cooldown when activated by kills.",
+      "effect": "none"
+    }
   },
   {
     "id": "the-navigator",
@@ -8812,7 +9663,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Gordian Knot, The Navigator Catalyst",
+      "description": "Hold [Reload] to activate Grapple Tangle mode.\nFires a floating Grapple Point to where the reticle previews at approximately 23.5 meters away. Identical to those made by the Widow's Silk aspect.\n30 second cooldown, starting only once grounded.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "the-wardcliff-coil",
@@ -8929,7 +9785,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Wardcliff Coil Catalyst",
+      "description": "Grants some tracking to the rockets I guess?\n(Good luck on figuring that one out!)",
+      "effect": "none"
+    }
   },
   {
     "id": "third-iteration",
@@ -9046,7 +9907,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Third Iteration Catalyst",
+      "description": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.\nExplosive damage deals 20% damage at the edge of its radius.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "thorn",
@@ -9163,7 +10029,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Refined Soul, Thorn Catalyst",
+      "description": "Passively grants 15 Range, 5 Stability, and 5 Airborne Effectiveness.\nKills or collecting Remnants grants 'Refined Soul' for 7 seconds. Additional kills or Remnants can extend this timer up to 11 seconds.\nRefined Soul grants 10 Range, 15 Handling, and 50 Mobility.",
+      "effect": "none"
+    }
   },
   {
     "id": "thunderlord",
@@ -9280,7 +10151,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Return Stroke, Thunderlord Catalyst",
+      "description": "Triggering a Lightning Strike refills 5 ammo from reserves.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 697.846,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 32.5 s − 0 reloads × 3.57 s) ÷ 378 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 379,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 379,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 3570,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "ticuu-s-divination",
@@ -9397,7 +10312,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Causality Quiver, Ticuu's Divination Catalyst",
+      "description": "Triggering Sacred Flame explosions grants one stack of 'Causality Quiver' for 5.5 seconds. Marking enemies with Sacred Flame refreshes the buff. Maximum of 6 stacks.\nCausality Quiver increases the impact damage of your arrows (not the explosion) at 1|2|3|4|5|6 stacks:\n• PvE: 16%|31%|49%|67.5%|87%|87%\n• PvP: 3.6%|11%|12%|16%|23%|23%",
+      "effect": "unknown"
+    }
   },
   {
     "id": "tractor-cannon",
@@ -9425,11 +10345,11 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived: (Time to Empty 14.2 s − 2 reloads × 1.47 s) ÷ 17 intervals (ADR 0013)"
+        "note": "Derived: (Time to Empty 14.2 s − 2 reloads × 1.47 s) ÷ 17 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 3 (4🠚7)"
       }
     },
     "magazine": {
-      "value": 7,
+      "value": 4,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -9438,7 +10358,7 @@
       }
     },
     "totalShots": {
-      "value": 18,
+      "value": 15,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -9514,7 +10434,51 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Deeper Pockets, Tractor Cannon Catalyst",
+      "description": "Increases Magazine Size by 3 (4🠚7) and grants 50 Ammo Generation.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 90.586,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 14.2 s − 2 reloads × 1.47 s) ÷ 17 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 7,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 18,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1470,
+          "source": {
+            "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "traveler-s-chosen",
@@ -9542,11 +10506,11 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf); without catalyst from Clarity: Magazine Size by 2 (15🠚17)"
       }
     },
     "magazine": {
-      "value": 17,
+      "value": 15,
       "source": {
         "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -9631,7 +10595,52 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Osmosis, Surplus, Traveler's Chosen Catalyst",
+      "description": "Increases Magazine Size by 2 (15🠚17)\nGrants the Surplus trait:\nGrants Stat Bonuses depending on the number of Charged Abilities.\nStat Bonuses with 1|2|3+ Charged Abilities:\n• 5|15|25 Stability\n• 5|25|60 Handling\n• 10|25|60 Reload Speed\nAlso grants the Osmosis trait:\nGrenade Ability usage refills 50% of your Magazine (rounded up) from reserves and changes the weapon's element to match your equipped Grenade Ability until stowed.\nMagazine Refill cannot be triggered again without stowing the weapon first.\nKinetic weapons lose their Passive Damage Bonus against non-Boss PVE Combatants (10% on Primary, 15% on Special).\nPerks that replace your Grenade Ability (such as Gunpowder Gamble or Transcendence Grenades) will also trigger Osmosis.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 300,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 17,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1030,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        }
+      }
+    }
   },
   {
     "id": "trespasser",
@@ -9748,7 +10757,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Tunnel Vision, Trespasser Catalyst",
+      "description": "Grants the Tunnel Vision trait:\nGrants the following for 5 seconds upon finishing a Reload within 3.6 seconds of a Weapon Kill:\n• 20 Aim Assist\n• ? ADS Handling\n• ?% decreased Accuracy Cone Growth\nBe The Danger's automatic reload activates this perk.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "trinity-ghoul",
@@ -9865,7 +10879,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Forked Lightning, Trinity Ghoul Catalyst",
+      "description": "Decreases Draw Time by 15% (756ms🠚633ms).\nLightning Rod is now granted after scoring any Arc kill. Trinity Ghoul must be held in order to receive Lightning Rod.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "truth",
@@ -10002,7 +11021,12 @@
         "durationSeconds": 15,
         "condition": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)"
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Reaper's Tithe, Truth Catalyst",
+      "description": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
+      "effect": "damage"
+    }
   },
   {
     "id": "two-tailed-fox",
@@ -10260,7 +11284,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Shiver Quiver, Verglas Curve Catalyst",
+      "description": "Applying Freeze or Slow to a target decreases Draw Time by 35% (567ms🠚368ms) for ? seconds.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "vexcalibur",
@@ -10410,7 +11439,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Robber Refit, Immovable Refit, Feedback Refit",
+      "description": "Grants the Grave Robber trait:\nPowered Melee Hits and (Glaive) Melee Kills refill the magazine from reserves.\n3 second cooldown between activations.\nGrants the Immovable Object trait:\nWhile blocking and stationary:\nGlaive Projectiles Hits grant 90% increased Weapon Energy.\nGrants the Replenishing Aegis trait:\nRefills 1 round into the Magazine from reserves upon blocking damage.\n1 second cooldown after activation. Does not work while the magazine is overfilled (assumed).",
+      "effect": "unknown"
+    }
   },
   {
     "id": "vigilance-wing",
@@ -10527,7 +11561,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Ensemble, Vigilance Wing Catalyst",
+      "description": "Grants the Ensemble trait:\nGrants 30 Handling and 40 Reload Speed while within 15 meters of an ally.\nBuff lingers for 1.5 seconds once you're no longer near allies.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "whisper-of-the-worm",
@@ -10697,7 +11736,12 @@
         "durationSeconds": 1.2,
         "condition": null
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Whisper Catalyst, Whispered Breathing",
+      "description": "Grants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without shooting grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against combatants.\nGrants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without firing grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against PvE Combatants.",
+      "effect": "damage"
+    }
   },
   {
     "id": "wicked-implement",
@@ -10814,7 +11858,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Hadopelagic Tribute, Headstone, Wicked Implement Catalyst",
+      "description": "Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity.\nDue Tithing Harvest refilling the entire magazine on Stasis Shard pickup, the overfill effect only activates if your current magazine is above 13 shots remaining.\nGrants the Headstone trait:\nPrecision Kills create a Large Stasis Crystal at the target's location.\nTier 1-2 Minor and Tier 1 Elite Combatants only spawn a Medium Stasis Crystal.\nCreating 5 Crystals within ? seconds prevents the perk from activating for 5 seconds.",
+      "effect": "unknown"
+    }
   },
   {
     "id": "winterbite",
@@ -10932,7 +11981,12 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Rimestealer, Winterbite Catalyst",
+      "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
+      "effect": "none"
+    }
   },
   {
     "id": "xenophage",
@@ -11050,6 +12104,11 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
-    ]
+    ],
+    "catalyst": {
+      "name": "Chain Reaction, Rampage, Xenophage Catalyst",
+      "description": "Weapon Kills grant a Stack of Rampage. Maximum of 3 Stacks. Stacks expire one at a time every 🡅4.5 seconds.\nGrants a 10%|21%|33.1% damage increase at 1|2|3 Stacks.\nWeapon Kills trigger a solar elemental explosion, dealing up to 109 [72.8] damage in a 3 meter radius.",
+      "effect": "unknown"
+    }
   }
 ]

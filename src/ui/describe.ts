@@ -11,6 +11,7 @@ import {
   type FormerCodeReason,
   type ProviderKind,
   type StatusId,
+  type Weapon,
   type WeaponType,
 } from "../data/schema";
 import type { ReplacedEffect } from "../engine/buildLink";
@@ -30,6 +31,47 @@ export const GROUP_LABELS: Record<string, string> = {
   super: "one Super",
   surge: "one Surge level",
 };
+
+/**
+ * Hover card of the catalyst switch: what it does in the calculator, then the game text. Damage as
+ * a bonus, timing as before → after, or why it does nothing here.
+ */
+export function describeCatalyst(weapon: Weapon): string[] {
+  const catalyst = weapon.catalyst;
+  const lines: string[] = [];
+  for (const option of (weapon.options ?? []).filter(
+    (o) => o.kind === "catalyst",
+  ))
+    lines.push(`${bonusPercent(option.factor.value)}% weapon damage`);
+  const timing = catalyst?.timing;
+  if (timing) {
+    const change = (label: string, before: number | null, after: number | null) =>
+      before !== after
+        ? `${label} ${before === null ? "∞" : integer.format(before)} → ${after === null ? "∞" : integer.format(after)}`
+        : null;
+    const changes = [
+      change("Magazine", weapon.magazine.value, timing.magazine.value),
+      weapon.ammo === "primary"
+        ? null
+        : change("ammo", weapon.totalShots.value, timing.totalShots.value),
+      change("rate of fire", round(weapon.fireRateRpm.value), round(timing.fireRateRpm.value)),
+      change("reload ms", weapon.reloadTimeMs.value, timing.reloadTimeMs.value),
+    ].filter((c): c is string => c !== null);
+    if (changes.length > 0) lines.push(changes.join(", "));
+  }
+  if (catalyst?.effect === "none")
+    lines.push("No effect against one boss without adds");
+  if (catalyst?.effect === "unknown")
+    lines.push("Not in the calculator yet: no source measured it");
+  const text = catalyst?.description.split("\n")[0];
+  if (text) lines.push(`In game: ${text}`);
+  return lines;
+}
+
+const round = (value: number | null) =>
+  value === null ? null : Math.round(value);
+const bonusPercent = (value: number | null) =>
+  `${(value ?? 1) >= 1 ? "+" : ""}${integer.format(((value ?? 1) - 1) * 100)}`;
 
 /** Icon key of an effect; surges show the mod of the weapon element, as in the game. */
 export function effectIconKey(effect: Effect, weaponElement: Element): string {

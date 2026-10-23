@@ -124,6 +124,34 @@ describe("primary weapons", () => {
   });
 });
 
+describe("catalysts", () => {
+  it("Gjallarhorn: the catalyst's second rocket per magazine gives more damage in 30 s", () => {
+    const off = run({}, weaponById("gjallarhorn")).totalDamage;
+    const on = run({ catalyst: true }, weaponById("gjallarhorn")).totalDamage;
+    note("Gjallarhorn Catalyst an / aus (30 s)", fmt(on / off), "> 1 (Magazin 1 → 2)");
+    expect(on / off).toBeGreaterThan(1.05);
+  });
+
+  it("Thunderlord: lightning strikes refill, so the catalyst empties the ammo sooner", () => {
+    const shots = (catalyst: boolean) =>
+      run({ catalyst, damagePhaseSeconds: 50 }, weaponById("thunderlord")).shots
+        .at(-1)!.timeMs;
+    note(
+      "Thunderlord letzter Schuss ohne / mit Catalyst",
+      `${(shots(false) / 1000).toFixed(1)} s / ${(shots(true) / 1000).toFixed(1)} s`,
+      "mit früher (kein Reload)",
+    );
+    expect(shots(true)).toBeLessThan(shots(false));
+  });
+
+  it("every weapon with a catalyst offers the switch", () => {
+    const without = weapons.filter(
+      (w) => w.catalyst === undefined && w.options === undefined,
+    ).length;
+    expect(weapons.length - without).toBeGreaterThan(80);
+  });
+});
+
 describe("buffs and debuffs have their game values on the weapon", () => {
   const firstShot = (r: SimulationResult) =>
     r.damageInstances.find((d) => d.damageSource === "weapon")!.damage;

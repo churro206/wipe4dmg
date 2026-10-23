@@ -6,7 +6,12 @@ import rawGenerated from "../src/data/exotic-armor-effects.json";
 import rawSubclass from "../src/data/subclass-effects.json";
 import { ExoticArmorEffect } from "../src/data/schema";
 import { loadEffects, loadSubclassEffects } from "../src/engine/loadData";
-import { describeEffect, describeDuration } from "../src/ui/describe";
+import {
+  describeCatalyst,
+  describeEffect,
+  describeDuration,
+} from "../src/ui/describe";
+import { weaponById } from "../src/ui/data";
 
 const effects = [
   ...loadEffects(rawEffects),
@@ -16,6 +21,29 @@ const effects = [
     .map((g) => g.effect),
 ];
 const effect = (id: string) => effects.find((e) => e.id === id)!;
+
+describe("catalyst hover card", () => {
+  it("names the timing it changes, in game words", () => {
+    expect(describeCatalyst(weaponById("telesto"))).toContain(
+      "Magazine 4 → 7, ammo 16 → 19",
+    );
+  });
+
+  it("names the damage bonus without the internal option id", () => {
+    const lines = describeCatalyst(weaponById("one-thousand-voices"));
+    expect(lines).toContain("+45% weapon damage");
+    expect(lines.join(" ")).not.toContain("catalyst ×");
+  });
+
+  it("says when a catalyst does nothing against one boss, or is not modelled yet", () => {
+    expect(describeCatalyst(weaponById("winterbite"))).toContain(
+      "No effect against one boss without adds",
+    );
+    expect(describeCatalyst(weaponById("izanagi-s-burden"))).toContain(
+      "Not in the calculator yet: no source measured it",
+    );
+  });
+});
 
 describe("hover card texts", () => {
   it("names the bonus, its target and its kind", () => {

@@ -293,6 +293,32 @@ export const WeaponOption = z.object({
 });
 export type WeaponOption = z.infer<typeof WeaponOption>;
 
+/** Shots, magazine and reload of a weapon with its catalyst; replaces the weapon's own timing. */
+export const CatalystTiming = z.object({
+  fireRateRpm: SourcedNumber,
+  magazine: SourcedNumber,
+  totalShots: SourcedNumber, // null for primary ammo (unlimited)
+  reloadTimeMs: SourcedNumber,
+});
+export type CatalystTiming = z.infer<typeof CatalystTiming>;
+
+export const CatalystEffect = z.enum([
+  "damage",
+  "timing",
+  "damageAndTiming",
+  "none",
+  "unknown",
+]);
+export type CatalystEffect = z.infer<typeof CatalystEffect>;
+
+export const WeaponCatalyst = z.object({
+  name: z.string(), // perk names, e.g. "Reaper's Tithe"
+  description: z.string(), // Clarity text of the catalyst, one line per paragraph
+  effect: CatalystEffect,
+  timing: CatalystTiming.optional(),
+});
+export type WeaponCatalyst = z.infer<typeof WeaponCatalyst>;
+
 export const Weapon = z.object({
   id: z.string(),
   code: z.number().int().positive(), // short code for build links; never reused
@@ -326,6 +352,10 @@ export const Weapon = z.object({
   includedEffectIds: z.array(z.string()).optional(),
   // Imported packages: catalyst, perks and mods as factors from the "with / without" rows.
   options: z.array(WeaponOption).optional(),
+  // The catalyst of an imported package and what it does against one boss, decided by the sources:
+  // damage (an option with factor), timing (rows with catalyst differ), none (the rows with catalyst
+  // equal those without, e.g. kill effects) or unknown (no source with catalyst).
+  catalyst: WeaponCatalyst.optional(),
 });
 export type Weapon = z.infer<typeof Weapon>;
 

@@ -7,6 +7,7 @@ import { effectAppliesToWeapon } from "./effectParts";
 /** A catalyst exists as parts of a hand model or as catalyst options of an imported package. */
 export function hasCatalyst(weapon: Weapon): boolean {
   return (
+    weapon.catalyst !== undefined ||
     weapon.damageInstances.some((i) => i.requiresCatalyst) ||
     weapon.intrinsicParts.some(
       (p) => p.type === "damageOverTime" && p.requiresCatalyst,

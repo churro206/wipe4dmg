@@ -24,7 +24,8 @@ Status: 2026-10-22
 - ✅ Tidier picker: Radiant and Weaken in their own section “Buffs & Debuffs”, one tile per item (e.g. Facet of Dominance), game icons for every aspect and fragment
 - ⏳ Stormtrance and Pocket Singularity: Jolt and Volatile count twice (+14 %, +22 %)
 - ⏳ Facet of Courage and Touch of Thunder: Aegis only measured them together with other buffs
-- ⏳ Every catalyst that changes damage output, including magazine, ammo and reload
+- ✅ Every weapon with a catalyst has the switch; its hover card says what it does here: damage (e.g. One Thousand Voices +45%), magazine and ammo (e.g. Gjallarhorn 1 → 2 rockets, Telesto 4 → 7), refills (Thunderlord, Cloudstrike), or no effect against one boss
+- ⏳ About 50 catalysts are not in the calculator yet: no source measured them (e.g. Izanagi's Burden, Deterministic Chaos, reload speed stats)
 
 ## Done in v1.0: abilities and Supers
 

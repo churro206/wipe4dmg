@@ -85,7 +85,12 @@ import {
   weaponById,
   weapons,
 } from "./data";
-import { describeExotic, effectIconKey, PROVIDER_LABELS } from "./describe";
+import {
+  describeCatalyst,
+  describeExotic,
+  effectIconKey,
+  PROVIDER_LABELS,
+} from "./describe";
 import { effectSections } from "./effectSections";
 import {
   effectRelevantTo,
@@ -474,6 +479,7 @@ function App() {
                       type="button"
                       className="tile"
                       aria-pressed={catalyst}
+                      aria-describedby="catalyst-card"
                       onClick={() => setCatalyst((on) => !on)}
                     >
                       <Icon
@@ -482,25 +488,26 @@ function App() {
                       />
                       <span className="tile-label">Catalyst</span>
                     </button>
+                    <span role="tooltip" id="catalyst-card" className="hover-card">
+                      <strong>{weapon.catalyst?.name ?? "Catalyst"}</strong>
+                      {describeCatalyst(weapon).map((line) => (
+                        <span key={line}>{line}</span>
+                      ))}
+                    </span>
                   </span>
                 )}
               </div>
-              {weapon.options?.some((o) => o.kind === "catalyst") && (
-                <p className="note">
-                  Catalyst:{" "}
-                  {weapon.options
-                    .filter((o) => o.kind === "catalyst")
-                    .map(
-                      (o) =>
-                        `${o.name} ×${factor.format(o.factor.value ?? 1)}${
-                          o.durationSeconds !== null || o.condition !== null
-                            ? " (applies for the whole Damage Phase here; limited in game)"
-                            : ""
-                        }`,
-                    )
-                    .join(", ")}
-                </p>
-              )}
+              {catalyst &&
+                weapon.options?.some(
+                  (o) =>
+                    o.kind === "catalyst" &&
+                    (o.durationSeconds !== null || o.condition !== null),
+                ) && (
+                  <p className="note">
+                    The catalyst applies for the whole Damage Phase here; in
+                    game it is limited.
+                  </p>
+                )}
 
               <h2>Class</h2>
               <SegmentedControl

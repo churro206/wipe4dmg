@@ -5,6 +5,7 @@
 
 import type {
   AegisSustainedRow,
+  CatalystEffect,
   ClarityEntry,
   WeaponOverride,
   AegisSustainedSnapshot,
@@ -69,6 +70,11 @@ const OPTION_BUCKET = "weaponPerk";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
 const RPM_HINT = 0.25; // a derived fire rate this far from the Quantum rpm is worth a look
 const BURST_TOLERANCE = 0.005; // Aegis rounds its hits; a burst sums them
+// A catalyst changes damage or timing if a value moves by more than rounding (1 %).
+const CATALYST_MIN_CHANGE = 0.01;
+// Words of a catalyst text that would change boss damage if a source quantified them.
+const CATALYST_DAMAGE = /\b(damage|scorch|jolt|unravel|weaken|ignit)/i;
+const KILLS = /\b(kills?|killing|killed|final blows?)\b/i;
 const BASE_KINDS: AssumptionKind[] = [
   "execution",
   "intrinsic",
@@ -114,6 +120,17 @@ export type ReportWeapon = {
   notes: string[];
   armor: string[];
   abilityKinds: string[];
+  catalystEffect?: CatalystEffect;
+  catalystTiming?: Timing;
+  catalystText?: string;
+};
+
+const CATALYST_LABELS: Record<CatalystEffect, string> = {
+  damage: "Schaden",
+  timing: "Timing",
+  damageAndTiming: "Schaden und Timing",
+  none: "keine",
+  unknown: "unbekannt",
 };
 export type ReportAssumption = AssumptionClass & {
   assumption: string;
@@ -323,7 +340,7 @@ const blockingReason = (classes: ReportAssumption[]): string =>
     .join("; ");
 
 /** Timing of a package; the simulator reaches timeToEmptySeconds with these values. */
-type Timing = {
+export type Timing = {
   rowId: string;
   magazine: number;
   totalShots: number | null; // null: unlimited (primary ammo)
@@ -445,6 +462,88 @@ export function timingFromQuantum(
       timeToEmptySeconds ??
       (totalShots - 1) * intervalSeconds + reloads * reloadSeconds,
     note,
+  };
+}
+
+// Clarity states what a catalyst adds with before and after, e.g. "Increases Magazine Size by 3
+// (4🠚7)" or "Increases Reserves by 5 (9🠚14)".
+const CATALYST_MAGAZINE =
+  /Magazine Size by (?:\d+|one|two|three) \((\d+)🠚(\d+)\)/i;
+const CATALYST_RESERVES = /Reserves by (\d+) \((\d+)🠚(\d+)\)/i;
+// Ammo generation fills reserves from bricks; one boss without adds drops none.
+const AMMO_GENERATION = /\d+ Ammo Generation/gi;
+
+/**
+ * Timing with the catalyst from the base and the numbers Clarity names (magazine, reserves); null
+ * if it names none or the base magazine does not match the text.
+ */
+export function timingWithCatalyst(
+  base: Timing,
+  texts: string[],
+): Timing | null {
+  const text = texts.join("\n");
+  const magazine = CATALYST_MAGAZINE.exec(text);
+  const reserves = CATALYST_RESERVES.exec(text);
+  if (!magazine && !reserves) return null;
+  if (magazine && Number(magazine[1]) !== base.magazine) return null;
+  const newMagazine = magazine ? Number(magazine[2]) : base.magazine;
+  const totalShots =
+    base.totalShots === null
+      ? null
+      : base.totalShots +
+        (magazine ? newMagazine - base.magazine : 0) +
+        (reserves ? Number(reserves[1]) : 0);
+  const reloads =
+    totalShots === null ? 0 : Math.ceil(totalShots / newMagazine) - 1;
+  return {
+    ...base,
+    magazine: newMagazine,
+    totalShots,
+    timeToEmptySeconds:
+      totalShots === null
+        ? null
+        : (totalShots - 1) * base.intervalSeconds +
+          reloads * base.engineReloadSeconds,
+    note: `${base.note}; with catalyst from Clarity: ${[magazine?.[0], reserves?.[0]].filter(Boolean).join(", ")} (assumption: the magazine counts to the ammo)`,
+  };
+}
+
+/**
+ * Timing without the catalyst from a timing with it, where Clarity names the magazine and reserves
+ * before and after. Null if the text changes something else that the sources do not quantify
+ * (reload speed as a stat, refills), or if the magazine does not match the timing.
+ */
+export function timingWithoutCatalyst(
+  withCatalyst: Timing,
+  texts: string[],
+): { timing: Timing; quote: string } | null {
+  const text = texts.join("\n");
+  const magazine = CATALYST_MAGAZINE.exec(text);
+  const reserves = CATALYST_RESERVES.exec(text);
+  if (!magazine && !reserves) return null;
+  if (magazine && Number(magazine[2]) !== withCatalyst.magazine) return null;
+  const baseMagazine = magazine ? Number(magazine[1]) : withCatalyst.magazine;
+  const totalShots =
+    withCatalyst.totalShots === null
+      ? null
+      : withCatalyst.totalShots -
+        (magazine ? Number(magazine[2]) - Number(magazine[1]) : 0) -
+        (reserves ? Number(reserves[1]) : 0);
+  const reloads =
+    totalShots === null ? 0 : Math.ceil(totalShots / baseMagazine) - 1;
+  return {
+    timing: {
+      ...withCatalyst,
+      magazine: baseMagazine,
+      totalShots,
+      timeToEmptySeconds:
+        totalShots === null
+          ? null
+          : (totalShots - 1) * withCatalyst.intervalSeconds +
+            reloads * withCatalyst.engineReloadSeconds,
+      note: `${withCatalyst.note}; without catalyst from Clarity: ${[magazine?.[0], reserves?.[0]].filter(Boolean).join(", ")}`,
+    },
+    quote: [magazine?.[0], reserves?.[0]].filter(Boolean).join("; "),
   };
 }
 
@@ -814,6 +913,17 @@ export function buildWeaponImport(
         });
         continue;
       }
+      // A catalyst adds damage; a lower row measures another mode (e.g. Devil's Ruin's laser).
+      if (
+        extras.some((c) => c.kind === "catalyst") &&
+        factor < 1 - CATALYST_MIN_CHANGE
+      ) {
+        entry.unusedRows.push({
+          assumptions: row.assumptions,
+          reason: `Katalysator-Zeile mit kleinerem Wert (×${de(factor, 3)}): anderer Modus`,
+        });
+        continue;
+      }
       const notes: string[] = [];
       if (perHit !== null && row.shots !== base.shots)
         notes.push(
@@ -856,6 +966,52 @@ export function buildWeaponImport(
         durationSeconds: text?.durationSeconds ?? null,
         condition: text?.condition ?? null,
         notes,
+      });
+    }
+
+    // Catalyst damage from Quantum ("cata" against the plain row) where Aegis has no catalyst row.
+    const catalystPerks = [
+      ...(manifest.catalyst?.perks ?? []),
+      ...catalysts.map((c) => c.name),
+    ];
+    const quantumFactor = quantumCatalystFactor(
+      manifest.name,
+      inputs.quantum.rows,
+    );
+    if (
+      (manifest.catalyst !== null || catalysts.length > 0) &&
+      !options.some((o) => o.kind === "catalyst") &&
+      quantumFactor !== null &&
+      // A catalyst adds damage; a lower "cata" row is another mode (e.g. Devil's Ruin).
+      quantumFactor > 1 + CATALYST_MIN_CHANGE
+    ) {
+      const cataRow = inputs.quantum.rows.find(
+        (r) => sameName(r.name, manifest.name) && r.variant === "cata",
+      )!;
+      const text = perkText(catalystPerks, inputs.compendium, inputs.clarity);
+      const option: WeaponOption = {
+        id: "catalyst",
+        name: "Catalyst",
+        kind: "catalyst",
+        bucketId: OPTION_BUCKET,
+        factor: {
+          value: Number(quantumFactor.toFixed(4)),
+          source: quantumSource(
+            cataRow,
+            "Precision (or body) damage with catalyst / without",
+          ),
+        },
+        durationSeconds: text?.durationSeconds ?? null,
+        condition: text?.condition ?? null,
+      };
+      options.push(option);
+      entry.options.push({
+        name: option.name,
+        kind: option.kind,
+        factor: option.factor.value!,
+        durationSeconds: option.durationSeconds,
+        condition: option.condition,
+        notes: ["Faktor aus Quantum (cata / ohne)"],
       });
     }
 
@@ -936,20 +1092,43 @@ export function buildWeaponImport(
     const quantumTiming =
       quantum && "intervalSeconds" in quantum ? quantum : undefined;
 
+    // Timing with the catalyst: Aegis "Sustained" plays with it, Quantum names it "cata". Refills
+    // (e.g. Thunderlord) are inside their time to empty. Here only as the fallback for weapons
+    // that have no source without the catalyst; otherwise see below (same source as the base).
+    const catalystQuantum = withCatalyst.filter(({ kinds }) =>
+      kinds.includes("catalyst"),
+    );
+    const fallbackCatalystTiming = catalystChangesTiming
+      ? [
+          ...sustainedUsable.map((row) =>
+            timingFromAegis(row, refillsMagazine),
+          ),
+          ...catalystQuantum.map(({ row }) =>
+            timingFromQuantum(row, refillsMagazine),
+          ),
+        ].find((t): t is Timing => "intervalSeconds" in t)
+      : undefined;
+
     let timing =
       override?.timing?.from === "Quantum"
         ? (quantumTiming ?? aegis)
         : (aegis ?? quantumTiming);
-    if (!timing && catalystChangesTiming && !catalystChangesAmmo) {
-      const fallback =
-        sustainedUsable
-          .map((row) => timingFromAegis(row, refillsMagazine))
-          .find((t): t is Timing => "intervalSeconds" in t) ??
-        (withCatalyst[0]
-          ? timingFromQuantum(withCatalyst[0].row, refillsMagazine)
-          : undefined);
-      if (fallback && "intervalSeconds" in fallback) {
-        timing = fallback;
+    // Set when the timing without catalyst comes back from a source with it.
+    let derivedFrom: Timing | undefined;
+    if (!timing && fallbackCatalystTiming) {
+      // Only sources with catalyst: back to the timing without it where Clarity names the numbers.
+      const derived = timingWithoutCatalyst(
+        fallbackCatalystTiming,
+        catalysts.map((c) => c.text),
+      );
+      if (derived) {
+        timing = derived.timing;
+        derivedFrom = fallbackCatalystTiming;
+        entry.notes.push(
+          `Timing ohne Katalysator aus Clarity zurückgerechnet („${derived.quote}“); Annahme: das Magazin zählt zur Munition`,
+        );
+      } else if (!catalystChangesAmmo) {
+        timing = fallbackCatalystTiming;
         entry.notes.push(
           "⚠ Timing mit Katalysator: keine Quelle ohne; der Katalysator ändert laut Clarity Magazin oder Reload, nicht die Munition",
         );
@@ -976,9 +1155,70 @@ export function buildWeaponImport(
       );
       continue;
     }
+    const timingRowId = timing.rowId;
     const timingIsAegis = inputs.sustained.rows.some(
-      (r) => r.id === timing.rowId,
+      (r) => r.id === timingRowId,
     );
+
+    // Timing with the catalyst from the same source and execution as the base, so the difference
+    // is the catalyst's and not the sources': Aegis "Sustained" (plays with it), the Quantum row
+    // "cata, <same labels>", else the base plus the numbers Clarity names ("4🠚7").
+    const catalystTexts = catalysts.map((c) => c.text);
+    const catalystNamesTiming = catalysts.some((c) =>
+      changesTiming(c.text.replace(AMMO_GENERATION, "")),
+    );
+    const labelsOf = (variant: string) =>
+      quantumLabel(variant)
+        .filter((l) => !/^catalyst$/i.test(l))
+        .map((l) => l.toLowerCase())
+        .sort()
+        .join("|");
+    let catalystTiming: Timing | undefined;
+    // Quantum's plain row may already have the catalyst's magazine (e.g. Gjallarhorn 2, Clarity
+    // "1🠚2"): then it is the timing with the catalyst, and the base comes back from Clarity.
+    const catalystMagazine = CATALYST_MAGAZINE.exec(catalystTexts.join("\n"));
+    const plainHasCatalyst =
+      !derivedFrom &&
+      catalystMagazine !== null &&
+      Number(catalystMagazine[2]) === timing.magazine &&
+      Number(catalystMagazine[1]) !== timing.magazine;
+    const back = plainHasCatalyst
+      ? timingWithoutCatalyst(timing, catalystTexts)
+      : null;
+    if (catalystNamesTiming) {
+      if (derivedFrom) {
+        catalystTiming = derivedFrom;
+      } else if (back) {
+        catalystTiming = timing;
+        timing = back.timing;
+        entry.notes.push(
+          `Quellen-Timing hat schon das Magazin mit Katalysator; ohne Katalysator aus Clarity zurückgerechnet („${back.quote}“)`,
+        );
+      } else if (timingIsAegis) {
+        catalystTiming = sustainedUsable
+          .map((row) => timingFromAegis(row, refillsMagazine))
+          .find((t): t is Timing => "intervalSeconds" in t);
+      } else {
+        const baseLabels = labelsOf(
+          inputs.quantum.rows.find((r) => r.id === timingRowId)?.variant ?? "",
+        );
+        const sameExecution = catalystQuantum.find(
+          ({ row }) => labelsOf(row.variant) === baseLabels,
+        );
+        // Without a magazine the catalyst refills it (e.g. Thunderlord): all ammo is one magazine.
+        const fromQuantum = sameExecution
+          ? timingFromQuantum(
+              sameExecution.row,
+              refillsMagazine || sameExecution.row.magazine === null,
+            )
+          : undefined;
+        catalystTiming =
+          fromQuantum && "intervalSeconds" in fromQuantum
+            ? fromQuantum
+            : (timingWithCatalyst(timing, catalystTexts) ?? undefined);
+      }
+    }
+
     if (quantumRow && timing === quantumTiming) {
       if (plain.length === 0)
         entry.notes.push(
@@ -1067,6 +1307,62 @@ export function buildWeaponImport(
       quote,
       ...(note ? { note } : {}),
     });
+    // The catalyst and what it does against one boss, decided by the sources.
+    const timingSourceOf = (t: Timing, note?: string): Source => {
+      const row = inputs.quantum.rows.find((r) => r.id === t.rowId);
+      return row ? quantumSource(row, note) : sustainedSource(t.rowId, note);
+    };
+    const timingDiffers =
+      catalystTiming !== undefined &&
+      (catalystTiming.magazine !== timing.magazine ||
+        catalystTiming.totalShots !== timing.totalShots ||
+        Math.abs(catalystTiming.intervalSeconds / timing.intervalSeconds - 1) >
+          CATALYST_MIN_CHANGE ||
+        Math.abs(
+          catalystTiming.engineReloadSeconds - timing.engineReloadSeconds,
+        ) >
+          CATALYST_MIN_CHANGE * Math.max(timing.engineReloadSeconds, 1));
+    // Damage and timing are checked apart: a claim in the text without a source that measured the
+    // catalyst for it stays unknown (a question for Gemini); measured without a change is none.
+    const catalystDamage = options.some((o) => o.kind === "catalyst");
+    const catalystText = catalystTexts.join("\n");
+    const damageMeasured =
+      rows.some((r) => classesOf.get(r)!.some((c) => c.kind === "catalyst")) ||
+      inputs.quantum.rows.some(
+        (r) => sameName(r.name, manifest.name) && r.variant === "cata",
+      );
+    const timingMeasured =
+      catalystTiming !== undefined &&
+      !entry.notes.some((n) => n.startsWith("⚠ Timing mit Katalysator"));
+    // One boss without adds gives no kills (owner): paragraphs about kills claim nothing here.
+    const bossText = catalystText
+      .split("\n")
+      .filter((line) => !KILLS.test(line))
+      .join("\n");
+    const catalystEffect: CatalystEffect =
+      catalystDamage && timingDiffers
+        ? "damageAndTiming"
+        : catalystDamage
+          ? "damage"
+          : timingDiffers
+            ? "timing"
+            : (CATALYST_DAMAGE.test(bossText) && !damageMeasured) ||
+                (changesTiming(bossText.replace(AMMO_GENERATION, "")) &&
+                  !timingMeasured)
+              ? "unknown"
+              : "none";
+    const hasCatalyst = manifest.catalyst !== null || catalysts.length > 0;
+    if (hasCatalyst) {
+      entry.catalystEffect = catalystEffect;
+      entry.catalystText = catalystText;
+    }
+    if (timingDiffers && catalystTiming) {
+      entry.catalystTiming = catalystTiming;
+      entry.notes.push(
+        `Katalysator-Timing: ${catalystTiming.totalShots ?? "∞"} Shots, Magazin ${catalystTiming.magazine}, Zeit bis leer ${catalystTiming.timeToEmptySeconds === null ? "–" : `${de(catalystTiming.timeToEmptySeconds, 1)} s`}`,
+      );
+    }
+
     const weapon: Weapon = {
       id,
       code: codes[id] ?? 0, // set below
@@ -1169,6 +1465,49 @@ export function buildWeaponImport(
         ? { includedEffectIds: entry.includedEffectIds }
         : {}),
       ...(options.length > 0 ? { options } : {}),
+      ...(hasCatalyst
+        ? {
+            catalyst: {
+              name:
+                [...new Set(catalystPerks)].join(", ") ||
+                manifest.catalyst?.name ||
+                "Catalyst",
+              description: catalystText,
+              effect: catalystEffect,
+              ...(timingDiffers && catalystTiming
+                ? {
+                    timing: {
+                      fireRateRpm: {
+                        value: Number(
+                          (60 / catalystTiming.intervalSeconds).toFixed(3),
+                        ),
+                        source: timingSourceOf(catalystTiming, catalystTiming.note),
+                      },
+                      magazine: {
+                        value: catalystTiming.magazine,
+                        source: timingSourceOf(catalystTiming),
+                      },
+                      totalShots: {
+                        value: catalystTiming.totalShots,
+                        source: timingSourceOf(
+                          catalystTiming,
+                          catalystTiming.totalShots === null
+                            ? "unlimited (Quantum: inf)"
+                            : undefined,
+                        ),
+                      },
+                      reloadTimeMs: {
+                        value: Math.round(
+                          catalystTiming.engineReloadSeconds * 1000,
+                        ),
+                        source: timingSourceOf(catalystTiming),
+                      },
+                    },
+                  }
+                : {}),
+            },
+          }
+        : {}),
     };
 
     entry.status = "package";
@@ -1282,6 +1621,29 @@ export function renderWeaponImport(report: WeaponReport): string {
         ].join(" | ")} |`;
       }),
     ),
+    "",
+    "## Katalysatoren",
+    "",
+    "Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (Option mit Faktor), **Timing** (Zeile mit Katalysator, gleiche Quelle und Ausführung, sonst Zahlen aus Clarity), **keine** (gemessen ohne Unterschied oder kein Schaden und Timing im Text), **unbekannt** (Clarity nennt Schaden oder Timing, keine Quelle misst es).",
+    "",
+    "| Waffe | Munition | Wirkung | Timing ohne → mit | Text (Anfang) |",
+    "| --- | --- | --- | --- | --- |",
+    ...packages
+      .filter((w) => w.catalystEffect !== undefined)
+      .map((w) => {
+        const t = w.catalystTiming;
+        return `| ${[
+          w.name,
+          w.ammo,
+          CATALYST_LABELS[w.catalystEffect!],
+          t
+            ? `Magazin ${w.magazine} → ${t.magazine}, Shots ${w.totalShots ?? "∞"} → ${t.totalShots ?? "∞"}, Zeit bis leer ${w.timeToEmptySeconds === null ? "–" : de(w.timeToEmptySeconds, 1)} → ${t.timeToEmptySeconds === null ? "–" : de(t.timeToEmptySeconds, 1)} s, rpm ${de(w.derivedRpm ?? 0, 0)} → ${de(60 / t.intervalSeconds, 0)}`
+            : "–",
+          cell(
+            (w.catalystText ?? "").split("\n")[0].slice(0, 120) || "–",
+          ),
+        ].join(" | ")} |`;
+      }),
     "",
     "## Lücken",
     "",
