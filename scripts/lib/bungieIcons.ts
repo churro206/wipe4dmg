@@ -78,3 +78,38 @@ export function iconFileName(ref: ManifestRef, iconPath: string): string {
   if (!extension) throw new Error(`Unknown image type: ${iconPath}`);
   return `icons/${TABLE_PREFIXES[ref.table]}-${ref.hash}.${extension}`;
 }
+
+/** Item with an icon, as far as the lookup by name reads it. */
+export type NamedIconItem = {
+  hash: number;
+  displayProperties?: { name?: string; hasIcon?: boolean };
+};
+
+/**
+ * Icon refs of effects without a manifest ref (the generated buff effects): the manifest item with
+ * the name of the effect, without a trailing "(…)". Effects with no such item are returned apart.
+ */
+export function namedIconRefs(
+  effects: Effect[],
+  items: Record<string, NamedIconItem>,
+): { refs: IconRef[]; missing: string[] } {
+  const byName = new Map<string, number>();
+  for (const item of Object.values(items)) {
+    const name = item.displayProperties?.name;
+    if (name && item.displayProperties?.hasIcon && !byName.has(name)) {
+      byName.set(name, item.hash);
+    }
+  }
+  const refs: IconRef[] = [];
+  const missing: string[] = [];
+  for (const effect of effects) {
+    const hash = byName.get(effect.name.replace(/ \(.*\)$/, ""));
+    if (hash === undefined) missing.push(effect.id);
+    else
+      refs.push({
+        key: `effect:${effect.id}`,
+        manifestRef: { table: "DestinyInventoryItemDefinition", hash },
+      });
+  }
+  return { refs, missing };
+}

@@ -34,6 +34,7 @@ import {
   abilityIconRefs,
   collectIconRefs,
   iconFileName,
+  namedIconRefs,
 } from "./lib/bungieIcons.ts";
 import {
   extractManifestAbilities,
@@ -197,6 +198,13 @@ const armorRefs: IconRef[] = ExoticArmorEntry.array()
       hash: entry.hash,
     },
   }));
+// Generated buff effects (npm run build:buffs) have no manifest ref: look the item up by name.
+const buffEffects = existsSync(new URL("src/data/buff-effects.json", ROOT))
+  ? Effect.array().parse(readJson("src/data/buff-effects.json"))
+  : [];
+const buffIcons = namedIconRefs(buffEffects, items);
+if (buffIcons.missing.length > 0)
+  console.warn(`No manifest item with an icon for: ${buffIcons.missing.join(", ")}`);
 const refs = collectIconRefs(
   [
     ...Effect.array().parse(readJson("src/data/effects.json")),
@@ -212,6 +220,7 @@ const refs = collectIconRefs(
   [
     ...catalystRefs,
     ...armorRefs,
+    ...buffIcons.refs,
     ...IconRef.array().parse(readJson("src/data/icon-refs.json")),
     ...abilityIconRefs(
       AbilityData.array().parse(readJson("src/data/abilities.json")),

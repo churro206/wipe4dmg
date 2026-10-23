@@ -20,7 +20,7 @@ const KINDS: Record<string, AbilityKind> = {
 /** Only the fields of DestinyInventoryItemDefinition this module reads. */
 export type ManifestItem = {
   hash: number;
-  displayProperties?: { name?: string };
+  displayProperties?: { name?: string; hasIcon?: boolean };
   plug?: { plugCategoryIdentifier?: string };
   itemTypeDisplayName?: string; // e.g. "Solar Aspect"
 };

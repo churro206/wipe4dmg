@@ -10,7 +10,8 @@ import { simulate, type SimulationResult } from "../src/engine/simulate";
 import { effectRelevantTo, neededStatuses } from "../src/engine/weaponInfo";
 import { buckets, gameData, weaponById, weapons } from "../src/ui/data";
 import rawSubclass from "../src/data/subclass-effects.json";
-import { loadSubclassEffects } from "../src/engine/loadData";
+import rawBuffEffects from "../src/data/buff-effects.json";
+import { loadEffects, loadSubclassEffects } from "../src/engine/loadData";
 import { testWeapon } from "./support/testWeapon";
 
 const table: string[] = [];
@@ -290,6 +291,84 @@ describe("buffs and debuffs have their game values on the weapon", () => {
       firstShot(run({ selections: [{ effectId, provider }] })) / plain;
     note(effectId, `×${fmt(ratio)}`, `×${factor}`);
     expect(ratio).toBeCloseTo(factor, 3);
+  });
+});
+
+describe("buffs, debuffs and artifact perks from Court (2026-10-23)", () => {
+  const firstShot = (r: SimulationResult) =>
+    r.damageInstances.find((d) => d.damageSource === "weapon")!.damage;
+  const ratioOn = (weapon: Weapon, effectIds: string[]) =>
+    firstShot(
+      run(
+        {
+          selections: effectIds.map((effectId) => ({
+            effectId,
+            provider: gameData.effects
+              .find((e) => e.id === effectId)!
+              .providers[0].kind,
+          })),
+        },
+        weapon,
+      ),
+    ) / firstShot(run({}, weapon));
+  const buffEffects = loadEffects(rawBuffEffects);
+
+  it("rule: every switch gives exactly its Court value on a weapon it fits", () => {
+    const rows = buffEffects
+      // improving parts and parts that need a Void Super (Debilitating Wave) have their own tests
+      .filter(
+        (e) =>
+          !e.parts.some(
+            (p) =>
+              p.type === "multiplier" && (p.requiresEffectIds || p.superElements),
+          ),
+      )
+      .map((effect) => {
+        const part = effect.parts.find(
+          (p) => p.type === "multiplier" && p.damageSources.includes("weapon"),
+        );
+        if (part?.type !== "multiplier") throw new Error(effect.id);
+        const weapon = weapons.find(
+          (w) =>
+            (part.weaponTypes === undefined || part.weaponTypes.includes(w.weaponType)) &&
+            (part.elements === undefined || part.elements.includes(w.element)),
+        );
+        return { effect, part, weapon };
+      });
+    const missing = rows.filter((r) => !r.weapon).map((r) => r.effect.id);
+    note("Court-Schalter ohne passende Waffe", String(missing.length), "0");
+    expect(missing).toEqual([]);
+    const wrong = rows
+      .filter(
+        (r) =>
+          Math.abs(ratioOn(r.weapon!, [r.effect.id]) - r.part.multiplier.value!) > 0.001,
+      )
+      .map((r) => r.effect.id);
+    note("Court-Schalter mit falschem Wert", String(wrong.length), "0");
+    expect(wrong).toEqual([]);
+  });
+
+  it("Expanding Abyss raises Weaken from 15 % to 25 % on Void weapons, not on Solar", () => {
+    const void_ = weapons.find((w) => w.element === "void")!;
+    const solar = weapons.find((w) => w.element === "solar")!;
+    const gain = (weapon: Weapon) =>
+      ratioOn(weapon, ["weaken", "expanding-abyss"]);
+    note(
+      "Weaken + Expanding Abyss: Void / Solar",
+      `×${fmt(gain(void_))} / ×${fmt(gain(solar))}`,
+      "×1,25 / ×1,15",
+    );
+    expect(gain(void_)).toBeCloseTo(1.25, 3);
+    expect(gain(solar)).toBeCloseTo(1.15, 3);
+    // alone it does nothing: it only improves Weaken
+    expect(ratioOn(void_, ["expanding-abyss"])).toBe(1);
+  });
+
+  it("Argent Blade only helps Swords", () => {
+    const sword = weapons.find((w) => w.weaponType === "sword")!;
+    const other = weapons.find((w) => w.weaponType !== "sword")!;
+    expect(ratioOn(sword, ["argent-blade"])).toBeCloseTo(1.15, 3);
+    expect(ratioOn(other, ["argent-blade"])).toBe(1);
   });
 });
 

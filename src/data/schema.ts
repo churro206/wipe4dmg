@@ -401,6 +401,8 @@ export const MultiplierPart = z.object({
   superElements: z.array(Element).optional(),
   // Only while one of these states is granted, e.g. No Backup Plans (ADR 0015, U6-2)
   requiresStatus: z.array(StatusId).min(1).optional(),
+  // Only while one of these other effects is active, e.g. Expanding Abyss raises Weaken
+  requiresEffectIds: z.array(z.string()).min(1).optional(),
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 

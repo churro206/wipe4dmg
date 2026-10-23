@@ -1,0 +1,873 @@
+[
+  {
+    "id": "expanding-abyss",
+    "name": "Expanding Abyss",
+    "code": 62,
+    "shortName": "Abyss",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "elements": ["void"],
+        "multiplier": {
+          "value": 1.25,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Expanding Abyss)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%->25% /  / 30%->35% /  / 35%->40%",
+            "note": "Court: Void damage only; does not affect Divinity. Raises only the Weaken switch and the tethers, not the Weaken of exotic armor."
+          }
+        },
+        "requiresEffectIds": ["weaken"]
+      },
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "elements": ["void"],
+        "multiplier": {
+          "value": 1.35,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Expanding Abyss)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%->25% /  / 30%->35% /  / 35%->40%",
+            "note": "Court: Void damage only; does not affect Divinity. Raises only the Weaken switch and the tethers, not the Weaken of exotic armor."
+          }
+        },
+        "requiresEffectIds": ["tractor-cannon", "moebius-tether"]
+      },
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "elements": ["void"],
+        "multiplier": {
+          "value": 1.4,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Expanding Abyss)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%->25% /  / 30%->35% /  / 35%->40%",
+            "note": "Court: Void damage only; does not affect Divinity. Raises only the Weaken switch and the tethers, not the Weaken of exotic armor."
+          }
+        },
+        "requiresEffectIds": ["deadfall-tether"]
+      }
+    ]
+  },
+  {
+    "id": "debilitating-wave",
+    "name": "Debilitating Wave",
+    "code": 63,
+    "shortName": "Debilitating Wave",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "superElements": ["void"],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Global Debuffs, Debilitating Wave)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 6000,
+      "source": {
+        "name": "Court Stacking Guide (Global Debuffs, Debilitating Wave)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "6s"
+      }
+    }
+  },
+  {
+    "id": "maligned-harvest",
+    "name": "Maligned Harvest",
+    "code": 64,
+    "shortName": "Maligned Harvest",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Global Debuffs, Maligned Harvest)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 6000,
+      "source": {
+        "name": "Court Stacking Guide (Global Debuffs, Maligned Harvest)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "6s"
+      }
+    }
+  },
+  {
+    "id": "singularity-blade",
+    "name": "Singularity Blade",
+    "code": 65,
+    "shortName": "Singularity Blade",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Global Debuffs, Singularity Blade)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 6000,
+      "source": {
+        "name": "Court Stacking Guide (Global Debuffs, Singularity Blade)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "6s"
+      }
+    }
+  },
+  {
+    "id": "supernova",
+    "name": "Supernova",
+    "code": 66,
+    "shortName": "Supernova",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Global Debuffs, Supernova)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 8000,
+      "source": {
+        "name": "Court Stacking Guide (Global Debuffs, Supernova)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "8s"
+      }
+    }
+  },
+  {
+    "id": "void-infestation",
+    "name": "Void Infestation",
+    "code": 67,
+    "shortName": "Void Infestation",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Global Debuffs, Void Infestation)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 6000,
+      "source": {
+        "name": "Court Stacking Guide (Global Debuffs, Void Infestation)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "6s"
+      }
+    }
+  },
+  {
+    "id": "weakened-clear",
+    "name": "Weakened Clear",
+    "code": 68,
+    "shortName": "Weakened Clear",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Global Debuffs, Weakened Clear)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 20000,
+      "source": {
+        "name": "Court Stacking Guide (Global Debuffs, Weakened Clear)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "20s"
+      }
+    }
+  },
+  {
+    "id": "radiant-orbs",
+    "name": "Radiant Orbs",
+    "code": 69,
+    "shortName": "Orbs",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "damageSources": ["weapon"],
+        "multiplier": {
+          "value": 1.2,
+          "source": {
+            "name": "Court Stacking Guide (Empowering Buffs, While a Solar or Prismatic Subclass is equipped, and picking up an Orb of Power)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "20%"
+          }
+        }
+      },
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "damageSources": ["super"],
+        "abilityIds": ["golden-gun-deadshot", "golden-gun-marksman"],
+        "multiplier": {
+          "value": 1.2,
+          "source": {
+            "name": "Court Stacking Guide (Empowering Buffs, While a Solar or Prismatic Subclass is equipped, and picking up an Orb of Power)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "20%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 10000,
+      "source": {
+        "name": "Court Stacking Guide (Empowering Buffs, While a Solar or Prismatic Subclass is equipped, and picking up an Orb of Power)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "10s"
+      }
+    }
+  },
+  {
+    "id": "heart-of-the-flame",
+    "name": "Heart of the Flame",
+    "code": 70,
+    "shortName": "Heart Flame",
+    "providers": [
+      { "kind": "artifact", "slot": "artifact" },
+      { "kind": "fireteamSupport" }
+    ],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "damageSources": ["weapon"],
+        "multiplier": {
+          "value": 1.2,
+          "source": {
+            "name": "Court Stacking Guide (Empowering Buffs, Heart of the Flame)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "20%"
+          }
+        }
+      },
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "damageSources": ["super"],
+        "abilityIds": ["golden-gun-deadshot", "golden-gun-marksman"],
+        "multiplier": {
+          "value": 1.2,
+          "source": {
+            "name": "Court Stacking Guide (Empowering Buffs, Heart of the Flame)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "20%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 10000,
+      "source": {
+        "name": "Court Stacking Guide (Empowering Buffs, Heart of the Flame)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "10s"
+      }
+    }
+  },
+  {
+    "id": "prismatic-transfer",
+    "name": "Prismatic Transfer",
+    "code": 71,
+    "shortName": "Transfer",
+    "providers": [
+      { "kind": "artifact", "slot": "artifact" },
+      { "kind": "fireteamSupport" }
+    ],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "damageSources": ["weapon"],
+        "multiplier": {
+          "value": 1.2,
+          "source": {
+            "name": "Court Stacking Guide (Empowering Buffs, Prismatic Transfer)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "20%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 10000,
+      "source": {
+        "name": "Court Stacking Guide (Empowering Buffs, Prismatic Transfer)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "10s"
+      }
+    }
+  },
+  {
+    "id": "weapons-of-light",
+    "name": "Weapons of Light (Ward of Dawn)",
+    "code": 72,
+    "shortName": "Weapons of Light",
+    "providers": [{ "kind": "fireteamSupport" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "empowering",
+        "damageSources": ["weapon"],
+        "multiplier": {
+          "value": 1.25,
+          "source": {
+            "name": "Court Stacking Guide (Empowering Buffs, Weapons of Light)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "25%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 15000,
+      "source": {
+        "name": "Court Stacking Guide (Empowering Buffs, Weapons of Light)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "15s"
+      }
+    }
+  },
+  {
+    "id": "precision-equity",
+    "name": "Precision Equity",
+    "code": 73,
+    "shortName": "Equity",
+    "elementIconKey": "surge",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "surge",
+        "damageSources": ["weapon"],
+        "multiplier": {
+          "value": 1.17,
+          "source": {
+            "name": "Court Stacking Guide (Weapon Surges, Precision Equity)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "17%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 11000,
+      "source": {
+        "name": "Court Stacking Guide (Weapon Surges, Precision Equity)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "11s"
+      }
+    }
+  },
+  {
+    "id": "that-fresh-bullet-smell",
+    "name": "That Fresh Bullet Smell",
+    "code": 74,
+    "shortName": "Bullet Smell",
+    "elementIconKey": "surge",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "surge",
+        "damageSources": ["weapon"],
+        "elements": ["kinetic"],
+        "multiplier": {
+          "value": 1.17,
+          "source": {
+            "name": "Court Stacking Guide (Weapon Surges, That Fresh Bullet Smell)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "17%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 11000,
+      "source": {
+        "name": "Court Stacking Guide (Weapon Surges, That Fresh Bullet Smell)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "11s"
+      }
+    }
+  },
+  {
+    "id": "void-weapon-channelling",
+    "name": "Void Weapon Channelling",
+    "code": 75,
+    "shortName": "Void Channel",
+    "elementIconKey": "surge",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "surge",
+        "damageSources": ["weapon"],
+        "elements": ["void"],
+        "multiplier": {
+          "value": 1.25,
+          "source": {
+            "name": "Court Stacking Guide (Weapon Surges, Void Weapon Channelling)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "10% / 17% / 22% / 25%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 11000,
+      "source": {
+        "name": "Court Stacking Guide (Weapon Surges, Void Weapon Channelling)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "11s"
+      }
+    }
+  },
+  {
+    "id": "argent-blade",
+    "name": "Argent Blade",
+    "code": 76,
+    "shortName": "Argent Blade",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "damageSources": ["weapon"],
+        "weaponTypes": ["sword"],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Argent Blade)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 5000,
+      "source": {
+        "name": "Court Stacking Guide (Amplification Modifiers, Argent Blade)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "5s"
+      }
+    }
+  },
+  {
+    "id": "argent-ordnance",
+    "name": "Argent Ordnance",
+    "code": 77,
+    "shortName": "Ordnance",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "damageSources": ["weapon"],
+        "weaponTypes": ["rocketLauncher"],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Argent Ordnance)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 4500,
+      "source": {
+        "name": "Court Stacking Guide (Amplification Modifiers, Argent Ordnance)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "4.5s"
+      }
+    }
+  },
+  {
+    "id": "argent-quiver",
+    "name": "Argent Quiver",
+    "code": 78,
+    "shortName": "Quiver",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "damageSources": ["weapon"],
+        "weaponTypes": ["bow"],
+        "multiplier": {
+          "value": 1.35,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Argent Quiver)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "35% / Primaries /  / 25% / Heavies",
+            "note": "Court: 35 % on primary bows, 25 % on heavy bows; the primary value applies."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sniper-meditation",
+    "name": "Sniper's Meditation",
+    "code": 79,
+    "shortName": "Meditation",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "damageSources": ["weapon"],
+        "weaponTypes": ["sniperRifle"],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Sniper's Mediation)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "2.8% / 5.7% / 9% / 12% / 15%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 7000,
+      "source": {
+        "name": "Court Stacking Guide (Amplification Modifiers, Sniper's Mediation)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "7s"
+      }
+    }
+  },
+  {
+    "id": "targeting-autoloader",
+    "name": "Targeting Autoloader",
+    "code": 80,
+    "shortName": "Autoloader",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "damageSources": ["weapon"],
+        "weaponTypes": ["autoRifle"],
+        "multiplier": {
+          "value": 1.2,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Targeting Autoloader)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "10% / 13% / 16% / 18% / 20%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 15000,
+      "source": {
+        "name": "Court Stacking Guide (Amplification Modifiers, Targeting Autoloader)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "15s"
+      }
+    }
+  },
+  {
+    "id": "arc-compounding",
+    "name": "Arc Compounding",
+    "code": 81,
+    "shortName": "Arc Compound",
+    "providers": [{ "kind": "artifact", "slot": "artifact" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ],
+        "elements": ["arc"],
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Arc Compounding)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "15%",
+            "note": "Needs Arc Blind on the target (assumed up)."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "remote-shield",
+    "name": "Remote Shield (Edge of Action)",
+    "code": 82,
+    "shortName": "Remote Shield",
+    "providers": [{ "kind": "fireteamSupport" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "damageSources": ["weapon"],
+        "multiplier": {
+          "value": 1.05,
+          "source": {
+            "name": "Court Stacking Guide (Amplification Modifiers, Remote Shield)",
+            "url": "https://destiny2.science/court-sheet",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "5%"
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 10000,
+      "source": {
+        "name": "Court Stacking Guide (Amplification Modifiers, Remote Shield)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "10s"
+      }
+    }
+  },
+  {
+    "id": "banner-of-war",
+    "name": "Banner of War (Strand Titan)",
+    "code": 83,
+    "shortName": "Banner of War",
+    "providers": [{ "kind": "fireteamSupport" }],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "amplification",
+        "multiplier": {
+          "value": 1.1,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json)",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "quote": "10% Increased Sword Damage (20% for the user)",
+            "note": "Melee (+100 %) and Bladefury (+40 %) are not modelled."
+          }
+        },
+        "damageSources": ["weapon"],
+        "weaponTypes": ["sword"]
+      }
+    ]
+  }
+]

@@ -7,6 +7,7 @@ import rawAbilityStats from "../data/ability-stats.json";
 import rawAegisAbilities from "../data/aegis-abilities.json";
 import rawBosses from "../data/bosses.json";
 import rawBuckets from "../data/buckets.json";
+import rawBuffEffects from "../data/buff-effects.json";
 import rawEffects from "../data/effects.json";
 import rawIcons from "../data/icons.json";
 import rawKeywords from "../data/keywords.json";
@@ -56,6 +57,7 @@ export const buckets = loadBuckets(rawBuckets);
 export const baseEffects = loadEffects(rawEffects);
 export const effects = [
   ...baseEffects,
+  ...loadEffects(rawBuffEffects), // Court buffs, debuffs and artifact perks (npm run build:buffs)
   ...loadSubclassEffects(rawSubclassEffects, { preBuilt: true }),
 ];
 export const bosses = loadBosses(rawBosses).filter(

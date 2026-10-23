@@ -4,6 +4,7 @@ import {
   abilityIconRefs,
   collectIconRefs,
   iconFileName,
+  namedIconRefs,
 } from "../scripts/lib/bungieIcons";
 import rawAbilities from "../src/data/abilities.json";
 import rawManifest from "../src/data/manifest-abilities.json";
@@ -158,5 +159,32 @@ describe("icons data file", () => {
     for (const path of Object.values(index.icons)) {
       expect(existsSync(`public/${path}`), path).toBe(true);
     }
+  });
+});
+
+describe("namedIconRefs", () => {
+  const items = {
+    "1": { hash: 1, displayProperties: { name: "Argent Blade", hasIcon: true } },
+    "2": { hash: 2, displayProperties: { name: "Remote Shield", hasIcon: true } },
+    "3": { hash: 3, displayProperties: { name: "Supernova", hasIcon: false } },
+  };
+  const effect = (id: string, name: string) => ({ ...effects[0], id, name });
+
+  it("finds the item by the name of the effect, without a trailing bracket", () => {
+    const { refs, missing } = namedIconRefs(
+      [effect("argent-blade", "Argent Blade"), effect("remote-shield", "Remote Shield (Edge of Action)")],
+      items,
+    );
+    expect(refs.map((r) => [r.key, r.manifestRef.hash])).toEqual([
+      ["effect:argent-blade", 1],
+      ["effect:remote-shield", 2],
+    ]);
+    expect(missing).toEqual([]);
+  });
+
+  it("names the effects without an item that has an icon", () => {
+    const { refs, missing } = namedIconRefs([effect("supernova", "Supernova")], items);
+    expect(refs).toEqual([]);
+    expect(missing).toEqual(["supernova"]);
   });
 });

@@ -198,7 +198,11 @@ export function simulate(
           (part) =>
             meetsCondition(part) &&
             (part.requiresStatus === undefined ||
-              part.requiresStatus.some((s) => statuses.has(s))),
+              part.requiresStatus.some((s) => statuses.has(s))) &&
+            (part.requiresEffectIds === undefined ||
+              part.requiresEffectIds.some((id) =>
+                active.some((e) => e.id === id),
+              )),
         ),
       };
       partsCache.set(key, parts);

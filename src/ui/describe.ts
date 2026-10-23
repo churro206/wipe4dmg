@@ -219,6 +219,7 @@ function describePart(part: EffectPart): string {
         part.requiresStatus
           ? `while you have ${list(part.requiresStatus.map((s) => STATE_LABELS[s]))}`
           : "",
+        part.requiresEffectIds ? "while the effect it improves is active" : "",
       ].filter(Boolean);
       const bucket = BUCKET_LABELS[part.bucketId];
       return `+${percentOf(part.multiplier.value)}% ${targetOf(part)}${

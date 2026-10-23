@@ -17,13 +17,16 @@ Breite vor Genauigkeit, ganze Kategorien pro Block (Regel in `CLAUDE.md`). Model
      - Nova Bomb: Vortex ergibt 76,9 Ticks (Intervall falsch gelesen).
      - Supers mit mehreren Treffern: `atHits` verbietet Ticks pro Treffer bei mehreren Treffern; Werte pro Angriff mit der Kombo von Aegis abgleichen.
      - Fragments als Teile: `AbilityComponent.requiresEffectIds` (zählt nur mit Effect) plus Effects Whisper of Fissures (25 pro Shatter, Clarity) und Touch of Thunder. Erst bauen, wenn Glacier/Shatter oder Storm/Pulse drankommen.
-2. **Nächster Block: Alle Buffs, Debuffs, Mods und Artifact-Perks** aus Court und Compendium in einem Block, als Schalter (u. a. Feast of Light, Banner of War, Expanding Abyss). Plan Opus, Umsetzung Sonnet.
+2. ✅ **Alle Buffs, Debuffs, Mods und Artifact-Perks (2026-10-23, Sonnet):** `npm run build:buffs` (Regel in `scripts/lib/buffs.ts`: Spec-Tabelle nennt die Court-Zeile und wo der Effect wirkt, Wert und Dauer aus der Zeile) schreibt `src/data/buff-effects.json` (22 Schalter) und `docs/buff-import.md` (jede der 98 Court-Zeilen mit Urteil, Test verlangt „keine offen“). Neue Mechanik `MultiplierPart.requiresEffectIds` (Expanding Abyss hebt Weaken, Tethers, Deadfall). Fireteam: Weapons of Light, Remote Shield, Banner of War (Clarity, nur Schwert +10 %), Heart of the Flame, Prismatic Transfer. Feast of Light bleibt bei Star-Eater (gilt nur für die eigene Super). Übersprungen mit Grund: Song of Flame, Harsh Refraction, Solo Operative, Torch, Sect of Force, Raid-Mods. Nach einem neuen Court-Stand: `import:court`, `build:buffs`, `import:icons`.
+   - Offen aus diesem Block: Banner of War Melee (+100 %, U6-4) und Bladefury (+40 %); Argent Quiver nur Primary-Wert 35 % (Heavy 25 %); Harsh Refraction (drei Stufen nach Rarität); Weapons of Light ohne Icon (Monogramm); Prismatic Spirits (Block 4); Expanding Abyss hebt nur den Weaken-Schalter und die Tethers, nicht das Weaken von Exotic-Rüstung.
+   - **Nächster Block: 3 (Energie einfach).** Plan Opus, Umsetzung Sonnet.
 3. **Energie einfach:** Cooldown aus Compendium und Stat ergibt die Casts pro Damage Phase; Refunds als Prozent aus dem Text (ersetzt U7 mit langem ADR; kurze Notiz in ADR 0015 genügt). Plan Opus, Umsetzung Sonnet.
 4. **Restliche Exotics, Aspects, Fragments** in einem Block, `derived` aus dem Text; Facet of Courage, Melee-Bucket (U6-4), Exotics mit eigenem Schaden, Class Items (U6-3). Sonnet.
 5. **Gesamtprobe mit Meta-Builds** aus Aegis Sustained und Swap (10 bis 15 Builds im richtigen Verhältnis), danach Feinschliff nur, wo die Probe daneben liegt. Opus.
 
 ## Bekannte Ungenauigkeiten
 
+- Artifact-Perks mit Kill-Aufbau (Targeting Autoloader, Void Weapon Channelling, Sniper's Meditation) gelten als aufgebaut, mit der Dauer aus Court ab Beginn der Damage Phase; die Rotation kann Start und Dauer verschieben.
 - Super-Timings aus Geminis Schätzungen (`unverified`).
 - 26 Catalysts „unbekannt“, Symmetry-Grundwert vermutlich zu niedrig.
 - Reload-Faktor aus d2foundry nur relativ (absolut 0,44- bis 1,5-fach gegen Aegis).

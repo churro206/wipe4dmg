@@ -27,6 +27,7 @@ Status: 2026-10-23
 - ✅ Tidier picker: Radiant and Weaken in their own section “Buffs & Debuffs”, one tile per item (e.g. Facet of Dominance), game icons for every aspect and fragment
 - ✅ Abilities built from their Compendium parts instead of one measured total, checked against Aegis (±15 %): 21 of 75, among them Thundercrash (impact, explosion, aftershocks over 4 s), Deadfall and most grenades and melees. Other Supers keep the measured Aegis total, which is closer than their parts
 - ✅ Jolt and Volatile no longer count twice in Supers that already hold them in the Aegis total (Stormtrance, Gathering Storm, Nova Warp)
+- ✅ All buffs, debuffs and artifact perks from Court as switches (22 new): Expanding Abyss (Weaken 25 % for Void), the Weaken perks, Radiant and surge perks, Argent Blade, Quiver and Ordnance, Sniper's Meditation, Targeting Autoloader, Arc Compounding, Weapons of Light, Remote Shield and Banner of War for the fireteam. Every Court row is accounted for in a review table.
 - ⏳ Stormtrance and Pocket Singularity: Jolt and Volatile count twice (+14 %, +22 %)
 - ⏳ Facet of Courage and Touch of Thunder: Aegis only measured them together with other buffs
 - ✅ Every weapon with a catalyst has the switch; its hover card says what it does here: damage (e.g. One Thousand Voices +45%), magazine and ammo (e.g. Gjallarhorn 1 → 2 rockets, Telesto 4 → 7), refills (Thunderlord, Cloudstrike), or no effect against one boss
