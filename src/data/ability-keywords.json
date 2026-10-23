@@ -9,6 +9,13 @@
       "status": "unverified",
       "quote": "inflicts jolt",
       "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 1,
+      "tick": 228,
+      "note": "1 hits x16576 damage every 0 ms, cooldown 800 ms -> 1 trigger(s) of 228 (miscellaneous-jolt) in Aegis row super-gathering-storm",
+      "uses": 1,
+      "fullModifiers": 2.3
     }
   },
   {
@@ -21,6 +28,13 @@
       "status": "unverified",
       "quote": "inflict jolt",
       "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 13,
+      "tick": 228,
+      "note": "39 hits x769 damage every 340 ms, cooldown 800 ms -> 13 trigger(s) of 228 (miscellaneous-jolt) in Aegis row super-stormtrance",
+      "uses": 1,
+      "fullModifiers": 2.3
     }
   },
   {
@@ -146,6 +160,13 @@
       "status": "unverified",
       "quote": "inflicting Volatile",
       "note": "Largest quoted stacks of the entry, as one hit per use"
+    },
+    "bakedInPackage": {
+      "triggers": 7,
+      "tick": 216,
+      "note": "20 hits x1950 damage every 700 ms, cooldown 1000 ms -> 7 trigger(s) of 216 (miscellaneous-volatile) in Aegis row super-nova-warp",
+      "uses": 1,
+      "fullModifiers": 2.3
     }
   },
   {

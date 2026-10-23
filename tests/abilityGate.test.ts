@@ -36,8 +36,17 @@ import { simulate } from "../src/engine/simulate";
 const TOLERANCE = COMPONENT_TOLERANCE; // ±15 % (owner, 2026-10-23; ADR 0009 had ±10 %)
 const LONG_DAMAGE_PHASE_SECONDS = 120;
 
-// The weapon only stands by: no scorch of its own, so the keyword counters belong to the ability.
-const weapon = { ...loadWeapon(raw), intrinsicParts: [] };
+// The weapon only stands by: no scorch of its own and no damage, so the keyword counters belong to
+// the ability and only its own hits set off Jolt or Volatile, as in the Aegis measurement.
+const standBy = loadWeapon(raw);
+const weapon = {
+  ...standBy,
+  intrinsicParts: [],
+  damageInstances: standBy.damageInstances.map((d) => ({
+    ...d,
+    damagePerTick: { ...d.damagePerTick, value: 0 },
+  })),
+};
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const abilityStats = loadAbilityStats(rawAbilityStats);
@@ -56,10 +65,6 @@ const abilities = loadAbilities(
   AbilityComponents.array().parse(rawAbilityComponents),
 );
 const CAST_GAP_MS = 5000; // further apart than every keyword cooldown
-// Known gap: the Aegis package probably holds the Jolt or Volatile damage, but rows without ticks
-// say not how much; the keyword counts twice (+14 % and +22 %). Taking it out needs a replay of the
-// damage-taken keywords like superTriggers in scripts/lib/keywordSources.ts does for Ignition.
-const KEYWORD_COUNTS_TWICE = ["stormtrance", "pocket-singularity"];
 // A package with keyword damage taken out must give back the measurement. 2.5 %: a super row takes
 // out the plain Ignition row (1553), but Aegis' ignitions had Radiant like the shots ("Ignition
 // damage can be increased ... if the initial Scorch source had a damage increase", Compendium).
@@ -105,9 +110,7 @@ function perUse(ability: Ability, stat: number): number {
   );
   const total = result.damageInstances
     .filter(
-      (d) =>
-        d.abilityId === ability.id ||
-        (d.keywordId !== undefined && !KEYWORD_COUNTS_TWICE.includes(ability.id)),
+      (d) => d.abilityId === ability.id || d.keywordId !== undefined,
     )
     .reduce((sum, d) => sum + d.damage, 0);
   return total / uses;
@@ -145,12 +148,10 @@ describe("ability gate against Aegis", () => {
     }
   }
 
-  it("rule: every package with Ignition gives back the Aegis value (±2.5 %), nothing counts twice", () => {
+  it("rule: every package with a keyword gives back the Aegis value (±2.5 %), nothing counts twice", () => {
     const off = gated
       .filter(
-        (a) =>
-          a.package &&
-          abilityKeywords.some((k) => k.abilityId === a.id && k.keywordId === "ignition"),
+        (a) => a.package && abilityKeywords.some((k) => k.abilityId === a.id),
       )
       .map((a) => {
         const row = rows.find((r) => r.id === a.aegisRowId)!;
@@ -158,22 +159,5 @@ describe("ability gate against Aegis", () => {
       })
       .filter(({ ratio }) => Math.abs(ratio - 1) > BAKED_TOLERANCE);
     expect(off).toEqual([]);
-  });
-
-  it("the known double counts are exactly Stormtrance and Pocket Singularity", () => {
-    const twice = gated
-      .filter((a) => KEYWORD_COUNTS_TWICE.includes(a.id))
-      .map((a) => {
-        const row = rows.find((r) => r.id === a.aegisRowId)!;
-        const scaling = abilityStats.find((s) => s.kind === a.kind)!;
-        const result = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, [], buckets, {
-          abilities: [{ ability: a, castsMs: [0] }],
-          abilityStats: [{ scaling, value: 100 }],
-          keywords,
-        });
-        const total = result.damageInstances.reduce((s, d) => s + d.damage, 0);
-        return { id: a.id, over: total / row.perUseStat100.value! > 1 + TOLERANCE };
-      });
-    expect(twice).toEqual(KEYWORD_COUNTS_TWICE.map((id) => ({ id, over: true })));
   });
 });

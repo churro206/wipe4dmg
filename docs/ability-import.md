@@ -10,11 +10,11 @@ Teile: 21 von 75.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Thundercrash | Impact 180×1, Explosive 8260×1, Hit 108×4 | 1 | 8872 | 10136 | -12 % | -12 % | Teile |
 | Arc Staff | Hit 1264×1, Hit 1264×1, Hit 2950×1 | 18 | 98604 | 9083 | +986 % | +985 % | Paket |
-| Gathering Storm | Hit 544×1, Hit 608×1, Hit 1350×1, Hit 446×1 | 1 | 2948 | 7207 | -59 % | -55 % | Paket |
+| Gathering Storm | Hit 544×1, Hit 608×1, Hit 1350×1, Hit 446×1 | 1 | 3047 | 7207 | -58 % | -53 % | Paket |
 | Storm's Edge | Impact 90×1, Radial 171×1, Hit 2×1 | 3 | 789 | 9414 | -92 % | -92 % | Paket |
 | Fists of Havoc | Hit 499×1, Additional 4×1, Hit 273×1, Hit 1619×1, Additional 4×1, Hit 273×1, Hit 292×1 | 16 | 47424 | 14792 | +221 % | +221 % | Paket |
 | Chaos Reach | Hit 378×1, Hit 202×1 | 26 | 15080 | 10905 | +38 % | +40 % | Paket |
-| Stormtrance | Hit 690×1, Hit 440×1, Hit 178×1 | 39 | 51012 | 13045 | +291 % | +299 % | Paket |
+| Stormtrance | Hit 690×1, Hit 440×1, Hit 178×1 | 39 | 52301 | 13045 | +301 % | +309 % | Paket |
 | Blade Barrage | Hit 99×1, Hit 560×1 | 1 | 659 | 9335 | -93 % | -93 % | Paket |
 | Golden Gun: Deadshot | Hit 1453×1 | 6 | 9393 | 6287 | +49 % | +50 % | Paket |
 | Golden Gun: Marksman | Hit 1574×1 | 3 | 5397 | 9210 | -41 % | -41 % | Paket |
@@ -28,7 +28,7 @@ Teile: 21 von 75.
 | Twilight Arsenal | Hit 1250×1, Hit 1750×1, Hit 581×1, Hit 1337×1, Hit 830×1 | 3 | 17244 | 9738 | +77 % | +77 % | Paket |
 | Nova Bomb: Cataclysm | Hit 3241×1, Hit 649×1 | 1 | 3890 | 9289 | -58 % | -58 % | Paket |
 | Nova Bomb: Vortex | Hit 3021×1, Hit 52×76.92307692307692 | 1 | 7021 | 9225 | -24 % | -24 % | Paket |
-| Nova Warp | Hit 964×1, Hit 193×1 | 20 | 23140 | 16960 | +36 % | +37 % | Paket |
+| Nova Warp | Hit 964×1, Hit 193×1 | 20 | 23797 | 16960 | +40 % | +41 % | Paket |
 | Silence & Squall | Impact 338×1, Impact 338×1, Hit 28×60 | 2 | 4712 | 11490 | -59 % | -53 % | Paket |
 | Winter's Wrath | Impact 11×1, Splash 50×1, Hit 45×1, Stasis 3453×1, Hit 361×1, Hit 3814×1 | 12 | 92808 | 19502 | +376 % | +478 % | Paket |
 | Silkstrike | Hit 1638×1, Hit 1293×1 | 25 | 73275 | 12293 | +496 % | +496 % | Paket |

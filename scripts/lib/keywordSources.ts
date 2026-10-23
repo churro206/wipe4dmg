@@ -212,17 +212,20 @@ const TICK_NAMES: Record<KeywordId, string> = {
 };
 
 /**
- * Triggers of a counter keyword (Ignition) in one use of a super: its hits from super-timings.json
- * add the stacks, a full counter goes off and resets, and no stacks land during the cooldown, as in
- * the event run (keywordRun.ts). The value of one trigger is the keyword's own Aegis row.
+ * Triggers of a keyword in one use of a super, as in the event run (keywordRun.ts). Its hits from
+ * super-timings.json add stacks to a counter (Ignition) or damage taken (Jolt, Volatile: the wipe
+ * spread evenly over the hits, the applying hit only if the keyword says so); past the threshold it
+ * goes off and resets. During the cooldown no stacks land and a keyword removed on trigger is not
+ * applied again. The value of one trigger is the keyword's own Aegis row.
  */
-function superTriggers(
+export function superTriggers(
   timing: SuperTiming,
   stacksPerHit: number,
   keyword: KeywordData,
   aegisRows: AegisAbilityRow[],
+  wipe: number,
 ): { triggers: number; tick: number; note: string } | null {
-  if (keyword.trigger.type !== "counter") return null;
+  if (keyword.trigger.type === "playerStacks") return null;
   const threshold = keyword.trigger.threshold.value;
   const tick = Number(
     aegisRows.find((r) => r.id === keyword.aegisRowId)?.primaryTick,
@@ -232,18 +235,32 @@ function superTriggers(
   const interval = timing.hitIntervalMs.value;
   if (!threshold || !tick || !hits || first === null || interval === null)
     return null;
+  const counter = keyword.trigger.type === "counter";
+  const applyingHitCounts =
+    keyword.trigger.type === "damageTaken" && keyword.trigger.applyingHitCounts;
+  // A keyword removed on trigger (Volatile) is applied again by the next hit after the cooldown.
+  const removed = counter || keyword.removedOnTrigger;
+  const perHit = counter ? stacksPerHit : wipe / hits;
   const cooldown = keyword.cooldownMs?.value ?? 0;
-  let stacks = 0;
+  let active = false;
+  let amount = 0;
   let triggers = 0;
   let blockedUntil = -Infinity;
   for (let hit = 0; hit < hits; hit++) {
     const timeMs = first + hit * interval;
-    if (timeMs < blockedUntil) continue;
-    stacks += stacksPerHit;
-    if (stacks >= threshold) {
+    // stacks or a removed keyword do not land during the cooldown, damage taken still counts
+    if (removed && timeMs < blockedUntil) continue;
+    if (!active) {
+      active = true;
+      amount = 0;
+      if (!counter && !applyingHitCounts) continue;
+    }
+    amount += perHit;
+    if (amount >= threshold && timeMs >= blockedUntil) {
       triggers++;
-      stacks = 0;
+      amount = 0;
       blockedUntil = timeMs + cooldown;
+      if (removed) active = false;
     }
   }
   return triggers === 0
@@ -251,7 +268,7 @@ function superTriggers(
     : {
         triggers,
         tick,
-        note: `${hits} hits x${stacksPerHit} stacks every ${interval} ms, cooldown ${cooldown} ms -> ${triggers} trigger(s) of ${tick} (${keyword.aegisRowId})`,
+        note: `${hits} hits x${Math.round(perHit)} ${counter ? "stacks" : "damage"} every ${interval} ms, cooldown ${cooldown} ms -> ${triggers} trigger(s) of ${tick} (${keyword.aegisRowId})`,
       };
 }
 
@@ -375,15 +392,16 @@ export function abilityKeywords(inputs: KeywordInputs): {
           fullModifiers: Number(wipe[3]),
           note: `${uses} uses x${perUse} stacks${ember ? " (with Ember of Ashes)" : ""} -> ${triggers} trigger(s) in Aegis row ${row.id}`,
         };
-      } else if (row && wipe && timing && keyword.trigger.type === "counter") {
+      } else if (row && wipe && timing) {
         // A super row names no ticks, but its measurement holds the triggers of its hits: replay the
         // hits with the keyword cooldown, and take the trigger value from the keyword's own Aegis row.
         const baked = superTriggers(
           timing,
-          (chosen.stacks! +
-            (row.assumptions.some((a) => EMBER.test(a)) ? (chosen.emberStacks ?? 0) : 0)),
+          (chosen.stacks ?? 0) +
+            (row.assumptions.some((a) => EMBER.test(a)) ? (chosen.emberStacks ?? 0) : 0),
           keyword,
           inputs.aegisRows,
+          Number(wipe[1]),
         );
         if (baked)
           entry.bakedInPackage = {

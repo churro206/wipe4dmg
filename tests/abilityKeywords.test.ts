@@ -62,6 +62,18 @@ describe("abilityKeywords", () => {
     expect(of("daybreak")[0].bakedInPackage?.triggers).toBeGreaterThanOrEqual(4);
   });
 
+  it("counts the jolts inside a super row without ticks by replaying its hits", () => {
+    // Stormtrance: every hit is far above 115 damage, so jolt goes off once per 800 ms cooldown
+    const stormtrance = of("stormtrance")[0].bakedInPackage;
+    expect(stormtrance).toMatchObject({ uses: 1, fullModifiers: 2.3 });
+    expect(stormtrance?.triggers).toBeGreaterThan(1);
+    // Nova Warp: volatile is gone after it goes off; the applying hit does not count and none lands
+    // in the 1 s cooldown, so of 20 hits every 700 ms only every third one sets it off
+    expect(of("nova-warp")[0].bakedInPackage?.triggers).toBe(7);
+    // Pocket Singularity: Aegis has one tick (979), the volatile it applies is not in the package
+    expect(of("pocket-singularity")[0].bakedInPackage).toBeUndefined();
+  });
+
   it("applies jolt and volatile without stacks", () => {
     expect(of("pocket-singularity")).toMatchObject([
       { keywordId: "volatile" },
