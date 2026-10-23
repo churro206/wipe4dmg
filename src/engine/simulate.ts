@@ -4,7 +4,7 @@
 // - The damage phase starts at 0 ms with the first charge; the first shot follows after the charge time.
 // - Shots within a magazine are one shot interval (60000 / fireRateRpm) apart.
 // - After the last shot of a magazine, the reload time adds to the shot interval.
-// - The weapon fires at most totalShots shots.
+// - The weapon fires at most totalShots shots; primary ammo is unlimited.
 // - A shot or damage instance counts if it happens at or before the end of the damage phase.
 //
 // Effects (ADR 0006, stage B): each selected effect is active in its window (start and duration,
@@ -128,7 +128,11 @@ export function simulate(
   const chargeTimeMs = requireValue(weapon.chargeTimeMs, "chargeTimeMs");
   const fireRateRpm = requireValue(weapon.fireRateRpm, "fireRateRpm");
   const magazine = requireValue(weapon.magazine, "magazine");
-  const totalShots = requireValue(weapon.totalShots, "totalShots");
+  // Primary ammo is unlimited (Quantum: reserves "inf"); the damage phase ends the shots.
+  const totalShots =
+    weapon.ammo === "primary"
+      ? Number.POSITIVE_INFINITY
+      : requireValue(weapon.totalShots, "totalShots");
   const reloadTimeMs = requireValue(weapon.reloadTimeMs, "reloadTimeMs");
 
   if (fireRateRpm <= 0) {
@@ -137,7 +141,10 @@ export function simulate(
   if (!Number.isInteger(magazine) || magazine < 1) {
     throw new Error(`magazine must be a positive integer, got ${magazine}`);
   }
-  if (!Number.isInteger(totalShots) || totalShots < 0) {
+  if (
+    totalShots !== Number.POSITIVE_INFINITY &&
+    (!Number.isInteger(totalShots) || totalShots < 0)
+  ) {
     throw new Error(
       `totalShots must be a non-negative integer, got ${totalShots}`,
     );
