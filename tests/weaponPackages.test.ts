@@ -176,6 +176,52 @@ describe("weapons with scorch (ADR 0015, U4a-4)", () => {
   });
 });
 
+describe("primaries", () => {
+  it("Bad Juju: unlimited ammo, timing from Quantum per bullet", () => {
+    const juju = byName("Bad Juju")!;
+    expect(juju.ammo).toBe("primary");
+    expect(value(juju.totalShots)).toBeNull();
+    expect(value(juju.magazine)).toBe(31);
+    expect(value(juju.fireRateRpm)).toBe(450);
+  });
+
+  it("Bad Juju: Aegis measures a 3-round burst (wipe 1446 = 3 × 482), the package is per bullet", () => {
+    expect(
+      value(byName("Bad Juju")!.damageInstances[0].damagePerTick),
+    ).toBeCloseTo(95.846 / 3, 2);
+    // Vigilance Wing fires 5-round bursts: 2605 = 5 × 521
+    expect(
+      value(byName("Vigilance Wing")!.damageInstances[0].damagePerTick),
+    ).toBeCloseTo(172.668 / 5, 2);
+  });
+
+  // Catches a burst counted as one bullet (×3, ×5) and a shot of several projectiles divided by
+  // mistake (Trinity Ghoul ÷3); extra damage in the Aegis average (poison, ignitions) stays inside.
+  const KNOWN_OFF: Record<string, string> = {
+    "Hierarchy of Needs":
+      "Aegis shoots through the Guidance Ring; Quantum variant 'Guidance Ring' gives ×1.38",
+    Hawkmoon: "Quantum's magazine damage includes the Paracausal Shot",
+  };
+  it("rule: one round of a primary deals 0.5 to 2 times the round of its Quantum timing row", () => {
+    const inputs = loadWeaponImportInputs();
+    const off = result.packages
+      .filter((w) => w.ammo === "primary" && !(w.name in KNOWN_OFF))
+      .flatMap((w) => {
+        const row = inputs.quantum.rows.find(
+          (r) => r.id === w.magazine.source.name.split("row ")[1],
+        );
+        if (!row?.magDamage || !row.magazine) return [];
+        const ratio =
+          value(w.damageInstances[0].damagePerTick)! /
+          (row.magDamage / row.magazine);
+        return ratio > 2 || ratio < 0.5
+          ? [`${w.name} ${ratio.toFixed(2)}`]
+          : [];
+      });
+    expect(off).toEqual([]);
+  });
+});
+
 describe("rules", () => {
   it("names a reason for every gap", () => {
     for (const gap of result.gaps) expect(gap.reason, gap.name).not.toBe("");

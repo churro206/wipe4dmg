@@ -97,6 +97,33 @@ describe("exotic armor changes its abilities", () => {
   });
 });
 
+describe("primary weapons", () => {
+  it("are selectable and fire the whole damage phase with reloads (unlimited ammo)", () => {
+    const juju = weapons.find((w) => w.id === "bad-juju");
+    expect(juju?.ammo).toBe("primary");
+    const short = run({ damagePhaseSeconds: 30 }, juju!).shots.length;
+    const long = run({ damagePhaseSeconds: 300 }, juju!).shots.length;
+    note("Bad Juju: Shots in 30 s / 300 s", `${short} / ${long}`, "etwa ×10, nie leer");
+    expect(long / short).toBeGreaterThan(9);
+  });
+
+  it("deal less boss damage than a heavy, but more than nothing", () => {
+    const juju = run({}, weaponById("bad-juju")).totalDamage;
+    const gjally = run({}, weaponById("gjallarhorn")).totalDamage;
+    note("Bad Juju / Gjallarhorn in 30 s", fmt(juju / gjally), "deutlich unter 1");
+    expect(juju / gjally).toBeLessThan(0.5);
+    expect(juju).toBeGreaterThan(0);
+  });
+
+  it("count a pulse burst bullet by bullet: Bad Juju about 3 × 32 per burst", () => {
+    const perBullet =
+      weaponById("bad-juju").damageInstances[0].damagePerTick.value!;
+    note("Bad Juju pro Kugel", fmt(perBullet), "≈ 32 (Quantum Precision)");
+    expect(perBullet).toBeGreaterThan(28);
+    expect(perBullet).toBeLessThan(36);
+  });
+});
+
 describe("buffs and debuffs have their game values on the weapon", () => {
   const firstShot = (r: SimulationResult) =>
     r.damageInstances.find((d) => d.damageSource === "weapon")!.damage;

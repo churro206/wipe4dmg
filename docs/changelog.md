@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Exotische Primaries wählbar:** 40 von 61 (z. B. Bad Juju, Ace of Spades, Thorn, Le Monarque). Primary-Munition ist unbegrenzt: Die Waffe schießt mit Reloads bis zum Ende der Damage Phase. Schaden pro Shot von Aegis, Magazin, RPM und Reload von Quantum. Aegis misst Bursts als einen Shot (z. B. Bad Juju 1446 = 3 × 482); das Paket zählt pro Kugel wie Quantum, außer Quantum zählt den ganzen Schuss (Trinity Ghoul, 3 Pfeile). Namen von Aegis und Quantum werden ohne Groß- und Kleinschreibung verglichen. Regel-Test: eine Runde jeder Primary liegt bei 0,5 bis 2 × Quantum. Filter nach Munition im Waffen-Picker.
+
 - **Auswahl aufgeräumt:** Radiant und Weaken stehen nicht mehr unter Fragments, sondern im eigenen Abschnitt „Buffs & Debuffs“. Ein Item mit zwei Wirkungen (Facet of Dominance: Weaken nach Void-Grenade, Jolt nach Arc-Grenade) hat nur noch eine Kachel. Die sechs Aspects und Fragments, die eine Ability ändern (z. B. Knock 'Em Down), haben ihr Icon aus dem Spiel statt Initialen. Regel-Tests: jedes Item erscheint einmal, unter Fragments stehen nur echte Fragments, jedes Item hat ein Icon.
 
 - **Ignition in Solar-Supers zählt nur einmal:** Golden Gun (Marksman, Deadshot) und Daybreak enthielten die Ignitions schon im Aegis-Wert und bekamen sie im Rechner noch einmal dazu. Der Anteil wird jetzt aus dem Paket genommen (Treffer aus dem Super-Timing, Abklingzeit der Ignition) und kommt über den Scorch jedes Treffers zurück. Daybreak setzt dabei x50 Scorch pro Geschoss statt einmal x60 und zündet etwa 5-mal. Regel-Test: jede Ability mit Ignition ergibt allein den Aegis-Wert (±2,5 %).

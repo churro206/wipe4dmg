@@ -3,9 +3,16 @@ import type { Weapon, WeaponType } from "../../data/schema";
 import { WEAPON_TYPE_LABELS } from "../describe";
 import { Icon } from "./Icon";
 
+const AMMO_ORDER = ["primary", "special", "heavy"] as const;
+const AMMO_LABELS: Record<Weapon["ammo"], string> = {
+  primary: "Primary",
+  special: "Special",
+  heavy: "Heavy",
+};
+
 /**
- * The chosen weapon as a tile; a click opens a list with search and a filter by weapon type
- * (W1-6). Renders the tile and the list as two grid items of the surrounding tile grid.
+ * The chosen weapon as a tile; a click opens a list with search and filters by ammo and weapon
+ * type (W1-6). Renders the tile and the list as two grid items of the surrounding tile grid.
  */
 export function WeaponPicker({
   weapons,
@@ -18,12 +25,14 @@ export function WeaponPicker({
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [ammo, setAmmo] = useState<Weapon["ammo"] | "all">("all");
   const [type, setType] = useState<WeaponType | "all">("all");
-  const types = [...new Set(weapons.map((w) => w.weaponType))].sort((a, b) =>
+  const ofAmmo = weapons.filter((w) => ammo === "all" || w.ammo === ammo);
+  const types = [...new Set(ofAmmo.map((w) => w.weaponType))].sort((a, b) =>
     WEAPON_TYPE_LABELS[a].localeCompare(WEAPON_TYPE_LABELS[b]),
   );
   const needle = query.trim().toLowerCase();
-  const shown = weapons.filter(
+  const shown = ofAmmo.filter(
     (w) =>
       (type === "all" || w.weaponType === type) &&
       w.name.toLowerCase().includes(needle),
@@ -57,6 +66,21 @@ export function WeaponPicker({
             onChange={(event) => setQuery(event.target.value)}
             autoFocus
           />
+          <div className="chips" role="group" aria-label="Ammo">
+            {(["all", ...AMMO_ORDER] as const).map((a) => (
+              <button
+                key={a}
+                type="button"
+                aria-pressed={ammo === a}
+                onClick={() => {
+                  setAmmo(a);
+                  setType("all");
+                }}
+              >
+                {a === "all" ? "All ammo" : AMMO_LABELS[a]}
+              </button>
+            ))}
+          </div>
           <div className="chips" role="group" aria-label="Weapon type">
             {(["all", ...types] as const).map((t) => (
               <button

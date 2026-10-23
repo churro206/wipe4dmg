@@ -52,10 +52,23 @@ export type WeaponImportInputs = {
   overrides: WeaponOverride[];
 };
 
+// Spellings of a source that differ from the manifest beyond case, e.g. Quantum's typo.
+const NAME_ALIASES: Record<string, string> = {
+  "verglass curve": "verglas curve",
+};
+const nameKey = (name: string) => {
+  const key = name.toLowerCase();
+  return NAME_ALIASES[key] ?? key;
+};
+/** Whether a row of Aegis or Quantum names this manifest weapon; the sheets differ in case. */
+const sameName = (rowName: string, manifestName: string) =>
+  nameKey(rowName) === nameKey(manifestName);
+
 // Catalysts, perks and mods of a weapon are weapon perks in Court's stacking guide.
 const OPTION_BUCKET = "weaponPerk";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
 const RPM_HINT = 0.25; // a derived fire rate this far from the Quantum rpm is worth a look
+const BURST_TOLERANCE = 0.005; // Aegis rounds its hits; a burst sums them
 const BASE_KINDS: AssumptionKind[] = [
   "execution",
   "intrinsic",
@@ -247,7 +260,7 @@ function scorchRule(
   if (!text || !match) return null;
   const quantumRow = quantum.find(
     (r) =>
-      r.name === weaponName &&
+      sameName(r.name, weaponName) &&
       r.variant === "" &&
       WITHOUT_IGNITIONS.test(r.note),
   );
@@ -290,6 +303,16 @@ function perShotWithoutIgnitions(
   return (row.wipe - ignitions * Number(tick)) / row.fullModifiers / row.shots;
 }
 
+/** Bullets per Aegis shot if its wipe is a whole multiple of the precision hit, else 1. */
+function burstBullets(row: AegisWeaponRow): number {
+  if (!row.critShot) return 1;
+  const ratio = row.wipe / (row.shots * row.critShot);
+  const bullets = Math.round(ratio);
+  return bullets > 1 && Math.abs(ratio / bullets - 1) < BURST_TOLERANCE
+    ? bullets
+    : 1;
+}
+
 const blockingReason = (classes: ReportAssumption[]): string =>
   classes
     .filter((c) => !BASE_KINDS.includes(c.kind))
@@ -303,11 +326,11 @@ const blockingReason = (classes: ReportAssumption[]): string =>
 type Timing = {
   rowId: string;
   magazine: number;
-  totalShots: number;
+  totalShots: number | null; // null: unlimited (primary ammo)
   reloadSeconds: number; // as the source states it
   engineReloadSeconds: number; // what the simulator adds after the interval of the last shot
   intervalSeconds: number;
-  timeToEmptySeconds: number;
+  timeToEmptySeconds: number | null; // null: unlimited ammo
   note: string;
 };
 type TimingProblem = { problem: string };
@@ -365,12 +388,31 @@ export function timingFromAegis(
   };
 }
 
-/** Quantum counts one interval before each reload, like the simulator. */
+/**
+ * Quantum counts one interval before each reload, like the simulator. Primary ammo is unlimited
+ * ("inf"): the timing is magazine, fire rate and reload, without total shots and time to empty.
+ */
 export function timingFromQuantum(
   row: QuantumWeaponRow,
   noReloads = false,
 ): Timing | TimingProblem {
   const { totalShots, reloadSeconds, timeToEmptySeconds, rpm } = row;
+  if (row.textCells.totalShots === "inf") {
+    if (row.magazine === null || reloadSeconds === null || rpm === null)
+      return {
+        problem: `unbegrenzte Munition, aber ohne Magazin, Reload oder rpm (${JSON.stringify(row.textCells)})`,
+      };
+    return {
+      rowId: row.id,
+      magazine: row.magazine,
+      totalShots: null,
+      reloadSeconds,
+      engineReloadSeconds: reloadSeconds,
+      intervalSeconds: 60 / rpm,
+      timeToEmptySeconds: null,
+      note: "Quantum fire rate; primary ammo is unlimited (Quantum: inf)",
+    };
+  }
   const magazine = noReloads ? totalShots : row.magazine;
   if (magazine === null || totalShots === null || reloadSeconds === null)
     return {
@@ -412,6 +454,7 @@ function adjustTiming(
   { totalShots, addIntervalSeconds }: NonNullable<WeaponOverride["timing"]>,
 ): Timing {
   const shots = totalShots ?? timing.totalShots;
+  if (shots === null) throw new Error("override of an unlimited timing");
   const interval = timing.intervalSeconds + (addIntervalSeconds ?? 0);
   const reloads = Math.ceil(shots / timing.magazine) - 1;
   // The simulator adds interval + engine reload between magazines; keep the stated reload.
@@ -434,8 +477,10 @@ function quantumCatalystFactor(
   name: string,
   rows: QuantumWeaponRow[],
 ): number | null {
-  const plain = rows.find((r) => r.name === name && r.variant === "");
-  const cata = rows.find((r) => r.name === name && r.variant === "cata");
+  const plain = rows.find((r) => sameName(r.name, name) && r.variant === "");
+  const cata = rows.find(
+    (r) => sameName(r.name, name) && r.variant === "cata",
+  );
   const metric = (r: QuantumWeaponRow | undefined) =>
     r?.precisionDamage ?? r?.bodyDamage ?? null;
   const [a, b] = [metric(cata), metric(plain)];
@@ -480,8 +525,7 @@ export function buildWeaponImport(
   const reportWeapons: ReportWeapon[] = [];
   const assumptions: ReportAssumption[] = [];
 
-  const scope = inputs.manifest.filter((w) => w.ammo !== "primary");
-  for (const manifest of scope) {
+  for (const manifest of inputs.manifest) {
     const entry: ReportWeapon = {
       name: manifest.name,
       weaponType: manifest.weaponType,
@@ -538,7 +582,9 @@ export function buildWeaponImport(
         /refills the magazine/i.test(e.text),
     );
 
-    const rows = inputs.aegis.rows.filter((r) => r.name === manifest.name);
+    const rows = inputs.aegis.rows.filter((r) =>
+      sameName(r.name, manifest.name),
+    );
     if (rows.length === 0) {
       gap("keine Aegis-Zeile");
       continue;
@@ -658,6 +704,27 @@ export function buildWeaponImport(
     }
     entry.includedEffectIds = included.filter((id) => !normalised.includes(id));
     entry.perShot = base.perShot / normaliseFactor;
+    // Bursts (primaries): Aegis counts a whole burst as one shot, wipe = bullets × critShot (e.g.
+    // Bad Juju 1446 = 3 × 482). Divided only if Quantum's magazine counts single hits too (its
+    // damage per round is one hit); Trinity Ghoul's three arrows are one round at Quantum.
+    const bullets = burstBullets(base);
+    const quantumPerRound = inputs.quantum.rows
+      .filter((r) => sameName(r.name, manifest.name) && r.variant === "")
+      .map((r) =>
+        r.magDamage !== null && r.magazine ? r.magDamage / r.magazine : null,
+      )[0];
+    const hitAtQuantum =
+      base.critShot !== null &&
+      quantumPerRound !== null &&
+      quantumPerRound !== undefined &&
+      Math.abs(entry.perShot / bullets / quantumPerRound - 1) <
+        Math.abs(entry.perShot / quantumPerRound - 1);
+    if (manifest.ammo === "primary" && bullets > 1 && hitAtQuantum) {
+      entry.perShot /= bullets;
+      entry.notes.push(
+        `Aegis misst einen Burst aus ${bullets} Kugeln (wipe ${de(base.wipe)} = ${bullets} × ${base.critShot}); Paket pro Kugel wie Quantums Magazin`,
+      );
+    }
 
     // Scorch (ADR 0015, U4a-4): the shot from Quantum without ignitions, the ignitions from the
     // keyword run. Aegis counts the ignitions into its rows.
@@ -810,7 +877,7 @@ export function buildWeaponImport(
         "Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt",
       );
     const sustainedUsable = inputs.sustained.rows
-      .filter((r) => r.name === manifest.name)
+      .filter((r) => sameName(r.name, manifest.name))
       .filter((r) =>
         foreignOf(r).every(
           (a) =>
@@ -846,7 +913,7 @@ export function buildWeaponImport(
     const variantKinds = (row: QuantumWeaponRow) =>
       row.variant === "" ? [] : quantumLabel(row.variant).map(classifyLabel);
     const candidates = inputs.quantum.rows
-      .filter((r) => r.name === manifest.name)
+      .filter((r) => sameName(r.name, manifest.name))
       .map((row) => ({ row, kinds: variantKinds(row) }));
     const plain = candidates.filter(({ kinds }) =>
       kinds.every((k) => k === "execution" || k === "intrinsic"),
@@ -894,7 +961,7 @@ export function buildWeaponImport(
       const reasons = [
         ...aegisTimings.map((t) => `Aegis: ${(t as TimingProblem).problem}`),
         sustainedRows.length === 0 &&
-        inputs.sustained.rows.some((r) => r.name === manifest.name)
+        inputs.sustained.rows.some((r) => sameName(r.name, manifest.name))
           ? "Aegis: nur Zeilen mit fremden Annahmen"
           : "",
         quantum && "problem" in quantum ? `Quantum: ${quantum.problem}` : "",
@@ -922,15 +989,17 @@ export function buildWeaponImport(
           `Timing aus der Quantum-Zeile „${quantumRow.variant}“`,
         );
     }
-    if (aegis && quantumTiming) {
+    // Aegis "Sustained" has no primaries, so both times to empty are known here.
+    const aegisTtE = aegis?.timeToEmptySeconds ?? null;
+    const quantumTtE = quantumTiming?.timeToEmptySeconds ?? null;
+    if (aegis && quantumTiming && aegisTtE !== null && quantumTtE !== null) {
       const agree =
         aegis.totalShots === quantumTiming.totalShots &&
-        Math.abs(aegis.timeToEmptySeconds - quantumTiming.timeToEmptySeconds) <=
-          TOLERANCE * quantumTiming.timeToEmptySeconds;
+        Math.abs(aegisTtE - quantumTtE) <= TOLERANCE * quantumTtE;
       entry.notes.push(
         agree
           ? "Timing: Aegis und Quantum stimmen überein"
-          : `⚠ Timing: Aegis ${aegis.totalShots} Shots in ${de(aegis.timeToEmptySeconds, 1)} s, Quantum ${quantumTiming.totalShots} Shots in ${de(quantumTiming.timeToEmptySeconds, 1)} s; Aegis gilt`,
+          : `⚠ Timing: Aegis ${aegis.totalShots} Shots in ${de(aegisTtE, 1)} s, Quantum ${quantumTiming.totalShots} Shots in ${de(quantumTtE, 1)} s; Aegis gilt`,
       );
     } else {
       entry.notes.push(`Timing nur aus ${timingIsAegis ? "Aegis" : "Quantum"}`);
@@ -951,9 +1020,12 @@ export function buildWeaponImport(
         `abgeleitete Feuerrate ${de(entry.derivedRpm, 0)} statt ${entry.quantumRpm} rpm`,
       );
 
-    // Scale (point 10): Aegis against Quantum, or against "Base" in Aegis "Sustained".
+    // Scale (point 10): Aegis against Quantum, or against "Base" in Aegis "Sustained". The Quantum
+    // row is the one of the timing, also a catalyst row taken as fallback.
+    const scaleRow =
+      quantumRow ?? inputs.quantum.rows.find((r) => r.id === timing.rowId);
     entry.scaleDeviation = minDeviation([
-      quantumRow ? scaleDeviation(base, quantumRow) : null,
+      scaleRow ? scaleDeviation(base, scaleRow) : null,
       sustainedUsable[0]?.base
         ? Math.abs(base.perShot / sustainedUsable[0].base - 1)
         : null,

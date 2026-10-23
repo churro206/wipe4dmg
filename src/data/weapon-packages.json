@@ -1,5 +1,122 @@
 [
   {
+    "id": "ace-of-spades",
+    "code": 53,
+    "name": "Ace of Spades",
+    "manifestHash": 347366834,
+    "gameVersion": "9.7.0",
+    "weaponType": "handCannon",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-ace-of-spades",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 140,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-ace-of-spades",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 13,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-ace-of-spades",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-ace-of-spades",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1640,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-ace-of-spades",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-ace-of-spades",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 96.244,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-ace-of-spades",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-ace-of-spades",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-ace-of-spades",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "memento-mori",
+        "name": "Memento Mori",
+        "description": "Reloading after a kill loads magazine with a few extra-damage bullets. Grants radar while aiming down sights.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "ager-s-scepter",
     "code": 2,
     "name": "Ager's Scepter",
@@ -225,6 +342,123 @@
         "id": "compounding-force",
         "name": "Compounding Force",
         "description": "Fires slugs that cause massive damage to combatant shields. Strong against [Shield-Piercing] Barrier Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bad-juju",
+    "code": 54,
+    "name": "Bad Juju",
+    "manifestHash": 2816212794,
+    "gameVersion": "9.7.0",
+    "weaponType": "pulseRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-bad-juju",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 450,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-bad-juju",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 31,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-bad-juju",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-bad-juju",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1160,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-bad-juju",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-bad-juju-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 31.949,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-bad-juju-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: burst"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-bad-juju-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-bad-juju-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "string-of-curses",
+        "name": "String of Curses",
+        "description": "Kills refill the magazine, increase damage for a short duration, and grant Super energy based on the strength of String of Curses. Fires full-auto.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -586,6 +820,123 @@
     ]
   },
   {
+    "id": "centrifuse",
+    "code": 55,
+    "name": "Centrifuse",
+    "manifestHash": 1912669214,
+    "gameVersion": "9.7.0",
+    "weaponType": "autoRifle",
+    "element": "arc",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-centrifuse",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 450,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-centrifuse",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 45,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-centrifuse",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-centrifuse",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 500,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-centrifuse",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-centrifuse",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 34.335,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-centrifuse",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-centrifuse",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-centrifuse",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "overcharge-capacitor",
+        "name": "Overcharge Capacitor",
+        "description": "Sprinting, sliding, and firing this weapon builds a temporary electrostatic charge, increasing range and reload speed. Final blows with high charge cause explosions, and maximum charge explosions blind targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "cloudstrike",
     "code": 29,
     "name": "Cloudstrike",
@@ -820,6 +1171,123 @@
     ]
   },
   {
+    "id": "collective-obligation",
+    "code": 56,
+    "name": "Collective Obligation",
+    "manifestHash": 3505113722,
+    "gameVersion": "9.7.0",
+    "weaponType": "pulseRifle",
+    "element": "void",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-collective-obligation",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 390,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-collective-obligation",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 36,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-collective-obligation",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-collective-obligation",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1160,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-collective-obligation",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-collective-obligation-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 38.776,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-collective-obligation-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: burst"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-collective-obligation-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-collective-obligation-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "void-leech",
+        "name": "Void Leech",
+        "description": "This weapon stores Void debuffs when damaging foes, leeching them directly when the target is suppressed, weakened, or volatile. Once charged, [Alternate Weapon Action]  to cause damage from this weapon and to apply the stored debuffs.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "conditional-finality",
     "code": 46,
     "name": "Conditional Finality",
@@ -927,6 +1395,240 @@
         "id": "split-decision",
         "name": "Split Decision",
         "description": "Dual barrels split into Stasis and Solar damage. Strong against [Stagger] Unstoppable Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "crimson",
+    "code": 57,
+    "name": "Crimson",
+    "manifestHash": 3437746471,
+    "gameVersion": "9.7.0",
+    "weaponType": "handCannon",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-crimson",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 415,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-crimson",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 24,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-crimson",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-crimson",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1640,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-crimson",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-crimson-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 40.234,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-crimson-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: burst"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-crimson-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-crimson-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "banned-weapon",
+        "name": "Banned Weapon",
+        "description": "This weapon fires a 3-round burst.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cryosthesia-77k",
+    "code": 82,
+    "name": "Cryosthesia 77K",
+    "manifestHash": 603721696,
+    "gameVersion": "9.7.0",
+    "weaponType": "sidearm",
+    "element": "stasis",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-cryosthesia-77k",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 260,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-cryosthesia-77k",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 12,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-cryosthesia-77k",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-cryosthesia-77k",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1030,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-cryosthesia-77k",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-cryosthesia-77k",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 87.229,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-cryosthesia-77k",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-cryosthesia-77k",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-cryosthesia-77k",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "ln2-burst",
+        "name": "LN2 Burst",
+        "description": "[Alternate Weapon Action]  : Swap firing mode after a final blow to enable a charged shot.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -1422,6 +2124,161 @@
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
+      }
+    ]
+  },
+  {
+    "id": "devil-s-ruin",
+    "code": 58,
+    "name": "Devil's Ruin",
+    "manifestHash": 3824106094,
+    "gameVersion": "9.7.0",
+    "weaponType": "sidearm",
+    "element": "solar",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-devil-s-ruin",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 300,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-devil-s-ruin",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 20,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-devil-s-ruin",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-devil-s-ruin",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1030,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-devil-s-ruin",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-devil-s-ruin",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 78.546,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-devil-s-ruin",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-devil-s-ruin",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-devil-s-ruin",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "close-the-gap",
+        "name": "Close the Gap",
+        "description": "Final blows create Firesprites. After picking up a Firesprite, [Alternate Weapon Action]  to enable a high-powered Solar laser beam mode. Strong against [Stagger] Unstoppable Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "pyrogenesis-collective-action",
+        "name": "Pyrogenesis, Collective Action",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 0.3502,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-devil-s-ruin-pyrogenesis-collective-action",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Single hit 415 / 1185 (base row sidearm-devil-s-ruin)"
+          }
+        },
+        "durationSeconds": null,
+        "condition": "Charged Laser applies 20 Scorch (30 with Ember of Ashes) for every hit and triggers an Ignition on every kill."
+      },
+      {
+        "id": "pyrogenesis",
+        "name": "Pyrogenesis",
+        "kind": "perk",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 0.2692,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-devil-s-ruin-pyrogenesis",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Single hit 319 / 1185 (base row sidearm-devil-s-ruin)"
+          }
+        },
+        "durationSeconds": null,
+        "condition": "Charged Laser applies 20 Scorch (30 with Ember of Ashes) for every hit and triggers an Ignition on every kill."
       }
     ]
   },
@@ -2479,6 +3336,240 @@
     ]
   },
   {
+    "id": "hard-light",
+    "code": 59,
+    "name": "Hard Light",
+    "manifestHash": 4124984448,
+    "gameVersion": "9.7.0",
+    "weaponType": "autoRifle",
+    "element": "void",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-hard-light",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-hard-light",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 49,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-hard-light",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-hard-light",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1120,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-hard-light",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-hard-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 27.574,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-hard-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-hard-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-hard-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "volatile-light",
+        "name": "Volatile Light",
+        "description": "Rounds fired from this weapon have reduced damage falloff, overpenetrate targets, and ricochet off hard surfaces. Projectile damage increases after bounce.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hawkmoon",
+    "code": 85,
+    "name": "Hawkmoon",
+    "manifestHash": 3856705927,
+    "gameVersion": "9.7.0",
+    "weaponType": "handCannon",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 140,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 9,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1640,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-hawkmoon-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-hawkmoon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 96.244,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-hawkmoon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-hawkmoon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-hawkmoon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "paracausal-shot",
+        "name": "Paracausal Shot",
+        "description": "Final blows and precision hits with Hawkmoon grant stacks of Paracausal Charge, increasing damage versus combatants. The final round in the magazine greatly increases damage based on the number of stacks. Stowing Hawkmoon on the final round removes this bonus.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "heir-apparent",
     "code": 9,
     "name": "Heir Apparent",
@@ -2586,6 +3677,123 @@
         "id": "heavy-slug-thrower",
         "name": "Heavy Slug Thrower",
         "description": "[Aim Down Sights]  : Spins up this weapon. This weapon can be fired only when fully spun up.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hierarchy-of-needs",
+    "code": 90,
+    "name": "Hierarchy of Needs",
+    "manifestHash": 4174431791,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "bow",
+    "element": "solar",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 44,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 1,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-hierarchy-of-needs-average-one-ring",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 916.849,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-hierarchy-of-needs-average-one-ring",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, one ring"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-hierarchy-of-needs-average-one-ring",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-hierarchy-of-needs-average-one-ring",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "guidance-ring",
+        "name": "Guidance Ring",
+        "description": "Precision hits and final blows build Guidance Ring energy. Opposing Guardians grant additional energy. At full charge, hip firing creates a Guidance Ring.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -2831,6 +4039,357 @@
     ]
   },
   {
+    "id": "khvostov-7g-0x",
+    "code": 60,
+    "name": "Khvostov 7G-0X",
+    "manifestHash": 4129629253,
+    "gameVersion": "9.7.0",
+    "weaponType": "autoRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-khvostov-7g-0x",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-khvostov-7g-0x",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 43,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-khvostov-7g-0x",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-khvostov-7g-0x",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1120,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-khvostov-7g-0x",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-khvostov-7g-0x-average-with-ricochetting-bullets",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 41.437,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-khvostov-7g-0x-average-with-ricochetting-bullets",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with ricochetting bullets"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-khvostov-7g-0x-average-with-ricochetting-bullets",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-khvostov-7g-0x-average-with-ricochetting-bullets",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "the-right-choice",
+        "name": "The Right Choice",
+        "description": "Every seventh bullet from this weapon ricochets to nearby targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "le-monarque",
+    "code": 61,
+    "name": "Le Monarque",
+    "manifestHash": 3588934839,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "bow",
+    "element": "void",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 50,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 1,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-le-monarque-average-with-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 394.102,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-le-monarque-average-with-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with poison"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-le-monarque-average-with-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-le-monarque-average-with-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "poison-arrows",
+        "name": "Poison Arrows",
+        "description": "Arrows fired while perfectly drawn become poison arrows. Precision hits with poison arrows stun the combatant and spread poison to nearby ones. Strong against [Disruption] Overload Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "legend-of-acrius",
+    "code": 23,
+    "name": "Legend of Acrius",
+    "manifestHash": 3580904580,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "shotgun",
+    "element": "arc",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 44.466,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 21.1 s − 2 reloads × 0.43 s) ÷ 15 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 6,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 16,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 430,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-legend-of-acrius-body",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 1990.392,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-legend-of-acrius-body",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: body"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-legend-of-acrius-body",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-legend-of-acrius-body",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "shock-blast",
+        "name": "Shock Blast",
+        "description": "This weapon fires blasts of high-damage Arc energy that overpenetrates enemies.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "leviathan-s-breath",
     "code": 34,
     "name": "Leviathan's Breath",
@@ -2938,6 +4497,123 @@
         "id": "big-game-hunter",
         "name": "Big-Game Hunter",
         "description": "Fires a massive heavy bolt that stuns unshielded combatants. Strong against [Stagger] Unstoppable Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "lodestar",
+    "code": 62,
+    "name": "Lodestar",
+    "manifestHash": 3725585710,
+    "gameVersion": "9.7.0",
+    "weaponType": "traceRifle",
+    "element": "arc",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-trace-rifle-lodestar",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 900,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-trace-rifle-lodestar",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 75,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-trace-rifle-lodestar",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-trace-rifle-lodestar",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1160,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-trace-rifle-lodestar",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-lodestar-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 24.326,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-lodestar-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: hipfire"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-lodestar-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-lodestar-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "starlight-beam",
+        "name": "Starlight Beam",
+        "description": "This weapon fires a low-intensity Arc beam with enhanced stability and accuracy.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -3182,6 +4858,123 @@
     ]
   },
   {
+    "id": "lumina",
+    "code": 63,
+    "name": "Lumina",
+    "manifestHash": 3512014804,
+    "gameVersion": "9.7.0",
+    "weaponType": "handCannon",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-lumina",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 140,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-lumina",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 13,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-lumina",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-lumina",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1640,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-lumina",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-lumina",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 96.244,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-lumina",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-lumina",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-lumina",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "noble-rounds",
+        "name": "Noble Rounds",
+        "description": "Kills with this weapon leave behind Remnants. Absorbing a Remnant converts your next hipfired shot into an ally-seeking Noble Round and partially refills the magazine.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "microcosm",
     "code": 11,
     "name": "Microcosm",
@@ -3290,6 +5083,357 @@
         "id": "paracausal-beam",
         "name": "Paracausal Beam",
         "description": "Fires a beam of Kinetic light, dealing massive bonus damage to shields.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "mida-multi-tool",
+    "code": 64,
+    "name": "MIDA Multi-Tool",
+    "manifestHash": 1331482397,
+    "gameVersion": "9.7.0",
+    "weaponType": "scoutRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-mida-multi-tool",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 200,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-mida-multi-tool",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 16,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-mida-multi-tool",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-mida-multi-tool",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1240,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-mida-multi-tool",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-mida-multi-tool",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 73.84,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-mida-multi-tool",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-mida-multi-tool",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-mida-multi-tool",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "mida-multi-tool",
+        "name": "MIDA Multi-Tool",
+        "description": "This weapon boosts movement speed. Radar stays active while aiming down sights.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "monte-carlo",
+    "code": 65,
+    "name": "Monte Carlo",
+    "manifestHash": 4068264807,
+    "gameVersion": "9.7.0",
+    "weaponType": "autoRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-monte-carlo",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-monte-carlo",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 44,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-monte-carlo",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-monte-carlo",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1120,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-monte-carlo",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-monte-carlo",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 27.574,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-monte-carlo",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-monte-carlo",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-monte-carlo",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "monte-carlo-method",
+        "name": "Monte Carlo Method",
+        "description": "Dealing damage with this weapon reduces your melee cooldown and grants a chance to fully charge your melee ability with each kill.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "necrochasm",
+    "code": 66,
+    "name": "Necrochasm",
+    "manifestHash": 1034055198,
+    "gameVersion": "9.7.0",
+    "weaponType": "autoRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-necrochasm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 720,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-necrochasm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 50,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-necrochasm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-necrochasm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1160,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-necrochasm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-necrochasm",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 23.398,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-necrochasm",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-necrochasm",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-necrochasm",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "cursebringer",
+        "name": "Cursebringer",
+        "description": "Precision final blows with this weapon increase reload speed and trigger a Cursed Thrall explosion that inflicts corruption. Final blows with Cursed Thrall explosions refill the magazine.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -3535,6 +5679,123 @@
     ]
   },
   {
+    "id": "no-time-to-explain",
+    "code": 83,
+    "name": "No Time to Explain",
+    "manifestHash": 1594120904,
+    "gameVersion": "9.7.0",
+    "weaponType": "pulseRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 340,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 24,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1160,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-no-time-to-explain-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 123.088,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-no-time-to-explain-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: burst"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-no-time-to-explain-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-no-time-to-explain-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "rewind-again",
+        "name": "Rewind Again",
+        "description": "Precision shots and shots against combatants slowed or frozen by Stasis will return to the magazine.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "one-thousand-voices",
     "code": 1,
     "name": "One Thousand Voices",
@@ -3711,6 +5972,123 @@
     ]
   },
   {
+    "id": "osteo-striga",
+    "code": 67,
+    "name": "Osteo Striga",
+    "manifestHash": 46524085,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "submachineGun",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-osteo-striga",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-osteo-striga",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 29,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-osteo-striga",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-osteo-striga",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1190,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-osteo-striga",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-osteo-striga-average-with-successive-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 61.933,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-osteo-striga-average-with-successive-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with successive poison"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-osteo-striga-average-with-successive-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-osteo-striga-average-with-successive-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "screaming-swarm",
+        "name": "Screaming Swarm",
+        "description": "Fires a stream of sentient, toxic projectiles that track the targeted enemy.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "parasite",
     "code": 35,
     "name": "Parasite",
@@ -3818,6 +6196,474 @@
         "id": "worm-s-hunger",
         "name": "Worm's Hunger",
         "description": "This weapon fires Hive worms which explode on impact. The size and damage of the explosion scales with the number of enemies you've defeated just before firing this weapon.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "polaris-lance",
+    "code": 68,
+    "name": "Polaris Lance",
+    "manifestHash": 3413074534,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "scoutRifle",
+    "element": "solar",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 150,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 14,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1240,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 169.719,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with ignition"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "the-perfect-fifth",
+        "name": "The Perfect Fifth",
+        "description": "Precision hits return ammo to the mag. Landing 4 precision hits loads a delayed Solar explosive round that scorches targets for your next shot.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "quicksilver-storm",
+    "code": 69,
+    "name": "Quicksilver Storm",
+    "manifestHash": 4293613902,
+    "gameVersion": "9.7.0",
+    "weaponType": "autoRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-quicksilver-storm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 720,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-quicksilver-storm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 51,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-quicksilver-storm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-quicksilver-storm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1100,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-quicksilver-storm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-quicksilver-storm-average-with-tracking-rockets",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 27.849,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-quicksilver-storm-average-with-tracking-rockets",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with tracking rockets"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-quicksilver-storm-average-with-tracking-rockets",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-quicksilver-storm-average-with-tracking-rockets",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "missile-tracers",
+        "name": "Missile Tracers",
+        "description": "Landing multiple hits turns your next shot into a homing micro-missile.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rat-king",
+    "code": 70,
+    "name": "Rat King",
+    "manifestHash": 2362471601,
+    "gameVersion": "9.7.0",
+    "weaponType": "sidearm",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-rat-king",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 300,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-rat-king",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 15,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-rat-king",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-rat-king",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1030,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-rat-king",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-rat-king",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 78.546,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-rat-king",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-rat-king",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-rat-king",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "rat-pack",
+        "name": "Rat Pack",
+        "description": "This fully automatic weapon becomes stronger when nearby allies also have it equipped. Stacks up to 6 times.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "red-death-reformed",
+    "code": 91,
+    "name": "Red Death Reformed",
+    "manifestHash": 427899681,
+    "gameVersion": "9.7.0",
+    "weaponType": "pulseRifle",
+    "element": "solar",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-red-death-reformed",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 340,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-red-death-reformed",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 30,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-red-death-reformed",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-red-death-reformed",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1120,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-red-death-reformed",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-red-death-reformed-burst-undamaged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 41.029,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-red-death-reformed-burst-undamaged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: burst, undamaged"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-red-death-reformed-burst-undamaged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-red-death-reformed-burst-undamaged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "redemption",
+        "name": "Redemption",
+        "description": "Final blows with this weapon cure you and increase reload speed; reloading after final blows cures nearby allies.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -4447,6 +7293,591 @@
     ]
   },
   {
+    "id": "sturm",
+    "code": 71,
+    "name": "Sturm",
+    "manifestHash": 2907129556,
+    "gameVersion": "9.7.0",
+    "weaponType": "handCannon",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sturm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 120,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sturm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 9,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sturm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sturm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sturm",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-sturm",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 114.538,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-sturm",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-sturm",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-sturm",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "accomplice",
+        "name": "Accomplice",
+        "description": "Final blows with this weapon fill the magazine of the equipped Energy weapon from reserves.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sunshot",
+    "code": 72,
+    "name": "Sunshot",
+    "manifestHash": 2907129557,
+    "gameVersion": "9.7.0",
+    "weaponType": "handCannon",
+    "element": "solar",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sunshot",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 150,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sunshot",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 12,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sunshot",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sunshot",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1640,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-sunshot",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-sunshot",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 86.566,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-sunshot",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-sunshot",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-sunshot",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "sunburn",
+        "name": "Sunburn",
+        "description": "This weapon fires explosive rounds and highlights targets that take damage from Sunshot.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sweet-business",
+    "code": 73,
+    "name": "Sweet Business",
+    "manifestHash": 1345867570,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "autoRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 856,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 150,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 2000,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-sweet-business-average-with-explosive-rounds",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 32.623,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-sweet-business-average-with-explosive-rounds",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with explosive rounds"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-sweet-business-average-with-explosive-rounds",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-sweet-business-average-with-explosive-rounds",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "payday",
+        "name": "Payday",
+        "description": "Larger magazine. Increased accuracy when firing from the hip. Picking up Special or Heavy ammo immediately reloads this weapon.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "symmetry",
+    "code": 74,
+    "name": "Symmetry",
+    "manifestHash": 4017959782,
+    "gameVersion": "9.7.0",
+    "weaponType": "scoutRifle",
+    "element": "arc",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-symmetry",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 260,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-symmetry",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 20,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-symmetry",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-symmetry",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 990,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-symmetry",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-symmetry",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 60.981,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-symmetry",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-symmetry",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-symmetry",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "revolution",
+        "name": "Revolution",
+        "description": "This weapon fires full auto.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "tarrabah",
+    "code": 75,
+    "name": "Tarrabah",
+    "manifestHash": 3110698812,
+    "gameVersion": "9.7.0",
+    "weaponType": "submachineGun",
+    "element": "solar",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-tarrabah",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 720,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-tarrabah",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 35,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-tarrabah",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-tarrabah",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1190,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-tarrabah",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-tarrabah",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 33.871,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-tarrabah",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-tarrabah",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-tarrabah",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "ravenous-beast",
+        "name": "Ravenous Beast",
+        "description": "This weapon stores power when dealing or receiving damage; defeating combatants or dealing damage to Scorched combatants grants increased progress.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "telesto",
     "code": 43,
     "name": "Telesto",
@@ -4916,6 +8347,357 @@
     ]
   },
   {
+    "id": "the-jade-rabbit",
+    "code": 76,
+    "name": "The Jade Rabbit",
+    "manifestHash": 3844694310,
+    "gameVersion": "9.7.0",
+    "weaponType": "scoutRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-the-jade-rabbit",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 150,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-the-jade-rabbit",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 15,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-the-jade-rabbit",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-the-jade-rabbit",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1240,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-the-jade-rabbit",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-the-jade-rabbit",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 96.641,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-the-jade-rabbit",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-the-jade-rabbit",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-the-jade-rabbit",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "the-fate-of-all-fools",
+        "name": "The Fate of All Fools",
+        "description": "Chain precision shots or land precision final blows to refill the magazine, improve stability, and greatly increase the damage of Firefly and body shots. Landing a body shot will remove one stack of the damage bonus.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "the-last-word",
+    "code": 77,
+    "name": "The Last Word",
+    "manifestHash": 1364093401,
+    "gameVersion": "9.7.0",
+    "weaponType": "handCannon",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-the-last-word",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 225,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-the-last-word",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 8,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-the-last-word",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-the-last-word",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1640,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-the-last-word",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-the-last-word-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 175.452,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-the-last-word-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: hipfire"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-the-last-word-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-the-last-word-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "fan-fire",
+        "name": "Fan Fire",
+        "description": "This weapon fires full auto. Hip-fire shots deal bonus precision damage while increasing reload speed and accuracy.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "the-manticore",
+    "code": 86,
+    "name": "The Manticore",
+    "manifestHash": 219145368,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "submachineGun",
+    "element": "void",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 900,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 42,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1190,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-the-manticore-average-hover-mode",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 41.899,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-the-manticore-average-hover-mode",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, Hover Mode"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-the-manticore-average-hover-mode",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-the-manticore-average-hover-mode",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "soaring-fang",
+        "name": "Soaring Fang",
+        "description": "Dealing damage while grounded charges antigrav repulsors. Dealing damage while airborne extends antigrav repulsors.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "the-navigator",
     "code": 17,
     "name": "The Navigator",
@@ -5150,6 +8932,240 @@
     ]
   },
   {
+    "id": "third-iteration",
+    "code": 87,
+    "name": "Third Iteration",
+    "manifestHash": 2973900274,
+    "gameVersion": "9.7.0",
+    "weaponType": "scoutRifle",
+    "element": "void",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 200,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 16,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 3410,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-third-iteration-precision",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 112.616,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-third-iteration-precision",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: precision"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-third-iteration-precision",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-third-iteration-precision",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "tri-planar-mass-driver",
+        "name": "Tri-Planar Mass Driver",
+        "description": "Fires a spread of Void energy projectiles. Aiming down sights narrows the spread.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "thorn",
+    "code": 78,
+    "name": "Thorn",
+    "manifestHash": 3973202132,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "handCannon",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-thorn",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 140,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-thorn",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 9,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-thorn",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-thorn",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1640,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-thorn",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-thorn-average-with-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 135.198,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-thorn-average-with-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with poison"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-thorn-average-with-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-thorn-average-with-poison",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "mark-of-the-devourer",
+        "name": "Mark of the Devourer",
+        "description": "Rounds pierce targets and inflict corruption. Final blows with this weapon leave behind Remnants.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "thunderlord",
     "code": 18,
     "name": "Thunderlord",
@@ -5267,6 +9283,123 @@
     ]
   },
   {
+    "id": "ticuu-s-divination",
+    "code": 92,
+    "name": "Ticuu's Divination",
+    "manifestHash": 3260753130,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "bow",
+    "element": "solar",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-ticuu-s-divination",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 51,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-ticuu-s-divination",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 1,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-ticuu-s-divination",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-ticuu-s-divination",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-ticuu-s-divination",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-ticuu-s-divination-average-alternating-modes-6-stacks",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 367.335,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-ticuu-s-divination-average-alternating-modes-6-stacks",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, alternating modes, 6 stacks"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-ticuu-s-divination-average-alternating-modes-6-stacks",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-ticuu-s-divination-average-alternating-modes-6-stacks",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "sacred-flame",
+        "name": "Sacred Flame",
+        "description": "Hipfiring this weapon fires multiple tracking projectiles.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "tractor-cannon",
     "code": 44,
     "name": "Tractor Cannon",
@@ -5374,6 +9507,357 @@
         "id": "repulsor-force",
         "name": "Repulsor Force",
         "description": "This weapon emits a powerful impulse that pushes targets away, suppressing their abilities and dramatically weakening them. Strong against [Disruption] Overload Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "traveler-s-chosen",
+    "code": 88,
+    "name": "Traveler's Chosen",
+    "manifestHash": 1853180924,
+    "gameVersion": "9.7.0",
+    "weaponType": "sidearm",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 300,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 17,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1030,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-traveler-s-chosen",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 78.546,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-traveler-s-chosen",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-traveler-s-chosen",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-traveler-s-chosen",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "gathering-light",
+        "name": "Gathering Light",
+        "description": "Final blows with this weapon grant stacks of Gathering Light.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "trespasser",
+    "code": 79,
+    "name": "Trespasser",
+    "manifestHash": 1234150730,
+    "gameVersion": "9.7.0",
+    "weaponType": "sidearm",
+    "element": "arc",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-trespasser",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 491,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-trespasser",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 30,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-trespasser",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-trespasser",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1030,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-sidearm-trespasser",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-trespasser",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 50.574,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-trespasser",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-trespasser",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sidearm-trespasser",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "unrepentant",
+        "name": "Unrepentant",
+        "description": "Reloading after defeating a target causes the next burst to be a longer, more powerful superburst.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "trinity-ghoul",
+    "code": 89,
+    "name": "Trinity Ghoul",
+    "manifestHash": 814876685,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "bow",
+    "element": "arc",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 48,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 1,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-trinity-ghoul",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 218.677,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-trinity-ghoul",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-trinity-ghoul",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-trinity-ghoul",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "split-electron",
+        "name": "Split Electron",
+        "description": "Fires an arrow that splits when released. Aiming down sights and fully drawing the bow both decrease the spread.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -5662,6 +10146,123 @@
     ]
   },
   {
+    "id": "verglas-curve",
+    "code": 84,
+    "name": "Verglas Curve",
+    "manifestHash": 3659414143,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "bow",
+    "element": "stasis",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-verglass-curve",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 51,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-verglass-curve",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 1,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-verglass-curve",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-verglass-curve",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-verglass-curve",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-verglas-curve",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 208.696,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-verglas-curve",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-verglas-curve",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-verglas-curve",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "hail-barrage",
+        "name": "Hail Barrage",
+        "description": "Final blows with this weapon grant Stasis arrows. Your next hip-fire shot will fire all of them in a single volley.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
     "id": "vexcalibur",
     "code": 38,
     "name": "Vexcalibur",
@@ -5802,6 +10403,123 @@
         "id": "m1r-distribution-matrix-iv",
         "name": "M1R Distribution Matrix IV",
         "description": "Fires a spread. Equipped with a quick-draining shield. Blocking damage with your shield gradually bestows Void overshields to yourself and nearby allies.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ]
+  },
+  {
+    "id": "vigilance-wing",
+    "code": 80,
+    "name": "Vigilance Wing",
+    "manifestHash": 3628991659,
+    "gameVersion": "9.7.0",
+    "weaponType": "pulseRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-vigilance-wing",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 530,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-vigilance-wing",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 50,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-vigilance-wing",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-vigilance-wing",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1160,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-vigilance-wing",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-vigilance-wing-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 34.534,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-vigilance-wing-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: burst"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-vigilance-wing-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-vigilance-wing-burst",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "harsh-truths",
+        "name": "Harsh Truths",
+        "description": "This weapon fires a 5-round burst. When a nearby ally is killed, gain health regeneration and increased movement speed.",
         "source": {
           "name": "Bungie manifest",
           "retrieved": "2026-10-20",
@@ -5978,6 +10696,123 @@
         },
         "durationSeconds": 1.2,
         "condition": null
+      }
+    ]
+  },
+  {
+    "id": "wicked-implement",
+    "code": 81,
+    "name": "Wicked Implement",
+    "manifestHash": 940371471,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "scoutRifle",
+    "element": "stasis",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-wicked-implement",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 260,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-wicked-implement",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 20,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-wicked-implement",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-wicked-implement",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1240,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-wicked-implement",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-wicked-implement-average-with-manual-shatters",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 93.318,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-wicked-implement-average-with-manual-shatters",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with manual shatters"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-wicked-implement-average-with-manual-shatters",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-wicked-implement-average-with-manual-shatters",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "creeping-attrition",
+        "name": "Creeping Attrition",
+        "description": "Rapidly landing precision hits causes targets to become slowed. Strong against [Disruption] Overload Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
       }
     ]
   },

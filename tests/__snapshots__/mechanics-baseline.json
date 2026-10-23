@@ -1,5 +1,11 @@
 {
   "weapons": {
+    "ace-of-spades": {
+      "30s plain": 5293.42,
+      "30s buffed": 8912,
+      "600s plain": 104232.25,
+      "600s buffed": 175485.42
+    },
     "ager-s-scepter": {
       "30s plain": 14427.78,
       "30s buffed": 24290.61,
@@ -11,6 +17,12 @@
       "30s buffed": 40229.2,
       "600s plain": 23894.75,
       "600s buffed": 40229.2
+    },
+    "bad-juju": {
+      "30s plain": 5814.72,
+      "30s buffed": 9789.66,
+      "600s plain": 112364.63,
+      "600s buffed": 189177.1
     },
     "bastion": {
       "30s plain": 27056.03,
@@ -30,6 +42,12 @@
       "600s plain": 16121,
       "600s buffed": 27141.32
     },
+    "centrifuse": {
+      "30s plain": 7244.69,
+      "30s buffed": 12197.15,
+      "600s plain": 142696.26,
+      "600s buffed": 240243.42
+    },
     "cloudstrike": {
       "30s plain": 20595.04,
       "30s buffed": 34673.8,
@@ -42,11 +60,29 @@
       "600s plain": 17845.69,
       "600s buffed": 30045
     },
+    "collective-obligation": {
+      "30s plain": 6398.04,
+      "30s buffed": 10771.74,
+      "600s plain": 125207.7,
+      "600s buffed": 210799.69
+    },
     "conditional-finality": {
       "30s plain": 27020.94,
       "30s buffed": 45492.46,
       "600s plain": 27020.94,
       "600s buffed": 45492.46
+    },
+    "crimson": {
+      "30s plain": 5793.7,
+      "30s buffed": 9754.27,
+      "600s plain": 113580.58,
+      "600s buffed": 191224.27
+    },
+    "cryosthesia-77k": {
+      "30s plain": 8373.98,
+      "30s buffed": 14098.44,
+      "600s plain": 165386.18,
+      "600s buffed": 278444.18
     },
     "d-a-r-c-i": {
       "30s plain": 25568.71,
@@ -75,6 +111,16 @@
       "30s buffed": 29819.62,
       "600s plain": 47568.89,
       "600s buffed": 80086.98
+    },
+    "devil-s-ruin": {
+      "30s plain": 9425.52,
+      "30s buffed": 15868.81,
+      "30s plain catalyst": 3300.82,
+      "30s buffed catalyst": 5557.26,
+      "600s plain": 187567.85,
+      "600s buffed": 315789.23,
+      "600s plain catalyst": 65686.26,
+      "600s buffed catalyst": 110589.39
     },
     "dragon-s-breath": {
       "30s plain": 40980.43,
@@ -130,11 +176,29 @@
       "600s plain": 20813.91,
       "600s buffed": 35042.31
     },
+    "hard-light": {
+      "30s plain": 6755.63,
+      "30s buffed": 11373.78,
+      "600s plain": 134892.01,
+      "600s buffed": 227104.18
+    },
+    "hawkmoon": {
+      "30s plain": 4908.44,
+      "30s buffed": 8263.86,
+      "600s plain": 94607.85,
+      "600s buffed": 159281.78
+    },
     "heir-apparent": {
       "30s plain": 22312.28,
       "30s buffed": 37564.95,
       "600s plain": 24666.84,
       "600s buffed": 41529.09
+    },
+    "hierarchy-of-needs": {
+      "30s plain": 14669.58,
+      "30s buffed": 24697.71,
+      "600s plain": 280555.79,
+      "600s buffed": 472343.73
     },
     "izanagi-s-burden": {
       "30s plain": 13169,
@@ -148,11 +212,35 @@
       "600s plain": 25159.63,
       "600s buffed": 42358.76
     },
+    "khvostov-7g-0x": {
+      "30s plain": 10152.06,
+      "30s buffed": 17092.02,
+      "600s plain": 197613.05,
+      "600s buffed": 332701.34
+    },
+    "le-monarque": {
+      "30s plain": 6699.73,
+      "30s buffed": 11279.67,
+      "600s plain": 131630.07,
+      "600s buffed": 221612.38
+    },
+    "legend-of-acrius": {
+      "30s plain": 31846.27,
+      "30s buffed": 53616.38,
+      "600s plain": 31846.27,
+      "600s buffed": 53616.38
+    },
     "leviathan-s-breath": {
       "30s plain": 19531.07,
       "30s buffed": 32882.51,
       "600s plain": 19531.07,
       "600s buffed": 32882.51
+    },
+    "lodestar": {
+      "30s plain": 9122.25,
+      "30s buffed": 15358.22,
+      "600s plain": 177896.04,
+      "600s buffed": 299505.77
     },
     "lord-of-wolves": {
       "30s plain": 35165.15,
@@ -166,11 +254,35 @@
       "600s plain": 22808.63,
       "600s buffed": 38400.6
     },
+    "lumina": {
+      "30s plain": 5293.42,
+      "30s buffed": 8912,
+      "600s plain": 104232.25,
+      "600s buffed": 175485.42
+    },
     "microcosm": {
       "30s plain": 31895.71,
       "30s buffed": 53699.62,
       "600s plain": 31895.71,
       "600s buffed": 53699.62
+    },
+    "mida-multi-tool": {
+      "30s plain": 5907.2,
+      "30s buffed": 9945.36,
+      "600s plain": 117479.44,
+      "600s buffed": 197788.39
+    },
+    "monte-carlo": {
+      "30s plain": 6755.63,
+      "30s buffed": 11373.78,
+      "600s plain": 132107.03,
+      "600s buffed": 222415.4
+    },
+    "necrochasm": {
+      "30s plain": 6808.82,
+      "30s buffed": 11463.33,
+      "600s plain": 131988.12,
+      "600s buffed": 222215.2
     },
     "new-land-beyond": {
       "30s plain": 16463.36,
@@ -184,6 +296,12 @@
       "600s plain": 31317.95,
       "600s buffed": 52726.9
     },
+    "no-time-to-explain": {
+      "30s plain": 16986.14,
+      "30s buffed": 28597.87,
+      "600s plain": 328768.05,
+      "600s buffed": 553513.89
+    },
     "one-thousand-voices": {
       "30s plain": 28422.93,
       "30s buffed": 47852.84,
@@ -194,11 +312,41 @@
       "600s plain catalyst": 39297.86,
       "600s buffed catalyst": 66161.87
     },
+    "osteo-striga": {
+      "30s plain": 13439.46,
+      "30s buffed": 22626.68,
+      "600s plain": 264020.38,
+      "600s buffed": 444504.71
+    },
     "parasite": {
       "30s plain": 32001.58,
       "30s buffed": 53877.87,
       "600s plain": 38401.9,
       "600s buffed": 64653.44
+    },
+    "polaris-lance": {
+      "30s plain": 10692.3,
+      "30s buffed": 18001.55,
+      "600s plain": 208924.09,
+      "600s buffed": 351744.6
+    },
+    "quicksilver-storm": {
+      "30s plain": 8215.46,
+      "30s buffed": 13831.54,
+      "600s plain": 159351.98,
+      "600s buffed": 268284.99
+    },
+    "rat-king": {
+      "30s plain": 8954.24,
+      "30s buffed": 15075.37,
+      "600s plain": 175550.31,
+      "600s buffed": 295556.5
+    },
+    "red-death-reformed": {
+      "30s plain": 5949.21,
+      "30s buffed": 10016.08,
+      "600s plain": 115291.49,
+      "600s buffed": 194104.75
     },
     "ruinous-effigy": {
       "30s plain": 15077.98,
@@ -230,6 +378,36 @@
       "600s plain": 13169,
       "600s buffed": 22171.33
     },
+    "sturm": {
+      "30s plain": 5154.21,
+      "30s buffed": 8677.63,
+      "600s plain": 101595.21,
+      "600s buffed": 171045.69
+    },
+    "sunshot": {
+      "30s plain": 5107.39,
+      "30s buffed": 8598.81,
+      "600s plain": 96867.35,
+      "600s buffed": 163085.88
+    },
+    "sweet-business": {
+      "30s plain": 12103.13,
+      "30s buffed": 20376.83,
+      "600s plain": 234885.6,
+      "600s buffed": 395453.4
+    },
+    "symmetry": {
+      "30s plain": 6646.93,
+      "30s buffed": 11190.77,
+      "600s plain": 130560.32,
+      "600s buffed": 219811.36
+    },
+    "tarrabah": {
+      "30s plain": 8840.33,
+      "30s buffed": 14883.58,
+      "600s plain": 173284.04,
+      "600s buffed": 291741
+    },
     "telesto": {
       "30s plain": 20797.29,
       "30s buffed": 35014.31,
@@ -254,6 +432,24 @@
       "600s plain": 83952.88,
       "600s buffed": 141343.07
     },
+    "the-jade-rabbit": {
+      "30s plain": 6088.38,
+      "30s buffed": 10250.4,
+      "600s plain": 120318.05,
+      "600s buffed": 202567.46
+    },
+    "the-last-word": {
+      "30s plain": 11228.93,
+      "30s buffed": 18905.02,
+      "600s plain": 223350.4,
+      "600s buffed": 376032.73
+    },
+    "the-manticore": {
+      "30s plain": 13659.07,
+      "30s buffed": 22996.42,
+      "600s plain": 264927.38,
+      "600s buffed": 446031.73
+    },
     "the-navigator": {
       "30s plain": 11109.99,
       "30s buffed": 18704.78,
@@ -266,17 +462,53 @@
       "600s plain": 19225.3,
       "600s buffed": 32367.71
     },
+    "third-iteration": {
+      "30s plain": 7207.42,
+      "30s buffed": 12134.42,
+      "600s plain": 131873.34,
+      "600s buffed": 222021.95
+    },
+    "thorn": {
+      "30s plain": 6895.1,
+      "30s buffed": 11608.59,
+      "600s plain": 132899.63,
+      "600s buffed": 223749.82
+    },
     "thunderlord": {
       "30s plain": 23005.38,
       "30s buffed": 38731.85,
       "600s plain": 43163.55,
       "600s buffed": 72670.16
     },
+    "ticuu-s-divination": {
+      "30s plain": 6244.7,
+      "30s buffed": 10513.57,
+      "600s plain": 124159.23,
+      "600s buffed": 209034.48
+    },
     "tractor-cannon": {
       "30s plain": 9404.44,
       "30s buffed": 15833.32,
       "600s plain": 9404.44,
       "600s buffed": 15833.32
+    },
+    "traveler-s-chosen": {
+      "30s plain": 9346.97,
+      "30s buffed": 15736.57,
+      "600s plain": 181048.53,
+      "600s buffed": 304813.31
+    },
+    "trespasser": {
+      "30s plain": 9861.93,
+      "30s buffed": 16603.55,
+      "600s plain": 194204.16,
+      "600s buffed": 326962.12
+    },
+    "trinity-ghoul": {
+      "30s plain": 3717.51,
+      "30s buffed": 6258.8,
+      "600s plain": 71070.03,
+      "600s buffed": 119653.49
     },
     "truth": {
       "30s plain": 43585.78,
@@ -294,11 +526,23 @@
       "600s plain": 26776.09,
       "600s buffed": 45080.22
     },
+    "verglas-curve": {
+      "30s plain": 3547.83,
+      "30s buffed": 5973.13,
+      "600s plain": 70539.25,
+      "600s buffed": 118759.88
+    },
     "vexcalibur": {
       "30s plain": 18914.18,
       "30s buffed": 31843.92,
       "600s plain": 18914.18,
       "600s buffed": 31843.92
+    },
+    "vigilance-wing": {
+      "30s plain": 7770.15,
+      "30s buffed": 13081.82,
+      "600s plain": 151949.6,
+      "600s buffed": 255822.35
     },
     "whisper-of-the-worm": {
       "30s plain": 30597.77,
@@ -309,6 +553,12 @@
       "600s buffed": 54376.31,
       "600s plain catalyst": 47535.67,
       "600s buffed catalyst": 80031.06
+    },
+    "wicked-implement": {
+      "30s plain": 9705.07,
+      "30s buffed": 16339.46,
+      "600s plain": 191488.54,
+      "600s buffed": 322390.1
     },
     "winterbite": {
       "30s plain": 24972.46,
