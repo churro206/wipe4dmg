@@ -170,6 +170,23 @@ describe("exotic armor changes its abilities", () => {
     expect(long).toBeLessThan(short);
   });
 
+  it("Oathkeeper: every primary bow gains at least nothing, none loses; a held draw only when it pays", () => {
+    const hunter = { guardianClass: "hunter" as const };
+    const bows = weapons.filter((w) => w.weaponType === "bow" && w.ammo === "primary");
+    expect(bows.length).toBeGreaterThan(0);
+    const ratios = bows.map(
+      (bow) =>
+        damageOf(run({ ...hunter, exoticArmorId: "oathkeeper" }, bow), "weapon") /
+        damageOf(run(hunter, bow), "weapon"),
+    );
+    note(
+      `Primary-Bögen (${bows.length}) mit / ohne Oathkeeper`,
+      `×${fmt(Math.min(...ratios))} bis ×${fmt(Math.max(...ratios))}`,
+      "nie unter ×1,00; Halten nur, wenn der Zyklus lang genug ist",
+    );
+    for (const ratio of ratios) expect(ratio).toBeGreaterThanOrEqual(0.999);
+  });
+
   it("well-known variants exist (Cuirass, Nighthawk, Dawn Chorus, Geomag)", () => {
     for (const id of [
       "cuirass-of-the-falling-star",

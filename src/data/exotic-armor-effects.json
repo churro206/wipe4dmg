@@ -704,6 +704,53 @@
     }
   },
   {
+    "exoticArmorId": "oathkeeper",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:oathkeeper",
+      "name": "Oathkeeper",
+      "code": 3883286571,
+      "shortName": "Oathkeeper",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "holdDraw",
+          "weaponTypes": ["bow"],
+          "stepMs": {
+            "value": 500,
+            "source": {
+              "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json)",
+              "url": "https://www.d2clarity.com",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "„37.5% increased damage against PVE Combatants for every 0.5 seconds you hold a perfect draw, up to a 200% increase“; the engine holds only when damage per second rises (primary ammo bows)"
+            }
+          },
+          "stepFactor": {
+            "value": 1.375,
+            "source": {
+              "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json)",
+              "url": "https://www.d2clarity.com",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "„37.5% increased damage against PVE Combatants for every 0.5 seconds you hold a perfect draw, up to a 200% increase“; the engine holds only when damage per second rises (primary ammo bows)"
+            }
+          },
+          "maxFactor": {
+            "value": 3,
+            "source": {
+              "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json)",
+              "url": "https://www.d2clarity.com",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "„37.5% increased damage against PVE Combatants for every 0.5 seconds you hold a perfect draw, up to a 200% increase“; the engine holds only when damage per second rises (primary ammo bows)"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
     "exoticArmorId": "peacekeepers",
     "activation": "always",
     "effect": {

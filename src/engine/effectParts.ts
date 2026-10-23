@@ -8,6 +8,7 @@ import type {
   DamageSource,
   Effect,
   Element,
+  HoldDrawPart,
   KeywordId,
   MultiplierPart,
   TimingPart,
@@ -26,6 +27,7 @@ export type ActiveParts = {
   timingParts: TimingPart[];
   counterModifierParts: CounterModifierPart[];
   keywordParts: AppliesKeywordPart[];
+  holdDrawParts: HoldDrawPart[];
 };
 
 /** What a damage instance is, as far as multiplier parts care. */
@@ -46,6 +48,7 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
   const timingParts: TimingPart[] = [];
   const counterModifierParts: CounterModifierPart[] = [];
   const keywordParts: AppliesKeywordPart[] = [];
+  const holdDrawParts: HoldDrawPart[] = [];
 
   for (const effect of effects) {
     const overriddenBuckets = new Set(
@@ -67,13 +70,23 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
         keywordParts.push(part);
         continue;
       }
+      if (part.type === "holdDraw") {
+        holdDrawParts.push(part);
+        continue;
+      }
       if (!bucketIds.has(part.bucketId)) {
         throw new Error(`Unknown bucket "${part.bucketId}"`);
       }
       if (!overriddenBuckets.has(part.bucketId)) multiplierParts.push(part);
     }
   }
-  return { multiplierParts, timingParts, counterModifierParts, keywordParts };
+  return {
+    multiplierParts,
+    timingParts,
+    counterModifierParts,
+    keywordParts,
+    holdDrawParts,
+  };
 }
 
 /** A part without weapon types applies to everything; a part with weapon types only to those weapons. */
@@ -114,6 +127,11 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
         );
       case "timing":
         return appliesToWeaponType(part.weaponTypes, weapon.weaponType);
+      case "holdDraw":
+        return (
+          weapon.ammo === "primary" &&
+          appliesToWeaponType(part.weaponTypes, weapon.weaponType)
+        );
       case "counterModifier":
         return counterIds.has(part.counterId);
       case "appliesKeyword":

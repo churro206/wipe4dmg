@@ -15,7 +15,7 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Gilt mit einem Zustand, z. B. Amplified (Regel 5) | 3 |
 | Ability nicht im Modell (Regel 6) | 3 |
 | Stapel pro Waffentreffer (Regel 7) | 2 |
-| Bonus durch Halten, ohne Gewinn (Regel 7) | 1 |
+| Bonus durch Halten (Regel 7) | 1 |
 | Wirkt nicht gegen einen Boss (Regel 1) | 6 |
 | Eigener Schaden, später (Regel 2) | 1 |
 | Lücke (Regel 8) | 0 |
@@ -103,11 +103,11 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Lucky Pants | 7 | +45 % pro Stapel, höchstens 10, auf handCannon; Boss nimmt 33 % weniger Schaden von gebufften Schüssen; Fenster 6 s ab Beginn | Compendium 45 %, Clarity 45 % |
 | Peacekeepers | 7 | +5 % pro Stapel, höchstens 20, auf submachineGun; Boss nimmt 33 % weniger Schaden von gebufften Schüssen; Lücke über 1 s beendet die Serie | Compendium 5 %, Clarity 5 % |
 
-## Bonus durch Halten, ohne Gewinn (Regel 7)
+## Bonus durch Halten (Regel 7)
 
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
-| Oathkeeper | 7 | wächst, solange der Perfect Draw gehalten wird („increased damage every 0.5 seconds“): Halten kostet mehr Zeit, als der Bonus bringt (Zyklus eines Primary-Bogens unter 1 s, Gewinn erst ab etwa 1,3 s mit Clarity 37,5 % pro 0,5 s); ein erfahrener Spieler schießt sofort, der Bonus fällt weg | Compendium 200 %, Clarity 37.5 % |
+| Oathkeeper | 7 | +37.5 % je 0.5 s Halten, höchstens +200 % auf Primary-Bögen; die Engine hält nur, wenn der Schaden pro Sekunde steigt (Gewinn erst ab Schusszyklus über etwa 1,3 s) | Compendium 200 %, Clarity 37.5 % |
 
 ## Wirkt nicht gegen einen Boss (Regel 1)
 

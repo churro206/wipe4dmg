@@ -11,7 +11,7 @@
 // 5 it needs another buff, e.g. Roaring Flames or Frost Armor → U6-2
 // 6 the bonus names one ability: an ability of the model gets it the whole damage phase, otherwise gap
 // 7 stacks per weapon hit → MultiplierPart.hitStacks, counted from the hits of the rotation; a
-//   buff that grows while holding a draw (Oathkeeper) has no gain for a bow cycle under 1 s
+//   buff that grows while holding a draw (Oathkeeper) → HoldDrawPart, held only when it pays
 // 8 no text → gap
 
 import {
@@ -24,6 +24,7 @@ import {
   type Element,
   type ExoticArmorEffect,
   type ExoticArmorEntry,
+  type HoldDrawPart,
   type MultiplierPart,
   type StatusId,
   type WeaponType,
@@ -95,6 +96,8 @@ const HIT_STACKS =
   /Hits? against (?:a )?Combatants?:?\s+grants? (?:a )?stacks?/i;
 // The buff grows while the perfect draw is held (Oathkeeper)
 const HELD_BUFF = /increased damage every ([\d.]+) seconds/i;
+const HELD_DRAW =
+  /(\d+(?:\.\d+)?)% increased damage against PVE Combatants for every ([\d.]+) seconds[^.\n]*?up to a (\d+)% increase/i;
 // Stacks per weapon hit: value, maximum, refresh and boss penalty from the text
 const STACK_BONUS = /(\d+(?:\.\d+)?)% increased [^.\n]*? per stack/i;
 const STACK_MAX = /(?:maximum of|up to) (\d+) stacks/i;
@@ -155,7 +158,7 @@ const elementOf = (text: string): Element | undefined =>
 const flat = (text: string) => text.replace(/\s+/g, " ").trim();
 
 export type Verdict = Omit<ExoticEffectRow, "exoticArmorId" | "name" | "effectId"> & {
-  part?: MultiplierPart;
+  part?: MultiplierPart | HoldDrawPart;
   durationMs?: { value: number; source: Source };
   trigger?: EffectTrigger;
 };
@@ -448,6 +451,39 @@ function abilityOf(
 }
 
 /**
+ * Rule 7: a buff that grows while the perfect draw is held (Oathkeeper). Clarity gives the value
+ * per step and the maximum (the owner trusts it over the Compendium's 200 % after 2 s); the engine
+ * takes the hold only when it pays (HoldDrawPart).
+ */
+function heldDrawVerdict(
+  text: string,
+  inputs: ExoticEffectInputs,
+  check: string,
+): Verdict {
+  const held = HELD_DRAW.exec(text);
+  if (!held)
+    return { rule: 7, kind: "gap", reason: "Halte-Bonus nicht lesbar", check };
+  const source: Source = {
+    ...inputs.sources.clarity,
+    note: `„${flat(held[0])}“; the engine holds only when damage per second rises (primary ammo bows)`,
+  };
+  const part: HoldDrawPart = {
+    type: "holdDraw",
+    weaponTypes: ["bow"],
+    stepMs: { value: Number(held[2]) * MS_PER_SECOND, source },
+    stepFactor: { value: factorOf(Number(held[1])), source },
+    maxFactor: { value: factorOf(Number(held[3])), source },
+  };
+  return {
+    rule: 7,
+    kind: "heldDraw",
+    reason: `+${held[1]} % je ${held[2]} s Halten, höchstens +${held[3]} % auf Primary-Bögen; die Engine hält nur, wenn der Schaden pro Sekunde steigt (Gewinn erst ab Schusszyklus über etwa 1,3 s)`,
+    check,
+    part,
+  };
+}
+
+/**
  * Rule 7: stacks per weapon hit. The engine counts the hits of the rotation (MultiplierPart.hitStacks);
  * the text gives the value per stack, the maximum, the refresh time and the penalty against bosses.
  */
@@ -524,14 +560,7 @@ function textVerdict(
   const own = OWN_DAMAGE.exec(text);
   if (own)
     return { rule: 2, kind: "ownDamage", reason: `eigener Schaden („${own[0].trim()}“), später`, check };
-  const held = HELD_BUFF.exec(text);
-  if (held)
-    return {
-      rule: 7,
-      kind: "heldDraw",
-      reason: `wächst, solange der Perfect Draw gehalten wird („${held[0]}“): Halten kostet mehr Zeit, als der Bonus bringt (Zyklus eines Primary-Bogens unter 1 s, Gewinn erst ab etwa 1,3 s mit Clarity 37,5 % pro 0,5 s); ein erfahrener Spieler schießt sofort, der Bonus fällt weg`,
-      check,
-    };
+  if (HELD_BUFF.test(text)) return heldDrawVerdict(text, inputs, check);
   const stacks = HIT_STACKS.exec(text);
   if (stacks) return hitStacksVerdict(entry, text, inputs, check);
 
@@ -705,6 +734,7 @@ export const GENERATES: string[] = [
   "triggered",
   "needsEffect",
   "hitStacks",
+  "heldDraw",
 ];
 
 /** Review rows of all damage buffs and the effects of those that are always active, prebuilt or triggered. */
@@ -767,7 +797,7 @@ const KIND_TITLES: [ExoticEffectKind, string][] = [
   ["needsEffect", "Gilt mit einem Zustand, z. B. Amplified (Regel 5)"],
   ["abilityGap", "Ability nicht im Modell (Regel 6)"],
   ["hitStacks", "Stapel pro Waffentreffer (Regel 7)"],
-  ["heldDraw", "Bonus durch Halten, ohne Gewinn (Regel 7)"],
+  ["heldDraw", "Bonus durch Halten (Regel 7)"],
   ["notAgainstBoss", "Wirkt nicht gegen einen Boss (Regel 1)"],
   ["ownDamage", "Eigener Schaden, später (Regel 2)"],
   ["noText", "Lücke (Regel 8)"],

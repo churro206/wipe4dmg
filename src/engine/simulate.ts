@@ -248,7 +248,34 @@ export function simulate(
     return result;
   };
 
+  // Held draw: the number of steps with the most damage per shot cycle; 0 steps if holding does not
+  // pay. Returns the extra time and the damage factor of the shot.
+  const holdAt = (timeMs: number): { holdMs: number; factor: number } => {
+    const none = { holdMs: 0, factor: 1 };
+    if (weapon.ammo !== "primary") return none;
+    const part = partsAt(timeMs).holdDrawParts.find((p) =>
+      appliesToWeaponType(p.weaponTypes, weapon.weaponType),
+    );
+    if (!part) return none;
+    const stepMs = requireValue(part.stepMs, "stepMs");
+    const stepFactor = requireValue(part.stepFactor, "stepFactor");
+    const maxFactor = requireValue(part.maxFactor, "maxFactor");
+    let best = none;
+    let bestRate = 1 / shotIntervalMs;
+    for (let steps = 1; ; steps++) {
+      const factor = Math.min(1 + (stepFactor - 1) * steps, maxFactor);
+      const rate = factor / (shotIntervalMs + steps * stepMs);
+      if (rate > bestRate) {
+        best = { holdMs: steps * stepMs, factor };
+        bestRate = rate;
+      }
+      if (factor >= maxFactor) break;
+    }
+    return best;
+  };
+
   const shots: Shot[] = [];
+  const holdFactors: number[] = [];
   let shotMs = chargeTimeMs;
   for (let i = 0; i < totalShots; i++) {
     if (i > 0) {
@@ -257,10 +284,22 @@ export function simulate(
       if (i % magazine === 0 && !noReloadAt(previousMs))
         shotMs += reloadMsAt(previousMs);
     }
-    shotMs = afterSuperWindows(shotMs);
+    const hold = holdAt(shotMs);
+    shotMs = afterSuperWindows(shotMs + hold.holdMs);
     if (!isInPhase(shotMs)) break;
     shots.push({ timeMs: shotMs });
+    holdFactors.push(hold.factor);
   }
+  // Damage factor of the held draw for the shot that makes a hit at timeMs
+  const anyHold = holdFactors.some((factor) => factor !== 1);
+  const holdFactorAt = (timeMs: number) => {
+    if (!anyHold) return 1;
+    let factor = 1;
+    shots.forEach((shot, index) => {
+      if (shot.timeMs <= timeMs) factor = holdFactors[index];
+    });
+    return factor;
+  };
 
   const instances = weapon.damageInstances
     .filter((instance) => catalyst || !instance.requiresCatalyst)
@@ -326,6 +365,7 @@ export function simulate(
     return { ...plain, multiplier: { ...part.multiplier, value: factor } };
   };
   const multiplierAt = (timeMs: number, element: Element) =>
+    holdFactorAt(timeMs) *
     combinedMultiplier(
       [
         ...partsAt(timeMs, included).multiplierParts.map((part) =>

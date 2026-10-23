@@ -252,9 +252,14 @@ describe("rules for the exotic damage buffs", () => {
     expect(result.effects.map((e) => e.effect.id)).toEqual(
       result.rows
         .filter((r) =>
-          ["always", "preBuilt", "triggered", "needsEffect", "hitStacks"].includes(
-            r.kind,
-          ),
+          [
+            "always",
+            "preBuilt",
+            "triggered",
+            "needsEffect",
+            "hitStacks",
+            "heldDraw",
+          ].includes(r.kind),
         )
         .map((r) => r.effectId),
     );

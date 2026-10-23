@@ -435,8 +435,24 @@ export const TimingPart = z.object({
 });
 export type TimingPart = z.infer<typeof TimingPart>;
 
+/**
+ * Effect part for a draw that grows while held (Oathkeeper): each step of stepMs held makes the
+ * shot stepFactor stronger (1.375 = +37.5 %), up to maxFactor. The engine takes, per shot, the
+ * hold with the most damage per second, so a hold that costs more time than it brings is not taken.
+ * Primary ammo weapons only.
+ */
+export const HoldDrawPart = z.object({
+  type: z.literal("holdDraw"),
+  weaponTypes: z.array(WeaponType).min(1),
+  stepMs: SourcedNumber,
+  stepFactor: SourcedNumber,
+  maxFactor: SourcedNumber,
+});
+export type HoldDrawPart = z.infer<typeof HoldDrawPart>;
+
 export const EffectPart = z.discriminatedUnion("type", [
   MultiplierPart,
+  HoldDrawPart,
   TimingPart,
   CounterModifierPart,
   AppliesKeywordPart,

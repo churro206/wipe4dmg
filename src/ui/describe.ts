@@ -232,6 +232,8 @@ function describePart(part: EffectPart): string {
         : `Reloading takes only ${integer.format((part.factor ?? 1) * 100)}%`;
     case "counterModifier":
       return `+${percentOf(part.factor.value)}% Scorch stacks`;
+    case "holdDraw":
+      return `Holding a perfect draw adds +${percentOf(part.stepFactor.value)}% damage every ${integer.format((part.stepMs.value ?? 0) / 1000)} s (up to +${percentOf(part.maxFactor.value)}%), only when the hold pays off`;
     case "appliesKeyword": {
       const hits = part.damageSources
         .map((s) =>
