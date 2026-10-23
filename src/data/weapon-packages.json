@@ -1214,7 +1214,47 @@
     "catalyst": {
       "name": "Shield Disorient, Borealis Catalyst",
       "description": "Passively grants 20 Reload Speed.\nOn Matching Elemental Shield Break:\nExplosion disorients enemies within 7 meters for 5 seconds.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 85.329,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-borealis",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 19.3 s − 3 reloads × 1.98 s) ÷ 19 intervals (ADR 0013); Derived: reload 1.98 s × 0.900 = 1.78 s, d2foundry formula for reload stat 65 → 85 (manifest)"
+          }
+        },
+        "magazine": {
+          "value": 5,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-borealis",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 20,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-borealis",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1783,
+          "source": {
+            "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "url": "https://github.com/d2foundry/oracle_engine",
+            "retrieved": "2026-10-23",
+            "status": "unverified",
+            "note": "Derived: reload 1.98 s × 0.900 = 1.78 s, d2foundry formula for reload stat 65 → 85 (manifest)"
+          }
+        }
+      }
     }
   },
   {
@@ -2019,7 +2059,47 @@
     "catalyst": {
       "name": "Supercharged Magazine, Coldheart Catalyst",
       "description": "Passively grants 20 Stability and 20 Reload Speed.\n(Yes, these are the same stats that are set to 100 when at 100% Fusion Energy)\nRefills 5% of the magazine (rounded up) every 1.5 seconds while Amplified.\nActivating Speed Booster increases this rate to once every 0.25 seconds, and allows the perk to overfill the magazine up to double its base capacity.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 907.019,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-coldheart",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 39.1 s − 4 reloads × 1.44 s) ÷ 504 intervals (ADR 0013); Derived: reload 1.44 s × 0.897 = 1.29 s, d2foundry formula for reload stat 30 → 50 (manifest)"
+          }
+        },
+        "magazine": {
+          "value": 101,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-coldheart",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 505,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-coldheart",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1291,
+          "source": {
+            "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "url": "https://github.com/d2foundry/oracle_engine",
+            "retrieved": "2026-10-23",
+            "status": "unverified",
+            "note": "Derived: reload 1.44 s × 0.897 = 1.29 s, d2foundry formula for reload stat 30 → 50 (manifest)"
+          }
+        }
+      }
     }
   },
   {
@@ -7838,7 +7918,48 @@
     "catalyst": {
       "name": "Unrelenting, Le Monarque Catalyst",
       "description": "Grants 20 Reload Speed and 30 Stability.\nGrants the Unrelenting trait:\nStarts Health Regeneration and restores 65 HP upon reaching 100% Activation Progress with Weapon Kills within 5 seconds of each.\nActivation Progress by Enemy Rank:\n• Minor Combatants: 34%\n• Players: 67%\n• Elites, Minibosses, and Bosses: 100%",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 50,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf); Derived: reload 0.60 s × 0.874 = 0.52 s, d2foundry formula for reload stat 40 → 60 (manifest)"
+          }
+        },
+        "magazine": {
+          "value": 1,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 525,
+          "source": {
+            "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "url": "https://github.com/d2foundry/oracle_engine",
+            "retrieved": "2026-10-23",
+            "status": "unverified",
+            "note": "Derived: reload 0.60 s × 0.874 = 0.52 s, d2foundry formula for reload stat 40 → 60 (manifest)"
+          }
+        }
+      }
     }
   },
   {
@@ -8404,7 +8525,47 @@
     "catalyst": {
       "name": "Fang and Claw, Lord of Wolves Catalyst",
       "description": "Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration.\nHipfired shots apply 10 Scorch stacks (15 with Ember of Ashes) on hit with a 0.5 second cooldown.\nKills while ADS trigger a Solar explosion that applies 30 Scorch stacks (40 with Ember of Ashes) to enemies within an 8 meter radius.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 660.422,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived: (Time to Empty 22.6 s − 6 reloads × 0.92 s) ÷ 188 intervals (ADR 0013); Derived: reload 0.92 s × 0.765 = 0.70 s, d2foundry formula for reload stat 80 → 120 (manifest)"
+          }
+        },
+        "magazine": {
+          "value": 30,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": 189,
+          "source": {
+            "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 704,
+          "source": {
+            "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "url": "https://github.com/d2foundry/oracle_engine",
+            "retrieved": "2026-10-23",
+            "status": "unverified",
+            "note": "Derived: reload 0.92 s × 0.765 = 0.70 s, d2foundry formula for reload stat 80 → 120 (manifest)"
+          }
+        }
+      }
     }
   },
   {
@@ -10067,7 +10228,48 @@
     "catalyst": {
       "name": "Osteo Striga Catalyst",
       "description": "Grants 30 Reload and 20 Stability.\nPoison Kills instantly refill the magazine and can overfill it up to 300% total capacity.\n0.5 second cooldown between activations.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 600,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-osteo-striga",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf); Derived: reload 1.19 s × 0.803 = 0.96 s, d2foundry formula for reload stat 18 → 48 (manifest)"
+          }
+        },
+        "magazine": {
+          "value": 29,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-osteo-striga",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-osteo-striga",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 956,
+          "source": {
+            "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "url": "https://github.com/d2foundry/oracle_engine",
+            "retrieved": "2026-10-23",
+            "status": "unverified",
+            "note": "Derived: reload 1.19 s × 0.803 = 0.96 s, d2foundry formula for reload stat 18 → 48 (manifest)"
+          }
+        }
+      }
     }
   },
   {
@@ -12847,7 +13049,48 @@
     "catalyst": {
       "name": "Eddy Current, Electric Styx, Symmetry Catalyst",
       "description": "Grants 10 Reload Speed and 10 Handling.\nDynamic Charge's maximum stack count is is increased by 5 (15🠚20), allowing for up to 600% increased damage and 100% increased radius.\nGrants the Eddy Current trait:\nGrants the following after sprinting for 1.5 seconds with the weapon readied:\n• 20 Reload Speed\n• 0.95x Reload Duration Multiplier\n• ? Handling\n• 0.95x Handling Animation Duration Multiplier\nSprinting refreshes the buff duration.\nBeing Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 260,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-symmetry",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf); Derived: reload 0.99 s × 0.914 = 0.91 s, d2foundry formula for reload stat 35 → 45 (manifest)"
+          }
+        },
+        "magazine": {
+          "value": 20,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-symmetry",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-symmetry",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "unlimited (Quantum: inf)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 905,
+          "source": {
+            "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "url": "https://github.com/d2foundry/oracle_engine",
+            "retrieved": "2026-10-23",
+            "status": "unverified",
+            "note": "Derived: reload 0.99 s × 0.914 = 0.91 s, d2foundry formula for reload stat 35 → 45 (manifest)"
+          }
+        }
+      }
     }
   },
   {
@@ -13707,7 +13950,7 @@
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "unverified",
-            "note": "Derived: (Time to Empty 12.1 s − 3 reloads × 0.43 s) ÷ 19 intervals (ADR 0013)"
+            "note": "Derived: (Time to Empty 12.1 s − 3 reloads × 0.43 s) ÷ 19 intervals (ADR 0013); Derived: reload 0.43 s × 0.660 = 0.28 s, d2foundry formula for reload stat 36 → 76 (manifest)"
           }
         },
         "magazine": {
@@ -13729,12 +13972,13 @@
           }
         },
         "reloadTimeMs": {
-          "value": 430,
+          "value": 284,
           "source": {
-            "name": "Quantum Damage-ics (specials), row specials-shotgun-the-fourth-horseman-cata",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
+            "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "url": "https://github.com/d2foundry/oracle_engine",
+            "retrieved": "2026-10-23",
+            "status": "unverified",
+            "note": "Derived: reload 0.43 s × 0.660 = 0.28 s, d2foundry formula for reload stat 36 → 76 (manifest)"
           }
         }
       }

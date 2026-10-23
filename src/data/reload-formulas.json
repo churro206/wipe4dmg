@@ -1,0 +1,500 @@
+{
+  "source": {
+    "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+    "url": "https://github.com/d2foundry/oracle_engine",
+    "retrieved": "2026-10-23",
+    "status": "unverified",
+    "note": "Does not reproduce Aegis's measured reload; used only as a factor for catalyst reload stats."
+  },
+  "types": {
+    "autoRifle": {
+      "default": {
+        "evpp": 0.0000855689,
+        "vpp": -0.0242021,
+        "offset": 2.80673006666667,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Cerberus+1": {
+          "evpp": 0.0000855689,
+          "vpp": -0.0242021,
+          "offset": 2.80673006666667,
+          "ammoPercent": 1
+        },
+        "Hard Light": {
+          "evpp": 0.0000855689,
+          "vpp": -0.0242021,
+          "offset": 2.80673006666667,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "bow": {
+      "default": {
+        "evpp": 0.0000535476056419958,
+        "vpp": -0.0102410419405799,
+        "offset": 1.10091136388022,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Test_Bow": { "evpp": 0, "vpp": -0.1, "offset": 10, "ammoPercent": 1 },
+        "Wish-Ender": {
+          "evpp": 0.0000535476056419958,
+          "vpp": -0.0102410419405799,
+          "offset": 1.10091136388022,
+          "ammoPercent": 1
+        },
+        "Trinity Ghoul": {
+          "evpp": 0.0000535476056419958,
+          "vpp": -0.0102410419405799,
+          "offset": 1.10091136388022,
+          "ammoPercent": 1
+        },
+        "Leviathan's Breath": {
+          "evpp": 0.0000535476056419958,
+          "vpp": -0.0102410419405799,
+          "offset": 1.10091136388022,
+          "ammoPercent": 1
+        },
+        "Le Monarque": {
+          "evpp": 0.0000535476056419958,
+          "vpp": -0.0102410419405799,
+          "offset": 1.10091136388022,
+          "ammoPercent": 1
+        },
+        "Hierarchy Of Needs": {
+          "evpp": 0.0000535476056419958,
+          "vpp": -0.0102410419405799,
+          "offset": 1.10091136388022,
+          "ammoPercent": 1
+        },
+        "Verglass Curve": {
+          "evpp": 0.0000535476056419958,
+          "vpp": -0.0102410419405799,
+          "offset": 1.10091136388022,
+          "ammoPercent": 1
+        },
+        "Wish-Keeper": {
+          "evpp": 0.0000535476056419958,
+          "vpp": -0.0102410419405799,
+          "offset": 1.10091136388022,
+          "ammoPercent": 1
+        },
+        "Ticuu's Divination": {
+          "evpp": 0.0000535476056419958,
+          "vpp": -0.0102410419405799,
+          "offset": 1.10091136388022,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "fusionRifle": {
+      "default": {
+        "evpp": 0.0000615281,
+        "vpp": -0.0198054,
+        "offset": 2.8285704,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Jötunn": {
+          "evpp": 0.0000615281,
+          "vpp": -0.0198054,
+          "offset": 2.8285704,
+          "ammoPercent": 1
+        },
+        "Telesto": {
+          "evpp": 0.0000615281,
+          "vpp": -0.0198054,
+          "offset": 2.8285704,
+          "ammoPercent": 1
+        },
+        "Aggressive Frame": {
+          "evpp": 0.0000615281,
+          "vpp": -0.0198054,
+          "offset": 2.8285704,
+          "ammoPercent": 1
+        },
+        "Vex Mythoclast": {
+          "evpp": 0.0000855689,
+          "vpp": -0.0242021,
+          "offset": 2.80673006666667,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "grenadeLauncher": {
+      "default": {
+        "evpp": 0.0000724199,
+        "vpp": -0.0216432,
+        "offset": 3.24104606666667,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Anarchy": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        },
+        "Fighting Lion": {
+          "evpp": 0.0000724199,
+          "vpp": -0.0216432,
+          "offset": 3.24104606666667,
+          "ammoPercent": 1
+        },
+        "Lightweight Frame": {
+          "evpp": 0.0000724199,
+          "vpp": -0.0216432,
+          "offset": 3.24104606666667,
+          "ammoPercent": 1
+        },
+        "Parasite": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        },
+        "Adaptive Frame": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        },
+        "Salvation's Grip": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        },
+        "Wave Frame": {
+          "evpp": 0.0000724199,
+          "vpp": -0.0216432,
+          "offset": 3.24104606666667,
+          "ammoPercent": 1
+        },
+        "Double Fire": {
+          "evpp": 0.0000724199,
+          "vpp": -0.0216432,
+          "offset": 3.24104606666667,
+          "ammoPercent": 1
+        },
+        "Rapid-Fire Frame": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        },
+        "Compressed Wave Frame": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        },
+        "The Prospector": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        },
+        "Witherhoard": {
+          "evpp": 0.0000724199,
+          "vpp": -0.0216432,
+          "offset": 3.24104606666667,
+          "ammoPercent": 1
+        },
+        "Micro-Missile Frame": {
+          "evpp": 0.0000724199,
+          "vpp": -0.0216432,
+          "offset": 3.24104606666667,
+          "ammoPercent": 1
+        },
+        "The Colony": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        },
+        "Precision Frame": {
+          "evpp": 0.0000755233,
+          "vpp": -0.0248947,
+          "offset": 4.12880153333333,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "handCannon": {
+      "default": {
+        "evpp": 0.00006137590643,
+        "vpp": -0.02385522011,
+        "offset": 3.600042253,
+        "ammoPercent": 0.71
+      },
+      "weapons": {
+        "Sturm": {
+          "evpp": 0.00006137590643,
+          "vpp": -0.02385522011,
+          "offset": 3.600042253,
+          "ammoPercent": 0.71
+        },
+        "Aggressive Frame": {
+          "evpp": 0.00006137590643,
+          "vpp": -0.02385522011,
+          "offset": 3.600042253,
+          "ammoPercent": 0.71
+        },
+        "The Last Word": {
+          "evpp": 0.00006137590643,
+          "vpp": -0.02385522011,
+          "offset": 3.600042253,
+          "ammoPercent": 0.71
+        },
+        "Eriana's vow": {
+          "evpp": 0.00006137590643,
+          "vpp": -0.02385522011,
+          "offset": 3.600042253,
+          "ammoPercent": 0.71
+        }
+      }
+    },
+    "linearFusionRifle": {
+      "default": {
+        "evpp": 0.0000588462,
+        "vpp": -0.0199884,
+        "offset": 2.87206463333,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "The Queenbreaker": {
+          "evpp": 0.0000588462,
+          "vpp": -0.0199884,
+          "offset": 2.87206463333,
+          "ammoPercent": 1
+        },
+        "Arbalest": {
+          "evpp": 0.0000588462,
+          "vpp": -0.0199884,
+          "offset": 2.87206463333,
+          "ammoPercent": 1
+        },
+        "Sleeper Simulant": {
+          "evpp": 0.0000588462,
+          "vpp": -0.0199884,
+          "offset": 2.87206463333,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "machineGun": {
+      "default": {
+        "evpp": 0.0000905351,
+        "vpp": -0.0305819,
+        "offset": 6.1219905,
+        "ammoPercent": 0.65
+      },
+      "weapons": {
+        "Xenophage": {
+          "evpp": 0.0000905351,
+          "vpp": -0.0305819,
+          "offset": 6.1219905,
+          "ammoPercent": 0.65
+        },
+        "Grand Overture": {
+          "evpp": 0.0000905351,
+          "vpp": -0.0305819,
+          "offset": 6.1219905,
+          "ammoPercent": 0.65
+        }
+      }
+    },
+    "pulseRifle": {
+      "default": {
+        "evpp": 0.0000926208,
+        "vpp": -0.0256877,
+        "offset": 2.92627266666667,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "test_weapon": {
+          "evpp": 0,
+          "vpp": -0.1,
+          "offset": 10,
+          "ammoPercent": 1
+        },
+        "Revision Zero IV": {
+          "evpp": 0.0000926208,
+          "vpp": -0.0256877,
+          "offset": 2.92627266666667,
+          "ammoPercent": 1
+        },
+        "Revision Zero II": {
+          "evpp": 0.0000926208,
+          "vpp": -0.0256877,
+          "offset": 2.92627266666667,
+          "ammoPercent": 1
+        },
+        "Revision Zero III": {
+          "evpp": 0.0000926208,
+          "vpp": -0.0256877,
+          "offset": 2.92627266666667,
+          "ammoPercent": 1
+        },
+        "Revision Zero": {
+          "evpp": 0.0000926208,
+          "vpp": -0.0256877,
+          "offset": 2.92627266666667,
+          "ammoPercent": 1
+        },
+        "Revision Zero I": {
+          "evpp": 0.0000926208,
+          "vpp": -0.0256877,
+          "offset": 2.92627266666667,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "rocketLauncher": {
+      "default": {
+        "evpp": 0.000103959,
+        "vpp": -0.0252069,
+        "offset": 4.09182213333333,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Eyes of Tomorrow": {
+          "evpp": 0.000103959,
+          "vpp": -0.0252069,
+          "offset": 4.09182213333333,
+          "ammoPercent": 1
+        },
+        "The Wardcliff Coil": {
+          "evpp": 0.000103959,
+          "vpp": -0.0252069,
+          "offset": 4.09182213333333,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "scoutRifle": {
+      "default": {
+        "evpp": 0.000102915,
+        "vpp": -0.0276889,
+        "offset": 3.11797356666666,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Dead Man's Tale": {
+          "evpp": 0.000102915,
+          "vpp": -0.0276889,
+          "offset": 3.11797356666666,
+          "ammoPercent": 1
+        },
+        "Aggressive Frame": {
+          "evpp": 0.000102915,
+          "vpp": -0.0276889,
+          "offset": 3.11797356666666,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "shotgun": {
+      "default": {
+        "evpp": 0.0000640462,
+        "vpp": -0.0141721,
+        "offset": 1.25061,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Lord of Wolves": {
+          "evpp": 0.0000640462,
+          "vpp": -0.0141721,
+          "offset": 1.25061,
+          "ammoPercent": 1
+        },
+        "Duality": {
+          "evpp": 0.0000640462,
+          "vpp": -0.0141721,
+          "offset": 1.25061,
+          "ammoPercent": 1
+        },
+        "Precision Frame": {
+          "evpp": 0.0000640462,
+          "vpp": -0.0141721,
+          "offset": 1.25061,
+          "ammoPercent": 1
+        },
+        "Tractor Cannon": {
+          "evpp": 0.0000640462,
+          "vpp": -0.0141721,
+          "offset": 1.25061,
+          "ammoPercent": 1
+        },
+        "The Chaperone": {
+          "evpp": 0.0000640462,
+          "vpp": -0.0141721,
+          "offset": 1.25061,
+          "ammoPercent": 1
+        },
+        "Heavy Burst": {
+          "evpp": 0.0000640462,
+          "vpp": -0.0141721,
+          "offset": 1.25061,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "sidearm": {
+      "default": {
+        "evpp": 0.0000238311,
+        "vpp": -0.0124553,
+        "offset": 2.14667245,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Forerunner": {
+          "evpp": 0.0000238311,
+          "vpp": -0.0124553,
+          "offset": 2.64667245,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "sniperRifle": {
+      "default": {
+        "evpp": 0.0000674498,
+        "vpp": -0.0231542,
+        "offset": 3.8384,
+        "ammoPercent": 1
+      },
+      "weapons": {}
+    },
+    "submachineGun": {
+      "default": {
+        "evpp": 0.0000608642,
+        "vpp": -0.0191345,
+        "offset": 2.62769,
+        "ammoPercent": 1
+      },
+      "weapons": {
+        "Osteo Striga": {
+          "evpp": 0.0000608642,
+          "vpp": -0.0191345,
+          "offset": 2.62769,
+          "ammoPercent": 1
+        }
+      }
+    },
+    "glaive": {
+      "default": { "evpp": 0, "vpp": -0.0175, "offset": 3.5, "ammoPercent": 1 },
+      "weapons": {}
+    },
+    "traceRifle": {
+      "default": {
+        "evpp": 0.00005,
+        "vpp": -0.0155,
+        "offset": 2.65,
+        "ammoPercent": 1
+      },
+      "weapons": {}
+    }
+  }
+}

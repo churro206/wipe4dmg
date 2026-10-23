@@ -143,8 +143,8 @@
     "coldheart": {
       "30s plain": 13746.48,
       "30s buffed": 23143.58,
-      "30s plain catalyst": 13746.48,
-      "30s buffed catalyst": 23143.58,
+      "30s plain catalyst": 13958.51,
+      "30s buffed catalyst": 23500.55,
       "600s plain": 17845.69,
       "600s buffed": 30045,
       "600s plain catalyst": 17845.69,
@@ -565,12 +565,12 @@
     "le-monarque": {
       "30s plain": 6699.73,
       "30s buffed": 11279.67,
-      "30s plain catalyst": 6699.73,
-      "30s buffed catalyst": 11279.67,
+      "30s plain catalyst": 7093.84,
+      "30s buffed catalyst": 11943.18,
       "600s plain": 131630.07,
       "600s buffed": 221612.38,
-      "600s plain catalyst": 131630.07,
-      "600s buffed catalyst": 221612.38
+      "600s plain catalyst": 137147.5,
+      "600s buffed catalyst": 230901.52
     },
     "legend-of-acrius": {
       "30s plain": 27865.49,
@@ -731,12 +731,12 @@
     "osteo-striga": {
       "30s plain": 13439.46,
       "30s buffed": 22626.68,
-      "30s plain catalyst": 13439.46,
-      "30s buffed catalyst": 22626.68,
+      "30s plain catalyst": 14368.46,
+      "30s buffed catalyst": 24190.73,
       "600s plain": 264020.38,
       "600s buffed": 444504.71,
-      "600s plain catalyst": 264020.38,
-      "600s buffed catalyst": 444504.71
+      "600s plain catalyst": 279875.23,
+      "600s buffed catalyst": 471197.93
     },
     "outbreak-perfected": {
       "30s plain": 14560,
@@ -941,12 +941,12 @@
     "symmetry": {
       "30s plain": 6646.93,
       "30s buffed": 11190.77,
-      "30s plain catalyst": 6646.93,
-      "30s buffed catalyst": 11190.77,
+      "30s plain catalyst": 6768.89,
+      "30s buffed catalyst": 11396.1,
       "600s plain": 130560.32,
       "600s buffed": 219811.36,
-      "600s plain catalyst": 130560.32,
-      "600s buffed catalyst": 219811.36
+      "600s plain catalyst": 132755.64,
+      "600s buffed catalyst": 223507.39
     },
     "tarrabah": {
       "30s plain": 8840.33,

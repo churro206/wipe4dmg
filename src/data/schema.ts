@@ -1225,6 +1225,31 @@ export const ClarityEntry = z.object({
 });
 export type ClarityEntry = z.infer<typeof ClarityEntry>;
 
+/**
+ * d2foundry's reload formula of a weapon type or exotic: seconds until the ammo is in the magazine
+ * = (evpp·stat² + vpp·stat + offset) × ammoPercent, stat 0 to 100.
+ */
+export const ReloadFormula = z.object({
+  evpp: z.number(),
+  vpp: z.number(),
+  offset: z.number(),
+  ammoPercent: z.number(),
+});
+export type ReloadFormula = z.infer<typeof ReloadFormula>;
+
+export const ReloadFormulaSnapshot = z.object({
+  source: Source,
+  // by manifest weapon type, e.g. "rocketLauncher"; weapons: own category by manifest name
+  types: z.record(
+    z.string(),
+    z.object({
+      default: ReloadFormula,
+      weapons: z.record(z.string(), ReloadFormula),
+    }),
+  ),
+});
+export type ReloadFormulaSnapshot = z.infer<typeof ReloadFormulaSnapshot>;
+
 export const ClaritySnapshot = z.object({
   source: Source,
   entries: z.array(ClarityEntry),

@@ -225,6 +225,18 @@ describe("catalysts from texts (2026-10-23)", () => {
     expect(on / off).toBeGreaterThan(1.3);
   });
 
+  it("Osteo Striga: the catalyst's reload stat reloads faster, a few percent more damage", () => {
+    const off = run({}, weaponById("osteo-striga")).totalDamage;
+    const on = run({ catalyst: true }, weaponById("osteo-striga")).totalDamage;
+    note(
+      "Osteo Striga Catalyst an / aus",
+      fmt(on / off),
+      "1,03 bis 1,15 (Reload-Stat 18 → 48)",
+    );
+    expect(on / off).toBeGreaterThan(1.03);
+    expect(on / off).toBeLessThan(1.15);
+  });
+
   it("Wish-Ender: a catalyst that needs several enemies does nothing against one boss", () => {
     expect(weaponById("wish-ender").catalyst!.effect).toBe("none");
   });

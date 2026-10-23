@@ -13,6 +13,7 @@ import {
   ManifestTerms,
   ManifestWeapons,
   QuantumWeaponSnapshot,
+  ReloadFormulaSnapshot,
   WeaponOverride,
 } from "../../src/data/schema.ts";
 import type { WeaponImportInputs } from "./weaponPackages.ts";
@@ -38,6 +39,7 @@ export function loadWeaponImportInputs(): WeaponImportInputs {
     keywords: KeywordData.array().parse(read("keywords.json")),
     clarity: ClaritySnapshot.parse(read("clarity.json")).entries,
     overrides: WeaponOverride.array().parse(read("weapon-overrides.json")),
+    reloadFormulas: ReloadFormulaSnapshot.parse(read("reload-formulas.json")),
     codes: existsSync(codesFile)
       ? (read("weapon-codes.json") as Record<string, number>)
       : {},

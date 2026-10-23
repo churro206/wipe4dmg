@@ -19,6 +19,7 @@ import type {
   ManifestWeapon,
   QuantumWeaponRow,
   QuantumWeaponSnapshot,
+  ReloadFormulaSnapshot,
   Source,
   Weapon,
   WeaponGap,
@@ -26,6 +27,7 @@ import type {
 } from "../../src/data/schema.ts";
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
+import { catalystReloadFactor, reloadFormulaOf } from "./reloadFormulas.ts";
 import {
   abilityKindsNamed,
   armorForWeapon,
@@ -51,6 +53,7 @@ export type WeaponImportInputs = {
   codes: Record<string, number>;
   clarity: ClarityEntry[];
   overrides: WeaponOverride[];
+  reloadFormulas: ReloadFormulaSnapshot;
 };
 
 // Spellings of a source that differ from the manifest beyond case, e.g. Quantum's typo.
@@ -388,6 +391,7 @@ export type Timing = {
   intervalSeconds: number;
   timeToEmptySeconds: number | null; // null: unlimited ammo
   note: string;
+  reloadSource?: Source; // when the reload comes from another source than the row
 };
 type TimingProblem = { problem: string };
 
@@ -1467,6 +1471,57 @@ export function buildWeaponImport(
         note: `${timing.note}; with the catalyst: magazine ${magazine}, ${shots ?? "∞"} shots (override)`,
       };
     }
+    // A catalyst's reload stat (manifest) as a factor on the measured reload: d2foundry's formula
+    // reload(stat + catalyst) ÷ reload(stat) (owner, 2026-10-23). Quantum's reload does not depend
+    // on the stat; Aegis plays with the catalyst, so its reload already has it.
+    const reloadStat = manifest.stats["Reload Speed"];
+    const reloadDelta = manifest.catalyst?.stats["Reload Speed"];
+    const reloadFormula = reloadFormulaOf(
+      inputs.reloadFormulas.types,
+      manifest.weaponType,
+      manifest.name,
+    );
+    const reloadFrom = catalystTiming ?? timing;
+    if (
+      !timingIsAegis &&
+      reloadFormula &&
+      reloadStat !== undefined &&
+      reloadDelta &&
+      reloadFrom.reloadSeconds > 0
+    ) {
+      const factor = catalystReloadFactor(
+        reloadFormula,
+        reloadStat,
+        reloadDelta,
+        catalystTexts.join("\n"),
+      );
+      const reloadSeconds = reloadFrom.reloadSeconds * factor;
+      const engineReloadSeconds =
+        reloadFrom.engineReloadSeconds +
+        reloadSeconds -
+        reloadFrom.reloadSeconds;
+      const reloads =
+        reloadFrom.totalShots === null
+          ? 0
+          : Math.ceil(reloadFrom.totalShots / reloadFrom.magazine) - 1;
+      const note = `Derived: reload ${reloadFrom.reloadSeconds.toFixed(2)} s × ${factor.toFixed(3)} = ${reloadSeconds.toFixed(2)} s, d2foundry formula for reload stat ${reloadStat} → ${reloadStat + reloadDelta} (manifest)`;
+      catalystTiming = {
+        ...reloadFrom,
+        reloadSeconds,
+        engineReloadSeconds,
+        timeToEmptySeconds:
+          reloadFrom.timeToEmptySeconds === null
+            ? null
+            : reloadFrom.timeToEmptySeconds -
+              reloads * (reloadFrom.engineReloadSeconds - engineReloadSeconds),
+        note: `${reloadFrom.note}; ${note}`,
+        reloadSource: {
+          ...inputs.reloadFormulas.source,
+          status: "unverified",
+          note,
+        },
+      };
+    }
 
     if (quantumRow && timing === quantumTiming) {
       if (plain.length === 0)
@@ -1793,7 +1848,9 @@ export function buildWeaponImport(
                         value: Math.round(
                           catalystTiming.engineReloadSeconds * 1000,
                         ),
-                        source: timingSourceOf(catalystTiming),
+                        source:
+                          catalystTiming.reloadSource ??
+                          timingSourceOf(catalystTiming),
                       },
                     },
                   }
