@@ -40,6 +40,13 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 5. Vertikale Scheiben: Daten, Engine und Oberfläche zusammen. Aufräum-Commits getrennt von Verhaltensänderungen.
 6. Zusammenfassung in zwei bis drei Sätzen.
 
+## Sparsam arbeiten (Inhaber, 2026-10-23, Claude Pro)
+
+- Ein Block pro Sitzung. Am Ende `docs/plans/current.md` so pflegen, dass der nächste Block nach `/clear` ohne Chat-Verlauf starten kann; dann `/clear` vorschlagen.
+- Modell: Pläne, ADRs und schwierige Herleitungen mit Opus, Umsetzung mit Sonnet. Beim Wechsel einen Satz dazu sagen.
+- Kleine Ausgaben: `npm run test:quiet`, `npm run facts`, große Dateien nur ausschnittweise lesen (Grep, dann Read mit `offset`), Changelog nur per Edit ergänzen.
+- Online und Browser nur im Budget des Skills `recherche`. Keine Subagents.
+
 ## Definition of Done
 
 - `npm test`, `npx tsc -b` und lint grün. Die Vergleichsbasis ist nur gewollt geändert.
@@ -49,7 +56,7 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 
 ## Befehle
 
-- `npm test`, `npm run sanity` (Plausibilitäts-Gate), `npm run build` (`tsc -b` prüft auch `scripts/`), `npm run dev`
+- `npm test`, `npm run test:quiet` (nur Ergebnis und Fehler), `npm run sanity` (Plausibilitäts-Gate), `npm run build` (`tsc -b` prüft auch `scripts/`), `npm run dev`
 - `npm run facts -- "<Name>"`: Name in allen Snapshots suchen, kompakt
 - `npm run coverage`: `docs/coverage.md` neu schreiben (generiert)
 - Import (lädt herunter): `import:weapons`, `import:compendium`, `import:court`, `import:abilities`, `import:bosses`, `import:reload`, `import:icons` (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)
