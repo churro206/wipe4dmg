@@ -403,6 +403,16 @@ export const MultiplierPart = z.object({
   requiresStatus: z.array(StatusId).min(1).optional(),
   // Only while one of these other effects is active, e.g. Expanding Abyss raises Weaken
   requiresEffectIds: z.array(z.string()).min(1).optional(),
+  // Stacks per weapon hit, e.g. Lucky Pants, Peacekeepers: `multiplier` is the factor of one stack
+  // (1.45 = +45 %), hit n has n - 1 stacks. A longer gap than refreshMs ends the run (omitted: never).
+  // Bosses take bossFactor times the damage of a buffed shot (one stack or more).
+  hitStacks: z
+    .object({
+      maxStacks: SourcedNumber,
+      refreshMs: SourcedNumber.optional(),
+      bossFactor: SourcedNumber,
+    })
+    .optional(),
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 

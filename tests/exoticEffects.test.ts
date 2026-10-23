@@ -65,7 +65,7 @@ describe("rules for the exotic damage buffs", () => {
     ["Peregrine Greaves", "abilityGap"],
     ["Lucky Pants", "hitStacks"],
     ["Peacekeepers", "hitStacks"],
-    ["Oathkeeper", "hitStacks"],
+    ["Oathkeeper", "heldDraw"],
     // the overshield comes from not taking damage, so the bonus holds the whole damage phase
     ["Fortune's Favor", "always"],
   ])("%s → %s", (name, kind) => {
@@ -252,10 +252,30 @@ describe("rules for the exotic damage buffs", () => {
     expect(result.effects.map((e) => e.effect.id)).toEqual(
       result.rows
         .filter((r) =>
-          ["always", "preBuilt", "triggered", "needsEffect"].includes(r.kind),
+          ["always", "preBuilt", "triggered", "needsEffect", "hitStacks"].includes(
+            r.kind,
+          ),
         )
         .map((r) => r.effectId),
     );
+  });
+
+  it("stacks per weapon hit: Lucky Pants has a 6 s window, Peacekeepers refreshes per hit", () => {
+    const lucky = effectOf("lucky-pants").effect;
+    const pants = lucky.parts[0];
+    if (pants.type !== "multiplier") throw new Error("multiplier expected");
+    expect(pants.weaponTypes).toEqual(["handCannon"]);
+    expect(pants.multiplier.value).toBeCloseTo(1.45, 10);
+    expect(pants.hitStacks?.maxStacks.value).toBe(10);
+    expect(pants.hitStacks?.bossFactor.value).toBeCloseTo(0.67, 10);
+    expect(pants.hitStacks?.refreshMs).toBeUndefined();
+    expect(lucky.durationMs?.value).toBe(6000);
+
+    const keepers = effectOf("peacekeepers").effect.parts[0];
+    if (keepers.type !== "multiplier") throw new Error("multiplier expected");
+    expect(keepers.weaponTypes).toEqual(["submachineGun"]);
+    expect(keepers.hitStacks?.maxStacks.value).toBe(20);
+    expect(keepers.hitStacks?.refreshMs?.value).toBe(1000);
   });
 });
 

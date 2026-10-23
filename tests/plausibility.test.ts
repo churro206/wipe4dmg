@@ -139,6 +139,37 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio).toBeLessThan(2.7);
   });
 
+  it("Peacekeepers: 20 stacks of +5 % on an SMG, a boss takes 33 % less from buffed shots, so ×1.34 at most", () => {
+    const smg = weapons.find(
+      (w) => w.weaponType === "submachineGun" && w.ammo === "primary",
+    )!;
+    const titan = { guardianClass: "titan" as const };
+    const ratio =
+      damageOf(run({ ...titan, exoticArmorId: "peacekeepers" }, smg), "weapon") /
+      damageOf(run(titan, smg), "weapon");
+    note(`${smg.name} mit / ohne Peacekeepers (30 s)`, `×${fmt(ratio)}`, "unter ×1,34, über ×1,05 (Nachladen beendet die Serie)");
+    expect(ratio).toBeLessThan(1.34);
+    expect(ratio).toBeGreaterThan(1.05);
+  });
+
+  it("Lucky Pants: 10 stacks of +45 % on a Hand Cannon for 6 s, then nothing more", () => {
+    const handCannon = weapons.find(
+      (w) => w.weaponType === "handCannon" && w.ammo === "primary",
+    )!;
+    const hunter = { guardianClass: "hunter" as const };
+    const [short, long] = [6, 30].map(
+      (damagePhaseSeconds) =>
+        damageOf(
+          run({ ...hunter, damagePhaseSeconds, exoticArmorId: "lucky-pants" }, handCannon),
+          "weapon",
+        ) / damageOf(run({ ...hunter, damagePhaseSeconds }, handCannon), "weapon"),
+    );
+    note(`${handCannon.name} mit / ohne Lucky Pants (6 s / 30 s)`, `×${fmt(short)} / ×${fmt(long)}`, "6 s weit über ×1,5, 30 s kleiner");
+    expect(short).toBeGreaterThan(1.5);
+    expect(long).toBeGreaterThan(1);
+    expect(long).toBeLessThan(short);
+  });
+
   it("well-known variants exist (Cuirass, Nighthawk, Dawn Chorus, Geomag)", () => {
     for (const id of [
       "cuirass-of-the-falling-star",

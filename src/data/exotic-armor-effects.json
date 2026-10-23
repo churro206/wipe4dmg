@@ -528,6 +528,67 @@
     }
   },
   {
+    "exoticArmorId": "lucky-pants",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:lucky-pants",
+      "name": "Lucky Pants",
+      "code": 2405271939,
+      "shortName": "Lucky Pants",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.45,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„45% increased Direct Impact damage against Combatants per stack“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "weaponTypes": ["handCannon"],
+          "hitStacks": {
+            "maxStacks": {
+              "value": 10,
+              "source": {
+                "name": "Destiny Data Compendium (tab Exotic Armors)",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-21",
+                "status": "verified",
+                "note": "„maximum of 10 stacks“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
+              }
+            },
+            "bossFactor": {
+              "value": 0.67,
+              "source": {
+                "name": "Destiny Data Compendium (tab Exotic Armors)",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-21",
+                "status": "verified",
+                "note": "„Bosses take 33% decreased damage“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
+              }
+            }
+          }
+        }
+      ],
+      "durationMs": {
+        "value": 6000,
+        "source": {
+          "name": "Destiny Data Compendium (tab Exotic Armors)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Grants Illegally Modded Holster for 6 seconds“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
+        }
+      }
+    }
+  },
+  {
     "exoticArmorId": "mantle-of-battle-harmony",
     "activation": "always",
     "effect": {
@@ -638,6 +699,67 @@
             "voidOvershield",
             "restoration"
           ]
+        }
+      ]
+    }
+  },
+  {
+    "exoticArmorId": "peacekeepers",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:peacekeepers",
+      "name": "Peacekeepers",
+      "code": 53126580,
+      "shortName": "Peacekeepers",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.05,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„5% increased Submachine Gun Impact Damage against Combatants per stack“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "weaponTypes": ["submachineGun"],
+          "hitStacks": {
+            "maxStacks": {
+              "value": 20,
+              "source": {
+                "name": "Destiny Data Compendium (tab Exotic Armors)",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-21",
+                "status": "verified",
+                "note": "„maximum of 20 stacks“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
+              }
+            },
+            "refreshMs": {
+              "value": 1000,
+              "source": {
+                "name": "Destiny Data Compendium (tab Exotic Armors)",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-21",
+                "status": "verified",
+                "note": "„Grants a stack of Damage Buff for 1 second“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
+              }
+            },
+            "bossFactor": {
+              "value": 0.67,
+              "source": {
+                "name": "Destiny Data Compendium (tab Exotic Armors)",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-21",
+                "status": "verified",
+                "note": "„Bosses take 33% decreased damage“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
+              }
+            }
+          }
         }
       ]
     }

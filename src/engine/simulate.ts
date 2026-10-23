@@ -291,9 +291,48 @@ export function simulate(
         damageSources: [damageSource],
       };
     });
+  // Stacks of a hit: the shots of the current run before the shot that makes the hit; a gap longer
+  // than refreshMs ends the run.
+  const stacksAt = (timeMs: number, refreshMs: number) => {
+    let stacks = 0;
+    let previousMs: number | undefined;
+    for (const shot of shots) {
+      if (shot.timeMs > timeMs) break;
+      stacks =
+        previousMs !== undefined && shot.timeMs - previousMs > refreshMs
+          ? 1
+          : stacks + 1;
+      previousMs = shot.timeMs;
+    }
+    return Math.max(0, stacks - 1);
+  };
+  const resolveHitStacks = (part: MultiplierPart, timeMs: number): MultiplierPart => {
+    const { hitStacks, ...plain } = part;
+    if (hitStacks === undefined) return part;
+    const stacks = Math.min(
+      stacksAt(
+        timeMs,
+        hitStacks.refreshMs
+          ? requireValue(hitStacks.refreshMs, "refreshMs")
+          : Number.POSITIVE_INFINITY,
+      ),
+      requireValue(hitStacks.maxStacks, "maxStacks"),
+    );
+    const factor =
+      stacks === 0
+        ? 1
+        : (1 + (requireValue(part.multiplier, "multiplier") - 1) * stacks) *
+          requireValue(hitStacks.bossFactor, "bossFactor");
+    return { ...plain, multiplier: { ...part.multiplier, value: factor } };
+  };
   const multiplierAt = (timeMs: number, element: Element) =>
     combinedMultiplier(
-      [...partsAt(timeMs, included).multiplierParts, ...optionParts],
+      [
+        ...partsAt(timeMs, included).multiplierParts.map((part) =>
+          resolveHitStacks(part, timeMs),
+        ),
+        ...optionParts,
+      ],
       buckets,
       { damageSource, element, weaponType: weapon.weaponType },
     );

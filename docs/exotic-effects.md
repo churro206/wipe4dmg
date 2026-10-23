@@ -14,7 +14,8 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Auslöser Class Ability, U7 (Regel 4) | 4 |
 | Gilt mit einem Zustand, z. B. Amplified (Regel 5) | 3 |
 | Ability nicht im Modell (Regel 6) | 3 |
-| Stapel pro Waffentreffer, später (Regel 7) | 3 |
+| Stapel pro Waffentreffer (Regel 7) | 2 |
+| Bonus durch Halten, ohne Gewinn (Regel 7) | 1 |
 | Wirkt nicht gegen einen Boss (Regel 1) | 6 |
 | Eigener Schaden, später (Regel 2) | 1 |
 | Lücke (Regel 8) | 0 |
@@ -95,13 +96,18 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Eunoia | 6 | Bonus nur für „Hellion Projectiles“, nicht im Modell | Compendium 20 %, Clarity 20 % |
 | Peregrine Greaves | 6 | Bonus nur für „Shoulder Charge Abilities“, nicht im Modell | Compendium 550 %, Clarity – |
 
-## Stapel pro Waffentreffer, später (Regel 7)
+## Stapel pro Waffentreffer (Regel 7)
 
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
-| Lucky Pants | 7 | Stapel pro Waffentreffer („Hits against Combatants grant stacks“), eigenes Modell später | Compendium 45 %, Clarity 45 % |
-| Oathkeeper | 7 | Stapel pro Waffentreffer („increased damage every 0.5 seconds“), eigenes Modell später | Compendium 200 %, Clarity 37.5 % |
-| Peacekeepers | 7 | Stapel pro Waffentreffer („Hit against a Combatant: Grants a stack“), eigenes Modell später | Compendium 5 %, Clarity 5 % |
+| Lucky Pants | 7 | +45 % pro Stapel, höchstens 10, auf handCannon; Boss nimmt 33 % weniger Schaden von gebufften Schüssen; Fenster 6 s ab Beginn | Compendium 45 %, Clarity 45 % |
+| Peacekeepers | 7 | +5 % pro Stapel, höchstens 20, auf submachineGun; Boss nimmt 33 % weniger Schaden von gebufften Schüssen; Lücke über 1 s beendet die Serie | Compendium 5 %, Clarity 5 % |
+
+## Bonus durch Halten, ohne Gewinn (Regel 7)
+
+| Exotic | Regel | Grund | Gegenprobe |
+| --- | --- | --- | --- |
+| Oathkeeper | 7 | wächst, solange der Perfect Draw gehalten wird („increased damage every 0.5 seconds“): Halten kostet mehr Zeit, als der Bonus bringt (Zyklus eines Primary-Bogens unter 1 s, Gewinn erst ab etwa 1,3 s mit Clarity 37,5 % pro 0,5 s); ein erfahrener Spieler schießt sofort, der Bonus fällt weg | Compendium 200 %, Clarity 37.5 % |
 
 ## Wirkt nicht gegen einen Boss (Regel 1)
 

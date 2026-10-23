@@ -10,7 +10,8 @@
 //   (U6-1b); the class ability triggers it → U7
 // 5 it needs another buff, e.g. Roaring Flames or Frost Armor → U6-2
 // 6 the bonus names one ability: an ability of the model gets it the whole damage phase, otherwise gap
-// 7 stacks per weapon hit → own model later
+// 7 stacks per weapon hit → MultiplierPart.hitStacks, counted from the hits of the rotation; a
+//   buff that grows while holding a draw (Oathkeeper) has no gain for a bow cycle under 1 s
 // 8 no text → gap
 
 import {
@@ -51,6 +52,7 @@ export type ExoticEffectKind =
   | "needsEffect"
   | "abilityGap"
   | "hitStacks"
+  | "heldDraw"
   | "noText"
   | "gap";
 
@@ -90,7 +92,19 @@ const NOT_AGAINST_BOSS =
   /Reflected Projectiles deal|damage towards|within \d+ met(?:re|er)s of \d+ enemies|below \d+% Health|at Critical Health|Noble Seekers/i;
 const OWN_DAMAGE = /\bDoT\b|are dealt (?:increasingly )?/i;
 const HIT_STACKS =
-  /Hits? against (?:a )?Combatants?:?\s+grants? (?:a )?stacks?|increased damage every [\d.]+ seconds/i;
+  /Hits? against (?:a )?Combatants?:?\s+grants? (?:a )?stacks?/i;
+// The buff grows while the perfect draw is held (Oathkeeper)
+const HELD_BUFF = /increased damage every ([\d.]+) seconds/i;
+// Stacks per weapon hit: value, maximum, refresh and boss penalty from the text
+const STACK_BONUS = /(\d+(?:\.\d+)?)% increased [^.\n]*? per stack/i;
+const STACK_MAX = /(?:maximum of|up to) (\d+) stacks/i;
+const STACK_REFRESH = /refresh the [^.\n]*? duration/i;
+const STACK_DURATION = /Grants [^.\n]*?for (\d+(?:\.\d+)?) seconds?/i;
+const BOSS_PENALTY = /Bosses take (\d+(?:\.\d+)?)% decreased damage/i;
+const STACK_WEAPONS: [RegExp, WeaponType][] = [
+  [/\bHand Cannons?\b/i, "handCannon"],
+  [/\bSubmachine Guns?\b/i, "submachineGun"],
+];
 // The nearest trigger before the bonus decides; on the same end, the first kind of the list wins.
 const TEXT_TRIGGERS: [RegExp, "rotation" | "classAbility" | "kill"][] = [
   [
@@ -433,6 +447,60 @@ function abilityOf(
   return abilities.find((a) => singular(subject).includes(singular(a.name)));
 }
 
+/**
+ * Rule 7: stacks per weapon hit. The engine counts the hits of the rotation (MultiplierPart.hitStacks);
+ * the text gives the value per stack, the maximum, the refresh time and the penalty against bosses.
+ */
+function hitStacksVerdict(
+  entry: ExoticArmorEntry,
+  text: string,
+  inputs: ExoticEffectInputs,
+  check: string,
+): Verdict {
+  const bonus = STACK_BONUS.exec(text);
+  const max = STACK_MAX.exec(text);
+  const boss = BOSS_PENALTY.exec(text);
+  const weaponTypes = STACK_WEAPONS.filter(([p]) => p.test(text)).map(([, t]) => t);
+  if (!bonus || !max || !boss || weaponTypes.length !== 1)
+    return {
+      rule: 7,
+      kind: "hitStacks",
+      reason: "Stapel pro Waffentreffer, Wert, Maximum, Boss-Abzug oder Waffentyp nicht lesbar",
+      check,
+    };
+  const duration = STACK_DURATION.exec(text);
+  const refresh = STACK_REFRESH.test(text);
+  const seconds = duration ? Number(duration[1]) : undefined;
+  const source = (quote: string): Source => ({
+    ...inputs.sources.compendium,
+    note: `„${quote}“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)`,
+  });
+  const part: MultiplierPart = {
+    type: "multiplier",
+    bucketId: entry.bonusBucket?.bucketId ?? "exoticIntrinsic",
+    multiplier: { value: factorOf(Number(bonus[1])), source: source(bonus[0]) },
+    damageSources: ["weapon"],
+    weaponTypes,
+    hitStacks: {
+      maxStacks: { value: Number(max[1]), source: source(max[0]) },
+      ...(refresh && seconds !== undefined
+        ? { refreshMs: { value: seconds * MS_PER_SECOND, source: source(duration![0]) } }
+        : {}),
+      bossFactor: { value: (PERCENT - Number(boss[1])) / PERCENT, source: source(boss[0]) },
+    },
+  };
+  return {
+    rule: 7,
+    kind: "hitStacks",
+    reason: `+${bonus[1]} % pro Stapel, höchstens ${max[1]}, auf ${weaponTypes.join(", ")}; Boss nimmt ${boss[1]} % weniger Schaden von gebufften Schüssen${refresh ? `; Lücke über ${seconds} s beendet die Serie` : seconds !== undefined ? `; Fenster ${seconds} s ab Beginn` : ""}`,
+    check,
+    part,
+    ...(!refresh && seconds !== undefined
+      ? { durationMs: { value: seconds * MS_PER_SECOND, source: source(duration![0]) } }
+      : {}),
+  };
+}
+
 function textVerdict(
   entry: ExoticArmorEntry,
   text: string,
@@ -456,14 +524,16 @@ function textVerdict(
   const own = OWN_DAMAGE.exec(text);
   if (own)
     return { rule: 2, kind: "ownDamage", reason: `eigener Schaden („${own[0].trim()}“), später`, check };
-  const stacks = HIT_STACKS.exec(text);
-  if (stacks)
+  const held = HELD_BUFF.exec(text);
+  if (held)
     return {
       rule: 7,
-      kind: "hitStacks",
-      reason: `Stapel pro Waffentreffer („${stacks[0]}“), eigenes Modell später`,
+      kind: "heldDraw",
+      reason: `wächst, solange der Perfect Draw gehalten wird („${held[0]}“): Halten kostet mehr Zeit, als der Bonus bringt (Zyklus eines Primary-Bogens unter 1 s, Gewinn erst ab etwa 1,3 s mit Clarity 37,5 % pro 0,5 s); ein erfahrener Spieler schießt sofort, der Bonus fällt weg`,
       check,
     };
+  const stacks = HIT_STACKS.exec(text);
+  if (stacks) return hitStacksVerdict(entry, text, inputs, check);
 
   const indexOf = (quote: string) => {
     const index = text.indexOf(quote);
@@ -634,6 +704,7 @@ export const GENERATES: string[] = [
   "preBuilt",
   "triggered",
   "needsEffect",
+  "hitStacks",
 ];
 
 /** Review rows of all damage buffs and the effects of those that are always active, prebuilt or triggered. */
@@ -695,7 +766,8 @@ const KIND_TITLES: [ExoticEffectKind, string][] = [
   ["classAbility", "Auslöser Class Ability, U7 (Regel 4)"],
   ["needsEffect", "Gilt mit einem Zustand, z. B. Amplified (Regel 5)"],
   ["abilityGap", "Ability nicht im Modell (Regel 6)"],
-  ["hitStacks", "Stapel pro Waffentreffer, später (Regel 7)"],
+  ["hitStacks", "Stapel pro Waffentreffer (Regel 7)"],
+  ["heldDraw", "Bonus durch Halten, ohne Gewinn (Regel 7)"],
   ["notAgainstBoss", "Wirkt nicht gegen einen Boss (Regel 1)"],
   ["ownDamage", "Eigener Schaden, später (Regel 2)"],
   ["noText", "Lücke (Regel 8)"],
