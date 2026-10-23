@@ -22,6 +22,7 @@
     "build:weapons": "node scripts/build-weapons.ts",
     "build:armor": "node scripts/build-armor.ts",
     "build:buffs": "node scripts/build-buffs.ts",
+    "build:energy": "node scripts/build-energy.ts",
     "build:keywords": "node scripts/build-keywords.ts",
     "build:abilities": "node scripts/build-abilities.ts",
     "import:icons": "node --max-old-space-size=4096 --env-file-if-exists=.env.local scripts/import-bungie-icons.ts"

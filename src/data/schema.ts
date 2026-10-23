@@ -974,6 +974,74 @@ export const AbilityStatScaling = z.object({
 });
 export type AbilityStatScaling = z.infer<typeof AbilityStatScaling>;
 
+/** Energy of one ability (block 3): cooldown without stat bonus and the scalar of chunk energy gains. */
+export const AbilityEnergy = z.object({
+  abilityId: z.string(), // base ability; variants use the energy of their base
+  cooldownSeconds: SourcedNumber, // e.g. Fusion Grenade "Base Cooldown: 105.4 seconds"
+  chunkScalar: SourcedNumber.optional(), // grenades and melees, e.g. "Chunk Scalar: 0.875x"
+});
+export type AbilityEnergy = z.infer<typeof AbilityEnergy>;
+
+/** How the super, grenade or melee stat speeds up the regeneration and the energy gains of its abilities. */
+export const EnergyStat = z.object({
+  kind: AbilityKind,
+  fullAtStat: z.number().positive(), // stat with the full effect, linear from 0; also the default stat
+  regenAtFullStat: SourcedNumber, // regeneration rate relative to stat 0, e.g. 2.48
+  gainBonusAtFullStat: SourcedNumber, // extra share of chunk gains, e.g. 2.115 for +211.5%; null: none known
+});
+export type EnergyStat = z.infer<typeof EnergyStat>;
+
+/** Abilities whose energy changes: kinds, optionally only some abilities or elements. */
+export const EnergyAbilities = z.object({
+  kinds: z.array(AbilityKind).min(1),
+  abilityIds: z.array(z.string()).min(1).optional(), // base abilities
+  elements: z.array(Element).min(1).optional(),
+});
+export type EnergyAbilities = z.infer<typeof EnergyAbilities>;
+
+/**
+ * A change to ability energy from an exotic, an aspect or fragment, or an ability (block 3), with the
+ * value from its text:
+ * charges: extra charges; regenBase: additional base regeneration rate (adds to the stat factor);
+ * regenSpeed: factor on the regeneration speed; energy: share of the bar per trigger.
+ */
+export const EnergyModifier = z.object({
+  id: z.string(),
+  name: z.string(), // item name
+  from: z.union([
+    z.object({ exoticArmorId: z.string() }),
+    z.object({ effectId: z.string() }),
+    z.object({ abilityId: z.string() }),
+  ]),
+  target: EnergyAbilities,
+  change: z.enum(["charges", "regenBase", "regenSpeed", "energy"]),
+  value: SourcedNumber,
+  fixed: z.boolean(), // energy: "Fixed" gains ignore chunk scalar and stat
+  // Omitted: always. cast: each cast of these abilities (one hit per cast, one boss), for regen with
+  // a duration; weaponHit: one weapon hit per cooldown during the whole phase.
+  trigger: z
+    .discriminatedUnion("on", [
+      z.object({
+        on: z.literal("cast"),
+        abilities: EnergyAbilities,
+        durationSeconds: z.number().positive().optional(),
+      }),
+      z.object({ on: z.literal("weaponHit"), cooldownSeconds: z.number().positive() }),
+    ])
+    .optional(),
+  // Only while the build has one of these effects, e.g. Starfire Protocol while Radiant.
+  requiresAnyEffectIds: z.array(z.string()).min(1).optional(),
+});
+export type EnergyModifier = z.infer<typeof EnergyModifier>;
+
+/** src/data/ability-energy.json, written by npm run build:energy. */
+export const EnergyData = z.object({
+  stats: z.array(EnergyStat),
+  abilities: z.array(AbilityEnergy),
+  modifiers: z.array(EnergyModifier),
+});
+export type EnergyData = z.infer<typeof EnergyData>;
+
 /** Community or own reference value for tests. */
 export const ReferenceValue = z.object({
   id: z.string(),

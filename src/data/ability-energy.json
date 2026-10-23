@@ -1,0 +1,2044 @@
+{
+  "stats": [
+    {
+      "kind": "grenade",
+      "fullAtStat": 100,
+      "regenAtFullStat": {
+        "value": 2.48,
+        "source": {
+          "name": "Owner (Gemini answer citing Reddit), ADR 0014 point 9",
+          "retrieved": "2026-10-23",
+          "status": "unverified",
+          "quote": "Seit den Anpassungen im Monument of Triumph-Update regenerieren Granaten und Nahkampf-Fähigkeiten bei Stat 100 exakt 2,48-mal so schnell (entspricht +148 % höherer Regenerationsrate) wie bei Stat 0.",
+          "note": "The Compendium leaves the rate open (\"?%\"). Linear from stat 0 to 100 is our assumption; the stat no longer changes regeneration above 100."
+        }
+      },
+      "gainBonusAtFullStat": {
+        "value": 2.115,
+        "source": {
+          "name": "Destiny Data Compendium, Game Mechanics, Armor Stats",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-23",
+          "status": "verified",
+          "quote": "Stat provides up to ?% Additional Base Grenade Ability Regeneration Rate and 211.5%% Increased Grenade Ability Gains at 100 points.",
+          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt."
+        }
+      }
+    },
+    {
+      "kind": "melee",
+      "fullAtStat": 100,
+      "regenAtFullStat": {
+        "value": 2.48,
+        "source": {
+          "name": "Owner (Gemini answer citing Reddit), ADR 0014 point 9",
+          "retrieved": "2026-10-23",
+          "status": "unverified",
+          "quote": "Seit den Anpassungen im Monument of Triumph-Update regenerieren Granaten und Nahkampf-Fähigkeiten bei Stat 100 exakt 2,48-mal so schnell (entspricht +148 % höherer Regenerationsrate) wie bei Stat 0.",
+          "note": "The Compendium leaves the rate open (\"?%\"). Linear from stat 0 to 100 is our assumption; the stat no longer changes regeneration above 100."
+        }
+      },
+      "gainBonusAtFullStat": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Game Mechanics, Armor Stats",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-23",
+          "status": "missing",
+          "quote": "Provides up to ?% Increased Melee Ability Chunk Gains at 100 points.",
+          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt."
+        }
+      }
+    },
+    {
+      "kind": "super",
+      "fullAtStat": 100,
+      "regenAtFullStat": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Game Mechanics, Armor Stats",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-23",
+          "status": "verified",
+          "quote": "Super | Grants Increased Super Ability Gains per point.",
+          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt. The super stat names only gains, no regeneration rate."
+        }
+      },
+      "gainBonusAtFullStat": {
+        "value": null,
+        "source": {
+          "name": "Destiny Data Compendium, Game Mechanics, Armor Stats",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-23",
+          "status": "missing",
+          "quote": "Provides up to ?% Increased Super Ability Chunk Gains at 100 points.",
+          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt."
+        }
+      }
+    }
+  ],
+  "abilities": [
+    {
+      "abilityId": "thundercrash",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Thundercrash)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Tier 2 Super\n\n556 seconds."
+        }
+      }
+    },
+    {
+      "abilityId": "arc-staff",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Arc Staff)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Tier 2 Super\n\n556 seconds."
+        }
+      }
+    },
+    {
+      "abilityId": "gathering-storm",
+      "cooldownSeconds": {
+        "value": 500,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Gathering Storm)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Tier 3 Super\n\n500 seconds."
+        }
+      }
+    },
+    {
+      "abilityId": "storms-edge",
+      "cooldownSeconds": {
+        "value": 625,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Storm's Edge)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Tier 1 Super\n\n625 seconds."
+        }
+      }
+    },
+    {
+      "abilityId": "fists-of-havoc",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Fists of Havoc)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Tier 2 Super\n\n556 seconds."
+        }
+      }
+    },
+    {
+      "abilityId": "chaos-reach",
+      "cooldownSeconds": {
+        "value": 455,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Chaos Reach)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n455 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "stormtrance",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Stormtrance)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "blade-barrage",
+      "cooldownSeconds": {
+        "value": 455,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Blade Barrage)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n455 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "golden-gun-deadshot",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Golden Gun: Deadshot)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "golden-gun-marksman",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Golden Gun: Marksman)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "burning-maul",
+      "cooldownSeconds": {
+        "value": 500,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Burning Maul)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n500 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "hammer-of-sol",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Hammer of Sol)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "daybreak",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Daybreak)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "well-of-radiance",
+      "cooldownSeconds": {
+        "value": 455,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Well of Radiance)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n455 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "spectral-blades",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Spectral Blades)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "shadowshot-deadfall",
+      "cooldownSeconds": {
+        "value": 455,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Shadowshot: Deadfall)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n455 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "shadowshot-moebius-quiver",
+      "cooldownSeconds": {
+        "value": 500,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Shadowshot: Moebius Quiver)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n500 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "sentinel-shield",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Sentinel Shield)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "twilight-arsenal",
+      "cooldownSeconds": {
+        "value": 500,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Twilight Arsenal)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n500 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "nova-bomb-cataclysm",
+      "cooldownSeconds": {
+        "value": 500,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Nova Bomb: Cataclysm)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n500 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "nova-bomb-vortex",
+      "cooldownSeconds": {
+        "value": 500,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Nova Bomb: Vortex)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n500 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "nova-warp",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Nova Warp)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "silence-and-squall",
+      "cooldownSeconds": {
+        "value": 455,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Silence & Squall)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n455 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "winters-wrath",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Winter's Wrath)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "silkstrike",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Silkstrike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Tier 2 Super\n\n556 seconds."
+        }
+      }
+    },
+    {
+      "abilityId": "needlestorm",
+      "cooldownSeconds": {
+        "value": 500,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Needlestorm)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown:\n500 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "arcbolt-grenade",
+      "cooldownSeconds": {
+        "value": 151.5,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Arcbolt Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 151.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.75,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Arcbolt Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.75x"
+        }
+      }
+    },
+    {
+      "abilityId": "flashbang-grenade",
+      "cooldownSeconds": {
+        "value": 131.7,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Flashbang Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 131.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.875,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Flashbang Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.875x"
+        }
+      }
+    },
+    {
+      "abilityId": "flux-grenade",
+      "cooldownSeconds": {
+        "value": 105.4,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Flux Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 105.4 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.875,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Flux Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.875x"
+        }
+      }
+    },
+    {
+      "abilityId": "lightning-grenade",
+      "cooldownSeconds": {
+        "value": 219.5,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Lightning Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 219.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Lightning Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "pulse-grenade",
+      "cooldownSeconds": {
+        "value": 175.6,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Pulse Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 175.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Pulse Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "skip-grenade",
+      "cooldownSeconds": {
+        "value": 151.5,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Skip Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 151.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.75,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Skip Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.75x"
+        }
+      }
+    },
+    {
+      "abilityId": "storm-grenade",
+      "cooldownSeconds": {
+        "value": 175.6,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Storm Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 175.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Storm Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "firebolt-grenade",
+      "cooldownSeconds": {
+        "value": 83.8,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Firebolt Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 83.8 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Firebolt Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 1x"
+        }
+      }
+    },
+    {
+      "abilityId": "fusion-grenade",
+      "cooldownSeconds": {
+        "value": 95.8,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Fusion Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 95.8 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Fusion Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 1x"
+        }
+      }
+    },
+    {
+      "abilityId": "incendiary-grenade",
+      "cooldownSeconds": {
+        "value": 137.7,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Incendiary Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 137.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.75,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Incendiary Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.75x"
+        }
+      }
+    },
+    {
+      "abilityId": "solar-grenade",
+      "cooldownSeconds": {
+        "value": 199.5,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Solar Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 199.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Solar Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "swarm-grenade",
+      "cooldownSeconds": {
+        "value": 137.7,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Swarm Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 137.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.75,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Swarm Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.75x"
+        }
+      }
+    },
+    {
+      "abilityId": "thermite-grenade",
+      "cooldownSeconds": {
+        "value": 159.6,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Thermite Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 159.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Thermite Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "tripmine-grenade",
+      "cooldownSeconds": {
+        "value": 159.6,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Tripmine Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 159.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Tripmine Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "axion-bolt-grenade",
+      "cooldownSeconds": {
+        "value": 219.5,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Axion Bolt)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 219.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Axion Bolt)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "magnetic-grenade",
+      "cooldownSeconds": {
+        "value": 151.5,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Magnetic Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 151.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.75,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Magnetic Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.75x"
+        }
+      }
+    },
+    {
+      "abilityId": "scatter-grenade",
+      "cooldownSeconds": {
+        "value": 151.5,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Scatter Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 151.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.75,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Scatter Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.75x"
+        }
+      }
+    },
+    {
+      "abilityId": "suppressor-grenade",
+      "cooldownSeconds": {
+        "value": 175.6,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Suppressor Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 175.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Suppressor Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "void-spike-grenade",
+      "cooldownSeconds": {
+        "value": 175.6,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Void Spike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 175.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Void Spike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "void-wall-grenade",
+      "cooldownSeconds": {
+        "value": 175.6,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Void Wall)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 175.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Void Wall)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "vortex-grenade",
+      "cooldownSeconds": {
+        "value": 219.5,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Vortex Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 219.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Vortex Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "glacier-grenade",
+      "cooldownSeconds": {
+        "value": 175.6,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Glacier Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 175.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Glacier Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "shatter-grenade",
+      "cooldownSeconds": {
+        "value": 105,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Shatter Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 105 seconds"
+        }
+      }
+    },
+    {
+      "abilityId": "shackle-grenade",
+      "cooldownSeconds": {
+        "value": 219.5,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Shackle Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 219.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Shackle Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "slicewire-grenade",
+      "cooldownSeconds": {
+        "value": 219.5,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Slicewire)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 219.5 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Slicewire)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "threadling-grenade",
+      "cooldownSeconds": {
+        "value": 175.6,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Threadling Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 175.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.625,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Threadling Grenade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.625x"
+        }
+      }
+    },
+    {
+      "abilityId": "disorienting-blow",
+      "cooldownSeconds": {
+        "value": 118.8,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Disorienting Blow)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 118.8 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Disorienting Blow)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "ballistic-slam",
+      "cooldownSeconds": {
+        "value": 164.6,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Ballistic Slam)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 164.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Ballistic Slam)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.7x"
+        }
+      }
+    },
+    {
+      "abilityId": "seismic-strike",
+      "cooldownSeconds": {
+        "value": 131.7,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Seismic Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 131.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.8,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Seismic Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.8x"
+        }
+      }
+    },
+    {
+      "abilityId": "thunderclap",
+      "cooldownSeconds": {
+        "value": 131.7,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Thunderclap)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 131.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Thunderclap)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "ball-lightning",
+      "cooldownSeconds": {
+        "value": 164.6,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Ball Lightning)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 164.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Ball Lightning)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.7x"
+        }
+      }
+    },
+    {
+      "abilityId": "knife-trick",
+      "cooldownSeconds": {
+        "value": 118.8,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Knife Trick)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 118.8 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Knife Trick)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "lightweight-knife",
+      "cooldownSeconds": {
+        "value": 145.2,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Lightweight Knife)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 145.2 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.8,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Lightweight Knife)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.8x"
+        }
+      }
+    },
+    {
+      "abilityId": "proximity-explosive-knife",
+      "cooldownSeconds": {
+        "value": 161.3,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Proximity Explosive Knife)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 161.3 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Proximity Explosive Knife)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.7x"
+        }
+      }
+    },
+    {
+      "abilityId": "weighted-throwing-knife",
+      "cooldownSeconds": {
+        "value": 197.9,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Weighted Throwing Knife)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 197.9 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.6,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Weighted Throwing Knife)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.6x"
+        }
+      }
+    },
+    {
+      "abilityId": "hammer-strike",
+      "cooldownSeconds": {
+        "value": 131.7,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Hammer Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 131.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.8,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Hammer Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.8x"
+        }
+      }
+    },
+    {
+      "abilityId": "throwing-hammer",
+      "cooldownSeconds": {
+        "value": 131.7,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Throwing Hammer)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 131.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Throwing Hammer)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "celestial-fire",
+      "cooldownSeconds": {
+        "value": 162.6,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Celestial Fire)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 162.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Celestial Fire)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.7x"
+        }
+      }
+    },
+    {
+      "abilityId": "incinerator-snap",
+      "cooldownSeconds": {
+        "value": 119.8,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Incinerator Snap)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 119.8 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Incinerator Snap)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "phantom-surge",
+      "cooldownSeconds": {
+        "value": 130.7,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Phantom Surge)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 130.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Phantom Surge)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "snare-bomb",
+      "cooldownSeconds": {
+        "value": 130.7,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Snare Bomb)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 130.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Snare Bomb)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "shield-bash",
+      "cooldownSeconds": {
+        "value": 131.7,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Shield Bash)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 131.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Shield Bash)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.7x"
+        }
+      }
+    },
+    {
+      "abilityId": "shield-throw",
+      "cooldownSeconds": {
+        "value": 131.7,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Shield Throw)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 131.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Shield Throw)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "pocket-singularity",
+      "cooldownSeconds": {
+        "value": 131.7,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Pocket Singularity)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 131.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Pocket Singularity)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.9x"
+        }
+      }
+    },
+    {
+      "abilityId": "withering-blade",
+      "cooldownSeconds": {
+        "value": 145.2,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Withering Blade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 145.2 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.8,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Withering Blade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.8x"
+        }
+      }
+    },
+    {
+      "abilityId": "shiver-strike",
+      "cooldownSeconds": {
+        "value": 146.3,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Shiver Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 146.3 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Shiver Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.7x"
+        }
+      }
+    },
+    {
+      "abilityId": "penumbral-blast",
+      "cooldownSeconds": {
+        "value": 146.3,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Penumbral Blast)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 146.3 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.8,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Penumbral Blast)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.8x"
+        }
+      }
+    },
+    {
+      "abilityId": "threaded-spike",
+      "cooldownSeconds": {
+        "value": 145.2,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Threaded Spike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 145.2 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.8,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Threaded Spike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.8x"
+        }
+      }
+    },
+    {
+      "abilityId": "frenzied-blade",
+      "cooldownSeconds": {
+        "value": 159.6,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Frenzied Blade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 159.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Frenzied Blade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.7x"
+        }
+      }
+    },
+    {
+      "abilityId": "arcane-needle",
+      "cooldownSeconds": {
+        "value": 146,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Arcane Needle)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Base Cooldown: 146 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.8,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Arcane Needle)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.8x"
+        }
+      }
+    }
+  ],
+  "modifiers": [
+    {
+      "id": "armamentarium-charge",
+      "from": { "exoticArmorId": "armamentarium" },
+      "target": { "kinds": ["grenade"] },
+      "change": "charges",
+      "name": "Armamentarium",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Armamentarium)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Passively grants a copy of Firepower and an extra Grenade Ability Charge.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "claws-of-ahamkara-charge",
+      "from": { "exoticArmorId": "claws-of-ahamkara" },
+      "target": { "kinds": ["melee"] },
+      "change": "charges",
+      "name": "Claws of Ahamkara",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Claws of Ahamkara)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants an extra Melee Ability Charge.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "nothing-manacles-charge",
+      "from": { "exoticArmorId": "nothing-manacles" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["scatter-grenade"] },
+      "change": "charges",
+      "name": "Nothing Manacles",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Nothing Manacles)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants an extra Scatter Grenade Ability Charge.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "ophidia-spathe-charge",
+      "from": { "exoticArmorId": "ophidia-spathe" },
+      "target": { "kinds": ["melee"], "elements": ["solar"] },
+      "change": "charges",
+      "name": "Ophidia Spathe",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Ophidia Spathe)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants an extra Melee Charge to Solar Melee Abilities.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "starfire-protocol-charge",
+      "from": { "exoticArmorId": "starfire-protocol" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["fusion-grenade"] },
+      "change": "charges",
+      "name": "Starfire Protocol",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Starfire Protocol)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants an extra Fusion Grenade Ability Charge.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "shinobus-vow-charge",
+      "from": { "exoticArmorId": "shinobus-vow" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["skip-grenade"] },
+      "change": "charges",
+      "name": "Shinobu's Vow",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Shinobu's Vow)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants an extra Skip Grenade Charge.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "second-chance-charge",
+      "from": { "exoticArmorId": "second-chance" },
+      "target": { "kinds": ["melee"], "abilityIds": ["shield-throw"] },
+      "change": "charges",
+      "name": "Second Chance",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Second Chance)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants an additional Shield Throw Melee Ability Charge.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "wishful-ignorance-charge",
+      "from": { "exoticArmorId": "wishful-ignorance" },
+      "target": { "kinds": ["melee"], "abilityIds": ["frenzied-blade"] },
+      "change": "charges",
+      "name": "Wishful Ignorance",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Wishful Ignorance)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants an additional Frenzied Blade Melee Ability Charge.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "chaos-accelerant-charge",
+      "from": { "effectId": "chaos-accelerant" },
+      "target": { "kinds": ["grenade"] },
+      "change": "charges",
+      "name": "Chaos Accelerant",
+      "fixed": false,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Chaos Accelerant)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants an extra Grenade Ability Charge.",
+          "note": "Value 1 from the wording."
+        }
+      }
+    },
+    {
+      "id": "starfire-protocol-regen",
+      "from": { "exoticArmorId": "starfire-protocol" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["fusion-grenade"] },
+      "change": "regenBase",
+      "name": "Starfire Protocol",
+      "fixed": false,
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Starfire Protocol)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Passively grants 20% Additional Base Fusion Grenade Regeneration Rate"
+        }
+      }
+    },
+    {
+      "id": "eye-of-another-world-regen",
+      "from": { "exoticArmorId": "eye-of-another-world" },
+      "target": { "kinds": ["grenade", "melee"] },
+      "change": "regenBase",
+      "name": "Eye of Another World",
+      "fixed": false,
+      "value": {
+        "value": 0.45,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Eye of Another World)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Passively grants 45% Additional Base Grenade, Melee, and Class Regeneration Rate, and +15 Airborne Effectiveness."
+        }
+      }
+    },
+    {
+      "id": "chaos-accelerant-regen",
+      "from": { "effectId": "chaos-accelerant" },
+      "target": {
+        "kinds": ["grenade"],
+        "abilityIds": [
+          "magnetic-grenade",
+          "void-spike-grenade",
+          "suppressor-grenade"
+        ]
+      },
+      "change": "regenSpeed",
+      "name": "Chaos Accelerant",
+      "fixed": false,
+      "value": {
+        "value": 1.15,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Chaos Accelerant)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Magnetic, Spike, Suppressor, and Voidwall: Releases a short-range Void Blast that inflicts Volatile. Passively grants 1.15x Grenade Regeneration Speed."
+        }
+      }
+    },
+    {
+      "id": "heart-of-inmost-light-melee",
+      "from": { "exoticArmorId": "heart-of-inmost-light" },
+      "target": { "kinds": ["melee"] },
+      "change": "regenBase",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"] },
+        "durationSeconds": 5
+      },
+      "name": "Heart of Inmost Light",
+      "fixed": false,
+      "value": {
+        "value": 4,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Heart of Inmost Light)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "x1 = 400% [100%] | x2 = 800% [200%] Additional Base Grenade and Melee Regeneration Rate.",
+          "note": "One stack (x1) for 5 seconds after a cast of the other ability; class ability not modelled."
+        }
+      }
+    },
+    {
+      "id": "heart-of-inmost-light-grenade",
+      "from": { "exoticArmorId": "heart-of-inmost-light" },
+      "target": { "kinds": ["grenade"] },
+      "change": "regenBase",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"] },
+        "durationSeconds": 5
+      },
+      "name": "Heart of Inmost Light",
+      "fixed": false,
+      "value": {
+        "value": 4,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Heart of Inmost Light)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "x1 = 400% [100%] | x2 = 800% [200%] Additional Base Grenade and Melee Regeneration Rate.",
+          "note": "One stack (x1) for 5 seconds after a cast of the other ability; class ability not modelled."
+        }
+      }
+    },
+    {
+      "id": "starfire-protocol-weapon-hit",
+      "from": { "exoticArmorId": "starfire-protocol" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["fusion-grenade"] },
+      "change": "energy",
+      "trigger": { "on": "weaponHit", "cooldownSeconds": 0.4 },
+      "requiresAnyEffectIds": [
+        "radiant",
+        "well-of-radiance",
+        "empowering-rift"
+      ],
+      "name": "Starfire Protocol",
+      "fixed": false,
+      "value": {
+        "value": 0.05,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Starfire Protocol)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "5% Fusion Grenade Ability Energy per Weapon Hit up to once every 0.4 seconds.",
+          "note": "While Radiant or in Well of Radiance or Empowering Rift; the weapon hits at least every 0.4 seconds."
+        }
+      }
+    },
+    {
+      "id": "shinobus-vow-skip-hit",
+      "from": { "exoticArmorId": "shinobus-vow" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["skip-grenade"] },
+      "change": "energy",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"], "abilityIds": ["skip-grenade"] }
+      },
+      "name": "Shinobu's Vow",
+      "fixed": false,
+      "value": {
+        "value": 0.042,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Shinobu's Vow)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Skip Grenades hits grant 4.2% [1.4%] Grenade Ability Energy and x1 Bolt Charge."
+        }
+      }
+    },
+    {
+      "id": "young-ahamkaras-spine-hit",
+      "from": { "exoticArmorId": "young-ahamkaras-spine" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["tripmine-grenade"] },
+      "change": "energy",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade", "melee"] }
+      },
+      "name": "Young Ahamkara's Spine",
+      "fixed": false,
+      "value": {
+        "value": 0.3,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Young Ahamkara's Spine)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grenade and Melee Ability Hits grant 30% [7%] Tripmine Grenade Ability Energy."
+        }
+      }
+    },
+    {
+      "id": "an-insurmountable-skullfort-hit",
+      "from": { "exoticArmorId": "an-insurmountable-skullfort" },
+      "target": { "kinds": ["melee"], "elements": ["arc"] },
+      "change": "energy",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"], "elements": ["arc"] }
+      },
+      "name": "An Insurmountable Skullfort",
+      "fixed": false,
+      "value": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (An Insurmountable Skullfort)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "50% Melee Ability Energy on Powered Melee Hit."
+        }
+      }
+    },
+    {
+      "id": "shards-of-galanor-refund",
+      "from": { "exoticArmorId": "shards-of-galanor" },
+      "target": { "kinds": ["super"], "abilityIds": ["blade-barrage"] },
+      "change": "energy",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["super"], "abilityIds": ["blade-barrage"] }
+      },
+      "name": "Shards of Galanor",
+      "fixed": true,
+      "value": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Shards of Galanor)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Elite = ~20% | Boss = 50%",
+          "note": "Value against a boss; the refund is unaffected by the super stat."
+        }
+      }
+    },
+    {
+      "id": "apotheosis-veil-restore",
+      "from": { "exoticArmorId": "apotheosis-veil" },
+      "target": { "kinds": ["grenade", "melee"] },
+      "change": "energy",
+      "trigger": { "on": "cast", "abilities": { "kinds": ["super"] } },
+      "name": "Apotheosis Veil",
+      "fixed": true,
+      "value": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Apotheosis Veil)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Fully restores Health, Grenade, Melee, and Class Ability Energy.",
+          "note": "Value 1 from the wording. On super cast. The 66% per second for 8 seconds after the super is missing (no trigger at the super end)."
+        }
+      }
+    },
+    {
+      "id": "lucky-raspberry-jolt",
+      "from": { "exoticArmorId": "lucky-raspberry" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["arcbolt-grenade"] },
+      "change": "energy",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"], "abilityIds": ["arcbolt-grenade"] }
+      },
+      "name": "Lucky Raspberry",
+      "fixed": false,
+      "value": {
+        "value": 0.15,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Lucky Raspberry)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants 15% Arcbolt Grenade Ability Energy.",
+          "note": "Upon inflicting Jolt; the first target of an Arcbolt is jolted. Chain damage needs a second enemy."
+        }
+      }
+    },
+    {
+      "id": "mask-of-fealty-hit",
+      "from": { "exoticArmorId": "mask-of-fealty" },
+      "target": { "kinds": ["melee"], "abilityIds": ["withering-blade"] },
+      "change": "energy",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"], "abilityIds": ["withering-blade"] }
+      },
+      "name": "Mask of Fealty",
+      "fixed": true,
+      "value": {
+        "value": 0.075,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Armors (Mask of Fealty)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants 7.5% Fixed Melee Ability Energy.",
+          "note": "On Withering Blade hits and bounces; counted once per cast."
+        }
+      }
+    },
+    {
+      "id": "ballistic-slam-super",
+      "from": { "abilityId": "ballistic-slam" },
+      "target": { "kinds": ["super"] },
+      "change": "energy",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"], "abilityIds": ["ballistic-slam"] }
+      },
+      "name": "Ballistic Slam",
+      "fixed": false,
+      "value": {
+        "value": 0.03,
+        "source": {
+          "name": "Destiny Data Compendium, Arc (Ballistic Slam)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "quote": "Grants 3% Super Energy and x3 Bolt Charge per enemy hit."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+Destiny Data Compendium, tab Game Mechanics (gid 1800463143), retrieved 2026-10-23
+https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1800463143
+Lines about ability energy, as text (cells separated by |).
+
+Ability Chunk Energy Gains are generally defined by the base cooldowns of all Abilities, including Class, Grenade, Melee, and Super Abilities.
+Season of the Wish altered how effects that give a chunk % of your Ability Energy, such as Demolitionist, Bomber, Dynamo, and Momentum Transfer, interact with Chunk Scalars.
+Supers do not experience Chunk Modifiers, although most Roaming Supers receive more energy from dealing damage.
+Chunk Scalars modify the %-based Energy Gains, down to x0.5 for Grenade and Class Abilities, and 0.6x for Melee Abilities.
+Unless explicitly stated, or if an Exotic interacts specifically with a listed Ability, all Ability Energy Gains are affected by Chunk Energy Scaling.
+
+Melee | Grants ?% Additional Base Melee Ability Regeneration Rate and ?% Increased Melee Ability Gains.
+Stat provides up to ?% Additional Base Melee Ability Regeneration Rate and ?% Increased Melee Ability Gains at 100 points.
+Melee Stat | 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100
+Stat Scalars | -x | -x | -x | -x | -x | -x | -x | -x | -x | -x | -x
+Base Regen Units | - | - | - | - | - | - | - | - | - | - | -
+
+Grenade | Grants Additional Base Grenade Ability Regeneration Rate and Increased Grenade Ability Gains.
+Stat provides up to ?% Additional Base Grenade Ability Regeneration Rate and 211.5%% Increased Grenade Ability Gains at 100 points.
+Grenade Stat | 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100
+Stat Scalars | -x | -x | -x | -x | -x | -x | -x | -x | -x | -x | -x
+Base Regen Units | - | - | - | - | - | - | - | - | - | - | -
+
+Super | Grants Increased Super Ability Gains per point.
+Provides up to ?% Increased Super Ability Chunk Gains at 100 points.
+
+Class | Grants Additional Base Class Ability Regeneration Rate and Increased Class Ability Gains.
+Stat provides up to ?% Additional Base Class Ability Regeneration Rate and 90% Increased Class Ability Gains at 100 points.

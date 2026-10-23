@@ -2,6 +2,7 @@
 
 import rawAbilities from "../data/abilities.json";
 import rawAbilityComponents from "../data/ability-components.json";
+import rawAbilityEnergy from "../data/ability-energy.json";
 import rawAbilityKeywords from "../data/ability-keywords.json";
 import rawAbilityStats from "../data/ability-stats.json";
 import rawAegisAbilities from "../data/aegis-abilities.json";
@@ -20,6 +21,7 @@ import rawExoticArmor from "../data/exotic-armor.json";
 import {
   AbilityComponents,
   AbilityKeyword,
+  EnergyData,
   ExoticArmorEffect,
   ExoticArmorEntry,
   SuperTiming,
@@ -95,6 +97,8 @@ export const gameData: GameData = {
   keywords,
   exoticArmor,
   exoticArmorEffects: generatedExoticEffects,
+  // Cooldowns, stat factors and energy modifiers (npm run build:energy)
+  energy: EnergyData.parse(rawAbilityEnergy),
 };
 export const linkRegistry: LinkRegistry = {
   weapons,

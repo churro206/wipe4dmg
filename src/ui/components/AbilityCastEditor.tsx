@@ -1,19 +1,30 @@
 import type { Ability } from "../../data/schema";
 import { ABILITY_KIND_LABELS } from "../buildState";
-import { secondsInput } from "../format";
+import { seconds, secondsInput } from "../format";
 import { Icon } from "./Icon";
 import { InfoTip } from "./InfoTip";
 
-/** Cast times per chosen ability (ADR 0009): one field per cast, "+" adds one, "×" removes one. */
+// A cast counts as moved if the energy shifts it by more than this; below it is rounding.
+const MOVED_MS = 50;
+
+/**
+ * Cast times per chosen ability (ADR 0009): one field per cast, "+" adds one at the earliest time
+ * the energy allows, "×" removes one. A cast the energy moves or drops shows its actual time (block 3).
+ */
 export function AbilityCastEditor({
   rows,
   onChange,
   onAdd,
   onRemove,
 }: {
-  rows: { ability: Ability; castsMs: number[] }[];
+  rows: {
+    ability: Ability;
+    castsMs: number[]; // as entered, sorted
+    actualMs: number[]; // as the energy allows; shorter if casts are dropped
+    nextMs: number | undefined; // earliest time of one more cast
+  }[];
   onChange: (ability: Ability, index: number, seconds: number) => void;
-  onAdd: (ability: Ability) => void;
+  onAdd: (ability: Ability, atMs: number) => void;
   onRemove: (ability: Ability, index: number) => void;
 }) {
   if (rows.length === 0) return null;
@@ -25,15 +36,16 @@ export function AbilityCastEditor({
           <th>
             Casts (s){" "}
             <InfoTip>
-              Time of each cast from the start of the Damage Phase. The calculator
-              does not check energy or cooldowns: only enter casts that are
-              possible in game. The weapon does not fire during a Super.
+              Time of each cast from the start of the Damage Phase. Every ability starts
+              charged. A cast before its energy is back moves to the time it is back, from
+              the cooldown, the stat and the energy your exotic, aspects and fragments give.
+              "+" adds a cast at the earliest time. The weapon does not fire during a Super.
             </InfoTip>
           </th>
         </tr>
       </thead>
       <tbody>
-        {rows.map(({ ability, castsMs }) => (
+        {rows.map(({ ability, castsMs, actualMs, nextMs }) => (
           <tr key={ability.id}>
             <td>
               <span className="cell-with-icon">
@@ -64,6 +76,17 @@ export function AbilityCastEditor({
                         if (event.key === "Enter") event.currentTarget.blur();
                       }}
                     />
+                    {index >= actualMs.length ? (
+                      <span className="cast-note" title="No energy for this cast in the Damage Phase">
+                        no energy
+                      </span>
+                    ) : (
+                      Math.abs(actualMs[index] - ms) > MOVED_MS && (
+                        <span className="cast-note" title="Moved to the time the energy is back">
+                          → {seconds.format(actualMs[index] / 1000)}
+                        </span>
+                      )
+                    )}
                     {castsMs.length > 1 && (
                       <button
                         type="button"
@@ -80,7 +103,13 @@ export function AbilityCastEditor({
                   type="button"
                   className="icon-button"
                   aria-label={`Add a cast of ${ability.name}`}
-                  onClick={() => onAdd(ability)}
+                  title={
+                    nextMs === undefined
+                      ? "No energy for another cast in this Damage Phase"
+                      : `Next cast possible at ${seconds.format(nextMs / 1000)} s`
+                  }
+                  disabled={nextMs === undefined}
+                  onClick={() => nextMs !== undefined && onAdd(ability, nextMs)}
                 >
                   +
                 </button>

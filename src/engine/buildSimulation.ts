@@ -6,6 +6,7 @@ import type {
   AbilityStatScaling,
   Build,
   Effect,
+  EnergyData,
   ExoticArmorEffect,
   ExoticArmorEntry,
   Keyword,
@@ -22,10 +23,12 @@ export type GameData = {
   keywords: Keyword[];
   exoticArmor: ExoticArmorEntry[];
   exoticArmorEffects: ExoticArmorEffect[];
+  energy: EnergyData; // ability-energy.json: the casts the energy allows (block 3)
 };
 
 /**
- * Effects and simulator options of a build: its selected effects, the abilities with their casts,
+ * Effects and simulator options of a build: its selected effects, the abilities with the casts the
+ * energy allows,
  * stats and granted effects (e.g. Well of Radiance from the super), and the exotic armor with its
  * ability variants and effects (prebuilt kill buffs only with the switch).
  */
@@ -38,6 +41,7 @@ export function buildSimulation(
     data.abilities,
     data.abilityStats,
     data.effects,
+    data.energy,
   );
   const own = data.effects.filter((effect) =>
     build.selections.some((s) => s.effectId === effect.id),

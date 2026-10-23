@@ -1,9 +1,10 @@
 // Exotic armor of a build (ADR 0014): which pieces a class can wear and which effects they bring.
 // The kinds come from the armor import (exotic-armor.json); only kinds that change damage in the
-// model are selectable.
+// model are selectable, and pieces with an energy modifier (ability-energy.json, block 3).
 
 import type {
   Effect,
+  EnergyData,
   ExoticArmorEffect,
   ExoticArmorEntry,
   ExoticArmorKind,
@@ -17,6 +18,14 @@ const SELECTABLE: readonly ExoticArmorKind[] = [
   "weaponTiming",
 ];
 
+type Energy = Pick<EnergyData, "modifiers">;
+
+const selectable = (entry: ExoticArmorEntry, energy: Energy | undefined) =>
+  SELECTABLE.includes(entry.kind) ||
+  (energy?.modifiers ?? []).some(
+    (m) => "exoticArmorId" in m.from && m.from.exoticArmorId === entry.id,
+  );
+
 const fitsClass = (entry: ExoticArmorEntry, guardianClass: GuardianClass) =>
   entry.guardianClass === null || entry.guardianClass === guardianClass;
 
@@ -24,10 +33,10 @@ const fitsClass = (entry: ExoticArmorEntry, guardianClass: GuardianClass) =>
 export function exoticArmorFor(
   entries: ExoticArmorEntry[],
   guardianClass: GuardianClass,
+  energy?: Energy,
 ): ExoticArmorEntry[] {
   return entries.filter(
-    (entry) =>
-      SELECTABLE.includes(entry.kind) && fitsClass(entry, guardianClass),
+    (entry) => selectable(entry, energy) && fitsClass(entry, guardianClass),
   );
 }
 
@@ -36,11 +45,12 @@ export function exoticArmorOf(
   exoticArmorId: string | undefined,
   entries: ExoticArmorEntry[],
   guardianClass: GuardianClass,
+  energy?: Energy,
 ): ExoticArmorEntry | undefined {
   if (exoticArmorId === undefined) return undefined;
   const entry = entries.find((e) => e.id === exoticArmorId);
   if (!entry) throw new Error(`Unknown exotic armor "${exoticArmorId}"`);
-  if (!SELECTABLE.includes(entry.kind))
+  if (!selectable(entry, energy))
     throw new Error(
       `Exotic armor "${entry.name}" is not selectable (${entry.kind})`,
     );

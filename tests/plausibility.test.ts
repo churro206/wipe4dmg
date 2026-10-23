@@ -416,15 +416,18 @@ describe("exotic effects from the rotation", () => {
 });
 
 describe("keywords", () => {
+  // Starfire Protocol while Radiant: two charges and weapon hits refill the Fusion Grenade (block 3).
   const ignitions = (castsMs: number[], ember: boolean) =>
     run(
       {
         guardianClass: "warlock",
         subclass: "solar",
+        exoticArmorId: "starfire-protocol",
         abilities: [{ abilityId: "fusion-grenade", castsMs }],
-        selections: ember
-          ? [{ effectId: "ember-of-ashes", provider: "subclass" }]
-          : [],
+        selections: [
+          { effectId: "radiant", provider: "subclass" },
+          ...(ember ? [{ effectId: "ember-of-ashes", provider: "subclass" as const }] : []),
+        ],
       },
       testWeapon,
     ).damageInstances.filter((d) => d.keywordId === "ignition").length;
@@ -438,6 +441,36 @@ describe("keywords", () => {
     );
     expect(three).toBe(1);
     expect(twoEmber).toBe(1);
+  });
+});
+
+describe("ability energy (block 3)", () => {
+  const grenadeDamage = (fields: Partial<Build>) => {
+    const build = {
+      guardianClass: "warlock" as const,
+      subclass: "solar" as const,
+      abilities: [{ abilityId: "fusion-grenade", castsMs: [0, 5000, 10000] }],
+      ...fields,
+    };
+    return {
+      total: run(build, testWeapon).totalDamage - run({ ...build, abilities: [] }, testWeapon).totalDamage,
+    };
+  };
+  it("a Fusion Grenade needs its energy back, Starfire Protocol while Radiant refills it", () => {
+    const one = grenadeDamage({
+      abilities: [{ abilityId: "fusion-grenade", castsMs: [0] }],
+    }).total;
+    const three = grenadeDamage({}).total; // the casts at 5 and 10 s have no energy
+    const radiant = [{ effectId: "radiant", provider: "subclass" as const }];
+    const starfire = grenadeDamage({ exoticArmorId: "starfire-protocol", selections: radiant });
+    const radiantOnly = grenadeDamage({ selections: radiant }).total;
+    note(
+      "Fusion Grenades bei 0/5/10 s: ohne Exotic / Starfire + Radiant (je Grenade-Schaden ÷ eine Grenade)",
+      `×${fmt(three / one)} / ×${fmt(starfire.total / radiantOnly)}`,
+      "×1 (Cooldown ~39 s) / ab ×3 (drei Grenades, dazu eine Ignition)",
+    );
+    expect(three / one).toBeCloseTo(1, 6);
+    expect(starfire.total / radiantOnly).toBeGreaterThan(3);
   });
 });
 

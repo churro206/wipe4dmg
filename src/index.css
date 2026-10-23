@@ -542,6 +542,12 @@ table.casts td:last-child {
   gap: 0.1rem;
 }
 
+.cast-note {
+  color: var(--muted);
+  font-size: 0.85em;
+  margin-left: 0.2rem;
+}
+
 .icon-button {
   min-width: 1.6rem;
   padding: 0.1rem 0.35rem;

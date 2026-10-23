@@ -4,9 +4,12 @@ import rawAbilities from "../src/data/abilities.json";
 import rawAegis from "../src/data/aegis-abilities.json";
 import rawEffects from "../src/data/effects.json";
 import rawManifest from "../src/data/manifest-abilities.json";
+import rawEnergy from "../src/data/ability-energy.json";
+import { EnergyData } from "../src/data/schema";
 import {
   abilitySimulation,
   addCast,
+  nextCastOf,
   removeCast,
   setCast,
 } from "../src/engine/buildAbilities";
@@ -83,6 +86,22 @@ describe("abilitySimulation", () => {
     ]);
   });
 
+  it("with energy data, moves a cast to the time its energy is back", () => {
+    const simulation = abilitySimulation(
+      {
+        abilities: [{ abilityId: "fusion-grenade", castsMs: [0, 15_000] }],
+        damagePhaseSeconds: 60,
+      },
+      abilities,
+      abilityStats,
+      effects,
+      EnergyData.parse(rawEnergy),
+    );
+    const [first, second] = simulation.casts[0].castsMs;
+    expect(first).toBe(0);
+    expect(second).toBeGreaterThan(15_000);
+  });
+
   it("adds the effects a super grants, with their window from the cast", () => {
     const simulation = abilitySimulation(
       { abilities: [{ abilityId: "well-of-radiance", castsMs: [3000] }] },
@@ -128,18 +147,24 @@ describe("abilitySimulation", () => {
 describe("cast times", () => {
   // Test inputs, not game values.
   const PHASE_MS = 30_000;
-  const GAP_MS = 10_000;
 
-  it("adds a cast the gap after the last one", () => {
-    expect(addCast([0, 5_000], PHASE_MS, GAP_MS)).toEqual([0, 5_000, 15_000]);
+  it("adds a cast at the given time and sorts the casts", () => {
+    expect(addCast([0, 15_000], 5_000)).toEqual([0, 5_000, 15_000]);
   });
 
-  it("keeps a new cast inside the damage phase", () => {
-    expect(addCast([25_000], PHASE_MS, GAP_MS)).toEqual([25_000, 30_000]);
-  });
-
-  it("starts at 0 without casts", () => {
-    expect(addCast([], PHASE_MS, GAP_MS)).toEqual([0]);
+  it("adds the next cast where the energy allows it, none after the phase", () => {
+    const energy = EnergyData.parse(rawEnergy);
+    const build = {
+      abilities: [{ abilityId: "fusion-grenade", castsMs: [0] }],
+      damagePhaseSeconds: 60,
+    };
+    const next = nextCastOf(build, "grenade", abilities, energy)!;
+    expect(next).toBeGreaterThan(0);
+    expect(next).toBeLessThan(60_000);
+    expect(
+      nextCastOf({ ...build, damagePhaseSeconds: 10 }, "grenade", abilities, energy),
+    ).toBeUndefined();
+    expect(nextCastOf(build, "melee", abilities, energy)).toBeUndefined();
   });
 
   it("removes a cast but keeps at least one", () => {

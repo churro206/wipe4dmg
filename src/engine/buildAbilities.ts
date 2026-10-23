@@ -1,16 +1,21 @@
 // Abilities of a build for the simulator (ADR 0009): casts, stat values and the effects that the
-// abilities grant, with their windows from the first cast.
+// abilities grant, with their windows from the first cast. With energy data, the casts are those
+// the energy allows (block 3).
 
 import type {
   Ability,
   AbilityStatScaling,
   Build,
   Effect,
+  EnergyData,
 } from "../data/schema";
+import { energyCasts, nextCastMs, type EnergyContext } from "./abilityEnergy";
 import type { AbilityStatValue } from "./abilityStats";
 import type { EffectWindowInput } from "./effectWindows";
 import { grantedEffectWindows } from "./grantedEffects";
 import type { AbilityCast } from "./simulate";
+
+const MS_PER_SECOND = 1000;
 
 export type AbilitySimulation = {
   casts: AbilityCast[];
@@ -19,15 +24,38 @@ export type AbilitySimulation = {
   grantedWindows: Record<string, EffectWindowInput>; // add to the effect windows
 };
 
+type AbilityBuild = Pick<Build, "abilities" | "abilityStats" | "exoticArmorId"> &
+  Partial<Pick<Build, "selections" | "damagePhaseSeconds">>;
+
 export function abilitySimulation(
-  build: Pick<Build, "abilities" | "abilityStats" | "exoticArmorId"> &
-    Partial<Pick<Build, "selections">>,
+  build: AbilityBuild,
   abilities: Ability[],
   abilityStats: AbilityStatScaling[],
   effects: Effect[],
+  energy?: EnergyData,
 ): AbilitySimulation {
+  const requested = requestedCasts(build, abilities);
+  const context = energyContext(build, requested, energy);
+  const casts = context ? energyCasts(requested, context) : requested;
+  const stats = build.abilityStats
+    ? abilityStats.map((scaling) => ({
+        scaling,
+        value: build.abilityStats![scaling.kind],
+      }))
+    : [];
+  const grantedWindows = grantedEffectWindows(casts, effects);
+  return {
+    casts,
+    stats,
+    grantedEffects: effects.filter((effect) => effect.id in grantedWindows),
+    grantedWindows,
+  };
+}
+
+/** The casts of the rotation as entered, with the variant of each ability. */
+function requestedCasts(build: AbilityBuild, abilities: Ability[]): AbilityCast[] {
   const selected = new Set((build.selections ?? []).map((s) => s.effectId));
-  const casts = (build.abilities ?? []).map(({ abilityId, castsMs }) => {
+  return (build.abilities ?? []).map(({ abilityId, castsMs }) => {
     const ability = abilities.find((a) => a.id === abilityId);
     if (!ability) throw new Error(`Unknown ability "${abilityId}"`);
     // A variant measured with the worn exotic armor and/or selected aspects and fragments replaces
@@ -45,35 +73,50 @@ export function abilitySimulation(
       .sort((a, b) => requirements(b) - requirements(a))[0];
     return { ability: variant ?? ability, castsMs };
   });
-  const stats = build.abilityStats
-    ? abilityStats.map((scaling) => ({
-        scaling,
-        value: build.abilityStats![scaling.kind],
-      }))
-    : [];
-  const grantedWindows = grantedEffectWindows(casts, effects);
+}
+
+/** What the energy of the build depends on: stats, exotic, selected and granted effects. */
+function energyContext(
+  build: AbilityBuild,
+  requested: AbilityCast[],
+  energy: EnergyData | undefined,
+): EnergyContext | undefined {
+  if (!energy || build.damagePhaseSeconds === undefined) return undefined;
   return {
-    casts,
-    stats,
-    grantedEffects: effects.filter((effect) => effect.id in grantedWindows),
-    grantedWindows,
+    data: energy,
+    stats: build.abilityStats,
+    exoticArmorId: build.exoticArmorId,
+    effectIds: new Set([
+      ...(build.selections ?? []).map((s) => s.effectId),
+      ...requested.flatMap((c) => c.ability.grantsEffectIds ?? []),
+    ]),
+    damagePhaseMs: build.damagePhaseSeconds * MS_PER_SECOND,
   };
 }
 
-// Cast times of one ability (ADR 0009: the rotation sets the casts; energy and cooldowns are not
-// checked). All return new sorted lists inside the damage phase.
+/**
+ * Earliest time of one more cast of the ability of this kind that the energy allows; undefined if
+ * none fits into the damage phase. Without a cast yet: 0.
+ */
+export function nextCastOf(
+  build: AbilityBuild,
+  kind: Ability["kind"],
+  abilities: Ability[],
+  energy: EnergyData,
+): number | undefined {
+  const requested = requestedCasts(build, abilities);
+  const own = requested.find((c) => c.ability.kind === kind);
+  const context = energyContext(build, requested, energy);
+  if (!own || !context) return undefined;
+  return nextCastMs(energyCasts(requested, context), own.ability, context);
+}
 
-/** Adds a cast the given gap after the last one, at most at the end of the damage phase. */
-export function addCast(
-  castsMs: number[],
-  damagePhaseMs: number,
-  gapMs: number,
-): number[] {
-  if (castsMs.length === 0) return [0];
-  const last = Math.max(...castsMs);
-  return [...castsMs, Math.min(last + gapMs, damagePhaseMs)].sort(
-    (a, b) => a - b,
-  );
+// Cast times of one ability (ADR 0009: the rotation sets the casts, the energy gives the earliest
+// time). All return new sorted lists inside the damage phase.
+
+/** Adds a cast at the given time. */
+export function addCast(castsMs: number[], atMs: number): number[] {
+  return [...castsMs, atMs].sort((a, b) => a - b);
 }
 
 /** Removes one cast; an ability keeps at least one cast. */

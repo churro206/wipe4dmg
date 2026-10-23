@@ -61,7 +61,7 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 - `npm run facts -- "<Name>"`: Name in allen Snapshots suchen, kompakt
 - `npm run coverage`: `docs/coverage.md` neu schreiben (generiert)
 - Import (lädt herunter): `import:weapons`, `import:compendium`, `import:court`, `import:abilities`, `import:bosses`, `import:reload`, `import:icons` (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)
-- Build (ohne Download, schreibt Data Files und Prüftabellen): `build:weapons`, `build:armor`, `build:keywords`, `build:abilities`
+- Build (ohne Download, schreibt Data Files und Prüftabellen): `build:weapons`, `build:armor`, `build:keywords`, `build:abilities`, `build:buffs`, `build:energy`
 - Reihenfolge nach einem Patch: `docs/plans/current.md`, Abschnitt „Werkzeuge“
 
 ## Shell-Befehle

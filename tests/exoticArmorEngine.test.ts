@@ -10,8 +10,10 @@ import type {
   MultiplierPart,
 } from "../src/data/schema";
 import rawGenerated from "../src/data/exotic-armor-effects.json";
+import rawEnergy from "../src/data/ability-energy.json";
 import {
   Build,
+  EnergyData,
   ExoticArmorEffect as ExoticArmorEffectSchema,
   ExoticArmorEntry as ExoticArmorEntrySchema,
 } from "../src/data/schema";
@@ -99,6 +101,15 @@ describe("exotic armor of a build", () => {
     expect(() => exoticArmorOf("helm-of-saint-14", armor, "titan")).toThrow(
       /not selectable/,
     );
+  });
+
+  it("offers exotics that only change ability energy (block 3)", () => {
+    const energy = EnergyData.parse(rawEnergy);
+    const starfire = armor.find((e) => e.id === "starfire-protocol")!;
+    expect(starfire.kind).toBe("energyOnly");
+    expect(exoticArmorFor(armor, "warlock").map((e) => e.id)).not.toContain(starfire.id);
+    expect(exoticArmorFor(armor, "warlock", energy).map((e) => e.id)).toContain(starfire.id);
+    expect(exoticArmorOf(starfire.id, armor, "warlock", energy)?.id).toBe(starfire.id);
   });
 });
 

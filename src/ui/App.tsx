@@ -16,7 +16,12 @@ import {
   dpsByDamagePhase,
 } from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
-import { addCast, removeCast, setCast } from "../engine/buildAbilities";
+import {
+  addCast,
+  nextCastOf,
+  removeCast,
+  setCast,
+} from "../engine/buildAbilities";
 import { buildSimulation } from "../engine/buildSimulation";
 import { effectWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
@@ -116,8 +121,6 @@ type View = (typeof VIEWS)[number]["value"];
 
 // Number of builds the optimizer shows (US-08).
 const OPTIMIZER_LIMIT = 15;
-// "+" in the cast editor adds a cast this long after the last one; the user moves it as needed.
-const CAST_GAP_MS = 10_000;
 // Range of the DPS chart; it grows if the chosen damage phase is longer.
 const DPS_CHART_MIN_SECONDS = 120;
 
@@ -229,7 +232,8 @@ function App() {
         windowInputs,
         abilityChoice,
         abilityStats: abilityStatInputs,
-        damagePhaseSeconds: 0,
+        // energy over the whole chart; a shorter phase keeps the casts up to its end
+        damagePhaseSeconds: dpsChartSeconds,
         exoticArmorId,
         exoticPreBuilt,
       }),
@@ -319,7 +323,12 @@ function App() {
   const castRows = ABILITY_KINDS.flatMap((kind) => {
     const pick = abilityChoice[kind];
     const ability = pick && abilities.find((a) => a.id === pick.abilityId);
-    return ability ? [{ ability, castsMs: pick.castsMs }] : [];
+    if (!ability) return [];
+    // the casts the energy allows and the earliest time of one more (block 3)
+    const actualMs =
+      options.abilities?.find((c) => c.ability.kind === kind)?.castsMs ?? pick.castsMs;
+    const nextMs = nextCastOf(currentBuild, kind, abilities, gameData.energy);
+    return [{ ability, castsMs: pick.castsMs, actualMs, nextMs }];
   });
   const windows = isValid
     ? effectWindows(selected, damagePhaseSeconds, options)
@@ -574,7 +583,7 @@ function App() {
               <h3 className="sub">Exotic</h3>
               <div className="tile-grid">
                 <ExoticPicker
-                  entries={exoticArmorFor(exoticArmor, guardianClass)}
+                  entries={exoticArmorFor(exoticArmor, guardianClass, gameData.energy)}
                   selected={exotic}
                   onSelect={(id) => {
                     setExoticArmorId(id);
@@ -758,11 +767,11 @@ function App() {
                             ),
                           };
                         })}
-                        abilityRows={castRows.map(({ ability, castsMs }) => ({
+                        abilityRows={castRows.map(({ ability, actualMs }) => ({
                           label: ability.name,
                           iconUrl: iconUrl(`ability:${ability.id}`),
                           kind: ability.kind,
-                          castsMs,
+                          castsMs: actualMs,
                           windows: result.superWindows.filter(
                             (w) => w.abilityId === ability.id,
                           ),
@@ -796,13 +805,9 @@ function App() {
                             ),
                           )
                         }
-                        onAdd={(ability) =>
+                        onAdd={(ability, atMs) =>
                           updateCasts(ability.kind, (casts) =>
-                            addCast(
-                              casts,
-                              damagePhaseSeconds * 1000,
-                              CAST_GAP_MS,
-                            ),
+                            addCast(casts, atMs),
                           )
                         }
                         onRemove={(ability, index) =>
