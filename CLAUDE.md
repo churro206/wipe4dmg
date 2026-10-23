@@ -2,134 +2,63 @@
 
 ## Ziel
 
-Die App berechnet den Total Damage eines Builds in Destiny 2.
-Die erste Waffe ist One Thousand Voices. Später folgen fast alle Waffen.
-Die Unterschiede zwischen Builds sollen stimmen. Absolute Zahlen müssen nicht mit dem Spiel übereinstimmen.
-Die Spielwerte kommen aus frei zugänglichen Community-Quellen, möglichst automatisch übernommen (ADR 0005).
-Zielgruppe: der Projektinhaber und seine Freunde, vor allem am PC.
-Das Projekt ist privat, nicht kommerziell und nur zum Spaß.
+Die App berechnet den Total Damage eines Builds in Destiny 2. Die Unterschiede zwischen Builds sollen stimmen, absolute Zahlen nicht. Spielwerte kommen aus Community-Quellen, möglichst automatisch (ADR 0005). Privat, für den Inhaber und seine Freunde.
 
-## Dokumente
-
-- `docs/requirements.md`: Produktvision, User Stories, Releaseplan, Glossary, Risiken.
-- `docs/adr/`: Architecture Decision Records. Lies alle ADRs vor größeren Änderungen.
-- `docs/data-sources.md`: Datenquellen, Messbedingungen und Messprotokoll.
-- `docs/mechanics/`: Wissen über Mechanics von Destiny 2. Lies `docs/mechanics/README.md` vor Änderungen an Effects oder am Simulator.
-- `docs/guides/weapons.md`: Ablauf zum Anlegen einer Waffe (ADR 0011, 0012), dazu die Liste der Stellen in der Oberfläche, die noch an One Thousand Voices hängen. Lies ihn vor Änderungen an `src/data/weapons/`.
-- `docs/guides/abilities.md`: Ablauf zum Anlegen und Aktualisieren von Abilities (ADR 0009). Lies ihn vor Änderungen an `abilities.json`.
-- `docs/guides/measurements.md`: Ingame-Tests des Inhabers (Ember, Explosionen, Shot-Abstand, Particle Reconstruction, Radiant auf Golden Gun). Ergebnisse ins Messprotokoll, dann in Data Files und Gates.
-- `docs/coverage.md`: Abdeckung (generiert, nicht von Hand bearbeiten). Nach Änderungen an Data Files `npm run coverage` ausführen.
-- `docs/plans/`: Pläne. **Aktuell: `weapons-and-exotic-armor.md` (v1.1, nächste Schritte).** Zurückgestellt: `optimizer-abilities.md`.
-- `docs/ui-inspiration.md`: Vorbilder für die Oberfläche (andere Tools, Destiny 2 selbst), Logo. Lies ihn vor Änderungen an der Oberfläche.
-- `docs/roadmap.md`: Woran gearbeitet wird und was erledigt ist; Quelle für die Website (US-15), deshalb englisch. Nach jedem abgeschlossenen Schritt aktualisieren. Den Verlauf vor 2026-10-22 findest du in der Git-Geschichte von `CLAUDE.md`.
-
-## Sprache
-
-- Antworte auf Deutsch in kurzen, klaren Sätzen. Erkläre jede Änderung, der Nutzer hat Grundkenntnisse.
-- Code, Bezeichner, Kommentare und Data Files sind englisch.
-- Verwende nur Begriffe aus dem Glossary (Damage Phase, Damage Instance, Bucket, Build, Rotation ...).
-  Ein neuer Begriff kommt zuerst ins Glossary.
+**Stand und nächste Schritte: `docs/plans/current.md`.** Lies `docs/adr/README.md` und nur die ADRs, die der Block betrifft. Weitere Dokumente: `docs/requirements.md` (Glossary), `docs/mechanics/README.md` (vor Änderungen an Effects oder Simulator), `docs/guides/` (Waffen, Abilities, Messungen), `docs/ui-inspiration.md` (vor Änderungen an der Oberfläche), `docs/roadmap.md` (Website, englisch).
 
 ## Architektur
 
 ```
 src/data/      Data Files (JSON) und Zod-Schema (schema.ts). Keine Logik.
-src/engine/    Simulator und Optimizer. Nur reine Funktionen, kein React.
-src/ui/        React-Oberfläche. Ruft nur die Engine auf. Komponenten in src/ui/components/.
-public/icons/  Icons aus dem Bungie-Manifest (ADR 0008), erzeugt von npm run import:icons.
-scripts/       Import-Skripte für Community-Quellen (ADR 0005). Reine Funktionen in scripts/lib/, getestet.
-tests/         Vitest-Tests für die Engine. Helfer für generierte Dokumente in tests/support/.
+src/engine/    Simulator und Optimizer. Reine Funktionen, kein React, keine Browser-APIs.
+src/ui/        React-Oberfläche. Ruft nur die Engine auf.
+scripts/       Import-Skripte (ADR 0005). Reine Funktionen in scripts/lib/, getestet.
+tests/         Vitest-Tests.
 ```
 
-Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameData)` (`src/engine/buildSimulation.ts`). Die Oberfläche, die Tests und der spätere Discord Bot nutzen ihn; `gameData` steht in `src/ui/data.ts`.
+Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameData)`.
 
 ## Regeln
 
-- Keine Zahlenwerte im Code. Alle Spielwerte stehen in `src/data`.
-- Jeder Wert in einer Data File hat ein `source`-Objekt. Unbekannte Werte sind `null` mit Status `missing`. Rate niemals Werte.
-- **Quellen zuerst:** Fehlt ein Wert oder eine Zuordnung, oder widersprechen sich Quellen, zuerst eine Community-Quelle suchen (Clarity, DIM-Daten, weitere Reiter von Aegis und Quantum, Compendium, Court, Manifest) und als Snapshot mit Regel einbinden. **Herleiten ist erlaubt und erwünscht, wenn eine Gegenrechnung gegen eine Quelle es prüft:** Das Modell muss die Messung, aus der etwas abgeleitet wurde, innerhalb der Toleranz wieder ergeben (Gate). Zerlegte Pakete werden immer gegengerechnet, damit nichts doppelt zählt oder fehlt (Ablauf „Zerlegen und Gegenrechnen“ im Skill `recherche`). **Vor jeder gemeldeten Lücke den Skill `recherche` abarbeiten** (`.claude/skills/recherche/SKILL.md`: Quellenkatalog mit Reitern, Ablauf, Budget); eine Lücke nur mit Tabelle der geprüften Quellen melden. Den Inhaber nur fragen bei Entscheidungen, die ihm zustehen (Umfang, Oberfläche, Annahmen über die Spielweise).
-- **Eine Quelle genügt (Inhaber, 2026-10-23):** Ein Wert aus einer Community-Quelle (Aegis, Quantum, Compendium, Clarity, Court, Manifest) gilt als bestätigt, nicht als geraten. Bestätigt eine zweite Quelle ihn, umso besser. Bei Konflikt gilt die vertrauenswürdigere oder logisch stimmigere Quelle; die Wahl steht mit Grund in der Prüftabelle. Gegenrechnen, wo eine Messung existiert; ohne Messung gelten Zahlen aus Texten (Compendium, Clarity) als Quelle mit Status `derived`. Bei Waffen gilt Aegis vor Quantum.
-- **Einzelfälle dürfen von Hand (Inhaber, 2026-10-23):** Passt eine Waffe oder ein Catalyst in keine allgemeine Regel, kommt ein Eintrag mit Wert, Quelle, Zitat und Herleitung in eine Override-Datei (z. B. `src/data/weapon-overrides.json`); ein Test prüft, dass jeder Eintrag Zitat und Herleitung hat. Erst wenn mehrere Fälle gleich sind, wird daraus eine Regel. Fremde Annahmen in Messungen (z. B. Artifact-Perks bei Aegis) werden mit ihrem Wert aus der Quelle herausgerechnet.
-- **Spielweise:** Gespielt wird optimal wie von einem erfahrenen Spieler. Im Zweifel gelten die Annahmen von Aegis (z. B. Precision, „average“, vorher aufgebaute Buffs). Ein Boss, keine Adds (ADR 0015).
-- Jede Änderung an `src/engine` braucht einen Test. Schreibe den Test zuerst.
-- Pro Bucket zählt die Stacking-Regel aus `buckets.json`. Buckets multiplizieren sich untereinander.
-- Der Simulator arbeitet mit Damage Instances auf einer Zeitachse (ADR 0001).
-- `src/engine` nutzt keine Browser-APIs (kein `window`, kein `document`, kein `localStorage`).
-  Der spätere Discord Bot führt die Engine in Node.js auf einem Raspberry Pi aus (US-13).
-- Baue keine Funktion auf Vorrat. Baue nur, was die aktuelle User Story braucht.
-- Nutze zum Suchen und Lesen die eingebauten Werkzeuge Grep, Glob und Read. Baue keine Shell-Pipelines mit sed, awk oder paste. Für Auswertungen schreibst du ein kurzes Skript in `scripts/` und führst es mit `node scripts/<name>.ts` aus (Node führt TypeScript direkt aus, wie die npm-Skripte).
+- Antworte deutsch, kurz und klar. Code, Data Files und alles, was Spieler sehen, ist englisch. Nur Begriffe aus dem Glossary.
+- Keine Zahlenwerte im Code. Jeder Wert in einer Data File hat `source`. Unbekannt ist `null` mit Status `missing`. Nie raten.
+- **Spielwerte nachschlagen:** zuerst `npm run facts -- "<Name>"`. Große Snapshots (`aegis-*`, `quantum-weapons`, `clarity`, `compendium-*`, `manifest-*`, `weapon-packages`) nie direkt lesen.
+- **Quellen zuerst:** Vor jeder gemeldeten Lücke den Skill `recherche` abarbeiten; eine Lücke nur mit Tabelle der geprüften Quellen melden. Herleiten ist erwünscht, wenn ein Gate es gegen eine Messung prüft.
+- **Eine Quelle genügt:** Ein Wert aus Aegis, Quantum, Compendium, Clarity, Court oder Manifest gilt als bestätigt. Bei Konflikt die vertrauenswürdigere Quelle, mit Grund. Bei Waffen Aegis vor Quantum. Texte ohne Messung: Status `derived`.
+- **Einzelfälle von Hand:** Override-Datei mit Wert, Quelle, Zitat und Herleitung. Erst bei mehreren gleichen Fällen eine Regel. Fremde Annahmen in Messungen (z. B. Artifact-Perks bei Aegis) mit ihrem Wert herausrechnen.
+- **Spielweise:** optimal wie ein erfahrener Spieler, im Zweifel die Annahmen von Aegis. Ein Boss, keine Adds (ADR 0015).
+- Pro Bucket die Stacking-Regel aus `buckets.json`, Buckets multiplizieren sich. Damage Instances auf einer Zeitachse (ADR 0001).
+- Keine Funktion auf Vorrat.
+- Den Inhaber nur fragen bei Umfang, Oberfläche und Annahmen über die Spielweise. Widerspruch ist erwünscht.
 
 ## Arbeitsweise
 
-1. Lies die User Story und die betroffenen Dateien.
-2. Schlage einen Plan vor und warte auf Freigabe. Innerhalb eines freigegebenen Blocks arbeitest du ohne weitere Freigaben durch und meldest am Ende mit Beleg (Inhaber, 2026-10-23). Eine Tabelle vor Datenarbeit nur, wenn eine neue Annahme über die Spielweise dazukommt.
-3. Schreibe zuerst die Tests, dann den Code.
-4. Prüfe mit dem Skill `pruefen` (Tests, `npm run sanity` mit Spielerblick, bei Oberfläche ein Screenshot). Melde das Ergebnis mit Beleg.
-5. Fasse die Änderung in zwei bis drei Sätzen zusammen.
+1. User Story und betroffene Dateien lesen.
+2. Plan vorschlagen, auf Freigabe warten. Einen freigegebenen Block ohne Zwischenfragen durcharbeiten.
+3. Tests zuerst. Jede Änderung an `src/engine` braucht einen Test.
+4. Prüfen mit dem Skill `pruefen`.
+5. Vertikale Scheiben: Daten, Engine und Oberfläche zusammen. Aufräum-Commits getrennt von Verhaltensänderungen.
+6. Zusammenfassung in zwei bis drei Sätzen.
 
-**Vorgehen (2026-10-22, nach den Fehlern bei Cuirass und Nighthawk):**
-- **Vertikale Scheiben:** Jeder Schritt endet sichtbar, also Daten, Engine und Oberfläche zusammen, mit einem Szenario im Plausibilitäts-Gate. Keine Schicht wochenlang ohne Oberfläche.
-- **Erst aufräumen, dann ändern:** Aufräum-Commits getrennt von Verhaltensänderungen. Aufgeräumt wird nur, wo die Datei ohnehin angefasst wird.
-- **Fremdtexte hinter einer Schicht:** Regeln, die Compendium-, Court- oder Clarity-Texte lesen, teilen sich gemeinsame Werkzeuge. Beim nächsten Import-Schritt zusammenführen: `exoticArmor`, `exoticEffects`, `subclassEffects`, `keywordSources`.
+## Definition of Done
 
-**Definition of Done:**
-- `npm test`, `npx tsc -b` und lint sind grün, die Vergleichsbasis ist nur gewollt geändert.
+- `npm test`, `npx tsc -b` und lint grün. Die Vergleichsbasis ist nur gewollt geändert.
 - Eine neue Daten-Art oder Mechanik hat ein Szenario in `tests/plausibility.test.ts`, das ohne die Änderung rot war.
-- Die Antwort an den Inhaber nennt den Beleg. Ohne Beleg heißt es „ungeprüft“.
-- Commit und Push, `docs/roadmap.md` aktualisiert.
-
-Widerspruch ist erwünscht: Sag dem Inhaber offen, wenn er sich verrennt, z. B. wenn ein Wunsch dem Ziel, den Regeln oder einem ADR widerspricht oder der Aufwand den Nutzen übersteigt.
-
-## Aktueller Stand (2026-10-22)
-
-- **Umbau nach ADR 0015:** U1–U5, U6-1, U6-1b, U6-2 (Aspects/Fragments, Zustände) und U8 (Exotic-Auswahl, Link-Format 4) sind fertig. **Offen:** U6-3 Exotic Class Items und Transcendence, U6-4 Melee-Bucket additiv, U7 Timing (Class Ability in der Rotation, `refillOnCast`, `magazineRefill`), U9 `build:abilities`, Ember of Ashes aus `effects.json` umziehen.
-- **Prüftabellen:** `docs/exotic-effects.md`, `docs/subclass-effects.md`, `docs/keyword-sources.md`, `docs/armor-import.md`, `docs/weapon-import.md`.
-- **Sprache der Website (2026-10-22):** Alles, was Spieler sehen, ist englisch: Texte in `src/ui`, die Abschnitte „## For players“ in `docs/mechanics/`, `docs/roadmap.md` und die generierte `docs/coverage.md`. Zahlen im Format `en-US`. Antworten an den Inhaber, Pläne, Prüftabellen, ADRs und der Changelog bleiben deutsch.
-- **Super-Timing (2026-10-22):** `src/data/super-timings.json` aus Geminis Schätzungen (`docs/sources/gemini-super-timings.csv`, Status `unverified`, vom Inhaber freigegeben). Verifizierte Compendium-Werte haben Vorrang.
-- **Aspect-Varianten (2026-10-22):** Regel G in `scripts/lib/subclassEffects.ts`, gemeinsamer Baustein `src/engine/abilityVariants.ts`. Regel-Test über alle Aegis-Zeilen in `tests/aspectVariants.test.ts` mit bekannten Lücken (Facet of Courage, Touch of Thunder). Whisper of Fissures steckt in den Grundzeilen von Glacier, Shatter, Silence & Squall und Winter's Wrath (zählt immer mit).
-- **Waffen und Catalysts (Inhaber, 2026-10-23, vorgezogen):** ✅ Primaries wählbar (40 von 61, unbegrenzte Munition, Bursts pro Kugel), ✅ Catalyst-Schalter für alle Waffen mit Wirkung aus den Quellen (`catalyst.effect`, Prüftabelle „Katalysatoren“ in `docs/weapon-import.md`). ✅ 131 von 141 Waffen über `weapon-overrides.json` (2026-10-23); ✅ 47 Catalysts „keine Wirkung“ per `bossParagraphs`. Gemini-Antworten verworfen (widersprachen Clarity). ✅ 135 von 141 (2026-10-23): Manifest-Stats in `manifest-weapons.json`, Override `timing.values`; Quantum rechnet Reload fest pro Waffentyp. ✅ Heartshadow (136). **Offen:** 5 Waffen (Schwerter Wolfsbane, Praxic Blade, Worldline Zero (Temporal Sprint ohne Text); Barrow-Dyad (nur mit Catalyst Target Lock), The Huckleberry (Bull Rider ohne Text)); ✅ Reload-Stat der Catalysts als Faktor aus d2foundrys Formel (`reload-formulas.json`, Inhaber 2026-10-23; trifft Aegis absolut nicht, 0,44- bis 1,5-fach). 26 Catalysts „unbekannt“: Reload nur per Perk-Text (Euphony, Edge of Concurrence, Hard Light, Lodestar, Sunshot, Prospector, MIDA), Fighting Lion ohne Reload-Stat. Quantum rechnet Reload fest pro Typ, Aegis misst pro Waffe. Offene Einzelfälle: Symmetry (Grundwert ohne Revolution-Mix zu niedrig?), Final Warning, Bastion, Skyburner's, Tessellation, Refits (Graviton Spike, Slayer's Fang, Vexcalibur).
-- **Danach: Aspects und Fragments abschließen (Inhaber, 2026-10-22), in dieser Reihenfolge:**
-  1. ✅ **Nutzlose Items ausblenden** (`neededStatuses` in `src/engine/weaponInfo.ts`, Regel-Test im Gate). Roaring Flames' eigener Bonus auf Solar-Abilities fehlt (zu U6-4).
-  2. ✅ **Ignition bei Supers** (`superTriggers` in `scripts/lib/keywordSources.ts`, Regel im `tests/abilityGate.test.ts`). Offen: Stormtrance (Jolt) und Pocket Singularity (Volatile) zählen doppelt (bekannte Lücke im Gate); Deadshot liegt bei Aegis 40 % unter dem Compendium (vermutlich Falloff).
-  3. **Whisper of Fissures:** steckt in den Grundzeilen von Glacier, Shatter, Shiver Strike, Silence & Squall, Winter's Wrath. Aegis nennt „52 Fissures“ in den Ticks, Compendium: ein Zusatztreffer pro Shatter (25 [9]). Anteil herausnehmen wie bei Ember, das Fragment fügt ihn wieder hinzu. Supers ohne Ticks bleiben bekannte Ungenauigkeit (etwa 5 %).
-  4. **Touch of Thunder:** Storm aus dem Aegis-Paar „average + Spark of Magnitude“ und „… + Touch of Thunder“ ableiten und gegenrechnen. Pulse, Flashbang und Lightning bleiben bekannte Lücken.
-  5. **Facet of Courage:** +10 % auf Light-Abilities (Arc, Solar, Void) gegen Ziele mit Stasis- oder Strand-Debuff (Compendium, Clarity). **Entscheidung des Inhabers: eigener multiplikativer Bucket als Annahme.** Der Melee-Teil (+50 % des Grundschadens) gehört zu U6-4.
-- **Danach (Plan freigegeben 2026-10-22, Datei `~/.claude/plans/immutable-crunching-barto.md`):**
-  1. Doppelzählung allgemein: Jolt/Volatile aus Paketen (Stormtrance, Pocket Singularity); ein Baustein für alle Keywords, der den Event-Run der Engine nutzt statt `superTriggers` nachzubauen; Regel-Test „jede Ability mit Keyword ergibt allein ihren Aegis-Wert“.
-  2. Catalysts (Magazin, Munition, Reload aus Quantum-Zeilen mit Catalyst), klare Tooltips, Regel-Test, Hinweis-Bug.
-  3. U7 Energie und Timing, **vorher ein ADR** (Casts bleiben einstellbar, Energie liefert den frühesten Zeitpunkt).
-  4. U6-4 Melee-Bucket additiv. 5. Aufräum-Commit: gemeinsames Werkzeug der vier Text-Regel-Bibliotheken, dann Exotics mit eigenem Schaden. 6. Waffen-Lücken. 7. U6-3. 8. Keywords ohne Modell, Boni ohne Bucket-Quelle.
-- **Danach:** gezielte Inventur der Lücken (11 Subklassen-Boni ohne Bucket-Quelle, Exotics ohne Wirkung), W1-7 Waffen-Lücken, E1 Dawn Chorus u. a., v1.1 mit Testlauf Waffe × Exotic-Rüstung.
-- **Entscheidungen des Inhabers:**
-  - Exotics ohne jede Schadenswirkung fallen weg.
-  - Ein Boss, keine Adds. Kill-Buffs des Exotics gelten nur mit dem Schalter „Vorher aufgebaut“ beim Exotic. Aspects und Fragments, die nur vorher aufgebaut wirken, gelten, sobald sie gewählt sind.
-  - Die Rückwärtskompatibilität von Links hat keine hohe Priorität.
-  - Tooltips erklären, was ein Item tut, ohne Quellen.
-- **Arbeitsstil:** Plan, Freigabe („ok“), dann den Block ohne Zwischenfragen durcharbeiten; Tests zuerst, nach jedem Block Commit und Push. Nicht zögerlich: vorhandene Quellen logisch zusammensetzen statt Lücken melden. Der Inhaber achtet auf Tokens.
-- **UI-Check:** `node scripts/ui-check.mjs https://wipe4dmg.pages.dev/?b=<link> <out.png> [--dark] [--width 1400] [--click "Text"]`. Cloudflare baut bei jedem Push auf `master`. Links für Builds erzeugst du mit `encodeLink(…, linkRegistry)` in einer kurzen Vitest-Datei.
+- Die Antwort nennt den Beleg, sonst heißt es „ungeprüft“.
+- Commit und Push, `docs/roadmap.md` und `docs/plans/current.md` aktualisiert.
 
 ## Befehle
 
-- `npm run dev`: Entwicklungsserver starten
-- `npm test`: Tests ausführen
-- `npm run sanity`: Plausibilitäts-Gate mit Tabelle für den Spielerblick (`tests/plausibility.test.ts`)
-- `npm run build`: Produktionsversion bauen (`tsc -b` prüft auch `scripts/`)
-- `npm run import:bosses`: Bosse und Damage Phases aus der Aegis-Tabelle nach `src/data/bosses.json` übernehmen
-- `npm run import:abilities`: Aegis-Reiter „Abilties“ nach `src/data/aegis-abilities.json` übernehmen (Gate und Fallback, ADR 0009)
-- `npm run import:compendium`: Texte der Compendium-Subklassen-Reiter nach `src/data/compendium-abilities.json` übernehmen; Tests prüfen damit zitierte Werte (ADR 0009). Außerdem „Exotic Weapons“ und „Weapon Perks“ nach `src/data/compendium-weapons.json` (ADR 0013) und „Exotic Armors“ nach `src/data/compendium-armor.json` (ADR 0014)
-- `npm run build:weapons`: Waffen-Pakete aus den Snapshots bauen (ADR 0013), ohne Download: `src/data/weapon-packages.json`, `weapon-gaps.json`, `weapon-codes.json` und die Prüftabelle `docs/weapon-import.md` (ein Test prüft, dass sie aktuell sind). Reihenfolge nach einem Patch: `import:weapons`, `import:compendium`, `import:icons`, `build:weapons`, noch einmal `import:icons` (Icons neuer Pakete)
-- `npm run import:weapons`: Aegis-Reiter „Weapons“ und Quantum-Reiter Primaries, Specials, Heavies als Snapshots nach `src/data/aegis-weapons.json` und `quantum-weapons.json` (ADR 0013)
-- `npm run import:reload`: d2foundrys Reload-Formeln pro Waffentyp nach `src/data/reload-formulas.json` (Faktor für den Reload-Stat der Catalysts); danach `build:weapons`
-- `npm run build:armor`: Exotic-Rüstung nach festen Regeln einordnen (ADR 0014) und ihre Effects erzeugen (ADR 0015, U6-1), ohne Download: `src/data/exotic-armor.json`, `exotic-armor-effects.json` und die Prüftabellen `docs/armor-import.md`, `docs/exotic-effects.md` (Tests prüfen, dass sie aktuell sind). Vorher `import:court`, `import:compendium`, `import:icons`
-- `npm run build:keywords`: Keyword-Quellen per Regel aus den Compendium-Subklassen-Texten finden (ADR 0015, U4b), ohne Download: Prüftabelle `docs/keyword-sources.md`, dazu die Subklassen-Effects (U6-2) `src/data/subclass-effects.json`, `effect-codes.json` und `docs/subclass-effects.md` (Tests prüfen, dass sie aktuell sind)
-- `npm run import:court`: Courts Stacking Guide als Snapshot nach `src/data/court-buffs.json` (ADR 0014; Werte von Debuffs, Empowering, Surges, Amplification und die Liste der Exotic Intrinsics)
-- `npm run coverage`: `docs/coverage.md` aus den Data Files neu schreiben (ein Test prüft, dass sie aktuell ist)
-- `npm run import:icons`: Icons, Ability-Zuordnung (Klasse, Subklasse, Prismatic) samt Aspects und Fragments, exotische Waffen mit Perks und Katalysator (`manifest-weapons.json`), Exotic-Rüstung mit Intrinsic (`manifest-armor.json`) und die Item-Typen der Aegis-Annahmen (`manifest-terms.json`, ADR 0013) aus dem Bungie-Manifest laden; nach `import:weapons` ausführen (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen; lädt die etwa 200 MB große Item-Tabelle)
+- `npm test`, `npm run sanity` (Plausibilitäts-Gate), `npm run build` (`tsc -b` prüft auch `scripts/`), `npm run dev`
+- `npm run facts -- "<Name>"`: Name in allen Snapshots suchen, kompakt
+- `npm run coverage`: `docs/coverage.md` neu schreiben (generiert)
+- Import (lädt herunter): `import:weapons`, `import:compendium`, `import:court`, `import:abilities`, `import:bosses`, `import:reload`, `import:icons` (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)
+- Build (ohne Download, schreibt Data Files und Prüftabellen): `build:weapons`, `build:armor`, `build:keywords`
+- Reihenfolge nach einem Patch: `docs/plans/current.md`, Abschnitt „Werkzeuge“
 
 ## Shell-Befehle
 
-- Ein Befehl pro Aufruf. Keine Ketten mit `&&`, `;` oder `|`, wenn ein einzelner Befehl genügt.
-- Kein `cd`. Verwende immer Pfade relativ zum Projektordner.
-- Kein `sed`, `awk` oder `paste`. Zum Suchen und Lesen nutzt du Grep, Glob und Read.
-- Temporäre Dateien legst du in `tmp/` im Projektordner ab. `tmp/` steht in `.gitignore`.
-- Externe Daten speicherst du einmal unter `docs/sources/` (zum Beispiel als CSV) und liest sie danach mit Read.
+- Ein Befehl pro Aufruf, keine Ketten mit `&&`, `;` oder `|`. Kein `cd`, Pfade relativ zum Projektordner.
+- Kein `sed`, `awk` oder `paste`. Suchen und Lesen mit Grep, Glob und Read.
+- Auswertungen als kurzes Skript, ausgeführt mit `node <datei>.ts`. Temporäres in `tmp/` (in `.gitignore`).
+- Externe Daten einmal unter `docs/sources/` speichern.
