@@ -40,6 +40,28 @@ describe("parseComponents", () => {
     ).toEqual([{ id: "hit", damage: 738, delayMs: 0, ticks: 1, intervalMs: 0 }]);
   });
 
+  it("R4: 'every X seconds up to N times' gives N ticks, the first number of 'N+M'", () => {
+    expect(
+      summary(
+        entry(
+          "Vortex Grenade",
+          "Deals 78 [20] damage every 0.267 seconds up to 12+7 times over its 4+1 second duration.",
+        ),
+      ),
+    ).toEqual([{ id: "hit", damage: 78, delayMs: 0, ticks: 12, intervalMs: 267 }]);
+  });
+
+  it("R5: a stated total replaces the alternatives before it; Guardians sentences are PvP", () => {
+    expect(
+      summary(
+        entry(
+          "Magnetic Grenade",
+          "Each explosion deals up to 472 [75] damage over 5 meters.\n\nDeals up to 946 [150] damage with both explosions.\n\nGuardians can only be hurt once, for a maximum of 120 damage.",
+        ),
+      ),
+    ).toEqual([{ id: "hit", damage: 946, delayMs: 0, ticks: 1, intervalMs: 0 }]);
+  });
+
   it("R1 to R3: impact, explosion and delayed aftershock ticks; collision does not count", () => {
     expect(
       summary(

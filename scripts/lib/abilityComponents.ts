@@ -3,6 +3,10 @@
 //   needs flying into the boss and does not count (one boss, ADR 0015).
 // - R2: "every X seconds for Y seconds" after the value in the same sentence gives Y / X ticks.
 // - R3: "X seconds after" in the same sentence gives the delay from the hit.
+// - R4: "every X seconds up to N times" gives N ticks (the first number; "16+9" is base plus extension).
+// - R5: a sentence that states a total ("with all/both", "increased by X% to", "maximum of") replaces
+//   the components before it; it is the sum of the alternatives above. Sentences about Guardians are
+//   PvP and do not count.
 // Values are per hit of the super timing. An ability uses its components only if it is enabled
 // below and the sum is within the tolerance of its Aegis row (the gate, ADR 0009 point 4), keyword
 // damage included as Aegis measured it; otherwise it stays a package.
@@ -42,6 +46,9 @@ export const COMPONENT_ABILITY_IDS = [
   "shield-bash",
   "frenzied-blade",
   "arcane-needle",
+  "magnetic-grenade",
+  "vortex-grenade",
+  "celestial-fire",
 ];
 
 const URL = "https://destiny2.science/data-compendium";
@@ -54,6 +61,11 @@ const TICKS = new RegExp(
   String.raw`^[^.]*?every (?:${NUMBER} )?seconds? for ${NUMBER} seconds`,
   "i",
 );
+const TICKS_TIMES = new RegExp(
+  String.raw`^[^.]*?every ${NUMBER} seconds? up to ${NUMBER}(?:\+\d+)? times`,
+  "i",
+);
+const TOTAL = /\bwith (?:all|both)\b|\bscoring all\b|\bincreas(?:e|ed|es)\b[^.]*?\bto\b|\bmaximum of\b/i;
 const DELAY = new RegExp(String.raw`${NUMBER} seconds after`, "i");
 const EXCLUDED_WORDS = ["collision"];
 
@@ -92,6 +104,9 @@ export function parseComponents(
   });
   const components: AbilityComponent[] = [];
   for (const sentence of sentences(entry.text)) {
+    if (/^guardians\b/i.test(sentence)) continue;
+    if (TOTAL.test(sentence) && DAMAGE.test(sentence)) components.length = 0;
+    DAMAGE.lastIndex = 0;
     for (const match of sentence.matchAll(DAMAGE)) {
       const words = match[2].trim();
       if (EXCLUDED_WORDS.some((w) => words.toLowerCase().includes(w))) continue;
@@ -100,9 +115,11 @@ export function parseComponents(
         ? `${base}-${components.filter((c) => c.id.startsWith(base)).length + 1}`
         : base;
       const after = sentence.slice(match.index + match[0].length);
-      const ticks = TICKS.exec(after);
+      // a stated "total of N damage" in the same sentence is its own component
+      const times = /\btotal of\b/i.test(sentence) ? null : TICKS_TIMES.exec(after);
+      const ticks = times ?? TICKS.exec(after);
       const delay = DELAY.exec(sentence.slice(0, match.index));
-      const interval = ticks ? toNumber(ticks[1] ?? "1") : 0;
+      const interval = times ? toNumber(times[1]) : ticks ? toNumber(ticks[1] ?? "1") : 0;
       components.push({
         id,
         name: words ? capitalise(words) : "Hit",
@@ -111,7 +128,10 @@ export function parseComponents(
           : { value: 0, source: implicit("No delay stated; at the hit") },
         damagePerTick: { value: toNumber(match[1]), source: quoted(sentence) },
         ticks: ticks
-          ? { value: toNumber(ticks[2]) / interval, source: quoted(ticks[0].trim()) }
+          ? {
+              value: times ? toNumber(times[2]) : toNumber(ticks[2]) / interval,
+              source: quoted(ticks[0].trim()),
+            }
           : { value: 1, source: implicit("One hit") },
         tickIntervalMs: {
           value: interval * 1000,

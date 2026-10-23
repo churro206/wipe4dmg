@@ -575,6 +575,196 @@
     ]
   },
   {
+    "abilityId": "magnetic-grenade",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Magnetic Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 946,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Magnetic Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals up to 946 damage with both explosions."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Magnetic Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Magnetic Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "vortex-grenade",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 195,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals up to 195 damage over 5 metres on impact, as well as creating a Void Vortex."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit-2",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 78,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "After 1.45-0.13 seconds of being created, deals 78 damage every 0.267 seconds up to 12+7 times over its 4+1 second duration to enemies within its 4 meter radius."
+          }
+        },
+        "ticks": {
+          "value": 12,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "every 0.267 seconds up to 12+7 times"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 267,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "every 0.267 seconds up to 12+7 times"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit-3",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 54,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "The 13th 20th tick has falloff and deals up to 54 damage."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Vortex Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
     "abilityId": "disorienting-blow",
     "components": [
       {
@@ -960,7 +1150,7 @@
     ]
   },
   {
-    "abilityId": "incinerator-snap",
+    "abilityId": "celestial-fire",
     "components": [
       {
         "id": "hit",
@@ -968,7 +1158,7 @@
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "name": "Destiny Data Compendium, Solar, Celestial Fire",
             "url": "https://destiny2.science/data-compendium",
             "retrieved": "2026-10-21",
             "status": "unverified",
@@ -976,19 +1166,19 @@
           }
         },
         "damagePerTick": {
-          "value": 90,
+          "value": 450,
           "source": {
-            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "name": "Destiny Data Compendium, Solar, Celestial Fire",
             "url": "https://destiny2.science/data-compendium",
             "retrieved": "2026-10-21",
             "status": "verified",
-            "quote": "Sparks explode after ? meters, each dealing up to 90 damage and apply x20+10 Scorch over a ? meter radius."
+            "quote": "Can deal up to 450 damage and inflict x30+15 Scorch by scoring hits with all 3 Solar blasts."
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "name": "Destiny Data Compendium, Solar, Celestial Fire",
             "url": "https://destiny2.science/data-compendium",
             "retrieved": "2026-10-21",
             "status": "unverified",
@@ -998,7 +1188,7 @@
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "name": "Destiny Data Compendium, Solar, Celestial Fire",
             "url": "https://destiny2.science/data-compendium",
             "retrieved": "2026-10-21",
             "status": "unverified",
@@ -1006,9 +1196,14 @@
           }
         },
         "scalesWithAbilityStat": true
-      },
+      }
+    ]
+  },
+  {
+    "abilityId": "incinerator-snap",
+    "components": [
       {
-        "id": "hit-2",
+        "id": "hit",
         "name": "Hit",
         "delayMs": {
           "value": 0,

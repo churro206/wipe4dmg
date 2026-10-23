@@ -4,7 +4,7 @@ Generiert von `npm run build:abilities` (ADR 0009, U9). Nicht von Hand ändern.
 
 Teile pro Treffer aus dem Compendium-Text, mal Treffer aus `super-timings.json`, plus Keyword-Schaden wie von Aegis gemessen. Gate ±15 % gegen die Aegis-Zeile bei Stat 100 und 200. „Paket“: Ability nutzt weiter das Aegis-Paket.
 
-Teile: 18 von 75.
+Teile: 21 von 75.
 
 | Ability | Teile (Wert × Ticks) | Treffer | Pro Einsatz 100 | Aegis 100 | Abw. 100 | Abw. 200 | Nutzt |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -38,22 +38,22 @@ Teile: 18 von 75.
 | Flux Grenade | Hit 901×1, Hit 1500×1 | 1 | 2401 | 1783 | +35 % | +35 % | Paket |
 | Lightning Grenade | Hit 373×1 | 1 | 373 | 1535 | -76 % | -76 % | Paket |
 | Pulse Grenade | Hit 156×1, Hit 249×1 | 1 | 405 | 1437 | -72 % | -72 % | Paket |
-| Skip Grenade | Impact 24×1, Hit 90×1, Hit 552×1 | 1 | 666 | 473 | +41 % | +41 % | Paket |
-| Storm Grenade | Hit 440×1, Hit 311×1, Hit 311×1, Hit 751×1, Hit 120×1 | 1 | 1933 | 890 | +117 % | +117 % | Paket |
+| Skip Grenade | Hit 552×1 | 1 | 552 | 473 | +17 % | +17 % | Paket |
+| Storm Grenade | Hit 751×1 | 1 | 751 | 890 | -16 % | -16 % | Paket |
 | Firebolt Grenade | Hit 337×1 | 1 | 510 | 609 | -16 % | -16 % | Paket |
 | Fusion Grenade | Hit 738×1 | 1 | 1084 | 1129 | -4 % | -4 % | Teile |
 | Incendiary Grenade | Hit 814×1, Hit 1202×1 | 1 | 2362 | 1499 | +58 % | +57 % | Paket |
 | Solar Grenade | Hit 63×1, Hit 78×1, Hit 1014×1 | 1 | 1155 | 1267 | -9 % | -9 % | Teile |
-| Swarm Grenade | Hit 54×1, Hit 1008×1 | 1 | 1293 | 914 | +41 % | +41 % | Paket |
+| Swarm Grenade | Hit 1008×1 | 1 | 1239 | 914 | +36 % | +35 % | Paket |
 | Thermite Grenade | Hit 206×1, Hit 1808×1 | 1 | 2360 | 2172 | +9 % | +13 % | Teile |
 | Tripmine Grenade | Hit 805×1 | 1 | 1151 | 1242 | -7 % | -7 % | Teile |
 | Axion Bolt | Hit 575×1 | 1 | 575 | 627 | -8 % | -8 % | Teile |
-| Magnetic Grenade | Hit 472×1, Hit 946×1 | 1 | 1418 | 1010 | +40 % | +40 % | Paket |
-| Scatter Grenade | Hit 5×1, Hit 70×1, Hit 115×1, Hit 1480×1 | 1 | 1670 | 950 | +76 % | +76 % | Paket |
+| Magnetic Grenade | Hit 946×1 | 1 | 946 | 1010 | -6 % | -6 % | Teile |
+| Scatter Grenade | Hit 1480×1 | 1 | 1480 | 950 | +56 % | +56 % | Paket |
 | Suppressor Grenade | Hit 863×1 | 1 | 863 | 1019 | -15 % | -15 % | Paket |
-| Void Spike | Hit 80×1 | 1 | 80 | 1708 | -95 % | -95 % | Paket |
-| Void Wall | Hit 173×1, Hit 120×1 | 1 | 293 | 3208 | -91 % | -91 % | Paket |
-| Vortex Grenade | Hit 195×1, Hit 78×1, Hit 54×1 | 1 | 327 | 1122 | -71 % | -71 % | Paket |
+| Void Spike | Hit 80×16 | 1 | 1280 | 1708 | -25 % | -25 % | Paket |
+| Void Wall | Hit 173×1, Hit 120×18 | 1 | 2333 | 3208 | -27 % | -27 % | Paket |
+| Vortex Grenade | Hit 195×1, Hit 78×12, Hit 54×1 | 1 | 1185 | 1122 | +6 % | +6 % | Teile |
 | Glacier Grenade | Stasis Grenade 158×1 | 1 | 158 | 1282 | -88 % | -85 % | Paket |
 | Shatter Grenade | Hit 216×1 | 1 | 216 | 2697 | -92 % | -91 % | Paket |
 | Shackle Grenade | Hit 190×1, Hit 81×1 | 1 | 271 | 474 | -43 % | -43 % | Paket |
@@ -64,14 +64,14 @@ Teile: 18 von 75.
 | Seismic Strike | Impact 1073×1, Radial 391×1 | 1 | 1464 | 1463 | +0 % | +0 % | Teile |
 | Thunderclap | Hit 703×1 | 1 | 703 | 1404 | -50 % | -50 % | Paket |
 | Ball Lightning | Hit 271×1, Hit 117×1, Hit 163×1, Hit 714×1 | 1 | 1265 | 199 | +537 % | +537 % | Paket |
-| Knife Trick | Hit 257×1, Hit 1002×1 | 1 | 1597 | 1125 | +42 % | +59 % | Paket |
+| Knife Trick | Hit 1002×1 | 1 | 1340 | 1125 | +19 % | +32 % | Paket |
 | Lightweight Knife | Hit 408×1 | 1 | 408 | 408 | +0 % | 0 % | Teile |
 | Proximity Explosive Knife | Impact 306×1, Detonation 405×1 | 1 | 711 | 536 | +33 % | +33 % | Paket |
 | Weighted Throwing Knife | Hit 571×1 | 1 | 571 | 571 | +0 % | +0 % | Teile |
 | Hammer Strike | Impact 878×1, Radial 586×1 | 1 | 1464 | 1604 | -9 % | -7 % | Teile |
 | Throwing Hammer | Hit 539×1, Hit 325×1 | 1 | 864 | 564 | +53 % | +53 % | Paket |
-| Celestial Fire | Hit 150×1, Hit 450×1 | 1 | 825 | 763 | +8 % | +20 % | Paket |
-| Incinerator Snap | Hit 90×1, Hit 450×1 | 1 | 1215 | 1144 | +6 % | +8 % | Teile |
+| Celestial Fire | Hit 450×1 | 1 | 675 | 763 | -12 % | -3 % | Teile |
+| Incinerator Snap | Hit 450×1 | 1 | 1125 | 1144 | -2 % | -1 % | Teile |
 | Phantom Surge | Hit 595×1 | 1 | 595 | 594 | +0 % | +0 % | Teile |
 | Snare Bomb | Impact 33×1, Explosion 24×1, Hit 12.65×1, Hit 24.8×1, Hit 156.7×1 | 1 | 251 | 232 | +8 % | +9 % | Teile |
 | Shield Bash | Impact 1073×1, Radial 391×1 | 1 | 1464 | 1463 | +0 % | +0 % | Teile |
