@@ -23,7 +23,26 @@ import type {
 export const COMPONENT_TOLERANCE = 0.15;
 
 // Abilities converted so far; the others stay packages until their rules are checked.
-export const COMPONENT_ABILITY_IDS = ["fusion-grenade", "thundercrash"];
+export const COMPONENT_ABILITY_IDS = [
+  "fusion-grenade",
+  "thundercrash",
+  "shadowshot-deadfall",
+  "solar-grenade",
+  "thermite-grenade",
+  "tripmine-grenade",
+  "axion-bolt-grenade",
+  "disorienting-blow",
+  "seismic-strike",
+  "lightweight-knife",
+  "weighted-throwing-knife",
+  "hammer-strike",
+  "incinerator-snap",
+  "phantom-surge",
+  "snare-bomb",
+  "shield-bash",
+  "frenzied-blade",
+  "arcane-needle",
+];
 
 const URL = "https://destiny2.science/data-compendium";
 const NUMBER = String.raw`(\d[\d,]*(?:\.\d+)?)`;

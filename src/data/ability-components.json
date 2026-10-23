@@ -140,6 +140,56 @@
     ]
   },
   {
+    "abilityId": "shadowshot-deadfall",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shadowshot: Deadfall",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 2583,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shadowshot: Deadfall",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals 2,583 Damage on impact, inflicting Deadfall Weaken and Suppression to enemies within ? meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shadowshot: Deadfall",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shadowshot: Deadfall",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
     "abilityId": "fusion-grenade",
     "components": [
       {
@@ -179,6 +229,1296 @@
           "value": 0,
           "source": {
             "name": "Destiny Data Compendium, Solar, Fusion Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "solar-grenade",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 63,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals up to 63 damage and inflicts x17+4.5 Scorch to enemies within 5 metres on impact, as well as creating a Solar Flare."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit-2",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 78,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals 78 damage every 0.267 seconds up to 13 times over its 4 second duration, for a total of 1,014 damage to enemies within its 4 metre radius."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit-3",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 1014,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals 78 damage every 0.267 seconds up to 13 times over its 4 second duration, for a total of 1,014 damage to enemies within its 4 metre radius."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Solar Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "thermite-grenade",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Thermite Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 206,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Thermite Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Solar Waves travel up to 20 meters away, each dealing up to 246+206 damage and inflicting x10+10 Scorch."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Thermite Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Thermite Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit-2",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Thermite Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 1808,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Thermite Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals up to 1,808 damage and inflicts x40+40 Scorch if all 4 Solar Waves hit without falloff."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Thermite Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Thermite Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "tripmine-grenade",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Tripmine Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 805,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Tripmine Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Explodes after 1 second of triggering, or upon being destroyed, dealing up to 805 damage and inflicting x40+20 Scorch over ? meters on detonation."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Tripmine Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Tripmine Grenade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "axion-bolt-grenade",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Axion Bolt",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 575,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Axion Bolt",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Axion Bolts deal 575 damage and travel at a speed of ? m/s for up to ? seconds."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Axion Bolt",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Axion Bolt",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "disorienting-blow",
+    "components": [
+      {
+        "id": "impact",
+        "name": "Impact",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Disorienting Blow",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 162,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Disorienting Blow",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals 162 Impact Damage and up to 976 Splash Damage, down to ?% damage over 7 meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Disorienting Blow",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Disorienting Blow",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "splash",
+        "name": "Splash",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Disorienting Blow",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 976,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Disorienting Blow",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals 162 Impact Damage and up to 976 Splash Damage, down to ?% damage over 7 meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Disorienting Blow",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Disorienting Blow",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "seismic-strike",
+    "components": [
+      {
+        "id": "impact",
+        "name": "Impact",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Seismic Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 1073,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Seismic Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Hitting an enemy deals 1,073 impact damage, as well as dealing 391 radial damage and inflicting Blind for 8 seconds to enemies within 6 meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Seismic Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Seismic Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "radial",
+        "name": "Radial",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Seismic Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 391,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Seismic Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Hitting an enemy deals 1,073 impact damage, as well as dealing 391 radial damage and inflicting Blind for 8 seconds to enemies within 6 meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Seismic Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Arc, Seismic Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "lightweight-knife",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Lightweight Knife",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 408,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Lightweight Knife",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Lightweight Knife deals 408 damage with a 1.5x Precision Multiplier."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Lightweight Knife",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Lightweight Knife",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "weighted-throwing-knife",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Weighted Throwing Knife",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 571,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Weighted Throwing Knife",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Weighted Knife deals 571 damage with a 1.5x Precision Multiplier."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Weighted Throwing Knife",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Weighted Throwing Knife",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "hammer-strike",
+    "components": [
+      {
+        "id": "impact",
+        "name": "Impact",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Hammer Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 878,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Hammer Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Hitting an enemy deals 878 impact damage and inflicts x40+20 Scorch, as well as dealing 586 radial damage to enemies up to 7 meters behind the struck target."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Hammer Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Hammer Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "radial",
+        "name": "Radial",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Hammer Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 586,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Hammer Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Hitting an enemy deals 878 impact damage and inflicts x40+20 Scorch, as well as dealing 586 radial damage to enemies up to 7 meters behind the struck target."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Hammer Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Hammer Strike",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "incinerator-snap",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 90,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Sparks explode after ? meters, each dealing up to 90 damage and apply x20+10 Scorch over a ? meter radius."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit-2",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 450,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Can deal up to 450 damage and apply up to x100+50 Scorch by scoring hits with all 5 burning sparks"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Solar, Incinerator Snap",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "phantom-surge",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Phantom Surge",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 595,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Phantom Surge",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Slashes forward up to 12 meters away, dealing 595 Damage to enemies within 2 meters while phasing through them."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Phantom Surge",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Phantom Surge",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "snare-bomb",
+    "components": [
+      {
+        "id": "impact",
+        "name": "Impact",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 33,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Snare Bomb deals 33 impact damage, and up to 120 + 24 explosion damage over ? meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "explosion",
+        "name": "Explosion",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 24,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Snare Bomb deals 33 impact damage, and up to 120 + 24 explosion damage over ? meters."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 12.65,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals DoT after 0.87 seconds, starting at 12.65 damage, increasing by 13% per tick, up to 24.8 damage on its last 9th tick, dealing up to 156.7 damage over 5 seconds."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit-2",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 24.8,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals DoT after 0.87 seconds, starting at 12.65 damage, increasing by 13% per tick, up to 24.8 damage on its last 9th tick, dealing up to 156.7 damage over 5 seconds."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "hit-3",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 156.7,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Deals DoT after 0.87 seconds, starting at 12.65 damage, increasing by 13% per tick, up to 24.8 damage on its last 9th tick, dealing up to 156.7 damage over 5 seconds."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Snare Bomb",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "shield-bash",
+    "components": [
+      {
+        "id": "impact",
+        "name": "Impact",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shield Bash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 1073,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shield Bash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Hitting an enemy deals 1,073 impact damage, as well as dealing 391 radial damage to enemies up to 7 meters behind the struck target."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shield Bash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shield Bash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      },
+      {
+        "id": "radial",
+        "name": "Radial",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shield Bash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 391,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shield Bash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Hitting an enemy deals 1,073 impact damage, as well as dealing 391 radial damage to enemies up to 7 meters behind the struck target."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shield Bash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Void, Shield Bash",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "frenzied-blade",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Strand, Frenzied Blade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 569,
+          "source": {
+            "name": "Destiny Data Compendium, Strand, Frenzied Blade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Performs a dash, moving forward ? metres and slashing towards enemies, dealing 569 damage and inflicting severed."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Strand, Frenzied Blade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Strand, Frenzied Blade",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "scalesWithAbilityStat": true
+      }
+    ]
+  },
+  {
+    "abilityId": "arcane-needle",
+    "components": [
+      {
+        "id": "hit",
+        "name": "Hit",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Strand, Arcane Needle",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "No delay stated; at the hit"
+          }
+        },
+        "damagePerTick": {
+          "value": 505,
+          "source": {
+            "name": "Destiny Data Compendium, Strand, Arcane Needle",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "verified",
+            "quote": "Throws a seeking Strand Needle, homing towards the targeted enemy, dealing 505 damage and inflicting unravel for ?+? seconds."
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Destiny Data Compendium, Strand, Arcane Needle",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-21",
+            "status": "unverified",
+            "note": "One hit"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Strand, Arcane Needle",
             "url": "https://destiny2.science/data-compendium",
             "retrieved": "2026-10-21",
             "status": "unverified",

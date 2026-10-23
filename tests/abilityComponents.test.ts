@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { loadAbilityComponentInputs } from "../scripts/lib/abilityComponentInputs";
 import {
+  COMPONENT_ABILITY_IDS,
   abilityComponentRows,
   abilityComponentsData,
   parseComponents,
@@ -69,11 +70,10 @@ describe("parseComponents", () => {
 describe("generated files", () => {
   const rows = abilityComponentRows(loadAbilityComponentInputs());
 
-  it("the converted abilities pass the gate: Fusion Grenade and Thundercrash", () => {
-    expect(rows.filter((r) => r.used).map((r) => r.abilityId).sort()).toEqual([
-      "fusion-grenade",
-      "thundercrash",
-    ]);
+  it("every enabled ability passes the gate", () => {
+    expect(rows.filter((r) => r.used).map((r) => r.abilityId).sort()).toEqual(
+      [...COMPONENT_ABILITY_IDS].sort(),
+    );
   });
 
   it("ability-components.json and docs/ability-import.md are current (npm run build:abilities)", () => {

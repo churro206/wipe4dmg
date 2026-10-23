@@ -4,7 +4,7 @@ Generiert von `npm run build:abilities` (ADR 0009, U9). Nicht von Hand ändern.
 
 Teile pro Treffer aus dem Compendium-Text, mal Treffer aus `super-timings.json`, plus Keyword-Schaden wie von Aegis gemessen. Gate ±15 % gegen die Aegis-Zeile bei Stat 100 und 200. „Paket“: Ability nutzt weiter das Aegis-Paket.
 
-Teile: 2 von 75.
+Teile: 18 von 75.
 
 | Ability | Teile (Wert × Ticks) | Treffer | Pro Einsatz 100 | Aegis 100 | Abw. 100 | Abw. 200 | Nutzt |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -22,7 +22,7 @@ Teile: 2 von 75.
 | Hammer of Sol | Hit 445×1, Hit 396×1 | 1 | 841 | 9243 | -91 % | -91 % | Paket |
 | Daybreak | Impact 426×1, Splash 598×1, Hit 292×1, Hit 642×1, Hit 292×1 | 15 | 37126 | 12185 | +205 % | +196 % | Paket |
 | Spectral Blades | Hit 1107×1, Hit 1620×1 | 22 | 59994 | 12003 | +400 % | +400 % | Paket |
-| Shadowshot: Deadfall | Hit 2583×1 | 1 | 2583 | 2801 | -8 % | -8 % | Paket |
+| Shadowshot: Deadfall | Hit 2583×1 | 1 | 2583 | 2801 | -8 % | -8 % | Teile |
 | Shadowshot: Moebius Quiver | Hit 3000×1, Hit 1076×1 | 2 | 8152 | 6414 | +27 % | +26 % | Paket |
 | Sentinel Shield | Hit 856×1, Hit 797×1, Hit 1516×1, Hit 7×1, Hit 723×1 | 18 | 70182 | 10144 | +592 % | +592 % | Paket |
 | Twilight Arsenal | Hit 1250×1, Hit 1750×1, Hit 581×1, Hit 1337×1, Hit 830×1 | 3 | 17244 | 9738 | +77 % | +77 % | Paket |
@@ -43,11 +43,11 @@ Teile: 2 von 75.
 | Firebolt Grenade | Hit 337×1 | 1 | 510 | 609 | -16 % | -16 % | Paket |
 | Fusion Grenade | Hit 738×1 | 1 | 1084 | 1129 | -4 % | -4 % | Teile |
 | Incendiary Grenade | Hit 814×1, Hit 1202×1 | 1 | 2362 | 1499 | +58 % | +57 % | Paket |
-| Solar Grenade | Hit 63×1, Hit 78×1, Hit 1014×1 | 1 | 1155 | 1267 | -9 % | -9 % | Paket |
+| Solar Grenade | Hit 63×1, Hit 78×1, Hit 1014×1 | 1 | 1155 | 1267 | -9 % | -9 % | Teile |
 | Swarm Grenade | Hit 54×1, Hit 1008×1 | 1 | 1293 | 914 | +41 % | +41 % | Paket |
-| Thermite Grenade | Hit 206×1, Hit 1808×1 | 1 | 2360 | 2172 | +9 % | +13 % | Paket |
-| Tripmine Grenade | Hit 805×1 | 1 | 1151 | 1242 | -7 % | -7 % | Paket |
-| Axion Bolt | Hit 575×1 | 1 | 575 | 627 | -8 % | -8 % | Paket |
+| Thermite Grenade | Hit 206×1, Hit 1808×1 | 1 | 2360 | 2172 | +9 % | +13 % | Teile |
+| Tripmine Grenade | Hit 805×1 | 1 | 1151 | 1242 | -7 % | -7 % | Teile |
+| Axion Bolt | Hit 575×1 | 1 | 575 | 627 | -8 % | -8 % | Teile |
 | Magnetic Grenade | Hit 472×1, Hit 946×1 | 1 | 1418 | 1010 | +40 % | +40 % | Paket |
 | Scatter Grenade | Hit 5×1, Hit 70×1, Hit 115×1, Hit 1480×1 | 1 | 1670 | 950 | +76 % | +76 % | Paket |
 | Suppressor Grenade | Hit 863×1 | 1 | 863 | 1019 | -15 % | -15 % | Paket |
@@ -59,27 +59,27 @@ Teile: 2 von 75.
 | Shackle Grenade | Hit 190×1, Hit 81×1 | 1 | 271 | 474 | -43 % | -43 % | Paket |
 | Slicewire | Hit 267×1, Hit 307×1 | 1 | 574 | 1125 | -49 % | -49 % | Paket |
 | Threadling Grenade | – | 1 | 0 | 865 | -100 % | -100 % | Paket |
-| Disorienting Blow | Impact 162×1, Splash 976×1 | 1 | 1138 | 1065 | +7 % | +7 % | Paket |
+| Disorienting Blow | Impact 162×1, Splash 976×1 | 1 | 1138 | 1065 | +7 % | +7 % | Teile |
 | Ballistic Slam | Hit 210×1, Hit 1000×1 | 1 | 1210 | 362 | +234 % | +233 % | Paket |
-| Seismic Strike | Impact 1073×1, Radial 391×1 | 1 | 1464 | 1463 | +0 % | +0 % | Paket |
+| Seismic Strike | Impact 1073×1, Radial 391×1 | 1 | 1464 | 1463 | +0 % | +0 % | Teile |
 | Thunderclap | Hit 703×1 | 1 | 703 | 1404 | -50 % | -50 % | Paket |
 | Ball Lightning | Hit 271×1, Hit 117×1, Hit 163×1, Hit 714×1 | 1 | 1265 | 199 | +537 % | +537 % | Paket |
 | Knife Trick | Hit 257×1, Hit 1002×1 | 1 | 1597 | 1125 | +42 % | +59 % | Paket |
-| Lightweight Knife | Hit 408×1 | 1 | 408 | 408 | +0 % | 0 % | Paket |
+| Lightweight Knife | Hit 408×1 | 1 | 408 | 408 | +0 % | 0 % | Teile |
 | Proximity Explosive Knife | Impact 306×1, Detonation 405×1 | 1 | 711 | 536 | +33 % | +33 % | Paket |
-| Weighted Throwing Knife | Hit 571×1 | 1 | 571 | 571 | +0 % | +0 % | Paket |
-| Hammer Strike | Impact 878×1, Radial 586×1 | 1 | 1464 | 1604 | -9 % | -7 % | Paket |
+| Weighted Throwing Knife | Hit 571×1 | 1 | 571 | 571 | +0 % | +0 % | Teile |
+| Hammer Strike | Impact 878×1, Radial 586×1 | 1 | 1464 | 1604 | -9 % | -7 % | Teile |
 | Throwing Hammer | Hit 539×1, Hit 325×1 | 1 | 864 | 564 | +53 % | +53 % | Paket |
 | Celestial Fire | Hit 150×1, Hit 450×1 | 1 | 825 | 763 | +8 % | +20 % | Paket |
-| Incinerator Snap | Hit 90×1, Hit 450×1 | 1 | 1215 | 1144 | +6 % | +8 % | Paket |
-| Phantom Surge | Hit 595×1 | 1 | 595 | 594 | +0 % | +0 % | Paket |
-| Snare Bomb | Impact 33×1, Explosion 24×1, Hit 12.65×1, Hit 24.8×1, Hit 156.7×1 | 1 | 251 | 232 | +8 % | +9 % | Paket |
-| Shield Bash | Impact 1073×1, Radial 391×1 | 1 | 1464 | 1463 | +0 % | +0 % | Paket |
+| Incinerator Snap | Hit 90×1, Hit 450×1 | 1 | 1215 | 1144 | +6 % | +8 % | Teile |
+| Phantom Surge | Hit 595×1 | 1 | 595 | 594 | +0 % | +0 % | Teile |
+| Snare Bomb | Impact 33×1, Explosion 24×1, Hit 12.65×1, Hit 24.8×1, Hit 156.7×1 | 1 | 251 | 232 | +8 % | +9 % | Teile |
+| Shield Bash | Impact 1073×1, Radial 391×1 | 1 | 1464 | 1463 | +0 % | +0 % | Teile |
 | Shield Throw | Impact 400×1 | 1 | 400 | 235 | +70 % | +70 % | Paket |
 | Pocket Singularity | Hit 527×1 | 1 | 527 | 426 | +24 % | +24 % | Paket |
 | Withering Blade | Hit 296×1 | 1 | 296 | 488 | -39 % | -33 % | Paket |
 | Shiver Strike | Impact 511×1, Explosive 219×1 | 1 | 730 | 481 | +52 % | +69 % | Paket |
 | Penumbral Blast | Hit 240×1 | 1 | 240 | 538 | -55 % | -47 % | Paket |
 | Threaded Spike | Hit 427×1 | 1 | 427 | 711 | -40 % | -40 % | Paket |
-| Frenzied Blade | Hit 569×1 | 1 | 569 | 512 | +11 % | +11 % | Paket |
-| Arcane Needle | Hit 505×1 | 1 | 505 | 453 | +11 % | +11 % | Paket |
+| Frenzied Blade | Hit 569×1 | 1 | 569 | 512 | +11 % | +11 % | Teile |
+| Arcane Needle | Hit 505×1 | 1 | 505 | 453 | +11 % | +11 % | Teile |
