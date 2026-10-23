@@ -8,13 +8,16 @@ import rawOverrides from "../src/data/weapon-overrides.json";
 import rawAegis from "../src/data/aegis-weapons.json";
 import rawSustained from "../src/data/aegis-sustained.json";
 import rawQuantum from "../src/data/quantum-weapons.json";
+import rawManifest from "../src/data/manifest-weapons.json";
 import {
   ClaritySnapshot,
   CompendiumSnapshot,
+  ManifestWeapons,
   WeaponOverride,
 } from "../src/data/schema";
 
 const overrides = WeaponOverride.array().parse(rawOverrides);
+const manifest = ManifestWeapons.parse(rawManifest).weapons;
 const clarity = ClaritySnapshot.parse(rawClarity).entries;
 const compendium = CompendiumSnapshot.parse(rawCompendium).entries;
 const rows: { id: string }[] = [
@@ -39,7 +42,11 @@ describe("weapon-overrides.json", () => {
               ? compendium
                   .filter((e) => e.name.startsWith(quote.entry))
                   .map((e) => e.text)
-              : cellsOf(quote.entry);
+              : quote.source === "manifest"
+                ? manifest
+                    .filter((w) => w.name === quote.entry)
+                    .map((w) => JSON.stringify(w.stats))
+                : cellsOf(quote.entry);
         expect(
           texts.some((text) => text.includes(quote.text)),
           `${quote.source}: ${quote.entry}`,

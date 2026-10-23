@@ -68,6 +68,7 @@ const sameName = (rowName: string, manifestName: string) =>
 // Catalysts, perks and mods of a weapon are weapon perks in Court's stacking guide.
 const OPTION_BUCKET = "weaponPerk";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
+const OVERRIDE_TIMING = "override"; // row id of a timing whose values an override states
 const RPM_HINT = 0.25; // a derived fire rate this far from the Quantum rpm is worth a look
 const BURST_TOLERANCE = 0.005; // Aegis rounds its hits; a burst sums them
 // A catalyst changes damage or timing if a value moves by more than rounding (1 %).
@@ -1257,6 +1258,27 @@ export function buildWeaponImport(
         entry.notes.push(`Timing aus Zeile ${timingOverride.row} (Override)`);
       }
     }
+    if (timingOverride?.values) {
+      // Values the reason derives, e.g. from manifest stats and Quantum's reload per weapon type.
+      const v = timingOverride.values;
+      const reloads =
+        v.totalShots === null ? 0 : Math.ceil(v.totalShots / v.magazine) - 1;
+      timing = {
+        rowId: OVERRIDE_TIMING,
+        magazine: v.magazine,
+        totalShots: v.totalShots,
+        reloadSeconds: v.reloadSeconds,
+        engineReloadSeconds: v.reloadSeconds,
+        intervalSeconds: v.intervalSeconds,
+        timeToEmptySeconds:
+          v.totalShots === null
+            ? null
+            : (v.totalShots - 1) * v.intervalSeconds +
+              reloads * v.reloadSeconds,
+        note: "Values of the override",
+      };
+      entry.notes.push("Timing aus Override-Werten (Manifest, Quantum)");
+    }
     if (!timing && fallbackCatalystTiming) {
       // Only sources with catalyst: back to the timing without it where Clarity names the numbers.
       const derived = timingWithoutCatalyst(
@@ -1525,9 +1547,16 @@ export function buildWeaponImport(
       (r) => r.id === timing.rowId,
     );
     const timingSource = (note?: string): Source =>
-      timingIsAegis || !timingQuantumRow
-        ? sustainedSource(timing.rowId, note)
-        : quantumSource(timingQuantumRow, note);
+      timing.rowId === OVERRIDE_TIMING
+        ? {
+            name: `Bungie manifest ${inputs.manifestVersion} and Quantum, override for ${manifest.name}`,
+            retrieved: inputs.aegis.source.retrieved,
+            status: "unverified",
+            note: `Derived (override): ${override?.reason ?? ""}${note ? `; ${note}` : ""}`,
+          }
+        : timingIsAegis || !timingQuantumRow
+          ? sustainedSource(timing.rowId, note)
+          : quantumSource(timingQuantumRow, note);
     const id = slug(manifest.name);
     const shotSource = (note?: string): Source =>
       scorch ? quantumSource(scorch.quantumRow, note) : aegisSource(base, note);

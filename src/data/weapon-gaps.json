@@ -1,21 +1,14 @@
 [
-  { "name": "Anarchy", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
   { "name": "Barrow-Dyad", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
-  {
-    "name": "Fafnir",
-    "reason": "kein Timing: Aegis: kein Reload in den Notizen; keine Quantum-Zeile"
-  },
   {
     "name": "Heartshadow",
     "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
   },
   { "name": "Praxic Blade", "reason": "kein Timing: keine Quantum-Zeile" },
-  { "name": "Prometheus Lens", "reason": "kein Timing: keine Quantum-Zeile" },
   {
     "name": "The Huckleberry",
     "reason": "keine Aegis-Zeile ohne fremde Annahmen"
   },
-  { "name": "Turncoat", "reason": "kein Timing: keine Quantum-Zeile" },
   {
     "name": "Wolfsbane",
     "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"

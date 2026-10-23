@@ -425,6 +425,148 @@
     }
   },
   {
+    "id": "anarchy",
+    "code": 132,
+    "name": "Anarchy",
+    "manifestHash": 2376481550,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "grenadeLauncher",
+    "element": "arc",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 11.858,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 150 s − 4 reloads × 2.08 s) ÷ 28 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 6,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 29,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 2080,
+      "source": {
+        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 2912.34,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, per trap, double stick, Jolting Feedback"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "arc-traps",
+        "name": "Arc Traps",
+        "description": "Grenades stick to surfaces and chain Arc bolts to other mines.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.157,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Aegis misst nur mit Katalysator (Jolting Feedback). Quantum ohne ihn: „double-stick“, 84.458 für 29 Granaten = 2912 pro Granate, zwei Fallen kleben, neu schießen, wenn sie auslaufen. Katalysator: Aegis 3368,5 ÷ Quantum 2912 = ×1,157 (Jolt)."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
+    "catalyst": {
+      "name": "Jolting Feedback, Anarchy Catalyst",
+      "description": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt.\nBeing Amplified decreases the number of hits required to 2.",
+      "effect": "damage"
+    }
+  },
+  {
     "id": "arbalest",
     "code": 20,
     "name": "Arbalest",
@@ -4950,6 +5092,126 @@
       "name": "Demolitionist, Blast Distributor, Eyes of Tomorrow Catalyst",
       "description": "Dealing damage grants a stack of 'Blast Distributor' for 5 seconds, increasing your Grenade Stat by 10 per stack. Maximum of 5 stacks.\nKills grant 10% Grenade Ability Energy.\nUsing your Grenade Ability refills the Magazine with a 3 second cooldown.",
       "effect": "unknown"
+    }
+  },
+  {
+    "id": "fafnir",
+    "code": 133,
+    "name": "Fafnir",
+    "manifestHash": 2197778303,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "linearFusionRifle",
+    "element": "void",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 37.5,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Values of the override"
+      }
+    },
+    "magazine": {
+      "value": 3,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile)."
+      }
+    },
+    "totalShots": {
+      "value": 9,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile)."
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1767,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile)."
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-fafnir",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 2528.379,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-fafnir",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-fafnir",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-fafnir",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "quantum-nova",
+        "name": "Quantum Nova",
+        "description": "[Alternate Weapon Action] : Consume a portion of this weapon's reserves to over-pressurize it, causing it to dramatically Weaken targets for a short time. This effect's duration scales with the amount of ammo consumed and is paused while holstered.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Fafnir Catalyst",
+      "description": "Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no longer ADS.\nTimer starts as soon as the ADS input is pressed.",
+      "effect": "none"
     }
   },
   {
@@ -9906,6 +10168,126 @@
       "name": "Dragonfly, Polaris Lance Catalyst",
       "description": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.",
       "effect": "none"
+    }
+  },
+  {
+    "id": "prometheus-lens",
+    "code": 134,
+    "name": "Prometheus Lens",
+    "manifestHash": 19024058,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "traceRifle",
+    "element": "solar",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“).; The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 899.55,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“).; Values of the override"
+      }
+    },
+    "magazine": {
+      "value": 100,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“)."
+      }
+    },
+    "totalShots": {
+      "value": 500,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“)."
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1440,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“)."
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-prometheus-lens-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 36.486,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-prometheus-lens-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, with ignition"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-prometheus-lens-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-prometheus-lens-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "prismatic-inferno",
+        "name": "Prismatic Inferno",
+        "description": "Fires a Solar trace beam that creates a field of heat energy that grows as the weapon is fired. Sustained damage applies scorch to the target.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Prometheus Catalyst",
+      "description": "Grants 20 Stability and 20 Handling.\nGrants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
+      "effect": "unknown"
     }
   },
   {
@@ -15496,6 +15878,126 @@
       "name": "Reaper's Tithe, Truth Catalyst",
       "description": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
       "effect": "damage"
+    }
+  },
+  {
+    "id": "turncoat",
+    "code": 135,
+    "name": "Turncoat",
+    "manifestHash": 253843484,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "handCannon",
+    "element": "void",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 139.991,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Values of the override"
+      }
+    },
+    "magazine": {
+      "value": 13,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“."
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“."
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1640,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“."
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-turncoat-average",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 127.435,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-turncoat-average",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-turncoat-average",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-turncoat-average",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "latent-power",
+        "name": "Latent Power",
+        "description": "Dealing damage builds Latent Power; precision hits and final blows build more. At full power, hold [Alternate Weapon Action] to trigger Unleashed Power, empowering the weapon with increased rate of fire and hip-fire accuracy and causing shots to weaken targets. After a short time, it becomes Overwhelming Power, which deals damage to you over time. Reload or stow the weapon to end these effects.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Turncoat Catalyst",
+      "description": "Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence).\nThe amount of Void Overshield granted is determined by how long you were empowered. 3 HP is granted for for each second that Empowerment lasted, capping at 40 HP for 13 seconds of Empowerment.",
+      "effect": "none"
     }
   },
   {

@@ -62,7 +62,17 @@ const plug = (
 
 const tables: WeaponManifestTables = {
   items: {
-    1201830623: weapon(1201830623, "Truth", [10, 11, 12, 13, 14, 17]),
+    1201830623: {
+      ...weapon(1201830623, "Truth", [10, 11, 12, 13, 14, 17]),
+      stats: {
+        stats: {
+          4284893193: { statHash: 4284893193, value: 15 },
+          3871231066: { statHash: 3871231066, value: 1 },
+          1: { statHash: 1, value: 0 }, // zero, left out
+          2: { statHash: 2, value: 7 }, // unnamed, left out
+        },
+      },
+    },
     10: plug(
       10,
       "Prototype Trueseeker",
@@ -82,6 +92,7 @@ const tables: WeaponManifestTables = {
       displayProperties: { name: "Truth Catalyst" },
       traitIds: ["item.exotic_catalyst"],
       perks: [{ perkHash: 2225619423 }, { perkHash: 3469836202 }],
+      investmentStats: [{ statTypeHash: 4188031367, value: 20 }],
     },
     // Exotic leg armor of the hunter with an intrinsic that names a weapon type.
     300: {
@@ -123,6 +134,12 @@ const tables: WeaponManifestTables = {
     },
     3469836202: { displayProperties: { name: "" } },
   },
+  stats: {
+    4284893193: { displayProperties: { name: "Rounds Per Minute" } },
+    3871231066: { displayProperties: { name: "Magazine" } },
+    4188031367: { displayProperties: { name: "Reload Speed" } },
+    1: { displayProperties: { name: "Impact" } },
+  },
 };
 
 describe("extractManifestWeapons", () => {
@@ -141,9 +158,11 @@ describe("extractManifestWeapons", () => {
           name: "Truth Catalyst",
           hash: 726894353,
           perks: ["Reaper's Tithe"],
+          stats: { "Reload Speed": 20 },
         },
         description:
           "This weapon's rockets have tracking.\nMultiple simultaneous final blows queue up a buff.",
+        stats: { Magazine: 1, "Rounds Per Minute": 15 },
       },
     ]);
   });

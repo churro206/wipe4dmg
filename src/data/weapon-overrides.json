@@ -764,5 +764,125 @@
     ],
     "aegisWins": true,
     "timing": { "from": "Quantum", "row": "primaries-bow-wish-ender" }
+  },
+  {
+    "weapon": "Turncoat",
+    "reason": "Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.",
+    "quotes": [
+      {
+        "source": "manifest",
+        "entry": "Turncoat",
+        "text": "\"Rounds Per Minute\":140"
+      },
+      { "source": "manifest", "entry": "Turncoat", "text": "\"Magazine\":13" },
+      {
+        "source": "quantum",
+        "entry": "primaries-hand-cannon-lumina",
+        "text": "\"reloadSeconds\":1.64"
+      }
+    ],
+    "aegisWins": true,
+    "base": "hand-cannon-turncoat-average",
+    "timing": {
+      "from": "Aegis",
+      "values": {
+        "magazine": 13,
+        "totalShots": null,
+        "intervalSeconds": 0.4286,
+        "reloadSeconds": 1.64
+      }
+    }
+  },
+  {
+    "weapon": "Prometheus Lens",
+    "reason": "Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“).",
+    "quotes": [
+      {
+        "source": "manifest",
+        "entry": "Prometheus Lens",
+        "text": "\"Magazine\":100"
+      },
+      {
+        "source": "quantum",
+        "entry": "specials-trace-rifle-wavesplitter-average",
+        "text": "\"totalShots\":500"
+      },
+      {
+        "source": "quantum",
+        "entry": "specials-trace-rifle-wavesplitter-average",
+        "text": "\"rpm\":900"
+      }
+    ],
+    "aegisWins": true,
+    "base": "trace-rifle-prometheus-lens-average-with-ignition",
+    "timing": {
+      "from": "Aegis",
+      "values": {
+        "magazine": 100,
+        "totalShots": 500,
+        "intervalSeconds": 0.0667,
+        "reloadSeconds": 1.44
+      }
+    }
+  },
+  {
+    "weapon": "Fafnir",
+    "reason": "Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "fafnir-includes-quantum-nova-windup-and-splash-9-ammo-consumed",
+        "text": "\"peakRateSeconds\":1.6"
+      },
+      {
+        "source": "aegis",
+        "entry": "fafnir-includes-quantum-nova-windup-and-splash-9-ammo-consumed",
+        "text": "\"timeToEmptySeconds\":16.333"
+      },
+      {
+        "source": "aegis",
+        "entry": "fafnir-includes-quantum-nova-windup-and-splash-9-ammo-consumed",
+        "text": "\"base\":2528"
+      }
+    ],
+    "aegisWins": true,
+    "timing": {
+      "from": "Aegis",
+      "values": {
+        "magazine": 3,
+        "totalShots": 9,
+        "intervalSeconds": 1.6,
+        "reloadSeconds": 1.7665
+      }
+    }
+  },
+  {
+    "weapon": "Anarchy",
+    "reason": "Aegis misst nur mit Katalysator (Jolting Feedback). Quantum ohne ihn: „double-stick“, 84.458 für 29 Granaten = 2912 pro Granate, zwei Fallen kleben, neu schießen, wenn sie auslaufen. Katalysator: Aegis 3368,5 ÷ Quantum 2912 = ×1,157 (Jolt).",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "heavies-grenade-launcher-anarchy-double-stick",
+        "text": "Assumes two grenades > wait out damage"
+      },
+      {
+        "source": "quantum",
+        "entry": "heavies-grenade-launcher-anarchy-double-stick",
+        "text": "\"totalDamage\":84458"
+      },
+      {
+        "source": "aegis",
+        "entry": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
+        "text": "\"perShot\":3368.538"
+      }
+    ],
+    "aegisWins": true,
+    "base": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
+    "perShot": 2912.34,
+    "catalystFactor": 1.157,
+    "timing": {
+      "from": "Quantum",
+      "row": "heavies-grenade-launcher-anarchy-double-stick"
+    }
   }
 ]

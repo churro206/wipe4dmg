@@ -67,6 +67,7 @@ type Manifest = {
       DestinyInventoryItemDefinition: string;
       DestinyPlugSetDefinition: string;
       DestinySandboxPerkDefinition: string;
+      DestinyStatDefinition: string;
     };
   };
 };
@@ -125,6 +126,9 @@ const tables: WeaponManifestTables = {
   ),
   sandboxPerks: await table<WeaponManifestTables["sandboxPerks"]>(
     manifest.jsonWorldComponentContentPaths.en.DestinySandboxPerkDefinition,
+  ),
+  stats: await table<WeaponManifestTables["stats"]>(
+    manifest.jsonWorldComponentContentPaths.en.DestinyStatDefinition,
   ),
 };
 const writeData = async (file: string, data: unknown) =>

@@ -43,6 +43,14 @@ describe("catalyst hover card", () => {
       "Not in the calculator yet: no source measured it",
     );
   });
+
+  it("shows the whole game text, not only its first line", () => {
+    const lines = describeCatalyst(weaponById("hierarchy-of-needs"));
+    expect(lines).toContain(
+      "In game: Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds:",
+    );
+    expect(lines).toContain("• 50% decreased Draw Time");
+  });
 });
 
 describe("hover card texts", () => {
@@ -67,14 +75,16 @@ describe("hover card texts", () => {
 
   it("names the abilities an aspect changes, with damage per cast", () => {
     expect(describeEffect(effect("knock-em-down"))).toEqual([
-      expect.stringMatching(/^Blade Barrage: [\d,]+ instead of [\d,]+ damage per cast$/),
+      expect.stringMatching(
+        /^Blade Barrage: [\d,]+ instead of [\d,]+ damage per cast$/,
+      ),
     ]);
   });
 
   it("names conditions in words", () => {
-    expect(
-      describeEffect(effect("exotic-armor:no-backup-plans"))[0],
-    ).toMatch(/Shotgun.*while you have Amplified, Frost Armor/);
+    expect(describeEffect(effect("exotic-armor:no-backup-plans"))[0]).toMatch(
+      /Shotgun.*while you have Amplified, Frost Armor/,
+    );
   });
 
   it("explains when the effect is active", () => {

@@ -86,6 +86,8 @@ export type ManifestWeaponItem = {
   collectibleHash?: number;
   traitIds?: string[];
   perks?: { perkHash: number }[];
+  stats?: { stats?: Record<string, { statHash: number; value: number }> };
+  investmentStats?: { statTypeHash: number; value: number }[];
   plug?: { plugCategoryIdentifier?: string };
   sockets?: {
     socketEntries: {
@@ -103,7 +105,23 @@ export type WeaponManifestTables = {
     string,
     { displayProperties?: { name?: string; description?: string } }
   >;
+  stats: Record<string, { displayProperties?: { name?: string } }>;
 };
+
+/** Stats by name, without unnamed stats and zeros. */
+function statsByName(
+  entries: { hash: number; value: number }[],
+  { stats }: WeaponManifestTables,
+): Record<string, number> {
+  const result: Record<string, number> = {};
+  for (const { hash, value } of entries) {
+    const name = stats[hash]?.displayProperties?.name;
+    if (name && value !== 0) result[name] = (result[name] ?? 0) + value;
+  }
+  return Object.fromEntries(
+    Object.entries(result).sort(([a], [b]) => a.localeCompare(b)),
+  );
+}
 
 const nameOf = (item: ManifestWeaponItem | undefined) =>
   item?.displayProperties?.name ?? "";
@@ -235,12 +253,26 @@ export function extractManifestWeapons(
             perks: catalystPerks
               .map((perk) => perk.name ?? "")
               .filter((perk) => perk !== ""),
+            stats: statsByName(
+              (catalyst.investmentStats ?? []).map((s) => ({
+                hash: s.statTypeHash,
+                value: s.value,
+              })),
+              tables,
+            ),
           }
         : null,
       description: joinTexts([
         ...texts(intrinsics, tables),
         ...catalystPerks.map((perk) => perk.description ?? ""),
       ]),
+      stats: statsByName(
+        Object.values(item.stats?.stats ?? {}).map((s) => ({
+          hash: s.statHash,
+          value: s.value,
+        })),
+        tables,
+      ),
     });
   }
   return weapons.sort((a, b) => a.name.localeCompare(b.name));

@@ -30,6 +30,16 @@
       "600s plain catalyst": 229554.82,
       "600s buffed catalyst": 386478.49
     },
+    "anarchy": {
+      "30s plain": 17474.04,
+      "30s buffed": 29419.29,
+      "30s plain catalyst": 20217.46,
+      "30s buffed catalyst": 34038.12,
+      "600s plain": 84457.86,
+      "600s buffed": 142193.25,
+      "600s plain catalyst": 97717.74,
+      "600s buffed catalyst": 164517.59
+    },
     "arbalest": {
       "30s plain": 22808.63,
       "30s buffed": 38400.6,
@@ -365,6 +375,16 @@
       "600s buffed": 45517.09,
       "600s plain catalyst": 27035.57,
       "600s buffed catalyst": 45517.09
+    },
+    "fafnir": {
+      "30s plain": 22755.41,
+      "30s buffed": 38311.01,
+      "30s plain catalyst": 22755.41,
+      "30s buffed catalyst": 38311.01,
+      "600s plain": 22755.41,
+      "600s buffed": 38311.01,
+      "600s plain catalyst": 22755.41,
+      "600s buffed catalyst": 38311.01
     },
     "fighting-lion": {
       "30s plain": 8576.79,
@@ -737,6 +757,16 @@
       "600s buffed": 351744.6,
       "600s plain catalyst": 208924.09,
       "600s buffed catalyst": 351744.6
+    },
+    "prometheus-lens": {
+      "30s plain": 14083.6,
+      "30s buffed": 23711.14,
+      "30s plain catalyst": 14083.6,
+      "30s buffed catalyst": 23711.14,
+      "600s plain": 18243,
+      "600s buffed": 30713.91,
+      "600s plain catalyst": 18243,
+      "600s buffed catalyst": 30713.91
     },
     "quicksilver-storm": {
       "30s plain": 8215.46,
@@ -1157,6 +1187,16 @@
       "600s buffed": 73381.02,
       "600s plain catalyst": 61020.09,
       "600s buffed catalyst": 102733.43
+    },
+    "turncoat": {
+      "30s plain": 7008.93,
+      "30s buffed": 11800.23,
+      "30s plain catalyst": 7008.93,
+      "30s buffed catalyst": 11800.23,
+      "600s plain": 138012.1,
+      "600s buffed": 232357.18,
+      "600s plain catalyst": 138012.1,
+      "600s buffed catalyst": 232357.18
     },
     "two-tailed-fox": {
       "30s plain": 26776.09,

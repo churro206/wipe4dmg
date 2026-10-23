@@ -786,9 +786,11 @@ export const ManifestWeapon = z.object({
       name: z.string(),
       hash: z.number().int(),
       perks: z.array(z.string()),
+      stats: z.record(z.string(), z.number()), // stat changes, e.g. { "Reload Speed": 20 }
     })
     .nullable(), // e.g. { name: "Truth Catalyst", hash: 726894353, perks: ["Reaper's Tithe"] }
   description: z.string(), // texts of intrinsic and catalyst perks, one per line
+  stats: z.record(z.string(), z.number()), // displayed stats, e.g. { "Rounds Per Minute": 1000, "Magazine": 50 }
 });
 export type ManifestWeapon = z.infer<typeof ManifestWeapon>;
 
@@ -1239,9 +1241,15 @@ export const WeaponOverride = z.object({
   quotes: z
     .array(
       z.object({
-        source: z.enum(["clarity", "compendium", "aegis", "quantum"]),
-        // Clarity entry name, the start of the Compendium entry name, or the id of an Aegis
-        // (Weapons, Sustained) or Quantum row
+        source: z.enum([
+          "clarity",
+          "compendium",
+          "aegis",
+          "quantum",
+          "manifest",
+        ]),
+        // Clarity entry name, the start of the Compendium entry name, the id of an Aegis
+        // (Weapons, Sustained) or Quantum row, or the manifest name of a weapon (text in its stats)
         entry: z.string(),
         text: z.string(), // exact text in that entry (for rows: in one of its cells)
       }),
@@ -1280,6 +1288,16 @@ export const WeaponOverride = z.object({
       shots: z.number().int().positive().optional(),
       totalShots: z.number().int().positive().optional(),
       addIntervalSeconds: z.number().optional(), // e.g. a longer charge without the catalyst
+      // Timing where no row has one: values the reason derives (manifest stats, Quantum's reload
+      // per weapon type). The reload follows the interval of the last shot, as with Quantum.
+      values: z
+        .object({
+          magazine: z.number().int().positive(),
+          totalShots: z.number().int().positive().nullable(), // null: primary ammo
+          intervalSeconds: z.number().positive(),
+          reloadSeconds: z.number().min(0),
+        })
+        .optional(),
     })
     .optional(),
 });

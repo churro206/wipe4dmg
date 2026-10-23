@@ -157,9 +157,9 @@ describe("primary weapons", () => {
 });
 
 describe("all weapons (2026-10-23)", () => {
-  it("more than 115 of 141 exotic weapons are selectable", () => {
-    note("Wählbare exotische Waffen", String(weapons.length), "> 115 von 141");
-    expect(weapons.length).toBeGreaterThan(115);
+  it("at least 135 of 141 exotic weapons are selectable", () => {
+    note("Wählbare exotische Waffen", String(weapons.length), "≥ 135 von 141");
+    expect(weapons.length).toBeGreaterThanOrEqual(135);
   });
 
   // Catches a unit error in a source, e.g. a whole magazine or a 5-ammo projectile counted as one

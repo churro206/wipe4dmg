@@ -45,7 +45,11 @@ export function describeCatalyst(weapon: Weapon): string[] {
     lines.push(`${bonusPercent(option.factor.value)}% weapon damage`);
   const timing = catalyst?.timing;
   if (timing) {
-    const change = (label: string, before: number | null, after: number | null) =>
+    const change = (
+      label: string,
+      before: number | null,
+      after: number | null,
+    ) =>
       before !== after
         ? `${label} ${before === null ? "∞" : integer.format(before)} → ${after === null ? "∞" : integer.format(after)}`
         : null;
@@ -54,7 +58,11 @@ export function describeCatalyst(weapon: Weapon): string[] {
       weapon.ammo === "primary"
         ? null
         : change("ammo", weapon.totalShots.value, timing.totalShots.value),
-      change("rate of fire", round(weapon.fireRateRpm.value), round(timing.fireRateRpm.value)),
+      change(
+        "rate of fire",
+        round(weapon.fireRateRpm.value),
+        round(timing.fireRateRpm.value),
+      ),
       change("reload ms", weapon.reloadTimeMs.value, timing.reloadTimeMs.value),
     ].filter((c): c is string => c !== null);
     if (changes.length > 0) lines.push(changes.join(", "));
@@ -63,8 +71,10 @@ export function describeCatalyst(weapon: Weapon): string[] {
     lines.push("No effect against one boss without adds");
   if (catalyst?.effect === "unknown")
     lines.push("Not in the calculator yet: no source measured it");
-  const text = catalyst?.description.split("\n")[0];
-  if (text) lines.push(`In game: ${text}`);
+  const [first, ...rest] = (catalyst?.description ?? "")
+    .split("\n")
+    .filter((line) => line.trim() !== "");
+  if (first) lines.push(`In game: ${first}`, ...rest);
   return lines;
 }
 
@@ -277,7 +287,9 @@ export function describeDuration(effect: Effect): string {
     durationMs == null ? "" : `${secondsInput.format(durationMs / 1000)} s`;
   const trigger = effect.trigger;
   if (!trigger)
-    return length ? `from the start of the Damage Phase for ${length}` : "the whole Damage Phase";
+    return length
+      ? `from the start of the Damage Phase for ${length}`
+      : "the whole Damage Phase";
   const elements = trigger.elements
     ? `${list(trigger.elements.map((e) => ELEMENT_LABELS[e]))} `
     : "";
@@ -314,7 +326,9 @@ export function describeExotic(
   );
   const preBuiltIds = new Set(
     generated
-      .filter((g) => g.exoticArmorId === entry.id && g.activation === "preBuilt")
+      .filter(
+        (g) => g.exoticArmorId === entry.id && g.activation === "preBuilt",
+      )
       .map((g) => g.effect.id),
   );
   const lines = exoticArmorEffects(entry, effects, generated, {
@@ -349,10 +363,7 @@ export function levelBadge(shortName: string): string | undefined {
 }
 
 /** Lines for the hover card of an ability: model, assumptions, included effects, super window. */
-export function describeAbility(
-  ability: Ability,
-  effects: Effect[],
-): string[] {
+export function describeAbility(ability: Ability, effects: Effect[]): string[] {
   const nameOf = (id: string) => effects.find((e) => e.id === id)?.name ?? id;
   const total = ability.components.reduce(
     (sum, c) => sum + (c.damagePerTick.value ?? 0) * (c.ticks.value ?? 0),
@@ -406,4 +417,3 @@ export function describeSuperWindow(ability: Ability): string {
         : `Super Window: at most ${length} (drain per attack unknown)`;
   }
 }
-
