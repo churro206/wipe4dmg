@@ -16452,48 +16452,49 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-truth",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "verified",
         "note": "The time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 345.455,
+      "value": 112.57,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-truth",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Derived: (Time to Empty 17.4 s − 6 reloads × 2.35 s) ÷ 19 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "Derived: (TtE 13.333 s − 4 reloads × 2.134 s) ÷ 9 intervals within magazines (ADR 0013)"
       }
     },
     "magazine": {
       "value": 3,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-truth",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified"
       }
     },
     "totalShots": {
-      "value": 20,
+      "value": 14,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-truth",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified"
       }
     },
     "reloadTimeMs": {
-      "value": 2350,
+      "value": 1601,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-truth",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "Reload 2.134 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
     "damageInstances": [

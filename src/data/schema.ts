@@ -1326,6 +1326,34 @@ export const AegisSustainedSnapshot = z.object({
 });
 export type AegisSustainedSnapshot = z.infer<typeof AegisSustainedSnapshot>;
 
+/**
+ * Total damage of one item in the Aegis tabs "Sustained" or "Swap" under the standard factors of
+ * Aegis; total = base × perk × surge × buff × debuff × stat × shots. Empty factors are null (1.0).
+ * The meta probe (block 5) compares our builds against it.
+ */
+export const AegisTotalRow = z.object({
+  id: z.string(), // kebab-case from tab, name and assumptions
+  tab: z.enum(["sustained", "swap"]),
+  name: z.string(), // first line of the name cell, e.g. "Blade Barrage"
+  assumptions: z.array(z.string()), // e.g. ["Knock 'Em Down", "Limit Break"]
+  type: z.string(), // column "Type", e.g. "power", "super", "burst"
+  shots: z.number().nullable(), // column "#"; null for "INF"
+  base: z.number().nullable(),
+  perk: z.number().nullable(),
+  surge: z.number().nullable(),
+  buff: z.number().nullable(),
+  debuff: z.number().nullable(),
+  stat: z.number().nullable(), // column "200": the stat bonus at 200
+  total: z.number().nullable(), // null for "INF"
+});
+export type AegisTotalRow = z.infer<typeof AegisTotalRow>;
+
+export const AegisTotalsSnapshot = z.object({
+  source: Source,
+  rows: z.array(AegisTotalRow),
+});
+export type AegisTotalsSnapshot = z.infer<typeof AegisTotalsSnapshot>;
+
 /** One entry of the Clarity database: a perk, catalyst or armor trait with its text (ADR 0013). */
 export const ClarityEntry = z.object({
   hash: z.number().int(), // manifest hash of the perk

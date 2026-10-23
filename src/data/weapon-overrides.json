@@ -1145,5 +1145,25 @@
       }
     ],
     "catalystEffect": "none"
+  },
+  {
+    "weapon": "Truth",
+    "reason": "Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "truth-prototype-truthseeker-argent-ordnance",
+        "text": "\"shots\":14"
+      },
+      {
+        "source": "clarity",
+        "entry": "Prototype Trueseeker",
+        "text": "Dealing damage with 3 rockets without reloading generates 1 Ammo"
+      }
+    ],
+    "timing": {
+      "from": "Aegis",
+      "row": "truth-prototype-truthseeker-argent-ordnance"
+    }
   }
 ]

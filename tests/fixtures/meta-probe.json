@@ -1,0 +1,105 @@
+{
+  "note": "Meta probe (block 5): each entry rebuilds one Aegis row (tabs Sustained and Swap) as a build. Weapons get the standard factors of Aegis as switches (surge-3x, lumina-noble-rounds for Buff 1.35, tractor-cannon for Debuff 1.3, weapons-stat-200), held the whole phase. Factors we do not model are taken out of the Aegis total (removed).",
+  "entries": [
+    {
+      "aegisId": "sustained-leviathan-s-breath-archer-s-tempo",
+      "kind": "weapon",
+      "build": { "weaponId": "leviathan-s-breath", "catalyst": true }
+    },
+    {
+      "aegisId": "sustained-truth-prototype-truthseeker-argent-ordnance",
+      "kind": "weapon",
+      "build": { "weaponId": "truth" },
+      "selections": ["argent-ordnance"]
+    },
+    {
+      "aegisId": "sustained-gjallarhorn-argent-ordnance",
+      "kind": "weapon",
+      "build": { "weaponId": "gjallarhorn", "catalyst": true },
+      "selections": ["argent-ordnance"]
+    },
+    {
+      "aegisId": "sustained-sleeper-simulant",
+      "kind": "weapon",
+      "build": { "weaponId": "sleeper-simulant", "catalyst": true }
+    },
+    {
+      "aegisId": "sustained-thunderlord-assumes-only-one-reload-post-nerf",
+      "kind": "weapon",
+      "build": { "weaponId": "thunderlord" }
+    },
+    {
+      "aegisId": "sustained-grand-overture-volleys-when-available",
+      "kind": "weapon",
+      "build": { "weaponId": "grand-overture" }
+    },
+    {
+      "aegisId": "sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation",
+      "kind": "weapon",
+      "build": { "weaponId": "whisper-of-the-worm", "catalyst": true },
+      "selections": ["sniper-meditation"]
+    },
+    {
+      "aegisId": "sustained-one-thousand-voices-catalyst-particle-reconstruction",
+      "kind": "weapon",
+      "build": { "weaponId": "one-thousand-voices", "catalyst": true }
+    },
+    {
+      "aegisId": "sustained-xenophage",
+      "kind": "weapon",
+      "build": { "weaponId": "xenophage" }
+    },
+    {
+      "aegisId": "sustained-the-queenbreaker-rewind-rounds-combat-sights",
+      "kind": "weapon",
+      "build": { "weaponId": "the-queenbreaker" }
+    },
+    {
+      "aegisId": "swap-blade-barrage-knock-em-down-limit-break",
+      "kind": "ability",
+      "build": {
+        "guardianClass": "hunter",
+        "subclass": "solar",
+        "abilities": [{ "abilityId": "blade-barrage", "castsMs": [0] }]
+      },
+      "selections": ["knock-em-down"],
+      "removed": [{ "column": "buff", "reason": "Limit Break is not modelled" }]
+    },
+    {
+      "aegisId": "swap-nova-bomb-vortex-limit-break",
+      "kind": "ability",
+      "build": {
+        "guardianClass": "warlock",
+        "subclass": "void",
+        "abilities": [{ "abilityId": "nova-bomb-vortex", "castsMs": [0] }]
+      },
+      "removed": [{ "column": "buff", "reason": "Limit Break is not modelled" }]
+    },
+    {
+      "aegisId": "swap-gathering-storm-limit-break",
+      "kind": "ability",
+      "build": {
+        "guardianClass": "hunter",
+        "subclass": "arc",
+        "abilities": [{ "abilityId": "gathering-storm", "castsMs": [0] }]
+      },
+      "removed": [{ "column": "buff", "reason": "Limit Break is not modelled" }]
+    },
+    {
+      "aegisId": "swap-golden-gun-marksman-celestial-nighthawk-radiant-facet-of-courage-limit-break",
+      "kind": "ability",
+      "build": {
+        "guardianClass": "hunter",
+        "subclass": "prismatic",
+        "exoticArmorId": "celestial-nighthawk",
+        "abilities": [{ "abilityId": "golden-gun-marksman", "castsMs": [0] }]
+      },
+      "selections": ["radiant", "facet-of-courage"],
+      "removed": [{ "factor": 1.15, "reason": "Limit Break (part of Buff 1.518 = Radiant 1.2 × Facet 1.1 × Limit Break 1.15) is not modelled" }]
+    }
+  ],
+  "skipped": [
+    { "aegis": "Swap: bursts (Izanagi's Burden, Still Hunt, Parasite)", "reason": "One burst before the swap; our simulation fires the weapon for the whole phase." },
+    { "aegis": "Sustained: legendary weapons", "reason": "The app has only exotic weapons." }
+  ]
+}

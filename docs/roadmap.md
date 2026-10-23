@@ -36,6 +36,7 @@ Status: 2026-10-23
 - ✅ 47 catalysts are marked “no effect against one boss” (they need kills, several enemies, allies, pickups or shields); Touch of Malice ×1.25, Graviton Lance and Wish-Keeper ×1.2 (Vorpal Weapon)
 - ✅ 20 more catalysts: Izanagi's Burden (Honed Edge shots), Ticuu's Divination ×1.87, Dead Man's Tale (hip-fire, ×1.27), Deterministic Chaos ×1.25 (Target Lock), Outbreak Perfected ×1.15, Revision Zero (Fourth Time's The Charm), Hierarchy of Needs (faster draw), The Chaperone (27 slugs instead of 18), Heartshadow (one more heavy); 10 more do nothing against one boss
 - ✅ Catalysts with reload speed reload faster, scaled with d2foundry's reload formula per weapon type: Borealis, Coldheart, Le Monarque, Lord of Wolves, Osteo Striga, Symmetry, The Fourth Horseman
+- ✅ Overall check against Aegis: 14 builds (10 exotic heavy weapons, 4 Supers) under the same buffs as Aegis land within −3 % to +6 % of Aegis' totals. Truth now fires 14 rockets like Aegis measures, not 20.
 - ⏳ 26 catalysts are not in the calculator yet: some speed up the reload only through a perk (e.g. Euphony, Hard Light, Sunshot), the rest need their own model (e.g. Bastion, Final Warning, Vexcalibur)
 
 ## Done in v1.0: abilities and Supers

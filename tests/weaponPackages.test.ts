@@ -48,17 +48,18 @@ describe("Truth (expected from the hand table of 2026-10-20)", () => {
     );
   });
 
-  it("takes magazine, rockets and reload from Quantum", () => {
+  // Override (meta probe 2026-10-23): Aegis before Quantum, 14 instead of 20 rockets.
+  it("takes magazine and rockets from Aegis Sustained", () => {
     expect(value(truth.magazine)).toBe(3);
-    expect(value(truth.totalShots)).toBe(20);
-    expect(value(truth.reloadTimeMs)).toBe(2350);
+    expect(value(truth.totalShots)).toBe(14);
   });
 
-  it("derives the shot interval so that all rockets are out after 17.4 s", () => {
+  it("fires 3-3-3-3-2 with a 2134 ms gap per reload, the last rocket at 13.333 s", () => {
     const buckets = loadBuckets(rawBuckets);
     const shots = simulate(truth, 30, [], buckets).shots;
-    expect(shots).toHaveLength(20);
-    expect(shots.at(-1)!.timeMs).toBeCloseTo(17_400, -1);
+    expect(shots).toHaveLength(14);
+    expect(shots[3].timeMs - shots[2].timeMs).toBeCloseTo(2134, 0);
+    expect(shots.at(-1)!.timeMs).toBeCloseTo(13_333, 0);
   });
 
   it("offers the catalyst Reaper's Tithe x4 with factor 1.40, duration and condition", () => {
