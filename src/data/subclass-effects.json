@@ -30,6 +30,55 @@
     }
   },
   {
+    "subclassItemId": "banner-of-war-aspect",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "banner-of-war-aspect",
+      "code": 70,
+      "name": "Banner of War",
+      "shortName": "Banner of War",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 988980154
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["strand"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "melee",
+          "multiplier": {
+            "value": 2,
+            "source": {
+              "name": "Destiny Data Compendium (subclass tabs)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„100% [Varies] Increased Melee Damage“ (Strand, Banner of War)"
+            }
+          },
+          "damageSources": ["melee"]
+        }
+      ],
+      "durationMs": {
+        "value": 15000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Banner of War for 15 seconds“ (Strand, Banner of War)"
+        }
+      }
+    }
+  },
+  {
     "subclassItemId": "bastion",
     "activation": "always",
     "effect": {
@@ -450,6 +499,75 @@
     }
   },
   {
+    "subclassItemId": "facet-of-courage",
+    "activation": "always",
+    "effect": {
+      "id": "facet-of-courage",
+      "code": 63,
+      "name": "Facet of Courage",
+      "shortName": "Facet of Courage",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2626922124
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "aspectBonus",
+          "multiplier": {
+            "value": 1.1,
+            "source": {
+              "name": "Destiny Data Compendium (subclass tabs)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "unverified",
+              "note": "„10% increased damage“ (Prismatic, Facet of Courage); no Court category, assumed to multiply with every other bucket"
+            }
+          },
+          "damageSources": ["grenade", "melee", "super"],
+          "elements": ["arc", "solar", "void"]
+        }
+      ]
+    }
+  },
+  {
+    "subclassItemId": "facet-of-courage",
+    "activation": "always",
+    "effect": {
+      "id": "facet-of-courage-2",
+      "code": 69,
+      "name": "Facet of Courage",
+      "shortName": "Facet of Courage",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2626922124
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "melee",
+          "multiplier": {
+            "value": 1.5,
+            "source": {
+              "name": "Destiny Data Compendium (subclass tabs)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„50% [10%] increased damage“ (Prismatic, Facet of Courage)"
+            }
+          },
+          "damageSources": ["melee"]
+        }
+      ]
+    }
+  },
+  {
     "subclassItemId": "facet-of-dawn",
     "activation": "always",
     "effect": {
@@ -738,6 +856,61 @@
     }
   },
   {
+    "subclassItemId": "knockout",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "knockout",
+      "code": 64,
+      "name": "Knockout",
+      "shortName": "Knockout",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1656549674
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["arc"],
+          "classes": ["titan"]
+        },
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["prismatic"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "melee",
+          "multiplier": {
+            "value": 2.6,
+            "source": {
+              "name": "Destiny Data Compendium (subclass tabs)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„160% [20%] increased Charged Melee Damage“ (Arc, Knockout)"
+            }
+          },
+          "damageSources": ["melee"]
+        }
+      ],
+      "durationMs": {
+        "value": 6000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Knockout for 6 seconds“ (Arc, Knockout)"
+        }
+      }
+    }
+  },
+  {
     "subclassItemId": "lightning-surge",
     "activation": "always",
     "effect": {
@@ -765,6 +938,45 @@
       ],
       "parts": [],
       "grantsStatus": ["amplified"]
+    }
+  },
+  {
+    "subclassItemId": "offensive-bulwark",
+    "activation": "always",
+    "effect": {
+      "id": "offensive-bulwark",
+      "code": 65,
+      "name": "Offensive Bulwark",
+      "shortName": "Offensive Bulwark",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1602994570
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "melee",
+          "multiplier": {
+            "value": 2.6,
+            "source": {
+              "name": "Destiny Data Compendium (subclass tabs)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„160% [20%] increased Melee Damage“ (Void, Offensive Bulwark)"
+            }
+          },
+          "damageSources": ["melee"]
+        }
+      ]
     }
   },
   {
@@ -892,6 +1104,105 @@
     }
   },
   {
+    "subclassItemId": "roaring-flames",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "roaring-flames-2",
+      "code": 66,
+      "name": "Roaring Flames",
+      "shortName": "Roaring Flames",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2984351204
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "melee",
+          "multiplier": {
+            "value": 3,
+            "source": {
+              "name": "Destiny Data Compendium (subclass tabs)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„67% | 133% | 200% Increased Melee Damage“ (Solar, Roaring Flames)"
+            }
+          },
+          "damageSources": ["melee"]
+        }
+      ],
+      "durationMs": {
+        "value": 20000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Roaring Flames for 20 seconds“ (Solar, Roaring Flames)"
+        }
+      }
+    }
+  },
+  {
+    "subclassItemId": "roaring-flames",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "roaring-flames-3",
+      "code": 67,
+      "name": "Roaring Flames",
+      "shortName": "Roaring Flames",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2984351204
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "aspectBonus",
+          "multiplier": {
+            "value": 1.73,
+            "source": {
+              "name": "Destiny Data Compendium (subclass tabs)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "unverified",
+              "note": "„73% [44%] increased Grenade and Super Ability Damage“ (Solar, Roaring Flames); no Court category, assumed to multiply with every other bucket"
+            }
+          },
+          "damageSources": ["grenade", "super"],
+          "elements": ["solar"]
+        }
+      ],
+      "durationMs": {
+        "value": 20000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Roaring Flames for 20 seconds“ (Solar, Roaring Flames)"
+        }
+      }
+    }
+  },
+  {
     "subclassItemId": "shatterdive",
     "activation": "always",
     "effect": {
@@ -961,6 +1272,40 @@
       ],
       "parts": [],
       "grantsStatus": ["voidOvershield"]
+    }
+  },
+  {
+    "subclassItemId": "spark-of-feedback",
+    "activation": "always",
+    "effect": {
+      "id": "spark-of-feedback",
+      "code": 68,
+      "name": "Spark of Feedback",
+      "shortName": "Spark of Feedback",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 3277705907
+      },
+      "providers": [
+        { "kind": "subclass", "slot": "fragment", "subclasses": ["arc"] }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "melee",
+          "multiplier": {
+            "value": 2,
+            "source": {
+              "name": "Destiny Data Compendium (subclass tabs)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„100% [50% | 15% while Knockout is active] Increased Melee Damage“ (Arc, Spark of Feedback)"
+            }
+          },
+          "damageSources": ["melee"]
+        }
+      ]
     }
   },
   {

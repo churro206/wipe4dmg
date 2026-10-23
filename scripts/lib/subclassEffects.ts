@@ -6,7 +6,8 @@
 // D "Powered Melee Hits grant Radiant for 8 seconds" → the parts of Radiant in a window per hit
 // E grants a state (Amplified, Frost Armor, …) → kept the whole damage phase (optimal play); from
 //   kills only → prebuilt with the duration of the text
-// F quoted bonuses: melee → U6-4; not on a boss → none; others → later (no source for the bucket)
+// F quoted bonuses: melee → bucket melee (additive); grenade/super/Light Abilities → bucket
+//   aspectBonus; not on a boss → none; others → later (no source for the bucket)
 // G no effect from A to E, but Aegis measured an ability with it (base row plus only such items, e.g.
 //   Blade Barrage with Knock 'Em Down) → an effect that selects the ability variant
 // Without any of that: no damage.
@@ -19,6 +20,7 @@ import type {
   DamageSource,
   Effect,
   EffectPart,
+  Element,
   EffectProvider,
   ManifestSubclassItem,
   Source,
@@ -41,6 +43,7 @@ export type SubclassEffectInputs = {
   court: CourtEntry[];
   keywordSources: KeywordSource[]; // findKeywordSources over the same entries
   effects: Effect[]; // effects.json: Radiant, Weaken, Well, and the effects kept there
+  reservedIds: string[]; // effects of buff-effects.json, e.g. the fireteam Banner of War
   abilities: (Pick<AbilityData, "id" | "name" | "kind"> &
     Partial<Pick<AbilityData, "package" | "aegisRowId">>)[];
   aegisRows: AegisAbilityRow[]; // rule G: rows of the abilities with an aspect or fragment
@@ -57,7 +60,6 @@ export type SubclassEffectKind =
   | "rotation"
   | "classAbility"
   | "keywordLater"
-  | "melee"
   | "notAgainstBoss"
   | "bonusLater"
   | "abilityVariant"
@@ -95,6 +97,26 @@ const MS_PER_SECOND = 1000;
 const PERCENT = 100;
 const factorOf = (percent: number) => (PERCENT + percent) / PERCENT;
 const flat = (text: string) => text.replace(/\s+/g, " ").trim();
+const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+type BonusScope = {
+  bucketId: string;
+  damageSources: DamageSource[];
+  elements?: Element[];
+};
+const MELEE_SCOPE: BonusScope = { bucketId: "melee", damageSources: ["melee"] };
+
+/** Scope of a bonus on grenades and supers: "Grenade and Super Ability Damage", "Light Abilities". */
+function abilityScope(sentence: string, tab: string): BonusScope | null {
+  const light = /\bLight Abilities\b/i.test(sentence);
+  if (!light && !(/\bgrenade\b/i.test(sentence) && /\bsuper\b/i.test(sentence))) return null;
+  const element = tab.toLowerCase() as Element;
+  return {
+    bucketId: "aspectBonus",
+    damageSources: light ? ["grenade", "melee", "super"] : ["grenade", "super"],
+    elements: light ? ["arc", "solar", "void"] : tab === "Prismatic" ? undefined : [element],
+  };
+}
 
 /** Sentences of a text with the heading line above them, e.g. "While Radiant:". */
 function sentencesOf(text: string): { sentence: string; header: string }[] {
@@ -268,13 +290,47 @@ function findAll(
       });
   }
 
-  // F: quoted bonuses
-  const melee = bonuses.filter((b) => b.melee);
-  if (melee.length)
-    found.push({ rule: "F", kind: "melee", reason: `Melee-Bonus, U6-4 (${melee.map((b) => `„${b.quote}“`).join(", ")})`, check: "Text" });
+  // F: quoted bonuses. Melee → the additive melee bucket (Court); grenade/super/"Light Abilities" →
+  // bucket aspectBonus (no Court category, assumed multiplicative); the highest value per item and
+  // scope, the window from "<item> for N seconds" (kills build it up), otherwise the whole phase.
+  const window = new RegExp(`${escapeRegExp(name)} for (\\d+(?:\\.\\d+)?) seconds`, "i").exec(text);
+  const scoped = new Map<string, { bonus: (typeof bonuses)[number]; scope: BonusScope }>();
+  for (const b of bonuses) {
+    const sentence = sentencesOf(text).find((s) => s.sentence.includes(b.quote))?.sentence ?? b.quote;
+    const scope =
+      b.melee || /\bMelee Abilities deal\b/i.test(sentence) ? MELEE_SCOPE : abilityScope(sentence, entry.tab);
+    if (!scope || (scope !== MELEE_SCOPE && fromCourtRow)) continue;
+    const key = `${scope.bucketId}|${scope.damageSources}|${scope.elements}`;
+    if (!scoped.has(key) || scoped.get(key)!.bonus.percent < b.percent) scoped.set(key, { bonus: b, scope });
+  }
+  for (const { bonus: b, scope } of scoped.values()) {
+    const source: Source = {
+      ...quote(b.quote),
+      ...(scope.bucketId === "aspectBonus"
+        ? { status: "unverified" as const, note: `„${b.quote}“ (${entry.tab}, ${name}); no Court category, assumed to multiply with every other bucket` }
+        : {}),
+    };
+    found.push({
+      rule: "F",
+      kind: window ? "preBuilt" : "always",
+      reason: `${scope.bucketId === "melee" ? "Melee" : "Ability"}-Bonus +${b.percent} % im Bucket ${scope.bucketId}${window ? `, ${window[1]} s` : ""} („${flat(b.quote)}“)`,
+      check: "Text",
+      parts: [
+        {
+          type: "multiplier",
+          bucketId: scope.bucketId,
+          multiplier: { value: factorOf(b.percent), source },
+          damageSources: scope.damageSources,
+          ...(scope.elements ? { elements: scope.elements } : {}),
+        },
+      ],
+      ...(window ? { durationMs: { value: Number(window[1]) * MS_PER_SECOND, source: quote(window[0]) } } : {}),
+    });
+  }
   const seen = new Set<string>();
   for (const b of bonuses.filter((b) => !b.melee && !fromCourtRow)) {
     const sentence = sentencesOf(text).find((s) => s.sentence.includes(b.quote))?.sentence ?? b.quote;
+    if (abilityScope(sentence, entry.tab) || /\bMelee Abilities deal\b/i.test(sentence)) continue;
     // both bonus patterns may match the same sentence
     if (seen.has(`${sentence}|${b.percent}`)) continue;
     seen.add(`${sentence}|${b.percent}`);
@@ -315,7 +371,8 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
           items.some((i) => i.subclass === e.tab.toLowerCase() && subclassItemNamed(i.name, e.name)),
       )
       .sort((a, b) => Number(a.tab === "Prismatic") - Number(b.tab === "Prismatic"));
-    const id = kebab(name);
+    // an item named like a buff keeps its own ids, e.g. "banner-of-war-aspect" beside the fireteam buff
+    const id = kebab(name) + (inputs.reservedIds.includes(kebab(name)) ? "-aspect" : "");
     const subclasses = [...new Set(items.map((i) => i.subclass))];
     const base = { id, name, subclasses: subclasses.join(", ") };
     if (entries.length === 0) {
@@ -441,7 +498,6 @@ const KIND_TITLES: [SubclassEffectKind, string][] = [
   ["rotation", "Auslöser in der Rotation, offen"],
   ["classAbility", "Auslöser Class Ability, U7"],
   ["keywordLater", "Keyword ohne Modell, später"],
-  ["melee", "Melee-Bonus, U6-4"],
   ["notAgainstBoss", "Wirkt nicht gegen einen Boss"],
   ["bonusLater", "Bonus ohne Bucket-Quelle, Recherche in der Inventur"],
   ["abilityVariant", "Ändert eine Ability (Aegis-Variante)"],

@@ -93,9 +93,9 @@ describe("aspect variants in a build", () => {
           if (items.has(nameKey(extra))) named.add(items.get(nameKey(extra))!);
     }
     const gaps = [...named].filter((name) => !working.has(nameKey(name))).sort();
-    // Facet of Courage: only with Feast of Light and max distance; Touch of Thunder: only with
-    // "average" and Spark of Magnitude (other assumptions than the base row)
-    expect(gaps).toEqual(["Facet of Courage", "Touch of Thunder"]);
+    // Touch of Thunder: only with "average" and Spark of Magnitude (other assumptions than the base
+    // row); Facet of Courage has its bonuses since U6-4
+    expect(gaps).toEqual(["Touch of Thunder"]);
   });
 
   it("every item named by a variant row is a selectable effect that changes the ability", () => {

@@ -108,6 +108,37 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio).toBeLessThan(1.55);
   });
 
+  it("Knockout: +160 % Thunderclap damage in its 6 s window (melee bucket)", () => {
+    const titan = { abilities: [{ abilityId: "thunderclap", castsMs: [0] }] };
+    const ratio =
+      damageOf(
+        run({ ...titan, selections: [{ effectId: "knockout", provider: "subclass" }] }),
+        "melee",
+      ) / damageOf(run(titan), "melee");
+    note(
+      "Thunderclap mit / ohne Knockout",
+      `×${fmt(ratio)}`,
+      "×2,6 (160 % Melee-Bonus, Compendium)",
+    );
+    expect(ratio).toBeGreaterThan(2.5);
+    expect(ratio).toBeLessThan(2.7);
+  });
+
+  it("Offensive Bulwark: +160 % Shield Bash damage, and melee buffs add up", () => {
+    const titan = {
+      subclass: "void" as const,
+      abilities: [{ abilityId: "shield-bash", castsMs: [0] }],
+    };
+    const ratio =
+      damageOf(
+        run({ ...titan, selections: [{ effectId: "offensive-bulwark", provider: "subclass" }] }),
+        "melee",
+      ) / damageOf(run(titan), "melee");
+    note("Shield Bash mit / ohne Offensive Bulwark", `×${fmt(ratio)}`, "×2,6");
+    expect(ratio).toBeGreaterThan(2.5);
+    expect(ratio).toBeLessThan(2.7);
+  });
+
   it("well-known variants exist (Cuirass, Nighthawk, Dawn Chorus, Geomag)", () => {
     for (const id of [
       "cuirass-of-the-falling-star",

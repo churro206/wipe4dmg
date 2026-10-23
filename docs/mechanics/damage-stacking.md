@@ -18,7 +18,8 @@ Damage-Buffs gehören zu Kategorien (bei uns: Buckets). Innerhalb einer Kategori
 5. **Surge-Stufen:** Surges zählen Stacks von 1x bis 4x. Die Stufe bestimmt den Multiplier, siehe Werte. Die Mods „<Element> Weapon Surge“ sitzen an den Beinen (Manifest: Leg Armor Mod) und geben je einen Stack, also höchstens 3x; sie brauchen mindestens 1 Armor Charge. **4x gibt es nur über Exotics** (z. B. Mantle of Battle Harmony, Foetracer, Eternal Warrior, Doom Fang Pauldron, Prismatic Spirits).
     - **Modell (Entscheidung des Inhabers, 2026-10-20):** Surge 1x bis 3x als Rüstungs-Mods ohne Element. Annahme: Der Spieler trägt die Mods, die zum Element der Waffe passen. Das Icon zeigt den Mod dieses Elements. Surge 4x kommt erst mit Exotic-Rüstung, dann mit der Bedingung des Exotics (z. B. Element des Supers bei Mantle). Alte Links mit Surge 4x (Code 13) öffnen mit Surge 3x und einem Hinweis.
 6. **Amplification, Exotic Intrinsics, Weapon Perks, World & Activity** stapeln mit allem, auch untereinander: „Stacks with all other buffs and itself“ (Court, Damage Buff Categories). Elemental Overdrive „stacks with all other buffs“, obwohl die UI ihn als Surge anzeigt.
-7. **Ausnahme Melee:** „Melee-increasing damage modifiers are additive“ (Court). Buffs, die nur den Melee-Schaden erhöhen, addieren sich untereinander. Im Modell gibt es dafür noch keinen Bucket, weil noch kein Melee-Buff angelegt ist.
+7. **Ausnahme Melee:** „Melee-increasing damage modifiers are additive“ (Court). Buffs, die nur den Melee-Schaden erhöhen, addieren sich untereinander. Im Modell: Bucket `melee` (additiv) mit den Boni aus Knockout (+160 %), Offensive Bulwark (+160 %), Roaring Flames (bis +200 %), Spark of Feedback (+100 %), Banner of War (+100 %) und Facet of Courage (+50 %); bei mehreren Zahlen im Text zählt der höchste Wert eines Items (optimal gespielt). Der Bucket multipliziert sich mit den übrigen Buckets. Er wirkt nur auf Melee-Treffer, nicht auf Scorch oder Ignition (Compendium).
+7a. **Boni auf Grenade und Super ohne Court-Kategorie:** Roaring Flames (+73 % Grenade und Super, Solar) und Facet of Courage (+10 % auf Light Abilities) stehen in keiner Court-Kategorie. Annahme (Inhaber, 2026-10-22, `unverified`): eigener Bucket `aspectBonus`, multiplikativ mit allem. Ersetzen, sobald eine Quelle den Bucket nennt.
 8. **Weapons Stat** gegen Bosse: Power-Waffen +0,1 % pro Punkt über 100, maximal +10 % bei 200. Primary- und Special-Waffen +0,15 % pro Punkt, maximal +15 %. Court führt ihn unter Amplification.
 9. **Nur gegen Bosse:** Effekte, die nicht gegen Bosse wirken, entfallen, z. B. Sect of Force, Kinetic Intrinsic Buff, Weapons Stat 0–100.
 10. **Weaken verlängert 30-%-Debuffs:** Die Debuffs von Felwinter's Helm, Fafnir und Tractor Cannon lassen sich durch die meisten Weaken-Quellen verlängern, z. B. durch eine Void Soul. Tether funktioniert anders und lässt sich nicht verlängern. (Court)
@@ -70,7 +71,8 @@ Abgebildet nach ADR 0006:
 - Buckets nach Courts Kategorien in `src/data/buckets.json`: `empowering`, `debuff`, `surge` (Stacking `highest`), `amplification`, `weaponPerk`, `exoticIntrinsic` (Stacking `multiplicative`, laut Court belegt), dazu `abilityStat`.
 - Vorrangregeln zwischen einzelnen Effects, z. B. „Divinity überschreibt Particle Reconstruction“.
 - Testfall aus Courts Beispiel: 1,25 × 1,22 × 1,25 × 1,33 × 1,35 × 1,25 ≈ 4,28.
-- Noch nicht abgebildet: Melee-Buffs (additiv), Expanding Abyss, Verlängerung von Debuffs durch Weaken, Radiant auf Golden Gun und Still Hunt.
+- Seit U6-4 abgebildet: Melee-Buffs (Bucket `melee`, additiv) und `aspectBonus` (siehe Regel 7 und 7a).
+- Noch nicht abgebildet: Expanding Abyss, Verlängerung von Debuffs durch Weaken, Radiant auf Golden Gun und Still Hunt.
 
 ## Offene Fragen
 

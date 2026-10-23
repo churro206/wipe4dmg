@@ -69,6 +69,30 @@
     }
   },
   {
+    "id": "melee",
+    "name": "Melee Modifier",
+    "stacking": "additive",
+    "source": {
+      "name": "Court Stacking Guide (Damage Buff Categories: \"Melee-increasing damage modifiers are additive\"); values from the Compendium aspect and fragment texts",
+      "url": "https://destiny2.science/court-sheet",
+      "retrieved": "2026-10-23",
+      "status": "verified",
+      "note": "Applies to melee ability damage only. Keyword damage (Scorch, Ignition) is not scaled by melee buffs (Compendium)."
+    }
+  },
+  {
+    "id": "aspectBonus",
+    "name": "Aspect and Fragment Bonus",
+    "stacking": "multiplicative",
+    "source": {
+      "name": "Assumption: Court lists no category for the bonuses that aspects and fragments state on grenades, supers and Light abilities (Roaring Flames, Facet of Courage)",
+      "url": "https://destiny2.science/court-sheet",
+      "retrieved": "2026-10-23",
+      "status": "unverified",
+      "note": "Owner decision 2026-10-22: own multiplicative bucket for Facet of Courage, applied to the same kind of bonus. Replace once a source names the bucket."
+    }
+  },
+  {
     "id": "abilityStat",
     "name": "Ability Stat",
     "stacking": "multiplicative",

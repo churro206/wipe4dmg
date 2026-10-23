@@ -6,16 +6,15 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 
 | Art | Zeilen |
 | --- | --- |
-| Immer aktiv | 27 |
-| Vorher aufgebaut, Option | 7 |
+| Immer aktiv | 31 |
+| Vorher aufgebaut, Option | 11 |
 | Fenster aus der Rotation | 4 |
 | Ohne Dauer | 4 |
 | Auslöser in der Rotation, offen | 1 |
 | Auslöser Class Ability, U7 | 5 |
 | Keyword ohne Modell, später | 23 |
-| Melee-Bonus, U6-4 | 5 |
 | Wirkt nicht gegen einen Boss | 4 |
-| Bonus ohne Bucket-Quelle, Recherche in der Inventur | 10 |
+| Bonus ohne Bucket-Quelle, Recherche in der Inventur | 7 |
 | Ändert eine Ability (Aegis-Variante) | 6 |
 | Ohne Compendium-Text | 0 |
 | Ohne Schadenswirkung | 90 |
@@ -33,6 +32,8 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Ember of Ashes | solar | B | Scorch-Stapel ×1.5 („Scorch Stacks inflicted are increased by 50%“) | Text |
 | Ember of Mercy | solar | E | Zustand restoration, die ganze Phase gehalten („Restoration x1“) | Text |
 | Ensnaring Slam | strand | E | Zustand wovenMail, die ganze Phase gehalten („Grants Woven Mail“) | Text |
+| Facet of Courage | prismatic | F | Ability-Bonus +10 % im Bucket aspectBonus („10% increased damage“) | Text |
+| Facet of Courage | prismatic | F | Melee-Bonus +50 % im Bucket melee („50% [10%] increased damage“) | Text |
 | Facet of Dominance | prismatic | C | jolt auf Treffer von arc grenade („inflicts Jolt“) | Text |
 | Facet of Purpose | prismatic | E | Zustand restoration, die ganze Phase gehalten („Restoration x1“) | Text |
 | Frostpulse | stasis | E | Zustand frostArmor, die ganze Phase gehalten („grants x5 Frost Armor“) | Text |
@@ -41,9 +42,11 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Heat Rises | solar | E | Zustand restoration, die ganze Phase gehalten („grants Restoration“) | Text |
 | Into the Fray | strand | E | Zustand wovenMail, die ganze Phase gehalten („granting Woven Mail“, „Grants allies within ? metres Woven Mail“) | Text |
 | Lightning Surge | arc, prismatic | E | Zustand amplified, die ganze Phase gehalten („Grants Amplified“) | Text |
+| Offensive Bulwark | void | F | Melee-Bonus +160 % im Bucket melee („160% [20%] increased Melee Damage“) | Text |
 | Shatterdive | stasis | E | Zustand frostArmor, die ganze Phase gehalten („grants maximum Frost Armor“) | Text |
 | Sol Invictus | solar | E | Zustand restoration, die ganze Phase gehalten („grant Sol Invictus for 5 seconds and Restoration“) | Text |
 | Soul Siphon | void | E | Zustand voidOvershield, die ganze Phase gehalten („Grants +15 Void Overshield“) | Text |
+| Spark of Feedback | arc | F | Melee-Bonus +100 % im Bucket melee („100% [50% \| 15% while Knockout is active] Increased Melee Damage“) | Text |
 | Spark of Shock | arc | C | jolt auf Treffer von arc grenade („inflict Jolt“) | Text |
 | Tectonic Harvest | stasis | E | Zustand frostArmor, die ganze Phase gehalten („grants x1 Frost Armor“, „grant x3 Frost Armor“) | Text |
 | Thread of Warding | strand | E | Zustand wovenMail, die ganze Phase gehalten („Grants Woven Mail“) | Text |
@@ -56,12 +59,16 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 
 | Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- | --- |
+| Banner of War | strand | F | Melee-Bonus +100 % im Bucket melee, 15 s („100% [Varies] Increased Melee Damage“) | Text |
 | Echo of Instability | void | C | vorher aufgebaut: volatile auf void Waffen für 11.25 s („grant Volatile Rounds to Void Weapons“) | Text |
 | Facet of Bravery | prismatic | C | vorher aufgebaut: volatile auf void Waffen für 11.25 s („grant Volatile Rounds to Void Weapons“) | Text |
 | Facet of Bravery | prismatic | C | vorher aufgebaut: unravel auf strand Waffen für 11.25 s („grant Unraveling Rounds to Strand Weapons“) | Text |
+| Knockout | arc, prismatic | F | Melee-Bonus +160 % im Bucket melee, 6 s („160% [20%] increased Charged Melee Damage“) | Text |
 | On the Prowl | void | A | vorher aufgebaut: debuff +15 % für 6 s („Killing priority target causes them to burst into a Weakening Smoke Cloud“) | nur Court |
 | On Your Mark | solar | E | vorher aufgebaut: Zustand restoration für 3 s („grant Restoration“) | Text |
 | Roaring Flames | solar | E | vorher aufgebaut: Zustand roaringFlames für 20 s („grant a stack of Roaring Flame“) | Text |
+| Roaring Flames | solar | F | Melee-Bonus +200 % im Bucket melee, 20 s („67% \| 133% \| 200% Increased Melee Damage“) | Text |
+| Roaring Flames | solar | F | Ability-Bonus +73 % im Bucket aspectBonus, 20 s („73% [44%] increased Grenade and Super Ability Damage“) | Text |
 | Thread of Propagation | strand | C | vorher aufgebaut: unravel auf strand Waffen für 8 s („Grants Unraveling Rounds to Strand Weapons“) | Text |
 
 ## Fenster aus der Rotation
@@ -126,16 +133,6 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Touch of Thunder | arc | C | jolt: eigener Schaden oder geänderte Ability, später („inflict jolt“) | Text |
 | Touch of Thunder | arc | C | boltCharge: eigener Schaden oder geänderte Ability, später („grant x5 Bolt Charge“) | Text |
 
-## Melee-Bonus, U6-4
-
-| Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
-| --- | --- | --- | --- | --- |
-| Banner of War | strand | F | Melee-Bonus, U6-4 („100% [Varies] Increased Melee Damage“) | Text |
-| Knockout | arc, prismatic | F | Melee-Bonus, U6-4 („160% [20%] increased Charged Melee Damage“) | Text |
-| Offensive Bulwark | void | F | Melee-Bonus, U6-4 („160% [20%] increased Melee Damage“) | Text |
-| Roaring Flames | solar | F | Melee-Bonus, U6-4 („67% \| 133% \| 200% Increased Melee Damage“) | Text |
-| Spark of Feedback | arc | F | Melee-Bonus, U6-4 („100% [50% \| 15% while Knockout is active] Increased Melee Damage“) | Text |
-
 ## Wirkt nicht gegen einen Boss
 
 | Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
@@ -153,10 +150,7 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Banner of War | strand | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („Grants 100% [Varies] Increased Melee Damage, 40% Increased Bladefury Damage, and 20% Increased Sword Damage“) | Text 20 % |
 | Chaos Accelerant | void | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („Axion Bolt: Adds 2 additional seekers [2 -> 4], seekers travel faster, deal 25% increased damage, and retriggers after a second of landing“) | Text 25 % |
 | Crackshot | solar | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („Radiant grants 20% Increased Crackshot Damage against Combatants“) | Text 20 % |
-| Facet of Courage | prismatic | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („Light Abilities deal 10% increased damage“) | Text 10 % |
-| Facet of Courage | prismatic | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („Light Powered Melee Abilities deal 50% [10%] increased damage“) | Text 50 % |
 | Gunpowder Gamble | prismatic, solar | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („Replaces Grenade with an Ignition-on-a-Stick that causes an ignition that deals 50% increased damage upon being shot or after 3 seconds“) | Text 50 % |
-| Roaring Flames | solar | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („20% [13%] \| 44% [28%] \| 73% [44%] increased Grenade and Super Ability Damage“) | Text 73 % |
 | Shieldburst | solar | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („Shieldburst grants increased explosion damage, up to 50% increased damage once fully charged“) | Text 50 % |
 | Touch of Thunder | arc | F | Bonus ohne Quelle für den Bucket oder Änderung einer Ability, Recherche in der Inventur („Deals up to 25% increased damage as it lingers“) | Text 25 % |
 

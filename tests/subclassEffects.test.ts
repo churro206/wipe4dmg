@@ -51,9 +51,11 @@ describe("rules for aspects and fragments", () => {
     ["Echo of Undermining", "triggered"],
     ["Ember of Torches", "triggered"],
     ["Trapper's Ambush", "classAbility"],
-    ["Knockout", "melee"],
+    ["Knockout", "preBuilt"],
+    ["Offensive Bulwark", "always"],
     ["Threaded Specter", "notAgainstBoss"],
-    ["Facet of Courage", "bonusLater"],
+    ["Facet of Courage", "always"],
+    ["Crackshot", "bonusLater"],
     ["Ember of Char", "keywordLater"],
     ["Spark of Amplitude", "noDamage"],
   ])("%s → %s", (name, kind) => {
@@ -87,6 +89,39 @@ describe("rules for aspects and fragments", () => {
       durationMs: { value: 8000 },
       parts: radiant.parts,
     });
+  });
+
+  it("melee bonuses go to the additive melee bucket (U6-4), the highest value of an item", () => {
+    // Knockout names 160 % twice (Basic/Glaive and Charged): one bonus, not two; for the 6 s it grants
+    expect(generatedOf("knockout")).toMatchObject({
+      activation: "preBuilt",
+      effect: {
+        durationMs: { value: 6000 },
+        parts: [{ bucketId: "melee", multiplier: { value: 2.6 }, damageSources: ["melee"] }],
+      },
+    });
+    expect(generatedOf("offensive-bulwark")).toMatchObject({
+      activation: "always",
+      effect: { parts: [{ bucketId: "melee", multiplier: { value: 2.6 } }] },
+    });
+    // "67% | 133% | 200%": optimal play holds the third stack
+    expect(generatedOf("roaring-flames-2").effect.parts[0]).toMatchObject({
+      bucketId: "melee",
+      multiplier: { value: 3 },
+    });
+  });
+
+  it("bonuses on grenades and supers: scope from the words, own bucket", () => {
+    expect(generatedOf("roaring-flames-3").effect.parts).toMatchObject([
+      { bucketId: "aspectBonus", multiplier: { value: 1.73 }, damageSources: ["grenade", "super"], elements: ["solar"] },
+    ]);
+    const facet = result.effects
+      .filter((e) => e.subclassItemId === "facet-of-courage")
+      .flatMap((e) => e.effect.parts);
+    expect(facet).toMatchObject([
+      { bucketId: "aspectBonus", multiplier: { value: 1.1 }, elements: ["arc", "solar", "void"] },
+      { bucketId: "melee", multiplier: { value: 1.5 } },
+    ]);
   });
 
   it("keyword parts on named hits and prebuilt rounds (U4b)", () => {

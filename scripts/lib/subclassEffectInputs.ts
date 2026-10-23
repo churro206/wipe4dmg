@@ -28,6 +28,7 @@ export function loadSubclassEffectInputs(): SubclassEffectInputs {
     court: court.entries,
     keywordSources: findKeywordSources(compendium.entries),
     effects: Effect.array().parse(read("effects.json")),
+    reservedIds: Effect.array().parse(read("buff-effects.json")).map((e) => e.id),
     abilities: AbilityData.array().parse(read("abilities.json")),
     aegisRows: AegisAbilityRow.array().parse(read("aegis-abilities.json")),
     meleeNames: [

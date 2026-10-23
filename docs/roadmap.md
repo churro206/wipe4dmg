@@ -18,7 +18,7 @@ Status: 2026-10-23
 - ✅ Hover cards explain what an item does; keyword damage shows as “Effect” in the color of its element
 - ✅ The whole website in English
 - ⏳ Exotic class items with two perks (Prismatic) and Transcendence
-- ⏳ Melee buffs add up with each other (own bucket)
+- ✅ Melee buffs add up with each other (own bucket): Knockout, Offensive Bulwark, Roaring Flames, Spark of Feedback, Banner of War and Facet of Courage. Facet of Courage's +10 % on Light abilities and Roaring Flames' +73 % on grenades and supers share a second bucket that is an assumption, because no source names theirs.
 - ✅ Ability energy: every ability starts charged and comes back after its Compendium cooldown, faster with the stat (2.48× at 100). A cast before its energy is back moves later and shows its real time; “+” adds the next possible cast. Exotics, aspects and abilities that give energy work (23 effects): extra charges (e.g. Starfire Protocol, Claws of Ahamkara, Chaos Accelerant), faster regeneration (Eye of Another World, Heart of Inmost Light) and refunds (Starfire while Radiant, Apotheosis Veil on Super cast, Shards of Galanor 50 % against a boss, Young Ahamkara's Spine). Such exotics can now be picked.
 - ⏳ Class ability in the Rotation; exotics that refill the magazine
 - ✅ Supers take time like in the game: hits spread over shots and light attacks (e.g. Golden Gun ignites with its third shot), the weapon waits only as long as the Super really blocks it (Daybreak about 13 s instead of 24 s, Nova Bomb about 1.8 s instead of 0 s). Timings are rough estimates and marked as such.
@@ -30,7 +30,7 @@ Status: 2026-10-23
 - ✅ Jolt and Volatile no longer count twice in Supers that already hold them in the Aegis total (Stormtrance, Gathering Storm, Nova Warp)
 - ✅ All buffs, debuffs and artifact perks from Court as switches (22 new): Expanding Abyss (Weaken 25 % for Void), the Weaken perks, Radiant and surge perks, Argent Blade, Quiver and Ordnance, Sniper's Meditation, Targeting Autoloader, Arc Compounding, Weapons of Light, Remote Shield and Banner of War for the fireteam. Every Court row is accounted for in a review table.
 - ⏳ Stormtrance and Pocket Singularity: Jolt and Volatile count twice (+14 %, +22 %)
-- ⏳ Facet of Courage and Touch of Thunder: Aegis only measured them together with other buffs
+- ⏳ Touch of Thunder: Aegis only measured it together with other buffs
 - ✅ Every weapon with a catalyst has the switch; its hover card says what it does here: damage (e.g. One Thousand Voices +45%), magazine and ammo (e.g. Gjallarhorn 1 → 2 rockets, Telesto 4 → 7), refills (Thunderlord, Cloudstrike), or no effect against one boss
 - ✅ 47 catalysts are marked “no effect against one boss” (they need kills, several enemies, allies, pickups or shields); Touch of Malice ×1.25, Graviton Lance and Wish-Keeper ×1.2 (Vorpal Weapon)
 - ✅ 20 more catalysts: Izanagi's Burden (Honed Edge shots), Ticuu's Divination ×1.87, Dead Man's Tale (hip-fire, ×1.27), Deterministic Chaos ×1.25 (Target Lock), Outbreak Perfected ×1.15, Revision Zero (Fourth Time's The Charm), Hierarchy of Needs (faster draw), The Chaperone (27 slugs instead of 18), Heartshadow (one more heavy); 10 more do nothing against one boss
