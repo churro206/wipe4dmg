@@ -421,7 +421,7 @@
     "catalyst": {
       "name": "Alethonym Catalyst",
       "description": "Grants the One For All trait:\nScoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -950,7 +950,7 @@
     "catalyst": {
       "name": "Reversal, Black Talon Catalyst",
       "description": "Due to an unresolved bug, this catalyst does not function.\nThe intended behavior was that damage against Void-Debuffed enemies is increased per unique Void-Debuff applied to the target, at a rate of 10% per debuff.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -1438,7 +1438,7 @@
     "catalyst": {
       "name": "Focused Fire, Cerberus+1 Catalyst",
       "description": "Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds:\n• 50% [10%] increased damage\n• 30% decreased Pellet Spread\nStowing the weapon removes the buff.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -2282,7 +2282,7 @@
     "catalyst": {
       "name": "To the Pain, Crimson Catalyst",
       "description": "Passively grants 20 Range.\nEvery 30 points of damage taken with the weapon readied grants a Stack of 'To the Pain'. Maximum of 10 Stacks. Stowing the weapon removes all Stacks.\nEach Stack grants ? Handling and 2 Aim Assist, maxing out at ? Handling and 20 Aim Assist.\nSelf-damage and environmental damage do not count.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -2404,7 +2404,7 @@
     "catalyst": {
       "name": "Cold Efficiency, Cryosthesia 77K Catalyst",
       "description": "Shattering a Frozen enemy instantly refills the magazine.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -3186,7 +3186,7 @@
     "catalyst": {
       "name": "Ionic Interment, Delicate Tomb Catalyst",
       "description": "Picking up Ionic Traces refill 4 ammo from reserves.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -3450,7 +3450,7 @@
     "catalyst": {
       "name": "Collective Action, Devil's Ruin Catalyst",
       "description": "Elemental Pickup Interactions grant 30% [10%] increased damage for a variable duration based on the pickup. Can be activated while stowed.\nIonic Traces, Stasis Shards, and Tangle Detonations grant the buff for 4 seconds. Throwing a held Tangle grants 4 additional seconds. Firesprites and Void Breaches grant the buff for 8 seconds.\nAdditional Pickups can extend the duration up to the maximum of 16 seconds.\nElemental Pickup Interactions:\n• Destroying a Tangle (or Elemental Orbs), either by shooting or throwing.\n• Collecting Firesprites, Ionic Traces, Stasis Shards, or Void Breaches\nDoes not trigger with Stasis Shards generated from Facet of Awakening or Facet of Command.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -5841,10 +5841,30 @@
         }
       }
     ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.2,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-graviton-lance-burst-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Aegis misst nur mit Katalysator (Vorpal Weapon); Quantum ohne gilt: 71 pro Kugel (Precision). Der Katalysator gibt Vorpal Weapon, +20 % für Primaries gegen Bosse (Clarity)."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
     "catalyst": {
       "name": "Vorpal Weapon, Turnabout, Graviton Lance Catalyst",
       "description": "Grants 20 Range.\nGrants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nAlso grants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
-      "effect": "unknown"
+      "effect": "damage"
     }
   },
   {
@@ -6405,7 +6425,7 @@
     "catalyst": {
       "name": "Legion's Bulwark, Heir Apparent Catalyst",
       "description": "Arc Shield gains 75% [25%] Damage Resistance.\nRefills 50% of the magazine upon Arc Shield being depleted.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -7135,7 +7155,7 @@
     "catalyst": {
       "name": "Khvostov Catalyst",
       "description": "Scoring 25 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 🡅0.8% Super Energy.\nDoes not require Direct Hits. Hit counter persists through stow.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -8816,7 +8836,7 @@
     "catalyst": {
       "name": "One for Thrall, Necrochasm Catalyst",
       "description": "Damaging 3 enemies within 3 seconds of each other grants the following benefits for 10 seconds:\n• 35% increased damage\n• ? Handling\n• ? Range\n• ? Aim Assist\nBuff can be refreshed.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -10528,7 +10548,7 @@
     "catalyst": {
       "name": "Chain Reaction, Riskrunner Catalyst",
       "description": "Grants 30 Range.\nWeapon Kills trigger an elemental explosion, dealing up to 114 [?] damage in a 3 meter radius.\nThis explosion can deal self-damage and trigger Arc Conductor.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -11964,7 +11984,7 @@
     "catalyst": {
       "name": "Serious Business, Sweet Business Catalyst",
       "description": "Grants 25% increased Flinch Resistance while at maximum Rate of Fire.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -13568,7 +13588,7 @@
     "catalyst": {
       "name": "Gordian Knot, The Navigator Catalyst",
       "description": "Hold [Reload] to activate Grapple Tangle mode.\nFires a floating Grapple Point to where the reticle previews at approximately 23.5 meters away. Identical to those made by the Widow's Silk aspect.\n30 second cooldown, starting only once grounded.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -14743,10 +14763,30 @@
         }
       }
     ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.25,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-touch-of-malice",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“). Katalysator: Precision Instrument erreicht nach 6 Treffern +25 %; die letzte Patrone feuert ohne Reload, die Stacks bleiben (Clarity), also ×1,25."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
     "catalyst": {
       "name": "Precision Instrument, Touch of Malice Catalyst",
       "description": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or missing removes all stacks...usually.\nPrecision damage increase at 1|2|3... stacks:\n4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%",
-      "effect": "unknown"
+      "effect": "damage"
     }
   },
   {
@@ -15191,7 +15231,7 @@
     "catalyst": {
       "name": "Tunnel Vision, Trespasser Catalyst",
       "description": "Grants the Tunnel Vision trait:\nGrants the following for 5 seconds upon finishing a Reload within 3.6 seconds of a Weapon Kill:\n• 20 Aim Assist\n• ? ADS Handling\n• ?% decreased Accuracy Cone Growth\nBe The Danger's automatic reload activates this perk.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -16155,7 +16195,7 @@
     "catalyst": {
       "name": "Ensemble, Vigilance Wing Catalyst",
       "description": "Grants the Ensemble trait:\nGrants 30 Handling and 40 Reload Speed while within 15 meters of an ally.\nBuff lingers for 1.5 seconds once you're no longer near allies.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -16277,7 +16317,7 @@
     "catalyst": {
       "name": "Detonator Beam, Attrition Orbs, Wavesplitter Catalyst",
       "description": "Grants 10 Range and 30 Ammo Generation.\nScoring 25 Hits within ? seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.\nScoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy. Hit counter persists through stow.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -16697,7 +16737,7 @@
     "catalyst": {
       "name": "Hadopelagic Tribute, Headstone, Wicked Implement Catalyst",
       "description": "Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity.\nDue Tithing Harvest refilling the entire magazine on Stasis Shard pickup, the overfill effect only activates if your current magazine is above 13 shots remaining.\nGrants the Headstone trait:\nPrecision Kills create a Large Stasis Crystal at the target's location.\nTier 1-2 Minor and Tier 1 Elite Combatants only spawn a Medium Stasis Crystal.\nCreating 5 Crystals within ? seconds prevents the perk from activating for 5 seconds.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -16942,7 +16982,7 @@
     "catalyst": {
       "name": "One for All, Wish-Ender Catalyst",
       "description": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
-      "effect": "unknown"
+      "effect": "none"
     }
   },
   {
@@ -17401,7 +17441,7 @@
     "catalyst": {
       "name": "Chain Reaction, Rampage, Xenophage Catalyst",
       "description": "Weapon Kills grant a Stack of Rampage. Maximum of 3 Stacks. Stacks expire one at a time every 🡅4.5 seconds.\nGrants a 10%|21%|33.1% damage increase at 1|2|3 Stacks.\nWeapon Kills trigger a solar elemental explosion, dealing up to 109 [72.8] damage in a 3 meter radius.",
-      "effect": "unknown"
+      "effect": "none"
     }
   }
 ]

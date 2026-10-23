@@ -75,6 +75,44 @@ const CATALYST_MIN_CHANGE = 0.01;
 // Words of a catalyst text that would change boss damage if a source quantified them.
 const CATALYST_DAMAGE = /\b(damage|scorch|jolt|unravel|weaken|ignit)/i;
 const KILLS = /\b(kills?|killing|killed|final blows?)\b/i;
+// Conditions one boss without adds never meets (owner, ADR 0015): kills, several enemies, allies,
+// pickups, shields, damage taken, freezing and shattering, players; or a perk that does nothing.
+const NO_BOSS = new RegExp(
+  [
+    KILLS.source,
+    /\b(separate enemies|\d+ enemies|enemies within|of \d+ enemies|allies|an ally|ally)\b/
+      .source,
+    /\b(pick(?:ing)? up|pickups?|ionic traces?|stasis shards?|orbs? of power|tangles?|firesprites|void breach(?:es)?)\b/
+      .source,
+    /\b(shield break|elemental shield|arc shield|damage taken|self-damage|frozen|freezing|shatter\w*|players?|grapple|flinch)\b/
+      .source,
+  ].join("|"),
+  "i",
+);
+// Sentences that only qualify a buff (how long it lingers, what removes it) do nothing alone.
+const QUALIFIER =
+  /\b(removes? (?:the|all) (?:buff|stacks)|buff (?:lingers|duration|can be|remains)|effect lingers|cannot be refreshed|persists through stow|activates this perk)\b/i;
+const BROKEN = /\bdoes not function\b/i; // e.g. Black Talon: "this catalyst does not function"
+
+/**
+ * The paragraphs of a catalyst text that can work against one boss without adds. A line ending in
+ * ":" opens a paragraph with the bullet lines below it; a condition anywhere drops the whole
+ * paragraph.
+ */
+export function bossParagraphs(text: string): string {
+  if (BROKEN.test(text)) return "";
+  const paragraphs: string[][] = [];
+  for (const line of text.split("\n")) {
+    const last = paragraphs.at(-1);
+    if (last && /^\s*•/.test(line) && /:\s*$/.test(last[0])) last.push(line);
+    else paragraphs.push([line]);
+  }
+  return paragraphs
+    .filter((p) => !p.some((line) => NO_BOSS.test(line)))
+    .filter((p) => !(p.length === 1 && QUALIFIER.test(p[0])))
+    .map((p) => p.join("\n"))
+    .join("\n");
+}
 const BASE_KINDS: AssumptionKind[] = [
   "execution",
   "intrinsic",
@@ -1529,12 +1567,10 @@ export function buildWeaponImport(
       catalystTiming !== undefined &&
       !entry.notes.some((n) => n.startsWith("⚠ Timing mit Katalysator"));
     // One boss without adds gives no kills (owner): paragraphs about kills claim nothing here.
-    const bossText = catalystText
-      .split("\n")
-      .filter((line) => !KILLS.test(line))
-      .join("\n");
-    const catalystEffect: CatalystEffect =
-      catalystDamage && timingDiffers
+    const bossText = bossParagraphs(catalystText);
+    const catalystEffect: CatalystEffect = override?.catalystEffect
+      ? override.catalystEffect
+      : catalystDamage && timingDiffers
         ? "damageAndTiming"
         : catalystDamage
           ? "damage"

@@ -588,17 +588,35 @@
     }
   },
   {
+    "weapon": "Xenophage",
+    "reason": "Die Rampage-Stacks des Katalysators kommen nur aus Weapon Kills; der Absatz mit dem Bonus nennt das Wort „Kill“ nicht, deshalb hier von Hand: keine Wirkung gegen einen Boss ohne Adds.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Xenophage Catalyst",
+        "text": "Weapon Kills grant a Stack of Rampage."
+      }
+    ],
+    "catalystEffect": "none"
+  },
+  {
     "weapon": "Graviton Lance",
-    "reason": "Aegis misst nur mit Katalysator (Vorpal Weapon); Quantum ohne gilt: 71 pro Kugel (Precision).",
+    "reason": "Aegis misst nur mit Katalysator (Vorpal Weapon); Quantum ohne gilt: 71 pro Kugel (Precision). Der Katalysator gibt Vorpal Weapon, +20 % für Primaries gegen Bosse (Clarity).",
     "quotes": [
       {
         "source": "quantum",
         "entry": "primaries-pulse-rifle-graviton-lance",
         "text": "\"precisionDamage\":71"
+      },
+      {
+        "source": "clarity",
+        "entry": "Vorpal Weapon",
+        "text": "Primary Weapons: 20% [60%]"
       }
     ],
     "base": "pulse-rifle-graviton-lance-burst-vorpal-weapon",
     "perShot": 71,
+    "catalystFactor": 1.2,
     "timing": {
       "from": "Quantum",
       "row": "primaries-pulse-rifle-graviton-lance"
@@ -679,8 +697,13 @@
   },
   {
     "weapon": "Touch of Malice",
-    "reason": "Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“).",
+    "reason": "Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“). Katalysator: Precision Instrument erreicht nach 6 Treffern +25 %; die letzte Patrone feuert ohne Reload, die Stacks bleiben (Clarity), also ×1,25.",
     "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Touch of Malice Catalyst",
+        "text": "4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%"
+      },
       {
         "source": "aegis",
         "entry": "scout-rifle-touch-of-malice",
@@ -693,6 +716,7 @@
       }
     ],
     "perShot": 141.48,
+    "catalystFactor": 1.25,
     "timing": {
       "from": "Quantum",
       "row": "primaries-scout-rifle-touch-of-malice-touch-of-malice-tom"

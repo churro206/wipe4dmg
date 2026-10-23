@@ -184,6 +184,22 @@ describe("all weapons (2026-10-23)", () => {
   });
 });
 
+describe("catalysts from texts (2026-10-23)", () => {
+  it("Touch of Malice: Precision Instrument at 6 stacks gives ×1.25 on the last round", () => {
+    const off = run({}, weaponById("touch-of-malice")).totalDamage;
+    const on = run(
+      { catalyst: true },
+      weaponById("touch-of-malice"),
+    ).totalDamage;
+    note("Touch of Malice Catalyst an / aus", fmt(on / off), "1,25");
+    expect(on / off).toBeCloseTo(1.25, 2);
+  });
+
+  it("Wish-Ender: a catalyst that needs several enemies does nothing against one boss", () => {
+    expect(weaponById("wish-ender").catalyst!.effect).toBe("none");
+  });
+});
+
 describe("catalysts", () => {
   it("Gjallarhorn: the catalyst's second rocket per magazine gives more damage in 30 s", () => {
     const off = run({}, weaponById("gjallarhorn")).totalDamage;

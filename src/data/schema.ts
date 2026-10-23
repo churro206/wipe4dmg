@@ -1260,6 +1260,8 @@ export const WeaponOverride = z.object({
   // Damage factor of the catalyst from a text (e.g. Vorpal Weapon +20 % for primaries), where no
   // row measures it; the reason gives the derivation.
   catalystFactor: z.number().min(1).optional(),
+  // What the catalyst does against one boss, where the text rule cannot tell (reason says why)
+  catalystEffect: z.enum(["none", "unknown"]).optional(),
   // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
   scorchStacksPerShot: z.number().int().positive().optional(),
   timing: z

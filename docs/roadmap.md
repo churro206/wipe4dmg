@@ -2,13 +2,14 @@
 
 What the calculator learns next. The exact coverage is listed under [Coverage](coverage.md).
 
-Status: 2026-10-22
+Status: 2026-10-23
 
 ## In progress (v1.1)
 
 - ✅ 49 exotic Special and Heavy weapons from Aegis, Quantum, Clarity and the Bungie manifest, among them Truth, Thunderlord, Gjallarhorn, Sleeper Simulant and Whisper of the Worm; weapon picker with search, catalyst as a toggle with a note on limited duration
 - ✅ 40 exotic primaries (e.g. Bad Juju, Ace of Spades, Thorn, Le Monarque): unlimited ammo, they fire with reloads through the whole damage phase; pulse bursts count bullet by bullet; weapon picker filters by ammo
-- ⏳ The remaining exotic weapons (e.g. swords, Merciless, Outbreak Perfected): more sources needed
+- ✅ 131 of 141 exotic weapons, among them swords (The Lament, Black Talon, Ergo Sum: one hit per combo), Merciless, Outbreak Perfected, Witherhoard (a full blight per shot), Choir of One (5 ammo per projectile) and Touch of Malice (last round)
+- ⏳ 10 exotic weapons still missing (e.g. Anarchy, Heartshadow, Wolfsbane, Praxic Blade, Turncoat): no source measures their timing
 - ✅ Exotic armor: picker under “Armor” with search and slot filter. A note says what the exotic does in the calculator. Many work through the Rotation, e.g. Star-Eater Scales after the Super cast or Foetracer after an ability hit. Cuirass of the Falling Star and Celestial Nighthawk change their Super. Kill buffs only count with the “Pre-stacked” toggle, since one boss without adds gives no kills.
 - ✅ Aspects and fragments from all subclasses, e.g. Spark of Shock (Jolt), Echo of Undermining (Weaken after a Void grenade), Ember of Torches (Radiant after a melee hit); states such as Amplified or Woven Mail for exotics like No Backup Plans
 - ✅ Keywords: Ignition, Jolt, Volatile, Unravel and Bolt Charge as their own damage; abilities apply them with their hits
@@ -25,7 +26,8 @@ Status: 2026-10-22
 - ⏳ Stormtrance and Pocket Singularity: Jolt and Volatile count twice (+14 %, +22 %)
 - ⏳ Facet of Courage and Touch of Thunder: Aegis only measured them together with other buffs
 - ✅ Every weapon with a catalyst has the switch; its hover card says what it does here: damage (e.g. One Thousand Voices +45%), magazine and ammo (e.g. Gjallarhorn 1 → 2 rockets, Telesto 4 → 7), refills (Thunderlord, Cloudstrike), or no effect against one boss
-- ⏳ About 50 catalysts are not in the calculator yet: no source measured them (e.g. Izanagi's Burden, Deterministic Chaos, reload speed stats)
+- ✅ 47 catalysts are marked “no effect against one boss” (they need kills, several enemies, allies, pickups or shields); Touch of Malice ×1.25, Graviton Lance and Wish-Keeper ×1.2 (Vorpal Weapon)
+- ⏳ About 50 catalysts are not in the calculator yet, e.g. Izanagi's Burden, Deterministic Chaos, reload speed stats
 
 ## Done in v1.0: abilities and Supers
 

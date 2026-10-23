@@ -429,12 +429,12 @@
     "graviton-lance": {
       "30s plain": 9017,
       "30s buffed": 15181.02,
-      "30s plain catalyst": 9017,
-      "30s buffed catalyst": 15181.02,
+      "30s plain catalyst": 10820.4,
+      "30s buffed catalyst": 18217.23,
       "600s plain": 178849,
       "600s buffed": 301110.18,
-      "600s plain catalyst": 178849,
-      "600s buffed catalyst": 301110.18
+      "600s plain catalyst": 214618.8,
+      "600s buffed catalyst": 361332.21
     },
     "graviton-spike": {
       "30s plain": 7065.8,
@@ -1101,12 +1101,12 @@
     "touch-of-malice": {
       "30s plain": 12450.24,
       "30s buffed": 20961.22,
-      "30s plain catalyst": 12450.24,
-      "30s buffed catalyst": 20961.22,
+      "30s plain catalyst": 15562.8,
+      "30s buffed catalyst": 26201.53,
       "600s plain": 247448.52,
       "600s buffed": 416604.33,
-      "600s plain catalyst": 247448.52,
-      "600s buffed catalyst": 416604.33
+      "600s plain catalyst": 309310.65,
+      "600s buffed catalyst": 520755.41
     },
     "tractor-cannon": {
       "30s plain": 7837.04,

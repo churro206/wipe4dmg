@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { loadWeaponImportInputs } from "../scripts/lib/weaponImportInputs";
 import {
+  bossParagraphs,
   buildWeaponImport,
   renderWeaponImport,
 } from "../scripts/lib/weaponPackages";
@@ -347,6 +348,46 @@ describe("gaps closed by overrides and rules (2026-10-23)", () => {
     const report = result.report.weapons.find((r) => r.name === "Witherhoard")!;
     expect(report.timeToEmptySeconds).toBeCloseTo(90, 0);
     expect(report.catalystTiming!.timeToEmptySeconds).toBeCloseTo(50, 0);
+  });
+});
+
+describe("catalyst paragraphs against one boss without adds", () => {
+  it("drops a paragraph with its bullets when its condition needs adds, allies, pickups or shields", () => {
+    const text = [
+      "Grants 20 Range.",
+      "Upon breaking a Combatant's Elemental Shield:",
+      "• Grants a 30 HP Overshield for 10 seconds.",
+      "Grants 30 Handling and 40 Reload Speed while within 15 meters of an ally.",
+      "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage.",
+      "Picking up Ionic Traces refill 4 ammo from reserves.",
+      "Deals increased damage against Minibosses, Bosses, and Vehicles.",
+    ].join("\n");
+    expect(bossParagraphs(text)).toBe(
+      "Grants 20 Range.\nDeals increased damage against Minibosses, Bosses, and Vehicles.",
+    );
+  });
+
+  it("drops sentences that only qualify a buff, and a catalyst that does not function", () => {
+    expect(
+      bossParagraphs("Grants 20 Range.\nStowing the weapon removes the buff."),
+    ).toBe("Grants 20 Range.");
+    expect(
+      bossParagraphs(
+        "Due to an unresolved bug, this catalyst does not function.\nThe intended behavior was 10% more damage.",
+      ),
+    ).toBe("");
+  });
+
+  it("keeps a condition one boss can meet (within 15 meters of an enemy)", () => {
+    const text = "While within 15 meters of an enemy, grants 20 Reload Speed.";
+    expect(bossParagraphs(text)).toBe(text);
+  });
+
+  it("rule: about 30 or more catalysts have no effect against one boss", () => {
+    const none = result.packages.filter((w) => w.catalyst?.effect === "none");
+    expect(none.length).toBeGreaterThanOrEqual(30);
+    expect(byName("Wish-Ender")!.catalyst!.effect).toBe("none");
+    expect(byName("Vigilance Wing")!.catalyst!.effect).toBe("none");
   });
 });
 
