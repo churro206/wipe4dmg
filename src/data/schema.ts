@@ -1257,6 +1257,9 @@ export const WeaponOverride = z.object({
   perShotFromTiming: z.boolean().optional(),
   perShot: z.number().positive().optional(),
   bulletsPerShot: z.number().int().min(2).optional(),
+  // Damage factor of the catalyst from a text (e.g. Vorpal Weapon +20 % for primaries), where no
+  // row measures it; the reason gives the derivation.
+  catalystFactor: z.number().min(1).optional(),
   // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
   scorchStacksPerShot: z.number().int().positive().optional(),
   timing: z
@@ -1271,6 +1274,8 @@ export const WeaponOverride = z.object({
       noReloads: z.boolean().optional(), // all ammo is one magazine (no reload, or inside the rate)
       // One shot uses this much ammo, the row counts ammo (e.g. Choir of One: 5 per projectile)
       ammoPerShot: z.number().int().min(2).optional(),
+      // Shots in the row's time to empty, where the row counts something else (swords: combos)
+      shots: z.number().int().positive().optional(),
       totalShots: z.number().int().positive().optional(),
       addIntervalSeconds: z.number().optional(), // e.g. a longer charge without the catalyst
     })

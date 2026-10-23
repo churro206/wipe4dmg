@@ -990,6 +990,32 @@ export function buildWeaponImport(
       });
     }
 
+    // Catalyst damage from a text (override), where no row measures it.
+    if (
+      override?.catalystFactor &&
+      !options.some((o) => o.kind === "catalyst")
+    ) {
+      options.push({
+        id: "catalyst",
+        name: "Catalyst",
+        kind: "catalyst",
+        bucketId: OPTION_BUCKET,
+        factor: {
+          value: override.catalystFactor,
+          source: aegisSource(base, `Derived (override): ${override.reason}`),
+        },
+        durationSeconds: null,
+        condition: null,
+      });
+      entry.options.push({
+        name: "Catalyst",
+        kind: "catalyst",
+        factor: override.catalystFactor,
+        durationSeconds: null,
+        condition: null,
+        notes: ["Faktor aus dem Text (Override)"],
+      });
+    }
     // Catalyst damage from Quantum ("cata" against the plain row) where Aegis has no catalyst row.
     const catalystPerks = [
       ...(manifest.catalyst?.perks ?? []),
@@ -1211,6 +1237,25 @@ export function buildWeaponImport(
           "⚠ Timing mit Katalysator: keine Quelle ohne; der Katalysator ändert laut Clarity Magazin oder Reload, nicht die Munition",
         );
       }
+    }
+    if (timing && timingOverride?.shots) {
+      // n shots fill the row's time to empty: one every tte ÷ n, no reloads (swords: combos).
+      const n = timingOverride.shots;
+      const total = timing.timeToEmptySeconds;
+      if (total === null)
+        throw new Error(
+          `${manifest.name}: shots override needs a time to empty`,
+        );
+      timing = {
+        ...timing,
+        magazine: n,
+        totalShots: n,
+        reloadSeconds: 0,
+        engineReloadSeconds: 0,
+        intervalSeconds: total / n,
+        timeToEmptySeconds: ((n - 1) * total) / n,
+        note: `${timing.note}; ${n} shots in ${total} s (override)`,
+      };
     }
     if (timing && timingOverride?.ammoPerShot) {
       const k = timingOverride.ammoPerShot;

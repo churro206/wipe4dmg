@@ -2,62 +2,20 @@
   { "name": "Anarchy", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
   { "name": "Barrow-Dyad", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
   {
-    "name": "Black Talon",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
-  },
-  { "name": "Divinity", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
-  {
-    "name": "Ergo Sum",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
-  },
-  {
     "name": "Fafnir",
     "reason": "kein Timing: Aegis: kein Reload in den Notizen; keine Quantum-Zeile"
-  },
-  {
-    "name": "Graviton Lance",
-    "reason": "keine Aegis-Zeile ohne fremde Annahmen"
   },
   {
     "name": "Heartshadow",
     "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
   },
-  {
-    "name": "Heirloom",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
-  },
   { "name": "Praxic Blade", "reason": "kein Timing: keine Quantum-Zeile" },
   { "name": "Prometheus Lens", "reason": "kein Timing: keine Quantum-Zeile" },
-  {
-    "name": "Salvation's Grip",
-    "reason": "Skala Aegis gegen Quantum weicht um 58.8 % ab"
-  },
-  {
-    "name": "Skyburner's Oath",
-    "reason": "keine Aegis-Zeile ohne fremde Annahmen"
-  },
-  {
-    "name": "Tessellation",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
-  },
   {
     "name": "The Huckleberry",
     "reason": "keine Aegis-Zeile ohne fremde Annahmen"
   },
-  {
-    "name": "The Lament",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
-  },
   { "name": "Turncoat", "reason": "kein Timing: keine Quantum-Zeile" },
-  {
-    "name": "Wavesplitter",
-    "reason": "keine Aegis-Zeile ohne fremde Annahmen"
-  },
-  {
-    "name": "Whirling Ovation",
-    "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"
-  },
-  { "name": "Wish-Keeper", "reason": "keine Aegis-Zeile ohne fremde Annahmen" },
   {
     "name": "Wolfsbane",
     "reason": "kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile"

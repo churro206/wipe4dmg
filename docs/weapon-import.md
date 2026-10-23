@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **119 Pakete**, 22 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **131 Pakete**, 10 Lücken.
 
 ## Pakete
 
@@ -18,6 +18,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Arbalest | linearFusionRifle | kinetic | keine (1 Shot) | 1.086,1 | Aegis | 21 | 5 | 1,73 s | 24,2 s | – → 56 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by one (5🠚6)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Aegis; Katalysator-Timing: 22 Shots, Magazin 6, Zeit bis leer 24,6 s |
 | Bad Juju | pulseRifle | kinetic | burst (1 Shot) | 31,9 | Quantum |  | 31 | 1,16 s | – | 450 → 450 | 0,1 % | Aegis misst einen Burst aus 3 Kugeln (wipe 1.446 = 3 × 482); Paket pro Kugel wie Quantums Magazin; Timing nur aus Quantum |
 | Bastion | fusionRifle | kinetic | keine (4 Shots) | 1.591,5 | Quantum | 21 | 4 | 1,32 s | 37,4 s | 38 → 39 | 0,3 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
+| Black Talon | sword | void | light (1 Shot) | 3.141,0 | Aegis | 9 | 9 | 0,00 s | 22,3 s | – → 21 | – | Override: Aegis Sustained zählt Munition (73), der Grundwert gilt pro Combo „2H2L“ (3141): 9 Combos plus ein Heavy in 25,1 s; der letzte Heavy fällt weg. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Timing aus Zeile black-talon-2h2l-combo-lucent-blades-x3-argent-blade (Override); Timing nur aus Aegis; Schaden pro Shot aus „Base“ der Sustained-Zeile black-talon-2h2l-combo-lucent-blades-x3-argent-blade (Override) |
 | Borealis | sniperRifle | void | keine (1 Shot) | 832,4 | Quantum | 20 | 5 | 1,98 s | 19,3 s | 72 → 85 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Buried Bloodline | sidearm | void | keine (1 Shot) | 322,4 | Quantum | 50 | 11 | 1,02 s | 31,1 s | 100 → 109 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Centrifuse | autoRifle | arc | keine (1 Shot) | 34,3 | Quantum |  | 45 | 0,50 s | – | 450 → 450 | 1,9 % | Timing nur aus Quantum |
@@ -37,11 +38,13 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Delicate Tomb | fusionRifle | arc | hipfire (18 Shots) | 890,4 | Quantum | 26 | 6 | 1,32 s | 32,0 s | 56 → 56 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „Hip-fire“; Timing nur aus Quantum |
 | Deterministic Chaos | machineGun | void | average, with volatile damage, excludes weaken (48 Shots) | 126,5 | Quantum | 376 | 48 | 3,57 s | 86,3 s | 360 → 367 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „w/o weaken“; Timing nur aus Quantum |
 | Devil's Ruin | sidearm | solar | keine (1 Shot) | 78,5 | Quantum |  | 20 | 1,03 s | – | 300 → 300 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
+| Divinity | traceRifle | arc | average, Penance, excludes debuff, Jolting Feedback, Focused Fury (194 Shots) | 15,0 | Quantum | 470 | 194 | 1,44 s | 34,0 s | 900 → 904 | 0,0 % | Override: Aegis misst nur mit beiden Katalysator-Perks (Jolting Feedback, Focused Fury) und Jolt; Quantum „base damage, no buffs“ (mit Penance) gilt: 15 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-divinity-base-damage-no-buffs (Override); Timing nur aus Quantum; Schaden pro Shot 15,0 (Override) |
 | Dragon's Breath | rocketLauncher | solar | average, loaded, Composite Propellant x5 (8 Shots) | 3.725,5 | Quantum | 11 | 1 | 2,35 s | 23,5 s | 46 → 60.000 | 0,4 % | Timing nur aus Quantum |
 | Duality | shotgun | solar | ADS (1 Shot) | 1.262,2 | Quantum | 15 | 6 | 0,68 s | 12,7 s | – → 74 | 0,1 % | Override: Quantum misst nur mit Katalysator; „cata, slug“ passt zu Aegis' ADS (Precision 1263 gegen 1262). Ohne Katalysator aus Clarity: Magazin 6 statt 8.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing-Zeile specials-shotgun-duality-cata-slug spielt mit Katalysator; ohne ihn aus Clarity zurückgerechnet; Timing nur aus Quantum; Katalysator-Timing: 17 Shots, Magazin 8, Zeit bis leer 14,3 s |
 | Edge of Action | glaive | void | projectile (1 Shot) | 482,4 | Quantum | 29 | 6 | 1,57 s | 32,5 s | 55 → 64 | 0,1 % | Timing nur aus Quantum |
 | Edge of Concurrence | glaive | arc | projectile (1 Shot) | 420,4 | Quantum | 33 | 7 | 1,57 s | 31,0 s | 80 → 78 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Edge of Intent | glaive | solar | projectile (1 Shot) | 553,8 | Quantum | 31 | 5 | 1,57 s | 50,8 s | 45 → 43 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
+| Ergo Sum | sword | kinetic | Jagged Edge, 64 impact, light (1 Shot) | 3.293,0 | Aegis | 10 | 10 | 0,00 s | 18,4 s | – → 29 | – | Override: Lightweight Frame mit Unplanned Reprieve, 1H2L: Grundwert pro Combo 3293 (Aegis Sustained, ohne den 5 % Transcendence-Bonus: Weapons 3458,1 ÷ 1,05 = 3293), 10 Combos plus ein Heavy in 20,4 s. Pack Hunter gibt nur Handling und Reload neben Verbündeten. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade (Override); Timing nur aus Aegis; Schaden pro Shot aus „Base“ der Sustained-Zeile ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade (Override) |
 | Eriana's Vow | handCannon | solar | Death At First Glance (1 Shot) | 491,2 | Quantum | 32 | 6 | 1,66 s | 27,1 s | 90 → 99 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Quellen-Timing hat schon das Magazin mit Katalysator; ohne Katalysator aus Clarity zurückgerechnet („magazine size by 3 (6🠚9)“); Timing nur aus Quantum; Katalysator-Timing: 35 Shots, Magazin 9, Zeit bis leer 25,6 s |
 | Euphony | linearFusionRifle | strand | burst, without threadlings (1 Shot) | 1.317,5 | Quantum | 21 | 6 | 1,32 s | 32,2 s | 42 → 42 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Ex Diris | grenadeLauncher | arc | average, with moth (30 Shots) | 694,9 | Aegis | 35 | 35 | 0,00 s | 22,1 s | – → 92 | 0,0 % | Timing nur aus Aegis |
@@ -52,10 +55,12 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Forerunner | sidearm | kinetic | keine (1 Shot) | 297,9 | Quantum | 70 | 12 | 1,63 s | 27,4 s | 200 → 215 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Gjallarhorn | rocketLauncher | solar | keine (8 Shots) | 1.892,2 | Quantum | 10 | 1 | 2,35 s | 27,0 s | 47 → 93 | 0,9 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Quellen-Timing hat schon das Magazin mit Katalysator; ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by 1 (1🠚2)“); Timing nur aus Quantum; Katalysator-Timing: 11 Shots, Magazin 2, Zeit bis leer 18,2 s |
 | Grand Overture | machineGun | arc | Missile Loaded, Volley Ready (20 Shots) | 1.059,0 | Aegis | 58 | 58 | 0,00 s | 49,1 s | 100 → 70 | 87,1 % | Override: Optimal gespielt mit Raketen-Salven, wie Aegis Sustained „volleys when available“ (58 Schuss in 49,1 s, Quantum „w/ rockets“ 49 s); Schaden pro Schuss aus derselben Zeile (Mittel aus Kugeln und Raketen).; Timing aus Zeile grand-overture-volleys-when-available (Override); Timing nur aus Aegis; abgeleitete Feuerrate 70 statt 100 rpm; Schaden pro Shot aus „Base“ der Sustained-Zeile grand-overture-volleys-when-available (Override); Skala weicht um 87.1 % ab; Aegis gilt (Override) |
+| Graviton Lance | pulseRifle | void | burst, Vorpal Weapon (1 Shot) | 71,0 | Quantum |  | 30 | 1,16 s | – | 300 → 300 | 0,0 % | Override: Aegis misst nur mit Katalysator (Vorpal Weapon); Quantum ohne gilt: 71 pro Kugel (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-pulse-rifle-graviton-lance (Override); Timing nur aus Quantum; Schaden pro Shot 71,0 (Override) |
 | Graviton Spike | handCannon | arc | stasis mode (1 Shot) | 176,6 | Quantum |  | 13 | 1,61 s | – | 150 → 95 | 0,8 % | Override: Aegis misst den Stasis-Modus (176,6); dazu passt Quantums „Stasis mode“ (Precision 178), nicht der Arc-Modus. Stasis macht mehr Schaden pro Sekunde.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-hand-cannon-graviton-spike-stasis-mode (Override); Timing nur aus Quantum; abgeleitete Feuerrate 95 statt 150 rpm |
 | Hard Light | autoRifle | void | keine (1 Shot) | 27,6 | Quantum |  | 49 | 1,12 s | – | 600 → 600 | 1,5 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Hawkmoon | handCannon | kinetic | keine (1 Shot) | 96,2 | Quantum |  | 8 | 1,64 s | – | – → 140 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by 1 (8🠚9)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Quantum; Katalysator-Timing: ∞ Shots, Magazin 9, Zeit bis leer – |
 | Heir Apparent | machineGun | solar | keine (1 Shot) | 56,1 | Quantum | 440 | 200 | 3,57 s | 36,3 s | 900 → 903 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
+| Heirloom | bow | solar | uncharged (1 Shot) | 855,7 | Aegis | 20 | 20 | 0,00 s | 22,5 s | – → 51 | 0,0 % | Override: Ungeladen wie die Basiszeile (Sustained Base 856 = Weapons 855,7): 20 Pfeile in 22,5 s, Bogen ohne Reload. Timing mit Argent Quiver (Reload Speed) wie bei Aegis.; Timing aus Zeile heirloom-uncharged-argent-quiver (Override); Timing nur aus Aegis |
 | Hierarchy of Needs | bow | solar | average, one ring (6 Shots) | 916,8 | Quantum |  | 1 | 0,60 s | – | 44 → 44 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Ice Breaker | sniperRifle | solar | keine (1 Shot) | 1.223,4 | Aegis | 10 | 10 | 0,00 s | 11,1 s | 49 → 49 | 0,0 % | Override: Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).; Timing aus Zeile ice-breaker-sniper-s-meditation (Override); Timing nur aus Aegis |
 | Izanagi's Burden | sniperRifle | kinetic | keine (1 Shot) | 658,5 | Quantum | 20 | 4 | 1,98 s | 17,9 s | 90 → 114 | 0,1 % | Timing nur aus Quantum; abgeleitete Feuerrate 114 statt 90 rpm |
@@ -88,7 +93,9 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Revision Zero | pulseRifle | kinetic | burst - heavy 2-burst mode, Vorpal Weapon (1 Shot) | 76,2 | Quantum |  | 26 | 1,16 s | – | 450 → 324 | 17,4 % | Override: Aegis misst den schweren 2er-Burst mit Vorpal Weapon (wipe 2298 = 2 × 1149); pro Kugel 76,2 gegen Quantum 64 ohne Vorpal (×1,15 = 73,6); Aegis gilt.; Aegis misst einen Burst aus 2 Kugeln (Override); Paket pro Kugel; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-pulse-rifle-revision-zero-2-burst (Override); Timing nur aus Quantum; abgeleitete Feuerrate 324 statt 450 rpm; Skala weicht um 17.4 % ab; Aegis gilt (Override) |
 | Riskrunner | submachineGun | arc | keine (1 Shot) | 27,0 | Quantum |  | 47 | 1,19 s | – | 900 → 900 | 3,4 % | Override: Aegis 27,0 gegen Quantum 28 (3,4 %); Aegis gilt.; Timing aus Zeile primaries-submachine-gun-riskrunner (Override); Timing nur aus Quantum; Skala weicht um 3.4 % ab; Aegis gilt (Override) |
 | Ruinous Effigy | traceRifle | void | keine (1 Shot) | 40,1 | Quantum | 470 | 94 | 1,44 s | 36,8 s | 900 → 907 | 0,4 % | Timing nur aus Quantum |
+| Salvation's Grip | grenadeLauncher | stasis | keine (1 Shot) | 794,9 | Aegis | 25 | 8 | 2,12 s | 19,3 s | – → 97 | 0,0 % | Override: Ungeladen ist optimal (mehr Schaden pro Sekunde als geladen); Aegis Sustained „uncharged“ (Base 795 = Weapons 794,9).; Timing aus Zeile salvation-s-grip-uncharged (Override); Timing nur aus Aegis |
 | Service of Luzaku | machineGun | strand | keine (1 Shot) | 156,7 | Quantum | 300 | 47 | 3,57 s | 70,3 s | 360 → 367 | 0,2 % | Timing nur aus Quantum |
+| Skyburner's Oath | scoutRifle | solar | ADS, Cabal (1 Shot) | 114,3 | Quantum |  | 20 | 1,24 s | – | 150 → 150 | 31,2 % | Override: ADS ohne Ignitions: Aegis 114,3 = Quantum „ADS“ 116 (1,5 %); „Cabal“ ändert diesen Wert also nicht.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-skyburner-s-oath-ads (Override); Timing nur aus Quantum; Skala weicht um 31.2 % ab; Aegis gilt (Override) |
 | Slayer's Fang | shotgun | void | average, includes submunitions, Nightsworn ticks include weaken (9 Shots) | 1.048,6 | Quantum | 27 | 10 | 1,41 s | 23,4 s | 70 → 76 | 0,0 % | herausgerechnet: Weaken ×1,150 (wirkt nur, wenn der Build ihn hat); Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Sleeper Simulant | linearFusionRifle | solar | keine (1 Shot) | 2.328,5 | Aegis | 14 | 4 | 2,05 s | 22,3 s | – → 37 | 0,0 % | Override: Aegis und Quantum messen nur mit Katalysator (16 Schuss, kürzere Charge Time). Ohne Katalysator: 14 Schuss und 250 ms längere Charge Time pro Schuss.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Aegis; Katalysator-Timing: 16 Shots, Magazin 4, Zeit bis leer 22,5 s |
 | Still Hunt | sniperRifle | solar | keine (1 Shot) | 658,5 | Quantum | 20 | 6 | 1,98 s | 31,8 s | 90 → 44 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; abgeleitete Feuerrate 44 statt 90 rpm |
@@ -99,10 +106,12 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Symmetry | scoutRifle | arc | keine (1 Shot) | 61,0 | Quantum |  | 20 | 0,99 s | – | 260 → 260 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Tarrabah | submachineGun | solar | keine (1 Shot) | 33,9 | Quantum |  | 35 | 1,19 s | – | 720 → 720 | 0,4 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Telesto | fusionRifle | void | keine (7 Shots) | 1.094,6 | Quantum | 16 | 4 | 1,32 s | 24,7 s | – → 43 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by 3 (4🠚7)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Quantum; Katalysator-Timing: 19 Shots, Magazin 7, Zeit bis leer 27,5 s |
+| Tessellation | fusionRifle | kinetic | Property: Irreducible (1 Shot) | 2.557,6 | Aegis | 22 | 6 | 4,57 s | 70,8 s | – → 19 | 10,2 % | Override: Schaden aus Weapons „Property: Irreducible“ (2557,6, ohne Transcendent); Timing aus Aegis Sustained (22 Schuss, 4567 ms Reload, volle Granaten-Energie).; Timing aus Zeile tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated (Override); Timing nur aus Aegis; Skala weicht um 10.2 % ab; Aegis gilt (Override) |
 | The Chaperone | shotgun | kinetic | keine (1 Shot) | 748,6 | Quantum | 18 | 6 | 0,43 s | 20,7 s | 70 → 51 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; abgeleitete Feuerrate 51 statt 70 rpm |
 | The Colony | grenadeLauncher | void | direct impact (1 Shot) | 833,8 | Aegis | 24 | 7 | 2,05 s | 14,8 s | – → 139 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by 1 (7🠚8)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Aegis; Katalysator-Timing: 25 Shots, Magazin 8, Zeit bis leer 15,2 s |
 | The Fourth Horseman | shotgun | arc | body, full mag (1 Shot) | 1.049,4 | Quantum | 20 | 4 | 0,43 s | 12,2 s | 300 → 109 | 55,2 % | Override: Aegis misst ein ganzes Magazin als einen Shot („full mag“, vier Werte 3085/3578/4102/4655); pro Schuss 4197,6 ÷ 4 = 1049,4. Quantum (612 body) zählt den Anstieg pro Schuss nicht; Aegis gilt.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; abgeleitete Feuerrate 109 statt 300 rpm; Schaden pro Shot 1.049,4 (Override); Skala weicht um 55.2 % ab; Aegis gilt (Override); Katalysator-Timing: 20 Shots, Magazin 5, Zeit bis leer 12,1 s |
 | The Jade Rabbit | scoutRifle | kinetic | keine (1 Shot) | 96,6 | Quantum |  | 15 | 1,24 s | – | 150 → 150 | 0,4 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing nur aus Quantum |
+| The Lament | sword | solar | average, 2L1H1R (6 Shots) | 4.561,0 | Aegis | 13 | 13 | 0,00 s | 37,4 s | – → 19 | – | Override: Aegis Sustained zählt Munition (65), der Grundwert gilt pro Combo „2L1H1R“ (Base 4561 = Weapons „average, 2L1H1R“ 4560,9): 13 Combos in 40,5 s. Timing mit Lucent Blades x3 und Argent Blade (Charge Rate) wie bei Aegis; ihr Schaden steckt nicht im Grundwert.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade (Override); Timing nur aus Aegis; Schaden pro Shot aus „Base“ der Sustained-Zeile the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade (Override) |
 | The Last Word | handCannon | kinetic | hipfire (1 Shot) | 175,5 | Quantum |  | 8 | 1,64 s | – | 225 → 225 | 0,2 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | The Manticore | submachineGun | void | average, Hover Mode (104 Shots) | 41,9 | Quantum |  | 42 | 1,19 s | – | 900 → 900 | 2,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „Grounded“; Timing nur aus Quantum |
 | The Navigator | traceRifle | strand | keine (1 Shot) | 28,6 | Quantum | 485 | 97 | 1,44 s | 37,8 s | 900 → 906 | 1,3 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
@@ -125,10 +134,13 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Vex Mythoclast | fusionRifle | solar | keine (1 Shot) | 93,4 | Quantum |  | 25 | 1,12 s | – | 400 → 400 | 17,4 % | Override: Aegis 93,4 gegen Quantum 113 (Quantum ohne Linear-Schüsse, Ursache offen); Aegis gilt.; Timing aus Zeile primaries-fusion-rifle-vex-mythoclast (Override); Timing nur aus Quantum; Skala weicht um 17.4 % ab; Aegis gilt (Override) |
 | Vexcalibur | glaive | void | projectile (1 Shot) | 573,2 | Quantum | 33 | 6 | 1,57 s | 28,1 s | 80 → 95 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Vigilance Wing | pulseRifle | kinetic | burst (1 Shot) | 34,5 | Quantum |  | 50 | 1,16 s | – | 530 → 530 | 1,4 % | Aegis misst einen Burst aus 5 Kugeln (wipe 2.605 = 5 × 521); Paket pro Kugel wie Quantums Magazin; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
+| Wavesplitter | traceRifle | void | average, power cycling, Detonator Beam (100 Shots) | 39,0 | Quantum | 500 | 100 | 1,44 s | 38,8 s | 900 → 906 | 0,0 % | Override: Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-wavesplitter-average (Override); Timing nur aus Quantum; Schaden pro Shot 39,0 (Override) |
+| Whirling Ovation | rocketLauncher | strand | full charge (1 Shot) | 6.344,3 | Aegis | 7 | 7 | 0,00 s | 41,9 s | – → 9 | 0,0 % | Override: Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis.; Timing aus Zeile whirling-ovation-no-anticipation-fully-charged-argent-ordnance (Override); Timing nur aus Aegis |
 | Whisper of the Worm | sniperRifle | solar | keine (1 Shot) | 849,9 | Quantum | 38 | 38 | 1,98 s | 31,7 s | 72 → 70 | 0,0 % | Aegis misst nur mit Katalysator: Basis = 1.250,9 ÷ 1,472 (Quantum mit / ohne Katalysator); Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing nur aus Quantum |
 | Wicked Implement | scoutRifle | stasis | average, with manual shatters (60 Shots) | 93,3 | Quantum |  | 20 | 1,24 s | – | 260 → 260 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Winterbite | glaive | stasis | average, projectile, with shatter (18 Shots) | 1.469,0 | Aegis | 17 | 4 | 1,50 s | 24,0 s | 45 → 40 | 0,0 % | ⚠ Timing: Aegis 17 Shots in 24,0 s, Quantum 18 Shots in 23,9 s; Aegis gilt |
 | Wish-Ender | bow | kinetic | keine (1 Shot) | 522,9 | Quantum |  | 1 | 0,60 s | – | 43 → 43 | 64,2 % | Override: Aegis' Mittel 522,9 entspricht Quantums Precision 523; die Skala-Prüfung über den Einzeltreffer passt nicht, weil Aegis Pierce und Seeker mitzählt.; Timing aus Zeile primaries-bow-wish-ender (Override); Timing nur aus Quantum; Skala weicht um 64.2 % ab; Aegis gilt (Override) |
+| Wish-Keeper | bow | strand | Vorpal Weapon (1 Shot) | 213,8 | Quantum |  | 1 | 0,60 s | – | 50 → 50 | 0,1 % | Override: Aegis misst mit dem Katalysator Vorpal Weapon (+20 % für Primaries laut Clarity): 256,5 ÷ 1,2 = 213,75; Quantum ohne Katalysator bestätigt 214. Der Katalysator gibt ×1,2.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-bow-wish-keeper (Override); Timing nur aus Quantum; Schaden pro Shot 213,8 (Override) |
 | Witherhoard | grenadeLauncher | kinetic | direct impact (1 Shot) | 2.046,1 | Quantum | 20 | 1 | 1,62 s | 90,0 s | – → 19 | 0,6 % | Override: Aegis' „direct impact“ zählt die volle Blight pro Schuss; dazu passt Quantums „passive“ (neu schießen, wenn die Blight ausläuft: 20 × 2046 = 40.920 gegen Quantum 41.180). Mit Katalysator lädt die Waffe weggesteckt nach (Quantum „cata, single blight, boss“, 50 s).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-grenade-launcher-witherhoard-passive (Override); Timing nur aus Quantum; Katalysator-Timing: 20 Shots, Magazin 1, Zeit bis leer 50,0 s |
 | Xenophage | machineGun | solar | keine (1 Shot) | 736,4 | Aegis | 39 | 13 | 2,82 s | 23,6 s | 120 → 120 | 0,1 % | ⚠ Timing: Aegis 39 Shots in 23,6 s, Quantum 29 Shots in 20,1 s; Aegis gilt |
 
@@ -144,10 +156,12 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | Malfeasance | Vorpal Weapon | Katalysator | ×1,198 | – | – | – |
 | One Thousand Voices | catalyst | Katalysator | ×1,454 | – | – | – |
 | Ruinous Effigy | ⚠ Catalyst | Katalysator | ×1,293 | 7 s | Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] increased weapon damage for 7 seconds. | Faktor aus Quantum (cata / ohne) |
+| The Lament | ⚠ Burning Ambition | Katalysator | ×1,113 | – | Direct Hits against Scorched Enemies apply additional Scorch on a 0.5 second cooldown: | – |
 | Truth | ⚠ Reaper's Tithe x4 | Katalysator | ×1,400 | 15 s | Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks) | Faktor aus Einzeltreffern; Mittelwert pro Shot wäre ×1,448 (9 gegen 12 Shots) |
 | Vex Mythoclast | ⚠ Temporal Unlimiter | Perk | ×12,503 | – | Kills in Auto Rifle mode grant 'Overcharge' stacks. Maximum of 6 Stacks. | – |
 | Vex Mythoclast | ⚠ Catalyst | Katalysator | ×1,204 | 5 s | Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds. | Faktor aus Quantum (cata / ohne) |
 | Whisper of the Worm | ⚠ Whispered Breathing | Katalysator | ×1,472 | 1 s | – | – |
+| Wish-Keeper | Catalyst | Katalysator | ×1,200 | – | – | Faktor aus dem Text (Override) |
 
 ## Katalysatoren
 
@@ -161,6 +175,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Arbalest | special | Timing | Magazin 5 → 6, Shots 21 → 22, Zeit bis leer 24,2 → 24,6 s, rpm 56 → 56 | Passively grants: |
 | Bad Juju | primary | keine | – | String of Curses's maximum duration is increased by 2 seconds (5.5🠚7.5). |
 | Bastion | special | unbekannt | – | Dealing Melee Damage refills 20% of the Magazine (rounded up) and grants ? Handling for ? seconds. |
+| Black Talon | heavy | unbekannt | – | Due to an unresolved bug, this catalyst does not function. |
 | Borealis | special | unbekannt | – | Passively grants 20 Reload Speed. |
 | Buried Bloodline | special | unbekannt | – | While Devour is active, grants the following benefits: |
 | Centrifuse | primary | keine | – | While you are Amplified, Overcharge Capacitor will continuously build at a rate of 7% charge per second and no longer pa |
@@ -179,11 +194,13 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Delicate Tomb | special | unbekannt | – | Picking up Ionic Traces refill 4 ammo from reserves. |
 | Deterministic Chaos | heavy | unbekannt | – | Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as h |
 | Devil's Ruin | primary | unbekannt | – | Elemental Pickup Interactions grant 30% [10%] increased damage for a variable duration based on the pickup. Can be activ |
+| Divinity | special | unbekannt | – | Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits |
 | Dragon's Breath | heavy | keine | – | Doubles the rate of passive Composite Propellant generation (6🠚3 Seconds per stack). |
 | Duality | special | Timing | Magazin 6 → 8, Shots 15 → 17, Zeit bis leer 12,7 → 14,3 s, rpm 74 → 74 | Grants 20 Range and increases Magazine Size by 2 (6🠚8) |
 | Edge of Action | special | keine | – | Kills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence). |
 | Edge of Concurrence | special | unbekannt | – | Grants the following after sprinting for 1.5 seconds with the weapon readied: |
 | Edge of Intent | special | keine | – | Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters. |
+| Ergo Sum | special | unbekannt | – | Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade. |
 | Eriana's Vow | special | Timing | Magazin 6 → 9, Shots 32 → 35, Zeit bis leer 27,1 → 25,6 s, rpm 99 → 99 | Increases the magazine size by 3 (6🠚9). |
 | Euphony | special | unbekannt | – | Weapon Hits grant Stacks of Enlightened Action for 2 seconds. Maximum of 12 Stacks. |
 | Ex Diris | special | keine | – | Weapon Kills grant Amplified for 15 seconds. |
@@ -194,10 +211,12 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Forerunner | special | keine | – | Holding [Reload] within 4 seconds of a kill consumes 4 ammo, refills the magazine, and grants 'The Rock'. |
 | Gjallarhorn | heavy | Timing | Magazin 1 → 2, Shots 10 → 11, Zeit bis leer 27,0 → 18,2 s, rpm 93 → 93 | Increases Magazine Size by 1 (1🠚2). |
 | Grand Overture | heavy | keine | – | Grants 20 Handling and 20 Stability. |
+| Graviton Lance | primary | unbekannt | – | Grants 20 Range. |
 | Graviton Spike | primary | unbekannt | – | Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another. |
 | Hard Light | primary | unbekannt | – | Grants 25 Stability. |
 | Hawkmoon | primary | Timing | Magazin 8 → 9, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 140 → 140 | Increases Magazine Size by 1 (8🠚9). |
 | Heir Apparent | heavy | unbekannt | – | Arc Shield gains 75% [25%] Damage Resistance. |
+| Heirloom | special | keine | – | Scorch and Ignitions that originate from this weapon deal 5% increased damage. |
 | Hierarchy of Needs | primary | unbekannt | – | Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds: |
 | Izanagi's Burden | special | unbekannt | – | Increases the damage bonus of Honed Edge x4 by 20%, granting the following values: |
 | Jötunn | special | unbekannt | – | Grants the Cornered trait: |
@@ -228,7 +247,9 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Revision Zero | primary | unbekannt | – | Grants the Under Pressure trait: |
 | Riskrunner | primary | unbekannt | – | Grants 30 Range. |
 | Ruinous Effigy | special | Schaden | – | Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] in |
+| Salvation's Grip | heavy | keine | – | Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor. |
 | Service of Luzaku | heavy | keine | – | Teeming Nests can be harvested into a collectible Tangle after spawning 6 Threadlings. This destroys the nest. |
+| Skyburner's Oath | primary | unbekannt | – | Grants 20 Reload Speed. |
 | Slayer's Fang | special | unbekannt | – | Grants the Stats For All trait: |
 | Sleeper Simulant | heavy | Timing | Magazin 4 → 4, Shots 14 → 16, Zeit bis leer 22,3 → 22,5 s, rpm 37 → 44 | Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774) without reducing damage. |
 | Still Hunt | special | unbekannt | – | Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'. |
@@ -239,10 +260,12 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Symmetry | primary | unbekannt | – | Grants 10 Reload Speed and 10 Handling. |
 | Tarrabah | primary | keine | – | Reloading after scoring kills with Tarrabah overfills the magazine from reserves based on the number of Kills scored. |
 | Telesto | special | Timing | Magazin 4 → 7, Shots 16 → 19, Zeit bis leer 24,7 → 27,5 s, rpm 43 → 43 | Increases the Magazine Size by 3 (4🠚7) and grants 40 Ammo Generation. |
+| Tessellation | special | unbekannt | – | Your explosive [projectile \| shape \| language] inherents subclass debuffs based on its element. |
 | The Chaperone | special | unbekannt | – | Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air. |
 | The Colony | heavy | Timing | Magazin 7 → 8, Shots 24 → 25, Zeit bis leer 14,8 → 15,2 s, rpm 139 → 139 | Increases Magazine Size by 1 (7🠚8) and grants 30 Ammo Generation. |
 | The Fourth Horseman | special | Timing | Magazin 4 → 5, Shots 20 → 20, Zeit bis leer 12,2 → 12,1 s, rpm 109 → 105 | Grants 40 Reload Speed and Increases Magazine Size by 1 (4🠚5) |
 | The Jade Rabbit | primary | unbekannt | – | Grants 30 Stability. |
+| The Lament | heavy | Schaden | – | Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown |
 | The Last Word | primary | unbekannt | – | Upon readying the weapon after scoring kills with your other Weapons: |
 | The Manticore | primary | keine | – | While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield |
 | The Navigator | special | unbekannt | – | Hold [Reload] to activate Grapple Tangle mode. |
@@ -264,10 +287,13 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Vex Mythoclast | primary | Schaden | – | Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced  |
 | Vexcalibur | special | unbekannt | – | Grants the Grave Robber trait: |
 | Vigilance Wing | primary | unbekannt | – | Grants the Ensemble trait: |
+| Wavesplitter | special | unbekannt | – | Grants 10 Range and 30 Ammo Generation. |
+| Whirling Ovation | heavy | keine | – | Fully charged rockets overpenetrate through Minor and Elite combatants, leaving a Solar Grenade behind at each combatant |
 | Whisper of the Worm | heavy | Schaden | – | Grants 30 Reload Speed. |
 | Wicked Implement | primary | unbekannt | – | Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity. |
 | Winterbite | heavy | keine | – | Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor. |
 | Wish-Ender | primary | unbekannt | – | Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does |
+| Wish-Keeper | primary | Schaden | – | Increases Snareweaver Trap duration by 10 seconds (15🠚25). |
 | Witherhoard | special | Timing | Magazin 1 → 1, Shots 20 → 20, Zeit bis leer 90,0 → 50,0 s, rpm 19 → 59 | Grants 40 Handling. |
 | Xenophage | heavy | unbekannt | – | Weapon Kills grant a Stack of Rampage. Maximum of 3 Stacks. Stacks expire one at a time every 🡅4.5 seconds. |
 
@@ -277,24 +303,12 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | --- | --- | --- |
 | Anarchy | grenadeLauncher | keine Aegis-Zeile ohne fremde Annahmen |
 | Barrow-Dyad | submachineGun | keine Aegis-Zeile ohne fremde Annahmen |
-| Black Talon | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
-| Divinity | traceRifle | keine Aegis-Zeile ohne fremde Annahmen |
-| Ergo Sum | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Fafnir | linearFusionRifle | kein Timing: Aegis: kein Reload in den Notizen; keine Quantum-Zeile |
-| Graviton Lance | pulseRifle | keine Aegis-Zeile ohne fremde Annahmen |
 | Heartshadow | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
-| Heirloom | bow | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Praxic Blade | sword | kein Timing: keine Quantum-Zeile |
 | Prometheus Lens | traceRifle | kein Timing: keine Quantum-Zeile |
-| Salvation's Grip | grenadeLauncher | Skala Aegis gegen Quantum weicht um 58.8 % ab |
-| Skyburner's Oath | scoutRifle | keine Aegis-Zeile ohne fremde Annahmen |
-| Tessellation | fusionRifle | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | The Huckleberry | submachineGun | keine Aegis-Zeile ohne fremde Annahmen |
-| The Lament | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Turncoat | handCannon | kein Timing: keine Quantum-Zeile |
-| Wavesplitter | traceRifle | keine Aegis-Zeile ohne fremde Annahmen |
-| Whirling Ovation | rocketLauncher | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
-| Wish-Keeper | bow | keine Aegis-Zeile ohne fremde Annahmen |
 | Wolfsbane | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Worldline Zero | sword | keine Aegis-Zeile ohne fremde Annahmen |
 
@@ -316,7 +330,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Delicate Tomb | ADS | ohne hipfire der Basiszeile |
 | Deterministic Chaos | average, with volatile damage, excludes weaken, Target Lock, single mag | Katalysator: Target Lock |
 | Devil's Ruin | Pyrogenesis, Collective Action | Katalysator-Zeile mit kleinerem Wert (×0,350): anderer Modus |
-| Divinity | average, Penance, excludes debuff, Jolting Feedback, Focused Fury | Katalysator: Jolting Feedback; Katalysator: Focused Fury |
 | Duality | hipfire, body | ohne ADS der Basiszeile |
 | Edge of Concurrence | Lightning Seeker | ohne projectile der Basiszeile |
 | Ergo Sum | lightweight frame, Jagged Edge, 64 impact, heavy | ohne light der Basiszeile |
@@ -331,7 +344,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Finality's Auger | Ruinscribe Turret Mode, marked, entire turret duration | nicht modelliert: marked |
 | Forerunner | The Rock, excludes impact | Katalysator: The Rock |
 | Grand Overture |  | ohne Missile Loaded, Volley Ready der Basiszeile |
-| Graviton Lance | burst, Vorpal Weapon | Katalysator: Vorpal Weapon |
 | Graviton Spike | arc mode | ohne stasis mode der Basiszeile |
 | Graviton Spike | average, overcharging both modes, typical boss model, Temporal Alignment | nicht modelliert: Temporal Alignment |
 | Hawkmoon | Illegally Modded Holster, Paracausal Shot, full mag | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
@@ -366,9 +378,8 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Riskrunner | Arc Conductor, no chains | nicht modelliert: no chains |
 | Riskrunner | average, Arc Conductor, Peacekeepers | Exotic-Rüstung: Peacekeepers |
 | Ruinous Effigy |  | gleiche Annahmen wie die Basiszeile |
-| Salvation's Grip |  | ohne average, charged der Basiszeile |
+| Salvation's Grip | average, charged | gleiche Annahmen wie die Basiszeile |
 | Salvation's Grip | average, charged, Hail the Storm | Artefakt: Hail the Storm |
-| Skyburner's Oath | ADS, Cabal | nicht modelliert: Cabal |
 | Skyburner's Oath | average, hipfire, with ignitions, Burning Ambition, Cabal | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Skyburner's Oath | average, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Cabal | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Still Hunt | Cayde's Retribution, all three shots | gleiche Annahmen wie die Basiszeile |
@@ -379,6 +390,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Tarrabah | Ravenous Beast | gleiche Annahmen wie die Basiszeile |
 | Tarrabah | average, Ravenous Beast, Peacekeepers | Exotic-Rüstung: Peacekeepers |
 | Tessellation | Property: Irreducible, Transcendent, Transcendence bonus included | nicht modelliert: Transcendent |
+| Tessellation |  | ohne Property: Irreducible der Basiszeile |
 | The Huckleberry | average, Bull Rider | nicht modelliert: Bull Rider |
 | The Huckleberry | average, Bull Rider, Peacekeepers | nicht modelliert: Bull Rider; Exotic-Rüstung: Peacekeepers |
 | The Jade Rabbit | Fated Missile x15 | nicht modelliert: Fated Missile x15 |
@@ -399,12 +411,10 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Touch of Malice | blight | nicht modelliert: blight |
 | Truth |  | ohne average, Prototype Truthseeker der Basiszeile |
 | Turncoat | Overwhelming Power | nicht modelliert: Overwhelming Power |
-| Wavesplitter | average, power cycling, Detonator Beam | Katalysator: Detonator Beam |
 | Wavesplitter | average, Supercharged Battery, Detonator Beam | Katalysator: Detonator Beam |
-| Whirling Ovation | full charge | ohne no charge der Basiszeile |
-| Whirling Ovation | 2/3 charge | ohne no charge der Basiszeile |
-| Whirling Ovation | 1/3 charge | ohne no charge der Basiszeile |
-| Wish-Keeper | Vorpal Weapon | fremder Perk: Vorpal Weapon |
+| Whirling Ovation | no charge | ohne full charge der Basiszeile |
+| Whirling Ovation | 2/3 charge | ohne full charge der Basiszeile |
+| Whirling Ovation | 1/3 charge | ohne full charge der Basiszeile |
 | Witherhoard | ground pool | ohne direct impact der Basiszeile |
 | Wolfsbane | Honed Edge, Jagged Edge, Nano-Assault HLLHLLHLLHLLH, Burning Ambition, includes ignition | fremder Perk: Burning Ambition |
 | Wolfsbane | average, Honed Edge, Jagged Edge, light, Burning Ambition, includes ignition | fremder Perk: Burning Ambition |

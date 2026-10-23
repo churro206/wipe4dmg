@@ -432,7 +432,219 @@
         "text": "2117ms reload"
       }
     ],
+    "base": "grenade-launcher-salvation-s-grip",
     "timing": { "from": "Aegis", "row": "salvation-s-grip-uncharged" }
+  },
+  {
+    "weapon": "The Lament",
+    "reason": "Aegis Sustained zählt Munition (65), der Grundwert gilt pro Combo „2L1H1R“ (Base 4561 = Weapons „average, 2L1H1R“ 4560,9): 13 Combos in 40,5 s. Timing mit Lucent Blades x3 und Argent Blade (Charge Rate) wie bei Aegis; ihr Schaden steckt nicht im Grundwert.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "text": "13 combos"
+      },
+      {
+        "source": "aegis",
+        "entry": "sword-the-lament-average-2l1h1r",
+        "text": "\"perShot\":4560.949"
+      }
+    ],
+    "aegisWins": true,
+    "perShotFromTiming": true,
+    "timing": {
+      "from": "Aegis",
+      "row": "the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+      "noReloads": true,
+      "shots": 13
+    }
+  },
+  {
+    "weapon": "Black Talon",
+    "reason": "Aegis Sustained zählt Munition (73), der Grundwert gilt pro Combo „2H2L“ (3141): 9 Combos plus ein Heavy in 25,1 s; der letzte Heavy fällt weg. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
+        "text": "9 combos + 1H"
+      }
+    ],
+    "aegisWins": true,
+    "perShotFromTiming": true,
+    "timing": {
+      "from": "Aegis",
+      "row": "black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
+      "noReloads": true,
+      "shots": 9
+    }
+  },
+  {
+    "weapon": "Ergo Sum",
+    "reason": "Lightweight Frame mit Unplanned Reprieve, 1H2L: Grundwert pro Combo 3293 (Aegis Sustained, ohne den 5 % Transcendence-Bonus: Weapons 3458,1 ÷ 1,05 = 3293), 10 Combos plus ein Heavy in 20,4 s. Pack Hunter gibt nur Handling und Reload neben Verbündeten. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+        "text": "10 combos + 1H"
+      }
+    ],
+    "aegisWins": true,
+    "perShotFromTiming": true,
+    "timing": {
+      "from": "Aegis",
+      "row": "ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+      "noReloads": true,
+      "shots": 10
+    }
+  },
+  {
+    "weapon": "Heirloom",
+    "reason": "Ungeladen wie die Basiszeile (Sustained Base 856 = Weapons 855,7): 20 Pfeile in 22,5 s, Bogen ohne Reload. Timing mit Argent Quiver (Reload Speed) wie bei Aegis.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "heirloom-uncharged-argent-quiver",
+        "text": "\"base\":856"
+      }
+    ],
+    "aegisWins": true,
+    "timing": {
+      "from": "Aegis",
+      "row": "heirloom-uncharged-argent-quiver",
+      "noReloads": true
+    }
+  },
+  {
+    "weapon": "Tessellation",
+    "reason": "Schaden aus Weapons „Property: Irreducible“ (2557,6, ohne Transcendent); Timing aus Aegis Sustained (22 Schuss, 4567 ms Reload, volle Granaten-Energie).",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "fusion-rifle-tessellation-property-irreducible",
+        "text": "Property: Irreducible"
+      },
+      {
+        "source": "aegis",
+        "entry": "tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
+        "text": "666ms charge; 4567ms reload"
+      }
+    ],
+    "base": "fusion-rifle-tessellation-property-irreducible",
+    "aegisWins": true,
+    "timing": {
+      "from": "Aegis",
+      "row": "tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated"
+    }
+  },
+  {
+    "weapon": "Whirling Ovation",
+    "reason": "Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "whirling-ovation-no-anticipation-fully-charged-argent-ordnance",
+        "text": "\"base\":6344"
+      }
+    ],
+    "base": "rocket-launcher-whirling-ovation-full-charge",
+    "aegisWins": true,
+    "timing": {
+      "from": "Aegis",
+      "row": "whirling-ovation-no-anticipation-fully-charged-argent-ordnance"
+    }
+  },
+  {
+    "weapon": "Divinity",
+    "reason": "Aegis misst nur mit beiden Katalysator-Perks (Jolting Feedback, Focused Fury) und Jolt; Quantum „base damage, no buffs“ (mit Penance) gilt: 15 pro Schuss (Precision).",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "specials-trace-rifle-divinity-base-damage-no-buffs",
+        "text": "Still assumes Penance"
+      }
+    ],
+    "base": "trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
+    "perShot": 15,
+    "timing": {
+      "from": "Quantum",
+      "row": "specials-trace-rifle-divinity-base-damage-no-buffs"
+    }
+  },
+  {
+    "weapon": "Wavesplitter",
+    "reason": "Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "specials-trace-rifle-wavesplitter-average",
+        "text": "\"precisionDamage\":39"
+      }
+    ],
+    "base": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
+    "perShot": 39,
+    "timing": {
+      "from": "Quantum",
+      "row": "specials-trace-rifle-wavesplitter-average"
+    }
+  },
+  {
+    "weapon": "Graviton Lance",
+    "reason": "Aegis misst nur mit Katalysator (Vorpal Weapon); Quantum ohne gilt: 71 pro Kugel (Precision).",
+    "quotes": [
+      {
+        "source": "quantum",
+        "entry": "primaries-pulse-rifle-graviton-lance",
+        "text": "\"precisionDamage\":71"
+      }
+    ],
+    "base": "pulse-rifle-graviton-lance-burst-vorpal-weapon",
+    "perShot": 71,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-pulse-rifle-graviton-lance"
+    }
+  },
+  {
+    "weapon": "Skyburner's Oath",
+    "reason": "ADS ohne Ignitions: Aegis 114,3 = Quantum „ADS“ 116 (1,5 %); „Cabal“ ändert diesen Wert also nicht.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "scout-rifle-skyburner-s-oath-ads-cabal",
+        "text": "114 impact"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-scout-rifle-skyburner-s-oath-ads",
+        "text": "\"variant\":\"ADS\""
+      }
+    ],
+    "base": "scout-rifle-skyburner-s-oath-ads-cabal",
+    "aegisWins": true,
+    "timing": {
+      "from": "Quantum",
+      "row": "primaries-scout-rifle-skyburner-s-oath-ads"
+    }
+  },
+  {
+    "weapon": "Wish-Keeper",
+    "reason": "Aegis misst mit dem Katalysator Vorpal Weapon (+20 % für Primaries laut Clarity): 256,5 ÷ 1,2 = 213,75; Quantum ohne Katalysator bestätigt 214. Der Katalysator gibt ×1,2.",
+    "quotes": [
+      {
+        "source": "aegis",
+        "entry": "bow-wish-keeper-vorpal-weapon",
+        "text": "416 seeker (2)"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-bow-wish-keeper",
+        "text": "\"precisionDamage\":214"
+      }
+    ],
+    "base": "bow-wish-keeper-vorpal-weapon",
+    "perShot": 213.75,
+    "catalystFactor": 1.2,
+    "timing": { "from": "Quantum", "row": "primaries-bow-wish-keeper" }
   },
   {
     "weapon": "The Prospector",

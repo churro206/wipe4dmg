@@ -831,6 +831,129 @@
     }
   },
   {
+    "id": "black-talon",
+    "code": 120,
+    "name": "Black Talon",
+    "manifestHash": 3766045777,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "sword",
+    "element": "void",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 21.499,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 25.117 s − 0 reloads × 0 s) ÷ 72 intervals within magazines (ADR 0013); 9 shots in 25.117 s (override)"
+      }
+    },
+    "magazine": {
+      "value": 9,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 9,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 3141,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: light"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "crow-s-wings",
+        "name": "Crow's Wings",
+        "description": "[Heavy Attack]  : Fire a Heavy projectile attack that suppresses targets. Hitting a target already suppressed spreads the effect to nearby targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Reversal, Black Talon Catalyst",
+      "description": "Due to an unresolved bug, this catalyst does not function.\nThe intended behavior was that damage against Void-Debuffed enemies is increased per unique Void-Debuff applied to the target, at a rate of 10% per debuff.",
+      "effect": "unknown"
+    }
+  },
+  {
     "id": "borealis",
     "code": 3,
     "name": "Borealis",
@@ -3331,6 +3454,128 @@
     }
   },
   {
+    "id": "divinity",
+    "code": 121,
+    "name": "Divinity",
+    "manifestHash": 4103414242,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "traceRifle",
+    "element": "arc",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 904.242,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 34 s − 2 reloads × 1.44 s) ÷ 469 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 194,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 470,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1440,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 15,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, Penance, excludes debuff, Jolting Feedback, Focused Fury"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "judgment",
+        "name": "Judgment",
+        "description": "Sustained damage with this weapon envelops the target in a field that weakens and stuns them. Strong against [Disruption] Overload Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Jolting Feedback, Focused Fury, Divinity Catalyst",
+      "description": "Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits required to 13.\nScoring 68 Precision Hits grants 25% increased damage for 11 seconds. Stowing or Reloading the weapon resets the Precision Hit counter.\nBuff remains active while stowed.",
+      "effect": "unknown"
+    }
+  },
+  {
     "id": "dragon-s-breath",
     "code": 40,
     "name": "Dragon's Breath",
@@ -3977,6 +4222,206 @@
       "name": "Heal Clip, Edge of Intent Catalyst",
       "description": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
       "effect": "none"
+    }
+  },
+  {
+    "id": "ergo-sum",
+    "code": 122,
+    "name": "Ergo Sum",
+    "manifestHash": 1681583613,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "sword",
+    "element": "kinetic",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 29.39,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 20.415 s − 0 reloads × 0 s) ÷ 50 intervals within magazines (ADR 0013); 10 shots in 20.415 s (override)"
+      }
+    },
+    "magazine": {
+      "value": 10,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 10,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-ergo-sum-jagged-edge-64-impact-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 3293,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-ergo-sum-jagged-edge-64-impact-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: Jagged Edge, 64 impact, light"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-ergo-sum-jagged-edge-64-impact-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-ergo-sum-jagged-edge-64-impact-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "arc-conductor",
+        "name": "Arc Conductor",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "gathering-light",
+        "name": "Gathering Light",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "insectoid-robot-grenades",
+        "name": "Insectoid Robot Grenades",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "sacred-flame",
+        "name": "Sacred Flame",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "stormbringer",
+        "name": "Stormbringer",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "the-perfect-fifth",
+        "name": "The Perfect Fifth",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "unplanned-reprieve",
+        "name": "Unplanned Reprieve",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "wolfpack-rounds",
+        "name": "Wolfpack Rounds",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Transcendent Steel, Ergo Sum Catalyst",
+      "description": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
+      "effect": "unknown"
     }
   },
   {
@@ -5281,6 +5726,128 @@
     }
   },
   {
+    "id": "graviton-lance",
+    "code": 123,
+    "name": "Graviton Lance",
+    "manifestHash": 3628991658,
+    "gameVersion": "9.7.0",
+    "weaponType": "pulseRifle",
+    "element": "void",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-graviton-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 300,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-graviton-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 30,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-graviton-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-graviton-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1160,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-graviton-lance",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-graviton-lance-burst-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 71,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-graviton-lance-burst-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: burst, Vorpal Weapon"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-graviton-lance-burst-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-graviton-lance-burst-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "black-hole",
+        "name": "Black Hole",
+        "description": "Second shot of a burst rips a hole through space-time, doing high damage and recoil with no falloff.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Vorpal Weapon, Turnabout, Graviton Lance Catalyst",
+      "description": "Grants 20 Range.\nGrants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nAlso grants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
+      "effect": "unknown"
+    }
+  },
+  {
     "id": "graviton-spike",
     "code": 109,
     "name": "Graviton Spike",
@@ -5839,6 +6406,129 @@
       "name": "Legion's Bulwark, Heir Apparent Catalyst",
       "description": "Arc Shield gains 75% [25%] Damage Resistance.\nRefills 50% of the magazine upon Arc Shield being depleted.",
       "effect": "unknown"
+    }
+  },
+  {
+    "id": "heirloom",
+    "code": 124,
+    "name": "Heirloom",
+    "manifestHash": 1685137410,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "bow",
+    "element": "solar",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 50.705,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 22.483 s − 0 reloads × 0 s) ÷ 19 intervals within magazines (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 20,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 20,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 855.652,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: uncharged"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "bolt-thrower",
+        "name": "Bolt Thrower",
+        "description": "This weapon fires high-powered explosive bolts. Strong against [Stagger] Unstoppable Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Heirloom Catalyst",
+      "description": "Scorch and Ignitions that originate from this weapon deal 5% increased damage.\nDirect Hits with Charged Shots apply 20|40|60 Scorch Stacks at Charge Level 1|2|3. Scorch application is unaffected by Ember of Ashes.\nGrants 10% increased damage to Scorched enemies.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
+      "effect": "none"
     }
   },
   {
@@ -9984,6 +10674,129 @@
     }
   },
   {
+    "id": "salvation-s-grip",
+    "code": 125,
+    "name": "Salvation's Grip",
+    "manifestHash": 370712896,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "grenadeLauncher",
+    "element": "stasis",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 97.245,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 19.308 s − 3 reloads × 2.117 s) ÷ 21 intervals within magazines (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 8,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 25,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1500,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 2.117 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 794.941,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: none"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "cryocannon",
+        "name": "Cryocannon",
+        "description": "[Shoot]  : Hold to charge; release to fire.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Rimestealer, Salvation's Grip Catalyst",
+      "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
+      "effect": "none"
+    }
+  },
+  {
     "id": "service-of-luzaku",
     "code": 13,
     "name": "Service of Luzaku",
@@ -10103,6 +10916,128 @@
       "name": "Service of Luzaku Catalyst",
       "description": "Teeming Nests can be harvested into a collectible Tangle after spawning 6 Threadlings. This destroys the nest.\nThese tangles ignore the global Tangle cooldown.",
       "effect": "none"
+    }
+  },
+  {
+    "id": "skyburner-s-oath",
+    "code": 131,
+    "name": "Skyburner's Oath",
+    "manifestHash": 4255268456,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "scoutRifle",
+    "element": "solar",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 150,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 20,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1240,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-skyburner-s-oath-ads-cabal",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 114.329,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-skyburner-s-oath-ads-cabal",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: ADS, Cabal"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-skyburner-s-oath-ads-cabal",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-skyburner-s-oath-ads-cabal",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "slug-rifle",
+        "name": "Slug Rifle",
+        "description": "This weapon lobs explosive slugs. When you're aiming down sights, the slugs travel fast and straight. When you're firing from the hip, the explosion is larger and applies Scorch to the target.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Skyburner Catalyst",
+      "description": "Grants 20 Reload Speed.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.\nDirect Hits against Scorched Enemies apply 10 [4] additional Scorch per Direct Hit (15 [9?] with Ember of Ashes) on a 0.5 second cooldown.\nScoring 11 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. Hit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage.",
+      "effect": "unknown"
     }
   },
   {
@@ -11438,6 +12373,129 @@
     }
   },
   {
+    "id": "tessellation",
+    "code": 126,
+    "name": "Tessellation",
+    "manifestHash": 3561203890,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "fusionRifle",
+    "element": "kinetic",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 18.927,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 70.761 s − 3 reloads × 4.567 s) ÷ 18 intervals within magazines (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 6,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 22,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1397,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 4.567 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-tessellation-property-irreducible",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 2557.58,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-tessellation-property-irreducible",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: Property: Irreducible"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-tessellation-property-irreducible",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-tessellation-property-irreducible",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "property-undecidable",
+        "name": "Property: Undecidable",
+        "description": "This [weapon|instrument|topology] adapts its damage type to match your equipped grenade. Final blows grant grenade and Transcendence energy.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Property: Unavoidable, Tessellation Catalyst",
+      "description": "Your explosive [projectile | shape | language] inherents subclass debuffs based on its element.\nDeals an additional instance of 165 [10] damage in a 10 meter radius and applies a debuff matching its element:\n•70 Scorch Stacks (80 with Ember of Ashes)\n•Weaken for 6 [2.5] seconds\n•Blind for 9 seconds\n•80 Slow Stacks\n•Sever for 5 seconds (7.5 with Thread of Continuity)\nEffects are applied after the explosion.",
+      "effect": "unknown"
+    }
+  },
+  {
     "id": "the-chaperone",
     "code": 15,
     "name": "The Chaperone",
@@ -12002,6 +13060,149 @@
       "name": "Jade Rabbit Catalyst",
       "description": "Grants 30 Stability.\nHold [Reload] to consume all Fate of All Fools stacks and load a Micro-Missile. Missile has a blast radius of 8 meters with a maximum damage falloff of 45%, and deals increased damage based on the number of stacks consumed.\nDeals 293 damage (122 impact/171 explosive) [?] at base, becoming heavily weighted towards explosive damage as the stacks increase.\nDamage is increased by 107%|157%|193%|223%|315%|345% at 2|3|4|5|10|15 Stacks, with a fully charged missile dealing 1304 (281 impact/1023 explosive) [?] damage.\nMicro-Missile deals no self damage and can be used for rocket jumping.",
       "effect": "unknown"
+    }
+  },
+  {
+    "id": "the-lament",
+    "code": 127,
+    "name": "The Lament",
+    "manifestHash": 3487253372,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "sword",
+    "element": "solar",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 19.255,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 40.508 s − 0 reloads × 0 s) ÷ 64 intervals within magazines (ADR 0013); 13 shots in 40.508 s (override)"
+      }
+    },
+    "magazine": {
+      "value": 13,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 13,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 4561,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, 2L1H1R"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "banshee-s-wail",
+        "name": "Banshee's Wail",
+        "description": "[Block]  : Hold to rev the blade.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "burning-ambition",
+        "name": "Burning Ambition",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.1134,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r-burning-ambition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value 5077.945 / 4560.949 (base row sword-the-lament-average-2l1h1r)"
+          }
+        },
+        "durationSeconds": null,
+        "condition": "Direct Hits against Scorched Enemies apply additional Scorch on a 0.5 second cooldown:"
+      }
+    ],
+    "catalyst": {
+      "name": "Burning Ambition, The Lament Catalyst",
+      "description": "Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown\nScoring 3 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. This allows The Lament to Scorch through a singular revved attack.\nHit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage, and thus, triggers Revved Consumption's healing, granting 7HP per tick.",
+      "effect": "damage"
     }
   },
   {
@@ -14958,6 +16159,251 @@
     }
   },
   {
+    "id": "wavesplitter",
+    "code": 128,
+    "name": "Wavesplitter",
+    "manifestHash": 1852863732,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "traceRifle",
+    "element": "void",
+    "ammo": "special",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 906.174,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived: (Time to Empty 38.8 s − 4 reloads × 1.44 s) ÷ 499 intervals (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 100,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": 500,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1440,
+      "source": {
+        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 39,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, power cycling, Detonator Beam"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "harmonic-laser",
+        "name": "Harmonic Laser",
+        "description": "Laser damage has three power levels that oscillate while the trigger is held down.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Detonator Beam, Attrition Orbs, Wavesplitter Catalyst",
+      "description": "Grants 10 Range and 30 Ammo Generation.\nScoring 25 Hits within ? seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.\nScoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy. Hit counter persists through stow.",
+      "effect": "unknown"
+    }
+  },
+  {
+    "id": "whirling-ovation",
+    "code": 129,
+    "name": "Whirling Ovation",
+    "manifestHash": 1202007252,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "rocketLauncher",
+    "element": "strand",
+    "ammo": "heavy",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row whirling-ovation-no-anticipation-fully-charged-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 8.592,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row whirling-ovation-no-anticipation-fully-charged-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Derived: (TtE 41.898 s − 0 reloads × 0 s) ÷ 6 intervals within magazines (ADR 0013)"
+      }
+    },
+    "magazine": {
+      "value": 7,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row whirling-ovation-no-anticipation-fully-charged-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "totalShots": {
+      "value": 7,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row whirling-ovation-no-anticipation-fully-charged-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Sustained), row whirling-ovation-no-anticipation-fully-charged-argent-ordnance",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-whirling-ovation-full-charge",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 6344.348,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-whirling-ovation-full-charge",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: full charge"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-whirling-ovation-full-charge",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-whirling-ovation-full-charge",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "coronal-culmination",
+        "name": "Coronal Culmination",
+        "description": "[Shoot]  : Hold to charge; release to fire.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Whirling Ovation Catalyst",
+      "description": "Fully charged rockets overpenetrate through Minor and Elite combatants, leaving a Solar Grenade behind at each combatant's death location for 2? seconds.\nSolar Grenade can benefit from the Touch of Flame Aspect, but not from Sunbracers.",
+      "effect": "none"
+    }
+  },
+  {
     "id": "whisper-of-the-worm",
     "code": 51,
     "name": "Whisper of the Worm",
@@ -15497,6 +16943,181 @@
       "name": "One for All, Wish-Ender Catalyst",
       "description": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
       "effect": "unknown"
+    }
+  },
+  {
+    "id": "wish-keeper",
+    "code": 130,
+    "name": "Wish-Keeper",
+    "manifestHash": 2910326942,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "bow",
+    "element": "strand",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-wish-keeper",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 50,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-wish-keeper",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 1,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-wish-keeper",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-wish-keeper",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 600,
+      "source": {
+        "name": "Quantum Damage-ics (primaries), row primaries-bow-wish-keeper",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "unverified"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis average)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-wish-keeper-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 213.75,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-wish-keeper-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: Vorpal Weapon"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-wish-keeper-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-wish-keeper-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "snareweaver",
+        "name": "Snareweaver",
+        "description": "Precision hits and final blows build energy towards a Snareweaver arrow that can be fired from the hip. On impact, Snareweaver arrows create a pattern of traps that suspend nearby targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "snareweaver-ii",
+        "name": "Snareweaver II",
+        "description": "Precision hits and final blows build energy towards a Snareweaver arrow that can be fired from the hip. On impact, Snareweaver arrows create a pattern of traps that suspend nearby targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "snareweaver-iii",
+        "name": "Snareweaver III",
+        "description": "Precision hits and final blows build energy towards a Snareweaver arrow that can be fired from the hip. On impact, Snareweaver arrows create a pattern of traps that suspend nearby targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "snareweaver-iv",
+        "name": "Snareweaver IV",
+        "description": "Precision hits and final blows build energy towards a Snareweaver arrow that can be fired from the hip. On impact, Snareweaver arrows create a pattern of traps that suspend nearby targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "options": [
+      {
+        "id": "catalyst",
+        "name": "Catalyst",
+        "kind": "catalyst",
+        "bucketId": "weaponPerk",
+        "factor": {
+          "value": 1.2,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-wish-keeper-vorpal-weapon",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Derived (override): Aegis misst mit dem Katalysator Vorpal Weapon (+20 % für Primaries laut Clarity): 256,5 ÷ 1,2 = 213,75; Quantum ohne Katalysator bestätigt 214. Der Katalysator gibt ×1,2."
+          }
+        },
+        "durationSeconds": null,
+        "condition": null
+      }
+    ],
+    "catalyst": {
+      "name": "Enduring Snare Refit, Multi-Threaded Snare Refit, Vorpal Weapon Refit, Hatchling Refit",
+      "description": "Increases Snareweaver Trap duration by 10 seconds (15🠚25).\nIncreases the maximum number of Suspensions per linked trap wire up to 3.\nGrants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]\nGrants the Hatchling trait:\nScoring a Precision Kill or 3 kills within 3 seconds of each other spawns a Threadling at the target's location.",
+      "effect": "damage"
     }
   },
   {

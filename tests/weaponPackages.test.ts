@@ -350,6 +350,22 @@ describe("gaps closed by overrides and rules (2026-10-23)", () => {
   });
 });
 
+describe("swords and catalyst-only measurements (2026-10-23)", () => {
+  it("The Lament: one shot per combo, 13 combos in 40.5 s (Aegis counts ammo)", () => {
+    const w = byName("The Lament")!;
+    expect(value(w.totalShots)).toBe(13);
+    expect(value(w.damageInstances[0].damagePerTick)).toBeCloseTo(4561, 0);
+  });
+
+  it("Wish-Keeper: Aegis measures with Vorpal Weapon; without it ÷1.2, the catalyst gives ×1.2", () => {
+    const w = byName("Wish-Keeper")!;
+    expect(value(w.damageInstances[0].damagePerTick)).toBeCloseTo(213.75, 1);
+    expect(value(w.options!.find((o) => o.kind === "catalyst")!.factor)).toBe(
+      1.2,
+    );
+  });
+});
+
 describe("rules", () => {
   it("names a reason for every gap", () => {
     for (const gap of result.gaps) expect(gap.reason, gap.name).not.toBe("");
