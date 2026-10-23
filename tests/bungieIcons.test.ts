@@ -11,11 +11,15 @@ import rawEffects from "../src/data/effects.json";
 import rawSubclassEffects from "../src/data/subclass-effects.json";
 import rawIconRefs from "../src/data/icon-refs.json";
 import rawIcons from "../src/data/icons.json";
+import rawManifestWeapons from "../src/data/manifest-weapons.json";
+import rawPackages from "../src/data/weapon-packages.json";
 import {
   AbilityData,
   IconIndex,
   IconRef,
   ManifestAbilities,
+  ManifestWeapon,
+  Weapon,
   type ManifestAbility,
 } from "../src/data/schema";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
@@ -134,6 +138,20 @@ describe("icons data file", () => {
     for (const ref of collectIconRefs(allEffects, weapons, extras)) {
       expect(index.icons[ref.key], ref.key).toBeDefined();
     }
+  });
+
+  it("has an icon for every catalyst switch whose catalyst is in the manifest", () => {
+    const manifest = ManifestWeapon.array().parse(rawManifestWeapons.weapons);
+    const missing = Weapon.array()
+      .parse(rawPackages)
+      .filter(
+        (w) =>
+          w.catalyst !== undefined &&
+          manifest.find((m) => m.hash === w.manifestHash)?.catalyst &&
+          !index.icons[`catalyst:${w.id}`],
+      )
+      .map((w) => w.name);
+    expect(missing).toEqual([]);
   });
 
   it("points only to files in public/icons", () => {

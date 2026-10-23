@@ -171,7 +171,7 @@ const catalystRefs: IconRef[] = packages.flatMap((weapon) => {
   const catalyst = manifestWeapons.weapons.find(
     (w) => w.name === weapon.name,
   )?.catalyst;
-  return catalyst && weapon.options?.some((o) => o.kind === "catalyst")
+  return catalyst && weapon.catalyst !== undefined
     ? [
         {
           key: `catalyst:${weapon.id}`,
