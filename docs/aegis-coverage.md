@@ -8,176 +8,168 @@ Generiert von `npm run coverage` (`tests/lib/aegisCoverage.ts`), nicht von Hand 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
 | Weapons | 417 | 143 | 244 | 30 |
-| Sustained | 261 | 37 | 129 | 95 |
+| Sustained | 261 | 38 | 129 | 94 |
 | Swap | 204 | 47 | 102 | 55 |
 
 ## Was fehlt
 
-Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsliste für die nächsten Kategorie-Blöcke (Schwelle: `CLAUDE.md`, „Breite vor Genauigkeit“).
+Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`tests/lib/missingImpact.ts`). Die Wirkung kommt aus zwei Aegis-Zeilen desselben Items im selben Reiter, die sich nur um den Eintrag unterscheiden (größte Abweichung aller Paare); sie gilt für das Item, ist also eine Obergrenze für einen Build. Schwelle 2 % (`CLAUDE.md`, „Breite vor Genauigkeit“). Das ist die Arbeitsliste für die nächsten Kategorie-Blöcke.
 
-- Lucent Blades x3: 14
-- Transcendent: 11
-- Pack Hunter: 10
-- super: Song of Flame: 8
-- Roaring Flames x3: 7
-- assumes no other debuff: 6
-- Solar Fulmination: 6
-- excludes Transcendence 5% bonus: 5
-- melee: Grapple melee: 5
-- body: 4
-- both volleys: 4
-- Burning Ambition: 4
-- Harsh Refraction: 4
-- heavy attacks: 4
-- Jagged Edge: 4
-- pre-popped into 6 shot cycle: 4
-- super: Silence and Squall: 4
-- Wolfsbane (no package): 4
-- 1H2L combo: 3
-- blighted: 3
-- Combination Argent Blade: 3
-- full bow charge: 3
-- light attacks: 3
-- Praxic Blade (no package): 3
-- simulated: 3
-- super: Bladefury: 3
-- Sword Storm Combo: 3
-- Target Lock: 3
-- 1 mag: 2
-- 2L1H combo: 2
-- 2L1H1R combo: 2
-- 3L1H1R combo: 2
-- all 3 volleys: 2
-- assumes at least 2 orb pickups per mag: 2
-- auto-loaded: 2
-- Bull Rider: 2
-- Cabal: 2
-- caster frame: 2
-- Composite Propellant x5: 2
-- Conductive Cosmic Needle x3: 2
-- excludes Bolt Charge: 2
-- heavy spam: 2
-- Incendiary Rifle Rounds: 2
-- includes jolt: 2
-- includes Threadlings: 2
-- light attack spam: 2
-- light-heavy cycle: 2
-- max distance: 2
-- own damage: Unravel: 2
-- own damage: Witherhoard: 2
-- Pack Tactics (simplified underestimate of 3 stack start): 2
-- Pack Tactics x2: 2
-- precision: 2
-- projectile: 2
-- starts at 0 stacks: 2
-- super: Glacial Quake: 2
-- uncharged: 2
-- weapon: Bequest: 2
-- 1 charge: 1
-- 2 charges: 1
-- 2 rings: 1
-- 2H2L combo: 1
-- 3 body pellet shots into On Black Wings x3 slugs: 1
-- 4L1H1R combo: 1
-- 9 ammo consumed: 1
-- aerial lights: 1
-- all three casts: 1
-- Archer's Tempo: 1
-- Assault Mag: 1
-- assumes max frenzy: 1
-- assumes suspend tick every 3 shots: 1
-- axe heavy attack: 1
-- axe light attack spam: 1
-- Bait and Switch: 1
-- Barrow-Dyad (no package): 1
-- blight: 1
-- boss against wall: 1
-- charged: 1
-- Detonator Beam: 1
-- Envious Arsenal: 1
-- Facet of Command: 1
-- Facet of Ruin: 1
-- Fated Missile x15: 1
-- fireteam scaling: 1
-- Focused Fury: 1
-- full grenade uptime: 1
-- fully charged: 1
-- Grenades Prepped: 1
-- grounded: 1
-- grounded spam: 1
-- Hail the Storm: 1
-- held down: 1
-- hip-fire: 1
-- hitscan mode: 1
-- hone before rally: 1
-- Impetus: 1
-- includes ignition: 1
-- includes melee time: 1
-- includes Quantum Nova windup and splash: 1
-- includes rehone time: 1
-- includes submunitions: 1
-- Kinetic Impacts: 1
-- Lightning Seeker into six shot cycle: 1
-- lightweight frame: 1
-- Linear Fusion Mode: 1
-- manual reloads until The Grandmaster: 1
-- marked: 1
-- Marksman Sights: 1
-- max projectile height: 1
-- melee: Adaptive glaive: 1
-- melee: Cull's Shadow: 1
-- melee: Flechette Storm: 1
-- melee: Lightning Surge: 1
-- melee: Winterbite: 1
-- Moebius Quiver: 1
-- no chains: 1
-- no ignitions: 1
-- Overwhelming Power: 1
-- own damage: Alethonym: 1
-- own damage: Anarchy: 1
-- own damage: Area denial grenade launcher: 1
-- own damage: Finality's Auger: 1
-- own damage: Jolt: 1
-- own damage: Mantle of Battle Harmony: 1
-- own damage: Sword Storm Combo: 1
-- Paracausal Imbuement: 1
-- per cast: 1
-- pre-popped: 1
-- pre-stacked: 1
-- projectile mode: 1
-- Property: Irreducible: 1
-- Prototype Truthseeker: 1
-- Release the Wolves: 1
-- Rewind Rounds: 1
-- Saint's Fury: 1
-- shatter ignition: 1
-- Shot in the Dark: 1
-- Skull of Dire Ahamkara (ownDamage): 1
-- Sniper's Meditation (assume stacked): 1
-- spaced*: 1
-- starts at The Master x0: 1
-- starts at The Master x20: 1
-- Supercharged Battery: 1
-- Target Acquired: 1
-- Tempered Edge: 1
-- Temporal Alignment: 1
-- Temporal Sprint: 1
-- The Fundamentals: 1
-- Transcendent but excludes 5%: 1
-- Trench Barrel: 1
-- Triple Tap: 1
-- two kills: 1
-- typical boss model: 1
-- up to Rewind end: 1
-- variant of Arc Soul: 1
-- variant of Hellion: 1
-- variant of Storm's Keep: 1
-- vortex frame: 1
-- wave frame: 1
-- Whisper of Fissures: 1
-- Will Given Form: 1
-- with corruption: 1
-- x20 first shot: 1
+| Eintrag | Zeilen | Urteil | Wirkung | Paare |
+| --- | ---: | --- | ---: | ---: |
+| Fated Missile x15 | 1 | über Schwelle | +597,6 % | 1 |
+| full bow charge | 3 | über Schwelle | +26,5 % | 3 |
+| blighted | 3 | über Schwelle | +25,0 % | 3 |
+| no ignitions | 1 | über Schwelle | -23,7 % | 1 |
+| blight | 1 | über Schwelle | -19,6 % | 1 |
+| super: Song of Flame | 8 | Item fehlt |  |  |
+| melee: Grapple melee | 5 | Item fehlt |  |  |
+| super: Silence and Squall | 4 | Item fehlt |  |  |
+| Wolfsbane (no package) | 4 | Item fehlt |  |  |
+| Praxic Blade (no package) | 3 | Item fehlt |  |  |
+| super: Bladefury | 3 | Item fehlt |  |  |
+| own damage: Unravel | 2 | Item fehlt |  |  |
+| own damage: Witherhoard | 2 | Item fehlt |  |  |
+| super: Glacial Quake | 2 | Item fehlt |  |  |
+| weapon: Bequest | 2 | Item fehlt |  |  |
+| Barrow-Dyad (no package) | 1 | Item fehlt |  |  |
+| melee: Adaptive glaive | 1 | Item fehlt |  |  |
+| melee: Cull's Shadow | 1 | Item fehlt |  |  |
+| melee: Flechette Storm | 1 | Item fehlt |  |  |
+| melee: Lightning Surge | 1 | Item fehlt |  |  |
+| melee: Winterbite | 1 | Item fehlt |  |  |
+| own damage: Alethonym | 1 | Item fehlt |  |  |
+| own damage: Anarchy | 1 | Item fehlt |  |  |
+| own damage: Area denial grenade launcher | 1 | Item fehlt |  |  |
+| own damage: Finality's Auger | 1 | Item fehlt |  |  |
+| own damage: Jolt | 1 | Item fehlt |  |  |
+| own damage: Mantle of Battle Harmony | 1 | Item fehlt |  |  |
+| own damage: Sword Storm Combo | 1 | Item fehlt |  |  |
+| variant of Arc Soul | 1 | Item fehlt |  |  |
+| variant of Hellion | 1 | Item fehlt |  |  |
+| variant of Storm's Keep | 1 | Item fehlt |  |  |
+| Transcendent | 11 | kein Paar, Wert aus Text |  |  |
+| Roaring Flames x3 | 7 | kein Paar, Wert aus Text |  |  |
+| Solar Fulmination | 6 | kein Paar, Wert aus Text |  |  |
+| Pack Hunter | 5 | kein Paar, Wert aus Text |  |  |
+| Burning Ambition | 4 | kein Paar, Wert aus Text |  |  |
+| Harsh Refraction | 4 | kein Paar, Wert aus Text |  |  |
+| Jagged Edge | 4 | kein Paar, Wert aus Text |  |  |
+| Sword Storm Combo | 3 | kein Paar, Wert aus Text |  |  |
+| Bull Rider | 2 | kein Paar, Wert aus Text |  |  |
+| Cabal | 2 | kein Paar, Wert aus Text |  |  |
+| Composite Propellant x5 | 2 | kein Paar, Wert aus Text |  |  |
+| Conductive Cosmic Needle x3 | 2 | kein Paar, Wert aus Text |  |  |
+| Incendiary Rifle Rounds | 2 | kein Paar, Wert aus Text |  |  |
+| Pack Tactics (simplified underestimate of 3 stack start) | 2 | kein Paar, Wert aus Text |  |  |
+| Pack Tactics x2 | 2 | kein Paar, Wert aus Text |  |  |
+| Target Lock | 2 | kein Paar, Wert aus Text |  |  |
+| Assault Mag | 1 | kein Paar, Wert aus Text |  |  |
+| Facet of Command | 1 | kein Paar, Wert aus Text |  |  |
+| Facet of Ruin | 1 | kein Paar, Wert aus Text |  |  |
+| Grenades Prepped | 1 | kein Paar, Wert aus Text |  |  |
+| Hail the Storm | 1 | kein Paar, Wert aus Text |  |  |
+| Impetus | 1 | kein Paar, Wert aus Text |  |  |
+| Kinetic Impacts | 1 | kein Paar, Wert aus Text |  |  |
+| Lightning Seeker into six shot cycle | 1 | kein Paar, Wert aus Text |  |  |
+| Linear Fusion Mode | 1 | kein Paar, Wert aus Text |  |  |
+| Marksman Sights | 1 | kein Paar, Wert aus Text |  |  |
+| Moebius Quiver | 1 | kein Paar, Wert aus Text |  |  |
+| Overwhelming Power | 1 | kein Paar, Wert aus Text |  |  |
+| Paracausal Imbuement | 1 | kein Paar, Wert aus Text |  |  |
+| Property: Irreducible | 1 | kein Paar, Wert aus Text |  |  |
+| Prototype Truthseeker | 1 | kein Paar, Wert aus Text |  |  |
+| Release the Wolves | 1 | kein Paar, Wert aus Text |  |  |
+| Saint's Fury | 1 | kein Paar, Wert aus Text |  |  |
+| Shot in the Dark | 1 | kein Paar, Wert aus Text |  |  |
+| Skull of Dire Ahamkara (ownDamage) | 1 | kein Paar, Wert aus Text |  |  |
+| Sniper's Meditation (assume stacked) | 1 | kein Paar, Wert aus Text |  |  |
+| Supercharged Battery | 1 | kein Paar, Wert aus Text |  |  |
+| Target Acquired | 1 | kein Paar, Wert aus Text |  |  |
+| Tempered Edge | 1 | kein Paar, Wert aus Text |  |  |
+| Temporal Alignment | 1 | kein Paar, Wert aus Text |  |  |
+| Temporal Sprint | 1 | kein Paar, Wert aus Text |  |  |
+| The Fundamentals | 1 | kein Paar, Wert aus Text |  |  |
+| Transcendent but excludes 5% | 1 | kein Paar, Wert aus Text |  |  |
+| Trench Barrel | 1 | kein Paar, Wert aus Text |  |  |
+| Whisper of Fissures | 1 | kein Paar, Wert aus Text |  |  |
+| assumes no other debuff | 6 | Spielweise oder Notiz |  |  |
+| excludes Transcendence 5% bonus | 5 | Spielweise oder Notiz |  |  |
+| body | 4 | Spielweise oder Notiz |  |  |
+| both volleys | 4 | Spielweise oder Notiz |  |  |
+| heavy attacks | 4 | Spielweise oder Notiz |  |  |
+| pre-popped into 6 shot cycle | 4 | Spielweise oder Notiz |  |  |
+| 1H2L combo | 3 | Spielweise oder Notiz |  |  |
+| light attacks | 3 | Spielweise oder Notiz |  |  |
+| simulated | 3 | Spielweise oder Notiz |  |  |
+| 1 mag | 2 | Spielweise oder Notiz |  |  |
+| 2L1H combo | 2 | Spielweise oder Notiz |  |  |
+| 2L1H1R combo | 2 | Spielweise oder Notiz |  |  |
+| 3L1H1R combo | 2 | Spielweise oder Notiz |  |  |
+| all 3 volleys | 2 | Spielweise oder Notiz |  |  |
+| auto-loaded | 2 | Spielweise oder Notiz |  |  |
+| caster frame | 2 | Spielweise oder Notiz |  |  |
+| excludes Bolt Charge | 2 | Spielweise oder Notiz |  |  |
+| heavy spam | 2 | Spielweise oder Notiz |  |  |
+| includes jolt | 2 | Spielweise oder Notiz |  |  |
+| includes Threadlings | 2 | Spielweise oder Notiz |  |  |
+| light attack spam | 2 | Spielweise oder Notiz |  |  |
+| light-heavy cycle | 2 | Spielweise oder Notiz |  |  |
+| max distance | 2 | Spielweise oder Notiz |  |  |
+| precision | 2 | Spielweise oder Notiz |  |  |
+| projectile | 2 | Spielweise oder Notiz |  |  |
+| starts at 0 stacks | 2 | Spielweise oder Notiz |  |  |
+| uncharged | 2 | Spielweise oder Notiz |  |  |
+| 1 charge | 1 | Spielweise oder Notiz |  |  |
+| 2 charges | 1 | Spielweise oder Notiz |  |  |
+| 2 rings | 1 | Spielweise oder Notiz |  |  |
+| 2H2L combo | 1 | Spielweise oder Notiz |  |  |
+| 3 body pellet shots into On Black Wings x3 slugs | 1 | Spielweise oder Notiz |  |  |
+| 4L1H1R combo | 1 | Spielweise oder Notiz |  |  |
+| 9 ammo consumed | 1 | Spielweise oder Notiz |  |  |
+| aerial lights | 1 | Spielweise oder Notiz |  |  |
+| all three casts | 1 | Spielweise oder Notiz |  |  |
+| assumes max frenzy | 1 | Spielweise oder Notiz |  |  |
+| assumes suspend tick every 3 shots | 1 | Spielweise oder Notiz |  |  |
+| axe heavy attack | 1 | Spielweise oder Notiz |  |  |
+| axe light attack spam | 1 | Spielweise oder Notiz |  |  |
+| boss against wall | 1 | Spielweise oder Notiz |  |  |
+| charged | 1 | Spielweise oder Notiz |  |  |
+| fireteam scaling | 1 | Spielweise oder Notiz |  |  |
+| full grenade uptime | 1 | Spielweise oder Notiz |  |  |
+| fully charged | 1 | Spielweise oder Notiz |  |  |
+| grounded | 1 | Spielweise oder Notiz |  |  |
+| grounded spam | 1 | Spielweise oder Notiz |  |  |
+| held down | 1 | Spielweise oder Notiz |  |  |
+| hip-fire | 1 | Spielweise oder Notiz |  |  |
+| hitscan mode | 1 | Spielweise oder Notiz |  |  |
+| hone before rally | 1 | Spielweise oder Notiz |  |  |
+| includes ignition | 1 | Spielweise oder Notiz |  |  |
+| includes melee time | 1 | Spielweise oder Notiz |  |  |
+| includes Quantum Nova windup and splash | 1 | Spielweise oder Notiz |  |  |
+| includes rehone time | 1 | Spielweise oder Notiz |  |  |
+| includes submunitions | 1 | Spielweise oder Notiz |  |  |
+| lightweight frame | 1 | Spielweise oder Notiz |  |  |
+| manual reloads until The Grandmaster | 1 | Spielweise oder Notiz |  |  |
+| marked | 1 | Spielweise oder Notiz |  |  |
+| max projectile height | 1 | Spielweise oder Notiz |  |  |
+| no chains | 1 | Spielweise oder Notiz |  |  |
+| per cast | 1 | Spielweise oder Notiz |  |  |
+| pre-stacked | 1 | Spielweise oder Notiz |  |  |
+| projectile mode | 1 | Spielweise oder Notiz |  |  |
+| shatter ignition | 1 | Spielweise oder Notiz |  |  |
+| spaced* | 1 | Spielweise oder Notiz |  |  |
+| starts at The Master x0 | 1 | Spielweise oder Notiz |  |  |
+| starts at The Master x20 | 1 | Spielweise oder Notiz |  |  |
+| two kills | 1 | Spielweise oder Notiz |  |  |
+| typical boss model | 1 | Spielweise oder Notiz |  |  |
+| up to Rewind end | 1 | Spielweise oder Notiz |  |  |
+| vortex frame | 1 | Spielweise oder Notiz |  |  |
+| wave frame | 1 | Spielweise oder Notiz |  |  |
+| with corruption | 1 | Spielweise oder Notiz |  |  |
+| x20 first shot | 1 | Spielweise oder Notiz |  |  |
+| assumes at least 2 orb pickups per mag | 2 | unter Schwelle | +0,0 % | 1 |
+| pre-popped | 1 | unter Schwelle | +0,0 % | 1 |
 
 ## Weapons
 
@@ -608,7 +600,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | High-impact bow, Heavy Bolts, Envious Arsenal + High Ground + e. Accelerated Assault (A Good Shout), Guidance Ring x3, Moebius Quiver | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive rocket launcher, Lasting Impression + Reaper's Tithe x4 + Forge's Kin x3 (Bellowing Giant), Pack Hunter, Argent Ordnance, Sentinel flicker (no buff), Turncoat transfer, simulated | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive rocket launcher, Cluster Bomb + Elemental Honing x5 + Timelost Magazine (Hezen Vengeance), Pack Hunter, Argent Ordnance, assumes normal clusters, Shoot to Loot, Turncoat transfer | übersprungen | legendary frame (owner 2026-10-25) |
-| Leviathan's Breath, Archer's Tempo, Moebius Quiver, Argent Quiver, simulated | fehlt | no switch for: Archer's Tempo; Moebius Quiver; simulated |
+| Leviathan's Breath, Archer's Tempo, Moebius Quiver, Argent Quiver, simulated | fehlt | no switch for: Moebius Quiver; simulated |
 | Duality, Ice Breaker loadout swap exploit, 80% consistency, simulated | übersprungen | factors differ from the standard of Aegis |
 | Aggressive rocket launcher, Cluster Bomb + Elemental Honing x5 + Timelost Magazine (Hezen Vengeance), Pack Hunter, Argent Ordnance, assumes normal clusters, Shoot to Loot | übersprungen | legendary frame (owner 2026-10-25) |
 | High-impact bow, Heavy Bolts, Envious Arsenal + High Ground + e. Accelerated Assault (A Good Shout), Moebius Quiver | übersprungen | legendary frame (owner 2026-10-25) |
@@ -630,7 +622,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Still Hunt, pre-popped into 6 shot cycle, Celestial Nighthawk, Sniper's Meditation, assumes at least 2 orb pickups per mag | fehlt | no switch for: pre-popped into 6 shot cycle; assumes at least 2 orb pickups per mag |
 | Aggressive sword, 1H1L combo, Jagged Edge + e. Impact, e. Redirection x30 + e. Forge's Kin x3 (Stryker's Sure-Hand), Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive rocket launcher, Supercharged Magazine + Gear Shift x5 (Heretic), Pack Hunter, Argent Ordnance | übersprungen | legendary frame (owner 2026-10-25) |
-| Ergo Sum, caster frame, The Perfect Fifth, Jagged Edge, 1H2L combo, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade, Dawn Chorus, Solar Fulmination | fehlt | no switch for: caster frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
+| Ergo Sum, caster frame, The Perfect Fifth, Jagged Edge, 1H2L combo, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade, Dawn Chorus, Solar Fulmination | fehlt | no switch for: caster frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
 | Pinpoint slug shotgun, Assault Mag, e. Redirection x30 + Elemental Honing x5 (Unvoiced), reload cancelling | übersprungen | legendary frame (owner 2026-10-25) |
 | Wolfsbane, swapping after HLLHLLHLLHLLH, Honed Edge + Jagged Edge, Burning Ambition, 10 lights to regenerate, Outbreak Perfected max nanites, Argent Blade, Solar Fulmination, simulated | fehlt | weapon without package: kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Izanagi's Burden, includes rehone time, hone before rally, Sniper's Meditation (assume stacked) | fehlt | no switch for: includes rehone time; hone before rally; Sniper's Meditation (assume stacked) |
@@ -656,20 +648,20 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Wave frame sword, heavy spam, Jagged Edge + e. Impact, Relentless Strikes + e. Elemental Honing x5 + Tenacity x20 (Synanceia), Pack Hunter, Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
 | Dynamic sniper, Ionized Heatsink, Dynamic Heat Limiter, Vorpal + Bait and Switch + e. Imperial Allegiance x3 (Conspiracy Honed), Sniper's Meditation | übersprungen | legendary frame (owner 2026-10-25) |
 | Lightweight sword, 1H2L combo, Jagged Edge + e. Impact, e. Burning Ambition + Chaos Reshaped x2 (Terciopelo-4bl), Pack Hunter, Argent Blade, Solar Fulmination | übersprungen | legendary frame (owner 2026-10-25) |
-| The Lament, 2L1H combo, Lucent Blades x3, Burning Ambition, Argent Blade, Dawn Chorus, Solar Fulmination | fehlt | no switch for: 2L1H combo; Lucent Blades x3; Solar Fulmination |
+| The Lament, 2L1H combo, Lucent Blades x3, Burning Ambition, Argent Blade, Dawn Chorus, Solar Fulmination | fehlt | no switch for: 2L1H combo; Solar Fulmination |
 | Aggressive shotgun, body, Assault Mag, Timelost Magazine, e. Aggregate Charge x3 + Trench Barrel (Found Verdict), melee damage excluded, Arc Compounding | übersprungen | legendary frame (owner 2026-10-25) |
 | Winterbite, melee, 2L1H cancel combo, Combination Blow x3, Triton Vice, excludes shatter damage, No Bell, simulated | fehlt | melee not in the model |
-| Ergo Sum, caster frame, The Perfect Fifth, Jagged Edge, 1H2L combo, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade, Solar Fulmination | fehlt | no switch for: caster frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
+| Ergo Sum, caster frame, The Perfect Fifth, Jagged Edge, 1H2L combo, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade, Solar Fulmination | fehlt | no switch for: caster frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
 | Precision linear fusion rifle, Enhanced Battery, Charge MW, e. Mega Kill Clip + Sword Logic x4 + Heretical Behavior (Eyes Unveiled) | übersprungen | legendary frame (owner 2026-10-25) |
 | Wolfsbane, swapping after HLLHLLHLLHLLH, Honed Edge + Jagged Edge, Burning Ambition, 10 lights to regenerate, Argent Blade, Solar Fulmination | fehlt | weapon without package: kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
 | Solar grenade, Sunbracers, Touch of Flame, Ember of Ashes, repeated activations | im Modell | grenade in the model, value not probed |
 | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | im Modell | gate: probe entry by rule |
 | Caster sword, 1H2L combo, Jagged Edge + e. Impact, Relentless Strikes + e. Surrounded (Ill Omen), Lucent Blades x3, Pack Hunter, Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
 | Compressed wave grenade launcher, Envious Arsenal + Elemental Honing x5 (Love and Death), impact included, Kinetic Impacts | übersprungen | legendary frame (owner 2026-10-25) |
-| The Lament, 3L1H1R combo, Lucent Blades x3, Burning Ambition, Combination Argent Blade, Sword Storm Combo, Dawn Chorus, simulated | fehlt | no switch for: 3L1H1R combo; Lucent Blades x3; Combination Argent Blade; Sword Storm Combo; simulated |
+| The Lament, 3L1H1R combo, Lucent Blades x3, Burning Ambition, Combination Argent Blade, Sword Storm Combo, Dawn Chorus, simulated | fehlt | no switch for: 3L1H1R combo; Sword Storm Combo; simulated |
 | Lightweight sword, 1H2L combo, Jagged Edge + e. Impact, Vorpal Weapon + Whirlwind Blade (Sullen Claw), Pack Hunter, Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
-| Ergo Sum, vortex frame, Unplanned Reprieve, Tempered Edge, heavy spam, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade | fehlt | no switch for: vortex frame; Tempered Edge; heavy spam; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus |
-| Ergo Sum, wave frame, Unplanned Reprieve, Jagged Edge, heavy spam, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade, boss against wall | fehlt | no switch for: wave frame; Jagged Edge; heavy spam; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; boss against wall |
+| Ergo Sum, vortex frame, Unplanned Reprieve, Tempered Edge, heavy spam, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade | fehlt | no switch for: vortex frame; Tempered Edge; heavy spam; Transcendent; excludes Transcendence 5% bonus |
+| Ergo Sum, wave frame, Unplanned Reprieve, Jagged Edge, heavy spam, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade, boss against wall | fehlt | no switch for: wave frame; Jagged Edge; heavy spam; Transcendent; excludes Transcendence 5% bonus; boss against wall |
 | High-impact bow, Heavy Bolts, e. Aggregate Charge x3 (Submersion), Guidance Ring x3, Argent Quiver | übersprungen | legendary frame (owner 2026-10-25) |
 | Grapple melee, One-Two Punch, Banner of War, Biotic Enhancements | fehlt | melee not in the model |
 | Adaptive sword, 1H1L combo*, Jagged Edge + e. Impact, Relentless Strikes + Elemental Honing x5 (Abide the Return), Lucent Blades x3, Pack Hunter, Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
@@ -678,10 +670,10 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Throwing Hammer, Biotic Enhancements, Roaring Flames x3, max range | im Modell | melee in the model, value not probed |
 | The Chaperone, The Roadborn, Triple Tap, Kinetic Synthesis | übersprungen | no total (INF) |
 | The Fourth Horseman, body, Arc Compounding | fehlt | no switch for: body |
-| The Lament, 2L1H combo, Lucent Blades x3, Burning Ambition, Argent Blade, Solar Fulmination | fehlt | no switch for: 2L1H combo; Lucent Blades x3; Solar Fulmination |
+| The Lament, 2L1H combo, Lucent Blades x3, Burning Ambition, Argent Blade, Solar Fulmination | fehlt | no switch for: 2L1H combo; Solar Fulmination |
 | Duality, 3 body pellet shots into On Black Wings x3 slugs | fehlt | no switch for: 3 body pellet shots into On Black Wings x3 slugs |
 | Aggressive sniper, Extended Mag, Triple Tap + Elemental Honing x5 + e. Accelerated Assault (Something Something), Networked Targeting x5, Sniper's Meditation, Kinetic Synthesis reloads | übersprungen | legendary frame (owner 2026-10-25) |
-| Ergo Sum, lightweight frame, Unplanned Reprieve, Jagged Edge, 1H2L combo, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade | fehlt | no switch for: lightweight frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus |
+| Ergo Sum, lightweight frame, Unplanned Reprieve, Jagged Edge, 1H2L combo, Lucent Blades x3, Pack Hunter, Transcendent, excludes Transcendence 5% bonus, Argent Blade | fehlt | no switch for: lightweight frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus |
 | Rapid-fire shotgun, body, Elemental Honing x5 + Forge's Kin x3 (Threat Level), Kinetic Synthesis reloads | übersprungen | legendary frame (owner 2026-10-25) |
 | Precision linear fusion rifle, Enhanced Battery, Charge MW, e. Mega Kill Clip + Elemental Honing x5 + Heretical Behavior (Eyes Unveiled) | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive grenade launcher, Spike Grenades, Envious Arsenal + e. Bait and Switch (Bitter/Sweet), Arc Compounding, Kinetic Impacts | übersprungen | legendary frame (owner 2026-10-25) |
@@ -693,7 +685,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Vortex sword, heavy spam, Jagged Edge + e. Impact, Frenzy + e. Surrounded (Falling Guillotine), Lucent Blades x3, Pack Hunter, Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive sniper, Appended Mag, e. Rewind Rounds + Elemental Honing x5 (Tranquility), Networked Targeting x5, Sniper's Meditation, Kinetic Synthesis reloads | übersprungen | legendary frame (owner 2026-10-25) |
 | Throwing Hammer, One-Two Punch, Forgemaster, Perfect Recall, Roaring Flames x3, close range recall, includes <101 Weapons rapid-fire shotgun | im Modell | melee in the model, value not probed |
-| The Lament, 3L1H1R combo, Lucent Blades x3, Burning Ambition, Combination Argent Blade, Sword Storm Combo | fehlt | no switch for: 3L1H1R combo; Lucent Blades x3; Combination Argent Blade; Sword Storm Combo |
+| The Lament, 3L1H1R combo, Lucent Blades x3, Burning Ambition, Combination Argent Blade, Sword Storm Combo | fehlt | no switch for: 3L1H1R combo; Sword Storm Combo |
 | Whisper of the Worm, Whispered Breathing, Sniper's Meditation, Incendiary Rifle Rounds, Solar Fulmination | fehlt | no switch for: Incendiary Rifle Rounds; Solar Fulmination |
 | Rapid-fire grenade launcher, Spike Grenades, Envious Arsenal + Elemental Honing x5 (VS Chill Inhibitor), Kinetic Impacts | übersprungen | legendary frame (owner 2026-10-25) |
 | Micro-missile grenade launcher, Spike Grenades, Slideshot + Elemental Honing x5 (Gizmo Weft), Energy Acceleration, simulated | übersprungen | legendary frame (owner 2026-10-25) |
@@ -701,8 +693,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Vortex sword, heavy spam, Jagged Edge + e. Impact, Frenzy + Elemental Honing x5 (Falling Guillotine), Lucent Blades x3, Pack Hunter, Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive sniper, Appended Mag, e. Fourth Time's the Charm + Elemental Honing x5 + e. Accelerated Assault (Adored), Networked Targeting x5, Sniper's Meditation | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive grenade launcher, Spike Grenades, Envious Arsenal + Elemental Honing x5 (Edge Transit), Kinetic Impacts | übersprungen | legendary frame (owner 2026-10-25) |
-| The Lament, 2L1H1R combo, Lucent Blades x3, Burning Ambition, Argent Blade | fehlt | no switch for: 2L1H1R combo; Lucent Blades x3 |
-| The Lament, 4L1H1R combo, Lucent Blades x3, Burning Ambition, Combination Argent Blade, Sword Storm Combo | fehlt | no switch for: 4L1H1R combo; Lucent Blades x3; Combination Argent Blade; Sword Storm Combo |
+| The Lament, 2L1H1R combo, Lucent Blades x3, Burning Ambition, Argent Blade | fehlt | no switch for: 2L1H1R combo |
+| The Lament, 4L1H1R combo, Lucent Blades x3, Burning Ambition, Combination Argent Blade, Sword Storm Combo | fehlt | no switch for: 4L1H1R combo; Sword Storm Combo |
 | Hierarchy of Needs, Guidance Ring x2, Argent Quiver, fireteam scaling | übersprungen | no total (INF) |
 | New Land Beyond, starts at The Master x20, sprint cancelling, Kinetic Synthesis, Sniper's Meditation | übersprungen | no total (INF) |
 | Whisper of the Worm, Whispered Breathing, Sniper's Meditation | im Modell | gate: hand-made probe entry |
@@ -724,12 +716,12 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Bastion, Saint's Fury, includes melee time | fehlt | no switch for: Saint's Fury; includes melee time |
 | High-impact bow, Heavy Bolts, e. Aggregate Charge x3 (Submersion), Argent Quiver | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive burst linear fusion rifle, Accelerated Coils, Charge MW, e. Rewind Rounds + Chaos Reshaped x2 (Briar's Contempt), Particle Reconstruction | übersprungen | legendary frame (owner 2026-10-25) |
-| The Lament, 2L1H1R combo, Lucent Blades x3, Argent Blade | fehlt | no switch for: 2L1H1R combo; Lucent Blades x3 |
+| The Lament, 2L1H1R combo, Lucent Blades x3, Argent Blade | fehlt | no switch for: 2L1H1R combo |
 | New Land Beyond, starts at The Master x20, Rally Barricade, Sniper's Meditation | fehlt | no switch for: starts at The Master x20 |
 | Two-Tailed Fox, Ember of Ashes, Argent Ordnance | übersprungen | factors differ from the standard of Aegis |
 | Sleeper Simulant | im Modell | gate: hand-made probe entry |
-| Parasite, Envious Arsenal, x20 first shot | fehlt | no switch for: Envious Arsenal; x20 first shot |
-| Ager's Scepter, Will Given Form, Facet of Command, Harsh Refraction | fehlt | no switch for: Will Given Form; Facet of Command; Harsh Refraction |
+| Parasite, Envious Arsenal, x20 first shot | fehlt | no switch for: x20 first shot |
+| Ager's Scepter, Will Given Form, Facet of Command, Harsh Refraction | fehlt | no switch for: Facet of Command; Harsh Refraction |
 | Adaptive glaive, melee, 2L1H cancel combo, Combination Blow x3, Banner of War, Triton Vice, Close to Melee (Unexpected Resurgence), simulated | fehlt | melee not in the model |
 | Ticuu's Divination, alternating modes, Causality Arrows x6, Guidance Ring x2, assumes one ignition every other shot | übersprungen | no total (INF) |
 | Rapid-fire sniper, Tactical Mag, e. Fourth Time's the Charm + Elemental Honing x5 (Omniscient Eye), Networked Targeting x5, Sniper's Meditation | übersprungen | legendary frame (owner 2026-10-25) |
@@ -740,10 +732,10 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | New Land Beyond, starts at The Master x0, Rally Barricade, manual reloads until The Grandmaster, Sniper's Meditation | fehlt | no switch for: starts at The Master x0; manual reloads until The Grandmaster |
 | Microcosm, Paracausal Imbuement, Harsh Refraction | fehlt | no switch for: Paracausal Imbuement; Harsh Refraction |
 | Slayer's Fang, Assault Mag, includes submunitions | fehlt | no switch for: Assault Mag; includes submunitions |
-| Finality's Auger, Bait and Switch, Linear Fusion Mode | fehlt | no switch for: Bait and Switch; Linear Fusion Mode |
+| Finality's Auger, Bait and Switch, Linear Fusion Mode | fehlt | no switch for: Linear Fusion Mode |
 | One Thousand Voices, Particle Reconstruction | im Modell | gate: probe entry by rule |
-| Cloudstrike, Triple Tap, excludes Bolt Charge, Sniper's Meditation | fehlt | no switch for: Triple Tap; excludes Bolt Charge |
-| Heartshadow, heavy attacks, Shot in the Dark, Lucent Blades x3, Argent Blade | fehlt | no switch for: heavy attacks; Shot in the Dark; Lucent Blades x3 |
+| Cloudstrike, Triple Tap, excludes Bolt Charge, Sniper's Meditation | fehlt | no switch for: excludes Bolt Charge |
+| Heartshadow, heavy attacks, Shot in the Dark, Lucent Blades x3, Argent Blade | fehlt | no switch for: heavy attacks; Shot in the Dark |
 | Lightweight grenade launcher, Spike Grenades, Trickle Charge + Reaper's Tithe x4 (Salvager's Salvo) | übersprungen | legendary frame (owner 2026-10-25) |
 | Praxic Blade, 3L1H combo, Offensive Form, Forceful Blade III, Kinetic Synthesis, Combination Argent Blade, Sword Storm Combo | fehlt | weapon without package: kein Timing: keine Quantum-Zeile |
 | Precision shotgun, body, no Backup Mag, Assault Mag, Reconstruction + Trench Barrel (Prophet of Doom), reload cancelling | übersprungen | legendary frame (owner 2026-10-25) |
@@ -754,11 +746,11 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | The Colony | im Modell | gate: probe entry by rule |
 | Pinpoint slug shotgun, Assault Mag, e. Fourth Time's the Charm + Elemental Honing x5 (Unvoiced), reload cancelling | übersprungen | legendary frame (owner 2026-10-25) |
 | Rapid-fire slug shotgun, Rapid Hit + e. Precision Instrument (Trachinus), reload cancelling | übersprungen | legendary frame (owner 2026-10-25) |
-| Black Talon, 2H2L combo, Lucent Blades x3, Argent Blade | fehlt | no switch for: 2H2L combo; Lucent Blades x3 |
+| Black Talon, 2H2L combo, Lucent Blades x3, Argent Blade | fehlt | no switch for: 2H2L combo |
 | New Malpais, assumes suspend tick every 3 shots | fehlt | no switch for: assumes suspend tick every 3 shots |
 | Ice Breaker, Sniper's Meditation | im Modell | gate: probe entry by rule |
 | Conditional Finality, body, average across both shots | übersprungen | factors differ from the standard of Aegis |
-| The Queenbreaker, Rewind Rounds, Marksman Sights | fehlt | no switch for: Rewind Rounds; Marksman Sights |
+| The Queenbreaker, Rewind Rounds, Marksman Sights | fehlt | no switch for: Marksman Sights |
 | Dead Messenger, The Fundamentals | fehlt | no switch for: The Fundamentals |
 | Dragon's Breath, auto-loaded, Composite Propellant x5, Dawn Chorus, Argent Ordnance | fehlt | no switch for: auto-loaded; Composite Propellant x5 |
 | Symmetry, Dynamic Charge x10 into 10 Revolution x10 shots cycle, Well of Radiance caster, Storm's Keep, Flashover | übersprungen | no total (INF) |
@@ -777,7 +769,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Aggressive fusion rifle, Accelerated Coils, Charge MW, e. Rewind Rounds + Gear Shift x5 (Tempered Dynamo) | übersprungen | legendary frame (owner 2026-10-25) |
 | Precision bow, Archer's Gambit (Hush), Guidance Ring x3 | übersprungen | legendary frame (owner 2026-10-25) |
 | Heirloom, 2 charges, catalyst, Argent Quiver | fehlt | no switch for: 2 charges |
-| Wavesplitter, Supercharged Battery, Detonator Beam, Harsh Refraction | fehlt | no switch for: Supercharged Battery; Detonator Beam; Harsh Refraction |
+| Wavesplitter, Supercharged Battery, Detonator Beam, Harsh Refraction | fehlt | no switch for: Supercharged Battery; Harsh Refraction |
 | Aggressive sniper, Appended Mag, Triple Tap + Fourth Time's the Charm (Keen Thistle), Networked Targeting x5, Sniper's Meditation | übersprungen | legendary frame (owner 2026-10-25) |
 | Precision fusion rifle, Enhanced Battery, Charge MW, e. Overflow + e. Aggregate Charge (Accelerando-42), Particle Reconstruction | übersprungen | legendary frame (owner 2026-10-25) |
 | Ex Diris, Corrupted Nucleosynthesis, assumes max frenzy | fehlt | no switch for: assumes max frenzy |
@@ -796,7 +788,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Salvation's Grip, charged, Hail the Storm | fehlt | no switch for: charged; Hail the Storm |
 | Rapid-fire machine gun, no Backup Mag, Tactical Mag, e. Fourth Time's the Charm + e. Target Lock (Retrofit Escapade) | übersprungen | legendary frame (owner 2026-10-25) |
 | Trace rifle, e. Fourth Time's the Charm + e. Target Lock (Acasia's Dejection), Cenotaph Mask, Harsh Refraction | übersprungen | legendary frame (owner 2026-10-25) |
-| Divinity, held down, includes jolt, Focused Fury, Harsh Refraction | fehlt | no switch for: held down; includes jolt; Focused Fury; Harsh Refraction |
+| Divinity, held down, includes jolt, Focused Fury, Harsh Refraction | fehlt | no switch for: held down; includes jolt; Harsh Refraction |
 | Skyburner's Oath, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Dawn Chorus | übersprungen | no total (INF) |
 | Barrow-Dyad, Target Lock, Taken Ambition | fehlt | weapon without package: keine Aegis-Zeile ohne fremde Annahmen |
 | Outbreak Perfected, starts at max nanites, Rewind Rounds, Appended Mag, approximate | übersprungen | no total (INF) |
@@ -819,7 +811,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsl
 | Edge of Concurrence, pre-stacked, Lightning Seeker into six shot cycle | fehlt | no switch for: pre-stacked; Lightning Seeker into six shot cycle |
 | Wave grenade launcher, e. Redirection x30 + Bait and Switch (Forbearance), simulated | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive glaive, no Backup Mag, projectile, Chaos Reshaped x2 (Refusal of the Call) | übersprungen | legendary frame (owner 2026-10-25) |
-| Deterministic Chaos, Target Lock | fehlt | no switch for: Target Lock |
+| Deterministic Chaos, Target Lock | im Modell | gate: probe entry by rule |
 | Service of Luzaku | im Modell | gate: probe entry by rule |
 | Micro-missile sidearm, precision, High-Explosive Ordnance, Trickle Charge + Gear Shift x5 (Indebted Kindness), Energy Acceleration | übersprungen | legendary frame (owner 2026-10-25) |
 | Outbreak Perfected, starts at 0 nanites, Rewind Rounds, Appended Mag | übersprungen | no total (INF) |

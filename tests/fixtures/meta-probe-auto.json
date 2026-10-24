@@ -1,6 +1,9 @@
 {
   "note": "Rule of the extended meta probe (tests/lib/probeAuto.ts). ignored: assumptions of Aegis that need no switch, with the reason. deviations: fully mapped rows outside the tolerance, with the reason; they are known inaccuracies and block nothing (CLAUDE.md, breadth before accuracy).",
-  "ignored": {},
+  "ignored": {
+    "Lucent Blades x3": "charge rate only; the sword packages take their timing from the Aegis rows with Lucent Blades x3 (weapon-overrides.json: The Lament, Black Talon, Ergo Sum, Heartshadow); rows with it and no other missing switch fit x1.00 (The Lament 2L1H1R, Heartshadow)",
+    "Pack Hunter": "handling and reload next to allies only (Clarity); swords do not reload (weapon-overrides.json, Ergo Sum)"
+  },
   "deviations": {
     "sustained-tractor-cannon": "-17 %; cause not examined",
     "sustained-telesto": "-16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now)",

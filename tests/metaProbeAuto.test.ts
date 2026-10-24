@@ -8,7 +8,7 @@
 import { describe, expect, it } from "vitest";
 import { AegisTotalsSnapshot } from "../src/data/schema";
 import rawTotals from "../src/data/aegis-totals.json";
-import { abilities, effects, exoticArmor, weapons } from "../src/ui/data";
+import { abilities, artifactData, effects, exoticArmor, weapons } from "../src/ui/data";
 import auto from "./fixtures/meta-probe-auto.json";
 import probe from "./fixtures/meta-probe.json";
 import { aegisTotal, ourTotal, type Entry } from "./lib/probe";
@@ -34,6 +34,7 @@ const { entries, skipped } = autoEntries(rows, {
   abilities,
   effects,
   exoticArmor,
+  artifactPerks: artifactData.artifacts.flatMap((a) => a.perks),
   ignored: auto.ignored,
   covered: new Set(manual.map((e) => e.aegisId)),
 });

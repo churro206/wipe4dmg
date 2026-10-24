@@ -11,7 +11,8 @@ import {
   type CoverageInput,
   type CoverageRow,
 } from "./lib/aegisCoverage";
-import { realCoverage } from "./lib/aegisCoverageData";
+import { realCoverage, realMeasured } from "./lib/aegisCoverageData";
+import { missingImpact } from "./lib/missingImpact";
 import { aegisCoverageMarkdown } from "./support/aegisCoverageMarkdown";
 
 const weaponRow = (id: string, name: string, assumptions: string[] = []) =>
@@ -198,7 +199,9 @@ describe("the Aegis rows of the model", () => {
   const rows = realCoverage();
 
   it("is written to docs/aegis-coverage.md; run npm run coverage after changing data files", async () => {
-    await expect(aegisCoverageMarkdown(rows)).toMatchFileSnapshot(
+    await expect(
+      aegisCoverageMarkdown(rows, missingImpact(rows, realMeasured())),
+    ).toMatchFileSnapshot(
       "../docs/aegis-coverage.md",
     );
   });

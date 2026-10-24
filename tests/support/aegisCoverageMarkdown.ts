@@ -3,11 +3,11 @@
 
 import {
   countVerdicts,
-  missingKeys,
   type AegisTab,
   type CoverageRow,
   type Verdict,
 } from "../lib/aegisCoverage";
+import type { ImpactVerdict, KeyImpact } from "../lib/missingImpact";
 
 const TABS: { tab: AegisTab; title: string }[] = [
   { tab: "weapons", title: "Weapons" },
@@ -19,9 +19,25 @@ const VERDICT: Record<Verdict, string> = {
   skipped: "übersprungen",
   missing: "fehlt",
 };
+const IMPACT: Record<ImpactVerdict, string> = {
+  above: "über Schwelle",
+  below: "unter Schwelle",
+  item: "Item fehlt",
+  noPair: "kein Paar, Wert aus Text",
+  playstyle: "Spielweise oder Notiz",
+};
 const cell = (text: string) => text.replace(/\|/g, "\\|").replace(/\n/g, " ");
+/** The ratio of the pair with the largest effect, as "+30,0 %". */
+const signedImpact = (impact: KeyImpact) => {
+  if (impact.impact === null) return "";
+  const ratio = impact.pairs.reduce((a, b) =>
+    Math.abs(b.ratio - 1) > Math.abs(a.ratio - 1) ? b : a,
+  ).ratio;
+  const percent = ((ratio - 1) * 100).toFixed(1).replace(".", ",");
+  return `${ratio >= 1 ? "+" : ""}${percent} %`;
+};
 
-export function aegisCoverageMarkdown(rows: CoverageRow[]): string {
+export function aegisCoverageMarkdown(rows: CoverageRow[], impacts: KeyImpact[]): string {
   const counts = countVerdicts(rows);
   const lines = [
     "# Abdeckung der Aegis-Zeilen",
@@ -40,9 +56,14 @@ export function aegisCoverageMarkdown(rows: CoverageRow[]): string {
     "",
     "## Was fehlt",
     "",
-    "Item oder Annahme, mit der Zahl der Zeilen, die sie nennen. Das ist die Arbeitsliste für die nächsten Kategorie-Blöcke (Schwelle: `CLAUDE.md`, „Breite vor Genauigkeit“).",
+    "Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`tests/lib/missingImpact.ts`). Die Wirkung kommt aus zwei Aegis-Zeilen desselben Items im selben Reiter, die sich nur um den Eintrag unterscheiden (größte Abweichung aller Paare); sie gilt für das Item, ist also eine Obergrenze für einen Build. Schwelle 2 % (`CLAUDE.md`, „Breite vor Genauigkeit“). Das ist die Arbeitsliste für die nächsten Kategorie-Blöcke.",
     "",
-    ...missingKeys(rows).map(([key, n]) => `- ${key}: ${n}`),
+    "| Eintrag | Zeilen | Urteil | Wirkung | Paare |",
+    "| --- | ---: | --- | ---: | ---: |",
+    ...impacts.map(
+      (i) =>
+        `| ${cell(i.key)} | ${i.rows} | ${IMPACT[i.verdict]} | ${signedImpact(i)} | ${i.pairs.length || ""} |`,
+    ),
   ];
   for (const { tab, title } of TABS) {
     lines.push("", `## ${title}`, "", "| Zeile | Urteil | Detail |", "| --- | --- | --- |");

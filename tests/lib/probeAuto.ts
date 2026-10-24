@@ -6,6 +6,7 @@
 import type {
   Ability,
   AegisTotalRow,
+  ArtifactPerk,
   ExoticArmorEntry,
   Weapon,
 } from "../../src/data/schema";
@@ -28,6 +29,8 @@ export type AutoData = {
   abilities: Ability[];
   effects: NamedEffect[];
   exoticArmor: ExoticArmorEntry[];
+  /** Perks of the seasonal artifacts: a perk name stands for its effect ("Combination Argent Blade"). */
+  artifactPerks: ArtifactPerk[];
   /** Assumptions that need no switch, with the reason (descriptions of the measurement). */
   ignored: Record<string, string>;
   /** Ids of rows that the hand-made entries cover already. */
@@ -51,6 +54,9 @@ export function autoEntries(
   for (const e of data.effects) {
     const key = norm(withoutNote(e.name));
     if (!effectByName.has(key)) effectByName.set(key, e.id);
+  }
+  for (const perk of data.artifactPerks) {
+    if (!effectByName.has(norm(perk.name))) effectByName.set(norm(perk.name), perk.effectId);
   }
   const armorByName = new Map(data.exoticArmor.map((a) => [norm(a.name), a]));
   const intrinsicArmor = new Map<string, ExoticArmorEntry>();
@@ -92,11 +98,13 @@ export function autoEntries(
       ...(weapon?.options ?? []).map((o) => norm(o.name)),
       ...(weapon?.intrinsics ?? []).map((i) => norm(i.name)),
     ]);
+    // "Burning Ambition, The Lament Catalyst": the perk names of the catalyst.
+    const catalystPerks = new Set((weapon?.catalyst?.name ?? "").split(/,\s*/).map(norm));
     for (const assumption of row.assumptions) {
       const key = norm(assumption);
       const effectId = effectByName.get(key);
       const armor = armorByName.get(key);
-      if (key === "catalyst") build.catalyst = true;
+      if (key === "catalyst" || catalystPerks.has(key)) build.catalyst = true;
       else if (key === "limitbreak") {
         removed.push({ factor: LIMIT_BREAK, reason: "Limit Break is not modelled" });
       } else if (effectId) selections.push(effectId);
