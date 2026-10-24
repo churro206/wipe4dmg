@@ -99,6 +99,32 @@ describe("abilityIconRefs", () => {
     ]);
   });
 
+  it("adds an icon per element for a class ability", () => {
+    const rift = (subclass: string, hash: number): ManifestAbility => ({
+      name: "Healing Rift",
+      kind: "classAbility",
+      guardianClass: "warlock",
+      subclass,
+      hash,
+    });
+    const refs = abilityIconRefs(
+      [
+        {
+          id: "healing-rift",
+          name: "Healing Rift",
+          kind: "classAbility",
+          element: "kinetic",
+        },
+      ],
+      [rift("prismatic", 5), rift("arc", 3), rift("solar", 4)],
+    );
+    expect(refs.map((r) => [r.key, r.manifestRef.hash])).toEqual([
+      ["ability:healing-rift", 5],
+      ["ability:healing-rift:arc", 3],
+      ["ability:healing-rift:solar", 4],
+    ]);
+  });
+
   it("fails for an ability that is not in the manifest", () => {
     expect(() =>
       abilityIconRefs([{ ...ability, name: "Nope" }], manifest),

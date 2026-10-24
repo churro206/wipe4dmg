@@ -48,27 +48,34 @@ export function collectIconRefs(
   return refs;
 }
 
-/** Icon refs of abilities: the manifest item of their element (ADR 0009); throws if there is none. */
+/**
+ * Icon refs of abilities: the manifest item of their element (ADR 0009); throws if there is none.
+ * A class ability has the same name in every subclass, so it also gets one icon per element under
+ * "ability:<id>:<element>"; the Prismatic item is left out, the UI takes the element of the super.
+ */
 export function abilityIconRefs(
   abilities: { id: string; name: string; kind: AbilityKind; element: string }[],
   manifestAbilities: ManifestAbility[],
 ): IconRef[] {
-  return abilities.map((ability) => {
-    const item = elementItem(
-      itemsOfAbility(manifestAbilities, ability),
-      ability.element,
-    );
+  const ref = (key: string, hash: number): IconRef => ({
+    key,
+    manifestRef: { table: "DestinyInventoryItemDefinition", hash },
+  });
+  return abilities.flatMap((ability) => {
+    const items = itemsOfAbility(manifestAbilities, ability);
+    const item = elementItem(items, ability.element);
     if (!item)
       throw new Error(
         `${ability.id}: "${ability.name}" is not in the manifest abilities`,
       );
-    return {
-      key: `ability:${ability.id}`,
-      manifestRef: {
-        table: "DestinyInventoryItemDefinition" as const,
-        hash: item.hash,
-      },
-    };
+    const key = `ability:${ability.id}`;
+    const perElement =
+      ability.kind === "classAbility"
+        ? items
+            .filter((i) => i.subclass !== "prismatic")
+            .map((i) => ref(`${key}:${i.subclass}`, i.hash))
+        : [];
+    return [ref(key, item.hash), ...perElement];
   });
 }
 

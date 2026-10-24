@@ -3,7 +3,9 @@ import type {
   Ability,
   AbilityKind,
   Effect,
+  Element,
 } from "../../data/schema";
+import { iconUrl } from "../data";
 import { describeAbility } from "../describe";
 import { Icon } from "./Icon";
 import { useDismiss } from "./useDismiss";
@@ -24,12 +26,14 @@ export function AbilityPicker({
   slots,
   openKind,
   effects,
+  classAbilityElement,
   onOpen,
   onSelect,
 }: {
   slots: AbilitySlot[];
   openKind: AbilityKind | null;
   effects: Effect[];
+  classAbilityElement: Element;
   onOpen: (kind: AbilityKind | null) => void;
   onSelect: (kind: AbilityKind, abilityId: string | null) => void;
 }) {
@@ -43,6 +47,9 @@ export function AbilityPicker({
           <div key={slot.kind} className="ability-slot">
             <AbilityTile
               ability={slot.selected}
+              element={
+                slot.kind === "classAbility" ? classAbilityElement : undefined
+              }
               label={slot.label}
               pressed={slot.kind === openKind}
               lines={
@@ -79,6 +86,9 @@ export function AbilityPicker({
             <AbilityTile
               key={ability.id}
               ability={ability}
+              element={
+                open.kind === "classAbility" ? classAbilityElement : undefined
+              }
               label={ability.name}
               pressed={open.selected?.id === ability.id}
               lines={describeAbility(ability, effects)}
@@ -96,8 +106,16 @@ export function AbilityPicker({
   );
 }
 
+/** Class abilities have an icon per element (ADR 0008); else the one of the ability. */
+function abilityIconKey(abilityId: string, element: Element | undefined) {
+  const key = `ability:${abilityId}`;
+  const byElement = element && `${key}:${element}`;
+  return byElement && iconUrl(byElement) ? byElement : key;
+}
+
 function AbilityTile({
   ability,
+  element,
   label,
   pressed,
   lines,
@@ -106,6 +124,7 @@ function AbilityTile({
   ariaExpanded,
 }: {
   ability: Ability | undefined;
+  element?: Element;
   label: string;
   pressed: boolean;
   lines: string[];
@@ -125,7 +144,10 @@ function AbilityTile({
         onClick={onClick}
       >
         {ability ? (
-          <Icon iconKey={`ability:${ability.id}`} label={ability.name} />
+          <Icon
+            iconKey={abilityIconKey(ability.id, element)}
+            label={ability.name}
+          />
         ) : (
           <span className="icon ability-none" style={{ width: 40, height: 40 }}>
             +

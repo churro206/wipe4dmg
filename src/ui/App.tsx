@@ -610,6 +610,13 @@ function App() {
                 }))}
                 openKind={openSlot}
                 effects={effects}
+                classAbilityElement={
+                  subclass === "prismatic"
+                    ? (abilities.find(
+                        (a) => a.id === abilityChoice.super?.abilityId,
+                      )?.element ?? "arc")
+                    : subclass
+                }
                 onOpen={setOpenSlot}
                 onSelect={selectAbility}
               />
