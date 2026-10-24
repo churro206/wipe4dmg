@@ -103,6 +103,67 @@
     }
   },
   {
+    "subclassItemId": "child-of-the-old-gods",
+    "activation": "always",
+    "effect": {
+      "id": "child-of-the-old-gods",
+      "code": 86,
+      "name": "Child of the Old Gods",
+      "shortName": "Child of the Old Gods",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 2321824287
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "debuff",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Court Stacking Guide (debuff, PvE 15%, 5s*)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Void Soul tether drain damage applies Weaken“; window from the rotation (ADR 0015, U6-1b)"
+            }
+          },
+          "damageSources": [
+            "weapon",
+            "grenade",
+            "melee",
+            "super",
+            "classAbility",
+            "keyword"
+          ]
+        }
+      ],
+      "durationMs": {
+        "value": 5000,
+        "source": {
+          "name": "Court Stacking Guide (debuff, PvE 15%, 5s*)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Void Soul tether drain damage applies Weaken“; window from the rotation (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": {
+        "on": "cast",
+        "refresh": true,
+        "abilityKinds": ["classAbility"]
+      }
+    }
+  },
+  {
     "subclassItemId": "controlled-demolition",
     "activation": "always",
     "effect": {
@@ -1447,6 +1508,67 @@
       ],
       "parts": [],
       "grantsStatus": ["restoration"]
+    }
+  },
+  {
+    "subclassItemId": "trappers-ambush",
+    "activation": "always",
+    "effect": {
+      "id": "trappers-ambush",
+      "code": 87,
+      "name": "Trapper's Ambush",
+      "shortName": "Trapper's Ambush",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 187655372
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["void"],
+          "classes": ["hunter"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "debuff",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Court Stacking Guide (debuff, PvE 15%, 10s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„While Vanishing Step is equipped: Quickfall Smoke Cloud damage applies Weaken“; window from the rotation (ADR 0015, U6-1b)"
+            }
+          },
+          "damageSources": [
+            "weapon",
+            "grenade",
+            "melee",
+            "super",
+            "classAbility",
+            "keyword"
+          ]
+        }
+      ],
+      "durationMs": {
+        "value": 10000,
+        "source": {
+          "name": "Court Stacking Guide (debuff, PvE 15%, 10s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„While Vanishing Step is equipped: Quickfall Smoke Cloud damage applies Weaken“; window from the rotation (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": {
+        "on": "cast",
+        "refresh": true,
+        "abilityKinds": ["classAbility"]
+      }
     }
   },
   {

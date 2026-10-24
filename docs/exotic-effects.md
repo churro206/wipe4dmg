@@ -9,9 +9,9 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Immer aktiv (Regel 6) | 2 |
 | Vorher aufgebaut, Option (Regel 3) | 11 |
 | Kill-Buff ohne Dauer (Regel 3) | 2 |
-| Fenster aus der Rotation (Regel 4) | 13 |
+| Fenster aus der Rotation (Regel 4) | 15 |
 | Auslöser in der Rotation, offen (Regel 4) | 1 |
-| Auslöser Class Ability, U7 (Regel 4) | 4 |
+| Auslöser Class Ability, U7 (Regel 4) | 2 |
 | Gilt mit einem Zustand, z. B. Amplified (Regel 5) | 3 |
 | Ability nicht im Modell (Regel 6) | 3 |
 | Stapel pro Waffentreffer (Regel 7) | 2 |
@@ -60,8 +60,10 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Eternal Warrior | 4 | ab Ende von Fists of Havoc: surge +25 % (arc) für 30 s („On Fists of Havoc End: Grants x4 Arc Weapon Surge for 30“) | Court x4 = 25 % |
 | Felwinter's Helm | 4 | ab Treffer von jeder Melee: debuff +15 % für 6 s („Powered Melee hit applies Weaken“) | nur Court |
 | Foetracer | 4 | ab Treffer jeder Ability, Element der Ability, nicht auffrischbar: surge +25 % für 16 s („Instant 4x Surge Stacks: Elemental Ability Damage hit on "Powerful Combatants" or Guardians“) | nur Court |
+| Gwisin Vest | 4 | ab Cast einer Class Ability: debuff +15 % für 10 s („Exiting Invisibility near an enemy causes a Weaking Smoke Cloud around you“) | nur Court |
 | Mantle of Battle Harmony | 4 | bis zum Super-Cast (Super geladen), passend zum Super: surge +25 % für 11 s („Instant 4x Surge Stacks: Matching Weapon Damage kill while matching Super is Charged“) | nur Court |
 | Mantle of Battle Harmony | 4 | ab Ende von jedem Super: surge +25 % für 10 s („Instant 4x Surge Stacks On Super end: Grants Arc, Solar, Void, Stasis, and Strand Weapon Surges“) | nur Court |
+| Mask of Bakris | 4 | ab Cast einer Class Ability: amplification +10 % für 11 s („Light Shift (Class Ability activation) activation grants a stack Stacks up to x3“) | Court = Text (10 %) |
 | Sanguine Alchemy | 4 | ab Cast von Well of Radiance, solange Well steht, passend zum Super: surge +25 % für 30 s („Instant 4x Surge Stacks: While in any Rift or Well of Radiance“) | Abweichung: Court 25 %, Text 10 % |
 | Second Chance | 4 | ab Treffer von Shield Throw: debuff +15 % für 10 s („Shield Throw hit applies Weaken“) | nur Court |
 | Spirit of the Eternal Warrior | 4 | ab Ende von jedem Super: surge +25 % für 30 s („Instant 4x Surge Stacks: On Super end: Grants Weapon damage buff matching Super Element“) | nur Court |
@@ -79,10 +81,8 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
-| Gwisin Vest | 4 | Auslöser Class Ability („Exiting Invisibility near an enemy causes a Weaking Smoke Cloud around you“), U7 | nur Court |
 | Hazardous Propulsion | 4 | Auslöser Class Ability („Damaging targets with Exodus Rockets (Class Ability) 6x provides the highest buff“), U7 | nur Court |
 | Heart of Inmost Light | 4 | Auslöser Class Ability („On Grenade or Class Ability Usage“), U7 | Compendium 35 %, Clarity 35 % |
-| Mask of Bakris | 4 | Auslöser Class Ability („Light Shift (Class Ability activation) activation grants a stack Stacks up to x3“), U7 | Abweichung: Court 33 %, Text 10 % |
 
 ## Gilt mit einem Zustand, z. B. Amplified (Regel 5)
 

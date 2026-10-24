@@ -1692,5 +1692,45 @@
     "element": "kinetic",
     "compendium": { "tab": "Class Abilities", "entry": "Empowering Rift" },
     "grantsEffectIds": ["empowering-rift"]
+  },
+  {
+    "id": "thruster",
+    "code": 84,
+    "name": "Thruster",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Thruster" }
+  },
+  {
+    "id": "towering-barricade",
+    "code": 85,
+    "name": "Towering Barricade",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Towering Barricade" }
+  },
+  {
+    "id": "healing-rift",
+    "code": 86,
+    "name": "Healing Rift",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Healing Rift" }
+  },
+  {
+    "id": "acrobats-dodge",
+    "code": 87,
+    "name": "Acrobat's Dodge",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Acrobat's Dodge" }
+  },
+  {
+    "id": "phoenix-dive",
+    "code": 88,
+    "name": "Phoenix Dive",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Phoenix Dive" }
   }
 ]

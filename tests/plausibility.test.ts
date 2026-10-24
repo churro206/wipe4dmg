@@ -169,7 +169,25 @@ describe("exotic armor changes its abilities", () => {
     expect(dodged.reloadsMs.length).toBe(plain.reloadsMs.length - 1);
   });
 
-  it("Peacekeepers: 20 stacks of +5 % on an SMG, a boss takes 33 % less from buffed shots, so ×1.34 at most", () => {
+  it("Gwisin Vest: Weaken (+15 %) for 10 s from the cast of a class ability, nothing without one", () => {
+    const hunter = {
+      guardianClass: "hunter" as const,
+      subclass: "void" as const,
+      exoticArmorId: "gwisin-vest",
+      damagePhaseSeconds: 10,
+    };
+    const weaponDamage = (casts: number[]) =>
+      damageOf(
+        run({ ...hunter, abilities: [{ abilityId: "gamblers-dodge", castsMs: casts }] }),
+        "weapon",
+      );
+    const plain = damageOf(run({ ...hunter, exoticArmorId: undefined }), "weapon");
+    note("One Thousand Voices (10 s) mit Gwisin Vest und Dodge bei 0 s / ohne Dodge", `×${fmt(weaponDamage([0]) / plain)} / ×${fmt(weaponDamage([]) / plain)}`, "×1,15 (Court: Weaken 15 %, 10 s) / ×1,00");
+    expect(weaponDamage([0]) / plain).toBeCloseTo(1.15, 3);
+    expect(weaponDamage([])).toBeCloseTo(plain, 0);
+  });
+
+  it("Peacekeepers: 20 stacks of +5 % on an SMG,a boss takes 33 % less from buffed shots, so ×1.34 at most", () => {
     const smg = weapons.find(
       (w) => w.weaponType === "submachineGun" && w.ammo === "primary",
     )!;

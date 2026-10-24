@@ -54,9 +54,9 @@ describe("rules for the exotic damage buffs", () => {
     ["Stormdancer's Brace", "rotation"],
     // x2 needs the class ability
     ["Heart of Inmost Light", "classAbility"],
-    ["Mask of Bakris", "classAbility"],
+    ["Mask of Bakris", "triggered"],
     ["Hazardous Propulsion", "classAbility"],
-    ["Gwisin Vest", "classAbility"],
+    ["Gwisin Vest", "triggered"],
     ["The Path of Burning Steps", "needsEffect"],
     ["No Backup Plans", "needsEffect"],
     ["Fr0st-EE5", "needsEffect"],
@@ -185,6 +185,22 @@ describe("rules for the exotic damage buffs", () => {
         "super",
         "classAbility",
         "keyword",
+      ],
+    });
+  });
+
+  it("a class ability trigger opens its window at the cast (U7)", () => {
+    expect(effectOf("gwisin-vest").effect).toMatchObject({
+      trigger: { on: "cast", abilityKinds: ["classAbility"] },
+      durationMs: { value: 10000 },
+      parts: [{ bucketId: "debuff", multiplier: { value: 1.15 } }],
+    });
+    expect(effectOf("mask-of-bakris").effect).toMatchObject({
+      trigger: { on: "cast", abilityKinds: ["classAbility"] },
+      durationMs: { value: 11000 },
+      // one cast is one stack: the first of the stages 10 / 21 / 33 %
+      parts: [
+        { bucketId: "amplification", multiplier: { value: 1.1 }, elements: ["arc", "stasis"] },
       ],
     });
   });

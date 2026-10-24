@@ -406,6 +406,56 @@
     }
   },
   {
+    "exoticArmorId": "gwisin-vest",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:gwisin-vest",
+      "name": "Gwisin Vest",
+      "code": 1168370783,
+      "shortName": "Gwisin Vest",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "debuff",
+          "multiplier": {
+            "value": 1.15,
+            "source": {
+              "name": "Court Stacking Guide (debuff, PvE 15%, 10s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Exiting Invisibility near an enemy causes a Weaking Smoke Cloud around you“; window from the rotation (ADR 0015, U6-1b)"
+            }
+          },
+          "damageSources": [
+            "weapon",
+            "grenade",
+            "melee",
+            "super",
+            "classAbility",
+            "keyword"
+          ]
+        }
+      ],
+      "durationMs": {
+        "value": 10000,
+        "source": {
+          "name": "Court Stacking Guide (debuff, PvE 15%, 10s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Exiting Invisibility near an enemy causes a Weaking Smoke Cloud around you“; window from the rotation (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": {
+        "on": "cast",
+        "refresh": true,
+        "abilityKinds": ["classAbility"]
+      }
+    }
+  },
+  {
     "exoticArmorId": "gyrfalcons-hauberk",
     "activation": "preBuilt",
     "effect": {
@@ -665,6 +715,50 @@
         }
       },
       "trigger": { "on": "superEnd", "refresh": true }
+    }
+  },
+  {
+    "exoticArmorId": "mask-of-bakris",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:mask-of-bakris",
+      "name": "Mask of Bakris",
+      "code": 508515818,
+      "shortName": "Mask of Bakris",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "amplification",
+          "multiplier": {
+            "value": 1.1,
+            "source": {
+              "name": "Court Stacking Guide (amplification, PvE 10% 21% 33%, 11s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Light Shift (Class Ability activation) activation grants a stack Stacks up to x3“; window from the rotation (ADR 0015, U6-1b)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "elements": ["arc", "stasis"]
+        }
+      ],
+      "durationMs": {
+        "value": 11000,
+        "source": {
+          "name": "Court Stacking Guide (amplification, PvE 10% 21% 33%, 11s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Light Shift (Class Ability activation) activation grants a stack Stacks up to x3“; window from the rotation (ADR 0015, U6-1b)"
+        }
+      },
+      "trigger": {
+        "on": "cast",
+        "refresh": true,
+        "abilityKinds": ["classAbility"]
+      }
     }
   },
   {

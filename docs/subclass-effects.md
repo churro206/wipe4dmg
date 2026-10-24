@@ -8,10 +8,10 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | --- | --- |
 | Immer aktiv | 31 |
 | Vorher aufgebaut, Option | 11 |
-| Fenster aus der Rotation | 4 |
+| Fenster aus der Rotation | 6 |
 | Ohne Dauer | 4 |
 | Auslöser in der Rotation, offen | 1 |
-| Auslöser Class Ability, U7 | 5 |
+| Auslöser Class Ability, U7 | 3 |
 | Keyword ohne Modell, später | 23 |
 | Wirkt nicht gegen einen Boss | 4 |
 | Bonus ohne Bucket-Quelle, Recherche in der Inventur | 7 |
@@ -75,10 +75,12 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 
 | Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- | --- |
+| Child of the Old Gods | void | A | ab Cast einer Class Ability: debuff +15 % für 5 s („Void Soul tether drain damage applies Weaken“) | nur Court |
 | Echo of Undermining | void | A | ab Treffer einer void Grenade: debuff +15 % für 5 s („Void Grenade damage applies Weaken“) | nur Court |
 | Ember of Torches | solar | D | Radiant ab Melee-Treffer für 8 s („Powered Melee Hits grant Radiant for 8“) | Text |
 | Facet of Dawn | prismatic | D | Radiant ab Melee-Treffer für 5 s („Powered Melee Hits grant Radiant for 5“) | Text |
 | Facet of Dominance | prismatic | A | ab Treffer einer void Grenade: debuff +15 % für 5 s („Void Grenade damage applies Weaken“) | nur Court |
+| Trapper's Ambush | void | A | ab Cast einer Class Ability: debuff +15 % für 10 s („While Vanishing Step is equipped: Quickfall Smoke Cloud damage applies Weaken“) | Abweichung: Court 15 %, Text 50 % |
 
 ## Ohne Dauer
 
@@ -99,11 +101,9 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 
 | Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- | --- |
-| Child of the Old Gods | void | A | Auslöser Class Ability („Void Soul tether drain damage applies Weaken“), U7 | nur Court |
 | Lethal Current | arc | C | jolt: Auslöser Class Ability, U7 („inflicts Jolt“) | Text |
 | Storm's Keep | arc | C | boltCharge: Auslöser Class Ability, U7 („Grants x4 Bolt Charge“) | Text |
 | Storm's Keep | arc | C | boltCharge: Auslöser Class Ability, U7 („grants x6 Bolt Charge“) | Text |
-| Trapper's Ambush | void | A | Auslöser Class Ability („While Vanishing Step is equipped: Quickfall Smoke Cloud damage applies Weaken“), U7 | Abweichung: Court 15 %, Text 50 % |
 
 ## Keyword ohne Modell, später
 

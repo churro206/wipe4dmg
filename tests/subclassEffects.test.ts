@@ -50,7 +50,7 @@ describe("rules for aspects and fragments", () => {
     ["On the Prowl", "preBuilt"],
     ["Echo of Undermining", "triggered"],
     ["Ember of Torches", "triggered"],
-    ["Trapper's Ambush", "classAbility"],
+    ["Trapper's Ambush", "triggered"],
     ["Knockout", "preBuilt"],
     ["Offensive Bulwark", "always"],
     ["Threaded Specter", "notAgainstBoss"],

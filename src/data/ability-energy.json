@@ -1647,6 +1647,121 @@
           "quote": "Chunk Scalar: 0.5x"
         }
       }
+    },
+    {
+      "abilityId": "thruster",
+      "cooldownSeconds": {
+        "value": 52.1,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Thruster)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Base Cooldown: 52.1 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 1,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Thruster)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Chunk Scalar: 1x"
+        }
+      }
+    },
+    {
+      "abilityId": "towering-barricade",
+      "cooldownSeconds": {
+        "value": 101.3,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Towering Barricade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Base Cooldown: 101.3 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Towering Barricade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "healing-rift",
+      "cooldownSeconds": {
+        "value": 118.7,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Healing Rift)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Base Cooldown: 118.7 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Healing Rift)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "acrobats-dodge",
+      "cooldownSeconds": {
+        "value": 56,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Acrobat's Dodge)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Base Cooldown: 56 [148.4]s"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.5,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Acrobat's Dodge)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.5x"
+        }
+      }
+    },
+    {
+      "abilityId": "phoenix-dive",
+      "cooldownSeconds": {
+        "value": 79.6,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Phoenix Dive)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Base Cooldown: 79.6 seconds"
+        }
+      },
+      "chunkScalar": {
+        "value": 0.8,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Phoenix Dive)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Chunk Scalar: 0.8x"
+        }
+      }
     }
   ],
   "modifiers": [

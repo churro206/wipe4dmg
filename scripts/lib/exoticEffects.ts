@@ -75,6 +75,7 @@ const CLASS_ABILITY =
   /Class Ability|Exiting Invisibility|Quickfall|Vanishing Step|Void Soul/i;
 const ROTATION =
   /\bSuper\b|\bRift\b|Well of Radiance|Grenade|Ability Damage hit|Shield Throw|Melee hit/i;
+const ARC_OR_STASIS = /Arc or Stasis|Stasis or Arc/i;
 const KILL = /\bkill(?:s|ing)?\b|\bFinish/i;
 // A debuff whose element follows the equipped super, e.g. Chromatic Fire
 const SUPER_DEPENDENT = /based on the equipped Super/i;
@@ -195,7 +196,12 @@ export function courtVerdict(
   const court = inputs.sources.court;
   const trigger = flat(row.trigger);
   const value = `${flat(row.pve ?? "")} für ${flat(row.pveDuration ?? "")}`;
-  const percent = Math.max(...numbers(row.pve ?? "", "%"));
+  // A class ability opens the window with its cast (U7); Hazardous Propulsion (rocket hits) and
+  // Heart of Inmost Light (grenade as well) are other cases
+  const classCast = CLASS_ABILITY.test(trigger) && !/Grenade|Exodus/i.test(trigger);
+  const stages = numbers(row.pve ?? "", "%");
+  // one cast is one stack: the first stage, e.g. Mask of Bakris 10 / 21 / 33 %
+  const percent = classCast ? stages[0] : Math.max(...stages);
   const check = courtCheck(percent, quoted);
   if (NEEDS_EFFECT.test(trigger)) {
     // the states from the trigger, else from a "While … is active" sentence of the text
@@ -237,7 +243,7 @@ export function courtVerdict(
       },
     };
   }
-  if (CLASS_ABILITY.test(trigger))
+  if (CLASS_ABILITY.test(trigger) && !classCast)
     return {
       rule: 4,
       kind: "classAbility",
@@ -245,7 +251,7 @@ export function courtVerdict(
       check,
     };
   const superDependent = SUPER_DEPENDENT.test(text);
-  const rotation = ROTATION.test(trigger) && !superDependent;
+  const rotation = classCast || (ROTATION.test(trigger) && !superDependent);
   if (!rotation && !superDependent && !KILL.test(trigger))
     return {
       rule: 8,
@@ -253,7 +259,14 @@ export function courtVerdict(
       reason: `Auslöser unklar („${trigger}“)`,
       check,
     };
-  const found = rotation ? rotationTrigger(trigger, text, inputs) : undefined;
+  const found: FoundTrigger | undefined = classCast
+    ? {
+        trigger: { on: "cast", refresh: !NOT_REFRESHABLE.test(text), abilityKinds: ["classAbility"] },
+        label: "ab Cast einer Class Ability",
+      }
+    : rotation
+      ? rotationTrigger(trigger, text, inputs)
+      : undefined;
   if (rotation && !found)
     return {
       rule: 4,
@@ -282,6 +295,8 @@ export function courtVerdict(
     row.bucketId === "surge" && !found?.condition && elements.length === 1
       ? elementOf(trigger)
       : undefined;
+  // "While an Arc or Stasis Super Ability is equipped": the buff applies to weapons of both
+  const weaponElements: Element[] = classCast && ARC_OR_STASIS.test(text) ? ["arc", "stasis"] : [];
   // "Precision kill causes a Void AOE which applies Weaken": only with a super of that element
   const superElement = superDependent ? elementOf(trigger) : undefined;
   const source: Source = {
@@ -304,6 +319,7 @@ export function courtVerdict(
       damageSources:
         row.bucketId === "debuff" ? [...DamageSource.options] : ["weapon"],
       ...(element ? { elements: [element] } : {}),
+      ...(weaponElements.length ? { elements: weaponElements } : {}),
       ...(found?.condition ? { condition: found.condition } : {}),
       ...(superElement ? { superElements: [superElement] } : {}),
     },

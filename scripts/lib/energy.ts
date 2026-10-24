@@ -77,7 +77,8 @@ export const ENERGY_STATS: EnergyStat[] = [
   },
 ];
 
-const COOLDOWN = /Base Cooldown:\s*(\d+(?:\.\d+)?) seconds|^(?:.*\n)*?\s*(\d+(?:\.\d+)?) seconds\./;
+// "Base Cooldown: 52.1 seconds" or, with the PvP value in brackets, "56 [148.4]s"
+const COOLDOWN = /Base Cooldown:\s*(\d+(?:\.\d+)?)(?: seconds|\s*\[[^\]]*\]s)|^(?:.*\n)*?\s*(\d+(?:\.\d+)?) seconds\./;
 const CHUNK = /Chunk Scalar:\s*(\d+(?:\.\d+)?)x/;
 
 /** Cooldown and chunk scalar of every base ability from the "extra" cell of its Compendium entry. */
