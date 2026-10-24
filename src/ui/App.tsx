@@ -674,15 +674,6 @@ function App() {
                   </span>
                 )}
               </div>
-              {exotic && (
-                <ul className="note">
-                  {describeExotic(exotic, effects, generatedExoticEffects).map(
-                    (line) => (
-                      <li key={line}>{line}</li>
-                    ),
-                  )}
-                </ul>
-              )}
               {subclass === "prismatic" && classItemChosen && (
                 <>
                   <h3 className="sub">Exotic Class Item perks</h3>
@@ -697,18 +688,6 @@ function App() {
                       setExoticPreBuilt(false);
                     }}
                   />
-                  {classPerkIds.length > 0 && (
-                    <ul className="note">
-                      {classPerkIds.flatMap((id) => {
-                        const perk = exoticArmor.find((e) => e.id === id);
-                        return perk
-                          ? describeExotic(perk, effects, generatedExoticEffects).map(
-                              (line) => <li key={`${id}:${line}`}>{line}</li>,
-                            )
-                          : [];
-                      })}
-                    </ul>
-                  )}
                 </>
               )}
               {pickerFor("mod", <h3 className="sub">Mods</h3>)}
