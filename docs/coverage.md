@@ -15,6 +15,16 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Melees | 12 | 12 | 0 | 2 | 26 |
 | Effects | 103 modelled | | | | |
 
+## Aegis measurements
+
+Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the model (used or checked against the model), skipped with a reason (another mode, a burst before a weapon swap, a legendary frame) or missing (an item or an assumption the model does not have).
+
+| Sheet | Rows | In the model | Skipped | Missing |
+| --- | ---: | ---: | ---: | ---: |
+| Weapons | 417 | 143 | 244 | 30 |
+| Sustained | 261 | 37 | 129 | 95 |
+| Swap | 204 | 47 | 102 | 55 |
+
 ## Supers
 
 | Element | Super | Model | Super Window | Aegis row or reason |

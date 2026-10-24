@@ -11,6 +11,8 @@ import {
 } from "../src/data/schema";
 import { abilityCoverage } from "../src/engine/coverage";
 import { abilities, aegisRows, effects } from "../src/ui/data";
+import { countVerdicts } from "./lib/aegisCoverage";
+import { realCoverage } from "./lib/aegisCoverageData";
 
 const source = {
   name: "test",
@@ -219,6 +221,7 @@ describe("docs/coverage.md", () => {
         AbilityGap.array().parse(rawGaps),
       ),
       effects,
+      countVerdicts(realCoverage()),
     );
     await expect(expected).toMatchFileSnapshot("../docs/coverage.md");
   });

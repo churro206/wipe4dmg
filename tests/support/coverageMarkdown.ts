@@ -3,6 +3,7 @@
 // The output has no date, so the comparison only fails when the data changes.
 
 import type { AbilityKind, Effect } from "../../src/data/schema";
+import type { countVerdicts } from "../lib/aegisCoverage";
 import type {
   AbilityCoverageRow,
   CoverageStatus,
@@ -40,6 +41,7 @@ const percent = (value: number) => `${Math.round((value - 1) * 1000) / 10}%`;
 export function coverageMarkdown(
   rows: AbilityCoverageRow[],
   effects: Effect[],
+  aegis: ReturnType<typeof countVerdicts>,
 ): string {
   const lines = [
     "# Coverage of the calculator",
@@ -61,6 +63,17 @@ export function coverageMarkdown(
       return `| ${title} | ${count("components")} | ${count("package")} | ${count("effectOnly")} | ${count("missing")} | ${ofKind.length} |`;
     }),
     `| Effects | ${effects.length} modelled | | | | |`,
+    "",
+    "## Aegis measurements",
+    "",
+    "Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the model (used or checked against the model), skipped with a reason (another mode, a burst before a weapon swap, a legendary frame) or missing (an item or an assumption the model does not have).",
+    "",
+    "| Sheet | Rows | In the model | Skipped | Missing |",
+    "| --- | ---: | ---: | ---: | ---: |",
+    ...aegis.map(
+      (c) =>
+        `| ${c.tab[0].toUpperCase()}${c.tab.slice(1)} | ${c.total} | ${c.model} | ${c.skipped} | ${c.missing} |`,
+    ),
   ];
 
   for (const { kind, title } of KINDS) {

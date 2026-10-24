@@ -132,6 +132,7 @@ const DURATION =
 const TICKS = /\bticks?\b/i;
 
 export type ReportOption = {
+  rowId: string | null; // Aegis row of the option; null where Quantum or an override gives the factor
   name: string;
   kind: WeaponOption["kind"];
   factor: number;
@@ -158,7 +159,7 @@ export type ReportWeapon = {
   scaleDeviation: number | null;
   includedEffectIds: string[];
   options: ReportOption[];
-  unusedRows: { assumptions: string[]; reason: string }[];
+  unusedRows: { rowId: string; assumptions: string[]; reason: string }[];
   notes: string[];
   armor: string[];
   abilityKinds: string[];
@@ -828,6 +829,7 @@ export function buildWeaponImport(
     if (!base) {
       for (const row of rows)
         entry.unusedRows.push({
+          rowId: row.id,
           assumptions: row.assumptions,
           reason: blockingReason(classesOf.get(row)!),
         });
@@ -945,6 +947,7 @@ export function buildWeaponImport(
         extras.every((c) => OPTION_KINDS.includes(c.kind));
       if (!isOption) {
         entry.unusedRows.push({
+          rowId: row.id,
           assumptions: row.assumptions,
           reason:
             blockingReason(classes) ||
@@ -977,6 +980,7 @@ export function buildWeaponImport(
       const factor = scorchFactor ?? perHit ?? visual;
       if (factor === null) {
         entry.unusedRows.push({
+          rowId: row.id,
           assumptions: row.assumptions,
           reason:
             "Option ohne Faktor: Einzeltreffer gleich und andere Zahl an Shots",
@@ -989,6 +993,7 @@ export function buildWeaponImport(
         factor < 1 - CATALYST_MIN_CHANGE
       ) {
         entry.unusedRows.push({
+          rowId: row.id,
           assumptions: row.assumptions,
           reason: `Katalysator-Zeile mit kleinerem Wert (×${de(factor, 3)}): anderer Modus`,
         });
@@ -1043,6 +1048,7 @@ export function buildWeaponImport(
         condition: text?.condition ?? null,
       });
       entry.options.push({
+        rowId: row.id,
         name,
         kind,
         factor: Number(factor.toFixed(4)),
@@ -1070,6 +1076,7 @@ export function buildWeaponImport(
         condition: null,
       });
       entry.options.push({
+        rowId: null,
         name: "Catalyst",
         kind: "catalyst",
         factor: override.catalystFactor,
@@ -1115,6 +1122,7 @@ export function buildWeaponImport(
       };
       options.push(option);
       entry.options.push({
+        rowId: null,
         name: option.name,
         kind: option.kind,
         factor: option.factor.value!,

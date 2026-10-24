@@ -11,7 +11,7 @@
     "test": "vitest",
     "test:quiet": "vitest run --reporter=dot --silent",
     "sanity": "vitest run tests/plausibility.test.ts --silent=false",
-    "coverage": "vitest run tests/coverage.test.ts --update",
+    "coverage": "vitest run tests/coverage.test.ts tests/aegisCoverage.test.ts --update",
     "probe": "vitest run tests/metaProbe.test.ts tests/metaProbeAuto.test.ts --update",
     "import:totals": "node scripts/import-aegis-totals.ts",
     "import:bosses": "node scripts/import-aegis-bosses.ts",
