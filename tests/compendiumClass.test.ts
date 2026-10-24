@@ -22,12 +22,12 @@ const html = [
 describe("parseCompendiumClassTab", () => {
   const entries = parseCompendiumClassTab(html);
 
-  it("reads both perks of a row with the class of the section", () => {
-    expect(entries.map((e) => [e.section, e.name, e.text])).toEqual([
-      ["any", "Spirit of the Assassin", "Grants Void Invisibility."],
-      ["any", "Spirit of Verity", "Death Throes."],
-      ["hunter", "Spirit of Caliban", "Melee Kills trigger an Ignition."],
-      ["warlock", "Spirit of Vesper", "Arc Shockwave."],
+  it("reads both perks of a row with the class of the section and the column of the class item", () => {
+    expect(entries.map((e) => [e.section, e.name, e.text, e.extra])).toEqual([
+      ["any", "Spirit of the Assassin", "Grants Void Invisibility.", "column 1"],
+      ["any", "Spirit of Verity", "Death Throes.", "column 2"],
+      ["hunter", "Spirit of Caliban", "Melee Kills trigger an Ignition.", "column 1"],
+      ["warlock", "Spirit of Vesper", "Arc Shockwave.", "column 1"],
     ]);
   });
 

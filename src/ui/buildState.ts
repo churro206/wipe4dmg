@@ -321,9 +321,13 @@ function validClassPerks(build: Build): string[] {
   if (build.subclass !== "prismatic" || build.exoticArmorId !== undefined)
     return [];
   const allowed = classPerksFor(exoticArmor, build.guardianClass);
-  return [...new Set(build.classPerkIds ?? [])].filter((id) =>
-    allowed.some((e) => e.id === id),
+  const perks = [...new Set(build.classPerkIds ?? [])].flatMap((id) =>
+    allowed.filter((e) => e.id === id),
   );
+  // one perk per column of the class item; the first one wins
+  return perks
+    .filter((perk, i) => perks.findIndex((p) => p.column === perk.column) === i)
+    .map((perk) => perk.id);
 }
 
 export type LinkState = {

@@ -1,6 +1,7 @@
 // Converts the Compendium tab "Exotic Class" (htmlview page) into plain-text entries (ADR 0015, U6-3).
 // Rows of perks hold two perks, each in three columns (name, icon, text); rows with one cell are the
-// section titles ("Class-agnostic Perks", "Hunter-exclusive Perks", ...).
+// section titles ("Class-agnostic Perks", "Hunter-exclusive Perks", ...). The left perk of a row rolls
+// in the first column of the class item, the right one in the second (extra "column 1" / "column 2").
 
 import type { CompendiumEntry } from "../../src/data/schema.ts";
 import { cellText } from "./compendiumAbilities.ts";
@@ -36,7 +37,7 @@ export function parseCompendiumClassTab(html: string): CompendiumEntry[] {
       const name = cells[i * COLUMNS];
       const text = cells[i * COLUMNS + 2];
       if (name === "" || text === "") continue;
-      entries.push({ tab: TAB, section, name, text, extra: "" });
+      entries.push({ tab: TAB, section, name, text, extra: `column ${i + 1}` });
     }
   }
   if (entries.length === 0)

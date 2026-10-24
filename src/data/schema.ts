@@ -899,6 +899,8 @@ export const ExoticArmorEntry = z.object({
   name: z.string(),
   guardianClass: GuardianClass.nullable(), // null: any class
   slot: ManifestArmorPiece.shape.slot,
+  // classPerk only: the column of the class item it rolls in; one perk per column (Compendium)
+  column: z.union([z.literal(1), z.literal(2)]).optional(),
   intrinsic: z.string().nullable(),
   kind: ExoticArmorKind,
   rule: z.number().int().positive(), // number of the first rule that matched

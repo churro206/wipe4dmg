@@ -74,7 +74,7 @@ export function classPerksOf(
   if (new Set(ids).size !== ids.length)
     throw new Error("The two perks of the class item differ");
   const allowed = classPerksFor(entries, build.guardianClass);
-  return ids.map((id) => {
+  const perks = ids.map((id) => {
     const perk = allowed.find((e) => e.id === id);
     if (!perk)
       throw new Error(
@@ -82,6 +82,11 @@ export function classPerksOf(
       );
     return perk;
   });
+  if (perks.length === 2 && perks[0].column === perks[1].column)
+    throw new Error(
+      `"${perks[0].name}" and "${perks[1].name}" roll in the same column of the class item`,
+    );
+  return perks;
 }
 
 /** The exotic armor of a build; throws if it is unknown, not selectable or of another class. */

@@ -2,11 +2,12 @@ import { useId } from "react";
 import type { ExoticArmorEntry } from "../../data/schema";
 import { Icon } from "./Icon";
 
-const MAX_PERKS = 2;
+const COLUMNS = [1, 2] as const;
 
 /**
- * The two Spirit perks of the Prismatic Exotic Class Item as tiles (ADR 0015, U6-3). A third pick
- * replaces the oldest one. The class item is the build's exotic, so the parent drops the exotic piece.
+ * The two Spirit perks of the Prismatic Exotic Class Item as tiles (ADR 0015, U6-3), one row per
+ * column of the class item. A pick replaces the perk of its column. The class item is the build's
+ * exotic, so the parent drops the exotic piece.
  */
 export function ClassPerkPicker({
   entries,
@@ -19,25 +20,35 @@ export function ClassPerkPicker({
   describe: (entry: ExoticArmorEntry) => string[];
   onChange: (classPerkIds: string[]) => void;
 }) {
-  const toggle = (id: string) =>
+  const columnOf = (id: string) => entries.find((e) => e.id === id)?.column;
+  const toggle = (entry: ExoticArmorEntry) =>
     onChange(
-      selectedIds.includes(id)
-        ? selectedIds.filter((s) => s !== id)
-        : [...selectedIds, id].slice(-MAX_PERKS),
+      selectedIds.includes(entry.id)
+        ? selectedIds.filter((s) => s !== entry.id)
+        : [...selectedIds.filter((s) => columnOf(s) !== entry.column), entry.id],
     );
-  return (
-    <div className="tile-grid" role="group" aria-label="Exotic Class Item perks">
-      {entries.map((entry) => (
-        <PerkTile
-          key={entry.id}
-          entry={entry}
-          pressed={selectedIds.includes(entry.id)}
-          lines={describe(entry)}
-          onClick={() => toggle(entry.id)}
-        />
-      ))}
-    </div>
-  );
+  return COLUMNS.map((column) => {
+    const inColumn = entries.filter((e) => e.column === column);
+    if (inColumn.length === 0) return null;
+    return (
+      <div
+        key={column}
+        className="tile-grid"
+        role="group"
+        aria-label={`Exotic Class Item perks, column ${column}`}
+      >
+        {inColumn.map((entry) => (
+          <PerkTile
+            key={entry.id}
+            entry={entry}
+            pressed={selectedIds.includes(entry.id)}
+            lines={describe(entry)}
+            onClick={() => toggle(entry)}
+          />
+        ))}
+      </div>
+    );
+  });
 }
 
 function PerkTile({

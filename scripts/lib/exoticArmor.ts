@@ -410,6 +410,16 @@ function verdict(
   };
 }
 
+/** Column of the class item a Spirit perk rolls in, from the Compendium tab Exotic Class. */
+function perkColumn(name: string, compendium: CompendiumEntry[]): 1 | 2 {
+  const extra = compendium.find(
+    (e) => e.tab === "Exotic Class" && sameName(e.name, name),
+  )?.extra;
+  if (extra === "column 1") return 1;
+  if (extra === "column 2") return 2;
+  throw new Error(`No class item column for "${name}" in the Compendium`);
+}
+
 /** One entry per exotic armor piece of the manifest, sorted by name. */
 export function classifyExoticArmor(
   inputs: ArmorImportInputs,
@@ -463,6 +473,9 @@ export function classifyExoticArmor(
         name: piece.name,
         guardianClass: piece.guardianClass,
         slot: piece.slot,
+        ...(piece.slot === "classPerk"
+          ? { column: perkColumn(piece.name, inputs.compendium) }
+          : {}),
         intrinsic: piece.intrinsics[0] ?? null,
         ...rest,
         aegisRowIds,

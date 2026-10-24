@@ -44,6 +44,7 @@ Breite vor Genauigkeit, ganze Kategorien pro Block (Regel in `CLAUDE.md`). Model
    - **UI-Kleinigkeiten (Inhaber, 2026-10-24, zwischendurch, eigener Commit):** (a) Tooltip einer Waffe oder Fähigkeit erscheint beim Hovern mit der Maus, nicht erst, wenn der Schalter umgelegt wird; (b) Tooltip-Texte allgemein halten, nicht aus der 1. Person („I gain 30 stability …“). Vor Änderungen `docs/ui-inspiration.md` lesen.
 
    - ✅ **Class Item im Exotic-Picker, Tooltips, Schließen per Klick (Inhaber, 2026-10-24, Sonnet):** „Exotic Class Item“ ist ein Eintrag im `ExoticPicker` (nur Prismatic), die Spirit-Perks (`ClassPerkPicker`) erscheinen erst nach dieser Wahl (`classItemChosen` in `App.tsx`, nicht im Link). Exotic-Kachel und Perks haben die Hover-Karte wie Waffen. `useDismiss` schließt Exotic-, Waffen- und Ability-Liste bei Klick außerhalb. Noch nicht im Browser geprüft (`scripts/ui-check.mjs` mit `vite preview`).
+   - ✅ **Class Item: ein Perk pro Spalte (Inhaber, 2026-10-24, Opus):** Die sechs Class-agnostic Perks (Assassin, Inmost Light, Ophidian | Star-Eater, Synthoceps, Verity) passen zu jeder Klasse, aber jeder Perk rollt in einer Spalte des Items (Compendium: linker / rechter Perk einer Zeile, `compendium-class.json` `extra` „column 1/2“ → `ExoticArmorEntry.column`). `classPerksOf` wirft bei zwei Perks derselben Spalte, `ClassPerkPicker` zeigt eine Zeile pro Spalte und ersetzt den Perk der eigenen Spalte, `validClassPerks` behält bei Links den ersten pro Spalte. Szenario im Gate: Star-Eater + Verity ist ungültig.
 
 ## Bekannte Ungenauigkeiten
 

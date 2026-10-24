@@ -61,6 +61,19 @@ describe("class perks", () => {
     expect(classPerksOf(build({}), perks)).toEqual([]);
   });
 
+  it("takes one perk per column of the class item (Compendium: Star-Eater and Verity are both right)", () => {
+    const column = (id: string) => perks.find((e) => e.id === id)?.column;
+    expect(column("spirit-of-the-eternal-warrior")).toBe(1);
+    expect(column("spirit-of-the-star-eater")).toBe(2);
+    expect(column("spirit-of-verity")).toBe(2);
+    expect(() =>
+      classPerksOf(
+        build({ classPerkIds: ["spirit-of-the-star-eater", "spirit-of-verity"] }),
+        perks,
+      ),
+    ).toThrow(/column/);
+  });
+
   it("adds the effects of both perks to the build", () => {
     const { selected } = buildSimulation(
       build({

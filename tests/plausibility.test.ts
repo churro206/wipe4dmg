@@ -223,6 +223,10 @@ describe("exotic armor changes its abilities", () => {
     expect(surge).toBeLessThanOrEqual(1.25);
     expect(superBoost).toBeGreaterThan(1.5);
     expect(superBoost).toBeLessThanOrEqual(1.7);
+    // Star-Eater and Verity both roll in the right column (Compendium), no item has both
+    expect(() =>
+      run({ ...prismatic, classPerkIds: ["spirit-of-the-star-eater", "spirit-of-verity"] }),
+    ).toThrow(/column/);
   });
 
   it("well-known variants exist (Cuirass, Nighthawk, Dawn Chorus, Geomag)", () => {
