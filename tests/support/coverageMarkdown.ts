@@ -97,25 +97,30 @@ export function coverageMarkdown(
     "| --- | --- | --- | --- | --- |",
   );
   for (const effect of effects) {
-    const multipliers = effect.parts.flatMap((part) =>
-      part.type === "multiplier"
-        ? [
-            {
-              text: `${part.bucketId} +${percent(part.multiplier.value ?? NaN)}`,
-              sources:
-                part.damageSources.join(", ") +
-                (part.abilityIds ? ` (only ${part.abilityIds.join(", ")})` : ""),
-            },
-          ]
-        : part.type === "timing"
-          ? [{ text: `Timing: ${part.change}`, sources: "weapon" }]
-          : [
-              {
-                text: `${part.counterId} ×${part.factor.value}`,
-                sources: "weapon",
-              },
-            ],
-    );
+    const multipliers = effect.parts.map((part) => {
+      switch (part.type) {
+        case "multiplier":
+          return {
+            text: `${part.bucketId} +${percent(part.multiplier.value ?? NaN)}`,
+            sources:
+              part.damageSources.join(", ") +
+              (part.abilityIds ? ` (only ${part.abilityIds.join(", ")})` : ""),
+          };
+        case "timing":
+          return { text: `Timing: ${part.change}`, sources: "weapon" };
+        case "counterModifier":
+          return {
+            text: `${part.counterId} ×${part.factor.value}`,
+            sources: "weapon",
+          };
+        case "holdDraw":
+          return { text: "Hold the draw", sources: "weapon" };
+        case "appliesKeyword":
+          return { text: "Applies a keyword", sources: "weapon" };
+        case "periodicDamage":
+          return { text: `Own damage: ${part.id}`, sources: "own damage" };
+      }
+    });
     const duration = effect.durationMs?.value
       ? `${effect.durationMs.value / 1000} s`
       : "whole phase or Rotation";

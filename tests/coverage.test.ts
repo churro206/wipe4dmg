@@ -1,23 +1,16 @@
 import { describe, expect, it } from "vitest";
 import { coverageMarkdown } from "./support/coverageMarkdown";
-import rawAbilityStats from "../src/data/ability-stats.json";
-import rawAbilities from "../src/data/abilities.json";
-import rawRows from "../src/data/aegis-abilities.json";
 import rawSnapshot from "../src/data/compendium-abilities.json";
-import rawEffects from "../src/data/effects.json";
 import rawGaps from "../src/data/ability-gaps.json";
-import rawManifest from "../src/data/manifest-abilities.json";
 import {
   Ability,
   AbilityGap,
   AegisAbilityRow,
   CompendiumSnapshot,
-  ManifestAbilities,
   type CompendiumEntry,
 } from "../src/data/schema";
 import { abilityCoverage } from "../src/engine/coverage";
-import { loadAbilities } from "../src/engine/loadAbilities";
-import { loadAbilityStats, loadEffects } from "../src/engine/loadData";
+import { abilities, aegisRows, effects } from "../src/ui/data";
 
 const source = {
   name: "test",
@@ -216,22 +209,16 @@ describe("abilityCoverage", () => {
 
 describe("docs/coverage.md", () => {
   it("is up to date; run npm run coverage after changing data files", async () => {
-    const rows = AegisAbilityRow.array().parse(rawRows);
-    const abilities = loadAbilities(
-      rawAbilities,
-      rows,
-      loadAbilityStats(rawAbilityStats),
-      ManifestAbilities.parse(rawManifest).abilities,
-    );
+    // The same data as the website: abilities from Compendium parts and all effects of the model.
     const snapshot = CompendiumSnapshot.parse(rawSnapshot);
     const expected = coverageMarkdown(
       abilityCoverage(
         snapshot.entries,
         abilities,
-        rows,
+        aegisRows,
         AbilityGap.array().parse(rawGaps),
       ),
-      loadEffects(rawEffects),
+      effects,
     );
     await expect(expected).toMatchFileSnapshot("../docs/coverage.md");
   });

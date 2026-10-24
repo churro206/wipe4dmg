@@ -10,10 +10,10 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 
 | Kind | ✅ Parts | 🟡 Package | 🔵 Buff only | ❌ missing | Total |
 | --- | --- | --- | --- | --- | --- |
-| Supers | 0 | 25 | 1 | 5 | 31 |
-| Grenades | 0 | 26 | 0 | 4 | 30 |
-| Melees | 0 | 24 | 0 | 2 | 26 |
-| Effects | 23 modelled | | | | |
+| Supers | 2 | 23 | 1 | 5 | 31 |
+| Grenades | 7 | 19 | 0 | 4 | 30 |
+| Melees | 12 | 12 | 0 | 2 | 26 |
+| Effects | 103 modelled | | | | |
 
 ## Supers
 
@@ -21,9 +21,9 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | --- | --- | --- | --- | --- |
 | Arc | Arc Staff | 🟡 Package | estimate | `super-arc-staff-grounded-2l1h` |
 | Arc | Gathering Storm | 🟡 Package | estimate | `super-gathering-storm` |
-| Arc | Storm's Edge | 🟡 Package | does not block | `super-storm-s-edge-body` |
+| Arc | Storm's Edge | 🟡 Package | estimate | `super-storm-s-edge-body` |
 | Arc | Fists of Havoc | 🟡 Package | estimate | `super-fists-of-havoc-heavy-attacks` |
-| Arc | Thundercrash | 🟡 Package | estimate | `super-thundercrash` |
+| Arc | Thundercrash | ✅ Parts | estimate | `super-thundercrash` |
 | Arc | Chaos Reach | 🟡 Package | exact | `super-chaos-reach` |
 | Arc | Stormtrance | 🟡 Package | estimate | `super-stormtrance` |
 | Solar | Blade Barrage | 🟡 Package | estimate | `super-blade-barrage` |
@@ -36,7 +36,7 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Solar | Daybreak | 🟡 Package | estimate | `super-daybreak-ember-of-ashes` |
 | Solar | Well of Radiance | 🔵 Buff only | estimate | – |
 | Void | Spectral Blades | 🟡 Package | estimate | `super-spectral-blades-light-attacks` |
-| Void | Shadowshot: Deadfall | 🟡 Package | estimate | `super-shadowshot-deadfall-tether-includes-debuff` |
+| Void | Shadowshot: Deadfall | ✅ Parts | estimate | `super-shadowshot-deadfall-tether-includes-debuff` |
 | Void | Shadowshot: Moebius Quiver | 🟡 Package | estimate | `super-shadowshot-moebius-quiver-includes-debuff` |
 | Void | Sentinel Shield | 🟡 Package | estimate | `super-sentinel-shield-light-attacks` |
 | Void | Twilight Arsenal | 🟡 Package | estimate | `super-twilight-arsenal-includes-tractor` |
@@ -63,20 +63,20 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Arc | Skip Grenade | 🟡 Package | `grenade-skip` |
 | Arc | Storm Grenade | 🟡 Package | `grenade-storm` |
 | Solar | Firebolt Grenade | 🟡 Package | `grenade-firebolt-average-ember-of-ashes-with-ignition` |
-| Solar | Fusion Grenade | 🟡 Package | `grenade-fusion-average-ember-of-ashes-with-ignition` |
+| Solar | Fusion Grenade | ✅ Parts | `grenade-fusion-average-ember-of-ashes-with-ignition` |
 | Solar | Healing Grenade | ❌ missing | no Aegis measurement |
 | Solar | Incendiary Grenade | 🟡 Package | `grenade-incendiary-average-ember-of-ashes-with-ignition` |
-| Solar | Solar Grenade | 🟡 Package | `grenade-solar-ember-of-ashes` |
+| Solar | Solar Grenade | ✅ Parts | `grenade-solar-ember-of-ashes` |
 | Solar | Swarm Grenade | 🟡 Package | `grenade-swarm-average-with-ignition` |
-| Solar | Thermite Grenade | 🟡 Package | `grenade-thermite-average-ember-of-ashes-with-ignition` |
-| Solar | Tripmine Grenade | 🟡 Package | `grenade-tripmine-average-ember-of-ashes-with-ignition` |
-| Void | Axion Bolt | 🟡 Package | `grenade-axion-bolt` |
-| Void | Magnetic Grenade | 🟡 Package | `grenade-magnetic-average` |
+| Solar | Thermite Grenade | ✅ Parts | `grenade-thermite-average-ember-of-ashes-with-ignition` |
+| Solar | Tripmine Grenade | ✅ Parts | `grenade-tripmine-average-ember-of-ashes-with-ignition` |
+| Void | Axion Bolt | ✅ Parts | `grenade-axion-bolt` |
+| Void | Magnetic Grenade | ✅ Parts | `grenade-magnetic-average` |
 | Void | Scatter Grenade | 🟡 Package | `grenade-scatter-average` |
 | Void | Suppressor Grenade | 🟡 Package | `grenade-suppressor` |
 | Void | Void Spike | 🟡 Package | `grenade-void-spike-echo-of-remnants` |
 | Void | Void Wall | 🟡 Package | `grenade-void-wall-echo-of-remnants` |
-| Void | Vortex Grenade | 🟡 Package | `grenade-vortex` |
+| Void | Vortex Grenade | ✅ Parts | `grenade-vortex` |
 | Stasis | Coldsnap Grenade | ❌ missing | no Aegis measurement |
 | Stasis | Duskfield Grenade | ❌ missing | no Aegis measurement |
 | Stasis | Glacier Grenade | 🟡 Package | `grenade-glacier-average-whisper-of-fissures` |
@@ -91,31 +91,31 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Element | Melee | Model | Aegis row or reason |
 | --- | --- | --- | --- |
 | Arc | Combination Blow | ❌ missing | no Aegis measurement |
-| Arc | Disorienting Blow | 🟡 Package | `melee-disorienting-blow` |
+| Arc | Disorienting Blow | ✅ Parts | `melee-disorienting-blow` |
 | Arc | Ballistic Slam | 🟡 Package | `melee-ballistic-slam-average-max-typical-catapult-lift-height` |
-| Arc | Seismic Strike | 🟡 Package | `melee-seismic-strike` |
+| Arc | Seismic Strike | ✅ Parts | `melee-seismic-strike` |
 | Arc | Thunderclap | 🟡 Package | `melee-thunderclap-fully-charged` |
 | Arc | Ball Lightning | 🟡 Package | `melee-ball-lightning` |
 | Arc | Chain Lightning | ❌ missing | no Aegis measurement |
 | Solar | Knife Trick | 🟡 Package | `melee-knife-trick-average-precision-ember-of-ashes-with-ignition` |
-| Solar | Lightweight Knife | 🟡 Package | `melee-lightweight-knife-precision` |
+| Solar | Lightweight Knife | ✅ Parts | `melee-lightweight-knife-precision` |
 | Solar | Proximity Explosive Knife | 🟡 Package | `melee-proximity-explosive-knife-precision` |
-| Solar | Weighted Throwing Knife | 🟡 Package | `melee-weighted-throwing-knife-precision` |
-| Solar | Hammer Strike | 🟡 Package | `melee-hammer-strike-ember-of-ashes` |
+| Solar | Weighted Throwing Knife | ✅ Parts | `melee-weighted-throwing-knife-precision` |
+| Solar | Hammer Strike | ✅ Parts | `melee-hammer-strike-ember-of-ashes` |
 | Solar | Throwing Hammer | 🟡 Package | `melee-throwing-hammer` |
-| Solar | Celestial Fire | 🟡 Package | `melee-celestial-fire-average-ember-of-ashes-with-ignition` |
-| Solar | Incinerator Snap | 🟡 Package | `melee-incinerator-snap-ember-of-ashes` |
-| Void | Phantom Surge | 🟡 Package | `melee-phantom-surge` |
-| Void | Snare Bomb | 🟡 Package | `melee-snare-bomb-ticks-include-weaken` |
-| Void | Shield Bash | 🟡 Package | `melee-shield-bash` |
+| Solar | Celestial Fire | ✅ Parts | `melee-celestial-fire-average-ember-of-ashes-with-ignition` |
+| Solar | Incinerator Snap | ✅ Parts | `melee-incinerator-snap-ember-of-ashes` |
+| Void | Phantom Surge | ✅ Parts | `melee-phantom-surge` |
+| Void | Snare Bomb | ✅ Parts | `melee-snare-bomb-ticks-include-weaken` |
+| Void | Shield Bash | ✅ Parts | `melee-shield-bash` |
 | Void | Shield Throw | 🟡 Package | `melee-shield-throw` |
 | Void | Pocket Singularity | 🟡 Package | `melee-pocket-singularity` |
 | Stasis | Withering Blade | 🟡 Package | `melee-withering-blade-average-facet-of-ruin` |
 | Stasis | Shiver Strike | 🟡 Package | `melee-shiver-strike-whisper-of-fissures-with-auto-shatter` |
 | Stasis | Penumbral Blast | 🟡 Package | `melee-penumbral-blast-average-facet-of-ruin` |
 | Strand | Threaded Spike | 🟡 Package | `melee-threaded-spike-double-tick` |
-| Strand | Frenzied Blade | 🟡 Package | `melee-frenzied-blade` |
-| Strand | Arcane Needle | 🟡 Package | `melee-arcane-needle` |
+| Strand | Frenzied Blade | ✅ Parts | `melee-frenzied-blade` |
+| Strand | Arcane Needle | ✅ Parts | `melee-arcane-needle` |
 
 ## Effects
 
@@ -144,3 +144,83 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Shieldcrush | melee, amplification | melee +50%; amplification +25% | melee; grenade | whole phase or Rotation |
 | Transference | amplification, melee | amplification +10%; melee +10% | grenade; melee | whole phase or Rotation |
 | Fever and Chill | empowering | empowering +20% | weapon | whole phase or Rotation |
+| Expanding Abyss | debuff | debuff +25%; debuff +35%; debuff +40% | weapon, grenade, melee, super, classAbility, keyword | whole phase or Rotation |
+| Debilitating Wave | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 6 s |
+| Maligned Harvest | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 6 s |
+| Singularity Blade | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 6 s |
+| Supernova | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 8 s |
+| Void Infestation | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 6 s |
+| Weakened Clear | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 20 s |
+| Radiant Orbs | empowering | empowering +20%; empowering +20% | weapon; super (only golden-gun-deadshot, golden-gun-marksman) | 10 s |
+| Heart of the Flame | empowering | empowering +20%; empowering +20% | weapon; super (only golden-gun-deadshot, golden-gun-marksman) | 10 s |
+| Prismatic Transfer | empowering | empowering +20% | weapon | 10 s |
+| Weapons of Light (Ward of Dawn) | empowering | empowering +25% | weapon | 15 s |
+| Precision Equity | surge | surge +17% | weapon | 11 s |
+| That Fresh Bullet Smell | surge | surge +17% | weapon | 11 s |
+| Void Weapon Channelling | surge | surge +25% | weapon | 11 s |
+| Argent Blade | amplification | amplification +15% | weapon | 5 s |
+| Argent Ordnance | amplification | amplification +15% | weapon | 4.5 s |
+| Argent Quiver | amplification | amplification +35% | weapon | whole phase or Rotation |
+| Sniper's Meditation | amplification | amplification +15% | weapon | 7 s |
+| Targeting Autoloader | amplification | amplification +20% | weapon | 15 s |
+| Arc Compounding | amplification | amplification +15% | weapon, grenade, melee, super, classAbility, keyword | whole phase or Rotation |
+| Remote Shield (Edge of Action) | amplification | amplification +5% | weapon | 10 s |
+| Banner of War (Strand Titan) | amplification | amplification +10% | weapon | whole phase or Rotation |
+| Ascension |  |  |  | whole phase or Rotation |
+| Banner of War | melee | melee +100% | melee | 15 s |
+| Bastion |  |  |  | whole phase or Rotation |
+| Child of the Old Gods | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 5 s |
+| Controlled Demolition | – | Applies a keyword | weapon | whole phase or Rotation |
+| Diamond Lance |  |  |  | whole phase or Rotation |
+| Echo of Instability | – | Applies a keyword | weapon | 11.25 s |
+| Echo of Undermining | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 5 s |
+| Echo of Vigilance |  |  |  | whole phase or Rotation |
+| Electrostatic Mind |  |  |  | whole phase or Rotation |
+| Ember of Mercy |  |  |  | whole phase or Rotation |
+| Ember of Torches (Radiant) | empowering | empowering +20%; empowering +20% | weapon; super (only golden-gun-deadshot, golden-gun-marksman) | 8 s |
+| Ensnaring Slam |  |  |  | whole phase or Rotation |
+| Facet of Bravery | – | Applies a keyword | weapon | 11.25 s |
+| Facet of Bravery | – | Applies a keyword | weapon | 11.25 s |
+| Facet of Courage | aspectBonus | aspectBonus +10% | grenade, melee, super | whole phase or Rotation |
+| Facet of Courage | melee | melee +50% | melee | whole phase or Rotation |
+| Facet of Dawn (Radiant) | empowering | empowering +20%; empowering +20% | weapon; super (only golden-gun-deadshot, golden-gun-marksman) | 5 s |
+| Facet of Dominance | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 5 s |
+| Facet of Dominance | – | Applies a keyword | weapon | whole phase or Rotation |
+| Facet of Purpose |  |  |  | whole phase or Rotation |
+| Frostpulse |  |  |  | whole phase or Rotation |
+| Glacial Harvest |  |  |  | whole phase or Rotation |
+| Grim Harvest |  |  |  | whole phase or Rotation |
+| Heat Rises |  |  |  | whole phase or Rotation |
+| Into the Fray |  |  |  | whole phase or Rotation |
+| Knockout | melee | melee +160% | melee | 6 s |
+| Lightning Surge |  |  |  | whole phase or Rotation |
+| Offensive Bulwark | melee | melee +160% | melee | whole phase or Rotation |
+| On the Prowl | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 6 s |
+| On Your Mark |  |  |  | 3 s |
+| Roaring Flames |  |  |  | 20 s |
+| Roaring Flames | melee | melee +200% | melee | 20 s |
+| Roaring Flames | aspectBonus | aspectBonus +73% | grenade, super | 20 s |
+| Shatterdive |  |  |  | whole phase or Rotation |
+| Sol Invictus |  |  |  | whole phase or Rotation |
+| Soul Siphon |  |  |  | whole phase or Rotation |
+| Spark of Feedback | melee | melee +100% | melee | 5 s |
+| Spark of Shock | – | Applies a keyword | weapon | whole phase or Rotation |
+| Tectonic Harvest |  |  |  | whole phase or Rotation |
+| Thread of Propagation | – | Applies a keyword | weapon | 8 s |
+| Thread of Warding |  |  |  | whole phase or Rotation |
+| Touch of Flame |  |  |  | whole phase or Rotation |
+| Trapper's Ambush | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 10 s |
+| Unbreakable |  |  |  | whole phase or Rotation |
+| Weavewalk |  |  |  | whole phase or Rotation |
+| Whisper of Fractures |  |  |  | whole phase or Rotation |
+| Knock 'Em Down |  |  |  | whole phase or Rotation |
+| Thread of Evolution |  |  |  | whole phase or Rotation |
+| Spark of Magnitude |  |  |  | whole phase or Rotation |
+| Chaos Accelerant |  |  |  | whole phase or Rotation |
+| Echo of Remnants |  |  |  | whole phase or Rotation |
+| Touch of Winter |  |  |  | whole phase or Rotation |
+| Arc Soul | – | Own damage: arc-soul | own damage | 15 s |
+| Hellion | – | Own damage: hellion | own damage | 20 s |
+| Ionic Sentry | – | Own damage: ionic-sentry | own damage | 15 s |
+| Storm's Keep | – | Own damage: storms-keep | own damage | whole phase or Rotation |
+| Weaver's Call | – | Own damage: weavers-call | own damage | whole phase or Rotation |
