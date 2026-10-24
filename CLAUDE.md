@@ -60,6 +60,7 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 - `npm test`, `npm run test:quiet` (nur Ergebnis und Fehler), `npm run sanity` (Plausibilitäts-Gate), `npm run build` (`tsc -b` prüft auch `scripts/`), `npm run dev`
 - `npm run facts -- "<Name>"`: Name in allen Snapshots suchen, kompakt
 - `npm run coverage`: `docs/coverage.md` neu schreiben (generiert)
+- `npm run check:text`: `docs/text-check.md` (jeder Part, Catalyst und Grant gegen seinen Text; Gründe in `tests/fixtures/text-check.json`)
 - Import (lädt herunter): `import:weapons`, `import:compendium`, `import:court`, `import:abilities`, `import:bosses`, `import:reload`, `import:icons` (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)
 - Build (ohne Download, schreibt Data Files und Prüftabellen): `build:weapons`, `build:armor`, `build:keywords`, `build:abilities`, `build:buffs`, `build:energy`
 - Reihenfolge nach einem Patch: `docs/plans/current.md`, Abschnitt „Werkzeuge“
