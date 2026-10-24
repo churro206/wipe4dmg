@@ -22,7 +22,7 @@ import type {
   Keyword,
   KeywordId,
 } from "../data/schema";
-import { appliesToWeaponType } from "./effectParts";
+import { appliesToWeaponType, productOf, type Factors } from "./effectParts";
 import type { KeywordState, OnHit, TargetState } from "./eventRun";
 import { requireValue } from "./requireValue";
 import type { TimedDamageInstance } from "./simulate";
@@ -39,7 +39,7 @@ export type KeywordContext = {
     timeMs: number,
     keyword: Keyword,
     source: TimedDamageInstance,
-  ) => number;
+  ) => Factors;
   stackFactorAt: (counterId: CounterId, timeMs: number) => number;
   isInPhase: (timeMs: number) => boolean;
 };
@@ -98,17 +98,18 @@ export function keywordOnHit({
       schedule({
         timeMs: hitMs,
         group: KEYWORD_EVENT_GROUP,
-        handle: (_, emit) =>
+        handle: (_, emit) => {
+          const factors = multiplierAt(hitMs, keyword, source);
           emit({
             id: keyword.id,
             timeMs: hitMs,
-            damage:
-              requireValue(keyword.damage, "damage") *
-              multiplierAt(hitMs, keyword, source),
+            damage: requireValue(keyword.damage, "damage") * productOf(factors),
             damageSource: "keyword",
             keywordId: keyword.id,
             element: keyword.element,
-          }),
+            factors,
+          });
+        },
       });
     };
     const takeDamage = (keyword: Keyword, state: KeywordState) => {

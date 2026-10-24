@@ -653,6 +653,15 @@ table.legend td {
   border-bottom: none;
 }
 
+.legend-group th {
+  padding-top: 0.6rem;
+  color: var(--muted);
+  font-weight: normal;
+  font-size: 0.85rem;
+  text-align: left;
+  border-bottom: none;
+}
+
 .legend-row {
   display: flex;
   gap: 1rem;

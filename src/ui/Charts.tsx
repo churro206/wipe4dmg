@@ -17,10 +17,14 @@ import {
   YAxis,
 } from "recharts";
 import type { AbilityKind, DamageSource } from "../data/schema";
-import type { CurvePoint, DamageShare } from "../engine/analysis";
+import type {
+  CurvePoint,
+  DamageShare,
+  MultiplierShare,
+} from "../engine/analysis";
 import { Icon } from "./components/Icon";
 import type { BreakdownEntry } from "../engine/breakdown";
-import { keywords } from "./data";
+import { buckets, keywords } from "./data";
 
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat("en-US", {
@@ -49,6 +53,26 @@ const kindOf = (id: string) =>
   DAMAGE_KINDS[id] ?? { label: id, color: "var(--muted)" };
 // Keyword damage, e.g. Ignition, in the color of its subclass element (U8)
 const keywordOf = (id: string) => keywords.find((k) => k.id === id);
+
+// Outer ring: a fixed slot per multiplier; the rarer buckets share the muted slot, the legend names them.
+const MULTIPLIER_KINDS: Record<string, { label?: string; color?: string }> = {
+  base: { label: "Base", color: "var(--axis)" },
+  surge: { color: "var(--series-1)" },
+  empowering: { color: "var(--series-2)" },
+  debuff: { color: "var(--series-3)" },
+  amplification: { color: "var(--series-5)" },
+  abilityStat: { color: "var(--series-7)" },
+  catalyst: { label: "Catalyst", color: "var(--series-4)" },
+  holdDraw: { label: "Hold Draw" },
+  keywordBonus: { label: "Keyword Bonus" },
+};
+const multiplierStyle = (id: string) => ({
+  label:
+    MULTIPLIER_KINDS[id]?.label ??
+    buckets.find((b) => b.id === id)?.name ??
+    id,
+  color: MULTIPLIER_KINDS[id]?.color ?? "var(--muted)",
+});
 
 const axisProps = {
   stroke: "var(--axis)",
@@ -94,21 +118,30 @@ function shareStyle(
   };
 }
 
-/** Donut: share of each damage source. Legend with values doubles as the table view. */
+/**
+ * Donut: share of each damage source inside, share of base, each multiplier and the catalyst in the
+ * thin outer ring. Legend with values doubles as the table view.
+ */
 export function DamageShareChart({
   entries,
+  multipliers,
   abilityName,
 }: {
   entries: DamageShare[];
+  multipliers: MultiplierShare[];
   abilityName: (abilityId: string) => string;
 }) {
   const styled = entries.map((entry) => ({
     ...entry,
     ...shareStyle(entry, abilityName),
   }));
+  const outer = multipliers.map((entry) => ({
+    ...entry,
+    ...multiplierStyle(entry.id),
+  }));
   return (
     <figure className="chart">
-      <figcaption>Damage by source</figcaption>
+      <figcaption>Damage by source and multiplier</figcaption>
       <div className="donut">
         <ResponsiveContainer width="100%" height={180}>
           <PieChart>
@@ -116,13 +149,27 @@ export function DamageShareChart({
               data={styled}
               dataKey="damage"
               nameKey="label"
-              innerRadius="60%"
-              outerRadius="95%"
+              innerRadius="55%"
+              outerRadius="84%"
               stroke="var(--bg)"
               strokeWidth={2}
               isAnimationActive={false}
             >
               {styled.map((entry) => (
+                <Cell key={entry.id} fill={entry.color} />
+              ))}
+            </Pie>
+            <Pie
+              data={outer}
+              dataKey="damage"
+              nameKey="label"
+              innerRadius="88%"
+              outerRadius="98%"
+              stroke="var(--bg)"
+              strokeWidth={2}
+              isAnimationActive={false}
+            >
+              {outer.map((entry) => (
                 <Cell key={entry.id} fill={entry.color} />
               ))}
             </Pie>
@@ -153,6 +200,24 @@ export function DamageShareChart({
                   )}
                   {entry.label}
                   {entry.kind && <span className="kind">{entry.kind}</span>}
+                </td>
+                <td>{integer.format(entry.damage)}</td>
+                <td>{percent.format(entry.share)}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tbody className="legend-group">
+            <tr>
+              <th colSpan={3}>Outer ring: by multiplier</th>
+            </tr>
+            {outer.map((entry) => (
+              <tr key={entry.id}>
+                <td>
+                  <span
+                    className="swatch"
+                    style={{ background: entry.color }}
+                  />
+                  {entry.label}
                 </td>
                 <td>{integer.format(entry.damage)}</td>
                 <td>{percent.format(entry.share)}</td>

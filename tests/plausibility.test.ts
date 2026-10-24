@@ -5,6 +5,7 @@
 
 import { afterAll, describe, expect, it } from "vitest";
 import type { Build, Weapon } from "../src/data/schema";
+import { damageByMultiplier, damageShares } from "../src/engine/analysis";
 import { fitArtifact } from "../src/engine/artifacts";
 import { abilitiesFor } from "../src/engine/providers";
 import { buildSimulation } from "../src/engine/buildSimulation";
@@ -795,6 +796,55 @@ describe("keywords", () => {
     );
     expect(three).toBe(1);
     expect(twoEmber).toBe(1);
+  });
+  it("Jolt has a slice of its own in the donut (Spark of Shock and Pulse Grenade)", () => {
+    const shares = damageShares(
+      run({
+        abilities: [{ abilityId: "pulse-grenade", castsMs: [0] }],
+        selections: [{ effectId: "spark-of-shock", provider: "subclass" }],
+      }),
+    );
+    const jolt = shares.find((s) => s.id === "jolt");
+    note(
+      "Donut: Jolt aus Spark of Shock + Pulse Grenade",
+      jolt ? `${Math.round(jolt.damage)} (${(jolt.share * 100).toFixed(1)} %)` : "fehlt",
+      "eigenes Segment",
+    );
+    expect(jolt?.damageSource).toBe("keyword");
+    expect(jolt!.damage).toBeGreaterThan(0);
+  });
+});
+
+describe("donut by multiplier (2026-10-24)", () => {
+  const otv = weaponById("one-thousand-voices");
+  const radiant = { selections: [{ effectId: "radiant", provider: "subclass" as const }] };
+  it("Radiant on One Thousand Voices: its slice is 1 − 1/1.2 of the damage it covers", () => {
+    const result = run(radiant, otv);
+    const shares = damageByMultiplier(result);
+    const empowering = shares.find((s) => s.id === "empowering")!;
+    const covered = result.damageInstances
+      .filter((d) => d.factors.empowering === 1.2)
+      .reduce((s, d) => s + d.damage, 0);
+    note(
+      "Donut außen: Radiant-Anteil an OTV (30 s)",
+      `${(empowering.share * 100).toFixed(1)} %`,
+      "16,7 % des Schadens, den Radiant trifft",
+    );
+    expect(empowering.damage / covered).toBeCloseTo(1 - 1 / 1.2);
+    expect(shares.reduce((s, x) => s + x.damage, 0)).toBeCloseTo(result.totalDamage);
+  });
+  it("the catalyst slice is the damage the catalyst adds", () => {
+    const withCatalyst = run({ ...radiant, catalyst: true }, otv);
+    const without = run(radiant, otv);
+    const shares = damageByMultiplier(withCatalyst, without);
+    const catalyst = shares.find((s) => s.id === "catalyst")!;
+    note(
+      "Donut außen: Catalyst-Anteil an OTV (30 s)",
+      `${(catalyst.share * 100).toFixed(1)} %`,
+      "Total mit − ohne Catalyst",
+    );
+    expect(catalyst.damage).toBeCloseTo(withCatalyst.totalDamage - without.totalDamage);
+    expect(shares.reduce((s, x) => s + x.damage, 0)).toBeCloseTo(withCatalyst.totalDamage);
   });
 });
 

@@ -11,6 +11,7 @@ import type {
 } from "../data/schema";
 import {
   compareResults,
+  damageByMultiplier,
   damageShares,
   damageCurve,
   dpsByDamagePhase,
@@ -208,6 +209,18 @@ function App() {
   const result = isValid
     ? simulate(weapon, damagePhaseSeconds, selected, buckets, options)
     : null;
+  // For the catalyst slice of the donut: the same build without the catalyst
+  const withoutCatalyst = (() => {
+    if (!isValid || !currentBuild.catalyst) return undefined;
+    const plain = simulationOf({ ...currentBuild, catalyst: false });
+    return simulate(
+      weapon,
+      damagePhaseSeconds,
+      plain.selected,
+      buckets,
+      plain.options,
+    );
+  })();
   const boss = bosses.find((b) => b.id === bossId);
   const link = linkFor(isValid ? currentBuild : null, comparison);
   useEffect(() => {
@@ -860,8 +873,15 @@ function App() {
                       {result.totalDamage > 0 && (
                         <DamageShareChart
                           entries={damageShares(result)}
+                          multipliers={damageByMultiplier(
+                            result,
+                            withoutCatalyst,
+                          )}
                           abilityName={(id) =>
-                            abilities.find((a) => a.id === id)?.name ?? id
+                            abilities.find((a) => a.id === id)?.name ??
+                            // damage of its own from an effect, e.g. Storm's Keep (rule H)
+                            selected.find((e) => e.id === id)?.name ??
+                            id
                           }
                         />
                       )}

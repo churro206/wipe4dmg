@@ -195,8 +195,26 @@ export function combinedMultiplier(
   buckets: Bucket[],
   target: DamageTarget,
 ): number {
-  return bucketMultipliers(parts, buckets, target).reduce(
-    (product, entry) => product * entry.multiplier,
-    1,
+  return productOf(bucketFactors(parts, buckets, target));
+}
+
+/** Factor per bucket id (or another named factor, e.g. holdDraw) that scaled a damage instance. */
+export type Factors = Record<string, number>;
+
+/** The multiplier of each bucket with matching parts, by bucket id. */
+export function bucketFactors(
+  parts: MultiplierPart[],
+  buckets: Bucket[],
+  target: DamageTarget,
+): Factors {
+  return Object.fromEntries(
+    bucketMultipliers(parts, buckets, target).map((entry) => [
+      entry.bucket.id,
+      entry.multiplier,
+    ]),
   );
+}
+
+export function productOf(factors: Factors): number {
+  return Object.values(factors).reduce((product, value) => product * value, 1);
 }

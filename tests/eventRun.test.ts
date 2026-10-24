@@ -10,6 +10,7 @@ const hit = (id: string, timeMs: number): TimedDamageInstance => ({
   damage: 1,
   damageSource: "weapon",
   element: "solar",
+  factors: {},
 });
 
 /** An event that deals one hit at its own time. */

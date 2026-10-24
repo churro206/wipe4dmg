@@ -75,6 +75,55 @@ export function damageBySource(result: SimulationResult): SourceShare[] {
   });
 }
 
+export type MultiplierShare = {
+  id: string; // "base", a bucket id, "holdDraw", "keywordBonus" or "catalyst"
+  damage: number;
+  share: number; // of the total damage, 0 to 1
+};
+
+/**
+ * Total damage split into base, each multiplier and the catalyst (outer donut ring). The catalyst is
+ * the total minus the total of the run without it, so base and multipliers come from that run. Per
+ * damage instance the base is its damage without the factors above 1 (factors below 1 stay in the
+ * base, so no slice is negative); the extra damage splits by ln(factor) ÷ ln(product), so the order
+ * of the buckets does not matter. The slices add up to the total damage.
+ */
+export function damageByMultiplier(
+  result: SimulationResult,
+  withoutCatalyst?: SimulationResult,
+): MultiplierShare[] {
+  const catalyst = withoutCatalyst
+    ? result.totalDamage - withoutCatalyst.totalDamage
+    : 0;
+  const decomposed = catalyst > 0 ? withoutCatalyst! : result;
+  const damageById = new Map<string, number>([["base", 0]]);
+  const add = (id: string, damage: number) =>
+    damageById.set(id, (damageById.get(id) ?? 0) + damage);
+  for (const instance of decomposed.damageInstances) {
+    const raising = Object.entries(instance.factors).filter(([, f]) => f > 1);
+    const product = raising.reduce((p, [, f]) => p * f, 1);
+    const base = instance.damage / product;
+    add("base", base);
+    const logProduct = Math.log(product);
+    for (const [id, factor] of raising) {
+      add(id, ((instance.damage - base) * Math.log(factor)) / logProduct);
+    }
+  }
+  const [base, ...multipliers] = [...damageById].map(([id, damage]) => ({
+    id,
+    damage,
+  }));
+  const slices = [
+    base,
+    ...multipliers.sort((a, b) => b.damage - a.damage),
+    ...(catalyst > 0 ? [{ id: "catalyst", damage: catalyst }] : []),
+  ].filter((slice) => slice.damage > 0);
+  return slices.map((slice) => ({
+    ...slice,
+    share: result.totalDamage > 0 ? slice.damage / result.totalDamage : 0,
+  }));
+}
+
 export type CurvePoint = {
   timeMs: number;
   totalDamage: number; // cumulative up to and including this time

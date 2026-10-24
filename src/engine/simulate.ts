@@ -51,8 +51,10 @@ import { weaponStatPart, type WeaponStatValue } from "./weaponStats";
 import {
   activeParts,
   appliesToWeaponType,
-  combinedMultiplier,
+  bucketFactors,
+  productOf,
   type ActiveParts,
+  type Factors,
 } from "./effectParts";
 import { resolveWindows, type EffectWindowOptions } from "./effectWindows";
 import { runEvents, type RunEvent } from "./eventRun";
@@ -88,6 +90,8 @@ export type TimedDamageInstance = {
   weaponType?: WeaponType; // set for damage instances of the weapon
   keywordId?: KeywordId; // set for keyword damage, e.g. ignition (ADR 0015, point 5)
   delivery?: Delivery; // impact, splash or dot, where the data names it
+  // What scaled the damage: factor per bucket id, plus holdDraw and keywordBonus outside buckets
+  factors: Factors;
 };
 
 /** An ability of the build and the times of its casts in the damage phase. */
@@ -412,19 +416,23 @@ export function simulate(
     return { ...plain, multiplier: { ...part.multiplier, value: factor } };
   };
   const statPart = weaponStatPart(options.weaponStat, weapon.ammo);
-  const multiplierAt = (timeMs: number, element: Element) =>
-    holdFactorAt(timeMs) *
-    combinedMultiplier(
-      [
-        ...partsAt(timeMs, included).multiplierParts.map((part) =>
-          resolveHitStacks(part, timeMs),
-        ),
-        ...optionPartsAt(timeMs),
-        ...(statPart ? [statPart] : []),
-      ],
-      buckets,
-      { damageSource, element, weaponType: weapon.weaponType },
-    );
+  const multiplierAt = (timeMs: number, element: Element): Factors => {
+    const holdDraw = holdFactorAt(timeMs);
+    return {
+      ...bucketFactors(
+        [
+          ...partsAt(timeMs, included).multiplierParts.map((part) =>
+            resolveHitStacks(part, timeMs),
+          ),
+          ...optionPartsAt(timeMs),
+          ...(statPart ? [statPart] : []),
+        ],
+        buckets,
+        { damageSource, element, weaponType: weapon.weaponType },
+      ),
+      ...(holdDraw !== 1 ? { holdDraw } : {}),
+    };
+  };
   const counterFactorAt = (counterId: CounterId, timeMs: number) =>
     partsAt(timeMs, included)
       .counterModifierParts.filter((part) => part.counterId === counterId)
@@ -443,16 +451,19 @@ export function simulate(
         events.push({
           timeMs,
           group: EVENT_GROUP.weaponHit,
-          handle: (_, emit) =>
+          handle: (_, emit) => {
+            const factors = multiplierAt(timeMs, weapon.element);
             emit({
               id: instance.id,
               timeMs,
-              damage: instance.damage * multiplierAt(timeMs, weapon.element),
+              damage: instance.damage * productOf(factors),
               damageSource,
               element: weapon.element,
               weaponType: weapon.weaponType,
               ...(instance.delivery ? { delivery: instance.delivery } : {}),
-            }),
+              factors,
+            });
+          },
         });
       }
     }
@@ -471,7 +482,7 @@ export function simulate(
   for (const cast of options.abilities ?? []) {
     events.push(
       ...abilityHitEvents(cast, isInPhase, (timeMs, component) =>
-        combinedMultiplier(
+        bucketFactors(
           [
             ...partsAt(timeMs, component.includedEffectIds).multiplierParts,
             ...(component.scalesWithAbilityStat ? statParts : []),
@@ -493,7 +504,7 @@ export function simulate(
       if (part.type !== "periodicDamage") continue;
       events.push(
         ...periodicEvents(part, windows.get(effect.id)!, isInPhase, (timeMs) =>
-          combinedMultiplier(partsAt(timeMs).multiplierParts, buckets, {
+          bucketFactors(partsAt(timeMs).multiplierParts, buckets, {
             damageSource: "keyword",
             element: part.element,
           }),
@@ -519,19 +530,23 @@ export function simulate(
     timeMs: number,
     keyword: Keyword,
     source: TimedDamageInstance,
-  ) =>
-    weaponKeywordBonus(keyword, source) *
-    sourceMultiplierAt(timeMs, keyword, source);
+  ): Factors => {
+    const keywordBonus = weaponKeywordBonus(keyword, source);
+    return {
+      ...sourceMultiplierAt(timeMs, keyword, source),
+      ...(keywordBonus !== 1 ? { keywordBonus } : {}),
+    };
+  };
   const sourceMultiplierAt = (
     timeMs: number,
     keyword: Keyword,
     source: TimedDamageInstance,
-  ) => {
+  ): Factors => {
     if (keyword.damageCategory === "inheritsSource") {
       if (source.damageSource === "weapon") {
         // Weapon options (catalyst, perks) stay with the shots: their factors come from values
         // per shot without the ignitions (ADR 0015, U4a-4).
-        return combinedMultiplier(
+        return bucketFactors(
           [
             ...partsAt(timeMs, included).multiplierParts,
             ...(statPart ? [statPart] : []),
@@ -550,7 +565,7 @@ export function simulate(
       ) {
         // The ability stat counts too: Aegis measures the ignitions of a grenade growing with the
         // grenade stat (ADR 0015, U5).
-        return combinedMultiplier(
+        return bucketFactors(
           [...partsAt(timeMs).multiplierParts, ...statParts],
           buckets,
           {
@@ -571,7 +586,7 @@ export function simulate(
             )),
       )
       .map((part) => ({ ...part, damageSources: ["keyword" as const] }));
-    return combinedMultiplier(parts, buckets, {
+    return bucketFactors(parts, buckets, {
       damageSource: "keyword",
       element: keyword.element,
     });
@@ -624,7 +639,7 @@ function superWindowsOf(casts: AbilityCast[]): SuperWindow[] {
 function abilityHitEvents(
   { ability, castsMs }: AbilityCast,
   isInPhase: (timeMs: number) => boolean,
-  multiplierAt: (timeMs: number, component: AbilityComponent) => number,
+  multiplierAt: (timeMs: number, component: AbilityComponent) => Factors,
 ): RunEvent[] {
   const components = ability.components.map((component) => ({
     id: `${ability.id}.${component.id}`,
@@ -644,19 +659,21 @@ function abilityHitEvents(
         result.push({
           timeMs,
           group: EVENT_GROUP.abilityHit,
-          handle: (_, emit) =>
+          handle: (_, emit) => {
+            const factors = multiplierAt(timeMs, component.component);
             emit({
               id: component.id,
               timeMs,
-              damage:
-                component.damage * multiplierAt(timeMs, component.component),
+              damage: component.damage * productOf(factors),
               damageSource: ability.kind,
               element: ability.element,
               abilityId: ability.id,
               ...(component.component.delivery
                 ? { delivery: component.component.delivery }
                 : {}),
-            }),
+              factors,
+            });
+          },
         });
       }
     }
@@ -669,7 +686,7 @@ function periodicEvents(
   part: PeriodicDamagePart,
   windows: { startMs: number; endMs: number }[],
   isInPhase: (timeMs: number) => boolean,
-  multiplierAt: (timeMs: number) => number,
+  multiplierAt: (timeMs: number) => Factors,
 ): RunEvent[] {
   const intervalMs = requireValue(part.intervalMs, "intervalMs");
   const damage = requireValue(part.damage, "damage");
@@ -687,14 +704,17 @@ function periodicEvents(
       result.push({
         timeMs: atMs,
         group: EVENT_GROUP.periodic,
-        handle: (_, emit) =>
+        handle: (_, emit) => {
+          const factors = multiplierAt(atMs);
           emit({
             id: part.id,
             timeMs: atMs,
-            damage: damage * multiplierAt(atMs),
+            damage: damage * productOf(factors),
             damageSource: "keyword",
             element: part.element,
-          }),
+            factors,
+          });
+        },
       });
     }
   }
@@ -726,7 +746,7 @@ function damageOverTimeEvents(
   part: DamageOverTimePart,
   shots: Shot[],
   isInPhase: (timeMs: number) => boolean,
-  multiplierAt: (timeMs: number, element: Element) => number,
+  multiplierAt: (timeMs: number, element: Element) => Factors,
   weapon: Weapon,
 ): RunEvent[] {
   const count = requireValue(
@@ -752,14 +772,18 @@ function damageOverTimeEvents(
   const releases = triggerTimes(shots, count, firstDelayMs, intervalMs).sort(
     (a, b) => a - b,
   );
-  const hit = (timeMs: number, damage: number): TimedDamageInstance => ({
-    id: part.id,
-    timeMs,
-    damage: damage * multiplierAt(timeMs, weapon.element),
-    damageSource: "weapon",
-    element: weapon.element,
-    weaponType: weapon.weaponType,
-  });
+  const hit = (timeMs: number, damage: number): TimedDamageInstance => {
+    const factors = multiplierAt(timeMs, weapon.element);
+    return {
+      id: part.id,
+      timeMs,
+      damage: damage * productOf(factors),
+      damageSource: "weapon",
+      element: weapon.element,
+      weaponType: weapon.weaponType,
+      factors,
+    };
+  };
 
   return releases.filter(isInPhase).map((releaseMs) => ({
     timeMs: releaseMs,
@@ -794,7 +818,7 @@ function thresholdEvents(
   shots: Shot[],
   counterFactorAt: (counterId: CounterId, timeMs: number) => number,
   isInPhase: (timeMs: number) => boolean,
-  multiplierAt: (timeMs: number, element: Element) => number,
+  multiplierAt: (timeMs: number, element: Element) => Factors,
 ): RunEvent[] {
   const thresholds = weapon.intrinsicParts.flatMap((part) =>
     part.type === "threshold"
@@ -852,15 +876,15 @@ function thresholdEvents(
             counter.stacks >= t.threshold,
         );
         if (!reached) return;
+        const factors = multiplierAt(application.timeMs, reached.part.element);
         emit({
           id: reached.part.damageInstanceId,
           timeMs: application.timeMs,
-          damage:
-            reached.damage *
-            multiplierAt(application.timeMs, reached.part.element),
+          damage: reached.damage * productOf(factors),
           damageSource: "weapon",
           element: reached.part.element,
           weaponType: weapon.weaponType,
+          factors,
         });
         counter.stacks = 0;
         counter.blockedUntilMs = application.timeMs + reached.cooldownMs;
