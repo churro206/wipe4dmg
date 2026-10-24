@@ -13,7 +13,7 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Supers | 0 | 25 | 1 | 5 | 31 |
 | Grenades | 0 | 26 | 0 | 4 | 30 |
 | Melees | 0 | 24 | 0 | 2 | 26 |
-| Effects | 18 modelled | | | | |
+| Effects | 23 modelled | | | | |
 
 ## Supers
 
@@ -139,3 +139,8 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Ember of Ashes | – | scorch ×1.5 | weapon | whole phase or Rotation |
 | Transcendence | transcendence | transcendence +5% | weapon | 20 s |
 | Rally Barricade | – | Timing: reloadDuration | weapon | 20 s |
+| Limit Break | amplification | amplification +15% | super | whole phase or Rotation |
+| Thunderous Retort | amplification | amplification +30% | super | whole phase or Rotation |
+| Shieldcrush | melee, amplification | melee +50%; amplification +25% | melee; grenade | whole phase or Rotation |
+| Transference | amplification, melee | amplification +10%; melee +10% | grenade; melee | whole phase or Rotation |
+| Fever and Chill | empowering | empowering +20% | weapon | whole phase or Rotation |

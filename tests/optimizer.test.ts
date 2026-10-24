@@ -113,6 +113,57 @@ describe("optimize", () => {
   });
 });
 
+describe("optimize with an artifact", () => {
+  // Two artifacts with one slot per tier: the perks of A share a tier, so they never come together.
+  const source = { name: "test", retrieved: "2026-10-24", status: "verified" as const };
+  const slot = { value: 1, source };
+  const artifacts = {
+    slots: [slot, slot, slot],
+    artifacts: [
+      {
+        id: "a",
+        code: 1,
+        name: "A",
+        season: "Test",
+        perks: [
+          { name: "Particle Reconstruction", tier: 2, effectId: "particle-reconstruction" },
+          { name: "Elemental Overdrive", tier: 2, effectId: "elemental-overdrive-solar" },
+        ],
+      },
+      {
+        id: "b",
+        code: 2,
+        name: "B",
+        season: "Test",
+        perks: [
+          { name: "Elemental Overdrive", tier: 1, effectId: "elemental-overdrive-solar" },
+        ],
+      },
+    ],
+  };
+  const limited = optimize({ ...input, artifacts, limit: 200 });
+
+  it("never combines perks that the slots of one artifact do not allow", () => {
+    for (const entry of limited) {
+      const perks = entry.selections.filter((s) => s.provider === "artifact");
+      expect(perks.length).toBeLessThanOrEqual(1);
+      if (perks.length > 0) expect(entry.artifactId).toBeDefined();
+    }
+  });
+
+  it("names the artifact of the perks it uses", () => {
+    const withPerk = limited.filter((e) =>
+      e.selections.some((s) => s.provider === "artifact"),
+    );
+    expect(withPerk.length).toBeGreaterThan(0);
+    for (const entry of withPerk) {
+      const ids = entry.selections.filter((s) => s.provider === "artifact").map((s) => s.effectId);
+      const artifact = artifacts.artifacts.find((a) => a.id === entry.artifactId)!;
+      expect(ids.every((id) => artifact.perks.some((p) => p.effectId === id))).toBe(true);
+    }
+  });
+});
+
 describe("canProvide with subclass", () => {
   it("lets only a Solar Warlock provide Well of Radiance itself", () => {
     const well = byId("well-of-radiance");

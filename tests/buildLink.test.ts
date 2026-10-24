@@ -18,6 +18,7 @@ const registry: LinkRegistry = {
   effects: loadEffects(rawEffects),
   abilities: rawAbilities.map(({ id, code }) => ({ id, code })),
   exoticArmor: rawArmor.map(({ id, hash }) => ({ id, hash })),
+  artifacts: [{ id: "test-artifact", code: 3 }],
 };
 
 // Test inputs, not game data.
@@ -56,8 +57,18 @@ describe("encodeLink and decodeLink", () => {
       unknownEffectCodes: [],
       unknownAbilityCodes: [],
       unknownExoticArmorHashes: [],
+      unknownArtifactCodes: [],
       replacedEffectCodes: [],
     });
+  });
+
+  it("round-trips the artifact, and skips one it does not know", () => {
+    const withArtifact: Build = { ...build, artifactId: "test-artifact" };
+    const link = encodeLink({ build: withArtifact }, registry);
+    expect(decodeLink(link, registry).build).toEqual(withArtifact);
+    const unaware = decodeLink(link, { ...registry, artifacts: [] });
+    expect(unaware.build.artifactId).toBeUndefined();
+    expect(unaware.unknownArtifactCodes).toEqual([3]);
   });
 
   it("round-trips a build with a comparison", () => {
@@ -71,8 +82,8 @@ describe("encodeLink and decodeLink", () => {
 
   it("keeps a typical build short (5 effects with windows in about 48 characters)", () => {
     // format 4 adds two bytes for the exotic armor, format 5 one byte for the class perks,
-    // format 6 one byte for the Weapons stat
-    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(54);
+    // format 6 one byte for the Weapons stat, format 7 one byte for the artifact
+    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(55);
   });
 
   it("round-trips the Weapons stat, also 0, and leaves it out when absent", () => {

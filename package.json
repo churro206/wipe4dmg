@@ -24,6 +24,7 @@
     "build:weapons": "node scripts/build-weapons.ts",
     "build:armor": "node scripts/build-armor.ts",
     "build:buffs": "node scripts/build-buffs.ts",
+    "build:artifacts": "node scripts/build-artifacts.ts",
     "build:energy": "node scripts/build-energy.ts",
     "build:keywords": "node scripts/build-keywords.ts",
     "build:abilities": "node scripts/build-abilities.ts",

@@ -3,6 +3,7 @@
 // fixed; own effects use their default windows from the Data Files (no rotation in the optimizer).
 
 import type {
+  ArtifactData,
   Bucket,
   Build,
   Effect,
@@ -12,6 +13,7 @@ import type {
   Subclass,
   Weapon,
 } from "../data/schema";
+import { perkSetsOf } from "./artifacts";
 import type { EffectWindowInput } from "./effectWindows";
 import { effectsFor } from "./providers";
 import { simulate } from "./simulate";
@@ -41,10 +43,14 @@ export type OptimizerInput = {
   damagePhaseSeconds: number;
   limit: number;
   keywords?: Keyword[]; // keywords.json, for weapons that apply keywords
+  // Without it every artifact effect can be switched on at once; with it only the perks of one
+  // artifact that fit its slots.
+  artifacts?: ArtifactData;
 };
 
 export type OptimizerEntry = {
   subclass: Subclass;
+  artifactId?: string; // the artifact of the artifact selections
   selections: Selection[]; // fixed selections first, then own ones
   totalDamage: number;
   dps: number;
@@ -62,7 +68,7 @@ export function optimize(input: OptimizerInput): OptimizerEntry[] {
   for (const subclass of SUBCLASSES) {
     const combos = ownCombinations(input, subclass, byId);
     const totals = new Map<string, number>();
-    const evaluated = combos.map((own) => {
+    const evaluated = combos.map(({ own, artifactId }) => {
       const selections = [...input.fixedSelections, ...own];
       const chosen = input.effects.filter((effect) =>
         selections.some((s) => s.effectId === effect.id),
@@ -79,10 +85,10 @@ export function optimize(input: OptimizerInput): OptimizerEntry[] {
         },
       );
       totals.set(keyOf(own), result.totalDamage);
-      return { own, selections, result };
+      return { own, artifactId, selections, result };
     });
 
-    for (const { own, selections, result } of evaluated) {
+    for (const { own, artifactId, selections, result } of evaluated) {
       // Keep only builds in which every own effect adds damage.
       const minimal = own.every(
         (removed) =>
@@ -93,6 +99,10 @@ export function optimize(input: OptimizerInput): OptimizerEntry[] {
       if (minimal && !found.has(key)) {
         found.set(key, {
           subclass,
+          ...(artifactId !== undefined &&
+          own.some((s) => s.provider === "artifact")
+            ? { artifactId }
+            : {}),
           selections,
           totalDamage: result.totalDamage,
           dps: result.dps,
@@ -118,10 +128,11 @@ function ownCombinations(
   input: OptimizerInput,
   subclass: Subclass,
   byId: Map<string, Effect>,
-): Selection[][] {
+): { own: Selection[]; artifactId?: string }[] {
   const slots: Selection[][] = [];
   const groups = new Map<string, Selection[]>();
   for (const provider of OWN_PROVIDERS) {
+    if (provider === "artifact" && input.artifacts) continue; // below, per artifact
     for (const effect of effectsFor(
       input.effects,
       provider,
@@ -146,5 +157,48 @@ function ownCombinations(
       ...slot.map((option) => [...combo, option]),
     ]);
   }
-  return combos;
+  const artifactChoices = artifactSets(input, subclass);
+  return combos.flatMap((own) =>
+    artifactChoices.map((choice) => ({
+      own: [...own, ...choice.selections],
+      ...(choice.artifactId === undefined ? {} : { artifactId: choice.artifactId }),
+    })),
+  );
+}
+
+/**
+ * The artifact perks a build can have: every set of perks that fits the slots of one artifact,
+ * each set once (the first artifact that has it). Without artifact data only the empty set.
+ */
+function artifactSets(
+  input: OptimizerInput,
+  subclass: Subclass,
+): { artifactId?: string; selections: Selection[] }[] {
+  const data = input.artifacts;
+  if (!data) return [{ selections: [] }];
+  const offered = new Set(
+    effectsFor(input.effects, "artifact", input.guardianClass, subclass).map(
+      (effect) => effect.id,
+    ),
+  );
+  const seen = new Set<string>([""]);
+  const choices: { artifactId?: string; selections: Selection[] }[] = [
+    { selections: [] },
+  ];
+  for (const artifact of data.artifacts) {
+    const modelled = {
+      ...artifact,
+      perks: artifact.perks.filter((perk) => offered.has(perk.effectId)),
+    };
+    for (const ids of perkSetsOf(data, modelled)) {
+      const key = [...ids].sort().join("|");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      choices.push({
+        artifactId: artifact.id,
+        selections: ids.map((effectId) => ({ effectId, provider: "artifact" as const })),
+      });
+    }
+  }
+  return choices;
 }

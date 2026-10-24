@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   abilities,
+  artifactData,
   effects,
   exoticArmor,
   iconUrl,
@@ -22,6 +23,10 @@ describe("icons in the UI", () => {
     expect(
       missing(effects.flatMap((e) => elements.map((el) => effectIconKey(e, el)))),
     ).toEqual([]);
+  });
+
+  it("has an icon for every seasonal artifact", () => {
+    expect(missing(artifactData.artifacts.map((a) => `artifact:${a.id}`))).toEqual([]);
   });
 
   it("has an icon for every exotic armor piece and weapon", () => {

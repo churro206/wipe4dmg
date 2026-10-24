@@ -19,12 +19,15 @@ export function EffectPicker({
   isSelected,
   onToggle,
   weaponElement,
+  isDisabled,
 }: {
   weaponElement: Element; // surge icons follow the element of the weapon
   effects: Effect[];
   provider: ProviderKind;
   isSelected: (effect: Effect) => boolean;
   onToggle: (effect: Effect) => void;
+  // A tile that cannot be switched on, e.g. an artifact perk of a full tier; a selected tile can always be switched off.
+  isDisabled?: (effect: Effect) => boolean;
 }) {
   return (
     <div className="tile-grid">
@@ -36,6 +39,7 @@ export function EffectPicker({
             tile={tile}
             provider={provider}
             selected={selected}
+            disabled={!selected && (isDisabled?.(tile[0]) ?? false)}
             // All effects of the item switch together.
             onToggle={() =>
               tile
@@ -54,6 +58,7 @@ function EffectTile({
   tile,
   provider,
   selected,
+  disabled,
   onToggle,
   weaponElement,
 }: {
@@ -61,6 +66,7 @@ function EffectTile({
   weaponElement: Element;
   provider: ProviderKind;
   selected: boolean;
+  disabled: boolean;
   onToggle: () => void;
 }) {
   const cardId = useId();
@@ -76,6 +82,7 @@ function EffectTile({
         className="tile"
         aria-pressed={selected}
         aria-describedby={cardId}
+        disabled={disabled}
         onClick={onToggle}
       >
         <Icon

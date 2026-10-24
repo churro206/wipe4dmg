@@ -5,6 +5,7 @@ import type {
   Ability,
   AbilityKind,
   AbilityStatScaling,
+  ArtifactData,
   Bucket,
   Build,
   Effect,
@@ -15,6 +16,7 @@ import type {
   Weapon,
   WeaponStatScaling,
 } from "../data/schema";
+import { artifactPerksOf } from "./artifacts";
 import { abilitySimulation, nextCastOf } from "./buildAbilities";
 import { classPerksOf, exoticArmorEffects } from "./exoticArmor";
 import { simulate, type SimulationOptions } from "./simulate";
@@ -28,6 +30,7 @@ export type GameData = {
   keywords: Keyword[];
   exoticArmor: ExoticArmorEntry[];
   exoticArmorEffects: ExoticArmorEffect[];
+  artifacts: ArtifactData; // artifacts.json: perks per tier and the slots of the game screen
   energy: EnergyData; // ability-energy.json: the casts the energy allows (block 3)
 };
 
@@ -36,12 +39,13 @@ export type GameData = {
  * energy allows,
  * stats and granted effects (e.g. Well of Radiance from the super), and the exotic armor with its
  * ability variants and effects (prebuilt kill buffs only with the switch), and the perks of the
- * Exotic Class Item.
+ * Exotic Class Item. The artifact perks must fit the slots of the artifact (src/engine/artifacts.ts).
  */
 export function buildSimulation(
   build: Build,
   data: GameData,
 ): { selected: Effect[]; options: SimulationOptions } {
+  artifactPerksOf(build, data.artifacts); // throws for a combination the game does not allow
   const abilityPart = abilitySimulation(
     build,
     data.abilities,

@@ -1,0 +1,189 @@
+{
+  "slots": [
+    {
+      "value": 2,
+      "source": {
+        "name": "Owner screenshot of the artifact screen (Hunter's Journal), 2026-10-24",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "note": "Tier 1 (one diamond, bottom row of perks): the first two of the seven slots. Taken to hold for every artifact: the Compendium lists all of them as three rows of seven perks."
+      }
+    },
+    {
+      "value": 3,
+      "source": {
+        "name": "Owner screenshot of the artifact screen (Hunter's Journal), 2026-10-24",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "note": "Tier 2 (two diamonds, middle row of perks): slots three to five."
+      }
+    },
+    {
+      "value": 2,
+      "source": {
+        "name": "Owner screenshot of the artifact screen (Hunter's Journal), 2026-10-24",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "note": "Tier 3 (three diamonds, top row of perks): slots six and seven. Perks sit in any column; a perk in a slot is greyed out in its row."
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "encrypted-data-disk",
+      "code": 1,
+      "name": "Encrypted Data Disk",
+      "season": "Renegades",
+      "perks": [
+        {
+          "name": "Sniper's Meditation",
+          "tier": 3,
+          "effectId": "sniper-meditation"
+        },
+        {
+          "name": "Combination Argent Blade",
+          "tier": 2,
+          "effectId": "argent-blade"
+        },
+        {
+          "name": "Singularity Blade",
+          "tier": 2,
+          "effectId": "singularity-blade"
+        },
+        {
+          "name": "Void Infestation",
+          "tier": 3,
+          "effectId": "void-infestation"
+        },
+        {
+          "name": "Precision Equity",
+          "tier": 2,
+          "effectId": "precision-equity"
+        }
+      ]
+    },
+    {
+      "id": "implement-of-curiosity",
+      "code": 2,
+      "name": "Implement of Curiosity",
+      "season": "Reclamation",
+      "perks": [
+        { "name": "Fever and Chill", "tier": 1, "effectId": "fever-and-chill" },
+        { "name": "Shieldcrush", "tier": 3, "effectId": "shieldcrush" },
+        {
+          "name": "Elemental Overdrive",
+          "tier": 3,
+          "effectId": "elemental-overdrive-solar"
+        },
+        {
+          "name": "That Fresh Bullets Smell",
+          "tier": 2,
+          "effectId": "that-fresh-bullet-smell"
+        },
+        { "name": "Argent Quiver", "tier": 3, "effectId": "argent-quiver" }
+      ]
+    },
+    {
+      "id": "tablet-of-ruin",
+      "code": 3,
+      "name": "Tablet of Ruin",
+      "season": "Heresy",
+      "perks": [
+        {
+          "name": "Particle Reconstruction",
+          "tier": 3,
+          "effectId": "particle-reconstruction"
+        },
+        {
+          "name": "Maligned Harvest",
+          "tier": 2,
+          "effectId": "maligned-harvest"
+        },
+        { "name": "Limit Break", "tier": 3, "effectId": "limit-break" }
+      ]
+    },
+    {
+      "id": "slayer-baron-apothecary-satchel",
+      "code": 4,
+      "name": "Slayer Baron Apothecary Satchel",
+      "season": "Revenant",
+      "perks": [
+        { "name": "Supernova", "tier": 3, "effectId": "supernova" },
+        {
+          "name": "Debilitating Wave",
+          "tier": 2,
+          "effectId": "debilitating-wave"
+        },
+        { "name": "Weakened Clear", "tier": 2, "effectId": "weakened-clear" },
+        { "name": "Arc Compounding", "tier": 3, "effectId": "arc-compounding" }
+      ]
+    },
+    {
+      "id": "hunter-s-journal",
+      "code": 5,
+      "name": "Hunter's Journal",
+      "season": "Echoes",
+      "perks": [
+        {
+          "name": "Prismatic Transfer",
+          "tier": 3,
+          "effectId": "prismatic-transfer"
+        },
+        { "name": "Argent Blade", "tier": 3, "effectId": "argent-blade" },
+        { "name": "Expanding Abyss", "tier": 3, "effectId": "expanding-abyss" },
+        { "name": "Radiant Orbs", "tier": 2, "effectId": "radiant-orbs" },
+        { "name": "Shieldcrush", "tier": 3, "effectId": "shieldcrush" },
+        { "name": "Transference", "tier": 3, "effectId": "transference" },
+        {
+          "name": "Sniper's Meditation",
+          "tier": 3,
+          "effectId": "sniper-meditation"
+        },
+        {
+          "name": "Targeting Autoloader",
+          "tier": 2,
+          "effectId": "targeting-autoloader"
+        }
+      ]
+    },
+    {
+      "id": "queensfoil-censer",
+      "code": 6,
+      "name": "Queensfoil Censer",
+      "season": "Wish",
+      "perks": [
+        { "name": "Fever and Chill", "tier": 1, "effectId": "fever-and-chill" },
+        {
+          "name": "Heart of the Flame",
+          "tier": 1,
+          "effectId": "heart-of-the-flame"
+        },
+        { "name": "Argent Ordnance", "tier": 3, "effectId": "argent-ordnance" }
+      ]
+    },
+    {
+      "id": "npa-repulsion-regulator",
+      "code": 7,
+      "name": "NPA Repulsion Regulator",
+      "season": "Deep",
+      "perks": [
+        { "name": "Supernova", "tier": 3, "effectId": "supernova" },
+        {
+          "name": "Thunderous Retort",
+          "tier": 1,
+          "effectId": "thunderous-retort"
+        },
+        {
+          "name": "Targeting Autoloader",
+          "tier": 2,
+          "effectId": "targeting-autoloader"
+        },
+        {
+          "name": "Void Weapon Channeling",
+          "tier": 3,
+          "effectId": "void-weapon-channelling"
+        }
+      ]
+    }
+  ]
+}

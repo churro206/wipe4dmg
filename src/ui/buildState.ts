@@ -9,12 +9,14 @@ import type {
   StatAbilityKind,
   Subclass,
 } from "../data/schema";
+import { fitArtifact } from "../engine/artifacts";
 import { decodeLink, encodeLink } from "../engine/buildLink";
 import type { EffectWindowInput } from "../engine/effectWindows";
 import { classPerksFor } from "../engine/exoticArmor";
 import { abilitiesFor, canProvide } from "../engine/providers";
 import {
   abilities,
+  artifactData,
   exoticArmor,
   abilityStats,
   DEFAULT_WEAPON_ID,
@@ -268,6 +270,7 @@ export function buildOfState(state: {
   exoticArmorId?: string;
   classPerkIds?: string[];
   exoticPreBuilt?: boolean;
+  artifactId?: string;
 }): Build {
   const picks = abilitiesOfChoice(state.abilityChoice);
   const classPerkIds = state.classPerkIds ?? [];
@@ -276,6 +279,7 @@ export function buildOfState(state: {
     guardianClass: state.guardianClass,
     subclass: state.subclass,
     catalyst: state.catalyst,
+    ...(state.artifactId ? { artifactId: state.artifactId } : {}),
     ...(state.exoticArmorId ? { exoticArmorId: state.exoticArmorId } : {}),
     ...(classPerkIds.length > 0 ? { classPerkIds } : {}),
     ...(state.exoticPreBuilt && (state.exoticArmorId || classPerkIds.length > 0)
@@ -333,6 +337,16 @@ function validClassPerks(build: Build): string[] {
     .map((perk) => perk.id);
 }
 
+/** A linked build with an artifact choice the engine accepts. */
+function withFittedArtifact(build: Build): Build {
+  const { artifactId, selections } = fitArtifact(
+    artifactData,
+    build.artifactId,
+    build.selections,
+  );
+  return { ...build, artifactId, selections };
+}
+
 export type LinkState = {
   input: string;
   weaponId: string;
@@ -347,6 +361,7 @@ export type LinkState = {
   exoticArmorId: string | undefined;
   classPerkIds: string[];
   exoticPreBuilt: boolean;
+  artifactId: string | undefined;
   comparison: Build | null;
   message: string | null;
 };
@@ -367,6 +382,7 @@ export function stateFromLink(search: string): LinkState {
     exoticArmorId: undefined,
     classPerkIds: [],
     exoticPreBuilt: false,
+    artifactId: undefined,
     comparison: null,
     message: null,
   };
@@ -387,12 +403,15 @@ export function stateFromLink(search: string): LinkState {
       }),
     );
     const migrated = migrateGrantedSelections(build, linked);
+    // Old links took any artifact perks at once; only what one artifact allows stays.
+    const artifact = fitArtifact(artifactData, build.artifactId, migrated.selections);
     return {
       input: String(build.damagePhaseSeconds),
       weaponId: build.weaponId,
       guardianClass: build.guardianClass,
       subclass: build.subclass,
-      selections: migrated.selections,
+      selections: artifact.selections,
+      artifactId: artifact.artifactId,
       abilityChoice: choiceFor(
         migrated.choice,
         build.guardianClass,
@@ -419,7 +438,7 @@ export function stateFromLink(search: string): LinkState {
           },
         ]),
       ),
-      comparison,
+      comparison: comparison && withFittedArtifact(comparison),
       message:
         [
           replacedMessage(replacedEffectCodes, effects),

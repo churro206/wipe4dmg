@@ -1,7 +1,8 @@
 // Imports the subclass tabs and the tab Class Abilities of the Destiny Data Compendium into src/data/compendium-abilities.json (ADR 0009)
 // and the tabs Exotic Weapons and Weapon Perks into src/data/compendium-weapons.json (ADR 0013),
 // the tab Exotic Armors into src/data/compendium-armor.json (ADR 0014) and the tab Exotic Class into
-// src/data/compendium-class.json (ADR 0015, U6-3).
+// src/data/compendium-class.json (ADR 0015, U6-3) and the tab Artifact Perks into
+// src/data/compendium-artifacts.json (seasonal artifact block).
 // The CSV export of this sheet is blocked, so the script reads the public htmlview pages.
 // Run: npm run import:compendium
 
@@ -10,6 +11,7 @@ import { CompendiumSnapshot } from "../src/data/schema.ts";
 import type { CompendiumEntry } from "../src/data/schema.ts";
 import { parseCompendiumTab } from "./lib/compendiumAbilities.ts";
 import { parseCompendiumArmorTab } from "./lib/compendiumArmor.ts";
+import { parseCompendiumArtifactsTab } from "./lib/compendiumArtifacts.ts";
 import { parseCompendiumClassTab } from "./lib/compendiumClass.ts";
 
 const SHEET_ID = "1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4";
@@ -48,6 +50,12 @@ const SNAPSHOTS: {
     sourceName: "Destiny Data Compendium (tab Exotic Class)",
     tabs: { "Exotic Class": "20898389" },
     parse: parseCompendiumClassTab,
+  },
+  {
+    file: "compendium-artifacts.json",
+    sourceName: "Destiny Data Compendium (tab Artifact Perks)",
+    tabs: { "Artifact Perks": "473308249" },
+    parse: parseCompendiumArtifactsTab,
   },
 ];
 

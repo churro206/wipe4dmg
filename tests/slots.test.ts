@@ -32,6 +32,11 @@ describe("slots of own effects", () => {
       "ember-of-ashes": "fragment",
       transcendence: "buffs",
       "rally-barricade": "classAbility",
+      "limit-break": "artifact",
+      "thunderous-retort": "artifact",
+      shieldcrush: "artifact",
+      transference: "artifact",
+      "fever-and-chill": "artifact",
     });
   });
 });

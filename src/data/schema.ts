@@ -1163,6 +1163,39 @@ export const ReferenceFactor = z.object({
 });
 export type ReferenceFactor = z.infer<typeof ReferenceFactor>;
 
+/**
+ * A perk of a seasonal artifact that changes damage and has an effect in the model. The game shows
+ * the artifact as three rows of seven perks; the tier is the row (1 = one diamond, the bottom row,
+ * 3 = three diamonds, the top row), which is the column of the Compendium tab.
+ */
+export const ArtifactPerk = z.object({
+  name: z.string(), // as in the Compendium, e.g. "Sniper's Meditation"
+  tier: z.number().int().min(1).max(3),
+  effectId: z.string(), // the effect the perk switches on (effects.json, buff-effects.json)
+});
+export type ArtifactPerk = z.infer<typeof ArtifactPerk>;
+
+export const Artifact = z.object({
+  id: z.string(), // kebab-case, e.g. "encrypted-data-disk"
+  code: z.number().int().positive(), // for build links; never reused
+  name: z.string(),
+  season: z.string(), // e.g. "Renegades"
+  perks: z.array(ArtifactPerk), // only perks with an effect; the rest is in docs/artifact-import.md
+});
+export type Artifact = z.infer<typeof Artifact>;
+
+/**
+ * src/data/artifacts.json, written by npm run build:artifacts. A build equips one artifact and
+ * fills its slots: slots[0] perks of tier 1, slots[1] of tier 2, slots[2] of tier 3 (the screen of
+ * the game has seven slots). Perks without an effect fill the other slots, so only the perks with
+ * an effect count against the slots here.
+ */
+export const ArtifactData = z.object({
+  slots: z.array(SourcedNumber).length(3),
+  artifacts: z.array(Artifact),
+});
+export type ArtifactData = z.infer<typeof ArtifactData>;
+
 /** Input of the Simulator. Serialized into the URL for sharing (src/engine/buildLink.ts). */
 export const Build = z.object({
   weaponId: z.string(),
@@ -1176,6 +1209,8 @@ export const Build = z.object({
   // The two Spirit perks of a Prismatic Exotic Class Item (ADR 0015, U6-3); it is the build's
   // exotic, so not together with exoticArmorId. Omitted: none.
   classPerkIds: z.array(z.string()).max(2).optional(),
+  // The seasonal artifact (artifacts.json); the selections with provider "artifact" are its perks.
+  artifactId: z.string().optional(),
   // Selected effects with their provider; the same effect may come from two providers.
   selections: z.array(
     z.object({ effectId: z.string(), provider: ProviderKind }),

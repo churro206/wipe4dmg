@@ -1,0 +1,29 @@
+[
+  {
+    "value": 2,
+    "source": {
+      "name": "Owner screenshot of the artifact screen (Hunter's Journal), 2026-10-24",
+      "retrieved": "2026-10-24",
+      "status": "verified",
+      "note": "Tier 1 (one diamond, bottom row of perks): the first two of the seven slots. Taken to hold for every artifact: the Compendium lists all of them as three rows of seven perks."
+    }
+  },
+  {
+    "value": 3,
+    "source": {
+      "name": "Owner screenshot of the artifact screen (Hunter's Journal), 2026-10-24",
+      "retrieved": "2026-10-24",
+      "status": "verified",
+      "note": "Tier 2 (two diamonds, middle row of perks): slots three to five."
+    }
+  },
+  {
+    "value": 2,
+    "source": {
+      "name": "Owner screenshot of the artifact screen (Hunter's Journal), 2026-10-24",
+      "retrieved": "2026-10-24",
+      "status": "verified",
+      "note": "Tier 3 (three diamonds, top row of perks): slots six and seven. Perks sit in any column; a perk in a slot is greyed out in its row."
+    }
+  }
+]

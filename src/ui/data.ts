@@ -6,6 +6,7 @@ import rawAbilityEnergy from "../data/ability-energy.json";
 import rawAbilityKeywords from "../data/ability-keywords.json";
 import rawAbilityStats from "../data/ability-stats.json";
 import rawAegisAbilities from "../data/aegis-abilities.json";
+import rawArtifacts from "../data/artifacts.json";
 import rawBosses from "../data/bosses.json";
 import rawBuckets from "../data/buckets.json";
 import rawBuffEffects from "../data/buff-effects.json";
@@ -22,6 +23,7 @@ import rawExoticArmor from "../data/exotic-armor.json";
 import {
   AbilityComponents,
   AbilityKeyword,
+  ArtifactData,
   EnergyData,
   ExoticArmorEffect,
   ExoticArmorEntry,
@@ -92,6 +94,8 @@ export const abilities = loadAbilities(
 export const generatedExoticEffects = ExoticArmorEffect.array().parse(
   rawExoticArmorEffects,
 );
+// Seasonal artifacts with their perks per tier (npm run build:artifacts).
+export const artifactData = ArtifactData.parse(rawArtifacts);
 // Everything a build refers to, for buildSimulation (src/engine/buildSimulation.ts).
 export const gameData: GameData = {
   effects,
@@ -101,6 +105,7 @@ export const gameData: GameData = {
   keywords,
   exoticArmor,
   exoticArmorEffects: generatedExoticEffects,
+  artifacts: artifactData,
   // Cooldowns, stat factors and energy modifiers (npm run build:energy)
   energy: EnergyData.parse(rawAbilityEnergy),
 };
@@ -109,6 +114,7 @@ export const linkRegistry: LinkRegistry = {
   effects,
   abilities,
   exoticArmor,
+  artifacts: artifactData.artifacts,
 };
 
 const importedIcons = loadIconIndex(rawIcons).icons;

@@ -5,6 +5,8 @@
 
 import { afterAll, describe, expect, it } from "vitest";
 import type { Build, Weapon } from "../src/data/schema";
+import { fitArtifact } from "../src/engine/artifacts";
+import { abilitiesFor } from "../src/engine/providers";
 import { buildSimulation } from "../src/engine/buildSimulation";
 import { simulate, type SimulationResult } from "../src/engine/simulate";
 import { effectRelevantTo, neededStatuses } from "../src/engine/weaponInfo";
@@ -39,6 +41,9 @@ const run = (
     damagePhaseSeconds: 30,
     ...fields,
   };
+  // artifact perks need an artifact: take the one that holds the perks of the scenario
+  const { artifactId } = fitArtifact(gameData.artifacts, build.artifactId, build.selections);
+  if (artifactId) build.artifactId = artifactId;
   const { selected, options } = buildSimulation(build, gameData);
   return simulate(weapon, build.damagePhaseSeconds, selected, buckets, options);
 };
@@ -582,6 +587,123 @@ describe("buffs, debuffs and artifact perks from Court (2026-10-23)", () => {
     const other = weapons.find((w) => w.weaponType !== "sword")!;
     expect(ratioOn(sword, ["argent-blade"])).toBeCloseTo(1.15, 3);
     expect(ratioOn(other, ["argent-blade"])).toBe(1);
+  });
+});
+
+describe("seasonal artifact (2026-10-24)", () => {
+  const artifactSel = (...effectIds: string[]) =>
+    effectIds.map((effectId) => ({ effectId, provider: "artifact" as const }));
+  const journal = gameData.artifacts.artifacts.find((a) => a.id === "hunter-s-journal")!;
+  const firstShot = (r: SimulationResult) =>
+    r.damageInstances.find((d) => d.damageSource === "weapon")!.damage;
+
+  it("rule: perks of one tier fit its slots, as on the artifact screen of the game", () => {
+    const tier3 = journal.perks.filter((p) => p.tier === 3).map((p) => p.effectId);
+    const slots = gameData.artifacts.slots[2].value!;
+    note("Hunter's Journal: Perks mit drei Rauten", `${tier3.length} wählbar, ${slots} Slots`, "2 Slots");
+    expect(tier3.length).toBeGreaterThan(slots);
+    expect(() =>
+      run({ artifactId: journal.id, selections: artifactSel(...tier3.slice(0, slots)) }),
+    ).not.toThrow();
+    expect(() =>
+      run({ artifactId: journal.id, selections: artifactSel(...tier3.slice(0, slots + 1)) }),
+    ).toThrow(/slots in tier 3/);
+  });
+
+  it("rule: a perk works only with an artifact that has it", () => {
+    // Limit Break belongs to the Tablet of Ruin, not to the Hunter's Journal
+    expect(() =>
+      run({ artifactId: journal.id, selections: artifactSel("limit-break") }),
+    ).toThrow(/not a perk of/);
+    expect(() => run({ selections: artifactSel("limit-break") })).not.toThrow(); // the helper picks the artifact
+  });
+
+  it("Sniper's Meditation is on both artifacts that have it, in the top row", () => {
+    const holders = gameData.artifacts.artifacts
+      .filter((a) => a.perks.some((p) => p.effectId === "sniper-meditation"))
+      .map((a) => [a.name, a.perks.find((p) => p.effectId === "sniper-meditation")!.tier]);
+    note("Sniper's Meditation", holders.map((h) => `${h[0]} (${h[1]})`).join(", "), "Data Disk und Journal, Tier 3");
+    expect(holders).toEqual([
+      ["Encrypted Data Disk", 3],
+      ["Hunter's Journal", 3],
+    ]);
+  });
+
+  it("Limit Break: +15 % super damage, none on the weapon", () => {
+    const cast = { abilities: [{ abilityId: "thundercrash", castsMs: [0] }] };
+    const withPerk = run({ ...cast, selections: artifactSel("limit-break") });
+    const plain = run(cast);
+    const ratio = damageOf(withPerk, "super") / damageOf(plain, "super");
+    note("Thundercrash mit / ohne Limit Break", `×${fmt(ratio)}`, "×1,15");
+    expect(ratio).toBeCloseTo(1.15, 3);
+    expect(firstShot(withPerk)).toBe(firstShot(plain));
+  });
+
+  it("Thunderous Retort: +30 % for Arc supers, not for a Solar super", () => {
+    const retort = artifactSel("thunderous-retort");
+    const arc = { abilities: [{ abilityId: "thundercrash", castsMs: [0] }] };
+    const solar = {
+      guardianClass: "hunter" as const,
+      subclass: "solar" as const,
+      abilities: [{ abilityId: "golden-gun-marksman", castsMs: [0] }],
+    };
+    const gain = (build: Partial<Build>) =>
+      damageOf(run({ ...build, selections: retort }), "super") / damageOf(run(build), "super");
+    note("Thunderous Retort: Arc / Solar Super", `×${fmt(gain(arc))} / ×${fmt(gain(solar))}`, "×1,30 / ×1,00");
+    expect(gain(arc)).toBeCloseTo(1.3, 3);
+    expect(gain(solar)).toBe(1);
+  });
+
+  it("Fever and Chill: Radiant for Solar weapons, not on top of Radiant", () => {
+    const solar = weapons.find((w) => w.element === "solar")!;
+    const arc = weapons.find((w) => w.element === "arc")!;
+    const fever = artifactSel("fever-and-chill");
+    const radiant = [{ effectId: "radiant", provider: "subclass" as const }];
+    const gain = (weapon: Weapon, selections: Build["selections"]) =>
+      firstShot(run({ selections }, weapon)) / firstShot(run({}, weapon));
+    note(
+      "Fever and Chill: Solar / Arc / mit Radiant",
+      `×${fmt(gain(solar, fever))} / ×${fmt(gain(arc, fever))} / ×${fmt(gain(solar, [...fever, ...radiant]))}`,
+      "×1,20 / ×1,00 / ×1,20",
+    );
+    expect(gain(solar, fever)).toBeCloseTo(1.2, 3);
+    expect(gain(arc, fever)).toBe(1);
+    expect(gain(solar, [...fever, ...radiant])).toBeCloseTo(1.2, 3); // empowering buffs do not stack
+  });
+
+  it("Shieldcrush: +50 % melee only with Frost Armor, Void Overshield or Woven Mail", () => {
+    const melee = { abilities: [{ abilityId: "shield-bash", castsMs: [0] }], subclass: "void" as const };
+    const vigilance = [{ effectId: "echo-of-vigilance", provider: "subclass" as const }];
+    const crush = artifactSel("shieldcrush");
+    const meleeDamage = (selections: Build["selections"]) =>
+      damageOf(run({ ...melee, selections }), "melee");
+    const base = meleeDamage(vigilance);
+    note(
+      "Shieldcrush auf Shield Bash: mit / ohne Overshield",
+      `×${fmt(meleeDamage([...vigilance, ...crush]) / base)} / ×${fmt(meleeDamage(crush) / meleeDamage([]))}`,
+      "×1,50 / ×1,00",
+    );
+    expect(meleeDamage([...vigilance, ...crush]) / base).toBeCloseTo(1.5, 3);
+    expect(meleeDamage(crush)).toBe(meleeDamage([]));
+  });
+
+  it("Transference: +10 % grenade damage while Transcendent, none without Transcendence", () => {
+    const grenade = abilitiesFor(gameData.abilities, "grenade", "titan", "prismatic").find(
+      (a) => a.duringEffectId === undefined,
+    )!;
+    const cast = {
+      guardianClass: "titan" as const,
+      subclass: "prismatic" as const,
+      abilities: [{ abilityId: grenade.id, castsMs: [0] }],
+    };
+    const transcendence = [{ effectId: "transcendence", provider: "subclass" as const }];
+    const grenadeDamage = (selections: Build["selections"]) =>
+      damageOf(run({ ...cast, selections }), "grenade");
+    const during = grenadeDamage([...transcendence, ...artifactSel("transference")]) / grenadeDamage(transcendence);
+    const without = grenadeDamage(artifactSel("transference")) / grenadeDamage([]);
+    note("Transference: mit / ohne Transcendence", `×${fmt(during)} / ×${fmt(without)}`, "×1,10 / ×1,00");
+    expect(during).toBeCloseTo(1.1, 3);
+    expect(without).toBe(1);
   });
 });
 

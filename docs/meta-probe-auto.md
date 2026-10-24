@@ -2,12 +2,15 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `tests/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 104, davon innerhalb der Grenze 33. Nicht vergleichbar (übersprungen): 44.
+Vollständig abgebildet (geprüft): 28, davon innerhalb der Grenze 22. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 99, davon innerhalb der Grenze 34. Nicht vergleichbar (übersprungen): 44.
 
 ## Vollständig abgebildet
 
 | Aegis-Zeile | Aegis | Modell | relativ | Grund der Abweichung |
 | --- | ---: | ---: | ---: | --- |
+| Stormtrance, Ascending Amplitude, Facet of Courage, Thunderous Retort | 71,745 | 33,334 | 0.465 | -53 %; Ascending Amplitude is the trait of Stormdancer's Brace (Amplified, Bolt Charge from Arc ability hits), which has its own damage and is not modelled; Thunderous Retort itself fits (Chaos Reach and Stormtrance rows without it: x1.00) |
+| Arc Staff, Raiden Flux, Shieldcrush | 84,169 | 56,113 | 0.667 | -33 %, exactly 1/1.5: Aegis applies Shieldcrush (+50 % melee) to the light attacks of the Arc Staff, which are Super Melee (Compendium: 'Also increases Super Melee Damage'); the model gives it to melee abilities only, and only while Frost Armor, Void Overshield or Woven Mail is on, which this row does not select |
+| Chaos Reach, Geomag Stabilizers, Sol Invictus, Thunderous Retort | 79,840 | 54,572 | 0.684 | -32 %; cause not examined (the same row without Sol Invictus fits x1.00, so it is the Sol Invictus assumption: a Titan aspect with a Sunspot, not modelled for Chaos Reach) |
 | Tractor Cannon | 22,149 | 18,458 | 0.833 | -17 %; cause not examined |
 | Telesto | 51,208 | 43,123 | 0.842 | -16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now) |
 | One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | 120,613 | 105,112 | 0.871 |  |
@@ -22,8 +25,10 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Ice Breaker, Sniper's Meditation | 34,643 | 34,643 | 1.000 |  |
 | Service of Luzaku | 110,752 | 110,752 | 1.000 |  |
 | Forerunner | 51,349 | 51,349 | 1.000 |  |
+| Chaos Reach, Geomag Stabilizers, Thunderous Retort | 54,572 | 54,572 | 1.000 |  |
 | Nova Bomb - Cataclysm, Facet of Courage, Limit Break | 19,260 | 19,261 | 1.000 |  |
 | Twilight Arsenal, Facet of Courage, Limit Break | 20,190 | 20,193 | 1.000 |  |
+| Stormtrance, Feast of Light x6, Facet of Courage, Thunderous Retort | 54,444 | 55,043 | 1.011 |  |
 | Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | 32,463 | 32,941 | 1.015 |  |
 | One Thousand Voices, Particle Reconstruction | 63,705 | 66,942 | 1.051 |  |
 | One Thousand Voices, Ember of Ashes, Particle Reconstruction | 74,750 | 79,499 | 1.064 |  |
@@ -43,16 +48,13 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Still Hunt | 129,880 | 37,289 | 0.287 | pre-popped into 6 shot cycle |
 | Hammer of Sol | 59,236 | 17,424 | 0.294 | Roaring Flames x3 |
 | Heirloom | 166,743 | 56,885 | 0.341 | fully charged |
-| Stormtrance | 71,745 | 26,177 | 0.365 | Thunderous Retort |
 | Ager's Scepter | 120,982 | 44,406 | 0.367 | Will Given Form; Facet of Command; Harsh Refraction |
 | Heirloom | 139,286 | 56,885 | 0.408 | 2 charges |
-| Sentinel Shield | 45,727 | 19,122 | 0.418 | aerial lights; Shieldcrush |
+| Sentinel Shield | 45,727 | 19,122 | 0.418 | aerial lights |
 | Burning Maul | 49,559 | 22,006 | 0.444 | heavy attacks; Roaring Flames x3 |
-| Sentinel Shield | 43,019 | 19,122 | 0.445 | grounded spam; Shieldcrush |
+| Sentinel Shield | 43,019 | 19,122 | 0.445 | grounded spam |
 | Still Hunt | 81,119 | 37,289 | 0.460 | pre-popped into 6 shot cycle |
 | Euphony | 142,542 | 68,125 | 0.478 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
-| Fists of Havoc | 54,355 | 27,883 | 0.513 | heavy attacks; Thunderous Retort |
-| Chaos Reach | 79,840 | 41,979 | 0.526 | Thunderous Retort |
 | Choir of One | 144,867 | 76,675 | 0.529 | hitscan mode; precision |
 | Euphony | 128,701 | 68,125 | 0.529 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
 | Wavesplitter | 88,666 | 48,014 | 0.542 | Supercharged Battery; Detonator Beam; Harsh Refraction |
@@ -61,8 +63,6 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Izanagi's Burden | 56,856 | 32,426 | 0.570 | includes rehone time; hone before rally; Sniper's Meditation (assume stacked) |
 | Legend of Acrius | 129,383 | 75,473 | 0.583 | body; Trench Barrel |
 | New Land Beyond | 198,345 | 116,544 | 0.588 | starts at The Master x0; manual reloads until The Grandmaster |
-| Thundercrash | 48,635 | 28,687 | 0.590 | Thunderous Retort; Conductive Cosmic Needle x3 |
-| Thundercrash | 31,181 | 18,396 | 0.590 | Thunderous Retort; Conductive Cosmic Needle x3 |
 | Burning Maul | 89,348 | 55,015 | 0.616 | light attacks; Roaring Flames x3 |
 | Needlestorm | 33,601 | 20,926 | 0.623 | Pack Tactics x2 |
 | Duality | 73,569 | 46,616 | 0.634 | 3 body pellet shots into On Black Wings x3 slugs |
@@ -71,9 +71,9 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Heirloom | 88,751 | 56,885 | 0.641 | 1 charge |
 | Hammer of Sol | 67,298 | 43,560 | 0.647 | Roaring Flames x3; max distance |
 | Whisper of the Worm | 134,672 | 87,478 | 0.650 | Incendiary Rifle Rounds; Solar Fulmination |
-| Arc Staff | 84,169 | 56,113 | 0.667 | Shieldcrush |
-| Silkstrike | 59,072 | 39,394 | 0.667 | light attack spam; Shieldcrush |
-| Spectral Blades | 57,656 | 38,465 | 0.667 | light attack spam; Shieldcrush |
+| Fists of Havoc | 54,355 | 36,248 | 0.667 | heavy attacks |
+| Silkstrike | 59,072 | 39,394 | 0.667 | light attack spam |
+| Spectral Blades | 57,656 | 38,465 | 0.667 | light attack spam |
 | Cloudstrike | 86,535 | 58,317 | 0.674 | Triple Tap; excludes Bolt Charge |
 | Edge of Concurrence | 50,199 | 34,161 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
 | Bastion | 119,327 | 82,294 | 0.690 | Saint's Fury; includes melee time |
@@ -85,14 +85,13 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Microcosm | 102,579 | 75,121 | 0.732 | Paracausal Imbuement; Harsh Refraction |
 | The Lament | 217,268 | 160,595 | 0.739 | 2L1H combo; Lucent Blades x3; Solar Fulmination |
 | Ergo Sum | 125,168 | 93,245 | 0.745 | caster frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
+| Thundercrash | 48,635 | 37,294 | 0.767 | Conductive Cosmic Needle x3 |
+| Thundercrash | 31,181 | 23,915 | 0.767 | Conductive Cosmic Needle x3 |
 | Burning Maul | 30,129 | 23,161 | 0.769 | Roaring Flames x3 |
-| Storm's Edge | 43,145 | 33,184 | 0.769 | body; all three casts; Thunderous Retort |
 | Dead Messenger | 88,586 | 68,143 | 0.769 | The Fundamentals |
 | Finality's Auger | 82,158 | 63,199 | 0.769 | Bait and Switch; Linear Fusion Mode |
-| Chaos Reach | 54,572 | 41,979 | 0.769 | Thunderous Retort |
 | Merciless | 70,355 | 54,549 | 0.775 | Impetus; two kills |
 | Shadowshot: Moebius Quiver | 19,565 | 15,393 | 0.787 | full bow charge; all 3 volleys; assumes no other debuff |
-| Stormtrance | 54,444 | 42,876 | 0.788 | Thunderous Retort |
 | Shadowshot: Moebius Quiver | 11,791 | 9,301 | 0.789 | full bow charge; both volleys; assumes no other debuff |
 | Shadowshot: Moebius Quiver | 19,977 | 15,811 | 0.791 | full bow charge; both volleys; assumes no other debuff |
 | The Lament | 176,080 | 139,647 | 0.793 | 3L1H1R combo; Lucent Blades x3; Combination Argent Blade; Sword Storm Combo |
@@ -111,12 +110,13 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Ergo Sum | 98,852 | 93,245 | 0.943 | lightweight frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus |
 | Parasite | 95,708 | 90,445 | 0.945 | Envious Arsenal; x20 first shot |
 | Black Talon | 79,745 | 76,566 | 0.960 | 2H2L combo; Lucent Blades x3 |
-| Fists of Havoc | 28,991 | 27,883 | 0.962 | light attacks; Shieldcrush |
+| Fists of Havoc | 28,991 | 27,883 | 0.962 | light attacks |
 | Shadowshot: Moebius Quiver | 16,241 | 15,811 | 0.974 | both volleys; assumes no other debuff |
 | Ergo Sum | 94,548 | 93,245 | 0.986 | caster frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
 | Shadowshot: Moebius Quiver | 9,413 | 9,301 | 0.988 | both volleys; assumes no other debuff |
 | The Prospector | 84,807 | 84,111 | 0.992 | typical boss model; Kinetic Impacts |
 | Shadowshot: Moebius Quiver | 15,469 | 15,393 | 0.995 | all 3 volleys; assumes no other debuff |
+| Storm's Edge | 43,145 | 43,139 | 1.000 | body; all three casts |
 | Choir of One | 76,676 | 76,675 | 1.000 | projectile mode; spaced* |
 | The Wardcliff Coil | 52,072 | 52,072 | 1.000 | excludes Bolt Charge |
 | Heirloom | 56,885 | 56,885 | 1.000 | uncharged |
@@ -138,7 +138,7 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Winter's Wrath | 38,618 | 51,445 | 1.332 | light-heavy cycle; Facet of Ruin |
 | One Thousand Voices | 74,472 | 105,112 | 1.411 | no ignitions |
 | Twilight Arsenal | 8,337 | 18,357 | 2.202 | axe light attack spam |
-| Storm's Edge | 14,382 | 33,184 | 2.307 | body; per cast; Thunderous Retort |
+| Storm's Edge | 14,382 | 43,139 | 2.999 | body; per cast |
 | Twilight Arsenal | 2,705 | 18,357 | 6.786 | axe heavy attack |
 
 ## Fehlende Schalter
@@ -146,10 +146,8 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie enthalten.
 
 - Lucent Blades x3: 14
-- Thunderous Retort: 9
 - Roaring Flames x3: 7
 - assumes no other debuff: 6
-- Shieldcrush: 6
 - Solar Fulmination: 6
 - excludes Transcendence 5% bonus: 5
 - Pack Hunter: 5

@@ -8,9 +8,11 @@
 //           hasStats (0 or 1) | super stat | grenade stat | melee stat |
 //           exotic armor manifest hash (0: none) | exotic prebuilt (0 or 1) |
 //           class perk count | per class perk: manifest hash |
-//           Weapons stat + 1 (0: none)
+//           Weapons stat + 1 (0: none) |
+//           artifact code (0: none)
 // Format 2 ends the build after the selections, format 3 after the stats, format 4 after the
-// prebuilt flag, format 5 after the class perks; all are still read.
+// prebuilt flag, format 5 after the class perks, format 6 after the Weapons stat; all are still
+// read. Artifact perks are selections with the provider "artifact".
 // Exotic armor and class perks are written by their manifest hash, which Bungie keeps stable (U8).
 // Codes come from the Data Files and are never reused, so old links stay readable. A removed
 // effect keeps its code as a former code of the effect that replaces it.
@@ -24,8 +26,8 @@ import {
   type Subclass,
 } from "../data/schema";
 
-const FORMAT_VERSION = 6;
-const READABLE_VERSIONS = [2, 3, 4, 5, 6];
+const FORMAT_VERSION = 7;
+const READABLE_VERSIONS = [2, 3, 4, 5, 6, 7];
 const MS_PER_SECOND = 1000;
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
 const SUBCLASSES: Subclass[] = [
@@ -54,6 +56,7 @@ export type LinkRegistry = {
   }[];
   abilities: { id: string; code: number }[];
   exoticArmor?: { id: string; hash: number }[]; // omitted: none known
+  artifacts?: { id: string; code: number }[]; // omitted: none known
 };
 
 export type LinkContent = {
@@ -67,6 +70,7 @@ export type DecodedLink = {
   unknownEffectCodes: number[]; // effects of a newer version; skipped
   unknownAbilityCodes: number[]; // abilities of a newer version; skipped
   unknownExoticArmorHashes: number[]; // exotic armor of a newer version; skipped
+  unknownArtifactCodes: number[]; // artifacts of a newer version; skipped
   replacedEffectCodes: ReplacedEffect[]; // former codes, read as their replacement
 };
 
@@ -103,6 +107,7 @@ export function decodeLink(text: string, registry: LinkRegistry): DecodedLink {
     effects: [],
     abilities: [],
     exoticArmor: [],
+    artifacts: [],
     replaced: [],
   };
   const build = readBuild(reader, registry, version, unknown);
@@ -117,6 +122,7 @@ export function decodeLink(text: string, registry: LinkRegistry): DecodedLink {
     unknownEffectCodes: unknown.effects,
     unknownAbilityCodes: unknown.abilities,
     unknownExoticArmorHashes: unknown.exoticArmor,
+    unknownArtifactCodes: unknown.artifacts,
     replacedEffectCodes: unknown.replaced,
   };
 }
@@ -177,6 +183,12 @@ function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
   writeVarint(
     bytes,
     build.weaponsStat === undefined ? 0 : Math.round(build.weaponsStat) + 1,
+  );
+  writeVarint(
+    bytes,
+    build.artifactId === undefined
+      ? 0
+      : codeOf(registry.artifacts ?? [], build.artifactId, "artifact"),
   );
 }
 
@@ -252,6 +264,9 @@ function readBuild(
     }
   }
   const weaponsStatPlusOne = version >= 6 ? reader.varint() : 0;
+  const artifactCode = version >= 7 ? reader.varint() : 0;
+  const artifact = (registry.artifacts ?? []).find((a) => a.code === artifactCode);
+  if (artifactCode !== 0 && !artifact) unknown.artifacts.push(artifactCode);
   // Zod rejects an invalid class or provider index (undefined).
   return Build.parse({
     weaponId: weapon.id,
@@ -264,6 +279,7 @@ function readBuild(
     ...abilityPart,
     ...exoticPart,
     ...(weaponsStatPlusOne > 0 ? { weaponsStat: weaponsStatPlusOne - 1 } : {}),
+    ...(artifact ? { artifactId: artifact.id } : {}),
   });
 }
 
@@ -271,6 +287,7 @@ type Unknown = {
   effects: number[];
   abilities: number[];
   exoticArmor: number[];
+  artifacts: number[];
   replaced: ReplacedEffect[];
 };
 

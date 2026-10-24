@@ -35,7 +35,18 @@ describe("effectSections", () => {
         ["fragment", ["ember-of-ashes"]],
         ["buffs", ["radiant"]],
         ["mod", ["surge-1x", "surge-2x", "surge-3x"]],
-        ["artifact", ["elemental-overdrive-solar", "particle-reconstruction"]],
+        [
+          "artifact",
+          [
+            "elemental-overdrive-solar",
+            "particle-reconstruction",
+            "limit-break",
+            "thunderous-retort",
+            "shieldcrush",
+            "transference",
+            "fever-and-chill",
+          ],
+        ],
       ],
     );
   });

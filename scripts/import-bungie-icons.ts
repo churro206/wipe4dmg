@@ -16,6 +16,7 @@ import {
 import { format } from "prettier";
 import {
   AbilityData,
+  ArtifactData,
   CompendiumSnapshot,
   Effect,
   ExoticArmorEntry,
@@ -247,6 +248,16 @@ const abilityNamed = namedIconRefs(
 );
 if (abilityNamed.missing.length > 0)
   console.warn(`No manifest item with an icon for: ${abilityNamed.missing.join(", ")}`);
+// Seasonal artifacts (npm run build:artifacts), key "artifact:<id>": look the item up by name.
+const artifactNamed = namedIconRefs(
+  existsSync(new URL("src/data/artifacts.json", ROOT))
+    ? ArtifactData.parse(readJson("src/data/artifacts.json")).artifacts
+    : [],
+  items,
+  "artifact",
+);
+if (artifactNamed.missing.length > 0)
+  console.warn(`No manifest item with an icon for: ${artifactNamed.missing.join(", ")}`);
 const refs = collectIconRefs(
   [
     ...Effect.array().parse(readJson("src/data/effects.json")),
@@ -266,6 +277,7 @@ const refs = collectIconRefs(
     ...handRefs,
     ...abilityIconRefs(abilityData.filter(isPlug), manifestAbilities.abilities),
     ...abilityNamed.refs,
+    ...artifactNamed.refs,
   ],
 );
 mkdirSync(new URL("public/icons/", ROOT), { recursive: true });

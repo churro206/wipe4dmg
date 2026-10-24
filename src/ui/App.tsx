@@ -21,6 +21,7 @@ import { nextCastFor } from "../engine/buildSimulation";
 import { buildSimulation } from "../engine/buildSimulation";
 import { effectWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
+import { fitArtifact } from "../engine/artifacts";
 import { abilitiesFor, effectsFor } from "../engine/providers";
 import { classPerksFor, exoticArmorFor } from "../engine/exoticArmor";
 import { simulate, type SimulationResult } from "../engine/simulate";
@@ -61,6 +62,7 @@ import {
   RotationTimeline,
 } from "./Charts";
 import { AbilityPicker } from "./components/AbilityPicker";
+import { ArtifactPicker } from "./components/ArtifactPicker";
 import { EffectPicker } from "./components/EffectPicker";
 import { Icon } from "./components/Icon";
 import { InfoTip } from "./components/InfoTip";
@@ -78,6 +80,7 @@ import { Tabs } from "./components/Tabs";
 import {
   abilities,
   activities,
+  artifactData,
   baseEffects,
   gameData,
   keywords,
@@ -152,6 +155,7 @@ function App() {
   const [exoticArmorId, setExoticArmorId] = useState(initial.exoticArmorId);
   const [exoticPreBuilt, setExoticPreBuilt] = useState(initial.exoticPreBuilt);
   const [classPerkIds, setClassPerkIds] = useState(initial.classPerkIds);
+  const [artifactId, setArtifactId] = useState(initial.artifactId);
   // The class item as the build's exotic; its perks are offered only then (a link carries the perks).
   const [classItemChosen, setClassItemChosen] = useState(
     initial.classPerkIds.length > 0,
@@ -198,6 +202,7 @@ function App() {
     exoticArmorId,
     classPerkIds,
     exoticPreBuilt,
+    artifactId,
   });
   const { selected, options } = simulationOf(currentBuild);
   const result = isValid
@@ -251,6 +256,7 @@ function App() {
         exoticArmorId,
         classPerkIds,
         exoticPreBuilt,
+        artifactId,
       }),
     );
     return dpsByDamagePhase(
@@ -274,6 +280,7 @@ function App() {
     exoticArmorId,
     classPerkIds,
     exoticPreBuilt,
+    artifactId,
   ]);
 
   const changeWeapon = (id: string) => {
@@ -357,6 +364,15 @@ function App() {
     }
     setSelections((current) => toggleSelection(current, effect, provider));
   };
+  // Another artifact keeps the perks it also has, as far as its slots allow; none removes them all.
+  const chooseArtifact = (id: string | undefined) => {
+    setArtifactId(id);
+    setSelections((current) =>
+      id === undefined
+        ? current.filter((s) => s.provider !== "artifact")
+        : fitArtifact(artifactData, id, current).selections,
+    );
+  };
   const castRows = ABILITY_KINDS.flatMap((kind) => {
     const pick = abilityChoice[kind];
     const ability = pick && abilities.find((a) => a.id === pick.abilityId);
@@ -399,6 +415,7 @@ function App() {
         damagePhaseSeconds,
         limit: OPTIMIZER_LIMIT,
         keywords,
+        artifacts: artifactData,
       });
       setOptimizer({ forKey: optimizerKey, entries });
       setOptimizing(false);
@@ -416,6 +433,7 @@ function App() {
     return {
       ...currentBuild,
       subclass: entry.subclass,
+      artifactId: entry.artifactId ?? currentBuild.artifactId,
       selections: entry.selections,
       effectWindows: windowsFor(effectsOf(entry.selections), windowInputs),
       abilities: picks.length > 0 ? picks : undefined,
@@ -722,7 +740,28 @@ function App() {
                 }
               />
 
-              {pickerFor("artifact", <h2>Artifact</h2>)}
+              <h2>
+                Artifact
+                <InfoTip>
+                  One seasonal artifact. As in the game, its perks fill seven
+                  slots: two for one diamond, three for two, two for three.
+                  Only perks that change damage are listed; the other slots
+                  hold the rest.
+                </InfoTip>
+              </h2>
+              <ArtifactPicker
+                data={artifactData}
+                artifactId={artifactId}
+                effects={
+                  sections.find((s) => s.slot === "artifact")?.effects ?? []
+                }
+                selectedEffectIds={selections
+                  .filter((s) => s.provider === "artifact")
+                  .map((s) => s.effectId)}
+                weaponElement={weapon.element}
+                onChoose={chooseArtifact}
+                onToggle={(effect) => toggle(effect, "artifact")}
+              />
 
               <details
                 className="fireteam"
@@ -945,6 +984,7 @@ function App() {
                           currentTotal={result.totalDamage}
                           onApply={(entry) => {
                             setSubclass(entry.subclass);
+                            if (entry.artifactId) setArtifactId(entry.artifactId);
                             setSelections(entry.selections);
                             setAbilityChoice(choiceOf(entry));
                           }}

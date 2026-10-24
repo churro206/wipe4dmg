@@ -794,6 +794,12 @@ header > .segmented {
   text-align: left;
 }
 
+/* A tile that cannot be switched on, e.g. an artifact perk of a tier without free slots */
+.tile:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 /* Sub-heading inside a section, e.g. "Class Ability" under the abilities or "Mods" under armor */
 h3.sub {
   margin: 0.6rem 0 0.3rem;
