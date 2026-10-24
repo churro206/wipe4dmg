@@ -1337,7 +1337,7 @@
   },
   {
     "subclassItemId": "spark-of-feedback",
-    "activation": "always",
+    "activation": "preBuilt",
     "effect": {
       "id": "spark-of-feedback",
       "code": 68,
@@ -1366,7 +1366,17 @@
           },
           "damageSources": ["melee"]
         }
-      ]
+      ],
+      "durationMs": {
+        "value": 5000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "note": "„within 5 seconds“ (Arc, Spark of Feedback)"
+        }
+      }
     }
   },
   {
@@ -1825,7 +1835,22 @@
             }
           }
         }
-      ]
+      ],
+      "durationMs": {
+        "value": 15000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "note": "„lasts 15 seconds“ (Arc, Arc Soul)"
+        }
+      },
+      "trigger": {
+        "on": "cast",
+        "refresh": true,
+        "abilityKinds": ["classAbility"]
+      }
     }
   },
   {
@@ -1882,12 +1907,27 @@
             }
           }
         }
-      ]
+      ],
+      "durationMs": {
+        "value": 20000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "note": "„Grants Hellion for 20 seconds“ (Solar, Hellion)"
+        }
+      },
+      "trigger": {
+        "on": "cast",
+        "refresh": true,
+        "abilityKinds": ["classAbility"]
+      }
     }
   },
   {
     "subclassItemId": "ionic-sentry",
-    "activation": "always",
+    "activation": "preBuilt",
     "effect": {
       "id": "ionic-sentry",
       "code": 90,
@@ -1933,7 +1973,17 @@
             }
           }
         }
-      ]
+      ],
+      "durationMs": {
+        "value": 15000,
+        "source": {
+          "name": "Destiny Data Compendium (subclass tabs)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "note": "„Lasts for 15 seconds“ (Arc, Ionic Sentry)"
+        }
+      }
     }
   },
   {

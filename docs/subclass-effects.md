@@ -6,8 +6,8 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 
 | Art | Zeilen |
 | --- | --- |
-| Immer aktiv | 31 |
-| Vorher aufgebaut, Option | 11 |
+| Immer aktiv | 30 |
+| Vorher aufgebaut, Option | 12 |
 | Fenster aus der Rotation | 6 |
 | Ohne Dauer | 4 |
 | Auslöser in der Rotation, offen | 1 |
@@ -47,7 +47,6 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Shatterdive | stasis | E | Zustand frostArmor, die ganze Phase gehalten („grants maximum Frost Armor“) | Text |
 | Sol Invictus | solar | E | Zustand restoration, die ganze Phase gehalten („grant Sol Invictus for 5 seconds and Restoration“) | Text |
 | Soul Siphon | void | E | Zustand voidOvershield, die ganze Phase gehalten („Grants +15 Void Overshield“) | Text |
-| Spark of Feedback | arc | F | Melee-Bonus +100 % im Bucket melee („100% [50% \| 15% while Knockout is active] Increased Melee Damage“) | Text |
 | Spark of Shock | arc | C | jolt auf Treffer von arc grenade („inflict Jolt“) | Text |
 | Tectonic Harvest | stasis | E | Zustand frostArmor, die ganze Phase gehalten („grants x1 Frost Armor“, „grant x3 Frost Armor“) | Text |
 | Thread of Warding | strand | E | Zustand wovenMail, die ganze Phase gehalten („Grants Woven Mail“) | Text |
@@ -70,6 +69,7 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Roaring Flames | solar | E | vorher aufgebaut: Zustand roaringFlames für 20 s („grant a stack of Roaring Flame“) | Text |
 | Roaring Flames | solar | F | Melee-Bonus +200 % im Bucket melee, 20 s („67% \| 133% \| 200% Increased Melee Damage“) | Text |
 | Roaring Flames | solar | F | Ability-Bonus +73 % im Bucket aspectBonus, 20 s („73% [44%] increased Grenade and Super Ability Damage“) | Text |
+| Spark of Feedback | arc | F | Melee-Bonus +100 % im Bucket melee, 5 s („100% [50% \| 15% while Knockout is active] Increased Melee Damage“) | Text |
 | Thread of Propagation | strand | C | vorher aufgebaut: unravel auf strand Waffen für 8 s („Grants Unraveling Rounds to Strand Weapons“) | Text |
 
 ## Fenster aus der Rotation
@@ -166,9 +166,9 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 
 | Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- | --- |
-| Arc Soul | arc | H | 163 alle 1.833 s die ganze Phase (Aegis-Zeile `sustained-arc-soul-facet-of-courage`) | Aegis |
-| Hellion | prismatic, solar | H | 466 alle 1.317 s die ganze Phase (Aegis-Zeile `sustained-hellion-ember-of-ashes`) | Aegis |
-| Ionic Sentry | arc | H | 181 alle 1 s die ganze Phase (Aegis-Zeile `sustained-ionic-sentry-spark-of-frequency-excludes-bolt-charge`) | Aegis |
+| Arc Soul | arc | H | 163 alle 1.833 s für 15 s ab Cast einer Class Ability (Aegis-Zeile `sustained-arc-soul-facet-of-courage`) | Aegis |
+| Hellion | prismatic, solar | H | 466 alle 1.317 s für 20 s ab Cast einer Class Ability (Aegis-Zeile `sustained-hellion-ember-of-ashes`) | Aegis |
+| Ionic Sentry | arc | H | 181 alle 1 s für 15 s ab Beginn der Phase (durch Kills vorher aufgeladen) (Aegis-Zeile `sustained-ionic-sentry-spark-of-frequency-excludes-bolt-charge`) | Aegis |
 | Storm's Keep | arc | H | 678 alle 1.46 s die ganze Phase (Aegis-Zeile `sustained-storm-s-keep-max-practical-bolt-charge-rate`) | Aegis |
 | Weaver's Call | prismatic, strand | H | 1120 alle 2.15 s die ganze Phase (Aegis-Zeile `sustained-weaver-s-call-maximum-practical-rate-thread-of-evolution`) | Aegis |
 

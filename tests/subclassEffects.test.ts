@@ -183,6 +183,28 @@ describe("rules for aspects and fragments", () => {
     expect(kindsOf("Hellion")).toEqual(["ownDamage"]);
   });
 
+  it("H: damage of its own lasts as long as its source (block Uptime)", () => {
+    const of = (id: string) => result.effects.find((e) => e.subclassItemId === id)!;
+    // "On Class Ability Usage: Grants Hellion for 20 seconds" (Aegis Swap: 15 shots per use)
+    expect(of("hellion")).toMatchObject({
+      activation: "always",
+      effect: {
+        durationMs: { value: 20000 },
+        trigger: { on: "cast", refresh: true, abilityKinds: ["classAbility"] },
+      },
+    });
+    // "Rifts created by the user grant an Arc Soul … Arc Buddy lasts 15 seconds"
+    expect(of("arc-soul").effect).toMatchObject({
+      durationMs: { value: 15000 },
+      trigger: { on: "cast", abilityKinds: ["classAbility"] },
+    });
+    // "Arc Kills and Kinetic Kills charge up an Ionic Sentry … Lasts for 15 seconds" (not the Blind)
+    expect(of("ionic-sentry")).toMatchObject({ activation: "preBuilt", effect: { durationMs: { value: 15000 } } });
+    expect(of("ionic-sentry").effect.trigger).toBeUndefined();
+    // weapon hits and damage drive Storm's Keep and Weaver's Call: the whole phase
+    expect(of("weavers-call").effect.durationMs).toBeUndefined();
+  });
+
   it("gives every generated effect its own code, apart from the codes of effects.json", () => {
     const own = result.effects.filter((e) => !effects.some((k) => k.id === e.effect.id));
     const codes = own.map((e) => e.effect.code);

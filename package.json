@@ -29,6 +29,7 @@
     "build:keywords": "node scripts/build-keywords.ts",
     "build:abilities": "node scripts/build-abilities.ts",
     "build:grants": "node scripts/build-grants.ts",
+    "build:uptime": "node scripts/build-uptime.ts",
     "import:icons": "node --max-old-space-size=4096 --env-file-if-exists=.env.local scripts/import-bungie-icons.ts"
   },
   "dependencies": {

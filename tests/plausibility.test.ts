@@ -239,6 +239,25 @@ describe("exotic armor changes its abilities", () => {
     expect(weakened / own(withAspect)).toBeGreaterThan(1.1);
   });
 
+  it("Hellion fires for 20 s after a class ability cast, not the whole phase", () => {
+    const warlock = {
+      guardianClass: "warlock" as const,
+      subclass: "solar" as const,
+      selections: [{ effectId: "hellion", provider: "subclass" as const }],
+    };
+    const hits = (casts: number[]) =>
+      run({ ...warlock, abilities: [{ abilityId: "phoenix-dive", castsMs: casts }] }).damageInstances.filter(
+        (d) => d.id === "hellion",
+      ).length;
+    note(
+      "Hellion (30 s): Treffer mit Phoenix Dive bei 0 s / ohne Cast",
+      `${hits([0])} / ${hits([])}`,
+      "15 / 0 (Compendium: „On Class Ability Usage: Grants Hellion for 20 seconds“; Aegis Swap: 15 Schüsse pro Einsatz)",
+    );
+    expect(hits([0])).toBe(15);
+    expect(hits([])).toBe(0);
+  });
+
   it("Lightweight Knife and Acrobat's Dodge: Radiant for 10 s per cast, Gjallarhorn ×1.2 in 10 s", () => {
     const hunter = { guardianClass: "hunter" as const, subclass: "solar" as const, damagePhaseSeconds: 10 };
     const gjallarhorn = weaponById("gjallarhorn");

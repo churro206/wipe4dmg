@@ -298,8 +298,11 @@ function findAll(
 
   // F: quoted bonuses. Melee → the additive melee bucket (Court); grenade/super/"Light Abilities" →
   // bucket aspectBonus (no Court category, assumed multiplicative); the highest value per item and
-  // scope, the window from "<item> for N seconds" (kills build it up), otherwise the whole phase.
-  const window = new RegExp(`${escapeRegExp(name)} for (\\d+(?:\\.\\d+)?) seconds`, "i").exec(text);
+  // scope, the window from "<item> for N seconds" (kills build it up) or "within N seconds" (Spark of
+  // Feedback, block Uptime), otherwise the whole phase.
+  const window =
+    new RegExp(`${escapeRegExp(name)} for (\\d+(?:\\.\\d+)?) seconds`, "i").exec(text) ??
+    /\bwithin (\d+(?:\.\d+)?) seconds\b/i.exec(text);
   const scoped = new Map<string, { bonus: (typeof bonuses)[number]; scope: BonusScope }>();
   for (const b of bonuses) {
     const sentence = sentencesOf(text).find((s) => s.sentence.includes(b.quote))?.sentence ?? b.quote;
@@ -501,6 +504,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
     codes[effectId] ??= nextCode++;
     const element = (items.find((i) => i.subclass !== "prismatic") ?? items[0]).subclass as Element;
     const measured = `${row.name}${row.assumptions.length ? ` (${row.assumptions.join(", ")})` : ""}: Base ${row.base}, peak Rate ${row.rateSeconds} s`;
+    const window = ownDamageWindow(inputs, items);
     const source = (value: number): { value: number; source: Source } => ({
       value,
       source: {
@@ -512,7 +516,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
     });
     effects.push({
       subclassItemId: id,
-      activation: "always",
+      activation: window?.preBuilt ? "preBuilt" : "always",
       effect: {
         id: effectId,
         code: codes[effectId],
@@ -529,6 +533,8 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
             intervalMs: source(Math.round(row.rateSeconds! * MS_PER_SECOND)),
           },
         ],
+        ...(window ? { durationMs: window.durationMs } : {}),
+        ...(window?.trigger ? { trigger: window.trigger } : {}),
       },
     });
     // the measurement replaces the open rows of the item
@@ -540,7 +546,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
       subclasses: [...new Set(items.map((i) => i.subclass))].join(", "),
       rule: "H",
       kind: "ownDamage",
-      reason: `${row.base} alle ${row.rateSeconds} s die ganze Phase (Aegis-Zeile \`${row.id}\`)`,
+      reason: `${row.base} alle ${row.rateSeconds} s ${window ? window.label : "die ganze Phase"} (Aegis-Zeile \`${row.id}\`)`,
       check: "Aegis",
       effectId,
     });
@@ -549,6 +555,47 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
 }
 
 const REPLACED_BY_MEASUREMENT: SubclassEffectKind[] = ["noDamage", "classAbility", "keywordLater"];
+
+// Rule H window (block "Uptime", owner 2026-10-24): damage of its own lasts as long as its source.
+// "On Class Ability Usage: Grants Hellion for 20 seconds", "Rifts created by the user grant an Arc
+// Soul … lasts 15 seconds": a window at each class ability cast. "Arc Kills … charge up an Ionic
+// Sentry … Lasts for 15 seconds": charged by kills, so built up before the phase, one window from 0 s.
+const CLASS_CAST_SOURCE = /^(On Class Ability Usage|Rifts created by the user)/im;
+const KILL_CHARGED = /\bkills?\b[^.\n]*\bcharge/i;
+const LIFETIME = /\b(?:lasts(?: for)?|grants [\w' ]+? for) (\d+(?:\.\d+)?) seconds\b/i;
+
+function ownDamageWindow(
+  inputs: SubclassEffectInputs,
+  items: ManifestSubclassItem[],
+):
+  | { durationMs: NonNullable<Effect["durationMs"]>; trigger?: Effect["trigger"]; preBuilt: boolean; label: string }
+  | undefined {
+  const entry = inputs.compendium
+    .filter(
+      (e) =>
+        /^(aspects?|fragments)$/i.test(e.section) &&
+        items.some((i) => i.subclass === e.tab.toLowerCase() && subclassItemNamed(i.name, e.name)),
+    )
+    .sort((a, b) => Number(a.tab === "Prismatic") - Number(b.tab === "Prismatic"))[0];
+  if (!entry) return undefined;
+  const classCast = CLASS_CAST_SOURCE.test(entry.text);
+  const killCharged = !classCast && KILL_CHARGED.test(entry.text);
+  const lifetime = LIFETIME.exec(entry.text);
+  if ((!classCast && !killCharged) || !lifetime) return undefined;
+  const seconds = Number(lifetime[1]);
+  const durationMs = {
+    value: seconds * MS_PER_SECOND,
+    source: { ...inputs.sources.compendium, note: `„${lifetime[0]}“ (${entry.tab}, ${entry.name})` },
+  };
+  return classCast
+    ? {
+        durationMs,
+        trigger: { on: "cast", refresh: true, abilityKinds: ["classAbility"] },
+        preBuilt: false,
+        label: `für ${seconds} s ab Cast einer Class Ability`,
+      }
+    : { durationMs, preBuilt: true, label: `für ${seconds} s ab Beginn der Phase (durch Kills vorher aufgeladen)` };
+}
 
 function providersOf(items: ManifestSubclassItem[]): EffectProvider[] {
   const subclasses = [...new Set(items.map((i) => i.subclass))];
