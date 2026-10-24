@@ -43,6 +43,8 @@ Breite vor Genauigkeit, ganze Kategorien pro Block (Regel in `CLAUDE.md`). Model
    - ✅ **UI-Kleinigkeiten umgesetzt (2026-10-24, Sonnet):** `neutralVoice` in `src/ui/describe.ts` (Katalysator-Text „I gain …“ → „Gain …“, my/me → the wielder's), Hover-Karte an der Waffen-Kachel (Name, Typ, Munition, Intrinsics). Die Kacheln der Effects und Abilities zeigten schon per CSS beim Hovern; falls der Inhaber es dort weiter anders sieht, im Browser prüfen (`scripts/ui-check.mjs`), Ursache ungeklärt.
    - **UI-Kleinigkeiten (Inhaber, 2026-10-24, zwischendurch, eigener Commit):** (a) Tooltip einer Waffe oder Fähigkeit erscheint beim Hovern mit der Maus, nicht erst, wenn der Schalter umgelegt wird; (b) Tooltip-Texte allgemein halten, nicht aus der 1. Person („I gain 30 stability …“). Vor Änderungen `docs/ui-inspiration.md` lesen.
 
+   - ✅ **Class Item im Exotic-Picker, Tooltips, Schließen per Klick (Inhaber, 2026-10-24, Sonnet):** „Exotic Class Item“ ist ein Eintrag im `ExoticPicker` (nur Prismatic), die Spirit-Perks (`ClassPerkPicker`) erscheinen erst nach dieser Wahl (`classItemChosen` in `App.tsx`, nicht im Link). Exotic-Kachel und Perks haben die Hover-Karte wie Waffen. `useDismiss` schließt Exotic-, Waffen- und Ability-Liste bei Klick außerhalb. Noch nicht im Browser geprüft (`scripts/ui-check.mjs` mit `vite preview`).
+
 ## Bekannte Ungenauigkeiten
 
 - Artifact-Perks mit Kill-Aufbau (Targeting Autoloader, Void Weapon Channelling, Sniper's Meditation) gelten als aufgebaut, mit der Dauer aus Court ab Beginn der Damage Phase; die Rotation kann Start und Dauer verschieben.

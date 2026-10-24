@@ -1,7 +1,8 @@
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import type { Weapon, WeaponType } from "../../data/schema";
 import { neutralVoice, WEAPON_TYPE_LABELS } from "../describe";
 import { Icon } from "./Icon";
+import { useDismiss } from "./useDismiss";
 
 const AMMO_ORDER = ["primary", "special", "heavy"] as const;
 const AMMO_LABELS: Record<Weapon["ammo"], string> = {
@@ -28,6 +29,9 @@ export function WeaponPicker({
   const [query, setQuery] = useState("");
   const [ammo, setAmmo] = useState<Weapon["ammo"] | "all">("all");
   const [type, setType] = useState<WeaponType | "all">("all");
+  const tileRef = useRef<HTMLSpanElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  useDismiss([tileRef, listRef], open, () => setOpen(false));
   const ofAmmo = weapons.filter((w) => ammo === "all" || w.ammo === ammo);
   const types = [...new Set(ofAmmo.map((w) => w.weaponType))].sort((a, b) =>
     WEAPON_TYPE_LABELS[a].localeCompare(WEAPON_TYPE_LABELS[b]),
@@ -41,7 +45,7 @@ export function WeaponPicker({
 
   return (
     <>
-      <span className="tile-wrap weapon-wrap">
+      <span ref={tileRef} className="tile-wrap weapon-wrap">
         <button
           type="button"
           className="tile weapon-tile"
@@ -70,7 +74,12 @@ export function WeaponPicker({
         </span>
       </span>
       {open && (
-        <div className="weapon-picker" role="group" aria-label="Choose weapon">
+        <div
+          ref={listRef}
+          className="weapon-picker"
+          role="group"
+          aria-label="Choose weapon"
+        >
           <input
             type="search"
             placeholder="Search weapon"

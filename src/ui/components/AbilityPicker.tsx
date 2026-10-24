@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, useRef } from "react";
 import type {
   Ability,
   AbilityKind,
@@ -6,6 +6,7 @@ import type {
 } from "../../data/schema";
 import { describeAbility } from "../describe";
 import { Icon } from "./Icon";
+import { useDismiss } from "./useDismiss";
 
 export type AbilitySlot = {
   kind: AbilityKind;
@@ -33,8 +34,10 @@ export function AbilityPicker({
   onSelect: (kind: AbilityKind, abilityId: string | null) => void;
 }) {
   const open = slots.find((slot) => slot.kind === openKind);
+  const rootRef = useRef<HTMLDivElement>(null);
+  useDismiss([rootRef], open !== undefined, () => onOpen(null));
   return (
-    <div className="abilities">
+    <div ref={rootRef} className="abilities">
       <div className="ability-slots">
         {slots.map((slot) => (
           <div key={slot.kind} className="ability-slot">

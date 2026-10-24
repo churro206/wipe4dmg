@@ -155,6 +155,10 @@ function App() {
   const [exoticArmorId, setExoticArmorId] = useState(initial.exoticArmorId);
   const [exoticPreBuilt, setExoticPreBuilt] = useState(initial.exoticPreBuilt);
   const [classPerkIds, setClassPerkIds] = useState(initial.classPerkIds);
+  // The class item as the build's exotic; its perks are offered only then (a link carries the perks).
+  const [classItemChosen, setClassItemChosen] = useState(
+    initial.classPerkIds.length > 0,
+  );
   const exotic = exoticArmor.find((e) => e.id === exoticArmorId);
   const exoticHasPreBuilt = generatedExoticEffects.some(
     (g) =>
@@ -295,7 +299,10 @@ function App() {
   };
   const changeSubclass = (next: Subclass) => {
     setSubclass(next);
-    if (next !== "prismatic") setClassPerkIds([]);
+    if (next !== "prismatic") {
+      setClassPerkIds([]);
+      setClassItemChosen(false);
+    }
     setSelections((current) => selectionsFor(current, guardianClass, next));
     setAbilityChoice((current) => choiceFor(current, guardianClass, next));
   };
@@ -618,11 +625,28 @@ function App() {
                 <ExoticPicker
                   entries={exoticArmorFor(exoticArmor, guardianClass, gameData.energy)}
                   selected={exotic}
+                  describe={(entry) =>
+                    describeExotic(entry, effects, generatedExoticEffects)
+                  }
                   onSelect={(id) => {
                     setExoticArmorId(id);
-                    if (id !== undefined) setClassPerkIds([]); // the class item is the exotic
+                    setClassPerkIds([]); // a piece or none replaces the class item
+                    setClassItemChosen(false);
                     setExoticPreBuilt(false);
                   }}
+                  classItem={
+                    subclass === "prismatic" &&
+                    classPerksFor(exoticArmor, guardianClass).length > 0
+                      ? {
+                          chosen: classItemChosen,
+                          onChoose: () => {
+                            setExoticArmorId(undefined); // the class item is the exotic
+                            setClassItemChosen(true);
+                            setExoticPreBuilt(false);
+                          },
+                        }
+                      : undefined
+                  }
                 />
                 {exoticHasPreBuilt && (
                   <span className="tile-wrap">
@@ -653,7 +677,7 @@ function App() {
                   )}
                 </ul>
               )}
-              {subclass === "prismatic" && (
+              {subclass === "prismatic" && classItemChosen && (
                 <>
                   <h3 className="sub">Exotic Class Item perks</h3>
                   <ClassPerkPicker
@@ -664,7 +688,6 @@ function App() {
                     }
                     onChange={(ids) => {
                       setClassPerkIds(ids);
-                      if (ids.length > 0) setExoticArmorId(undefined);
                       setExoticPreBuilt(false);
                     }}
                   />

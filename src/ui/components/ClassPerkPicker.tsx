@@ -1,3 +1,4 @@
+import { useId } from "react";
 import type { ExoticArmorEntry } from "../../data/schema";
 import { Icon } from "./Icon";
 
@@ -27,21 +28,50 @@ export function ClassPerkPicker({
   return (
     <div className="tile-grid" role="group" aria-label="Exotic Class Item perks">
       {entries.map((entry) => (
-        <span key={entry.id} className="tile-wrap">
-          <button
-            type="button"
-            className="tile"
-            aria-pressed={selectedIds.includes(entry.id)}
-            title={describe(entry).join("\n")}
-            onClick={() => toggle(entry.id)}
-          >
-            <Icon iconKey={`armor:${entry.id}`} label={entry.name} />
-            <span className="tile-label">
-              {entry.name.replace(/^Spirit of (the )?/, "")}
-            </span>
-          </button>
-        </span>
+        <PerkTile
+          key={entry.id}
+          entry={entry}
+          pressed={selectedIds.includes(entry.id)}
+          lines={describe(entry)}
+          onClick={() => toggle(entry.id)}
+        />
       ))}
     </div>
+  );
+}
+
+function PerkTile({
+  entry,
+  pressed,
+  lines,
+  onClick,
+}: {
+  entry: ExoticArmorEntry;
+  pressed: boolean;
+  lines: string[];
+  onClick: () => void;
+}) {
+  const cardId = useId();
+  return (
+    <span className="tile-wrap">
+      <button
+        type="button"
+        className="tile"
+        aria-pressed={pressed}
+        aria-describedby={cardId}
+        onClick={onClick}
+      >
+        <Icon iconKey={`armor:${entry.id}`} label={entry.name} />
+        <span className="tile-label">
+          {entry.name.replace(/^Spirit of (the )?/, "")}
+        </span>
+      </button>
+      <span role="tooltip" id={cardId} className="hover-card">
+        <strong>{entry.name}</strong>
+        {lines.map((line) => (
+          <span key={line}>{line}</span>
+        ))}
+      </span>
+    </span>
   );
 }
