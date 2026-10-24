@@ -5,13 +5,19 @@
 // entry and the Court row of its name and the names of its sources ("Court … (…, 21s)").
 // Review table: docs/uptime-import.md.
 
-import type { ClarityEntry, CompendiumEntry, CourtEntry, Effect } from "../../src/data/schema.ts";
+import type { Effect } from "../../src/data/schema.ts";
+import {
+  COURT_SECONDS,
+  courtQuote,
+  courtRowsOf,
+  durationInTexts,
+  itemTexts,
+  SOURCE_SECONDS,
+  type ItemTextSources,
+} from "./itemText.ts";
 
-export type UptimeInputs = {
+export type UptimeInputs = ItemTextSources & {
   effects: { file: string; effect: Effect }[];
-  compendium: CompendiumEntry[];
-  court: CourtEntry[];
-  clarity: ClarityEntry[];
 };
 
 export type UptimeVerdict =
@@ -56,20 +62,6 @@ function worksPerEvent(effect: Effect): boolean {
   );
 }
 
-// "for 10 seconds", "lasts 6s", "21s" in a Court source name; "10+5": the +5 is another item,
-// "6 [2.5]": the bracket is PvP.
-const DURATION =
-  /\b(?:for(?: up to)?|lasts?|lasting|duration of|within)\s+(\d+(?:\.\d+)?)\??(?:\+\d+(?:\.\d+)?)?\s*(?:\[[^\]]*\])?\s*s(?:ec(?:ond)?s?)?\b/i;
-// Lines whose duration is not the one of a damage bonus: cooldowns, movement, healing, defensive
-// states, longer supers, how long an object lives.
-const NOT_A_BUFF =
-  /\b(cooldown|lunge|sprint|overshield|cure|restoration|blind|woven mail|frost armor|longer|held for|replaces)\b/i;
-const SOURCE_SECONDS =/,\s*(\d+(?:\.\d+)?)s\)/;
-const COURT_SECONDS = /^(\d+(?:\.\d+)?)s/;
-
-// "Well of Radiance (standing inside)" is the Compendium entry "Well of Radiance".
-const baseName = (name: string) => name.replace(/\s*\(.*\)$/, "").trim();
-
 const sourceNames = (effect: Effect): string[] =>
   effect.parts.flatMap((p) => (p.type === "multiplier" ? [p.multiplier.source.name] : []));
 
@@ -77,29 +69,15 @@ function durationInText(
   effect: Effect,
   inputs: UptimeInputs,
 ): { seconds: number; quote: string } | undefined {
-  const name = baseName(effect.name);
   for (const s of sourceNames(effect)) {
     const m = SOURCE_SECONDS.exec(s);
     if (m) return { seconds: Number(m[1]), quote: s };
   }
-  for (const row of inputs.court.filter((r) => r.name === name && r.pveDuration)) {
+  for (const row of courtRowsOf(effect.name, inputs).filter((r) => r.pveDuration)) {
     const m = COURT_SECONDS.exec(row.pveDuration!);
-    if (m) return { seconds: Number(m[1]), quote: `Court ${row.group || row.category}: ${row.name} | ${row.pve} | ${row.pveDuration}` };
+    if (m) return { seconds: Number(m[1]), quote: courtQuote(row) };
   }
-  const texts = [
-    ...inputs.compendium.filter((e) => e.name === name).map((e) => ({ from: `Compendium ${e.tab}`, text: e.text })),
-    ...inputs.clarity
-      .filter((e) => e.name === name || e.itemName === name)
-      .map((e) => ({ from: `Clarity ${e.name}`, text: e.text })),
-  ];
-  for (const { from, text } of texts) {
-    for (const line of text.split("\n")) {
-      if (NOT_A_BUFF.test(line)) continue;
-      const m = DURATION.exec(line);
-      if (m) return { seconds: Number(m[1]), quote: `${from}: ${line.trim()}` };
-    }
-  }
-  return undefined;
+  return durationInTexts(itemTexts(effect.name, inputs));
 }
 
 export function uptimeRows(inputs: UptimeInputs): UptimeRow[] {
