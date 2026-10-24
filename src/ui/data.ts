@@ -3,6 +3,7 @@
 import rawAbilities from "../data/abilities.json";
 import rawAbilityComponents from "../data/ability-components.json";
 import rawAbilityEnergy from "../data/ability-energy.json";
+import rawAbilityGrants from "../data/ability-grants.json";
 import rawAbilityKeywords from "../data/ability-keywords.json";
 import rawAbilityStats from "../data/ability-stats.json";
 import rawAegisAbilities from "../data/aegis-abilities.json";
@@ -22,6 +23,7 @@ import rawExoticArmorEffects from "../data/exotic-armor-effects.json";
 import rawExoticArmor from "../data/exotic-armor.json";
 import {
   AbilityComponents,
+  AbilityGrant,
   AbilityKeyword,
   ArtifactData,
   EnergyData,
@@ -108,6 +110,8 @@ export const gameData: GameData = {
   artifacts: artifactData,
   // Cooldowns, stat factors and energy modifiers (npm run build:energy)
   energy: EnergyData.parse(rawAbilityEnergy),
+  // Effects at every cast or hit, e.g. Radiant from Acrobat's Dodge (npm run build:grants)
+  abilityGrants: AbilityGrant.array().parse(rawAbilityGrants),
 };
 export const linkRegistry: LinkRegistry = {
   weapons,

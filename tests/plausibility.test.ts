@@ -230,6 +230,25 @@ describe("exotic armor changes its abilities", () => {
     expect(weakened / own(withAspect)).toBeGreaterThan(1.1);
   });
 
+  it("Lightweight Knife and Acrobat's Dodge: Radiant for 10 s per cast, Gjallarhorn ×1.2 in 10 s", () => {
+    const hunter = { guardianClass: "hunter" as const, subclass: "solar" as const, damagePhaseSeconds: 10 };
+    const gjallarhorn = weaponById("gjallarhorn");
+    const plain = damageOf(run(hunter, gjallarhorn), "weapon");
+    const [knife, dodge] = ["lightweight-knife", "acrobats-dodge"].map(
+      (abilityId) =>
+        damageOf(run({ ...hunter, abilities: [{ abilityId, castsMs: [0] }] }, gjallarhorn), "weapon") /
+        plain,
+    );
+    note(
+      "Gjallarhorn (10 s) mit Lightweight Knife / Acrobat's Dodge bei 0 s",
+      `Waffe ×${fmt(knife)} / ×${fmt(dodge)}`,
+      "×1,2 (Radiant 10 s, Compendium); das Knife gibt Radiant erst beim Treffer, die erste Rakete kann davor liegen",
+    );
+    expect(dodge).toBeCloseTo(1.2, 6);
+    expect(knife).toBeGreaterThan(1.1);
+    expect(knife).toBeLessThanOrEqual(1.2 + 1e-9);
+  });
+
   it("Peacekeepers: 20 stacks of +5 % on an SMG,a boss takes 33 % less from buffed shots, so ×1.34 at most", () => {
     const smg = weapons.find(
       (w) => w.weaponType === "submachineGun" && w.ammo === "primary",

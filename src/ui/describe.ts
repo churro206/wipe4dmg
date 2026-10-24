@@ -91,11 +91,14 @@ const round = (value: number | null) =>
 const bonusPercent = (value: number | null) =>
   `${(value ?? 1) >= 1 ? "+" : ""}${integer.format(((value ?? 1) - 1) * 100)}`;
 
-/** Icon key of an effect; surges show the mod of the weapon element, as in the game. */
+/**
+ * Icon key of an effect; surges show the mod of the weapon element, as in the game. An effect an
+ * ability grants ("radiant@acrobats-dodge", castGrantEffects) shows the icon of the effect.
+ */
 export function effectIconKey(effect: Effect, weaponElement: Element): string {
   return effect.elementIconKey
     ? `${effect.elementIconKey}:${weaponElement}`
-    : `effect:${effect.id}`;
+    : `effect:${effect.id.split("@")[0]}`;
 }
 
 const FORMER_CODE_REASONS: Record<FormerCodeReason, string> = {

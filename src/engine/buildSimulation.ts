@@ -3,6 +3,7 @@
 
 import type {
   Ability,
+  AbilityGrant,
   AbilityKind,
   AbilityStatScaling,
   ArtifactData,
@@ -19,6 +20,7 @@ import type {
 import { artifactPerksOf } from "./artifacts";
 import { abilitySimulation, nextCastOf } from "./buildAbilities";
 import { classPerksOf, exoticArmorEffects } from "./exoticArmor";
+import { castGrantEffects } from "./grantedEffects";
 import { simulate, type SimulationOptions } from "./simulate";
 
 /** All loaded Data Files a build refers to. */
@@ -32,6 +34,7 @@ export type GameData = {
   exoticArmorEffects: ExoticArmorEffect[];
   artifacts: ArtifactData; // artifacts.json: perks per tier and the slots of the game screen
   energy: EnergyData; // ability-energy.json: the casts the energy allows (block 3)
+  abilityGrants: AbilityGrant[]; // ability-grants.json: effects at every cast or hit, e.g. Radiant
 };
 
 /**
@@ -65,7 +68,11 @@ export function buildSimulation(
       preBuilt: build.exoticPreBuilt,
     }),
   );
-  const extra = [...abilityPart.grantedEffects, ...fromExotic];
+  const extra = [
+    ...abilityPart.grantedEffects,
+    ...castGrantEffects(abilityPart.casts, data.abilityGrants, data.effects),
+    ...fromExotic,
+  ];
   return {
     selected: [
       ...own,

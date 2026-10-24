@@ -808,6 +808,19 @@ export const AbilityData = AbilityFields.extend({
 export type AbilityData = z.infer<typeof AbilityData>;
 
 /**
+ * An effect an ability grants at every cast or hit, e.g. Radiant from Acrobat's Dodge (block
+ * "Effekte durch Abilities", npm run build:grants). The window opens at each cast or first hit and
+ * lasts durationMs; a new cast inside the window restarts it.
+ */
+export const AbilityGrant = z.object({
+  abilityId: z.string(), // base ability; its variants grant it too
+  effectId: z.string(), // effect of effects.json whose parts apply in the window
+  on: z.enum(["cast", "hit"]),
+  durationMs: SourcedNumber,
+});
+export type AbilityGrant = z.infer<typeof AbilityGrant>;
+
+/**
  * An ability item of the Bungie manifest (ADR 0008): its plug category names slot, class and
  * subclass, e.g. "hunter.prism.supers". Grenades of an element are shared by all classes.
  */

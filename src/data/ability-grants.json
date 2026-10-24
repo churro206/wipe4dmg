@@ -1,0 +1,82 @@
+[
+  {
+    "abilityId": "twilight-arsenal",
+    "effectId": "weaken",
+    "on": "hit",
+    "durationMs": {
+      "value": 6000,
+      "source": {
+        "name": "Court Stacking Guide (WEAKEN SANDBOX SOURCES, Twilight Arsenal)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "Axe Super hits | 15% | 6s",
+        "note": "The Compendium line names no duration: \"Axes deal up to 1,250 [?] damage over ? meters on impact, pulling enemies inwards, and explode after 0.6 seconds, dealing up to 1,750 [?] damage and weakening over ? meters.\""
+      }
+    }
+  },
+  {
+    "abilityId": "nova-warp",
+    "effectId": "weaken",
+    "on": "cast",
+    "durationMs": {
+      "value": 6000,
+      "source": {
+        "name": "Court Stacking Guide (WEAKEN SANDBOX SOURCES, Nova Warp)",
+        "url": "https://destiny2.science/court-sheet",
+        "retrieved": "2026-10-21",
+        "status": "verified",
+        "quote": "Dark Blink releases Weakening seekers | 15% | 6s",
+        "note": "The Compendium line names no duration: \"Performs a Dark Blink, draining 3.5% Super Energy to rapidly accelerate towards the currently input direction and release 4 Weakening Seekers, one in each cardinal direction.\""
+      }
+    }
+  },
+  {
+    "abilityId": "lightweight-knife",
+    "effectId": "radiant",
+    "on": "hit",
+    "durationMs": {
+      "value": 10000,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Lightweight Knife)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "quote": "Precision Hits grant Radiant for 10 seconds.",
+        "note": "Rule in scripts/lib/abilityGrants.ts: first number of \"for N seconds\" (without the bonus after \"+\" and the PvP value in brackets)."
+      }
+    }
+  },
+  {
+    "abilityId": "snare-bomb",
+    "effectId": "weaken",
+    "on": "hit",
+    "durationMs": {
+      "value": 8000,
+      "source": {
+        "name": "Destiny Data Compendium, Void (Snare Bomb)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "quote": "Snare Bomb deals 33 [10] impact damage, and up to 120 + 24 [40 + ?] explosion damage over ? meters. Impact and explosion weaken and disorient for 8 [2.5] seconds.",
+        "note": "Rule in scripts/lib/abilityGrants.ts: first number of \"for N seconds\" (without the bonus after \"+\" and the PvP value in brackets)."
+      }
+    }
+  },
+  {
+    "abilityId": "acrobats-dodge",
+    "effectId": "radiant",
+    "on": "cast",
+    "durationMs": {
+      "value": 10000,
+      "source": {
+        "name": "Destiny Data Compendium, Class Abilities (Acrobat's Dodge)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "quote": "Performs an acrobatic leap, that, upon landing, grants the user and their allies within 10 meters Radiant for 10+5 seconds.",
+        "note": "Rule in scripts/lib/abilityGrants.ts: first number of \"for N seconds\" (without the bonus after \"+\" and the PvP value in brackets)."
+      }
+    }
+  }
+]
