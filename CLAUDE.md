@@ -68,5 +68,6 @@ Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameDa
 
 - Ein Befehl pro Aufruf, keine Ketten mit `&&`, `;` oder `|`. Kein `cd`, Pfade relativ zum Projektordner.
 - Kein `sed`, `awk` oder `paste`. Suchen und Lesen mit Grep, Glob und Read.
-- Auswertungen als kurzes Skript, ausgeführt mit `node <datei>.ts`. Temporäres in `tmp/` (in `.gitignore`).
+- **Nie `node -e`, nie `node <Wegwerf-Skript>`, keine temporären Skripte** (Inhaber, wiederholt, zuletzt 2026-10-24). Nachschlagen in Data Files: `npm run facts -- "<Name>"`, dann Grep (mit `-C`) und Read mit `offset`. Ein Skript nur für eine echte Auswertung über viele Zeilen, vorher kurz ankündigen; es liegt in `tmp/` (in `.gitignore`) und läuft als einzelnes `node tmp/<datei>.ts`.
+- Bash nur für `npm run …`, `npx tsc -b` und `git`. Alles andere mit den Werkzeugen Grep, Glob, Read, Edit, Write.
 - Externe Daten einmal unter `docs/sources/` speichern.
