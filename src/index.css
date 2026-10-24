@@ -309,9 +309,10 @@ summary:focus-visible {
 }
 
 .tile-wrap:hover .hover-card,
-.tile-wrap:focus-within .hover-card,
+/* Keyboard focus only: after a mouse click the button keeps focus and the card would stay open */
+.tile-wrap:has(:focus-visible) .hover-card,
 .info-tip:hover .hover-card,
-.info-tip:focus-within .hover-card {
+.info-tip:has(:focus-visible) .hover-card {
   display: flex;
 }
 
