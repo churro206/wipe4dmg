@@ -55,3 +55,4 @@ Steht ein Wert nicht direkt in einer Quelle, lässt er sich aber aus mehreren he
 - Wert eines Exotics: Aegis-Paket mit dem Exotic in den Annahmen, dann Compendium Exotic Armors, dann Clarity.
 - Timing von Supers (Cast, Schussabstand): Compendium Subklassen-Reiter, Aegis Abilties/Testing; bisher ohne Treffer (Stand 2026-10-21, `docs/mechanics/abilities-and-supers.md`).
 - Waffen-Timing: Quantum, dann Aegis Sustained.
+- Eigener Schaden von Aspects, Fragments und Turrets: Aegis Sustained, Typ `tick` (Base pro Treffer, „peak Rate“ = Sekunden zwischen Treffern, in `aegis-totals.json` als `rateSeconds`).

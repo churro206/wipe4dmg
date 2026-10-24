@@ -253,6 +253,8 @@ function describePart(part: EffectPart): string {
       const stacks = part.stacks?.value ? `x${part.stacks.value} ` : "";
       return `Applies ${stacks}${KEYWORD_LABELS[part.keywordId] ?? part.keywordId} on hits from ${hits}`;
     }
+    case "periodicDamage":
+      return `Deals ${integer.format(part.damage.value ?? 0)} ${ELEMENT_LABELS[part.element]} damage every ${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format((part.intervalMs.value ?? 0) / 1000)} s`;
   }
 }
 

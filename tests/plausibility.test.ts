@@ -205,6 +205,26 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio()).toBeCloseTo(1, 6);
   });
 
+  it("Storm's Keep: a Bolt Charge discharge of 678 every 1.46 s, Weaken applies, weapon buffs do not", () => {
+    const titan = { damagePhaseSeconds: 10 };
+    const stormsKeep = { effectId: "storms-keep", provider: "subclass" as const };
+    const weaken = { effectId: "weaken", provider: "subclass" as const };
+    const gjallarhorn = weaponById("gjallarhorn");
+    const plain = run(titan, gjallarhorn);
+    const withAspect = run({ ...titan, selections: [stormsKeep] }, gjallarhorn);
+    const own = (r: SimulationResult) =>
+      r.damageInstances.filter((d) => d.id === "storms-keep").reduce((s, d) => s + d.damage, 0);
+    const weakened = own(run({ ...titan, selections: [stormsKeep, weaken] }, gjallarhorn));
+    note(
+      "Gjallarhorn (10 s) mit / ohne Storm's Keep",
+      `×${fmt(withAspect.totalDamage / plain.totalDamage)}, ${own(withAspect)} aus 6 Entladungen`,
+      "6 × 678 (Aegis Sustained: 678 alle 1,46 s); ohne Buffs auf der Waffe groß, Aegis: 464 DPS gegen Gjallarhorn 1.846 DPS ohne Faktoren (5.000 mit allen), also ×1,25 mit Argent Ordnance und mit allen Buffs etwa ×1,1",
+    );
+    expect(own(withAspect)).toBeCloseTo(6 * 678, 6);
+    expect(withAspect.totalDamage - plain.totalDamage).toBeCloseTo(6 * 678, 6);
+    expect(weakened / own(withAspect)).toBeGreaterThan(1.1);
+  });
+
   it("Peacekeepers: 20 stacks of +5 % on an SMG,a boss takes 33 % less from buffed shots, so ×1.34 at most", () => {
     const smg = weapons.find(
       (w) => w.weaponType === "submachineGun" && w.ammo === "primary",

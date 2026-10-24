@@ -1,7 +1,7 @@
 # Prüftabelle Subklassen-Effekte
 
 Erzeugt von `npm run build:keywords` (ADR 0015, U6-2), nicht von Hand bearbeiten.
-Quellen: Manifest (Aspects, Fragments), Compendium (Subklassen-Reiter), Court's Stacking Guide. Regeln A bis F in `scripts/lib/subclassEffects.ts`.
+Quellen: Manifest (Aspects, Fragments), Compendium (Subklassen-Reiter), Court's Stacking Guide, Aegis (Abilities, Sustained). Regeln A bis H in `scripts/lib/subclassEffects.ts`.
 Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (optimal gespielt).
 
 | Art | Zeilen |
@@ -11,13 +11,14 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Fenster aus der Rotation | 6 |
 | Ohne Dauer | 4 |
 | Auslöser in der Rotation, offen | 1 |
-| Auslöser Class Ability, U7 | 3 |
-| Keyword ohne Modell, später | 23 |
+| Auslöser Class Ability, U7 | 1 |
+| Keyword ohne Modell, später | 21 |
 | Wirkt nicht gegen einen Boss | 4 |
 | Bonus ohne Bucket-Quelle, Recherche in der Inventur | 7 |
 | Ändert eine Ability (Aegis-Variante) | 6 |
+| Eigener Schaden (Aegis Sustained) | 5 |
 | Ohne Compendium-Text | 0 |
-| Ohne Schadenswirkung | 90 |
+| Ohne Schadenswirkung | 88 |
 
 ## Immer aktiv
 
@@ -102,8 +103,6 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- | --- |
 | Lethal Current | arc | C | jolt: Auslöser Class Ability, U7 („inflicts Jolt“) | Text |
-| Storm's Keep | arc | C | boltCharge: Auslöser Class Ability, U7 („Grants x4 Bolt Charge“) | Text |
-| Storm's Keep | arc | C | boltCharge: Auslöser Class Ability, U7 („grants x6 Bolt Charge“) | Text |
 
 ## Keyword ohne Modell, später
 
@@ -114,8 +113,6 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Crackshot | solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflict x20+10 Scorch“) | Text |
 | Echo of Cessation | void | C | volatile: Kill ohne Dauer, feuert nie („inflicting Volatile“) | Text |
 | Ember of Char | solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflict x40+20 Scorch“) | Text |
-| Hellion | prismatic, solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflict x30+10 Scorch“) | Text |
-| Ionic Sentry | arc | C | boltCharge: eigener Schaden oder geänderte Ability, später („Grants x1 Bolt Charge“) | Text |
 | Lightning Surge | arc, prismatic | C | jolt: eigener Schaden oder geänderte Ability, später („inflict Jolt“) | Text |
 | Roaring Flames | solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflict x30+10 Scorch“) | Text |
 | Shieldburst | solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflicts x20+10 Scorch“) | Text |
@@ -165,6 +162,16 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Echo of Remnants | void | G | ändert vortex-grenade (Aegis-Zeilen `grenade-vortex-echo-of-remnants-chaos-accelerant`, `grenade-vortex-echo-of-remnants`) | Aegis |
 | Touch of Winter | stasis | G | ändert glacier-grenade, shatter-grenade (Aegis-Zeilen `grenade-glacier-average-whisper-of-fissures-touch-of-winter`, `grenade-shatter-average-touch-of-winter-whisper-of-fissures`) | Aegis |
 
+## Eigener Schaden (Aegis Sustained)
+
+| Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
+| --- | --- | --- | --- | --- |
+| Arc Soul | arc | H | 163 alle 1.833 s die ganze Phase (Aegis-Zeile `sustained-arc-soul-facet-of-courage`) | Aegis |
+| Hellion | prismatic, solar | H | 466 alle 1.317 s die ganze Phase (Aegis-Zeile `sustained-hellion-ember-of-ashes`) | Aegis |
+| Ionic Sentry | arc | H | 181 alle 1 s die ganze Phase (Aegis-Zeile `sustained-ionic-sentry-spark-of-frequency-excludes-bolt-charge`) | Aegis |
+| Storm's Keep | arc | H | 678 alle 1.46 s die ganze Phase (Aegis-Zeile `sustained-storm-s-keep-max-practical-bolt-charge-rate`) | Aegis |
+| Weaver's Call | prismatic, strand | H | 1120 alle 2.15 s die ganze Phase (Aegis-Zeile `sustained-weaver-s-call-maximum-practical-rate-thread-of-evolution`) | Aegis |
+
 ## Ohne Schadenswirkung
 
-Arc Soul (arc), Bleak Watcher (prismatic, stasis), Cryoclasm (stasis), Drengr's Lash (prismatic, strand), Echo of Dilation (void), Echo of Domineering (void), Echo of Exchange (void), Echo of Expulsion (void), Echo of Harvest (void), Echo of Leeching (void), Echo of Obscurity (void), Echo of Persistence (void), Echo of Provision (void), Echo of Reprisal (void), Echo of Starvation (void), Ember of Beams (solar), Ember of Benevolence (solar), Ember of Blistering (solar), Ember of Combustion (solar), Ember of Empyrean (solar), Ember of Eruption (solar), Ember of Resolve (solar), Ember of Searing (solar), Ember of Singeing (solar), Ember of Solace (solar), Ember of Tempering (solar), Ember of Wonder (solar), Facet of Awakening (prismatic), Facet of Balance (prismatic), Facet of Blessing (prismatic), Facet of Command (prismatic), Facet of Defiance (prismatic), Facet of Devotion (prismatic), Facet of Generosity (prismatic), Facet of Grace (prismatic), Facet of Honor (prismatic), Facet of Hope (prismatic), Facet of Justice (prismatic), Facet of Mending (prismatic), Facet of Protection (prismatic), Facet of Ruin (prismatic), Facet of Sacrifice (prismatic), Facet of Solitude (prismatic), Feed the Void (prismatic, void), Flechette Storm (strand), Howl of the Storm (stasis), Icarus Dash (solar), Iceflare Bolts (stasis), Juggernaut (arc), Mindspun Invocation (strand), Spark of Amplitude (arc), Spark of Beacons (arc), Spark of Brilliance (arc), Spark of Focus (arc), Spark of Frequency (arc), Spark of Haste (arc), Spark of Ions (arc), Spark of Recharge (arc), Spark of Resistance (arc), The Wanderer (strand), Thread of Ascent (strand), Thread of Binding (strand), Thread of Continuity (strand), Thread of Finality (strand), Thread of Fury (strand), Thread of Generation (strand), Thread of Isolation (strand), Thread of Mind (strand), Thread of Rebirth (strand), Thread of Transmutation (strand), Thread of Wisdom (strand), Vanishing Step (void), Weaver's Call (prismatic, strand), Whirling Maelstrom (strand), Whisper of Bonds (stasis), Whisper of Chains (stasis), Whisper of Chill (stasis), Whisper of Conduction (stasis), Whisper of Durance (stasis), Whisper of Fissures (stasis), Whisper of Hedrons (stasis), Whisper of Hunger (stasis), Whisper of Impetus (stasis), Whisper of Refraction (stasis), Whisper of Reversal (stasis), Whisper of Rime (stasis), Whisper of Shards (stasis), Whisper of Torment (stasis), Widow's Silk (strand), Winter's Shroud (prismatic, stasis)
+Bleak Watcher (prismatic, stasis), Cryoclasm (stasis), Drengr's Lash (prismatic, strand), Echo of Dilation (void), Echo of Domineering (void), Echo of Exchange (void), Echo of Expulsion (void), Echo of Harvest (void), Echo of Leeching (void), Echo of Obscurity (void), Echo of Persistence (void), Echo of Provision (void), Echo of Reprisal (void), Echo of Starvation (void), Ember of Beams (solar), Ember of Benevolence (solar), Ember of Blistering (solar), Ember of Combustion (solar), Ember of Empyrean (solar), Ember of Eruption (solar), Ember of Resolve (solar), Ember of Searing (solar), Ember of Singeing (solar), Ember of Solace (solar), Ember of Tempering (solar), Ember of Wonder (solar), Facet of Awakening (prismatic), Facet of Balance (prismatic), Facet of Blessing (prismatic), Facet of Command (prismatic), Facet of Defiance (prismatic), Facet of Devotion (prismatic), Facet of Generosity (prismatic), Facet of Grace (prismatic), Facet of Honor (prismatic), Facet of Hope (prismatic), Facet of Justice (prismatic), Facet of Mending (prismatic), Facet of Protection (prismatic), Facet of Ruin (prismatic), Facet of Sacrifice (prismatic), Facet of Solitude (prismatic), Feed the Void (prismatic, void), Flechette Storm (strand), Howl of the Storm (stasis), Icarus Dash (solar), Iceflare Bolts (stasis), Juggernaut (arc), Mindspun Invocation (strand), Spark of Amplitude (arc), Spark of Beacons (arc), Spark of Brilliance (arc), Spark of Focus (arc), Spark of Frequency (arc), Spark of Haste (arc), Spark of Ions (arc), Spark of Recharge (arc), Spark of Resistance (arc), The Wanderer (strand), Thread of Ascent (strand), Thread of Binding (strand), Thread of Continuity (strand), Thread of Finality (strand), Thread of Fury (strand), Thread of Generation (strand), Thread of Isolation (strand), Thread of Mind (strand), Thread of Rebirth (strand), Thread of Transmutation (strand), Thread of Wisdom (strand), Vanishing Step (void), Whirling Maelstrom (strand), Whisper of Bonds (stasis), Whisper of Chains (stasis), Whisper of Chill (stasis), Whisper of Conduction (stasis), Whisper of Durance (stasis), Whisper of Fissures (stasis), Whisper of Hedrons (stasis), Whisper of Hunger (stasis), Whisper of Impetus (stasis), Whisper of Refraction (stasis), Whisper of Reversal (stasis), Whisper of Rime (stasis), Whisper of Shards (stasis), Whisper of Torment (stasis), Widow's Silk (strand), Winter's Shroud (prismatic, stasis)

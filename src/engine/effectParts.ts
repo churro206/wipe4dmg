@@ -74,6 +74,8 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
         holdDrawParts.push(part);
         continue;
       }
+      // damage of its own; the simulator reads it from the windows of the effect
+      if (part.type === "periodicDamage") continue;
       if (!bucketIds.has(part.bucketId)) {
         throw new Error(`Unknown bucket "${part.bucketId}"`);
       }
@@ -141,6 +143,8 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
             part.elements.includes(weapon.element)) &&
           appliesToWeaponType(part.weaponTypes, weapon.weaponType)
         );
+      case "periodicDamage":
+        return false;
     }
   });
 }

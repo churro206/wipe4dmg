@@ -144,6 +144,45 @@ describe("rules for aspects and fragments", () => {
     });
   });
 
+  it("H: damage of its own from the Aegis tab Sustained, the row with the fewest assumptions", () => {
+    // Storm's Keep: 678 per discharge every 1.46 s ("max practical Bolt Charge rate", not Flashover)
+    const stormsKeep = result.effects.find((e) => e.subclassItemId === "storms-keep")!;
+    expect(stormsKeep).toMatchObject({
+      activation: "always",
+      effect: {
+        parts: [
+          {
+            type: "periodicDamage",
+            id: "storms-keep",
+            element: "arc",
+            damage: { value: 678 },
+            intervalMs: { value: 1460 },
+          },
+        ],
+      },
+    });
+    expect(stormsKeep.effect.durationMs).toBeUndefined();
+    const periodic = result.effects
+      .filter((e) => e.effect.parts.some((p) => p.type === "periodicDamage"))
+      .map((e) => e.subclassItemId)
+      .sort();
+    expect(periodic).toEqual([
+      "arc-soul",
+      "hellion",
+      "ionic-sentry",
+      "storms-keep",
+      "weavers-call",
+    ]);
+    // Hellion: Ember of Ashes (one assumption) rather than Consul's Pitch, spaced range, …
+    expect(
+      result.effects.find((e) => e.subclassItemId === "hellion")!.effect.parts[0],
+    ).toMatchObject({ element: "solar", damage: { value: 466 }, intervalMs: { value: 1317 } });
+    // the measurement replaces the open rows: no damage, class ability trigger, keyword without model
+    expect(kindsOf("Weaver's Call")).toEqual(["ownDamage"]);
+    expect(kindsOf("Storm's Keep")).toEqual(["ownDamage"]);
+    expect(kindsOf("Hellion")).toEqual(["ownDamage"]);
+  });
+
   it("gives every generated effect its own code, apart from the codes of effects.json", () => {
     const own = result.effects.filter((e) => !effects.some((k) => k.id === e.effect.id));
     const codes = own.map((e) => e.effect.code);

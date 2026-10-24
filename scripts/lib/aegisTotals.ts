@@ -41,6 +41,9 @@ export function parseAegisTotals(
   const c = Object.fromEntries(
     REQUIRED_COLUMNS.map((name) => [name, header.indexOf(name)]),
   ) as Record<(typeof REQUIRED_COLUMNS)[number], number>;
+  // Only the tab "Sustained" has them
+  const familyColumn = header.indexOf("Family");
+  const rateColumn = header.indexOf("peak Rate");
 
   const usedIds = new Map<string, number>();
   const result: AegisTotalRow[] = [];
@@ -63,6 +66,9 @@ export function parseAegisTotals(
       name,
       assumptions,
       type,
+      family:
+        familyColumn < 0 ? null : normalize(row[familyColumn] ?? "") || null,
+      rateSeconds: rateColumn < 0 ? null : toNumber(row[rateColumn] ?? ""),
       shots: value("#"),
       base: value("Base"),
       perk: value("Perk"),

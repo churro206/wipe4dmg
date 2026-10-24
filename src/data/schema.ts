@@ -453,12 +453,28 @@ export const HoldDrawPart = z.object({
 });
 export type HoldDrawPart = z.infer<typeof HoldDrawPart>;
 
+/**
+ * Effect part with damage of its own at a fixed rate while the effect is active, e.g. the Bolt
+ * Charge discharges of Storm's Keep or the turret of Hellion: the first hit one interval after the
+ * start of the window. Generic damage like Bolt Charge: only multipliers for keyword damage apply,
+ * as Aegis applies only the debuff to these rows.
+ */
+export const PeriodicDamagePart = z.object({
+  type: z.literal("periodicDamage"),
+  id: z.string(), // damage instance id, e.g. "storms-keep"
+  element: Element,
+  damage: SourcedNumber, // per hit, Aegis visual scale, without the factors of Aegis
+  intervalMs: SourcedNumber,
+});
+export type PeriodicDamagePart = z.infer<typeof PeriodicDamagePart>;
+
 export const EffectPart = z.discriminatedUnion("type", [
   MultiplierPart,
   HoldDrawPart,
   TimingPart,
   CounterModifierPart,
   AppliesKeywordPart,
+  PeriodicDamagePart,
 ]);
 export type EffectPart = z.infer<typeof EffectPart>;
 
@@ -1369,6 +1385,9 @@ export const AegisTotalRow = z.object({
   name: z.string(), // first line of the name cell, e.g. "Blade Barrage"
   assumptions: z.array(z.string()), // e.g. ["Knock 'Em Down", "Limit Break"]
   type: z.string(), // column "Type", e.g. "power", "super", "burst"
+  family: z.string().nullable(), // column "Family" (Sustained only), e.g. "rocket", "effect", "turret"
+  // column "peak Rate" (Sustained only): seconds between two shots or ticks, e.g. 1.46 for Storm's Keep
+  rateSeconds: z.number().nullable(),
   shots: z.number().nullable(), // column "#"; null for "INF"
   base: z.number().nullable(),
   perk: z.number().nullable(),

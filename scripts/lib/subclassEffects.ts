@@ -10,11 +10,15 @@
 //   aspectBonus; not on a boss → none; others → later (no source for the bucket)
 // G no effect from A to E, but Aegis measured an ability with it (base row plus only such items, e.g.
 //   Blade Barrage with Knock 'Em Down) → an effect that selects the ability variant
+// H Aegis measured damage of its own in the tab Sustained (type "tick", e.g. Storm's Keep, Hellion)
+//   → damage at the measured rate the whole damage phase, from the row with the fewest assumptions;
+//   the measurement replaces the open rows of the item (no damage, class ability, keyword later)
 // Without any of that: no damage.
 
 import type {
   AbilityData,
   AegisAbilityRow,
+  AegisTotalRow,
   CompendiumEntry,
   CourtEntry,
   DamageSource,
@@ -47,8 +51,9 @@ export type SubclassEffectInputs = {
   abilities: (Pick<AbilityData, "id" | "name" | "kind"> &
     Partial<Pick<AbilityData, "package" | "aegisRowId">>)[];
   aegisRows: AegisAbilityRow[]; // rule G: rows of the abilities with an aspect or fragment
+  aegisTotals: AegisTotalRow[]; // rule H: tab Sustained
   meleeNames: string[];
-  sources: { court: Source; compendium: Source; clarity: Source };
+  sources: { court: Source; compendium: Source; clarity: Source; aegisTotals: Source };
   codes: Record<string, number>; // effect-codes.json: codes once given stay
 };
 
@@ -63,6 +68,7 @@ export type SubclassEffectKind =
   | "notAgainstBoss"
   | "bonusLater"
   | "abilityVariant"
+  | "ownDamage"
   | "noText"
   | "noDamage";
 
@@ -474,8 +480,75 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
       effectId: id,
     });
   }
+
+  // H: damage of its own measured in the tab Sustained
+  for (const name of names) {
+    const row = inputs.aegisTotals
+      .filter(
+        (r) =>
+          r.tab === "sustained" &&
+          r.type === "tick" &&
+          r.base !== null &&
+          r.rateSeconds !== null &&
+          sameName(r.name, name),
+      )
+      .sort((a, b) => a.assumptions.length - b.assumptions.length)[0];
+    if (!row) continue;
+    const items = inputs.subclassItems.filter((i) => i.name === name);
+    const id = kebab(name);
+    const own = effects.filter((e) => e.subclassItemId === id).length;
+    const effectId = own === 0 ? id : `${id}-${own + 1}`;
+    codes[effectId] ??= nextCode++;
+    const element = (items.find((i) => i.subclass !== "prismatic") ?? items[0]).subclass as Element;
+    const measured = `${row.name}${row.assumptions.length ? ` (${row.assumptions.join(", ")})` : ""}: Base ${row.base}, peak Rate ${row.rateSeconds} s`;
+    const source = (value: number): { value: number; source: Source } => ({
+      value,
+      source: {
+        ...inputs.sources.aegisTotals,
+        name: "Aegis Boss Damage, tab Sustained",
+        quote: measured,
+        note: "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis.",
+      },
+    });
+    effects.push({
+      subclassItemId: id,
+      activation: "always",
+      effect: {
+        id: effectId,
+        code: codes[effectId],
+        name,
+        shortName: name,
+        manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
+        providers: providersOf(items),
+        parts: [
+          {
+            type: "periodicDamage",
+            id: effectId,
+            element,
+            damage: source(row.base!),
+            intervalMs: source(Math.round(row.rateSeconds! * MS_PER_SECOND)),
+          },
+        ],
+      },
+    });
+    // the measurement replaces the open rows of the item
+    for (let i = rows.length - 1; i >= 0; i--)
+      if (rows[i].id === id && REPLACED_BY_MEASUREMENT.includes(rows[i].kind)) rows.splice(i, 1);
+    rows.push({
+      id,
+      name,
+      subclasses: [...new Set(items.map((i) => i.subclass))].join(", "),
+      rule: "H",
+      kind: "ownDamage",
+      reason: `${row.base} alle ${row.rateSeconds} s die ganze Phase (Aegis-Zeile \`${row.id}\`)`,
+      check: "Aegis",
+      effectId,
+    });
+  }
   return { rows, effects, codes };
 }
+
+const REPLACED_BY_MEASUREMENT: SubclassEffectKind[] = ["noDamage", "classAbility", "keywordLater"];
 
 function providersOf(items: ManifestSubclassItem[]): EffectProvider[] {
   const subclasses = [...new Set(items.map((i) => i.subclass))];
@@ -501,6 +574,7 @@ const KIND_TITLES: [SubclassEffectKind, string][] = [
   ["notAgainstBoss", "Wirkt nicht gegen einen Boss"],
   ["bonusLater", "Bonus ohne Bucket-Quelle, Recherche in der Inventur"],
   ["abilityVariant", "Ändert eine Ability (Aegis-Variante)"],
+  ["ownDamage", "Eigener Schaden (Aegis Sustained)"],
   ["noText", "Ohne Compendium-Text"],
   ["noDamage", "Ohne Schadenswirkung"],
 ];
@@ -513,7 +587,7 @@ export function renderSubclassEffects(rows: SubclassEffectRow[]): string {
     "# Prüftabelle Subklassen-Effekte",
     "",
     "Erzeugt von `npm run build:keywords` (ADR 0015, U6-2), nicht von Hand bearbeiten.",
-    "Quellen: Manifest (Aspects, Fragments), Compendium (Subklassen-Reiter), Court's Stacking Guide. Regeln A bis F in `scripts/lib/subclassEffects.ts`.",
+    "Quellen: Manifest (Aspects, Fragments), Compendium (Subklassen-Reiter), Court's Stacking Guide, Aegis (Abilities, Sustained). Regeln A bis H in `scripts/lib/subclassEffects.ts`.",
     "Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (optimal gespielt).",
     "",
     "| Art | Zeilen |",

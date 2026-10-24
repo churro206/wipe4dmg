@@ -14,8 +14,10 @@ const swapCsv = [
 ].join("\n");
 
 // Rows copied from the Aegis tab "Sustained" (retrieved 2026-10-23).
+const sustainedHeader =
+  'Name,Type,Family,Icon,#,Notes,Distribution,"peak\nRate",TtE,Base,Perk,Surge,Buff,Debuff,200,Single,"TFS\nTotal","TFS\nDPS",Total,DPS,"diff\nTotal","diff\nDPS"';
 const sustainedCsv = [
-  'Name,Type,Family,Icon,#,Notes,Distribution,"peak\nRate",TtE,Base,Perk,Surge,Buff,Debuff,200,Single,"TFS\nTotal","TFS\nDPS",Total,DPS,"diff\nTotal","diff\nDPS"',
+  sustainedHeader,
   '"Gjallarhorn\nArgent Ordnance",power,rocket,,11,,,1.000,10.000,"1,892",1.150,1.220,1.350,1.300,1.100,"5,125",,,"56,374","5,000",,',
   '"High-impact bow\nHeavy Bolts, e. Aggregate Charge x3 (Submersion), Argent Quiver",power,bow,,INF,,,0.950,N/A,"1,917",1.663,1.220,1.350,1.300,1.100,"6,000",,,INF,"6,300",,',
 ].join("\n");
@@ -28,6 +30,8 @@ describe("parseAegisTotals", () => {
       name: "Blade Barrage",
       assumptions: ["Knock 'Em Down", "Limit Break"],
       type: "super",
+      family: null,
+      rateSeconds: null,
       shots: 1,
       base: 13076,
       perk: null,
@@ -49,6 +53,27 @@ describe("parseAegisTotals", () => {
       total: 56374,
     });
     expect(bow).toMatchObject({ shots: null, total: null, perk: 1.663 });
+  });
+
+  it("reads the seconds between two hits (peak Rate) and the family; Swap has neither", () => {
+    const [stormsKeep] = parseAegisTotals(
+      [
+        sustainedHeader,
+        '"Storm\'s Keep\nmax practical Bolt Charge rate",tick,effect,,INF,,N/A,1.460,N/A,678,,,,1.300,,881,,,INF,604,N/A,N/A',
+      ].join("\n"),
+      "sustained",
+    );
+    expect(stormsKeep).toMatchObject({
+      name: "Storm's Keep",
+      type: "tick",
+      family: "effect",
+      rateSeconds: 1.46,
+      base: 678,
+    });
+    expect(parseAegisTotals(swapCsv, "swap")[0]).toMatchObject({
+      family: null,
+      rateSeconds: null,
+    });
   });
 
   it("total is base × factors × shots, within rounding", () => {

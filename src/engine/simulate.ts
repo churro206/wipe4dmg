@@ -42,6 +42,7 @@ import type {
   Keyword,
   KeywordId,
   MultiplierPart,
+  PeriodicDamagePart,
   Weapon,
   WeaponType,
 } from "../data/schema";
@@ -70,6 +71,7 @@ const EVENT_GROUP = {
   threshold: 1,
   damageOverTime: 2,
   abilityHit: 3,
+  periodic: 4,
 } as const;
 
 export type Shot = {
@@ -484,6 +486,21 @@ export function simulate(
       ),
     );
   }
+  // Damage of its own at a fixed rate in each window of its effect, e.g. Storm's Keep: generic
+  // damage, so only parts for keyword damage apply (Aegis applies only the debuff).
+  for (const effect of effects) {
+    for (const part of effect.parts) {
+      if (part.type !== "periodicDamage") continue;
+      events.push(
+        ...periodicEvents(part, windows.get(effect.id)!, isInPhase, (timeMs) =>
+          combinedMultiplier(partsAt(timeMs).multiplierParts, buckets, {
+            damageSource: "keyword",
+            element: part.element,
+          }),
+        ),
+      );
+    }
+  }
   // Keyword damage (ADR 0015): parts for keyword damage apply, for an ability keyword also parts
   // for all abilities at once. Ignition inherits the bonuses of the hit that applied the scorch, in
   // the element of the keyword; melee buffs do not count ("Melee Damage Buffs do not scale
@@ -642,6 +659,43 @@ function abilityHitEvents(
             }),
         });
       }
+    }
+  }
+  return result;
+}
+
+/** Hits of a periodic damage part: one interval after each window start, then every interval. */
+function periodicEvents(
+  part: PeriodicDamagePart,
+  windows: { startMs: number; endMs: number }[],
+  isInPhase: (timeMs: number) => boolean,
+  multiplierAt: (timeMs: number) => number,
+): RunEvent[] {
+  const intervalMs = requireValue(part.intervalMs, "intervalMs");
+  const damage = requireValue(part.damage, "damage");
+  if (intervalMs <= 0) {
+    throw new Error(`intervalMs must be positive, got ${intervalMs}`);
+  }
+  const result: RunEvent[] = [];
+  for (const window of windows) {
+    for (
+      let timeMs = window.startMs + intervalMs;
+      timeMs < window.endMs && isInPhase(timeMs);
+      timeMs += intervalMs
+    ) {
+      const atMs = timeMs;
+      result.push({
+        timeMs: atMs,
+        group: EVENT_GROUP.periodic,
+        handle: (_, emit) =>
+          emit({
+            id: part.id,
+            timeMs: atMs,
+            damage: damage * multiplierAt(atMs),
+            damageSource: "keyword",
+            element: part.element,
+          }),
+      });
     }
   }
   return result;

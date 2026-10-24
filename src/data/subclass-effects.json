@@ -1776,5 +1776,272 @@
       "parts": [],
       "changesAbilityIds": ["glacier-grenade", "shatter-grenade"]
     }
+  },
+  {
+    "subclassItemId": "arc-soul",
+    "activation": "always",
+    "effect": {
+      "id": "arc-soul",
+      "code": 88,
+      "name": "Arc Soul",
+      "shortName": "Arc Soul",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1293395731
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["arc"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "periodicDamage",
+          "id": "arc-soul",
+          "element": "arc",
+          "damage": {
+            "value": 163,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Arc Soul (Facet of Courage): Base 163, peak Rate 1.833 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          },
+          "intervalMs": {
+            "value": 1833,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Arc Soul (Facet of Courage): Base 163, peak Rate 1.833 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "subclassItemId": "hellion",
+    "activation": "always",
+    "effect": {
+      "id": "hellion",
+      "code": 89,
+      "name": "Hellion",
+      "shortName": "Hellion",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 790664814
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["prismatic"],
+          "classes": ["warlock"]
+        },
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["solar"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "periodicDamage",
+          "id": "hellion",
+          "element": "solar",
+          "damage": {
+            "value": 466,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Hellion (Ember of Ashes): Base 466, peak Rate 1.317 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          },
+          "intervalMs": {
+            "value": 1317,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Hellion (Ember of Ashes): Base 466, peak Rate 1.317 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "subclassItemId": "ionic-sentry",
+    "activation": "always",
+    "effect": {
+      "id": "ionic-sentry",
+      "code": 90,
+      "name": "Ionic Sentry",
+      "shortName": "Ionic Sentry",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1293395728
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["arc"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "periodicDamage",
+          "id": "ionic-sentry",
+          "element": "arc",
+          "damage": {
+            "value": 181,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Ionic Sentry (Spark of Frequency, excludes Bolt Charge): Base 181, peak Rate 1 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          },
+          "intervalMs": {
+            "value": 1000,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Ionic Sentry (Spark of Frequency, excludes Bolt Charge): Base 181, peak Rate 1 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "subclassItemId": "storms-keep",
+    "activation": "always",
+    "effect": {
+      "id": "storms-keep",
+      "code": 91,
+      "name": "Storm's Keep",
+      "shortName": "Storm's Keep",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 1656549675
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["arc"],
+          "classes": ["titan"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "periodicDamage",
+          "id": "storms-keep",
+          "element": "arc",
+          "damage": {
+            "value": 678,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Storm's Keep (max practical Bolt Charge rate): Base 678, peak Rate 1.46 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          },
+          "intervalMs": {
+            "value": 1460,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Storm's Keep (max practical Bolt Charge rate): Base 678, peak Rate 1.46 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "subclassItemId": "weavers-call",
+    "activation": "always",
+    "effect": {
+      "id": "weavers-call",
+      "code": 92,
+      "name": "Weaver's Call",
+      "shortName": "Weaver's Call",
+      "manifestRef": {
+        "table": "DestinyInventoryItemDefinition",
+        "hash": 790664810
+      },
+      "providers": [
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["prismatic"],
+          "classes": ["warlock"]
+        },
+        {
+          "kind": "subclass",
+          "slot": "aspect",
+          "subclasses": ["strand"],
+          "classes": ["warlock"]
+        }
+      ],
+      "parts": [
+        {
+          "type": "periodicDamage",
+          "id": "weavers-call",
+          "element": "strand",
+          "damage": {
+            "value": 1120,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Weaver's Call (maximum practical rate, Thread of Evolution): Base 1120, peak Rate 2.15 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          },
+          "intervalMs": {
+            "value": 2150,
+            "source": {
+              "name": "Aegis Boss Damage, tab Sustained",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "quote": "Weaver's Call (maximum practical rate, Thread of Evolution): Base 1120, peak Rate 2.15 s",
+              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+            }
+          }
+        }
+      ]
+    }
   }
 ]
