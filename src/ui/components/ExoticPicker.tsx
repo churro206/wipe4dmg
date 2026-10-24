@@ -3,20 +3,27 @@ import type { ExoticArmorEntry } from "../../data/schema";
 import { Icon } from "./Icon";
 import { useDismiss } from "./useDismiss";
 
+// Order of the armor screen in the game; the Spirit perks are not pieces, see ClassPerkPicker.
+const SLOT_ORDER: ExoticArmorEntry["slot"][] = [
+  "helmet",
+  "gauntlets",
+  "chest",
+  "legs",
+  "classItem",
+];
 const SLOT_LABELS: Record<ExoticArmorEntry["slot"], string> = {
   helmet: "Helmet",
   gauntlets: "Arms",
   chest: "Chest",
   legs: "Legs",
-  classItem: "Class Item",
-  classPerk: "Class Item perk", // not offered here, see ClassPerkPicker
+  classItem: "Class",
+  classPerk: "Class Item perk",
 };
 
-const CLASS_ITEM_NAME = "Exotic Class Item";
-
 /**
- * The chosen exotic armor as a tile; a click opens a list with search and a filter by slot (U8).
- * Like the weapon picker, it renders the tile and the list as two grid items of the tile grid.
+ * The chosen exotic armor as a tile; a click opens a list with search and a filter by slot (U8),
+ * sorted like the game: slot, then alphabetical. Like the weapon picker, it renders the tile and
+ * the list as two grid items of the tile grid.
  */
 export function ExoticPicker({
   entries,
@@ -25,12 +32,12 @@ export function ExoticPicker({
   classItem,
   describe,
 }: {
-  describe: (entry: ExoticArmorEntry) => string[]; // tooltip lines of the chosen piece
   entries: ExoticArmorEntry[]; // selectable pieces of the class
   selected: ExoticArmorEntry | undefined;
+  describe: (entry: ExoticArmorEntry) => string[]; // tooltip lines of the chosen piece
   onSelect: (exoticArmorId: string | undefined) => void;
-  // The Prismatic Exotic Class Item (its Spirit perks are a separate picker); omitted: not offered.
-  classItem?: { chosen: boolean; onChoose: () => void };
+  // The Exotic Class Item of the class (its Spirit perks are a separate picker); omitted: not offered.
+  classItem?: { entry: ExoticArmorEntry; chosen: boolean; onChoose: () => void };
 }) {
   const cardId = useId();
   const [open, setOpen] = useState(false);
@@ -39,31 +46,26 @@ export function ExoticPicker({
   useDismiss([tileRef, listRef], open, () => setOpen(false));
   const [query, setQuery] = useState("");
   const [slot, setSlot] = useState<ExoticArmorEntry["slot"] | "all">("all");
-  const slots = (Object.keys(SLOT_LABELS) as ExoticArmorEntry["slot"][]).filter(
-    (s) =>
-      s === "classItem"
-        ? classItem !== undefined || entries.some((e) => e.slot === s)
-        : entries.some((e) => e.slot === s),
+  const pieces = [...entries, ...(classItem ? [classItem.entry] : [])].sort(
+    (a, b) =>
+      SLOT_ORDER.indexOf(a.slot) - SLOT_ORDER.indexOf(b.slot) ||
+      a.name.localeCompare(b.name),
   );
+  const slots = SLOT_ORDER.filter((s) => pieces.some((e) => e.slot === s));
   const needle = query.trim().toLowerCase();
-  const shown = entries.filter(
+  const shown = pieces.filter(
     (e) =>
       (slot === "all" || e.slot === slot) &&
       e.name.toLowerCase().includes(needle),
   );
-  const showClassItem =
-    classItem !== undefined &&
-    (slot === "all" || slot === "classItem") &&
-    CLASS_ITEM_NAME.toLowerCase().includes(needle);
-  const choose = (id: string | undefined) => {
-    onSelect(id);
-    setOpen(false);
-  };
-  const chooseClassItem = () => {
-    classItem?.onChoose();
-    setOpen(false);
-  };
+  const isClassItem = (e: ExoticArmorEntry) => e.id === classItem?.entry.id;
   const classItemChosen = classItem?.chosen === true && selected === undefined;
+  const worn = classItemChosen ? classItem?.entry : selected;
+  const choose = (entry: ExoticArmorEntry | undefined) => {
+    if (entry && isClassItem(entry)) classItem?.onChoose();
+    else onSelect(entry?.id);
+    setOpen(false);
+  };
 
   return (
     <>
@@ -71,29 +73,32 @@ export function ExoticPicker({
         <button
           type="button"
           className="tile weapon-tile"
-          aria-describedby={selected ? cardId : undefined}
+          aria-describedby={worn ? cardId : undefined}
           aria-expanded={open}
           onClick={() => setOpen((on) => !on)}
         >
-          {selected ? (
-            <Icon iconKey={`armor:${selected.id}`} label={selected.name} />
+          {worn ? (
+            <Icon iconKey={`armor:${worn.id}`} label={worn.name} />
           ) : (
             <span className="icon ability-none" style={{ width: 40, height: 40 }}>
-              {classItemChosen ? "◈" : "–"}
+              –
             </span>
           )}
           <span className="tile-label">
-            {selected?.name ?? (classItemChosen ? CLASS_ITEM_NAME : "No exotic")}
+            {worn?.name ?? "No exotic"}
             <span className="tile-sub">
-              {selected ? `${SLOT_LABELS[selected.slot]} · ` : ""}change
+              {worn ? `${SLOT_LABELS[worn.slot]} · ` : ""}change
             </span>
           </span>
         </button>
-        {selected && (
+        {worn && (
           <span role="tooltip" id={cardId} className="hover-card">
-            <strong>{selected.name}</strong>
-            <span>{SLOT_LABELS[selected.slot]}</span>
-            {describe(selected).map((line) => (
+            <strong>{worn.name}</strong>
+            <span>{SLOT_LABELS[worn.slot]}</span>
+            {(classItemChosen
+              ? ["Choose its two Spirit perks below."]
+              : describe(worn)
+            ).map((line) => (
               <span key={line}>{line}</span>
             ))}
           </span>
@@ -130,7 +135,7 @@ export function ExoticPicker({
             <li>
               <button
                 type="button"
-                aria-pressed={selected === undefined && !classItemChosen}
+                aria-pressed={worn === undefined}
                 onClick={() => choose(undefined)}
               >
                 <span className="icon ability-none" style={{ width: 32, height: 32 }}>
@@ -140,27 +145,12 @@ export function ExoticPicker({
                 <span className="muted" />
               </button>
             </li>
-            {showClassItem && (
-              <li>
-                <button
-                  type="button"
-                  aria-pressed={classItemChosen}
-                  onClick={chooseClassItem}
-                >
-                  <span className="icon ability-none" style={{ width: 32, height: 32 }}>
-                    ◈
-                  </span>
-                  <span>{CLASS_ITEM_NAME}</span>
-                  <span className="muted">{SLOT_LABELS.classItem}</span>
-                </button>
-              </li>
-            )}
             {shown.map((e) => (
               <li key={e.id}>
                 <button
                   type="button"
-                  aria-pressed={e.id === selected?.id}
-                  onClick={() => choose(e.id)}
+                  aria-pressed={e.id === worn?.id}
+                  onClick={() => choose(e)}
                 >
                   <Icon iconKey={`armor:${e.id}`} label={e.name} size={32} />
                   <span>{e.name}</span>
@@ -169,7 +159,7 @@ export function ExoticPicker({
               </li>
             ))}
           </ul>
-          {shown.length === 0 && !showClassItem && <p className="note">No exotic found.</p>}
+          {shown.length === 0 && <p className="note">No exotic found.</p>}
         </div>
       )}
     </>

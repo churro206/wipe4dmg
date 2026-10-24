@@ -160,6 +160,9 @@ function App() {
     initial.classPerkIds.length > 0,
   );
   const exotic = exoticArmor.find((e) => e.id === exoticArmorId);
+  const classItemEntry = exoticArmor.find(
+    (e) => e.slot === "classItem" && e.guardianClass === guardianClass,
+  );
   const exoticHasPreBuilt = generatedExoticEffects.some(
     (g) =>
       (g.exoticArmorId === exoticArmorId || classPerkIds.includes(g.exoticArmorId)) &&
@@ -635,11 +638,14 @@ function App() {
                     setExoticPreBuilt(false);
                   }}
                   classItem={
-                    subclass === "prismatic" &&
+                    classItemEntry &&
                     classPerksFor(exoticArmor, guardianClass).length > 0
                       ? {
+                          entry: classItemEntry,
                           chosen: classItemChosen,
                           onChoose: () => {
+                            if (subclass !== "prismatic")
+                              changeSubclass("prismatic"); // the Spirit perks need Prismatic
                             setExoticArmorId(undefined); // the class item is the exotic
                             setClassItemChosen(true);
                             setExoticPreBuilt(false);
