@@ -11,6 +11,7 @@ import rawArtifacts from "../data/artifacts.json";
 import rawBosses from "../data/bosses.json";
 import rawBuckets from "../data/buckets.json";
 import rawBuffEffects from "../data/buff-effects.json";
+import rawCastTimes from "../data/cast-times.json";
 import rawEffects from "../data/effects.json";
 import rawIcons from "../data/icons.json";
 import rawKeywords from "../data/keywords.json";
@@ -26,6 +27,7 @@ import {
   AbilityGrant,
   AbilityKeyword,
   ArtifactData,
+  CastTimes,
   EnergyData,
   ExoticArmorEffect,
   ExoticArmorEntry,
@@ -112,6 +114,8 @@ export const gameData: GameData = {
   energy: EnergyData.parse(rawAbilityEnergy),
   // Effects at every cast or hit, e.g. Radiant from Acrobat's Dodge (npm run build:grants)
   abilityGrants: AbilityGrant.array().parse(rawAbilityGrants),
+  // How long a cast keeps the player busy (cast-times.json)
+  castTimes: CastTimes.parse(rawCastTimes),
 };
 export const linkRegistry: LinkRegistry = {
   weapons,

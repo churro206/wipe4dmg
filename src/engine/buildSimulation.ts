@@ -9,6 +9,7 @@ import type {
   ArtifactData,
   Bucket,
   Build,
+  CastTimes,
   Effect,
   EnergyData,
   ExoticArmorEffect,
@@ -35,6 +36,7 @@ export type GameData = {
   artifacts: ArtifactData; // artifacts.json: perks per tier and the slots of the game screen
   energy: EnergyData; // ability-energy.json: the casts the energy allows (block 3)
   abilityGrants: AbilityGrant[]; // ability-grants.json: effects at every cast or hit, e.g. Radiant
+  castTimes: CastTimes; // cast-times.json: how long a cast keeps the player busy
 };
 
 /**
@@ -55,6 +57,7 @@ export function buildSimulation(
     data.abilityStats,
     data.effects,
     data.energy,
+    data.castTimes,
   );
   const own = data.effects.filter((effect) =>
     build.selections.some((s) => s.effectId === effect.id),
@@ -105,7 +108,7 @@ export function nextCastFor(
   weapon: Weapon,
   buckets: Bucket[],
 ): number | undefined {
-  const earliestMs = nextCastOf(build, kind, data.abilities, data.energy, data.effects);
+  const earliestMs = nextCastOf(build, kind, data.abilities, data.energy, data.effects, data.castTimes);
   const pick = (build.abilities ?? []).find(
     (p) => data.abilities.find((a) => a.id === p.abilityId)?.kind === kind,
   );

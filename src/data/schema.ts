@@ -1127,6 +1127,21 @@ export const EnergyData = z.object({
 });
 export type EnergyData = z.infer<typeof EnergyData>;
 
+/**
+ * How long a grenade, melee or class ability cast keeps the player busy (src/data/cast-times.json):
+ * the weapon does not fire and no other ability starts. Supers use their super window instead.
+ */
+export const CastTimes = z.object({
+  defaultMs: SourcedNumber, // for every ability without an entry
+  abilities: z.array(
+    z.object({
+      abilityId: z.string(), // base ability; variants use the time of their base
+      castMs: SourcedNumber,
+    }),
+  ),
+});
+export type CastTimes = z.infer<typeof CastTimes>;
+
 /** Community or own reference value for tests. */
 export const ReferenceValue = z.object({
   id: z.string(),

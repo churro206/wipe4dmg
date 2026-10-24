@@ -6,10 +6,12 @@ import type {
   Ability,
   AbilityStatScaling,
   Build,
+  CastTimes,
   Effect,
   EnergyData,
 } from "../data/schema";
 import { energyCasts, nextCastMs, type EnergyContext } from "./abilityEnergy";
+import { spaceCasts } from "./castTimes";
 import type { AbilityStatValue } from "./abilityStats";
 import type { EffectWindowInput } from "./effectWindows";
 import { grantedEffectWindows } from "./grantedEffects";
@@ -34,10 +36,15 @@ export function abilitySimulation(
   abilityStats: AbilityStatScaling[],
   effects: Effect[],
   energy?: EnergyData,
+  castTimes?: CastTimes,
 ): AbilitySimulation {
   const requested = requestedCasts(build, abilities, effects);
   const context = energyContext(build, requested, energy);
-  const casts = context ? energyCasts(requested, context) : requested;
+  const casts = settledCasts(
+    context ? energyCasts(requested, context) : requested,
+    build,
+    castTimes,
+  );
   const stats = build.abilityStats
     ? abilityStats.map((scaling) => ({
         scaling,
@@ -51,6 +58,18 @@ export function abilitySimulation(
     grantedEffects: effects.filter((effect) => effect.id in grantedWindows),
     grantedWindows,
   };
+}
+
+/** The casts after the energy, spaced by the cast times (castTimes.ts); unchanged without them. */
+function settledCasts(
+  casts: AbilityCast[],
+  build: AbilityBuild,
+  castTimes: CastTimes | undefined,
+): AbilityCast[] {
+  if (!castTimes) return casts;
+  const damagePhaseMs =
+    build.damagePhaseSeconds === undefined ? undefined : build.damagePhaseSeconds * MS_PER_SECOND;
+  return spaceCasts(casts, castTimes, damagePhaseMs);
 }
 
 /**
@@ -126,12 +145,14 @@ export function nextCastOf(
   abilities: Ability[],
   energy: EnergyData,
   effects: Effect[],
+  castTimes?: CastTimes,
 ): number | undefined {
   const requested = requestedCasts(build, abilities, effects);
   const own = requested.find((c) => c.ability.kind === kind);
   const context = energyContext(build, requested, energy);
   if (!own || !context) return undefined;
-  return nextCastMs(energyCasts(requested, context), own.ability, context);
+  const settle = (casts: AbilityCast[]) => settledCasts(casts, build, castTimes);
+  return nextCastMs(settle(energyCasts(requested, context)), own.ability, context, settle);
 }
 
 // Cast times of one ability (ADR 0009: the rotation sets the casts, the energy gives the earliest

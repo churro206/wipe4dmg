@@ -161,7 +161,7 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio(30)).toBeLessThan(1.05);
   });
 
-  it("Marksman's Dodge at the first reload saves exactly one Gjallarhorn reload", () => {
+  it("Marksman's Dodge at the first reload saves one Gjallarhorn reload minus its cast time", () => {
     const gjallarhorn = weaponById("gjallarhorn");
     const hunter = { guardianClass: "hunter" as const, subclass: "solar" as const };
     const plain = run(hunter, gjallarhorn);
@@ -170,8 +170,15 @@ describe("exotic armor changes its abilities", () => {
       gjallarhorn,
     );
     const savedMs = plain.shots[1].timeMs - dodged.shots[1].timeMs;
-    note("Gjallarhorn: zweite Rakete mit Marksman's Dodge früher um", `${fmt(savedMs / 1000)} s`, "eine Nachladezeit (Compendium: „reloads all weapons“)");
-    expect(savedMs).toBeCloseTo(gjallarhorn.reloadTimeMs.value!, 0);
+    note("Gjallarhorn: zweite Rakete mit Marksman's Dodge früher um", `${fmt(savedMs / 1000)} s`, "eine Nachladezeit (Compendium: „reloads all weapons“) abzüglich der Cast-Zeit (1 s, Schätzung) und der Ladezeit");
+    // The dodge animation blocks the weapon: the rocket comes after the cast and its charge.
+    const castMs = gameData.castTimes.defaultMs.value!;
+    expect(dodged.shots[1].timeMs).toBeCloseTo(
+      plain.reloadsMs[0] + castMs + gjallarhorn.chargeTimeMs.value!,
+      0,
+    );
+    expect(savedMs).toBeGreaterThan(0);
+    expect(savedMs).toBeLessThan(gjallarhorn.reloadTimeMs.value!);
     // Nothing changes for a later rocket: the dodge is spent (42 s cooldown).
     expect(dodged.reloadsMs.length).toBe(plain.reloadsMs.length - 1);
   });

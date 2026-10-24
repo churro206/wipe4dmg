@@ -1,0 +1,26 @@
+{
+  "defaultMs": {
+    "value": 1000,
+    "source": {
+      "name": "Owner estimate 2026-10-24",
+      "retrieved": "2026-10-24",
+      "status": "unverified",
+      "note": "No source for the animation of most abilities. To be measured or asked of Gemini later."
+    }
+  },
+  "abilities": [
+    {
+      "abilityId": "weighted-throwing-knife",
+      "castMs": {
+        "value": 1550,
+        "source": {
+          "name": "Destiny Data Compendium, Solar, Melee Abilities",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Animation takes 1.55 seconds to complete."
+        }
+      }
+    }
+  ]
+}

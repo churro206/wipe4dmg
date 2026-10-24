@@ -98,6 +98,7 @@ export type TimedDamageInstance = {
 export type AbilityCast = {
   ability: Ability;
   castsMs: number[];
+  castMs?: number; // time each cast keeps the player busy (castTimes.ts); a super uses its window
 };
 
 export type { AbilityStatValue };
@@ -246,12 +247,21 @@ export function simulate(
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
 
   // A reload starts with the last shot of a magazine; a noReload part active then skips it.
-  const blockingWindows = superWindows.filter((w) => w.endMs > w.startMs);
-  // Moves a shot behind every super window that overlaps its charge.
+  // A shot at the very time of a cast comes first: the cast follows it (a dodge after the last shot).
+  const blockingWindows = [
+    ...superWindows.map((w) => ({ ...w, shotAtStartFirst: false })),
+    ...(options.abilities ?? []).flatMap(({ castsMs, castMs = 0 }) =>
+      castsMs.map((startMs) => ({ startMs, endMs: startMs + castMs, shotAtStartFirst: true })),
+    ),
+  ]
+    .filter((w) => w.endMs > w.startMs)
+    .sort((a, b) => a.startMs - b.startMs);
+  // Moves a shot behind every super window and cast that overlaps its charge.
   const afterSuperWindows = (timeMs: number) => {
     let result = timeMs;
     for (const window of blockingWindows) {
-      if (result >= window.startMs && result - chargeTimeMs < window.endMs) {
+      const started = window.shotAtStartFirst ? result > window.startMs : result >= window.startMs;
+      if (started && result - chargeTimeMs < window.endMs) {
         result = window.endMs + chargeTimeMs;
       }
     }

@@ -171,11 +171,15 @@ export function energyCasts(requests: CastRequest[], ctx: EnergyContext): CastRe
   });
 }
 
-/** Earliest time of one more cast of the ability; undefined if it is not possible in the phase. */
+/**
+ * Earliest time of one more cast of the ability; undefined if it is not possible in the phase.
+ * `settle` moves the casts further after the energy, e.g. behind the cast times.
+ */
 export function nextCastMs(
   requests: CastRequest[],
   ability: Ability,
   ctx: EnergyContext,
+  settle: (casts: CastRequest[]) => CastRequest[] = (casts) => casts,
 ): number | undefined {
   const index = requests.findIndex((r) => r.ability.id === ability.id);
   const castsMs = requests[index]?.castsMs ?? [];
@@ -184,6 +188,6 @@ export function nextCastMs(
     i === index ? { ...r, castsMs: [...r.castsMs, lastMs] } : r,
   );
   if (index < 0) withOneMore.push({ ability, castsMs: [lastMs] });
-  const result = energyCasts(withOneMore, ctx).find((r) => r.ability.id === ability.id)!;
+  const result = settle(energyCasts(withOneMore, ctx)).find((r) => r.ability.id === ability.id)!;
   return result.castsMs.length > castsMs.length ? Math.max(...result.castsMs) : undefined;
 }
