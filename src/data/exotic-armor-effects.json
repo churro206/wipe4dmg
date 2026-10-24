@@ -1088,13 +1088,13 @@
         }
       ],
       "durationMs": {
-        "value": 8000,
+        "value": 4000,
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
           "retrieved": "2026-10-21",
           "status": "verified",
-          "note": "„for 8 seconds“ after „Kill“; prebuilt before the damage phase (ADR 0015)"
+          "note": "„for 4 seconds“ after „Kill“; prebuilt before the damage phase (ADR 0015)"
         }
       }
     }
@@ -1195,13 +1195,13 @@
         }
       ],
       "durationMs": {
-        "value": 8000,
+        "value": 4000,
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
           "retrieved": "2026-10-21",
           "status": "verified",
-          "note": "„for 8 seconds“ after „Kill“; prebuilt before the damage phase (ADR 0015)"
+          "note": "„for 4 seconds“ after „Kill“; prebuilt before the damage phase (ADR 0015)"
         }
       }
     }

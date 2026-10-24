@@ -39,8 +39,8 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Hallowfire Heart | 3 | vorher aufgebaut: +150 % auf super (solar) für 20 s („Kills“ … „for 20 seconds“) | Compendium 150 %, Clarity – |
 | Khepri's Sting | 3 | vorher aufgebaut: debuff +15 % für 15 s („Killing a Weakened energy causes a Weakening Smoke Cloud around enemy death location“) | nur Court |
 | Sealed Ahamkara Grasps | 3 | vorher aufgebaut: empowering +35 % für 7 s („Powered Melees and Finisher kills grant Nightmare Fuel which grants a damage buff on freshly drawn weapons“) | Court = Text (35 %) |
-| Spirit of Verity | 3 | vorher aufgebaut: +100 % auf grenade für 8 s („Kill“ … „for 8 seconds“) | Compendium 100 %, Clarity – |
-| Verity's Brow | 3 | vorher aufgebaut: +100 % auf grenade für 8 s („Kill“ … „for 8 seconds“) | Compendium 100 %, Clarity 100 % |
+| Spirit of Verity | 3 | vorher aufgebaut: +100 % auf grenade für 4 s („Kill“ … „for 4 seconds“) | Compendium 100 %, Clarity – |
+| Verity's Brow | 3 | vorher aufgebaut: +100 % auf grenade für 4 s („Kill“ … „for 4 seconds“) | Compendium 100 %, Clarity 100 % |
 | Wormgod Caress | 3 | vorher aufgebaut: empowering +35 % für 3 s („Melee, Glaive Melee, or Finisher kill adds a stack of 'Burning Fists' which increases weapon damage Stacks decay over time and drop down a stack; higher stacks decay faster“) | Abweichung: Court 35 %, Text 80 / 20 % |
 | Wormhusk Crown | 3 | vorher aufgebaut: +15 % auf grenade, super, classAbility (solar) für 10 s („kills“ … „for 10 seconds“) | Compendium –, Clarity 15 % |
 

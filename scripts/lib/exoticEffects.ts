@@ -652,7 +652,9 @@ function textVerdict(
       check,
       part,
     };
-  const duration = DURATION.exec(text.slice(trigger.match.index));
+  // a staged bonus lists its own duration per stage: take the one of the chosen (highest) stage
+  const duration =
+    DURATION.exec(lineOf(bonus.quote)) ?? DURATION.exec(text.slice(trigger.match.index));
   if (!duration)
     return {
       rule: superCast ? 4 : 3,

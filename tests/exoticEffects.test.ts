@@ -85,6 +85,13 @@ describe("rules for the exotic damage buffs", () => {
     });
   });
 
+  it("the duration comes from the line of the chosen stage (Verity: stage 5 holds 4 s, not 8 s)", () => {
+    const effect = (id: string) =>
+      result.effects.filter((e) => e.exoticArmorId === id).map((e) => e.effect);
+    expect(effect("veritys-brow")[0]).toMatchObject({ durationMs: { value: 4000 } });
+    expect(effect("spirit-of-verity")[0]).toMatchObject({ durationMs: { value: 4000 } });
+  });
+
   it("windows from the rotation (U6-1b)", () => {
     const effect = (id: string) =>
       result.effects.filter((e) => e.exoticArmorId === id).map((e) => e.effect);
@@ -195,7 +202,7 @@ describe("rules for the exotic damage buffs", () => {
     });
     expect(effectOf("veritys-brow").effect).toMatchObject({
       parts: [{ multiplier: { value: 2 }, damageSources: ["grenade"] }],
-      durationMs: { value: 8000 },
+      durationMs: { value: 4000 },
     });
     expect(effectOf("wormhusk-crown").effect.parts[0]).toMatchObject({
       multiplier: { value: 1.15 },
