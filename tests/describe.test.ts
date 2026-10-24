@@ -35,6 +35,12 @@ describe("catalyst hover card", () => {
     expect(lines.join(" ")).not.toContain("catalyst ×");
   });
 
+  it("keeps the game text out of the first person", () => {
+    const text = describeCatalyst(weaponById("one-thousand-voices")).join(" ");
+    expect(text).toContain("In game: Gain 30 Stability and 20 Ammo Generation.");
+    expect(text).not.toMatch(/\b(I|my|me)\b/);
+  });
+
   it("says when a catalyst does nothing against one boss, or is not modelled yet", () => {
     expect(describeCatalyst(weaponById("winterbite"))).toContain(
       "No effect against one boss without adds",

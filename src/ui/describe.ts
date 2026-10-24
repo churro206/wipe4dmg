@@ -74,8 +74,16 @@ export function describeCatalyst(weapon: Weapon): string[] {
   const [first, ...rest] = (catalyst?.description ?? "")
     .split("\n")
     .filter((line) => line.trim() !== "");
-  if (first) lines.push(`In game: ${first}`, ...rest);
+  if (first) lines.push(`In game: ${neutralVoice(first)}`, ...rest.map(neutralVoice));
   return lines;
+}
+
+/** Game texts sometimes speak as the weapon ("I gain 30 Stability"); cards state it neutrally. */
+export function neutralVoice(text: string): string {
+  return text
+    .replace(/\bI (\w+)/g, (_, verb: string) => verb[0].toUpperCase() + verb.slice(1))
+    .replace(/\b[Mm]y\b/g, "the wielder's")
+    .replace(/\b[Mm]e\b/g, "the wielder");
 }
 
 const round = (value: number | null) =>

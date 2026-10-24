@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import type { Weapon, WeaponType } from "../../data/schema";
-import { WEAPON_TYPE_LABELS } from "../describe";
+import { neutralVoice, WEAPON_TYPE_LABELS } from "../describe";
 import { Icon } from "./Icon";
 
 const AMMO_ORDER = ["primary", "special", "heavy"] as const;
@@ -23,6 +23,7 @@ export function WeaponPicker({
   selected: Weapon;
   onSelect: (weaponId: string) => void;
 }) {
+  const cardId = useId();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [ammo, setAmmo] = useState<Weapon["ammo"] | "all">("all");
@@ -44,6 +45,7 @@ export function WeaponPicker({
         <button
           type="button"
           className="tile weapon-tile"
+          aria-describedby={cardId}
           aria-expanded={open}
           onClick={() => setOpen((on) => !on)}
         >
@@ -55,6 +57,17 @@ export function WeaponPicker({
             </span>
           </span>
         </button>
+        <span role="tooltip" id={cardId} className="hover-card">
+          <strong>{selected.name}</strong>
+          <span>
+            {WEAPON_TYPE_LABELS[selected.weaponType]} · {AMMO_LABELS[selected.ammo]}
+          </span>
+          {selected.intrinsics.map((intrinsic) => (
+            <span key={intrinsic.id}>
+              {intrinsic.name}: {neutralVoice(intrinsic.description)}
+            </span>
+          ))}
+        </span>
       </span>
       {open && (
         <div className="weapon-picker" role="group" aria-label="Choose weapon">
