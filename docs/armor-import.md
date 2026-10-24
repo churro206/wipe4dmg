@@ -7,11 +7,11 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | --- | --- |
 | Ability-Varianten (Regel 1) | 15 |
 | Schadens-Buffs (Regeln 2 bis 4) | 46 |
-| Geben einen Effect (Regel 4c) | 2 |
+| Geben einen Effect (Regel 4c) | 3 |
 | Waffen-Timing (Regel 5) | 2 |
 | Eigener Schaden, kommt später (Regel 5) | 41 |
 | Nur Energie, Modell fehlt (Regel 5) | 28 |
-| Lücken (Regeln 3 bis 5) | 16 |
+| Lücken (Regeln 3 bis 5) | 15 |
 | Ohne Schadenswirkung (Regeln 5 und 6) | 25 |
 
 ## Ability-Varianten (Regel 1)
@@ -89,6 +89,7 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 
 | Exotic | Klasse | Slot | Regel | Grund |
 | --- | --- | --- | --- | --- |
+| Hoarfrost-Z | titan | chest | 4 | gibt rally-barricade („Grants Rally Barricade“) |
 | Promethium Spur | warlock | legs | 4 | gibt radiant („grant 7 seconds (10 with Ember of Solace) of Radiant“) |
 | Rain of Fire | warlock | legs | 4 | gibt radiant („grant Radiant“) |
 
@@ -185,7 +186,6 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Armamentarium | titan | chest | 5 | Timing ohne Faktor („On Grenade Ability Usage: Refills Magazine / Dissipates 100% Heat“), bei Grenade-Einsatz; Modell fehlt |
 | Athrys's Embrace | hunter | gauntlets | 3 | nur Melee-Boni (compendium: „300% [100%] increased Weighted Throwing Knife damage“; clarity: „300% [100%] Increased Damage“); Melee-Buffs addieren sich, Modell fehlt |
 | Cenotaph Mask | warlock | helmet | 5 | Timing ohne Faktor („Trace Rifles refill 4% of their Magazine every 0.7 seconds“), Modell fehlt |
-| Hoarfrost-Z | titan | chest | 5 | Timing ohne Faktor („When used with Thruster: Standing behind this barricade will grant you and your allies increased weapon reload speed, stability, and range“), Reload Speed ohne Faktor; Umrechnung in Zeit ohne Quelle |
 | Liar's Handshake | hunter | gauntlets | 3 | nur Melee-Boni (compendium: „400% increased Melee Damage“; clarity: „400% additional base Melee damage“); Melee-Buffs addieren sich, Modell fehlt |
 | Ophidia Spathe | hunter | chest | 4 | nur Melee-Boni (compendium: „67% \| 133% \| 200% Increased Throwing Knife Damage“); Melee-Buffs addieren sich, Modell fehlt |
 | Ophidian Aspect | warlock | gauntlets | 5 | Timing ohne Faktor („Passively grants +35 Handling, +35 Reload Speed, and +10 Airborne Effectiveness“), Reload Speed ohne Faktor; Umrechnung in Zeit ohne Quelle |

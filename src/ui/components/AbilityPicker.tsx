@@ -16,8 +16,8 @@ export type AbilitySlot = {
 };
 
 /**
- * Three slots like the subclass screen in the game: super, grenade and melee. Their stats are in
- * the stats block (StatSliders).
+ * Slots like the subclass screen in the game: the super in a row of its own, then grenade, melee
+ * and class ability. Their stats are in the stats block (StatSliders).
  * A click on a slot opens the icon grid of the abilities that fit class and subclass.
  */
 export function AbilityPicker({

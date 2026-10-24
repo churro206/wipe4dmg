@@ -56,11 +56,11 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Choir of One | 144,867 | 76,675 | 0.529 | hitscan mode; precision |
 | Euphony | 128,701 | 68,125 | 0.529 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
 | Wavesplitter | 88,666 | 48,014 | 0.542 | Supercharged Battery; Detonator Beam; Harsh Refraction |
-| New Land Beyond | 212,985 | 116,544 | 0.547 | starts at The Master x20; Rally Barricade |
+| New Land Beyond | 212,985 | 116,544 | 0.547 | starts at The Master x20 |
 | Salvation's Grip | 83,906 | 46,806 | 0.558 | charged; Hail the Storm |
 | Izanagi's Burden | 56,856 | 32,426 | 0.570 | includes rehone time; hone before rally; Sniper's Meditation (assume stacked) |
 | Legend of Acrius | 129,383 | 75,473 | 0.583 | body; Trench Barrel |
-| New Land Beyond | 198,345 | 116,544 | 0.588 | starts at The Master x0; Rally Barricade; manual reloads until The Grandmaster |
+| New Land Beyond | 198,345 | 116,544 | 0.588 | starts at The Master x0; manual reloads until The Grandmaster |
 | Thundercrash | 48,635 | 28,687 | 0.590 | Thunderous Retort; Conductive Cosmic Needle x3 |
 | Thundercrash | 31,181 | 18,396 | 0.590 | Thunderous Retort; Conductive Cosmic Needle x3 |
 | Burning Maul | 89,348 | 55,015 | 0.616 | light attacks; Roaring Flames x3 |
@@ -187,7 +187,6 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - Pack Tactics x2: 2
 - precision: 2
 - projectile: 2
-- Rally Barricade: 2
 - starts at 0 stacks: 2
 - uncharged: 2
 - 1 charge: 1

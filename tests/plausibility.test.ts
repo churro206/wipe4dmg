@@ -154,6 +154,21 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio(30)).toBeLessThan(1.05);
   });
 
+  it("Marksman's Dodge at the first reload saves exactly one Gjallarhorn reload", () => {
+    const gjallarhorn = weaponById("gjallarhorn");
+    const hunter = { guardianClass: "hunter" as const, subclass: "solar" as const };
+    const plain = run(hunter, gjallarhorn);
+    const dodged = run(
+      { ...hunter, abilities: [{ abilityId: "marksmans-dodge", castsMs: [plain.reloadsMs[0]] }] },
+      gjallarhorn,
+    );
+    const savedMs = plain.shots[1].timeMs - dodged.shots[1].timeMs;
+    note("Gjallarhorn: zweite Rakete mit Marksman's Dodge früher um", `${fmt(savedMs / 1000)} s`, "eine Nachladezeit (Compendium: „reloads all weapons“)");
+    expect(savedMs).toBeCloseTo(gjallarhorn.reloadTimeMs.value!, 0);
+    // Nothing changes for a later rocket: the dodge is spent (42 s cooldown).
+    expect(dodged.reloadsMs.length).toBe(plain.reloadsMs.length - 1);
+  });
+
   it("Peacekeepers: 20 stacks of +5 % on an SMG, a boss takes 33 % less from buffed shots, so ×1.34 at most", () => {
     const smg = weapons.find(
       (w) => w.weaponType === "submachineGun" && w.ammo === "primary",

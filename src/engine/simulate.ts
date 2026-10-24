@@ -3,7 +3,8 @@
 // Timing model (matches Time to Empty in Quantum Damage-ics, see docs/data-sources.md):
 // - The damage phase starts at 0 ms with the first charge; the first shot follows after the charge time.
 // - Shots within a magazine are one shot interval (60000 / fireRateRpm) apart.
-// - After the last shot of a magazine, the reload time adds to the shot interval.
+// - After the last shot of a magazine, the reload time adds to the shot interval. A cast that
+//   refills the magazine (U7, e.g. Marksman's Dodge) ends a reload at once or fills up the magazine.
 // - The weapon fires at most totalShots shots; primary ammo is unlimited.
 // - A shot or damage instance counts if it happens at or before the end of the damage phase.
 //
@@ -113,6 +114,7 @@ export type SuperWindow = {
 
 export type SimulationResult = {
   shots: Shot[];
+  reloadsMs: number[]; // start of each full reload, i.e. the last shot of its magazine
   damageInstances: TimedDamageInstance[];
   superWindows: SuperWindow[];
   totalDamage: number;
@@ -276,16 +278,41 @@ export function simulate(
     return best;
   };
 
+  // Casts that reload the weapon at once (U7), e.g. Marksman's Dodge: a cast during a reload ends
+  // it, a cast while the magazine is not empty fills it up. Casts before the previous shot are spent.
+  const refillsMs = (options.abilities ?? [])
+    .filter((cast) => cast.ability.refillsMagazine)
+    .flatMap((cast) => cast.castsMs)
+    .sort((a, b) => a - b);
+  let refillIndex = 0;
+  const refillBefore = (fromMs: number, untilMs: number): number | undefined => {
+    while (refillIndex < refillsMs.length && refillsMs[refillIndex] < fromMs) refillIndex++;
+    const atMs = refillsMs[refillIndex];
+    if (atMs === undefined || atMs >= untilMs) return undefined;
+    refillIndex++;
+    return atMs;
+  };
+
   const shots: Shot[] = [];
+  const reloadsMs: number[] = [];
   const holdFactors: number[] = [];
   let shotMs = chargeTimeMs;
+  let leftInMagazine = magazine;
   for (let i = 0; i < totalShots; i++) {
     if (i > 0) {
       const previousMs = shotMs;
       shotMs += shotIntervalMs;
-      if (i % magazine === 0 && !noReloadAt(previousMs))
-        shotMs += reloadMsAt(previousMs);
+      if (leftInMagazine === 0 && !noReloadAt(previousMs)) {
+        const readyMs = shotMs + reloadMsAt(previousMs);
+        const refillMs = refillBefore(previousMs, readyMs);
+        if (refillMs === undefined) reloadsMs.push(previousMs);
+        shotMs = refillMs === undefined ? readyMs : Math.max(shotMs, refillMs);
+        leftInMagazine = magazine;
+      } else if (leftInMagazine === 0 || refillBefore(previousMs, shotMs) !== undefined) {
+        leftInMagazine = magazine;
+      }
     }
+    leftInMagazine--;
     const hold = holdAt(shotMs);
     shotMs = afterSuperWindows(shotMs + hold.holdMs);
     if (!isInPhase(shotMs)) break;
@@ -557,7 +584,7 @@ export function simulate(
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;
-  return { shots, damageInstances, superWindows, totalDamage, dps };
+  return { shots, reloadsMs, damageInstances, superWindows, totalDamage, dps };
 }
 
 /** Super windows of all super casts with usage data, sorted by start. */

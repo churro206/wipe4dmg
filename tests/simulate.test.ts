@@ -21,6 +21,7 @@ describe("simulate: shots", () => {
   it("returns nothing for a damage phase of 0 seconds", () => {
     expect(simulate(weapon, 0)).toEqual({
       shots: [],
+      reloadsMs: [],
       damageInstances: [],
       superWindows: [],
       totalDamage: 0,

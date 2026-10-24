@@ -1657,5 +1657,40 @@
     "duringEffectId": "transcendence",
     "aegisRowId": "grenade-freezing-singularity-facet-of-courage-facet-of-ruin",
     "package": true
+  },
+  {
+    "id": "marksmans-dodge",
+    "code": 80,
+    "name": "Marksman's Dodge",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Marksman's Dodge" },
+    "refillsMagazine": true
+  },
+  {
+    "id": "gamblers-dodge",
+    "code": 83,
+    "name": "Gambler's Dodge",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Gambler's Dodge" }
+  },
+  {
+    "id": "rally-barricade",
+    "code": 81,
+    "name": "Rally Barricade",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Rally Barricade" },
+    "grantsEffectIds": ["rally-barricade"]
+  },
+  {
+    "id": "empowering-rift",
+    "code": 82,
+    "name": "Empowering Rift",
+    "kind": "classAbility",
+    "element": "kinetic",
+    "compendium": { "tab": "Class Abilities", "entry": "Empowering Rift" },
+    "grantsEffectIds": ["empowering-rift"]
   }
 ]

@@ -3,6 +3,20 @@
   "retrieved": "2026-10-24",
   "abilities": [
     {
+      "name": "Acrobat's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2711519343
+    },
+    {
+      "name": "Acrobat's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 3636300852
+    },
+    {
       "name": "Arc Staff",
       "kind": "super",
       "guardianClass": "hunter",
@@ -171,6 +185,48 @@
       "hash": 4051767608
     },
     {
+      "name": "Empowering Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 25156514
+    },
+    {
+      "name": "Empowering Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1444664839
+    },
+    {
+      "name": "Empowering Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 2979486802
+    },
+    {
+      "name": "Empowering Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "stasis",
+      "hash": 3492047640
+    },
+    {
+      "name": "Empowering Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "strand",
+      "hash": 383852321
+    },
+    {
+      "name": "Empowering Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 2209081648
+    },
+    {
       "name": "Firebolt Grenade",
       "kind": "grenade",
       "guardianClass": null,
@@ -218,6 +274,48 @@
       "guardianClass": null,
       "subclass": "solar",
       "hash": 1013086087
+    },
+    {
+      "name": "Gambler's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 426473317
+    },
+    {
+      "name": "Gambler's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2711519340
+    },
+    {
+      "name": "Gambler's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 3636300855
+    },
+    {
+      "name": "Gambler's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "stasis",
+      "hash": 3933525367
+    },
+    {
+      "name": "Gambler's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "strand",
+      "hash": 1282157890
+    },
+    {
+      "name": "Gambler's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 2816982785
     },
     {
       "name": "Gathering Storm",
@@ -332,6 +430,48 @@
       "hash": 3040080535
     },
     {
+      "name": "Healing Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "arc",
+      "hash": 25156515
+    },
+    {
+      "name": "Healing Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1444664838
+    },
+    {
+      "name": "Healing Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 2979486803
+    },
+    {
+      "name": "Healing Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "stasis",
+      "hash": 3492047641
+    },
+    {
+      "name": "Healing Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "strand",
+      "hash": 383852320
+    },
+    {
+      "name": "Healing Rift",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "hash": 2209081649
+    },
+    {
       "name": "Incendiary Grenade",
       "kind": "grenade",
       "guardianClass": null,
@@ -393,6 +533,48 @@
       "guardianClass": "hunter",
       "subclass": "prismatic",
       "hash": 886607940
+    },
+    {
+      "name": "Marksman's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "hash": 426473316
+    },
+    {
+      "name": "Marksman's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "hash": 2711519341
+    },
+    {
+      "name": "Marksman's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "hash": 3636300854
+    },
+    {
+      "name": "Marksman's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "stasis",
+      "hash": 3933525366
+    },
+    {
+      "name": "Marksman's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "strand",
+      "hash": 1282157891
+    },
+    {
+      "name": "Marksman's Dodge",
+      "kind": "classAbility",
+      "guardianClass": "hunter",
+      "subclass": "void",
+      "hash": 2816982784
     },
     {
       "name": "Needlestorm",
@@ -458,6 +640,20 @@
       "hash": 1139822080
     },
     {
+      "name": "Phoenix Dive",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "prismatic",
+      "hash": 1444664836
+    },
+    {
+      "name": "Phoenix Dive",
+      "kind": "classAbility",
+      "guardianClass": "warlock",
+      "subclass": "solar",
+      "hash": 2979486801
+    },
+    {
       "name": "Pocket Singularity",
       "kind": "melee",
       "guardianClass": "warlock",
@@ -491,6 +687,48 @@
       "guardianClass": "titan",
       "subclass": "prismatic",
       "hash": 1323461861
+    },
+    {
+      "name": "Rally Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 489583097
+    },
+    {
+      "name": "Rally Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2868073560
+    },
+    {
+      "name": "Rally Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 2495523341
+    },
+    {
+      "name": "Rally Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "stasis",
+      "hash": 3260056809
+    },
+    {
+      "name": "Rally Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "strand",
+      "hash": 2087010644
+    },
+    {
+      "name": "Rally Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 2722641741
     },
     {
       "name": "Scatter Grenade",
@@ -794,6 +1032,20 @@
       "hash": 852252789
     },
     {
+      "name": "Thruster",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 489583098
+    },
+    {
+      "name": "Thruster",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2868073563
+    },
+    {
       "name": "Thunderclap",
       "kind": "melee",
       "guardianClass": "titan",
@@ -820,6 +1072,48 @@
       "guardianClass": "titan",
       "subclass": "prismatic",
       "hash": 2529942644
+    },
+    {
+      "name": "Towering Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "arc",
+      "hash": 489583096
+    },
+    {
+      "name": "Towering Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "prismatic",
+      "hash": 2868073561
+    },
+    {
+      "name": "Towering Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "solar",
+      "hash": 2495523340
+    },
+    {
+      "name": "Towering Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "stasis",
+      "hash": 3260056808
+    },
+    {
+      "name": "Towering Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "strand",
+      "hash": 2087010645
+    },
+    {
+      "name": "Towering Barricade",
+      "kind": "classAbility",
+      "guardianClass": "titan",
+      "subclass": "void",
+      "hash": 2722641740
     },
     {
       "name": "Tripmine Grenade",

@@ -358,6 +358,7 @@ const ABILITY_KIND_NAMES: Record<Ability["kind"], string> = {
   super: "Super",
   grenade: "Grenade",
   melee: "Melee",
+  classAbility: "Class Ability",
 };
 
 /** Two letters as a placeholder until the effect has an icon, e.g. "Surge 4x" -> "S4". */

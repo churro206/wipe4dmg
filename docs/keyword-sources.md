@@ -11,7 +11,7 @@ Quelle: Compendium-Subklassen-Reiter (`compendium-abilities.json`). Regel pro Sa
 | Kill-Buff mit Dauer: Option „vorher aufgebaut“ | 4 |
 | Kill ohne Dauer: feuert in der Damage Phase nie | 3 |
 | Auslöser Class Ability (U7) | 3 |
-| Aspect/Fragment mit eigenem Schaden oder geänderter Ability, ohne genannten Treffer (U6 prüft) | 19 |
+| Aspect/Fragment mit eigenem Schaden oder geänderter Ability, ohne genannten Treffer (U6 prüft) | 20 |
 | Definition im Glossary | 5 |
 
 ## Ability setzt es mit eigenen Treffern (U5)
@@ -116,6 +116,7 @@ Quelle: Compendium-Subklassen-Reiter (`compendium-abilities.json`). Regel pro Sa
 | Solar | Aspects | Hellion | ignition | 30 | – | – | „inflict x30+10 Scorch“ |
 | Void | Aspects | Chaos Accelerant | volatile | – | – | – | „inflicts Volatile“ |
 | Prismatic | Aspects | Lightning Surge | jolt | – | – | – | „inflict Jolt“ |
+| Class Abilities |  | Phoenix Dive | ignition | 40 | – | – | „and x40+20 Scorch“ |
 
 ## Definition im Glossary
 

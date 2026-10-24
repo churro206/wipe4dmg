@@ -6,6 +6,7 @@ import type {
   Effect,
   GuardianClass,
   ProviderKind,
+  StatAbilityKind,
   Subclass,
 } from "../data/schema";
 import { decodeLink, encodeLink } from "../engine/buildLink";
@@ -30,13 +31,15 @@ export type WindowInput = { start: string; duration: string };
 export type AbilityPick = NonNullable<Build["abilities"]>[number];
 /** Chosen ability per slot (super, grenade, melee). */
 export type AbilityChoice = Partial<Record<AbilityKind, AbilityPick>>;
-export type AbilityStatInputs = Record<AbilityKind, number>;
+export type AbilityStatInputs = Record<StatAbilityKind, number>;
 
-export const ABILITY_KINDS: AbilityKind[] = ["super", "grenade", "melee"];
+export const ABILITY_KINDS: AbilityKind[] = ["super", "grenade", "melee", "classAbility"];
+export const STAT_ABILITY_KINDS: StatAbilityKind[] = ["super", "grenade", "melee"];
 export const ABILITY_KIND_LABELS: Record<AbilityKind, string> = {
   super: "Super",
   grenade: "Grenade",
   melee: "Melee",
+  classAbility: "Class Ability",
 };
 /** Stats where the damage bonus starts (100), i.e. no bonus; from ability-stats.json. */
 export const DEFAULT_ABILITY_STATS = Object.fromEntries(

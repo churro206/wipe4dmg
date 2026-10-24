@@ -31,6 +31,7 @@ describe("slots of own effects", () => {
       "particle-reconstruction": "artifact",
       "ember-of-ashes": "fragment",
       transcendence: "buffs",
+      "rally-barricade": "classAbility",
     });
   });
 });

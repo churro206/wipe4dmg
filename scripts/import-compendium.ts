@@ -1,4 +1,4 @@
-// Imports the subclass tabs of the Destiny Data Compendium into src/data/compendium-abilities.json (ADR 0009)
+// Imports the subclass tabs and the tab Class Abilities of the Destiny Data Compendium into src/data/compendium-abilities.json (ADR 0009)
 // and the tabs Exotic Weapons and Weapon Perks into src/data/compendium-weapons.json (ADR 0013),
 // the tab Exotic Armors into src/data/compendium-armor.json (ADR 0014) and the tab Exotic Class into
 // src/data/compendium-class.json (ADR 0015, U6-3).
@@ -29,6 +29,7 @@ const SNAPSHOTS: {
       Stasis: "1088259962",
       Strand: "1870531554",
       Prismatic: "1918152785",
+      "Class Abilities": "527596209",
     },
   },
   {

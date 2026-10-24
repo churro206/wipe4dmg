@@ -2,7 +2,7 @@
   "source": {
     "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks)",
     "url": "https://destiny2.science/data-compendium",
-    "retrieved": "2026-10-21",
+    "retrieved": "2026-10-24",
     "status": "verified"
   },
   "entries": [
@@ -1431,7 +1431,7 @@
       "tab": "Weapon Perks",
       "section": "Weapon Traits",
       "name": "Demolitionist",
-      "text": "On Weapon Kill:\nGrants 10% ↑11% Grenade Ability Energy.\nFusion Rifles, Glaives, Shotguns, and Sniper Rifles grant 20% ↑22% Grenade Ability Energy.\n\nGrenade Ability Usage refills Magazine.\nIncurs a 3 second cooldown between Magazine Refills.",
+      "text": "On Weapon Kill:\nGrants 9% ↑10% Grenade Ability Energy.\nFusion Rifles, Glaives, Shotguns, and Sniper Rifles grant 18% ↑20% Grenade Ability Energy.\n\nGrenade Ability Usage refills Magazine.\nIncurs a 3 second cooldown between Magazine Refills.",
       "extra": ""
     },
     {
@@ -2789,7 +2789,7 @@
       "tab": "Weapon Perks",
       "section": "Weapon Mods",
       "name": "Bandolier",
-      "text": "+5 ↑+7 Ammo Generation and +15 ↑+17 Magazine Stat.",
+      "text": "+5 ↑+7 Ammo Generation and +15 ↑+20 Magazine Stat.",
       "extra": ""
     },
     {
@@ -3251,14 +3251,14 @@
       "tab": "Weapon Perks",
       "section": "Origin Traits",
       "name": "Bray Inheritance Deep Stone Crypt Raid",
-      "text": "Grants Grenade, Melee, and Class Ability Energy per damage instance.\n\nPosterity: 0.45% ↑?% | Trustee: 0.35% ↑?%\nHeritage: 0.85% ↑?% | Succession: 1.5% ↑?%\nBequest: 2% ↑?% | Commemoration: 0.4% ↑?%",
+      "text": "Grants Grenade, Melee, and Class Ability Energy per damage instance.\nAmount gained decreases as Magazine Size increases.\n\n% Energy Gain at X Magazine Size:\nPosterity: 0.42% ↑0.55% at 13 | 0.33% ↑0.43% at 17\nTrustee: 0.31% ↑0.42% at 17 | 0.27% ↑0.36% at 20\n\nHeritage: 0.9% ↑1.2% at 6 | 0.78% ↑1% at 7 | 0.68% ↑0.877% at 8\nSuccession: 1.8% ↑2.4% at 3 | 1.36% ↑1.8% at 4 | 1.1% ↑1.47% at 5\n\nBequest: 1.8% ↑2.4%\nCommemoration: 0.45% ↑0.62% at 59 | 0.36% ↑0.49% at 75\n\n↑1.33x Ability Energy Gains.",
       "extra": ""
     },
     {
       "tab": "Weapon Perks",
       "section": "Origin Traits",
       "name": "Bray Legacy Vesper's Host Weapons Dungeon Reclamation Weapons",
-      "text": "Grants Ability Energy to the most-charged Ability per damage instance. Excludes instances from Explosive Perks/Micro Missiles.\nDoes not grant any Ability Energy to abilities with multiple charges as long as it has 1 Charge.\n\nAbility Energy Gains per damage instance:\n\nVesper's Host Weapons\nAdaptive Auto Rifle (VS Pyroelectric Propellant) = 0.25% ↑?%\nArea-Denial Grenade Launcher (VS Velocity Baton) = 0.36% ↑?%\nAdaptive Fusion Rifle (VS Gravitic Arrest) = 0.43% ↑?%\nRapid-Fire Grenade Launcher (VS Chill Inhibitor) = 5.8% ↑?%\n\nReclamation Weapons\nRapid-Fire Auto Rifle (Ahab Char) = 0.19% ↑0.24%\nHigh-Impact Scout Rifle (Jurisprudent) = ?% ↑?%\nLightweight Sidearm (Faustus Decline) = 0.75% ↑0.94%\nRapid-Fire Sniper Rifle (Shortline Dissident) = ?% ↑?%\nSword (Eighty-Six) = 11.6% ↑14.5%\nRocket Launcher (Haliaetus) = 17% ↑?%",
+      "text": "Grants Ability Energy to the most-charged Ability per damage instance. Excludes instances from Explosive Perks/Micro Missiles.\nDoes not grant any Ability Energy to abilities with multiple charges as long as it has 1 Charge. Amount gained decreases as Magazine Size increases.\n\n% Energy Gain at X Magazine Size:\nVesper's Host\nVS Pyroelectric Propellant: 0.22% ↑0.29% at 48 | 0.18% ↑0.23% at 60\nVS Gravitic Arrest: 0.4% ↑0.48% at 6 | 0.3% ↑0.38% at 8\nVS Velocity Baton: 0.32% ↑0.39%\nVS Chill Inhibitor: 5% ↑6.5% at 6 | 3.9% ↑4.8% at 8\n\nReclamation\nAhab Char: 0.2% ↑0.25% at 51 | 0.15% ↑0.19% at 72\nJurisprudent: 0.85% ↑1.05% at 13 | 0.68% ↑0.84% at 16\nFaustus Decline: 0.77% ↑0.96% at 14 | 0.64% ↑0.8% at 17\nShortline Dissident: 2.72% ↑3.42% at 6 | 2.35% ↑2.91% at 7\nEighty-Six: 10.34% ↑13.05%\nHaliaetus: 10.37% ↑13%. Unaffected by Bipod.\n\n↑1.25x Ability Energy Gains.",
       "extra": ""
     },
     {
@@ -3321,7 +3321,7 @@
       "tab": "Weapon Perks",
       "section": "Origin Traits",
       "name": "Dawning Surprise Dawning Event",
-      "text": "Upon reaching 100% Counter Progress by scoring Weapon Kills:\nRank-And-File = 16.7% ↑20% | Elites, Minibosses, and Bosses = 50% | Guardians = 16.7% ↑20%\n\nSpawns a 📦Box-Shaped Dawning Gift for the user and their allies, which remains on the ground for up to 10 seconds.\n\nDawning Gift:\nOn Pickup | 10% Grenade, Melee, and Class Ability Energy, restores 22 HP and begins Health Regeneration.",
+      "text": "Upon reaching 100% Counter Progress by scoring Weapon Kills:\nRank-And-File = 16.7% ↑20% | Elites, Minibosses, and Bosses = 50% | Guardians = 16.7% ↑20%\n\nSpawns a 📦Box-Shaped Dawning Gift for the user and their allies, which remains on the ground for up to 10 seconds.\n\nDawning Gift:\nOn Pickup | 9% Grenade, Melee, and Class Ability Energy, restores 22 HP and begins Health Regeneration.",
       "extra": ""
     },
     {
@@ -3496,7 +3496,7 @@
       "tab": "Weapon Perks",
       "section": "Origin Traits",
       "name": "Indomitability Brave Foundry Onslaught",
-      "text": "While a Light Super Ability is equipped:\nWeapon Kills grant 5% ↑6%? Grenade Ability Energy.\n\nWhile a Darkness Super Ability is equipped:\nWeapon Kills grant 5% ↑6%? Melee Ability Energy.",
+      "text": "While a Light Super Ability is equipped:\nWeapon Kills grant 4.5% ↑5.4% Grenade Ability Energy.\n\nWhile a Darkness Super Ability is equipped:\nWeapon Kills grant 4.5% ↑5.4% Melee Ability Energy.",
       "extra": ""
     },
     {

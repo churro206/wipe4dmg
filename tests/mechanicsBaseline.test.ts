@@ -99,7 +99,8 @@ function weaponTotals(weapon: Weapon): Record<string, number | string> {
 
 function abilityTotals(): Record<string, Record<string, number | string>> {
   const result: Record<string, Record<string, number | string>> = {};
-  for (const ability of abilities) {
+  // class abilities deal no damage of their own (U7)
+  for (const ability of abilities.filter((a) => a.kind !== "classAbility")) {
     const scaling = abilityStats.find((s) => s.kind === ability.kind)!;
     result[ability.id] = Object.fromEntries(
       ABILITY_STATS.map((stat) => [

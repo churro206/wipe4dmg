@@ -1,5 +1,6 @@
-// Extracts the ability items (supers, grenades, melees) from the manifest item table (ADR 0008).
-// The plug category names slot, class and subclass, e.g. "hunter.prism.supers" or "shared.arc.grenades".
+// Extracts the ability items (supers, grenades, melees, class abilities) from the manifest item table
+// (ADR 0008). The plug category names slot, class and subclass, e.g. "hunter.prism.supers" or
+// "shared.arc.grenades".
 
 import type {
   AbilityKind,
@@ -10,11 +11,12 @@ import type {
 } from "../../src/data/schema.ts";
 
 const CATEGORY =
-  /^(hunter|titan|warlock|shared)\.(arc|solar|void|stasis|strand|prism)\.(supers|grenades|melee)$/;
+  /^(hunter|titan|warlock|shared)\.(arc|solar|void|stasis|strand|prism)\.(supers|grenades|melee|class_abilities)$/;
 const KINDS: Record<string, AbilityKind> = {
   supers: "super",
   grenades: "grenade",
   melee: "melee",
+  class_abilities: "classAbility",
 };
 
 /** Only the fields of DestinyInventoryItemDefinition this module reads. */

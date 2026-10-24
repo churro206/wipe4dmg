@@ -51,10 +51,12 @@ export function abilityCoverage(
   const abilityEntries = entries.filter(
     (e) => SECTIONS[e.section] && e.extra !== "",
   );
+  // Class abilities link the tab Class Abilities; the list covers supers, grenades and melees.
   for (const ability of abilities) {
     const link = ability.compendium;
     if (
       link &&
+      ability.kind !== "classAbility" &&
       !abilityEntries.some((e) => e.tab === link.tab && e.name === link.entry)
     ) {
       throw new Error(

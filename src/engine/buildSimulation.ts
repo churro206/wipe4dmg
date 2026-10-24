@@ -3,18 +3,21 @@
 
 import type {
   Ability,
+  AbilityKind,
   AbilityStatScaling,
+  Bucket,
   Build,
   Effect,
   EnergyData,
   ExoticArmorEffect,
   ExoticArmorEntry,
   Keyword,
+  Weapon,
   WeaponStatScaling,
 } from "../data/schema";
-import { abilitySimulation } from "./buildAbilities";
+import { abilitySimulation, nextCastOf } from "./buildAbilities";
 import { classPerksOf, exoticArmorEffects } from "./exoticArmor";
-import type { SimulationOptions } from "./simulate";
+import { simulate, type SimulationOptions } from "./simulate";
 
 /** All loaded Data Files a build refers to. */
 export type GameData = {
@@ -77,4 +80,27 @@ export function buildSimulation(
       keywords: data.keywords,
     },
   };
+}
+
+/**
+ * Earliest time of one more cast of the build's ability of this kind that the energy allows (block
+ * 3). An ability that refills the magazine goes to the next full reload from then on, where it
+ * saves the most (U7, play like an experienced player); without one left, the earliest time.
+ */
+export function nextCastFor(
+  build: Build,
+  kind: AbilityKind,
+  data: GameData,
+  weapon: Weapon,
+  buckets: Bucket[],
+): number | undefined {
+  const earliestMs = nextCastOf(build, kind, data.abilities, data.energy, data.effects);
+  const pick = (build.abilities ?? []).find(
+    (p) => data.abilities.find((a) => a.id === p.abilityId)?.kind === kind,
+  );
+  const ability = data.abilities.find((a) => a.id === pick?.abilityId);
+  if (earliestMs === undefined || !ability?.refillsMagazine) return earliestMs;
+  const { selected, options } = buildSimulation(build, data);
+  const { reloadsMs } = simulate(weapon, build.damagePhaseSeconds, selected, buckets, options);
+  return reloadsMs.find((ms) => ms >= earliestMs) ?? earliestMs;
 }

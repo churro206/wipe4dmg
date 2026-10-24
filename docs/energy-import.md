@@ -2,8 +2,8 @@
 
 Generiert von `npm run build:energy` (`scripts/lib/energy.ts`). Nicht von Hand ändern.
 
-Cooldowns: 76 von 76 Abilities.
-Compendium-Zeilen zu Energie: 218, übernommen 20, übersprungen 198, offen 0.
+Cooldowns: 80 von 80 Abilities.
+Compendium-Zeilen zu Energie: 220, übernommen 22, übersprungen 198, offen 0.
 
 | Quelle | Reiter | Item | Zeile | Urteil | Ziel oder Grund |
 | --- | --- | --- | --- | --- | --- |
@@ -225,3 +225,5 @@ Compendium-Zeilen zu Energie: 218, übernommen 20, übersprungen 198, offen 0.
 | abilities | Prismatic, Aspects | Unbreakable | Generates 10 Void Overshield HP/s that lasts 5+2.5 seconds while draining 7.5% Grenade Energy/s. | skipped | Verbrauch, kein Gewinn |
 | abilities | Prismatic, Aspects | Unbreakable | Releasing [Grenade] or running out of Grenade Energy releases a frontal blast, consuming 50% Grenade Energy and dealing damage up to 11 meters away. | skipped | Verbrauch, kein Gewinn |
 | abilities | Prismatic, Aspects | Weaver's Call | Threadling damage instances grant 10% Class Ability Energy. | skipped | Class Ability nicht modelliert |
+| abilities | Class Abilities,  | Gambler's Dodge | Performs a deft tumble that grants 1% [0.35%] Melee Ability Energy per Melee Stat, up to 100% [35%] Melee Ability Energy at 100 Melee Stat. | imported | gamblers-dodge-melee |
+| abilities | Class Abilities,  | Empowering Rift | Rift grants 20% [15%] increased damage, 260% [104%] Additional Base Grenade and Melee, and 230% [92%] Additional Base Class Regeneration Rate in a 5 meter radiu | imported | empowering-rift-regen |

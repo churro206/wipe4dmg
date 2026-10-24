@@ -239,7 +239,7 @@ export function loadAbilities(
 function packageComponents(
   abilityId: string,
   aegisRowId: string,
-  kind: AbilityStatScaling["kind"],
+  kind: AbilityKind,
   extraIncludedEffectIds: string[],
   aegisRows: AegisAbilityRow[],
   abilityStats: AbilityStatScaling[],

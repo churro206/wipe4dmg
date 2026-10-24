@@ -538,8 +538,11 @@ export const FormerCode = z.object({
 });
 
 /** Damage source of an ability; the weapon is not an ability. */
-export const AbilityKind = z.enum(["super", "grenade", "melee"]);
+export const AbilityKind = z.enum(["super", "grenade", "melee", "classAbility"]);
 export type AbilityKind = z.infer<typeof AbilityKind>;
+/** Kinds with a stat of their own in the stats block; the class stat has no known factor (U7). */
+export const StatAbilityKind = AbilityKind.exclude(["classAbility"]);
+export type StatAbilityKind = z.infer<typeof StatAbilityKind>;
 
 /**
  * Event of the rotation that opens the window of an effect (ADR 0015, U6-1b):
@@ -683,7 +686,7 @@ const AbilityFields = z.object({
   code: z.number().int().positive(), // short code for build links; never reused
   name: z.string(),
   kind: AbilityKind,
-  element: Element,
+  element: Element, // kinetic: a class ability of every subclass, without an element of its own
   providers: z.array(Provider).min(1), // classes and subclasses that have the ability
   manifestHash: z.number().int().optional(), // ability item in the Bungie manifest, for the icon
   usage: SuperUsage.optional(), // supers only; omitted: the super does not block the weapon
@@ -708,6 +711,8 @@ const AbilityFields = z.object({
   // Castable only while this effect is active, in the window of the rotation, e.g. the Prismatic
   // grenades while Transcendence lasts; casts outside are dropped.
   duringEffectId: z.string().optional(),
+  // Each cast reloads the weapon at once, e.g. Marksman's Dodge "reloads all weapons" (U7).
+  refillsMagazine: z.literal(true).optional(),
   // Empty only for supers that just grant effects, e.g. Ward of Dawn.
   components: z.array(AbilityComponent),
   // Keywords its hits apply (ADR 0015, U5); set when loading from ability-keywords.json.
@@ -725,10 +730,13 @@ const damageOrGrants = (ability: {
   components?: unknown[];
   package?: true;
   grantsEffectIds?: string[];
+  kind: AbilityKind;
 }) =>
   (ability.components?.length ?? 0) > 0 ||
   ability.package === true ||
-  (ability.grantsEffectIds?.length ?? 0) > 0;
+  (ability.grantsEffectIds?.length ?? 0) > 0 ||
+  // a class ability may act only on the shot plan or on energy, e.g. Gambler's Dodge (U7)
+  ability.kind === "classAbility";
 const damageOrGrantsError = {
   message: "an ability needs components, a package or granted effects",
   path: ["components"],
@@ -1001,7 +1009,7 @@ export type AbilityGap = z.infer<typeof AbilityGap>;
  * above a stat, e.g. +0.45% super damage per point above 100 (Compendium, Game Mechanics).
  */
 export const AbilityStatScaling = z.object({
-  kind: AbilityKind,
+  kind: StatAbilityKind,
   bucketId: z.string(), // bucket of the stat multiplier, e.g. "abilityStat"
   bonusFromStat: z.number().nonnegative(), // the damage bonus starts above this stat, e.g. 100
   maxStat: z.number().positive(), // highest stat, e.g. 200
@@ -1032,7 +1040,7 @@ export type AbilityEnergy = z.infer<typeof AbilityEnergy>;
 
 /** How the super, grenade or melee stat speeds up the regeneration and the energy gains of its abilities. */
 export const EnergyStat = z.object({
-  kind: AbilityKind,
+  kind: StatAbilityKind,
   fullAtStat: z.number().positive(), // stat with the full effect, linear from 0; also the default stat
   regenAtFullStat: SourcedNumber, // regeneration rate relative to stat 0, e.g. 2.48
   gainBonusAtFullStat: SourcedNumber, // extra share of chunk gains, e.g. 2.115 for +211.5%; null: none known

@@ -744,5 +744,43 @@
         "quote": "… for 20 seconds."
       }
     }
+  },
+  {
+    "id": "rally-barricade",
+    "code": 85,
+    "name": "Rally Barricade",
+    "shortName": "Rally",
+    "providers": [
+      {
+        "kind": "subclass",
+        "slot": "classAbility",
+        "classes": ["titan"]
+      }
+    ],
+    "parts": [
+      {
+        "type": "timing",
+        "change": "reloadDuration",
+        "factor": 0.9,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Rally Barricade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "While within ? meters behind the Rally Barricade: … +30 Stability, +100 Reload Speed, 0.9x Reload Duration Multiplier",
+          "note": "The player stands behind the barricade for its whole duration (owner, 2026-10-24). The +100 Reload Speed is not modeled: no source turns the stat into time (as for exotic armor)."
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 20000,
+      "source": {
+        "name": "Destiny Data Compendium, Class Abilities (Rally Barricade)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "quote": "Barricade lasts for 20 seconds"
+      }
+    }
   }
 ]

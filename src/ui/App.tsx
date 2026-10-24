@@ -16,12 +16,8 @@ import {
   dpsByDamagePhase,
 } from "../engine/analysis";
 import { breakdown } from "../engine/breakdown";
-import {
-  addCast,
-  nextCastOf,
-  removeCast,
-  setCast,
-} from "../engine/buildAbilities";
+import { addCast, removeCast, setCast } from "../engine/buildAbilities";
+import { nextCastFor } from "../engine/buildSimulation";
 import { buildSimulation } from "../engine/buildSimulation";
 import { effectWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
@@ -32,6 +28,7 @@ import type { SimulationOptions } from "../engine/simulate";
 import {
   ABILITY_KIND_LABELS,
   ABILITY_KINDS,
+  STAT_ABILITY_KINDS,
   abilitiesOfChoice,
   buildOfState,
   choiceFor,
@@ -310,11 +307,19 @@ function App() {
     setAbilityChoice((current) => choiceFor(current, guardianClass, next));
   };
   // A build has one super: the super slot and own effects of the super group exclude each other.
+  // An ability that refills the magazine starts at the first reload instead of 0 s (U7).
+  const firstCastMs = (kind: AbilityKind, abilityId: string) => {
+    if (!abilities.find((a) => a.id === abilityId)?.refillsMagazine) return 0;
+    const picks = abilitiesOfChoice({ ...abilityChoice, [kind]: { abilityId, castsMs: [] } });
+    const build = { ...currentBuild, abilities: picks, abilityStats: abilityStatInputs };
+    return nextCastFor(build, kind, gameData, weapon, buckets) ?? 0;
+  };
   const selectAbility = (kind: AbilityKind, abilityId: string | null) => {
+    const firstMs = abilityId === null ? 0 : firstCastMs(kind, abilityId);
     setAbilityChoice((current) => {
       const next = { ...current };
       if (abilityId === null) delete next[kind];
-      else next[kind] = { abilityId, castsMs: [0] };
+      else next[kind] = { abilityId, castsMs: [firstMs] };
       return next;
     });
     if (kind === "super" && abilityId !== null) {
@@ -359,13 +364,7 @@ function App() {
     // the casts the energy allows and the earliest time of one more (block 3)
     const actualMs =
       options.abilities?.find((c) => c.ability.kind === kind)?.castsMs ?? pick.castsMs;
-    const nextMs = nextCastOf(
-      currentBuild,
-      kind,
-      abilities,
-      gameData.energy,
-      gameData.effects,
-    );
+    const nextMs = nextCastFor(currentBuild, kind, gameData, weapon, buckets);
     return [{ ability, castsMs: pick.castsMs, actualMs, nextMs }];
   });
   const windows = isValid
@@ -582,11 +581,12 @@ function App() {
               <h2>
                 Abilities
                 <InfoTip>
-                  Super, Grenade and Melee. Damage per cast is mostly a
-                  measured value from Aegis; their stats are under “Stats”.
-                  Each ability is cast at the start of the Damage Phase, or
-                  when set in the Rotation; the weapon does not fire during a
-                  Super.
+                  Super, Grenade, Melee and Class Ability. Damage per cast is
+                  mostly a measured value from Aegis; their stats are under
+                  “Stats”. Each ability is cast at the start of the Damage
+                  Phase, or when set in the Rotation; the weapon does not fire
+                  during a Super. A class ability that reloads the weapon is
+                  cast at the next reload.
                 </InfoTip>
               </h2>
               <AbilityPicker
@@ -614,10 +614,6 @@ function App() {
                 onSelect={selectAbility}
               />
               {pickerFor("super", <h3 className="sub">Super</h3>)}
-              {pickerFor(
-                "classAbility",
-                <h3 className="sub">Class Ability</h3>,
-              )}
               {pickerFor("aspect", <h2>Aspects</h2>)}
               {pickerFor("fragment", <h2>Fragments</h2>)}
               {pickerFor("buffs", <h2>Buffs &amp; Debuffs</h2>)}
@@ -702,7 +698,7 @@ function App() {
                     value: weaponsStat,
                     max: MAX_WEAPONS_STAT,
                   },
-                  ...ABILITY_KINDS.map((kind) => ({
+                  ...STAT_ABILITY_KINDS.map((kind) => ({
                     kind,
                     label: ABILITY_KIND_LABELS[kind],
                     value: abilityStatInputs[kind],
@@ -969,7 +965,7 @@ function App() {
 }
 
 /** Breakdown tab: contribution per bucket as bars and as a table. */
-const KIND_ORDER: AbilityKind[] = ["super", "grenade", "melee"];
+const KIND_ORDER: AbilityKind[] = ABILITY_KINDS;
 
 function BreakdownPanel({
   weapon,

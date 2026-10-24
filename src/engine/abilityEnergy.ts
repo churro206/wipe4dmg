@@ -76,9 +76,10 @@ function initialState(
   const energy = ctx.data.abilities.find((a) => a.abilityId === baseId(ability));
   const cooldownSeconds = energy?.cooldownSeconds.value;
   if (!cooldownSeconds) return undefined; // unknown cooldown: the rotation decides alone
+  // no stat for class abilities: their cooldown is the base cooldown (U7)
   const stat = ctx.data.stats.find((s) => s.kind === ability.kind);
   const share = stat
-    ? Math.min(ctx.stats?.[ability.kind] ?? stat.fullAtStat, stat.fullAtStat) / stat.fullAtStat
+    ? Math.min(ctx.stats?.[stat.kind] ?? stat.fullAtStat, stat.fullAtStat) / stat.fullAtStat
     : 0;
   const regenAtFull = stat?.regenAtFullStat.value ?? 1;
   const gainBonus = stat?.gainBonusAtFullStat.value ?? 0;

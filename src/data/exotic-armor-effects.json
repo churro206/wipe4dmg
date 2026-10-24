@@ -236,7 +236,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„On Fists of Havoc End:\nGrants x4 Arc Weapon Surge for 30“; x4 surge value from Court (10% 17% 22% 25%) (ADR 0015, U6-1b)"
             }
@@ -250,7 +250,7 @@
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-21",
+          "retrieved": "2026-10-24",
           "status": "verified",
           "note": "„On Fists of Havoc End:\nGrants x4 Arc Weapon Surge for 30“; x4 surge value from Court (10% 17% 22% 25%) (ADR 0015, U6-1b)"
         }
@@ -366,7 +366,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„15% increased damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
             }
@@ -461,7 +461,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„6.5% | 13.6% | 22% | 32% | 43% | 57% | 73% | 93% | 118% | 150% Increased Super Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
             }
@@ -475,7 +475,7 @@
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-21",
+          "retrieved": "2026-10-24",
           "status": "verified",
           "note": "„for 20 seconds“ after „Kills“; prebuilt before the damage phase (ADR 0015)"
         }
@@ -545,7 +545,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„45% increased Direct Impact damage against Combatants per stack“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
             }
@@ -558,7 +558,7 @@
               "source": {
                 "name": "Destiny Data Compendium (tab Exotic Armors)",
                 "url": "https://destiny2.science/data-compendium",
-                "retrieved": "2026-10-21",
+                "retrieved": "2026-10-24",
                 "status": "verified",
                 "note": "„maximum of 10 stacks“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
               }
@@ -568,7 +568,7 @@
               "source": {
                 "name": "Destiny Data Compendium (tab Exotic Armors)",
                 "url": "https://destiny2.science/data-compendium",
-                "retrieved": "2026-10-21",
+                "retrieved": "2026-10-24",
                 "status": "verified",
                 "note": "„Bosses take 33% decreased damage“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
               }
@@ -581,7 +581,7 @@
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-21",
+          "retrieved": "2026-10-24",
           "status": "verified",
           "note": "„Grants Illegally Modded Holster for 6 seconds“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
         }
@@ -768,7 +768,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„5% increased Submachine Gun Impact Damage against Combatants per stack“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
             }
@@ -781,7 +781,7 @@
               "source": {
                 "name": "Destiny Data Compendium (tab Exotic Armors)",
                 "url": "https://destiny2.science/data-compendium",
-                "retrieved": "2026-10-21",
+                "retrieved": "2026-10-24",
                 "status": "verified",
                 "note": "„maximum of 20 stacks“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
               }
@@ -791,7 +791,7 @@
               "source": {
                 "name": "Destiny Data Compendium (tab Exotic Armors)",
                 "url": "https://destiny2.science/data-compendium",
-                "retrieved": "2026-10-21",
+                "retrieved": "2026-10-24",
                 "status": "verified",
                 "note": "„Grants a stack of Damage Buff for 1 second“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
               }
@@ -801,7 +801,7 @@
               "source": {
                 "name": "Destiny Data Compendium (tab Exotic Armors)",
                 "url": "https://destiny2.science/data-compendium",
-                "retrieved": "2026-10-21",
+                "retrieved": "2026-10-24",
                 "status": "verified",
                 "note": "„Bosses take 33% decreased damage“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)"
               }
@@ -1040,7 +1040,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
             }
@@ -1053,7 +1053,7 @@
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-21",
+          "retrieved": "2026-10-24",
           "status": "verified",
           "note": "„for 14 seconds“ after „On Super Cast“ (ADR 0015, U6-1b)"
         }
@@ -1079,7 +1079,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„100% increased Grenade Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
             }
@@ -1092,7 +1092,7 @@
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-21",
+          "retrieved": "2026-10-24",
           "status": "verified",
           "note": "„for 4 seconds“ after „Kill“; prebuilt before the damage phase (ADR 0015)"
         }
@@ -1117,7 +1117,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
             }
@@ -1130,7 +1130,7 @@
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-21",
+          "retrieved": "2026-10-24",
           "status": "verified",
           "note": "„for 14 seconds“ after „On Super Cast“ (ADR 0015, U6-1b)"
         }
@@ -1186,7 +1186,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„100% increased Grenade Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
             }
@@ -1199,7 +1199,7 @@
         "source": {
           "name": "Destiny Data Compendium (tab Exotic Armors)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-21",
+          "retrieved": "2026-10-24",
           "status": "verified",
           "note": "„for 4 seconds“ after „Kill“; prebuilt before the damage phase (ADR 0015)"
         }
@@ -1301,7 +1301,7 @@
             "source": {
               "name": "Destiny Data Compendium (tab Exotic Armors)",
               "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-21",
+              "retrieved": "2026-10-24",
               "status": "verified",
               "note": "„14% Increased Explosion Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
             }

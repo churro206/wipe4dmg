@@ -312,6 +312,36 @@ export const ENERGY_SPECS: EnergySpec[] = [
     change: "energy",
     trigger: { on: "cast", abilities: { kinds: ["melee"], abilityIds: ["ballistic-slam"] } },
   },
+  // Class abilities (U7)
+  {
+    id: "gamblers-dodge-melee",
+    item: { snapshot: "abilities", name: "Gambler's Dodge", tab: "Class Abilities" },
+    line: /^Performs a deft tumble that grants/,
+    read: "percent",
+    percentOf: /up to (\d+(?:\.\d+)?)% \[/,
+    fixed: true,
+    from: { abilityId: "gamblers-dodge" },
+    target: MELEE,
+    change: "energy",
+    trigger: { on: "cast", abilities: { kinds: ["classAbility"], abilityIds: ["gamblers-dodge"] } },
+    note: "Value at 100 Melee Stat (the default); near the boss it doubles, capped at a full bar.",
+  },
+  {
+    id: "empowering-rift-regen",
+    item: { snapshot: "abilities", name: "Empowering Rift", tab: "Class Abilities" },
+    line: /Additional Base Grenade and Melee/,
+    read: "percent",
+    percentOf: /(\d+(?:\.\d+)?)% \[[^\]]*\] Additional Base Grenade and Melee/,
+    from: { abilityId: "empowering-rift" },
+    target: { kinds: ["grenade", "melee"] },
+    change: "regenBase",
+    trigger: {
+      on: "cast",
+      abilities: { kinds: ["classAbility"], abilityIds: ["empowering-rift"] },
+      durationSeconds: 15,
+    },
+    note: "While standing in the Rift for its 15 seconds.",
+  },
 ];
 
 /** Lines the review table covers: energy gains, charges and regeneration. */
