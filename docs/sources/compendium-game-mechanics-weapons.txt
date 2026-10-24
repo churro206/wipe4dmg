@@ -1,0 +1,12 @@
+Destiny Data Compendium, tab Game Mechanics (gid 1800463143), stat "Weapons", retrieved 2026-10-24
+https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1800463143
+Values in [brackets] are PvP.
+
+0-100:
+Grants increased Handling and Reload Speed per point, up to 0.9x Handling Duration Multiplier and 0.9x Reload Duration Multiplier at 100 points.
+Additionally increases Weapon Damage against Rank-and-File and Elite Combatants by 0.15% per point, up to 15% increased Weapon Damage at 100 points.
+
+101-200:
+... have a 1% chance to drop increased ammo per point above 100, up to 100% chance at 200 points.
+Primary/Special Weapon Damage is increased by 0.15% against Bosses and 0.05% against Guardians per point, up to 15% [5%] Increased Weapon Damage at 200 points against Bosses and Guardians, respectively.
+Power Weapon Damage is increased by 0.1% against Bosses and 0.05% against Guardians per point, up to 10% [5%] Increased Weapon Damage at 200 points.
