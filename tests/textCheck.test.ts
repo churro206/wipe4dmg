@@ -69,9 +69,54 @@ describe("text check rule", () => {
   });
 
   it("flags a target the text does not name and a narrowing the part misses", () => {
-    expect(verdict(only(effect({}), "Grenades deal 25% more damage."), "target")).toBe("deviation");
+    const perk = effect({});
+    perk.parts = [{ ...(perk.parts[0] as Extract<Effect["parts"][number], { type: "multiplier" }>), bucketId: "weaponPerk" }];
+    expect(verdict(only(perk, "Grenades deal 25% more damage."), "target")).toBe("deviation");
     expect(verdict(only(effect({}), "Solar weapons deal 25% more damage."), "target")).toBe("deviation");
     expect(verdict(only(effect({}), "Weapons deal 25% more damage."), "target")).toBe("ok");
+  });
+
+  it("judges a narrowing only by the sentences that name the value", () => {
+    const text = "Exiting invisibility grants Volatile Rounds to Void Weapons. Finishers grant 25% increased damage.";
+    expect(verdict(only(effect({}), text), "target")).toBe("ok");
+    expect(verdict(only(effect({}), "Solar weapons deal 25% more damage. Lasts long."), "target")).toBe("deviation");
+  });
+
+  it("takes weapon from an empowering or surge bucket and from a named weapon type", () => {
+    expect(verdict(only(effect({}), "Rift grants 25% increased damage."), "target")).toBe("ok");
+    const shotgun = effect({});
+    shotgun.parts = [{ ...(shotgun.parts[0] as Extract<Effect["parts"][number], { type: "multiplier" }>), bucketId: "weaponPerk", weaponTypes: ["shotgun"] }];
+    expect(verdict(only(shotgun, "25% increased Shotgun damage."), "target")).toBe("ok");
+    const amp = effect({});
+    amp.parts = [{ ...(amp.parts[0] as Extract<Effect["parts"][number], { type: "multiplier" }>), bucketId: "amplification" }];
+    expect(verdict(only(amp, "Grants 25% increased damage."), "target")).toBe("deviation");
+  });
+
+  it("finds a fragment the Compendium names without its prefix", () => {
+    const fragment = effect({ name: "Echo of Probing", durationMs: { value: 11250, source: source("Compendium") } });
+    const input = { ...only(fragment, ""), compendium: [{ tab: "Void", section: "Fragments", name: "Probing", text: "Weapons deal 25% more damage for 11.25 [7.5] seconds." }] };
+    expect(verdict(input, "duration")).toBe("ok");
+  });
+
+  it("counts a catalyst Aegis measured as a whole as measured", () => {
+    const weapon = {
+      id: "probe-gun",
+      name: "Probe Gun",
+      catalyst: { name: "Probe Catalyst", description: "Kills grant 100% increased reload speed." },
+      options: [
+        {
+          id: "cat",
+          name: "Catalyst",
+          kind: "catalyst",
+          bucketId: "weaponPerk",
+          factor: { value: 1.45, source: { ...source("Aegis Boss Damage sheet (tab Weapons)"), note: "visual Value 145 / 100 (base row probe-without-catalyst)" } },
+          durationSeconds: null,
+          condition: null,
+        },
+      ],
+    } as unknown as TextCheckInputs["weapons"][number];
+    const input = { ...only(effect({}), ""), effects: [], weapons: [weapon] };
+    expect(verdict(input, "value")).toBe("measured");
   });
 
   it("skips the target of a debuff on every damage source", () => {

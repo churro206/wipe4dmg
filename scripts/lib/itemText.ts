@@ -2,6 +2,7 @@
 // the Compendium entry, the Court rows and the Clarity entries of its name.
 
 import type { ClarityEntry, CompendiumEntry, CourtEntry } from "../../src/data/schema.ts";
+import { subclassItemNamed } from "./manifestAbilities.ts";
 
 export type ItemTextSources = {
   compendium: CompendiumEntry[];
@@ -31,11 +32,15 @@ export const courtRowsOf = (name: string, sources: ItemTextSources): CourtEntry[
 export const courtQuote = (row: CourtEntry) =>
   `Court ${row.group || row.category}: ${row.name} | ${row.pve} | ${row.pveDuration}`;
 
-/** Compendium and Clarity texts of a name (Clarity also by the item a perk belongs to). */
+/**
+ * Compendium and Clarity texts of a name (Clarity also by the item a perk belongs to; the Compendium
+ * names fragments without their prefix, "Instability" for "Echo of Instability").
+ */
 export function itemTexts(name: string, sources: ItemTextSources): ItemText[] {
   const base = baseName(name);
+  const named = (e: CompendiumEntry) => e.name === base || (e.section === "Fragments" && subclassItemNamed(base, e.name));
   return [
-    ...sources.compendium.filter((e) => e.name === base).map((e) => ({ from: `Compendium ${e.tab}`, text: e.text })),
+    ...sources.compendium.filter(named).map((e) => ({ from: `Compendium ${e.tab}`, text: e.text })),
     ...sources.clarity
       .filter((e) => e.name === base || e.itemName === base)
       .map((e) => ({ from: `Clarity ${e.name}`, text: e.text })),

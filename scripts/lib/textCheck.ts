@@ -182,30 +182,47 @@ function durationVerdict(
 
 const ALL_SOURCES = Object.keys(SOURCE_WORDS);
 
+// Buckets that only raise weapon damage: Empowering Buffs (Bungie 9.7.0, docs/mechanics/
+// damage-stacking.md) and Court's "Weapon Surges"; "Rift grants 20% increased damage" means weapons.
+const WEAPON_BUCKETS = new Set(["empowering", "surge"]);
+
+const sentencesOf = (text: string) => text.split(/(?<=[.!?])\s+|\n/);
+
 /**
  * What the part applies to that the text does not say, or what the text narrows that the part does
  * not. A part on every damage source is a debuff of the target: the text's words say how it is
  * applied, not what it raises. A part with the sources of a model effect the text names (e.g.
- * "grants Radiant") takes them from that effect.
+ * "grants Radiant") takes them from that effect. A narrowing counts only in the sentences that name
+ * the part's value or the effect with that value, if any do (Gyrfalcon's: "Volatile Rounds to Void
+ * Weapons" is another bonus; Fever and Chill: "Bows = 3 Crits" is the trigger).
  */
 function targetFindings(
   part: MultiplierPart,
   texts: ItemText[],
-  via: { name: string; sources: string[][] }[],
+  via: { name: string; values: number[]; sources: string[][] }[],
   abilityNames: Record<string, string>,
 ): string[] {
   if (ALL_SOURCES.every((s) => part.damageSources.includes(s as MultiplierPart["damageSources"][number]))) return [];
   const text = texts.map((t) => withoutPvp(t.text).toLowerCase()).join("\n");
+  const pct = pctOf(part.multiplier.value!);
+  const viaNames = via.filter((v) => v.values.some((p) => near(p, pct))).map((v) => v.name.toLowerCase());
+  const withValue = sentencesOf(text).filter(
+    (s) => percentsIn(s).some((p) => near(p, pct)) || viaNames.some((n) => s.includes(n)),
+  );
+  const narrowing = withValue.length > 0 ? withValue.join("\n") : text;
   const sameSources = (sources: string[]) =>
     sources.length === part.damageSources.length && part.damageSources.every((s) => sources.includes(s));
   const named = via.some((v) => text.includes(v.name.toLowerCase()) && v.sources.some(sameSources));
+  const implied = (s: string) =>
+    s === "weapon" &&
+    (WEAPON_BUCKETS.has(part.bucketId) || (part.weaponTypes ?? []).some((w) => WEAPON_WORDS[w].test(text)));
   const findings: string[] = [];
   if (!named)
     for (const s of part.damageSources)
-      if (!SOURCE_WORDS[s].test(text)) findings.push(`${s} nicht im Text`);
+      if (!SOURCE_WORDS[s].test(text) && !implied(s)) findings.push(`${s} nicht im Text`);
   for (const e of part.elements ?? []) if (!new RegExp(`\\b${e}\\b`).test(text)) findings.push(`${e} nicht im Text`);
   if (!part.elements && !part.condition && !part.superElements) {
-    const named = ELEMENTS.filter((e) => new RegExp(`\\b${e} (weapons?|damage|abilit)`).test(text));
+    const named = ELEMENTS.filter((e) => new RegExp(`\\b${e} (weapons?|damage|abilit)`).test(narrowing));
     if (named.length > 0) findings.push(`Text nennt ${named.join("/")}, Part gilt für alle Elemente`);
   }
   for (const w of part.weaponTypes ?? []) if (!WEAPON_WORDS[w].test(text)) findings.push(`${w} nicht im Text`);
@@ -214,7 +231,7 @@ function targetFindings(
   if (!named && abilities.length > 0 && !abilities.some((a) => text.includes(a.toLowerCase())))
     findings.push(`${abilities.join("/")} nicht im Text`);
   if (!part.weaponTypes && part.damageSources.includes("weapon")) {
-    const named = (Object.keys(WEAPON_WORDS) as WeaponType[]).filter((w) => WEAPON_WORDS[w].test(text));
+    const named = (Object.keys(WEAPON_WORDS) as WeaponType[]).filter((w) => WEAPON_WORDS[w].test(narrowing));
     if (named.length > 0) findings.push(`Text nennt ${named.join("/")}, Part gilt für alle Waffen`);
   }
   return findings;
@@ -293,12 +310,18 @@ export function textCheckRows(inputs: TextCheckInputs): TextCheckRow[] {
         ...itemTexts(base, inputs),
       ];
       const item = `${weapon.name}: ${option.name}`;
+      // A ratio of two Aegis or Quantum rows (with and without the catalyst) measures it as a whole
+      // (reload, ammo, a perk); the percentages of its text are parts of that, not the damage ratio.
+      const value = valueVerdict(option.factor.value!, option.factor.source, dedupe(texts), stacksOf(option.name), []);
+      const whole = /\(base row |with catalyst \/ without/.test(option.factor.source.note ?? "");
       rows.push({
         key: `catalyst:${weapon.id}:${option.id}:value`,
         item,
         check: "value",
         model: `${option.factor.value! >= 1 ? "+" : "−"}${pctOf(option.factor.value!)} % ${option.bucketId}`,
-        ...valueVerdict(option.factor.value!, option.factor.source, dedupe(texts), stacksOf(option.name), []),
+        ...(whole && value.verdict === "deviation"
+          ? { verdict: "measured" as const, text: "Messung mit und ohne Catalyst" }
+          : value),
       });
       if (option.durationSeconds !== null) {
         rows.push({

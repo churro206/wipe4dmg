@@ -1,4 +1,11 @@
 {
-  "openLimit": 24,
-  "reasons": {}
+  "openLimit": 1,
+  "reasons": {
+    "elemental-overdrive-solar#0:target": "Text: „Pickup-Matching Weapon Damage“; das Effect ist die Variante mit Solar-Pickup, also Solar-Waffen.",
+    "on-your-mark:duration": "Die 3 s sind die Restoration aus dem Compendium (Zeilen über Heilung zählen nicht als Text); On Your Mark hat keinen Damage-Part, die 12 s gelten den Stapeln.",
+    "exotic-armor:eternal-warrior-2:duration": "Compendium: „On Fists of Havoc End: Grants x4 Arc Weapon Surge for 30 seconds“; die 11 s aus Court gelten den Kill-Stapeln (erstes Effect, ok). Die Zeile nennt den Wert als „x4“, nicht als Prozentzahl.",
+    "exotic-armor:sanguine-alchemy:duration": "Court: „Instant 4x Surge Stacks: While in any Rift or Well of Radiance“, Dauer „~“: der Surge gilt, solange der Well steht (30 s, effects.json). Die 5 s und 10 s im Compendium sind Mark, Blood Magic und die Sperre beim Wechsel.",
+    "catalyst:izanagi-s-burden:catalyst:value": "Override: Clarity +20 % gilt auf Honed Edge x4 (291 % → 370 % Crit). Ohne Catalyst ist Honed Edge pro Munition schwächer als normale Schüsse (14910 ÷ 1,20 = 12404 < 13180, Quantum), mit Catalyst stärker: Wirkung des Catalysts = 14910 ÷ 13180 = ×1,131.",
+    "catalyst:outbreak-perfected:catalyst:value": "Override: Clarity +25 % gilt nur dem Nanite-Anteil (48 von 80 pro Kugel, Quantum): 32 + 48 × 1,25 = 92, also ×1,15."
+  }
 }
