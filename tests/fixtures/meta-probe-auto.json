@@ -1,0 +1,9 @@
+{
+  "note": "Rule of the extended meta probe (tests/lib/probeAuto.ts). ignored: assumptions of Aegis that need no switch, with the reason. deviations: fully mapped rows outside the tolerance, with the reason; they are known inaccuracies and block nothing (CLAUDE.md, breadth before accuracy).",
+  "ignored": {},
+  "deviations": {
+    "sustained-tractor-cannon": "-17 %; cause not examined",
+    "sustained-telesto": "-16 %; cause not examined (Weapons stat 200 of Aegis divided out, special weapon)",
+    "swap-needlestorm-feast-of-light-x6-limit-break": "+26 %; cause not examined (the same switch fits Blade Barrage, Gathering Storm and Golden Gun within 3 %)"
+  }
+}

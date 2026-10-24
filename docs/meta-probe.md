@@ -1,6 +1,6 @@
 # Gesamtprobe mit Aegis (generiert)
 
-Erzeugt mit `npm run probe` aus `tests/fixtures/meta-probe.json` und `src/data/aegis-totals.json` (`npm run import:totals`). Quotient = unser Total ÷ Aegis-Total (ohne die herausgerechneten Faktoren); relativ = Quotient ÷ Median. Grenze ±15 %.
+Erzeugt mit `npm run probe` aus `tests/fixtures/meta-probe.json` und `src/data/aegis-totals.json` (`npm run import:totals`). Quotient = unser Total ÷ Aegis-Total (ohne die herausgerechneten Faktoren); relativ = Quotient ÷ Median. Grenze ±15 %. Die Zeilen nach Regel stehen in `docs/meta-probe-auto.md`.
 
 Median: 1.000
 
