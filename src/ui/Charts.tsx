@@ -410,12 +410,11 @@ export function RotationTimeline({
   ignitionsMs,
   damagePhaseSeconds,
 }: {
+  // one row per effect; a triggered effect has a window per trigger
   rows: {
     label: string;
     iconUrl?: string;
-    startMs: number;
-    endMs: number;
-    uptime: number;
+    windows: { startMs: number; endMs: number; uptime: number }[];
   }[];
   abilityRows: AbilityTimelineRow[];
   shotsMs: number[];
@@ -543,20 +542,24 @@ export function RotationTimeline({
                   ? `${label.slice(0, MAX_LABEL_CHARS - 1)}…`
                   : label}
               </text>
-              {line.kind === "effect" && line.row.endMs > line.row.startMs && (
-                <rect
-                  x={x(line.row.startMs)}
-                  y={middle - 6}
-                  width={x(line.row.endMs) - x(line.row.startMs)}
-                  height={12}
-                  rx={4}
-                  fill="var(--muted)"
-                >
-                  <title>
-                    {`${label}: ${seconds.format(line.row.startMs / 1000)}–${seconds.format(line.row.endMs / 1000)} s (${percent.format(line.row.uptime)})`}
-                  </title>
-                </rect>
-              )}
+              {line.kind === "effect" &&
+                line.row.windows
+                  .filter((w) => w.endMs > w.startMs)
+                  .map((w) => (
+                    <rect
+                      key={`effect-${w.startMs}`}
+                      x={x(w.startMs)}
+                      y={middle - 6}
+                      width={x(w.endMs) - x(w.startMs)}
+                      height={12}
+                      rx={4}
+                      fill="var(--muted)"
+                    >
+                      <title>
+                        {`${label}: ${seconds.format(w.startMs / 1000)}–${seconds.format(w.endMs / 1000)} s (${percent.format(w.uptime)})`}
+                      </title>
+                    </rect>
+                  ))}
               {line.kind === "ability" &&
                 line.ability.windows.map((w) => (
                   <rect

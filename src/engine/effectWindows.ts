@@ -133,6 +133,24 @@ export type EffectWindow = {
   uptime: number; // share of the damage phase, 0 to 1
 };
 
+/**
+ * Windows of the effects as the simulation resolves them, for the rotation: triggered effects (e.g.
+ * Radiant from Lightweight Knife) open their windows at the casts and super windows of the run.
+ */
+export function rotationWindows(
+  effects: Effect[],
+  damagePhaseSeconds: number,
+  options: EffectWindowOptions & { abilities?: TriggerContext["casts"] },
+  superWindows: TriggerContext["superWindows"],
+  weaponElement: Element,
+): EffectWindow[] {
+  return effectWindows(effects, damagePhaseSeconds, options, {
+    casts: options.abilities ?? [],
+    superWindows,
+    weaponElement,
+  });
+}
+
 /** Windows of the effects, clipped to the damage phase, with their uptime. */
 export function effectWindows(
   effects: Effect[],

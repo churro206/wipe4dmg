@@ -20,7 +20,7 @@ import { breakdown } from "../engine/breakdown";
 import { addCast, removeCast, setCast } from "../engine/buildAbilities";
 import { nextCastFor } from "../engine/buildSimulation";
 import { buildSimulation } from "../engine/buildSimulation";
-import { effectWindows } from "../engine/effectWindows";
+import { rotationWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
 import { fitArtifact } from "../engine/artifacts";
 import { abilitiesFor, effectsFor } from "../engine/providers";
@@ -396,8 +396,15 @@ function App() {
     const nextMs = nextCastFor(currentBuild, kind, gameData, weapon, buckets);
     return [{ ability, castsMs: pick.castsMs, actualMs, nextMs }];
   });
-  const windows = isValid
-    ? effectWindows(selected, damagePhaseSeconds, options)
+  // triggered effects, e.g. Radiant from Lightweight Knife, open their windows at the casts
+  const windows = result
+    ? rotationWindows(
+        selected,
+        damagePhaseSeconds,
+        options,
+        result.superWindows,
+        weapon.element,
+      )
     : [];
 
   // Optimizer: own effects vary, fireteam support and its windows stay as set.
@@ -898,17 +905,23 @@ function App() {
                   {tab === "rotation" && (
                     <>
                       <RotationTimeline
-                        rows={windows.map((w) => {
-                          const effect = selected.find(
-                            (e) => e.id === w.effectId,
-                          )!;
-                          return {
-                            ...w,
-                            label: effect.shortName,
-                            iconUrl: iconUrl(
-                              effectIconKey(effect, weapon.element),
-                            ),
-                          };
+                        rows={selected.flatMap((effect) => {
+                          const own = windows.filter(
+                            (w) => w.effectId === effect.id,
+                          );
+                          if (own.length === 0) return [];
+                          return [
+                            {
+                              windows: own,
+                              // a grant names its ability, e.g. "Radiant (Lightweight Knife)"
+                              label: effect.id.includes("@")
+                                ? effect.name
+                                : effect.shortName,
+                              iconUrl: iconUrl(
+                                effectIconKey(effect, weapon.element),
+                              ),
+                            },
+                          ];
                         })}
                         abilityRows={castRows.map(({ ability, actualMs }) => ({
                           label: ability.name,
@@ -932,7 +945,12 @@ function App() {
                           windowInputs[effect.id] ?? defaultWindow(effect)
                         }
                         uptimeOf={(effect) =>
-                          windows.find((w) => w.effectId === effect.id)?.uptime
+                          windows
+                            .filter((w) => w.effectId === effect.id)
+                            .reduce<number | undefined>(
+                              (sum, w) => (sum ?? 0) + w.uptime,
+                              undefined,
+                            )
                         }
                         onChange={setWindow}
                       />

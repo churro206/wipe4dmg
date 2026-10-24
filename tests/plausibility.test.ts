@@ -7,6 +7,7 @@ import { afterAll, describe, expect, it } from "vitest";
 import type { Build, Weapon } from "../src/data/schema";
 import { damageByMultiplier, damageShares } from "../src/engine/analysis";
 import { fitArtifact } from "../src/engine/artifacts";
+import { rotationWindows } from "../src/engine/effectWindows";
 import { abilitiesFor } from "../src/engine/providers";
 import { buildSimulation } from "../src/engine/buildSimulation";
 import { simulate, type SimulationResult } from "../src/engine/simulate";
@@ -875,6 +876,40 @@ describe("ability energy (block 3)", () => {
     );
     expect(three / one).toBeCloseTo(1, 6);
     expect(starfire.total / radiantOnly).toBeGreaterThan(3);
+  });
+});
+
+describe("the rotation shows what the simulation uses", () => {
+  it("Lightweight Knife: a Radiant window of 10 s per cast in the rotation", () => {
+    const build: Build = {
+      weaponId: "gjallarhorn",
+      guardianClass: "hunter",
+      subclass: "solar",
+      catalyst: false,
+      selections: [],
+      effectWindows: {},
+      damagePhaseSeconds: 30,
+      abilities: [{ abilityId: "lightweight-knife", castsMs: [0] }],
+    };
+    const weapon = weaponById("gjallarhorn");
+    const { selected, options } = buildSimulation(build, gameData);
+    const result = simulate(weapon, 30, selected, buckets, options);
+    const radiant = rotationWindows(
+      selected,
+      30,
+      options,
+      result.superWindows,
+      weapon.element,
+    ).filter((w) => w.effectId === "radiant@lightweight-knife");
+    const casts = options.abilities?.[0].castsMs ?? [];
+    note(
+      "Rotation: Radiant-Fenster nach Lightweight Knife (Cast bei 0 s)",
+      radiant.map((w) => `${w.startMs}–${w.endMs} ms`).join(", ") || "keins",
+      "10 s ab Treffer",
+    );
+    expect(casts).toEqual([0]);
+    expect(radiant).toHaveLength(1);
+    for (const w of radiant) expect(w.endMs - w.startMs).toBe(10_000);
   });
 });
 
