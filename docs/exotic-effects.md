@@ -7,11 +7,11 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Art | Zeilen |
 | --- | --- |
 | Immer aktiv (Regel 6) | 2 |
-| Vorher aufgebaut, Option (Regel 3) | 11 |
+| Vorher aufgebaut, Option (Regel 3) | 12 |
 | Kill-Buff ohne Dauer (Regel 3) | 2 |
 | Fenster aus der Rotation (Regel 4) | 15 |
 | Auslöser in der Rotation, offen (Regel 4) | 1 |
-| Auslöser Class Ability, U7 (Regel 4) | 2 |
+| Auslöser Class Ability, U7 (Regel 4) | 1 |
 | Gilt mit einem Zustand, z. B. Amplified (Regel 5) | 3 |
 | Ability nicht im Modell (Regel 6) | 3 |
 | Stapel pro Waffentreffer (Regel 7) | 2 |
@@ -37,6 +37,7 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Eternal Warrior | 3 | vorher aufgebaut: surge +25 % für 11 s („Adds 1x Surge stack: ~2 Arc Kills (average) (up to 4 stacks)“) | nur Court |
 | Gyrfalcon's Hauberk | 3 | vorher aufgebaut: empowering +35 % für 6 s („Finishing while Invisible provides a damage buff“) | Court = Text (35 %) |
 | Hallowfire Heart | 3 | vorher aufgebaut: +150 % auf super (solar) für 20 s („Kills“ … „for 20 seconds“) | Compendium 150 %, Clarity – |
+| Hazardous Propulsion | 3 | vorher aufgebaut: empowering +35 % für 10 s („Damaging targets with Exodus Rockets (Class Ability) 6x provides the highest buff“) | nur Court |
 | Khepri's Sting | 3 | vorher aufgebaut: debuff +15 % für 15 s („Killing a Weakened energy causes a Weakening Smoke Cloud around enemy death location“) | nur Court |
 | Sealed Ahamkara Grasps | 3 | vorher aufgebaut: empowering +35 % für 7 s („Powered Melees and Finisher kills grant Nightmare Fuel which grants a damage buff on freshly drawn weapons“) | Court = Text (35 %) |
 | Spirit of Verity | 3 | vorher aufgebaut: +100 % auf grenade für 4 s („Kill“ … „for 4 seconds“) | Compendium 100 %, Clarity – |
@@ -81,7 +82,6 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
-| Hazardous Propulsion | 4 | Auslöser Class Ability („Damaging targets with Exodus Rockets (Class Ability) 6x provides the highest buff“), U7 | nur Court |
 | Heart of Inmost Light | 4 | Auslöser Class Ability („On Grenade or Class Ability Usage“), U7 | Compendium 35 %, Clarity 35 % |
 
 ## Gilt mit einem Zustand, z. B. Amplified (Regel 5)

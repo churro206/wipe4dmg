@@ -185,6 +185,12 @@ const statusesIn = (text: string) =>
   STATUS_NAMES.filter(([, p]) => p.test(text)).map(([s]) => s);
 const WHILE_ACTIVE = /While [^:.\n]*\bis active/gi;
 const WEAPON_TYPES: [RegExp, WeaponType][] = [[/\bShotguns?\b/i, "shotgun"]];
+// Hazardous Propulsion: the exodus rockets are shot by the class ability and their hits build the
+// stacks; the stacks are taken as built before the damage phase (owner, 2026-10-24)
+const EXODUS = /Exodus Rockets/i;
+// Clarity: "increasing "rocket-type" damage … includes: Rocket Launchers"; Court adds grenade
+// launchers in its notes. Clarity names the perk's own list, so it wins.
+const ROCKET_TYPE: [RegExp, WeaponType][] = [[/"rocket-type" damage/i, "rocketLauncher"]];
 
 /** Verdict of one Court row with a value; quoted: the bonuses of the texts, for the check. */
 export function courtVerdict(
@@ -198,7 +204,8 @@ export function courtVerdict(
   const value = `${flat(row.pve ?? "")} für ${flat(row.pveDuration ?? "")}`;
   // A class ability opens the window with its cast (U7); Hazardous Propulsion (rocket hits) and
   // Heart of Inmost Light (grenade as well) are other cases
-  const classCast = CLASS_ABILITY.test(trigger) && !/Grenade|Exodus/i.test(trigger);
+  const exodus = EXODUS.test(trigger);
+  const classCast = CLASS_ABILITY.test(trigger) && !/Grenade/i.test(trigger) && !exodus;
   const stages = numbers(row.pve ?? "", "%");
   // one cast is one stack: the first stage, e.g. Mask of Bakris 10 / 21 / 33 %
   const percent = classCast ? stages[0] : Math.max(...stages);
@@ -243,7 +250,7 @@ export function courtVerdict(
       },
     };
   }
-  if (CLASS_ABILITY.test(trigger) && !classCast)
+  if (CLASS_ABILITY.test(trigger) && !classCast && !exodus)
     return {
       rule: 4,
       kind: "classAbility",
@@ -252,7 +259,7 @@ export function courtVerdict(
     };
   const superDependent = SUPER_DEPENDENT.test(text);
   const rotation = classCast || (ROTATION.test(trigger) && !superDependent);
-  if (!rotation && !superDependent && !KILL.test(trigger))
+  if (!rotation && !superDependent && !exodus && !KILL.test(trigger))
     return {
       rule: 8,
       kind: "noText",
@@ -297,6 +304,7 @@ export function courtVerdict(
       : undefined;
   // "While an Arc or Stasis Super Ability is equipped": the buff applies to weapons of both
   const weaponElements: Element[] = classCast && ARC_OR_STASIS.test(text) ? ["arc", "stasis"] : [];
+  const rocketTypes = exodus ? ROCKET_TYPE.filter(([p]) => p.test(text)).map(([, t]) => t) : [];
   // "Precision kill causes a Void AOE which applies Weaken": only with a super of that element
   const superElement = superDependent ? elementOf(trigger) : undefined;
   const source: Source = {
@@ -320,6 +328,7 @@ export function courtVerdict(
         row.bucketId === "debuff" ? [...DamageSource.options] : ["weapon"],
       ...(element ? { elements: [element] } : {}),
       ...(weaponElements.length ? { elements: weaponElements } : {}),
+      ...(rocketTypes.length ? { weaponTypes: rocketTypes } : {}),
       ...(found?.condition ? { condition: found.condition } : {}),
       ...(superElement ? { superElements: [superElement] } : {}),
     },

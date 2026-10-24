@@ -187,6 +187,24 @@ describe("exotic armor changes its abilities", () => {
     expect(weaponDamage([])).toBeCloseTo(plain, 0);
   });
 
+  it("Hazardous Propulsion pre-stacked: +35 % for 10 s on a rocket launcher only", () => {
+    const titan = { guardianClass: "titan" as const, damagePhaseSeconds: 10 };
+    const pre = { ...titan, exoticArmorId: "hazardous-propulsion", exoticPreBuilt: true };
+    const gjallarhorn = weaponById("gjallarhorn");
+    const ratio = (weapon?: Weapon, phase = titan) =>
+      damageOf(run({ ...pre, damagePhaseSeconds: phase.damagePhaseSeconds }, weapon), "weapon") /
+      damageOf(run(phase, weapon), "weapon");
+    const long = { ...titan, damagePhaseSeconds: 30 };
+    note("Gjallarhorn (10 s) mit / ohne Hazardous Propulsion", `×${fmt(ratio(gjallarhorn))}`, "×1,35 (Court: Empowering 35 % bei 6x, 10 s)");
+    note("Gjallarhorn (30 s)", `×${fmt(ratio(gjallarhorn, long))}`, "zwischen ×1,05 und ×1,35 (nur die ersten 10 s)");
+    note("One Thousand Voices (10 s)", `×${fmt(ratio())}`, "×1,00 (kein Rocket Launcher)");
+    expect(ratio(gjallarhorn)).toBeGreaterThan(1.3);
+    expect(ratio(gjallarhorn)).toBeLessThanOrEqual(1.35 + 1e-9);
+    expect(ratio(gjallarhorn, long)).toBeGreaterThan(1.05);
+    expect(ratio(gjallarhorn, long)).toBeLessThan(1.3);
+    expect(ratio()).toBeCloseTo(1, 6);
+  });
+
   it("Peacekeepers: 20 stacks of +5 % on an SMG,a boss takes 33 % less from buffed shots, so ×1.34 at most", () => {
     const smg = weapons.find(
       (w) => w.weaponType === "submachineGun" && w.ammo === "primary",

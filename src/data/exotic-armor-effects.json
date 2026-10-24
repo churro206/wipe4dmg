@@ -533,6 +533,45 @@
     }
   },
   {
+    "exoticArmorId": "hazardous-propulsion",
+    "activation": "preBuilt",
+    "effect": {
+      "id": "exotic-armor:hazardous-propulsion",
+      "name": "Hazardous Propulsion",
+      "code": 3050442980,
+      "shortName": "Hazardous Propulsion",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "empowering",
+          "multiplier": {
+            "value": 1.35,
+            "source": {
+              "name": "Court Stacking Guide (empowering, PvE 35% at 6x, 10s)",
+              "url": "https://destiny2.science/court-sheet",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "note": "„Damaging targets with Exodus Rockets (Class Ability) 6x provides the highest buff“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+            }
+          },
+          "damageSources": ["weapon"],
+          "weaponTypes": ["rocketLauncher"]
+        }
+      ],
+      "durationMs": {
+        "value": 10000,
+        "source": {
+          "name": "Court Stacking Guide (empowering, PvE 35% at 6x, 10s)",
+          "url": "https://destiny2.science/court-sheet",
+          "retrieved": "2026-10-21",
+          "status": "verified",
+          "note": "„Damaging targets with Exodus Rockets (Class Ability) 6x provides the highest buff“; prebuilt before the damage phase at the highest stage (ADR 0015)"
+        }
+      }
+    }
+  },
+  {
     "exoticArmorId": "khepris-sting",
     "activation": "preBuilt",
     "effect": {

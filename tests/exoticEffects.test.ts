@@ -55,7 +55,7 @@ describe("rules for the exotic damage buffs", () => {
     // x2 needs the class ability
     ["Heart of Inmost Light", "classAbility"],
     ["Mask of Bakris", "triggered"],
-    ["Hazardous Propulsion", "classAbility"],
+    ["Hazardous Propulsion", "preBuilt"],
     ["Gwisin Vest", "triggered"],
     ["The Path of Burning Steps", "needsEffect"],
     ["No Backup Plans", "needsEffect"],
@@ -90,6 +90,18 @@ describe("rules for the exotic damage buffs", () => {
       result.effects.filter((e) => e.exoticArmorId === id).map((e) => e.effect);
     expect(effect("veritys-brow")[0]).toMatchObject({ durationMs: { value: 4000 } });
     expect(effect("spirit-of-verity")[0]).toMatchObject({ durationMs: { value: 4000 } });
+  });
+
+  it("Hazardous Propulsion: pre-stacked 35 % Empowering for 10 s, only rocket launchers (U7 part 3)", () => {
+    expect(effectOf("hazardous-propulsion")).toMatchObject({
+      activation: "preBuilt",
+      effect: {
+        durationMs: { value: 10000 },
+        parts: [
+          { bucketId: "empowering", multiplier: { value: 1.35 }, weaponTypes: ["rocketLauncher"] },
+        ],
+      },
+    });
   });
 
   it("windows from the rotation (U6-1b)", () => {
