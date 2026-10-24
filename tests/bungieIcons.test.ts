@@ -26,12 +26,16 @@ import {
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadEffects, loadSubclassEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { itemsOfAbility } from "../src/engine/abilityNames";
 
 const effects = loadEffects(rawEffects);
 const weapons = [loadWeapon(raw)];
 const manifestAbilities = ManifestAbilities.parse(rawManifest).abilities;
+// the Prismatic grenades of Transcendence are no plug of the manifest abilities: icon by name
 const abilityRefs = abilityIconRefs(
-  AbilityData.array().parse(rawAbilities),
+  AbilityData.array()
+    .parse(rawAbilities)
+    .filter((a) => itemsOfAbility(manifestAbilities, a).length > 0),
   manifestAbilities,
 );
 const extras = [...IconRef.array().parse(rawIconRefs), ...abilityRefs];

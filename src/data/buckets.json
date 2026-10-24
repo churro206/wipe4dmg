@@ -93,6 +93,18 @@
     }
   },
   {
+    "id": "transcendence",
+    "name": "Transcendence",
+    "stacking": "multiplicative",
+    "source": {
+      "name": "Destiny Data Compendium, Prismatic Glossary (Transcendence: \"Damage Increase stacks with everything.\")",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-24",
+      "status": "verified",
+      "quote": "Damage Increase stacks with everything."
+    }
+  },
+  {
     "id": "abilityStat",
     "name": "Ability Stat",
     "stacking": "multiplicative",

@@ -1618,5 +1618,44 @@
     },
     "aegisRowId": "melee-arcane-needle",
     "package": true
+  },
+  {
+    "id": "hailfire-spike",
+    "code": 77,
+    "name": "Hailfire Spike",
+    "kind": "grenade",
+    "element": "stasis",
+    "providers": [
+      { "kind": "subclass", "classes": ["hunter"], "subclasses": ["prismatic"] }
+    ],
+    "duringEffectId": "transcendence",
+    "aegisRowId": "grenade-hailfire-spike-facet-of-courage-facet-of-ruin",
+    "package": true
+  },
+  {
+    "id": "electrified-snare",
+    "code": 78,
+    "name": "Electrified Snare",
+    "kind": "grenade",
+    "element": "arc",
+    "providers": [
+      { "kind": "subclass", "classes": ["titan"], "subclasses": ["prismatic"] }
+    ],
+    "duringEffectId": "transcendence",
+    "aegisRowId": "grenade-electrified-snare-facet-of-courage",
+    "package": true
+  },
+  {
+    "id": "freezing-singularity",
+    "code": 79,
+    "name": "Freezing Singularity",
+    "kind": "grenade",
+    "element": "void",
+    "providers": [
+      { "kind": "subclass", "classes": ["warlock"], "subclasses": ["prismatic"] }
+    ],
+    "duringEffectId": "transcendence",
+    "aegisRowId": "grenade-freezing-singularity-facet-of-courage-facet-of-ruin",
+    "package": true
   }
 ]

@@ -139,6 +139,7 @@ describe("generated files are current (run npm run build:buffs)", () => {
   it("codes are unique across all effects", () => {
     const codes = result.effects.map((e) => e.code);
     expect(new Set(codes).size).toBe(codes.length);
-    expect(Math.min(...codes)).toBeGreaterThan(inputs.nextCode - 1 - result.effects.length);
+    // hand-written effects may take codes after the generated block, so only the upper bound holds
+    expect(Math.max(...codes)).toBeLessThan(inputs.nextCode);
   });
 });

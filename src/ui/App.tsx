@@ -41,6 +41,7 @@ import {
   MAX_ABILITY_STATS,
   MAX_WEAPONS_STAT,
   replacesSuper,
+  withoutBoundAbilities,
   withoutOwnSuperEffects,
   withoutSlot,
   type AbilityChoice,
@@ -336,6 +337,9 @@ function App() {
     if (replacesSuper(effect, provider) && !isSelected(effect, provider)) {
       setAbilityChoice((current) => withoutSlot(current, "super"));
     }
+    if (isSelected(effect, provider)) {
+      setAbilityChoice((current) => withoutBoundAbilities(current, effect.id));
+    }
     setSelections((current) => toggleSelection(current, effect, provider));
   };
   const castRows = ABILITY_KINDS.flatMap((kind) => {
@@ -345,7 +349,13 @@ function App() {
     // the casts the energy allows and the earliest time of one more (block 3)
     const actualMs =
       options.abilities?.find((c) => c.ability.kind === kind)?.castsMs ?? pick.castsMs;
-    const nextMs = nextCastOf(currentBuild, kind, abilities, gameData.energy);
+    const nextMs = nextCastOf(
+      currentBuild,
+      kind,
+      abilities,
+      gameData.energy,
+      gameData.effects,
+    );
     return [{ ability, castsMs: pick.castsMs, actualMs, nextMs }];
   });
   const windows = isValid
@@ -573,11 +583,16 @@ function App() {
                 slots={ABILITY_KINDS.map((kind) => ({
                   kind,
                   label: ABILITY_KIND_LABELS[kind],
+                  // bound abilities (Transcendence grenades) only while their effect is selected
                   options: abilitiesFor(
                     abilities,
                     kind,
                     guardianClass,
                     subclass,
+                  ).filter(
+                    (a) =>
+                      a.duringEffectId === undefined ||
+                      selections.some((s) => s.effectId === a.duringEffectId),
                   ),
                   selected: abilities.find(
                     (a) => a.id === abilityChoice[kind]?.abilityId,

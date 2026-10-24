@@ -13,7 +13,7 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Supers | 0 | 25 | 1 | 5 | 31 |
 | Grenades | 0 | 26 | 0 | 4 | 30 |
 | Melees | 0 | 24 | 0 | 2 | 26 |
-| Effects | 16 modelled | | | | |
+| Effects | 17 modelled | | | | |
 
 ## Supers
 
@@ -137,3 +137,4 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Elemental Overdrive (solar pickup) | amplification | amplification +22% | weapon | 7 s |
 | Particle Reconstruction | –, debuff | Timing: noReload; debuff +27.6% | weapon | whole phase or Rotation |
 | Ember of Ashes | – | scorch ×1.5 | weapon | whole phase or Rotation |
+| Transcendence | transcendence | transcendence +5% | weapon | 20 s |

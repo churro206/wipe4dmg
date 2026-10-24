@@ -90,8 +90,9 @@ export type NamedIconItem = {
  * the name of the effect, without a trailing "(…)". Effects with no such item are returned apart.
  */
 export function namedIconRefs(
-  effects: Effect[],
+  effects: Pick<Effect, "id" | "name">[],
   items: Record<string, NamedIconItem>,
+  keyPrefix = "effect",
 ): { refs: IconRef[]; missing: string[] } {
   const byName = new Map<string, number>();
   for (const item of Object.values(items)) {
@@ -107,7 +108,7 @@ export function namedIconRefs(
     if (hash === undefined) missing.push(effect.id);
     else
       refs.push({
-        key: `effect:${effect.id}`,
+        key: `${keyPrefix}:${effect.id}`,
         manifestRef: { table: "DestinyInventoryItemDefinition", hash },
       });
   }

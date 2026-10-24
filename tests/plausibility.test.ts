@@ -139,6 +139,21 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio).toBeLessThan(2.7);
   });
 
+  it("Transcendence: +5 % weapon damage for 20 s, so a 15 s phase gets all of it", () => {
+    const prismatic = {
+      subclass: "prismatic" as const,
+      selections: [{ effectId: "transcendence", provider: "subclass" as const }],
+    };
+    const ratio = (seconds: number) =>
+      damageOf(run({ ...prismatic, damagePhaseSeconds: seconds }), "weapon") /
+      damageOf(run({ subclass: "prismatic", damagePhaseSeconds: seconds }), "weapon");
+    note("One Thousand Voices (15 s) mit / ohne Transcendence", `×${fmt(ratio(15))}`, "×1,05 (Compendium: 5 % Weapon Damage, 20 s)");
+    note("One Thousand Voices (30 s) mit / ohne Transcendence", `×${fmt(ratio(30))}`, "zwischen ×1,03 und ×1,05 (nur die ersten 20 s)");
+    expect(ratio(15)).toBeCloseTo(1.05, 3);
+    expect(ratio(30)).toBeGreaterThan(1.03);
+    expect(ratio(30)).toBeLessThan(1.05);
+  });
+
   it("Peacekeepers: 20 stacks of +5 % on an SMG, a boss takes 33 % less from buffed shots, so ×1.34 at most", () => {
     const smg = weapons.find(
       (w) => w.weaponType === "submachineGun" && w.ammo === "primary",

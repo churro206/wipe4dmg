@@ -353,7 +353,8 @@ describe("abilities.json", () => {
   it("links every ability to the Compendium and grants only known effects", () => {
     const effectIds = new Set(rawEffects.map((e) => e.id));
     for (const ability of abilities) {
-      expect(ability.compendium, ability.id).toBeDefined();
+      // the Prismatic grenades of Transcendence sit in no ability section of the Compendium
+      if (!ability.duringEffectId) expect(ability.compendium, ability.id).toBeDefined();
       for (const id of ability.grantsEffectIds ?? []) {
         expect(effectIds, ability.id).toContain(id);
       }

@@ -703,5 +703,46 @@
         }
       }
     ]
+  },
+  {
+    "id": "transcendence",
+    "code": 84,
+    "name": "Transcendence",
+    "shortName": "Transcendence",
+    "providers": [
+      {
+        "kind": "subclass",
+        "slot": "buffs",
+        "subclasses": ["prismatic"]
+      }
+    ],
+    "parts": [
+      {
+        "type": "multiplier",
+        "bucketId": "transcendence",
+        "damageSources": ["weapon"],
+        "multiplier": {
+          "value": 1.05,
+          "source": {
+            "name": "Destiny Data Compendium, Prismatic Glossary (Transcendence)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "verified",
+            "quote": "Grants 5% Increased Weapon Damage, an additional 10% Grenade and Melee Regeneration Speed, and 20% [5%] Damage Resist for 20 seconds.",
+            "note": "Aegis rows with Transcendent state \"excludes Transcendence 5% bonus\", so the bonus is no part of their values. The bars count as filled before the phase; one activation per phase, no kill extensions (ADR 0015)."
+          }
+        }
+      }
+    ],
+    "durationMs": {
+      "value": 20000,
+      "source": {
+        "name": "Destiny Data Compendium, Prismatic Glossary (Transcendence)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "quote": "… for 20 seconds."
+      }
+    }
   }
 ]

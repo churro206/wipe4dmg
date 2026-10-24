@@ -52,6 +52,7 @@ import {
   type WeaponManifestTables,
 } from "./lib/manifestWeapons.ts";
 import { assumptionName } from "./lib/aegisWeapons.ts";
+import { itemsOfAbility } from "../src/engine/abilityNames.ts";
 
 const BUNGIE = "https://www.bungie.net";
 const ROOT = new URL("../", import.meta.url);
@@ -214,10 +215,16 @@ const armorRefs: IconRef[] = ExoticArmorEntry.array()
       hash: entry.hash,
     },
   }));
-// Generated buff effects (npm run build:buffs) have no manifest ref: look the item up by name.
-const buffEffects = existsSync(new URL("src/data/buff-effects.json", ROOT))
-  ? Effect.array().parse(readJson("src/data/buff-effects.json"))
-  : [];
+// Generated buff effects (npm run build:buffs) and effects of effects.json without a manifest ref
+// (e.g. Transcendence): look the item up by name.
+const buffEffects = [
+  ...(existsSync(new URL("src/data/buff-effects.json", ROOT))
+    ? Effect.array().parse(readJson("src/data/buff-effects.json"))
+    : []),
+  ...Effect.array()
+    .parse(readJson("src/data/effects.json"))
+    .filter((e) => !e.manifestRef),
+];
 // Effects with the element icon or a hand ref in icon-refs.json need no item of their own.
 const handRefs = IconRef.array().parse(readJson("src/data/icon-refs.json"));
 const buffIcons = namedIconRefs(
@@ -228,6 +235,18 @@ const buffIcons = namedIconRefs(
 );
 if (buffIcons.missing.length > 0)
   console.warn(`No manifest item with an icon for: ${buffIcons.missing.join(", ")}`);
+// Abilities that are no plug of the manifest abilities, e.g. the Prismatic grenades of Transcendence:
+// look the item up by name.
+const abilityData = AbilityData.array().parse(readJson("src/data/abilities.json"));
+const isPlug = (a: (typeof abilityData)[number]) =>
+  itemsOfAbility(manifestAbilities.abilities, a).length > 0;
+const abilityNamed = namedIconRefs(
+  abilityData.filter((a) => !isPlug(a)),
+  items,
+  "ability",
+);
+if (abilityNamed.missing.length > 0)
+  console.warn(`No manifest item with an icon for: ${abilityNamed.missing.join(", ")}`);
 const refs = collectIconRefs(
   [
     ...Effect.array().parse(readJson("src/data/effects.json")),
@@ -245,10 +264,8 @@ const refs = collectIconRefs(
     ...armorRefs,
     ...buffIcons.refs,
     ...handRefs,
-    ...abilityIconRefs(
-      AbilityData.array().parse(readJson("src/data/abilities.json")),
-      manifestAbilities.abilities,
-    ),
+    ...abilityIconRefs(abilityData.filter(isPlug), manifestAbilities.abilities),
+    ...abilityNamed.refs,
   ],
 );
 mkdirSync(new URL("public/icons/", ROOT), { recursive: true });

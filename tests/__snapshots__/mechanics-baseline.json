@@ -1649,6 +1649,18 @@
     "arcane-needle": {
       "stat 100": 28883.48,
       "stat 200": 29019.52
+    },
+    "hailfire-spike": {
+      "stat 100": 30606.96,
+      "stat 200": 31768.7
+    },
+    "electrified-snare": {
+      "stat 100": 29678.7,
+      "stat 200": 30477.83
+    },
+    "freezing-singularity": {
+      "stat 100": 29680.87,
+      "stat 200": 30233.48
     }
   },
   "exoticArmorOnOneThousandVoices": {

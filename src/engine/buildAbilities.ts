@@ -13,6 +13,7 @@ import { energyCasts, nextCastMs, type EnergyContext } from "./abilityEnergy";
 import type { AbilityStatValue } from "./abilityStats";
 import type { EffectWindowInput } from "./effectWindows";
 import { grantedEffectWindows } from "./grantedEffects";
+import { requireValue } from "./requireValue";
 import type { AbilityCast } from "./simulate";
 
 const MS_PER_SECOND = 1000;
@@ -25,7 +26,7 @@ export type AbilitySimulation = {
 };
 
 type AbilityBuild = Pick<Build, "abilities" | "abilityStats" | "exoticArmorId"> &
-  Partial<Pick<Build, "selections" | "damagePhaseSeconds">>;
+  Partial<Pick<Build, "selections" | "damagePhaseSeconds" | "effectWindows">>;
 
 export function abilitySimulation(
   build: AbilityBuild,
@@ -34,7 +35,7 @@ export function abilitySimulation(
   effects: Effect[],
   energy?: EnergyData,
 ): AbilitySimulation {
-  const requested = requestedCasts(build, abilities);
+  const requested = requestedCasts(build, abilities, effects);
   const context = energyContext(build, requested, energy);
   const casts = context ? energyCasts(requested, context) : requested;
   const stats = build.abilityStats
@@ -52,9 +53,27 @@ export function abilitySimulation(
   };
 }
 
-/** The casts of the rotation as entered, with the variant of each ability. */
-function requestedCasts(build: AbilityBuild, abilities: Ability[]): AbilityCast[] {
+/**
+ * The casts of the rotation as entered, with the variant of each ability. An ability bound to an
+ * effect (duringEffectId) keeps only the casts inside the window of that effect.
+ */
+function requestedCasts(
+  build: AbilityBuild,
+  abilities: Ability[],
+  effects: Effect[],
+): AbilityCast[] {
   const selected = new Set((build.selections ?? []).map((s) => s.effectId));
+  const insideWindow = (ability: Ability, castMs: number): boolean => {
+    const id = ability.duringEffectId;
+    if (id === undefined) return true;
+    const effect = effects.find((e) => e.id === id);
+    if (!effect || !selected.has(id)) return false;
+    const input = build.effectWindows?.[id];
+    const startMs = input?.startMs ?? 0;
+    const durationMs =
+      input ? input.durationMs : effect.durationMs && requireValue(effect.durationMs, "durationMs");
+    return castMs >= startMs && (durationMs === undefined || castMs < startMs + durationMs);
+  };
   return (build.abilities ?? []).map(({ abilityId, castsMs }) => {
     const ability = abilities.find((a) => a.id === abilityId);
     if (!ability) throw new Error(`Unknown ability "${abilityId}"`);
@@ -71,7 +90,10 @@ function requestedCasts(build: AbilityBuild, abilities: Ability[]): AbilityCast[
           (a.requiresEffectIds ?? []).every((id) => selected.has(id)),
       )
       .sort((a, b) => requirements(b) - requirements(a))[0];
-    return { ability: variant ?? ability, castsMs };
+    return {
+      ability: variant ?? ability,
+      castsMs: castsMs.filter((ms) => insideWindow(ability, ms)),
+    };
   });
 }
 
@@ -103,8 +125,9 @@ export function nextCastOf(
   kind: Ability["kind"],
   abilities: Ability[],
   energy: EnergyData,
+  effects: Effect[],
 ): number | undefined {
-  const requested = requestedCasts(build, abilities);
+  const requested = requestedCasts(build, abilities, effects);
   const own = requested.find((c) => c.ability.kind === kind);
   const context = energyContext(build, requested, energy);
   if (!own || !context) return undefined;

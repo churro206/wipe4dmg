@@ -30,6 +30,7 @@ describe("slots of own effects", () => {
       "elemental-overdrive-solar": "artifact",
       "particle-reconstruction": "artifact",
       "ember-of-ashes": "fragment",
+      transcendence: "buffs",
     });
   });
 });

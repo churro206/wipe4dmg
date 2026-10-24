@@ -178,6 +178,19 @@ export function withoutSlot(
   );
 }
 
+/** The choice without the abilities bound to an effect, e.g. the Prismatic grenade of Transcendence. */
+export function withoutBoundAbilities(
+  choice: AbilityChoice,
+  effectId: string,
+): AbilityChoice {
+  return Object.fromEntries(
+    Object.entries(choice).filter(
+      ([, pick]) =>
+        abilities.find((a) => a.id === pick.abilityId)?.duringEffectId !== effectId,
+    ),
+  );
+}
+
 /** Keeps only abilities class and subclass can still use, e.g. after switching them. */
 export function choiceFor(
   choice: AbilityChoice,

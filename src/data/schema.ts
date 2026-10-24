@@ -705,6 +705,9 @@ const AbilityFields = z.object({
   exoticArmorId: z.string().optional(),
   // Variant measured with aspects or fragments (U6-2 rule G): applies while all are selected.
   requiresEffectIds: z.array(z.string()).min(1).optional(),
+  // Castable only while this effect is active, in the window of the rotation, e.g. the Prismatic
+  // grenades while Transcendence lasts; casts outside are dropped.
+  duringEffectId: z.string().optional(),
   // Empty only for supers that just grant effects, e.g. Ward of Dawn.
   components: z.array(AbilityComponent),
   // Keywords its hits apply (ADR 0015, U5); set when loading from ability-keywords.json.

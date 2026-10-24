@@ -93,7 +93,7 @@ describe("effectSections", () => {
     const sections = effectSections(allEffects, "titan", "prismatic", granted);
     expect(
       sections.find((s) => s.slot === "buffs")!.effects.map((e) => e.id),
-    ).toEqual(["radiant", "weaken"]);
+    ).toEqual(["radiant", "weaken", "transcendence"]);
   });
 
   it("names the provider of each section for selections", () => {
