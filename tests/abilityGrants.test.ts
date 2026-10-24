@@ -75,12 +75,17 @@ describe("engine: a cast opens the window of the granted effect", () => {
     expect(dodged.some((h) => h.timeMs >= castMs && h.timeMs < castMs + 10_000)).toBe(true);
   });
 
-  it("does not stack with the Radiant switch (highest in the empowering bucket)", () => {
-    const radiant = { selections: [{ effectId: "radiant" }] };
-    const both = weaponHits(
-      hunter({ ...radiant, abilities: [{ abilityId: "acrobats-dodge", castsMs: [castMs] }] }),
-    );
-    const only = weaponHits(hunter(radiant));
-    both.forEach((hit, i) => expect(hit.damage).toBeCloseTo(only[i].damage, 6));
-  });
+  it.each(["acrobats-dodge", "lightweight-knife"])(
+    "%s does not stack with the Radiant switch (highest in the empowering bucket)",
+    (abilityId) => {
+      const radiant = { selections: [{ effectId: "radiant" }] };
+      const both = weaponHits(hunter({ ...radiant, abilities: [{ abilityId, castsMs: [castMs] }] }));
+      const only = weaponHits(hunter(radiant));
+      expect(both).toHaveLength(only.length);
+      both.forEach((hit, i) => {
+        expect(hit.damage).toBeCloseTo(only[i].damage, 6);
+        expect(hit.factors.empowering).toBeCloseTo(1.2, 6);
+      });
+    },
+  );
 });
