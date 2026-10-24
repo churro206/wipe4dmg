@@ -1,5 +1,6 @@
 import {
   AbilityStatScaling,
+  WeaponStatScaling,
   AegisAbilityRow,
   Boss,
   Bucket,
@@ -47,6 +48,11 @@ export function loadIconIndex(raw: unknown): IconIndex {
 /** Validates the raw ability stats Data File (ADR 0009). */
 export function loadAbilityStats(raw: unknown): AbilityStatScaling[] {
   return AbilityStatScaling.array().parse(raw);
+}
+
+/** Validates the raw Weapons stat Data File. */
+export function loadWeaponStats(raw: unknown): WeaponStatScaling[] {
+  return WeaponStatScaling.array().parse(raw);
 }
 
 /** Validates the Aegis abilities Data File (ADR 0009). */

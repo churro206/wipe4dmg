@@ -147,7 +147,7 @@ describe("simulate with abilities", () => {
   });
 
   it("ignores multipliers for other damage sources", () => {
-    const weaponOnlyBuff: Effect = { ...byId("weapons-stat-200") };
+    const weaponOnlyBuff: Effect = { ...byId("surge-3x") };
     const result = simulate(
       weapon,
       DAMAGE_PHASE_SECONDS,

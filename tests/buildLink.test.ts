@@ -70,8 +70,21 @@ describe("encodeLink and decodeLink", () => {
   });
 
   it("keeps a typical build short (5 effects with windows in about 48 characters)", () => {
-    // format 4 adds two bytes for the exotic armor, format 5 one byte for the class perks
-    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(52);
+    // format 4 adds two bytes for the exotic armor, format 5 one byte for the class perks,
+    // format 6 one byte for the Weapons stat
+    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(54);
+  });
+
+  it("round-trips the Weapons stat, also 0, and leaves it out when absent", () => {
+    for (const weaponsStat of [0, 130, 200]) {
+      const withStat: Build = { ...build, weaponsStat };
+      expect(
+        decodeLink(encodeLink({ build: withStat }, registry), registry).build,
+      ).toEqual(withStat);
+    }
+    expect(
+      decodeLink(encodeLink({ build }, registry), registry).build.weaponsStat,
+    ).toBeUndefined();
   });
 
   it("writes only URL-safe characters", () => {
@@ -149,7 +162,7 @@ describe("encodeLink and decodeLink", () => {
     it("keeps such a build short", () => {
       expect(
         encodeLink({ build: withAbilities }, registry).length,
-      ).toBeLessThanOrEqual(74); // format 5: one byte more for the class perks
+      ).toBeLessThanOrEqual(76); // format 5: one byte more for the class perks, format 6 for the stat
     });
 
     it("skips unknown ability codes and reports them", () => {

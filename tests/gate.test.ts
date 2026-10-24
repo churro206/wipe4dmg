@@ -11,7 +11,13 @@ import { activeParts, combinedMultiplier } from "../src/engine/effectParts";
 import rawAbilityRows from "../src/data/aegis-abilities.json";
 import rawKeywords from "../src/data/keywords.json";
 import { AegisAbilityRow } from "../src/data/schema";
-import { loadBuckets, loadEffects } from "../src/engine/loadData";
+import rawWeaponStats from "../src/data/weapon-stats.json";
+import {
+  loadBuckets,
+  loadEffects,
+  loadWeaponStats,
+} from "../src/engine/loadData";
+import { weaponStatPart } from "../src/engine/weaponStats";
 import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate } from "../src/engine/simulate";
 import { weaponById } from "./support/weapons";
@@ -22,6 +28,7 @@ const keywords = loadKeywords(
   AegisAbilityRow.array().parse(rawAbilityRows),
 );
 const effects = loadEffects(rawEffects);
+const weaponStats = loadWeaponStats(rawWeaponStats);
 const byIds = (ids: string[]) =>
   ids.map((id) => {
     const effect = effects.find((e) => e.id === id);
@@ -66,11 +73,23 @@ describe("gate: multipliers", () => {
         byIds(reference.effectIds),
         buckets,
       );
-      const multiplier = combinedMultiplier(multiplierParts, buckets, {
-        damageSource: "weapon",
-        element: weaponById(reference.weaponId).element,
-        weaponType: weaponById(reference.weaponId).weaponType,
-      });
+      const weapon = weaponById(reference.weaponId);
+      const statPart =
+        reference.weaponsStat === undefined
+          ? null
+          : weaponStatPart(
+              { scalings: weaponStats, value: reference.weaponsStat },
+              weapon.ammo,
+            );
+      const multiplier = combinedMultiplier(
+        [...multiplierParts, ...(statPart ? [statPart] : [])],
+        buckets,
+        {
+          damageSource: "weapon",
+          element: weapon.element,
+          weaponType: weapon.weaponType,
+        },
+      );
       expect(multiplier).toBeGreaterThanOrEqual(reference.multiplierMin);
       expect(multiplier).toBeLessThanOrEqual(reference.multiplierMax);
     },

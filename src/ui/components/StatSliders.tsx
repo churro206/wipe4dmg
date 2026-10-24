@@ -1,19 +1,22 @@
 import type { AbilityKind } from "../../data/schema";
 
+/** A row is an ability stat or the Weapons stat. */
+export type StatKind = AbilityKind | "weapons";
+
 export type StatRow = {
-  kind: AbilityKind;
+  kind: StatKind;
   label: string; // e.g. "Super"
   value: number;
   max: number;
 };
 
-/** Ability stats as one block like the character screen: name, slider and number per row. */
+/** Weapons and ability stats as one block like the character screen: name, slider and number per row. */
 export function StatSliders({
   rows,
   onStat,
 }: {
   rows: StatRow[];
-  onStat: (kind: AbilityKind, value: number) => void;
+  onStat: (kind: StatKind, value: number) => void;
 }) {
   return (
     <div className="stat-rows">

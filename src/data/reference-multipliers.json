@@ -7,9 +7,9 @@
       "surge-3x",
       "lumina-noble-rounds",
       "tractor-cannon",
-      "weapons-stat-200",
       "particle-reconstruction"
     ],
+    "weaponsStat": 200,
     "multiplierMin": 2.354,
     "multiplierMax": 2.356,
     "source": {

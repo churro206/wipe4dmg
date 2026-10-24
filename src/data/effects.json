@@ -583,39 +583,6 @@
     ]
   },
   {
-    "id": "weapons-stat-200",
-    "code": 14,
-    "name": "Weapons stat 200 (power weapons against bosses)",
-    "shortName": "Weapons 200",
-    "manifestRef": {
-      "table": "DestinyStatDefinition",
-      "hash": 2996146975
-    },
-    "providers": [
-      {
-        "kind": "armor",
-        "slot": "stat"
-      }
-    ],
-    "parts": [
-      {
-        "type": "multiplier",
-        "bucketId": "amplification",
-        "multiplier": {
-          "value": 1.1,
-          "source": {
-            "name": "Destiny Data Compendium, Game Mechanics (Weapons stat: power weapons +0.1% per point above 100 against bosses); Aegis column 200 (1.100)",
-            "url": "https://destiny2.science/data-compendium",
-            "retrieved": "2026-10-18",
-            "status": "verified",
-            "note": "Value for power weapons only. Primary and special weapons get 15% at 200."
-          }
-        },
-        "damageSources": ["weapon"]
-      }
-    ]
-  },
-  {
     "id": "elemental-overdrive-solar",
     "code": 15,
     "name": "Elemental Overdrive (solar pickup)",

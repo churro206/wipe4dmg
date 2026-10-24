@@ -27,7 +27,6 @@ describe("slots of own effects", () => {
       "surge-1x": "mod",
       "surge-2x": "mod",
       "surge-3x": "mod",
-      "weapons-stat-200": "stat",
       "elemental-overdrive-solar": "artifact",
       "particle-reconstruction": "artifact",
       "ember-of-ashes": "fragment",

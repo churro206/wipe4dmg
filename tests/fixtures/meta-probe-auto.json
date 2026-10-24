@@ -3,7 +3,7 @@
   "ignored": {},
   "deviations": {
     "sustained-tractor-cannon": "-17 %; cause not examined",
-    "sustained-telesto": "-16 %; cause not examined (Weapons stat 200 of Aegis divided out, special weapon)",
+    "sustained-telesto": "-16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now)",
     "swap-needlestorm-feast-of-light-x6-limit-break": "+26 %; cause not examined (the same switch fits Blade Barrage, Gathering Storm and Golden Gun within 3 %)"
   }
 }

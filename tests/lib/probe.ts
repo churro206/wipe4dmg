@@ -12,8 +12,6 @@ export type Entry = {
   build: Partial<Build>;
   selections?: string[];
   removed?: { column?: keyof AegisTotalRow; factor?: number; reason: string }[];
-  // Standard effects of Aegis that do not hold for this row, e.g. Weapons 200 on a special weapon.
-  omitStandard?: string[];
 };
 
 // Long enough to fire all ammo of a heavy weapon and to finish a super.
@@ -22,7 +20,6 @@ export const STANDARD_WEAPON_EFFECTS = [
   "surge-3x",
   "lumina-noble-rounds",
   "tractor-cannon",
-  "weapons-stat-200",
 ];
 export const STANDARD_ABILITY_EFFECTS = ["tractor-cannon"];
 export const DEFAULT_WEAPON_ID = "one-thousand-voices";
@@ -38,8 +35,7 @@ export function damageOf(entry: Entry, fields: Partial<Build>): number {
   const effectIds = [
     ...(entry.kind === "weapon"
       ? STANDARD_WEAPON_EFFECTS
-      : STANDARD_ABILITY_EFFECTS
-    ).filter((id) => !entry.omitStandard?.includes(id)),
+      : STANDARD_ABILITY_EFFECTS),
     ...(entry.selections ?? []),
   ];
   const build: Build = {
@@ -61,7 +57,7 @@ export function damageOf(entry: Entry, fields: Partial<Build>): number {
     damagePhaseSeconds: PHASE_SECONDS,
     ...(entry.kind === "ability"
       ? { abilityStats: { super: 200, grenade: 200, melee: 200 } }
-      : {}),
+      : { weaponsStat: 200 }),
     ...fields,
   };
   const { selected, options } = buildSimulation(build, gameData);

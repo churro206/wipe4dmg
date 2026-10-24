@@ -276,7 +276,7 @@ const COVERED: Record<string, string> = {
   "After leaving Well": "radiant",
   "Lumina's": "lumina-noble-rounds",
   "Kinetic Surge Mod": "surge-1x, surge-2x, surge-3x",
-  "Weapons Stat": "weapons-stat-200",
+  "Weapons Stat": "weapon-stats.json (slider)",
   "Elemental Overdrive": "elemental-overdrive-solar",
   "Particle Reconstruction": "particle-reconstruction",
   "Sustained Damage hit": "divinity",

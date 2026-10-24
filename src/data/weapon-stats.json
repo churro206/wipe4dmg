@@ -1,0 +1,50 @@
+[
+  {
+    "ammo": "primary",
+    "bucketId": "amplification",
+    "bonusFromStat": 100,
+    "maxStat": 200,
+    "damagePerPoint": {
+      "value": 0.0015,
+      "source": {
+        "name": "Destiny Data Compendium, Game Mechanics, Weapons stat (docs/sources/compendium-game-mechanics-weapons.txt)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "note": "Primary and special weapons +0.15% per point, 15% at 200. Against bosses only the part above 100 counts (the part 0 to 100 applies to rank-and-file enemies and elites). Aegis column 200: 1.15."
+      }
+    }
+  },
+  {
+    "ammo": "special",
+    "bucketId": "amplification",
+    "bonusFromStat": 100,
+    "maxStat": 200,
+    "damagePerPoint": {
+      "value": 0.0015,
+      "source": {
+        "name": "Destiny Data Compendium, Game Mechanics, Weapons stat (docs/sources/compendium-game-mechanics-weapons.txt)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "note": "Primary and special weapons +0.15% per point, 15% at 200. Against bosses only the part above 100 counts. Aegis column 200: 1.15."
+      }
+    }
+  },
+  {
+    "ammo": "heavy",
+    "bucketId": "amplification",
+    "bonusFromStat": 100,
+    "maxStat": 200,
+    "damagePerPoint": {
+      "value": 0.001,
+      "source": {
+        "name": "Destiny Data Compendium, Game Mechanics, Weapons stat (docs/sources/compendium-game-mechanics-weapons.txt)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-24",
+        "status": "verified",
+        "note": "Power weapons +0.1% per point, 10% at 200. Aegis column 200: 1.10; owner check: stat 130 = +2.9% on a heavy weapon, the rule gives +3%."
+      }
+    }
+  }
+]

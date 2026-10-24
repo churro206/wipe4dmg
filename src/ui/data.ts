@@ -16,6 +16,7 @@ import rawManifestAbilities from "../data/manifest-abilities.json";
 import rawSubclassEffects from "../data/subclass-effects.json";
 import rawSuperTimings from "../data/super-timings.json";
 import rawPackages from "../data/weapon-packages.json";
+import rawWeaponStats from "../data/weapon-stats.json";
 import rawExoticArmorEffects from "../data/exotic-armor-effects.json";
 import rawExoticArmor from "../data/exotic-armor.json";
 import {
@@ -40,6 +41,7 @@ import {
   loadIconIndex,
   loadManifestAbilities,
   loadSubclassEffects,
+  loadWeaponStats,
 } from "../engine/loadData";
 import { loadWeapons } from "../engine/loadWeapon";
 
@@ -67,6 +69,7 @@ export const bosses = loadBosses(rawBosses).filter(
 );
 export const activities = [...new Set(bosses.map((boss) => boss.activity))];
 export const abilityStats = loadAbilityStats(rawAbilityStats);
+export const weaponStats = loadWeaponStats(rawWeaponStats);
 export const aegisRows = loadAegisAbilityRows(rawAegisAbilities);
 export const keywords = loadKeywords(rawKeywords, aegisRows);
 // Exotic armor (ADR 0014) and the effects generated from its damage buffs (ADR 0015, U6).
@@ -94,6 +97,7 @@ export const gameData: GameData = {
   effects,
   abilities,
   abilityStats,
+  weaponStats,
   keywords,
   exoticArmor,
   exoticArmorEffects: generatedExoticEffects,

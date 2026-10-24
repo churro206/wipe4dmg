@@ -39,6 +39,7 @@ import {
   defaultWindow,
   GRANTED_EFFECT_IDS,
   MAX_ABILITY_STATS,
+  MAX_WEAPONS_STAT,
   replacesSuper,
   withoutOwnSuperEffects,
   withoutSlot,
@@ -148,6 +149,7 @@ function App() {
   const [abilityStatInputs, setAbilityStatInputs] = useState(
     initial.abilityStats,
   );
+  const [weaponsStat, setWeaponsStat] = useState(initial.weaponsStat);
   const [openSlot, setOpenSlot] = useState<AbilityKind | null>(null);
   const [exoticArmorId, setExoticArmorId] = useState(initial.exoticArmorId);
   const [exoticPreBuilt, setExoticPreBuilt] = useState(initial.exoticPreBuilt);
@@ -186,6 +188,7 @@ function App() {
     windowInputs,
     abilityChoice,
     abilityStats: abilityStatInputs,
+    weaponsStat,
     damagePhaseSeconds: isValid ? damagePhaseSeconds : 0,
     exoticArmorId,
     classPerkIds,
@@ -237,6 +240,7 @@ function App() {
         windowInputs,
         abilityChoice,
         abilityStats: abilityStatInputs,
+        weaponsStat,
         // energy over the whole chart; a shorter phase keeps the casts up to its end
         damagePhaseSeconds: dpsChartSeconds,
         exoticArmorId,
@@ -260,6 +264,7 @@ function App() {
     windowInputs,
     abilityChoice,
     abilityStatInputs,
+    weaponsStat,
     dpsChartSeconds,
     exoticArmorId,
     classPerkIds,
@@ -667,17 +672,27 @@ function App() {
               <h2>Stats</h2>
               {pickerFor("stat", null)}
               <StatSliders
-                rows={ABILITY_KINDS.map((kind) => ({
-                  kind,
-                  label: ABILITY_KIND_LABELS[kind],
-                  value: abilityStatInputs[kind],
-                  max: MAX_ABILITY_STATS[kind],
-                }))}
+                rows={[
+                  {
+                    kind: "weapons",
+                    label: "Weapons",
+                    value: weaponsStat,
+                    max: MAX_WEAPONS_STAT,
+                  },
+                  ...ABILITY_KINDS.map((kind) => ({
+                    kind,
+                    label: ABILITY_KIND_LABELS[kind],
+                    value: abilityStatInputs[kind],
+                    max: MAX_ABILITY_STATS[kind],
+                  })),
+                ]}
                 onStat={(kind, value) =>
-                  setAbilityStatInputs((current) => ({
-                    ...current,
-                    [kind]: value,
-                  }))
+                  kind === "weapons"
+                    ? setWeaponsStat(value)
+                    : setAbilityStatInputs((current) => ({
+                        ...current,
+                        [kind]: value,
+                      }))
                 }
               />
 

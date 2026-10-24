@@ -9,19 +9,19 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Aegis-Zeile | Aegis | Modell | relativ | Grund der Abweichung |
 | --- | ---: | ---: | ---: | --- |
 | Tractor Cannon | 22,149 | 18,458 | 0.833 | -17 %; cause not examined |
-| Telesto | 44,529 | 37,498 | 0.842 | -16 %; cause not examined (Weapons stat 200 of Aegis divided out, special weapon) |
+| Telesto | 51,208 | 43,123 | 0.842 | -16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now) |
 | One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | 120,613 | 105,112 | 0.871 |  |
-| Arbalest | 51,161 | 48,836 | 0.955 |  |
+| Arbalest | 58,835 | 56,161 | 0.955 |  |
 | The Colony | 49,096 | 47,133 | 0.960 |  |
 | Gathering Storm, Feast of Light x6, Limit Break | 21,772 | 21,203 | 0.974 |  |
 | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | 41,594 | 41,001 | 0.986 |  |
-| Merciless | 47,437 | 47,434 | 1.000 |  |
+| Merciless | 54,552 | 54,549 | 1.000 |  |
 | Blade Barrage, Knock 'Em Down, Shards of Galanor, Limit Break | 43,637 | 43,637 | 1.000 |  |
 | Heir Apparent | 58,096 | 58,096 | 1.000 |  |
-| Jötunn | 53,870 | 53,869 | 1.000 |  |
-| Ice Breaker, Sniper's Meditation | 30,124 | 30,124 | 1.000 |  |
+| Jötunn | 61,950 | 61,950 | 1.000 |  |
+| Ice Breaker, Sniper's Meditation | 34,643 | 34,643 | 1.000 |  |
 | Service of Luzaku | 110,752 | 110,752 | 1.000 |  |
-| Forerunner | 44,651 | 44,652 | 1.000 |  |
+| Forerunner | 51,349 | 51,349 | 1.000 |  |
 | Nova Bomb - Cataclysm, Facet of Courage, Limit Break | 19,260 | 19,261 | 1.000 |  |
 | Twilight Arsenal, Facet of Courage, Limit Break | 20,190 | 20,193 | 1.000 |  |
 | Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | 32,463 | 32,941 | 1.015 |  |
@@ -36,47 +36,47 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 
 | Aegis-Zeile | Aegis | Modell | relativ | ohne Schalter |
 | --- | ---: | ---: | ---: | --- |
-| Divinity | 65,637 | 15,095 | 0.230 | held down; includes jolt; Focused Fury; Harsh Refraction |
+| Divinity | 75,483 | 17,359 | 0.230 | held down; includes jolt; Focused Fury; Harsh Refraction |
 | Leviathan's Breath | 223,610 | 62,100 | 0.278 | Archer's Tempo; Moebius Quiver; simulated |
-| Still Hunt | 116,141 | 32,426 | 0.279 | pre-popped into 6 shot cycle; Incendiary Rifle Rounds; Solar Fulmination; assumes at least 2 orb pickups per mag |
-| Still Hunt | 112,939 | 32,426 | 0.287 | pre-popped into 6 shot cycle; assumes at least 2 orb pickups per mag |
-| Still Hunt | 112,939 | 32,426 | 0.287 | pre-popped into 6 shot cycle |
+| Still Hunt | 133,562 | 37,289 | 0.279 | pre-popped into 6 shot cycle; Incendiary Rifle Rounds; Solar Fulmination; assumes at least 2 orb pickups per mag |
+| Still Hunt | 129,880 | 37,289 | 0.287 | pre-popped into 6 shot cycle; assumes at least 2 orb pickups per mag |
+| Still Hunt | 129,880 | 37,289 | 0.287 | pre-popped into 6 shot cycle |
 | Hammer of Sol | 59,236 | 17,424 | 0.294 | Roaring Flames x3 |
-| Heirloom | 144,994 | 49,465 | 0.341 | fully charged |
+| Heirloom | 166,743 | 56,885 | 0.341 | fully charged |
 | Stormtrance | 71,745 | 26,177 | 0.365 | Thunderous Retort |
-| Ager's Scepter | 105,202 | 38,614 | 0.367 | Will Given Form; Facet of Command; Harsh Refraction |
-| Heirloom | 121,118 | 49,465 | 0.408 | 2 charges |
+| Ager's Scepter | 120,982 | 44,406 | 0.367 | Will Given Form; Facet of Command; Harsh Refraction |
+| Heirloom | 139,286 | 56,885 | 0.408 | 2 charges |
 | Sentinel Shield | 45,727 | 19,122 | 0.418 | aerial lights; Shieldcrush |
 | Burning Maul | 49,559 | 22,006 | 0.444 | heavy attacks; Roaring Flames x3 |
 | Sentinel Shield | 43,019 | 19,122 | 0.445 | grounded spam; Shieldcrush |
-| Still Hunt | 70,538 | 32,426 | 0.460 | pre-popped into 6 shot cycle |
-| Euphony | 123,950 | 59,239 | 0.478 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
+| Still Hunt | 81,119 | 37,289 | 0.460 | pre-popped into 6 shot cycle |
+| Euphony | 142,542 | 68,125 | 0.478 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
 | Fists of Havoc | 54,355 | 27,883 | 0.513 | heavy attacks; Thunderous Retort |
-| Wavesplitter | 80,605 | 41,751 | 0.518 | Supercharged Battery; Detonator Beam; Harsh Refraction |
 | Chaos Reach | 79,840 | 41,979 | 0.526 | Thunderous Retort |
-| Choir of One | 125,971 | 66,674 | 0.529 | hitscan mode; precision |
-| Euphony | 111,914 | 59,239 | 0.529 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
-| New Land Beyond | 185,204 | 101,343 | 0.547 | starts at The Master x20; Rally Barricade |
+| Choir of One | 144,867 | 76,675 | 0.529 | hitscan mode; precision |
+| Euphony | 128,701 | 68,125 | 0.529 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
+| Wavesplitter | 88,666 | 48,014 | 0.542 | Supercharged Battery; Detonator Beam; Harsh Refraction |
+| New Land Beyond | 212,985 | 116,544 | 0.547 | starts at The Master x20; Rally Barricade |
 | Salvation's Grip | 83,906 | 46,806 | 0.558 | charged; Hail the Storm |
-| Izanagi's Burden | 49,440 | 28,196 | 0.570 | includes rehone time; hone before rally; Sniper's Meditation (assume stacked) |
+| Izanagi's Burden | 56,856 | 32,426 | 0.570 | includes rehone time; hone before rally; Sniper's Meditation (assume stacked) |
 | Legend of Acrius | 129,383 | 75,473 | 0.583 | body; Trench Barrel |
-| New Land Beyond | 172,474 | 101,343 | 0.588 | starts at The Master x0; Rally Barricade; manual reloads until The Grandmaster |
+| New Land Beyond | 198,345 | 116,544 | 0.588 | starts at The Master x0; Rally Barricade; manual reloads until The Grandmaster |
 | Thundercrash | 48,635 | 28,687 | 0.590 | Thunderous Retort; Conductive Cosmic Needle x3 |
 | Thundercrash | 31,181 | 18,396 | 0.590 | Thunderous Retort; Conductive Cosmic Needle x3 |
 | Burning Maul | 89,348 | 55,015 | 0.616 | light attacks; Roaring Flames x3 |
 | Needlestorm | 33,601 | 20,926 | 0.623 | Pack Tactics x2 |
-| Duality | 63,973 | 40,536 | 0.634 | 3 body pellet shots into On Black Wings x3 slugs |
+| Duality | 73,569 | 46,616 | 0.634 | 3 body pellet shots into On Black Wings x3 slugs |
 | Hammer of Sol | 51,242 | 32,583 | 0.636 | max distance |
 | Nova Bomb - Cataclysm | 30,171 | 19,261 | 0.638 | Skull of Dire Ahamkara (ownDamage) |
-| Heirloom | 77,175 | 49,465 | 0.641 | 1 charge |
+| Heirloom | 88,751 | 56,885 | 0.641 | 1 charge |
 | Hammer of Sol | 67,298 | 43,560 | 0.647 | Roaring Flames x3; max distance |
 | Whisper of the Worm | 134,672 | 87,478 | 0.650 | Incendiary Rifle Rounds; Solar Fulmination |
 | Arc Staff | 84,169 | 56,113 | 0.667 | Shieldcrush |
 | Silkstrike | 59,072 | 39,394 | 0.667 | light attack spam; Shieldcrush |
 | Spectral Blades | 57,656 | 38,465 | 0.667 | light attack spam; Shieldcrush |
-| Cloudstrike | 75,248 | 50,710 | 0.674 | Triple Tap; excludes Bolt Charge |
-| Edge of Concurrence | 43,651 | 29,705 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
-| Bastion | 103,763 | 71,560 | 0.690 | Saint's Fury; includes melee time |
+| Cloudstrike | 86,535 | 58,317 | 0.674 | Triple Tap; excludes Bolt Charge |
+| Edge of Concurrence | 50,199 | 34,161 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
+| Bastion | 119,327 | 82,294 | 0.690 | Saint's Fury; includes melee time |
 | Truth | 119,636 | 82,636 | 0.691 | Prototype Truthseeker |
 | The Lament | 197,074 | 139,647 | 0.709 | 3L1H1R combo; Lucent Blades x3; Combination Argent Blade; Sword Storm Combo; simulated |
 | Burning Maul | 76,665 | 55,015 | 0.718 | heavy attacks; Roaring Flames x3 |
@@ -84,13 +84,13 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | Burning Maul | 30,129 | 22,006 | 0.730 | light attacks; Roaring Flames x3 |
 | Microcosm | 102,579 | 75,121 | 0.732 | Paracausal Imbuement; Harsh Refraction |
 | The Lament | 217,268 | 160,595 | 0.739 | 2L1H combo; Lucent Blades x3; Solar Fulmination |
-| Ergo Sum | 108,842 | 81,082 | 0.745 | caster frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
+| Ergo Sum | 125,168 | 93,245 | 0.745 | caster frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
 | Burning Maul | 30,129 | 23,161 | 0.769 | Roaring Flames x3 |
 | Storm's Edge | 43,145 | 33,184 | 0.769 | body; all three casts; Thunderous Retort |
-| Dead Messenger | 77,031 | 59,255 | 0.769 | The Fundamentals |
+| Dead Messenger | 88,586 | 68,143 | 0.769 | The Fundamentals |
 | Finality's Auger | 82,158 | 63,199 | 0.769 | Bait and Switch; Linear Fusion Mode |
 | Chaos Reach | 54,572 | 41,979 | 0.769 | Thunderous Retort |
-| Merciless | 61,178 | 47,434 | 0.775 | Impetus; two kills |
+| Merciless | 70,355 | 54,549 | 0.775 | Impetus; two kills |
 | Shadowshot: Moebius Quiver | 19,565 | 15,393 | 0.787 | full bow charge; all 3 volleys; assumes no other debuff |
 | Stormtrance | 54,444 | 42,876 | 0.788 | Thunderous Retort |
 | Shadowshot: Moebius Quiver | 11,791 | 9,301 | 0.789 | full bow charge; both volleys; assumes no other debuff |
@@ -98,42 +98,42 @@ Vollständig abgebildet (geprüft): 23, davon innerhalb der Grenze 20. Abweichun
 | The Lament | 176,080 | 139,647 | 0.793 | 3L1H1R combo; Lucent Blades x3; Combination Argent Blade; Sword Storm Combo |
 | The Lament | 198,217 | 160,595 | 0.810 | 2L1H combo; Lucent Blades x3; Solar Fulmination |
 | Deterministic Chaos | 137,936 | 112,035 | 0.812 | Target Lock |
-| Slayer's Fang | 72,295 | 60,620 | 0.839 | Assault Mag; includes submunitions |
+| Slayer's Fang | 83,139 | 69,713 | 0.839 | Assault Mag; includes submunitions |
 | The Lament | 165,335 | 139,647 | 0.845 | 4L1H1R combo; Lucent Blades x3; Combination Argent Blade; Sword Storm Combo |
-| Ergo Sum | 93,989 | 81,082 | 0.863 | vortex frame; Tempered Edge; heavy spam; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus |
+| Ergo Sum | 108,087 | 93,245 | 0.863 | vortex frame; Tempered Edge; heavy spam; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus |
 | Needlestorm | 24,214 | 20,926 | 0.864 | Pack Tactics x2 |
 | Daybreak | 32,716 | 28,809 | 0.881 | grounded |
-| Tessellation | 134,193 | 120,473 | 0.898 | full grenade uptime; Property: Irreducible; Transcendent but excludes 5%; simulated |
+| Tessellation | 154,322 | 138,544 | 0.898 | full grenade uptime; Property: Irreducible; Transcendent but excludes 5%; simulated |
 | The Lament | 178,796 | 160,595 | 0.898 | 2L1H1R combo; Lucent Blades x3 |
 | Fafnir | 58,657 | 53,594 | 0.914 | includes Quantum Nova windup and splash; 9 ammo consumed |
-| Ergo Sum | 88,577 | 81,082 | 0.915 | wave frame; Jagged Edge; heavy spam; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; boss against wall |
+| Ergo Sum | 101,863 | 93,245 | 0.915 | wave frame; Jagged Edge; heavy spam; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; boss against wall |
 | D.A.R.C.I. | 73,429 | 69,253 | 0.943 | Target Acquired; includes jolt |
-| Ergo Sum | 85,958 | 81,082 | 0.943 | lightweight frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus |
+| Ergo Sum | 98,852 | 93,245 | 0.943 | lightweight frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus |
 | Parasite | 95,708 | 90,445 | 0.945 | Envious Arsenal; x20 first shot |
 | Black Talon | 79,745 | 76,566 | 0.960 | 2H2L combo; Lucent Blades x3 |
 | Fists of Havoc | 28,991 | 27,883 | 0.962 | light attacks; Shieldcrush |
 | Shadowshot: Moebius Quiver | 16,241 | 15,811 | 0.974 | both volleys; assumes no other debuff |
-| Ergo Sum | 82,216 | 81,082 | 0.986 | caster frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
+| Ergo Sum | 94,548 | 93,245 | 0.986 | caster frame; Jagged Edge; 1H2L combo; Lucent Blades x3; Pack Hunter; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
 | Shadowshot: Moebius Quiver | 9,413 | 9,301 | 0.988 | both volleys; assumes no other debuff |
 | The Prospector | 84,807 | 84,111 | 0.992 | typical boss model; Kinetic Impacts |
 | Shadowshot: Moebius Quiver | 15,469 | 15,393 | 0.995 | all 3 volleys; assumes no other debuff |
-| Choir of One | 66,675 | 66,674 | 1.000 | projectile mode; spaced* |
+| Choir of One | 76,676 | 76,675 | 1.000 | projectile mode; spaced* |
 | The Wardcliff Coil | 52,072 | 52,072 | 1.000 | excludes Bolt Charge |
-| Heirloom | 49,465 | 49,465 | 1.000 | uncharged |
+| Heirloom | 56,885 | 56,885 | 1.000 | uncharged |
 | Deathbringer | 116,197 | 116,197 | 1.000 | max projectile height |
-| Cull's Shadow | 56,307 | 56,307 | 1.000 | with corruption |
+| Cull's Shadow | 64,753 | 64,753 | 1.000 | with corruption |
 | Golden Gun - Marksman | 33,042 | 33,042 | 1.000 | pre-popped |
-| Ex Diris | 52,078 | 52,078 | 1.000 | assumes max frenzy |
-| Lord of Wolves | 75,292 | 75,292 | 1.000 | Release the Wolves; hip-fire; precision; includes ignition |
-| New Malpais | 67,055 | 67,055 | 1.000 | assumes suspend tick every 3 shots |
+| Ex Diris | 59,890 | 59,890 | 1.000 | assumes max frenzy |
+| Lord of Wolves | 86,586 | 86,586 | 1.000 | Release the Wolves; hip-fire; precision; includes ignition |
+| New Malpais | 77,113 | 77,113 | 1.000 | assumes suspend tick every 3 shots |
 | Dragon's Breath | 110,995 | 110,995 | 1.000 | auto-loaded; Composite Propellant x5 |
-| Winterbite | 53,468 | 53,469 | 1.000 | projectile |
+| Winterbite | 58,815 | 58,815 | 1.000 | projectile |
 | Salvation's Grip | 46,806 | 46,806 | 1.000 | uncharged |
 | The Lament | 160,593 | 160,595 | 1.000 | 2L1H1R combo; Lucent Blades x3 |
 | Heartshadow | 103,813 | 104,462 | 1.006 | heavy attacks; Shot in the Dark; Lucent Blades x3 |
-| Vexcalibur | 39,270 | 40,497 | 1.031 | projectile |
+| Vexcalibur | 45,160 | 46,572 | 1.031 | projectile |
 | Winter's Wrath | 30,297 | 34,474 | 1.138 | light-heavy cycle; Whisper of Fissures |
-| The Fourth Horseman | 41,343 | 51,679 | 1.250 | body |
+| The Fourth Horseman | 47,544 | 59,430 | 1.250 | body |
 | The Queenbreaker | 74,475 | 97,261 | 1.306 | Rewind Rounds; Marksman Sights |
 | Winter's Wrath | 38,618 | 51,445 | 1.332 | light-heavy cycle; Facet of Ruin |
 | One Thousand Voices | 74,472 | 105,112 | 1.411 | no ignitions |

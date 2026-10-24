@@ -7,9 +7,10 @@
 //           ability count | per ability: ability code | cast count | cast times in ms |
 //           hasStats (0 or 1) | super stat | grenade stat | melee stat |
 //           exotic armor manifest hash (0: none) | exotic prebuilt (0 or 1) |
-//           class perk count | per class perk: manifest hash
+//           class perk count | per class perk: manifest hash |
+//           Weapons stat + 1 (0: none)
 // Format 2 ends the build after the selections, format 3 after the stats, format 4 after the
-// prebuilt flag; all are still read.
+// prebuilt flag, format 5 after the class perks; all are still read.
 // Exotic armor and class perks are written by their manifest hash, which Bungie keeps stable (U8).
 // Codes come from the Data Files and are never reused, so old links stay readable. A removed
 // effect keeps its code as a former code of the effect that replaces it.
@@ -23,8 +24,8 @@ import {
   type Subclass,
 } from "../data/schema";
 
-const FORMAT_VERSION = 5;
-const READABLE_VERSIONS = [2, 3, 4, 5];
+const FORMAT_VERSION = 6;
+const READABLE_VERSIONS = [2, 3, 4, 5, 6];
 const MS_PER_SECOND = 1000;
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
 const SUBCLASSES: Subclass[] = [
@@ -173,6 +174,10 @@ function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
         fail(`Build link: unknown class perk "${perk}"`),
     );
   }
+  writeVarint(
+    bytes,
+    build.weaponsStat === undefined ? 0 : Math.round(build.weaponsStat) + 1,
+  );
 }
 
 const fail = (message: string): never => {
@@ -246,6 +251,7 @@ function readBuild(
       if (perks.length > 0 && preBuilt) exoticPart.exoticPreBuilt = true;
     }
   }
+  const weaponsStatPlusOne = version >= 6 ? reader.varint() : 0;
   // Zod rejects an invalid class or provider index (undefined).
   return Build.parse({
     weaponId: weapon.id,
@@ -257,6 +263,7 @@ function readBuild(
     damagePhaseSeconds,
     ...abilityPart,
     ...exoticPart,
+    ...(weaponsStatPlusOne > 0 ? { weaponsStat: weaponsStatPlusOne - 1 } : {}),
   });
 }
 

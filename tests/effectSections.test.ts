@@ -35,7 +35,6 @@ describe("effectSections", () => {
         ["fragment", ["ember-of-ashes"]],
         ["buffs", ["radiant"]],
         ["mod", ["surge-1x", "surge-2x", "surge-3x"]],
-        ["stat", ["weapons-stat-200"]],
         ["artifact", ["elemental-overdrive-solar", "particle-reconstruction"]],
       ],
     );
@@ -103,7 +102,6 @@ describe("effectSections", () => {
       "subclass",
       "subclass",
       "subclass",
-      "armor",
       "armor",
       "artifact",
     ]);

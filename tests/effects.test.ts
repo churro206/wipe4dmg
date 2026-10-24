@@ -165,13 +165,10 @@ describe("simulate: effects", () => {
   });
 
   it("multiplies the effects from the data file across buckets", () => {
-    // The same set Aegis assumes for its "Single" column: surge, buff, debuff, Weapons stat 200.
-    const chosen = [
-      "surge-3x",
-      "lumina-noble-rounds",
-      "tractor-cannon",
-      "weapons-stat-200",
-    ].map(byId);
+    // The effects of the "Single" column of Aegis: surge, buff, debuff (Weapons stat is a slider).
+    const chosen = ["surge-3x", "lumina-noble-rounds", "tractor-cannon"].map(
+      byId,
+    );
     const expected = chosen.reduce(
       (product, e) => product * multiplierOf(e),
       baseTotal,

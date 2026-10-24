@@ -224,6 +224,27 @@ describe("exotic armor changes its abilities", () => {
   });
 });
 
+describe("Weapons stat", () => {
+  it("Weapons 130 gives a heavy about +3 % (owner's check: +2.9 %), 200 gives +10 %; a primary +15 % at 200", () => {
+    const heavy = weaponById("gjallarhorn");
+    const base = damageOf(run({}, heavy), "weapon");
+    const at130 = damageOf(run({ weaponsStat: 130 }, heavy), "weapon") / base;
+    const at200 = damageOf(run({ weaponsStat: 200 }, heavy), "weapon") / base;
+    const primary = weaponById("sunshot");
+    const primaryRatio =
+      damageOf(run({ weaponsStat: 200 }, primary), "weapon") /
+      damageOf(run({}, primary), "weapon");
+    note(
+      "Weapons-Stat 130 / 200 bei Gjallarhorn, 200 bei Sunshot",
+      `×${fmt(at130)} / ×${fmt(at200)} / ×${fmt(primaryRatio)}`,
+      "×1,03 / ×1,10 / ×1,15 (nur der Teil über 100 zählt gegen Bosse)",
+    );
+    expect(at130).toBeCloseTo(1.03, 3);
+    expect(at200).toBeCloseTo(1.1, 3);
+    expect(primaryRatio).toBeCloseTo(1.15, 3);
+  });
+});
+
 describe("primary weapons", () => {
   it("are selectable and fire the whole damage phase with reloads (unlimited ammo)", () => {
     const juju = weapons.find((w) => w.id === "bad-juju");

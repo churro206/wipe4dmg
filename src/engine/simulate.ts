@@ -45,6 +45,7 @@ import type {
   WeaponType,
 } from "../data/schema";
 import { abilityStatParts, type AbilityStatValue } from "./abilityStats";
+import { weaponStatPart, type WeaponStatValue } from "./weaponStats";
 import {
   activeParts,
   appliesToWeaponType,
@@ -98,6 +99,7 @@ export type SimulationOptions = EffectWindowOptions & {
   catalyst?: boolean; // default: without catalyst
   abilities?: AbilityCast[]; // default: no abilities
   abilityStats?: AbilityStatValue[]; // default: no stat bonus
+  weaponStat?: WeaponStatValue; // Weapons stat; default: no stat bonus
   keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
 };
 
@@ -380,6 +382,7 @@ export function simulate(
           requireValue(hitStacks.bossFactor, "bossFactor");
     return { ...plain, multiplier: { ...part.multiplier, value: factor } };
   };
+  const statPart = weaponStatPart(options.weaponStat, weapon.ammo);
   const multiplierAt = (timeMs: number, element: Element) =>
     holdFactorAt(timeMs) *
     combinedMultiplier(
@@ -388,6 +391,7 @@ export function simulate(
           resolveHitStacks(part, timeMs),
         ),
         ...optionPartsAt(timeMs),
+        ...(statPart ? [statPart] : []),
       ],
       buckets,
       { damageSource, element, weaponType: weapon.weaponType },
@@ -484,7 +488,10 @@ export function simulate(
         // Weapon options (catalyst, perks) stay with the shots: their factors come from values
         // per shot without the ignitions (ADR 0015, U4a-4).
         return combinedMultiplier(
-          partsAt(timeMs, included).multiplierParts,
+          [
+            ...partsAt(timeMs, included).multiplierParts,
+            ...(statPart ? [statPart] : []),
+          ],
           buckets,
           {
             damageSource,

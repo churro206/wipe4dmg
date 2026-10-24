@@ -83,7 +83,7 @@ Generiert von `npm run build:buffs` aus `src/data/court-buffs.json` (nicht von H
 | Weapon Surges | ARTIFACT PERKS | Precision Equity | imported | precision-equity |
 | Weapon Surges | ARTIFACT PERKS | That Fresh Bullet Smell | imported | that-fresh-bullet-smell |
 | Weapon Surges | ARTIFACT PERKS | Void Weapon Channelling | imported | void-weapon-channelling |
-| Amplification Modifiers | OUTLIER DAMAGE BUFFS | Weapons Stat | covered | weapons-stat-200 |
+| Amplification Modifiers | OUTLIER DAMAGE BUFFS | Weapons Stat | covered | weapon-stats.json (slider) |
 | Amplification Modifiers | OUTLIER DAMAGE BUFFS | Sect of Force Mod | skipped | Does not apply to Bosses (Elite, Miniboss, Champion only) |
 | Amplification Modifiers | OUTLIER DAMAGE BUFFS | Remote Shield | imported | remote-shield |
 | Amplification Modifiers | OUTLIER DAMAGE BUFFS | The Navigator | weapon | weapon packages |

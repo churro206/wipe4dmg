@@ -116,24 +116,15 @@ export function autoEntries(
 
     if (weapon) {
       build.weaponId = weapon.id;
-      // "Weapons 200" is modelled for power weapons only; the factor of other rows is taken out.
-      const omitStandard: string[] = [];
-      if (row.type !== "power") {
-        omitStandard.push("weapons-stat-200");
-        if (typeof row.stat === "number" && row.stat !== 1) {
-          removed.push({
-            column: "stat",
-            reason: "Weapons stat 200 is modelled for power weapons only",
-          });
-        }
-      }
+      // Aegis holds the Weapons stat at 200 (1.15 primary and special, 1.10 power), a row with
+      // factor 1 has no stat bonus.
+      if (row.stat === 1) build.weaponsStat = 100;
       entries.push({
         aegisId: row.id,
         kind: "weapon",
         build,
         selections,
         removed,
-        omitStandard,
         unmapped,
       });
     } else if (ability) {

@@ -10,6 +10,7 @@ import type {
   ExoticArmorEffect,
   ExoticArmorEntry,
   Keyword,
+  WeaponStatScaling,
 } from "../data/schema";
 import { abilitySimulation } from "./buildAbilities";
 import { classPerksOf, exoticArmorEffects } from "./exoticArmor";
@@ -20,6 +21,7 @@ export type GameData = {
   effects: Effect[]; // effects.json and the subclass effects
   abilities: Ability[]; // with the variants of the exotic armor
   abilityStats: AbilityStatScaling[];
+  weaponStats: WeaponStatScaling[]; // weapon-stats.json
   keywords: Keyword[];
   exoticArmor: ExoticArmorEntry[];
   exoticArmorEffects: ExoticArmorEffect[];
@@ -67,6 +69,11 @@ export function buildSimulation(
       effectWindows: { ...build.effectWindows, ...abilityPart.grantedWindows },
       abilities: abilityPart.casts,
       abilityStats: abilityPart.stats,
+      ...(build.weaponsStat === undefined
+        ? {}
+        : {
+            weaponStat: { scalings: data.weaponStats, value: build.weaponsStat },
+          }),
       keywords: data.keywords,
     },
   };

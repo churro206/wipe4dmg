@@ -1,5 +1,5 @@
 {
-  "note": "Meta probe (block 5): each entry rebuilds one Aegis row (tabs Sustained and Swap) as a build. Weapons get the standard factors of Aegis as switches (surge-3x, lumina-noble-rounds for Buff 1.35, tractor-cannon for Debuff 1.3, weapons-stat-200), held the whole phase. Factors we do not model are taken out of the Aegis total (removed).",
+  "note": "Meta probe (block 5): each entry rebuilds one Aegis row (tabs Sustained and Swap) as a build. Weapons get the standard factors of Aegis as switches (surge-3x, lumina-noble-rounds for Buff 1.35, tractor-cannon for Debuff 1.3) and the Weapons stat 200, held the whole phase. Factors we do not model are taken out of the Aegis total (removed).",
   "entries": [
     {
       "aegisId": "sustained-leviathan-s-breath-archer-s-tempo",

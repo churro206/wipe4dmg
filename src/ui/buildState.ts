@@ -20,6 +20,7 @@ import {
   effects,
   linkRegistry,
   weaponById,
+  weaponStats,
 } from "./data";
 import { secondsInput } from "./format";
 import { replacedMessage } from "./describe";
@@ -45,6 +46,9 @@ export const DEFAULT_ABILITY_STATS = Object.fromEntries(
 export const MAX_ABILITY_STATS = Object.fromEntries(
   abilityStats.map((s) => [s.kind, s.maxStat]),
 ) as AbilityStatInputs;
+/** Weapons stat where the damage bonus starts (100) and its highest value (200); from weapon-stats.json. */
+export const DEFAULT_WEAPONS_STAT = weaponStats[0].bonusFromStat;
+export const MAX_WEAPONS_STAT = weaponStats[0].maxStat;
 /** Effects that some ability grants, e.g. Well of Radiance; chosen through the super slot. */
 export const GRANTED_EFFECT_IDS = new Set(
   abilities.flatMap((a) => a.grantsEffectIds ?? []),
@@ -243,6 +247,7 @@ export function buildOfState(state: {
   windowInputs: Record<string, WindowInput>;
   abilityChoice: AbilityChoice;
   abilityStats: AbilityStatInputs;
+  weaponsStat?: number;
   damagePhaseSeconds: number;
   exoticArmorId?: string;
   classPerkIds?: string[];
@@ -265,6 +270,10 @@ export function buildOfState(state: {
     damagePhaseSeconds: state.damagePhaseSeconds,
     ...(picks.length > 0
       ? { abilities: picks, abilityStats: state.abilityStats }
+      : {}),
+    ...(state.weaponsStat !== undefined &&
+    state.weaponsStat !== DEFAULT_WEAPONS_STAT
+      ? { weaponsStat: state.weaponsStat }
       : {}),
   };
 }
@@ -314,6 +323,7 @@ export type LinkState = {
   windowInputs: Record<string, WindowInput>;
   abilityChoice: AbilityChoice;
   abilityStats: AbilityStatInputs;
+  weaponsStat: number;
   exoticArmorId: string | undefined;
   classPerkIds: string[];
   exoticPreBuilt: boolean;
@@ -333,6 +343,7 @@ export function stateFromLink(search: string): LinkState {
     windowInputs: {},
     abilityChoice: {},
     abilityStats: DEFAULT_ABILITY_STATS,
+    weaponsStat: DEFAULT_WEAPONS_STAT,
     exoticArmorId: undefined,
     classPerkIds: [],
     exoticPreBuilt: false,
@@ -368,6 +379,10 @@ export function stateFromLink(search: string): LinkState {
         build.subclass,
       ),
       abilityStats: build.abilityStats ?? DEFAULT_ABILITY_STATS,
+      weaponsStat: Math.min(
+        build.weaponsStat ?? DEFAULT_WEAPONS_STAT,
+        MAX_WEAPONS_STAT,
+      ),
       exoticArmorId: build.exoticArmorId,
       classPerkIds: validClassPerks(build),
       exoticPreBuilt: build.exoticPreBuilt ?? false,

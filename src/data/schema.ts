@@ -1004,6 +1004,19 @@ export const AbilityStatScaling = z.object({
 });
 export type AbilityStatScaling = z.infer<typeof AbilityStatScaling>;
 
+/**
+ * How the Weapons stat scales the damage of weapons with one ammo type. Against bosses only the
+ * part above `bonusFromStat` counts.
+ */
+export const WeaponStatScaling = z.object({
+  ammo: z.enum(["primary", "special", "heavy"]),
+  bucketId: z.string(), // bucket of the stat multiplier, e.g. "amplification"
+  bonusFromStat: z.number().nonnegative(),
+  maxStat: z.number().positive(),
+  damagePerPoint: SourcedNumber, // e.g. 0.0015 for +0.15% per point
+});
+export type WeaponStatScaling = z.infer<typeof WeaponStatScaling>;
+
 /** Energy of one ability (block 3): cooldown without stat bonus and the scalar of chunk energy gains. */
 export const AbilityEnergy = z.object({
   abilityId: z.string(), // base ability; variants use the energy of their base
@@ -1098,6 +1111,7 @@ export const ReferenceMultiplier = z.object({
   weaponId: z.string(),
   description: z.string(),
   effectIds: z.array(z.string()).min(1),
+  weaponsStat: z.number().nonnegative().optional(), // Weapons stat of the scenario, e.g. 200
   multiplierMin: z.number(),
   multiplierMax: z.number(),
   source: Source,
@@ -1163,6 +1177,8 @@ export const Build = z.object({
       melee: z.number().nonnegative(),
     })
     .optional(),
+  // Weapons stat (0 to 200); omitted: no stat bonus.
+  weaponsStat: z.number().nonnegative().optional(),
 });
 export type Build = z.infer<typeof Build>;
 
