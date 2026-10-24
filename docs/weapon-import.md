@@ -170,7 +170,7 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | The Lament | ⚠ Burning Ambition | Katalysator | ×1,113 | – | Direct Hits against Scorched Enemies apply additional Scorch on a 0.5 second cooldown: | – |
 | Ticuu's Divination | Catalyst | Katalysator | ×1,871 | – | – | Faktor aus dem Text (Override) |
 | Touch of Malice | Catalyst | Katalysator | ×1,250 | – | – | Faktor aus dem Text (Override) |
-| Truth | ⚠ Reaper's Tithe x4 | Katalysator | ×1,400 | 15 s | Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks) | Faktor aus Einzeltreffern; Mittelwert pro Shot wäre ×1,448 (9 gegen 12 Shots) |
+| Truth | ⚠ Reaper's Tithe x4 | Katalysator | ×1,400 | 15 s | Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks) | Faktor aus Einzeltreffern; Mittelwert pro Shot wäre ×1,448 (9 gegen 12 Shots); Fenster 15 s ab dem ersten Shot (Override) |
 | Vex Mythoclast | ⚠ Temporal Unlimiter | Perk | ×12,503 | – | Kills in Auto Rifle mode grant 'Overcharge' stacks. Maximum of 6 Stacks. | – |
 | Vex Mythoclast | ⚠ Catalyst | Katalysator | ×1,204 | 5 s | Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds. | Faktor aus Quantum (cata / ohne) |
 | Whisper of the Worm | ⚠ Whispered Breathing | Katalysator | ×1,472 | 1 s | – | – |

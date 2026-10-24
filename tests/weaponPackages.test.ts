@@ -75,6 +75,26 @@ describe("Truth (expected from the hand table of 2026-10-20)", () => {
     expect(value(tithe.factor)).toBeCloseTo(1.4, 3);
     expect(tithe.condition).toContain("simultaneously killed enemies");
   });
+
+  // Clarity: "for 15 seconds … Timer only starts after firing" (override, 2026-10-24).
+  it("limits Reaper's Tithe x4 to 15 s from the first rocket", () => {
+    const tithe = truth.options![0];
+    expect(value(tithe.windowSeconds!)).toBe(15);
+    const buckets = loadBuckets(rawBuckets);
+    const long = {
+      ...truth,
+      totalShots: { ...truth.totalShots, value: 30 },
+    };
+    const run = simulate(long, 60, [], buckets, { catalyst: true });
+    const firstMs = run.shots[0].timeMs;
+    const early = run.damageInstances.find(
+      (h) => h.timeMs < firstMs + 15_000,
+    )!;
+    const late = run.damageInstances.find(
+      (h) => h.timeMs > firstMs + 15_500,
+    )!;
+    expect(late.damage / early.damage).toBeCloseTo(1 / 1.4, 2);
+  });
 });
 
 describe("Thunderlord", () => {

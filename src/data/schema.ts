@@ -290,6 +290,9 @@ export const WeaponOption = z.object({
   bucketId: z.string(), // bucket of the factor, e.g. "weaponPerk"
   durationSeconds: z.number().positive().nullable(), // null: none found or permanent
   condition: z.string().nullable(), // text from the Compendium, e.g. "simultaneously killed enemies"
+  // Only hits within this time after the weapon's first shot get the factor (single cases by
+  // override, e.g. Truth's Reaper's Tithe: 15 s); omitted: the whole damage phase
+  windowSeconds: SourcedNumber.optional(),
 });
 export type WeaponOption = z.infer<typeof WeaponOption>;
 
@@ -1434,6 +1437,8 @@ export const WeaponOverride = z.object({
   catalystFactor: z.number().min(1).optional(),
   // What the catalyst does against one boss, where the text rule cannot tell (reason says why)
   catalystEffect: z.enum(["none", "unknown"]).optional(),
+  // The catalyst option counts only this long from the weapon's first shot (WeaponOption.windowSeconds)
+  catalystWindowSeconds: z.number().positive().optional(),
   // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
   scorchStacksPerShot: z.number().int().positive().optional(),
   timing: z

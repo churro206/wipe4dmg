@@ -1012,11 +1012,24 @@ export function buildWeaponImport(
       );
       const text = perkText(perkNames, inputs.compendium, inputs.clarity);
       if (!text) notes.push("keine Dauer im Compendium gefunden");
+      const window =
+        kind === "catalyst" && override?.catalystWindowSeconds
+          ? override.catalystWindowSeconds
+          : null;
+      if (window !== null) notes.push(`Fenster ${window} s ab dem ersten Shot (Override)`);
       options.push({
         id,
         name,
         kind,
         bucketId: OPTION_BUCKET,
+        ...(window !== null
+          ? {
+              windowSeconds: {
+                value: window,
+                source: aegisSource(row, `Derived (override): ${override!.reason}`),
+              },
+            }
+          : {}),
         factor: {
           value: Number(factor.toFixed(4)),
           source: aegisSource(

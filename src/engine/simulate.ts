@@ -317,19 +317,35 @@ export function simulate(
   // catalyst switch applies the catalyst options as multipliers in their bucket.
   const included = weapon.includedEffectIds ?? [];
   const bucketIds = new Set(buckets.map((bucket) => bucket.id));
-  const optionParts: MultiplierPart[] = (weapon.options ?? [])
+  const optionParts = (weapon.options ?? [])
     .filter((option) => option.kind === "catalyst" && catalyst)
     .map((option) => {
       if (!bucketIds.has(option.bucketId)) {
         throw new Error(`Unknown bucket "${option.bucketId}"`);
       }
-      return {
+      const part: MultiplierPart = {
         type: "multiplier",
         bucketId: option.bucketId,
         multiplier: option.factor,
         damageSources: [damageSource],
       };
+      return {
+        part,
+        windowMs: option.windowSeconds
+          ? requireValue(option.windowSeconds, "windowSeconds") * MS_PER_SECOND
+          : null,
+      };
     });
+  // Options with a window count only from the first shot of the weapon on
+  const optionPartsAt = (timeMs: number) =>
+    optionParts
+      .filter(
+        ({ windowMs }) =>
+          windowMs === null ||
+          shots.length === 0 ||
+          timeMs <= shots[0].timeMs + windowMs,
+      )
+      .map(({ part }) => part);
   // Stacks of a hit: the shots of the current run before the shot that makes the hit; a gap longer
   // than refreshMs ends the run.
   const stacksAt = (timeMs: number, refreshMs: number) => {
@@ -371,7 +387,7 @@ export function simulate(
         ...partsAt(timeMs, included).multiplierParts.map((part) =>
           resolveHitStacks(part, timeMs),
         ),
-        ...optionParts,
+        ...optionPartsAt(timeMs),
       ],
       buckets,
       { damageSource, element, weaponType: weapon.weaponType },
