@@ -1,15 +1,18 @@
 import { useState } from "react";
 import type { CatalogEntry, CatalogStatus } from "../../data/schema";
-import { coverageCatalog } from "../data";
+import { coverageCatalog, iconUrl } from "../data";
 import { Icon } from "./Icon";
 
 const STATUSES: { status: CatalogStatus; mark: string; label: string; meaning: string }[] = [
-  { status: "full", mark: "✓", label: "In the calculator", meaning: "Its damage or its effect counts in a build." },
+  { status: "full", mark: "✓", label: "Implemented", meaning: "Its damage or its effect counts in a build." },
   { status: "approx", mark: "≈", label: "Approximated", meaning: "In, with a known estimate or a part that is still open." },
   { status: "missing", mark: "✕", label: "Missing", meaning: "Does something for damage in the game; not in yet." },
   { status: "leftOut", mark: "–", label: "Left out", meaning: "No damage effect, or left out on purpose." },
 ];
 const BY_STATUS = Object.fromEntries(STATUSES.map((s) => [s.status, s]));
+const COLUMNS = ["Name", "Status", "In-game", "Calculator"];
+// Subclass elements have a colour of their own (index.css); the group bar takes it from the name.
+const ELEMENTS = ["arc", "solar", "void", "stasis", "strand"];
 
 function StatusMark({ status }: { status: CatalogStatus }) {
   const { mark, label } = BY_STATUS[status];
@@ -20,7 +23,7 @@ function StatusMark({ status }: { status: CatalogStatus }) {
   );
 }
 
-/** "136 in the calculator, 5 missing" of one category. */
+/** "136 implemented · 5 missing" of one category. */
 function counts(entries: CatalogEntry[]) {
   return STATUSES.flatMap(({ status, label }) => {
     const n = entries.filter((e) => e.status === status).length;
@@ -37,19 +40,37 @@ function byGroup(entries: CatalogEntry[]) {
   return [...groups];
 }
 
-function Row({ entry }: { entry: CatalogEntry }) {
+const elementOf = (group: string) =>
+  ELEMENTS.find((element) => group.toLowerCase().includes(element));
+
+/**
+ * The icon of an entry; a glossary term the manifest has no item for (Jolted, Freeze) shows the
+ * emblem of its subclass instead.
+ */
+function iconKeyOf(entry: CatalogEntry, categoryId: string) {
+  if (entry.iconKey && iconUrl(entry.iconKey)) return entry.iconKey;
+  return categoryId === "subclass"
+    ? `subclass:hunter:${entry.group.toLowerCase()}`
+    : (entry.iconKey ?? "none");
+}
+
+function Row({ entry, categoryId }: { entry: CatalogEntry; categoryId: string }) {
   const [expanded, setExpanded] = useState(false);
   return (
     <tr>
-      <th scope="row" className="coverage-name">
-        <Icon iconKey={entry.iconKey ?? "none"} label={entry.name} size={28} />
-
-        <span>{entry.name}</span>
+      <th scope="row">
+        <span className="coverage-name">
+          <Icon iconKey={iconKeyOf(entry, categoryId)} label={entry.name} size={28} />
+          <span>
+            {entry.name}
+            {entry.detail && <span className="coverage-detail">{entry.detail}</span>}
+          </span>
+        </span>
       </th>
       <td data-label="Status">
         <StatusMark status={entry.status} />
       </td>
-      <td data-label="In the game">
+      <td data-label="In-game">
         <button
           type="button"
           className={expanded ? "coverage-text" : "coverage-text clamped"}
@@ -59,12 +80,20 @@ function Row({ entry }: { entry: CatalogEntry }) {
           {entry.inGame}
         </button>
       </td>
-      <td data-label="In the calculator">{entry.inCalculator}</td>
+      <td data-label="Calculator">{entry.inCalculator}</td>
     </tr>
   );
 }
 
-function Category({ title, entries }: { title: string; entries: CatalogEntry[] }) {
+function Category({
+  id,
+  title,
+  entries,
+}: {
+  id: string;
+  title: string;
+  entries: CatalogEntry[];
+}) {
   // The rows (and their icons) are only built once the category is opened.
   const [open, setOpen] = useState(false);
   return (
@@ -77,27 +106,37 @@ function Category({ title, entries }: { title: string; entries: CatalogEntry[] }
         <strong>{title}</strong>
         <span className="coverage-counts">{counts(entries)}</span>
       </summary>
-      {open &&
-        byGroup(entries).map(([group, rows]) => (
-          <section key={group}>
-            <h3 className="sub">{group}</h3>
-            <table className="coverage-table">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">In the game</th>
-                  <th scope="col">In the calculator</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((entry) => (
-                  <Row key={entry.name} entry={entry} />
-                ))}
-              </tbody>
-            </table>
-          </section>
-        ))}
+      {open && (
+        <table className="coverage-table">
+          <colgroup>
+            <col className="coverage-col-name" />
+            <col className="coverage-col-status" />
+            <col className="coverage-col-text" />
+            <col className="coverage-col-text" />
+          </colgroup>
+          <thead>
+            <tr>
+              {COLUMNS.map((column) => (
+                <th key={column} scope="col">
+                  {column}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          {byGroup(entries).map(([group, rows]) => (
+            <tbody key={group}>
+              <tr className="coverage-group" data-element={elementOf(group)}>
+                <th colSpan={COLUMNS.length} scope="colgroup">
+                  {group}
+                </th>
+              </tr>
+              {rows.map((entry) => (
+                <Row key={entry.name} entry={entry} categoryId={id} />
+              ))}
+            </tbody>
+          ))}
+        </table>
+      )}
     </details>
   );
 }
@@ -119,7 +158,7 @@ export function CoveragePage() {
         ))}
       </ul>
       {coverageCatalog.map((category) => (
-        <Category key={category.id} title={category.title} entries={category.entries} />
+        <Category key={category.id} id={category.id} title={category.title} entries={category.entries} />
       ))}
     </div>
   );

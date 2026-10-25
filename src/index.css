@@ -897,25 +897,82 @@ header > .segmented {
   font-size: 0.85rem;
 }
 
+/* One table per category: one header row, groups as bars inside it; the last two columns are equally wide */
 .wiki-page table.coverage-table {
   display: table;
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
+}
+
+.coverage-col-name {
+  width: 20%;
+}
+
+.coverage-col-status {
+  width: 11%;
+}
+
+.coverage-col-text {
+  width: 34.5%;
 }
 
 .wiki-page .coverage-table th,
 .wiki-page .coverage-table td {
   text-align: left;
   vertical-align: top;
-  padding: 0.4rem 0.5rem;
+  padding: 0.45rem 0.6rem;
+}
+
+.wiki-page .coverage-table thead th {
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.wiki-page .coverage-table tr:not(.coverage-group) > * {
   border-top: 1px solid var(--border);
+}
+
+.wiki-page .coverage-table tr.coverage-group > th {
+  background: var(--surface);
+  border-top: none;
+  box-shadow: inset 4px 0 0 var(--accent);
+  font-size: 1.05rem;
+  padding: 0.55rem 0.8rem;
+}
+
+.coverage-group[data-element="arc"] > th {
+  box-shadow: inset 4px 0 0 var(--element-arc);
+}
+
+.coverage-group[data-element="solar"] > th {
+  box-shadow: inset 4px 0 0 var(--element-solar);
+}
+
+.coverage-group[data-element="void"] > th {
+  box-shadow: inset 4px 0 0 var(--element-void);
+}
+
+.coverage-group[data-element="stasis"] > th {
+  box-shadow: inset 4px 0 0 var(--element-stasis);
+}
+
+.coverage-group[data-element="strand"] > th {
+  box-shadow: inset 4px 0 0 var(--element-strand);
 }
 
 .coverage-name {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  min-width: 11rem;
+}
+
+.coverage-detail {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 400;
 }
 
 .coverage-text {
@@ -947,15 +1004,18 @@ header > .segmented {
     display: block;
   }
 
-  .wiki-page .coverage-table tr {
+  .wiki-page .coverage-table colgroup {
+    display: none;
+  }
+
+  .wiki-page .coverage-table tr:not(.coverage-group) {
     border-top: 1px solid var(--border);
     padding: 0.4rem 0;
   }
 
-  .wiki-page .coverage-table th,
-  .wiki-page .coverage-table td {
+  .wiki-page .coverage-table tr:not(.coverage-group) > * {
     border-top: none;
-    padding: 0.15rem 0;
+    padding: 0.15rem 0.2rem;
   }
 
   .wiki-page .coverage-table td::before {
@@ -964,7 +1024,8 @@ header > .segmented {
     font-size: 0.8rem;
   }
 
-  .wiki-page .coverage-table td[data-label="In the game"]::before {
+  .wiki-page .coverage-table td[data-label="In-game"]::before,
+  .wiki-page .coverage-table td[data-label="Calculator"]::before {
     display: block;
   }
 }

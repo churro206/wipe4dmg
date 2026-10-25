@@ -12,7 +12,6 @@ import {
   buffEntries,
   buildCatalog,
   classAbilityEntries,
-  classPerkEntries,
   glossaryEntries,
   subclassItemEntries,
   weaponEntries,
@@ -25,6 +24,8 @@ import rawAbilities from "../../src/data/compendium-abilities.json";
 import rawClass from "../../src/data/compendium-class.json";
 import rawArtifacts from "../../src/data/compendium-artifacts.json";
 import rawCourt from "../../src/data/court-buffs.json";
+import rawIcons from "../../src/data/icons.json";
+import rawManifestAbilities from "../../src/data/manifest-abilities.json";
 import rawManifestWeapons from "../../src/data/manifest-weapons.json";
 import rawWeaponGaps from "../../src/data/weapon-gaps.json";
 import rawWeapons from "../../src/data/compendium-weapons.json";
@@ -33,6 +34,7 @@ import {
   CompendiumSnapshot,
   CounterId,
   CourtSnapshot,
+  ManifestAbilities,
   ManifestWeapons,
   StatusId,
   WeaponGap,
@@ -48,6 +50,8 @@ import {
   weapons,
 } from "../../src/ui/data";
 
+const icons: Record<string, string> = rawIcons.icons;
+
 export function realCatalog(): CoverageCatalog {
   const abilityTexts = CompendiumSnapshot.parse(rawAbilities).entries;
   // Effects and the states and counters of the model carry the names of the glossary terms.
@@ -62,72 +66,75 @@ export function realCatalog(): CoverageCatalog {
     ...CounterId.options.map(statusName), // Scorch
   ];
   const subclassRows = subclassEffects(loadSubclassEffectInputs()).rows;
-  return buildCatalog({
-    weapons: weaponEntries({
-      entries: CompendiumSnapshot.parse(rawWeapons).entries,
-      names: ManifestWeapons.parse(rawManifestWeapons).weapons.map((w) => ({
-        name: w.name,
-        catalyst: w.catalyst !== null,
-      })),
-      weapons: weapons.map((w) => ({
-        id: w.id,
-        name: w.name,
-        damageInstances: w.damageInstances.length,
-        intrinsics: w.intrinsics.length,
-        catalyst: w.catalyst !== undefined,
-      })),
-      gaps: WeaponGap.array().parse(rawWeaponGaps),
-    }),
-    class: [
-      ...classAbilityEntries({
+  const subclassItems = ManifestAbilities.parse(rawManifestAbilities).subclassItems ?? [];
+  return buildCatalog(
+    {
+      weapons: weaponEntries({
+        entries: CompendiumSnapshot.parse(rawWeapons).entries,
+        names: ManifestWeapons.parse(rawManifestWeapons).weapons.map((w) => ({
+          name: w.name,
+          catalyst: w.catalyst !== null,
+        })),
+        weapons: weapons.map((w) => ({
+          id: w.id,
+          name: w.name,
+          damageInstances: w.damageInstances.length,
+          intrinsics: w.intrinsics.length,
+          catalyst: w.catalyst !== undefined,
+        })),
+        gaps: WeaponGap.array().parse(rawWeaponGaps),
+      }),
+      subclass: glossaryEntries({
         entries: abilityTexts,
-        modelled: abilities.flatMap((a) =>
-          a.kind === "classAbility" && a.compendium
-            ? [{ tab: a.compendium.tab, entry: a.compendium.entry, id: a.id }]
-            : [],
-        ),
+        keywordLinks: keywords.map((k) => k.compendium),
         effectNames,
       }),
-      ...classPerkEntries({
-        entries: CompendiumSnapshot.parse(rawClass).entries,
+      abilities: [
+        ...abilityEntries(
+          abilityCoverage(
+            abilityTexts,
+            abilities,
+            aegisRows,
+            AbilityGap.array().parse(rawGaps),
+          ),
+          abilityTexts,
+        ),
+        ...classAbilityEntries({
+          entries: abilityTexts,
+          modelled: abilities.flatMap((a) =>
+            a.kind === "classAbility" && a.compendium
+              ? [{ tab: a.compendium.tab, entry: a.compendium.entry, id: a.id }]
+              : [],
+          ),
+          effectNames,
+        }),
+      ],
+      aspects: subclassItemEntries({
+        rows: subclassRows,
+        items: subclassItems,
+        entries: abilityTexts,
+        section: "aspect",
+      }),
+      fragments: subclassItemEntries({
+        rows: subclassRows,
+        items: subclassItems,
+        entries: abilityTexts,
+        section: "fragment",
+      }),
+      buffs: buffEntries({
+        rows: buffEffects(loadBuffInputs()).rows,
+        court: CourtSnapshot.parse(rawCourt).entries,
+      }),
+      armor: armorEntries({
+        entries: CompendiumSnapshot.parse(rawArmor).entries,
+        perks: CompendiumSnapshot.parse(rawClass).entries,
         armor: exoticArmor,
       }),
-    ],
-    subclass: glossaryEntries({
-      entries: abilityTexts,
-      keywordLinks: keywords.map((k) => k.compendium),
-      effectNames,
-    }),
-    abilities: abilityEntries(
-      abilityCoverage(
-        abilityTexts,
-        abilities,
-        aegisRows,
-        AbilityGap.array().parse(rawGaps),
-      ),
-      abilityTexts,
-    ),
-    aspects: subclassItemEntries({
-      rows: subclassRows,
-      entries: abilityTexts,
-      section: "aspect",
-    }),
-    fragments: subclassItemEntries({
-      rows: subclassRows,
-      entries: abilityTexts,
-      section: "fragment",
-    }),
-    buffs: buffEntries({
-      rows: buffEffects(loadBuffInputs()).rows,
-      court: CourtSnapshot.parse(rawCourt).entries,
-    }),
-    armor: armorEntries({
-      entries: CompendiumSnapshot.parse(rawArmor).entries,
-      armor: exoticArmor,
-    }),
-    artifacts: artifactEntries({
-      rows: buildArtifacts(loadArtifactInputs()).rows,
-      entries: CompendiumSnapshot.parse(rawArtifacts).entries,
-    }),
-  });
+      artifacts: artifactEntries({
+        rows: buildArtifacts(loadArtifactInputs()).rows,
+        entries: CompendiumSnapshot.parse(rawArtifacts).entries,
+      }),
+    },
+    (key) => key in icons,
+  );
 }

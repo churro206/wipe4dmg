@@ -1349,13 +1349,13 @@ export const CatalogEntry = z.object({
   status: CatalogStatus,
   inGame: z.string(), // what it does in the game (Compendium or Court)
   inCalculator: z.string(), // what it does in the calculator, or why it is missing
+  detail: z.string().optional(), // second line under the name, e.g. the armor slot
   iconKey: z.string().optional(), // key for iconUrl in the UI
 });
 export type CatalogEntry = z.infer<typeof CatalogEntry>;
 
 export const CatalogCategoryId = z.enum([
   "weapons",
-  "class",
   "subclass",
   "abilities",
   "aspects",

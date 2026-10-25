@@ -4,14 +4,19 @@ import {
   armorEntries,
   artifactEntries,
   buffEntries,
+  buildCatalog,
   classAbilityEntries,
-  classPerkEntries,
   glossaryEntries,
+  namedCatalogEntries,
   subclassItemEntries,
   weaponEntries,
 } from "../scripts/lib/coverageCatalog";
+import rawIcons from "../src/data/icons.json";
 import { CoverageCatalog, type CompendiumEntry } from "../src/data/schema";
+import noIcon from "./fixtures/coverage-no-icon.json";
 import { realCatalog } from "./lib/coverageCatalogData";
+
+const icons: Record<string, string> = rawIcons.icons;
 
 const entry = (
   tab: string,
@@ -85,12 +90,15 @@ describe("weaponEntries", () => {
 });
 
 describe("armorEntries", () => {
+  type Piece = Parameters<typeof armorEntries>[0]["armor"][number];
   const armor = (
     id: string,
     name: string,
-    kind: Parameters<typeof armorEntries>[0]["armor"][number]["kind"],
+    kind: Piece["kind"],
+    slot: Piece["slot"] = "helmet",
+    guardianClass: Piece["guardianClass"] = "hunter",
     column?: 1 | 2,
-  ) => ({ id, name, guardianClass: "hunter" as const, kind, column });
+  ): Piece => ({ id, name, guardianClass, kind, slot, column });
   const compendium = [
     entry("Exotic Armors", "hunter", "Celestial Nighthawk"),
     entry("Exotic Armors", "hunter", "Lucky Pants"),
@@ -99,67 +107,93 @@ describe("armorEntries", () => {
   ];
   const result = armorEntries({
     entries: compendium,
+    perks: [],
     armor: [
       armor("celestial-nighthawk", "Celestial Nighthawk", "abilityVariant"),
-      armor("lucky-pants", "Lucky Pants", "noDamage"),
-      armor("cloak-of-mist", "Cloak of Mist", "ownDamage"),
-      armor("gap-boots", "Gap Boots", "gap"),
+      armor("lucky-pants", "Lucky Pants", "noDamage", "legs"),
+      armor("cloak-of-mist", "Cloak of Mist", "ownDamage", "chest"),
+      armor("gap-boots", "Gap Boots", "gap", "legs"),
     ],
   });
 
   it("maps the kind of an exotic to a status with a reason", () => {
-    expect(result.map((e) => [e.name, e.status])).toEqual([
-      ["Celestial Nighthawk", "full"],
-      ["Lucky Pants", "leftOut"],
-      ["Cloak of Mist", "missing"],
-      ["Gap Boots", "missing"],
-    ]);
+    const byName = (name: string) => result.find((e) => e.name === name)!;
+    expect(byName("Celestial Nighthawk").status).toBe("full");
+    expect(byName("Lucky Pants").status).toBe("leftOut");
+    expect(byName("Cloak of Mist").status).toBe("missing");
+    expect(byName("Gap Boots").status).toBe("missing");
     expect(result[0].group).toBe("Hunter");
     expect(result[0].iconKey).toBe("armor:celestial-nighthawk");
   });
 
+  it("sorts by class, then by slot: helmet, arms, chest, legs, class item, class item perks", () => {
+    const piece = (name: string, section: string) =>
+      entry("Exotic Armors", section, name);
+    const sorted = armorEntries({
+      entries: [
+        piece("Warlock Legs", "warlock"),
+        piece("Hunter Chest", "hunter"),
+        piece("Titan Helm", "titan"),
+        piece("Hunter Arms", "hunter"),
+        piece("Hunter Class Item", "hunter"),
+        piece("Hunter Legs", "hunter"),
+        piece("Hunter Helm", "hunter"),
+      ],
+      perks: [
+        entry("Exotic Class", "any", "Spirit of Verity"),
+        entry("Exotic Class", "hunter", "Spirit of Nothing"),
+      ],
+      armor: [
+        armor("w-legs", "Warlock Legs", "noDamage", "legs", "warlock"),
+        armor("h-chest", "Hunter Chest", "noDamage", "chest"),
+        armor("t-helm", "Titan Helm", "noDamage", "helmet", "titan"),
+        armor("h-arms", "Hunter Arms", "noDamage", "gauntlets"),
+        armor("h-class", "Hunter Class Item", "noDamage", "classItem"),
+        armor("h-legs", "Hunter Legs", "noDamage", "legs"),
+        armor("h-helm", "Hunter Helm", "noDamage", "helmet"),
+        armor("spirit-of-verity", "Spirit of Verity", "damageBuff", "classPerk", null, 2),
+      ],
+    });
+    expect(sorted.map((e) => [e.group, e.name, e.detail])).toEqual([
+      ["Hunter", "Hunter Helm", "Helmet"],
+      ["Hunter", "Hunter Arms", "Arms"],
+      ["Hunter", "Hunter Chest", "Chest"],
+      ["Hunter", "Hunter Legs", "Legs"],
+      ["Hunter", "Hunter Class Item", "Class item"],
+      ["Hunter", "Spirit of Nothing", "Class item perk"],
+      ["Titan", "Titan Helm", "Helmet"],
+      ["Warlock", "Warlock Legs", "Legs"],
+      ["Any class", "Spirit of Verity", "Class item perk"],
+    ]);
+  });
+
+  it("rates a class perk of the model by its kind and marks one without an item as missing", () => {
+    const perks = armorEntries({
+      entries: [],
+      perks: [
+        entry("Exotic Class", "any", "Spirit of Verity"),
+        entry("Exotic Class", "hunter", "Spirit of Nothing"),
+      ],
+      armor: [
+        armor("spirit-of-verity", "Spirit of Verity", "damageBuff", "classPerk", null, 2),
+      ],
+    });
+    expect(perks.map((e) => [e.group, e.name, e.status])).toEqual([
+      ["Hunter", "Spirit of Nothing", "missing"],
+      ["Any class", "Spirit of Verity", "full"],
+    ]);
+    expect(perks[1].iconKey).toBe("armor:spirit-of-verity");
+  });
+
   it("marks a Compendium exotic without an item as missing and matches shortened names", () => {
-    const [missing] = armorEntries({ entries: compendium, armor: [] });
+    const [missing] = armorEntries({ entries: compendium, perks: [], armor: [] });
     expect(missing).toMatchObject({ name: "Celestial Nighthawk", status: "missing" });
     const [short] = armorEntries({
       entries: [entry("Exotic Armors", "titan", "Loreley Splendor")],
-      armor: [
-        {
-          id: "loreley-splendor-helm",
-          name: "Loreley Splendor Helm",
-          guardianClass: "titan",
-          kind: "ownDamage",
-        },
-      ],
+      perks: [],
+      armor: [armor("loreley-splendor-helm", "Loreley Splendor Helm", "ownDamage", "helmet", "titan")],
     });
     expect(short.iconKey).toBe("armor:loreley-splendor-helm");
-  });
-});
-
-describe("classPerkEntries", () => {
-  const entries = [
-    entry("Exotic Class", "any", "Spirit of Verity"),
-    entry("Exotic Class", "hunter", "Spirit of Nothing"),
-  ];
-  const result = classPerkEntries({
-    entries,
-    armor: [
-      {
-        id: "spirit-of-verity",
-        name: "Spirit of Verity",
-        guardianClass: null,
-        kind: "damageBuff",
-        column: 2,
-      },
-    ],
-  });
-
-  it("rates a perk of the model by its kind and marks a perk without an item as missing", () => {
-    expect(result.map((e) => [e.group, e.name, e.status])).toEqual([
-      ["Any class", "Spirit of Verity", "full"],
-      ["Hunter", "Spirit of Nothing", "missing"],
-    ]);
-    expect(result[0].iconKey).toBe("armor:spirit-of-verity");
   });
 });
 
@@ -181,6 +215,7 @@ describe("classAbilityEntries", () => {
       ["Empowering Rift", "full"],
       ["Marksman's Dodge", "leftOut"],
     ]);
+    expect(new Set(result.map((e) => e.group))).toEqual(new Set(["Class abilities"]));
   });
 });
 
@@ -252,13 +287,19 @@ describe("subclassItemEntries", () => {
     kind,
   });
   const rows = [row("Sol Invictus", "triggered"), row("Ember of Ashes", "noDamage")];
+  const items = [
+    { name: "Sol Invictus", guardianClass: "titan" as const, subclass: "solar" as const },
+    { name: "Sol Invictus", guardianClass: "titan" as const, subclass: "prismatic" as const },
+    { name: "Ember of Ashes", guardianClass: null, subclass: "solar" as const },
+  ];
 
   it("splits aspects and fragments by the Compendium section", () => {
-    const aspects = subclassItemEntries({ rows, entries: compendium, section: "aspect" });
-    const fragments = subclassItemEntries({ rows, entries: compendium, section: "fragment" });
+    const aspects = subclassItemEntries({ rows, items, entries: compendium, section: "aspect" });
+    const fragments = subclassItemEntries({ rows, items, entries: compendium, section: "fragment" });
     expect(aspects.map((e) => e.name)).toEqual(["Sol Invictus"]);
+    expect(fragments[0].group).toBe("Solar");
     expect(aspects[0]).toMatchObject({
-      group: "Solar",
+      group: "Titan · Solar",
       status: "full",
       inGame: "Sunspots grant Radiant.",
       iconKey: "effect:sol-invictus",
@@ -272,12 +313,44 @@ describe("subclassItemEntries", () => {
     const status = (kinds: Parameters<typeof row>[1][]) =>
       subclassItemEntries({
         rows: kinds.map((kind) => row("Sol Invictus", kind)),
+        items,
         entries: compendium,
         section: "aspect",
       }).map((e) => e.status);
     expect(status(["always", "triggered"])).toEqual(["full"]);
     expect(status(["always", "classAbility"])).toEqual(["approx"]);
     expect(status(["classAbility", "noDamage"])).toEqual(["missing"]);
+  });
+
+  it("sorts aspects by class (Hunter, Titan, Warlock), then by subclass (Arc, Solar, Void, ...)", () => {
+    const texts = [
+      entry("Void", "Aspects", "Void Aspect"),
+      entry("Solar", "Aspects", "Warlock Solar Aspect"),
+      entry("Arc", "Aspects", "Warlock Arc Aspect"),
+      entry("Solar", "Aspects", "Hunter Solar Aspect"),
+    ];
+    const aspect = (name: string, guardianClass: "hunter" | "titan" | "warlock", subclass: "arc" | "solar" | "void") => ({
+      item: { name, guardianClass, subclass },
+      row: { id: name, name, subclasses: subclass, kind: "always" as const },
+    });
+    const all = [
+      aspect("Void Aspect", "titan", "void"),
+      aspect("Warlock Solar Aspect", "warlock", "solar"),
+      aspect("Warlock Arc Aspect", "warlock", "arc"),
+      aspect("Hunter Solar Aspect", "hunter", "solar"),
+    ];
+    const sorted = subclassItemEntries({
+      rows: all.map((a) => a.row),
+      items: all.map((a) => a.item),
+      entries: texts,
+      section: "aspect",
+    });
+    expect(sorted.map((e) => e.group)).toEqual([
+      "Hunter · Solar",
+      "Titan · Void",
+      "Warlock · Arc",
+      "Warlock · Solar",
+    ]);
   });
 });
 
@@ -344,7 +417,73 @@ describe("artifactEntries", () => {
       ["Encrypted Data Disk (Renegades)", "Sniper's Meditation", "full"],
       ["Encrypted Data Disk (Renegades)", "Bricks from Beyond", "leftOut"],
     ]);
-    expect(result[0].iconKey).toBe("artifact:encrypted-data-disk");
+    // The perk has its own icon, found by its name (buildCatalog adds the key).
+    expect(result[0].iconKey).toBeUndefined();
+  });
+});
+
+describe("buildCatalog", () => {
+  const entryOf = (name: string, iconKey?: string) => ({
+    name,
+    group: "Group",
+    status: "full" as const,
+    inGame: "Game.",
+    inCalculator: "Calculator.",
+    ...(iconKey ? { iconKey } : {}),
+  });
+  const empty = {
+    weapons: [],
+    subclass: [],
+    abilities: [],
+    aspects: [],
+    fragments: [],
+    buffs: [],
+    armor: [],
+    artifacts: [],
+  };
+
+  it("keeps the order of the page, without a class category", () => {
+    expect(buildCatalog(empty, () => true).map((c) => c.id)).toEqual([
+      "weapons",
+      "subclass",
+      "abilities",
+      "aspects",
+      "fragments",
+      "buffs",
+      "armor",
+      "artifacts",
+    ]);
+  });
+
+  it("looks an icon up by the name of the entry when its own key has no icon", () => {
+    const catalog = buildCatalog(
+      {
+        ...empty,
+        weapons: [entryOf("Hawkmoon", "weapon:hawkmoon"), entryOf("Lost Gun", "weapon:lost-gun")],
+        artifacts: [entryOf("Sniper's Meditation")],
+      },
+      (key) => key === "weapon:hawkmoon",
+    );
+    expect(catalog[0].entries.map((e) => e.iconKey)).toEqual([
+      "weapon:hawkmoon",
+      "named:lost-gun",
+    ]);
+    expect(catalog[7].entries[0].iconKey).toBe("named:snipers-meditation");
+  });
+
+  it("lists every name that needs an icon from the manifest once", () => {
+    const catalog = buildCatalog(
+      {
+        ...empty,
+        weapons: [entryOf("Hawkmoon", "weapon:hawkmoon")],
+        artifacts: [entryOf("Horde Shuttle"), entryOf("Horde Shuttle"), entryOf("Torch")],
+      },
+      (key) => key === "weapon:hawkmoon",
+    );
+    expect(namedCatalogEntries(catalog)).toEqual([
+      { id: "horde-shuttle", name: "Horde Shuttle" },
+      { id: "torch", name: "Torch" },
+    ]);
   });
 });
 
@@ -361,7 +500,6 @@ describe("src/data/coverage-catalog.json", () => {
     expect(() => CoverageCatalog.parse(catalog)).not.toThrow();
     expect(catalog.map((c) => c.id)).toEqual([
       "weapons",
-      "class",
       "subclass",
       "abilities",
       "aspects",
@@ -370,6 +508,24 @@ describe("src/data/coverage-catalog.json", () => {
       "armor",
       "artifacts",
     ]);
+  });
+
+  it("puts class abilities into Abilities and the class item perks into Armor", () => {
+    const entries = (id: string) => catalog.find((c) => c.id === id)!.entries;
+    expect(
+      entries("abilities").filter((e) => e.group === "Class abilities").length,
+    ).toBeGreaterThan(0);
+    expect(
+      entries("armor").some((e) => e.name === "Spirit of Verity" && e.group === "Any class"),
+    ).toBe(true);
+  });
+
+  it("gives every entry an icon key that the icon index knows, except the listed ones", () => {
+    // Names the manifest has no item with an icon for; they show two letters (npm run import:icons warns).
+    const withoutIcon = catalog.flatMap((c) =>
+      c.entries.filter((e) => !e.iconKey || !(e.iconKey in icons)).map((e) => `${c.id}: ${e.name}`),
+    );
+    expect(withoutIcon).toEqual(noIcon.entries);
   });
 
   it("explains every entry once and gives a reason for everything not fully in", () => {

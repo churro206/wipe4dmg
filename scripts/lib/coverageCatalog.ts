@@ -12,6 +12,7 @@ import type {
   CoverageCatalog,
   ExoticArmorEntry,
   GapReason,
+  ManifestSubclassItem,
   WeaponGap,
 } from "../../src/data/schema.ts";
 import type { ArtifactRow } from "./artifacts.ts";
@@ -52,7 +53,6 @@ export const REASON: Record<MissingReason, string> = {
 
 const TITLES: Record<CatalogCategoryId, string> = {
   weapons: "Weapons",
-  class: "Class",
   subclass: "Subclass",
   abilities: "Abilities",
   aspects: "Aspects",
@@ -73,20 +73,50 @@ const compact = (text: string) =>
     .replace(/^the\s+/, "")
     .replace(/\s+/g, "");
 const NO_ITEM = "Not in the calculator yet: the import has no item for it.";
+/** Prefix of the icon keys that the import finds by the name of the item (scripts/import-bungie-icons.ts). */
+export const NAMED_ICON = "named:";
 
 const make = (
   status: CatalogStatus,
   fields: Omit<CatalogEntry, "status">,
 ): CatalogEntry => ({ ...fields, status });
 
-/** The categories in the order of the page. */
+/** The entries that need an icon found by name, once per name; id is the key without its prefix. */
+export function namedCatalogEntries(
+  catalog: CoverageCatalog,
+): { id: string; name: string }[] {
+  const byId = new Map<string, string>();
+  for (const { entries } of catalog) {
+    for (const { iconKey, name } of entries) {
+      if (iconKey?.startsWith(NAMED_ICON) && !byId.has(iconKey)) {
+        byId.set(iconKey, name);
+      }
+    }
+  }
+  return [...byId].map(([key, name]) => ({
+    id: key.slice(NAMED_ICON.length),
+    name,
+  }));
+}
+
+/**
+ * The categories in the order of the page. An entry whose own icon key has no icon (or none at all,
+ * e.g. an artifact perk) gets the key "named:<name>"; npm run import:icons finds that icon by the name.
+ */
 export function buildCatalog(
   parts: Record<CatalogCategoryId, CatalogEntry[]>,
+  hasIcon: (key: string) => boolean,
 ): CoverageCatalog {
   return (Object.keys(TITLES) as CatalogCategoryId[]).map((id) => ({
     id,
     title: TITLES[id],
-    entries: parts[id],
+    entries: parts[id].map((entry) => ({
+      ...entry,
+      iconKey:
+        entry.iconKey && hasIcon(entry.iconKey)
+          ? entry.iconKey
+          : `${NAMED_ICON}${kebab(entry.name)}`,
+    })),
   }));
 }
 
@@ -152,9 +182,29 @@ export function weaponEntries(input: {
 
 type ArmorInput = Pick<
   ExoticArmorEntry,
-  "id" | "name" | "guardianClass" | "kind"
+  "id" | "name" | "guardianClass" | "kind" | "slot"
 > &
   Partial<Pick<ExoticArmorEntry, "column">>;
+
+const CLASS_ORDER = ["hunter", "titan", "warlock", "any"];
+const SLOT_ORDER: ExoticArmorEntry["slot"][] = [
+  "helmet",
+  "gauntlets",
+  "chest",
+  "legs",
+  "classItem",
+  "classPerk",
+];
+const SLOT_LABEL: Record<ExoticArmorEntry["slot"], string> = {
+  helmet: "Helmet",
+  gauntlets: "Arms",
+  chest: "Chest",
+  legs: "Legs",
+  classItem: "Class item",
+  classPerk: "Class item perk",
+};
+// A piece the import has no item for sits behind the pieces of its class, before the class item perks.
+const UNKNOWN_SLOT = SLOT_ORDER.indexOf("classItem") + 0.5;
 
 const ARMOR_KIND: Record<
   ExoticArmorEntry["kind"],
@@ -184,59 +234,63 @@ function armorEntry(
     group,
     inGame: entry.text,
     inCalculator: status === "leftOut" ? `Left out: ${text}` : text,
+    detail: SLOT_LABEL[armor.slot],
     iconKey: `armor:${armor.id}`,
   });
 }
 
-/** One row per exotic armor piece of the Compendium, grouped by guardian class. */
+/**
+ * Exotic armor pieces (tab Exotic Armors) and the perks of the Exotic Class Items (tab Exotic
+ * Class), grouped by guardian class (then "Any class"), in a class by slot: helmet, arms, chest,
+ * legs, class item, class item perks. A piece or perk the import has no item for (no plug in the
+ * manifest, docs/known-inaccuracies.md) is missing.
+ */
 export function armorEntries(input: {
   entries: CompendiumEntry[];
+  perks: CompendiumEntry[];
   armor: ArmorInput[];
 }): CatalogEntry[] {
-  return input.entries.map((entry) => {
-    // The Compendium shortens some names ("Loreley Splendor" for "Loreley Splendor Helm").
-    const armor = input.armor
-      .filter(
-        (a) =>
-          a.column === undefined &&
-          (a.guardianClass === null || a.guardianClass === entry.section) &&
-          compact(a.name).startsWith(compact(entry.name)),
-      )
-      .sort((a, b) => a.name.length - b.name.length)[0];
-    const group = capitalise(entry.section);
-    return armor
-      ? armorEntry(entry, armor, group)
-      : make("missing", {
-          name: entry.name,
-          group,
-          inGame: entry.text,
-          inCalculator: NO_ITEM,
-        });
-  });
-}
-
-/**
- * The perks of the Exotic Class Items (tab Exotic Class), grouped by guardian class. A perk the
- * import has no item for (no plug in the manifest, docs/known-inaccuracies.md) is missing.
- */
-export function classPerkEntries(input: {
-  entries: CompendiumEntry[];
-  armor: ArmorInput[];
-}): CatalogEntry[] {
-  return input.entries.map((entry) => {
-    const group = entry.section === "any" ? "Any class" : capitalise(entry.section);
-    const armor = input.armor.find(
-      (a) => a.column !== undefined && sameName(a.name, entry.name),
-    );
-    return armor
-      ? armorEntry(entry, armor, group)
-      : make("missing", {
-          name: entry.name,
-          group,
-          inGame: entry.text,
-          inCalculator: NO_ITEM,
-        });
-  });
+  const rows = [
+    ...input.entries.map((entry) => {
+      // The Compendium shortens some names ("Loreley Splendor" for "Loreley Splendor Helm").
+      const armor = input.armor
+        .filter(
+          (a) =>
+            a.column === undefined &&
+            (a.guardianClass === null || a.guardianClass === entry.section) &&
+            compact(a.name).startsWith(compact(entry.name)),
+        )
+        .sort((a, b) => a.name.length - b.name.length)[0];
+      return { entry, armor, slot: armor ? SLOT_ORDER.indexOf(armor.slot) : UNKNOWN_SLOT };
+    }),
+    ...input.perks.map((entry) => ({
+      entry,
+      armor: input.armor.find(
+        (a) => a.column !== undefined && sameName(a.name, entry.name),
+      ),
+      slot: SLOT_ORDER.indexOf("classPerk"),
+    })),
+  ];
+  return rows
+    .sort(
+      (a, b) =>
+        CLASS_ORDER.indexOf(a.entry.section) - CLASS_ORDER.indexOf(b.entry.section) ||
+        a.slot - b.slot,
+    )
+    .map(({ entry, armor, slot }) => {
+      const group = entry.section === "any" ? "Any class" : capitalise(entry.section);
+      return armor
+        ? armorEntry(entry, armor, group)
+        : make("missing", {
+            name: entry.name,
+            group,
+            inGame: entry.text,
+            inCalculator: NO_ITEM,
+            ...(slot === SLOT_ORDER.indexOf("classPerk")
+              ? { detail: SLOT_LABEL.classPerk }
+              : {}),
+          });
+    });
 }
 
 /** Class abilities (rifts, barricades, dodges): in the model or with a reason by the damage words of the text. */
@@ -258,7 +312,7 @@ export function classAbilityEntries(input: {
     .map((e) => {
       const base = {
         name: e.name,
-        group: e.tab === "Class Abilities" ? "Class" : e.tab,
+        group: "Class abilities",
         inGame: e.text,
       };
       const ability = input.modelled.find(
@@ -365,23 +419,36 @@ const SUBCLASS_KIND: Record<SubclassEffectKind, [CatalogStatus, string]> = {
   noDamage: ["leftOut", "No damage effect."],
 };
 
-/** Aspects or fragments: the review rows of the subclass effects with the Compendium text. */
+const SUBCLASS_ORDER = ["Arc", "Solar", "Void", "Stasis", "Strand", "Prismatic"];
+
+/**
+ * Aspects or fragments: the review rows of the subclass effects with the Compendium text. Aspects are
+ * grouped by class and subclass ("Titan · Solar"), sorted by class, then subclass; fragments by subclass.
+ */
 export function subclassItemEntries(input: {
   rows: Pick<SubclassEffectRow, "id" | "name" | "subclasses" | "kind">[];
+  items: Pick<ManifestSubclassItem, "name" | "guardianClass" | "subclass">[];
   entries: CompendiumEntry[];
   section: "aspect" | "fragment";
 }): CatalogEntry[] {
   const wanted = input.section === "aspect" ? /^aspects?$/i : /^fragments$/i;
-  const items = input.entries.filter((e) => /^(aspects?|fragments)$/i.test(e.section));
+  const texts = input.entries.filter((e) => /^(aspects?|fragments)$/i.test(e.section));
   // An item has one review row per effect it gives (rules A to H), e.g. Roaring Flames three.
   const rowsOfItem = new Map<string, typeof input.rows>();
   for (const row of input.rows) {
     rowsOfItem.set(row.name, [...(rowsOfItem.get(row.name) ?? []), row]);
   }
-  return [...rowsOfItem.values()].flatMap((rows) => {
+  const sortKey = (group: string) => {
+    const [guardianClass, subclass] = group.split(" · ");
+    return [
+      CLASS_ORDER.indexOf(guardianClass.toLowerCase().replace("any class", "any")),
+      SUBCLASS_ORDER.indexOf(subclass),
+    ];
+  };
+  const entries = [...rowsOfItem.values()].flatMap((rows) => {
     const [first] = rows;
     const tabs = first.subclasses.split(", ");
-    const main = items
+    const main = texts
       .filter(
         (e) =>
           tabs.includes(e.tab.toLowerCase()) && subclassItemNamed(first.name, e.name),
@@ -400,16 +467,30 @@ export function subclassItemEntries(input: {
             ? "missing"
             : "leftOut";
     const text = [...new Set(parts.map(([, part]) => part))].join(" ");
+    const ofItem = input.items.filter((i) => i.name === first.name);
+    const guardianClass = (
+      ofItem.find((i) => i.subclass === main.tab.toLowerCase()) ?? ofItem[0]
+    )?.guardianClass;
     return [
       make(status, {
         name: first.name,
-        group: main.tab,
+        group:
+          input.section === "aspect"
+            ? `${guardianClass ? capitalise(guardianClass) : "Any class"} · ${main.tab}`
+            : main.tab,
         inGame: main.text,
         inCalculator: status === "leftOut" ? `Left out: ${text}` : text,
         iconKey: `effect:${first.id}`,
       }),
     ];
   });
+  return input.section === "aspect"
+    ? entries.sort((a, b) => {
+        const [classA, subA] = sortKey(a.group);
+        const [classB, subB] = sortKey(b.group);
+        return classA - classB || subA - subB;
+      })
+    : entries;
 }
 
 /** Court's rows of global buffs and debuffs, surges and the like; exotic and weapon rows are elsewhere. */
@@ -433,9 +514,12 @@ export function buffEntries(input: {
     if (row.verdict === "skipped") {
       return [make("leftOut", { ...base, inCalculator: `Left out: ${row.target}` })];
     }
+    // The target of an imported or covered row is the id of its effect, which has an icon of its own.
+    const effectId = /^[a-z0-9-]+$/.test(row.target) ? row.target : undefined;
     return [
       make("full", {
         ...base,
+        ...(effectId ? { iconKey: `effect:${effectId}` } : {}),
         inCalculator:
           row.verdict === "imported"
             ? "A switch in the Effects list, value and duration from Court."
@@ -462,7 +546,6 @@ export function artifactEntries(input: {
       group,
       inGame:
         input.entries.find((e) => e.section === group && e.name === row.perk)?.text ?? "",
-      iconKey: `artifact:${kebab(row.artifact)}`,
     };
     return row.verdict === "imported"
       ? make("full", { ...base, inCalculator: "A switch in the Effects list." })

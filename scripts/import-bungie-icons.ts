@@ -18,6 +18,7 @@ import {
   AbilityData,
   ArtifactData,
   CompendiumSnapshot,
+  CoverageCatalog,
   Effect,
   ExoticArmorEntry,
   GuardianClass,
@@ -39,6 +40,7 @@ import {
   iconFileName,
   namedIconRefs,
 } from "./lib/bungieIcons.ts";
+import { namedCatalogEntries } from "./lib/coverageCatalog.ts";
 import {
   extractManifestAbilities,
   extractSubclassItems,
@@ -258,6 +260,21 @@ const artifactNamed = namedIconRefs(
 );
 if (artifactNamed.missing.length > 0)
   console.warn(`No manifest item with an icon for: ${artifactNamed.missing.join(", ")}`);
+// The wiki page "Coverage of the calculator" (npm run coverage): every entry without an icon of its
+// own, e.g. an artifact perk or a glossary term, has the key "named:<name>"; look the item up by name.
+const catalogNamed = namedIconRefs(
+  existsSync(new URL("src/data/coverage-catalog.json", ROOT))
+    ? namedCatalogEntries(
+        CoverageCatalog.parse(readJson("src/data/coverage-catalog.json")),
+      )
+    : [],
+  items,
+  "named",
+);
+if (catalogNamed.missing.length > 0)
+  console.warn(
+    `No manifest item with an icon for the coverage page: ${catalogNamed.missing.join(", ")}`,
+  );
 const refs = collectIconRefs(
   [
     ...Effect.array().parse(readJson("src/data/effects.json")),
@@ -278,6 +295,7 @@ const refs = collectIconRefs(
     ...abilityIconRefs(abilityData.filter(isPlug), manifestAbilities.abilities),
     ...abilityNamed.refs,
     ...artifactNamed.refs,
+    ...catalogNamed.refs,
   ],
 );
 mkdirSync(new URL("public/icons/", ROOT), { recursive: true });
