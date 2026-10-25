@@ -4,14 +4,14 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**UI „Die erste Minute“, Rest (Sonnet)**, Prompt 2 in `docs/plans/cleanup-prompts.md`. Erledigt: Punkte 1 (Start 30 s), 2 (Boss-Gruppen alphabetisch), 3 (Boss im Link), Logo-Link und neues Logo. Verworfen: Punkt 4 (relative Zahlen, „BIG NUMBER GOOD“). Offen: 5 (Alt-Text und Tooltips für alle Icons, Namen in Optimizer-Zeilen, Icon-Test), 6 (Handy: sticky Ergebniszeile bei 375 px), 7 (fehlende Supers, z. B. Song of Flame, prüfen und in `known-inaccuracies.md` eintragen). Dabei `src/ui/App.tsx` in Panels aufteilen, wo der Block es anfasst. Nicht per Screenshot geprüft: Logo-Formate, Boss-Gruppen, Logo-Link (`scripts/ui-check.mjs`).
+**Screenshot-Prüfung der UI (Sonnet)**, kurz: Der UI-Block „Die erste Minute“ ist fertig (Punkte 1 bis 3, 5 bis 7; 4 verworfen). Nach dem Push mit `scripts/ui-check.mjs` gegen `https://wipe4dmg.pages.dev` prüfen: sticky Ergebniszeile bei 375 px, Optimizer-Zeilen mit „Changes: …“, Tooltips der Icons, Logo-Formate, Boss-Gruppen, Logo-Link. Danach weiter mit Reihenfolge 2. `src/ui/App.tsx` ist noch nicht in Panels aufgeteilt (Aufräum-Block).
 
 Zuvor erledigt (2026-10-25): Delta-Lücken. Feast of Light mit Obergrenzen pro Super, Dawn Chorus auf Ignitions, Sol Invictus bei Chaos Reach. Super-Spearman 0,98. Rest in `tests/fixtures/ranking-gate.json`: Gathering Storm und Shards of Galanor (Aegis widerspricht sich zwischen Tabs, Zahlen dort), Super-Top-3 (Stormdancer's Brace fehlt). Offen und ungeprüft: doppelte Ignition bei Daybreak mit Dawn Chorus; Sol Invictus bei Hammer of Sol und Burning Maul (Zeilen nennen auch Roaring Flames x3).
 
 ## Reihenfolge
 
-1. UI „Die erste Minute“, Punkte 5 bis 7 (Sonnet): siehe oben.
-2. Code-Aufräumen (Sonnet): `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
+1. Screenshot-Prüfung der UI (Sonnet): siehe oben.
+2. Code-Aufräumen (Sonnet), auch `App.tsx` in Panels: `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
 3. Solar: Roaring Flames x3 und Solar Fulmination (Opus plant), dann Ergo Sum, echte Debuffs am Ziel, fehlende Supers; dazu Stormdancer's Brace (Super-Top-3). Reihenfolge nach dem Rangfolge-Gate. Arbeitsliste: `docs/known-inaccuracies.md`, „Offene Lücken“.
 4. Für 2.0 (`docs/product.md`): Legendary Frames aus Aegis, Optimizer mit Abilities, Aspects und Fragments.
 

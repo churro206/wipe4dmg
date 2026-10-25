@@ -7,7 +7,31 @@ import {
   iconUrl,
   weapons,
 } from "../src/ui/data";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { effectIconKey } from "../src/ui/describe";
+import { Icon } from "../src/ui/components/Icon";
+
+// Every icon is named for screen readers and as a tooltip, with or without an imported image.
+describe("icon names", () => {
+  it("gives an image icon an alt text and a tooltip", () => {
+    const weapon = weapons[0]!;
+    const html = renderToStaticMarkup(
+      createElement(Icon, { iconKey: `weapon:${weapon.id}`, label: weapon.name }),
+    );
+    expect(html).toContain(`alt="${weapon.name.replace(/'/g, "&#x27;")}"`);
+    expect(html).toContain("title=");
+  });
+
+  it("names the monogram fallback", () => {
+    const html = renderToStaticMarkup(
+      createElement(Icon, { iconKey: "nothing:here", label: "Some Name" }),
+    );
+    expect(html).toContain('role="img"');
+    expect(html).toContain('aria-label="Some Name"');
+    expect(html).toContain('title="Some Name"');
+  });
+});
 
 // Every key the UI asks for has a Bungie icon, so no tile or legend falls back to initials.
 describe("icons in the UI", () => {

@@ -21,10 +21,12 @@ export function Icon({
     <span
       className="icon"
       style={{ width: size, height: size, fontSize: size * 0.35 }}
-      aria-hidden="true"
+      title={label}
+      role={url ? undefined : "img"}
+      aria-label={url ? undefined : label}
     >
       {url ? (
-        <img src={url} alt="" width={size} height={size} />
+        <img src={url} alt={label} width={size} height={size} />
       ) : (
         monogram(label)
       )}

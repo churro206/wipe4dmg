@@ -1,4 +1,4 @@
-import type { Element, GuardianClass } from "../../data/schema";
+import type { Element, GuardianClass, Subclass } from "../../data/schema";
 import type { OptimizerEntry } from "../../engine/optimizer";
 import { effectsOf, SUBCLASS_LABELS } from "../buildState";
 import { levelBadge, effectIconKey } from "../describe";
@@ -16,8 +16,12 @@ export function OptimizerCards({
   onApply,
   onCompare,
   weaponElement,
+  currentSubclass,
+  currentEffectIds,
 }: {
   weaponElement: Element; // surge icons follow the element of the weapon
+  currentSubclass: Subclass;
+  currentEffectIds: ReadonlySet<string>; // own effects of the current build, to show only the differences
   entries: OptimizerEntry[];
   guardianClass: GuardianClass;
   currentTotal: number;
@@ -36,6 +40,15 @@ export function OptimizerCards({
         const names = [
           SUBCLASS_LABELS[entry.subclass],
           ...own.map((e) => e.name),
+        ].join(", ");
+        const changed = own
+          .filter((e) => !currentEffectIds.has(e.id))
+          .map((e) => e.shortName);
+        const summary = [
+          ...(entry.subclass === currentSubclass
+            ? []
+            : [SUBCLASS_LABELS[entry.subclass]]),
+          ...changed,
         ].join(", ");
         return (
           <li key={i} className="optimizer-card">
@@ -56,8 +69,10 @@ export function OptimizerCards({
                     badge={levelBadge(effect.shortName)}
                   />
                 ))}
-                <span className="visually-hidden">{names}</span>
               </div>
+              <span className="optimizer-names">
+                {summary ? `Changes: ${summary}` : "Same as current build"}
+              </span>
               <div
                 className="optimizer-bar"
                 style={{

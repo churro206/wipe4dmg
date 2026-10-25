@@ -73,6 +73,7 @@ import { AbilityCastEditor } from "./components/AbilityCastEditor";
 import { RotationEditor } from "./components/RotationEditor";
 import { SegmentedControl } from "./components/SegmentedControl";
 import { StatSliders } from "./components/StatSliders";
+import { StickyResult } from "./components/StickyResult";
 import { SummaryBar } from "./components/SummaryBar";
 import { WeaponPicker } from "./components/WeaponPicker";
 import { ClassPerkPicker } from "./components/ClassPerkPicker";
@@ -247,6 +248,15 @@ function App() {
           comparisonInputs.options,
         )
       : null;
+  const summaryRows = result
+    ? compareResults(result, comparisonResult ?? result).filter(
+        (row) =>
+          row.key !== "ignitions" ||
+          hasIgnition(weapon) ||
+          (comparison !== null &&
+            hasIgnition(weaponById(comparison.weaponId))),
+      )
+    : [];
 
   const dpsChartSeconds = Math.max(
     DPS_CHART_MIN_SECONDS,
@@ -810,19 +820,10 @@ function App() {
             </section>
 
             <section className="results" aria-label="Result">
-              <div className="results-head">
+              <div className="results-head" id="results-head">
                 {result ? (
                   <SummaryBar
-                    rows={compareResults(
-                      result,
-                      comparisonResult ?? result,
-                    ).filter(
-                      (row) =>
-                        row.key !== "ignitions" ||
-                        hasIgnition(weapon) ||
-                        (comparison !== null &&
-                          hasIgnition(weaponById(comparison.weaponId))),
-                    )}
+                    rows={summaryRows}
                     withComparison={comparisonResult !== null}
                   />
                 ) : (
@@ -1022,6 +1023,16 @@ function App() {
                           entries={optimizer.entries}
                           guardianClass={guardianClass}
                           currentTotal={result.totalDamage}
+                          currentSubclass={subclass}
+                          currentEffectIds={
+                            new Set(
+                              effectsOf(
+                                selections.filter(
+                                  (s) => s.provider !== "fireteamSupport",
+                                ),
+                              ).map((e) => e.id),
+                            )
+                          }
                           onApply={(entry) => {
                             setSubclass(entry.subclass);
                             if (entry.artifactId) setArtifactId(entry.artifactId);
@@ -1039,6 +1050,13 @@ function App() {
           </>
         )}
       </main>
+      {result && (
+        <StickyResult
+          rows={summaryRows}
+          withComparison={comparisonResult !== null}
+          targetId="results-head"
+        />
+      )}
       <footer>
         wipe4dmg v{__APP_VERSION__} · Destiny content and icons © Bungie. Values
         from community sources (Quantum Damage-ics, Aegis, Destiny Data

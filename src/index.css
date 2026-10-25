@@ -456,6 +456,27 @@ details.fireteam summary {
   flex-direction: column;
 }
 
+/* Narrow screens: the result line sticks to the bottom while the result is out of view */
+.sticky-result {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+}
+
+@media (min-width: 60rem) {
+  .sticky-result {
+    display: none;
+  }
+}
+
 .delta {
   font-size: 0.8rem;
   font-weight: 400;
@@ -615,6 +636,11 @@ table.casts .kind {
   display: flex;
   flex-wrap: wrap;
   gap: 0.2rem;
+}
+
+.optimizer-names {
+  font-size: 0.75rem;
+  color: var(--muted);
 }
 
 .optimizer-bar {
