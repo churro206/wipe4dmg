@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Produktziel (2026-10-25):** `docs/product.md` aus dem Interview mit dem Inhaber: Zielgruppe, Top-20-Fragen, Nicht-Ziele, Abnahme 2.0 und Vorschlag für ein Rangfolge-Gate. Neu entschieden: Legendary-Waffen kommen für 2.0 hinein, der Optimizer hat Priorität.
+
 Nachgetragen beim Aufräumen (2026-10-25), Details in `docs/plans/history-2026-10.md`:
 
 - **Wirkung des Fehlenden (Block D):** Jeder fehlende Eintrag der Aegis-Abdeckung hat ein Urteil (Aegis-Paar über/unter 2 %, Item fehlt, Wert aus Text, Spielweise; `tests/lib/missingImpact.ts`). Die Gesamtprobe ordnet Perk-Namen des Catalysts und Artifact-Perks zu (Deterministic Chaos mit Target Lock ×1,015).

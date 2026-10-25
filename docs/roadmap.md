@@ -76,9 +76,15 @@ Status: 2026-10-23
 - 13 Aegis packages include Ember of Ashes (e.g. Fusion Grenade, Hammer Strike): without Ember in the build they are too high
 - Expanding Abyss: raises Weaken to 25%, Tractor Cannon and Moebius to 35%, Deadfall to 40%
 
+## Goal for v2.0
+
+- Ranking check: our ranking of weapons, Supers and abilities matches Aegis' Sustained and Swap sheets
+- Optimizer with abilities: also tries Super, Grenade, Melee, aspects and fragments. Until then it keeps the chosen abilities.
+- Legendary weapons (rocket launchers, linear fusions and more) with their perks
+- Every category complete: no exotic, Super or ability left out
+
 ## Later (v1.x)
 
-- Optimizer with abilities: also tries Super, Grenade and Melee. Until then it keeps the chosen abilities.
 - Save builds in the browser
 - More exotic weapons
 - Discord bot

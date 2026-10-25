@@ -4,14 +4,15 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Produktziel schärfen (Opus).** Interview mit dem Inhaber (AskUserQuestion): Wer nutzt die Seite, welche 20 Fragen stellen diese Leute, welche Genauigkeit braucht jede Frage (reicht die Rangfolge?), Nicht-Ziele, wann ist 2.0 fertig. Ergebnis: `docs/product.md` (höchstens 3 KB) und ein Vorschlag für ein Rangfolge-Gate (Rangfolge unserer Builds gegen Aegis Sustained/Swap, z. B. Spearman ≥ 0,9). Vorlage: Prompt 3 in `docs/plans/cleanup-prompts.md`.
+**Rangfolge-Gate bauen (Opus plant, Sonnet setzt um).** Vorschlag in `docs/product.md`, „Rangfolge-Gate“: Zeilen der Gesamtprobe (`tests/metaProbe*.test.ts`) nach Gruppen der Spalte „Prüft“, pro Gruppe Spearman ≥ 0,9, Aegis-Top-3 in unseren Top 5, Delta-Paare ±2 Prozentpunkte, Abdeckung pro Gruppe als Tabelle. Erst messen, dann Schwellen mit dem Inhaber bestätigen. Produktziel lesen: `docs/product.md`.
 
 ## Reihenfolge
 
-1. Produktziel (Opus), siehe oben.
+1. Rangfolge-Gate, siehe oben.
 2. UI „Die erste Minute“ (Sonnet): Prompt 2 in `docs/plans/cleanup-prompts.md`; dabei `src/ui/App.tsx` in Panels aufteilen, wo der Block es anfasst.
 3. Code-Aufräumen (Sonnet): `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
 4. Solar: Roaring Flames x3 und Solar Fulmination (Opus plant), dann Ergo Sum, echte Debuffs am Ziel, fehlende Supers; Reihenfolge nach dem Rangfolge-Gate. Arbeitsliste: `docs/known-inaccuracies.md`, „Offene Lücken“.
+5. Für 2.0 (`docs/product.md`): Legendary Frames aus Aegis, Optimizer mit Abilities, Aspects und Fragments.
 
 Nach drei Funktions-Blöcken folgt ein Aufräum-Block.
 
@@ -22,7 +23,8 @@ Nach drei Funktions-Blöcken folgt ein Aufräum-Block.
 - Eigene Quellen gelten nur für die Dauer aus ihrem Text, ab Beginn der Phase; länger nur, wenn ein modellierter Auslöser sie auffrischt. Buffs von Teammates gelten die ganze Phase.
 - Die Rückwärtskompatibilität von Links hat keine hohe Priorität.
 - Tooltips erklären, was ein Item tut, ohne Quellen.
-- Legendary Frames in Aegis sind übersprungen.
+- Legendary Frames: bis zu ihrem Block übersprungen, für 2.0 kommen sie hinein (2026-10-25).
+- Abstände zählen, absolute Zahlen nicht. Der Optimizer optimiert die gewählte Phasenlänge und hat Priorität (2026-10-25).
 
 ## Zurückgestellt (Aufräumen 2026-10-25, geringer Nutzen)
 

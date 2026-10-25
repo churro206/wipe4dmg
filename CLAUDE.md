@@ -2,7 +2,7 @@
 
 Berechnet den Total Damage eines Destiny-2-Builds. Die Unterschiede zwischen Builds sollen stimmen, absolute Zahlen nicht. Spielwerte kommen automatisch aus Community-Quellen (ADR 0005). Privat, für den Inhaber und seine Freunde.
 
-**Zu Beginn: `docs/plans/current.md`.** Danach nur, was der Block braucht: `docs/adr/README.md`, Glossary `docs/requirements.md`, `docs/mechanics/README.md` (vor Effects oder Simulator, mit Toleranzen), `docs/ui-inspiration.md` (vor der Oberfläche).
+**Zu Beginn: `docs/plans/current.md`.** Danach nur, was der Block braucht: `docs/product.md` (Produktziel, vor neuen Mechaniken), `docs/adr/README.md`, Glossary `docs/requirements.md`, `docs/mechanics/README.md` (vor Effects oder Simulator, mit Toleranzen), `docs/ui-inspiration.md` (vor der Oberfläche).
 
 ## Architektur
 
