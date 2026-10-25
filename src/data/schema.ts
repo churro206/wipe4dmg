@@ -1351,11 +1351,16 @@ export const CatalogEntry = z.object({
   inCalculator: z.string(), // what it does in the calculator, or why it is missing
   detail: z.string().optional(), // second line under the name, e.g. the armor slot
   iconKey: z.string().optional(), // key for iconUrl in the UI
+  // Manifest item of an icon found by name ("named:" keys): the import takes exactly this item
+  iconHash: z.number().int().optional(),
+  // The text in-game is the Compendium text because Clarity has none for this entry
+  fallback: z.literal(true).optional(),
 });
 export type CatalogEntry = z.infer<typeof CatalogEntry>;
 
 export const CatalogCategoryId = z.enum([
   "weapons",
+  "catalysts",
   "subclass",
   "abilities",
   "aspects",

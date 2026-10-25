@@ -7,6 +7,8 @@ import type {
   CatalogCategoryId,
   CatalogEntry,
   CatalogStatus,
+  CatalystEffect,
+  ClarityEntry,
   CompendiumEntry,
   CourtEntry,
   CoverageCatalog,
@@ -16,7 +18,6 @@ import type {
   WeaponGap,
 } from "../../src/data/schema.ts";
 import type { ArtifactRow } from "./artifacts.ts";
-import type { BuffRow } from "./buffs.ts";
 import { kebab, sameName } from "./exoticArmor.ts";
 import { subclassItemNamed } from "./manifestAbilities.ts";
 import {
@@ -53,6 +54,7 @@ export const REASON: Record<MissingReason, string> = {
 
 const TITLES: Record<CatalogCategoryId, string> = {
   weapons: "Weapons",
+  catalysts: "Catalysts",
   subclass: "Subclass",
   abilities: "Abilities",
   aspects: "Aspects",
@@ -64,6 +66,22 @@ const TITLES: Record<CatalogCategoryId, string> = {
 
 const capitalise = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
 const flat = (text: string) => text.replace(/\s+/g, " ").trim();
+
+/**
+ * Game texts without the clutter of the sources: lines that are only "-" (empty cells of Court's
+ * sheet), the credit line of Clarity, no-break spaces and repeated blank lines.
+ */
+export function tidyText(text: string): string {
+  const lines = text
+    .replace(/\u00a0/g, " ")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line !== "-" && !/^Clarity's .*Enjoy!/.test(line));
+  return lines
+    .filter((line, i) => line !== "" || (i > 0 && lines[i - 1] !== ""))
+    .join("\n")
+    .trim();
+}
 // The Compendium leaves out a leading "The" ("Huckleberry" for "The Huckleberry").
 const compact = (text: string) =>
   text
@@ -84,18 +102,18 @@ const make = (
 /** The entries that need an icon found by name, once per name; id is the key without its prefix. */
 export function namedCatalogEntries(
   catalog: CoverageCatalog,
-): { id: string; name: string }[] {
-  const byId = new Map<string, string>();
+): { id: string; name: string; hash?: number }[] {
+  const byId = new Map<string, { name: string; hash?: number }>();
   for (const { entries } of catalog) {
-    for (const { iconKey, name } of entries) {
+    for (const { iconKey, name, iconHash } of entries) {
       if (iconKey?.startsWith(NAMED_ICON) && !byId.has(iconKey)) {
-        byId.set(iconKey, name);
+        byId.set(iconKey, { name, ...(iconHash ? { hash: iconHash } : {}) });
       }
     }
   }
-  return [...byId].map(([key, name]) => ({
+  return [...byId].map(([key, item]) => ({
     id: key.slice(NAMED_ICON.length),
-    name,
+    ...item,
   }));
 }
 
@@ -120,27 +138,68 @@ export function buildCatalog(
   }));
 }
 
+/**
+ * Text of the community database Clarity (src/data/clarity.json) as lines "Name: text", the entries
+ * in the given order. Clarity is the text source of weapons, catalysts, armor, aspects and fragments;
+ * the Compendium only fills in where Clarity has no entry (the entry then has fallback: true).
+ */
+function clarityBlock(entries: ClarityEntry[], withNames: boolean): string {
+  return entries
+    .map((e) => (withNames ? `${e.name}: ${tidyText(e.text)}` : tidyText(e.text)))
+    .join("\n");
+}
+
+/** Clarity entries of one item (weapon, catalyst or armor piece) by their `itemName`, frames first. */
+function clarityOf(
+  clarity: ClarityEntry[],
+  itemName: string,
+  types: string[],
+): ClarityEntry[] {
+  return clarity
+    .filter(
+      (c) => c.itemName !== null && types.includes(c.type) && sameName(c.itemName, itemName),
+    )
+    .sort((a, b) => types.indexOf(a.type) - types.indexOf(b.type));
+}
+
+/** The game text of an entry: Clarity, else the Compendium text marked as fallback. */
+function inGameText(
+  community: ClarityEntry[],
+  compendium: string,
+  withNames = true, // the name of the entry is the name of the perk or trait; false when it is the item's own
+): Pick<CatalogEntry, "inGame" | "fallback"> {
+  const texts = community.filter((c) => tidyText(c.text) !== ""); // some Clarity texts are empty
+  return texts.length > 0
+    ? { inGame: clarityBlock(texts, withNames) }
+    : { inGame: tidyText(compendium), fallback: true };
+}
+
 export type WeaponInput = {
   id: string;
   name: string;
   damageInstances: number;
   intrinsics: number;
-  catalyst: boolean; // the model has an effect or a timing change of the catalyst
+  // What the model does with the catalyst, null if the weapon has none in the model
+  catalyst: { effect: CatalystEffect; lines: string[] } | null;
 };
 
-/** One row per exotic weapon of the Compendium; its name is the longest weapon name the entry starts with. */
-export function weaponEntries(input: {
-  entries: CompendiumEntry[];
-  names: { name: string; catalyst: boolean }[]; // all exotic weapons of the manifest
-  weapons: WeaponInput[];
-  gaps: WeaponGap[];
-}): CatalogEntry[] {
+export type WeaponName = {
+  name: string;
+  hash: number; // the weapon in the manifest
+  catalyst: { name: string; hash: number } | null; // the catalyst of the manifest
+};
+
+/** The exotic weapons of the Compendium, once each; the name is the longest manifest name the entry starts with. */
+function compendiumWeapons(
+  entries: CompendiumEntry[],
+  names: WeaponName[],
+): { known: WeaponName; entry: CompendiumEntry; group: string }[] {
   const seen = new Set<string>();
-  const result: CatalogEntry[] = [];
-  for (const entry of input.entries) {
+  const result: { known: WeaponName; entry: CompendiumEntry; group: string }[] = [];
+  for (const entry of entries) {
     if (entry.tab !== "Exotic Weapons" || entry.section === "") continue;
     // The Compendium writes "Cerberus +1", the manifest "Cerberus+1": compare without spaces.
-    const known = input.names
+    const known = names
       .filter((n) => compact(entry.name).startsWith(compact(n.name)))
       .sort((a, b) => b.name.length - a.name.length)[0];
     if (!known) {
@@ -148,36 +207,88 @@ export function weaponEntries(input: {
     }
     if (seen.has(known.name)) continue;
     seen.add(known.name);
+    result.push({ known, entry, group: entry.section.replace(/ (Slot )?Weapons$/, "") });
+  }
+  return result;
+}
+
+const WEAPON_TYPES = ["Weapon Frame Exotic", "Weapon Trait Exotic"];
+const CATALYST_TYPES = ["Weapon Catalyst Exotic"];
+const ARMOR_TYPES = ["Armor Trait Exotic"];
+
+/** One row per exotic weapon: the game text is the frame and the traits of Clarity. */
+export function weaponEntries(input: {
+  entries: CompendiumEntry[];
+  names: WeaponName[]; // all exotic weapons of the manifest
+  weapons: WeaponInput[];
+  gaps: WeaponGap[];
+  clarity: ClarityEntry[];
+}): CatalogEntry[] {
+  return compendiumWeapons(input.entries, input.names).map(({ known, entry, group }) => {
     const base = {
       name: known.name,
-      group: entry.section.replace(/ (Slot )?Weapons$/, ""),
-      inGame: entry.text,
+      group,
+      ...inGameText(clarityOf(input.clarity, known.name, WEAPON_TYPES), entry.text),
     };
     const weapon = input.weapons.find((w) => sameName(w.name, known.name));
     const gap = input.gaps.find((g) => sameName(g.name, known.name));
-    if (weapon) {
-      const catalyst = !known.catalyst
-        ? "No Catalyst."
-        : weapon.catalyst
-          ? "Catalyst: modelled."
-          : "Catalyst: without an effect in the calculator.";
-      result.push(
-        make("full", {
+    return weapon
+      ? make("full", {
           ...base,
-          inCalculator: `${weapon.damageInstances} damage instance(s), ${weapon.intrinsics} intrinsic effect(s). ${catalyst}`,
+          inCalculator: `${weapon.damageInstances} damage instance(s), ${weapon.intrinsics} intrinsic effect(s).`,
           iconKey: `weapon:${weapon.id}`,
-        }),
-      );
-    } else {
-      result.push(
-        make("missing", {
+        })
+      : make("missing", {
           ...base,
           inCalculator: gap ? `Not imported: ${gap.reason}` : "Not imported yet.",
-        }),
-      );
+          iconHash: known.hash, // a weapon the model has no id for: exactly this item of the manifest
+        });
+  });
+}
+
+const CATALYST_STATUS: Record<CatalystEffect, [CatalogStatus, string]> = {
+  damage: ["full", "Adds weapon damage."],
+  timing: ["full", "Changes magazine, ammo or reload."],
+  damageAndTiming: ["full", "Adds weapon damage and changes magazine, ammo or reload."],
+  none: ["leftOut", "No effect against one boss without adds."],
+  unknown: ["missing", "Not in the calculator yet: no source measured it."],
+};
+
+/**
+ * One row per catalyst of an exotic weapon, named as in the game with the weapon in brackets
+ * ("Truth Catalyst (Truth)"); the game text is the catalyst text of Clarity.
+ */
+export function catalystEntries(input: {
+  entries: CompendiumEntry[];
+  names: WeaponName[];
+  weapons: WeaponInput[];
+  clarity: ClarityEntry[];
+}): CatalogEntry[] {
+  return compendiumWeapons(input.entries, input.names).flatMap(({ known, group }) => {
+    if (!known.catalyst) return [];
+    const texts = clarityOf(input.clarity, known.name, CATALYST_TYPES)
+      .map((c) => tidyText(c.text))
+      .filter((text) => text !== "");
+    const base = {
+      name: `${known.catalyst.name} (${known.name})`,
+      group,
+      inGame: texts.length > 0 ? texts.join("\n") : "No text in Clarity.",
+      iconHash: known.catalyst.hash,
+    };
+    const weapon = input.weapons.find((w) => sameName(w.name, known.name));
+    if (!weapon) {
+      return [make("missing", { ...base, inCalculator: "Not in the calculator yet: the weapon is not imported." })];
     }
-  }
-  return result;
+    const effect = weapon.catalyst?.effect ?? "unknown";
+    const [status, text] = CATALYST_STATUS[effect];
+    const lines = weapon.catalyst?.lines ?? [];
+    return [
+      make(status, {
+        ...base,
+        inCalculator: lines.length > 0 ? lines.join("\n") : text,
+      }),
+    ];
+  });
 }
 
 type ArmorInput = Pick<
@@ -224,16 +335,16 @@ const ARMOR_KIND: Record<
 };
 
 function armorEntry(
-  entry: CompendiumEntry,
+  text: Pick<CatalogEntry, "inGame" | "fallback">,
   armor: ArmorInput,
   group: string,
 ): CatalogEntry {
-  const [status, text] = ARMOR_KIND[armor.kind];
+  const [status, calculator] = ARMOR_KIND[armor.kind];
   return make(status, {
     name: armor.name,
     group,
-    inGame: entry.text,
-    inCalculator: status === "leftOut" ? `Left out: ${text}` : text,
+    ...text,
+    inCalculator: status === "leftOut" ? `Left out: ${calculator}` : calculator,
     detail: SLOT_LABEL[armor.slot],
     iconKey: `armor:${armor.id}`,
   });
@@ -243,24 +354,33 @@ function armorEntry(
  * Exotic armor pieces (tab Exotic Armors) and the perks of the Exotic Class Items (tab Exotic
  * Class), grouped by guardian class (then "Any class"), in a class by slot: helmet, arms, chest,
  * legs, class item, class item perks. A piece or perk the import has no item for (no plug in the
- * manifest, docs/known-inaccuracies.md) is missing.
+ * manifest, docs/known-inaccuracies.md) is missing. The game text of a piece is Clarity's armor
+ * trait; Clarity has no text for the perks of the class items, so they use the Compendium (the one
+ * exception to one text source per category).
  */
 export function armorEntries(input: {
   entries: CompendiumEntry[];
   perks: CompendiumEntry[];
   armor: ArmorInput[];
+  clarity: ClarityEntry[];
 }): CatalogEntry[] {
   const rows = [
     ...input.entries.map((entry) => {
-      // The Compendium shortens some names ("Loreley Splendor" for "Loreley Splendor Helm").
+      // The Compendium shortens some names ("Loreley Splendor" for "Loreley Splendor Helm") and spells
+      // one differently from the manifest ("Promethium Spurs", the manifest "Promethium Spur").
       const armor = input.armor
         .filter(
           (a) =>
             a.column === undefined &&
             (a.guardianClass === null || a.guardianClass === entry.section) &&
-            compact(a.name).startsWith(compact(entry.name)),
+            (compact(a.name).startsWith(compact(entry.name)) ||
+              compact(entry.name).startsWith(compact(a.name))),
         )
-        .sort((a, b) => a.name.length - b.name.length)[0];
+        .sort(
+          (a, b) =>
+            Math.abs(compact(a.name).length - compact(entry.name).length) -
+            Math.abs(compact(b.name).length - compact(entry.name).length),
+        )[0];
       return { entry, armor, slot: armor ? SLOT_ORDER.indexOf(armor.slot) : UNKNOWN_SLOT };
     }),
     ...input.perks.map((entry) => ({
@@ -279,16 +399,22 @@ export function armorEntries(input: {
     )
     .map(({ entry, armor, slot }) => {
       const group = entry.section === "any" ? "Any class" : capitalise(entry.section);
+      const isPerk = slot === SLOT_ORDER.indexOf("classPerk");
+      // Perks: Compendium text. Pieces: Clarity's trait, else the Compendium text as fallback.
+      const text: Pick<CatalogEntry, "inGame" | "fallback"> = isPerk
+        ? { inGame: tidyText(entry.text) }
+        : inGameText(
+            clarityOf(input.clarity, armor?.name ?? entry.name, ARMOR_TYPES),
+            entry.text,
+          );
       return armor
-        ? armorEntry(entry, armor, group)
+        ? armorEntry(text, armor, group)
         : make("missing", {
             name: entry.name,
             group,
-            inGame: entry.text,
+            ...text,
             inCalculator: NO_ITEM,
-            ...(slot === SLOT_ORDER.indexOf("classPerk")
-              ? { detail: SLOT_LABEL.classPerk }
-              : {}),
+            ...(isPerk ? { detail: SLOT_LABEL.classPerk } : {}),
           });
     });
 }
@@ -313,7 +439,7 @@ export function classAbilityEntries(input: {
       const base = {
         name: e.name,
         group: "Class abilities",
-        inGame: e.text,
+        inGame: tidyText(e.text),
       };
       const ability = input.modelled.find(
         (m) => m.tab === e.tab && m.entry === e.name,
@@ -346,7 +472,7 @@ export function glossaryEntries(input: {
   return input.entries
     .filter((e) => e.section === "Glossary")
     .map((e) => {
-      const base = { name: e.name, group: e.tab, inGame: e.text };
+      const base = { name: e.name, group: e.tab, inGame: tidyText(e.text) };
       if (input.keywordLinks.some((k) => k.tab === e.tab && k.entry === e.name)) {
         return make("full", {
           ...base,
@@ -378,8 +504,9 @@ export function abilityEntries(
     const base = {
       name: row.name,
       group: `${row.element} ${ABILITY_GROUP[row.kind]}`,
-      inGame:
+      inGame: tidyText(
         entries.find((e) => e.tab === row.element && e.name === row.name)?.text ?? "",
+      ),
       ...(row.abilityId ? { iconKey: `ability:${row.abilityId}` } : {}),
     };
     if (row.status === "missing") {
@@ -422,16 +549,18 @@ const SUBCLASS_KIND: Record<SubclassEffectKind, [CatalogStatus, string]> = {
 const SUBCLASS_ORDER = ["Arc", "Solar", "Void", "Stasis", "Strand", "Prismatic"];
 
 /**
- * Aspects or fragments: the review rows of the subclass effects with the Compendium text. Aspects are
+ * Aspects or fragments: the review rows of the subclass effects with the text of Clarity. Aspects are
  * grouped by class and subclass ("Titan · Solar"), sorted by class, then subclass; fragments by subclass.
  */
 export function subclassItemEntries(input: {
   rows: Pick<SubclassEffectRow, "id" | "name" | "subclasses" | "kind">[];
   items: Pick<ManifestSubclassItem, "name" | "guardianClass" | "subclass">[];
   entries: CompendiumEntry[];
+  clarity: ClarityEntry[];
   section: "aspect" | "fragment";
 }): CatalogEntry[] {
   const wanted = input.section === "aspect" ? /^aspects?$/i : /^fragments$/i;
+  const clarityType = input.section === "aspect" ? "Subclass Aspect" : "Subclass Fragment";
   const texts = input.entries.filter((e) => /^(aspects?|fragments)$/i.test(e.section));
   // An item has one review row per effect it gives (rules A to H), e.g. Roaring Flames three.
   const rowsOfItem = new Map<string, typeof input.rows>();
@@ -471,6 +600,9 @@ export function subclassItemEntries(input: {
     const guardianClass = (
       ofItem.find((i) => i.subclass === main.tab.toLowerCase()) ?? ofItem[0]
     )?.guardianClass;
+    const community = input.clarity
+      .filter((c) => c.type === clarityType && subclassItemNamed(first.name, c.name))
+      .slice(0, 1);
     return [
       make(status, {
         name: first.name,
@@ -478,9 +610,11 @@ export function subclassItemEntries(input: {
           input.section === "aspect"
             ? `${guardianClass ? capitalise(guardianClass) : "Any class"} · ${main.tab}`
             : main.tab,
-        inGame: main.text,
+        ...inGameText(community, main.text, false),
         inCalculator: status === "leftOut" ? `Left out: ${text}` : text,
         iconKey: `effect:${first.id}`,
+        // The item itself: without an icon of its effect the import takes exactly this one
+        ...(community[0] ? { iconHash: community[0].hash } : {}),
       }),
     ];
   });
@@ -493,41 +627,55 @@ export function subclassItemEntries(input: {
     : entries;
 }
 
-/** Court's rows of global buffs and debuffs, surges and the like; exotic and weapon rows are elsewhere. */
+/**
+ * A state of the game that stands for itself and is no part of one item (owner, 2026-10-25): what a
+ * buff of an exotic, an aspect, a fragment, a super or an artifact does is told at that item.
+ */
+export type GeneralState = {
+  name: string;
+  category: string; // category of Court's sheet, e.g. "Global Debuffs"; gives the stacking rule
+  court?: string; // row of Court's sheet with the trigger and the value; omitted: the category text
+  iconKey: string;
+};
+
+/** The general buffs and debuffs, with the text of Court's Stacking Guide; one row per state. */
 export function buffEntries(input: {
-  rows: BuffRow[];
+  states: GeneralState[];
   court: CourtEntry[];
+  categories: { name: string; description: string; stacking: string }[];
 }): CatalogEntry[] {
-  return input.rows.flatMap((row) => {
-    if (row.verdict === "exotic" || row.verdict === "weapon") return [];
-    if (row.verdict === "unclassified") {
-      throw new Error(`Unclassified Court row "${row.name}" (${row.category})`);
-    }
-    const court = input.court.find(
-      (c) => c.category === row.category && c.group === row.group && c.name === row.name,
+  return input.states.map((state) => {
+    const category = input.categories.find(
+      (c) => c.name.toLowerCase() === state.category.toLowerCase(),
     );
-    const base = {
-      name: row.name,
-      group: row.category,
-      inGame: flat([court?.trigger, court?.notes].filter(Boolean).join(" ")) || row.group,
-    };
-    if (row.verdict === "skipped") {
-      return [make("leftOut", { ...base, inCalculator: `Left out: ${row.target}` })];
+    if (!category) throw new Error(`${state.name}: no Court category "${state.category}"`);
+    const row = state.court
+      ? input.court.find(
+          (c) =>
+            c.name === state.court && c.category.toLowerCase() === state.category.toLowerCase(),
+        )
+      : undefined;
+    if (state.court && !row) {
+      throw new Error(`${state.name}: no Court row "${state.court}" in "${state.category}"`);
     }
-    // The target of an imported or covered row is the id of its effect, which has an icon of its own.
-    const effectId = /^[a-z0-9-]+$/.test(row.target) ? row.target : undefined;
-    return [
-      make("full", {
-        ...base,
-        ...(effectId ? { iconKey: `effect:${effectId}` } : {}),
-        inCalculator:
-          row.verdict === "imported"
-            ? "A switch in the Effects list, value and duration from Court."
-            : row.verdict === "weaken"
-              ? "Covered by the Weaken switch."
-              : `Covered by: ${row.target}.`,
-      }),
-    ];
+    // "~" in Court's sheet means no fixed duration; what follows it says what the duration is
+    const duration = flat(row?.pveDuration ?? "").replace(/^~\s*/, "");
+    const value = row?.pve
+      ? [`Value: ${flat(row.pve)}`, duration ? `Duration: ${duration}` : ""]
+          .filter(Boolean)
+          .join(" · ")
+      : "";
+    return make("full", {
+      name: state.name,
+      group: state.category,
+      inGame: tidyText(
+        [row ? row.trigger : category.description, value, `Stacking: ${flat(category.stacking)}`]
+          .filter(Boolean)
+          .join("\n"),
+      ),
+      inCalculator: "A switch in the Effects list.",
+      iconKey: state.iconKey,
+    });
   });
 }
 
@@ -544,8 +692,9 @@ export function artifactEntries(input: {
     const base = {
       name: row.perk,
       group,
-      inGame:
+      inGame: tidyText(
         input.entries.find((e) => e.section === group && e.name === row.perk)?.text ?? "",
+      ),
     };
     return row.verdict === "imported"
       ? make("full", { ...base, inCalculator: "A switch in the Effects list." })

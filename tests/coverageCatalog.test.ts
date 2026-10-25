@@ -5,15 +5,22 @@ import {
   artifactEntries,
   buffEntries,
   buildCatalog,
+  catalystEntries,
   classAbilityEntries,
   glossaryEntries,
   namedCatalogEntries,
   subclassItemEntries,
+  tidyText,
   weaponEntries,
 } from "../scripts/lib/coverageCatalog";
 import rawIcons from "../src/data/icons.json";
-import { CoverageCatalog, type CompendiumEntry } from "../src/data/schema";
+import {
+  CoverageCatalog,
+  type ClarityEntry,
+  type CompendiumEntry,
+} from "../src/data/schema";
 import noIcon from "./fixtures/coverage-no-icon.json";
+import textFallback from "./fixtures/coverage-text-fallback.json";
 import { realCatalog } from "./lib/coverageCatalogData";
 
 const icons: Record<string, string> = rawIcons.icons;
@@ -26,6 +33,14 @@ const entry = (
   extra = "",
 ): CompendiumEntry => ({ tab, section, name, text, extra });
 
+const clarityEntry = (
+  itemName: string | null,
+  name: string,
+  type: string,
+  text: string,
+  hash = 1,
+): ClarityEntry => ({ hash, name, type, itemName, text });
+
 describe("weaponEntries", () => {
   const entries = [
     entry("Exotic Weapons", "Kinetic Slot Weapons", "Hawkmoon Paracausal Shot ↑Trance"),
@@ -35,19 +50,37 @@ describe("weaponEntries", () => {
     entry("Weapon Perks", "Weapon Traits", "Hawkmoon Perk"),
   ];
   const names = [
-    { name: "Hawkmoon", catalyst: true },
-    { name: "Thunderlord", catalyst: true },
-    { name: "Mystery Gun", catalyst: false },
+    { name: "Hawkmoon", hash: 1, catalyst: { name: "Hawkmoon Catalyst", hash: 11 } },
+    { name: "Thunderlord", hash: 2, catalyst: { name: "Lightning Catalyst", hash: 22 } },
+    { name: "Mystery Gun", hash: 3, catalyst: null },
   ];
   const weapons = [
-    { id: "hawkmoon", name: "Hawkmoon", damageInstances: 1, intrinsics: 1, catalyst: true },
-    { id: "thunderlord", name: "Thunderlord", damageInstances: 2, intrinsics: 0, catalyst: false },
+    {
+      id: "hawkmoon",
+      name: "Hawkmoon",
+      damageInstances: 1,
+      intrinsics: 1,
+      catalyst: { effect: "damage" as const, lines: ["+10% weapon damage"] },
+    },
+    {
+      id: "thunderlord",
+      name: "Thunderlord",
+      damageInstances: 2,
+      intrinsics: 0,
+      catalyst: { effect: "none" as const, lines: [] },
+    },
+  ];
+  const clarity = [
+    clarityEntry("Hawkmoon", "Paracausal Shot", "Weapon Frame Exotic", "On kill, gain a stack.\n-\n-"),
+    clarityEntry("Hawkmoon", "Hunter's Trance", "Weapon Trait Exotic", "Grants range."),
+    clarityEntry("Hawkmoon", "Hawkmoon Catalyst", "Weapon Catalyst Exotic", "Adds a round.\nClarity's Exotic Weapon Insights built by Someone. Enjoy! ♥"),
   ];
   const result = weaponEntries({
     entries,
     names,
     weapons,
     gaps: [{ name: "Mystery Gun", reason: "no Quantum row" }],
+    clarity,
   });
   const byName = (name: string) => result.find((e) => e.name === name)!;
 
@@ -57,26 +90,37 @@ describe("weaponEntries", () => {
       "Thunderlord",
       "Mystery Gun",
     ]);
-    expect(byName("Hawkmoon").inGame).toBe(entries[0].text);
     expect(byName("Hawkmoon").group).toBe("Kinetic");
     expect(byName("Thunderlord").group).toBe("Power");
   });
 
-  it("tells what the model has, the catalyst included", () => {
+  it("tells the game text from Clarity, frame before trait, without clutter and without a type line", () => {
+    expect(byName("Hawkmoon").inGame).toBe(
+      "Paracausal Shot: On kill, gain a stack.\nHunter's Trance: Grants range.",
+    );
+    expect(byName("Hawkmoon").fallback).toBeUndefined();
+  });
+
+  it("uses the Compendium text, marked as fallback, only where Clarity has none", () => {
+    expect(byName("Thunderlord")).toMatchObject({
+      inGame: entries[1].text,
+      fallback: true,
+    });
+  });
+
+  it("tells what the model has; the catalyst has its own row", () => {
     expect(byName("Hawkmoon")).toMatchObject({
       status: "full",
       iconKey: "weapon:hawkmoon",
+      inCalculator: "1 damage instance(s), 1 intrinsic effect(s).",
     });
-    expect(byName("Hawkmoon").inCalculator).toContain("Catalyst");
-    expect(byName("Thunderlord").inCalculator).toMatch(
-      /Catalyst: without an effect/,
-    );
   });
 
   it("gives the reason of a gap, and fails for an entry without a weapon name", () => {
     expect(byName("Mystery Gun")).toMatchObject({
       status: "missing",
       inCalculator: "Not imported: no Quantum row",
+      iconHash: 3,
     });
     expect(() =>
       weaponEntries({
@@ -84,8 +128,48 @@ describe("weaponEntries", () => {
         names,
         weapons,
         gaps: [],
+        clarity,
       }),
     ).toThrow(/Unknown Gun/);
+  });
+
+  describe("catalystEntries", () => {
+    const catalysts = catalystEntries({ entries, names, weapons, clarity });
+
+    it("names a catalyst as in the game with the weapon in brackets, only for weapons that have one", () => {
+      expect(catalysts.map((e) => e.name)).toEqual([
+        "Hawkmoon Catalyst (Hawkmoon)",
+        "Lightning Catalyst (Thunderlord)",
+      ]);
+      expect(catalysts[0]).toMatchObject({
+        group: "Kinetic",
+        iconHash: 11,
+        inGame: "Adds a round.",
+      });
+    });
+
+    it("rates the catalyst by what it does against one boss", () => {
+      expect(catalysts[0]).toMatchObject({
+        status: "full",
+        inCalculator: "+10% weapon damage",
+      });
+      expect(catalysts[1].status).toBe("leftOut");
+      const unknown = catalystEntries({
+        entries,
+        names,
+        weapons: [{ ...weapons[0], catalyst: null }],
+        clarity,
+      });
+      expect(unknown[0].status).toBe("missing");
+    });
+  });
+});
+
+describe("tidyText", () => {
+  it("drops lines that are only a dash, the Clarity credit, no-break spaces and double blank lines", () => {
+    expect(tidyText("On hit\n-\n-")).toBe("On hit");
+    expect(tidyText("Text\nClarity's Exotic Weapon Insights built by Someone. Enjoy! ♥")).toBe("Text");
+    expect(tidyText("A b\n\n\n\nC")).toBe("A b\n\nC");
   });
 });
 
@@ -106,6 +190,7 @@ describe("armorEntries", () => {
     entry("Exotic Armors", "hunter", "Gap Boots"),
   ];
   const result = armorEntries({
+    clarity: [clarityEntry("Celestial Nighthawk", "Golden Gun Trait", "Armor Trait Exotic", "One shot.\n-")],
     entries: compendium,
     perks: [],
     armor: [
@@ -126,10 +211,28 @@ describe("armorEntries", () => {
     expect(result[0].iconKey).toBe("armor:celestial-nighthawk");
   });
 
+  it("takes the game text of a piece from Clarity and that of a class item perk from the Compendium", () => {
+    expect(result[0].inGame).toBe("Golden Gun Trait: One shot.");
+    expect(result[0].fallback).toBeUndefined();
+    expect(result.find((e) => e.name === "Lucky Pants")).toMatchObject({
+      inGame: "Text of Lucky Pants.",
+      fallback: true,
+    });
+    const [perk] = armorEntries({
+      clarity: [],
+      entries: [],
+      perks: [entry("Exotic Class", "any", "Spirit of Verity", "Grants damage.")],
+      armor: [armor("spirit-of-verity", "Spirit of Verity", "damageBuff", "classPerk", null, 2)],
+    });
+    expect(perk).toMatchObject({ inGame: "Grants damage." });
+    expect(perk.fallback).toBeUndefined();
+  });
+
   it("sorts by class, then by slot: helmet, arms, chest, legs, class item, class item perks", () => {
     const piece = (name: string, section: string) =>
       entry("Exotic Armors", section, name);
     const sorted = armorEntries({
+      clarity: [],
       entries: [
         piece("Warlock Legs", "warlock"),
         piece("Hunter Chest", "hunter"),
@@ -169,6 +272,7 @@ describe("armorEntries", () => {
 
   it("rates a class perk of the model by its kind and marks one without an item as missing", () => {
     const perks = armorEntries({
+      clarity: [],
       entries: [],
       perks: [
         entry("Exotic Class", "any", "Spirit of Verity"),
@@ -186,9 +290,10 @@ describe("armorEntries", () => {
   });
 
   it("marks a Compendium exotic without an item as missing and matches shortened names", () => {
-    const [missing] = armorEntries({ entries: compendium, perks: [], armor: [] });
+    const [missing] = armorEntries({ clarity: [], entries: compendium, perks: [], armor: [] });
     expect(missing).toMatchObject({ name: "Celestial Nighthawk", status: "missing" });
     const [short] = armorEntries({
+      clarity: [],
       entries: [entry("Exotic Armors", "titan", "Loreley Splendor")],
       perks: [],
       armor: [armor("loreley-splendor-helm", "Loreley Splendor Helm", "ownDamage", "helmet", "titan")],
@@ -293,20 +398,32 @@ describe("subclassItemEntries", () => {
     { name: "Ember of Ashes", guardianClass: null, subclass: "solar" as const },
   ];
 
+  const clarity = [
+    clarityEntry(null, "Sol Invictus", "Subclass Aspect", "Sunspots grant Sol Invictus.\n• 100% faster.", 777),
+  ];
+
   it("splits aspects and fragments by the Compendium section", () => {
-    const aspects = subclassItemEntries({ rows, items, entries: compendium, section: "aspect" });
-    const fragments = subclassItemEntries({ rows, items, entries: compendium, section: "fragment" });
+    const aspects = subclassItemEntries({ rows, items, entries: compendium, clarity, section: "aspect" });
+    const fragments = subclassItemEntries({ rows, items, entries: compendium, clarity, section: "fragment" });
     expect(aspects.map((e) => e.name)).toEqual(["Sol Invictus"]);
     expect(fragments[0].group).toBe("Solar");
     expect(aspects[0]).toMatchObject({
       group: "Titan · Solar",
       status: "full",
-      inGame: "Sunspots grant Radiant.",
       iconKey: "effect:sol-invictus",
     });
     expect(fragments.map((e) => [e.name, e.status])).toEqual([
       ["Ember of Ashes", "leftOut"],
     ]);
+  });
+
+  it("takes the game text from Clarity and the item hash for the icon; the Compendium only as fallback", () => {
+    const [aspect] = subclassItemEntries({ rows, items, entries: compendium, clarity, section: "aspect" });
+    expect(aspect.inGame).toBe("Sunspots grant Sol Invictus.\n• 100% faster.");
+    expect(aspect.iconHash).toBe(777);
+    expect(aspect.fallback).toBeUndefined();
+    const [fragment] = subclassItemEntries({ rows, items, entries: compendium, clarity, section: "fragment" });
+    expect(fragment).toMatchObject({ inGame: "Scorch grows.", fallback: true });
   });
 
   it("joins the rows of an item: all in is full, some in is approx, none in is missing", () => {
@@ -315,6 +432,7 @@ describe("subclassItemEntries", () => {
         rows: kinds.map((kind) => row("Sol Invictus", kind)),
         items,
         entries: compendium,
+        clarity: [],
         section: "aspect",
       }).map((e) => e.status);
     expect(status(["always", "triggered"])).toEqual(["full"]);
@@ -343,6 +461,7 @@ describe("subclassItemEntries", () => {
       rows: all.map((a) => a.row),
       items: all.map((a) => a.item),
       entries: texts,
+      clarity: [],
       section: "aspect",
     });
     expect(sorted.map((e) => e.group)).toEqual([
@@ -357,45 +476,66 @@ describe("subclassItemEntries", () => {
 describe("buffEntries", () => {
   const court = [
     {
-      category: "Global Debuffs",
-      group: "WEAKEN",
-      name: "Tractor Cannon",
-      itemType: null,
+      category: "Empowering Buffs",
+      group: "ABILITIES",
+      name: "Empowering Rift",
+      itemType: "Warlock Class Ability",
       requirement: "",
-      trigger: "Hit with the shot",
-      pve: "30%",
-      pveDuration: "5s",
-      notes: "Stacks with nothing.",
+      trigger: "Standing in an Empowering Rift",
+      pve: "20%",
+      pveDuration: "~\nlasts while in the Rift",
+      notes: "-\n-",
     },
   ];
-  const row = (verdict: Parameters<typeof buffEntries>[0]["rows"][number]["verdict"], target: string) => ({
-    category: "Global Debuffs",
-    group: "WEAKEN",
-    name: "Tractor Cannon",
-    verdict,
-    target,
-  });
+  const categories = [
+    {
+      name: "GLOBAL DEBUFFS",
+      description: "An effect inflicted by us Guardians onto an enemy target",
+      stacking: "Cannot stack with other Global Debuffs;\nhighest takes precedence",
+    },
+    {
+      name: "EMPOWERING BUFFS",
+      description: "An effect applied directly onto a Guardian",
+      stacking: "Cannot stack with other Empowering Buffs",
+    },
+  ];
+  const states = [
+    { name: "Weaken", category: "Global Debuffs", iconKey: "effect:weaken" },
+    {
+      name: "Empowering Rift",
+      category: "Empowering Buffs",
+      court: "Empowering Rift",
+      iconKey: "effect:empowering-rift",
+    },
+  ];
+  const result = buffEntries({ states, court, categories });
 
-  it("is full for imported rows and left out with the reason for skipped rows", () => {
-    expect(buffEntries({ rows: [row("imported", "tractor-cannon")], court })[0]).toMatchObject({
-      status: "full",
+  it("tells a general state with the row of Court where there is one, else with the category text", () => {
+    expect(result[0]).toMatchObject({
+      name: "Weaken",
       group: "Global Debuffs",
+      status: "full",
+      iconKey: "effect:weaken",
+      inGame:
+        "An effect inflicted by us Guardians onto an enemy target\nStacking: Cannot stack with other Global Debuffs; highest takes precedence",
     });
-    expect(
-      buffEntries({ rows: [row("skipped", "Only while solo")], court })[0],
-    ).toMatchObject({ status: "leftOut", inCalculator: "Left out: Only while solo" });
-  });
-
-  it("leaves out exotic and weapon rows; they belong to Armor and Weapons", () => {
-    expect(
-      buffEntries({ rows: [row("exotic", ""), row("weapon", "")], court }),
-    ).toEqual([]);
-  });
-
-  it("fails for an unclassified row", () => {
-    expect(() => buffEntries({ rows: [row("unclassified", "")], court })).toThrow(
-      /Tractor Cannon/,
+    expect(result[1].inGame).toBe(
+      "Standing in an Empowering Rift\nValue: 20% · Duration: lasts while in the Rift\nStacking: Cannot stack with other Empowering Buffs",
     );
+  });
+
+  it("keeps no line that is only a dash and none of the buffs that belong to an item", () => {
+    expect(result.every((e) => !/^-$/m.test(e.inGame))).toBe(true);
+    expect(result.map((e) => e.name)).not.toContain("Praxic Blade");
+  });
+
+  it("fails for a state without its Court category or row", () => {
+    expect(() =>
+      buffEntries({ states: [{ ...states[0], category: "Nope" }], court, categories }),
+    ).toThrow(/Nope/);
+    expect(() =>
+      buffEntries({ states: [{ ...states[1], court: "Nope" }], court, categories }),
+    ).toThrow(/Nope/);
   });
 });
 
@@ -433,6 +573,7 @@ describe("buildCatalog", () => {
   });
   const empty = {
     weapons: [],
+    catalysts: [],
     subclass: [],
     abilities: [],
     aspects: [],
@@ -445,6 +586,7 @@ describe("buildCatalog", () => {
   it("keeps the order of the page, without a class category", () => {
     expect(buildCatalog(empty, () => true).map((c) => c.id)).toEqual([
       "weapons",
+      "catalysts",
       "subclass",
       "abilities",
       "aspects",
@@ -468,7 +610,17 @@ describe("buildCatalog", () => {
       "weapon:hawkmoon",
       "named:lost-gun",
     ]);
-    expect(catalog[7].entries[0].iconKey).toBe("named:snipers-meditation");
+    expect(catalog[8].entries[0].iconKey).toBe("named:snipers-meditation");
+  });
+
+  it("keeps the hash of the item an icon is looked up by", () => {
+    const catalog = buildCatalog(
+      { ...empty, catalysts: [{ ...entryOf("Truth Catalyst (Truth)"), iconHash: 5 }] },
+      () => false,
+    );
+    expect(namedCatalogEntries(catalog)).toEqual([
+      { id: "truth-catalyst-truth", name: "Truth Catalyst (Truth)", hash: 5 },
+    ]);
   });
 
   it("lists every name that needs an icon from the manifest once", () => {
@@ -500,6 +652,7 @@ describe("src/data/coverage-catalog.json", () => {
     expect(() => CoverageCatalog.parse(catalog)).not.toThrow();
     expect(catalog.map((c) => c.id)).toEqual([
       "weapons",
+      "catalysts",
       "subclass",
       "abilities",
       "aspects",
@@ -508,6 +661,32 @@ describe("src/data/coverage-catalog.json", () => {
       "armor",
       "artifacts",
     ]);
+  });
+
+  it("tells the game text of weapons, catalysts, aspects, fragments and armor from Clarity, with the listed exceptions", () => {
+    const fallback = catalog.flatMap((c) =>
+      c.entries.filter((e) => e.fallback).map((e) => `${c.id}: ${e.name}`),
+    );
+    expect(fallback).toEqual(textFallback.entries);
+  });
+
+  it("has no clutter left in a game text: no line that is only a dash, no credit of Clarity", () => {
+    for (const category of catalog) {
+      for (const e of category.entries) {
+        expect(e.inGame, `${category.id}: ${e.name}`).not.toMatch(/^-$/m);
+        expect(e.inGame, `${category.id}: ${e.name}`).not.toMatch(/Clarity's/);
+      }
+    }
+  });
+
+  it("names catalysts with their weapon, and keeps the buffs to general states", () => {
+    const entries = (id: string) => catalog.find((c) => c.id === id)!.entries;
+    expect(entries("catalysts").every((e) => /\(.+\)$/.test(e.name))).toBe(true);
+    expect(entries("catalysts").map((e) => e.name)).toContain("Truth Catalyst (Truth)");
+    const buffs = entries("buffs").map((e) => e.name);
+    expect(buffs).toContain("Weaken");
+    expect(buffs).not.toContain("Praxic Blade");
+    expect(buffs).not.toContain("Heartshadow");
   });
 
   it("puts class abilities into Abilities and the class item perks into Armor", () => {

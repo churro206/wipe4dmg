@@ -65,7 +65,7 @@ Status: 2026-10-23
 - ✅ Surges 1x to 3x like the armor mods, matching the weapon element
 - ✅ Layout like in game: weapon, class, subclass, abilities, aspects, fragments, armor, stats, artifact, Fireteam Support
 - ✅ Wiki: “How does the calculator work?”, coverage and roadmap
-- ✅ Coverage page by category (weapons, class, subclass, abilities, aspects, fragments, buffs, armor, artifacts): what each thing does in the game and in the calculator, with status and reason
+- ✅ Coverage page by category (weapons, catalysts, subclass, abilities, aspects, fragments, buffs and debuffs, armor, artifacts): what each thing does in the game (Clarity) and in the calculator, with status and reason
 
 ## Next
 

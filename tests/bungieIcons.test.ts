@@ -217,4 +217,62 @@ describe("namedIconRefs", () => {
     expect(refs).toEqual([]);
     expect(missing).toEqual(["supernova"]);
   });
+
+  describe("with several items of one name", () => {
+    // The Thick of It is an artifact perk (a mod) and also an emblem and a weapon.
+    const same = {
+      "10": { hash: 10, itemType: 14, displayProperties: { name: "The Thick of It", hasIcon: true } },
+      "11": { hash: 11, itemType: 3, displayProperties: { name: "The Thick of It", hasIcon: true } },
+      "12": { hash: 12, itemType: 19, displayProperties: { name: "The Thick of It", hasIcon: true } },
+      "13": { hash: 13, displayProperties: { name: "Gold from Lead", hasIcon: true } },
+      "14": { hash: 14, itemType: 14, displayProperties: { name: "Gold from Lead", hasIcon: true } },
+    };
+
+    it("takes the mod before emblems and weapons, and an item of unknown type before an emblem", () => {
+      const { refs, ambiguous } = namedIconRefs(
+        [effect("the-thick-of-it", "The Thick of It"), effect("gold-from-lead", "Gold from Lead")],
+        same,
+      );
+      expect(refs.map((r) => r.manifestRef.hash)).toEqual([12, 13]);
+      expect(ambiguous[0]).toMatch(/The Thick of It: took 12/);
+    });
+
+    it("takes an artifact perk before a weapon ornament, which is a mod with a weapon's picture", () => {
+      const { refs } = namedIconRefs([effect("wind-chill", "Wind Chill")], {
+        "20": {
+          hash: 20,
+          itemType: 19,
+          itemTypeDisplayName: "Weapon Ornament",
+          plug: { plugCategoryIdentifier: "v470_events_dawning_submachinegun0_skins" },
+          displayProperties: { name: "Wind Chill", hasIcon: true },
+        },
+        "21": {
+          hash: 21,
+          itemType: 19,
+          itemTypeDisplayName: "Artifact Perk",
+          plug: { plugCategoryIdentifier: "artifact_perks" },
+          displayProperties: { name: "Wind Chill", hasIcon: true },
+        },
+      });
+      expect(refs.map((r) => r.manifestRef.hash)).toEqual([21]);
+    });
+
+    it("compares names without regard to case", () => {
+      const { refs } = namedIconRefs([effect("wished", "Wished Into Being")], {
+        "30": { hash: 30, displayProperties: { name: "Wished into Being", hasIcon: true } },
+      });
+      expect(refs.map((r) => r.manifestRef.hash)).toEqual([30]);
+    });
+
+    it("takes exactly the item of a hash that has an icon, else looks up the name", () => {
+      const { refs } = namedIconRefs(
+        [
+          { ...effect("a", "The Thick of It"), hash: 10 },
+          { ...effect("b", "The Thick of It"), hash: 999 },
+        ],
+        same,
+      );
+      expect(refs.map((r) => r.manifestRef.hash)).toEqual([10, 12]);
+    });
+  });
 });

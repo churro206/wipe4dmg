@@ -872,15 +872,16 @@ header > .segmented {
   color: var(--muted);
 }
 
+/*
+ * Strength of the emphasis, strongest first: category (large, bold, on the surface colour), column
+ * headings (small capitals, muted), group (bold on the surface colour, with its count), row.
+ * The only colours are the four status colours.
+ */
 .coverage-category {
   border: 1px solid var(--border);
   border-radius: 8px;
-  margin-bottom: 0.6rem;
-  padding: 0 0.8rem;
-}
-
-.coverage-category[open] {
-  padding-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
 }
 
 .coverage-category summary {
@@ -888,8 +889,18 @@ header > .segmented {
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.2rem 1rem;
-  padding: 0.6rem 0;
+  padding: 0.8rem 1rem;
+  background: var(--surface);
   cursor: pointer;
+}
+
+.coverage-category[open] summary {
+  border-bottom: 2px solid var(--border);
+}
+
+.coverage-category summary strong {
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .coverage-counts {
@@ -897,7 +908,7 @@ header > .segmented {
   font-size: 0.85rem;
 }
 
-/* One table per category: one header row, groups as bars inside it; the last two columns are equally wide */
+/* One table per category: one header row, groups inside it; the two text columns are equally wide */
 .wiki-page table.coverage-table {
   display: table;
   width: 100%;
@@ -906,60 +917,54 @@ header > .segmented {
 }
 
 .coverage-col-name {
-  width: 20%;
+  width: 18%;
 }
 
 .coverage-col-status {
-  width: 11%;
-}
-
-.coverage-col-text {
-  width: 34.5%;
+  width: 8.5rem;
 }
 
 .wiki-page .coverage-table th,
 .wiki-page .coverage-table td {
   text-align: left;
   vertical-align: top;
-  padding: 0.45rem 0.6rem;
+  padding: 0.5rem 0.8rem;
 }
 
 .wiki-page .coverage-table thead th {
   border-bottom: 1px solid var(--border);
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.wiki-page .coverage-table tr:not(.coverage-group) > * {
+.wiki-page .coverage-table tbody tr:not(.coverage-group) > * {
   border-top: 1px solid var(--border);
 }
 
 .wiki-page .coverage-table tr.coverage-group > th {
   background: var(--surface);
-  border-top: none;
-  box-shadow: inset 4px 0 0 var(--accent);
-  font-size: 1.05rem;
-  padding: 0.55rem 0.8rem;
+  border-top: 1px solid var(--border);
+  font-size: 1rem;
+  font-weight: 700;
 }
 
-.coverage-group[data-element="arc"] > th {
-  box-shadow: inset 4px 0 0 var(--element-arc);
+.coverage-group-count {
+  float: right;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 400;
 }
 
-.coverage-group[data-element="solar"] > th {
-  box-shadow: inset 4px 0 0 var(--element-solar);
+.wiki-page .coverage-table tbody tr:not(.coverage-group):hover {
+  background: var(--surface);
 }
 
-.coverage-group[data-element="void"] > th {
-  box-shadow: inset 4px 0 0 var(--element-void);
-}
-
-.coverage-group[data-element="stasis"] > th {
-  box-shadow: inset 4px 0 0 var(--element-stasis);
-}
-
-.coverage-group[data-element="strand"] > th {
-  box-shadow: inset 4px 0 0 var(--element-strand);
+.wiki-page .coverage-table tbody th[scope="row"] {
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .coverage-name {
@@ -975,22 +980,9 @@ header > .segmented {
   font-weight: 400;
 }
 
+/* Game texts keep their lines (Clarity: one line per effect, bullets) */
 .coverage-text {
-  display: block;
-  border: none;
-  background: none;
-  padding: 0;
-  font: inherit;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.coverage-text.clamped {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
+  white-space: pre-line;
 }
 
 @media (max-width: 47.99rem) {

@@ -24,6 +24,7 @@ export type ManifestItem = {
   hash: number;
   displayProperties?: { name?: string; hasIcon?: boolean };
   plug?: { plugCategoryIdentifier?: string };
+  itemType?: number; // DestinyItemType, e.g. 19 for a mod
   itemTypeDisplayName?: string; // e.g. "Solar Aspect"
 };
 

@@ -262,19 +262,31 @@ if (artifactNamed.missing.length > 0)
   console.warn(`No manifest item with an icon for: ${artifactNamed.missing.join(", ")}`);
 // The wiki page "Coverage of the calculator" (npm run coverage): every entry without an icon of its
 // own, e.g. an artifact perk or a glossary term, has the key "named:<name>"; look the item up by name.
-const catalogNamed = namedIconRefs(
-  existsSync(new URL("src/data/coverage-catalog.json", ROOT))
-    ? namedCatalogEntries(
-        CoverageCatalog.parse(readJson("src/data/coverage-catalog.json")),
-      )
-    : [],
-  items,
-  "named",
-);
-if (catalogNamed.missing.length > 0)
+const catalogWanted = existsSync(new URL("src/data/coverage-catalog.json", ROOT))
+  ? namedCatalogEntries(
+      CoverageCatalog.parse(readJson("src/data/coverage-catalog.json")),
+    )
+  : [];
+const catalogNamed = namedIconRefs(catalogWanted, items, "named");
+for (const line of catalogNamed.ambiguous) console.log(`Several items: ${line}`);
+if (catalogNamed.missing.length > 0) {
   console.warn(
     `No manifest item with an icon for the coverage page: ${catalogNamed.missing.join(", ")}`,
   );
+  // Items with a similar name, to see whether the manifest spells the name differently.
+  for (const id of catalogNamed.missing) {
+    const name = catalogWanted.find((w) => w.id === id)!.name.toLowerCase();
+    const start = name.split(/\s+/).slice(0, 2).join(" ");
+    const similar = Object.values(items)
+      .filter((i) => i.displayProperties?.name?.toLowerCase().includes(start))
+      .slice(0, 4)
+      .map(
+        (i) =>
+          `${i.displayProperties?.name} (${i.hash}, type ${i.itemType ?? "?"}, icon ${i.displayProperties?.hasIcon ? "yes" : "no"})`,
+      );
+    console.warn(`  ${id}: ${similar.length > 0 ? similar.join("; ") : "no similar item"}`);
+  }
+}
 const refs = collectIconRefs(
   [
     ...Effect.array().parse(readJson("src/data/effects.json")),

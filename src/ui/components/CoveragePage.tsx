@@ -1,7 +1,7 @@
-import { useState } from "react";
 import type { CatalogEntry, CatalogStatus } from "../../data/schema";
 import { coverageCatalog, iconUrl } from "../data";
 import { Icon } from "./Icon";
+import { useState } from "react";
 
 const STATUSES: { status: CatalogStatus; mark: string; label: string; meaning: string }[] = [
   { status: "full", mark: "✓", label: "Implemented", meaning: "Its damage or its effect counts in a build." },
@@ -11,8 +11,6 @@ const STATUSES: { status: CatalogStatus; mark: string; label: string; meaning: s
 ];
 const BY_STATUS = Object.fromEntries(STATUSES.map((s) => [s.status, s]));
 const COLUMNS = ["Name", "Status", "In-game", "Calculator"];
-// Subclass elements have a colour of their own (index.css); the group bar takes it from the name.
-const ELEMENTS = ["arc", "solar", "void", "stasis", "strand"];
 
 function StatusMark({ status }: { status: CatalogStatus }) {
   const { mark, label } = BY_STATUS[status];
@@ -40,9 +38,6 @@ function byGroup(entries: CatalogEntry[]) {
   return [...groups];
 }
 
-const elementOf = (group: string) =>
-  ELEMENTS.find((element) => group.toLowerCase().includes(element));
-
 /**
  * The icon of an entry; a glossary term the manifest has no item for (Jolted, Freeze) shows the
  * emblem of its subclass instead.
@@ -55,7 +50,6 @@ function iconKeyOf(entry: CatalogEntry, categoryId: string) {
 }
 
 function Row({ entry, categoryId }: { entry: CatalogEntry; categoryId: string }) {
-  const [expanded, setExpanded] = useState(false);
   return (
     <tr>
       <th scope="row">
@@ -70,17 +64,12 @@ function Row({ entry, categoryId }: { entry: CatalogEntry; categoryId: string })
       <td data-label="Status">
         <StatusMark status={entry.status} />
       </td>
-      <td data-label="In-game">
-        <button
-          type="button"
-          className={expanded ? "coverage-text" : "coverage-text clamped"}
-          aria-expanded={expanded}
-          onClick={() => setExpanded(!expanded)}
-        >
-          {entry.inGame}
-        </button>
+      <td data-label="In-game" className="coverage-text">
+        {entry.inGame}
       </td>
-      <td data-label="Calculator">{entry.inCalculator}</td>
+      <td data-label="Calculator" className="coverage-text">
+        {entry.inCalculator}
+      </td>
     </tr>
   );
 }
@@ -111,8 +100,8 @@ function Category({
           <colgroup>
             <col className="coverage-col-name" />
             <col className="coverage-col-status" />
-            <col className="coverage-col-text" />
-            <col className="coverage-col-text" />
+            <col />
+            <col />
           </colgroup>
           <thead>
             <tr>
@@ -125,9 +114,10 @@ function Category({
           </thead>
           {byGroup(entries).map(([group, rows]) => (
             <tbody key={group}>
-              <tr className="coverage-group" data-element={elementOf(group)}>
+              <tr className="coverage-group">
                 <th colSpan={COLUMNS.length} scope="colgroup">
                   {group}
+                  <span className="coverage-group-count">{rows.length}</span>
                 </th>
               </tr>
               {rows.map((entry) => (
@@ -147,8 +137,8 @@ export function CoveragePage() {
     <div className="coverage">
       <p>
         Everything in Destiny 2 that can change the damage of a build, by category: what it does in the
-        game and what the calculator does with it. Open a category to see its entries; tap a game text
-        to read all of it. Legendary weapons are not listed; they come with the Legendary Frames in 2.0.
+        game and what the calculator does with it. Open a category to see its entries. Legendary weapons
+        are not listed; they come with the Legendary Frames in 2.0.
       </p>
       <ul className="coverage-legend">
         {STATUSES.map(({ status, meaning }) => (

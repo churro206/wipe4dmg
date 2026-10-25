@@ -25,16 +25,7 @@
     "subclass: Unravel",
     "subclass: Unraveling Rounds",
     "subclass: Elemental Effects",
-    "buffs: Scanner Augment^",
-    "buffs: Shocked",
-    "buffs: Kinetic Surge Mod",
-    "buffs: That Fresh Bullet Smell",
-    "buffs: Void Weapon Channelling",
-    "buffs: Weapons Stat",
-    "buffs: Sect of Force Mod",
-    "armor: Promethium Spurs",
     "armor: Spirit of the Inmost Light",
-    "armor: Spirit of the Synthoceps",
-    "artifacts: Wished Into Being"
+    "armor: Spirit of the Synthoceps"
   ]
 }
