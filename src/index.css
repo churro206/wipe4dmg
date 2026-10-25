@@ -881,10 +881,15 @@ header > .segmented {
   border: 1px solid var(--border);
   border-radius: 8px;
   margin-bottom: 0.8rem;
-  overflow: hidden;
+  /* clip, not hidden: hidden would make the card the scroll container and the heading could not stick */
+  overflow: clip;
 }
 
+/* The heading of an open category sticks to the top, so a long one can be closed from its end */
 .coverage-category summary {
+  position: sticky;
+  top: 0;
+  z-index: 4;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
