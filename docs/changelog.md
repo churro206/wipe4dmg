@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **UI „Die erste Minute“, Teil 1 (2026-10-25):** Start mit 30 s Damage Phase (`DEFAULT_DAMAGE_PHASE_SECONDS`); Raids und Dungeons im Boss-Feld alphabetisch, Encounter in Spielreihenfolge; der Boss bleibt im Link (Parameter `boss=`, Format unverändert); Logo und Name führen auf die Startseite; neues Schädel-Logo in `logo.png`, `favicon-32.png`, `apple-touch-icon.png` aus `logo_2.png`. Tests in `tests/uiStart.test.ts`. Punkt 4 (relative Zahlen) verworfen: Spieler wollen große Zahlen sehen.
+
 - **Delta-Lücken (2026-10-25):** Feast of Light gilt mit den Obergrenzen des Compendiums pro Super (Nova Bomb, Thundercrash, Twilight Arsenal 50 %, Needlestorm 35 %; `MultiplierPart.excludeAbilityIds`). Dawn Chorus verdoppelt Ignitions aus jeder Quelle (`MultiplierPart.keywordIds`). Sol Invictus ändert Chaos Reach mit Geomag (Aegis ×1,463) und ist auch von einem Teammate wählbar; Touch of Flame ändert die Fusion Grenade (Regel G gilt jetzt auch für Items, die nur einen Zustand geben). Super-Spearman 0,95 → 0,98. Gathering Storm und Shards of Galanor bleiben als Aegis-Widerspruch mit Zahlen in der Fixture.
 
 - **Rangfolge-Gate (2026-10-25):** `tests/rankingGate.test.ts` gruppiert die Gesamtprobe (Supers, Heavy, Special) und prüft Spearman ≥ 0,9, Aegis-Top-3 in unseren Top 5 und Delta-Paare ±2 Prozentpunkte; Tabelle in `docs/ranking-gate.md`. Abweichungen mit Grund in `tests/fixtures/ranking-gate.json` (Sol Invictus, Dawn Chorus, Feast of Light x6, Shards of Galanor, Super-Top-3). Reine Funktionen in `tests/lib/ranking.ts`.
