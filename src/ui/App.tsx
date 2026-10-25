@@ -494,8 +494,10 @@ function App() {
     <>
       <main>
         <header>
-          <img className="logo" src="/logo.png" alt="" width={48} height={48} />
-          <h1>wipe4dmg</h1>
+          <a className="home" href="/" title="Back to the start page">
+            <img className="logo" src="/logo.png" alt="" width={48} height={48} />
+            <h1>wipe4dmg</h1>
+          </a>
           <SegmentedControl
             label="View"
             options={[...VIEWS]}
