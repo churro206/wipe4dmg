@@ -1143,994 +1143,994 @@
     "title": "Catalysts",
     "entries": [
       {
-        "name": "Ace of Spades Catalyst (Ace of Spades)",
+        "name": "Ace of Spades Catalyst",
         "group": "Kinetic",
         "inGame": "Firefly's explosion damage is increased by 50% while Memento Mori is active.",
         "iconHash": 3708505013,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:ace-of-spades-catalyst-ace-of-spades"
+        "iconKey": "named:ace-of-spades-catalyst"
       },
       {
-        "name": "Ager's Scepter Catalyst (Ager's Scepter)",
+        "name": "Ager's Scepter Catalyst",
         "group": "Kinetic",
         "inGame": "While at full Super Energy, Hold [Reload] to activate Will Given Form.\nWill Given Form immediately takes away 20% Super Energy, then drains at a rate of 4% Super Energy per second to grant the following benefits:\n• Overfills the magazine from reserves to 192\n• 80% increased damage\n• 20 [0] slow stacks per hit\nEffect lasts until deactivated by holding [Reload] again, or until the magazine is emptied, super energy is drained, or the weapon is stowed.\nDoes not count as a super for related effects or buffs.",
         "iconHash": 970163821,
         "inCalculator": "+76% weapon damage\nMagazine 97 → 194, rate of fire 906 → 2,898",
         "status": "full",
-        "iconKey": "named:agers-scepter-catalyst-agers-scepter"
+        "iconKey": "named:agers-scepter-catalyst"
       },
       {
-        "name": "Arbalest Catalyst (Arbalest)",
+        "name": "Arbalest Catalyst",
         "group": "Kinetic",
         "inGame": "Passively grants:\n• 20 Handling\n• Increases Magazine Size by one (5🠚6)\nRefills magazine from reserves upon breaking a PVE Combatant, Barrier Champion, or Player Shield.",
         "iconHash": 1880379474,
         "inCalculator": "Magazine 5 → 6, ammo 21 → 22",
         "status": "full",
-        "iconKey": "named:arbalest-catalyst-arbalest"
+        "iconKey": "named:arbalest-catalyst"
       },
       {
-        "name": "Bad Juju Catalyst (Bad Juju)",
+        "name": "Bad Juju Catalyst",
         "group": "Kinetic",
         "inGame": "String of Curses's maximum duration is increased by 2 seconds (5.5🠚7.5).",
         "iconHash": 1324340508,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:bad-juju-catalyst-bad-juju"
+        "iconKey": "named:bad-juju-catalyst"
       },
       {
-        "name": "Bastion Catalyst (Bastion)",
+        "name": "Bastion Catalyst",
         "group": "Kinetic",
         "inGame": "Dealing Melee Damage refills 20% of the Magazine (rounded up) and grants ? Handling for ? seconds.",
         "iconHash": 4273298922,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:bastion-catalyst-bastion"
+        "iconKey": "named:bastion-catalyst"
       },
       {
-        "name": "Cerberus+1 Catalyst (Cerberus+1)",
+        "name": "Cerberus+1 Catalyst",
         "group": "Kinetic",
         "inGame": "Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds:\n• 50% [10%] increased damage\n• 30% decreased Pellet Spread\nStowing the weapon removes the buff.",
         "iconHash": 1380383475,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:cerberus-1-catalyst-cerberus-1"
+        "iconKey": "named:cerberus-1-catalyst"
       },
       {
-        "name": "The Chaperone Catalyst (The Chaperone)",
+        "name": "The Chaperone Catalyst",
         "group": "Kinetic",
         "inGame": "Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
         "iconHash": 431220297,
         "inCalculator": "Magazine 6 → 9, ammo 18 → 27",
         "status": "full",
-        "iconKey": "named:the-chaperone-catalyst-the-chaperone"
+        "iconKey": "named:the-chaperone-catalyst"
       },
       {
-        "name": "Conditional Finality Catalyst (Conditional Finality)",
+        "name": "Conditional Finality Catalyst",
         "group": "Kinetic",
         "inGame": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.\nKilling Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
         "iconHash": 3616546635,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:conditional-finality-catalyst-conditional-finality"
+        "iconKey": "named:conditional-finality-catalyst"
       },
       {
-        "name": "Crimson Catalyst (Crimson)",
+        "name": "Crimson Catalyst",
         "group": "Kinetic",
         "inGame": "Passively grants 20 Range.\nEvery 30 points of damage taken with the weapon readied grants a Stack of 'To the Pain'. Maximum of 10 Stacks. Stowing the weapon removes all Stacks.\nEach Stack grants ? Handling and 2 Aim Assist, maxing out at ? Handling and 20 Aim Assist.\nSelf-damage and environmental damage do not count.",
         "iconHash": 1783582993,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:crimson-catalyst-crimson"
+        "iconKey": "named:crimson-catalyst"
       },
       {
-        "name": "Cryosthesia 77K Catalyst (Cryosthesia 77K)",
+        "name": "Cryosthesia 77K Catalyst",
         "group": "Kinetic",
         "inGame": "Shattering a Frozen enemy instantly refills the magazine.",
         "iconHash": 1023764762,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:cryosthesia-77k-catalyst-cryosthesia-77k"
+        "iconKey": "named:cryosthesia-77k-catalyst"
       },
       {
-        "name": "Dead Man's Tale Catalyst (Dead Man's Tale)",
+        "name": "Dead Man's Tale Catalyst",
         "group": "Kinetic",
         "inGame": "While not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.\nWhile not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.",
         "iconHash": 1301843770,
         "inCalculator": "+27% weapon damage\nrate of fire 120 → 140, reload ms 330 → 290",
         "status": "full",
-        "iconKey": "named:dead-mans-tale-catalyst-dead-mans-tale"
+        "iconKey": "named:dead-mans-tale-catalyst"
       },
       {
-        "name": "Euphony Catalyst (Euphony)",
+        "name": "Euphony Catalyst",
         "group": "Kinetic",
         "inGame": "Weapon Hits grant Stacks of Enlightened Action for 2 seconds. Maximum of 12 Stacks.\nStat bonuses at 1|2|…|12 Stacks:\n2|7|12|15|20|25|30|35|38|40|45|50 Handling and Reload Speed\nStacks granted per hit by Weapon Type:\n• Hand Cannons: 3 Stacks\n• Bows: ? Stacks\n• Automatic Weapons: 1 Stack",
         "iconHash": 3703325290,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:euphony-catalyst-euphony"
+        "iconKey": "named:euphony-catalyst"
       },
       {
-        "name": "Final Warning Catalyst (Final Warning)",
+        "name": "Final Warning Catalyst",
         "group": "Kinetic",
         "inGame": "Grants 10% increased damage to marked targets. Minibosses and Bosses only receive 5% more damage.\nHits against marked Minors and Elites|Minibosses and Bosses have an 85%|25% chance to refund one ammo into the magazine.",
         "iconHash": 77818606,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:final-warning-catalyst-final-warning"
+        "iconKey": "named:final-warning-catalyst"
       },
       {
-        "name": "Forerunner Catalyst (Forerunner)",
+        "name": "Forerunner Catalyst",
         "group": "Kinetic",
         "inGame": "Holding [Reload] within 4 seconds of a kill consumes 4 ammo, refills the magazine, and grants 'The Rock'.\nThe Rock replaces your grenade ability with a tossed Kinetic grenade that explodes for 2072 [181] damage in a 9 meter radius, dealing 20% damage at the edge of its radius. Detonates 0.6 seconds after it slows down enough.\nThe Rock counts as a grenade ability and is buffed by, and triggers, grenade-associated effects.",
         "iconHash": 674410190,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:forerunner-catalyst-forerunner"
+        "iconKey": "named:forerunner-catalyst"
       },
       {
-        "name": "Hawkmoon Catalyst (Hawkmoon)",
+        "name": "Hawkmoon Catalyst",
         "group": "Kinetic",
         "inGame": "Increases Magazine Size by 1 (8🠚9).\nGrants the following benefits at 1|2|3|...|7| stacks of Paracausal Charge:\n• 8|14|22|26|28|29|30 Range\n• 15|25|35|40|50|50|50 Reload Speed\n• ? Handling",
         "iconHash": 383825919,
         "inCalculator": "Magazine 8 → 9",
         "status": "full",
-        "iconKey": "named:hawkmoon-catalyst-hawkmoon"
+        "iconKey": "named:hawkmoon-catalyst"
       },
       {
-        "name": "Izanagi's Burden Catalyst (Izanagi's Burden)",
+        "name": "Izanagi's Burden Catalyst",
         "group": "Kinetic",
         "inGame": "Increases the damage bonus of Honed Edge x4 by 20%, granting the following values:\n• 155% [218%] increased bodyshot damage\n• 370% [487%] increased critical damage",
         "iconHash": 529188544,
         "inCalculator": "+13% weapon damage\nreload ms 1,980 → 3,200",
         "status": "full",
-        "iconKey": "named:izanagis-burden-catalyst-izanagis-burden"
+        "iconKey": "named:izanagis-burden-catalyst"
       },
       {
-        "name": "The Last Word Catalyst (The Last Word)",
+        "name": "The Last Word Catalyst",
         "group": "Kinetic",
         "inGame": "Upon readying the weapon after scoring kills with your other Weapons:\nRefills and/or overfills the Magazine from reserves based on the amount of Weapon Kills scored.\nLoads 1 Ammo per kill achieved with other weapons.\nMaximum total overfill amount is 200% of the Magazine Capacity. Each activation can only load up to 100% of the Magazine Capacity into the magazine.\nOn Weapon Kill, for 5 seconds:\n• 50 Mobility\n• 40 Handling and 20 Range\n• 5% increased Damage Falloff Distance\nAdditional Kills extend the duration by 5 seconds, up to 8 seconds. Buff is removed on stow.",
         "iconHash": 3274907024,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:the-last-word-catalyst-the-last-word"
+        "iconKey": "named:the-last-word-catalyst"
       },
       {
-        "name": "Lumina Catalyst (Lumina)",
+        "name": "Lumina Catalyst",
         "group": "Kinetic",
         "inGame": "Kills create an additional Remnant (1🠚2).",
         "iconHash": 2271572658,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:lumina-catalyst-lumina"
+        "iconKey": "named:lumina-catalyst"
       },
       {
-        "name": "Malfeasance Catalyst (Malfeasance)",
+        "name": "Malfeasance Catalyst",
         "group": "Kinetic",
         "inGame": "Grants 20 Range.\nGrants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
         "iconHash": 1234111636,
         "inCalculator": "+20% weapon damage",
         "status": "full",
-        "iconKey": "named:malfeasance-catalyst-malfeasance"
+        "iconKey": "named:malfeasance-catalyst"
       },
       {
-        "name": "MIDA Multi-Tool Catalyst (MIDA Multi-Tool)",
+        "name": "MIDA Multi-Tool Catalyst",
         "group": "Kinetic",
         "inGame": "While within 15 meters of an enemy, grants an Enhanced Radar, 20 Reload Speed, and 15% decreased Reload Animation Duration.\nBuff lingers for 4 seconds once the condition is no longer met.",
         "iconHash": 3466057365,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:mida-multi-tool-catalyst-mida-multi-tool"
+        "iconKey": "named:mida-multi-tool-catalyst"
       },
       {
-        "name": "Monte Carlo Catalyst (Monte Carlo)",
+        "name": "Monte Carlo Catalyst",
         "group": "Kinetic",
         "inGame": "Hold [Reload] while at maximum Markov Chain stacks to lock the bayonet.\nWhile Monte Carlo is held, it replaces your Melee Ability with a powerful glaive-like stab that deals 2,772 [140] melee damage. Stab can reach up to 7 meters away and grants 50% Melee Ability Energy on hit.",
         "iconHash": 2816578262,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:monte-carlo-catalyst-monte-carlo"
+        "iconKey": "named:monte-carlo-catalyst"
       },
       {
-        "name": "Necrochasm Catalyst (Necrochasm)",
+        "name": "Necrochasm Catalyst",
         "group": "Kinetic",
         "inGame": "Damaging 3 enemies within 3 seconds of each other grants the following benefits for 10 seconds:\n• 35% increased damage\n• ? Handling\n• ? Range\n• ? Aim Assist\nBuff can be refreshed.",
         "iconHash": 1931066670,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:necrochasm-catalyst-necrochasm"
+        "iconKey": "named:necrochasm-catalyst"
       },
       {
-        "name": "New Land Beyond Catalyst (New Land Beyond)",
+        "name": "New Land Beyond Catalyst",
         "group": "Kinetic",
         "inGame": "While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on each shot.",
         "iconHash": 2861049498,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:new-land-beyond-catalyst-new-land-beyond"
+        "iconKey": "named:new-land-beyond-catalyst"
       },
       {
-        "name": "New Malpais Catalyst (New Malpais)",
+        "name": "New Malpais Catalyst",
         "group": "Kinetic",
         "inGame": "Embedded projectiles Unravel targets for 8 seconds upon detonation.",
         "iconHash": 3466807461,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:new-malpais-catalyst-new-malpais"
+        "iconKey": "named:new-malpais-catalyst"
       },
       {
-        "name": "No Time to Explain Catalyst (No Time to Explain)",
+        "name": "No Time to Explain Catalyst",
         "group": "Kinetic",
         "inGame": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
         "iconHash": 2145198832,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:no-time-to-explain-catalyst-no-time-to-explain"
+        "iconKey": "named:no-time-to-explain-catalyst"
       },
       {
-        "name": "Osteo Striga Catalyst (Osteo Striga)",
+        "name": "Osteo Striga Catalyst",
         "group": "Kinetic",
         "inGame": "Grants 30 Reload and 20 Stability.\nPoison Kills instantly refill the magazine and can overfill it up to 300% total capacity.\n0.5 second cooldown between activations.",
         "iconHash": 2132353550,
         "inCalculator": "reload ms 1,190 → 956",
         "status": "full",
-        "iconKey": "named:osteo-striga-catalyst-osteo-striga"
+        "iconKey": "named:osteo-striga-catalyst"
       },
       {
-        "name": "Outbreak Perfected Catalyst (Outbreak Perfected)",
+        "name": "Outbreak Perfected Catalyst",
         "group": "Kinetic",
         "inGame": "Nanite Damage is increased by 25%.\nEnemies that die with Nanites attached to them release four Nanites around them, each dealing 13 [4] damage.\nNanite Damage is increased by 25%.\nEnemies that die with Nanites attached to them release four Nanites around them, each dealing 13 [4] damage.",
         "iconHash": 3352275956,
         "inCalculator": "+15% weapon damage",
         "status": "full",
-        "iconKey": "named:outbreak-perfected-catalyst-outbreak-perfected"
+        "iconKey": "named:outbreak-perfected-catalyst"
       },
       {
-        "name": "Quicksilver Storm Catalyst (Quicksilver Storm)",
+        "name": "Quicksilver Storm Catalyst",
         "group": "Kinetic",
         "inGame": "Converts this weapon's element into Strand damage.\nKills with Grenade Chaser grenades spawn a Tangle.",
         "iconHash": 25023897,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:quicksilver-storm-catalyst-quicksilver-storm"
+        "iconKey": "named:quicksilver-storm-catalyst"
       },
       {
-        "name": "Rat King Catalyst (Rat King)",
+        "name": "Rat King Catalyst",
         "group": "Kinetic",
         "inGame": "Grants 20 Aim Assist and 20 Recoil Direction.\nFinishing a reload within 6 seconds of a kill begins Health Regeneration.",
         "iconHash": 1758592809,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:rat-king-catalyst-rat-king"
+        "iconKey": "named:rat-king-catalyst"
       },
       {
-        "name": "Sturm Catalyst (Sturm)",
+        "name": "Sturm Catalyst",
         "group": "Kinetic",
         "inGame": "Grants 40 Handling and 20 Range.\nKills with Overcharged Rounds grants 2 stacks of 'Helping Hands'. Maximum of 6 stacks.\nHelping Hands grants 50% decreased Stow/Ready Animation Speed while active. Readying Sturm or a Together Forevever weapon consumes one stack.",
         "iconHash": 1824496860,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:sturm-catalyst-sturm"
+        "iconKey": "named:sturm-catalyst"
       },
       {
-        "name": "SUROS Regime Catalyst (SUROS Regime)",
+        "name": "SUROS Regime Catalyst",
         "group": "Kinetic",
         "inGame": "Grants 50 Recoil Direction and doubles the healing chance (25%🠚50%).",
         "iconHash": 1733620422,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:suros-regime-catalyst-suros-regime"
+        "iconKey": "named:suros-regime-catalyst"
       },
       {
-        "name": "Sweet Business Catalyst (Sweet Business)",
+        "name": "Sweet Business Catalyst",
         "group": "Kinetic",
         "inGame": "Grants 25% increased Flinch Resistance while at maximum Rate of Fire.",
         "iconHash": 1249968538,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:sweet-business-catalyst-sweet-business"
+        "iconKey": "named:sweet-business-catalyst"
       },
       {
-        "name": "The Navigator Catalyst (The Navigator)",
+        "name": "The Navigator Catalyst",
         "group": "Kinetic",
         "inGame": "Hold [Reload] to activate Grapple Tangle mode.\nFires a floating Grapple Point to where the reticle previews at approximately 23.5 meters away. Identical to those made by the Widow's Silk aspect.\n30 second cooldown, starting only once grounded.",
         "iconHash": 3116569677,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:the-navigator-catalyst-the-navigator"
+        "iconKey": "named:the-navigator-catalyst"
       },
       {
-        "name": "Thorn Catalyst (Thorn)",
+        "name": "Thorn Catalyst",
         "group": "Kinetic",
         "inGame": "Passively grants 15 Range, 5 Stability, and 5 Airborne Effectiveness.\nKills or collecting Remnants grants 'Refined Soul' for 7 seconds. Additional kills or Remnants can extend this timer up to 11 seconds.\nRefined Soul grants 10 Range, 15 Handling, and 50 Mobility.",
         "iconHash": 4091235251,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:thorn-catalyst-thorn"
+        "iconKey": "named:thorn-catalyst"
       },
       {
-        "name": "Touch of Malice Catalyst (Touch of Malice)",
+        "name": "Touch of Malice Catalyst",
         "group": "Kinetic",
         "inGame": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or missing removes all stacks...usually.\nPrecision damage increase at 1|2|3... stacks:\n4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%",
         "iconHash": 1557274655,
         "inCalculator": "+25% weapon damage",
         "status": "full",
-        "iconKey": "named:touch-of-malice-catalyst-touch-of-malice"
+        "iconKey": "named:touch-of-malice-catalyst"
       },
       {
-        "name": "Traveler's Chosen Catalyst (Traveler's Chosen)",
+        "name": "Traveler's Chosen Catalyst",
         "group": "Kinetic",
         "inGame": "Increases Magazine Size by 2 (15🠚17)\nGrants the Surplus trait:\nGrants Stat Bonuses depending on the number of Charged Abilities.\nStat Bonuses with 1|2|3+ Charged Abilities:\n• 5|15|25 Stability\n• 5|25|60 Handling\n• 10|25|60 Reload Speed\nAlso grants the Osmosis trait:\nGrenade Ability usage refills 50% of your Magazine (rounded up) from reserves and changes the weapon's element to match your equipped Grenade Ability until stowed.\nMagazine Refill cannot be triggered again without stowing the weapon first.\nKinetic weapons lose their Passive Damage Bonus against non-Boss PVE Combatants (10% on Primary, 15% on Special).\nPerks that replace your Grenade Ability (such as Gunpowder Gamble or Transcendence Grenades) will also trigger Osmosis.",
         "iconHash": 3967134106,
         "inCalculator": "Magazine 15 → 17",
         "status": "full",
-        "iconKey": "named:travelers-chosen-catalyst-travelers-chosen"
+        "iconKey": "named:travelers-chosen-catalyst"
       },
       {
-        "name": "Verglas Curve Catalyst (Verglas Curve)",
+        "name": "Verglas Curve Catalyst",
         "group": "Kinetic",
         "inGame": "Applying Freeze or Slow to a target decreases Draw Time by 35% (567ms🠚368ms) for ? seconds.",
         "iconHash": 2689511581,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:verglas-curve-catalyst-verglas-curve"
+        "iconKey": "named:verglas-curve-catalyst"
       },
       {
-        "name": "Vigilance Wing Catalyst (Vigilance Wing)",
+        "name": "Vigilance Wing Catalyst",
         "group": "Kinetic",
         "inGame": "Grants the Ensemble trait:\nGrants 30 Handling and 40 Reload Speed while within 15 meters of an ally.\nBuff lingers for 1.5 seconds once you're no longer near allies.",
         "iconHash": 615063267,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:vigilance-wing-catalyst-vigilance-wing"
+        "iconKey": "named:vigilance-wing-catalyst"
       },
       {
-        "name": "Wicked Implement Catalyst (Wicked Implement)",
+        "name": "Wicked Implement Catalyst",
         "group": "Kinetic",
         "inGame": "Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity.\nDue Tithing Harvest refilling the entire magazine on Stasis Shard pickup, the overfill effect only activates if your current magazine is above 13 shots remaining.\nGrants the Headstone trait:\nPrecision Kills create a Large Stasis Crystal at the target's location.\nTier 1-2 Minor and Tier 1 Elite Combatants only spawn a Medium Stasis Crystal.\nCreating 5 Crystals within ? seconds prevents the perk from activating for 5 seconds.",
         "iconHash": 961827406,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:wicked-implement-catalyst-wicked-implement"
+        "iconKey": "named:wicked-implement-catalyst"
       },
       {
-        "name": "Wish-Ender Catalyst (Wish-Ender)",
+        "name": "Wish-Ender Catalyst",
         "group": "Kinetic",
         "inGame": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
         "iconHash": 3457865915,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:wish-ender-catalyst-wish-ender"
+        "iconKey": "named:wish-ender-catalyst"
       },
       {
-        "name": "Witherhoard Catalyst (Witherhoard)",
+        "name": "Witherhoard Catalyst",
         "group": "Kinetic",
         "inGame": "Grants 40 Handling.\nThis weapon is automatically loaded from reserves after 2 seconds of being stowed.",
         "iconHash": 2888418988,
         "inCalculator": "rate of fire 19 → 59",
         "status": "full",
-        "iconKey": "named:witherhoard-catalyst-witherhoard"
+        "iconKey": "named:witherhoard-catalyst"
       },
       {
-        "name": "Borealis Catalyst (Borealis)",
+        "name": "Borealis Catalyst",
         "group": "Energy",
         "inGame": "Passively grants 20 Reload Speed.\nOn Matching Elemental Shield Break:\nExplosion disorients enemies within 7 meters for 5 seconds.",
         "iconHash": 2085058763,
         "inCalculator": "reload ms 1,980 → 1,783",
         "status": "full",
-        "iconKey": "named:borealis-catalyst-borealis"
+        "iconKey": "named:borealis-catalyst"
       },
       {
-        "name": "Buried Bloodline Catalyst (Buried Bloodline)",
+        "name": "Buried Bloodline Catalyst",
         "group": "Energy",
         "inGame": "While Devour is active, grants the following benefits:\n• Hits apply Weaken for 6 seconds\n• ? Reload Speed\n• ? Decreased Reload Animation Duration",
         "iconHash": 2199828458,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:buried-bloodline-catalyst-buried-bloodline"
+        "iconKey": "named:buried-bloodline-catalyst"
       },
       {
-        "name": "Centrifuse Catalyst (Centrifuse)",
+        "name": "Centrifuse Catalyst",
         "group": "Energy",
         "inGame": "While you are Amplified, Overcharge Capacitor will continuously build at a rate of 7% charge per second and no longer passively decay.",
         "iconHash": 1547782973,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:centrifuse-catalyst-centrifuse"
+        "iconKey": "named:centrifuse-catalyst"
       },
       {
-        "name": "Cloudstrike Catalyst (Cloudstrike)",
+        "name": "Cloudstrike Catalyst",
         "group": "Energy",
         "inGame": "Passively grants 25 Handling.\nGrants the Triple Tap trait:\nScoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
         "iconHash": 1409312565,
         "inCalculator": "Magazine 7 → 10, ammo 31 → 44, rate of fire 161 → 155",
         "status": "full",
-        "iconKey": "named:cloudstrike-catalyst-cloudstrike"
+        "iconKey": "named:cloudstrike-catalyst"
       },
       {
-        "name": "Coldheart Catalyst (Coldheart)",
+        "name": "Coldheart Catalyst",
         "group": "Energy",
         "inGame": "Passively grants 20 Stability and 20 Reload Speed.\n(Yes, these are the same stats that are set to 100 when at 100% Fusion Energy)\nRefills 5% of the magazine (rounded up) every 1.5 seconds while Amplified.\nActivating Speed Booster increases this rate to once every 0.25 seconds, and allows the perk to overfill the magazine up to double its base capacity.",
         "iconHash": 1249968539,
         "inCalculator": "reload ms 1,440 → 1,291",
         "status": "full",
-        "iconKey": "named:coldheart-catalyst-coldheart"
+        "iconKey": "named:coldheart-catalyst"
       },
       {
-        "name": "Collective Obligation Catalyst (Collective Obligation)",
+        "name": "Collective Obligation Catalyst",
         "group": "Energy",
         "inGame": "No text in Clarity.",
         "iconHash": 2234507197,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:collective-obligation-catalyst-collective-obligation"
+        "iconKey": "named:collective-obligation-catalyst"
       },
       {
-        "name": "Dead Messenger Catalyst (Dead Messenger)",
+        "name": "Dead Messenger Catalyst",
         "group": "Energy",
         "inGame": "Grants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.",
         "iconHash": 4259872956,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:dead-messenger-catalyst-dead-messenger"
+        "iconKey": "named:dead-messenger-catalyst"
       },
       {
-        "name": "Delicate Tomb Catalyst (Delicate Tomb)",
+        "name": "Delicate Tomb Catalyst",
         "group": "Energy",
         "inGame": "Picking up Ionic Traces refill 4 ammo from reserves.",
         "iconHash": 1719307618,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:delicate-tomb-catalyst-delicate-tomb"
+        "iconKey": "named:delicate-tomb-catalyst"
       },
       {
-        "name": "Devil's Ruin Catalyst (Devil's Ruin)",
+        "name": "Devil's Ruin Catalyst",
         "group": "Energy",
         "inGame": "Elemental Pickup Interactions grant 30% [10%] increased damage for a variable duration based on the pickup. Can be activated while stowed.\nIonic Traces, Stasis Shards, and Tangle Detonations grant the buff for 4 seconds. Throwing a held Tangle grants 4 additional seconds. Firesprites and Void Breaches grant the buff for 8 seconds.\nAdditional Pickups can extend the duration up to the maximum of 16 seconds.\nElemental Pickup Interactions:\n• Destroying a Tangle (or Elemental Orbs), either by shooting or throwing.\n• Collecting Firesprites, Ionic Traces, Stasis Shards, or Void Breaches\nDoes not trigger with Stasis Shards generated from Facet of Awakening or Facet of Command.",
         "iconHash": 2732252706,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:devils-ruin-catalyst-devils-ruin"
+        "iconKey": "named:devils-ruin-catalyst"
       },
       {
-        "name": "Divinity Catalyst (Divinity)",
+        "name": "Divinity Catalyst",
         "group": "Energy",
         "inGame": "Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits required to 13.\nScoring 68 Precision Hits grants 25% increased damage for 11 seconds. Stowing or Reloading the weapon resets the Precision Hit counter.\nBuff remains active while stowed.",
         "iconHash": 1517802577,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:divinity-catalyst-divinity"
+        "iconKey": "named:divinity-catalyst"
       },
       {
-        "name": "Duality Catalyst (Duality)",
+        "name": "Duality Catalyst",
         "group": "Energy",
         "inGame": "Grants 20 Range and increases Magazine Size by 2 (6🠚8)",
         "iconHash": 3591914291,
         "inCalculator": "Magazine 6 → 8, ammo 15 → 17",
         "status": "full",
-        "iconKey": "named:duality-catalyst-duality"
+        "iconKey": "named:duality-catalyst"
       },
       {
-        "name": "Edge of Action Catalyst (Edge of Action)",
+        "name": "Edge of Action Catalyst",
         "group": "Energy",
         "inGame": "Kills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence).",
         "iconHash": 1134515006,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:edge-of-action-catalyst-edge-of-action"
+        "iconKey": "named:edge-of-action-catalyst"
       },
       {
-        "name": "Edge of Concurrence Catalyst (Edge of Concurrence)",
+        "name": "Edge of Concurrence Catalyst",
         "group": "Energy",
         "inGame": "Grants the following after sprinting for 1.5 seconds with the weapon readied:\n• 20 Reload Speed\n• 0.95x Reload Duration Multiplier\n• ? Handling\n• 0.95x Handling Animation Duration Multiplier\nSprinting refreshes the buff duration.\nBeing Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
         "iconHash": 1731191722,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:edge-of-concurrence-catalyst-edge-of-concurrence"
+        "iconKey": "named:edge-of-concurrence-catalyst"
       },
       {
-        "name": "Edge of Intent Catalyst (Edge of Intent)",
+        "name": "Edge of Intent Catalyst",
         "group": "Energy",
         "inGame": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
         "iconHash": 2038196759,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:edge-of-intent-catalyst-edge-of-intent"
+        "iconKey": "named:edge-of-intent-catalyst"
       },
       {
-        "name": "Ergo Sum Catalyst (Ergo Sum)",
+        "name": "Ergo Sum Catalyst",
         "group": "Energy",
         "inGame": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
         "iconHash": 1497627200,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:ergo-sum-catalyst-ergo-sum"
+        "iconKey": "named:ergo-sum-catalyst"
       },
       {
-        "name": "Eriana's Vow Catalyst (Eriana's Vow)",
+        "name": "Eriana's Vow Catalyst",
         "group": "Energy",
         "inGame": "Increases the magazine size by 3 (6🠚9).\nRefills stowed weapon from reserves after 3.5 seconds of it being stowed.",
         "iconHash": 2984240082,
         "inCalculator": "Magazine 6 → 9, ammo 32 → 35",
         "status": "full",
-        "iconKey": "named:erianas-vow-catalyst-erianas-vow"
+        "iconKey": "named:erianas-vow-catalyst"
       },
       {
-        "name": "Ex Diris Catalyst (Ex Diris)",
+        "name": "Ex Diris Catalyst",
         "group": "Energy",
         "inGame": "Weapon Kills grant Amplified for 15 seconds.\nWhile Amplified, Direct Hits charge Enrage twice as fast (25%🠚50% per hit).",
         "iconHash": 1826222780,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:ex-diris-catalyst-ex-diris"
+        "iconKey": "named:ex-diris-catalyst"
       },
       {
-        "name": "Fighting Lion Catalyst (Fighting Lion)",
+        "name": "Fighting Lion Catalyst",
         "group": "Energy",
         "inGame": "Grants 30 Reload Speed.\nFiring this gun grants equipped Kinetic and Heavy ammo weapons the following benefits for 3 seconds:\n• 100 Handling\n• 30% decreased Accuracy Cone Size",
         "iconHash": 924149234,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:fighting-lion-catalyst-fighting-lion"
+        "iconKey": "named:fighting-lion-catalyst"
       },
       {
-        "name": "Graviton Lance Catalyst (Graviton Lance)",
+        "name": "Graviton Lance Catalyst",
         "group": "Energy",
         "inGame": "Grants 20 Range.\nGrants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nAlso grants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
         "iconHash": 615063266,
         "inCalculator": "+20% weapon damage",
         "status": "full",
-        "iconKey": "named:graviton-lance-catalyst-graviton-lance"
+        "iconKey": "named:graviton-lance-catalyst"
       },
       {
-        "name": "Hard Light Catalyst (Hard Light)",
+        "name": "Hard Light Catalyst",
         "group": "Energy",
         "inGame": "Grants 25 Stability.\nWhile Amplified, Radiant, or Devour is active:\n• ? Handling\n• ? Reload Speed\n• ?% decreased Reload Animation Duration\n• ?% decreased ADS Animation Duration",
         "iconHash": 1864989992,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:hard-light-catalyst-hard-light"
+        "iconKey": "named:hard-light-catalyst"
       },
       {
-        "name": "Hierarchy of Needs Catalyst (Hierarchy of Needs)",
+        "name": "Hierarchy of Needs Catalyst",
         "group": "Energy",
         "inGame": "Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds:\n• 40% reduced Hip-Fire Accuracy Cone\n• 50% decreased Draw Time\n• 100 Reload Speed\n• ?% decreased Reload Animation Duration",
         "iconHash": 122307549,
         "inCalculator": "rate of fire 44 → 61",
         "status": "full",
-        "iconKey": "named:hierarchy-of-needs-catalyst-hierarchy-of-needs"
+        "iconKey": "named:hierarchy-of-needs-catalyst"
       },
       {
-        "name": "Jötunn Catalyst (Jötunn)",
+        "name": "Jötunn Catalyst",
         "group": "Energy",
         "inGame": "Grants the Cornered trait:\nGrants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies.\nBuff lingers for 1.5 seconds once no longer surrounded.\nAlso grants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
         "iconHash": 862513617,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:j-tunn-catalyst-j-tunn"
+        "iconKey": "named:j-tunn-catalyst"
       },
       {
-        "name": "Le Monarque Catalyst (Le Monarque)",
+        "name": "Le Monarque Catalyst",
         "group": "Energy",
         "inGame": "Grants 20 Reload Speed and 30 Stability.\nGrants the Unrelenting trait:\nStarts Health Regeneration and restores 65 HP upon reaching 100% Activation Progress with Weapon Kills within 5 seconds of each.\nActivation Progress by Enemy Rank:\n• Minor Combatants: 34%\n• Players: 67%\n• Elites, Minibosses, and Bosses: 100%",
         "iconHash": 466834938,
         "inCalculator": "reload ms 600 → 525",
         "status": "full",
-        "iconKey": "named:le-monarque-catalyst-le-monarque"
+        "iconKey": "named:le-monarque-catalyst"
       },
       {
-        "name": "Lodestar Catalyst (Lodestar)",
+        "name": "Lodestar Catalyst",
         "group": "Energy",
         "inGame": "While Amplified:\n• 10 Aim Assist\n• ? Reload Speed\n• ?% decreased ADS Movement Speed Penalty",
         "iconHash": 2018366981,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:lodestar-catalyst-lodestar"
+        "iconKey": "named:lodestar-catalyst"
       },
       {
-        "name": "Lord of Wolves Catalyst (Lord of Wolves)",
+        "name": "Lord of Wolves Catalyst",
         "group": "Energy",
         "inGame": "Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration.\nHipfired shots apply 10 Scorch stacks (15 with Ember of Ashes) on hit with a 0.5 second cooldown.\nKills while ADS trigger a Solar explosion that applies 30 Scorch stacks (40 with Ember of Ashes) to enemies within an 8 meter radius.",
         "iconHash": 431220296,
         "inCalculator": "reload ms 920 → 704",
         "status": "full",
-        "iconKey": "named:lord-of-wolves-catalyst-lord-of-wolves"
+        "iconKey": "named:lord-of-wolves-catalyst"
       },
       {
-        "name": "Merciless Catalyst (Merciless)",
+        "name": "Merciless Catalyst",
         "group": "Energy",
         "inGame": "Grants 40 Range and 40 Stability.\nFinishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
         "iconHash": 1149703256,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:merciless-catalyst-merciless"
+        "iconKey": "named:merciless-catalyst"
       },
       {
-        "name": "Polaris Lance Catalyst (Polaris Lance)",
+        "name": "Polaris Lance Catalyst",
         "group": "Energy",
         "inGame": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.",
         "iconHash": 4067652714,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:polaris-lance-catalyst-polaris-lance"
+        "iconKey": "named:polaris-lance-catalyst"
       },
       {
-        "name": "Red Death Reformed Catalyst (Red Death Reformed)",
+        "name": "Red Death Reformed Catalyst",
         "group": "Energy",
         "inGame": "Scoring 2 [1] kills grants 'Red Death Charged'.\nYour next kill with Red Death Reformed consumes this buff and triggers a burst of healing, granting 120 HP (Cure x2) to allies within a 7.5 meter radius of you.\nThis kill also spawns a Restoration Orb at your feet, granting you and allies Restoration x2 for 4 seconds (6 with Ember of Solace) on pickup.",
         "iconHash": 818393196,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:red-death-reformed-catalyst-red-death-reformed"
+        "iconKey": "named:red-death-reformed-catalyst"
       },
       {
-        "name": "Riskrunner Catalyst (Riskrunner)",
+        "name": "Riskrunner Catalyst",
         "group": "Energy",
         "inGame": "Grants 30 Range.\nWeapon Kills trigger an elemental explosion, dealing up to 114 [?] damage in a 3 meter radius.\nThis explosion can deal self-damage and trigger Arc Conductor.",
         "iconHash": 484491717,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:riskrunner-catalyst-riskrunner"
+        "iconKey": "named:riskrunner-catalyst"
       },
       {
-        "name": "Ruinous Effigy Catalyst (Ruinous Effigy)",
+        "name": "Ruinous Effigy Catalyst",
         "group": "Energy",
         "inGame": "Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] increased weapon damage for 7 seconds.",
         "iconHash": 1206010521,
         "inCalculator": "+29% weapon damage",
         "status": "full",
-        "iconKey": "named:ruinous-effigy-catalyst-ruinous-effigy"
+        "iconKey": "named:ruinous-effigy-catalyst"
       },
       {
-        "name": "Still Hunt Catalyst (Still Hunt)",
+        "name": "Still Hunt Catalyst",
         "group": "Energy",
         "inGame": "Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'.\nScoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer. Additional precision hits during this timer continue to refill the magazine from reserves.",
         "iconHash": 2993090545,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:still-hunt-catalyst-still-hunt"
+        "iconKey": "named:still-hunt-catalyst"
       },
       {
-        "name": "Sunshot Catalyst (Sunshot)",
+        "name": "Sunshot Catalyst",
         "group": "Energy",
         "inGame": "Grants 30 Range and 20 Stability.\nApplying an Elemental Debuff grants the following benefits for 9 seconds:\n• 50 Reload Speed and 20 Aim Assist\n• 20% decreased ADS Movement Speed Penalty\nBuff can be activated while stowed.",
         "iconHash": 1824496861,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:sunshot-catalyst-sunshot"
+        "iconKey": "named:sunshot-catalyst"
       },
       {
-        "name": "Symmetry Catalyst (Symmetry)",
+        "name": "Symmetry Catalyst",
         "group": "Energy",
         "inGame": "Grants 10 Reload Speed and 10 Handling.\nDynamic Charge's maximum stack count is is increased by 5 (15🠚20), allowing for up to 600% increased damage and 100% increased radius.\nGrants the Eddy Current trait:\nGrants the following after sprinting for 1.5 seconds with the weapon readied:\n• 20 Reload Speed\n• 0.95x Reload Duration Multiplier\n• ? Handling\n• 0.95x Handling Animation Duration Multiplier\nSprinting refreshes the buff duration.\nBeing Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
         "iconHash": 4218954970,
         "inCalculator": "reload ms 990 → 905",
         "status": "full",
-        "iconKey": "named:symmetry-catalyst-symmetry"
+        "iconKey": "named:symmetry-catalyst"
       },
       {
-        "name": "Tarrabah Catalyst (Tarrabah)",
+        "name": "Tarrabah Catalyst",
         "group": "Energy",
         "inGame": "Reloading after scoring kills with Tarrabah overfills the magazine from reserves based on the number of Kills scored.\nTarrabah overfills the next magazine by 20% per kill scored, up to a maximum of 150% Base Magazine Capacity. Always rounds up.\nKill counter persists through stow.",
         "iconHash": 3759764174,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:tarrabah-catalyst-tarrabah"
+        "iconKey": "named:tarrabah-catalyst"
       },
       {
-        "name": "Telesto Catalyst (Telesto)",
+        "name": "Telesto Catalyst",
         "group": "Energy",
         "inGame": "Increases the Magazine Size by 3 (4🠚7) and grants 40 Ammo Generation.\nTriggering Harbinger's Pulse three times will cause Telesto to start smoking and short circuiting, granting access to 'Harbinger's Seethe'.\nHold [Reload] to slap your malfunctioning Telesto. On its next direct hit, it will spawn a Wormhole from the Telesto Dimmension, wildly spraying 22 Telesto Bolts over 2.25 seconds.",
         "iconHash": 920755188,
         "inCalculator": "Magazine 4 → 7, ammo 16 → 19",
         "status": "full",
-        "iconKey": "named:telesto-catalyst-telesto"
+        "iconKey": "named:telesto-catalyst"
       },
       {
-        "name": "Tessellation Catalyst (Tessellation)",
+        "name": "Tessellation Catalyst",
         "group": "Energy",
         "inGame": "Your explosive [projectile | shape | language] inherents subclass debuffs based on its element.\nDeals an additional instance of 165 [10] damage in a 10 meter radius and applies a debuff matching its element:\n•70 Scorch Stacks (80 with Ember of Ashes)\n•Weaken for 6 [2.5] seconds\n•Blind for 9 seconds\n•80 Slow Stacks\n•Sever for 5 seconds (7.5 with Thread of Continuity)\nEffects are applied after the explosion.",
         "iconHash": 2538516770,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:tessellation-catalyst-tessellation"
+        "iconKey": "named:tessellation-catalyst"
       },
       {
-        "name": "The Fourth Horseman Catalyst (The Fourth Horseman)",
+        "name": "The Fourth Horseman Catalyst",
         "group": "Energy",
         "inGame": "Grants 40 Reload Speed and Increases Magazine Size by 1 (4🠚5)",
         "iconHash": 2826187530,
         "inCalculator": "Magazine 4 → 5, rate of fire 109 → 105, reload ms 430 → 284",
         "status": "full",
-        "iconKey": "named:the-fourth-horseman-catalyst-the-fourth-horseman"
+        "iconKey": "named:the-fourth-horseman-catalyst"
       },
       {
-        "name": "The Manticore Catalyst (The Manticore)",
+        "name": "The Manticore Catalyst",
         "group": "Energy",
         "inGame": "While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield for 6 seconds (9 seconds with Echo of Persistance).\n1 second cooldown when activated by hits.\nNo cooldown when activated by kills.",
         "iconHash": 2797384170,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:the-manticore-catalyst-the-manticore"
+        "iconKey": "named:the-manticore-catalyst"
       },
       {
-        "name": "Ticuu's Divination Catalyst (Ticuu's Divination)",
+        "name": "Ticuu's Divination Catalyst",
         "group": "Energy",
         "inGame": "Triggering Sacred Flame explosions grants one stack of 'Causality Quiver' for 5.5 seconds. Marking enemies with Sacred Flame refreshes the buff. Maximum of 6 stacks.\nCausality Quiver increases the impact damage of your arrows (not the explosion) at 1|2|3|4|5|6 stacks:\n• PvE: 16%|31%|49%|67.5%|87%|87%\n• PvP: 3.6%|11%|12%|16%|23%|23%",
         "iconHash": 3978937353,
         "inCalculator": "+87% weapon damage",
         "status": "full",
-        "iconKey": "named:ticuus-divination-catalyst-ticuus-divination"
+        "iconKey": "named:ticuus-divination-catalyst"
       },
       {
-        "name": "Tommy's Matchbook Catalyst (Tommy's Matchbook)",
+        "name": "Tommy's Matchbook Catalyst",
         "group": "Energy",
         "inGame": "While Ignition Trigger is active, kills grant 60 HP (Cure x1) and every 5th shot applies 15 [10] Scorch. Ember of Ashes increases this to 20 for both PvE and PvP.",
         "iconHash": 4001063065,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:tommys-matchbook-catalyst-tommys-matchbook"
+        "iconKey": "named:tommys-matchbook-catalyst"
       },
       {
-        "name": "Trespasser Catalyst (Trespasser)",
+        "name": "Trespasser Catalyst",
         "group": "Energy",
         "inGame": "Grants the Tunnel Vision trait:\nGrants the following for 5 seconds upon finishing a Reload within 3.6 seconds of a Weapon Kill:\n• 20 Aim Assist\n• ? ADS Handling\n• ?% decreased Accuracy Cone Growth\nBe The Danger's automatic reload activates this perk.",
         "iconHash": 2895039606,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:trespasser-catalyst-trespasser"
+        "iconKey": "named:trespasser-catalyst"
       },
       {
-        "name": "Trinity Ghoul Catalyst (Trinity Ghoul)",
+        "name": "Trinity Ghoul Catalyst",
         "group": "Energy",
         "inGame": "Decreases Draw Time by 15% (756ms🠚633ms).\nLightning Rod is now granted after scoring any Arc kill. Trinity Ghoul must be held in order to receive Lightning Rod.",
         "iconHash": 3457865914,
         "inCalculator": "rate of fire 44 → 48",
         "status": "full",
-        "iconKey": "named:trinity-ghoul-catalyst-trinity-ghoul"
+        "iconKey": "named:trinity-ghoul-catalyst"
       },
       {
-        "name": "Wavesplitter Catalyst (Wavesplitter)",
+        "name": "Wavesplitter Catalyst",
         "group": "Energy",
         "inGame": "Grants 10 Range and 30 Ammo Generation.\nScoring 25 Hits within ? seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.\nScoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy. Hit counter persists through stow.",
         "iconHash": 3156882011,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:wavesplitter-catalyst-wavesplitter"
+        "iconKey": "named:wavesplitter-catalyst"
       },
       {
-        "name": "Vex Mythoclast Catalyst (Vex Mythoclast)",
+        "name": "Vex Mythoclast Catalyst",
         "group": "Energy",
         "inGame": "Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds.\nBuff applies to Auto Rifle mode only.",
         "iconHash": 838219733,
         "inCalculator": "+20% weapon damage",
         "status": "full",
-        "iconKey": "named:vex-mythoclast-catalyst-vex-mythoclast"
+        "iconKey": "named:vex-mythoclast-catalyst"
       },
       {
-        "name": "Anarchy Catalyst (Anarchy)",
+        "name": "Anarchy Catalyst",
         "group": "Power",
         "inGame": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt.\nBeing Amplified decreases the number of hits required to 2.",
         "iconHash": 1178660677,
         "inCalculator": "+16% weapon damage",
         "status": "full",
-        "iconKey": "named:anarchy-catalyst-anarchy"
+        "iconKey": "named:anarchy-catalyst"
       },
       {
-        "name": "Black Talon Catalyst (Black Talon)",
+        "name": "Black Talon Catalyst",
         "group": "Power",
         "inGame": "Due to an unresolved bug, this catalyst does not function.\nThe intended behavior was that damage against Void-Debuffed enemies is increased per unique Void-Debuff applied to the target, at a rate of 10% per debuff.",
         "iconHash": 3810173190,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:black-talon-catalyst-black-talon"
+        "iconKey": "named:black-talon-catalyst"
       },
       {
-        "name": "D.A.R.C.I. Catalyst (D.A.R.C.I.)",
+        "name": "D.A.R.C.I. Catalyst",
         "group": "Power",
         "inGame": "Passively grants 20 Stability.\nHits on Highlighted targets grants one stack of 'Networked Targeting' to you and allies within a 15 meter radius for 10.5 seconds. Maximum of 5 stacks.\nNetworked Targeting buffs D.A.R.C.I and Non-Exotic Sniper Rifles.\nBenefits at 1|2|3|4|5 Stacks:\n• 2.8%|6.1%|9.1%|12.5%|15.9% increased damage\n• ? Stability, Handling, Aim Assist, Flinch Resistance\nGranting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%.",
         "iconHash": 2085058762,
         "inCalculator": "+6% weapon damage",
         "status": "full",
-        "iconKey": "named:d-a-r-c-i-catalyst-d-a-r-c-i"
+        "iconKey": "named:d-a-r-c-i-catalyst"
       },
       {
-        "name": "Deathbringer Catalyst (Deathbringer)",
+        "name": "Deathbringer Catalyst",
         "group": "Power",
         "inGame": "The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner.",
         "iconHash": 1298151900,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:deathbringer-catalyst-deathbringer"
+        "iconKey": "named:deathbringer-catalyst"
       },
       {
-        "name": "Deterministic Chaos Catalyst (Deterministic Chaos)",
+        "name": "Deterministic Chaos Catalyst",
         "group": "Power",
         "inGame": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
         "iconHash": 3638234982,
         "inCalculator": "+25% weapon damage",
         "status": "full",
-        "iconKey": "named:deterministic-chaos-catalyst-deterministic-chaos"
+        "iconKey": "named:deterministic-chaos-catalyst"
       },
       {
-        "name": "Dragon's Breath Catalyst (Dragon's Breath)",
+        "name": "Dragon's Breath Catalyst",
         "group": "Power",
         "inGame": "Doubles the rate of passive Composite Propellant generation (6🠚3 Seconds per stack).\nKills generate Firesprites. These kills ignore the global Firesprite spawning cooldown.",
         "iconHash": 2924294393,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:dragons-breath-catalyst-dragons-breath"
+        "iconKey": "named:dragons-breath-catalyst"
       },
       {
-        "name": "Eyes of Tomorrow Catalyst (Eyes of Tomorrow)",
+        "name": "Eyes of Tomorrow Catalyst",
         "group": "Power",
         "inGame": "Dealing damage grants a stack of 'Blast Distributor' for 5 seconds, increasing your Grenade Stat by 10 per stack. Maximum of 5 stacks.\nKills grant 10% Grenade Ability Energy.\nUsing your Grenade Ability refills the Magazine with a 3 second cooldown.",
         "iconHash": 2835258088,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:eyes-of-tomorrow-catalyst-eyes-of-tomorrow"
+        "iconKey": "named:eyes-of-tomorrow-catalyst"
       },
       {
-        "name": "Finality's Auger Catalyst (Finality's Auger)",
+        "name": "Finality's Auger Catalyst",
         "group": "Power",
         "inGame": "Grants the Bait and Switch trait:\nDealing damage with a weapon starts a 7 second timer. Dealing additional weapon damage resets the timer to 7 seconds.\nDealing damage with all 3 of your weapons without letting the timer run out grants you 'Bait and Switch' for 10 seconds, granting 30% increased damage.\nTimer is disabled while Bait and Switch is active, requiring a full activation sequence once the buff expires.",
         "iconHash": 818149482,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:finalitys-auger-catalyst-finalitys-auger"
+        "iconKey": "named:finalitys-auger-catalyst"
       },
       {
-        "name": "Gjallarhorn Catalyst (Gjallarhorn)",
+        "name": "Gjallarhorn Catalyst",
         "group": "Power",
         "inGame": "Increases Magazine Size by 1 (1🠚2).\nKills with Wolfpack Rounds spawn an upgraded Wolfpack Round that seeks targets ?% faster and deals 126.5% increased damage.",
         "iconHash": 2526801077,
         "inCalculator": "Magazine 1 → 2, ammo 10 → 11",
         "status": "full",
-        "iconKey": "named:gjallarhorn-catalyst-gjallarhorn"
+        "iconKey": "named:gjallarhorn-catalyst"
       },
       {
-        "name": "Grand Overture Catalyst (Grand Overture)",
+        "name": "Grand Overture Catalyst",
         "group": "Power",
         "inGame": "Grants 20 Handling and 20 Stability.\nArc Missiles apply Blind for 2 seconds. Kills trigger an explosion dealing ? damage in a ? meter radius.",
         "iconHash": 2094761202,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:grand-overture-catalyst-grand-overture"
+        "iconKey": "named:grand-overture-catalyst"
       },
       {
-        "name": "Heartshadow Catalyst (Heartshadow)",
+        "name": "Heartshadow Catalyst",
         "group": "Power",
         "inGame": "Increases reserves by 6 (57🠚63).\nGrants 50% increased movement speed while under the effects of Void Invisibility.",
         "iconHash": 3072857252,
         "inCalculator": "Magazine 14 → 15, ammo 14 → 15",
         "status": "full",
-        "iconKey": "named:heartshadow-catalyst-heartshadow"
+        "iconKey": "named:heartshadow-catalyst"
       },
       {
-        "name": "Heir Apparent Catalyst (Heir Apparent)",
+        "name": "Heir Apparent Catalyst",
         "group": "Power",
         "inGame": "Arc Shield gains 75% [25%] Damage Resistance.\nRefills 50% of the magazine upon Arc Shield being depleted.",
         "iconHash": 1324556594,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:heir-apparent-catalyst-heir-apparent"
+        "iconKey": "named:heir-apparent-catalyst"
       },
       {
-        "name": "Leviathan's Breath Catalyst (Leviathan's Breath)",
+        "name": "Leviathan's Breath Catalyst",
         "group": "Power",
         "inGame": "Increases Reserves by 5 (9🠚14) and Ammo Generation by 80.\nPrecision Hits grant 43.7% decreased Draw Animation Speed for 3 seconds.",
         "iconHash": 2362217257,
         "inCalculator": "ammo 9 → 14, rate of fire 38 → 70",
         "status": "full",
-        "iconKey": "named:leviathans-breath-catalyst-leviathans-breath"
+        "iconKey": "named:leviathans-breath-catalyst"
       },
       {
-        "name": "Microcosm Catalyst (Microcosm)",
+        "name": "Microcosm Catalyst",
         "group": "Power",
         "inGame": "Weapon Kills grant an additional 1% Super Energy.\nGrants the following benefits against low (under 30%) Health targets. Ignores Shield HP:\n• Increased Stagger Force\n• 7% to 15% increased damage, scaling with remaining Health\n• ? Increased Target Acquisition",
         "iconHash": 2292872001,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:microcosm-catalyst-microcosm"
+        "iconKey": "named:microcosm-catalyst"
       },
       {
-        "name": "One Thousand Voices Catalyst (One Thousand Voices)",
+        "name": "One Thousand Voices Catalyst",
         "group": "Power",
         "inGame": "I gain 30 Stability and 20 Ammo Generation.\nEach of my detonations release a Taken Seeker which aggressively tracks and burrows into nearby targets, dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds.\nMy Taken Seekers can stun Overload Champions.\nMy foes can be afflicted by up to 5 seekers at once, and Blighted Enemies (directly impacted by Witherhoard) take 100% increased tick damage.\nI do not interact with Malfeasance or Wish-Ender.\n▛ Most of those who bargain with me do not win... ▟",
         "iconHash": 82994288,
         "inCalculator": "+45% weapon damage",
         "status": "full",
-        "iconKey": "named:one-thousand-voices-catalyst-one-thousand-voices"
+        "iconKey": "named:one-thousand-voices-catalyst"
       },
       {
-        "name": "Salvation's Grip Catalyst (Salvation's Grip)",
+        "name": "Salvation's Grip Catalyst",
         "group": "Power",
         "inGame": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
         "iconHash": 2359854504,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:salvations-grip-catalyst-salvations-grip"
+        "iconKey": "named:salvations-grip-catalyst"
       },
       {
-        "name": "Sleeper Simulant Catalyst (Sleeper Simulant)",
+        "name": "Sleeper Simulant Catalyst",
         "group": "Power",
         "inGame": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774) without reducing damage.",
         "iconHash": 136852797,
         "inCalculator": "ammo 14 → 16, rate of fire 37 → 44, reload ms 437 → 687",
         "status": "full",
-        "iconKey": "named:sleeper-simulant-catalyst-sleeper-simulant"
+        "iconKey": "named:sleeper-simulant-catalyst"
       },
       {
-        "name": "Parasite Catalyst (Parasite)",
+        "name": "Parasite Catalyst",
         "group": "Power",
         "inGame": "Dealing any damage with both of your other weapons refills the magazine from reserves upon readying the weapon.",
         "iconHash": 4259872957,
         "inCalculator": "Not in the calculator yet: no source measured it",
         "status": "missing",
-        "iconKey": "named:parasite-catalyst-parasite"
+        "iconKey": "named:parasite-catalyst"
       },
       {
-        "name": "The Lament Catalyst (The Lament)",
+        "name": "The Lament Catalyst",
         "group": "Power",
         "inGame": "Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown\nScoring 3 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. This allows The Lament to Scorch through a singular revved attack.\nHit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage, and thus, triggers Revved Consumption's healing, granting 7HP per tick.",
         "iconHash": 1218164788,
         "inCalculator": "+11% weapon damage",
         "status": "full",
-        "iconKey": "named:the-lament-catalyst-the-lament"
+        "iconKey": "named:the-lament-catalyst"
       },
       {
-        "name": "The Queenbreaker Catalyst (The Queenbreaker)",
+        "name": "The Queenbreaker Catalyst",
         "group": "Power",
         "inGame": "Grants the Rewind Rounds trait:\nUpon emptying the Magazine:\nRefills 60% of the number of Hits landed (rounded up) into the Magazine from reserves.\nHits are counted from either your last reload or the last time the perk was triggered. Does not require Direct Hits.\nRequires firing 28.75% of the Magazine Capacity for the refill to activate.\nCannot load the Magazine beyond its base capacity.\nHits after triggering a refill do not count while the Rewind Rounds buff is active (1? second).\nAdaptive Burst Linear Fusion Rifle behavior:\n• Each individual bolt in the burst counts as a Hit\n• Refill amount is uniquely 14% of the number of Hits rounded up (numbers are subject to change once we get more data points)",
         "iconHash": 1061006937,
         "inCalculator": "Magazine 5 → 11",
         "status": "full",
-        "iconKey": "named:the-queenbreaker-catalyst-the-queenbreaker"
+        "iconKey": "named:the-queenbreaker-catalyst"
       },
       {
-        "name": "Thunderlord Catalyst (Thunderlord)",
+        "name": "Thunderlord Catalyst",
         "group": "Power",
         "inGame": "Triggering a Lightning Strike refills 5 ammo from reserves.",
         "iconHash": 1550063955,
         "inCalculator": "Magazine 62 → 379, rate of fire 627 → 698",
         "status": "full",
-        "iconKey": "named:thunderlord-catalyst-thunderlord"
+        "iconKey": "named:thunderlord-catalyst"
       },
       {
-        "name": "Tractor Cannon Catalyst (Tractor Cannon)",
+        "name": "Tractor Cannon Catalyst",
         "group": "Power",
         "inGame": "Increases Magazine Size by 3 (4🠚7) and grants 50 Ammo Generation.",
         "iconHash": 456628589,
         "inCalculator": "Magazine 4 → 7, ammo 15 → 18",
         "status": "full",
-        "iconKey": "named:tractor-cannon-catalyst-tractor-cannon"
+        "iconKey": "named:tractor-cannon-catalyst"
       },
       {
-        "name": "Truth Catalyst (Truth)",
+        "name": "Truth Catalyst",
         "group": "Power",
         "inGame": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
         "iconHash": 726894353,
         "inCalculator": "+40% weapon damage",
         "status": "full",
-        "iconKey": "named:truth-catalyst-truth"
+        "iconKey": "named:truth-catalyst"
       },
       {
-        "name": "Winterbite Catalyst (Winterbite)",
+        "name": "Winterbite Catalyst",
         "group": "Power",
         "inGame": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
         "iconHash": 580005458,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:winterbite-catalyst-winterbite"
+        "iconKey": "named:winterbite-catalyst"
       },
       {
-        "name": "Xenophage Catalyst (Xenophage)",
+        "name": "Xenophage Catalyst",
         "group": "Power",
         "inGame": "Weapon Kills grant a Stack of Rampage. Maximum of 3 Stacks. Stacks expire one at a time every 🡅4.5 seconds.\nGrants a 10%|21%|33.1% damage increase at 1|2|3 Stacks.\nWeapon Kills trigger a solar elemental explosion, dealing up to 109 [72.8] damage in a 3 meter radius.",
         "iconHash": 2113691818,
         "inCalculator": "No effect against one boss without adds",
         "status": "leftOut",
-        "iconKey": "named:xenophage-catalyst-xenophage"
+        "iconKey": "named:xenophage-catalyst"
       }
     ]
   },

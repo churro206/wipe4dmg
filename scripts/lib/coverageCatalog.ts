@@ -255,8 +255,8 @@ const CATALYST_STATUS: Record<CatalystEffect, [CatalogStatus, string]> = {
 };
 
 /**
- * One row per catalyst of an exotic weapon, named as in the game with the weapon in brackets
- * ("Truth Catalyst (Truth)"); the game text is the catalyst text of Clarity.
+ * One row per catalyst of an exotic weapon, named after the weapon ("Truth Catalyst"; the catalysts
+ * have no names of their own in the game); the game text is the catalyst text of Clarity.
  */
 export function catalystEntries(input: {
   entries: CompendiumEntry[];
@@ -270,7 +270,7 @@ export function catalystEntries(input: {
       .map((c) => tidyText(c.text))
       .filter((text) => text !== "");
     const base = {
-      name: `${known.catalyst.name} (${known.name})`,
+      name: `${known.name} Catalyst`,
       group,
       inGame: texts.length > 0 ? texts.join("\n") : "No text in Clarity.",
       iconHash: known.catalyst.hash,

@@ -136,10 +136,10 @@ describe("weaponEntries", () => {
   describe("catalystEntries", () => {
     const catalysts = catalystEntries({ entries, names, weapons, clarity });
 
-    it("names a catalyst as in the game with the weapon in brackets, only for weapons that have one", () => {
+    it("names a catalyst after its weapon, only for weapons that have one", () => {
       expect(catalysts.map((e) => e.name)).toEqual([
-        "Hawkmoon Catalyst (Hawkmoon)",
-        "Lightning Catalyst (Thunderlord)",
+        "Hawkmoon Catalyst",
+        "Thunderlord Catalyst",
       ]);
       expect(catalysts[0]).toMatchObject({
         group: "Kinetic",
@@ -615,11 +615,11 @@ describe("buildCatalog", () => {
 
   it("keeps the hash of the item an icon is looked up by", () => {
     const catalog = buildCatalog(
-      { ...empty, catalysts: [{ ...entryOf("Truth Catalyst (Truth)"), iconHash: 5 }] },
+      { ...empty, catalysts: [{ ...entryOf("Truth Catalyst"), iconHash: 5 }] },
       () => false,
     );
     expect(namedCatalogEntries(catalog)).toEqual([
-      { id: "truth-catalyst-truth", name: "Truth Catalyst (Truth)", hash: 5 },
+      { id: "truth-catalyst", name: "Truth Catalyst", hash: 5 },
     ]);
   });
 
@@ -679,10 +679,10 @@ describe("src/data/coverage-catalog.json", () => {
     }
   });
 
-  it("names catalysts with their weapon, and keeps the buffs to general states", () => {
+  it("names catalysts after their weapon, and keeps the buffs to general states", () => {
     const entries = (id: string) => catalog.find((c) => c.id === id)!.entries;
-    expect(entries("catalysts").every((e) => /\(.+\)$/.test(e.name))).toBe(true);
-    expect(entries("catalysts").map((e) => e.name)).toContain("Truth Catalyst (Truth)");
+    expect(entries("catalysts").every((e) => e.name.endsWith(" Catalyst"))).toBe(true);
+    expect(entries("catalysts").map((e) => e.name)).toContain("Ace of Spades Catalyst");
     const buffs = entries("buffs").map((e) => e.name);
     expect(buffs).toContain("Weaken");
     expect(buffs).not.toContain("Praxic Blade");

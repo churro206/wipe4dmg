@@ -1,5 +1,6 @@
 import type { CatalogEntry, CatalogStatus } from "../../data/schema";
 import { coverageCatalog, iconUrl } from "../data";
+import { isLongText } from "../coverageText";
 import { Icon } from "./Icon";
 import { useState } from "react";
 
@@ -50,6 +51,8 @@ function iconKeyOf(entry: CatalogEntry, categoryId: string) {
 }
 
 function Row({ entry, categoryId }: { entry: CatalogEntry; categoryId: string }) {
+  const long = isLongText(entry.inGame);
+  const [expanded, setExpanded] = useState(false);
   return (
     <tr>
       <th scope="row">
@@ -64,8 +67,20 @@ function Row({ entry, categoryId }: { entry: CatalogEntry; categoryId: string })
       <td data-label="Status">
         <StatusMark status={entry.status} />
       </td>
-      <td data-label="In-game" className="coverage-text">
-        {entry.inGame}
+      <td data-label="In-game">
+        <div className={long && !expanded ? "coverage-text clamped" : "coverage-text"}>
+          {entry.inGame}
+        </div>
+        {long && (
+          <button
+            type="button"
+            className="coverage-more"
+            aria-expanded={expanded}
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? "Show less" : "Show more"}
+          </button>
+        )}
       </td>
       <td data-label="Calculator" className="coverage-text">
         {entry.inCalculator}

@@ -980,9 +980,33 @@ header > .segmented {
   font-weight: 400;
 }
 
-/* Game texts keep their lines (Clarity: one line per effect, bullets) */
+/* Game texts keep their lines (Clarity: one line per effect, bullets); long ones start collapsed */
 .coverage-text {
   white-space: pre-line;
+}
+
+/* The same number of lines as COLLAPSED_LINES in src/ui/coverageText.ts */
+.coverage-text.clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.coverage-more {
+  margin-top: 0.25rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.coverage-more:hover {
+  color: var(--text);
 }
 
 @media (max-width: 47.99rem) {
