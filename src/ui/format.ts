@@ -11,7 +11,13 @@ export const secondsInput = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 3,
   useGrouping: false,
 });
-export const percent = new Intl.NumberFormat("en-US", {
+/** Damage Phase field text: a tenth of a second is enough; empty or invalid text stays as it is. */
+export function roundToTenth(value: number | string | null): string {
+  if (value === null || value === "") return "";
+  const number = Number(value);
+  return Number.isFinite(number) ? String(Math.round(number * 10) / 10) : String(value);
+}
+export const percent =new Intl.NumberFormat("en-US", {
   style: "percent",
   maximumFractionDigits: 0,
 });

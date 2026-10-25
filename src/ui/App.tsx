@@ -108,7 +108,7 @@ import {
   hasIgnition,
   neededStatuses,
 } from "../engine/weaponInfo";
-import { factor, integer, seconds } from "./format";
+import { factor, integer, roundToTenth, seconds } from "./format";
 
 const TABS = [
   { id: "overview", label: "Overview" },
@@ -313,7 +313,7 @@ function App() {
   const selectBoss = (id: string) => {
     setBossId(id);
     const chosen = bosses.find((b) => b.id === id);
-    if (chosen) setInput(String(chosen.damagePhaseSeconds.value));
+    if (chosen) setInput(roundToTenth(chosen.damagePhaseSeconds.value));
   };
   const changeClass = (next: GuardianClass) => {
     setGuardianClass(next);
@@ -533,6 +533,9 @@ function App() {
                       setInput(event.target.value);
                       setBossId("");
                     }}
+                    onBlur={(event) =>
+                      setInput(roundToTenth(Number(event.target.value)))
+                    }
                   />
                 </label>
                 <label>

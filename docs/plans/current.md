@@ -11,6 +11,7 @@ Zuvor erledigt (2026-10-25): Delta-Lücken. Feast of Light mit Obergrenzen pro S
 ## Reihenfolge
 
 1. Screenshot-Prüfung der UI (Sonnet): siehe oben.
+1b. Wiki-Seite „Coverage of the calculator“ neu (Inhaber, 2026-10-25; Opus plant, Sonnet baut): menschenlesbar und nah an Destiny. Sortierung: Waffe (+ Catalyst), Class, Subclass, Abilities, Aspects, Fragments, Buffs/Debuffs, Armor usw. Keine Einteilung nach Parts, Package, Buff only. Pro Eintrag: Gibt es das? Ist es implementiert? Was macht es im Spiel? Was macht es im Rechner? Kategorien aufklappbar, linke Spalte Icon + Name als Text. Quelle bisher `docs/coverage.md` (generiert). Dazu: Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (`known-inaccuracies.md`).
 2. Code-Aufräumen (Sonnet), auch `App.tsx` in Panels: `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
 3. Solar: Roaring Flames x3 und Solar Fulmination (Opus plant), dann Ergo Sum, echte Debuffs am Ziel, fehlende Supers; dazu Stormdancer's Brace (Super-Top-3). Reihenfolge nach dem Rangfolge-Gate. Arbeitsliste: `docs/known-inaccuracies.md`, „Offene Lücken“.
 4. Für 2.0 (`docs/product.md`): Legendary Frames aus Aegis, Optimizer mit Abilities, Aspects und Fragments.

@@ -5,6 +5,16 @@ import {
   stateFromLink,
 } from "../src/ui/buildState";
 import { activities, bosses } from "../src/ui/data";
+import { roundToTenth } from "../src/ui/format";
+
+describe("Damage Phase field", () => {
+  it("rounds to a tenth of a second and leaves empty text alone", () => {
+    expect(roundToTenth(81.567)).toBe("81.6");
+    expect(roundToTenth("30")).toBe("30");
+    expect(roundToTenth("")).toBe("");
+    expect(roundToTenth(null)).toBe("");
+  });
+});
 
 describe("boss list", () => {
   it("sorts raids and dungeons alphabetically, encounters keep the data order", () => {
