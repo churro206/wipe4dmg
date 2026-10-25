@@ -61,6 +61,8 @@ export const GRANTED_EFFECT_IDS = new Set(
 const SUPER_GROUP = "super";
 
 export const LINK_PARAM = "b";
+/** Damage Phase of the start state, so the first visit already shows a result. */
+export const DEFAULT_DAMAGE_PHASE_SECONDS = 30;
 export const DEFAULT_CLASS: GuardianClass = "warlock";
 export const DEFAULT_SUBCLASS: Subclass = "solar";
 export const SUBCLASS_LABELS: Record<Subclass, string> = {
@@ -369,7 +371,7 @@ export type LinkState = {
 /** Start state from the build link in the address; empty without a link. */
 export function stateFromLink(search: string): LinkState {
   const empty: LinkState = {
-    input: "",
+    input: String(DEFAULT_DAMAGE_PHASE_SECONDS),
     weaponId: DEFAULT_WEAPON_ID,
     guardianClass: DEFAULT_CLASS,
     subclass: DEFAULT_SUBCLASS,
