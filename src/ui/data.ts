@@ -73,7 +73,10 @@ export const effects = [
 export const bosses = loadBosses(rawBosses).filter(
   (boss) => boss.damagePhaseSeconds.value !== null,
 );
-export const activities = [...new Set(bosses.map((boss) => boss.activity))];
+/** Raids and dungeons alphabetically; the encounters inside keep their order in the game. */
+export const activities = [...new Set(bosses.map((boss) => boss.activity))].sort(
+  (a, b) => a.localeCompare(b, "en"),
+);
 export const abilityStats = loadAbilityStats(rawAbilityStats);
 export const weaponStats = loadWeaponStats(rawWeaponStats);
 export const aegisRows = loadAegisAbilityRows(rawAegisAbilities);

@@ -4,6 +4,20 @@ import {
   linkFor,
   stateFromLink,
 } from "../src/ui/buildState";
+import { activities, bosses } from "../src/ui/data";
+
+describe("boss list", () => {
+  it("sorts raids and dungeons alphabetically, encounters keep the data order", () => {
+    expect(activities.length).toBeGreaterThan(1);
+    expect(activities).toEqual(
+      [...activities].sort((a, b) => a.localeCompare(b, "en")),
+    );
+    const lastWish = bosses
+      .filter((b) => b.activity === "Last Wish")
+      .map((b) => b.name);
+    expect(lastWish.slice(0, 2)).toEqual(["Kalli", "Shuro Chi"]);
+  });
+});
 
 describe("start state", () => {
   it("starts with a default Damage Phase so a result shows at once", () => {
