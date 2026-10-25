@@ -1,58 +1,48 @@
 # Guide: Waffen anlegen und aktualisieren
 
-Für Agenten und Entwickler. Grundlage sind ADR 0011 (Punkte 5 und 6) und ADR 0012. Begriffe stehen im Glossary.
+Für Agenten und Entwickler. Grundlage: ADR 0013 (Import), ADR 0012 (mehrere Waffen), ADR 0011 (Zerlegung nur mit Gate), ADR 0015 Punkt 11 (keine Handmodelle mehr). Begriffe im Glossary.
 
-> **Seit ADR 0015, Punkt 11 gibt es keine Handmodelle mehr.** Jede Waffe kommt aus `npm run build:weapons` (ADR 0013). Fehlt einer Waffe etwas, wird eine Regel im Import ergänzt oder ein Override mit Zitat (`weapon-overrides.json`) angelegt. Waffen mit Scorch (One Thousand Voices, Two-Tailed Fox) nehmen den Shot aus der Quantum-Zeile ohne Ignitions und setzen Scorch per `appliesKeyword`; die Ignitions entstehen im Keyword-Lauf. Das frühere Handmodell von One Thousand Voices liegt nur noch als Testdatei in `tests/fixtures/`. Der Ablauf unten beschreibt den alten Weg und bleibt als Hintergrund stehen.
+## Der Weg
+
+Jede Waffe kommt aus dem Import. Fehlt einer Waffe etwas, wird eine Regel im Import ergänzt oder ein Override angelegt, nie eine Data File von Hand.
+
+1. `npm run import:weapons`: Snapshots von Aegis (Weapons, Sustained), Quantum (Primaries, Specials, Heavies) und Clarity nach `src/data`.
+2. `npm run import:icons` (braucht `BUNGIE_API_KEY`): Manifest-Daten der Waffen, Rüstung und Begriffe; danach Icons.
+3. `npm run build:weapons`: Pakete nach `src/data/weapon-packages.json`, Lücken mit Grund nach `weapon-gaps.json`, Link-Codes in `weapon-codes.json` (nie neu vergeben), Prüftabelle `docs/weapon-import.md`.
+
+Reihenfolge nach einem Patch: Skill `nach-patch`.
 
 ## Quellen und ihre Rollen
 
-| Quelle | Was sie liefert | Rolle |
-| --- | --- | --- |
-| Quantum Damage-ics (Heavies-Reiter) | Schaden pro Shot, Magazin, Munition, „Theoretical Total Damage“, oft mit und ohne Keyword-Schaden | Hauptquelle für Grundwerte, Gate |
-| Aegis Boss Damage (Reiter „Weapons“) | Gemessener Total Damage („Wipe“) und „visual Value“ in festen Szenarien, oft „mit / ohne“ Perk oder Katalysator | Gate, Faktoren für Perks und Katalysator |
-| Destiny Data Compendium | Teile (Explosion, Ticks, Seeker) und Zeiten als Freitext | Nur als Verhältnis zur Hauptquelle (Source Scale, ADR 0011) |
-| Bungie-Manifest | Name, Hash, Element, Waffentyp, Icon | Stammdaten, Icon (`npm run import:icons`) |
+| Quelle | Rolle |
+| --- | --- |
+| Aegis (Weapons, Sustained) | Wert pro Shot (visual Value), Annahmen der Zeile, zweite Timing-Quelle; bei Konflikt vor Quantum |
+| Quantum Damage-ics | Timing (rpm, Magazin, Reserves, Reload, Time to Empty). Achtung: Reload und Magazin mit Rally/Lunafaction und Extended + Backup Mag (Plan K1) |
+| Clarity, Compendium | Texte von Intrinsic, Perks und Catalyst; Zitate für Overrides |
+| Bungie-Manifest | Name, Hash, Element, Waffentyp, Munition, Sockets, Catalyst-Item |
 
 Keine Ingame-Tests pro Waffe (ADR 0011, Punkt 6).
 
-## Ablauf für eine neue Waffe
+## Wenn eine Waffe fehlt oder falsch ist
 
-1. **Tabelle zur Freigabe.** Vor der Datenarbeit dem Inhaber eine Tabelle zeigen: jeder Wert, seine Quelle, Status und Gate.
-2. **Data File** `src/data/weapons/<id>.json` mit dem Schema `Weapon` anlegen:
-   - `code` eindeutig und nie wiederverwenden (Build-Links). Ein Test prüft Ids und Codes.
-   - `manifestHash`, `weaponType`, `element` und `ammo` aus dem Manifest.
-   - `gameVersion`: Patch, auf den sich die Quelle bezieht.
-   - Grundwerte (`damageInstances`, `fireRateRpm`, `magazine`, `totalShots`, `reloadTimeMs`, `chargeTimeMs`) aus **einer** Hauptquelle. Jeder Wert hat ein `source`-Objekt; Unbekanntes ist `null` mit Status `missing`.
-3. **Paket oder Teile** (ADR 0011, Punkt 5):
-   - Standard ist das Paket: ein Schaden pro Shot, wie die Quelle ihn misst.
-   - Teile (`intrinsicParts`) nur, wenn das Intrinsic mit Build-Entscheidungen zusammenspielt (One Thousand Voices: Scorch und Ember of Ashes). Teile aus einer anderen Quelle tragen `sourceScale`.
-4. **Katalysator und Perks** (ADR 0012, Punkt 4):
-   - Katalysator: Teile oder Damage Instances mit `requiresCatalyst: true`.
-   - Perks stehen in der Data File der Waffe. Ihr Wert ist ein Faktor aus den „mit / ohne“-Zeilen der Quelle. Das Schema dafür entsteht mit der ersten Waffe, die einen Perk braucht.
-5. **Gate** (ADR 0012, Punkt 3), Toleranz ±3 %:
-   - Mindestens ein Eintrag in `reference-values.json` mit `weaponId` und `scenario` (z. B. Total Damage ohne Effects).
-   - Für jeden Katalysator und Perk mit „mit / ohne“-Zeilen ein Eintrag in `reference-factors.json`.
-   - Fällt das Gate durch, gilt der Fehler im Modell, nicht in der Quelle (ADR 0011, Punkt 2). Die Waffe kommt erst in den Ordner, wenn ihr Gate besteht.
-6. **Mechanic-Datei:** Neue Mechanics (z. B. Reign Havoc) in `docs/mechanics/` beschreiben, mit Abschnitt „Modell im Simulator“ und den Annahmen.
-7. **Abschluss:**
-   - `npm run import:icons` (braucht `BUNGIE_API_KEY`): Das Icon `weapon:<id>` kommt aus `manifestHash`. Ein Katalysator braucht einen Eintrag `catalyst:<id>` in `icon-refs.json`.
-   - `npm run coverage`.
-   - `npm test`, `npx tsc -b`, `npx eslint .`, `npx prettier --check src scripts tests`.
-   - `docs/roadmap.md` und `docs/changelog.md` aktualisieren.
+- **Annahme ohne Art:** Jede Annahme einer Aegis-Zeile braucht eine Art (Perk, Catalyst, Effect, Spielweise …). Eine neue Art ist eine Regel im Import mit Test.
+- **Override** (`src/data/weapon-overrides.json`): nur, wenn keine Regel hilft. Mit Begründung und wörtlichem Zitat aus einem Snapshot; ein Test prüft das Zitat.
+- **Lücke:** Fällt das Gate durch oder fehlt eine brauchbare Zeile, steht die Waffe mit Grund in `weapon-gaps.json` und auf der Coverage-Seite.
+- **Gate:** Paket, Timing und Optionen gegen die Quelle mit ±3 % (Toleranzen: `docs/mechanics/README.md`); gemessene „mit / ohne“-Faktoren von Perks und Catalysts in `reference-factors.json`. Freigabe pro Waffe entfällt, die Prüftabelle ersetzt sie (ADR 0013, Punkt 11).
+- **Neue Mechanik** (z. B. Reign Havoc): in `docs/mechanics/` mit Abschnitt „Modell im Simulator“ beschreiben.
+- **Keywords:** Waffen mit Scorch (One Thousand Voices, Two-Tailed Fox) nehmen den Shot ohne Ignitions und setzen Scorch per `appliesKeyword`; Ignitions entstehen im Keyword-Lauf. Das frühere Handmodell von One Thousand Voices liegt nur noch als Testdatei in `tests/fixtures/`.
 
 ## Effects und Waffen
 
 Ob ein Effect auf eine Waffe wirkt, ergibt sich aus seinen Parts (`effectAppliesToWeapon` in `src/engine/effectParts.ts`): Multiplier nach Element und Waffentyp, Timing nach Waffentyp, Zähler-Effects nur, wenn die Waffe den Zähler hat. Wirkt ein Effect nur auf bestimmte Waffen, gehört die Einschränkung in seine Parts (`weaponTypes`, `elements`), nicht in die Waffe.
 
-## Waffen in der Oberfläche (W1-6)
+## Oberfläche
 
-- `src/ui/data.ts` lädt die Pakete (`weapon-packages.json`); `weaponById` fällt auf One Thousand Voices zurück.
-- Waffenauswahl mit Suche und Filter nach Waffentyp (`WeaponPicker`). Ein Vergleich behält seine eigene Waffe.
-- `src/engine/weaponInfo.ts`: Katalysator-Kachel nur bei `hasCatalyst`, Kennzahl „Ignitions“ nur bei `hasIgnition`, Effects nur bei `effectRelevantTo` (wirkt auf die Waffe oder auf Abilities).
-- Pakete haben eine Damage Instance „shot“; im Donut heißt sie „Shots“. Neue Handmodelle mit eigenen Damage Instances brauchen Name und Farbe in `DAMAGE_KINDS` (`src/ui/Charts.tsx`).
-- Icons: nach `npm run build:weapons` noch einmal `npm run import:icons`, damit neue Pakete ihr Waffen- und Katalysator-Icon bekommen.
+- `src/ui/data.ts` lädt die Pakete; `WeaponPicker` mit Suche und Filter nach Waffentyp und Munition. Ein Vergleich behält seine eigene Waffe.
+- `src/engine/weaponInfo.ts`: Catalyst-Kachel nur bei `hasCatalyst`, Kennzahl „Ignitions“ nur bei `hasIgnition`, Effects nur bei `effectRelevantTo`.
+- Pakete haben eine Damage Instance „shot“ („Shots“ im Donut); neue Arten brauchen Name und Farbe in `DAMAGE_KINDS` (`src/ui/Charts.tsx`).
+- Nach `build:weapons` noch einmal `npm run import:icons`, damit neue Pakete Waffen- und Catalyst-Icon bekommen.
 
-## Nach einem Patch
+## Abschluss
 
-1. Quantum und Aegis auf geänderte Werte der Waffe prüfen; `gameVersion` und `retrieved` anpassen.
-2. `npm test`: Ein fehlschlagendes Gate zeigt, welche Waffe oder welcher Faktor sich geändert hat.
+`npm run coverage`, `npm run test:quiet`, `npx tsc -b`, `npm run lint`; `docs/roadmap.md` und `docs/changelog.md` aktualisieren.

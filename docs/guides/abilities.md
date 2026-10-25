@@ -25,7 +25,7 @@ Beide Importe sind automatisch. Werte nie abtippen, wenn ein Import sie liefert.
    5. **Nie** eine Zeile mit Full Modifiers ×1,00, denn dort ist nichts normiert. Andere `unverified`-Zeilen nur mit Begründung in `docs/data-sources.md`.
 3. **Teile oder Paket.**
    - Teile, wenn das Compendium alle Teile mit Zahl nennt. Jeder Wert zitiert seine Textstelle in `source.note`, und `hasQuote` muss sie im Snapshot finden.
-   - Danach `npm test`. Besteht das Gate (±10 % bei Stat 100 und 200) nicht, gilt das Paket: `"package": true` ohne `components`. Den Befund in `docs/data-sources.md` eintragen (Tabelle „Teile gegen Aegis“).
+   - Seit U9 erzeugt `npm run build:abilities` die Teile nach Regeln aus dem Compendium-Text (`ability-components.json`, Prüftabelle `docs/ability-import.md`); `abilities.json` bleibt von Hand. Besteht das Gate (±15 % bei Stat 100 und 200, `COMPONENT_TOLERANCE`) nicht, gilt das Paket. Der Befund steht automatisch in `docs/ability-import.md`.
 4. **Eingerechnete Effects.**
    - Bei Paketen übernimmt der Import erkannte Effects automatisch.
    - Sagt die Zeile „includes debuff“ o. ä., ist der Effect von Hand zu ergänzen, z. B. der Tether bei Shadowshot.

@@ -31,6 +31,7 @@ Die einzige Liste. Die Konstante im Code gilt; ändert sie sich, diese Tabelle m
 | Waffen-Paket, Timing, Option, Waffen-Effect | ±3 % | `TOLERANCE` (`scripts/lib/weaponPackages.ts`, `tests/weaponEffectGate.test.ts`) | ADR 0011, 0012, 0013 |
 | Gesamtprobe gegen Aegis Sustained/Swap | ±15 % um den Median | `TOLERANCE` (`tests/metaProbe.test.ts`, `tests/metaProbeAuto.test.ts`) | Skala von Aegis kürzt sich heraus |
 | Text-Abgleich: gemessener Wert gegen Prozent im Text | ±25 % | `MEASURED_TOLERANCE` (`scripts/lib/textCheck.ts`) | Text nennt oft nur den Grundwert |
+| Rangfolge-Gate | Spearman ≥ 0,9; Aegis-Top-3 in unseren Top 5; Delta-Paare ±2 Prozentpunkte | `tests/rankingGate.test.ts` | `docs/product.md`, Stand in `docs/ranking-gate.md` |
 
 Davon getrennt die **Wirkungsschwelle** (keine Toleranz): Eine fehlende Mechanik oder ein eigenes Gate lohnt sich erst ab 2 % Änderung des Total Damage (Regel „Breite vor Genauigkeit“ in `CLAUDE.md`).
 
@@ -183,24 +184,6 @@ Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1 und 2. Die Entscheidung
 6. **Quellen nutzen verschiedene Einheiten.** Ignition: Compendium nennt Grundwerte, Quantum 890, Aegis 2814. Innerhalb einer Simulation darf deshalb pro Wertart nur eine Quelle rechnen.
 7. **Fähigkeiten und Supers sind eigene Schadensquellen** neben der Waffe. Der Simulator braucht dafür eigene Damage Instances mit Cooldowns und Energie für Fähigkeiten und Super. Entscheidung: ADR 0009 (Ability Components aus dem Compendium, Aegis-Pakete als Fallback und Gate).
 
-## Offene Fragen an den Projektinhaber
+## Grundentscheidungen und Quellen
 
-Beantwortet am 2026-10-18, festgehalten in `docs/requirements.md` (Rahmenbedingungen):
-
-- [x] Nur Bosse. Effekte, die nicht gegen Bosse wirken, nehmen wir nicht auf.
-- [x] Fähigkeiten und Supers zählen zum Total Damage.
-- [x] Fireteam Support umfasst nur Buffs und Debuffs von Mitspielern, nicht ihren Schaden.
-- [x] Nur PvE. PvP-Werte der Quellen ignorieren wir.
-
-## Quellen
-
-| Quelle | Inhalt | Stand | Zugriff |
-| --- | --- | --- | --- |
-| [Destiny Data Compendium](https://destiny2.science/data-compendium) | Keywords pro Element, Game Mechanics, Perks, Mods, Exotics, Artifact | laufend gepflegt | CSV-Export gesperrt; Abruf über die gviz-Schnittstelle (`/gviz/tq?tqx=out:csv&gid=<gid>`) |
-| [Court's Everything Spreadsheet](https://destiny2.science/court-sheet), Reiter „Stacking Guide“ | Damage-Buffs nach Kategorien mit PvE-Werten, Dauer, Stacking-Hinweisen (etwa 100 Effects, 17 im Modell) | 9.7.0.3 (Daten vom 9. Juni 2026), vollständig gelesen 2026-10-20 | CSV-Export gesperrt; `htmlview/sheet?gid=2073397587` oder gviz |
-| [Aegis: Destiny 2 Boss Damage](https://destiny2.science/boss-damage) | Waffen, Fähigkeiten, Scaling, Swap, Bolt Charge, Bosse | Changelog 2026-10-12 | CSV-Export |
-| [Quantum Damage-ics](https://destiny2.science/quantum-damage-ics) | Waffen-Grundwerte, Reserves, Effektwerte | bis 9.7.0.1 | CSV-Export |
-| [Mossy: Outgoing Damage Scaling](https://destiny2.science/damage-scaling) | Power-Differenz, Faktoren pro Gegnertyp, Scorch-Ticks | v1.9.2 (Februar 2025, vor Edge of Fate); geprüft 2026-10-20: laut Autor veraltet, nur als Hinweis | `htmlview/sheet?gid=…` |
-| Clarity (über [light.gg](https://www.light.gg/) und DIM) | Genaue Perk-Beschreibungen | laufend | Webseite |
-| [Bungie Destiny 2 Manifest](https://www.bungie.net/en/Application) | Icons, Klasse und Subklasse der Abilities; später auch Archetype, Waffen-Stats (RPM, Magazine, Charge Time) und Perk-Pools pro Waffe. Kein Schaden pro Shot | laufend | API-Schlüssel, `npm run import:icons` |
-| Bungie-Patchnotes | Maßgeblich für Änderungen pro Version | laufend | Webseite |
+Nur Bosse, nur PvE; Abilities und Supers zählen zum Total Damage; Fireteam Support nur als Buffs und Debuffs (Rahmenbedingungen in `docs/requirements.md`). Quellen, ihre Rollen und Abrufwege: `docs/data-sources.md` und `docs/sources/README.md`.

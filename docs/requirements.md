@@ -4,7 +4,7 @@ Oct 18, 2026 · @Leon
 
 ## Produktvision
 
-Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in Destiny 2. Die App soll die Unterschiede zwischen Builds richtig abbilden. Absolute Zahlen müssen nicht mit dem Spiel übereinstimmen.
+Die App berechnet den Total Damage eines Destiny-2-Builds (Waffen, Abilities, Supers) in einer Damage Phase gegen einen Boss. Die App soll die Unterschiede zwischen Builds richtig abbilden. Absolute Zahlen müssen nicht mit dem Spiel übereinstimmen. Aktuelles Produktziel mit Top-Fragen, Nicht-Zielen und Abnahme 2.0: `docs/product.md`. Begonnen hat die App mit One Thousand Voices als einziger Waffe.
 
 **Zielgruppe:** Ich und meine Freunde. Alle Nutzer kennen Destiny 2 gut. Alle Nutzer arbeiten vor allem am PC.
 
@@ -18,7 +18,7 @@ Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in 
 
 | Thema | Festlegung |
 | --- | --- |
-| Erste Waffe | One Thousand Voices (schwere Fusionswaffe, Strahl und verzögerte Explosion) |
+| Waffen | Exotische Waffen (136 von 141); Legendary Frames kommen mit 2.0 |
 | Klassen | Titan, Jäger, Warlock |
 | Geräte | Vor allem PC, Layout für große Bildschirme |
 | Genauigkeit | Relative Unterschiede zwischen Builds sollen stimmen; absolute Zahlen folgen den Messbedingungen der Datenquelle |
@@ -26,7 +26,7 @@ Die App berechnet den Schaden eines Builds mit der Waffe One Thousand Voices in 
 | Gegner und Modus | Nur Bosse, nur PvE. Effekte, die nur gegen andere Gegner oder nur in PvP wirken, nehmen wir nicht auf. |
 | Schadensquellen | Waffen, Fähigkeiten und Supers des Spielers zählen zum Total Damage. |
 | Fireteam Support | Nur Buffs und Debuffs von Mitspielern, nicht ihr eigener Schaden. |
-| Laufzeit von Effects | Jeder gewählte Effect ist in seinem Zeitfenster aktiv: Start und Dauer aus der Rotation, Dauer vorbelegt aus den Data Files (US-07). Auslöser und Cooldowns kommen später (ADR 0006, Stufe C). |
+| Laufzeit von Effects | Jeder gewählte Effect ist in seinem Zeitfenster aktiv: Start und Dauer aus der Rotation oder aus seinem Auslöser (Cast, Treffer, Keyword), Dauer aus den Data Files (US-07, ADR 0015). Eigene Quellen gelten nur so lange wie ihr Text sagt, Buffs von Teammates die ganze Phase (Entscheidungen in `docs/plans/current.md`). |
 | Effekte | Die Grundlage ist die Waffe ohne Effekte. Jeder Effekt ist einzeln schaltbar, damit man seinen Beitrag sieht. Das gilt auch für Effekte, die den Ablauf ändern, z. B. Particle Reconstruction (keine Reloads). |
 | Programmiererfahrung | Grundlagen; Claude erklärt jede Änderung |
 | Zeitbudget | Mehr als 10 Stunden pro Woche |
@@ -64,8 +64,9 @@ Das MVP (v0.5) ist das erste Release mit echtem Nutzen. Das Walking Skeleton dav
 | v0.1 Walking Skeleton | Waffe ohne Buffs, Total Damage, online per Link | Kette läuft durch | abgeschlossen 2026-10-18 |
 | v0.5 MVP | Manual Mode, Breakdown, US-01 bis US-04 | Ergebnisse stimmen mit den Werten der Datenquelle überein (`tests/gate.test.ts`) | abgeschlossen 2026-10-18 |
 | v1.0 Vollversion | Optimizer, Rotation, Damage Curve, Vergleich, Fähigkeiten und Supers, Wiki mit Abdeckung und „Wie rechnet der Rechner?“, US-05 bis US-09, US-14, US-15 | Freunde testen v1.0 (teilweise erfüllt: Inhaber hat getestet, Freunde testen parallel zu v1.1) | abgeschlossen 2026-10-20 (Optimizer mit Fähigkeiten auf v1.x verschoben) |
-| v1.1 Waffen × Exotic-Rüstung | Waffenauswahl, Truth, Thunderlord, Exotic-Rüstung (Dawn Chorus u. a.), Plan in `docs/plans/weapons-and-exotic-armor.md` | Freunde vergleichen Waffe × Exotic-Rüstung | in Arbeit |
-| v1.x Erweiterung | Optimizer mit Fähigkeiten, Speichern im Browser, weitere Waffen nach v1.1, Discord Bot, US-10, US-11, US-13 | – | offen |
+| v1.1 Waffen × Exotic-Rüstung | Waffenauswahl (136 Exotics), Exotic-Rüstung und Class Items, Aspects, Fragments, Artifact, Energie, Class Abilities (Stand: `docs/roadmap.md`) | Freunde vergleichen Waffe × Exotic-Rüstung | in Arbeit |
+| v2.0 | Rangfolge-Gate, Optimizer mit Abilities, Aspects, Fragments und Legendary-Waffen, alle Kategorien vollständig (`docs/product.md`, Abnahme 2.0) | – | offen |
+| v1.x Erweiterung | Speichern im Browser, Discord Bot, US-10, US-13 | – | offen |
 
 Ein Release startet erst, wenn das Gate davor erfüllt ist. Das Gate vor v1.0 vergleicht unsere Ergebnisse mit den Gesamtwerten der Datenquelle, z. B. Total Damage pro Magazin.
 
@@ -99,7 +100,7 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Engine | Simulator plus optimizer; contains only pure functions |
 | Exclusive Group | Effects of which a build can provide at most one itself, e.g. one surge level or one super |
 | Fireteam Support | Empowering buff or debuff that another fireteam member provides |
-| Gate | Automated check that compares a computed result with a measured total from a source, e.g. an Aegis row within ±10 %; a decomposed model counts only after it passes (ADR 0009, ADR 0011) |
+| Gate | Automated check that compares a computed result with a measured total from a source, e.g. an Aegis row within ±15 % for abilities or ±3 % for weapons (all tolerances: docs/mechanics/README.md); a decomposed model counts only after it passes (ADR 0009, ADR 0011) |
 | Guardian Class | Titan, Hunter or Warlock; decides which subclass effects a build can provide itself |
 | Ignition | Solar explosion when a target reaches enough scorch stacks; a separate damage instance |
 | Intrinsic | Fixed exotic perk of a weapon, including its catalyst effect |

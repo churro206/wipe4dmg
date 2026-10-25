@@ -1,6 +1,8 @@
 # Datenquellen
 
-Stand: 2026-10-20 · Spielversion: 9.7.0.5
+Stand: 2026-10-20, ergänzt 2026-10-25 · Spielversion: 9.7.0.5
+
+Gespeicherte Rohdaten aller Sheets von destiny2.science: `docs/sources/README.md`.
 
 Die Spielwerte kommen aus frei zugänglichen Community-Quellen (ADR 0005). Eigene Messungen sind nur Stichproben.
 
@@ -25,6 +27,9 @@ Alle Quellen sind über [destiny2.science](https://www.destiny2.science/) verlin
 | Buckets, Stacking, Effects | [Court's Stacking Guide](https://destiny2.science/court-sheet) (Google Sheet „Destiny 2 Damage Buffs/Debuffs“, Reiter-gid `2073397587`) | Daten vom 9. Juni 2026, geprüft für 9.7.0.3; vollständig gelesen 2026-10-20 | Kategorien und Stacking-Regeln, PvE-Werte und Dauer von etwa 100 Effects, davon 17 im Modell. CSV-Export gesperrt (401); `htmlview/sheet?gid=…` und gviz funktionieren. Snapshot (ADR 0014): `npm run import:court` → `src/data/court-buffs.json` (125 Einträge: 98 Tabellenzeilen mit Kategorie, Gruppe, Item-Typ, Bedingung, Auslöser, PvE-Wert und Dauer als Text; 27 Exotic-Rüstungen aus der Liste „Exotic Intrinsics“ ohne Werte, die stehen laut Court im Compendium) |
 | Buffs, Debuffs, Stacking | [Destiny Data Compendium](https://destiny2.science/data-compendium) | laufend | Werte für Perks, Mods, Subklassen, Spielmechaniken |
 | Einzelwerte vom Inhaber (ADR 0014, Punkt 9) | z. B. Reddit r/DestinyTheGame (für den Agenten gesperrt) | im Einzelfall | Nur Werte, die sonst nirgends stehen (z. B. Zeitwerte von Supers), mit URL und Zitat, Status `unverified`; kein Import |
+| Energie (Plan Q3) | [Flat Gain Factors](https://destiny2.science/flat-gain-factors) (Engineeeer, Tests von RyTako) und RyTakos Energie-Sheet | Edge of Fate; archiviert 2026-10-25 | Stat-Kurven, Regen-Multiplikatoren, Base Cooldown und Chunk-Faktor je Ability, Super-Schaden und Cast Time/Lock (`docs/sources/sheets/flatgain/`, `rytako/`); noch nicht importiert |
+| Effekte mit Zahlen (Pläne Q4–Q7) | [Aegis: Endgame Analysis](https://destiny2.science/endgame-analysis); [Glaive Compendium](https://destiny2.science/glaive-compendium) (Oni Black Mage) | bis 2026-09 bzw. 9.7.0; archiviert 2026-10-25 | Aspects, Fragments, Artifact, Set Bonuses, Exotic Weapons, Legendary-Frames (2.0); Regen- und Buff-Werte. Bei Konflikt gilt Aegis |
+| Munition (2.0) | [MossyMax: Reserves and Mag Database](https://destiny2.science/reserves) | Edge of Fate; archiviert 2026-10-25 | Magazin und Reserves je Roll, Exotic-Reserves mit Reserve-Mods |
 | Nur Hinweis | [MossyMax: Outgoing Damage Scaling](https://destiny2.science/damage-scaling) | v1.9.2 (Februar 2025, vor Edge of Fate); geprüft 2026-10-20 | Power-Differenz, Faktoren pro Gegnertyp, Waffen- und Scorch-Werte. Laut Autor veraltet („LOTS OF THIS IS PRETTY OUTDATED“). Für uns kaum nützlich: Power-Differenz wirkt auf alle Builds gleich, gegen Bosse sind die Faktoren nahe 1,0, Waffenwerte liefert Quantum aktueller |
 
 ## One Thousand Voices bei Quantum Damage-ics
@@ -107,7 +112,7 @@ Folgerungen für One Thousand Voices:
 
 ## Abilities: Teile gegen Aegis (ADR 0009)
 
-Eine Ability bekommt Teile aus dem Compendium nur, wenn sie das Gate gegen Aegis besteht (±10 % bei Stat 100 und 200, `tests/abilityGate.test.ts`). Sonst gilt das Paket: der Wert pro Einsatz aus `aegis-abilities.json`, aufgeteilt in einen Anteil, der mit dem Ability Stat skaliert, und einen festen Anteil, sodass beide Aegis-Messpunkte getroffen werden.
+Eine Ability bekommt Teile aus dem Compendium nur, wenn sie das Gate gegen Aegis besteht (±15 % bei Stat 100 und 200, `tests/abilityGate.test.ts`; Ergebnis je Ability in `docs/ability-import.md`; die Tabelle unten ist der Stand von 2026-10-19). Sonst gilt das Paket: der Wert pro Einsatz aus `aegis-abilities.json`, aufgeteilt in einen Anteil, der mit dem Ability Stat skaliert, und einen festen Anteil, sodass beide Aegis-Messpunkte getroffen werden.
 
 | Ability | Teile laut Compendium | Summe | Aegis visual Value | Ergebnis |
 | --- | --- | --- | --- | --- |

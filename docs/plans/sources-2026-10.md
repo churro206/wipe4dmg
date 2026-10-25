@@ -55,7 +55,7 @@ Elemental Overdrive 22 % (Aegis) gegen 10 % (Glaive), Cauterized Darkness 75 % g
 8. **Q6 Waffen und Catalysts**: Worldline Zero, Wolfsbane, Praxic Blade, Barrow-Dyad, Catalysts aus Weapon Specifics.
 9. **Q7 Set Bonuses** nach Freigabe des Umfangs.
 
-Danach Solar (Roaring Flames x3 und Solar Fulmination sind bereits modelliert, Rest der alten Reihenfolge 3) und 2.0.
+Danach der Rest der alten Solar-Liste (Roaring Flames x3 ist modelliert; offen sind Solar Fulmination, Ergo Sum Transcendent, Sol Invictus bei Hammer of Sol und Burning Maul) und 2.0.
 
 ## 6. Schätzung
 

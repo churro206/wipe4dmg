@@ -1,6 +1,6 @@
 # Plan: Optimizer mit Fähigkeiten (zurückgestellt)
 
-Stand: 2026-10-20 · Status: zurückgestellt auf v1.x (Entscheidung des Inhabers)
+Stand: 2026-10-20, Grenzen geprüft 2026-10-25 · Status: Ziel für 2.0 (`docs/product.md`), noch nicht geplant
 
 Heute probiert der Optimizer (US-08) nur eigene Effects über alle Subklassen. Die Abilities übernimmt er aus der Auswahl, wenn die Subklasse sie erlaubt. Ein Lauf dauert etwa 0,65 s (Warlock, gemessen 2026-10-20).
 
@@ -42,6 +42,6 @@ Alle Kombinationen einzeln zu simulieren wäre bis zu 75-mal langsamer (etwa 30 
 
 ## Bekannte Grenzen
 
-- Energie und Cooldowns prüft der Rechner nicht: Der Optimizer nimmt immer den stärksten Super.
-- 13 Aegis-Pakete enthalten Ember of Ashes und sind ohne Ember zu hoch. Der Optimizer würde sie bevorzugen; die Karte sollte das zeigen, bis die Lücke behoben ist.
+- Seit Block 3 kennt der Rechner Energie und Cooldowns; Grenades und Melees mit Energie-Effekten (Refunds, Ladungen) hängen damit doch von Effects ab. Die Abkürzung oben muss das berücksichtigen.
+- 13 Aegis-Pakete enthalten Ember of Ashes und sind ohne Ember zu hoch (Stand 2026-10-20, ungeprüft ob noch offen). Der Optimizer würde sie bevorzugen; die Karte sollte das zeigen, bis die Lücke behoben ist.
 - Slots festhalten (z. B. „Super bleibt Well“) erst, wenn eine User Story es verlangt.

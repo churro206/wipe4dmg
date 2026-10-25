@@ -4,7 +4,7 @@ Status: angenommen · Datum: 2026-10-20
 
 ## Kontext
 
-Bisher kennt der Rechner nur One Thousand Voices. Für v1.1 kommen Truth und Thunderlord dazu (Plan `docs/plans/weapons-and-exotic-armor.md`), später fast alle Waffen.
+Bisher kennt der Rechner nur One Thousand Voices. Für v1.1 kommen Truth und Thunderlord dazu (damaliger Plan inzwischen erledigt und entfernt, siehe Git-Historie), später fast alle Waffen.
 ADR 0011, Punkt 5, legt schon fest, dass Waffen als Paket aus Aegis und Quantum kommen. Offen ist, was sich ändert, wenn es mehr als eine Waffe gibt.
 
 Was schon für mehrere Waffen taugt:

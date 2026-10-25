@@ -6,7 +6,7 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 **Vorschlag (noch nicht freigegeben): Q1 Quellen-Korrekturen**, Plan in `docs/plans/sources-2026-10.md` (Opus leitet K1 her, Sonnet baut): Quantum-Reload enthält Rally/Lunafaction (doppelt mit unserem Rally-Effekt), Chunk Scalars und Cooldowns gegen Flat Gain, Facet of Courage, Coverage-Einstufungen. Danach Zähler-Block, dann Aufräumen.
 
-Erledigt (2026-10-25): Sichtung aller 14 Sheets von destiny2.science, Archiv `docs/sources/sheets/` (95 Reiter als TSV, `index.json`, `coverage-hits.json`), Ergebnis `docs/sources/sichtung-2026-10-25.md`.
+Erledigt (2026-10-25): Sichtung aller 14 Sheets von destiny2.science, Archiv `docs/sources/sheets/` (95 Reiter als TSV, `index.json`, `coverage-hits.json`), Übersicht `docs/sources/README.md`. Danach Docs aufgeräumt (siehe Changelog).
 
 Zuvor erledigt (2026-10-25, Details im Changelog): Coverage-Seite (`src/data/coverage-catalog.json`, `npm run coverage`, dann `npm run import:icons`; Anzeige im Browser ungeprüft) und Delta-Lücken (Rest in `tests/fixtures/ranking-gate.json`; ungeprüft: doppelte Ignition bei Daybreak mit Dawn Chorus, Sol Invictus bei Hammer of Sol und Burning Maul).
 

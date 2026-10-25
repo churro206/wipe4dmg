@@ -43,13 +43,13 @@ Granaten, Nahkampf und Supers machen eigenen Schaden. Sie zählen zum Total Dama
 
 ## Modell im Simulator
 
-Entscheidung in ADR 0009 (`docs/adr/0009-ability-components.md`). Umgesetzt sind Engine, Daten und das Fähigkeiten-Panel. Offen sind Zeitleiste und Optimizer. Stand der Abdeckung: `docs/coverage.md`.
+Entscheidung in ADR 0009 (`docs/adr/0009-ability-components.md`). Umgesetzt sind Engine, Daten, Fähigkeiten-Panel, Zeitleiste und Energie; offen ist der Optimizer mit Abilities (`docs/plans/optimizer-abilities.md`). Stand der Abdeckung: `docs/coverage.md`.
 
-- Eine Ability besteht aus Ability Components mit Werten aus dem Compendium. Fehlen Teile, gilt ein Paket mit dem Aegis-Gesamtwert pro Einsatz.
-- Aegis ist das Gate: jede abbildbare Zeile ohne Buffs, ±10 %.
+- Eine Ability besteht aus Ability Components mit Werten aus dem Compendium (`npm run build:abilities`). Fehlen Teile, gilt ein Paket mit dem Aegis-Gesamtwert pro Einsatz.
+- Aegis ist das Gate: jede abbildbare Zeile ohne Buffs, ±15 % (Toleranzen: `README.md`).
 - Pakete führen ihre eingerechneten Effects mit; die Engine wendet sie nicht doppelt an.
-- Die Rotation entscheidet, wann eine Fähigkeit eingesetzt wird. Heute: einmal zu Beginn der Damage Phase.
-- Ein Super mit Super Window (cast, shots, drain) pausiert die Waffe. Fehlt ein Zeitwert, ist das Window eine Schätzung.
+- Die Rotation entscheidet, wann eine Fähigkeit eingesetzt wird. Jede Ability startet geladen und kommt nach ihrem Cooldown wieder (Energie, Block 3); ein Cast sperrt die Waffe für seine Cast Time (`cast-times.json`).
+- Ein Super mit Super Window (cast, shots, drain) pausiert die Waffe. Die Zeiten stammen aus `super-timings.json` (Schätzung, `unverified`; gemessene Längen aus Flat Gain kommen mit Plan K2).
 - Klasse, Subklasse und Prismatic kommen aus dem Bungie-Manifest (`manifest-abilities.json`).
 - Effects geben über `damageSources` an, ob sie auf Waffen, Granaten, Nahkampf oder Super wirken.
 
@@ -58,9 +58,8 @@ Entscheidung in ADR 0009 (`docs/adr/0009-ability-components.md`). Umgesetzt sind
 - [x] Welche Supers? Alle Supers sollen abgedeckt werden (Entscheidung 2026-10-18). Für Granaten und Nahkampf gilt dasselbe, sobald US-14 umgesetzt wird.
 - [x] Hauptquelle für Fähigkeiten: Compendium für die Teile, Aegis als Gate und Fallback (ADR 0009, 2026-10-19).
 - [x] Stat-Werte zwischen 100 und 200: linear pro Punkt laut Compendium „Game Mechanics“ (2026-10-19), Data File `ability-stats.json`.
-- [ ] Wie bilden wir Energie und Cooldowns ab, ohne die ganze Fähigkeiten-Ökonomie zu simulieren?
-- [ ] Schussabstand von Golden Gun und Moebius Quiver, Cast-Animationen, Flugzeit von Thundercrash: fehlen in Compendium und Manifest. Bis dahin ist das Super Window eine Schätzung.
-  Gesucht 2026-10-21 ohne zitierbaren Wert: alle Aegis-Reiter, Compendium, Clarity, Destiny Wiki, Destinypedia, light.gg, Bungie-Patchnotes und -Forum, Google, YouTube. Reddit ist für den Agenten gesperrt. Betroffen: shots ohne Abstand (Golden Gun, Moebius Quiver) rechnen mit der vollen Dauer, cast ohne castMs mit 0 s, drain ohne Intervall mit der vollen Dauer. Modell des Inhabers, sobald Werte da sind: Cast + Schüsse × Schussabstand.
+- [x] Energie und Cooldowns: Block 3 (`docs/energy-import.md`); Stat-Kurve und Regen-Multiplikatoren werden mit Plan K3/K4 korrigiert (`docs/plans/sources-2026-10.md`).
+- [ ] Schussabstand von Golden Gun und Moebius Quiver, Cast-Animationen, Flugzeit von Thundercrash: bis 2026-10-21 in keiner Quelle (gesucht: alle Aegis-Reiter, Compendium, Clarity, Destiny Wiki, Destinypedia, light.gg, Bungie, Google, YouTube). Seit 2026-10-25 liefert Flat Gain Factors „Cast Time / Lock“ und Gesamtschaden je Super (`docs/sources/sheets/flatgain/727352169-supers-2-0.tsv`); Übernahme in Q2. Modell des Inhabers: Cast + Schüsse × Schussabstand.
 
 ## Quellen
 

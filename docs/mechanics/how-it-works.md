@@ -1,6 +1,6 @@
 # How does the calculator work?
 
-Kategorie: Einstieg · Spielversion: 9.7.0.5 · Zuletzt geprüft: 2026-10-22 · Vertrauen: hoch
+Kategorie: Einstieg · Spielversion: 9.7.0.5 · Zuletzt geprüft: 2026-10-25 · Vertrauen: hoch
 
 Einstiegsseite des Wikis (US-15, ADR 0010). Die Website zeigt nur den Abschnitt „For players“, deshalb ist er englisch.
 
@@ -53,13 +53,13 @@ The calculator does not make up numbers. Every value has a source:
 | Court (Stacking Guide) | which buff belongs in which bucket |
 | own tests in game | general mechanics, e.g. how soon another Ignition is possible |
 
-**Gates** are automatic tests that compare our model with the measurements. An ability may differ from Aegis by at most 10%, a weapon effect by at most 3%. If a value fails, we look for the error in the model.
+**Gates** are automatic tests that compare our model with the measurements. An ability built from its parts may differ from Aegis by at most 15%, a weapon effect by at most 3%. If a value fails, we look for the error in the model.
 
 The calculator models many abilities as a **package**: a total value per cast measured by Aegis instead of single hits. That is more accurate as long as the single parts are not known for sure.
 
 ### Limits
 
-- **The calculator does not check energy or cooldowns.** Only enter casts that are possible in game.
+- **Ability energy is a first model.** Every ability starts charged and comes back after its cooldown; a cast that comes too early moves later. The curve of the ability stats is still a straight-line estimate, and some energy exotics and mods are missing.
 - **Burn damage** from Scorch is still missing. Ignitions are included.
 - **The optimizer** only tries subclasses and effects. It takes Super, Grenade and Melee from your selection.
 - **Some abilities and exotics are missing**, and some packages are slightly too high without Ember of Ashes. What exactly is missing is listed under [Coverage](../coverage.md). What comes next is in the [Roadmap](../roadmap.md).
