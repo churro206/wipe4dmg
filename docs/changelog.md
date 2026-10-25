@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Rangfolge-Gate (2026-10-25):** `tests/rankingGate.test.ts` gruppiert die Gesamtprobe (Supers, Heavy, Special) und prüft Spearman ≥ 0,9, Aegis-Top-3 in unseren Top 5 und Delta-Paare ±2 Prozentpunkte; Tabelle in `docs/ranking-gate.md`. Abweichungen mit Grund in `tests/fixtures/ranking-gate.json` (Sol Invictus, Dawn Chorus, Feast of Light x6, Shards of Galanor, Super-Top-3). Reine Funktionen in `tests/lib/ranking.ts`.
+
 - **Produktziel (2026-10-25):** `docs/product.md` aus dem Interview mit dem Inhaber: Zielgruppe, Top-20-Fragen, Nicht-Ziele, Abnahme 2.0 und Vorschlag für ein Rangfolge-Gate. Neu entschieden: Legendary-Waffen kommen für 2.0 hinein, der Optimizer hat Priorität.
 
 Nachgetragen beim Aufräumen (2026-10-25), Details in `docs/plans/history-2026-10.md`:

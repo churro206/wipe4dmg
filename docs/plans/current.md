@@ -4,11 +4,11 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Rangfolge-Gate bauen (Opus plant, Sonnet setzt um).** Vorschlag in `docs/product.md`, „Rangfolge-Gate“: Zeilen der Gesamtprobe (`tests/metaProbe*.test.ts`) nach Gruppen der Spalte „Prüft“, pro Gruppe Spearman ≥ 0,9, Aegis-Top-3 in unseren Top 5, Delta-Paare ±2 Prozentpunkte, Abdeckung pro Gruppe als Tabelle. Erst messen, dann Schwellen mit dem Inhaber bestätigen. Produktziel lesen: `docs/product.md`.
+**Delta-Lücken schließen (Opus analysiert, Sonnet setzt um).** Das Rangfolge-Gate steht (`docs/ranking-gate.md`, Abweichungen mit Grund in `tests/fixtures/ranking-gate.json`). Ursachen klären und beheben, größte zuerst: Sol Invictus (Delta 0 statt +46 %), Dawn Chorus (0 statt +24 %), Feast of Light x6 (+70 statt +50 % bei Nova Bomb und Twilight Arsenal, +66 statt +77 % bei Gathering Storm), Shards of Galanor (3,9 Punkte), Super-Top-3 (2 von 3). Jede behobene Abweichung aus der Fixture streichen. Wirkung unter 2 % nach `docs/known-inaccuracies.md`.
 
 ## Reihenfolge
 
-1. Rangfolge-Gate, siehe oben.
+1. Delta-Lücken, siehe oben.
 2. UI „Die erste Minute“ (Sonnet): Prompt 2 in `docs/plans/cleanup-prompts.md`; dabei `src/ui/App.tsx` in Panels aufteilen, wo der Block es anfasst.
 3. Code-Aufräumen (Sonnet): `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
 4. Solar: Roaring Flames x3 und Solar Fulmination (Opus plant), dann Ergo Sum, echte Debuffs am Ziel, fehlende Supers; Reihenfolge nach dem Rangfolge-Gate. Arbeitsliste: `docs/known-inaccuracies.md`, „Offene Lücken“.
