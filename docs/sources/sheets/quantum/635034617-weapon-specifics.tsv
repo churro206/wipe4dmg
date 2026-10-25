@@ -1,0 +1,154 @@
+2	Want to contribute? Have questions, comments, or concerns? See Home page for contact information.
+3	Weapon	Item		Value	Unit
+5	Ager's Scepter	Frozen Damage		55	Damage	Body damage
+6	Ager's Scepter	Frozen Damage		74	Damage	Precision damage
+7	Alethonym	Impale DoT		72	Damage
+8	Alethonym	Impale Explosion		481	Damage
+9	Anarchy	Impact damage		21	Damage
+10	Anarchy	Single stick tick damage		138	Damage
+11	Anarchy	Double stick tick damage		275	Damage
+12	Anarchy	Trap explosion damage		141	Damage
+13	Anarchy	Trap time		15.00	seconds
+14	Area-Denial GrLa	Tick damage		48	Damage
+15	Barrow Dyad	Blighted Seeker		114	Damage
+16	Cloudstrike	Lightning Storm		646	Damage	Only the two strikes on target
+17	Coldheart	Damage cap		52	Damage
+18	Conditional Finality	Frozen Damage		1010	Damage
+19	D.A.R.C.I.	Body damage		144	Damage	without Target Acquired
+20	D.A.R.C.I.	Precision damage		495	Damage	without Target Acquired
+21	Devil's Ruin	Laser damage		97	Damage	Precision damage
+22	Devil's Ruin	Laser damage		61	Damage	Body damage
+23	Devil's Ruin	Laser hits		16	Shots
+24	Devil's Ruin	Laser Duration		0.95	Seconds
+25	Divinity	Penance		886	Damage
+26	Divinity	Shots to Penance		10	Shots	From patch notes 9.7.0
+27	Divinity	Penance Activation Time		3.00	Seconds	From patch notes 9.7.0
+28	Dragon's Breath	Impact		189	Damage
+29	Dragon's Breath	small explosion		66	Damage
+30	Dragon's Breath	Fire pool		38	Damage	tick damage
+31	Dragon's Breath	Bigger explosion x1 fuel		1144	Damage
+32	Dragon's Breath	Bigger explosion x3 fuel		1307	Damage
+33	Dragon's Breath	Bigger explosion x5 fuel		1470	Damage
+34	Edge of Action	Alt-fire		???	Damage	I do not have this weapon yet
+35	Ex Diris	Moth damage		473	Damage
+36	Forerunner	The Rock damage		3345	Damage
+37	Gjallarhorn	Wolfpack Rounds		60	Damage
+38	Glaive	End of Combo damage		203	Damage
+39	Grand Overture	Rocket damage		494	Damage	damage of a single rocket
+40	Grand Overture	Rocket damage		9880	Damage	damage of 20 rockets
+41	Graviton Spike	Lighting Strike		181	Damage
+42	Graviton Spike	Stasis Crystal Spawn		46	Damage
+43	Hawkmoon	Paracausal shot x7		985	Damage	Body damage
+44	Hawkmoon	Paracausal shot x7		1767	Damage	Precision damage
+45	Hierarchy of Needs	Missile Damage		147	Damage	No effect by distance observed
+46	High-Impact Bows	Normal bolt damage		1743	Damage	Precision damage
+47	High-Impact Bows	Normal bolt damage		1298	Damage	Body damage
+48	High-Impact Bows	Heavy Bolts damage		1917	Damage	Precision damage
+49	High-Impact Bows	Heavy Bolts damage		1427	Damage	Body damage
+50	High-Impact Bows	Serrated Bolts damage		331	Damage
+51	High-Impact Bows	Charged Bolts tick damage		20	Damage
+52	High-Impact Bows	Charged Bolts tick count		19	Count
+53	High-Impact Bows	Charged Bolts duration		9.50	Seconds
+54	High-Impact Bows	Spring-Auger Bolts damage		17	Damage
+55	High-Impact Bows	Explosive Bolts impact		785	Damage	Precision damage
+56	High-Impact Bows	Explosive Bolts impact		584	Damage	Body damage
+57	High-Impact Bows	Explosive Bolts explosion		959	Damage
+58	Jade Rabbit	Fate of All Fools Body		97	Damage
+59	Jade Rabbit	Micro Missile		153	Damage	1x Fate of All Fools, Body
+60	Jade Rabbit	Micro Missile		489	Damage	5x Fate of All Fools, Body
+61	Jade Rabbit	Micro Missile		576	Damage	10x Fate of All Fools, Body
+62	Jade Rabbit	Micro Missile		675	Damage	15x Fate of All Fools, Body
+63	Jade Rabbit	Micro Missile		216	Damage	1x Fate of All Fools, Precision
+64	Jade Rabbit	Micro Missile		601	Damage	5x Fate of All Fools, Precision
+65	Jade Rabbit	Micro Missile		714	Damage	10x Fate of All Fools, Precision
+66	Jade Rabbit	Micro Missile		821	Damage	15x Fate of All Fools, Precision
+67	Jotunn	Lingering fire pool		30	Damage	per tick
+68	Khvostov 7G-0X	Ricochet Rounds		56	Damage
+69	Last Word	Precision Damage		93	Damage	ADS
+70	Le Monarque	Burn Tick		32	Damage
+71	Malfeasance	Slugs damage		71	Damage
+72	Merciless	Burst 1		1268	Damage
+73	Merciless	Burst 2		1225	Damage
+74	Merciless	Burst 3		1182	Damage
+75	Merciless	Burst at x15 stacks		1155	Damage
+76	Monte Carlo	Bayonet Damage		1386	Damage
+77	N/A	Sidearm Mode Swap		0.92	Seconds	Time to swap modes, applies to hand cannons and sidearms alike
+78	No Time To Explain	Portal Damage		26	Damage
+79	One Thousand Voices	Special Ignition		890	Damage
+80	Osteo Striga	Poison Damage		293	Damage	When constantly firing
+81	Osteo Striga	Poison Damage		1354	Damage	Letting the poison do its thing
+82	Outbreak Perfected	Nanite Damage		40	Damage
+83	Polaris Lance	Perfect Fifth		94	Damage
+84	Prometheus Lens	Scorch Stacks		20	Stacks
+85	Prometheus Lens	Scorch Stacks		30	Stacks	Ember of Ashes
+86	Quicksilver Storm	Shots until a rocket		11	Rounds	Minimum number of shots until a rocket is fired
+87	Quicksilver Storm	Rocket damage		84	Damage
+88	Quicksilver Storm	Grenade damage		684	Damage
+89	Revision Zero	Sniper Body Damage		294	Damage
+90	Revision Zero	Sniper Precision Damage		954	Damage
+91	Revision Zero	Sniper Shockwave Damage		224	Damage
+92	Ruinous Effigy	Orb Slam		1350	Damage
+93	Salvation's Grip	Natural Shatter damage		379	Damage
+94	Salvation's Grip	Average Crystal damage		162	Damage	spawns 5 crystals total, this is just a hand-wavy average
+95	Salvation's Grip	Average Crystal damage		173	Damage	this is just a hand-wavy average, assumes 3 crystals damage the boss while frozen
+96	Salvation's Grip	Impact while frozen		1099	Damage
+97	Sleeper Simulant	Refraction beams		18	Damage
+98	Still Hunt	Super Cast		1.72	Seconds	Time to cast the super mode
+99	Still Hunt	Golden Gun		666	Damage	Body
+100	Still Hunt	Golden Gun		1940	Damage	Precision
+101	Still Hunt	Golden Gun		???	Damage	Body, Celestial Nighthawk
+102	Still Hunt	Golden Gun		5111	Damage	Precision, Celestial Nighthawk
+103	Sweet Business	Explosion Damage		27	Damage
+104	Symmetry	Revolution		44	Damage	Consuming 0 stacks of Dynamic Charge
+105	Symmetry	Revolution x5		108	Damage	Consuming 5 stacks of Dynamic Charge
+106	Symmetry	Revolution x10		173	Damage	Consuming 10 stacks of Dynamic Charge
+107	Symmetry	Revolution x15		238	Damage	Consuming 15 stacks of Dynamic Charge
+108	Symmetry	Revolution x15		302	Damage	Consuming 20 stacks of Dynamic Charge
+109	Symmetry	Bolt Charge		1295	Damage	Does increased damage during Revolution with at least one stack of Dynamic Charge is consumed
+110	Symmetry	Bolt Charge		2	Stacks	Granted while in Revolution, consuming 1-9 stacks of Dynamic Charge
+111	Symmetry	Bolt Charge		3	Stacks	Granted while in Revolution, consuming 10+ stacks of Dynamic Charge
+112	Tessellation	Property: Irreducible		2437	Damage
+113	The Huckleberry	Kinetic Tremors		163	Damage
+114	The Prospector	Bomblets impact damage		135	Damage	Blast damage of a single bomblet from the cluster
+115	The Prospector	Bomblets impact damage		10	Damage	Impact damage of a single bomblet from the cluster
+116	Third Iteration	Amalgamation Body		259	Damage	Before buffed by amalgamation rounds
+117	Third Iteration	Amalgamation Precision		439	Damage	Before buffed by amalgamation rounds
+118	Thorn	Burn Tick		10	Damage
+119	Thorn	Burn Tick		28	Damage	Empowered
+120	Thunderlord	Lightning Strike		139	Damage
+121	Ticuu's Divination	Proccing arrows		12	Damage	Light draw, 6x Sacred Flame
+122	Ticuu's Divination	Explosion Damage		271	Damage	Unaffected by Sacred Flame
+123	Tommy's Matchbook	Body damage		15	Damage	Without burning
+124	Tommy's Matchbook	Precision damage		25	Damage	WIthout burning
+125	Touch of Malice	Blight impact		293	Damage
+126	Touch of Malice	Blight damage over time		224	Damage
+127	Touch of Malice	Special Reload		1.10	Seconds	Base
+128	Touch of Malice	Special Reload		???	Seconds	Rally Barricade
+129	Touch of Malice	Shot delay		0.53	Seconds	Delay after firing the blight
+130	Truth	Cluster bombs damage		155	Damage	Bomblet damage
+131	Truth	Cluster bombs count		8	Count	Bomblet count
+132	Two-Tailed Fox	Third Fox		347	Damage	Damage of catalyst rocket
+133	Vex Mythoclast	Linear Fusion body		365	Damage
+134	Vex Mythoclast	Linear fusion Precision		1168	Damage
+135	Vex Mythoclast	Normal Body shot		53	Damage
+136	Vex Mythoclast	Normal Body shot		94	Damage
+137	Wavesplitter	Level 1 damage		22	Damage	Body damage
+138	Wavesplitter	Level 2 damage		29	Damage	Body damage
+139	Wavesplitter	Level 3 damage		36	Damage	Body damage
+140	Wavesplitter	Level 1 damage		29	Damage	Precision damage
+141	Wavesplitter	Level 2 damage		38	Damage	Precision damage
+142	Wavesplitter	Level 3 damage		49	Damage	Precision damage
+143	Wicked Implement	Frozen body damage		30	Damage	Base
+144	Wicked Implement	Frozen precision damage		58	Damage	Base
+145	Wicked Implement	Frozen body damage		46	Damage	Whisper of Rending
+146	Wicked Implement	Frozen precision damage		87	Damage	Whisper of Rending
+147	Winterbite	Freeze		57	Damage	Damage on freeze
+148	Winterbite	Impact		1348	Damage
+149	Winterbite	Impact while frozen		1483	Damage
+150	Wish-Keeper	Suspend Trap		157	Damage
+151	Wish-Keeper	Suspend Explosion		284	Damage
+152	Witherhoard	Impact		36	Damage
+153	Witherhoard	Blighted Impact		534	Damage
+154	Witherhoard	Blighted tick		119	Damage
+155	Witherhoard	Splash damage		119	Damage
+156	Witherhoard	Floor blight tick		60	Damage	Blight on the ground rather than on the boss

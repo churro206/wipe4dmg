@@ -1,0 +1,250 @@
+3	Choose Activity, or "Custom"	EoF Firing Range			Assume Max delta?	Gear ePL / / Delta	Activity PL	Difficulty scaling type	Guardian ePL delta cap	Guardian ePL delta floor	Bonus Multiplier					432			1104	1104				34.75x	2.55x
+4	Recommended PL multiplier	1.00x		0.9002x	Bonus Multiplier	1900	1900	Normal	+0							56.06114101			78.29217343	51.04764421	1020.952884	408.3811537		4428	50.00959986
+5	Total Damage Multiplier	0.900219x		1.00000000x	Guardian ePL delta multiplier	+0	10	Normal	+0		0.90x
+6		<< If checked, shows total damage (not individual damage numbers)		Element	Buff Amount	Boss Damage	Champion Damage	Miniboss Damage	Elite Damage	Minor Damage	Damage Count	Crucible Damage	PvE bonus	Weapon Scaling Type
+8		Kinetic Tremors Sniper Rifle		Kinetic Special	1.00x	164.3	256.4	276.9	426.3	621.5	3	20.01	6	Sniper Rifle
+9		Kinetic Tremors Scout Rifle		Kinetic Primary	1.00x	130.8	143.9	143.9	219.9	317.4	3	20.01	6	Scout Rifle					1.442x	2.411x
+10		Kinetic Tremors Pulse Rifle		Kinetic Primary	1.00x	121.4	140.2	140.2	202.6	307.9	3	20.01	6	Pulse Rifle
+11		Kinetic Tremors Hand Cannon		Kinetic Primary	1.00x	137.7	163.1	163.1	366.4	374.9	3	20.01	6	Hand Cannon
+12		Kinetic Tremors Sidearm		Kinetic Primary	1.00x	155.9	171.4	171.4	255.5	286.6	3	20.01	6	Sidearm
+13		Kinetic Tremors Auto Rifle		Kinetic Primary	1.00x	115.6	132.7	132.7	211.6	249.7	3	20.01	6	Auto Rifle
+14		Kinetic Tremors Submachine Gun		Kinetic Primary	1.00x	162.1	178.3	178.3	236.8	255.6	3	20.01	6	Submachine Gun					2.150x	34.750000x
+15	Hypothetical	Kinetic Tremors Bow		Kinetic Primary	1.00x	162.1	178.3	178.3	241.7	356.7	3	20.01	6	Bow					420	5.012994996		1113	1236.366175
+16	Hypothetical	Kinetic Tremors Shotgun		Kinetic Special	1.00x	248.6	310.7	310.7	358.0	397.7	3	20.01	6	Shotgun
+17	Hypothetical	Kinetic Tremors Glaive		Kinetic Special	1.00x	324.2	372.9	372.9	372.9	559.3	3	20.01	6	Glaive
+18	shooting minor	Kinetic Tremors Sniper Rifle		Kinetic Special	1.00x	123.2	192.3	207.7	319.7	466.1	3	20.01	4.5	Sniper Rifle					1.500x
+19	shooting minor	Kinetic Tremors Scout Rifle		Kinetic Primary	1.00x	98.1	107.9	107.9	165.0	238.1	3	20.01	4.5	Scout Rifle					251	5.009030224
+20	shooting minor	Kinetic Tremors Pulse Rifle		Kinetic Primary	1.00x	91.1	105.1	105.1	151.9	230.9	3	20.01	4.5	Pulse Rifle
+21	shooting minor	Kinetic Tremors Hand Cannon		Kinetic Primary	1.00x	103.3	122.3	122.3	274.8	281.1	3	20.01	4.5	Hand Cannon
+22	shooting minor	Kinetic Tremors Sidearm		Kinetic Primary	1.00x	116.9	128.6	128.6	191.6	215.0	3	20.01	4.5	Sidearm
+23	shooting minor	Kinetic Tremors Auto Rifle		Kinetic Primary	1.00x	86.7	99.5	99.5	158.7	187.2	3	20.01	4.5	Auto Rifle
+24	shooting minor	Kinetic Tremors Submachine Gun		Kinetic Primary	1.00x	121.6	133.7	133.7	177.6	191.7	3	20.01	4.5	Submachine Gun					9149	11436	13723		1.303921569	123.877	95.00341353
+25	shooting minor	Kinetic Tremors Bow		Kinetic Primary	1.00x	121.6	133.7	133.7	181.3	267.5	3	20.01	4.5	Bow					8130.468379	10162.86331	12195.25823
+26	shooting minor	Kinetic Tremors Shotgun		Kinetic Special	1.00x	186.4	233.0	233.0	268.5	298.3	3	20.01	4.5	Shotgun
+27		Dragonfly Auto Rifle		Energy	1.00x	119.3	124.5	124.5	198.5	234.2	1	95.29	1.3	Auto Rifle		344.2511171
+28		Dragonfly Scout Rifle		Energy	1.00x	134.9	134.9	134.9	206.3	297.7	1	95.29	1.3	Scout Rifle			6.6	23942	3626.961168	3627.112664
+29		Meganeura x1		Energy	1.00x	225.3	225.3	225.3	344.5	497.2	1	159.1	1.3	Scout Rifle												1.303921569
+30		Meganeura x2		Energy	1.00x	242.9	315.5	315.5	482.3	696.1	1	171.5	1.3	Scout Rifle
+31		Meganeura x3		Energy	1.00x	242.9	377.8	377.8	577.7	833.7	1	171.5	1.3	Scout Rifle						0.9176476149
+32		Dragonfly Pulse Rifle		Energy	1.00x	125.3	131.5	131.5	190.0	288.8	1	95.29	1.3	Pulse Rifle	274.9637494
+33		Dragonfly Hand Cannon		Energy	1.00x	142.1	153.0	153.0	343.7	351.6	1	95.29	1.3	Hand Cannon			4.6	18231	3952.403572	3952.62038	139.3954961	130.7789743	130.7861481	95.28993818	95.29391838	95.0033519	95.00732013
+34		Dragonfly Submachine Gun		Energy	1.00x	167.3	167.3	167.3	222.1	239.8	1	95.29	1.3	Submachine Gun		342.8571621								95.2869862	95.29259165	95.0004088	95.00599739
+35		Dragonfly Sidearm		Energy	1.00x	160.8	160.8	160.8	239.6	268.9	1	95.29	1.3	Sidearm										95.28895974	95.29427395	95.00237641	95.00767463
+36		Dragonfly Bow		Energy	1.00x	167.3	167.3	167.3	226.7	334.5	1	95.29	1.3	Bow		512.9754255	188.1750	17932	95.29427395	95.29427395				95.2874414	95.29123726	95.00086263	95.00464707
+37		Dragonfly Shotgun		Energy	1.00x	256.5	278.8	278.8	321.2	356.9	1	95.29	1.3	Shotgun			4.4	17000	3873.474528	3873.702393				95.28858776	95.29259165	95.00200554	95.00599739
+38		Dragonfly Sniper Rifle		Energy	1.00x	169.5	230.1	248.5	382.5	557.6	1	95.29	1.3	Sniper Rifle		1.49617824								95.28993818	95.29123726	95.0033519	95.00464707
+39		Dragonfly Trace Rifle		Energy	1.00x	167.3	189.6	189.6	227.5	254.3	1	95.29	1.3	Trace Rifle
+40		Dragonfly Linear Fusion Rifle		Energy	1.00x	172.1	182.4	182.4	214.7	226.9	1	95.29	1.3	Linear Fusion Rifle												95.00335	95.00464x	123.88x
+41		Dragonfly Machine Gun		Energy	1.00x	203.0	236.7	236.7	315.9	394.8	1	95.29	1.3	Machine Gun			263.4450	25104	95.29123726	95.29123726	493.4600561	5.178508302	23800	4595.918093				123.88x
+42		Firefly Auto Rifle		Solar	1.00x	100.9	105.3	105.3	167.9	198.1	1	80.6	1.3	Auto Rifle
+43		Firefly Scout Rifle		Solar	1.00x	114.1	114.1	114.1	174.5	251.8	1	80.6	1.3	Scout Rifle			11890	126.0536458
+44		Firefly Pulse Rifle		Solar	1.00x	106.0	111.2	111.2	160.7	244.3	1	80.6	1.3	Pulse Rifle		1.182258065							104.78	80.35759398
+45		Firefly Hand Cannon		Solar	1.00x	120.2	129.4	129.4	290.7	297.4	1	80.6	1.3	Hand Cannon			1.182258065		1.926966292
+46		Firefly Submachine Gun		Solar	1.00x	141.5	141.5	141.5	187.9	202.8	1	80.6	1.3	Submachine Gun			0.8458390177
+47		Firefly Sidearm		Solar	1.00x	136.0	136.0	136.0	202.7	227.4	1	80.6	1.3	Sidearm					759
+48		Firefly Bow		Solar	1.00x	141.5	141.5	141.5	191.8	283.0	1	80.6	1.3	Bow					1488	1.960474308
+49		Firefly Shotgun		Solar	1.00x	216.9	235.8	235.8	271.7	301.8	1	80.6	1.3	Shotgun				22788			174.2443701	130.7761048	130.7818438
+50		Firefly Sniper Rifle		Solar	1.00x	143.4	194.6	210.2	323.5	471.6	1	80.6	1.3	Sniper Rifle
+51		Firefly Trace Rifle		Solar	1.00x	141.5	160.4	160.4	192.4	215.1	1	80.6	1.3	Trace Rifle
+52		Firefly Linear Fusion Rifle		Solar	1.00x	145.5	154.3	154.3	181.6	192.0	1	80.6	1.3	Linear Fusion Rifle										15257	39891	2.614603133
+53		Firefly Machine Gun		Solar	1.00x	171.7	200.3	200.3	267.2	333.9	1	80.6	1.3	Machine Gun			5.2	20131	3887.219799	3887.412905
+54						130.1	149.3	149.3	149.3	302.7
+55		Chain Reaction Special Grenade Launcher		Energy	1.00x	151.2	158.8	158.8	158.8	189.0	1	56	1.2	Special Grenade Launcher
+56		Chain Reaction Glaive		Energy	1.00x	181.5	181.5	181.5	181.5	272.2	1	56	1.2	Glaive												4370
+57		Chain Reaction Shotgun		Energy	1.00x	139.1	151.2	151.2	174.2	193.6	1	56	1.2	Shotgun								39854				8741	2.00x
+58		Chain Reaction Fusion Rifle		Energy	1.00x	154.1	200.4	200.4	200.4	214.7	1	56	1.2	Fusion Rifle								39854				8741	1.00x
+59						339.0	339.0	339.0	398.8	384.4740616			7.121630452
+60		Chain Reaction Sword		Energy	1.00x	115.7	115.7	115.7	136.1	172.4	1	56	1.8	Sword				16601
+61		Chain Reaction Heavy Grenade Launcher		Energy	1.00x	245.0	272.2	285.3	285.3	397.0	1	56	1.8	Heavy Grenade Launcher			12770	20698	1.62083007	1.3
+62		Chain Reaction Rocket Launcher		Energy	1.00x	426.5	426.5	426.5	453.7	544.5	1	56	1.8	Rocket Launcher			21743	54.76874973							24511
+63		Chain Reaction Linear Fusion Rifle		Energy	1.00x	140.0	148.5	148.5	174.7	184.7	1	56	1.8	Linear Fusion Rifle			21743	39.93554668							24511
+64						313.6	332.5	332.5	391.3	489.3			6.987137772
+65		Reservoir Burst Fusion		Energy	1.00x	372.7	484.6	484.6	484.6	519.2	1	162.5	1	Fusion Rifle											24867
+66		Reservoir Burst LFR		Energy	1.00x	293.4	311.1	311.1	366.1	387.0	1	162.5	1.3	Linear Fusion Rifle			14939	38.60222579							1.014524091
+67		Cursed Thrall Auto Rifle		Energy	1.00x	119.0	124.1	124.1	197.9	233.5	1	123.5	1	Auto Rifle								14365
+68		Cursed Thrall Scout Rifle		Energy	1.00x	134.5	134.5	134.5	205.7	296.8	1	123.5	1	Scout Rifle								18675	1.300034807
+69		Cursed Thrall Pulse Rifle		Energy	1.00x	124.9	131.1	131.1	189.4	287.9	1	123.5	1	Pulse Rifle
+70		Cursed Thrall Hand Cannon		Energy	1.00x	141.6	152.5	152.5	342.7	350.5	1	123.5	1	Hand Cannon
+71		Cursed Thrall Shotgun		Energy	1.00x	255.7	277.9	277.9	320.2	355.8	1	123.5	1	Shotgun											31833
+72		Cursed Thrall Machine Gun		Energy	1.00x	202.3	236.0	236.0	315.0	393.6	1	123.5	1	Machine Gun
+73		Nanotech Tracer Pulse Rifle		Energy	1.00x	45.1	47.4	47.4	68.5	104.1	1	27.903	1.6	Pulse Rifle											31895.11
+74		1Nanotech Tracer Pulse Rifle		Energy	1.00x	22.5	23.6	23.6	34.1	51.9	1	13.901	1.6	Pulse Rifle				1108	46.93662733		1385	1.25			38256	1.199431664
+75		2Nanotech Tracer Pulse Rifle		Energy	1.00x	22.7	23.8	23.8	34.4	52.2	1	14.002	1.6	Pulse Rifle				1116	46.93450956		1395	1.25
+76		Nanotech Tracer Hand Cannon		Energy	1.00x	51.2	55.1	55.1	123.9	126.7	1	27.903	1.6	Hand Cannon
+77		1Nanotech Tracer Hand Cannon		Energy	1.00x	25.5	27.5	27.5	61.7	63.1	1	13.901	1.6	Hand Cannon							1385	#DIV/0!
+78		2Nanotech Tracer Hand Cannon		Energy	1.00x	25.7	27.7	27.7	62.2	63.6	1	14.002	1.6	Hand Cannon							1395	#DIV/0!
+79		Nanotech Tracer Submachine Gun		Energy	1.00x	60.3	60.3	60.3	80.1	86.4	1	27.903	1.6	Submachine Gun
+80		Nanotech Tracer Shotgun		Energy	1.00x	231.1	251.2	251.2	289.4	321.5	1	27.903	4	Shotgun
+81		Nanotech Tracer Sniper Rifle		Energy	1.00x	122.2	165.8	179.1	275.7	401.9	1	27.903	3.2	Sniper Rifle
+82		Nanotech Tracer Fusion Rifle		Energy	1.00x	256.0	332.8	332.8	332.8	356.6	1	27.903	4	Fusion Rifle
+83		Nanotech Tracer Machine Gun		Energy	1.00x	109.7	128.0	128.0	170.8	213.4	1	27.903	2.4	Machine Gun
+84		Nanotech Tracer Heavy Grenade Launcher		Energy	1.00x	135.6	150.7	157.9	157.9	219.8	1	27.903	2.0	Heavy Grenade Launcher							9193
+85		Wild Card Pulse Rifle		Energy	1.00x	39.9	41.9	41.9	60.6	92.1	1	39.5	1	Pulse Rifle					7840	69.92733012	10110	1.09974981
+86		Wild Card Hand Cannon		Energy	1.00x	45.3	48.8	48.8	109.6	112.1	1	39.5	1	Hand Cannon
+87		Wild Card Bow		Energy	1.00x	53.3	53.3	53.3	72.3	106.7	1	39.5	1	Bow									1.74x					2345.14x	2605.08x
+88		Wild Card Sniper Rifle		Energy	1.00x	54.0	73.4	79.2	122.0	177.8	1	39.5	1	Sniper Rifle									715	410.9195402
+89		Wild Card Fusion Rifle		Energy	1.00x	90.6	117.8	117.8	117.8	126.2	1	39.5	1	Fusion Rifle
+90		Wild Card Machine Gun		Energy	1.00x	64.7	75.5	75.5	100.7	125.9	1	39.5	1	Machine Gun
+91		Wild Card Rocket Launcher		Energy	1.00x	167.1	167.1	167.1	177.8	213.4	1	39.5	1	Rocket Launcher				2282.0
+92		Cluster Bombs detonation		Energy	1.00x	42.3	42.3	42.3	45.0	54.0	8	10.0027	1	Rocket Launcher				1712	0.750219106				2.06x			5199	2529.93x	2810.3470x
+93		Cluster Bombs impact		Energy	1.00x	8.5	8.5	8.5	9.0	10.8	8	2.0030	1	Rocket Launcher				6.35606193		6.991668123	6.061684951	4831	29284	15829.6212		2611.422621
+94		Radiolaria Detonation Pulse Rifle		Energy	1.00x	68.3	71.6	71.6	103.5	157.4	1	67.5	1	Pulse Rifle
+95		Radiolaria Detonation Hand Cannon		Energy	1.00x	77.4	83.4	83.4	187.3	191.6	1	67.5	1	Hand Cannon
+96		Radiolaria Detonation Auto Rifle		Energy	1.00x	65.0	67.8	67.8	108.2	127.6	1	67.5	1	Auto Rifle									1.74x					2345.14x	#WERT!
+97		Radiolaria Detonation Special Grenade Launcher		Energy	1.00x	151.9	159.5	159.5	159.5	189.9	1	67.5	1	Special Grenade Launcher									715	410.9195402
+98		Radiolaria Detonation Scout Rifle		Energy	1.00x	73.5	73.5	73.5	112.4	162.2	1	67.5	1	Scout Rifle
+99		Radiolaria Detonation Sword		Energy	1.00x	77.5	77.5	77.5	91.1	115.5	1	67.5	1	Sword				2282.0
+100		Radiolaria Detonation Machine Gun		Energy	1.00x	110.6	129.0	129.0	172.1	215.1	1	67.5	1	Machine Gun
+101		Radiolaria Detonation Trace Rifle		Energy	1.00x	91.1	103.3	103.3	124.0	138.5	1	67.5	1	Trace Rifle				2282.0
+102		Radiolaria Detonation Rocket Launcher		Energy	1.00x	285.6	285.6	285.6	303.8	364.6	1	67.5	1	Rocket Launcher
+103		Radiolaria Detonation Sidearm		Energy	1.00x	87.6	87.6	87.6	130.6	146.5	1	67.5	1	Sidearm
+104		Radiolaria Pool Pulse Rifle		Energy	1.00x	15.2	15.9	15.9	23.0	35.0	1	15	1	Pulse Rifle
+105		Radiolaria Pool Hand Cannon		Energy	1.00x	17.2	18.5	18.5	41.6	42.6	1	15	1	Hand Cannon
+106		Radiolaria Pool Auto Rifle		Energy	1.00x	14.4	15.1	15.1	24.0	28.4	1	15	1	Auto Rifle									1.74x					2345.14x	#WERT!
+107		Radiolaria Pool Special Grenade Launcher		Energy	1.00x	33.8	35.4	35.4	35.4	42.2	1	15	1	Special Grenade Launcher									715	410.9195402
+108		Radiolaria Pool Scout Rifle		Energy	1.00x	16.3	16.3	16.3	25.0	36.1	1	15	1	Scout Rifle
+109		Radiolaria Pool Sword		Energy	1.00x	17.2	17.2	17.2	20.3	25.7	1	15	1	Sword				2282.0
+110		Radiolaria Pool Machine Gun		Energy	1.00x	24.6	28.7	28.7	38.3	47.8	1	15	1	Machine Gun
+111		Radiolaria Pool Trace Rifle		Energy	1.00x	20.3	23.0	23.0	27.5	30.8	1	15	1	Trace Rifle				2282.0
+112		Radiolaria Pool Rocket Launcher		Energy	1.00x	63.5	63.5	63.5	67.5	81.0	1	15	1	Rocket Launcher
+113		Radiolaria Pool Sidearm		Energy	1.00x	19.5	19.5	19.5	29.0	32.6	1	15	1	Sidearm
+114		Dark Ether Scout Rifle		Energy	1.00x	420.6	420.6	420.6	643.0	928.0	1	386.1	1	Scout Rifle
+115		Dark Ether Pulse Rifle		Energy	1.00x	390.5	409.8	409.8	592.3	900.2	1	386.1	1	Pulse Rifle
+116		Dark Ether Hand Cannon		Energy	1.00x	442.8	476.9	476.9	1071.3	1095.9	1	386.1	1	Hand Cannon									1.74x					2345.14x	#WERT!
+117		Dark Ether Submachine Gun		Energy	1.00x	521.4	521.4	521.4	692.4	747.3	1	386.1	1	Submachine Gun									715	410.9195402
+118		Dark Ether Sidearm		Energy	1.00x	501.2	501.2	501.2	746.9	838.0	1	386.1	1	Sidearm
+119		Dark Ether Shotgun		Energy	1.00x	799.4	868.9	868.9	1001.0	1112.2	1	386.1	1	Shotgun				2282.0
+120		Dark Ether Special Grenade Launcher		Energy	1.00x	868.9	912.4	912.4	912.4	1086.2	1	386.1	1	Special Grenade Launcher						3.153x				44.500000x	1.50x		2.04x
+121		Dark Ether Sniper Rifle		Energy	1.00x	528.3	717.0	774.4	1192.2	1737.9	1	386.1	1	Sniper Rifle				2282.0						8680	195.0561798	130.0374532	265.28x
+122		Dark Ether Heavy Grenade Launcher		Energy	1.00x	938.5	1042.7	1092.8	1092.8	1520.6	1	386.1	1	Heavy Grenade Launcher					872	307.2164488
+123		Dark Ether Rocket Launcher		Energy	1.00x	1633.6	1633.6	1633.6	1737.9	2085.4	1	386.1	1	Rocket Launcher
+124		Subjugation Hand Cannon		Energy	1.00x				18.0	18.4	1	6.5	1	Hand Cannon
+125		Subjugation Scout Rifle		Energy	1.00x				10.8	15.6	1	6.5	1	Scout Rifle
+126		Subjugation Shotgun		Energy	1.00x				16.9	18.7	1	6.5	1	Shotgun
+127		Subjugation Trace Rifle		Energy	1.00x				11.9	13.3	1	6.5	1	Trace Rifle
+128		Power of Resolve Bow		Energy	1.00x	53.2	53.2	53.2	72.1	106.4	1	39.4	1	Bow		3370	95.01356851
+129		Power of Resolve Auto Rifle		Energy	1.00x	38.0	39.6	39.6	63.1	74.5	1	39.4	1	Auto Rifle				16	2.4625
+130		Power of Resolve Pulse Rifle		Energy	1.00x	39.8	41.8	41.8	60.4	91.9	1	39.4	1	Pulse Rifle									1.74x					2345.14x	#WERT!
+131		Power of Resolve Linear Fusion Rifle		Energy	1.00x	54.7	58.0	58.0	68.3	72.2	1	39.4	1	Linear Fusion Rifle									715	410.9195402
+132		Power of Resolve Machine Gun		Energy	1.00x	64.6	75.3	75.3	100.5	125.6	1	39.4	1	Machine Gun
+133		Power of Ambition Bow		Energy	1.00x	53.2	53.2	53.2	72.1	106.4	1	39.4	1	Bow		3370	#WERT!
+134		Power of Ambition Sidearm		Energy	1.00x	6.5	6.5	6.5	9.7	10.9	45	5	1	Sidearm				8	0.625
+135		Power of Ambition Submachine Gun		Energy	1.00x	6.8	6.8	6.8	9.0	9.7	45	5	1	Submachine Gun									1.74x					2345.14x	#WERT!
+136		Power of Ambition Fusion Rifle		Energy	1.00x	11.5	14.9	14.9	14.9	16.0	45	5	1	Fusion Rifle									715	410.9195402
+137		Power of Ambition Glaive		Energy	1.00x	13.5	13.5	13.5	13.5	20.3	45	5	1	Glaive									715	1
+138		Power of Ambition Special Grenade Launcher		Energy	1.00x	11.3	11.8	11.8	11.8	14.1	45	5	1	Special Grenade Launcher													To get passive shatter damage on a boss, either wait 2.7s after freezing, or actively shatter after 2s to get both passive and active shatter (400) damage
+139		Power of Ambition Sword		Energy	1.00x	5.7	5.7	5.7	6.8	8.6	45	5	1	Sword													Chill Clip Weapon type	passive shatter damage	boss damage per shot	# of shots	Damage to freeze	bonus from normal active shatter (400 dmg)	bonus from passive shatter	bonus from passive shatter + active after 2s
+140		Detonator Beam		Energy	1.00x	175.6	199.0	199.0	238.8	266.9	1	130.0374532	1	Trace Rifle										226.1	197.9		Special GL (liturgy)	1000.3	848.0	2	1696.0	23.6%	59.0%	82.6%
+141	Passive Shatter from freezing a boss	Chill Clip Special Grenade Launcher		Energy	1.00x	900.4					1	400.10	1	Special Grenade Launcher					1993.62340	3987.24681				124.9			Fusion Rifle (deliverance)	1019.5	874.3	2	1748.6	22.9%	58.3%	81.2%
+142		Chill Clip Fusion Rifle		Energy	1.00x	917.7					1	400.10	1	Fusion Rifle													Sniper Rifle	608.2	767.5	2	1535.0	26.1%	39.6%	65.7%
+143		Chill Clip Sniper Rifle		Energy	1.00x	547.5					1	400.10	1	Sniper Rifle				0.9432423372		1880.5	400.10	2280.57					Glaive	1200.3	581.9	2	1163.8	34.4%	103.1%	137.5%
+144		Chill Clip Glaive		Energy	1.00x	1080.5					1	400.10	1	Glaive													Rocket Sidearm	461.6	314.0	3	942.0	42.5%	49.0%	91.5%
+145		Chill Clip Rocket Sidearm		Energy	1.00x	415.5					1	400.10	1	Rocket Sidearm						0.4716211686	0.5719660981						Heavy Grenade Launcher	1080.3	643.5	2	1286.9	31.1%	83.9%	115.0%
+146		Chill Clip Heavy Grenade Launcher		Energy	1.00x	972.5					1	400.10	1	Heavy Grenade Launcher													Rocket Launcher	1880.5	1993.6	2	3987.2	10.0%	47.2%	57.2%
+147		Chill Clip Rocket Launcher		Energy	1.00x	1692.8					1	400.10	1	Rocket Launcher										477.10x			LFR (fire and forget)	617.4	1431.3	2	2862.6	14.0%	21.6%	35.5%
+148		Chill Clip Linear Fusion Rifle		Energy	1.00x	555.8					1	400.10	1	Linear Fusion Rifle
+149		Temporal Blast Bow		Energy	1.00x	526.5	526.5	526.5	713.6	1053.0	1	389.91	1	Bow		3370	#WERT!
+150		Temporal Blast Auto Rifle		Energy	1.00x	375.6	391.7	391.7	624.8	737.1	1	389.91	1	Auto Rifle				16	24.369375
+151		Temporal Blast Pulse Rifle		Energy	1.00x	394.3	413.8	413.8	598.1	909.1	1	389.91	1	Pulse Rifle									1.74x					2345.14x	#WERT!
+152		Temporal Blast Linear Fusion Rifle		Energy	1.00x	541.6	574.2	574.2	675.7	714.3	1	389.91	1	Linear Fusion Rifle									715	410.9195402
+153		Temporal Blast Machine Gun		Energy	1.00x	638.8	745.2	745.2	994.4	1242.6	1	389.91	1	Machine Gun
+154		Temporal Blast Bow		Energy	1.00x	526.5	526.5	526.5	713.6	1053.0	1	389.91	1	Bow		3370	#WERT!
+155		Temporal Blast Sidearm		Energy	1.00x	506.1	506.1	506.1	754.3	846.3	1	389.91	1	Sidearm				8	48.73875
+156		Temporal Blast Submachine Gun		Energy	1.00x	526.5	526.5	526.5	699.2	754.7	1	389.91	1	Submachine Gun									1.74x
+157		Temporal Blast Fusion Rifle		Energy	1.00x	894.4	1162.7	1162.7	1162.7	1245.7	1	389.91	1	Fusion Rifle									715	410.9195402
+158		Temporal Blast Special Grenade Launcher		Energy	1.00x	877.5	921.4	921.4	921.4	1096.9	1	389.91	1	Special Grenade Launcher
+159		Temporal Blast Sword		Energy	1.00x	447.5	447.5	447.5	526.5	666.9	1	389.91	1	Sword							497.1	461.8	720.7	778.4	1198.3	1746.8
+160		Temporal Blast Heavy Grenade Launcher		Energy	1.00x	947.7	1053.0	1103.6	1103.6	1535.6	1	389.91	1	Heavy Grenade Launcher							460.3	460.3	627	677	1042	1519
+161		Temporal Blast Rocket Launcher		Energy	1.00x	1649.7	1649.7	1649.7	1755.0	2106.0	1	389.91	1	Rocket Launcher							0.9258976537	0.9967110684	0.8699518613	0.8697619231	0.8695619098	0.8695902832
+162		Temporal Blast Sniper Rifle		Energy	1.00x	533.5	724.1	782.0	1203.9	1755.0	1	389.91	1	Sniper Rifle			1895	1754.62963			0.9262330355	0.9970721004
+163		Temporal Blast Hand Cannon		Energy	1.00x	447.2	481.6	481.6	1081.8	1106.7	1	389.91	1	Hand Cannon			1300	1203.703704				157	2.483503185
+164		Temporal Blast Trace Rifle		Energy	1.00x	526.5	596.7	596.7	716.0	800.3	1	389.91	1	Trace Rifle			845	782.4074074	1.000472933
+165		Temporal Blast Scout Rifle		Energy	1.00x	424.7	424.7	424.7	649.4	937.2	1	389.91	1	Scout Rifle			782	724.0740741				155.964
+166		Temporal Blast Rocket Sidearm		Energy	1.00x	404.9	404.9	404.9	754.3	846.3	1	389.91	1	Rocket Sidearm			576	533.3333333	0.9996379078			156	390
+167		Temporal Blast Crossbow		Energy	1.00x	2006.3	2054.1	2054.1	2132.7	2528.3	1	389.91	1	Crossbow					1.15	613.555497		156	390
+170		EXOTICS
+173	Exotic primary	Sunshot explosion		Solar	1.00x	149.1	160.6	160.6	360.7	479.7	1	100	1.3	Hand Cannon				42.500000x	1.303921569							45	6.75%	0	24787	23219.67	9674.8625
+174	Exotic primary	Necrochasm explosion		Arc	1.00x	313.1	326.5	326.5	520.8	798.7	1	130.01	2.4998	Auto Rifle	325						123.88x						106.75%			23218.73536	9674.473068
+175	Exotic primary	Necrochasm DoT		Kinetic Primary	1.00x	7.7	8.8	8.8	14.1	21.6	7	0.4	20	Auto Rifle					386.099	296.1058647	3.116793931
+176	Exotic primary	graviton lance explosion		Void	1.00x	224.1	235.2	235.2	339.9	671.6	1	170.4512033	1.3	Pulse Rifle					82046
+177	Exotic primary	graviton lance seeker		Void	1.00x	28.9	30.3	30.3	43.8	86.5	1	17.09483133	1.67	Pulse Rifle
+178	Exotic primary	Trinity Ghoul chain		Arc	1.00x	68.0	68.0	68.0	92.1	176.7	3	50.33	1	Bow
+179	Exotic primary	Trinity Ghoul direct hit AOE		Arc	1.00x	17.6	17.6	17.6	23.8	45.6	3	10	1.3	Bow					386.1				3165.3	2556.8	4588.8	4955.9	7629.5	11121.8
+180		Osteo Striga Poison tick total		Kinetic Primary	1.00x	1351.3	1486.4	1486.4	1486.4	1932.4	1	1501.085351	1	Osteo Poison										2558	3992	4312	6637	9675
+181																								1.000450923	0.8699360253	0.8700807835	0.8699087694	0.8699153229
+182	Exotic primary	Riskrunner chain		Arc	1.00x	13.6	13.6	13.6	18.1	25.3	1	10.07225909	1	Submachine Gun
+183	Exotic primary	Riskrunner double chain		Arc	1.00x	15.3	15.3	15.3	20.4	28.6	1	11.36243362	1	Submachine Gun
+184		queenbreaker chain		Arc	1.00x	417.2	442.5	442.5	395.1	417.7	1	228	1	Queenbreaker				439	1.111094224					1.0005
+185		Thunderlord bolt		Arc	1.00x	138.4	161.5	161.5	215.5	269.3	1	65	1.3	Machine Gun					228.0519481
+186		Cloudstrike kill bolt		Arc	1.00x	410.5	557.1	601.7	926.3	1350.3	1	300	1	Sniper Rifle					438.9						1	2.25	0.4444444444
+187		Cloudstrike rapid precision extra damage		Arc	1.00x	246.3	334.3	361.0	555.8	810.2	1	180	1	Sniper Rifle												3.375	0.2962962963
+188		Lorentz Pulse		Void	1.00x	184.6	195.8	195.8	271.0	286.5	1	156.3916908	1	Lorentz Driver
+189	Exotic primary	Malfeasance Explosion		Kinetic Primary	1.00x	67.1	79.5	79.5	178.6	237.5	5	45.01	1.3	Hand Cannon
+190	Exotic primary	Ticuu Explosion Base		Solar	1.00x	135.0	135.0	135.0	183.0	351.1	1	137	0.73	Bow							1.30x	401.625000x			21
+191		Ex Diris Moth		Arc	1.00x	450.1	472.6	472.6	472.6	562.6	1	200	1	Special Grenade Launcher							12539	8.005298986	21.34746396	20.01324746	0.3812047136		0.37440	20.59871475
+192	Exotic primary	Le Monarque Poison		Solar	1.00x	30.4	30.4	30.4	41.2	79.1	6	22.51843932	1	Bow							12538	8.004660554	21.34576148	20.01165138	0.3811743121		0.38860	21.38167464
+193	Exotic primary	Centrifuse Explosion		Arc	1.00x	93.9	98.0	98.0	156.2	239.6	1	97.50187725	1	Auto Rifle							4180	2.999760766
+194	Exotic primary	Touch of Malice Blight Impact		Arc	1.00x	119.7	119.7	119.7	183.0	343.3	1	109.88	1	Scout Rifle													0.01420
+195	Exotic primary	Touch of Malice Blight Poison		Arc	1.00x	14.4	14.4	14.4	22.0	41.2	4	13.2	1	Scout Rifle												6.2						3.5000
+196	Exotic primary	Touch of Malice Blight AOE		Arc	1.00x	1.1	1.1	1.1	1.7	3.1	4	1	1	Scout Rifle												0.4	15.5					3.2451
+197	Exotic primary	Thorn DoT		Kinetic Primary	1.00x	9.2	10.9	10.9	24.4	32.5	4	0.4	20	Hand Cannon																		3.4412
+198	Exotic primary	Outbreak Perfected Nanites		Kinetic Primary	1.25x	37.9	43.8	43.8	63.3	125.1	1	30.02	1	Pulse Rifle			1406	22.20517983								2273	144.3174603					5.7745
+199	Exotic primary	Outbreak Perfected Chain Nanites		Kinetic Primary	1.25x	6.3	7.3	7.3	10.6	20.9	1	5.003333333	1	Pulse Rifle			235	22.26835246														2.7549			135.0857143
+200	Exotic primary	Sweet Business explosive shot		Kinetic Primary	1.00x	25.0	28.7	28.7	45.8	70.3	1	26	1	Auto Rifle																				108.9706712	1.068339914
+201		Grand Overture Missile Explosion		Arc	1.00x	252.6	282.9	353.6	674.0	589.5	1	185.00	1	Grand Overture										3.797360579		5.534269902		1.0686x
+202		Grand Overture Missile Impact		Arc	1.00x	71.0	79.5	99.4	189.5	165.7	1	52.01	1	Grand Overture										3.79092861		5.527039721			5.00x
+203	Exotic primary	QSS Rocket Explosion		Strand	1.00x	77.1	80.4	80.4	128.2	196.6	1	20	4	Auto Rifle							4783 or 3071			3.812237146		5.548772215		144.27x
+204	Exotic primary	QSS Rocket Impact		Strand	1.00x	2.6	2.7	2.7	4.3	6.6	1	2.7	1	Auto Rifle										0	0.9987789988	0		127.17x						1.701183432
+205	Exotic primary	QSS Grenade Explosion		Strand	1.00x	635.8	663.1	663.1	1057.6	1622.1	1	660.0239808	1	Auto Rifle			1.144688645				1.005494505			0		0		90.84x				155.23792		338	1182	472.8
+206	Exotic primary	QSS Grenade Impact		Strand	1.00x	14.3	14.9	14.9	23.8	36.5	1	14.86	1	Auto Rifle										0		0								135.2
+207	Exotic primary	Bad Juju Explosion		Kinetic Primary	1.00x	657.3	758.9	758.9	1096.8	2167.2	1	366	1.775956284	Pulse Rifle	650.00									3.810394757		5.553236185					0.003204975066
+208		Edge of Concurrence Seeker		Arc	1.00x	1296.3	1296.3	1296.3	1296.3	1944.5	1	480.00	1	Glaive										3.809931346		5.551614247
+209	Exotic primary	NTTE Buddy		Kinetic Primary	1.00x	25.5	29.4	29.4	42.5	83.9	1	10.2	2.467946417	Pulse Rifle		174	1.333333333			290.000000x	2.222222222	446	3.417624521	650	4.980842912	109.3934911	Aggressive	144.2715	504.950	145.00	1.00505x	135.006	472.523	135.2	472.8	1.00143	1.07249
+210		Jotunn Burn pool		Energy	1.00x	27.9	36.2	36.2	36.2	38.8	7	8	1.51875	Fusion Rifle								393.0434783	3.411835749	573.0434783	4.974335749	109.5302013	Adaptive	127.1660	412.666	128.00	1.00656x	118.999	386.164	119.2	386.4	1.00169	1.07383
+211		Tesselation Impact		Energy	1.00x	133.1	173.1	173.1	173.1	185.4	1	58.03959658	1	Fusion Rifle		125	1.526251526	169	2.063492063	183	2.234432234	281	3.431013431	409	4.993894994	108.943662	Rapid Fire	90.8354	312.580	91.00	1.00181x	85.002	292.506	85.2	292.8	1.00233	1.06808
+212		Tesselation Detonation		Energy	1.00x	2167.6	2817.9	2817.9	2817.9	3019.2	1	945.0097693	1	Fusion Rifle												#DIV/0!	Izanagi's Burden x2	142.6284	697.761			164.43226	804.4284			0.00000	#DIV/0!
+213		Tesselation Catalyst		Energy	1.00x	114.7	149.1	149.1	149.1	159.8	1	50.00959986	1	Fusion Rifle												#DIV/0!	Izanagi's Burden x3	159.2918	919.832			197.7701	1142.0253			0.00000	#DIV/0!
+214		Ergo Sum Wolfpack Impact		Energy	1.00x	24.1	24.1	24.1	28.3	35.9	1	20.98924101	1	Sword												#DIV/0!	Izanagi's Burden x4	269.7156	1557.475			362.772439	2094.8330			0.00000	#DIV/0!
+215		Ergo Sum Wolfpack Detonation		Energy	1.00x	51.7	51.7	51.7	60.8	77.0	1	45.00149515	1	Sword		385.2173913	1.321047295	601.7391304	2.063577265	649.5652174	2.227589909	1000	3.429355281	1457.391304	4.997912566	87.24392819	Izanagi's Burden x4 + catalyst	323.6708	1869.040	324.000x		378.6058	2186.2627	378.8	2186.8	1.00051	0.85533
+216		Ergo Sum Arc Conductor		Arc	1.00x	137.7	137.7	137.7	162.0	266.8	4	120	1	Sword Projectile		309.0909091	1.320901321	482.2134387	2.060741191	520.9486166	2.226276139	802.3715415	3.428938212	1169.16996	4.996452823	170.7962529	New Land Beyond	259.849	715.859	260.0000x	1.00058x	154.98062	426.9564	155.2727273	426.9090909	1.00188	1.67447
+217		Ergo Sum Stormbringer		Arc	1.00x	229.6	229.6	229.6	270.1	342.1	1	200	1	Sword
+218		Ergo Sum Sacred Flame		Solar	1.00x	114.8	114.8	114.8	135.0	171.0	1	100	1	Sword			0.999889501		0.9986256518		0.9994102283		0.9998783825		0.9997079293												0.8008169233
+219		Ergo Sum Perfect Fifth		Solar	1.00x	191.1	191.1	191.1	224.9	284.8	1	166.5225	1	Sword			1.000110511		1.00137624		1.00059012		1.000121632		1.000292156					1.001812615	0.003421491171
+220		Ergo Sum Insectoid Robot		Void	1.00x	229.6	229.6	229.6	270.1	342.1	1	200	1	Sword																				378.6058	2186.2627
+221		Ergo Sum Telesto Impact		Void	1.00x	2.3	2.3	2.3	2.7	3.4	1	2	1	Sword
+222		Ergo Sum Telesto Detonation		Void	1.00x	60.4	60.4	60.4	71.1	90.1	1	52.65	1	Sword						643.9					3.782608696
+223		Ergo Sum Telesto Detonation 2??		Void	1.00x	94.1	94.1	94.1	110.7	140.3	1	82	1	Sword						93.98571429	0.979235124						Vehicle	Boss	Champion	Miniboss	Elite	Minor
+224		Ergo Sum Telesto Low Total		Void	1.00x	62.7	62.7	62.7	73.8	93.5	7	54.65	1	Sword													1.4230x	1.3219x	2.0630x	2.2280x	3.4300x	5.0000x
+225		Ergo Sum Telesto Chunk Total		Void	1.00x	105.6	105.6	105.6	124.3	157.4	7	92.03411258	1	Sword																				135.006	472.523
+226		Choir of One Radiolaria Explosion		Void	1.00x	395.0	412.0	412.0	657.1	775.2	1	410.0754433	1	Auto Rifle		6.075191753					4783 or 3071		44.500000x	1.500x				1.52019x						118.999	386.164
+227		Choir of One Radiolaria Pool		Void	1.00x	70.1	73.1	73.1	116.7	137.6	1	72.80	1	Auto Rifle									1372	20.55430712										85.002	292.506
+228		Ice Breaker explosion		Solar	1.00x	131.4	178.3	192.5	296.4	432.1	1	96	1	Sniper Rifle									16681	249.9026217		3.375	0							392.9942	2186.2603
+229	Exotic primary	Barrow Dyad Ambition impact		Strand	1.00x	27.8	27.8	27.8	36.9	51.7	6	20.55430712	1	Submachine Gun				9	2.283811902		2.283811902		5338	79.97003745
+230	Exotic primary	Barrow Dyad Ambition detonation		Strand	1.00x	337.5	337.5	337.5	448.1	628.8	6	249.9026217	1	Submachine Gun				21	11.90012484																1.000245773
+231	Exotic primary	Barrow Dyad Ambition total		Strand	2.00x	730.4	730.4	730.4	970.0	1361.0	6	270.4569288	1	Submachine Gun									2743	1.999271137
+232	Exotic primary	Barrow Dyad Resolve impact		Strand	1.00x	108.0	108.0	108.0	143.4	201.2	6	79.97003745	1	Submachine Gun				9	8.885559717		0		5338	79.97003745
+234																																		118.998	386.162
+235																																		135.006	472.522
+236																	0																	85.001	292.503
+238																				137	450	3.284671533			3.272
+239		Osteo Striga Poison tick total		Kinetic Primary	1.00x	1351.3	1486.4	1486.4	1486.4	1932.4	1	1501.085351	1	Osteo Poison
+240		Osteo Striga Poison tick 1		Kinetic Primary	1.00x	29.1	32.0	32.0	32.0	41.6	1	32.29503744	1	Osteo Poison
+241		Osteo Striga Poison tick 2		Kinetic Primary	1.00x	32.2	35.5	35.5	35.5	46.1	1	35.80605834	1	Osteo Poison
+242		Osteo Striga Poison tick 3		Kinetic Primary	1.00x	35.4	39.0	39.0	39.0	50.6	1	39.33720273	1	Osteo Poison
+243		Osteo Striga Poison tick 4		Kinetic Primary	1.00x	38.6	42.4	42.4	42.4	55.2	1	42.85669668	1	Osteo Poison
+244		Osteo Striga Poison tick 5		Kinetic Primary	1.00x	41.7	45.9	45.9	45.9	59.7	1	46.3687767	1	Osteo Poison
+245		Osteo Striga Poison tick 6		Kinetic Primary	1.00x	44.9	49.4	49.4	49.4	64.2	1	49.86814715	1	Osteo Poison
+246		Osteo Striga Poison tick 7		Kinetic Primary	1.00x	48.1	52.9	52.9	52.9	68.7	1	53.39823241	1	Osteo Poison
+247		Osteo Striga Poison tick 8		Kinetic Primary	1.00x	51.2	56.3	56.3	56.3	73.3	1	56.90183939	1	Osteo Poison
+248		Osteo Striga Poison tick 9		Kinetic Primary	1.00x	54.4	59.8	59.8	59.8	77.8	1	60.40862376	1	Osteo Poison
+249		Osteo Striga Poison tick 10		Kinetic Primary	1.00x	57.6	63.3	63.3	63.3	82.3	1	63.94294554	1	Osteo Poison
+250		Osteo Striga Poison tick 11		Kinetic Primary	1.00x	60.7	66.8	66.8	66.8	86.9	1	67.46985341	1	Osteo Poison
+251		Osteo Striga Poison tick 12		Kinetic Primary	1.00x	63.9	70.3	70.3	70.3	91.4	1	71.00311607	1	Osteo Poison
+252		Osteo Striga Poison tick 13		Kinetic Primary	1.00x	67.1	73.8	73.8	73.8	95.9	1	74.52578741	1	Osteo Poison
+253		Osteo Striga Poison tick 14		Kinetic Primary	1.00x	70.2	77.3	77.3	77.3	100.4	1	78.02409873	1	Osteo Poison
+254		Osteo Striga Poison tick 15		Kinetic Primary	1.00x	77.5	85.2	85.2	85.2	110.8	1	86.04490151	1	Osteo Poison
+255		Osteo Striga Poison tick 16		Kinetic Primary	1.00x	90.2	99.2	99.2	99.2	129.0	1	100.2256131	1	Osteo Poison
+256		Osteo Striga Poison tick 17		Kinetic Primary	1.00x	103.0	113.3	113.3	113.3	147.3	1	114.3978515	1	Osteo Poison
+257		Osteo Striga Poison tick 18		Kinetic Primary	1.00x	115.7	127.3	127.3	127.3	165.5	1	128.5436117	1	Osteo Poison
+258		Osteo Striga Poison tick 19		Kinetic Primary	1.00x	128.5	141.3	141.3	141.3	183.8	1	142.7402103	1	Osteo Poison
+259		Osteo Striga Poison tick 20		Kinetic Primary	1.00x	141.3	155.4	155.4	155.4	202.0	1	156.926747	1	Osteo Poison

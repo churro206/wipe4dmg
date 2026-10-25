@@ -1,0 +1,94 @@
+2	Category	Class	Name		DPS @ 10s	DPS @ 20s	DPS @ 30s	DPS @ 40s	DPS @ 50s	DPS @ 60s	DPS @ end	continues?	segment start	segment end	core DPS	Super	Exotic Armor 1	Exotic Armor 2	Set Bonus	Kinetic	Energy	Power	Other	Artifact Mods	Other Factors	Description	Loadout 1	Loadout 2	T1	T2	Boss	Notes
+3	Universal	H	21% Delirium																		N/A	21% DELIRIUM	N/A	Limit Break / Arc Compounding, Retinal Burn, Kinetic Impacts	Divinity, unravel	FTTC + Gear Shift x5, Ascension reloads used to keep stacks	LINK	LINK			CARL
+4	Universal	H	Ager's Scepter													N/A	N/A				N/A	N/A	N/A	Harsh Refraction	Divinity	shot until expended using Facet of Command reloads, Facet of Ruin shatters	LINK	N/A			CARL
+5	Universal	H	Anarchy Found Verdict																				N/A	Limit Break / Arc Compounding, Retinal Burn, Kinetic Impacts	unravel	Aggregate + Trench, SLS used for second super	LINK	LINK			CARL
+6	Universal	H	Anarchy Rapid Growth																		RAPID GROWTH		N/A	Limit Break / Arc Compounding, Retinal Burn, Kinetic Impacts	Divinity, unravel	manual reloads every other FTTC activation	LINK	LINK			CARL
+7	Universal	H	Anarchy The Helmsman																					Limit Break / Arc Compounding, Retinal Burn, Kinetic Impacts	Divinity, unravel	sprint canceling for almost all shots, no rally barricade or Lunafaction though, slow Retinal procs	LINK	LINK			CARL
+8	Specialized	H	Anarchy Uncivil Discourse																				N/A	Limit Break / Arc Compounding, Retinal Burn, Kinetic Impacts	Divinity	slow ending and not great usage of BnS Conspiracy, still telling though	LINK	LINK			CARL
+9	Universal	H	Bastion grapples																	BASTION	STARSCAPE NULL	N/A		Limit Break / Shieldcrush	N/A	200 Grenade/Melee swap, fully charged Bastion then regular 12P after	LINK	LINK			CARL
+10	Universal	H	Bequest																			BEQUEST		Limit Break / Argent Blade	Pack Hunter, unravel	Elemental Honing x5 from other weapons + unravel, 1H1L combo	LINK	LINK			CARL
+11	Specialized	H	Combination grapples														N/A				N/A	N/A		Conductive Cosmic Crystal, Arc Compounding, Retinal Burn	N/A	Combination Blow x3 + Biotic, could get more CCC stacks in a fireteam, cut short and extrapolated	LINK	LINK			Rathil
+12	Specialized	H	Cull's Shadow														N/A				N/A	N/A	N/A	N/A	N/A	Combination Blow x3 + Biotic, very short duration due to nature of damage, corruption shot applied	LINK	LINK			Rathil
+13	Support	H	D.A.R.C.I.																		RAPID GROWTH		N/A	Limit Break / Sniper's Meditation	Divinity, unravel	full DARCI mag, then two FTTC activations, one area denial, then re-mark for a few DARCI shots, could've used Fortune's instead	LINK	LINK			CARL
+14	Support	H	Divinity															N/A		N/A		N/A	N/A	Limit Break, Harsh Refraction	weaken before Divinity	tap-fired with Crackshot reloads, no loadout swap	LINK	N/A			CARL
+15	Universal	H	Ergo Sum																				N/A	Limit Break / Argent Blade, Shieldcrush	Pack Hunter	Unplanned vortex, 1H2L combo, darkness weapons used to regain Transcendence after end	LINK	LINK			CARL
+16	Universal	H	Eyes Unveiled																			EYES UNVEILED	N/A	Limit Break / Particle Reconstruction	Divinity, Tractor, unravel	only Honing x4, could have used void area denial and other honing source, also Fortune's instead of SLS since 3rd super not picked up	LINK	LINK			CARL
+17	Support	H	Gjallarhorn Conspiracy																				N/A	Limit Break / Sniper's Meditation	Divinity, unravel	Gjally > area denial > 2 Conspiracy cycle	LINK	LINK			CARL
+18	Universal	H	Grand Overture																				N/A	Limit Break / Arc Compounding, Retinal Burn, Kinetic Impacts	N/A	only one Aggregate stack, trace used for Retinal Burn activations	LINK	LINK			CARL
+19	Specialized	H	Heirloom AGS														N/A						N/A	Sniper's Meditation	N/A	no Expanding Abyss due to no weaken, could have used 1s2v surges instead, 20 shots total due to ammo	LINK	N/A			Koregos
+20	Specialized	H	Heirloom AGS (rings)														N/A						N/A	Sniper's Meditation	Hierarchy	no Expanding Abyss due to no weaken, could have used 1s2v surges instead, 20 shots total due to ammo	LINK	N/A			Koregos
+21	Universal	H	Hierarchy of Needs														N/A			N/A		N/A	N/A	Argent Quiver, Semi-Auto Striker	Hierarchy	just spamming at max draw through ring	LINK	N/A			Koregos
+22	Universal	H	Hierarchy of Needs (rings)														N/A			N/A		N/A	N/A	Argent Quiver, Semi-Auto Striker	Hierarchy	just spamming at max draw through ring	LINK	N/A			Koregos
+23	Specialized	H	Horseman Inhibitor														N/A						N/A	Elemental Overdrive, Refresh Threads	Divinity	pre-stacked Light Shift, Song of Flame, Whisper of Impetus reloads	LINK	N/A			CARL
+24	Universal	H	Ice Breaker Hezen																					Limit Break / Argent Ordnance, Heart of the Flame	Divinity, Gjallarhorn, unravel	123 rotation, dodge every 2 rockets	LINK	LINK			CARL
+25	Universal	H	Izanagi A499																				N/A	Limit Break / Sniper's Meditation, Kinetic Synthesis	Divinity, unravel	could've used Fortune's Favor but SLS constant pickups make this very reliable, Rupture is terribly inconsistent	LINK	LINK			CARL
+26	Universal	H	Legend of Acrius																				N/A	Limit Break / Arc Compounding, Retinal Burn	N/A	only two Aggregate stacks, trace used for Retinal Burn activations	LINK	LINK			CARL
+27	Specialized	H	Leviathan's Breath														N/A			N/A	N/A		N/A	Argent Quiver	Divinity	very slightly better than Orpheus	LINK	N/A			CARL
+28	Universal	H	Lord of Wolves																			N/A	N/A	Limit Break	Divinity, unravel	could've run Fulmination but not much difference, SLS every mag thanks to area denial and LoW interaction	LINK	LINK			CARL
+29	Universal	H	Merciless																			N/A	N/A	Limit Break	N/A	two kills, Impetus	LINK	LINK			CARL
+30	Universal	H	Microcosm																		N/A		N/A	Limit Break / Harsh Refraction	Divinity, unravel	two supers for extra Paracausal Imbuement, Crackshot reloads with Benevolence reproc for on-time dodge	LINK	LINK			CARL
+31	Universal	H	New Land Beyond																	NEW LAND BEYOND		N/A	N/A	Limit Break / Sniper's Meditation, Kinetic Synthesis	Divinity	sprint canceling	LINK	LINK			CARL
+32	Universal	H	One Thousand Voices																			ONE THOUSAND VOICES	N/A	Limit Break / Solar Fulmination	N/A	one area denial before super, Gizmo not really used, can easily be extended to 3+ minutes, manual tracking	LINK	LINK			CARL
+33	Universal	H	Parasite Conspiracy																				N/A	Limit Break / Sniper's Meditation	Divinity, unravel	mostly good BnS uptime, Parasite double fired often	LINK	LINK			CARL
+34	Universal	H	Parasite double aggressive																	ASTRAL HORIZON	FELWINTER'S LIE		N/A	Limit Break / Kinetic Synthesis	N/A	123 swaps, body shots, 2 knife charges + nade for Benevolence to get dodge back in time for shotguns	LINK	LINK			CARL
+35	Universal	H	Parasite double slug																	HERITAGE	UNVOICED		N/A	Limit Break / Kinetic Synthesis	N/A	Redirection + damage perk stacked, 123 swaps, no second super	LINK	LINK			CARL
+36	Universal	H	Parasite Praedyth																				N/A	Limit Break / Sniper's Meditation, Kinetic Synthesis	Divinity	All-Star with pre-pickup, Praedyth shot until timer almost out	LINK	LINK			CARL
+37	Universal	H	Parasite Something Something																	SOMETHING SOMETHING			N/A	Limit Break / Sniper's Meditation, Kinetic Synthesis	Divinity	iffy Fortune's uptime, basically same as Praedyth though	LINK	LINK			CARL
+38	Universal	H	Parasite Threat Level																				N/A	Limit Break / Kinetic Synthesis	Divinity, unravel	could've used Fortune's, ~11 Threat Level shots per Cascade activation, Parasite every ~2 activations	LINK	LINK			CARL
+39	Universal	H	Praxic Blade																			N/A	N/A	Limit Break / Kinetic Synthesis, Sword Storm Combo, Combination Argent Blade	N/A	standard 3L1H combo, dodge when available	LINK	LINK			CARL
+40	Specialized	H	Still Hunt															N/A		N/A		N/A	N/A	Sniper's Meditation, Incendiary Rifle Rounds, Solar Fulmination	Divinity	nearby orb generation mimics full VoG set fireteam to avoid manual reloads	LINK	N/A			CARL
+41	Specialized	H	Still Hunt A499															N/A					N/A	Sniper's Meditation, Incendiary Rifle Rounds, Solar Fulmination	Divinity	heavy focus on A499 after first two Still Hunt casts in order to preserve Accelerated Assault, stopped despite having ammo left	LINK	N/A			CARL
+42	Specialized	H	Still Hunt Hezen															N/A					N/A	Heart of the Flame, Argent Ordnance	Divinity, unravel	not max HotF stacks, standard rocket > super > rocket rocket start	LINK	N/A			CARL
+43	Specialized	H	Stryker's Sure-Hand																		N/A		N/A	Argent Blade / Limit Break	N/A	pre-stacked Rampage x3 and Redirection, 1H1L combo then super into pre-honed Izanagi, also tried 1H2L with Blade Focus, mention Graviton w/ Blade after	LINK	LINK			CARL
+44	Specialized	H	Submersion														N/A					SUBMERSION	N/A	Argent Quiver, Elemental Overdrive, Semi-Auto Striker	Divinity	SLS using area denial + LoW, double arrow every dodge cycle, Overdrive shard from shatter grenade	LINK	N/A			CARL
+45	Universal	H	Sullen Claw																		N/A		N/A	Limit Break / Argent Blade	unravel	just 1H2L spam, second super barely at end	LINK	LINK			CARL
+46	Universal	H	Temporal Clause																		N/A	TEMPORAL CLAUSE	N/A	Limit Break / Heart of the Flame	Divinity, unravel	FTTC + TL + Fail-Deadly dump as long as possible, pre-stacked origin	LINK	LINK			CARL
+47	Universal	H	Terciopelo-4bl																		N/A		N/A	Limit Break / Argent Blade, Solar Fulmination	Tractor, unravel	Burning + Aggregate, 1H2L spam	LINK	LINK			CARL
+48	Universal	H	The Chaperone																	THE CHAPERONE		N/A	N/A	Limit Break / Kinetic Synthesis	Divinity	mention Spire doubled bonus on non-Div bosses, otherwise literally just holding LMB in brick range with dodge + area denial every once in a while for super	LINK	LINK			CARL
+49	Universal	H	The Lament																		N/A	THE LAMENT	N/A	Limit Break / Argent Blade, Solar Fulmination	unravel	2L1H repeatedly, slowed rate to avoid fourth combo lacking energy	LINK	LINK			CARL
+50	Universal	H	The Queenbreaker																		N/A		N/A	Limit Break / Arc Compounding, Retinal Burn	Divinity, unravel	delayed second super, couldn't find a way to eke out a little more, a little awkward, otherwise very standard	LINK	LINK			CARL
+51	Universal	H	Tractor Anarchy swap																					Limit Break / Arc Compounding, Retinal Burn, Kinetic Impacts	Tractor, unravel	very questionable Fortune's uptime due to lack of healing rift, otherwise basically just Anarchy Found Verdict with extension, subtracted Nighthawk chunk	LINK	LINK			CARL
+52	Universal	H	Truth																		N/A		N/A	Limit Break / Argent Ordnance	unravel	no Fortune's for first three rockets, sprint canceling for faster ADS, Reaper's Tithe x4 and Truthseeker prepped	LINK	LINK			CARL
+53	Specialized	H	Turncoat Bellowing																	N/A		BELLOWING GIANT	N/A	Limit Break / Argent Ordnance	Sentinel, Pack Hunter	Forge's Kin x3 pre-stacked, Sentinel reloads, Lasting + Reaper's Tithe x4, Turncoat buff on all but one rocket	LINK	LINK			CARL
+54	Specialized	H	Turncoat Edge															N/A					N/A	Limit Break	N/A	excludes initial Cascade activation before super, only 2 GL mags, no pre-stuck nades	LINK	N/A			CARL
+55	Specialized	H	Turncoat Heretic															N/A				HERETIC	N/A	Argent Ordnance	Divinity, Pack Hunter	pre-stacked Light Shift + Supercharged + Gear Shift x5, theoretically doable with Cluster Heretic and Sentinel, lot of work though, last rocket a little messy + no Turncoat	LINK	N/A			CARL
+56	Specialized	H	Turncoat Hezen (Aggregate)															N/A		N/A			N/A	Heart of the Flame, Argent Ordnance	Pack Hunter, unravel	last 2 rockets no Turncoat buff, could have swapped to Fortune's but questionable worth	LINK	N/A			CARL
+57	Specialized	H	Turncoat Hezen (Bipod)															N/A		N/A			N/A	Heart of the Flame, Argent Ordnance	Pack Hunter	3-4 rockets no Turncoat buff, otherwise just a straightforward dump, could have swapped to Fortune's but questionable worth	LINK	N/A			CARL
+58	Specialized	H	Turncoat Hezen (StL)															N/A		SERVICE REVOLVER			N/A	Heart of the Flame, Argent Ordnance	Pack Hunter, unravel	8 Turncoat rockets then unbuffed, 12 total, could have swapped to Fortune's but questionable worth	LINK	N/A			CARL
+59	Specialized	H	Whirling Maelstrom													N/A	N/A	MOIRAI		N/A	N/A	N/A	N/A	Threaded Blast, Pack Tactics, Refresh Threads	N/A	spammed with help of Mindspun slicewire grenades from rallying warlock	LINK	N/A			CARL
+60	Universal	H	Whisper of the Worm																		N/A		N/A	Limit Break / Sniper's Meditation, Incendiary Rifle Rounds, Solar Fulmination	unravel	LMB spam, not much else to note	LINK	LINK			CARL
+61	Specialized	H	Winterbite													N/A	N/A			N/A	N/A	WINTERBITE	N/A	No Bell	N/A	Combination Blow x3 + Halberdier's + No Bell + Facet of Ruin, 2L1H combo	LINK	LINK			Rathil
+62	Specialized	H	Witherhoard AGS														N/A						N/A	Sniper's Meditation	N/A	no Expanding Abyss due to no weaken	LINK	N/A			Koregos
+63	Specialized	H	Witherhoard AGS (rings)														N/A						N/A	Sniper's Meditation	Hierarchy	no Expanding Abyss due to no weaken	LINK	N/A			Koregos
+64	Universal	H	Wolfsbane																		N/A		N/A	Limit Break / Argent Blade, Solar Fulmination	unravel	terrible Fortune's Favor uptime due to no healing rift, otherwise standard 10 light recharge swap cancel combo	LINK	LINK			CARL
+65	Universal		Anarchy aggressive shotgun																							Found Verdict	https://dim.gg/ojgtcma/Stasis	https://dim.gg/ehv76ci/Void	https://dim.gg/wc5izgi/Epsilon	https://dim.gg/jgyiigq/Stasis	CARL	Overdrive, NEED TITAN GOA
+66	Specialized		Anarchy Antedate																							?			https://dim.gg/bug4zlq/Strike	https://dim.gg/u6nnmxy/Vanguard	Koregos	Arc Compounding + prismatic
+67	Specialized		Anarchy double GL																							Storm's Keep			https://dim.gg/xcvcfrq/Strike		CARL	pre-stacked Gear Shift x5
+68	Specialized		Collective Hezen																							?			https://dim.gg/xvosq6y/Arc	https://dim.gg/pifvfxa/Delta	CARL
+69	Support		DARCI																							?	https://dim.gg/2g6ho7i/Vanguard		https://dim.gg/m24cjdy/Arc	https://dim.gg/oxconma/Delta	CARL
+70	Support		Divinity																							?	https://dim.gg/gwjw37a/Vanguard		https://dim.gg/kbhtmfq/Arc	https://dim.gg/4c2emwi/Delta	CARL
+71	Universal		Dragon's Breath specials																							?	https://dim.gg/cknxxny/Beta	https://dim.gg/4vmm6dy/Delta				rocket > area denial > 4 rapid sniper > ability > repeat
+72	Universal		Ergo Sum																							?	https://dim.gg/zg46mpi/Vanguard				CARL
+73	Specialized		Euphony rocket																							?	https://dim.gg/acernua/Stasis				CARL
+74	Universal		Eyes Unveiled																							?	https://dim.gg/fgmxjdq/Raid				CARL
+75	Support		Fafnir																							?	https://dim.gg/us66agy/Vanguard	https://dim.gg/uf7576i/Strand			CARL
+76	Support		Gjallarhorn																							?	https://dim.gg/y7aev5i/Vanguard		https://dim.gg/v3dpajy/Arc	https://dim.gg/cz2hfri/Delta	CARL
+77	Universal		Hierarchy of Needs																							one ring	https://dim.gg/bzsazii/Stasis	https://dim.gg/p6yaxrq/Void	https://dim.gg/svngcci/Gamma	https://dim.gg/goi5nva/Stasis	Koregos
+78	Universal		Hierarchy of Needs																							two rings	https://dim.gg/bzsazii/Stasis	https://dim.gg/p6yaxrq/Void	https://dim.gg/svngcci/Gamma	https://dim.gg/goi5nva/Stasis	Koregos	tested with PotBS as well
+79	Universal		Izanagi A499																							?	https://dim.gg/ao5t2ja/Support		https://dim.gg/knya6xi/PvP	https://dim.gg/xjcmcwi/Void	CARL	StL Lotus used, test Helm
+80	Specialized		Le Monarque																							Storm's Keep, Flashover			https://dim.gg/eeinaai/Gamma	https://dim.gg/2wj5dia/Stasis	Koregos
+81	Specialized		One Thousand Voices																							?	https://dim.gg/mw72wpq/Prismatic		https://dim.gg/ihidjqy/Strike	https://dim.gg/hxbnuai/Vanguard	CARL	NEED FIXED DDT, also test PotBS
+82	Universal		Outbreak Perfected																							?	https://dim.gg/dcvarfq/Support				Koregos	Command used to avoid manual reloads, RETEST MAX?
+83	Specialized		Parasite No Survivors																							?			https://dim.gg/algotxq/Alpha	https://dim.gg/ds7bvmy/Dungeon	Koregos	no mag perk but 35 -> 39 is whatever, SK arc
+84	Universal		Parasite Threat Level																							Threat Level	https://dim.gg/zfs3ttq/Support	https://dim.gg/jj6y7ty/Support			CARL
+85	Universal		Praxic Blade																							?	https://dim.gg/r5h6oza/Support				CARL
+86	Specialized		SoF Guile																							?	https://dim.gg/zgfnruq/Support				CARL
+87	Universal		StL Cluster Hezen																							?					CARL
+88	Specialized		Terciopelo-4bl																							?	https://dim.gg/v7m7iwa/Support	https://dim.gg/6rtqzja/Prismatic			CARL
+89	Universal		The Lament																							?	https://dim.gg/uhywg5i/Vanguard				CARL
+90	Universal		Thunderlord																							?			https://dim.gg/daq4xxq/PvP	https://dim.gg/nohro3i/Void	CARL
+91	Support		Tractor																							?	https://dim.gg/ifrxltq/Vanguard	https://dim.gg/5wmbijy/Strand			CARL	Overdrive
+92	Support		Tractor swap																							?	https://dim.gg/o3l2h2q/Vanguard	https://dim.gg/bwwh42i/Strand			CARL
+93	Universal		Truth																							?	https://dim.gg/iq57neq/Stasis	https://dim.gg/x77y5da/Void	https://dim.gg/qd6mguq/Alpha	https://dim.gg/e22czaq/Solar	CARL	Command to get one 5 rocket proc, test Helm
+94	Universal		Whirling specials																							?	https://dim.gg/vscqhrq/Stasis	https://dim.gg/hjp4tlq/Void			CARL	area denial + Conspiracy swaps
+95	Specialized		Wormgod hammers																							?			https://dim.gg/y6irjzq/PvP		Warpriest

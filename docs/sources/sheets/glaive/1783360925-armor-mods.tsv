@@ -1,0 +1,62 @@
+2		Interaction? (Trigger/Benefit)	Shot	Shield	Melee	Notes
+4	HELMET
+5		Hands-On					Action can proc it and will benefit from it
+6		[Any] Ammo Finder				Glaive melee counts as a primary, except Winterbite melee counts as a heavy	Action cannot proc it, but will benefit from it
+7		[Any] Ammo Scout					Action can proc it, but will not benefit from it
+8		Kinetic Siphon					Action cannot proc it and will not benefit from it
+9		[Elemental] Siphon					No Intended/Possible interaction
+11	ARMS
+12		Focusing Strike
+13		Heavy Handed
+14		Impact Induction
+15		Shield Break Charge
+17	CHEST
+18		Lucent Blades				Shot hits gives additional 20/30/35% more Shield Energy. (Stacks additively with Immovable Object)
+20	LEGS
+21		Kinetic Surge
+22		[Elemental] Surge
+24	CLASS ITEM
+25		Reaper				Must kill foe within 10s after using class ability (10s cooldown)
+27	OTHER
+28		Transcendent Blessing [DC]				[+5%] Damage per mod, max 5 [+25%]
+29		Sect of Force				[+20%] Damage to enemies marked by Aeon Swift/Safe/Soul
+31	RAID
+32		Taken Invigoration [LW]
+33		Taken Repurposing [LW]
+34		Relay Defender {Enhanced} [GoS]				[+5%] {+10%} Damage per Mod, max 5 [+25%] {+50%}
+35		Superstructure Defender [VoG]
+36		Superstructure Medic [VoG]
+37		Superstructure Striker [VoG]
+38		Vex Breaker [VoG]
+39		Will of Light [KF]				[+10%] Damage per mod, max 5 [+50%]. [Kinetic] works for Melee. [Element] works for Shot
+40		Herd Thinner [DSC]				[+5%] Damage per mod, max 5 [+25%]
+41		Umbral Sharpening [VotD]				[+20/25/35/40/40%] Damage per mod
+42		Cabal Extinguisher [RoN]				[+6/12/18/24/30%] Damage per mod vs Cabal
+43		Chill Out [RoN]				Spawns small Stasis crystal on foe
+44		Focused Light [RoN]				[+4/8/12/16/20%] Damage per mod
+45		Radiant Heat [RoN]				Radiant for 10s
+46		Volatile Volleys [RoN]				Volatile Rounds for 10s
+47		Violent Pour [CE]				Makes an Orb of Power
+48		Arm's Reach [SE]
+49		High-Tier Elimination [SE]
+50		Stacked [SE]
+52	SET BONUS
+53		Augmented Servos				Legacy's Oath 2-pc
+54		Balestra				Swordmaster 2-pc. Inflicts Exhaustion for 5 sec
+55		Between Poles				CODA 2-pc
+56		Cauterize				Lustrous 4-pc
+57		Concussive Rounds				Techsec 2-pc
+58		Cursed Fist				Crota's Memory 2-pc
+59		Iaido				Bushido 2-pc
+60		Lucent Swarm				Taken King 4-pc
+61		Lucent Transformation				Veritas 2-pc
+62		Melee Conduction				Apostate's Blade 4-pc. Glaive Melee will Scorch
+63		Nightmarish Power				Dreambane 2-pc
+64		Photogalvanic				Lustrous 2-pc
+65		Power of the Son				Crota's Memory 4-pc
+66		Siphoning Touch				Resonant Fury 2-pc
+67		So Very Thin				CODA 4-pc
+68		Stesso Tempo				Swordmaster 4-pc
+69		Taking Initiative				Dark Age 2-pc
+70		Truth to Power				Techeun's Regalia 4-pc
+71		Wrecker				Techsec 4-pc

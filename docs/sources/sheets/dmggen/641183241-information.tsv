@@ -1,0 +1,96 @@
+3		Destiny 2 PvE Legendary Weapon Damage Generator
+4	Spreadsheet created and maintained by RokDC and Maeix - Contact at the bottom
+6	Update following the number crunching with EoF will probably take a bit of time as every weapon will need retesting. Still hope the new shooting range streamlines this process for faster and more reliable updates in the future!
+7	Version:	3.1
+8	Most recent version available:	3.1
+10	Link to the original sheet for updates:	https://docs.google.com/spreadsheets/d/1rY_iChu08CVnIMfHliZQwup10-GnmPtEu5FG0DNy8VM/edit?usp=sharing
+11	Hyperlink to share the sheet:	https://destiny2.science/damage-generator
+12	Get started	You can browse the public version of the spreadsheet. For full access to the sheet and all of its features you need to make a personal copy. / (File > Create a copy; Google account required) / / Your personal copy will notify you about future updates. / Please do not request access to the original spreadsheet.
+13		You can find a tutorial on how to use this spreadsheet on YouTube (outdated)
+14		RokDC and this spreadsheet on PvE: Podcast Versus Enemies
+16	Spreadsheet Overview
+17	Database	Central HUB - Includes all Special and and Heavy Legendary Weapons, their base data and various Damage metrics
+18	Main features	- Select an encounter for discrete damage output
+19	- Apply global modifiers regarding magazine size, reserves or reload speed
+20	- Sort and Filter by many parameters
+21	- Apply Buffs and Debuffs to the calculations
+22	- Craft weapons by selecting Element and Perks
+23	Buffs/Debuffs	Advanced buff/debuff stacking calculator, can be applied to the 'Database'
+24	Damage Chart	Visualisation of Damage and DPS of all weapons in the database
+26	Changelog
+27	2024-11-09 v3.1	Addition of missing (Aggressive Glaive, Aggressive Sword) and new (Heavy Burst Shotgun) Archetypes
+28	2024-10-27 v3.0	Rework of the spreadsheet including removal of any exotic weapons and addition of new features - See more in the v3.0 News above
+29	2024-06-06 v2.7	Tentative Update of the Database based on the Patchnotes for Final Shape - In-game testing will take place after the Raid race; Visual comparisons have not been updated yet nor has the Scaling feature
+30	2024-05-16 v2.6.5	Various Hotfixes (thanks to users crossboy and reichembach on Discord); Adjustements/corrections
+31	2024-04-18 v2.6.4	Into the Light patch; GL Impact changes; Micro-Missile frame added; 1KV reserves
+32	2024-03-15 v2.6.3	Implementing undocumented changes to special GLs; Unclear if intended from Bungie, might get rolled back/fixed at any time
+33	2024-03-06 v2.6.2	Hotfix for Update 2.6.1; Anarchy ticks, Wendigo, Backend stuff
+34	2024-03-06 v2.6.1	Midseason patch for Season of the Wish; Rocket and HGL Reserves, Spike Grenades; Misc;
+35	2023-11-29 v2.6	Season of the Wish launch update; Swords; Glaives; New Exotic; Misc
+36	2023-09-17 v2.5.1	Sword update; Updating combos and resulting damage values after the charge time changes; Adding in recently added sword archetypes; Addition of Crota's End encounters
+37	2023-08-24 v2.5	Season of the Witch patch; New exotic weapons and reserve changes
+38	2023-06-25 v2.4	Catch-up update for timelines and Buffs and Debuffs, now up to date with Lightfall and Season of the Deep sandbox changes
+39	2023-05-31 v2.3	Provisional update for Season of the Deep; Includes weapon changes; Timelines (Visual Comparison) not updated yet; Buffs/Debuffs still not updated
+40	2023-04-28 v2.2.3	Implementing mid season patch - Reserve changes; Trace rifle precision multiplier changes
+41	2023-04-05 v2.2.2	Hotfix; Corrected Scaling for SoW and RoN
+42	2023-03-19 v2.2.1	Addition of new LF exotics and catalysts, addition of RoN encounters, Updated timelines
+43	2023-03-03 v2.2	Provisional sandbox update of the database (Lightfall launch); New Scaling for master content
+44	2023-02-05 v2.1.2	Several hotfixes/tweaks; Replacing Inteference VI with Wendigo GL3; Some backend preparations for Lightfall release
+45	2022-12-22 v2.1.1	Several hotfixes over the last couple days; addition of Target Lock to the crafting feature - happy holidays everyone
+46	2022-12-12 v2.1	Season of the Seraph sandbox changes, ending beta phase of the scaling feature
+47	2022-11-26 v2.0.1 (beta)	Various improvements / additions / hotfixes to the new encounter scaling feauture, addition of elemental burn modifiers to the Buffs/Debuffs section
+48	2022-11-25 v2.0 (beta)	Implementation of a damage scaling feature that includes power level scaling as well as damage and precision modifiers from all bosses. Feature is in beta state, please contact us for any corrections/bugs. Scaling is based on Mossys findings, see 'How to use'
+49	2022-10-20 v1.13	Mid-season patch 6.2.5 (LoW buff); Fixes to the interaction of Boss Spec and the Crafting feature (via Fading Shadow)
+50	2022-09-18 v1.12	Few minor corrections (Izanagi Reload, Rocket visual RPM)
+51	2022-09-12 v1.11	Updated patch notes numbers with actual ingame testing (small deviations); Updated Lament (new combo); Addition of Thunderlord Catalyst; Addition of Delicate Tomb
+52	2022-08-24 v1.10	Updated for Season of Plunder; Trench Barrel on Acrius (Please check 'How To Use' for details), Heavy GL buff (Intended for 10%) and more; New curated RL rolls, corrections to Trace RPM. Thunderlord Catalyst and Delicate Tomb will follow in a later update
+53	2022-07-21 v1.9.7	Hotfix thanks to feedback - Additional Legend of Acrius damage instance (via Darkflameo), Tractor Cannon adjustments and some background changes
+54	2022-07-21 v1.9.6	Implementation of patch 4.1.5 (Solstice) - Stormchaser nerf, Pellet shotgun buff and more
+55	2022-06-04 v1.9.5	Few Hotfixes, Addition of Heartshadow (via azmatr4z)
+56	2022-06-04 v1.9.4	Addition of the new Radiant buff, Addition of Aggressive LFRs and Stormchaser
+57	2022-05-25 v1.9.3.1	Quick hotfix for some issues that slipped through the last one, updated Ager's Scepter and corrected the Rocket Launcher values. Apologies for the double update.
+58	2022-05-25 v1.9.3	Updated to Season of the Haunted Weapon Sandbox, Corrected Forerunner to use Headshot Value (Thanks Jay), Prometheus DoT is currently ignored due to bug. Timelines are not up to date, as such visual comparison will be incorrect until a later update.
+59	2022-04-28 v1.9.2	Magazine and reserves QA, correcting some values
+60	2022-03-15 v1.9.1	Hotfix for the interaction of Weaken and Divinity (Weaken does not override Divinity anmyore); Some corrections based on feedback
+61	2022-03-12 v1.9	Addition of a weapon build / perk selection feature ('Crafting'); replaces most curated rolls. Implementation of patch 4.0.0.3 as well as more undocumented sandbox changes (via CourtRoom)
+62	2022-03-02 v1.8.2	Hotfix for an issue where applying buffs would cause an error on rocket launchers; Changed Wardcliff Coil values caused by an undocumented change (rollback in v1.9)
+63	2022-02-27 v1.8.1	Changing Bannershield to 40% in the buff calculator (via CourtRoom)
+64	2022-02-26 v1.8	Implementation of patch 4.0.0.1 (Witch Queen) - Addition of new exotic weapons and the Glaives, other weapon sandbox changes as well as changes to buffs and debuffs. Curated rolls inlcuding crafting will follow after the raid weapons are released.
+65	2022-01-16 v1.7.2	A number of cosmetic changes; Addition of Arbalest catalyst (+1 in the magazine)
+66	2022-01-12 v1.7.1	Hotifx for the Buff/Debuff redirection which linked to the tab in the original spreadsheet instead of the tab in your copy before
+67	2022-01-10 v1.7	Adding an advanced Buff/Debuff selection tab that can be applied to the Database. Buffs and Debuffs are now opt-in. See 'How to use' for more information
+68	2021-12-14 v1.6.1	Seperating Particle Deconstruction and Divnity Stacking into 2 seperate toggles; Gradients in the Database tab are now colorblind friendly; Minor adjustments to some values
+69	2021-12-10 v1.6	Implementation of patch 3.4.0 (Gjallarhorn, Wolfpack Rounds, LFRs, Shotguns, Vorpal etc.)
+70	2021-10-18 v1.5.3	Addition of Reed's Regret with Firing Line now that the perk is fixed. Note that Reed's Regret does not work with Focusing Lens in a Well of Radiance as it is a stasis (=/= light) weapon. Addition of Canis Major with Vorpal as a slightly inferior but more consistent alternative to Full Court on a Grenade Launcher.
+71	2021-09-24 v1.5.2	Addition of Ager's Scepter (Will Given and normal mode), Replacing Hezen Vengeance with Ascendancy now that Explosive Light is fixed
+72	2021-09-08 v1.5.1	Implementation of the artifact mod 'Particle Deconstruction' as a toggle (opt-in)
+73	2021-08-26 v1.5	Implementation of Season of the Lost sandbox changes (Patch 3.3.0), addition of Lorentz Driver
+74	2021-07-24 v1.4.4	Reload timings QA - Checked all measured reload timings against the reload formulas and doing small adjustments where necessary; Addition of Trace Rifle mods
+75	2021-07-15 v1.4.3	Addition of Uzume RR4 (Replacing Adored)
+76	2021-07-15 v1.4.2	Addition of the 'Damage Chart' diagram
+77	2021-07-10 v1.4.1	Implementation of mid-season patch 3.2.1 (Sleeper buff etc.), addition of several new weapon rolls (Crownsplitter, VoG weapons). Changed default database sorting to 'Optimized DPS'
+78	2021-05-12 v1.4	Implementation of Season of the Splicer Sandbox changes (LFR Buff, Vortex and Lament Heavy nerf)
+79	2021-05-01 v1.3.5	Hotfix 'Optimized DPS' for some specific perk/weapon combinations; Addition of Royal Entry with Clown Cartridge
+80	2021-04-30 v1.3.4	Addition of 'Optimized DPS' metric (ending on the last full magazine); Intermediate calculations for the discrete encounter damage are now hidden by default.
+81	2021-04-11 v1.3.3	Minor adjustments/corrections to some damage models; Addition of Frozen Orbit, Salvager's Salvo
+82	2021-04-10 v1.3.2	Addition of curated weapon rolls with new perks (reconstruction, lasting impression); Adjusted slug shotgun total reserves (from 16 to 20)
+83	2021-04-02 v1.3.1	Sword update; sharpening some assumptions and improving some rotation models for swords for more precise values.
+84	2021-03-31 v1.3	Implementation of Season of the Chosen Sandbox changes (RL and Swords) as well as addition of all missing post-DSC release exotics
+85	2020-11-27 v1.2.3	Updated all damage values for BL (Most moved by tiny fractions due to rounding, others seemingly silently nerfed, rocket launcher impact damage especially). Added Thunderlord adaptive RPM and lightning damage. Updated Prospector to include DoT (Thanks to user Marblewight for noticing the error and letting us know)
+86	2020-11-26 v1.2.2	Addition of BL Exotics, updated how to use for those exotics. Added approximate Taniks duration as a boss encounter.
+87	2020-11-18 v1.2.1	Addition of Adored
+88	2020-11-18 v1.2	Implemented BL Sandbox Changes (Rocket Launcher Reserves, Merciless Reserves, Vortex Frame Heavy Attack, Leviathan's Breath Catalyst)
+89	2020-11-02 v1.1.1	Adjusted Boss Spec Mod to 7,768% (was 8%)
+90	2020-10-30 v1.1	Public release
+91	2020-10-27 v1.0.4	Addition of the Izanagi's Burden / Auto-Loading Grenade Launcher combination, Addition of 'How-To-Use'-tab, Addition of Caster Frame swords
+92	2020-10-24 v1.0.3	Addition of selected Swords, Addition of 'Sustained DPS'
+93	2020-10-22 v1.0.2	Addition of selected legendary 'god rolls' (marked blue); Addition of selectable Boss Spec for legendary weapons
+94	2020-10-16 v1.0.1	Addition of selectable raid encounters
+95	2020-10-15 v1.0	Private release
+97	Upcoming fixes / additions / To-do	Features we want to implement, no ETA
+98	Visual comparison	Decrease visual intervals for the graph to 0,1s
+100	Disclaimer / / Remarks	All data got collected manually and therefore can include mistakes like false values or information. If you happen to notice one, please contact us! Some of the parameters are relatively hard to determine precisely and we obviously can't guarantee them to always be correct. As most of the data on timings got determined using frame counting on 60fps recordings, the general margin of error is 16.66ms. This is even more of an issue as some of the values listed in game turned out to be misleading or straight up wrong. (Example: Truth is listed as 15 RPM while it actually is 45 RPM). Even the slightest change in values or assumptions can cause significant movement among the rankings so judge the weapons with caution and common sense and don't blindly rely on this spreadsheet.
+101		Some (exotic) weapon mechanics exceed what the formulas can handle and therefore got slightly simplified. Read more on those cases in the 'How-To-Use'-tab
+102		The numbers in this spreadsheet require (almost) perfect conditions and execution in most cases. Consider them the theoretical ceiling. Ease-of-use is not a factor in this framework but will always be in praxis.
+103		The scope of this spreadsheet was to make weapons more comparable by applying coherent and consistent measures and calculations. The modifiers allow for indidividual settings and the assumptions made regarding several parameters try to be as close to actual Raid Boss encounters as possible.
+105	Contact	For any questions/remarks/corrections please contact @maeix on Discord or visit the Destiny Science Discord server (Hivemind)

@@ -1,0 +1,12 @@
+2	Welcome to my boss DPS spreadsheet! Here you'll find the most accurate boss damage testing that currently exists in Destiny 2. Feel free to make a copy (File > Make a copy) if you want to play around with the data yourself. Here's a brief overview of the tabs:	WATCH: How does this spreadsheet work?	Current News
+3	Changelog	History of changes made to the spreadsheet.	If you have any suggestions or questions, feel free to reach out to me at @theaegisrelic on Discord.	Rotation testing done, doing some SK stuff + data analysis.
+4	Weapons	Base values for every weapon damage source.
+5	Abilities	Base values for every ability damage source.
+6	Scaling	How well certain damage sources stack with multiple users.
+7	Sustained	Simulated DPS of single damage sources.
+8	Swap	Simulated DPS of rotation components.
+9	Bosses	Health values and considerations.
+10	Pack Hunter	Pack Hunter scaling and stacking tests.
+11	Bolt Charge	Testing Bolt Charge generation rate and DPS from various sources.
+12	Historical	Comparisons to pre-nerf/patch DPS options.
+13	Testing	Clipboard dump for temporary experiments.

@@ -1,0 +1,12 @@
+2	This page is meant to detail the functions and math used in portions of this spreadsheet
+3	Function	Visualization	Notes
+4	timeToEmpty		Considers reloading the instant you fire the final round in a magazine/reserves.
+5	timeToEmpty_fusions	scripted function	Considers reloading the instant the final bolt is fired in the final burst
+6	To better visualize differences in sustained DPS with FTTC, TT, FTTC+TT, and with damage buffs: https://www.desmos.com/calculator/nqpj83bofj
+7	tripleTap		Gives the effective magazine size due to triple tap as long as magazine > 0
+8	fourthTimesTheCharm		Gives the effective magazine size due to Fourth Time's the Charm as long as magazine >= 2
+9	FTTCplusTT		Gives the effective magazine size due to Fourth Time's the Charm and Triple Tap working together, as long as magazine >= 3
+10	cumSum	scripted function	"Cumulative Sum," adding all integers from one to the last, inclusive
+11	For weapons that have a damage-over-time effect that applies on each shot, the calculation is simply the sum of the damage over time effect plus any other damage (such as from the round) divide over the total time. / To visualize this, imagine the timeline for Alethonym. You have the moment of time between firing the weapon and the time to finish reload right after. / The DoT effect overlaps past the end of the moment and wraps back past the beginning of the moment. / The result is that the entire DoT effect is contained in the time to reload.
+12	To see how various weapons might compare with True DPS and Sustained DPS as functions of time (WITH reloading on final round), see: https://www.desmos.com/calculator/oldlhrorxi
+13	To see how various weapons might compare with Theoretical Total Damage as a function of time (WITH reloading on final round), see: https://www.desmos.com/calculator/datpqv7o41

@@ -1,0 +1,32 @@
+2		Element	Icon	Grenade	T0 Cooldown	T3 Cooldown	Flat Gain Factor		Flat Gain Factor	With 100 grenade Stat	Grenade Abilities
+3		Arc		Lightning Grenade	220s	152s	50.0%		50.0%	58.0%
+4		Arc		Pulse Grenade	175s	121s	62.5%		62.5%	72.5%
+5		Arc		Storm Grenade	175s	121s	62.5%		75.0%	87.0%
+6		Arc		Arcbolt Grenade	152s	105s	75.0%		85.0%	98.6%
+7		Arc		Skip Grenade	152s	105s	75.0%		87.5%	101.5%
+8		Arc		Flashbang Grenade	132s	91s	87.5%		100.0%	116.0%
+9		Arc		Flux Grenade	106s	73s	87.5%
+10		Exotic		Mothkeeper's Wraps	106s	73s	100.0%
+11		Solar		Solar Grenade	220s	152s	50.0%		Almost all values are tested by RyTako. See their similar spreadsheet here:
+12		Solar		Thermite Grenade	175s	121s	62.5%		https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A/edit?usp=sharing
+13		Solar		Tripmine Grenade	175s	121s	62.5%
+14		Solar		Incendiary Grenade	152s	105s	75.0%
+15		Solar		Swarm Grenade	152s	91s	75.0%
+16		Solar		Healing Grenade	132s	91s	87.5%
+17		Solar		Fusion Grenade	106s	73s	100.0%
+18		Solar		Firebolt Grenade	93s	64s	100.0%
+19		Stasis		Coldsnap Grenade	175s	121s	62.5%
+20		Stasis		Glacier Grenade	175s	121s	62.5%
+21		Stasis		Duskfield Grenade	132s	91s	87.5%
+22		Stasis Aspect		Bleak Watcher	175s	121s	62.5%
+23		Strand		Shackle Grenade	220s	152s	50.0%
+24		Strand		Threadling Grenade	175s	121s	62.5%
+25		Strand		Grapple	119s	82s	85.0%
+26		Void		Axion Bolt	220s	152s	50.0%
+27		Void		Vortex Grenade	220s	152s	50.0%
+28		Void		Unbreakable	220s	152s	50.0%
+29		Void		Suppressor Grenade	175s	121s	62.5%
+30		Void		Void Spike	175s	121s	62.5%
+31		Void		Void Wall	175s	121s	62.5%
+32		Void		Magnetic Grenade	152s	105s	75.0%
+33		Void		Scatter Grenade	152s	105s	75.0%

@@ -1,0 +1,139 @@
+2	This page is dedicated as a TODO list for the spreadsheet. It's intention is to let you know what the current status of the spreadsheet is.
+3	Task	Status	Date
+5	General
+6	Retest Primaries	Partially Complete
+7	Retest Specials	Partially Complete
+8	Retest Power	Partially Complete
+9	Retest Swords	Partially Complete
+11	Primary Ammo
+12	Auto Rifles (Legendary)	Done	2026-06-18
+13	SMGs (Legendary)	Done	2026-06-18
+14	Pulse Rifles (Legendary)	Done	2026-06-18
+15	Scout Rifles (Legendary)	Done	2026-06-18
+16	Hand Cannons (Legendary)	Done	2026-06-18
+17	Sidearms (Legendary)	Done	2026-06-18
+18	Bows (Legendary)	Done	2026-06-18
+20	Auto Rifles (Exotic)	Done	2026-07-07
+21	SMGs (Exotic)	Done	2026-07-07
+22	Pulse Rifles (Exotic)	Done	2026-07-07
+23	Scout Rifles (Exotic)	Done	2026-07-07
+24	Hand Cannons (Exotic)	Done	2026-07-12
+25	Sidearms (Exotic)	Done	2026-07-12
+26	Bows (Exotic)	Done	2026-07-12
+27	Breech Grenade Launchers (Exotic)	Done	2026-07-12
+28	Trace Rifles (Exotic)	Done	2026-07-12
+29	Fusion Rifles (Exotic)	Done	2026-07-12
+31	Special Ammo
+32	Sniper Rifles (Legendary)	Done	2026-06-19
+33	Trace Rifles (Legendary)	Done	2026-06-19
+34	Fusion Rifles (Legendary)	Done	2026-06-19
+35	Shotguns (Legendary)	Done	2026-06-19
+36	Breech Grenade Launchers (Legendary)	Done	2026-06-19
+37	Glaives (Legendary)	Done	2026-06-19
+38	Pulse Rifles (Legendary)	Done	2026-06-19
+39	Sidearms (Legendary)	Done	2026-06-19
+41	Sniper Rifles (Exotic)	Done	2026-07-17
+42	Trace Rifles (Exotic)	Done	2026-07-17
+43	Fusion Rifles (Exotic)	Done	2026-07-17
+44	Shotguns (Exotic)	Done	2026-07-17
+45	Breech Grenade Launchers (Exotic)	Done	2026-07-21
+46	Glaives (Exotic)	Done	2026-07-21
+47	Pulse Rifles (Exotic)	Done	2026-07-21
+48	Sidearms (Exotic)	Done	2026-07-21
+49	Linear Fusion Rifles (Exotic)	Partially Complete	2026-07-21
+50	Auto Rifles (Exotic)	Done	2026-07-21
+51	Hand Cannons (Exotic)	Done	2026-07-21
+52	Swords (Exotic)	Done	2026-07-21
+54	Heavy Ammo
+55	Machine Guns (Legendary)	Done	2026-06-19
+56	Grenade Launchers (Legendary)	Done	2026-06-19
+57	Rocket Launchers (Legendary)	Done	2026-06-19
+58	Linear Fusion Rifles (Legendary)	Done	2026-06-19
+59	Swords (Legendary)	Partially Complete	2026-06-19
+61	Machine Guns (Exotic)	Done	2026-07-21
+62	Grenade Launchers (Exotic)	Done	2026-07-21
+63	Rocket Launchers (Exotic)	Done	2026-07-21
+64	Linear Fusion Rifles (Exotic)	Partially Complete	2026-07-21
+65	Swords (Exotic)	Done	2026-07-21
+66	Glaives (Exotic)	Done	2026-07-21
+67	Sniper Rifles (Exotic)	Done	2026-07-21
+68	Shotguns (Exotic)	Done	2026-07-21
+69	Fusion Rifles (Exotic)	Done	2026-07-21
+70	Bows (Exotic)	Done	2026-07-21
+71	Trace Rifles (Exotic)	Done	2026-07-21
+73	Append
+74	Append Any and All Dynamic Heat Weapons	TODO
+75	Append Any and All Balanced Heat Weapons	TODO
+77	Append Any and All Disruption Weapons	Partially Complete
+78	Append balanced heat weapon pulse rifle	TODO
+79	Append balanced heat weapon pulse rifle to All Weapons	TODO
+80	Append balanced heat weapon scout rifle	TODO
+81	Append balanced heat weapon scout rifle to All Weapons	TODO
+82	Append balanced heat weapon auto rifle	TODO
+83	Append balanced heat weapon auto rifle to All Weapons	TODO
+84	Append dynamic heat weapon sidearm	TODO
+85	Append dynamic heat weapon sidearm to All Weapons	TODO
+86	Append dynamic heat weapon sniper rifle	TODO
+87	Append dynamic heat weapon sniper rifle to All Weapons	TODO
+88	Append balanced heat weapon machine gun	TODO
+89	Append balanced heat weapon machine gun to All Weapons	TODO
+90	Append dynamic heat weapon hand cannon	TODO
+91	Append dynamic heat weapon hand cannon to All Weapons	TODO
+92	Append Refurbished A499 Reload Time	TODO
+93	Append Refurbished A499 to All Weapons	TODO
+95	Append Crossbows	Partially Complete
+96	Append different crossbow bolt damages into Weapon Specifics	Done	2026-08-29
+97	Verify crossbow Charged Bolts duration	TODO
+99	Append Whirling Ovation	TODO
+100	Append Wolfsbane	TODO
+101	Append Praxic Blade	TODO
+102	Append Service of Luzaku	Done	2026-08-29
+103	Append New Maplais	TODO
+104	Append Wave Frame Sword (Charge Stat 30)	TODO
+105	Append Cull's Shadow	TODO
+106	Append Turncoat	TODO
+107	Append Fafnir	TODO
+108	Append Heirloom	TODO
+109	Append Burst SMG	Done	2026-07-25
+110	Append Vex Mythoclast + reworked catalyst	Done	2026-07-25
+111	Append Barrow Dyad with Blighted Seekers (?)	TODO
+112	Touch of Malice with Catalyst	TODO
+113	Skyburner's Oath with Catalyst (?)	TODO
+114	Jade Rabbit with Micro-Missile	TODO
+115	Append Devil's Ruin laser damage to Weapon Specifics	Done	2026-08-29
+116	Append New Land Beyond with Catalyst	TODO
+117	Append Coldheart new Catalyst perk	TODO
+118	Append The Chaperone with catalyst	TODO
+119	Append Truth with cluster bombs	Done	2026-08-29
+120	Append Winterbite close range (without freezing)	Done	2026-07-25
+121	Append One Thousand Voices with catalyst	TODO
+122	Append Black Talon jump-heavy	TODO
+124	Misc
+125	(Personal) Obtain Icebreaker	Done	2025-12-07
+126	(Personal) Obtain Wirling Ovation	TODO
+127	(Personal) Obtain Euphony	TODO
+128	(Personal) Obtain Finality's Auger	Done	2026-08-29
+129	(Personal) Obtain Edge of Action	TODO
+130	(Personal) Obtain Edge of Concurrence	TODO
+131	(Personal) Obtain One Thousand Voices Catalyst	TODO
+132	Modify Osteo Striga only DoT to consider number of shots to DoT	TODO
+133	Fix cell references into Weapon Specifics page	Done	2026-07-21
+134	Append Bolt Charge functionality to Symmetry	Done	2026-07-25
+135	Fetch numbers for Celestial Nighthawk + Still Hunt	TODO
+136	Figure out what weapons got a rework (there's too many)	Done	2026-07-21
+137	Retest Wolfpack Rounds	Done	2026-07-21
+138	Give Symmetry Bolt Charge	Done	2026-07-25
+139	Give Hawkmoon increased precision damage on successive hits	Done	2026-07-25
+140	Give Heirarchy of Needs Scorch + Ignitions	TODO
+141	Retest Still Hunt	Partially Complete
+142	Give Borealis Fundamentalist(?)	TODO
+143	Verify Scorch stacks on Promethus Lens	TODO
+144	9.7.0 changed reload animations: Verify Delicate Tomb	TODO
+145	9.7.0 changed reload animations: Verify Glaive Basic Reload	TODO
+146	9.7.0 changed reload animations: Verify exotic special glaive reload	TODO
+147	Lucky Pants custom equation(?)	TODO
+148	Implement Ergo Sum Wave Frame recharge timings	TODO
+149	Give Wardcliff Coil Bolt Charge	TODO
+150	Retest Finality's Auger (I lack the weapon)	TODO
+151	Implement Finality's Auger with turret	TODO
+152	Test how Ember of Ashes affects Dragon's Breath	TODO

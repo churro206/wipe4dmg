@@ -1,0 +1,15 @@
+2		Element	Icon	Class	T0 cooldown	T3 Cooldown	Flat Gain Factor	Class Mod Mult		Flat Gain Factor	Class Mod Multiplier	Class Abilities
+3		Neutral		Marksman's Dodge	42s	29s	100.0%	22.5%		100.0%	22.5%
+4		Neutral		Gambler's Dodge	54s	38s	80.0%	45%		80.0%	45.0%
+5		Solar		Acrobat's Dodge	54s	38s	80.0%	45%		100.0%	45.0%
+6		Arc		Thruster	51s	36s	100.0%	45%		80.0%	60.0%
+7		Neutral		Rally Barricade	54s	38s	100.0%	45%		50.0%	100.0%
+8		Exotic		Hoarfrost-Z	100s	70s	100.0%	45%		50.0%	45.0%
+9		Solar		Phoenix Dive	79s	55s	80.0%	60%		-Class Mod Multiplier is a factor applied to class ability mods (Bomber, Outreach, Distribution) based on the cooldown of the class ability.
+10		Neutral		Towering Barricade	100s	70s	50.0%	100%		-Arbor Warden uses the values for the equipped Barricade.
+11		Void		Rally Bastion	54s	38s	50.0%	45%		Almost all values are tested by RyTako. See their similar spreadsheet here:
+12		Exotic		Mask of Bakris	42s	29s	100.0%	22.5%		https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A/edit?usp=sharing
+13		Neutral		Healing Rift	117s	82s	50.0%	100%
+14		Neutral		Empowering Rift	117s	82s	50.0%	100%
+15		Void		Towering Bastion	100s	70s	50.0%	100%
+16		Exotic		Icefall Mantle	100s	70s	100.0%	100%

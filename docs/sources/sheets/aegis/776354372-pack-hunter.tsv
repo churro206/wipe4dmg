@@ -1,0 +1,8 @@
+2	TESTING	INFORMATIONAL	REAL	Notes
+3	Modifiers	Weapon	Base	Explosion	Impact	WP1	WP2	Actual	A/B	A/P	%
+5	None [1]		74,469	56,676	N/A	17,793	N/A	769	N/A	1,646	N/A	94,074	1.263	N/A	0.00	26% boost to base damage
+6	None [5]		74,469	56,676	N/A	17,793	N/A	769	N/A	1,646	N/A	94,160	1.264	N/A	0.09	Pack Hunter scaling is identical with multiple players
+7	Bait and Switch [5]		96,809	73,679	1.300	23,130	1.300	999	1.299	2,141	1.301	119,777	1.237	1.272	-2.15	Bait is not applied to the impact of the first rocket
+8	Explosive Light [5]		92,951	70,845	1.250	22,106	1.242	769	1.000	1,646	1.000	113,351	1.219	1.204	-3.69	~20% per rocket
+9	Lasting Impression [5]		88,638	70,845	1.250	17,793	1.000	769	1.000	2,058	1.250	110,353	1.245	1.172	-6.24	~17% per rocket
+10	Taniks, Impact Casing, Boss Spec, Radiant Dance Machines, Season of the Wish (S23)

@@ -1,0 +1,175 @@
+2		Interaction? (Trigger/Benefit)	Shot	Melee	Notes
+6	ASPECTS				Also Prismatic
+7		Hunter
+8		Ascension			Can be used while Glaive is out, and can activate dodge abilities
+9		Combination Blow			[+133%/266%/400%] Glaive Melee Dmg per stack (max 3) on hit. Glaive melee cannot builld stacks or refresh duration
+10		Flow State				Action can proc it and will benefit from it
+11		Lethal Current			Glaive melee will not inflict Jolt or create aftershock. Glaive Melee will inflict Blind on Jolted enemies	Action cannot proc it, but will benefit from it
+12		Tempest Strike			Slide melee attacks cannot be used while Glaive is out	Action can proc it, but will not benefit from it
+13		Gunpowder Gamble			Counts as a Grenade for mods and effects. On Prismatic, also works with Destabilizing Rounds and Voltshot.	Action cannot proc it and will not benefit from it
+14		Knock 'Em Down				No Intended/Possible interaction
+15		On Your Mark
+16		On the Prowl			Both Shot and Melee proc a successful hunt. Creates unique Smoke Cloud that grants 5 sec of Invisibility for anyone passing through it. Melee is refilled.
+17		Stylish Executioner			Glaive Melee kill on Void-debuffed enemy will trigger Invisibility. While Stylishly Invisible Glaive Melee Dmg boosted by [300%] and can apply Weaken (2 sec cooldown)
+18		Trapper's Ambush			You can dive with a glaive in hand
+19		Grim Harvest			Works with Whisper of Reversal, Chill Clip and Winterbite Shot and Melee
+20		Shatterdive			You can dive with a glaive in hand
+21		Winter's Shroud			Inflicts x60 stacks of Slow. Class Ability is refilled faster with Whisper of Reversal, Chill Clip and Winterbite Melee
+22		Threaded Spike			Charged Melee is refilled
+23		Whirling Maelstrom			Counts as a Tangle for fragments
+25		Titan
+26		Juggernaut			Stacks with other Overshield sources like Vexcalibur's Void Overshield
+27		Knockout			[+160%] Glaive Melee Dmg and melee triggers healing. Glaive Melee is not infused with Arc energy
+28		Storm's Keep
+29		Consecration			Slide melee attacks cannot be used while Glaive is out
+30		Roaring Flames
+31		Sol Invictus			Works on Scorched enemies. Charged Melee is refilled faster
+32		Bastion			Void Overshield from Barricade can be refreshed with Vexalibur and vice versa
+33		Controlled Demolition			Works on Volatile enemies, and with Destabilizing Rounds
+34		Offensive Bulwark			[+160%] Glaive Melee Dmg and Glaive melee restores some overshield. Improved Ability Regen works with Edge of Action's mini-Bubble and Vexcalibur Void Overshield
+35		Unbreakable			Can use while Glaive is out but not at the same time as Glaive Shield. Glaive Melee cancels Unbreakable without expending it, preserving grenade energy.
+36		Diamond Lance			Upon a Shatter or a Chill Clip kill. Winterbite melee alone does not count, but can help build a Shatter. On Prismatic, also works on Jolted and Volatile enemies. Bugged: Sometimes does not make a Diamond Lance but will still trigger cooldown.
+37		Howl of the Storm			Slide melee attacks cannot be used while Glaive is out
+38		Tectonic Harvest
+39		Banner of War			24 sec duration max, refreshable [+100%] Glaive Melee Dmg
+40		Flechette Storm			Slide melee attacks cannot be used while Glaive is out
+41		Into the Fray			Charged Melee is NOT refilled faster
+43		Warlock
+44		Electrostatic Mind
+45		Ionic Sentry
+46		Lightning Surge			Slide melee attacks cannot be used while Glaive is out
+47		Heat Rises			Hard to pull off while jumping/airborne, but Melee does work. Charged Melee is NOT refilled
+48		Icarus Dash			Hard to pull off while jumping/airborne, but Melee does work
+49		Child of the Old Gods			Charged Melee is NOT refilled faster. Child will deploy with Glaive Melee
+50		Feed the Void			Works on Volatile enemies. Volatile kills also proc Devour, including from Destabilizing Rounds. On Prismatic, all ability kills, even from Arc/Solar Buddy and Shatter, proc Devour
+51		Glacial Harvest			Works with Freezing from Winterbite Shot or Melee, or Chill Clip
+52		Iceflare Bolts
+53		Mindspun Invocation			Weaver's Trance works with Glaive Melee. Perched threadlings are also deployed with Glaive Melee
+54		The Wanderer
+55		Weaver's Call			Kills from any affinity Glaive shot or melee will generate perched Threadlings
+56		Weavewalk			Can activate while Glaive is out
+58	FRAGMENTS
+59		Spark of Amplitude
+60		Spark of Beacons
+61		Spark of Discharge
+62		Spark of Feedback			After hit with a melee attack, for 5 sec, [+100%] Glaive Melee Dmg for the next attack
+63		Spark of Frequency			While amplified, Bolt Charge accumulation is +1
+64		Spark of Ions
+65		Spark of Momentum
+66		Spark of Recharge			Charged Melee is refilled faster
+67		Ember of Ashes			Works with Incandescent and Song of Flame. Glaive Melee works with Apostate's Blade 4-pc /
+68		Ember of Beams			Does not provide tracking to Well of Radiance shots
+69		Ember of Benevolence			Works with Heal Clip and Edge of Intent's Healing Turret. Glaive Melee works with Apostate's Blade 4-pc
+70		Ember of Blistering			Works with Incandescent, Song of Flame or after casting Well of Radiance, with a Solar glaive Shot
+71		Ember of Char			Works with Incandescent, Song of Flame or after casting Well of Radiance, with a Solar glaive Shot
+72		Ember of Combustion			After casting Well of Radiance, with a Solar glaive Shot. Ignition hits/kills do not charge Shield
+73		Ember of Empyrean			Glaive Melee works with Apostate's Blade 4-pc
+74		Ember of Eruption			Works with Incandescent, Song of Flame or after casting Well of Radiance, with a Solar glaive Shot
+75		Ember of Searing			Charged Melee is refilled. Works with Incandescent and Song of Flame. Glaive Melee works with Apostate's Blade 4-pc
+76		Ember of Singeing			Works with Incandescent and Song of Flame
+77		Ember of Solace			Works with Edge of Intent's Healing Turret. Glaive Melee works with Apostate's Blade 4-pc /
+78		Ember of Tempering
+79		Ember of Torches
+80		Ember of Wonder			Works with Song of Flame or after casting Well of Radiance, with a Solar glaive Shot
+81		Echo of Cessation
+82		Echo of Domineering
+83		Echo of Exchange
+84		Echo of Expulsion			Works on Volatile enemies
+85		Echo of Harvest
+86		Echo of Instability			Also works with Mothkeeper's Wraps Loyal Moths but does NOT work with Forerunner's Rock
+87		Echo of Leeching
+88		Echo of Persistence			Works with Void Overshield from Vexcalibur and Edge of Action
+89		Echo of Reprisal
+90		Echo of Vigilance
+91		Whisper of Bonds
+92		Whisper of Chains
+93		Whisper of Chill
+94		Whisper of Durance			Works with Whisper of Reversal, Chill Clip and Winterbite Melee
+95		Whisper of Fissures
+96		Whisper of Fractures			Grants 1 stack of Frost Armor per defeated frozen enemy of a swing (can hit a close group for multiple stacks). Does not count extra shatters or combatant type
+97		Whisper of Hedrons
+98		Whisper of Hunger			Charged Melee is refilled
+99		Whisper of Impetus
+100		Whisper of Refraction			Works with Whisper of Reversal, Chill Clip and Winterbite Melee
+101		Whisper of Rending
+102		Whisper of Reversal			Glaive Melee will inflict x10 Slow and receiving a melee hit will also inflict x10 Slow (even with Shield up) on enemy (does not work vs stomps), Does not seem to stack with Winterbite Slow Stacks at the same time
+103		Whisper of Shards
+104		Thread of Ascent
+105		Thread of Continuity			Melee cannot inflict Unraveling
+106		Thread of Evolution			Works with Threadlings created by Glaive Shot
+107		Thread of Fury			Charged Melee is refilled
+108		Thread of Generation
+109		Thread of Mind
+110		Thread of Rebirth
+111		Thread of Propagation
+112		Thread of Transmutation
+113		Thread of Wisdom
+114		Facet of Awakening			Melee works on Volatile and Jolted enemies to create Void Breaches and Ionic Traces
+115		Facet of Balance			Charged Melee is refilled
+116		Facet of Blessing
+117		Facet of Bravery
+118		Facet of Command
+119		Facet of Courage
+120		Facet of Dawn
+121		Facet of Devotion
+122		Facet of Generosity
+123		Facet of Grace
+124		Facet of Honor
+125		Facet of Hope			Improved Ability Regen works with Edge of Action's mini-Bubble, Vexcalibur Void Overshield, and Edge of Intent's Healing turret
+126		Facet of Justice			I THINK it works on Volatile enemies
+127		Facet of Ruin
+128		Facet of Sacrifice
+129		Facet of Solitude
+131	BUFFS/ DEBUFFS
+132		Amplified
+133		Bolt Charge			1 sec cooldown between stack accumulation of Bolt Charge. Melee energy is refilled. Melee does discharge but does not build
+134		Jolt			Both contribute to dmg threshold once applied. Melee cannot apply Jolt
+135		Radiant			[+20%] Shot Damage
+136		Devour
+137		Volatile			Melee contributes to detonation on dmg/death. Melee cannot apply Volatile and will not gain anti-Barrier . 1 sec internal cooldown between explosions
+138		Weaken
+139		Freeze			[+120%] Melee Damage to frozen targets
+140		Shatter			Both contribute to damage threshold
+141		Stasis Shard			Charged Melee is refilled
+142		Tangle			Both detonate a Tangle in 1 hit
+143		Threadling			Perched Threadlings will be deployed
+144		Unravel			Both spread Unravel and create Tangles
+145		Transcendent			Glaive Melee builds both Light and Dark meters. Shot only builds matching affinity. While Transcendent, [+5%] Shot Damage
+146		Unstable Essence			[+50%] Damage vs Nightmares
+148	ABILITIES	Can you use while Glaive is out?
+149		Grenade
+150		Melee			[+0.3%] Glaive Melee dmg per point above 100 [+0.2% PvP], max [+30% PvE] [20% PvP] at 200
+151		Weapons			[+0.1]% Handling (max 10%) and [+1%] Reload per point (max 100%) at 100. [+0.15%] Dmg (max 15% at 100) to Minor/Major enemies. [+0.15%] (max 15% at 200) per pioint above 100 to Boss enemies
+152		Grapple Melee			Counts as Grenade for mods. Counts as Grenade and Powered Melee for effects/exotics
+153		Acrobat's Dodge			Radiant buffs both
+154		Gambler's Dodge			Charged Melee is refreshed
+155		Marksman's Dodge
+156		Shadowshot: Deadfall			Each tethered enemy counts toward shot count to refill meter
+157		Shadowshot: Moebius Quiver			Each tethered enemy counts toward shot count to refill meter
+158		Thruster
+159		Towering Barricade
+160		Rally Barricade
+161		Ward of Dawn			Make Orbs of Power with Melee Attacks
+162		Empowering Rift			15 sec duration. [+20%] Damage
+163		Healing Rift
+164		Phoenix Dive			You can dive with a glaive in hand
+165		Song of Flame			Cannot use Improved Snap with Glaive out. Glaive Shot and Melee will apply Scorch and can cause Ignitions
+166		Well of Radiance			30 sec duration. [+25%] Damage. Turns Solar Glaive Shot into Super Ability damage
+168	ACTIVITY MODS
+169		Ashes to Ashes			Scorches enemies
+170		Brawler			[+100%] Glaive Melee damage buff
+171		Class Warfare			[+10/15/20%] Shot Damage for 15 sec, refreshable
+172		Daodan Surge			Melee Ability damage buff
+173		[Elemental] Surge			[+25%] Shot Damage. Does not stack with Overcharge Glaive
+174		Flare			Fire Aura
+175		Heavyweight			[+130%] Glaive Melee dmg, [+100%] Shot Dmg with Heavy Ammo Glaive
+176		Overcharge Glaive			[+25%] Shot Damage. Does not stack with [Elemental] Surge
+177		Shot Caller			[+20%] Shot Damage for 15 sec, refreshable
+178		Snowstorm			Make Snowballs
+180		Arc Runner
+181		Fragile Strength			[+50%] Damage
+182		Refreshing Firearms
+183		Paracausal Bandolier
+184		Paracausal Payloads			[+50%] Glaive Melee Dmg
+185		Paracausal Siphon			[+25%] Shot Damage
+186		Sumptuous Repast			[+100%] Damage for 15 sec

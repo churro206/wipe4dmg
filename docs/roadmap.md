@@ -69,7 +69,14 @@ Status: 2026-10-23
 
 ## Next
 
-- Song of Flame, Glacial Quake, Bladefury and Hammer of Sol with Sol Invictus: Aegis only measured them with buffs in the value
+- ✅ Every spreadsheet on destiny2.science read and stored as data for the calculator's sources (95 tabs)
+- Fixes from these sources: weapon reload times already contain Rally Barricade in one source, so Rally counted twice; a few ability energy values and the length of 11 Supers differ from measurements; Facet of Courage's melee bonus only on Light melee
+- Supers with measured lengths; Song of Flame, Glacial Quake, Bladefury and Hammer of Sol with Sol Invictus from measured hits
+- Ability energy with the measured stat curve instead of a straight line, energy exotics (e.g. Crown of Tempests, Contraverse Hold) and energy armor mods
+- Stasis and Strand on the boss: Freeze, Shatter, Threadlings, Unravel, Sever and Suspend with measured damage
+- More aspects (Tempest Strike, Consecration, Crackshot, Shieldburst), artifact perks (Flashover, Heavy Ordnance Regeneration, Hail The Storm) and catalysts (Tessellation, Divinity, Quicksilver Storm)
+- Worldline Zero, Wolfsbane, Praxic Blade and Barrow-Dyad
+- Armor set bonuses (e.g. TM Custom, Sage Protector, Legacy's Oath)
 - Ward of Dawn: Weapons of Light as an effect
 - Healing, Coldsnap and Duskfield Grenade, Grapple, Combination Blow and Chain Lightning: no Aegis measurement
 - Feast of Light and Banner of War as effects

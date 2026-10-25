@@ -1,0 +1,408 @@
+3			total reserves at 100 mag stat, based on weapon's inventory size stat						reserves to mag ratios
+4	Special	100 mag stat	0 inv	100 inv	slope	formula	confidence	100 to 0 ratio	behaviour as mag goes down				max mag to 0 inv	max mag to 100 inv												primary mag lookup
+5	sniper	7	14	28	0.14	y = 0.14x +14	100%	2	static lower reserves below 100 mag stat				2	4
+6	rapid sniper	7	18.2	36.4	0.182	y = 0.182x +18.2		2	1.3x bonus to reserves vs. normal snipers				2.6	5.2			Rocket Sidearm									statGroup	magtype
+7	shotgun	8	12	20	0.08	y = 0.08x +12	100%	1.666666667	lower reserves for each bullet less in actual mag				1.5	2.5			ratio	1.625								1038936347	hc
+8	rapid shotgun	8	20	28	0.08	y = 0.08x +20	100%	1.4	exact same as other shotguns, just +8 at every point				2.5	3.5			mag stat	0 inv point								1060647832	pulseheavy
+9	glaive	7	13.75	30.25	0.165	y = 0.165x +13.75	60%	2.2	static higher reserves below 100 mag stat				1.964285714	4.321428571			0	35.2		1.357142857						1099468801	hc
+10	fusion	8	9.6	21.6	0.12	y = 0.12x +9.6	80%	2.25	reserves go up and back down cyclically with 100 as minimum				1.200	2.700			15	37.2								115153278	sidearmburst
+11	trace	104	364	624	2.6	y = 2.6x +364	100%	1.714285714	reserves go down in proportion to mag				3.5	6			25	41.5								1237673852	sidearm
+12	Special GL	1	18	23	0.05	y = 0.05x +18	100%	1.277777778	No				18	23			30	43.6			Fusion	2.25				1263777500	pulse				Heresy Glaive preliminary
+13			total reserves at 100 mag												35	40.6			mag stat	inv start				1931061385	sidearmagg
+14																	45	38.5			0	9.6				2094758608	business				mag stat	inv start
+15	Heavy	100 mag stat size	0 inv	100 inv	slope	formula	confidence	100 to 0 ratio	behaviour as mag goes down								55	42.1			25	9.6				2316869058	pulseagg				0	22.5
+16	LFR	7	15.5	23.5	0.08	y = 0.08x + 15.5	80%	1.516129032	reserves go up and back down cyclically				2.214285714	3.357142857			65	41			26	12				2447032493	smglow				9	22.5
+17	Aggressive LFR	7	15.3	22.3	0.07	y = 0.08x + 15.6	60%	1.45751634	reserves go up and back down cyclically				2.185714286	3.185714286			75	39.6			30	12.08				2453149525	scout				10	22.5
+18	Rapid GL	8	17.7	23	NON LINEAR	SEE BELOW	80%	1.299435028	reserves go up and back down cyclically with 100 as minimum				2.2125	2.875							33	11.4				27412306	autohigh				39	22.5
+19	Adaptive GL	8	14	18	NON LINEAR	SEE BELOW	80%	1.285714286	reserves go up and back down cyclically with 100 as minimum				1.75	2.25							37	10.4				3038713283	autolow				40	21.6
+20	Heavy Wave GL	7	14	19	0.05	y = 0.05x +14	100%	1.357142857	Static, yaay				2	2.714285714							38	10				3159447977	sidearm				69	21.6
+21	Rocket	1	4.5	9.5	0.05	y = 0.05x + 4.5	100%	2.111111111	No				4.5	9.5			Static				39	9.8				3191205063	hc				70	21
+22	non-rapid MG	75	225	450	2.25	y = 2.25x + 225	100%	2	Reserves go up and back down cyclically with 100 mag as centre				3	6			RL	4.5	9.5	2.111111111	40	9.6				3299471337	pulse				99	21
+23	rapid MG	115	345	690	3.45	y = 3.45x + 345	100%	2	Reserves go up and back down cyclically with 100 mag as centre				3	6			Wave GL	14	19	1.357142857	44	9.6				3568045548	scout				100	19.2
+24																	Special GL	18	23	1.277777778	45	11.55555556				3738347071	sidearm
+25														Shotgun	1.555555556						50	11.61				3773775587	autolow
+26								Precision LFR	1.4375 ratio					mag stat	inv start						60	9.6				3941551777	automid
+27		rapid GL interpolation points			adaptive GL interpolation points			mag stat	inv start		stat	start		0	16.8	14					65	9.58				3979471598	hcburst
+28		inv	reserves		inv	reserves		0	17.21667		0	17.21666667		9	16.8	14					66	11.25				4085620720	hcprec
+29		0	17.3		0	14		60	17.21667		60	17.21666667		10	15.75	13.133		0			70	11.275				4289099473	smghigh								agg post echoes	1.388888889			precision LFR	1.368421053
+30		50	20		50	16.15		64	15.89667		64	15.89666667		39	15.75	13.133		10			72	10.9				715017193	sidearm								0	19.53			0	20.2667
+31		60	21.3		100	18		65	18.65		65	18.65		40	15.12	12.6		40			73	10.78				999028408	pulse								30	19.53			30	20.2667
+32		100	23					70	16.55		70	16.55		69	15.12	12.6		70			75	10.4				Banned Weapon Hand Cannon	crimson								60	19.53			60	20.2667
+33								90	16.55		90	16.55		70	14.7	12.267	12.12	100			80	9.6				Explosive Shadow Hand Cannon	malf								64	18			64	18.75
+34								95	14.95		95	14.9		99	14.7	12.267					84	9.6				Precision Frame Submachine Gun	smgmid								65	21.2			65	21.9
+35								99	13.58		99	13.58		100	14.4	12					85	11													69	19.2			70	19.475
+36								100	16.05		100	16.05									90	11.05													70	18.71			90	19.475
+37																					99	9.66													90	18.71			95	17.8
+38																					100	9.6													94	17.5			96	20.28
+39																																			95	17			100	18.92
+40																			1.714285714																96	19.46
+41																																			100	18.19
+42									shotgun
+43			glaive equation candidates			mag	shotgun reserves at 0 inventory	shotgun reserves at 100 inventory	ratio	diff between 0-points	diff * 15				trace rifles mag and inventory			reserves are a multiple of the mag size,
+44			start	end	ratio			4	14	23.333	1.667	0.867	13	16.8	26.13296	16.8				(lowest in game)	based on inventory stat
+45		100 mag	13.75	30.25	2.2			5	13.133	21.889	1.667	0.533	8	15.7596	24.51568	15.75	mag stat	mag size	ratio at 0 inv	ratio at 41	ratio at 100 inv	reserves at 0 inv	reserves at 41	reserves at 100 inv
+46		< 100 mag	14.65909	32.25	2.2			6	12.6	21	1.667	0.333	5	15.12	23.52	15.12	0	74	3.5	4.525	6	259	334.85	444
+47								7	12.267	20.444	1.667	0.267	4	14.7204	22.89728	14.7	(lowest in game) 65	94	3.5	4.525	6	329	425.35	564											rocket sidearm post echoes	1.524038
+48		100 mag	13.7	30.14	2.2			8	12	20	1.667			14.4	22.4	14.4	100	104	3.5	4.525	6	364	470.6	624											mag	inv start
+49		< 100 mag	14.6	32.12	2.2																														0	42.1
+50																											shotguns								10	42.1
+51		100 mag	13.6	30.192	2.22									22.48	30.48	1.355871886																			30	52
+52		< 100 mag	14.5	32.19	2.22			non-rapid MGs					8.08	8.08																				40	44.2
+53								reserves = 150+offset + inv * ((150+offset)*2.5-(150+offset))/100													stat	mag		mag	shotgun reserves at 0 inventory	shotgun reserves at 100 inventory			60	52	79.249976
+54		100 mag	13.44444	30.25	2.25			offset = (-0.875 + rounding_amount*2)*(2-((100-mag_stat)/100))						swords	adaptive	aggressive	lightweight				0	4		4	14	23.333	0.09333		70	45.3
+55		< 100 mag	14.33333	32.25	2.25			rounding_amount = actual_mag_size - (29.5 + 0.45*mag_stat)							0	49.2	40	60				10	5		5	13.133	21.889	0.08756		90	52
+56																				100	69.2	60	80				40	6		6	12.6	21	0.084		100	46.4	0.8923076923
+57			14.4	32.4	2.25																						70	7		7	12.267	20.444	0.08177
+58			13.5	30.375	2.25																						100	8		8	12	20	0.08
+59																																			Sidearm Revenant	1.555555556
+60														Compressed Wave			lightweight GL										0	14							mag	inv start
+61														inv	reserves		inv	reserves									9	14							0	29.25
+62								1.329479769						0	14		0	18									10	13.133							5	29.25
+63											13.75	30.25		100	19		100	23									39	13.133							15	31.1
+64											13.7	30.14															40	12.6							20	33
+65											13.6	30.192															69	12.6							25	34.8
+66		non-rapid sniper	0 inv	100 inv	0-100 ratio					13.44444	30.25															70	12.267							30	36.64285714
+67		100 mag	14	28	2	0.14000																					99	12.267							35	33.8
+68		< 100 mag	12	24	2	0.12000																					100	12							40	30.5
+69	rapid	100 mag	18.2	36.4	2	0.18200																													45	32.20714286
+70		< 100 mag	15.6	31.2	2	0.15600																													50	33.42857143
+71												10.75	18.275	18.275	13.44444																43.61322805	43.74103109			55	35.35714286
+72								17.7	22			23.5	39.95	39.95	30.25					14.65909	14.6	14.5	14.33333								71.14161016	71.35008162			60	36.64285714	57
+73											range stat	hip range m	ads range m	ads range m						32.25	32.12	32.19	32.25								62.05724406	62.23909495			65	34.25
+74						0	14	0	17.300	0.000	0	10.75	18.28	18.28	13.44444	3	1			15	15	15	15	1											70	31.6
+75						0.01075	14.043	1	17.354	0.009	1	10.88	18.49	18.49	14	3	1			15	15	15	15	1											75	33
+76						0.0215	14.086	2	17.408	0.019	2	11.01	18.71	18.71	14	3	2			16	15	15	15	2											80	34
+77						0.03225	14.129	3	17.462	0.028	3	11.13	18.93	18.93	14	3	2			16	16	16	15	2											90	36.4
+78						0.043	14.172	4	17.516	0.038	4	11.26	19.14	19.14	15	3	1			16	16	16	16	1											92	35.73
+79						0.05375	14.215	5	17.570	0.047	5	11.39	19.36	19.36	15	3	1			16	16	16	16	1											100	31.61	34.005
+80						0.0645	14.258	6	17.624	0.057	6	11.52	19.58	19.58	15	3	1			16	16	16	16	1
+81						0.07525	14.301	7	17.678	0.066	7	11.64	19.79	19.79	15	3	1			16	16	16	16	1
+82		start	end	set		0.086	14.344	8	17.732	0.076	8	11.77	20.01	20.01	15	3	2			17	17	16	16	2
+83		0 17.061765	22.938235	0		0.09675	14.387	9	17.786	0.085	9	11.90	20.23	20.23	15	3	2			17	17	17	16	2
+84		1 17.500000	22.5	0		0.1075	14.43	10	17.840	0.095	10	12.03	20.44	20.44	16	3	1			17	17	17	17	1
+85		2 18.990000	19.023333	0		0.11825	14.473	11	17.894	0.104	11	12.15	20.66	20.66	16	3	1			17	17	17	17	1
+86		3 17.061765	22.938235	0		0.129	14.516	12	17.948	0.114	12	12.28	20.88	20.88	16	3	1			17	17	17	17	1
+87		0 4.865714	33.422857	1		0.13975	14.559	13	18.002	0.123	13	12.41	21.09	21.09	16	3	1			17	17	17	17	1
+88		1 7.000000	32	1		0.1505	14.602	14	18.056	0.133	14	12.54	21.31	21.31	16	3	2			18	18	17	17	2
+89		2 20.986000	21.011	1		0.16125	14.645	15	18.110	0.142	15	12.66	21.53	21.53	16	3	1			18	18	18	18	1
+90		3 12.429571	26.715286	1		0.172	14.688	16	18.164	0.152	16	12.79	21.74	21.74	17	3	1			18	18	18	18	1
+91		4 4.865714	33.422857	1		0.18275	14.731	17	18.218	0.161	17	12.92	21.96	21.96	17	3	1			18	18	18	18	1
+92		0 18.459091	23	2		0.1935	14.774	18	18.272	0.171	18	13.05	22.18	22.18	17	3	1			18	18	18	18	1
+93		1 18.833333	23	2		0.20425	14.817	19	18.326	0.180	19	13.17	22.39	22.39	17	3	2			19	18	18	18	2																				2
+94		2 21.962000	22.012	2		0.215	14.86	20	18.380	0.189	20	13.30	22.61	22.61	17	3	2			19	19	19	18	2					1.398		1.361818182												fusion post-echoes
+95		3 18.459091	23	2		0.22575	14.903	21	18.434	0.199	21	13.43	22.83	22.83	17	3	1			19	19	19	19	1											pre-echoes rework								Mag stat	Start point
+96						0.2365	14.946	22	18.488	0.208	22	13.56	23.04	23.04	18	3	1			19	19	19	19	1					preechoes	adaptive GLs	post-echoes rework				Agg LFRs				aggressive MG mag			0	12
+97						0.24725	14.989	23	18.542	0.218	23	13.68	23.26	23.26	18	3	1			19	19	19	19	1						Mag stat	Start point				sett	start_x							25	12
+98						0.258	15.032	24	18.596	0.227	24	13.81	23.48	23.48	18	3	1			19	19	19	19	1						30	20.86530612				0	16.625			0	36			27	14.95
+99		Sorting type	Inv Mag Type	Brick Type		0.26875	15.075	25	18.650	0.237	25	13.94	23.69	23.69	18	3	2			20	19	19	19	2						35	21.6				60	16.625			10	42			29	15
+100		Adaptive GL	Dynamic	Grenade Launcher		0.2795	15.118	26	18.704	0.246	26	14.07	23.91	23.91	18	3	2			20	20	20	19	2						37	22.04081633				64	15.25			20	47			30	15.1
+101		Aggressive LFR	Dynamic	Linear Fusion Rifle		0.29025	15.161	27	18.758	0.256	27	14.19	24.13	24.13	18	3	1			20	20	20	20	1						39	22.1877551				65	18			30	53			33	14.2
+102		Aggressive MG	Dynamic	Machine Gun		0.301	15.204	28	18.812	0.265	28	14.32	24.34	24.34	19	3	1			20	20	20	20	1						40	22.41110204				69	16.625			40	58			37	13
+103		Ahamkara's Eye Fusion Rifle	Unique	Fusion Rifle	?	0.31175	15.247	29	18.866	0.275	29	14.45	24.56	24.56	19	3	1			20	20	20	20	1						41	22.38171429				70	16			50	64			38	12.5
+104		Arc Traps Grenade Launcher	Unique	Grenade Launcher		0.3225	15.29	30	18.920	0.284	30	14.58	24.78	24.78	19	3	1			20	20	20	20	1						50	22.004				90	16			60	69			39	12.3
+105		Big Frigid Glaive Glaive	Unique	Glaive		0.33325	15.333	31	18.974	0.294	31	14.70	24.99	24.99	19	3	2			21	21	20	20	2						57	22.30530612				94	15			70	75			40	12
+106		Charge Shot Fusion Rifle	Unique	Fusion Rifle		0.344	15.376	32	19.028	0.303	32	14.83	25.21	25.21	19	3	1			21	21	21	21	1						60	22.33469388				95	14.5			80	80			45	14.45
+107		Composite Propellant Rocket Launcher	Unique	Rocket Launcher		0.35475	15.419	33	19.082	0.313	33	14.96	25.43	25.43	19	3	1			21	21	21	21	1						70	22.33469388				96	16.5			90	85			46	14.46
+108		Compounding Force Linear Fusion Rifle	Unique	Linear Fusion Rifle		0.3655	15.462	34	19.136	0.322	34	15.09	25.64	25.64	20	3	1			21	21	21	21	1						71	22.39346938				100	15.5			100	91			47	14.47
+109		Conserve Momentum Fusion Rifle	Unique	Fusion Rifle		0.37625	15.505	35	19.19	0.332	35	15.21	25.86	25.86	20	3	1			21	21	21	21	1						79	22.39346938												48	14.48
+110		Corrupted Nucleosynthesis Grenade Launcher	Unique	Special GL		0.387	15.548	36	19.244	0.341	36	15.34	26.08	26.08	20	3	1			21	21	21	21	1						80	22.33469388												49	14.49
+111		Cryocannon Grenade Launcher	Unique	Grenade Launcher		0.39775	15.591	37	19.298	0.351	37	15.47	26.29	26.29	20	3	2			22	22	22	21	2						90	22.33469388												50	14.5
+112		Dark Deliverance Rocket Launcher	Unique	Rocket Launcher		0.4085	15.634	38	19.352	0.360	38	15.60	26.51	26.51	20	3	1			22	22	22	22	1						100	22.01142857								ergo sum mag				52	14
+113		Dornröschen Linear Fusion Rifle	Unique	Linear Fusion Rifle		0.41925	15.677	39	19.406	0.369	39	15.72	26.73	26.73	20	3	1			22	22	22	22	1									0	0					0	32			53	13.8
+114		Excavation Grenade Launcher	Unique	Grenade Launcher		0.43	15.72	40	19.46	0.379	40	15.85	26.95	26.95	21	3	1			22	22	22	22	1															15	35			55	13.4
+115		Eyes on All Rocket Launcher	Unique	Rocket Launcher		0.44075	15.763	41	19.514	0.388	41	15.98	27.16	27.16	21	3	1			22	22	22	22	1															35	39			57	12.5
+116		Full Stop Sidearm	Unique	Forerunner		0.4515	15.806	42	19.568	0.398	42	16.11	27.38	27.38	21	3	2			23	22	22	22	2															45	41			59	12.2
+117		Fusion	Dynamic	Fusion Rifle		0.46225	15.849	43	19.622	0.407	43	16.23	27.60	27.60	21	3	1			23	23	23	23	1															50	42			60	12
+118		Glaive	Dynamic	Glaive		0.473	15.892	44	19.676	0.417	44	16.36	27.81	27.81	21	3	1			23	23	23	23	1															55	43			63	12
+119		Heavy Slug Thrower Machine Gun	Unique	Machine Gun		0.48375	15.935	45	19.73	0.426	45	16.49	28.03	28.03	22	3	1			23	23	23	23	1															65	45			65	11.97
+120		Heavy Burst Shotgun	Dynamic	Shotgun
+121		Hungering Quarrel Sidearm	Unique	Special Sidearm		0.4945	15.978	46	19.784	0.436	46	16.62	28.25	28.25	22	3	1			23	23	23	23	1															70	46			66	14.056
+122		Insectoid Robot Grenades Grenade Launcher	Unique	Grenade Launcher		0.50525	16.021	47	19.838	0.445	47	16.74	28.46	28.46	22	3	1			23	23	23	23	1															75	47			67	14.06
+123		Lagrangian Sight Linear Fusion Rifle	Unique	Linear Fusion Rifle		0.516	16.064	48	19.892	0.455	48	16.87	28.68	28.68	22	3	2			24	24	23	23	2															80	48			68	14.063
+124		Looks Can Kill Hand Cannon	Unique	Eriana's Vow		0.52675	16.107	49	19.946	0.464	49	17.00	28.90	28.90	22	3	1			24	24	24	24	1															85	49			69	14.066
+125		Mad Scientist Rocket Launcher	Unique	Rocket Launcher		0.5375	16.15	50	20	0.474	50	17.13	29.11	29.11	22	3	1			24	24	24	24	1															90	50			70	14.07
+126		Nightsworn Sight Shotgun	Unique	Shotgun
+127		No Backpack Sniper Rifle	Unique	N/A		0.54675	16.187	51	20.13	0.496	51	17.25	29.33	29.33	23	3	1			24	24	24	24	1															100	52			72	13.6
+128		Non rapid MG	Dynamic	Machine Gun		0.556	16.224	52	20.26	0.519	52	17.38	29.55	29.55	23	3	1			24	24	24	24	1																			73	13.45
+129		Non rapid sniper	Dynamic	Sniper		0.56525	16.261	53	20.39	0.542	53	17.51	29.76	29.76	23	3	1			24	24	24	24	1																			75	13
+130		Paracausal Beam Trace Rifle	Unique	Trace Rifle		0.5745	16.298	54	20.52	0.565	54	17.64	29.98	29.98	23	3	1			25	25	25	25	1																			76	12.8
+131		Precision GL	Static	Grenade Launcher		0.58375	16.335	55	20.65	0.588	55	17.76	30.20	30.20	23	3	1			25	25	25	25	1																			77	12.5
+132		Precision LFR	Dynamic	Linear Fusion Rifle		0.593	16.372	56	20.78	0.611	56	17.89	30.41	30.41	23	3	1			25	25	25	25	1																			78	12.3
+133		Precision Slug Shotgun	Unique	Shotgun		0.60225	16.409	57	20.91	0.633	57	18.02	30.63	30.63	24	3	1			25	25	25	25	1																			79	12.2
+134		Primeval's Torment Grenade Launcher	Unique	Special GL		0.6115	16.446	58	21.04	0.656	58	18.15	30.85	30.85	24	3	1			25	25	25	25	1																			80	12
+135		Property: Undecidable Fusion Rifle	Unique	Fusion Rifle		0.62075	16.483	59	21.17	0.679	59	18.27	31.06	31.06	24	3	2			26	25	25	25	2																			83	12.01
+136		Prototype Trueseeker Rocket Launcher	Unique	Rocket Launcher		0.63	16.52	60	21.3	0.702	60	18.40	31.28	31.28	24	3	1			26	26	26	26	1										30	26.08163265	20.86530612							85	13.71
+137		Pyrotoxin Rounds Machine Gun	Unique	Grand Xeno		0.63925	16.557	61	21.3425	0.709	61	18.53	31.50	31.50	24	3	1			26	26	26	26	1										35	27	21.6							86	13.72
+138		Rapid GL	Dynamic	Grenade Launcher		0.6485	16.594	62	21.385	0.717	62	18.66	31.71	31.71	24	3	1			26	26	26	26	1										37	27.55102041	22.04081633							87	13.74
+139		Rapid MG	Dynamic	Machine Gun		0.65775	16.631	63	21.4275	0.724	63	18.78	31.93	31.93	25	3	1			26	26	26	26	1										39	27.73469388	22.1877551							88	13.76
+140		Rapid shotgun	Dynamic	Shotgun		0.667	16.668	64	21.47	0.732	64	18.91	32.15	32.15	25	3	1			26	26	26	26	1										40	28.01387755	22.41110204							89	13.78
+141		Rapid sniper	Dynamic	Sniper		0.67625	16.705	65	21.5125	0.739	65	19.04	32.36	32.36	25	3	2			27	26	26	26	2										41	27.97714286	22.38171429							90	13.8
+142		Repulsor Force Shotgun	Unique	Shotgun		0.6855	16.742	66	21.555	0.746	66	19.17	32.58	32.58	25	3	1			27	27	27	27	1										50	27.505	22.004							92	13.3
+143		RL	Static	Rocket Launcher		0.69475	16.779	67	21.5975	0.754	67	19.29	32.80	32.80	25	3	1			27	27	27	27	1										57	27.88163265	22.30530612							93	13.25
+144		HI RL	Static	Rocket Launcher		0.704	16.816	68	21.64	0.761	68	19.42	33.01	33.01	25	3	1			27	27	27	27	1					19	30	21			60	27.91836735	22.33469388							95	12.9
+145		Rocket Sidearm	Dynamic	Special Sidearm		0.71325	16.853	69	21.6825	0.769	69	19.55	33.23	33.23	26	3	1			27	27	27	27	1					19.5	35	21.6			70	27.91836735	22.33469388							96	12.65
+146		Coronal Culmination Rocket Launcher	Unique	Rocket Launcher
+147		Rocket Pulse	Dynamic	Special Sidearm
+148		The Master Sniper Rifle	Unique	Sniper
+149		Ruinscribe's Forge Linear Fusion Rifle	Unique	Linear Fusion Rifle
+150		Saint's Fists Fusion Rifle	Unique	Fusion Rifle		0.7225	16.89	70	21.725	0.776	70	19.68	33.45	33.45	26	3	1			27	27	27	27	1					20	37	22			71	27.99183673	22.39346938							97	12.6
+151		Shock Blast Shotgun	Unique	Shotgun		0.73175	16.927	71	21.7675	0.784	71	19.80	33.66	33.66	26	3	1			28	28	28	28	1					20.2	39	22.4			79	27.99183673	22.39346938							98	12.3
+152		Shotgun	Dynamic	Shotgun		0.741	16.964	72	21.81	0.791	72	19.93	33.88	33.88	26	3	1			28	28	28	28	1					20.4	40	22.4			80	27.91836735	22.33469388							99	12.1
+153		Shrapnel Launcher Shotgun	Unique	Shotgun		0.75025	17.001	73	21.8525	0.799	73	20.06	34.10	34.10	26	3	1			28	28	28	28	1					20.4	41	22.4			90	27.91836735	22.33469388							100	11.97
+154		Special GL	Static	Special GL		0.7595	17.038	74	21.895	0.806	74	20.19	34.31	34.31	26	3	1			28	28	28	28	1					20.4	42	22.4			100	27.51428571	22.01142857
+155		Split Decision Shotgun	Unique	Shotgun		0.76875	17.075	75	21.9375	0.814	75	20.31	34.53	34.53	27	3	1			28	28	28	28	1					20.315	44	22.32
+156		Thunderer Shotgun	Unique	Shotgun		0.778	17.112	76	21.98	0.821	76	20.44	34.75	34.75	27	3	2			29	28	28	28	2					20.2	45	22.22
+157		Trace	Dynamic	Trace Rifle		0.78725	17.149	77	22.0225	0.829	77	20.57	34.96	34.96	27	3	1			29	29	29	29	1					20	50	22
+158		Traitor's Vessel Fusion Rifle	Unique	Fusion Rifle		0.7965	17.186	78	22.065	0.836	78	20.70	35.18	35.18	27	3	1			29	29	29	29	1					20.2	54	22.22
+159		Trinary Vision Grenade Launcher	Unique	Special GL		0.80575	17.223	79	22.1075	0.843	79	20.82	35.40	35.40	27	3	1			29	29	29	29	1					20.315	56	22.32
+160		Twintails Rocket Launcher	Unique	Rocket Launcher		0.815	17.26	80	22.15	0.851	80	20.95	35.62	35.62	27	3	1			29	29	29	29	1					20.315	57	22.32
+161		Unplanned Reprieve Fusion Rifle	Unique	Fusion Rifle		0.82425	17.297	81	22.1925	0.858	81	21.08	35.83	35.83	28	3	1			29	29	29	29	1					20.315	59	22.32
+162		Unwound Linear Fusion Rifle	Unique	Linear Fusion Rifle		0.8335	17.334	82	22.235	0.866	82	21.21	36.05	36.05	28	3	2			30	29	30	30	2					20.315	60	22.32
+163		Wave GL	Static	Grenade Launcher		0.84275	17.371	83	22.2775	0.873	83	21.33	36.27	36.27	28	3	1			30	30	30	30	1					20.4	65	22.32
+164		Wire Rifle Linear Fusion Rifle	Unique	Linear Fusion Rifle		0.852	17.408	84	22.32	0.881	84	21.46	36.48	36.48	28	3	1			30	30	30	30	1					20.4	69	22.32
+165		Whisper	Dynamic	Sniper		0.86125	17.445	85	22.3625	0.888	85	21.59	36.70	36.70	28	3	1			30	30	30	30	1					20.4	70	22.32
+166		Wolfpack Rounds Rocket Launcher	Unique	Rocket Launcher		0.8705	17.482	86	22.405	0.896	86	21.72	36.92	36.92	28	3	1			30	30	30	30	1					20.4	71	22.4
+167		Worm's Hunger Grenade Launcher	Unique	Rocket Launcher		0.87975	17.519	87	22.4475	0.903	87	21.84	37.13	37.13	29	3	1			30	30	30	30	1					20.4	72	22.4
+168		Wrath of the Colossus Machine Gun	Unique	Grand Xeno		0.889	17.556	88	22.49	0.911	88	21.97	37.35	37.35	29	3	1			31	31	31	31	1					20.4	74	22.4
+169						0.89825	17.593	89	22.5325	0.918	89	22.10	37.57	37.57	29	3	1			31	31	31	31	1					20.4	75	22.4
+170						0.9075	17.63	90	22.575	0.925	90	22.23	37.78	37.78	29	3	1			31	31	31	31	1					20.4	76	22.4
+171						0.91675	17.667	91	22.6175	0.933	91	22.35	38.00	38.00	29	3	1			31	31	31	31	1					20.4	77	22.4
+172						0.926	17.704	92	22.66	0.940	92	22.48	38.22	38.22	29	3	1			31	31	31	31	1					20.4	79	22.4
+173						0.93525	17.741	93	22.7025	0.948	93	22.61	38.43	38.43	30	3	2			32	31	31	31	2					20.315	80	22.32
+174						0.9445	17.778	94	22.745	0.955	94	22.74	38.65	38.65	30	3	1			32	32	32	32	1					20.315	84	22.32
+175						0.95375	17.815	95	22.7875	0.963	95	22.86	38.87	38.87	30	3	1			32	32	32	32	1					20.315	85	22.32
+176						0.963	17.852	96	22.83	0.970	96	22.99	39.08	39.08	30	3	1			32	32	32	32	1					20.315	86	22.32
+177						0.97225	17.889	97	22.8725	0.978	97	23.12	39.30	39.30	30	3	1			32	32	32	32	1					20.315	87	22.32
+178						0.9815	17.926	98	22.915	0.985	98	23.25	39.52	39.52	30	3	1			32	32	32	32	1					20.315	89	22.32
+179						0.99075	17.963	99	22.9575	0.993	99	23.37	39.73	39.73	31	3	2			33	32	33	33	2					20.315	90	22.32
+180						1	18	100	23	1.000	100	23.50	39.95	39.95	31	3	1			33	33	33	33	1					20	100	22
+185		type	mag stat	mag size
+186		sniper	0	3
+187		sniper	20	4
+188		sniper	60	5
+189		sniper	90	6
+190		sniper	100	7
+191		shotgun	0	4
+192		shotgun	10	5
+193		shotgun	40	6
+194		shotgun	70	7
+195		shotgun	100	8
+196		fusion	0	3
+197		fusion	6	4
+198		fusion	26	5
+199		fusion	45	6
+200		fusion	66	7
+201		fusion	85	8
+202		fusion	100	8
+203		glaive	0	3
+204		glaive	8	4
+205		glaive	32	5
+206		glaive	69	6
+207		glaive	99	7
+208		glaive	100	7
+209		Heavy GL	0	1
+210		Heavy GL	20	2
+211		Heavy GL	30	3
+212		Heavy GL	40	4
+213		Heavy GL	50	5
+214		Heavy GL	60	6
+215		Heavy GL	80	7
+216		Heavy GL	100	8
+217		LFR	0	4
+218		LFR	30	5
+219		LFR	65	6
+220		LFR	100	7
+221		Rocket Sidearm	0	9
+222		Rocket Sidearm	6	10
+223		Rocket Sidearm	17	11
+224		Rocket Sidearm	27	12
+225		Rocket Sidearm	38	13
+226		Rocket Sidearm	49	14
+227		Rocket Sidearm	59	15
+228		Rocket Sidearm	70	16
+229		Rocket Sidearm	81	17
+230		Rocket Sidearm	91	18
+231		Rocket Sidearm	100	18
+241						notes	mag type	0-point	100-point	slope	confidence	0-100 ratio
+242							autohigh	39.5	71.5	0.32	99%	1.810127
+243							autolow	24.5	44.5	0.2	99%	1.816327
+244							automid	32.75	59.5	0.2675	90%	1.816794
+245							hc	3.1	13.1	0.1	99%	4.225806
+246						x2	hcburst	4	14	0.1	70%	3.5
+247							hcprec	4.5	18.1	0.136	85%	4.022222
+248						x3	pulse	5.6	15.6	0.1	90%	2.785714
+249						x4	pulseagg	5.6	15.6	0.1	90%	2.785714
+250							scout	9.1	19.1	0.1	80%	2.098901
+251							smghigh	28.3	40.3	0.12	90%	1.424028
+252						agg	smglow	22.6	32.1	0.095	90%	1.420354
+253						prec	smgmid	23.5	33.5	0.1	80%	1.425532
+263	Heartshadow	Jagged Edge	Jagged Edge	64	57	61	63	64	60	60	0	20	30	35	Exotic	Exhumation	Sword	Exhumation Sword	Adaptive Frame Sword	17	17	Void	<br>Heartshadow (3664831848) Jagged Edge | None | None | None | None |	1	Fixed Roll	Current	Fixed
+264	Heartshadow Catalyst	Jagged Edge	Jagged Edge	64	63	67	69	70	60	60	30	50	60	65	Exotic	Exhumation	Sword	Exhumation Sword	Adaptive Frame Sword	17	17	Void	<br>Heartshadow Catalyst (3664831848) Jagged Edge | None | None | None | None |	1	Fixed Roll	Current	Fixed
+271			Name	Magazine Perks	Inventory Size Perks	Magazine Size	Base Total Ammo	1x Reserves Total Ammo	2x Reserves Total Ammo	3x Reserves Total Ammo
+272			Whisper of the Worm - current			3	18	21	23	24
+273			Whisper of the Worm - buffed inventory stat?			3	24	24	24	24
+274			Whisper of the Worm - buffed capacity equation?			3	24	27	29	30
+275			Whisper of the Worm - buffed capacity + Field Prep			3	28	30	30	30
+284					statGroup	magtype			autohigh				Archetype	Sorting Type	Inventory Type
+285					1038936347	hc			Cursebringer Auto Rifle				Adaptive Frame Grenade Launcher	Adaptive GL	Adaptive GL
+286					1060647832	pulseheavy			Ignition Trigger Auto Rifle				Compressed Wave Frame Grenade Launcher	Adaptive GL	Adaptive GL
+287					1099468801	hc			Lightweight Frame Auto Rifle				Adaptive Burst Linear Fusion Rifle	Aggressive LFR	Aggressive LFR
+288					115153278	sidearmburst			Rapid-Fire Frame Auto Rifle				Aggressive Frame Machine Gun	Aggressive MG	Aggressive MG
+289					1237673852	sidearm			Rocket Tracers Auto Rifle				Adaptive Frame Fusion Rifle	Fusion	Fusion
+290					1263777500	pulse			autolow				Aggressive Frame Fusion Rifle	Fusion	Fusion
+291					1931061385	sidearmagg			Four-Headed Dog Auto Rifle				High-Impact Frame Fusion Rifle	Fusion	Fusion
+292					2094758608	business			High-Impact Frame Auto Rifle				Precision Frame Fusion Rifle	Fusion	Fusion
+293					2316869058	pulseagg			Lightweight Frame Auto Rifle				Rapid-Fire Frame Fusion Rifle	Fusion	Fusion
+294					2447032493	smglow			Overcharge Capacitor Auto Rifle				Adaptive Glaive Glaive	Glaive	Glaive
+295					2453149525	scout			Precision Frame Auto Rifle				Aggressive Glaive Glaive	Glaive	Glaive
+296					27412306	autohigh			SUROS Legacy Auto Rifle				Edge of Action Glaive	Glaive	Glaive
+297					3038713283	autolow			automid				Edge of Concurrence Glaive	Glaive	Glaive
+298					3159447977	sidearm			Adaptive Frame Auto Rifle				Edge of Intent Glaive	Glaive	Glaive
+299					3191205063	hc			Monte Carlo Method Auto Rifle				M1R Distribution Matrix Glaive	Glaive	Glaive
+300					3299471337	pulse			Support Frame Auto Rifle				Rapid-Fire Glaive Glaive	Glaive	Glaive
+301					3568045548	scout			The Right Choice Auto Rifle				Heavy Burst Shotgun	Heavy Burst Shotgun	Heavy Burst Shotgun
+302					3738347071	sidearm			Volatile Light Auto Rifle				High-Impact Frame Rocket Launcher	HI RL	HI RL
+303					3773775587	autolow			business				Precision Frame Rocket Launcher	HI RL	HI RL
+304					3941551777	automid			Payday Auto Rifle				Adaptive Frame Machine Gun	Non rapid MG	Non rapid MG
+305					3979471598	hcburst			crimson				High-Impact Frame Machine Gun	Non rapid MG	Non rapid MG
+306					4085620720	hcprec			Banned Weapon Hand Cannon				Reign Havoc Machine Gun	Non rapid MG	Non rapid MG
+307					4289099473	smghigh			hc				Vexadecimal Machine Gun	Non rapid MG	Non rapid MG
+308					715017193	sidearm			Accomplice Hand Cannon				Adaptive Frame Sniper Rifle	Non rapid sniper	Non rapid sniper
+309					999028408	pulse			Adaptive Frame Hand Cannon				Aggressive Frame Sniper Rifle	Non rapid sniper	Non rapid sniper
+310					Banned Weapon Hand Cannon	crimson			Aggressive Frame Hand Cannon				Cayde's Retribution Sniper Rifle	Non rapid sniper	Non rapid sniper
+311					Explosive Shadow Hand Cannon	malf			Fan Fire Hand Cannon				Honed Edge Sniper Rifle	Non rapid sniper	Non rapid sniper
+312					Precision Frame Submachine Gun	smgmid			Lightweight Frame Hand Cannon				The Fundamentals Sniper Rifle	Non rapid sniper	Non rapid sniper
+313									Mark of the Devourer Hand Cannon				Precision Frame Grenade Launcher	Precision GL	Precision GL
+314									Memento Mori Hand Cannon				Precision Frame Linear Fusion Rifle	Precision LFR	Precision LFR
+315									Noble Rounds Hand Cannon				Rapid-Fire Frame Grenade Launcher	Rapid GL	Rapid GL
+316									Paracausal Shot Hand Cannon				Rapid-Fire Frame Machine Gun	Rapid MG	Rapid MG
+317									Precision Frame Hand Cannon				Rapid-Fire Frame Shotgun	Rapid shotgun	Rapid shotgun
+318									Sunburn Hand Cannon				Mortal Polarity Sniper Rifle	Rapid sniper	Rapid sniper
+319									hcburst				Personal Assistant Sniper Rifle	Rapid sniper	Rapid sniper
+320									Heavy Burst Hand Cannon				Rapid-Fire Frame Sniper Rifle	Rapid sniper	Rapid sniper
+321									hcprec				Adaptive Frame Rocket Launcher	RL	RL
+322									Precision Frame Hand Cannon				Aggressive Frame Rocket Launcher	RL	RL
+323									malf				Rocket-Assisted Frame Sidearm	Rocket Sidearm	Rocket Sidearm
+324									Explosive Shadow Hand Cannon				Aggressive Frame Shotgun	Shotgun	Shotgun
+325									pulse				Compression Chamber Shotgun	Shotgun	Shotgun
+326									Adaptive Frame Pulse Rifle				Lightweight Frame Shotgun	Shotgun	Shotgun
+327									Black Hole Pulse Rifle				Pinpoint Slug Frame Shotgun	Shotgun	Shotgun
+328									Harsh Truths Pulse Rifle				Precision Frame Shotgun	Shotgun	Shotgun
+329									High-Impact Frame Pulse Rifle				Precision Slug Shotgun	Shotgun	Shotgun
+330									Legacy PR-55 Frame Pulse Rifle				Shot Package Shotgun	Shotgun	Shotgun
+331									Lightweight Frame Pulse Rifle				Split Decision Shotgun	Shotgun	Shotgun
+332									Rapid-Fire Frame Pulse Rifle				Area Denial Frame Grenade Launcher	Special GL	Special GL
+333									Redemption Pulse Rifle				Double Fire Grenade Launcher	Special GL	Special GL
+334									Rewind Again Pulse Rifle				Lightweight Frame Grenade Launcher	Special GL	Special GL
+335									String of Curses Pulse Rifle				Micro-Missile Frame Grenade Launcher	Special GL	Special GL
+336									The Corruption Spreads Pulse Rifle				Trinary Vision Grenade Launcher	Special GL	Special GL
+337									Void Leech Pulse Rifle				Wave Frame Grenade Launcher	Special GL	Special GL
+338									pulseagg				Adaptive Frame Trace Rifle	Trace	Trace
+339									Aggressive Burst Pulse Rifle				Ager's Call Trace Rifle	Trace	Trace
+340									Hunter's Trace Pulse Rifle				Cold Fusion Trace Rifle	Trace	Trace
+341									pulseheavy				Harmonic Laser Trace Rifle	Trace	Trace
+342									Heavy Burst Pulse Rifle				Judgment Trace Rifle	Trace	Trace
+343									scout				Prismatic Inferno Trace Rifle	Trace	Trace
+344									Aggressive Frame Scout Rifle				Protective Weave Trace Rifle	Trace	Trace
+345									Cranial Spike Scout Rifle				Transmutation Trace Rifle	Trace	Trace
+346									Creeping Attrition Scout Rifle				Ahamkara's Eye Fusion Rifle	Ahamkara's Eye Fusion Rifle	Unique
+347									High-Impact Frame Scout Rifle				Arc Traps Grenade Launcher	Arc Traps Grenade Launcher	Unique
+348									Lightweight Frame Scout Rifle				Big Frigid Glaive Glaive	Big Frigid Glaive Glaive	Unique
+349									MIDA Multi-Tool Scout Rifle				Charge Shot Fusion Rifle	Charge Shot Fusion Rifle	Unique
+350									Precision Frame Scout Rifle				Composite Propellant Rocket Launcher	Composite Propellant Rocket Launcher	Unique
+351									Rapid-Fire Frame Scout Rifle				Compounding Force Linear Fusion Rifle	Compounding Force Linear Fusion Rifle	Unique
+352									Revolution Scout Rifle				Conserve Momentum Fusion Rifle	Conserve Momentum Fusion Rifle	Unique
+353									Slug Rifle Scout Rifle				Corrupted Nucleosynthesis Grenade Launcher	Corrupted Nucleosynthesis Grenade Launcher	Unique
+354									The Fate of All Fools Scout Rifle				Cryocannon Grenade Launcher	Cryocannon Grenade Launcher	Unique
+355									The Perfect Fifth Scout Rifle				Dark Deliverance Rocket Launcher	Dark Deliverance Rocket Launcher	Unique
+356									Touch of Malice Scout Rifle				Dornröschen Linear Fusion Rifle	Dornröschen Linear Fusion Rifle	Unique
+357									sidearm				Excavation Grenade Launcher	Excavation Grenade Launcher	Unique
+358									Adaptive Frame Sidearm				Eyes on All Rocket Launcher	Eyes on All Rocket Launcher	Unique
+359									All at Once Sidearm				Full Stop Sidearm	Full Stop Sidearm	Unique
+360									Close the Gap Sidearm				Heavy Slug Thrower Machine Gun	Heavy Slug Thrower Machine Gun	Unique
+361									Lightweight Frame Sidearm				Hungering Quarrel Sidearm	Hungering Quarrel Sidearm	Unique
+362									LN2 Burst Sidearm				Insectoid Robot Grenades Grenade Launcher	Insectoid Robot Grenades Grenade Launcher	Unique
+363									Precision Frame Sidearm				Lagrangian Sight Linear Fusion Rifle	Lagrangian Sight Linear Fusion Rifle	Unique
+364									Rapid-Fire Frame Sidearm				Looks Can Kill Hand Cannon	Looks Can Kill Hand Cannon	Unique
+365									Rat Pack Sidearm				Mad Scientist Rocket Launcher	Mad Scientist Rocket Launcher	Unique
+366									Together Forever Sidearm				Paracausal Beam Trace Rifle	Paracausal Beam Trace Rifle	Unique
+367									sidearmagg				Primeval's Torment Grenade Launcher	Primeval's Torment Grenade Launcher	Unique
+368									Heavy Burst Sidearm				Property: Undecidable Fusion Rifle	Property: Undecidable Fusion Rifle	Unique
+369									sidearmburst				Prototype Trueseeker Rocket Launcher	Prototype Trueseeker Rocket Launcher	Unique
+370									Adaptive Burst Sidearm				Pyrotoxin Rounds Machine Gun	Pyrotoxin Rounds Machine Gun	Unique
+371									Unrepentant Sidearm				Repulsor Force Shotgun	Repulsor Force Shotgun	Unique
+372									smghigh				Saint's Fists Fusion Rifle	Saint's Fists Fusion Rifle	Unique
+373									Adaptive Frame Submachine Gun				Shock Blast Shotgun	Shock Blast Shotgun	Unique
+374									Arc Conductor Submachine Gun				Shrapnel Launcher Shotgun	Shrapnel Launcher Shotgun	Unique
+375									Lightweight Frame Submachine Gun				Thunderer Shotgun	Thunderer Shotgun	Unique
+376									MIDA Synergy Submachine Gun				Traitor's Vessel Fusion Rifle	Traitor's Vessel Fusion Rifle	Unique
+377									Ride the Bull Submachine Gun				Twintails Rocket Launcher	Twintails Rocket Launcher	Unique
+378									Soaring Fang Submachine Gun				Unplanned Reprieve Fusion Rifle	Unplanned Reprieve Fusion Rifle	Unique
+379									smglow				Unwound Linear Fusion Rifle	Unwound Linear Fusion Rifle	Unique
+380									Adaptive Frame Submachine Gun				Wire Rifle Linear Fusion Rifle	Wire Rifle Linear Fusion Rifle	Unique
+381									Aggressive Frame Submachine Gun				Wolfpack Rounds Rocket Launcher	Wolfpack Rounds Rocket Launcher	Unique
+382									Lightweight Frame Submachine Gun				Worm's Hunger Grenade Launcher	Worm's Hunger Grenade Launcher	Unique
+383									Ravenous Beast Submachine Gun				Wrath of the Colossus Machine Gun	Wrath of the Colossus Machine Gun	Unique
+384									Screaming Swarm Submachine Gun				No Backpack Sniper Rifle	No Backpack Sniper Rifle	Unique
+385									smgmid				White Nail Sniper Rifle	Whisper	Whisper
+386									Precision Frame Submachine Gun
+394									Row Labels
+395									autohigh
+396									Necrochasm
+397									Quicksilver Storm
+398									Tommy's Matchbook
+399									autolow
+400									Centrifuse
+401									Cerberus+1
+402									SUROS Regime
+403									automid
+404									Hard Light
+405									Khvostov 7G-0X
+406									Monte Carlo
+407									business
+408									Sweet Business
+409									crimson
+410									Crimson
+411									hc
+412									Ace of Spades
+413									Hawkmoon
+414									Lumina
+415									Sturm
+416									Sunshot
+417									The Last Word
+418									Thorn
+419									malf
+420									Malfeasance
+421									pulse
+422									Bad Juju
+423									Collective Obligation
+424									Graviton Lance
+425									No Time to Explain
+426									Outbreak Perfected
+427									Red Death Reformed
+428									Vigilance Wing
+429									pulseagg
+430									Revision Zero
+431									scout
+432									Dead Man's Tale
+433									MIDA Multi-Tool
+434									Polaris Lance
+435									Skyburner's Oath
+436									Symmetry
+437									The Jade Rabbit
+438									Touch of Malice
+439									Wicked Implement
+440									sidearm
+441									Cryosthesia 77K
+442									Devil's Ruin
+443									Final Warning
+444									Rat King
+445									sidearmburst
+446									Trespasser
+447									smghigh
+448									Riskrunner
+449									The Huckleberry
+450									The Manticore
+451									smglow
+452									Osteo Striga
+453									Tarrabah

@@ -1,0 +1,55 @@
+2			Amount	Source	Notes
+4	EVERYTHING HERE IS NOW IMPACTED BY ABILITY COOLDOWN [unless explicitly stated by effect] (ex: Solar Grenade now gets 50% less energy from Firesprite, so only 5% instead of 10%)
+5	Base Cooldown	Energy Multiplier
+6	152	0.5	Flux, Lightning, Solar, Axion Bolt, Vortex, Shackle
+7	121	0.625	Pulse, Storm, Thermite, Tripmine, Spike, Suppressor, Void Wall, Cold Snap, Glacier [Bleak Watcher Turret], Threadling
+8	105	0.75	Arcbolt, Skip, Incendiary, Magnetic [Handheld Supernova], Scatter
+9	91	0.875	Flashbang, Healing, Swarm, Duskfield
+10	82	0.85	Grapple, Loyal Moth Cage
+11	73	1	Fusion
+12	64	1	Firebolt
+14	MECHANICS
+15		Devour	7.5-20%	Void Verb	On Kill, per Enemy Rank
+16		Firesprite	10%	Solar Pickup
+17		Ionic Trace	12.50%	Arc Pickup
+18		Enhanced Devour	15-40%	Void Verb	On kill with Feed the Void equipped, per Enemy Rank
+20	WEAPON PERKS [Enhanced]
+21		Wellspring	8% [9%]	Weapon Perk	On Weapon kill, split equally among all uncharged abilities
+22		Traveler's Chosen	10-100%	Exotic Sidearm	Per stack of Gathering Light (up to 10)
+23		Demolitionist	10% [11%]	Weapon Perk	On Weapon kill with Primary/Power weapons/Grenade Launchers/Trace Rifles
+24		Demolitionist	20% [22%]	Weapon Perk	On Weapon kill with Special weapons like Glaives(NOT melee) EXCEPT Grenade Launchers/Trace Rifles
+26	GENERAL ARMOR MODS [x2] {x3}
+27		Distribution [3 en]	4% [6%] {7%}	Class Item Mod	On using Class Ability within 15m of an enemy
+28		Absolution [3 en]	5% [7.5%] {10%}	Legs Mod	On Orb of Power pickup
+29		Innervation [1 en]	10% [13%] {15%}	Legs Mod	On Orb of Power pickup
+30		Bomber [1 en]	12% [17%] {20%}	Class Item Mod	On using Class Ability
+31		Impact Induction [2 en]	12% [17%] {20%}	Arms Mod	On dealing melee damage (7 sec cooldown) [Does NOT work with Glaives]
+32		Grenade Kickstart [3 en]	16-45%	Arms Mod	Expends All Armor Charge to grant more, each copy counts as extra Armor charge (max 9 charges)
+33		Explosive Finisher [1 en]	70-100%	Class item Mod	On using a Finisher and expending 3+ Armor Charge
+35	FRAGMENTS
+36		Thread of Generation	Variable	Strand	Upon dealing damage from weapon/ability. Highly variable, seems to do better with high RPM weapons
+37		Whisper of Torment	4% [16.7%]	Stasis	Upon receiving damage [when in Critical Health] (1 sec cooldown)
+38		Ember of Blistering	8-25%	Solar	On Ignition kills based on Enemy Rank
+39		Facet of Balance	10%	Prismatic	Upon multikill with Stasis/Strand Energy source
+40		Echo of Exchange	15%	Void	On Melee kills (Powered or Unpowered)
+42	HUNTER ONLY
+43		Orpheus Rig	10%	Exotic Legs	Per enemy tethered with Deadfall Super
+44		Shinobu's Vow	10-50%	Exotic Arms	With Skip Grenade hits (more if hits multiple)
+45		Lucky Raspberry	20% [5%]	Exotic Arms	Per Jolt from Arcbolt Grenade [bonus from Ionic Trace]
+46		Young Ahamkara's Spine	33% [66%]	Exotic Arms	Dealing Solar Ability Damage [Ember of Ashes with Tripmine]; Only works with Tripmines
+48	TITAN ONLY
+49		Mask of the Quiet One	5%	Exotic Helmet	Every time damage is taken (1 sec cooldown)
+50		Ashen Wake	25/50/100%	Exotic Arms	On kill with Fusion Grenades based on Enemy Rank
+52	WARLOCK ONLY
+53		Starfire Protocol	2.5% [20%]	Exotic Chest	Per Weapon hit [kill] while in Empowered Rift or Well of Radiance (0.4 sec cooldown)
+54		Child of the Old Gods	3.50%	Void Aspect	Per enemy leeched every 1.4 sec in Healing Rift OR 1.1 sec in Empowering Rift (lasts 13 sec)
+55		Getaway Artist	5.00%	Arc Aspect	Per burst on hit with Sentient Arc Soul
+56		Osmiomancy	15-50%	Exotic Arms	On hit and/or freeze with Coldsnap Grenades, based on Enemy Rank
+57		Fallen Sunstar	25%	Exotic Helmet	From Ionic Traces (instead of 12.5%)
+58		Apotheosis Veil	66% [100%]	Exotic Helmet	After [On] Super activation, every second for 8s
+59		Sunbracer	100%	Exotic Arms	Unlimited Solar Grenades for 5 sec after Powered Melee kill
+61	UNRELIABLE
+62		Siphoned Glyhpkeer	???	VotD Raid Mod	On killing a Glyphkeeper	needs testing
+63		Orbs of Restoration	10%	Class Item Mod	On Orb of Power pickup, applies to least-charged Ability
+64		Restorative Finisher	50%	Class Item Mod	On using a Finisher and expending 10% Super energy, applies to least-charged Ability
+65		Aeon Safe/Swift/Soul	100%	Exotic Arms	33.3% over 3 secs, From nearby Ally with Sect of Force equipped

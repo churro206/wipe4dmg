@@ -1,0 +1,139 @@
+2	Changing magazine stat can affect the reserves sizes, some perk and weapon mod combinations are better than others; for more information, see: Destiny 2 Inventory and Mag Database / To see how you can sort this data without downloading a copy of this spreadsheet, see the note attached on this cell; use the formula bar to read any associated notes on weapons / Want to contribute? Have questions, comments, or concerns? See Home page for contact information.
+3	Ammo	Weap. Tag	Frame/Weapon	Reserves	Notes	Reference Weapon	Affecting Magazine Perk
+5	S	SnRi	Rapid-Fire	31	No difference with Extended Mag	The Supremacy	Appended Mag
+6	S	SnRi	Adaptive	24		Thoughtless	Extended Mag
+7	S	SnRi	Aggressive	20		Succession	Extended Mag
+8	S	SnRi	High-Impact	40		The Helmsman
+9	S	SnRi	Dynamic Heat Weapon	26		Conspiracy Honed
+10	S	SnRi	Cloudstrike	31		Cloudstrike
+11	S	SnRi	Izanagi's Burden	20		Izanagi's Burden	Accurized Rounds
+12	S	SnRi	Still Hunt	20		Still Hunt
+13	S	SnRi	Borealis	20	Benefits from void reserves	Borealis	Extended Mag
+14	S	SnRi	New Land Beyond	40		New Land Beyond	The Master
+15	S	TrRi	Adaptive	520		Acasia's Dejection	Enhanced Battery
+16	S	TrRi	Ruinous Effigy	470		Ruinous Effigy
+17	S	TrRi	Divinity	470		Divinity
+18	S	TrRi	Coldheart	505		Coldheart	Enhanced Battery
+19	S	TrRi	Prometheous Lens	500		Prometheous Lens
+20	S	TrRi	The Navigator	485		The Navigator
+21	S	TrRi	Wavesplitter	500		Wavesplitter	Enhanced Battery
+22	S	TrRi	Ager's Scepter	485		Ager's Scepter
+23	S	FuRi	Rapid-Fire	22		Cartesian Coordinate	Enhanced Battery
+24	S	FuRi	Adaptive	19		Techeun Force	Enhanced Battery
+25	S	FuRi	Aggressive	22		Midha's Reckoning	Ionized Battery
+26	S	FuRi	Precision	19		Deliverance	Enhanced Battery
+27	S	FuRi	High-Impact	19		The Eremite	Enhanced Battery
+28	S	FuRi	Merciless	19		Merciless	Extended Mag
+29	S	FuRi	Jotunn	24		Jotunn
+30	S	FuRi	Tesselation	22		Tesselation
+31	S	FuRi	Delicate Tomb	26		Delicate Tomb
+32	S	FuRi	Telesto	19		Telesto
+33	S	FuRi	Bastion	21		Bastion
+34	S	FuRi	Cull's Shadow	24		Cull's Shadow
+35	S	Swrd	Praxic Blade	52		Praxic Blade	Defensive Form
+36	S	Shgu	Rapid-Fire	25		Until Its Return	Extended Mag
+37	S	Shgu	Rapid-Fire Slug	24		Trachinus	Extended Mag
+38	S	Shgu	Lightweight	18		Seventh Seraph CQC-12	Extended Mag
+39	S	Shgu	Precision	18		Compass Rose	Extended Mag
+40	S	Shgu	Pinpoint Slug	18		Heritage	Extended Mag
+41	S	Shgu	Aggressive	19	Without Backup Mag	Found Verdict	Extended Mag
+42	S	Shgu	Heavy Burst	34		Arcane Embrace	Extended Mag
+43	S	Shgu	The Fourth Horseman	20		The Fourth Horseman
+44	S	Shgu	Conditional Finality	19	Benefits from stasis reserves	Conditional Finality
+45	S	Shgu	The Chaperone	18		The Chaperone
+46	S	Shgu	Lord of Wolves	189		Lord of Wolves	Extended Mag
+47	S	Shgu	Duality	17		Duality
+48	S	Shgu	Slayer's Fang	27		Slayer's Fang	Extended Mag
+49	S	BrGL	Double Fire	20		Wilderflight	N/A
+50	S	BrGL	Lightweight	20		Truthteller	N/A
+51	S	BrGL	Wave	20		Forbearance	N/A
+52	S	BrGL	Micro-Missle	20		The Mountaintop	N/A
+53	S	BrGL	Area Denial	20		Lost Signal	N/A
+54	S	BrGL	Ex Diris	35		Ex Diris	N/A
+55	S	BrGL	Witherhoard	20		Witherhoard	N/A
+56	S	BrGL	Dead Messenger	20	Benefits from void reserves	Dead Messenger	N/A
+57	S	Glai	Rapid-Fire	31		Greasy Luck	Extended Mag
+58	S	Glai	Adaptive	29		Lubrae's Ruin	Extended Mag
+59	S	Glai	Aggressive	33		Judgement of Kelgorath	Extended Mag
+60	S	Glai	Vexcalibur	33		Vexcalibur	Extended Mag
+61	S	Glai	Edge of Concurrence	33		Edge of Concurrence	Extended Mag
+62	S	Glai	Edge of Action	29		Edge of Action	Extended Mag
+63	S	Glai	Edge of Intent	31		Edge of Intent	Extended Mag
+64	S	LiFR	Lorentz Driver	21		Lorentz Driver	Enhanced Battery
+65	S	LiFR	Arbalest	21		Arbalest
+66	S	LiFR	Euphony	21		Euphony
+67	S	AuRi	Choir of One	225		Choir of One	N/A
+68	S	HaCa	Dynamic Heat Weapon	44		Uncivil Discourse
+69	S	HaCa	Eriana's Vow	35		Eriana's Vow
+70	S	PuRi	Rocket-Assisted	18		Mint Retrograde	Extended Mag
+71	S	PuRi	New Maplias	23		New Maplias	Tactical Mag
+72	S	Sdrm	Rocket-Assisted	40		Aberrant Action	Extended Mag
+73	S	Sdrm	Buried Bloodline	50		Buried Bloodline
+74	S	Sdrm	Forerunner	70		Forerunner
+75	S	Bows	Heirloom	20		Heirloom
+76	H	HeMG	Rapid-Fire	575		Retrofit Escapade	Extended Mag
+77	H	HeMG	Aggressive	455		Pro Memoria	Extended Mag
+78	H	HeMG	Adaptive	375		Song of Ir Yut	Extended Mag
+79	H	HeMG	High-Impact	373		Qullum's Terminus	Extended Mag
+80	H	HeMG	Balanced Heat Weapon	575		Bitter End
+81	H	HeMG	Heir Apparent	440		Heir Apparent	Appended Mag
+82	H	HeMG	Thunderlord	379		Thunderlord	Appended Mag
+83	H	HeMG	Deterministic Chaos	376		Deterministic Chaos
+84	H	HeMG	Xenophage	29		Xenophage
+85	H	HeMG	Grand Overture	58		Grand Overture
+86	H	HeMG	Service of Luzaku	300		Service of Luzaku
+87	H	HeGL	Rapid-Fire	30		Koraxis's Distress	Augmented Drum
+88	H	HeGL	Adaptive	26		Cataphract GL3	Augmented Drum
+89	H	HeGL	Compressed Wave	26		Dimensional Hypotrochoid
+90	H	HeGL	The Prospector	30		The Prospector	Augmented Drum
+91	H	HeGL	Anarchy	29		Anarchy
+92	H	HeGL	The Colony	25		The Colony
+93	H	HeGL	Parasite	18		Parasite	High-Explosive Ordnance
+94	H	HeGL	Salvation's Grip	25		Salvation's Grip
+95	H	RocL	Aggressive	9		Cold Comfort
+96	H	RocL	Aggressive	14	Bipod	Crux Termination IV
+97	H	RocL	Adaptive	9		Apex Predator
+98	H	RocL	Adaptive	14	Bipod	Apex Predator
+99	H	RocL	High-Impact	11		Braytech Osprey
+100	H	RocL	High-Impact	16	Bipod	Braytech Osprey
+101	H	RocL	Precision	11		Ascendancy
+102	H	RocL	Precision	16	Bipod	Faith-Keeper
+103	H	RocL	The Wardcliff Coil	8		The Wardcliff Coil	Extended Mag
+104	H	RocL	Two-Tailed Fox	10		Two-Tailed Fox
+105	H	RocL	Eyes of Tomorrow	10		Eyes of Tomorrow
+106	H	RocL	Truth	14		Truth
+107	H	RocL	Gjallarhorn	11		Gjallarhorn
+108	H	RocL	Deathbringer	11		Deathbringer
+109	H	RocL	Dragon's Breath	11		Dragon's Breath
+110	H	RocL	Whirling Ovation	???		Whirling Ovation
+111	H	LiFR	Precision	21		Cataclysmic	Enhanced Battery
+112	H	LiFR	Adaptive Burst	21		Stormchaser	Enhanced Battery
+113	H	LiFR	The Queenbreaker	21		The Queenbreaker	Enhanced Battery
+114	H	LiFR	Sleeper Simulant	16		Sleeper Simulant
+115	H	LiFR	Finality's Auger	???		Finality's Augur
+116	H	LiFR	Fafnir	18		Fafnir
+117	H	Glai	Winterbite	18		Winterbite
+118	H	SnRi	Disruption Weapon	20		Refurbished A499
+119	H	SnRi	D.A.R.C.I.	31		D.A.R.C.I.	Extended Mag
+120	H	SnRi	Whisper of the Worm	26		Whisper of the Worm
+121	H	Shgu	Tractor Cannon	18		Tractor Cannon
+122	H	Shgu	Legend of Acrius	16		Legend of Acrius
+123	H	FuRi	One Thousand Voices	11		One Thousand Voices
+124	H	Bows	High-Impact	10		Submersion
+125	H	Bows	Leviathan's Breath	9	No Catalyst	Leviathan's Breath	N/A
+126	H	Bows	Leviathan's Breath	14	Catalyst	Leviathan's Breath	N/A
+127	H	TrRi	Microcosm	385		Microcosm
+128	H	Swrd	Adaptive	70		The Other Half	Jagged Edge
+129	H	Swrd	Adaptive (Bequest)	69		Bequest	Jagged Edge
+130	H	Swrd	Vortex	68		Falling Guillotine	Jagged Edge
+131	H	Swrd	Caster (Temptation's)	63		Temptation's Hook	Jagged Edge
+132	H	Swrd	Caster (Sola's)	68		Sola's Scar	Jagged Edge
+133	H	Swrd	Wave Sword	69		Aurora Dawn	Jagged Edge
+134	H	Swrd	Lightweight	86		Quickfang	Jagged Edge
+135	H	Swrd	Aggressive	56		Crown-Splitter	Jagged Edge
+136	H	Swrd	Black Talon	69		Black Talon	Tempered Edge
+137	H	Swrd	Worldline Zero	69		Worldline Zero	Tempered Edge
+138	H	Swrd	Heartshadow	63	catalyst	Heartshadow	Jagged Edge
+139	S	Swrd	Ergo Sum	48		Ergo Sum	Jagged Edge
+140	H	Swrd	Lament	65		Lament	Jagged Edge
+141	H	Swrd	Wolfsbane	64		Wolfsbane	Honed Edge, Jagged Edge

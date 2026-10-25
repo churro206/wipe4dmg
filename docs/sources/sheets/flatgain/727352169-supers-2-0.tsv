@@ -1,0 +1,51 @@
+2				All assume 200 super
+3		Element	Class	Icon	Super	Use	Damage Exotic	Optimal Super Damage	Cast Time / Lock	Optimal Super DPS
+5		Prismatic	Hunter		Golden Gun (Nighthawk, pre-popped)	Single-target		25,417	0.82s	31,148/s		Active Multiplier	With 100 Super Stat	Super Abilities
+6		Solar	Hunter		Blade Barrage	Mix		33,625	1.90s	17,697/s		90%	128%
+7		Prismatic	Warlock		Nova Bomb: Cataclysm	Mix		23,066	1.52s	15,175/s		100%	143%
+8		Void	Warlock		Nova Bomb: Cataclysm	Mix		20,969	1.52s	13,795/s		110%	157%
+9		Strand	Warlock		Needlestorm	Mix		24,000	1.78s	13,483/s		270%	385%
+10		Strand	Warlock		Needlestorm	Mix		24,000	1.78s	13,483/s		300%	428%
+11		Prismatic	Hunter		Golden Gun (Nighthawk)	Single-target		25,417	2.03s	12,521/s
+12		Prismatic	Titan		Thundercrash	Single-target		24,774	2.22s	11,176/s
+13		Prismatic	Warlock		Needlestorm	Mix		19,418	1.78s	10,909/s		Hunter Super Damage Exotics
+14		Prismatic	Hunter		Golden Gun: Marksman (pre-popped)	Single-Target		24,972	2.35s	10,626/s		Super Exotic	Super Abilities
+15		Arc	Titan		Thundercrash	Single-target		22,522	2.22s	10,160/s
+16		Arc	Hunter		Gathering Storm	Single-Target		16,758	1.75s	9,576/s
+17		Void	Warlock		Nova Bomb: Vortex	Single-target		13,330	1.52s	8,770/s
+18		Stasis	Hunter		Silence and Squall	Add-Clear		19,418	2.35s	8,263/s
+19		Void	Hunter		Shadowshot: Moebius Quiver	Single-target		20,380	2.60s	7,838/s
+20		Prismatic	Hunter		Golden Gun: Marksman	Single-Target		24,972	3.23s	7,731/s
+21		Prismatic	Hunter		Silence and Squall	Add-Clear		16,606	2.35s	7,066/s		Titan Super Damage Exotics
+22		Void	Hunter		Shadowshot: Moebius Quiver	Single-target		20,380	3.00s	6,793/s		Super Exotic	Super Abilities
+23		Solar	Titan		Burning Maul (Pyrogale)	Single-target		23,968	3.80s	6,307/s
+24		Prismatic	Titan		Bladefury	Add-Clear		68,987	11.10s	6,215/s
+25		Prismatic	Titan		Hammer of Sol	Add-clear		58,224	9.50s	6,129/s
+26		Prismatic	Titan		Twilight Arsenal	Single-target		22,284	3.72s	5,996/s
+27		Void	Titan		Twilight Arsenal	Single-target		21,141	3.72s	5,688/s
+28		Prismatic	Titan		Glacial Quake	Mix		67,463	14.77s	4,568/s
+29		Arc	Warlock		Chaos Reach	Mix		31,321	8.67s	3,613/s		Warlock Super Damage Exotics
+30		Strand	Titan		Bladefury	Add-Clear		37,892	11.10s	3,414/s		Super Exotic	Super Abilities
+31		Solar	Warlock		Daybreak	Add-clear		31,677	9.55s	3,317/s
+32		Arc	Warlock		Stormtrance	Add-clear		44,531	13.55s	3,286/s
+33		Prismatic	Warlock		Stormtrance	Add-clear		42,004	13.55s	3,100/s
+34		Prismatic	Hunter		Storm's Edge	Mix		24,454	8.10s	3,019/s
+35		Solar	Warlock		Song of Flame	Mix		36,048	12.53s	2,877/s
+36		Solar	Titan		Hammer of Sol	Add-clear		36,192	12.77s	2,835/s
+37		Solar	Hunter		Golden Gun: Deadshot	Add-clear		10,347	3.65s	2,835/s
+38		Prismatic	Warlock		Song of Flame	Mix		35,185	12.53s	2,808/s
+39		Arc	Hunter		Arc Staff	Add-clear		45,968	16.80s	2,736/s
+40		Void	Titan		Sentinel Shield (melee)	Add-Clear		35,188	12.95s	2,717/s
+41		Arc	Titan		Fists of Havoc	Add-clear		24,808	9.75s	2,544/s
+42		Strand	Hunter		Silkstrike	Add-Clear		30,290	11.95s	2,535/s
+43		Stasis	Titan		Glacial Quake	Mix		36,621	15.72s	2,330/s
+44		Stasis	Warlock		Winter's Wrath	Add-Clear		35,160	15.25s	2,306/s
+45		Solar	Titan		Burning Maul	Add-clear		34,089	15.00s	2,273/s
+46		Void	Hunter		Spectral Blades	Add-Clear		29,558	13.53s	2,185/s
+47		Prismatic	Warlock		Stormtrance	Add-Clear		29,564	13.55s	2,182/s
+48		Void	Hunter		Shadowshot: Deadfall	Add-Clear		1,556	1.50s	1,037/s
+49		Void	Warlock		Nova Warp	Add-Clear		24,400	25.00s	976/s
+50		Prismatic	Warlock		Winter's Wrath	Add-clear		14,018	15.25s	919/s
+51		Void	Titan		Ward of Dawn	Support		0		0/s
+52		Solar	Warlock		Well of Radiance	Support		0		0/s
+53		Arc	Hunter		Arc Staff (Block)	Support			25.00s	0/s

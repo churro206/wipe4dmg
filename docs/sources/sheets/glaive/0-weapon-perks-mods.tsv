@@ -1,0 +1,220 @@
+2		Interaction? (Trigger/Benefit)	Shot	Shield	Melee	Notes
+5	WEAPON PERKS
+6		Adagio				6 [7 enh] sec duration. [+32%] Shot Damage, 20% Slower fire rate, refreshable.	Action can proc it and will benefit from it
+7		Adaptive Munitions					Action cannot proc it, but will benefit from it
+8		Adrenaline Junkie					Action can proc it, but will not benefit from it
+9		Aggregate Charge				Test in S29	Action cannot proc it and will not benefit from it
+10		Air Trigger					No Intended/Possible interaction
+11		Attrition Orbs				Takes 5 shots to make 1 Orb of Power
+12		Auto-Loading Holster
+13		Bait and Switch
+14		Beacon Rounds				Homing is barely noticeable
+15		Binary Orbit				10 sec duration. [+25%] Shot Damage. Glaive Melee WILL proc and refresh buff for Arc, Solar and Void Glaive Shots
+16		Blessing of the Sky				11 sec duration. [+35%] Damage. From Lumina or Boots of the Assembler
+17		Blunt Execution Rounds
+18		Box Breathing				Activated by blocking even with no meter and enables precision damage for [+40%] Shot dmg. Cancelled with melee.	Test in S29
+19		Butterfly					Test in S29
+20		Cascade Point				Shot kills proc for other weapons, Melee does not	Test in S29
+21		Chain Reaction
+22		Chaos Reshaped				After 12s of combat, grants x1 [+20%] Shot Dmg. After another 12s of combat, grants x2 [+35%] Shot Dmg
+23		Chill Clip				First shot inflicts x60 stacks of Slow, second shot Freezes
+24		Close to Melee				11 sec duration, refreshable [+60%] Melee Dmg boost ([+30%] Melee Dmg in PvP)
+25		Closing Time
+26		Clown Cartridge
+27		Collective Action
+28		Compulsive Reloader
+29		Deconstruct				Takes 3 shots to proc perk for 4 seconds. Refills 1 ammo from reserves and [+40%] Shot dmg to Constructs and Vehicles
+30		Demolitionist				20% [22%] Energy refill
+31		Desperate Measures				7 sec duration, refreshable. [+10/20/30%] Shot Dmg per stack. Glaive Melee kill will grant x2, additional Glaive Melee kill grants x3 and refreshes
+32		Destabilizing Rounds				Applies Volatile to nearby enemies. Grants Volatile Rounds for 5 sec
+33		Discord				Shot kills proc for other weapons, Melee does not. Generates 1 ammo from thin air per kill
+34		Disruption Break				5.5 sec duration, [+50%] Melee Dmg boost. Works with Barrier Champions
+35		Eddy Current
+36		Envious Arsenal				Shot hits proc for other weapons, Melee does not
+37		Envious Assassin				Shot kills proc for other weapons, Melee does not. Glaive melee does not overflow Glaive shots
+38		Feeding Frenzy
+39		Field Prep
+40		Frenzy				After 12s of combat, [+15%] Shot Dmg, +100 Handling, +100 Reload
+41		Genesis
+42		Golden Tricorn				10 sec duration [+15/50%] Shot Dmg per stack
+43		Grave Robber				Melee kill fully refills weapon
+44		Harmony				Shot kills proc for other weapons, Melee does not. Other weapons buff only Shot
+45		Heal Clip				Works with Ember of Benevolence. Can be activated with Marksman Dodge
+46		High-Impact Reserves
+47		Immovable Object				Each Shot hit gains [+90%] Shield energy
+48		Impulse Amplifier				[+35%] Shot Speed, 0.85x Reload Multiplier, +20 Reload
+49		Incandescent				Scorch/Ignition kills proc other Shot Perks (i.e. Demolitionist). Does not proc Subsistence
+50		Jolting Feedback				Takes 4 rapid shots (3 if Amplified) to inflict Jolt. Stuns Overload Champions
+51		Keep Away
+52		Kill Clip
+53		Killing Wind
+54		Lead from Gold
+55		Master of Arms
+56		Mega Kill Clip					Test in S29
+57		Melee Momentum				Glaive Melee kill builds ~17%? [20%? Enh] Shield Meter (no cooldown). For 10 sec (refreshable), move faster while blocking. Does not work with Lucent Blades. Higher Tier enemies grant more Meter
+58		Mulligan				/
+59		One-Two Punch
+60		Opening Shot
+61		Overflow
+62		Proximity Power				Shot kills grant [+15] {+18} Melee stat per stack (max 3), increasing Glaive Melee Dmg for 10 sec, refreshable
+63		Pugilist				20% [22%] Energy refill
+64		Rampage
+65		Reconstruction
+66		Redirection				Hits against minors grant 2 Stacks (max 30). Hits against Elites or higher consume 3 {2 enh} stacks and deal [+33%] {+50% enh} Shot dmg /
+67		Remote Shield				For 10s (15s with Echo of Persistence), [+5%] Shot Dmg that stacks with Surges, refreshable. Refreshing Void Overshield with another ability cancels it. From Edge of Action
+68		Replenishing Aegis				Refills 1 ammo from reserves upon blocking dmg, 1 sec cooldown
+69		Repulsor Brace				Works with Suppressive Glaive Artifact Mod, Withering Gaze Perk, and Volatile rounds
+70		Rimestealer				Grants 1 stack (2 if enhanced) of Frost Armor per Crystal shatter/Frozen Enemy kill. Chain shatters or kills do not count
+71		Saint's Fists				From Bastion
+72		Shot Swap
+73		Sleight of Hand
+74		Slice				Inflicts Sever, refreshable by shooting non-Severed enemy
+75		Steady Hands
+76		Strategist
+77		Subsistence				Refills 1 ammo from reserves per Shot kill
+78		Support Frame				[+10%] Shot Dmg for 6 sec after healing an ally or being healed. Stacks with Radiant
+79		Surrounded				While 3+ enemies are within 8m, [+40%] {47% Enh} Shot dmg
+80		Swashbuckler				Melee Kill grants 5 stacks for Shot. [+33.3%] Shot dmg for 4.5 {6.5 enh} sec, refreshable
+81		Sword Logic				[+15/25/35/55%] Shot Dmg for 5.5/7.5/10.5/15.5 sec based on enemy rank killed, refreshable
+82		Tilting at Windmills
+83		Threat Detector
+84		Thresh
+85		Trench Barrel
+86		Turnabout
+87		Unrelenting
+88		Unstoppable Force				Blocking any dmg grants [+20%] Shot dmg for 4 sec, refreshable
+89		Voltshot				Jolt kills proc other Shot Perks (i.e. Feeding Frenzy). Stuns Overload Champions
+90		Vorpal Weapon				[+15%] Shot dmg to Minibosses, Bosses and Vehicles
+91		Wellspring				Charged Melee is refilled
+92		Withering Gaze				Blocking for 1.5 enables the next shot to inflict Weaken while in ADS. Does not need meter to activate, and leaving ADS or using Glaive melee cancels.
+93		Worm Byproduct				10 sec duration. [+15%] Shot Dmg. From Parasite
+95	ORIGIN TRAITS
+96		Alacrity
+97		Ambush
+98		Collective Purpose
+99		Cursed Thrall
+100		Dawning Surprise
+101		Extrovert				When 3+ enemies are within 15m, a kill restores 60HP. 3 sec cooldown
+102		Hakke Breach Armaments
+103		Gravity Well
+104		Gun and Run
+105		Heretical Behavior					Test in S29
+106		Nail, Meet Hammer
+107		Noble Deeds					Test in S29
+108		One Quiet Moment
+109		Problem Solver					Test in S29
+110		Psychohack				Inflicts Exhaust in 3 hits
+111		Restoration Ritual
+112		Right Hook
+113		Runneth Over
+114		Souldrinker
+115		Stunning Recovery
+116		Vanguard Determination					Test in S29
+117		Vanguard's Vindication
+118		Willing Vessel
+120	WEAPON MODS
+121		Adept/Backup Mag
+122		Ballistics
+123		Counterbalance Stock				Base Glaive Recoil Direction is 0 (lol)
+124		Freehand Grip				Not noticeable, almost 0
+125		Icarus Grip
+126		Quick Access Sling
+127		Tactical
+128		Heavy Ammo Finder Enhancement
+129		Sprint Grip
+130		Stunloader
+131		Synergy				Creates subclass pickups matching Glaive Affinity. Melee does NOT make Orbs of Power
+132		Targeting Adjuster
+134	ARTIFACT MODS						SOURCE
+135		Amped Up					NPA Repulsion Regulator
+136		Arc Compounding				[+15%] Arc Shot Dmg against Arc Blinded foes	Slayer Baron Apothecary Satchel
+137		Armorsmith				[+100%] Melee Dmg for 6 sec. [+10%] DR for 6 sec. Refreshable	Encrypted Data Disk, Queensfoil Censer
+138		Blinding Jolts				Inflicts Blind on nearby foes	Encrypted Data Disk
+139		Brain Freeze				Works with Winterbite melee. Duskfield only lasts as long as Freeze does	Slayer Baron Apothecary Satchel
+140		Bricks from Beyond				Every 2-3 Elite enemy kills with Void shot grants 50% Heavy Ammo meter progress	NPA Repulsion Regulator
+141		Cauterized Darkness				[+30%] Solar Shot Dmg against darkness-debuffed foes	Implement of Curiosity
+142		Conductive Cosmic Crystal				Works with Edge of Concurrence Charged Shot	Slayer Baron Apothecary Satchel
+143		Conductive Cosmic Needle					NPA Repulsion Regulator
+144		Counter Charge				Shot stuns champions in 1 shot. Melee does not stun champions	NPA Repulsion Regulator
+145		Counter Energy					Encrypted Data Disk, Hunter's Journal
+146		Creeping Chill					Hunter's Journal, Queensfoil Censer
+147		Crystalline Converter				Winterbite can build meter (by generating shards) but cannot trigger it to make crystals	Slayer Baron Apothecary Satchel
+148		Curative Orbs				Creates an Orb of Power	Slayer Baron Apothecary Satchel
+149		Defibrillating Blast					Tablet of Ruin
+150		Dielectric					Encrypted Data Disk, Tablet of Ruin
+151		Disruptor Spike
+152		Dragon's Bite				Works with Rake Angle. Cannot test with Winterbite shot because the shot freezes anyway	Queensfoil Censer
+153		Elemental Benevolence				Works with Vexcalibur Void Shield	Implement of Curiosity
+154		Elemental Coalescence				Spawns a Super-Matching Elemental Pickup every 5 kills	Implement of Curiosity
+155		Elemental Daze				Works with Winterbite melee.	Implement of Curiosity
+156		Elemental Orbs: Arc				Creates an orb that Jolts with 5-6 kills	Encrypted Data Disk
+157		Elemental Overdrive				[+10%] Shot Dmg for 7 sec after picking up affinity-matching pickup	Implement of Curiosity
+158		Elemental Siphon					Hunter's Journal, Tablet of Ruin
+159		Elemental Supercharger					Tablet of Ruin
+160		Expanding Abyss					Hunter's Journal
+161		Fell the Revenant
+162		Fierce Proxemics				Powered Melee is refilled	Encrypted Data Disk
+163		Flashover					Tablet of Ruin
+164		Flint Striker
+165		Frenzied Hunger
+166		Glaive of Dreams
+167		Hail the Storm				[+12.5%] Shatter Damage when hit by either shot or melee. Also works with Winterbite and Chill Clip	Queensfoil Censer, Slayer Baron Apothecary Satchel
+168		Hold the Line				Both will heal 55 HP. Lingers for 5 sec after no longer surrounded	Tablet of Ruin
+169		Horde Shuttle					Implement of Curiosity, Queensfoil Censer, Tablet of Ruin
+170		Improved Unraveling				Both Shot and Melee can extend Unraveling debuff with damage	NPA Repulsion Regulator
+171		Killing Breeze					Slayer Baron Apothecary Satchel
+172		Kindling Trigger					Queensfoil Censer
+173		Kinetic Rupture
+174		Kinetic Synthesis					Encrypted Data Disk
+175		King's Vestige				The Taken bolts are VERY inaccurate
+176		Lightning Strikes Twice				Arc Shot final blows extend buff duration	NPA Repulsion Regulator
+177		Maligned Harvest				Creates a Weakening pulse	Tablet of Ruin
+178		Medieval Champion
+179		Monochromatic Maestro
+180		No Bell				Rapidly killing 2 enemies with glaive melee creates 2 ammo from thin air, no cooldown. Blocking any damage grants [+85%] Melee dmg for 5s, not refreshable	Tablet of Ruin
+181		Old God's Rite					Slayer Baron Apothecary Satchel
+182		One With Frost				Reload buff for Winterbite is barely noticeable
+183		Overclock and Load
+184		Pack Tactics					Implement of Curiosity
+185		Passive Aggressive Guard				50% DR from nearby foes while holding a glaive	NPA Repulsion Regulator
+186		Photonic Flare				Inflicts Blind	Tablet of Ruin
+187		Pillar of Ice					Queensfoil Censer
+188		Power From Pain					Encrypted Data Disk, Slayer Baron Apothecary Satchel
+189		Precision Equity				Grants Weapon Surge x2 for 11 sec	Encrypted Data Disk
+190		Press the Advantage					Encrypted Data Disk, Hunter's Journal
+191		Prismatic Transfer				[+20%] Shot Damage for 10 sec	Hunter's Journal
+192		Protective Breach				Picking up a Void Breach gives a 15 sec Void Overshield, refreshable	NPA Repulsion Regulator
+193		Radiant Orbs				Grants Radiant for 10 sec	Hunter's Journal
+194		Radiant Shrapnel					Implement of Curiosity
+195		Reciprocal Draw
+196		Refresh Threads				Powered Melee is refilled	Implement of Curiosity
+197		Revitalizing Blast				Shot stuns champions in 1 shot and creates an Ignition. Melee does not stun champions	Queensfoil Censer
+198		Served Cold				Powered Melee is refilled	Slayer Baron Apothecary Satchel
+199		Shatter Orbs				Enemy shield broken by a matching element shot creates 1 Orb of Power	NPA Repulsion Regulator
+200		Shieldcrush				Powered Melee is refilled	Hunter's Journal, Implement of Curiosity
+201		Shock and Awe				While Amplified, Arc Shot final blows create a Lightning Burst that also Jolts	Hunter's Journal, NPA Repulsion Regulator
+202		Singularity Blade				Inflicts Weaken. Final Blows create Weaken burst	Encrypted Data Disk
+203		Solo Operative					Queensfoil Censer
+204		Strand Soldier					NPA Repulsion Regulator
+205		Supernova				Creates Weaken burst	NPA Repulsion Regulator, Slayer Baron Apothecary Satchel
+206		Suppressing Glaive				Inflicts Suppress	NPA Repulsion Regulator
+207		Tangled Web					Implement of Curiosity
+208		That Fresh Bullets Smell					Implement of Curiosity
+209		The Thick of It				When surrounded, Shot/Melee creates 1 Armor Charge every 4 kills	Slayer Baron Apothecary Satchel
+210		Threaded Blast					Hunter's Journal, Implement of Curiosity
+211		To Shreds					Queensfoil Censer, Tablet of Ruin
+212		Torch					Queensfoil Censer
+213		Trace Evidence				Creates Ionic Trace. Shot pairs very well with Spark of Beacons	Slayer Baron Apothecary Satchel
+214		Transference				No increased damage, but Glaive Melee kills refund meter post-Transcendence	Hunter's Journal
+215		Unraveling Orbs					Queensfoil Censer, Tablet of Ruin
+216		Unstoppable Glaive				Glaive Melee stuns champs but does not gain Overcharge when modifier is active
+217		Unto the Breach					NPA Repulsion Regulator
+218		Void Flux					Tablet of Ruin
+219		Void Hegemony				Gives a 10 sec Void Overshield	Hunter's Journal
+220		Void Infestation				Final blow inflicts Weaken on new enemy for 10 sec, refreshable	Encrypted Data Disk
+221		Void Renewal					Slayer Baron Apothecary Satchel
+222		Void Weapon Channeling				Grants up to 4 stacks of Void Weapon Surge for 10 sec based on how many fully charged Void abilities on hand, refreshable.	NPA Repulsion Regulator
+223		Volatile Flow				Gain Volatile Rounds for 10 sec, refreshable	NPA Repulsion Regulator
+224		Volatile Marksman				Gain Volatile Rounds for 10 sec. Not refreshable	Tablet of Ruin
+225		Wind Chill					Slayer Baron Apothecary Satchel
+226		Wished Into Being					Queensfoil Censer

@@ -1,0 +1,48 @@
+3		Items Affected		Source	Grenade	Melee	Class Ability	Notes
+5		Bolstering Detonation		Arm Mod	---	---	12.0%
+6		Focusing Strike		Arm Mod	---	---	12.0%
+7		Impact Induction		Arm Mod	12.0%	---	---
+8		Momentum Transfer		Arm Mod	---	12.0%	---
+9		Grenade Kickstart		Arm Mod	Varies	---	---
+10		Melee Kickstart		Arm Mod	---	Varies	---
+11		Absolution		Leg Mod	5.0%	5.0%	5.0%
+12		Innervation		Leg Mod	10.0%	---	---
+13		Invigoration		Leg Mod	---	10.0%	---
+14		Insulation		Leg Mod	---	---	4.0%
+15		Orbs of Restoration		Leg Mod	10.0%	10.0%	10.0%	Restores Lowest
+16		Bomber		Class Mod	10.0%	---	---
+17		Outreach		Class Mod	---	10.0%	---
+18		Distribution		Class Mod	4.0%	4.0%	4.0%
+19		Utility Kickstart		Class Mod	---	---	Varies
+20		Explosive Finisher		Class Mod	Varies	---	---
+21		One-Two Finisher		Class Mod	---	Varies	---
+22		Utility Finisher		Class Mod	---	---	Varies
+23		Demolitionist (primary)		Weapon Perk	10.0%	---	---
+24		Demolitionist (special)		Weapon Perk	20.0%	---	---
+25		Pugilist (primary)		Weapon Perk	---	10.0%	---
+26		Pugilist (special)		Weapon Perk	---	20.0%	---
+27		Strategist (primary)		Weapon Perk	---	---	10.0%
+28		Strategist (special)		Weapon Perk	---	---	20.0%
+29		Wellspring		Weapon Perk	9%	9%	9%	Split between uncharged abilities
+30		Energy Transfer		Weapon Perk	0%	0%	1%
+31		Bray Inheritance		Origin Trait	Varies	Varies	Varies	Energy to all, depending on weapon
+32		Bray Legacy		Origin Trait	Varies	Varies	Varies	Energy to least charged, depending on weapon.
+33		Classy Contender		Origin Trait	0%	0%	5%
+34		Indomitability		Origin Trait	5%	5%		Light gives Grenade, Darkness gives Melee
+35		Ionic Traces		Elemental Pickup	11.25%	11.25%	13.50%
+36		Firesprites		Elemental Pickup
+37		Void Breeches		Elemental Pickup
+38		Stasis Shards		Elemental Pickup
+39		Ember of Blistering		Solar Subclass
+40		Ember of Searing		Solar Subclass
+41		Heat Rises		Solar Subclass
+42		Devour		Void Verb
+43		Devour (Feed the Void		Void Subclass
+44		Echo of Exchange		Void Subclass
+45		Echo of Provision		Void Subclass
+46		Child of the Old Gods		Void Subclass
+47		Whisper of Hunger		Stasis Subclass
+48		Whisper of Refraction		Stasis Subclass
+49		Whisper of Torment		Stasis Subclass
+50		Thread of Fury		Strand Subclass
+51		Facet of Balance		Prismatic Subclass

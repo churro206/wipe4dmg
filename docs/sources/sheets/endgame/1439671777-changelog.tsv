@@ -1,0 +1,1116 @@
+2	Pantheon 2.0
+3		Name	Ren	P2	Notes
+4		Advanced Reflexes	E	A	basically free 5% damage with potentially annoying refresh
+5		Gun and Run	E	B	decent QoL refill perk on low mag weapons
+6		Superluminal Motion	E	D	still worse than Restoration x1, niche to reproc outside of Well
+8	Renegades
+9		Name	A&I	Ren	Notes
+10		The Martlet	N/A	S	solid add clear pulse with double splash + utility, good frame
+11		Corundum Hammer	N/A	A	StL + EP kinetic replacement, solid perks for Strand too
+12		The Immortal	E	B	no good splash perk, has Attrition access
+13		Cataphract GL3	B	A	bland expected Envious + BnS HGL
+14		Astral Horizon	E	D	still extremely outdated PvE perks
+15		Refurbished A499	N/A	N/A	not enough comparison points, added to Other tab
+16		Something Something	N/A	A	perks aren't amazing but Accelerated Assault bypasses agg mag
+17		Peculiar Charm	N/A	S	Multimach alternative with better damage and worse utility
+18		Horror's Least	F	S	likely best Jolting pulse in the game, reload perks still untested
+19		Motif-41	N/A	S	pretty solid all around but not a very strong specialist
+20		Evening SI4	N/A	S	almost identical to Drang, just different frame
+21		Psi Aeterna IV	N/A	N/A	not enough comparison points, added to Other tab
+22		Qua Vinctus IV	N/A	S	solid overall package with new Meganeura
+23		A Good Shout	N/A	N/A	not enough comparison points, added to Other tab
+24		Sarpedon-D	N/A	A	decent perks but lacks universal reload options
+25		Phoneutria Fera	B	A	underrated spread shot usefulness even with suboptimal perks
+26		Hawthorne's Field-Forged Shotgun	N/A	C	only really has Chill Clip for PvE
+27		Nox Sidereal IV	N/A	C	mediocre damage setup and okay roam combos
+28		Mos Athanor IV	N/A	C	alright double splash but worst frame and no diversity
+29		Compact Defender	N/A	S	best frame with best Void combo
+30		Uncivil Discourse	N/A	N/A	not enough comparison points, added to Other tab
+31		M-17 "Fast Talker"	N/A	S	BiS kinetic slot PK SMG, otherwise decent
+32		Modified B-7 Pistol	N/A	S	basically just better than Solemn Remembrance
+33		All or Nothing	N/A	S	Strand pulse but dynamic frame and double splash
+34		Zealous Ideal	N/A	A	better version of Ahab Char with improved overall package
+35		Bitter End	N/A	B	awful reserves, perks limited by arc affinity
+36		High Tyrant	N/A	S	no consistent Repulsor option but lethality seems good
+37		Voltaic Shade	N/A	S	Jolting double splash option, interesting but untested
+38		Conspiracy Honed	N/A	S	double damage perks + 30%? frame boost
+39		Sullen Claw	N/A	S	best light attack neutral Eager sword
+40		Eighty-Six	N/A	C	middling perks and worst frame
+41		Monody-44	N/A	A	best Discord fusion, has Withering frame too
+42		Riptide	S	S	basically Lionfish at home
+43		Oxygen SR3	N/A	B	mediocre archetype and okay perks
+44		Duty Bound	E	B	buffed Rampage and Bewildering per-kill blind
+45		Gizmo Weft	N/A	S	Mountaintop replacement that is also great for damage
+46		Permafrost	N/A	A	decent add clear perks but no strong arguments for S
+47		Action Item	N/A	A	best Stasis synergy trace, not much else
+48		Reghusk's Pledge	N/A	A	basically Reckless but a little different
+49		King Orfeo	N/A	A	just worse than Non-Denouement
+50		The Heron	N/A	S	BiS Void neutral + Techsec pairing glaive
+51		Fimbulwinter Stitch	N/A	A	similar to many other Arc sidearms in A tier
+52		Mistral Lift	S	S	not many perk changes
+53		Micromort	N/A	C	decent perks but held back by archetype
+54		Cusp Sempiternal	S	A	simply not as potent as Physic
+55		Haliaetus	S	B	Bray Legacy interaction nerfed
+57	Ash & Iron
+58		Name	EoF	A&I	Notes
+59		Arcane Embrace	B	B	Aggregate Charge is more consistent, still pretty similar though
+60		Burden of Guilt	D	B	Envious upgrade from old 1st column, better 2nd column too
+61		Cusp Sempiternal	N/A	S	Void Overshield to allies, excellent perks all around
+62		Drang	N/A	S	great perk pool, solid archetype, upgrade over Heliocentric
+63		Everburning Glitz	N/A	A	definitely BiS kinetic auto
+64		Finite Impactor	F	D	Heal Clip bad on HCs, no good splash in 2nd
+65		Folded Root	N/A	B	missed opportunity to showcase Cluster buff, awful 2nd column
+66		Forced Memorializer	N/A	A	new perk combo, unfortunate frame
+67		Gunburn	N/A	A	no AO + KT, solid otherwise, new kinetic perk combo
+68		Haliaetus	N/A	A	okay origin trait, decent perks (no Envious), sadly not right frame
+69		Hushed Whisper	N/A	B	has Tear access, good frame, held back by Strand limitations
+70		MIDA Macro-Tool	N/A	B	Grave + 12P on bad frame, no other relevant combos
+71		MIDA Mini-Tool	N/A	S	basically Yeartide but slightly worse
+72		Romantic Death	N/A	A	solid perks but unfortunately wave frame
+73		Seraphine Haze	N/A	B	kill-hungry perks that have middling payoff
+74		Starscape Null	N/A	B	very odd perk pool for a lightweight
+75		Submersion	N/A	N/A	no tiering yet, interesting add clear option
+76		The Ever-Present	N/A	S	great perk pool and archetype, just no Cascade + damage pairing
+77		Unfall	N/A	A	worse than Indebted besides enhanceable Lead from Gold
+78		Outbreak Perfected	B	C	super generation nuked
+79		New Malpais	N/A	B	solid total damage and dump potential, good for roam too
+80		Aggregate Charge	N/A	S	new potentially BiS sustained damage perk
+81		Crystalline Corpsebloom	N/A	B	surprisingly decent, like Headstone but no crit requirement
+82		Ancillary Ordinance	N/A	B	missile does pretty decent damage, very easy to stack
+83		Bewildering Burst	N/A	C	blinding GL capability on add clear weapon, low radius
+84		Lead From Light	N/A	C	decent but special ammo progress isn't that valuable
+85		Collective Pugilism	N/A	D	decent melee on-hit but restrictive proc requirement
+86		Contending Cascade	N/A	B	unrealistic killstreak requirement, stats are okay
+88	The Edge of Fate
+89		Name	RotN	EoF	Notes
+90		Giver's Blessing	N/A	B	best KT auto, but lacks utility in first column and decent origin
+91		Intercalary	N/A	B	solid Headstone auto, just not best frame, origin, or 2nd column
+92		Auric Disabler	N/A	C	BiS splash strand auto, mediocre frame and origin trait
+93		Ahab Char	N/A	C	good archetype and origin, very mediocre perks
+94		Pre Astyanax IV	B	A	Incandescent + Burning Ambition great combo
+95		Fortunate Star	A	A	BiS void bow, great splash perks, decent utility
+96		Mercury-A	N/A	A	unique Attrition + KT combo, not great otherwise
+97		Aureus Neutralizer	N/A	S	BiS legendary LP hand cannon, potentially decent neutral
+98		Agape	N/A	A	good mix of LP damage and Incandescent
+99		Solemn Remembrance	N/A	A	easily best Headstone HC thanks to Firefly interaction
+100		Phoneutria Fera	N/A	B	mediocre first column, but frame is hard-hitting with Incandescent
+101		Stars in Shadow	F	A	solid overall package, unfortunately high-impact frame
+102		Last Thursday	N/A	D	very mediocre and dated perk pool, okay archetype
+103		Aisha's Embrace	N/A	S	easily best void scout, interesting mixes of new void 3.0 perks
+104		Jurisprudent	N/A	B	okay Headstone package, bad frame
+105		Sublimation	N/A	B	bad frame, okay non-synergistic perks
+106		Forgiveness	N/A	A	probably best Voltshot sidearm, good frame, double damage
+107		Faustus Decline	N/A	B	decent frame, classic Headstone-paired perks
+108		Yeartide Apex	N/A	S	BiS solar SMG, great frame, okay origin, diverse perks
+109		Antedate	N/A	A	best Jolting Feedback SMG + best PK DPS SMG
+110		Qua Nilus II	N/A	C	Slice + classic strand-paired perks, decent frame
+111		Theodolite	N/A	S	Reconstruction and relevant damage perks and unique in slot
+112		Festival Flight	N/A	S	fast Blast Distributor procs + better DPS than Lost Signal
+113		Finite Maybe	N/A	S	solid perk pool, Discord+splash option, acquired taste frame
+114		Lionfish-4fr	N/A	S	excellent for damage and utility, best all-around pick
+115		Pure Recollection	N/A	A	more relevant damage perks for heavy burst, still not great frame
+116		Precipial	N/A	B	no reload perk 12P, bad frame, double damage perk though
+117		Trachinus	N/A	C	interesting Chill Clip utility roll, frame is likely questionable
+118		Lance Ephemeral	N/A	S	similar perk pool to Praedyth's, arguably worse origin
+119		Shoreline Dissident	N/A	B	best void DPS sniper but extremely dated perk pool
+120		Returned Memory	N/A	S	much more diverse perks vs. Aberrant, solid origin trait
+121		Ribbontail	N/A	B	no good utility perks, strange options
+122		Outrageous Fortune	F	S	almost identical to VS Chill Inhibitor minus Cascade
+123		Boomslang-4fr	N/A	A	more updated / higher QoL Doomed Petitioner
+124		Ulterior Observation	N/A	S	solid frame mixed with great neutral perks
+125		Unwavering Duty	A	A	perk upgrades all around, some unique combos
+126		The When and Where	N/A	S	BiS burst rocket, but worse origin generally vs. Hezen
+127		Synanceia	N/A	S	most versatile high tier sword: Sharp/Eager/damage
+128		Aurora Dawn	N/A	A	decent second column, Sharp Harvest interesting, no Relentless
+129		A LOT OF STUFF	N/A	N/A	restructured tiers and shifted weapons a lot
+131	Rite of the Nine
+132		Name	SD	RotN	Notes
+133	NEW ADDITIONS / REPRISES	Terminus Horizon	B	A	now has Jolting Feedback and Rolling Storm, not perfect archetype
+134	Cold Comfort	A	S	basically a no Timelost Magazine stasis Hezen
+135	New Pacific Epitaph	B	A	upgraded with Chain Reaction and Gravity Well option
+136	Greasy Luck	C	S	enhanceable, upgraded perks in both columns
+137	No Survivors	B	A	Attrition + Heal Clip access in first column, Gravity Well decent too
+138	Long Arm	C	C	barely any perk changes
+139	Wilderflight	B	A	BiS double fire swap DPS and blinding BGL
+140	Liminal Vigil	B	B	not significantly different from original
+141	Judgment	D	D	not significantly different from original
+142	Relentless	E	B	double splash perks thanks to Firefly in first column
+143	Prosecutor	B	B	now has Dragonfly/Voltshot combo, but not enough to break A
+144	Cruel Mercy	N/A	A	no Jolting Feedback; Dragonfly/Rolling is fine
+145	Nature Reclaimed	N/A	A	Heal Clip/Incandescent lightweight, has StL/EP too
+146	A Sudden Death	B	S	double damage perks + Discord w/ high single target special
+147	The Inquisitor	D	C	underrated last patch
+148	Gravity Well	N/A	C	too niche to be high tier, range is a little underwhelming
+149	New Land Beyond	N/A	C	good for solo/ammo-restricted contexts against precision targets
+150	Lord of Wolves	N/A	S	added to list post-nerf, very strong in most content
+151	ADJUSTMENTS	Multimach CCX	A	S	underrated last patch
+152	Embraced Identity	C	B	passed over Redirection potential
+153	Relentless Strikes	S	C	patched interaction with Wolfpack Rounds
+155	Sundered Doctrine
+156		Name	S26	SD	Notes
+157	NEW ADDITIONS / REPRISES	Unvoiced	N/A	S	they put Redirection and BnS on a slug
+158	Unworthy	N/A	S	Firefly + Voltshot + rapid + best primary origin trait ever
+159	Unsworn	N/A	S	first StL kinetic slot trace, great origin trait, Detonator Beam
+160	Unloved	N/A	A	Warden's Law except OP origin trait and 40% buff
+161	Keraunios	N/A	A	basically Warlord's Spear with Rolling Storm
+162	Finality's Auger	N/A	G	gimmicky mechanic that does poor damage and mediocre splash
+163	Lodestar	N/A	G	only truly effective on a weak subclass, not very potent splash
+164	Barrow-Dyad	N/A	F	decently strong on-hit seekers, will need more info on traits
+165	Subjugation	N/A	S	free Explosive Payload, applies exhaustion with no requirement
+166	Willing Vessel	N/A	B	damage dealt/kill Bitterspite replacement
+167	Timelost Magazine	N/A	S	easily best overflow/refill origin trait by far
+168	Paracausal Fluid	N/A	D	like Hot Swap but for dealing damage
+169	Elemental Honing	N/A	S	best setup sustained DPS perk in the game
+170	Reciprocity	N/A	B	worse version of Physic for non-solar support frames
+171	Detonator Beam	N/A	C	solid 2nd perk for Cenotaph users looking to chip at majors
+172	Rolling Storm	N/A	D	only weapon-based Bolt Charge kickstarter, just okay for neutral
+173	Demoralize	N/A	E	splash debuff not very useful in most scenarios
+174	Tear	N/A	E	splash debuff not very useful in most scenarios
+175	Recycled Energy	N/A	F	worse than mainstream ability regen perks and requires reload
+176	Melee Momentum	N/A	F	niche Immovable Object alternative for melee-centric builds
+177	ADJUSTMENTS	Redirection	E	A	insane buff, has crazy potential for 2x damage on DPS weapons
+178	Repulsor Brace	E	B	didn't update properly after Void Overshield DR buff
+179	The Title	S	S	similar perk pool, just removed Attrition Orbs
+180	Taraxippos	C	C	similar perk pool, just removed Gutshot Straight
+181	Hullabaloo	C	B	Envious Arsenal now in pool, plus OFA relevant on Raneiks
+182	Dimensional Hypotrochoid	D	C	OFA relevant on Raneiks
+183	New Pacific Epitaph	C	B	Redirection buff
+184	No Hesitation	med	high	underrated utility in low power content
+185	Sunshot	high	med	exotic heavies much more common for contest-type content
+186	Leviathan's Breath	high	med	consistent heavies in this category are overshadowed by others
+187	The Queenbreaker	N/A	high	better consistent heavy than Whisper
+188	Unloved	N/A	low	replaced Warden's Law as BiS kinetic LP HC
+189	Praedyth's Revenge	N/A	med	replaced The Supremacy as BiS kinetic damage sniper
+190	Hezen Vengeance	low	high	rockets > HGLs for burst
+191	VS Chill Inhibitor	high	med	HGL nerf
+192	Tinasha's Mastery	high	med	not absolutely essential compared to other high-tier legendaries
+193	Word of Crota	med	med	replaced Heliocentric post-Destabilizing buffs
+194	Storm's Keep	A	S	significantly better than expected pre-release
+196	Episode: Heresy
+197		Name	S25	S26	Notes
+198	NEW ADDITIONS / REPRISES	Keen Thistle	N/A	A	low utility but decent perks and best Envious sniper
+199	The Inquisitor	F	D	great damage perks in 2nd column, nerfed 1st column
+200	Warlord's Spear	N/A	A	good splash potential in 2nd column, okay 1st column
+201	Lotus-Eater	N/A	S	similar perk combo to Aberrant, worse origin trait
+202	Cynosure	N/A	S	good archetype + Envious Arsenal + Elemental Honing
+203	Backfang	N/A	A	decent mix of perks and decent archetype
+204	Boondoggle Mk. 55	N/A	E	clearly meant for PvE, best PvE perks are extremely dated
+205	Joxer's Longsword	N/A	S	Gridskipper but heavy burst frame and worse origin trait
+206	Hollow Words	N/A	E	awful perks overall, mediocre frame
+207	Abyssal Edge	N/A	A	generally worse than Summum Bonum
+208	Cold Denial	N/A	F	high-impact with awful and outdated PvE perks
+209	Eyes Unveiled	N/A	C	generally unremarkable besides being first Discord heavy
+210	Whispering Slab	N/A	E	no modern 2nd column perks
+211	Found Verdict	D	B	Trench Barrel + Discord + new origin trait
+212	Qua Furor V	N/A	B	solid archetype and origin trait ruined by mediocre perks
+213	Watchful Eye	N/A	S	good archetype + decent origin trait + first Jolting Feedback LMG
+214	Cruoris FR4	N/A	B	has some usable damage options, but perk combos aren't great
+215	False Promises	N/A	C	basically Herod-C v2 with enhanceable perks but no Häkke
+216	Temptation's Hook	F	F	didn't fix low impact
+217	Resounding	N/A	C	only add clear perks on a mediocre archetype
+218	Afterlight	N/A	A	first adequately-equipped Discord fusion
+219	Hezen Vengeance	B	S	best DPS rocket in the game
+220	Refusal of the Call	N/A	A	first Discord glaive, passable otherwise
+221	The Palindrome	N/A	C	underwhelming perks given current HC competition
+222	Adamantite	N/A	A	lack of Restoration, interesting combatant damage reduction
+223	Division	N/A	A	basically Anonymous Autumn v2 but better archetype, worse origin
+224	Redrix's Estoc	N/A	C	almost identical to most recent Stay Frosty version
+225	Anamnesis	N/A	A	BiS Void bow, options for splash and utility
+226	Exalted Truth	N/A	A	classic Void 3.0 combo + bad origin + decent archetype
+227	Peacebond	N/A	B	similar viability to nearby Kinetic Tremors/Hatchling options
+228	Vision of Confluence	N/A	A	lower utility but higher lethality than neighboring Hung Jury
+229	Corrective Measure	S	S	still top-tier, but more unique perk combinations
+230	Admetus-D	N/A	C	no splash perk even if utility is alright
+231	Psychopomp	N/A	S	first area denial with overflow potential, Envious for damage as well
+232	Fatebringer	N/A	A	almost identical to Midnight Coup now
+233	Praedyth's Revenge	B	S	FTTC + BnS not much more to say really
+234	Mirror Imago	N/A	E	Hatchling SMG without anything else particularly noteworthy
+235	On the Prowl	N/A	B	lack of invisibility control is not ideal, but good crowd control
+236	Storm's Keep	N/A	A	potentially very nice addition to fireteam damage scenarios
+237	Ionic Sentry	N/A	B	more refreshable and better CC version of Hellion/Bleak Watcher
+238	ADJUSTMENTS	Choir of One	low	high	Destabilizing Rounds buff + extremely versatile
+239	Aberrant Action	high	med	energy rocket sidearm not as needed in endgame content
+240	Veleda-F	med	low	perk-based weaken not that important
+241	Critical Anomaly	med	low	hitscan Overload stun not relevant in most content
+242	Lost Signal	med	high	underrated universal presence of darkness build in sandbox
+243	Buried Bloodline	low	med	underrated subclass-agnostic Devour access
+244	Cloudstrike	low	med	underrated total damage exotic specials (especially post-buff)
+245	The Mountaintop	low	med	more versatile role than just movement, deserves Eager tier
+246	Veleda-F	S	A	overrated Withering Gaze utility potential
+247	Sovereignty	S	A	overrated Withering Gaze utility potential
+248	Arcane Embrace	S	A	overrated heavy burst frame potential
+249	Someday	A	B	precision frame holds it back too much
+250	Tinasha's Mastery	A	S	rocket sidearm role shift toward utility over raw splash
+251	Qua Xaphan V	C	A	Destabilizing Rounds buff
+252	Hammerhead	A	S	Destabilizing Rounds buff
+253	Planck's Stride	D	C	better overall perk combo + archetype than other D options
+254	Crux Termination IV	S	A	replaced by Cynosure in every role
+255	Retraced Path	S	A	not as versatile as buffed Destabilizing Chronophage
+256	Apex Predator	S	A	no Envious Arsenal, S tier is a firm grouping at this point
+257	Tomorrow's Answer	S	A	high-impact frame, Bipod swapping patched
+258	Liturgy	S	A	overrated last season; generally sort of niche
+259	Choir of One	A	S	Destabilizing Rounds buff + extremely versatile
+260	Cloudstrike	C	B	Bolt Charge interaction buff
+261	The Prospector	C	D	overrated damage potential on most boss models
+262	D.A.R.C.I.	F	B	massive buffs (both to self and team)
+263	Dead Messenger	F	E	30% damage means more competitive vs. legendaries
+264	Vexcalibur	F	E	full energy on OS melee kill means infinite OS melee loop
+265	Skulking Wolf	F	D	deaggro effect buff
+266	Frenzy	A	B	effect not as valuable or slot-efficient in modern sandbox
+267	Attrition Orbs	B	A	not nerfed on Velocity Baton, provably good on other weapons
+268	Destabilizing Rounds	D	A	ICD significantly reduced, Volatile Rounds added
+269	Flash Counter	G	E	disorienting effect more useful given easier activation condition
+270	Adaptive Munitions	E	G	stealth nerf from 450% scaling to 50%
+271	Facet of Balance	C	B	swapped places with Awakening, more frequently used
+272	Facet of Awakening	B	C	swapped places with Balance, less frequently used
+273	Spark of Volts	H	G	Bolt Charge instead of essentially useless effect
+274	Spark of Momentum	H	G	Bolt Charge instead of essentially useless effect
+275	Spark of Frequency	G	B	faster stacking effect similar to other B fragments
+276	Electrostatic Mind	B	A	Ionic Trace spam enabling more relevant post-Arc buff
+278	Festival of the Lost 2024
+279		Name	VH	FotL	Notes
+280	PERKS	Adagio	G	E	underrated single shot potential on certain weapon types
+281	Adrenaline Junkie	D	E	overrated uptime on grenades and perk duration
+282	Air Trigger	B	A	underrated reload potential + clarification on reserves
+283	Archer's Tempo	B	D	overrated perk amongst other high tier candidates
+284	Attrition Orbs	C	B	area denial frame
+285	Beacon Rounds	G	F	underrated reload boost
+286	Bipod	S	B	overrated impact on endgame PvE as a whole
+287	Cascade Point	S	B	too niche to be in S
+288	Chaos Reshaped	S	A	uptime consistency issues
+289	Chill Clip	B	A	expanded weapon type access
+290	Closing Time	N/A	H	PvP benefits only
+291	Cluster Bomb	E	F	slight tier restructuring
+292	Cold Steel	E	D	underrated when compared to Chill Clip
+293	Compulsive Reloader	E	F	slight tier restructuring
+294	Controlled Burst	B	C	overrated compared to other meta sustained damage perks
+295	Danger Zone	G	F	new approach to actual usability vs. perk effect
+296	Deconstruct	F	E	expanded weapon type access
+297	Demolitionist	A	B	generally less important in current sandbox
+298	Desperado	F	E	underrated actual DPS increase (comparable to Onslaught x2)
+299	Desperate Measures	A	C	spree perks in general overrated
+300	Destabilizing Rounds	B	D	overrated effect and more stringent upper tiers
+301	Dual Loader	D	E	greatly overshadowed by Grave Robber on Trench shotguns
+302	Eddy Current	F	D	underrated Amplified presence in endgame builds
+303	En Garde	G	F	slight tier restructuring
+304	Energy Transfer	G	F	new approach to actual usability vs. perk effect
+305	Ensemble	E	F	grouped with other very niche/mediocre reload perks
+306	Envious Arsenal	N/A	S	best general refill perk in the game
+307	Envious Assassin	S	B	significantly more annoying to use + the other EA released
+308	Explosive Head	C	D	moved with the payload perks
+309	Explosive Light	A	C	new approach to actual usability vs. perk effect
+310	Explosive Payload	B	D	lower value in current sandbox compared to before
+311	Feeding Frenzy	E	F	grouped with other very niche/mediocre reload perks
+312	Focused Fury	C	D	overrated compared to other meta precision damage perks
+313	Frenzy	S	A	set of boosts not as valuable in current sandbox
+314	Full Auto Trigger System	F	G	overrated RoF increase when Cascade exists
+315	Full Court	F	E	better than previously rated due to lack of HGL damage perks
+316	Genesis	G	F	slight tier restructuring
+317	Golden Tricorn	B	D	spree perks in general overrated
+318	Gutshot Straight	G	H	really only useful in PvP
+319	Harmony	E	G	overrated compared to other 20% perks in uptime
+320	Hatchling	F	E	underrated threadling damage even without Evolution
+321	Headseeker	G	H	really only useful in PvP
+322	Headstone	D	E	slight tier restructuring
+323	Jolting Feedback	N/A	A	on-hit jolt, generally improves on Voltshot's weaknesses
+324	Keep Away	F	G	barely escapes being PvP-only given common PvE ranges
+325	Kill Clip	D	F	overrated usage on wave frames
+326	Killing Tally	B	C	spree perks in general overrated
+327	Killing Wind	G	H	really only useful in PvP
+328	Lasting Impression	G	F	slight tier restructuring
+329	Lead from Gold	A	C	overrated benefit in general, much stricter upper tiers
+330	Lone Wolf	N/A	G	essentially Snapshot for specials
+331	Loose Change	F	D	3.0 debuff application extremely common in current sandbox
+332	Meganeura	G	F	underrated essentially 3x Dragonfly damage
+333	Multikill Clip	E	F	overrated upkeep potential despite high damage bonus
+334	One for All	B	C	spree perks in general overrated
+335	Onslaught	C	E	spree perks in general overrated
+336	Outlaw	F	G	slight tier restructuring
+337	Overflow	C	D	stricter upper tiers
+338	Paracausal Affinity	D	E	slight tier restructuring
+339	Physic	C	A	underrated importance for support auto usage
+340	Pugilist	F	E	underrated in general for certain weapon types
+341	Rampage	E	G	completely outclassed; new approach to perk analysis
+342	Recombination	A	C	overrated in the grand scheme of endgame PvE
+343	Reconstruction	S	C	hit very hard by +2s nerf
+344	Redirection	F	E	forgot about wave frame potential
+345	Replenishing Aegis	F	G	1s ICD + unneeded niche
+346	Repulsor Brace	B	E	new approach to actual usability vs. perk effect
+347	Reservoir Burst	B	D	overrated for damage given overflow perk nerf
+348	Reversal of Fortune	H	G	possibility of APR synergy
+349	Rimestealer	N/A	E	restricted to one of the worst subclasses
+350	Shield Disorient	G	F	slight tier restructuring
+351	Shoot to Loot	S	B	too niche to be in S
+352	Shot Swap	G	H	really only useful in PvP
+353	Sleight of Hand	F	G	overrated reload benefit and trigger condition
+354	Slideshot	D	B	underrated usefulness and playstyle transformation on GLs
+355	Slideways	G	B	buffed to parity with Slideshot
+356	Steady Hands	G	H	really only useful in PvP
+357	Strategist	F	E	underrated usefulness for rift regen
+358	Subsistence	C	E	overrated for endgame content
+359	Successful Warm-Up	G	F	slight tier restructuring
+360	Swashbuckler	D	E	slight tier restructuring
+361	Sword Logic	E	D	slight tier restructuring
+362	Target Lock	E	F	slight tier restructuring
+363	Threat Detector	F	D	underrated trigger difficulty
+364	Threat Remover	F	H	really only useful in PvP
+365	Thresh	G	F	slight tier restructuring
+366	Timed Payload	B	D	lower value in current sandbox compared to before
+367	To The Pain	G	H	really only useful in PvP
+368	Tracking Module	G	F	new approach to actual usability vs. perk effect
+369	Trench Barrel	S	A	too niche to be in S
+370	Triple Tap	C	D	slight tier restructuring
+371	Underdog	G	H	just awful and not in the game
+372	Unrelenting	F	E	slight tier restructuring
+373	Unstoppable Force	F	G	unneeded niche on glaives
+374	Voltshot	A	B	stricter upper tiers
+375	Well-Rounded	G	H	really only useful in PvP
+376	Whirlwind Blade	A	B	stricter upper tiers
+377	Withering Gaze	N/A	B	niche but irreplaceable in specific scenarios
+378	ORIGIN TRAITS	Advanced Reflexes	D	E	stat boost not useful even if trigger isn't awful
+379	Alacrity	C	D	quite noticeable even if only usable solo
+380	Ambush	S	A	overrated damage boost
+381	Bitterspite	A	B	overrated damage requirement ease of use
+382	Collective Purpose	D	E	close to unnoticeable in most instances
+383	Crossing Over	C	F	essentially unnoticeable
+384	Dark Ether Reaper	A	S	underrated neutral play on primaries and LMGs
+385	Disaster Plan	E	F	essentially unnoticeable
+386	Dream Work	B	A	contrary to sentiment, similar use to Restoration Ritual
+387	Head Rush	E	F	essentially unnoticeable
+388	Omolon Fluid Dynamics	C	D	little overrated vs. other perks in same tier
+389	Psychohack	B	C	small damage reduction for a short time, hard to notice
+390	Radiolaria Transposer	S	A	damage pools don't do very much damage, still counter-based
+391	Search Party	F	E	pseudo-Snapshot is noticeable in some cases
+392	SUROS Synergy	D	E	slight tier adjustments to match other E tier placements
+393	To Excess	D	E	slight tier adjustments to match other E tier placements
+394	Unsated Hunger	D	E	slight tier adjustments to match other E tier placements
+395	Vanguard's Vindication	E	C	10 HP (correction) and noticeable in some cases
+396	Wild Card	B	C	splash is quite small and ICD is unfortunate
+397	EXOTIC WEAPONS	Ager's Scepter	F	E	slight tier adjustments to match other E tier placements
+398	Alethonym	N/A	C	ammo farming and vertical movement with no special
+399	Arbalest	D	F	overshadowed by Eriana's Vow and generally not very good
+400	Bad Juju	E	D	explosion frequency buffed heavily
+401	Bastion	C	E	overrated general usefulness in endgame content
+402	Buried Bloodline	C	A	underrated universal Devour access + great ammo given nerfs
+403	Choir of One	N/A	A	still decently ammo-efficient, great burst on majors
+404	Cloudstrike	B	C	overrated general damage potential a little
+405	Collective Obligation	E	F	overrated damage potential and understated nicheness
+406	Conditional Finality	D	E	well-designed exotic that doesn't really have a home
+407	Dead Messenger	D	F	pretty much irrelevant compared to legendary waves
+408	Deterministic Chaos	E	G	weaken on-hit is less relevant than ever
+409	Dragon's Breath	C	D	too build-dependent for a relatively mediocre effect
+410	Edge of Action	E	F	overshadowed a little by No Hesitation
+411	Gjallarhorn	A	B	ability add clear meta and HGL damage meta
+412	Graviton Lance	C	B	two tiers below Sunshot was too much
+413	Ice Breaker	N/A	D	gimmicky and not particularly strong for general play
+414	Khvostov 7G-0X	C	B	kinetic on-hit add clear option in Graviton tier
+415	Le Monarque	F	E	slight tier adjustment, better than F tier options
+416	Legend of Acrius	B	C	little overrated due to niche of melee damage
+417	Leviathan's Breath	D	B	reserve buff + reserve mod swap nerf
+418	Lumina	B	C	overshadowed a little by No Hesitation
+419	Malfeasance	C	E	Lucky Pants nerf
+420	Merciless	C	E	extremely niche and Choir is generally better
+421	Necrochasm	E	C	underrated due to trigger difficulty in high level content
+422	Outbreak Perfected	C	B	excellent super and Transcendence generation for damage
+423	Parasite	B	A	excellent with holsters in roam and DPS content
+424	Red Death Reformed	D	F	no splash damage and unnecessary sustain
+425	Revision Zero	E	F	unimpressive champ damage given windup cost
+426	Salvation's Grip	E	F	too niche to be in E
+427	Still Hunt	S	C	significant nerfs and move towards heavy focus
+428	The Fourth Horseman	B	C	less relevant due to Choir release
+429	The Last Word	F	E	huge buff for LP damage
+430	The Navigator	A	B	less relevant after grapple melee nerfs
+431	The Prospector	F	C	massive damage profile rework
+432	The Wardcliff Coil	E	D	Raneiks usage
+433	Thunderlord	F	E	underrated for easy universal add clear
+434	Ticuu's Divination	E	F	overrated for endgame content
+435	Tractor Cannon	S	A	not as meta-defining with weaken prevalence
+436	Verglas Curve	E	F	overrated for endgame content
+437	Whisper of the Worm	C	B	still strong sustained and total even post-sniper season
+438	Wish-Ender	E	F	overrated for endgame content
+439	Witherhoard	D	F	Lost Signal release
+440	ARCHETYPES	Breech GL - Area denial	A	S	generally very potent in current sandbox
+441	Breech GL - Double fire	C	B	underrated last patch compared to Micro-Missile
+442	Drum GL - Adaptive	S	A	comparatively worse overall vs. rapids post-buff
+443	Drum GL - Rapid	A	S	buffed to become best HGL archetype
+444	Hand cannon - Heavy burst	A	B	nerfed with Lucky Pants and overall damage
+445	Shotgun - Heavy burst	N/A	C	very similar to slug damage profile
+447	Vesper's Host launch
+448		Name	S25	VH	Notes
+449	BGLs	VS Velocity Baton	N/A	S	best orb generator + decent neutral perks
+450	Tusk of the Boar	C	B	Slideways buff
+451	FUSIONS	VS Gravitic Arrest	N/A	B	worse than Glacioclasm for Withering use, no other perks
+452	HGLs	VS Chill Inhibitor	N/A	S	best HGL by far, excellent perks + new best frame
+453	Canis Major	C	E	new E tier created to better segment HGLs
+454	Cry Mutiny	C	E	new E tier created to better segment HGLs
+455	Berenger's Memory	D	F	new F tier created to better segment HGLs
+456	Blast Battue	D	F	new F tier created to better segment HGLs
+457	Crowd Pleaser	D	F	new F tier created to better segment HGLs
+458	Memory Interdict	D	F	new F tier created to better segment HGLs
+459	Outrageous Fortune	D	F	new F tier created to better segment HGLs
+460	Tarnation	D	F	new F tier created to better segment HGLs
+461	Hullabaloo	A	C	overrated perk pool last patch
+462	Swarm of the Raven	B	D	overrated perk pool last patch
+463	Typhon GL5	B	D	overrated perk pool last patch
+464	Acosmic	A	B	tier shift thanks to VS Chill Inhibitor
+465	Bitter/Sweet	S	A	tier shift thanks to VS Chill Inhibitor
+466	Cataphract GL3	A	B	tier shift thanks to VS Chill Inhibitor
+467	Dimensional Hypotrochoid	C	D	tier shift thanks to VS Chill Inhibitor
+468	Edge Transit	S	A	tier shift thanks to VS Chill Inhibitor
+469	Interference VI	C	D	tier shift thanks to VS Chill Inhibitor
+470	Koraxis's Distress	A	B	tier shift thanks to VS Chill Inhibitor
+471	Love and Death	B	D	tier shift thanks to VS Chill Inhibitor
+472	Marsilion-C	A	B	tier shift thanks to VS Chill Inhibitor
+473	Regnant	B	C	tier shift thanks to VS Chill Inhibitor
+474	Wendigo GL3	B	C	tier shift thanks to VS Chill Inhibitor
+475	Wicked Sister	S	A	tier shift thanks to VS Chill Inhibitor
+476	ORIGIN TRAITS	Bray Legacy	N/A	B	more concentration on a better ability, but still not potent
+477	Dark Ether Reaper	N/A	A	decent neutral option for overflow, can also fill DPS heavies
+478	Photoinhibition	N/A	B	Shield Disorient + nerfed Under-Over = situationally decent
+479	Splicer Surge	N/A	C	decent reload buff for extremely committal weapons
+481	Season 25 launch
+482		Name	S24	S25	Notes
+483	SHOTGUNS	Prophet of Doom	D	B	reprised perks
+484	Sojourner's Tale	D	C	reprised perks
+485	Deadlock	N/A	B	pretty good general perks, just bad frame
+486	Legato-11	N/A	C	usable as damage solar slug with niche alternative perks
+487	Scavenger's Fate	N/A	D	bad frame with awful left column and decent damage perks
+488	Dead Weight	S	A	almost identical to Until Its Return + no enhanced 12P
+489	Arcane Embrace	N/A	S	new frame looks very promising, good perks
+490	SNIPERS	Omniscient Eye	F	A	great frame and excellent ammo + damage perks
+491	Veleda-F	N/A	S	free high QoL weaken
+492	Sovereignty	N/A	S	free high QoL weaken
+493	Mechabre	D	D	still mostly mediocre perks
+494	FUSIONS	Zealot's Reward	E	S	best energy rapid-fire overall
+495	PLUG ONE.1	D	A	now gets Reconstruction + burst perks
+496	Glacioclasm	B	A	now gets Envious and Withering Gaze
+497	BGLs	Ignition Code	B	B	significant perks didn't change
+498	Liturgy	N/A	S	Militia's with damage potential and Chill Clip
+499	Lost Signal	A	S	underrated Darkness energy build
+500	The Mountaintop	A	S	still a core movement option and excellent frame
+501	Martyr's Retribution	S	A	overrated perks over frame
+502	GLAIVES	Albedo Wing	A	A	some nice new perks, but nothing standout + bad frame
+503	Rake Angle	N/A	S	first kinetic slot glaive, has Chill Clip
+504	LMGs	Archon's Thunder	E	A	much better perks overall, good general and Stasis synergy
+505	Avalanche	B	A	enhanceable and more normal reserves
+506	HGLs	Love and Death	C	B	rapid-fire buff
+507	Acosmic	B	A	rapid-fire buff, better 2nd column
+508	Wendigo GL3	A	B	rapid-fire buff
+509	Regnant	A	B	rapid-fire buff
+510	Bitter/Sweet	N/A	S	Envious Arsenal replacing Envious Assassin/ALH/Recon
+511	Wicked Sister	N/A	S	Envious Arsenal replacing Envious Assassin/ALH/Recon
+512	SWORDS	Zephyr	B	A	enhanceable and has Attrition Orbs
+513	ROCKETS	Tomorrow's Answer	B	S	Envious Arsenal + BnS potential to be very strong
+514	Heretic's Fervor	N/A	A	good frame, but no Envious Arsenal or BnS
+515	LFRs	Mistral Lift	N/A	S	Envious/Recon + BnS adaptive burst
+516	PRIMARIES	Anonymous Autumn	N/A	1	replaced Brigand's Law, better perk diversity and frame
+517	Yesterday's Question	N/A	1	replaced Maahes HC4, has Vorpal over Frenzy
+518	Maahes HC4	1	2	shifted down to make space for Yesterday's Question
+519	Gridskipper	N/A	2	replaced Corrasion, has reload + survivability + splash
+520	Accrued Redemption	N/A	1	Archer's Tempo + KT and other good splash perks
+521	Raconteur	1	2	replaced Vengeful Whisper, shifted down to make space
+523	Season 24
+524		Shotguns
+525		Name	LF	TFS	Notes
+526		Perfect Paradox	N/A	S	best kinetic 12P shotgun
+527		Ded Gramarye IV	N/A	C	gimmicky add clear perks
+528		Fortissimo-11	B	C	kinetic bonus removal
+529		Someday	N/A	A	more forgiving Heritage
+530		Retrofuturist	A	B	niche role, no 12P
+531		Riiswalker	B	D	niche role, no 12P
+532		Hand in Hand	B	C	lacks 12P in current meta
+533		Seventh Seraph CQC-12	A	C	lacks 12P in current meta
+534		Compass Rose	C	B	new perk pool, got Grave + 12P and enhanceable
+535		Astral Horizon	B	E	overrated swap aggressives
+536		Deadpan Delivery	B	C	overrated swap aggressives
+537		Felwinter's Lie	C	E	overrated swap aggressives
+538		Found Verdict	C	D	overrated swap aggressives
+539		Mindbender's Ambition	B	E	overrated swap aggressives
+540		Ragnhild-D	B	D	overrated swap aggressives
+541		The Comedian	B	C	overrated swap aggressives
+542		First In, Last Out	C	D	slugs less relevant
+543		Gunnora's Axe	C	D	slugs less relevant
+544		Sojourner's Tale	B	D	slugs less relevant
+545		Blasphemer	D	F	tiers extended
+546		Bonechiller	D	F	tiers extended
+547		Last Man Standing	D	E	tiers extended
+548		No Reprieve	D	E	tiers extended
+549		Prophet of Doom	C	D	tiers extended
+550		Reckless Endangerment	D	F	tiers extended
+551		The Inquisitor	D	F	tiers extended
+552		Toil and Trouble	D	F	tiers extended
+553		Wishbringer	D	F	tiers extended
+554		Without Remorse	A	B	tiers extended
+555		Xenoclast IV	A	B	tiers extended
+556		Nessa's Oblation	C	B	Tractor slug swapping
+558		Snipers
+559		Name	LF	TFS	Notes
+560		The Domino	N/A	F	almost no relevant perks
+561		Critical Anomaly	N/A	S	best champ sniper
+562		Bite of the Fox	C	D	kinetic bonus removal
+563		Defiance of Yasmin	B	D	kinetic bonus removal
+564		Eye of Sol	C	E	kinetic bonus removal
+565		Shepherd's Watch	C	E	kinetic bonus removal
+566		Silicon Neuroma	C	D	kinetic bonus removal
+567		Tranquility	B	D	kinetic bonus removal
+568		Embraced Identity	N/A	C	niche damage pick
+569		Father's Sins	B	D	overrated for Cascade
+570		1000 Yard Stare	D	F	tiers extended
+571		A Distant Pull	C	D	tiers extended
+572		Albruna-D	C	D	tiers extended
+573		Apostate	D	F	tiers extended
+574		Beloved	D	E	tiers extended
+575		Distant Tumulus	A	B	tiers extended
+576		Far Future	C	D	tiers extended
+577		Fugue-55	B	C	tiers extended
+578		Gallu RR3	D	E	tiers extended
+579		IKELOS_SR_v1.0.3	A	B	tiers extended
+580		Last Foray	C	D	tiers extended
+581		Locus Locutus	C	D	tiers extended
+582		Long Shadow	D	F	tiers extended
+583		Luna Regolith III	C	D	tiers extended
+584		Mechabre	C	D	tiers extended
+585		Mercurial Overreach	D	E	tiers extended
+586		Occluded Finality	C	D	tiers extended
+587		Omniscient Eye	D	F	tiers extended
+588		Persuader	D	E	tiers extended
+589		Sole Survivor	C	E	tiers extended
+590		Succession	S	A	tiers extended
+591		Succession (BRAVE version)	S	A	tiers extended
+592		The Long Walk	C	D	tiers extended
+593		Thoughtless	C	D	tiers extended
+594		Twilight Oath	A	B	tiers extended
+595		Volta Bracket	C	D	tiers extended
+596		Widow's Bite	D	F	tiers extended
+598		Fusions
+599		Name	LF	TFS	Notes
+600		Scatter Signal	A	S	damage focus, Critical Anomaly
+601		Techeun Force	B	A	damage profile matches A tier
+602		Aurvandil FR6	C	E	tiers extended
+603		Coriolis Force	D	F	tiers extended
+604		Dream Breaker	C	E	tiers extended
+605		Exile's Curse	C	D	tiers extended
+606		Iota Draconis	C	E	tiers extended
+607		Likely Suspect	D	F	tiers extended
+608		Main Ingredient	D	F	tiers extended
+609		PLUG ONE.1	C	D	tiers extended
+610		Pressurized Precision	B	D	tiers extended
+611		Snorri FR5	D	E	tiers extended
+612		The Epicurean	D	F	tiers extended
+613		The Wizened Rebuke	C	E	tiers extended
+614		Timelines' Vertex	D	F	tiers extended
+615		Trinary System	D	F	tiers extended
+616		Zealot's Reward	D	E	tiers extended
+617		Iterative Loop	B	D	tiers extended
+618		Burden of Guilt	C	D	tiers extended, Critical Anomaly
+619		Deliverance	B	C	tiers extended, Critical Anomaly
+620		Riptide	S	S	versatile enough to stay
+621		Axial Lacuna	N/A	A	similar total and DPS to Cartesian
+623		BGLs
+624		Name	LF	TFS	Notes
+625		Martyr's Retribution	N/A	S	best BGL in the game
+626		Undercurrent	B	B	enhanceable
+627		Lost Signal	N/A	A	good DoT + origin trait
+628		Wild Style	D	B	new perk pool, enhanceable
+629		Deafening Whisper	B	C	tiers extended
+630		Empty Vessel	C	D	tiers extended
+631		Explosive Personality	A	B	tiers extended
+632		Harsh Language	B	C	tiers extended
+633		Ignition Code	A	B	tiers extended
+634		Lingering Dread	B	C	tiers extended
+635		Orewing's Maul	D	E	tiers extended
+636		Pardon Our Dust	B	C	tiers extended
+637		Prodigal Return	C	E	tiers extended
+638		The Militia's Birthright	A	B	tiers extended
+639		The Mountaintop (BRAVE version)	S	A	tiers extended
+640		Truthteller	D	F	tiers extended, awful new version
+641		Salvager's Salvo	A	D	tiers extended, CR nerf
+642		Forbearance	S	A	tiers extended, rocket sidearms
+643		Forbearance (BRAVE version)	S	A	tiers extended, rocket sidearms
+644		New Pacific Epitaph	A	C	tiers extended, rocket sidearms
+645		Tusk of the Boar	S	D	tiers extended, rocket sidearms, Deconstruct nerf, CR nerf
+646		Wilderflight	S	B	tiers extended, worse than Wild Style
+648		Other specials
+649		Forthcoming Deviance	N/A	S	excellent perks
+650		Chronophage	N/A	S	excellent perks + origin trait
+652		LMGs
+653		Name	LF	TFS	Notes
+654		Speleologist	N/A	A	best Incandescent LMG thanks to origin trait
+655		Pro Memoria	N/A	S	Demo + good damage perk
+656		Unwavering Duty	S	A	lack of universal appeal vs. S tier options
+657		Hammerhead (BRAVE version)	S	A	no reload perk
+658		Archon's Thunder	C	E	tiers extended
+659		Chain of Command	A	B	tiers extended
+660		Circular Logic	C	D	tiers extended
+661		Eleatic Principle	D	F	tiers extended
+662		Planck's Stride	C	D	tiers extended
+663		Qua Xaphan V	B	C	tiers extended
+664		Qullim's Terminus	C	D	tiers extended
+665		Recurrent Impact	A	B	tiers extended
+666		Retrofit Escapade	B	C	tiers extended
+667		Seventh Seraph SAW	D	E	tiers extended
+668		Shattered Cipher	B	C	tiers extended
+669		Terminus Horizon	A	B	tiers extended
+670		THE SWARM	D	F	tiers extended
+671		Thermal Erosion	C	E	tiers extended
+673		Swords
+674		Name	LF	TFS	Notes
+675		Crown-Splitter	A	D	aggressive swords don't receive Pack
+676		Throne-Cleaver	A	D	aggressive swords don't receive Pack
+677		Temptation's Hook	D	F	awful impact
+678		Summum Bonum	N/A	S	best solo damage sword, light attack only also good
+679		False Idols	N/A	B	decent Attrition option, lacks Whirlwind
+680		Goldtusk	C	B	good total with Pack Hunter
+681		Geodetic HSm	B	A	higher than normal impact
+682		Half-Truths	A	D	many better Eager swords
+683		Ill Omen	N/A	A	solid Attrition option
+684		Abide the Return	B	C	tiers extended
+685		Chivalric Fire	D	F	tiers extended
+686		Double-Edged Answer	A	B	tiers extended
+687		Dragoncult Sickle	D	E	tiers extended
+688		Eternity's Edge	C	D	tiers extended
+689		Hero of Ages	D	E	tiers extended
+690		Just In Case	B	C	tiers extended
+691		Nasreddin	A	B	tiers extended
+692		Negative Space	A	B	tiers extended
+693		Night Terror	A	B	tiers extended
+694		Quickfang	D	E	tiers extended
+695		Razor's Edge	C	E	tiers extended
+696		Sola's Scar	D	E	tiers extended
+697		Steel Sybil Z-14	B	C	tiers extended
+698		Thin Precipice	D	F	tiers extended
+699		Zephyr	A	B	tiers extended
+700		Caretaker	A	D	Whirlwind buff
+701		Honor's Edge	B	D	Whirlwind buff
+703		LFRs
+704		Name	LF	TFS	Notes
+705		Scintillation	N/A	S	best-in-slot BnS adaptive
+706		Line in the Sand	N/A	B	decent BnS precision
+707		Suspectum-4fr	N/A	C	no ammo regen but P.I. precision
+708		Doomed Petitioner	S	A	Precision Instrument nerf
+709		Cataclysmic	S	A	tiers extended
+710		Corsair's Wrath	D	E	tiers extended
+711		Fire and Forget	B	C	tiers extended
+712		Laser Painter	C	D	tiers extended
+713		Reed's Regret	B	C	tiers extended
+714		Sailspy Pitchglass	C	D	tiers extended
+715		Taipan-4fr	B	C	tiers extended
+716		Tarantula	D	E	tiers extended
+717		Threaded Needle	C	D	tiers extended
+719		Other heavies
+720		Marsilion-C	B	A	surge matches Still Hunt
+721		Hullabaloo	B	A	enhanceable
+722		Crux Termination IV	A	S	enhanceable
+723		Faith-Keeper	N/A	A	good GM rocket
+724		Crowning Duologue	C	A	new perk pool
+726		Primaries
+727		Name	LF	TFS	Notes
+728		Veiled Threat	N/A	2	replaced Rufus's Fury, 720 with better origin + StL + DM
+729		No Hesitation	N/A	1	replaced Abyss Defiant, better archetype + overall use
+730		Vengeful Whisper	N/A	2	replaced Accrued Redemption, does something different
+731		Hush	N/A	2	replaced Strident Whistle, better perk pool
+732		Tyranny of Heaven	1	2	replaced Tripwire Canary, shifted down because of new 1
+733		Non-Denouement	N/A	1	replaced Tyranny of Heaven, Voltshot > Incandescent
+734		Warden's Law	N/A	1	added damage category
+735		Maahes HC4	N/A	1	added damage category
+736		Posterity	N/A	2	replaced Nation of Beasts, better archetype + perks
+737		Nullify	N/A	1	replaced Oversoul Edict, insane perks + best archetype
+738		Corrasion	N/A	2	replaced Darkest Before, good origin + best archetype
+739		Doom of Chelchis	1	2	replaced Trustee, shifted down because of new 1
+740		Timeworn Wayfarer	N/A	1	replaced Doom of Chelchis, great perks + origin
+741		Imminence	N/A	1	replaced Adjudicator, better perks
+742		Mykel's Reverence	1	2	replaced Buzzard, higher uptime
+743		Breachlight	N/A	1	similar archetype to Mykel's, but better neutral perks
+744		Multimach CCX	1	2	shifted down because of Imminence
+745		many weapons	N/A	N/A	removed champ stun-specific rolls
+747		Exotic weapons
+748		Name	LF	TFS	Notes
+749		Ergo Sum	N/A	A	best-in-class non-Surrounded sword damage, strong neutral
+750		Arbalest	B	D	better Radiant access + stronger Barrier options
+751		Wish-Ender	B	E	better Radiant access + stronger Barrier options
+752		Deterministic Chaos	F	E	can be used as a higher DPS Divinity for easy crit targets
+753		The Lament	C	F	damage and healing nerf, cannot get Pack Hunter
+754		Revision Zero	F	E	decent option for handling major burst
+755		Red Death Reformed	N/A	D	decent survivability option that lacks splash
+756		Necrochasm	C	E	doesn't scale well into endgame content
+757		Le Monarque	C	F	eclipsed by other higher lethality primaries
+758		Ager's Scepter	C	F	exotic specials are weak + primary buffs
+759		Euphony	N/A	C	good for total damage special ammo extension
+760		Microcosm	N/A	C	great day 1-style consistent damage option
+761		Izanagi's Burden	A	B	kinetic special nerf + other strong special exotics for DPS
+762		Monte Carlo	D	F	lackluster damage profile and irrelevant payoff
+763		Witherhoard	C	D	Lost Signal does almost the same job
+764		Quicksilver Storm	B	F	massive scaling and uptime nerf on grenades
+765		Edge of Action	B	E	No Hesitation does similar job without taking up exotic
+766		Lumina	A	B	No Hesitation does similar job without taking up exotic
+767		Anarchy	D	E	only used in speedrunning
+768		Leviathan's Breath	B	D	other higher total damage heavy options
+769		Eyes of Tomorrow	D	F	overrated 4 kill refund perk, pretty clunky
+770		Graviton Lance	A	C	overrated against Sunshot given lowman/solo usage
+771		Riskrunner	B	D	overrated DR potential and underrated range issues
+772		Dragon's Breath	A	C	overrated total damage, other strong exotic heavies now
+773		Conditional Finality	C	D	overrated Unstoppable capability + damage
+774		Osteo Striga	A	F	poison ICD added, other strong kinetic splash weapons
+775		Legend of Acrius	C	B	pretty strong DPS option for melee range
+776		Outbreak Perfected	D	C	pulse buff, craftable, great for building Transcendence
+777		Gjallarhorn	S	A	rockets moving out of DPS meta, less relevant in GM meta
+778		Cloudstrike	D	B	small sniper buff + good meta for it
+779		Khvostov 7G-0X	N/A	C	strong on-hit splash damage option
+780		Still Hunt	N/A	S	strongest DPS exotic of the last 2 years
+781		Merciless	A	C	too niche and exists in same slot as Still Hunt
+782		Hierarchy of Needs	C	E	underestimated setup time for disproportionate payoff
+783		Buried Bloodline	E	C	underrated last patch for survivability
+784		Final Warning	E	D	underrated major burst potential, actually decent boss DPS
+785		Polaris Lance	C	F	very underwhelming with lack of artifact support
+786		Malfeasance	A	C	Warden's Law is generally better without taking up exotic
+787		Coldheart	E	F	increased tier strictness
+788		Crimson	E	F	increased tier strictness
+789		Cryosthesia 77K	E	F	increased tier strictness
+790		Dead Messenger	C	D	increased tier strictness
+791		Deathbringer	E	F	increased tier strictness
+792		Divinity	B	C	increased tier strictness
+793		Heartshadow	D	E	increased tier strictness
+794		Prometheus Lens	E	F	increased tier strictness
+795		Rat King	D	F	increased tier strictness
+796		Ruinous Effigy	E	F	increased tier strictness
+797		Salvation's Grip	D	E	increased tier strictness
+798		Tarrabah	E	F	increased tier strictness
+799		The Huckleberry	E	F	increased tier strictness
+800		The Wardcliff Coil	D	E	increased tier strictness
+801		Thorn	E	F	increased tier strictness
+802		Ticuu's Divination	C	E	increased tier strictness
+803		Tommy's Matchbook	E	F	increased tier strictness
+804		Touch of Malice	E	F	increased tier strictness
+805		Traveler's Chosen	E	F	increased tier strictness
+806		Trinity Ghoul	A	B	increased tier strictness
+807		Two-Tailed Fox	E	F	increased tier strictness
+808		Verglas Curve	D	E	increased tier strictness
+809		Vex Mythoclast	E	F	increased tier strictness
+810		Vexcalibur	D	F	increased tier strictness
+811		Wavesplitter	E	F	increased tier strictness
+812		Xenophage	B	C	increased tier strictness
+814		Origin traits
+815		Name	LF	TFS	Notes
+816		Ambush	D	S	10% for 2s for free
+817		Cursed Thrall	A	S	best splash origin trait
+818		Crossing Over	D	C	decent handling + free small damage
+819		Sundering	D	C	decent in certain activities
+820		Disaster Plan	D	E	does almost nothing
+821		Gun and Run	D	E	does almost nothing
+822		Head Rush	F	E	does almost nothing
+823		Nadir Focus	D	E	does almost nothing
+824		Vanguard's Vindication	D	E	does almost nothing
+825		Nanotech Tracer Missiles	A	S	free damage, slightly noticeable
+826		Cast No Shadows	N/A	S	free Grave Robber
+827		Advanced Reflexes	C	D	handling only
+828		Hot Swap	C	D	handling only
+829		Dragon's Vengeance	B	D	hard to play around
+830		One Quiet Moment	C	E	hard to trigger if playing normally
+831		Bray Inheritance	S	B	less noticeable than expected
+832		Collective Purpose	N/A	D	mediocre effect
+833		Restoration Ritual	B	A	more noticeable than other B tier traits
+834		Rasputin's Arsenal	D	C	more noticeable than other D tier traits
+835		Radiolaria Transposer	N/A	S	more universal version of Cursed Thrall
+836		Häkke Breach Armaments	B	C	pretty niche
+837		Harmonic Resonance	B	C	pretty niche
+838		Dawning Surprise	C	D	relatively mediocre ability regen
+839		Noble Deeds	B	C	specific playstyle
+840		Tex Balanced Stock	C	D	very unlikely to trigger in PvE
+841		Unsated Hunger	C	D	very unlikely to trigger in PvE
+842		Explosive Pact	B	D	very weak effect, annoying to fully stack
+843		Alacrity	F	C	works solo
+844		Dealer's Choice	N/A	A	works with Still Hunt, slightly better than Thresh at x2
+846		Perks
+847		Name	LF	TFS	Notes
+848		Feeding Frenzy	D	E	2 kill to 50 reload is decent
+849		Air Trigger	N/A	B	aerial version of Field Prep
+850		Deconstruct	B	F	ammo refund patched
+851		Counterattack	D	G	awful to proc consistently
+852		Chaos Reshaped	N/A	S	best-in-slot sustained damage perk
+853		Headseeker	F	G	better than PvP-only perks
+854		Heal Clip	B	S	buff to 100HP, insane utility on current weapon field
+855		High Ground	E	C	buff to 3 stack + 25%
+856		Precision Instrument	E	C	buffed to 30% when enhanced
+857		Strategist	N/A	F	class ability regen not really needed
+858		Adrenaline Junkie	C	D	comparatively better than other 5 stack roam perks
+859		Killing Tally	A	B	Desperate Measures usually better
+860		Tilting at Windmills	E	H	does basically nothing
+861		Reverberation	N/A	H	does pretty much nothing on all weapon types
+862		Meganeura	N/A	G	Dragonfly not really relevant
+863		Trench Barrel	A	S	excellent with aggressive shotguns
+864		Auto-Loading Holster	A	B	fallen out of meta vs. Envious, Reconstruction, etc.
+865		Demolitionist	S	A	grenade rotations and regen less relevant in sandbox
+866		Destabilizing Rounds	C	B	ICD reduced to 3s
+867		Archer's Tempo	C	B	individual scope reevaulation
+868		Relentless Strikes	B	S	interacts with Pack Hunter
+869		Whirlwind Blade	C	A	interacts with Pack Hunter
+870		Unrelenting	C	F	largely overshadowed by Heal Clip
+871		Triple Tap	B	C	largely phased out in current meta
+872		Field Prep	A	B	less relevant in current meta
+873		Overflow	B	C	less relevant in current meta
+874		Archer's Gambit	N/A	C	massive draw time reduction, 4th column though
+875		Pugilist	C	F	melee energy gains not really relevant
+876		Cascade Point	A	S	more relevant for burst
+877		Physic	N/A	C	nerf to Restoration tier, still decent
+878		Lasting Impression	C	G	overrated last patch
+879		Subsistence	B	C	overrated last patch
+880		Sword Logic	B	E	overrated last patch
+881		Wellspring	C	F	overrated last patch
+882		Threat Detector	C	F	overrated last patch for swapping
+883		Bipod	A	S	perk swap allows for 50% total increase
+884		Compulsive Reloader	D	E	post-buff 50 reload + scalar is easy to proc
+885		Collective Action	D	E	Prismatic subclass pickup generation
+886		Eddy Current	E	F	received QoL buffs
+887		Explosive Light	B	A	reevaluated neutral purpose (HGLs)
+888		Incandescent	C	A	reevaluated, definitely better
+889		Desperate Measures	B	A	reevaluated; best roam damage perk
+890		Dragonfly	C	D	silghtly underrated last patch
+891		Firing Line	B	C	slightly less relevant
+892		Cluster Bomb	D	E	slightly underrated damage increase
+893		To The Pain	N/A	G	some handling gain while doing damage
+894		Tap The Trigger	F	G	some use in PvE for StL weapons
+895		Adagio	E	G	tiers extended
+896		Air Assault	F	H	tiers extended
+897		Backup Plan	F	G	tiers extended
+898		Barrel Constrictor	F	H	tiers extended
+899		Beacon Rounds	F	G	tiers extended
+900		Blunt Execution Rounds	E	G	tiers extended
+901		Box Breathing	E	G	tiers extended
+902		Cornered	E	G	tiers extended
+903		Danger Zone	E	G	tiers extended
+904		Disruption Break	D	F	tiers extended
+905		Duelist's Trance	E	G	tiers extended
+906		Dynamic Sway Reduction	F	H	tiers extended
+907		Elemental Capacitor	D	G	tiers extended
+908		En Garde	D	G	tiers extended
+909		Encore	F	H	tiers extended
+910		Energy Transfer	D	G	tiers extended
+911		Ensemble	C	E	tiers extended
+912		Eye of the Storm	F	H	tiers extended
+913		Firmly Planted	F	H	tiers extended
+914		Flash Counter	D	G	tiers extended
+915		Fragile Focus	F	H	tiers extended
+916		Full Court	C	F	tiers extended
+917		Genesis	D	G	tiers extended
+918		Gutshot Straight	E	G	tiers extended
+919		Hatchling	D	F	tiers extended
+920		Heating Up	F	H	tiers extended
+921		High-Impact Reserves	D	G	tiers extended
+922		Hip-Fire Grip	F	H	tiers extended
+923		Immovable Object	D	F	tiers extended
+924		Invisible Hand	F	H	tiers extended
+925		Iron Gaze	F	H	tiers extended
+926		Iron Grip	F	H	tiers extended
+927		Iron Reach	F	H	tiers extended
+928		Magnificent Howl	D	G	tiers extended
+929		Moving Target	F	H	tiers extended
+930		No Distractions	F	H	tiers extended
+931		Offhand Strike	F	H	tiers extended
+932		Opening Shot	F	H	tiers extended
+933		Osmosis	D	G	tiers extended
+934		Perfect Float	F	H	tiers extended
+935		Permeability	D	G	tiers extended
+936		Perpetual Motion	D	G	tiers extended
+937		Quickdraw	D	F	tiers extended
+938		Rangefinder	F	H	tiers extended
+939		Shattering Blade	E	G	tiers extended
+940		Shield Disorient	E	G	tiers extended
+941		Shot Swap	E	G	tiers extended
+942		Slickdraw	D	F	tiers extended
+943		Slideways	D	G	tiers extended
+944		Steady Hands	D	G	tiers extended
+945		Successful Warm-Up	D	G	tiers extended
+946		Surplus	D	G	tiers extended
+947		Sympathetic Arsenal	D	G	tiers extended
+948		Target Lock	C	E	tiers extended
+949		Thresh	D	G	tiers extended
+950		Tireless Blade	D	G	tiers extended
+951		Tracking Module	D	G	tiers extended
+952		Tunnel Vision	F	H	tiers extended
+953		Turnabout	E	G	tiers extended
+954		Under Pressure	F	H	tiers extended
+955		Underdog	E	G	tiers extended
+956		Unstoppable Force	D	F	tiers extended
+957		Valiant Charge	E	G	tiers extended
+958		Well-Rounded	F	G	tiers extended
+959		Zen Moment	F	H	tiers extended
+960		Adaptive Munitions	C	E	tiers extended
+961		Ambitious Assassin	C	D	tiers extended
+962		Assassin's Blade	D	G	tiers extended
+963		Bottomless Grief	D	G	tiers extended
+964		Celerity	D	G	tiers extended
+965		Close to Melee	C	E	tiers extended
+966		Clown Cartridge	C	D	tiers extended
+967		Cold Steel	C	E	tiers extended
+968		Desperado	D	F	tiers extended
+969		Discord	C	E	tiers extended
+970		Explosive Head	B	C	tiers extended
+971		Grave Robber	C	D	tiers extended
+972		Harmony	D	E	tiers extended
+973		Headstone	C	D	tiers extended
+974		Kickstart	F	G	tiers extended
+975		Killing Wind	F	G	tiers extended
+976		Loose Change	E	F	tiers extended
+977		Master of Arms	D	E	tiers extended
+978		Mulligan	F	G	tiers extended
+979		Multikill Clip	D	E	tiers extended
+980		Outlaw	D	F	tiers extended
+981		Paracausal Affinity	C	D	tiers extended
+982		Pulse Monitor	E	G	tiers extended
+983		Rampage	D	E	tiers extended
+984		Redirection	D	F	tiers extended
+985		Replenishing Aegis	D	F	tiers extended
+986		Reversal of Fortune	F	G	tiers extended
+987		Sleight of Hand	E	F	tiers extended
+988		Slideshot	C	D	tiers extended
+989		Snapshot Sights	F	G	tiers extended
+990		Sneak Bow	E	G	tiers extended
+991		Surrounded	B	C	tiers extended
+992		Under-Over	D	E	tiers extended
+993		Vorpal Weapon	B	C	tiers extended
+994		Circle of Life	N/A	D	tough competition in-slot, similar damage perks
+995		Keep Away	E	F	underrated last patch
+996		Slice	C	D	underrated last patch
+997		Stats for All	E	E	underrated last patch
+998		Swashbuckler	C	D	underrated last patch
+999		Voltshot	B	A	underrated last patch
+1000		Firefly	B	A	underrated reload + splash perk
+1001		Full Auto Trigger System	E	F	underrated RoF increase on shotguns
+1002		Threat Remover	N/A	F	useless since no ready handling until shot fired
+1003		Kinetic Tremors	B	A	worthy of being next to other A tier perks
+1005		Fragments
+1006		Name	LF	TFS	Notes
+1007		Echo of Cessation	B	F
+1008		Echo of Dilation	F	H
+1009		Echo of Domineering	E	G
+1010		Echo of Exchange	D	D
+1011		Echo of Expulsion	D	E
+1012		Echo of Harvest	B	E
+1013		Echo of Instability	B	C
+1014		Echo of Leeching	E	G
+1015		Echo of Obscurity	S	S
+1016		Echo of Persistence	A	A
+1017		Echo of Provision	C	D
+1018		Echo of Remnants	C	D
+1019		Echo of Reprisal	C	E
+1020		Echo of Starvation	S	S
+1021		Echo of Undermining	B	B
+1022		Echo of Vigilance	E	G
+1023		Ember of Ashes	A	E
+1024		Ember of Beams	F	G
+1025		Ember of Benevolence	S	S
+1026		Ember of Blistering	C	E
+1027		Ember of Char	C	C
+1028		Ember of Combustion	D	F
+1029		Ember of Empyrean	S	B
+1030		Ember of Eruption	D	F
+1031		Ember of Mercy	S	B
+1032		Ember of Resolve	D	E
+1033		Ember of Searing	A	B
+1034		Ember of Singeing	A	A
+1035		Ember of Solace	C	A
+1036		Ember of Tempering	D	G
+1037		Ember of Torches	S	S
+1038		Ember of Wonder	E	F
+1039		Facet of Awakening	N/A	B
+1040		Facet of Balance	N/A	C
+1041		Facet of Blessing	N/A	G
+1042		Facet of Bravery	N/A	C
+1043		Facet of Command	N/A	D
+1044		Facet of Courage	N/A	S
+1045		Facet of Dawn	N/A	C
+1046		Facet of Defiance	N/A	G
+1047		Facet of Devotion	N/A	D
+1048		Facet of Dominance	N/A	B
+1049		Facet of Generosity	N/A	D
+1050		Facet of Grace	N/A	E
+1051		Facet of Honor	N/A	C
+1052		Facet of Hope	N/A	D
+1053		Facet of Justice	N/A	F
+1054		Facet of Mending	N/A	E
+1055		Facet of Protection	N/A	B
+1056		Facet of Purpose	N/A	S
+1057		Facet of Ruin	N/A	C
+1058		Facet of Sacrifice	N/A	C
+1059		Facet of Solitude	N/A	B
+1060		Spark of Amplitude	B	C
+1061		Spark of Beacons	B	B
+1062		Spark of Brilliance	F	H
+1063		Spark of Discharge	B	C
+1064		Spark of Feedback	C	E
+1065		Spark of Focus	E	H
+1066		Spark of Frequency	F	G
+1067		Spark of Haste	F	H
+1068		Spark of Instinct	F	H
+1069		Spark of Ions	C	D
+1070		Spark of Magnitude	C	D
+1071		Spark of Momentum	F	H
+1072		Spark of Recharge	E	H
+1073		Spark of Resistance	A	A
+1074		Spark of Shock	B	D
+1075		Spark of Volts	F	H
+1076		Thread of Ascent	C	D
+1077		Thread of Binding	F	G
+1078		Thread of Continuity	A	C
+1079		Thread of Evolution	C	D
+1080		Thread of Finality	E	G
+1081		Thread of Fury	C	C
+1082		Thread of Generation	S	S
+1083		Thread of Isolation	B	B
+1084		Thread of Mind	B	E
+1085		Thread of Propagation	E	E
+1086		Thread of Rebirth	D	F
+1087		Thread of Transmutation	E	G
+1088		Thread of Warding	S	A
+1089		Thread of Wisdom	E	F
+1090		Whisper of Bonds	E	F
+1091		Whisper of Chains	A	D
+1092		Whisper of Chill	N/A	E
+1093		Whisper of Conduction	E	F
+1094		Whisper of Durance	A	B
+1095		Whisper of Fissures	B	C
+1096		Whisper of Fractures	E	D
+1097		Whisper of Hedrons	F	H
+1098		Whisper of Hunger	C	C
+1099		Whisper of Impetus	D	D
+1100		Whisper of Refraction	B	D
+1101		Whisper of Rending	C	D
+1102		Whisper of Reversal	N/A	H
+1103		Whisper of Rime	C	S
+1104		Whisper of Shards	A	A
+1105		Whisper of Torment	C	A
+1107		Aspects
+1108		Name	LF	TFS	Notes
+1109		Arc Soul	B	A
+1110		Ascension	N/A	D
+1111		Bastion	D	B
+1112		Chaos Accelerant	D	B
+1113		Child of the Old Gods	B	A
+1114		Consecration	A	S
+1115		Diamond Lance	E	C
+1116		Drengr's Lash	D	B
+1117		Ensnaring Slam	B	E
+1118		Feed the Void	A	S
+1119		Flechette Storm	F	D
+1120		Flow State	D	C
+1121		Glacial Harvest	D	C
+1122		Grim Harvest	C	B
+1123		Gunpowder Gamble	C	A
+1124		Heat Rises	S	B
+1125		Hellion	N/A	B
+1126		Howl of the Storm	C	E
+1127		Knockout	D	A
+1128		Lightning Surge	F	E
+1129		Mindspun Invocation	C	B
+1130		Offensive Bulwark	C	A
+1131		On Your Mark	D	C
+1132		Shatterdive	F	E
+1133		Stylish Executioner	B	S
+1134		The Wanderer	E	C
+1135		Threaded Specter	E	B
+1136		Touch of Thunder	C	B
+1137		Unbreakable	N/A	D
+1138		Vanishing Step	C	B
+1139		Weaver's Call	E	C
+1140		Weavewalk	E	C
+1141		Winter's Shroud	E	A

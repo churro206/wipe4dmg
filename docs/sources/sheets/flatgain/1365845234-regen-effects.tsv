@@ -1,0 +1,54 @@
+2					Relative to 0 stat Cooldown								https://x.com/D2Clarity/status/1645822889114103808
+3		Effect	Source	Stat	Current Value at 0 stat	Current Value at 100 stat	Current Value vs old base	Renegades Value vs old base	Pre-Eof Value (vs 30 stat base)	Renegades Value at 0 Stat	Renegades Value at 100 Stat	Regen Lost
+5		Flow State	Arc Aspect	Class	80.0%	180%	126.0%	162.4%	200.0%	80.0%	232.0%	19%
+6		Arc Soul x1	Arc Aspect	Class	16.0%	36%	25.2%	32.5%	40.0%	16.0%	46.4%	19%
+7		Arc Soul x2	Arc Aspect	Class	32.0%	72%	50.4%	65.0%	80.0%	32.0%	92.8%	19%
+8		Arc Soul x3	Arc Aspect	Class	48.0%	108%	75.6%	97.4%	120.0%	48.0%	139.2%	19%
+9		Spark of Focus	Arc Fragment	Class	60.0%	135%	94.5%	121.8%	150.0%	60.0%	174.0%	19%
+10		Spark of Recharge	Arc Fragment	Grenade	160.0%	360%	252.0%	324.8%	400.0%	160.0%	464.0%	19%
+11		Spark of Recharge	Arc Fragment	Melee	160.0%	360%	252.0%	324.8%	400.0%	160.0%	464.0%	19%
+12		Spirit of Inmost Light x2	Exotic Class	Grenade	320.0%	720%	504.0%	649.6%	800.0%	320.0%	928.0%	19%
+13		Spirit of Inmost Light x2	Exotic Class	Melee	320.0%	720%	504.0%	649.6%	800.0%	320.0%	928.0%	19%
+14		Spirit of Inmost Light x2	Exotic Class	Class	20.0%	45%	31.5%	40.6%	50.0%	20.0%	58.0%	19%
+15		Heart of Inmost Light x2	Titan Exotic	Grenade	320.0%	720%	504.0%	649.6%	800.0%	320.0%	928.0%	19%
+16		Heart of Inmost Light x2	Titan Exotic	Melee	320.0%	720%	504.0%	649.6%	800.0%	320.0%	928.0%	19%
+17		Heartof Inmost Light x2	Titan Exotic	Class	20.0%	45%	31.5%	40.6%	50.0%	20.0%	58.0%	19%
+18		Caliban's Hand	Hunter Exotic	Melee	200.0%	450%	315.0%	406.0%	500.0%	200.0%	580.0%	19%
+19		Graviton Forfeit x3	Hunter Exotic	Grenade		0%	0.0%	0.0%	---		0.0%	---
+20		Graviton Forfeit x3	Hunter Exotic	Melee		0%	0.0%	0.0%	---		0.0%	---
+21		Graviton Forfeit x3	Hunter Exotic	Class		0%	0.0%	0.0%	---		0.0%	---
+22		Fr0st-EE5	Hunter Exotic	Grenade		0%	0.0%	0.0%	2x		0.0%	---
+23		Fr0st-EE5	Hunter Exotic	Melee		0%	0.0%	0.0%	2x		0.0%	---
+24		Fr0st-EE5	Hunter Exotic	Class	40.0%	90%	63.0%	81.2%	100.0%	40.0%	116.0%	19%
+25		Gyrfalcon's Hauberk	Hunter Exotic	Class	200.0%	450%	315.0%	406.0%	500.0%	200.0%	580.0%	19%
+26		Khepri's Sting	Hunter Exotic	Melee	200.0%	450%	315.0%	406.0%	500.0%	200.0%	580.0%	19%
+27		Facet of Hope x1	Prismatic Aspect	Class	16.0%	36%	25.2%	32.5%	40.0%	16.0%	46.4%	19%
+28		Facet of Hope x2	Prismatic Aspect	Class	24.0%	54%	37.8%	48.7%	60.0%	24.0%	69.6%	19%
+29		Sol Invictus	Solar Aspect	Grenade	40.0%	90%	63.0%	81.2%	100.0%	40.0%	116.0%	19%
+30		Sol Invictus	Solar Aspect	Melee	40.0%	90%	63.0%	81.2%	100.0%	40.0%	116.0%	19%
+31		Ember of Benevolence	Solar Fragment	Grenade	120.0%	270%	189.0%	243.6%	300.0%	120.0%	348.0%	19%
+32		Ember of Benevolence	Solar Fragment	Melee	120.0%	270%	189.0%	243.6%	300.0%	120.0%	348.0%	19%
+33		Ember of Benevolence	Solar Fragment	Class	120.0%	270%	189.0%	243.6%	300.0%	120.0%	348.0%	19%
+34		Ember of Singeing	Solar Fragment	Class	160.0%	360%	252.0%	324.8%	400.0%	160.0%	464.0%	19%
+35		Winter's Shroud	Stasis Aspect	Class	120.0%	270%	189.0%	243.6%	300.0%	120.0%	348.0%	19%
+36		Whisper of Shards	Stasis Fragment	Grenade	200.0%	450%	315.0%	406.0%	500.0%	200.0%	580.0%	19%
+37		Into the Fray	Strand Aspect	Melee	120.0%	270%	189.0%	243.6%	300.0%	120.0%	348.0%	19%
+38		Hallowfire Heart	Titan Exotic	Grenade	140.0%	315%	220.5%	284.2%	350.0%	140.0%	406.0%	19%
+39		Hallowfire Heart	Titan Exotic	Melee	140.0%	315%	220.5%	284.2%	350.0%	140.0%	406.0%	19%
+40		Offensive Bulwark	Void Aspect	Grenade	160.0%	360%	252.0%	324.8%	400.0%	160.0%	464.0%	19%
+41		Contraverse (Axion)	Warlock Exotic	Grenade	800.0%	1800%	1260.0%	1624.0%	2000.0%	800.0%	2320.0%	19%
+42		Contraverse (Scatter)	Warlock Exotic	Grenade	800.0%	1800%	1260.0%	1624.0%	2000.0%	800.0%	2320.0%	19%
+43		Contraverse (Vortex)	Warlock Exotic	Grenade	800.0%	1800%	1260.0%	1624.0%	2000.0%	800.0%	2320.0%	19%
+44		Contraverse (HHSN)	Warlock Exotic	Grenade	800.0%	1800%	1260.0%	1624.0%	2000.0%	800.0%	2320.0%	19%
+45		Crown of Tempests x3	Warlock Exotic	Grenade	201.2%	452.7%	316.9%	408.4%	503.0%	201.2%	583.5%	19%
+46		Crown of Tempests x3	Warlock Exotic	Melee	201.2%	452.7%	316.9%	408.4%	503.0%	201.2%	583.5%	19%
+47		Contraverse Hold	Warlock Exotic	Grenade	800.0%	1800%	1260.0%	1624.0%	2000.0%	800.0%	2320.0%	19%
+48		Eye of Another World	Warlock Exotic	Grenade	20.0%	45%	31.5%	40.6%	50.0%	20.0%	58.0%	19%
+49		Eye of Another World	Warlock Exotic	Melee	20.0%	45%	31.5%	40.6%	50.0%	20.0%	58.0%	19%
+50		Eye of Another World	Warlock Exotic	Class	20.0%	45%	31.5%	40.6%	50.0%	20.0%	58.0%	19%
+51		Nezarec's Sin	Warlock Exotic	Grenade	120.0%	270%	189.0%	243.6%	300.0%	120.0%	348.0%	19%
+52		Nezarec's Sin	Warlock Exotic	Melee	120.0%	270%	189.0%	243.6%	300.0%	120.0%	348.0%	19%
+53		Nezarec's Sin	Warlock Exotic	Class	80.0%	180%	126.0%	162.4%	200.0%	80.0%	232.0%	19%
+54		Starfire Protocol	Warlock Exotic	Grenade	8.0%	18%	12.6%	16.2%	20.0%	8.0%	23.2%	19%
+55		Sunbracer's	Warlock Exotic	Grenade	8000.0%	18000%	12600.0%	16240.0%	20000.0%	8000.0%	23200.0%	19%
+56		Vesper of Radius	Warlock Exotic	Class	600.0%	1350%	945.0%	1218.0%	1500.0%	600.0%	1740.0%	19%

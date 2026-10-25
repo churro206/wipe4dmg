@@ -1,0 +1,105 @@
+2	Archetype	Regular brick base		Regular brick max	Finder Range	Finder x1 brick base	Finder x1 brick max	Finder x2 brick base	Finder x2 brick max	Finder x3 brick max	Scav bonus	Regular Range	Aeon brick min	Aeon Brick max
+3	Shotgun	25.25%		31.75%	4.50%	5.25%	9.75%	15.25%	19.75%	29.75%	1%	6.50%	15.25%	21.75%
+4	Sniper	26.00%		32.00%	4%	6.00%	10.00%	16.00%	20.00%	30.00%	1%	6.00%	16.00%	22.00%
+5	Special GL	25.50%		32.00%	4.50%	5.50%	10.00%	15.50%	20.00%	30.00%	1%	6.50%	15.50%	22.00%
+6	Fusion Rifle	22.00%		30.00%	5%	2.00%	7.00%	12.00%	17.00%	27.00%	1%	8.00%	12.00%	20.00%
+7	Glaive	29.50%		36.50%	5%	9.50%	14.50%	19.50%	24.50%	34.50%	1%	7.00%	19.50%	26.50%
+8	Trace Rifle	29.33%		37.33%	5%	9.33%	14.33%	19.33%	24.33%	34.33%	10%	8.00%	19.33%	27.33%
+9	Eriana's Vow	28.00%		35.00%	4.50%	8.00%	12.50%	18.00%	22.50%	32.50%	1%	7.00%	18.00%	25.00%
+10	Special Sidearm	27.50%		34.50%	4.50%	7.50%	12.00%	17.50%	22.00%	32.00%	1.00%	7.00%	17.50%	24.50%
+11	Forerunner	27.50%		34.50%	4.50%	7.50%	12.00%	17.50%	22.00%	32.00%	2.50%	7.00%	17.50%	24.50%
+12																			2%
+13	Linear Fusion Rifle	23.75%		30.75%	4.90%	3.75%	8.65%	13.75%	18.65%	28.65%	1%	7.00%	13.75%	20.75%
+14	Rocket Launcher	22.00%		29.00%	4.90%	2.00%	6.90%	12.00%	16.90%	26.90%	1%	7.00%	12.00%	19.00%
+15	Grenade Launcher	23.25%		28.50%	3.50%	3.25%	6.75%	13.25%	16.75%	26.75%	1%	5.25%	13.25%	18.50%
+16	Machine Gun	25.25%		32.25%	4.90%	5.25%	10.15%	15.25%	20.15%	30.15%	1%	7.00%	15.25%	22.25%
+17	Grand Xeno	25.25%		32.25%	4.90%	5.25%	10.15%	15.25%	20.15%	30.15%	5%	7.00%	15.25%	22.25%
+18	Sword	25.00%		32.00%	4.90%	5.00%	9.90%	15.00%	19.90%	29.90%	10%	7.00%	15.00%	22.00%
+21																				0.02	2.88
+22	Archetype	Rocket Reserves					min ammo	max ammo	average ammo	ammo range									0.006944444444
+23	Rocket Launcher	6		22.00%		29.00%	2	2	2	2							0.06666666667		0.0002	0.0288
+24	Rocket Launcher	7		22.00%		29.00%	2	3	2.06122449	2 - 3							0.23%
+25	Rocket Launcher	8		22.00%		29.00%	2	3	2.571428571	2 - 3							4.8%
+26	Rocket Launcher	9		22.00%		29.00%	2	3	2.968253968	2 - 3
+27	Rocket Launcher	10		22.00%		29.00%	3	3	3	3
+28	Rocket Launcher	11		22.00%		29.00%	3	4	3.246753247	3 - 4
+29	Rocket Launcher	12		22.00%		29.00%	3	4	3.571428571	3 - 4
+30	Rocket Launcher	13		22.00%		29.00%	3	4	3.846153846	3 - 4
+31	Rocket Launcher	14		22.00%		29.00%	4	5	4.06122449	4 - 5						422.1	426.6157879	848.7157879
+32	Rocket Launcher	15		22.00%		29.00%	4	5	4.333333333	4 - 5	1.296296296		P LFR	971
+33													A LFR	1593
+34	Scav mod for average?			Scav mod for average?										highest damage archetype available
+35	Archetype	Reserves		Regular brick average	3x finder average	2x finder average	1x finder average	cenotaph amount		Regular brick range	3x finder range	2x finder range	1x finder range	boss damage per ammo	Regular brick damage	3x finder damage	2x finder damage	1x finder damage	cenotaph damage	Damage notes
+36	Linear Fusion Rifle	18		6.42	6.18	4.40	2.63	3		5 - 6 (+1)	5 - 6 (+1)	3 - 4 (+1)	1 - 2 (+1)	1593	10234	9842	7017	4192	4779	Aggressive
+37	Linear Fusion Rifle	19		6.63	6.48	4.58	2.69	3		5 - 6	5 - 6	3 - 4	1 - 2	1593	10567	10317	7302	4287	4779	Aggressive
+38	Linear Fusion Rifle	20		6.93	6.74	4.74	2.74	3		5 - 7	5 - 6	3 - 4	1 - 2	1593	11037	10745	7559	4373	4779	Aggressive
+39	Linear Fusion Rifle	21		7.30	7.00	4.89	2.79	3		5 - 7	5 - 7	3 - 4	1 - 2	1593	11633	11157	7791	4450	4779	Aggressive
+40	Linear Fusion Rifle	22		7.50	7.28	5.10	2.84	3		6 - 7	6 - 7	4 - 5	1 - 2	1593	11942	11599	8117	4520	4779	Aggressive
+41	Linear Fusion Rifle	23		7.71	7.52	5.26	2.88	3		6 - 8	6 - 7	4 - 5	1 - 2	1593	12284	11984	8374	4585	4779	Aggressive
+42	Linear Fusion Rifle	24		8.05	7.74	5.40	2.98	3		6 - 8	6 - 7	4 - 5	1 - 3	1593	12820	12338	8610	4746	4779	Aggressive
+43	Linear Fusion Rifle	25		8.36	8.08	5.54	3.08	3		6 - 8	6 - 8	4 - 5	1 - 3	1593	13313	12874	8827	4909	4779	Aggressive
+44	Linear Fusion Rifle	26		8.55	8.35	5.67	3.18	4		7 - 8	7 - 8	4 - 5	1 - 3	971	8299	8110	5502	3084	3884	Precision
+45	Linear Fusion Rifle	27		8.85	8.56	5.81	3.25	4		7 - 9	7 - 8	4 - 6	2 - 3	971	8593	8308	5641	3159	3884	Precision
+46	Rocket Launcher	6		3.00	3.00	2.05	2.00	2		2	2	1 - 2	1	1994	5982	5982	4083	3988	3988	Aggressive
+47	Rocket Launcher	7		3.06	3.00	2.53	2.00	2		2 - 3	2	1 - 2	1	1994	6104	5982	5052	3988	3988	Aggressive
+48	Rocket Launcher	8		3.57	3.39	2.90	2.00	2		2 - 3	2 - 3	1 - 2	1	1994	7121	6755	5779	3988	3988	Aggressive
+49	Rocket Launcher	9		3.97	3.95	3.00	2.00	2		2 - 3	2 - 3	2	1	1994	7913	7886	5982	3988	3988	Aggressive
+50	Rocket Launcher	10		4.00	4.00	3.00	2.00	2		3	3	2	1	1994	7976	7976	5982	3988	3988	Aggressive
+51	Rocket Launcher	11		4.25	4.00	3.00	2.00	2		3 - 4	3	2	1	1495.5	6351	5982	4487	2991	2991	Aggressive Bipod
+52	Rocket Launcher	12		4.57	4.39	3.05	2.00	2		3 - 4	3 - 4	2 - 3	1	1495.5	6837	6562	4558	2991	2991	Aggressive Bipod
+53	Rocket Launcher	13		4.85	4.78	3.31	2.00	2		3 - 4	3 - 4	2 - 3	1	1495.5	7247	7149	4949	2991	2991	Aggressive Bipod
+54	Rocket Launcher	14		5.06	5.00	3.53	2.00	2		4 - 5	4	2 - 3	1	1495.5	7569	7478	5284	2991	2991	Aggressive Bipod
+55	Rocket Launcher	15		5.33	5.05	3.73	2.05	2		4 - 5	4 - 5	2 - 3	1 - 2	1495.5	7976	7549	5575	3062	2991	Aggressive Bipod
+56	Rocket Launcher	16		5.57	5.39	3.90	2.13	3		4 - 5	4 - 5	2 - 3	1 - 2	1495.5	8332	8057	5829	3189	4487	Aggressive Bipod
+57	Rocket Launcher	17		5.78	5.69	4.00	2.21	3		4 - 5	4 - 5	3	1 - 2	1495.5	8646	8506	5982	3302	4487	Aggressive Bipod
+59	Grenade Launcher	9		4.00	4.00	3.00	2.00	2		3	3	2	1	892.4	3570	3570	2677	1785	1785	Adaptive
+60	Grenade Launcher	10		4.00	4.00	3.00	2.00	2		3	3	2	1	892.4	3570	3570	2677	1785	1785	Adaptive
+61	Grenade Launcher	11		4.23	4.00	3.00	2.00	2		3 - 4	3	2	1	892.4	3778	3570	2677	1785	1785	Adaptive
+62	Grenade Launcher	12		4.67	4.50	3.02	2.00	2		3 - 4	3 - 4	2 - 3	1	892.4	4165	4016	2698	1785	1785	Adaptive
+63	Grenade Launcher	13		5.00	5.00	3.39	2.00	2		4	4	2 - 3	1	892.4	4462	4462	3025	1785	1785	Adaptive
+64	Grenade Launcher	14		5.00	5.00	3.70	2.00	2		4	4	2 - 3	1	892.4	4462	4462	3306	1785	1785	Adaptive
+65	Grenade Launcher	15		5.35	5.02	3.98	2.02	2		4 - 5	4 - 5	2 - 3	1 - 2	892.4	4774	4483	3548	1806	1785	Adaptive
+66	Grenade Launcher	16		5.67	5.50	4.00	2.14	3		4 - 5	4 - 5	3	1 - 2	892.4	5057	4908	3570	1912	2677	Adaptive
+67	Grenade Launcher	17		5.95	5.92	4.00	2.25	3		4 - 5	4 - 5	3	1 - 2	892.4	5307	5283	3570	2006	2677	Adaptive
+68	Grenade Launcher	18		6.14	6.00	4.02	2.34	3		5 - 6	5	3 - 4	1 - 2	892.4	5477	5354	3591	2089	2677	Adaptive
+69	Grenade Launcher	19		6.42	6.12	4.27	2.42	3		5 - 6	5 - 6	3 - 4	1 - 2	892.4	5726	5465	3815	2164	2677	Adaptive
+70	Grenade Launcher	20		6.67	6.50	4.50	2.50	3		5 - 6	5 - 6	3 - 4	1 - 2	892.4	5949	5801	4016	2231	2677	Adaptive
+71	Grenade Launcher	21		6.89	6.84	4.70	2.57	3		5 - 6	5 - 6	3 - 4	1 - 2	892.4	6152	6104	4198	2292	2677	Adaptive
+72	Grenade Launcher	22		7.23	7.00	4.89	2.63	3		6 - 7	6	3 - 4	1 - 2	892.4	6455	6247	4363	2347	2677	Adaptive
+73	Grenade Launcher	23		7.46	7.19	5.00	2.69	3		6 - 7	6 - 7	4	1 - 2	892.4	6657	6416	4462	2397	2677	Adaptive
+74	Grenade Launcher	24		7.67	7.50	5.02	2.74	3		6 - 7	6 - 7	4 - 5	1 - 2	892.4	6842	6693	4483	2443	2677	Adaptive
+75	Grenade Launcher	25		7.95	7.79	5.21	2.79	3		6 - 8	6 - 7	4 - 5	1 - 2	892.4	7097	6948	4653	2486	2677	Adaptive
+76	Grenade Launcher	26		8.30	8.00	5.39	2.83	4		7 - 8	7	4 - 5	1 - 2	892.4	7407	7139	4810	2525	3570	Adaptive
+77	Grenade Launcher	27		8.49	8.24	5.55	2.87	4		7 - 8	7 - 8	4 - 5	1 - 2	892.4	7577	7349	4955	2562	3570	Adaptive
+78	Grenade Launcher	28		8.67	8.50	5.70	2.91	4		7 - 8	7 - 8	4 - 5	1 - 2	892.4	7734	7585	5090	2595	3570	Adaptive
+79	Grenade Launcher	29		9.00	8.75	5.84	2.94	4		7 - 9	7 - 8	4 - 5	1 - 2	674	6069	5895	3939	1984	2696	Rapid Fire
+80	Grenade Launcher	30		9.33	9.00	6.00	3.00	4		7 - 9	7 - 9	4 - 6	1 - 3	674	6291	6066	4044	2022	2696	Rapid Fire
+81	Grenade Launcher	31		9.51	9.27	6.18	3.09	4		8 - 9	8 - 9	5 - 6	2 - 3	674	6412	6248	4164	2079	2696	Rapid Fire
+82	Grenade Launcher	32		9.74	9.50	6.32	3.14	4		8 - 10	8 - 9	5 - 6	2 - 3	674	6563	6403	4261	2118	2696	Rapid Fire
+83	Grenade Launcher	33		10.04	9.72	6.46	3.20	4		8 - 10	8 - 9	5 - 6	2 - 3	674	6770	6549	4352	2155	2696	Rapid Fire
+84	Grenade Launcher	34		10.33	10.00	6.58	3.25	4		8 - 10	8 - 10	5 - 6	2 - 3	674	6965	6740	4438	2189	2696	Rapid Fire
+85	Grenade Launcher	35		10.53	10.30	6.70	3.30	4		9 - 10	9 - 10	5 - 6	2 - 3	674	7098	6939	4519	2221	2696	Rapid Fire
+86	Grand Overture	60		#NV	#NV	#NV	#NV	#NV		#NV	#NV	#NV	#NV	849	#NV	#NV	#NV	#NV	#NV	Shot + Missile
+87	Machine Gun	309		93.34	90.10	59.20	28.29	35		79 - 100	79 - 94	48 - 63	17 - 32	113	10548	10181	6689	3197	3955	High Impact
+88	Machine Gun	450		134.87	130.15	85.15	40.15	50		114 - 146	114 - 136	69 - 91	24 - 46	113	15241	14707	9622	4537	5650	High Impact
+89	Machine Gun	446		133.72	129.04	84.44	39.84	50		113 - 144	113 - 135	69 - 90	24 - 46	51	6820	6581	4307	2032	2550	Rapid Fire
+90	Machine Gun	690		205.88	198.63	129.63	60.63	76		175 - 223	175 - 209	106 - 140	37 - 71	51	10500	10130	6611	3092	3876	Rapid Fire
+91	Sword	56		22.47	21.91	16.25	10.69	12		14 - 18	14 - 17	9 - 12	3 - 6	452	10156	9902	7345	4831	5424	Bequest Light
+92	Sword	70		27.45	26.69	19.69	12.69	14		18 - 23	18 - 21	11 - 14	4 - 7	452	12407	12063	8899	5735	6328	Bequest Light
+93	Shotgun	13		5.15	5.00	3.97	2.46	N/A		4 - 5	4	2 - 3	1 - 2	847.24	4364	4236	3364	2082	N/A	aggressive
+94	Shotgun	24		8.40	8.13	5.69	3.31	N/A		7 - 8	7 - 8	4 - 5	2 - 3	847.24	7115	6888	4817	2808	N/A	aggressive
+95	Shotgun	29		9.75	9.48	6.56	3.63	N/A		8 - 10	8 - 9	5 - 6	2 - 3	475.81	4639	4511	3120	1729	N/A	rapid fire
+96	Sniper	16		6.13	6.00	4.31	2.94	N/A		5 - 6	5	3 - 4	1 - 2	625.7	3832	3754	2698	1838	N/A	aggressive
+97	Sniper	24		8.47	8.21	5.83	3.42	N/A		7 - 8	7 - 8	4 - 5	2 - 3	625.7	5301	5136	3650	2138	N/A	aggressive
+98	Sniper	37		12.21	11.81	8.22	4.47	N/A		10 - 12	10 - 12	6 - 8	3 - 4	385.6	4707	4554	3168	1725	N/A	rapid fire
+99	Special GL	19		6.94	6.82	4.94	3.00	N/A		5 - 7	5 - 6	3 - 4	2	684	4746	4664	3376	2052	N/A	double fire
+100	Special GL	23		8.15	7.87	5.58	3.29	N/A		6 - 8	6 - 7	4 - 5	2 - 3	684	5575	5383	3817	2250	N/A	double fire
+101	Fusion Rifle	12		4.63	4.40	3.07	2.00	N/A		3 - 4	3 - 4	2 - 3	1	1014.13	4690	4462	3110	2028	N/A	High Impact
+102	Fusion Rifle	26		8.25	7.80	5.32	2.63	N/A		6 - 8	6 - 8	4 - 5	1 - 2	1014.13	8367	7910	5398	2668	N/A	High Impact
+103	Glaive	20		8.14	7.90	5.90	3.90	N/A		6 - 8	6 - 7	4 - 5	2 - 3	390	3176	3081	2301	1521	N/A	Adaptive
+104	Glaive	33		12.36	12.07	8.71	5.48	N/A		10 - 13	10 - 12	7 - 9	4 - 5	390	4819	4708	3397	2136	N/A	Adaptive
+105	Trace Rifle	439		190.82	184.23	140.33	96.43	N/A		129 - 164	129 - 151	85 - 107	41 - 63	30.2	5763	5564	4238	2912	N/A	Adaptive
+106	Trace Rifle	624		271.48	262.12	199.72	137.32	N/A		184 - 233	184 - 215	121 - 152	59 - 90	30.2	8199	7916	6031	4147	N/A	Adaptive
+107	Trace Rifle	562		244.81	236.38	180.18	123.98	N/A		165 - 210	165 - 193	109 - 137	53 - 81	30.2	7393	7139	5442	3744	N/A	Adaptive
+108	Trace Rifle	562								163 - 216	107 - 137	107 - 137	51 - 81
+109										163-215	110-137		59-80

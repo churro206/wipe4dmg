@@ -1,0 +1,2310 @@
+{
+  "retrieved": "2026-10-25",
+  "format": "TSV per tab: column 1 = row number in the htmlview export, then cells; empty rows dropped; cell notes are not part of the export.",
+  "read": {
+    "full": "every row read",
+    "text-rows": "every row with text read, numeric series skipped",
+    "partial": "beginning read",
+    "search": "searched for numbers and mechanic words",
+    "headers": "only headers read",
+    "none": "not read"
+  },
+  "relevance": {
+    "now": "data for current gaps or corrections",
+    "2.0": "Legendary Frames / optimizer",
+    "reference": "context, play patterns, rankings",
+    "none": "no use for outgoing boss damage",
+    "imported": "already imported into src/data"
+  },
+  "planners": [
+    "armor-stat-planner",
+    "exotic-class-item-planner",
+    "prismatic-build-planner (templates, no data)"
+  ],
+  "sheets": [
+    {
+      "key": "aegis",
+      "name": "Destiny 2 Boss Damage",
+      "id": "1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4",
+      "author": "Aegis",
+      "link": "https://destiny2.science/boss-damage",
+      "updated": "2026-10-12",
+      "note": "Imported tabs: Weapons, Abilties, Sustained, Swap, Bosses (src/data/aegis-*.json, bosses.json). Hidden tabs named in the changelog (FAQ, Equipment, Super, Rotations, Realistic, Tracker) are not listed publicly.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Home",
+          "gid": "1313551887",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=1313551887",
+          "file": "aegis/1313551887-home.tsv",
+          "rows": 12,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "index"
+          ],
+          "note": "Home: tab descriptions, current news; links for Weapons/Abilities point to stale gids"
+        },
+        {
+          "tab": "Changelog",
+          "gid": "1268483240",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=1268483240",
+          "file": "aegis/1268483240-changelog.tsv",
+          "rows": 211,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "changelog",
+            "weapons",
+            "abilities"
+          ],
+          "note": "Wolfsbane, Praxic Blade, Heirloom, Barrow-Dyad added to Weapons/Sustained; Bosses deltas changed 2026-09-17"
+        },
+        {
+          "tab": "Weapons",
+          "gid": "2139128689",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=2139128689",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "weapons"
+          ],
+          "note": "src/data/aegis-weapons.json"
+        },
+        {
+          "tab": "Abilties",
+          "gid": "1439633538",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=1439633538",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "abilities"
+          ],
+          "note": "src/data/aegis-abilities.json"
+        },
+        {
+          "tab": "Scaling (old)",
+          "gid": "2104454056",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=2104454056",
+          "file": "aegis/2104454056-scaling-old.tsv",
+          "rows": 58,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "fireteam-scaling"
+          ],
+          "note": "1 vs 5 players; old sustained values for Silence and Squall, Song of Flame, Glacial Quake"
+        },
+        {
+          "tab": "Fireteam (S29)",
+          "gid": "1193280735",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=1193280735",
+          "file": "aegis/1193280735-fireteam-s29.tsv",
+          "rows": 94,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "rotations",
+            "loadouts"
+          ],
+          "note": "S29 hunter rotations with loadout and play pattern; DPS cells empty in export"
+        },
+        {
+          "tab": "Graphing (S29)",
+          "gid": "1791137823",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=1791137823",
+          "file": "aegis/1791137823-graphing-s29.tsv",
+          "rows": 644,
+          "read": "headers",
+          "relevance": "reference",
+          "topics": [
+            "rotations",
+            "time-series"
+          ],
+          "note": "cumulative damage time series for 65 rotations"
+        },
+        {
+          "tab": "Sustained",
+          "gid": "1455724279",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=1455724279",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "weapons",
+            "timing"
+          ],
+          "note": "src/data/aegis-sustained.json"
+        },
+        {
+          "tab": "Swap",
+          "gid": "544204052",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=544204052",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "swap"
+          ],
+          "note": "imported via import-aegis-totals"
+        },
+        {
+          "tab": "Bosses",
+          "gid": "1346678363",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=1346678363",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "bosses"
+          ],
+          "note": "src/data/bosses.json"
+        },
+        {
+          "tab": "Pack Hunter",
+          "gid": "776354372",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=776354372",
+          "file": "aegis/776354372-pack-hunter.tsv",
+          "rows": 8,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "pack-hunter",
+            "weapon-perks"
+          ]
+        },
+        {
+          "tab": "Bolt Charge",
+          "gid": "402419508",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=402419508",
+          "file": "aegis/402419508-bolt-charge.tsv",
+          "rows": 25,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "bolt-charge",
+            "keywords"
+          ],
+          "note": "bolt charge rate per source, Flashover factor"
+        },
+        {
+          "tab": "Historical",
+          "gid": "277863849",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=277863849",
+          "file": "aegis/277863849-historical.tsv",
+          "rows": 21,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "historical"
+          ]
+        },
+        {
+          "tab": "Testing",
+          "gid": "247390216",
+          "url": "https://docs.google.com/spreadsheets/d/1_5wtBjRYHHxuF4oJKDb_iOGZs-wTkzB6RYbnyNLbuz4/htmlview/sheet?headers=true&gid=247390216",
+          "file": "aegis/247390216-testing.tsv",
+          "rows": 759,
+          "read": "text-rows",
+          "relevance": "now",
+          "topics": [
+            "supers",
+            "abilities",
+            "song-of-flame",
+            "fps"
+          ],
+          "note": "rows 1-194 text (super hit table, Song of Flame stat scaling, patch deltas); rows 195-759 numeric time series"
+        }
+      ]
+    },
+    {
+      "key": "compendium",
+      "name": "Destiny Data Compendium",
+      "id": "1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4",
+      "author": "Stardust / MossyMax / community",
+      "link": "https://destiny2.science/data-compendium",
+      "updated": "9.7.0.x",
+      "note": "Imported tabs: subclass tabs, Class Abilities, Exotic Weapons, Weapon Perks, Exotic Armors, Exotic Class, Artifact Perks (src/data/compendium-*.json).",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Landing",
+          "gid": "1038486120",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1038486120",
+          "file": "compendium/1038486120-landing.tsv",
+          "rows": 19,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "index"
+          ]
+        },
+        {
+          "tab": "Weapon Perks",
+          "gid": "1662574278",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1662574278",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "weapon-perks"
+          ],
+          "note": "src/data/compendium-weapons.json"
+        },
+        {
+          "tab": "Armor Perks",
+          "gid": "1287885342",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1287885342",
+          "file": "compendium/1287885342-armor-perks.tsv",
+          "rows": 114,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "set-bonuses"
+          ],
+          "note": "Armor 3.0 set bonuses (2pc/4pc)"
+        },
+        {
+          "tab": "Artifact Perks",
+          "gid": "473308249",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=473308249",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "artifact"
+          ],
+          "note": "src/data/compendium-artifacts.json"
+        },
+        {
+          "tab": "Armor Mods",
+          "gid": "1934379638",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1934379638",
+          "file": "compendium/1934379638-armor-mods.tsv",
+          "rows": 35,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "armor-mods",
+            "energy"
+          ],
+          "note": "energy mods with tiers, font mods, raid mods"
+        },
+        {
+          "tab": "Arc",
+          "gid": "618967225",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=618967225",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "subclass"
+          ]
+        },
+        {
+          "tab": "Solar",
+          "gid": "1186062409",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1186062409",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "subclass"
+          ]
+        },
+        {
+          "tab": "Void",
+          "gid": "1907852650",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1907852650",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "subclass"
+          ]
+        },
+        {
+          "tab": "Stasis",
+          "gid": "1088259962",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1088259962",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "subclass"
+          ]
+        },
+        {
+          "tab": "Strand",
+          "gid": "1870531554",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1870531554",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "subclass"
+          ]
+        },
+        {
+          "tab": "Prismatic",
+          "gid": "1918152785",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1918152785",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "subclass"
+          ]
+        },
+        {
+          "tab": "Exotic Class",
+          "gid": "20898389",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=20898389",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "class-items"
+          ]
+        },
+        {
+          "tab": "Class Abilities",
+          "gid": "527596209",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=527596209",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "class-abilities"
+          ]
+        },
+        {
+          "tab": "Exotic Weapons",
+          "gid": "441434520",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=441434520",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "exotic-weapons"
+          ]
+        },
+        {
+          "tab": "Exotic Armors",
+          "gid": "1500097863",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1500097863",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "exotic-armor"
+          ]
+        },
+        {
+          "tab": "Game Mechanics",
+          "gid": "1800463143",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1800463143",
+          "file": "compendium/1800463143-game-mechanics.tsv",
+          "rows": 238,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "stats",
+            "energy",
+            "chunk-scalars",
+            "combatant-tiers",
+            "heat-weapons",
+            "super-energy",
+            "activity-modifiers"
+          ]
+        },
+        {
+          "tab": "OLD Episodic Artifact Perks",
+          "gid": "715236319",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=715236319",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [
+            "old"
+          ]
+        },
+        {
+          "tab": "OLD Seasonal Artifact Perks",
+          "gid": "70425171",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=70425171",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [
+            "old"
+          ]
+        },
+        {
+          "tab": "OLD Nether Mechanics",
+          "gid": "333521426",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=333521426",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [
+            "old"
+          ]
+        },
+        {
+          "tab": "OLD Armor Mods",
+          "gid": "1925335732",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=1925335732",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [
+            "old"
+          ]
+        },
+        {
+          "tab": "OLD Game Mechanics",
+          "gid": "135237481",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=135237481",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [
+            "old"
+          ]
+        },
+        {
+          "tab": "OLD Exotic Armors",
+          "gid": "2137280685",
+          "url": "https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview/sheet?headers=true&gid=2137280685",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [
+            "old"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "court",
+      "name": "Destiny 2 Damage Buffs/Debuffs (Court's Stacking Guide)",
+      "id": "1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4",
+      "author": "Court",
+      "link": "https://destiny2.science/court-sheet",
+      "updated": "2026-07-22 (9.7.0.3)",
+      "note": "Imported tabs: Stacking Guide, Catalysts (src/data/court-buffs.json).",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "LANDING",
+          "gid": "242217075",
+          "url": "https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/htmlview/sheet?headers=true&gid=242217075",
+          "file": "court/242217075-landing.tsv",
+          "rows": 13,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "index"
+          ]
+        },
+        {
+          "tab": "STACKING GUIDE",
+          "gid": "2073397587",
+          "url": "https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/htmlview/sheet?headers=true&gid=2073397587",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "buffs",
+            "buckets"
+          ],
+          "note": "src/data/court-buffs.json"
+        },
+        {
+          "tab": "CHAMP COUNTERS LIST",
+          "gid": "1367323152",
+          "url": "https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/htmlview/sheet?headers=true&gid=1367323152",
+          "file": "court/1367323152-champ-counters-list.tsv",
+          "rows": 108,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "champions"
+          ]
+        },
+        {
+          "tab": "CATALYSTS",
+          "gid": "1305623430",
+          "url": "https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/htmlview/sheet?headers=true&gid=1305623430",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "catalysts"
+          ],
+          "note": "src/data/court-buffs.json"
+        },
+        {
+          "tab": "BANES",
+          "gid": "1888181920",
+          "url": "https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/htmlview/sheet?headers=true&gid=1888181920",
+          "file": "court/1888181920-banes.tsv",
+          "rows": 3,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "banes"
+          ],
+          "note": "image infographic only"
+        },
+        {
+          "tab": "MICRO-MISSILES",
+          "gid": "640460340",
+          "url": "https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/htmlview/sheet?headers=true&gid=640460340",
+          "file": "court/640460340-micro-missiles.tsv",
+          "rows": 3,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "micro-missiles"
+          ],
+          "note": "image infographic only"
+        },
+        {
+          "tab": "COMBATANTS GUIDE (NOT UPDATED)",
+          "gid": "1541186536",
+          "url": "https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/htmlview/sheet?headers=true&gid=1541186536",
+          "file": "court/1541186536-combatants-guide-not-updated.tsv",
+          "rows": 175,
+          "read": "partial",
+          "relevance": "none",
+          "topics": [
+            "combatants"
+          ],
+          "note": "not updated"
+        },
+        {
+          "tab": "MARATHON (NOT UPDATED)",
+          "gid": "1034561092",
+          "url": "https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/htmlview/sheet?headers=true&gid=1034561092",
+          "file": "court/1034561092-marathon-not-updated.tsv",
+          "rows": 74,
+          "read": "partial",
+          "relevance": "none",
+          "topics": [
+            "marathon"
+          ],
+          "note": "different game"
+        }
+      ]
+    },
+    {
+      "key": "quantum",
+      "name": "Destiny 2: Quantum Damage-ics",
+      "id": "1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI",
+      "author": "XboxUser123",
+      "link": "https://destiny2.science/quantum-damage-ics",
+      "updated": "9.7.0.1",
+      "note": "Imported tabs: Primaries, Specials, Heavies (src/data/quantum-weapons.json). Home states assumptions: Rally Barricade/Lunafaction reload, Extended + Backup Mag, legendaries without perks.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Home",
+          "gid": "0",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=0",
+          "file": "quantum/0-home.tsv",
+          "rows": 19,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "assumptions",
+            "method"
+          ],
+          "note": "assumes Rally/Lunafaction reload, Extended + Backup Mag"
+        },
+        {
+          "tab": "Bounty Board (2)",
+          "gid": "1898000403",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=1898000403",
+          "file": "quantum/1898000403-bounty-board-2.tsv",
+          "rows": 4,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "todo"
+          ]
+        },
+        {
+          "tab": "Primaries",
+          "gid": "398985410",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=398985410",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "weapons"
+          ]
+        },
+        {
+          "tab": "Specials",
+          "gid": "1681969818",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=1681969818",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "weapons"
+          ]
+        },
+        {
+          "tab": "Heavies",
+          "gid": "1406577322",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=1406577322",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "imported",
+          "topics": [
+            "weapons"
+          ]
+        },
+        {
+          "tab": "Swords",
+          "gid": "1670178164",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=1670178164",
+          "file": "quantum/1670178164-swords.tsv",
+          "rows": 131,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "swords",
+            "worldline-zero",
+            "lament",
+            "ergo-sum"
+          ]
+        },
+        {
+          "tab": "All Weapons (Sortable)",
+          "gid": "1857452032",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=1857452032",
+          "file": "quantum/1857452032-all-weapons-sortable.tsv",
+          "rows": 548,
+          "read": "headers",
+          "relevance": "reference",
+          "topics": [
+            "weapons"
+          ],
+          "note": "sortable union of imported tabs"
+        },
+        {
+          "tab": "Reserves Data (Reference)",
+          "gid": "1888513855",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=1888513855",
+          "file": "quantum/1888513855-reserves-data-reference.tsv",
+          "rows": 139,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "reserves"
+          ]
+        },
+        {
+          "tab": "Elemental Effects",
+          "gid": "8932058",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=8932058",
+          "file": "quantum/8932058-elemental-effects.tsv",
+          "rows": 14,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "keywords",
+            "shatter",
+            "threadlings"
+          ]
+        },
+        {
+          "tab": "Weapon Specifics",
+          "gid": "635034617",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=635034617",
+          "file": "quantum/635034617-weapon-specifics.tsv",
+          "rows": 154,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "exotic-own-damage",
+            "catalysts"
+          ]
+        },
+        {
+          "tab": "Equations",
+          "gid": "575699502",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=575699502",
+          "file": "quantum/575699502-equations.tsv",
+          "rows": 12,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "equations"
+          ]
+        },
+        {
+          "tab": "TODO",
+          "gid": "145238476",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=145238476",
+          "file": "quantum/145238476-todo.tsv",
+          "rows": 139,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "todo"
+          ],
+          "note": "weapons not yet measured by Quantum"
+        },
+        {
+          "tab": "History",
+          "gid": "938216086",
+          "url": "https://docs.google.com/spreadsheets/d/1x12Ar1-kHH2AzHY8Clkv-PIMxxDSZrIX3e4xiJuQ-uI/htmlview/sheet?headers=true&gid=938216086",
+          "file": "quantum/938216086-history.tsv",
+          "rows": 190,
+          "read": "search",
+          "relevance": "reference",
+          "topics": [
+            "changelog"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "endgame",
+      "name": "Destiny 2 Endgame Analysis",
+      "id": "1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY",
+      "author": "Aegis",
+      "link": "https://destiny2.science/endgame-analysis",
+      "updated": "2026-10-12 (Scouts), most tabs 2026-07..09",
+      "note": "Tier lists with effect descriptions and numbers; status per tab in tab Status.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Status",
+          "gid": "346832350",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=346832350",
+          "file": "endgame/346832350-status.tsv",
+          "rows": 41,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "status"
+          ]
+        },
+        {
+          "tab": "Changelog",
+          "gid": "1439671777",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1439671777",
+          "file": "endgame/1439671777-changelog.tsv",
+          "rows": 1116,
+          "read": "search",
+          "relevance": "reference",
+          "topics": [
+            "changelog"
+          ],
+          "note": "rows 1-300 read, rest searched"
+        },
+        {
+          "tab": "Shopping List",
+          "gid": "1062099834",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1062099834",
+          "file": "endgame/1062099834-shopping-list.tsv",
+          "rows": 68,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "loadouts"
+          ]
+        },
+        {
+          "tab": "Archetypes",
+          "gid": "1301036036",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1301036036",
+          "file": "endgame/1301036036-archetypes.tsv",
+          "rows": 96,
+          "read": "full",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-frames"
+          ],
+          "note": "frame base values and boss DPS/totals"
+        },
+        {
+          "tab": "Experimental",
+          "gid": "107452313",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=107452313",
+          "file": "endgame/107452313-experimental.tsv",
+          "rows": 99,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "experimental"
+          ]
+        },
+        {
+          "tab": "Autos",
+          "gid": "1890042119",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1890042119",
+          "file": "endgame/1890042119-autos.tsv",
+          "rows": 64,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Bows",
+          "gid": "324500912",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=324500912",
+          "file": "endgame/324500912-bows.tsv",
+          "rows": 30,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "HCs",
+          "gid": "1315046624",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1315046624",
+          "file": "endgame/1315046624-hcs.tsv",
+          "rows": 70,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Pulses",
+          "gid": "1712537582",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1712537582",
+          "file": "endgame/1712537582-pulses.tsv",
+          "rows": 61,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Scouts",
+          "gid": "946843299",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=946843299",
+          "file": "endgame/946843299-scouts.tsv",
+          "rows": 50,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Sidearms",
+          "gid": "1594008157",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1594008157",
+          "file": "endgame/1594008157-sidearms.tsv",
+          "rows": 40,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "SMGs",
+          "gid": "1405969509",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1405969509",
+          "file": "endgame/1405969509-smgs.tsv",
+          "rows": 55,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "BGLs",
+          "gid": "657764751",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=657764751",
+          "file": "endgame/657764751-bgls.tsv",
+          "rows": 36,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Fusions",
+          "gid": "1318165198",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1318165198",
+          "file": "endgame/1318165198-fusions.tsv",
+          "rows": 45,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Glaives",
+          "gid": "1239299765",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1239299765",
+          "file": "endgame/1239299765-glaives.tsv",
+          "rows": 16,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Shotguns",
+          "gid": "1595979957",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1595979957",
+          "file": "endgame/1595979957-shotguns.tsv",
+          "rows": 62,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Snipers",
+          "gid": "1090554564",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1090554564",
+          "file": "endgame/1090554564-snipers.tsv",
+          "rows": 59,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Rocket Sidearms",
+          "gid": "550485113",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=550485113",
+          "file": "endgame/550485113-rocket-sidearms.tsv",
+          "rows": 10,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Traces",
+          "gid": "288998351",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=288998351",
+          "file": "endgame/288998351-traces.tsv",
+          "rows": 14,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "HGLs",
+          "gid": "439751986",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=439751986",
+          "file": "endgame/439751986-hgls.tsv",
+          "rows": 28,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "LFRs",
+          "gid": "29008106",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=29008106",
+          "file": "endgame/29008106-lfrs.tsv",
+          "rows": 21,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "LMGs",
+          "gid": "1919916707",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1919916707",
+          "file": "endgame/1919916707-lmgs.tsv",
+          "rows": 38,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Rockets",
+          "gid": "981030684",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=981030684",
+          "file": "endgame/981030684-rockets.tsv",
+          "rows": 36,
+          "read": "search",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-weapons"
+          ],
+          "note": "roll recommendations; headers read, notes searched"
+        },
+        {
+          "tab": "Swords",
+          "gid": "473850359",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=473850359",
+          "file": "endgame/473850359-swords.tsv",
+          "rows": 43,
+          "read": "full",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-swords"
+          ]
+        },
+        {
+          "tab": "Other",
+          "gid": "266663572",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=266663572",
+          "file": "endgame/266663572-other.tsv",
+          "rows": 10,
+          "read": "full",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-specials"
+          ]
+        },
+        {
+          "tab": "Exotic Weapons",
+          "gid": "1789798057",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1789798057",
+          "file": "endgame/1789798057-exotic-weapons.tsv",
+          "rows": 143,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "exotic-weapons"
+          ]
+        },
+        {
+          "tab": "Exotic Armor (ignore)",
+          "gid": "1087089423",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1087089423",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [
+            "exotic-armor"
+          ],
+          "note": "marked ignore (pre-TFS)"
+        },
+        {
+          "tab": "Builds (ignore)",
+          "gid": "1756859209",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1756859209",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [
+            "builds"
+          ],
+          "note": "marked ignore (pre-TFS)"
+        },
+        {
+          "tab": "Perks",
+          "gid": "1589555995",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1589555995",
+          "file": "endgame/1589555995-perks.tsv",
+          "rows": 230,
+          "read": "full",
+          "relevance": "2.0",
+          "topics": [
+            "weapon-perks"
+          ]
+        },
+        {
+          "tab": "Origin Traits",
+          "gid": "655418239",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=655418239",
+          "file": "endgame/655418239-origin-traits.tsv",
+          "rows": 84,
+          "read": "full",
+          "relevance": "2.0",
+          "topics": [
+            "origin-traits"
+          ]
+        },
+        {
+          "tab": "Set Bonuses",
+          "gid": "1665223292",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1665223292",
+          "file": "endgame/1665223292-set-bonuses.tsv",
+          "rows": 114,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "set-bonuses"
+          ]
+        },
+        {
+          "tab": "Artifact Mods",
+          "gid": "67326797",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=67326797",
+          "file": "endgame/67326797-artifact-mods.tsv",
+          "rows": 149,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "artifact"
+          ]
+        },
+        {
+          "tab": "Fragments",
+          "gid": "1402770816",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1402770816",
+          "file": "endgame/1402770816-fragments.tsv",
+          "rows": 101,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "fragments"
+          ]
+        },
+        {
+          "tab": "Aspects",
+          "gid": "1426359048",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1426359048",
+          "file": "endgame/1426359048-aspects.tsv",
+          "rows": 62,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "aspects"
+          ]
+        },
+        {
+          "tab": "Subclasses",
+          "gid": "895871604",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=895871604",
+          "file": "endgame/895871604-subclasses.tsv",
+          "rows": 20,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "subclasses",
+            "ranking"
+          ]
+        },
+        {
+          "tab": "Encounters",
+          "gid": "1741064497",
+          "url": "https://docs.google.com/spreadsheets/d/1JM-0SlxVDAi-C6rGVlLxa-J1WGewEeL8Qvq4htWZHhY/htmlview/sheet?headers=true&gid=1741064497",
+          "file": "endgame/1741064497-encounters.tsv",
+          "rows": 56,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "encounters"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "flatgain",
+      "name": "Flat Gain Factors",
+      "id": "17lGgioS4E8l6w3-bJU8frTmzFzxl-3RDv1wm6gP7Dao",
+      "author": "Engineeeer (tests by RyTako)",
+      "link": "https://destiny2.science/flat-gain-factors",
+      "updated": "Edge of Fate / Renegades",
+      "note": "Ability energy: stat curves, regen multipliers, base cooldowns, chunk factors, super cast times.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Regen Effects",
+          "gid": "1365845234",
+          "url": "https://docs.google.com/spreadsheets/d/17lGgioS4E8l6w3-bJU8frTmzFzxl-3RDv1wm6gP7Dao/htmlview/sheet?headers=true&gid=1365845234",
+          "file": "flatgain/1365845234-regen-effects.tsv",
+          "rows": 54,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "regen-multipliers"
+          ]
+        },
+        {
+          "tab": "Supers 2.0",
+          "gid": "727352169",
+          "url": "https://docs.google.com/spreadsheets/d/17lGgioS4E8l6w3-bJU8frTmzFzxl-3RDv1wm6gP7Dao/htmlview/sheet?headers=true&gid=727352169",
+          "file": "flatgain/727352169-supers-2-0.tsv",
+          "rows": 51,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "supers",
+            "cast-time"
+          ]
+        },
+        {
+          "tab": "Grenades",
+          "gid": "0",
+          "url": "https://docs.google.com/spreadsheets/d/17lGgioS4E8l6w3-bJU8frTmzFzxl-3RDv1wm6gP7Dao/htmlview/sheet?headers=true&gid=0",
+          "file": "flatgain/0-grenades.tsv",
+          "rows": 32,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "grenades"
+          ]
+        },
+        {
+          "tab": "Melees",
+          "gid": "1189196752",
+          "url": "https://docs.google.com/spreadsheets/d/17lGgioS4E8l6w3-bJU8frTmzFzxl-3RDv1wm6gP7Dao/htmlview/sheet?headers=true&gid=1189196752",
+          "file": "flatgain/1189196752-melees.tsv",
+          "rows": 26,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "melees"
+          ]
+        },
+        {
+          "tab": "Class Abilities",
+          "gid": "1350413762",
+          "url": "https://docs.google.com/spreadsheets/d/17lGgioS4E8l6w3-bJU8frTmzFzxl-3RDv1wm6gP7Dao/htmlview/sheet?headers=true&gid=1350413762",
+          "file": "flatgain/1350413762-class-abilities.tsv",
+          "rows": 15,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "class-abilities"
+          ]
+        },
+        {
+          "tab": "Armor 3.0 Stat Info",
+          "gid": "1630989835",
+          "url": "https://docs.google.com/spreadsheets/d/17lGgioS4E8l6w3-bJU8frTmzFzxl-3RDv1wm6gP7Dao/htmlview/sheet?headers=true&gid=1630989835",
+          "file": "flatgain/1630989835-armor-3-0-stat-info.tsv",
+          "rows": 41,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "stats",
+            "energy"
+          ]
+        },
+        {
+          "tab": "Flat Gain Sources",
+          "gid": "1646605477",
+          "url": "https://docs.google.com/spreadsheets/d/17lGgioS4E8l6w3-bJU8frTmzFzxl-3RDv1wm6gP7Dao/htmlview/sheet?headers=true&gid=1646605477",
+          "file": "flatgain/1646605477-flat-gain-sources.tsv",
+          "rows": 48,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "mods",
+            "perks"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "glaive",
+      "name": "Glaive Compendium",
+      "id": "1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc",
+      "author": "Oni Black Mage",
+      "link": "https://destiny2.science/glaive-compendium",
+      "updated": "9.7.0 (Season 29) WIP",
+      "note": "Glaive interactions plus general buff, regen and energy lists.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Landing Page",
+          "gid": "462231417",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=462231417",
+          "file": "glaive/462231417-landing-page.tsv",
+          "rows": 14,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "index"
+          ]
+        },
+        {
+          "tab": "TLDR",
+          "gid": "371780609",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=371780609",
+          "file": "glaive/371780609-tldr.tsv",
+          "rows": 71,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "melee-buffs"
+          ]
+        },
+        {
+          "tab": "Weapon Stats",
+          "gid": "303507057",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=303507057",
+          "file": "glaive/303507057-weapon-stats.tsv",
+          "rows": 50,
+          "read": "partial",
+          "relevance": "none",
+          "topics": [
+            "glaive-stats"
+          ],
+          "note": "PvP values"
+        },
+        {
+          "tab": "Weapon Perks/Mods",
+          "gid": "0",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=0",
+          "file": "glaive/0-weapon-perks-mods.tsv",
+          "rows": 220,
+          "read": "search",
+          "relevance": "reference",
+          "topics": [
+            "weapon-perks",
+            "artifact"
+          ]
+        },
+        {
+          "tab": "Abilities/Buffs/Debuffs",
+          "gid": "1582544452",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=1582544452",
+          "file": "glaive/1582544452-abilities-buffs-debuffs.tsv",
+          "rows": 175,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "buffs",
+            "debuffs",
+            "freeze"
+          ]
+        },
+        {
+          "tab": "Armor Mods",
+          "gid": "1783360925",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=1783360925",
+          "file": "glaive/1783360925-armor-mods.tsv",
+          "rows": 62,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "armor-mods",
+            "raid-mods"
+          ]
+        },
+        {
+          "tab": "Exotic Armor",
+          "gid": "1079266592",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=1079266592",
+          "file": "glaive/1079266592-exotic-armor.tsv",
+          "rows": 110,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "exotic-armor"
+          ]
+        },
+        {
+          "tab": "Healing",
+          "gid": "2146192900",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=2146192900",
+          "file": "glaive/2146192900-healing.tsv",
+          "rows": 87,
+          "read": "search",
+          "relevance": "none",
+          "topics": [
+            "healing"
+          ]
+        },
+        {
+          "tab": "Damage Mitigation",
+          "gid": "1913218266",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=1913218266",
+          "file": "glaive/1913218266-damage-mitigation.tsv",
+          "rows": 90,
+          "read": "search",
+          "relevance": "none",
+          "topics": [
+            "damage-resist"
+          ]
+        },
+        {
+          "tab": "Grenade Energy",
+          "gid": "197208959",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=197208959",
+          "file": "glaive/197208959-grenade-energy.tsv",
+          "rows": 55,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "grenades"
+          ]
+        },
+        {
+          "tab": "Grenade Regen/Damage",
+          "gid": "613763943",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=613763943",
+          "file": "glaive/613763943-grenade-regen-damage.tsv",
+          "rows": 79,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "grenades",
+            "regen-multipliers"
+          ]
+        },
+        {
+          "tab": "Class Ability Energy",
+          "gid": "596254078",
+          "url": "https://docs.google.com/spreadsheets/d/1FT-BL6UA6ntNEN7_btqwlfJaPYTAeIFvlhpkvWHTajc/htmlview/sheet?headers=true&gid=596254078",
+          "file": "glaive/596254078-class-ability-energy.tsv",
+          "rows": 100,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "class-abilities"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "mossy",
+      "name": "Destiny 2 Weapon Reserves and Mag Database - The Edge of Fate",
+      "id": "1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc",
+      "author": "MossyMax",
+      "link": "https://destiny2.science/reserves",
+      "updated": "Edge of Fate",
+      "note": "Magazine and reserves per roll; relevant for Legendary Frames (2.0) and reserve mods.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Welcome",
+          "gid": "194376820",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=194376820",
+          "file": "mossy/194376820-welcome.tsv",
+          "rows": 36,
+          "read": "full",
+          "relevance": "reference",
+          "topics": [
+            "index"
+          ]
+        },
+        {
+          "tab": "EoF Full Database",
+          "gid": "960724298",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=960724298",
+          "file": "mossy/960724298-eof-full-database.tsv",
+          "rows": 2123,
+          "read": "headers",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-reserves"
+          ],
+          "note": "2123 rows"
+        },
+        {
+          "tab": "Unique",
+          "gid": "447640132",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=447640132",
+          "file": "mossy/447640132-unique.tsv",
+          "rows": 53,
+          "read": "full",
+          "relevance": "now",
+          "topics": [
+            "reserves",
+            "reserve-mods"
+          ]
+        },
+        {
+          "tab": "EOF Primaries",
+          "gid": "1869372135",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1869372135",
+          "file": "mossy/1869372135-eof-primaries.tsv",
+          "rows": 2616,
+          "read": "headers",
+          "relevance": "2.0",
+          "topics": [
+            "legendary-reserves"
+          ],
+          "note": "2616 rows"
+        },
+        {
+          "tab": "OLD Full Database",
+          "gid": "475116051",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=475116051",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Swords",
+          "gid": "1986291976",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1986291976",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Sidearms",
+          "gid": "479908683",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=479908683",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Trace Rifles",
+          "gid": "93244965",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=93244965",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Rocket Launchers",
+          "gid": "1141810037",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1141810037",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Shotguns",
+          "gid": "1612225419",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1612225419",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Sniper Rifles",
+          "gid": "782515720",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=782515720",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Machine Guns",
+          "gid": "226345525",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=226345525",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Grenade Launchers",
+          "gid": "230625260",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=230625260",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Linear Fusion Rifles",
+          "gid": "799633678",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=799633678",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Glaives",
+          "gid": "1063129930",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1063129930",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Fusion Rifles",
+          "gid": "676761083",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=676761083",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Mag Inv Lookup",
+          "gid": "1812066838",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1812066838",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "mag inv transposed",
+          "gid": "1380606949",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1380606949",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Equations",
+          "gid": "1961999350",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1961999350",
+          "file": "mossy/1961999350-equations.tsv",
+          "rows": 408,
+          "read": "partial",
+          "relevance": "2.0",
+          "topics": [
+            "reserves",
+            "equations"
+          ]
+        },
+        {
+          "tab": "Mag Size lookup",
+          "gid": "1806727616",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1806727616",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Primary Mag Size lookup",
+          "gid": "1294832657",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1294832657",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Ammo Brick math",
+          "gid": "268521891",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=268521891",
+          "file": "mossy/268521891-ammo-brick-math.tsv",
+          "rows": 105,
+          "read": "partial",
+          "relevance": "reference",
+          "topics": [
+            "ammo-bricks"
+          ]
+        },
+        {
+          "tab": "Primary Reload Mag",
+          "gid": "934824480",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=934824480",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Pivot Table 1",
+          "gid": "205179028",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=205179028",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Copy of Full Database",
+          "gid": "989575487",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=989575487",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Pre-Revenant Backup",
+          "gid": "980564894",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=980564894",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Pre-TFS Backup",
+          "gid": "1987769374",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1987769374",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Copy of Primaries",
+          "gid": "1830635518",
+          "url": "https://docs.google.com/spreadsheets/d/1l3xBHFa6ZMe86e13segg8f-RB8vLNerYEgNC_Aq3kLc/htmlview/sheet?headers=true&gid=1830635518",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        }
+      ]
+    },
+    {
+      "key": "rytako",
+      "name": "RyTako ability energy sheet",
+      "id": "1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+      "author": "RyTako",
+      "link": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+      "updated": "unknown (Edge of Fate era)",
+      "note": "Linked from Flat Gain Factors as the test source.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "The sheet",
+          "gid": "1211854080",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A/htmlview/sheet?headers=true&gid=1211854080",
+          "file": "rytako/1211854080-the-sheet.tsv",
+          "rows": 144,
+          "read": "text-rows",
+          "relevance": "now",
+          "topics": [
+            "energy",
+            "stats",
+            "chunk-scalars",
+            "class-mod-scalers"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "scaling",
+      "name": "Outgoing Damage Scaling",
+      "id": "1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I",
+      "author": "MossyMax",
+      "link": "https://destiny2.science/damage-scaling",
+      "updated": "2025-02-20 (v1.9.2, pre Edge of Fate)",
+      "note": "Power level and activity scaling; outdated.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Introduction",
+          "gid": "1386975095",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1386975095",
+          "file": "scaling/1386975095-introduction.tsv",
+          "rows": 154,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "power-scaling"
+          ],
+          "note": "outdated"
+        },
+        {
+          "tab": "Activity Types and Levels",
+          "gid": "930681975",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=930681975",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "PL Delta and Activity Scaling",
+          "gid": "1252789129",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1252789129",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Weapon Combatant Scaling",
+          "gid": "933547097",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=933547097",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Weapon Damage and DPS",
+          "gid": "282634418",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=282634418",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "GL and Sword Damage -Blast Radius and Impact",
+          "gid": "998600300",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=998600300",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Abilities and misc damage",
+          "gid": "2006093358",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=2006093358",
+          "file": "scaling/2006093358-abilities-and-misc-damage.tsv",
+          "rows": 227,
+          "read": "search",
+          "relevance": "reference",
+          "topics": [
+            "abilities"
+          ],
+          "note": "pre Edge of Fate"
+        },
+        {
+          "tab": "Weapon Perk damage",
+          "gid": "378121154",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=378121154",
+          "file": "scaling/378121154-weapon-perk-damage.tsv",
+          "rows": 250,
+          "read": "search",
+          "relevance": "reference",
+          "topics": [
+            "weapon-perks"
+          ],
+          "note": "pre Edge of Fate"
+        },
+        {
+          "tab": "Copy of Weapon Perk damage 1",
+          "gid": "142833341",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=142833341",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Scorch Damage",
+          "gid": "1261077917",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1261077917",
+          "file": "scaling/1261077917-scorch-damage.tsv",
+          "rows": 225,
+          "read": "search",
+          "relevance": "reference",
+          "topics": [
+            "scorch"
+          ],
+          "note": "pre Edge of Fate"
+        },
+        {
+          "tab": "Weapon Damage Excision",
+          "gid": "1345433880",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1345433880",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Copy of Weapon Damage Excision - basic",
+          "gid": "1986510056",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1986510056",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Copy of Weapon Perk damage",
+          "gid": "1219963933",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1219963933",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Copy of Weapon Damage and DPS 1",
+          "gid": "1469846378",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1469846378",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "conversion calculator",
+          "gid": "680091096",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=680091096",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Boss Conversion Quick Reference",
+          "gid": "826244201",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=826244201",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Legend BG comparison",
+          "gid": "1358444710",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1358444710",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Copy of Boss Conversion Quick Reference",
+          "gid": "1313767359",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1313767359",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Foetracer enemy health tests",
+          "gid": "1730196687",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1730196687",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Copy of foetracer enemy health summary",
+          "gid": "467486332",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=467486332",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "foetracer enemy health summary",
+          "gid": "1096943094",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1096943094",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Massive Weapon Stats",
+          "gid": "1091261870",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1091261870",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Archive - Activity Types and Levels",
+          "gid": "1445911137",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1445911137",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Sheet17",
+          "gid": "1539629216",
+          "url": "https://docs.google.com/spreadsheets/d/1b57Hb8m1L3daFfUckQQqvvN6VOpD03KEssvQLMFpC5I/htmlview/sheet?headers=true&gid=1539629216",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        }
+      ]
+    },
+    {
+      "key": "dmggen",
+      "name": "D2_Damage Generator",
+      "id": "1rY_iChu08CVnIMfHliZQwup10-GnmPtEu5FG0DNy8VM",
+      "author": "RokDC, Maeix",
+      "link": "https://destiny2.science/damage-generator",
+      "updated": "2024-11-09 (v3.1)",
+      "note": "Legendary special/heavy database; outdated, no exotics.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "Information",
+          "gid": "641183241",
+          "url": "https://docs.google.com/spreadsheets/d/1rY_iChu08CVnIMfHliZQwup10-GnmPtEu5FG0DNy8VM/htmlview/sheet?headers=true&gid=641183241",
+          "file": "dmggen/641183241-information.tsv",
+          "rows": 96,
+          "read": "full",
+          "relevance": "none",
+          "topics": [
+            "index"
+          ],
+          "note": "outdated"
+        },
+        {
+          "tab": "How To Use",
+          "gid": "874392135",
+          "url": "https://docs.google.com/spreadsheets/d/1rY_iChu08CVnIMfHliZQwup10-GnmPtEu5FG0DNy8VM/htmlview/sheet?headers=true&gid=874392135",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Database",
+          "gid": "124403291",
+          "url": "https://docs.google.com/spreadsheets/d/1rY_iChu08CVnIMfHliZQwup10-GnmPtEu5FG0DNy8VM/htmlview/sheet?headers=true&gid=124403291",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Buffs/Debuffs",
+          "gid": "742846734",
+          "url": "https://docs.google.com/spreadsheets/d/1rY_iChu08CVnIMfHliZQwup10-GnmPtEu5FG0DNy8VM/htmlview/sheet?headers=true&gid=742846734",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Damage Chart",
+          "gid": "1051511192",
+          "url": "https://docs.google.com/spreadsheets/d/1rY_iChu08CVnIMfHliZQwup10-GnmPtEu5FG0DNy8VM/htmlview/sheet?headers=true&gid=1051511192",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        }
+      ]
+    },
+    {
+      "key": "resilience",
+      "name": "Resilience Chart",
+      "id": "1FWMC-Vd_bGEoRkkrn3drWIORCFYyWQVMNlMasa4OE6I",
+      "author": "unknown",
+      "link": "https://destiny2.science/resilience-chart",
+      "updated": "unknown",
+      "note": "Incoming damage / PvP; not relevant for outgoing boss damage.",
+      "retrieved": "2026-10-25",
+      "tabs": [
+        {
+          "tab": "WeaponStat Chart",
+          "gid": "1692216024",
+          "url": "https://docs.google.com/spreadsheets/d/1FWMC-Vd_bGEoRkkrn3drWIORCFYyWQVMNlMasa4OE6I/htmlview/sheet?headers=true&gid=1692216024",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "WeaponData",
+          "gid": "1678079223",
+          "url": "https://docs.google.com/spreadsheets/d/1FWMC-Vd_bGEoRkkrn3drWIORCFYyWQVMNlMasa4OE6I/htmlview/sheet?headers=true&gid=1678079223",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "Reference",
+          "gid": "197776868",
+          "url": "https://docs.google.com/spreadsheets/d/1FWMC-Vd_bGEoRkkrn3drWIORCFYyWQVMNlMasa4OE6I/htmlview/sheet?headers=true&gid=197776868",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        },
+        {
+          "tab": "DamageTests",
+          "gid": "13281721",
+          "url": "https://docs.google.com/spreadsheets/d/1FWMC-Vd_bGEoRkkrn3drWIORCFYyWQVMNlMasa4OE6I/htmlview/sheet?headers=true&gid=13281721",
+          "file": null,
+          "rows": 0,
+          "read": "none",
+          "relevance": "none",
+          "topics": [],
+          "note": "not downloaded"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+2													50.23021607	201.01	234.50	335.01	335.01					1.203846154		6063	6737
+3	Choose Activity, or "Custom"	EoF Firing Range			Assume Max delta?	Gear ePL / / Delta	Activity PL	Difficulty scaling type	Guardian ePL delta cap	Guardian ePL delta floor	Bonus Multiplier	1.1025	9948	9401	47.468261x	27334	40.4595		20793	23097.71956	15290.00	313	20997.92687	0	0.8999554698	609.4	40451	66.38033106			0.3590269979
+4	Recommended PL multiplier	1.00x		0.9002x	Bonus Multiplier	1900	1990	Master	+0			+48072	39094	96.50494007		45647	67.5661			30.77754573	77.20345835	260	27.97958702	#DIV/0!	1.111166089	420.00	20392	48.5519535	1.367202064	38100	50.8
+5	Total Damage Multiplier	0.900219x		1.00000000x	Guardian ePL delta multiplier	+0	10	Normal	+0		0.90x	2.699915754	26063.00	96.50617434		32801.00	48.5516	48.5516			16984.76084		0			55.7	3401	61.03665969		13655	141.4935375
+6				Element	Boss Damage	Miniboss Damage	Elite Damage	Minor Damage	Crucible Damage	Damage count	Boss total	Boss Source Damage	Miniboss Source Damage	Elite Source Damage	Minor Source Damage	Boss Source	Miniboss Source	Elite Source	Minor Source	Boss Source Multiplier	Miniboss Source Multiplier	Elite Source Multiplier	Minor Source Multiplier	Boss Combatant Bonus	Miniboss Combatant Bonus	Elite Combatant Bonus	Minor Combatant Bonus	Weapon Scaling
+8	Melees	Unpowered Melee		Kinetic	90.02	162.04	162.04	162.04	100	1	90.02	100	180	180	180	Gambit	Gambit	Gambit	Gambit	1	1	1	1	1.00x	1.80x	1.80x	1.80x
+9		Titan Melee		Kinetic	198.05	198.05	198.05	198.05	100	1	198.05	220	220	220	220	Gambit	Gambit	Gambit	Gambit	1	1	1	1	2.20x	2.20x	2.20x	2.20x
+10		Knockout Melee		Kinetic	396.10	396.10	396.10	396.10	100	1	396.10	440	440	440	440	Gambit	Gambit	Gambit	Gambit	1	1	1	1	4.40x	4.40x	4.40x	4.40x			11279	56.95080489
+11		Syntho unpowered melee		Kinetic	270.07	486.12	486.12	486.12	100	1	270.07	300	540	540	540	Gambit	Gambit	Gambit	Gambit	1	1	1	1	3.00x	5.40x	5.40x	5.40x			48.25	1.180327562
+12		Glaive Melee		Kinetic	226.88	264.68	378.09	378.09	70	1	226.88	10396.00	12128.00	17325.00	17325.00	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	41.25	41.25	41.25	41.25	3.60x	4.20x	6.00x	6.00x
+13		Syntho Glaive Melee		Kinetic	453.75	529.35	756.18	756.18	140	1	453.75	20792	24256	34650	34650	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	41.25	41.25	41.25	41.25	3.60x	4.20x	6.00x	6.00x			21230	48.25
+14		Wiinterbite Melee		Kinetic	340.32	397.01	567.14	567.14	105	1	340.32	15594	18192	25987.5	25987.5	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	41.25	41.25	41.25	41.25	3.60x	4.20x	6.00x	6.00x				1
+15		Shield Bash impact		Void	536.38	536.38	536.38	536.38	110	1	536.38	16888.3	16888.3	16888.3	16888.3	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	28.34401078	28.34401078	28.34401078	28.34401078	5.4167x	5.4167x	5.4167x	5.4167x
+16		Shield Bash explosion		Void	195.05	195.05	195.05	195.05	40	1	195.05	6141.2	6141.2	6141.2	6141.2	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	28.34401078	28.34401078	28.34401078	28.34401078	5.4167x	5.4167x	5.4167x	5.4167x			0.8
+17		Shield Throw		Void	154.08	299.11	299.11	271.93	60	1	154.08	2675	5369	5193	4721	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.85x	5.54x	5.54x	5.03x
+18		pocket singularity		Void	92.50	210.70	210.70	159.78	60	1	92.50	1606	3782	3658	2774	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	1.71x	3.90x	3.90x	2.96x
+19		WG+12P+Bulwark SB impact		Void	24137.12	24137.12	24137.12	24137.12	110	1	24137.12	759973.8	759973.8	759973.8	759973.8	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	28.34401078	28.34401078	28.34401078	28.34401078	243.7500x	243.7500x	243.7500x	243.7500x
+20		WG+12P+Bulwark SB explosion		Void	8777.15	8777.15	8777.15	8777.15	40	1	8777.15	276354.6	276354.6	276354.6	276354.6	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	28.34401078	28.34401078	28.34401078	28.34401078	243.7505x	243.7505x	243.7505x	243.7505x
+21		WG+12P+Bulwark SB total		Void	32914.27	32914.27	32914.27	32914.27	40	1	32914.27	1036328.5	1036328.5	1036328.5	1036328.5	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	28.34401078	28.34401078	28.34401078	28.34401078	914.0630x	914.0630x	914.0630x	914.0630x			10615	48.25
+22		Smoke Bomb impact		Void	15.30	0.00	0.00	27.00		1	15.30	825			1456	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+23		Smoke Bomb AoE		Void	61.22	0.00	0.00	108.03		1	61.22	3301			5825	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+24		Quickfall		Void	180.06	0.00	0.00	180.06		1	180.06	9709			9709	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!			20265	53.59808439
+25		Celestial Fire		Solar	168.82	104.01	135.07	135.07	35	3	506.47	2931	1867	2345	2345	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.36x	3.30x	4.29x	4.29x
+26		Incinerator Snap		Solar	81.04	81.06	81.04	81.04		5	405.21	1407	1455	1407	1407	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+27		Hammer Strike impact		Solar	438.87	438.87	438.87	438.87	90	1	438.87	23664	23664	23664	23664	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.4168x	5.4168x	5.4168x	5.4168x
+28		Hammer Strike explosion		Solar	292.58	292.58	292.58	292.58	60.001	1	292.58	15776	15776	15776	15776	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.4167x	5.4167x	5.4167x	5.4167x
+29		Throwing Hammer		Solar	369.75	538.31	538.31	326.25	120	1	369.75	23666	34455	34455	20882	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	57.61946438	57.61946438	57.61946438	57.61946438	3.42x	4.98x	4.98x	3.02x
+30		Throwing Hammer + syntho RFx3		Solar	1476.40	2149.47	2149.47	1302.72	120	1	1476.40	94498.338	137578.815	137578.815	83381.826	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	57.61946438	57.61946438	57.61946438	57.61946438	13.67x	19.90x	19.90x	12.06x
+31		Consecration uppercut		Solar	81.03	81.03	81.03	81.03	30	1	81.03	4369	4369	4369	4369	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	3.00x	3.00x	3.00x	3.00x
+32		Consecration slam		Solar	945.82	945.82	945.82	945.82	50	1	945.82	50999	50999	50999	50999	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	21.01x	21.01x	21.01x	21.01x
+33		Consecration slam (without ignition)		Solar	972.84	972.84	972.84	972.84	120	1	972.84	52456	52456	52456	52456	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	9.01x	9.01x	9.01x	9.01x
+34		Fan of knives impact		Solar	97.11	188.41	188.41	171.30	38	3	291.34	1686	3382	3271	2974	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.84x	5.51x	5.51x	5.01x				38
+35		Fan of knives crit		Solar	126.26	244.96	244.95	222.71	49	3	378.77	2192	4397	4253	3867	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.86x	5.55x	5.55x	5.05x	2487	3605	1538	63.44387755
+36		precision knife body		Solar	215.71	418.72	418.69	380.67	140	1	215.71	3745	7516	7269	6609	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	1.71x	3.32x	3.32x	3.02x				1.669575725
+37		precision knife crit		Solar	323.57	628.03	628.04	571.01	210	1	323.57	5618	11273	10904	9914	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	1.71x	3.32x	3.32x	3.02x
+38		proximity knife impact		Solar	115.54	224.35	224.33	203.96	14	1	115.54	2006	4027	3895	3541	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	9.17x	17.80x	17.80x	16.18x
+39		proximity knife crit		Solar	150.22	291.65	291.63	265.13	18	1	150.22	2608	5235	5063	4603	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	9.27x	18.00x	18.00x	16.36x
+40		proximity knife explosion		Solar	160.70	311.98	311.96	283.62	105	1	160.70	2790	5600	5416	4924	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	1.70x	3.30x	3.30x	3.00x
+41		lightweight knife body		Solar	154.08	299.10	299.11	271.93	90.6	1	154.08	2675	5369	5193	4721	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	1.89x	3.67x	3.67x	3.33x
+42		lightweight knife crit		Solar	200.29	388.81	388.83	353.49	117.8	1	200.29	3477	6979	6751	6137	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	1.89x	3.67x	3.67x	3.33x
+43		Lightning surge bolts		Arc	146.29	0.00	0.00	146.29		3	438.87	7888			7888	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+44		Lightning surge explosion		Arc	439.13	0.00	0.00	439.13		1	439.13	23678			23678	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+45		Chain lightning impact		Arc	90.67	0.00	0.00	163.22		1	90.67	4889			8801	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+46		Chain lightning chain		Arc	24.48	0.00	0.00	44.05		1	24.48	1320			2375	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+47		Ballistic Slam		Arc	234.07	0.00	0.00	374.50	130	1	234.07	12621			20193	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	2.00x	0.00x	0.00x	3.20x
+48	702.1921657	Thunderclap Min charge		Arc	585.16	585.16	585.16	585.16	120	1	585.16	31552	31552	31552	31552	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.42x	5.42x	5.42x	5.42x
+49	1400.858571	Thunderclap Max charge		Arc	1053.28	1053.28	1053.28	1053.28	217	1	1053.28	56793	56793	56793	56793	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.39x	5.39x	5.39x	5.39x
+50		Seismic Strike impact		Arc	536.38	536.38	536.38	536.38	110	1	536.38	28922	28922	28922	28922	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.4167x	5.4167x	5.4167x	5.4167x
+51		Seismic Strike explosion		Arc	195.07	195.07	195.07	195.07	40	1	195.07	10518	10518	10518	10518	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.4177x	5.4180x	5.4177x	5.4177x
+52	51744	Ball Lightning impact		Arc	46.25	64.68	89.74	81.56	30.2	1	46.25	803	1161	1558	4398	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Investigation	15.62894052	16.15873512	15.62894052	48.54004885	1.70x	2.38x	3.30x	3.00x
+53	36.93734762	Ball Lightning explosion		Arc	107.14	207.97	207.99	189.06	70	1	107.14	1860	3733	3611	10194	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Investigation	15.62894052	16.15873512	15.62894052	48.54004885	1.70x	3.30x	3.30x	3.00x
+54		Tempest Strike		Arc	257.49	412.00	0.00	0.00	110	1	257.49	4470.37478	7395.258279			Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.60x	4.16x	0.00x	0.00x
+55	48.25	Disorienting Blow		Arc	90.04	162.05	162.05	162.05	100	1	90.04	4855	8738	8738	8738	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	1.00x	1.80x	1.80x	1.80x
+56	0.7655408833	Combination Blow x3		Arc	368.81	663.77	663.77	663.77		1	368.81	19886.08	35790.848	35790.848	35790.848	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+57		Lethal Current Aftershock		Arc	108.10	194.58	194.58	194.58		1	108.10	5828.9	10492	10492	10492	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+58		Withering Blade		Stasis	266.17	0.00	0.00	241.97	65	1	266.17	14352			13047	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	4.55x	0.00x	0.00x	4.14x
+59	49.12667233	Shatterdive (without crystal)		Stasis	45.03	0.00	0.00	45.03	50	1	45.03	2428			2428	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	1.00x	0.00x	0.00x	1.00x
+60	1.018169375	Shatterdive (on frozen enemy)		Stasis	161.13	0.00	0.00	161.13	50	1	161.13	8688			8688	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	3.58x	0.00x	0.00x	3.58x
+61		Shiver Strike		Stasis	189.06	0.00	0.00	510.44	105	1	189.06	10194			27523	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	2.00x	0.00x	0.00x	5.40x
+62		Frenzied Blade		Strand	512.03	512.03	512.04	512.03	105	1	512.03	27609	27609	28801	27609	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	5.42x	5.42x	5.42x	5.42x		386.0172918	84923.80419
+63		Threaded Spike		Strand	357.97	357.97	429.56	393.77	79.53020427	1	357.97	19302	19302	29661	21232	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	62.1592x	48.54004885	5.00x	5.00x	6.00x	5.50x		1429.98653	153.8862791
+64		Threaded Spike hit 2		Strand	292.89	292.89	351.47	322.18	79.53020427	1	292.89	15792.87604	15792.87604	24268.59891	17372	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	62.1592x	48.54004885	4.09x	4.09x	4.91x	4.50x		0	0
+65		Threaded Spike hit 3+		Strand	206.11	206.11	247.34	226.72	79.53020427	1	206.11	11113.74105	11113.74105	17078.26512	12225	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	62.1592x	48.54004885	2.88x	2.88x	3.45x	3.17x		#WERT!	#WERT!
+66		FB + syntho + banner + 12P		Strand	4301.08	4301.08	4301.12	4301.08	105	1	4301.08	231915.6	231915.6	241928.4	231915.6	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	45.50x	45.50x	45.50x	45.50x
+67		Flechette Knockback		Strand	105.75	121.53	121.53	121.53	66	1	105.75	5702	6553	6836	6553	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	1.78x	2.05x	2.05x	2.05x
+68	2.749983843	Flechette Storm		Strand	133.94	153.95	153.94	153.95	25.2	4	535.75	7222	8301	8659	8301	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	5.90x	6.79x	6.79x	6.79x
+69	4.94993045	Flechette Unravel projectiles		Strand	2.37	2.73	2.74	2.73	1	4	9.50	128	147	154	147	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	2.64x	3.03x	3.04x	3.03x
+70		Monte Carlo Bayonet		Kinetic	504.13	907.43	2495.42	2495.41	140	1	504.13	27183	48929	140362	134553	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	4.00x	7.20x	19.80x	19.80x
+71		Bayonet + syntho + banner		Kinetic	1814.88	3266.76	8983.53	8983.46	140	1	1814.88	97858.8	176144.4	505303.2	484390.8	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	14.40x	25.92x	71.28x	71.28x
+73	OLD	WG+12P+Bulwark SB impact		Void	24137	24137	24137	24137	110	1	24137.12	759973.8	759973.8	759973.8	759973.8	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	28.34401078	28.34401078	28.34401078	28.34401078	243.7500x	243.7500x	243.7500x	243.7500x
+74	OLD	WG+12P+Bulwark SB explosion		Void	8777	8777	8777	8777	40	1	8777.15	276354.6	276354.6	276354.6	276354.6	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	28.34401078	28.34401078	28.34401078	28.34401078	243.7505x	243.7505x	243.7505x	243.7505x
+75	OLD	WG+12P+Bulwark SB total		Void	32914	32914	32914	32914	40	1	32914.27	1036328.5	1036328.5	1036328.5	1036328.5	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	Prophecy - Phalanx and Cube	28.34401078	28.34401078	28.34401078	28.34401078	914.0630x	914.0630x	914.0630x	914.0630x
+76		FB + syntho + banner + 12P		Strand	4301	4301	4301	4301	105	1	4301.08	231915.6	231915.6	241928.4	231915.6	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	45.50x	45.50x	45.50x	45.50x
+77		Bayonet + syntho + banner		Kinetic	1815	3267	8984	8983	140	1	1814.88	97858.8	176144.4	505303.2	484390.8	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	14.40x	25.92x	71.28x	71.28x
+78		Throwing Hammer + syntho RFx3		Solar	1476	2149	2149	1303	120	1	1476.40	94498.338	137578.815	137578.815	83381.826	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	57.61946438	57.61946438	57.61946438	57.61946438	13.67x	19.90x	19.90x	12.06x
+79	Grelees	Grapple Melee + syntho + 12P total		Strand	6160	6160	6160	6160	75	2	12320.37	394289.28	394289.28	394289.28	394289.28	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	57.61946438	57.61946438	57.61946438	57.61946438	91.24x	91.24x	91.24x	91.24x
+80	55.55723008
+81	Grelees	Grapple Melee		Strand	388.90	388.90	388.90	388.90	61	2	777.80	24892	24892	24892	24892	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	57.61946438	57.61946438	57.61946438	57.61946438	7.08x	7.08x	7.08x	7.08x
+82	Grelees	Grapple Melee + syntho + 12P total		Strand	6160.19	6160.19	6160.19	6160.19	75	2	12320.37	394289.28	394289.28	394289.28	394289.28	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	Under Siege - 1620	57.61946438	57.61946438	57.61946438	57.61946438	91.24x	91.24x	91.24x	91.24x
+83																															48.250000x
+84	Grenades	Magnetic		Void	425.37	425.41	425.37	371.34	75	2	850.74	7385	7636	7385	6447	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	6.30x	6.30x	6.30x	5.50x
+85		Voidwall initial		Void	155.29	103.57	128.91	154.42	60	1	155.29	2696	1859	2238	2681	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.88x	1.92x	2.39x	2.86x			11279	51.26818182
+86		Voidwall subsequent		Void	90.60	108.75	108.75	108.75	35	18	1630.87	1573	1952	1888	1888	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.88x	3.45x	3.45x	3.45x				1.062552991
+87	1944.503053	Suppressor		Void	685.38	742.68	776.44	776.44	150	1	685.38	11899	13331	13480	13480	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.08x	5.50x	5.75x	5.75x
+88	1361.15	Scatter 1st explosion		Void	103.56	99.05	103.56	103.56	20	8	828.51	1798	1778	1798	1798	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.75x	5.50x	5.75x	5.75x			22557
+89	0.7	Scatter 2nd explosion		Void	62.15	59.44	62.15	62.15	16	8	497.20	1079	1067	1079	1079	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	4.31x	4.13x	4.31x	4.31x
+90		Scatter impact		Void	5.18	6.07	5.18	5.18	1	8	41.47	90	109	90	90	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.76x	6.75x	5.76x	5.76x
+91		Vortex initial		Void	129.43	129.42	129.43	129.43	25	1	129.43	2247	2323	2247	2247	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.75x	5.75x	5.75x	5.75x
+92		Vortex subsequent		Void	51.78	62.12	62.15	62.15	20	13	673.17	899	1115	1079	1079	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.88x	3.45x	3.45x	3.45x
+93		Axion explosion		Void	517.65	495.16	517.65	517.65	100	1	517.65	8987	8888	8987	8987	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.75x	5.50x	5.75x	5.75x
+94		Axion impact		Void	5.24	5.01	5.24	5.24	2	1	5.24	91	90	91	91	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.91x	2.78x	2.91x	2.91x
+95		Spike		Void	72.52	72.48	72.52	72.52	28	16	1160.28	1259	1301	1259	1259	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.88x	2.88x	2.88x	2.88x
+96		Handheld Supernova		Void	234.08	234.10	234.08	234.08	50	5	1170.42	4064.00	4202	4064.00	4064.00	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.20x	5.20x	5.20x	5.20x
+97		Thermite		Solar	204.48	204.48	204.48	204.48	79	3	613.43	10153	10153	10153	10153	Proving Grounds - 1250	Proving Grounds - 1250	Proving Grounds - 1250	Proving Grounds - 1250	44.69875002	44.69875002	44.69875002	44.69875002	2.88x	2.88x	2.88x	2.88x
+98		Thermite 2nd hit?		Solar	155.46	195.16	190.88	0.00	79	3	466.38	2699	3503	3314		Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.19x	2.74x	2.68x	0.00x
+99		Firebolt		Solar	336.11	321.49	336.11	336.11	65	1	336.11	16689	15963	16689	16689	Proving Grounds - 1250	Proving Grounds - 1250	Proving Grounds - 1250	Proving Grounds - 1250	44.69875002	44.69875002	44.69875002	44.69875002	5.74x	5.49x	5.74x	5.74x
+100		Fusion		Solar	737.33	737.33	737.33	675.30	130	1	737.33	12801	13235	12801	11724	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	6.30x	6.30x	6.30x	5.77x
+101		Fusion 2nd explosion (touch of flame)		Solar	850.74	850.76	850.74	779.18	50	1	850.74	14770	15271	14770	13528	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	18.90x	18.90x	18.90x	17.31x
+102		Incendiary Explosion		Solar	814.17	814.16	814.17	726.96	130	1	814.17	14135	14614	14135	12621	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	6.96x	6.96x	6.96x	6.21x
+103		Incendiary Perfect Explosion		Solar	1075.18	1075.17	1075.18	960.01	170	1	1075.18	18666.4	19299.0	18666.4	16667.1	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	7.03x	7.03x	7.03x	6.27x
+104		Swarm 1st explosion		Solar	47.58	47.58	47.58	47.58	8	9	428.19	826	854	826	826	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	6.61x	6.61x	6.61x	6.61x
+105		Swarm 2nd explosion		Solar	44.58	44.57	44.58	44.58	8	9	401.24	774	800	774	774	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	6.19x	6.19x	6.19x	6.19x
+106		Tripmine		Solar	724.72	693.21	724.72	724.72	140	1	724.72	12582	12443	12582	12582	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.75x	5.50x	5.75x	5.75x
+107		Solar initial		Solar	51.78	51.81	51.78	51.78	20	1	51.78	899	930	899	899	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.88x	2.88x	2.88x	2.88x
+108		Solar DoT		Solar	64.74	64.74	64.74	64.74	22.48	13	841.64	1124	1162	1124	1124	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	3.20x	3.20x	3.20x	3.20x
+109		Solar Lava (touch of flame)		Solar	18.14	18.16	18.14	18.14	6.30	20	362.88	315	326	315	315	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	3.20x	3.20x	3.20x	3.20x
+110		Pulse initial		Arc	129.43	129.42	129.43	129.43	50	1	129.43	2247	2323	2247	2247	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.88x	2.88x	2.88x	2.88x
+111		Pulse subsequent		Arc	207.07	207.08	207.07	207.07	80	7	1449.49	3595	3717	3595	3595	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.88x	2.88x	2.88x	2.88x
+112		Thunder pulse 1		Arc	211.65	211.65	211.65	211.65		1	211.65	11412	11412	11412	11412	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+113				Arc	225.33	225.33	225.33	225.33		1	225.33	12150	12150	12150	12150	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+114		Thunder pulse 3		Arc	245.34	245.34	245.34	245.34		1	245.34	13229	13229	13229	13229	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+115		Thunder pulse 4		Arc	256.73	256.73	256.73	256.73		1	256.73	13843	13843	13843	13843	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+116		Thunder pulse 5-7?		Arc	258.83	258.83	258.83	258.83		3	776.48	13956	13956	13956	13956	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+117		Flashbang		Arc	621.15	594.16	403.89	621.15	120	1	621.15	10784	10665	7012	10784	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.75x	5.50x	3.74x	5.75x
+118		Lightning		Arc	310.59	310.59	310.59	310.59	120	5	1552.94	16747	16747	16747	16747	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	2.875x	2.88x	2.88x	2.88x	0
+119		Storm intitial bolt		Arc	362.35	346.61	362.35	362.35	70	1	362.35	19538	18689.5	19538	19538	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.75x	5.50x	5.75x	5.75x
+120		Storm subsequent bolt		Arc	258.83	247.59	258.83	258.83	50	2	517.65	13956	13349.9	13956	13956	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.75x	5.50x	5.75x	5.75x	1.045401862
+121		Thunder storm subsequent		Arc	155.30	155.30	155.30	155.30	30	12	1863.58	8373.75	8373.75	8373.75	8373.75	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.75x	5.75x	5.75x	5.75x	1.045401862
+122		Skip impact		Arc	20.74	19.83	20.74	20.74	4	8	165.89	360	356	360	360	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.76x	5.51x	5.76x	5.76x
+123		Skip explosion		Arc	77.70	74.32	77.70	77.70	15	4	310.81	1349	1334	1349	1349	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.75x	5.50x	5.75x	5.75x
+124		Flux		Arc	1292.82	1236.62	1292.82	1292.82	250	1	1292.82	22445	22197	22445	22445	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	5.74x	5.49x	5.74x	5.74x
+125		Arcbolt		Arc	442.93	442.93	442.93	442.93	85	1	442.93	23883	23883	23883	23883	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	5.79x	5.79x	5.79x	5.79x
+126											476.69	713.2745685	529.5174317	0.742375314
+127		Volatile explosion		Void	93.69	144.07	144.06	144.06	160	1	93.69	5052	2586	2501	2501	Investigation	Kalli Ogre - 580	Kalli - 560	Kalli - 560	48.54004885	16.15873512	15.62894052	15.62894052	0.65x	1.00x	1.00x	1.00x
+128		Tangle explosion		Strand	345.70	378.10	378.10	378.10	100	1	345.70	18640	20387	20387	20387	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	3.84x	4.20x	4.20x	4.20x
+129		Threaded blast		Strand	201.74	0.00	0.00	0.00		1	201.74	10878				Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+130		Unravel seekers		Strand	38.78	38.78	25.86	25.86	4	3	116.33	2482	2482	1655	1655	Under Siege	Under Siege	Under Siege	Under Siege	57.61946438	57.61946438	57.61946438	57.61946438	10.77x	10.77x	7.18x	7.18x
+131		Threadling		Strand	234.07	234.07	304.28	304.28	40	1	234.07	14982	14982	19476	19476	Under Siege	Under Siege	Under Siege	Under Siege	57.61946438	57.61946438	57.61946438	57.61946438	6.50x	6.50x	8.45x	8.45x
+132		Threadling - Evolution		Strand	311.30	311.30	404.69	404.69	44	1	311.30	19925	19925	21821	21821	Under Siege	Under Siege	Under Siege	Under Siege	57.61946438	57.61946438	48.54004885	48.54004885	7.86x	7.86x	10.22x	10.22x
+133		Mindspun Invocation		Strand	180.05	191.70	72.02	72.02	40	1	180.05	11524	12270	4610	4610	Under Siege	Under Siege	Under Siege	Under Siege	57.61946438	57.61946438	57.61946438	57.61946438	5.00x	5.32x	2.00x	2.00x
+134		Ignition		Solar	675.59	675.59	675.59	675.59	120	1	675.59	36428	36428	36428	36428	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	6.25x	6.25x	6.25x	6.25x
+135		Solar Fulmination		Solar	162.05	162.05	162.05	162.05	60	1	162.05	8738	8738	8738	8738	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	3.00x	3.00x	3.00x	3.00x
+136		Jolt		Arc	99.10	99	119	152	50	9	891.90	6343	6343	7611	9704	Under Siege	Under Siege	Under Siege	Under Siege	57.61946438	57.61946438	57.61946438	57.61946438	2.20x	2.20x	2.64x	3.37x
+137		Bolt Charge Bolt		Arc	405.10	405	405	405	36	1	405.10	450	450	450	450	Under Siege	Under Siege	Under Siege	Under Siege	1	1	1	1	12.50x	12.50x	12.50x	12.50x
+138		Bolt Charge Splash		Arc	270.07	270	270	270	30	1	270.07	300	300	300	300	Under Siege	Under Siege	Under Siege	Under Siege	1	1	1	1	10.00x	10.00x	10.00x	10.00x
+139	39094	Bolt Charge Total		Arc	675.16	675	675	675	66	1	675.16	750	750	750	750	Under Siege	Under Siege	Under Siege	Under Siege	1	1	1	1	11.36x	11.36x	11.36x	11.36x
+140	96.50494007	Arc buddy		Arc	31.73	31.73	31.73	31.73	11	1	31.73	1711	1711	1711	1711	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	3.20x	3.20x	3.20x	3.20x				#BEZUG!
+141		Ruinous orb light attack		Void	270.08	270.09	270.08	270.08		1	270.08	4689	4848	4689	4689	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+142		Ruinous orb block		Void	22.52	27.02	27.01	27.01	10	1	22.52	391	485	469	469	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.50x	3.00x	3.00x	3.00x			1.876226099
+143		Ruinous orb slam		Void	1350.36	1350.38	1350.36	1350.36	600	1	1350.36	23444	24239	23444	23444	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.50x	2.50x	2.50x	2.50x			0.5329848043
+145		child of the old gods		Void	#DIV/0!	#DIV/0!	#DIV/0!	38.58	10.01	1	#DIV/0!				1332				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	4.28x
+146	7440	pulse headstone		Stasis	#DIV/0!	#BEZUG!	#DIV/0!	135.03		1	#DIV/0!		#BEZUG!		4662				In The Deep - 860				31.0796x	#DIV/0!	#BEZUG!	#DIV/0!	#DIV/0!
+147	7702	MG headstone (same but 5% heavy bonus)		Stasis	#DIV/0!	#DIV/0!	#DIV/0!	141.81		1	#DIV/0!		9593		4896				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+148	1.035215054	frozen enemy shatter		Stasis	360.19	360.19	360.19	360.19		1	360.19	17805	17805	17805	17805	Investigation			Investigation	44.500000x	44.500000x	44.500000x	44.500000x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+149		chromatic fire			#DIV/0!	#DIV/0!	#DIV/0!	187.26	208	1	#DIV/0!				6465				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	1.00x
+150		vesper of radius		Arc	#DIV/0!	#DIV/0!	#DIV/0!	270.07		1	#DIV/0!				9324				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+151		severance enclosure melee minor			478.93	478.93	478.93	478.93		1	478.93	24336	24336	24336	24336	In The Deep - 857	In The Deep - 858	In The Deep - 859	In The Deep - 860	45.7431x	45.7431x	45.7431x	45.7431x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+152		severance enclosure finisher minor			597.77	597.77	597.77	597.77	1.248137738	1	597.77	30374.68	30374.68	30374.68	30374.68	In The Deep - 857	In The Deep - 858	In The Deep - 859	In The Deep - 860	45.7431x	45.7431x	45.7431x	45.7431x	532.02x	532.02x	532.02x	532.02x
+153		severance enclosure melee (mini/)boss			716.60	716.60	716.60	716.60	1.496261506	1	716.60	36413.02	36413.02	36413.02	36413.02	Investigation	Investigation	Investigation	Investigation	45.7431x	45.7431x	45.7431x	45.7431x	532.02x	532.02x	532.02x	532.02x
+154		severance enclosure finisher miniboss			0.00	0.00	0.00	0.00	0	1	0.00					Investigation	Investigation	Investigation	Investigation	45.7431x	45.7431x	45.7431x	45.7431x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+155		spirit of severance			360.10	360.10	360.10	360.10	0.6024096386	1	360.10	18298	18298	18298	18298	Investigation	Investigation	Investigation	Investigation	45.7431x	45.7431x	45.7431x	45.7431x	664.03x	664.03x	664.03x	664.03x
+156		severance chain explosion			241.27	241.27	241.27	241.27	0.3366834171	1	241.27	12259.66	12259.66	12259.66	12259.66	Investigation	Investigation	Investigation	Investigation	45.7431x	45.7431x	45.7431x	45.7431x	796.03x	796.03x	796.03x	796.03x
+157		echo of expulsion		Void	#DIV/0!	#DIV/0!	#DIV/0!	144.04		1	#DIV/0!	1			4973				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+158		barricade ticks			#DIV/0!	#DIV/0!	#DIV/0!	4.06		1	#DIV/0!				140				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+159		also barricade ticks?			#DIV/0!	#DIV/0!	#DIV/0!	3.42		1	#DIV/0!				118				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+160		sunspot burn		Solar	#DIV/0!	#DIV/0!	#DIV/0!	54.02		1	#DIV/0!				1865				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+161		khepri fire		Solar	360.09	#DIV/0!	432.13	432.13	100	1	360.09	17800		21361	21361				In The Deep - 860	44.500000x		44.500000x	44.500000x	4.00x	#DIV/0!	4.80x	4.80x
+162		feedback fence x0		Arc	#DIV/0!	#DIV/0!	#DIV/0!	36.03		1	#DIV/0!				1244				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+163		feefdback fence x1		Arc	#DIV/0!	#DIV/0!	#DIV/0!	72.04		1	#DIV/0!				2487				In The Deep - 860				31.0796x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+164		Dunemarchers chain		Arc	198.05	198.05	198.05	198.05		1	198.05	220	220	220	220	Base	Base	Base	Base	1	1	1	1.0000x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+165		Forerunner Rock		Kinetic	0.00	1165.78	1165.78	1165.78		1	0.00		1295	1295	1295	Base	Base	Base	Base	1	1	1	1.0000x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+166		Bombardier solar		Solar	257.47	396.10	396.11	396.11	120	1	257.47	4470	7110	6877	6877	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	2.38x	3.67x	3.67x	3.67x
+167		Point Contact Brace lightning		Arc	180.19	180.19	180.19	180.19		1	180.19	9716	9716	9716	9716	Investigation	Investigation	Investigation	Investigation	48.54004885	48.54004885	48.54004885	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+168		Phoenix dive		Solar	90.03	90.03	90.03	90.03		1	90.03	1563	1616	1563	1563	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+169		scythe light attack impact		Solar	0.00	#DIV/0!	181.36	181.36		1	0.00			8008	8008	sever		sever	sever	39.75		39.75	39.75	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+170		scythe light attack explosion		Solar	0.00	#DIV/0!	135.04	135.04		1	0.00			5963	5963	sever		sever	sever	39.75		39.75	39.75	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+171		scythe heavy attack		Solar	405.11	#DIV/0!	0.00	0.00		3	1215.33	17888				sever		sever	sever	39.75		39.75	39.75	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+172		cursed thrall explosion		Void	#DIV/0!	#DIV/0!	#DIV/0!	225.06		1	#DIV/0!				10563				golgy cellar				42.251088x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+173		synaptic spear throw		arc	607.66	607.66	607.66	607.66		1	607.66	27507	27507	27507	27507	playlist strike	playlist strike	playlist strike	playlist strike	40.75x	40.75x	40.75x	40.75x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+174		synaptic spear slam		arc	819.21	819.21	819.21	819.21		1	819.21	37083	37083	37083	37083	playlist strike	playlist strike	playlist strike	playlist strike	40.75x	40.75x	40.75x	40.75x	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+175		whirling maelstrom ticks		Strand	31.53	31.53	28.84	28.84		120	3783.36	1700	1700	1622	1555	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+176		Triton Vice Explosion			204.80	0.00	0.00	315.09		1	204.80	11043			16990	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+177		Edge of Concurrence Seeker		Arc	1296.32	0.00	0.00	1944.48		1	1296.32	69898			104847	Investigation	Investigation	Communion	Investigation	48.54004885	48.54004885	50.635287x	48.54004885	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+178													1.005882353
+179								0.65
+180								432.11	1.5000	1.538531196
+181				0	0.000	0.00						2021	2176	2332	2487	1.599356913
+182				0	0.000	0.00						1.188823529	1.399356913	1.499678457
+183				0
+184		Necrotic grips total		Kinetic	1224.94	1224.94	1224.94	1224.94		1	1224.93852	763365	763365	763365	763365	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+185		Necrotic grips 1		Kinetic	29.09	29.09	29.09	29.09		1	29.09082	18129	18129	18129	18129	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+186		Necrotic grips 2		Kinetic	32.28	32.28	32.28	32.28		1	32.28408	20119	20119	20119	20119	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+187		Necrotic grips 3		Kinetic	35.47	35.47	35.47	35.47		1	35.47253	22106	22106	22106	22106	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+188		Necrotic grips 4		Kinetic	38.66	38.66	38.66	38.66		1	38.65778	24091	24091	24091	24091	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+189		Necrotic grips 5		Kinetic	41.85	41.85	41.85	41.85		1	41.84783	26079	26079	26079	26079	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+190		Necrotic grips 6		Kinetic	45.07	45.07	45.07	45.07		1	45.06838	28086	28086	28086	28086	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+191		Necrotic grips 7		Kinetic	48.29	48.29	48.29	48.29		1	48.29213	30095	30095	30095	30095	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+192		Necrotic grips 8		Kinetic	51.47	51.47	51.47	51.47		1	51.47096	32076	32076	32076	32076	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+193		Necrotic grips 9		Kinetic	54.67	54.67	54.67	54.67		1	54.66904	34069	34069	34069	34069	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+194		Necrotic grips 10		Kinetic	57.87	57.87	57.87	57.87		1	57.87193	36065	36065	36065	36065	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+195		Necrotic grips 11		Kinetic	61.07	61.07	61.07	61.07		1	61.06520	38055	38055	38055	38055	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+196		Necrotic grips 12		Kinetic	64.26	64.26	64.26	64.26		1	64.26328	40048	40048	40048	40048	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+197		Necrotic grips 13		Kinetic	67.47	67.47	67.47	67.47		1	67.46617	42044	42044	42044	42044	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+198		Necrotic grips 14		Kinetic	70.69	70.69	70.69	70.69		1	70.68672	44051	44051	44051	44051	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+199		Necrotic grips 15		Kinetic	79.50	79.50	79.50	79.50		1	79.49789	49542	49542	49542	49542	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+200		Necrotic grips 16		Kinetic	92.46	92.46	92.46	92.46		1	92.46351	57622	57622	57622	57622	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+201		Necrotic grips 17		Kinetic	105.31	105.31	105.31	105.31		1	105.31039	65628	65628	65628	65628	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+202		Necrotic grips 18		Kinetic	118.28	118.28	118.28	118.28		1	118.28083	73711	73711	73711	73711	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+203		Necrotic grips 19		Kinetic	131.16	131.16	131.16	131.16		1	131.16461	81740	81740	81740	81740	Savathun	Savathun	Savathun	Savathun	561.004058	561.004058	561.004058	561.004058	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+209		Blade barrage impact		Solar	70.73	70.70	70.73	70.73	48.5	1	70.73	1228	1269	1228	1228	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	1.62x	1.62x	1.62x	1.62x
+210		Blade barrage explosion		Solar	365.76	365.74	365.76	365.76	250	1	365.76	6350	6565	6350	6350	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	1.63x	1.63x	1.63x	1.63x
+211		Well of Radiance Sword		Solar	135.07	135.04	135.07	135.07		1	135.07	2345	2424	2345	2345	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	15.62894052	16.15873512	15.62894052	15.62894052	#DIV/0!	#DIV/0!	#DIV/0!	#DIV/0!
+212		Thundercrash		Arc	3510.86	3510.86	3510.86	3510.86	3900	1	3510.86	64052.25	64052.25	64052.25	64052.25	Kalli - 560	Kalli Ogre - 580	Kalli - 560	Kalli - 560	16.42362059	16.42362059	16.42362059	16.42362059	1.00x	1.00x	1.00x	1.00x
+213	11585.84x
+214												2410
+215	Custom Activity?	Choose Activity		Gambit	Parameters	Difficulty	Weapon ePL delta cap	Gear ePL delta cap	Gear ePL delta floor			7230
+216		Activity type		Normal	Gambit	#BEZUG!	#BEZUG!	#BEZUG!	#BEZUG!
+217		Recommended PL		1600	10	#BEZUG!	Recommended PL multiplier				148200
+218	Max delta?	Gear ePL		1500	#BEZUG!	#BEZUG!	Gear ePL delta multiplier
+219		Weapon ePL		1500	#BEZUG!	#BEZUG!	Weapon ePL delta multiplier					2	1.15	1.3225	1.265	1.430	1.495
+220		Total Damage Multiplier								11059.18722	148200	296400	170430	195994.5	187473	211926	221559	443118	332338.5
+221											469901.25					671959	221560
+222								4851					222300	255645	1.265	469901.3986	3900.017603
+223								8894	1.833436405	1.299962691	1.999931599			288990
+224									220.0123686					3900				42.251088				ToM damage against minor thrall at Warpriest
+225																						Damage	PL adjusted	pve baseline (without minor combatant multi, exotic, kinetic bonuses)
+226																251.457036	707.2480595	29882			Base crit	6336	#BEZUG!	#BEZUG!
+227																109.8791913	321.5065136	13584	2.199793875		Final crit	13939	#BEZUG!	#BEZUG!
+228																166	127.6923077				Final shot multi	2.20x
+229																0.6619228389	0.8604996906
+231												63	223	3.54		2750
+232												63	149			#DIV/0!
+234								164,229
+235								54,786
+236								2.997645384		34.750000x
+237										13498	388.4316547
+250																				2331	6760	2.9000429

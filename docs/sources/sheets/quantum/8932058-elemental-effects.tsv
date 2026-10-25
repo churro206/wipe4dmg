@@ -1,0 +1,14 @@
+2	Want to contribute? Have questions, comments, or concerns? See Home page for contact information.
+3	Element	Effect		Damage
+5	Kinetic	Melee		199	basic, unpowered melee
+6	Solar	Ignition		710
+7	Arc	Bolt Charge		677	lightning strike
+8	Arc	Jolt		100
+9	Void	Volatile		95
+10	Stasis	Crystal Shatter		158
+11	Stasis	Crystal Shatter		23	Additional damage provided by Whisper of Fissures
+12	Stasis	Forced Shatter		361	Shooting at the boss to cause a shatter
+13	Stasis	Natural Shatter		396	Letting the boss shatter on its own
+14	Strand	Threadlings		234
+15	Strand	Unravel		39	damage per unravel projectile
+16	Solar	Scorch		22	approximate DPS (not damage)

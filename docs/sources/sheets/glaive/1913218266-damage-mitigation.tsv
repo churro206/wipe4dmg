@@ -1,0 +1,90 @@
+2			Amount	Source	Notes
+5	DAMAGE RESIST	Reducing all incoming damage
+6	Stacking DR is ALWAYS Multiplicative, not Additive (eg: 15% + 25% = 27.27%, NOT 40%)
+7	Resilience Stat DR	T1: 0%	T2: 3%	T3: 5%	T4: 9%	T5: 14%	T6: 17%	T7: 20%	T8: 24%	T9: 27%	T10: 30%
+9	ARMOR
+10		Dreambane	5/10/15/20/25%	Combat Style Mod	Per stack, Vs. damage from a Nightmare Boss
+11		Emergency Reinforcement	10%	Chest Mod	With Armor Charge
+12		Wings of Sacred Dawn	15%	Exotic Warlock Chest	While Airborne AND Aiming Down Sights
+13		Arc Resist	15% [25%] {25%}	Chest Mod [x2]{x3}	Vs. Arc damage
+14		Concussive Dampener	15% [25%] {35%}	Chest Mod [x2]{x3}	Vs. Area-of-Effect damage
+15		Melee Resist	15% [25%] {35%}	Chest Mod [x2]{x3}	Vs. damage less than 4m away
+16		Sniper Resist	15% [25%] {35%}	Chest Mod [x2]{x3}	Vs. damage more than 29m away
+17		Solar Resist	15% [25%] {25%}	Chest Mod [x2]{x3}	Vs. Solar damage
+18		Stasis Resist	15% [25%] {25%}	Chest Mod [x2]{x3}	Vs. Stasis damage
+19		Void Resist	15% [25%] {35%}	Chest Mod [x2]{x3}	Vs. Void damage
+20		Contraverse Hold	20%	Exotic Warlock Arms	While Charging a Void Grenade with Chaos Accelerant Aspect
+21		Taken Barrier	20%	LW Raid Mod	10 sec duration after being damaged by Taken enemy, Vs. damage from Taken enemies
+22		Icefall Mantle	22.5-36%	Exotic Titan Chest	[Frost Armor] 9-13 sec duration upon Class Ability use
+23		The Stag	25%	Exotic Warlock Helmet	While inside a Rift
+24		Gifted Conviction	25/40/50%	Exotic Hunter Chest	Per stacks up to 3, from Jolt applications
+25		ACD/0 Feedback Fence	33/55/70%	Exotic Titan Arms	Per Stacks up to 3, from Melee hits; Vs. Melee damage only
+26		Cuirass of the Falling Star	50%	Exotic Titan Helmet	??? sec duration after Thundercrash use
+27		Omnioculus	50%	Exotic Hunter Arms	While Invisible; also protects allies you make invisible with Smoke
+28		Passive Aggressive Guard	50%	Seasonal Artifact Mod	While holding a Glaive
+29		Stronghold	90/95%	Exotic Titan Arms	While Guarding with Non-Aggressive/Aggressive Sword
+31		Stoic When Panicked	???	CE Raid Mod	While on/near a plate/totem or carrying a Relic Sword
+33	WEAPONS
+34		Land Tank	5/10/15%	Origin Trait	5 sec duration upon Weapon kills, refreshable, stacks up to x3, also adds +10 Resilience per stack
+35		Manticore	40%	Exotic SMG	While Airborne, after kills with Manticore
+36		Ergo Sum [Arc Conductor]	50%	Exotic Sword	Vs. Arc damage only, 6 sec duration after using Heavy Attack
+37		Riskrunner	50%	Exotic SMG	Vs. Arc damage only upon taking Arc damage
+38		Sword Guard	50%	Sword Guard	Base DR on Lightweight/[Caster|Adaptive|Vortex]/Aggressive Frames. Bonus 0.3% per Guard Resistance Stat (eg: +30 DR at 100 Guard Resiliance)
+39		Tarrabah	50%	Exotic SMG	Vs. Solar damage only, when Ravenous Beast is active
+40		Heir Apparent	75%	Exotic LMG	[Arc Shield] upon spinning up. Also provides Precision dmg Immunity
+41		Ruinous Effigy	80%	Exotic Trace Rifle	While Guarding with Transmutation Sphere
+42		Glaive Shield	97.50%	Glaive Block	Front Only, no back protection
+44	SUBCLASSES
+45		Frost Armor	6.25-50%	Stasis Buff	6.25% Per stack up to 5 (31.25%) for 9 sec, up to 8 w/Whisper of Rimes (50%) for 13 sec
+46		Juggernaut	10%	Arc Titan Aspect	While Sprinting with full Class Ability energy
+47		Well of Radiance	10% [20%]	Solar Warlock Super	Vs. Boss [Non-Boss] enemies while inside Well
+48		Amplified	15%	Arc Buff
+49		Facet of Protection	15%	Prismatic Fragment	While Surrounded by at least 3 enemies; lingers for 2 sec
+50		Golden Gun - Deadshot	15%	Solar Hunter Super	During Super
+51		Transcendence	20%	Prismatic Buff
+52		Spark of Resistance	25%	Arc Fragment	While Surrounded by at least 3 enemies; lingers for 2 sec
+53		Juggernaut	33%	Arc Titan Aspect	While Amplified, Sprinting and with full Class Ability Energy; Overshield only blocks front damage
+54		Woven Mail	45%	Strand Buff	10 sec duration; Precision and Melee hits ignore the DR
+55		Winter's Shroud	50%	Stasis Hunter Aspect	3 sec duration, after Dodging
+56		Ward of Dawn	60%	Void Titan Super	While inside Bubble, stacks with [Void Overshield]
+57		Void Overshield	70%	Void Buff
+58		Song of Flame	90%	Solar Warlock Super	During Super. Allies get 30% DR
+59		Weavewalk	90%	Strand Warlock Aspect	While Weavewalking
+60		Flow State	97%	Arc Hunter Aspect	While Amplifed and during Dodge animation only
+62	DEBUFF FOE DMG	Reducing Enemy Outgoing Damage
+63		Psychohack	-10%	Origin Trait	5 sec duration after sustained fire, inflicts Exhaust
+64		Overload	-25%	Artifact Mods	5 sec duration, works on all enemies, not just Champions, inflicts Exhaust
+65		Sever	-40%	Strand Debuff	10 sec duration
+66		Renewal Grasps	-50%	Exotic Hunter Arms	While enemy is inside Duskfield Slowing Field
+67		Disorienting Grenades	-100%	Grenade Launchers	6 sec duration; Enemy will not fire; Does not work on Champions/Mini-Bosses/Bosses
+68		Invisibility	-100%	Void Buff	Enemy will disengage, but can still fire on last known position
+69		Suppression	-100%	Void Debuff	Enemy will not fire or use Abilities; Does not work on Champions//Bosses/Vehicles
+70		Suspend	-100%	Strand Debuff	Enemy will not fire or move. Weak point exposed
+71		Weavewalk	-100%	Strand Warlock Aspect	Up to 12 sec duration, enemy will disengage, but can still fire on last known position
+72		Freeze	-100%	Stasis Debuff	6 sec duration. Enemy will not fire or move. Stuns Unstoppable Champions. Bosses do not freeze and auto-shatter
+73		Arc Blind	-100%	Arc Debuff	Enemy will not fire; Stuns Unstoppable Champions; Does not Blind Champions/Mini-Bosses/Bosses/Vehicles
+75	OVERSHIELDS	Extra Effective Health. Overshields do not stack. [Void Overshield] also provides 50% DR
+76		Healing Rift	15 HP	Warlock Class Ability	While in Rift at Full Health, Regens slowly
+77		Shield Throw	15 HP	Void Titan Charged Melee	[Void Overshield] per hit; can richochet up to 3 times for more hits; 10 sec duration
+78		Ex Diris	22.5 HP	Exotic Breech GL	[Void Overshield] upon contact with Loyal Void Moth; 10 sec duration
+79		Mothkeeper's Wraps	22.5 HP	Exotic Hunter Arms	[Void Overshield] upon contact with Loyal Void Moth; 10 sec duration
+80		Turnabout	30 HP	Weapon Perk	10 [11.4 Enhanced] sec duration, upon breaking an enemy elemental shield
+81		Gyrfalcon's Hauberk	40 HP	Exotic Hunter Chest	[Void Overshield] when using Class Ability from Reserve Overshield (from using Finisher while Invisible); 10 sec duration
+82		Edge of Action	45 HP	Exotic Glaive	20 sec duration mini-bubble
+83		Helm of Saint-14	45 HP	Exotic Titan Helmet	10 sec duration upon entering Ward of Dawn/Mini-Bubble
+84		No Backup Plans	45 HP	Exotic Titan Arms	[Void Overshield] upon Shotgun kill; consumes Charged Melee Ability. Void Subclass only
+85		Bulwark Finisher	45 HP	Class Item Mod	[Void Overshield] with variable duration upon Finisher with 3+ Armor Charge
+86		Repulsor Brace	45 HP	Weapon Perk	[Void Overshield] upon killing a Void Debuffed enemy; 8 [10 Enhanced] sec duration
+87		Shoulder Bash [Void]	45 HP	Void Titan Charged Melee	[Void Overshield] upon kill; 10 sec duration
+88		Bastion	45 HP	Void Titan Aspect	[Void Overshield] upon Barricade cast; 10 sec duration
+89		Echo of Vigilance	45 HP	Void Fragment	[Void Overshield] upon kill while at Critical Health; 10 sec duration
+90		Vexcalibur	45 HP	Exotic Glaive	[Void Overshield] upon blocking (variable amount based on % of Shield charge). Refreshes with melee kills (can also refresh Void Overshields from other sources)
+91		Ward of Dawn	45 HP	Void Titan Super	[Void Overshield] While inside Bubble
+92		Juggernaut	50 HP	Arc Titan Aspect	While Sprinting with full Class Ability energy
+93		Eternal Warrior	75 HP	Exotic Titan Helmet	While Fists of Havoc Super is active
+94		Mk. 44 Stand Asides	75 HP	Exotic Titan Legs	Builds while Sprinting with a Charged Shoulder Charge Melee
+95		Heir Apparent	80 HP	Exotic LMG	[Arc Shield] upon spinning up. Also provides Precision dmg Immunity, 50% Kinetic DR, 15% Elemental DR except Arc.
+96		One-Eyed Mask	95 HP	Exotic Titan Helmet	6 sec duration upon killing highlighted enemy who damaged you
+97		Star-Eater Scales	100 HP	Exotic Hunter Legs	16 sec duration upon casting Super with 4 overcharge stacks
+98		Precious Scars	100 HP	Exotic Titan Helmet	10 sec duration upon reviving an ally or being revived
+99		Proximity Ward	200 HP	Class Item Mod	While performing a Finisher Only

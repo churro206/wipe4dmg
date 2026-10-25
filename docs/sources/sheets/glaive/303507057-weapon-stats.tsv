@@ -1,0 +1,50 @@
+2		Name		Slot/ Frame	Affinity	Traits	RPM	Shot Dmg	Melee Dmg	Shot + Melee Combo (PVP)	Range	Shield Duration	Handling	Reload	Ammo	Best 3rd Column Perks (Best/Good, alphabetical order)	Best 4th Column Perks (Best/Good, alphabetical order)
+5		Albedo Wing		Energy Aggressive		Dawning Surprise, Hakke Breach Armaments	60	147.69	97.035	244.725	75	30	35	30	35	Air Trigger, Grave Robber, Replenishing Aegis, Immovable Object	Close to Melee, Voltshot, Demolitionist, Desperate Measures
+6		Albedo Wing v1 T5 {Holofoil}		Energy Aggressive		Dawning Surprise, Hakke Breach Armaments	60	147.69	97.035	244.725	75	30	35	30	35	Air Trigger, Grave Robber, Replenishing Aegis, Immovable Object	Close to Melee, Voltshot, Demolitionist, Desperate Measures
+7		Backfang		Energy Rapid		Gun and Run	81.82	120.92	97.035	217.955	43	27	71	70	65	Grave Robber, Impulse Amplifier, Immovable Object, Lead from Gold, Replenishing Aegis	Adagio, Close to Melee, Jolting Feedback, Voltshot, Desperate Measures, Surrounded, Swashbuckler, Unstoppable Force
+8		Backfang v1 T5 {Holofoil}		Energy Rapid		Gun and Run	81.82	120.92	97.035	217.955	43	27	71	70	65	Grave Robber, Impulse Amplifier, Immovable Object, Lead from Gold, Replenishing Aegis	Adagio, Close to Melee, Jolting Feedback, Voltshot, Desperate Measures, Surrounded, Swashbuckler, Unstoppable Force
+9		Ecliptic Distaff		Energy Adaptive		Vanguard's Vindication, One Quiet Moment, Gun and Run	66.67	136.61	97.035	233.645	53	47	49	54	41	Immovable Object, Replenishing Aegis	Close to Melee, Destabilizing Rounds
+10		Ecliptic Distaff v1 T5		Energy Adaptive		Vanguard Determination, Noble Deeds	66.67	136.61	97.035	233.645	53	47	49	54	41	Grave Robber, Disruption Break, Immovable Object, Impulse Amplifier, Replenishing Aegis, Repulsor Brace	Chaos Reshaped, Close to Melee, Destabilizing Rounds, Unstoppable Force, Withering Gaze, Desperate Measures
+11		Edge of Action		Energy Adaptive		Remote Shield	66.67	136.61	97.035	233.645	40	80	40	25	16	Destabilizing Rounds	Charge shot creates mini-bubble that lasts for 20 sec and grants Void Overshield to anyone passing through area (even if mini-bubble is destroyed)
+12		Edge of Concurrence		Energy Rapid		Lightning Seeker [575.55 dmg, and Lightning Strike on 4 enemies for 60.9 dmg]	81.82	120.92 [575.55]	97.035	217.955	55	20	55	80	16	Jolting Feedback	Charge shot tracks aggresively and applies AoE Jolt
+13		Edge of Intent		Energy Aggressive		Restorative Turret	60	147.69	97.035	244.725	70	70	30	45	16	Incandescent	Charge shot applies Cure pulse and creates Healing Turret
+14		The Enigma [Craftable]		Energy Adaptive		Psychohack	66.67	136.61	97.035	233.645	55	45	35	40	45	Grave Robber, Impulse Amplifier	Frenzy, Unstoppable Force
+15		Forthcoming Deviance [Craftable] (or Adept)		Energy Rapid		Collective Purpose	81.82	120.92	97.035	217.955	52	28	75	69	65	Disruption Break, Demolitionist, Grave Robber, Impulse Amplifier, Immovable Object, Reconstruction	Chain Reaction, Close to Melee, Destabilizing Rounds, Desperate Measures, Unstoppable Force, Vorpal Weapon
+16		Forthcoming Deviance v1 T5 {Holofoil}		Energy Rapid		Collective Purpose	81.82	120.92	97.035	217.955	52	28	75	69	65	Disruption Break, Demolitionist, Grave Robber, Impulse Amplifier, Immovable Object, Reconstruction	Chain Reaction, Close to Melee, Destabilizing Rounds, Desperate Measures, Unstoppable Force, Vorpal Weapon
+17		Greasy Luck		Energy Rapid		Restoration Ritual	81.82	120.92	97.035	217.955	52	18	61	63	64	Disruption Break, Impulse Amplifier, Lead from Gold	Close to Melee, Incandescent, Unstoppable Force
+18		Greasy Luck v1 T5		Energy Rapid		Restoration Ritual	81.82	120.92	97.035	217.955	52	18	61	63	64	Disruption Break, Impulse Amplifier, Butterfly, Lead from Gold	Box Breathing, Close to Melee, Incandescent, Unstoppable Force
+19		Greasy Luck Nine ver. (Adept)		Energy Rapid		Restoration Ritual, Gravity Well	81.82	120.92	97.035	217.955	52	18	61	63	64	Replenishing Aegis, Heal Clip, Lead From Gold, Reconstruction	Chain Reaction, Close to Melee, Incandescent, Redirection, Unstoppable Force
+20		Judgement of Kelgorath [Craftable]		Energy Aggressive		Ambush, Hakke Breach Armaments	60	147.69	97.035	244.725	71	25	28	35	35	Demolitionist, Immovable Object, Pugilist	Close to Melee, Incandescent, Unstoppable Force, Impulse Amplifier, Surrounded
+21		The Heron {Holofoil}		Energy Aggressive		Nail, Meet Hammer	60	147.69	97.035	244.725	61	39	46	27	52	Disruption Break, Repulsor Brace, Envious Assassin, Lead From Gold, Overflow, Proximity Power, Replenishing Aegis	Close to Melee, Destabilizing Rounds, Redirection, Unstoppable Force
+22		Lubrae's Ruin [Craftable] (or Adept)		Energy Adaptive		Souldrinker	66.67	136.61	97.035	233.645	45	40	45	50	40	Grave Robber, Immovable Object	Swashbuckler, Unstoppable Force, Surrounded, Vorpal Weapon
+23		Lubrae's Ruin v1 T5 {Holofoil}		Energy Adaptive		Souldrinker	66.67	136.61	97.035	233.645	45	40	45	50	40	Grave Robber, Immovable Object	Swashbuckler, Unstoppable Force, Surrounded, Vorpal Weapon
+24		Nezarec's Whisper [Craftable]		Energy Adaptive		Extrovert	66.67	136.61	97.035	233.645	50	42	42	25	50	Demolitionist, Impulse Amplifier, Lead from Gold	Frenzy, Unstoppable Force, Vorpal Weapon
+25		Rake Angle (Adept)		Kinetic Aggressive		Vanguard's Vindication, Stunning Recovery, Hakke Breach Armaments	60	147.69	97.035	244.725	66	42	52	43	31	Impulse Amplifier, Overflow, Replenishing Aegis, Rimestealer, Lead From Gold	ChIll Clip, Close to Melee, Unstoppable Force, Swashbuckler, Surrounded, Vorpal Weapon
+26		Rake Angle v1 T5		Kinetic Aggressive		Problem Solver, Vanguard's Vindication, Hakke Breach Armaments	60	147.69	97.035	244.725	66	42	52	43	31	Impulse Amplifier, Overflow, Replenishing Aegis, Rimestealer, Lead From Gold	ChIll Clip, Close to Melee, Unstoppable Force, Swashbuckler, Surrounded, Vorpal Weapon
+27		Refusal of the Call (Adept)		Kinetic Adaptive		Runneth Over, Willing Vessel	66.67	136.61	97.035	233.645	64	44	60	43	44	Impulse Amplifier, Replenishing Aegis, Slice, Auto-Loading Holster	Close to Melee, Unstoppable Force, Disruption Break, Vorpal Weapon
+28		Refusal of the Call v1 T5		Kinetic Adaptive		Heretical Behavior, Willing Vessel	66.67	136.61	97.035	233.645	64	44	60	43	44	Close to Melee, Chain Reaction, Demolitionist, Discord, Impulse Amplifier, Slice, Grave Robber	Aggregate Charge, Chaos Reshaped, Unstoppable Force, Desperate Measures, Mega Kill Clip
+29		Unexpected Resurgence (Adept)		Energy Adaptive		Alacrity, One Quiet Moment	66.67	136.61	97.035	233.645	60	50	61	55	51	Impulse Amplifier, Replenishing Aegis, Auto-Loading Holster	Close to Melee, Frenzy, Swashbuckler, Unstoppable Force, Voltshot, Surrounded, Vorpal Weapon
+30		Vexcalibur		Energy Rapid		M1R Distribution Matrix [+20% melee dmg w/ Void Overshield]	81.82	33.23 x5	97.035 [116.4]	250.15 [267.07]	80	10	82	82	20	Grave Robber, Immovable Object, Replenishing Aegis	Shot is a 5-bolt "+" spread and deals [+25%] dmg to Vex. Melee disorients non-boss Vex. Shield applies Void Overshield to self and nearby allies, refreshable
+31		Winterbite		Power Aggressive		Big Frigid Glaive, [While loaded, melee gains +50% dmg {+20% vs Bosses} and inflicts +40 Slow stacks].	60	571 [13]	97.035 [145.5]	655 [697.15]	75	39	5	10	20	Shot also fires [Freezing projectiles] across 20m radius	Intrinsic Anti-Overload
+32		Highest (top 33%)
+33		Middle
+34		Lowest
+35				Damage Numbers tested in Firing Range for PvE, PvP (Private Control Match on a self-made Strand clone with Knucklehead Radar on and results divided by 3.25) or versus a Guardian or gotten from d2foundry.gg
+36		Combat notes:		Glaive Melee counts as a Kinetic, Uncharged melee ABILITY (is not a weapon or powered melee). Does Not do more damage to unshielded foes
+37				Adaptive Frames = Good Shield Duration / Stuns Barrier Champs (Best use for Shield Perks: Immovable Object, Replenishing Aegis, Unstoppable Force)
+38				Aggressive Frames = Stronger Shot and High Range, Bad Shield Duration / Stuns Unstoppable Champs (Best for Shot Damage Perks)
+39				Rapid Fire Frames = Faster RPM, Reload and Handling, Bad Shield Duration / Stuns Overload Champs (Best for Melee engagement?)
+40				Glaive Melee does -28.5% vs Champions/Mini-Bosses, -50% vs Bosses/Vehicles
+41				Hold down [Shield] button while spamming Melee for faster 1-2 hits (130 RPM) vs 3 hit combo (110 RPM)
+42				Final hit of the melee 3 hit combo deals [+78.5%] damage and improved flinch in PvE
+43				Hit [Shield] on 3rd hit animation to cancel reset animation for faster 1-2-3-Shield combo (roughly 27% more DPS than Shield-1-2 Combo)
+44				Can shoot while shield is up, but allies behind cannot shoot through shield. Warlock buddies can shoot through shield
+45				Shot cannot deal precision damage
+46				Phalanx Shields, Barrier Champ shields and Detainment Bubbles are immune to Glaive Melee, even with anti-Barrier Radiant/Volatile
+47				Cannot use Charged Melee Ability while Glaive is out, or Abilities that consume Charged Melee, EXCEPT Void Hunter Quickfall
+48				Melee Ability will charge while glaive is out, but passively. It is inconsistent which Perks, Abilties and Mods restore Melee Energy while Glaive is out
+49				Lucent Blades Armor Mod gives additional 20/30/35% Shield energy per Shot hit (stacks Additively with Immovable Object)
+50				Exotic Class Glaives's Special shot requires Six hits (shot and/or melee) to charge (Shots count for 2 stacks)
+51				Titans do not receive a 5% melee bonus with Glaive Melee
+52				Higher Handling stat improves ADS and lowers the time to raise the shield
+53				From Jober7: / Glaive Guard and Shield Delay Explanation / There are two stages to raising the glaive guard: ADSing, and the Shield Delay. / Each have their own seperate animation. ADSing is influenced by your handling stat, the shield delay is a fixed 0.35s. / Once you complete the ADS animation, the glaive checks if it has any energy/more than 1% energy, and if it does it begins the shield delay animation. / Once the shield delay animation is finished, the glaive is "ready to guard" and will then wait until a sufficient threshold of glaive energy is reached before actually guarding

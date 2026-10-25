@@ -1,0 +1,154 @@
+2	LOTS OF THIS IS PRETTY OUTDATED, I'LL TRY AND REDO IT COMPLETELY AFTER THE RAID
+3	Like this spreadsheet? Buy me a Ko-fi!		https://ko-fi.com/mossymax
+4	Destiny 2 Damage Scaling Spreadsheet - by MossyMax									I'm terrible at versioning, there's lots of updates since these numbers
+5	Copy this sheet to change the activity in any of the damage sheets								2/20/2025	Version 1.9.2	Most of the Heresy numbers
+6	Here's my reddit post explaining every mechanic I talk about here								1/30/2025	Version 1.9.1	Revenant Damage numbers rework
+7									7/15/2024	Version 1.9.0	Completed Activity Rework, all weapons updated except swords
+8	If you notice any errors, or want to help, please contact me at:								06/18/2024	Version 1.8.0	Tentative updates for activities, weapon and ability changes still in-progress
+9	Discord - Mossy#4649								04/25/2024	version 1.7.0	Lots of updates, I'm terrible with patch notes
+10	Reddit - u/LegoWitch								12/21/2023	Version 1.6.0	Season of the Wish combatant updates, rocket sidearm, more legendary and exotic perks
+11									6/21/2023	Version 1.5.0	Updated combatant bonuses, Deep activities, and added new tab for perks like dragonfly
+12	Glossary								March 29, 2023	Version 1.4.0	Start of refactoring, added all Lightfall activities and moved calculator to top of each page
+13	For this guide, I use the term Power level (PL) (bungie term), which is the same as the commonly used Light Level (LL) (community term)								September 2, 2022	Version 1.3	Arc 3.0, reorganized activity list
+14	1. Gear power level (PL)	the average power level of all your weapons and armour							July 25, 2022	Version 1.2	Solstice Sandbox updates - Foetracer enemy health stuff - Start of adding reload calculations into DPS chart
+15	2. Artifact bonus	the extra additive PL you get from levelling your seasonal artifact							June 17, 2022	Version 1.1	Updated for Season of the Haunted: added scorch calculator, weird new leviathan scaling, and some of the updated weapons/grenades/abilities (not all)
+16	3. Gear effective power level (ePL)	your gear PL plus your artifact bonus. The big number you see on the character screen.							May 10, 2022	Version 1.0	Reorganized Weapon and Combatant Sheets, added much more accurate delta values, started tracking edit date
+17	4. Weapon PL	the displayed power level of an individual weapon								Version 0.99	renamed a bunch of stuff for clarity, added abilities
+18	5. Weapon effective power level (ePL)	your weapon PL plus your artifact bonus. This isn't displayed anywhere, but is what the game uses to calculate damage								Version 0.95 - added a bunch of weapons to combatant scaling, started basic DPS calculations
+19	6. Recommended PL	the PL of the activity you’re in. Older activities will retain their original recommended PL, but display as the current floor (1350)								Version 0.91 - simplified guardian scaling by difficulty, improved conversion calculator
+20	7. Gear ePL delta	your gear ePL minus the recommended PL of the activity								Version 0.9 - WQ activity updates, enclave-based PvP damage and PvE boosts
+21	8. Weapon ePL delta	your weapon ePL minus the recommended PL of the activity								Version 0.8 - new intro and all basic charts
+22	9. RAD	abbreviation for Raids And Dungeons
+24	Outgoing damage in PvE is scaled based on 3 buckets of scalars:
+25	1. Activity Types and Recommended PL	multiplies from baseline (gambit) damage to an activity based on recommended PL and activity type, and sets up caps and multipliers for delta scaling
+26	2. PL Delta multipliers	scales your damage based on your gear ePL AND your weapon ePL, relative to the recommended PL
+27	3. Combatant and PVE bonus multipliers	scales damage to minors, elites, minibosses, bosses and vehicles. PvE damage bonus applies across all damage in PvE
+32	1. Activity scalars	scales from gambit damage to an activity based on recommended power and activity type, and sets up caps and scalars for delta scaling
+34	1a. Recommended Power Level multiplier	Recommended PL scales as such: There's a theoretical base damage value at 0 PL. This number goes up by 1/30th of the base for each Power level up. Gambit's recommended level is 10, which puts it at a 1+10*1/30 = 1.33x multiplier. For the sheet's purpose, I use gambit as the 1x scale
+35		In equation form: Recommended PL Multiplier = (1+ ((1/30)*[Recommended PL])/1.3333
+36		to simplify further: Recommended PL Multiplier = [Recommended PL]/40 + 0.75 (thanks SamMath)
+37		e.g. unpowered melee does 100 damage to a gambit boss; if you're in "The Ghosts" campaign mission, a 1370 activity AT 1370 Gear ePL, you will do 100 * [1370/40 + 0.75]= 3500 damage
+38		This scaling goes below the current minimum PL (1350) for older activities. For example, Kalli is 560 PL, Zulmak is 960 PL. However, if you put your own Gear ePL below the floor (with e.g. FoTL mask), the game will set you to exactly 160 ePL, making any enemy immune
+39		If you're using the same weapon on the same combatant type, you can directly convert from one activity to another with the handy conversion calculator
+41	1b. Delta multiplier cap and type	Different activities will have different caps to how over-levelled your weapon can be before it stops doing more damage.
+42		Gear ePL scaling generally caps at +0 outside of contest modifiers, but the difficulty will dictate how much damage you do at +0. Raids and Dungeons cap at 0.925x, while Master activities cap at 0.85x
+44	OUTDATED, SEE PL DELTA TAB	Activity type	Weapon ePL delta cap	Gear ePL delta cap	Difficulty	Total multiplier at +0 delta	Total multiplier at delta cap	Gear ePL delta floor	Examples
+45		Normal	+50	+0	Normal	1.00x	1.40x	-99	Strikes, Story, Patrol
+46		Dares	+20	+0	Normal	1.00x	1.15x	-99	Dares of Eternity (Vaulted:Shattered Realm)
+47		RAD	+20	+0	RAD	0.925x	1.06x	-99	Legend raids and dungeons (RAD), Adept NF/Hunts, Preservation
+48		Contest Raid	-20	-20	RAD	N/A	0.54x	-99	Day one raid contest
+49		Master	+20	+0	Master	0.85x	0.97x	-99	Hero/Legend/Master NF/LS/Hunts, Master RADs, The Wellspring
+50		Grandmaster	-25	-25	Master	N/A	0.47x	-99	GM NFs
+51		Legendary Campaign	-17	-17	Master	N/A	0.54x	-99	Legendary Campaign, Operation: Seraph Shield (Legend)
+52		Gambit	+0	+0	Normal	1.00x	1.00x	-99	Gambit
+53		Seraph Story	+0	+0	Normal (Floored)	1.00x	1.00x	0	Seraph opening mission, heist direct launch
+54		Heist	-5	-5	Master (Floored)	N/A	0.74x	-10	Heist Battleground playlist
+55		Legend Heist	-10	-10	Master	N/A	0.64x	-99	Heist Battleground Legend
+56		Psi-Ops	+20	+0	Normal (Floored)	1.00x	1.15x	-20	Psi-Ops Battlegrounds playlist
+57		Ketchcrash	+10	+0	Master (Floored)	0.85x	0.91x	-10	Ketchcrash
+58		Expedition	+10	+0	Normal (Floored)	1.00x	1.07x	-10	Expedition
+59		Leviathan	+20	+0	Normal (Floored)	1.00x	1.15x	-10	Containment, Leviathan Patrol, Pirate Hideout
+60		Sever	+0	+0	Normal (Floored)	1.00x	1.00x	-10	Sever, Operation: Seraph Shield (Normal)
+61		Seasonal	+30	+0	Normal	1.00x	1.22x	-99	Psi Ops direct launch | Vaulted: Battlegrounds, Astral Alignment
+62		Presage	-15	-15	Normal	1.00x	0.65x	-99	Vaulted: Presage
+65	2. Delta multipliers	scales your damage based on your gear ePL AND your weapon ePL, relative to the recommended power level
+66	OUTDATED, ALL DAMAGE ASSUMES WEAPONS ARE THE SAME POWER AS OVERALL GEAR	delta in this case is defined by [ePL] - [Recommended PL]
+67	there are two separate multipliers that get multiplied together, gear ePL delta and weapon ePL delta. In both cases, each point of ePL makes a difference. i.e. there's no sudden jump between -9 and -10 delta
+68	For abilities, you still use both scalars, just using your gear ePL in place of the weapon ePL
+70	2a. Gear effective power level delta	Gear ePL is the big number you see on the character screen - it's your gear PL (the average of your weapons and armour) plus your artifact bonus
+71		Your damage scales based on how much lower your Gear ePL is compared to the activity's Recommended PL. This scaling is limited to the recommended PL (+0 delta), and you get no bonus for going over. It scales down to -99. At -100, enemies are immune.
+72		There are different versions of this multiplier for the three difficulty levels, starting at 1.0x for normal, and 0.85x for Master, with RAD following exactly between them at 0.925x
+73		All three difficulties line up at - 60 delta, giving you a 0.475x multiplier to your damage
+74		The scaling is a piecewise linear equation that gets less steep every 10 PL downwards. i.e. there are specific values at each 10 LL, and it follows a straight line between them.
+75		e.g. for normal activities, between +0 and -10, each level lower drops your damage by 2.2 percentage points, but between -70 and -99, each level drops your damage by 0.2 percentage points
+77		Gear ePL delta	Normal Difficulty	% change per level	RAD difficulty	% change per level	Master Difficulty	% change per level
+78		+0	1.000x	2.20%	0.925x	1.95%	0.850x	1.70%
+79		-10	0.780x	1.20%	0.730x	1.10%	0.680x	1.00%
+80		-17	0.696x	1.20%	0.653x	1.10%	0.610x	1.00%
+81		-20	0.660x	0.69%	0.620x	0.57%	0.580x	0.45%
+82		-30	0.591x	0.51%	0.563x	0.38%	0.535x	0.25%
+83		-40	0.541x	0.41%	0.525x	0.30%	0.510x	0.20%
+84		-50	0.500x	0.25%	0.495x	0.20%	0.490x	0.15%
+85		-60	0.475x	0.15%	0.475x	0.15%	0.475x	0.15%
+86		-70	0.460x	0.20%	0.460x	0.20%	0.460x	0.20%
+87		-80	0.440x	0.20%	0.440x	0.20%	0.440x	0.20%
+88		-90	0.420x	0.20%	0.420x	0.20%	0.420x	0.20%
+89		-99	0.402x		0.402x		0.402x
+92	2b. Weapon effective power level delta	Unlike gear ePL delta scaling, there's only one scaling formula for weapons, and there's no lower bound to how low your damage can go. The lowest I've measured is 0.2073x at -234 weapon ePL delta
+93		There is however, a variable upper cap. +50 for most lower end activities, and +20 for most endgame activities, with a few exception for contest modes
+94		Artifact bonus affects every piece of gear individually, so make sure you manually add it to your weapon's power level for these calculations
+95		The scaling follows an exponential curve roughly equal to [scalar] = e^([weapon ePL delta]*0.00672) . However, it's not a perfect match, so use my exact measurements in the delta scaling tab
+106	2c. Combined Delta Scalar	This is just the above two multiplied together. In the case of ability damage, or when you're at pinnacle cap, the two multipliers will use the same ePL value. Here's a chart of how that scales with some notable points
+109		You can get the exact multiplier for any combination of Guardian and Weapon deltas for all three difficulties in the 3 tabs linked below
+111		Normal	RAD	Master
+113		Activity	Delta	Gear ePL delta multiplier	Weapon ePL delta multiplier	Combined delta multiplier	Compared to Normal Cap
+114		Normal cap	+50	1.000x	1.397x	1.397x	1.000x
+115		RAD cap	+20	0.925x	1.146x	1.060x	0.759x
+116		Master cap	+20	0.850x	1.146x	0.974x	0.697x
+117		Normal at-level	+0	1.000x	1.000x	1.000x	0.716x
+118		RAD at-level	+0	0.925x	1.000x	0.925x	0.662x
+119		Master at-level	+0	0.850x	1.000x	0.850x	0.609x
+120		Contest raid	-20	0.620x	0.872x	0.541x	0.387x
+121		Legendary Campaign	-17	0.610x	0.890x	0.543x	0.389x
+122		Grandmaster Nightfall	-25	0.558x	0.843x	0.470x	0.336x
+125	4. Combatant and PVE bonus scalars	Scales up from pvp damage to various combatant types, as well as a blanket PvE buff for some archetypes
+126		For an explanation of combatant types, please visit Court's spreadsheet
+127		Champions/Lucent Hive are usually the same as minibosses, with a few exceptions noted on the archetypes
+128		Every weapon archetype has a different scaling, but the scaling is consistent across frames within an archetype. e.g. precision scouts will scale the same as high impact scouts. Most exotics also behave like their frame, but I haven't tested them all yet
+129		For this spreadsheet, I use boss damage as the baseline, except in situations where there's a clear boss damage nerf
+130		The Nessus collosus lost sector boss (Carl) is actually a miniboss, so please stop using him to compare weapons for boss DPS
+132	OLD, SEE COMBATANT TAB
+133			Archetype	Vehicle	Boss	Champion / and Lucent Tormentors	Miniboss	Elite	Minor
+134			Primary Weapons	Vehicle	Boss	Champion	Miniboss	Elite	Minor
+135			Auto Rifle	1.15x	1.15x	1.20x	1.20x	1.63x	1.63x
+136			Scout Rifle	1.30x	1.30x	1.30x	1.30x	1.43x	2.09x
+137			Pulse Rifle	0.90x	1.00x	1.05x	1.05x	1.26x	1.78x
+138			Hand Cannon	1.20x	1.30x	1.40x	1.40x	1.68x	2.55x
+139			Submachine Gun	1.40x	1.53x	1.53x	1.53x	1.90x	1.90x
+140			Sidearm	1.40x	1.55x	1.55x	1.55x	2.16x	2.16x
+141			Bow	1.50x	1.50x	1.50x	1.50x	1.90x	2.50x
+142			Exotic Primary						Minor x1.4
+143			Vex Mythoclast	2.00x	2.00x	2.00x	2.00x	2.00x	2.00x
+145			Special Weapons	Vehicle	Boss	Champion	Miniboss	Elite	Minor
+146			Shotgun	2.80x	2.30x	2.50x	2.50x	2.88x	3.20x
+147			Special Grenade Launcher	2.50x	2.50x	2.63x	2.63x	2.63x	3.13x
+148			Fusion Rifle	2.12x	2.55x	2.55x	2.55x	2.55x	2.73x
+149			Sniper Rifle	1.13x	1.20x	1.30x	1.30x	1.55x	2.50x
+150			Trace Rifle	1.68x	1.80x	2.04x	2.04x	2.04x	1.90x
+151			Exotic Trace Rifle	1.68x	1.80x	2.04x	2.04x	2.04x	2.66x
+152			Glaive	3.00x	3.00x	3.00x	3.00x	3.00x	4.50x
+153			Lorentz Driver	1.54x	1.31x	1.39x	1.39x	1.92x	2.03x
+154			Arbalest	1.54x	1.31x	1.04x	1.39x	1.92x	2.03x
+156			Heavy Weapons	Vehicle	Boss	Champion	Miniboss	Elite	Minor
+157			Sword	1.27x	1.27x	1.27x	1.27x	1.50x	1.89x
+158			Black Talon Heavy	1.27x	1.27x	1.27x	1.27x	1.50x	2.46x
+159			Heavy Grenade Launcher	3.00x	3.00x	3.00x	3.15x	3.15x	4.38x
+160			Anarchy	1.50x	2.10x	3.00x	3.15x	3.15x	4.38x
+161			Parasite	2.27x	2.27x	2.27x	2.39x	2.39x	3.13x
+162			Rocket Launcher	4.70x	4.70x	4.70x	4.70x	5.00x	6.00x
+163			Two-Tailed Fox	3.06x	3.06x	2.35x	2.35x	5.00x	6.00x
+164			Wardcliff Coil	0.94x	0.94x	0.94x	0.94x	5.00x	6.00x
+165			Eyes of Tomorrow	2.12x	2.12x	2.12x	2.52x	5.00x	6.00x
+166			Wolfpack rounds	1.00x	1.00x	2.91x	2.91x	5.00x	6.00x
+167			Linear Fusion Rifle	1.54x	1.54x	1.64x	1.64x	1.92x	2.03x
+168			Sleeper Queenbreaker	1.81x	1.81x	1.92x	1.92x	1.92x	2.03x
+169			Machine Gun	2.38x	2.16x	2.25x	2.25x	3.36x	4.20x
+170			Xenophage	2.38x	1.80x	1.80x	2.25x	3.36x	4.20x
+171			Grand Overture	2.38x	1.80x	1.80x	2.25x	4.80x	4.20x
+172			Leviathan's Breath Explosion	3.71x	3.71x	4.82x	3.71x	1.90x	2.50x
+174	Step	PvP damage	"PvE damage bonus" / penalty	PvE precision bonus	Recommended PL multiplier	Enclave Damage	Delta multipliers	Combatant type multiplier	Combatant penalty/bonus	World/activity multipliers	PvE damage
+175	explanation / examples	Baseline damage - the underlying numbers are usually decimals, but are visually rounded up to the next integer	bonuses to a specific exotic or subfamily (e.g. pellet shotguns have a 1.107x bonus, dead man's tale has a 1.2x bonus) that apply to all damage, not just one combatant type	1.15x precision multiplier for LFRs	for Enclave, the recommended PL is the same as the ePL of the weapon you use, with no delta multipliers	enclave precision damage adds an additional 50% of the bonus i.e. 1.5x precision adds .25 to become 1.75x	If your weapon and/or gear ePL is different than the recommended PL of the activity, apply the multipliers detailed above	every weapon type (except Vex) does different damage to e.g. minors vs. bosses. this multiplier is consistent for all weapons in an archetype, including most exotics.	penalty to a specific combatant type only applies to exotics, except for aggressive pulses for some reason e.g. anarchy does -30% damage to bosses (0.7x penalty)	kinetic weapons do 1.1x/1.15x to unshielded combatants	The final damage number you see in an activity, before perks
+177	examples
+179	Punching an EDZ dreg in the face at 1560	PvP damage	"PvE damage bonus" / penalty	Recommended PL multiplier	Gear ePL delta multiplier	Weapon ePL delta multiplier	Combatant type multiplier	World/activity multipliers	Displayed PvE damage
+180	Value	Unpowered melee	None	1350	Normal activity - 1560, capped at 1350	1560, capped at 1400	melee - minor	None
+181	Multiplier		1.00x	34.50x	1.00x	1.397x	1.80x	1.00x
+182	Damage	100	100	3450	3450	4819.083986	8674.351175	8674.351175	8675
+184	Forbearance wave frame in Vox Obscura on a minor - Gear ePL 1594, weapon ePL 1560 + 35 artifact bonus = 1595	PvP damage	"PvE damage bonus" / penalty	Recommended PL multiplier	Gear ePL delta multiplier	Weapon ePL delta multiplier	Combatant type multiplier	World/activity multipliers	Displayed PvE damage
+185	Value	Wave frame	Wave frame	1550	Normal activity - 1594, capped at 1550 (+0)	1595 (+45)	Special GL - minor	None
+186	Multiplier		1.50x	39.50x	1.00x	1.3522x	3.125x	1.00x
+187	Damage	130.000	195	7702.5	7702.5	10415.24454	32547.63918	32547.63918	32548
+188	https://youtu.be/BM688RORcOQ?t=544
+189	Seventh Seraph Carbine in Day 1 VoG at Templar against a minor harpy	PvP damage	"PvE damage bonus" / penalty	Recommended PL multiplier	Gear ePL delta multiplier	Weapon ePL delta multiplier	Combatant type multiplier	World/activity multipliers	Displayed PvE damage
+190	Value	Precision Auto Rifle body	None	1310	Contest Raid - ??, capped at 1290 (-20)	?? capped at 1290 (-20)	Auto rifle - minor	Kinetic
+191	Multiplier		1.00x	33.50x	0.62x	0.8721x	1.300x	1.05x
+192	Damage	18.00	18	603	373.86	326.0588492	423.973079	445.1717329	446

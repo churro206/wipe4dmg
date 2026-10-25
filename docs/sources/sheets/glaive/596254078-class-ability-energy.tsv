@@ -1,0 +1,100 @@
+2			Amount	Source	Notes
+4	EVERYTHING HERE IS NOW IMPACTED BY ABILITY COOLDOWN [unless explicitly stated by effect]
+5	Base Cooldown	Energy Multiplier
+6	82	0.5	Rift, Acrobat Dodge
+7	80	0.5	Towering Bastion
+8	80	1 (bugged)	Rally Bastion
+9	70	0.5	Towering Barricade
+10	55	0.8	Phoenix Dive
+11	38	0.8	Gambler's Dodge
+12	38	1	Rally Barricade
+13	36	0.9	Thruster
+14	29	0.9	Marksman's Dodge
+16	MECHANICS
+17		Void Breach	12.50%	Void Pickup
+18		Ionic Trace	15.00%	Arc Pickup
+20	WEAPON PERKS [Enhanced]
+21		Energy Transfer	0.5/1/1.5% [0.625/1.25/1.55%]	Weapon Perk	Per 1 point of non-blocked/blocked/melee damage while guarding with a sword
+22		Wellspring	8% [9%]	Weapon Perk	On Weapon kill, split equally among all uncharged abilities
+23		Traveler's Chosen	10-100%	Exotic Sidearm	Per stack of Gathering Light (up to 10)
+24		Strategist	10% [11%]	Weapon Perk	On Weapon kill with Primary/Power weapons/Glaives(NOT melee)/Grenade Launchers/Trace Rifles
+25		Strategist	20% [22%]	Weapon Perk	On Weapon kill with Special weapons EXCEPT Glaives/Grenade Launchers/Trace Rifles
+27	GENERAL ARMOR MODS [x2] {x3}
+28		Insulation [1 en]	4% [5%] {6%}	Legs Mod	Upon Orb of Power pickup
+29		Distribution [3 en]	4% [6%] {7%}	Class Item Mod	On using Class Ability within 15m of an enemy
+30		Absolution [3 en]	5% [7.5%] {10%}	Legs Mod	Upon Orb of Power pickup
+31		Focusing Strike [2 en]	12% [17%] {20%}	Arms Mod	Upon dealing Powered Melee Damage (7s cooldown)
+32		Bolstering Detonation [2 en]	12% [17%] {20%}	Arms Mod	Upon dealing Grenade Damage (7s cooldown)
+33		Utility Kickstart [1 en]	16-45%	Class Item Mod	Expends All Armor Charge to grant more, each copy counts as extra Armor charge (max 9 charges)
+34		Aeon Safe/Soul/Swift	25% [100%]	Exotic Arms	Upon Ally Death [Revive]
+35		Utility Finisher [1 en]	70-100%	Class Item Mod	On using a Finisher and expending 3+ Armor Charge
+37	FRAGMENTS
+38		Whisper of Refraction	9-50%	Stasis Fragment	On slowed/frozen/shatter enemy kill, per Enemy Rank
+39		Thread of Mind	10-30%	Strand Fragment	On suspended enemy kill, per Enemy Rank
+41	HUNTER
+42		Orpheus Rig	10%	Exotic Legs	Per enemy tethered with Deadfall Super
+43		Combination Blow	100%	Arc	On Kill
+44		Weighted Throwing Knife	100%	Solar	On Precision Kill
+46	TITAN
+47		Khepri's Horn	25%	Exotic Helmet	On Solar Kill
+49	WARLOCK
+50		Promethium Spur	4.5-25%	Exotic Legs	On Solar Weapon Kill, per Enemy Rank
+51		Secent Filaments	10%	Exotic Legs	While Devour is active
+52		Child of the Old Gods	10-50%	Void	On kill within its effect, per Enemy Rank
+53		Fallen Sunstar	30%	Exotic Helmet	From Ionic Traces (instead of 15%)
+54		The Stag	50%	Exotic Helmet	Upon reaching Critical Health
+55		Apotheosis Veil	100%	Exotic Helmet	On Super activation
+56		Starfire Protocol	100%	Exotic Chest	On Fusion Grenade Kill
+59	REGEN RATE
+60	FRAGMENTS
+61		Facet of Hope	60%	Prismatic	While an Elemental Buff is active
+62		Spark of Focus	150%	Arc	While Sprinting for longer than 1.25s
+63		Ember of Singeing	300%	Solar	For 3 sec upon inflicting Scorch
+64		Ember of Benevolence	400%	Solar	For 6 sec when applying cure, radiant, restoration, healing, or reviving allies
+66	HUNTER
+67		Fr0st-EE5	100%	Exotic Legs	While Sprinting
+68		Flow State	200%	Arc Aspect	While Amplified
+69		Winter's Shroud	300%	Stasis Aspect	3 sec duration, upon applying Slow to an enemy
+70		Gyrfalcon's Hauberk	500%	Exotic Chest	After performing a finisher while Invisible
+72	TITAN
+73		Heart of Inmost Light	25/50%	Exotic Chest	Empowered Barricade x1/x2
+75	WARLOCK
+76		Arc Soul	40/80/120%	Arc Aspect	While withing 15m of 1/2/3+ allies
+77		Eye of Another World	50%	Exotic Helmet
+78		Nezarec's Sin	200%	Exotic Helmet	After Void Kill for 2.5 sec (up to 20 sec)
+79		Vesper of Radius	250/666/1085/1500%	Exotic Chest	While Surrounded by 3/4/5/6+ enemies within 15m
+82	ENHANCEMENTS
+83	HUNTER
+84	Acrobat's Dodge [Solar] grants Radiant
+85	On Your Mark [Solar] grants x3 On Your Mark buff
+86	Lethal Current [Arc] applies Jolt on next Melee hit
+87	Winter's Shroud [Stasis] applies Slow to nearby enemies
+88	Ensnaring Slam [Strand] applies Suspend to nearby enemies
+89	Threaded Specter [Strand] creates Strand clone bomb that also creates Threadlings
+90	Mask of Bakris [Exotic Helmet] turns Dodge to Shift and grants x4 Stasis and Arc Surge for 11s
+91	Radiant Dance Machines [Exotic Legs] grants unlimited Dodges for 6s, kills extend buff by 5s (max 11s)
+92	The Sixth Coyote [Exotic Chest] grants Extra Class Ability Use
+94	TITAN
+95	Bastion [Void] grants 45 HP Void Overshield for 10s
+96	Drengr's Lash [Strand] apples Suspend to all foes hit by wave
+97	Arbor Warden [Exotic Chest] turns Barricade into tossable grenade
+98	Citan's Ramparts [Exotic Chest] turns Barricade into one you can shoot through
+99	Crest of Alpha Lupi [Exotic Chest] heals 58HP or up to 130HP (whichever is more)
+100	Heart of Inmost Light [Exotic Chest] empowers Grenade and Melee regen and power
+101	Hoarfrost-Z [Exotic Chest] turns Barricade into Stasis Crystal wall
+102	Icefall Mantle [Exotic Arms] turn Barricade into Overshield
+103	Khepri's Horn [Exotic Helmet] sends out Solar Wave that deals damage and Scorch
+104	Loreley Splendor [Exotic Helmet] drops a Sunspot on you
+105	Hazardous Propulsion [Exotic Chest] shoots 6 rockets upon class ability use
+107	WARLOCK
+108	Arc Soul [Arc] makes Arc Buddy turret
+109	Child of the Old Gods [Void] makes Void Buddy who applies Weaken
+110	Frostpulse [Stasis] applies Freeze to nearby enemies
+111	Weaver's Call [Strand] create 3 Threadlings and deploys all perched Threadlings
+112	Ballidorse Wrathweavers [Exotic Arms] with Frostpulse Aspect, gives Frost Armor and x2 Stasis Surge
+113	Boots of the Assembler [Exotic Legs] creates matching Noble Seekers that Empower or Heal
+114	Lunafaction Boots [Exotic Legs] grants +100 Reload and x0.9 Reload multiplier
+115	Sanguine Alchemy [Exotic Chest] grant x2 Surge of matching Subclass
+116	Secant Filaments [Exotic Legs] grants weapons Anti-Overload, and on Void subclass, grants Devour
+117	The Stag [Exotic Legs] grants 25% DR
+118	Vesper of Radius [Exotic Chest] creates damaging Arc pulses, and on Arc Subclass, applies Blind to nearby enemies

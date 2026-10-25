@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Quellensichtung destiny2.science (2026-10-25):** Alle 14 Sheets der Seite gesichtet, 95 Reiter als maschinenlesbares Archiv in `docs/sources/sheets/` (TSV je Reiter mit Zeilennummer, `index.json` mit Lesestatus, Relevanz und Themen je Reiter aller Sheets; Clarity-Blog „Chunk Energy Scalars“ und Clarity Character Stats 1.9). Abgleich der 177 offenen Coverage-Einträge (`coverage-hits.json`) und Gegenprobe unserer Energie- und Super-Werte gegen Flat Gain Factors. Ergebnis `docs/sources/sichtung-2026-10-25.md`, Plan `docs/plans/sources-2026-10.md` (Korrekturen K1–K7, Blöcke Q1–Q7), Roadmap angepasst. `docs/data-sources.md`: Quantum nimmt Rally/Lunafaction-Reload und Extended + Backup Mag an. Keine Änderung an Daten oder Engine.
+
 - **Coverage-Seite, Überschrift klebt (2026-10-25):** Die Überschrift einer geöffneten Kategorie bleibt oben stehen (`position: sticky`, Karte mit `overflow: clip`), damit sich eine lange Kategorie wie Weapons vom Ende aus wieder zuklappen lässt.
 
 - **Coverage-Seite, Feinschliff (2026-10-25):** Lange In-game-Texte starten auf vier Zeilen eingeklappt mit „Show more/Show less“ (`src/ui/coverageText.ts`, `isLongText`), damit die Liste einer Kategorie kürzer bleibt. Catalysts heißen „<Waffe> Catalyst“ (z. B. „Ace of Spades Catalyst“); eigene Catalyst-Namen gibt es im Spiel nicht, die Klammer entfällt (ersetzt die Benennung im Eintrag davor).

@@ -1,0 +1,87 @@
+2			HP Effect	Source	Notes
+4	Health = 70 (every class, all tiers of resilience)
+5	Shield = 115 - 130 (+1/tier through 5, +2 through 10)
+6	Recovery stat determines Regen delay/rate of restoration. It heals a % of health/second, not a fixed amount
+8	REGEN	Starts health regeneration based on Recovery stat without delay
+9		Better Already	Regen	Leg Mod	On Orb of Power pickup
+10		Boots of the Assembler	Regen	Exotic Warlock Boots	Healing Seeker
+11		Crimson	Regen	Exotic Hand Cannon	After kill
+12		Dawning Surprise	Regen	Origin Trait	Upon kills per Enemy Rank
+13		Echo of Leeching	Regen	Void Fragment	On Melee kill
+14		Facet of Blessing	Regen	Prismatic Fragment	On Melee kill. While Transcendant, applies to nearby allies
+15		Insurmountable Skullfort	Regen	Exotic Titan Helm	On Powered Arc melee kill
+16		Navigator	Regen	Exotic Trace Rifle	After 8 hits on ally
+17		Rat King	Regen	Exotic Sidearm	With Catalyst, after kill
+18		Stunning Recovery	Regen	Origin Trait	Upon Stunning a Champion
+19		SUROS Regime	Regen	Exotic Auto Rifle	25% chance [50% with catalyst] after kill
+20		Touch of Malice	Regen	Exotic Scout Rifle	After getting multikill of 3
+21		Unrelenting	Regen	Weapon Perk	Upon kills per Enemy Rank
+22		Vigilance Wing	Regen	Exotic Pulse Rifle	If an ally within 24m dies
+24	CURE/HEAL	Restores a fixed amount of Health+Shield
+25		Ruinous Effigy	~5	Exotic Trace Rifle	Transmutation Orb guard, per hit every 0.3 seconds
+26		Lament	6	Exotic Sword	Per hit
+27		Buried Bloodline	10	Exotic Sidearm	Per hit
+28		Dawning Surprise	20	Origin Trait	Upon kills per Enemy Rank
+29		Souldrinker	20-80	Origin Trait	On reload, based on amount of kills before reload
+30		Touch of Malice	30	Exotic Scout Rifle	After getting multikill of 3
+31		Whisper of Rime	12/35	Stasis Fragment	On small/large Stasis Shard pickup
+32		Crimson	40	Exotic Hand Cannon	After kill
+33		Extrovert	40	Origin Trait	On kill within 15m of 3 enemies or Nightmare [3 second cooldown]
+34		Knockout	50/75/100	Arc Titan Aspect	On Melee kill per Enemy Rank [Does NOT work with Glaive melee]
+35		Cure	60	Solar Verb	Per Stack
+36		Edge of Intent	60	Exotic Warlock Glaive	[Cure] Healing Seeker every 3s for 15s within 30m, detonates in 7.5m radius
+37		Ember of Resolve	60	Solar Fragment	[Cure] upon Grenade Kill
+38		Healing Grenade	60	Solar Grenade	[Cure] On Use
+39		Icarus Dash	60	Solar Warlock Aspect	[Cure] Upon Weapon Kills per Enemy Rank
+40		Navigator	60	Exotic Trace Rifle	After 8 hits on ally
+41		Speaker's Sight	60	Exotic Warlock Helmet	[Cure] Healing Seeker every 3s for 15s within 30m, detonates in 7.5m radius
+42		Stunning Recovery	60	Origin Trait	Upon Stunning a Champion
+43		Throwing Hammer	60	Solar Titan Melee	[Cure] Upon pickup after dealing damage with throw
+44		Wormhusk Crown	67	Exotic Hunter Helmet	On Dodge
+45		Mask of the Quiet One	[<70]	Exotic Titan Helmet	If Critical, brings up to 70 Heatlth threshold (No Shield) on kill
+46		Recuperation	70	Leg Mod	On Orb of Power pickup. Multiple copies do NOT stack
+47		Boots of the Assembler	75	Exotic Warlock Legs	Spawns Noble Seeker every 5s for each fireteam member within 35m, and extend Rift by 5s
+48		Liar's Handshake	75	Exotic Hunter Arms	On Cross-Counter Hit [Does NOT work with Glaive melee]
+49		Crest/Spirit of Alpha Lupi	80	Exotic Titan Chest/Class Item	On Barricade Placement, also restores 75 Shield, in 12m radius
+50		Unrelenting	~80/85	Weapon Perk	Upon rapid kills per Enemy Rank
+51		Lumina	90	Exotic Hand Cannon	Noble Rounds also grant Blessing of the Sky for 11s
+52		Controlled Demolition	90	Void Titan Aspect	Per Volatile Explosion within 40m
+53		Star-Eater Scales	95-200	Exotic Hunter Legs	On Super activation, based on Overcharged stacks
+54		Combination Blow	100/80/60/40	Arc Hunter Aspect	On kill, per stack
+55		Devour	100	Void Verb	On kill
+56		Assassin's Cowl	100-200	Exotic Hunter Helmet	On Powered Melee kill based on Enemy Rank
+57		Edge of Intent	120	Exotic Warlock Glaive	[Cure x2] Healing Seeker every 3s for 15s within 30m with Touch of Flame Aspect equipped, detonates in 7.5m radius
+58		Heal Clip	120	Weapon Perk	[Cure x2] Upon reloading after a Weapon Kill for you, also heals nearby allies with [Cure x1]
+59		Healing Grenade	120	Solar Grenade	[Cure x2] On activation with Touch of Flame Aspect equipped
+60		Heat Rises	120	Solar Warlock Aspect	[Cure x2] Upon activation with non-Healing Grenade
+61		Speaker's Sight	120	Exotic Warlock Helmet	[Cure x2] Healing Seeker every 3s for 15s within 30m with Touch of Flame Aspect equipped, detonates in 7.5m radius
+62		Phoenix Dive	120	Solar Warlock Class Ability	[Cure x2] On Use
+63		Devour	140	Void Verb	On kill as Warlock with Feed the Void equipped
+64		Apotheosis Veil	180	Exotic Warlock Helmet	[Cure x3] On Super activation
+65		Heat Rises	180	Solar Warlock Aspect	[Cure x3] On activition with Healing Grenade with Touch of Flame Aspect equipped
+66		Karnstein Armlets	180	Exotic Warlock Arms	[Cure x3] On Melee kill
+67		Healthy Finisher	100%	Class Item Mod	On Finisher while expending 1 Armor Charge
+69		Superstructure Medic	???	VoG Armor Mod	Chance on Weapon hit against Powerful Vex	needs testing
+71	RESTORATION	Heals a fixed amount per second
+72		Into the Fray	10 HP/ 2s	Strand Titan Aspect	Per pulse, 3 pulses every 2s upon destroying a Tangle
+73		Child of the Old Gods	25 HP/s	Void Warlock Aspect	Per Enemy Leeched
+74		Banner of War	25 HP/s	Strand Titan Aspect	Pulse is every 2.5s and reaches 1s at x4 stacks
+75		Restoration	35 HP/s	Solar Verb
+76		Healing Rift	40 HP/s	Warlock Class Ability
+77		Restoration x2	50 HP/s	Solar Verb
+79		Edge of Intent	Restoration	Exotic Warlock Glaive	4s duration, Healing Seeker detonates in 7.5m radius
+80		Ember of Mercy	Restoration	Solar Fragment	2s duration, upon Firesprite pickup or reviving an ally
+81		Healing Grenade	Restoration	Solar Grenade	4s duration, on Use
+82		Heat Rises	Restoration	Solar Warlock Aspect	4s duration, On activation with Healing Grenade with Touch of Flame Aspect equipped
+83		Karnstein Armlets	Restoration	Exotic Warlock Arms	8s duration, upon melee kill
+84		Loreley Splendor	Restoration	Exotic Titan Helmet	5s duration, on Barricade placement, or critical health while class ability is full
+85		Precious Scars	Restoration	Exotic Titan Helmet	3s duration, with weapon kill matching subclass energy [3 sec cooldown]
+86		Sol Invictus	Restoration	Solar Titan Aspect	5s duration, Stepping into Sunspot, can be refreshed
+87		Speaker's Sight	Restoration	Exotic Warlock Helmet	4s duration, Healing Seeker detonates in 7.5m radius
+88		Edge of Intent	Restoration x2	Exotic Warlock Glaive	4s duration, with Touch of Flame equipped, Healing Seeker detonates in 7.5m radius
+89		Healing Grenade	Restoration x2	Solar Grenade	4s duration, on Use as Solar Warlock with Touch of Flame equipped
+90		Karnstein Armlets	Restoration x2	Exotic Warlock Arms	8s duration, upon finisher
+91		Phoenix Dive	Restoration x2	Solar Warlock Aspect	3s duration, while Heat Rises is active
+92		Speaker's Sight	Restoration x2	Exotic Warlock Helmet	4s duration, with Touch of Flame equipped, Healing Seeker detonates in 7.5m radius
+93		Stronghold	Restoration x2	Exotic Titan Arms	up to 16s duration, after hitting an enemy with Perfect Guard stacks
+94		Well of Radiance	Restoration x2	Solar Warlock Super	Also provides [Radiant] buff

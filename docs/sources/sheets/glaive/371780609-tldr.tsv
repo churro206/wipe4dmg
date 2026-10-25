@@ -1,0 +1,71 @@
+2		Source	Notes	Duration
+4	Ways to Buff Glaive Melee Damage (Buffs are ADDITIVE [50% + 70% = 120%])
+5	Knucklehead Radar	Hunter Exotic Helmet	1-29% buff	Passive
+6	Focused Light	Raid Mod	4-20% buff, RoN Raid only	Passive
+7	Transcendent	Prismatic Buff	5% buff	Passive
+8	Wormgod Caress (w/ BoW)	Titan Exotic Arms	5/10/15/20/25% buff	30 sec
+9	Transcendent Blessing	Armor Mod	5-25% buff, Dreaming City only	Passive
+10	Herd Thinner	Raid Mod	5-25% buff, DSC Raid only	Passive
+11	(Enhanced) Relay Defender	Raid Mod	5-50% buff, GoS Raid only	Passive
+12	Cabal Extinguisher	Raid Mod	6-30% buff, RoN Raid only	20 sec
+13	Sanguine Alchemy	Warlock Exotic Chest	10% against marked enemy	5 sec
+14	Will of Light [Kinetic]	Raid Mod	10-50% buff, KF Raid only	Passive
+15	Banner of War (w/ Syntho)	Strand Titan Aspect	12.5% buff	24 sec
+16	Empowering Rift	Warlock Class Ability	20% buff	15 sec
+17	Sect of Force	Aeon Exotic Arms	20% buff vs marked enemy [from ally]	Passive
+18	Umbral Sharpening	Raid Mod	20-40% buff, VotD only	Passive
+19	Well of Radiance	Solar Warlock Super	25% buff	30 sec
+20	Helm of Saint-14 (Wpns of Light)	Titan Exotic Helmet	25% buff	15 sec
+21	Banner of War (No Syntho)	Strand Titan Aspect	25% buff	24 sec
+22	Close to Melee	Weapon Perk	30% buff	11 sec
+23	Blessing of the Sky	Lumina or Boots of the Assembler	35% buff	10 sec
+24	Gyrfalcon's Hauberk	Hunter Exotic Chest	35% buff	6 sec
+25	Sealed Ahamkara Grasps	Hunter Exotic Arms	35% buff	6 sec
+26	Wormgod Caress (No BoW)	Titan Exotic Arms	40/80/120/160/200% buff	30 sec
+27	Unstable Essence	Enemy drop	50% buff vs Nightmares	15 sec
+28	Disruption Break	Weapon Perk	50% buff	5.5 sec
+29	Winter's Guile (Warlord's Sigil)	Warlock Exotic Arms	55/110/165/220/275% buff	5 sec
+30	Bug? Wormgod Caress + BoW	Strand Titan Aspect + Exotic Combo	70/110/150/183/215% buff	30 sec
+31	Brawler	Activity Modifier	100% buff	Passive
+32	Synthoceps / [Spirit of Syntho]	Titan Exotic Arms / Exotic Class Item	100% buff	5 sec
+33	Triton Vice	Hunter Exotic Arms	100% buff	5 sec
+34	Freeze	Stasis Debuff	120% buff	Passive
+35	Heavyweight	Activity Modifier	130% buff	Passive
+36	Bug? Synthoceps + BoW	Strand Titan Aspect + Exotic Combo	150% buff	5 sec
+39	Ways to make Orbs of Power with Glaive Melee (10 sec cooldown)
+40	Echo of Harvest	Void Fragment	Kill Weakened enemy
+41	Ember of Wonder	Solar Fragment	Kill 2+ enemies with Ignition (w/Song of Flame)
+42	Facet of Generosity	Prismatic Fragment	Kill 2+ enemies while Transcendent (no cooldown)
+44	Spark of Amplitude	Arc Fragment	Kill 2+ enemies while Amplified
+45	Thread of Wisdom	Strand Fragment	Kill Suspended enemy
+46	Violent Pour	CE Raid Mod	Kill a powerful Enemy
+47	Ward of Dawn	Void Titan Super	Kill enemies inside Bubble (no cooldown)
+48	Whisper of Bonds	Stasis Fragment	Kill Frozen enemy
+51	Weapon Perks that work with Glaive Melee
+52	Close to Melee	Albedo Wing, Backfang, Ecliptic Distaff, Greasy Luck, Greasy Luck 9v, Judgment of Kelgorath, Unexpected Resurgence, Forthcoming Deviance	11 sec duration, refreshable [+30%] Melee Dmg boost
+53	Desperate Measures	Albedo Wing, Backfang, Forthcoming Deviance (and works FOR Brave weapons)	Glaive Melee kill will grant x2 [+20%] Shot Dmg, additional Glaive Melee kill grants x3 [+30%] Shot Dmg and refreshes
+54	Disruption Break	Greasy Luck, Forthcoming Deviance, Refusal of the Call	5.5 sec duration, [+50%] Melee Dmg boost. Works with Barrier Champions
+55	Grave Robber	Albedo Wing, Backfang, The Enigma, Lubrae's Ruin, Unexpected Resurgence, Forthcoming Deviance	Melee kill fully refills weapon
+56	Melee Momentum	Backfang, Greasy Luck 9v, Refusal of the Call	Glaive Melee kill builds ~17%? [20%? Enh] Shield Meter (no cooldown). For 10 sec (refreshable), move faster while blocking. Does not work with Lucent Blades. Higher Tier enemies grant more Meter
+57	Proximity Power	Heron	Shot kills grant [+15] {+18} Melee stat per stack (max 3), increasing Glaive Melee Dmg for 10 sec, refreshable
+58	Rimestealer	Rake Angle	Grants 1 stack (2 if enhanced) of Frost Armor per Crystal shatter/Frozen Enemy kill.
+59	Swashbuckler	Backfang, Lubrae's Ruin, Unexpected Resurgence	Melee Kill grants 5 stacks for Shot. [+33.3%] Shot Dmg for 4.5 {6.5 enh} sec, refreshable
+62	MW: Shield Duration for Adaptives, Range or Handling for Aggressives/Rapid Fires
+63	Best Perk Combos	Pair With	Synergy	Available on
+64	PVE
+65	Chill Clip	Replenishing Aegis	Safely refill Ammo while firing to slow/freeze	Rake Angle
+66	Close to Melee	Disruption Break	Highest possible Melee damage perk stacking	Heron, Greasy Luck, Forthcoming Deviance
+67	Close to Melee	Grave Robber	Shot kill buffs Melee, Melee kill refills Shot ammo	Albedo Wing, Backfang, Forthcoming Deviance
+68	Frenzy	Impulse Amplifier	Fastest possible Shot Speed, Handling and Reload with bonus Damage	The Enigma, Nezarec's Whisper, Unexpected Resurgence
+69	Frenzy	Demolitionist	Arguably best PvE 'neutral game' all-rounder with most passive buffs	Nezarec's Whisper
+70	Incandescent	Demolitionist	AoE shot kills fill Grenade, Grenade reloads Shot	Judgement of Kelgorath
+71	Redirection [Enhanced]	Overflow/Envious Assassin [Reconstruction]	Best Shot Damage buff for DPS scenarios	Heron, Greasy Luck 9v
+72	Surrounded [Enhanced]	Grave Robber	Buff Shot Damage when surrounded, Melee kill to refill Shot ammo once no longer surrounded	Backfang, Lubrae's Ruin
+73	Swashbuckler	Grave Robber	Melee kill to refill Shot ammo and buff Shot Damage (deals slightly more shot damage than Unstoppable Force on an Aggressive Frame)	Backfang, Lubrae's Ruin
+74	Unstoppable Force	Replenishing Aegis	Best Shield uptime while moving and shooting. Shield buffs Shot damage and refills Shot ammo, Shot refills some Shield energy	Greasy Luck, Greasy Luck 9v, Forthcoming Deviance, Rake Angle, Refusal of the Call, Unexpected Resurgence
+75	Voltshot	Air Trigger	Fastest manual reload for Voltshot	Albedo Wing
+76	Voltshot	Impulse Amplifier	(Close 2nd) Fastest manual reload for Voltshot	Backfang, Unexpected Resurgence
+78	PVP
+79	Unstoppable Force	Impulse Amplifier	PvP preference (Old)	Backfang, The Enigma, Greasy Luck, Forthcoming Deviance, Nezarec's Whisper, Rake Angle, Unexpected Resurgence
+80	Unstoppable Force	Beacon Rounds	PVP preference	Backfang, Greasy Luck 9v
+81	Disruption Break	Impulse Amplifier	PvP preference	Refusal of the Call

@@ -1,0 +1,36 @@
+2	Contact:	mossy.max	on Discord	Like this spreadsheet? Support me with a Ko-fi!
+3	Welcome!				https://ko-fi.com/mossymax
+4	This is a sheet to calculate and track the total ammo of different guns, based on their magazine stat and their inventory size stat. Go to each tab for different weapons, and please leave a comment if you find an incorrect cell
+5	There's usually a linear relationship between inventory size stat and reserves. this gets shifted depending on the magazine stat, by about a maximum of 5 ammo in either direction. For some weapon types I only have the baseline at 100 mag stat, without the mag-based shifting
+6	Total Ammo = Magazine + Extra Reserves
+7	Now including Primaries! This tab has accurate mag sizes for all primaries
+8	Database tab contains all gun rolls to search through. Individual Weapon Type tabs are the same info, just pared down
+9	*All except swords, which work differently, so are just on their own tab									Mag Boosting Perks	Stat boost		Thanks to all the volunteers who have supplied data, including
+10	Special	Legendaries	Unique Exotics				Inventory Ammo Gen Boosting Perks/Mods	Stat boost		Tactical Mag	10		Longshotbob
+11	sniper	Correct	Thanks longshotbob				Enhanced Envious Arsenal	20		Appended Mag	20		SpiderReviver
+12	shotgun	Correct	Thanks longshotbob				Enhanced Chain Reaction	20		Extended Mag	30		RokDC
+13	rapid shotgun	Correct	Thanks longshotbob				Field Prep / Air Trigger	30		Drop Mag	-20		Stardust
+14	Burst shotgun	Correct					Enhanced Field Prep / Air Trigger	40					vykjlu
+15	glaive	Tentative	Thanks longshotbob				1x Ammo Gen Mod	20		Traces / (Linear) Fusions			Slaggy
+16	fusion	Correct	Thanks longshotbob				2x Ammo Gen Mod	40		Enhanced Battery	20		RyTako
+17	trace	Correct	Thanks longshotbob				3x Ammo Gen Mod	50		Ionized Battery	40		Hugo
+18	Special GL	Correct	Thanks longshotbob		thx harm >>								Sorazz
+19	Rocket Sidearm	Correct	Thanks longshotbob				Sword Capacity Boosting Mods	Stat boost		Grenade Launchers			SuperSei
+20							1x Reserves Mod	20		High Explosive Ordnance	-15		Zugashii
+21	Heavy	Legendaries	Unique Exotics				2x Reserves Mod	30		Remote Detonation	-10		Houdini
+22	LFR	Correct	Thanks longshotbob				3x Reserves Mod	35		Mini Frags	20		Willow
+23	Aggressive LFR	Correct	Thanks longshotbob				Backup Mag	30		Augmented Drum	30		LeafOnTheWind
+24	non-rapid MG	Correct	Thanks longshotbob				Adept Mag	40					Apollo
+25	Rapid MG	Correct	Thanks longshotbob										Odo
+26	Aggressive MG	Correct	Thanks longshotbob			Sword Capacity Boosting Perks	Mag stat boost	Impact Stat boost		Traits			switch
+27	Rapid GL	Tentative	Thanks longshotbob			Jagged Edge	-20	10		Bottomless Grief	30
+28	Adaptive GL	Correct	Thanks longshotbob			Honed Edge	0	5		Reservoir Burst	30
+29	Wave GL	Correct	Thanks longshotbob			Tempered Edge	10	3		Enhanced Killing Tally	10
+30	Rocket	Correct	Thanks Court			Hungry Edge	20	0					(sorry if I've forgotten anyone, let me know and I'll add you to the list)
+31	Sword	Correct	Thanks longshotbob			Enduring Blade	35	-5		Mods			Extra thanks to Halcyon for the original python script that I modified to create this database!
+32						Enhanced Cold Steel	10	0		Backup Mag	30
+33						Enhanced Flash Counter	10	0		Adept Mag	40
+35	In normal activities - Stowed ammo is total ammo			395 Total Ammo = 48 Mag + 347 Extra Reserves
+48	IN THE ENCLAVE FIRING RANGE - The game adds your mag to your extra reserves. ENCLAVE EXTRA RESERVES WHILE READIED = 395 = NORMAL TOTAL AMMO (48+347 = 395)
+62	Family Reference
+63	T

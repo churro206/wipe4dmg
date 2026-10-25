@@ -1,0 +1,26 @@
+2		Element	Icon	Melee	T0 Cooldown	T3 Cooldown	Flat Gain Factor		Flat Gain Factor	With 100 Melee Stat	Melee Abilities
+3		Solar		Weighted Throwing Knife	199s	137s	60.0%		60.0%	114%
+4		Arc		Ballistic Slam	165s	114s	70.0%		70.0%	133%
+5		Arc		Ball Lightning	165s	114s	70.0%		80.0%	152%
+6		Solar		Celestial Fire	162s	112s	70.0%		90.0%	171%
+7		Solar		Proximity Explosive Knife	161s	111s	70.0%		100.0%	190%
+8		Stasis		Shiver Strike	146s	101s	70.0%
+9		Stasis		Penumbral Blast	146s	101s	80.0%		Almost all values are tested by RyTako. See their similar spreadsheet here:
+10		Solar		Lightweight Knife	145s	100s	80.0%		https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A/edit?usp=sharing
+11		Stasis		Withering Blade	145s	100s	80.0%
+12		Strand		Threaded Spike	145s	100s	80.0%
+13		Strand		Frenzied Blade	143s	99s	70.0%
+14		Arc		Seismic Strike	132s	91s	90.0%
+15		Arc		Thunderclap	132s	91s	90.0%
+16		Arc		Chain Lightning	132s	91s	90.0%
+17		Solar		Hammer Strike	132s	91s	90.0%
+18		Solar		Throwing Hammer	132s	91s	90.0%
+19		Void		Shield Bash	132s	91s	90.0%
+20		Void		Shield Throw	132s	91s	90.0%
+21		Void		Pocket Singularity	132s	91s	90.0%
+22		Arc		Disorienting Blow	118s	82s	90.0%
+23		Void		Snare Bomb	130s	90s	90.0%
+24		Strand		Arcane Needle	126s	87s	80.0%
+25		Solar		Incinerator Snap	120s	83s	90.0%
+26		Solar		Knife Trick	119s	82s	90.0%
+27		Arc		Combination Blow	58s	40s	100.0%

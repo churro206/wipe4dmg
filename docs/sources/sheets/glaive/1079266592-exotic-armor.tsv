@@ -1,0 +1,110 @@
+2	-	Interaction? (Trigger/Benefit)	Shot	Melee	Notes
+5		Hunter
+6		Assassin's Cowl				Action can proc it and will benefit from it
+7		Blight Ranger			21 sec duration. [+25%] Arc Shot Dmg	Action cannot proc it, but will benefit from it
+8		The Dragon's Shadow			Dodge DOES activate Reload Perks	Action can proc it, but will not benefit from it
+9		Foetracer			15 sec duration. [+25%] Shot Dmg matching ability affinity. Also works on Volatile enemies and with Destabilizing Rounds.	Action cannot proc it and will not benefit from it
+10		Gifted Conviction			Gains DR from Jolt. Stacks up to Resist x4. Works with Edge of Concurrence alt-fire and Voltshot perk	No Intended/Possible interaction
+11		Gyrfalcon's Hauberk			Melee will not gain Volatile, but can get damage boost from Invisble finisher. [+35%] damage for 6 sec
+12		Gwisin Vest			Smoke Cloud produced from this does not work with On the Prowl's separate 'special' smoke cloud
+13		Khepri's Sting			Charged Melee is refilled
+14		Knucklehead Radar			[+1%] Dmg per 1% below 30% enemy health.
+15		Liar's Handshake
+16		Lucky Raspberry			Jolt from Voltshot Perk refills grenade
+17		Mask of Bakris			11 sec duration. [+10/20/30%] Arc and Stasis Shot Dmg per stack (max 3)
+18		Mothkeeper's Wraps			Void Overshield from Loyal Moths can be refreshed by Vexcalibur. Moths are Arc grenades and work with Spark of Shock, Echo of Instability and Facet of Dominance/Bravery
+19		Omnioculus			Does not gain Melee Energy from cloaking allies with Quickfall while glaive is out
+20		Radiant Dance Machines
+21		Raiju's Harness
+22		Sealed Ahamkara Grasps			With Nightmare fuel active, [+35%] Shot dmg for 6 sec. Final blows refresh Nightmare Fuel for next swapped weapon.
+23		Speedloader Slacks
+24		Triton Vice			[+200%] Glaive Melee Dmg while 3+ enemies within 15m; Shot final blows can make enemies explode for 100 Dmg matching glaive affinity. Lingers for 5 sec post-surrounded. Bug? Shot explosions spread scorch from Edge of Intent and Incandescent and can build to Ignition
+26		Titan
+27		ACD/0 Feedback Fence			Glaive Melee hits grant Armor Charge
+28		Blastwave Striders			Does reduce self-damage from Winterbite. Melee does charge Blastwave and you CAN slide and activate blastwave with a glaive in hand
+29		Cadmus Ridge Lancecap			Will create a Diamond Lance
+30		Cuirass of the Falling Star			While Amplified, Glaive Melee kills grant additional Super Energy
+31		Doom Fang Pauldron			[+10/17/22/25%] Void Shot Dmg per Surge stack (max 4)
+32		Dunemarchers			After sprinting for 1.5 sec, Glaive Melee will Shock enemy and chain to nearby enemies, gaining 2 stacks of Bolt Charge per enemy shocked.
+33		Eternal Warrior			[+10/17/22/25%] Arc Shot Dmg per Surge stack (max 4)
+34		Hallowfire Heart			Melee works on Scorched enemies with Sol Invictus
+35		Hazardous Propulsion			Every 4 kills builds a rocket stack. Disruption Break buffs Rocket damage by 50%
+36		Heart of Inmost Light			[+25%/50%] Glaive Melee Dmg per stack (max 2) for 5 sec
+37		Helm of Saint-14			15 sec duration. [+25%] Damage. Does not grant Weapons of Light with Edge of Action Remote Shield
+38		Icefall Mantle			Can work with melee if Tectonic Harvest and/or Whisper of Fractures is equipped
+39		An Insurmountable Skullfort			Melee energy is refilled per hit
+40		Khepri's Horn
+41		Mask of the Quiet One			Will gain Devour
+42		One-Eyed Mask
+43		The Path of Burning Steps			[+6/9/12%] Solar Shot Dmg per Roaring Flames stack (max 3). Stacks with Surges
+44		Phoenix Cradle			Works on Scorched enemies with Sol Invictus
+45		Precious Scars
+46		Severance Enclosure
+47		Synthoceps			[+165%] Glaive Melee Dmg while 3+ enemies within 15m. Lingers for 5 sec post-surrounded
+48		Wishful Ignorance			Charged Melee is refilled faster
+49		Wormgod Caress			[+80/160/240/320/400%] Glaive Melee Dmg and [+0/20/25/35/35%] Shot Dmg per stack based on meter. Each stack lasts 3-10s (starts fast then slows per stack) and kills add a new stack (max 5) and refreshes timer. BUG? Frozen debuff does not buff damage if there are any stacks of Wormgod.
+51		Warlock
+52		Astrocyte Verse
+53		Ballidorse Wrathweavers			[+17%] Stasis Shot Dmg for 10s when a Frostpulse rift is cast. [+25%] Stasis Shot Dmg for 10s after Winter's Wrath Super ends
+54		Boots of the Assembler			Can self-proc if you have BotA on and Lumina out: Cast Empowering rift, let Noble Seeker hit ally, fire Noble Round from Lumina at ally and gain Blessing of the Sky
+55		Crown of Tempests			Works with Voltshot Perk
+56		Dawn Chorus			Works with Incandescent Perk
+57		Felwinter's Helm
+58		Karnstein Armlets			Kills also refresh timer from any source of Restoration (including x2) to full 8s (12s with Ember of Solace)
+59		Lunafaction Boots
+60		Mataiodoxia			Charged Melee is refilled
+61		Mantle of Battle Harmony			11 sec duration. [+25%] Shot Dmg matching subclass energy while Super is full. Also works with Incandescent and Voltshot
+62		Necrotic Grip			Melee spreads poison, but poison will not activate other weapon perks
+63		Nezarec's Sin
+64		Ophidian Aspect
+65		Phoenix Protocol
+66		Promethium Spur
+67		Rain of Fire			Icarus Dash/Weavewalk reloads but does not activate Reload Perks
+68		Rime-Coat Rainment			Shot will inflict Slow while Bleak Domain is active. Icicle kills do not count as weapon kills for Shot perks
+69		Sanguine Alchemy			[+25%] Shot Dmg matching Super while in Rift. Melee kills can extend rift and apply/refresh 5s mark but will not gain Surge bonus. [+10%] Shot and Melee Dmg against marked targets (stacks with surge and empowering rift)
+70		Secant Filaments			Melee does not gain Anti-Overload; gains Devour with extended duration on Void Super only. While Devour is active, both shot and melee refill Class Energy even while out of rift
+71		Skull of Dire Ahamkara
+72		Starfire Protocol			Hits in Empowering Rift/ while Radiant contribute to Grenade Regen
+73		Sunbracers
+74		Swarmers
+75		Transversive Steps			Sprint does not activate Reload Perks
+76		Verity's Brow			Also works with Incandescent and Voltshot
+77		Wings of Sacred Dawn			Holding down [Block] will hover in air even with no meter. Grants 4 sec of Restoration with Solar Shot final blows
+78		Winter's Guile			[+67.5/122/166/202/228/249/265/278/289/300%] Glaive Melee Dmg per stack based on meter (Melee Kills grants 1 stack, Finishers grant 3 stacks). Each stack lasts 5s and decays one at a time, refreshable on kill/Finisher. On reaching 10 stacks, gain Warlord's Fury (triggered by Glaive Melee) and [+400%] Glaive Melee Dmg for 10 sec
+80		Prismatic (Spirit of) Class Item
+81		Assassin
+82		Inmost Light			Charged Melee is NOT refilled while Glaive is out
+83		Ophidian
+84		Star-Eater
+85		Synthoceps			[+165%] Glaive Melee Dmg while 3+ enemies within 15m. Lingers for 5 sec post-surrounded.
+86		Verity			Also works with Incandescent and Voltshot
+87		Caliban
+88		Coyote
+89		Cyrtarachne
+90		Dragon
+91		Foetracer			Works on Volatile enemies and with Destabilizing Rounds
+92		Galanor
+93		Gyrfalcon
+94		Liar			[+400%] Glaive Melee Dmg
+95		Renewal
+96		Wormhusk
+97		Abeyant
+98		Alpha Lupi
+99		Armamentarium
+100		Bear
+101		Contact
+102		Eternal Warrior			[+25%] Super-Element-matching Shot Dmg for 30 sec after Super ends
+103		Hoarfrost
+104		Horn
+105		Scars			Gain Restoration x1
+106		Severance
+107		Apotheosis			Charged Melee is refilled while Glaive is out
+108		Claw
+109		Filaments			Gain Devour
+110		Harmony			Also works with Incandescent and Voltshot
+111		Necrotic
+112		Osmiomancy
+113		Stag			Gain [+25%] DR while in Rift
+114		Starfire			Hits in Empowering Rift contribute to Grenade Regen
+115		Swarm			Can break a Tangle in 1 hit to produce Threadlings
+116		Vesper			Can proc Amplified

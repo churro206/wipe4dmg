@@ -4,18 +4,23 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Zähler für Jolt, Volatile, Unravel und Bolt Charge in der Ergebniszeile (Opus plant, Sonnet baut)**, siehe `known-inaccuracies.md`. Engine-Arbeit (Zählen in der Simulation), getrennt von der Coverage-Seite. Danach Reihenfolge 2 (Aufräumen).
+**Vorschlag (noch nicht freigegeben): Q1 Quellen-Korrekturen**, Plan in `docs/plans/sources-2026-10.md` (Opus leitet K1 her, Sonnet baut): Quantum-Reload enthält Rally/Lunafaction (doppelt mit unserem Rally-Effekt), Chunk Scalars und Cooldowns gegen Flat Gain, Facet of Courage, Coverage-Einstufungen. Danach Zähler-Block, dann Aufräumen.
 
-Erledigt (2026-10-25): Screenshot-Prüfung entfällt (Inhaber verzichtet, UI-Block „Die erste Minute“ bleibt ungeprüft per Screenshot). Coverage-Seite neu: Katalog in `src/data/coverage-catalog.json` (`npm run coverage`, danach `npm run import:icons` für neue `named:`-Icons), Seite `CoveragePage.tsx`; Nacharbeit nach dem Inhaber-Feedback (Class entfällt, Sortierung, eine Kopfzeile, Icons) am selben Tag. Zweite Nacharbeit am selben Tag: Catalysts, Clarity-Texte, sechs allgemeine Buffs, Icon-Regel (Artifact-Perk vor Mod vor Waffe/Emblem). 26 Einträge ohne Icon (`tests/fixtures/coverage-no-icon.json`), 4 Armor-Teile mit Compendium-Text (`tests/fixtures/coverage-text-fallback.json`). Offen und ungeprüft: Anzeige im Browser; Glossary-Einstufung (Subclass) folgt den Schadenswörtern im Text, Aspect-Zeilen mit gemischten Regeln zeigen „Approximated“. `src/ui/App.tsx` ist noch nicht in Panels aufgeteilt (Aufräum-Block).
+Erledigt (2026-10-25): Sichtung aller 14 Sheets von destiny2.science, Archiv `docs/sources/sheets/` (95 Reiter als TSV, `index.json`, `coverage-hits.json`), Ergebnis `docs/sources/sichtung-2026-10-25.md`.
 
-Zuvor erledigt (2026-10-25): Delta-Lücken. Feast of Light mit Obergrenzen pro Super, Dawn Chorus auf Ignitions, Sol Invictus bei Chaos Reach. Super-Spearman 0,98. Rest in `tests/fixtures/ranking-gate.json`: Gathering Storm und Shards of Galanor (Aegis widerspricht sich zwischen Tabs, Zahlen dort), Super-Top-3 (Stormdancer's Brace fehlt). Offen und ungeprüft: doppelte Ignition bei Daybreak mit Dawn Chorus; Sol Invictus bei Hammer of Sol und Burning Maul (Zeilen nennen auch Roaring Flames x3).
+Zuvor erledigt (2026-10-25, Details im Changelog): Coverage-Seite (`src/data/coverage-catalog.json`, `npm run coverage`, dann `npm run import:icons`; Anzeige im Browser ungeprüft) und Delta-Lücken (Rest in `tests/fixtures/ranking-gate.json`; ungeprüft: doppelte Ignition bei Daybreak mit Dawn Chorus, Sol Invictus bei Hammer of Sol und Burning Maul).
 
 ## Reihenfolge
 
-1. Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (Opus plant, Sonnet baut): siehe oben.
-2. Code-Aufräumen (Sonnet), auch `App.tsx` in Panels: `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
-3. Solar: Roaring Flames x3 und Solar Fulmination (Opus plant), dann Ergo Sum, echte Debuffs am Ziel, fehlende Supers; dazu Stormdancer's Brace (Super-Top-3). Reihenfolge nach dem Rangfolge-Gate. Arbeitsliste: `docs/known-inaccuracies.md`, „Offene Lücken“.
-4. Für 2.0 (`docs/product.md`): Legendary Frames aus Aegis, Optimizer mit Abilities, Aspects und Fragments.
+Details und Fundstellen: `docs/plans/sources-2026-10.md`.
+
+1. Q1 Quellen-Korrekturen (Opus/Sonnet), siehe oben.
+2. Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (Opus plant, Sonnet baut).
+3. Code-Aufräumen (Sonnet), auch `App.tsx` in Panels: `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
+4. Q2 Supers: Längen aus Flat Gain, Song of Flame, Glacial Quake, Bladefury, Hammer of Sol mit Sol Invictus; Stormdancer's Brace (Super-Top-3) (Opus plant).
+5. Q3 Energie: Stat-Kurve, Regen-Multiplikatoren, Energie-Exotics und -Mods (Opus plant).
+6. Q4 Stasis/Strand (echte Debuffs am Ziel, Shatter, Threadlings, Freeze), dann Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses (Umfang mit dem Inhaber klären). Ergo Sum und der Rest der alten Solar-Liste nach dem Rangfolge-Gate.
+7. Für 2.0 (`docs/product.md`): Legendary Frames aus Aegis (Grundwerte auch in Endgame Analysis Archetypes), Optimizer mit Abilities, Aspects und Fragments.
 
 Nach drei Funktions-Blöcken folgt ein Aufräum-Block.
 

@@ -1,0 +1,79 @@
+2			Buff	Source	Notes
+5	REGEN	Applies to Regen Rate from Discipline Stat
+6	Armor Mods
+7		Into the Light	50/100/150/200/250%	VotD Raid	Per Copy up to 5 (and no stacks of Pervading Darkness)
+9	Fragments
+10		Ember of Benevolence	400%	Solar	For 6 sec when applying cure, radiant, restoration, healing, or reviving allies
+11		Spark of Recharge	400%	Arc	While in Critical Health
+12		Whisper of Shards	500%	Stasis	For 6 sec per Stasis Crysal Shattered, up to 10 sec
+14	Hunter
+15		Fr0st-EE5	100%	Exotic Legs	While Sprinting
+17	Titan
+18		Hallowfire Heart	75% [350%]	Exotic Chest	While Super is uncharged [Charged]
+19		Sol Invictus	100%	Solar Aspect	While in a Sunpsot for 5 sec
+20		Offensive Bulwark	400%	Void Aspect	While Void Overshield is active or inside a Ward of Dawn
+21		Heart of Inmost Light	400% [800%]	Exotic Chest	With Empowered Grenade x1 [x2] for 5 sec
+23	Warlock
+24		Starfire Protocol	20%	Exotic Chest	While Fusion Grenade Equipped
+25		Eye of Another World	50%	Exotic Helmet
+26		Verity's Brow	50/100/150/200/250%	Exotic Helmet	Per Death Throes stacks (up to 5) for 11 sec
+27		Crown of Tempests	175/350/575%	Exotic Helmet	While on Arc subclass, per stack with Arc Ability and Jolt kills for 7 sec
+28		Nezarec's Sin	300%	Exotic Helmet	After Void Kill for 2.5 sec (up to 20 sec)
+29		Contraverse Hold	2000%	Exotic Arms	After Charged Void Grenade Hit for 2.5 sec (4 sec cooldown)
+31	DAMAGE
+32	Armor Mods
+33		Into the Light	25/50/75/100/125%	VotD Raid	Per Copy up to 5 (and not stacks of Pervading Darkness)
+34		Nightmare Crusher	50/100/150%	Nightmare Hunt	Against Nightmare Bosses [Level 1/2/3]
+36	Fragments
+37		Facet of Courage	10%	Prismatic	Light Sourced Abilities vs Dark-debuffed enemies
+38		Thread of Evolution	53% [33%]	Strand	Threadling damage against minors/Elites [minibosses/bosses]
+39		Whisper of Fissures	100%	Stasis	Stasis Crystal Shatter Damage
+41	Hunter
+42		Young Ahamkara's Spine	14%	Exotic Arms	For Tripmine Grenades
+44	Titan
+45		Heart of Inmost Light	20% [35%]	Exotic Chest	With Empowered Grenade x1 [x2] for 5 sec
+46		Roaring Flames	20/44/73%	Solar Aspect	Level 1/2/3
+48	Warlock
+49		Verity's Brow	20/40/60/80/100%	Exotic Helmet	Per Death Throes stacks (up to 5)
+51	GRENADE ENHANCEMENTS
+52	Mechanics
+53	While on a Strand subclass or with certain exotics, a Strand debuffed enemy [Sever/Unravel/Suspend] creates a Tangle upon death [12s cooldown]
+55	Armor Mods:
+56	Fastball [Arms] increases height/distance of thrown grenades by 25%
+57	Firepower [Arms] spawns 1 small Orb of Power on Grenade Kill
+58	Momentum Transfer [Arms] grants 12% [17%] {20%} Melee energy on grenade hit (7 sec cooldown)
+59	Bolstering Detonation [Arms] grants 12% [17%] {20%} Class Ability energy on grenade hit (7 sec cooldown)
+61	Fragments:
+62	Spark of Magnitude [Arc Fragment] for Lightning/Pulse/Storm/Enhanced Thundercloud
+63	Spark of Shock [Arc Fragment] applies Jolt to Arc Grenades
+64	Echo of Remnants [Void Fragment] extends Void Grenades that linger by 2 seconds
+65	Echo of Undermining [Void Fragment] applies Weaken to enemies for 5 seconds
+66	Whisper of Durance [Stasis Fragment] extends Duskfield Grenades and Stasis Turrets by 2 seconds
+67	Thread of Finality [Strand Fragment] creates a Threadling with a Finisher
+68	Thread of Rebirth [Strand Fragment] creates a Threadling after some kills with a Strand Weapon
+69	Thread of Transmutation [Strand Fragment] creates a Tangle after a kill while Woven Mail is active
+70	Facet of Dominance [Prismatic Fragment] applies Jolt for Arc Grenades and Weaken for Void Grenades
+72	Exotic Weapon
+73	Forerunner [Exotic Weapon] catalyst alt-fire consumes 6 ammo for Kinetic Grenade
+75	Hunter
+76	Touch of Winter [Stasis Hunter Aspect] for Glacier/Duskfield/Coldsnap Grenades
+77	Widow's Silk [Strand Hunter Aspect] for Extra Grenade Charge
+78	Lucky Raspberry [Hunter Exotic Chest] for Arcbolt Grenades
+79	Mothkeeper's Wraps [Hunter Exotic Arms] for 2 charges of Moth Cage unique grenade
+80	Renewal Grasps [Hunter Exotic Arms] for Duskfield Grenades
+81	Shinobu's Vow [Hunter Exotic Arms] for Skip Grenades
+82	Young Ahamkara's Spine [Hunter Exotic Arms] for Tripmine Grenades
+84	Titan
+85	Touch of Thunder [Arc Titan Aspect] for Flashbang/Pulse/Lightning/Storm
+86	Armamentarium [Titan Exotic Chest] Extra Grenade Charge
+87	Ashen Wake [Titan Exotic Arms] for Fusion Grenades
+89	Warlock
+90	Touch of Flame [Solar Warlock Aspect] for Healing/Firebolt/Solar/Fusion (Note: bonus Fusion explosion does not add more Scorch stacks)
+91	Chaos Accelerant [Void Warlock Aspect] for Vortex/Axion Bolt/Scatter/Magnetic
+92	Bleak Watcher [Stasis Warlock Aspect] converts grenade into Stasis Turret
+93	The Wanderer [Strand Warlock Aspect] creates a Tangle upon Threadling kill
+94	Getaway Artist [Warlock Exotic Arms] converts Arc Grenade into Sentient Arc Soul
+95	Nothing Manacles [Warlock Exotic Arms] for Scatter Grenades
+96	Osmiomancy [Warlock Exotic Arms] for Coldsnap Grenades
+97	Starfire Protocol [Warlock Exotic Chest] for Fusion Grenades
+98	Sunbracers [Warlock Exotic Arms] for Solar Grenade Solar Grenade
