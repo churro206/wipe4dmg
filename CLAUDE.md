@@ -1,74 +1,52 @@
 # wipe4dmg
 
-## Ziel
+Berechnet den Total Damage eines Destiny-2-Builds. Die Unterschiede zwischen Builds sollen stimmen, absolute Zahlen nicht. Spielwerte kommen automatisch aus Community-Quellen (ADR 0005). Privat, für den Inhaber und seine Freunde.
 
-Die App berechnet den Total Damage eines Builds in Destiny 2. Die Unterschiede zwischen Builds sollen stimmen, absolute Zahlen nicht. Spielwerte kommen aus Community-Quellen, möglichst automatisch (ADR 0005). Privat, für den Inhaber und seine Freunde.
-
-**Stand und nächste Schritte: `docs/plans/current.md`.** Lies `docs/adr/README.md` und nur die ADRs, die der Block betrifft. Weitere Dokumente: `docs/requirements.md` (Glossary), `docs/mechanics/README.md` (vor Änderungen an Effects oder Simulator), `docs/guides/` (Waffen, Abilities, Messungen), `docs/ui-inspiration.md` (vor Änderungen an der Oberfläche), `docs/roadmap.md` (Website, englisch).
+**Zu Beginn: `docs/plans/current.md`.** Danach nur, was der Block braucht: `docs/adr/README.md`, Glossary `docs/requirements.md`, `docs/mechanics/README.md` (vor Effects oder Simulator, mit Toleranzen), `docs/ui-inspiration.md` (vor der Oberfläche).
 
 ## Architektur
 
 ```
 src/data/      Data Files (JSON) und Zod-Schema (schema.ts). Keine Logik.
-src/engine/    Simulator und Optimizer. Reine Funktionen, kein React, keine Browser-APIs.
-src/ui/        React-Oberfläche. Ruft nur die Engine auf.
-scripts/       Import-Skripte (ADR 0005). Reine Funktionen in scripts/lib/, getestet.
+src/engine/    Simulator, Optimizer. Reine Funktionen, kein React.
+src/ui/        React. Ruft nur die Engine auf.
+scripts/       Import (ADR 0005). Logik in scripts/lib/, getestet.
 tests/         Vitest-Tests.
 ```
 
-Vom Build zur Simulation gibt es genau einen Weg: `buildSimulation(build, gameData)`.
+Einziger Weg vom Build zur Simulation: `buildSimulation(build, gameData)`.
 
 ## Regeln
 
-- Antworte deutsch, kurz und klar. Code, Data Files und alles, was Spieler sehen, ist englisch. Nur Begriffe aus dem Glossary.
-- Keine Zahlenwerte im Code. Jeder Wert in einer Data File hat `source`. Unbekannt ist `null` mit Status `missing`. Nie raten.
-- **Spielwerte nachschlagen:** zuerst `npm run facts -- "<Name>"`. Große Snapshots (`aegis-*`, `quantum-weapons`, `clarity`, `compendium-*`, `manifest-*`, `weapon-packages`) nie direkt lesen.
-- **Quellen zuerst:** Vor jeder gemeldeten Lücke den Skill `recherche` abarbeiten; eine Lücke nur mit Tabelle der geprüften Quellen melden. Herleiten ist erwünscht, wenn ein Gate es gegen eine Messung prüft.
-- **Breite vor Genauigkeit (Inhaber, 2026-10-23, präzisiert 2026-10-24):** Falsch Übernommenes (Wert, Dauer oder Filter widerspricht dem Quelltext) wird immer korrigiert, egal wie klein. Die Schwelle gilt nur für fehlende Mechaniken und eigene Gates: ab 2 % Wirkung, gemessen als relative Änderung des Total Damage eines Builds, der das Item nutzt, im schlechtesten Fall über 10, 30 und 60 s Damage Phase. Darunter gilt der Wert aus dem Text als `derived`, ohne eigenes Gate. Abweichungen kommen in „Bekannte Ungenauigkeiten“ (`docs/plans/current.md`) und blockieren nichts. Ein Block nimmt eine ganze Kategorie nach einer Regel auf, keine Einzelblöcke. Keine neuen ADRs oder Regeln außer bei einem neuen Konzept.
-- **Eine Quelle genügt:** Ein Wert aus Aegis, Quantum, Compendium, Clarity, Court oder Manifest gilt als bestätigt. Bei Konflikt die vertrauenswürdigere Quelle, mit Grund. Bei Waffen Aegis vor Quantum. Texte ohne Messung: Status `derived`.
-- **Einzelfälle von Hand:** Override-Datei mit Wert, Quelle, Zitat und Herleitung. Erst bei mehreren gleichen Fällen eine Regel. Fremde Annahmen in Messungen (z. B. Artifact-Perks bei Aegis) mit ihrem Wert herausrechnen.
-- **Spielweise:** optimal wie ein erfahrener Spieler, im Zweifel die Annahmen von Aegis. Ein Boss, keine Adds (ADR 0015).
-- Pro Bucket die Stacking-Regel aus `buckets.json`, Buckets multiplizieren sich. Damage Instances auf einer Zeitachse (ADR 0001).
-- Keine Funktion auf Vorrat.
-- Den Inhaber nur fragen bei Umfang, Oberfläche und Annahmen über die Spielweise. Widerspruch ist erwünscht.
+- Antworte deutsch und kurz (Zusammenfassung zwei bis drei Sätze). Code, Data Files und alles, was Spieler sehen, englisch. Begriffe aus dem Glossary.
+- Keine Zahlen im Code. Jeder Wert in einer Data File hat `source`; unbekannt ist `null` mit Status `missing`. Nie raten.
+- Nachschlagen: zuerst `npm run facts -- "<Name>"`. Große Snapshots (`aegis-*`, `quantum-weapons`, `clarity`, `compendium-*`, `manifest-*`, `weapon-packages`) nie direkt lesen.
+- Lücken nur nach dem Skill `recherche` melden. Herleiten ist erwünscht, wenn ein Gate es gegen eine Messung prüft.
+- Eine Quelle genügt. Bei Konflikt die vertrauenswürdigere mit Grund, bei Waffen Aegis vor Quantum. Text ohne Messung: `derived`. Einzelfälle per Override-Datei (Wert, Quelle, Zitat, Herleitung). Fremde Annahmen in Messungen herausrechnen.
+- **Breite vor Genauigkeit (Inhaber):** Falsch Übernommenes (Wert, Dauer, Filter gegen den Text) immer korrigieren. Fehlende Mechaniken und eigene Gates erst ab 2 % Wirkung auf den Total Damage eines Builds mit dem Item (schlechtester Fall über 10, 30, 60 s); darunter Wert aus dem Text als `derived`, Abweichung nach `docs/known-inaccuracies.md`. Ein Block nimmt eine ganze Kategorie nach einer Regel auf.
+- Spielweise optimal, im Zweifel wie Aegis. Ein Boss, keine Adds (ADR 0015). Buckets nach `buckets.json`, Zeitachse nach ADR 0001.
+- Keine Funktion auf Vorrat. Den Inhaber nur bei Umfang, Oberfläche und Spielweise fragen. Widerspruch ist erwünscht.
 
 ## Arbeitsweise
 
-1. User Story und betroffene Dateien lesen.
-2. Plan vorschlagen, auf Freigabe warten. Einen freigegebenen Block ohne Zwischenfragen durcharbeiten.
-3. Tests zuerst. Jede Änderung an `src/engine` braucht einen Test.
-4. Prüfen mit dem Skill `pruefen`.
-5. Vertikale Scheiben: Daten, Engine und Oberfläche zusammen. Aufräum-Commits getrennt von Verhaltensänderungen.
-6. Zusammenfassung in zwei bis drei Sätzen.
+1. Plan vorschlagen, auf Freigabe warten; einen freigegebenen Block ohne Zwischenfragen durcharbeiten.
+2. Tests zuerst; jede Änderung an `src/engine` braucht einen Test. Prüfen mit dem Skill `pruefen`.
+3. Vertikale Scheiben (Daten, Engine, Oberfläche). Aufräumen getrennt von Verhaltensänderungen.
+4. Ein Block pro Sitzung. Am Ende `docs/plans/current.md` pflegen (höchstens 4 KB), dann `/clear` vorschlagen. Nach drei Funktions-Blöcken ein Aufräum-Block.
 
-## Sparsam arbeiten (Inhaber, 2026-10-23, Claude Pro)
-
-- Ein Block pro Sitzung. Am Ende `docs/plans/current.md` so pflegen, dass der nächste Block nach `/clear` ohne Chat-Verlauf starten kann; dann `/clear` vorschlagen.
-- Modell: Pläne, ADRs und schwierige Herleitungen mit Opus, Umsetzung mit Sonnet. Jede Antwort, die einen Schritt vorschlägt oder abschließt, nennt das empfohlene Modell für den nächsten Schritt (Inhaber, 2026-10-23).
-- Kleine Ausgaben: `npm run test:quiet`, `npm run facts`, große Dateien nur ausschnittweise lesen (Grep, dann Read mit `offset`), Changelog nur per Edit ergänzen.
-- Online und Browser nur im Budget des Skills `recherche`. Keine Subagents.
+- Modell: Pläne und schwierige Herleitungen mit Opus, Umsetzung mit Sonnet. Jede Antwort, die einen Schritt vorschlägt oder abschließt, nennt das Modell für den nächsten.
+- Online nur im Budget des Skills `recherche`. Keine Subagents. Commit-Betreff höchstens 72 Zeichen.
 
 ## Definition of Done
 
-- `npm test`, `npx tsc -b` und lint grün. Die Vergleichsbasis ist nur gewollt geändert.
-- Eine neue Daten-Art oder Mechanik hat ein Szenario in `tests/plausibility.test.ts`, das ohne die Änderung rot war.
-- Die Antwort nennt den Beleg, sonst heißt es „ungeprüft“.
-- Commit und Push, `docs/roadmap.md` und `docs/plans/current.md` aktualisiert.
+- `npm run test:quiet`, `npx tsc -b` und `npm run lint` grün (die CI prüft dasselbe). Die Vergleichsbasis ist nur gewollt geändert.
+- Neue Daten-Art oder Mechanik: Szenario in `tests/plausibility.test.ts`, ohne die Änderung rot.
+- Beleg nennen, sonst „ungeprüft“.
+- Commit und Push; `docs/roadmap.md`, `docs/plans/current.md` und `docs/changelog.md` aktualisiert.
 
-## Befehle
+## Befehle und Shell
 
-- `npm test`, `npm run test:quiet` (nur Ergebnis und Fehler), `npm run sanity` (Plausibilitäts-Gate), `npm run build` (`tsc -b` prüft auch `scripts/`), `npm run dev`
-- `npm run facts -- "<Name>"`: Name in allen Snapshots suchen, kompakt
-- `npm run coverage`: `docs/coverage.md` neu schreiben (generiert)
-- `npm run check:text`: `docs/text-check.md` (jeder Part, Catalyst und Grant gegen seinen Text; Gründe in `tests/fixtures/text-check.json`)
-- Import (lädt herunter): `import:weapons`, `import:compendium`, `import:court`, `import:abilities`, `import:bosses`, `import:reload`, `import:icons` (braucht `BUNGIE_API_KEY` in `.env.local`, nie committen)
-- Build (ohne Download, schreibt Data Files und Prüftabellen): `build:weapons`, `build:armor`, `build:keywords`, `build:abilities`, `build:buffs`, `build:energy`
-- Reihenfolge nach einem Patch: `docs/plans/current.md`, Abschnitt „Werkzeuge“
-
-## Shell-Befehle
-
-- Ein Befehl pro Aufruf, keine Ketten mit `&&`, `;` oder `|`. Kein `cd`, Pfade relativ zum Projektordner.
-- Kein `sed`, `awk` oder `paste`. Suchen und Lesen mit Grep, Glob und Read.
-- **Nie `node -e`, nie `node <Wegwerf-Skript>`, keine temporären Skripte** (Inhaber, wiederholt, zuletzt 2026-10-24). Nachschlagen in Data Files: `npm run facts -- "<Name>"`, dann Grep (mit `-C`) und Read mit `offset`. Ein Skript nur für eine echte Auswertung über viele Zeilen, vorher kurz ankündigen; es liegt in `tmp/` (in `.gitignore`) und läuft als einzelnes `node tmp/<datei>.ts`.
-- Bash nur für `npm run …`, `npx tsc -b` und `git`. Alles andere mit den Werkzeugen Grep, Glob, Read, Edit, Write.
-- Externe Daten einmal unter `docs/sources/` speichern.
+- `npm run test:quiet`, `sanity` (Plausibilitäts-Gate), `probe` (Gesamtprobe), `facts -- "<Name>"`, `coverage`, `check:text`, `build`, `dev`. Import und Build nach einem Patch: Skill `nach-patch`.
+- Bash nur für `npm run …`, `npx tsc -b`, `git` und `curl -o` in den Scratchpad (Skill `recherche`). Sonst Grep, Glob, Read, Edit, Write. Ein Befehl pro Aufruf, kein `cd`.
+- Kein `node -e` (Hook). Ein Skript nur für eine Auswertung über viele Zeilen, angekündigt, als `node tmp/<datei>.ts`.
+- Externe Daten einmal nach `docs/sources/`.

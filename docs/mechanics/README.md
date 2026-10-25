@@ -20,6 +20,20 @@ Regeln:
 - **Erklärung und Referenz getrennt (Diátaxis):** Die Mechanic-Datei erklärt, wie etwas funktioniert. Die Zahlen, mit denen der Simulator rechnet, stehen nur in `src/data`.
 - **Begriffe** kommen aus dem Glossary in `docs/requirements.md`.
 
+## Toleranzen
+
+Die einzige Liste. Die Konstante im Code gilt; ändert sie sich, diese Tabelle mitziehen.
+
+| Prüfung | Toleranz | Konstante | Grund |
+| --- | --- | --- | --- |
+| Ability aus Teilen gegen Aegis | ±15 % | `COMPONENT_TOLERANCE` (`scripts/lib/abilityComponents.ts`) | ADR 0009, Ergänzung (vorher ±10 %) |
+| Keyword-Anteil in Ability-Paketen | ±2,5 % | `BAKED_TOLERANCE` (`tests/abilityGate.test.ts`) | Keywords zählen nicht doppelt |
+| Waffen-Paket, Timing, Option, Waffen-Effect | ±3 % | `TOLERANCE` (`scripts/lib/weaponPackages.ts`, `tests/weaponEffectGate.test.ts`) | ADR 0011, 0012, 0013 |
+| Gesamtprobe gegen Aegis Sustained/Swap | ±15 % um den Median | `TOLERANCE` (`tests/metaProbe.test.ts`, `tests/metaProbeAuto.test.ts`) | Skala von Aegis kürzt sich heraus |
+| Text-Abgleich: gemessener Wert gegen Prozent im Text | ±25 % | `MEASURED_TOLERANCE` (`scripts/lib/textCheck.ts`) | Text nennt oft nur den Grundwert |
+
+Davon getrennt die **Wirkungsschwelle** (keine Toleranz): Eine fehlende Mechanik oder ein eigenes Gate lohnt sich erst ab 2 % Änderung des Total Damage (Regel „Breite vor Genauigkeit“ in `CLAUDE.md`).
+
 ## Aufbau einer Mechanic-Datei
 
 ```markdown

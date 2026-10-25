@@ -1,75 +1,32 @@
-# React + TypeScript + Vite
+# wipe4dmg
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Damage calculator for Destiny 2 builds. It simulates a single boss damage phase on a timeline (weapons, abilities, supers, buffs and debuffs) and shows the Total Damage of a build. The goal is that the **differences between builds** are right; absolute numbers follow the scale of the Aegis spreadsheet.
 
-Currently, two official plugins are available:
+Live: https://wipe4dmg.pages.dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Game values come from community sources (Aegis Boss Damage, Quantum Damage-ics, Destiny Data Compendium, Clarity, Court's Stacking Guide, Bungie Manifest). Every value in `src/data` names its source.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Start
 
 ```
+npm ci
+npm run dev
+```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Checks
 
 ```
+npm run test:quiet   # all tests
+npx tsc -b           # types, including scripts/
+npm run lint
+npm run sanity       # plausibility gate with a readable table
+npm run probe        # whole-build check against Aegis
+```
+
+## Data import
+
+Import scripts download the sources into `src/data`; build scripts derive the data files and review tables in `docs/` without downloading. The order after a game patch is in `.claude/skills/nach-patch/SKILL.md`. `import:icons` needs `BUNGIE_API_KEY` in `.env.local`.
+
+## Layout
+
+`src/data` data files and schema, `src/engine` simulator and optimizer (pure functions), `src/ui` React app, `scripts` importers, `tests` Vitest. Decisions are in `docs/adr`, the roadmap in `docs/roadmap.md`.
