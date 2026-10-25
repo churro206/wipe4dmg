@@ -862,7 +862,68 @@ export function exoticEffects(inputs: ExoticEffectInputs): {
       rows.push(row);
     }
   }
+  keywordBonusEffects(inputs, rows, effects);
   return { rows, effects };
+}
+
+const IGNITION_BONUS =
+  /\bIgnitions?\b[^.]*?\bdeals?\s+(\d+(?:\.\d+)?)%\s+increased damage/i;
+
+/**
+ * Bonus for the damage of a keyword from any source, e.g. Dawn Chorus: "Ignitions from any source
+ * deal 100% increased damage". Always active; the piece is an ability variant too (Daybreak), so
+ * it is not among the damage buffs.
+ */
+function keywordBonusEffects(
+  inputs: ExoticEffectInputs,
+  rows: ExoticEffectRow[],
+  effects: ExoticArmorEffect[],
+) {
+  for (const entry of inputs.armor) {
+    if (entry.kind === "damageBuff" || entry.bonuses.length === 0) continue;
+    const found = [
+      ...inputs.compendium
+        .filter((c) => sameName(c.name, entry.name))
+        .map((c) => ({ text: c.text, source: inputs.sources.compendium })),
+      ...inputs.clarity
+        .filter((c) => c.itemName !== null && sameName(c.itemName, entry.name))
+        .map((c) => ({ text: c.text, source: inputs.sources.clarity })),
+    ]
+      .map((t) => ({ ...t, match: IGNITION_BONUS.exec(t.text) }))
+      .find((t) => t.match);
+    const bucketId = entry.courtBuffs[0]?.bucketId;
+    if (!found?.match || !bucketId) continue;
+    const percent = Number(found.match[1]);
+    const effect: Effect = {
+      id: `exotic-armor:${entry.id}-ignition`,
+      name: entry.name,
+      code: entry.hash,
+      shortName: entry.name,
+      providers: [{ kind: "armor", slot: "exotic" }],
+      parts: [
+        {
+          type: "multiplier",
+          bucketId,
+          multiplier: {
+            value: factorOf(percent),
+            source: { ...found.source, note: `„${flat(found.match[0])}“; bucket ${bucketId} (court)` },
+          },
+          damageSources: ["keyword"],
+          keywordIds: ["ignition"],
+        },
+      ],
+    };
+    effects.push({ exoticArmorId: entry.id, activation: "always", effect });
+    rows.push({
+      exoticArmorId: entry.id,
+      name: entry.name,
+      rule: 6,
+      kind: "always",
+      reason: `immer aktiv: +${percent} % auf Ignitions aus jeder Quelle („${flat(found.match[0])}“)`,
+      check: `${found.source.name}`,
+      effectId: effect.id,
+    });
+  }
 }
 
 const KIND_TITLES: [ExoticEffectKind, string][] = [

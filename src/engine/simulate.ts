@@ -52,6 +52,7 @@ import {
   activeParts,
   appliesToWeaponType,
   bucketFactors,
+  KEYWORD_COUNTERS,
   productOf,
   type ActiveParts,
   type Factors,
@@ -426,7 +427,11 @@ export function simulate(
     return { ...plain, multiplier: { ...part.multiplier, value: factor } };
   };
   const statPart = weaponStatPart(options.weaponStat, weapon.ammo);
-  const multiplierAt = (timeMs: number, element: Element): Factors => {
+  const multiplierAt = (
+    timeMs: number,
+    element: Element,
+    keywordId?: KeywordId,
+  ): Factors => {
     const holdDraw = holdFactorAt(timeMs);
     return {
       ...bucketFactors(
@@ -438,7 +443,12 @@ export function simulate(
           ...(statPart ? [statPart] : []),
         ],
         buckets,
-        { damageSource, element, weaponType: weapon.weaponType },
+        {
+          damageSource,
+          element,
+          weaponType: weapon.weaponType,
+          ...(keywordId ? { keywordId } : {}),
+        },
       ),
       ...(holdDraw !== 1 ? { holdDraw } : {}),
     };
@@ -566,6 +576,7 @@ export function simulate(
             damageSource,
             element: keyword.element,
             weaponType: weapon.weaponType,
+            keywordId: keyword.id,
           },
         );
       }
@@ -582,6 +593,7 @@ export function simulate(
             damageSource: source.damageSource,
             element: keyword.element,
             abilityId: source.abilityId,
+            keywordId: keyword.id,
           },
         );
       }
@@ -599,6 +611,7 @@ export function simulate(
     return bucketFactors(parts, buckets, {
       damageSource: "keyword",
       element: keyword.element,
+      keywordId: keyword.id,
     });
   };
   // Keyword parts of the weapon and of the abilities in the build are always active (ADR 0015).
@@ -828,7 +841,11 @@ function thresholdEvents(
   shots: Shot[],
   counterFactorAt: (counterId: CounterId, timeMs: number) => number,
   isInPhase: (timeMs: number) => boolean,
-  multiplierAt: (timeMs: number, element: Element) => Factors,
+  multiplierAt: (
+    timeMs: number,
+    element: Element,
+    keywordId?: KeywordId,
+  ) => Factors,
 ): RunEvent[] {
   const thresholds = weapon.intrinsicParts.flatMap((part) =>
     part.type === "threshold"
@@ -886,7 +903,14 @@ function thresholdEvents(
             counter.stacks >= t.threshold,
         );
         if (!reached) return;
-        const factors = multiplierAt(application.timeMs, reached.part.element);
+        const keywordId = (
+          Object.keys(KEYWORD_COUNTERS) as KeywordId[]
+        ).find((id) => KEYWORD_COUNTERS[id] === reached.part.counterId);
+        const factors = multiplierAt(
+          application.timeMs,
+          reached.part.element,
+          keywordId,
+        );
         emit({
           id: reached.part.damageInstanceId,
           timeMs: application.timeMs,

@@ -785,6 +785,21 @@ describe("exotic effects from the rotation", () => {
     expect(ratio).toBeCloseTo(1.35, 2);
   });
 
+  it("Dawn Chorus: Ignitions of One Thousand Voices ×2, its shots unchanged", () => {
+    const warlock = { guardianClass: "warlock" as const, subclass: "solar" as const };
+    const plain = run(warlock);
+    const worn = run({ ...warlock, exoticArmorId: "dawn-chorus" });
+    const sum = (r: SimulationResult, id: string) =>
+      r.damageInstances.filter((d) => d.id === id).reduce((s, d) => s + d.damage, 0);
+    note(
+      "Dawn Chorus auf OTV: Ignition / Shot",
+      `×${fmt(sum(worn, "ignition") / sum(plain, "ignition"))} / ×${fmt(sum(worn, "shot") / sum(plain, "shot"))}`,
+      "×2,00 / ×1,00",
+    );
+    expect(sum(worn, "ignition") / sum(plain, "ignition")).toBeCloseTo(2, 3);
+    expect(sum(worn, "shot")).toBeCloseTo(sum(plain, "shot"), 3);
+  });
+
   it("Foetracer: x4 surge only for weapons of the grenade's element", () => {
     const weaponDamage = (grenade: string, exotic?: string) =>
       damageOf(

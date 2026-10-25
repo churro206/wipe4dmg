@@ -2,7 +2,7 @@
 
 Generiert mit `npm run check:text` (Regel in `scripts/lib/textCheck.ts`). Jeder Multiplier-Part, Catalyst und Grant neben den Texten seines Items (Clarity, Compendium, Court, Zitat der Quelle). Wert: (m − 1) × 100 steht im Text; Aegis- und Quantum-Messungen zählen als gemessen, eine Prozentzahl im Text trotzdem auf ±25 %. Dauer: eine Dauer aus dem Text. Ziel: Quellen, Elemente und Waffentypen gegen die Wörter im Text. „Ungenutzt“: Prozentzahlen im Text, die kein Part des Items nutzt (nur zur Info). Gründe für Abweichungen: `tests/fixtures/text-check.json`.
 
-Zeilen 312: ok 286, über Effect 5, gemessen 7, kein Text 3, Abweichung 11 (davon ohne Grund 1).
+Zeilen 314: ok 288, über Effect 5, gemessen 7, kein Text 3, Abweichung 11 (davon ohne Grund 1).
 
 ## Abweichungen
 
@@ -309,6 +309,8 @@ Zeilen 312: ok 286, über Effect 5, gemessen 7, kein Text 3, Abweichung 11 (davo
 | Wormhusk Crown | duration | 10 s | ok | Compendium Exotic Armors: Grants a stack of Burning Souls for 10 seconds, up to a maximum of 3 stacks. |  |
 | Young Ahamkara's Spine | value | +14 % exoticIntrinsic, grenade | ok | Compendium Exotic Armors: 14% Increased Explosion Damage. Explosion Length and Width are increased to 14 metres. | 30 %, 10 % |
 | Young Ahamkara's Spine | target | +14 % exoticIntrinsic, grenade | ok |  |  |
+| Dawn Chorus | value | +100 % exoticIntrinsic, keyword | ok | Compendium Exotic Armors: Ignitions deal 100% increased damage. | 40 %, 5 % |
+| Dawn Chorus | target | +100 % exoticIntrinsic, keyword | ok |  |  |
 | Ager's Scepter: Catalyst | value | +76.32 % weaponPerk | gemessen | 80 % im Text |  |
 | Anarchy: Catalyst | value | +15.7 % weaponPerk | gemessen | Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback |  |
 | D.A.R.C.I.: Networked Targeting x5 | value | +6.03 % weaponPerk | ok | Catalyst Networked Targeting, D.A.R.C.I. Catalyst: • 2.8%\|6.1%\|9.1%\|12.5%\|15.9% increased damage |  |

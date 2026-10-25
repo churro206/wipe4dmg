@@ -6,7 +6,7 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 
 | Art | Zeilen |
 | --- | --- |
-| Immer aktiv (Regel 6) | 2 |
+| Immer aktiv (Regel 6) | 3 |
 | Vorher aufgebaut, Option (Regel 3) | 12 |
 | Kill-Buff ohne Dauer (Regel 3) | 2 |
 | Fenster aus der Rotation (Regel 4) | 15 |
@@ -27,6 +27,7 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | --- | --- | --- | --- |
 | Fortune's Favor | 6 | immer aktiv: +15 % auf weapon | Compendium 20 %, Clarity 15 % |
 | Young Ahamkara's Spine | 6 | immer aktiv: +14 % auf grenade, nur Tripmine Grenade | Compendium 14 %, Clarity 14 % |
+| Dawn Chorus | 6 | immer aktiv: +100 % auf Ignitions aus jeder Quelle („Ignitions deal 100% increased damage“) | Destiny Data Compendium (tab Exotic Armors) |
 
 ## Vorher aufgebaut, Option (Regel 3)
 

@@ -7,7 +7,7 @@ Erzeugt mit `npm run probe` (`tests/rankingGate.test.ts`). Gruppen nach der Spal
 | Gruppe | Aegis-Zeilen | im Modell | Abdeckung | geprüft | Spearman | Treffer | alle | Spearman | Treffer |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Supers | 68 | 51 | 75 % | 18 | 0.97 | 2/3 | 51 | 0.74 | 3/3 |
-| Heavy | 95 | 46 | 48 % | 19 | 0.99 | 3/3 | 46 | 0.87 | 2/3 |
+| Heavy | 95 | 46 | 48 % | 19 | 1.00 | 3/3 | 46 | 0.87 | 2/3 |
 | Special | 84 | 44 | 52 % | 6 | 1.00 | 3/3 | 44 | 0.51 | 2/3 |
 
 ## Delta-Paare (geprüfte Zeilen)
@@ -20,8 +20,8 @@ Erzeugt mit `npm run probe` (`tests/rankingGate.test.ts`). Gruppen nach der Spal
 | Supers | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | Feast of Light x6 | 68.7 | 70.0 | 1.3 |  |
 | Supers | Nova Bomb - Cataclysm, Feast of Light x6, Facet of Courage, Limit Break | Feast of Light x6 | 50.0 | 50.0 | 0.0 |  |
 | Supers | Twilight Arsenal, Feast of Light x6, Facet of Courage, Limit Break | Feast of Light x6 | 50.0 | 50.0 | 0.0 |  |
-| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | Dawn Chorus | 23.7 | 0.0 | -23.7 | Delta 0 instead of +24 %: Dawn Chorus has no damage in the model; cause not examined yet (block Delta-Lücken) |
 | Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | Ember of Ashes | 11.6 | 13.6 | 1.9 |  |
+| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | Dawn Chorus | 23.7 | 21.9 | -1.7 |  |
 | Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | catalyst | 30.5 | 32.2 | 1.7 |  |
 | Heavy | One Thousand Voices, Ember of Ashes, Particle Reconstruction | Ember of Ashes | 17.3 | 18.8 | 1.4 |  |
 | Heavy | One Thousand Voices, catalyst, Particle Reconstruction | catalyst | 37.1 | 38.3 | 1.1 |  |

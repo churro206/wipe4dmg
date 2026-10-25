@@ -36,6 +36,7 @@ export type DamageTarget = {
   element: Element;
   weaponType?: WeaponType; // omitted for abilities
   abilityId?: string; // set for damage of an ability
+  keywordId?: KeywordId; // set for keyword damage, whatever source set it off
 };
 
 /**
@@ -121,6 +122,12 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
   return effect.parts.some((part) => {
     switch (part.type) {
       case "multiplier":
+        // keyword damage of the weapon's own counters, e.g. the ignitions of scorch
+        if (part.keywordIds)
+          return part.keywordIds.some((id) => {
+            const counterId = KEYWORD_COUNTERS[id];
+            return counterId !== undefined && counterIds.has(counterId);
+          });
         return (
           part.damageSources.includes("weapon") &&
           (part.elements === undefined ||
@@ -161,7 +168,10 @@ export function bucketMultipliers(
       .filter(
         (part) =>
           part.bucketId === bucket.id &&
-          part.damageSources.includes(target.damageSource) &&
+          (part.keywordIds
+            ? target.keywordId !== undefined &&
+              part.keywordIds.includes(target.keywordId)
+            : part.damageSources.includes(target.damageSource)) &&
           (part.elements === undefined ||
             part.elements.includes(target.element)) &&
           appliesToWeaponType(part.weaponTypes, target.weaponType) &&

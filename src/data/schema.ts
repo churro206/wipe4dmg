@@ -396,6 +396,9 @@ export const MultiplierPart = z.object({
   abilityIds: z.array(z.string()).optional(), // omitted: all abilities; set: only these abilities
   // Not these abilities, where the item has a lower cap for them, e.g. Feast of Light (Nova Bomb 50 %)
   excludeAbilityIds: z.array(z.string()).min(1).optional(),
+  // Damage of these keywords from any source instead of the damage sources, e.g. Dawn Chorus
+  // ("Ignitions from any source deal 100% increased damage")
+  keywordIds: z.array(KeywordId).min(1).optional(),
   // weaponMatchesSuperElement: only while the weapon has the element of the super, e.g. Mantle of
   // Battle Harmony (ADR 0014); weaponMatchesTriggerElement: only in windows opened by an ability of
   // the weapon's element, e.g. Foetracer (ADR 0015, U6-1b)

@@ -13,7 +13,6 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 24. Abweichun
 | Chaos Reach, Geomag Stabilizers, Sol Invictus, Thunderous Retort | 79,840 | 54,572 | 0.684 | -32 %; cause not examined (the same row without Sol Invictus fits x1.00, so it is the Sol Invictus assumption: a Titan aspect with a Sunspot, not modelled for Chaos Reach) |
 | Tractor Cannon | 22,149 | 18,458 | 0.833 | -17 %; cause not examined |
 | Telesto | 51,208 | 43,123 | 0.842 | -16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now) |
-| One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | 120,613 | 105,112 | 0.871 |  |
 | Arbalest | 58,835 | 56,161 | 0.955 |  |
 | The Colony | 49,096 | 47,133 | 0.960 |  |
 | Gathering Storm, Feast of Light x6, Limit Break | 21,772 | 21,203 | 0.974 |  |
@@ -35,6 +34,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 24. Abweichun
 | Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | 32,463 | 32,941 | 1.015 |  |
 | Deterministic Chaos, Target Lock | 137,936 | 140,043 | 1.015 |  |
 | One Thousand Voices, Particle Reconstruction | 63,705 | 66,942 | 1.051 |  |
+| One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | 120,613 | 128,132 | 1.062 |  |
 | One Thousand Voices, Ember of Ashes, Particle Reconstruction | 74,750 | 79,499 | 1.064 |  |
 | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | 97,543 | 105,112 | 1.078 |  |
 
@@ -95,7 +95,6 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 24. Abweichun
 | Slayer's Fang | 83,139 | 69,713 | 0.839 | Assault Mag; includes submunitions |
 | Ergo Sum | 108,087 | 93,245 | 0.863 | vortex frame; Tempered Edge; heavy spam; Transcendent; excludes Transcendence 5% bonus |
 | Needlestorm | 24,214 | 20,926 | 0.864 | Pack Tactics x2 |
-| Daybreak | 32,716 | 28,809 | 0.881 | grounded |
 | Tessellation | 154,322 | 138,544 | 0.898 | full grenade uptime; Property: Irreducible; Transcendent but excludes 5%; simulated |
 | The Lament | 198,217 | 178,806 | 0.902 | 2L1H combo; Solar Fulmination |
 | The Lament | 197,074 | 178,806 | 0.907 | 3L1H1R combo; Sword Storm Combo; simulated |
@@ -131,6 +130,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 24. Abweichun
 | Heartshadow | 103,813 | 104,462 | 1.006 | heavy attacks; Shot in the Dark |
 | The Lament | 176,080 | 178,806 | 1.015 | 3L1H1R combo; Sword Storm Combo |
 | Vexcalibur | 45,160 | 46,572 | 1.031 | projectile |
+| Daybreak | 32,716 | 35,173 | 1.075 | grounded |
 | The Lament | 165,335 | 178,806 | 1.081 | 4L1H1R combo; Sword Storm Combo |
 | Winter's Wrath | 30,297 | 34,474 | 1.138 | light-heavy cycle; Whisper of Fissures |
 | The Fourth Horseman | 47,544 | 59,430 | 1.250 | body |

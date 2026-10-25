@@ -1532,5 +1532,34 @@
         }
       ]
     }
+  },
+  {
+    "exoticArmorId": "dawn-chorus",
+    "activation": "always",
+    "effect": {
+      "id": "exotic-armor:dawn-chorus-ignition",
+      "name": "Dawn Chorus",
+      "code": 3767088557,
+      "shortName": "Dawn Chorus",
+      "providers": [{ "kind": "armor", "slot": "exotic" }],
+      "parts": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 2,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "note": "„Ignitions deal 100% increased damage“; bucket exoticIntrinsic (court)"
+            }
+          },
+          "damageSources": ["keyword"],
+          "keywordIds": ["ignition"]
+        }
+      ]
+    }
   }
 ]
