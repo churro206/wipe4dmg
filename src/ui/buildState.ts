@@ -19,6 +19,7 @@ import {
   artifactData,
   exoticArmor,
   abilityStats,
+  bosses,
   DEFAULT_WEAPON_ID,
   effects,
   linkRegistry,
@@ -61,6 +62,8 @@ export const GRANTED_EFFECT_IDS = new Set(
 const SUPER_GROUP = "super";
 
 export const LINK_PARAM = "b";
+/** The boss is no part of the build; it travels next to it so old links stay valid. */
+export const BOSS_PARAM = "boss";
 /** Damage Phase of the start state, so the first visit already shows a result. */
 export const DEFAULT_DAMAGE_PHASE_SECONDS = 30;
 export const DEFAULT_CLASS: GuardianClass = "warlock";
@@ -351,6 +354,7 @@ function withFittedArtifact(build: Build): Build {
 
 export type LinkState = {
   input: string;
+  bossId: string;
   weaponId: string;
   guardianClass: GuardianClass;
   subclass: Subclass;
@@ -372,6 +376,7 @@ export type LinkState = {
 export function stateFromLink(search: string): LinkState {
   const empty: LinkState = {
     input: String(DEFAULT_DAMAGE_PHASE_SECONDS),
+    bossId: "",
     weaponId: DEFAULT_WEAPON_ID,
     guardianClass: DEFAULT_CLASS,
     subclass: DEFAULT_SUBCLASS,
@@ -409,6 +414,7 @@ export function stateFromLink(search: string): LinkState {
     const artifact = fitArtifact(artifactData, build.artifactId, migrated.selections);
     return {
       input: String(build.damagePhaseSeconds),
+      bossId: bossOfLink(search, build.damagePhaseSeconds),
       weaponId: build.weaponId,
       guardianClass: build.guardianClass,
       subclass: build.subclass,
@@ -466,7 +472,19 @@ function unknownMessage(effects: number, abilities: number): string | null {
 }
 
 /** Link text for the address; empty if there is no valid build yet. */
-export function linkFor(build: Build | null, comparison: Build | null): string {
+export function linkFor(
+  build: Build | null,
+  comparison: Build | null,
+  bossId = "",
+): string {
   if (!build) return "";
-  return `${LINK_PARAM}=${encodeLink({ build, comparison }, linkRegistry)}`;
+  const text = `${LINK_PARAM}=${encodeLink({ build, comparison }, linkRegistry)}`;
+  return bossId ? `${text}&${BOSS_PARAM}=${encodeURIComponent(bossId)}` : text;
+}
+
+/** The boss of a link if it exists and still has the link's Damage Phase; else custom. */
+function bossOfLink(search: string, damagePhaseSeconds: number): string {
+  const id = new URLSearchParams(search).get(BOSS_PARAM) ?? "";
+  const boss = bosses.find((b) => b.id === id);
+  return boss?.damagePhaseSeconds.value === damagePhaseSeconds ? id : "";
 }

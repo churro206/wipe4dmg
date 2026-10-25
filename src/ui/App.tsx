@@ -137,7 +137,7 @@ const simulationOf = (build: Build) => buildSimulation(build, gameData);
 function App() {
   const [initial] = useState(() => stateFromLink(window.location.search));
   const [input, setInput] = useState(initial.input);
-  const [bossId, setBossId] = useState("");
+  const [bossId, setBossId] = useState(initial.bossId);
   const [guardianClass, setGuardianClass] = useState(initial.guardianClass);
   const [subclass, setSubclass] = useState(initial.subclass);
   const [selections, setSelections] = useState(initial.selections);
@@ -222,7 +222,7 @@ function App() {
     );
   })();
   const boss = bosses.find((b) => b.id === bossId);
-  const link = linkFor(isValid ? currentBuild : null, comparison);
+  const link = linkFor(isValid ? currentBuild : null, comparison, bossId);
   useEffect(() => {
     window.history.replaceState(
       null,

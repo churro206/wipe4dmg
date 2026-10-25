@@ -19,6 +19,41 @@ describe("boss list", () => {
   });
 });
 
+describe("boss in the link", () => {
+  const start = stateFromLink("");
+  const buildFor = (damagePhaseSeconds: number) =>
+    ({
+      weaponId: start.weaponId,
+      guardianClass: start.guardianClass,
+      subclass: start.subclass,
+      catalyst: false,
+      selections: [],
+      effectWindows: {},
+      damagePhaseSeconds,
+    }) as never;
+
+  it("keeps the chosen boss, also when another boss has the same duration", () => {
+    const boss = bosses[bosses.length - 1];
+    const link = linkFor(
+      buildFor(boss.damagePhaseSeconds.value as number),
+      null,
+      boss.id,
+    );
+    expect(stateFromLink(`?${link}`).bossId).toBe(boss.id);
+  });
+
+  it("drops a boss whose duration does not match the link", () => {
+    const boss = bosses[0];
+    const link = linkFor(buildFor(12345), null, boss.id);
+    expect(stateFromLink(`?${link}`).bossId).toBe("");
+  });
+
+  it("opens an old link without a boss as custom", () => {
+    const link = linkFor(buildFor(30), null);
+    expect(stateFromLink(`?${link}`).bossId).toBe("");
+  });
+});
+
 describe("start state", () => {
   it("starts with a default Damage Phase so a result shows at once", () => {
     const state = stateFromLink("");
