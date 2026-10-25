@@ -2,6 +2,24 @@
 
 ## Unveröffentlicht
 
+Nachgetragen beim Aufräumen (2026-10-25), Details in `docs/plans/history-2026-10.md`:
+
+- **Wirkung des Fehlenden (Block D):** Jeder fehlende Eintrag der Aegis-Abdeckung hat ein Urteil (Aegis-Paar über/unter 2 %, Item fehlt, Wert aus Text, Spielweise; `tests/lib/missingImpact.ts`). Die Gesamtprobe ordnet Perk-Namen des Catalysts und Artifact-Perks zu (Deterministic Chaos mit Target Lock ×1,015).
+- **Text-Abgleich:** `npm run check:text` prüft jeden Part, Catalyst und Grant gegen seinen Text (`scripts/lib/textCheck.ts`, `docs/text-check.md`); 24 Abweichungen auf 1 gesenkt (Facet of Courage, zurückgestellt).
+- **Uptime (Block A):** `npm run build:uptime` gibt jedem Effect ein Urteil zur Dauer. Behoben: Hellion 20 s und Arc Soul 15 s ab jedem Class-Ability-Cast statt der ganzen Phase, Spark of Feedback nur 5 s.
+- **Cast-Zeiten:** `src/data/cast-times.json` (1 s Schätzung, Weighted Knife 1,55 s); ein Cast sperrt die Waffe.
+- **Donut nach Multiplier:** äußerer Ring zeigt den Mehrschaden pro Bucket (`damageByMultiplier`); die Rotation zeigt jetzt auch Effects mit Auslöser (`rotationWindows`).
+- **Effekte durch Abilities:** `npm run build:grants` (Radiant von Acrobat's Dodge und Lightweight Knife, Weaken von Snare Bomb, Twilight Arsenal und Nova Warp).
+- **Class Item:** Eintrag „Exotic Class Item“ im Exotic-Picker, ein Spirit-Perk pro Spalte (`ExoticArmorEntry.column`).
+- **Transcendence:** +5 % Waffenschaden für 20 s (nur Prismatic), drei Prismatic Grenades, die nur im Fenster zählen (`Ability.duringEffectId`).
+- **Class Abilities, Teil 2 und 3:** Gwisin Vest, Mask of Bakris, Trapper's Ambush, Child of the Old Gods als Cast-Auslöser; fünf weitere Class Abilities; Hazardous Propulsion (+35 % Rocket Launcher, 10 s).
+- **Exotic Class Items:** 34 Spirit-Perks aus dem Compendium-Reiter „Exotic Class“, höchstens zwei pro Build, Link-Format 5.
+- **Stapel und Halten:** `MultiplierPart.hitStacks` (Lucky Pants, Peacekeepers) und `HoldDrawPart` (Oathkeeper, ×1,00 bis ×1,26 über die Primary-Bögen).
+- **Melee-Bucket:** Buckets `melee` (additiv) und `aspectBonus` (Annahme); Knockout, Offensive Bulwark, Roaring Flames, Spark of Feedback, Banner of War, Facet of Courage.
+- **Energie:** `npm run build:energy` (76 Cooldowns, Stat-Faktoren, 23 Modifier), Zeitachse in `src/engine/abilityEnergy.ts`.
+- **Weapons-Stat als Slider:** gegen Bosse zählt nur der Teil über 100 (Primary/Special +0,15 %, Power +0,1 % pro Punkt), Link-Format 6.
+- **Kleine Fixes:** Truth-Catalyst nur 15 s ab dem ersten Schuss; Verity Stufe 5 hält 4 s; Tooltips neutral formuliert, Hover-Karte an der Waffen-Kachel.
+
 - **Abdeckung (Block C):** Jede Zeile der Aegis-Reiter Weapons (417), Sustained (261) und Swap (204) hat ein Urteil: im Modell, übersprungen mit Grund oder fehlt. Regel `tests/lib/aegisCoverage.ts` (Daten: `aegisCoverageData.ts`), Tabelle `docs/aegis-coverage.md` mit der Liste „Was fehlt“ (Arbeitsliste, nach Zeilenzahl sortiert), Übersicht in `docs/coverage.md`. Legendary Frames sind übersprungen (Inhaber), Exotics ohne Paket (Wolfsbane, Praxic Blade, Bequest, Barrow-Dyad) fehlen. Der Waffen-Import nennt dafür die Aegis-Zeile jeder Option und jeder nicht genutzten Zeile (`rowId`). **Fix:** `docs/coverage.md` zeigte „0 Parts“ und 23 Effects, weil der Test die Daten selbst lud; er nutzt jetzt dieselben Daten wie die Seite (21 Abilities aus Teilen, 103 Effects).
 
 - **Seasonal Artifact:** Neuer Compendium-Reiter „Artifact Perks“ (`import:compendium` → `compendium-artifacts.json`, 7 Artifacts × 21 Perks). Aufbau laut Screenshot des Inhabers: sieben Slots, zwei für die Reihe mit einer Raute (Tier 1), drei für zwei Rauten, zwei für drei Rauten; die Spalte im Compendium ist das Tier. `npm run build:artifacts` schreibt `artifacts.json` (nur Perks mit Effect, Slots aus `artifact-slots.json`) und `docs/artifact-import.md` (jeder der 147 Perks mit Urteil, Test verlangt „keine offen“). `Build.artifactId`, Link-Format 7 (Artifact-Code am Ende), `src/engine/artifacts.ts`: `artifactPerksOf` wirft bei Perk eines anderen Artifacts oder voller Reihe, `fitArtifact` macht alte und handgeänderte Links gültig, der Optimizer nimmt nur Mengen, die in ein Artifact passen (`perkSetsOf`). Oberfläche: `ArtifactPicker` mit Artifact-Kacheln, Reihen mit Rauten und Slot-Zähler, volle Reihe sperrt die übrigen Kacheln; Icons über den Namen im Manifest. Fünf neue Effects von Hand (Compendium-Text, Court-Kategorie Amplification, Melee additiv): Limit Break (+15 % Super), Thunderous Retort (+30 % Arc Super), Shieldcrush (+50 % Melee mit Frost Armor, Void Overshield oder Woven Mail; +25 % Grenade mit Radiant), Transference (+10 % Grenade und Melee mit Transcendence), Fever and Chill (Radiant für Solar-Waffen). Die Gesamtprobe bestätigt Thunderous Retort: Chaos Reach und Stormtrance liegen bei ×1,00 bzw. ×1,01 gegen Aegis. Gate: Slot-Regel, Sniper's Meditation auf beiden Artifacts, je ein Szenario pro neuem Effect.

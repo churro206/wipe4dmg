@@ -826,7 +826,7 @@
             "retrieved": "2026-10-24",
             "status": "verified",
             "quote": "30% increased Arc Super Damage.",
-            "note": "Bucket as for Limit Break. Amplified or Critical Health is assumed. The Compendium says it only affects damage during the super animation, which lowers the bonus for Thundercrash and Gathering Storm; that is not modelled (docs/plans/current.md, known inaccuracies)."
+            "note": "Bucket as for Limit Break. Amplified or Critical Health is assumed. The Compendium says it only affects damage during the super animation, which lowers the bonus for Thundercrash and Gathering Storm; that is not modelled (docs/known-inaccuracies.md)."
           }
         },
         "damageSources": ["super"],
