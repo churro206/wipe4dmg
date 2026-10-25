@@ -1335,6 +1335,47 @@ export const CompendiumSnapshot = z.object({
 });
 export type CompendiumSnapshot = z.infer<typeof CompendiumSnapshot>;
 
+/**
+ * How the calculator treats one thing of the game (wiki page "Coverage of the calculator").
+ * full: in the calculator; approx: in, but with a known estimate; missing: not in yet, with reason;
+ * leftOut: no damage effect or left out on purpose, with reason.
+ */
+export const CatalogStatus = z.enum(["full", "approx", "missing", "leftOut"]);
+export type CatalogStatus = z.infer<typeof CatalogStatus>;
+
+export const CatalogEntry = z.object({
+  name: z.string(),
+  group: z.string(), // sub-heading in the category, e.g. an element or a guardian class
+  status: CatalogStatus,
+  inGame: z.string(), // what it does in the game (Compendium or Court)
+  inCalculator: z.string(), // what it does in the calculator, or why it is missing
+  iconKey: z.string().optional(), // key for iconUrl in the UI
+});
+export type CatalogEntry = z.infer<typeof CatalogEntry>;
+
+export const CatalogCategoryId = z.enum([
+  "weapons",
+  "class",
+  "subclass",
+  "abilities",
+  "aspects",
+  "fragments",
+  "buffs",
+  "armor",
+  "artifacts",
+]);
+export type CatalogCategoryId = z.infer<typeof CatalogCategoryId>;
+
+/** src/data/coverage-catalog.json, written by npm run coverage. */
+export const CoverageCatalog = z.array(
+  z.object({
+    id: CatalogCategoryId,
+    title: z.string(),
+    entries: z.array(CatalogEntry),
+  }),
+);
+export type CoverageCatalog = z.infer<typeof CoverageCatalog>;
+
 /** One buff or debuff of Court's Stacking Guide (ADR 0014); values stay text, e.g. "20%*\nat max". */
 export const CourtEntry = z.object({
   category: z.string(), // e.g. "Global Debuffs" or "Exotic Intrinsics"

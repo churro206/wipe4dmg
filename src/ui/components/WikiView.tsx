@@ -1,8 +1,10 @@
 import { marked } from "marked";
 import { useMemo, useState, type MouseEvent } from "react";
 import { wikiPages, type WikiGroup } from "../wikiText";
+import { CoveragePage } from "./CoveragePage";
 
 // The documents are bundled at build time; the app loads nothing at runtime (ADR 0003, ADR 0010).
+// docs/coverage.md only gives the page its place and title; CoveragePage shows the catalog instead.
 const files = import.meta.glob<string>(
   [
     "../../../docs/mechanics/*.md",
@@ -19,6 +21,7 @@ const GROUP_LABELS: Record<WikiGroup, string | null> = {
   status: "Status",
 };
 const WIKI_LINK = "#wiki/";
+const COVERAGE_ID = "coverage";
 
 /** Wiki (US-15): navigation of pages on the left, the page as rendered Markdown on the right. */
 export function WikiView() {
@@ -70,9 +73,16 @@ export function WikiView() {
         ))}
       </nav>
       {page && (
-        <article className="wiki-page" onClick={followWikiLink}>
+        <article
+          className={page.id === COVERAGE_ID ? "wiki-page wide" : "wiki-page"}
+          onClick={followWikiLink}
+        >
           <h1>{page.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          {page.id === COVERAGE_ID ? (
+            <CoveragePage />
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+          )}
         </article>
       )}
     </div>

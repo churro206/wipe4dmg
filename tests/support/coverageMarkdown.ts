@@ -4,10 +4,10 @@
 
 import type { AbilityKind, Effect } from "../../src/data/schema";
 import type { countVerdicts } from "../lib/aegisCoverage";
+import { REASON } from "../../scripts/lib/coverageCatalog";
 import type {
   AbilityCoverageRow,
   CoverageStatus,
-  MissingReason,
 } from "../../src/engine/coverage";
 
 const STATUS: Record<CoverageStatus, string> = {
@@ -20,15 +20,6 @@ const WINDOW = {
   exact: "exact",
   estimate: "estimate",
   none: "does not block",
-};
-const REASON: Record<MissingReason, string> = {
-  noAegisRow: "no Aegis measurement",
-  aegisNotNormalised: "Aegis values not normalised (buffs in the value)",
-  aegisOnlyWithUnmodelledBuffs:
-    "Aegis only measures with buffs that are not an effect yet",
-  effectNotModelled: "only gives a buff that is not an effect yet",
-  noUsableData: "no usable data",
-  notYetModelled: "not added yet",
 };
 const KINDS: { kind: AbilityKind; title: string }[] = [
   { kind: "super", title: "Supers" },

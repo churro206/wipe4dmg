@@ -838,6 +838,137 @@ header > .segmented {
   text-align: left;
 }
 
+/* Coverage page: categories fold open, a table per group; rows become cards on phones */
+.wiki-page.wide {
+  max-width: none;
+}
+
+.coverage-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.coverage-status {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.coverage-status[data-status="full"] {
+  color: var(--series-3);
+}
+
+.coverage-status[data-status="approx"] {
+  color: var(--series-4);
+}
+
+.coverage-status[data-status="missing"] {
+  color: var(--series-2);
+}
+
+.coverage-status[data-status="leftOut"] {
+  color: var(--muted);
+}
+
+.coverage-category {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  padding: 0 0.8rem;
+}
+
+.coverage-category[open] {
+  padding-bottom: 0.8rem;
+}
+
+.coverage-category summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 1rem;
+  padding: 0.6rem 0;
+  cursor: pointer;
+}
+
+.coverage-counts {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.wiki-page table.coverage-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wiki-page .coverage-table th,
+.wiki-page .coverage-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.4rem 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.coverage-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 11rem;
+}
+
+.coverage-text {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.coverage-text.clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+@media (max-width: 47.99rem) {
+  .coverage-table thead {
+    display: none;
+  }
+
+  .wiki-page .coverage-table tr,
+  .wiki-page .coverage-table th,
+  .wiki-page .coverage-table td {
+    display: block;
+  }
+
+  .wiki-page .coverage-table tr {
+    border-top: 1px solid var(--border);
+    padding: 0.4rem 0;
+  }
+
+  .wiki-page .coverage-table th,
+  .wiki-page .coverage-table td {
+    border-top: none;
+    padding: 0.15rem 0;
+  }
+
+  .wiki-page .coverage-table td::before {
+    content: attr(data-label) ": ";
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .wiki-page .coverage-table td[data-label="In the game"]::before {
+    display: block;
+  }
+}
+
 /* A tile that cannot be switched on, e.g. an artifact perk of a tier without free slots */
 .tile:disabled {
   opacity: 0.4;

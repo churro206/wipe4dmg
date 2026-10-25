@@ -12,6 +12,7 @@ import rawBosses from "../data/bosses.json";
 import rawBuckets from "../data/buckets.json";
 import rawBuffEffects from "../data/buff-effects.json";
 import rawCastTimes from "../data/cast-times.json";
+import rawCoverageCatalog from "../data/coverage-catalog.json";
 import rawEffects from "../data/effects.json";
 import rawIcons from "../data/icons.json";
 import rawKeywords from "../data/keywords.json";
@@ -28,6 +29,7 @@ import {
   AbilityKeyword,
   ArtifactData,
   CastTimes,
+  CoverageCatalog,
   EnergyData,
   ExoticArmorEffect,
   ExoticArmorEntry,
@@ -103,6 +105,8 @@ export const generatedExoticEffects = ExoticArmorEffect.array().parse(
 );
 // Seasonal artifacts with their perks per tier (npm run build:artifacts).
 export const artifactData = ArtifactData.parse(rawArtifacts);
+// What the calculator covers, for the wiki page "Coverage of the calculator" (npm run coverage).
+export const coverageCatalog = CoverageCatalog.parse(rawCoverageCatalog);
 // Everything a build refers to, for buildSimulation (src/engine/buildSimulation.ts).
 export const gameData: GameData = {
   effects,

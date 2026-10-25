@@ -105,7 +105,7 @@ const KILL_WORD = /\bKills?\b|\bFinishers?\b|\bKilling\b/;
 const STATUS_DURATION = /for (\d+(?:\.\d+)?)(?:\+[\d.]+)? seconds/i;
 const NOT_ON_BOSS =
   /towards it|against Stasis Crystals|Frozen Enemies|from Guardians|towards Assault/i;
-const DAMAGE_WORD =
+export const DAMAGE_WORD =
   /damage|weaken|radiant|surge|amplif|empower|volatile|jolt|scorch|ignit|unravel|bolt charge/i;
 const MS_PER_SECOND = 1000;
 const PERCENT = 100;

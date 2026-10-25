@@ -4,14 +4,15 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Screenshot-Prüfung der UI (Sonnet)**, kurz: Der UI-Block „Die erste Minute“ ist fertig (Punkte 1 bis 3, 5 bis 7; 4 verworfen). Nach dem Push mit `scripts/ui-check.mjs` gegen `https://wipe4dmg.pages.dev` prüfen: sticky Ergebniszeile bei 375 px, Optimizer-Zeilen mit „Changes: …“, Tooltips der Icons, Logo-Formate, Boss-Gruppen, Logo-Link. Danach weiter mit Reihenfolge 2. `src/ui/App.tsx` ist noch nicht in Panels aufgeteilt (Aufräum-Block).
+**Zähler für Jolt, Volatile, Unravel und Bolt Charge in der Ergebniszeile (Opus plant, Sonnet baut)**, siehe `known-inaccuracies.md`. Engine-Arbeit (Zählen in der Simulation), getrennt von der Coverage-Seite. Danach Reihenfolge 2 (Aufräumen).
+
+Erledigt (2026-10-25): Screenshot-Prüfung entfällt (Inhaber verzichtet, UI-Block „Die erste Minute“ bleibt ungeprüft per Screenshot). Coverage-Seite neu: Katalog in `src/data/coverage-catalog.json` (`npm run coverage`), Seite `CoveragePage.tsx`. Offen und ungeprüft: Anzeige im Browser; Glossary-Einstufung (Subclass) folgt den Schadenswörtern im Text, Aspect-Zeilen mit gemischten Regeln zeigen „Approximated“. `src/ui/App.tsx` ist noch nicht in Panels aufgeteilt (Aufräum-Block).
 
 Zuvor erledigt (2026-10-25): Delta-Lücken. Feast of Light mit Obergrenzen pro Super, Dawn Chorus auf Ignitions, Sol Invictus bei Chaos Reach. Super-Spearman 0,98. Rest in `tests/fixtures/ranking-gate.json`: Gathering Storm und Shards of Galanor (Aegis widerspricht sich zwischen Tabs, Zahlen dort), Super-Top-3 (Stormdancer's Brace fehlt). Offen und ungeprüft: doppelte Ignition bei Daybreak mit Dawn Chorus; Sol Invictus bei Hammer of Sol und Burning Maul (Zeilen nennen auch Roaring Flames x3).
 
 ## Reihenfolge
 
-1. Screenshot-Prüfung der UI (Sonnet): siehe oben.
-1b. Wiki-Seite „Coverage of the calculator“ neu (Inhaber, 2026-10-25; Opus plant, Sonnet baut): menschenlesbar und nah an Destiny. Sortierung: Waffe (+ Catalyst), Class, Subclass, Abilities, Aspects, Fragments, Buffs/Debuffs, Armor usw. Keine Einteilung nach Parts, Package, Buff only. Pro Eintrag: Gibt es das? Ist es implementiert? Was macht es im Spiel? Was macht es im Rechner? Kategorien aufklappbar, linke Spalte Icon + Name als Text. Quelle bisher `docs/coverage.md` (generiert). Dazu: Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (`known-inaccuracies.md`).
+1. Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (Opus plant, Sonnet baut): siehe oben.
 2. Code-Aufräumen (Sonnet), auch `App.tsx` in Panels: `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
 3. Solar: Roaring Flames x3 und Solar Fulmination (Opus plant), dann Ergo Sum, echte Debuffs am Ziel, fehlende Supers; dazu Stormdancer's Brace (Super-Top-3). Reihenfolge nach dem Rangfolge-Gate. Arbeitsliste: `docs/known-inaccuracies.md`, „Offene Lücken“.
 4. Für 2.0 (`docs/product.md`): Legendary Frames aus Aegis, Optimizer mit Abilities, Aspects und Fragments.
