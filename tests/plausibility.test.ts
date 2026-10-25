@@ -785,6 +785,21 @@ describe("exotic effects from the rotation", () => {
     expect(ratio).toBeCloseTo(1.35, 2);
   });
 
+  it("Sol Invictus from a teammate: Chaos Reach lasts longer (Aegis ×1.463)", () => {
+    const chaosReach = {
+      guardianClass: "warlock" as const,
+      subclass: "arc" as const,
+      abilities: [{ abilityId: "chaos-reach", castsMs: [0] }],
+      exoticArmorId: "geomag-stabilizers",
+    };
+    const sunspots = [{ effectId: "sol-invictus", provider: "fireteamSupport" as const }];
+    const ratio =
+      damageOf(run({ ...chaosReach, selections: sunspots }), "super") /
+      damageOf(run(chaosReach), "super");
+    note("Sol Invictus auf Chaos Reach (Geomag)", `×${fmt(ratio)}`, "×1,463");
+    expect(ratio).toBeCloseTo(79840 / 54572, 2);
+  });
+
   it("Dawn Chorus: Ignitions of One Thousand Voices ×2, its shots unchanged", () => {
     const warlock = { guardianClass: "warlock" as const, subclass: "solar" as const };
     const plain = run(warlock);

@@ -2,7 +2,7 @@
 
 Generiert mit `npm run build:uptime` (Regel in `scripts/lib/uptime.ts`). Regel des Inhabers (2026-10-24): Eigene Quellen gelten nur für die Dauer aus ihrem Text, ab Beginn der Phase. Länger nur, wenn ein modellierter Auslöser sie auffrischt. Buffs von Teammates gelten die ganze Phase.
 
-Fenster 76, Teammate 5, selbst erneuert 3, pro Ereignis 9, Zustand 29, ohne Zeitlimit 17, offen 0.
+Fenster 76, Teammate 6, selbst erneuert 3, pro Ereignis 9, Zustand 28, ohne Zeitlimit 17, offen 0.
 
 | Effect | Datei | Urteil | Dauer | Text |
 | --- | --- | --- | --- | --- |
@@ -86,7 +86,7 @@ Fenster 76, Teammate 5, selbst erneuert 3, pro Ereignis 9, Zustand 29, ohne Zeit
 | Roaring Flames | subclass-effects.json | Fenster (Dauer oder Auslöser) |  |  |
 | Roaring Flames | subclass-effects.json | Fenster (Dauer oder Auslöser) |  |  |
 | Shatterdive | subclass-effects.json | nur Zustand, gilt ab Wahl |  |  |
-| Sol Invictus | subclass-effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Sol Invictus | subclass-effects.json | Teammate hält ihn, ganze Phase |  |  |
 | Soul Siphon | subclass-effects.json | nur Zustand, gilt ab Wahl |  |  |
 | Spark of Feedback | subclass-effects.json | Fenster (Dauer oder Auslöser) |  |  |
 | Spark of Shock | subclass-effects.json | wirkt pro Treffer oder Cast, ohne Fenster |  |  |

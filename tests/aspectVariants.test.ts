@@ -104,8 +104,11 @@ describe("aspect variants in a build", () => {
       "chaos-accelerant",
       "echo-of-remnants",
       "knock-em-down",
+      // grant a state as well (Restoration); a row with an exotic names Sol Invictus too
+      "sol-invictus",
       "spark-of-magnitude",
       "thread-of-evolution",
+      "touch-of-flame",
       "touch-of-winter",
     ]);
   });

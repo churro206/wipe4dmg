@@ -2,7 +2,7 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `tests/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 24. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 98, davon innerhalb der Grenze 40. Nicht vergleichbar (übersprungen): 44.
+Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 25. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 98, davon innerhalb der Grenze 40. Nicht vergleichbar (übersprungen): 44.
 
 ## Vollständig abgebildet
 
@@ -10,7 +10,6 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 24. Abweichun
 | --- | ---: | ---: | ---: | --- |
 | Stormtrance, Ascending Amplitude, Facet of Courage, Thunderous Retort | 71,745 | 33,334 | 0.465 | -53 %; Ascending Amplitude is the trait of Stormdancer's Brace (Amplified, Bolt Charge from Arc ability hits), which has its own damage and is not modelled; Thunderous Retort itself fits (Chaos Reach and Stormtrance rows without it: x1.00) |
 | Arc Staff, Raiden Flux, Shieldcrush | 84,169 | 56,113 | 0.667 | -33 %, exactly 1/1.5: Aegis applies Shieldcrush (+50 % melee) to the light attacks of the Arc Staff, which are Super Melee (Compendium: 'Also increases Super Melee Damage'); the model gives it to melee abilities only, and only while Frost Armor, Void Overshield or Woven Mail is on, which this row does not select |
-| Chaos Reach, Geomag Stabilizers, Sol Invictus, Thunderous Retort | 79,840 | 54,572 | 0.684 | -32 %; cause not examined (the same row without Sol Invictus fits x1.00, so it is the Sol Invictus assumption: a Titan aspect with a Sunspot, not modelled for Chaos Reach) |
 | Tractor Cannon | 22,149 | 18,458 | 0.833 | -17 %; cause not examined |
 | Telesto | 51,208 | 43,123 | 0.842 | -16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now) |
 | Arbalest | 58,835 | 56,161 | 0.955 |  |
@@ -23,6 +22,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 24. Abweichun
 | Heir Apparent | 58,096 | 58,096 | 1.000 |  |
 | Jötunn | 61,950 | 61,950 | 1.000 |  |
 | Ice Breaker, Sniper's Meditation | 34,643 | 34,643 | 1.000 |  |
+| Chaos Reach, Geomag Stabilizers, Sol Invictus, Thunderous Retort | 79,840 | 79,840 | 1.000 |  |
 | Service of Luzaku | 110,752 | 110,752 | 1.000 |  |
 | Forerunner | 51,349 | 51,349 | 1.000 |  |
 | Chaos Reach, Geomag Stabilizers, Thunderous Retort | 54,572 | 54,572 | 1.000 |  |

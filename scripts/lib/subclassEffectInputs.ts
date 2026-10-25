@@ -10,6 +10,7 @@ import {
   CompendiumSnapshot,
   CourtSnapshot,
   Effect,
+  ExoticArmorEntry,
   ManifestAbilities,
 } from "../../src/data/schema.ts";
 import { findKeywordSources } from "./keywordSources.ts";
@@ -34,6 +35,10 @@ export function loadSubclassEffectInputs(): SubclassEffectInputs {
     abilities: AbilityData.array().parse(read("abilities.json")),
     aegisRows: AegisAbilityRow.array().parse(read("aegis-abilities.json")),
     aegisTotals: totals.rows,
+    variantExoticNames: ExoticArmorEntry.array()
+      .parse(read("exotic-armor.json"))
+      .filter((e) => e.kind === "abilityVariant")
+      .map((e) => e.name),
     meleeNames: [
       ...new Set(manifest.abilities.filter((a) => a.kind === "melee").map((a) => a.name)),
     ],

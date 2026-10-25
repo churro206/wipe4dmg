@@ -41,6 +41,13 @@ import type { KeywordSource } from "./keywordSources.ts";
 import { subclassItemNamed } from "./manifestAbilities.ts";
 import { nameKey, variantRows } from "../../src/engine/abilityVariants.ts";
 
+// Stands for an exotic armor in a row of rule G; it is not an item with an effect.
+const EXOTIC = "(exotic armor)";
+
+// Items whose state a teammate gives too: the Sunspots of a Titan's Sol Invictus (Compendium:
+// "Sunspots grant Sol Invictus"), so any class gets the state from a teammate's Sunspot.
+const FROM_TEAMMATE = ["Sol Invictus"];
+
 export type SubclassEffectInputs = {
   compendium: CompendiumEntry[]; // subclass tabs
   subclassItems: ManifestSubclassItem[];
@@ -52,6 +59,7 @@ export type SubclassEffectInputs = {
     Partial<Pick<AbilityData, "package" | "aegisRowId">>)[];
   aegisRows: AegisAbilityRow[]; // rule G: rows of the abilities with an aspect or fragment
   aegisTotals: AegisTotalRow[]; // rule H: tab Sustained
+  variantExoticNames: string[]; // exotic armor that changes an ability; rule G rows may name it too
   meleeNames: string[];
   sources: { court: Source; compendium: Source; clarity: Source; aegisTotals: Source };
   codes: Record<string, number>; // effect-codes.json: codes once given stay
@@ -433,18 +441,26 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
   }
 
   // G: items without an effect that Aegis measured an ability with
-  const withEffect = new Set(effects.map((e) => e.subclassItemId));
+  // An item whose effect only grants a state, e.g. Sol Invictus (Restoration), can change abilities
+  // too: the effect gets the abilities.
+  const withDamage = new Set(
+    effects.filter((e) => e.effect.parts.length > 0).map((e) => e.subclassItemId),
+  );
   const eligible = new Map(
     names
-      .filter((name) => !withEffect.has(kebab(name)))
+      .filter((name) => !withDamage.has(kebab(name)))
       .map((name) => [nameKey(name), name]),
   );
+  const exotics = new Set(inputs.variantExoticNames.map(nameKey));
   const changes = new Map<string, { abilityIds: string[]; rowIds: string[] }>();
   for (const ability of inputs.abilities.filter((a) => a.package)) {
     const base = inputs.aegisRows.find((r) => r.id === ability.aegisRowId);
     if (!base) continue;
-    for (const { row, extras } of variantRows(base, inputs.aegisRows, (a) => eligible.get(nameKey(a))))
-      for (const name of extras) {
+    // a row with an exotic and an item, e.g. Chaos Reach with Geomag Stabilizers and Sol Invictus
+    for (const { row, extras } of variantRows(base, inputs.aegisRows, (a) =>
+      eligible.get(nameKey(a)) ?? (exotics.has(nameKey(a)) ? EXOTIC : undefined),
+    ))
+      for (const name of extras.filter((e) => e !== EXOTIC)) {
         const entry = changes.get(name) ?? { abilityIds: [], rowIds: [] };
         if (!entry.abilityIds.includes(ability.id)) entry.abilityIds.push(ability.id);
         entry.rowIds.push(row.id);
@@ -454,21 +470,29 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
   for (const [name, { abilityIds, rowIds }] of changes) {
     const id = kebab(name);
     const items = inputs.subclassItems.filter((i) => i.name === name);
-    codes[id] ??= nextCode++;
-    effects.push({
-      subclassItemId: id,
-      activation: "always",
-      effect: {
-        id,
-        code: codes[id],
-        name,
-        shortName: name,
-        manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
-        providers: providersOf(items),
-        parts: [],
-        changesAbilityIds: abilityIds,
-      },
-    });
+    const existing = effects.find((e) => e.subclassItemId === id);
+    if (existing) {
+      // the effect grants a state already (Sol Invictus: Sunspots): a teammate can give it too
+      existing.effect.changesAbilityIds = abilityIds;
+      if (FROM_TEAMMATE.includes(name))
+        existing.effect.providers = [...existing.effect.providers, { kind: "fireteamSupport" }];
+    } else {
+      codes[id] ??= nextCode++;
+      effects.push({
+        subclassItemId: id,
+        activation: "always",
+        effect: {
+          id,
+          code: codes[id],
+          name,
+          shortName: name,
+          manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
+          providers: providersOf(items),
+          parts: [],
+          changesAbilityIds: abilityIds,
+        },
+      });
+    }
     // the item now has damage: drop its "no damage" row
     const noDamage = rows.findIndex((r) => r.id === id && r.kind === "noDamage");
     if (noDamage >= 0) rows.splice(noDamage, 1);

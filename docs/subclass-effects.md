@@ -15,7 +15,7 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Keyword ohne Modell, später | 21 |
 | Wirkt nicht gegen einen Boss | 4 |
 | Bonus ohne Bucket-Quelle, Recherche in der Inventur | 7 |
-| Ändert eine Ability (Aegis-Variante) | 6 |
+| Ändert eine Ability (Aegis-Variante) | 8 |
 | Eigener Schaden (Aegis Sustained) | 5 |
 | Ohne Compendium-Text | 0 |
 | Ohne Schadenswirkung | 88 |
@@ -155,9 +155,11 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 
 | Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- | --- |
-| Knock 'Em Down | solar | G | ändert blade-barrage (Aegis-Zeilen `super-blade-barrage-knock-em-down`) | Aegis |
+| Sol Invictus | solar | G | ändert chaos-reach (Aegis-Zeilen `super-chaos-reach-geomag-stabilizers-sol-invictus`) | Aegis |
+| Knock 'Em Down | solar | G | ändert blade-barrage (Aegis-Zeilen `super-blade-barrage-knock-em-down-shards-of-galanor`, `super-blade-barrage-knock-em-down`) | Aegis |
 | Thread of Evolution | strand | G | ändert needlestorm, threadling-grenade (Aegis-Zeilen `super-needlestorm-thread-of-evolution`, `grenade-threadling-thread-of-evolution`) | Aegis |
 | Spark of Magnitude | arc | G | ändert pulse-grenade (Aegis-Zeilen `grenade-pulse-spark-of-magnitude`) | Aegis |
+| Touch of Flame | solar | G | ändert fusion-grenade (Aegis-Zeilen `grenade-fusion-average-ember-of-ashes-touch-of-flame-with-ignition`) | Aegis |
 | Chaos Accelerant | void | G | ändert axion-bolt-grenade, scatter-grenade, vortex-grenade (Aegis-Zeilen `grenade-axion-bolt-chaos-accelerant`, `grenade-scatter-average-chaos-accelerant`, `grenade-vortex-echo-of-remnants-chaos-accelerant`) | Aegis |
 | Echo of Remnants | void | G | ändert vortex-grenade (Aegis-Zeilen `grenade-vortex-echo-of-remnants-chaos-accelerant`, `grenade-vortex-echo-of-remnants`) | Aegis |
 | Touch of Winter | stasis | G | ändert glacier-grenade, shatter-grenade (Aegis-Zeilen `grenade-glacier-average-whisper-of-fissures-touch-of-winter`, `grenade-shatter-average-touch-of-winter-whisper-of-fissures`) | Aegis |
