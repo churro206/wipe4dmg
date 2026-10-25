@@ -475,6 +475,54 @@ function abilityOf(
   return abilities.find((a) => singular(subject).includes(singular(a.name)));
 }
 
+const CAP_LINE = /^(.+?)\s+receives?\s+up to\s+(\d+(?:\.\d+)?)%/gim;
+const squash = (s: string) => s.replace(/\s+/g, "");
+
+/**
+ * Lower caps of a staged super buff, e.g. Feast of Light: "Nova Bomb, Thundercrash, and Twilight
+ * Arsenal receive up to 50% Increased Super Damage". The line stands in the entry of the Exotic
+ * Class Item, so the texts that quote the same stages count for the armor too. The base part skips
+ * the capped supers; each cap becomes a part of its own.
+ */
+function withCaps(
+  part: MultiplierPart,
+  entry: ExoticArmorEntry,
+  inputs: ExoticEffectInputs,
+): MultiplierPart[] {
+  if (
+    part.abilityIds !== undefined ||
+    part.damageSources.length !== 1 ||
+    part.damageSources[0] !== "super"
+  )
+    return [part];
+  const quotes = entry.bonuses.map((b) => squash(b.quote));
+  const caps: { abilityIds: string[]; percent: number; line: string }[] = [];
+  for (const c of inputs.compendium) {
+    if (!quotes.some((q) => squash(c.text).includes(q))) continue;
+    for (const m of c.text.matchAll(CAP_LINE)) {
+      const names = m[1].split(/,\s*(?:and\s+)?|\s+and\s+/i).map((n) => n.trim().toLowerCase());
+      const abilityIds = inputs.abilities
+        .filter((a) => a.kind === "super" && names.some((n) => a.name.toLowerCase().startsWith(n)))
+        .map((a) => a.id);
+      if (abilityIds.length > 0)
+        caps.push({ abilityIds, percent: Number(m[2]), line: flat(m[0]) });
+    }
+  }
+  if (caps.length === 0) return [part];
+  const excluded = caps.flatMap((c) => c.abilityIds);
+  return [
+    { ...part, excludeAbilityIds: excluded },
+    ...caps.map((c) => ({
+      ...part,
+      multiplier: {
+        value: factorOf(c.percent),
+        source: { ...part.multiplier.source, note: `„${c.line}“ (Compendium, Exotic Class Item); ${part.multiplier.source.note ?? ""}` },
+      },
+      abilityIds: c.abilityIds,
+    })),
+  ];
+}
+
 /**
  * Rule 7: a buff that grows while the perfect draw is held (Oathkeeper). Clarity gives the value
  * per step and the maximum (the owner trusts it over the Compendium's 200 % after 2 s); the engine
@@ -800,7 +848,7 @@ export function exoticEffects(inputs: ExoticEffectInputs): {
           code: entry.hash, // not part of build links; the exotic itself is
           shortName: entry.name,
           providers: [{ kind: "armor", slot: "exotic" }],
-          parts: [part],
+          parts: part.type === "multiplier" ? withCaps(part, entry, inputs) : [part],
           ...(durationMs ? { durationMs } : {}),
           ...(trigger ? { trigger } : {}),
         };

@@ -73,6 +73,29 @@ describe("rules for the exotic damage buffs", () => {
     expect(kindsOf(name)).toContain(kind);
   });
 
+  it.each([["star-eater-scales"], ["spirit-of-the-star-eater"]])(
+    "%s: Nova Bomb, Thundercrash and Twilight Arsenal get +50 %, Needlestorm +35 %, the rest +70 %",
+    (id) => {
+      const parts = effectOf(id).effect.parts.flatMap((p) =>
+        p.type === "multiplier" ? [p] : [],
+      );
+      const factorOf = (abilityId: string) =>
+        parts
+          .filter(
+            (p) =>
+              (p.abilityIds === undefined || p.abilityIds.includes(abilityId)) &&
+              !p.excludeAbilityIds?.includes(abilityId),
+          )
+          .map((p) => p.multiplier.value);
+      expect(factorOf("nova-bomb-cataclysm")).toEqual([1.5]);
+      expect(factorOf("nova-bomb-vortex")).toEqual([1.5]);
+      expect(factorOf("thundercrash")).toEqual([1.5]);
+      expect(factorOf("twilight-arsenal")).toEqual([1.5]);
+      expect(factorOf("needlestorm")).toEqual([1.35]);
+      expect(factorOf("gathering-storm")).toEqual([1.7]);
+    },
+  );
+
   it("Felwinter's Helm: the kill burst has no duration, the weaken comes from a melee hit", () => {
     expect(kindsOf("Felwinter's Helm").sort()).toEqual([
       "missingDuration",
@@ -110,7 +133,12 @@ describe("rules for the exotic damage buffs", () => {
     expect(effect("star-eater-scales")[0]).toMatchObject({
       trigger: { on: "cast", abilityKinds: ["super"] },
       durationMs: { value: 14000 },
-      parts: [{ multiplier: { value: 1.7 }, damageSources: ["super"] }],
+      // the base part, then the capped supers (Feast of Light)
+      parts: [
+        { multiplier: { value: 1.7 }, damageSources: ["super"] },
+        { multiplier: { value: 1.5 } },
+        { multiplier: { value: 1.35 } },
+      ],
     });
     expect(effect("foetracer")[0]).toMatchObject({
       trigger: { on: "hit", refresh: false },

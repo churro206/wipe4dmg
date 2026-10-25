@@ -4,8 +4,6 @@
   },
   "pairs": {
     "Supers: Chaos Reach, Geomag Stabilizers, Sol Invictus, Thunderous Retort + Sol Invictus": "Delta 0 instead of +46 %: the effect of Sol Invictus has no damage in the model; cause not examined yet (block Delta-Lücken)",
-    "Supers: Nova Bomb - Cataclysm, Feast of Light x6, Facet of Courage, Limit Break + Feast of Light x6": "+70 % instead of +50 %: Feast of Light x6 is too strong in the model; cause not examined yet (block Delta-Lücken, see known-inaccuracies: Needlestorm +26 %)",
-    "Supers: Twilight Arsenal, Feast of Light x6, Facet of Courage, Limit Break + Feast of Light x6": "+70 % instead of +50 %: same as Nova Bomb - Cataclysm (block Delta-Lücken)",
     "Supers: Gathering Storm, Feast of Light x6, Limit Break + Feast of Light x6": "+66.5 % instead of +77.3 %: Feast of Light x6 differs per super; cause not examined yet (block Delta-Lücken)",
     "Supers: Blade Barrage, Knock 'Em Down, Shards of Galanor, Limit Break + Shards of Galanor": "3.9 points off; cause not examined yet (block Delta-Lücken)",
     "Heavy: One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction + Dawn Chorus": "Delta 0 instead of +24 %: Dawn Chorus has no damage in the model; cause not examined yet (block Delta-Lücken)"

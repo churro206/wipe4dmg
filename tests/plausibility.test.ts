@@ -770,6 +770,21 @@ describe("exotic effects from the rotation", () => {
     expect(ratio).toBeCloseTo(1.7, 2);
   });
 
+  it("Star-Eater Scales: Needlestorm only ×1.35 (Compendium cap), not ×1.7", () => {
+    const hunter = {
+      guardianClass: "hunter" as const,
+      subclass: "arc" as const,
+      abilities: [{ abilityId: "needlestorm", castsMs: [0] }],
+    };
+    const ratio =
+      damageOf(
+        run({ ...hunter, exoticArmorId: "star-eater-scales" }),
+        "super",
+      ) / damageOf(run(hunter), "super");
+    note("Star-Eater auf Needlestorm", `×${fmt(ratio)}`, "×1,35");
+    expect(ratio).toBeCloseTo(1.35, 2);
+  });
+
   it("Foetracer: x4 surge only for weapons of the grenade's element", () => {
     const weaponDamage = (grenade: string, exotic?: string) =>
       damageOf(

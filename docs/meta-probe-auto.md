@@ -2,7 +2,7 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `tests/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 23. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 98, davon innerhalb der Grenze 40. Nicht vergleichbar (übersprungen): 44.
+Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 24. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 98, davon innerhalb der Grenze 40. Nicht vergleichbar (übersprungen): 44.
 
 ## Vollständig abgebildet
 
@@ -18,6 +18,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 23. Abweichun
 | The Colony | 49,096 | 47,133 | 0.960 |  |
 | Gathering Storm, Feast of Light x6, Limit Break | 21,772 | 21,203 | 0.974 |  |
 | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | 41,594 | 41,001 | 0.986 |  |
+| Needlestorm, Feast of Light x6, Limit Break | 25,251 | 25,243 | 1.000 |  |
 | Merciless | 54,552 | 54,549 | 1.000 |  |
 | Blade Barrage, Knock 'Em Down, Shards of Galanor, Limit Break | 43,637 | 43,637 | 1.000 |  |
 | Heir Apparent | 58,096 | 58,096 | 1.000 |  |
@@ -27,16 +28,15 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 23. Abweichun
 | Forerunner | 51,349 | 51,349 | 1.000 |  |
 | Chaos Reach, Geomag Stabilizers, Thunderous Retort | 54,572 | 54,572 | 1.000 |  |
 | Nova Bomb - Cataclysm, Facet of Courage, Limit Break | 19,260 | 19,261 | 1.000 |  |
+| Nova Bomb - Cataclysm, Feast of Light x6, Facet of Courage, Limit Break | 28,890 | 28,892 | 1.000 |  |
 | Twilight Arsenal, Facet of Courage, Limit Break | 20,190 | 20,193 | 1.000 |  |
+| Twilight Arsenal, Feast of Light x6, Facet of Courage, Limit Break | 30,285 | 30,289 | 1.000 |  |
 | Stormtrance, Feast of Light x6, Facet of Courage, Thunderous Retort | 54,444 | 55,043 | 1.011 |  |
 | Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | 32,463 | 32,941 | 1.015 |  |
 | Deterministic Chaos, Target Lock | 137,936 | 140,043 | 1.015 |  |
 | One Thousand Voices, Particle Reconstruction | 63,705 | 66,942 | 1.051 |  |
 | One Thousand Voices, Ember of Ashes, Particle Reconstruction | 74,750 | 79,499 | 1.064 |  |
 | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | 97,543 | 105,112 | 1.078 |  |
-| Nova Bomb - Cataclysm, Feast of Light x6, Facet of Courage, Limit Break | 28,890 | 32,744 | 1.133 |  |
-| Twilight Arsenal, Feast of Light x6, Facet of Courage, Limit Break | 30,285 | 34,328 | 1.133 |  |
-| Needlestorm, Feast of Light x6, Limit Break | 25,251 | 31,787 | 1.259 | +26 %; cause not examined (the same switch fits Blade Barrage, Gathering Storm and Golden Gun within 3 %) |
 
 ## Annahme ohne Schalter
 

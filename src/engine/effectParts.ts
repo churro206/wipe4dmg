@@ -167,7 +167,11 @@ export function bucketMultipliers(
           appliesToWeaponType(part.weaponTypes, target.weaponType) &&
           (part.abilityIds === undefined ||
             (target.abilityId !== undefined &&
-              part.abilityIds.includes(target.abilityId))),
+              part.abilityIds.includes(target.abilityId))) &&
+          !(
+            target.abilityId !== undefined &&
+            part.excludeAbilityIds?.includes(target.abilityId)
+          ),
       )
       .map((part) => requireValue(part.multiplier, "multiplier"));
     if (values.length === 0) continue;

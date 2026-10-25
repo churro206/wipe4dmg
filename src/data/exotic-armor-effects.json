@@ -1178,7 +1178,51 @@
               "note": "„18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
             }
           },
-          "damageSources": ["super"]
+          "damageSources": ["super"],
+          "excludeAbilityIds": [
+            "thundercrash",
+            "twilight-arsenal",
+            "nova-bomb-cataclysm",
+            "nova-bomb-vortex",
+            "needlestorm"
+          ]
+        },
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.5,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "note": "„Nova Bomb, Thundercrash, and Twilight Arsenal receive up to 50%“ (Compendium, Exotic Class Item); „18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["super"],
+          "abilityIds": [
+            "thundercrash",
+            "twilight-arsenal",
+            "nova-bomb-cataclysm",
+            "nova-bomb-vortex"
+          ]
+        },
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.35,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "note": "„Needlestorm receives up to 35%“ (Compendium, Exotic Class Item); „18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (courtDefinition); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["super"],
+          "abilityIds": ["needlestorm"]
         }
       ],
       "durationMs": {
@@ -1255,7 +1299,51 @@
               "note": "„18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
             }
           },
-          "damageSources": ["super"]
+          "damageSources": ["super"],
+          "excludeAbilityIds": [
+            "thundercrash",
+            "twilight-arsenal",
+            "nova-bomb-cataclysm",
+            "nova-bomb-vortex",
+            "needlestorm"
+          ]
+        },
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.5,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "note": "„Nova Bomb, Thundercrash, and Twilight Arsenal receive up to 50%“ (Compendium, Exotic Class Item); „18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["super"],
+          "abilityIds": [
+            "thundercrash",
+            "twilight-arsenal",
+            "nova-bomb-cataclysm",
+            "nova-bomb-vortex"
+          ]
+        },
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "value": 1.35,
+            "source": {
+              "name": "Destiny Data Compendium (tab Exotic Armors)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-24",
+              "status": "verified",
+              "note": "„Needlestorm receives up to 35%“ (Compendium, Exotic Class Item); „18.2% | 36.4% | 54.6% | 59.7% | 64.8% | 70% increased Super Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
+            }
+          },
+          "damageSources": ["super"],
+          "abilityIds": ["needlestorm"]
         }
       ],
       "durationMs": {

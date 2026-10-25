@@ -2,7 +2,7 @@
 
 Generiert mit `npm run check:text` (Regel in `scripts/lib/textCheck.ts`). Jeder Multiplier-Part, Catalyst und Grant neben den Texten seines Items (Clarity, Compendium, Court, Zitat der Quelle). Wert: (m − 1) × 100 steht im Text; Aegis- und Quantum-Messungen zählen als gemessen, eine Prozentzahl im Text trotzdem auf ±25 %. Dauer: eine Dauer aus dem Text. Ziel: Quellen, Elemente und Waffentypen gegen die Wörter im Text. „Ungenutzt“: Prozentzahlen im Text, die kein Part des Items nutzt (nur zur Info). Gründe für Abweichungen: `tests/fixtures/text-check.json`.
 
-Zeilen 304: ok 282, über Effect 5, gemessen 7, kein Text 3, Abweichung 7 (davon ohne Grund 1).
+Zeilen 312: ok 286, über Effect 5, gemessen 7, kein Text 3, Abweichung 11 (davon ohne Grund 1).
 
 ## Abweichungen
 
@@ -13,6 +13,10 @@ Zeilen 304: ok 282, über Effect 5, gemessen 7, kein Text 3, Abweichung 7 (davon
 | On Your Mark | duration | 3 s | 12 s (Compendium Solar: Grants the user and allies within 15 meters stacks of On Your Mark for 12 seconds, up to a maximum of 10 stacks.); 12 s (Clarity On Your Mark: Precision Hits grant you and allies within a 15 meter radius of you one stack of 'On Your Mark'. Precision Kills, and Precision Hits from Hand Cannons, grant 2 stacks. Casting your Class Ability grants one stack to yourself. Stacks last for 12 seconds. Maximum of 10 stacks.) | Die 3 s sind die Restoration aus dem Compendium (Zeilen über Heilung zählen nicht als Text); On Your Mark hat keinen Damage-Part, die 12 s gelten den Stapeln. |
 | Eternal Warrior | duration | 30 s | 11 s (Court: 10% 17% 22% 25% \| 11s) | Compendium: „On Fists of Havoc End: Grants x4 Arc Weapon Surge for 30 seconds“; die 11 s aus Court gelten den Kill-Stapeln (erstes Effect, ok). Die Zeile nennt den Wert als „x4“, nicht als Prozentzahl. |
 | Sanguine Alchemy | duration | 30 s | 5 s (Compendium Exotic Armors: Damaging an enemy applies a mark for 5 seconds.); 5 s (Compendium Exotic Armors: Kills grant Blood Magic for 5 seconds, up to a maximum of 15 seconds.); 10 s (Compendium Exotic Armors: Swapping to Sanguine Alchemy while in combat will disable all of its effects for 10 seconds.) | Court: „Instant 4x Surge Stacks: While in any Rift or Well of Radiance“, Dauer „~“: der Surge gilt, solange der Well steht (30 s, effects.json). Die 5 s und 10 s im Compendium sind Mark, Blood Magic und die Sperre beim Wechsel. |
+| Star-Eater Scales | value | +50 % exoticIntrinsic, super | Text: 2, 0.5, 18.2, 36.4, 54.6, 59.7, 64.8, 70 % | Die Obergrenzen stehen nur im Eintrag des Exotic Class Items (Compendium): „Nova Bomb, Thundercrash, and Twilight Arsenal receive up to 50% Increased Super Damage“; Feast of Light ist dieselbe Fähigkeit. |
+| Star-Eater Scales | target | +50 % exoticIntrinsic, super | Thundercrash/Twilight Arsenal/Nova Bomb/Nova Bomb nicht im Text | Siehe #1:value; die Supers stehen im Eintrag des Class Items. |
+| Star-Eater Scales | value | +35 % exoticIntrinsic, super | Text: 2, 0.5, 18.2, 36.4, 54.6, 59.7, 64.8, 70 % | Die Obergrenze steht nur im Eintrag des Exotic Class Items (Compendium): „Needlestorm receives up to 35% Increased Super Damage“. |
+| Star-Eater Scales | target | +35 % exoticIntrinsic, super | Needlestorm nicht im Text | Siehe #2:value; Needlestorm steht im Eintrag des Class Items. |
 | Izanagi's Burden: Catalyst | value | +13.1 % weaponPerk | Text: 20, 155, 370 % | Override: Clarity +20 % gilt auf Honed Edge x4 (291 % → 370 % Crit). Ohne Catalyst ist Honed Edge pro Munition schwächer als normale Schüsse (14910 ÷ 1,20 = 12404 < 13180, Quantum), mit Catalyst stärker: Wirkung des Catalysts = 14910 ÷ 13180 = ×1,131. |
 | Outbreak Perfected: Catalyst | value | +15 % weaponPerk | Text: 25 % | Override: Clarity +25 % gilt nur dem Nanite-Anteil (48 von 80 pro Kugel, Quantum): 32 + 48 × 1,25 = 92, also ×1,15. |
 
@@ -275,14 +279,22 @@ Zeilen 304: ok 282, über Effect 5, gemessen 7, kein Text 3, Abweichung 7 (davon
 | Spirit of the Foetracer | value | +25 % surge, weapon | ok | Court PRISMATIC:: Spirit of the Foetracer \| 25% \| 16s: 25% |  |
 | Spirit of the Foetracer | target | +25 % surge, weapon | ok |  |  |
 | Spirit of the Foetracer | duration | 16 s | ok | Court: 25% \| 16s |  |
-| Spirit of the Star-Eater | value | +70 % exoticIntrinsic, super | ok | Compendium Exotic Class: 18.2% \| 36.4% \| 54.6% \| 59.7% \| 64.8% \| 70% increased Super Damage. | 18.2 %, 36.4 %, 54.6 %, 59.7 %, 64.8 %, 50 %, 35 % |
+| Spirit of the Star-Eater | value | +70 % exoticIntrinsic, super | ok | Compendium Exotic Class: 18.2% \| 36.4% \| 54.6% \| 59.7% \| 64.8% \| 70% increased Super Damage. | 18.2 %, 36.4 %, 54.6 %, 59.7 %, 64.8 % |
 | Spirit of the Star-Eater | target | +70 % exoticIntrinsic, super | ok |  |  |
+| Spirit of the Star-Eater | value | +50 % exoticIntrinsic, super | ok | Compendium Exotic Class: Nova Bomb, Thundercrash, and Twilight Arsenal receive up to 50% Increased Super Damage. |  |
+| Spirit of the Star-Eater | target | +50 % exoticIntrinsic, super | ok |  |  |
+| Spirit of the Star-Eater | value | +35 % exoticIntrinsic, super | ok | Compendium Exotic Class: Needlestorm receives up to 35% Increased Super Damage. |  |
+| Spirit of the Star-Eater | target | +35 % exoticIntrinsic, super | ok |  |  |
 | Spirit of the Star-Eater | duration | 14 s | ok | Compendium Exotic Class: Consumes all Feast of Light stacks, increasing Super Damage for 14 seconds. |  |
 | Spirit of Verity | value | +100 % exoticIntrinsic, grenade | ok | Compendium Exotic Class: x5 = 100% increased Grenade Damage, +2.5% Bonus Grenade Energy/s for 4 seconds. | 40 %, 0.5 %, 55 %, 1 %, 70 %, 1.5 %, 85 %, 2 %, 2.5 % |
 | Spirit of Verity | target | +100 % exoticIntrinsic, grenade | ok |  |  |
 | Spirit of Verity | duration | 4 s | ok | Compendium Exotic Class: x5 = 100% increased Grenade Damage, +2.5% Bonus Grenade Energy/s for 4 seconds. |  |
 | Star-Eater Scales | value | +70 % exoticIntrinsic, super | ok | Compendium Exotic Armors: 18.2% \| 36.4% \| 54.6% \| 59.7% \| 64.8% \| 70% increased Super Damage. | 2 %, 0.5 %, 18.2 %, 36.4 %, 54.6 %, 59.7 %, 64.8 % |
 | Star-Eater Scales | target | +70 % exoticIntrinsic, super | ok |  |  |
+| Star-Eater Scales | value | +50 % exoticIntrinsic, super | **Abweichung** | Text: 2, 0.5, 18.2, 36.4, 54.6, 59.7, 64.8, 70 % |  |
+| Star-Eater Scales | target | +50 % exoticIntrinsic, super | **Abweichung** | Thundercrash/Twilight Arsenal/Nova Bomb/Nova Bomb nicht im Text |  |
+| Star-Eater Scales | value | +35 % exoticIntrinsic, super | **Abweichung** | Text: 2, 0.5, 18.2, 36.4, 54.6, 59.7, 64.8, 70 % |  |
+| Star-Eater Scales | target | +35 % exoticIntrinsic, super | **Abweichung** | Needlestorm nicht im Text |  |
 | Star-Eater Scales | duration | 14 s | ok | Clarity Feast of Light: • 18.2%\|36.4%\|54.6%\|59.7%\|64.8%\|70% increased Super damage for 14 seconds |  |
 | The Path of Burning Steps | value | +12.4 % amplification, weapon, solar | ok | Court OUTLIER DAMAGE BUFFS: The Path of Burning Steps \| 6% 9.2% 12.4% \| ∞: 12.4% | 6 %, 9.2 %, 5 %, 10 %, 15 %, 20 %, 24.9 % |
 | The Path of Burning Steps | target | +12.4 % amplification, weapon, solar | ok |  |  |
