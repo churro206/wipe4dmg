@@ -13,8 +13,8 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Telesto | 51,208 | 43,123 | 0.842 | -16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now) |
 | Arbalest | 58,835 | 56,161 | 0.955 |  |
 | The Colony | 49,096 | 47,133 | 0.960 |  |
-| Gathering Storm, Feast of Light x6, Limit Break | 21,772 | 21,203 | 0.974 |  |
-| Stormtrance, Ascending Amplitude, Facet of Courage, Thunderous Retort | 71,745 | 70,591 | 0.984 |  |
+| Gathering Storm, Feast of Light x6, Limit Break | 21,772 | 21,331 | 0.980 |  |
+| Stormtrance, Ascending Amplitude, Facet of Courage, Thunderous Retort | 71,745 | 70,462 | 0.982 |  |
 | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | 41,594 | 41,001 | 0.986 |  |
 | Needlestorm, Feast of Light x6, Limit Break | 25,251 | 25,243 | 1.000 |  |
 | Merciless | 54,552 | 54,549 | 1.000 |  |
@@ -30,7 +30,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Nova Bomb - Cataclysm, Feast of Light x6, Facet of Courage, Limit Break | 28,890 | 28,892 | 1.000 |  |
 | Twilight Arsenal, Facet of Courage, Limit Break | 20,190 | 20,193 | 1.000 |  |
 | Twilight Arsenal, Feast of Light x6, Facet of Courage, Limit Break | 30,285 | 30,289 | 1.000 |  |
-| Stormtrance, Feast of Light x6, Facet of Courage, Thunderous Retort | 54,444 | 55,043 | 1.011 |  |
+| Stormtrance, Feast of Light x6, Facet of Courage, Thunderous Retort | 54,444 | 54,914 | 1.009 |  |
 | Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | 32,463 | 32,941 | 1.015 |  |
 | Deterministic Chaos, Target Lock | 137,936 | 140,043 | 1.015 |  |
 | One Thousand Voices, Particle Reconstruction | 63,705 | 66,942 | 1.051 |  |
@@ -119,7 +119,6 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Cloudstrike | 86,535 | 82,773 | 0.957 | excludes Bolt Charge |
 | Black Talon | 79,745 | 76,566 | 0.960 | 2H2L combo |
 | Fists of Havoc | 28,991 | 27,883 | 0.962 | light attacks |
-| Daybreak | 32,716 | 31,590 | 0.966 | grounded |
 | Shadowshot: Moebius Quiver | 16,241 | 15,811 | 0.974 | both volleys; assumes no other debuff |
 | Ergo Sum | 94,548 | 93,245 | 0.986 | caster frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
 | Shadowshot: Moebius Quiver | 9,413 | 9,301 | 0.988 | both volleys; assumes no other debuff |
@@ -143,6 +142,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Heartshadow | 103,813 | 104,462 | 1.006 | heavy attacks; Shot in the Dark |
 | The Lament | 176,080 | 178,806 | 1.015 | 3L1H1R combo; Sword Storm Combo |
 | Vexcalibur | 45,160 | 46,572 | 1.031 | projectile |
+| Daybreak | 32,716 | 33,900 | 1.036 | grounded |
 | The Lament | 165,335 | 178,806 | 1.081 | 4L1H1R combo; Sword Storm Combo |
 | Winter's Wrath | 30,297 | 34,474 | 1.138 | light-heavy cycle; Whisper of Fissures |
 | Bladefury | 38,315 | 45,252 | 1.181 | HLLLHLLLLHLLLLH |

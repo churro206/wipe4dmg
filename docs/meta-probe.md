@@ -18,7 +18,7 @@ Median: 1.000
 | The Queenbreaker, Rewind Rounds, Combat Sights | 97,261 | 97,261 | 1.000 | 1.000 |  |
 | Blade Barrage, Knock 'Em Down, Limit Break | 24,649 | 24,118 | 0.978 | 0.978 | Limit Break is not modelled |
 | Nova Bomb - Vortex, Limit Break | 17,330 | 17,330 | 1.000 | 1.000 | Limit Break is not modelled |
-| Gathering Storm, Limit Break | 12,280 | 12,737 | 1.037 | 1.037 | Limit Break is not modelled |
+| Gathering Storm, Limit Break | 12,280 | 12,866 | 1.048 | 1.048 | Limit Break is not modelled |
 | Golden Gun - Marksman, Celestial Nighthawk, Radiant, Facet of Courage, Limit Break | 33,042 | 33,042 | 1.000 | 1.000 | Limit Break (part of Buff 1.518 = Radiant 1.2 × Facet 1.1 × Limit Break 1.15) is not modelled |
 
 ## Übersprungen

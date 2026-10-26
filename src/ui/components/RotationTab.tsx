@@ -6,7 +6,7 @@ import type { SimulationResult } from "../../engine/simulate";
 import { MS_PER_SECOND } from "../../engine/units";
 import { defaultWindow, type WindowInput } from "../buildState";
 import { RotationTimeline } from "../Charts";
-import { iconUrl } from "../data";
+import { iconUrl, keywords } from "../data";
 import { effectIconKey } from "../describe";
 import { AbilityCastEditor } from "./AbilityCastEditor";
 import { RotationEditor } from "./RotationEditor";
@@ -71,9 +71,20 @@ export function RotationTab({
                 })),
         }))}
         shotsMs={result.shots.map((s) => s.timeMs)}
-        ignitionsMs={result.damageInstances
-          .filter((d) => d.id === "ignition")
-          .map((d) => d.timeMs)}
+        procRows={keywords.flatMap((keyword) => {
+          const timesMs = result.damageInstances
+            .filter((d) => d.keywordId === keyword.id)
+            .map((d) => d.timeMs);
+          return timesMs.length === 0
+            ? []
+            : [
+                {
+                  label: `${keyword.name} procs`,
+                  color: `var(--element-${keyword.element})`,
+                  timesMs,
+                },
+              ];
+        })}
         damagePhaseSeconds={damagePhaseSeconds}
       />
       <RotationEditor

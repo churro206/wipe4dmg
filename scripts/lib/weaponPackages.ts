@@ -394,6 +394,7 @@ export type Timing = {
   timeToEmptySeconds: number | null; // null: unlimited ammo
   note: string;
   reloadSource?: Source; // when the reload comes from another source than the row
+  chargeMs?: number; // charge before a shot (Aegis note, e.g. "1000ms charge"); inside the interval
 };
 type TimingProblem = { problem: string };
 
@@ -456,6 +457,7 @@ export function timingFromAegis(
     intervalSeconds,
     timeToEmptySeconds: timeToEmpty,
     note: `Derived: (TtE ${timeToEmpty} s − ${reloads} reloads × ${reloadSeconds} s) ÷ ${row.shots - magazines} intervals within magazines (ADR 0013)`,
+    ...(row.chargeMs === null ? {} : { chargeMs: row.chargeMs }),
   };
 }
 
@@ -1748,6 +1750,11 @@ export function buildWeaponImport(
       );
     }
 
+    const chargeMs =
+      timing.chargeMs ??
+      inputs.sustained.rows.find(
+        (r) => sameName(r.name, manifest.name) && r.chargeMs !== null,
+      )?.chargeMs;
     const weapon: Weapon = {
       id,
       code: codes[id] ?? 0, // set below
@@ -1757,10 +1764,21 @@ export function buildWeaponImport(
       weaponType: manifest.weaponType,
       element: manifest.element,
       ammo: manifest.ammo,
-      chargeTimeMs: {
-        value: 0,
-        source: timingSource("The time to empty counts from the first shot"),
-      },
+      // The interval already contains the charge (time to empty counts from the first shot): the
+      // charge delays the first shot and every shot after a cast that blocked the weapon.
+      // The charge is a property of the weapon, so any Aegis row of it counts, also one with
+      // foreign assumptions whose timing the package does not use.
+      chargeTimeMs: chargeMs
+        ? {
+            value: chargeMs,
+            source: timingSource(
+              `Aegis Sustained note "${chargeMs}ms charge"; the interval contains it`,
+            ),
+          }
+        : {
+            value: 0,
+            source: timingSource("The time to empty counts from the first shot"),
+          },
       fireRateRpm: {
         value: Number(entry.derivedRpm.toFixed(3)),
         source: timingSource(timing.note),

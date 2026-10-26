@@ -302,7 +302,8 @@ describe("catalysts", () => {
             keywords,
           },
         ).shots;
-        const last = shots.at(-1)!.timeMs / 1000;
+        // the time to empty counts from the first shot, which waits for the charge
+        const last = (shots.at(-1)!.timeMs - weapon.chargeTimeMs.value!) / 1000;
         return Math.abs(last / timeToEmpty - 1) > 0.03
           ? [`${r.name} ${last.toFixed(1)} s vs ${timeToEmpty.toFixed(1)} s`]
           : [];
@@ -444,10 +445,11 @@ describe("rules", () => {
       const shots = simulate(weapon, timeToEmpty * 2, [], buckets, {
         keywords,
       }).shots;
-      expect(shots.at(-1)!.timeMs / 1000, weapon.name).toBeCloseTo(
-        timeToEmpty,
-        0,
-      );
+      // the time to empty counts from the first shot, which waits for the charge
+      expect(
+        (shots.at(-1)!.timeMs - weapon.chargeTimeMs.value!) / 1000,
+        weapon.name,
+      ).toBeCloseTo(timeToEmpty, 0);
     }
   });
 

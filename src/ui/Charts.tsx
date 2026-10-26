@@ -421,16 +421,19 @@ export type AbilityTimelineRow = {
   windows: { startMs: number; endMs: number; exact: boolean }[];
 };
 
+/** One timeline row per keyword that fires (Ignition, Jolt, ...): when its damage lands. */
+export type ProcTimelineRow = { label: string; color: string; timesMs: number[] };
+
 /**
  * Rotation timeline (US-07): one bar per effect window, one row per ability with its casts and
- * hatched super windows, the shots as thin marks and the ignitions as dots. Marks carry a native
- * tooltip; the rotation tables are the table view.
+ * the windows in which they block the weapon, the shots as thin marks and one row of dots per
+ * keyword that fires. Marks carry a native tooltip; the rotation tables are the table view.
  */
 export function RotationTimeline({
   rows,
   abilityRows,
   shotsMs,
-  ignitionsMs,
+  procRows,
   damagePhaseSeconds,
 }: {
   // one row per effect; a triggered effect has a window per trigger
@@ -441,7 +444,7 @@ export function RotationTimeline({
   }[];
   abilityRows: AbilityTimelineRow[];
   shotsMs: number[];
-  ignitionsMs: number[];
+  procRows: ProcTimelineRow[]; // one row per keyword that fires: its damage as dots
   damagePhaseSeconds: number;
 }) {
   const width = 560;
@@ -457,7 +460,7 @@ export function RotationTimeline({
     ...rows.map((row) => ({ kind: "effect" as const, row })),
     ...abilityRows.map((ability) => ({ kind: "ability" as const, ability })),
     { kind: "shots" as const },
-    ...(ignitionsMs.length > 0 ? [{ kind: "ignitions" as const }] : []),
+    ...procRows.map((proc) => ({ kind: "proc" as const, proc })),
   ];
   const plotHeight = lines.length * rowHeight;
   const step =
@@ -475,7 +478,7 @@ export function RotationTimeline({
         viewBox={`0 0 ${width} ${plotHeight + axisHeight}`}
         width="100%"
         role="img"
-        aria-label="Timeline: effect windows, ability casts, shots and ignitions"
+        aria-label="Timeline: effect windows, ability casts, shots and keyword damage"
       >
         <defs>
           {abilityRows.map((ability) => (
@@ -535,7 +538,7 @@ export function RotationTimeline({
                 ? line.ability.label
                 : line.kind === "shots"
                   ? "Shots"
-                  : "Ignitions";
+                  : line.proc.label;
           const rowIcon =
             line.kind === "effect"
               ? line.row.iconUrl
@@ -632,18 +635,18 @@ export function RotationTimeline({
                     <title>{`Shot at ${seconds.format(ms / 1000)} s`}</title>
                   </line>
                 ))}
-              {line.kind === "ignitions" &&
-                ignitionsMs.map((ms) => (
+              {line.kind === "proc" &&
+                line.proc.timesMs.map((ms, i) => (
                   <circle
-                    key={ms}
+                    key={`${ms}-${i}`}
                     cx={x(ms)}
                     cy={middle}
                     r={4}
-                    fill="var(--series-2)"
+                    fill={line.proc.color}
                     stroke="var(--bg)"
                     strokeWidth={2}
                   >
-                    <title>{`Ignition at ${seconds.format(ms / 1000)} s`}</title>
+                    <title>{`${line.proc.label} at ${seconds.format(ms / 1000)} s`}</title>
                   </circle>
                 ))}
             </g>

@@ -14,7 +14,7 @@ Erzeugt mit `npm run probe` (`tests/rankingGate.test.ts`). Gruppen nach der Spal
 
 | Gruppe | Zeile | zusätzliche Annahme | Aegis | Modell | Abstand | Grund der Abweichung |
 | --- | --- | --- | ---: | ---: | ---: | --- |
-| Supers | Gathering Storm, Feast of Light x6, Limit Break | Feast of Light x6 | 77.3 | 66.5 | -10.8 | Aegis contradicts itself: tab Swap +77.3 % (25038 / 14122), tab Abilities +63.3 % (11767 / 7207), and the text allows at most +70 % (Compendium: 'up to 70% increased Super Damage'). The model gives +66.5 % (Jolt share unscaled), between the tabs and within the text. |
+| Supers | Gathering Storm, Feast of Light x6, Limit Break | Feast of Light x6 | 77.3 | 65.8 | -11.5 | Aegis contradicts itself: tab Swap +77.3 % (25038 / 14122), tab Abilities +63.3 % (11767 / 7207), and the text allows at most +70 % (Compendium: 'up to 70% increased Super Damage'). The model gives +65.8 % (Jolt share unscaled; 66.5 % before the 1 s charge of One Thousand Voices, the probe's weapon, shifted its keyword damage), between the tabs and within the text. |
 | Supers | Blade Barrage, Knock 'Em Down, Shards of Galanor, Limit Break | Shards of Galanor | 77.0 | 80.9 | 3.9 | Aegis contradicts itself: tab Swap +77.0 % (23150 / 13076), tab Abilities +102.2 % (25864 / 12795); the model gives +80.9 %, 3.9 points above Swap and 21 below Abilities. The cause of the tab difference is not known; the 25 % of Sharp Edges alone cannot explain either. |
 | Supers | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | Feast of Light x6 | 68.7 | 70.0 | 1.3 |  |
 | Supers | Nova Bomb - Cataclysm, Feast of Light x6, Facet of Courage, Limit Break | Feast of Light x6 | 50.0 | 50.0 | 0.0 |  |

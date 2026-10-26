@@ -205,6 +205,18 @@ describe("exotic armor changes its abilities", () => {
     expect(dodged.reloadsMs.length).toBe(plain.reloadsMs.length - 1);
   });
 
+  it("One Thousand Voices charges 1 s: before the first shot and again after a cast", () => {
+    const otv = weaponById("one-thousand-voices");
+    const hunter = { guardianClass: "hunter" as const, subclass: "solar" as const };
+    const plain = run(hunter, otv);
+    const grenade = run({ ...hunter, abilities: [{ abilityId: "thermite-grenade", castsMs: [0] }] }, otv);
+    const castMs = gameData.castTimes.defaultMs.value!;
+    note("One Thousand Voices: erster Schuss ohne / nach einer Granate bei 0 s", `${fmt(plain.shots[0].timeMs / 1000)} s / ${fmt(grenade.shots[0].timeMs / 1000)} s`, "1 s Ladezeit (Aegis: „1000ms charge“); nach dem Cast lädt die Waffe neu");
+    expect(otv.chargeTimeMs.value).toBe(1000);
+    expect(plain.shots[0].timeMs).toBe(1000);
+    expect(grenade.shots[0].timeMs).toBeGreaterThanOrEqual(castMs + 1000);
+  });
+
   it("Rally Barricade does not shorten Gjallarhorn's reload: Quantum and Aegis reload with Rally already (K1)", () => {
     const gjallarhorn = weaponById("gjallarhorn");
     const plain = run({}, gjallarhorn);
@@ -228,8 +240,17 @@ describe("exotic armor changes its abilities", () => {
         "weapon",
       );
     const plain = damageOf(run({ ...hunter, exoticArmorId: undefined }), "weapon");
-    note("One Thousand Voices (10 s) mit Gwisin Vest und Dodge bei 0 s / ohne Dodge", `×${fmt(weaponDamage([0]) / plain)} / ×${fmt(weaponDamage([]) / plain)}`, "×1,15 (Court: Weaken 15 %, 10 s) / ×1,00");
-    expect(weaponDamage([0]) / plain).toBeCloseTo(1.15, 3);
+    // The dodge costs its cast time and the charge: compare with the same dodge without the vest.
+    const plainDodged = damageOf(
+      run({
+        ...hunter,
+        exoticArmorId: undefined,
+        abilities: [{ abilityId: "gamblers-dodge", castsMs: [0] }],
+      }),
+      "weapon",
+    );
+    note("One Thousand Voices (10 s) mit Gwisin Vest und Dodge bei 0 s / ohne Dodge", `×${fmt(weaponDamage([0]) / plainDodged)} / ×${fmt(weaponDamage([]) / plain)}`, "×1,15 (Court: Weaken 15 %, 10 s; gleicher Dodge ohne Vest) / ×1,00");
+    expect(weaponDamage([0]) / plainDodged).toBeCloseTo(1.15, 3);
     expect(weaponDamage([])).toBeCloseTo(plain, 0);
   });
 

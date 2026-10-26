@@ -90,9 +90,18 @@ describe("simulate: the weapon during a cast", () => {
     expect(shots.some((ms) => ms > atMs && ms < atMs + 1000)).toBe(false);
   });
 
-  it("fires a shot at the very time of the cast first", () => {
+  it("lets a cast at the very time of a shot come first: no shot sneaks in between casts", () => {
     const shots = simulate(weapon, 60, [], buckets, {
       abilities: [{ ability: grenade, castsMs: [plain[2]], castMs: 1000 }],
+    }).shots.map((s) => s.timeMs);
+    expect(shots[2]).toBeGreaterThanOrEqual(plain[2] + 1000);
+    expect(shots.some((ms) => ms >= plain[2] && ms < plain[2] + 1000)).toBe(false);
+  });
+
+  it("fires a shot at the very time of a cast that reloads first (a dodge after the last shot)", () => {
+    const dodge = { ...grenade, id: "dodge", refillsMagazine: true };
+    const shots = simulate(weapon, 60, [], buckets, {
+      abilities: [{ ability: dodge, castsMs: [plain[2]], castMs: 1000 }],
     }).shots.map((s) => s.timeMs);
     expect(shots[2]).toBe(plain[2]);
     expect(shots[3]).toBeGreaterThanOrEqual(plain[2] + 1000);

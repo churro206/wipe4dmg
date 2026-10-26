@@ -249,16 +249,16 @@ export function simulate(
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
 
   // A reload starts with the last shot of a magazine; a noReload part active then skips it.
-  // A shot at the very time of a cast comes first: the cast follows it (a dodge after the last shot).
-  // A cast at 0 s opens the phase instead: there is no shot before it, unless it reloads the weapon
-  // (a dodge placed at the last shot of a magazine).
+  // A cast at the very time of a shot comes first and the shot waits for its end, so no shot sneaks
+  // in between casts lined up back to back (also at 0 s). Only a cast that reloads the weapon
+  // follows the shot: a dodge is placed at the last shot of a magazine.
   const blockingWindows = [
     ...superWindows.map((w) => ({ ...w, shotAtStartFirst: false })),
     ...(options.abilities ?? []).flatMap(({ ability, castsMs, castMs = 0 }) =>
       castsMs.map((startMs) => ({
         startMs,
         endMs: startMs + castMs,
-        shotAtStartFirst: startMs > 0 || Boolean(ability.refillsMagazine),
+        shotAtStartFirst: Boolean(ability.refillsMagazine),
       })),
     ),
   ]

@@ -620,13 +620,13 @@
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 533,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row arbalest",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"533ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -926,13 +926,13 @@
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 683,
       "source": {
         "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-bastion",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"683ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -2809,13 +2809,13 @@
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 533,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row cull-s-shadow-with-corruption",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"533ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -5243,13 +5243,13 @@
     "element": "strand",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 533,
       "source": {
         "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-euphony",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"533ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -6479,13 +6479,13 @@
     "element": "arc",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 817,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row grand-overture-volleys-when-available",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"817ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -8169,13 +8169,13 @@
     "element": "solar",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 817,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row j-tunn",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"817ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -9674,13 +9674,13 @@
     "element": "solar",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 1000,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row merciless",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"1000ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -10741,13 +10741,13 @@
     "element": "solar",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 1000,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"1000ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -13147,13 +13147,13 @@
     "element": "solar",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 750,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"750ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -14292,13 +14292,13 @@
     "element": "void",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 817,
       "source": {
         "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"817ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -14464,13 +14464,13 @@
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 666,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"666ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
@@ -15936,13 +15936,13 @@
     "element": "arc",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 550,
       "source": {
         "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "Aegis Sustained note \"550ms charge\"; the interval contains it"
       }
     },
     "fireRateRpm": {
