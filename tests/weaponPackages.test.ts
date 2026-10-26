@@ -258,6 +258,19 @@ describe("primaries", () => {
 });
 
 describe("catalysts", () => {
+  // Quantum's time to empty of a bow is shots × 60 ÷ rpm (17.4 s ÷ 9 = 1.93 s, rpm 31); the nock is
+  // inside it. Gate: manifest draw 1.328 s + nock 0.6 s = 1.93 s; with Archer's Tempo (Clarity
+  // −43.7 % draw) 1.35 s, Aegis 1.333 s.
+  it("Leviathan's Breath: one arrow every 1.93 s, with Archer's Tempo every 1.33 s, nock inside", () => {
+    const leviathan = byName("Leviathan's Breath")!;
+    expect(60 / value(leviathan.fireRateRpm)!).toBeCloseTo(1.935, 2);
+    expect(value(leviathan.reloadTimeMs)).toBe(0);
+    const timing = leviathan.catalyst!.timing!;
+    expect(60 / value(timing.fireRateRpm)!).toBeCloseTo(1.333, 2);
+    expect(value(timing.reloadTimeMs)).toBe(0);
+    expect(value(timing.totalShots)).toBe(14);
+  });
+
   it("Telesto: 4 rounds per magazine without, 7 with the catalyst (Clarity 4🠚7)", () => {
     const telesto = byName("Telesto")!;
     expect(value(telesto.magazine)).toBe(4);

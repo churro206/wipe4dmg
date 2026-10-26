@@ -515,6 +515,21 @@ export function timingFromQuantum(
   const reloads = Math.ceil(totalShots / magazine) - 1;
   let intervalSeconds: number;
   let note: string;
+  if (row.weaponType === "bow" && row.magazine === 1 && rpm !== null) {
+    // Quantum's time to empty of a bow is shots × 60 ÷ rpm (Leviathan's Breath 17.4 s ÷ 9 = 1.93 s,
+    // rpm 31): the nock after each arrow is inside the rate, as with the primary bows. That time
+    // holds the first draw as a whole cycle; from the first arrow on it is one cycle less.
+    return {
+      rowId: row.id,
+      magazine,
+      totalShots,
+      reloadSeconds,
+      engineReloadSeconds: 0,
+      intervalSeconds: 60 / rpm,
+      timeToEmptySeconds: ((totalShots - 1) * 60) / rpm,
+      note: `Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; Time to Empty ${timeToEmptySeconds ?? "–"} s = ${totalShots} × 60 ÷ ${rpm} rpm counts the first draw as a cycle`,
+    };
+  }
   if (timeToEmptySeconds !== null && totalShots > 1) {
     intervalSeconds =
       (timeToEmptySeconds - reloads * reloadSeconds) / (totalShots - 1);

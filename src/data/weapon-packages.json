@@ -8782,13 +8782,13 @@
       }
     },
     "fireRateRpm": {
-      "value": 38.095,
+      "value": 31,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Derived: (Time to Empty 17.4 s − 8 reloads × 0.6 s) ÷ 8 intervals (ADR 0013)"
+        "note": "Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; Time to Empty 17.4 s = 9 × 60 ÷ 31 rpm counts the first draw as a cycle"
       }
     },
     "magazine": {
@@ -8810,7 +8810,7 @@
       }
     },
     "reloadTimeMs": {
-      "value": 600,
+      "value": 0,
       "source": {
         "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -8895,13 +8895,13 @@
       "effect": "timing",
       "timing": {
         "fireRateRpm": {
-          "value": 70.27,
+          "value": 45,
           "source": {
             "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath-cata",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "unverified",
-            "note": "Derived: (Time to Empty 18.9 s − 13 reloads × 0.6 s) ÷ 13 intervals (ADR 0013)"
+            "note": "Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; Time to Empty 18.9 s = 14 × 60 ÷ 45 rpm counts the first draw as a cycle"
           }
         },
         "magazine": {
@@ -8923,7 +8923,7 @@
           }
         },
         "reloadTimeMs": {
-          "value": 600,
+          "value": 0,
           "source": {
             "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath-cata",
             "url": "https://destiny2.science/quantum-damage-ics",

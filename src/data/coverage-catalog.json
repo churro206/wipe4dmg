@@ -2020,7 +2020,7 @@
         "group": "Power",
         "inGame": "Increases Reserves by 5 (9🠚14) and Ammo Generation by 80.\nPrecision Hits grant 43.7% decreased Draw Animation Speed for 3 seconds.",
         "iconHash": 2362217257,
-        "inCalculator": "ammo 9 → 14, rate of fire 38 → 70",
+        "inCalculator": "ammo 9 → 14, rate of fire 31 → 45",
         "status": "full",
         "iconKey": "named:leviathans-breath-catalyst"
       },
