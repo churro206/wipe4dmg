@@ -41,6 +41,7 @@ export function realCoverage(): CoverageRow[] {
     weaponReport: buildWeaponImport(inputs).report.weapons,
     totals,
     weapons,
+    exoticWeaponNames: inputs.manifest.map((w) => w.name),
     abilities,
     effects,
     probe: { manual, entries, skipped },

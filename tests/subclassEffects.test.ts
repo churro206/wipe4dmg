@@ -56,7 +56,9 @@ describe("rules for aspects and fragments", () => {
     ["Threaded Specter", "notAgainstBoss"],
     ["Facet of Courage", "always"],
     ["Crackshot", "bonusLater"],
-    ["Ember of Char", "keywordLater"],
+    ["Ember of Char", "notAgainstBoss"], // "Does not apply to the ignited enemy" (K7)
+    ["Echo of Cessation", "notAgainstBoss"], // a finisher's Volatile on the enemies around (K7)
+    ["Spark of Momentum", "keywordLater"], // ammo bricks can be picked up before the phase
     ["Spark of Amplitude", "noDamage"],
   ])("%s → %s", (name, kind) => {
     expect(kindsOf(name)).toContain(kind);

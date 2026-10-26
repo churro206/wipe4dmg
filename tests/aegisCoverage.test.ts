@@ -43,6 +43,7 @@ const input = (extra: Partial<CoverageInput>): CoverageInput => ({
   weaponReport: [],
   totals: [],
   weapons: [],
+  exoticWeaponNames: [],
   abilities: [],
   effects: [],
   probe: { manual: new Set(), entries: [], skipped: [] },
@@ -109,7 +110,8 @@ describe("aegisCoverage, tabs Sustained and Swap", () => {
         totalRow("w-inf", "sustained", "primary", "Telesto", ["inf"]),
         totalRow("w-frame", "sustained", "primary", "Adaptive frame"),
         totalRow("w-gap", "sustained", "special", "Wolfsbane"),
-        totalRow("w-unknown", "sustained", "special", "Bequest"),
+        totalRow("w-legendary", "sustained", "special", "Bequest"),
+        totalRow("w-unknown", "sustained", "special", "Worldline Zero"),
         totalRow("t-base", "sustained", "tick", "Storm's Keep"),
         totalRow("t-variant", "sustained", "tick", "Storm's Keep", ["Flashover"]),
         totalRow("t-none", "sustained", "tick", "Mystery"),
@@ -120,6 +122,7 @@ describe("aegisCoverage, tabs Sustained and Swap", () => {
         totalRow("g-none", "swap", "grenade", "Mystery Grenade"),
       ],
       weapons: [{ name: "Telesto" }],
+      exoticWeaponNames: ["Telesto", "Wolfsbane", "Worldline Zero"],
       weaponReport: [
         report({ name: "Wolfsbane", status: "gap", gapReason: "kein Timing" }),
       ],
@@ -160,7 +163,14 @@ describe("aegisCoverage, tabs Sustained and Swap", () => {
     });
     expect(verdictOf(rows, "w-unknown")).toMatchObject({
       verdict: "missing",
-      keys: ["weapon: Bequest"],
+      keys: ["weapon: Worldline Zero"],
+    });
+  });
+
+  it("skips a legendary weapon named like an exotic: not an exotic of the manifest (K7)", () => {
+    expect(verdictOf(rows, "w-legendary")).toMatchObject({
+      verdict: "skipped",
+      detail: "legendary weapon (owner 2026-10-25)",
     });
   });
 

@@ -334,12 +334,22 @@ const ARMOR_KIND: Record<
   noDamage: ["leftOut", "No damage effect (survival, energy or movement only)."],
 };
 
+// Energy only, but the energy model has a modifier of the piece (ability-energy.json) (K7).
+const ENERGY_MODELLED: [CatalogStatus, string] = [
+  "full",
+  "Gives ability or super energy; the energy model counts it.",
+];
+
 function armorEntry(
   text: Pick<CatalogEntry, "inGame" | "fallback">,
   armor: ArmorInput,
   group: string,
+  energyArmorIds: Set<string>,
 ): CatalogEntry {
-  const [status, calculator] = ARMOR_KIND[armor.kind];
+  const [status, calculator] =
+    armor.kind === "energyOnly" && energyArmorIds.has(armor.id)
+      ? ENERGY_MODELLED
+      : ARMOR_KIND[armor.kind];
   return make(status, {
     name: armor.name,
     group,
@@ -363,7 +373,9 @@ export function armorEntries(input: {
   perks: CompendiumEntry[];
   armor: ArmorInput[];
   clarity: ClarityEntry[];
+  energyArmorIds?: string[]; // exotic armor with a modifier in ability-energy.json
 }): CatalogEntry[] {
+  const energyArmorIds = new Set(input.energyArmorIds ?? []);
   const rows = [
     ...input.entries.map((entry) => {
       // The Compendium shortens some names ("Loreley Splendor" for "Loreley Splendor Helm") and spells
@@ -408,7 +420,7 @@ export function armorEntries(input: {
             entry.text,
           );
       return armor
-        ? armorEntry(text, armor, group)
+        ? armorEntry(text, armor, group, energyArmorIds)
         : make("missing", {
             name: entry.name,
             group,

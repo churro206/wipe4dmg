@@ -8,7 +8,7 @@ Generiert von `npm run coverage` (`tests/lib/aegisCoverage.ts`), nicht von Hand 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
 | Weapons | 417 | 143 | 244 | 30 |
-| Sustained | 261 | 38 | 129 | 94 |
+| Sustained | 261 | 38 | 131 | 92 |
 | Swap | 204 | 47 | 102 | 55 |
 
 ## Was fehlt
@@ -31,7 +31,6 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | own damage: Unravel | 2 | Item fehlt |  |  |
 | own damage: Witherhoard | 2 | Item fehlt |  |  |
 | super: Glacial Quake | 2 | Item fehlt |  |  |
-| weapon: Bequest | 2 | Item fehlt |  |  |
 | Barrow-Dyad (no package) | 1 | Item fehlt |  |  |
 | melee: Adaptive glaive | 1 | Item fehlt |  |  |
 | melee: Cull's Shadow | 1 | Item fehlt |  |  |
@@ -640,11 +639,11 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Fusion grenade, Death Throes x5, Touch of Flame, Ember of Ashes, Feel the Flame, Sticker Shock | im Modell | grenade in the model, value not probed |
 | Still Hunt, pre-popped into 6 shot cycle, Celestial Nighthawk, Sniper's Meditation | fehlt | no switch for: pre-popped into 6 shot cycle |
 | Merciless, Impetus, two kills | fehlt | no switch for: Impetus; two kills |
-| Bequest, 1H1L combo, Jagged Edge, e. Jolting Feedback + e. Surrounded, Lucent Blades x3, Pack Hunter, Argent Blade | fehlt | exotic weapon not in the model |
+| Bequest, 1H1L combo, Jagged Edge, e. Jolting Feedback + e. Surrounded, Lucent Blades x3, Pack Hunter, Argent Blade | übersprungen | legendary weapon (owner 2026-10-25) |
 | Wave frame sword, heavy spam, Jagged Edge + e. Impact, Relentless Strikes + e. Surrounded + Tenacity x20 (Synanceia), Pack Hunter, Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
 | Storm grenade, Empowered Grenade x2, Touch of Thunder, Spark of Magnitude, Feel the Flame | im Modell | grenade in the model, value not probed |
 | Disruption sniper, Aggregate Charge x3 + e. Accelerated Assault (Refurbished A499), Sniper's Meditation | übersprungen | legendary frame (owner 2026-10-25) |
-| Bequest, 1H1L combo, Jagged Edge, e. Jolting Feedback + Elemental Honing x5, Lucent Blades x3, Pack Hunter, Argent Blade | fehlt | exotic weapon not in the model |
+| Bequest, 1H1L combo, Jagged Edge, e. Jolting Feedback + Elemental Honing x5, Lucent Blades x3, Pack Hunter, Argent Blade | übersprungen | legendary weapon (owner 2026-10-25) |
 | Wave frame sword, heavy spam, Jagged Edge + e. Impact, Relentless Strikes + e. Elemental Honing x5 + Tenacity x20 (Synanceia), Pack Hunter, Argent Blade | übersprungen | legendary frame (owner 2026-10-25) |
 | Dynamic sniper, Ionized Heatsink, Dynamic Heat Limiter, Vorpal + Bait and Switch + e. Imperial Allegiance x3 (Conspiracy Honed), Sniper's Meditation | übersprungen | legendary frame (owner 2026-10-25) |
 | Lightweight sword, 1H2L combo, Jagged Edge + e. Impact, e. Burning Ambition + Chaos Reshaped x2 (Terciopelo-4bl), Pack Hunter, Argent Blade, Solar Fulmination | übersprungen | legendary frame (owner 2026-10-25) |

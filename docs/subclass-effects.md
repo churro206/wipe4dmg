@@ -12,8 +12,8 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Ohne Dauer | 4 |
 | Auslöser in der Rotation, offen | 1 |
 | Auslöser Class Ability, U7 | 1 |
-| Keyword ohne Modell, später | 21 |
-| Wirkt nicht gegen einen Boss | 4 |
+| Keyword ohne Modell, später | 19 |
+| Wirkt nicht gegen einen Boss | 6 |
 | Bonus ohne Bucket-Quelle, Recherche in der Inventur | 7 |
 | Ändert eine Ability (Aegis-Variante) | 8 |
 | Eigener Schaden (Aegis Sustained) | 5 |
@@ -111,8 +111,6 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Chaos Accelerant | void | C | volatile: eigener Schaden oder geänderte Ability, später („inflicts Volatile“) | Text |
 | Consecration | prismatic, solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflicting x40+20 Scorch“) | Text |
 | Crackshot | solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflict x20+10 Scorch“) | Text |
-| Echo of Cessation | void | C | volatile: Kill ohne Dauer, feuert nie („inflicting Volatile“) | Text |
-| Ember of Char | solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflict x40+20 Scorch“) | Text |
 | Lightning Surge | arc, prismatic | C | jolt: eigener Schaden oder geänderte Ability, später („inflict Jolt“) | Text |
 | Roaring Flames | solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflict x30+10 Scorch“) | Text |
 | Shieldburst | solar | C | ignition: eigener Schaden oder geänderte Ability, später („inflicts x20+10 Scorch“) | Text |
@@ -135,6 +133,8 @@ Ein Boss, keine Adds; Zustände ohne Kill-Auslöser gelten die ganze Phase (opti
 | Aspect/Fragment | Subklassen | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- | --- |
 | Bastion | void | F | wirkt nicht gegen einen Boss („Enhanced Barricade takes 20% increased damage from Guardians“) | Text |
+| Echo of Cessation | void | C | volatile: erreicht den Boss nie (Finisher oder nicht am gezündeten Gegner) („inflicting Volatile“) | Text |
+| Ember of Char | solar | C | ignition: erreicht den Boss nie (Finisher oder nicht am gezündeten Gegner) („inflict x40+20 Scorch“) | Text |
 | Threaded Specter | prismatic, strand | F | wirkt nicht gegen einen Boss („Allies and Caster deal 150% increased Ability and Weapon Damage towards it“) | Text |
 | Whisper of Rending | stasis | F | wirkt nicht gegen einen Boss („Primary Ammo Weapons deal 100% increased damage against Stasis Crystals and 50% increased damage against Frozen Enemies“) | Text |
 | Whisper of Rending | stasis | F | wirkt nicht gegen einen Boss („Primary Ammo Weapons deal 100% increased damage against Stasis Crystals and 50% increased damage against Frozen Enemies“) | Text |

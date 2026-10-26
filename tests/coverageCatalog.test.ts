@@ -188,6 +188,8 @@ describe("armorEntries", () => {
     entry("Exotic Armors", "hunter", "Lucky Pants"),
     entry("Exotic Armors", "hunter", "Cloak of Mist"),
     entry("Exotic Armors", "hunter", "Gap Boots"),
+    entry("Exotic Armors", "hunter", "Energy Mask"),
+    entry("Exotic Armors", "hunter", "Other Energy Mask"),
   ];
   const result = armorEntries({
     clarity: [clarityEntry("Celestial Nighthawk", "Golden Gun Trait", "Armor Trait Exotic", "One shot.\n-")],
@@ -198,7 +200,10 @@ describe("armorEntries", () => {
       armor("lucky-pants", "Lucky Pants", "noDamage", "legs"),
       armor("cloak-of-mist", "Cloak of Mist", "ownDamage", "chest"),
       armor("gap-boots", "Gap Boots", "gap", "legs"),
+      armor("energy-mask", "Energy Mask", "energyOnly"),
+      armor("other-energy-mask", "Other Energy Mask", "energyOnly"),
     ],
+    energyArmorIds: ["energy-mask"],
   });
 
   it("maps the kind of an exotic to a status with a reason", () => {
@@ -207,6 +212,9 @@ describe("armorEntries", () => {
     expect(byName("Lucky Pants").status).toBe("leftOut");
     expect(byName("Cloak of Mist").status).toBe("missing");
     expect(byName("Gap Boots").status).toBe("missing");
+    // energy only: in the calculator when the energy model has a modifier of it (K7)
+    expect(byName("Energy Mask").status).toBe("full");
+    expect(byName("Other Energy Mask").status).toBe("missing");
     expect(result[0].group).toBe("Hunter");
     expect(result[0].iconKey).toBe("armor:celestial-nighthawk");
   });

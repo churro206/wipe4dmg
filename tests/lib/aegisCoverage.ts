@@ -30,6 +30,7 @@ export type CoverageInput = {
   weaponReport: ReportWeapon[];
   totals: AegisTotalRow[];
   weapons: { name: string }[];
+  exoticWeaponNames: string[]; // every exotic weapon of the manifest
   abilities: Ability[];
   effects: Effect[];
   probe: {
@@ -79,10 +80,13 @@ export function aegisCoverage(input: CoverageInput): CoverageRow[] {
     keys: string[] = [],
   ) => rows.push({ tab, id: row.id, label: labelOf(row), verdict, detail, keys });
 
-  // A weapon row whose name is no exotic of the model: an archetype is skipped (owner 2026-10-25),
-  // an exotic is missing.
+  // A weapon row whose name is no exotic of the model: an archetype or a legendary weapon (no exotic
+  // of the manifest, e.g. Bequest) is skipped (owner 2026-10-25), an exotic is missing.
+  const exotics = new Set(input.exoticWeaponNames.map(norm));
   const unknownWeapon = (tab: AegisTab, row: AegisWeaponRow | AegisTotalRow) => {
     if (isArchetype(row.name)) make(tab, row, "skipped", "legendary frame (owner 2026-10-25)");
+    else if (!exotics.has(norm(row.name)))
+      make(tab, row, "skipped", "legendary weapon (owner 2026-10-25)");
     else
       make(tab, row, "missing", "exotic weapon not in the model", [`weapon: ${row.name}`]);
   };

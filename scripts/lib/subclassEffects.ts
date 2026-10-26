@@ -102,6 +102,8 @@ const GRANTS_EFFECT =
   /\b(Powered Melee|[A-Z][\w ]*?) Hits grant (Radiant) for (\d+(?:\.\d+)?)/;
 const GRANT_VERB = String.raw`\b(?:grants?|granting|bestowing|gains?|generates?)\b[^.\n]{0,60}?`;
 const KILL_WORD = /\bKills?\b|\bFinishers?\b|\bKilling\b/;
+const FINISHER = /\bFinishers?\b/i;
+const NOT_THE_IGNITED = /\bDoes not apply to the ignited enemy\b/i;
 const STATUS_DURATION = /for (\d+(?:\.\d+)?)(?:\+[\d.]+)? seconds/i;
 const NOT_ON_BOSS =
   /towards it|against Stasis Crystals|Frozen Enemies|from Guardians|towards Assault/i;
@@ -221,6 +223,20 @@ function findAll(
 
   // C: keyword sources (U4b)
   for (const k of inputs.keywordSources.filter((k) => k.tab === entry.tab && k.name === entry.name)) {
+    // A keyword that never reaches the boss: a finisher's burst on the enemies around it (bosses
+    // cannot be finished, no adds), or "Does not apply to the ignited enemy" (K7).
+    const at = sentencesOf(text).find((s) => s.sentence.includes(k.quote));
+    const neverOnBoss =
+      FINISHER.test(`${at?.header ?? ""} ${at?.sentence ?? k.quote}`) || NOT_THE_IGNITED.test(text);
+    if (neverOnBoss) {
+      found.push({
+        rule: "C",
+        kind: "notAgainstBoss",
+        reason: `${k.keywordId}: erreicht den Boss nie (Finisher oder nicht am gezündeten Gegner) („${k.quote}“)`,
+        check: "Text",
+      });
+      continue;
+    }
     const part = (damageSources: DamageSource[], elements: string[]): EffectPart => ({
       type: "appliesKeyword",
       keywordId: k.keywordId,

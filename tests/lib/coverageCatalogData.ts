@@ -20,6 +20,7 @@ import {
 import { loadSubclassEffectInputs } from "../../scripts/lib/subclassEffectInputs";
 import { subclassEffects } from "../../scripts/lib/subclassEffects";
 import rawGaps from "../../src/data/ability-gaps.json";
+import rawEnergy from "../../src/data/ability-energy.json";
 import rawArmor from "../../src/data/compendium-armor.json";
 import rawAbilities from "../../src/data/compendium-abilities.json";
 import rawClass from "../../src/data/compendium-class.json";
@@ -37,6 +38,7 @@ import {
   CompendiumSnapshot,
   CounterId,
   CourtSnapshot,
+  EnergyData,
   ManifestAbilities,
   ManifestWeapons,
   StatusId,
@@ -195,6 +197,9 @@ export function realCatalog(): CoverageCatalog {
         perks: CompendiumSnapshot.parse(rawClass).entries,
         armor: exoticArmor,
         clarity,
+        energyArmorIds: EnergyData.parse(rawEnergy).modifiers.flatMap((m) =>
+          "exoticArmorId" in m.from ? [m.from.exoticArmorId] : [],
+        ),
       }),
       artifacts: artifactEntries({
         rows: buildArtifacts(loadArtifactInputs()).rows,

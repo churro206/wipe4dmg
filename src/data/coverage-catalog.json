@@ -3756,10 +3756,10 @@
         "name": "Echo of Cessation",
         "group": "Void",
         "inGame": "Finishers make enemies within ? meters Volatile.\nKilling Volatile enemies spawns a Void Breach.",
-        "inCalculator": "Needs a keyword the calculator does not have yet.",
+        "inCalculator": "Left out: Does not work against a boss.",
         "iconKey": "named:echo-of-cessation",
         "iconHash": 3854948620,
-        "status": "missing"
+        "status": "leftOut"
       },
       {
         "name": "Echo of Dilation",
@@ -3927,10 +3927,10 @@
         "name": "Ember of Char",
         "group": "Solar",
         "inGame": "Ignitions apply 40 Scorch Stacks (60 with Ember of Ashes) to enemies damaged by the explosion.\nDoes not apply to the Ignited enemy.",
-        "inCalculator": "Needs a keyword the calculator does not have yet.",
+        "inCalculator": "Left out: Does not work against a boss.",
         "iconKey": "named:ember-of-char",
         "iconHash": 362132291,
-        "status": "missing"
+        "status": "leftOut"
       },
       {
         "name": "Ember of Combustion",
@@ -5202,10 +5202,10 @@
         "name": "An Insurmountable Skullfort",
         "group": "Titan",
         "inGame": "Transfusion Matrix: Powered Arc Melee kills refund a Melee Ability Charge and start Health Regeneration.\nMelee Hits grant Melee ability energy:\n• 50%: Powered Melee Hits\n• 15%: Melee Hits with Knockout active\n• 5%: Unpowered Melee and Glaive Melee Hits",
-        "inCalculator": "Only gives ability or super energy; the rotation sets the casts, so it has no effect yet.",
+        "inCalculator": "Gives ability or super energy; the energy model counts it.",
         "detail": "Helmet",
         "iconKey": "armor:an-insurmountable-skullfort",
-        "status": "missing"
+        "status": "full"
       },
       {
         "name": "Cadmus Ridge Lancecap",
@@ -5698,10 +5698,10 @@
         "group": "Warlock",
         "inGame": "On Super Cast, for the Caster and Allies within ? meters.\nFully restores Health, Grenade, Melee, and Class Ability Energy.\n\nOn Super End:\nGrants 66% Fixed Bonus Grenade and Melee Ability Energy per second for 8 seconds.",
         "fallback": true,
-        "inCalculator": "Only gives ability or super energy; the rotation sets the casts, so it has no effect yet.",
+        "inCalculator": "Gives ability or super energy; the energy model counts it.",
         "detail": "Helmet",
         "iconKey": "armor:apotheosis-veil",
-        "status": "missing"
+        "status": "full"
       },
       {
         "name": "Astrocyte Verse",
@@ -5752,10 +5752,10 @@
         "name": "Eye of Another World",
         "group": "Warlock",
         "inGame": "Cerebral Uplink: Passively grants 15 Airborne Effectiveness and 45% Additional Base Grenade, Melee, and Class Ability Regeneration Rate.\nHighlights enemies below 50% HP in a red outline, and Enemy Players with fully-charged Supers in a yellow outline. Highlighting bypasses invisibility.",
-        "inCalculator": "Only gives ability or super energy; the rotation sets the casts, so it has no effect yet.",
+        "inCalculator": "Gives ability or super energy; the energy model counts it.",
         "detail": "Helmet",
         "iconKey": "armor:eye-of-another-world",
-        "status": "missing"
+        "status": "full"
       },
       {
         "name": "Fallen Sunstar",
@@ -5996,10 +5996,10 @@
         "name": "Starfire Protocol",
         "group": "Warlock",
         "inGame": "Fusion Harness: Grants the following with Fusion Grenades equipped:\n• An extra Grenade Charge\n• 100% Class Ability Energy on Fusion Grenade Kills\n• Passive 20% Additional Base Grenade Ability Recharge Rate\nWhile Radiant, in an Empowering Rift, or in a Well of Radiance:\n• Weapon Kills grant 15% Fusion Grenade energy\n• Weapon Hits grant 5% Fusion Grenade energy (0.4 second cooldown between activations)\nAbility energy gained is NOT affected by Chunk Energy Scalars. Learn more about this mechanic in our explainer blog post on the Clarity website.",
-        "inCalculator": "Only gives ability or super energy; the rotation sets the casts, so it has no effect yet.",
+        "inCalculator": "Gives ability or super energy; the energy model counts it.",
         "detail": "Chest",
         "iconKey": "armor:starfire-protocol",
-        "status": "missing"
+        "status": "full"
       },
       {
         "name": "Stormdancer's Brace",
