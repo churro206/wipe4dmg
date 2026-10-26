@@ -61,10 +61,12 @@ Status: 2026-10-25
 - ✅ Facet of Courage: +50 % only on Light melees, instead of the +10 %
 - ✅ Super lengths measured (Flat Gain) for 22 Supers, e.g. Nova Warp 25 s, Daybreak 9.55 s
 - ✅ Coverage: fragments that can never hit a boss, energy exotics, Bequest as a legendary sword
+- ✅ New Supers: Song of Flame, Glacial Quake, Bladefury
+- ✅ Stormdancer's Brace, Mataiodoxía and Young Ahamkara's Spine as measured by Aegis
 
 ## Next
 
-- Song of Flame, Glacial Quake, Bladefury, Hammer of Sol with Sol Invictus and Stormdancer's Brace from measured hits
+- Hammer of Sol with Sol Invictus
 - Ability energy with the measured stat curve instead of a straight line, energy exotics (e.g. Crown of Tempests, Contraverse Hold) and energy armor mods
 - Stasis and Strand on the boss: Freeze, Shatter, Threadlings, Unravel, Sever and Suspend with measured damage
 - More aspects (Tempest Strike, Consecration, Crackshot, Shieldburst), artifact perks (Flashover, Heavy Ordnance Regeneration, Hail The Storm, Solar Fulmination) and catalysts (Tessellation, Divinity, Quicksilver Storm)
