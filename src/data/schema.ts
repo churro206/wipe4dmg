@@ -1105,6 +1105,7 @@ export const EnergyModifier = z.object({
     z.object({ exoticArmorId: z.string() }),
     z.object({ effectId: z.string() }),
     z.object({ abilityId: z.string() }),
+    z.object({ guardianClass: GuardianClass }), // e.g. Warlock grenade regeneration (K5)
   ]),
   target: EnergyAbilities,
   change: z.enum(["charges", "regenBase", "regenSpeed", "energy"]),
@@ -1126,6 +1127,22 @@ export const EnergyModifier = z.object({
   requiresAnyEffectIds: z.array(z.string()).min(1).optional(),
 });
 export type EnergyModifier = z.infer<typeof EnergyModifier>;
+
+/**
+ * src/data/energy-overrides.json: single cases where another source beats the Compendium (K5), and
+ * modifiers no Compendium line names (e.g. the Warlock grenade factor). Each value carries its source.
+ */
+export const EnergyOverrides = z.object({
+  abilities: z.array(
+    z.object({
+      abilityId: z.string(),
+      cooldownSeconds: SourcedNumber.optional(),
+      chunkScalar: SourcedNumber.optional(),
+    }),
+  ),
+  modifiers: z.array(EnergyModifier),
+});
+export type EnergyOverrides = z.infer<typeof EnergyOverrides>;
 
 /** src/data/ability-energy.json, written by npm run build:energy. */
 export const EnergyData = z.object({

@@ -21,6 +21,7 @@ export type EnergyContext = {
   data: EnergyData;
   stats?: Build["abilityStats"]; // omitted: the stat with the full effect (100)
   exoticArmorId?: string;
+  guardianClass?: Build["guardianClass"];
   effectIds: Set<string>; // selected effects and effects the abilities grant
   damagePhaseMs: number;
 };
@@ -34,7 +35,7 @@ const matches = (abilities: EnergyAbilities, ability: Ability) =>
   (!abilities.abilityIds || abilities.abilityIds.includes(baseId(ability))) &&
   (!abilities.elements || abilities.elements.includes(ability.element));
 
-/** Modifiers of the build: from its exotic, its effects or its abilities, with their conditions. */
+/** Modifiers of the build: from its exotic, its effects, its abilities or its class, with their conditions. */
 function activeModifiers(requests: CastRequest[], ctx: EnergyContext): EnergyModifier[] {
   const abilityIds = new Set(requests.map((r) => baseId(r.ability)));
   return ctx.data.modifiers.filter((m) => {
@@ -43,7 +44,9 @@ function activeModifiers(requests: CastRequest[], ctx: EnergyContext): EnergyMod
         ? m.from.exoticArmorId === ctx.exoticArmorId
         : "effectId" in m.from
           ? ctx.effectIds.has(m.from.effectId)
-          : abilityIds.has(m.from.abilityId);
+          : "guardianClass" in m.from
+            ? m.from.guardianClass === ctx.guardianClass
+            : abilityIds.has(m.from.abilityId);
     return (
       from &&
       m.value.value !== null &&

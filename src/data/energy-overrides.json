@@ -1,0 +1,165 @@
+{
+  "abilities": [
+    {
+      "abilityId": "solar-grenade",
+      "cooldownSeconds": {
+        "value": 220,
+        "source": {
+          "name": "Flat Gain Factors, Grenades (Solar Grenade)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Solar Grenade\t220s\t152s\t50.0%",
+          "note": "docs/sources/sheets/flatgain/0-grenades.tsv:10. The Compendium's 199.5 s is 220 ÷ 1.1: measured on a Warlock (RyTako: \"Warlocks have a 1.1x multiplier to grenade regen\"); every Solar grenade differs by this factor, Arc, Void, Stasis and Strand do not (tmp/flatgain-energy.ts, 2026-10-26). Class-neutral value here, the Warlock factor is a modifier (K5)."
+        }
+      }
+    },
+    {
+      "abilityId": "thermite-grenade",
+      "cooldownSeconds": {
+        "value": 175,
+        "source": {
+          "name": "Flat Gain Factors, Grenades (Thermite Grenade)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Thermite Grenade\t175s\t121s\t62.5%",
+          "note": "docs/sources/sheets/flatgain/0-grenades.tsv:11. Compendium 159.6 s = 175 ÷ 1.1, measured on a Warlock (K5, see solar-grenade)."
+        }
+      }
+    },
+    {
+      "abilityId": "tripmine-grenade",
+      "cooldownSeconds": {
+        "value": 175,
+        "source": {
+          "name": "Flat Gain Factors, Grenades (Tripmine Grenade)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Tripmine Grenade\t175s\t121s\t62.5%",
+          "note": "docs/sources/sheets/flatgain/0-grenades.tsv:12. Compendium 159.6 s = 175 ÷ 1.1, measured on a Warlock (K5, see solar-grenade)."
+        }
+      }
+    },
+    {
+      "abilityId": "incendiary-grenade",
+      "cooldownSeconds": {
+        "value": 152,
+        "source": {
+          "name": "Flat Gain Factors, Grenades (Incendiary Grenade)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Incendiary Grenade\t152s\t105s\t75.0%",
+          "note": "docs/sources/sheets/flatgain/0-grenades.tsv:13. Compendium 137.7 s = 152 ÷ 1.1, measured on a Warlock (K5, see solar-grenade)."
+        }
+      }
+    },
+    {
+      "abilityId": "swarm-grenade",
+      "cooldownSeconds": {
+        "value": 152,
+        "source": {
+          "name": "Flat Gain Factors, Grenades (Swarm Grenade)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Swarm Grenade\t152s\t91s\t75.0%",
+          "note": "docs/sources/sheets/flatgain/0-grenades.tsv:14. Compendium 137.7 s = 152 ÷ 1.1, measured on a Warlock (K5, see solar-grenade)."
+        }
+      }
+    },
+    {
+      "abilityId": "fusion-grenade",
+      "cooldownSeconds": {
+        "value": 106,
+        "source": {
+          "name": "Flat Gain Factors, Grenades (Fusion Grenade)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Fusion Grenade\t106s\t73s\t100.0%",
+          "note": "docs/sources/sheets/flatgain/0-grenades.tsv:16. Compendium 95.8 s = 106 ÷ 1.1, measured on a Warlock (K5, see solar-grenade)."
+        }
+      }
+    },
+    {
+      "abilityId": "firebolt-grenade",
+      "cooldownSeconds": {
+        "value": 93,
+        "source": {
+          "name": "Flat Gain Factors, Grenades (Firebolt Grenade)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Firebolt Grenade\t93s\t64s\t100.0%",
+          "note": "docs/sources/sheets/flatgain/0-grenades.tsv:17. Compendium 83.8 s = 93 ÷ 1.1, measured on a Warlock (K5, see solar-grenade)."
+        }
+      }
+    },
+    {
+      "abilityId": "seismic-strike",
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Clarity Character Stats 1.9 (Seismic Strike) and Flat Gain Factors, Melees",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "\"Name\": \"Seismic Strike\", \"ChunkEnergyScalar\": 0.9",
+          "note": "docs/sources/sheets/clarity-character-stats-1.9.json; Flat Gain melees.tsv:14 also 90.0 %. The Compendium says 0.8x; two sources against one (K5)."
+        }
+      }
+    },
+    {
+      "abilityId": "hammer-strike",
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Clarity Character Stats 1.9 (Hammer Strike) and Flat Gain Factors, Melees",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "\"Name\": \"Hammer Strike\", \"ChunkEnergyScalar\": 0.9",
+          "note": "docs/sources/sheets/clarity-character-stats-1.9.json; Flat Gain melees.tsv:17 also 90.0 %. The Compendium says 0.8x; two sources against one (K5)."
+        }
+      }
+    },
+    {
+      "abilityId": "shield-bash",
+      "chunkScalar": {
+        "value": 0.9,
+        "source": {
+          "name": "Clarity Character Stats 1.9 (Shield Bash) and Flat Gain Factors, Melees",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "\"Name\": \"Shield Bash\", \"ChunkEnergyScalar\": 0.9",
+          "note": "docs/sources/sheets/clarity-character-stats-1.9.json; Flat Gain melees.tsv:19 also 90.0 %. The Compendium says 0.7x; two sources against one (K5)."
+        }
+      }
+    }
+  ],
+  "modifiers": [
+    {
+      "id": "warlock-grenade-regen",
+      "name": "Warlock",
+      "from": { "guardianClass": "warlock" },
+      "target": { "kinds": ["grenade"] },
+      "change": "regenSpeed",
+      "value": {
+        "value": 1.1,
+        "source": {
+          "name": "RyTako ability energy sheet (Passive Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Warlocks have a 1.1x multiplier to grenade regen",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:99. Cross-check: the Compendium's Solar grenade cooldowns are exactly Flat Gain's ÷ 1.1 (K5)."
+        }
+      },
+      "fixed": false
+    }
+  ]
+}

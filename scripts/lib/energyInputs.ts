@@ -2,7 +2,7 @@
 // the generated file is current.
 
 import { readFileSync } from "node:fs";
-import { AbilityData, CompendiumSnapshot } from "../../src/data/schema.ts";
+import { AbilityData, CompendiumSnapshot, EnergyOverrides } from "../../src/data/schema.ts";
 import type { EnergyInputs } from "./energy.ts";
 
 const DATA = new URL("../../src/data/", import.meta.url);
@@ -15,6 +15,7 @@ export function loadEnergyInputs(): EnergyInputs {
     abilities: AbilityData.array().parse(read("abilities.json")),
     compendiumAbilities: abilities.entries,
     compendiumArmor: armor.entries,
+    overrides: EnergyOverrides.parse(read("energy-overrides.json")),
     retrieved: abilities.source.retrieved,
   };
 }

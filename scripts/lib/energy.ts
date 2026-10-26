@@ -9,6 +9,7 @@ import type {
   CompendiumEntry,
   EnergyData,
   EnergyModifier,
+  EnergyOverrides,
   EnergyStat,
   Source,
 } from "../../src/data/schema.ts";
@@ -20,6 +21,7 @@ export type EnergyInputs = {
   abilities: AbilityData[];
   compendiumAbilities: CompendiumEntry[];
   compendiumArmor: CompendiumEntry[];
+  overrides: EnergyOverrides; // single cases where another source beats the Compendium (K5)
   retrieved: string; // date of the Compendium snapshots
 };
 
@@ -99,15 +101,21 @@ export function abilityEnergy(inputs: EnergyInputs): AbilityEnergy[] {
       const cooldown = entry.extra.match(COOLDOWN);
       const chunk = entry.extra.match(CHUNK);
       const seconds = cooldown?.[1] ?? cooldown?.[2];
+      const override = inputs.overrides.abilities.find((o) => o.abilityId === ability.id);
+      const chunkScalar =
+        override?.chunkScalar ??
+        (chunk ? { value: Number(chunk[1]), source: source(chunk[0]) } : undefined);
       return {
         abilityId: ability.id,
-        cooldownSeconds: seconds
-          ? { value: Number(seconds), source: source(cooldown![0].trim()) }
-          : {
-              value: null,
-              source: { ...source(entry.extra), status: "missing" as const, quote: undefined },
-            },
-        ...(chunk ? { chunkScalar: { value: Number(chunk[1]), source: source(chunk[0]) } } : {}),
+        cooldownSeconds:
+          override?.cooldownSeconds ??
+          (seconds
+            ? { value: Number(seconds), source: source(cooldown![0].trim()) }
+            : {
+                value: null,
+                source: { ...source(entry.extra), status: "missing" as const, quote: undefined },
+              }),
+        ...(chunkScalar ? { chunkScalar } : {}),
       };
     });
 }
@@ -481,7 +489,10 @@ function modifier(inputs: EnergyInputs, spec: EnergySpec): EnergyModifier {
 
 /** Energy Data File and one review row per Compendium line about energy. */
 export function energyData(inputs: EnergyInputs): { data: EnergyData; rows: EnergyRow[] } {
-  const modifiers = ENERGY_SPECS.map((spec) => modifier(inputs, spec));
+  const modifiers = [
+    ...ENERGY_SPECS.map((spec) => modifier(inputs, spec)),
+    ...inputs.overrides.modifiers,
+  ];
   const rows: EnergyRow[] = [];
   for (const [snapshot, entries] of [
     ["armor", inputs.compendiumArmor],

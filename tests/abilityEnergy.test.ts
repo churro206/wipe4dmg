@@ -74,6 +74,17 @@ describe("energyCasts", () => {
     expect(heart[1]).toBeLessThan(without[1]);
   });
 
+  it("regenerates grenades faster on a Warlock (class factor, K5), not on a Titan", () => {
+    const warlock = data.modifiers.find(
+      (m) => "guardianClass" in m.from && m.from.guardianClass === "warlock",
+    )!;
+    const requests = [{ ability: fusion, castsMs: [0, 0] }];
+    const [[, titan]] = casts(requests, context({ guardianClass: "titan" }));
+    const [[, onWarlock]] = casts(requests, context({ guardianClass: "warlock" }));
+    expect(titan).toBe(fusionAt100);
+    expect(onWarlock).toBeCloseTo(fusionAt100 / warlock.value.value!, -1);
+  });
+
   it("refunds super energy only with a matching ability (Ballistic Slam)", () => {
     const requests = [
       { ability: ability("thundercrash"), castsMs: [0] },
