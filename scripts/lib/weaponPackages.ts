@@ -24,6 +24,7 @@ import type {
   Weapon,
   WeaponGap,
   WeaponOption,
+  WeaponType,
 } from "../../src/data/schema.ts";
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
@@ -382,6 +383,13 @@ const blockingReason = (classes: ReportAssumption[]): string =>
         `${KIND_LABELS[c.kind]}: ${c.assumption}${c.armorName && c.armorName !== c.assumption ? ` (${c.armorName})` : ""}`,
     )
     .join("; ");
+
+/** Manifest stat that holds the charge of a weapon type (ms): fusion rifles charge, bows draw. */
+const CHARGE_STATS: Partial<Record<WeaponType, string>> = {
+  fusionRifle: "Charge Time",
+  linearFusionRifle: "Charge Time",
+  bow: "Draw Time",
+};
 
 /** Timing of a package; the simulator reaches timeToEmptySeconds with these values. */
 export type Timing = {
@@ -1750,11 +1758,28 @@ export function buildWeaponImport(
       );
     }
 
-    const chargeMs =
+    // The charge of a weapon is the manifest stat without any assumption: "Charge Time" of fusion
+    // and linear fusion rifles, "Draw Time" of bows. Aegis' note "…ms charge" comes with the
+    // catalyst or perks of its row (Bastion 683 against 800, Sleeper Simulant 750 against 1024),
+    // so it only fills in where the manifest has no such stat (e.g. Grand Overture).
+    const chargeStat = CHARGE_STATS[manifest.weaponType];
+    const manifestChargeMs = chargeStat ? manifest.stats[chargeStat] : undefined;
+    const aegisChargeMs =
       timing.chargeMs ??
       inputs.sustained.rows.find(
         (r) => sameName(r.name, manifest.name) && r.chargeMs !== null,
       )?.chargeMs;
+    const chargeMs = manifestChargeMs || aegisChargeMs;
+    const chargeSource: Source = manifestChargeMs
+      ? {
+          name: `Bungie manifest ${inputs.manifestVersion}, stat "${chargeStat}" of ${manifest.name}`,
+          retrieved: inputs.aegis.source.retrieved,
+          status: "verified",
+          note: "The interval already contains it: the charge delays the first shot and every shot after a cast",
+        }
+      : timingSource(
+          `Aegis Sustained note "${aegisChargeMs}ms charge"; the interval contains it`,
+        );
     const weapon: Weapon = {
       id,
       code: codes[id] ?? 0, // set below
@@ -1766,15 +1791,8 @@ export function buildWeaponImport(
       ammo: manifest.ammo,
       // The interval already contains the charge (time to empty counts from the first shot): the
       // charge delays the first shot and every shot after a cast that blocked the weapon.
-      // The charge is a property of the weapon, so any Aegis row of it counts, also one with
-      // foreign assumptions whose timing the package does not use.
       chargeTimeMs: chargeMs
-        ? {
-            value: chargeMs,
-            source: timingSource(
-              `Aegis Sustained note "${chargeMs}ms charge"; the interval contains it`,
-            ),
-          }
+        ? { value: chargeMs, source: chargeSource }
         : {
             value: 0,
             source: timingSource("The time to empty counts from the first shot"),

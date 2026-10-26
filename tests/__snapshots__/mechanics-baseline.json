@@ -517,8 +517,8 @@
       "600s buffed catalyst": 28811.51
     },
     "hierarchy-of-needs": {
-      "30s plain": 14669.58,
-      "30s buffed": 24697.71,
+      "30s plain": 13752.74,
+      "30s buffed": 23154.1,
       "30s plain catalyst": 17420.13,
       "30s buffed catalyst": 29328.53,
       "600s plain": 280555.79,
@@ -1179,14 +1179,14 @@
       "600s buffed catalyst": 326962.12
     },
     "trinity-ghoul": {
-      "30s plain": 3498.83,
-      "30s buffed": 5890.63,
-      "30s plain catalyst": 3717.51,
-      "30s buffed catalyst": 6258.8,
-      "600s plain": 66696.49,
-      "600s buffed": 112290.2,
-      "600s plain catalyst": 71070.03,
-      "600s buffed catalyst": 119653.49
+      "30s plain": 3280.16,
+      "30s buffed": 5522.47,
+      "30s plain catalyst": 3498.83,
+      "30s buffed catalyst": 5890.63,
+      "600s plain": 66477.81,
+      "600s buffed": 111922.04,
+      "600s plain catalyst": 70851.35,
+      "600s buffed catalyst": 119285.33
     },
     "truth": {
       "30s plain": 30510.05,
@@ -1305,10 +1305,10 @@
       "600s buffed catalyst": 42043.63
     },
     "wish-ender": {
-      "30s plain": 8367.18,
-      "30s buffed": 14086.99,
-      "30s plain catalyst": 8367.18,
-      "30s buffed catalyst": 14086.99,
+      "30s plain": 7844.23,
+      "30s buffed": 13206.55,
+      "30s plain catalyst": 7844.23,
+      "30s buffed catalyst": 13206.55,
       "600s plain": 157407.65,
       "600s buffed": 265011.52,
       "600s plain catalyst": 157407.65,
@@ -1319,10 +1319,10 @@
       "30s buffed": 6117.78,
       "30s plain catalyst": 4360.5,
       "30s buffed catalyst": 7341.34,
-      "600s plain": 71392.5,
-      "600s buffed": 120196.41,
-      "600s plain catalyst": 85671,
-      "600s buffed catalyst": 144235.7
+      "600s plain": 71178.75,
+      "600s buffed": 119836.54,
+      "600s plain catalyst": 85414.5,
+      "600s buffed catalyst": 143803.85
     },
     "witherhoard": {
       "30s plain": 14322.88,

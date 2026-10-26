@@ -622,11 +622,10 @@
     "chargeTimeMs": {
       "value": 533,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row arbalest",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Arbalest",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Aegis Sustained note \"533ms charge\"; the interval contains it"
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -926,13 +925,12 @@
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 683,
+      "value": 800,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-bastion",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Bastion",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Aegis Sustained note \"683ms charge\"; the interval contains it"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -2811,11 +2809,10 @@
     "chargeTimeMs": {
       "value": 533,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row cull-s-shadow-with-corruption",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Cull's Shadow",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Aegis Sustained note \"533ms charge\"; the interval contains it"
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -3584,13 +3581,12 @@
     "element": "arc",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 533,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Delicate Tomb",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -5245,11 +5241,10 @@
     "chargeTimeMs": {
       "value": 533,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-euphony",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Euphony",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Aegis Sustained note \"533ms charge\"; the interval contains it"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -5643,12 +5638,12 @@
     "element": "void",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 1066,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Fafnir",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -6040,13 +6035,12 @@
     "element": "solar",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 533,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row finality-s-auger-bait-and-switch-linear-fusion-mode",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Finality's Auger",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -7675,13 +7669,12 @@
     "element": "solar",
     "ammo": "primary",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 800,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Draw Time\" of Hierarchy of Needs",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -8169,13 +8162,12 @@
     "element": "solar",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 817,
+      "value": 833,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row j-tunn",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Jötunn",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Aegis Sustained note \"817ms charge\"; the interval contains it"
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -8436,13 +8428,12 @@
     "element": "void",
     "ammo": "primary",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 600,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-bow-le-monarque",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Draw Time\" of Le Monarque",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -8782,13 +8773,12 @@
     "element": "void",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 1328,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-bow-leviathan-s-breath",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Draw Time\" of Leviathan's Breath",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -9260,13 +9250,12 @@
     "element": "void",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 533,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-lorentz-driver",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Lorentz Driver",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -9676,11 +9665,10 @@
     "chargeTimeMs": {
       "value": 1000,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row merciless",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Merciless",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Aegis Sustained note \"1000ms charge\"; the interval contains it"
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -10743,11 +10731,10 @@
     "chargeTimeMs": {
       "value": 1000,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of One Thousand Voices",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Aegis Sustained note \"1000ms charge\"; the interval contains it"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -13147,13 +13134,12 @@
     "element": "solar",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 750,
+      "value": 1024,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row sleeper-simulant",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Sleeper Simulant",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Aegis Sustained note \"750ms charge\"; the interval contains it"
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -14292,13 +14278,12 @@
     "element": "void",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 817,
+      "value": 833,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Telesto",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Aegis Sustained note \"817ms charge\"; the interval contains it"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -14464,13 +14449,12 @@
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
-      "value": 666,
+      "value": 667,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Tessellation",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Aegis Sustained note \"666ms charge\"; the interval contains it"
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -15936,13 +15920,12 @@
     "element": "arc",
     "ammo": "heavy",
     "chargeTimeMs": {
-      "value": 550,
+      "value": 633,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of The Queenbreaker",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Aegis Sustained note \"550ms charge\"; the interval contains it"
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -16680,13 +16663,12 @@
     "element": "solar",
     "ammo": "primary",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 567,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-bow-ticuu-s-divination",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Draw Time\" of Ticuu's Divination",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -17597,13 +17579,12 @@
     "element": "arc",
     "ammo": "primary",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 700,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-bow-trinity-ghoul-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Draw Time\" of Trinity Ghoul",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -18217,13 +18198,12 @@
     "element": "stasis",
     "ammo": "primary",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 567,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-bow-verglass-curve",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Draw Time\" of Verglas Curve",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -19540,13 +19520,12 @@
     "element": "kinetic",
     "ammo": "primary",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 733,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-bow-wish-ender",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Draw Time\" of Wish-Ender",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {
@@ -19673,13 +19652,12 @@
     "element": "strand",
     "ammo": "primary",
     "chargeTimeMs": {
-      "value": 0,
+      "value": 667,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-bow-wish-keeper",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Draw Time\" of Wish-Keeper",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "status": "verified",
+        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
       }
     },
     "fireRateRpm": {

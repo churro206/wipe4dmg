@@ -453,6 +453,24 @@ describe("rules", () => {
     }
   });
 
+  it("charges every fusion rifle, linear fusion rifle and bow as long as its manifest stat says", () => {
+    const charging = loadWeaponImportInputs().manifest.filter((w) =>
+      ["fusionRifle", "linearFusionRifle", "bow"].includes(w.weaponType),
+    );
+    expect(charging.length).toBeGreaterThanOrEqual(25);
+    for (const manifest of charging) {
+      const stat = manifest.weaponType === "bow" ? "Draw Time" : "Charge Time";
+      const weapon = result.packages.find((p) => p.name === manifest.name);
+      if (!weapon || manifest.stats[stat] === undefined) continue;
+      expect(weapon.chargeTimeMs.value, manifest.name).toBe(manifest.stats[stat]);
+    }
+    const byName = (name: string) => result.packages.find((p) => p.name === name)!;
+    // examples from the three types that Aegis' notes did not cover
+    expect(byName("Wish-Ender").chargeTimeMs.value).toBe(733);
+    expect(byName("Lorentz Driver").chargeTimeMs.value).toBe(533);
+    expect(byName("Fafnir").chargeTimeMs.value).toBe(1066);
+  });
+
   it("never reuses a link code", () => {
     const codes = Object.values(result.codes);
     expect(new Set(codes).size).toBe(codes.length);
