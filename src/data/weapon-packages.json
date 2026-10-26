@@ -55,6 +55,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -175,6 +186,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -358,6 +380,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -478,6 +511,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -621,6 +665,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 1.733 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -784,6 +839,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -904,6 +970,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -1029,6 +1106,17 @@
         "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -1149,6 +1237,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -1313,6 +1412,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -1433,6 +1543,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -1557,6 +1678,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -1678,6 +1810,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 1.017 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -1833,6 +1976,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -1994,6 +2148,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -2158,6 +2323,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -2278,6 +2454,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -2402,6 +2589,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -2522,6 +2720,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -2647,6 +2856,17 @@
         "note": "Reload 1.983 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -2762,6 +2982,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -2904,6 +3135,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -3122,6 +3364,17 @@
         "note": "Reload 1.55 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -3242,6 +3495,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -3366,6 +3630,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -3486,6 +3761,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -3630,6 +3916,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -3772,6 +4069,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -3894,6 +4202,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -4014,6 +4333,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -4177,6 +4507,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -4297,6 +4638,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -4421,6 +4773,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -4542,6 +4905,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -4743,6 +5117,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -4904,6 +5289,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -5025,6 +5421,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -5149,6 +5556,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -5267,6 +5685,17 @@
         "retrieved": "2026-10-20",
         "status": "unverified",
         "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile)."
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -5391,6 +5820,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -5511,6 +5951,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -5636,6 +6087,17 @@
         "note": "Reload 1.8 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -5758,6 +6220,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -5878,6 +6351,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -6042,6 +6526,17 @@
         "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -6162,6 +6657,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -6304,6 +6810,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -6461,6 +6978,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -6581,6 +7109,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -6741,6 +7280,17 @@
         "retrieved": "2026-10-20",
         "status": "unverified",
         "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -6904,6 +7454,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -7027,6 +7588,17 @@
         "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -7147,6 +7719,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -7312,6 +7895,17 @@
         "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -7427,6 +8021,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -7611,6 +8216,17 @@
         "note": "Reload 2.067 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -7733,6 +8349,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -7853,6 +8480,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -8018,6 +8656,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -8177,6 +8826,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -8340,6 +9000,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -8460,6 +9131,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -8624,6 +9306,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -8739,6 +9432,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -8861,6 +9565,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -9006,6 +9721,17 @@
         "note": "Reload 1.317 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -9127,6 +9853,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 1.117 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -9251,6 +9988,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -9371,6 +10119,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -9495,6 +10254,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -9615,6 +10385,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -9740,6 +10521,17 @@
         "note": "Reload 1.383 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -9862,6 +10654,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -9982,6 +10785,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -10165,6 +10979,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -10326,6 +11151,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -10503,6 +11339,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -10625,6 +11472,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -10743,6 +11601,17 @@
         "retrieved": "2026-10-20",
         "status": "unverified",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -10867,6 +11736,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -10987,6 +11867,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -11111,6 +12002,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -11231,6 +12133,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -11428,6 +12341,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -11548,6 +12472,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -11693,6 +12628,17 @@
         "note": "Reload 2.117 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -11813,6 +12759,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -11937,6 +12894,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -12057,6 +13025,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -12213,6 +13192,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 2.05 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -12376,6 +13366,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -12496,6 +13497,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -12620,6 +13632,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -12740,6 +13763,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -12864,6 +13898,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -12984,6 +14029,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -13149,6 +14205,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -13269,6 +14336,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -13433,6 +14511,17 @@
         "note": "Reload 4.567 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -13553,6 +14642,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -13717,6 +14817,17 @@
         "note": "Reload 2.05 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -13876,6 +14987,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -14040,6 +15162,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -14161,6 +15294,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -14305,6 +15449,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -14427,6 +15582,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -14547,6 +15713,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -14672,6 +15849,17 @@
         "note": "Reload 2.083 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -14793,6 +15981,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 2.283 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -14956,6 +16155,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -15076,6 +16286,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -15200,6 +16421,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -15320,6 +16552,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -15483,6 +16726,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -15625,6 +16879,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -15745,6 +17010,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -15887,6 +17163,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -16048,6 +17335,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -16212,6 +17510,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -16332,6 +17641,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -16497,6 +17817,17 @@
         "note": "Reload 2.134 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -16647,6 +17978,17 @@
         "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“."
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -16767,6 +18109,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -16910,6 +18263,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -17030,6 +18394,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -17192,6 +18567,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -17347,6 +18733,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -17467,6 +18864,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -17592,6 +19000,17 @@
         "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -17712,6 +19131,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -17889,6 +19319,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -18010,6 +19451,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 1.5 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -18134,6 +19586,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -18254,6 +19717,17 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [
@@ -18431,6 +19905,17 @@
         "status": "unverified"
       }
     },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
     "damageInstances": [
       {
         "id": "shot",
@@ -18591,6 +20076,17 @@
         "retrieved": "2026-10-20",
         "status": "verified",
         "note": "Reload 2.817 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
     },
     "damageInstances": [

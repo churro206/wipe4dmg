@@ -247,6 +247,21 @@ describe("simulate: reload duration", () => {
       reloadGap([reloadEffect(0.9), reloadEffect(0.8, "test-reload-2")]),
     ).toBeCloseTo(shotIntervalMs + reloadTimeMs * 0.8);
   });
+
+  it("counts only what goes beyond the factor the weapon's reload already contains (K1)", () => {
+    const withRally = {
+      ...weapon,
+      reloadDurationIncluded: { value: 0.9, source },
+    };
+    const gap = (selected: Effect[]) => {
+      const { shots } = simulate(withRally, DAMAGE_PHASE_SECONDS, selected, buckets);
+      return shots[magazine].timeMs - shots[magazine - 1].timeMs;
+    };
+    expect(gap([reloadEffect(0.9)])).toBeCloseTo(shotIntervalMs + reloadTimeMs);
+    expect(gap([reloadEffect(0.8)])).toBeCloseTo(
+      shotIntervalMs + (reloadTimeMs * 0.8) / 0.9,
+    );
+  });
 });
 
 describe("simulate: weapon matches super element", () => {

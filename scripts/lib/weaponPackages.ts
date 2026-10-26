@@ -72,6 +72,7 @@ const sameName = (rowName: string, manifestName: string) =>
 const OPTION_BUCKET = "weaponPerk";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
 const OVERRIDE_TIMING = "override"; // row id of a timing whose values an override states
+const RALLY_EFFECT_ID = "rally-barricade";
 const RPM_HINT = 0.25; // a derived fire rate this far from the Quantum rpm is worth a look
 const BURST_TOLERANCE = 0.005; // Aegis rounds its hits; a burst sums them
 // A catalyst changes damage or timing if a value moves by more than rounding (1 %).
@@ -654,6 +655,24 @@ export function buildWeaponImport(
   inputs: WeaponImportInputs,
 ): WeaponImportResult {
   const effectNames = inputs.effects.map(({ id, name }) => ({ id, name }));
+  // K1: both sources reload with Rally Barricade, so its factor is in every weapon's reload.
+  const rallyPart = inputs.effects
+    .find((e) => e.id === RALLY_EFFECT_ID)
+    ?.parts.find((p) => p.type === "timing" && p.change === "reloadDuration");
+  if (rallyPart?.type !== "timing" || rallyPart.factor === undefined)
+    throw new Error(`${RALLY_EFFECT_ID}: no reloadDuration factor`);
+  const reloadDurationIncluded = {
+    value: rallyPart.factor,
+    source: {
+      name: "Quantum Damage-ics, Home (Assumptions Made)",
+      url: "https://destiny2.science/quantum-damage-ics",
+      retrieved: "2026-10-25",
+      status: "verified",
+      quote:
+        "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+      note: "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally.",
+    } satisfies Source,
+  };
   const aegisSource = (row: AegisWeaponRow, note?: string): Source => ({
     name: `${inputs.aegis.source.name}, row ${row.id}`,
     url: inputs.aegis.source.url,
@@ -1756,6 +1775,7 @@ export function buildWeaponImport(
             : undefined,
         ),
       },
+      reloadDurationIncluded,
       damageInstances: [
         {
           id: "shot",

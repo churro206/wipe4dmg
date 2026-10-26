@@ -240,7 +240,7 @@ function describePart(part: EffectPart): string {
     case "timing":
       return part.change === "noReload"
         ? "The weapon does not need to reload"
-        : `Reloading takes only ${integer.format((part.factor ?? 1) * 100)}%`;
+        : `Reloading takes only ${integer.format((part.factor ?? 1) * 100)}%; weapon reloads here already assume Rally Barricade, so only a factor stronger than Rally's counts`;
     case "counterModifier":
       return `+${percentOf(part.factor.value)}% Scorch stacks`;
     case "holdDraw":

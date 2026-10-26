@@ -336,6 +336,9 @@ export const Weapon = z.object({
   magazine: SourcedNumber,
   totalShots: SourcedNumber, // magazine plus reserves
   reloadTimeMs: SourcedNumber, // extra time after the last shot of a magazine, on top of the shot interval
+  // Reload Duration Multiplier the sources' reload already contains (K1: Quantum and Aegis reload
+  // with Rally Barricade); a reloadDuration part counts only beyond it. Omitted: none.
+  reloadDurationIncluded: SourcedNumber.optional(),
   damageInstances: z.array(DamageInstance).min(1),
   intrinsicParts: z.array(IntrinsicPart),
   // Bonus on keyword damage that this weapon set off, e.g. "Solar Effects that are initially

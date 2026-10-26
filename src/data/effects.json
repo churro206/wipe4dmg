@@ -768,7 +768,7 @@
           "retrieved": "2026-10-24",
           "status": "verified",
           "quote": "While within ? meters behind the Rally Barricade: … +30 Stability, +100 Reload Speed, 0.9x Reload Duration Multiplier",
-          "note": "The player stands behind the barricade for its whole duration (owner, 2026-10-24). The +100 Reload Speed is not modeled: no source turns the stat into time (as for exotic armor)."
+          "note": "The player stands behind the barricade for its whole duration (owner, 2026-10-24). Quantum and Aegis already reload with Rally (+100 Reload Speed and 0.9x, K1), so every weapon's reload contains this factor (reloadDurationIncluded) and Rally adds nothing to it; stronger multipliers count only beyond it."
         }
       }
     ],

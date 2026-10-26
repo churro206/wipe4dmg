@@ -100,14 +100,14 @@ describe("class abilities from the data", () => {
     expect(secondShotMs(withDodge)).toBeLessThan(secondShotMs(hunter({})));
   });
 
-  it("Rally Barricade shortens reloads for 20 s from its cast", () => {
+  it("Rally Barricade is active for 20 s from its cast, but the reloads already contain it (K1)", () => {
     const b = hunter({
       guardianClass: "titan",
       abilities: [{ abilityId: "rally-barricade", castsMs: [0] }],
     });
     const { options } = buildSimulation(b, gameData);
     expect(options.effectWindows?.["rally-barricade"]).toEqual({ startMs: 0, durationMs: 20000 });
-    expect(secondShotMs(b)).toBeLessThan(secondShotMs(hunter({ guardianClass: "titan" })));
+    expect(secondShotMs(b)).toBe(secondShotMs(hunter({ guardianClass: "titan" })));
   });
 
   it("Empowering Rift grants its 20 % for 15 s from the cast", () => {

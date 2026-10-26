@@ -228,7 +228,9 @@ export function simulate(
         appliesToWeaponType(part.weaponTypes, weapon.weaponType),
     );
   // Reload time × factor of the strongest active reloadDuration part; no source says how several
-  // factors stack (ADR 0014).
+  // factors stack (ADR 0014). The weapon's reload may already contain a factor (K1): only the part
+  // beyond it counts.
+  const includedReloadFactor = weapon.reloadDurationIncluded?.value ?? 1;
   const reloadMsAt = (timeMs: number) => {
     const factors = partsAt(timeMs)
       .timingParts.filter(
@@ -241,7 +243,7 @@ export function simulate(
           throw new Error("reloadDuration needs a factor");
         return part.factor;
       });
-    return reloadTimeMs * Math.min(1, ...factors);
+    return reloadTimeMs * Math.min(1, Math.min(1, ...factors) / includedReloadFactor);
   };
   const shotIntervalMs = MS_PER_MINUTE / fireRateRpm;
   const damagePhaseMs = damagePhaseSeconds * MS_PER_SECOND;

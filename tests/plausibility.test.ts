@@ -183,6 +183,16 @@ describe("exotic armor changes its abilities", () => {
     expect(dodged.reloadsMs.length).toBe(plain.reloadsMs.length - 1);
   });
 
+  it("Rally Barricade does not shorten Gjallarhorn's reload: Quantum and Aegis reload with Rally already (K1)", () => {
+    const gjallarhorn = weaponById("gjallarhorn");
+    const plain = run({}, gjallarhorn);
+    const rally = run({ abilities: [{ abilityId: "rally-barricade", castsMs: [0] }] }, gjallarhorn);
+    const gap = (r: SimulationResult) => r.shots[1].timeMs - r.reloadsMs[0];
+    note("Gjallarhorn: Reload mit Rally ÷ ohne", fmt(gap(rally) / gap(plain)), "1,00 (Quantum: „All weapons assume the effects of Rally barricade“; Aegis-Reload = Quantum-Reload)");
+    expect(gjallarhorn.reloadDurationIncluded?.value).toBe(0.9);
+    expect(gap(rally)).toBeCloseTo(gap(plain), 0);
+  });
+
   it("Gwisin Vest: Weaken (+15 %) for 10 s from the cast of a class ability, nothing without one", () => {
     const hunter = {
       guardianClass: "hunter" as const,
