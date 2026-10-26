@@ -23,7 +23,7 @@ Scorch sind Stacks am Ziel. Ein gescorchtes Ziel nimmt Burn-Schaden in Ticks. Be
 | Wert | Zahl | Quelle | Spielversion |
 | --- | --- | --- | --- |
 | Schwelle für Ignition | 100 Stacks | Compendium „Solar“ | 9.7.0.x |
-| Cooldown nach Ignition | 1,6 s laut Compendium; Messung: 0,55 bis 1,3 s | Compendium „Solar“; eigene Messung 2026-10-20 | 9.7.0.x |
+| Cooldown nach Ignition | 1,6 s laut Compendium; Messung: 0,55 bis 1,3 s (OTV), unter 0,98 s (Aegis, Hierarchy of Needs); Modell 0,95 s | Compendium „Solar“; eigene Messung 2026-10-20; Aegis | 9.7.0.x |
 | One Thousand Voices: Explosionen eines Shots | gestaffelt, etwa 30 bis 40 Frames von der ersten bis zur letzten | eigene Messung 2026-10-20 (Test 2) | 9.7.0.x |
 | Burn: erster Tick / Abstand / zweiter Abstand | 0,5 s / 0,56 s / 0,93 s | Compendium „Solar“ | 9.7.0.x |
 | Burn-Tick bei x1 / x30 / x50 / x60 / x80 | 3 / 5 / 6,5 / 7,21 / 8,64 | Compendium „Solar“ (Grundwerte) | 9.7.0.x |
@@ -63,6 +63,7 @@ Abgebildet seit v0.5 Schritt 4:
 - Nicht abgebildet: Burn-Schaden und der Verfall von Stacks.
 - Ergebnis ohne Effects: 5 Ignitions in 11 Shots, 28 430 Total Damage, genau wie Quantum. Mit Ember of Ashes: 11 Ignitions, ×1,188, genau wie Quantum; Aegis ×1,173 (Gate `tests/weaponEffectGate.test.ts`, ±3 %).
 - **Korrigiert (2026-10-20, ADR 0011 und Ingame-Tests):** Das Modell gab mit Ember nur 8 von 11 Ignitions (+9,4 %). Zuerst haben wir die Explosionen gleichzeitig gesetzt; das bestand das Gate. Test 2 hat gezeigt: Sie kommen gestaffelt (66,7 ms Abstand, wie vorher). Der Fehler lag im Cooldown: Mit gestaffelten Explosionen und 1,733 s Shot-Abstand zündet jeder Shot nur bei einem Cooldown bis etwa 1,3 s; ohne Ember bleiben es 2 von 4 nur ab etwa 0,55 s. Das Modell nutzt 1,3 s, den Wert am nächsten am Compendium (`unverified`). Gemessen: ohne Ember 2 von 4, mit Ember 4 von 4 (Test 1).
+- **Korrigiert (2026-10-26):** 0,95 s. Aegis misst Hierarchy of Needs im Spiel mit etwa 2 Ignitions in 6 Pfeilen bei 1,017 s Abstand (Wipe 18 188 = 6 × 735 + 18 × 485 Seeker + 2 × 2345 + 358 Burn); mit 1,3 s ginge der Scorch des Pfeils nach jeder Ignition verloren (1 in 4). Bereich jetzt 0,55 bis 0,98 s, 0,95 s liegt am nächsten am Compendium. One Thousand Voices bleibt bei 5 von 11 und 11 von 11.
 
 ## Offene Fragen
 

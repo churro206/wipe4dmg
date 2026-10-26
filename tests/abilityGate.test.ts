@@ -65,10 +65,11 @@ const abilities = loadAbilities(
   AbilityComponents.array().parse(rawAbilityComponents),
 );
 const CAST_GAP_MS = 5000; // further apart than every keyword cooldown
-// A package with keyword damage taken out must give back the measurement. 2.5 %: a super row takes
-// out the plain Ignition row (1553), but Aegis' ignitions had Radiant like the shots ("Ignition
-// damage can be increased ... if the initial Scorch source had a damage increase", Compendium).
-const BAKED_TOLERANCE = 0.025;
+// A package with keyword damage taken out must give back the measurement. 2.5 % per ignition taken
+// out: a super row takes out the plain Ignition row (1553), but Aegis' ignitions had Radiant like the
+// shots ("Ignition damage can be increased ... if the initial Scorch source had a damage increase",
+// Compendium); Golden Gun: Deadshot takes out 2 since the cooldown is 0.95 s (2026-10-26).
+const BAKED_TOLERANCE_PER_TRIGGER = 0.025;
 
 /**
  * Damage per use of the ability alone at the given stat, with the effects Aegis measured. Where
@@ -169,9 +170,20 @@ describe("ability gate against Aegis", () => {
       )
       .map((a) => {
         const row = rows.find((r) => r.id === a.aegisRowId)!;
-        return { id: a.id, ratio: perUse(a, 100) / row.perUseStat100.value! };
+        const triggers = Math.max(
+          1,
+          ...abilityKeywords
+            .filter((k) => k.abilityId === a.id && k.bakedInPackage)
+            .map((k) => k.bakedInPackage!.triggers / k.bakedInPackage!.uses),
+        );
+        return {
+          id: a.id,
+          ratio: perUse(a, 100) / row.perUseStat100.value!,
+          tolerance: BAKED_TOLERANCE_PER_TRIGGER * triggers,
+        };
       })
-      .filter(({ ratio }) => Math.abs(ratio - 1) > BAKED_TOLERANCE);
+      .filter(({ ratio, tolerance }) => Math.abs(ratio - 1) > tolerance)
+      .map(({ id, ratio }) => ({ id, ratio }));
     expect(off).toEqual([]);
   });
 });

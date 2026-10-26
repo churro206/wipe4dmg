@@ -947,7 +947,7 @@
   },
   {
     "weapon": "Hierarchy of Needs",
-    "reason": "Catalyst: Guidance Ring und Treffer der Seeker halbieren 5 s lang die Draw Time; bei Dauerfeuer auf einen Boss immer aktiv. Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm).",
+    "reason": "Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions.",
     "quotes": [
       {
         "source": "clarity",
@@ -958,8 +958,49 @@
         "source": "quantum",
         "entry": "primaries-bow-hierarchy-of-needs-guidance-ring-cata",
         "text": "\"rpm\":61"
+      },
+      {
+        "source": "compendium",
+        "entry": "Hierarchy of Needs",
+        "text": "up to a maximum of 3 charges"
+      },
+      {
+        "source": "compendium",
+        "entry": "Hierarchy of Needs",
+        "text": "Guidance Ring charges persist through stow"
+      },
+      {
+        "source": "compendium",
+        "entry": "Hierarchy of Needs",
+        "text": "Guidance Ring lasts for 20 seconds"
+      },
+      {
+        "source": "compendium",
+        "entry": "Hierarchy of Needs",
+        "text": "Hierarchy of Needs releases 3 Seekers"
+      },
+      {
+        "source": "clarity",
+        "entry": "Apollonic Tangent",
+        "text": "Each seeker applies 15 Scorch"
+      },
+      {
+        "source": "quantum",
+        "entry": "primaries-bow-hierarchy-of-needs-guidance-ring",
+        "text": "\"precisionDamage\":664"
       }
     ],
+    "setup": {
+      "name": "Guidance Ring",
+      "shotsBefore": 4,
+      "shotsBeforePreBuilt": 1,
+      "durationSeconds": 20,
+      "shotRow": "primaries-bow-hierarchy-of-needs",
+      "setupRow": "primaries-bow-hierarchy-of-needs-guidance-ring",
+      "hits": 3,
+      "scorchPerHit": 15,
+      "catalystTimingOnceDeployed": true
+    },
     "timing": {
       "from": "Quantum",
       "row": "primaries-bow-hierarchy-of-needs",

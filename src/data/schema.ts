@@ -61,9 +61,26 @@ export const DamageInstance = z.object({
   tickIntervalMs: SourcedNumber, // 0 for a single hit
   canPrecision: z.boolean(),
   requiresCatalyst: z.boolean(),
+  // Only shots fired while the weapon's setup stands deal it, e.g. the seekers of a Guidance Ring
+  requiresSetup: z.boolean().optional(),
   delivery: Delivery.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
+
+/**
+ * Something a weapon's shots build up and then deploy, e.g. the Guidance Ring of Hierarchy of Needs:
+ * the shots before it stand without its damage, it lasts a while, then the next shot deploys it
+ * again (that shot without its damage either).
+ */
+export const WeaponSetup = z.object({
+  name: z.string(),
+  shotsBefore: SourcedNumber, // shots until it stands, the deploying shot included
+  shotsBeforePreBuilt: SourcedNumber, // the same with charges built before the damage phase
+  durationMs: SourcedNumber,
+  // The catalyst's timing only once it stands (e.g. "Deploying a Guidance Ring … decreased Draw Time")
+  catalystTimingOnceDeployed: z.boolean(),
+});
+export type WeaponSetup = z.infer<typeof WeaponSetup>;
 
 export const Element = z.enum([
   "kinetic",
@@ -354,6 +371,7 @@ export const Weapon = z.object({
       source: Source,
     }),
   ),
+  setup: WeaponSetup.optional(),
   // Imported packages (ADR 0013): modelled effects Aegis measured inside the value per shot.
   includedEffectIds: z.array(z.string()).optional(),
   // Imported packages: catalyst, perks and mods as factors from the "with / without" rows.
@@ -1271,6 +1289,9 @@ export const Build = z.object({
   guardianClass: GuardianClass,
   subclass: Subclass,
   catalyst: z.boolean(),
+  // The weapon's setup charges are built before the damage phase (WeaponSetup, e.g. Guidance Ring
+  // charges persist through stow); omitted: off.
+  weaponPreBuilt: z.boolean().optional(),
   // Exotic armor piece (exotic-armor.json, ADR 0014); omitted: none. At most one per build.
   exoticArmorId: z.string().optional(),
   // The kill buffs of the exotic are built up before the damage phase (ADR 0015); omitted: off.
@@ -1639,6 +1660,21 @@ export const WeaponOverride = z.object({
   catalystWindowSeconds: z.number().positive().optional(),
   // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
   scorchStacksPerShot: z.number().int().positive().optional(),
+  // A setup the shots build and deploy (WeaponSetup): the shot from a Quantum row without it, the
+  // extra hits from the row with it; the reason derives the numbers from the quotes.
+  setup: z
+    .object({
+      name: z.string(),
+      shotsBefore: z.number().int().positive(),
+      shotsBeforePreBuilt: z.number().int().positive(),
+      durationSeconds: z.number().positive(),
+      shotRow: z.string(), // Quantum row without the setup
+      setupRow: z.string(), // Quantum row with it
+      hits: z.number().int().positive(), // extra hits per shot, e.g. 3 seekers
+      scorchPerHit: z.number().int().positive().optional(),
+      catalystTimingOnceDeployed: z.boolean(),
+    })
+    .optional(),
   timing: z
     .object({
       from: z.enum(["Aegis", "Quantum"]), // use this source even if a rule would not

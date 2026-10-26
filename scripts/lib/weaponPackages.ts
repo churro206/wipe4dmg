@@ -73,6 +73,7 @@ const sameName = (rowName: string, manifestName: string) =>
 const OPTION_BUCKET = "weaponPerk";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
 const OVERRIDE_TIMING = "override"; // row id of a timing whose values an override states
+const SETUP_HITS_ID = "setupHits"; // damage instance of the hits a setup adds, e.g. seekers
 const RALLY_EFFECT_ID = "rally-barricade";
 const RPM_HINT = 0.25; // a derived fire rate this far from the Quantum rpm is worth a look
 const BURST_TOLERANCE = 0.005; // Aegis rounds its hits; a burst sums them
@@ -989,6 +990,25 @@ export function buildWeaponImport(
         );
     }
 
+    // A setup the shots build and deploy (override): the shot from Quantum's row without it, the
+    // extra hits from the difference to the row with it, e.g. 3 seekers through a Guidance Ring.
+    const setupRule = override?.setup;
+    const setupRows = setupRule && {
+      shot: inputs.quantum.rows.find((r) => r.id === setupRule.shotRow),
+      withSetup: inputs.quantum.rows.find((r) => r.id === setupRule.setupRow),
+    };
+    if (setupRule && setupRows) {
+      const { shot, withSetup } = setupRows;
+      if (!shot?.precisionDamage || !withSetup?.precisionDamage)
+        throw new Error(
+          `${manifest.name}: setup rows ${setupRule.shotRow}, ${setupRule.setupRow} without precision damage`,
+        );
+      entry.perShot = shot.precisionDamage;
+      entry.notes.push(
+        `${setupRule.name}: Shot aus Quantum ${shot.id} (${shot.precisionDamage}), ${setupRule.hits} Treffer aus ${withSetup.id} (${withSetup.precisionDamage} − ${shot.precisionDamage}) (Override)`,
+      );
+    }
+
     // Options: rows that add only catalyst, perk or mod assumptions to the base row.
     const options: WeaponOption[] = [];
     for (const row of rows) {
@@ -1726,7 +1746,17 @@ export function buildWeaponImport(
           : quantumSource(timingQuantumRow, note);
     const id = slug(manifest.name);
     const shotSource = (note?: string): Source =>
-      scorch ? quantumSource(scorch.quantumRow, note) : aegisSource(base, note);
+      scorch
+        ? quantumSource(scorch.quantumRow, note)
+        : setupRows?.shot
+          ? quantumSource(setupRows.shot, note)
+          : aegisSource(base, note);
+    const setupSource = (note?: string): Source => ({
+      name: `Weapon override for ${manifest.name} (Clarity, Compendium, Quantum)`,
+      retrieved: inputs.aegis.source.retrieved,
+      status: "unverified",
+      note: `Derived (override): ${override?.reason ?? ""}${note ? `; ${note}` : ""}`,
+    });
     const scorchSource = (quote: string, note?: string): Source => ({
       name: `Destiny Data Compendium, Exotic Weapons (${manifest.name})`,
       url: "https://destiny2.science/data-compendium",
@@ -1848,7 +1878,9 @@ export function buildWeaponImport(
           id: "shot",
           name: scorch
             ? "Shot (Quantum, without ignitions)"
-            : "Shot (Aegis average)",
+            : setupRule
+              ? `Shot (Quantum, without ${setupRule.name})`
+              : "Shot (Aegis average)",
           delayMs: {
             value: 0,
             source: shotSource("Package: one value per shot"),
@@ -1860,36 +1892,102 @@ export function buildWeaponImport(
                   scorch.quantumRow,
                   `Total Damage / total shots; ${scorch.quantumRow.note}`,
                 )
-              : aegisSource(
-                  base,
-                  `visual Value; assumptions: ${base.assumptions.join(", ") || "none"}`,
-                ),
+              : setupRows?.shot
+                ? quantumSource(setupRows.shot, "Precision damage")
+                : aegisSource(
+                    base,
+                    `visual Value; assumptions: ${base.assumptions.join(", ") || "none"}`,
+                  ),
           },
           ticks: { value: 1, source: shotSource() },
           tickIntervalMs: { value: 0, source: shotSource() },
           canPrecision: false,
           requiresCatalyst: false,
         },
-      ],
-      intrinsicParts: scorch
-        ? [
-            {
-              type: "appliesKeyword",
-              keywordId: "ignition",
-              damageSources: ["weapon"],
-              stacks: {
-                value: scorch.stacksPerShot,
-                source: scorchSource(
-                  scorch.quote,
-                  override?.scorchStacksPerShot
-                    ? `Per shot: ${override.reason}`
-                    : "Base stacks before Ember of Ashes",
-                ),
+        ...(setupRule && setupRows?.shot && setupRows.withSetup
+          ? [
+              {
+                id: SETUP_HITS_ID,
+                name: `${setupRule.name} hits`,
+                delayMs: { value: 0, source: setupSource() },
+                damagePerTick: {
+                  value: Number(
+                    (
+                      (setupRows.withSetup.precisionDamage! -
+                        setupRows.shot.precisionDamage!) /
+                      setupRule.hits
+                    ).toFixed(3),
+                  ),
+                  source: quantumSource(
+                    setupRows.withSetup,
+                    `(Precision damage ${setupRows.withSetup.precisionDamage} − ${setupRows.shot.precisionDamage} of row ${setupRows.shot.id}) ÷ ${setupRule.hits} hits`,
+                  ),
+                },
+                ticks: { value: setupRule.hits, source: setupSource() },
+                tickIntervalMs: { value: 0, source: setupSource() },
+                canPrecision: false,
+                requiresCatalyst: false,
+                requiresSetup: true,
               },
-              source: scorchSource(scorch.quote),
+            ]
+          : []),
+      ],
+      ...(setupRule
+        ? {
+            setup: {
+              name: setupRule.name,
+              shotsBefore: {
+                value: setupRule.shotsBefore,
+                source: setupSource(),
+              },
+              shotsBeforePreBuilt: {
+                value: setupRule.shotsBeforePreBuilt,
+                source: setupSource(),
+              },
+              durationMs: {
+                value: setupRule.durationSeconds * 1000,
+                source: setupSource(),
+              },
+              catalystTimingOnceDeployed: setupRule.catalystTimingOnceDeployed,
             },
-          ]
-        : [],
+          }
+        : {}),
+      intrinsicParts: [
+        ...(setupRule?.scorchPerHit
+          ? [
+              {
+                type: "appliesKeyword" as const,
+                keywordId: "ignition" as const,
+                damageSources: ["weapon" as const],
+                damageInstanceIds: [SETUP_HITS_ID],
+                stacks: {
+                  value: setupRule.scorchPerHit,
+                  source: setupSource("Scorch per hit before Ember of Ashes"),
+                },
+                source: setupSource(),
+              },
+            ]
+          : []),
+        ...(scorch
+          ? [
+              {
+                type: "appliesKeyword" as const,
+                keywordId: "ignition" as const,
+                damageSources: ["weapon" as const],
+                stacks: {
+                  value: scorch.stacksPerShot,
+                  source: scorchSource(
+                    scorch.quote,
+                    override?.scorchStacksPerShot
+                      ? `Per shot: ${override.reason}`
+                      : "Base stacks before Ember of Ashes",
+                  ),
+                },
+                source: scorchSource(scorch.quote),
+              },
+            ]
+          : []),
+      ],
       ...(scorch?.bonus
         ? {
             keywordBonuses: [

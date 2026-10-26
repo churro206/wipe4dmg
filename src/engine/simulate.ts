@@ -109,6 +109,7 @@ export type SimulationOptions = EffectWindowOptions & {
   abilityStats?: AbilityStatValue[]; // default: no stat bonus
   weaponStat?: WeaponStatValue; // Weapons stat; default: no stat bonus
   keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
+  setupPreBuilt?: boolean; // the weapon's setup charges are built before the phase ("Pre-stacked")
 };
 
 /** Time in which a super keeps the player busy; exact is false if a value of the super is missing. */
@@ -282,6 +283,9 @@ export function simulate(
   const holdAt = (timeMs: number): { holdMs: number; factor: number } => {
     const none = { holdMs: 0, factor: 1 };
     if (weapon.ammo !== "primary") return none;
+    // Keyword damage of the shots (e.g. ignitions of a Guidance Ring's seekers) comes per shot, not
+    // per held step: the rate below cannot weigh it, and holding gains little there (under 2 %).
+    if (weapon.intrinsicParts.some((p) => p.type === "appliesKeyword")) return none;
     const part = partsAt(timeMs).holdDrawParts.find((p) =>
       appliesToWeaponType(p.weaponTypes, weapon.weaponType),
     );
@@ -323,6 +327,26 @@ export function simulate(
     return atMs;
   };
 
+  // A setup the shots build and deploy (WeaponSetup), e.g. a Guidance Ring: the deploying shot and
+  // those before it deal no setup damage; after its duration the next shot deploys it again. A
+  // catalyst that starts with the deploy keeps the weapon's own interval until then.
+  const setup = weapon.setup;
+  const setupShotsBefore = setup
+    ? requireValue(
+        options.setupPreBuilt ? setup.shotsBeforePreBuilt : setup.shotsBefore,
+        "shotsBefore",
+      )
+    : 0;
+  const setupDurationMs = setup ? requireValue(setup.durationMs, "durationMs") : 0;
+  const ownIntervalMs =
+    MS_PER_MINUTE / requireValue(weapon.fireRateRpm, "fireRateRpm");
+  let deployedMs: number | undefined;
+  const withSetup: boolean[] = [];
+  const intervalMs = () =>
+    setup?.catalystTimingOnceDeployed && deployedMs === undefined
+      ? ownIntervalMs
+      : shotIntervalMs;
+
   const shots: Shot[] = [];
   const reloadsMs: number[] = [];
   const holdFactors: number[] = [];
@@ -331,7 +355,7 @@ export function simulate(
   for (let i = 0; i < totalShots; i++) {
     if (i > 0) {
       const previousMs = shotMs;
-      shotMs += shotIntervalMs;
+      shotMs += intervalMs();
       if (leftInMagazine === 0 && !noReloadAt(previousMs)) {
         const readyMs = shotMs + reloadMsAt(previousMs);
         const refillMs = refillBefore(previousMs, readyMs);
@@ -348,6 +372,14 @@ export function simulate(
     if (!isInPhase(shotMs)) break;
     shots.push({ timeMs: shotMs });
     holdFactors.push(hold.factor);
+    if (setup) {
+      const deploys =
+        deployedMs === undefined
+          ? i === setupShotsBefore - 1
+          : shotMs >= deployedMs + setupDurationMs;
+      if (deploys) deployedMs = shotMs;
+      withSetup.push(!deploys && deployedMs !== undefined);
+    }
   }
   // Damage factor of the held draw for the shot that makes a hit at timeMs
   const anyHold = holdFactors.some((factor) => factor !== 1);
@@ -369,6 +401,7 @@ export function simulate(
       damage: requireValue(instance.damagePerTick, "damagePerTick"),
       ticks: requireValue(instance.ticks, "ticks"),
       tickIntervalMs: requireValue(instance.tickIntervalMs, "tickIntervalMs"),
+      requiresSetup: instance.requiresSetup ?? false,
     }));
 
   const damageSource: DamageSource = "weapon";
@@ -475,8 +508,9 @@ export function simulate(
       );
 
   const events: RunEvent[] = [];
-  for (const shot of shots) {
+  for (const [shotIndex, shot] of shots.entries()) {
     for (const instance of instances) {
+      if (instance.requiresSetup && !withSetup[shotIndex]) continue;
       for (let tick = 0; tick < instance.ticks; tick++) {
         const timeMs =
           shot.timeMs + instance.delayMs + tick * instance.tickIntervalMs;

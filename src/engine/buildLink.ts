@@ -9,10 +9,11 @@
 //           exotic armor manifest hash (0: none) | exotic prebuilt (0 or 1) |
 //           class perk count | per class perk: manifest hash |
 //           Weapons stat + 1 (0: none) |
-//           artifact code (0: none)
+//           artifact code (0: none) |
+//           weapon prebuilt (0 or 1)
 // Format 2 ends the build after the selections, format 3 after the stats, format 4 after the
-// prebuilt flag, format 5 after the class perks, format 6 after the Weapons stat; all are still
-// read. Artifact perks are selections with the provider "artifact".
+// prebuilt flag, format 5 after the class perks, format 6 after the Weapons stat, format 7 after the
+// artifact; all are still read. Artifact perks are selections with the provider "artifact".
 // Exotic armor and class perks are written by their manifest hash, which Bungie keeps stable (U8).
 // Codes come from the Data Files and are never reused, so old links stay readable. A removed
 // effect keeps its code as a former code of the effect that replaces it.
@@ -27,8 +28,8 @@ import {
 } from "../data/schema";
 import { MS_PER_SECOND } from "./units";
 
-const FORMAT_VERSION = 7;
-const READABLE_VERSIONS = [2, 3, 4, 5, 6, 7];
+const FORMAT_VERSION = 8;
+const READABLE_VERSIONS = [2, 3, 4, 5, 6, 7, 8];
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
 const SUBCLASSES: Subclass[] = [
   "arc",
@@ -190,6 +191,7 @@ function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
       ? 0
       : codeOf(registry.artifacts ?? [], build.artifactId, "artifact"),
   );
+  writeVarint(bytes, build.weaponPreBuilt ? 1 : 0);
 }
 
 const fail = (message: string): never => {
@@ -265,6 +267,7 @@ function readBuild(
   }
   const weaponsStatPlusOne = version >= 6 ? reader.varint() : 0;
   const artifactCode = version >= 7 ? reader.varint() : 0;
+  const weaponPreBuilt = version >= 8 && reader.varint() === 1;
   const artifact = (registry.artifacts ?? []).find((a) => a.code === artifactCode);
   if (artifactCode !== 0 && !artifact) unknown.artifacts.push(artifactCode);
   // Zod rejects an invalid class or provider index (undefined).
@@ -273,6 +276,7 @@ function readBuild(
     guardianClass,
     subclass,
     catalyst,
+    ...(weaponPreBuilt ? { weaponPreBuilt } : {}),
     selections,
     effectWindows,
     damagePhaseSeconds,

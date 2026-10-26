@@ -7728,50 +7728,147 @@
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot (Aegis average)",
+        "name": "Shot (Quantum, without Guidance Ring)",
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-hierarchy-of-needs-average-one-ring",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "verified",
+            "status": "unverified",
             "note": "Package: one value per shot"
           }
         },
         "damagePerTick": {
-          "value": 916.849,
+          "value": 223,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-hierarchy-of-needs-average-one-ring",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "visual Value; assumptions: average, one ring"
+            "status": "unverified",
+            "note": "Precision damage"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-hierarchy-of-needs-average-one-ring",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "verified"
+            "status": "unverified"
           }
         },
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-hierarchy-of-needs-average-one-ring",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "verified"
+            "status": "unverified"
           }
         },
         "canPrecision": false,
         "requiresCatalyst": false
+      },
+      {
+        "id": "setupHits",
+        "name": "Guidance Ring hits",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+          }
+        },
+        "damagePerTick": {
+          "value": 147,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs-guidance-ring",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "(Precision damage 664 − 223 of row primaries-bow-hierarchy-of-needs) ÷ 3 hits"
+          }
+        },
+        "ticks": {
+          "value": 3,
+          "source": {
+            "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false,
+        "requiresSetup": true
       }
     ],
-    "intrinsicParts": [],
+    "setup": {
+      "name": "Guidance Ring",
+      "shotsBefore": {
+        "value": 4,
+        "source": {
+          "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+          "retrieved": "2026-10-20",
+          "status": "unverified",
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+        }
+      },
+      "shotsBeforePreBuilt": {
+        "value": 1,
+        "source": {
+          "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+          "retrieved": "2026-10-20",
+          "status": "unverified",
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+        }
+      },
+      "durationMs": {
+        "value": 20000,
+        "source": {
+          "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+          "retrieved": "2026-10-20",
+          "status": "unverified",
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+        }
+      },
+      "catalystTimingOnceDeployed": true
+    },
+    "intrinsicParts": [
+      {
+        "type": "appliesKeyword",
+        "keywordId": "ignition",
+        "damageSources": ["weapon"],
+        "damageInstanceIds": ["setupHits"],
+        "stacks": {
+          "value": 15,
+          "source": {
+            "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions.; Scorch per hit before Ember of Ashes"
+          }
+        },
+        "source": {
+          "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+          "retrieved": "2026-10-20",
+          "status": "unverified",
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+        }
+      }
+    ],
     "intrinsics": [
       {
         "id": "guidance-ring",

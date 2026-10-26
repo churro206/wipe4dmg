@@ -23,14 +23,14 @@
       }
     },
     "cooldownMs": {
-      "value": 1300,
+      "value": 950,
       "source": {
         "name": "Destiny Data Compendium, Solar (Ignition); own measurement 2026-10-20; Aegis",
         "url": "https://destiny2.science/data-compendium",
-        "retrieved": "2026-10-21",
+        "retrieved": "2026-10-26",
         "status": "unverified",
         "quote": "incur a 1.6 second cooldown before Scorch can be reapplied",
-        "note": "1.6 s contradicts the measurements: Aegis, Quantum and the in-game test with One Thousand Voices allow at most about 1.3 s. 1.3 s is the value closest to the Compendium within that range (ADR 0011, rule 3)."
+        "note": "1.6 s contradicts the measurements: Aegis, Quantum and the in-game test with One Thousand Voices allow 0.55 to 1.3 s; Aegis' Hierarchy of Needs (in-game, about 2 ignitions in 6 arrows 1.017 s apart, 45 scorch per arrow) only below about 0.98 s, else the arrow after an ignition would be lost. 0.95 s is the value closest to the Compendium within that range (ADR 0011, rule 3)."
       }
     },
     "removedOnTrigger": true,

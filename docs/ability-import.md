@@ -16,11 +16,11 @@ Teile: 21 von 78.
 | Chaos Reach | Hit 378×1, Hit 202×1 | 26 | 15080 | 10905 | +38 % | +40 % | Paket |
 | Stormtrance | Hit 690×1, Hit 440×1, Hit 178×1 | 39 | 52301 | 13045 | +301 % | +309 % | Paket |
 | Blade Barrage | Hit 99×1, Hit 560×1 | 1 | 659 | 9335 | -93 % | -93 % | Paket |
-| Golden Gun: Deadshot | Hit 1453×1 | 6 | 9393 | 6287 | +49 % | +50 % | Paket |
+| Golden Gun: Deadshot | Hit 1453×1 | 6 | 10068 | 6287 | +60 % | +61 % | Paket |
 | Golden Gun: Marksman | Hit 1574×1 | 3 | 5397 | 9210 | -41 % | -41 % | Paket |
 | Burning Maul | Hit 111×1, Hit 276×1, Hit 24×1 | 17 | 6987 | 12760 | -45 % | -40 % | Paket |
 | Hammer of Sol | Hit 445×1, Hit 396×1 | 1 | 841 | 9243 | -91 % | -91 % | Paket |
-| Daybreak | Impact 426×1, Splash 598×1, Hit 292×1, Hit 642×1, Hit 292×1 | 15 | 36451 | 12185 | +199 % | +191 % | Paket |
+| Daybreak | Impact 426×1, Splash 598×1, Hit 292×1, Hit 642×1, Hit 292×1 | 15 | 37126 | 12185 | +205 % | +196 % | Paket |
 | Song of Flame | Hit 647×1, Hit 246×1, Hit 1224×1, Hit 139×1, Hit 899×1 | 7 | 22085 | 16658 | +33 % | +33 % | Paket |
 | Spectral Blades | Hit 1107×1, Hit 1620×1 | 22 | 59994 | 12003 | +400 % | +400 % | Paket |
 | Shadowshot: Deadfall | Hit 2583×1 | 1 | 2583 | 2801 | -8 % | -8 % | Teile |

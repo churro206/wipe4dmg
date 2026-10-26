@@ -917,6 +917,45 @@ describe("exotic effects from the rotation", () => {
   });
 });
 
+describe("bows (2026-10-26)", () => {
+  const hierarchy = (fields: Partial<Build>) =>
+    run({ guardianClass: "hunter", subclass: "solar", catalyst: true, ...fields }, weaponById("hierarchy-of-needs"));
+  const ignitionsOf = (r: SimulationResult) =>
+    r.damageInstances.filter((d) => d.keywordId === "ignition").length;
+
+  it("Hierarchy of Needs: Pre-stacked deploys the Guidance Ring with the first arrow, without it the 4th", () => {
+    const short = (weaponPreBuilt: boolean) =>
+      hierarchy({ damagePhaseSeconds: 10, weaponPreBuilt }).totalDamage;
+    const ratio = short(true) / short(false);
+    note("Hierarchy 10 s: Pre-stacked / ohne", fmt(ratio), "deutlich über 1 (3 Pfeile mehr mit Ring)");
+    expect(ratio).toBeGreaterThan(1.3);
+  });
+
+  it("Hierarchy of Needs: the seekers ignite, every 3rd arrow, with Ember of Ashes every 2nd", () => {
+    const plain = hierarchy({ weaponPreBuilt: true });
+    const ember = hierarchy({
+      weaponPreBuilt: true,
+      selections: [{ effectId: "ember-of-ashes", provider: "subclass" }],
+    });
+    const arrows = plain.shots.length;
+    note(
+      "Hierarchy 30 s: Ignitions ohne / mit Ember",
+      `${ignitionsOf(plain)} / ${ignitionsOf(ember)} bei ${arrows} Pfeilen`,
+      "etwa jeder 3. / 2. Pfeil",
+    );
+    expect(ignitionsOf(plain)).toBeGreaterThanOrEqual(Math.floor((arrows - 2) / 3) - 1);
+    expect(ignitionsOf(ember)).toBeGreaterThan(ignitionsOf(plain) * 1.3);
+  });
+
+  it("Leviathan's Breath: with Archer's Tempo the 14 arrows are out by about 19 s", () => {
+    const r = run({ catalyst: true }, weaponById("leviathan-s-breath"));
+    const lastS = r.shots.at(-1)!.timeMs / 1000;
+    note("Leviathan's Breath mit Catalyst: letzter Pfeil", `${fmt(lastS)} s`, "1,33 + 13 × 1,33 ≈ 18,7 s");
+    expect(r.shots).toHaveLength(14);
+    expect(lastS).toBeCloseTo(18.66, 0);
+  });
+});
+
 describe("keywords", () => {
   // Starfire Protocol while Radiant: two charges and weapon hits refill the Fusion Grenade (block 3).
   const ignitions = (castsMs: number[], ember: boolean) =>
@@ -1239,7 +1278,7 @@ describe("supers take time like in the game", () => {
     note(
       "Daybreak: Ignitions während der Super",
       `${ignitions.filter((d) => d.timeMs <= end).length}`,
-      "4 bis 5 (15 Geschosse × 50 Scorch in 9,55 s, Abklingzeit 1,3 s)",
+      "4 bis 5 (15 Geschosse × 50 Scorch in 9,55 s, Abklingzeit 0,95 s)",
     );
     expect(
       ignitions.filter((d) => d.timeMs <= end).length,

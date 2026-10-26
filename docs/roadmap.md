@@ -67,6 +67,7 @@ Status: 2026-10-25
 
 - ✅ Timeline shows the cast time of grenades, melees and class abilities as a hatched window, like the Super Window
 - ✅ Donut, curves and bars animate on every change; counters for Ignition, Jolt, Volatile, Unravel and Bolt Charge next to the key figures
+- ✅ Bows: Leviathan's Breath fires at the right pace (1.93 s, 1.33 s with Archer's Tempo); Hierarchy of Needs builds its Guidance Ring first (switch "Pre-stacked"), its seekers set off Ignitions
 
 ## Next
 
@@ -74,7 +75,7 @@ Status: 2026-10-25
 
 - Hammer of Sol with Sol Invictus
 - Energy exotics (e.g. Crown of Tempests, Contraverse Hold)
-- Stasis and Strand on the boss: Freeze, Shatter, Threadlings, Unravel, Sever and Suspend with measured damage
+- Stasis and Strand on the boss: Freeze, Shatter, Threadlings, Unravel, Sever and Suspend with measured damage; then the Verglas Curve catalyst (faster draw after Slow)
 - More aspects (Tempest Strike, Consecration, Crackshot, Shieldburst), artifact perks (Flashover, Heavy Ordnance Regeneration, Hail The Storm, Solar Fulmination) and catalysts (Tessellation, Divinity, Quicksilver Storm)
 - Worldline Zero, Wolfsbane, Praxic Blade and Barrow-Dyad
 - Armor set bonuses (e.g. TM Custom, Sage Protector, Legacy's Oath)

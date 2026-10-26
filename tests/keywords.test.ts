@@ -100,8 +100,10 @@ describe("loadKeywords", () => {
     expect(keyword("unravel").damage.value).toBe(39.13);
   });
 
+  // One Thousand Voices allows 0.55 to 1.3 s, Hierarchy of Needs (Aegis, arrows 1.017 s apart) below
+  // about 0.98 s; 0.95 s is the value closest to the Compendium's 1.6 s (2026-10-26)
   it("keeps the ignition cooldown that the measurements allow (ADR 0011, rule 3)", () => {
-    expect(keyword("ignition").cooldownMs.value).toBe(1300);
+    expect(keyword("ignition").cooldownMs.value).toBe(950);
   });
 
   it("rejects an unknown Aegis row", () => {

@@ -266,6 +266,7 @@ export function buildOfState(state: {
   guardianClass: GuardianClass;
   subclass: Subclass;
   catalyst: boolean;
+  weaponPreBuilt?: boolean;
   selections: Selection[];
   windowInputs: Record<string, WindowInput>;
   abilityChoice: AbilityChoice;
@@ -284,6 +285,9 @@ export function buildOfState(state: {
     guardianClass: state.guardianClass,
     subclass: state.subclass,
     catalyst: state.catalyst,
+    ...(state.weaponPreBuilt && weaponById(state.weaponId).setup
+      ? { weaponPreBuilt: true }
+      : {}),
     ...(state.artifactId ? { artifactId: state.artifactId } : {}),
     ...(state.exoticArmorId ? { exoticArmorId: state.exoticArmorId } : {}),
     ...(classPerkIds.length > 0 ? { classPerkIds } : {}),
@@ -323,7 +327,9 @@ export function describeBuild(build: Build): string {
       `${worn.join(" + ")}${build.exoticPreBuilt ? " (pre-stacked)" : ""}`,
     );
   if (build.catalyst) names.unshift("Catalyst");
-  names.unshift(weaponById(build.weaponId).name);
+  names.unshift(
+    `${weaponById(build.weaponId).name}${build.weaponPreBuilt ? " (pre-stacked)" : ""}`,
+  );
   const what = names.length > 0 ? names.join(", ") : "no effects";
   return `${CLASS_LABELS[build.guardianClass]} ${SUBCLASS_LABELS[build.subclass]}: ${what}`;
 }
@@ -360,6 +366,7 @@ export type LinkState = {
   subclass: Subclass;
   selections: Selection[];
   catalyst: boolean;
+  weaponPreBuilt: boolean;
   windowInputs: Record<string, WindowInput>;
   abilityChoice: AbilityChoice;
   abilityStats: AbilityStatInputs;
@@ -382,6 +389,7 @@ export function stateFromLink(search: string): LinkState {
     subclass: DEFAULT_SUBCLASS,
     selections: [],
     catalyst: false,
+    weaponPreBuilt: false,
     windowInputs: {},
     abilityChoice: {},
     abilityStats: DEFAULT_ABILITY_STATS,
@@ -434,6 +442,7 @@ export function stateFromLink(search: string): LinkState {
       classPerkIds: validClassPerks(build),
       exoticPreBuilt: build.exoticPreBuilt ?? false,
       catalyst: build.catalyst,
+      weaponPreBuilt: build.weaponPreBuilt ?? false,
       windowInputs: Object.fromEntries(
         Object.entries(build.effectWindows).map(([id, window]) => [
           id,

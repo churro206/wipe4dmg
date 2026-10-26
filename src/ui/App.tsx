@@ -117,6 +117,7 @@ function App() {
   const [weaponId, setWeaponId] = useState(initial.weaponId);
   const weapon = weaponById(weaponId);
   const [catalyst, setCatalyst] = useState(initial.catalyst);
+  const [weaponPreBuilt, setWeaponPreBuilt] = useState(initial.weaponPreBuilt);
   const [windowInputs, setWindowInputs] = useState(initial.windowInputs);
   const [abilityChoice, setAbilityChoice] = useState<AbilityChoice>(
     initial.abilityChoice,
@@ -164,6 +165,7 @@ function App() {
     guardianClass,
     subclass,
     catalyst,
+    weaponPreBuilt,
     selections,
     windowInputs,
     abilityChoice,
@@ -231,6 +233,7 @@ function App() {
         guardianClass,
         subclass,
         catalyst,
+        weaponPreBuilt,
         selections,
         windowInputs,
         abilityChoice,
@@ -256,6 +259,7 @@ function App() {
     guardianClass,
     subclass,
     catalyst,
+    weaponPreBuilt,
     selections,
     windowInputs,
     abilityChoice,
@@ -271,6 +275,7 @@ function App() {
   const changeWeapon = (id: string) => {
     setWeaponId(id);
     if (!hasCatalyst(weaponById(id))) setCatalyst(false);
+    if (id !== weaponId) setWeaponPreBuilt(false);
   };
   const changeInput = (value: string) => {
     setInput(value);
@@ -518,8 +523,10 @@ function App() {
               <WeaponSection
                 weapon={weapon}
                 catalyst={catalyst}
+                preBuilt={weaponPreBuilt}
                 onSelectWeapon={changeWeapon}
                 onToggleCatalyst={() => setCatalyst((on) => !on)}
+                onTogglePreBuilt={() => setWeaponPreBuilt((on) => !on)}
               />
 
               <h2>Class</h2>

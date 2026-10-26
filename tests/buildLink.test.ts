@@ -71,6 +71,13 @@ describe("encodeLink and decodeLink", () => {
     expect(unaware.unknownArtifactCodes).toEqual([3]);
   });
 
+  it("round-trips the weapon's Pre-stacked switch (format 8)", () => {
+    const preStacked: Build = { ...build, weaponPreBuilt: true };
+    const link = encodeLink({ build: preStacked }, registry);
+    expect(decodeLink(link, registry).build).toEqual(preStacked);
+    expect(decodeLink(encodeLink({ build }, registry), registry).build.weaponPreBuilt).toBeUndefined();
+  });
+
   it("round-trips a build with a comparison", () => {
     const decoded = decodeLink(
       encodeLink({ build, comparison }, registry),
@@ -82,8 +89,9 @@ describe("encodeLink and decodeLink", () => {
 
   it("keeps a typical build short (5 effects with windows in about 48 characters)", () => {
     // format 4 adds two bytes for the exotic armor, format 5 one byte for the class perks,
-    // format 6 one byte for the Weapons stat, format 7 one byte for the artifact
-    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(55);
+    // format 6 one byte for the Weapons stat, format 7 one byte for the artifact, format 8 one byte
+    // for the weapon's Pre-stacked switch
+    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(56);
   });
 
   it("round-trips the Weapons stat, also 0, and leaves it out when absent", () => {
@@ -173,7 +181,7 @@ describe("encodeLink and decodeLink", () => {
     it("keeps such a build short", () => {
       expect(
         encodeLink({ build: withAbilities }, registry).length,
-      ).toBeLessThanOrEqual(76); // format 5: one byte more for the class perks, format 6 for the stat
+      ).toBeLessThanOrEqual(78); // format 5: one byte more for the class perks, format 6 for the stat, format 8 for the weapon's Pre-stacked
     });
 
     it("skips unknown ability codes and reports them", () => {

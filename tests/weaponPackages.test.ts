@@ -231,8 +231,6 @@ describe("primaries", () => {
   // Catches a burst counted as one bullet (×3, ×5) and a shot of several projectiles divided by
   // mistake (Trinity Ghoul ÷3); extra damage in the Aegis average (poison, ignitions) stays inside.
   const KNOWN_OFF: Record<string, string> = {
-    "Hierarchy of Needs":
-      "Aegis shoots through the Guidance Ring; Quantum variant 'Guidance Ring' gives ×1.38",
     Hawkmoon: "Quantum's magazine damage includes the Paracausal Shot",
     Alethonym:
       "Aegis' average holds impact and impale ticks (337 impact, 237 tick), Quantum only the impact",
@@ -269,6 +267,24 @@ describe("catalysts", () => {
     expect(60 / value(timing.fireRateRpm)!).toBeCloseTo(1.333, 2);
     expect(value(timing.reloadTimeMs)).toBe(0);
     expect(value(timing.totalShots)).toBe(14);
+  });
+
+  // Aegis "average, one ring" (in-game, with the catalyst): wipe 18 188 in 6 arrows = 6 × 735 crit +
+  // 18 × 485 seeker + 2 ignitions of 2345 + 358 burn (not modelled); without the burn
+  // 17 830 ÷ 6 ÷ 3.31 buffs = 897.8 per arrow.
+  it("Hierarchy of Needs: arrow, 3 seekers and their ignitions give Aegis' 898 per arrow within ±3 %", () => {
+    const hierarchy = byName("Hierarchy of Needs")!;
+    const result = simulate(hierarchy, 19, [], loadBuckets(rawBuckets), {
+      catalyst: true,
+      keywords,
+      setupPreBuilt: true,
+    });
+    // arrows with the ring: from the 2nd on, before the ring is set again after 20 s
+    const ringArrows = result.shots.length - 1;
+    const damage = result.damageInstances
+      .filter((d) => d.timeMs > result.shots[0].timeMs)
+      .reduce((sum, d) => sum + d.damage, 0);
+    expect(Math.abs(damage / ringArrows / 897.8 - 1)).toBeLessThan(0.03);
   });
 
   it("Telesto: 4 rounds per magazine without, 7 with the catalyst (Clarity 4🠚7)", () => {
@@ -500,7 +516,9 @@ describe("rules", () => {
     const buckets = loadBuckets(rawBuckets);
     for (const bow of bows) {
       expect(bow.reloadTimeMs.value, bow.name).toBe(0);
-      const times = simulate(bow, 30, [], buckets).shots.map((s) => s.timeMs);
+      const times = simulate(bow, 30, [], buckets, { keywords }).shots.map(
+        (s) => s.timeMs,
+      );
       const cycleMs = (times.at(-1)! - times[0]) / (times.length - 1);
       expect(cycleMs, bow.name).toBeCloseTo(60_000 / bow.fireRateRpm.value!, 0);
     }

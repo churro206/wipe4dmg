@@ -136,10 +136,10 @@ Stapel pro Einsatz: größte genannte Zahl des Eintrags („with all 9 drones“
 | --- | --- | --- | --- | --- |
 | gathering-storm | jolt | – | 1 × 228 (1 hits x16576 damage every 0 ms, cooldown 800 ms -> 1 trigger(s) of 228 (miscellaneous-jolt) in Aegis row super-gathering-storm) | „inflicts jolt“ |
 | stormtrance | jolt | – | 13 × 228 (39 hits x769 damage every 318 ms, cooldown 800 ms -> 13 trigger(s) of 228 (miscellaneous-jolt) in Aegis row super-stormtrance) | „inflict jolt“ |
-| golden-gun-deadshot | ignition | 240 | 1 × 1553 (6 hits x50 stacks every 400 ms, cooldown 1300 ms -> 1 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-deadshot-radiant-ember-of-ashes) | „inflicts x40+10 Scorch“ |
-| golden-gun-marksman | ignition | 120 | 1 × 1553 (3 hits x40 stacks every 400 ms, cooldown 1300 ms -> 1 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-marksman-radiant) | „inflicts x40+10 Scorch“ |
+| golden-gun-deadshot | ignition | 240 | 2 × 1553 (6 hits x50 stacks every 400 ms, cooldown 950 ms -> 2 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-deadshot-radiant-ember-of-ashes) | „inflicts x40+10 Scorch“ |
+| golden-gun-marksman | ignition | 120 | 1 × 1553 (3 hits x40 stacks every 400 ms, cooldown 950 ms -> 1 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-marksman-radiant) | „inflicts x40+10 Scorch“ |
 | burning-maul | ignition | 3 | – | „apply x3+2 Scorch“ |
-| daybreak | ignition | 750 | 4 × 1553 (15 hits x50 stacks every 588 ms, cooldown 1300 ms -> 4 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-daybreak-ember-of-ashes) | „inflicting x50+0 Scorch“ |
+| daybreak | ignition | 750 | 5 × 1553 (15 hits x50 stacks every 588 ms, cooldown 950 ms -> 5 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-daybreak-ember-of-ashes) | „inflicting x50+0 Scorch“ |
 | song-of-flame | ignition | 60 | – | „inflicts x60+30 Scorch“ |
 | nova-warp | volatile | – | 7 × 216 (20 hits x1950 damage every 700 ms, cooldown 1000 ms -> 7 trigger(s) of 216 (miscellaneous-volatile) in Aegis row super-nova-warp) | „inflicting Volatile“ |
 | firebolt-grenade | ignition | 20 | 1 × 1592 (4 uses x30 stacks (with Ember of Ashes) -> 1 trigger(s) in Aegis row grenade-firebolt-average-ember-of-ashes-with-ignition) | „inflict x20+10 Scorch“ |

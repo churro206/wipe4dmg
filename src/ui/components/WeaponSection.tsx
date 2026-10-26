@@ -5,17 +5,21 @@ import { describeCatalyst } from "../describe";
 import { Icon } from "./Icon";
 import { WeaponPicker } from "./WeaponPicker";
 
-/** Weapon: the picker and the catalyst switch of the chosen weapon. */
+/** Weapon: the picker, the catalyst switch and, for a weapon with a setup, its pre-stacked switch. */
 export function WeaponSection({
   weapon,
   catalyst,
+  preBuilt,
   onSelectWeapon,
   onToggleCatalyst,
+  onTogglePreBuilt,
 }: {
   weapon: Weapon;
   catalyst: boolean;
+  preBuilt: boolean;
   onSelectWeapon: (id: string) => void;
   onToggleCatalyst: () => void;
+  onTogglePreBuilt: () => void;
 }) {
   return (
     <>
@@ -44,6 +48,25 @@ export function WeaponSection({
                 <span key={line}>{line}</span>
               ))}
             </span>
+          </span>
+        )}
+        {weapon.setup && (
+          <span className="tile-wrap">
+            <button
+              type="button"
+              className="tile"
+              aria-pressed={preBuilt}
+              title={`${weapon.setup.name} charges built before the Damage Phase: the first shot deploys it.`}
+              onClick={onTogglePreBuilt}
+            >
+              <span
+                className="icon ability-none"
+                style={{ width: 40, height: 40 }}
+              >
+                ↺
+              </span>
+              <span className="tile-label">Pre-stacked</span>
+            </button>
           </span>
         )}
       </div>

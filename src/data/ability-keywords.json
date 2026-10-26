@@ -60,9 +60,9 @@
       "note": "First quoted stacks per hit times 6 hits (super-timings.json)"
     },
     "bakedInPackage": {
-      "triggers": 1,
+      "triggers": 2,
       "tick": 1553,
-      "note": "6 hits x50 stacks every 400 ms, cooldown 1300 ms -> 1 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-deadshot-radiant-ember-of-ashes",
+      "note": "6 hits x50 stacks every 400 ms, cooldown 950 ms -> 2 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-deadshot-radiant-ember-of-ashes",
       "uses": 1,
       "fullModifiers": 2.3
     }
@@ -92,7 +92,7 @@
     "bakedInPackage": {
       "triggers": 1,
       "tick": 1553,
-      "note": "3 hits x40 stacks every 400 ms, cooldown 1300 ms -> 1 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-marksman-radiant",
+      "note": "3 hits x40 stacks every 400 ms, cooldown 950 ms -> 1 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-golden-gun-marksman-radiant",
       "uses": 1,
       "fullModifiers": 2.3
     }
@@ -143,9 +143,9 @@
       "note": "First quoted stacks per hit times 15 hits (super-timings.json)"
     },
     "bakedInPackage": {
-      "triggers": 4,
+      "triggers": 5,
       "tick": 1553,
-      "note": "15 hits x50 stacks every 588 ms, cooldown 1300 ms -> 4 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-daybreak-ember-of-ashes",
+      "note": "15 hits x50 stacks every 588 ms, cooldown 950 ms -> 5 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-daybreak-ember-of-ashes",
       "uses": 1,
       "fullModifiers": 2.3
     }
