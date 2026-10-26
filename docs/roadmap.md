@@ -54,10 +54,17 @@ Status: 2026-10-25
 - ✅ Layout like in game: weapon, class, subclass, abilities, aspects, fragments, armor, stats, artifact, Fireteam Support
 - ✅ Wiki: “How does the calculator work?”, coverage and roadmap
 
+## Done in 2026-10-26
+
+- ✅ Weapon reloads: both sources already reload with Rally Barricade, so Rally no longer counts twice
+- ✅ Ability energy: Solar grenade cooldowns, Warlocks regenerate grenades 10 % faster, chunk energy of Seismic Strike, Hammer Strike and Shield Bash
+- ✅ Facet of Courage: +50 % only on Light melees, instead of the +10 %
+- ✅ Super lengths measured (Flat Gain) for 22 Supers, e.g. Nova Warp 25 s, Daybreak 9.55 s
+- ✅ Coverage: fragments that can never hit a boss, energy exotics, Bequest as a legendary sword
+
 ## Next
 
-- Fixes from these sources: weapon reload times already contain Rally Barricade in one source, so Rally counted twice; a few ability energy values and the length of 11 Supers differ from measurements; Facet of Courage's melee bonus only on Light melee
-- Supers with measured lengths; Song of Flame, Silence and Squall, Glacial Quake, Bladefury and Hammer of Sol with Sol Invictus from measured hits
+- Song of Flame, Glacial Quake, Bladefury, Hammer of Sol with Sol Invictus and Stormdancer's Brace from measured hits
 - Ability energy with the measured stat curve instead of a straight line, energy exotics (e.g. Crown of Tempests, Contraverse Hold) and energy armor mods
 - Stasis and Strand on the boss: Freeze, Shatter, Threadlings, Unravel, Sever and Suspend with measured damage
 - More aspects (Tempest Strike, Consecration, Crackshot, Shieldburst), artifact perks (Flashover, Heavy Ordnance Regeneration, Hail The Storm, Solar Fulmination) and catalysts (Tessellation, Divinity, Quicksilver Storm)
