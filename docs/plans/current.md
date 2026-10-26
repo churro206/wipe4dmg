@@ -4,9 +4,9 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Aufräum-Block** (Sonnet; nach drei Funktions-Blöcken fällig, Reihenfolge Punkt 1).
+**Energie-Exotics** (Opus plant; Reihenfolge Punkt 1). Der Aufräum-Block ist erledigt; ein nächster wird nach drei weiteren Funktions-Blöcken fällig.
 
-Erledigt (2026-10-26, Details im Changelog): Q2 Supers; Q3a Stat-Kurven (RyTako); Q3b eingebaute Ladungen; Q3 Teil 4 Energie-Mods (7 Mods × 1–3 Kopien; Kickstarts, Fonts, Armor Charges weggelassen). Befunde:
+Erledigt (2026-10-26, Details im Changelog): Q2 Supers; Q3a Stat-Kurven (RyTako); Q3b eingebaute Ladungen; Q3 Teil 4 Energie-Mods (7 Mods × 1–3 Kopien; Kickstarts, Fonts, Armor Charges weggelassen); Aufräum-Block (`units.ts`, `strict`, Regel-Logik in `scripts/lib/`, `App.tsx` in Komponenten). Befunde:
 - Energie-Effects (`changesEnergy`) überspringt der Optimizer (ohne Rotation wirkungslos, sonst Speicherüberlauf). `tests/optimizer.test.ts` braucht schon vorher etwa 50 s.
 - Die Mods ändern den Total Damage in den Gate-Szenarien nicht (×1,000), weil die Melee nur früher kommt. Erst mit einem Optimizer für Rotationen (2.0) zählt das.
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
@@ -18,12 +18,11 @@ Erledigt (2026-10-26, Details im Changelog): Q2 Supers; Q3a Stat-Kurven (RyTako)
 
 Details und Fundstellen: `docs/plans/sources-2026-10.md`.
 
-1. Aufräum-Block (Sonnet): `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code, `App.tsx` in Panels. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
-2. Energie-Exotics (Crown of Tempests, Contraverse Hold u. a., `sources-2026-10.md` §2; Opus plant).
-3. Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (Sonnet).
-4. Hammer of Sol mit Sol Invictus (siehe oben).
-5. Q4 Stasis/Strand (echte Debuffs am Ziel, Bedingung von Facet of Courage), Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses (Umfang mit dem Inhaber klären).
-6. Für 2.0 (`docs/product.md`): Legendary Frames, Optimizer mit Abilities, Aspects und Fragments.
+1. Energie-Exotics (Crown of Tempests, Contraverse Hold u. a., `sources-2026-10.md` §2; Opus plant).
+2. Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (Sonnet).
+3. Hammer of Sol mit Sol Invictus (siehe oben).
+4. Q4 Stasis/Strand (echte Debuffs am Ziel, Bedingung von Facet of Courage), Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses (Umfang mit dem Inhaber klären).
+5. Für 2.0 (`docs/product.md`): Legendary Frames, Optimizer mit Abilities, Aspects und Fragments.
 
 ## Entscheidungen des Inhabers
 

@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Aufräum-Block (2026-10-26), Verhalten unverändert:** `src/engine/units.ts` mit `MS_PER_SECOND` ersetzt die neun lokalen Konstanten (sechs in der Engine, drei in `scripts/lib/`); `strict` steht jetzt in `tsconfig.app.json` und `tsconfig.node.json` (keine neuen Fehler). Die Regel-Logik `probeAuto`, `aegisCoverage` und `missingImpact` liegt in `scripts/lib/` statt `tests/lib/` (der Typ `Entry` wandert mit, `tests/lib/probe.ts` exportiert ihn weiter). Tote Exports entfernt: `signedInteger`, `VERDICTS`. `App.tsx` (1195 → 811 Zeilen) ist in `EncounterSection`, `WeaponSection`, `ArmorSection`, `OverviewTab`, `RotationTab`, `OptimizerTab` und `BreakdownPanel` geteilt. Vergleichsbasis: 1631 Tests grün, Gate und Probe unverändert; in `docs/aegis-coverage.md` und `docs/meta-probe-auto.md` änderten sich nur die Pfadangaben.
+
 - **Q3 Teil 4 Energie-Mods (2026-10-26):** Momentum Transfer, Impact Induction, Bolstering Detonation, Focusing Strike, Bomber, Outreach und Distribution als Mods mit 1, 2 oder 3 Kopien (Codes 98–118, `exclusiveGroup` je Mod, neues Feld `changesEnergy` für Effects ohne Parts). Werte 12/17/20 % (Distribution 4/6/7 %) aus dem Compendium-Reiter Armor Mods; die zweite Zeile (6/8,5/10 %) ist der Wert beim Chunk Scalar 0,5. Neu in der Engine:
   - `trigger.cooldownSeconds` (7 s nach Aktivierung).
   - `scaledByClassMod` mit dem Class Mod Scaler der Class Ability. RyTako: Chunk 1 → 0,4, 0,8 → 0,6, 0,5 → 1. Er steht in `energy-overrides.json` und wird beim Import als `classModScalar` an die Class Abilities geschrieben.
