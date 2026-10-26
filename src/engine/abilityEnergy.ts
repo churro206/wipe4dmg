@@ -12,10 +12,10 @@ import type {
   EnergyModifier,
   StatCurve,
 } from "../data/schema";
+import { MS_PER_SECOND } from "./units";
 
 // Resolution of the energy timeline; a technical step, not a game value.
 const STEP_MS = 10;
-const MS_PER_SECOND = 1000;
 const EPSILON = 1e-9;
 
 export type EnergyContext = {

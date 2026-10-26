@@ -25,10 +25,10 @@ import {
   type ProviderKind,
   type Subclass,
 } from "../data/schema";
+import { MS_PER_SECOND } from "./units";
 
 const FORMAT_VERSION = 7;
 const READABLE_VERSIONS = [2, 3, 4, 5, 6, 7];
-const MS_PER_SECOND = 1000;
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
 const SUBCLASSES: Subclass[] = [
   "arc",

@@ -40,6 +40,7 @@ import { courtVerdict, STATUS_NAMES, type Verdict } from "./exoticEffects.ts";
 import type { KeywordSource } from "./keywordSources.ts";
 import { subclassItemNamed } from "./manifestAbilities.ts";
 import { nameKey, variantRows } from "../../src/engine/abilityVariants.ts";
+import { MS_PER_SECOND } from "../../src/engine/units.ts";
 
 // Stands for an exotic armor in a row of rule G; it is not an item with an effect.
 const EXOTIC = "(exotic armor)";
@@ -109,7 +110,6 @@ const NOT_ON_BOSS =
   /towards it|against Stasis Crystals|Frozen Enemies|from Guardians|towards Assault/i;
 export const DAMAGE_WORD =
   /damage|weaken|radiant|surge|amplif|empower|volatile|jolt|scorch|ignit|unravel|bolt charge/i;
-const MS_PER_SECOND = 1000;
 const PERCENT = 100;
 const factorOf = (percent: number) => (PERCENT + percent) / PERCENT;
 const flat = (text: string) => text.replace(/\s+/g, " ").trim();

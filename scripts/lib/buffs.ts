@@ -14,8 +14,7 @@ import type {
   Source,
   WeaponType,
 } from "../../src/data/schema.ts";
-
-const MS_PER_SECOND = 1000;
+import { MS_PER_SECOND } from "../../src/engine/units.ts";
 const ALL_SOURCES: DamageSource[] = [
   "weapon",
   "grenade",

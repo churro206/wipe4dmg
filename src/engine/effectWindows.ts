@@ -3,8 +3,7 @@
 
 import type { Ability, Effect, Element } from "../data/schema";
 import { requireValue } from "./requireValue";
-
-const MS_PER_SECOND = 1000;
+import { MS_PER_SECOND } from "./units";
 
 /** Start and duration of an effect in the rotation. Without a duration it lasts until the end. */
 export type EffectWindowInput = {

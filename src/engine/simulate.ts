@@ -62,8 +62,7 @@ import { runEvents, type RunEvent } from "./eventRun";
 import { keywordOnHit } from "./keywordRun";
 import { superWindowMs } from "./superWindow";
 import { requireValue } from "./requireValue";
-
-const MS_PER_SECOND = 1000;
+import { MS_PER_SECOND } from "./units";
 const MS_PER_MINUTE = 60_000;
 // Guards rounding up against floating point noise, e.g. 10 x 1.5 = 15.000000000000002.
 const ROUNDING_TOLERANCE = 1e-9;

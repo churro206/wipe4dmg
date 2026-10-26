@@ -30,6 +30,7 @@ import {
   type WeaponType,
   type Source,
 } from "../../src/data/schema.ts";
+import { MS_PER_SECOND } from "../../src/engine/units.ts";
 import { NOT_AGAINST_BOSS, sameName } from "./exoticArmor.ts";
 
 export type ExoticEffectInputs = {
@@ -138,7 +139,6 @@ const ABILITY_SOURCES: [RegExp, DamageSource][] = [
   [/\bclass\b/i, "classAbility"],
 ];
 
-const MS_PER_SECOND = 1000;
 const PERCENT = 100;
 // in this order, so 14 % gives exactly 1.14
 const factorOf = (percent: number) => (PERCENT + percent) / PERCENT;

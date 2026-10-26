@@ -6,8 +6,7 @@ import {
   type SimulationOptions,
   type SimulationResult,
 } from "./simulate";
-
-const MS_PER_SECOND = 1000;
+import { MS_PER_SECOND } from "./units";
 
 export type DamageShare = {
   id: string; // damage instance id of the weapon (e.g. "shot", "ignition") or the ability id
