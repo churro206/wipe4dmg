@@ -461,6 +461,51 @@
     }
   },
   {
+    "abilityId": "glacial-quake",
+    "firstHitMs": {
+      "value": 1655,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Glacial Quake)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "unverified",
+        "quote": "Stasis\tTitan\t\tGlacial Quake\tMix\t\t36,621\t15.72s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:41, \"Cast Time / Lock\" at Super 200. Derived (Q2, rule of K2): Gemini's first hit 1000 ms × 1.655 (Flat Gain lock 15720 ms ÷ Gemini window 9500 ms), so the hits keep their shape inside the measured window."
+      }
+    },
+    "hitIntervalMs": {
+      "value": 993,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Glacial Quake)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "unverified",
+        "quote": "Stasis\tTitan\t\tGlacial Quake\tMix\t\t36,621\t15.72s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:41, \"Cast Time / Lock\" at Super 200. Derived (Q2, rule of K2): Gemini's hit interval 600 ms × 1.655 (Flat Gain lock 15720 ms ÷ Gemini window 9500 ms)."
+      }
+    },
+    "hits": {
+      "value": 15,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Glacial Quake\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 15720,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Glacial Quake)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Stasis\tTitan\t\tGlacial Quake\tMix\t\t36,621\t15.72s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:41, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
+      }
+    }
+  },
+  {
     "abilityId": "arc-staff",
     "firstHitMs": {
       "value": 700,

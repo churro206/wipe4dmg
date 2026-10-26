@@ -25,14 +25,6 @@
   },
   {
     "compendium": {
-      "tab": "Stasis",
-      "entry": "Glacial Quake"
-    },
-    "reason": "aegisNotNormalised",
-    "note": "Heavy attack rows have Full Modifiers 1.00; light attack rows measure a single attack, not the super."
-  },
-  {
-    "compendium": {
       "tab": "Strand",
       "entry": "Bladefury"
     },

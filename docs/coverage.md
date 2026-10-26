@@ -10,7 +10,7 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 
 | Kind | ✅ Parts | 🟡 Package | 🔵 Buff only | ❌ missing | Total |
 | --- | --- | --- | --- | --- | --- |
-| Supers | 2 | 23 | 1 | 5 | 31 |
+| Supers | 2 | 24 | 1 | 4 | 31 |
 | Grenades | 7 | 19 | 0 | 4 | 30 |
 | Melees | 12 | 12 | 0 | 2 | 26 |
 | Effects | 103 modelled | | | | |
@@ -55,7 +55,7 @@ Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the m
 | Void | Nova Bomb: Vortex | 🟡 Package | exact | `super-nova-bomb-vortex` |
 | Void | Nova Warp | 🟡 Package | exact | `super-nova-warp` |
 | Stasis | Silence & Squall | 🟡 Package | exact | `super-silence-and-squall-whisper-of-fissures-whisper-of-durance` |
-| Stasis | Glacial Quake | ❌ missing | – | Aegis values not normalised (buffs in the value) |
+| Stasis | Glacial Quake | 🟡 Package | exact | `super-glacial-quake-heavy-attacks` |
 | Stasis | Winter's Wrath | 🟡 Package | exact | `super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures` |
 | Strand | Silkstrike | 🟡 Package | exact | `super-silkstrike-light-attacks` |
 | Strand | Bladefury | ❌ missing | – | Aegis only measures with buffs that are not an effect yet |

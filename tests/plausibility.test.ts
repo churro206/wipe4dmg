@@ -1209,6 +1209,21 @@ describe("supers take time like in the game", () => {
     expect(total / 10136).toBeGreaterThan(0.85);
   });
 
+  it("Glacial Quake: heavy slams over the Flat Gain window, Aegis' value without buffs (Q2)", () => {
+    const r = superRun("titan", "stasis", "glacial-quake");
+    const total = damageOf(r, "super");
+    note(
+      "Glacial Quake: Treffer, Fenster, Summe",
+      `${new Set(hits(r)).size} Treffer, Fenster ${r.superWindows[0].endMs} ms, ${Math.round(total)}`,
+      "15 Treffer, 15,72 s (Flat Gain), Aegis „heavy attacks“ 44 790; Testing: Punch 681 + 9 Kristalle × 646 = 6495 je Slam, 5 bis 7 Slams",
+    );
+    expect(new Set(hits(r)).size).toBe(15);
+    expect(r.superWindows[0].endMs).toBe(15720);
+    expect(total / 44790).toBeCloseTo(1, 2);
+    expect(total).toBeGreaterThan(5 * 6495);
+    expect(total).toBeLessThan(7 * 6495);
+  });
+
   it("Nova Bomb: the bomb needs its cast before it hits", () => {
     const r = superRun("warlock", "void", "nova-bomb-cataclysm");
     note(

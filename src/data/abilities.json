@@ -898,6 +898,19 @@
     "package": true
   },
   {
+    "id": "glacial-quake",
+    "code": 89,
+    "name": "Glacial Quake",
+    "kind": "super",
+    "element": "stasis",
+    "compendium": {
+      "tab": "Stasis",
+      "entry": "Glacial Quake"
+    },
+    "aegisRowId": "super-glacial-quake-heavy-attacks",
+    "package": true
+  },
+  {
     "id": "silkstrike",
     "code": 25,
     "name": "Silkstrike",

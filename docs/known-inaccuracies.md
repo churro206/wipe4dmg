@@ -39,7 +39,8 @@ Geordnet nach dem Block, der sie schließen soll (`docs/plans/current.md`, Reihe
 
 ### Q2 Supers
 
-- Song of Flame (8; Aegis-Zeilen alle mit Full Modifiers 1,00), Silence and Squall (4), Bladefury (3), Glacial Quake (2): Treffer aus Aegis Testing, Länge und Gesamtschaden aus Flat Gain. Sol Invictus bei Hammer of Sol und Burning Maul: Zeilen nennen auch Roaring Flames x3 (7; Hammer of Sol 0,29, Burning Maul 0,44–0,77); der Effect `roaring-flames-3` ist da, die Super-Zeilen ordnen ihn noch nicht zu („no switch for: Roaring Flames x3“ in `docs/aegis-coverage.md`).
+- Glacial Quake (Q2b): Paket aus Aegis „heavy attacks“ (Full Modifiers 1,00; Aegis Swap nimmt diese Zeilen selbst als Basis). Flat Gain misst nur ×0,62 davon (36 621 gegen 58 857 bei Super 200; bei den übrigen Supers liegt Flat Gain meist ×1,1–2,5 über Aegis); Light-Attack-Spielweise und Varianten mit Feast of Light, Biotic Enhancements oder Howl fehlen.
+- Song of Flame (8; Aegis-Zeilen alle mit Full Modifiers 1,00), Silence and Squall (4), Bladefury (3): Treffer aus Aegis Testing, Länge und Gesamtschaden aus Flat Gain. Sol Invictus bei Hammer of Sol und Burning Maul: Zeilen nennen auch Roaring Flames x3 (7; Hammer of Sol 0,29, Burning Maul 0,44–0,77); der Effect `roaring-flames-3` ist da, die Super-Zeilen ordnen ihn noch nicht zu („no switch for: Roaring Flames x3“ in `docs/aegis-coverage.md`).
 - Abilities aus Teilen (Baustellen in `docs/ability-import.md`): Werte „Hit“ ohne Wort davor; mehrere Werte im Text sind oft Alternativen statt Summanden (Flux, Incendiary, Skip, Magnetic, Scatter, Ballistic Slam); Anzahlen aus Wörtern („Creates 5 Stasis Crystals“) fehlen, Glacier entspricht eher 7 Kristallen; Nova Bomb Vortex 76,9 Ticks (Intervall falsch gelesen); Supers mit mehreren Treffern (`atHits`); Fragments als Teile (`requiresEffectIds`, Whisper of Fissures 25 pro Shatter, Touch of Thunder).
 
 ### Q3 Energie

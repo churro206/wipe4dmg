@@ -391,6 +391,19 @@
       }
     },
     {
+      "abilityId": "glacial-quake",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Glacial Quake)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
       "abilityId": "silkstrike",
       "cooldownSeconds": {
         "value": 556,

@@ -2,7 +2,7 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `tests/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 98, davon innerhalb der Grenze 41. Nicht vergleichbar (übersprungen): 44.
+Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 100, davon innerhalb der Grenze 41. Nicht vergleichbar (übersprungen): 44.
 
 ## Vollständig abgebildet
 
@@ -73,6 +73,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Fists of Havoc | 54,355 | 36,248 | 0.667 | heavy attacks |
 | Silkstrike | 59,072 | 39,394 | 0.667 | light attack spam |
 | Spectral Blades | 57,656 | 38,465 | 0.667 | light attack spam |
+| Glacial Quake | 113,223 | 76,514 | 0.676 | heavy attacks |
 | Edge of Concurrence | 50,199 | 34,161 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
 | Bastion | 119,327 | 82,294 | 0.690 | Saint's Fury; includes melee time |
 | Truth | 119,636 | 82,636 | 0.691 | Prototype Truthseeker |
@@ -86,6 +87,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Burning Maul | 30,129 | 23,161 | 0.769 | Roaring Flames x3 |
 | Dead Messenger | 88,586 | 68,143 | 0.769 | The Fundamentals |
 | Finality's Auger | 82,158 | 63,199 | 0.769 | Linear Fusion Mode |
+| Glacial Quake | 158,575 | 122,933 | 0.775 | heavy attacks; Hail the Storm |
 | Merciless | 70,355 | 54,549 | 0.775 | Impetus; two kills |
 | Shadowshot: Moebius Quiver | 19,565 | 15,393 | 0.787 | full bow charge; all 3 volleys; assumes no other debuff |
 | Shadowshot: Moebius Quiver | 11,791 | 9,301 | 0.789 | full bow charge; both volleys; assumes no other debuff |
@@ -147,13 +149,13 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 
 - Roaring Flames x3: 7
 - assumes no other debuff: 6
+- heavy attacks: 6
 - Solar Fulmination: 6
 - excludes Transcendence 5% bonus: 5
 - Transcendent: 5
 - body: 4
 - both volleys: 4
 - Harsh Refraction: 4
-- heavy attacks: 4
 - Jagged Edge: 4
 - pre-popped into 6 shot cycle: 4
 - 1H2L combo: 3
@@ -171,6 +173,7 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - Composite Propellant x5: 2
 - Conductive Cosmic Needle x3: 2
 - excludes Bolt Charge: 2
+- Hail the Storm: 2
 - heavy spam: 2
 - Incendiary Rifle Rounds: 2
 - includes jolt: 2
@@ -205,7 +208,6 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - fully charged: 1
 - grounded: 1
 - grounded spam: 1
-- Hail the Storm: 1
 - held down: 1
 - hip-fire: 1
 - hitscan mode: 1

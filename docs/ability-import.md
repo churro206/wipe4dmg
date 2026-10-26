@@ -4,7 +4,7 @@ Generiert von `npm run build:abilities` (ADR 0009, U9). Nicht von Hand ändern.
 
 Teile pro Treffer aus dem Compendium-Text, mal Treffer aus `super-timings.json`, plus Keyword-Schaden wie von Aegis gemessen. Gate ±15 % gegen die Aegis-Zeile bei Stat 100 und 200. „Paket“: Ability nutzt weiter das Aegis-Paket.
 
-Teile: 21 von 75.
+Teile: 21 von 76.
 
 | Ability | Teile (Wert × Ticks) | Treffer | Pro Einsatz 100 | Aegis 100 | Abw. 100 | Abw. 200 | Nutzt |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -31,6 +31,7 @@ Teile: 21 von 75.
 | Nova Warp | Hit 964×1, Hit 193×1 | 20 | 23797 | 16960 | +40 % | +41 % | Paket |
 | Silence & Squall | Impact 338×1, Impact 338×1, Hit 28×60 | 2 | 4712 | 11490 | -59 % | -53 % | Paket |
 | Winter's Wrath | Impact 11×1, Splash 50×1, Hit 45×1, Stasis 3453×1, Hit 361×1, Hit 3814×1 | 12 | 92808 | 19502 | +376 % | +478 % | Paket |
+| Glacial Quake | Stasis Super 300×1, Impact 1838×1, Explosive 897×1, Hit 73×1, Hit 579×1, Stasis Super 158×1 | 15 | 57675 | 44790 | +29 % | +42 % | Paket |
 | Silkstrike | Hit 1638×1, Hit 1293×1 | 25 | 73275 | 12293 | +496 % | +496 % | Paket |
 | Needlestorm | Hit 783×1, Hit 368×1 | 1 | 1151 | 9920 | -88 % | -88 % | Paket |
 | Arcbolt Grenade | Hit 521×1 | 1 | 521 | 624 | -17 % | -17 % | Paket |

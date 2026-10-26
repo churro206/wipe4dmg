@@ -30,7 +30,6 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | super: Bladefury | 3 | Item fehlt |  |  |
 | own damage: Unravel | 2 | Item fehlt |  |  |
 | own damage: Witherhoard | 2 | Item fehlt |  |  |
-| super: Glacial Quake | 2 | Item fehlt |  |  |
 | Barrow-Dyad (no package) | 1 | Item fehlt |  |  |
 | melee: Adaptive glaive | 1 | Item fehlt |  |  |
 | melee: Cull's Shadow | 1 | Item fehlt |  |  |
@@ -59,6 +58,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Cabal | 2 | kein Paar, Wert aus Text |  |  |
 | Composite Propellant x5 | 2 | kein Paar, Wert aus Text |  |  |
 | Conductive Cosmic Needle x3 | 2 | kein Paar, Wert aus Text |  |  |
+| Hail the Storm | 2 | kein Paar, Wert aus Text |  |  |
 | Incendiary Rifle Rounds | 2 | kein Paar, Wert aus Text |  |  |
 | Pack Tactics (simplified underestimate of 3 stack start) | 2 | kein Paar, Wert aus Text |  |  |
 | Pack Tactics x2 | 2 | kein Paar, Wert aus Text |  |  |
@@ -67,7 +67,6 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Facet of Command | 1 | kein Paar, Wert aus Text |  |  |
 | Facet of Ruin | 1 | kein Paar, Wert aus Text |  |  |
 | Grenades Prepped | 1 | kein Paar, Wert aus Text |  |  |
-| Hail the Storm | 1 | kein Paar, Wert aus Text |  |  |
 | Impetus | 1 | kein Paar, Wert aus Text |  |  |
 | Kinetic Impacts | 1 | kein Paar, Wert aus Text |  |  |
 | Lightning Seeker into six shot cycle | 1 | kein Paar, Wert aus Text |  |  |
@@ -93,10 +92,10 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Trench Barrel | 1 | kein Paar, Wert aus Text |  |  |
 | Whisper of Fissures | 1 | kein Paar, Wert aus Text |  |  |
 | assumes no other debuff | 6 | Spielweise oder Notiz |  |  |
+| heavy attacks | 6 | Spielweise oder Notiz |  |  |
 | excludes Transcendence 5% bonus | 5 | Spielweise oder Notiz |  |  |
 | body | 4 | Spielweise oder Notiz |  |  |
 | both volleys | 4 | Spielweise oder Notiz |  |  |
-| heavy attacks | 4 | Spielweise oder Notiz |  |  |
 | pre-popped into 6 shot cycle | 4 | Spielweise oder Notiz |  |  |
 | 1H2L combo | 3 | Spielweise oder Notiz |  |  |
 | light attacks | 3 | Spielweise oder Notiz |  |  |
@@ -900,7 +899,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Grand Overture, Missiles Loaded x20 | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Nova Bomb - Cataclysm, Facet of Courage, Limit Break | im Modell | gate: probe entry by rule |
 | Legend of Acrius, body, Arc Compounding | übersprungen | burst before the swap; the simulation fires the whole phase |
-| Glacial Quake, heavy attacks, Feast of Light x6, Hail the Storm | fehlt | super not in the model |
+| Glacial Quake, heavy attacks, Feast of Light x6, Hail the Storm | fehlt | no switch for: heavy attacks; Hail the Storm |
 | Song of Flame, Warlord's Fury, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | super not in the model |
 | Izanagi's Burden, includes re-hone time, Kinetic Rupture, Sniper's Meditation x5 | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Nova Bomb - Cataclysm, Skull of Dire Ahamkara, Facet of Courage, Limit Break | fehlt | no switch for: Skull of Dire Ahamkara (ownDamage) |
@@ -914,7 +913,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Aggressive rocket launcher, Elemental Honing x5 + Timelost Magazine (Hezen Vengeance), Pack Hunter, 2 shots, Argent Ordnance | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Pinpoint slug shotgun, Redirection + Aggregate Charge x3 (Heritage), 1 shot | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Still Hunt, Cayde's Retribution, Celestial Nighthawk, Sniper's Meditation x5 | übersprungen | burst before the swap; the simulation fires the whole phase |
-| Glacial Quake, heavy attacks, Biotic Enhancements, Limit Break | fehlt | super not in the model |
+| Glacial Quake, heavy attacks, Biotic Enhancements, Limit Break | fehlt | no switch for: heavy attacks |
 | Silence and Squall, Whisper of Fissures, Whisper of Durance, Limit Break | fehlt | super not in the model |
 | Gjallarhorn, 1 shot, Argent Ordnance | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Aggressive shotgun, body, Aggregate Charge x3 + Elemental Honing x5 (Found Verdict), 1 shot | übersprungen | burst before the swap; the simulation fires the whole phase |
