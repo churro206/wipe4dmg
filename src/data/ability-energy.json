@@ -1974,6 +1974,17 @@
           "status": "verified",
           "quote": "Chunk Scalar: 1x"
         }
+      },
+      "classModScalar": {
+        "value": 0.4,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101. Applies to Bomber, Outreach and Distribution, on top of the chunk scalar of the ability that gets the energy. Icefall Mantle and Arbor Warden exceptions not modelled.",
+          "quote": "Class abilites with 1x scalers themselves have a 0.4x scaler to the energy granted (Except for Icefall Mantle, which have a 1x scaler)"
+        }
       }
     },
     {
@@ -1996,6 +2007,17 @@
           "retrieved": "2026-10-24",
           "status": "verified",
           "quote": "Chunk Scalar: 0.8x"
+        }
+      },
+      "classModScalar": {
+        "value": 0.6,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101.",
+          "quote": "Class abilites with 0.8x scalers themselves have a 0.6x scaler to the energy granted"
         }
       }
     },
@@ -2020,6 +2042,17 @@
           "status": "verified",
           "quote": "Chunk Scalar: 1x"
         }
+      },
+      "classModScalar": {
+        "value": 0.4,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101. Applies to Bomber, Outreach and Distribution, on top of the chunk scalar of the ability that gets the energy. Icefall Mantle and Arbor Warden exceptions not modelled.",
+          "quote": "Class abilites with 1x scalers themselves have a 0.4x scaler to the energy granted (Except for Icefall Mantle, which have a 1x scaler)"
+        }
       }
     },
     {
@@ -2042,6 +2075,17 @@
           "retrieved": "2026-10-24",
           "status": "verified",
           "quote": "Chunk Scalar: 0.5x"
+        }
+      },
+      "classModScalar": {
+        "value": 1,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101.",
+          "quote": "Class abilites with 0.5x scalers themselves have a 1x scaler to the energy granted (Except for Arbor Warden, which always stays at 0.4x)"
         }
       }
     },
@@ -2066,6 +2110,17 @@
           "status": "verified",
           "quote": "Chunk Scalar: 1x"
         }
+      },
+      "classModScalar": {
+        "value": 0.4,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101. Applies to Bomber, Outreach and Distribution, on top of the chunk scalar of the ability that gets the energy. Icefall Mantle and Arbor Warden exceptions not modelled.",
+          "quote": "Class abilites with 1x scalers themselves have a 0.4x scaler to the energy granted (Except for Icefall Mantle, which have a 1x scaler)"
+        }
       }
     },
     {
@@ -2088,6 +2143,17 @@
           "retrieved": "2026-10-24",
           "status": "verified",
           "quote": "Chunk Scalar: 0.5x"
+        }
+      },
+      "classModScalar": {
+        "value": 1,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101.",
+          "quote": "Class abilites with 0.5x scalers themselves have a 1x scaler to the energy granted (Except for Arbor Warden, which always stays at 0.4x)"
         }
       }
     },
@@ -2112,6 +2178,17 @@
           "status": "verified",
           "quote": "Chunk Scalar: 0.5x"
         }
+      },
+      "classModScalar": {
+        "value": 1,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101.",
+          "quote": "Class abilites with 0.5x scalers themselves have a 1x scaler to the energy granted (Except for Arbor Warden, which always stays at 0.4x)"
+        }
       }
     },
     {
@@ -2135,6 +2212,17 @@
           "status": "verified",
           "quote": "Chunk Scalar: 0.5x"
         }
+      },
+      "classModScalar": {
+        "value": 1,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101.",
+          "quote": "Class abilites with 0.5x scalers themselves have a 1x scaler to the energy granted (Except for Arbor Warden, which always stays at 0.4x)"
+        }
       }
     },
     {
@@ -2157,6 +2245,17 @@
           "retrieved": "2026-10-24",
           "status": "verified",
           "quote": "Chunk Scalar: 0.8x"
+        }
+      },
+      "classModScalar": {
+        "value": 0.6,
+        "source": {
+          "name": "RyTako ability energy sheet (Class Mod Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv:101.",
+          "quote": "Class abilites with 0.8x scalers themselves have a 0.6x scaler to the energy granted"
         }
       }
     }
@@ -2584,6 +2683,483 @@
           "quote": "Performs a deft tumble that grants 1% [0.35%] Melee Ability Energy per Melee Stat, up to 100% [35%] Melee Ability Energy at 100 Melee Stat.",
           "note": "Value at 100 Melee Stat (the default); near the boss it doubles, capped at a full bar."
         }
+      }
+    },
+    {
+      "id": "bomber-1x",
+      "name": "Bomber",
+      "from": { "effectId": "bomber-1x" },
+      "target": { "kinds": ["grenade"] },
+      "change": "energy",
+      "value": {
+        "value": 0.12,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Bomber)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:3. One mod. The second row is the gain at the lowest chunk scalar (0.5x, Clarity: \"12% [6%]\"); the engine applies chunk scalar, stat and class mod scaler.",
+          "quote": "On Class Ability Usage: / Grants Grenade Ability Energy. / / Grenade Energy Gains: / 12% | 17% | 20% / 6% | 8.5% | 10%"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "bomber-2x",
+      "name": "Bomber",
+      "from": { "effectId": "bomber-2x" },
+      "target": { "kinds": ["grenade"] },
+      "change": "energy",
+      "value": {
+        "value": 0.17,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Bomber)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:3. Two mods.",
+          "quote": "Grenade Energy Gains: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "bomber-3x",
+      "name": "Bomber",
+      "from": { "effectId": "bomber-3x" },
+      "target": { "kinds": ["grenade"] },
+      "change": "energy",
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Bomber)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:3. Three mods.",
+          "quote": "Grenade Energy Gains: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "outreach-1x",
+      "name": "Outreach",
+      "from": { "effectId": "outreach-1x" },
+      "target": { "kinds": ["melee"] },
+      "change": "energy",
+      "value": {
+        "value": 0.12,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Outreach)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:11. One mod; see bomber-1x for the second row.",
+          "quote": "On Class Ability Usage: / Grants Melee Ability Energy. / / Melee Energy Gains: / 12% | 17% | 20% / 6% | 8.5% | 10%"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "outreach-2x",
+      "name": "Outreach",
+      "from": { "effectId": "outreach-2x" },
+      "target": { "kinds": ["melee"] },
+      "change": "energy",
+      "value": {
+        "value": 0.17,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Outreach)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:11. Two mods.",
+          "quote": "Melee Energy Gains: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "outreach-3x",
+      "name": "Outreach",
+      "from": { "effectId": "outreach-3x" },
+      "target": { "kinds": ["melee"] },
+      "change": "energy",
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Outreach)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:11. Three mods.",
+          "quote": "Melee Energy Gains: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "distribution-1x",
+      "name": "Distribution",
+      "from": { "effectId": "distribution-1x" },
+      "target": { "kinds": ["grenade", "melee", "classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.04,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Distribution)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:6. One mod; the boss is within 15 m. Super energy not modelled (one super per phase).",
+          "quote": "On Class Ability Usage while within 15 metres of an enemy: / Grants Grenade, Melee, Class, and Super Energy. / / 4% | 6% | 7% Grenade, Melee and Class Energy / 2% | 3% | 4% Super Energy"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "distribution-2x",
+      "name": "Distribution",
+      "from": { "effectId": "distribution-2x" },
+      "target": { "kinds": ["grenade", "melee", "classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.06,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Distribution)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:6. Two mods.",
+          "quote": "4% | 6% | 7% Grenade, Melee and Class Energy"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "distribution-3x",
+      "name": "Distribution",
+      "from": { "effectId": "distribution-3x" },
+      "target": { "kinds": ["grenade", "melee", "classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.07,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Distribution)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:6. Three mods.",
+          "quote": "4% | 6% | 7% Grenade, Melee and Class Energy"
+        }
+      },
+      "fixed": false,
+      "scaledByClassMod": true,
+      "trigger": { "on": "cast", "abilities": { "kinds": ["classAbility"] } }
+    },
+    {
+      "id": "momentum-transfer-1x",
+      "name": "Momentum Transfer",
+      "from": { "effectId": "momentum-transfer-1x" },
+      "target": { "kinds": ["melee"] },
+      "change": "energy",
+      "value": {
+        "value": 0.12,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Momentum Transfer)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:14. One mod; grenade damage counts as one hit per cast (one boss).",
+          "quote": "Upon dealing Grenade Damage: / Grants Melee Ability Energy. / / Ability Energy Gain: / 12% | 17% | 20% / 6% | 8.5% | 10% / / Incurs a 7 second cooldown after activation. / Does not work with Grapple."
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "momentum-transfer-2x",
+      "name": "Momentum Transfer",
+      "from": { "effectId": "momentum-transfer-2x" },
+      "target": { "kinds": ["melee"] },
+      "change": "energy",
+      "value": {
+        "value": 0.17,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Momentum Transfer)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:14. Two mods.",
+          "quote": "Ability Energy Gain: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "momentum-transfer-3x",
+      "name": "Momentum Transfer",
+      "from": { "effectId": "momentum-transfer-3x" },
+      "target": { "kinds": ["melee"] },
+      "change": "energy",
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Momentum Transfer)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:14. Three mods.",
+          "quote": "Ability Energy Gain: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "impact-induction-1x",
+      "name": "Impact Induction",
+      "from": { "effectId": "impact-induction-1x" },
+      "target": { "kinds": ["grenade"] },
+      "change": "energy",
+      "value": {
+        "value": 0.12,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Impact Induction)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:10. One mod; melee damage counts as one hit per cast (one boss).",
+          "quote": "Upon dealing Powered Melee Damage: / Grants Grenade Ability Energy. / / Ability Energy Gain: / 12% | 17% | 20% / 6% | 8.5% | 10% / / Incurs a 7 second cooldown after activation."
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "impact-induction-2x",
+      "name": "Impact Induction",
+      "from": { "effectId": "impact-induction-2x" },
+      "target": { "kinds": ["grenade"] },
+      "change": "energy",
+      "value": {
+        "value": 0.17,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Impact Induction)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:10. Two mods.",
+          "quote": "Ability Energy Gain: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "impact-induction-3x",
+      "name": "Impact Induction",
+      "from": { "effectId": "impact-induction-3x" },
+      "target": { "kinds": ["grenade"] },
+      "change": "energy",
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Impact Induction)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:10. Three mods.",
+          "quote": "Ability Energy Gain: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "bolstering-detonation-1x",
+      "name": "Bolstering Detonation",
+      "from": { "effectId": "bolstering-detonation-1x" },
+      "target": { "kinds": ["classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.12,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Bolstering Detonation)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:2. One mod; grenade damage counts as one hit per cast (one boss).",
+          "quote": "Upon dealing Grenade Damage: / Grants Class Ability Energy. / / Ability Energy Gain: / 12% | 17% | 20% / 6% | 8.5% | 10% / / Incurs a 7 second cooldown after activation."
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "bolstering-detonation-2x",
+      "name": "Bolstering Detonation",
+      "from": { "effectId": "bolstering-detonation-2x" },
+      "target": { "kinds": ["classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.17,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Bolstering Detonation)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:2. Two mods.",
+          "quote": "Ability Energy Gain: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "bolstering-detonation-3x",
+      "name": "Bolstering Detonation",
+      "from": { "effectId": "bolstering-detonation-3x" },
+      "target": { "kinds": ["classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Bolstering Detonation)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:2. Three mods.",
+          "quote": "Ability Energy Gain: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "focusing-strike-1x",
+      "name": "Focusing Strike",
+      "from": { "effectId": "focusing-strike-1x" },
+      "target": { "kinds": ["classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.12,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Focusing Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:6. One mod; melee damage counts as one hit per cast (one boss).",
+          "quote": "Upon dealing Powered Melee Damage: / Grants Class Ability Energy. / / Ability Energy Gain: / 12% | 17% | 20% / 6% | 8.5% | 10% / / Incurs a 7 second cooldown after activation."
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "focusing-strike-2x",
+      "name": "Focusing Strike",
+      "from": { "effectId": "focusing-strike-2x" },
+      "target": { "kinds": ["classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.17,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Focusing Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:6. Two mods.",
+          "quote": "Ability Energy Gain: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"] },
+        "cooldownSeconds": 7
+      }
+    },
+    {
+      "id": "focusing-strike-3x",
+      "name": "Focusing Strike",
+      "from": { "effectId": "focusing-strike-3x" },
+      "target": { "kinds": ["classAbility"] },
+      "change": "energy",
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Destiny Data Compendium, Armor Mods (Focusing Strike)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "note": "docs/sources/sheets/compendium/1934379638-armor-mods.tsv:6. Three mods.",
+          "quote": "Ability Energy Gain: / 12% | 17% | 20%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"] },
+        "cooldownSeconds": 7
       }
     },
     {

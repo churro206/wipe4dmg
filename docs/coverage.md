@@ -13,7 +13,7 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 | Supers | 2 | 26 | 1 | 2 | 31 |
 | Grenades | 7 | 19 | 0 | 4 | 30 |
 | Melees | 12 | 12 | 0 | 2 | 26 |
-| Effects | 103 modelled | | | | |
+| Effects | 124 modelled | | | | |
 
 ## Aegis measurements
 
@@ -144,6 +144,27 @@ Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the m
 | Surge 1x | surge | surge +10% | weapon | whole phase or Rotation |
 | Surge 2x | surge | surge +17% | weapon | whole phase or Rotation |
 | Surge 3x | surge | surge +22% | weapon | whole phase or Rotation |
+| Momentum Transfer 1x |  |  |  | whole phase or Rotation |
+| Momentum Transfer 2x |  |  |  | whole phase or Rotation |
+| Momentum Transfer 3x |  |  |  | whole phase or Rotation |
+| Impact Induction 1x |  |  |  | whole phase or Rotation |
+| Impact Induction 2x |  |  |  | whole phase or Rotation |
+| Impact Induction 3x |  |  |  | whole phase or Rotation |
+| Bolstering Detonation 1x |  |  |  | whole phase or Rotation |
+| Bolstering Detonation 2x |  |  |  | whole phase or Rotation |
+| Bolstering Detonation 3x |  |  |  | whole phase or Rotation |
+| Focusing Strike 1x |  |  |  | whole phase or Rotation |
+| Focusing Strike 2x |  |  |  | whole phase or Rotation |
+| Focusing Strike 3x |  |  |  | whole phase or Rotation |
+| Bomber 1x |  |  |  | whole phase or Rotation |
+| Bomber 2x |  |  |  | whole phase or Rotation |
+| Bomber 3x |  |  |  | whole phase or Rotation |
+| Outreach 1x |  |  |  | whole phase or Rotation |
+| Outreach 2x |  |  |  | whole phase or Rotation |
+| Outreach 3x |  |  |  | whole phase or Rotation |
+| Distribution 1x |  |  |  | whole phase or Rotation |
+| Distribution 2x |  |  |  | whole phase or Rotation |
+| Distribution 3x |  |  |  | whole phase or Rotation |
 | Elemental Overdrive (solar pickup) | amplification | amplification +22% | weapon | 7 s |
 | Particle Reconstruction | –, debuff | Timing: noReload; debuff +27.6% | weapon | whole phase or Rotation |
 | Ember of Ashes | – | scorch ×1.5 | weapon | whole phase or Rotation |

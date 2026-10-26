@@ -2,7 +2,7 @@
 
 Generiert mit `npm run build:uptime` (Regel in `scripts/lib/uptime.ts`). Regel des Inhabers (2026-10-24): Eigene Quellen gelten nur für die Dauer aus ihrem Text, ab Beginn der Phase. Länger nur, wenn ein modellierter Auslöser sie auffrischt. Buffs von Teammates gelten die ganze Phase.
 
-Fenster 76, Teammate 6, selbst erneuert 3, pro Ereignis 8, Zustand 28, ohne Zeitlimit 17, offen 0.
+Fenster 76, Teammate 6, selbst erneuert 3, pro Ereignis 8, Zustand 49, ohne Zeitlimit 17, offen 0.
 
 | Effect | Datei | Urteil | Dauer | Text |
 | --- | --- | --- | --- | --- |
@@ -19,6 +19,27 @@ Fenster 76, Teammate 6, selbst erneuert 3, pro Ereignis 8, Zustand 28, ohne Zeit
 | Surge 1x | effects.json | kein Zeitlimit im Text, ganze Phase |  |  |
 | Surge 2x | effects.json | kein Zeitlimit im Text, ganze Phase |  |  |
 | Surge 3x | effects.json | kein Zeitlimit im Text, ganze Phase |  |  |
+| Momentum Transfer 1x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Momentum Transfer 2x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Momentum Transfer 3x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Impact Induction 1x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Impact Induction 2x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Impact Induction 3x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Bolstering Detonation 1x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Bolstering Detonation 2x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Bolstering Detonation 3x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Focusing Strike 1x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Focusing Strike 2x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Focusing Strike 3x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Bomber 1x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Bomber 2x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Bomber 3x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Outreach 1x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Outreach 2x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Outreach 3x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Distribution 1x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Distribution 2x | effects.json | nur Zustand, gilt ab Wahl |  |  |
+| Distribution 3x | effects.json | nur Zustand, gilt ab Wahl |  |  |
 | Elemental Overdrive (solar pickup) | effects.json | Fenster (Dauer oder Auslöser) |  |  |
 | Particle Reconstruction | effects.json | selbst erneuert, ganze Phase |  | Compendium Artifact Perks: „(Linear) Fusion Rifle hits inflict an unique stacking weaken“; every hit renews the 10 s, the weapon fires the whole phase |
 | Ember of Ashes | effects.json | wirkt pro Treffer oder Cast, ohne Fenster |  |  |

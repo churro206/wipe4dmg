@@ -139,6 +139,8 @@ function ownCombinations(
       input.guardianClass,
       subclass,
     )) {
+      // without a rotation, an effect that changes only ability energy changes nothing
+      if (effect.changesEnergy) continue;
       const selection = { effectId: effect.id, provider };
       const group = byId.get(effect.id)!.exclusiveGroup;
       if (group === undefined) {

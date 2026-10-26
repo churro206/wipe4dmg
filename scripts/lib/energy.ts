@@ -109,6 +109,10 @@ export function abilityEnergy(inputs: EnergyInputs): AbilityEnergy[] {
       const chunkScalar =
         override?.chunkScalar ??
         (chunk ? { value: Number(chunk[1]), source: source(chunk[0]) } : undefined);
+      const classModScalar =
+        ability.kind === "classAbility"
+          ? inputs.overrides.classModScalers.find((s) => s.chunkScalar === chunkScalar?.value)?.value
+          : undefined;
       return {
         abilityId: ability.id,
         cooldownSeconds:
@@ -129,6 +133,7 @@ export function abilityEnergy(inputs: EnergyInputs): AbilityEnergy[] {
         ...(prismatic
           ? { prismaticRegen: { value: Number(prismatic[1]), source: source(prismatic[0]) } }
           : {}),
+        ...(classModScalar ? { classModScalar } : {}),
       };
     });
 }

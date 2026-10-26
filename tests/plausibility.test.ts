@@ -1054,6 +1054,78 @@ describe("ability energy (block 3)", () => {
     expect(casts[3] / 1000).toBeCloseTo(146 / (3.115 * 1.16), 0);
   });
 
+  // Armor mods (Q3 part 4): casts requested every 5 s, the energy decides which happen.
+  const everyFiveSeconds = Array.from({ length: 12 }, (_, i) => i * 5000);
+  const modScenario = (
+    abilities: Build["abilities"],
+    fields: Partial<Build>,
+    effectId: string,
+    meleeId: string,
+  ) => {
+    const build = (damagePhaseSeconds: number, selections: Build["selections"]): Build => ({
+      weaponId: "one-thousand-voices",
+      guardianClass: "titan",
+      subclass: "arc",
+      catalyst: false,
+      effectWindows: {},
+      ...fields,
+      abilities,
+      damagePhaseSeconds,
+      selections,
+    });
+    const mod = [{ effectId, provider: "armor" as const }];
+    const meleeCasts = (b: Build) =>
+      buildSimulation(b, gameData).options.abilities!.find((a) => a.ability.id === meleeId)!.castsMs;
+    return {
+      melee: [meleeCasts(build(60, [])), meleeCasts(build(60, mod))],
+      factors: [10, 30, 60].map((s) => run(build(s, mod)).totalDamage / run(build(s, [])).totalDamage),
+    };
+  };
+  const fmtFactors = (factors: number[]) => factors.map((f) => `×${f.toFixed(3)}`).join(" / ");
+  const fmtCasts = (casts: number[]) => casts.map((c) => fmt(c / 1000)).join(", ");
+  const sooner = ([without, withMod]: number[][]) =>
+    withMod.length > without.length || withMod.some((t, i) => t < without[i] - 1000);
+
+  it("Momentum Transfer 3x: the grenade at 0 s brings the second Thunderclap sooner", () => {
+    const { melee, factors } = modScenario(
+      [
+        { abilityId: "pulse-grenade", castsMs: everyFiveSeconds },
+        { abilityId: "thunderclap", castsMs: everyFiveSeconds },
+      ],
+      { guardianClass: "titan", subclass: "arc" },
+      "momentum-transfer-3x",
+      "thunderclap",
+    );
+    note(
+      "Momentum Transfer 3x, Titan Arc, Pulse Grenade + Thunderclap: Thunderclaps in 60 s; Total Damage 10/30/60 s",
+      `${fmtCasts(melee[0])} s → ${fmtCasts(melee[1])} s; ${fmtFactors(factors)}`,
+      "zweiter früher um 20 % × Chunk × 1,151 des Cooldowns",
+    );
+    expect(melee[1][1]).toBeLessThan(melee[0][1] - 5000);
+    for (const f of factors) expect(f).toBeGreaterThanOrEqual(1 - 1e-9);
+  });
+
+  // Gambler's Dodge refills the melee itself, so Outreach adds nothing there; Marksman's Dodge does not.
+  it("Outreach 3x: a dodge after the melee brings the next melee sooner (Marksman's Dodge, scaler 0.4)", () => {
+    const { melee, factors } = modScenario(
+      [
+        // dodge once the melee is spent, as a player would
+        { abilityId: "marksmans-dodge", castsMs: [6000, 30_000] },
+        { abilityId: "disorienting-blow", castsMs: everyFiveSeconds },
+      ],
+      { guardianClass: "hunter", subclass: "arc" },
+      "outreach-3x",
+      "disorienting-blow",
+    );
+    note(
+      "Outreach 3x, Hunter Arc, Marksman's Dodge + Disorienting Blow: Melees in 60 s; Total Damage 10/30/60 s",
+      `${fmtCasts(melee[0])} s → ${fmtCasts(melee[1])} s; ${fmtFactors(factors)}`,
+      "früher; je Dodge 20 % × 0,4 × Chunk × 1,151 Melee-Energie",
+    );
+    expect(sooner(melee)).toBe(true);
+    for (const f of factors) expect(f).toBeGreaterThanOrEqual(1 - 1e-9);
+  });
+
   it("Eye of Another World adds 58 % of the base regeneration at stat 100, not 45 % (K4)", () => {
     const plain = fusionSecondCast("warlock");
     const eye = fusionSecondCast("warlock", { exoticArmorId: "eye-of-another-world" });

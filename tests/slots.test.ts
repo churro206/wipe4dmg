@@ -37,6 +37,18 @@ describe("slots of own effects", () => {
       shieldcrush: "artifact",
       transference: "artifact",
       "fever-and-chill": "artifact",
+      // energy armor mods (Q3 part 4), one to three copies each
+      ...Object.fromEntries(
+        [
+          "momentum-transfer",
+          "impact-induction",
+          "bolstering-detonation",
+          "focusing-strike",
+          "bomber",
+          "outreach",
+          "distribution",
+        ].flatMap((mod) => [1, 2, 3].map((n) => [`${mod}-${n}x`, "mod"])),
+      ),
     });
   });
 });

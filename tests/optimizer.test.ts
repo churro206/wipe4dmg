@@ -101,6 +101,14 @@ describe("optimize", () => {
     }
   });
 
+  // Without the filter the 21 energy mods multiply the combinations and the run runs out of memory.
+  it("does not try mods that change only ability energy (no rotation in the optimizer)", () => {
+    const energyOnly = new Set(effects.filter((e) => e.changesEnergy).map((e) => e.id));
+    expect(energyOnly.size).toBeGreaterThan(20);
+    for (const entry of results)
+      expect(entry.selections.filter((s) => energyOnly.has(s.effectId))).toEqual([]);
+  });
+
   it("finds a build at least as good as a hand-made one", () => {
     const handMade = simulate(
       weapon,

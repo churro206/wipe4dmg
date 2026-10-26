@@ -48,7 +48,14 @@ Geordnet nach dem Block, der sie schließen soll (`docs/plans/current.md`, Reihe
 ### Q3 Energie
 
 - Stat-Kurven (Q3a): Die Tabellen gelten für Grenade und Melee; die Super-Kurve für Gains übernimmt dieselbe Tabelle (Flat Gain, Notiz 4). Empowering Rift bei Stat 0 ist hergeleitet (Compendium 260 % × 0,4), Flat Gain hat keine Zeile. Die Aegis-Cooldowns sind nicht gegen die Kurve geprüft, nur Flat Gain. Frenzied Blade: 159,6 ÷ 1,15 liegt 3 % unter Flat Gains 143 s. Mit vier Ladungen (Wishful Ignorance) gilt der Faktor für 2 gehaltene Ladungen auch darüber.
-- Armor-Mods mit Energie (Bolstering Detonation, Impact Induction, Momentum Transfer, Firepower; Werte jetzt im Archiv, Reiter Armor Mods `1934379638`); Auslöser am Super-Ende (Apotheosis 66 %/s); Super-Energie aus Schaden (Golden Gun Marksman „Boss = 2.85%“; keine Quelle für Waffen); Dawn Chorus und Monte Carlo brauchen Keyword- bzw. Waffen-Ereignisse; Class-Ability-Energie (Arbor Warden, Fr0st-EE5, Balance of Power, Heart of Inmost Light; `StatAbilityKind` ohne `classAbility`).
+- Energie-Mods (Q3 Teil 4): Momentum Transfer, Impact Induction, Bolstering Detonation, Focusing Strike, Bomber, Outreach und Distribution sind modelliert, mit einem Treffer pro Cast. Es fehlen:
+  - Super-Energie von Distribution (ein Super pro Phase).
+  - Die Class-Mod-Ausnahmen Icefall Mantle (×1) und Arbor Warden (×0,4).
+  - Grapple bei Momentum Transfer („Does not work with Grapple“).
+  - Die Reihenfolge der Casts wählt der Nutzer. Nur gleichzeitige Casts ordnet die Engine optimal: Gewinne kommen nach allen Casts desselben Schritts.
+  - In den Gate-Szenarien (Titan Arc, Hunter Arc) ändern die Mods den Total Damage in 10/30/60 s nicht (×1,000): Die Melee kommt früher, aber keine zusätzliche passt in die Phase. Unter 2 %, Werte aus dem Text.
+- Weggelassen (Inhaber 2026-10-26): Kickstarts, Fonts und Armor Charges. Kickstart verbraucht alle Charges und widerspricht der Annahme „Surge immer aktiv“; Charges brauchen Orbs, die das Modell gegen einen Boss ohne Adds nicht kennt. Dazu Firepower (Grenade Kill).
+- Weitere Energie-Lücken: Auslöser am Super-Ende (Apotheosis 66 %/s); Super-Energie aus Schaden (Golden Gun Marksman „Boss = 2.85%“; keine Quelle für Waffen); Dawn Chorus und Monte Carlo brauchen Keyword- bzw. Waffen-Ereignisse; Class-Ability-Energie (Arbor Warden, Fr0st-EE5, Balance of Power, Heart of Inmost Light; `StatAbilityKind` ohne `classAbility`).
 - Transcendence: +10 % Grenade-/Melee-Regeneration im Fenster, gegenseitige Aufladung (35 % pro Sekunde für 2 s), 2 Ladungen der Prismatic Grenade bei Aktivierung; die Prismatic Grenade ersetzt die gewählte Grenade.
 
 ### Q4 Stasis und Strand

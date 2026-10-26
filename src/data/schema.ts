@@ -620,15 +620,18 @@ export const Effect = z
     // Effect ids whose multiplier parts in the same buckets are ignored while this effect is active,
     // regardless of value, e.g. Divinity over Particle Reconstruction.
     overrides: z.array(z.string()).optional(),
+    // Changes only ability energy, through its modifiers in ability-energy.json (e.g. Bomber).
+    changesEnergy: z.literal(true).optional(),
   })
   .refine(
     (e) =>
       e.parts.length > 0 ||
       e.grantsStatus !== undefined ||
-      e.changesAbilityIds !== undefined,
+      e.changesAbilityIds !== undefined ||
+      e.changesEnergy !== undefined,
     {
       message:
-        "an effect needs parts, a state it grants or abilities it changes",
+        "an effect needs parts, a state it grants, abilities it changes or energy it changes",
       path: ["parts"],
     },
   );
@@ -1080,6 +1083,8 @@ export const AbilityEnergy = z.object({
   // last one holds above. The cooldown above is the nominal one, Flat Gain's T0 is that ÷ the first factor.
   regenByCharges: z.array(SourcedNumber).min(1).optional(),
   prismaticRegen: SourcedNumber.optional(), // "On Prismatic: Penalized with an additional 0.7x Regeneration Speed"
+  // class abilities: factor on the energy of class mods (Bomber, Outreach, Distribution) cast with them
+  classModScalar: SourcedNumber.optional(),
 });
 export type AbilityEnergy = z.infer<typeof AbilityEnergy>;
 
@@ -1127,14 +1132,17 @@ export const EnergyModifier = z.object({
   change: z.enum(["charges", "regenBase", "regenSpeed", "energy"]),
   value: SourcedNumber,
   fixed: z.boolean(), // energy: "Fixed" gains ignore chunk scalar and stat
+  // class mods: the energy is also multiplied by the class mod scalar of the class ability cast
+  scaledByClassMod: z.literal(true).optional(),
   // Omitted: always. cast: each cast of these abilities (one hit per cast, one boss), for regen with
-  // a duration; weaponHit: one weapon hit per cooldown during the whole phase.
+  // a duration, at most once per cooldown; weaponHit: one weapon hit per cooldown during the whole phase.
   trigger: z
     .discriminatedUnion("on", [
       z.object({
         on: z.literal("cast"),
         abilities: EnergyAbilities,
         durationSeconds: z.number().positive().optional(),
+        cooldownSeconds: z.number().positive().optional(), // "7 second cooldown after activation"
       }),
       z.object({ on: z.literal("weaponHit"), cooldownSeconds: z.number().positive() }),
     ])
@@ -1156,6 +1164,8 @@ export const EnergyOverrides = z.object({
       chunkScalar: SourcedNumber.optional(),
     }),
   ),
+  // class mod scaler of a class ability by its own chunk scalar (RyTako, Class Mod Scalers)
+  classModScalers: z.array(z.object({ chunkScalar: z.number().positive(), value: SourcedNumber })),
   modifiers: z.array(EnergyModifier),
 });
 export type EnergyOverrides = z.infer<typeof EnergyOverrides>;

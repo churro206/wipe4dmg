@@ -34,7 +34,23 @@ describe("effectSections", () => {
         ["classAbility", ["empowering-rift"]],
         ["fragment", ["ember-of-ashes"]],
         ["buffs", ["radiant"]],
-        ["mod", ["surge-1x", "surge-2x", "surge-3x"]],
+        [
+          "mod",
+          [
+            "surge-1x",
+            "surge-2x",
+            "surge-3x",
+            ...[
+              "momentum-transfer",
+              "impact-induction",
+              "bolstering-detonation",
+              "focusing-strike",
+              "bomber",
+              "outreach",
+              "distribution",
+            ].flatMap((mod) => [`${mod}-1x`, `${mod}-2x`, `${mod}-3x`]),
+          ],
+        ],
         [
           "artifact",
           [

@@ -4,9 +4,11 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Q3 Teil 4: Energie-Exotics und -Mods** (Opus plant, Sonnet baut): Bolstering Detonation, Impact Induction, Momentum Transfer, Focusing Strike, Bomber/Outreach/Distribution (Class Mod Scalers 0,4/0,6/1,0, `rytako/1211854080:101`), Kickstarts; Liste und Quellen in `docs/plans/sources-2026-10.md` §2. Erst ab 2 % Wirkung.
+**Aufräum-Block** (Sonnet; nach drei Funktions-Blöcken fällig, Reihenfolge Punkt 1).
 
-Erledigt (2026-10-26, Details im Changelog): Q2 Supers (Glacial Quake, Bladefury, Song of Flame; Exotics über ihr Intrinsic); Q3a Stat-Kurven (RyTako: Regen ×3,115, Chunks ×1,151 statt ×3,1 bei Stat 100; Regen-Effekte mit dem Stat skaliert, Gates `tests/energyStats.test.ts`); Q3b eingebaute Ladungen (Frenzied Blade, Arcane Needle, Knives, Prismatic ×0,7). Befunde:
+Erledigt (2026-10-26, Details im Changelog): Q2 Supers; Q3a Stat-Kurven (RyTako); Q3b eingebaute Ladungen; Q3 Teil 4 Energie-Mods (7 Mods × 1–3 Kopien; Kickstarts, Fonts, Armor Charges weggelassen). Befunde:
+- Energie-Effects (`changesEnergy`) überspringt der Optimizer (ohne Rotation wirkungslos, sonst Speicherüberlauf). `tests/optimizer.test.ts` braucht schon vorher etwa 50 s.
+- Die Mods ändern den Total Damage in den Gate-Szenarien nicht (×1,000), weil die Melee nur früher kommt. Erst mit einem Optimizer für Rotationen (2.0) zählt das.
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
 - `tests/mechanicsBaseline.test.ts` überschreitet im vollen `test:quiet` die 5 s (Last), allein läuft er in 2 s grün; Snapshot unverändert.
 - Zurückgestellt: **Hammer of Sol mit Sol Invictus.** Der Aegis-Import ordnet „Roaring Flames x3“ nicht `roaring-flames-3` zu; Aegis misst nur ×1,06, der Text +73 %. Weg: Regel „X xN“ → Effect `x-n` in Import und `tests/lib/probeAuto.ts`, Re-Import nach `nach-patch`. Alternative: Würfe aus dem Compendium-Drain (≈ ×2).
@@ -16,8 +18,8 @@ Erledigt (2026-10-26, Details im Changelog): Q2 Supers (Glacial Quake, Bladefury
 
 Details und Fundstellen: `docs/plans/sources-2026-10.md`.
 
-1. Q3 Teil 4 Energie-Exotics und -Mods (Opus plant); Teil 1–3 erledigt.
-2. Aufräum-Block (Sonnet; nach drei Funktions-Blöcken fällig): `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code, `App.tsx` in Panels. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
+1. Aufräum-Block (Sonnet): `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code, `App.tsx` in Panels. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
+2. Energie-Exotics (Crown of Tempests, Contraverse Hold u. a., `sources-2026-10.md` §2; Opus plant).
 3. Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (Sonnet).
 4. Hammer of Sol mit Sol Invictus (siehe oben).
 5. Q4 Stasis/Strand (echte Debuffs am Ziel, Bedingung von Facet of Courage), Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses (Umfang mit dem Inhaber klären).

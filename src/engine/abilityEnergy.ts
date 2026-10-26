@@ -79,6 +79,7 @@ type State = {
   speed: number; // regeneration speed factor
   speedByCharges: number[]; // factor by charges held, built into the ability; empty: none
   gainFactor: number; // chunk scalar times stat gain factor, for gains that are not fixed
+  classModScalar: number; // factor on class mod energy from a cast of this ability
   weaponRatePerMs: number;
   windows: { untilMs: number; value: number }[]; // regen bonuses after a trigger
 };
@@ -117,6 +118,7 @@ function initialState(
     speed: passive("regenSpeed").reduce((a, b) => a * b, prismatic),
     speedByCharges: (energy.regenByCharges ?? []).map((s) => s.value ?? 1),
     gainFactor,
+    classModScalar: energy.classModScalar?.value ?? 1,
     weaponRatePerMs: own
       .filter((m) => m.change === "energy" && m.trigger?.on === "weaponHit")
       .reduce(
@@ -150,15 +152,38 @@ function regenerate(state: State, fromMs: number) {
     state.readyAt = fromMs + (1 - before) / rate;
 }
 
-function cast(state: State, atMs: number, states: State[], modifiers: EnergyModifier[]) {
+/** Time of the last activation of each modifier with a cooldown, by modifier id. */
+type Activations = Map<string, number>;
+/** Energy gains of casts in one step; they apply after all casts of the step, as a player orders them. */
+type Gains = { target: State; amount: number; atMs: number }[];
+
+function cast(
+  state: State,
+  atMs: number,
+  states: State[],
+  modifiers: EnergyModifier[],
+  activations: Activations,
+  gains: Gains,
+) {
   state.done.push(atMs);
   state.energy -= 1;
   state.readyAt = state.energy >= 1 - EPSILON ? atMs : Infinity;
   for (const m of modifiers) {
     if (m.trigger?.on !== "cast" || !matches(m.trigger.abilities, state.ability)) continue;
+    const { cooldownSeconds } = m.trigger;
+    if (cooldownSeconds) {
+      const last = activations.get(m.id);
+      if (last !== undefined && atMs < last + cooldownSeconds * MS_PER_SECOND) continue;
+      activations.set(m.id, atMs);
+    }
+    const classMod = m.scaledByClassMod ? state.classModScalar : 1;
     for (const target of states.filter((s) => matches(m.target, s.ability))) {
       if (m.change === "energy")
-        gain(target, m.value.value! * (m.fixed ? 1 : target.gainFactor), atMs);
+        gains.push({
+          target,
+          amount: m.value.value! * classMod * (m.fixed ? 1 : target.gainFactor),
+          atMs,
+        });
       else if (m.change === "regenBase" && m.trigger.durationSeconds)
         target.windows.push({
           untilMs: atMs + m.trigger.durationSeconds * MS_PER_SECOND,
@@ -173,7 +198,9 @@ export function energyCasts(requests: CastRequest[], ctx: EnergyContext): CastRe
   const modifiers = activeModifiers(requests, ctx);
   const states = requests.map((r) => initialState(r, modifiers, ctx));
   const tracked = states.filter((s): s is State => s !== undefined);
+  const activations: Activations = new Map();
   for (let t = 0; t <= ctx.damagePhaseMs; t += STEP_MS) {
+    const gains: Gains = [];
     for (const state of tracked) {
       while (
         state.pending.length > 0 &&
@@ -181,9 +208,10 @@ export function energyCasts(requests: CastRequest[], ctx: EnergyContext): CastRe
         state.energy >= 1 - EPSILON
       ) {
         const atMs = Math.min(Math.max(state.pending.shift()!, state.readyAt), ctx.damagePhaseMs);
-        cast(state, atMs, tracked, modifiers);
+        cast(state, atMs, tracked, modifiers, activations, gains);
       }
     }
+    for (const g of gains) gain(g.target, g.amount, g.atMs);
     for (const state of tracked) regenerate(state, t);
   }
   return requests.map((request, i) => {
