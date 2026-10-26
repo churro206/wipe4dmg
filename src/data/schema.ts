@@ -724,6 +724,9 @@ const AbilityFields = z.object({
   // Effects inside the package value that the Aegis import could not recognise, e.g. the tether
   // behind "includes debuff".
   extraIncludedEffectIds: z.array(z.string()).optional(),
+  // Multiplier inside the Aegis row that no effect describes, derived from other Aegis rows; the
+  // package is divided by it, e.g. Feast of Light x6 on Bladefury. Not passed on to variants.
+  includedFactor: SourcedNumber.optional(),
   // Compendium entry that describes the ability; the source of quotes and of the coverage list.
   compendium: z.object({ tab: z.string(), entry: z.string() }).optional(),
   // Variant measured with an exotic armor piece (ADR 0014): replaces the ability `variantOf` while

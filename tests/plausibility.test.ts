@@ -1224,6 +1224,23 @@ describe("supers take time like in the game", () => {
     expect(total).toBeLessThan(7 * 6495);
   });
 
+  it("Bladefury: Aegis' Feast of Light row without the Feast factor Aegis measures on Glacial Quake (Q2)", () => {
+    const r = superRun("titan", "strand", "bladefury");
+    const total = damageOf(r, "super");
+    // second way: the Banner of War row without Biotic Enhancements (×1.405 on Glacial Quake)
+    const viaBiotic = 20713.913 / (62925 / 44790);
+    note(
+      "Bladefury: Treffer, Fenster, Summe",
+      `${new Set(hits(r)).size} Treffer, Fenster ${r.superWindows[0].endMs} ms, ${Math.round(total)}`,
+      `30 Treffer, 11,1 s (Flat Gain); 20 208 ÷ 1,431 = 14 121; Gegenprobe über Biotic ${Math.round(viaBiotic)} (±10 %); Testing: 12 Light × 568 = 6816 darunter`,
+    );
+    expect(new Set(hits(r)).size).toBe(30);
+    expect(r.superWindows[0].endMs).toBe(11100);
+    expect(total).toBeCloseTo(20207.826 / (64095 / 44790), 0);
+    expect(Math.abs(total / viaBiotic - 1)).toBeLessThan(0.1);
+    expect(total).toBeGreaterThan(12 * 568);
+  });
+
   it("Nova Bomb: the bomb needs its cast before it hits", () => {
     const r = superRun("warlock", "void", "nova-bomb-cataclysm");
     note(

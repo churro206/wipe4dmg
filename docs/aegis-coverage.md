@@ -27,7 +27,6 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | super: Silence and Squall | 4 | Item fehlt |  |  |
 | Wolfsbane (no package) | 4 | Item fehlt |  |  |
 | Praxic Blade (no package) | 3 | Item fehlt |  |  |
-| super: Bladefury | 3 | Item fehlt |  |  |
 | own damage: Unravel | 2 | Item fehlt |  |  |
 | own damage: Witherhoard | 2 | Item fehlt |  |  |
 | Barrow-Dyad (no package) | 1 | Item fehlt |  |  |
@@ -63,10 +62,14 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Pack Tactics (simplified underestimate of 3 stack start) | 2 | kein Paar, Wert aus Text |  |  |
 | Pack Tactics x2 | 2 | kein Paar, Wert aus Text |  |  |
 | Target Lock | 2 | kein Paar, Wert aus Text |  |  |
+| Thread of Continuity | 2 | kein Paar, Wert aus Text |  |  |
 | Assault Mag | 1 | kein Paar, Wert aus Text |  |  |
 | Facet of Command | 1 | kein Paar, Wert aus Text |  |  |
 | Facet of Ruin | 1 | kein Paar, Wert aus Text |  |  |
 | Grenades Prepped | 1 | kein Paar, Wert aus Text |  |  |
+| HLLLHLLLLHLLLH | 1 | kein Paar, Wert aus Text |  |  |
+| HLLLHLLLLHLLLLH | 1 | kein Paar, Wert aus Text |  |  |
+| HLLLLL | 1 | kein Paar, Wert aus Text |  |  |
 | Impetus | 1 | kein Paar, Wert aus Text |  |  |
 | Kinetic Impacts | 1 | kein Paar, Wert aus Text |  |  |
 | Lightning Seeker into six shot cycle | 1 | kein Paar, Wert aus Text |  |  |
@@ -1004,9 +1007,9 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Witherhoard, ground | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Spectral Blades, light attack spam, Feast of Light x6, Shieldcrush | fehlt | no switch for: light attack spam |
 | Shadowshot: Moebius Quiver, Orpheus Rig, all 3 volleys, assumes no other debuff, Limit Break | fehlt | no switch for: all 3 volleys; assumes no other debuff |
-| Bladefury, HLLLHLLLLHLLLH, Banner of War, Biotic Enhancements, Thread of Continuity, Limit Break | fehlt | super not in the model |
+| Bladefury, HLLLHLLLLHLLLH, Banner of War, Biotic Enhancements, Thread of Continuity, Limit Break | fehlt | no switch for: HLLLHLLLLHLLLH; Thread of Continuity |
 | Spread shot hand cannon, e. Cascade Point + Vorpal Weapon (Aureus Neutralizer), 14 shot burst, Illegally Modded Holster | übersprungen | burst before the swap; the simulation fires the whole phase |
-| Bladefury, HLLLHLLLLHLLLLH, Feast of Light x6, Limit Break | fehlt | super not in the model |
+| Bladefury, HLLLHLLLLHLLLLH, Feast of Light x6, Limit Break | fehlt | no switch for: HLLLHLLLLHLLLLH |
 | Burning Maul, heavy attacks, Roaring Flames x3, Sol Invictus, Ember of Ashes, Biotic Enhancements, Limit Break | fehlt | no switch for: heavy attacks; Roaring Flames x3 |
 | Rapid-fire shotgun, body, Elemental Honing x5 (Threat Level), 8 shots | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Eriana's Vow, 1 mag, Illegally Modded Holster | übersprungen | burst before the swap; the simulation fires the whole phase |
@@ -1014,7 +1017,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Bequest, heavy attack, Jagged Edge, Elemental Honing x5 (Bequest), Pack Hunter | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Stormtrance, Feast of Light x6, Facet of Courage, Thunderous Retort | im Modell | gate: probe entry by rule |
 | Daybreak, Dawn Chorus, Ember of Ashes, grounded, Limit Break | fehlt | no switch for: grounded |
-| Bladefury, HLLLLL, Banner of War, Biotic Enhancements, Thread of Continuity, Limit Break | fehlt | super not in the model |
+| Bladefury, HLLLLL, Banner of War, Biotic Enhancements, Thread of Continuity, Limit Break | fehlt | no switch for: HLLLLL; Thread of Continuity |
 | Song of Flame, snap spam, Dawn Chorus, Shieldcrush | fehlt | super not in the model |
 | Fusion grenade, Touch of Flame, Ember of Ashes, Sticker Shock | im Modell | grenade in the model, value not probed |
 | Hawkmoon, primed with 3 heavy burst HC bursts, 9 shots, Paracausal Shot, Illegally Modded Holster | übersprungen | burst before the swap; the simulation fires the whole phase |

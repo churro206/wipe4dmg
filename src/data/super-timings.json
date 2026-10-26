@@ -506,6 +506,51 @@
     }
   },
   {
+    "abilityId": "bladefury",
+    "firstHitMs": {
+      "value": 701,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Bladefury)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "unverified",
+        "quote": "Strand\tTitan\t\tBladefury\tAdd-Clear\t\t37,892\t11.10s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:30, \"Cast Time / Lock\" at Super 200. Derived (Q2, rule of K2): Gemini's first hit 600 ms × 1.168 (Flat Gain lock 11100 ms ÷ Gemini window 9500 ms), so the hits keep their shape inside the measured window."
+      }
+    },
+    "hitIntervalMs": {
+      "value": 351,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Bladefury)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "unverified",
+        "quote": "Strand\tTitan\t\tBladefury\tAdd-Clear\t\t37,892\t11.10s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:30, \"Cast Time / Lock\" at Super 200. Derived (Q2, rule of K2): Gemini's hit interval 300 ms × 1.168 (Flat Gain lock 11100 ms ÷ Gemini window 9500 ms)."
+      }
+    },
+    "hits": {
+      "value": 30,
+      "source": {
+        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
+        "retrieved": "2026-10-22",
+        "status": "unverified",
+        "note": "Row \"Bladefury\"; rough estimate, sources not checked"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 11100,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Bladefury)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Strand\tTitan\t\tBladefury\tAdd-Clear\t\t37,892\t11.10s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:30, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
+      }
+    }
+  },
+  {
     "abilityId": "arc-staff",
     "firstHitMs": {
       "value": 700,

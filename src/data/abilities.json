@@ -957,6 +957,29 @@
     "package": true
   },
   {
+    "id": "bladefury",
+    "code": 90,
+    "name": "Bladefury",
+    "kind": "super",
+    "element": "strand",
+    "compendium": {
+      "tab": "Strand",
+      "entry": "Bladefury"
+    },
+    "aegisRowId": "super-bladefury-hlllhllllhllllh-feast-of-light-x6",
+    "includedFactor": {
+      "value": 1.431,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Abilties, column visual Value)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-19",
+        "status": "unverified",
+        "note": "Derived (Q2): Feast of Light x6 inside the row, no effect for it. Factor Aegis measures on the other Titan super melee: Glacial Quake heavy attacks with / without Feast of Light x6 = 64095 / 44790 = 1.431 (stat 100). Cross-check: the Banner of War row 20714 without Biotic Enhancements (Glacial Quake 62925 / 44790 = 1.405) = 14743, 4 % above 14121."
+      }
+    },
+    "package": true
+  },
+  {
     "id": "needlestorm",
     "code": 26,
     "name": "Needlestorm",

@@ -146,10 +146,12 @@ describe("ability gate against Aegis", () => {
     ] as const) {
       if (value === null || value === undefined) continue;
       it(`${ability.id} matches Aegis at stat ${stat} within ${TOLERANCE * 100}%`, () => {
-        expect(perUse(ability, stat) / value).toBeGreaterThanOrEqual(
+        // without the factor of buffs no effect describes, e.g. Feast of Light x6 on Bladefury
+        const expected = value / (ability.includedFactor?.value ?? 1);
+        expect(perUse(ability, stat) / expected).toBeGreaterThanOrEqual(
           1 - TOLERANCE,
         );
-        expect(perUse(ability, stat) / value).toBeLessThanOrEqual(
+        expect(perUse(ability, stat) / expected).toBeLessThanOrEqual(
           1 + TOLERANCE,
         );
       });

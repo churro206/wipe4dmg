@@ -3108,9 +3108,9 @@
         "name": "Bladefury",
         "group": "Strand Supers",
         "inGame": "General Super Information\nDamage Resistance: 90% [50%]\nBase Duration: 24 seconds, or 4.167% Super Drain per Second\nGrants 3 Melee Ability Charges on Super End.\n\nLight Attack\nDrains 3% Super Energy.\nPerforms a strengthened Frenzied Blade Melee that deals 851 [210] damage and can be infinitely chained.\nDeals 25% increased damage against Suspended enemies.\nAttacks 3 times per second. Increases Attack Speed by 100% after chaining 3 sustained light attacks.\nPerforming a Heavy Attack, or failing to maintain a Light Attack chain will remove the Attack Speed Increase.\n\nHeavy Attack\nDrains 10.5% Super Energy. Incurs a 3 second cooldown after usage.\nHurls a pair of Suspending projectiles forward that home in towards enemies, dealing 143 x 2 [61] impact damage, and up to 608 x 2 [36] splash damage over ? meters.\nLight Attack Hits reduce the cooldown by 1 second. Receiving any damage reduces the cooldown by 1 second.",
-        "inCalculator": "Not in yet: Aegis only measures with buffs that are not an effect yet.",
-        "status": "missing",
-        "iconKey": "named:bladefury"
+        "iconKey": "ability:bladefury",
+        "inCalculator": "Damage per cast measured by Aegis.",
+        "status": "full"
       },
       {
         "name": "Arcane Needle",

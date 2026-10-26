@@ -96,6 +96,21 @@ describe("loadAbilities with an Aegis package", () => {
     ]);
   });
 
+  it("divides the package by a factor that no effect describes, at stat 100 and 200", () => {
+    const ability = {
+      ...packageAbility("buffed"),
+      includedFactor: { value: 2, source },
+    };
+    const [loaded] = loadAbilities(
+      [ability],
+      [row("buffed", 2000, 2000 * (1 + 100 * meleePerPoint))],
+      abilityStats,
+    );
+    const total = loaded.components.reduce((sum, c) => sum + c.damagePerTick.value!, 0);
+    expect(total).toBeCloseTo(1000);
+    expect(loaded.components.every((c) => c.scalesWithAbilityStat)).toBe(true);
+  });
+
   it("lets the whole package scale if Aegis measured the full stat factor", () => {
     const components = componentsOf(
       [row("full", 1000, 1000 * (1 + 100 * meleePerPoint))],

@@ -417,6 +417,19 @@
       }
     },
     {
+      "abilityId": "bladefury",
+      "cooldownSeconds": {
+        "value": 556,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Bladefury)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Base Cooldown:\n556 seconds"
+        }
+      }
+    },
+    {
       "abilityId": "needlestorm",
       "cooldownSeconds": {
         "value": 500,

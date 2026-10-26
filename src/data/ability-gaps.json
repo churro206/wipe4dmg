@@ -5,7 +5,7 @@
       "entry": "Hammer of Sol (Sol Invictus Aspect)"
     },
     "reason": "aegisOnlyWithUnmodelledBuffs",
-    "note": "Every Aegis row with Sol Invictus also assumes Roaring Flames x3, which is not an effect yet."
+    "note": "Every Aegis row with Sol Invictus also assumes Roaring Flames x3; the Aegis import does not map it to the effect roaring-flames-3, and Aegis' own pair with / without it gives only x1.06 against +73 % in the text."
   },
   {
     "compendium": {
@@ -22,14 +22,6 @@
     },
     "reason": "effectNotModelled",
     "note": "Ward of Dawn deals no damage; its Weapons of Light buff is not an effect yet."
-  },
-  {
-    "compendium": {
-      "tab": "Strand",
-      "entry": "Bladefury"
-    },
-    "reason": "aegisOnlyWithUnmodelledBuffs",
-    "note": "Every Aegis row assumes Feast of Light or Banner of War, which are not effects yet."
   },
   {
     "compendium": {

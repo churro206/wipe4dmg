@@ -2,7 +2,7 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `tests/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 100, davon innerhalb der Grenze 41. Nicht vergleichbar (übersprungen): 44.
+Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 103, davon innerhalb der Grenze 41. Nicht vergleichbar (übersprungen): 44.
 
 ## Vollständig abgebildet
 
@@ -75,6 +75,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Spectral Blades | 57,656 | 38,465 | 0.667 | light attack spam |
 | Glacial Quake | 113,223 | 76,514 | 0.676 | heavy attacks |
 | Edge of Concurrence | 50,199 | 34,161 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
+| Bladefury | 39,040 | 26,619 | 0.682 | HLLLHLLLLHLLLH; Thread of Continuity |
 | Bastion | 119,327 | 82,294 | 0.690 | Saint's Fury; includes melee time |
 | Truth | 119,636 | 82,636 | 0.691 | Prototype Truthseeker |
 | Burning Maul | 76,665 | 55,015 | 0.718 | heavy attacks; Roaring Flames x3 |
@@ -82,6 +83,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Burning Maul | 30,129 | 22,006 | 0.730 | light attacks; Roaring Flames x3 |
 | Microcosm | 102,579 | 75,121 | 0.732 | Paracausal Imbuement; Harsh Refraction |
 | Ergo Sum | 125,168 | 93,245 | 0.745 | caster frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
+| Bladefury | 35,493 | 26,619 | 0.750 | HLLLLL; Thread of Continuity |
 | Thundercrash | 48,635 | 37,294 | 0.767 | Conductive Cosmic Needle x3 |
 | Thundercrash | 31,181 | 23,915 | 0.767 | Conductive Cosmic Needle x3 |
 | Burning Maul | 30,129 | 23,161 | 0.769 | Roaring Flames x3 |
@@ -135,6 +137,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Vexcalibur | 45,160 | 46,572 | 1.031 | projectile |
 | The Lament | 165,335 | 178,806 | 1.081 | 4L1H1R combo; Sword Storm Combo |
 | Winter's Wrath | 30,297 | 34,474 | 1.138 | light-heavy cycle; Whisper of Fissures |
+| Bladefury | 38,315 | 45,252 | 1.181 | HLLLHLLLLHLLLLH |
 | The Fourth Horseman | 47,544 | 59,430 | 1.250 | body |
 | The Queenbreaker | 74,475 | 97,261 | 1.306 | Marksman Sights |
 | Winter's Wrath | 38,618 | 51,445 | 1.332 | light-heavy cycle; Facet of Ruin |
@@ -186,6 +189,7 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - precision: 2
 - projectile: 2
 - starts at 0 stacks: 2
+- Thread of Continuity: 2
 - uncharged: 2
 - 1 charge: 1
 - 2 charges: 1
@@ -211,6 +215,9 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - held down: 1
 - hip-fire: 1
 - hitscan mode: 1
+- HLLLHLLLLHLLLH: 1
+- HLLLHLLLLHLLLLH: 1
+- HLLLLL: 1
 - hone before rally: 1
 - Impetus: 1
 - includes ignition: 1

@@ -30,6 +30,7 @@ import {
   type AegisAbilityRow,
   type ExoticArmorEntry,
   type Source,
+  type SourcedNumber,
   type SuperTiming,
 } from "../data/schema";
 import { elementItem, itemsOfAbility } from "./abilityNames";
@@ -110,6 +111,8 @@ export function loadAbilities(
           id: `${ability.id}-with-${extras.map((e) => e.id).join("-")}`,
           name: `${ability.name} (${extras.map((e) => e.name).join(" + ")})`,
           aegisRowId: row.id,
+          // the factor belongs to the base row; a variant row has its own assumptions
+          includedFactor: undefined,
           variantOf: ability.id,
           ...(exotic ? { exoticArmorId: exotic.id } : {}),
           ...(effectIds.length ? { requiresEffectIds: effectIds } : {}),
@@ -150,6 +153,7 @@ export function loadAbilities(
           aegisRows,
           abilityStats,
           own,
+          a.includedFactor,
         )
           .map((c) => (normalise ? withoutIncludedMultipliers(c, a, normalise) : c))
           .reduce((sum, c) => sum + requireValue(c.damagePerTick, "damagePerTick"), 0);
@@ -185,6 +189,7 @@ export function loadAbilities(
             aegisRows,
             abilityStats,
             own,
+            ability.includedFactor,
           ).map((component) =>
             normalise
               ? withoutIncludedMultipliers(component, ability, normalise)
@@ -244,6 +249,7 @@ function packageComponents(
   aegisRows: AegisAbilityRow[],
   abilityStats: AbilityStatScaling[],
   abilityKeywords: AbilityKeyword[],
+  includedFactor?: SourcedNumber,
 ): AbilityComponent[] {
   const row = aegisRows.find((r) => r.id === aegisRowId);
   if (!row) throw new Error(`${abilityId}: unknown Aegis row "${aegisRowId}"`);
@@ -257,8 +263,9 @@ function packageComponents(
     (sum, b) => sum + (b.triggers * b.tick) / (b.uses * b.fullModifiers),
     0,
   );
+  const factor = includedFactor ? requireValue(includedFactor, "includedFactor") : 1;
   const atStat100 =
-    requireValue(row.perUseStat100, `${aegisRowId} perUseStat100`) -
+    requireValue(row.perUseStat100, `${aegisRowId} perUseStat100`) / factor -
     keywordPerUse;
   const scaling = abilityStats.find((s) => s.kind === kind);
   if (!scaling) throw new Error(`${abilityId}: no stat scaling for "${kind}"`);
@@ -270,7 +277,7 @@ function packageComponents(
   const atStat200 =
     row.perUseStat200.value === null
       ? null
-      : row.perUseStat200.value -
+      : row.perUseStat200.value / factor -
         // melee buffs do not scale ignition (Compendium); Aegis melee rows match exactly this way
         keywordPerUse * (kind === "melee" ? 1 : statFactor);
   const share =
@@ -281,6 +288,8 @@ function packageComponents(
     ...row.perUseStat100.source,
     status: atStat200 === null ? "unverified" : row.perUseStat100.source.status,
     note: `${row.perUseStat100.source.note ?? ""}; package ${aegisRowId}: ${note}${
+      includedFactor ? `; divided by ${factor} (${includedFactor.source.note ?? ""})` : ""
+    }${
       baked.length > 0
         ? `; keyword damage taken out: ${baked.map((b) => b.note).join("; ")}`
         : ""

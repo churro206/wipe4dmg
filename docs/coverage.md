@@ -10,7 +10,7 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 
 | Kind | ✅ Parts | 🟡 Package | 🔵 Buff only | ❌ missing | Total |
 | --- | --- | --- | --- | --- | --- |
-| Supers | 2 | 24 | 1 | 4 | 31 |
+| Supers | 2 | 25 | 1 | 3 | 31 |
 | Grenades | 7 | 19 | 0 | 4 | 30 |
 | Melees | 12 | 12 | 0 | 2 | 26 |
 | Effects | 103 modelled | | | | |
@@ -58,7 +58,7 @@ Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the m
 | Stasis | Glacial Quake | 🟡 Package | exact | `super-glacial-quake-heavy-attacks` |
 | Stasis | Winter's Wrath | 🟡 Package | exact | `super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures` |
 | Strand | Silkstrike | 🟡 Package | exact | `super-silkstrike-light-attacks` |
-| Strand | Bladefury | ❌ missing | – | Aegis only measures with buffs that are not an effect yet |
+| Strand | Bladefury | 🟡 Package | exact | `super-bladefury-hlllhllllhllllh-feast-of-light-x6` |
 | Strand | Needlestorm | 🟡 Package | exact | `super-needlestorm` |
 
 ## Grenades
