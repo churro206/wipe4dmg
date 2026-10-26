@@ -32,6 +32,9 @@ const ANIMATE =
   typeof window === "undefined" ||
   !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 const replayKey = (data: unknown) => JSON.stringify(data);
+// Twice as fast as the Recharts defaults (1500 ms for lines and the donut, 400 ms for bars).
+const ANIMATION_MS = 750;
+const BAR_ANIMATION_MS = 200;
 
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat("en-US", {
@@ -165,6 +168,7 @@ export function DamageShareChart({
               stroke="var(--bg)"
               strokeWidth={2}
               isAnimationActive={ANIMATE}
+              animationDuration={ANIMATION_MS}
             >
               {styled.map((entry) => (
                 <Cell key={entry.id} fill={entry.color} />
@@ -179,6 +183,7 @@ export function DamageShareChart({
               stroke="var(--bg)"
               strokeWidth={2}
               isAnimationActive={ANIMATE}
+              animationDuration={ANIMATION_MS}
             >
               {outer.map((entry) => (
                 <Cell key={entry.id} fill={entry.color} />
@@ -280,6 +285,7 @@ export function DamageCurveChart({ points }: { points: CurvePoint[] }) {
             strokeWidth={2}
             dot={false}
             isAnimationActive={ANIMATE}
+            animationDuration={ANIMATION_MS}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -335,6 +341,7 @@ export function DpsByLengthChart({
             strokeWidth={2}
             dot={false}
             isAnimationActive={ANIMATE}
+            animationDuration={ANIMATION_MS}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -389,6 +396,7 @@ export function BreakdownChart({
             radius={[0, 4, 4, 0]}
             maxBarSize={20}
             isAnimationActive={ANIMATE}
+            animationDuration={BAR_ANIMATION_MS}
           />
         </BarChart>
       </ResponsiveContainer>
@@ -717,6 +725,7 @@ export function CompareCurveChart({
               strokeWidth={2}
               dot={false}
               isAnimationActive={ANIMATE}
+              animationDuration={ANIMATION_MS}
               label={({
                 index,
                 x,

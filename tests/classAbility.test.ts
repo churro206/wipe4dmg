@@ -107,7 +107,9 @@ describe("class abilities from the data", () => {
     });
     const { options } = buildSimulation(b, gameData);
     expect(options.effectWindows?.["rally-barricade"]).toEqual({ startMs: 0, durationMs: 20000 });
-    expect(secondShotMs(b)).toBe(secondShotMs(hunter({ guardianClass: "titan" })));
+    // the cast at 0 s comes before the first shot and shifts the rotation by its cast time
+    const castMs = gameData.castTimes.defaultMs.value!;
+    expect(secondShotMs(b) - castMs).toBeCloseTo(secondShotMs(hunter({ guardianClass: "titan" })), 6);
   });
 
   it("Empowering Rift grants its 20 % for 15 s from the cast", () => {

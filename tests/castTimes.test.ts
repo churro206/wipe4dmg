@@ -98,6 +98,14 @@ describe("simulate: the weapon during a cast", () => {
     expect(shots[3]).toBeGreaterThanOrEqual(plain[2] + 1000);
   });
 
+  it("starts with a cast at 0 s: no free shot before it", () => {
+    const noCharge = { ...weapon, chargeTimeMs: { ...weapon.chargeTimeMs, value: 0 } };
+    const shots = simulate(noCharge, 60, [], buckets, {
+      abilities: [{ ability: grenade, castsMs: [0], castMs: 1000 }],
+    }).shots.map((s) => s.timeMs);
+    expect(shots[0]).toBeGreaterThanOrEqual(1000);
+  });
+
   it("is unchanged without a cast time", () => {
     const shots = simulate(weapon, 60, [], buckets, {
       abilities: [{ ability: grenade, castsMs: [plain[2]] }],
