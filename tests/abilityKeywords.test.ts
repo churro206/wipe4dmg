@@ -55,9 +55,8 @@ describe("abilityKeywords", () => {
       uses: 1,
       fullModifiers: 2.3,
     });
-    // Deadshot with Ember: 6 shots x50 every 400 ms, the cooldown of 950 ms after the first ignition
-    // blocks the 3rd and 4th shot, the 5th and 6th fill the counter again
-    expect(of("golden-gun-deadshot")[0].bakedInPackage?.triggers).toBe(2);
+    // Deadshot with Ember: 6 shots x50, the cooldown after the first ignition blocks a second
+    expect(of("golden-gun-deadshot")[0].bakedInPackage?.triggers).toBe(1);
     // Burning Maul: the cyclone's x3 never fills the counter
     expect(of("burning-maul")[0].bakedInPackage).toBeUndefined();
     expect(of("daybreak")[0].bakedInPackage?.triggers).toBeGreaterThanOrEqual(4);

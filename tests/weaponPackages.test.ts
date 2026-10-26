@@ -269,13 +269,15 @@ describe("catalysts", () => {
     expect(value(timing.totalShots)).toBe(14);
   });
 
-  // Aegis "average, one ring" (in-game, with the catalyst): wipe 18 188 in 6 arrows = 6 × 735 crit +
-  // 18 × 485 seeker + 2 ignitions of 2345 + 358 burn (not modelled); without the burn
-  // 17 830 ÷ 6 ÷ 3.31 buffs = 897.8 per arrow.
+  // Aegis "average, one ring" (in-game): wipe 18 188 in 6 arrows = 6 × 735 crit + 18 × 485 seeker +
+  // 2 ignitions of 2345 + 358 burn (not modelled); without the burn 17 830 ÷ 6 ÷ 3.31 buffs = 897.8
+  // per arrow. 2 in 6 means every 3rd arrow ignites: arrows further apart than the ignition cooldown
+  // (1.3 s), i.e. at the pace without the catalyst (1.36 s); Aegis names no pace (derived).
   it("Hierarchy of Needs: arrow, 3 seekers and their ignitions give Aegis' 898 per arrow within ±3 %", () => {
     const hierarchy = byName("Hierarchy of Needs")!;
-    const result = simulate(hierarchy, 19, [], loadBuckets(rawBuckets), {
-      catalyst: true,
+    // 13 arrows (the first deploys the ring): 12 with seekers, 4 full cycles of 3, before 20 s
+    const result = simulate(hierarchy, 17.5, [], loadBuckets(rawBuckets), {
+      catalyst: false,
       keywords,
       setupPreBuilt: true,
     });

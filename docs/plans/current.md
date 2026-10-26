@@ -6,9 +6,9 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 **Still Hunt** (Inhaber, 2026-10-26): Die Golden-Gun-Schüsse fehlen, ebenso die Synergie mit Celestial Nighthawk (ein einzelner Schuss mit hohem Schaden wie beim Marksman-Super). Danach Block B: **Coverage-Triage** (Opus plant): Jeden `missing`-Eintrag im Coverage-Katalog (rund 160, davon 95 Exotic Armor) einer Regel zuordnen: `leftOut` mit Grund, `derived` aus dem Text samt `known-inaccuracies.md` (unter 2 %), eigener Block (ab 2 %). Aufräum-Block nach drei weiteren Funktions-Blöcken.
 
-Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche, Casts lückenlos, Ladezeit und Bogen-Takt; Bögen (Leviathan's Breath 1,93/1,33 s, Hierarchy aus Pfeil + Seekern + Ignitions mit `Weapon.setup` und Schalter „Pre-stacked“, Ignition-Cooldown 0,95 s); Q2 Supers; Q3 Energie; Aufräum-Block. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
+Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche, Casts lückenlos, Ladezeit und Bogen-Takt; Bögen (Leviathan's Breath 1,93/1,33 s, Hierarchy aus Pfeil + Seekern + Ignitions mit `Weapon.setup` und Schalter „Pre-stacked“; Ignition-Cooldown nach Recherche bei 1,3 s, Beleg Daybreak mit Dawn Chorus); Q2 Supers; Q3 Energie; Aufräum-Block. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
-- Verglas Curve Catalyst wartet auf Slow am Ziel (Q4). Der Ignition-Abzug in Ability-Paketen ignoriert Radiant (2,5 % je Ignition, `known-inaccuracies.md`).
+- Verglas Curve Catalyst wartet auf Slow am Ziel (Q4).
 - Zurückgestellt: **Hammer of Sol mit Sol Invictus.** Der Aegis-Import ordnet „Roaring Flames x3“ nicht `roaring-flames-3` zu; Aegis misst nur ×1,06, der Text +73 %. Weg: Regel „X xN“ → Effect `x-n` in Import und `tests/lib/probeAuto.ts`, Re-Import nach `nach-patch`. Alternative: Würfe aus dem Compendium-Drain (≈ ×2).
 - Banner of War: „40% Increased Bladefury Damage“ fehlt im Effect (Aegis ×1,04).
 

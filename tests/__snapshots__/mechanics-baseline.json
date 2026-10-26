@@ -519,12 +519,12 @@
     "hierarchy-of-needs": {
       "30s plain": 15779.09,
       "30s buffed": 26565.67,
-      "30s plain catalyst": 22452.74,
-      "30s buffed catalyst": 37801.43,
+      "30s plain catalyst": 21102.3,
+      "30s buffed catalyst": 35527.84,
       "600s plain": 368761.3,
       "600s buffed": 620846.52,
-      "600s plain catalyst": 519905.66,
-      "600s buffed catalyst": 875313.18
+      "600s plain catalyst": 487495.25,
+      "600s buffed catalyst": 820747
     },
     "ice-breaker": {
       "30s plain": 12234.4,
@@ -1379,8 +1379,8 @@
       "stat 200": 41965.44
     },
     "golden-gun-deadshot": {
-      "stat 100": 33218.62,
-      "stat 200": 35373.5
+      "stat 100": 33781.3,
+      "stat 200": 36189.39
     },
     "golden-gun-marksman": {
       "stat 100": 36217.54,
@@ -1395,8 +1395,8 @@
       "stat 200": 41833.04
     },
     "daybreak": {
-      "stat 100": 37913.91,
-      "stat 200": 42181.67
+      "stat 100": 38589.13,
+      "stat 200": 43160.74
     },
     "song-of-flame": {
       "stat 100": 45978,

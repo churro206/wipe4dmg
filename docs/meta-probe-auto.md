@@ -142,7 +142,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Heartshadow | 103,813 | 104,462 | 1.006 | heavy attacks; Shot in the Dark |
 | The Lament | 176,080 | 178,806 | 1.015 | 3L1H1R combo; Sword Storm Combo |
 | Vexcalibur | 45,160 | 46,572 | 1.031 | projectile |
-| Daybreak | 32,716 | 35,173 | 1.075 | grounded |
+| Daybreak | 32,716 | 33,900 | 1.036 | grounded |
 | The Lament | 165,335 | 178,806 | 1.081 | 4L1H1R combo; Sword Storm Combo |
 | Winter's Wrath | 30,297 | 34,474 | 1.138 | light-heavy cycle; Whisper of Fissures |
 | Bladefury | 38,315 | 45,252 | 1.181 | HLLLHLLLLHLLLLH |

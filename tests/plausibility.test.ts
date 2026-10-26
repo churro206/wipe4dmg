@@ -931,10 +931,12 @@ describe("bows (2026-10-26)", () => {
     expect(ratio).toBeGreaterThan(1.3);
   });
 
+  // without the catalyst pace (1.36 s per arrow) the arrows are further apart than the cooldown (1.3 s)
   it("Hierarchy of Needs: the seekers ignite, every 3rd arrow, with Ember of Ashes every 2nd", () => {
-    const plain = hierarchy({ weaponPreBuilt: true });
+    const plain = hierarchy({ weaponPreBuilt: true, catalyst: false });
     const ember = hierarchy({
       weaponPreBuilt: true,
+      catalyst: false,
       selections: [{ effectId: "ember-of-ashes", provider: "subclass" }],
     });
     const arrows = plain.shots.length;
@@ -1278,7 +1280,7 @@ describe("supers take time like in the game", () => {
     note(
       "Daybreak: Ignitions während der Super",
       `${ignitions.filter((d) => d.timeMs <= end).length}`,
-      "4 bis 5 (15 Geschosse × 50 Scorch in 9,55 s, Abklingzeit 0,95 s)",
+      "4 bis 5 (15 Geschosse × 50 Scorch in 9,55 s, Abklingzeit 1,3 s)",
     );
     expect(
       ignitions.filter((d) => d.timeMs <= end).length,
