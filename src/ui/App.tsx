@@ -78,7 +78,6 @@ import { effectSections } from "./effectSections";
 import {
   effectRelevantTo,
   hasCatalyst,
-  hasIgnition,
   neededStatuses,
 } from "../engine/weaponInfo";
 import { roundToTenth } from "./format";
@@ -218,13 +217,7 @@ function App() {
         )
       : null;
   const summaryRows = result
-    ? compareResults(result, comparisonResult ?? result).filter(
-        (row) =>
-          row.key !== "ignitions" ||
-          hasIgnition(weapon) ||
-          (comparison !== null &&
-            hasIgnition(weaponById(comparison.weaponId))),
-      )
+    ? compareResults(result, comparisonResult ?? result)
     : [];
 
   const dpsChartSeconds = Math.max(
@@ -390,10 +383,10 @@ function App() {
     const ability = pick && abilities.find((a) => a.id === pick.abilityId);
     if (!ability) return [];
     // the casts the energy allows and the earliest time of one more (block 3)
-    const actualMs =
-      options.abilities?.find((c) => c.ability.kind === kind)?.castsMs ?? pick.castsMs;
+    const actual = options.abilities?.find((c) => c.ability.kind === kind);
+    const actualMs = actual?.castsMs ?? pick.castsMs;
     const nextMs = nextCastFor(currentBuild, kind, gameData, weapon, buckets);
-    return [{ ability, castsMs: pick.castsMs, actualMs, nextMs }];
+    return [{ ability, castsMs: pick.castsMs, actualMs, castMs: actual?.castMs, nextMs }];
   });
   // triggered effects, e.g. Radiant from Lightweight Knife, open their windows at the casts
   const windows = result

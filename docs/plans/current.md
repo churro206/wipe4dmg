@@ -4,9 +4,9 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Energie-Exotics** (Opus plant; Reihenfolge Punkt 1): Crown of Tempests, Contraverse Hold u. a., Liste und Quellen in `docs/plans/sources-2026-10.md` §2. Erst ab 2 % Wirkung. Der Aufräum-Block ist erledigt; ein nächster wird nach drei weiteren Funktions-Blöcken fällig.
+**Block B: Coverage-Triage** (Opus plant): Jeden `missing`-Eintrag im Coverage-Katalog (rund 160, davon 95 Exotic Armor) einer Regel zuordnen: `leftOut` mit Grund (wirkt gegen einen Boss nicht), `derived` aus dem Text samt `known-inaccuracies.md` (unter 2 %), eigener Block (ab 2 %). Danach die Reihenfolge unten neu ordnen. Aufräum-Block nach drei weiteren Funktions-Blöcken.
 
-Erledigt (2026-10-26, Details im Changelog): Q2 Supers; Q3a Stat-Kurven (RyTako); Q3b eingebaute Ladungen; Aufräum-Block (`units.ts`, `strict`, Regel-Logik in `scripts/lib/`, `App.tsx` in Komponenten). Die Energie-Mods (Momentum Transfer, Impact Induction, Bolstering Detonation, Focusing Strike, Bomber, Outreach, Distribution) hat der Inhaber nach einem Blick abgelehnt; per Revert entfernt, in der Historie als `19cddbb`. Nicht wieder aufnehmen ohne Rückfrage. Befunde:
+Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche (Cast-Fenster, Chart-Animationen, Keyword-Zähler); Q2 Supers; Q3a Stat-Kurven (RyTako); Q3b eingebaute Ladungen; Aufräum-Block (`units.ts`, `strict`, Regel-Logik in `scripts/lib/`, `App.tsx` in Komponenten). Die Energie-Mods (Momentum Transfer, Impact Induction, Bolstering Detonation, Focusing Strike, Bomber, Outreach, Distribution) hat der Inhaber nach einem Blick abgelehnt; per Revert entfernt, in der Historie als `19cddbb`. Nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
 - `tests/mechanicsBaseline.test.ts` überschreitet im vollen `test:quiet` die 5 s (Last), allein läuft er in 2 s grün; Snapshot unverändert.
 - Zurückgestellt: **Hammer of Sol mit Sol Invictus.** Der Aegis-Import ordnet „Roaring Flames x3“ nicht `roaring-flames-3` zu; Aegis misst nur ×1,06, der Text +73 %. Weg: Regel „X xN“ → Effect `x-n` in Import und `tests/lib/probeAuto.ts`, Re-Import nach `nach-patch`. Alternative: Würfe aus dem Compendium-Drain (≈ ×2).
@@ -16,8 +16,8 @@ Erledigt (2026-10-26, Details im Changelog): Q2 Supers; Q3a Stat-Kurven (RyTako)
 
 Details und Fundstellen: `docs/plans/sources-2026-10.md`.
 
-1. Energie-Exotics (Crown of Tempests, Contraverse Hold u. a., `sources-2026-10.md` §2; Opus plant).
-2. Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (Sonnet).
+1. Block B: Coverage-Triage (siehe oben; Opus plant).
+2. Energie-Exotics (Crown of Tempests, Contraverse Hold u. a., `sources-2026-10.md` §2; Opus plant).
 3. Hammer of Sol mit Sol Invictus (siehe oben).
 4. Q4 Stasis/Strand (echte Debuffs am Ziel, Bedingung von Facet of Courage), Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses (Umfang mit dem Inhaber klären).
 5. Für 2.0 (`docs/product.md`): Legendary Frames, Optimizer mit Abilities, Aspects und Fragments.

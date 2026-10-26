@@ -26,6 +26,13 @@ import { Icon } from "./components/Icon";
 import type { BreakdownEntry } from "../engine/breakdown";
 import { buckets, keywords } from "./data";
 
+// Recharts' own animation (donut sweeps, lines draw, bars grow). A chart mounts again whenever its
+// data changes (key={replayKey(data)}), so every switch replays it from the start.
+const ANIMATE =
+  typeof window === "undefined" ||
+  !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+const replayKey = (data: unknown) => JSON.stringify(data);
+
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat("en-US", {
   style: "percent",
@@ -143,7 +150,11 @@ export function DamageShareChart({
     <figure className="chart">
       <figcaption>Damage by source and multiplier</figcaption>
       <div className="donut">
-        <ResponsiveContainer width="100%" height={180}>
+        <ResponsiveContainer
+          key={replayKey([styled, outer])}
+          width="100%"
+          height={180}
+        >
           <PieChart>
             <Pie
               data={styled}
@@ -153,7 +164,7 @@ export function DamageShareChart({
               outerRadius="84%"
               stroke="var(--bg)"
               strokeWidth={2}
-              isAnimationActive={false}
+              isAnimationActive={ANIMATE}
             >
               {styled.map((entry) => (
                 <Cell key={entry.id} fill={entry.color} />
@@ -167,7 +178,7 @@ export function DamageShareChart({
               outerRadius="98%"
               stroke="var(--bg)"
               strokeWidth={2}
-              isAnimationActive={false}
+              isAnimationActive={ANIMATE}
             >
               {outer.map((entry) => (
                 <Cell key={entry.id} fill={entry.color} />
@@ -239,7 +250,7 @@ export function DamageCurveChart({ points }: { points: CurvePoint[] }) {
   return (
     <figure className="chart">
       <figcaption>Damage Curve</figcaption>
-      <ResponsiveContainer width="100%" height={220}>
+      <ResponsiveContainer key={replayKey(data)} width="100%" height={220}>
         <LineChart data={data} margin={{ top: 8, right: 16, left: 8 }}>
           <CartesianGrid {...gridProps} />
           <XAxis
@@ -268,7 +279,7 @@ export function DamageCurveChart({ points }: { points: CurvePoint[] }) {
             stroke="var(--series-1)"
             strokeWidth={2}
             dot={false}
-            isAnimationActive={false}
+            isAnimationActive={ANIMATE}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -287,7 +298,7 @@ export function DpsByLengthChart({
   return (
     <figure className="chart">
       <figcaption>DPS by Damage Phase length</figcaption>
-      <ResponsiveContainer width="100%" height={220}>
+      <ResponsiveContainer key={replayKey(points)} width="100%" height={220}>
         <LineChart data={points} margin={{ top: 24, right: 16, left: 8 }}>
           <CartesianGrid {...gridProps} />
           <XAxis
@@ -323,7 +334,7 @@ export function DpsByLengthChart({
             stroke="var(--series-1)"
             strokeWidth={2}
             dot={false}
-            isAnimationActive={false}
+            isAnimationActive={ANIMATE}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -346,7 +357,11 @@ export function BreakdownChart({
   return (
     <figure className="chart">
       <figcaption>Contribution by bucket</figcaption>
-      <ResponsiveContainer width="100%" height={40 + data.length * 36}>
+      <ResponsiveContainer
+        key={replayKey(data)}
+        width="100%"
+        height={40 + data.length * 36}
+      >
         <BarChart
           data={data}
           layout="vertical"
@@ -373,7 +388,7 @@ export function BreakdownChart({
             fill="var(--series-1)"
             radius={[0, 4, 4, 0]}
             maxBarSize={20}
-            isAnimationActive={false}
+            isAnimationActive={ANIMATE}
           />
         </BarChart>
       </ResponsiveContainer>
@@ -389,7 +404,7 @@ const ICON_SIZE = 18;
 // Longer effect names are cut with an ellipsis; the full name shows on hover.
 const MAX_LABEL_CHARS = 24;
 
-/** One timeline row per chosen ability: its casts and, for a super, its super windows. */
+/** One timeline row per chosen ability: its casts and the windows in which they block the weapon. */
 export type AbilityTimelineRow = {
   label: string;
   iconUrl?: string;
@@ -575,7 +590,7 @@ export function RotationTimeline({
                     strokeDasharray={w.exact ? undefined : "3 2"}
                   >
                     <title>
-                      {`Super Window ${seconds.format(w.startMs / 1000)}–${seconds.format(w.endMs / 1000)} s${w.exact ? "" : " (estimate)"}: the weapon does not fire`}
+                      {`${line.ability.kind === "super" ? "Super Window" : "Cast"} ${seconds.format(w.startMs / 1000)}–${seconds.format(w.endMs / 1000)} s${w.exact ? "" : " (estimate)"}: the weapon does not fire`}
                     </title>
                   </rect>
                 ))}
@@ -663,7 +678,11 @@ export function CompareCurveChart({
           </span>
         ))}
       </div>
-      <ResponsiveContainer width="100%" height={220}>
+      <ResponsiveContainer
+        key={replayKey(series.map((s) => s.data))}
+        width="100%"
+        height={220}
+      >
         <LineChart margin={{ top: 8, right: 72, left: 8 }}>
           <CartesianGrid {...gridProps} />
           <XAxis
@@ -697,7 +716,7 @@ export function CompareCurveChart({
               stroke={s.color}
               strokeWidth={2}
               dot={false}
-              isAnimationActive={false}
+              isAnimationActive={ANIMATE}
               label={({
                 index,
                 x,

@@ -9,7 +9,7 @@ import { buildSimulation, nextCastFor } from "../src/engine/buildSimulation";
 import { loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
-import { gameData, weaponById } from "../src/ui/data";
+import { gameData, weaponById, weapons } from "../src/ui/data";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 
 const buckets = loadBuckets(rawBuckets);
@@ -103,6 +103,43 @@ describe("simulate: the weapon during a cast", () => {
       abilities: [{ ability: grenade, castsMs: [plain[2]] }],
     }).shots.map((s) => s.timeMs);
     expect(shots).toEqual(plain);
+  });
+});
+
+describe("shots of a build next to its casts", () => {
+  // Every weapon of the data, with a grenade, a melee and a super at close times: no shot may land
+  // inside a cast or a super window (the timeline shows both as areas).
+  const kindsWithUsage = ["grenade", "melee", "super"] as const;
+  const picks = kindsWithUsage.map((kind) =>
+    gameData.abilities.find((a) => a.kind === kind && (kind !== "super" || a.usage)),
+  );
+
+  it.each(weapons.map((w) => [w.id]))("%s", (weaponId) => {
+    const abilities = picks.flatMap((ability, i) =>
+      ability ? [{ abilityId: ability.id, castsMs: [2000 + i * 300, 9000 + i * 300] }] : [],
+    );
+    const build: Build = {
+      weaponId,
+      guardianClass: "hunter",
+      subclass: "solar",
+      catalyst: false,
+      selections: [],
+      effectWindows: {},
+      damagePhaseSeconds: 40,
+      abilities,
+    };
+    const { selected, options } = buildSimulation(build, gameData);
+    const result = simulate(weaponById(weaponId), build.damagePhaseSeconds, selected, buckets, options);
+    const windows = [
+      ...result.superWindows,
+      ...(options.abilities ?? []).flatMap(({ castsMs, castMs = 0 }) =>
+        castsMs.map((startMs) => ({ startMs, endMs: startMs + castMs })),
+      ),
+    ];
+    for (const shot of result.shots) {
+      const inside = windows.find((w) => shot.timeMs > w.startMs && shot.timeMs < w.endMs);
+      expect(inside, `shot at ${shot.timeMs}`).toBeUndefined();
+    }
   });
 });
 

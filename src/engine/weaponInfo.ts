@@ -1,5 +1,5 @@
-// What the UI needs to know about a weapon (ADR 0012, ADR 0013): whether it has a catalyst or
-// ignitions, and which effects matter for it.
+// What the UI needs to know about a weapon (ADR 0012, ADR 0013): whether it has a catalyst and
+// which effects matter for it.
 
 import type { Effect, StatusId, Weapon } from "../data/schema";
 import { effectAppliesToWeapon } from "./effectParts";
@@ -13,15 +13,6 @@ export function hasCatalyst(weapon: Weapon): boolean {
       (p) => p.type === "damageOverTime" && p.requiresCatalyst,
     ) ||
     (weapon.options ?? []).some((o) => o.kind === "catalyst")
-  );
-}
-
-/** Ignitions come from scorch the weapon applies (ADR 0015) or from a threshold part. */
-export function hasIgnition(weapon: Weapon): boolean {
-  return weapon.intrinsicParts.some(
-    (p) =>
-      p.type === "threshold" ||
-      (p.type === "appliesKeyword" && p.keywordId === "ignition"),
   );
 }
 

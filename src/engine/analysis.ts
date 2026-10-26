@@ -1,6 +1,12 @@
 // Derived views of a simulation result for charts: damage by instance, damage curve, DPS by length.
 
-import type { Bucket, DamageSource, Effect, Weapon } from "../data/schema";
+import {
+  KeywordId,
+  type Bucket,
+  type DamageSource,
+  type Effect,
+  type Weapon,
+} from "../data/schema";
 import {
   simulate,
   type SimulationOptions,
@@ -166,25 +172,36 @@ export function dpsByDamagePhase(
 }
 
 export type ComparisonRow = {
-  key: "totalDamage" | "dps" | "shots" | "ignitions";
+  // a keyword counter is "keyword:<id>", e.g. "keyword:jolt": how often its damage fires
+  key: "totalDamage" | "dps" | "shots" | `keyword:${KeywordId}`;
   a: number;
   b: number;
   difference: number; // a - b
   relative: number | null; // a / b - 1; null if b is 0
 };
 
-/** Key figures of two simulations side by side (US-09). */
+/**
+ * Key figures of two simulations side by side (US-09), then one counter per keyword that fires in
+ * one of them (Ignition, Jolt, Volatile, Unravel, Bolt Charge), in the order of the schema.
+ */
 export function compareResults(
   a: SimulationResult,
   b: SimulationResult,
 ): ComparisonRow[] {
-  const ignitions = (result: SimulationResult) =>
-    result.damageInstances.filter((d) => d.id === "ignition").length;
+  const procs = (result: SimulationResult, id: KeywordId) =>
+    result.damageInstances.filter((d) => d.keywordId === id).length;
+  const counters = KeywordId.options
+    .map((id): [ComparisonRow["key"], number, number] => [
+      `keyword:${id}`,
+      procs(a, id),
+      procs(b, id),
+    ])
+    .filter(([, valueA, valueB]) => valueA > 0 || valueB > 0);
   const pairs: [ComparisonRow["key"], number, number][] = [
     ["totalDamage", a.totalDamage, b.totalDamage],
     ["dps", a.dps, b.dps],
     ["shots", a.shots.length, b.shots.length],
-    ["ignitions", ignitions(a), ignitions(b)],
+    ...counters,
   ];
   return pairs.map(([key, valueA, valueB]) => ({
     key,

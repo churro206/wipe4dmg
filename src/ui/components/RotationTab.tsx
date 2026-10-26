@@ -29,7 +29,9 @@ export function RotationTab({
   selected: Effect[];
   ownSelected: Effect[];
   windows: EffectWindow[];
-  castRows: ComponentProps<typeof AbilityCastEditor>["rows"];
+  castRows: (ComponentProps<typeof AbilityCastEditor>["rows"][number] & {
+    castMs?: number; // time a cast keeps the player busy; a super uses its window
+  })[];
   windowInputs: Record<string, WindowInput>;
   damagePhaseSeconds: number;
   onWindowChange: (effect: Effect, patch: Partial<WindowInput>) => void;
@@ -53,12 +55,20 @@ export function RotationTab({
             },
           ];
         })}
-        abilityRows={castRows.map(({ ability, actualMs }) => ({
+        abilityRows={castRows.map(({ ability, actualMs, castMs }) => ({
           label: ability.name,
           iconUrl: iconUrl(`ability:${ability.id}`),
           kind: ability.kind,
           castsMs: actualMs,
-          windows: result.superWindows.filter((w) => w.abilityId === ability.id),
+          // a super blocks the weapon for its window, other abilities for their cast time
+          windows:
+            ability.kind === "super"
+              ? result.superWindows.filter((w) => w.abilityId === ability.id)
+              : actualMs.map((startMs) => ({
+                  startMs,
+                  endMs: startMs + (castMs ?? 0),
+                  exact: false,
+                })),
         }))}
         shotsMs={result.shots.map((s) => s.timeMs)}
         ignitionsMs={result.damageInstances

@@ -65,7 +65,12 @@ Status: 2026-10-25
 - ✅ Stormdancer's Brace, Mataiodoxía and Young Ahamkara's Spine as measured by Aegis
 - ✅ Ability energy: stat curves instead of a straight line (grenades regenerate 3.1× at stat 100, chunk gains 1.15× instead of 3.1×), regeneration effects grow with the stat, innate charges (Frenzied Blade, Arcane Needle, Lightweight Knife)
 
+- ✅ Timeline shows the cast time of grenades, melees and class abilities as a hatched window, like the Super Window
+- ✅ Donut, curves and bars animate on every change; counters for Ignition, Jolt, Volatile, Unravel and Bolt Charge next to the key figures
+
 ## Next
+
+- Coverage triage: sort every missing item into left out (no effect against a boss), a value from the text (under 2 %) or its own block
 
 - Hammer of Sol with Sol Invictus
 - Energy exotics (e.g. Crown of Tempests, Contraverse Hold)

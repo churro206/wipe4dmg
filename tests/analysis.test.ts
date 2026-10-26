@@ -7,7 +7,7 @@ import {
   damageCurve,
   dpsByDamagePhase,
 } from "../src/engine/analysis";
-import { Ability, type AbilityKind } from "../src/data/schema";
+import { Ability, type AbilityKind, type KeywordId } from "../src/data/schema";
 import { loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
@@ -161,12 +161,33 @@ describe("compareResults", () => {
     expect(total.b).toBe(b.totalDamage);
     expect(total.difference).toBeCloseTo(a.totalDamage - b.totalDamage);
     expect(total.relative).toBeCloseTo(a.totalDamage / b.totalDamage - 1);
-    expect(rows.map((r) => r.key)).toEqual([
+    expect(rows.slice(0, 3).map((r) => r.key)).toEqual([
       "totalDamage",
       "dps",
       "shots",
-      "ignitions",
     ]);
+  });
+
+  it("adds a counter per keyword that fires, counted by keyword and not by weapon", () => {
+    const base = simulate(weapon, DAMAGE_PHASE_SECONDS, [], buckets);
+    const hit = (keywordId: KeywordId, id = keywordId) => ({
+      ...base.damageInstances[0],
+      id,
+      keywordId,
+    });
+    const a = {
+      ...base,
+      // a Jolt from a grenade has the id of its ability, not "jolt"
+      damageInstances: [hit("jolt", "grenade.hit"), hit("jolt"), hit("ignition")],
+    };
+    const b = { ...base, damageInstances: [hit("volatile")] };
+    const counters = compareResults(a, b).filter((r) => r.key.startsWith("keyword:"));
+    expect(counters.map((r) => [r.key, r.a, r.b])).toEqual([
+      ["keyword:ignition", 1, 0],
+      ["keyword:jolt", 2, 0],
+      ["keyword:volatile", 0, 1],
+    ]);
+    expect(compareResults(base, base).some((r) => r.key.startsWith("keyword:"))).toBe(false);
   });
 
   it("has no relative change when the comparison is zero", () => {

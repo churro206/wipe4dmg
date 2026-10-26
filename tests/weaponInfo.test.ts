@@ -1,4 +1,4 @@
-// What the UI needs to know about the chosen weapon (W1-6): catalyst, ignitions, relevant effects.
+// What the UI needs to know about the chosen weapon (W1-6): catalyst, relevant effects.
 
 import { describe, expect, it } from "vitest";
 import rawEffects from "../src/data/effects.json";
@@ -9,7 +9,6 @@ import { loadWeapons } from "../src/engine/loadWeapon";
 import {
   effectRelevantTo,
   hasCatalyst,
-  hasIgnition,
   neededStatuses,
 } from "../src/engine/weaponInfo";
 import { testWeapon } from "./support/testWeapon";
@@ -26,14 +25,6 @@ describe("hasCatalyst", () => {
     expect(hasCatalyst(otv)).toBe(true);
     expect(hasCatalyst(pkg("Truth"))).toBe(true);
     expect(hasCatalyst(testWeapon)).toBe(false);
-  });
-});
-
-describe("hasIgnition", () => {
-  it("is true for weapons that apply scorch or have a threshold part", () => {
-    expect(hasIgnition(otv)).toBe(true);
-    expect(hasIgnition(pkg("Two-Tailed Fox"))).toBe(true);
-    expect(hasIgnition(pkg("Truth"))).toBe(false);
   });
 });
 
