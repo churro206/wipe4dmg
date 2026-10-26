@@ -1,5 +1,5 @@
 // Extended meta probe: all Aegis rows of exotic weapons (Sustained) and supers (Swap), made by rule
-// (tests/lib/probeAuto.ts) instead of by hand. Reference is the median of the hand-made entries
+// (scripts/lib/probeAuto.ts) instead of by hand. Reference is the median of the hand-made entries
 // (tests/metaProbe.test.ts). Rows whose assumptions we all have as switches are gated: outside the
 // tolerance, a row must be listed in tests/fixtures/meta-probe-auto.json with its reason. Rows with
 // an assumption without switch are only reported; their list of missing switches is the work list.
@@ -12,7 +12,7 @@ import { abilities, artifactData, effects, exoticArmor, weapons } from "../src/u
 import auto from "./fixtures/meta-probe-auto.json";
 import probe from "./fixtures/meta-probe.json";
 import { aegisTotal, ourTotal, type Entry } from "./lib/probe";
-import { autoEntries, type AutoEntry } from "./lib/probeAuto";
+import { autoEntries, type AutoEntry } from "../scripts/lib/probeAuto";
 
 const TOLERANCE = 0.15;
 
@@ -60,7 +60,7 @@ const insideOf = (list: typeof all) => list.filter((r) => !outside(r)).length;
 const table = [
   "# Gesamtprobe nach Regel (generiert)",
   "",
-  `Erzeugt mit \`npm run probe\` (\`tests/metaProbeAuto.test.ts\`, Regel in \`tests/lib/probeAuto.ts\`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (\`docs/meta-probe.md\`): ${median.toFixed(3)}. Grenze ±${TOLERANCE * 100} %.`,
+  `Erzeugt mit \`npm run probe\` (\`tests/metaProbeAuto.test.ts\`, Regel in \`scripts/lib/probeAuto.ts\`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (\`docs/meta-probe.md\`): ${median.toFixed(3)}. Grenze ±${TOLERANCE * 100} %.`,
   "",
   `Vollständig abgebildet (geprüft): ${gated.length}, davon innerhalb der Grenze ${insideOf(gated)}. Abweichungen stehen mit Grund in \`tests/fixtures/meta-probe-auto.json\` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): ${reported.length}, davon innerhalb der Grenze ${insideOf(reported)}. Nicht vergleichbar (übersprungen): ${skipped.length}.`,
   "",

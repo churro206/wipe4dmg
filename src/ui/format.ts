@@ -21,10 +21,6 @@ export const percent =new Intl.NumberFormat("en-US", {
   style: "percent",
   maximumFractionDigits: 0,
 });
-export const signedInteger = new Intl.NumberFormat("en-US", {
-  maximumFractionDigits: 0,
-  signDisplay: "exceptZero",
-});
 export const signedPercent = new Intl.NumberFormat("en-US", {
   style: "percent",
   maximumFractionDigits: 1,

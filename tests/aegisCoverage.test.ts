@@ -1,5 +1,5 @@
 // Coverage of the Aegis rows (block C): every row of the tabs Weapons, Sustained and Swap has one
-// verdict. Rule: tests/lib/aegisCoverage.ts. Table: npm run coverage (writes docs/aegis-coverage.md).
+// verdict. Rule: scripts/lib/aegisCoverage.ts. Table: npm run coverage (writes docs/aegis-coverage.md).
 
 import { describe, expect, it } from "vitest";
 import type { Ability, AegisTotalRow, AegisWeaponRow, Effect } from "../src/data/schema";
@@ -10,9 +10,9 @@ import {
   missingKeys,
   type CoverageInput,
   type CoverageRow,
-} from "./lib/aegisCoverage";
+} from "../scripts/lib/aegisCoverage";
 import { realCoverage, realMeasured } from "./lib/aegisCoverageData";
-import { missingImpact } from "./lib/missingImpact";
+import { missingImpact } from "../scripts/lib/missingImpact";
 import { aegisCoverageMarkdown } from "./support/aegisCoverageMarkdown";
 
 const weaponRow = (id: string, name: string, assumptions: string[] = []) =>

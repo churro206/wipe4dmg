@@ -1,6 +1,6 @@
 # Gesamtprobe nach Regel (generiert)
 
-Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `tests/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
+Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `scripts/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
 Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 111, davon innerhalb der Grenze 42. Nicht vergleichbar (übersprungen): 44.
 

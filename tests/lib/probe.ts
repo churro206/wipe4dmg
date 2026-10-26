@@ -5,14 +5,9 @@ import type { AegisTotalRow, Build } from "../../src/data/schema";
 import { buildSimulation } from "../../src/engine/buildSimulation";
 import { simulate } from "../../src/engine/simulate";
 import { buckets, gameData, weaponById } from "../../src/ui/data";
+import type { Entry } from "../../scripts/lib/probeAuto";
 
-export type Entry = {
-  aegisId: string;
-  kind: "weapon" | "ability";
-  build: Partial<Build>;
-  selections?: string[];
-  removed?: { column?: keyof AegisTotalRow; factor?: number; reason: string }[];
-};
+export type { Entry };
 
 // Long enough to fire all ammo of a heavy weapon and to finish a super.
 export const PHASE_SECONDS = 120;

@@ -3,7 +3,7 @@
 // The output has no date, so the comparison only fails when the data changes.
 
 import type { AbilityKind, Effect } from "../../src/data/schema";
-import type { countVerdicts } from "../lib/aegisCoverage";
+import type { countVerdicts } from "../../scripts/lib/aegisCoverage";
 import { REASON } from "../../scripts/lib/coverageCatalog";
 import type {
   AbilityCoverageRow,

@@ -1,4 +1,4 @@
-// Rule of block D (impact of what is missing): every missing key of the coverage (tests/lib/aegisCoverage.ts)
+// Rule of block D (impact of what is missing): every missing key of the coverage (scripts/lib/aegisCoverage.ts)
 // gets the effect Aegis measures for it.
 //   above   two rows of the same item in the same tab differ only by the key; their totals differ by at
 //           least the threshold (the larger effect of all pairs counts)
@@ -10,8 +10,8 @@
 //              "excludes ..."): needs a timing model or nothing
 // The ratio is the effect on the item, an upper bound of the effect on a build that uses it.
 
-import type { AegisTab, CoverageRow } from "./aegisCoverage";
-import { missingKeys } from "./aegisCoverage";
+import type { AegisTab, CoverageRow } from "./aegisCoverage.ts";
+import { missingKeys } from "./aegisCoverage.ts";
 
 export type MeasuredRow = {
   tab: AegisTab;

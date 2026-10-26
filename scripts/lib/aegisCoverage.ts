@@ -10,8 +10,8 @@ import type {
   AegisTotalRow,
   AegisWeaponRow,
   Effect,
-} from "../../src/data/schema";
-import type { ReportWeapon } from "../../scripts/lib/weaponPackages";
+} from "../../src/data/schema.ts";
+import type { ReportWeapon } from "./weaponPackages.ts";
 
 export type Verdict = "model" | "skipped" | "missing";
 export type AegisTab = "weapons" | "sustained" | "swap";
@@ -193,8 +193,6 @@ export function aegisCoverage(input: CoverageInput): CoverageRow[] {
   }
   return rows;
 }
-
-export const VERDICTS: Verdict[] = ["model", "skipped", "missing"];
 
 /** Counts per tab and verdict. */
 export function countVerdicts(rows: CoverageRow[]) {

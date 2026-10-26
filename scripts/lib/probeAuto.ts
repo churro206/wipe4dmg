@@ -7,10 +7,19 @@ import type {
   Ability,
   AegisTotalRow,
   ArtifactPerk,
+  Build,
   ExoticArmorEntry,
   Weapon,
-} from "../../src/data/schema";
-import type { Entry } from "./probe";
+} from "../../src/data/schema.ts";
+
+/** One row of the Aegis tabs "Sustained" and "Swap" rebuilt as a build. */
+export type Entry = {
+  aegisId: string;
+  kind: "weapon" | "ability";
+  build: Partial<Build>;
+  selections?: string[];
+  removed?: { column?: keyof AegisTotalRow; factor?: number; reason: string }[];
+};
 
 type NamedEffect = { id: string; name: string };
 

@@ -1,9 +1,9 @@
 // Impact of what is missing (block D): every missing key of the coverage gets the effect Aegis measures
-// for it, from two rows of the same item that differ only by that key. Rule: tests/lib/missingImpact.ts.
+// for it, from two rows of the same item that differ only by that key. Rule: scripts/lib/missingImpact.ts.
 
 import { describe, expect, it } from "vitest";
-import type { CoverageRow } from "./lib/aegisCoverage";
-import { missingImpact, type MeasuredRow } from "./lib/missingImpact";
+import type { CoverageRow } from "../scripts/lib/aegisCoverage";
+import { missingImpact, type MeasuredRow } from "../scripts/lib/missingImpact";
 
 const missing = (id: string, keys: string[], tab: CoverageRow["tab"] = "sustained") =>
   ({ tab, id, label: id, verdict: "missing", detail: "", keys }) as CoverageRow;

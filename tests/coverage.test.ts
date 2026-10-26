@@ -11,7 +11,7 @@ import {
 } from "../src/data/schema";
 import { abilityCoverage } from "../src/engine/coverage";
 import { abilities, aegisRows, effects } from "../src/ui/data";
-import { countVerdicts } from "./lib/aegisCoverage";
+import { countVerdicts } from "../scripts/lib/aegisCoverage";
 import { realCoverage } from "./lib/aegisCoverageData";
 
 const source = {

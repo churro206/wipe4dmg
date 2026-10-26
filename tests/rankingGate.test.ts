@@ -9,7 +9,7 @@ import { abilities, artifactData, effects, exoticArmor, weapons } from "../src/u
 import auto from "./fixtures/meta-probe-auto.json";
 import probe from "./fixtures/meta-probe.json";
 import { aegisTotal, ourTotal, type Entry } from "./lib/probe";
-import { autoEntries } from "./lib/probeAuto";
+import { autoEntries } from "../scripts/lib/probeAuto";
 import { deltaPairs, spearman, topHits, type Item } from "./lib/ranking";
 
 import deviations from "./fixtures/ranking-gate.json";

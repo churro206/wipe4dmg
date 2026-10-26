@@ -6,8 +6,8 @@ import {
   type AegisTab,
   type CoverageRow,
   type Verdict,
-} from "../lib/aegisCoverage";
-import type { ImpactVerdict, KeyImpact } from "../lib/missingImpact";
+} from "../../scripts/lib/aegisCoverage";
+import type { ImpactVerdict, KeyImpact } from "../../scripts/lib/missingImpact";
 
 const TABS: { tab: AegisTab; title: string }[] = [
   { tab: "weapons", title: "Weapons" },
@@ -42,7 +42,7 @@ export function aegisCoverageMarkdown(rows: CoverageRow[], impacts: KeyImpact[])
   const lines = [
     "# Abdeckung der Aegis-Zeilen",
     "",
-    "Generiert von `npm run coverage` (`tests/lib/aegisCoverage.ts`), nicht von Hand bearbeiten. Jede Zeile der Reiter Weapons, Sustained und Swap hat ein Urteil:",
+    "Generiert von `npm run coverage` (`scripts/lib/aegisCoverage.ts`), nicht von Hand bearbeiten. Jede Zeile der Reiter Weapons, Sustained und Swap hat ein Urteil:",
     "**im Modell** (Zeile genutzt oder geprüft, oder das Item steckt mit allen Annahmen im Modell), **übersprungen** (mit Grund) oder **fehlt** (Item oder Annahme nicht im Modell). Legendary Frames sind übersprungen (Inhaber, 2026-10-25).",
     "",
     "## Übersicht",
@@ -56,7 +56,7 @@ export function aegisCoverageMarkdown(rows: CoverageRow[], impacts: KeyImpact[])
     "",
     "## Was fehlt",
     "",
-    "Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`tests/lib/missingImpact.ts`). Die Wirkung kommt aus zwei Aegis-Zeilen desselben Items im selben Reiter, die sich nur um den Eintrag unterscheiden (größte Abweichung aller Paare); sie gilt für das Item, ist also eine Obergrenze für einen Build. Schwelle 2 % (`CLAUDE.md`, „Breite vor Genauigkeit“). Das ist die Arbeitsliste für die nächsten Kategorie-Blöcke.",
+    "Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`scripts/lib/missingImpact.ts`). Die Wirkung kommt aus zwei Aegis-Zeilen desselben Items im selben Reiter, die sich nur um den Eintrag unterscheiden (größte Abweichung aller Paare); sie gilt für das Item, ist also eine Obergrenze für einen Build. Schwelle 2 % (`CLAUDE.md`, „Breite vor Genauigkeit“). Das ist die Arbeitsliste für die nächsten Kategorie-Blöcke.",
     "",
     "| Eintrag | Zeilen | Urteil | Wirkung | Paare |",
     "| --- | ---: | --- | ---: | ---: |",
