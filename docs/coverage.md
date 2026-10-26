@@ -10,7 +10,7 @@ Legend: ✅ Parts = own Damage Instances from the Compendium, checked against Ae
 
 | Kind | ✅ Parts | 🟡 Package | 🔵 Buff only | ❌ missing | Total |
 | --- | --- | --- | --- | --- | --- |
-| Supers | 2 | 25 | 1 | 3 | 31 |
+| Supers | 2 | 26 | 1 | 2 | 31 |
 | Grenades | 7 | 19 | 0 | 4 | 30 |
 | Melees | 12 | 12 | 0 | 2 | 26 |
 | Effects | 103 modelled | | | | |
@@ -42,7 +42,7 @@ Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the m
 | Solar | Burning Maul | 🟡 Package | exact | `super-burning-maul-light-attacks-sol-invictus-ember-of-ashes` |
 | Solar | Hammer of Sol | 🟡 Package | exact | `super-hammer-of-sol` |
 | Solar | Hammer of Sol (Sol Invictus Aspect) | ❌ missing | – | Aegis only measures with buffs that are not an effect yet |
-| Solar | Song of Flame | ❌ missing | – | Aegis values not normalised (buffs in the value) |
+| Solar | Song of Flame | 🟡 Package | exact | `super-song-of-flame-snap-spam` |
 | Solar | Daybreak | 🟡 Package | exact | `super-daybreak-ember-of-ashes` |
 | Solar | Well of Radiance | 🔵 Buff only | estimate | – |
 | Void | Spectral Blades | 🟡 Package | exact | `super-spectral-blades-light-attacks` |

@@ -123,6 +123,10 @@ const gated = abilities.filter((a) => a.aegisRowId);
 const SWAP_BASE: Record<string, string> = {
   "super-glacial-quake-heavy-attacks":
     "Swap bases ≈ Abilities rows: heavy attacks + Biotic Enhancements 60,066 vs 62,925, + Feast of Light x6 + Hail the Storm 84,125 vs 81,892",
+  "super-song-of-flame-snap-spam":
+    "All Song of Flame rows have Full Modifiers 1.00 and Swap takes them as base (Warlord's Fury, One-Two Punch, Celestial Fire spam, Ember of Ashes, Shieldcrush: 90,741 vs 110,884); stat 200 / 100 = 1.450, the full super stat; Flat Gain / Aegis ×1.49 like the normalised supers",
+  "super-song-of-flame-dawn-chorus-snap-spam":
+    "same block as snap spam, with Dawn Chorus",
 };
 
 describe("ability gate against Aegis", () => {

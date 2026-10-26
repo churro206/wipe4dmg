@@ -22,7 +22,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | blighted | 3 | über Schwelle | +25,0 % | 3 |
 | no ignitions | 1 | über Schwelle | -23,7 % | 1 |
 | blight | 1 | über Schwelle | -19,6 % | 1 |
-| super: Song of Flame | 8 | Item fehlt |  |  |
+| One-Two Punch | 1 | über Schwelle | +16,1 % | 1 |
+| Saint's Fists | 2 | über Schwelle | +2,3 % | 1 |
 | melee: Grapple melee | 5 | Item fehlt |  |  |
 | super: Silence and Squall | 4 | Item fehlt |  |  |
 | Wolfsbane (no package) | 4 | Item fehlt |  |  |
@@ -50,9 +51,11 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Solar Fulmination | 6 | kein Paar, Wert aus Text |  |  |
 | Pack Hunter | 5 | kein Paar, Wert aus Text |  |  |
 | Burning Ambition | 4 | kein Paar, Wert aus Text |  |  |
+| Celestial Fire spam | 4 | kein Paar, Wert aus Text |  |  |
 | Harsh Refraction | 4 | kein Paar, Wert aus Text |  |  |
 | Jagged Edge | 4 | kein Paar, Wert aus Text |  |  |
 | Sword Storm Combo | 3 | kein Paar, Wert aus Text |  |  |
+| Warlord's Fury | 3 | kein Paar, Wert aus Text |  |  |
 | Bull Rider | 2 | kein Paar, Wert aus Text |  |  |
 | Cabal | 2 | kein Paar, Wert aus Text |  |  |
 | Composite Propellant x5 | 2 | kein Paar, Wert aus Text |  |  |
@@ -64,8 +67,10 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Target Lock | 2 | kein Paar, Wert aus Text |  |  |
 | Thread of Continuity | 2 | kein Paar, Wert aus Text |  |  |
 | Assault Mag | 1 | kein Paar, Wert aus Text |  |  |
+| Claws of Ahamkara + Necrotic Grip | 1 | kein Paar, Wert aus Text |  |  |
 | Facet of Command | 1 | kein Paar, Wert aus Text |  |  |
 | Facet of Ruin | 1 | kein Paar, Wert aus Text |  |  |
+| Feast of Light x6 + Necrotic Grip | 1 | kein Paar, Wert aus Text |  |  |
 | Grenades Prepped | 1 | kein Paar, Wert aus Text |  |  |
 | HLLLHLLLLHLLLH | 1 | kein Paar, Wert aus Text |  |  |
 | HLLLHLLLLHLLLLH | 1 | kein Paar, Wert aus Text |  |  |
@@ -103,6 +108,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | 1H2L combo | 3 | Spielweise oder Notiz |  |  |
 | light attacks | 3 | Spielweise oder Notiz |  |  |
 | simulated | 3 | Spielweise oder Notiz |  |  |
+| snap spam | 3 | Spielweise oder Notiz |  |  |
 | 1 mag | 2 | Spielweise oder Notiz |  |  |
 | 2L1H combo | 2 | Spielweise oder Notiz |  |  |
 | 2L1H1R combo | 2 | Spielweise oder Notiz |  |  |
@@ -167,6 +173,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | up to Rewind end | 1 | Spielweise oder Notiz |  |  |
 | vortex frame | 1 | Spielweise oder Notiz |  |  |
 | wave frame | 1 | Spielweise oder Notiz |  |  |
+| wisp/snap cycling | 1 | Spielweise oder Notiz |  |  |
 | with corruption | 1 | Spielweise oder Notiz |  |  |
 | x20 first shot | 1 | Spielweise oder Notiz |  |  |
 | assumes at least 2 orb pickups per mag | 2 | unter Schwelle | +0,0 % | 1 |
@@ -892,7 +899,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Gathering Storm, Feast of Light x6, Limit Break | im Modell | gate: probe entry by rule |
 | Hellion, Ember of Ashes | im Modell | own damage of an aspect or fragment (rule H) |
 | Whirling Maelstrom, Untold Greed x5 | übersprungen | burst before the swap; the simulation fires the whole phase |
-| Song of Flame, Warlord's Fury, One-Two Punch, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | super not in the model |
+| Song of Flame, Warlord's Fury, One-Two Punch, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | no switch for: Warlord's Fury; One-Two Punch; Celestial Fire spam |
 | Needlestorm, Thread of Evolution, Pack Tactics x2 | fehlt | no switch for: Pack Tactics x2 |
 | Silence and Squall, Whisper of Fissures, Whisper of Durance, Feast of Light x6, Limit Break | fehlt | super not in the model |
 | Finality's Auger, assumes pre-loaded turret, painted target, Bait and Switch, Ruinscribe Turret Mode | übersprungen | burst before the swap; the simulation fires the whole phase |
@@ -903,7 +910,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Nova Bomb - Cataclysm, Facet of Courage, Limit Break | im Modell | gate: probe entry by rule |
 | Legend of Acrius, body, Arc Compounding | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Glacial Quake, heavy attacks, Feast of Light x6, Hail the Storm | fehlt | no switch for: heavy attacks; Hail the Storm |
-| Song of Flame, Warlord's Fury, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | super not in the model |
+| Song of Flame, Warlord's Fury, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | no switch for: Warlord's Fury; Celestial Fire spam |
 | Izanagi's Burden, includes re-hone time, Kinetic Rupture, Sniper's Meditation x5 | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Nova Bomb - Cataclysm, Skull of Dire Ahamkara, Facet of Courage, Limit Break | fehlt | no switch for: Skull of Dire Ahamkara (ownDamage) |
 | Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | im Modell | gate: probe entry by rule |
@@ -928,7 +935,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Heirloom, uncharged, Moebius Quiver | übersprungen | burst before the swap; the simulation fires the whole phase |
 | New Land Beyond, The Master x20, Kinetic Holster, Sniper's Meditation x5, no catalyst | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Witherhoard, direct impact | übersprungen | burst before the swap; the simulation fires the whole phase |
-| Song of Flame, Warlord's Fury, Saint's Fists, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | super not in the model |
+| Song of Flame, Warlord's Fury, Saint's Fists, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | no switch for: Warlord's Fury; Saint's Fists; Celestial Fire spam |
 | Rapid-fire grenade launcher, Spike Grenades, e. Cascade Point + e. Surrounded (VS Chill Inhibitor), 8 shots | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Rapid-fire grenade launcher, Spike Grenades, e. Cascade Point + e. Explosive Light (VS Chill Inhibitor), 8 shots | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Shadowshot: Moebius Quiver, Feast of Light x6, full bow charge, both volleys, assumes no other debuff, Limit Break | fehlt | no switch for: full bow charge; both volleys; assumes no other debuff |
@@ -978,7 +985,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Lightweight shotgun, body, All-Star (Reckless Endangerment), 1 shot | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Adaptive grenade launcher, Spike Grenades, Cascade Point (Edge Transit), 8 shots | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Ice Breaker | übersprungen | burst before the swap; the simulation fires the whole phase |
-| Song of Flame, Dawn Chorus, Saint's Fists, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | super not in the model |
+| Song of Flame, Dawn Chorus, Saint's Fists, Celestial Fire spam, Ember of Ashes, Shieldcrush | fehlt | no switch for: Saint's Fists; Celestial Fire spam |
 | Gjallarhorn, 2 shots, Argent Ordnance | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Hammer of Sol, Roaring Flames x3, Sol Invictus, Ember of Ashes, Biotic Enhancements, Limit Break | fehlt | no switch for: Roaring Flames x3 |
 | Storm's Edge, body, Feast of Light x6, Facet of Courage, all three casts, Thunderous Retort | fehlt | no switch for: body; all three casts |
@@ -1018,7 +1025,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Stormtrance, Feast of Light x6, Facet of Courage, Thunderous Retort | im Modell | gate: probe entry by rule |
 | Daybreak, Dawn Chorus, Ember of Ashes, grounded, Limit Break | fehlt | no switch for: grounded |
 | Bladefury, HLLLLL, Banner of War, Biotic Enhancements, Thread of Continuity, Limit Break | fehlt | no switch for: HLLLLL; Thread of Continuity |
-| Song of Flame, snap spam, Dawn Chorus, Shieldcrush | fehlt | super not in the model |
+| Song of Flame, snap spam, Dawn Chorus, Shieldcrush | fehlt | no switch for: snap spam |
 | Fusion grenade, Touch of Flame, Ember of Ashes, Sticker Shock | im Modell | grenade in the model, value not probed |
 | Hawkmoon, primed with 3 heavy burst HC bursts, 9 shots, Paracausal Shot, Illegally Modded Holster | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Sentinel Shield, Biotic Enhancements, grounded spam, Shieldcrush | fehlt | no switch for: grounded spam |
@@ -1044,7 +1051,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Shadowshot: Moebius Quiver, both volleys, assumes no other debuff, Limit Break | fehlt | no switch for: both volleys; assumes no other debuff |
 | Pulse grenade, Facet of Courage | im Modell | grenade in the model, value not probed |
 | Malfeasance, 17 shot burst, Illegally Modded Holster | übersprungen | burst before the swap; the simulation fires the whole phase |
-| Song of Flame, Feast of Light x6 + Necrotic Grip, wisp/snap cycling, Facet of Courage, Shieldcrush | fehlt | super not in the model |
+| Song of Flame, Feast of Light x6 + Necrotic Grip, wisp/snap cycling, Facet of Courage, Shieldcrush | fehlt | no switch for: Feast of Light x6 + Necrotic Grip; wisp/snap cycling |
 | Tessellation, Property: Irreducible, includes re-proc time, Transcendent but excludes 5% | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Fists of Havoc, light attacks, Biotic Enhancements, Shieldcrush | fehlt | no switch for: light attacks |
 | Rapid-fire fusion rifle, Charge MW, Accelerated Coils, Aggregate Charge x3 (Cartesian Coordinate), 1 shot | übersprungen | burst before the swap; the simulation fires the whole phase |
@@ -1052,8 +1059,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`te
 | Tractor Cannon | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Scatter grenade, Chaos Accelerant | im Modell | grenade in the model, value not probed |
 | Winter's Wrath, Ballidorse Wrathweavers, light-heavy cycle, Whisper of Fissures, Limit Break | fehlt | no switch for: light-heavy cycle; Whisper of Fissures |
-| Song of Flame, snap spam, Shieldcrush | fehlt | super not in the model |
-| Song of Flame, Claws of Ahamkara + Necrotic Grip, snap spam, Facet of Courage, Shieldcrush | fehlt | super not in the model |
+| Song of Flame, snap spam, Shieldcrush | fehlt | no switch for: snap spam |
+| Song of Flame, Claws of Ahamkara + Necrotic Grip, snap spam, Facet of Courage, Shieldcrush | fehlt | no switch for: Claws of Ahamkara + Necrotic Grip; snap spam |
 | Precision hand cannon, 17 shot burst, e. Precision Instrument (Sightline Survey), Illegally Modded Holster | übersprungen | burst before the swap; the simulation fires the whole phase |
 | Tripmine grenade, Young Ahamkara's Spine, Ember of Ashes | im Modell | grenade in the model, value not probed |
 | Solar grenade, Ember of Ashes | im Modell | grenade in the model, value not probed |

@@ -1241,6 +1241,27 @@ describe("supers take time like in the game", () => {
     expect(total).toBeGreaterThan(12 * 568);
   });
 
+  it("Song of Flame: snap spam over the Flat Gain window, Aegis' value without buffs (Q2)", () => {
+    const r = superRun("warlock", "solar", "song-of-flame");
+    // the weapon (One Thousand Voices) ignites after the window
+    const ignitions = r.damageInstances.filter(
+      (d) => d.keywordId === "ignition" && d.timeMs < r.superWindows[0].endMs,
+    );
+    const total = damageOf(r, "super");
+    const snaps = new Set(hits(r)).size;
+    const snap = 176 + 676; // Aegis Testing, base column
+    note(
+      "Song of Flame: Snaps, eigene Ignitions, Fenster, Summe",
+      `${snaps} Snaps, ${ignitions.length}, Fenster ${r.superWindows[0].endMs} ms, ${Math.round(total)}`,
+      "7 Snaps à 852 (Testing) + je eine Ignition à 1553 im Paket = 16 835, Aegis „snap spam“ 16 658; keine zweite Ignition obendrauf; 12,53 s (Flat Gain)",
+    );
+    expect(snaps).toBe(7);
+    expect(ignitions).toHaveLength(0);
+    expect(r.superWindows[0].endMs).toBe(12530);
+    expect(total / 16658).toBeCloseTo(1, 2);
+    expect(Math.abs((snaps * (snap + 1553)) / 16658 - 1)).toBeLessThan(0.05);
+  });
+
   it("Nova Bomb: the bomb needs its cast before it hits", () => {
     const r = superRun("warlock", "void", "nova-bomb-cataclysm");
     note(

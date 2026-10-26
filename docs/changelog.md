@@ -2,6 +2,8 @@
 
 ## Unveröffentlicht
 
+- **Q2d Song of Flame (2026-10-26):** Neuer Super (Code 91) aus der Aegis-Zeile „snap spam“ (16 658 bei Stat 100, ×1,450 bei 200); Ausnahme im Ability-Gate wie Glacial Quake (Swap nimmt die Zeilen als Basis), dazu die Variante mit Dawn Chorus. Timing: 7 Snaps über Flat Gains 12,53 s, hergeleitet aus Aegis Testing (Snap 852 + eine Ignition 1553 je Snap: 7 × 2405 = 16 835, +1 %). Keyword-Bau: Stapel „einmal pro Einsatz“ werden für das Paket so auf die Treffer verteilt wie in der Engine (vorher je Treffer gezählt; Daybreak, Golden Gun, Stormtrance unverändert). Szenario im Gate.
+
 - **Q2c Bladefury (2026-10-26):** Neuer Super (Code 90) aus der Aegis-Zeile „HLLLHLLLLHLLLLH, Feast of Light x6“, geteilt durch den Feast-Faktor, den Aegis an Glacial Quake misst (64 095 / 44 790 = 1,431): 14 121 bei Stat 100. Neues Feld `includedFactor` in `abilities.json` (Engine: `packageComponents` teilt das Paket, Varianten erben es nicht; Ability-Gate rechnet es heraus). Gegenprobe über die Banner-of-War-Zeile ohne Biotic (×1,405 an Glacial Quake): 14 744, 4 % daneben. Timing nach K2-Regel: 30 Treffer, 11,1 s (Flat Gain). Szenario im Gate.
 
 - **Q2b Glacial Quake (2026-10-26):** Neuer Super (Code 89) aus der Aegis-Zeile „heavy attacks“ (44 790 bei Stat 100). Die Zeile hat Full Modifiers 1,00, aber Aegis Swap nimmt die Glacial-Quake-Zeilen selbst als normalisierte Basis (60 066 gegen 62 925, 84 125 gegen 81 892); Ausnahme mit Grund im Ability-Gate. Timing nach K2-Regel: Gemini-Form (15 Slams) auf Flat Gains 15,72 s gestreckt. Gegenprobe Aegis Testing: Punch 681 + 9 Kristalle × 646 je Slam, Summe entspricht 6,9 Slams (Gate 5 bis 7). Szenario im Gate.

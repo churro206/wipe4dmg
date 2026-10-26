@@ -60,6 +60,10 @@ describe("abilityKeywords", () => {
     // Burning Maul: the cyclone's x3 never fills the counter
     expect(of("burning-maul")[0].bakedInPackage).toBeUndefined();
     expect(of("daybreak")[0].bakedInPackage?.triggers).toBeGreaterThanOrEqual(4);
+    // Song of Flame: x60 once per use, spread over its snaps like the engine does, never fills the
+    // counter; the package keeps the ignitions Aegis measured
+    expect(value(of("song-of-flame")[0].stacksPerUse)).toBe(60);
+    expect(of("song-of-flame")[0].bakedInPackage).toBeUndefined();
   });
 
   it("counts the jolts inside a super row without ticks by replaying its hits", () => {

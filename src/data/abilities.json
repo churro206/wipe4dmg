@@ -506,6 +506,19 @@
     "package": true
   },
   {
+    "id": "song-of-flame",
+    "code": 91,
+    "name": "Song of Flame",
+    "kind": "super",
+    "element": "solar",
+    "compendium": {
+      "tab": "Solar",
+      "entry": "Song of Flame"
+    },
+    "aegisRowId": "super-song-of-flame-snap-spam",
+    "package": true
+  },
+  {
     "id": "well-of-radiance",
     "code": 14,
     "name": "Well of Radiance",

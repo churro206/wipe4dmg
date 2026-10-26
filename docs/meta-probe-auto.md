@@ -2,7 +2,7 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `tests/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 103, davon innerhalb der Grenze 41. Nicht vergleichbar (übersprungen): 44.
+Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 111, davon innerhalb der Grenze 42. Nicht vergleichbar (übersprungen): 44.
 
 ## Vollständig abgebildet
 
@@ -42,6 +42,9 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 
 | Aegis-Zeile | Aegis | Modell | relativ | ohne Schalter |
 | --- | ---: | ---: | ---: | --- |
+| Song of Flame | 184,388 | 31,400 | 0.170 | Warlord's Fury; One-Two Punch; Celestial Fire spam |
+| Song of Flame | 162,363 | 31,400 | 0.193 | Warlord's Fury; Saint's Fists; Celestial Fire spam |
+| Song of Flame | 158,760 | 31,400 | 0.198 | Warlord's Fury; Celestial Fire spam |
 | Divinity | 75,483 | 17,359 | 0.230 | held down; includes jolt; Harsh Refraction |
 | Still Hunt | 133,562 | 37,289 | 0.279 | pre-popped into 6 shot cycle; Incendiary Rifle Rounds; Solar Fulmination; assumes at least 2 orb pickups per mag |
 | Still Hunt | 129,880 | 37,289 | 0.287 | pre-popped into 6 shot cycle; assumes at least 2 orb pickups per mag |
@@ -54,6 +57,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Burning Maul | 49,559 | 22,006 | 0.444 | heavy attacks; Roaring Flames x3 |
 | Sentinel Shield | 43,019 | 19,122 | 0.445 | grounded spam |
 | Still Hunt | 81,119 | 37,289 | 0.460 | pre-popped into 6 shot cycle |
+| Song of Flame | 107,344 | 50,420 | 0.470 | Saint's Fists; Celestial Fire spam |
 | Euphony | 142,542 | 68,125 | 0.478 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
 | Choir of One | 144,867 | 76,675 | 0.529 | hitscan mode; precision |
 | Euphony | 128,701 | 68,125 | 0.529 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
@@ -74,10 +78,12 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Silkstrike | 59,072 | 39,394 | 0.667 | light attack spam |
 | Spectral Blades | 57,656 | 38,465 | 0.667 | light attack spam |
 | Glacial Quake | 113,223 | 76,514 | 0.676 | heavy attacks |
+| Song of Flame | 77,545 | 52,730 | 0.680 | snap spam |
 | Edge of Concurrence | 50,199 | 34,161 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
 | Bladefury | 39,040 | 26,619 | 0.682 | HLLLHLLLLHLLLH; Thread of Continuity |
 | Bastion | 119,327 | 82,294 | 0.690 | Saint's Fury; includes melee time |
 | Truth | 119,636 | 82,636 | 0.691 | Prototype Truthseeker |
+| Song of Flame | 47,106 | 32,555 | 0.691 | snap spam |
 | Burning Maul | 76,665 | 55,015 | 0.718 | heavy attacks; Roaring Flames x3 |
 | Dragon's Breath | 153,290 | 110,995 | 0.724 | auto-loaded; Composite Propellant x5 |
 | Burning Maul | 30,129 | 22,006 | 0.730 | light attacks; Roaring Flames x3 |
@@ -96,6 +102,8 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Shadowshot: Moebius Quiver | 19,977 | 15,811 | 0.791 | full bow charge; both volleys; assumes no other debuff |
 | The Lament | 217,268 | 178,806 | 0.823 | 2L1H combo; Solar Fulmination |
 | Slayer's Fang | 83,139 | 69,713 | 0.839 | Assault Mag; includes submunitions |
+| Song of Flame | 42,520 | 35,696 | 0.839 | Claws of Ahamkara + Necrotic Grip; snap spam |
+| Song of Flame | 41,460 | 35,696 | 0.861 | Feast of Light x6 + Necrotic Grip; wisp/snap cycling |
 | Ergo Sum | 108,087 | 93,245 | 0.863 | vortex frame; Tempered Edge; heavy spam; Transcendent; excludes Transcendence 5% bonus |
 | Needlestorm | 24,214 | 20,926 | 0.864 | Pack Tactics x2 |
 | Tessellation | 154,322 | 138,544 | 0.898 | full grenade uptime; Property: Irreducible; Transcendent but excludes 5%; simulated |
@@ -158,6 +166,7 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - Transcendent: 5
 - body: 4
 - both volleys: 4
+- Celestial Fire spam: 4
 - Harsh Refraction: 4
 - Jagged Edge: 4
 - pre-popped into 6 shot cycle: 4
@@ -165,7 +174,9 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - full bow charge: 3
 - light attacks: 3
 - simulated: 3
+- snap spam: 3
 - Sword Storm Combo: 3
+- Warlord's Fury: 3
 - 2L1H combo: 2
 - 2L1H1R combo: 2
 - 3L1H1R combo: 2
@@ -188,6 +199,7 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - Pack Tactics x2: 2
 - precision: 2
 - projectile: 2
+- Saint's Fists: 2
 - starts at 0 stacks: 2
 - Thread of Continuity: 2
 - uncharged: 2
@@ -206,8 +218,10 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - axe light attack spam: 1
 - boss against wall: 1
 - charged: 1
+- Claws of Ahamkara + Necrotic Grip: 1
 - Facet of Command: 1
 - Facet of Ruin: 1
+- Feast of Light x6 + Necrotic Grip: 1
 - full grenade uptime: 1
 - fully charged: 1
 - grounded: 1
@@ -234,6 +248,7 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - max projectile height: 1
 - Moebius Quiver: 1
 - no ignitions: 1
+- One-Two Punch: 1
 - Paracausal Imbuement: 1
 - per cast: 1
 - pre-popped: 1
@@ -260,6 +275,7 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - vortex frame: 1
 - wave frame: 1
 - Whisper of Fissures: 1
+- wisp/snap cycling: 1
 - with corruption: 1
 - x20 first shot: 1
 

@@ -151,6 +151,29 @@
     }
   },
   {
+    "abilityId": "song-of-flame",
+    "keywordId": "ignition",
+    "stacksPerUse": {
+      "value": 60,
+      "source": {
+        "name": "Destiny Data Compendium, Solar (Song of Flame)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-10-21",
+        "status": "unverified",
+        "quote": "inflicts x60+30 Scorch",
+        "note": "Largest quoted stacks of the entry, as one hit per use"
+      }
+    },
+    "source": {
+      "name": "Destiny Data Compendium, Solar (Song of Flame)",
+      "url": "https://destiny2.science/data-compendium",
+      "retrieved": "2026-10-21",
+      "status": "unverified",
+      "quote": "inflicts x60+30 Scorch",
+      "note": "Largest quoted stacks of the entry, as one hit per use"
+    }
+  },
+  {
     "abilityId": "nova-warp",
     "keywordId": "volatile",
     "source": {

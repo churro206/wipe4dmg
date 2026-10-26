@@ -6,7 +6,7 @@ Erzeugt mit `npm run probe` (`tests/rankingGate.test.ts`). Gruppen nach der Spal
 
 | Gruppe | Aegis-Zeilen | im Modell | Abdeckung | geprüft | Spearman | Treffer | alle | Spearman | Treffer |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Supers | 68 | 56 | 82 % | 18 | 0.99 | 3/3 | 56 | 0.78 | 2/3 |
+| Supers | 68 | 64 | 94 % | 18 | 0.99 | 3/3 | 64 | 0.73 | 0/3 |
 | Heavy | 95 | 46 | 48 % | 19 | 1.00 | 3/3 | 46 | 0.87 | 2/3 |
 | Special | 84 | 44 | 52 % | 6 | 1.00 | 3/3 | 44 | 0.51 | 2/3 |
 

@@ -732,7 +732,7 @@ describe("src/data/coverage-catalog.json", () => {
     const find = (id: string, name: string) =>
       catalog.find((c) => c.id === id)!.entries.find((e) => e.name === name);
     expect(find("abilities", "Thundercrash")?.status).not.toBe("missing");
-    expect(find("abilities", "Song of Flame")?.status).toBe("missing");
+    expect(find("abilities", "Hammer of Sol (Sol Invictus Aspect)")?.status).toBe("missing");
     expect(find("weapons", "One Thousand Voices")?.status).toBe("full");
   });
 });

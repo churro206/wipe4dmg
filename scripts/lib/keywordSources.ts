@@ -395,10 +395,13 @@ export function abilityKeywords(inputs: KeywordInputs): {
       } else if (row && wipe && timing) {
         // A super row names no ticks, but its measurement holds the triggers of its hits: replay the
         // hits with the keyword cooldown, and take the trigger value from the keyword's own Aegis row.
+        // Stacks per hit as the engine spreads them: once per use is spread over the hits.
         const baked = superTriggers(
           timing,
-          (chosen.stacks ?? 0) +
-            (row.assumptions.some((a) => EMBER.test(a)) ? (chosen.emberStacks ?? 0) : 0),
+          (((chosen.stacks ?? 0) +
+            (row.assumptions.some((a) => EMBER.test(a)) ? (chosen.emberStacks ?? 0) : 0)) *
+            shots) /
+            hits,
           keyword,
           inputs.aegisRows,
           Number(wipe[1]),

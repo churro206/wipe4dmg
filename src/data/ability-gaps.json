@@ -9,14 +9,6 @@
   },
   {
     "compendium": {
-      "tab": "Solar",
-      "entry": "Song of Flame"
-    },
-    "reason": "aegisNotNormalised",
-    "note": "All Aegis rows have Full Modifiers 1.00, so their buffs are inside the values."
-  },
-  {
-    "compendium": {
       "tab": "Void",
       "entry": "Ward of Dawn"
     },

@@ -551,6 +551,53 @@
     }
   },
   {
+    "abilityId": "song-of-flame",
+    "firstHitMs": {
+      "value": 1790,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Song of Flame)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "unverified",
+        "quote": "Solar\tWarlock\t\tSong of Flame\tMix\t\t36,048\t12.53s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:35, \"Cast Time / Lock\" at Super 200. Derived (Q2): no Gemini row, so the 7 snaps are spread evenly over the lock, one interval (12530 ms ÷ 7) after the cast."
+      }
+    },
+    "hitIntervalMs": {
+      "value": 1790,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Song of Flame)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "unverified",
+        "quote": "Solar\tWarlock\t\tSong of Flame\tMix\t\t36,048\t12.53s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:35, \"Cast Time / Lock\" at Super 200. Derived (Q2): 12530 ms ÷ 7 snaps."
+      }
+    },
+    "hits": {
+      "value": 7,
+      "source": {
+        "name": "Aegis Boss Damage sheet (tab Testing)",
+        "url": "https://destiny2.science/boss-damage",
+        "retrieved": "2026-10-25",
+        "status": "unverified",
+        "quote": "song of flame\tsnap 176+676 wisp 910+998",
+        "note": "docs/sources/sheets/aegis/247390216-testing.tsv:20. Derived (Q2): a snap of 852 sets 7 sparks × x20 Scorch (Compendium, Incinerator Snap), one ignition of 1553 per snap at most every 1.3 s; n × (852 + 1553) = 16658 (snap spam row of the tab Abilties) gives n = 6.9, so 7 snaps (16835, +1 %)."
+      }
+    },
+    "weaponReadyMs": {
+      "value": 12530,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Song of Flame)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Solar\tWarlock\t\tSong of Flame\tMix\t\t36,048\t12.53s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:35, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
+      }
+    }
+  },
+  {
     "abilityId": "arc-staff",
     "firstHitMs": {
       "value": 700,

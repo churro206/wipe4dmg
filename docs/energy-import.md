@@ -2,7 +2,7 @@
 
 Generiert von `npm run build:energy` (`scripts/lib/energy.ts`). Nicht von Hand ändern.
 
-Cooldowns: 87 von 87 Abilities.
+Cooldowns: 88 von 88 Abilities.
 Compendium-Zeilen zu Energie: 220, übernommen 22, übersprungen 198, offen 0.
 
 | Quelle | Reiter | Item | Zeile | Urteil | Ziel oder Grund |

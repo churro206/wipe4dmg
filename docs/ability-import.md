@@ -4,7 +4,7 @@ Generiert von `npm run build:abilities` (ADR 0009, U9). Nicht von Hand ändern.
 
 Teile pro Treffer aus dem Compendium-Text, mal Treffer aus `super-timings.json`, plus Keyword-Schaden wie von Aegis gemessen. Gate ±15 % gegen die Aegis-Zeile bei Stat 100 und 200. „Paket“: Ability nutzt weiter das Aegis-Paket.
 
-Teile: 21 von 77.
+Teile: 21 von 78.
 
 | Ability | Teile (Wert × Ticks) | Treffer | Pro Einsatz 100 | Aegis 100 | Abw. 100 | Abw. 200 | Nutzt |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -21,6 +21,7 @@ Teile: 21 von 77.
 | Burning Maul | Hit 111×1, Hit 276×1, Hit 24×1 | 17 | 6987 | 12760 | -45 % | -40 % | Paket |
 | Hammer of Sol | Hit 445×1, Hit 396×1 | 1 | 841 | 9243 | -91 % | -91 % | Paket |
 | Daybreak | Impact 426×1, Splash 598×1, Hit 292×1, Hit 642×1, Hit 292×1 | 15 | 36451 | 12185 | +199 % | +191 % | Paket |
+| Song of Flame | Hit 647×1, Hit 246×1, Hit 1224×1, Hit 139×1, Hit 899×1 | 7 | 22085 | 16658 | +33 % | +33 % | Paket |
 | Spectral Blades | Hit 1107×1, Hit 1620×1 | 22 | 59994 | 12003 | +400 % | +400 % | Paket |
 | Shadowshot: Deadfall | Hit 2583×1 | 1 | 2583 | 2801 | -8 % | -8 % | Teile |
 | Shadowshot: Moebius Quiver | Hit 3000×1, Hit 1076×1 | 2 | 8152 | 6414 | +27 % | +26 % | Paket |
