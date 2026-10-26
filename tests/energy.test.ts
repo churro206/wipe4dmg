@@ -25,6 +25,22 @@ describe("cooldowns from the Compendium", () => {
     expect(cooldown("thundercrash").chunkScalar).toBeUndefined();
   });
 
+  it("reads the innate charges and the regeneration speed by charges held", () => {
+    expect(cooldown("lightweight-knife").charges?.value).toBe(2);
+    expect(cooldown("frenzied-blade").charges?.value).toBe(3);
+    expect(cooldown("frenzied-blade").regenByCharges?.map((s) => s.value)).toEqual([1.15, 1.55, 1.95]);
+    expect(cooldown("arcane-needle").regenByCharges?.map((s) => s.value)).toEqual([1.16, 1.64, 2.6]);
+    expect(cooldown("arcane-needle").prismaticRegen?.value).toBe(0.7);
+    expect(cooldown("thundercrash").charges).toBeUndefined();
+  });
+
+  it("the nominal cooldown ÷ the speed at 0 charges is Flat Gain's T0 (Arcane Needle 126 s)", () => {
+    const needle = cooldown("arcane-needle");
+    expect(needle.cooldownSeconds.value! / needle.regenByCharges![0].value!).toBeCloseTo(126, 0);
+    const blade = cooldown("frenzied-blade");
+    expect(blade.cooldownSeconds.value! / blade.regenByCharges![0].value! / 143).toBeCloseTo(1, 1);
+  });
+
   it("has a cooldown for every ability", () => {
     expect(result.data.abilities.filter((a) => a.cooldownSeconds.value === null)).toEqual([]);
   });

@@ -23,6 +23,7 @@ export type EnergyContext = {
   stats?: Build["abilityStats"]; // omitted: the stat with the full effect (100)
   exoticArmorId?: string;
   guardianClass?: Build["guardianClass"];
+  subclass?: Build["subclass"];
   effectIds: Set<string>; // selected effects and effects the abilities grant
   damagePhaseMs: number;
 };
@@ -76,6 +77,7 @@ type State = {
   regen: number; // regeneration units of the stat plus passive additional base rates
   effectScale: number; // stat factor on the additional base rates of effects
   speed: number; // regeneration speed factor
+  speedByCharges: number[]; // factor by charges held, built into the ability; empty: none
   gainFactor: number; // chunk scalar times stat gain factor, for gains that are not fixed
   weaponRatePerMs: number;
   windows: { untilMs: number; value: number }[]; // regen bonuses after a trigger
@@ -100,7 +102,8 @@ function initialState(
   const own = modifiers.filter((m) => matches(m.target, ability));
   const passive = (change: EnergyModifier["change"]) =>
     own.filter((m) => m.change === change && !m.trigger).map((m) => m.value.value!);
-  const charges = 1 + passive("charges").reduce((a, b) => a + b, 0);
+  const charges = (energy.charges?.value ?? 1) + passive("charges").reduce((a, b) => a + b, 0);
+  const prismatic = ctx.subclass === "prismatic" ? (energy.prismaticRegen?.value ?? 1) : 1;
   return {
     ability,
     pending: [...request.castsMs].sort((a, b) => a - b),
@@ -111,7 +114,8 @@ function initialState(
     readyAt: 0,
     regen: regenUnits + effectScale * passive("regenBase").reduce((a, b) => a + b, 0),
     effectScale,
-    speed: passive("regenSpeed").reduce((a, b) => a * b, 1),
+    speed: passive("regenSpeed").reduce((a, b) => a * b, prismatic),
+    speedByCharges: (energy.regenByCharges ?? []).map((s) => s.value ?? 1),
     gainFactor,
     weaponRatePerMs: own
       .filter((m) => m.change === "energy" && m.trigger?.on === "weaponHit")
@@ -136,8 +140,11 @@ function regenerate(state: State, fromMs: number) {
   const bonus = state.windows
     .filter((w) => w.untilMs > fromMs)
     .reduce((sum, w) => sum + w.value, 0);
-  const rate = ((state.regen + bonus) * state.speed) / state.cooldownMs + state.weaponRatePerMs;
   const before = state.energy;
+  const held = Math.floor(before + EPSILON);
+  const byCharges = state.speedByCharges[Math.min(held, state.speedByCharges.length - 1)] ?? 1;
+  const rate =
+    ((state.regen + bonus) * state.speed * byCharges) / state.cooldownMs + state.weaponRatePerMs;
   state.energy = Math.min(state.charges, before + rate * STEP_MS);
   if (before < 1 - EPSILON && state.energy >= 1 - EPSILON)
     state.readyAt = fromMs + (1 - before) / rate;

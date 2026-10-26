@@ -3,7 +3,7 @@
 Generiert von `npm run build:energy` (`scripts/lib/energy.ts`). Nicht von Hand ändern.
 
 Cooldowns: 88 von 88 Abilities.
-Compendium-Zeilen zu Energie: 220, übernommen 22, übersprungen 198, offen 0.
+Compendium-Zeilen zu Energie: 220, übernommen 26, übersprungen 194, offen 0.
 
 | Quelle | Reiter | Item | Zeile | Urteil | Ziel oder Grund |
 | --- | --- | --- | --- | --- | --- |
@@ -200,15 +200,15 @@ Compendium-Zeilen zu Energie: 220, übernommen 22, übersprungen 198, offen 0.
 | abilities | Strand, Super Abilities | Silkstrike | Allows the repeated usage of Ensnaring Slam while the Aspect is equipped at the cost of 4.5% Super Energy. | skipped | Verbrauch, kein Gewinn |
 | abilities | Strand, Aspect | Threaded Specter | Passively applies 0.6x Class Ability Regeneration Speed while equipped. | skipped | Class Ability nicht modelliert |
 | abilities | Strand, Aspect | Widow's Silk | Grants an additional Grenade Ability Charge. | skipped | Ability oder Item nicht im Modell |
-| abilities | Strand, Melee Abilities | Frenzied Blade | 0 Charges = 1.15x Regeneration Speed \| 1 Charge = 1.55x Regeneration Speed \| 2 Charges = 1.95x Regeneration Speed. | skipped | eingebaute Ladungen der Ability nicht modelliert |
-| abilities | Strand, Melee Abilities | Frenzied Blade | On Prismatic: Penalized with an additional 0.7x Regeneration Speed | skipped | eingebaute Ladungen der Ability nicht modelliert |
+| abilities | Strand, Melee Abilities | Frenzied Blade | 0 Charges = 1.15x Regeneration Speed \| 1 Charge = 1.55x Regeneration Speed \| 2 Charges = 1.95x Regeneration Speed. | imported | charges and regeneration of the ability |
+| abilities | Strand, Melee Abilities | Frenzied Blade | On Prismatic: Penalized with an additional 0.7x Regeneration Speed | imported | charges and regeneration of the ability |
 | abilities | Strand, Super Abilities | Bladefury | Drains 3% Super Energy. | skipped | Verbrauch, kein Gewinn |
 | abilities | Strand, Super Abilities | Bladefury | Drains 10.5% Super Energy. Incurs a 3 second cooldown after usage. | skipped | Verbrauch, kein Gewinn |
 | abilities | Strand, Aspect | Flechette Storm | [Melee Ability] leaps into the air, draining 50% Melee Energy, knocking enemies within ? metres back, and dealing 135 [66] damage. | skipped | Verbrauch, kein Gewinn |
 | abilities | Strand, Aspect | Flechette Storm | [Melee Ability] drains 50% Melee Energy to launch a cluster of 4 Unraveling Projectiles, each dealing 171 [25.2] damage to enemies within ? metres. | skipped | Verbrauch, kein Gewinn |
 | abilities | Strand, Aspect | Into The Fray | 300% [200%] Additional Base Melee Regeneration Rate. | skipped | Woven Mail als Bedingung nicht modelliert |
-| abilities | Strand, Melee Abilities | Arcane Needle | 0 Charges = 1.16x Regeneration Speed \| 1 Charge = 1.64x Regeneration Speed \| 2 Charges = 2.6x Regeneration Speed | skipped | eingebaute Ladungen der Ability nicht modelliert |
-| abilities | Strand, Melee Abilities | Arcane Needle | On Prismatic: Penalized with an additional 0.7x Regeneration Speed | skipped | eingebaute Ladungen der Ability nicht modelliert |
+| abilities | Strand, Melee Abilities | Arcane Needle | 0 Charges = 1.16x Regeneration Speed \| 1 Charge = 1.64x Regeneration Speed \| 2 Charges = 2.6x Regeneration Speed | imported | charges and regeneration of the ability |
+| abilities | Strand, Melee Abilities | Arcane Needle | On Prismatic: Penalized with an additional 0.7x Regeneration Speed | imported | charges and regeneration of the ability |
 | abilities | Strand, Aspect | Weaver's Call | Threadling damage instances grant 10% Class Ability Energy. | skipped | Class Ability nicht modelliert |
 | abilities | Strand, Aspect | Weavewalk | [Air Move] grants Weavewalk and instantly consumes 20% Melee Ability Energy. | skipped | Verbrauch, kein Gewinn |
 | abilities | Strand, Aspect | Weavewalk | Drains 25% Melee Ability Energy per second. | skipped | Verbrauch, kein Gewinn |

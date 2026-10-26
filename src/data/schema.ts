@@ -1075,6 +1075,11 @@ export const AbilityEnergy = z.object({
   abilityId: z.string(), // base ability; variants use the energy of their base
   cooldownSeconds: SourcedNumber, // e.g. Fusion Grenade "Base Cooldown: 105.4 seconds"
   chunkScalar: SourcedNumber.optional(), // grenades and melees, e.g. "Chunk Scalar: 0.875x"
+  charges: SourcedNumber.optional(), // innate charges, e.g. "Innately has 3 Melee Ability Charges"; omitted: 1
+  // Regeneration speed factor by charges held (index 0: none), e.g. Frenzied Blade 1.15, 1.55, 1.95; the
+  // last one holds above. The cooldown above is the nominal one, Flat Gain's T0 is that ÷ the first factor.
+  regenByCharges: z.array(SourcedNumber).min(1).optional(),
+  prismaticRegen: SourcedNumber.optional(), // "On Prismatic: Penalized with an additional 0.7x Regeneration Speed"
 });
 export type AbilityEnergy = z.infer<typeof AbilityEnergy>;
 

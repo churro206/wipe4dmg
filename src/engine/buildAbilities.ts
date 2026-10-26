@@ -28,7 +28,7 @@ export type AbilitySimulation = {
 };
 
 type AbilityBuild = Pick<Build, "abilities" | "abilityStats" | "exoticArmorId"> &
-  Partial<Pick<Build, "selections" | "damagePhaseSeconds" | "effectWindows" | "guardianClass">>;
+  Partial<Pick<Build, "selections" | "damagePhaseSeconds" | "effectWindows" | "guardianClass" | "subclass">>;
 
 export function abilitySimulation(
   build: AbilityBuild,
@@ -128,6 +128,7 @@ function energyContext(
     stats: build.abilityStats,
     exoticArmorId: build.exoticArmorId,
     guardianClass: build.guardianClass,
+    subclass: build.subclass,
     effectIds: new Set([
       ...(build.selections ?? []).map((s) => s.effectId),
       ...requested.flatMap((c) => c.ability.grantsEffectIds ?? []),

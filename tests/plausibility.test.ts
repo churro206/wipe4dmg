@@ -1031,6 +1031,29 @@ describe("ability energy (block 3)", () => {
     expect(titan / warlock).toBeCloseTo(1.1, 2);
   });
 
+  it("Arcane Needle: 3 innate charges, the fourth throw after 146 s ÷ (3.115 × 1.16) (Q3)", () => {
+    const build: Build = {
+      weaponId: testWeapon.id,
+      guardianClass: "warlock",
+      subclass: "strand",
+      catalyst: false,
+      selections: [],
+      effectWindows: {},
+      damagePhaseSeconds: 60,
+      abilities: [{ abilityId: "arcane-needle", castsMs: [0, 0, 0, 0, 0] }],
+    };
+    const { options } = buildSimulation(build, gameData);
+    const casts = options.abilities!.find((a) => a.ability.id === "arcane-needle")!.castsMs;
+    note(
+      "Arcane Needle, Würfe in 60 s (Stat 100)",
+      casts.map((c) => `${fmt(c / 1000)} s`).join(", "),
+      "3 Ladungen hintereinander (je eine Cast-Zeit Abstand); die vierte 146 s ÷ (3,115 × 1,16 bei 0 Ladungen) ≈ 40,4 s nach der Energie-Leerung bei 0 s; die fünfte läge nach 80 s, außerhalb der Phase",
+    );
+    expect(casts[2]).toBeLessThan(5000);
+    expect(casts).toHaveLength(4);
+    expect(casts[3] / 1000).toBeCloseTo(146 / (3.115 * 1.16), 0);
+  });
+
   it("Eye of Another World adds 58 % of the base regeneration at stat 100, not 45 % (K4)", () => {
     const plain = fusionSecondCast("warlock");
     const eye = fusionSecondCast("warlock", { exoticArmorId: "eye-of-another-world" });

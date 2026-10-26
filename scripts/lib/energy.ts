@@ -79,6 +79,10 @@ export const ENERGY_STATS: EnergyStat[] = [
 // "Base Cooldown: 52.1 seconds" or, with the PvP value in brackets, "56 [148.4]s"
 const COOLDOWN = /Base Cooldown:\s*(\d+(?:\.\d+)?)(?: seconds|\s*\[[^\]]*\]s)|^(?:.*\n)*?\s*(\d+(?:\.\d+)?) seconds\./;
 const CHUNK = /Chunk Scalar:\s*(\d+(?:\.\d+)?)x/;
+// "Innately has 3 Melee Ability Charges." and "0 Charges = 1.15x Regeneration Speed | 1 Charge = 1.55x ..."
+const INNATE_CHARGES = /Innately has (\d+) (?:Melee|Grenade) Ability Charges/;
+const SPEED_BY_CHARGES = /(\d+) Charges? = (\d+(?:\.\d+)?)x Regeneration Speed/g;
+const PRISMATIC_REGEN = /On Prismatic: Penalized with an additional (\d+(?:\.\d+)?)x Regeneration Speed/;
 
 /** Cooldown and chunk scalar of every base ability from the "extra" cell of its Compendium entry. */
 export function abilityEnergy(inputs: EnergyInputs): AbilityEnergy[] {
@@ -98,6 +102,9 @@ export function abilityEnergy(inputs: EnergyInputs): AbilityEnergy[] {
       const cooldown = entry.extra.match(COOLDOWN);
       const chunk = entry.extra.match(CHUNK);
       const seconds = cooldown?.[1] ?? cooldown?.[2];
+      const innate = entry.text.match(INNATE_CHARGES);
+      const speeds = [...entry.text.matchAll(SPEED_BY_CHARGES)];
+      const prismatic = entry.text.match(PRISMATIC_REGEN);
       const override = inputs.overrides.abilities.find((o) => o.abilityId === ability.id);
       const chunkScalar =
         override?.chunkScalar ??
@@ -113,6 +120,15 @@ export function abilityEnergy(inputs: EnergyInputs): AbilityEnergy[] {
                 source: { ...source(entry.extra), status: "missing" as const, quote: undefined },
               }),
         ...(chunkScalar ? { chunkScalar } : {}),
+        ...(innate ? { charges: { value: Number(innate[1]), source: source(innate[0]) } } : {}),
+        ...(speeds.length > 0
+          ? {
+              regenByCharges: speeds.map((s) => ({ value: Number(s[2]), source: source(s[0]) })),
+            }
+          : {}),
+        ...(prismatic
+          ? { prismaticRegen: { value: Number(prismatic[1]), source: source(prismatic[0]) } }
+          : {}),
       };
     });
 }
@@ -354,6 +370,9 @@ export const ENERGY_SPECS: EnergySpec[] = [
 const ENERGY_LINE =
   /\d+(?:\.\d+)?%[^.\n]{0,40}?(Grenade|Melee|Super|Class|Ability)[^.\n]{0,15}Energy|\b(extra|additional)\b[^.\n]*Charge|Regeneration (Rate|Speed)|Recharge Rate/i;
 
+// Lines that AbilityEnergy.charges, regenByCharges and prismaticRegen read.
+const BUILT_IN = new RegExp(`${SPEED_BY_CHARGES.source}|${PRISMATIC_REGEN.source}`);
+
 // Verdicts by rule, in this order; the first match wins.
 const AUTO_SKIPS: [RegExp, string][] = [
   [/\bkill|final blow|defeat/i, "Kills: ein Boss, keine Adds (ADR 0015)"],
@@ -371,7 +390,6 @@ const CONDITION = "Bedingung außerhalb des Boss-Kampfs (Sprint, Gruppe, Aufhebe
 export const SKIPPED: Record<string, string> = {
   "An Insurmountable Skullfort": "nur der höchste Wert (Powered Melee Hit) zählt, „up to once per melee“",
   "Apotheosis Veil": "Trigger am Ende der Super fehlt; übernommen ist der Cast",
-  "Arcane Needle": "eingebaute Ladungen der Ability nicht modelliert",
   Benevolence: "Heilen von Verbündeten nicht modelliert",
   "Blight Ranger": OWN_SUPER,
   "Bolt Charge": STACKS,
@@ -382,7 +400,6 @@ export const SKIPPED: Record<string, string> = {
   "Crown of Tempests": STACKS,
   "Fallen Sunstar": "Ionic Traces ohne Wert",
   "Fr0st-EE5": CONDITION,
-  "Frenzied Blade": "eingebaute Ladungen der Ability nicht modelliert",
   "Geomag Stabilizers": OWN_SUPER,
   "Getaway Artist": "Arc Soul nicht modelliert",
   Grapple: NOT_IN_MODEL,
@@ -520,7 +537,9 @@ export function energyData(inputs: EnergyInputs): { data: EnergyData; rows: Ener
           line,
           ...(spec
             ? { verdict: "imported" as const, target: spec.id }
-            : auto
+            : snapshot === "abilities" && BUILT_IN.test(line)
+              ? { verdict: "imported" as const, target: "charges and regeneration of the ability" }
+              : auto
               ? { verdict: "skipped" as const, target: auto[1] }
               : hand
                 ? { verdict: "skipped" as const, target: hand }

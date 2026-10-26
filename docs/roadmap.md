@@ -63,6 +63,7 @@ Status: 2026-10-25
 - ✅ Coverage: fragments that can never hit a boss, energy exotics, Bequest as a legendary sword
 - ✅ New Supers: Song of Flame, Glacial Quake, Bladefury
 - ✅ Stormdancer's Brace, Mataiodoxía and Young Ahamkara's Spine as measured by Aegis
+- ✅ Ability energy: stat curves instead of a straight line (grenades regenerate 3.1× at stat 100, chunk gains 1.15× instead of 3.1×), regeneration effects grow with the stat, innate charges (Frenzied Blade, Arcane Needle, Lightweight Knife)
 
 ## Next
 

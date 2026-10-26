@@ -47,7 +47,8 @@ Geordnet nach dem Block, der sie schließen soll (`docs/plans/current.md`, Reihe
 
 ### Q3 Energie
 
-- Armor-Mods mit Energie (Bolstering Detonation, Impact Induction, Momentum Transfer, Firepower; Werte jetzt im Archiv, Reiter Armor Mods `1934379638`); eingebaute Ladungen (Frenzied Blade, Arcane Needle, Knives); Auslöser am Super-Ende (Apotheosis 66 %/s); Super-Energie aus Schaden (Golden Gun Marksman „Boss = 2.85%“; keine Quelle für Waffen); Dawn Chorus und Monte Carlo brauchen Keyword- bzw. Waffen-Ereignisse; Class-Ability-Energie (Arbor Warden, Fr0st-EE5, Balance of Power, Heart of Inmost Light; `StatAbilityKind` ohne `classAbility`).
+- Stat-Kurven (Q3a): Die Tabellen gelten für Grenade und Melee; die Super-Kurve für Gains übernimmt dieselbe Tabelle (Flat Gain, Notiz 4). Empowering Rift bei Stat 0 ist hergeleitet (Compendium 260 % × 0,4), Flat Gain hat keine Zeile. Die Aegis-Cooldowns sind nicht gegen die Kurve geprüft, nur Flat Gain. Frenzied Blade: 159,6 ÷ 1,15 liegt 3 % unter Flat Gains 143 s. Mit vier Ladungen (Wishful Ignorance) gilt der Faktor für 2 gehaltene Ladungen auch darüber.
+- Armor-Mods mit Energie (Bolstering Detonation, Impact Induction, Momentum Transfer, Firepower; Werte jetzt im Archiv, Reiter Armor Mods `1934379638`); Auslöser am Super-Ende (Apotheosis 66 %/s); Super-Energie aus Schaden (Golden Gun Marksman „Boss = 2.85%“; keine Quelle für Waffen); Dawn Chorus und Monte Carlo brauchen Keyword- bzw. Waffen-Ereignisse; Class-Ability-Energie (Arbor Warden, Fr0st-EE5, Balance of Power, Heart of Inmost Light; `StatAbilityKind` ohne `classAbility`).
 - Transcendence: +10 % Grenade-/Melee-Regeneration im Fenster, gegenseitige Aufladung (35 % pro Sekunde für 2 s), 2 Ladungen der Prismatic Grenade bei Aktivierung; die Prismatic Grenade ersetzt die gewählte Grenade.
 
 ### Q4 Stasis und Strand

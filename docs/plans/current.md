@@ -4,19 +4,19 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Q3 Energie** (Opus plant, Sonnet baut): siehe Reihenfolge 1.
+**Q3 Teil 4: Energie-Exotics und -Mods** (Opus plant, Sonnet baut): Bolstering Detonation, Impact Induction, Momentum Transfer, Focusing Strike, Bomber/Outreach/Distribution (Class Mod Scalers 0,4/0,6/1,0, `rytako/1211854080:101`), Kickstarts; Liste und Quellen in `docs/plans/sources-2026-10.md` §2. Erst ab 2 % Wirkung.
 
-Erledigt (2026-10-26, Q2 Rest, Details im Changelog Q2a–Q2d): Glacial Quake, Bladefury und Song of Flame als Supers; Exotics über ihr Intrinsic (Stormdancer's Brace ×2,23 statt ×3, Mataiodoxía, Young Ahamkara's Spine). Befunde:
+Erledigt (2026-10-26, Details im Changelog): Q2 Supers (Glacial Quake, Bladefury, Song of Flame; Exotics über ihr Intrinsic); Q3a Stat-Kurven (RyTako: Regen ×3,115, Chunks ×1,151 statt ×3,1 bei Stat 100; Regen-Effekte mit dem Stat skaliert, Gates `tests/energyStats.test.ts`); Q3b eingebaute Ladungen (Frenzied Blade, Arcane Needle, Knives, Prismatic ×0,7). Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
-- Flat Gain taugt nicht als Super-Rangfolge-Gate: Flat Gain / Aegis streut von ×0,6 bis ×5 (Exotics und Buffs uneinheitlich drin). Es bleibt das Aegis-Rangfolge-Gate.
-- Zurückgestellt: **Hammer of Sol mit Sol Invictus.** Der Aegis-Import ordnet „Roaring Flames x3“ nicht `roaring-flames-3` zu (er liest nur `effects.json` und lädt online neu); Aegis misst Roaring x3 an Hammer of Sol nur ×1,06, der Text sagt +73 %. Weg: Regel „X xN“ → Effect `x-n` in Import und `tests/lib/probeAuto.ts`, Re-Import nach Skill `nach-patch`. Alternative: Würfe aus dem Compendium-Drain (5,5 % statt 12 %, 1 s statt 1,5 s, ≈ ×2).
-- Banner of War: „40% Increased Bladefury Damage“ fehlt im Effect; Aegis deutet nur auf ×1,04.
+- `tests/mechanicsBaseline.test.ts` überschreitet im vollen `test:quiet` die 5 s (Last), allein läuft er in 2 s grün; Snapshot unverändert.
+- Zurückgestellt: **Hammer of Sol mit Sol Invictus.** Der Aegis-Import ordnet „Roaring Flames x3“ nicht `roaring-flames-3` zu; Aegis misst nur ×1,06, der Text +73 %. Weg: Regel „X xN“ → Effect `x-n` in Import und `tests/lib/probeAuto.ts`, Re-Import nach `nach-patch`. Alternative: Würfe aus dem Compendium-Drain (≈ ×2).
+- Banner of War: „40% Increased Bladefury Damage“ fehlt im Effect (Aegis ×1,04).
 
 ## Reihenfolge
 
 Details und Fundstellen: `docs/plans/sources-2026-10.md`.
 
-1. Q3 Energie: Stat-Kurve (K3), Regen-Multiplikatoren (K4), eingebaute Ladungen (Frenzied Blade, Arcane Needle), Energie-Exotics und -Mods (Opus plant).
+1. Q3 Teil 4 Energie-Exotics und -Mods (Opus plant); Teil 1–3 erledigt.
 2. Aufräum-Block (Sonnet; nach drei Funktions-Blöcken fällig): `src/engine/units.ts` statt `MS_PER_SECOND` in 9 Dateien, `strict` explizit in `tsconfig.app.json`, Regel-Logik aus `tests/lib/` nach `scripts/lib/`, toter Code, `App.tsx` in Panels. Vorher Vergleichsbasis (`test:quiet`, `sanity`, `probe`), danach unverändert.
 3. Zähler für Jolt, Volatile, Unravel, Bolt Charge in der Ergebniszeile (Sonnet).
 4. Hammer of Sol mit Sol Invictus (siehe oben).

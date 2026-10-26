@@ -1424,6 +1424,16 @@
           "status": "verified",
           "quote": "Chunk Scalar: 0.8x"
         }
+      },
+      "charges": {
+        "value": 2,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Lightweight Knife)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Innately has 2 Melee Ability Charges"
+        }
       }
     },
     {
@@ -1679,6 +1689,16 @@
           "status": "verified",
           "quote": "Chunk Scalar: 0.9x"
         }
+      },
+      "charges": {
+        "value": 2,
+        "source": {
+          "name": "Destiny Data Compendium, Void (Pocket Singularity)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Innately has 2 Melee Ability Charges"
+        }
       }
     },
     {
@@ -1701,6 +1721,16 @@
           "retrieved": "2026-10-24",
           "status": "verified",
           "quote": "Chunk Scalar: 0.8x"
+        }
+      },
+      "charges": {
+        "value": 2,
+        "source": {
+          "name": "Destiny Data Compendium, Stasis (Withering Blade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Innately has 2 Melee Ability Charges"
         }
       }
     },
@@ -1794,6 +1824,58 @@
           "status": "verified",
           "quote": "Chunk Scalar: 0.7x"
         }
+      },
+      "charges": {
+        "value": 3,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Frenzied Blade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Innately has 3 Melee Ability Charges"
+        }
+      },
+      "regenByCharges": [
+        {
+          "value": 1.15,
+          "source": {
+            "name": "Destiny Data Compendium, Strand (Frenzied Blade)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "verified",
+            "quote": "0 Charges = 1.15x Regeneration Speed"
+          }
+        },
+        {
+          "value": 1.55,
+          "source": {
+            "name": "Destiny Data Compendium, Strand (Frenzied Blade)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "verified",
+            "quote": "1 Charge = 1.55x Regeneration Speed"
+          }
+        },
+        {
+          "value": 1.95,
+          "source": {
+            "name": "Destiny Data Compendium, Strand (Frenzied Blade)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "verified",
+            "quote": "2 Charges = 1.95x Regeneration Speed"
+          }
+        }
+      ],
+      "prismaticRegen": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Frenzied Blade)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "On Prismatic: Penalized with an additional 0.7x Regeneration Speed"
+        }
       }
     },
     {
@@ -1816,6 +1898,58 @@
           "retrieved": "2026-10-24",
           "status": "verified",
           "quote": "Chunk Scalar: 0.8x"
+        }
+      },
+      "charges": {
+        "value": 3,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Arcane Needle)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "Innately has 3 Melee Ability Charges"
+        }
+      },
+      "regenByCharges": [
+        {
+          "value": 1.16,
+          "source": {
+            "name": "Destiny Data Compendium, Strand (Arcane Needle)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "verified",
+            "quote": "0 Charges = 1.16x Regeneration Speed"
+          }
+        },
+        {
+          "value": 1.64,
+          "source": {
+            "name": "Destiny Data Compendium, Strand (Arcane Needle)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "verified",
+            "quote": "1 Charge = 1.64x Regeneration Speed"
+          }
+        },
+        {
+          "value": 2.6,
+          "source": {
+            "name": "Destiny Data Compendium, Strand (Arcane Needle)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "verified",
+            "quote": "2 Charges = 2.6x Regeneration Speed"
+          }
+        }
+      ],
+      "prismaticRegen": {
+        "value": 0.7,
+        "source": {
+          "name": "Destiny Data Compendium, Strand (Arcane Needle)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-24",
+          "status": "verified",
+          "quote": "On Prismatic: Penalized with an additional 0.7x Regeneration Speed"
         }
       }
     },

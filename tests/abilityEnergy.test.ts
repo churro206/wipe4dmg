@@ -85,6 +85,24 @@ describe("energyCasts", () => {
     expect(onWarlock).toBeCloseTo(fusionAt100 / warlock.value.value!, -1);
   });
 
+  it("starts with the innate charges and regenerates faster with fewer held (Frenzied Blade)", () => {
+    const blade = ability("frenzied-blade");
+    const speeds = data.abilities.find((a) => a.abilityId === "frenzied-blade")!.regenByCharges!;
+    const fourthMs = cooldownMs("frenzied-blade") / (regenAt100("melee") * speeds[0].value!);
+    const [[a, b, c, d]] = casts([{ ability: blade, castsMs: [0, 0, 0, 0] }]);
+    expect([a, b, c]).toEqual([0, 0, 0]);
+    expect(d).toBeCloseTo(fourthMs, -2);
+  });
+
+  it("slows the regeneration on Prismatic (Frenzied Blade, additional 0.7x)", () => {
+    const blade = ability("frenzied-blade");
+    const penalty = data.abilities.find((a) => a.abilityId === "frenzied-blade")!.prismaticRegen!;
+    const requests = [{ ability: blade, castsMs: [0, 0, 0, 0] }];
+    const [[, , , strand]] = casts(requests, context({ subclass: "strand", damagePhaseMs: 200_000 }));
+    const [[, , , prismatic]] = casts(requests, context({ subclass: "prismatic", damagePhaseMs: 200_000 }));
+    expect(prismatic / strand).toBeCloseTo(1 / penalty.value!, 1);
+  });
+
   it("refunds super energy only with a matching ability (Ballistic Slam)", () => {
     const requests = [
       { ability: ability("thundercrash"), castsMs: [0] },
