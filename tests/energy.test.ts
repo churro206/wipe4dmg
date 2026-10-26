@@ -33,7 +33,7 @@ describe("cooldowns from the Compendium", () => {
 describe("energy modifiers from the Compendium lines", () => {
   it("reads percentages, factors and extra charges", () => {
     expect(modifier("starfire-protocol-weapon-hit").value.value).toBe(0.05);
-    expect(modifier("starfire-protocol-regen").value.value).toBe(0.2);
+    expect(modifier("starfire-protocol-regen").value.value).toBe(0.08); // Flat Gain, at stat 0 (K4)
     expect(modifier("chaos-accelerant-regen").value.value).toBe(1.15);
     expect(modifier("starfire-protocol-charge").value.value).toBe(1);
   });

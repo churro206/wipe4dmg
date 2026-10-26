@@ -12,6 +12,7 @@ import type {
   EnergyOverrides,
   EnergyStat,
   Source,
+  StatCurve,
 } from "../../src/data/schema.ts";
 
 const URL = "https://destiny2.science/data-compendium";
@@ -25,58 +26,54 @@ export type EnergyInputs = {
   retrieved: string; // date of the Compendium snapshots
 };
 
-// Stat factors (Compendium, Game Mechanics). Regeneration at stat 100: owner value (ADR 0014, point 9).
-const OWNER_REGEN: Source = {
-  name: "Owner (Gemini answer citing Reddit), ADR 0014 point 9",
-  retrieved: "2026-10-23",
-  status: "unverified",
-  quote:
-    "Seit den Anpassungen im Monument of Triumph-Update regenerieren Granaten und Nahkampf-Fähigkeiten bei Stat 100 exakt 2,48-mal so schnell (entspricht +148 % höherer Regenerationsrate) wie bei Stat 0.",
-  note: "The Compendium leaves the rate open (\"?%\"). Linear from stat 0 to 100 is our assumption; the stat no longer changes regeneration above 100.",
+// Stat curves (K3): RyTako's sheet lists them in steps of 5 stat points (the Compendium leaves the rates
+// open, "?%"). Stat 30 gives Flat Gain's cooldown ratio T0 / T3, stat 100 its factor 50 % → 58 % of the
+// chunk gains and 20 % → 58 % of Eye of Another World (tests/energyStats.test.ts).
+const RYTAKO = {
+  name: "RyTako ability energy sheet (Stat Scalers)",
+  url: "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+  retrieved: "2026-10-25",
+  status: "verified" as const,
 };
-const gameMechanics = (quote: string, note?: string): Source => ({
-  name: "Destiny Data Compendium, Game Mechanics, Armor Stats",
-  url: URL,
-  retrieved: "2026-10-23",
-  status: "verified",
-  quote,
-  note: `Saved in ${GAME_MECHANICS}.${note ? ` ${note}` : ""}`,
+const curve = (values: number[], quote: string, note: string): StatCurve => ({
+  points: values.map((value, i) => ({ stat: i * 5, value })),
+  source: { ...RYTAKO, quote, note: `docs/sources/sheets/rytako/1211854080-the-sheet.tsv. ${note}` },
 });
-const missingGain = (kind: string): Source => ({
-  ...gameMechanics(`Provides up to ?% Increased ${kind} Ability Chunk Gains at 100 points.`),
-  status: "missing",
-});
+// stat 0, 5, ..., 100
+const REGEN_UNITS = curve(
+  [1, 1.043, 1.086, 1.159, 1.231, 1.34, 1.448, 1.593, 1.739, 1.904, 2.071, 2.245, 2.418, 2.657, 2.895, 2.931, 2.968, 3.005, 3.041, 3.079, 3.115],
+  "Base Regen Units: 100 3.115x, 70 2.895x, 30 1.448x, 0 1.000x",
+  "Lines 102-122. Grenade and melee regenerate with these units.",
+);
+const EFFECT_SCALER = curve(
+  [1, 1.05, 1.1, 1.175, 1.25, 1.34, 1.43, 1.535, 1.64, 1.75, 1.86, 1.965, 2.07, 2.265, 2.46, 2.535, 2.61, 2.685, 2.76, 2.83, 2.9],
+  "Stat Scalers, additional base regen units: 100 2.900x, 70 2.460x, 0 1.000x",
+  "Lines 130-144. Flat Gain's regen effects grow by 2.9 from stat 0 to 100 (Eye of Another World 20 % → 58 %).",
+);
+const GAIN_SCALER = curve(
+  [0.4, 0.405, 0.419, 0.441, 0.471, 0.509, 0.554, 0.604, 0.659, 0.716, 0.775, 0.834, 0.89, 0.944, 0.996, 1.042, 1.08, 1.11, 1.131, 1.146, 1.151],
+  "Stat Scalers, % Gains: 100 1.151x, 70 0.996x, 0 0.400x",
+  "Lines 111-131. Flat Gain, Armor 3.0 Stat Benefits, note 2: stat 70 equals the energy before Edge of Fate; note 4: the super stat scales its gains alike.",
+);
+const CONSTANT_REGEN: StatCurve = {
+  points: [
+    { stat: 0, value: 1 },
+    { stat: 100, value: 1 },
+  ],
+  source: {
+    name: "Destiny Data Compendium, Game Mechanics, Armor Stats",
+    url: URL,
+    retrieved: "2026-10-23",
+    status: "verified",
+    quote: "Super | Grants Increased Super Ability Gains per point.",
+    note: `Saved in ${GAME_MECHANICS}. The super stat names only gains, no regeneration rate, and does not change the base cooldown (Flat Gain, note 4).`,
+  },
+};
 
 export const ENERGY_STATS: EnergyStat[] = [
-  {
-    kind: "grenade",
-    fullAtStat: 100,
-    regenAtFullStat: { value: 2.48, source: OWNER_REGEN },
-    gainBonusAtFullStat: {
-      value: 2.115,
-      source: gameMechanics(
-        "Stat provides up to ?% Additional Base Grenade Ability Regeneration Rate and 211.5%% Increased Grenade Ability Gains at 100 points.",
-      ),
-    },
-  },
-  {
-    kind: "melee",
-    fullAtStat: 100,
-    regenAtFullStat: { value: 2.48, source: OWNER_REGEN },
-    gainBonusAtFullStat: { value: null, source: missingGain("Melee") },
-  },
-  {
-    kind: "super",
-    fullAtStat: 100,
-    regenAtFullStat: {
-      value: 1,
-      source: gameMechanics(
-        "Super | Grants Increased Super Ability Gains per point.",
-        "The super stat names only gains, no regeneration rate.",
-      ),
-    },
-    gainBonusAtFullStat: { value: null, source: missingGain("Super") },
-  },
+  { kind: "grenade", fullAtStat: 100, regenUnits: REGEN_UNITS, effectScaler: EFFECT_SCALER, gainScaler: GAIN_SCALER },
+  { kind: "melee", fullAtStat: 100, regenUnits: REGEN_UNITS, effectScaler: EFFECT_SCALER, gainScaler: GAIN_SCALER },
+  { kind: "super", fullAtStat: 100, regenUnits: CONSTANT_REGEN, effectScaler: EFFECT_SCALER, gainScaler: GAIN_SCALER },
 ];
 
 // "Base Cooldown: 52.1 seconds" or, with the PvP value in brackets, "56 [148.4]s"
@@ -489,8 +486,10 @@ function modifier(inputs: EnergyInputs, spec: EnergySpec): EnergyModifier {
 
 /** Energy Data File and one review row per Compendium line about energy. */
 export function energyData(inputs: EnergyInputs): { data: EnergyData; rows: EnergyRow[] } {
+  // an override of the same id replaces the Compendium value (its line still gets its verdict)
+  const overridden = new Set(inputs.overrides.modifiers.map((m) => m.id));
   const modifiers = [
-    ...ENERGY_SPECS.map((spec) => modifier(inputs, spec)),
+    ...ENERGY_SPECS.filter((spec) => !overridden.has(spec.id)).map((spec) => modifier(inputs, spec)),
     ...inputs.overrides.modifiers,
   ];
   const rows: EnergyRow[] = [];

@@ -1000,30 +1000,46 @@ describe("ability energy (block 3)", () => {
     expect(starfire.total / radiantOnly).toBeGreaterThan(3);
   });
 
-  it("Fusion Grenade at stat 100: 106 s ÷ 2.48 on a Titan, 1.1× faster on a Warlock (K5)", () => {
-    const secondCast = (guardianClass: Build["guardianClass"]) => {
-      const build: Build = {
-        weaponId: testWeapon.id,
-        guardianClass,
-        subclass: "solar",
-        catalyst: false,
-        selections: [],
-        effectWindows: {},
-        damagePhaseSeconds: 60,
-        abilities: [{ abilityId: "fusion-grenade", castsMs: [0, 0] }],
-      };
-      const { options } = buildSimulation(build, gameData);
-      return options.abilities!.find((a) => a.ability.id === "fusion-grenade")!.castsMs[1];
+  const fusionSecondCast = (
+    guardianClass: Build["guardianClass"],
+    patch: Partial<Build> = {},
+  ) => {
+    const build: Build = {
+      weaponId: testWeapon.id,
+      guardianClass,
+      subclass: "solar",
+      catalyst: false,
+      selections: [],
+      effectWindows: {},
+      damagePhaseSeconds: 60,
+      abilities: [{ abilityId: "fusion-grenade", castsMs: [0, 0] }],
+      ...patch,
     };
-    const titan = secondCast("titan");
-    const warlock = secondCast("warlock");
+    const { options } = buildSimulation(build, gameData);
+    return options.abilities!.find((a) => a.ability.id === "fusion-grenade")!.castsMs[1];
+  };
+
+  it("Fusion Grenade at stat 100: 106 s ÷ 3.115 on a Titan, 1.1× faster on a Warlock (K3, K5)", () => {
+    const titan = fusionSecondCast("titan");
+    const warlock = fusionSecondCast("warlock");
     note(
       "Fusion Grenade, zweiter Wurf (Stat 100): Titan / Warlock",
       `${fmt(titan / 1000)} s / ${fmt(warlock / 1000)} s`,
-      "106 s ÷ 2,48 ≈ 42,7 s (Flat Gain T0) / ÷ 1,1 ≈ 38,9 s (RyTako: Warlock ×1,1 Grenade-Regen)",
+      "106 s ÷ 3,115 ≈ 34,0 s (Flat Gain T0, RyTako Base Regen Units) / ÷ 1,1 ≈ 30,9 s (RyTako: Warlock ×1,1 Grenade-Regen)",
     );
-    expect(titan / 1000).toBeCloseTo(106 / 2.48, 0);
+    expect(titan / 1000).toBeCloseTo(106 / 3.115, 0);
     expect(titan / warlock).toBeCloseTo(1.1, 2);
+  });
+
+  it("Eye of Another World adds 58 % of the base regeneration at stat 100, not 45 % (K4)", () => {
+    const plain = fusionSecondCast("warlock");
+    const eye = fusionSecondCast("warlock", { exoticArmorId: "eye-of-another-world" });
+    note(
+      "Fusion Grenade, zweiter Wurf mit Eye of Another World (Stat 100)",
+      `${fmt(plain / 1000)} s → ${fmt(eye / 1000)} s`,
+      "Flat Gain: Eye 20 % bei Stat 0, 58 % bei Stat 100; (3,115 + 0,58) / 3,115 ≈ 1,19 schneller",
+    );
+    expect(plain / eye).toBeCloseTo((3.115 + 0.58) / 3.115, 2);
   });
 });
 

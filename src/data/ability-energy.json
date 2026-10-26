@@ -3,76 +3,290 @@
     {
       "kind": "grenade",
       "fullAtStat": 100,
-      "regenAtFullStat": {
-        "value": 2.48,
+      "regenUnits": {
+        "points": [
+          { "stat": 0, "value": 1 },
+          { "stat": 5, "value": 1.043 },
+          { "stat": 10, "value": 1.086 },
+          { "stat": 15, "value": 1.159 },
+          { "stat": 20, "value": 1.231 },
+          { "stat": 25, "value": 1.34 },
+          { "stat": 30, "value": 1.448 },
+          { "stat": 35, "value": 1.593 },
+          { "stat": 40, "value": 1.739 },
+          { "stat": 45, "value": 1.904 },
+          { "stat": 50, "value": 2.071 },
+          { "stat": 55, "value": 2.245 },
+          { "stat": 60, "value": 2.418 },
+          { "stat": 65, "value": 2.657 },
+          { "stat": 70, "value": 2.895 },
+          { "stat": 75, "value": 2.931 },
+          { "stat": 80, "value": 2.968 },
+          { "stat": 85, "value": 3.005 },
+          { "stat": 90, "value": 3.041 },
+          { "stat": 95, "value": 3.079 },
+          { "stat": 100, "value": 3.115 }
+        ],
         "source": {
-          "name": "Owner (Gemini answer citing Reddit), ADR 0014 point 9",
-          "retrieved": "2026-10-23",
-          "status": "unverified",
-          "quote": "Seit den Anpassungen im Monument of Triumph-Update regenerieren Granaten und Nahkampf-Fähigkeiten bei Stat 100 exakt 2,48-mal so schnell (entspricht +148 % höherer Regenerationsrate) wie bei Stat 0.",
-          "note": "The Compendium leaves the rate open (\"?%\"). Linear from stat 0 to 100 is our assumption; the stat no longer changes regeneration above 100."
+          "name": "RyTako ability energy sheet (Stat Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Base Regen Units: 100 3.115x, 70 2.895x, 30 1.448x, 0 1.000x",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv. Lines 102-122. Grenade and melee regenerate with these units."
         }
       },
-      "gainBonusAtFullStat": {
-        "value": 2.115,
+      "effectScaler": {
+        "points": [
+          { "stat": 0, "value": 1 },
+          { "stat": 5, "value": 1.05 },
+          { "stat": 10, "value": 1.1 },
+          { "stat": 15, "value": 1.175 },
+          { "stat": 20, "value": 1.25 },
+          { "stat": 25, "value": 1.34 },
+          { "stat": 30, "value": 1.43 },
+          { "stat": 35, "value": 1.535 },
+          { "stat": 40, "value": 1.64 },
+          { "stat": 45, "value": 1.75 },
+          { "stat": 50, "value": 1.86 },
+          { "stat": 55, "value": 1.965 },
+          { "stat": 60, "value": 2.07 },
+          { "stat": 65, "value": 2.265 },
+          { "stat": 70, "value": 2.46 },
+          { "stat": 75, "value": 2.535 },
+          { "stat": 80, "value": 2.61 },
+          { "stat": 85, "value": 2.685 },
+          { "stat": 90, "value": 2.76 },
+          { "stat": 95, "value": 2.83 },
+          { "stat": 100, "value": 2.9 }
+        ],
         "source": {
-          "name": "Destiny Data Compendium, Game Mechanics, Armor Stats",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-23",
+          "name": "RyTako ability energy sheet (Stat Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
           "status": "verified",
-          "quote": "Stat provides up to ?% Additional Base Grenade Ability Regeneration Rate and 211.5%% Increased Grenade Ability Gains at 100 points.",
-          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt."
+          "quote": "Stat Scalers, additional base regen units: 100 2.900x, 70 2.460x, 0 1.000x",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv. Lines 130-144. Flat Gain's regen effects grow by 2.9 from stat 0 to 100 (Eye of Another World 20 % → 58 %)."
+        }
+      },
+      "gainScaler": {
+        "points": [
+          { "stat": 0, "value": 0.4 },
+          { "stat": 5, "value": 0.405 },
+          { "stat": 10, "value": 0.419 },
+          { "stat": 15, "value": 0.441 },
+          { "stat": 20, "value": 0.471 },
+          { "stat": 25, "value": 0.509 },
+          { "stat": 30, "value": 0.554 },
+          { "stat": 35, "value": 0.604 },
+          { "stat": 40, "value": 0.659 },
+          { "stat": 45, "value": 0.716 },
+          { "stat": 50, "value": 0.775 },
+          { "stat": 55, "value": 0.834 },
+          { "stat": 60, "value": 0.89 },
+          { "stat": 65, "value": 0.944 },
+          { "stat": 70, "value": 0.996 },
+          { "stat": 75, "value": 1.042 },
+          { "stat": 80, "value": 1.08 },
+          { "stat": 85, "value": 1.11 },
+          { "stat": 90, "value": 1.131 },
+          { "stat": 95, "value": 1.146 },
+          { "stat": 100, "value": 1.151 }
+        ],
+        "source": {
+          "name": "RyTako ability energy sheet (Stat Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Stat Scalers, % Gains: 100 1.151x, 70 0.996x, 0 0.400x",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv. Lines 111-131. Flat Gain, Armor 3.0 Stat Benefits, note 2: stat 70 equals the energy before Edge of Fate; note 4: the super stat scales its gains alike."
         }
       }
     },
     {
       "kind": "melee",
       "fullAtStat": 100,
-      "regenAtFullStat": {
-        "value": 2.48,
+      "regenUnits": {
+        "points": [
+          { "stat": 0, "value": 1 },
+          { "stat": 5, "value": 1.043 },
+          { "stat": 10, "value": 1.086 },
+          { "stat": 15, "value": 1.159 },
+          { "stat": 20, "value": 1.231 },
+          { "stat": 25, "value": 1.34 },
+          { "stat": 30, "value": 1.448 },
+          { "stat": 35, "value": 1.593 },
+          { "stat": 40, "value": 1.739 },
+          { "stat": 45, "value": 1.904 },
+          { "stat": 50, "value": 2.071 },
+          { "stat": 55, "value": 2.245 },
+          { "stat": 60, "value": 2.418 },
+          { "stat": 65, "value": 2.657 },
+          { "stat": 70, "value": 2.895 },
+          { "stat": 75, "value": 2.931 },
+          { "stat": 80, "value": 2.968 },
+          { "stat": 85, "value": 3.005 },
+          { "stat": 90, "value": 3.041 },
+          { "stat": 95, "value": 3.079 },
+          { "stat": 100, "value": 3.115 }
+        ],
         "source": {
-          "name": "Owner (Gemini answer citing Reddit), ADR 0014 point 9",
-          "retrieved": "2026-10-23",
-          "status": "unverified",
-          "quote": "Seit den Anpassungen im Monument of Triumph-Update regenerieren Granaten und Nahkampf-Fähigkeiten bei Stat 100 exakt 2,48-mal so schnell (entspricht +148 % höherer Regenerationsrate) wie bei Stat 0.",
-          "note": "The Compendium leaves the rate open (\"?%\"). Linear from stat 0 to 100 is our assumption; the stat no longer changes regeneration above 100."
+          "name": "RyTako ability energy sheet (Stat Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Base Regen Units: 100 3.115x, 70 2.895x, 30 1.448x, 0 1.000x",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv. Lines 102-122. Grenade and melee regenerate with these units."
         }
       },
-      "gainBonusAtFullStat": {
-        "value": null,
+      "effectScaler": {
+        "points": [
+          { "stat": 0, "value": 1 },
+          { "stat": 5, "value": 1.05 },
+          { "stat": 10, "value": 1.1 },
+          { "stat": 15, "value": 1.175 },
+          { "stat": 20, "value": 1.25 },
+          { "stat": 25, "value": 1.34 },
+          { "stat": 30, "value": 1.43 },
+          { "stat": 35, "value": 1.535 },
+          { "stat": 40, "value": 1.64 },
+          { "stat": 45, "value": 1.75 },
+          { "stat": 50, "value": 1.86 },
+          { "stat": 55, "value": 1.965 },
+          { "stat": 60, "value": 2.07 },
+          { "stat": 65, "value": 2.265 },
+          { "stat": 70, "value": 2.46 },
+          { "stat": 75, "value": 2.535 },
+          { "stat": 80, "value": 2.61 },
+          { "stat": 85, "value": 2.685 },
+          { "stat": 90, "value": 2.76 },
+          { "stat": 95, "value": 2.83 },
+          { "stat": 100, "value": 2.9 }
+        ],
         "source": {
-          "name": "Destiny Data Compendium, Game Mechanics, Armor Stats",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-23",
-          "status": "missing",
-          "quote": "Provides up to ?% Increased Melee Ability Chunk Gains at 100 points.",
-          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt."
+          "name": "RyTako ability energy sheet (Stat Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Stat Scalers, additional base regen units: 100 2.900x, 70 2.460x, 0 1.000x",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv. Lines 130-144. Flat Gain's regen effects grow by 2.9 from stat 0 to 100 (Eye of Another World 20 % → 58 %)."
+        }
+      },
+      "gainScaler": {
+        "points": [
+          { "stat": 0, "value": 0.4 },
+          { "stat": 5, "value": 0.405 },
+          { "stat": 10, "value": 0.419 },
+          { "stat": 15, "value": 0.441 },
+          { "stat": 20, "value": 0.471 },
+          { "stat": 25, "value": 0.509 },
+          { "stat": 30, "value": 0.554 },
+          { "stat": 35, "value": 0.604 },
+          { "stat": 40, "value": 0.659 },
+          { "stat": 45, "value": 0.716 },
+          { "stat": 50, "value": 0.775 },
+          { "stat": 55, "value": 0.834 },
+          { "stat": 60, "value": 0.89 },
+          { "stat": 65, "value": 0.944 },
+          { "stat": 70, "value": 0.996 },
+          { "stat": 75, "value": 1.042 },
+          { "stat": 80, "value": 1.08 },
+          { "stat": 85, "value": 1.11 },
+          { "stat": 90, "value": 1.131 },
+          { "stat": 95, "value": 1.146 },
+          { "stat": 100, "value": 1.151 }
+        ],
+        "source": {
+          "name": "RyTako ability energy sheet (Stat Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Stat Scalers, % Gains: 100 1.151x, 70 0.996x, 0 0.400x",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv. Lines 111-131. Flat Gain, Armor 3.0 Stat Benefits, note 2: stat 70 equals the energy before Edge of Fate; note 4: the super stat scales its gains alike."
         }
       }
     },
     {
       "kind": "super",
       "fullAtStat": 100,
-      "regenAtFullStat": {
-        "value": 1,
+      "regenUnits": {
+        "points": [
+          { "stat": 0, "value": 1 },
+          { "stat": 100, "value": 1 }
+        ],
         "source": {
           "name": "Destiny Data Compendium, Game Mechanics, Armor Stats",
           "url": "https://destiny2.science/data-compendium",
           "retrieved": "2026-10-23",
           "status": "verified",
           "quote": "Super | Grants Increased Super Ability Gains per point.",
-          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt. The super stat names only gains, no regeneration rate."
+          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt. The super stat names only gains, no regeneration rate, and does not change the base cooldown (Flat Gain, note 4)."
         }
       },
-      "gainBonusAtFullStat": {
-        "value": null,
+      "effectScaler": {
+        "points": [
+          { "stat": 0, "value": 1 },
+          { "stat": 5, "value": 1.05 },
+          { "stat": 10, "value": 1.1 },
+          { "stat": 15, "value": 1.175 },
+          { "stat": 20, "value": 1.25 },
+          { "stat": 25, "value": 1.34 },
+          { "stat": 30, "value": 1.43 },
+          { "stat": 35, "value": 1.535 },
+          { "stat": 40, "value": 1.64 },
+          { "stat": 45, "value": 1.75 },
+          { "stat": 50, "value": 1.86 },
+          { "stat": 55, "value": 1.965 },
+          { "stat": 60, "value": 2.07 },
+          { "stat": 65, "value": 2.265 },
+          { "stat": 70, "value": 2.46 },
+          { "stat": 75, "value": 2.535 },
+          { "stat": 80, "value": 2.61 },
+          { "stat": 85, "value": 2.685 },
+          { "stat": 90, "value": 2.76 },
+          { "stat": 95, "value": 2.83 },
+          { "stat": 100, "value": 2.9 }
+        ],
         "source": {
-          "name": "Destiny Data Compendium, Game Mechanics, Armor Stats",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-23",
-          "status": "missing",
-          "quote": "Provides up to ?% Increased Super Ability Chunk Gains at 100 points.",
-          "note": "Saved in docs/sources/compendium-game-mechanics-energy.txt."
+          "name": "RyTako ability energy sheet (Stat Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Stat Scalers, additional base regen units: 100 2.900x, 70 2.460x, 0 1.000x",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv. Lines 130-144. Flat Gain's regen effects grow by 2.9 from stat 0 to 100 (Eye of Another World 20 % → 58 %)."
+        }
+      },
+      "gainScaler": {
+        "points": [
+          { "stat": 0, "value": 0.4 },
+          { "stat": 5, "value": 0.405 },
+          { "stat": 10, "value": 0.419 },
+          { "stat": 15, "value": 0.441 },
+          { "stat": 20, "value": 0.471 },
+          { "stat": 25, "value": 0.509 },
+          { "stat": 30, "value": 0.554 },
+          { "stat": 35, "value": 0.604 },
+          { "stat": 40, "value": 0.659 },
+          { "stat": 45, "value": 0.716 },
+          { "stat": 50, "value": 0.775 },
+          { "stat": 55, "value": 0.834 },
+          { "stat": 60, "value": 0.89 },
+          { "stat": 65, "value": 0.944 },
+          { "stat": 70, "value": 0.996 },
+          { "stat": 75, "value": 1.042 },
+          { "stat": 80, "value": 1.08 },
+          { "stat": 85, "value": 1.11 },
+          { "stat": 90, "value": 1.131 },
+          { "stat": 95, "value": 1.146 },
+          { "stat": 100, "value": 1.151 }
+        ],
+        "source": {
+          "name": "RyTako ability energy sheet (Stat Scalers)",
+          "url": "https://docs.google.com/spreadsheets/d/1lEOY_Z0v5ZZVZJ1SVLJyleMBEG2a7KLq4aLIQA9zk0A",
+          "retrieved": "2026-10-25",
+          "status": "verified",
+          "quote": "Stat Scalers, % Gains: 100 1.151x, 70 0.996x, 0 0.400x",
+          "note": "docs/sources/sheets/rytako/1211854080-the-sheet.tsv. Lines 111-131. Flat Gain, Armor 3.0 Stat Benefits, note 2: stat 70 equals the energy before Edge of Fate; note 4: the super stat scales its gains alike."
         }
       }
     }
@@ -1986,42 +2200,6 @@
       }
     },
     {
-      "id": "starfire-protocol-regen",
-      "from": { "exoticArmorId": "starfire-protocol" },
-      "target": { "kinds": ["grenade"], "abilityIds": ["fusion-grenade"] },
-      "change": "regenBase",
-      "name": "Starfire Protocol",
-      "fixed": false,
-      "value": {
-        "value": 0.2,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Armors (Starfire Protocol)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-24",
-          "status": "verified",
-          "quote": "Passively grants 20% Additional Base Fusion Grenade Regeneration Rate"
-        }
-      }
-    },
-    {
-      "id": "eye-of-another-world-regen",
-      "from": { "exoticArmorId": "eye-of-another-world" },
-      "target": { "kinds": ["grenade", "melee"] },
-      "change": "regenBase",
-      "name": "Eye of Another World",
-      "fixed": false,
-      "value": {
-        "value": 0.45,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Armors (Eye of Another World)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-24",
-          "status": "verified",
-          "quote": "Passively grants 45% Additional Base Grenade, Melee, and Class Regeneration Rate, and +15 Airborne Effectiveness."
-        }
-      }
-    },
-    {
       "id": "chaos-accelerant-regen",
       "from": { "effectId": "chaos-accelerant" },
       "target": {
@@ -2043,54 +2221,6 @@
           "retrieved": "2026-10-24",
           "status": "verified",
           "quote": "Magnetic, Spike, Suppressor, and Voidwall: Releases a short-range Void Blast that inflicts Volatile. Passively grants 1.15x Grenade Regeneration Speed."
-        }
-      }
-    },
-    {
-      "id": "heart-of-inmost-light-melee",
-      "from": { "exoticArmorId": "heart-of-inmost-light" },
-      "target": { "kinds": ["melee"] },
-      "change": "regenBase",
-      "trigger": {
-        "on": "cast",
-        "abilities": { "kinds": ["grenade"] },
-        "durationSeconds": 5
-      },
-      "name": "Heart of Inmost Light",
-      "fixed": false,
-      "value": {
-        "value": 4,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Armors (Heart of Inmost Light)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-24",
-          "status": "verified",
-          "quote": "x1 = 400% [100%] | x2 = 800% [200%] Additional Base Grenade and Melee Regeneration Rate.",
-          "note": "One stack (x1) for 5 seconds after a cast of the other ability; class ability not modelled."
-        }
-      }
-    },
-    {
-      "id": "heart-of-inmost-light-grenade",
-      "from": { "exoticArmorId": "heart-of-inmost-light" },
-      "target": { "kinds": ["grenade"] },
-      "change": "regenBase",
-      "trigger": {
-        "on": "cast",
-        "abilities": { "kinds": ["melee"] },
-        "durationSeconds": 5
-      },
-      "name": "Heart of Inmost Light",
-      "fixed": false,
-      "value": {
-        "value": 4,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Armors (Heart of Inmost Light)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-24",
-          "status": "verified",
-          "quote": "x1 = 400% [100%] | x2 = 800% [200%] Additional Base Grenade and Melee Regeneration Rate.",
-          "note": "One stack (x1) for 5 seconds after a cast of the other ability; class ability not modelled."
         }
       }
     },
@@ -2323,33 +2453,6 @@
       }
     },
     {
-      "id": "empowering-rift-regen",
-      "from": { "abilityId": "empowering-rift" },
-      "target": { "kinds": ["grenade", "melee"] },
-      "change": "regenBase",
-      "trigger": {
-        "on": "cast",
-        "abilities": {
-          "kinds": ["classAbility"],
-          "abilityIds": ["empowering-rift"]
-        },
-        "durationSeconds": 15
-      },
-      "name": "Empowering Rift",
-      "fixed": false,
-      "value": {
-        "value": 2.6,
-        "source": {
-          "name": "Destiny Data Compendium, Class Abilities (Empowering Rift)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-24",
-          "status": "verified",
-          "quote": "Rift grants 20% [15%] increased damage, 260% [104%] Additional Base Grenade and Melee, and 230% [92%] Additional Base Class Regeneration Rate in a 5 meter radius.",
-          "note": "While standing in the Rift for its 15 seconds."
-        }
-      }
-    },
-    {
       "id": "warlock-grenade-regen",
       "name": "Warlock",
       "from": { "guardianClass": "warlock" },
@@ -2367,6 +2470,119 @@
         }
       },
       "fixed": false
+    },
+    {
+      "id": "eye-of-another-world-regen",
+      "name": "Eye of Another World",
+      "from": { "exoticArmorId": "eye-of-another-world" },
+      "target": { "kinds": ["grenade", "melee"] },
+      "change": "regenBase",
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Flat Gain Factors, Regen Effects (Eye of Another World)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-26",
+          "status": "verified",
+          "note": "docs/sources/sheets/flatgain/1365845234-regen-effects.tsv:46. Value at stat 0 (Renegades column); the engine scales it with the stat (2.9 at 100 → 58 %). The Compendium's 45 % is the old value at stat 100 (K4).",
+          "quote": "Eye of Another World\tWarlock Exotic\tGrenade\t20.0%\t45%\t31.5%\t40.6%\t50.0%\t20.0%\t58.0%"
+        }
+      },
+      "fixed": false
+    },
+    {
+      "id": "starfire-protocol-regen",
+      "name": "Starfire Protocol",
+      "from": { "exoticArmorId": "starfire-protocol" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["fusion-grenade"] },
+      "change": "regenBase",
+      "value": {
+        "value": 0.08,
+        "source": {
+          "name": "Flat Gain Factors, Regen Effects (Starfire Protocol)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-26",
+          "status": "verified",
+          "note": "docs/sources/sheets/flatgain/1365845234-regen-effects.tsv:52. Value at stat 0 (Renegades column), scaled with the stat by the engine (K4). The Compendium's 20 % is Flat Gain's 'pre-EoF' value, 8 % × 2.5.",
+          "quote": "Starfire Protocol\tWarlock Exotic\tGrenade\t8.0%\t18%\t12.6%\t16.2%\t20.0%\t8.0%\t23.2%"
+        }
+      },
+      "fixed": false
+    },
+    {
+      "id": "heart-of-inmost-light-grenade",
+      "name": "Heart of Inmost Light",
+      "from": { "exoticArmorId": "heart-of-inmost-light" },
+      "target": { "kinds": ["grenade"] },
+      "change": "regenBase",
+      "value": {
+        "value": 1.6,
+        "source": {
+          "name": "Flat Gain Factors, Regen Effects (Heart of Inmost Light)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-26",
+          "status": "verified",
+          "note": "docs/sources/sheets/flatgain/1365845234-regen-effects.tsv:13. One stack (x1) = half of x2 at stat 0 (Renegades column), scaled with the stat by the engine (K4). The Compendium's 400 % is the 'pre-EoF' value (× 0.4). Five seconds after a cast of the other ability; class ability not modelled.",
+          "quote": "Heart of Inmost Light x2\tTitan Exotic\tGrenade\t320.0%\t720%\t504.0%\t649.6%\t800.0%\t320.0%\t928.0%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["melee"] },
+        "durationSeconds": 5
+      }
+    },
+    {
+      "id": "heart-of-inmost-light-melee",
+      "name": "Heart of Inmost Light",
+      "from": { "exoticArmorId": "heart-of-inmost-light" },
+      "target": { "kinds": ["melee"] },
+      "change": "regenBase",
+      "value": {
+        "value": 1.6,
+        "source": {
+          "name": "Flat Gain Factors, Regen Effects (Heart of Inmost Light)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-26",
+          "status": "verified",
+          "note": "docs/sources/sheets/flatgain/1365845234-regen-effects.tsv:14. As the grenade entry (K4).",
+          "quote": "Heart of Inmost Light x2\tTitan Exotic\tMelee\t320.0%\t720%\t504.0%\t649.6%\t800.0%\t320.0%\t928.0%"
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["grenade"] },
+        "durationSeconds": 5
+      }
+    },
+    {
+      "id": "empowering-rift-regen",
+      "name": "Empowering Rift",
+      "from": { "abilityId": "empowering-rift" },
+      "target": { "kinds": ["grenade", "melee"] },
+      "change": "regenBase",
+      "value": {
+        "value": 1.04,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Empowering Rift), converted to stat 0",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-26",
+          "status": "unverified",
+          "note": "Derived: 260 % × 0.4. Flat Gain has no row for the Rift; for Starfire Protocol, Heart of Inmost Light and Eye of Another World the Compendium text is 2.5 times the value at stat 0 (tests/energyStats.test.ts). The engine scales it with the stat (K4).",
+          "quote": "Rift grants 20% [15%] increased damage, 260% [104%] Additional Base Grenade and Melee, and 230% [92%] Additional Base Class Regeneration Rate in a 5 meter radius."
+        }
+      },
+      "fixed": false,
+      "trigger": {
+        "on": "cast",
+        "abilities": {
+          "kinds": ["classAbility"],
+          "abilityIds": ["empowering-rift"]
+        },
+        "durationSeconds": 15
+      }
     }
   ]
 }

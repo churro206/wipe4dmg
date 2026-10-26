@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest";
 import rawEnergy from "../src/data/ability-energy.json";
 import { EnergyData, type Ability } from "../src/data/schema";
-import { energyCasts, nextCastMs, type EnergyContext } from "../src/engine/abilityEnergy";
+import { curveAt, energyCasts, nextCastMs, type EnergyContext } from "../src/engine/abilityEnergy";
 import { abilities } from "../src/ui/data";
 
 const data = EnergyData.parse(rawEnergy);
 const ability = (id: string): Ability => abilities.find((a) => a.id === id)!;
 const cooldownMs = (id: string) =>
   data.abilities.find((a) => a.abilityId === id)!.cooldownSeconds.value! * 1000;
-const regenAt100 = (kind: Ability["kind"]) =>
-  data.stats.find((s) => s.kind === kind)!.regenAtFullStat.value!;
+const regenAt100 = (kind: "grenade" | "melee" | "super") =>
+  curveAt(data.stats.find((s) => s.kind === kind)!.regenUnits.points, 100);
 // Test input, not a game value.
 const PHASE_MS = 60_000;
 const context = (patch: Partial<EnergyContext> = {}): EnergyContext => ({

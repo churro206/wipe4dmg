@@ -160,6 +160,108 @@
         }
       },
       "fixed": false
+    },
+    {
+      "id": "eye-of-another-world-regen",
+      "name": "Eye of Another World",
+      "from": { "exoticArmorId": "eye-of-another-world" },
+      "target": { "kinds": ["grenade", "melee"] },
+      "change": "regenBase",
+      "value": {
+        "value": 0.2,
+        "source": {
+          "name": "Flat Gain Factors, Regen Effects (Eye of Another World)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-26",
+          "status": "verified",
+          "quote": "Eye of Another World\tWarlock Exotic\tGrenade\t20.0%\t45%\t31.5%\t40.6%\t50.0%\t20.0%\t58.0%",
+          "note": "docs/sources/sheets/flatgain/1365845234-regen-effects.tsv:46. Value at stat 0 (Renegades column); the engine scales it with the stat (2.9 at 100 → 58 %). The Compendium's 45 % is the old value at stat 100 (K4)."
+        }
+      },
+      "fixed": false
+    },
+    {
+      "id": "starfire-protocol-regen",
+      "name": "Starfire Protocol",
+      "from": { "exoticArmorId": "starfire-protocol" },
+      "target": { "kinds": ["grenade"], "abilityIds": ["fusion-grenade"] },
+      "change": "regenBase",
+      "value": {
+        "value": 0.08,
+        "source": {
+          "name": "Flat Gain Factors, Regen Effects (Starfire Protocol)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-26",
+          "status": "verified",
+          "quote": "Starfire Protocol\tWarlock Exotic\tGrenade\t8.0%\t18%\t12.6%\t16.2%\t20.0%\t8.0%\t23.2%",
+          "note": "docs/sources/sheets/flatgain/1365845234-regen-effects.tsv:52. Value at stat 0 (Renegades column), scaled with the stat by the engine (K4). The Compendium's 20 % is Flat Gain's 'pre-EoF' value, 8 % × 2.5."
+        }
+      },
+      "fixed": false
+    },
+    {
+      "id": "heart-of-inmost-light-grenade",
+      "name": "Heart of Inmost Light",
+      "from": { "exoticArmorId": "heart-of-inmost-light" },
+      "target": { "kinds": ["grenade"] },
+      "change": "regenBase",
+      "trigger": { "on": "cast", "abilities": { "kinds": ["melee"] }, "durationSeconds": 5 },
+      "value": {
+        "value": 1.6,
+        "source": {
+          "name": "Flat Gain Factors, Regen Effects (Heart of Inmost Light)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-26",
+          "status": "verified",
+          "quote": "Heart of Inmost Light x2\tTitan Exotic\tGrenade\t320.0%\t720%\t504.0%\t649.6%\t800.0%\t320.0%\t928.0%",
+          "note": "docs/sources/sheets/flatgain/1365845234-regen-effects.tsv:13. One stack (x1) = half of x2 at stat 0 (Renegades column), scaled with the stat by the engine (K4). The Compendium's 400 % is the 'pre-EoF' value (× 0.4). Five seconds after a cast of the other ability; class ability not modelled."
+        }
+      },
+      "fixed": false
+    },
+    {
+      "id": "heart-of-inmost-light-melee",
+      "name": "Heart of Inmost Light",
+      "from": { "exoticArmorId": "heart-of-inmost-light" },
+      "target": { "kinds": ["melee"] },
+      "change": "regenBase",
+      "trigger": { "on": "cast", "abilities": { "kinds": ["grenade"] }, "durationSeconds": 5 },
+      "value": {
+        "value": 1.6,
+        "source": {
+          "name": "Flat Gain Factors, Regen Effects (Heart of Inmost Light)",
+          "url": "https://destiny2.science/flat-gain-factors",
+          "retrieved": "2026-10-26",
+          "status": "verified",
+          "quote": "Heart of Inmost Light x2\tTitan Exotic\tMelee\t320.0%\t720%\t504.0%\t649.6%\t800.0%\t320.0%\t928.0%",
+          "note": "docs/sources/sheets/flatgain/1365845234-regen-effects.tsv:14. As the grenade entry (K4)."
+        }
+      },
+      "fixed": false
+    },
+    {
+      "id": "empowering-rift-regen",
+      "name": "Empowering Rift",
+      "from": { "abilityId": "empowering-rift" },
+      "target": { "kinds": ["grenade", "melee"] },
+      "change": "regenBase",
+      "trigger": {
+        "on": "cast",
+        "abilities": { "kinds": ["classAbility"], "abilityIds": ["empowering-rift"] },
+        "durationSeconds": 15
+      },
+      "value": {
+        "value": 1.04,
+        "source": {
+          "name": "Destiny Data Compendium, Class Abilities (Empowering Rift), converted to stat 0",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-26",
+          "status": "unverified",
+          "quote": "Rift grants 20% [15%] increased damage, 260% [104%] Additional Base Grenade and Melee, and 230% [92%] Additional Base Class Regeneration Rate in a 5 meter radius.",
+          "note": "Derived: 260 % × 0.4. Flat Gain has no row for the Rift; for Starfire Protocol, Heart of Inmost Light and Eye of Another World the Compendium text is 2.5 times the value at stat 0 (tests/energyStats.test.ts). The engine scales it with the stat (K4)."
+        }
+      },
+      "fixed": false
     }
   ]
 }

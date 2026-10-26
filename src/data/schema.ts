@@ -1078,12 +1078,20 @@ export const AbilityEnergy = z.object({
 });
 export type AbilityEnergy = z.infer<typeof AbilityEnergy>;
 
+/** A factor by stat: points sorted by stat, linear in between, the first and last value beyond them. */
+export const StatCurve = z.object({
+  points: z.array(z.object({ stat: z.number().nonnegative(), value: z.number().positive() })).min(2),
+  source: Source,
+});
+export type StatCurve = z.infer<typeof StatCurve>;
+
 /** How the super, grenade or melee stat speeds up the regeneration and the energy gains of its abilities. */
 export const EnergyStat = z.object({
   kind: StatAbilityKind,
-  fullAtStat: z.number().positive(), // stat with the full effect, linear from 0; also the default stat
-  regenAtFullStat: SourcedNumber, // regeneration rate relative to stat 0, e.g. 2.48
-  gainBonusAtFullStat: SourcedNumber, // extra share of chunk gains, e.g. 2.115 for +211.5%; null: none known
+  fullAtStat: z.number().positive(), // the default stat (omitted stat in a build)
+  regenUnits: StatCurve, // regeneration rate relative to stat 0, e.g. 3.115 at 100
+  effectScaler: StatCurve, // factor on the additional base regeneration of effects (stat 0 = 1)
+  gainScaler: StatCurve, // factor on chunk gains, 1 at about stat 70
 });
 export type EnergyStat = z.infer<typeof EnergyStat>;
 

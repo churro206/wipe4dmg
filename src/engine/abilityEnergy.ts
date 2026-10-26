@@ -10,6 +10,7 @@ import type {
   EnergyAbilities,
   EnergyData,
   EnergyModifier,
+  StatCurve,
 } from "../data/schema";
 
 // Resolution of the energy timeline; a technical step, not a game value.
@@ -27,6 +28,15 @@ export type EnergyContext = {
 };
 
 export type CastRequest = { ability: Ability; castsMs: number[] };
+
+/** Value of a stat curve at the stat: linear between its points, the end values beyond them. */
+export function curveAt(points: StatCurve["points"], stat: number): number {
+  const after = points.findIndex((p) => p.stat >= stat);
+  if (after < 0) return points[points.length - 1].value;
+  if (after === 0) return points[0].value;
+  const [a, b] = [points[after - 1], points[after]];
+  return a.value + ((b.value - a.value) * (stat - a.stat)) / (b.stat - a.stat);
+}
 
 const baseId = (ability: Ability) => ability.variantOf ?? ability.id;
 
@@ -63,7 +73,8 @@ type State = {
   charges: number;
   energy: number; // in charges
   readyAt: number; // since when one charge is full; Infinity while empty
-  regen: number; // stat factor plus passive additional base rates
+  regen: number; // regeneration units of the stat plus passive additional base rates
+  effectScale: number; // stat factor on the additional base rates of effects
   speed: number; // regeneration speed factor
   gainFactor: number; // chunk scalar times stat gain factor, for gains that are not fixed
   weaponRatePerMs: number;
@@ -81,12 +92,11 @@ function initialState(
   if (!cooldownSeconds) return undefined; // unknown cooldown: the rotation decides alone
   // no stat for class abilities: their cooldown is the base cooldown (U7)
   const stat = ctx.data.stats.find((s) => s.kind === ability.kind);
-  const share = stat
-    ? Math.min(ctx.stats?.[stat.kind] ?? stat.fullAtStat, stat.fullAtStat) / stat.fullAtStat
-    : 0;
-  const regenAtFull = stat?.regenAtFullStat.value ?? 1;
-  const gainBonus = stat?.gainBonusAtFullStat.value ?? 0;
-  const gainFactor = (energy.chunkScalar?.value ?? 1) * (1 + gainBonus * share);
+  const points = stat ? (ctx.stats?.[stat.kind] ?? stat.fullAtStat) : 0;
+  const regenUnits = stat ? curveAt(stat.regenUnits.points, points) : 1;
+  const effectScale = stat ? curveAt(stat.effectScaler.points, points) : 1;
+  const gainFactor =
+    (energy.chunkScalar?.value ?? 1) * (stat ? curveAt(stat.gainScaler.points, points) : 1);
   const own = modifiers.filter((m) => matches(m.target, ability));
   const passive = (change: EnergyModifier["change"]) =>
     own.filter((m) => m.change === change && !m.trigger).map((m) => m.value.value!);
@@ -99,7 +109,8 @@ function initialState(
     charges,
     energy: charges,
     readyAt: 0,
-    regen: 1 + (regenAtFull - 1) * share + passive("regenBase").reduce((a, b) => a + b, 0),
+    regen: regenUnits + effectScale * passive("regenBase").reduce((a, b) => a + b, 0),
+    effectScale,
     speed: passive("regenSpeed").reduce((a, b) => a * b, 1),
     gainFactor,
     weaponRatePerMs: own
@@ -144,7 +155,7 @@ function cast(state: State, atMs: number, states: State[], modifiers: EnergyModi
       else if (m.change === "regenBase" && m.trigger.durationSeconds)
         target.windows.push({
           untilMs: atMs + m.trigger.durationSeconds * MS_PER_SECOND,
-          value: m.value.value!,
+          value: m.value.value! * target.effectScale,
         });
     }
   }
