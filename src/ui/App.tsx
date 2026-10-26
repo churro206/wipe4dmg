@@ -7,26 +7,16 @@ import type {
   ProviderKind,
   Slot,
   Subclass,
-  Weapon,
 } from "../data/schema";
-import {
-  compareResults,
-  damageByMultiplier,
-  damageShares,
-  damageCurve,
-  dpsByDamagePhase,
-} from "../engine/analysis";
-import { breakdown } from "../engine/breakdown";
-import { addCast, removeCast, setCast } from "../engine/buildAbilities";
+import { compareResults, dpsByDamagePhase } from "../engine/analysis";
 import { nextCastFor } from "../engine/buildSimulation";
 import { buildSimulation } from "../engine/buildSimulation";
 import { rotationWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
 import { fitArtifact } from "../engine/artifacts";
 import { abilitiesFor, effectsFor } from "../engine/providers";
-import { classPerksFor, exoticArmorFor } from "../engine/exoticArmor";
-import { simulate, type SimulationResult } from "../engine/simulate";
-import type { SimulationOptions } from "../engine/simulate";
+import { classPerksFor } from "../engine/exoticArmor";
+import { simulate } from "../engine/simulate";
 import {
   ABILITY_KIND_LABELS,
   ABILITY_KINDS,
@@ -44,7 +34,6 @@ import {
   withoutOwnSuperEffects,
   withoutSlot,
   type AbilityChoice,
-  describeBuild,
   effectsOf,
   linkFor,
   selectionsFor,
@@ -54,34 +43,25 @@ import {
   windowsFor,
   type WindowInput,
 } from "./buildState";
-import {
-  BreakdownChart,
-  CompareCurveChart,
-  DamageCurveChart,
-  DamageShareChart,
-  DpsByLengthChart,
-  RotationTimeline,
-} from "./Charts";
 import { AbilityPicker } from "./components/AbilityPicker";
+import { ArmorSection } from "./components/ArmorSection";
 import { ArtifactPicker } from "./components/ArtifactPicker";
+import { BreakdownPanel } from "./components/BreakdownPanel";
 import { EffectPicker } from "./components/EffectPicker";
-import { Icon } from "./components/Icon";
+import { EncounterSection } from "./components/EncounterSection";
 import { InfoTip } from "./components/InfoTip";
-import { OptimizerCards } from "./components/OptimizerCards";
-import { WikiView } from "./components/WikiView";
-import { AbilityCastEditor } from "./components/AbilityCastEditor";
-import { RotationEditor } from "./components/RotationEditor";
+import { OptimizerTab } from "./components/OptimizerTab";
+import { OverviewTab } from "./components/OverviewTab";
+import { RotationTab } from "./components/RotationTab";
 import { SegmentedControl } from "./components/SegmentedControl";
 import { StatSliders } from "./components/StatSliders";
 import { StickyResult } from "./components/StickyResult";
 import { SummaryBar } from "./components/SummaryBar";
-import { WeaponPicker } from "./components/WeaponPicker";
-import { ClassPerkPicker } from "./components/ClassPerkPicker";
-import { ExoticPicker } from "./components/ExoticPicker";
 import { Tabs } from "./components/Tabs";
+import { WeaponSection } from "./components/WeaponSection";
+import { WikiView } from "./components/WikiView";
 import {
   abilities,
-  activities,
   artifactData,
   baseEffects,
   gameData,
@@ -91,16 +71,9 @@ import {
   effects,
   exoticArmor,
   generatedExoticEffects,
-  iconUrl,
   weaponById,
-  weapons,
 } from "./data";
-import {
-  describeCatalyst,
-  describeExotic,
-  effectIconKey,
-  PROVIDER_LABELS,
-} from "./describe";
+import { PROVIDER_LABELS } from "./describe";
 import { effectSections } from "./effectSections";
 import {
   effectRelevantTo,
@@ -108,7 +81,7 @@ import {
   hasIgnition,
   neededStatuses,
 } from "../engine/weaponInfo";
-import { factor, integer, roundToTenth, seconds } from "./format";
+import { roundToTenth } from "./format";
 
 const TABS = [
   { id: "overview", label: "Overview" },
@@ -163,9 +136,6 @@ function App() {
     initial.classPerkIds.length > 0,
   );
   const exotic = exoticArmor.find((e) => e.id === exoticArmorId);
-  const classItemEntry = exoticArmor.find(
-    (e) => e.slot === "classItem" && e.guardianClass === guardianClass,
-  );
   const exoticHasPreBuilt = generatedExoticEffects.some(
     (g) =>
       (g.exoticArmorId === exoticArmorId || classPerkIds.includes(g.exoticArmorId)) &&
@@ -222,7 +192,6 @@ function App() {
       plain.options,
     );
   })();
-  const boss = bosses.find((b) => b.id === bossId);
   const link = linkFor(isValid ? currentBuild : null, comparison, bossId);
   useEffect(() => {
     window.history.replaceState(
@@ -310,6 +279,10 @@ function App() {
     setWeaponId(id);
     if (!hasCatalyst(weaponById(id))) setCatalyst(false);
   };
+  const changeInput = (value: string) => {
+    setInput(value);
+    setBossId("");
+  };
   const selectBoss = (id: string) => {
     setBossId(id);
     const chosen = bosses.find((b) => b.id === id);
@@ -335,6 +308,22 @@ function App() {
     }
     setSelections((current) => selectionsFor(current, guardianClass, next));
     setAbilityChoice((current) => choiceFor(current, guardianClass, next));
+  };
+  const selectExotic = (id: string | undefined) => {
+    setExoticArmorId(id);
+    setClassPerkIds([]); // a piece or none replaces the class item
+    setClassItemChosen(false);
+    setExoticPreBuilt(false);
+  };
+  const chooseClassItem = () => {
+    if (subclass !== "prismatic") changeSubclass("prismatic"); // the Spirit perks need Prismatic
+    setExoticArmorId(undefined); // the class item is the exotic
+    setClassItemChosen(true);
+    setExoticPreBuilt(false);
+  };
+  const changeClassPerks = (ids: string[]) => {
+    setClassPerkIds(ids);
+    setExoticPreBuilt(false);
   };
   // A build has one super: the super slot and own effects of the super group exclude each other.
   // An ability that refills the magazine starts at the first reload instead of 0 s (U7).
@@ -470,6 +459,12 @@ function App() {
       abilityStats: picks.length > 0 ? abilityStatInputs : undefined,
     };
   };
+  const applyOptimizerEntry = (entry: OptimizerEntry) => {
+    setSubclass(entry.subclass);
+    if (entry.artifactId) setArtifactId(entry.artifactId);
+    setSelections(entry.selections);
+    setAbilityChoice(choiceOf(entry));
+  };
 
   // Own effects by slot, in the order of the game screens (U3). State-only items only show if
   // the exotic needs their state, e.g. Ascension (Amplified) for No Backup Plans.
@@ -520,93 +515,19 @@ function App() {
         {view === "calculator" && (
           <>
             <section className="settings" aria-label="Build">
-              <h2>Encounter</h2>
-              <div className="phase-row">
-                <label>
-                  Damage Phase (s)
-                  <input
-                    type="number"
-                    min="0"
-                    step="any"
-                    value={input}
-                    onChange={(event) => {
-                      setInput(event.target.value);
-                      setBossId("");
-                    }}
-                    onBlur={(event) =>
-                      setInput(roundToTenth(Number(event.target.value)))
-                    }
-                  />
-                </label>
-                <label>
-                  Boss
-                  <select
-                    value={bossId}
-                    onChange={(event) => selectBoss(event.target.value)}
-                  >
-                    <option value="">– custom –</option>
-                    {activities.map((activity) => (
-                      <optgroup key={activity} label={activity}>
-                        {bosses
-                          .filter((b) => b.activity === activity)
-                          .map((b) => (
-                            <option key={b.id} value={b.id}>
-                              {b.name} (
-                              {seconds.format(
-                                b.damagePhaseSeconds.value ?? NaN,
-                              )}{" "}
-                              s)
-                            </option>
-                          ))}
-                      </optgroup>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              {boss?.description && <p className="note">{boss.description}</p>}
-
-              <h2>Weapon</h2>
-              <div className="tile-grid">
-                <WeaponPicker
-                  weapons={weapons}
-                  selected={weapon}
-                  onSelect={changeWeapon}
-                />
-                {hasCatalyst(weapon) && (
-                  <span className="tile-wrap">
-                    <button
-                      type="button"
-                      className="tile"
-                      aria-pressed={catalyst}
-                      aria-describedby="catalyst-card"
-                      onClick={() => setCatalyst((on) => !on)}
-                    >
-                      <Icon
-                        iconKey={`catalyst:${weapon.id}`}
-                        label="Catalyst"
-                      />
-                      <span className="tile-label">Catalyst</span>
-                    </button>
-                    <span role="tooltip" id="catalyst-card" className="hover-card">
-                      <strong>{weapon.catalyst?.name ?? "Catalyst"}</strong>
-                      {describeCatalyst(weapon).map((line) => (
-                        <span key={line}>{line}</span>
-                      ))}
-                    </span>
-                  </span>
-                )}
-              </div>
-              {catalyst &&
-                weapon.options?.some(
-                  (o) =>
-                    o.kind === "catalyst" &&
-                    (o.durationSeconds !== null || o.condition !== null),
-                ) && (
-                  <p className="note">
-                    The catalyst applies for the whole Damage Phase here; in
-                    game it is limited.
-                  </p>
-                )}
+              <EncounterSection
+                input={input}
+                bossId={bossId}
+                onInput={changeInput}
+                onCommitInput={(value) => setInput(roundToTenth(Number(value)))}
+                onSelectBoss={selectBoss}
+              />
+              <WeaponSection
+                weapon={weapon}
+                catalyst={catalyst}
+                onSelectWeapon={changeWeapon}
+                onToggleCatalyst={() => setCatalyst((on) => !on)}
+              />
 
               <h2>Class</h2>
               <SegmentedControl
@@ -678,74 +599,19 @@ function App() {
               {pickerFor("fragment", <h2>Fragments</h2>)}
               {pickerFor("buffs", <h2>Buffs &amp; Debuffs</h2>)}
 
-              <h2>Armor</h2>
-              <h3 className="sub">Exotic</h3>
-              <div className="tile-grid">
-                <ExoticPicker
-                  entries={exoticArmorFor(exoticArmor, guardianClass, gameData.energy)}
-                  selected={exotic}
-                  describe={(entry) =>
-                    describeExotic(entry, effects, generatedExoticEffects)
-                  }
-                  onSelect={(id) => {
-                    setExoticArmorId(id);
-                    setClassPerkIds([]); // a piece or none replaces the class item
-                    setClassItemChosen(false);
-                    setExoticPreBuilt(false);
-                  }}
-                  classItem={
-                    classItemEntry &&
-                    classPerksFor(exoticArmor, guardianClass).length > 0
-                      ? {
-                          entry: classItemEntry,
-                          chosen: classItemChosen,
-                          onChoose: () => {
-                            if (subclass !== "prismatic")
-                              changeSubclass("prismatic"); // the Spirit perks need Prismatic
-                            setExoticArmorId(undefined); // the class item is the exotic
-                            setClassItemChosen(true);
-                            setExoticPreBuilt(false);
-                          },
-                        }
-                      : undefined
-                  }
-                />
-                {exoticHasPreBuilt && (
-                  <span className="tile-wrap">
-                    <button
-                      type="button"
-                      className="tile"
-                      aria-pressed={exoticPreBuilt}
-                      title="Kill buffs of the exotic stacked before the Damage Phase: active from 0 s for their duration, without refresh (one boss, no adds)."
-                      onClick={() => setExoticPreBuilt((on) => !on)}
-                    >
-                      <span
-                        className="icon ability-none"
-                        style={{ width: 40, height: 40 }}
-                      >
-                        ↺
-                      </span>
-                      <span className="tile-label">Pre-stacked</span>
-                    </button>
-                  </span>
-                )}
-              </div>
-              {subclass === "prismatic" && classItemChosen && (
-                <>
-                  <h3 className="sub">Exotic Class Item perks</h3>
-                  <ClassPerkPicker
-                    entries={classPerksFor(exoticArmor, guardianClass)}
-                    selectedIds={classPerkIds}
-                    describe={(entry) =>
-                      describeExotic(entry, effects, generatedExoticEffects)
-                    }
-                    onChange={(ids) => {
-                      setClassPerkIds(ids);
-                      setExoticPreBuilt(false);
-                    }}
-                  />
-                </>
-              )}
+              <ArmorSection
+                guardianClass={guardianClass}
+                subclass={subclass}
+                exotic={exotic}
+                classItemChosen={classItemChosen}
+                exoticHasPreBuilt={exoticHasPreBuilt}
+                exoticPreBuilt={exoticPreBuilt}
+                classPerkIds={classPerkIds}
+                onSelectExotic={selectExotic}
+                onChooseClassItem={chooseClassItem}
+                onTogglePreBuilt={() => setExoticPreBuilt((on) => !on)}
+                onClassPerksChange={changeClassPerks}
+              />
               {pickerFor("mod", <h3 className="sub">Mods</h3>)}
 
               <h2>Stats</h2>
@@ -866,124 +732,30 @@ function App() {
               {result && (
                 <Tabs tabs={[...TABS]} active={tab} onChange={setTab}>
                   {tab === "overview" && (
-                    <>
-                      {comparison && comparisonResult && (
-                        <div className="comparison">
-                          <p className="note">
-                            Comparison: {describeBuild(comparison)}. Same
-                            Damage Phase ({seconds.format(damagePhaseSeconds)}{" "}
-                            s).
-                          </p>
-                          <CompareCurveChart
-                            current={damageCurve(result, damagePhaseSeconds)}
-                            comparison={damageCurve(
-                              comparisonResult,
-                              damagePhaseSeconds,
-                            )}
-                          />
-                        </div>
-                      )}
-                      {result.totalDamage > 0 && (
-                        <DamageShareChart
-                          entries={damageShares(result)}
-                          multipliers={damageByMultiplier(
-                            result,
-                            withoutCatalyst,
-                          )}
-                          abilityName={(id) =>
-                            abilities.find((a) => a.id === id)?.name ??
-                            // damage of its own from an effect, e.g. Storm's Keep (rule H)
-                            selected.find((e) => e.id === id)?.name ??
-                            id
-                          }
-                        />
-                      )}
-                      <DamageCurveChart
-                        points={damageCurve(result, damagePhaseSeconds)}
-                      />
-                      <DpsByLengthChart
-                        points={dpsPoints}
-                        currentSeconds={damagePhaseSeconds}
-                      />
-                    </>
+                    <OverviewTab
+                      result={result}
+                      comparison={comparison}
+                      comparisonResult={comparisonResult}
+                      withoutCatalyst={withoutCatalyst}
+                      selected={selected}
+                      dpsPoints={dpsPoints}
+                      damagePhaseSeconds={damagePhaseSeconds}
+                    />
                   )}
 
                   {tab === "rotation" && (
-                    <>
-                      <RotationTimeline
-                        rows={selected.flatMap((effect) => {
-                          const own = windows.filter(
-                            (w) => w.effectId === effect.id,
-                          );
-                          if (own.length === 0) return [];
-                          return [
-                            {
-                              windows: own,
-                              // a grant names its ability, e.g. "Radiant (Lightweight Knife)"
-                              label: effect.id.includes("@")
-                                ? effect.name
-                                : effect.shortName,
-                              iconUrl: iconUrl(
-                                effectIconKey(effect, weapon.element),
-                              ),
-                            },
-                          ];
-                        })}
-                        abilityRows={castRows.map(({ ability, actualMs }) => ({
-                          label: ability.name,
-                          iconUrl: iconUrl(`ability:${ability.id}`),
-                          kind: ability.kind,
-                          castsMs: actualMs,
-                          windows: result.superWindows.filter(
-                            (w) => w.abilityId === ability.id,
-                          ),
-                        }))}
-                        shotsMs={result.shots.map((s) => s.timeMs)}
-                        ignitionsMs={result.damageInstances
-                          .filter((d) => d.id === "ignition")
-                          .map((d) => d.timeMs)}
-                        damagePhaseSeconds={damagePhaseSeconds}
-                      />
-                      <RotationEditor
-                        weaponElement={weapon.element}
-                        effects={ownSelected}
-                        windowInputOf={(effect) =>
-                          windowInputs[effect.id] ?? defaultWindow(effect)
-                        }
-                        uptimeOf={(effect) =>
-                          windows
-                            .filter((w) => w.effectId === effect.id)
-                            .reduce<number | undefined>(
-                              (sum, w) => (sum ?? 0) + w.uptime,
-                              undefined,
-                            )
-                        }
-                        onChange={setWindow}
-                      />
-                      <AbilityCastEditor
-                        rows={castRows}
-                        onChange={(ability, index, value) =>
-                          updateCasts(ability.kind, (casts) =>
-                            setCast(
-                              casts,
-                              index,
-                              value * 1000,
-                              damagePhaseSeconds * 1000,
-                            ),
-                          )
-                        }
-                        onAdd={(ability, atMs) =>
-                          updateCasts(ability.kind, (casts) =>
-                            addCast(casts, atMs),
-                          )
-                        }
-                        onRemove={(ability, index) =>
-                          updateCasts(ability.kind, (casts) =>
-                            removeCast(casts, index),
-                          )
-                        }
-                      />
-                    </>
+                    <RotationTab
+                      weapon={weapon}
+                      result={result}
+                      selected={selected}
+                      ownSelected={ownSelected}
+                      windows={windows}
+                      castRows={castRows}
+                      windowInputs={windowInputs}
+                      damagePhaseSeconds={damagePhaseSeconds}
+                      onWindowChange={setWindow}
+                      onUpdateCasts={updateCasts}
+                    />
                   )}
 
                   {tab === "breakdown" && (
@@ -997,55 +769,19 @@ function App() {
                   )}
 
                   {tab === "optimizer" && (
-                    <>
-                      <div className="toolbar">
-                        <button
-                          type="button"
-                          onClick={runOptimizer}
-                          disabled={optimizing}
-                        >
-                          {optimizing ? "Calculating …" : "Run optimizer"}
-                        </button>
-                        <InfoTip>
-                          Tries every allowed combination of your own
-                          effects for {CLASS_LABELS[guardianClass]} in all
-                          subclasses. Fireteam Support and its windows
-                          stay as set, your own effects run with
-                          their default duration. Effects without benefit are left out.
-                        </InfoTip>
-                      </div>
-                      {optimizer && optimizer.forKey !== optimizerKey && (
-                        <p className="note">
-                          This list is for an earlier build. Run the
-                          optimizer again.
-                        </p>
-                      )}
-                      {optimizer && (
-                        <OptimizerCards
-                          weaponElement={weapon.element}
-                          entries={optimizer.entries}
-                          guardianClass={guardianClass}
-                          currentTotal={result.totalDamage}
-                          currentSubclass={subclass}
-                          currentEffectIds={
-                            new Set(
-                              effectsOf(
-                                selections.filter(
-                                  (s) => s.provider !== "fireteamSupport",
-                                ),
-                              ).map((e) => e.id),
-                            )
-                          }
-                          onApply={(entry) => {
-                            setSubclass(entry.subclass);
-                            if (entry.artifactId) setArtifactId(entry.artifactId);
-                            setSelections(entry.selections);
-                            setAbilityChoice(choiceOf(entry));
-                          }}
-                          onCompare={(entry) => setComparison(buildOf(entry))}
-                        />
-                      )}
-                    </>
+                    <OptimizerTab
+                      optimizer={optimizer}
+                      optimizerKey={optimizerKey}
+                      optimizing={optimizing}
+                      weaponElement={weapon.element}
+                      guardianClass={guardianClass}
+                      subclass={subclass}
+                      selections={selections}
+                      currentTotal={result.totalDamage}
+                      onRun={runOptimizer}
+                      onApply={applyOptimizerEntry}
+                      onCompare={(entry) => setComparison(buildOf(entry))}
+                    />
                   )}
                 </Tabs>
               )}
@@ -1068,126 +804,6 @@ function App() {
         in the <a href="https://url.d2clarity.com/discord">Clarity Discord</a>;
         our changes are marked).
       </footer>
-    </>
-  );
-}
-
-/** Breakdown tab: contribution per bucket as bars and as a table. */
-const KIND_ORDER: AbilityKind[] = ABILITY_KINDS;
-
-function BreakdownPanel({
-  weapon,
-  result,
-  damagePhaseSeconds,
-  selected,
-  options,
-}: {
-  weapon: Weapon;
-  result: SimulationResult;
-  damagePhaseSeconds: number;
-  selected: Effect[];
-  options: SimulationOptions;
-}) {
-  const entries = breakdown(
-    weapon,
-    damagePhaseSeconds,
-    selected,
-    buckets,
-    options,
-  );
-  if (entries.length === 0) {
-    return <p className="note">No multipliers selected.</p>;
-  }
-  // One column per damage source of the build: the weapon, then each ability (super, grenade, melee).
-  const shares = damageShares(result);
-  const castAbilities = [
-    ...new Map(
-      (options.abilities ?? []).map(({ ability }) => [ability.id, ability]),
-    ).values(),
-  ].sort((a, b) => KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind));
-  const columns = [
-    {
-      key: "weapon",
-      abilityId: undefined as string | undefined,
-      label: "Weapon",
-      damage: shares
-        .filter((s) => s.damageSource === "weapon")
-        .reduce((sum, s) => sum + s.damage, 0),
-    },
-    ...castAbilities.map((ability) => ({
-      key: ability.id,
-      abilityId: ability.id as string | undefined,
-      label: ability.name,
-      damage: shares.find((s) => s.abilityId === ability.id)?.damage ?? 0,
-    })),
-  ];
-  return (
-    <>
-      <BreakdownChart entries={entries} totalDamage={result.totalDamage} />
-      <div className="table-scroll">
-        <table className="breakdown">
-          <thead>
-            <tr>
-              <th>Bucket</th>
-              {columns.map((column) => (
-                <th key={column.key} title={column.label}>
-                  {column.abilityId ? (
-                    <span className="column-head">
-                      <Icon
-                        iconKey={`ability:${column.abilityId}`}
-                        label={column.label}
-                        size={20}
-                      />
-                      {column.label}
-                    </span>
-                  ) : (
-                    column.label
-                  )}
-                </th>
-              ))}
-              <th>Contribution</th>
-            </tr>
-          </thead>
-          <tbody>
-            {entries.map((entry) => (
-              <tr key={entry.bucketId}>
-                <td>{entry.name}</td>
-                {columns.map((column) => {
-                  const match = entry.multipliersBySource.find((m) =>
-                    column.abilityId
-                      ? m.abilityId === column.abilityId
-                      : m.damageSource === "weapon",
-                  );
-                  return (
-                    <td key={column.key} className={match ? "" : "muted"}>
-                      {match ? `×${factor.format(match.multiplier)}` : "–"}
-                    </td>
-                  );
-                })}
-                <td>
-                  +
-                  {integer.format(
-                    result.totalDamage - entry.totalDamageWithout,
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <th>Damage</th>
-              {columns.map((column) => (
-                <th key={column.key}>{integer.format(column.damage)}</th>
-              ))}
-              <th>{integer.format(result.totalDamage)}</th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      <p className="note">
-        Multiplier while the effect is active. “–”: the bucket does not apply to
-        this source. Contribution: Total Damage minus Total Damage without the bucket.
-      </p>
     </>
   );
 }
