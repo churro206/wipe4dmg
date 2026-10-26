@@ -29,37 +29,37 @@ Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the m
 
 | Element | Super | Model | Super Window | Aegis row or reason |
 | --- | --- | --- | --- | --- |
-| Arc | Arc Staff | 🟡 Package | estimate | `super-arc-staff-grounded-2l1h` |
-| Arc | Gathering Storm | 🟡 Package | estimate | `super-gathering-storm` |
+| Arc | Arc Staff | 🟡 Package | exact | `super-arc-staff-grounded-2l1h` |
+| Arc | Gathering Storm | 🟡 Package | exact | `super-gathering-storm` |
 | Arc | Storm's Edge | 🟡 Package | estimate | `super-storm-s-edge-body` |
-| Arc | Fists of Havoc | 🟡 Package | estimate | `super-fists-of-havoc-heavy-attacks` |
-| Arc | Thundercrash | ✅ Parts | estimate | `super-thundercrash` |
+| Arc | Fists of Havoc | 🟡 Package | exact | `super-fists-of-havoc-heavy-attacks` |
+| Arc | Thundercrash | ✅ Parts | exact | `super-thundercrash` |
 | Arc | Chaos Reach | 🟡 Package | exact | `super-chaos-reach` |
-| Arc | Stormtrance | 🟡 Package | estimate | `super-stormtrance` |
-| Solar | Blade Barrage | 🟡 Package | estimate | `super-blade-barrage` |
-| Solar | Golden Gun: Deadshot | 🟡 Package | estimate | `super-golden-gun-deadshot-radiant-ember-of-ashes` |
-| Solar | Golden Gun: Marksman | 🟡 Package | estimate | `super-golden-gun-marksman-radiant` |
+| Arc | Stormtrance | 🟡 Package | exact | `super-stormtrance` |
+| Solar | Blade Barrage | 🟡 Package | exact | `super-blade-barrage` |
+| Solar | Golden Gun: Deadshot | 🟡 Package | exact | `super-golden-gun-deadshot-radiant-ember-of-ashes` |
+| Solar | Golden Gun: Marksman | 🟡 Package | exact | `super-golden-gun-marksman-radiant` |
 | Solar | Burning Maul | 🟡 Package | exact | `super-burning-maul-light-attacks-sol-invictus-ember-of-ashes` |
 | Solar | Hammer of Sol | 🟡 Package | exact | `super-hammer-of-sol` |
 | Solar | Hammer of Sol (Sol Invictus Aspect) | ❌ missing | – | Aegis only measures with buffs that are not an effect yet |
 | Solar | Song of Flame | ❌ missing | – | Aegis values not normalised (buffs in the value) |
-| Solar | Daybreak | 🟡 Package | estimate | `super-daybreak-ember-of-ashes` |
+| Solar | Daybreak | 🟡 Package | exact | `super-daybreak-ember-of-ashes` |
 | Solar | Well of Radiance | 🔵 Buff only | estimate | – |
-| Void | Spectral Blades | 🟡 Package | estimate | `super-spectral-blades-light-attacks` |
-| Void | Shadowshot: Deadfall | ✅ Parts | estimate | `super-shadowshot-deadfall-tether-includes-debuff` |
+| Void | Spectral Blades | 🟡 Package | exact | `super-spectral-blades-light-attacks` |
+| Void | Shadowshot: Deadfall | ✅ Parts | exact | `super-shadowshot-deadfall-tether-includes-debuff` |
 | Void | Shadowshot: Moebius Quiver | 🟡 Package | estimate | `super-shadowshot-moebius-quiver-includes-debuff` |
-| Void | Sentinel Shield | 🟡 Package | estimate | `super-sentinel-shield-light-attacks` |
-| Void | Twilight Arsenal | 🟡 Package | estimate | `super-twilight-arsenal-includes-tractor` |
+| Void | Sentinel Shield | 🟡 Package | exact | `super-sentinel-shield-light-attacks` |
+| Void | Twilight Arsenal | 🟡 Package | exact | `super-twilight-arsenal-includes-tractor` |
 | Void | Ward of Dawn | ❌ missing | – | only gives a buff that is not an effect yet |
-| Void | Nova Bomb: Cataclysm | 🟡 Package | estimate | `super-nova-bomb-cataclysm` |
-| Void | Nova Bomb: Vortex | 🟡 Package | estimate | `super-nova-bomb-vortex` |
-| Void | Nova Warp | 🟡 Package | estimate | `super-nova-warp` |
-| Stasis | Silence & Squall | 🟡 Package | estimate | `super-silence-and-squall-whisper-of-fissures-whisper-of-durance` |
+| Void | Nova Bomb: Cataclysm | 🟡 Package | exact | `super-nova-bomb-cataclysm` |
+| Void | Nova Bomb: Vortex | 🟡 Package | exact | `super-nova-bomb-vortex` |
+| Void | Nova Warp | 🟡 Package | exact | `super-nova-warp` |
+| Stasis | Silence & Squall | 🟡 Package | exact | `super-silence-and-squall-whisper-of-fissures-whisper-of-durance` |
 | Stasis | Glacial Quake | ❌ missing | – | Aegis values not normalised (buffs in the value) |
-| Stasis | Winter's Wrath | 🟡 Package | estimate | `super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures` |
-| Strand | Silkstrike | 🟡 Package | estimate | `super-silkstrike-light-attacks` |
+| Stasis | Winter's Wrath | 🟡 Package | exact | `super-winter-s-wrath-light-heavy-cycle-whisper-of-fissures` |
+| Strand | Silkstrike | 🟡 Package | exact | `super-silkstrike-light-attacks` |
 | Strand | Bladefury | ❌ missing | – | Aegis only measures with buffs that are not an effect yet |
-| Strand | Needlestorm | 🟡 Package | estimate | `super-needlestorm` |
+| Strand | Needlestorm | 🟡 Package | exact | `super-needlestorm` |
 
 ## Grenades
 

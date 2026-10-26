@@ -20,7 +20,7 @@ Teile: 21 von 75.
 | Golden Gun: Marksman | Hit 1574×1 | 3 | 5397 | 9210 | -41 % | -41 % | Paket |
 | Burning Maul | Hit 111×1, Hit 276×1, Hit 24×1 | 17 | 6987 | 12760 | -45 % | -40 % | Paket |
 | Hammer of Sol | Hit 445×1, Hit 396×1 | 1 | 841 | 9243 | -91 % | -91 % | Paket |
-| Daybreak | Impact 426×1, Splash 598×1, Hit 292×1, Hit 642×1, Hit 292×1 | 15 | 37126 | 12185 | +205 % | +196 % | Paket |
+| Daybreak | Impact 426×1, Splash 598×1, Hit 292×1, Hit 642×1, Hit 292×1 | 15 | 36451 | 12185 | +199 % | +191 % | Paket |
 | Spectral Blades | Hit 1107×1, Hit 1620×1 | 22 | 59994 | 12003 | +400 % | +400 % | Paket |
 | Shadowshot: Deadfall | Hit 2583×1 | 1 | 2583 | 2801 | -8 % | -8 % | Teile |
 | Shadowshot: Moebius Quiver | Hit 3000×1, Hit 1076×1 | 2 | 8152 | 6414 | +27 % | +26 % | Paket |

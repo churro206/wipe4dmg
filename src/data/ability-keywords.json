@@ -32,7 +32,7 @@
     "bakedInPackage": {
       "triggers": 13,
       "tick": 228,
-      "note": "39 hits x769 damage every 340 ms, cooldown 800 ms -> 13 trigger(s) of 228 (miscellaneous-jolt) in Aegis row super-stormtrance",
+      "note": "39 hits x769 damage every 318 ms, cooldown 800 ms -> 13 trigger(s) of 228 (miscellaneous-jolt) in Aegis row super-stormtrance",
       "uses": 1,
       "fullModifiers": 2.3
     }
@@ -143,9 +143,9 @@
       "note": "First quoted stacks per hit times 15 hits (super-timings.json)"
     },
     "bakedInPackage": {
-      "triggers": 5,
+      "triggers": 4,
       "tick": 1553,
-      "note": "15 hits x50 stacks every 800 ms, cooldown 1300 ms -> 5 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-daybreak-ember-of-ashes",
+      "note": "15 hits x50 stacks every 588 ms, cooldown 1300 ms -> 4 trigger(s) of 1553 (miscellaneous-ignition) in Aegis row super-daybreak-ember-of-ashes",
       "uses": 1,
       "fullModifiers": 2.3
     }

@@ -29,12 +29,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 2200,
+      "value": 3230,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Golden Gun Marksman, base\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Golden Gun: Marksman)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Prismatic\tHunter\t\tGolden Gun: Marksman\tSingle-Target\t\t24,972\t3.23s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:20, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -69,12 +71,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 1300,
+      "value": 2030,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Golden Gun Marksman, Celestial Nighthawk\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Golden Gun (Nighthawk))",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Prismatic\tHunter\t\tGolden Gun (Nighthawk)\tSingle-target\t\t25,417\t2.03s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:11, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -108,12 +112,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 3300,
+      "value": 3650,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Golden Gun Deadshot\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Golden Gun: Deadshot)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Solar\tHunter\t\tGolden Gun: Deadshot\tAdd-clear\t\t10,347\t3.65s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:37, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -199,21 +205,25 @@
   {
     "abilityId": "daybreak",
     "firstHitMs": {
-      "value": 1100,
+      "value": 808,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Daybreak)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Daybreak\"; rough estimate, sources not checked"
+        "quote": "Solar\tWarlock\t\tDaybreak\tAdd-clear\t\t31,677\t9.55s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:31, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's first hit 1100 ms × 0.735 (Flat Gain lock 9550 ms ÷ Gemini window 13000 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hitIntervalMs": {
-      "value": 800,
+      "value": 588,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Daybreak)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Daybreak\"; rough estimate, sources not checked"
+        "quote": "Solar\tWarlock\t\tDaybreak\tAdd-clear\t\t31,677\t9.55s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:31, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's hit interval 800 ms × 0.735 (Flat Gain lock 9550 ms ÷ Gemini window 13000 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hits": {
@@ -226,33 +236,39 @@
       }
     },
     "weaponReadyMs": {
-      "value": 13000,
+      "value": 9550,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Daybreak\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Daybreak)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Solar\tWarlock\t\tDaybreak\tAdd-clear\t\t31,677\t9.55s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:31, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
   {
     "abilityId": "silkstrike",
     "firstHitMs": {
-      "value": 800,
+      "value": 735,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Silkstrike)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Silkstrike\"; rough estimate, sources not checked"
+        "quote": "Strand\tHunter\t\tSilkstrike\tAdd-Clear\t\t30,290\t11.95s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:42, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's first hit 800 ms × 0.919 (Flat Gain lock 11950 ms ÷ Gemini window 13000 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hitIntervalMs": {
-      "value": 500,
+      "value": 460,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Silkstrike)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Silkstrike\"; rough estimate, sources not checked"
+        "quote": "Strand\tHunter\t\tSilkstrike\tAdd-Clear\t\t30,290\t11.95s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:42, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's hit interval 500 ms × 0.919 (Flat Gain lock 11950 ms ÷ Gemini window 13000 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hits": {
@@ -265,12 +281,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 13000,
+      "value": 11950,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Silkstrike\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Silkstrike)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Strand\tHunter\t\tSilkstrike\tAdd-Clear\t\t30,290\t11.95s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:42, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -304,12 +322,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 14500,
+      "value": 25000,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Nova Warp\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Nova Warp)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Void\tWarlock\t\tNova Warp\tAdd-Clear\t\t24,400\t25.00s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:49, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -343,12 +363,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 11500,
+      "value": 15250,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Winter's Wrath\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Winter's Wrath)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Stasis\tWarlock\t\tWinter's Wrath\tAdd-Clear\t\t35,160\t15.25s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:44, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -382,34 +404,39 @@
       }
     },
     "weaponReadyMs": {
-      "value": 9500,
+      "value": 13530,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Spectral Blades\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Spectral Blades)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Void\tHunter\t\tSpectral Blades\tAdd-Clear\t\t29,558\t13.53s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:46, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
   {
     "abilityId": "stormtrance",
     "firstHitMs": {
-      "value": 800,
+      "value": 748,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Stormtrance)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Stormtrance\"; rough estimate, sources not checked"
+        "quote": "Arc\tWarlock\t\tStormtrance\tAdd-clear\t\t44,531\t13.55s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:32, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's first hit 800 ms × 0.934 (Flat Gain lock 13550 ms ÷ Gemini window 14500 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hitIntervalMs": {
-      "value": 340,
+      "value": 318,
       "source": {
-        "name": "Destiny Data Compendium, Arc, Stormtrance",
-        "url": "https://destiny2.science/data-compendium",
-        "retrieved": "2026-10-22",
-        "status": "verified",
-        "quote": "releasing chain lighting that deals 178 [90] damage every 0.34 seconds"
+        "name": "Flat Gain Factors, Supers 2.0 (Stormtrance)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "unverified",
+        "quote": "Arc\tWarlock\t\tStormtrance\tAdd-clear\t\t44,531\t13.55s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:32, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's hit interval 340 ms × 0.934 (Flat Gain lock 13550 ms ÷ Gemini window 14500 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hits": {
@@ -422,12 +449,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 14500,
+      "value": 13550,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Stormtrance\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Stormtrance)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Arc\tWarlock\t\tStormtrance\tAdd-clear\t\t44,531\t13.55s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:32, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -461,12 +490,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 9500,
+      "value": 16800,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Arc Staff\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Arc Staff)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Arc\tHunter\t\tArc Staff\tAdd-clear\t\t45,968\t16.80s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:39, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -500,12 +531,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 8500,
+      "value": 9750,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Fists of Havoc\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Fists of Havoc)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Arc\tTitan\t\tFists of Havoc\tAdd-clear\t\t24,808\t9.75s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:41, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -539,12 +572,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 9500,
+      "value": 12950,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Sentinel Shield\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Sentinel Shield (melee))",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Void\tTitan\t\tSentinel Shield (melee)\tAdd-Clear\t\t35,188\t12.95s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:40, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -576,6 +611,17 @@
         "retrieved": "2026-10-22",
         "status": "unverified",
         "note": "Row \"Burning Maul\"; rough estimate, sources not checked; hits = (11989 - 1000) / 670 + 1 inside the Compendium window (drain model); window stays from usage"
+      }
+    },
+    "weaponReadyMs": {
+      "value": 15000,
+      "source": {
+        "name": "Flat Gain Factors, Supers 2.0 (Burning Maul)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Solar\tTitan\t\tBurning Maul\tAdd-clear\t\t34,089\t15.00s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:45, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -621,21 +667,25 @@
   {
     "abilityId": "nova-bomb-cataclysm",
     "firstHitMs": {
-      "value": 1500,
+      "value": 1267,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Nova Bomb: Cataclysm)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Nova Bomb Cataclysm\"; rough estimate, sources not checked"
+        "quote": "Void\tWarlock\t\tNova Bomb: Cataclysm\tMix\t\t20,969\t1.52s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:8, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's first hit 1500 ms × 0.844 (Flat Gain lock 1520 ms ÷ Gemini window 1800 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hitIntervalMs": {
       "value": 0,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Nova Bomb: Cataclysm)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Nova Bomb Cataclysm\"; rough estimate, sources not checked"
+        "quote": "Void\tWarlock\t\tNova Bomb: Cataclysm\tMix\t\t20,969\t1.52s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:8, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's hit interval 0 ms × 0.844 (Flat Gain lock 1520 ms ÷ Gemini window 1800 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hits": {
@@ -648,33 +698,39 @@
       }
     },
     "weaponReadyMs": {
-      "value": 1800,
+      "value": 1520,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Nova Bomb Cataclysm\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Nova Bomb: Cataclysm)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Void\tWarlock\t\tNova Bomb: Cataclysm\tMix\t\t20,969\t1.52s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:8, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
   {
     "abilityId": "nova-bomb-vortex",
     "firstHitMs": {
-      "value": 1500,
+      "value": 1267,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Nova Bomb: Vortex)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Nova Bomb Vortex\"; rough estimate, sources not checked"
+        "quote": "Void\tWarlock\t\tNova Bomb: Vortex\tSingle-target\t\t13,330\t1.52s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:17, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's first hit 1500 ms × 0.844 (Flat Gain lock 1520 ms ÷ Gemini window 1800 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hitIntervalMs": {
       "value": 0,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Nova Bomb: Vortex)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Nova Bomb Vortex\"; rough estimate, sources not checked"
+        "quote": "Void\tWarlock\t\tNova Bomb: Vortex\tSingle-target\t\t13,330\t1.52s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:17, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's hit interval 0 ms × 0.844 (Flat Gain lock 1520 ms ÷ Gemini window 1800 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hits": {
@@ -687,12 +743,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 1800,
+      "value": 1520,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Nova Bomb Vortex\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Nova Bomb: Vortex)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Void\tWarlock\t\tNova Bomb: Vortex\tSingle-target\t\t13,330\t1.52s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:17, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -726,33 +784,39 @@
       }
     },
     "weaponReadyMs": {
-      "value": 2000,
+      "value": 2220,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Thundercrash\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Thundercrash)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Arc\tTitan\t\tThundercrash\tSingle-target\t\t22,522\t2.22s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:15, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
   {
     "abilityId": "blade-barrage",
     "firstHitMs": {
-      "value": 1600,
+      "value": 1520,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Blade Barrage)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Blade Barrage\"; rough estimate, sources not checked"
+        "quote": "Solar\tHunter\t\tBlade Barrage\tMix\t\t33,625\t1.90s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:6, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's first hit 1600 ms × 0.950 (Flat Gain lock 1900 ms ÷ Gemini window 2000 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hitIntervalMs": {
       "value": 0,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Blade Barrage)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Blade Barrage\"; rough estimate, sources not checked"
+        "quote": "Solar\tHunter\t\tBlade Barrage\tMix\t\t33,625\t1.90s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:6, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's hit interval 0 ms × 0.950 (Flat Gain lock 1900 ms ÷ Gemini window 2000 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hits": {
@@ -765,33 +829,39 @@
       }
     },
     "weaponReadyMs": {
-      "value": 2000,
+      "value": 1900,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Blade Barrage\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Blade Barrage)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Solar\tHunter\t\tBlade Barrage\tMix\t\t33,625\t1.90s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:6, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
   {
     "abilityId": "needlestorm",
     "firstHitMs": {
-      "value": 1500,
+      "value": 1335,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Needlestorm)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Needlestorm\"; rough estimate, sources not checked"
+        "quote": "Strand\tWarlock\t\tNeedlestorm\tMix\t\t24,000\t1.78s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:9, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's first hit 1500 ms × 0.890 (Flat Gain lock 1780 ms ÷ Gemini window 2000 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hitIntervalMs": {
       "value": 0,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Needlestorm)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Needlestorm\"; rough estimate, sources not checked"
+        "quote": "Strand\tWarlock\t\tNeedlestorm\tMix\t\t24,000\t1.78s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:9, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's hit interval 0 ms × 0.890 (Flat Gain lock 1780 ms ÷ Gemini window 2000 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hits": {
@@ -804,12 +874,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 2000,
+      "value": 1780,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Needlestorm\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Needlestorm)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Strand\tWarlock\t\tNeedlestorm\tMix\t\t24,000\t1.78s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:9, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -843,33 +915,39 @@
       }
     },
     "weaponReadyMs": {
-      "value": 3300,
+      "value": 3720,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Twilight Arsenal\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Twilight Arsenal)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Void\tTitan\t\tTwilight Arsenal\tSingle-target\t\t21,141\t3.72s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:27, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
   {
     "abilityId": "shadowshot-deadfall",
     "firstHitMs": {
-      "value": 1400,
+      "value": 1313,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Shadowshot: Deadfall)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Shadowshot Deadfall\"; rough estimate, sources not checked"
+        "quote": "Void\tHunter\t\tShadowshot: Deadfall\tAdd-Clear\t\t1,556\t1.50s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:48, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's first hit 1400 ms × 0.938 (Flat Gain lock 1500 ms ÷ Gemini window 1600 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hitIntervalMs": {
       "value": 0,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
+        "name": "Flat Gain Factors, Supers 2.0 (Shadowshot: Deadfall)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
         "status": "unverified",
-        "note": "Row \"Shadowshot Deadfall\"; rough estimate, sources not checked"
+        "quote": "Void\tHunter\t\tShadowshot: Deadfall\tAdd-Clear\t\t1,556\t1.50s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:48, \"Cast Time / Lock\" at Super 200. Derived (K2): Gemini's hit interval 0 ms × 0.938 (Flat Gain lock 1500 ms ÷ Gemini window 1600 ms), so the hits keep their shape inside the measured window."
       }
     },
     "hits": {
@@ -882,12 +960,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 1600,
+      "value": 1500,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Shadowshot Deadfall\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Shadowshot: Deadfall)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Void\tHunter\t\tShadowshot: Deadfall\tAdd-Clear\t\t1,556\t1.50s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:48, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -921,12 +1001,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 2300,
+      "value": 2350,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Silence and Squall\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Silence and Squall)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Stasis\tHunter\t\tSilence and Squall\tAdd-Clear\t\t19,418\t2.35s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:18, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },
@@ -960,12 +1042,14 @@
       }
     },
     "weaponReadyMs": {
-      "value": 1700,
+      "value": 1750,
       "source": {
-        "name": "Gemini web search (estimate), docs/sources/gemini-super-timings.csv",
-        "retrieved": "2026-10-22",
-        "status": "unverified",
-        "note": "Row \"Gathering Storm\"; rough estimate, sources not checked"
+        "name": "Flat Gain Factors, Supers 2.0 (Gathering Storm)",
+        "url": "https://destiny2.science/flat-gain-factors",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "Arc\tHunter\t\tGathering Storm\tSingle-Target\t\t16,758\t1.75s",
+        "note": "docs/sources/sheets/flatgain/727352169-supers-2-0.tsv:16, \"Cast Time / Lock\" at Super 200. The weapon is ready again after the lock."
       }
     }
   },

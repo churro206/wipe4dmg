@@ -59,9 +59,10 @@ describe("super timings", () => {
   it("spread Golden Gun Marksman over three shots with x40 scorch each", () => {
     const marksman = byId(timed, "golden-gun-marksman");
     expect(hitTimes(marksman)).toEqual([1200, 1600, 2000]);
+    // window: Flat Gain "Cast Time / Lock" 3.23 s (K2), measured
     expect(superWindowMs(marksman.usage!)).toEqual({
-      durationMs: 2200,
-      exact: false,
+      durationMs: 3230,
+      exact: true,
     });
     expect(marksman.keywordParts?.[0].stacks?.value).toBe(40);
   });
@@ -72,7 +73,7 @@ describe("super timings", () => {
       "golden-gun-marksman-with-celestial-nighthawk",
     );
     expect(hitTimes(nighthawk)).toEqual([1200]);
-    expect(superWindowMs(nighthawk.usage!).durationMs).toBe(1300);
+    expect(superWindowMs(nighthawk.usage!).durationMs).toBe(2030); // Flat Gain 2.03 s (K2)
   });
 
   it("let variants without own timing use the timing of their base", () => {

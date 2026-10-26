@@ -107,6 +107,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 25. Abweichun
 | Cloudstrike | 86,535 | 82,773 | 0.957 | excludes Bolt Charge |
 | Black Talon | 79,745 | 76,566 | 0.960 | 2H2L combo |
 | Fists of Havoc | 28,991 | 27,883 | 0.962 | light attacks |
+| Daybreak | 32,716 | 31,590 | 0.966 | grounded |
 | Shadowshot: Moebius Quiver | 16,241 | 15,811 | 0.974 | both volleys; assumes no other debuff |
 | Ergo Sum | 94,548 | 93,245 | 0.986 | caster frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
 | Shadowshot: Moebius Quiver | 9,413 | 9,301 | 0.988 | both volleys; assumes no other debuff |
@@ -130,7 +131,6 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 25. Abweichun
 | Heartshadow | 103,813 | 104,462 | 1.006 | heavy attacks; Shot in the Dark |
 | The Lament | 176,080 | 178,806 | 1.015 | 3L1H1R combo; Sword Storm Combo |
 | Vexcalibur | 45,160 | 46,572 | 1.031 | projectile |
-| Daybreak | 32,716 | 35,173 | 1.075 | grounded |
 | The Lament | 165,335 | 178,806 | 1.081 | 4L1H1R combo; Sword Storm Combo |
 | Winter's Wrath | 30,297 | 34,474 | 1.138 | light-heavy cycle; Whisper of Fissures |
 | The Fourth Horseman | 47,544 | 59,430 | 1.250 | body |

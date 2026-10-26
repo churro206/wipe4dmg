@@ -1134,11 +1134,11 @@ describe("supers take time like in the game", () => {
     note(
       "Golden Gun Marksman: Schüsse, Ignition, Fenster",
       `${shots.join(" / ")} ms, Ignition ${ignition?.timeMs} ms, Fenster ${window.endMs} ms`,
-      "3 Schüsse in gut 2 s, Ignition beim 3. Schuss",
+      "3 Schüsse in gut 2 s, Ignition beim 3. Schuss, Fenster 3,23 s (Flat Gain „Cast Time / Lock“)",
     );
     expect(shots).toHaveLength(3);
     expect(ignition?.timeMs).toBe(shots[2]);
-    expect(window.endMs).toBeLessThan(3000);
+    expect(window.endMs).toBe(3230);
   });
 
   it("Daybreak ignites during the super: x50 Scorch per projectile", () => {
@@ -1157,7 +1157,7 @@ describe("supers take time like in the game", () => {
     note(
       "Daybreak: Ignitions während der Super",
       `${ignitions.filter((d) => d.timeMs <= end).length}`,
-      "etwa 5 (15 Geschosse × 50 Scorch, Abklingzeit)",
+      "4 bis 5 (15 Geschosse × 50 Scorch in 9,55 s, Abklingzeit 1,3 s)",
     );
     expect(
       ignitions.filter((d) => d.timeMs <= end).length,
@@ -1170,10 +1170,10 @@ describe("supers take time like in the game", () => {
     note(
       "Daybreak: Treffer, Fenster",
       `${new Set(hits(r)).size} Treffer, Fenster ${window.endMs} ms`,
-      "etwa 15 Treffer, 12–14 s",
+      "etwa 15 Treffer, 9,55 s (Flat Gain „Cast Time / Lock“, K2; vorher Gemini 13 s)",
     );
     expect(new Set(hits(r)).size).toBeGreaterThan(10);
-    expect(window.endMs).toBeLessThan(15_000);
+    expect(window.endMs).toBe(9550);
   });
 
   it("Thundercrash from Compendium parts: aftershocks follow the explosion for 4 s, about Aegis' value", () => {
@@ -1195,9 +1195,21 @@ describe("supers take time like in the game", () => {
     note(
       "Nova Bomb: Treffer, Fenster",
       `${hits(r)[0]} ms, Fenster ${r.superWindows[0].endMs} ms`,
-      "Treffer nach etwa 1,5 s, Fenster knapp 2 s",
+      "Treffer nach etwa 1,3 s, Fenster 1,52 s (Flat Gain „Cast Time / Lock“)",
     );
     expect(hits(r)[0]).toBeGreaterThan(1000);
-    expect(r.superWindows[0].endMs).toBeGreaterThan(1000);
+    expect(r.superWindows[0].endMs).toBe(1520);
+  });
+
+  it("Nova Warp and Arc Staff keep the weapon away as long as Flat Gain measures (K2)", () => {
+    const warp = superRun("warlock", "void", "nova-warp").superWindows[0].endMs;
+    const staff = superRun("hunter", "arc", "arc-staff").superWindows[0].endMs;
+    note(
+      "Super-Fenster Nova Warp / Arc Staff",
+      `${fmt(warp / 1000)} s / ${fmt(staff / 1000)} s`,
+      "25,00 s / 16,80 s (Flat Gain „Cast Time / Lock“; vorher Gemini 14,5 s / 9,5 s)",
+    );
+    expect(warp).toBe(25_000);
+    expect(staff).toBe(16_800);
   });
 });
