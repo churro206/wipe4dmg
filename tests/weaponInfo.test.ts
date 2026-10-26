@@ -50,6 +50,10 @@ describe("effectRelevantTo", () => {
     expect(effectRelevantTo(effect("ember-of-ashes"), testWeapon)).toBe(false);
   });
 
+  it("keeps energy mods, since they speed up abilities (Momentum Transfer)", () => {
+    expect(effectRelevantTo(effect("momentum-transfer-3x"), testWeapon)).toBe(true);
+  });
+
   it("keeps Radiant for a void weapon, since it buffs Golden Gun", () => {
     expect(effectRelevantTo(effect("radiant"), pkg("Truth"))).toBe(true);
   });
