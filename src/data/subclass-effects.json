@@ -588,7 +588,7 @@
               "note": "„10% increased damage“ (Prismatic, Facet of Courage); no Court category, assumed to multiply with every other bucket"
             }
           },
-          "damageSources": ["grenade", "melee", "super"],
+          "damageSources": ["grenade", "super"],
           "elements": ["arc", "solar", "void"]
         }
       ]
@@ -623,7 +623,8 @@
               "note": "„50% [10%] increased damage“ (Prismatic, Facet of Courage)"
             }
           },
-          "damageSources": ["melee"]
+          "damageSources": ["melee"],
+          "elements": ["arc", "solar", "void"]
         }
       ]
     }

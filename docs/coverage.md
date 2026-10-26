@@ -191,7 +191,7 @@ Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the m
 | Ensnaring Slam |  |  |  | whole phase or Rotation |
 | Facet of Bravery | – | Applies a keyword | weapon | 11.25 s |
 | Facet of Bravery | – | Applies a keyword | weapon | 11.25 s |
-| Facet of Courage | aspectBonus | aspectBonus +10% | grenade, melee, super | whole phase or Rotation |
+| Facet of Courage | aspectBonus | aspectBonus +10% | grenade, super | whole phase or Rotation |
 | Facet of Courage | melee | melee +50% | melee | whole phase or Rotation |
 | Facet of Dawn (Radiant) | empowering | empowering +20%; empowering +20% | weapon; super (only golden-gun-deadshot, golden-gun-marksman) | 5 s |
 | Facet of Dominance | debuff | debuff +15% | weapon, grenade, melee, super, classAbility, keyword | 5 s |

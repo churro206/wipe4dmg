@@ -2,14 +2,15 @@
 
 Generiert mit `npm run check:text` (Regel in `scripts/lib/textCheck.ts`). Jeder Multiplier-Part, Catalyst und Grant neben den Texten seines Items (Clarity, Compendium, Court, Zitat der Quelle). Wert: (m − 1) × 100 steht im Text; Aegis- und Quantum-Messungen zählen als gemessen, eine Prozentzahl im Text trotzdem auf ±25 %. Dauer: eine Dauer aus dem Text. Ziel: Quellen, Elemente und Waffentypen gegen die Wörter im Text. „Ungenutzt“: Prozentzahlen im Text, die kein Part des Items nutzt (nur zur Info). Gründe für Abweichungen: `tests/fixtures/text-check.json`.
 
-Zeilen 314: ok 288, über Effect 5, gemessen 7, kein Text 3, Abweichung 11 (davon ohne Grund 1).
+Zeilen 314: ok 287, über Effect 5, gemessen 7, kein Text 3, Abweichung 12 (davon ohne Grund 0).
 
 ## Abweichungen
 
 | Item | Prüfung | Modell | Text | Grund |
 | --- | --- | --- | --- | --- |
 | Elemental Overdrive (solar pickup) | target | +22 % amplification, weapon, solar | solar nicht im Text | Text: „Pickup-Matching Weapon Damage“; das Effect ist die Variante mit Solar-Pickup, also Solar-Waffen. |
-| Facet of Courage | target | +10 % aspectBonus, grenade/melee/super, arc/solar/void | grenade nicht im Text; super nicht im Text; arc nicht im Text; solar nicht im Text; void nicht im Text | **offen** |
+| Facet of Courage | target | +10 % aspectBonus, grenade/super, arc/solar/void | grenade nicht im Text; super nicht im Text; arc nicht im Text; solar nicht im Text; void nicht im Text | Compendium: „Light Abilities deal 10%“: Light = Arc, Solar, Void; Grenade und Super, weil Light Melees statt der 10 % die 50 % bekommen (Clarity: „Light Melee Abilities in PVE instead deal an additional 50%“, K6). Die Bedingung „Against enemies inflicted with Stasis or Strand Elemental Debuffs“ fehlt bis Q4 (known-inaccuracies). |
+| Facet of Courage | target | +50 % melee, melee, arc/solar/void | arc nicht im Text; solar nicht im Text; void nicht im Text | Compendium: „Light Powered Melee Abilities deal 50%“: Light = Arc, Solar, Void (K6). |
 | On Your Mark | duration | 3 s | 12 s (Compendium Solar: Grants the user and allies within 15 meters stacks of On Your Mark for 12 seconds, up to a maximum of 10 stacks.); 12 s (Clarity On Your Mark: Precision Hits grant you and allies within a 15 meter radius of you one stack of 'On Your Mark'. Precision Kills, and Precision Hits from Hand Cannons, grant 2 stacks. Casting your Class Ability grants one stack to yourself. Stacks last for 12 seconds. Maximum of 10 stacks.) | Die 3 s sind die Restoration aus dem Compendium (Zeilen über Heilung zählen nicht als Text); On Your Mark hat keinen Damage-Part, die 12 s gelten den Stapeln. |
 | Eternal Warrior | duration | 30 s | 11 s (Court: 10% 17% 22% 25% \| 11s) | Compendium: „On Fists of Havoc End: Grants x4 Arc Weapon Surge for 30 seconds“; die 11 s aus Court gelten den Kill-Stapeln (erstes Effect, ok). Die Zeile nennt den Wert als „x4“, nicht als Prozentzahl. |
 | Sanguine Alchemy | duration | 30 s | 5 s (Compendium Exotic Armors: Damaging an enemy applies a mark for 5 seconds.); 5 s (Compendium Exotic Armors: Kills grant Blood Magic for 5 seconds, up to a maximum of 15 seconds.); 10 s (Compendium Exotic Armors: Swapping to Sanguine Alchemy while in combat will disable all of its effects for 10 seconds.) | Court: „Instant 4x Surge Stacks: While in any Rift or Well of Radiance“, Dauer „~“: der Surge gilt, solange der Well steht (30 s, effects.json). Die 5 s und 10 s im Compendium sind Mark, Blood Magic und die Sperre beim Wechsel. |
@@ -167,10 +168,10 @@ Zeilen 314: ok 288, über Effect 5, gemessen 7, kein Text 3, Abweichung 11 (davo
 | Ember of Torches (Radiant) | duration | 8 s | ok | Compendium Solar: Powered Melee Hits grant Radiant for 8+4 seconds to the user and allies within 8 meters. |  |
 | Facet of Bravery | duration | 11.25 s | ok | Compendium Prismatic: Grenade Kills grant Volatile Rounds to Void Weapons for 11.25 [7.5] seconds. |  |
 | Facet of Bravery | duration | 11.25 s | ok | Compendium Prismatic: Grenade Kills grant Volatile Rounds to Void Weapons for 11.25 [7.5] seconds. |  |
-| Facet of Courage | value | +10 % aspectBonus, grenade/melee/super, arc/solar/void | ok | Compendium Prismatic: Light Abilities deal 10% increased damage. | 50 % |
-| Facet of Courage | target | +10 % aspectBonus, grenade/melee/super, arc/solar/void | **Abweichung** | grenade nicht im Text; super nicht im Text; arc nicht im Text; solar nicht im Text; void nicht im Text |  |
-| Facet of Courage | value | +50 % melee, melee | ok | Compendium Prismatic: Light Powered Melee Abilities deal 50% [10%] increased damage. | 10 % |
-| Facet of Courage | target | +50 % melee, melee | ok |  |  |
+| Facet of Courage | value | +10 % aspectBonus, grenade/super, arc/solar/void | ok | Compendium Prismatic: Light Abilities deal 10% increased damage. | 50 % |
+| Facet of Courage | target | +10 % aspectBonus, grenade/super, arc/solar/void | **Abweichung** | grenade nicht im Text; super nicht im Text; arc nicht im Text; solar nicht im Text; void nicht im Text |  |
+| Facet of Courage | value | +50 % melee, melee, arc/solar/void | ok | Compendium Prismatic: Light Powered Melee Abilities deal 50% [10%] increased damage. | 10 % |
+| Facet of Courage | target | +50 % melee, melee, arc/solar/void | **Abweichung** | arc nicht im Text; solar nicht im Text; void nicht im Text |  |
 | Facet of Dawn (Radiant) | value | +20 % empowering, weapon | über Effect | Radiant |  |
 | Facet of Dawn (Radiant) | target | +20 % empowering, weapon | ok |  |  |
 | Facet of Dawn (Radiant) | value | +20 % empowering, super | über Effect | Radiant |  |

@@ -119,6 +119,13 @@ type BonusScope = {
   elements?: Element[];
 };
 const MELEE_SCOPE: BonusScope = { bucketId: "melee", damageSources: ["melee"] };
+const LIGHT_ELEMENTS: Element[] = ["arc", "solar", "void"];
+// "Light Powered Melee Abilities deal 50%" (Facet of Courage): Light melees only (K6)
+const LIGHT_MELEE = /\bLight\b[\w ]*\bMelee\b/i;
+
+/** Scope of a melee bonus: every melee, or only Light melees when the sentence says so. */
+const meleeScope = (sentence: string): BonusScope =>
+  LIGHT_MELEE.test(sentence) ? { ...MELEE_SCOPE, elements: LIGHT_ELEMENTS } : MELEE_SCOPE;
 
 /** Scope of a bonus on grenades and supers: "Grenade and Super Ability Damage", "Light Abilities". */
 function abilityScope(sentence: string, tab: string): BonusScope | null {
@@ -128,7 +135,7 @@ function abilityScope(sentence: string, tab: string): BonusScope | null {
   return {
     bucketId: "aspectBonus",
     damageSources: light ? ["grenade", "melee", "super"] : ["grenade", "super"],
-    elements: light ? ["arc", "solar", "void"] : tab === "Prismatic" ? undefined : [element],
+    elements: light ? LIGHT_ELEMENTS : tab === "Prismatic" ? undefined : [element],
   };
 }
 
@@ -315,11 +322,23 @@ function findAll(
   for (const b of bonuses) {
     const sentence = sentencesOf(text).find((s) => s.sentence.includes(b.quote))?.sentence ?? b.quote;
     const scope =
-      b.melee || /\bMelee Abilities deal\b/i.test(sentence) ? MELEE_SCOPE : abilityScope(sentence, entry.tab);
-    if (!scope || (scope !== MELEE_SCOPE && fromCourtRow)) continue;
+      b.melee || /\bMelee Abilities deal\b/i.test(sentence) ? meleeScope(sentence) : abilityScope(sentence, entry.tab);
+    if (!scope || (scope.bucketId !== MELEE_SCOPE.bucketId && fromCourtRow)) continue;
     const key = `${scope.bucketId}|${scope.damageSources}|${scope.elements}`;
     if (!scoped.has(key) || scoped.get(key)!.bonus.percent < b.percent) scoped.set(key, { bonus: b, scope });
   }
+  // A bonus of its own for Light melees replaces the Light Abilities bonus on them (Clarity, Facet of
+  // Courage: "Light Melee Abilities in PVE instead deal an additional 50%") (K6).
+  const lightMelee = [...scoped.values()].some(
+    ({ scope }) => scope.bucketId === MELEE_SCOPE.bucketId && scope.elements === LIGHT_ELEMENTS,
+  );
+  if (lightMelee)
+    for (const entryOf of scoped.values())
+      if (entryOf.scope.bucketId === "aspectBonus" && entryOf.scope.elements === LIGHT_ELEMENTS)
+        entryOf.scope = {
+          ...entryOf.scope,
+          damageSources: entryOf.scope.damageSources.filter((s) => s !== "melee"),
+        };
   for (const { bonus: b, scope } of scoped.values()) {
     const source: Source = {
       ...quote(b.quote),

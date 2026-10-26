@@ -1,6 +1,8 @@
 {
-  "openLimit": 1,
+  "openLimit": 0,
   "reasons": {
+    "facet-of-courage#0:target": "Compendium: „Light Abilities deal 10%“: Light = Arc, Solar, Void; Grenade und Super, weil Light Melees statt der 10 % die 50 % bekommen (Clarity: „Light Melee Abilities in PVE instead deal an additional 50%“, K6). Die Bedingung „Against enemies inflicted with Stasis or Strand Elemental Debuffs“ fehlt bis Q4 (known-inaccuracies).",
+    "facet-of-courage-2#0:target": "Compendium: „Light Powered Melee Abilities deal 50%“: Light = Arc, Solar, Void (K6).",
     "elemental-overdrive-solar#0:target": "Text: „Pickup-Matching Weapon Damage“; das Effect ist die Variante mit Solar-Pickup, also Solar-Waffen.",
     "on-your-mark:duration": "Die 3 s sind die Restoration aus dem Compendium (Zeilen über Heilung zählen nicht als Text); On Your Mark hat keinen Damage-Part, die 12 s gelten den Stapeln.",
     "exotic-armor:eternal-warrior-2:duration": "Compendium: „On Fists of Havoc End: Grants x4 Arc Weapon Surge for 30 seconds“; die 11 s aus Court gelten den Kill-Stapeln (erstes Effect, ok). Die Zeile nennt den Wert als „x4“, nicht als Prozentzahl.",

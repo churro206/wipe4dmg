@@ -118,9 +118,16 @@ describe("rules for aspects and fragments", () => {
     const facet = result.effects
       .filter((e) => e.subclassItemId === "facet-of-courage")
       .flatMap((e) => e.effect.parts);
+    // "Light Powered Melee Abilities deal 50%": Light melees only, and instead of the 10 % (Clarity:
+    // "Light Melee Abilities in PVE instead deal an additional 50%") (K6)
     expect(facet).toMatchObject([
-      { bucketId: "aspectBonus", multiplier: { value: 1.1 }, elements: ["arc", "solar", "void"] },
-      { bucketId: "melee", multiplier: { value: 1.5 } },
+      {
+        bucketId: "aspectBonus",
+        multiplier: { value: 1.1 },
+        damageSources: ["grenade", "super"],
+        elements: ["arc", "solar", "void"],
+      },
+      { bucketId: "melee", multiplier: { value: 1.5 }, elements: ["arc", "solar", "void"] },
     ]);
   });
 

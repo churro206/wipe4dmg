@@ -131,6 +131,28 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio).toBeLessThan(2.7);
   });
 
+  it("Facet of Courage: ×1.5 on a Light melee (not ×1.1 × 1.5), nothing on a Strand melee (K6)", () => {
+    const facet = ["facet-of-courage", "facet-of-courage-2"].map((effectId) => ({
+      effectId,
+      provider: "subclass" as const,
+    }));
+    const ratio = (abilityId: string) => {
+      const titan = { subclass: "prismatic" as const, abilities: [{ abilityId, castsMs: [0] }] };
+      return (
+        damageOf(run({ ...titan, selections: facet }), "melee") / damageOf(run(titan), "melee")
+      );
+    };
+    const thunderclap = ratio("thunderclap");
+    const frenzied = ratio("frenzied-blade");
+    note(
+      "Thunderclap / Frenzied Blade mit / ohne Facet of Courage",
+      `×${fmt(thunderclap)} / ×${fmt(frenzied)}`,
+      "×1,50 (Compendium „Light Powered Melee Abilities deal 50%“, Clarity „instead“) / ×1,00 (Strand ist kein Light)",
+    );
+    expect(thunderclap).toBeCloseTo(1.5, 2);
+    expect(frenzied).toBeCloseTo(1, 6);
+  });
+
   it("Offensive Bulwark: +160 % Shield Bash damage, and melee buffs add up", () => {
     const titan = {
       subclass: "void" as const,
