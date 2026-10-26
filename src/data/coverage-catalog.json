@@ -4905,7 +4905,7 @@
         "name": "Young Ahamkara's Spine",
         "group": "Hunter",
         "inGame": "Wish-Dragon Teeth: Intrinsically grants Fastball to all grenades.\nEnhances Tripmine Grenades:\n• 14% increased Explosion damage\n• Explosion Length and Width are increased to 14 meters\n• Explosions don't have any damage falloff\n• Explosion no longer deals self-damage\n• Last 20 seconds longer (10s🠚30s)\n• Grants Tripmine Grenades 70 HP\nSolar Ability Hits grant 30% [8%] Tripmine Grenade Energy. Crackshot's Golden Gun shots grant 10% [?] per hit (30% per full salvo). The first Scorch tick from your abilities will also trigger the energy gains.\n0.3 second cooldown between energy gains.\nAbility energy gained is NOT affected by Chunk Energy Scalars. Learn more about this mechanic in our explainer blog post on the Clarity website.",
-        "inCalculator": "Damage buff from Court's Stacking Guide, as an effect.",
+        "inCalculator": "Changes an ability; Aegis measured it with this armor.",
         "detail": "Arms",
         "iconKey": "armor:young-ahamkaras-spine",
         "status": "full"
@@ -5860,7 +5860,7 @@
         "name": "Eunoia",
         "group": "Warlock",
         "inGame": "Consul's Pitch: Hellion projectiles deal up to 20% increased damage after traveling 17 meters.\nHellion projectiles that have been in flight for 1 second release 4 pieces of Shrapnel with tracking capabilities.\nShrapnel projectiles deal 18 [?] Solar Damage and apply 5? stacks of Scorch each.",
-        "inCalculator": "Damage buff from Court's Stacking Guide, as an effect.",
+        "inCalculator": "Changes an ability; Aegis measured it with this armor.",
         "detail": "Arms",
         "iconKey": "armor:eunoia",
         "status": "full"
@@ -5950,10 +5950,10 @@
         "name": "Mataiodoxía",
         "group": "Warlock",
         "inGame": "Stylostixis: Grants Arcane Needles Shield-Piercing properties.\nScoring an Arcane Needle hit on an enemy marks them with a vertical mark for 10 seconds. Marked Enemies explode on death, releasing a Suspending Blast that Suspends and damages targets in a 10 meter radius.\nSuspending Blast damage by Enemy Rank:\nPlayers: 40, Minors: 80, Elites: 120, Minibosses: 160, Bosses: 200\nLanding 2 Arcane Needle hits on a Marked Enemy triggers Suspending Blast that deals 2x damage.\nLanding 5 Needlestorm Hits on a single enemy triggers a Suspending Blast that deals 11x damage and inherits Super damage buffs.\nArcane Needle Kills and Killing Suspended targets grant Melee Energy based on Enemy Rank:\n• Tier 1 (T1) Minors: 15%\n• T2 Minors, T1 Elites: 22.2%\n• T3 Minors, T2 Elites, Enemy Players: 33%\n• T4 Minors, T3 Elites, and higher: 100%\nAbility energy gained is NOT affected by Chunk Energy Scalars. Learn more about this mechanic in our explainer blog post on the Clarity website.",
-        "inCalculator": "Deals damage of its own; not modelled yet.",
+        "inCalculator": "Changes an ability; Aegis measured it with this armor.",
         "detail": "Chest",
         "iconKey": "armor:mataiodox-a",
-        "status": "missing"
+        "status": "full"
       },
       {
         "name": "Mantle of Battle Harmony",
@@ -6005,7 +6005,7 @@
         "name": "Stormdancer's Brace",
         "group": "Warlock",
         "inGame": "Ascending Amplitude: Requires Stormtrance to be equipped to function.\nCasting your Super grants Amplified.\nWhile Amplified, Arc Ability Hits grant x1 Bolt Charge. 0.6 second cooldown between activations.\nHits and Kills during Stormtrance grant a Stack of 'Ascending Amplitude' for 8 seconds. Maximum of 30 Stacks.\nAscending Amplitude:\n• Decreases the Super Energy cost of Stormtrance's Ionic Blink by 50% (6.25%🠚3.125%).\n• Increases Stormtrance's damage by 6.7% per Stack, up to 200% bonus damage at maximum stacks.\nRefunds up to 30% of Super Energy based on the number of enemies killed with your Super.",
-        "inCalculator": "Damage buff from Court's Stacking Guide, as an effect.",
+        "inCalculator": "Changes an ability; Aegis measured it with this armor.",
         "detail": "Chest",
         "iconKey": "armor:stormdancers-brace",
         "status": "full"

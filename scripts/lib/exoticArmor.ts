@@ -235,6 +235,10 @@ const plainName = (name: string) =>
 export const sameName = (a: string, b: string) =>
   plainName(a) === plainName(b);
 
+// Texts without a Court value whose bonus needs adds or low health, e.g. Synthoceps
+export const NOT_AGAINST_BOSS =
+  /Reflected Projectiles deal|damage towards|within \d+ met(?:re|er)s of \d+ enemies|below \d+% Health|at Critical Health|Noble Seekers/i;
+
 export const kebab = (name: string) =>
   name
     .toLowerCase()
@@ -445,14 +449,21 @@ export function classifyExoticArmor(
       const court = inputs.court.filter(
         (e) => sameName(e.name, piece.name) && e.category in BUCKET_OF_CATEGORY,
       );
+      const texts = [compendiumText, clarityText].join("\n");
+      // Aegis names the exotic or its intrinsic, e.g. "Ascending Amplitude" for Stormdancer's
+      // Brace; not an intrinsic that needs adds, e.g. "Biotic Enhancements" (Synthoceps)
+      const intrinsics = NOT_AGAINST_BOSS.test(texts) ? [] : piece.intrinsics;
       const aegisRowIds = inputs.aegisAbilities
-        .filter((r) => r.assumptions.includes(piece.name))
+        .filter((r) =>
+          r.assumptions.some(
+            (a) => a === piece.name || intrinsics.includes(a),
+          ),
+        )
         .map((r) => r.id);
       const bonuses = [
         ...bonusQuotes(compendiumText, "compendium", inputs.meleeNames),
         ...bonusQuotes(clarityText, "clarity", inputs.meleeNames),
       ];
-      const texts = [compendiumText, clarityText].join("\n");
       const granted = grantedEffects(texts, inputs.effects);
       const timing =
         reloadFactor(compendiumText, "compendium") ??

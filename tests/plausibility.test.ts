@@ -817,6 +817,25 @@ describe("exotic effects from the rotation", () => {
     expect(ratio).toBeCloseTo(1.35, 2);
   });
 
+  it("Stormdancer's Brace: Stormtrance as Aegis measures Ascending Amplitude, not ×3", () => {
+    const warlock = {
+      guardianClass: "warlock" as const,
+      subclass: "arc" as const,
+      abilities: [{ abilityId: "stormtrance", castsMs: [0] }],
+    };
+    const ratio =
+      damageOf(run({ ...warlock, exoticArmorId: "stormdancers-brace" }), "super") /
+      damageOf(run(warlock), "super");
+    // both Aegis rows hold the same Jolt (13 × 228 / 2.3), which runs as its own keyword damage
+    const jolt = (13 * 228) / 2.3;
+    note(
+      "Stormdancer's Brace auf Stormtrance (ohne Jolt)",
+      `×${fmt(ratio)}`,
+      "×2,23 (Aegis (27 512 − 1289) / (13 045 − 1289); mit Jolt ×2,11)",
+    );
+    expect(ratio).toBeCloseTo((27512.174 - jolt) / (13045.217 - jolt), 2);
+  });
+
   it("Sol Invictus from a teammate: Chaos Reach lasts longer (Aegis ×1.463)", () => {
     const chaosReach = {
       guardianClass: "warlock" as const,

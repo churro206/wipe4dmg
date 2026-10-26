@@ -68,12 +68,18 @@ const inputs: ArmorImportInputs = {
       "Increases hip fire range for weapons that use Primary ammo.",
     ),
     piece("An Insurmountable Skullfort", "Melee kills restore health."),
+    { ...piece("Stormdancer's Brace"), intrinsics: ["Ascending Amplitude"] },
   ],
   aegisAbilities: [
     {
       id: "super-thundercrash-cuirass",
       assumptions: ["Cuirass of the Falling Star"],
     },
+    {
+      id: "super-stormtrance-ascending-amplitude",
+      assumptions: ["Ascending Amplitude"],
+    },
+    { id: "super-reflected", assumptions: ["Antaeus Wards Intrinsic"] },
     { id: "super-thundercrash", assumptions: [] },
   ],
   court: [
@@ -314,6 +320,18 @@ describe("classifyExoticArmor", () => {
     });
   });
 
+  it("rule 1 also finds the exotic by its intrinsic, e.g. Ascending Amplitude", () => {
+    expect(byName["Stormdancer's Brace"]).toMatchObject({
+      kind: "abilityVariant",
+      rule: 1,
+      aegisRowIds: ["super-stormtrance-ascending-amplitude"],
+    });
+  });
+
+  it("rule 1 skips an intrinsic that does not work against a boss, e.g. Biotic Enhancements", () => {
+    expect(byName["Antaeus Wards"].aegisRowIds).toEqual([]);
+  });
+
   it("rule 2 matches Court names with markers like *", () => {
     expect(byName["Hazardous Propulsion"]).toMatchObject({
       kind: "damageBuff",
@@ -502,6 +520,7 @@ describe("generated files are current (run npm run build:armor)", () => {
     expect(kinds["Cuirass of the Falling Star"]).toBe("abilityVariant");
     expect(kinds["Celestial Nighthawk"]).toBe("abilityVariant");
     expect(kinds["Dawn Chorus"]).toBe("abilityVariant");
+    expect(kinds["Stormdancer's Brace"]).toBe("abilityVariant");
     expect(kinds["Mantle of Battle Harmony"]).toBe("damageBuff");
     expect(kinds["Rain of Fire"]).toBe("grantsEffect");
     expect(kinds["Promethium Spur"]).toBe("grantsEffect");

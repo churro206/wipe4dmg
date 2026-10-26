@@ -1505,35 +1505,6 @@
     }
   },
   {
-    "exoticArmorId": "young-ahamkaras-spine",
-    "activation": "always",
-    "effect": {
-      "id": "exotic-armor:young-ahamkaras-spine",
-      "name": "Young Ahamkara's Spine",
-      "code": 405059572,
-      "shortName": "Young Ahamkara's Spine",
-      "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
-        {
-          "type": "multiplier",
-          "bucketId": "exoticIntrinsic",
-          "multiplier": {
-            "value": 1.14,
-            "source": {
-              "name": "Destiny Data Compendium (tab Exotic Armors)",
-              "url": "https://destiny2.science/data-compendium",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "note": "„14% Increased Explosion Damage“; bucket exoticIntrinsic (court); highest stage (optimal play)"
-            }
-          },
-          "damageSources": ["grenade"],
-          "abilityIds": ["tripmine-grenade"]
-        }
-      ]
-    }
-  },
-  {
     "exoticArmorId": "dawn-chorus",
     "activation": "always",
     "effect": {

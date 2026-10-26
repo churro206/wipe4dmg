@@ -19,8 +19,9 @@ const effectOf = (id: string) =>
 
 describe("rules for the exotic damage buffs", () => {
   it("classifies every damage buff", () => {
-    // 42 exotic pieces and 4 Spirit perks of the Exotic Class Item (U6-3), plus Dawn Chorus (Ignitions)
-    expect(new Set(result.rows.map((r) => r.name)).size).toBe(47);
+    // 43 damage buffs and 4 Spirit perks of the Exotic Class Item (U6-3), plus Dawn Chorus (Ignitions);
+    // Stormdancer's Brace, Young Ahamkara's Spine and Eunoia are ability variants (Aegis names their intrinsic)
+    expect(new Set(result.rows.map((r) => r.name)).size).toBe(44);
   });
 
   it.each([
@@ -50,8 +51,6 @@ describe("rules for the exotic damage buffs", () => {
     ["Mantle of Battle Harmony", "triggered"],
     ["Sanguine Alchemy", "triggered"],
     ["Eternal Warrior", "triggered"],
-    // stacks from hits inside the super; the package names no hit count
-    ["Stormdancer's Brace", "rotation"],
     // x2 needs the class ability
     ["Heart of Inmost Light", "classAbility"],
     ["Mask of Bakris", "triggered"],
@@ -60,9 +59,7 @@ describe("rules for the exotic damage buffs", () => {
     ["The Path of Burning Steps", "needsEffect"],
     ["No Backup Plans", "needsEffect"],
     ["Fr0st-EE5", "needsEffect"],
-    ["Young Ahamkara's Spine", "always"],
     ["Cadmus Ridge Lancecap", "abilityGap"],
-    ["Eunoia", "abilityGap"],
     ["Peregrine Greaves", "abilityGap"],
     ["Lucky Pants", "hitStacks"],
     ["Peacekeepers", "hitStacks"],
@@ -265,23 +262,6 @@ describe("rules for the exotic damage buffs", () => {
       damageSources: ["grenade", "super", "classAbility"],
       elements: ["solar"],
     });
-  });
-
-  it("a bonus for one ability applies only to it, the whole damage phase", () => {
-    expect(effectOf("young-ahamkaras-spine")).toMatchObject({
-      activation: "always",
-      effect: {
-        parts: [
-          {
-            bucketId: "exoticIntrinsic",
-            multiplier: { value: 1.14 },
-            damageSources: ["grenade"],
-            abilityIds: ["tripmine-grenade"],
-          },
-        ],
-      },
-    });
-    expect(effectOf("young-ahamkaras-spine").effect.durationMs).toBeUndefined();
   });
 
   it("leaves out bonuses for heat weapons (none in the import)", () => {

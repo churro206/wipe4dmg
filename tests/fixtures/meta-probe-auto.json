@@ -7,7 +7,6 @@
   "deviations": {
     "sustained-tractor-cannon": "-17 %; cause not examined",
     "sustained-telesto": "-16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now)",
-    "swap-stormtrance-ascending-amplitude-facet-of-courage-thunderous-retort": "-53 %; Ascending Amplitude is the trait of Stormdancer's Brace (Amplified, Bolt Charge from Arc ability hits), which has its own damage and is not modelled; Thunderous Retort itself fits (Chaos Reach and Stormtrance rows without it: x1.00)",
     "swap-arc-staff-raiden-flux-shieldcrush": "-33 %, exactly 1/1.5: Aegis applies Shieldcrush (+50 % melee) to the light attacks of the Arc Staff, which are Super Melee (Compendium: 'Also increases Super Melee Damage'); the model gives it to melee abilities only, and only while Frost Armor, Void Overshield or Woven Mail is on, which this row does not select"
   }
 }

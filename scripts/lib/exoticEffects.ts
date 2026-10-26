@@ -30,7 +30,7 @@ import {
   type WeaponType,
   type Source,
 } from "../../src/data/schema.ts";
-import { sameName } from "./exoticArmor.ts";
+import { NOT_AGAINST_BOSS, sameName } from "./exoticArmor.ts";
 
 export type ExoticEffectInputs = {
   armor: ExoticArmorEntry[]; // exotic-armor.json
@@ -89,9 +89,6 @@ const OVERCHARGED_ELEMENT =
 const TEXT_SUPER_END =
   /On ([A-Z][\w ]+?) End:\s+Grants x4 (Arc|Solar|Void|Stasis|Strand) Weapon Surge for (\d+(?:\.\d+)?)/;
 
-// Texts without a Court value
-const NOT_AGAINST_BOSS =
-  /Reflected Projectiles deal|damage towards|within \d+ met(?:re|er)s of \d+ enemies|below \d+% Health|at Critical Health|Noble Seekers/i;
 const OWN_DAMAGE = /\bDoT\b|are dealt (?:increasingly )?/i;
 const HIT_STACKS =
   /Hits? against (?:a )?Combatants?:?\s+grants? (?:a )?stacks?/i;

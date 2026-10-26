@@ -2,7 +2,7 @@
 
 Generiert mit `npm run check:text` (Regel in `scripts/lib/textCheck.ts`). Jeder Multiplier-Part, Catalyst und Grant neben den Texten seines Items (Clarity, Compendium, Court, Zitat der Quelle). Wert: (m − 1) × 100 steht im Text; Aegis- und Quantum-Messungen zählen als gemessen, eine Prozentzahl im Text trotzdem auf ±25 %. Dauer: eine Dauer aus dem Text. Ziel: Quellen, Elemente und Waffentypen gegen die Wörter im Text. „Ungenutzt“: Prozentzahlen im Text, die kein Part des Items nutzt (nur zur Info). Gründe für Abweichungen: `tests/fixtures/text-check.json`.
 
-Zeilen 314: ok 287, über Effect 5, gemessen 7, kein Text 3, Abweichung 12 (davon ohne Grund 0).
+Zeilen 312: ok 285, über Effect 5, gemessen 7, kein Text 3, Abweichung 12 (davon ohne Grund 0).
 
 ## Abweichungen
 
@@ -308,8 +308,6 @@ Zeilen 314: ok 287, über Effect 5, gemessen 7, kein Text 3, Abweichung 12 (davo
 | Wormhusk Crown | value | +15 % exoticIntrinsic, grenade/super/classAbility, solar | ok | Compendium Exotic Armors: 15% increased Solar Grenade, Melee, Class, and Super Ability Damage. Works on Prismatic for Solar too! | 100 %, 34 %, 50 % |
 | Wormhusk Crown | target | +15 % exoticIntrinsic, grenade/super/classAbility, solar | ok |  |  |
 | Wormhusk Crown | duration | 10 s | ok | Compendium Exotic Armors: Grants a stack of Burning Souls for 10 seconds, up to a maximum of 3 stacks. |  |
-| Young Ahamkara's Spine | value | +14 % exoticIntrinsic, grenade | ok | Compendium Exotic Armors: 14% Increased Explosion Damage. Explosion Length and Width are increased to 14 metres. | 30 %, 10 % |
-| Young Ahamkara's Spine | target | +14 % exoticIntrinsic, grenade | ok |  |  |
 | Dawn Chorus | value | +100 % exoticIntrinsic, keyword | ok | Compendium Exotic Armors: Ignitions deal 100% increased damage. | 40 %, 5 % |
 | Dawn Chorus | target | +100 % exoticIntrinsic, keyword | ok |  |  |
 | Ager's Scepter: Catalyst | value | +76.32 % weaponPerk | gemessen | 80 % im Text |  |

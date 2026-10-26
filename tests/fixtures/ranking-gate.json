@@ -1,7 +1,5 @@
 {
-  "topHits": {
-    "Supers": "2 of Aegis' top 3 are in our top 5: Stormtrance with Ascending Amplitude (Aegis 71,745, model 33,334) is missing. Ascending Amplitude is the trait of Stormdancer's Brace (Amplified, Bolt Charge from Arc ability hits), whose own damage is not modelled (known-inaccuracies, Arc block); the other rows of the top 5 fit within 2 %."
-  },
+  "topHits": {},
   "pairs": {
     "Supers: Gathering Storm, Feast of Light x6, Limit Break + Feast of Light x6": "Aegis contradicts itself: tab Swap +77.3 % (25038 / 14122), tab Abilities +63.3 % (11767 / 7207), and the text allows at most +70 % (Compendium: 'up to 70% increased Super Damage'). The model gives +66.5 % (Jolt share unscaled), between the tabs and within the text.",
     "Supers: Blade Barrage, Knock 'Em Down, Shards of Galanor, Limit Break + Shards of Galanor": "Aegis contradicts itself: tab Swap +77.0 % (23150 / 13076), tab Abilities +102.2 % (25864 / 12795); the model gives +80.9 %, 3.9 points above Swap and 21 below Abilities. The cause of the tab difference is not known; the 25 % of Sharp Edges alone cannot explain either."

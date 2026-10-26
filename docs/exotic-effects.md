@@ -6,14 +6,14 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 
 | Art | Zeilen |
 | --- | --- |
-| Immer aktiv (Regel 6) | 3 |
+| Immer aktiv (Regel 6) | 2 |
 | Vorher aufgebaut, Option (Regel 3) | 12 |
 | Kill-Buff ohne Dauer (Regel 3) | 2 |
 | Fenster aus der Rotation (Regel 4) | 15 |
-| Auslöser in der Rotation, offen (Regel 4) | 1 |
+| Auslöser in der Rotation, offen (Regel 4) | 0 |
 | Auslöser Class Ability, U7 (Regel 4) | 1 |
 | Gilt mit einem Zustand, z. B. Amplified (Regel 5) | 3 |
-| Ability nicht im Modell (Regel 6) | 3 |
+| Ability nicht im Modell (Regel 6) | 2 |
 | Stapel pro Waffentreffer (Regel 7) | 2 |
 | Bonus durch Halten (Regel 7) | 1 |
 | Wirkt nicht gegen einen Boss (Regel 1) | 6 |
@@ -26,7 +26,6 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
 | Fortune's Favor | 6 | immer aktiv: +15 % auf weapon | Compendium 20 %, Clarity 15 % |
-| Young Ahamkara's Spine | 6 | immer aktiv: +14 % auf grenade, nur Tripmine Grenade | Compendium 14 %, Clarity 14 % |
 | Dawn Chorus | 6 | immer aktiv: +100 % auf Ignitions aus jeder Quelle („Ignitions deal 100% increased damage“) | Destiny Data Compendium (tab Exotic Armors) |
 
 ## Vorher aufgebaut, Option (Regel 3)
@@ -73,12 +72,6 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Spirit of the Star-Eater | 4 | ab jedem Super-Cast: +70 % auf super für 14 s („On Super Cast“ … „for 14 seconds“) | Compendium 70 %, Clarity – |
 | Star-Eater Scales | 4 | ab jedem Super-Cast: +70 % auf super für 14 s („On Super Cast“ … „for 14 seconds“) | Compendium 70 %, Clarity 70 % |
 
-## Auslöser in der Rotation, offen (Regel 4)
-
-| Exotic | Regel | Grund | Gegenprobe |
-| --- | --- | --- | --- |
-| Stormdancer's Brace | 4 | Stapel aus Treffern in der Ability („Hits and Kills“); das Paket nennt keine Trefferzahl, keine Gegenprobe möglich | Compendium –, Clarity 200 % |
-
 ## Auslöser Class Ability, U7 (Regel 4)
 
 | Exotic | Regel | Grund | Gegenprobe |
@@ -98,7 +91,6 @@ Gegenprobe: Court-Wert gegen die Werte aus Compendium und Clarity.
 | Exotic | Regel | Grund | Gegenprobe |
 | --- | --- | --- | --- |
 | Cadmus Ridge Lancecap | 6 | Bonus nur für „Diamond Lance“, nicht im Modell | Compendium 475 %, Clarity 144 % |
-| Eunoia | 6 | Bonus nur für „Hellion Projectiles“, nicht im Modell | Compendium 20 %, Clarity 20 % |
 | Peregrine Greaves | 6 | Bonus nur für „Shoulder Charge Abilities“, nicht im Modell | Compendium 550 %, Clarity – |
 
 ## Stapel pro Waffentreffer (Regel 7)

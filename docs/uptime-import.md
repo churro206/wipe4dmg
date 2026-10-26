@@ -2,7 +2,7 @@
 
 Generiert mit `npm run build:uptime` (Regel in `scripts/lib/uptime.ts`). Regel des Inhabers (2026-10-24): Eigene Quellen gelten nur für die Dauer aus ihrem Text, ab Beginn der Phase. Länger nur, wenn ein modellierter Auslöser sie auffrischt. Buffs von Teammates gelten die ganze Phase.
 
-Fenster 76, Teammate 6, selbst erneuert 3, pro Ereignis 9, Zustand 28, ohne Zeitlimit 17, offen 0.
+Fenster 76, Teammate 6, selbst erneuert 3, pro Ereignis 8, Zustand 28, ohne Zeitlimit 17, offen 0.
 
 | Effect | Datei | Urteil | Dauer | Text |
 | --- | --- | --- | --- | --- |
@@ -143,5 +143,4 @@ Fenster 76, Teammate 6, selbst erneuert 3, pro Ereignis 9, Zustand 28, ohne Zeit
 | Verity's Brow | exotic-armor-effects.json | Fenster (Dauer oder Auslöser) |  |  |
 | Wormgod Caress | exotic-armor-effects.json | Fenster (Dauer oder Auslöser) |  |  |
 | Wormhusk Crown | exotic-armor-effects.json | Fenster (Dauer oder Auslöser) |  |  |
-| Young Ahamkara's Spine | exotic-armor-effects.json | wirkt pro Treffer oder Cast, ohne Fenster |  |  |
 | Dawn Chorus | exotic-armor-effects.json | kein Zeitlimit im Text, ganze Phase |  |  |

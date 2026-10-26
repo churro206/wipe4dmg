@@ -1005,10 +1005,10 @@
     "guardianClass": "warlock",
     "slot": "gauntlets",
     "intrinsic": "Consul's Pitch",
-    "kind": "damageBuff",
-    "rule": 4,
-    "reason": "exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „20% increased damage“; clarity: „20% increased damage“",
-    "aegisRowIds": [],
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: miscellaneous-hellion-average-consul-s-pitch-max-range",
+    "aegisRowIds": ["miscellaneous-hellion-average-consul-s-pitch-max-range"],
     "courtBuffs": [],
     "bonuses": [
       {
@@ -1024,11 +1024,7 @@
         "melee": false
       }
     ],
-    "bonusBucket": {
-      "bucketId": "exoticIntrinsic",
-      "basis": "courtDefinition",
-      "quote": "An effect from Exotics applied directly onto your Weapon or Ability"
-    },
+    "bonusBucket": null,
     "grantsEffectIds": [],
     "superShots": null,
     "timing": null
@@ -1918,10 +1914,14 @@
     "guardianClass": "warlock",
     "slot": "chest",
     "intrinsic": "Stylostixis",
-    "kind": "ownDamage",
-    "rule": 5,
-    "reason": "eigener Schaden („Deals 269“), Damage Instances von Exotics kommen später",
-    "aegisRowIds": [],
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-needlestorm-stylostixis-thread-of-evolution-pack-tactics-x2, super-needlestorm-stylostixis-thread-of-evolution, super-needlestorm-stylostixis",
+    "aegisRowIds": [
+      "super-needlestorm-stylostixis-thread-of-evolution-pack-tactics-x2",
+      "super-needlestorm-stylostixis-thread-of-evolution",
+      "super-needlestorm-stylostixis"
+    ],
     "courtBuffs": [],
     "bonuses": [],
     "bonusBucket": null,
@@ -3788,10 +3788,10 @@
     "guardianClass": "warlock",
     "slot": "chest",
     "intrinsic": "Ascending Amplitude",
-    "kind": "damageBuff",
-    "rule": 3,
-    "reason": "exoticIntrinsic (Court-Liste); clarity: „200% bonus damage“",
-    "aegisRowIds": [],
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: super-stormtrance-ascending-amplitude",
+    "aegisRowIds": ["super-stormtrance-ascending-amplitude"],
     "courtBuffs": [
       {
         "bucketId": "exoticIntrinsic",
@@ -3808,11 +3808,7 @@
         "melee": false
       }
     ],
-    "bonusBucket": {
-      "bucketId": "exoticIntrinsic",
-      "basis": "court",
-      "quote": "Exotic Intrinsics"
-    },
+    "bonusBucket": null,
     "grantsEffectIds": [],
     "superShots": null,
     "timing": null
@@ -4423,10 +4419,12 @@
     "guardianClass": "hunter",
     "slot": "gauntlets",
     "intrinsic": "Wish-Dragon Teeth",
-    "kind": "damageBuff",
-    "rule": 3,
-    "reason": "exoticIntrinsic (Court-Liste); compendium: „14% Increased Explosion Damage“; clarity: „14% increased Explosion damage“",
-    "aegisRowIds": [],
+    "kind": "abilityVariant",
+    "rule": 1,
+    "reason": "Aegis-Paket: grenade-tripmine-average-ember-of-ashes-wish-dragon-teeth-with-ignition",
+    "aegisRowIds": [
+      "grenade-tripmine-average-ember-of-ashes-wish-dragon-teeth-with-ignition"
+    ],
     "courtBuffs": [
       {
         "bucketId": "exoticIntrinsic",
@@ -4449,11 +4447,7 @@
         "melee": false
       }
     ],
-    "bonusBucket": {
-      "bucketId": "exoticIntrinsic",
-      "basis": "court",
-      "quote": "Exotic Intrinsics"
-    },
+    "bonusBucket": null,
     "grantsEffectIds": [],
     "superShots": null,
     "timing": null

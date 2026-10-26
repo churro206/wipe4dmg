@@ -2,19 +2,19 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `tests/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 25. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 98, davon innerhalb der Grenze 40. Nicht vergleichbar (übersprungen): 44.
+Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 98, davon innerhalb der Grenze 41. Nicht vergleichbar (übersprungen): 44.
 
 ## Vollständig abgebildet
 
 | Aegis-Zeile | Aegis | Modell | relativ | Grund der Abweichung |
 | --- | ---: | ---: | ---: | --- |
-| Stormtrance, Ascending Amplitude, Facet of Courage, Thunderous Retort | 71,745 | 33,334 | 0.465 | -53 %; Ascending Amplitude is the trait of Stormdancer's Brace (Amplified, Bolt Charge from Arc ability hits), which has its own damage and is not modelled; Thunderous Retort itself fits (Chaos Reach and Stormtrance rows without it: x1.00) |
 | Arc Staff, Raiden Flux, Shieldcrush | 84,169 | 56,113 | 0.667 | -33 %, exactly 1/1.5: Aegis applies Shieldcrush (+50 % melee) to the light attacks of the Arc Staff, which are Super Melee (Compendium: 'Also increases Super Melee Damage'); the model gives it to melee abilities only, and only while Frost Armor, Void Overshield or Woven Mail is on, which this row does not select |
 | Tractor Cannon | 22,149 | 18,458 | 0.833 | -17 %; cause not examined |
 | Telesto | 51,208 | 43,123 | 0.842 | -16 %; cause not examined (not the Weapons stat: special weapons get the 1.15 now) |
 | Arbalest | 58,835 | 56,161 | 0.955 |  |
 | The Colony | 49,096 | 47,133 | 0.960 |  |
 | Gathering Storm, Feast of Light x6, Limit Break | 21,772 | 21,203 | 0.974 |  |
+| Stormtrance, Ascending Amplitude, Facet of Courage, Thunderous Retort | 71,745 | 70,591 | 0.984 |  |
 | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | 41,594 | 41,001 | 0.986 |  |
 | Needlestorm, Feast of Light x6, Limit Break | 25,251 | 25,243 | 1.000 |  |
 | Merciless | 54,552 | 54,549 | 1.000 |  |
@@ -64,7 +64,6 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 25. Abweichun
 | Legend of Acrius | 129,383 | 75,473 | 0.583 | body; Trench Barrel |
 | New Land Beyond | 198,345 | 116,544 | 0.588 | starts at The Master x0; manual reloads until The Grandmaster |
 | Burning Maul | 89,348 | 55,015 | 0.616 | light attacks; Roaring Flames x3 |
-| Needlestorm | 33,601 | 20,926 | 0.623 | Pack Tactics x2 |
 | Duality | 73,569 | 46,616 | 0.634 | 3 body pellet shots into On Black Wings x3 slugs |
 | Hammer of Sol | 51,242 | 32,583 | 0.636 | max distance |
 | Nova Bomb - Cataclysm | 30,171 | 19,261 | 0.638 | Skull of Dire Ahamkara (ownDamage) |
@@ -100,6 +99,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 25. Abweichun
 | The Lament | 197,074 | 178,806 | 0.907 | 3L1H1R combo; Sword Storm Combo; simulated |
 | Fafnir | 58,657 | 53,594 | 0.914 | includes Quantum Nova windup and splash; 9 ammo consumed |
 | Ergo Sum | 101,863 | 93,245 | 0.915 | wave frame; Jagged Edge; heavy spam; Transcendent; excludes Transcendence 5% bonus; boss against wall |
+| Needlestorm | 33,601 | 30,780 | 0.916 | Pack Tactics x2 |
 | D.A.R.C.I. | 73,429 | 69,253 | 0.943 | Target Acquired; includes jolt |
 | Ergo Sum | 98,852 | 93,245 | 0.943 | lightweight frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus |
 | Parasite | 95,708 | 90,445 | 0.945 | x20 first shot |

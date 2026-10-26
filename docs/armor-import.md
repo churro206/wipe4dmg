@@ -5,11 +5,11 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 
 | Art | Anzahl |
 | --- | --- |
-| Ability-Varianten (Regel 1) | 15 |
-| Schadens-Buffs (Regeln 2 bis 4) | 46 |
+| Ability-Varianten (Regel 1) | 19 |
+| Schadens-Buffs (Regeln 2 bis 4) | 43 |
 | Geben einen Effect (Regel 4c) | 3 |
 | Waffen-Timing (Regel 5) | 2 |
-| Eigener Schaden, kommt später (Regel 5) | 41 |
+| Eigener Schaden, kommt später (Regel 5) | 40 |
 | Nur Energie, Modell fehlt (Regel 5) | 28 |
 | Lücken (Regeln 3 bis 5) | 15 |
 | Ohne Schadenswirkung (Regeln 5 und 6) | 25 |
@@ -24,15 +24,19 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Claws of Ahamkara | warlock | gauntlets | 1 | Aegis-Paket: super-song-of-flame-claws-of-ahamkara-necrotic-grip-snap-spam |
 | Cuirass of the Falling Star | titan | chest | 1 | Aegis-Paket: super-thundercrash-cuirass-of-the-falling-star |
 | Dawn Chorus | warlock | helmet | 1 | Aegis-Paket: super-daybreak-ember-of-ashes-dawn-chorus-spaced, super-daybreak-ember-of-ashes-dawn-chorus, super-song-of-flame-dawn-chorus-saint-s-fists-celestial-fire-spam-ember-of-ashes, super-song-of-flame-dawn-chorus-snap-spam-shieldcrush, super-song-of-flame-dawn-chorus-snap-spam |
+| Eunoia | warlock | gauntlets | 1 | Aegis-Paket: miscellaneous-hellion-average-consul-s-pitch-max-range |
 | Geomag Stabilizers | warlock | legs | 1 | Aegis-Paket: super-chaos-reach-geomag-stabilizers-sol-invictus, super-chaos-reach-geomag-stabilizers |
 | Gifted Conviction | hunter | chest | 1 | Aegis-Paket: miscellaneous-ascension-includes-jolt-gifted-conviction |
+| Mataiodoxía | warlock | chest | 1 | Aegis-Paket: super-needlestorm-stylostixis-thread-of-evolution-pack-tactics-x2, super-needlestorm-stylostixis-thread-of-evolution, super-needlestorm-stylostixis |
 | Necrotic Grip | warlock | gauntlets | 1 | Aegis-Paket: melee-base-necrotic-grip, super-song-of-flame-claws-of-ahamkara-necrotic-grip-snap-spam, super-song-of-flame-wisp-snap-cycling-feast-of-light-x6-necrotic-grip |
 | Orpheus Rig | hunter | legs | 1 | Aegis-Paket: super-shadowshot-moebius-quiver-full-bow-charge-orpheus-rig-includes-debuff, super-shadowshot-moebius-quiver-orpheus-rig-includes-debuff |
 | Pyrogale Gauntlets | titan | gauntlets | 1 | Aegis-Paket: super-burning-maul-roaring-flames-x3-sol-invictus-ember-of-ashes-pyrogale-gauntlets |
 | Raiden Flux | hunter | chest | 1 | Aegis-Paket: super-arc-staff-raiden-flux-grounded-2l1h |
 | Raiju's Harness | hunter | chest | 1 | Aegis-Paket: super-gathering-storm-raiju-s-harness |
 | Shards of Galanor | hunter | gauntlets | 1 | Aegis-Paket: super-blade-barrage-knock-em-down-shards-of-galanor |
+| Stormdancer's Brace | warlock | chest | 1 | Aegis-Paket: super-stormtrance-ascending-amplitude |
 | Sunbracers | warlock | gauntlets | 1 | Aegis-Paket: grenade-solar-average-ember-of-ashes-touch-of-flame-sunbracers |
+| Young Ahamkara's Spine | hunter | gauntlets | 1 | Aegis-Paket: grenade-tripmine-average-ember-of-ashes-wish-dragon-teeth-with-ignition |
 
 ## Schadens-Buffs (Regeln 2 bis 4)
 
@@ -49,7 +53,6 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Deimosuffusion | warlock | helmet | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „112.5% increased damage“; clarity: „112.5% increased damage“ |
 | Doom Fang Pauldron | titan | gauntlets | 2 | Court Weapon Surges: 10% 17% 22% 25% für 11s |
 | Eternal Warrior | titan | helmet | 2 | Court Weapon Surges: 10% 17% 22% 25% für 11s |
-| Eunoia | warlock | gauntlets | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „20% increased damage“; clarity: „20% increased damage“ |
 | Felwinter's Helm | warlock | helmet | 2 | Court Global Debuffs: 30% für ~; Court Global Debuffs: 15% für 6s |
 | Foetracer | hunter | helmet | 2 | Court Weapon Surges: 25% für 16s |
 | Fortune's Favor | hunter | legs | 3 | exoticIntrinsic (Court-Liste); compendium: „15% increased damage“; compendium: „20% increased damage“; clarity: „15% increased weapon damage“ |
@@ -77,13 +80,11 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Spirit of the Star-Eater | alle | classPerk | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „18.2% \| 36.4% \| 54.6% \| 59.7% \| 64.8% \| 70% increased Super Damage“; compendium: „50% Increased Super Damage“; compendium: „35% Increased Super Damage“ |
 | Spirit of Verity | alle | classPerk | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); compendium: „40% [20%] increased Grenade Damage“; compendium: „55% [40%] increased Grenade Damage“; compendium: „70% [60%] increased Grenade Damage“; compendium: „85% [80%] increased Grenade Damage“; compendium: „100% increased Grenade Damage“ |
 | Star-Eater Scales | hunter | legs | 3 | exoticIntrinsic (Court-Liste); compendium: „18.2% \| 36.4% \| 54.6% \| 59.7% \| 64.8% \| 70% increased Super Damage“; clarity: „18.2%\|36.4%\|54.6%\|59.7%\|64.8%\|70% increased Super damage“ |
-| Stormdancer's Brace | warlock | chest | 3 | exoticIntrinsic (Court-Liste); clarity: „200% bonus damage“ |
 | Synthoceps | titan | gauntlets | 3 | exoticIntrinsic (Court-Liste); compendium: „50% Increased Super Damage“; clarity: „50% increased Super damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt) |
 | The Path of Burning Steps | titan | legs | 2 | Court Amplification Modifiers: 6% 9.2% 12.4% für ∞ |
 | Verity's Brow | warlock | helmet | 3 | exoticIntrinsic (Court-Liste); compendium: „40% [20%] increased Grenade Damage“; compendium: „55% [40%] increased Grenade Damage“; compendium: „70% [60%] increased Grenade Damage“; compendium: „85% [80%] increased Grenade Damage“; compendium: „100% increased Grenade Damage“; clarity: „40%\|55%\|70%\|85%\|100% increased Grenade damage“; clarity: „20%\|40%\|60%\|80%\|100% increased Grenade damage“; Melee-Boni zählen nicht (Melee-Buffs addieren sich, Modell fehlt) |
 | Wormgod Caress | titan | gauntlets | 2 | Court Empowering Buffs: 1x no bonus 2x 20% 3x 25% 4x 30% 5x 35% für 9.5s 10s 4s 4s 3s |
 | Wormhusk Crown | hunter | helmet | 4 | exoticIntrinsic („An effect from Exotics applied directly onto your Weapon or Ability“); clarity: „15% Increased Solar Ability Damage“ |
-| Young Ahamkara's Spine | hunter | gauntlets | 3 | exoticIntrinsic (Court-Liste); compendium: „14% Increased Explosion Damage“; clarity: „14% increased Explosion damage“ |
 
 ## Geben einen Effect (Regel 4c)
 
@@ -117,7 +118,6 @@ Quellen: Manifest, Aegis „Abilties“, Court's Stacking Guide, Compendium „E
 | Loreley Splendor Helm | titan | helmet | 5 | eigener Schaden („Sunspot“), Damage Instances von Exotics kommen später |
 | Lucky Raspberry | hunter | chest | 5 | eigener Schaden („Jolt“), Damage Instances von Exotics kommen später |
 | Mask of Fealty | hunter | helmet | 5 | eigener Schaden („Projectile“), Damage Instances von Exotics kommen später |
-| Mataiodoxía | warlock | chest | 5 | eigener Schaden („Deals 269“), Damage Instances von Exotics kommen später |
 | Melas Panoplia | titan | gauntlets | 5 | eigener Schaden („explosion“), Damage Instances von Exotics kommen später |
 | Mk. 44 Stand Asides | titan | legs | 5 | eigener Schaden („Bolt Charge“), Damage Instances von Exotics kommen später |
 | Moirai | hunter | chest | 5 | eigener Schaden („detonat“), Damage Instances von Exotics kommen später |

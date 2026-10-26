@@ -171,6 +171,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 | --- | --- | --- | --- | --- | --- |
 | [Fähigkeiten und Supers](abilities-and-supers.md) | Damage Instance | Granaten, Nahkampf und Supers machen eigenen Schaden; zählen zum Total Damage | hoch | Aegis „Abilities“; Compendium; Bungie-Manifest | umgesetzt (Aegis-Pakete, ADR 0009) |
 | Mehrere Spieler | Multiplier, Damage Instance | Nur Buffs und Debuffs von Mitspielern (Fireteam Support), nicht ihr Schaden; Skalierung mehrerer gleicher Quellen | mittel | Aegis „Scaling“ | katalogisiert |
+| Mitspieler ändern eine Ability | Ability-Variante | Ein Effect eines Teammates kann die eigene Ability ändern, auch klassenübergreifend: Sol Invictus (Solar Titan) macht Sunspots, die den Super-Drain verlangsamen; Chaos Reach (Arc Warlock) hält dadurch länger. Schalter unter Fireteam Support, `changesAbilityIds` | mittel | Aegis `super-chaos-reach-geomag-stabilizers-sol-invictus` | umgesetzt |
 
 ## Folgen für die Architektur
 

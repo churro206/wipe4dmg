@@ -56,7 +56,7 @@ export function loadAbilities(
   // exotic-armor.json (ADR 0014, rule 1): variants from the Aegis rows of the ability variants
   exoticArmor: Pick<
     ExoticArmorEntry,
-    "id" | "name" | "kind" | "aegisRowIds" | "superShots"
+    "id" | "name" | "intrinsic" | "kind" | "aegisRowIds" | "superShots"
   >[] = [],
   // super-timings.json: hits and super window of supers used as fast as possible
   superTimings: SuperTiming[] = [],
@@ -87,7 +87,7 @@ export function loadAbilities(
       const exotic = exoticArmor.find(
         (e) =>
           e.kind === "abilityVariant" &&
-          e.name === assumption &&
+          (e.name === assumption || e.intrinsic === assumption) &&
           e.aegisRowIds.includes(row.id),
       );
       if (exotic)
