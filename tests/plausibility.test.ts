@@ -375,7 +375,7 @@ describe("exotic armor changes its abilities", () => {
       `×${fmt(Math.min(...ratios))} bis ×${fmt(Math.max(...ratios))}`,
       "nie unter ×1,00; Halten nur, wenn der Zyklus lang genug ist",
     );
-    for (const ratio of ratios) expect(ratio).toBeGreaterThanOrEqual(0.999);
+    ratios.forEach((ratio, i) => expect(ratio, bows[i].name).toBeGreaterThanOrEqual(0.999));
   });
 
   it("Exotic Class Item: Spirit of the Eternal Warrior surges the weapon after the super, Star-Eater boosts the super", () => {
@@ -482,15 +482,18 @@ describe("all weapons (2026-10-23)", () => {
   });
 
   // Catches a unit error in a source, e.g. a whole magazine or a 5-ammo projectile counted as one
-  // shot (Fourth Horseman ×4, Choir of One ×5 before the overrides).
-  it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1×", () => {
+  // shot (Fourth Horseman ×4, Choir of One ×5 before the overrides). Such errors are ×4 or more, so
+  // a primary may reach 1.25×: Hierarchy of Needs deals 1.07× with Aegis' 917 per arrow and its
+  // 1.0 to 1.4 s per arrow (Aegis peak rate 1.017 s, Quantum 44 rpm) once the bow's nock is no
+  // longer counted twice (2026-10-26).
+  it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1.25×", () => {
     const gjally = run({}, weaponById("gjallarhorn")).totalDamage;
     const ratios = weapons.map(
       (w) => [w, run({}, w).totalDamage / gjally] as const,
     );
     const off = ratios
       .filter(([w, r]) =>
-        w.ammo === "primary" ? r > 1 || r <= 0 : r < 0.3 || r > 2.5,
+        w.ammo === "primary" ? r > 1.25 || r <= 0 : r < 0.3 || r > 2.5,
       )
       .map(([w, r]) => `${w.name} ${fmt(r)}`);
     const top = [...ratios].sort((a, b) => b[1] - a[1])[0];

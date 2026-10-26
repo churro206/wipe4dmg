@@ -98,13 +98,23 @@ describe("simulate: the weapon during a cast", () => {
     expect(shots.some((ms) => ms >= plain[2] && ms < plain[2] + 1000)).toBe(false);
   });
 
-  it("fires a shot at the very time of a cast that reloads first (a dodge after the last shot)", () => {
-    const dodge = { ...grenade, id: "dodge", refillsMagazine: true };
+  const dodge = { ...grenade, id: "dodge", refillsMagazine: true };
+  const last = weapon.magazine.value! - 1; // index of the shot that empties the first magazine
+
+  it("fires the last shot of a magazine first when a dodge is cast at its time (reload skipped)", () => {
     const shots = simulate(weapon, 60, [], buckets, {
-      abilities: [{ ability: dodge, castsMs: [plain[2]], castMs: 1000 }],
+      abilities: [{ ability: dodge, castsMs: [plain[last]], castMs: 1000 }],
     }).shots.map((s) => s.timeMs);
-    expect(shots[2]).toBe(plain[2]);
-    expect(shots[3]).toBeGreaterThanOrEqual(plain[2] + 1000);
+    expect(shots[last]).toBe(plain[last]);
+    expect(shots[last + 1]).toBeGreaterThanOrEqual(plain[last] + 1000);
+  });
+
+  it("casts a dodge before a shot that does not empty the magazine: no shot between two casts", () => {
+    const shots = simulate(weapon, 60, [], buckets, {
+      abilities: [{ ability: dodge, castsMs: [plain[1]], castMs: 1000 }],
+    }).shots.map((s) => s.timeMs);
+    expect(shots[1]).toBeGreaterThanOrEqual(plain[1] + 1000);
+    expect(shots.some((ms) => ms >= plain[1] && ms < plain[1] + 1000)).toBe(false);
   });
 
   it("starts with a cast at 0 s: no free shot before it", () => {

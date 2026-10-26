@@ -405,12 +405,16 @@ export type Timing = {
   chargeMs?: number; // charge before a shot (Aegis note, e.g. "1000ms charge"); inside the interval
 };
 type TimingProblem = { problem: string };
+/** The first charge, which Aegis' time to empty counts on top of the intervals. */
+const chargeSeconds = (timing: Timing) => (timing.chargeMs ?? 0) / 1000;
 
 /**
- * Aegis "Sustained" reloads right after the last shot of a magazine: time to empty =
- * (shots − magazines) × interval + reloads × reload. The simulator counts one interval before each
- * reload, so it gets reload − interval. Without reloads (an intrinsic refills the magazine) the
- * whole ammo is one magazine.
+ * Aegis "Sustained" reloads right after the last shot of a magazine: time to empty = charge +
+ * (shots − magazines) × interval + reloads × reload, where the interval (peak rate) already contains
+ * the charge and the time to empty adds the first charge on top (21 of 22 rows with a note
+ * "…ms charge" fit this to 1 %; tmp/charge-interval.ts, 2026-10-26). The simulator counts one
+ * interval before each reload, so it gets reload − interval. Without reloads (an intrinsic refills
+ * the magazine) the whole ammo is one magazine.
  */
 export function timingFromAegis(
   row: AegisSustainedRow,
@@ -447,9 +451,11 @@ export function timingFromAegis(
   if (reloads > 0 && reloadMs === null)
     return { problem: "kein Reload in den Notizen" };
   const reloadSeconds = (reloadMs ?? 0) / 1000;
+  const rowChargeSeconds = (row.chargeMs ?? 0) / 1000;
   const intervalSeconds =
     row.shots > magazines
-      ? (timeToEmpty - reloads * reloadSeconds) / (row.shots - magazines)
+      ? (timeToEmpty - rowChargeSeconds - reloads * reloadSeconds) /
+        (row.shots - magazines)
       : (row.peakRateSeconds ?? reloadSeconds);
   const engineReloadSeconds = reloadSeconds - intervalSeconds;
   if (intervalSeconds <= 0 || (reloads > 0 && engineReloadSeconds < 0))
@@ -464,7 +470,7 @@ export function timingFromAegis(
     engineReloadSeconds: Math.max(0, engineReloadSeconds),
     intervalSeconds,
     timeToEmptySeconds: timeToEmpty,
-    note: `Derived: (TtE ${timeToEmpty} s − ${reloads} reloads × ${reloadSeconds} s) ÷ ${row.shots - magazines} intervals within magazines (ADR 0013)`,
+    note: `Derived: (TtE ${timeToEmpty} s${row.chargeMs === null ? "" : ` − ${rowChargeSeconds} s charge`} − ${reloads} reloads × ${reloadSeconds} s) ÷ ${row.shots - magazines} intervals within magazines (ADR 0013)`,
     ...(row.chargeMs === null ? {} : { chargeMs: row.chargeMs }),
   };
 }
@@ -484,15 +490,21 @@ export function timingFromQuantum(
       return {
         problem: `unbegrenzte Munition, aber ohne Magazin, Reload oder rpm (${JSON.stringify(row.textCells)})`,
       };
+    // A bow with a magazine of one nocks an arrow after every shot: Quantum's rpm is 60 ÷ (draw time
+    // + that reload) for 6 of 8 primary bows within 5 % (tmp/bow-cycle test, 2026-10-26), so the
+    // reload is inside the interval, like Aegis' bows ("repeating", peak rate = draw time).
+    const nockInRate = row.weaponType === "bow" && row.magazine === 1;
     return {
       rowId: row.id,
       magazine: row.magazine,
       totalShots: null,
       reloadSeconds,
-      engineReloadSeconds: reloadSeconds,
+      engineReloadSeconds: nockInRate ? 0 : reloadSeconds,
       intervalSeconds: 60 / rpm,
       timeToEmptySeconds: null,
-      note: "Quantum fire rate; primary ammo is unlimited (Quantum: inf)",
+      note: nockInRate
+        ? "Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; primary ammo is unlimited (Quantum: inf)"
+        : "Quantum fire rate; primary ammo is unlimited (Quantum: inf)",
     };
   }
   const magazine = noReloads ? totalShots : row.magazine;
@@ -568,7 +580,8 @@ export function timingWithCatalyst(
       totalShots === null
         ? null
         : (totalShots - 1) * base.intervalSeconds +
-          reloads * base.engineReloadSeconds,
+          reloads * base.engineReloadSeconds +
+          chargeSeconds(base),
     note: `${base.note}; with catalyst from Clarity: ${[magazine?.[0], reserves?.[0]].filter(Boolean).join(", ")} (assumption: the magazine counts to the ammo)`,
   };
 }
@@ -605,7 +618,8 @@ export function timingWithoutCatalyst(
         totalShots === null
           ? null
           : (totalShots - 1) * withCatalyst.intervalSeconds +
-            reloads * withCatalyst.engineReloadSeconds,
+            reloads * withCatalyst.engineReloadSeconds +
+            chargeSeconds(withCatalyst),
       note: `${withCatalyst.note}; without catalyst from Clarity: ${[magazine?.[0], reserves?.[0]].filter(Boolean).join(", ")}`,
     },
     quote: [magazine?.[0], reserves?.[0]].filter(Boolean).join("; "),
@@ -637,7 +651,8 @@ function adjustTiming(
     totalShots: shots,
     intervalSeconds: interval,
     engineReloadSeconds: engineReload,
-    timeToEmptySeconds: (shots - 1) * interval + reloads * engineReload,
+    timeToEmptySeconds:
+      (shots - 1) * interval + reloads * engineReload + chargeSeconds(timing),
     note: `${timing.note}; override: ${totalShots ?? "same"} shots, +${addIntervalSeconds ?? 0} s per shot`,
   };
 }
@@ -1296,7 +1311,8 @@ export function buildWeaponImport(
               shots === null
                 ? null
                 : (shots - 1) * fromRow.intervalSeconds +
-                  reloads * fromRow.engineReloadSeconds,
+                  reloads * fromRow.engineReloadSeconds +
+                  chargeSeconds(fromRow),
             note: `${fromRow.note}; without catalyst: magazine ${magazine} (override)`,
           };
         } else {

@@ -23,6 +23,17 @@ import { simulate } from "../src/engine/simulate";
 const result = buildWeaponImport(loadWeaponImportInputs());
 const byName = (name: string) => result.packages.find((w) => w.name === name);
 const value = (n: { value: number | null }) => n.value;
+// Aegis' time to empty contains the first charge where the row has the note "…ms charge" (charge +
+// intervals + reloads; 21 of 22 such rows fit); Quantum's and a row without the note count from the
+// first shot, which waits for the charge.
+const chargeRows = loadWeaponImportInputs().sustained.rows.filter((r) => r.chargeMs !== null);
+const uncountedChargeMs = (
+  weapon: { name: string; chargeTimeMs: { value: number | null } },
+  timingSource: string | null,
+) =>
+  timingSource === "Aegis" && chargeRows.some((r) => r.name === weapon.name)
+    ? 0
+    : (weapon.chargeTimeMs.value ?? 0);
 const keywords = loadKeywords(
   rawKeywords,
   AegisAbilityRow.array().parse(rawAbilityRows),
@@ -302,8 +313,7 @@ describe("catalysts", () => {
             keywords,
           },
         ).shots;
-        // the time to empty counts from the first shot, which waits for the charge
-        const last = (shots.at(-1)!.timeMs - weapon.chargeTimeMs.value!) / 1000;
+        const last = (shots.at(-1)!.timeMs - uncountedChargeMs(weapon, r.timingSource)) / 1000;
         return Math.abs(last / timeToEmpty - 1) > 0.03
           ? [`${r.name} ${last.toFixed(1)} s vs ${timeToEmpty.toFixed(1)} s`]
           : [];
@@ -438,16 +448,14 @@ describe("rules", () => {
     const buckets = loadBuckets(rawBuckets);
     for (const weapon of result.packages) {
       Weapon.parse(weapon);
-      const timeToEmpty = result.report.weapons.find(
-        (w) => w.name === weapon.name,
-      )!.timeToEmptySeconds;
+      const row = result.report.weapons.find((w) => w.name === weapon.name)!;
+      const timeToEmpty = row.timeToEmptySeconds;
       if (timeToEmpty === null) continue;
       const shots = simulate(weapon, timeToEmpty * 2, [], buckets, {
         keywords,
       }).shots;
-      // the time to empty counts from the first shot, which waits for the charge
       expect(
-        (shots.at(-1)!.timeMs - weapon.chargeTimeMs.value!) / 1000,
+        (shots.at(-1)!.timeMs - uncountedChargeMs(weapon, row.timingSource)) / 1000,
         weapon.name,
       ).toBeCloseTo(timeToEmpty, 0);
     }
@@ -469,6 +477,20 @@ describe("rules", () => {
     expect(byName("Wish-Ender").chargeTimeMs.value).toBe(733);
     expect(byName("Lorentz Driver").chargeTimeMs.value).toBe(533);
     expect(byName("Fafnir").chargeTimeMs.value).toBe(1066);
+  });
+
+  it("shoots a primary bow every 60 ÷ rpm: the draw and the nock are inside Quantum's rate", () => {
+    const bows = result.packages.filter(
+      (w) => w.weaponType === "bow" && w.ammo === "primary" && w.magazine.value === 1,
+    );
+    expect(bows.length).toBeGreaterThanOrEqual(7);
+    const buckets = loadBuckets(rawBuckets);
+    for (const bow of bows) {
+      expect(bow.reloadTimeMs.value, bow.name).toBe(0);
+      const times = simulate(bow, 30, [], buckets).shots.map((s) => s.timeMs);
+      const cycleMs = (times.at(-1)! - times[0]) / (times.length - 1);
+      expect(cycleMs, bow.name).toBeCloseTo(60_000 / bow.fireRateRpm.value!, 0);
+    }
   });
 
   it("never reuses a link code", () => {

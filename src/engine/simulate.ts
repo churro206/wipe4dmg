@@ -250,25 +250,26 @@ export function simulate(
 
   // A reload starts with the last shot of a magazine; a noReload part active then skips it.
   // A cast at the very time of a shot comes first and the shot waits for its end, so no shot sneaks
-  // in between casts lined up back to back (also at 0 s). Only a cast that reloads the weapon
-  // follows the shot: a dodge is placed at the last shot of a magazine.
+  // in between casts lined up back to back (also at 0 s). The one exception: a cast that reloads
+  // the weapon (a dodge) follows a shot that empties the magazine, so the reload is skipped.
   const blockingWindows = [
-    ...superWindows.map((w) => ({ ...w, shotAtStartFirst: false })),
+    ...superWindows.map((w) => ({ ...w, refills: false })),
     ...(options.abilities ?? []).flatMap(({ ability, castsMs, castMs = 0 }) =>
       castsMs.map((startMs) => ({
         startMs,
         endMs: startMs + castMs,
-        shotAtStartFirst: Boolean(ability.refillsMagazine),
+        refills: Boolean(ability.refillsMagazine),
       })),
     ),
   ]
     .filter((w) => w.endMs > w.startMs)
     .sort((a, b) => a.startMs - b.startMs);
   // Moves a shot behind every super window and cast that overlaps its charge.
-  const afterSuperWindows = (timeMs: number) => {
+  const afterSuperWindows = (timeMs: number, emptiesMagazine: boolean) => {
     let result = timeMs;
     for (const window of blockingWindows) {
-      const started = window.shotAtStartFirst ? result > window.startMs : result >= window.startMs;
+      const shotFirst = window.refills && emptiesMagazine;
+      const started = shotFirst ? result > window.startMs : result >= window.startMs;
       if (started && result - chargeTimeMs < window.endMs) {
         result = window.endMs + chargeTimeMs;
       }
@@ -299,7 +300,12 @@ export function simulate(
       }
       if (factor >= maxFactor) break;
     }
-    return best;
+    // Only whole shots fit into the rest of the phase: a hold that wins by rate can still lose, e.g.
+    // 5 held shots at ×2.875 against 15 without.
+    const remainingMs = damagePhaseMs - timeMs;
+    const shotsWithin = (holdMs: number) =>
+      remainingMs < holdMs ? 0 : Math.floor((remainingMs - holdMs) / (shotIntervalMs + holdMs)) + 1;
+    return shotsWithin(best.holdMs) * best.factor > shotsWithin(0) ? best : none;
   };
 
   // Casts that reload the weapon at once (U7), e.g. Marksman's Dodge: a cast during a reload ends
@@ -338,7 +344,7 @@ export function simulate(
     }
     leftInMagazine--;
     const hold = holdAt(shotMs);
-    shotMs = afterSuperWindows(shotMs + hold.holdMs);
+    shotMs = afterSuperWindows(shotMs + hold.holdMs, leftInMagazine === 0);
     if (!isInPhase(shotMs)) break;
     shots.push({ timeMs: shotMs });
     holdFactors.push(hold.factor);

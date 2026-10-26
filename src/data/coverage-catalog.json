@@ -1714,7 +1714,7 @@
         "group": "Energy",
         "inGame": "Grants 20 Reload Speed and 30 Stability.\nGrants the Unrelenting trait:\nStarts Health Regeneration and restores 65 HP upon reaching 100% Activation Progress with Weapon Kills within 5 seconds of each.\nActivation Progress by Enemy Rank:\n• Minor Combatants: 34%\n• Players: 67%\n• Elites, Minibosses, and Bosses: 100%",
         "iconHash": 466834938,
-        "inCalculator": "reload ms 600 → 525",
+        "inCalculator": "reload ms 0 → -75",
         "status": "full",
         "iconKey": "named:le-monarque-catalyst"
       },
@@ -2056,7 +2056,7 @@
         "group": "Power",
         "inGame": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774) without reducing damage.",
         "iconHash": 136852797,
-        "inCalculator": "ammo 14 → 16, rate of fire 37 → 44, reload ms 437 → 687",
+        "inCalculator": "ammo 14 → 16, rate of fire 39 → 46, reload ms 500 → 750",
         "status": "full",
         "iconKey": "named:sleeper-simulant-catalyst"
       },

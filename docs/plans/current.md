@@ -4,11 +4,11 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Block B: Coverage-Triage** (Opus plant): Jeden `missing`-Eintrag im Coverage-Katalog (rund 160, davon 95 Exotic Armor) einer Regel zuordnen: `leftOut` mit Grund (wirkt gegen einen Boss nicht), `derived` aus dem Text samt `known-inaccuracies.md` (unter 2 %), eigener Block (ab 2 %). Danach die Reihenfolge unten neu ordnen. Aufräum-Block nach drei weiteren Funktions-Blöcken.
+**Still Hunt** (Inhaber, 2026-10-26): Die Golden-Gun-Schüsse fehlen, ebenso die Synergie mit Celestial Nighthawk (ein einzelner Schuss mit hohem Schaden wie beim Marksman-Super). Danach Block B: **Coverage-Triage** (Opus plant): Jeden `missing`-Eintrag im Coverage-Katalog (rund 160, davon 95 Exotic Armor) einer Regel zuordnen: `leftOut` mit Grund, `derived` aus dem Text samt `known-inaccuracies.md` (unter 2 %), eigener Block (ab 2 %). Aufräum-Block nach drei weiteren Funktions-Blöcken.
 
-Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche (Cast-Fenster, Animationen, Keyword-Zähler und -Zeilen, Ladezeit aus Aegis); Q2 Supers; Q3a Stat-Kurven (RyTako); Q3b eingebaute Ladungen; Aufräum-Block (`units.ts`, `strict`, Regel-Logik in `scripts/lib/`, `App.tsx` in Komponenten). Die Energie-Mods (Momentum Transfer, Impact Induction, Bolstering Detonation, Focusing Strike, Bomber, Outreach, Distribution) hat der Inhaber nach einem Blick abgelehnt; per Revert entfernt, in der Historie als `19cddbb`. Nicht wieder aufnehmen ohne Rückfrage. Befunde:
+Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche (Cast-Fenster, Animationen, Keyword-Zähler und -Zeilen), Casts lückenlos, Ladezeit und Bogen-Takt (Manifest, Aegis); Q2 Supers; Q3 Energie; Aufräum-Block. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
-- `tests/mechanicsBaseline.test.ts` überschreitet im vollen `test:quiet` die 5 s (Last), allein läuft er in 2 s grün; Snapshot unverändert.
+- Offen: Leviathan's Breath (Quantum-Zeit bis leer 2,18 s pro Pfeil gegen RPM 1,58 s und Aegis 1,33 s) und Katalysator-Reload der Bögen (`known-inaccuracies.md`).
 - Zurückgestellt: **Hammer of Sol mit Sol Invictus.** Der Aegis-Import ordnet „Roaring Flames x3“ nicht `roaring-flames-3` zu; Aegis misst nur ×1,06, der Text +73 %. Weg: Regel „X xN“ → Effect `x-n` in Import und `tests/lib/probeAuto.ts`, Re-Import nach `nach-patch`. Alternative: Würfe aus dem Compendium-Drain (≈ ×2).
 - Banner of War: „40% Increased Bladefury Damage“ fehlt im Effect (Aegis ×1,04).
 
@@ -16,7 +16,7 @@ Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche (Cast-Fenster, 
 
 Details und Fundstellen: `docs/plans/sources-2026-10.md`.
 
-1. Block B: Coverage-Triage (siehe oben; Opus plant).
+1. Still Hunt, dann Block B: Coverage-Triage (siehe oben; Opus plant).
 2. Energie-Exotics (Crown of Tempests, Contraverse Hold u. a., `sources-2026-10.md` §2; Opus plant).
 3. Hammer of Sol mit Sol Invictus (siehe oben).
 4. Q4 Stasis/Strand (echte Debuffs am Ziel, Bedingung von Facet of Courage), Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses (Umfang mit dem Inhaber klären).

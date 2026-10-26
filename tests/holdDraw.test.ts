@@ -1,5 +1,6 @@
 // Held perfect draw (Oathkeeper): the engine picks, per shot, the hold that gives the most damage
-// per second; a hold that costs more time than it brings is not taken.
+// per second; a hold that costs more time than it brings, or that loses against whole shots in the
+// rest of the phase, is not taken.
 
 import { describe, expect, it } from "vitest";
 import type { Effect, SourcedNumber, Weapon } from "../src/data/schema";
@@ -54,6 +55,15 @@ describe("holdDraw", () => {
     const plain = run(bow(85), []);
     expect(withEffect.shots).toEqual(plain.shots);
     expect(withEffect.totalDamage).toBeCloseTo(plain.totalDamage, 6);
+  });
+
+  it("never loses against not holding when whole shots in the phase decide, although the rate is a little better", () => {
+    // 44 rpm: holding 5 steps gives ×2.875 per 3.86 s (0.744 per s) against 0.733 per s without, but
+    // a phase of 20 s holds only 5 shots (14.4 shots worth) against 15 shots without
+    const withEffect = run(bow(44), [holder]);
+    const plain = run(bow(44), []);
+    expect(withEffect.totalDamage).toBeGreaterThanOrEqual(plain.totalDamage - 1e-6);
+    expect(withEffect.shots.length).toBeGreaterThan(5);
   });
 
   it("only applies to its weapon type", () => {
