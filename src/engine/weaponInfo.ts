@@ -50,8 +50,6 @@ export function effectRelevantTo(
     (effect.grantsStatus ?? []).some((s) => needed.has(s)) ||
     // changes an ability, e.g. Knock 'Em Down for Blade Barrage (U6-2 rule G)
     effect.changesAbilityIds !== undefined ||
-    // changes ability energy, e.g. Momentum Transfer
-    effect.changesEnergy !== undefined ||
     // damage of its own, e.g. Storm's Keep
     effect.parts.some((part) => part.type === "periodicDamage") ||
     effect.parts.some(

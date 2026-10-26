@@ -103,58 +103,6 @@ describe("energyCasts", () => {
     expect(prismatic / strand).toBeCloseTo(1 / penalty.value!, 1);
   });
 
-  // Armor mods (Q3 part 4): energy per trigger × chunk scalar of the target × its stat gain factor.
-  const meleeGain = (id: string) =>
-    data.abilities.find((a) => a.abilityId === id)!.chunkScalar!.value! *
-    curveAt(data.stats.find((s) => s.kind === "melee")!.gainScaler.points, 100);
-  const grenadeGain = (id: string) =>
-    data.abilities.find((a) => a.abilityId === id)!.chunkScalar!.value! *
-    curveAt(data.stats.find((s) => s.kind === "grenade")!.gainScaler.points, 100);
-  const modValue = (effectId: string) =>
-    data.modifiers.find((m) => "effectId" in m.from && m.from.effectId === effectId)!.value.value!;
-
-  it("Momentum Transfer: a grenade cast gives the melee a chunk, also when both are cast at once", () => {
-    const thunderclap = ability("thunderclap");
-    // the grenade comes first in the list: its gain still lands after the melee cast of the same step
-    const requests = [
-      { ability: ability("pulse-grenade"), castsMs: [0] },
-      { ability: thunderclap, castsMs: [0, 0] },
-    ];
-    const ctx = context({ effectIds: new Set(["momentum-transfer-3x"]) });
-    const rate = regenAt100("melee") / cooldownMs("thunderclap");
-    const expected = (1 - modValue("momentum-transfer-3x") * meleeGain("thunderclap")) / rate;
-    const [, [, second]] = casts(requests, ctx);
-    expect(second).toBeCloseTo(expected, -2);
-    expect(second).toBeLessThan(casts(requests)[1][1]);
-  });
-
-  it("Impact Induction triggers at most once per 7 s (cooldown after activation)", () => {
-    const requests = [
-      { ability: fusion, castsMs: [0, 0] },
-      { ability: ability("arcane-needle"), castsMs: [0, 1_000, 8_000] },
-    ];
-    const ctx = context({ effectIds: new Set(["impact-induction-3x"]) });
-    const gain = modValue("impact-induction-3x") * grenadeGain("fusion-grenade");
-    const rate = regenAt100("grenade") / cooldownMs("fusion-grenade");
-    // two triggers (0 s and 8 s), the one at 1 s is inside the cooldown
-    const [[, second]] = casts(requests, ctx);
-    expect(second).toBeCloseTo((1 - 2 * gain) / rate, -2);
-  });
-
-  it("Outreach: a class ability cast gives melee energy, times the class mod scaler of the class ability", () => {
-    const barricade = data.abilities.find((a) => a.abilityId === "rally-barricade")!;
-    expect(barricade.classModScalar!.value).toBeLessThan(1);
-    const requests = [
-      { ability: ability("thunderclap"), castsMs: [0, 0] },
-      { ability: ability("rally-barricade"), castsMs: [0] },
-    ];
-    const ctx = context({ effectIds: new Set(["outreach-3x"]) });
-    const rate = regenAt100("melee") / cooldownMs("thunderclap");
-    const gain = modValue("outreach-3x") * barricade.classModScalar!.value! * meleeGain("thunderclap");
-    const [[, second]] = casts(requests, ctx);
-    expect(second).toBeCloseTo((1 - gain) / rate, -2);
-  });
-
   it("refunds super energy only with a matching ability (Ballistic Slam)", () => {
     const requests = [
       { ability: ability("thundercrash"), castsMs: [0] },

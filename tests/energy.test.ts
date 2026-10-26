@@ -41,17 +41,6 @@ describe("cooldowns from the Compendium", () => {
     expect(blade.cooldownSeconds.value! / blade.regenByCharges![0].value! / 143).toBeCloseTo(1, 1);
   });
 
-  it("gives class abilities the class mod scaler of their chunk scalar (RyTako: 1x → 0.4, 0.8x → 0.6, 0.5x → 1)", () => {
-    const expected: Record<number, number> = { 1: 0.4, 0.8: 0.6, 0.5: 1 };
-    const classAbilities = result.data.abilities.filter((a) =>
-      ["marksmans-dodge", "gamblers-dodge", "rally-barricade", "towering-barricade"].includes(a.abilityId),
-    );
-    expect(classAbilities).toHaveLength(4);
-    for (const a of classAbilities)
-      expect(a.classModScalar?.value).toBe(expected[a.chunkScalar!.value!]);
-    expect(cooldown("fusion-grenade").classModScalar).toBeUndefined();
-  });
-
   it("has a cooldown for every ability", () => {
     expect(result.data.abilities.filter((a) => a.cooldownSeconds.value === null)).toEqual([]);
   });
@@ -78,22 +67,6 @@ describe("energy modifiers from the Compendium lines", () => {
       if ("effectId" in m.from) expect(effectIds).toContain(m.from.effectId);
       for (const id of m.requiresAnyEffectIds ?? []) expect(effectIds).toContain(id);
     }
-  });
-
-  it("every effect that changes only energy has a modifier (armor mods, Q3 part 4)", () => {
-    const from = new Set(
-      result.data.modifiers.flatMap((m) => ("effectId" in m.from ? [m.from.effectId] : [])),
-    );
-    const without = effects.filter((e) => e.changesEnergy && !from.has(e.id)).map((e) => e.id);
-    expect(without).toEqual([]);
-  });
-
-  it("class mods: 12/17/20 % with 1/2/3 mods, at most once per 7 s for the damage mods", () => {
-    expect([1, 2, 3].map((n) => modifier(`bomber-${n}x`).value.value)).toEqual([0.12, 0.17, 0.2]);
-    expect(modifier("outreach-3x").scaledByClassMod).toBe(true);
-    expect(modifier("distribution-3x").target.kinds).toEqual(["grenade", "melee", "classAbility"]);
-    expect(modifier("momentum-transfer-3x").trigger).toMatchObject({ on: "cast", cooldownSeconds: 7 });
-    expect(modifier("momentum-transfer-3x").scaledByClassMod).toBeUndefined();
   });
 
   it("gives every Compendium line about energy a verdict", () => {

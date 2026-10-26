@@ -4,11 +4,9 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Energie-Exotics** (Opus plant; Reihenfolge Punkt 1). Der Aufräum-Block ist erledigt; ein nächster wird nach drei weiteren Funktions-Blöcken fällig.
+**Energie-Exotics** (Opus plant; Reihenfolge Punkt 1): Crown of Tempests, Contraverse Hold u. a., Liste und Quellen in `docs/plans/sources-2026-10.md` §2. Erst ab 2 % Wirkung. Der Aufräum-Block ist erledigt; ein nächster wird nach drei weiteren Funktions-Blöcken fällig.
 
-Erledigt (2026-10-26, Details im Changelog): Q2 Supers; Q3a Stat-Kurven (RyTako); Q3b eingebaute Ladungen; Q3 Teil 4 Energie-Mods (7 Mods × 1–3 Kopien; Kickstarts, Fonts, Armor Charges weggelassen); Aufräum-Block (`units.ts`, `strict`, Regel-Logik in `scripts/lib/`, `App.tsx` in Komponenten). Befunde:
-- Energie-Effects (`changesEnergy`) überspringt der Optimizer (ohne Rotation wirkungslos, sonst Speicherüberlauf). `tests/optimizer.test.ts` braucht schon vorher etwa 50 s.
-- Die Mods ändern den Total Damage in den Gate-Szenarien nicht (×1,000), weil die Melee nur früher kommt. Erst mit einem Optimizer für Rotationen (2.0) zählt das.
+Erledigt (2026-10-26, Details im Changelog): Q2 Supers; Q3a Stat-Kurven (RyTako); Q3b eingebaute Ladungen; Aufräum-Block (`units.ts`, `strict`, Regel-Logik in `scripts/lib/`, `App.tsx` in Komponenten). Die Energie-Mods (Momentum Transfer, Impact Induction, Bolstering Detonation, Focusing Strike, Bomber, Outreach, Distribution) hat der Inhaber nach einem Blick abgelehnt; per Revert entfernt, in der Historie als `19cddbb`. Nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
 - `tests/mechanicsBaseline.test.ts` überschreitet im vollen `test:quiet` die 5 s (Last), allein läuft er in 2 s grün; Snapshot unverändert.
 - Zurückgestellt: **Hammer of Sol mit Sol Invictus.** Der Aegis-Import ordnet „Roaring Flames x3“ nicht `roaring-flames-3` zu; Aegis misst nur ×1,06, der Text +73 %. Weg: Regel „X xN“ → Effect `x-n` in Import und `tests/lib/probeAuto.ts`, Re-Import nach `nach-patch`. Alternative: Würfe aus dem Compendium-Drain (≈ ×2).

@@ -64,12 +64,11 @@ Status: 2026-10-25
 - ✅ New Supers: Song of Flame, Glacial Quake, Bladefury
 - ✅ Stormdancer's Brace, Mataiodoxía and Young Ahamkara's Spine as measured by Aegis
 - ✅ Ability energy: stat curves instead of a straight line (grenades regenerate 3.1× at stat 100, chunk gains 1.15× instead of 3.1×), regeneration effects grow with the stat, innate charges (Frenzied Blade, Arcane Needle, Lightweight Knife)
-- ✅ Energy armor mods: Momentum Transfer, Impact Induction, Bolstering Detonation, Focusing Strike, Bomber, Outreach, Distribution (1 to 3 copies)
 
 ## Next
 
 - Hammer of Sol with Sol Invictus
-- Energy exotics (e.g. Crown of Tempests, Contraverse Hold); Kickstarts, Fonts and Armor Charges left out for now
+- Energy exotics (e.g. Crown of Tempests, Contraverse Hold)
 - Stasis and Strand on the boss: Freeze, Shatter, Threadlings, Unravel, Sever and Suspend with measured damage
 - More aspects (Tempest Strike, Consecration, Crackshot, Shieldburst), artifact perks (Flashover, Heavy Ordnance Regeneration, Hail The Storm, Solar Fulmination) and catalysts (Tessellation, Divinity, Quicksilver Storm)
 - Worldline Zero, Wolfsbane, Praxic Blade and Barrow-Dyad
