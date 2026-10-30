@@ -1189,8 +1189,13 @@
   },
   {
     "weapon": "Truth",
-    "reason": "Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation.",
+    "reason": "Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %).",
     "quotes": [
+      {
+        "source": "aegis",
+        "entry": "rocket-launcher-truth-average-prototype-truthseeker",
+        "text": "490/36 cluster"
+      },
       {
         "source": "aegis",
         "entry": "truth-prototype-truthseeker-argent-ordnance",
@@ -1208,6 +1213,11 @@
       }
     ],
     "catalystWindowSeconds": 15,
+    "nthShotPart": {
+      "name": "Trueseeker cluster",
+      "every": 3,
+      "hits": 8
+    },
     "timing": {
       "from": "Aegis",
       "row": "truth-prototype-truthseeker-argent-ordnance"

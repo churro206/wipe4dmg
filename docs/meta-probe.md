@@ -7,7 +7,7 @@ Median: 1.000
 | Aegis-Zeile | Aegis | Modell | Quotient | relativ | herausgerechnet |
 | --- | ---: | ---: | ---: | ---: | --- |
 | Leviathan's Breath, Archer's Tempo | 71,555 | 71,555 | 1.000 | 1.000 |  |
-| Truth, Prototype Truthseeker, Argent Ordnance | 85,454 | 82,636 | 0.967 | 0.967 |  |
+| Truth, Prototype Truthseeker, Argent Ordnance | 85,454 | 81,622 | 0.955 | 0.955 |  |
 | Gjallarhorn, Argent Ordnance | 56,374 | 56,374 | 1.000 | 1.000 |  |
 | Sleeper Simulant | 87,747 | 87,747 | 1.000 | 1.000 |  |
 | Thunderlord, assumes only one reload post-nerf | 101,659 | 101,659 | 1.000 | 1.000 |  |

@@ -1074,7 +1074,7 @@
         "name": "Truth",
         "group": "Power",
         "inGame": "Prototype Trueseeker: This rocket's tracking capabilities are stronger than other traditional tracking rocket launchers, and have a blast radius of 11 meters.\nDealing damage with 3 rockets without reloading generates 1 Ammo. Finishing a reload after having dealt damage with all three rockets grants 'Prototype Trueseeker'.\nPrototype Trueseeker grants the following benefits:\n• 80% Faster Rate of Fire\n• ? Stability\n• Significantly improved tracking capabilities\n• Rockets now explode into 8 cluster munitions upon detonation, each cluster having a blast radius of 3 meters.\nGrenades and Horseshoes: Rockets gain proximity detonation, automatically exploding within a 2 meter radius of targets.\nThese rockets deal increased detonation damage to account for the inability to deal impact damage.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:truth",
         "status": "full"
       },

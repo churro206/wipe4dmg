@@ -408,6 +408,9 @@ export function simulate(
       ticks: requireValue(instance.ticks, "ticks"),
       tickIntervalMs: requireValue(instance.tickIntervalMs, "tickIntervalMs"),
       requiresSetup: instance.requiresSetup ?? false,
+      everyNthShot: instance.everyNthShot
+        ? requireValue(instance.everyNthShot, "everyNthShot")
+        : 1,
     }));
 
   const damageSource: DamageSource = "weapon";
@@ -517,6 +520,7 @@ export function simulate(
   for (const [shotIndex, shot] of shots.entries()) {
     for (const instance of instances) {
       if (instance.requiresSetup && !withSetup[shotIndex]) continue;
+      if ((shotIndex + 1) % instance.everyNthShot !== 0) continue;
       for (let tick = 0; tick < instance.ticks; tick++) {
         const timeMs =
           shot.timeMs + instance.delayMs + tick * instance.tickIntervalMs;

@@ -76,6 +76,9 @@ export function simulateCore(
       ticks: requireValue(instance.ticks, "ticks"),
       tickIntervalMs: requireValue(instance.tickIntervalMs, "tickIntervalMs"),
       requiresSetup: instance.requiresSetup ?? false,
+      everyNthShot: instance.everyNthShot
+        ? requireValue(instance.everyNthShot, "everyNthShot")
+        : 1,
     }));
   const thresholds = weapon.intrinsicParts.flatMap((part) =>
     part.type === "threshold"
@@ -166,6 +169,7 @@ export function simulateCore(
     const result: RunEvent[] = [];
     for (const instance of instances) {
       if (instance.requiresSetup && !shot.withSetup) continue;
+      if ((shot.index + 1) % instance.everyNthShot !== 0) continue;
       for (let tick = 0; tick < instance.ticks; tick++) {
         const timeMs =
           shot.timeMs + instance.delayMs + tick * instance.tickIntervalMs;

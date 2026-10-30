@@ -11,6 +11,7 @@ import { MS_PER_SECOND } from "../units";
 const MS_PER_MINUTE = 60_000;
 
 export type PlannedShot = {
+  index: number; // 0 for the first shot of the weapon
   timeMs: number;
   holdFactor: number;
   withSetup: boolean; // the shot works with a deployed setup (WeaponSetup)
@@ -237,7 +238,7 @@ export function createWeaponActor(input: ActorInput) {
     }
     return {
       reloadStartMs,
-      shot: { timeMs: shotMs, holdFactor: hold.factor, withSetup },
+      shot: { index: shotIndex, timeMs: shotMs, holdFactor: hold.factor, withSetup },
     };
   }
 

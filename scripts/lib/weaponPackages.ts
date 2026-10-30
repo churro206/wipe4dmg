@@ -297,6 +297,7 @@ const SCORCH_BONUS =
 // Quantum rows without ignitions, e.g. "Does not consider Scorch; without ignition".
 const WITHOUT_IGNITIONS = /without ignition|does not consider ignitions/i;
 const AEGIS_IGNITION_TICK = /\b(\d+) ignition\b/i;
+const AEGIS_CLUSTER_TICK = /\b(\d+)(?:\/\d+)? cluster\b/i; // "490/36 cluster": the boss takes the first
 
 type ScorchRule = {
   stacksPerShot: number;
@@ -1017,6 +1018,23 @@ export function buildWeaponImport(
       entry.perShot = shot.precisionDamage;
       entry.notes.push(
         `${setupRule.name}: Shot aus Quantum ${shot.id} (${shot.precisionDamage}), ${setupRule.hits} Treffer aus ${withSetup.id} (${withSetup.precisionDamage} − ${shot.precisionDamage}) (Override)`,
+      );
+    }
+
+    // The single hit of the row and the cluster of every Nth shot instead of the row's average
+    // (override), on the scale of Aegis "visual".
+    const nthRule = override?.nthShotPart;
+    const clusterTick = nthRule
+      ? Number(AEGIS_CLUSTER_TICK.exec(base.otherTicks)?.[1])
+      : undefined;
+    if (nthRule) {
+      if (base.critShot === null || !clusterTick)
+        throw new Error(
+          `${manifest.name}: nthShotPart needs a hit and a cluster tick in row ${base.id}`,
+        );
+      entry.perShot = base.critShot / base.fullModifiers / normaliseFactor;
+      entry.notes.push(
+        `${nthRule.name}: Treffer ${base.critShot} aus ${base.id}, alle ${nthRule.every} Schüsse ${nthRule.hits} × ${clusterTick} („${base.otherTicks}“) (Override)`,
       );
     }
 
@@ -1893,7 +1911,9 @@ export function buildWeaponImport(
             ? `Shot (${scorchShotFromAegis !== null ? "Aegis" : "Quantum"}, without ignitions)`
             : setupRule
               ? `Shot (Quantum, without ${setupRule.name})`
-              : "Shot (Aegis average)",
+              : nthRule
+                ? "Shot (Aegis single hit)"
+                : "Shot (Aegis average)",
           delayMs: {
             value: 0,
             source: shotSource("Package: one value per shot"),
@@ -1921,6 +1941,31 @@ export function buildWeaponImport(
           canPrecision: false,
           requiresCatalyst: false,
         },
+        ...(nthRule && clusterTick
+          ? [
+              {
+                id: "cluster",
+                name: nthRule.name,
+                delayMs: { value: 0, source: setupSource() },
+                damagePerTick: {
+                  value: Number(
+                    (clusterTick / base.fullModifiers / normaliseFactor).toFixed(
+                      3,
+                    ),
+                  ),
+                  source: aegisSource(
+                    base,
+                    `Tick "${base.otherTicks}" ÷ Full Modifiers`,
+                  ),
+                },
+                ticks: { value: nthRule.hits, source: setupSource() },
+                tickIntervalMs: { value: 0, source: setupSource() },
+                everyNthShot: { value: nthRule.every, source: setupSource() },
+                canPrecision: false,
+                requiresCatalyst: false,
+              },
+            ]
+          : []),
         ...(setupRule && setupRows?.shot && setupRows.withSetup
           ? [
               {

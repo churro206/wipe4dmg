@@ -5,14 +5,14 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 
 ## Key figures
 
-- Total: 16 of 30
+- Total: 18 of 30
 - Ratios between rows of one weapon: 5 of 14
-- base: 3 of 5
+- base: 4 of 5
 - factor: 2 of 9
 - parts: 2 of 3
 - scorch: 7 of 10
 - volatile: 1 of 1
-- hitShare: 1 of 2
+- hitShare: 2 of 2
 
 ## Scenarios
 
@@ -43,9 +43,9 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 | still-hunt | base | 658 | 658 | +0.1 % |  |  |
 | still-hunt-caydes-retribution | factor | 5811 | 658 | −88.7 % | −88.7 % |  |
 | still-hunt-celestial-nighthawk | factor | 8350 | 658 | −92.1 % | −30.4 % |  |
-| truth | base | 1798 | 2179 | +21.2 % |  |  |
-| truth-trueseeker | hitShare | 19629 | 19614 | −0.1 % |  |  |
-| truth-trueseeker-reapers-tithe | hitShare | 37891 | 36612 | −3.4 % | −3.3 % |  |
+| truth | base | 1798 | 1798 | −0.0 % |  |  |
+| truth-trueseeker | hitShare | 19629 | 19904 | +1.4 % |  |  |
+| truth-trueseeker-reapers-tithe | hitShare | 37891 | 37155 | −1.9 % | −3.3 % |  |
 | whirling-ovation-no-charge | base | 1016 | 6344 | +524.4 % |  |  |
 | whirling-ovation-1-3-charge | factor | 3118 | 6344 | +103.5 % | −67.4 % |  |
 | whirling-ovation-2-3-charge | factor | 4216 | 6344 | +50.5 % | −75.9 % |  |

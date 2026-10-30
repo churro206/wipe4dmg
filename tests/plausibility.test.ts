@@ -917,6 +917,20 @@ describe("exotic effects from the rotation", () => {
   });
 });
 
+describe("every Nth shot (2026-10-30, ADR 0017 S3)", () => {
+  it("Truth: every 3rd rocket adds its 8 cluster munitions", () => {
+    const result = run(
+      { guardianClass: "titan", subclass: "void", catalyst: false, damagePhaseSeconds: 30 },
+      weaponById("truth"),
+    );
+    const rockets = result.damageInstances.filter((d) => d.id === "shot").length;
+    const clusters = result.damageInstances.filter((d) => d.id === "cluster").length;
+    note("Truth: Raketen / Cluster-Bomblets", `${rockets} / ${clusters}`, "14 Raketen, alle 3 acht Bomblets: 4 × 8 = 32");
+    expect(rockets).toBe(14);
+    expect(clusters).toBe(32);
+  });
+});
+
 describe("bows (2026-10-26)", () => {
   const hierarchy = (fields: Partial<Build>) =>
     run({ guardianClass: "hunter", subclass: "solar", catalyst: true, ...fields }, weaponById("hierarchy-of-needs"));

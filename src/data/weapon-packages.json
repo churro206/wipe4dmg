@@ -17909,7 +17909,7 @@
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot (Aegis average)",
+        "name": "Shot (Aegis single hit)",
         "delayMs": {
           "value": 0,
           "source": {
@@ -17921,7 +17921,7 @@
           }
         },
         "damagePerTick": {
-          "value": 2179.289,
+          "value": 1798.101,
           "source": {
             "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
             "url": "https://destiny2.science/boss-damage",
@@ -17946,6 +17946,58 @@
             "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
             "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      },
+      {
+        "id": "cluster",
+        "name": "Trueseeker cluster",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+          }
+        },
+        "damagePerTick": {
+          "value": 155.063,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Tick \"490/36 cluster\" ÷ Full Modifiers"
+          }
+        },
+        "ticks": {
+          "value": 8,
+          "source": {
+            "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+          }
+        },
+        "everyNthShot": {
+          "value": 3,
+          "source": {
+            "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
           }
         },
         "canPrecision": false,
@@ -17979,7 +18031,7 @@
             "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation."
+            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
           }
         },
         "factor": {

@@ -52,12 +52,18 @@ describe("Truth (expected from the hand table of 2026-10-20)", () => {
     });
   });
 
-  it("uses the Aegis row with Prototype Trueseeker as the package per rocket", () => {
-    expect(truth.damageInstances).toHaveLength(1);
+  // S3 (ADR 0017): the hit of the Aegis row and the cluster of every third rocket (8 × 490) instead
+  // of the row's average 2179.289.
+  it("takes the single hit of the Aegis row per rocket and a cluster of every third", () => {
+    expect(truth.damageInstances).toHaveLength(2);
     expect(value(truth.damageInstances[0].damagePerTick)).toBeCloseTo(
-      2179.289,
+      5682 / 3.16,
       3,
     );
+    const cluster = truth.damageInstances[1];
+    expect(value(cluster.damagePerTick)).toBeCloseTo(490 / 3.16, 3);
+    expect(value(cluster.ticks)).toBe(8);
+    expect(value(cluster.everyNthShot!)).toBe(3);
   });
 
   // Override (meta probe 2026-10-23): Aegis before Quantum, 14 instead of 20 rockets.

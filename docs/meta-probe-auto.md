@@ -81,8 +81,8 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Song of Flame | 77,545 | 52,730 | 0.680 | snap spam |
 | Edge of Concurrence | 50,199 | 34,161 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
 | Bladefury | 39,040 | 26,619 | 0.682 | HLLLHLLLLHLLLH; Thread of Continuity |
+| Truth | 119,636 | 81,622 | 0.682 | Prototype Truthseeker |
 | Bastion | 119,327 | 82,294 | 0.690 | Saint's Fury; includes melee time |
-| Truth | 119,636 | 82,636 | 0.691 | Prototype Truthseeker |
 | Song of Flame | 47,106 | 32,555 | 0.691 | snap spam |
 | Burning Maul | 76,665 | 55,015 | 0.718 | heavy attacks; Roaring Flames x3 |
 | Dragon's Breath | 153,290 | 110,995 | 0.724 | auto-loaded; Composite Propellant x5 |

@@ -63,6 +63,9 @@ export const DamageInstance = z.object({
   requiresCatalyst: z.boolean(),
   // Only shots fired while the weapon's setup stands deal it, e.g. the seekers of a Guidance Ring
   requiresSetup: z.boolean().optional(),
+  // Only every Nth shot of the weapon sets it off (the Nth, 2Nth, ...), e.g. the cluster of every
+  // third rocket with Prototype Trueseeker
+  everyNthShot: SourcedNumber.optional(),
   delivery: Delivery.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
@@ -1676,6 +1679,15 @@ export const WeaponOverride = z.object({
   catalystWindowSeconds: z.number().positive().optional(),
   // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
   scorchStacksPerShot: z.number().int().positive().optional(),
+  // The shot is the single hit of the base row (not its average); every Nth shot adds `hits` of the
+  // cluster that the row's other ticks name ("490/36 cluster"), e.g. Truth with Prototype Trueseeker.
+  nthShotPart: z
+    .object({
+      name: z.string(),
+      every: z.number().int().min(2),
+      hits: z.number().int().positive(),
+    })
+    .optional(),
   // A setup the shots build and deploy (WeaponSetup): the shot from a Quantum row without it, the
   // extra hits from the row with it; the reason derives the numbers from the quotes.
   setup: z
