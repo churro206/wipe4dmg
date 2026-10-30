@@ -1156,7 +1156,7 @@
         "group": "Kinetic",
         "inGame": "While at full Super Energy, Hold [Reload] to activate Will Given Form.\nWill Given Form immediately takes away 20% Super Energy, then drains at a rate of 4% Super Energy per second to grant the following benefits:\n• Overfills the magazine from reserves to 192\n• 80% increased damage\n• 20 [0] slow stacks per hit\nEffect lasts until deactivated by holding [Reload] again, or until the magazine is emptied, super energy is drained, or the weapon is stowed.\nDoes not count as a super for related effects or buffs.",
         "iconHash": 970163821,
-        "inCalculator": "+76% weapon damage\nMagazine 97 → 194, rate of fire 906 → 2,898",
+        "inCalculator": "+80% weapon damage\nMagazine 97 → 194, rate of fire 906 → 2,898",
         "status": "full",
         "iconKey": "named:agers-scepter-catalyst"
       },

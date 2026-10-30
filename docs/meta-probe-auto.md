@@ -15,6 +15,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | The Colony | 49,096 | 47,133 | 0.960 |  |
 | Gathering Storm, Feast of Light x6, Limit Break | 21,772 | 21,331 | 0.980 |  |
 | Stormtrance, Ascending Amplitude, Facet of Courage, Thunderous Retort | 71,745 | 70,462 | 0.982 |  |
+| One Thousand Voices, Particle Reconstruction | 63,705 | 62,684 | 0.984 |  |
 | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | 41,594 | 41,001 | 0.986 |  |
 | Needlestorm, Feast of Light x6, Limit Break | 25,251 | 25,243 | 1.000 |  |
 | Merciless | 54,552 | 54,549 | 1.000 |  |
@@ -30,13 +31,12 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Nova Bomb - Cataclysm, Feast of Light x6, Facet of Courage, Limit Break | 28,890 | 28,892 | 1.000 |  |
 | Twilight Arsenal, Facet of Courage, Limit Break | 20,190 | 20,193 | 1.000 |  |
 | Twilight Arsenal, Feast of Light x6, Facet of Courage, Limit Break | 30,285 | 30,289 | 1.000 |  |
+| One Thousand Voices, Ember of Ashes, Particle Reconstruction | 74,750 | 75,241 | 1.007 |  |
 | Stormtrance, Feast of Light x6, Facet of Courage, Thunderous Retort | 54,444 | 54,914 | 1.009 |  |
+| One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | 120,613 | 121,944 | 1.011 |  |
+| One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | 97,543 | 98,923 | 1.014 |  |
 | Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | 32,463 | 32,941 | 1.015 |  |
 | Deterministic Chaos, Target Lock | 137,936 | 140,043 | 1.015 |  |
-| One Thousand Voices, Particle Reconstruction | 63,705 | 66,942 | 1.051 |  |
-| One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | 120,613 | 128,132 | 1.062 |  |
-| One Thousand Voices, Ember of Ashes, Particle Reconstruction | 74,750 | 79,499 | 1.064 |  |
-| One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | 97,543 | 105,112 | 1.078 |  |
 
 ## Annahme ohne Schalter
 
@@ -72,8 +72,8 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Hammer of Sol | 51,242 | 32,583 | 0.636 | max distance |
 | Nova Bomb - Cataclysm | 30,171 | 19,261 | 0.638 | Skull of Dire Ahamkara (ownDamage) |
 | Heirloom | 88,751 | 56,885 | 0.641 | 1 charge |
-| Ager's Scepter | 120,982 | 78,297 | 0.647 | Facet of Command; Harsh Refraction |
 | Hammer of Sol | 67,298 | 43,560 | 0.647 | Roaring Flames x3; max distance |
+| Ager's Scepter | 120,982 | 79,931 | 0.661 | Facet of Command; Harsh Refraction |
 | Fists of Havoc | 54,355 | 36,248 | 0.667 | heavy attacks |
 | Silkstrike | 59,072 | 39,394 | 0.667 | light attack spam |
 | Spectral Blades | 57,656 | 38,465 | 0.667 | light attack spam |
@@ -148,8 +148,8 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Bladefury | 38,315 | 45,252 | 1.181 | HLLLHLLLLHLLLLH |
 | The Fourth Horseman | 47,544 | 59,430 | 1.250 | body |
 | The Queenbreaker | 74,475 | 97,261 | 1.306 | Marksman Sights |
+| One Thousand Voices | 74,472 | 98,923 | 1.328 | no ignitions |
 | Winter's Wrath | 38,618 | 51,445 | 1.332 | light-heavy cycle; Facet of Ruin |
-| One Thousand Voices | 74,472 | 105,112 | 1.411 | no ignitions |
 | Twilight Arsenal | 8,337 | 18,357 | 2.202 | axe light attack spam |
 | Storm's Edge | 14,382 | 43,139 | 2.999 | body; per cast |
 | Twilight Arsenal | 2,705 | 18,357 | 6.786 | axe heavy attack |

@@ -2,7 +2,7 @@
 
 Generiert mit `npm run check:text` (Regel in `scripts/lib/textCheck.ts`). Jeder Multiplier-Part, Catalyst und Grant neben den Texten seines Items (Clarity, Compendium, Court, Zitat der Quelle). Wert: (m − 1) × 100 steht im Text; Aegis- und Quantum-Messungen zählen als gemessen, eine Prozentzahl im Text trotzdem auf ±25 %. Dauer: eine Dauer aus dem Text. Ziel: Quellen, Elemente und Waffentypen gegen die Wörter im Text. „Ungenutzt“: Prozentzahlen im Text, die kein Part des Items nutzt (nur zur Info). Gründe für Abweichungen: `tests/fixtures/text-check.json`.
 
-Zeilen 312: ok 285, über Effect 5, gemessen 7, kein Text 3, Abweichung 12 (davon ohne Grund 0).
+Zeilen 312: ok 286, über Effect 5, gemessen 6, kein Text 3, Abweichung 12 (davon ohne Grund 0).
 
 ## Abweichungen
 
@@ -310,7 +310,7 @@ Zeilen 312: ok 285, über Effect 5, gemessen 7, kein Text 3, Abweichung 12 (davo
 | Wormhusk Crown | duration | 10 s | ok | Compendium Exotic Armors: Grants a stack of Burning Souls for 10 seconds, up to a maximum of 3 stacks. |  |
 | Dawn Chorus | value | +100 % exoticIntrinsic, keyword | ok | Compendium Exotic Armors: Ignitions deal 100% increased damage. | 40 %, 5 % |
 | Dawn Chorus | target | +100 % exoticIntrinsic, keyword | ok |  |  |
-| Ager's Scepter: Catalyst | value | +76.32 % weaponPerk | gemessen | 80 % im Text |  |
+| Ager's Scepter: Catalyst | value | +80 % weaponPerk | ok | Catalyst Will Given Form, Ager's Scepter Catalyst: • 80% increased damage |  |
 | Anarchy: Catalyst | value | +15.7 % weaponPerk | gemessen | Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback |  |
 | D.A.R.C.I.: Networked Targeting x5 | value | +6.03 % weaponPerk | ok | Catalyst Networked Targeting, D.A.R.C.I. Catalyst: • 2.8%\|6.1%\|9.1%\|12.5%\|15.9% increased damage |  |
 | Dead Man's Tale: Catalyst | value | +27 % weaponPerk | ok | Catalyst Dark-Forged Trigger, Dead Man's Tale Catalyst: • 27% [15%] increased damage at x5 Cranial Spike |  |

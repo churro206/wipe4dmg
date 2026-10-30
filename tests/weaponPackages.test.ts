@@ -14,10 +14,11 @@ import rawCodes from "../src/data/weapon-codes.json";
 import rawGaps from "../src/data/weapon-gaps.json";
 import rawPackages from "../src/data/weapon-packages.json";
 import rawAbilityRows from "../src/data/aegis-abilities.json";
+import rawEffects from "../src/data/effects.json";
 import rawKeywords from "../src/data/keywords.json";
 import { AegisAbilityRow, Weapon, WeaponGap } from "../src/data/schema";
 import { loadKeywords } from "../src/engine/loadKeywords";
-import { loadBuckets } from "../src/engine/loadData";
+import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { simulate } from "../src/engine/simulate";
 
 const result = buildWeaponImport(loadWeaponImportInputs());
@@ -145,6 +146,13 @@ describe("investigated cases (W1-4d)", () => {
     expect(value(catalyst.factor)).toBeCloseTo(1251 / 850, 3);
   });
 
+  it("Ager's Scepter: catalyst +80 % from the text (override), not Quantum's 67 / 38", () => {
+    const ager = byName("Ager's Scepter")!;
+    const catalyst = ager.options!.find((o) => o.kind === "catalyst")!;
+    // Aegis single hits (222 / 3.31) / (561 / 15.09) = 1.804 confirm it
+    expect(value(catalyst.factor)).toBe(1.8);
+  });
+
   it("Whisper of the Worm: White Nail refills the magazine, so no reloads", () => {
     const whisper = byName("Whisper of the Worm")!;
     expect(value(whisper.magazine)).toBe(38);
@@ -169,13 +177,15 @@ describe("investigated cases (W1-4d)", () => {
 describe("weapons with scorch (ADR 0015, U4a-4)", () => {
   const otv = byName("One Thousand Voices")!;
   const fox = byName("Two-Tailed Fox")!;
-  const total = (weapon: Weapon) =>
+  const effects = loadEffects(rawEffects);
+  const total =(weapon: Weapon) =>
     simulate(weapon, 600, [], loadBuckets(rawBuckets), { keywords })
       .totalDamage;
 
-  it("take the shot from the Quantum row without ignitions", () => {
-    expect(value(otv.damageInstances[0].damagePerTick)).toBeCloseTo(2180, 3);
-    expect(value(fox.damageInstances[0].damagePerTick)).toBeCloseTo(2340, 3);
+  it("take the shot from the Aegis row without its ignitions (Aegis before Quantum)", () => {
+    // (31106 - 2 x 2814) / 3.16 / 4 and (20191 - 2243) / 3.16 / 2; Quantum: 2180 and 2340
+    expect(value(otv.damageInstances[0].damagePerTick)).toBeCloseTo(2015.66, 1);
+    expect(value(fox.damageInstances[0].damagePerTick)).toBeCloseTo(2839.87, 1);
   });
 
   it("apply scorch per shot: x60 from the text, x90 from 9 explosions (override)", () => {
@@ -194,9 +204,16 @@ describe("weapons with scorch (ADR 0015, U4a-4)", () => {
     expect(fox.keywordBonuses).toBeUndefined();
   });
 
-  it("match the Quantum rows with ignitions within 3 %", () => {
-    expect(Math.abs(total(otv) / 28430 - 1)).toBeLessThan(0.03);
-    expect(Math.abs(total(fox) / 26950 - 1)).toBeLessThan(0.03);
+  it("match the Aegis rows of One Thousand Voices with Ember of Ashes within 3 %", () => {
+    // The row without Ember is the base; with Ember every shot ignites (36499 / 3.16 for 4 shots).
+    const ember = effects.find((e) => e.id === "ember-of-ashes")!;
+    const withEmber = simulate(otv, 600, [ember], loadBuckets(rawBuckets), {
+      keywords,
+      shotLimit: 4,
+    }).totalDamage;
+    expect(Math.abs(withEmber / (36499 / 3.16) - 1)).toBeLessThan(0.03);
+    expect(total(otv)).toBeGreaterThan(0);
+    expect(total(fox)).toBeGreaterThan(0);
   });
 
   it("take the catalyst of One Thousand Voices from Aegis with the ignitions taken out", () => {

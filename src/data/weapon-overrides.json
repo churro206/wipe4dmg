@@ -1212,5 +1212,22 @@
       "from": "Aegis",
       "row": "truth-prototype-truthseeker-argent-ordnance"
     }
+  },
+  {
+    "weapon": "Ager's Scepter",
+    "reason": "Catalyst Will Given Form: +80 % (Clarity). Aegis' Einzeltreffer bestätigen das: 222 ÷ 3,31 gegen 561 ÷ 15,09 = ×1,804. Quantums 67 ÷ 38 = ×1,763 rundet auf ganze Zahlen. Die Aegis-Zeilen mit Catalyst bleiben ungenutzt, weil der Catalyst das Timing ändert.",
+    "quotes": [
+      {
+        "source": "clarity",
+        "entry": "Ager's Scepter Catalyst",
+        "text": "80% increased damage"
+      },
+      {
+        "source": "aegis",
+        "entry": "trace-rifle-ager-s-scepter-average-will-given-form",
+        "text": "\"critShot\":222"
+      }
+    ],
+    "catalystFactor": 1.8
   }
 ]

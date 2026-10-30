@@ -5,12 +5,12 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 
 ## Key figures
 
-- Total: 12 of 30
+- Total: 16 of 30
 - Ratios between rows of one weapon: 5 of 14
 - base: 3 of 5
 - factor: 2 of 9
-- parts: 1 of 3
-- scorch: 4 of 10
+- parts: 2 of 3
+- scorch: 7 of 10
 - volatile: 1 of 1
 - hitShare: 1 of 2
 
@@ -19,8 +19,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 | Scenario | System | Source | Model | Deviation | Ratio | Note |
 | --- | --- | --- | --- | --- | --- | --- |
 | ager-s-scepter | base | 37 | 37 | +0.0 % |  |  |
-| ager-s-scepter-will-given-form | factor | 15516 | 12720 | −18.0 % |  |  |
-| ager-s-scepter-harsh-refraction | factor | 19631 | 12720 | −35.2 % | −21.0 % |  |
+| ager-s-scepter-will-given-form | factor | 15516 | 12985 | −16.3 % |  |  |
+| ager-s-scepter-harsh-refraction | factor | 19631 | 12985 | −33.9 % | −21.0 % |  |
 | barrow-dyad | parts | 4155 | — | — |  | weapon not in the core |
 | barrow-dyad-peacekeepers | factor | 5483 | — | — | — | weapon not in the core |
 | deterministic-chaos | volatile | 6074 | 6073 | −0.0 % |  |  |
@@ -31,10 +31,10 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 | hierarchy-of-needs-one-ring | scorch | 5495 | 4218 | −23.2 % |  |  |
 | lord-of-wolves | scorch | 22355 | 22327 | −0.1 % |  |  |
 | lord-of-wolves-ember | scorch | 17249 | 16745 | −2.9 % | −2.8 % |  |
-| one-thousand-voices | scorch | 9844 | 10497 | +6.6 % |  |  |
-| one-thousand-voices-ember | scorch | 11550 | 12274 | +6.3 % | −0.3 % |  |
-| one-thousand-voices-catalyst | parts | 27000 | 28903 | +7.1 % | +0.4 % |  |
-| one-thousand-voices-ember-catalyst | scorch | 30144 | 32458 | +7.7 % | +0.6 % |  |
+| one-thousand-voices | scorch | 9844 | 9840 | −0.0 % |  |  |
+| one-thousand-voices-ember | scorch | 11550 | 11617 | +0.6 % | +0.6 % |  |
+| one-thousand-voices-catalyst | parts | 27000 | 26992 | −0.0 % | +0.0 % |  |
+| one-thousand-voices-ember-catalyst | scorch | 30144 | 30547 | +1.3 % | +1.4 % |  |
 | polaris-lance | scorch | 2543 | 2546 | +0.1 % |  |  |
 | polaris-lance-ember | scorch | 1906 | 1697 | −11.0 % | −11.1 % |  |
 | salvation-s-grip | base | 796 | 795 | −0.1 % |  |  |

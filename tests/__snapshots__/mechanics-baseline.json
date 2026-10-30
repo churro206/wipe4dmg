@@ -13,12 +13,12 @@
     "ager-s-scepter": {
       "30s plain": 14427.78,
       "30s buffed": 24290.61,
-      "30s plain catalyst": 31798.83,
-      "30s buffed catalyst": 53536.51,
+      "30s plain catalyst": 32462.51,
+      "30s buffed catalyst": 54653.87,
       "600s plain": 18034.72,
       "600s buffed": 30363.26,
-      "600s plain catalyst": 31798.83,
-      "600s buffed catalyst": 53536.51
+      "600s plain catalyst": 32462.51,
+      "600s buffed catalyst": 54653.87
     },
     "alethonym": {
       "30s plain": 12219.65,
@@ -719,14 +719,14 @@
       "600s buffed catalyst": 553513.89
     },
     "one-thousand-voices": {
-      "30s plain": 28422.93,
-      "30s buffed": 47852.84,
-      "30s plain catalyst": 39297.86,
-      "30s buffed catalyst": 66161.87,
-      "600s plain": 28422.93,
-      "600s buffed": 47852.84,
-      "600s plain catalyst": 39297.86,
-      "600s buffed catalyst": 66161.87
+      "30s plain": 26615.24,
+      "30s buffed": 44809.42,
+      "30s plain catalyst": 36670.39,
+      "30s buffed catalyst": 61738.26,
+      "600s plain": 26615.24,
+      "600s buffed": 44809.42,
+      "600s plain catalyst": 36670.39,
+      "600s buffed catalyst": 61738.26
     },
     "osteo-striga": {
       "30s plain": 13439.46,
@@ -1209,10 +1209,10 @@
       "600s buffed catalyst": 232357.18
     },
     "two-tailed-fox": {
-      "30s plain": 26776.09,
-      "30s buffed": 45080.22,
-      "600s plain": 26776.09,
-      "600s buffed": 45080.22
+      "30s plain": 31774.82,
+      "30s buffed": 53496.08,
+      "600s plain": 31774.82,
+      "600s buffed": 53496.08
     },
     "verglas-curve": {
       "30s plain": 5426.1,

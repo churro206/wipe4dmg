@@ -38,7 +38,7 @@ Fünf Schichten, jede rein und für sich testbar, darüber eine deterministische
 - Erste Szenarien: die Zeilen der 13 Waffen aus der Papierprobe.
 - Kennzahl des **heutigen** Kerns als Basis festhalten. Laufzeit Optimizer: 153 ms (`tests/optimizer.test.ts`), Obergrenze für den neuen Kern 306 ms.
 - Gate: Prüfstand läuft in der CI, Basis eingefroren.
-- **Erledigt (2026-10-30):** 32 Szenarien, 30 gezählt (Salvation's Grip: Streuung). Basis heutiger Kern 12 von 30, Verhältnisse 5 von 14; Tabelle `tests/__snapshots__/scenario-bench.md`. Takt folgt dem Build (Catalyst an/aus); ein eigenes Feld kommt erst, wenn eine Zeile einen Takt verlangt, den der Build nicht ausdrückt. Barrow-Dyad hat kein Paket und zählt als Fehlschlag.
+- **Erledigt (2026-10-30):** 32 Szenarien, 30 gezählt (Salvation's Grip: Streuung). Basis heutiger Kern 12 von 30, nach zwei Import-Korrekturen 16 von 30 (OTV und Two-Tailed Fox Shot aus Aegis, Ager's Catalyst ×1,80), Verhältnisse 5 von 14; Tabelle `tests/__snapshots__/scenario-bench.md`. Takt folgt dem Build (Catalyst an/aus); ein eigenes Feld kommt erst, wenn eine Zeile einen Takt verlangt, den der Build nicht ausdrückt. Barrow-Dyad hat kein Paket und zählt als Fehlschlag.
 
 ### S1 – Kern (Opus entwirft, Sonnet setzt um)
 - `src/engine/core/`: Ereignis-Schleife, Formel, Akteur-Zustand, Ausgabe `SimulationResult`. Wiederverwenden: `runEvents`, `bucketFactors`, `activeParts`.

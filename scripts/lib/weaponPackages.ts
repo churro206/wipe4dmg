@@ -978,12 +978,23 @@ export function buildWeaponImport(
             ignitionThreshold.threshold.value,
           )
         : null;
+    // Aegis before Quantum: the base row without the ignitions it counted in; Quantum's row without
+    // ignitions only if Aegis names none (Quantum's shot lies 10 to 20 % off Aegis' measurement).
+    const scorchShotFromAegis = withoutIgnitions(base);
     if (scorch) {
       const q = scorch.quantumRow;
-      entry.perShot = q.totalDamage! / q.totalShots!;
-      entry.notes.push(
-        `Scorch: x${scorch.stacksPerShot} pro Shot („${scorch.quote}“${override?.scorchStacksPerShot ? ", Override" : ""}); Shot aus Quantum ohne Ignitions („${q.note}“): ${de(q.totalDamage!)} ÷ ${q.totalShots}`,
-      );
+      const stacks = `Scorch: x${scorch.stacksPerShot} pro Shot („${scorch.quote}“${override?.scorchStacksPerShot ? ", Override" : ""})`;
+      if (scorchShotFromAegis !== null) {
+        entry.perShot = scorchShotFromAegis / normaliseFactor;
+        entry.notes.push(
+          `${stacks}; Shot aus Aegis ohne Ignitions („${AEGIS_IGNITION_TICK.exec(base.otherTicks)![0]}“): ${de(entry.perShot, 1)}; Quantum ohne Ignitions ${de(q.totalDamage! / q.totalShots!, 1)}`,
+        );
+      } else {
+        entry.perShot = q.totalDamage! / q.totalShots!;
+        entry.notes.push(
+          `${stacks}; Shot aus Quantum ohne Ignitions („${q.note}“): ${de(q.totalDamage!)} ÷ ${q.totalShots}`,
+        );
+      }
       if (scorch.bonus)
         entry.notes.push(
           `Ignitions ×${de(scorch.bonus.factor, 3)} („${scorch.bonus.quote}“)`,
@@ -1704,7 +1715,9 @@ export function buildWeaponImport(
           ]);
     if (scorch) {
       entry.notes.push(
-        "Skala: Shot aus Quantum, keine Prüfung gegen Aegis (Aegis zählt Ignitions mit)",
+        scorchShotFromAegis !== null
+          ? "Skala: Shot aus Aegis, keine Prüfung gegen Quantum (Quantum weicht beim Shot ab)"
+          : "Skala: Shot aus Quantum, keine Prüfung gegen Aegis (Aegis zählt Ignitions mit)",
       );
     } else if (entry.scaleDeviation === null && !override?.aegisWins) {
       gap("Skala nicht prüfbar: keine vergleichbaren Werte");
@@ -1746,7 +1759,7 @@ export function buildWeaponImport(
           : quantumSource(timingQuantumRow, note);
     const id = slug(manifest.name);
     const shotSource = (note?: string): Source =>
-      scorch
+      scorch && scorchShotFromAegis === null
         ? quantumSource(scorch.quantumRow, note)
         : setupRows?.shot
           ? quantumSource(setupRows.shot, note)
@@ -1877,7 +1890,7 @@ export function buildWeaponImport(
         {
           id: "shot",
           name: scorch
-            ? "Shot (Quantum, without ignitions)"
+            ? `Shot (${scorchShotFromAegis !== null ? "Aegis" : "Quantum"}, without ignitions)`
             : setupRule
               ? `Shot (Quantum, without ${setupRule.name})`
               : "Shot (Aegis average)",
@@ -1888,10 +1901,14 @@ export function buildWeaponImport(
           damagePerTick: {
             value: Number(entry.perShot!.toFixed(3)),
             source: scorch
-              ? quantumSource(
-                  scorch.quantumRow,
-                  `Total Damage / total shots; ${scorch.quantumRow.note}`,
-                )
+              ? scorchShotFromAegis !== null
+                ? shotSource(
+                    `(Wipe − ignitions) ÷ Full Modifiers ÷ shots; ignitions from x${scorch.stacksPerShot} per shot and the threshold; assumptions: ${base.assumptions.join(", ") || "none"}`,
+                  )
+                : quantumSource(
+                    scorch.quantumRow,
+                    `Total Damage / total shots; ${scorch.quantumRow.note}`,
+                  )
               : setupRows?.shot
                 ? quantumSource(setupRows.shot, "Precision damage")
                 : aegisSource(

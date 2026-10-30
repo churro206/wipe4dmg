@@ -266,17 +266,17 @@
         "kind": "catalyst",
         "bucketId": "weaponPerk",
         "factor": {
-          "value": 1.7632,
+          "value": 1.8,
           "source": {
-            "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ager-s-scepter-cata",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-ager-s-scepter",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Precision (or body) damage with catalyst / without"
+            "status": "verified",
+            "note": "Derived (override): Catalyst Will Given Form: +80 % (Clarity). Aegis' Einzeltreffer bestätigen das: 222 ÷ 3,31 gegen 561 ÷ 15,09 = ×1,804. Quantums 67 ÷ 38 = ×1,763 rundet auf ganze Zahlen. Die Aegis-Zeilen mit Catalyst bleiben ungenutzt, weil der Catalyst das Timing ändert."
           }
         },
         "durationSeconds": null,
-        "condition": "While at full Super Energy, Hold [Reload] to activate Will Given Form."
+        "condition": null
       }
     ],
     "catalyst": {
@@ -10885,43 +10885,43 @@
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot (Quantum, without ignitions)",
+        "name": "Shot (Aegis, without ignitions)",
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-one-thousand-voices-average",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "verified",
             "note": "Package: one value per shot"
           }
         },
         "damagePerTick": {
-          "value": 2180,
+          "value": 2015.665,
           "source": {
-            "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-one-thousand-voices-average",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Total Damage / total shots; Does not consider Scorch; without ignition"
+            "status": "verified",
+            "note": "(Wipe − ignitions) ÷ Full Modifiers ÷ shots; ignitions from x90 per shot and the threshold; assumptions: average"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-one-thousand-voices-average",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified"
+            "status": "verified"
           }
         },
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-one-thousand-voices-average",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified"
+            "status": "verified"
           }
         },
         "canPrecision": false,
@@ -18203,43 +18203,43 @@
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot (Quantum, without ignitions)",
+        "name": "Shot (Aegis, without ignitions)",
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-two-tailed-fox-average",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "verified",
             "note": "Package: one value per shot"
           }
         },
         "damagePerTick": {
-          "value": 2340,
+          "value": 2839.873,
           "source": {
-            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-two-tailed-fox-average",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Total Damage / total shots; Does not consider scorch; does not consider ignitions"
+            "status": "verified",
+            "note": "(Wipe − ignitions) ÷ Full Modifiers ÷ shots; ignitions from x60 per shot and the threshold; assumptions: average"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-two-tailed-fox-average",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified"
+            "status": "verified"
           }
         },
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-two-tailed-fox-average",
+            "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "unverified"
+            "status": "verified"
           }
         },
         "canPrecision": false,
