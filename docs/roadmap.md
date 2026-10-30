@@ -71,6 +71,7 @@ Status: 2026-10-25
 
 ## Next
 
+- Damage model from the ground up (stages R0–R6, `docs/plans/ground-up-model.md`): a new core with player and target state, rules with triggers and a play policy; weapons from bare component values (Aegis, Quantum Weapon Specifics), Aegis rows as gates; Still Hunt with Celestial Nighthawk and Dragon's Breath fuel as pilots
 - Coverage triage: sort every missing item into left out (no effect against a boss), a value from the text (under 2 %) or its own block
 
 - Hammer of Sol with Sol Invictus

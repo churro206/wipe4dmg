@@ -4,7 +4,7 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Still Hunt** (Inhaber, 2026-10-26): Die Golden-Gun-Schüsse fehlen, ebenso die Synergie mit Celestial Nighthawk (ein einzelner Schuss mit hohem Schaden wie beim Marksman-Super). Danach Block B: **Coverage-Triage** (Opus plant): Jeden `missing`-Eintrag im Coverage-Katalog (rund 160, davon 95 Exotic Armor) einer Regel zuordnen: `leftOut` mit Grund, `derived` aus dem Text samt `known-inaccuracies.md` (unter 2 %), eigener Block (ab 2 %). Aufräum-Block nach drei weiteren Funktions-Blöcken.
+**R0 des Umbaus „Schadensmodell von Grund auf“** (Inhaber, 2026-10-30; Plan: `docs/plans/ground-up-model.md`, Etappen R0–R6). R0 mit Opus: ADR 0017 und Papierprobe mit fünf Waffen aus nackten Teilen gegen Aegis Weapons, Abbruch unter 4 von 5 Waffen innerhalb ±3 %. Still Hunt geht in R3 auf. Die Coverage-Triage (alter Block B: jeden `missing`-Eintrag einer Regel zuordnen) kommt nach R6.
 
 Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche, Casts lückenlos, Ladezeit und Bogen-Takt; Bögen (Leviathan's Breath 1,93/1,33 s, Hierarchy aus Pfeil + Seekern + Ignitions mit `Weapon.setup` und Schalter „Pre-stacked“; Ignition-Cooldown nach Recherche bei 1,3 s, Beleg Daybreak mit Dawn Chorus); Q2 Supers; Q3 Energie; Aufräum-Block. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
@@ -16,7 +16,7 @@ Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche, Casts lückenl
 
 Details und Fundstellen: `docs/plans/sources-2026-10.md`.
 
-1. Still Hunt, dann Block B: Coverage-Triage (siehe oben; Opus plant).
+1. Umbau R0–R6 (`docs/plans/ground-up-model.md`), darin Still Hunt (R3); danach Coverage-Triage.
 2. Energie-Exotics (Crown of Tempests, Contraverse Hold u. a., `sources-2026-10.md` §2; Opus plant).
 3. Hammer of Sol mit Sol Invictus (siehe oben).
 4. Q4 Stasis/Strand (echte Debuffs am Ziel, Bedingung von Facet of Courage), Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses (Umfang mit dem Inhaber klären).
