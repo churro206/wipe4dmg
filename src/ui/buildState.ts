@@ -13,6 +13,7 @@ import { fitArtifact } from "../engine/artifacts";
 import { decodeLink, encodeLink } from "../engine/buildLink";
 import type { EffectWindowInput } from "../engine/effectWindows";
 import { classPerksFor } from "../engine/exoticArmor";
+import { playstylesOf } from "../engine/playstyle";
 import { abilitiesFor, canProvide } from "../engine/providers";
 import {
   abilities,
@@ -267,6 +268,7 @@ export function buildOfState(state: {
   subclass: Subclass;
   catalyst: boolean;
   weaponPreBuilt?: boolean;
+  playstyle?: string;
   selections: Selection[];
   windowInputs: Record<string, WindowInput>;
   abilityChoice: AbilityChoice;
@@ -287,6 +289,10 @@ export function buildOfState(state: {
     catalyst: state.catalyst,
     ...(state.weaponPreBuilt && weaponById(state.weaponId).setup
       ? { weaponPreBuilt: true }
+      : {}),
+    ...(state.playstyle &&
+    playstylesOf(weaponById(state.weaponId)).some((p) => p.id === state.playstyle)
+      ? { playstyle: state.playstyle }
       : {}),
     ...(state.artifactId ? { artifactId: state.artifactId } : {}),
     ...(state.exoticArmorId ? { exoticArmorId: state.exoticArmorId } : {}),
@@ -327,8 +333,10 @@ export function describeBuild(build: Build): string {
       `${worn.join(" + ")}${build.exoticPreBuilt ? " (pre-stacked)" : ""}`,
     );
   if (build.catalyst) names.unshift("Catalyst");
+  const weapon = weaponById(build.weaponId);
+  const playstyle = playstylesOf(weapon).find((p) => p.id === build.playstyle);
   names.unshift(
-    `${weaponById(build.weaponId).name}${build.weaponPreBuilt ? " (pre-stacked)" : ""}`,
+    `${weapon.name}${build.weaponPreBuilt ? " (pre-stacked)" : ""}${playstyle ? ` (${playstyle.name})` : ""}`,
   );
   const what = names.length > 0 ? names.join(", ") : "no effects";
   return `${CLASS_LABELS[build.guardianClass]} ${SUBCLASS_LABELS[build.subclass]}: ${what}`;
@@ -367,6 +375,7 @@ export type LinkState = {
   selections: Selection[];
   catalyst: boolean;
   weaponPreBuilt: boolean;
+  playstyle: string | undefined;
   windowInputs: Record<string, WindowInput>;
   abilityChoice: AbilityChoice;
   abilityStats: AbilityStatInputs;
@@ -390,6 +399,7 @@ export function stateFromLink(search: string): LinkState {
     selections: [],
     catalyst: false,
     weaponPreBuilt: false,
+    playstyle: undefined,
     windowInputs: {},
     abilityChoice: {},
     abilityStats: DEFAULT_ABILITY_STATS,
@@ -443,6 +453,7 @@ export function stateFromLink(search: string): LinkState {
       exoticPreBuilt: build.exoticPreBuilt ?? false,
       catalyst: build.catalyst,
       weaponPreBuilt: build.weaponPreBuilt ?? false,
+      playstyle: build.playstyle,
       windowInputs: Object.fromEntries(
         Object.entries(build.effectWindows).map(([id, window]) => [
           id,

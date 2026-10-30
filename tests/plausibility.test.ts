@@ -931,6 +931,28 @@ describe("every Nth shot (2026-10-30, ADR 0017 S3)", () => {
   });
 });
 
+describe("playstyles (2026-10-30, ADR 0017 S4)", () => {
+  const ovation = (playstyle?: string) =>
+    run({ subclass: "strand", damagePhaseSeconds: 60, ...(playstyle ? { playstyle } : {}) }, weaponById("whirling-ovation"));
+
+  it("Whirling Ovation: full charge deals the most with its 7 rockets, a lower charge fires them faster", () => {
+    const full = ovation();
+    const lower = ["two-thirds-charge", "one-third-charge", "no-charge"].map(ovation);
+    note(
+      "Whirling Ovation 60 s: voll / 2/3 / 1/3 / ohne",
+      [full, ...lower].map((r) => Math.round(r.totalDamage)).join(" / "),
+      "voll vorn (7 Raketen × 6344), Verhältnisse wie Aegis 1 : 0,66 : 0,49 : 0,16",
+    );
+    for (const r of lower) {
+      expect(r.shots.length).toBe(7);
+      expect(r.totalDamage).toBeLessThan(full.totalDamage);
+    }
+    const lastNoChargeS = lower[2].shots.at(-1)!.timeMs / 1000;
+    note("Whirling Ovation ohne Ladung: letzte Rakete", `${fmt(lastNoChargeS)} s`, "6 × 2,133 ≈ 12,8 s");
+    expect(lastNoChargeS).toBeCloseTo(12.8, 0);
+  });
+});
+
 describe("bows (2026-10-26)", () => {
   const hierarchy = (fields: Partial<Build>) =>
     run({ guardianClass: "hunter", subclass: "solar", catalyst: true, ...fields }, weaponById("hierarchy-of-needs"));

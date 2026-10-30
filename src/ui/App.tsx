@@ -118,6 +118,7 @@ function App() {
   const weapon = weaponById(weaponId);
   const [catalyst, setCatalyst] = useState(initial.catalyst);
   const [weaponPreBuilt, setWeaponPreBuilt] = useState(initial.weaponPreBuilt);
+  const [playstyle, setPlaystyle] = useState(initial.playstyle);
   const [windowInputs, setWindowInputs] = useState(initial.windowInputs);
   const [abilityChoice, setAbilityChoice] = useState<AbilityChoice>(
     initial.abilityChoice,
@@ -166,6 +167,7 @@ function App() {
     subclass,
     catalyst,
     weaponPreBuilt,
+    playstyle,
     selections,
     windowInputs,
     abilityChoice,
@@ -234,6 +236,7 @@ function App() {
         subclass,
         catalyst,
         weaponPreBuilt,
+        playstyle,
         selections,
         windowInputs,
         abilityChoice,
@@ -260,6 +263,7 @@ function App() {
     subclass,
     catalyst,
     weaponPreBuilt,
+    playstyle,
     selections,
     windowInputs,
     abilityChoice,
@@ -276,6 +280,7 @@ function App() {
     setWeaponId(id);
     if (!hasCatalyst(weaponById(id))) setCatalyst(false);
     if (id !== weaponId) setWeaponPreBuilt(false);
+    if (id !== weaponId) setPlaystyle(undefined);
   };
   const changeInput = (value: string) => {
     setInput(value);
@@ -527,6 +532,8 @@ function App() {
                 onSelectWeapon={changeWeapon}
                 onToggleCatalyst={() => setCatalyst((on) => !on)}
                 onTogglePreBuilt={() => setWeaponPreBuilt((on) => !on)}
+                playstyle={playstyle}
+                onSelectPlaystyle={setPlaystyle}
               />
 
               <h2>Class</h2>
@@ -733,6 +740,7 @@ function App() {
                 <Tabs tabs={[...TABS]} active={tab} onChange={setTab}>
                   {tab === "overview" && (
                     <OverviewTab
+                      weapon={weapon}
                       result={result}
                       comparison={comparison}
                       comparisonResult={comparisonResult}

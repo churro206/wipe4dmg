@@ -78,6 +78,31 @@ describe("encodeLink and decodeLink", () => {
     expect(decodeLink(encodeLink({ build }, registry), registry).build.weaponPreBuilt).toBeUndefined();
   });
 
+  it("round-trips a selectable playstyle of the weapon (format 9)", () => {
+    const weapon = registry.weapons[0];
+    const withPlaystyles: LinkRegistry = {
+      ...registry,
+      weapons: [
+        {
+          ...weapon,
+          damageInstances: [
+            ...(weapon.damageInstances ?? []),
+            ...["low", "high"].map((id) => ({
+              ...weapon.damageInstances![0],
+              id,
+              playstyle: { id, replaces: "shot", selectable: true },
+            })),
+          ],
+        },
+      ],
+    };
+    const high: Build = { ...build, playstyle: "high" };
+    const link = encodeLink({ build: high }, withPlaystyles);
+    expect(decodeLink(link, withPlaystyles).build).toEqual(high);
+    // A weapon that no longer has the playstyle plays the plain shot.
+    expect(decodeLink(link, registry).build.playstyle).toBeUndefined();
+  });
+
   it("round-trips a build with a comparison", () => {
     const decoded = decodeLink(
       encodeLink({ build, comparison }, registry),
@@ -90,8 +115,8 @@ describe("encodeLink and decodeLink", () => {
   it("keeps a typical build short (5 effects with windows in about 48 characters)", () => {
     // format 4 adds two bytes for the exotic armor, format 5 one byte for the class perks,
     // format 6 one byte for the Weapons stat, format 7 one byte for the artifact, format 8 one byte
-    // for the weapon's Pre-stacked switch
-    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(56);
+    // for the weapon's Pre-stacked switch, format 9 one byte for the playstyle
+    expect(encodeLink({ build }, registry).length).toBeLessThanOrEqual(58);
   });
 
   it("round-trips the Weapons stat, also 0, and leaves it out when absent", () => {
@@ -181,7 +206,7 @@ describe("encodeLink and decodeLink", () => {
     it("keeps such a build short", () => {
       expect(
         encodeLink({ build: withAbilities }, registry).length,
-      ).toBeLessThanOrEqual(78); // format 5: one byte more for the class perks, format 6 for the stat, format 8 for the weapon's Pre-stacked
+      ).toBeLessThanOrEqual(80); // format 5: one byte more for the class perks, format 6 for the stat, format 8 for the weapon's Pre-stacked, format 9 for the playstyle
     });
 
     it("skips unknown ability codes and reports them", () => {

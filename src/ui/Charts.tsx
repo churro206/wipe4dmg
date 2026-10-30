@@ -59,8 +59,8 @@ const ABILITY_KINDS: Record<
   classAbility: { label: "Class Ability", color: "var(--muted)" },
   keyword: { label: "Effect", color: "var(--muted)" },
 };
-const kindOf = (id: string) =>
-  DAMAGE_KINDS[id] ?? { label: id, color: "var(--muted)" };
+const kindOf = (id: string, partName: (id: string) => string = (id) => id) =>
+  DAMAGE_KINDS[id] ?? { label: partName(id), color: "var(--muted)" };
 // Keyword damage, e.g. Ignition, in the color of its subclass element (U8)
 const keywordOf = (id: string) => keywords.find((k) => k.id === id);
 
@@ -110,8 +110,9 @@ const tooltipProps = {
 function shareStyle(
   entry: DamageShare,
   abilityName: (abilityId: string) => string,
+  partName: (id: string) => string,
 ): { label: string; kind?: string; color: string } {
-  if (entry.damageSource === "weapon") return kindOf(entry.id);
+  if (entry.damageSource === "weapon") return kindOf(entry.id, partName);
   const kind = ABILITY_KINDS[entry.damageSource];
   const keyword =
     entry.damageSource === "keyword" ? keywordOf(entry.id) : undefined;
@@ -136,14 +137,16 @@ export function DamageShareChart({
   entries,
   multipliers,
   abilityName,
+  partName,
 }: {
   entries: DamageShare[];
   multipliers: MultiplierShare[];
   abilityName: (abilityId: string) => string;
+  partName: (id: string) => string; // name of a weapon part, e.g. a playstyle's shot
 }) {
   const styled = entries.map((entry) => ({
     ...entry,
-    ...shareStyle(entry, abilityName),
+    ...shareStyle(entry, abilityName, partName),
   }));
   const outer = multipliers.map((entry) => ({
     ...entry,

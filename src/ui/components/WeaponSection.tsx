@@ -1,26 +1,36 @@
 import type { Weapon } from "../../data/schema";
+import { playstylesOf } from "../../engine/playstyle";
 import { hasCatalyst } from "../../engine/weaponInfo";
 import { weapons } from "../data";
 import { describeCatalyst } from "../describe";
 import { Icon } from "./Icon";
+import { SegmentedControl } from "./SegmentedControl";
 import { WeaponPicker } from "./WeaponPicker";
 
-/** Weapon: the picker, the catalyst switch and, for a weapon with a setup, its pre-stacked switch. */
+/**
+ * Weapon: the picker, the catalyst switch, for a weapon with a setup its pre-stacked switch, and for
+ * one with playstyles (e.g. the charge levels of Whirling Ovation) their choice.
+ */
 export function WeaponSection({
   weapon,
   catalyst,
   preBuilt,
+  playstyle,
   onSelectWeapon,
   onToggleCatalyst,
   onTogglePreBuilt,
+  onSelectPlaystyle,
 }: {
   weapon: Weapon;
   catalyst: boolean;
   preBuilt: boolean;
+  playstyle: string | undefined;
   onSelectWeapon: (id: string) => void;
   onToggleCatalyst: () => void;
   onTogglePreBuilt: () => void;
+  onSelectPlaystyle: (id: string | undefined) => void;
 }) {
+  const playstyles = playstylesOf(weapon);
   return (
     <>
       <h2>Weapon</h2>
@@ -70,6 +80,17 @@ export function WeaponSection({
           </span>
         )}
       </div>
+      {playstyles.length > 0 && (
+        <SegmentedControl
+          label="Playstyle"
+          options={[
+            { value: "", label: weapon.playstyleBaseName ?? "Default" },
+            ...playstyles.map((p) => ({ value: p.id, label: p.name })),
+          ]}
+          value={playstyles.some((p) => p.id === playstyle) ? playstyle! : ""}
+          onChange={(value) => onSelectPlaystyle(value || undefined)}
+        />
+      )}
       {catalyst &&
         weapon.options?.some(
           (o) =>

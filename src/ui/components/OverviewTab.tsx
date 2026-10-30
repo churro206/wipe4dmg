@@ -1,4 +1,4 @@
-import type { Build, Effect } from "../../data/schema";
+import type { Build, Effect, Weapon } from "../../data/schema";
 import {
   damageByMultiplier,
   damageCurve,
@@ -18,6 +18,7 @@ import { seconds } from "../format";
 
 /** Overview tab: damage by source, damage over time and DPS by Damage Phase length. */
 export function OverviewTab({
+  weapon,
   result,
   comparison,
   comparisonResult,
@@ -26,6 +27,7 @@ export function OverviewTab({
   dpsPoints,
   damagePhaseSeconds,
 }: {
+  weapon: Weapon;
   result: SimulationResult;
   comparison: Build | null;
   comparisonResult: SimulationResult | null;
@@ -57,6 +59,9 @@ export function OverviewTab({
             // damage of its own from an effect, e.g. Storm's Keep (rule H)
             selected.find((e) => e.id === id)?.name ??
             id
+          }
+          partName={(id) =>
+            weapon.damageInstances.find((i) => i.id === id)?.name ?? id
           }
         />
       )}

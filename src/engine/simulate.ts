@@ -61,6 +61,7 @@ import {
 import { resolveWindows, type EffectWindowOptions } from "./effectWindows";
 import { runEvents, type RunEvent } from "./eventRun";
 import { keywordOnHit } from "./keywordRun";
+import { withPlaystyle } from "./playstyle";
 import { superWindowMs } from "./superWindow";
 import { requireValue } from "./requireValue";
 import { MS_PER_SECOND } from "./units";
@@ -111,7 +112,7 @@ export type SimulationOptions = EffectWindowOptions & {
   weaponStat?: WeaponStatValue; // Weapons stat; default: no stat bonus
   keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
   setupPreBuilt?: boolean; // the weapon's setup charges are built before the phase ("Pre-stacked")
-  playstyle?: string; // Build.playstyle; the core only (stage S3)
+  playstyle?: string; // Build.playstyle (playstyle.ts)
   shotLimit?: number; // the weapon fires at most this many shots, e.g. those of a measurement
 };
 
@@ -133,12 +134,13 @@ export type SimulationResult = {
 };
 
 export function simulate(
-  weapon: Weapon,
+  plainWeapon: Weapon,
   damagePhaseSeconds: number,
   effects: Effect[] = [],
   buckets: Bucket[] = [],
   options: SimulationOptions = {},
 ): SimulationResult {
+  const weapon = withPlaystyle(plainWeapon, options.playstyle);
   const catalyst = options.catalyst ?? false;
   // A catalyst that changes magazine, ammo or reload replaces the timing while it is on.
   const timing = (catalyst && weapon.catalyst?.timing) || weapon;
@@ -401,8 +403,8 @@ export function simulate(
 
   const instances = weapon.damageInstances
     .filter((instance) => catalyst || !instance.requiresCatalyst)
-    .filter((instance) => !instance.playstyle) // the old simulator plays the plain shot only
     .map((instance) => ({
+      tickFactors: (instance.tickFactors ?? []).map((f) => requireValue(f, "tickFactors")),
       id: instance.id,
       delivery: instance.delivery,
       delayMs: requireValue(instance.delayMs, "delayMs"),
@@ -535,7 +537,8 @@ export function simulate(
             emit({
               id: instance.id,
               timeMs,
-              damage: instance.damage * productOf(factors),
+              damage:
+                instance.damage * (instance.tickFactors[tick] ?? 1) * productOf(factors),
               damageSource,
               element: weapon.element,
               weaponType: weapon.weaponType,

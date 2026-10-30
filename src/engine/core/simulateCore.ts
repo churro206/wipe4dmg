@@ -25,6 +25,7 @@ import {
   type TimedDamageInstance,
 } from "../simulate";
 import { bucketFactors } from "../effectParts";
+import { withPlaystyle } from "../playstyle";
 import { createBurn } from "./burn";
 import { createContext, type ShotHistory } from "./context";
 import { damageOf } from "./formula";
@@ -36,12 +37,13 @@ const SHOT_GROUP = -1;
 const ROUNDING_TOLERANCE = 1e-9;
 
 export function simulateCore(
-  weapon: Weapon,
+  plainWeapon: Weapon,
   damagePhaseSeconds: number,
   effects: Effect[] = [],
   buckets: Bucket[] = [],
   options: SimulationOptions = {},
 ): SimulationResult {
+  const weapon = withPlaystyle(plainWeapon, options.playstyle);
   const history: ShotHistory = { shots: [], holdFactors: [] };
   const superWindows = superWindowsOf(options.abilities ?? []);
   const context = createContext(
@@ -66,16 +68,8 @@ export function simulateCore(
   });
   const { isInPhase } = actor;
 
-  const active = weapon.damageInstances.filter(
-    (instance) =>
-      instance.playstyle !== undefined && instance.playstyle.id === options.playstyle,
-  );
-  const replaced = active.flatMap((instance) => instance.playstyle?.replaces ?? []);
   const instances = weapon.damageInstances
     .filter((instance) => catalyst || !instance.requiresCatalyst)
-    .filter((instance) =>
-      instance.playstyle ? active.includes(instance) : !replaced.includes(instance.id),
-    )
     .map((instance) => ({
       tickFactors: (instance.tickFactors ?? []).map((f) => requireValue(f, "tickFactors")),
       id: instance.id,

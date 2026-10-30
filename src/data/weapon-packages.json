@@ -19260,6 +19260,177 @@
         },
         "canPrecision": false,
         "requiresCatalyst": false
+      },
+      {
+        "id": "two-thirds-charge",
+        "name": "2/3 charge",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "damagePerTick": {
+          "value": 4212.174,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-whirling-ovation-2-3-charge",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value ÷ Full Modifiers; assumptions: 2/3 charge"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "playstyle": {
+          "id": "two-thirds-charge",
+          "replaces": "shot",
+          "fireRateRpm": {
+            "value": 11.146,
+            "source": {
+              "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+              "retrieved": "2026-10-20",
+              "status": "unverified",
+              "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s.; 60 ÷ 5.383 s per shot"
+            }
+          },
+          "selectable": true
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      },
+      {
+        "id": "one-third-charge",
+        "name": "1/3 charge",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "damagePerTick": {
+          "value": 3115.573,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-whirling-ovation-1-3-charge",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value ÷ Full Modifiers; assumptions: 1/3 charge"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "playstyle": {
+          "id": "one-third-charge",
+          "replaces": "shot",
+          "fireRateRpm": {
+            "value": 15.865,
+            "source": {
+              "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+              "retrieved": "2026-10-20",
+              "status": "unverified",
+              "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s.; 60 ÷ 3.782 s per shot"
+            }
+          },
+          "selectable": true
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      },
+      {
+        "id": "no-charge",
+        "name": "No charge",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "damagePerTick": {
+          "value": 1015.336,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-whirling-ovation-no-charge",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value ÷ Full Modifiers; assumptions: no charge"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
+          }
+        },
+        "playstyle": {
+          "id": "no-charge",
+          "replaces": "shot",
+          "fireRateRpm": {
+            "value": 28.129,
+            "source": {
+              "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
+              "retrieved": "2026-10-20",
+              "status": "unverified",
+              "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s.; 60 ÷ 2.133 s per shot"
+            }
+          },
+          "selectable": true
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
       }
     ],
     "intrinsicParts": [],
@@ -19276,6 +19447,7 @@
         }
       }
     ],
+    "playstyleBaseName": "Full charge",
     "catalyst": {
       "name": "Whirling Ovation Catalyst",
       "description": "Fully charged rockets overpenetrate through Minor and Elite combatants, leaving a Solar Grenade behind at each combatant's death location for 2? seconds.\nSolar Grenade can benefit from the Touch of Flame Aspect, but not from Sunbracers.",

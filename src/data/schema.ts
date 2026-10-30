@@ -68,8 +68,17 @@ export const DamageInstance = z.object({
   everyNthShot: SourcedNumber.optional(),
   // A factor per tick (the length of `ticks`), e.g. the three Golden Gun shots x1, x1.45, x1.9
   tickFactors: z.array(SourcedNumber).optional(),
-  // Only in this playstyle of the build (Build.playstyle); it takes the place of the instance `replaces`
-  playstyle: z.object({ id: z.string(), replaces: z.string().optional() }).optional(),
+  // Only in this playstyle of the build (Build.playstyle); it takes the place of the instance `replaces`.
+  // The weapon fires at `fireRateRpm` in it, e.g. a lower charge of Whirling Ovation; `selectable`:
+  // the build picker offers it (the instance's name is its label).
+  playstyle: z
+    .object({
+      id: z.string(),
+      replaces: z.string().optional(),
+      fireRateRpm: SourcedNumber.optional(),
+      selectable: z.boolean().optional(),
+    })
+    .optional(),
   delivery: Delivery.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
@@ -395,6 +404,8 @@ export const Weapon = z.object({
     }),
   ),
   setup: WeaponSetup.optional(),
+  // Label of the plain shot where the build picker offers playstyles (DamageInstance.playstyle), e.g. "Full charge"
+  playstyleBaseName: z.string().optional(),
   // Imported packages (ADR 0013): modelled effects Aegis measured inside the value per shot.
   includedEffectIds: z.array(z.string()).optional(),
   // Imported packages: catalyst, perks and mods as factors from the "with / without" rows.
@@ -1316,7 +1327,8 @@ export const Build = z.object({
   // charges persist through stow); omitted: off.
   weaponPreBuilt: z.boolean().optional(),
   // How the weapon is played where its shots differ (DamageInstance.playstyle), e.g. "cayde-s-retribution"
-  // for the Golden Gun shots of Still Hunt; omitted: the plain shot. Not in the build link yet.
+  // for the Golden Gun shots of Still Hunt; omitted: the plain shot. The link carries only the
+  // selectable ones.
   playstyle: z.string().optional(),
   // Exotic armor piece (exotic-armor.json, ADR 0014); omitted: none. At most one per build.
   exoticArmorId: z.string().optional(),
@@ -1695,16 +1707,23 @@ export const WeaponOverride = z.object({
       hits: z.number().int().positive(),
     })
     .optional(),
-  // A playstyle whose shots replace the weapon's shot (Build.playstyle): the hit and the factors of
-  // the following shots come from the Aegis row, e.g. "all three shots" of Still Hunt with Cayde's
-  // Retribution ("6412 2nd, 8402 3rd"); the shots follow at the weapon's interval.
-  playstylePart: z
-    .object({
-      id: z.string(),
-      name: z.string(),
-      row: z.string(), // id of the Aegis Weapons row
-    })
+  // Playstyles whose shots replace the weapon's shot (Build.playstyle). A row with ticks "N 2nd, N 3rd"
+  // gives a sequence at the weapon's interval, e.g. "all three shots" of Still Hunt with Cayde's
+  // Retribution ("6412 2nd, 8402 3rd"); any other row one shot of its value per shot, every
+  // `intervalSeconds` (derived in the reason), e.g. a lower charge of Whirling Ovation.
+  playstyleParts: z
+    .array(
+      z.object({
+        id: z.string(),
+        name: z.string(),
+        row: z.string(), // id of the Aegis Weapons row
+        intervalSeconds: z.number().positive().optional(),
+        selectable: z.boolean().optional(), // the build picker offers it
+      }),
+    )
     .optional(),
+  // Label of the plain shot in the build picker, where it offers playstyles
+  playstyleBaseName: z.string().optional(),
   // A setup the shots build and deploy (WeaponSetup): the shot from a Quantum row without it, the
   // extra hits from the row with it; the reason derives the numbers from the quotes.
   setup: z

@@ -10,10 +10,11 @@
 //           class perk count | per class perk: manifest hash |
 //           Weapons stat + 1 (0: none) |
 //           artifact code (0: none) |
-//           weapon prebuilt (0 or 1)
+//           weapon prebuilt (0 or 1) |
+//           playstyle: its index among the weapon's selectable playstyles + 1 (0: plain shot)
 // Format 2 ends the build after the selections, format 3 after the stats, format 4 after the
 // prebuilt flag, format 5 after the class perks, format 6 after the Weapons stat, format 7 after the
-// artifact; all are still read. Artifact perks are selections with the provider "artifact".
+// artifact, format 8 after the weapon prebuilt flag; all are still read. Artifact perks are selections with the provider "artifact".
 // Exotic armor and class perks are written by their manifest hash, which Bungie keeps stable (U8).
 // Codes come from the Data Files and are never reused, so old links stay readable. A removed
 // effect keeps its code as a former code of the effect that replaces it.
@@ -21,15 +22,17 @@
 
 import {
   Build,
+  type DamageInstance,
   type FormerCodeReason,
   type GuardianClass,
   type ProviderKind,
   type Subclass,
 } from "../data/schema";
+import { playstylesOf } from "./playstyle";
 import { MS_PER_SECOND } from "./units";
 
-const FORMAT_VERSION = 8;
-const READABLE_VERSIONS = [2, 3, 4, 5, 6, 7, 8];
+const FORMAT_VERSION = 9;
+const READABLE_VERSIONS = [2, 3, 4, 5, 6, 7, 8, 9];
 const CLASSES: GuardianClass[] = ["titan", "hunter", "warlock"];
 const SUBCLASSES: Subclass[] = [
   "arc",
@@ -49,7 +52,8 @@ const BASE64URL =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
 export type LinkRegistry = {
-  weapons: { id: string; code: number }[];
+  // damageInstances: for the weapon's playstyles; omitted: none
+  weapons: { id: string; code: number; damageInstances?: DamageInstance[] }[];
   effects: {
     id: string;
     code: number;
@@ -192,7 +196,20 @@ function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
       : codeOf(registry.artifacts ?? [], build.artifactId, "artifact"),
   );
   writeVarint(bytes, build.weaponPreBuilt ? 1 : 0);
+  writeVarint(
+    bytes,
+    build.playstyle === undefined
+      ? 0
+      : playstyleIdsOf(registry, build.weaponId).indexOf(build.playstyle) + 1 ||
+          fail(`Build link: unknown playstyle "${build.playstyle}"`),
+  );
 }
+
+const playstyleIdsOf = (registry: LinkRegistry, weaponId: string) =>
+  playstylesOf({
+    damageInstances:
+      registry.weapons.find((w) => w.id === weaponId)?.damageInstances ?? [],
+  }).map((p) => p.id);
 
 const fail = (message: string): never => {
   throw new Error(message);
@@ -268,6 +285,9 @@ function readBuild(
   const weaponsStatPlusOne = version >= 6 ? reader.varint() : 0;
   const artifactCode = version >= 7 ? reader.varint() : 0;
   const weaponPreBuilt = version >= 8 && reader.varint() === 1;
+  // An unknown index (a playstyle of a newer version) falls back to the plain shot.
+  const playstyle =
+    version >= 9 ? playstyleIdsOf(registry, weapon.id)[reader.varint() - 1] : undefined;
   const artifact = (registry.artifacts ?? []).find((a) => a.code === artifactCode);
   if (artifactCode !== 0 && !artifact) unknown.artifacts.push(artifactCode);
   // Zod rejects an invalid class or provider index (undefined).
@@ -277,6 +297,7 @@ function readBuild(
     subclass,
     catalyst,
     ...(weaponPreBuilt ? { weaponPreBuilt } : {}),
+    ...(playstyle ? { playstyle } : {}),
     selections,
     effectWindows,
     damagePhaseSeconds,

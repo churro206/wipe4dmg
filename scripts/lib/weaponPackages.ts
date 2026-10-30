@@ -1038,29 +1038,26 @@ export function buildWeaponImport(
       );
     }
 
-    // The shots of a playstyle (override): hit and factors of the 2nd and 3rd shot from the row's
-    // ticks ("6412 2nd, 8402 3rd"), on the scale of Aegis "visual".
-    const playstyleRule = override?.playstylePart;
-    const playstyleRow = playstyleRule
-      ? inputs.aegis.rows.find((r) => r.id === playstyleRule.row)
-      : undefined;
-    const playstyleFactors = playstyleRow
-      ? [
-          1,
-          ...[...playstyleRow.otherTicks.matchAll(/(\d+) (?:2nd|3rd)/g)].map(
-            (m) => Number(m[1]) / playstyleRow.critShot!,
-          ),
-        ]
-      : [];
-    if (playstyleRule) {
-      if (!playstyleRow || playstyleRow.critShot === null || playstyleFactors.length < 2)
-        throw new Error(
-          `${manifest.name}: playstylePart needs row ${playstyleRule.row} with a hit and ticks "N 2nd, N 3rd"`,
-        );
-      entry.notes.push(
-        `${playstyleRule.name}: ${playstyleFactors.length} Schüsse aus ${playstyleRow.id} („${playstyleRow.otherTicks}“), Faktoren ${playstyleFactors.map((f) => de(f, 3)).join(", ")} (Override)`,
+    // The shots of a playstyle (override), on the scale of Aegis "visual": a sequence with hit and
+    // factors of the 2nd and 3rd shot from the row's ticks ("6412 2nd, 8402 3rd"), else one shot of
+    // the row's value per shot (e.g. a lower charge), at the override's interval if it has one.
+    const playstyles = (override?.playstyleParts ?? []).map((rule) => {
+      const row = inputs.aegis.rows.find((r) => r.id === rule.row);
+      if (!row || row.critShot === null)
+        throw new Error(`${manifest.name}: playstylePart needs row ${rule.row} with a hit`);
+      const sequence = [...row.otherTicks.matchAll(/(\d+) (?:2nd|3rd)/g)].map(
+        (m) => Number(m[1]) / row.critShot!,
       );
-    }
+      const factors = sequence.length > 0 ? [1, ...sequence] : [];
+      const damage = (sequence.length > 0 ? row.critShot / row.fullModifiers : row.perShot) /
+        normaliseFactor;
+      entry.notes.push(
+        sequence.length > 0
+          ? `${rule.name}: ${factors.length} Schüsse aus ${row.id} („${row.otherTicks}“), Faktoren ${factors.map((f) => de(f, 3)).join(", ")} (Override)`
+          : `${rule.name}: Schuss ${de(damage, 1)} aus ${row.id}${rule.intervalSeconds ? `, alle ${de(rule.intervalSeconds, 3)} s` : ""} (Override)`,
+      );
+      return { rule, row, factors, damage };
+    });
 
     // Options: rows that add only catalyst, perk or mod assumptions to the base row.
     const options: WeaponOption[] = [];
@@ -1990,45 +1987,50 @@ export function buildWeaponImport(
               },
             ]
           : []),
-        ...(playstyleRule && playstyleRow
-          ? [
-              {
-                id: playstyleRule.id,
-                name: playstyleRule.name,
-                delayMs: { value: 0, source: setupSource() },
-                damagePerTick: {
-                  value: Number(
-                    (
-                      playstyleRow.critShot! /
-                      playstyleRow.fullModifiers /
-                      normaliseFactor
-                    ).toFixed(3),
-                  ),
-                  source: aegisSource(
-                    playstyleRow,
-                    `critShot ÷ Full Modifiers; assumptions: ${playstyleRow.assumptions.join(", ")}`,
-                  ),
-                },
-                ticks: { value: playstyleFactors.length, source: setupSource() },
-                tickIntervalMs: {
-                  value: Math.round(60000 / entry.derivedRpm),
-                  source: setupSource(
-                    "the shots follow at the weapon's interval (60000 ÷ rpm)",
-                  ),
-                },
-                tickFactors: playstyleFactors.map((f) => ({
+        ...playstyles.map(({ rule, row, factors, damage }) => ({
+          id: rule.id,
+          name: rule.name,
+          delayMs: { value: 0, source: setupSource() },
+          damagePerTick: {
+            value: Number(damage.toFixed(3)),
+            source: aegisSource(
+              row,
+              `${factors.length > 0 ? "critShot" : "visual Value"} ÷ Full Modifiers; assumptions: ${row.assumptions.join(", ")}`,
+            ),
+          },
+          ticks: { value: Math.max(1, factors.length), source: setupSource() },
+          tickIntervalMs: {
+            value: factors.length > 0 ? Math.round(60000 / entry.derivedRpm!) : 0,
+            source: setupSource(
+              factors.length > 0
+                ? "the shots follow at the weapon's interval (60000 ÷ rpm)"
+                : undefined,
+            ),
+          },
+          ...(factors.length > 0
+            ? {
+                tickFactors: factors.map((f) => ({
                   value: Number(f.toFixed(3)),
-                  source: aegisSource(
-                    playstyleRow,
-                    `tick ÷ hit of "${playstyleRow.otherTicks}"`,
-                  ),
+                  source: aegisSource(row, `tick ÷ hit of "${row.otherTicks}"`),
                 })),
-                playstyle: { id: playstyleRule.id, replaces: "shot" },
-                canPrecision: false,
-                requiresCatalyst: false,
-              },
-            ]
-          : []),
+              }
+            : {}),
+          playstyle: {
+            id: rule.id,
+            replaces: "shot",
+            ...(rule.intervalSeconds
+              ? {
+                  fireRateRpm: {
+                    value: Number((60 / rule.intervalSeconds).toFixed(3)),
+                    source: setupSource(`60 ÷ ${rule.intervalSeconds} s per shot`),
+                  },
+                }
+              : {}),
+            ...(rule.selectable ? { selectable: true } : {}),
+          },
+          canPrecision: false,
+          requiresCatalyst: false,
+        })),
         ...(setupRule && setupRows?.shot && setupRows.withSetup
           ? [
               {
@@ -2137,6 +2139,9 @@ export function buildWeaponImport(
           note: inputs.manifestVersion,
         },
       })),
+      ...(override?.playstyleBaseName
+        ? { playstyleBaseName: override.playstyleBaseName }
+        : {}),
       ...(entry.includedEffectIds.length > 0
         ? { includedEffectIds: entry.includedEffectIds }
         : {}),

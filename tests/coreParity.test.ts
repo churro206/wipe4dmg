@@ -157,9 +157,7 @@ describe("core parity (ADR 0017, S1)", () => {
         ),
       );
     expect(scenarios.length).toBeGreaterThan(30);
-    for (const row of scenarios) {
-      // The old simulator plays the plain shot only, so compare without the playstyle.
-      const s = { ...row, build: { ...row.build, playstyle: undefined } };
+    for (const s of scenarios) {
       const old = modelTotal(s, withoutBurn(simulate));
       const core = modelTotal(s, withoutBurn(simulateCore));
       if (old === null || core === null) {

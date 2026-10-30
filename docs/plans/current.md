@@ -4,9 +4,11 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**S3 Effekt-System, Rest** (ADR 0017, Plan `docs/plans/ground-up-model.md`; Sonnet setzt um). Arbeit nur auf Branch `ground-up-model`, `master` bleibt die laufende Version. Neu geschnitten mit dem Inhaber (2026-10-30): S3 umfasst nur noch (1) ✔ Auslöser „jeder N-te Schuss“ (Truth, erledigt, 18 von 30), (2) ✔ Schussfolge mit Faktoren für Still Hunt (erledigt, 19 von 30), (3) Sonderfelder (`holdDraw`, `refillsMagazine`, `hitStacks`, `catalystWindowSeconds`, `scorchStacksPerShot`, `setup`) als Datensätze, Gate: Bestandstests (`weaponSetup`, `holdDraw`, `hitStacks`, `classAbility`, `catalyst`) grün. **Nach S4 verschoben:** Polaris, Lord of Wolves, Dragon's Breath und Hierarchy mit Scorch-Teil (brauchen die Aegis-Ticks aus `weaponComponents.ts`; Perfect Fifth als „nach N Treffern“, Burn und Scorch-Takt je Quelle). Ziel des Umbaus bleibt 24 von 30.
+**S4 Teil B: Waffen aus Teilen** (ADR 0017, Plan `docs/plans/ground-up-model.md`; Opus für die Takt-Herleitungen). Arbeit nur auf Branch `ground-up-model`, `master` bleibt die laufende Version. Freigegeben vom Inhaber (2026-10-30): A ✔, B `scripts/lib/weaponComponents.ts` → `src/data/weapon-components.json` (Aegis-Ticks ÷ `fullModifiers`), zerlegt nur, wo ein Teil mit dem Build spielt: Hierarchy one ring / 2 rings (Ring, Scorch-Takt je Quelle), Polaris Ember (Perfect Fifth nach N Treffern), danach Lord of Wolves und Dragon's Breath, soweit belegt. Test zuerst: Bench-Szenarien vorher rot. C Barrow-Dyad (6 oder 7 Seeker) nur nach Skill `recherche`, eigener Block. Ziel 24 von 30.
 
-S3 Teil 2 erledigt (2026-10-30): `Build.playstyle`, `DamageInstance.playstyle` + `tickFactors`, Override `playstylePart`; Still Hunt mit Cayde's Retribution −0,0 %, Prüfstand 19 von 30, Verhältnisse 6 von 14. Alter Simulator ignoriert Instanzen mit Spielweise, `coreParity` vergleicht ohne sie. Kein Schalter in der Oberfläche, nicht im Link.
+S4 Teil A erledigt (2026-10-30): Ladestufen von Whirling Ovation als wählbare Spielweise (Oberfläche, Link Format 9), `withPlaystyle` in beiden Simulatoren, Override `playstyleParts`. Prüfstand 22 von 30, Verhältnisse 9 von 14. Takt der Stufen hergeleitet (`known-inaccuracies`). S3 abgeschlossen; Teil 3 (Sonderfelder als Datensätze) gestrichen, bei S6 prüfen.
+
+S3 Teil 2 erledigt (2026-10-30): Spielweise mit Schussfolge, Still Hunt mit Cayde's Retribution −0,0 % (nicht wählbar in der Oberfläche).
 
 S3 Teil 1 erledigt (2026-10-30): `DamageInstance.everyNthShot`, Override `nthShotPart`, Truth aus Treffer + Cluster alle 3 Raketen; Prüfstand 18 von 30, Verhältnisse 5 von 14 (Truth Reaper/Trueseeker −3,3 %: Streuung der Aegis-Zeile).
 
