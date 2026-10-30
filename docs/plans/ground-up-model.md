@@ -31,6 +31,20 @@ Fünf Schichten, jede rein und für sich testbar, darüber eine deterministische
 
 **Kennzahl:** Anteil der Szenarien innerhalb ±3 %, je System. Vorrang haben Verhältnisse zwischen Zeilen derselben Waffe (mit/ohne Perk), weil das Produkt Unterschiede braucht, keine absoluten Zahlen.
 
+## Ziel: die Nachrechnung in Code (2026-10-30)
+
+Die Formel trägt: Gesamtschaden = Summe über alle Treffer (Grundwert × Precision × Buckets). Mit Aegis-Rohwerten (crit, other Ticks) und Regeln aus den Texten treffen **24 von 30** gezählten Szenarien auf dem Papier (Tabelle `docs/plans/r0-paper-probe.md`, „Nachrechnung aller Szenarien“). Das Programm schafft 16, weil der Import Mittelwerte je Schuss speichert und die Engine Teile, Auslöser, Stacks und Burn nicht zählt. **Spezifikation des Umbaus ist diese Tabelle:** Jede Stufe übersetzt ihre Zeilen in Code und muss genau diese Zeilen im Prüfstand grün machen.
+
+| Stufe | Szenarien, die grün werden müssen | Was dafür fehlt |
+| --- | --- | --- |
+| S1 | die 16 heutigen bleiben grün | neuer Kern parallel, gleiche Zahlen |
+| S2 | keine neuen; One Thousand Voices, Lord of Wolves und Polaris bleiben grün, jetzt mit Burn statt im Mittelwert | Burn 2,7 + 0,175 × Stacks, Verfall, Scorch-Takt je Quelle (Lord of Wolves ≤0,46 s) |
+| S3 | +5: Polaris Ember, Truth mit Reaper's Tithe, Hierarchy one ring und 2 rings, Still Hunt mit Cayde's Retribution | Auslöser „nach N Treffern“ (Perfect Fifth), „jede 3. Rakete“ (Trueseeker), Setup als Datensatz (Ring steht, zwei Ringe), Schussfolge mit Faktoren |
+| S4 | +4: Truth-Einzelrakete, Whirling Ovation ohne Ladung, 1/3 und 2/3 | Teile mit Anzahl statt Mittelwert (Rakete + Cluster, Rakete + Strand-Explosion) |
+| Ziel nach S4 | 24 von 30 (16 − Dragon's Breath geeicht + 5 + 4) | |
+
+Die übrigen 6 scheitern auch auf dem Papier, weil eine Zahl in jeder Quelle fehlt: Celestial Nighthawk auf Still Hunt, Dragon's Breath (Pool-Takt „?“), Ager's Scepter (Zusatz je Treffer, 2 Zeilen), Barrow-Dyad (6,9 statt 6 Seeker, 2 Zeilen). Sie dürfen an genau einer Zeile geeicht werden (`derived`, Zeilen-ID). Eine geeichte Zeile zählt nicht als Treffer, nur die übrigen Zeilen derselben Waffe. Dragon's Breath trifft heute nur, weil sein Paket aus seiner einzigen Zeile stammt.
+
 ## Stufen
 
 ### S0 – Prüfstand (Sonnet)

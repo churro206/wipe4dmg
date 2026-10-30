@@ -4,7 +4,7 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**S1 Kern** des Umbaus (ADR 0017, Plan `docs/plans/ground-up-model.md`; Opus entwirft, Sonnet setzt um). Arbeit nur auf Branch `ground-up-model`, `master` bleibt die laufende Version (Inhaber, 2026-10-30). Inhalt S1: `src/engine/core/` mit Ereignis-Schleife, Formel, Akteur-Zustand, Ausgabe `SimulationResult`; Adapter für die heutigen Pakete; alter und neuer Kern parallel im Test, `mechanics-baseline` unverändert. Der neue Kern muss `shotLimit` kennen (Prüfstand).
+**S1 Kern** des Umbaus (ADR 0017, Plan `docs/plans/ground-up-model.md`; Opus entwirft, Sonnet setzt um). Arbeit nur auf Branch `ground-up-model`, `master` bleibt die laufende Version (Inhaber, 2026-10-30). Inhalt S1: `src/engine/core/` mit Ereignis-Schleife, Formel, Akteur-Zustand, Ausgabe `SimulationResult`; Adapter für die heutigen Pakete; alter und neuer Kern parallel im Test, `mechanics-baseline` unverändert. Der neue Kern muss `shotLimit` kennen (Prüfstand). Ziel des Umbaus: die Nachrechnung in Code, 24 von 30 Szenarien; welche Stufe welche Szenarien grün macht, steht im Plan unter „Ziel“.
 
 S0 erledigt (2026-10-30): Prüfstand `tests/scenarioBench.test.ts`, 32 Szenarien in `tests/scenarios/`, Basis heutiger Kern 16 von 30 innerhalb ±3 % nach zwei Import-Korrekturen (OTV/Two-Tailed Fox Shot aus Aegis, Ager's Catalyst ×1,80), Verhältnisse 5 von 14 (`tests/__snapshots__/scenario-bench.md`). Übrige Ausfälle = fehlende Systeme, Liste in `docs/known-inaccuracies.md`. Rechenwege je Zeile: `docs/plans/r0-paper-probe.md`.
 

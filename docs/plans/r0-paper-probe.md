@@ -129,6 +129,41 @@ Pro Treffer liegt der Wipe über dem Treffer-Wert: 264,7 gegen 222 (Will Given F
 - **Erweiterung:** 5 von 8 (Deterministic Chaos, Whirling Ovation, Polaris Lance, Lord of Wolves, Ager's Scepter). Truth −3,3 % (Streuung), Barrow-Dyad −9 %, Salvation's Grip ohne Gate.
 - **Gesamt 9 von 13.** Neue Mechanik, die das braucht: Scorch-Burn nach der Formel. Hergeleitete Werte: Scorch-Takt von Lord of Wolves, Takt der Hierarchy-Zeile „one ring“, Zusatz von Ager's Scepter.
 
+## Nachrechnung aller Szenarien (2026-10-30)
+
+Rohwerte der Aegis-Zeilen (Wipe-Skala), Regeln aus Clarity und Compendium; die Szenarien des Prüfstands (`tests/scenarios/`). Burn neu gerechnet bei Polaris (Ticks nach Abschnitt 1); bei One Thousand Voices, Hierarchy und Lord of Wolves aus den Abschnitten oben. Skript `tmp/paper-calc.ts` (nicht eingecheckt).
+
+| Zeile | Rechnung | Modell | Aegis | Abw. |
+| --- | --- | --- | --- | --- |
+| Still Hunt | 2177 | 2177 | 2177 | 0,0 % |
+| Still Hunt, Cayde's Retribution | 4422 + 6412 + 8402 | 19 236 | 19 236 | 0,0 % |
+| Still Hunt, Celestial Nighthawk | 4422 ÷ 3,31 × 3,17 × 7,5 + Ignition | 34 008 | 26 469 | +28,5 % (Text gilt der Super) |
+| Gjallarhorn | 8 × (3874 + 446 + 8 × (142 + 66)) | 47 872 | 47 872 | 0,0 % |
+| One Thousand Voices | 4 × (10 × 50 + 9 × 639) + 2 × 2814 + Burn 291 | 30 923 | 31 106 | −0,6 % |
+| dto. Ember | 4 × 6251 + 4 × 2814 | 36 260 | 36 499 | −0,7 % |
+| dto. Catalyst | 8 × 6251 + 4 × 2814 + 72 × 192 + 366 × 25 | 84 238 | 85 319 | −1,3 % |
+| dto. Ember + Catalyst | 8 × 6251 + 8 × 2814 + Seeker | 95 494 | 95 256 | +0,2 % |
+| Hierarchy, 2 rings | 9 × 735 + 54 × 485 + 3 × 2345 + Burn | 40 032 | 39 925 | +0,3 % |
+| Hierarchy, one ring | 6 × 735 + 18 × 485 + 2 × 2345 + Burn | 18 287 | 18 188 | +0,5 % |
+| Dragon's Breath | 8 × (595 + 5 × 207 + 4649) + ? | 50 232 | 94 255 | offen (Pool-Takt „?“) |
+| Deterministic Chaos | 48 × 485 + 6 × 280 | 24 960 | 24 966 | 0,0 % |
+| dto. Target Lock | 48 × 485 × 1,25 + 6 × 280 | 30 780 | 30 738 | +0,1 % |
+| Truth | 5682 | 5682 | 5682 | 0,0 % |
+| Truth, Trueseeker | 9 × 5682 + 3 × 8 × 490 | 62 898 | 62 028 | +1,4 % |
+| dto. Reaper's Tithe x4 | 12 × 7955 + 4 × 8 × 686 | 117 412 | 119 734 | −1,9 % |
+| Polaris Lance | 15 × 320 + 3 × 310 + 2345 + Burn 275 | 8349 | 8417 | −0,8 % |
+| dto. Ember | 10 × 320 + 2 × 310 + 2345 + Burn 137 | 6302 | 6309 | −0,1 % |
+| Lord of Wolves | 120 × 543 + 2 × 2657 + Burn 753 | 71 227 | 70 866 | +0,5 % |
+| dto. Ember | 90 × 543 + 2 × 2657 + Burn 554 | 54 738 | 54 680 | +0,1 % |
+| Ager's Scepter | 561 | 561 | 561 | 0,0 % |
+| dto. Will Given Form | 194 × 222 | 43 068 | 51 358 | −16,1 % (Zusatz ohne Quelle) |
+| dto. Harsh Refraction | 194 × 299 | 58 006 | 64 980 | −10,7 % |
+| Salvation's Grip | 1887 + 627 | 2514 | 2514 | 0,0 % |
+| Whirling Ovation, 1/3, 2/3, voll | Rakete + Strand (4962 + 4891 usw.) | exakt | exakt | 0,0 % |
+| Barrow-Dyad | 39 × 112 + 6 × (1172 + 97) | 11 982 | 13 171 | −9,0 % (6,9 Seeker nötig) |
+
+Ergebnis: 24 von 30 gezählten Szenarien (ohne Salvation's Grip „charged“). Hergeleitet statt aus dem Text: Takt der Hierarchy-Zeile „one ring“, jede 3. Truth-Rakete mit Trueseeker, Scorch-Takt von Lord of Wolves.
+
 ## Fragezeichen in den Quellen (Hinweis des Inhabers)
 
 Auswertung über alle 500 Clarity-Einträge der Exotic-Waffen (`tmp/question-marks.ts`, nicht eingecheckt): 140 Einträge mit „?“, 190 Zeilen.
