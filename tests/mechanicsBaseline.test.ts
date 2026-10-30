@@ -39,6 +39,8 @@ import { rawWeapons } from "./support/weapons";
 
 const SNAPSHOT = "./__snapshots__/mechanics-baseline.json";
 const DAMAGE_PHASES_SECONDS = [30, 600]; // a short damage phase and full ammo
+// About 2 s alone; in the full parallel run it passed the default 5 s now and then.
+const TIMEOUT_MS = 30_000;
 const ABILITY_DAMAGE_PHASE_SECONDS = 120;
 const ABILITY_STATS = [100, 200];
 const BUFFED_EFFECT_IDS = ["weaken", "surge-3x", "radiant"];
@@ -162,5 +164,5 @@ describe("mechanics baseline (ADR 0015)", () => {
     await expect(JSON.stringify(baseline, null, 2) + "\n").toMatchFileSnapshot(
       SNAPSHOT,
     );
-  });
+  }, TIMEOUT_MS);
 });
