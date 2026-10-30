@@ -5,7 +5,8 @@
 // - Shots within a magazine are one shot interval (60000 / fireRateRpm) apart.
 // - After the last shot of a magazine, the reload time adds to the shot interval. A cast that
 //   refills the magazine (U7, e.g. Marksman's Dodge) ends a reload at once or fills up the magazine.
-// - The weapon fires at most totalShots shots; primary ammo is unlimited.
+// - The weapon fires at most totalShots shots; primary ammo is unlimited. A shot limit in the options
+//   ends the shots earlier (scenario bench: the shots of an Aegis measurement).
 // - A shot or damage instance counts if it happens at or before the end of the damage phase.
 //
 // Effects (ADR 0006, stage B): each selected effect is active in its window (start and duration,
@@ -110,6 +111,7 @@ export type SimulationOptions = EffectWindowOptions & {
   weaponStat?: WeaponStatValue; // Weapons stat; default: no stat bonus
   keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
   setupPreBuilt?: boolean; // the weapon's setup charges are built before the phase ("Pre-stacked")
+  shotLimit?: number; // the weapon fires at most this many shots, e.g. those of a measurement
 };
 
 /** Time in which a super keeps the player busy; exact is false if a value of the super is missing. */
@@ -143,10 +145,14 @@ export function simulate(
   const fireRateRpm = requireValue(timing.fireRateRpm, "fireRateRpm");
   const magazine = requireValue(timing.magazine, "magazine");
   // Primary ammo is unlimited (Quantum: reserves "inf"); the damage phase ends the shots.
-  const totalShots =
+  const ammoShots =
     weapon.ammo === "primary"
       ? Number.POSITIVE_INFINITY
       : requireValue(timing.totalShots, "totalShots");
+  const totalShots = Math.min(
+    ammoShots,
+    options.shotLimit ?? Number.POSITIVE_INFINITY,
+  );
   const reloadTimeMs = requireValue(timing.reloadTimeMs, "reloadTimeMs");
 
   if (fireRateRpm <= 0) {

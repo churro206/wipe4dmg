@@ -53,6 +53,24 @@ describe("simulate: shots", () => {
     expect(shots).toHaveLength(totalShots);
   });
 
+  it("ends the shots at the shot limit, also for primary ammo", () => {
+    const limit = magazine + 1;
+    const { shots } = simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, [], [], {
+      shotLimit: limit,
+    });
+    expect(shots).toHaveLength(limit);
+    const primary = { ...weapon, ammo: "primary" as const };
+    expect(
+      simulate(primary, LONG_DAMAGE_PHASE_SECONDS, [], [], { shotLimit: limit })
+        .shots,
+    ).toHaveLength(limit);
+    expect(
+      simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, [], [], {
+        shotLimit: totalShots + 1,
+      }).shots,
+    ).toHaveLength(totalShots);
+  });
+
   it.each([0.5, 1, 4, 7.47, 20, 120])(
     "keeps every shot and damage instance inside a damage phase of %s seconds",
     (damagePhaseSeconds) => {
