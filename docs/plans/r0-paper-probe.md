@@ -2,7 +2,7 @@
 
 Fünf Waffen aus nackten Teilen und Textregeln gegen ihre Aegis-Weapons-Zeilen (Plan `ground-up-model.md`, R0). Werte auf Skala Aegis visual (Treffer ÷ `fullModifiers`). Abbruchkriterium: mindestens 4 von 5 Waffen innerhalb ±3 %.
 
-**Ergebnis: 3 von 5. Das Kriterium ist verfehlt.** Beide Ausfälle hängen am Ignition-Takt (Scorch bis Ignition), nicht am Formelweg. Gegenrechnung mit nackten Teilen und Anzahlen aus dem Text stimmt sonst auf ≤3 %.
+**Ergebnis: zunächst 3 von 5, Kriterium verfehlt. Nach der Ursachen-Recherche 4 von 5** (Abschnitt „Ursachen“: Scorch-Burn nach Compendium-Formel, Hierarchy-Takt `derived`). Gesamt mit Erweiterung 9 von 13. Dragon's Breath bleibt offen.
 
 ## Quellen
 
@@ -71,6 +71,63 @@ Auswahl: Exotics mit mindestens zwei Aegis-Weapons-Zeilen (`tmp/candidates.ts`),
   2. Ein Takt im Text ist unsicher oder fehlt: „0.5?“ s bei Lord of Wolves, Pool-Takt bei Dragon's Breath. Hier sind die „?“ also doch PvE-relevant.
   3. Zählungen, die der Text anders nahelegt als Aegis misst: Trueseeker-Raketen (Truth), Seeker je Reload (Barrow-Dyad), der Rest bei Ager's Scepter. Teils ist es Streuung der Messung (Salvation's Grip).
 - Gesamt mit R0: 6 von 13 Waffen in allen Zeilen innerhalb ±3 % aus dem Text, 7 mit einer hergeleiteten Regel (Truth). Mit Burn als Mechanik kämen Polaris Lance und vermutlich Lord of Wolves hinzu.
+
+## Ursachen und angepasste Nachrechnung (Recherche 2026-10-30)
+
+### 1. Scorch-Burn: Formel statt Tabelle
+
+Compendium „Solar“: „Scorched Enemies are dealt Scorch-stack based damage every 0.56 seconds after being scorched for 0.5 seconds … The 2nd Scorch tick has a 0.93s delay“ und „2.7 + (0.175 * Scorch Stacks) … x1 = 3 | x30 = 5 | x50 = 6.5 | x60 = 7.21 | x80 = 8.64“. Formel und Tabelle widersprechen sich (x80: 16,7 gegen 8,64). Aegis entscheidet für die Formel; die ingame-Stichprobe „Burn-Ticks von 16“ (`scorch-and-ignition.md`) passt ebenfalls zur Formel. Skala Compendium → Aegis visual wie bei der Ignition (676 → 708, ×1,047). Burn erbt die Boni der Scorch-Quelle (Lord of Wolves +24 % gegen Bosse, Ahamkara's Eye +31,6 %).
+
+- **Polaris Lance** (Takt 0,4 s, Explosionen 0,5 s nach Shot 5, 10, 15): ohne Ember Ticks bei 2,6 / 3,53 / 4,09 s mit x40, bei 4,65 / 5,21 / 5,77 s mit x80, Ignition bei 6,1 s. Mit Ember drei Ticks mit x60, Ignition bei 4,1 s.
+
+  | Zeile | ohne Burn | Burn Formel | Burn Tabelle | Aegis | Abw. (Formel) |
+  | --- | --- | --- | --- | --- | --- |
+  | ohne Ember | 8075 | +274 | +150 | 8417 | −0,8 % |
+  | mit Ember | 6165 | +137 | +75 | 6309 | −0,1 % |
+
+- **One Thousand Voices** ohne Ember: zwei Ticks je Ignitions-Zyklus, +92 → −0,6 % (vorher −1,5 %). Mit Ember zündet jeder Shot vor dem ersten Tick, bleibt −0,7 %.
+
+### 2. Lord of Wolves: Scorch-Takt unter 0,46 s
+
+Takt 0,079 s je Pellet, Magazin 30 (2,29 s Feuern), Reload 0,93 s (Aegis Sustained: 20,43 s für 189 Pellets). Mit genau 0,5 s Cooldown („0.5? second“, Compendium) kommen 5 Scorch-Treffer je Magazin; mit Ember gibt es dann nur 1 Ignition in 90 Pellets (−3,7 % mit Burn). Beide Zeilen verlangen 6 Treffer je Magazin, also einen Cooldown ≤0,458 s (`derived`). Mit 0,45 s: ohne Ember 2 Ignitions (bei 4,65 s und 11,25 s), mit Ember 2.
+
+| Zeile | Pellets + Ignitions | Burn | Modell | Aegis | Abw. |
+| --- | --- | --- | --- | --- | --- |
+| ohne Ember | 65 160 + 2 × 2657 | +753 | 71 227 | 70 866 | +0,5 % |
+| mit Ember | 48 870 + 2 × 2657 | +554 | 54 738 | 54 680 | +0,1 % |
+
+### 3. Hierarchy of Needs: Takt der Zeilen, plus Burn
+
+Mit Burn: „2 rings“ im Catalyst-Takt 1,017 s (3 Ignitions, ein Tick je Zyklus) 40 032 gegen 39 925 (+0,3 %); „one ring“ im Takt ohne Catalyst 1,364 s (2 Ignitions, vier Ticks je Zyklus) 18 287 gegen 18 188 (+0,5 %). Aegis nennt den Takt nicht; die Annahme „one ring ohne Catalyst-Takt“ steht schon im Modell (`scorch-and-ignition.md`) und ist `derived`. Im Takt 1,017 s bliebe „one ring“ bei −11,6 %.
+
+### 4. Truth: Bomblets treffen einen Boss nur teilweise
+
+Quantum hat zwei Zeilen „Assumes starting with Prototype Trueseeker, no bomblets hit the boss“ und „… all bomblets hit“; Bomblet 1240 ÷ 8 = 155 je Stück, Aegis 490 ÷ 3,16 = 155. Der Text (Trueseeker nach jedem Reload) stimmt also; es treffen nicht alle 8 Bomblets. Bei Trueseeker auf allen Raketen trifft gut ein Drittel (Zeile 9 Raketen 31 %, Zeile 12 Raketen 37 %). Geeicht an der ersten Zeile: 115 743 gegen 119 734 (−3,3 %). Das ist Streuung der Messung („average“), knapp über der Toleranz.
+
+### 5. Ager's Scepter: Zusatz je Treffer ohne Quelle
+
+Pro Treffer liegt der Wipe über dem Treffer-Wert: 264,7 gegen 222 (Will Given Form), 334,9 gegen 299 (mit Harsh Refraction). Der Rest (42,7 bzw. 35,9 roh) wächst mit Harsh Refraction nicht mit. Kein Text und keine Aegis-Spalte nennt ihn. Geeicht an der Zeile Will Given Form (`derived`, Zeilen-ID `trace-rifle-ager-s-scepter-average-will-given-form`): Harsh Refraction 194 × (299 + 42,7) = 66 290 gegen 64 980 (+2,0 %).
+
+### 6. Ohne Lösung
+
+- **Dragon's Breath:** Zieht man den Burn ab, bleiben je Shot etwa 2 Ignitions. Der Cooldown von 1,3 s und „rapidly apply 40 Scorch“ ergäben 3 bis 4. Ein Scorch-Takt je Quelle wie bei Lord of Wolves (etwa 0,45 s, 3 Treffer bis zur Ignition) käme auf etwa 2,3, ist aber nicht belegt. Der Pool-Takt ist „?“, es gibt nur eine Aegis-Zeile.
+- **Barrow-Dyad:** Aegis' 1172/97 sind Explosion und Aufprall des Seekers (Verhältnis 1,47 zum Compendium bei beiden). Der Text erlaubt höchstens 6 Seeker je Reload, die Messung verlangt 6,9. Ob die Seeker Target Lock bekommen und ob „#“ 39 die Seeker mitzählt, sagt Aegis nicht.
+- **Salvation's Grip:** Aegis vermerkt selbst „insane number variance“; kein Gate.
+
+| Quelle | Reiter | Ergebnis |
+| --- | --- | --- |
+| Aegis | Weapons (online, alle Spalten, 2026-10-30) | Keine Notizen über den Snapshot hinaus; letzte Spalten sind Crit-Verhältnis und Prüfung |
+| Aegis | Testing (Snapshot) | Nur Build-Summen (Ager's, Truth, Dragon's Breath), keine Teilwerte |
+| Compendium | Solar, Exotic Weapons, Artifact Perks (Snapshots) | Burn-Formel und -Takt, Texte oben |
+| Clarity | Snapshot | Texte oben; Lord of Wolves „0.5 second cooldown“ |
+| Quantum | Heavies, Weapon Specifics (Snapshots) | Truth-Bomblets 0 % / 100 %, Dragon's Breath Teile |
+| Court | Snapshot | Harsh Refraction 35 % für Exotics |
+
+### Stand nach der Anpassung
+
+- **R0-Waffen:** 4 von 5 innerhalb ±3 % (Hierarchy mit Takt-Annahme). Nur Dragon's Breath fällt durch. Das Abbruchkriterium ist damit erfüllt, wenn man die `derived`-Annahmen zulässt.
+- **Erweiterung:** 5 von 8 (Deterministic Chaos, Whirling Ovation, Polaris Lance, Lord of Wolves, Ager's Scepter). Truth −3,3 % (Streuung), Barrow-Dyad −9 %, Salvation's Grip ohne Gate.
+- **Gesamt 9 von 13.** Neue Mechanik, die das braucht: Scorch-Burn nach der Formel. Hergeleitete Werte: Scorch-Takt von Lord of Wolves, Takt der Hierarchy-Zeile „one ring“, Zusatz von Ager's Scepter.
 
 ## Fragezeichen in den Quellen (Hinweis des Inhabers)
 
