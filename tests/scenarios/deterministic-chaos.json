@@ -1,0 +1,25 @@
+[
+  {
+    "id": "deterministic-chaos",
+    "aegisRow": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
+    "wipe": 24966,
+    "fullModifiers": 4.11,
+    "system": "volatile",
+    "build": { "weaponId": "deterministic-chaos" },
+    "playstyle": ["average", "with volatile damage", "excludes weaken"],
+    "shots": 48,
+    "note": "Paper probe 0.0 %: every 4th shot applies volatile, the next sets it off, 1 s cooldown."
+  },
+  {
+    "id": "deterministic-chaos-target-lock",
+    "aegisRow": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken-target-lock-single-mag",
+    "wipe": 30738,
+    "fullModifiers": 4.11,
+    "system": "factor",
+    "build": { "weaponId": "deterministic-chaos", "catalyst": true },
+    "playstyle": ["average", "with volatile damage", "excludes weaken", "Target Lock", "single mag"],
+    "shots": 48,
+    "comparesTo": "deterministic-chaos",
+    "note": "Paper probe +0.1 %: bullets × 1.25 on average over the magazine, volatile without the bonus."
+  }
+]

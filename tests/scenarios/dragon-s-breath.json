@@ -1,0 +1,13 @@
+[
+  {
+    "id": "dragon-s-breath",
+    "aegisRow": "rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5",
+    "wipe": 94255,
+    "fullModifiers": 3.16,
+    "system": "scorch",
+    "build": { "weaponId": "dragon-s-breath" },
+    "playstyle": ["average", "loaded", "Composite Propellant x5"],
+    "shots": 8,
+    "note": "Open without a source: the cadence of the pools is '?', about 2 ignitions per shot measured."
+  }
+]

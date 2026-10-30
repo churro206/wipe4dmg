@@ -1,0 +1,24 @@
+[
+  {
+    "id": "hierarchy-of-needs-two-rings",
+    "aegisRow": "bow-hierarchy-of-needs-average-2-rings-fireteam-scaling",
+    "wipe": 39925,
+    "fullModifiers": 3.31,
+    "system": "scorch",
+    "build": { "weaponId": "hierarchy-of-needs", "catalyst": true, "weaponPreBuilt": true },
+    "playstyle": ["average", "2 rings", "fireteam scaling"],
+    "shots": 9,
+    "note": "Paper probe +0.3 % with burn: 6 seekers per arrow, cadence of the catalyst, 3 ignitions."
+  },
+  {
+    "id": "hierarchy-of-needs-one-ring",
+    "aegisRow": "bow-hierarchy-of-needs-average-one-ring",
+    "wipe": 18188,
+    "fullModifiers": 3.31,
+    "system": "scorch",
+    "build": { "weaponId": "hierarchy-of-needs", "weaponPreBuilt": true },
+    "playstyle": ["average", "one ring"],
+    "shots": 6,
+    "note": "Paper probe +0.5 % with burn, cadence without catalyst 1.364 s (derived; Aegis does not name it)."
+  }
+]

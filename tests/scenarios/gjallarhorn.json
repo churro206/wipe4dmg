@@ -1,0 +1,13 @@
+[
+  {
+    "id": "gjallarhorn",
+    "aegisRow": "rocket-launcher-gjallarhorn",
+    "wipe": 47872,
+    "fullModifiers": 3.16,
+    "system": "parts",
+    "build": { "weaponId": "gjallarhorn" },
+    "playstyle": [],
+    "shots": 8,
+    "note": "Paper probe 0.0 %: 446 impact + 3874 explosion + 8 wolfpack rounds × (142 + 66)."
+  }
+]

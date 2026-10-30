@@ -1,0 +1,53 @@
+[
+  {
+    "id": "one-thousand-voices",
+    "aegisRow": "fusion-rifle-one-thousand-voices-average",
+    "wipe": 31106,
+    "fullModifiers": 3.16,
+    "system": "scorch",
+    "build": { "weaponId": "one-thousand-voices" },
+    "playstyle": ["average"],
+    "shots": 4,
+    "note": "Paper probe −0.6 % with burn: ignition cooldown 1.3 s, 2 of 4 shots ignite."
+  },
+  {
+    "id": "one-thousand-voices-ember",
+    "aegisRow": "fusion-rifle-one-thousand-voices-average-ember-of-ashes",
+    "wipe": 36499,
+    "fullModifiers": 3.16,
+    "system": "scorch",
+    "build": { "weaponId": "one-thousand-voices", "effectIds": ["ember-of-ashes"] },
+    "playstyle": ["average", "Ember of Ashes"],
+    "shots": 4,
+    "comparesTo": "one-thousand-voices",
+    "note": "Paper probe −0.7 %: x15 scorch, every shot ignites."
+  },
+  {
+    "id": "one-thousand-voices-catalyst",
+    "aegisRow": "fusion-rifle-one-thousand-voices-average-catalyst",
+    "wipe": 85319,
+    "fullModifiers": 3.16,
+    "system": "parts",
+    "build": { "weaponId": "one-thousand-voices", "catalyst": true },
+    "playstyle": ["average", "catalyst"],
+    "shots": 8,
+    "comparesTo": "one-thousand-voices",
+    "note": "Paper probe −1.2 %: 9 seekers per shot, at most 5 at a time."
+  },
+  {
+    "id": "one-thousand-voices-ember-catalyst",
+    "aegisRow": "fusion-rifle-one-thousand-voices-average-ember-of-ashes-catalyst",
+    "wipe": 95256,
+    "fullModifiers": 3.16,
+    "system": "scorch",
+    "build": {
+      "weaponId": "one-thousand-voices",
+      "catalyst": true,
+      "effectIds": ["ember-of-ashes"]
+    },
+    "playstyle": ["average", "Ember of Ashes", "catalyst"],
+    "shots": 8,
+    "comparesTo": "one-thousand-voices-catalyst",
+    "note": "Paper probe +0.2 %: 8 ignitions."
+  }
+]

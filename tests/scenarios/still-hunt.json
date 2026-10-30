@@ -1,0 +1,36 @@
+[
+  {
+    "id": "still-hunt",
+    "aegisRow": "sniper-rifle-still-hunt",
+    "wipe": 2177,
+    "fullModifiers": 3.31,
+    "system": "base",
+    "build": { "weaponId": "still-hunt" },
+    "playstyle": [],
+    "shots": 1
+  },
+  {
+    "id": "still-hunt-caydes-retribution",
+    "aegisRow": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+    "wipe": 19236,
+    "fullModifiers": 3.31,
+    "system": "factor",
+    "build": { "weaponId": "still-hunt" },
+    "playstyle": ["Cayde's Retribution", "all three shots"],
+    "shots": 1,
+    "comparesTo": "still-hunt",
+    "note": "Paper probe −0.3 %: Compendium 666 × 2 (precision) × (1 + 1.45 + 1.9) × 3.31."
+  },
+  {
+    "id": "still-hunt-celestial-nighthawk",
+    "aegisRow": "sniper-rifle-still-hunt-cayde-s-retribution-celestial-nighthawk",
+    "wipe": 26469,
+    "fullModifiers": 3.17,
+    "system": "factor",
+    "build": { "weaponId": "still-hunt", "exoticArmorId": "celestial-nighthawk" },
+    "playstyle": ["Cayde's Retribution", "Celestial Nighthawk"],
+    "shots": 1,
+    "comparesTo": "still-hunt-caydes-retribution",
+    "note": "The text of the super does not fit Still Hunt (+28.6 %); calibration row."
+  }
+]

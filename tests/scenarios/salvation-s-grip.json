@@ -1,0 +1,37 @@
+[
+  {
+    "id": "salvation-s-grip",
+    "aegisRow": "grenade-launcher-salvation-s-grip",
+    "wipe": 2514,
+    "fullModifiers": 3.16,
+    "system": "base",
+    "build": { "weaponId": "salvation-s-grip" },
+    "playstyle": [],
+    "shots": 1
+  },
+  {
+    "id": "salvation-s-grip-charged",
+    "aegisRow": "grenade-launcher-salvation-s-grip-average-charged",
+    "wipe": 47896,
+    "fullModifiers": 3.16,
+    "system": "parts",
+    "build": { "weaponId": "salvation-s-grip" },
+    "playstyle": ["average", "charged"],
+    "shots": 12,
+    "excluded": "Aegis notes \"insane number variance\"",
+    "note": "Paper probe −5.5 %: 6 crystals × 524 + 627 impact per shot."
+  },
+  {
+    "id": "salvation-s-grip-hail-the-storm",
+    "aegisRow": "grenade-launcher-salvation-s-grip-average-charged-hail-the-storm",
+    "wipe": 54080,
+    "fullModifiers": 3.16,
+    "system": "factor",
+    "build": { "weaponId": "salvation-s-grip" },
+    "playstyle": ["average", "charged", "Hail the Storm"],
+    "shots": 12,
+    "comparesTo": "salvation-s-grip-charged",
+    "excluded": "Aegis notes \"insane number variance\"",
+    "note": "Factor +25 % per crystal fits (0.0 %)."
+  }
+]

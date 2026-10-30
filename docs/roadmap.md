@@ -71,7 +71,7 @@ Status: 2026-10-25
 
 ## Next
 
-- Damage model from general systems (ADR 0017, stages S0–S6 on branch `ground-up-model`): formula, status system (Scorch with burn, Volatile, Jolt, Slow), effect rules, weapon state and play policy; Aegis rows as scenarios on a test bench with one score. Paper probe: 9 of 13 weapons within ±3 %. Next: S0 test bench
+- Damage model from general systems (ADR 0017, stages S0–S6 on branch `ground-up-model`): formula, status system (Scorch with burn, Volatile, Jolt, Slow), effect rules, weapon state and play policy; Aegis rows as scenarios on a test bench with one score. Paper probe: 9 of 13 weapons within ±3 %. S0 test bench done (today's core: 12 of 30 scenarios, ratios 5 of 14). Next: S1 core
 - Coverage triage: sort every missing item into left out (no effect against a boss), a value from the text (under 2 %) or its own block
 
 - Hammer of Sol with Sol Invictus

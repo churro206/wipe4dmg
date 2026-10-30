@@ -1,0 +1,35 @@
+[
+  {
+    "id": "ager-s-scepter",
+    "aegisRow": "trace-rifle-ager-s-scepter",
+    "wipe": 561,
+    "fullModifiers": 15.09,
+    "system": "base",
+    "build": { "weaponId": "ager-s-scepter" },
+    "playstyle": [],
+    "shots": 1
+  },
+  {
+    "id": "ager-s-scepter-will-given-form",
+    "aegisRow": "trace-rifle-ager-s-scepter-average-will-given-form",
+    "wipe": 51358,
+    "fullModifiers": 3.31,
+    "system": "factor",
+    "build": { "weaponId": "ager-s-scepter", "catalyst": true },
+    "playstyle": ["average", "Will Given Form"],
+    "shots": 194,
+    "note": "Factor +80 % fits (+0.2 %); the wipe has an extra per hit without a source, calibrated here (derived)."
+  },
+  {
+    "id": "ager-s-scepter-harsh-refraction",
+    "aegisRow": "trace-rifle-ager-s-scepter-average-will-given-form-harsh-refraction",
+    "wipe": 64980,
+    "fullModifiers": 3.31,
+    "system": "factor",
+    "build": { "weaponId": "ager-s-scepter", "catalyst": true },
+    "playstyle": ["average", "Will Given Form", "Harsh Refraction"],
+    "shots": 194,
+    "comparesTo": "ager-s-scepter-will-given-form",
+    "note": "Paper probe +2.0 %: Harsh Refraction +35 % for exotics (Court) on the hit, not on the extra."
+  }
+]

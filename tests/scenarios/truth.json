@@ -1,0 +1,35 @@
+[
+  {
+    "id": "truth",
+    "aegisRow": "rocket-launcher-truth",
+    "wipe": 5682,
+    "fullModifiers": 3.16,
+    "system": "base",
+    "build": { "weaponId": "truth" },
+    "playstyle": [],
+    "shots": 1
+  },
+  {
+    "id": "truth-trueseeker",
+    "aegisRow": "rocket-launcher-truth-average-prototype-truthseeker",
+    "wipe": 62028,
+    "fullModifiers": 3.16,
+    "system": "hitShare",
+    "build": { "weaponId": "truth" },
+    "playstyle": ["average", "Prototype Truthseeker"],
+    "shots": 9,
+    "note": "Paper probe: Trueseeker after every reload, but only about a third of the bomblets hit a boss (Quantum 0 % and 100 % rows); calibration row."
+  },
+  {
+    "id": "truth-trueseeker-reapers-tithe",
+    "aegisRow": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
+    "wipe": 119734,
+    "fullModifiers": 3.16,
+    "system": "hitShare",
+    "build": { "weaponId": "truth", "catalyst": true },
+    "playstyle": ["average", "Prototype Truthseeker", "Reaper's Tithe x4"],
+    "shots": 12,
+    "comparesTo": "truth-trueseeker",
+    "note": "Paper probe −3.3 % with the hit share of the calibration row (scatter of an average)."
+  }
+]

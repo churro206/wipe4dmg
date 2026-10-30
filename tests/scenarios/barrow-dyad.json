@@ -1,0 +1,24 @@
+[
+  {
+    "id": "barrow-dyad",
+    "aegisRow": "smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock",
+    "wipe": 13171,
+    "fullModifiers": 3.17,
+    "system": "parts",
+    "build": { "weaponId": "barrow-dyad" },
+    "playstyle": ["average", "Taken Ambition", "with Blighted Seekers", "Target Lock"],
+    "shots": 39,
+    "note": "Paper probe −9.0 %: the text allows 6 seekers per reload, the measurement needs 6.9 (open)."
+  },
+  {
+    "id": "barrow-dyad-peacekeepers",
+    "aegisRow": "smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock",
+    "wipe": 17381,
+    "fullModifiers": 3.17,
+    "system": "factor",
+    "build": { "weaponId": "barrow-dyad", "exoticArmorId": "peacekeepers" },
+    "playstyle": ["average", "Taken Ambition", "with Blighted Seekers", "Peacekeepers", "Target Lock"],
+    "shots": 39,
+    "comparesTo": "barrow-dyad"
+  }
+]

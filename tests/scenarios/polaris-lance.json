@@ -1,0 +1,25 @@
+[
+  {
+    "id": "polaris-lance",
+    "aegisRow": "scout-rifle-polaris-lance-average-with-ignition",
+    "wipe": 8417,
+    "fullModifiers": 3.31,
+    "system": "scorch",
+    "build": { "weaponId": "polaris-lance" },
+    "playstyle": ["average", "with ignition"],
+    "shots": 15,
+    "note": "Paper probe −0.8 % with burn: every 5th shot Perfect Fifth, x40 scorch, 1 ignition."
+  },
+  {
+    "id": "polaris-lance-ember",
+    "aegisRow": "scout-rifle-polaris-lance-average-with-ignitions-ember-of-ashes",
+    "wipe": 6309,
+    "fullModifiers": 3.31,
+    "system": "scorch",
+    "build": { "weaponId": "polaris-lance", "effectIds": ["ember-of-ashes"] },
+    "playstyle": ["average", "with ignitions", "Ember of Ashes"],
+    "shots": 10,
+    "comparesTo": "polaris-lance",
+    "note": "Paper probe −0.1 % with burn: x60, 1 ignition."
+  }
+]

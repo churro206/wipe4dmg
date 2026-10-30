@@ -1,0 +1,25 @@
+[
+  {
+    "id": "lord-of-wolves",
+    "aegisRow": "shotgun-lord-of-wolves-average-includes-ignition-scorch",
+    "wipe": 70866,
+    "fullModifiers": 3.17,
+    "system": "scorch",
+    "build": { "weaponId": "lord-of-wolves" },
+    "playstyle": ["average", "includes ignition/scorch"],
+    "shots": 120,
+    "note": "Paper probe +0.5 % with burn and a scorch cooldown per source of 0.45 s (derived, text '0.5?')."
+  },
+  {
+    "id": "lord-of-wolves-ember",
+    "aegisRow": "shotgun-lord-of-wolves-average-includes-ignition-scorch-ember-of-ashes",
+    "wipe": 54680,
+    "fullModifiers": 3.17,
+    "system": "scorch",
+    "build": { "weaponId": "lord-of-wolves", "effectIds": ["ember-of-ashes"] },
+    "playstyle": ["average", "includes ignition/scorch", "Ember of Ashes"],
+    "shots": 90,
+    "comparesTo": "lord-of-wolves",
+    "note": "Paper probe +0.1 % with burn, 2 ignitions."
+  }
+]

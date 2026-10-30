@@ -4,11 +4,13 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**S0 Prüfstand** des Umbaus (ADR 0017, Plan `docs/plans/ground-up-model.md`, Stufen S0–S6 nach Systemen; Sonnet). Arbeit nur auf Branch `ground-up-model`, `master` bleibt die laufende Version (Inhaber, 2026-10-30). Inhalt S0: Szenario-Format `tests/scenarios/*.json` (Build, Spielweise, Takt, Dauer, Ergebnis, Aegis-Zeilen-ID), Läufer `tests/scenarioBench.test.ts` mit Tabelle und Kennzahl (Anteil ±3 %, je System), erste Szenarien aus den 13 Waffen der Papierprobe, Kennzahl des heutigen Kerns als Basis. Rechenwege und Zahlen je Zeile: `docs/plans/r0-paper-probe.md`.
+**S1 Kern** des Umbaus (ADR 0017, Plan `docs/plans/ground-up-model.md`; Opus entwirft, Sonnet setzt um). Arbeit nur auf Branch `ground-up-model`, `master` bleibt die laufende Version (Inhaber, 2026-10-30). Inhalt S1: `src/engine/core/` mit Ereignis-Schleife, Formel, Akteur-Zustand, Ausgabe `SimulationResult`; Adapter für die heutigen Pakete; alter und neuer Kern parallel im Test, `mechanics-baseline` unverändert. Der neue Kern muss `shotLimit` kennen (Prüfstand).
+
+S0 erledigt (2026-10-30): Prüfstand `tests/scenarioBench.test.ts`, 32 Szenarien in `tests/scenarios/`, Basis heutiger Kern 12 von 30 innerhalb ±3 %, Verhältnisse 5 von 14 (`tests/__snapshots__/scenario-bench.md`). Rechenwege je Zeile: `docs/plans/r0-paper-probe.md`.
 
 Papierprobe (2026-10-30): 9 von 13 Waffen nach Ursachen-Recherche innerhalb ±3 %. Fehlende Systeme: Scorch-Burn (Compendium-Formel 2,7 + 0,175 × Stacks, von Aegis bestätigt), Cooldown des Keyword-Auftrags pro Quelle (Lord of Wolves ≤0,46 s), Treffer-Anteil am Boss (Truth-Bomblets). Offen ohne Quelle: Dragon's Breath, Barrow-Dyad, Zusatz bei Ager's Scepter.
 
-Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche, Casts lückenlos, Ladezeit und Bogen-Takt; Bögen (Leviathan's Breath 1,93/1,33 s, Hierarchy aus Pfeil + Seekern + Ignitions mit `Weapon.setup` und Schalter „Pre-stacked“; Ignition-Cooldown nach Recherche bei 1,3 s, Beleg Daybreak mit Dawn Chorus); Q2 Supers; Q3 Energie; Aufräum-Block. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
+Ältere Blöcke bis 2026-10-26: im Changelog. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
 - Verglas Curve Catalyst wartet auf Slow am Ziel (Q4).
 - Zurückgestellt: **Hammer of Sol mit Sol Invictus.** Der Aegis-Import ordnet „Roaring Flames x3“ nicht `roaring-flames-3` zu; Aegis misst nur ×1,06, der Text +73 %. Weg: Regel „X xN“ → Effect `x-n` in Import und `tests/lib/probeAuto.ts`, Re-Import nach `nach-patch`. Alternative: Würfe aus dem Compendium-Drain (≈ ×2).
