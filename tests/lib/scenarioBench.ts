@@ -39,6 +39,7 @@ export const Scenario = z.object({
     effectIds: z.array(z.string()).optional(), // effects.json, active the whole phase
     exoticArmorId: z.string().optional(),
     weaponPreBuilt: z.boolean().optional(), // the weapon's setup stands before the phase
+    playstyle: z.string().optional(), // Build.playstyle, e.g. the Golden Gun shots of Still Hunt
   }),
   playstyle: z.array(z.string()), // the assumptions of the Aegis row, as written there
   shots: z.number().int().positive(), // shots of the measurement; the cadence follows the build
@@ -71,6 +72,7 @@ export function modelTotal(
     subclass: "arc",
     catalyst: s.build.catalyst ?? false,
     ...(s.build.weaponPreBuilt ? { weaponPreBuilt: true } : {}),
+    ...(s.build.playstyle ? { playstyle: s.build.playstyle } : {}),
     ...(armor ? { exoticArmorId: armor.id } : {}),
     selections: effectIds.map((effectId) => ({
       effectId,

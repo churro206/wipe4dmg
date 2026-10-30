@@ -1147,9 +1147,19 @@
         "source": "clarity",
         "entry": "Still Hunt Catalyst",
         "text": "within ? seconds of a Precision Kill"
+      },
+      {
+        "source": "aegis",
+        "entry": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+        "text": "6412 2nd, 8402 3rd"
       }
     ],
-    "catalystEffect": "none"
+    "catalystEffect": "none",
+    "playstylePart": {
+      "id": "cayde-s-retribution",
+      "name": "Cayde's Retribution (Golden Gun shots)",
+      "row": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots"
+    }
   },
   {
     "weapon": "Sturm",

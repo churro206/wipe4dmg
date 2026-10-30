@@ -13504,6 +13504,82 @@
         },
         "canPrecision": false,
         "requiresCatalyst": false
+      },
+      {
+        "id": "cayde-s-retribution",
+        "name": "Cayde's Retribution (Golden Gun shots)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
+          }
+        },
+        "damagePerTick": {
+          "value": 1335.952,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "critShot ÷ Full Modifiers; assumptions: Cayde's Retribution, all three shots"
+          }
+        },
+        "ticks": {
+          "value": 3,
+          "source": {
+            "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 1361,
+          "source": {
+            "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung.; the shots follow at the weapon's interval (60000 ÷ rpm)"
+          }
+        },
+        "tickFactors": [
+          {
+            "value": 1,
+            "source": {
+              "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
+            }
+          },
+          {
+            "value": 1.45,
+            "source": {
+              "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
+            }
+          },
+          {
+            "value": 1.9,
+            "source": {
+              "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+              "url": "https://destiny2.science/boss-damage",
+              "retrieved": "2026-10-20",
+              "status": "verified",
+              "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
+            }
+          }
+        ],
+        "playstyle": { "id": "cayde-s-retribution", "replaces": "shot" },
+        "canPrecision": false,
+        "requiresCatalyst": false
       }
     ],
     "intrinsicParts": [],

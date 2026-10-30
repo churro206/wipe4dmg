@@ -15,7 +15,7 @@
     "wipe": 19236,
     "fullModifiers": 3.31,
     "system": "factor",
-    "build": { "weaponId": "still-hunt" },
+    "build": { "weaponId": "still-hunt", "playstyle": "cayde-s-retribution" },
     "playstyle": ["Cayde's Retribution", "all three shots"],
     "shots": 1,
     "comparesTo": "still-hunt",

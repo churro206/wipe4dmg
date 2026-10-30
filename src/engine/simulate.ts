@@ -111,6 +111,7 @@ export type SimulationOptions = EffectWindowOptions & {
   weaponStat?: WeaponStatValue; // Weapons stat; default: no stat bonus
   keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
   setupPreBuilt?: boolean; // the weapon's setup charges are built before the phase ("Pre-stacked")
+  playstyle?: string; // Build.playstyle; the core only (stage S3)
   shotLimit?: number; // the weapon fires at most this many shots, e.g. those of a measurement
 };
 
@@ -400,6 +401,7 @@ export function simulate(
 
   const instances = weapon.damageInstances
     .filter((instance) => catalyst || !instance.requiresCatalyst)
+    .filter((instance) => !instance.playstyle) // the old simulator plays the plain shot only
     .map((instance) => ({
       id: instance.id,
       delivery: instance.delivery,

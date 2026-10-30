@@ -66,9 +66,18 @@ export function simulateCore(
   });
   const { isInPhase } = actor;
 
+  const active = weapon.damageInstances.filter(
+    (instance) =>
+      instance.playstyle !== undefined && instance.playstyle.id === options.playstyle,
+  );
+  const replaced = active.flatMap((instance) => instance.playstyle?.replaces ?? []);
   const instances = weapon.damageInstances
     .filter((instance) => catalyst || !instance.requiresCatalyst)
+    .filter((instance) =>
+      instance.playstyle ? active.includes(instance) : !replaced.includes(instance.id),
+    )
     .map((instance) => ({
+      tickFactors: (instance.tickFactors ?? []).map((f) => requireValue(f, "tickFactors")),
       id: instance.id,
       delivery: instance.delivery,
       delayMs: requireValue(instance.delayMs, "delayMs"),
@@ -182,7 +191,10 @@ export function simulateCore(
             emit({
               id: instance.id,
               timeMs,
-              damage: damageOf(instance.damage, factors),
+              damage: damageOf(
+                instance.damage * (instance.tickFactors[tick] ?? 1),
+                factors,
+              ),
               damageSource,
               element: weapon.element,
               weaponType: weapon.weaponType,

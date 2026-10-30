@@ -5,10 +5,10 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 
 ## Key figures
 
-- Total: 18 of 30
-- Ratios between rows of one weapon: 5 of 14
+- Total: 19 of 30
+- Ratios between rows of one weapon: 6 of 14
 - base: 4 of 5
-- factor: 2 of 9
+- factor: 3 of 9
 - parts: 2 of 3
 - scorch: 7 of 10
 - volatile: 1 of 1
@@ -41,8 +41,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 | salvation-s-grip-charged | parts | 15157 | 9539 | −37.1 % |  | not counted: Aegis notes "insane number variance" |
 | salvation-s-grip-hail-the-storm | factor | 17114 | 9539 | −44.3 % | −11.4 % | not counted: Aegis notes "insane number variance" |
 | still-hunt | base | 658 | 658 | +0.1 % |  |  |
-| still-hunt-caydes-retribution | factor | 5811 | 658 | −88.7 % | −88.7 % |  |
-| still-hunt-celestial-nighthawk | factor | 8350 | 658 | −92.1 % | −30.4 % |  |
+| still-hunt-caydes-retribution | factor | 5811 | 5811 | −0.0 % | −0.1 % |  |
+| still-hunt-celestial-nighthawk | factor | 8350 | 658 | −92.1 % | −92.1 % |  |
 | truth | base | 1798 | 1798 | −0.0 % |  |  |
 | truth-trueseeker | hitShare | 19629 | 19904 | +1.4 % |  |  |
 | truth-trueseeker-reapers-tithe | hitShare | 37891 | 37155 | −1.9 % | −3.3 % |  |

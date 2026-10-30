@@ -84,6 +84,7 @@ export function buildSimulation(
     options: {
       catalyst: build.catalyst,
       ...(build.weaponPreBuilt ? { setupPreBuilt: true } : {}),
+      ...(build.playstyle ? { playstyle: build.playstyle } : {}),
       effectWindows: { ...build.effectWindows, ...abilityPart.grantedWindows },
       abilities: abilityPart.casts,
       abilityStats: abilityPart.stats,

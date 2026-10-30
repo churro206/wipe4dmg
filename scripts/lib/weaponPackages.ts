@@ -1038,6 +1038,30 @@ export function buildWeaponImport(
       );
     }
 
+    // The shots of a playstyle (override): hit and factors of the 2nd and 3rd shot from the row's
+    // ticks ("6412 2nd, 8402 3rd"), on the scale of Aegis "visual".
+    const playstyleRule = override?.playstylePart;
+    const playstyleRow = playstyleRule
+      ? inputs.aegis.rows.find((r) => r.id === playstyleRule.row)
+      : undefined;
+    const playstyleFactors = playstyleRow
+      ? [
+          1,
+          ...[...playstyleRow.otherTicks.matchAll(/(\d+) (?:2nd|3rd)/g)].map(
+            (m) => Number(m[1]) / playstyleRow.critShot!,
+          ),
+        ]
+      : [];
+    if (playstyleRule) {
+      if (!playstyleRow || playstyleRow.critShot === null || playstyleFactors.length < 2)
+        throw new Error(
+          `${manifest.name}: playstylePart needs row ${playstyleRule.row} with a hit and ticks "N 2nd, N 3rd"`,
+        );
+      entry.notes.push(
+        `${playstyleRule.name}: ${playstyleFactors.length} Schüsse aus ${playstyleRow.id} („${playstyleRow.otherTicks}“), Faktoren ${playstyleFactors.map((f) => de(f, 3)).join(", ")} (Override)`,
+      );
+    }
+
     // Options: rows that add only catalyst, perk or mod assumptions to the base row.
     const options: WeaponOption[] = [];
     for (const row of rows) {
@@ -1961,6 +1985,45 @@ export function buildWeaponImport(
                 ticks: { value: nthRule.hits, source: setupSource() },
                 tickIntervalMs: { value: 0, source: setupSource() },
                 everyNthShot: { value: nthRule.every, source: setupSource() },
+                canPrecision: false,
+                requiresCatalyst: false,
+              },
+            ]
+          : []),
+        ...(playstyleRule && playstyleRow
+          ? [
+              {
+                id: playstyleRule.id,
+                name: playstyleRule.name,
+                delayMs: { value: 0, source: setupSource() },
+                damagePerTick: {
+                  value: Number(
+                    (
+                      playstyleRow.critShot! /
+                      playstyleRow.fullModifiers /
+                      normaliseFactor
+                    ).toFixed(3),
+                  ),
+                  source: aegisSource(
+                    playstyleRow,
+                    `critShot ÷ Full Modifiers; assumptions: ${playstyleRow.assumptions.join(", ")}`,
+                  ),
+                },
+                ticks: { value: playstyleFactors.length, source: setupSource() },
+                tickIntervalMs: {
+                  value: Math.round(60000 / entry.derivedRpm),
+                  source: setupSource(
+                    "the shots follow at the weapon's interval (60000 ÷ rpm)",
+                  ),
+                },
+                tickFactors: playstyleFactors.map((f) => ({
+                  value: Number(f.toFixed(3)),
+                  source: aegisSource(
+                    playstyleRow,
+                    `tick ÷ hit of "${playstyleRow.otherTicks}"`,
+                  ),
+                })),
+                playstyle: { id: playstyleRule.id, replaces: "shot" },
                 canPrecision: false,
                 requiresCatalyst: false,
               },

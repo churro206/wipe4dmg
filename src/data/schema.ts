@@ -66,6 +66,10 @@ export const DamageInstance = z.object({
   // Only every Nth shot of the weapon sets it off (the Nth, 2Nth, ...), e.g. the cluster of every
   // third rocket with Prototype Trueseeker
   everyNthShot: SourcedNumber.optional(),
+  // A factor per tick (the length of `ticks`), e.g. the three Golden Gun shots x1, x1.45, x1.9
+  tickFactors: z.array(SourcedNumber).optional(),
+  // Only in this playstyle of the build (Build.playstyle); it takes the place of the instance `replaces`
+  playstyle: z.object({ id: z.string(), replaces: z.string().optional() }).optional(),
   delivery: Delivery.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
@@ -1311,6 +1315,9 @@ export const Build = z.object({
   // The weapon's setup charges are built before the damage phase (WeaponSetup, e.g. Guidance Ring
   // charges persist through stow); omitted: off.
   weaponPreBuilt: z.boolean().optional(),
+  // How the weapon is played where its shots differ (DamageInstance.playstyle), e.g. "cayde-s-retribution"
+  // for the Golden Gun shots of Still Hunt; omitted: the plain shot. Not in the build link yet.
+  playstyle: z.string().optional(),
   // Exotic armor piece (exotic-armor.json, ADR 0014); omitted: none. At most one per build.
   exoticArmorId: z.string().optional(),
   // The kill buffs of the exotic are built up before the damage phase (ADR 0015); omitted: off.
@@ -1686,6 +1693,16 @@ export const WeaponOverride = z.object({
       name: z.string(),
       every: z.number().int().min(2),
       hits: z.number().int().positive(),
+    })
+    .optional(),
+  // A playstyle whose shots replace the weapon's shot (Build.playstyle): the hit and the factors of
+  // the following shots come from the Aegis row, e.g. "all three shots" of Still Hunt with Cayde's
+  // Retribution ("6412 2nd, 8402 3rd"); the shots follow at the weapon's interval.
+  playstylePart: z
+    .object({
+      id: z.string(),
+      name: z.string(),
+      row: z.string(), // id of the Aegis Weapons row
     })
     .optional(),
   // A setup the shots build and deploy (WeaponSetup): the shot from a Quantum row without it, the
