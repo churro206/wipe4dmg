@@ -1,60 +1,64 @@
-# ADR 0017: Schadensmodell von Grund auf
+# ADR 0017: Schadensmodell aus allgemeinen Systemen mit Prüfstand
 
-Status: vorgeschlagen, wartet auf Entscheidung des Inhabers · Datum: 2026-10-30
+Status: angenommen (Inhaber, 2026-10-30) · Umsetzung auf Branch `ground-up-model`, Plan `docs/plans/ground-up-model.md`
 
 ## Kontext
 
-Plan `docs/plans/ground-up-model.md`. Heute ist eine Waffe ein Durchschnitt pro Shot unter Aegis' Annahmen (ADR 0013). `simulate()` legt Schussplan, Effekt-Fenster und Casts vorab an; Treffer wirken nicht zurück. Jede Rückkopplung ist ein Sonderfeld. Die Papierprobe (`docs/plans/r0-paper-probe.md`) hat das Grundmodell an fünf Waffen geprüft: **3 von 5 innerhalb ±3 %**, Abbruchkriterium (4 von 5) verfehlt. Beide Ausfälle (Hierarchy of Needs „one ring“, Dragon's Breath) hängen am Ignition-Takt.
+Heute ist eine Waffe ein Durchschnitt pro Shot unter Aegis' Annahmen (ADR 0013). `simulate()` legt Schussplan, Effekt-Fenster und Casts vorab an; Treffer wirken nicht zurück. Jede Rückkopplung ist ein Sonderfeld. Die Papierprobe (`docs/plans/r0-paper-probe.md`, 13 Waffen) zeigt:
 
-## Entscheidung (Entwurf)
+- Faktoren aus Texten treffen Aegis auf ≤0,2 % (9 von 9), Teile mit Anzahlen aus dem Text treffen den Wipe.
+- Fast jede Abweichung ist ein **fehlendes allgemeines System**: Burn, Cooldown des Keyword-Auftrags pro Quelle, Treffer-Anteil am Boss. Dazu kommen Annahmen der Messung (Takt), die bisher im Modell stecken.
+- Nach Klärung der Ursachen passen 9 von 13 Waffen auf ±3 %.
 
-1. **Treffer** = nackter Teilwert (Skala Aegis visual) × Precision-Faktor des Teils × Π Buckets (`buckets.json`) × Stat-Faktor.
-2. **Zustand:** Spieler (Magazin, Reserve, Nachladen, Ladungen und Ressourcen wie Golden-Gun-Ladung oder Fuel, Buffs mit Stacks, Energie) und Ziel (Debuffs, Keyword-Zähler, Cooldowns).
-3. **Ereignisse** `shot`, `hit` (mit `precision`), `cast`, `reload`, `keyword`. **Regeln** sind Paare aus Auslöser und Wirkung: Buff oder Stack geben, Ladung erhöhen, Magazin füllen, Modus wechseln, Keyword setzen, Schaden machen.
-4. **Spielweise als Strategie:** Prioritätsliste, optimal wie bei Aegis (Golden Gun casten, sobald geladen; Dodge auf das Nachladen; Draw nur halten, wenn der Schaden pro Sekunde steigt).
-5. **Eich-Regel:** Was kein Text nennt, kommt aus genau einer Aegis-Zeile (`derived`, mit Zeilen-ID). Die übrigen Zeilen derselben Waffe sind das Gate. ADR 0011 gilt weiter.
-6. **Teile nur, wo nötig:** zerlegt wird eine Waffe nur, wenn ein Teil mit dem Build zusammenspielt (Keyword, Stacks, Fuel, Precision-Unterschied).
+## Entscheidung
+
+1. **Fünf Schichten**, rein und einzeln testbar, über einer deterministischen Ereignis-Schleife:
+   1. Formel: Grundwert × Precision × Π Buckets (`buckets.json`) × Stat-Faktor.
+   2. Status-System an Ziel und Spieler: Stacks, Dauer, Verfall, Ticks, Schwelle, Cooldown, Cooldown pro Quelle. Keywords und Debuffs sind Datensätze.
+   3. Effekt-System: Auslöser (`shot`, `hit` mit `precision`, `cast`, `reload`, `status`) → Bedingung (Zustand) → Aktion (`grantBuff`, `addStacks`, `addResource`, `refillMagazine`, `setMode`, `applyStatus`, `damage`).
+   4. Akteur-Zustand: Magazin, Reserve, Reload, Charge, Modi, Ressourcen.
+   5. Strategie: Prioritätsliste, optimal wie bei Aegis.
+2. **Neuer Code nur für neue Aktions- oder Status-Typen**, nie für ein einzelnes Item. Sonderfelder (`setup`, `holdDraw`, `refillsMagazine`, `hitStacks`, `catalystWindowSeconds`, `scorchStacksPerShot`) werden Datensätze und fallen danach weg.
+3. **Spielwerte und Messungen getrennt.** Messungen sind Szenarien (`tests/scenarios/`): Build, Spielweise, Takt, Dauer, Ergebnis, Aegis-Zeilen-ID. Annahmen einer Messung stehen nur im Szenario.
+4. **Kalibrieren nie pro Waffe:**
+   - Globale Parameter (z. B. Ignition-Cooldown, Burn-Formel, Cooldown pro Quelle, Treffer-Anteil je Teil-Art) werden gegen alle Szenarien zugleich angepasst. Ein Ausreißer ist ein Befund.
+   - Item-Werte kommen aus dem Text. Fehlt einer, wird er an genau einer Zeile geeicht (`derived`, Zeilen-ID), die übrigen prüfen. ADR 0011 gilt weiter.
+5. **Kennzahl:** Anteil der Szenarien innerhalb ±3 %, je System; Verhältnisse zwischen Zeilen derselben Waffe zählen vor Absolutwerten. Der neue Kern löst den alten erst ab, wenn seine Kennzahl besser ist und `mechanics-baseline` nur begründet abweicht.
+6. **Teile nur, wo nötig:** zerlegt wird eine Waffe, wenn ein Teil mit dem Build spielt (Keyword, Stacks, Ressource, Precision-Unterschied).
 
 ### Schema-Entwurf
 
 ```ts
-// src/data/weapon-components.json, je Waffe
 interface WeaponComponent {
   id: string;                 // "golden-gun-shot", "wolfpack", "explosion"
-  damage: Sourced<number>;    // Skala aegisVisual; Aegis-Tick ÷ fullModifiers oder Verhältnis (ADR 0011)
-  precision: Sourced<number>; // Faktor gegen Bosse; fehlt er, geeicht an der Aegis-Zeile
+  damage: Sourced<number>;    // Skala aegisVisual
+  precision: Sourced<number>;
   delivery: "impact" | "splash" | "dot";
-  count?: Sourced<number>;    // pro Auslöser, z. B. 8 Wolfpack, 9 Explosionen
+  count?: Sourced<number>;    // pro Auslöser
+  hitShare?: Sourced<number>; // Anteil, der einen Boss trifft (global je Teil-Art)
   delayMs?: Sourced<number>;
-  scaling?: { by: string; factors: Sourced<number[]> }; // z. B. Fuel 1–5, Schuss 1–3
+  scaling?: { by: string; factors: Sourced<number[]> }; // Fuel, Ladestufe, Schuss 1–3
+}
+
+interface Status {            // keywords.json
+  id: string;                 // "scorch", "volatile", "jolt", "slow"
+  maxStacks?: number; durationMs: Sourced<number>; decay?: { afterMs: number; perSecond: number };
+  tick?: { firstMs: number; everyMs: number; damage: Formula };
+  threshold?: { stacks: number; then: Action[]; cooldownMs: Sourced<number> };
+  perSourceCooldownMs?: Sourced<number>;
 }
 
 interface Rule {
   id: string;
-  on: { event: "shot" | "hit" | "cast" | "reload" | "keyword"; filter?: HitFilter };
-  if?: Condition[];           // Zustand: Ressource ≥ n, Modus, Buff aktiv
-  then: Action[];             // grantBuff, addStacks, addResource, refillMagazine,
-                              // setMode, applyKeyword, damage
+  on: { event: "shot" | "hit" | "cast" | "reload" | "status"; filter?: HitFilter };
+  if?: Condition[];
+  then: Action[];
   cooldownMs?: Sourced<number>;
 }
 ```
 
-### Zu ersetzende Sonderfelder (R3)
+## Folgen
 
-| Feld | Ort | Wird Regel |
-| --- | --- | --- |
-| `setup`, `catalystTimingOnceDeployed` | `schema.ts` (Weapon, Override) | Hierarchy: Treffer → Ladung, Ladung 3 → Modus Ring |
-| `holdDraw` (Part) | `effectParts.ts` | Oathkeeper: Strategie hält Draw |
-| `refillsMagazine` | Class Ability | Marksman's Dodge: cast → refillMagazine |
-| `hitStacks` | Exotic-Effects | Lucky Pants, Peacekeepers: hit → addStacks |
-| `catalystWindowSeconds` | Override | Truth: Fenster aus Zustand |
-| `scorchStacksPerShot` | Override | Teil mit `count` und Keyword-Regel |
-
-## Offen vor der Annahme
-
-- **Ignition-Takt.** Kein Cooldown erfüllt beide Hierarchy-Zeilen; Dragon's Breath braucht eine Bremse, die keine Quelle nennt (Pool-Takt „?“). Beides ist auch im heutigen Kern nur über Pakete gelöst.
-- Entscheidung des Inhabers: Umbau trotzdem (Ignitions geeicht, ohne unabhängiges Gate), Umbau erst nach einer Ingame-Messung des Ignition-Takts (ADR 0011, Punkt 6), oder kein Umbau.
-
-## Folgen bei Annahme
-
-- Etappen R1–R6 laut Plan; Gate R1: `mechanics-baseline` unverändert, Optimizer höchstens 306 ms für `tests/optimizer.test.ts` (R0 gemessen 153 ms).
+- Stufen S0–S6 laut Plan, beginnend mit dem Prüfstand und der Kennzahl des heutigen Kerns.
+- Neue Mechaniken werden meist ein Datensatz; neue Waffen ein Satz Teile und Regeln aus dem Text.
+- Offen ohne Quelle: Dragon's Breath (Pool-Takt), Barrow-Dyad (Seeker-Zahl), Zusatz bei Ager's Scepter. Sie bleiben Szenarien mit Befund.

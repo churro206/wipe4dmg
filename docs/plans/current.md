@@ -4,7 +4,9 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**Entscheidung des Inhabers zum Umbau** (Plan `docs/plans/ground-up-model.md`). R0 ist erledigt (2026-10-30): Papierprobe `docs/plans/r0-paper-probe.md` ergibt 3 von 5 Waffen innerhalb ±3 %, das Abbruchkriterium ist verfehlt. Beide Ausfälle (Hierarchy „one ring“, Dragon's Breath) hängen am Ignition-Takt. Erweitert um acht Waffen aller Elemente: Faktoren aus Texten treffen immer, Ausfälle durch fehlenden Scorch-Burn (2–4 %), unsichere Takte und Zählungen; gesamt 6 von 13. Nach Ursachen-Recherche 4 von 5 und 9 von 13: Scorch-Burn nach Compendium-Formel fehlt im Modell (2–4 %), dazu drei `derived`-Werte (Lord of Wolves Scorch-Takt ≤0,46 s, Hierarchy „one ring“ im Takt ohne Catalyst, Zusatz bei Ager's Scepter). Offen: Dragon's Breath, Barrow-Dyad, Truth (−3,3 %, Streuung). Der Umbau läuft auf dem Branch `ground-up-model`, `master` bleibt der Stand vor dem Umbau (Inhaber, 2026-10-30). ADR 0017 steht als Vorschlag. Optionen: (a) Umbau mit an Aegis geeichten Ignitions, (b) erst den Ignition-Takt ingame messen (`docs/guides/measurements.md`), (c) kein Umbau, weiter mit Coverage-Triage. Danach R1 (Opus entwirft) oder die Triage.
+**S0 Prüfstand** des Umbaus (ADR 0017, Plan `docs/plans/ground-up-model.md`, Stufen S0–S6 nach Systemen; Sonnet). Arbeit nur auf Branch `ground-up-model`, `master` bleibt die laufende Version (Inhaber, 2026-10-30). Inhalt S0: Szenario-Format `tests/scenarios/*.json` (Build, Spielweise, Takt, Dauer, Ergebnis, Aegis-Zeilen-ID), Läufer `tests/scenarioBench.test.ts` mit Tabelle und Kennzahl (Anteil ±3 %, je System), erste Szenarien aus den 13 Waffen der Papierprobe, Kennzahl des heutigen Kerns als Basis. Rechenwege und Zahlen je Zeile: `docs/plans/r0-paper-probe.md`.
+
+Papierprobe (2026-10-30): 9 von 13 Waffen nach Ursachen-Recherche innerhalb ±3 %. Fehlende Systeme: Scorch-Burn (Compendium-Formel 2,7 + 0,175 × Stacks, von Aegis bestätigt), Cooldown des Keyword-Auftrags pro Quelle (Lord of Wolves ≤0,46 s), Treffer-Anteil am Boss (Truth-Bomblets). Offen ohne Quelle: Dragon's Breath, Barrow-Dyad, Zusatz bei Ager's Scepter.
 
 Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche, Casts lückenlos, Ladezeit und Bogen-Takt; Bögen (Leviathan's Breath 1,93/1,33 s, Hierarchy aus Pfeil + Seekern + Ignitions mit `Weapon.setup` und Schalter „Pre-stacked“; Ignition-Cooldown nach Recherche bei 1,3 s, Beleg Daybreak mit Dawn Chorus); Q2 Supers; Q3 Energie; Aufräum-Block. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
@@ -16,7 +18,7 @@ Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche, Casts lückenl
 
 Details und Fundstellen: `docs/plans/sources-2026-10.md`.
 
-1. Umbau R0–R6 (`docs/plans/ground-up-model.md`), darin Still Hunt (R3); danach Coverage-Triage.
+1. Umbau S0–S6 (`docs/plans/ground-up-model.md`) auf `ground-up-model`, Merge nach S6; danach Coverage-Triage.
 2. Energie-Exotics (Crown of Tempests, Contraverse Hold u. a., `sources-2026-10.md` §2; Opus plant).
 3. Hammer of Sol mit Sol Invictus (siehe oben).
 4. Q4 Stasis/Strand (echte Debuffs am Ziel, Bedingung von Facet of Courage), Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses (Umfang mit dem Inhaber klären).

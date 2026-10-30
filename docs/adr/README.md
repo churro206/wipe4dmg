@@ -20,4 +20,4 @@ Eine Zeile pro ADR. Lies vor einem Block nur die ADRs, die er betrifft.
 | [0014](0014-exotic-armor.md)                     | Exotic-Rüstung: ein Exotic pro Build, Einordnung nach Regelkette                                        |
 | [0015](0015-unified-mechanics.md)                | Einheitliches Mechanik-Modell: ein Teil-Modell und ein Ereignis-Lauf für alle Quellen                   |
 | [0016](0016-verification-and-vertical-slices.md) | Prüfen mit Spielwissen (`buildSimulation`, Plausibilitäts-Gate), vertikale Scheiben                     |
-| [0017](0017-ground-up-model.md)                  | Schadensmodell von Grund auf (vorgeschlagen; Papierprobe 3 von 5, wartet auf Inhaber)                   |
+| [0017](0017-ground-up-model.md)                  | Schadensmodell aus allgemeinen Systemen (Formel, Status, Effekte, Akteur, Strategie) mit Prüfstand      |

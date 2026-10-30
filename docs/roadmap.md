@@ -71,7 +71,7 @@ Status: 2026-10-25
 
 ## Next
 
-- Damage model from the ground up (stages R0–R6, `docs/plans/ground-up-model.md`): a new core with player and target state, rules with triggers and a play policy; weapons from bare component values (Aegis, Quantum Weapon Specifics), Aegis rows as gates; Still Hunt with Celestial Nighthawk and Dragon's Breath fuel as pilots. R0 paper probe done: 3 of 5 weapons within ±3 % (Ignition timing fails Hierarchy "one ring" and Dragon's Breath); waiting for the owner's decision
+- Damage model from general systems (ADR 0017, stages S0–S6 on branch `ground-up-model`): formula, status system (Scorch with burn, Volatile, Jolt, Slow), effect rules, weapon state and play policy; Aegis rows as scenarios on a test bench with one score. Paper probe: 9 of 13 weapons within ±3 %. Next: S0 test bench
 - Coverage triage: sort every missing item into left out (no effect against a boss), a value from the text (under 2 %) or its own block
 
 - Hammer of Sol with Sol Invictus
