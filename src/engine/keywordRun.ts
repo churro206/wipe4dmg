@@ -22,6 +22,7 @@ import type {
   Keyword,
   KeywordId,
 } from "../data/schema";
+import type { Burn } from "./core/burn";
 import { appliesToWeaponType, productOf, type Factors } from "./effectParts";
 import type { KeywordState, OnHit, TargetState } from "./eventRun";
 import { requireValue } from "./requireValue";
@@ -42,6 +43,8 @@ export type KeywordContext = {
   ) => Factors;
   stackFactorAt: (counterId: CounterId, timeMs: number) => number;
   isInPhase: (timeMs: number) => boolean;
+  // Burn of the counter's stacks; only the core passes it (ADR 0017, stage S2).
+  burn?: (keyword: Keyword) => Burn | undefined;
 };
 
 const matches = (part: AppliesKeywordPart, hit: TimedDamageInstance) =>
@@ -63,6 +66,7 @@ export function keywordOnHit({
   multiplierAt,
   stackFactorAt,
   isInPhase,
+  burn,
 }: KeywordContext): OnHit {
   const byId = new Map(keywords.map((k) => [k.id, k]));
   const keywordOf = (id: KeywordId) => {
@@ -135,11 +139,16 @@ export function keywordOnHit({
       target.counters.set(counterId, counter);
       if (timeMs < counter.blockedUntilMs) return;
 
+      const burning = burn?.(keyword);
+      burning?.decay(counter, timeMs);
       counter.stacks += Math.ceil(
         stacksOf(part) * stackFactorAt(counterId, timeMs) - ROUNDING_TOLERANCE,
       );
-      if (counter.stacks < requireValue(keyword.trigger.threshold, "threshold"))
+      if (counter.stacks < requireValue(keyword.trigger.threshold, "threshold")) {
+        burning?.applied(counter, timeMs, hit, schedule);
         return;
+      }
+      burning?.reset(counter);
       counter.stacks = 0;
       counter.blockedUntilMs =
         timeMs + optionalMs(keyword.cooldownMs, "cooldownMs");

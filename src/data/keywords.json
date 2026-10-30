@@ -33,6 +33,79 @@
         "note": "1.6 s contradicts the measurements: Aegis, Quantum and the in-game test with One Thousand Voices allow at most about 1.3 s. Aegis' Daybreak with Dawn Chorus (every projectile ignites, 588 ms apart) needs more than 1.18 s: 16 234 with 1.3 s against 16 701 measured, 19 609 with 0.95 s. 1.3 s is the value closest to the Compendium within that range (ADR 0011, rule 3)."
       }
     },
+    "burn": {
+      "baseDamage": {
+        "value": 2.7,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Scorch)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-30",
+          "status": "verified",
+          "quote": "2.7 + (0.175 * Scorch Stacks)",
+          "note": "The formula contradicts the Compendium's own table (x80 = 8.64); Aegis confirms the formula and it fits Polaris Lance, Lord of Wolves and Hierarchy of Needs within 1 % (docs/plans/r0-paper-probe.md)."
+        }
+      },
+      "damagePerStack": {
+        "value": 0.175,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Scorch)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-30",
+          "status": "verified",
+          "quote": "2.7 + (0.175 * Scorch Stacks)"
+        }
+      },
+      "firstTickDelayMs": {
+        "value": 500,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Scorch)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-30",
+          "status": "verified",
+          "quote": "Scorched Enemies are dealt Scorch-stack based damage every 0.56 seconds after being scorched for 0.5 seconds"
+        }
+      },
+      "secondTickDelayMs": {
+        "value": 930,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Scorch)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-30",
+          "status": "verified",
+          "quote": "The 2nd Scorch tick has a 0.93s delay"
+        }
+      },
+      "tickIntervalMs": {
+        "value": 560,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Scorch)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-30",
+          "status": "verified",
+          "quote": "Scorched Enemies are dealt Scorch-stack based damage every 0.56 seconds after being scorched for 0.5 seconds"
+        }
+      },
+      "holdMs": {
+        "value": 2300,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Scorch)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "quote": "Scorch lasts for 2.3 seconds, then decreases by x1 stacks every 0.04 seconds (-25/s)"
+        }
+      },
+      "decayStackIntervalMs": {
+        "value": 40,
+        "source": {
+          "name": "Destiny Data Compendium, Solar (Scorch)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "quote": "Scorch lasts for 2.3 seconds, then decreases by x1 stacks every 0.04 seconds (-25/s)"
+        }
+      }
+    },
     "removedOnTrigger": true,
     "damageCategory": "inheritsSource"
   },

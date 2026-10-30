@@ -198,6 +198,21 @@ export const KeywordTrigger = z.discriminatedUnion("type", [
 ]);
 export type KeywordTrigger = z.infer<typeof KeywordTrigger>;
 
+/**
+ * Burn of a counter's stacks (scorch): a target with stacks takes damage that grows with them. The
+ * stacks hold for a while and then fall (ADR 0017, stage S2).
+ */
+export const CounterBurn = z.object({
+  baseDamage: SourcedNumber, // per tick, before the stacks
+  damagePerStack: SourcedNumber,
+  firstTickDelayMs: SourcedNumber, // from the first stacks on a clean target
+  secondTickDelayMs: SourcedNumber, // from the first tick
+  tickIntervalMs: SourcedNumber, // from the second tick on
+  holdMs: SourcedNumber, // the stacks stay as they are for this long after an application
+  decayStackIntervalMs: SourcedNumber, // after the hold one stack falls this often
+});
+export type CounterBurn = z.infer<typeof CounterBurn>;
+
 /** A keyword as written in keywords.json; the damage comes from its Aegis row when loading. */
 export const KeywordData = z.object({
   id: KeywordId,
@@ -209,6 +224,7 @@ export const KeywordData = z.object({
   delayMs: SourcedNumber.optional(), // from the trigger to the damage; 0 if omitted
   cooldownMs: SourcedNumber.optional(), // between two triggers; none if omitted
   durationMs: SourcedNumber.optional(), // of the debuff; open if the source sets it (unravel)
+  burn: CounterBurn.optional(), // only for a counter trigger: damage of the stacks before the trigger
   removedOnTrigger: z.boolean(), // the debuff or the stacks are gone after the trigger
   // Which multipliers apply: those of abilities (volatile), only element-wide ones (bolt charge),
   // or those of the source that applied it (ignition, without melee buffs).

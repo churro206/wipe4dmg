@@ -60,6 +60,19 @@ const buffed = ["weaken", "surge-3x", "radiant"].map(
   (id) => effects.find((e) => e.id === id)!,
 );
 
+/**
+ * The result without the burn of scorch, which only the core models since stage S2 (tests/burn.test.ts);
+ * everything else stays equal.
+ */
+const withoutBurn =
+  (f: typeof simulate): typeof simulate =>
+  (...args) => {
+    const result = f(...args);
+    const damageInstances = result.damageInstances.filter((d) => d.id !== "burn");
+    const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
+    return { ...result, damageInstances, totalDamage };
+  };
+
 /** Both simulators on the same input: equal shots, reloads, hits and damage, or the same error. */
 function expectSame(
   label: string,
@@ -75,8 +88,8 @@ function expectSame(
       return (error as Error).message;
     }
   };
-  const old = run(simulate);
-  const core = run(simulateCore);
+  const old = run(withoutBurn(simulate));
+  const core = run(withoutBurn(simulateCore));
   if (typeof old === "string" || typeof core === "string") {
     expect(core, label).toBe(old);
     return;
@@ -145,8 +158,8 @@ describe("core parity (ADR 0017, S1)", () => {
       );
     expect(scenarios.length).toBeGreaterThan(30);
     for (const s of scenarios) {
-      const old = modelTotal(s, simulate);
-      const core = modelTotal(s, simulateCore);
+      const old = modelTotal(s, withoutBurn(simulate));
+      const core = modelTotal(s, withoutBurn(simulateCore));
       if (old === null || core === null) {
         expect(core, s.id).toBe(old);
         continue;

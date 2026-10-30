@@ -27,14 +27,14 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 | deterministic-chaos-target-lock | factor | 7479 | 7591 | +1.5 % | +1.5 % |  |
 | dragon-s-breath | scorch | 29828 | 29804 | −0.1 % |  |  |
 | gjallarhorn | parts | 15149 | 15137 | −0.1 % |  |  |
-| hierarchy-of-needs-two-rings | scorch | 12062 | 6885 | −42.9 % |  |  |
-| hierarchy-of-needs-one-ring | scorch | 5495 | 4218 | −23.2 % |  |  |
+| hierarchy-of-needs-two-rings | scorch | 12062 | 6943 | −42.4 % |  |  |
+| hierarchy-of-needs-one-ring | scorch | 5495 | 4446 | −19.1 % |  |  |
 | lord-of-wolves | scorch | 22355 | 22327 | −0.1 % |  |  |
 | lord-of-wolves-ember | scorch | 17249 | 16745 | −2.9 % | −2.8 % |  |
-| one-thousand-voices | scorch | 9844 | 9840 | −0.0 % |  |  |
-| one-thousand-voices-ember | scorch | 11550 | 11617 | +0.6 % | +0.6 % |  |
-| one-thousand-voices-catalyst | parts | 27000 | 26992 | −0.0 % | +0.0 % |  |
-| one-thousand-voices-ember-catalyst | scorch | 30144 | 30547 | +1.3 % | +1.4 % |  |
+| one-thousand-voices | scorch | 9844 | 9937 | +0.9 % |  |  |
+| one-thousand-voices-ember | scorch | 11550 | 11617 | +0.6 % | −0.4 % |  |
+| one-thousand-voices-catalyst | parts | 27000 | 27187 | +0.7 % | −0.3 % |  |
+| one-thousand-voices-ember-catalyst | scorch | 30144 | 30547 | +1.3 % | +0.6 % |  |
 | polaris-lance | scorch | 2543 | 2546 | +0.1 % |  |  |
 | polaris-lance-ember | scorch | 1906 | 1697 | −11.0 % | −11.1 % |  |
 | salvation-s-grip | base | 796 | 795 | −0.1 % |  |  |

@@ -16,8 +16,19 @@ export type KeywordState = {
   cooldownUntilMs: number;
 };
 
+export type CounterState = {
+  stacks: number;
+  blockedUntilMs: number;
+  // Burn of the stacks (core/burn.ts): time of the last application, the hit that applied it, the
+  // ticks running and a number that ends them at a reset.
+  appliedMs?: number;
+  burnSource?: TimedDamageInstance;
+  burning?: boolean;
+  burnGeneration?: number;
+};
+
 export type TargetState = {
-  counters: Map<CounterId, { stacks: number; blockedUntilMs: number }>;
+  counters: Map<CounterId, CounterState>;
   // End time of the last tick of each active damage over time source, per part id.
   activeSourcesUntilMs: Map<string, number[]>;
   keywords: Map<KeywordId, KeywordState>;

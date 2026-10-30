@@ -25,6 +25,7 @@ import {
   type TimedDamageInstance,
 } from "../simulate";
 import { bucketFactors } from "../effectParts";
+import { createBurn } from "./burn";
 import { createContext, type ShotHistory } from "./context";
 import { damageOf } from "./formula";
 import { createWeaponActor, type PlannedShot } from "./weaponActor";
@@ -135,6 +136,31 @@ export function simulateCore(
       : [],
   );
 
+  // Burn of the counter's stacks, from the keyword that is set off by it (ADR 0017, stage S2).
+  const burns = new Map(
+    (options.keywords ?? []).flatMap((keyword) => {
+      const burn = createBurn(
+        keyword,
+        context.keywordMultiplierAt,
+        isInPhase,
+      );
+      return keyword.trigger.type === "counter" && burn
+        ? [[keyword.trigger.counterId, burn] as const]
+        : [];
+    }),
+  );
+  const burnOf = (counterId: CounterId) => burns.get(counterId);
+  /** The weapon as source of scorch that its own parts apply; burn inherits its bonuses. */
+  const scorchSource = (timeMs: number): TimedDamageInstance => ({
+    id: "scorch",
+    timeMs,
+    damage: 0,
+    damageSource: damageSource,
+    element: weapon.element,
+    weaponType: weapon.weaponType,
+    factors: {},
+  });
+
   /** Direct hits of the weapon's damage instances after a shot. */
   const hitEvents = (shot: PlannedShot): RunEvent[] => {
     const result: RunEvent[] = [];
@@ -174,7 +200,7 @@ export function simulateCore(
         return {
           timeMs,
           group: EVENT_GROUP.threshold,
-          handle: (target, emit) => {
+          handle: (target, emit, later) => {
             const added = Math.ceil(
               stacks * counterFactorAt(part.counterId, timeMs) -
                 ROUNDING_TOLERANCE,
@@ -185,13 +211,19 @@ export function simulateCore(
             };
             target.counters.set(part.counterId as CounterId, counter);
             if (timeMs < counter.blockedUntilMs) return;
+            const burning = burnOf(part.counterId);
+            burning?.decay(counter, timeMs);
             counter.stacks += added;
             const reached = thresholds.find(
               (t) =>
                 t.part.counterId === part.counterId &&
                 counter.stacks >= t.threshold,
             );
-            if (!reached) return;
+            if (!reached) {
+              burning?.applied(counter, timeMs, scorchSource(timeMs), later);
+              return;
+            }
+            burning?.reset(counter);
             const keywordId = (Object.keys(KEYWORD_COUNTERS) as KeywordId[]).find(
               (id) => KEYWORD_COUNTERS[id] === reached.part.counterId,
             );
@@ -338,6 +370,10 @@ export function simulateCore(
       multiplierAt: context.keywordMultiplierAt,
       stackFactorAt: counterFactorAt,
       isInPhase,
+      burn: (keyword) =>
+        keyword.trigger.type === "counter"
+          ? burnOf(keyword.trigger.counterId)
+          : undefined,
     }),
   );
 
