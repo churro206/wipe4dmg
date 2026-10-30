@@ -4,7 +4,7 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**R0 des Umbaus „Schadensmodell von Grund auf“** (Inhaber, 2026-10-30; Plan: `docs/plans/ground-up-model.md`, Etappen R0–R6). R0 mit Opus: ADR 0017 und Papierprobe mit fünf Waffen aus nackten Teilen gegen Aegis Weapons, Abbruch unter 4 von 5 Waffen innerhalb ±3 %. Still Hunt geht in R3 auf. Die Coverage-Triage (alter Block B: jeden `missing`-Eintrag einer Regel zuordnen) kommt nach R6.
+**Entscheidung des Inhabers zum Umbau** (Plan `docs/plans/ground-up-model.md`). R0 ist erledigt (2026-10-30): Papierprobe `docs/plans/r0-paper-probe.md` ergibt 3 von 5 Waffen innerhalb ±3 %, das Abbruchkriterium ist verfehlt. Beide Ausfälle (Hierarchy „one ring“, Dragon's Breath) hängen am Ignition-Takt. ADR 0017 steht als Vorschlag. Optionen: (a) Umbau mit an Aegis geeichten Ignitions, (b) erst den Ignition-Takt ingame messen (`docs/guides/measurements.md`), (c) kein Umbau, weiter mit Coverage-Triage. Danach R1 (Opus entwirft) oder die Triage.
 
 Erledigt (2026-10-26, Details im Changelog): Block A Oberfläche, Casts lückenlos, Ladezeit und Bogen-Takt; Bögen (Leviathan's Breath 1,93/1,33 s, Hierarchy aus Pfeil + Seekern + Ignitions mit `Weapon.setup` und Schalter „Pre-stacked“; Ignition-Cooldown nach Recherche bei 1,3 s, Beleg Daybreak mit Dawn Chorus); Q2 Supers; Q3 Energie; Aufräum-Block. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).
