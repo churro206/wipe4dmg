@@ -69,7 +69,7 @@ const MS_PER_MINUTE = 60_000;
 const ROUNDING_TOLERANCE = 1e-9;
 const ABILITY_DAMAGE_SOURCES: DamageSource[] = ["grenade", "melee", "super"];
 // Order of events at equal times in the event run (eventRun.ts).
-const EVENT_GROUP = {
+export const EVENT_GROUP = {
   weaponHit: 0,
   threshold: 1,
   damageOverTime: 2,
@@ -696,7 +696,7 @@ export function simulate(
 }
 
 /** Super windows of all super casts with usage data, sorted by start. */
-function superWindowsOf(casts: AbilityCast[]): SuperWindow[] {
+export function superWindowsOf(casts: AbilityCast[]): SuperWindow[] {
   return casts
     .flatMap(({ ability, castsMs }) => {
       if (ability.kind !== "super" || !ability.usage) return [];
@@ -712,7 +712,7 @@ function superWindowsOf(casts: AbilityCast[]): SuperWindow[] {
 }
 
 /** Hits of all components of an ability after each cast: delay, then ticks. */
-function abilityHitEvents(
+export function abilityHitEvents(
   { ability, castsMs }: AbilityCast,
   isInPhase: (timeMs: number) => boolean,
   multiplierAt: (timeMs: number, component: AbilityComponent) => Factors,
@@ -758,7 +758,7 @@ function abilityHitEvents(
 }
 
 /** Hits of a periodic damage part: one interval after each window start, then every interval. */
-function periodicEvents(
+export function periodicEvents(
   part: PeriodicDamagePart,
   windows: { startMs: number; endMs: number }[],
   isInPhase: (timeMs: number) => boolean,

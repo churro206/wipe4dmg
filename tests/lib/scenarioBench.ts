@@ -51,7 +51,10 @@ export type Scenario = z.infer<typeof Scenario>;
 export const measured = (s: Scenario) => s.wipe / s.fullModifiers;
 
 /** Total Damage of the scenario's shots and everything they set off; null if the core cannot run it. */
-export function modelTotal(s: Scenario): number | null {
+export function modelTotal(
+  s: Scenario,
+  run: typeof simulate = simulate,
+): number | null {
   if (!weapons.some((w) => w.id === s.build.weaponId)) return null;
   const effectIds = s.build.effectIds ?? [];
   for (const id of effectIds) {
@@ -80,7 +83,7 @@ export function modelTotal(s: Scenario): number | null {
   };
   const { selected, options } = buildSimulation(build, gameData);
   const weapon = weapons.find((w) => w.id === s.build.weaponId)!;
-  return simulate(weapon, PHASE_SECONDS, selected, buckets, {
+  return run(weapon, PHASE_SECONDS, selected, buckets, {
     ...options,
     shotLimit: s.shots,
   }).totalDamage;

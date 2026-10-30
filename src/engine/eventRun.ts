@@ -30,7 +30,12 @@ export type Emit = (instance: TimedDamageInstance) => void;
 export type RunEvent = {
   timeMs: number;
   group: number;
-  handle: (target: TargetState, emit: Emit) => void;
+  // schedule queues a further event, e.g. the next shot of the core (core/simulateCore.ts)
+  handle: (
+    target: TargetState,
+    emit: Emit,
+    schedule: (event: RunEvent) => void,
+  ) => void;
 };
 
 export type OnHit = (
@@ -78,15 +83,18 @@ export function runEvents(
 
   while (head < queue.length) {
     const { event } = queue[head++];
-    event.handle(target, (instance) =>
-      enqueue({
-        timeMs: instance.timeMs,
-        group: event.group,
-        handle: () => {
-          hits.push(instance);
-          onHit?.(instance, target, enqueue);
-        },
-      }),
+    event.handle(
+      target,
+      (instance) =>
+        enqueue({
+          timeMs: instance.timeMs,
+          group: event.group,
+          handle: () => {
+            hits.push(instance);
+            onHit?.(instance, target, enqueue);
+          },
+        }),
+      enqueue,
     );
   }
   return hits;
