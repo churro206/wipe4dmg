@@ -38,6 +38,40 @@ Fünf Waffen aus nackten Teilen und Textregeln gegen ihre Aegis-Weapons-Zeilen (
    - Beide lassen sich an einer Aegis-Zeile eichen, haben dann aber kein unabhängiges Gate mehr (Dragon's Breath hat nur eine Weapons-Zeile).
 4. **Celestial Nighthawk auf Still Hunt** folgt nicht dem Text der Super (+28,6 %). Geeicht an der Weapons-Zeile, Gate nur über Sustained (selbst gerechnet).
 
+## Erweiterung: je zwei Waffen Void, Solar, Stasis, Strand (Inhaber, 2026-10-30)
+
+Auswahl: Exotics mit mindestens zwei Aegis-Weapons-Zeilen (`tmp/candidates.ts`), Texte über `tmp/texts.ts` (beide nicht eingecheckt). Faktoren aus dem Text gegen das Verhältnis zweier Aegis-Zeilen; Summen gegen den Wipe.
+
+| Waffe | Prüfung | Modell | Aegis | Abw. |
+| --- | --- | --- | --- | --- |
+| **Deterministic Chaos** (Void) | 48 Shots, Volatile | 48 × 485 + 6 × 280; jeder 4. Shot setzt Volatile, der nächste löst aus, 1 s Cooldown (Takt 0,167 s) → 6 in 48 | 24 960 vs 24 966 | 0,0 % |
+| | Target Lock, ein Magazin | Kugeln × 1,25 („roughly 25% … after 100% of the Magazine“), Volatile ohne Bonus; Höchstwert 485 × 1,39 = 674 (Text 40 %) | 30 780 vs 30 738 | +0,1 % |
+| **Truth** (Void) | Reaper's Tithe x4 | Rakete und Cluster × 1,40 (Text 40 %): 7955/5682, 686/490 | 1,400 | 0,0 % |
+| | Trueseeker, 9 / 12 Raketen | Text gelesen: Trueseeker nach jedem Reload → 6 von 9 Raketen mit 8 Clustern | 74 658 vs 62 028 | +20,4 % |
+| | | hergeleitet: jede 3. Rakete, alle 8 Cluster treffen | 62 898 / 117 412 | +1,4 % / −1,9 % |
+| **Polaris Lance** (Solar) | 15 Shots, ohne Ember | jeder 5. Shot Perfect Fifth (310), x40 Scorch → 1 Ignition | 8075 vs 8417 | −4,1 % |
+| | 10 Shots, Ember | x60 → 1 Ignition | 6165 vs 6309 | −2,3 % |
+| **Lord of Wolves** (Solar) | 120 Pellets, ohne Ember | Ignition 675 × 1,24 (Text: +53 %, gegen Bosse +24 %) = 837, Aegis 838; x10 alle „0.5?“ s nur beim Feuern → 1 Ignition | 67 817 vs 70 866 | −4,3 % (mit 2 Ignitions −0,6 %) |
+| | 90 Pellets, Ember | x15 → 2 Ignitions | 54 184 vs 54 680 | −0,9 % |
+| **Ager's Scepter** (Stasis) | Will Given Form je Treffer | +80 % (Text): 67,1 / 37,2 visual | 1,804 | +0,2 % |
+| | Harsh Refraction je Treffer | +35 % für Exotics (Court): 299 / 222 | 1,347 | −0,2 % |
+| | Wipe Will Given Form | 194 × 222 | 43 068 vs 51 358 | −16,1 % (Rest unerklärt) |
+| | Wipe mit Harsh Refraction | × 1,35 | gemessen × 1,265 | +6,7 % |
+| **Salvation's Grip** (Stasis) | Hail the Storm je Kristall | +25 % (Coverage): 655 / 524 | 1,250 | 0,0 % |
+| | Wipe geladen, 12 Shots | 6 Kristalle × 524 + 627 Aufprall | 45 252 vs 47 896 | −5,5 % (Aegis: „insane number variance“, kein Gate) |
+| **Whirling Ovation** (Strand) | 1/3, 2/3, volle Ladung | Compendium-Verhältnis (1663 + 1640)/1076 usw. auf Aegis ohne Ladung (3211); Skala Compendium = 1,06 × Aegis bei allen 7 Werten | 9857 / 13 330 / 20 078 vs 9853 / 13 321 / 20 064 | +0,04 / +0,07 / +0,07 % |
+| **Barrow-Dyad** (Strand) | Taken Ambition, 39 Shots | 39 × 112 + 6 Seeker × (1172 + 97); Text: höchstens 6 Seeker je Reload | 11 982 vs 13 171 | −9,0 % (7 Seeker: +0,6 %) |
+
+### Was trägt, was nicht
+
+- **Faktoren aus dem Text treffen immer** (9 von 9: Reaper's Tithe, Will Given Form, Harsh Refraction, Hail the Storm, Target Lock, Ahamkara's Eye, Lord of Wolves gegen Bosse, Ladestufen von Whirling Ovation, Golden-Gun-Folge von Still Hunt), Abweichung ≤0,2 %.
+- **Zeitregeln mit belegtem Takt treffen** (Volatile-Cooldown bei Deterministic Chaos, Ignitions bei One Thousand Voices und Polaris).
+- **Ausfälle haben drei Ursachen:**
+  1. Burn-Schaden von Scorch fehlt im Modell (Polaris ohne Ember: Rest 342 nach der Ignition, mit Ember 144). Er macht 2–4 % aus.
+  2. Ein Takt im Text ist unsicher oder fehlt: „0.5?“ s bei Lord of Wolves, Pool-Takt bei Dragon's Breath. Hier sind die „?“ also doch PvE-relevant.
+  3. Zählungen, die der Text anders nahelegt als Aegis misst: Trueseeker-Raketen (Truth), Seeker je Reload (Barrow-Dyad), der Rest bei Ager's Scepter. Teils ist es Streuung der Messung (Salvation's Grip).
+- Gesamt mit R0: 6 von 13 Waffen in allen Zeilen innerhalb ±3 % aus dem Text, 7 mit einer hergeleiteten Regel (Truth). Mit Burn als Mechanik kämen Polaris Lance und vermutlich Lord of Wolves hinzu.
+
 ## Fragezeichen in den Quellen (Hinweis des Inhabers)
 
 Auswertung über alle 500 Clarity-Einträge der Exotic-Waffen (`tmp/question-marks.ts`, nicht eingecheckt): 140 Einträge mit „?“, 190 Zeilen.
