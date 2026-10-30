@@ -1,9 +1,11 @@
 // A setup the shots build and deploy (Guidance Ring of Hierarchy of Needs): shots before it and the
 // shot that deploys it deal no setup damage; it lasts its duration, then the next shot deploys it
-// again; with "Pre-stacked" the first shot deploys it; the catalyst's timing starts once it stands.
+// again; with "Pre-stacked" the first shot deploys it; the catalyst's timing starts once it stands;
+// a setup that stands at the start deals setup damage from the first shot.
 
 import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
+import { simulateCore } from "../src/engine/core/simulateCore";
 import { simulate } from "../src/engine/simulate";
 import { testWeapon } from "./support/testWeapon";
 
@@ -75,6 +77,19 @@ describe("weapon setup", () => {
     // deployed at 0 s, stands until 5 s: the shot at 5 s deploys again
     const result = simulate(ringBow, 7, [], [], { setupPreBuilt: true });
     expect(seekerShots(result)).toEqual([2, 3, 4, 5, 7, 8]);
+  });
+
+  it.each([
+    ["simulate", simulate],
+    ["simulateCore", simulateCore],
+  ] as const)("%s: standing at the start, seekers and the catalyst's timing from the 1st shot", (_, run) => {
+    // An Aegis measurement counts no deploying shot (scenario bench)
+    const result = run(ringBow, 6, [], [], { catalyst: true, setupDeployed: true });
+    expect(result.shots.map((s) => s.timeMs)).toEqual([
+      0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000,
+    ]);
+    // deployed at 0 s, stands until 5 s: the shot at 5 s deploys again
+    expect(seekerShots(result)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13]);
   });
 
   it("the catalyst's timing only once it stands", () => {

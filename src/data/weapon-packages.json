@@ -7779,7 +7779,7 @@
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
             "status": "unverified",
-            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
         "damagePerTick": {
@@ -7798,7 +7798,7 @@
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
             "status": "unverified",
-            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
         "tickIntervalMs": {
@@ -7807,12 +7807,61 @@
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
             "status": "unverified",
-            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
         "canPrecision": false,
         "requiresCatalyst": false,
         "requiresSetup": true
+      },
+      {
+        "id": "setupHits-two-rings",
+        "name": "Through two rings",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+          }
+        },
+        "damagePerTick": {
+          "value": 147,
+          "source": {
+            "name": "Quantum Damage-ics (primaries), row primaries-bow-hierarchy-of-needs-guidance-ring",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "(Precision damage 664 − 223 of row primaries-bow-hierarchy-of-needs) ÷ 3 hits"
+          }
+        },
+        "ticks": {
+          "value": 6,
+          "source": {
+            "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false,
+        "requiresSetup": true,
+        "playstyle": {
+          "id": "two-rings",
+          "replaces": "setupHits",
+          "selectable": true
+        }
       }
     ],
     "setup": {
@@ -7823,7 +7872,7 @@
           "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
           "retrieved": "2026-10-20",
           "status": "unverified",
-          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
         }
       },
       "shotsBeforePreBuilt": {
@@ -7832,7 +7881,7 @@
           "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
           "retrieved": "2026-10-20",
           "status": "unverified",
-          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
         }
       },
       "durationMs": {
@@ -7841,7 +7890,7 @@
           "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
           "retrieved": "2026-10-20",
           "status": "unverified",
-          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
         }
       },
       "catalystTimingOnceDeployed": true
@@ -7851,21 +7900,21 @@
         "type": "appliesKeyword",
         "keywordId": "ignition",
         "damageSources": ["weapon"],
-        "damageInstanceIds": ["setupHits"],
+        "damageInstanceIds": ["setupHits", "setupHits-two-rings"],
         "stacks": {
           "value": 15,
           "source": {
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
             "status": "unverified",
-            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions.; Scorch per hit before Ember of Ashes"
+            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %).; Scorch per hit before Ember of Ashes"
           }
         },
         "source": {
           "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
           "retrieved": "2026-10-20",
           "status": "unverified",
-          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions."
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
         }
       }
     ],
@@ -7882,6 +7931,7 @@
         }
       }
     ],
+    "playstyleBaseName": "One ring",
     "catalyst": {
       "name": "Panoptic Tessellation, Hierarchy of Needs Catalyst",
       "description": "Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds:\n• 40% reduced Hip-Fire Accuracy Cone\n• 50% decreased Draw Time\n• 100 Reload Speed\n• ?% decreased Reload Animation Duration",
@@ -11526,7 +11576,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf), no reload (override)"
       }
     },
     "magazine": {
@@ -11548,7 +11598,7 @@
       }
     },
     "reloadTimeMs": {
-      "value": 1240,
+      "value": 0,
       "source": {
         "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
         "url": "https://destiny2.science/quantum-damage-ics",
@@ -11570,7 +11620,7 @@
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot (Aegis average)",
+        "name": "Shot (Aegis single hit)",
         "delayMs": {
           "value": 0,
           "source": {
@@ -11582,7 +11632,7 @@
           }
         },
         "damagePerTick": {
-          "value": 169.719,
+          "value": 96.677,
           "source": {
             "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
             "url": "https://destiny2.science/boss-damage",
@@ -11611,9 +11661,83 @@
         },
         "canPrecision": false,
         "requiresCatalyst": false
+      },
+      {
+        "id": "nthShot",
+        "name": "Perfect Fifth",
+        "delayMs": {
+          "value": 500,
+          "source": {
+            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+          }
+        },
+        "damagePerTick": {
+          "value": 93.656,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Tick \"310 Perfect Fifth, 2345 ignition\" ÷ Full Modifiers"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+          }
+        },
+        "everyNthShot": {
+          "value": 5,
+          "source": {
+            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
       }
     ],
-    "intrinsicParts": [],
+    "intrinsicParts": [
+      {
+        "type": "appliesKeyword",
+        "keywordId": "ignition",
+        "damageSources": ["weapon"],
+        "damageInstanceIds": ["nthShot"],
+        "stacks": {
+          "value": 40,
+          "source": {
+            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %.; Scorch per hit before Ember of Ashes"
+          }
+        },
+        "source": {
+          "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+          "retrieved": "2026-10-20",
+          "status": "unverified",
+          "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+        }
+      }
+    ],
     "intrinsics": [
       {
         "id": "the-perfect-fifth",
@@ -18028,7 +18152,7 @@
         "requiresCatalyst": false
       },
       {
-        "id": "cluster",
+        "id": "nthShot",
         "name": "Trueseeker cluster",
         "delayMs": {
           "value": 0,

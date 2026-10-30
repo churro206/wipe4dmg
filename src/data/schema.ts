@@ -1699,12 +1699,17 @@ export const WeaponOverride = z.object({
   // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
   scorchStacksPerShot: z.number().int().positive().optional(),
   // The shot is the single hit of the base row (not its average); every Nth shot adds `hits` of the
-  // cluster that the row's other ticks name ("490/36 cluster"), e.g. Truth with Prototype Trueseeker.
+  // tick that the row's other ticks name (`tick`, default "cluster": "490/36 cluster"), e.g. Truth with
+  // Prototype Trueseeker, or Perfect Fifth of Polaris Lance ("310 Perfect Fifth") with its delay and
+  // scorch per hit from the text.
   nthShotPart: z
     .object({
       name: z.string(),
       every: z.number().int().min(2),
       hits: z.number().int().positive(),
+      tick: z.string().optional(),
+      delaySeconds: z.number().positive().optional(),
+      scorchPerHit: z.number().int().positive().optional(),
     })
     .optional(),
   // Playstyles whose shots replace the weapon's shot (Build.playstyle). A row with ticks "N 2nd, N 3rd"
@@ -1737,6 +1742,10 @@ export const WeaponOverride = z.object({
       hits: z.number().int().positive(), // extra hits per shot, e.g. 3 seekers
       scorchPerHit: z.number().int().positive().optional(),
       catalystTimingOnceDeployed: z.boolean(),
+      // A playstyle with more of these hits per shot (Build.playstyle), e.g. an arrow through two rings
+      playstyle: z
+        .object({ id: z.string(), name: z.string(), hits: z.number().int().positive() })
+        .optional(),
     })
     .optional(),
   timing: z

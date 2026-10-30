@@ -74,6 +74,7 @@ const OPTION_BUCKET = "weaponPerk";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
 const OVERRIDE_TIMING = "override"; // row id of a timing whose values an override states
 const SETUP_HITS_ID = "setupHits"; // damage instance of the hits a setup adds, e.g. seekers
+const NTH_SHOT_ID = "nthShot"; // damage instance of every Nth shot, e.g. a Trueseeker cluster
 const RALLY_EFFECT_ID = "rally-barricade";
 const RPM_HINT = 0.25; // a derived fire rate this far from the Quantum rpm is worth a look
 const BURST_TOLERANCE = 0.005; // Aegis rounds its hits; a burst sums them
@@ -297,7 +298,9 @@ const SCORCH_BONUS =
 // Quantum rows without ignitions, e.g. "Does not consider Scorch; without ignition".
 const WITHOUT_IGNITIONS = /without ignition|does not consider ignitions/i;
 const AEGIS_IGNITION_TICK = /\b(\d+) ignition\b/i;
-const AEGIS_CLUSTER_TICK = /\b(\d+)(?:\/\d+)? cluster\b/i; // "490/36 cluster": the boss takes the first
+// A named tick, e.g. "490/36 cluster" (the boss takes the first) or "310 Perfect Fifth"
+const aegisNamedTick = (ticks: string, name: string) =>
+  Number(new RegExp(`\\b(\\d+)(?:\\/\\d+)? ${name}\\b`, "i").exec(ticks)?.[1]);
 
 type ScorchRule = {
   stacksPerShot: number;
@@ -479,11 +482,13 @@ export function timingFromAegis(
 
 /**
  * Quantum counts one interval before each reload, like the simulator. Primary ammo is unlimited
- * ("inf"): the timing is magazine, fire rate and reload, without total shots and time to empty.
+ * ("inf"): the timing is magazine, fire rate and reload, without total shots and time to empty;
+ * `primaryWithoutReload` (an override) drops that reload, e.g. precision hits refill the magazine.
  */
 export function timingFromQuantum(
   row: QuantumWeaponRow,
   noReloads = false,
+  primaryWithoutReload = false,
 ): Timing | TimingProblem {
   const { totalShots, timeToEmptySeconds, rpm } = row;
   const reloadSeconds = row.reloadSeconds ?? (noReloads ? 0 : null);
@@ -501,12 +506,14 @@ export function timingFromQuantum(
       magazine: row.magazine,
       totalShots: null,
       reloadSeconds,
-      engineReloadSeconds: nockInRate ? 0 : reloadSeconds,
+      engineReloadSeconds: nockInRate || primaryWithoutReload ? 0 : reloadSeconds,
       intervalSeconds: 60 / rpm,
       timeToEmptySeconds: null,
       note: nockInRate
         ? "Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; primary ammo is unlimited (Quantum: inf)"
-        : "Quantum fire rate; primary ammo is unlimited (Quantum: inf)",
+        : primaryWithoutReload
+          ? "Quantum fire rate; primary ammo is unlimited (Quantum: inf), no reload (override)"
+          : "Quantum fire rate; primary ammo is unlimited (Quantum: inf)",
     };
   }
   const magazine = noReloads ? totalShots : row.magazine;
@@ -1024,17 +1031,16 @@ export function buildWeaponImport(
     // The single hit of the row and the cluster of every Nth shot instead of the row's average
     // (override), on the scale of Aegis "visual".
     const nthRule = override?.nthShotPart;
-    const clusterTick = nthRule
-      ? Number(AEGIS_CLUSTER_TICK.exec(base.otherTicks)?.[1])
-      : undefined;
+    const nthTickName = nthRule?.tick ?? "cluster";
+    const nthTick = nthRule ? aegisNamedTick(base.otherTicks, nthTickName) : undefined;
     if (nthRule) {
-      if (base.critShot === null || !clusterTick)
+      if (base.critShot === null || !nthTick)
         throw new Error(
-          `${manifest.name}: nthShotPart needs a hit and a cluster tick in row ${base.id}`,
+          `${manifest.name}: nthShotPart needs a hit and a ${nthTickName} tick in row ${base.id}`,
         );
       entry.perShot = base.critShot / base.fullModifiers / normaliseFactor;
       entry.notes.push(
-        `${nthRule.name}: Treffer ${base.critShot} aus ${base.id}, alle ${nthRule.every} Schüsse ${nthRule.hits} × ${clusterTick} („${base.otherTicks}“) (Override)`,
+        `${nthRule.name}: Treffer ${base.critShot} aus ${base.id}, alle ${nthRule.every} Schüsse ${nthRule.hits} × ${nthTick} („${base.otherTicks}“)${nthRule.scorchPerHit ? `, x${nthRule.scorchPerHit} Scorch` : ""} (Override)`,
       );
     }
 
@@ -1368,7 +1374,7 @@ export function buildWeaponImport(
       const t = sustainedRow
         ? timingFromAegis(sustainedRow, noReloads)
         : quantumById
-          ? timingFromQuantum(quantumById, noReloads)
+          ? timingFromQuantum(quantumById, noReloads, noReloads)
           : { problem: "Zeile nicht gefunden" };
       if (!("intervalSeconds" in t))
         throw new Error(
@@ -1809,6 +1815,22 @@ export function buildWeaponImport(
       status: "unverified",
       note: `Derived (override): ${override?.reason ?? ""}${note ? `; ${note}` : ""}`,
     });
+    // One hit of a setup, e.g. a seeker: the difference of Quantum's rows with and without it.
+    const setupHitDamage =
+      setupRule && setupRows?.shot && setupRows.withSetup
+        ? {
+            value: Number(
+              (
+                (setupRows.withSetup.precisionDamage! - setupRows.shot.precisionDamage!) /
+                setupRule.hits
+              ).toFixed(3),
+            ),
+            source: quantumSource(
+              setupRows.withSetup,
+              `(Precision damage ${setupRows.withSetup.precisionDamage} − ${setupRows.shot.precisionDamage} of row ${setupRows.shot.id}) ÷ ${setupRule.hits} hits`,
+            ),
+          }
+        : undefined;
     const scorchSource = (quote: string, note?: string): Source => ({
       name: `Destiny Data Compendium, Exotic Weapons (${manifest.name})`,
       url: "https://destiny2.science/data-compendium",
@@ -1962,17 +1984,18 @@ export function buildWeaponImport(
           canPrecision: false,
           requiresCatalyst: false,
         },
-        ...(nthRule && clusterTick
+        ...(nthRule && nthTick
           ? [
               {
-                id: "cluster",
+                id: NTH_SHOT_ID,
                 name: nthRule.name,
-                delayMs: { value: 0, source: setupSource() },
+                delayMs: {
+                  value: (nthRule.delaySeconds ?? 0) * 1000,
+                  source: setupSource(),
+                },
                 damagePerTick: {
                   value: Number(
-                    (clusterTick / base.fullModifiers / normaliseFactor).toFixed(
-                      3,
-                    ),
+                    (nthTick / base.fullModifiers / normaliseFactor).toFixed(3),
                   ),
                   source: aegisSource(
                     base,
@@ -2031,32 +2054,40 @@ export function buildWeaponImport(
           canPrecision: false,
           requiresCatalyst: false,
         })),
-        ...(setupRule && setupRows?.shot && setupRows.withSetup
+        ...(setupRule && setupHitDamage
           ? [
               {
                 id: SETUP_HITS_ID,
                 name: `${setupRule.name} hits`,
+                hits: setupRule.hits,
+                playstyle: undefined,
+              },
+              ...(setupRule.playstyle
+                ? [
+                    {
+                      id: `${SETUP_HITS_ID}-${setupRule.playstyle.id}`,
+                      name: setupRule.playstyle.name,
+                      hits: setupRule.playstyle.hits,
+                      playstyle: {
+                        id: setupRule.playstyle.id,
+                        replaces: SETUP_HITS_ID,
+                        selectable: true,
+                      },
+                    },
+                  ]
+                : []),
+            ].map(({ id, name, hits, playstyle }) => ({
+                id,
+                name,
                 delayMs: { value: 0, source: setupSource() },
-                damagePerTick: {
-                  value: Number(
-                    (
-                      (setupRows.withSetup.precisionDamage! -
-                        setupRows.shot.precisionDamage!) /
-                      setupRule.hits
-                    ).toFixed(3),
-                  ),
-                  source: quantumSource(
-                    setupRows.withSetup,
-                    `(Precision damage ${setupRows.withSetup.precisionDamage} − ${setupRows.shot.precisionDamage} of row ${setupRows.shot.id}) ÷ ${setupRule.hits} hits`,
-                  ),
-                },
-                ticks: { value: setupRule.hits, source: setupSource() },
+                damagePerTick: setupHitDamage,
+                ticks: { value: hits, source: setupSource() },
                 tickIntervalMs: { value: 0, source: setupSource() },
                 canPrecision: false,
                 requiresCatalyst: false,
                 requiresSetup: true,
-              },
-            ]
+                ...(playstyle ? { playstyle } : {}),
+              }))
           : []),
       ],
       ...(setupRule
@@ -2080,13 +2111,33 @@ export function buildWeaponImport(
           }
         : {}),
       intrinsicParts: [
+        ...(nthRule?.scorchPerHit
+          ? [
+              {
+                type: "appliesKeyword" as const,
+                keywordId: "ignition" as const,
+                damageSources: ["weapon" as const],
+                damageInstanceIds: [NTH_SHOT_ID],
+                stacks: {
+                  value: nthRule.scorchPerHit,
+                  source: setupSource("Scorch per hit before Ember of Ashes"),
+                },
+                source: setupSource(),
+              },
+            ]
+          : []),
         ...(setupRule?.scorchPerHit
           ? [
               {
                 type: "appliesKeyword" as const,
                 keywordId: "ignition" as const,
                 damageSources: ["weapon" as const],
-                damageInstanceIds: [SETUP_HITS_ID],
+                damageInstanceIds: [
+                  SETUP_HITS_ID,
+                  ...(setupRule.playstyle
+                    ? [`${SETUP_HITS_ID}-${setupRule.playstyle.id}`]
+                    : []),
+                ],
                 stacks: {
                   value: setupRule.scorchPerHit,
                   source: setupSource("Scorch per hit before Ember of Ashes"),

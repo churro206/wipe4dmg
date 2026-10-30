@@ -25,6 +25,7 @@ export type ActorInput = {
   catalyst: boolean;
   totalShotsLimit?: number;
   setupPreBuilt?: boolean;
+  setupDeployed?: boolean;
   damagePhaseSeconds: number;
   abilities: AbilityCast[];
   superWindows: SuperWindow[];
@@ -185,7 +186,7 @@ export function createWeaponActor(input: ActorInput) {
     : 0;
   const ownIntervalMs =
     MS_PER_MINUTE / requireValue(weapon.fireRateRpm, "fireRateRpm");
-  let deployedMs: number | undefined;
+  let deployedMs: number | undefined = setup && input.setupDeployed ? 0 : undefined;
   const intervalMs = () =>
     setup?.catalystTimingOnceDeployed && deployedMs === undefined
       ? ownIntervalMs

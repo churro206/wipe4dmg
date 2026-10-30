@@ -5,12 +5,12 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 
 ## Key figures
 
-- Total: 22 of 30
-- Ratios between rows of one weapon: 9 of 14
+- Total: 25 of 30
+- Ratios between rows of one weapon: 11 of 15
 - base: 5 of 5
 - factor: 5 of 9
 - parts: 2 of 3
-- scorch: 7 of 10
+- scorch: 10 of 10
 - volatile: 1 of 1
 - hitShare: 2 of 2
 
@@ -27,16 +27,16 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 | deterministic-chaos-target-lock | factor | 7479 | 7591 | +1.5 % | +1.5 % |  |
 | dragon-s-breath | scorch | 29828 | 29804 | −0.1 % |  |  |
 | gjallarhorn | parts | 15149 | 15137 | −0.1 % |  |  |
-| hierarchy-of-needs-two-rings | scorch | 12062 | 6943 | −42.4 % |  |  |
-| hierarchy-of-needs-one-ring | scorch | 5495 | 4446 | −19.1 % |  |  |
+| hierarchy-of-needs-two-rings | scorch | 12062 | 12026 | −0.3 % |  |  |
+| hierarchy-of-needs-one-ring | scorch | 5495 | 5466 | −0.5 % | −0.2 % |  |
 | lord-of-wolves | scorch | 22355 | 22327 | −0.1 % |  |  |
 | lord-of-wolves-ember | scorch | 17249 | 16745 | −2.9 % | −2.8 % |  |
 | one-thousand-voices | scorch | 9844 | 9937 | +0.9 % |  |  |
 | one-thousand-voices-ember | scorch | 11550 | 11617 | +0.6 % | −0.4 % |  |
 | one-thousand-voices-catalyst | parts | 27000 | 27187 | +0.7 % | −0.3 % |  |
 | one-thousand-voices-ember-catalyst | scorch | 30144 | 30547 | +1.3 % | +0.6 % |  |
-| polaris-lance | scorch | 2543 | 2546 | +0.1 % |  |  |
-| polaris-lance-ember | scorch | 1906 | 1697 | −11.0 % | −11.1 % |  |
+| polaris-lance | scorch | 2543 | 2486 | −2.3 % |  |  |
+| polaris-lance-ember | scorch | 1906 | 1869 | −1.9 % | +0.3 % |  |
 | salvation-s-grip | base | 796 | 795 | −0.1 % |  |  |
 | salvation-s-grip-charged | parts | 15157 | 9539 | −37.1 % |  | not counted: Aegis notes "insane number variance" |
 | salvation-s-grip-hail-the-storm | factor | 17114 | 9539 | −44.3 % | −11.4 % | not counted: Aegis notes "insane number variance" |

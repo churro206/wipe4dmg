@@ -4,13 +4,13 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**S4 Teil B: Waffen aus Teilen** (ADR 0017, Plan `docs/plans/ground-up-model.md`; Opus für die Takt-Herleitungen). Arbeit nur auf Branch `ground-up-model`, `master` bleibt die laufende Version. Freigegeben vom Inhaber (2026-10-30): A ✔, B `scripts/lib/weaponComponents.ts` → `src/data/weapon-components.json` (Aegis-Ticks ÷ `fullModifiers`), zerlegt nur, wo ein Teil mit dem Build spielt: Hierarchy one ring / 2 rings (Ring, Scorch-Takt je Quelle), Polaris Ember (Perfect Fifth nach N Treffern), danach Lord of Wolves und Dragon's Breath, soweit belegt. Test zuerst: Bench-Szenarien vorher rot. C Barrow-Dyad (6 oder 7 Seeker) nur nach Skill `recherche`, eigener Block. Ziel 24 von 30.
+**S4 Teil C: Barrow-Dyad** (ADR 0017, Plan `docs/plans/ground-up-model.md`; Opus). Arbeit nur auf Branch `ground-up-model`. Erst Skill `recherche` (6 oder 6,9 Seeker je Reload, Papierprobe −9 %), dann Paket in den Kern; sonst eine Zeile eichen (`derived`). Danach S5 (Strategie und Casts, Opus plant). Offen ohne Quelle: Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk (Eich-Zeilen). Lord of Wolves trifft schon (−0,1 / −2,9 %), nicht zerlegt.
+
+S4 Teil B erledigt (2026-10-30): Polaris Lance aus Teilen (Perfect Fifth alle 5 Schüsse mit x40 Scorch, kein Reload), Hierarchy „Through two rings“ als Spielweise, `setupDeployed` für den Prüfstand. Prüfstand 25 von 30, Scorch 10 von 10, Verhältnisse 11 von 15. Ohne eigene `weapon-components.json` (Werte stimmten schon, Overrides reichen). Oberfläche (Hierarchy-Auswahl „One ring / Through two rings“) ungeprüft: nur nach Merge auf `master` live.
 
 S4 Teil A erledigt (2026-10-30): Ladestufen von Whirling Ovation als wählbare Spielweise (Oberfläche, Link Format 9), `withPlaystyle` in beiden Simulatoren, Override `playstyleParts`. Prüfstand 22 von 30, Verhältnisse 9 von 14. Takt der Stufen hergeleitet (`known-inaccuracies`). S3 abgeschlossen; Teil 3 (Sonderfelder als Datensätze) gestrichen, bei S6 prüfen.
 
-S3 Teil 2 erledigt (2026-10-30): Spielweise mit Schussfolge, Still Hunt mit Cayde's Retribution −0,0 % (nicht wählbar in der Oberfläche).
-
-S3 Teil 1 erledigt (2026-10-30): `DamageInstance.everyNthShot`, Override `nthShotPart`, Truth aus Treffer + Cluster alle 3 Raketen; Prüfstand 18 von 30, Verhältnisse 5 von 14 (Truth Reaper/Trueseeker −3,3 %: Streuung der Aegis-Zeile).
+S3 erledigt (2026-10-30): `everyNthShot` (Truth), Spielweise mit Schussfolge (Still Hunt mit Cayde's Retribution); Details im Changelog.
 
 S2 erledigt (2026-10-30): Burn im Kern (`src/engine/core/burn.ts`, Werte in `keywords.json` Ignition `burn`, `tests/burn.test.ts`); Prüfstand läuft auf `simulateCore`, 16 von 30 und Verhältnisse 5 von 14 unverändert (Hierarchy −43/−23 → −42/−19 %). `coreParity` vergleicht ohne Burn. Doppelzählung bei OTV (+0,6…1,3 %) und Rest in `docs/known-inaccuracies.md`. Burn-Takt je Quelle verschoben auf S3/S4 (ohne Scorch-Teil an der Waffe gibt es nichts zu takten).
 

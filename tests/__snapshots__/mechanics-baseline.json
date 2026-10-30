@@ -759,14 +759,14 @@
       "600s buffed catalyst": 64653.44
     },
     "polaris-lance": {
-      "30s plain": 10692.3,
-      "30s buffed": 18001.55,
-      "30s plain catalyst": 10692.3,
-      "30s buffed catalyst": 18001.55,
-      "600s plain": 208924.09,
-      "600s buffed": 351744.6,
-      "600s plain catalyst": 208924.09,
-      "600s buffed catalyst": 351744.6
+      "30s plain": 11359.5,
+      "30s buffed": 19124.86,
+      "30s plain catalyst": 11359.5,
+      "30s buffed catalyst": 19124.86,
+      "600s plain": 239961.8,
+      "600s buffed": 403999.69,
+      "600s plain catalyst": 239961.8,
+      "600s buffed catalyst": 403999.69
     },
     "prometheus-lens": {
       "30s plain": 14083.6,

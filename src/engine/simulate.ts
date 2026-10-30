@@ -112,6 +112,8 @@ export type SimulationOptions = EffectWindowOptions & {
   weaponStat?: WeaponStatValue; // Weapons stat; default: no stat bonus
   keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
   setupPreBuilt?: boolean; // the weapon's setup charges are built before the phase ("Pre-stacked")
+  // The setup stands at the start of the phase, e.g. in an Aegis measurement without the deploying shot
+  setupDeployed?: boolean;
   playstyle?: string; // Build.playstyle (playstyle.ts)
   shotLimit?: number; // the weapon fires at most this many shots, e.g. those of a measurement
 };
@@ -349,7 +351,7 @@ export function simulate(
   const setupDurationMs = setup ? requireValue(setup.durationMs, "durationMs") : 0;
   const ownIntervalMs =
     MS_PER_MINUTE / requireValue(weapon.fireRateRpm, "fireRateRpm");
-  let deployedMs: number | undefined;
+  let deployedMs: number | undefined = setup && options.setupDeployed ? 0 : undefined;
   const withSetup: boolean[] = [];
   const intervalMs = () =>
     setup?.catalystTimingOnceDeployed && deployedMs === undefined

@@ -924,10 +924,39 @@ describe("every Nth shot (2026-10-30, ADR 0017 S3)", () => {
       weaponById("truth"),
     );
     const rockets = result.damageInstances.filter((d) => d.id === "shot").length;
-    const clusters = result.damageInstances.filter((d) => d.id === "cluster").length;
+    const clusters = result.damageInstances.filter((d) => d.id === "nthShot").length;
     note("Truth: Raketen / Cluster-Bomblets", `${rockets} / ${clusters}`, "14 Raketen, alle 3 acht Bomblets: 4 × 8 = 32");
     expect(rockets).toBe(14);
     expect(clusters).toBe(32);
+  });
+
+  it("Polaris Lance: every 5th shot Perfect Fifth with x40 scorch, ignites; with Ember of Ashes more often", () => {
+    const polaris = (ember: boolean) =>
+      run(
+        {
+          guardianClass: "warlock",
+          subclass: "solar",
+          damagePhaseSeconds: 30,
+          ...(ember ? { selections: [{ effectId: "ember-of-ashes", provider: "subclass" as const }] } : {}),
+        },
+        weaponById("polaris-lance"),
+      );
+    const count = (r: SimulationResult, pick: (d: SimulationResult["damageInstances"][number]) => boolean) =>
+      r.damageInstances.filter(pick).length;
+    const plain = polaris(false);
+    const ember = polaris(true);
+    const fifths = count(plain, (d) => d.id === "nthShot");
+    const ignitions = (r: SimulationResult) => count(r, (d) => d.keywordId === "ignition");
+    note(
+      "Polaris 30 s: Schüsse / Perfect Fifth / Ignitions ohne, mit Ember",
+      `${plain.shots.length} / ${fifths} / ${ignitions(plain)}, ${ignitions(ember)}`,
+      "jeder 5. Schuss; Ignition alle 3 (mit Ember alle 2) Perfect Fifths",
+    );
+    // the last one may detonate after the phase (0.5 s delay)
+    expect(fifths).toBeGreaterThanOrEqual(Math.floor(plain.shots.length / 5) - 1);
+    expect(fifths).toBeLessThanOrEqual(Math.floor(plain.shots.length / 5));
+    expect(ignitions(plain)).toBeGreaterThanOrEqual(Math.floor(fifths / 3));
+    expect(ignitions(ember)).toBeGreaterThan(ignitions(plain));
   });
 });
 
@@ -983,6 +1012,20 @@ describe("bows (2026-10-26)", () => {
     );
     expect(ignitionsOf(plain)).toBeGreaterThanOrEqual(Math.floor((arrows - 2) / 3) - 1);
     expect(ignitionsOf(ember)).toBeGreaterThan(ignitionsOf(plain) * 1.3);
+  });
+
+  it("Hierarchy of Needs through two rings: twice the seekers of one ring (ADR 0017 S4)", () => {
+    const seekers = (r: SimulationResult) =>
+      r.damageInstances.filter((d) => d.id.startsWith("setupHits")).length;
+    const one = hierarchy({ weaponPreBuilt: true });
+    const two = hierarchy({ weaponPreBuilt: true, playstyle: "two-rings" });
+    note(
+      "Hierarchy 30 s: Seeker ein / zwei Ringe",
+      `${seekers(one)} / ${seekers(two)}`,
+      "doppelt so viele, gleiche Pfeile",
+    );
+    expect(two.shots.length).toBe(one.shots.length);
+    expect(seekers(two)).toBe(2 * seekers(one));
   });
 
   it("Leviathan's Breath: with Archer's Tempo the 14 arrows are out by about 19 s", () => {

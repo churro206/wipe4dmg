@@ -61,6 +61,7 @@ export function simulateCore(
     catalyst,
     totalShotsLimit: options.shotLimit,
     setupPreBuilt: options.setupPreBuilt,
+    setupDeployed: options.setupDeployed,
     damagePhaseSeconds,
     abilities: options.abilities ?? [],
     superWindows,
