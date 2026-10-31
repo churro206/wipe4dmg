@@ -2,12 +2,13 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen und Lücken in `docs/known-inaccuracies.md`. Altes Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Nächster Block: B3 – Regeln im Kern (Opus entwirft das Schema, Sonnet setzt um; eventuell zwei Blöcke)
+## Nächster Block: B3a – Kern und Waffen (Sonnet)
 
-Bauplan `docs/architecture.md` (zuerst lesen, Abschnitt 6), Plan `docs/plans/ground-up-model.md`, ADR 0018. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers. Gate: Snapshot `tests/__snapshots__/scenario-bench.md` (Delta-Paare 1 von 3) bleibt unverändert. Szenarien aus Abilities/Testing kommen nach B3, vor B5.
+Schritte 1–4 in `docs/plans/ground-up-model.md` (B3a). Zuerst lesen: Bauplan `docs/architecture.md` Abschnitt 6 (endgültig), Schema-Abschnitt „Rules“ in `src/data/schema.ts`, `tests/ruleTypes.test.ts`. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers. Gate: Snapshot `tests/__snapshots__/scenario-bench.md` (Delta-Paare 1 von 3) und `mechanics-baseline` unverändert. Inhaber: so eng wie möglich an Bauplan und Plan halten. Danach B3b (Effects, Abilities), dann Szenarien aus Abilities/Testing vor B5.
 
 ## Stand
 
+- 2026-10-31: **B3.0 erledigt** (Opus): Schema der Regeln, Abschnitt 6 endgültig, Test I3 mit Liste der verbleibenden Sonderfelder.
 - 2026-10-31: **B2 erledigt** (Details Changelog): `fitted` mit `row`, Generator (151 erzeugt, 32 von Hand), Los FNV-1a, Snapshot `tests/__snapshots__/scenario-bench.md`: **Delta-Paare der Prüfmenge 1 von 3**, Spearman 0,89 über 11 Zeilen. Overrides geprüft (`tests/fittedOverrides.test.ts`), Basis sauber. Offen aus B2: Szenarien aus Abilities und Testing (Burn-Schalter „ohne Burn“), nach B3 und vor B5; Abweichungen erzeugter Zeilen in `known-inaccuracies`.
 - B1 erledigt: ein Kern, Burn in App und Optimizer. Bauplan angenommen (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - Offen ohne Quelle: Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk auf Still Hunt.

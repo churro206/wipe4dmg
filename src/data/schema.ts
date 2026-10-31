@@ -178,6 +178,10 @@ export const DamageSource = z.enum([
 ]);
 export type DamageSource = z.infer<typeof DamageSource>;
 
+/** Damage source of an ability; the weapon is not an ability. */
+export const AbilityKind = z.enum(["super", "grenade", "melee", "classAbility"]);
+export type AbilityKind = z.infer<typeof AbilityKind>;
+
 /** Keywords with damage of their own that the engine models (ADR 0015, point 5). */
 export const KeywordId = z.enum([
   "ignition",
@@ -540,6 +544,282 @@ export const EffectPart = z.discriminatedUnion("type", [
 ]);
 export type EffectPart = z.infer<typeof EffectPart>;
 
+// ---------------------------------------------------------------------------------------------
+// Rules: trigger, conditions, actions (docs/architecture.md section 6, ADR 0018, stage B3).
+// Event - Condition - Action (Dayal et al. 1988): the conditions of a rule are checked before its
+// actions; the rules of one event run in file order. New engine code only for a new type here (I3);
+// tests/ruleTypes.test.ts lists the allowed types. Until B4 every number is a SourcedNumber; B4 adds
+// `$` references (RuleValue).
+// ---------------------------------------------------------------------------------------------
+
+/** A number in a rule: today a SourcedNumber; in B4 also a `$` reference. */
+export const RuleValue = SourcedNumber;
+export type RuleValue = z.infer<typeof RuleValue>;
+
+/**
+ * Statuses on the target (the status container, architecture sections 6 and 8): one state machine
+ * with its own values per status (status definitions, from keywords.json).
+ */
+export const TargetStatusId = z.enum([
+  "scorch", // stacks up to a threshold, then ignition; burns meanwhile
+  "volatile",
+  "jolt",
+  "unravel",
+  "boltCharge", // stacks on the player, discharged by a hit
+  "weaken", // debuff: a multiplier in the debuff bucket while it lasts
+]);
+export type TargetStatusId = z.infer<typeof TargetStatusId>;
+
+/** Which hits or shots a trigger matches; omitted fields match all. Same meaning as in MultiplierPart. */
+export const HitFilter = z.object({
+  damageSources: z.array(DamageSource).min(1).optional(),
+  elements: z.array(Element).min(1).optional(),
+  weaponTypes: z.array(WeaponType).min(1).optional(),
+  abilityIds: z.array(z.string()).min(1).optional(),
+  statuses: z.array(TargetStatusId).min(1).optional(), // damage of these statuses, e.g. ignition
+});
+export type HitFilter = z.infer<typeof HitFilter>;
+
+/** A player state of the weapon actor (architecture section 8). */
+export const ActorState = z.enum([
+  "ready",
+  "charging",
+  "cooldown",
+  "reloading",
+  "locked",
+]);
+export type ActorState = z.infer<typeof ActorState>;
+
+/**
+ * Trigger of a rule. Without a filter, `shot` and `hit` mean the owner's own weapon or ability; the
+ * rules of an effect fire only inside its windows.
+ */
+export const Trigger = z.discriminatedUnion("on", [
+  // A shot of a weapon (before its hits)
+  z.object({ on: z.literal("shot"), filter: HitFilter.optional() }),
+  // A hit: of one of the owner's parts, or any hit the filter matches. precision: only (true) or
+  // never (false) precision hits; a hit is a precision hit if its part can be one (all-precision play)
+  z.object({
+    on: z.literal("hit"),
+    part: z.string().optional(),
+    precision: z.boolean().optional(),
+    filter: HitFilter.optional(),
+  }),
+  z.object({
+    on: z.literal("cast"),
+    kinds: z.array(AbilityKind).min(1).optional(),
+    abilityIds: z.array(z.string()).min(1).optional(),
+  }),
+  z.object({ on: z.literal("reload"), edge: z.enum(["start", "end"]) }),
+  // A status on the target: applied (stacks added) or its threshold reached (e.g. ignition)
+  z.object({
+    on: z.literal("status"),
+    status: TargetStatusId,
+    event: z.enum(["applied", "threshold"]),
+  }),
+  // everyMs: every interval while the owner is active, first one interval after the window start
+  // (e.g. Storm's Keep); expires: the end of a buff, mode or window of this id
+  z
+    .object({
+      on: z.literal("timer"),
+      everyMs: RuleValue.optional(),
+      expires: z.string().optional(),
+    })
+    .refine((t) => (t.everyMs === undefined) !== (t.expires === undefined), {
+      message: "a timer needs exactly one of everyMs and expires",
+    }),
+  // Start of the damage phase: what the playstyle has built before (e.g. Pre-stacked)
+  z.object({ on: z.literal("phaseStart") }),
+]);
+export type Trigger = z.infer<typeof Trigger>;
+
+export const CompareOp = z.enum(["<", "<=", "=", ">=", ">"]);
+export type CompareOp = z.infer<typeof CompareOp>;
+
+/** Condition of a rule or a modifier; `not` inverts it. */
+export const Condition = z.discriminatedUnion("type", [
+  // A counter of the owner, e.g. the Perfect Fifth counter
+  z.object({
+    type: z.literal("counter"),
+    id: z.string(),
+    op: CompareOp,
+    value: RuleValue,
+    not: z.boolean().optional(),
+  }),
+  // Stacks of a status on the target or of a buff of the player
+  z.object({
+    type: z.literal("stacks"),
+    status: TargetStatusId.optional(),
+    buff: z.string().optional(),
+    op: CompareOp,
+    value: RuleValue,
+    not: z.boolean().optional(),
+  }),
+  z.object({ type: z.literal("buff"), id: z.string(), not: z.boolean().optional() }),
+  z.object({ type: z.literal("actor"), state: ActorState, not: z.boolean().optional() }),
+  // A mode of the owner has this value (setMode), e.g. the Guidance Ring stands
+  z.object({
+    type: z.literal("mode"),
+    id: z.string(),
+    is: z.string(),
+    not: z.boolean().optional(),
+  }),
+  // The build plays this playstyle or assumption (Build.playstyle, scenario assumptions)
+  z.object({ type: z.literal("playstyle"), id: z.string(), not: z.boolean().optional() }),
+  // The build has this item; "catalyst" means the catalyst of the owner's weapon
+  z.object({ type: z.literal("hasItem"), id: z.string(), not: z.boolean().optional() }),
+]);
+export type Condition = z.infer<typeof Condition>;
+
+/**
+ * Passive change while its owner (effect, buff, status) is active. A multiplier lands in exactly one
+ * bucket; `perStack` scales it with the stacks of its buff: 1 + (multiplier - 1) x stacks.
+ */
+export const MultiplierModifier = MultiplierPart.extend({
+  perStack: z.boolean().optional(),
+});
+export type MultiplierModifier = z.infer<typeof MultiplierModifier>;
+
+/** Timing of a weapon: rate, reload (factor; 0 skips it), charge, or a draw that grows while held. */
+export const StatModifier = z.discriminatedUnion("stat", [
+  z.object({
+    type: z.literal("stat"),
+    stat: z.literal("rpm"),
+    value: RuleValue,
+    weaponTypes: z.array(WeaponType).min(1).optional(),
+  }),
+  z.object({
+    type: z.literal("stat"),
+    stat: z.literal("reload"),
+    factor: RuleValue, // reload time x factor; 0: no reload
+    weaponTypes: z.array(WeaponType).min(1).optional(),
+  }),
+  z.object({
+    type: z.literal("stat"),
+    stat: z.literal("chargeMs"),
+    value: RuleValue,
+    weaponTypes: z.array(WeaponType).min(1).optional(),
+  }),
+  // The policy takes, per shot, the hold with the most damage per second (Oathkeeper)
+  z.object({
+    type: z.literal("stat"),
+    stat: z.literal("drawHold"),
+    stepMs: RuleValue,
+    stepFactor: RuleValue,
+    maxFactor: RuleValue,
+    weaponTypes: z.array(WeaponType).min(1),
+  }),
+]);
+export type StatModifier = z.infer<typeof StatModifier>;
+
+/** Changes an action of another item, e.g. Ember of Ashes: applyStatus scorch x1.5, rounded up. */
+export const ActionModifier = z.object({
+  type: z.literal("action"),
+  action: z.enum(["applyStatus"]),
+  status: TargetStatusId,
+  factor: RuleValue,
+});
+export type ActionModifier = z.infer<typeof ActionModifier>;
+
+export const Modifier = z.union([MultiplierModifier, StatModifier, ActionModifier]);
+export type Modifier = z.infer<typeof Modifier>;
+
+/** A buff of the player that rules grant: one bucket, a duration, stacks up to a maximum. */
+export const BuffDefinition = z
+  .object({
+    id: z.string(),
+    name: z.string(),
+    modifiers: z.array(MultiplierModifier).min(1),
+    durationMs: RuleValue.optional(), // omitted: until the end of the phase
+    maxStacks: RuleValue.optional(), // omitted: 1
+  })
+  .refine((b) => new Set(b.modifiers.map((m) => m.bucketId)).size === 1, {
+    message: "a buff lands in exactly one bucket",
+    path: ["modifiers"],
+  });
+export type BuffDefinition = z.infer<typeof BuffDefinition>;
+
+/** What a rule does (architecture section 6). Delays count from the event. */
+export const Action = z.discriminatedUnion("type", [
+  // Hits of one of the owner's parts: count hits, intervalMs apart; factor scales each hit
+  z.object({
+    type: z.literal("spawn"),
+    part: z.string(),
+    delayMs: RuleValue.optional(),
+    count: RuleValue.optional(),
+    intervalMs: RuleValue.optional(),
+    factor: RuleValue.optional(),
+  }),
+  // Adds to a counter of the owner or to the stacks of an active buff (refreshes its duration)
+  z
+    .object({
+      type: z.literal("addStacks"),
+      counter: z.string().optional(),
+      buff: z.string().optional(),
+      by: RuleValue.optional(), // omitted: 1
+    })
+    .refine((a) => (a.counter === undefined) !== (a.buff === undefined), {
+      message: "addStacks needs exactly one of counter and buff",
+    }),
+  z.object({ type: z.literal("resetCounter"), counter: z.string() }),
+  z.object({
+    type: z.literal("applyStatus"),
+    status: TargetStatusId,
+    stacks: RuleValue.optional(),
+    durationMs: RuleValue.optional(), // omitted: the status definition's
+    delayMs: RuleValue.optional(),
+  }),
+  // Grants a buff of the owner (BuffDefinition) or restarts it; durationMs replaces the definition's
+  z.object({
+    type: z.literal("grantBuff"),
+    buff: z.string(),
+    stacks: RuleValue.optional(),
+    durationMs: RuleValue.optional(),
+  }),
+  // Fills the magazine of the owner's weapon (or all weapons for an ability); omitted rounds: full
+  z.object({ type: z.literal("refill"), rounds: RuleValue.optional() }),
+  // A stat modifier for a while; omitted durationMs: until the end of the phase
+  z.object({
+    type: z.literal("modifyStat"),
+    modifier: StatModifier,
+    durationMs: RuleValue.optional(),
+  }),
+  // Sets a mode of the owner, e.g. a playstyle's fire mode or a deployed Guidance Ring
+  z.object({
+    type: z.literal("setMode"),
+    mode: z.string(),
+    to: z.string(),
+    durationMs: RuleValue.optional(), // omitted: until set again
+  }),
+  // Energy of an ability kind as a share of a full bar
+  z.object({ type: z.literal("addResource"), resource: AbilityKind, amount: RuleValue }),
+  z.object({
+    type: z.literal("modifyAction"),
+    modifier: ActionModifier,
+    durationMs: RuleValue.optional(),
+  }),
+  // Damage of its own without a weapon part, e.g. a Storm's Keep discharge
+  z.object({
+    type: z.literal("damage"),
+    id: z.string(),
+    damage: RuleValue,
+    element: Element,
+    damageSource: DamageSource,
+    delivery: Delivery.optional(),
+  }),
+]);
+export type Action = z.infer<typeof Action>;
+
+export const Rule = z.object({
+  id: z.string(), // unique within its owner
+  on: Trigger,
+  if: z.array(Condition).optional(),
+  do: z.array(Action).min(1),
+  cooldownMs: RuleValue.optional(), // the rule does not fire again within this time
+  source: Source.optional(), // where the structure comes from, e.g. the Clarity text
+});
+export type Rule = z.infer<typeof Rule>;
+
 export const GuardianClass = z.enum(["titan", "hunter", "warlock"]);
 
 /** Subclass of a build: one element, or Prismatic. */
@@ -615,9 +895,6 @@ export const FormerCode = z.object({
   reason: FormerCodeReason,
 });
 
-/** Damage source of an ability; the weapon is not an ability. */
-export const AbilityKind = z.enum(["super", "grenade", "melee", "classAbility"]);
-export type AbilityKind = z.infer<typeof AbilityKind>;
 /** Kinds with a stat of their own in the stats block; the class stat has no known factor (U7). */
 export const StatAbilityKind = AbilityKind.exclude(["classAbility"]);
 export type StatAbilityKind = z.infer<typeof StatAbilityKind>;

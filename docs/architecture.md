@@ -154,34 +154,58 @@ rules:
 
 ## 6 Regeln: Auslöser, Bedingungen, Aktionen
 
-Muster Event – Condition – Action (Dayal u. a. 1988). Bedingungen werden vor den Aktionen derselben Regel ausgewertet; Regeln eines Ereignisses laufen in Dateireihenfolge.
+Muster Event – Condition – Action (Dayal u. a. 1988). Bedingungen werden vor den Aktionen derselben Regel ausgewertet; Regeln eines Ereignisses laufen in Dateireihenfolge. **Endgültig seit B3** (2026-10-31): Zod-Schema in `src/data/schema.ts`, Abschnitt „Rules“ (`Rule`, `Trigger`, `Condition`, `Action`, `Modifier`, `BuffDefinition`, `TargetStatusId`); `tests/ruleTypes.test.ts` listet die erlaubten Typen (I3). Zahlen sind bis B4 `SourcedNumber` (`RuleValue`), ab B4 auch `$`-Verweise.
+
+```ts
+interface Rule { id: string; on: Trigger; if?: Condition[]; do: Action[]; cooldownMs?: RuleValue; source?: Source }
+```
 
 | Auslöser | Felder |
 | --- | --- |
-| `shot` | Item, Teil |
-| `hit` | Item, Teil, `precision`, Filter (Waffentyp, Element, Damage Source, Keyword) |
-| `cast` | Ability-Art, Ability |
-| `reload` | Beginn oder Ende |
-| `status` | Status, Schwelle erreicht |
-| `timer` | Ablauf eines Buffs, Fensters oder Cooldowns |
-| `phaseStart` | Beginn der Damage Phase (vorher aufgebaute Effekte) |
+| `shot` | Filter (ohne: eigene Waffe) |
+| `hit` | `part` (eigener Teil), `precision`, Filter (Damage Source, Element, Waffentyp, Ability, Status) |
+| `cast` | Ability-Arten, Abilities |
+| `reload` | `edge`: Beginn oder Ende |
+| `status` | Status, `event`: `applied` oder `threshold` |
+| `timer` | `everyMs` (periodisch im Fenster des Besitzers, erster Tick nach einem Intervall) oder `expires` (Ablauf eines Buffs, Modes oder Fensters) |
+| `phaseStart` | Beginn der Damage Phase (vorher aufgebaut) |
 
-Bedingungen: Zählerstand, Stacks eines Status, Buff aktiv, Zustand eines Akteurs (`in(Bereit)`), Spielweise, Build enthält Item.
+| Bedingung | Felder |
+| --- | --- |
+| `counter` | Zähler des Besitzers, Vergleich, Wert |
+| `stacks` | Stacks eines Status am Ziel oder eines Buffs, Vergleich, Wert |
+| `buff` | Buff aktiv |
+| `actor` | Zustand der Waffe (`ready`, `charging`, `cooldown`, `reloading`, `locked`) |
+| `mode` | Mode des Besitzers hat einen Wert |
+| `playstyle` | Spielweise oder Annahme des Builds bzw. Szenarios (auch „Pre-stacked“, „Setup steht“) |
+| `hasItem` | Build enthält Item; `catalyst` heißt der Catalyst der eigenen Waffe |
 
-| Aktion | Wirkung | Beispiele (heute Sonderfeld) |
+Jede Bedingung kennt `not`. Modes und Buffs mit Dauer werden zur Zeit des Ereignisses geprüft (aktiv, solange `t < Ende`), nicht über Ablauf-Ereignisse; so entscheidet bei Gleichstand nicht die Ereignisgruppe.
+
+| Aktion | Wirkung | ersetzt (Sonderfeld) |
 | --- | --- | --- |
-| `spawn` | plant Treffer eines Teils, mit Verzögerung und Anzahl | Perfect Fifth, Wolfpack Rounds, Seeker (`everyNthShot`, `nthShotPart`) |
-| `addStacks`, `resetCounter` | Zähler oder Buff-Stapel ändern | Perfect-Fifth-Zähler, Peacekeepers (`hitStacks`) |
-| `applyStatus` | Status am Ziel | Scorch, Volatile, Jolt, Weaken (`scorchStacksPerShot`) |
-| `grantBuff` | Buff am Spieler, genau ein Bucket, Dauer | Radiant, Reaper's Tithe (`catalystWindowSeconds`) |
-| `refill` | Magazin auffüllen | Polaris Lance, Marksman's Dodge (`refillsMagazine`, `noReloads`) |
-| `modifyStat` | Takt, Reload, Ladezeit für eine Dauer | Archer's Tempo, Reload-Catalysts, gehaltener Zug (`holdDraw`) |
-| `setMode` | Feuermodus, Ladestufe, Aufbau | Whirling Ovation, Guidance Ring (`playstyleParts`, `setup`) |
-| `addResource` | Energie oder Ladung | Ability-Energie, Golden-Gun-Ladung |
-| `modifyAction` | ändert die Aktion eines anderen Items | Ember of Ashes (Scorch), Dawn Chorus (Ignition ×2) |
-| `damage` | eigener Schaden ohne Waffenteil | Storm's Keep, Hellion (`periodicDamage`) |
+| `spawn` | Treffer eines eigenen Teils: `delayMs`, `count`, `intervalMs`, `factor` | Teile je Schuss, `everyNthShot`, `nthShotPart`, `tickFactors`, `requiresCatalyst`, `requiresSetup` |
+| `addStacks`, `resetCounter` | Zähler oder Stacks eines aktiven Buffs (frischt dessen Dauer auf) | Perfect-Fifth-Zähler, `hitStacks` |
+| `applyStatus` | Status am Ziel: Stacks, Dauer, Verzögerung | `appliesKeyword`, `scorchStacksPerShot`, Counter-Teile |
+| `grantBuff` | Buff des Besitzers (`BuffDefinition`: genau ein Bucket, Dauer, höchste Stacks) | `catalystWindowSeconds` (`WeaponOption.windowSeconds`), Teil von `hitStacks` |
+| `refill` | Magazin auffüllen, ohne Angabe ganz | `refillsMagazine` |
+| `modifyStat` | `StatModifier` für eine Dauer | Takt einer Spielweise, Takt des Catalysts ab Aufbau |
+| `setMode` | Mode des Besitzers, mit Dauer | `setup` (Guidance Ring), Spielweisen |
+| `addResource` | Energie einer Ability-Art (Anteil der Leiste) | – (Energie-Policy) |
+| `modifyAction` | `ActionModifier` für eine Dauer | – |
+| `damage` | eigener Schaden ohne Waffenteil | `periodicDamage` (mit `timer.everyMs`) |
 
-Die Liste ist der Entwurf aus ADR 0017, ergänzt um die heutigen Sonderfelder; endgültig in B3.
+**Modifier** sind passiv, solange ihr Besitzer aktiv ist (Fenster eines Effects, Buff, Status); sie ersetzen `EffectPart`:
+
+| Modifier | Inhalt | ersetzt |
+| --- | --- | --- |
+| `multiplier` | `MultiplierPart` (Bucket, Filter) plus `perStack`: 1 + (m − 1) × Stacks des Buffs | `multiplier`, mit Buff auch `hitStacks` (`bossFactor` als zweiter Multiplier im selben Bucket) |
+| `stat` | `rpm`, `reload` (Faktor, 0 = kein Reload), `chargeMs`, `drawHold` (Policy wählt den Halt) | `timing` (`noReload`, `reloadDuration`), `holdDraw` |
+| `action` | Faktor auf `applyStatus` eines Status, aufgerundet | `counterModifier` (Ember of Ashes) |
+
+**Besitzer:** `Weapon`, `Effect` und `Ability` bekommen `rules` und `buffs` (B3a/B3b), Zähler und Modes leben je Besitzer und Lauf. `Weapon.playstyles` (Liste mit `id`, `label`) ersetzt `playstyle.selectable` und `playstyleBaseName`. Die Felder von `WeaponOverride` bleiben bis B4 Eingang des Imports; der Import erzeugt daraus nur noch Regeln.
+
+**Status-Container:** ein Zustand je Status am Ziel (`TargetStatusId`: Scorch, Volatile, Jolt, Unravel, Bolt Charge, Weaken), Werte als Daten (`src/data/keywords.json`, Automat aus Abschnitt 8). Die Definition ist der heutige Keyword-Eintrag mit Status-ID: Auslöser `counter` (Schwelle, Cooldown, Burn, Schaden der Ignition), `damageTaken`, `playerStacks`, oder ohne Auslöser mit `modifiers` (Weaken: Multiplier im Bucket `debuff`, Dauer).
 
 ## 7 Kern: Ereignisschleife (Abb. 5)
 
@@ -349,7 +373,7 @@ Regelkreis der Eichung (Wirkungsplan nach DIN IEC 60050-351):
 
 ## 13 Offen bis zur Stufe
 
-- Dateiformat und Ordner der Items (B4), endgültige Aktionsliste (B3), Grenzen von θ (B5). Entschieden in B2: Los FNV-1a der Zeilen-ID, Rest mod 10 < 7 → Eichmenge.
+- Dateiformat und Ordner der Items (B4), Grenzen von θ (B5). Entschieden in B2: Los FNV-1a der Zeilen-ID, Rest mod 10 < 7 → Eichmenge. Entschieden in B3: Aktionsliste und Schema der Regeln (Abschnitt 6).
 - Szenarien aus Aegis Abilities und Testing (offen aus B2): Ability-Zeilen brauchen einen eigenen Weg (Differenz mit und ohne Cast, Burn-Schalter „ohne Burn“ im Szenario, weil Aegis' Pakete nur Ignitions enthalten); bis dahin prüft der Ability-Gate nur den Rückweg der Pakete (`tests/abilityGate.test.ts`, ohne Burn-Ticks).
 - Quelle der Waffen-Grundwerte (B4): Quantum hält die Aegis-Zeilen als Prüfung frei, `$aegis` ist aktueller, macht die Zeile aber zur Eichung. Entscheidung an Zahlen (wie viele Delta-Paare bleiben, wie weit Quantum und Aegis auseinanderliegen); bis dahin „Aegis vor Quantum“.
 - Policy für Casts und Energie im Lauf: erst mit dem Optimizer für Abilities (2.0).

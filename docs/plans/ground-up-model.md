@@ -30,13 +30,29 @@ Prüfstand (`tests/scenarios/`, `tests/scenarioBench.test.ts`, 26 von 30, Verhä
 - Kennzahlen: Delta-Paare (Haupt), Rangfolge, Absolut (Info); Snapshot im neuen Format als Basis für alle folgenden Stufen.
 - Invarianten: I1 (Status), I10, I11.
 
-### B3 – Regeln im Kern (Opus entwirft das Schema, Sonnet setzt um; eventuell zwei Blöcke)
+### B3 – Regeln im Kern (Opus entwirft das Schema, Sonnet setzt um; zwei Blöcke)
 
 - `Rule { on, if, do }`, Auslöser und etwa zehn Aktionen (`docs/architecture.md`, Abschnitt 6); allgemeiner Status-Container (Scorch, Volatile, Jolt, Weaken als Daten).
 - Sonderfelder werden Regeln, Verhalten gleich: `hitStacks`, `setup`, `holdDraw`, `refillsMagazine`, `catalystWindowSeconds`, `scorchStacksPerShot`, `everyNthShot`, `nthShotPart`, `playstyleParts`, `tickFactors`, `noReloads`, `periodicDamage`.
 - Golden-Beispiel Polaris Lance (`docs/architecture.md`, Abschnitt 11) als Test.
 - Gate: Kennzahlen aus B2 und `mechanics-baseline` unverändert; ein Test listet die erlaubten Typen und findet kein Sonderfeld mehr im Schema.
 - Invarianten: I3, I7.
+
+**B3.0 Schema (Opus, erledigt 2026-10-31):** Abschnitt „Rules“ in `src/data/schema.ts`, Bauplan Abschnitt 6 endgültig (Zuordnung Sonderfeld → Regel dort). `tests/ruleTypes.test.ts`: erlaubte Typen (I3), Liste `REMAINING` der Sonderfelder im Laufzeit-Schema (schrumpft je Schritt, am Ende von B3b leer), Polaris aus Abschnitt 5.4 als Regeln. `WeaponOverride` behält seine Felder bis B4 (Eingang des Imports, erzeugt nur noch Regeln). `noReloads` ist reiner Import-Eingang und kein Laufzeit-Feld.
+
+**B3a – Kern und Waffen (Sonnet, ein Block):**
+
+1. Regel-Engine `src/engine/core/rules.ts`: Auslöser zuordnen, Bedingungen, alle Aktionen; Zähler, Modes, Buffs je Besitzer; Modifier aktiv nach Zeit. Ein Unit-Test je Auslöser, Bedingung und Aktion (auch `addResource`, `actor`, `modifyAction`, die noch kein Item nutzt). Neue Ereignisse nur aus `shot`, Aktionen und Policy (I7).
+2. Status-Container `src/engine/core/status.ts` aus `keywordRun.ts` und `core/burn.ts`: ein Zustand je `TargetStatusId`; `keywords.json` wird Status-Definition (Auslöser `counter` ohne `counterId`), Weaken als Eintrag mit `modifiers`. Verhalten gleich.
+3. Waffen-Seite: `Weapon` bekommt `rules`, `buffs`, `playstyles`; im Schema `Weapon` unter den Abschnitt „Rules“ verschieben (reine Verschiebung). Der Import (`scripts/lib/weaponPackages.ts`) schreibt `on shot → spawn` je Teil, Zähler für jeden N-ten Schuss, `spawn` mit `factor` statt `tickFactors`, Bedingung `playstyle`/`hasItem catalyst`, Hierarchy als Zähler und `setMode` (Pre-stacked und „Setup steht“ als `phaseStart`-Regeln), Catalyst-Fenster als `grantBuff`, `appliesKeyword` der Waffe als `on hit → applyStatus`. Die Waffe liest Takt, Reload und Halten aus `StatModifier`. Felder aus `REMAINING` streichen.
+4. Golden-Test Polaris (10,5 s mit und ohne Ember, 30 s). Weicht er vom Kern ab: Befund, nichts anpassen.
+
+Zu beachten: Gleichstände wie heute (Schuss vor Treffern; Hierarchy: Schuss genau beim Ablauf baut neu auf); `stacksAt` zählt heute Schüsse zur Schusszeit und Treffer der N-ten Teile zur Trefferzeit; Grenze des Catalyst-Fensters heute einschließlich (`<=`); Reload-Faktor 0 bucht keinen Reload (wie `noReload`). Ein Treffer gilt als Präzisionstreffer, wenn sein Teil `canPrecision` hat.
+
+**B3b – Effects und Abilities (Sonnet, ein Block):**
+
+5. `Effect.parts` werden `Modifier`, `Effect` und `Ability` bekommen `rules` und `buffs`: `appliesKeyword` und `Ability.keywordParts` → `on hit → applyStatus`; `hitStacks` → Buff mit `perStack` und `bossFactor`; `holdDraw`/`timing` → `StatModifier`; `counterModifier` → `ActionModifier`; `periodicDamage` → `timer.everyMs` + `damage`; `refillsMagazine` → `on cast → refill` (die Waffe plant den nächsten Schuss neu, Generation statt Vorausschau). Counter-, Threshold- und DoT-Teile fallen weg, die Fixture `one-thousand-voices-hand-model.json` wird in Regeln übersetzt.
+6. `REMAINING` leer, Laufzeit des Optimizers (≤ 306 ms), Doku.
 
 ### B4 – Item-Dateien (Opus entwirft das Format, Sonnet setzt um)
 
