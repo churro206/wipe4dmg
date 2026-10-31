@@ -391,52 +391,6 @@ export const WeaponCatalyst = z.object({
 });
 export type WeaponCatalyst = z.infer<typeof WeaponCatalyst>;
 
-export const Weapon = z.object({
-  id: z.string(),
-  code: z.number().int().positive(), // short code for build links; never reused
-  name: z.string(),
-  manifestHash: z.number().int(),
-  gameVersion: z.string(), // game version the data refers to, e.g. "9.7.0.5"
-  weaponType: WeaponType,
-  element: Element,
-  ammo: z.enum(["primary", "special", "heavy"]),
-  chargeTimeMs: SourcedNumber, // time from the start of the damage phase to the first shot
-  fireRateRpm: SourcedNumber, // shots per minute within a magazine; for charged weapons the full cycle
-  magazine: SourcedNumber,
-  totalShots: SourcedNumber, // magazine plus reserves
-  reloadTimeMs: SourcedNumber, // extra time after the last shot of a magazine, on top of the shot interval
-  // Reload Duration Multiplier the sources' reload already contains (K1: Quantum and Aegis reload
-  // with Rally Barricade); a reloadDuration part counts only beyond it. Omitted: none.
-  reloadDurationIncluded: SourcedNumber.optional(),
-  damageInstances: z.array(DamageInstance).min(1),
-  intrinsicParts: z.array(IntrinsicPart),
-  // Bonus on keyword damage that this weapon set off, e.g. "Solar Effects that are initially
-  // applied by One Thousand Voices deal 31.6% increased damage" (ADR 0015, U4a-4).
-  keywordBonuses: z
-    .array(z.object({ keywordId: KeywordId, factor: SourcedNumber }))
-    .optional(),
-  intrinsics: z.array(
-    z.object({
-      id: z.string(),
-      name: z.string(),
-      description: z.string(),
-      source: Source,
-    }),
-  ),
-  setup: WeaponSetup.optional(),
-  // Label of the plain shot where the build picker offers playstyles (DamageInstance.playstyle), e.g. "Full charge"
-  playstyleBaseName: z.string().optional(),
-  // Imported packages (ADR 0013): modelled effects Aegis measured inside the value per shot.
-  includedEffectIds: z.array(z.string()).optional(),
-  // Imported packages: catalyst, perks and mods as factors from the "with / without" rows.
-  options: z.array(WeaponOption).optional(),
-  // The catalyst of an imported package and what it does against one boss, decided by the sources:
-  // damage (an option with factor), timing (rows with catalyst differ), none (the rows with catalyst
-  // equal those without, e.g. kill effects) or unknown (no source with catalyst).
-  catalyst: WeaponCatalyst.optional(),
-});
-export type Weapon = z.infer<typeof Weapon>;
-
 /** Why an exotic weapon in scope is not imported (ADR 0013, point 10). */
 export const WeaponGap = z.object({
   name: z.string(),
@@ -819,6 +773,56 @@ export const Rule = z.object({
   source: Source.optional(), // where the structure comes from, e.g. the Clarity text
 });
 export type Rule = z.infer<typeof Rule>;
+
+export const Weapon = z.object({
+  id: z.string(),
+  code: z.number().int().positive(), // short code for build links; never reused
+  name: z.string(),
+  manifestHash: z.number().int(),
+  gameVersion: z.string(), // game version the data refers to, e.g. "9.7.0.5"
+  weaponType: WeaponType,
+  element: Element,
+  ammo: z.enum(["primary", "special", "heavy"]),
+  chargeTimeMs: SourcedNumber, // time from the start of the damage phase to the first shot
+  fireRateRpm: SourcedNumber, // shots per minute within a magazine; for charged weapons the full cycle
+  magazine: SourcedNumber,
+  totalShots: SourcedNumber, // magazine plus reserves
+  reloadTimeMs: SourcedNumber, // extra time after the last shot of a magazine, on top of the shot interval
+  // Reload Duration Multiplier the sources' reload already contains (K1: Quantum and Aegis reload
+  // with Rally Barricade); a reloadDuration part counts only beyond it. Omitted: none.
+  reloadDurationIncluded: SourcedNumber.optional(),
+  damageInstances: z.array(DamageInstance).min(1),
+  intrinsicParts: z.array(IntrinsicPart),
+  // Rules of the weapon (architecture section 6): the weapon owns them and its counters, modes and
+  // buffs. A part that a `spawn` action names is set off by the rules only (B3a, step by step).
+  rules: z.array(Rule).optional(),
+  buffs: z.array(BuffDefinition).optional(),
+  // Bonus on keyword damage that this weapon set off, e.g. "Solar Effects that are initially
+  // applied by One Thousand Voices deal 31.6% increased damage" (ADR 0015, U4a-4).
+  keywordBonuses: z
+    .array(z.object({ keywordId: KeywordId, factor: SourcedNumber }))
+    .optional(),
+  intrinsics: z.array(
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      description: z.string(),
+      source: Source,
+    }),
+  ),
+  setup: WeaponSetup.optional(),
+  // Label of the plain shot where the build picker offers playstyles (DamageInstance.playstyle), e.g. "Full charge"
+  playstyleBaseName: z.string().optional(),
+  // Imported packages (ADR 0013): modelled effects Aegis measured inside the value per shot.
+  includedEffectIds: z.array(z.string()).optional(),
+  // Imported packages: catalyst, perks and mods as factors from the "with / without" rows.
+  options: z.array(WeaponOption).optional(),
+  // The catalyst of an imported package and what it does against one boss, decided by the sources:
+  // damage (an option with factor), timing (rows with catalyst differ), none (the rows with catalyst
+  // equal those without, e.g. kill effects) or unknown (no source with catalyst).
+  catalyst: WeaponCatalyst.optional(),
+});
+export type Weapon = z.infer<typeof Weapon>;
 
 export const GuardianClass = z.enum(["titan", "hunter", "warlock"]);
 

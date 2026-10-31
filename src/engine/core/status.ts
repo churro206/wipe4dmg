@@ -25,6 +25,7 @@ import type {
   AppliesKeywordPart,
   Keyword,
   KeywordId,
+  SourcedNumber,
   TargetStatusId,
 } from "../../data/schema";
 import { appliesToWeaponType, productOf, type Factors } from "../effectParts";
@@ -43,6 +44,8 @@ export const KEYWORD_EVENT_GROUP = 4;
 const ROUNDING_TOLERANCE = 1e-9;
 
 type Burn = {
+  /** The stacks at a time, after the hold and the fall of the ones not refreshed. */
+  stacksAt: (state: StatusState, timeMs: number) => number;
   /** Lets the stacks fall that were not refreshed; call before adding stacks. */
   decay: (state: StatusState, timeMs: number) => void;
   /** Stacks were added by `source`: starts the ticks on a clean target. */
@@ -132,6 +135,7 @@ function createBurn(
   });
 
   return {
+    stacksAt,
     decay: (state, timeMs) => {
       state.stacks = stacksAt(state, timeMs);
     },
@@ -163,6 +167,12 @@ export type StatusContext = {
   // Factor of the action modifiers on the stacks an application brings (Ember of Ashes)
   stackFactorAt: (status: TargetStatusId, timeMs: number) => number;
   isInPhase: (timeMs: number) => boolean;
+};
+
+/** What an application brings: stacks (read when the status has stacks) and a duration. */
+type StatusApplication = {
+  stacks?: () => number;
+  durationMs?: () => number; // replaces the duration of the keyword
 };
 
 /** What adding stacks did: nothing (cooldown), stacks below the threshold, or the threshold was reached. */
@@ -245,8 +255,11 @@ export function createStatusContainer({
     return "threshold";
   };
 
-  /** The handler for the event run that applies statuses and sets them off. */
-  const onHit: OnHit = (hit, target, schedule) => {
+  /** What one hit does to statuses: sets them off (goOff, takeDamage) and applies them. */
+  const session = (
+    hit: TimedDamageInstance,
+    schedule: (event: RunEvent) => void,
+  ) => {
     const timeMs = hit.timeMs;
     /** Queues the damage of a keyword; source is the hit whose bonuses it may inherit. */
     const goOff = (keyword: Keyword, source: TimedDamageInstance) => {
@@ -282,6 +295,67 @@ export function createStatusContainer({
       if (keyword.removedOnTrigger) state.activeUntilMs = -Infinity;
       goOff(keyword, hit);
     };
+    /** Applies the status of a keyword to the target (steps 3 of the order above). */
+    const apply = (
+      target: TargetState,
+      keyword: Keyword,
+      application: StatusApplication,
+    ) => {
+      const state = statusState(target, keyword.status);
+      const stacksOf = () => {
+        if (application.stacks === undefined) {
+          throw new Error(`Keyword "${keyword.id}" needs stacks`);
+        }
+        return application.stacks();
+      };
+      switch (keyword.trigger.type) {
+        case "counter": {
+          const outcome = addStacks(target, keyword.status, {
+            stacks: stacksOf(),
+            timeMs,
+            threshold: requireValue(keyword.trigger.threshold, "threshold"),
+            cooldownMs: optionalMs(keyword.cooldownMs, "cooldownMs"),
+            source: hit,
+            schedule,
+          });
+          if (outcome === "threshold") goOff(keyword, hit);
+          return;
+        }
+        case "playerStacks": {
+          const max = requireValue(keyword.trigger.stacks, "stacks");
+          state.playerStacks = Math.min(max, state.playerStacks + stacksOf());
+          return;
+        }
+        case "damageTaken":
+          break;
+      }
+      if (keyword.removedOnTrigger && timeMs < state.cooldownUntilMs) return;
+      const durationMs =
+        application.durationMs?.() ??
+        (keyword.durationMs
+          ? requireValue(keyword.durationMs, "durationMs")
+          : undefined);
+      if (durationMs === undefined) {
+        throw new Error(`Keyword "${keyword.id}" needs a duration`);
+      }
+      const wasActive = state.activeUntilMs > timeMs;
+      state.activeUntilMs = Math.max(state.activeUntilMs, timeMs + durationMs);
+      if (wasActive) return;
+      state.damageTakenSinceTrigger = 0;
+      if (
+        keyword.trigger.type === "damageTaken" &&
+        keyword.trigger.applyingHitCounts
+      ) {
+        takeDamage(keyword, state);
+      }
+    };
+    return { goOff, takeDamage, apply };
+  };
+
+  /** The handler for the event run that applies statuses and sets them off. */
+  const onHit: OnHit = (hit, target, schedule) => {
+    const { goOff, takeDamage, apply } = session(hit, schedule);
+    const timeMs = hit.timeMs;
 
     // 1. damage taken
     for (const [id, state] of target.statuses) {
@@ -311,51 +385,49 @@ export function createStatusContainer({
     // 3. applications
     for (const part of keywordPartsAt(timeMs)) {
       if (!matches(part, hit)) continue;
-      const keyword = keywordOf(part.keywordId);
-      const state = statusState(target, keyword.status);
-      switch (keyword.trigger.type) {
-        case "counter": {
-          const outcome = addStacks(target, keyword.status, {
-            stacks: stacksOf(part),
-            timeMs,
-            threshold: requireValue(keyword.trigger.threshold, "threshold"),
-            cooldownMs: optionalMs(keyword.cooldownMs, "cooldownMs"),
-            source: hit,
-            schedule,
-          });
-          if (outcome === "threshold") goOff(keyword, hit);
-          continue;
-        }
-        case "playerStacks": {
-          const max = requireValue(keyword.trigger.stacks, "stacks");
-          state.playerStacks = Math.min(max, state.playerStacks + stacksOf(part));
-          continue;
-        }
-        case "damageTaken":
-          break;
-      }
-      if (keyword.removedOnTrigger && timeMs < state.cooldownUntilMs) continue;
-      const durationMs = part.durationMs ?? keyword.durationMs;
-      if (!durationMs) {
-        throw new Error(`Keyword "${keyword.id}" needs a duration`);
-      }
-      const wasActive = state.activeUntilMs > timeMs;
-      state.activeUntilMs = Math.max(
-        state.activeUntilMs,
-        timeMs + requireValue(durationMs, "durationMs"),
-      );
-      if (wasActive) continue;
-      state.damageTakenSinceTrigger = 0;
-      if (
-        keyword.trigger.type === "damageTaken" &&
-        keyword.trigger.applyingHitCounts
-      ) {
-        takeDamage(keyword, state);
-      }
+      apply(target, keywordOf(part.keywordId), {
+        ...(part.stacks ? { stacks: () => stacksOf(part) } : {}),
+        ...(part.durationMs
+          ? {
+              durationMs: () =>
+                requireValue(part.durationMs as SourcedNumber, "durationMs"),
+            }
+          : {}),
+      });
     }
   };
 
-  return { onHit, addStacks };
+  /**
+   * Applies a status by a rule (action applyStatus): the same as a hit with an appliesKeyword part,
+   * with `source` as the hit whose bonuses the status inherits.
+   */
+  const applyStatus = (
+    target: TargetState,
+    status: TargetStatusId,
+    application: { stacks?: number; durationMs?: number },
+    source: TimedDamageInstance,
+    schedule: (event: RunEvent) => void,
+  ) => {
+    const keyword = byStatus.get(status);
+    if (!keyword) throw new Error(`No definition for status "${status}"`);
+    const { stacks, durationMs } = application;
+    session(source, schedule).apply(target, keyword, {
+      ...(stacks === undefined ? {} : { stacks: () => stacks }),
+      ...(durationMs === undefined ? {} : { durationMs: () => durationMs }),
+    });
+  };
+
+  /** Stacks of a status on the target at a time (a burning status lets them fall after the hold). */
+  const stacksOnTarget = (
+    target: TargetState,
+    status: TargetStatusId,
+    timeMs: number,
+  ) => {
+    const state = statusState(target, status);
+    return burns.get(status)?.stacksAt(state, timeMs) ?? state.stacks;
+  };
+
+  return { onHit, addStacks, applyStatus, stacksOnTarget };
 }
 
 export type StatusContainer = ReturnType<typeof createStatusContainer>;

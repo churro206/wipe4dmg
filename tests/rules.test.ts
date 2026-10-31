@@ -347,7 +347,7 @@ describe("actions", () => {
     return run;
   };
 
-  it("spawn: absolute time, count, interval and factor", () => {
+  it("spawn: event time, delay, count, interval and factor; omitted ones are the part's", () => {
     const { calls } = act({
       type: "spawn",
       part: "p",
@@ -357,14 +357,11 @@ describe("actions", () => {
       factor: n(1.5),
     });
     expect(calls).toEqual([
-      { kind: "spawn", ownerId: "w", part: "p", timeMs: 1500, count: 3, intervalMs: 100, factor: 1.5 },
+      { kind: "spawn", ownerId: "w", part: "p", timeMs: 1000, delayMs: 500, count: 3, intervalMs: 100, factor: 1.5 },
     ]);
-    expect(act({ type: "spawn", part: "p" }).calls[0]).toMatchObject({
-      timeMs: 1000,
-      count: 1,
-      intervalMs: 0,
-      factor: 1,
-    });
+    expect(act({ type: "spawn", part: "p" }).calls).toEqual([
+      { kind: "spawn", ownerId: "w", part: "p", timeMs: 1000, factor: 1 },
+    ]);
   });
 
   it("addStacks and resetCounter: a counter of the owner", () => {

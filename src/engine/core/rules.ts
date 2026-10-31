@@ -87,12 +87,15 @@ export type RuleContext = {
 
 /** What the actions change in the world; times are absolute (event time plus delay). */
 export type RuleHost = {
+  // Hits of one of the owner's parts. What the rule omits (delay, count, interval) the host takes
+  // from the part itself; timeMs is the time of the event.
   spawn: (spawn: {
     ownerId: string;
     part: string;
     timeMs: number;
-    count: number;
-    intervalMs: number;
+    delayMs?: number;
+    count?: number;
+    intervalMs?: number;
     factor: number;
   }) => void;
   applyStatus: (apply: {
@@ -386,9 +389,10 @@ export function createRuleEngine(
         host.spawn({
           ownerId,
           part: action.part,
-          timeMs: timeMs + (ms(action.delayMs) ?? 0),
-          count: action.count ? requireValue(action.count, "count") : 1,
-          intervalMs: ms(action.intervalMs) ?? 0,
+          timeMs,
+          ...(action.delayMs ? { delayMs: ms(action.delayMs) } : {}),
+          ...(action.count ? { count: requireValue(action.count, "count") } : {}),
+          ...(action.intervalMs ? { intervalMs: ms(action.intervalMs) } : {}),
           factor: action.factor ? requireValue(action.factor, "factor") : 1,
         });
         return;

@@ -143,14 +143,15 @@ rules:
   - on: hit { part: shot, precision: true }
     do: [ refill { ammo: 1 } ]
   - on: hit { part: shot, precision: true }
-    if: [ counter fifth < 4 ]
     do: [ addStacks { counter: fifth } ]
   - on: hit { part: shot, precision: true }
-    if: [ counter fifth = 4 ]
-    do: [ resetCounter { counter: fifth }, spawn { part: perfect-fifth, afterMs: { value: 500, note: "Clarity ?", status: estimate } } ]
+    if: [ counter fifth = 5 ]
+    do: [ resetCounter { counter: fifth }, spawn { part: perfect-fifth, delayMs: { value: 500, note: "Clarity ?", status: estimate } } ]
   - on: hit { part: perfect-fifth }
     do: [ applyStatus { status: scorch, stacks: $clarity.scorch } ]   # 40, mit Ember of Ashes 60
 ```
+
+Die Regeln eines Ereignisses laufen in Dateireihenfolge, und eine spätere Regel sieht, was eine frühere getan hat (B3a, `tests/rules.test.ts`). Deshalb zählt die erste Regel jeden Treffer und die zweite zündet bei 5; die erste Fassung (zählen bis 4, zünden bei 4) hätte jeden vierten Treffer gezündet. `tests/polarisGolden.test.ts` belegt die Fassung gegen Abschnitt 11 und gegen den bisherigen Weg.
 
 ## 6 Regeln: Auslöser, Bedingungen, Aktionen
 
