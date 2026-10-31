@@ -21,3 +21,4 @@ Eine Zeile pro ADR. Lies vor einem Block nur die ADRs, die er betrifft.
 | [0015](0015-unified-mechanics.md)                | Einheitliches Mechanik-Modell: ein Teil-Modell und ein Ereignis-Lauf für alle Quellen                   |
 | [0016](0016-verification-and-vertical-slices.md) | Prüfen mit Spielwissen (`buildSimulation`, Plausibilitäts-Gate), vertikale Scheiben                     |
 | [0017](0017-ground-up-model.md)                  | Schadensmodell aus allgemeinen Systemen (Formel, Status, Effekte, Akteur, Strategie) mit Prüfstand      |
+| [0018](0018-blueprint.md)                        | Bauplan: Messung nur als Prüfung, Items als Dateien, Eichung nur global (`docs/architecture.md`)        |

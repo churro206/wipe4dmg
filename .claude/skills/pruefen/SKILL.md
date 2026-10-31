@@ -21,5 +21,11 @@ Grüne Tests allein reichen nicht. Prüfe wie ein erfahrener Destiny-2-Spieler: 
 - Schreibe „fertig“ nur mit Beleg, z. B. „940 Tests grün, Gate: Cuirass ×1,56“.
 - Ohne Beleg schreibst du „ungeprüft“ und sagst, was fehlt.
 - Melde Abweichungen offen, auch wenn sie unbequem sind.
+- Ein Szenario, aus dessen Zeile ein Wert stammt, ist kein Beleg für diesen Wert (ADR 0018). Belege mit Delta-Paaren oder Zeilen der Prüfmenge.
+- Der Abschlussbericht endet mit vier Zeilen, je Liste oder „keine“:
+  - **Geeicht:** Werte aus einer Messung, mit Zeilen-ID.
+  - **Gelockert:** Gates, Toleranzen, Plausibilitätsregeln (nur nach Rückfrage).
+  - **Gestrichen:** Teile des Plans, die nicht gemacht wurden (nur nach Rückfrage).
+  - **Unsicher:** Annahmen, Schätzungen, ungeprüfte Teile.
 
 Idee nach „verification-before-completion“ (obra/superpowers), gekürzt auf dieses Projekt.

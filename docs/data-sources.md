@@ -4,7 +4,7 @@ Stand: 2026-10-20, ergänzt 2026-10-25 · Spielversion: 9.7.0.5
 
 Gespeicherte Rohdaten aller Sheets von destiny2.science: `docs/sources/README.md`.
 
-Die Spielwerte kommen aus frei zugänglichen Community-Quellen (ADR 0005). Eigene Messungen sind nur Stichproben.
+Die Spielwerte kommen aus frei zugänglichen Community-Quellen (ADR 0005). Eigene Messungen sind nur Stichproben. Seit dem Bauplan (ADR 0018, `docs/architecture.md`) sind Aegis Weapons, Abilities und Testing Prüfquellen: Ein Wert daraus kommt nur als Verweis auf seine Zeile ins Modell, und diese Zeile prüft dann nichts mehr.
 
 ## Hauptquellen
 

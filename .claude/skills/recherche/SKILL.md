@@ -26,9 +26,9 @@ Steht ein Wert nicht direkt in einer Quelle, lässt er sich aber aus mehreren he
 
 1. **Zerlegen:** Teile mit Anzahl, Zeitpunkt und Keywords aus den Texten (Compendium, Clarity) und Werten (Aegis, Quantum) bestimmen.
 2. **Nachstellen:** Die Messung der Quelle mit ihren Annahmen in der Engine nachstellen (gleiche Anzahl Einsätze, gleiche Buffs wie „Ember of Ashes“, Spielweise optimal wie bei Aegis).
-3. **Gegenrechnen:** Modell gegen Messung, Abweichung in Prozent. Toleranz nach der Tabelle „Toleranzen“ in `docs/mechanics/README.md`.
-4. **Melden:** Eine Tabelle „Quelle | Modell | Abweichung“ mit der Zerlegung. Nichts darf doppelt zählen oder fehlen.
-5. **Nur bei Abweichung über der Toleranz** weiter recherchieren oder den Inhaber fragen.
+3. **Gegenrechnen:** Modell gegen Messung, Abweichung in Prozent. Toleranz nach der Tabelle „Toleranzen“ in `docs/mechanics/README.md`. Stammt ein Wert aus genau dieser Messung, ist sie keine Prüfung mehr (`fitted`, ADR 0018); geprüft wird dann gegen eine andere Zeile oder ein Delta-Paar.
+4. **Melden:** Eine Tabelle „Quelle | Modell | Abweichung“ mit der Zerlegung. Nichts darf doppelt zählen oder fehlen. Geeichte Werte als solche kennzeichnen.
+5. **Nur bei Abweichung über der Toleranz** einen Versuch mit Quelle; passt es dann nicht, ist es ein Befund für `docs/known-inaccuracies.md`. Nie ein Item an eine Zeile anpassen und nie einen globalen Parameter an einer einzelnen Zeile stellen (Eichung, ADR 0018).
 
 **Budget:** höchstens 3 Online-Abrufe pro Frage, Snapshots zählen nicht. Danach Stand melden und fragen, ob weitergesucht wird. Mehrere Fragen mit denselben Reitern bündeln.
 

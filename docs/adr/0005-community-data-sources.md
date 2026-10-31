@@ -1,6 +1,6 @@
 # ADR 0005: Spielwerte kommen aus frei zugänglichen Community-Quellen
 
-Status: angenommen · Datum: 2026-10-18
+Status: angenommen · Datum: 2026-10-18 · Ergänzt durch ADR 0018 (2026-10-31): Zahlen weiter automatisch, die Struktur eines Items steht von Hand in seiner Datei; Aegis ist Prüfquelle, nicht Eingang.
 
 ## Kontext
 

@@ -1,94 +1,71 @@
-# Plan: Schadensmodell von Grund auf (Stufen S0–S6)
+# Plan: Schadensmodell nach Bauplan (Stufen B1–B6)
 
-Freigegeben vom Inhaber am 2026-10-30, neu geschnitten am selben Tag nach der Papierprobe (`docs/plans/r0-paper-probe.md`): nach **Systemen**, nicht nach Waffen. Arbeit auf dem Branch `ground-up-model`; `master` bleibt die laufende Version. Ein Block pro Sitzung, Commit pro Teil, Tests zuerst.
+Freigegeben vom Inhaber am 2026-10-31 mit dem Bauplan (`docs/architecture.md`, ADR 0018). Arbeit auf dem Branch `ground-up-model`; **kein Merge nach `master`, bis der Inhaber es sagt**. Ein Block pro Sitzung, Commit pro Teil, Tests zuerst. Jede Stufe führt die Invarianten (I1–I12) des Bauplans ein, die bei ihr stehen, mit Test.
 
-## Context
+## Grundlage: S0–S4 (2026-10-30/31, erledigt)
 
-- **Die Formel ist belegt.** Aegis „Sustained“ ist selbst gerechnet (Base × Shots × Bucket-Faktoren). Echte Messungen stehen nur in Aegis „Weapons“, „Abilities“ und „Testing“.
-- **Teile und Faktoren aus Texten tragen.** In 13 nachgerechneten Waffen treffen Faktoren aus dem Text 9 von 9 auf ≤0,2 %. Die Summe der Aegis-Ticks mit Anzahlen aus dem Text trifft den Wipe.
-- **Die Abweichungen sind allgemeine Systeme**, keine Sonderfälle einer Waffe:
-  - Burn fehlt (Formel 2,7 + 0,175 × Stacks, von Aegis bestätigt): Polaris Lance, Lord of Wolves, One Thousand Voices, Hierarchy of Needs.
-  - Cooldown des Keyword-Auftrags pro Quelle: Lord of Wolves (≤0,46 s), vermutlich Dragon's Breath.
-  - Treffer-Anteil eines Teils am Boss: Truth-Bomblets (Quantum 0 % bzw. 100 %), Barrow-Dyad-Seeker.
-  - Annahmen der Messung (Takt, „one ring“) gehören ins Szenario, nicht ins Modell.
-- **Die Engine trägt nicht.** `simulate()` plant Schüsse, Fenster und Casts vorab. Jede Rückkopplung ist ein Sonderfeld (`setup`, `holdDraw`, `refillsMagazine`, `hitStacks`, `catalystWindowSeconds`, `scorchStacksPerShot`).
+Prüfstand (`tests/scenarios/`, `tests/scenarioBench.test.ts`, 26 von 30, Verhältnisse 11 von 15), neuer Kern `src/engine/core/` mit Parität zum alten (`coreParity`), Burn von Scorch, Auslöser „jeder N-te Schuss“, Spielweisen (Whirling Ovation, Hierarchy, Cayde's Retribution), Polaris Lance, Truth und Barrow-Dyad aus Teilen. Details im Changelog. Daraus bleibt: Kern, Burn, Spielweise in der Oberfläche, Prüfstand-Format. Was sich als Sonderfeld oder Override angesammelt hat, wird in B3/B4 zu Regeln und Items.
 
-## Grundmodell (ADR 0017)
+## Arbeitsregeln für alle Stufen
 
-Fünf Schichten, jede rein und für sich testbar, darüber eine deterministische Ereignis-Schleife:
-
-1. **Formel:** Damage Instance → Zahl. Grundwert × Precision × Π Buckets (`buckets.json`) × Stat-Faktor. Ohne Zustand.
-2. **Status-System** an Ziel und Spieler: Stacks, Dauer, Verfall, Ticks, Schwelle, Cooldown nach Auslösung, Cooldown pro Quelle. Scorch/Burn/Ignition, Volatile, Jolt, Slow, Weaken sind Datensätze.
-3. **Effekt-System:** Auslöser → Bedingung → Aktion. Perks, Exotics, Aspects sind Datensätze. Neuer Code nur für einen neuen Aktionstyp, nie für ein Item.
-4. **Akteur-Zustand:** Magazin, Reserve, Reload, Charge, Modi, Ressourcen (Fuel, Golden-Gun-Ladung). Eine allgemeine Zustandsmaschine pro Waffe.
-5. **Strategie:** Prioritätsliste, optimal wie bei Aegis.
-
-**Daten in zwei Klassen:** Spielwerte (Compendium, Clarity, Manifest, Quantum, mit `source`) und **Szenarien** (eine Aegis-Zeile = Build, Spielweise, Takt, Dauer, gemessenes Ergebnis, Zeilen-ID).
-
-**Kalibrieren auf zwei Ebenen, nie pro Waffe:**
-- Globale Parameter (Ignition-Cooldown, Burn, Cooldown pro Quelle, Treffer-Anteil je Teil-Art) gegen **alle** Szenarien zugleich. Ein Ausreißer ist ein Befund, kein neuer Parameter.
-- Item-Werte aus dem Text; fehlt einer, an genau einer Zeile geeicht (`derived`, Zeilen-ID), die übrigen Zeilen prüfen. ADR 0011 gilt weiter.
-
-**Kennzahl:** Anteil der Szenarien innerhalb ±3 %, je System. Vorrang haben Verhältnisse zwischen Zeilen derselben Waffe (mit/ohne Perk), weil das Produkt Unterschiede braucht, keine absoluten Zahlen.
-
-## Ziel: die Nachrechnung in Code (2026-10-30)
-
-Die Formel trägt: Gesamtschaden = Summe über alle Treffer (Grundwert × Precision × Buckets). Mit Aegis-Rohwerten (crit, other Ticks) und Regeln aus den Texten treffen **24 von 30** gezählten Szenarien auf dem Papier (Tabelle `docs/plans/r0-paper-probe.md`, „Nachrechnung aller Szenarien“). Das Programm schafft 16, weil der Import Mittelwerte je Schuss speichert und die Engine Teile, Auslöser, Stacks und Burn nicht zählt. **Spezifikation des Umbaus ist diese Tabelle:** Jede Stufe übersetzt ihre Zeilen in Code und muss genau diese Zeilen im Prüfstand grün machen.
-
-| Stufe | Szenarien, die grün werden müssen | Was dafür fehlt |
-| --- | --- | --- |
-| S1 | die 16 heutigen bleiben grün | neuer Kern parallel, gleiche Zahlen |
-| S2 | keine neuen; One Thousand Voices, Lord of Wolves und Polaris bleiben grün, jetzt mit Burn statt im Mittelwert | Burn 2,7 + 0,175 × Stacks, Verfall, Scorch-Takt je Quelle (Lord of Wolves ≤0,46 s) |
-| S3 | +5: Polaris Ember, Truth mit Reaper's Tithe, Hierarchy one ring und 2 rings, Still Hunt mit Cayde's Retribution | Auslöser „nach N Treffern“ (Perfect Fifth), „jede 3. Rakete“ (Trueseeker), Setup als Datensatz (Ring steht, zwei Ringe), Schussfolge mit Faktoren |
-| S4 | +4: Truth-Einzelrakete, Whirling Ovation ohne Ladung, 1/3 und 2/3 | Teile mit Anzahl statt Mittelwert (Rakete + Cluster, Rakete + Strand-Explosion) |
-| Ziel nach S4 | 24 von 30 (16 − Dragon's Breath geeicht + 5 + 4) | |
-
-Die übrigen 6 scheitern auch auf dem Papier, weil eine Zahl in jeder Quelle fehlt: Celestial Nighthawk auf Still Hunt, Dragon's Breath (Pool-Takt „?“), Ager's Scepter (Zusatz je Treffer, 2 Zeilen), Barrow-Dyad (6,9 statt 6 Seeker, 2 Zeilen). Sie dürfen an genau einer Zeile geeicht werden (`derived`, Zeilen-ID). Eine geeichte Zeile zählt nicht als Treffer, nur die übrigen Zeilen derselben Waffe. Dragon's Breath trifft heute nur, weil sein Paket aus seiner einzigen Zeile stammt.
+- Kein Block und kein Override für ein einzelnes Item, außer der Inhaber nennt es. Was eine Regel nicht trifft, bleibt Paket und kommt auf eine Liste.
+- Pro Abweichung ein Versuch mit Quelle, dann Befund in `docs/known-inaccuracies.md`.
+- Ein globaler Parameter ändert sich nur über die Eichung (ab B5); bis dahin höchstens einmal je Block und nur mit Beleg aus mehreren Szenarien.
+- Abschlussbericht mit „Geeicht / Gelockert / Gestrichen / Unsicher“; Streichen und Lockern vorher fragen.
 
 ## Stufen
 
-### S0 – Prüfstand (Sonnet)
-- Szenario-Format `tests/scenarios/*.json` und Läufer `tests/scenarioBench.test.ts`; Ausgabe Tabelle „Szenario | Quelle | Modell | Abweichung“ und Kennzahl.
-- Erste Szenarien: die Zeilen der 13 Waffen aus der Papierprobe.
-- Kennzahl des **heutigen** Kerns als Basis festhalten. Laufzeit Optimizer: 153 ms (`tests/optimizer.test.ts`), Obergrenze für den neuen Kern 306 ms.
-- Gate: Prüfstand läuft in der CI, Basis eingefroren.
-- **Erledigt (2026-10-30):** 32 Szenarien, 30 gezählt (Salvation's Grip: Streuung). Basis heutiger Kern 12 von 30, nach zwei Import-Korrekturen 16 von 30 (OTV und Two-Tailed Fox Shot aus Aegis, Ager's Catalyst ×1,80), Verhältnisse 5 von 14; Tabelle `tests/__snapshots__/scenario-bench.md`. Takt folgt dem Build (Catalyst an/aus); ein eigenes Feld kommt erst, wenn eine Zeile einen Takt verlangt, den der Build nicht ausdrückt. Barrow-Dyad hat kein Paket und zählt als Fehlschlag.
+### B1 – Ein Kern (Sonnet, Aufräum-Block)
 
-### S1 – Kern (Opus entwirft, Sonnet setzt um)
-- `src/engine/core/`: Ereignis-Schleife, Formel, Akteur-Zustand, Ausgabe `SimulationResult`. Wiederverwenden: `runEvents`, `bucketFactors`, `activeParts`.
-- Adapter: jedes heutige Paket wird eine Waffe mit einem Teil.
-- Gate: `mechanics-baseline` unverändert; alter und neuer Kern parallel im Test.
+- `buildSimulation`, `src/ui/App.tsx`, `optimizer.ts`, `analysis.ts`, `breakdown.ts` rufen `simulateCore`; `simulate()` behält nur Hilfsfunktionen, die der Kern nutzt, oder fällt weg; `coreParity` fällt weg. Doppelte `stacksAt`/`resolveHitStacks` (`simulate.ts`, `core/context.ts`) zusammenlegen.
+- Laufzeit des Optimizers messen (`tests/optimizer.test.ts`, Obergrenze 306 ms).
+- Gate: `npm run test:quiet`, `npx tsc -b`, `npm run lint`, `probe`, `sanity`; Rangfolge-Gate nicht schlechter; `mechanics-baseline` ändert sich nur, wo der neue Kern gewollt anders rechnet (Burn, Teile), Liste im Commit. UI-Check lokal (`npm run dev` bzw. Preview), weil nicht gemergt wird.
+- Invarianten: I2, I8 (Bestand), I12 (Bestand).
 
-### S2 – Status-System (Sonnet, Parameter mit Opus)
-- Scorch-Familie komplett mit Burn, Verfall, Cooldown pro Quelle. Danach Volatile, Jolt, Slow, Weaken.
-- Alle Solar-Szenarien zugleich; globale Parameter anpassen und mit Zitat in `keywords.json`.
-- Gate: Kennzahl Solar besser als Basis; `scorch`-, `abilityGate`-Tests grün.
+### B2 – Ehrlicher Prüfstand (Opus plant, Sonnet setzt um)
 
-### S3 – Effekt-System (Sonnet)
-- Sonderfelder werden Datensätze: `setup` (Hierarchy), `holdDraw` (Oathkeeper), `refillsMagazine` (Marksman's Dodge), `hitStacks` (Lucky Pants, Peacekeepers), `catalystWindowSeconds` (Truth), `scorchStacksPerShot` (OTV).
-- Gate: Bestandstests (`weaponSetup`, `holdDraw`, `hitStacks`, `classAbility`, `catalyst`) grün.
+- `Source.status` bekommt `fitted` mit Zeilen-ID. Jeder Wert, der heute aus einer Aegis-Zeile stammt und gegen sie geprüft wird, bekommt ihn (Liste in `docs/known-inaccuracies.md`, „Prüfstand, geeichte Zeilen“).
+- Szenario-Generator: Szenarien aus allen Aegis-Zeilen (Weapons, Abilities, Testing), deren Annahmen alle einen Schalter haben; Zuordnung aus `probeAuto` und `weaponAssumptions`. Die 32 Szenarien von Hand bleiben als Fixtures, bis der Generator sie abdeckt.
+- Festes Los (Hash der Zeilen-ID) in Eichmenge und Prüfmenge; verwiesene Zeilen fallen heraus.
+- Kennzahlen: Delta-Paare (Haupt), Rangfolge, Absolut (Info); Snapshot im neuen Format als Basis für alle folgenden Stufen.
+- Invarianten: I1 (Status), I10, I11.
 
-### S4 – Waffen aus Teilen (Sonnet)
-- `scripts/lib/weaponComponents.ts` → `src/data/weapon-components.json`: Aegis-Ticks ÷ `fullModifiers`, Quantum Weapon Specifics als Verhältnis, Anzahl und Takt aus Texten, Treffer-Anteil je Teil.
-- Zerlegt wird nur, wo ein Teil mit dem Build spielt. Weitere Szenarien aus allen Aegis-Weapons-Zeilen mit `otherTicks`.
-- Gate: Kennzahl gesamt besser als Basis.
+### B3 – Regeln im Kern (Opus entwirft das Schema, Sonnet setzt um; eventuell zwei Blöcke)
 
-### S5 – Strategie und Casts (Opus für die Strategie)
-- Casts und Energie plant die Strategie im Lauf (Logik aus `abilityEnergy.ts`). Fenster aus dem Zustand statt `effectWindows.ts`.
-- Gate: `abilityGate`, `abilityEnergy`, `rotation`, `superWindow`, `transcendence`.
+- `Rule { on, if, do }`, Auslöser und etwa zehn Aktionen (`docs/architecture.md`, Abschnitt 6); allgemeiner Status-Container (Scorch, Volatile, Jolt, Weaken als Daten).
+- Sonderfelder werden Regeln, Verhalten gleich: `hitStacks`, `setup`, `holdDraw`, `refillsMagazine`, `catalystWindowSeconds`, `scorchStacksPerShot`, `everyNthShot`, `nthShotPart`, `playstyleParts`, `tickFactors`, `noReloads`, `periodicDamage`.
+- Golden-Beispiel Polaris Lance (`docs/architecture.md`, Abschnitt 11) als Test.
+- Gate: Kennzahlen aus B2 und `mechanics-baseline` unverändert; ein Test listet die erlaubten Typen und findet kein Sonderfeld mehr im Schema.
+- Invarianten: I3, I7.
 
-### S6 – Umschalten und Aufräumen (Sonnet)
-- `buildSimulation` und `nextCastFor` nutzen den neuen Kern, wenn Kennzahl und Snapshot stimmen. Alter Kern, Sonderfelder und tote Exporte fallen weg.
-- Gate: Gesamtprobe, Rangfolge-Gate, Plausibilität, UI-Check (Skill `pruefen`, Schritt 4). Danach Merge nach `master` und Coverage-Triage.
+### B4 – Item-Dateien (Opus entwirft das Format, Sonnet setzt um)
 
-## Risiken
+- Item-Schema, `$`-Verweise mit Resolver im Import (`scripts/lib/items/`), Text-Hash, Status `derived` statt `unverified` mit Notiz; kanonische Skala „Aegis visual“ mit Faktor je Quelle und Kategorie in θ.
+- Entscheidung an Zahlen: Waffen-Grundwerte aus Quantum oder per `$aegis`.
+- Erste Items: Truth, Still Hunt, Whirling Ovation, Polaris Lance, Hierarchy of Needs, Barrow-Dyad, Gjallarhorn, Peacekeepers, Ember of Ashes, Well of Radiance; ihre Overrides fallen weg. Nicht migrierte Items rechnen mit den alten Paketen.
+- Gate: jedes Item löst auf; Delta-Paare nicht schlechter; Text-Hash-Test.
+- Invarianten: I1 (Resolver), I4, I5, I6.
 
-- **Szenarien aus Freitext** der Aegis-Annahmen sind Handarbeit. Klein anfangen (13 Waffen), Zuordnung erst automatisieren, wenn Muster sichtbar sind.
-- **Strategie generisch** ist der schwerste Teil (S5, Opus).
-- **Messstreuung** („average“, Salvation's Grip): solche Szenarien zählen nicht zur Kennzahl, Grund im Szenario.
-- **Offen ohne Quelle:** Dragon's Breath (Pool-Takt „?“), Zusatz bei Ager's Scepter. Barrow-Dyad gelöst (S4 Teil C, 2026-10-31): Es fehlte Target Lock auf den Kugeln, nicht ein Seeker.
+### Aufräum-Block nach B4 (Sonnet)
+
+Was B1–B4 hinterlassen: tote Pfade im Import, doppelte Typen, Dateien über 1000 Zeilen, die beim Arbeiten stören.
+
+### B5 – Eichung als Skript (Opus)
+
+- `npm run calibrate`: kleinste Quadrate über die Eichmenge für θ (Ignition-Cooldown, Burn, Skalen je Quelle und Kategorie) mit Grenzen aus den Quellen; Totzone 2 %; schreibt `src/data/theta.json` (Status `fitted`, Datum) und einen Bericht.
+- Gate: Kennzahlen der Prüfmenge nicht schlechter; θ innerhalb der Grenzen oder gemeldet.
+- Invarianten: I9.
+
+### B6 ff. – Migration nach Kategorie (Sonnet, je Block eine Kategorie)
+
+Reihenfolge nach Zeilen im Rangfolge-Gate: übrige Exotic-Waffen mit ihren Spielweisen (Kombos, Volleys, Ladestufen), Exotic Armor und Class-Item-Perks, Aspects und Fragments, Artifact-Perks und Buffs (Court), Abilities und Supers (Compendium-Teile), Legendary Frames (2.0). Je Kategorie eine Regel für alle Items; was nicht passt, bleibt Paket mit Grund. Nach der letzten Kategorie fallen `weaponPackages.ts`, `weapon-overrides.json` und die Regelketten weg.
+
+### Später
+
+- Policy für Casts und Energie im Lauf (alte S5), mit dem Optimizer für Abilities (2.0).
+- Merge nach `master` auf Ansage des Inhabers; Vorschlag: nach B4 oder B5, wenn die Kennzahlen der Prüfmenge stehen.
 
 ## Doku und Verifikation je Stufe
 
-- `npm run test:quiet`, `npx tsc -b`, `npm run lint`, `npm run probe`, `npm run sanity`, Kennzahl des Prüfstands.
-- `docs/plans/current.md`, `docs/changelog.md`, `docs/roadmap.md`, `docs/mechanics/README.md` (Toleranzen).
+- `npm run test:quiet`, `npx tsc -b`, `npm run lint`, `npm run probe`, `npm run sanity`, Kennzahlen des Prüfstands.
+- `docs/plans/current.md`, `docs/changelog.md`, `docs/roadmap.md`; `docs/architecture.md`, wenn eine Entscheidung aus Abschnitt 13 fällt.

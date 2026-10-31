@@ -1,6 +1,6 @@
 # ADR 0011: Zerlegung nur mit Skalen-Regel und Gate
 
-Status: angenommen · Datum: 2026-10-20
+Status: angenommen · Datum: 2026-10-20 · Teilweise abgelöst durch ADR 0018 (2026-10-31): Skalen-Regel je Fall → kanonische Skala mit Faktor je Quelle und Kategorie; Punkt 5 (Waffen als Paket) gilt bis zur Migration ihrer Kategorie; Gates gegen gemessene Faktoren werden Delta-Paare.
 
 ## Kontext
 

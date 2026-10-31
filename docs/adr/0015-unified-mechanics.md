@@ -1,6 +1,6 @@
 # ADR 0015: Einheitliches Mechanik-Modell
 
-Status: angenommen · Datum: 2026-10-21
+Status: angenommen · Datum: 2026-10-21 · Punkt 11 ergänzt durch ADR 0018 (2026-10-31): „Keine Handmodelle“ gilt für Code; die Struktur eines Items steht von Hand in seiner Datei und ersetzt die Regelketten.
 
 ## Kontext
 

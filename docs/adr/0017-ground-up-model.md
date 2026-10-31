@@ -1,6 +1,6 @@
 # ADR 0017: Schadensmodell aus allgemeinen Systemen mit Prüfstand
 
-Status: angenommen (Inhaber, 2026-10-30) · Umsetzung auf Branch `ground-up-model`, Plan `docs/plans/ground-up-model.md`
+Status: angenommen (Inhaber, 2026-10-30) · Umsetzung auf Branch `ground-up-model`, Plan `docs/plans/ground-up-model.md` · Präzisiert durch ADR 0018 und den Bauplan `docs/architecture.md` (2026-10-31): Messung nur als Prüfung, Items als Dateien, Eichung nur global, Delta-Paare als Kennzahl; S5–S6 gehen in die Stufen B1–B6 auf.
 
 ## Kontext
 

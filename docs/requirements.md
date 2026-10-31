@@ -85,6 +85,8 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Bucket | Group of multipliers with one stacking rule, e.g. only the highest value applies; buckets multiply with each other |
 | Build | Complete selection of subclass, armor, artifact perks and fireteam support for one weapon |
 | Burn | Damage over time that scorch deals to a target; each tick is a damage instance |
+| Calibration | Fitting the global parameters to the calibration set of scenarios by script (least squares, dead zone 2 %); never fits an item (ADR 0018) |
+| Canonical Scale | Damage per hit against a generic boss without buffs, on the scale of Aegis visual (wipe ÷ full modifiers); every source has one conversion factor per category as a global parameter (ADR 0018) |
 | Catalyst | Upgrade of an exotic weapon that adds or changes intrinsic parts; one switch in the build |
 | Coverage | Which abilities, effects and mechanics the calculator models and how: own components, package, effect only or missing (docs/coverage.md, wiki page) |
 | Damage Curve | Cumulative damage over the damage phase |
@@ -94,31 +96,41 @@ Code, Tests, Dokumente und Prompts verwenden nur diese englischen Begriffe. Die 
 | Damage Source | What creates a damage instance: weapon, grenade, melee or super |
 | Data File | JSON file with game data; contains no logic |
 | Debuff | Effect on the target that increases the damage it takes, e.g. Tether or Divinity |
+| Delta Pair | Two scenarios that differ in exactly one item; the main check of the scenario bench (model delta within 2 percentage points of the measured delta) |
 | DPS | Damage per second: total damage divided by the damage phase in seconds (Aegis instead divides by the time until the ammo is empty) |
 | Effect | Anything a build can switch on or off that changes damage or timing, e.g. a buff, debuff, surge, perk or artifact perk |
 | Empowering Buff | Effect on the player that increases the damage dealt, e.g. Well of Radiance or Radiant |
 | Engine | Simulator plus optimizer; contains only pure functions |
 | Exclusive Group | Effects of which a build can provide at most one itself, e.g. one surge level or one super |
 | Fireteam Support | Empowering buff or debuff that another fireteam member provides |
+| Fitted | Source status of a value taken from a measurement (an Aegis row or the calibration); the row no longer counts as a check (ADR 0018) |
 | Gate | Automated check that compares a computed result with a measured total from a source, e.g. an Aegis row within ±15 % for abilities or ±3 % for weapons (all tolerances: docs/mechanics/README.md); a decomposed model counts only after it passes (ADR 0009, ADR 0011) |
+| Global Parameter | Value that applies to all items and only calibration sets, e.g. ignition cooldown, burn formula or a source scale (θ in the blueprint) |
 | Guardian Class | Titan, Hunter or Warlock; decides which subclass effects a build can provide itself |
 | Ignition | Solar explosion when a target reaches enough scorch stacks; a separate damage instance |
 | Intrinsic | Fixed exotic perk of a weapon, including its catalyst effect |
+| Item | Weapon, exotic armor, class item perk, aspect, fragment, mod, artifact perk, buff or ability; in the target one file with its structure (frame, parts, rules) written out and its numbers as references to sources (ADR 0018) |
+| Ledger | Journal of all hits with time, item, part, base value and every bucket factor; totals, donut, breakdown, timeline and the scenario bench are sums over it |
 | Manual Mode | App mode in which the user sets one build and runs the simulator once |
 | Mechanic | Game rule that changes damage or timing; documented in docs/mechanics |
 | Multiplier | Factor by which an effect changes damage, e.g. 1.25 |
 | Optimizer | App mode that runs the simulator for all allowed combinations of own effects (class, subclass, exclusive groups) and ranks the best builds; fireteam support and effect windows stay fixed |
 | Reload | Refilling the magazine after its last shot; takes the reload time of the weapon |
-| Package | Measured total from a source that the calculator uses as one value instead of parts, e.g. an ability per cast or a weapon per shot (ADR 0009, ADR 0011) |
+| Package | Measured total from a source that the calculator uses as one value instead of parts, e.g. an ability per cast or a weapon per shot (ADR 0009, ADR 0011); replaced by item files category by category (ADR 0018) |
+| Part | Damage share of an item with its own base value on the canonical scale, e.g. bullet, explosion, seeker, Perfect Fifth |
 | Perk | Trait of a weapon that changes its damage, e.g. Reaper's Tithe on Truth; stored in the weapon Data File, not as an effect (ADR 0012) |
+| Policy | Playstyle as a decision what to do next (fire, reload, cast); default optimal like Aegis |
 | Provider | Way a build gets an effect: own subclass, armor, artifact, or fireteam support from a teammate |
 | Rotation | Sequence of shots, reloads and effect windows (start and duration of each effect) in the damage phase |
+| Rule | Trigger, conditions and actions of an item (event – condition – action); the only place where an item has behaviour |
+| Scenario | An Aegis row as a test case: build, playstyle, measured value and row id; falls into the calibration set or the test set by a fixed hash of the row id |
 | Scorch | Solar effect on a target that stacks, deals burn damage and causes an ignition at enough stacks |
 | Shot | Release of one fully charged round; the time of the shot is time zero for its damage instances |
 | Simulator | Part of the engine that computes one build over the damage phase |
 | Slot | Place where the game shows an own effect: super, class ability, aspect, fragment, buffs & debuffs (subclass), mod, stat (armor), artifact; effects from teammates have none. Buffs & debuffs are keywords of the subclass such as Radiant or Weaken that the build keeps up without a chosen item |
-| Source Scale | Absolute damage level of one source; sources differ (Compendium weapon values are about 1.26 × Quantum), so values from different sources are combined only as ratios (ADR 0011) |
+| Source Scale | Absolute damage level of one source; sources differ (Compendium weapon values are about 1.26 × Quantum), so values from different sources are combined only as ratios (ADR 0011); in the target expressed as the factor of the source to the canonical scale (ADR 0018) |
 | Stacking Resource | Mechanic category: a counter on the player that builds up and decays, e.g. Bolt Charge or Armor Charge |
+| Status | State with stacks, duration, decay, ticks and threshold on the target or the player, e.g. scorch, volatile, jolt or weaken; one generic container in the core |
 | Subclass | Ability set of a class with one element (Arc, Solar, Void, Stasis, Strand) or Prismatic; decides which own subclass effects a build can provide |
 | Super Window | Time in which a super with a duration is active; the weapon does not fire in it |
 | Surge | Effect that increases weapon damage of one damage type; armor mods (1x to 3x, on the legs), exotics (4x) and artifact perks share it; forms its own bucket. Modelled as the level matching the weapon element |

@@ -32,8 +32,12 @@ Die einzige Liste. Die Konstante im Code gilt; ändert sie sich, diese Tabelle m
 | Gesamtprobe gegen Aegis Sustained/Swap | ±15 % um den Median | `TOLERANCE` (`tests/metaProbe.test.ts`, `tests/metaProbeAuto.test.ts`) | Skala von Aegis kürzt sich heraus |
 | Text-Abgleich: gemessener Wert gegen Prozent im Text | ±25 % | `MEASURED_TOLERANCE` (`scripts/lib/textCheck.ts`) | Text nennt oft nur den Grundwert |
 | Rangfolge-Gate | Spearman ≥ 0,9; Aegis-Top-3 in unseren Top 5; Delta-Paare ±2 Prozentpunkte | `tests/rankingGate.test.ts` | `docs/product.md`, Stand in `docs/ranking-gate.md` |
+| Prüfstand: Szenario gegen Aegis-Zeile | ±3 % | `TOLERANCE` (`tests/lib/scenarioBench.ts`) | ADR 0017; ab B2 zählen nur Zeilen der Prüfmenge, Hauptkennzahl Delta-Paare ±2 Prozentpunkte (ADR 0018) |
+| Totzone der Eichung | 2 % | ab B5 (`npm run calibrate`) | ADR 0018; kleinere Abweichungen nach `docs/known-inaccuracies.md` |
 
 Davon getrennt die **Wirkungsschwelle** (keine Toleranz): Eine fehlende Mechanik oder ein eigenes Gate lohnt sich erst ab 2 % Änderung des Total Damage (Regel „Breite vor Genauigkeit“ in `CLAUDE.md`).
+
+Zielbild der Engine, Invarianten und Prüfweg: `docs/architecture.md` (Bauplan, ADR 0018).
 
 ## Aufbau einer Mechanic-Datei
 
@@ -175,7 +179,7 @@ Relevanz bezieht sich auf Boss-Damage-Phasen.
 
 ## Folgen für die Architektur
 
-Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1 und 2. Die Entscheidung steht in ADR 0006 (`docs/adr/0006-effect-model.md`).
+Diese Punkte sind die wichtigsten Ergebnisse aus Phase 1 und 2. Die Entscheidung steht in ADR 0006 (`docs/adr/0006-effect-model.md`); das heutige Zielbild steht im Bauplan `docs/architecture.md` (ADR 0018).
 
 1. **Effects sind mehr als Multiplier.** Das heutige Effect-Schema kennt nur `multiplier`. Gebraucht werden mindestens Multiplier, Timing Modifier, Damage over Time und Threshold Trigger.
 2. **Ein Effect kann mehrere Teile haben.** Particle Reconstruction ist ein Debuff und ein Timing Modifier.

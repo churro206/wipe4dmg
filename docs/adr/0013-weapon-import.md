@@ -1,6 +1,6 @@
 # ADR 0013: Waffen-Import aus Aegis und Quantum
 
-Status: angenommen · Datum: 2026-10-20
+Status: angenommen · Datum: 2026-10-20 · Teilweise abgelöst durch ADR 0018 (2026-10-31): Pakete aus Aegis-Zeilen werden Item-Dateien; die Regelkette der Annahmen bleibt für den Szenario-Generator.
 
 ## Kontext
 

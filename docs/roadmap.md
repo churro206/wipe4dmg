@@ -2,7 +2,7 @@
 
 What the calculator learns next. The exact coverage is listed under [Coverage](coverage.md).
 
-Status: 2026-10-25
+Status: 2026-10-31
 
 ## Done in v1.1
 
@@ -71,7 +71,7 @@ Status: 2026-10-25
 
 ## Next
 
-- Damage model from general systems (ADR 0017, stages S0–S6 on branch `ground-up-model`): formula, status system (Scorch with burn, Volatile, Jolt, Slow), effect rules, weapon state and play policy; Aegis rows as scenarios on a test bench with one score. Paper probe: 9 of 13 weapons within ±3 %. S0 test bench done (today's core: 16 of 30 scenarios after two import fixes, ratios 5 of 14). S1 core done (new core in `src/engine/core/`, parity test with the old one). S2 burn of scorch done (decay, ticks, in the core). S3 so far: every-Nth-shot trigger (Truth) and playstyle shot sequence (Still Hunt with Cayde's Retribution), S3 closed (special fields as data dropped). S4 so far: Whirling Ovation charge levels as selectable playstyles (UI and build link); Polaris Lance from its parts (shot + Perfect Fifth with scorch, no reload), Hierarchy of Needs "Through two rings" as a playstyle; Barrow-Dyad selectable (bullets with Target Lock, 6 Blighted Seekers per magazine that keep Peacekeepers stacks through the reload); bench 26 of 30, all scorch and parts scenarios hit. Next: a cleanup block, then S5 strategy and casts
+- Damage model by blueprint (ADR 0017 and 0018, branch `ground-up-model`, not yet live): one simulation core for the app, the optimizer and the test bench; measurements only as checks, never as input; every item one file with its rules written out and its numbers taken from the sources; global values such as the ignition cooldown calibrated by script against all Aegis rows at once; main check: pairs of Aegis rows that differ in one item. Done so far: test bench, new core, burn of scorch, every-Nth-shot parts, playstyles (Whirling Ovation charge levels, Hierarchy rings), Polaris Lance, Truth and Barrow-Dyad from parts. Next: one core everywhere (B1), an honest test bench (B2), rules as data (B3), item files (B4), calibration script (B5), then category by category
 - Coverage triage: sort every missing item into left out (no effect against a boss), a value from the text (under 2 %) or its own block
 
 - Hammer of Sol with Sol Invictus
