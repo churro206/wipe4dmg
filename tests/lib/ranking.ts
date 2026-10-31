@@ -11,6 +11,8 @@ export type Item = {
 };
 
 export type DeltaPair = {
+  /** Id of the row with the extra assumption. */
+  id: string;
   /** Label of the row with the extra assumption. */
   item: string;
   added: string;
@@ -80,7 +82,14 @@ export function deltaPairs(items: Item[]): DeltaPair[] {
       }
       const aegisDelta = (more.aegis / less.aegis - 1) * 100;
       const ourDelta = (more.ours / less.ours - 1) * 100;
-      pairs.push({ item: label(more), added: extra[0], aegisDelta, ourDelta, gap: ourDelta - aegisDelta });
+      pairs.push({
+        id: more.id,
+        item: label(more),
+        added: extra[0],
+        aegisDelta,
+        ourDelta,
+        gap: ourDelta - aegisDelta,
+      });
     }
   }
   return pairs;

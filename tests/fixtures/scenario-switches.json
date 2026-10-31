@@ -1,0 +1,4 @@
+{
+  "note": "Assumptions of the Aegis tab Weapons that need no switch in a generated scenario (tests/lib/scenarioGen.ts), with the reason. Patterns for how Aegis fired are in scripts/lib/weaponAssumptions.ts (EXECUTION). An assumption that is neither here, nor in the weapon, nor a modelled effect makes its rows a 'missing switch' (listed in the bench snapshot).",
+  "ignored": {}
+}

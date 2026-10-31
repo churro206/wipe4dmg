@@ -78,6 +78,9 @@ const EXECUTION: RegExp[] = [
   /^\d+ ammo consumed$/i,
   /^(one|two|three|\d+) kills?$/i,
 ];
+/** True if the name says how Aegis fired or what the value includes ("average", "3L1H1R", ...); needs no switch. */
+export const isExecution = (name: string): boolean =>
+  EXECUTION.some((pattern) => pattern.test(name));
 const INCLUDES = /\binclude[sd]?\b/i;
 const ARMOR_ITEM_TYPES =
   /^(Helmet|Gauntlets|Chest Armor|Leg Armor|Titan Mark|Warlock Bond|Hunter Cloak)$/;
