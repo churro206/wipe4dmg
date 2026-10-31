@@ -329,7 +329,8 @@ flowchart LR
 ```
 
 - Los: fester Hash der Zeilen-ID (Vorschlag FNV-1a, Rest mod 10 < 7 → Eichmenge), damit neue Zeilen die Aufteilung der alten nicht verschieben. Sustained und Swap rechnet Aegis selbst; sie gehen nur in die Rangfolge.
-- Delta-Paar besteht, wenn |Δ Modell − Δ Aegis| ≤ 2 Prozentpunkte (wie im Rangfolge-Gate).
+- Delta-Paar besteht, wenn |Δ Modell − Δ Aegis| ≤ 2 Prozentpunkte (wie im Rangfolge-Gate). Ein Paar zählt in der Prüfmenge, wenn die Zeile **mit** der zusätzlichen Annahme nicht verwiesen (`fitted`) ist und in der Prüfmenge liegt; die Zeile ohne sie darf verwiesen sein, ihr Wert kürzt sich im Delta heraus (B2, entschieden 2026-10-31).
+- Umgesetzt in B2: `tests/lib/scenarioGen.ts` (Generator, Los), `tests/lib/fittedRows.ts`, `tests/lib/scenarioBench.ts` (Kennzahlen); Snapshot `tests/__snapshots__/scenario-bench.md`. Der Generator erzeugt Szenarien nur für den Reiter Weapons; Abilities und Testing folgen (siehe Abschnitt 13).
 - Szenarien entstehen aus jeder Zeile, deren Annahmen alle einen Schalter haben (Zuordnung aus `scripts/lib/probeAuto.ts` und `weaponAssumptions.ts`); Zeilen mit fehlendem Schalter stehen mit dem Schalter auf einer Liste.
 
 Regelkreis der Eichung (Wirkungsplan nach DIN IEC 60050-351):
@@ -348,7 +349,8 @@ Regelkreis der Eichung (Wirkungsplan nach DIN IEC 60050-351):
 
 ## 13 Offen bis zur Stufe
 
-- Dateiformat und Ordner der Items (B4), endgültige Aktionsliste (B3), Hash und Anteil des Loses (B2), Grenzen von θ (B5).
+- Dateiformat und Ordner der Items (B4), endgültige Aktionsliste (B3), Grenzen von θ (B5). Entschieden in B2: Los FNV-1a der Zeilen-ID, Rest mod 10 < 7 → Eichmenge.
+- Szenarien aus Aegis Abilities und Testing (offen aus B2): Ability-Zeilen brauchen einen eigenen Weg (Differenz mit und ohne Cast, Burn-Schalter „ohne Burn“ im Szenario, weil Aegis' Pakete nur Ignitions enthalten); bis dahin prüft der Ability-Gate nur den Rückweg der Pakete (`tests/abilityGate.test.ts`, ohne Burn-Ticks).
 - Quelle der Waffen-Grundwerte (B4): Quantum hält die Aegis-Zeilen als Prüfung frei, `$aegis` ist aktueller, macht die Zeile aber zur Eichung. Entscheidung an Zahlen (wie viele Delta-Paare bleiben, wie weit Quantum und Aegis auseinanderliegen); bis dahin „Aegis vor Quantum“.
 - Policy für Casts und Energie im Lauf: erst mit dem Optimizer für Abilities (2.0).
 

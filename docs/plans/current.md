@@ -2,21 +2,20 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen und Lücken in `docs/known-inaccuracies.md`. Altes Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Nächster Block: B2 – Ehrlicher Prüfstand (Opus plant)
+## Nächster Block: B3 – Regeln im Kern (Opus entwirft das Schema, Sonnet setzt um; eventuell zwei Blöcke)
 
-Bauplan `docs/architecture.md` (zuerst lesen), Plan `docs/plans/ground-up-model.md`, ADR 0018. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers. Vor B2 klären (Rückfrage an den Inhaber): Burn aus den Gates ausnehmen (siehe unten, „Offen aus B1“).
+Bauplan `docs/architecture.md` (zuerst lesen, Abschnitt 6), Plan `docs/plans/ground-up-model.md`, ADR 0018. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers. Vor B3 klären (Rückfrage an den Inhaber): Szenarien aus Aegis Abilities/Testing mit Burn-Schalter jetzt (Rest von B2) oder nach B3.
 
 ## Stand
 
-- 2026-10-31: **B1 erledigt:** ein Kern (`simulate` in `simulate.ts` ist der Kern, alter Simulator und Paritätstest entfernt), Optimizer 155 ms, 1843 Tests grün. Burn gilt jetzt in App und Optimizer. Offen aus B1: Ability-Gate und Referenz „aegis-with-ignition“ rechnen ohne Burn-Ticks (Aegis' Pakete enthalten nur Ignitions; mit Burn +3 % / +1,5 %), das ist eine Annahme, keine Messung. Drei Fusion Grenades über Starfire Protocol zünden nicht mehr (Stacks verfallen vor der dritten, Energie-Takt).
-- 2026-10-31: Bauplan angenommen (ADR 0018). Messung nur als Prüfung, Items als Dateien (Struktur von Hand, Zahlen per `$`-Verweis), Eichung nur der globalen Parameter θ per Skript, Delta-Paare als Hauptkennzahl. Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
-- S0–S4 erledigt (2026-10-30/31): Prüfstand 26 von 30 (davon viele Zeilen geeicht, siehe `known-inaccuracies`, „Prüfstand, geeichte Zeilen“), Verhältnisse 11 von 15; Kern parallel zum alten, `buildSimulation` nutzt noch den alten.
-- Offen ohne Quelle (Befund, kein eigener Block): Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk auf Still Hunt. Lord of Wolves trifft (−0,1 / −2,9 %), nicht zerlegt.
+- 2026-10-31: **B2 erledigt** (Details Changelog): `fitted` mit `row`, Generator (151 erzeugt, 32 von Hand), Los FNV-1a, Snapshot `tests/__snapshots__/scenario-bench.md`: **Delta-Paare der Prüfmenge 1 von 3**, Spearman 0,89 über 11 Zeilen. Offen aus B2: Szenarien aus Abilities und Testing (Burn-Schalter „ohne Burn“), Overrides mit anderem Quellnamen als `fitted` markieren (Truth-Einzelrakete); Abweichungen erzeugter Zeilen in `known-inaccuracies`.
+- B1 erledigt: ein Kern, Burn in App und Optimizer. Bauplan angenommen (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
+- Offen ohne Quelle: Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk auf Still Hunt.
 
 ## Reihenfolge
 
-1. B1–B6 nach `docs/plans/ground-up-model.md`; Aufräum-Block nach B4.
-2. Danach (alte Liste, `docs/plans/sources-2026-10.md`): Energie-Exotics, Hammer of Sol mit Sol Invictus, Q4 Stasis/Strand, Q5 Aspects/Artifact/Bolt Charge, Q6 Waffen und Catalysts, Q7 Set Bonuses. Viele davon gehen in die Kategorie-Blöcke von B6 auf.
+1. B3–B6 nach `docs/plans/ground-up-model.md`; Aufräum-Block nach B4.
+2. Danach (`docs/plans/sources-2026-10.md`): Energie-Exotics, Hammer of Sol mit Sol Invictus, Q4–Q7; vieles geht in B6 auf.
 3. Für 2.0 (`docs/product.md`): Legendary Frames, Optimizer mit Abilities, Aspects und Fragments.
 
 ## Entscheidungen des Inhabers
