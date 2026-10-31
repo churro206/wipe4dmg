@@ -2,39 +2,32 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen und Lücken in `docs/known-inaccuracies.md`. Altes Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Nächster Block: B3a – Kern und Waffen (Sonnet)
+## Nächster Block: B3a, Teil 2 – Import schreibt Regeln (Sonnet)
 
-Schritte 1–4 in `docs/plans/ground-up-model.md` (B3a). Zuerst lesen: Bauplan `docs/architecture.md` Abschnitt 6 (endgültig), Schema-Abschnitt „Rules“ in `src/data/schema.ts`, `tests/ruleTypes.test.ts`. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers. Gate: Snapshot `tests/__snapshots__/scenario-bench.md` (Delta-Paare 1 von 3) und `mechanics-baseline` unverändert. Inhaber: so eng wie möglich an Bauplan und Plan halten. Danach B3b (Effects, Abilities), dann Szenarien aus Abilities/Testing vor B5.
+Rest von Schritt 3 in `docs/plans/ground-up-model.md`. Zuerst lesen: Bauplan Abschnitt 6, `src/engine/core/rules.ts` (Host-Schnittstelle), `src/engine/core/simulateCore.ts` (Abschnitt „Rules of the weapon“), `tests/polarisGolden.test.ts` (so sehen Regeln einer Waffe aus). Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage. `weapon-packages.json` nie direkt lesen (nur `npm run facts`). Gate je Teil: Suite grün, `tests/__snapshots__/scenario-bench.md` und `mechanics-baseline` unverändert (Delta-Paare 1 von 3), `tsc -b`, `lint`. Ein Commit je Teil, in dieser Reihenfolge:
+
+1. **Teile:** `scripts/lib/weaponPackages.ts` schreibt je `DamageInstance` eine Regel `on shot → spawn` (`requiresCatalyst` → Bedingung `hasItem catalyst`; `everyNthShot` → Zähler `nth-<Teil>`, bei = N `resetCounter` und `spawn`; `tickFactors` → je Tick ein `spawn` mit `factor`). Dann fällt die Schleife `hitEvents` in `simulateCore.ts` weg. Treffer des N-ten Teils zählen für `hitStacks` (`history.partHitsMs`, bis B3b): der Host merkt sie.
+2. **Spielweisen:** `DamageInstance.playstyle` und `Weapon.playstyleBaseName` → `Weapon.playstyles` (`id`, `label`) und Bedingung `playstyle`; Takt der Spielweise per `modifyStat` (`phaseStart`); `withPlaystyle`, `playstylesOf`, `WeaponSection` und `buildLink` folgen.
+3. **Aufbau (Hierarchy):** `Weapon.setup` und `requiresSetup` → Zähler, `setMode`, `phaseStart`-Regeln („Pre-stacked“, „Setup steht“), Bedingung `mode`; Takt des Catalysts ab Aufbau per `modifyStat`. `weaponActor` liest Takt, Reload und Halten aus `StatModifier` (Gleichstand: Schuss genau beim Ablauf baut neu auf).
+4. **Catalyst-Fenster:** `WeaponOption.windowSeconds` → `grantBuff`; `buffPartsAt` fließt in `multiplierAt` (Grenze heute einschließlich, `<=`).
+5. **Waffe wendet Status an:** `IntrinsicPart.appliesKeyword` → `on hit → applyStatus`. `noReloads` bleibt Eingang des Imports. Jedes entfernte Feld aus `REMAINING` in `tests/ruleTypes.test.ts` streichen.
 
 ## Stand
 
-- 2026-10-31: **B3.0 erledigt** (Opus): Schema der Regeln, Abschnitt 6 endgültig, Test I3 mit Liste der verbleibenden Sonderfelder.
-- 2026-10-31: **B2 erledigt** (Details Changelog): `fitted` mit `row`, Generator (151 erzeugt, 32 von Hand), Los FNV-1a, Snapshot `tests/__snapshots__/scenario-bench.md`: **Delta-Paare der Prüfmenge 1 von 3**, Spearman 0,89 über 11 Zeilen. Overrides geprüft (`tests/fittedOverrides.test.ts`), Basis sauber. Offen aus B2: Szenarien aus Abilities und Testing (Burn-Schalter „ohne Burn“), nach B3 und vor B5; Abweichungen erzeugter Zeilen in `known-inaccuracies`.
-- B1 erledigt: ein Kern, Burn in App und Optimizer. Bauplan angenommen (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
+- 2026-10-31: **B3a Teil 1 erledigt** (Details Changelog): Regel-Engine (35 Tests), Status-Container (`status.ts` ersetzt `keywordRun` und `burn`), `Weapon.rules`/`buffs`, Golden Polaris (10,5 s und 30 s, mit und ohne Ember, gleich wie der bisherige Weg). Suite 2099 grün. **Befund:** Bauplan 5.4 zündete bei 4 statt 5 (Dateireihenfolge); Beispiel angepasst, Engine nicht.
+- Im Kern-Host noch nicht angeschlossen (Fehlermeldung): `refill` (braucht Generation statt Vorausschau, B3b), `damage`, `addResource`, Bedingung `actor`. Weaken als Status-Definition mit `modifiers` kommt mit dem ersten Nutzer in B3b (Frage an den Inhaber, ob das passt).
+- B3.0, B2, B1 erledigt. Bauplan angenommen (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - Offen ohne Quelle: Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk auf Still Hunt.
 
 ## Reihenfolge
 
-1. B3–B6 nach `docs/plans/ground-up-model.md`; Aufräum-Block nach B4.
-2. Danach (`docs/plans/sources-2026-10.md`): Energie-Exotics, Hammer of Sol mit Sol Invictus, Q4–Q7; vieles geht in B6 auf.
-3. Für 2.0 (`docs/product.md`): Legendary Frames, Optimizer mit Abilities, Aspects und Fragments.
+B3a Teil 2, B3b, Szenarien aus Abilities/Testing vor B5, B4–B6 (`ground-up-model.md`, Aufräum-Block nach B4). Danach `sources-2026-10.md` (Energie-Exotics, Hammer of Sol, Q4–Q7); 2.0 in `docs/product.md`.
 
 ## Entscheidungen des Inhabers
 
-- Bauplan und ADR 0018 (2026-10-31); auf dem Branch bleiben, Merge nur auf Ansage.
-- Exotics ohne jede Schadenswirkung fallen weg.
-- Ein Boss, keine Adds. Kill-Buffs des Exotics gelten nur mit „Vorher aufgebaut“. Aspects und Fragments, die nur vorher aufgebaut wirken, gelten, sobald gewählt.
-- Eigene Quellen gelten nur für die Dauer aus ihrem Text ab Beginn der Phase; länger nur mit modelliertem Auslöser. Buffs von Teammates gelten die ganze Phase.
-- Effects von Teammates dürfen eigene Abilities ändern, auch klassenübergreifend (Sol Invictus → Chaos Reach).
-- Energie-Mods abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage.
-- Rückwärtskompatibilität von Links hat keine hohe Priorität. Tooltips erklären, was ein Item tut, ohne Quellen.
-- Legendary Frames kommen für 2.0. Abstände zählen, absolute Zahlen nicht; der Optimizer optimiert die gewählte Phasenlänge und hat Priorität.
-- Größere Blöcke sind erlaubt, Commit je Teil.
+- Bauplan und ADR 0018; auf dem Branch bleiben, Merge nur auf Ansage; eng an Bauplan und Plan halten.
+- Exotics ohne Schadenswirkung fallen weg. Ein Boss, keine Adds. Kill-Buffs nur mit „Vorher aufgebaut“.
+- Eigene Quellen nur für die Dauer aus ihrem Text; Buffs von Teammates die ganze Phase; Effects von Teammates dürfen eigene Abilities ändern (Sol Invictus → Chaos Reach).
+- Energie-Mods abgelehnt (Revert `19cddbb`). Links ohne Rückwärtskompatibilität. Legendary Frames für 2.0. Größere Blöcke erlaubt, Commit je Teil.
 
-## Zurückgestellt (geringer Nutzen)
-
-`src/data/schema.ts` aufteilen; Rohdaten-Snapshots nach `data/sources/`; `noUncheckedIndexedAccess`; Bundle lazy-load (`weapon-packages.json` 690 KB). Wieder aufnehmen, wenn es beim Arbeiten stört.
-
-## Werkzeuge
-
-- Nach einem Patch: Skill `nach-patch`. UI-Check: Skill `pruefen`, Schritt 4.
+Zurückgestellt: `schema.ts` aufteilen, Rohdaten-Snapshots verschieben, `noUncheckedIndexedAccess`, Bundle lazy-load. Nach einem Patch: Skill `nach-patch`; UI-Check: Skill `pruefen`.
