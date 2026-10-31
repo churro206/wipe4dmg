@@ -118,7 +118,8 @@ function fromSockets(
         ...clarityCatalysts(weapon.name, clarity).map((e) => e.name),
       ],
     ],
-    ["perk", weapon.perks],
+    // A perk of another weapon slotted as a refit is named "<perk> Refit" (Barrow-Dyad: "Target Lock Refit").
+    ["perk", weapon.perks.flatMap((p) => [p, p.replace(/ Refit$/, "")])],
     ["weaponMod", weapon.mods],
   ];
   const key = normalize(name);

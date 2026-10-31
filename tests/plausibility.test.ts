@@ -10,6 +10,7 @@ import { fitArtifact } from "../src/engine/artifacts";
 import { rotationWindows } from "../src/engine/effectWindows";
 import { abilitiesFor } from "../src/engine/providers";
 import { buildSimulation } from "../src/engine/buildSimulation";
+import { simulateCore } from "../src/engine/core/simulateCore";
 import { simulate, type SimulationResult } from "../src/engine/simulate";
 import { effectRelevantTo, neededStatuses } from "../src/engine/weaponInfo";
 import { buckets, gameData, weaponById, weapons } from "../src/ui/data";
@@ -343,6 +344,31 @@ describe("exotic armor changes its abilities", () => {
     expect(ratio).toBeGreaterThan(1.05);
   });
 
+  // S4 part C: Barrow-Dyad's seekers come after the reload at the bullets' rate ("overwriting
+  // regular shots"), so no gap over 1 s ends the run; Aegis measures ×1.32 (17 381 / 13 171).
+  it("Peacekeepers on Barrow-Dyad: the seekers fill the reload, the stacks hold (core, Aegis ×1.32)", () => {
+    const barrow = weaponById("barrow-dyad");
+    const titan = { guardianClass: "titan" as const };
+    const total = (fields: Partial<Build>) => {
+      const build: Build = {
+        weaponId: barrow.id,
+        guardianClass: "titan",
+        subclass: "arc",
+        catalyst: false,
+        selections: [],
+        effectWindows: {},
+        damagePhaseSeconds: 30,
+        ...fields,
+      };
+      const { selected, options } = buildSimulation(build, gameData);
+      return simulateCore(barrow, 30, selected, buckets, options).totalDamage;
+    };
+    const ratio = total({ ...titan, exoticArmorId: "peacekeepers" }) / total(titan);
+    note("Barrow-Dyad mit / ohne Peacekeepers (30 s, neuer Kern)", `×${fmt(ratio)}`, "×1,30 bis ×1,34 (Aegis ×1,32)");
+    expect(ratio).toBeGreaterThan(1.3);
+    expect(ratio).toBeLessThanOrEqual(1.34);
+  });
+
   it("Lucky Pants: 10 stacks of +45 % on a Hand Cannon for 6 s, then nothing more", () => {
     const handCannon = weapons.find(
       (w) => w.weaponType === "handCannon" && w.ammo === "primary",
@@ -483,17 +509,19 @@ describe("all weapons (2026-10-23)", () => {
 
   // Catches a unit error in a source, e.g. a whole magazine or a 5-ammo projectile counted as one
   // shot (Fourth Horseman ×4, Choir of One ×5 before the overrides). Such errors are ×4 or more, so
-  // a primary may reach 1.25×: Hierarchy of Needs deals 1.07× with Aegis' 917 per arrow and its
+  // a primary may reach 1.5×: Hierarchy of Needs deals 1.07× with Aegis' 917 per arrow and its
   // 1.0 to 1.4 s per arrow (Aegis peak rate 1.017 s, Quantum 44 rpm) once the bow's nock is no
-  // longer counted twice (2026-10-26).
-  it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1.25×", () => {
+  // longer counted twice (2026-10-26). Barrow-Dyad deals about 1.4× (2026-10-31): Aegis Sustained
+  // measures 4150 per 4.6 s (902 per second on the scale "visual", Tarrabah 607), Gjallarhorn's 11
+  // rockets of 1892 about 20 800 in 30 s.
+  it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1.5×", () => {
     const gjally = run({}, weaponById("gjallarhorn")).totalDamage;
     const ratios = weapons.map(
       (w) => [w, run({}, w).totalDamage / gjally] as const,
     );
     const off = ratios
       .filter(([w, r]) =>
-        w.ammo === "primary" ? r > 1.25 || r <= 0 : r < 0.3 || r > 2.5,
+        w.ammo === "primary" ? r > 1.5 || r <= 0 : r < 0.3 || r > 2.5,
       )
       .map(([w, r]) => `${w.name} ${fmt(r)}`);
     const top = [...ratios].sort((a, b) => b[1] - a[1])[0];

@@ -60,6 +60,7 @@ export type WeaponImportInputs = {
 // Spellings of a source that differ from the manifest beyond case, e.g. Quantum's typo.
 const NAME_ALIASES: Record<string, string> = {
   "verglass curve": "verglas curve",
+  "barrow dyad": "barrow-dyad", // Quantum
 };
 const nameKey = (name: string) => {
   const key = name.toLowerCase();
@@ -299,8 +300,11 @@ const SCORCH_BONUS =
 const WITHOUT_IGNITIONS = /without ignition|does not consider ignitions/i;
 const AEGIS_IGNITION_TICK = /\b(\d+) ignition\b/i;
 // A named tick, e.g. "490/36 cluster" (the boss takes the first) or "310 Perfect Fifth"
-const aegisNamedTick = (ticks: string, name: string) =>
-  Number(new RegExp(`\\b(\\d+)(?:\\/\\d+)? ${name}\\b`, "i").exec(ticks)?.[1]);
+/** The value of a named tick, "490/36 cluster" → 490; with `sum` both parts, "1172/97 seeker" → 1269. */
+const aegisNamedTick = (ticks: string, name: string, sum = false) => {
+  const match = new RegExp(`\\b(\\d+)(?:\\/(\\d+))? ${name}\\b`, "i").exec(ticks);
+  return Number(match?.[1]) + (sum ? Number(match?.[2] ?? 0) : 0);
+};
 
 type ScorchRule = {
   stacksPerShot: number;
@@ -1032,7 +1036,9 @@ export function buildWeaponImport(
     // (override), on the scale of Aegis "visual".
     const nthRule = override?.nthShotPart;
     const nthTickName = nthRule?.tick ?? "cluster";
-    const nthTick = nthRule ? aegisNamedTick(base.otherTicks, nthTickName) : undefined;
+    const nthTick = nthRule
+      ? aegisNamedTick(base.otherTicks, nthTickName, nthRule.sumTick)
+      : undefined;
     if (nthRule) {
       if (base.critShot === null || !nthTick)
         throw new Error(
@@ -2003,7 +2009,10 @@ export function buildWeaponImport(
                   ),
                 },
                 ticks: { value: nthRule.hits, source: setupSource() },
-                tickIntervalMs: { value: 0, source: setupSource() },
+                tickIntervalMs: {
+                  value: Number(((nthRule.tickIntervalSeconds ?? 0) * 1000).toFixed(3)),
+                  source: setupSource(),
+                },
                 everyNthShot: { value: nthRule.every, source: setupSource() },
                 canPrecision: false,
                 requiresCatalyst: false,

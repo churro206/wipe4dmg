@@ -2,7 +2,8 @@
 // refresh time ends the run, bosses take less damage from buffed shots (Compendium).
 
 import { describe, expect, it } from "vitest";
-import type { Effect, MultiplierPart, SourcedNumber } from "../src/data/schema";
+import type { Effect, MultiplierPart, SourcedNumber, Weapon } from "../src/data/schema";
+import { simulateCore } from "../src/engine/core/simulateCore";
 import { simulate } from "../src/engine/simulate";
 import { buckets } from "../src/ui/data";
 import { testWeapon } from "./support/testWeapon";
@@ -56,5 +57,45 @@ describe("hitStacks", () => {
     expect(
       damages({ maxStacks: sourced(10), bossFactor: sourced(0.5) }),
     ).toEqual([1000, 1500 * 0.5, 2000 * 0.5]);
+  });
+});
+
+// S4 part C (ADR 0017): the hits of a part that every Nth shot sets off count as hits too, e.g. the
+// Blighted Seekers of Barrow-Dyad that fill the reload ("overwriting regular shots", Compendium).
+describe("hitStacks with every-Nth-shot parts (simulateCore)", () => {
+  // 60 rpm, magazine 2, reload 2 s: shots at 0, 1, 4 and 5 s; every 2nd shot a seeker 1.5 s later.
+  const seekerWeapon: Weapon = {
+    ...testWeapon,
+    ammo: "primary",
+    fireRateRpm: sourced(60),
+    magazine: sourced(2),
+    reloadTimeMs: sourced(2000),
+    damageInstances: [
+      { ...testWeapon.damageInstances[0], id: "shot", damagePerTick: sourced(100) },
+      {
+        ...testWeapon.damageInstances[0],
+        id: "seeker",
+        damagePerTick: sourced(10),
+        delayMs: sourced(1500),
+        everyNthShot: sourced(2),
+      },
+    ],
+  };
+  const run = () =>
+    simulateCore(
+      seekerWeapon,
+      5.5,
+      [effect({ maxStacks: sourced(10), refreshMs: sourced(2000), bossFactor: sourced(1) })],
+      buckets,
+    ).damageInstances.map((d) => [d.id, d.timeMs, d.damage]);
+
+  it("a seeker in the reload keeps the run, and gets the stacks of the hits before it", () => {
+    expect(run()).toEqual([
+      ["shot", 0, 100],
+      ["shot", 1000, 150],
+      ["seeker", 2500, 20],
+      ["shot", 4000, 250],
+      ["shot", 5000, 300],
+    ]);
   });
 });

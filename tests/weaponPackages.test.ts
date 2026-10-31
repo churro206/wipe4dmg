@@ -40,6 +40,25 @@ const keywords = loadKeywords(
   AegisAbilityRow.array().parse(rawAbilityRows),
 );
 
+// S4 part C (ADR 0017): Barrow-Dyad from parts. The bullet with Target Lock on average (Clarity
+// +25 %), 6 Blighted Seekers per magazine of 39 (Compendium "maximum of 6 Seekers"), each seeker
+// explosion plus impact ("1172/97 seeker"); one cycle of 39 bullets and 6 seekers every 4.6 s
+// (Aegis Sustained).
+describe("Barrow-Dyad", () => {
+  it("is built from the bullet with Target Lock and 6 seekers per magazine", () => {
+    const barrow = byName("Barrow-Dyad")!;
+    expect(barrow).toBeDefined();
+    expect(value(barrow.damageInstances[0].damagePerTick)).toBeCloseTo((112 * 1.25) / 3.17, 2);
+    const seekers = barrow.damageInstances[1];
+    expect(value(seekers.damagePerTick)).toBeCloseTo((1172 + 97) / 3.17, 2);
+    expect(value(seekers.ticks)).toBe(6);
+    expect(value(seekers.everyNthShot!)).toBe(39);
+    expect(value(barrow.magazine)).toBe(39);
+    const cycleMs = 39 * (60_000 / value(barrow.fireRateRpm)!) + value(barrow.reloadTimeMs)!;
+    expect(cycleMs).toBeCloseTo(4600, -1);
+  });
+});
+
 describe("Truth (expected from the hand table of 2026-10-20)", () => {
   const truth = byName("Truth")!;
 

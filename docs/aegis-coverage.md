@@ -7,8 +7,8 @@ Generiert von `npm run coverage` (`scripts/lib/aegisCoverage.ts`), nicht von Han
 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 143 | 244 | 30 |
-| Sustained | 261 | 38 | 131 | 92 |
+| Weapons | 417 | 144 | 248 | 25 |
+| Sustained | 261 | 38 | 132 | 91 |
 | Swap | 204 | 47 | 102 | 55 |
 
 ## Was fehlt
@@ -30,7 +30,6 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Praxic Blade (no package) | 3 | Item fehlt |  |  |
 | own damage: Unravel | 2 | Item fehlt |  |  |
 | own damage: Witherhoard | 2 | Item fehlt |  |  |
-| Barrow-Dyad (no package) | 1 | Item fehlt |  |  |
 | melee: Adaptive glaive | 1 | Item fehlt |  |  |
 | melee: Cull's Shadow | 1 | Item fehlt |  |  |
 | melee: Flechette Storm | 1 | Item fehlt |  |  |
@@ -50,13 +49,13 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Roaring Flames x3 | 7 | kein Paar, Wert aus Text |  |  |
 | Solar Fulmination | 6 | kein Paar, Wert aus Text |  |  |
 | Pack Hunter | 5 | kein Paar, Wert aus Text |  |  |
-| Burning Ambition | 4 | kein Paar, Wert aus Text |  |  |
 | Celestial Fire spam | 4 | kein Paar, Wert aus Text |  |  |
 | Harsh Refraction | 4 | kein Paar, Wert aus Text |  |  |
 | Jagged Edge | 4 | kein Paar, Wert aus Text |  |  |
 | Sword Storm Combo | 3 | kein Paar, Wert aus Text |  |  |
 | Warlord's Fury | 3 | kein Paar, Wert aus Text |  |  |
 | Bull Rider | 2 | kein Paar, Wert aus Text |  |  |
+| Burning Ambition | 2 | kein Paar, Wert aus Text |  |  |
 | Cabal | 2 | kein Paar, Wert aus Text |  |  |
 | Composite Propellant x5 | 2 | kein Paar, Wert aus Text |  |  |
 | Conductive Cosmic Needle x3 | 2 | kein Paar, Wert aus Text |  |  |
@@ -64,7 +63,6 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Incendiary Rifle Rounds | 2 | kein Paar, Wert aus Text |  |  |
 | Pack Tactics (simplified underestimate of 3 stack start) | 2 | kein Paar, Wert aus Text |  |  |
 | Pack Tactics x2 | 2 | kein Paar, Wert aus Text |  |  |
-| Target Lock | 2 | kein Paar, Wert aus Text |  |  |
 | Thread of Continuity | 2 | kein Paar, Wert aus Text |  |  |
 | Assault Mag | 1 | kein Paar, Wert aus Text |  |  |
 | Claws of Ahamkara + Necrotic Grip | 1 | kein Paar, Wert aus Text |  |  |
@@ -93,7 +91,6 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Supercharged Battery | 1 | kein Paar, Wert aus Text |  |  |
 | Target Acquired | 1 | kein Paar, Wert aus Text |  |  |
 | Tempered Edge | 1 | kein Paar, Wert aus Text |  |  |
-| Temporal Alignment | 1 | kein Paar, Wert aus Text |  |  |
 | Temporal Sprint | 1 | kein Paar, Wert aus Text |  |  |
 | The Fundamentals | 1 | kein Paar, Wert aus Text |  |  |
 | Transcendent but excludes 5% | 1 | kein Paar, Wert aus Text |  |  |
@@ -305,7 +302,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Eriana's Vow, Illegally Modded Holster, Death At First Glance, full mag | übersprungen | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Graviton Spike, stasis mode | im Modell | base row of the package |
 | Graviton Spike, arc mode | übersprungen | ohne stasis mode der Basiszeile |
-| Graviton Spike, average, overcharging both modes, typical boss model, Temporal Alignment | fehlt | nicht modelliert: Temporal Alignment |
+| Graviton Spike, average, overcharging both modes, typical boss model, Temporal Alignment | übersprungen | ohne stasis mode der Basiszeile |
 | Hawkmoon | im Modell | base row of the package |
 | Hawkmoon, Illegally Modded Holster, Paracausal Shot, full mag | übersprungen | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Hawkmoon, Illegally Modded Holster, Paracausal Shot, full mag, pre-stacked using heavy burst | übersprungen | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
@@ -471,8 +468,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Aggressive frame, average, Peacekeepers, e. Rewind Rounds, e. Target Lock, 35 mag | übersprungen | legendary frame (owner 2026-10-25) |
 | Balanced heat weapon - 900RPM primary | übersprungen | legendary frame (owner 2026-10-25) |
 | Balanced heat weapon - 900RPM primary, average, Peacekeepers, e. Target Lock, e. Accelerated Assault, Cooling Efficiency MW | übersprungen | legendary frame (owner 2026-10-25) |
-| Barrow-Dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | fehlt | Exotic-Rüstung: Peacekeepers; fremder Perk: Target Lock |
-| Barrow-Dyad, average, Taken Ambition, with Blighted Seekers, Target Lock | fehlt | fremder Perk: Target Lock |
+| Barrow-Dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | übersprungen | Exotic-Rüstung: Peacekeepers |
+| Barrow-Dyad, average, Taken Ambition, with Blighted Seekers, Target Lock | im Modell | base row of the package |
 | Lightweight frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Lightweight frame, average, Peacekeepers, 47 mag | übersprungen | legendary frame (owner 2026-10-25) |
 | Osteo Striga, average, with successive poison, Peacekeepers | übersprungen | Exotic-Rüstung: Peacekeepers |
@@ -581,8 +578,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Wave sword frame, Enduring Blade, Enhanced Impact, 68 impact, heavy slash | übersprungen | legendary frame (owner 2026-10-25) |
 | Wave sword frame, Enduring Blade, 64 impact, heavy slash | übersprungen | legendary frame (owner 2026-10-25) |
 | Wolfsbane, Honed Edge, Jagged Edge, Nano-Assault HLLHLLHLLHLLH | im Modell | base row of the package |
-| Wolfsbane, Honed Edge, Jagged Edge, Nano-Assault HLLHLLHLLHLLH, Burning Ambition, includes ignition | fehlt | fremder Perk: Burning Ambition |
-| Wolfsbane, average, Honed Edge, Jagged Edge, light, Burning Ambition, includes ignition | fehlt | fremder Perk: Burning Ambition |
+| Wolfsbane, Honed Edge, Jagged Edge, Nano-Assault HLLHLLHLLHLLH, Burning Ambition, includes ignition | übersprungen | gleiche Annahmen wie die Basiszeile |
+| Wolfsbane, average, Honed Edge, Jagged Edge, light, Burning Ambition, includes ignition | übersprungen | ohne Nano-Assault HLLHLLHLLHLLH der Basiszeile |
 | Worldline Zero, Temporal Sprint, heavy | fehlt | nicht modelliert: Temporal Sprint |
 | Adaptive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Ager's Scepter | im Modell | base row of the package |
@@ -798,7 +795,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Trace rifle, e. Fourth Time's the Charm + e. Target Lock (Acasia's Dejection), Cenotaph Mask, Harsh Refraction | übersprungen | legendary frame (owner 2026-10-25) |
 | Divinity, held down, includes jolt, Focused Fury, Harsh Refraction | fehlt | no switch for: held down; includes jolt; Harsh Refraction |
 | Skyburner's Oath, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Dawn Chorus | übersprungen | no total (INF) |
-| Barrow-Dyad, Target Lock, Taken Ambition | fehlt | weapon without package: keine Aegis-Zeile ohne fremde Annahmen |
+| Barrow-Dyad, Target Lock, Taken Ambition | übersprungen | no total (INF) |
 | Outbreak Perfected, starts at max nanites, Rewind Rounds, Appended Mag, approximate | übersprungen | no total (INF) |
 | Choir of One, hitscan mode, precision | fehlt | no switch for: hitscan mode; precision |
 | Tessellation, full grenade uptime, Property: Irreducible, Transcendent but excludes 5%, simulated | fehlt | no switch for: full grenade uptime; Property: Irreducible; Transcendent but excludes 5%; simulated |

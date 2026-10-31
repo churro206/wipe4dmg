@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **136 Pakete**, 5 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **137 Pakete**, 4 Lücken.
 
 ## Pakete
 
@@ -18,6 +18,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Anarchy | grenadeLauncher | arc | average, per trap, double stick, Jolting Feedback (2 Shots) | 2.912,3 | Quantum | 29 | 6 | 2,08 s | 150,0 s | – → 12 | 13.768,3 % | Override: Aegis misst nur mit Katalysator (Jolting Feedback). Quantum ohne ihn: „double-stick“, 84.458 für 29 Granaten = 2912 pro Granate, zwei Fallen kleben, neu schießen, wenn sie auslaufen. Katalysator: Aegis 3368,5 ÷ Quantum 2912 = ×1,157 (Jolt).; Timing aus Zeile heavies-grenade-launcher-anarchy-double-stick (Override); Timing nur aus Quantum; Schaden pro Shot 2.912,3 (Override); Skala weicht um 13768.3 % ab; Aegis gilt (Override) |
 | Arbalest | linearFusionRifle | kinetic | keine (1 Shot) | 1.086,1 | Aegis | 21 | 5 | 1,73 s | 24,3 s | – → 57 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by one (5🠚6)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Aegis; Katalysator-Timing: 22 Shots, Magazin 6, Zeit bis leer 24,6 s |
 | Bad Juju | pulseRifle | kinetic | burst (1 Shot) | 31,9 | Quantum |  | 31 | 1,16 s | – | 450 → 450 | 0,1 % | Aegis misst einen Burst aus 3 Kugeln (wipe 1.446 = 3 × 482); Paket pro Kugel wie Quantums Magazin; Timing nur aus Quantum |
+| Barrow-Dyad | submachineGun | strand | average, Taken Ambition, with Blighted Seekers, Target Lock (39 Shots) | 44,2 | Quantum |  | 39 | 1,35 s | – | 720 → 720 | 29,9 % | Override: Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34).; Blighted Seekers: Treffer 112 aus smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock, alle 39 Schüsse 6 × 1269 („1172/97 seeker“) (Override); Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum; Schaden pro Shot 44,2 (Override); Skala weicht um 29.9 % ab; Aegis gilt (Override) |
 | Bastion | fusionRifle | kinetic | keine (4 Shots) | 1.591,5 | Quantum | 21 | 4 | 1,32 s | 37,4 s | 38 → 39 | 0,3 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Black Talon | sword | void | light (1 Shot) | 3.141,0 | Aegis | 9 | 9 | 0,00 s | 22,3 s | – → 21 | – | Override: Aegis Sustained zählt Munition (73), der Grundwert gilt pro Combo „2H2L“ (3141): 9 Combos plus ein Heavy in 25,1 s; der letzte Heavy fällt weg. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Timing aus Zeile black-talon-2h2l-combo-lucent-blades-x3-argent-blade (Override); Timing nur aus Aegis; Schaden pro Shot aus „Base“ der Sustained-Zeile black-talon-2h2l-combo-lucent-blades-x3-argent-blade (Override) |
 | Borealis | sniperRifle | void | keine (1 Shot) | 832,4 | Quantum | 20 | 5 | 1,98 s | 19,3 s | 72 → 85 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; Katalysator-Timing: 20 Shots, Magazin 5, Zeit bis leer 18,7 s |
@@ -188,6 +189,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Anarchy | heavy | Schaden | – | Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt. |
 | Arbalest | special | Timing | Magazin 5 → 6, Shots 21 → 22, Zeit bis leer 24,3 → 24,6 s, rpm 57 → 57 | Passively grants: |
 | Bad Juju | primary | keine | – | String of Curses's maximum duration is increased by 2 seconds (5.5🠚7.5). |
+| Barrow-Dyad | primary | unbekannt | – | Grants the Target Lock trait: |
 | Bastion | special | unbekannt | – | Dealing Melee Damage refills 20% of the Magazine (rounded up) and grants ? Handling for ? seconds. |
 | Black Talon | heavy | keine | – | Due to an unresolved bug, this catalyst does not function. |
 | Borealis | special | Timing | Magazin 5 → 5, Shots 20 → 20, Zeit bis leer 19,3 → 18,7 s, rpm 85 → 85 | Passively grants 20 Reload Speed. |
@@ -319,7 +321,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 
 | Waffe | Typ | Grund |
 | --- | --- | --- |
-| Barrow-Dyad | submachineGun | keine Aegis-Zeile ohne fremde Annahmen |
 | Praxic Blade | sword | kein Timing: keine Quantum-Zeile |
 | The Huckleberry | submachineGun | keine Aegis-Zeile ohne fremde Annahmen |
 | Wolfsbane | sword | kein Timing: Aegis: nur Zeilen mit fremden Annahmen; keine Quantum-Zeile |
@@ -331,8 +332,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | --- | --- | --- |
 | Ager's Scepter | average, Will Given Form | Katalysator: Will Given Form |
 | Ager's Scepter | average, Will Given Form, Harsh Refraction | Katalysator: Will Given Form; Artefakt: Harsh Refraction |
-| Barrow-Dyad | average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Exotic-Rüstung: Peacekeepers; fremder Perk: Target Lock |
-| Barrow-Dyad | average, Taken Ambition, with Blighted Seekers, Target Lock | fremder Perk: Target Lock |
+| Barrow-Dyad | average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Exotic-Rüstung: Peacekeepers |
 | Black Talon | single projectile | ohne light der Basiszeile |
 | Choir of One | hitscan | ohne projectile - spaced (~9m) der Basiszeile |
 | Choir of One | projectile - point blank | ohne projectile - spaced (~9m) der Basiszeile |
@@ -357,7 +357,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Forerunner | The Rock, excludes impact | Katalysator: The Rock |
 | Grand Overture |  | ohne Missile Loaded, Volley Ready der Basiszeile |
 | Graviton Spike | arc mode | ohne stasis mode der Basiszeile |
-| Graviton Spike | average, overcharging both modes, typical boss model, Temporal Alignment | nicht modelliert: Temporal Alignment |
+| Graviton Spike | average, overcharging both modes, typical boss model, Temporal Alignment | ohne stasis mode der Basiszeile |
 | Hawkmoon | Illegally Modded Holster, Paracausal Shot, full mag | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Hawkmoon | Illegally Modded Holster, Paracausal Shot, full mag, pre-stacked using heavy burst | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Heartshadow | light | ohne heavy, Shot in the Dark, weaken excluded der Basiszeile |
@@ -428,8 +428,8 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Whirling Ovation | 2/3 charge | ohne full charge der Basiszeile |
 | Whirling Ovation | 1/3 charge | ohne full charge der Basiszeile |
 | Witherhoard | ground pool | ohne direct impact der Basiszeile |
-| Wolfsbane | Honed Edge, Jagged Edge, Nano-Assault HLLHLLHLLHLLH, Burning Ambition, includes ignition | fremder Perk: Burning Ambition |
-| Wolfsbane | average, Honed Edge, Jagged Edge, light, Burning Ambition, includes ignition | fremder Perk: Burning Ambition |
+| Wolfsbane | Honed Edge, Jagged Edge, Nano-Assault HLLHLLHLLHLLH, Burning Ambition, includes ignition | gleiche Annahmen wie die Basiszeile |
+| Wolfsbane | average, Honed Edge, Jagged Edge, light, Burning Ambition, includes ignition | ohne Nano-Assault HLLHLLHLLHLLH der Basiszeile |
 | Worldline Zero | Temporal Sprint, heavy | nicht modelliert: Temporal Sprint |
 
 ## Auffällige Annahmen
@@ -441,7 +441,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Ergo Sum | Transcendent | nicht modelliert, ohne Beleg |
 | Final Warning | ADS tap fire | nicht modelliert, ohne Beleg |
 | Finality's Auger | marked | nicht modelliert, ohne Beleg |
-| Graviton Spike | Temporal Alignment | nicht modelliert, ohne Beleg |
 | Hierarchy of Needs | 2 rings | nicht modelliert, ohne Beleg |
 | Hierarchy of Needs | fireteam scaling | nicht modelliert, ohne Beleg |
 | Ice Breaker | shatter ignition | nicht modelliert, ohne Beleg |
@@ -470,13 +469,13 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 | Peacekeepers | Exotic-Rüstung | Barrow-Dyad, Osteo Striga, Riskrunner, Tarrabah, The Huckleberry, The Manticore |
 | Illegally Modded Holster | Exotic-Rüstung | Eriana's Vow, Hawkmoon, Malfeasance, The Last Word, Thorn |
 | blighted | nicht modelliert | Malfeasance, One Thousand Voices |
-| Burning Ambition | fremder Perk | Skyburner's Oath, Wolfsbane |
 | Transcendent | nicht modelliert | Ergo Sum, Tessellation |
 | 1 mag | nicht modelliert | The Last Word |
 | 2 rings | nicht modelliert | Hierarchy of Needs |
 | ADS tap fire | nicht modelliert | Final Warning |
 | blight | nicht modelliert | Touch of Malice |
 | Bull Rider | nicht modelliert | The Huckleberry |
+| Burning Ambition | fremder Perk | Skyburner's Oath |
 | Cabal | nicht modelliert | Skyburner's Oath |
 | Celestial Nighthawk | Exotic-Rüstung | Still Hunt |
 | Fated Missile | nicht modelliert | The Jade Rabbit |
@@ -489,11 +488,8 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 | Overwhelming Power | nicht modelliert | Turncoat |
 | Pack Hunter | fremder Perk | Ergo Sum |
 | shatter ignition | nicht modelliert | Ice Breaker |
-| Target Lock | fremder Perk | Barrow-Dyad |
-| Temporal Alignment | nicht modelliert | Graviton Spike |
 | Temporal Sprint | nicht modelliert | Worldline Zero |
 | up to Rewind end | nicht modelliert | Outbreak Perfected |
-| Vorpal Weapon | fremder Perk | Wish-Keeper |
 
 ## Wechselwirkungen
 

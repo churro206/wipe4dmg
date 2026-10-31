@@ -119,6 +119,11 @@ describe("classifyAssumption, stage 1: sockets of the weapon", () => {
     expect(kind("catalyst")).toEqual({ kind: "catalyst", stage: 1 });
   });
 
+  it("finds a perk of another weapon slotted as a refit, e.g. Barrow-Dyad's Target Lock Refit", () => {
+    const barrow = { ...eriana, name: "Barrow-Dyad", perks: ["Target Lock Refit"] };
+    expect(kind("Target Lock", barrow)).toEqual({ kind: "perk", stage: 1 });
+  });
+
   it("accepts a spelling up to 2 characters apart and says so", () => {
     expect(kind("Prototype Truthseeker")).toEqual({
       kind: "intrinsic",

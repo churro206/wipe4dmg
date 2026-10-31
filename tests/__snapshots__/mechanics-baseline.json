@@ -60,6 +60,16 @@
       "600s plain catalyst": 112364.63,
       "600s buffed catalyst": 189177.1
     },
+    "barrow-dyad": {
+      "30s plain": 26026.47,
+      "30s buffed": 43818.17,
+      "30s plain catalyst": 26026.47,
+      "30s buffed catalyst": 43818.17,
+      "600s plain": 537261.28,
+      "600s buffed": 904533.09,
+      "600s plain catalyst": 537261.28,
+      "600s buffed catalyst": 904533.09
+    },
     "bastion": {
       "30s plain": 25464.5,
       "30s buffed": 42872.03,

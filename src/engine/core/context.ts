@@ -35,8 +35,15 @@ import { MS_PER_SECOND } from "../units";
 
 const ABILITY_DAMAGE_SOURCES: DamageSource[] = ["grenade", "melee", "super"];
 
-/** The shots made so far and the held draw factor of each. */
-export type ShotHistory = { shots: Shot[]; holdFactors: number[] };
+/**
+ * The shots made so far and the held draw factor of each; the times of the hits of parts that every
+ * Nth shot sets off (S4 part C, e.g. Barrow-Dyad's seekers), which count as hits for stacks.
+ */
+export type ShotHistory = {
+  shots: Shot[];
+  holdFactors: number[];
+  partHitsMs: number[];
+};
 
 export function createContext(
   weapon: Weapon,
@@ -143,18 +150,23 @@ export function createContext(
     }
     return 1;
   };
-  // Stacks of a hit: the shots of the current run before the shot that makes the hit; a gap longer
-  // than refreshMs ends the run.
+  // Stacks of a hit: the hits of the current run before it (shots and the hits of every-Nth-shot
+  // parts until its time); a gap longer than refreshMs ends the run.
   const stacksAt = (timeMs: number, refreshMs: number) => {
+    const shotsMs = history.shots.map((shot) => shot.timeMs);
+    const hitsMs = (
+      history.partHitsMs.length === 0
+        ? shotsMs
+        : [...shotsMs, ...history.partHitsMs].sort((a, b) => a - b)
+    ).filter((hitMs) => hitMs <= timeMs);
     let stacks = 0;
     let previousMs: number | undefined;
-    for (const shot of history.shots) {
-      if (shot.timeMs > timeMs) break;
+    for (const hitMs of hitsMs) {
       stacks =
-        previousMs !== undefined && shot.timeMs - previousMs > refreshMs
+        previousMs !== undefined && hitMs - previousMs > refreshMs
           ? 1
           : stacks + 1;
-      previousMs = shot.timeMs;
+      previousMs = hitMs;
     }
     return Math.max(0, stacks - 1);
   };

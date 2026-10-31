@@ -916,6 +916,233 @@
     }
   },
   {
+    "id": "barrow-dyad",
+    "code": 137,
+    "name": "Barrow-Dyad",
+    "manifestHash": 1481594633,
+    "gameVersion": "9.7.0.3",
+    "weaponType": "submachineGun",
+    "element": "strand",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34).; The time to empty counts from the first shot"
+      }
+    },
+    "fireRateRpm": {
+      "value": 720.003,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34).; Values of the override"
+      }
+    },
+    "magazine": {
+      "value": 39,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+      }
+    },
+    "reloadTimeMs": {
+      "value": 1350,
+      "source": {
+        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
+        "retrieved": "2026-10-20",
+        "status": "unverified",
+        "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+      }
+    },
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Aegis single hit)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Package: one value per shot"
+          }
+        },
+        "damagePerTick": {
+          "value": 44.164,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "visual Value; assumptions: average, Taken Ambition, with Blighted Seekers, Target Lock"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified"
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      },
+      {
+        "id": "nthShot",
+        "name": "Blighted Seekers",
+        "delayMs": {
+          "value": 850,
+          "source": {
+            "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+          }
+        },
+        "damagePerTick": {
+          "value": 400.315,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "Tick \"1172/97 seeker\" ÷ Full Modifiers"
+          }
+        },
+        "ticks": {
+          "value": 6,
+          "source": {
+            "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+          }
+        },
+        "tickIntervalMs": {
+          "value": 83.333,
+          "source": {
+            "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+          }
+        },
+        "everyNthShot": {
+          "value": 39,
+          "source": {
+            "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+            "retrieved": "2026-10-20",
+            "status": "unverified",
+            "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+          }
+        },
+        "canPrecision": false,
+        "requiresCatalyst": false
+      }
+    ],
+    "intrinsicParts": [],
+    "intrinsics": [
+      {
+        "id": "panic-response",
+        "name": "Panic Response",
+        "description": "This weapon generates blight as it deals damage. While not firing, blight depletes, and the magazine is gradually refilled. Reload the weapon to convert stored blight into Blighted Seekers.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "panic-response-ii",
+        "name": "Panic Response II",
+        "description": "This weapon generates blight as it deals damage. While not firing, blight depletes, and the magazine is gradually refilled. Reload the weapon to convert stored blight into Blighted Seekers.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "panic-response-iii",
+        "name": "Panic Response III",
+        "description": "This weapon generates blight as it deals damage. While not firing, blight depletes, and the magazine is gradually refilled. Reload the weapon to convert stored blight into Blighted Seekers.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "panic-response-iv",
+        "name": "Panic Response IV",
+        "description": "This weapon generates blight as it deals damage. While not firing, blight depletes, and the magazine is gradually refilled. Reload the weapon to convert stored blight into Blighted Seekers.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "panic-response-v",
+        "name": "Panic Response V",
+        "description": "This weapon generates blight as it deals damage. While not firing, blight depletes, and the magazine is gradually refilled. Reload the weapon to convert stored blight into Blighted Seekers.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Target Lock Refit, One for All Refit, Hatchling Refit, High-Impact Reserves Refit",
+      "description": "Grants the Target Lock trait:\nSuccessive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.\nGrants the One For All trait:\nScoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.\nGrants the Hatchling trait:\nScoring a Precision Kill or 3 kills within 3 seconds of each other spawns a Threadling at the target's location.\nGrants the High-Impact Reserves trait:\nIncreases damage by 12.1% [3%] to 25.6% [6%] as the Magazine drops from 50% of its base capacity to empty.\nThe buff in PVE ranges between 10.3% and 22.9% instead on Fusion Rifles and Aggressive Frame Linear Fusion Rifles.\nDoes not buff the Splash/Explosive damage elements of other perks.",
+      "effect": "unknown"
+    }
+  },
+  {
     "id": "bastion",
     "code": 27,
     "name": "Bastion",

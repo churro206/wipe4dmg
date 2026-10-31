@@ -1708,7 +1708,11 @@ export const WeaponOverride = z.object({
       every: z.number().int().min(2),
       hits: z.number().int().positive(),
       tick: z.string().optional(),
+      // The tick "A/B" names two parts of one hit that add up, e.g. explosion and impact of a
+      // Barrow-Dyad seeker ("1172/97 seeker"); omitted: only A counts (Truth "490/36 cluster")
+      sumTick: z.boolean().optional(),
       delaySeconds: z.number().positive().optional(),
+      tickIntervalSeconds: z.number().positive().optional(), // between the hits; omitted: at once
       scorchPerHit: z.number().int().positive().optional(),
     })
     .optional(),

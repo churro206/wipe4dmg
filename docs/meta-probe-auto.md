@@ -2,7 +2,7 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `scripts/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 111, davon innerhalb der Grenze 42. Nicht vergleichbar (übersprungen): 44.
+Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 111, davon innerhalb der Grenze 42. Nicht vergleichbar (übersprungen): 45.
 
 ## Vollständig abgebildet
 
@@ -297,6 +297,7 @@ Annahme von Aegis ohne Schalter, mit der Zahl der berichteten Zeilen, die sie en
 - Whirling Ovation, no Anticipation, fully charged, Argent Ordnance: factors differ from the standard of Aegis
 - Final Warning, 15 shot half charge auto into tap fire burst, catalyst: no total (INF)
 - Skyburner's Oath, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Dawn Chorus: no total (INF)
+- Barrow-Dyad, Target Lock, Taken Ambition: no total (INF)
 - Outbreak Perfected, starts at max nanites, Rewind Rounds, Appended Mag, approximate: no total (INF)
 - Revision Zero, 4 burst cycle into 6 Hunter's Trace shots, Extended Mag, Fourth Time's the Charm, Vorpal Weapon: no total (INF)
 - Touch of Malice, blight into 15 shot cycle: no total (INF)

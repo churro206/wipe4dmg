@@ -5,11 +5,11 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 
 ## Key figures
 
-- Total: 25 of 30
+- Total: 26 of 30
 - Ratios between rows of one weapon: 11 of 15
 - base: 5 of 5
 - factor: 5 of 9
-- parts: 2 of 3
+- parts: 3 of 3
 - scorch: 10 of 10
 - volatile: 1 of 1
 - hitShare: 2 of 2
@@ -21,8 +21,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Tolerance ±3 %.
 | ager-s-scepter | base | 37 | 37 | +0.0 % |  |  |
 | ager-s-scepter-will-given-form | factor | 15516 | 12985 | −16.3 % |  |  |
 | ager-s-scepter-harsh-refraction | factor | 19631 | 12985 | −33.9 % | −21.0 % |  |
-| barrow-dyad | parts | 4155 | — | — |  | weapon not in the core |
-| barrow-dyad-peacekeepers | factor | 5483 | — | — | — | weapon not in the core |
+| barrow-dyad | parts | 4155 | 4124 | −0.7 % |  |  |
+| barrow-dyad-peacekeepers | factor | 5483 | 5230 | −4.6 % | −3.9 % |  |
 | deterministic-chaos | volatile | 6074 | 6073 | −0.0 % |  |  |
 | deterministic-chaos-target-lock | factor | 7479 | 7591 | +1.5 % | +1.5 % |  |
 | dragon-s-breath | scorch | 29828 | 29804 | −0.1 % |  |  |

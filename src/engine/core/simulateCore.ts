@@ -44,7 +44,7 @@ export function simulateCore(
   options: SimulationOptions = {},
 ): SimulationResult {
   const weapon = withPlaystyle(plainWeapon, options.playstyle);
-  const history: ShotHistory = { shots: [], holdFactors: [] };
+  const history: ShotHistory = { shots: [], holdFactors: [], partHitsMs: [] };
   const superWindows = superWindowsOf(options.abilities ?? []);
   const context = createContext(
     weapon,
@@ -178,6 +178,7 @@ export function simulateCore(
         const timeMs =
           shot.timeMs + instance.delayMs + tick * instance.tickIntervalMs;
         if (!isInPhase(timeMs)) continue;
+        if (instance.everyNthShot > 1) history.partHitsMs.push(timeMs);
         result.push({
           timeMs,
           group: EVENT_GROUP.weaponHit,

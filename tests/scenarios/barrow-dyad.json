@@ -8,7 +8,7 @@
     "build": { "weaponId": "barrow-dyad" },
     "playstyle": ["average", "Taken Ambition", "with Blighted Seekers", "Target Lock"],
     "shots": 39,
-    "note": "Paper probe −9.0 %: the text allows 6 seekers per reload, the measurement needs 6.9 (open)."
+    "note": "S4 part C −0.7 %: 39 bullets with Target Lock on average (×1.25, as Deterministic Chaos) and 6 seekers of 1172 + 97; the paper probe's −9 % missed Target Lock."
   },
   {
     "id": "barrow-dyad-peacekeepers",
@@ -19,6 +19,7 @@
     "build": { "weaponId": "barrow-dyad", "exoticArmorId": "peacekeepers" },
     "playstyle": ["average", "Taken Ambition", "with Blighted Seekers", "Peacekeepers", "Target Lock"],
     "shots": 39,
-    "comparesTo": "barrow-dyad"
+    "comparesTo": "barrow-dyad",
+    "note": "−4.6 %: the 39 shots are the first magazine, whose stacks ramp up (×1.17 on the bullets); Aegis measures the steady state with 20 stacks on everything (×1.34: +0.8 %). From the second magazine on the seekers keep the run (tests/plausibility.test.ts)."
   }
 ]

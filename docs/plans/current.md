@@ -4,21 +4,15 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block
 
-**S4 Teil C: Barrow-Dyad** (ADR 0017, Plan `docs/plans/ground-up-model.md`; Opus). Arbeit nur auf Branch `ground-up-model`. Erst Skill `recherche` (6 oder 6,9 Seeker je Reload, Papierprobe −9 %), dann Paket in den Kern; sonst eine Zeile eichen (`derived`). Danach S5 (Strategie und Casts, Opus plant). Offen ohne Quelle: Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk (Eich-Zeilen). Lord of Wolves trifft schon (−0,1 / −2,9 %), nicht zerlegt.
+**Aufräum-Block** (überfällig: sechs Funktions-Blöcke seit 2026-10-25; Sonnet). Arbeit auf Branch `ground-up-model`. Kandidaten: Override-Felder für Teile (`nthShotPart`, `playstyleParts`, `setup`) und ihr Import in `weaponPackages.ts` (über 2400 Zeilen); doppelte `stacksAt`/`resolveHitStacks` in `simulate.ts` und `core/context.ts` erst mit S6; `current.md`-Archiv kürzen. Danach S5 (Strategie und Casts, Opus plant). Offen ohne Quelle: Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk (Eich-Zeilen). Lord of Wolves trifft schon (−0,1 / −2,9 %), nicht zerlegt.
+
+S4 Teil C erledigt (2026-10-31): Barrow-Dyad wählbar. Die −9 % der Papierprobe kamen vom fehlenden Target Lock (×1,25 auf Kugeln), nicht von der Seeker-Zahl: −0,7 %. „<Perk> Refit“ zählt als Perk der Waffe. Seeker-Treffer zählen im Kern für `hitStacks`, Peacekeepers hält über den Reload (×1,33, Aegis ×1,32). Prüfstand 26 von 30, parts 3 von 3; Peacekeepers-Zeile −4,6 % (Prüfstand zählt nur das erste Magazin). Plausibilitätsregel Primary ≤ 1,5 × Gjallarhorn (Barrow ×1,38, Aegis belegt).
 
 S4 Teil B erledigt (2026-10-30): Polaris Lance aus Teilen (Perfect Fifth alle 5 Schüsse mit x40 Scorch, kein Reload), Hierarchy „Through two rings“ als Spielweise, `setupDeployed` für den Prüfstand. Prüfstand 25 von 30, Scorch 10 von 10, Verhältnisse 11 von 15. Ohne eigene `weapon-components.json` (Werte stimmten schon, Overrides reichen). Oberfläche (Hierarchy-Auswahl „One ring / Through two rings“) ungeprüft: nur nach Merge auf `master` live.
 
 S4 Teil A erledigt (2026-10-30): Ladestufen von Whirling Ovation als wählbare Spielweise (Oberfläche, Link Format 9), `withPlaystyle` in beiden Simulatoren, Override `playstyleParts`. Prüfstand 22 von 30, Verhältnisse 9 von 14. Takt der Stufen hergeleitet (`known-inaccuracies`). S3 abgeschlossen; Teil 3 (Sonderfelder als Datensätze) gestrichen, bei S6 prüfen.
 
-S3 erledigt (2026-10-30): `everyNthShot` (Truth), Spielweise mit Schussfolge (Still Hunt mit Cayde's Retribution); Details im Changelog.
-
-S2 erledigt (2026-10-30): Burn im Kern (`src/engine/core/burn.ts`, Werte in `keywords.json` Ignition `burn`, `tests/burn.test.ts`); Prüfstand läuft auf `simulateCore`, 16 von 30 und Verhältnisse 5 von 14 unverändert (Hierarchy −43/−23 → −42/−19 %). `coreParity` vergleicht ohne Burn. Doppelzählung bei OTV (+0,6…1,3 %) und Rest in `docs/known-inaccuracies.md`. Burn-Takt je Quelle verschoben auf S3/S4 (ohne Scorch-Teil an der Waffe gibt es nichts zu takten).
-
-S1 erledigt (2026-10-30): `src/engine/core/` (`weaponActor`, `context`, `formula`, `simulateCore`), Schüsse entstehen in der Ereignis-Schleife (`RunEvent.handle` hat `schedule`). `tests/coreParity.test.ts`: alter und neuer Kern gleich für Baseline, Abilities, Exotics und alle Szenarien. Alt bleibt unverändert, `buildSimulation` nutzt weiter ihn (Umschalten S6). Laufzeit des Kerns noch nicht im Optimizer gemessen (Obergrenze 306 ms, vor S6 prüfen).
-
-S0 erledigt (2026-10-30): Prüfstand `tests/scenarioBench.test.ts`, 32 Szenarien in `tests/scenarios/`, Basis heutiger Kern 16 von 30 innerhalb ±3 % nach zwei Import-Korrekturen (OTV/Two-Tailed Fox Shot aus Aegis, Ager's Catalyst ×1,80), Verhältnisse 5 von 14 (`tests/__snapshots__/scenario-bench.md`). Übrige Ausfälle = fehlende Systeme, Liste in `docs/known-inaccuracies.md`. Rechenwege je Zeile: `docs/plans/r0-paper-probe.md`.
-
-Papierprobe (2026-10-30): 9 von 13 Waffen nach Ursachen-Recherche innerhalb ±3 %. Fehlende Systeme: Scorch-Burn (Compendium-Formel 2,7 + 0,175 × Stacks, von Aegis bestätigt), Cooldown des Keyword-Auftrags pro Quelle (Lord of Wolves ≤0,46 s), Treffer-Anteil am Boss (Truth-Bomblets). Offen ohne Quelle: Dragon's Breath, Barrow-Dyad, Zusatz bei Ager's Scepter.
+S0–S3 erledigt (2026-10-30): Prüfstand, Kern (`src/engine/core/`, `coreParity`: alter und neuer Kern gleich; `buildSimulation` nutzt bis S6 den alten), Burn, `everyNthShot`, Spielweise mit Schussfolge; Details im Changelog. Laufzeit des Kerns im Optimizer vor S6 messen (Obergrenze 306 ms). Rechenwege der Papierprobe: `docs/plans/r0-paper-probe.md`.
 
 Ältere Blöcke bis 2026-10-26: im Changelog. Die Energie-Mods (Momentum Transfer u. a.) hat der Inhaber abgelehnt (Revert, Historie `19cddbb`); nicht wieder aufnehmen ohne Rückfrage. Befunde:
 - Aegis-Zeilen mit Full Modifiers 1,00 sind nutzbar, wenn Swap sie als Basis nimmt (Ausnahme mit Grund in `tests/abilityGate.test.ts`).

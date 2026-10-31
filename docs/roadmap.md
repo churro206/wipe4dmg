@@ -71,14 +71,14 @@ Status: 2026-10-25
 
 ## Next
 
-- Damage model from general systems (ADR 0017, stages S0–S6 on branch `ground-up-model`): formula, status system (Scorch with burn, Volatile, Jolt, Slow), effect rules, weapon state and play policy; Aegis rows as scenarios on a test bench with one score. Paper probe: 9 of 13 weapons within ±3 %. S0 test bench done (today's core: 16 of 30 scenarios after two import fixes, ratios 5 of 14). S1 core done (new core in `src/engine/core/`, parity test with the old one). S2 burn of scorch done (decay, ticks, in the core). S3 so far: every-Nth-shot trigger (Truth) and playstyle shot sequence (Still Hunt with Cayde's Retribution), S3 closed (special fields as data dropped). S4 so far: Whirling Ovation charge levels as selectable playstyles (UI and build link); Polaris Lance from its parts (shot + Perfect Fifth with scorch, no reload), Hierarchy of Needs "Through two rings" as a playstyle; bench 25 of 30, all scorch scenarios hit. Next: Barrow-Dyad after research, then S5 strategy and casts
+- Damage model from general systems (ADR 0017, stages S0–S6 on branch `ground-up-model`): formula, status system (Scorch with burn, Volatile, Jolt, Slow), effect rules, weapon state and play policy; Aegis rows as scenarios on a test bench with one score. Paper probe: 9 of 13 weapons within ±3 %. S0 test bench done (today's core: 16 of 30 scenarios after two import fixes, ratios 5 of 14). S1 core done (new core in `src/engine/core/`, parity test with the old one). S2 burn of scorch done (decay, ticks, in the core). S3 so far: every-Nth-shot trigger (Truth) and playstyle shot sequence (Still Hunt with Cayde's Retribution), S3 closed (special fields as data dropped). S4 so far: Whirling Ovation charge levels as selectable playstyles (UI and build link); Polaris Lance from its parts (shot + Perfect Fifth with scorch, no reload), Hierarchy of Needs "Through two rings" as a playstyle; Barrow-Dyad selectable (bullets with Target Lock, 6 Blighted Seekers per magazine that keep Peacekeepers stacks through the reload); bench 26 of 30, all scorch and parts scenarios hit. Next: a cleanup block, then S5 strategy and casts
 - Coverage triage: sort every missing item into left out (no effect against a boss), a value from the text (under 2 %) or its own block
 
 - Hammer of Sol with Sol Invictus
 - Energy exotics (e.g. Crown of Tempests, Contraverse Hold)
 - Stasis and Strand on the boss: Freeze, Shatter, Threadlings, Unravel, Sever and Suspend with measured damage; then the Verglas Curve catalyst (faster draw after Slow)
 - More aspects (Tempest Strike, Consecration, Crackshot, Shieldburst), artifact perks (Flashover, Heavy Ordnance Regeneration, Hail The Storm, Solar Fulmination) and catalysts (Tessellation, Divinity, Quicksilver Storm)
-- Worldline Zero, Wolfsbane, Praxic Blade and Barrow-Dyad
+- Worldline Zero, Wolfsbane and Praxic Blade
 - Armor set bonuses (e.g. TM Custom, Sage Protector, Legacy's Oath)
 - Banner of War's melee and Bladefury bonus; Ward of Dawn as a Super; Well of Radiance: the caster's weapon damage counts as Super damage, the duration grows with the Super stat
 - Exotics that refill the magazine; 26 catalysts still without a model (e.g. Bastion, Final Warning, Vexcalibur, reload only through a perk)

@@ -86,7 +86,7 @@ Die übrigen 6 scheitern auch auf dem Papier, weil eine Zahl in jeder Quelle feh
 - **Szenarien aus Freitext** der Aegis-Annahmen sind Handarbeit. Klein anfangen (13 Waffen), Zuordnung erst automatisieren, wenn Muster sichtbar sind.
 - **Strategie generisch** ist der schwerste Teil (S5, Opus).
 - **Messstreuung** („average“, Salvation's Grip): solche Szenarien zählen nicht zur Kennzahl, Grund im Szenario.
-- **Offen ohne Quelle:** Dragon's Breath (Pool-Takt „?“), Barrow-Dyad (Seeker-Zahl), Zusatz bei Ager's Scepter.
+- **Offen ohne Quelle:** Dragon's Breath (Pool-Takt „?“), Zusatz bei Ager's Scepter. Barrow-Dyad gelöst (S4 Teil C, 2026-10-31): Es fehlte Target Lock auf den Kugeln, nicht ein Seeker.
 
 ## Doku und Verifikation je Stufe
 
