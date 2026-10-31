@@ -13,8 +13,10 @@ export const Source = z.object({
     "verified", // confirmed by a reliable, current source
     "unverified", // found, but old or secondary source
     "measured", // our own Shooting Range measurement
+    "fitted", // taken from a row of an Aegis measurement (I1); that row is the item's Eichung, no check
     "missing", // still unknown; value is null
   ]),
+  row: z.string().optional(), // id of the Aegis row of a "fitted" value
   note: z.string().optional(),
   // Exact text the value was taken from; Compendium quotes are checked against its snapshot.
   quote: z.string().optional(),

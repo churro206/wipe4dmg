@@ -730,7 +730,10 @@ export function buildWeaponImport(
     name: `${inputs.aegis.source.name}, row ${row.id}`,
     url: inputs.aegis.source.url,
     retrieved: inputs.aegis.source.retrieved,
-    status: "verified",
+    // The value is the item's Eichung: this row no longer counts as a check (I1).
+    status: "fitted",
+    // A row without its catalyst is made from the catalyst row (see "synthetic"): that row is the Eichung.
+    row: row.id.replace(/-without-catalyst$/, ""),
     ...(note ? { note } : {}),
   });
   const sustainedSource = (rowId: string, note?: string): Source => ({
