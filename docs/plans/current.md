@@ -4,11 +4,11 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block: B3 – Regeln im Kern (Opus entwirft das Schema, Sonnet setzt um; eventuell zwei Blöcke)
 
-Bauplan `docs/architecture.md` (zuerst lesen, Abschnitt 6), Plan `docs/plans/ground-up-model.md`, ADR 0018. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers. Vor B3 klären (Rückfrage an den Inhaber): Szenarien aus Aegis Abilities/Testing mit Burn-Schalter jetzt (Rest von B2) oder nach B3.
+Bauplan `docs/architecture.md` (zuerst lesen, Abschnitt 6), Plan `docs/plans/ground-up-model.md`, ADR 0018. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers. Gate: Snapshot `tests/__snapshots__/scenario-bench.md` (Delta-Paare 1 von 3) bleibt unverändert. Szenarien aus Abilities/Testing kommen nach B3, vor B5.
 
 ## Stand
 
-- 2026-10-31: **B2 erledigt** (Details Changelog): `fitted` mit `row`, Generator (151 erzeugt, 32 von Hand), Los FNV-1a, Snapshot `tests/__snapshots__/scenario-bench.md`: **Delta-Paare der Prüfmenge 1 von 3**, Spearman 0,89 über 11 Zeilen. Offen aus B2: Szenarien aus Abilities und Testing (Burn-Schalter „ohne Burn“), Overrides mit anderem Quellnamen als `fitted` markieren (Truth-Einzelrakete); Abweichungen erzeugter Zeilen in `known-inaccuracies`.
+- 2026-10-31: **B2 erledigt** (Details Changelog): `fitted` mit `row`, Generator (151 erzeugt, 32 von Hand), Los FNV-1a, Snapshot `tests/__snapshots__/scenario-bench.md`: **Delta-Paare der Prüfmenge 1 von 3**, Spearman 0,89 über 11 Zeilen. Overrides geprüft (`tests/fittedOverrides.test.ts`), Basis sauber. Offen aus B2: Szenarien aus Abilities und Testing (Burn-Schalter „ohne Burn“), nach B3 und vor B5; Abweichungen erzeugter Zeilen in `known-inaccuracies`.
 - B1 erledigt: ein Kern, Burn in App und Optimizer. Bauplan angenommen (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - Offen ohne Quelle: Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk auf Still Hunt.
 
