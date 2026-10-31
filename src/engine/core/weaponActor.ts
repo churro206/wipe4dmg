@@ -5,7 +5,7 @@
 import type { Weapon } from "../../data/schema";
 import { appliesToWeaponType, type ActiveParts } from "../effectParts";
 import { requireValue } from "../requireValue";
-import type { AbilityCast, SuperWindow } from "../simulate";
+import type { AbilityCast, SuperWindow } from "./types";
 import { MS_PER_SECOND } from "../units";
 
 const MS_PER_MINUTE = 60_000;

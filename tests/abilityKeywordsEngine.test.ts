@@ -85,16 +85,22 @@ describe("abilities apply keywords in the simulation", () => {
       abilities: [
         { ability: ability(withKeywords, "fusion-grenade"), castsMs },
       ],
-    }).damageInstances.filter((d) => d.keywordId === "ignition");
+    }).damageInstances.filter((d) => d.keywordId === "ignition" && d.id !== "burn");
 
+  // Scorch stacks fall after 2.3 s without new ones (burn, ADR 0017 S2): the casts follow each other
+  // 1500 ms apart, after the Ignition cooldown of 1.3 s.
   it("fusion grenades (x40 each) ignite with the third one", () => {
-    expect(ignitions([0, 5000])).toHaveLength(0);
-    expect(ignitions([0, 5000, 10000]).map((d) => d.timeMs)).toEqual([10000]);
+    expect(ignitions([0, 1500])).toHaveLength(0);
+    expect(ignitions([0, 1500, 3000]).map((d) => d.timeMs)).toEqual([3000]);
   });
 
   it("with Ember of Ashes (x60 each) the second one ignites, as in the Aegis measurement", () => {
     const ember = effects.filter((e) => e.id === "ember-of-ashes");
-    expect(ignitions([0, 5000], ember).map((d) => d.timeMs)).toEqual([5000]);
+    expect(ignitions([0, 1500], ember).map((d) => d.timeMs)).toEqual([1500]);
+  });
+
+  it("stacks of grenades that are further apart fall away before the next one", () => {
+    expect(ignitions([0, 5000, 10000])).toHaveLength(0);
   });
 
   it("the ignition of a grenade grows with the grenade stat (Aegis: stat 200 / stat 100)", () => {
@@ -105,9 +111,9 @@ describe("abilities apply keywords in the simulation", () => {
     const ignition = (stat: number) =>
       simulate(weapon, 60, [], buckets, {
         keywords,
-        abilities: [{ ability: fusion, castsMs: [0, 5000, 10000] }],
+        abilities: [{ ability: fusion, castsMs: [0, 1500, 3000] }],
         abilityStats: [{ scaling, value: stat }],
-      }).damageInstances.find((d) => d.keywordId === "ignition")!.damage;
+      }).damageInstances.find((d) => d.keywordId === "ignition" && d.id !== "burn")!.damage;
     const statFactor =
       1 + scaling.damagePerPoint.value! * (scaling.maxStat - scaling.bonusFromStat);
     expect(ignition(200) / ignition(100)).toBeCloseTo(statFactor);
@@ -129,6 +135,8 @@ describe("abilities apply keywords in the simulation", () => {
       abilities: [{ ability: split, castsMs: [0] }],
     }).damageInstances;
     // x120 per cast: exactly one ignition
-    expect(hits.filter((d) => d.keywordId === "ignition")).toHaveLength(1);
+    expect(
+      hits.filter((d) => d.keywordId === "ignition" && d.id !== "burn"),
+    ).toHaveLength(1);
   });
 });

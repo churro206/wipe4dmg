@@ -13,7 +13,7 @@ Median: 1.000
 | Thunderlord, assumes only one reload post-nerf | 101,659 | 101,659 | 1.000 | 1.000 |  |
 | Grand Overture, volleys when available | 144,658 | 144,662 | 1.000 | 1.000 |  |
 | Whisper of the Worm, Whispered Breathing, Sniper's Meditation | 128,747 | 128,750 | 1.000 | 1.000 |  |
-| One Thousand Voices, catalyst, Particle Reconstruction | 87,367 | 86,366 | 0.989 | 0.989 |  |
+| One Thousand Voices, catalyst, Particle Reconstruction | 87,367 | 87,320 | 0.999 | 0.999 |  |
 | Xenophage | 67,645 | 67,645 | 1.000 | 1.000 |  |
 | The Queenbreaker, Rewind Rounds, Combat Sights | 97,261 | 97,261 | 1.000 | 1.000 |  |
 | Blade Barrage, Knock 'Em Down, Limit Break | 24,649 | 24,118 | 0.978 | 0.978 | Limit Break is not modelled |

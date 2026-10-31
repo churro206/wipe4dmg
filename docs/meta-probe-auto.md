@@ -15,8 +15,8 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | The Colony | 49,096 | 47,133 | 0.960 |  |
 | Gathering Storm, Feast of Light x6, Limit Break | 21,772 | 21,331 | 0.980 |  |
 | Stormtrance, Ascending Amplitude, Facet of Courage, Thunderous Retort | 71,745 | 70,462 | 0.982 |  |
-| One Thousand Voices, Particle Reconstruction | 63,705 | 62,684 | 0.984 |  |
 | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | 41,594 | 41,001 | 0.986 |  |
+| One Thousand Voices, Particle Reconstruction | 63,705 | 63,638 | 0.999 |  |
 | Needlestorm, Feast of Light x6, Limit Break | 25,251 | 25,243 | 1.000 |  |
 | Merciless | 54,552 | 54,549 | 1.000 |  |
 | Blade Barrage, Knock 'Em Down, Shards of Galanor, Limit Break | 43,637 | 43,637 | 1.000 |  |
@@ -35,16 +35,16 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Stormtrance, Feast of Light x6, Facet of Courage, Thunderous Retort | 54,444 | 54,914 | 1.009 |  |
 | One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | 120,613 | 121,944 | 1.011 |  |
 | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | 97,543 | 98,923 | 1.014 |  |
-| Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | 32,463 | 32,941 | 1.015 |  |
 | Deterministic Chaos, Target Lock | 137,936 | 140,043 | 1.015 |  |
+| Golden Gun - Marksman, Feast of Light x6, Radiant, Facet of Courage, Limit Break | 32,463 | 33,011 | 1.017 |  |
 
 ## Annahme ohne Schalter
 
 | Aegis-Zeile | Aegis | Modell | relativ | ohne Schalter |
 | --- | ---: | ---: | ---: | --- |
-| Song of Flame | 184,388 | 31,400 | 0.170 | Warlord's Fury; One-Two Punch; Celestial Fire spam |
-| Song of Flame | 162,363 | 31,400 | 0.193 | Warlord's Fury; Saint's Fists; Celestial Fire spam |
-| Song of Flame | 158,760 | 31,400 | 0.198 | Warlord's Fury; Celestial Fire spam |
+| Song of Flame | 184,388 | 31,841 | 0.173 | Warlord's Fury; One-Two Punch; Celestial Fire spam |
+| Song of Flame | 162,363 | 31,841 | 0.196 | Warlord's Fury; Saint's Fists; Celestial Fire spam |
+| Song of Flame | 158,760 | 31,841 | 0.201 | Warlord's Fury; Celestial Fire spam |
 | Divinity | 75,483 | 17,359 | 0.230 | held down; includes jolt; Harsh Refraction |
 | Still Hunt | 133,562 | 37,289 | 0.279 | pre-popped into 6 shot cycle; Incendiary Rifle Rounds; Solar Fulmination; assumes at least 2 orb pickups per mag |
 | Still Hunt | 129,880 | 37,289 | 0.287 | pre-popped into 6 shot cycle; assumes at least 2 orb pickups per mag |
@@ -54,10 +54,10 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Heirloom | 139,286 | 56,885 | 0.408 | 2 charges |
 | Sentinel Shield | 45,727 | 19,122 | 0.418 | aerial lights |
 | Leviathan's Breath | 223,610 | 96,600 | 0.432 | Moebius Quiver; simulated |
-| Burning Maul | 49,559 | 22,006 | 0.444 | heavy attacks; Roaring Flames x3 |
 | Sentinel Shield | 43,019 | 19,122 | 0.445 | grounded spam |
+| Burning Maul | 49,559 | 22,202 | 0.448 | heavy attacks; Roaring Flames x3 |
 | Still Hunt | 81,119 | 37,289 | 0.460 | pre-popped into 6 shot cycle |
-| Song of Flame | 107,344 | 50,420 | 0.470 | Saint's Fists; Celestial Fire spam |
+| Song of Flame | 107,344 | 51,301 | 0.478 | Saint's Fists; Celestial Fire spam |
 | Euphony | 142,542 | 68,125 | 0.478 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
 | Choir of One | 144,867 | 76,675 | 0.529 | hitscan mode; precision |
 | Euphony | 128,701 | 68,125 | 0.529 | starts at 0 stacks; includes Threadlings; Pack Tactics (simplified underestimate of 3 stack start) |
@@ -67,7 +67,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Izanagi's Burden | 56,856 | 32,426 | 0.570 | includes rehone time; hone before rally; Sniper's Meditation (assume stacked) |
 | Legend of Acrius | 129,383 | 75,473 | 0.583 | body; Trench Barrel |
 | New Land Beyond | 198,345 | 116,544 | 0.588 | starts at The Master x0; manual reloads until The Grandmaster |
-| Burning Maul | 89,348 | 55,015 | 0.616 | light attacks; Roaring Flames x3 |
+| Burning Maul | 89,348 | 55,506 | 0.621 | light attacks; Roaring Flames x3 |
 | Duality | 73,569 | 46,616 | 0.634 | 3 body pellet shots into On Black Wings x3 slugs |
 | Hammer of Sol | 51,242 | 32,583 | 0.636 | max distance |
 | Nova Bomb - Cataclysm | 30,171 | 19,261 | 0.638 | Skull of Dire Ahamkara (ownDamage) |
@@ -78,21 +78,21 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Silkstrike | 59,072 | 39,394 | 0.667 | light attack spam |
 | Spectral Blades | 57,656 | 38,465 | 0.667 | light attack spam |
 | Glacial Quake | 113,223 | 76,514 | 0.676 | heavy attacks |
-| Song of Flame | 77,545 | 52,730 | 0.680 | snap spam |
 | Edge of Concurrence | 50,199 | 34,161 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
 | Bladefury | 39,040 | 26,619 | 0.682 | HLLLHLLLLHLLLH; Thread of Continuity |
 | Truth | 119,636 | 81,622 | 0.682 | Prototype Truthseeker |
+| Song of Flame | 77,545 | 53,227 | 0.686 | snap spam |
 | Bastion | 119,327 | 82,294 | 0.690 | Saint's Fury; includes melee time |
-| Song of Flame | 47,106 | 32,555 | 0.691 | snap spam |
-| Burning Maul | 76,665 | 55,015 | 0.718 | heavy attacks; Roaring Flames x3 |
+| Song of Flame | 47,106 | 32,804 | 0.696 | snap spam |
+| Burning Maul | 76,665 | 55,506 | 0.724 | heavy attacks; Roaring Flames x3 |
 | Dragon's Breath | 153,290 | 110,995 | 0.724 | auto-loaded; Composite Propellant x5 |
-| Burning Maul | 30,129 | 22,006 | 0.730 | light attacks; Roaring Flames x3 |
 | Microcosm | 102,579 | 75,121 | 0.732 | Paracausal Imbuement; Harsh Refraction |
+| Burning Maul | 30,129 | 22,202 | 0.737 | Roaring Flames x3 |
+| Burning Maul | 30,129 | 22,202 | 0.737 | light attacks; Roaring Flames x3 |
 | Ergo Sum | 125,168 | 93,245 | 0.745 | caster frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus; Solar Fulmination |
 | Bladefury | 35,493 | 26,619 | 0.750 | HLLLLL; Thread of Continuity |
 | Thundercrash | 48,635 | 37,294 | 0.767 | Conductive Cosmic Needle x3 |
 | Thundercrash | 31,181 | 23,915 | 0.767 | Conductive Cosmic Needle x3 |
-| Burning Maul | 30,129 | 23,161 | 0.769 | Roaring Flames x3 |
 | Dead Messenger | 88,586 | 68,143 | 0.769 | The Fundamentals |
 | Finality's Auger | 82,158 | 63,199 | 0.769 | Linear Fusion Mode |
 | Glacial Quake | 158,575 | 122,933 | 0.775 | heavy attacks; Hail the Storm |
@@ -102,10 +102,10 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Shadowshot: Moebius Quiver | 19,977 | 15,811 | 0.791 | full bow charge; both volleys; assumes no other debuff |
 | The Lament | 217,268 | 178,806 | 0.823 | 2L1H combo; Solar Fulmination |
 | Slayer's Fang | 83,139 | 69,713 | 0.839 | Assault Mag; includes submunitions |
-| Song of Flame | 42,520 | 35,696 | 0.839 | Claws of Ahamkara + Necrotic Grip; snap spam |
-| Song of Flame | 41,460 | 35,696 | 0.861 | Feast of Light x6 + Necrotic Grip; wisp/snap cycling |
+| Song of Flame | 42,520 | 35,978 | 0.846 | Claws of Ahamkara + Necrotic Grip; snap spam |
 | Ergo Sum | 108,087 | 93,245 | 0.863 | vortex frame; Tempered Edge; heavy spam; Transcendent; excludes Transcendence 5% bonus |
 | Needlestorm | 24,214 | 20,926 | 0.864 | Pack Tactics x2 |
+| Song of Flame | 41,460 | 35,978 | 0.868 | Feast of Light x6 + Necrotic Grip; wisp/snap cycling |
 | Tessellation | 154,322 | 138,544 | 0.898 | full grenade uptime; Property: Irreducible; Transcendent but excludes 5%; simulated |
 | The Lament | 198,217 | 178,806 | 0.902 | 2L1H combo; Solar Fulmination |
 | The Lament | 197,074 | 178,806 | 0.907 | 3L1H1R combo; Sword Storm Combo; simulated |
@@ -142,7 +142,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Heartshadow | 103,813 | 104,462 | 1.006 | heavy attacks; Shot in the Dark |
 | The Lament | 176,080 | 178,806 | 1.015 | 3L1H1R combo; Sword Storm Combo |
 | Vexcalibur | 45,160 | 46,572 | 1.031 | projectile |
-| Daybreak | 32,716 | 33,900 | 1.036 | grounded |
+| Daybreak | 32,716 | 34,139 | 1.044 | grounded |
 | The Lament | 165,335 | 178,806 | 1.081 | 4L1H1R combo; Sword Storm Combo |
 | Winter's Wrath | 30,297 | 34,474 | 1.138 | light-heavy cycle; Whisper of Fissures |
 | Bladefury | 38,315 | 45,252 | 1.181 | HLLLHLLLLHLLLLH |

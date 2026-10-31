@@ -1,5 +1,5 @@
 // Burn of scorch (ADR 0017, stage S2): a scorched target takes damage from its stacks; the stacks
-// decay and an ignition ends the burn. Only the core models it; the old simulator stays as it was.
+// decay and an ignition ends the burn.
 
 import { describe, expect, it } from "vitest";
 import rawRows from "../src/data/aegis-abilities.json";
@@ -7,7 +7,7 @@ import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
 import rawKeywords from "../src/data/keywords.json";
 import { AegisAbilityRow, type Weapon } from "../src/data/schema";
-import { simulateCore } from "../src/engine/core/simulateCore";
+import { compareResults } from "../src/engine/analysis";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadKeywords } from "../src/engine/loadKeywords";
 import { loadWeapon } from "../src/engine/loadWeapon";
@@ -40,7 +40,7 @@ const burnOf = (
   selected = effects.slice(0, 0),
   shotLimit = 1,
 ) =>
-  simulateCore(w, PHASE_SECONDS, selected, buckets, { keywords, shotLimit })
+  simulate(w, PHASE_SECONDS, selected, buckets, { keywords, shotLimit })
     .damageInstances.filter((d) => d.id === "burn");
 
 // Compendium, Solar: 2.7 + 0.175 x stacks; the stacks hold 2.3 s, then fall by 25 per second.
@@ -49,7 +49,7 @@ const burnDamage = (stacks: number) => 2.7 + 0.175 * stacks;
 describe("burn of scorch in the core", () => {
   it("ticks after 0.5 s, 0.93 s later, then every 0.56 s, and falls with the decaying stacks", () => {
     const burn = burnOf(withStacks(40));
-    const shotMs = simulateCore(withStacks(40), PHASE_SECONDS, [], buckets, {
+    const shotMs = simulate(withStacks(40), PHASE_SECONDS, [], buckets, {
       keywords,
       shotLimit: 1,
     }).shots[0].timeMs;
@@ -78,11 +78,22 @@ describe("burn of scorch in the core", () => {
     expect(boosted[0].damage / plain[0].damage).toBeGreaterThan(1);
   });
 
-  it("is not part of the old simulator", () => {
-    const old = simulate(withStacks(40), PHASE_SECONDS, [], buckets, {
+  it("is no proc of the keyword in the comparison counters", () => {
+    const result = simulate(withStacks(40), PHASE_SECONDS, [], buckets, {
       keywords,
       shotLimit: 1,
     });
-    expect(old.damageInstances.filter((d) => d.id === "burn")).toEqual([]);
+    expect(result.damageInstances.some((d) => d.id === "burn")).toBe(true);
+    expect(
+      compareResults(result, result).some((row) => row.key === "keyword:ignition"),
+    ).toBe(false);
+  });
+
+  it("comes through the one entry of the simulator", () => {
+    const viaEntry = simulate(withStacks(40), PHASE_SECONDS, [], buckets, {
+      keywords,
+      shotLimit: 1,
+    });
+    expect(viaEntry.damageInstances.filter((d) => d.id === "burn")).toHaveLength(6);
   });
 });

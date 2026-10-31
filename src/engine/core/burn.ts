@@ -7,7 +7,7 @@ import { productOf, type Factors } from "../effectParts";
 import type { CounterState, RunEvent } from "../eventRun";
 import { KEYWORD_EVENT_GROUP } from "../keywordRun";
 import { requireValue } from "../requireValue";
-import type { TimedDamageInstance } from "../simulate";
+import type { TimedDamageInstance } from "./types";
 
 export type Burn = {
   /** Lets the stacks fall that were not refreshed; call before adding stacks. */

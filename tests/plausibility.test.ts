@@ -10,7 +10,6 @@ import { fitArtifact } from "../src/engine/artifacts";
 import { rotationWindows } from "../src/engine/effectWindows";
 import { abilitiesFor } from "../src/engine/providers";
 import { buildSimulation } from "../src/engine/buildSimulation";
-import { simulateCore } from "../src/engine/core/simulateCore";
 import { simulate, type SimulationResult } from "../src/engine/simulate";
 import { effectRelevantTo, neededStatuses } from "../src/engine/weaponInfo";
 import { buckets, gameData, weaponById, weapons } from "../src/ui/data";
@@ -55,6 +54,9 @@ const damageOf = (r: SimulationResult, source: string) =>
     .filter((d) => d.damageSource === source)
     .reduce((s, d) => s + d.damage, 0);
 const fmt = (x: number) => x.toFixed(2);
+// An ignition itself, not the burn ticks of scorch that carry the keyword too (ADR 0017 S2)
+const isIgnition = (d: { id: string; keywordId?: string }) =>
+  d.keywordId === "ignition" && d.id !== "burn";
 
 describe("exotic armor changes its abilities", () => {
   it("Cuirass of the Falling Star makes Thundercrash much stronger", () => {
@@ -361,7 +363,7 @@ describe("exotic armor changes its abilities", () => {
         ...fields,
       };
       const { selected, options } = buildSimulation(build, gameData);
-      return simulateCore(barrow, 30, selected, buckets, options).totalDamage;
+      return simulate(barrow, 30, selected, buckets, options).totalDamage;
     };
     const ratio = total({ ...titan, exoticArmorId: "peacekeepers" }) / total(titan);
     note("Barrow-Dyad mit / ohne Peacekeepers (30 s, neuer Kern)", `×${fmt(ratio)}`, "×1,30 bis ×1,34 (Aegis ×1,32)");
@@ -974,7 +976,7 @@ describe("every Nth shot (2026-10-30, ADR 0017 S3)", () => {
     const plain = polaris(false);
     const ember = polaris(true);
     const fifths = count(plain, (d) => d.id === "nthShot");
-    const ignitions = (r: SimulationResult) => count(r, (d) => d.keywordId === "ignition");
+    const ignitions = (r: SimulationResult) => count(r, isIgnition);
     note(
       "Polaris 30 s: Schüsse / Perfect Fifth / Ignitions ohne, mit Ember",
       `${plain.shots.length} / ${fifths} / ${ignitions(plain)}, ${ignitions(ember)}`,
@@ -1014,7 +1016,7 @@ describe("bows (2026-10-26)", () => {
   const hierarchy = (fields: Partial<Build>) =>
     run({ guardianClass: "hunter", subclass: "solar", catalyst: true, ...fields }, weaponById("hierarchy-of-needs"));
   const ignitionsOf = (r: SimulationResult) =>
-    r.damageInstances.filter((d) => d.keywordId === "ignition").length;
+    r.damageInstances.filter(isIgnition).length;
 
   it("Hierarchy of Needs: Pre-stacked deploys the Guidance Ring with the first arrow, without it the 4th", () => {
     const short = (weaponPreBuilt: boolean) =>
@@ -1080,16 +1082,26 @@ describe("keywords", () => {
         ],
       },
       testWeapon,
-    ).damageInstances.filter((d) => d.keywordId === "ignition").length;
-  it("three Fusion Grenades ignite once, with Ember of Ashes two already do", () => {
-    const three = ignitions([0, 5000, 10000], false);
-    const twoEmber = ignitions([0, 5000], true);
+    ).damageInstances;
+  // Scorch stacks fall after 2.3 s without new ones (burn, ADR 0017 S2). Starfire Protocol gives two
+  // charges at once; the third grenade waits for the energy the weapon hits refill, so its x40 meets
+  // stacks that have fallen away. The unlimited-energy case is in tests/abilityKeywordsEngine.test.ts.
+  it("with Ember of Ashes two Fusion Grenades ignite; the third without it comes after the stacks fell", () => {
+    const castTimes = (hits: ReturnType<typeof ignitions>) => [
+      ...new Set(hits.filter((d) => d.abilityId === "fusion-grenade").map((d) => d.timeMs)),
+    ];
+    const threeHits = ignitions([0, 1500, 3000], false);
+    const three = threeHits.filter(isIgnition).length;
+    const twoEmber = ignitions([0, 1500], true).filter(isIgnition).length;
+    const casts = castTimes(threeHits);
     note(
       "Ignitions: 3 Fusion / 2 Fusion mit Ember",
-      `${three} / ${twoEmber}`,
-      "1 / 1 (x40 bzw. x60 Scorch)",
+      `${three} / ${twoEmber}, Grenade-Treffer bei ${casts.map((ms) => Math.round(ms)).join(" / ")} ms`,
+      "0 / 1: die dritte Grenade kommt mit der Energie nach über 2,3 s (Halten der Stacks), x40 reicht nicht",
     );
-    expect(three).toBe(1);
+    expect(casts).toHaveLength(3);
+    expect(casts[2] - casts[1]).toBeGreaterThan(2300);
+    expect(three).toBe(0);
     expect(twoEmber).toBe(1);
   });
   it("Jolt has a slice of its own in the donut (Spark of Shock and Pulse Grenade)", () => {
@@ -1148,7 +1160,7 @@ describe("ability energy (block 3)", () => {
     const build = {
       guardianClass: "warlock" as const,
       subclass: "solar" as const,
-      abilities: [{ abilityId: "fusion-grenade", castsMs: [0, 5000, 10000] }],
+      abilities: [{ abilityId: "fusion-grenade", castsMs: [0, 1500, 3000] }],
       ...fields,
     };
     return {
@@ -1159,7 +1171,7 @@ describe("ability energy (block 3)", () => {
     const one = grenadeDamage({
       abilities: [{ abilityId: "fusion-grenade", castsMs: [0] }],
     }).total;
-    const three = grenadeDamage({}).total; // the casts at 5 and 10 s have no energy
+    const three = grenadeDamage({}).total; // the casts at 1.5 and 3 s have no energy
     const radiant = [{ effectId: "radiant", provider: "subclass" as const }];
     const starfire = grenadeDamage({ exoticArmorId: "starfire-protocol", selections: radiant });
     const radiantOnly = grenadeDamage({ selections: radiant }).total;
@@ -1359,7 +1371,7 @@ describe("supers take time like in the game", () => {
   it("Golden Gun Marksman: three shots, the ignition comes with the last one", () => {
     const r = superRun("hunter", "solar", "golden-gun-marksman");
     const shots = [...new Set(hits(r))];
-    const ignition = r.damageInstances.find((d) => d.keywordId === "ignition");
+    const ignition = r.damageInstances.find(isIgnition);
     const window = r.superWindows[0];
     note(
       "Golden Gun Marksman: Schüsse, Ignition, Fenster",
@@ -1380,9 +1392,7 @@ describe("supers take time like in the game", () => {
       },
       testWeapon,
     );
-    const ignitions = r.damageInstances.filter(
-      (d) => d.keywordId === "ignition",
-    );
+    const ignitions = r.damageInstances.filter(isIgnition);
     const end = r.superWindows[0].endMs;
     note(
       "Daybreak: Ignitions während der Super",
@@ -1456,7 +1466,7 @@ describe("supers take time like in the game", () => {
     const r = superRun("warlock", "solar", "song-of-flame");
     // the weapon (One Thousand Voices) ignites after the window
     const ignitions = r.damageInstances.filter(
-      (d) => d.keywordId === "ignition" && d.timeMs < r.superWindows[0].endMs,
+      (d) => isIgnition(d) && d.timeMs < r.superWindows[0].endMs,
     );
     const total = damageOf(r, "super");
     const snaps = new Set(hits(r)).size;

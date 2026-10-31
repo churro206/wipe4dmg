@@ -4,7 +4,6 @@
 
 import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
-import { simulateCore } from "../src/engine/core/simulateCore";
 import { playstylesOf } from "../src/engine/playstyle";
 import { simulate } from "../src/engine/simulate";
 import { testWeapon } from "./support/testWeapon";
@@ -43,10 +42,8 @@ const sniper: Weapon = {
   ],
 };
 
-describe.each([
-  ["simulateCore", simulateCore],
-  ["simulate", simulate],
-])("playstyle sequence (%s)", (_, run) => {
+describe("playstyle sequence", () => {
+  const run = simulate;
   const damages = (id: string, options = {}) =>
     run(sniper, 2.5, [], [], { shotLimit: 1, ...options }).damageInstances.filter(
       (d) => d.id === id,

@@ -3,7 +3,6 @@
 
 import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
-import { simulateCore } from "../src/engine/core/simulateCore";
 import { simulate } from "../src/engine/simulate";
 import { testWeapon } from "./support/testWeapon";
 
@@ -31,10 +30,9 @@ const rocket: Weapon = {
   ],
 };
 
-describe.each([
-  ["simulate", simulate],
-  ["simulateCore", simulateCore],
-])("every Nth shot (%s)", (_, run) => {
+describe("every Nth shot", () => {
+  const run = simulate;
+
   it("sets off the instance with the 3rd, 6th, ... shot", () => {
     const result = run(rocket, 6.5);
     const clusterTimes = result.damageInstances

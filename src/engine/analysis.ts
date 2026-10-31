@@ -188,8 +188,10 @@ export function compareResults(
   a: SimulationResult,
   b: SimulationResult,
 ): ComparisonRow[] {
+  // The burn ticks of scorch carry the keyword too, but they are no proc (ADR 0017 S2)
   const procs = (result: SimulationResult, id: KeywordId) =>
-    result.damageInstances.filter((d) => d.keywordId === id).length;
+    result.damageInstances.filter((d) => d.keywordId === id && d.id !== "burn")
+      .length;
   const counters = KeywordId.options
     .map((id): [ComparisonRow["key"], number, number] => [
       `keyword:${id}`,

@@ -2,19 +2,13 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen und Lücken in `docs/known-inaccuracies.md`. Altes Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Nächster Block: B1 – Ein Kern (Sonnet, Aufräum-Block)
+## Nächster Block: B2 – Ehrlicher Prüfstand (Opus plant)
 
-Bauplan `docs/architecture.md` (zuerst lesen), Plan `docs/plans/ground-up-model.md`, ADR 0018. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers.
-
-1. `buildSimulation`, `src/ui/App.tsx`, `optimizer.ts`, `analysis.ts`, `breakdown.ts` auf `simulateCore` umstellen; `simulate()` nur noch als Hilfsfunktionen des Kerns oder entfernen; `tests/coreParity.test.ts` entfernen; doppelte `stacksAt`/`resolveHitStacks` zusammenlegen.
-2. Optimizer-Laufzeit messen (Obergrenze 306 ms, heute 153 ms mit altem Kern).
-3. Gate: Tests, `tsc -b`, Lint, `probe`, `sanity`, Rangfolge-Gate nicht schlechter; `mechanics-baseline` nur gewollt geändert (Liste im Commit); UI-Check lokal.
-4. Abschluss mit „Geeicht / Gelockert / Gestrichen / Unsicher“.
-
-Danach B2 (ehrlicher Prüfstand, Opus plant).
+Bauplan `docs/architecture.md` (zuerst lesen), Plan `docs/plans/ground-up-model.md`, ADR 0018. Branch `ground-up-model`, **kein Merge nach `master`** ohne Ansage des Inhabers. Vor B2 klären (Rückfrage an den Inhaber): Burn aus den Gates ausnehmen (siehe unten, „Offen aus B1“).
 
 ## Stand
 
+- 2026-10-31: **B1 erledigt:** ein Kern (`simulate` in `simulate.ts` ist der Kern, alter Simulator und Paritätstest entfernt), Optimizer 155 ms, 1843 Tests grün. Burn gilt jetzt in App und Optimizer. Offen aus B1: Ability-Gate und Referenz „aegis-with-ignition“ rechnen ohne Burn-Ticks (Aegis' Pakete enthalten nur Ignitions; mit Burn +3 % / +1,5 %), das ist eine Annahme, keine Messung. Drei Fusion Grenades über Starfire Protocol zünden nicht mehr (Stacks verfallen vor der dritten, Energie-Takt).
 - 2026-10-31: Bauplan angenommen (ADR 0018). Messung nur als Prüfung, Items als Dateien (Struktur von Hand, Zahlen per `$`-Verweis), Eichung nur der globalen Parameter θ per Skript, Delta-Paare als Hauptkennzahl. Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - S0–S4 erledigt (2026-10-30/31): Prüfstand 26 von 30 (davon viele Zeilen geeicht, siehe `known-inaccuracies`, „Prüfstand, geeichte Zeilen“), Verhältnisse 11 von 15; Kern parallel zum alten, `buildSimulation` nutzt noch den alten.
 - Offen ohne Quelle (Befund, kein eigener Block): Dragon's Breath (Pool-Takt „?“), Ager's Scepter, Celestial Nighthawk auf Still Hunt. Lord of Wolves trifft (−0,1 / −2,9 %), nicht zerlegt.

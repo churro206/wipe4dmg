@@ -52,13 +52,17 @@ describe("gate: total damage", () => {
       const scenarioWeapon = scenario.withIntrinsicParts
         ? weapon
         : { ...weapon, intrinsicParts: [] };
-      const { totalDamage } = simulate(
+      const { damageInstances } = simulate(
         scenarioWeapon,
         scenario.damagePhaseSeconds,
         byIds(scenario.effectIds),
         buckets,
         { keywords },
       );
+      // The references count shots and ignitions; the burn of scorch (ADR 0017 S2) is not in them.
+      const totalDamage = damageInstances
+        .filter((d) => d.id !== "burn")
+        .reduce((sum, d) => sum + d.damage, 0);
       expect(totalDamage).toBeGreaterThanOrEqual(reference.totalDamageMin);
       expect(totalDamage).toBeLessThanOrEqual(reference.totalDamageMax);
     },

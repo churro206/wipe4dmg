@@ -5,7 +5,6 @@
 
 import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
-import { simulateCore } from "../src/engine/core/simulateCore";
 import { simulate } from "../src/engine/simulate";
 import { testWeapon } from "./support/testWeapon";
 
@@ -79,12 +78,9 @@ describe("weapon setup", () => {
     expect(seekerShots(result)).toEqual([2, 3, 4, 5, 7, 8]);
   });
 
-  it.each([
-    ["simulate", simulate],
-    ["simulateCore", simulateCore],
-  ] as const)("%s: standing at the start, seekers and the catalyst's timing from the 1st shot", (_, run) => {
+  it("standing at the start, seekers and the catalyst's timing from the 1st shot", () => {
     // An Aegis measurement counts no deploying shot (scenario bench)
-    const result = run(ringBow, 6, [], [], { catalyst: true, setupDeployed: true });
+    const result = simulate(ringBow, 6, [], [], { catalyst: true, setupDeployed: true });
     expect(result.shots.map((s) => s.timeMs)).toEqual([
       0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000,
     ]);

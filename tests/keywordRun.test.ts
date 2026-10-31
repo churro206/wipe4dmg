@@ -37,6 +37,13 @@ const weapon = {
   ...testWeapon,
   totalShots: { ...testWeapon.totalShots, value: 5 },
 };
+// Scorch stacks fall after 2.3 s without new ones (burn, ADR 0017 S2), so the ignition tests use shots
+// 1500 ms apart: at 0, 1500, 3000, 4500 and 6000 ms.
+const quick = {
+  ...weapon,
+  fireRateRpm: { ...weapon.fireRateRpm, value: 40 },
+  magazine: { ...weapon.magazine, value: 5 },
+};
 
 /** Effect that applies a keyword with every weapon hit; not game data. */
 const applies = (keywordId: KeywordId, durationMs?: number): Effect => ({
@@ -57,11 +64,19 @@ const applies = (keywordId: KeywordId, durationMs?: number): Effect => ({
 });
 const effect = (id: string) => effects.find((e) => e.id === id)!;
 
-const run = (selected: Effect[], options: SimulationOptions = {}) =>
-  simulate(weapon, 30, selected, buckets, { keywords, ...options });
-const keywordHits = (selected: Effect[], options?: SimulationOptions) =>
-  run(selected, options).damageInstances.filter(
-    (d) => d.damageSource === "keyword",
+const run = (
+  selected: Effect[],
+  options: SimulationOptions = {},
+  used: typeof weapon = weapon,
+) => simulate(used, 30, selected, buckets, { keywords, ...options });
+// Keyword damage without the burn ticks of scorch (tests/burn.test.ts)
+const keywordHits = (
+  selected: Effect[],
+  options?: SimulationOptions,
+  used?: typeof weapon,
+) =>
+  run(selected, options, used).damageInstances.filter(
+    (d) => d.damageSource === "keyword" && d.id !== "burn",
   );
 
 describe("keywords on the target", () => {
@@ -163,9 +178,9 @@ const testAbility = (kind: "grenade" | "melee"): Ability => ({
 
 describe("ignition through scorch stacks", () => {
   it("goes off at x100 scorch, inheriting the bonuses of the weapon hit", () => {
-    // x40 per hit: 0 -> 40, 3000 -> 80, 6000 -> 120 = ignition; 9000 -> 40, 12000 -> 80
-    const plain = keywordHits([stacksOf("ignition", 40)]);
-    expect(plain.map((d) => d.timeMs)).toEqual([6000]);
+    // x40 per hit: 0 -> 40, 1500 -> 80, 3000 -> 120 = ignition; 4500 -> 40, 6000 -> 80
+    const plain = keywordHits([stacksOf("ignition", 40)], undefined, quick);
+    expect(plain.map((d) => d.timeMs)).toEqual([3000]);
     expect(plain[0]).toMatchObject({
       keywordId: "ignition",
       element: "solar",
@@ -175,16 +190,22 @@ describe("ignition through scorch stacks", () => {
       run(selected).damageInstances.find((d) => d.damageSource === "weapon")!
         .damage;
     const surgeFactor = shot([effect("surge-3x")]) / shot([]);
-    const surged = keywordHits([stacksOf("ignition", 40), effect("surge-3x")]);
+    const surged = keywordHits(
+      [stacksOf("ignition", 40), effect("surge-3x")],
+      undefined,
+      quick,
+    );
     expect(surged[0].damage).toBeCloseTo(damageOf("ignition") * surgeFactor);
   });
 
   it("Ember of Ashes adds 50 % to the stacks, rounded up", () => {
-    const hits = keywordHits([
-      stacksOf("ignition", 40),
-      effect("ember-of-ashes"),
-    ]);
-    expect(hits.map((d) => d.timeMs)).toEqual([3000, 9000]);
+    // x60 per hit: 0 -> 60, 1500 -> 120 = ignition; 3000 -> 60, 4500 -> 120 = ignition
+    const hits = keywordHits(
+      [stacksOf("ignition", 40), effect("ember-of-ashes")],
+      undefined,
+      quick,
+    );
+    expect(hits.map((d) => d.timeMs)).toEqual([1500, 4500]);
   });
 
   it("melee buffs do not scale the ignition of a melee hit", () => {
@@ -236,7 +257,7 @@ describe("bolt charge", () => {
 
 describe("keywords of a weapon", () => {
   const scorchWeapon = (bonus?: number) => ({
-    ...weapon,
+    ...quick,
     intrinsicParts: [
       {
         type: "appliesKeyword" as const,
@@ -262,11 +283,11 @@ describe("keywords of a weapon", () => {
     selected: Effect[] = [],
   ) =>
     simulate(w, 30, selected, buckets, { keywords }).damageInstances.filter(
-      (d) => d.keywordId === "ignition",
+      (d) => d.keywordId === "ignition" && d.id !== "burn",
     );
 
   it("an intrinsic part applies scorch with every shot", () => {
-    expect(ignitions(scorchWeapon()).map((d) => d.timeMs)).toEqual([6000]);
+    expect(ignitions(scorchWeapon()).map((d) => d.timeMs)).toEqual([3000]);
   });
 
   it("the weapon's keyword bonus scales its ignitions", () => {
@@ -280,7 +301,7 @@ describe("keywords of a weapon", () => {
       ignitions(scorchWeapon(), [effect("ember-of-ashes")]).map(
         (d) => d.timeMs,
       ),
-    ).toEqual([3000, 9000]);
+    ).toEqual([1500, 4500]);
     expect(
       effectAppliesToWeapon(effect("ember-of-ashes"), scorchWeapon()),
     ).toBe(true);

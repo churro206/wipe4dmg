@@ -1,7 +1,7 @@
-// The core of the ground-up model (ADR 0017, stage S1). Same input and output as simulate(), but the
-// shots are not planned in advance: the weapon actor makes the next shot when the loop handles the
-// previous one, and a shot sets off its hits, counter stacks and damage over time sources as events.
-// Casts, effect windows and periodic damage are still planned in advance (stage S5).
+// The core of the simulator (ADR 0017, ADR 0018 B1): the shots are not planned in advance. The weapon
+// actor makes the next shot when the loop handles the previous one, and a shot sets off its hits,
+// counter stacks and damage over time sources as events. Casts, effect windows and periodic damage are
+// still planned in advance (castEvents.ts, until the strategy stage).
 
 import type {
   Bucket,
@@ -14,17 +14,19 @@ import { KEYWORD_COUNTERS, type Factors } from "../effectParts";
 import { runEvents, type RunEvent } from "../eventRun";
 import { keywordOnHit } from "../keywordRun";
 import { requireValue } from "../requireValue";
+import { bucketFactors } from "../effectParts";
 import {
   abilityHitEvents,
   EVENT_GROUP,
   periodicEvents,
   superWindowsOf,
-  type Shot,
-  type SimulationOptions,
-  type SimulationResult,
-  type TimedDamageInstance,
-} from "../simulate";
-import { bucketFactors } from "../effectParts";
+} from "./castEvents";
+import type {
+  Shot,
+  SimulationOptions,
+  SimulationResult,
+  TimedDamageInstance,
+} from "./types";
 import { withPlaystyle } from "../playstyle";
 import { createBurn } from "./burn";
 import { createContext, type ShotHistory } from "./context";
@@ -36,7 +38,7 @@ const SHOT_GROUP = -1;
 // Guards rounding up against floating point noise, e.g. 10 x 1.5 = 15.000000000000002.
 const ROUNDING_TOLERANCE = 1e-9;
 
-export function simulateCore(
+export function simulate(
   plainWeapon: Weapon,
   damagePhaseSeconds: number,
   effects: Effect[] = [],

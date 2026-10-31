@@ -20,8 +20,8 @@ Erzeugt mit `npm run probe` (`tests/rankingGate.test.ts`). Gruppen nach der Spal
 | Supers | Nova Bomb - Cataclysm, Feast of Light x6, Facet of Courage, Limit Break | Feast of Light x6 | 50.0 | 50.0 | 0.0 |  |
 | Supers | Twilight Arsenal, Feast of Light x6, Facet of Courage, Limit Break | Feast of Light x6 | 50.0 | 50.0 | 0.0 |  |
 | Supers | Chaos Reach, Geomag Stabilizers, Sol Invictus, Thunderous Retort | Sol Invictus | 46.3 | 46.3 | -0.0 |  |
-| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | Ember of Ashes | 11.6 | 14.5 | 2.9 | As without the catalyst: Aegis' Base comes from 8 measured shots with 4 and 8 ignitions, the model fires 5 and 11 over 11 shots. On the 8 measured shots the model's Ember ratio lies +1.4 % off Aegis (tests/scenarioBench.test.ts). |
-| Heavy | One Thousand Voices, Ember of Ashes, Particle Reconstruction | Ember of Ashes | 17.3 | 20.0 | 2.7 | Aegis Sustained multiplies its Base by 11 shots; the Base comes from 4 measured shots with 2 ignitions (without Ember) and 4 (with Ember), so it counts half the shots igniting without Ember. Over 11 real shots the model fires 5 and 11 ignitions. On the 4 measured shots the model's Ember ratio lies +0.6 % off Aegis (tests/scenarioBench.test.ts). |
+| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | Ember of Ashes | 11.6 | 13.3 | 1.6 |  |
 | Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | catalyst | 30.5 | 31.5 | 1.0 |  |
-| Heavy | One Thousand Voices, catalyst, Particle Reconstruction | catalyst | 37.1 | 37.8 | 0.6 |  |
+| Heavy | One Thousand Voices, Ember of Ashes, Particle Reconstruction | Ember of Ashes | 17.3 | 18.2 | 0.9 |  |
 | Heavy | One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | Dawn Chorus | 23.7 | 23.3 | -0.4 |  |
+| Heavy | One Thousand Voices, catalyst, Particle Reconstruction | catalyst | 37.1 | 37.2 | 0.1 |  |

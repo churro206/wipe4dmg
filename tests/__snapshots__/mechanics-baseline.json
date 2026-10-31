@@ -527,14 +527,14 @@
       "600s buffed catalyst": 28811.51
     },
     "hierarchy-of-needs": {
-      "30s plain": 15779.09,
-      "30s buffed": 26565.67,
-      "30s plain catalyst": 21102.3,
-      "30s buffed catalyst": 35527.84,
-      "600s plain": 368761.3,
-      "600s buffed": 620846.52,
-      "600s plain catalyst": 487495.25,
-      "600s buffed catalyst": 820747
+      "30s plain": 16174.64,
+      "30s buffed": 27231.62,
+      "30s plain catalyst": 21276.45,
+      "30s buffed catalyst": 35821.03,
+      "600s plain": 378166.65,
+      "600s buffed": 636681.36,
+      "600s plain catalyst": 491674.85,
+      "600s buffed catalyst": 827783.77
     },
     "ice-breaker": {
       "30s plain": 12234.4,
@@ -729,14 +729,14 @@
       "600s buffed catalyst": 553513.89
     },
     "one-thousand-voices": {
-      "30s plain": 26615.24,
-      "30s buffed": 44809.42,
-      "30s plain catalyst": 36670.39,
-      "30s buffed catalyst": 61738.26,
-      "600s plain": 26615.24,
-      "600s buffed": 44809.42,
-      "600s plain catalyst": 36670.39,
-      "600s buffed catalyst": 61738.26
+      "30s plain": 27019.91,
+      "30s buffed": 45490.73,
+      "30s plain catalyst": 37075.06,
+      "30s buffed catalyst": 62419.57,
+      "600s plain": 27019.91,
+      "600s buffed": 45490.73,
+      "600s plain catalyst": 37075.06,
+      "600s buffed catalyst": 62419.57
     },
     "osteo-striga": {
       "30s plain": 13439.46,
@@ -769,14 +769,14 @@
       "600s buffed catalyst": 64653.44
     },
     "polaris-lance": {
-      "30s plain": 11359.5,
-      "30s buffed": 19124.86,
-      "30s plain catalyst": 11359.5,
-      "30s buffed catalyst": 19124.86,
-      "600s plain": 239961.8,
-      "600s buffed": 403999.69,
-      "600s plain catalyst": 239961.8,
-      "600s buffed catalyst": 403999.69
+      "30s plain": 11755.5,
+      "30s buffed": 19791.57,
+      "30s plain catalyst": 11755.5,
+      "30s buffed catalyst": 19791.57,
+      "600s plain": 247881.8,
+      "600s buffed": 417333.81,
+      "600s plain catalyst": 247881.8,
+      "600s buffed catalyst": 417333.81
     },
     "prometheus-lens": {
       "30s plain": 14083.6,
@@ -1219,10 +1219,10 @@
       "600s buffed catalyst": 232357.18
     },
     "two-tailed-fox": {
-      "30s plain": 31774.82,
-      "30s buffed": 53496.08,
-      "600s plain": 31774.82,
-      "600s buffed": 53496.08
+      "30s plain": 32033.57,
+      "30s buffed": 53931.71,
+      "600s plain": 32033.57,
+      "600s buffed": 53931.71
     },
     "verglas-curve": {
       "30s plain": 5426.1,
@@ -1357,332 +1357,332 @@
   },
   "abilities": {
     "thundercrash": {
-      "stat 100": 38566.09,
-      "stat 200": 43127.33
+      "stat 100": 38881.54,
+      "stat 200": 43442.78
     },
     "arc-staff": {
-      "stat 100": 37512.61,
-      "stat 200": 41599.78
+      "stat 100": 37828.06,
+      "stat 200": 41915.23
     },
     "gathering-storm": {
-      "stat 100": 36132.61,
-      "stat 200": 38327.13
+      "stat 100": 36448.06,
+      "stat 200": 38642.58
     },
     "storms-edge": {
-      "stat 100": 37843.91,
-      "stat 200": 42080.17
+      "stat 100": 38159.36,
+      "stat 200": 42395.62
     },
     "fists-of-havoc": {
-      "stat 100": 43222.17,
-      "stat 200": 49878.65
+      "stat 100": 43537.62,
+      "stat 200": 50194.1
     },
     "chaos-reach": {
-      "stat 100": 39334.78,
-      "stat 200": 44099.13
+      "stat 100": 39650.23,
+      "stat 200": 44414.58
     },
     "stormtrance": {
-      "stat 100": 40285.65,
-      "stat 200": 45212.26
+      "stat 100": 40601.1,
+      "stat 200": 45527.71
     },
     "blade-barrage": {
-      "stat 100": 37764.78,
-      "stat 200": 41965.44
+      "stat 100": 38080.23,
+      "stat 200": 42280.89
     },
     "golden-gun-deadshot": {
-      "stat 100": 33781.3,
-      "stat 200": 36189.39
+      "stat 100": 34096.75,
+      "stat 200": 36504.84
     },
     "golden-gun-marksman": {
-      "stat 100": 36217.54,
-      "stat 200": 39721.93
+      "stat 100": 36532.99,
+      "stat 200": 40037.38
     },
     "burning-maul": {
-      "stat 100": 41189.57,
-      "stat 200": 45357.83
+      "stat 100": 41514.69,
+      "stat 200": 45687.3
     },
     "hammer-of-sol": {
-      "stat 100": 37673.48,
-      "stat 200": 41833.04
+      "stat 100": 37988.93,
+      "stat 200": 42148.49
     },
     "daybreak": {
-      "stat 100": 38589.13,
-      "stat 200": 43160.74
+      "stat 100": 38904.58,
+      "stat 200": 43476.19
     },
     "song-of-flame": {
-      "stat 100": 45978,
-      "stat 200": 53474.1
+      "stat 100": 46253.95,
+      "stat 200": 53761.93
     },
     "well-of-radiance": {
-      "stat 100": 28430,
-      "stat 200": 28430
+      "stat 100": 28745.45,
+      "stat 200": 28745.45
     },
     "spectral-blades": {
-      "stat 100": 40433.48,
-      "stat 200": 45835.04
+      "stat 100": 40748.93,
+      "stat 200": 46150.49
     },
     "shadowshot-deadfall": {
-      "stat 100": 30505.04,
-      "stat 200": 31438.81
+      "stat 100": 30820.49,
+      "stat 200": 31754.26
     },
     "shadowshot-moebius-quiver": {
-      "stat 100": 33364.11,
-      "stat 200": 35584.47
+      "stat 100": 33679.56,
+      "stat 200": 35899.92
     },
     "sentinel-shield": {
-      "stat 100": 38574.35,
-      "stat 200": 43139.3
+      "stat 100": 38889.8,
+      "stat 200": 43454.75
     },
     "twilight-arsenal": {
-      "stat 100": 38168.46,
-      "stat 200": 42550.77
+      "stat 100": 38483.91,
+      "stat 200": 42866.22
     },
     "nova-bomb-cataclysm": {
-      "stat 100": 37719.13,
-      "stat 200": 41899.24
+      "stat 100": 38034.58,
+      "stat 200": 42214.69
     },
     "nova-bomb-vortex": {
-      "stat 100": 37654.78,
-      "stat 200": 41760.87
+      "stat 100": 37970.23,
+      "stat 200": 42076.32
     },
     "nova-warp": {
-      "stat 100": 44826.09,
-      "stat 200": 52075.48
+      "stat 100": 45141.54,
+      "stat 200": 52390.93
     },
     "silence-and-squall": {
-      "stat 100": 39920.44,
-      "stat 200": 42945.22
+      "stat 100": 40235.88,
+      "stat 200": 43260.67
     },
     "winters-wrath": {
-      "stat 100": 47932.17,
-      "stat 200": 51708.26
+      "stat 100": 48247.62,
+      "stat 200": 52023.71
     },
     "glacial-quake": {
-      "stat 100": 73220,
-      "stat 200": 87287
+      "stat 100": 73535.45,
+      "stat 200": 87602.45
     },
     "silkstrike": {
-      "stat 100": 40723.48,
-      "stat 200": 46255.54
+      "stat 100": 41038.93,
+      "stat 200": 46570.99
     },
     "bladefury": {
-      "stat 100": 42551.47,
-      "stat 200": 48906.13
+      "stat 100": 42866.92,
+      "stat 200": 49221.58
     },
     "needlestorm": {
-      "stat 100": 38349.57,
-      "stat 200": 42813.37
+      "stat 100": 38665.01,
+      "stat 200": 43128.82
     },
     "arcbolt-grenade": {
-      "stat 100": 29054.35,
-      "stat 200": 29460.17
+      "stat 100": 29369.8,
+      "stat 200": 29775.62
     },
     "flashbang-grenade": {
-      "stat 100": 29246.52,
-      "stat 200": 29777.26
+      "stat 100": 29561.97,
+      "stat 200": 30092.71
     },
     "flux-grenade": {
-      "stat 100": 30213.48,
-      "stat 200": 31372.74
+      "stat 100": 30528.93,
+      "stat 200": 31688.19
     },
     "lightning-grenade": {
-      "stat 100": 29965.22,
-      "stat 200": 30963.11
+      "stat 100": 30280.67,
+      "stat 200": 31278.56
     },
     "pulse-grenade": {
-      "stat 100": 29866.52,
-      "stat 200": 30800.26
+      "stat 100": 30181.97,
+      "stat 200": 31115.71
     },
     "skip-grenade": {
-      "stat 100": 28902.61,
-      "stat 200": 29209.8
+      "stat 100": 29218.06,
+      "stat 200": 29525.25
     },
     "storm-grenade": {
-      "stat 100": 29320,
-      "stat 200": 29898.5
+      "stat 100": 29635.45,
+      "stat 200": 30213.95
     },
     "firebolt-grenade": {
-      "stat 100": 29756.2,
-      "stat 200": 30039.72
+      "stat 100": 30031.35,
+      "stat 200": 30322.93
     },
     "fusion-grenade": {
-      "stat 100": 30103.26,
-      "stat 200": 30612.38
+      "stat 100": 30390.66,
+      "stat 200": 30912.39
     },
     "incendiary-grenade": {
-      "stat 100": 30473.26,
-      "stat 200": 31222.88
+      "stat 100": 30749.21,
+      "stat 200": 31515.99
     },
     "solar-grenade": {
-      "stat 100": 30586.96,
-      "stat 200": 31410.48
+      "stat 100": 30857.03,
+      "stat 200": 31687.93
     },
     "swarm-grenade": {
-      "stat 100": 30003.19,
-      "stat 200": 30447.26
+      "stat 100": 30293.21,
+      "stat 200": 30751.03
     },
     "thermite-grenade": {
-      "stat 100": 31146.13,
-      "stat 200": 32196.96
+      "stat 100": 31433.53,
+      "stat 200": 32496.97
     },
     "tripmine-grenade": {
-      "stat 100": 30216.3,
-      "stat 200": 30798.9
+      "stat 100": 30503.7,
+      "stat 200": 31098.91
     },
     "axion-bolt-grenade": {
-      "stat 100": 29056.52,
-      "stat 200": 29463.76
+      "stat 100": 29371.97,
+      "stat 200": 29779.21
     },
     "magnetic-grenade": {
-      "stat 100": 29440.44,
-      "stat 200": 30097.22
+      "stat 100": 29755.89,
+      "stat 200": 30412.67
     },
     "scatter-grenade": {
-      "stat 100": 29379.83,
-      "stat 200": 29997.23
+      "stat 100": 29695.28,
+      "stat 200": 30312.68
     },
     "suppressor-grenade": {
-      "stat 100": 29448.7,
-      "stat 200": 30110.85
+      "stat 100": 29764.15,
+      "stat 200": 30426.3
     },
     "void-spike-grenade": {
-      "stat 100": 30138.26,
-      "stat 200": 31248.63
+      "stat 100": 30453.71,
+      "stat 200": 31564.08
     },
     "void-wall-grenade": {
-      "stat 100": 31638.26,
-      "stat 200": 33723.63
+      "stat 100": 31953.71,
+      "stat 200": 34039.08
     },
     "vortex-grenade": {
-      "stat 100": 29551.74,
-      "stat 200": 30280.87
+      "stat 100": 29867.19,
+      "stat 200": 30596.32
     },
     "glacier-grenade": {
-      "stat 100": 29711.63,
-      "stat 200": 30222.94
+      "stat 100": 30027.08,
+      "stat 200": 30538.39
     },
     "shatter-grenade": {
-      "stat 100": 31126.96,
-      "stat 200": 32331.83
+      "stat 100": 31442.41,
+      "stat 200": 32647.28
     },
     "shackle-grenade": {
-      "stat 100": 28903.91,
-      "stat 200": 29211.96
+      "stat 100": 29219.36,
+      "stat 200": 29527.41
     },
     "slicewire-grenade": {
-      "stat 100": 29554.78,
-      "stat 200": 30285.89
+      "stat 100": 29870.23,
+      "stat 200": 30601.34
     },
     "threadling-grenade": {
-      "stat 100": 29294.78,
-      "stat 200": 29856.89
+      "stat 100": 29610.23,
+      "stat 200": 30172.34
     },
     "disorienting-blow": {
-      "stat 100": 29495.22,
-      "stat 200": 29814.78
+      "stat 100": 29810.67,
+      "stat 200": 30130.23
     },
     "ballistic-slam": {
-      "stat 100": 28792.17,
-      "stat 200": 28900.83
+      "stat 100": 29107.62,
+      "stat 200": 29216.28
     },
     "seismic-strike": {
-      "stat 100": 29893.04,
-      "stat 200": 30331.96
+      "stat 100": 30208.49,
+      "stat 200": 30647.41
     },
     "thunderclap": {
-      "stat 100": 29834.35,
-      "stat 200": 30255.65
+      "stat 100": 30149.8,
+      "stat 200": 30571.1
     },
     "ball-lightning": {
-      "stat 100": 28628.7,
-      "stat 200": 28688.3
+      "stat 100": 28944.15,
+      "stat 200": 29003.75
     },
     "knife-trick": {
-      "stat 100": 30106.96,
-      "stat 200": 30226.96
+      "stat 100": 30382.91,
+      "stat 200": 30502.91
     },
     "lightweight-knife": {
-      "stat 100": 28837.83,
-      "stat 200": 28960.17
+      "stat 100": 29153.28,
+      "stat 200": 29275.62
     },
     "proximity-explosive-knife": {
-      "stat 100": 28965.65,
-      "stat 200": 29126.35
+      "stat 100": 29281.1,
+      "stat 200": 29441.8
     },
     "weighted-throwing-knife": {
-      "stat 100": 29000.87,
-      "stat 200": 29172.13
+      "stat 100": 29316.32,
+      "stat 200": 29487.58
     },
     "hammer-strike": {
-      "stat 100": 30924.35,
-      "stat 200": 31365.65
+      "stat 100": 31211.75,
+      "stat 200": 31653.05
     },
     "throwing-hammer": {
-      "stat 100": 28993.91,
-      "stat 200": 29163.09
+      "stat 100": 29309.36,
+      "stat 200": 29478.54
     },
     "celestial-fire": {
-      "stat 100": 29857.97,
-      "stat 200": 29932.9
+      "stat 100": 30140.12,
+      "stat 200": 30215.05
     },
     "incinerator-snap": {
-      "stat 100": 29573.91,
-      "stat 200": 29699.56
+      "stat 100": 29889.36,
+      "stat 200": 30015.01
     },
     "phantom-surge": {
-      "stat 100": 29024.35,
-      "stat 200": 29202.65
+      "stat 100": 29339.8,
+      "stat 200": 29518.1
     },
     "snare-bomb": {
-      "stat 100": 28661.76,
-      "stat 200": 28730.57
+      "stat 100": 28977.21,
+      "stat 200": 29046.02
     },
     "shield-bash": {
-      "stat 100": 29893.04,
-      "stat 200": 30331.96
+      "stat 100": 30208.49,
+      "stat 200": 30647.41
     },
     "shield-throw": {
-      "stat 100": 28664.78,
-      "stat 200": 28735.22
+      "stat 100": 28980.23,
+      "stat 200": 29050.67
     },
     "pocket-singularity": {
-      "stat 100": 28949.57,
-      "stat 200": 29077.26
+      "stat 100": 29265.02,
+      "stat 200": 29392.71
     },
     "withering-blade": {
-      "stat 100": 28917.61,
-      "stat 200": 29006.74
+      "stat 100": 29233.06,
+      "stat 200": 29322.19
     },
     "shiver-strike": {
-      "stat 100": 28911.3,
-      "stat 200": 28990.44
+      "stat 100": 29226.75,
+      "stat 200": 29305.89
     },
     "penumbral-blast": {
-      "stat 100": 28968.26,
-      "stat 200": 29018.26
+      "stat 100": 29283.71,
+      "stat 200": 29333.71
     },
     "threaded-spike": {
-      "stat 100": 29140.87,
-      "stat 200": 29354.13
+      "stat 100": 29456.32,
+      "stat 200": 29669.58
     },
     "frenzied-blade": {
-      "stat 100": 28942.17,
-      "stat 200": 29095.83
+      "stat 100": 29257.62,
+      "stat 200": 29411.28
     },
     "arcane-needle": {
-      "stat 100": 28883.48,
-      "stat 200": 29019.52
+      "stat 100": 29198.93,
+      "stat 200": 29334.97
     },
     "hailfire-spike": {
-      "stat 100": 30606.96,
-      "stat 200": 31768.7
+      "stat 100": 30922.41,
+      "stat 200": 32084.15
     },
     "electrified-snare": {
-      "stat 100": 29678.7,
-      "stat 200": 30477.83
+      "stat 100": 29994.15,
+      "stat 200": 30793.28
     },
     "freezing-singularity": {
-      "stat 100": 29680.87,
-      "stat 200": 30233.48
+      "stat 100": 29996.32,
+      "stat 200": 30548.93
     }
   },
   "exoticArmorOnOneThousandVoices": {

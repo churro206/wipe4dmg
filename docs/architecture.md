@@ -206,7 +206,7 @@ simulate(build, facts, playstyle, T) -> Ledger
   Ergebnis <- Summen über den Ledger: gesamt, je Quelle, je Bucket, als Zeitreihe
 ```
 
-Heute: `src/engine/core/simulateCore.ts`, `weaponActor.ts`, `context.ts`, `burn.ts`, `formula.ts`. Casts, Fenster und periodischer Schaden sind dort noch vorab geplant; das bleibt bis zur Strategie-Stufe.
+Heute: `src/engine/simulate.ts` (Einstieg), `core/simulateCore.ts`, `weaponActor.ts`, `context.ts`, `burn.ts`, `formula.ts`, `types.ts`, `castEvents.ts`; der alte Simulator ist seit B1 entfernt. Casts, Fenster und periodischer Schaden sind dort noch vorab geplant; das bleibt bis zur Strategie-Stufe.
 
 ## 8 Automaten (Abb. 6, 7)
 

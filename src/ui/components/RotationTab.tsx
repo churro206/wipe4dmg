@@ -73,7 +73,7 @@ export function RotationTab({
         shotsMs={result.shots.map((s) => s.timeMs)}
         procRows={keywords.flatMap((keyword) => {
           const timesMs = result.damageInstances
-            .filter((d) => d.keywordId === keyword.id)
+            .filter((d) => d.keywordId === keyword.id && d.id !== "burn")
             .map((d) => d.timeMs);
           return timesMs.length === 0
             ? []

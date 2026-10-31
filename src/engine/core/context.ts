@@ -29,7 +29,7 @@ import type {
   SimulationOptions,
   SuperWindow,
   TimedDamageInstance,
-} from "../simulate";
+} from "./types";
 import { weaponStatPart } from "../weaponStats";
 import { MS_PER_SECOND } from "../units";
 
@@ -230,7 +230,10 @@ export function createContext(
 
   const statParts = abilityStatParts(options.abilityStats ?? [], buckets);
 
-  // Keyword damage (ADR 0015): see simulate.ts for the rules; the core keeps them unchanged.
+  // Keyword damage (ADR 0015): parts for keyword damage apply, for an ability keyword also parts for
+// all abilities at once. Ignition inherits the bonuses of the hit that applied the scorch, in the
+// element of the keyword; melee buffs do not count ("Melee Damage Buffs do not scale Ignition nor
+// Scorch damage", Compendium), so a melee source counts like keyword damage.
   const weaponKeywordBonus = (keyword: Keyword, source: TimedDamageInstance) =>
     source.damageSource === "weapon"
       ? (weapon.keywordBonuses ?? [])

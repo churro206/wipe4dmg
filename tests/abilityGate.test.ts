@@ -65,6 +65,9 @@ const abilities = loadAbilities(
   AbilityComponents.array().parse(rawAbilityComponents),
 );
 const CAST_GAP_MS = 5000; // further apart than every keyword cooldown
+// Scorch stacks fall after 2.3 s without new ones (burn, ADR 0017 S2): casts of an Ignition package
+// follow each other within that hold time, and after the Ignition cooldown of 1.3 s.
+const SCORCH_CAST_GAP_MS = 1500;
 // A package with keyword damage taken out must give back the measurement. 2.5 %: a super row takes
 // out the plain Ignition row (1553), but Aegis' ignitions had Radiant like the shots ("Ignition
 // damage can be increased ... if the initial Scorch source had a damage increase", Compendium).
@@ -92,25 +95,32 @@ function perUse(ability: Ability, stat: number): number {
     (k) => k.abilityId === ability.id && k.bakedInPackage,
   );
   const uses = baked[0]?.bakedInPackage?.uses ?? 1;
+  const gapMs = baked.some((k) => k.keywordId === "ignition")
+    ? SCORCH_CAST_GAP_MS
+    : CAST_GAP_MS;
   const result = simulate(
     weapon,
-    LONG_DAMAGE_PHASE_SECONDS + (uses * CAST_GAP_MS) / 1000,
+    LONG_DAMAGE_PHASE_SECONDS + (uses * gapMs) / 1000,
     measured,
     buckets,
     {
       abilities: [
         {
           ability,
-          castsMs: Array.from({ length: uses }, (_, i) => i * CAST_GAP_MS),
+          castsMs: Array.from({ length: uses }, (_, i) => i * gapMs),
         },
       ],
       abilityStats: [{ scaling, value: stat }],
       keywords,
     },
   );
+  // The burn of scorch is no part of Aegis' package (it holds the ignitions, ADR 0015 U5): the core
+  // adds it since ADR 0017 S2, so it stays out of this comparison (+3 % on two packages if counted).
   const total = result.damageInstances
     .filter(
-      (d) => d.abilityId === ability.id || d.keywordId !== undefined,
+      (d) =>
+        d.id !== "burn" &&
+        (d.abilityId === ability.id || d.keywordId !== undefined),
     )
     .reduce((sum, d) => sum + d.damage, 0);
   return total / uses;

@@ -6,7 +6,6 @@
 import { z } from "zod";
 import type { Build } from "../../src/data/schema";
 import { buildSimulation } from "../../src/engine/buildSimulation";
-import { simulateCore } from "../../src/engine/core/simulateCore";
 import { simulate } from "../../src/engine/simulate";
 import { buckets, effects, exoticArmor, gameData, weapons } from "../../src/ui/data";
 
@@ -103,7 +102,7 @@ export type BenchRow = {
 
 export function runBench(scenarios: Scenario[]): BenchRow[] {
   const rows = scenarios.map((scenario) => {
-    const model = modelTotal(scenario, simulateCore);
+    const model = modelTotal(scenario);
     return {
       scenario,
       measured: measured(scenario),

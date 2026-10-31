@@ -3,7 +3,6 @@
 
 import { describe, expect, it } from "vitest";
 import type { Effect, MultiplierPart, SourcedNumber, Weapon } from "../src/data/schema";
-import { simulateCore } from "../src/engine/core/simulateCore";
 import { simulate } from "../src/engine/simulate";
 import { buckets } from "../src/ui/data";
 import { testWeapon } from "./support/testWeapon";
@@ -62,7 +61,7 @@ describe("hitStacks", () => {
 
 // S4 part C (ADR 0017): the hits of a part that every Nth shot sets off count as hits too, e.g. the
 // Blighted Seekers of Barrow-Dyad that fill the reload ("overwriting regular shots", Compendium).
-describe("hitStacks with every-Nth-shot parts (simulateCore)", () => {
+describe("hitStacks with every-Nth-shot parts", () => {
   // 60 rpm, magazine 2, reload 2 s: shots at 0, 1, 4 and 5 s; every 2nd shot a seeker 1.5 s later.
   const seekerWeapon: Weapon = {
     ...testWeapon,
@@ -82,7 +81,7 @@ describe("hitStacks with every-Nth-shot parts (simulateCore)", () => {
     ],
   };
   const run = () =>
-    simulateCore(
+    simulate(
       seekerWeapon,
       5.5,
       [effect({ maxStacks: sourced(10), refreshMs: sourced(2000), bossFactor: sourced(1) })],
