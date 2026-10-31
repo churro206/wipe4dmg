@@ -5,14 +5,12 @@
 
 import type {
   Bucket,
-  CounterId,
   Effect,
   KeywordId,
   Weapon,
 } from "../../data/schema";
 import { KEYWORD_COUNTERS, type Factors } from "../effectParts";
 import { runEvents, type RunEvent } from "../eventRun";
-import { keywordOnHit } from "../keywordRun";
 import { requireValue } from "../requireValue";
 import { bucketFactors } from "../effectParts";
 import {
@@ -28,15 +26,13 @@ import type {
   TimedDamageInstance,
 } from "./types";
 import { withPlaystyle } from "../playstyle";
-import { createBurn } from "./burn";
 import { createContext, type ShotHistory } from "./context";
 import { damageOf } from "./formula";
+import { createStatusContainer } from "./status";
 import { createWeaponActor, type PlannedShot } from "./weaponActor";
 
 // A shot comes before every other event of its time: the hits it sets off see the shot history.
 const SHOT_GROUP = -1;
-// Guards rounding up against floating point noise, e.g. 10 x 1.5 = 15.000000000000002.
-const ROUNDING_TOLERANCE = 1e-9;
 
 export function simulate(
   plainWeapon: Weapon,
@@ -145,20 +141,17 @@ export function simulate(
       : [],
   );
 
-  // Burn of the counter's stacks, from the keyword that is set off by it (ADR 0017, stage S2).
-  const burns = new Map(
-    (options.keywords ?? []).flatMap((keyword) => {
-      const burn = createBurn(
-        keyword,
-        context.keywordMultiplierAt,
-        isInPhase,
-      );
-      return keyword.trigger.type === "counter" && burn
-        ? [[keyword.trigger.counterId, burn] as const]
-        : [];
-    }),
-  );
-  const burnOf = (counterId: CounterId) => burns.get(counterId);
+  // Statuses on the target and the burn of their stacks (status container, ADR 0018 B3a).
+  const statusContainer = createStatusContainer({
+    keywords: options.keywords ?? [],
+    keywordPartsAt: (timeMs) => [
+      ...context.weaponKeywordParts,
+      ...partsAt(timeMs).keywordParts,
+    ],
+    multiplierAt: context.keywordMultiplierAt,
+    stackFactorAt: counterFactorAt,
+    isInPhase,
+  });
   /** The weapon as source of scorch that its own parts apply; burn inherits its bonuses. */
   const scorchSource = (timeMs: number): TimedDamageInstance => ({
     id: "scorch",
@@ -215,29 +208,18 @@ export function simulate(
           timeMs,
           group: EVENT_GROUP.threshold,
           handle: (target, emit, later) => {
-            const added = Math.ceil(
-              stacks * counterFactorAt(part.counterId, timeMs) -
-                ROUNDING_TOLERANCE,
-            );
-            const counter = target.counters.get(part.counterId as CounterId) ?? {
-              stacks: 0,
-              blockedUntilMs: -Infinity,
-            };
-            target.counters.set(part.counterId as CounterId, counter);
-            if (timeMs < counter.blockedUntilMs) return;
-            const burning = burnOf(part.counterId);
-            burning?.decay(counter, timeMs);
-            counter.stacks += added;
             const reached = thresholds.find(
-              (t) =>
-                t.part.counterId === part.counterId &&
-                counter.stacks >= t.threshold,
+              (t) => t.part.counterId === part.counterId,
             );
-            if (!reached) {
-              burning?.applied(counter, timeMs, scorchSource(timeMs), later);
-              return;
-            }
-            burning?.reset(counter);
+            const outcome = statusContainer.addStacks(target, part.counterId, {
+              stacks,
+              timeMs,
+              threshold: reached?.threshold ?? Number.POSITIVE_INFINITY,
+              cooldownMs: reached?.cooldownMs ?? 0,
+              source: scorchSource(timeMs),
+              schedule: later,
+            });
+            if (outcome !== "threshold" || !reached) return;
             const keywordId = (Object.keys(KEYWORD_COUNTERS) as KeywordId[]).find(
               (id) => KEYWORD_COUNTERS[id] === reached.part.counterId,
             );
@@ -255,8 +237,6 @@ export function simulate(
               weaponType: weapon.weaponType,
               factors,
             });
-            counter.stacks = 0;
-            counter.blockedUntilMs = timeMs + reached.cooldownMs;
           },
         } satisfies RunEvent;
       }).filter((event) => isInPhase(event.timeMs)),
@@ -373,23 +353,7 @@ export function simulate(
       );
     }
   }
-  const damageInstances = runEvents(
-    events,
-    keywordOnHit({
-      keywords: options.keywords ?? [],
-      keywordPartsAt: (timeMs) => [
-        ...context.weaponKeywordParts,
-        ...partsAt(timeMs).keywordParts,
-      ],
-      multiplierAt: context.keywordMultiplierAt,
-      stackFactorAt: counterFactorAt,
-      isInPhase,
-      burn: (keyword) =>
-        keyword.trigger.type === "counter"
-          ? burnOf(keyword.trigger.counterId)
-          : undefined,
-    }),
-  );
+  const damageInstances = runEvents(events, statusContainer.onHit);
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;

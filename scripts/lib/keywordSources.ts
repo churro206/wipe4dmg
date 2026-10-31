@@ -212,7 +212,7 @@ const TICK_NAMES: Record<KeywordId, string> = {
 };
 
 /**
- * Triggers of a keyword in one use of a super, as in the event run (keywordRun.ts). Its hits from
+ * Triggers of a keyword in one use of a super, as in the event run (core/status.ts). Its hits from
  * super-timings.json add stacks to a counter (Ignition) or damage taken (Jolt, Volatile: the wipe
  * spread evenly over the hits, the applying hit only if the keyword says so); past the threshold it
  * goes off and resets. During the cooldown no stacks land and a keyword removed on trigger is not

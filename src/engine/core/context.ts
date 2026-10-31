@@ -4,12 +4,12 @@
 
 import type {
   Bucket,
-  CounterId,
   Effect,
   Element,
   Keyword,
   KeywordId,
   MultiplierPart,
+  TargetStatusId,
   Weapon,
   AppliesKeywordPart,
   DamageSource,
@@ -220,9 +220,9 @@ export function createContext(
       ...(holdDraw !== 1 ? { holdDraw } : {}),
     };
   };
-  const counterFactorAt = (counterId: CounterId, timeMs: number) =>
+  const counterFactorAt = (status: TargetStatusId, timeMs: number) =>
     partsAt(timeMs, included)
-      .counterModifierParts.filter((part) => part.counterId === counterId)
+      .counterModifierParts.filter((part) => part.counterId === status)
       .reduce(
         (product, part) => product * requireValue(part.factor, "factor"),
         1,

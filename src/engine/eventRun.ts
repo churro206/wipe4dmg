@@ -7,34 +7,57 @@
 // hit is queued and handled at its own time. The optional onHit handler sees every hit in time
 // order and may queue further events, e.g. the explosion of Volatile.
 
-import type { CounterId, KeywordId } from "../data/schema";
+import type { TargetStatusId } from "../data/schema";
 import type { TimedDamageInstance } from "./simulate";
 
-export type KeywordState = {
-  activeUntilMs: number; // -Infinity if not applied
-  damageTakenSinceTrigger: number;
-  cooldownUntilMs: number;
-};
-
-export type CounterState = {
+/**
+ * The state of one status on the target (status container, core/status.ts). A status uses the fields
+ * of its kind: stacks with a threshold (scorch), a debuff that goes off by damage taken (jolt,
+ * volatile, unravel) or stacks on the player (bolt charge).
+ */
+export type StatusState = {
+  // Stacks: the number, the end of the cooldown after the threshold, and the burn of the stacks
+  // (time of the last application, the hit that applied it, the ticks running, and a number that
+  // ends them at a reset)
   stacks: number;
   blockedUntilMs: number;
-  // Burn of the stacks (core/burn.ts): time of the last application, the hit that applied it, the
-  // ticks running and a number that ends them at a reset.
   appliedMs?: number;
   burnSource?: TimedDamageInstance;
   burning?: boolean;
   burnGeneration?: number;
+  // Debuff: the end of the application (-Infinity if not applied), damage since the last trigger
+  activeUntilMs: number;
+  damageTakenSinceTrigger: number;
+  cooldownUntilMs: number;
+  // Stacks on the player, e.g. bolt charge; kept here so every hit sees one state
+  playerStacks: number;
 };
 
 export type TargetState = {
-  counters: Map<CounterId, CounterState>;
+  statuses: Map<TargetStatusId, StatusState>;
   // End time of the last tick of each active damage over time source, per part id.
   activeSourcesUntilMs: Map<string, number[]>;
-  keywords: Map<KeywordId, KeywordState>;
-  // Stacks on the player, e.g. bolt charge; kept here so every hit sees one state.
-  playerStacks: Map<KeywordId, number>;
 };
+
+/** The state of a status on the target; a status nobody applied yet is empty. */
+export function statusState(
+  target: TargetState,
+  id: TargetStatusId,
+): StatusState {
+  let state = target.statuses.get(id);
+  if (!state) {
+    state = {
+      stacks: 0,
+      blockedUntilMs: -Infinity,
+      activeUntilMs: -Infinity,
+      damageTakenSinceTrigger: 0,
+      cooldownUntilMs: -Infinity,
+      playerStacks: 0,
+    };
+    target.statuses.set(id, state);
+  }
+  return state;
+}
 
 export type Emit = (instance: TimedDamageInstance) => void;
 
@@ -68,10 +91,8 @@ export function runEvents(
   onHit?: OnHit,
 ): TimedDamageInstance[] {
   const target: TargetState = {
-    counters: new Map(),
+    statuses: new Map(),
     activeSourcesUntilMs: new Map(),
-    keywords: new Map(),
-    playerStacks: new Map(),
   };
   const hits: TimedDamageInstance[] = [];
   let seq = 0;

@@ -1,7 +1,7 @@
 // Event run (ADR 0015, point 2): all damage sources pass one target state in time order.
 
 import { describe, expect, it } from "vitest";
-import { runEvents, type RunEvent } from "../src/engine/eventRun";
+import { runEvents, statusState, type RunEvent } from "../src/engine/eventRun";
 import type { TimedDamageInstance } from "../src/engine/simulate";
 
 const hit = (id: string, timeMs: number): TimedDamageInstance => ({
@@ -60,7 +60,7 @@ describe("runEvents", () => {
       timeMs: 0,
       group: 0,
       handle: (target) => {
-        target.counters.set("scorch", { stacks: 5, blockedUntilMs: 0 });
+        statusState(target, "scorch").stacks = 5;
       },
     };
     let seenStacks = 0;
@@ -68,7 +68,7 @@ describe("runEvents", () => {
       timeMs: 10,
       group: 3,
       handle: (target) => {
-        seenStacks = target.counters.get("scorch")?.stacks ?? 0;
+        seenStacks = statusState(target, "scorch").stacks;
       },
     };
     runEvents([read, addStack]);

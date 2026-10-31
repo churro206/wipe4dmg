@@ -84,7 +84,7 @@ describe("KEYWORD_COUNTERS", () => {
   it("names the counter of every keyword that goes off by a counter", () => {
     const fromData = Object.fromEntries(
       data.flatMap((k) =>
-        k.trigger.type === "counter" ? [[k.id, k.trigger.counterId]] : [],
+        k.trigger.type === "counter" ? [[k.id, k.status]] : [],
       ),
     );
     expect(KEYWORD_COUNTERS).toEqual(fromData);

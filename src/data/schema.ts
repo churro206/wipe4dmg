@@ -182,6 +182,20 @@ export type DamageSource = z.infer<typeof DamageSource>;
 export const AbilityKind = z.enum(["super", "grenade", "melee", "classAbility"]);
 export type AbilityKind = z.infer<typeof AbilityKind>;
 
+/**
+ * Statuses on the target (the status container, architecture sections 6 and 8): one state machine
+ * with its own values per status (status definitions, from keywords.json).
+ */
+export const TargetStatusId = z.enum([
+  "scorch", // stacks up to a threshold, then ignition; burns meanwhile
+  "volatile",
+  "jolt",
+  "unravel",
+  "boltCharge", // stacks on the player, discharged by a hit
+  "weaken", // debuff: a multiplier in the debuff bucket while it lasts
+]);
+export type TargetStatusId = z.infer<typeof TargetStatusId>;
+
 /** Keywords with damage of their own that the engine models (ADR 0015, point 5). */
 export const KeywordId = z.enum([
   "ignition",
@@ -194,10 +208,9 @@ export type KeywordId = z.infer<typeof KeywordId>;
 
 /** What sets a keyword off: stacks of a counter, damage the target takes, or player stacks. */
 export const KeywordTrigger = z.discriminatedUnion("type", [
-  // e.g. ignition at x100 scorch
+  // e.g. ignition at x100 scorch: the stacks are those of the keyword's own status
   z.object({
     type: z.literal("counter"),
-    counterId: CounterId,
     threshold: SourcedNumber,
   }),
   // e.g. jolt after the target took 115 damage; whether the hit that applies it counts
@@ -238,6 +251,7 @@ export type CounterBurn = z.infer<typeof CounterBurn>;
 /** A keyword as written in keywords.json; the damage comes from its Aegis row when loading. */
 export const KeywordData = z.object({
   id: KeywordId,
+  status: TargetStatusId, // the status on the target that holds its state, e.g. scorch for ignition
   name: z.string(),
   element: Element,
   compendium: z.object({ tab: z.string(), entry: z.string() }), // source of the quotes
@@ -555,20 +569,6 @@ export type EffectPart = z.infer<typeof EffectPart>;
 /** A number in a rule: today a SourcedNumber; in B4 also a `$` reference. */
 export const RuleValue = SourcedNumber;
 export type RuleValue = z.infer<typeof RuleValue>;
-
-/**
- * Statuses on the target (the status container, architecture sections 6 and 8): one state machine
- * with its own values per status (status definitions, from keywords.json).
- */
-export const TargetStatusId = z.enum([
-  "scorch", // stacks up to a threshold, then ignition; burns meanwhile
-  "volatile",
-  "jolt",
-  "unravel",
-  "boltCharge", // stacks on the player, discharged by a hit
-  "weaken", // debuff: a multiplier in the debuff bucket while it lasts
-]);
-export type TargetStatusId = z.infer<typeof TargetStatusId>;
 
 /** Which hits or shots a trigger matches; omitted fields match all. Same meaning as in MultiplierPart. */
 export const HitFilter = z.object({

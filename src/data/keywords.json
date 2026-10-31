@@ -1,6 +1,7 @@
 [
   {
     "id": "ignition",
+    "status": "scorch",
     "name": "Ignition",
     "element": "solar",
     "compendium": {
@@ -10,7 +11,6 @@
     "aegisRowId": "miscellaneous-ignition",
     "trigger": {
       "type": "counter",
-      "counterId": "scorch",
       "threshold": {
         "value": 100,
         "source": {
@@ -111,6 +111,7 @@
   },
   {
     "id": "jolt",
+    "status": "jolt",
     "name": "Jolt",
     "element": "arc",
     "compendium": {
@@ -158,6 +159,7 @@
   },
   {
     "id": "volatile",
+    "status": "volatile",
     "name": "Volatile",
     "element": "void",
     "compendium": {
@@ -205,6 +207,7 @@
   },
   {
     "id": "unravel",
+    "status": "unravel",
     "name": "Unravel",
     "element": "strand",
     "compendium": {
@@ -252,6 +255,7 @@
   },
   {
     "id": "boltCharge",
+    "status": "boltCharge",
     "name": "Bolt Charge",
     "element": "arc",
     "compendium": {
