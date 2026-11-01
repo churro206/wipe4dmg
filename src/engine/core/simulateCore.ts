@@ -61,6 +61,8 @@ export function simulate(
     options,
     superWindows,
     history,
+    // The rules come after the context and need it; they are asked only once the loop runs
+    (timeMs) => ruleEngine.buffPartsAt(weapon.id, timeMs),
   );
   const { catalyst, damageSource, multiplierAt, counterFactorAt, partsAt } =
     context;

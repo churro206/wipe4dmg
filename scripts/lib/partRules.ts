@@ -5,10 +5,12 @@
 // and deploy (Guidance Ring) is a counter and a mode (setupRules).
 
 import type {
+  BuffDefinition,
   Condition,
   DamageInstance,
   Rule,
   SourcedNumber,
+  WeaponOption,
 } from "../../src/data/schema.ts";
 
 const sameNumber = (value: number | null, from: SourcedNumber): SourcedNumber => ({
@@ -116,6 +118,48 @@ export function setupRules(setup: SetupRuleInput): Rule[] {
         ]
       : []),
   ];
+}
+
+/**
+ * The window of a catalyst option ("for 15 seconds, the timer starts after firing"): the first shot
+ * grants a buff of the window's length that holds the option's factor. The buff has the id of the
+ * option, which tells the engine not to count the option for the whole phase as well. A counter lets
+ * only the first shot start it; the buff is active while t < end, like every buff.
+ */
+export function catalystWindowRules(
+  option: WeaponOption,
+  windowMs: SourcedNumber,
+): { buff: BuffDefinition; rules: Rule[] } {
+  const started = `${option.id}-started`;
+  return {
+    buff: {
+      id: option.id,
+      name: option.name,
+      modifiers: [
+        {
+          type: "multiplier",
+          bucketId: option.bucketId,
+          multiplier: option.factor,
+          damageSources: ["weapon"],
+        },
+      ],
+      durationMs: windowMs,
+    },
+    rules: [
+      {
+        id: `${option.id}-window`,
+        on: { on: "shot" },
+        if: [
+          { type: "hasItem", id: "catalyst" },
+          { type: "counter", id: started, op: "<", value: sameNumber(1, windowMs) },
+        ],
+        do: [
+          { type: "addStacks", counter: started },
+          { type: "grantBuff", buff: option.id },
+        ],
+      },
+    ],
+  };
 }
 
 /** The rate of a playstyle: a stat modifier from the start of the phase on, only in that playstyle. */

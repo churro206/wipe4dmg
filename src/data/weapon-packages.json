@@ -20215,17 +20215,6 @@
         "name": "Reaper's Tithe x4",
         "kind": "catalyst",
         "bucketId": "weaponPerk",
-        "windowSeconds": {
-          "value": 15,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-          }
-        },
         "factor": {
           "value": 1.4,
           "source": {
@@ -20246,6 +20235,41 @@
       "description": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
       "effect": "damage"
     },
+    "buffs": [
+      {
+        "id": "reaper-s-tithe-x4",
+        "name": "Reaper's Tithe x4",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.4,
+              "source": {
+                "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-20",
+                "status": "fitted",
+                "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
+                "note": "Single hit 7955 / 5682 (base row rocket-launcher-truth-average-prototype-truthseeker)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 15000,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
+            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+          }
+        }
+      }
+    ],
     "rules": [
       {
         "id": "shot",
@@ -20316,6 +20340,33 @@
               }
             }
           }
+        ]
+      },
+      {
+        "id": "reaper-s-tithe-x4-window",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "reaper-s-tithe-x4-started",
+            "op": "<",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-20",
+                "status": "fitted",
+                "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
+                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "addStacks", "counter": "reaper-s-tithe-x4-started" },
+          { "type": "grantBuff", "buff": "reaper-s-tithe-x4" }
         ]
       }
     ]

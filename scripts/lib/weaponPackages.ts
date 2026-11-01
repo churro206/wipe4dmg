@@ -30,6 +30,7 @@ import type {
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
 import {
+  catalystWindowRules,
   type PartPlaystyle,
   partRules,
   playstyleRateRule,
@@ -1084,6 +1085,8 @@ export function buildWeaponImport(
 
     // Options: rows that add only catalyst, perk or mod assumptions to the base row.
     const options: WeaponOption[] = [];
+    // The options that count only for a window from the first shot (a buff with rules, not a factor)
+    const windowsMs = new Map<string, SourcedNumber>();
     for (const row of rows) {
       if (row === base) continue;
       const classes = classesOf.get(row)!;
@@ -1173,20 +1176,18 @@ export function buildWeaponImport(
         kind === "catalyst" && override?.catalystWindowSeconds
           ? override.catalystWindowSeconds
           : null;
-      if (window !== null) notes.push(`Fenster ${window} s ab dem ersten Shot (Override)`);
+      if (window !== null) {
+        notes.push(`Fenster ${window} s ab dem ersten Shot (Override)`);
+        windowsMs.set(id, {
+          value: window * 1000,
+          source: aegisSource(row, `Derived (override): ${override!.reason}`),
+        });
+      }
       options.push({
         id,
         name,
         kind,
         bucketId: OPTION_BUCKET,
-        ...(window !== null
-          ? {
-              windowSeconds: {
-                value: window,
-                source: aegisSource(row, `Derived (override): ${override!.reason}`),
-              },
-            }
-          : {}),
         factor: {
           value: Number(factor.toFixed(4)),
           source: aegisSource(
@@ -2272,6 +2273,12 @@ export function buildWeaponImport(
         : {}),
     };
     if (playstyleList.length > 0) weapon.playstyles = playstyleList;
+    // The window of a catalyst option: a buff from the first shot (catalystWindowRules)
+    const windows = options.flatMap((option) => {
+      const windowMs = windowsMs.get(option.id);
+      return windowMs ? [catalystWindowRules(option, windowMs)] : [];
+    });
+    if (windows.length > 0) weapon.buffs = windows.map(({ buff }) => buff);
     // The parts are set off by rules (architecture section 6): one `spawn` per part on every shot
     weapon.rules = [
       ...weapon.damageInstances.flatMap((part) => partRules(part, partPlaystyles[part.id])),
@@ -2285,6 +2292,7 @@ export function buildWeaponImport(
             ]
           : [],
       ),
+      ...windows.flatMap(({ rules }) => rules),
       // A setup the shots build and deploy: a counter and a mode (the hits of the setup are above)
       ...(setupRule
         ? setupRules({

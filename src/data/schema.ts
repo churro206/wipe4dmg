@@ -320,7 +320,9 @@ export type IntrinsicPart = z.infer<typeof IntrinsicPart>;
 /**
  * A selectable catalyst, perk or mod of an imported weapon (ADR 0013, point 8): a factor on the
  * weapon's damage for the whole damage phase. Duration and condition from the Compendium tell
- * where that is too generous.
+ * where that is too generous. A catalyst with a window (single cases by override, e.g. Truth's
+ * Reaper's Tithe: 15 s from the first shot) has a buff of the weapon with the id of the option; the
+ * engine then counts the factor in that buff only (Weapon.buffs, rules of the weapon).
  */
 export const WeaponOption = z.object({
   id: z.string(),
@@ -330,9 +332,6 @@ export const WeaponOption = z.object({
   bucketId: z.string(), // bucket of the factor, e.g. "weaponPerk"
   durationSeconds: z.number().positive().nullable(), // null: none found or permanent
   condition: z.string().nullable(), // text from the Compendium, e.g. "simultaneously killed enemies"
-  // Only hits within this time after the weapon's first shot get the factor (single cases by
-  // override, e.g. Truth's Reaper's Tithe: 15 s); omitted: the whole damage phase
-  windowSeconds: SourcedNumber.optional(),
 });
 export type WeaponOption = z.infer<typeof WeaponOption>;
 

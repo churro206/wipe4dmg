@@ -116,7 +116,11 @@ describe("Truth (expected from the hand table of 2026-10-20)", () => {
   // Clarity: "for 15 seconds … Timer only starts after firing" (override, 2026-10-24).
   it("limits Reaper's Tithe x4 to 15 s from the first rocket", () => {
     const tithe = truth.options![0];
-    expect(value(tithe.windowSeconds!)).toBe(15);
+    expect(tithe).not.toHaveProperty("windowSeconds");
+    const buff = truth.buffs!.find((b) => b.id === tithe.id)!;
+    expect(value(buff.durationMs!)).toBe(15_000);
+    expect(value(buff.modifiers[0].multiplier)).toBeCloseTo(1.4, 3);
+    expect(truth.rules!.some((r) => r.id === `${tithe.id}-window`)).toBe(true);
     const buckets = loadBuckets(rawBuckets);
     const long = {
       ...truth,

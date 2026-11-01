@@ -31,7 +31,6 @@ import type {
   TimedDamageInstance,
 } from "./types";
 import { weaponStatPart } from "../weaponStats";
-import { MS_PER_SECOND } from "../units";
 
 const ABILITY_DAMAGE_SOURCES: DamageSource[] = ["grenade", "melee", "super"];
 
@@ -52,6 +51,8 @@ export function createContext(
   options: SimulationOptions,
   superWindows: SuperWindow[],
   history: ShotHistory,
+  // The multiplier parts of the weapon's active buffs (rule engine, asked once the loop runs)
+  buffPartsAt: (timeMs: number) => MultiplierPart[] = () => [],
 ) {
   const catalyst = options.catalyst ?? false;
   const damageSource: DamageSource = "weapon";
@@ -113,35 +114,24 @@ export function createContext(
   // catalyst switch applies the catalyst options as multipliers in their bucket.
   const included = weapon.includedEffectIds ?? [];
   const bucketIds = new Set(buckets.map((bucket) => bucket.id));
+  // An option with a buff of its own (its window, rules of the weapon) counts as that buff only.
+  const buffIds = new Set((weapon.buffs ?? []).map((buff) => buff.id));
   const optionParts = (weapon.options ?? [])
-    .filter((option) => option.kind === "catalyst" && catalyst)
-    .map((option) => {
+    .filter(
+      (option) =>
+        option.kind === "catalyst" && catalyst && !buffIds.has(option.id),
+    )
+    .map((option): MultiplierPart => {
       if (!bucketIds.has(option.bucketId)) {
         throw new Error(`Unknown bucket "${option.bucketId}"`);
       }
-      const part: MultiplierPart = {
+      return {
         type: "multiplier",
         bucketId: option.bucketId,
         multiplier: option.factor,
         damageSources: [damageSource],
       };
-      return {
-        part,
-        windowMs: option.windowSeconds
-          ? requireValue(option.windowSeconds, "windowSeconds") * MS_PER_SECOND
-          : null,
-      };
     });
-  // Options with a window count only from the first shot of the weapon on
-  const optionPartsAt = (timeMs: number) =>
-    optionParts
-      .filter(
-        ({ windowMs }) =>
-          windowMs === null ||
-          history.shots.length === 0 ||
-          timeMs <= history.shots[0].timeMs + windowMs,
-      )
-      .map(({ part }) => part);
 
   // Damage factor of the held draw for the shot that makes a hit at timeMs
   const holdFactorAt = (timeMs: number) => {
@@ -206,7 +196,8 @@ export function createContext(
           ...partsAt(timeMs, included).multiplierParts.map((part) =>
             resolveHitStacks(part, timeMs),
           ),
-          ...optionPartsAt(timeMs),
+          ...optionParts,
+          ...buffPartsAt(timeMs),
           ...(statPart ? [statPart] : []),
         ],
         buckets,
