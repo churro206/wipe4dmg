@@ -39,6 +39,19 @@ const withoutNote = (s: string) => s.replace(/\(.*\)/, "");
 /** Id of a generated scenario; the Aegis row ids are unique, so are these. */
 export const generatedId = (row: { id: string }) => `gen-${row.id}`;
 
+/**
+ * The playstyle of the weapon that a word of Aegis names (B6): the label of an entry is the Aegis word.
+ * The first entry is the plain shot, the default: it needs no playstyle in the build (`plain`).
+ */
+export function playstyleNamed(
+  weapon: Pick<Weapon, "playstyles"> | undefined,
+  name: string,
+): { id: string; plain: boolean } | undefined {
+  const list = weapon?.playstyles ?? [];
+  const index = list.findIndex((p) => norm(p.label) === norm(name));
+  return index < 0 ? undefined : { id: list[index].id, plain: index === 0 };
+}
+
 export function generateScenarios(
   rows: AegisWeaponRow[],
   data: GenData,
@@ -83,16 +96,25 @@ export function generateScenarios(
     );
     const catalystPerks = new Set((weapon.catalyst?.name ?? "").split(/,\s*/).map(norm));
 
+    let playstyled = false;
     for (const assumption of row.assumptions) {
       const name = assumptionName(assumption);
       const key = norm(name);
       const effectId = effectByName.get(norm(withoutNote(assumption))) ?? effectByName.get(key);
       const armor = armorByName.get(key);
       const stacked = intrinsicArmor.get(norm(assumption.replace(/\s+x\d+$/, "")));
+      const playstyle = playstyleNamed(weapon, name);
       if (key === "catalyst" || catalystOptions.has(key) || catalystPerks.has(key)) {
         build.catalyst = true;
       } else if (intrinsics.has(key)) continue;
-      else if (effectId) effectIds.push(effectId);
+      else if (playstyle) {
+        // One build plays one playstyle; a second word of that kind has no switch.
+        if (playstyled) unmapped.push(assumption);
+        else {
+          playstyled = true;
+          if (!playstyle.plain) build.playstyle = playstyle.id;
+        }
+      } else if (effectId) effectIds.push(effectId);
       else if (armor) {
         build.exoticArmorId = armor.id;
         // Damage of its own or an effect without value is not modelled (ADR 0014).
@@ -150,7 +172,10 @@ export type TotalGenData = {
 export type MissingTotalSwitch = { row: AegisTotalRow; unmapped: string[] };
 export type SkippedTotal = { row: AegisTotalRow; reason: string };
 
-type MappedAssumptions = Pick<Scenario["build"], "catalyst" | "exoticArmorId" | "exoticPreBuilt"> & {
+type MappedAssumptions = Pick<
+  Scenario["build"],
+  "catalyst" | "exoticArmorId" | "exoticPreBuilt" | "playstyle"
+> & {
   effectIds: string[];
   unmapped: string[];
 };
@@ -197,9 +222,11 @@ function assumptionMapper(
       ...(weapon?.catalyst?.name ?? "").split(/,\s*/).map(norm),
       ...(weapon ? catalystBuffs(weapon) : []).map((b) => norm(b.name)),
     ]);
+    let playstyled = false;
     for (const assumption of assumptions) {
       const name = assumptionName(assumption);
       const key = norm(name);
+      const playstyle = playstyleNamed(weapon, name);
       // "Roaring Flames x3" is the effect with 3 stacks; without the stack count in the model it is
       // no switch, unless the item plays by its own plan (see `execution`).
       const effectId =
@@ -209,7 +236,14 @@ function assumptionMapper(
       if (key === "catalyst" || catalystOptions.has(key) || catalystPerks.has(key)) {
         mapped.catalyst = true;
       } else if (intrinsics.has(key)) continue;
-      else if (effectId) mapped.effectIds.push(effectId);
+      else if (playstyle) {
+        // A word that names a playstyle of the item (B6); one build plays one.
+        if (playstyled) mapped.unmapped.push(assumption);
+        else {
+          playstyled = true;
+          if (!playstyle.plain) mapped.playstyle = playstyle.id;
+        }
+      } else if (effectId) mapped.effectIds.push(effectId);
       else if (armor) {
         mapped.exoticArmorId = armor.id;
         // Damage of its own or an effect without value is not modelled (ADR 0014).

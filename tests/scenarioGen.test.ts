@@ -93,6 +93,61 @@ describe("scenario generator", () => {
     ]);
   });
 
+  it("maps a word that names a playstyle of the weapon to that playstyle (B6)", () => {
+    const bow = {
+      id: "bow",
+      name: "Bow",
+      intrinsics: [],
+      playstyles: [
+        { id: "uncharged", label: "uncharged" },
+        { id: "one-third", label: "1/3 charge" },
+        { id: "full", label: "fully charged" },
+      ],
+    } as unknown as Weapon;
+    const { scenarios, missing } = generateScenarios(
+      [
+        row("u", "Bow", ["uncharged"]),
+        row("t", "Bow", ["average", "1/3 charge"]),
+        row("f", "Bow", ["Fully  Charged", "Ember of Ashes"]),
+        row("h", "Bow", ["heavy attacks"]),
+        row("two", "Bow", ["1/3 charge", "fully charged"]),
+      ],
+      { ...data, weapons: [bow] },
+      new Set(),
+    );
+    // the plain shot (first entry) is the default and needs no playstyle in the build
+    expect(scenarios.map((s) => [s.aegisRow, s.build.playstyle])).toEqual([
+      ["u", undefined],
+      ["t", "one-third"],
+      ["f", "full"],
+      ["h", undefined],
+    ]);
+    // one build plays one playstyle: the second word has no switch
+    expect(missing.map((m) => [m.row.id, m.unmapped])).toEqual([["two", ["fully charged"]]]);
+  });
+
+  it("maps a playstyle word of the tab Sustained, which stays a missing switch without a match", () => {
+    const bow = {
+      id: "bow",
+      name: "Bow",
+      intrinsics: [],
+      playstyles: [
+        { id: "uncharged", label: "uncharged" },
+        { id: "full", label: "fully charged" },
+      ],
+    } as unknown as Weapon;
+    const { scenarios, missing } = generateTotalScenarios(
+      [
+        totalRow("s", "sustained", "Bow", ["fully charged"]),
+        totalRow("m", "sustained", "Bow", ["2 charges"]),
+      ],
+      { ...totalData, weapons: [bow] },
+      new Set(),
+    );
+    expect(scenarios.map((s) => [s.aegisRow, s.build.playstyle])).toEqual([["s", "full"]]);
+    expect(missing.map((m) => [m.row.id, m.unmapped])).toEqual([["m", ["2 charges"]]]);
+  });
+
   it("leaves out rows of other items and rows a scenario by hand covers", () => {
     const { scenarios, skipped } = generateScenarios(
       [row("h", "Truth", []), row("l", "Adaptive frame", ["average"])],
