@@ -79,6 +79,8 @@ Zu beachten: Gleichstände wie heute (Schuss vor Treffern; Hierarchy: Schuss gen
 7. **Hierarchy of Needs:** Setup-Regeln (Zähler, Mode) von Hand, Seeker als Ausdruck (Quantum mit Ring − ohne Ring, ÷ Compendium „releases 3 Seekers“), Catalyst-Takt `$quantum[...cata].rpm`, Spielweisen bleiben.
 8. **Abschluss:** Bauplan 5.2 und 13 endgültig (Status rechnet der Import, nicht in der Datei; `$theta` als Verweis erst, wenn ein Item ihn braucht), CLAUDE.md-Regel „Aegis vor Quantum (bis B4)“ durch die Entscheidung ersetzen, Roadmap, Changelog. Kennzahlen: Delta-Paare (vorher 1 von 3), Abdeckung je Gruppe. Gate B4 wie oben, dazu Golden Polaris grün.
 
+**B4 Stand (2026-11-01):** B4a und B4b erledigt, Kennzahlen im Changelog (Schritt 8). Truth lädt jetzt ohne Argent Ordnance nach (Reload-Teil des Perks fehlt, `known-inaccuracies.md`).
+
 ### Aufräum-Block nach B4 (Sonnet)
 
 Was B1–B4 hinterlassen: tote Pfade im Import, doppelte Typen, Dateien über 1000 Zeilen, die beim Arbeiten stören.

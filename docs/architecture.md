@@ -93,63 +93,62 @@ Es gibt genau eine Rückkopplung: Kennzahlen → Eichung → θ. Keine Kante fü
 | Messungen | Szenarien aus Aegis-Zeilen: Build, Spielweise, Messwert, Zeilen-ID | Szenario-Generator | Prüfstand, Eichung |
 | Spielweise | Policy und Annahmen je Build oder Szenario: Precision-Anteil, Ladestufe, Rotation, Buffs vom Team | Oberfläche, Szenario | Kern (Policy) |
 
-### 5.2 Item (Entwurf, endgültig in B4)
+### 5.2 Item (endgültig seit B4, 2026-11-01)
 
-Gespeichert wird JSON mit Zod-Schema wie alle Data Files (ADR 0002); die Beispiele unten sind in YAML-Schreibweise der Lesbarkeit halber.
+Eine Datei je Item, JSON mit Zod-Schema wie alle Data Files (ADR 0002): `src/data/items/weapons/<id>.json`, Dateiname = `id`. Schema `WeaponItem` in `src/data/schema.ts` (Abschnitt „Items“), Auflösung in `scripts/lib/items/` (`refs.ts` Grammatik, `weaponItem.ts`, `loadItems.ts`). Bisher nur `kind: "exoticWeapon"`; weitere Arten kommen mit ihrer Kategorie (B6).
 
 ```ts
-type Ref = string;                       // "$quantum.reload", "$aegis[<row>].tick(\"Perfect Fifth\")", "$theta.ignitionCooldownMs"
-type Value = Ref | Sourced<number>;      // ein Wert ohne Verweis braucht source und status
+type ItemValue = ItemRef | { expr: string; note: string } | SourcedNumber;  // Verweis, Ausdruck oder Literal mit Quelle
 
-interface Item {
-  id: string;                            // kebab-case, Glossary-Name
-  kind: "exoticWeapon" | "legendaryWeapon" | "exoticArmor" | "classItemPerk" | "aspect"
-      | "fragment" | "mod" | "artifactPerk" | "buff" | "grenade" | "melee" | "classAbility" | "super";
-  text?: { source: "clarity" | "compendium" | "court"; entry: string; hash: string };
-  status: "ok" | "review";              // review: Quelltext hat sich geändert (I5)
-  frame?: { rpm: Value; magazine: Value; reserves?: Value; reload: Value; chargeMs?: Value; ammo: "primary" | "special" | "heavy" };
-  parts?: Record<string, { damage: Value; precision?: Value; delivery: "impact" | "splash" | "dot"; element?: string }>;
-  rules?: Rule[];
-  playstyles?: { id: string; label: string; policy: Record<string, Value | string> }[];
+interface WeaponItem {
+  id: string;                    // kebab-case, Id der Waffe
+  kind: "exoticWeapon";
+  name: string;                  // Name im Manifest
+  texts: { source: "clarity" | "compendium"; entry: string; hash: string }[];  // FNV-1a des Textes (I5)
+  parts: Record<string, { name: string; damage: ItemValue; precision?: boolean; delivery: "impact" | "splash" | "dot" }>;
+  // sonst Weapon-Felder mit ItemValue statt SourcedNumber: chargeTimeMs, fireRateRpm, magazine,
+  // totalShots, reloadTimeMs, catalyst, buffs, rules, playstyles
 }
-
-interface Rule { on: Trigger; if?: Condition[]; do: Action[]; cooldownMs?: Value }
 ```
+
+- **Status rechnet der Import, nicht die Datei:** Er folgt aus dem Verweis (5.3). Hat sich ein Text geändert (Hash), rechnet das Item weiter und erscheint als Review (`Review:`-Zeile von `build:weapons`, Spalte in `docs/weapon-import.md`); ein Verweis, der nicht auflöst, ist ein Fehler.
+- **Vom Import, nie aus der Datei:** `code`, `manifestHash`, `gameVersion`, `weaponType`, `element`, `ammo`, `intrinsics` (Manifest, `weapon-codes.json`), `damageInstances` (aus `parts`: ein Treffer je Teil, Zeit und Anzahl setzt die `spawn`-Regel), `reloadDurationIncluded` (Rally, K1), `scale` je Teil (aus der Quelle).
+- **Bericht:** Basiszeile ist die Aegis-Zeile eines Teils, sonst die Zeile, die ein Paket bekäme (`pickBaseRow`); eine Zeile mit genau einer Zusatzannahme, die einen Katalysator-Buff des Items nennt, zählt als Option (`catalystBuffs`); die übrigen behalten ihren Grund.
+- **`$theta` als Verweis** erst, wenn ein Item ihn braucht; θ wirkt heute nur global im Kern (`theta.json`).
 
 ### 5.3 Verweise und Status
 
 | Verweis | Quelle | Status nach dem Auflösen |
 | --- | --- | --- |
-| `$manifest.<feld>` | Bungie Manifest | `verified` |
-| `$quantum.<feld>` | Quantum Damage-ics | `verified` |
-| `$court.<feld>` | Court's Stacking Guide | `verified` |
-| `$clarity.<feld>`, `$compendium.<feld>` | Texte mit Zahlen | `derived` (Text ohne Messung) |
-| `$aegis[<Zeile>].<feld>` | Aegis Weapons, Abilities, Testing | `fitted` mit Zeilen-ID; die Zeile zählt nicht (I1) |
-| `$theta.<name>` | Eichung | `fitted` (Datum der Eichung) |
+| `$quantum[<Zeile>].<Feld>`, `.timing.<fireRateRpm\|magazine\|totalShots\|reloadTimeMs>` | Quantum Damage-ics | `verified` |
+| `$manifest[<Waffe>].stat("<Stat>")` | Bungie Manifest | `verified` |
+| `$clarity[<Eintrag>]("<Zitat>")`, `$compendium[<Eintrag>]("<Zitat>")` | Text, das Zitat steht darin und hat genau eine Zahl | `derived` (Text ohne Messung) |
+| `$aegis[<Zeile>].critShot`, `.tick("<Name>")` | Aegis Weapons, ÷ Full Modifiers | `fitted` mit Zeilen-ID; die Zeile prüft nicht mehr (I1) |
+| `$aegisSustained[<Zeile>].<Feld>` | Aegis Sustained | `fitted` mit Zeilen-ID |
+| `{ expr, note }` | + − × ÷ und Klammern über Verweise und Zahlen | `derived`, mit höchstens einer Aegis-Zeile `fitted`; als Schaden die Skala der ersten Quelle |
 
-`Source.status` kennt heute `verified`, `unverified`, `measured`, `missing`; `fitted` kommt in B2, `derived` (heute `unverified` mit Notiz „Derived“) in B4. Ein Literal ohne Verweis braucht `source` mit Zitat wie heute in den Override-Dateien; bei unklarer Quelle `estimate` in der Notiz, nie geraten.
+Ein Literal ohne Verweis braucht `source` mit Notiz („Derived: …“) und, wo es geht, Zitat; nie geraten. `$court` kommt mit den Artifact-Perks und Buffs (B6).
 
-### 5.4 Beispiel Polaris Lance
+### 5.4 Beispiele
+
+`polaris-lance.json` (Zähler, `refill`, verzögerter `spawn`, Scorch), `truth.json` (jede 3. Rakete, Katalysator-Buff mit Fenster, Takt aus Aegis Sustained), `hierarchy-of-needs.json` (Setup als Zähler und Mode, Spielweisen, Catalyst-Takt). Auszug Polaris Lance (YAML der Lesbarkeit halber):
 
 ```yaml
 id: polaris-lance
 kind: exoticWeapon
-text: { source: clarity, entry: "The Perfect Fifth", hash: "9f3c…" }
-frame: { rpm: $manifest.rpm, magazine: $manifest.magazine, reload: $quantum.reload, ammo: primary }
+texts: [{ source: clarity, entry: "The Perfect Fifth", hash: "e875c333" }]
+fireRateRpm: $quantum[primaries-scout-rifle-polaris-lance].timing.fireRateRpm
 parts:
-  shot:          { damage: $aegis[polaris-lance].crit, delivery: impact }
-  perfect-fifth: { damage: $aegis[polaris-lance].tick("Perfect Fifth"), delivery: splash }
+  shot:          { damage: $quantum[primaries-scout-rifle-polaris-lance].precisionDamage, precision: true, delivery: impact }
+  perfect-fifth: { damage: $aegis[scout-rifle-polaris-lance-average-with-ignition].tick("Perfect Fifth"), delivery: splash }
 rules:
   - on: hit { part: shot, precision: true }
-    do: [ refill { ammo: 1 } ]
+    do: [ refill { rounds: $clarity[The Perfect Fifth]("refill 1 ammo") } ]
   - on: hit { part: shot, precision: true }
-    if: [ counter fifth < 4 ]
-    do: [ addStacks { counter: fifth } ]
-  - on: hit { part: shot, precision: true }
-    if: [ counter fifth = 4 ]
-    do: [ resetCounter { counter: fifth }, spawn { part: perfect-fifth, delayMs: { value: 500, note: "Clarity ?", status: estimate } } ]
+    if: [ counter fifth = $clarity[The Perfect Fifth]("Scoring 4 Precision Hits") ]
+    do: [ resetCounter fifth, spawn { part: perfect-fifth, delayMs: { expr: '$clarity[…]("after a 0.5? second delay") * 1000' } } ]
   - on: hit { part: perfect-fifth }
-    do: [ applyStatus { status: scorch, stacks: $clarity.scorch } ]   # 40, mit Ember of Ashes 60
+    do: [ applyStatus { status: scorch, stacks: $clarity[The Perfect Fifth]("applying 40 Scorch stacks") } ]
 ```
 
 ## 6 Regeln: Auslöser, Bedingungen, Aktionen
@@ -373,10 +372,10 @@ Regelkreis der Eichung (Wirkungsplan nach DIN IEC 60050-351):
 
 ## 13 Offen bis zur Stufe
 
-- Dateiformat und Ordner der Items (B4), Grenzen von θ (B5). Entschieden in B2: Los FNV-1a der Zeilen-ID, Rest mod 10 < 7 → Eichmenge. Entschieden in B3: Aktionsliste und Schema der Regeln (Abschnitt 6).
+- Grenzen von θ (B5). Entschieden in B4: Dateiformat und Ordner der Items (Abschnitt 5.2, 5.3); drei Items (Polaris Lance, Truth, Hierarchy of Needs) ersetzen ihre Overrides, die übrigen Waffen rechnen mit Paketen bis B6. Entschieden in B2: Los FNV-1a der Zeilen-ID, Rest mod 10 < 7 → Eichmenge. Entschieden in B3: Aktionsliste und Schema der Regeln (Abschnitt 6).
 - Szenarien aus Aegis Sustained und Swap (ganze Builds, nur Rangfolge) in Stufe P (Plan, Reihenfolge vom 2026-11-01).
 - Szenarien aus Aegis Abilities und Testing (offen aus B2, Stufe P): Ability-Zeilen brauchen einen eigenen Weg (Differenz mit und ohne Cast, Burn-Schalter „ohne Burn“ im Szenario, weil Aegis' Pakete nur Ignitions enthalten); bis dahin prüft der Ability-Gate nur den Rückweg der Pakete (`tests/abilityGate.test.ts`, ohne Burn-Ticks).
-- Quelle der Waffen-Grundwerte (B4a, Schritt 1, 2026-11-01, `tmp/quantum-vs-aegis.ts`, 123 Exotics mit beiden Quellen, Aegis-Zeile mit den wenigsten Annahmen): Kriterium (≥ 90 % innerhalb 2 %) **verfehlt**. Präzisionsschaden 58 von 92 (63 %, Median +0,36 %), Körperschaden 57 von 123 (46 %), Takt 6 von 36, Magazin 20 von 36, Schüsse 28 von 36 (78 %), Reload 3 von 26. Ausreißer sind Waffen mit eigener Mechanik (Wish-Ender, Euphony, Leviathan's Breath: Quantum zählt Zusatzschaden mit; Magazin 1 bei Linear Fusion/Rockets) und Zeilen mit anderer Annahme; Stichprobe Polaris (Präzision +0,33 %), Hierarchy (+0,43 %), Truth (Körper −0,06 %) liegt unter 0,5 %, Truth-Takt dagegen −67 %. Folge: Grundwerte der Item-Dateien kommen per `$aegis` (`fitted`); `$quantum` bleibt als Verweisart für einzelne Felder, die eine Stichprobe trägt (Schritt 5: Polaris-Schuss). Pakete unverändert bis B6.
+- Quelle der Waffen-Grundwerte (B4a, Schritt 1, 2026-11-01, `tmp/quantum-vs-aegis.ts`, 123 Exotics mit beiden Quellen, Aegis-Zeile mit den wenigsten Annahmen): Kriterium (≥ 90 % innerhalb 2 %) **verfehlt**. Präzisionsschaden 58 von 92 (63 %, Median +0,36 %), Körperschaden 57 von 123 (46 %), Takt 6 von 36, Magazin 20 von 36, Schüsse 28 von 36 (78 %), Reload 3 von 26. Ausreißer sind Waffen mit eigener Mechanik (Wish-Ender, Euphony, Leviathan's Breath: Quantum zählt Zusatzschaden mit; Magazin 1 bei Linear Fusion/Rockets) und Zeilen mit anderer Annahme; Stichprobe Polaris (Präzision +0,33 %), Hierarchy (+0,43 %), Truth (Körper −0,06 %) liegt unter 0,5 %, Truth-Takt dagegen −67 %. Folge: Grundwerte der Item-Dateien kommen per `$aegis` (`fitted`); `$quantum` bleibt als Verweisart für einzelne Felder, die eine Stichprobe trägt (Schritt 5: Polaris-Schuss). Pakete unverändert bis B6. **Umgesetzt in B4 (endgültig):** je Feld die Quelle mit Stichprobe oder ohne Alternative. Schaden: Quantum, wo die Stichprobe unter 0,5 % liegt (Polaris-Schuss, Truth-Rakete, Hierarchy-Pfeil und -Seeker), sonst `$aegis` (Perfect Fifth, Truth-Cluster). Takt: Aegis Sustained, wo Quantums Takt nicht passt (Truth −67 %), sonst Quantum. Reload ohne fremde Annahmen (Truth: Quantum statt Aegis mit Argent Ordnance; Aegis-Konvention, wenn der Takt von Aegis kommt). Zahlen aus dem Text (Zähler, Dauer, Anzahl, Faktor) per `$clarity`/`$compendium`; eine Aegis-Zeile, aus der kein Wert kommt, bleibt Prüfung (Truth-Tithe, Hierarchy).
 - Policy für Casts und Energie im Lauf: erst mit dem Optimizer für Abilities (2.0).
 
 ## Methoden
