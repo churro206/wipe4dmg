@@ -13,6 +13,7 @@ export const Source = z.object({
     "verified", // confirmed by a reliable, current source
     "unverified", // found, but old or secondary source
     "measured", // our own Shooting Range measurement
+    "derived", // calculated or read from a text (note "Derived…"); checked by a gate against a measurement it does not come from
     "fitted", // taken from a row of an Aegis measurement (I1); that row is the item's Eichung, no check
     "missing", // still unknown; value is null
   ]),

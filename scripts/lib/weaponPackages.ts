@@ -412,6 +412,10 @@ const CHARGE_STATS: Partial<Record<WeaponType, string>> = {
   bow: "Draw Time",
 };
 
+/** A note "Derived…" marks a calculated value (status "derived"); any other secondary value stays "unverified". */
+const derivedOrUnverified = (note?: string): "derived" | "unverified" =>
+  note?.startsWith("Derived") ? "derived" : "unverified";
+
 /** Timing of a package; the simulator reaches timeToEmptySeconds with these values. */
 export type Timing = {
   rowId: string;
@@ -763,7 +767,7 @@ export function buildWeaponImport(
     name: `Quantum Damage-ics (${row.tab}), row ${row.id}`,
     url: inputs.quantum.source.url,
     retrieved: inputs.quantum.source.retrieved,
-    status: "unverified",
+    status: derivedOrUnverified(note),
     ...(note ? { note } : {}),
   });
 
@@ -1699,7 +1703,7 @@ export function buildWeaponImport(
         note: `${reloadFrom.note}; ${note}`,
         reloadSource: {
           ...inputs.reloadFormulas.source,
-          status: "unverified",
+          status: derivedOrUnverified(note),
           note,
         },
       };
@@ -1821,7 +1825,7 @@ export function buildWeaponImport(
         ? {
             name: `Bungie manifest ${inputs.manifestVersion} and Quantum, override for ${manifest.name}`,
             retrieved: inputs.aegis.source.retrieved,
-            status: "unverified",
+            status: "derived",
             note: `Derived (override): ${override?.reason ?? ""}${note ? `; ${note}` : ""}`,
           }
         : timingIsAegis || !timingQuantumRow
@@ -1837,7 +1841,7 @@ export function buildWeaponImport(
     const setupSource = (note?: string): Source => ({
       name: `Weapon override for ${manifest.name} (Clarity, Compendium, Quantum)`,
       retrieved: inputs.aegis.source.retrieved,
-      status: "unverified",
+      status: "derived",
       note: `Derived (override): ${override?.reason ?? ""}${note ? `; ${note}` : ""}`,
     });
     // One hit of a setup, e.g. a seeker: the difference of Quantum's rows with and without it.

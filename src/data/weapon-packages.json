@@ -166,7 +166,7 @@
         "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ager-s-scepter",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 37.8 s − 4 reloads × 1.44 s) ÷ 484 intervals (ADR 0013)"
       }
     },
@@ -302,7 +302,7 @@
             "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ager-s-scepter-cata",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 12.9 s − 2 reloads × 1.44 s) ÷ 484 intervals (ADR 0013)"
           }
         },
@@ -510,7 +510,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 150 s − 4 reloads × 2.08 s) ÷ 28 intervals (ADR 0013)"
       }
     },
@@ -985,7 +985,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34).; The time to empty counts from the first shot"
       }
     },
@@ -994,7 +994,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34).; Values of the override"
       }
     },
@@ -1003,7 +1003,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
       }
     },
@@ -1012,7 +1012,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
       }
     },
@@ -1021,7 +1021,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Barrow-Dyad",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
       }
     },
@@ -1092,7 +1092,7 @@
           "source": {
             "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
           }
         },
@@ -1112,7 +1112,7 @@
           "source": {
             "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
           }
         },
@@ -1121,7 +1121,7 @@
           "source": {
             "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
           }
         },
@@ -1209,7 +1209,7 @@
               "source": {
                 "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
               }
             }
@@ -1230,7 +1230,7 @@
               "source": {
                 "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
               }
             }
@@ -1246,7 +1246,7 @@
               "source": {
                 "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
               }
             },
@@ -1255,7 +1255,7 @@
               "source": {
                 "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
               }
             },
@@ -1264,7 +1264,7 @@
               "source": {
                 "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
               }
             }
@@ -1297,7 +1297,7 @@
         "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-bastion",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 37.4 s − 5 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
       }
     },
@@ -1582,7 +1582,7 @@
         "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-borealis",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 19.3 s − 3 reloads × 1.98 s) ÷ 19 intervals (ADR 0013)"
       }
     },
@@ -1697,7 +1697,7 @@
             "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-borealis",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 19.3 s − 3 reloads × 1.98 s) ÷ 19 intervals (ADR 0013); Derived: reload 1.98 s × 0.900 = 1.78 s, d2foundry formula for reload stat 65 → 85 (manifest)"
           }
         },
@@ -1725,7 +1725,7 @@
             "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
             "url": "https://github.com/d2foundry/oracle_engine",
             "retrieved": "2026-10-23",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: reload 1.98 s × 0.900 = 1.78 s, d2foundry formula for reload stat 65 → 85 (manifest)"
           }
         }
@@ -1764,7 +1764,7 @@
         "name": "Quantum Damage-ics (specials), row specials-sidearm-buried-bloodline",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 31.1 s − 4 reloads × 1.02 s) ÷ 49 intervals (ADR 0013)"
       }
     },
@@ -2366,7 +2366,7 @@
         "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-cloudstrike",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 17.9 s − 4 reloads × 1.68 s) ÷ 30 intervals (ADR 0013)"
       }
     },
@@ -2481,7 +2481,7 @@
             "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-cloudstrike-cata",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 23.4 s − 4 reloads × 1.68 s) ÷ 43 intervals (ADR 0013)"
           }
         },
@@ -2547,7 +2547,7 @@
         "name": "Quantum Damage-ics (specials), row specials-trace-rifle-coldheart",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 39.1 s − 4 reloads × 1.44 s) ÷ 504 intervals (ADR 0013)"
       }
     },
@@ -2662,7 +2662,7 @@
             "name": "Quantum Damage-ics (specials), row specials-trace-rifle-coldheart",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 39.1 s − 4 reloads × 1.44 s) ÷ 504 intervals (ADR 0013); Derived: reload 1.44 s × 0.897 = 1.29 s, d2foundry formula for reload stat 30 → 50 (manifest)"
           }
         },
@@ -2690,7 +2690,7 @@
             "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
             "url": "https://github.com/d2foundry/oracle_engine",
             "retrieved": "2026-10-23",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: reload 1.44 s × 0.897 = 1.29 s, d2foundry formula for reload stat 30 → 50 (manifest)"
           }
         }
@@ -2871,7 +2871,7 @@
         "name": "Quantum Damage-ics (specials), row specials-shotgun-conditional-finality",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 19.4 s − 9 reloads × 1.06 s) ÷ 18 intervals (ADR 0013)"
       }
     },
@@ -3434,7 +3434,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-d-a-r-c-i",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 18 s − 4 reloads × 2 s) ÷ 30 intervals (ADR 0013)"
       }
     },
@@ -3976,7 +3976,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 23.5 s − 10 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
       }
     },
@@ -4117,7 +4117,7 @@
         "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
       }
     },
@@ -4259,7 +4259,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 86.3 s − 7 reloads × 3.57 s) ÷ 375 intervals (ADR 0013)"
       }
     },
@@ -4585,7 +4585,7 @@
         "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 34 s − 2 reloads × 1.44 s) ÷ 469 intervals (ADR 0013)"
       }
     },
@@ -4727,7 +4727,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-dragon-s-breath",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 23.5 s − 10 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
       }
     },
@@ -4869,7 +4869,7 @@
         "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 2 (6🠚8)"
       }
     },
@@ -4984,7 +4984,7 @@
             "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
           }
         },
@@ -5050,7 +5050,7 @@
         "name": "Quantum Damage-ics (specials), row specials-glaive-edge-of-action",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 32.5 s − 4 reloads × 1.57 s) ÷ 28 intervals (ADR 0013)"
       }
     },
@@ -5192,7 +5192,7 @@
         "name": "Quantum Damage-ics (specials), row specials-glaive-edge-of-concurrence",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 31 s − 4 reloads × 1.57 s) ÷ 32 intervals (ADR 0013)"
       }
     },
@@ -5334,7 +5334,7 @@
         "name": "Quantum Damage-ics (specials), row specials-glaive-edge-of-intent",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 50.8 s − 6 reloads × 1.57 s) ÷ 30 intervals (ADR 0013)"
       }
     },
@@ -5696,7 +5696,7 @@
         "name": "Quantum Damage-ics (specials), row specials-hand-cannon-eriana-s-vow",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 25.6 s − 3 reloads × 1.66 s) ÷ 34 intervals (ADR 0013); without catalyst from Clarity: magazine size by 3 (6🠚9)"
       }
     },
@@ -5811,7 +5811,7 @@
             "name": "Quantum Damage-ics (specials), row specials-hand-cannon-eriana-s-vow",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 25.6 s − 3 reloads × 1.66 s) ÷ 34 intervals (ADR 0013)"
           }
         },
@@ -5876,7 +5876,7 @@
         "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-euphony",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 32.2 s − 3 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
       }
     },
@@ -6161,7 +6161,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-eyes-of-tomorrow",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 29.3 s − 9 reloads × 2.35 s) ÷ 9 intervals (ADR 0013)"
       }
     },
@@ -6301,7 +6301,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Values of the override"
       }
     },
@@ -6310,7 +6310,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile)."
       }
     },
@@ -6319,7 +6319,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile)."
       }
     },
@@ -6328,7 +6328,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Fafnir",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile)."
       }
     },
@@ -6869,7 +6869,7 @@
         "name": "Quantum Damage-ics (specials), row specials-sidearm-forerunner",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 27.4 s − 5 reloads × 1.63 s) ÷ 69 intervals (ADR 0013)"
       }
     },
@@ -7011,7 +7011,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-gjallarhorn",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 18.2 s − 5 reloads × 2.35 s) ÷ 10 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 1 (1🠚2)"
       }
     },
@@ -7126,7 +7126,7 @@
             "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-gjallarhorn",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 18.2 s − 5 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
           }
         },
@@ -7986,7 +7986,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; The time to empty counts from the first shot"
       }
     },
@@ -7995,7 +7995,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Values of the override"
       }
     },
@@ -8004,7 +8004,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
       }
     },
@@ -8013,7 +8013,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
       }
     },
@@ -8022,7 +8022,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
       }
     },
@@ -8176,7 +8176,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-heir-apparent",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 36.3 s − 2 reloads × 3.57 s) ÷ 439 intervals (ADR 0013)"
       }
     },
@@ -8554,7 +8554,7 @@
           "source": {
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
@@ -8573,7 +8573,7 @@
           "source": {
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
@@ -8582,7 +8582,7 @@
           "source": {
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
@@ -8596,7 +8596,7 @@
           "source": {
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
@@ -8615,7 +8615,7 @@
           "source": {
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
@@ -8624,7 +8624,7 @@
           "source": {
             "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
@@ -8705,7 +8705,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             },
@@ -8714,7 +8714,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -8737,7 +8737,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             },
@@ -8746,7 +8746,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -8765,7 +8765,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %).; Scorch per hit before Ember of Ashes"
               }
             }
@@ -8774,7 +8774,7 @@
         "source": {
           "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
           "retrieved": "2026-10-20",
-          "status": "unverified",
+          "status": "derived",
           "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
         }
       },
@@ -8790,7 +8790,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %).; Scorch per hit before Ember of Ashes"
               }
             }
@@ -8799,7 +8799,7 @@
         "source": {
           "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
           "retrieved": "2026-10-20",
-          "status": "unverified",
+          "status": "derived",
           "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
         }
       },
@@ -8816,7 +8816,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -8836,7 +8836,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -8850,7 +8850,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -8897,7 +8897,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -8918,7 +8918,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -8935,7 +8935,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -8955,7 +8955,7 @@
               "source": {
                 "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
               }
             }
@@ -9148,7 +9148,7 @@
         "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 17.9 s − 4 reloads × 1.98 s) ÷ 19 intervals (ADR 0013)"
       }
     },
@@ -9284,7 +9284,7 @@
             "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 22.8 s − 4 reloads × 3.2 s) ÷ 19 intervals (ADR 0013)"
           }
         },
@@ -9777,7 +9777,7 @@
             "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
             "url": "https://github.com/d2foundry/oracle_engine",
             "retrieved": "2026-10-23",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: reload 0.60 s × 0.874 = 0.52 s, d2foundry formula for reload stat 40 → 60 (manifest)"
           }
         }
@@ -9816,7 +9816,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 21.1 s − 2 reloads × 0.43 s) ÷ 15 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 2 (4🠚6)"
       }
     },
@@ -9931,7 +9931,7 @@
             "name": "Quantum Damage-ics (heavies), row heavies-shotgun-legend-of-acrius-cata",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 21.1 s − 2 reloads × 0.43 s) ÷ 15 intervals (ADR 0013)"
           }
         },
@@ -10319,7 +10319,7 @@
         "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 22.6 s − 6 reloads × 0.92 s) ÷ 188 intervals (ADR 0013)"
       }
     },
@@ -10434,7 +10434,7 @@
             "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 22.6 s − 6 reloads × 0.92 s) ÷ 188 intervals (ADR 0013); Derived: reload 0.92 s × 0.765 = 0.70 s, d2foundry formula for reload stat 80 → 120 (manifest)"
           }
         },
@@ -10462,7 +10462,7 @@
             "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
             "url": "https://github.com/d2foundry/oracle_engine",
             "retrieved": "2026-10-23",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: reload 0.92 s × 0.765 = 0.70 s, d2foundry formula for reload stat 80 → 120 (manifest)"
           }
         }
@@ -10500,7 +10500,7 @@
         "name": "Quantum Damage-ics (specials), row specials-linear-fusion-rifle-lorentz-driver",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 23.7 s − 3 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
       }
     },
@@ -11653,7 +11653,7 @@
         "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 72.7 s − 4 reloads × 1.98 s) ÷ 39 intervals (ADR 0013)"
       }
     },
@@ -12079,7 +12079,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 20.7 s − 2 reloads × 1.25 s) ÷ 10 intervals (ADR 0013)"
       }
     },
@@ -12429,7 +12429,7 @@
             "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
             "url": "https://github.com/d2foundry/oracle_engine",
             "retrieved": "2026-10-23",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: reload 1.19 s × 0.803 = 0.96 s, d2foundry formula for reload stat 18 → 48 (manifest)"
           }
         }
@@ -12664,7 +12664,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-parasite",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 35.4 s − 17 reloads × 2.08 s) ÷ 17 intervals (ADR 0013)"
       }
     },
@@ -12904,7 +12904,7 @@
           "source": {
             "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
           }
         },
@@ -12924,7 +12924,7 @@
           "source": {
             "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
           }
         },
@@ -12933,7 +12933,7 @@
           "source": {
             "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
           }
         },
@@ -12977,7 +12977,7 @@
               "source": {
                 "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
               }
             }
@@ -12998,7 +12998,7 @@
               "source": {
                 "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
               }
             }
@@ -13014,7 +13014,7 @@
               "source": {
                 "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
               }
             }
@@ -13033,7 +13033,7 @@
               "source": {
                 "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %.; Scorch per hit before Ember of Ashes"
               }
             }
@@ -13042,7 +13042,7 @@
         "source": {
           "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
           "retrieved": "2026-10-20",
-          "status": "unverified",
+          "status": "derived",
           "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
         }
       }
@@ -13062,7 +13062,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; The time to empty counts from the first shot"
       }
     },
@@ -13071,7 +13071,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; Values of the override"
       }
     },
@@ -13080,7 +13080,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
       }
     },
@@ -13089,7 +13089,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
       }
     },
@@ -13098,7 +13098,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Prometheus Lens",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung."
       }
     },
@@ -13996,7 +13996,7 @@
         "name": "Quantum Damage-ics (specials), row specials-trace-rifle-ruinous-effigy",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 36.8 s − 4 reloads × 1.44 s) ÷ 469 intervals (ADR 0013)"
       }
     },
@@ -14301,7 +14301,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-service-of-luzaku",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 70.3 s − 6 reloads × 3.57 s) ÷ 299 intervals (ADR 0013)"
       }
     },
@@ -14585,7 +14585,7 @@
         "name": "Quantum Damage-ics (specials), row specials-shotgun-slayer-s-fang",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 23.4 s − 2 reloads × 1.41 s) ÷ 26 intervals (ADR 0013)"
       }
     },
@@ -14941,7 +14941,7 @@
         "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-still-hunt",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 31.8 s − 3 reloads × 1.98 s) ÷ 19 intervals (ADR 0013)"
       }
     },
@@ -15039,7 +15039,7 @@
           "source": {
             "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
           }
         },
@@ -15059,7 +15059,7 @@
           "source": {
             "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
           }
         },
@@ -15068,7 +15068,7 @@
           "source": {
             "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung.; the shots follow at the weapon's interval (60000 ÷ rpm)"
           }
         },
@@ -15115,7 +15115,7 @@
               "source": {
                 "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
               }
             },
@@ -15139,7 +15139,7 @@
               "source": {
                 "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
               }
             },
@@ -15163,7 +15163,7 @@
               "source": {
                 "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
               }
             },
@@ -15920,7 +15920,7 @@
             "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
             "url": "https://github.com/d2foundry/oracle_engine",
             "retrieved": "2026-10-23",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: reload 0.99 s × 0.914 = 0.91 s, d2foundry formula for reload stat 35 → 45 (manifest)"
           }
         }
@@ -16100,7 +16100,7 @@
         "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 27.5 s − 2 reloads × 1.32 s) ÷ 18 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 3 (4🠚7)"
       }
     },
@@ -16215,7 +16215,7 @@
             "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-telesto-cata",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 27.5 s − 2 reloads × 1.32 s) ÷ 18 intervals (ADR 0013)"
           }
         },
@@ -16423,7 +16423,7 @@
         "name": "Quantum Damage-ics (specials), row specials-shotgun-the-chaperone",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 20.7 s − 2 reloads × 0.43 s) ÷ 17 intervals (ADR 0013)"
       }
     },
@@ -16538,7 +16538,7 @@
             "name": "Quantum Damage-ics (specials), row specials-shotgun-the-chaperone",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 20.7 s − 2 reloads × 0.43 s) ÷ 17 intervals (ADR 0013); with the catalyst: magazine 9, 27 shots (override)"
           }
         },
@@ -16786,7 +16786,7 @@
         "name": "Quantum Damage-ics (specials), row specials-shotgun-the-fourth-horseman",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 12.2 s − 4 reloads × 0.43 s) ÷ 19 intervals (ADR 0013)"
       }
     },
@@ -16901,7 +16901,7 @@
             "name": "Quantum Damage-ics (specials), row specials-shotgun-the-fourth-horseman-cata",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 12.1 s − 3 reloads × 0.43 s) ÷ 19 intervals (ADR 0013); Derived: reload 0.43 s × 0.660 = 0.28 s, d2foundry formula for reload stat 36 → 76 (manifest)"
           }
         },
@@ -16929,7 +16929,7 @@
             "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
             "url": "https://github.com/d2foundry/oracle_engine",
             "retrieved": "2026-10-23",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: reload 0.43 s × 0.660 = 0.28 s, d2foundry formula for reload stat 36 → 76 (manifest)"
           }
         }
@@ -17558,7 +17558,7 @@
         "name": "Quantum Damage-ics (specials), row specials-trace-rifle-the-navigator",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 37.8 s − 4 reloads × 1.44 s) ÷ 484 intervals (ADR 0013)"
       }
     },
@@ -18024,7 +18024,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-the-wardcliff-coil",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 21.4 s − 7 reloads × 2.35 s) ÷ 7 intervals (ADR 0013)"
       }
     },
@@ -18450,7 +18450,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 57.6 s − 6 reloads × 3.57 s) ÷ 378 intervals (ADR 0013)"
       }
     },
@@ -18565,7 +18565,7 @@
             "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-thunderlord-cata",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 32.5 s − 0 reloads × 3.57 s) ÷ 378 intervals (ADR 0013)"
           }
         },
@@ -19098,7 +19098,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 14.2 s − 2 reloads × 1.47 s) ÷ 17 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 3 (4🠚7)"
       }
     },
@@ -19213,7 +19213,7 @@
             "name": "Quantum Damage-ics (heavies), row heavies-shotgun-tractor-cannon",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 14.2 s − 2 reloads × 1.47 s) ÷ 17 intervals (ADR 0013)"
           }
         },
@@ -19883,7 +19883,7 @@
           "source": {
             "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
           }
         },
@@ -19903,7 +19903,7 @@
           "source": {
             "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
           }
         },
@@ -19912,7 +19912,7 @@
           "source": {
             "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
           }
         },
@@ -20012,7 +20012,7 @@
               "source": {
                 "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
               }
             }
@@ -20033,7 +20033,7 @@
               "source": {
                 "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
               }
             }
@@ -20049,7 +20049,7 @@
               "source": {
                 "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
               }
             },
@@ -20058,7 +20058,7 @@
               "source": {
                 "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
                 "retrieved": "2026-10-20",
-                "status": "unverified",
+                "status": "derived",
                 "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
               }
             }
@@ -20108,7 +20108,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; The time to empty counts from the first shot"
       }
     },
@@ -20117,7 +20117,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Values of the override"
       }
     },
@@ -20126,7 +20126,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“."
       }
     },
@@ -20135,7 +20135,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“."
       }
     },
@@ -20144,7 +20144,7 @@
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Turncoat",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived (override): Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“."
       }
     },
@@ -20259,7 +20259,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-two-tailed-fox",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 24.1 s − 9 reloads × 2.35 s) ÷ 9 intervals (ADR 0013)"
       }
     },
@@ -20746,7 +20746,7 @@
         "name": "Quantum Damage-ics (specials), row specials-glaive-vexcalibur",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 28.1 s − 5 reloads × 1.57 s) ÷ 32 intervals (ADR 0013)"
       }
     },
@@ -21063,7 +21063,7 @@
         "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 38.8 s − 4 reloads × 1.44 s) ÷ 499 intervals (ADR 0013)"
       }
     },
@@ -21304,7 +21304,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21324,7 +21324,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21333,7 +21333,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21347,7 +21347,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21367,7 +21367,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21376,7 +21376,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21390,7 +21390,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21410,7 +21410,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21419,7 +21419,7 @@
           "source": {
             "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
@@ -21494,7 +21494,7 @@
                 "source": {
                   "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
                   "retrieved": "2026-10-20",
-                  "status": "unverified",
+                  "status": "derived",
                   "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s.; 60 ÷ 5.383 s per shot"
                 }
               }
@@ -21517,7 +21517,7 @@
                 "source": {
                   "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
                   "retrieved": "2026-10-20",
-                  "status": "unverified",
+                  "status": "derived",
                   "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s.; 60 ÷ 3.782 s per shot"
                 }
               }
@@ -21540,7 +21540,7 @@
                 "source": {
                   "name": "Weapon override for Whirling Ovation (Clarity, Compendium, Quantum)",
                   "retrieved": "2026-10-20",
-                  "status": "unverified",
+                  "status": "derived",
                   "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s.; 60 ÷ 2.133 s per shot"
                 }
               }
@@ -21575,7 +21575,7 @@
         "name": "Quantum Damage-ics (heavies), row heavies-sniper-rifle-whisper-of-the-worm",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 31.7 s − 0 reloads × 1.98 s) ÷ 37 intervals (ADR 0013)"
       }
     },
@@ -22392,7 +22392,7 @@
         "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-passive",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
+        "status": "derived",
         "note": "Derived: (Time to Empty 90 s − 19 reloads × 1.62 s) ÷ 19 intervals (ADR 0013)"
       }
     },
@@ -22507,7 +22507,7 @@
             "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified",
+            "status": "derived",
             "note": "Derived: (Time to Empty 50 s − 19 reloads × 1.62 s) ÷ 19 intervals (ADR 0013)"
           }
         },

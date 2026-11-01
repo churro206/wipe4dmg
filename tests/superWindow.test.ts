@@ -135,11 +135,18 @@ describe("superWindowMs", () => {
   });
 
   it("lasts until the weapon is ready again for timed supers; an estimate is not exact", () => {
-    const timed = (status: "verified" | "unverified"): SuperUsage => ({
+    const timed = (
+      status: "verified" | "unverified" | "derived",
+    ): SuperUsage => ({
       type: "timed",
       weaponReadyMs: { value: 2200, source: { ...source, status } },
     });
     expect(superWindowMs(timed("verified"))).toEqual({
+      durationMs: 2200,
+      exact: true,
+    });
+    // A derived value comes from a text with a calculation: exact, unlike an unverified estimate.
+    expect(superWindowMs(timed("derived"))).toEqual({
       durationMs: 2200,
       exact: true,
     });

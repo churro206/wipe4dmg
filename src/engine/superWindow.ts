@@ -16,6 +16,7 @@ export function superWindowMs(usage: SuperUsage): SuperWindowLength {
       return value === null
         ? { durationMs: 0, exact: false }
         : { durationMs: value, exact: source.status !== "unverified" };
+      // "derived" counts as exact: the value comes from a text or a calculation, not from a guess.
     }
     case "cast":
       return usage.castMs.value === null
