@@ -1046,7 +1046,7 @@ describe("bows (2026-10-26)", () => {
 
   it("Hierarchy of Needs through two rings: twice the seekers of one ring (ADR 0017 S4)", () => {
     const seekers = (r: SimulationResult) =>
-      r.damageInstances.filter((d) => d.id.startsWith("setupHits")).length;
+      r.damageInstances.filter((d) => d.id.startsWith("seekers")).length;
     const one = hierarchy({ weaponPreBuilt: true });
     const two = hierarchy({ weaponPreBuilt: true, playstyle: "two-rings" });
     note(

@@ -122,6 +122,15 @@ describe("scale of a damage value", () => {
     expect(damageScaleOf(value("Test fixture"))).toBeUndefined();
   });
 
+  // An item's expression, e.g. (Quantum with ring − without) ÷ Compendium's 3 seekers: the damage is
+  // the first term, the rest are counts and factors (scripts/lib/items/refs.ts)
+  it("of an expression is the scale of its first source", () => {
+    expect(
+      damageScaleOf(value("Expression over Quantum Damage-ics (primaries), row a; Destiny Data Compendium: b")),
+    ).toBe("quantum");
+    expect(damageScaleOf(value("Expression over Clarity: c"))).toBeUndefined();
+  });
+
   it("is known for every damage value of weapons and abilities", () => {
     const weaponValues = loadWeapons(rawWeapons).flatMap((w) =>
       w.damageInstances.map((d) => [w.id, d.damagePerTick] as const),

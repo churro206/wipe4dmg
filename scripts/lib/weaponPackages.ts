@@ -145,6 +145,32 @@ const BASE_KINDS: AssumptionKind[] = [
   "effect",
 ];
 const OPTION_KINDS: AssumptionKind[] = ["catalyst", "perk", "weaponMod"];
+
+/**
+ * Base row: only execution, the weapon's own intrinsic, perks and mods, and modelled effects.
+ * Fewest stacked intrinsics, then fewest perks and mods (so a row with an extra perk can become an
+ * option), then most shots, then fewest assumptions.
+ */
+function pickBaseRow(
+  rows: AegisWeaponRow[],
+  classesOf: Map<AegisWeaponRow, { assumption: string; kind: AssumptionKind }[]>,
+): AegisWeaponRow | undefined {
+  const count = (row: AegisWeaponRow, test: (c: { assumption: string; kind: AssumptionKind }) => boolean) =>
+    classesOf.get(row)!.filter(test).length;
+  const stackedOf = (row: AegisWeaponRow) =>
+    count(row, (c) => c.kind === "intrinsic" && /\sx\d+$/.test(c.assumption));
+  const extrasOf = (row: AegisWeaponRow) =>
+    count(row, (c) => c.kind === "perk" || c.kind === "weaponMod");
+  return rows
+    .filter((row) => classesOf.get(row)!.every((c) => BASE_KINDS.includes(c.kind)))
+    .sort(
+      (a, b) =>
+        stackedOf(a) - stackedOf(b) ||
+        extrasOf(a) - extrasOf(b) ||
+        b.shots - a.shots ||
+        a.assumptions.length - b.assumptions.length,
+    )[0];
+}
 const CONDITION_WORDS =
   /\b(kill|kills|killed|final blow|defeat|precision|while|after|when|hits?)\b/i;
 const DURATION =
@@ -820,6 +846,17 @@ export function buildWeaponImport(
       terms: inputs.terms,
       clarity: inputs.clarity,
     };
+    const classesOfRows = (rows: AegisWeaponRow[]) =>
+      new Map(
+        rows.map((row) => [
+          row,
+          row.assumptions.map((assumption) => ({
+            assumption,
+            weapon: manifest.name,
+            ...classifyAssumption(assumption, context),
+          })),
+        ]),
+      );
     // An item file replaces the package: its structure is written by hand, its numbers resolved
     // from the snapshots. Every source's reload contains Rally Barricade (K1), so an item that does
     // not state it gets the same factor.
@@ -832,16 +869,21 @@ export function buildWeaponImport(
       entry.status = "item";
       entry.itemFile = `src/data/items/weapons/${item.weapon.id}.json`;
       entry.itemReview = item.review;
+      // The base row is the row a part takes its number from; an item without one (Hierarchy of
+      // Needs) has the base row a package would have.
+      const weaponRows = inputs.aegis.rows.filter((r) => sameName(r.name, manifest.name));
       const rowId = item.weapon.damageInstances
         .map((d) => d.damagePerTick.source.row)
         .find((row) => row !== undefined);
-      const baseRow = inputs.aegis.rows.find((r) => r.id === rowId) ?? null;
+      const itemClasses = classesOfRows(weaponRows);
+      const baseRow =
+        weaponRows.find((r) => r.id === rowId) ?? pickBaseRow(weaponRows, itemClasses) ?? null;
       entry.baseRow = baseRow;
       // A row with the base row's assumptions and one more that names a catalyst buff of the item is
       // the item with its catalyst, e.g. Truth with Reaper's Tithe x4.
       const buffs = catalystBuffs(item.weapon);
-      for (const row of inputs.aegis.rows) {
-        if (!sameName(row.name, manifest.name) || row.id === rowId) continue;
+      for (const row of weaponRows) {
+        if (row.id === baseRow?.id) continue;
         const own = new Set(row.assumptions.map(nameKey));
         const base = new Set((baseRow?.assumptions ?? []).map(nameKey));
         const extra = row.assumptions.filter((a) => !base.has(nameKey(a)));
@@ -861,10 +903,11 @@ export function buildWeaponImport(
             notes: ["buff of the item file, granted with the catalyst"],
           });
         } else {
+          // An assumption the model lacks stays named (e.g. fireteam scaling), so the row counts as missing
           entry.unusedRows.push({
             rowId: row.id,
             assumptions: row.assumptions,
-            reason: "the item file uses another row",
+            reason: blockingReason(itemClasses.get(row)!) || "the item file uses another row",
           });
         }
       }
@@ -896,16 +939,7 @@ export function buildWeaponImport(
       gap("keine Aegis-Zeile");
       continue;
     }
-    const classesOf = new Map(
-      rows.map((row) => [
-        row,
-        row.assumptions.map((assumption) => ({
-          assumption,
-          weapon: manifest.name,
-          ...classifyAssumption(assumption, context),
-        })),
-      ]),
-    );
+    const classesOf = classesOfRows(rows);
     for (const classes of classesOf.values()) {
       for (const c of classes) {
         if (
@@ -917,28 +951,7 @@ export function buildWeaponImport(
       }
     }
 
-    // Base row: only execution, the weapon's own intrinsic, perks and mods, and modelled effects.
-    // Fewest perks and mods first, so a row with an extra perk can become an option; then most
-    // shots, then fewest assumptions.
-    const allowed = rows.filter((row) =>
-      classesOf.get(row)!.every((c) => BASE_KINDS.includes(c.kind)),
-    );
-    const extrasOf = (row: AegisWeaponRow) =>
-      classesOf
-        .get(row)!
-        .filter((c) => c.kind === "perk" || c.kind === "weaponMod").length;
-    const stackedOf = (row: AegisWeaponRow) =>
-      classesOf
-        .get(row)!
-        .filter((c) => c.kind === "intrinsic" && /\sx\d+$/.test(c.assumption))
-        .length;
-    let base = [...allowed].sort(
-      (a, b) =>
-        stackedOf(a) - stackedOf(b) ||
-        extrasOf(a) - extrasOf(b) ||
-        b.shots - a.shots ||
-        a.assumptions.length - b.assumptions.length,
-    )[0];
+    let base = pickBaseRow(rows, classesOf);
     if (override?.base) {
       const named = rows.find((r) => r.id === override.base);
       if (!named)

@@ -158,3 +158,63 @@ describe("Truth as an item (B4b step 6)", () => {
     expect([...fittedRows(truth)].sort()).toEqual([CLUSTER_ROW, SUSTAINED].sort());
   });
 });
+
+describe("Hierarchy of Needs as an item (B4b step 7)", () => {
+  const hierarchy = result.packages.find((p) => p.id === "hierarchy-of-needs")!;
+  const rules = hierarchy.rules ?? [];
+  const actionsOf = (id: string) => rules.find((r) => r.id === id)?.do ?? [];
+
+  it("the arrow from Quantum without the ring, 3 seekers from Quantum with ring minus without", () => {
+    const [arrow, seekers, two] = hierarchy.damageInstances;
+    expect(arrow).toMatchObject({ id: "shot", canPrecision: true, delivery: "impact", scale: "quantum" });
+    expect(arrow.damagePerTick.value).toBe(223);
+    expect(arrow.damagePerTick.source.status).toBe("verified");
+    // (664 − 223) ÷ 3 (Compendium "releases 3 Seekers")
+    expect(seekers).toMatchObject({ id: "seekers", canPrecision: false, delivery: "splash", scale: "quantum" });
+    expect(seekers.damagePerTick.value).toBe(147);
+    expect(seekers.damagePerTick.source.status).toBe("derived");
+    expect(two).toMatchObject({ id: "seekers-two-rings" });
+    const count = (id: string) => actionsOf(id).find((a) => a.type === "spawn");
+    expect(count("seekers")?.type === "spawn" && count("seekers")?.count?.value).toBe(3);
+    expect(count("seekers-two-rings")?.type === "spawn" && count("seekers-two-rings")?.count?.value).toBe(6);
+    const scorch = actionsOf("scorch-seekers").find((a) => a.type === "applyStatus");
+    expect(scorch?.type === "applyStatus" && scorch.stacks?.value).toBe(15);
+  });
+
+  it("timing from Quantum and the manifest, the catalyst rate once the ring stands", () => {
+    expect(hierarchy.chargeTimeMs.value).toBe(800);
+    expect(hierarchy.fireRateRpm.value).toBe(44);
+    expect(hierarchy.magazine.value).toBe(1);
+    expect(hierarchy.totalShots.value).toBeNull();
+    expect(hierarchy.reloadTimeMs.value).toBe(0);
+    const rate = actionsOf("guidance-ring-deploy-rate").find((a) => a.type === "modifyStat");
+    expect(rate?.type === "modifyStat" && rate.modifier.value.value).toBe(61);
+    expect(hierarchy.catalyst?.effect).toBe("timing");
+  });
+
+  it("the Guidance Ring: 3 stacks, the next shot deploys it for 20 s; rules as the import wrote them", () => {
+    expect(rules.map((r) => r.id)).toEqual([
+      "shot",
+      "seekers",
+      "seekers-two-rings",
+      "scorch-seekers",
+      "scorch-seekers-two-rings",
+      "guidance-ring-pre-stacked",
+      "guidance-ring-stands",
+      "guidance-ring-stands-rate",
+      "guidance-ring-count",
+      "guidance-ring-deploy",
+      "guidance-ring-deploy-rate",
+    ]);
+    const deploy = rules.find((r) => r.id === "guidance-ring-deploy")!;
+    const full = deploy.if?.find((c) => c.type === "counter");
+    expect(full?.type === "counter" && full.value.value).toBe(3);
+    const setMode = deploy.do.find((a) => a.type === "setMode");
+    expect(setMode?.type === "setMode" && setMode.durationMs?.value).toBe(20_000);
+    expect(hierarchy.playstyles?.map((p) => p.id)).toEqual(["one-ring", "two-rings"]);
+  });
+
+  it("takes no number from an Aegis row: both rows stay checks", () => {
+    expect(fittedRows(hierarchy).size).toBe(0);
+  });
+});

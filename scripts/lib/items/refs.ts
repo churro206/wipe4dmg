@@ -12,8 +12,9 @@
 //   $compendium[<entry>]("<quote>")         the same; entry by name or its start    derived
 //
 // An expression { expr, note } computes + - * / with brackets over references and numbers: derived,
-// or fitted with its row if an Aegis row is in it (at most one). A reference that does not resolve
-// is an error, never a gap.
+// or fitted with its row if an Aegis row is in it (at most one). Its sources are named in the order
+// of the references; as a damage value it takes the scale of the first (damageScaleOf), so the damage
+// stands first. A reference that does not resolve is an error, never a gap.
 
 import type {
   AegisSustainedSnapshot,

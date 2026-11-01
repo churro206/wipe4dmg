@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **135 Pakete**, 2 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **134 Pakete**, 3 Items, 4 Lücken.
 
 ## Pakete
 
@@ -65,7 +65,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Heartshadow | sword | void | heavy, Shot in the Dark, weaken excluded (1 Shot) | 2.754,9 | Quantum | 14 | 14 | 0,00 s | 26,2 s | – → 30 | – | Override: Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum; Katalysator-Timing: 15 Shots, Magazin 15, Zeit bis leer 28,2 s |
 | Heir Apparent | machineGun | solar | keine (1 Shot) | 56,1 | Quantum | 440 | 200 | 3,57 s | 36,3 s | 900 → 903 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Heirloom | bow | solar | uncharged (1 Shot) | 855,7 | Aegis | 20 | 20 | 0,00 s | 22,5 s | – → 51 | 0,0 % | Override: Ungeladen wie die Basiszeile (Sustained Base 856 = Weapons 855,7): 20 Pfeile in 22,5 s, Bogen ohne Reload. Timing mit Argent Quiver (Reload Speed) wie bei Aegis.; Timing aus Zeile heirloom-uncharged-argent-quiver (Override); Timing nur aus Aegis |
-| Hierarchy of Needs | bow | solar | average, one ring (6 Shots) | 223,0 | Quantum |  | 1 | 0,60 s | – | 44 → 44 | 0,0 % | Override: Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %).; Guidance Ring: Shot aus Quantum primaries-bow-hierarchy-of-needs (223), 3 Treffer aus primaries-bow-hierarchy-of-needs-guidance-ring (664 − 223) (Override); Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-bow-hierarchy-of-needs (Override); Timing nur aus Quantum; Katalysator-Timing: ∞ Shots, Magazin 1, Zeit bis leer – |
 | Ice Breaker | sniperRifle | solar | keine (1 Shot) | 1.223,4 | Aegis | 10 | 10 | 0,00 s | 11,1 s | 49 → 49 | 0,0 % | Override: Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).; Timing aus Zeile ice-breaker-sniper-s-meditation (Override); Timing nur aus Aegis |
 | Izanagi's Burden | sniperRifle | kinetic | keine (1 Shot) | 658,5 | Quantum | 20 | 4 | 1,98 s | 17,9 s | 90 → 114 | 0,1 % | Override: Catalyst: Honed Edge x4 +20 % (Clarity). Optimal gespielt schießt man damit Honed-Edge-Schüsse: Quantum „cata, 4x Honed Edge“ 14.910 gegen 13.180 normal, je 20 Shots, also ×1,131 pro Shot; Timing aus derselben Zeile (Reload 3,2 s).; Timing aus Zeile specials-sniper-rifle-izanagi-s-burden (Override); Timing nur aus Quantum; abgeleitete Feuerrate 114 statt 90 rpm; Katalysator-Timing: 20 Shots, Magazin 4, Zeit bis leer 22,8 s |
 | Jötunn | fusionRifle | solar | average, successive shots (10 Shots) | 1.048,3 | Aegis | 24 | 5 | 2,07 s | 31,7 s | – → 50 | 0,0 % | Override: Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; ⚠ Timing mit Katalysator: keine Quelle ohne; der Katalysator ändert laut Clarity Magazin oder Reload, nicht die Munition; Timing nur aus Aegis |
@@ -154,6 +153,7 @@ Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf di
 
 | Waffe | Datei | Prüfen |
 | --- | --- | --- |
+| Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
 | Truth | `src/data/items/weapons/truth.json` | – |
 
@@ -241,7 +241,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Heartshadow | heavy | Timing | Magazin 14 → 15, Shots 14 → 15, Zeit bis leer 26,2 → 28,2 s, rpm 30 → 30 | Increases reserves by 6 (57🠚63). |
 | Heir Apparent | heavy | keine | – | Arc Shield gains 75% [25%] Damage Resistance. |
 | Heirloom | special | keine | – | Scorch and Ignitions that originate from this weapon deal 5% increased damage. |
-| Hierarchy of Needs | primary | Timing | Magazin 1 → 1, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 44 → 61 | Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds: |
 | Izanagi's Burden | special | Schaden und Timing | Magazin 4 → 4, Shots 20 → 20, Zeit bis leer 17,9 → 22,8 s, rpm 114 → 114 | Increases the damage bonus of Honed Edge x4 by 20%, granting the following values: |
 | Jötunn | special | keine | – | Grants the Cornered trait: |
 | Khvostov 7G-0X | primary | keine | – | Scoring 25 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 🡅0.8% Super Energy. |
@@ -445,8 +444,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Ergo Sum | Transcendent | nicht modelliert, ohne Beleg |
 | Final Warning | ADS tap fire | nicht modelliert, ohne Beleg |
 | Finality's Auger | marked | nicht modelliert, ohne Beleg |
-| Hierarchy of Needs | 2 rings | nicht modelliert, ohne Beleg |
-| Hierarchy of Needs | fireteam scaling | nicht modelliert, ohne Beleg |
 | Ice Breaker | shatter ignition | nicht modelliert, ohne Beleg |
 | Malfeasance | blighted | nicht modelliert, ohne Beleg |
 | One Thousand Voices | blighted | nicht modelliert, ohne Beleg |
@@ -474,7 +471,6 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 | blighted | nicht modelliert | Malfeasance, One Thousand Voices |
 | Transcendent | nicht modelliert | Ergo Sum, Tessellation |
 | 1 mag | nicht modelliert | The Last Word |
-| 2 rings | nicht modelliert | Hierarchy of Needs |
 | ADS tap fire | nicht modelliert | Final Warning |
 | blight | nicht modelliert | Touch of Malice |
 | Bull Rider | nicht modelliert | The Huckleberry |
@@ -482,7 +478,6 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 | Cabal | nicht modelliert | Skyburner's Oath |
 | Celestial Nighthawk | Exotic-Rüstung | Still Hunt |
 | Fated Missile | nicht modelliert | The Jade Rabbit |
-| fireteam scaling | nicht modelliert | Hierarchy of Needs |
 | Grenades Prepped | nicht modelliert | Quicksilver Storm |
 | Hail the Storm | Artefakt | Salvation's Grip |
 | Harsh Refraction | Artefakt | Ager's Scepter |

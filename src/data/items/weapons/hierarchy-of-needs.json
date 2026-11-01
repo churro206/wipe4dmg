@@ -1,0 +1,249 @@
+{
+  "id": "hierarchy-of-needs",
+  "kind": "exoticWeapon",
+  "name": "Hierarchy of Needs",
+  "texts": [
+    { "source": "clarity", "entry": "Guidance Ring", "hash": "5e2c3974" },
+    { "source": "clarity", "entry": "Apollonic Tangent", "hash": "2c66ea00" },
+    { "source": "clarity", "entry": "Hierarchy of Needs Catalyst", "hash": "fd4df069" },
+    { "source": "compendium", "entry": "Hierarchy of Needs", "hash": "fb770e2b" }
+  ],
+  "chargeTimeMs": "$manifest[Hierarchy of Needs].stat(\"Draw Time\")",
+  "fireRateRpm": "$quantum[primaries-bow-hierarchy-of-needs].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-bow-hierarchy-of-needs].timing.magazine",
+  "totalShots": "$quantum[primaries-bow-hierarchy-of-needs].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-bow-hierarchy-of-needs].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Panoptic Tessellation, Hierarchy of Needs Catalyst",
+    "description": "Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds:\n• 40% reduced Hip-Fire Accuracy Cone\n• 50% decreased Draw Time\n• 100 Reload Speed\n• ?% decreased Reload Animation Duration",
+    "effect": "timing",
+    "timing": {
+      "magazine": "$quantum[primaries-bow-hierarchy-of-needs-guidance-ring-cata].timing.magazine",
+      "totalShots": "$quantum[primaries-bow-hierarchy-of-needs-guidance-ring-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[primaries-bow-hierarchy-of-needs-guidance-ring-cata].timing.reloadTimeMs"
+    }
+  },
+  "playstyles": [
+    { "id": "one-ring", "label": "One ring" },
+    { "id": "two-rings", "label": "Through two rings" }
+  ],
+  "parts": {
+    "shot": {
+      "name": "Arrow",
+      "damage": "$quantum[primaries-bow-hierarchy-of-needs].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "seekers": {
+      "name": "Guidance Ring seeker",
+      "damage": {
+        "expr": "($quantum[primaries-bow-hierarchy-of-needs-guidance-ring].precisionDamage - $quantum[primaries-bow-hierarchy-of-needs].precisionDamage) / $compendium[Hierarchy of Needs](\"Hierarchy of Needs releases 3 Seekers\")",
+        "note": "Quantum's arrow through the ring minus the arrow alone, shared by its seekers"
+      },
+      "delivery": "splash"
+    },
+    "seekers-two-rings": {
+      "name": "Through two rings",
+      "damage": {
+        "expr": "($quantum[primaries-bow-hierarchy-of-needs-guidance-ring].precisionDamage - $quantum[primaries-bow-hierarchy-of-needs].precisionDamage) / $compendium[Hierarchy of Needs](\"Hierarchy of Needs releases 3 Seekers\")",
+        "note": "the same seeker; a teammate's ring adds its own"
+      },
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    { "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "shot" }] },
+    {
+      "id": "seekers",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "two-rings", "not": true },
+        { "type": "mode", "id": "guidance-ring", "is": "up" }
+      ],
+      "do": [
+        {
+          "type": "spawn",
+          "part": "seekers",
+          "count": "$compendium[Hierarchy of Needs](\"Hierarchy of Needs releases 3 Seekers\")"
+        }
+      ]
+    },
+    {
+      "id": "seekers-two-rings",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "two-rings" },
+        { "type": "mode", "id": "guidance-ring", "is": "up" }
+      ],
+      "do": [
+        {
+          "type": "spawn",
+          "part": "seekers-two-rings",
+          "count": "$compendium[Hierarchy of Needs](\"up to a maximum of 6 Seekers per shot\")"
+        }
+      ],
+      "source": {
+        "name": "Item file hierarchy-of-needs",
+        "retrieved": "2026-10-30",
+        "status": "derived",
+        "quote": "up to 3 Guidance Rings can exist across a fireteam. Each Guidance Ring can stack.",
+        "note": "Derived: an arrow through the own ring and a teammate's (Aegis \"2 rings\"); paper probe 9 × 735 + 54 × 485 + 3 ignitions + burn = +0.3 % against that row"
+      }
+    },
+    {
+      "id": "scorch-seekers",
+      "on": { "on": "hit", "part": "seekers" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Apollonic Tangent](\"Each seeker applies 15 Scorch\")"
+        }
+      ]
+    },
+    {
+      "id": "scorch-seekers-two-rings",
+      "on": { "on": "hit", "part": "seekers-two-rings" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Apollonic Tangent](\"Each seeker applies 15 Scorch\")"
+        }
+      ]
+    },
+    {
+      "id": "guidance-ring-pre-stacked",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "pre-stacked" }],
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "guidance-ring-shots",
+          "by": "$clarity[Guidance Ring](\"Maximum of 3 Stacks\")"
+        }
+      ],
+      "source": {
+        "name": "Item file hierarchy-of-needs",
+        "retrieved": "2026-10-26",
+        "status": "derived",
+        "quote": "Guidance Ring charges persist through stow.",
+        "note": "Derived: built before the phase, the first arrow deploys the ring"
+      }
+    },
+    {
+      "id": "guidance-ring-stands",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "setup-stands" }],
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "guidance-ring-shots",
+          "by": "$clarity[Guidance Ring](\"Maximum of 3 Stacks\")"
+        },
+        {
+          "type": "setMode",
+          "mode": "guidance-ring",
+          "to": "up",
+          "durationMs": {
+            "expr": "$compendium[Hierarchy of Needs](\"Guidance Ring lasts for 20 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "guidance-ring-stands-rate",
+      "on": { "on": "phaseStart" },
+      "if": [
+        { "type": "playstyle", "id": "setup-stands" },
+        { "type": "hasItem", "id": "catalyst" }
+      ],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": "$quantum[primaries-bow-hierarchy-of-needs-guidance-ring-cata].rpm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "guidance-ring-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "guidance-ring-shots",
+          "op": "<",
+          "value": "$clarity[Guidance Ring](\"Maximum of 3 Stacks\")"
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "guidance-ring-shots" }],
+      "source": {
+        "name": "Item file hierarchy-of-needs",
+        "retrieved": "2026-10-26",
+        "status": "derived",
+        "quote": "While at 3 stacks, hip-firing a fully-drawn arrow spawns a Guidance Ring.",
+        "note": "Derived: 3 precision arrows charge the ring, the next hip-fire arrow deploys it without seekers; after 20 s a hip-fire arrow sets it again, aimed arrows in between (owner, 2026-10-26)"
+      }
+    },
+    {
+      "id": "guidance-ring-deploy",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "guidance-ring-shots",
+          "op": ">=",
+          "value": "$clarity[Guidance Ring](\"Maximum of 3 Stacks\")"
+        },
+        { "type": "mode", "id": "guidance-ring", "is": "up", "not": true }
+      ],
+      "do": [
+        {
+          "type": "setMode",
+          "mode": "guidance-ring",
+          "to": "up",
+          "durationMs": {
+            "expr": "$compendium[Hierarchy of Needs](\"Guidance Ring lasts for 20 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "guidance-ring-deploy-rate",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "guidance-ring-shots",
+          "op": ">=",
+          "value": "$clarity[Guidance Ring](\"Maximum of 3 Stacks\")"
+        },
+        { "type": "mode", "id": "guidance-ring", "is": "up", "not": true },
+        { "type": "hasItem", "id": "catalyst" }
+      ],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": "$quantum[primaries-bow-hierarchy-of-needs-guidance-ring-cata].rpm"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file hierarchy-of-needs",
+        "retrieved": "2026-10-26",
+        "status": "derived",
+        "quote": "Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds",
+        "note": "Derived: the ring and its seeker hits renew the halved draw time, so it holds from the first deployment on; the rate from Quantum's \"Guidance Ring, cata\""
+      }
+    }
+  ]
+}

@@ -9,9 +9,16 @@ const SCALE_BY_SOURCE: [prefix: string, scale: DamageScale][] = [
   ["Destiny Data Compendium", "compendium"],
 ];
 
-/** The scale of a damage value, or undefined if its source has no known scale. */
+/** An item's expression names its sources in order of their references (scripts/lib/items/refs.ts). */
+const EXPRESSION = "Expression over ";
+
+/**
+ * The scale of a damage value, or undefined if its source has no known scale. An expression takes
+ * the scale of its first source: the damage stands first, counts and factors follow.
+ */
 export function damageScaleOf(value: SourcedNumber): DamageScale | undefined {
-  return SCALE_BY_SOURCE.find(([prefix]) =>
-    value.source.name.startsWith(prefix),
-  )?.[1];
+  const name = value.source.name.startsWith(EXPRESSION)
+    ? value.source.name.slice(EXPRESSION.length)
+    : value.source.name;
+  return SCALE_BY_SOURCE.find(([prefix]) => name.startsWith(prefix))?.[1];
 }

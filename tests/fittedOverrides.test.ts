@@ -15,8 +15,6 @@ import { fittedRows } from "./lib/fittedRows";
 const NO_VALUE: Record<string, string> = {
   "pulse-rifle-outbreak-perfected-average-per-burst-no-nanites-appended-mag-up-to-rewind-end":
     "Aegis' unit differs by a factor of four; the override takes Quantum's 80 per bullet and quotes the row only for the conflict",
-  "bow-hierarchy-of-needs-average-2-rings-fireteam-scaling":
-    "backs the assumption '2 rings' (six seekers, Clarity); the values come from Quantum",
   "trace-rifle-ager-s-scepter-average-will-given-form":
     "cross-check of the catalyst factor +80 % from Clarity (critShot 222 against 561 ÷ 15.09), not its source",
 };
