@@ -13,6 +13,15 @@ Prüfstand (`tests/scenarios/`, `tests/scenarioBench.test.ts`, 26 von 30, Verhä
 - Ein globaler Parameter ändert sich nur über die Eichung (ab B5); bis dahin höchstens einmal je Block und nur mit Beleg aus mehreren Szenarien.
 - Abschlussbericht mit „Geeicht / Gelockert / Gestrichen / Unsicher“; Streichen und Lockern vorher fragen.
 
+## Reihenfolge (Review 2026-11-01, Inhaber)
+
+B3a → B3b → B4 (Format, drei Items) → P (Prüfstand ganzer Builds) → B6 (Breite als Item-Dateien) → C (Casts und Energie) → B5 (Eichung). Kein Merge, bis der Inhaber es sagt.
+
+- Bauplan und Aktionsliste bleiben: jede Aktion bildet eine Mechanik ab, die es im Spiel gibt (`addResource` = Energie für Frage 13), das ist kein Vorrat.
+- **Breite vor Eichung:** Die Eichung stellt θ gegen eine feste Regelstrecke (Bauplan Abschnitt 12). Fehlen Mechaniken (Lament 3L und 4L gleich, Heirloom-Ladestufen −36/−59 %, Still Hunt Celestial −92 %), würde θ sie verdecken. Deshalb B6 und C vor B5.
+- **Kennzahl über alle Pläne:** Abdeckung je Gruppe (`docs/product.md`, Rangfolge-Gate: Anteil der Aegis-Zeilen im Modell). Sie misst den Fortschritt zu Abnahme 3; Delta-Paare (I11) und Rangfolge messen die Qualität. Jeder Abschluss nennt beide.
+- Die Prüfmenge (11 Zeilen, 3 Delta-Paare) ist zu klein für eine Aussage, bis Breite und Stufe P sie füllen.
+
 ## Stufen
 
 ### B1 – Ein Kern (Sonnet, Aufräum-Block)
@@ -60,7 +69,7 @@ Zu beachten: Gleichstände wie heute (Schuss vor Treffern; Hierarchy: Schuss gen
 
 - Item-Schema, `$`-Verweise mit Resolver im Import (`scripts/lib/items/`), Text-Hash, Status `derived` statt `unverified` mit Notiz; kanonische Skala „Aegis visual“ mit Faktor je Quelle und Kategorie in θ.
 - Entscheidung an Zahlen: Waffen-Grundwerte aus Quantum oder per `$aegis`.
-- Erste Items: Truth, Still Hunt, Whirling Ovation, Polaris Lance, Hierarchy of Needs, Barrow-Dyad, Gjallarhorn, Peacekeepers, Ember of Ashes, Well of Radiance; ihre Overrides fallen weg. Nicht migrierte Items rechnen mit den alten Paketen.
+- Erste Items als Probe des Formats: Polaris Lance, Truth, Hierarchy of Needs (decken `spawn`, Zähler, Mode ab); ihre Overrides fallen weg. Die übrigen sieben (Still Hunt, Whirling Ovation, Barrow-Dyad, Gjallarhorn, Peacekeepers, Ember of Ashes, Well of Radiance) liegen schon unter 2 % und wandern mit ihrer Kategorie in B6. Nicht migrierte Items rechnen mit den alten Paketen.
 - Gate: jedes Item löst auf; Delta-Paare nicht schlechter; Text-Hash-Test.
 - Invarianten: I1 (Resolver), I4, I5, I6.
 
@@ -68,20 +77,32 @@ Zu beachten: Gleichstände wie heute (Schuss vor Treffern; Hierarchy: Schuss gen
 
 Was B1–B4 hinterlassen: tote Pfade im Import, doppelte Typen, Dateien über 1000 Zeilen, die beim Arbeiten stören.
 
-### B5 – Eichung als Skript (Opus)
+### P – Prüfstand ganzer Builds (Opus plant, Sonnet setzt um; nach B4)
 
+- Szenarien aus Aegis Sustained und Swap (ganze Builds, kein Item verweist auf sie; sie gehen in die Rangfolge, Bauplan Abschnitt 12) und aus Abilities und Testing (offen aus B2, Bauplan Abschnitt 13).
+- Kennzahlen je Gruppe (Spalte „Prüft“ in `docs/product.md`): Abdeckung, Spearman, Delta-Paare.
+- Gate: Kennzahlen der Weapons-Zeilen unverändert; Zeilen mit fehlendem Schalter auf der Liste.
+
+### C – Casts und Energie (Opus plant, Sonnet setzt um; nach B6)
+
+- Policy für Casts und Energie im Lauf statt vorab geplanter Casts (Bauplan Abschnitt 7, 13); `addResource` im Host. Trägt die Fragen 3, 6 und 13.
+- Gate: Rangfolge der Gruppen Supers und Abilities nicht schlechter; Laufzeit des Optimizers.
+
+### B5 – Eichung als Skript (Opus; zuletzt)
+
+- Erst wenn B6 und C die Abdeckung je Gruppe hochgebracht haben; sonst gleicht θ fehlende Mechaniken aus.
 - `npm run calibrate`: kleinste Quadrate über die Eichmenge für θ (Ignition-Cooldown, Burn, Skalen je Quelle und Kategorie) mit Grenzen aus den Quellen; Totzone 2 %; schreibt `src/data/theta.json` (Status `fitted`, Datum) und einen Bericht.
 - Gate: Kennzahlen der Prüfmenge nicht schlechter; θ innerhalb der Grenzen oder gemeldet.
 - Invarianten: I9.
 
-### B6 ff. – Migration nach Kategorie (Sonnet, je Block eine Kategorie)
+### B6 ff. – Breite und Migration nach Kategorie (Sonnet, je Block eine Kategorie; nach P, vor B5)
 
-Reihenfolge nach Zeilen im Rangfolge-Gate: übrige Exotic-Waffen mit ihren Spielweisen (Kombos, Volleys, Ladestufen), Exotic Armor und Class-Item-Perks, Aspects und Fragments, Artifact-Perks und Buffs (Court), Abilities und Supers (Compendium-Teile), Legendary Frames (2.0). Je Kategorie eine Regel für alle Items; was nicht passt, bleibt Paket mit Grund. Nach der letzten Kategorie fallen `weaponPackages.ts`, `weapon-overrides.json` und die Regelketten weg.
+Neue und migrierte Items als Item-Dateien. Zuerst, was heute fehlt oder weit abweicht: Ladestufen (Heirloom), Schwert-Kombos (The Lament), die größten Gruppen aus „Missing switches“ im Prüfstand, fehlende Heavy- und Special-Zeilen. Danach nach Zeilen im Rangfolge-Gate: übrige Exotic-Waffen mit ihren Spielweisen (Kombos, Volleys, Ladestufen), Exotic Armor und Class-Item-Perks, Aspects und Fragments, Artifact-Perks und Buffs (Court), Abilities und Supers (Compendium-Teile), Legendary Frames (2.0). Je Kategorie eine Regel für alle Items; was nicht passt, bleibt Paket mit Grund. Nach der letzten Kategorie fallen `weaponPackages.ts`, `weapon-overrides.json` und die Regelketten weg.
 
 ### Später
 
-- Policy für Casts und Energie im Lauf (alte S5), mit dem Optimizer für Abilities (2.0).
-- Merge nach `master` auf Ansage des Inhabers; Vorschlag: nach B4 oder B5, wenn die Kennzahlen der Prüfmenge stehen.
+- Optimizer für Abilities (2.0), auf Stufe C.
+- Merge nach `master` nur auf Ansage des Inhabers (2026-11-01: noch nicht).
 
 ## Doku und Verifikation je Stufe
 

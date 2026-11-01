@@ -29,11 +29,12 @@ Branch `ground-up-model`, kein Merge ohne Ansage. Jede Abweichung vom Bauplan vo
 
 ## Reihenfolge
 
-B3a, B3b, Szenarien aus Abilities/Testing vor B5, B4–B6 (`ground-up-model.md`, Aufräum-Block nach B4). Danach `sources-2026-10.md`; 2.0 in `docs/product.md`.
+B3a → B3b → B4 (Format, Polaris/Truth/Hierarchy) → Aufräumen → P (Prüfstand: Sustained, Swap, Abilities, Testing) → B6 (Breite als Item-Dateien) → C (Casts und Energie) → B5 (Eichung zuletzt). Begründung und Kennzahl (Abdeckung je Gruppe) in `ground-up-model.md`, „Reihenfolge“ (Review 2026-11-01). Danach `sources-2026-10.md`; 2.0 in `docs/product.md`.
 
 ## Entscheidungen des Inhabers
 
-- Bauplan und ADR 0018 haben hohen Stellenwert: so eng wie möglich folgen. Merge nur auf Ansage.
+- Bauplan und ADR 0018 haben hohen Stellenwert: so eng wie möglich folgen. Merge nur auf Ansage (2026-11-01: noch nicht).
+- Aktionen für bekannte Mechaniken (`addResource`, `modifyAction`, `actor`) sind kein Vorrat; „Vorrat“ heißt Mechaniken, die es im Spiel nicht gibt.
 - Exotics ohne Schadenswirkung fallen weg. Ein Boss, keine Adds. Kill-Buffs nur mit „Vorher aufgebaut“.
 - Eigene Quellen nur für die Dauer aus ihrem Text; Buffs von Teammates die ganze Phase; Teammates dürfen eigene Abilities ändern.
 - Energie-Mods abgelehnt (`19cddbb`). Links ohne Rückwärtskompatibilität. Legendary Frames für 2.0. Commit je Teil.

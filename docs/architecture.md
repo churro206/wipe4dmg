@@ -375,7 +375,8 @@ Regelkreis der Eichung (Wirkungsplan nach DIN IEC 60050-351):
 ## 13 Offen bis zur Stufe
 
 - Dateiformat und Ordner der Items (B4), Grenzen von θ (B5). Entschieden in B2: Los FNV-1a der Zeilen-ID, Rest mod 10 < 7 → Eichmenge. Entschieden in B3: Aktionsliste und Schema der Regeln (Abschnitt 6).
-- Szenarien aus Aegis Abilities und Testing (offen aus B2): Ability-Zeilen brauchen einen eigenen Weg (Differenz mit und ohne Cast, Burn-Schalter „ohne Burn“ im Szenario, weil Aegis' Pakete nur Ignitions enthalten); bis dahin prüft der Ability-Gate nur den Rückweg der Pakete (`tests/abilityGate.test.ts`, ohne Burn-Ticks).
+- Szenarien aus Aegis Sustained und Swap (ganze Builds, nur Rangfolge) in Stufe P (Plan, Reihenfolge vom 2026-11-01).
+- Szenarien aus Aegis Abilities und Testing (offen aus B2, Stufe P): Ability-Zeilen brauchen einen eigenen Weg (Differenz mit und ohne Cast, Burn-Schalter „ohne Burn“ im Szenario, weil Aegis' Pakete nur Ignitions enthalten); bis dahin prüft der Ability-Gate nur den Rückweg der Pakete (`tests/abilityGate.test.ts`, ohne Burn-Ticks).
 - Quelle der Waffen-Grundwerte (B4): Quantum hält die Aegis-Zeilen als Prüfung frei, `$aegis` ist aktueller, macht die Zeile aber zur Eichung. Entscheidung an Zahlen (wie viele Delta-Paare bleiben, wie weit Quantum und Aegis auseinanderliegen); bis dahin „Aegis vor Quantum“.
 - Policy für Casts und Energie im Lauf: erst mit dem Optimizer für Abilities (2.0).
 
