@@ -26,9 +26,10 @@ import type {
   WeaponOption,
   WeaponType,
 } from "../../src/data/schema.ts";
+import { PLAIN_SHOT_ID } from "../../src/data/schema.ts";
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
-import { partRules } from "./partRules.ts";
+import { type PartPlaystyle, partRules, playstyleRateRule } from "./partRules.ts";
 import { catalystReloadFactor, reloadFormulaOf } from "./reloadFormulas.ts";
 import {
   abilityKindsNamed,
@@ -2051,19 +2052,6 @@ export function buildWeaponImport(
                 })),
               }
             : {}),
-          playstyle: {
-            id: rule.id,
-            replaces: "shot",
-            ...(rule.intervalSeconds
-              ? {
-                  fireRateRpm: {
-                    value: Number((60 / rule.intervalSeconds).toFixed(3)),
-                    source: setupSource(`60 ÷ ${rule.intervalSeconds} s per shot`),
-                  },
-                }
-              : {}),
-            ...(rule.selectable ? { selectable: true } : {}),
-          },
           canPrecision: false,
           requiresCatalyst: false,
         })),
@@ -2073,7 +2061,6 @@ export function buildWeaponImport(
                 id: SETUP_HITS_ID,
                 name: `${setupRule.name} hits`,
                 hits: setupRule.hits,
-                playstyle: undefined,
               },
               ...(setupRule.playstyle
                 ? [
@@ -2081,15 +2068,10 @@ export function buildWeaponImport(
                       id: `${SETUP_HITS_ID}-${setupRule.playstyle.id}`,
                       name: setupRule.playstyle.name,
                       hits: setupRule.playstyle.hits,
-                      playstyle: {
-                        id: setupRule.playstyle.id,
-                        replaces: SETUP_HITS_ID,
-                        selectable: true,
-                      },
                     },
                   ]
                 : []),
-            ].map(({ id, name, hits, playstyle }) => ({
+            ].map(({ id, name, hits }) => ({
                 id,
                 name,
                 delayMs: { value: 0, source: setupSource() },
@@ -2099,7 +2081,6 @@ export function buildWeaponImport(
                 canPrecision: false,
                 requiresCatalyst: false,
                 requiresSetup: true,
-                ...(playstyle ? { playstyle } : {}),
               }))
           : []),
       ],
@@ -2203,9 +2184,6 @@ export function buildWeaponImport(
           note: inputs.manifestVersion,
         },
       })),
-      ...(override?.playstyleBaseName
-        ? { playstyleBaseName: override.playstyleBaseName }
-        : {}),
       ...(entry.includedEffectIds.length > 0
         ? { includedEffectIds: entry.includedEffectIds }
         : {}),
@@ -2260,8 +2238,47 @@ export function buildWeaponImport(
         : {}),
     };
 
+    // The playstyles (Weapon.playstyles): the shots of a playstyle take the place of the plain shot,
+    // an arrow through two rings that of the hits through one ring; the rate is a rule
+    const playstyleList = [
+      ...playstyles.map(({ rule }) => ({
+        id: rule.id,
+        label: rule.name,
+        ...(rule.selectable ? { selectable: true } : {}),
+      })),
+      ...(setupRule?.playstyle
+        ? [{ id: setupRule.playstyle.id, label: setupRule.playstyle.name, selectable: true }]
+        : []),
+    ];
+    const shotPlaystyles = playstyles.map(({ rule }) => rule.id);
+    const partPlaystyles: Record<string, PartPlaystyle> = {
+      ...(shotPlaystyles.length > 0 ? { shot: { except: shotPlaystyles } } : {}),
+      ...Object.fromEntries(shotPlaystyles.map((id) => [id, { only: id }])),
+      ...(setupRule?.playstyle
+        ? {
+            [SETUP_HITS_ID]: { except: [setupRule.playstyle.id] },
+            [`${SETUP_HITS_ID}-${setupRule.playstyle.id}`]: { only: setupRule.playstyle.id },
+          }
+        : {}),
+    };
+    if (playstyleList.length > 0 && override?.playstyleBaseName) {
+      playstyleList.unshift({ id: PLAIN_SHOT_ID, label: override.playstyleBaseName });
+    }
+    if (playstyleList.length > 0) weapon.playstyles = playstyleList;
     // The parts are set off by rules (architecture section 6): one `spawn` per part on every shot
-    weapon.rules = weapon.damageInstances.flatMap(partRules);
+    weapon.rules = [
+      ...weapon.damageInstances.flatMap((part) => partRules(part, partPlaystyles[part.id])),
+      ...playstyles.flatMap(({ rule }) =>
+        rule.intervalSeconds
+          ? [
+              playstyleRateRule(rule.id, {
+                value: Number((60 / rule.intervalSeconds).toFixed(3)),
+                source: setupSource(`60 ÷ ${rule.intervalSeconds} s per shot`),
+              }),
+            ]
+          : [],
+      ),
+    ];
     entry.status = "package";
     packages.push(weapon);
   }

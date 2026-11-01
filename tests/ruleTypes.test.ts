@@ -96,13 +96,11 @@ describe("rule types (I3)", () => {
 // modifier; remove an entry from REMAINING when its field is gone.
 const SPECIAL_FIELDS = [
   "Weapon.setup",
-  "Weapon.playstyleBaseName",
   "Weapon.intrinsicParts",
   "DamageInstance.requiresCatalyst",
   "DamageInstance.requiresSetup",
   "DamageInstance.everyNthShot",
   "DamageInstance.tickFactors",
-  "DamageInstance.playstyle",
   "WeaponOption.windowSeconds",
   "MultiplierPart.hitStacks",
   "Ability.refillsMagazine",

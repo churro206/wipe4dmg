@@ -70,17 +70,6 @@ export const DamageInstance = z.object({
   everyNthShot: SourcedNumber.optional(),
   // A factor per tick (the length of `ticks`), e.g. the three Golden Gun shots x1, x1.45, x1.9
   tickFactors: z.array(SourcedNumber).optional(),
-  // Only in this playstyle of the build (Build.playstyle); it takes the place of the instance `replaces`.
-  // The weapon fires at `fireRateRpm` in it, e.g. a lower charge of Whirling Ovation; `selectable`:
-  // the build picker offers it (the instance's name is its label).
-  playstyle: z
-    .object({
-      id: z.string(),
-      replaces: z.string().optional(),
-      fireRateRpm: SourcedNumber.optional(),
-      selectable: z.boolean().optional(),
-    })
-    .optional(),
   delivery: Delivery.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
@@ -806,6 +795,9 @@ export const Rule = z.object({
 });
 export type Rule = z.infer<typeof Rule>;
 
+/** The entry of `Weapon.playstyles` that only labels the plain shot in the build picker. */
+export const PLAIN_SHOT_ID = "default";
+
 export const Weapon = z.object({
   id: z.string(),
   code: z.number().int().positive(), // short code for build links; never reused
@@ -843,8 +835,13 @@ export const Weapon = z.object({
     }),
   ),
   setup: WeaponSetup.optional(),
-  // Label of the plain shot where the build picker offers playstyles (DamageInstance.playstyle), e.g. "Full charge"
-  playstyleBaseName: z.string().optional(),
+  // The playstyles of the weapon (Build.playstyle), e.g. the charge levels of Whirling Ovation. The
+  // rules read them with the condition `playstyle`; a playstyle's shot takes the place of the plain
+  // one by `playstyle not` on the rule of the shot, its rate is a `modifyStat` on `phaseStart`.
+  // `selectable`: the build picker offers it. The entry `default` only labels the plain shot there.
+  playstyles: z
+    .array(z.object({ id: z.string(), label: z.string(), selectable: z.boolean().optional() }))
+    .optional(),
   // Imported packages (ADR 0013): modelled effects Aegis measured inside the value per shot.
   includedEffectIds: z.array(z.string()).optional(),
   // Imported packages: catalyst, perks and mods as factors from the "with / without" rows.

@@ -22,12 +22,12 @@
 
 import {
   Build,
-  type DamageInstance,
   type FormerCodeReason,
   type GuardianClass,
   type ProviderKind,
   type Subclass,
-} from "../data/schema";
+  type Weapon,
+}from "../data/schema";
 import { playstylesOf } from "./playstyle";
 import { MS_PER_SECOND } from "./units";
 
@@ -52,8 +52,8 @@ const BASE64URL =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
 export type LinkRegistry = {
-  // damageInstances: for the weapon's playstyles; omitted: none
-  weapons: { id: string; code: number; damageInstances?: DamageInstance[] }[];
+  // playstyles: the weapon's playstyles; omitted: none
+  weapons: { id: string; code: number; playstyles?: Weapon["playstyles"] }[];
   effects: {
     id: string;
     code: number;
@@ -207,8 +207,7 @@ function writeBuild(bytes: number[], build: Build, registry: LinkRegistry) {
 
 const playstyleIdsOf = (registry: LinkRegistry, weaponId: string) =>
   playstylesOf({
-    damageInstances:
-      registry.weapons.find((w) => w.id === weaponId)?.damageInstances ?? [],
+    playstyles: registry.weapons.find((w) => w.id === weaponId)?.playstyles,
   }).map((p) => p.id);
 
 const fail = (message: string): never => {

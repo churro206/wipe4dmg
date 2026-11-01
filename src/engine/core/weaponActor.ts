@@ -2,7 +2,7 @@
 // setup) as a state machine. Each call of next() makes the next shot from the state the last one
 // left; timing rules are those of simulate.ts (ADR 0001), so both cores plan the same shots.
 
-import type { Weapon } from "../../data/schema";
+import type { StatModifier, Weapon } from "../../data/schema";
 import { appliesToWeaponType, type ActiveParts } from "../effectParts";
 import { requireValue } from "../requireValue";
 import type { AbilityCast, SuperWindow } from "./types";
@@ -30,6 +30,8 @@ export type ActorInput = {
   abilities: AbilityCast[];
   superWindows: SuperWindow[];
   partsAt: (timeMs: number) => ActiveParts;
+  // The stat modifiers of the weapon's rules that are on at a time (e.g. the rate of a playstyle)
+  statModifiersAt?: (timeMs: number) => StatModifier[];
 };
 
 export function createWeaponActor(input: ActorInput) {
@@ -62,7 +64,17 @@ export function createWeaponActor(input: ActorInput) {
       `totalShots must be a non-negative integer, got ${totalShots}`,
     );
   }
-  const shotIntervalMs = MS_PER_MINUTE / fireRateRpm;
+  // The rate: the latest `rpm` modifier of the rules that is on, else the weapon's (with its catalyst)
+  const rpmAt = (timeMs: number, own: number) => {
+    const modifiers = (input.statModifiersAt?.(timeMs) ?? []).filter(
+      (m) =>
+        m.stat === "rpm" && appliesToWeaponType(m.weaponTypes, weapon.weaponType),
+    );
+    const latest = modifiers[modifiers.length - 1];
+    return latest?.stat === "rpm" ? requireValue(latest.value, "rpm") : own;
+  };
+  const shotIntervalMsAt = (timeMs: number) =>
+    MS_PER_MINUTE / rpmAt(timeMs, fireRateRpm);
   const damagePhaseMs = input.damagePhaseSeconds * MS_PER_SECOND;
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
 
@@ -124,6 +136,7 @@ export function createWeaponActor(input: ActorInput) {
   // pay. Returns the extra time and the damage factor of the shot.
   const holdAt = (timeMs: number): { holdMs: number; factor: number } => {
     const none = { holdMs: 0, factor: 1 };
+    const shotIntervalMs = shotIntervalMsAt(timeMs);
     if (weapon.ammo !== "primary") return none;
     // Keyword damage per shot cannot be weighed by the rate below (see simulate.ts).
     if (weapon.intrinsicParts.some((p) => p.type === "appliesKeyword"))
@@ -184,13 +197,16 @@ export function createWeaponActor(input: ActorInput) {
   const setupDurationMs = setup
     ? requireValue(setup.durationMs, "durationMs")
     : 0;
-  const ownIntervalMs =
-    MS_PER_MINUTE / requireValue(weapon.fireRateRpm, "fireRateRpm");
+  const ownRpm = requireValue(weapon.fireRateRpm, "fireRateRpm");
   let deployedMs: number | undefined = setup && input.setupDeployed ? 0 : undefined;
-  const intervalMs = () =>
-    setup?.catalystTimingOnceDeployed && deployedMs === undefined
-      ? ownIntervalMs
-      : shotIntervalMs;
+  const intervalMs = (timeMs: number) =>
+    MS_PER_MINUTE /
+    rpmAt(
+      timeMs,
+      setup?.catalystTimingOnceDeployed && deployedMs === undefined
+        ? ownRpm
+        : fireRateRpm,
+    );
 
   let index = 0;
   let shotMs = chargeTimeMs;
@@ -222,7 +238,7 @@ export function createWeaponActor(input: ActorInput) {
     let reloadStartMs: number | undefined;
     if (index > 0) {
       const previousMs = shotMs;
-      shotMs += intervalMs();
+      shotMs += intervalMs(previousMs);
       if (leftInMagazine === 0 && !noReloadAt(previousMs)) {
         const readyMs = shotMs + reloadMsAt(previousMs);
         const refillMs = refillBefore(previousMs, readyMs);

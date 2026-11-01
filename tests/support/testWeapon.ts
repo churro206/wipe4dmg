@@ -3,7 +3,7 @@
 // Its numbers are not game values and never leave the tests.
 
 import type { SourcedNumber, Weapon } from "../../src/data/schema";
-import { partRules } from "../../scripts/lib/partRules";
+import { partRules, playstyleRateRule, type PartPlaystyle } from "../../scripts/lib/partRules";
 
 const testValue = (value: number): SourcedNumber => ({
   value,
@@ -14,10 +14,21 @@ const testValue = (value: number): SourcedNumber => ({
   },
 });
 
-/** The weapon with the rules that set off its parts, like the import writes them (partRules). */
-export const withPartRules = (weapon: Weapon): Weapon => ({
+/**
+ * The weapon with the rules that set off its parts, like the import writes them (partRules).
+ * `playstyles` says which parts belong to a playstyle (by part id) and the rate a playstyle fires at.
+ */
+export const withPartRules = (
+  weapon: Weapon,
+  playstyles: { parts?: Record<string, PartPlaystyle>; rates?: Record<string, number> } = {},
+): Weapon => ({
   ...weapon,
-  rules: weapon.damageInstances.flatMap(partRules),
+  rules: [
+    ...weapon.damageInstances.flatMap((part) => partRules(part, playstyles.parts?.[part.id])),
+    ...Object.entries(playstyles.rates ?? {}).map(([id, rpm]) =>
+      playstyleRateRule(id, testValue(rpm)),
+    ),
+  ],
 });
 
 export const testWeapon: Weapon = {

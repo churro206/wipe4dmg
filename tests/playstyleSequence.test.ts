@@ -1,10 +1,11 @@
 // A playstyle of the weapon that replaces its shot by a sequence of hits with a factor each (ADR 0017,
 // stage S3), e.g. the three Golden Gun shots of Still Hunt (x1, x1.45, x1.9), or by a shot at its own
-// rate (stage S4), e.g. a lower charge of Whirling Ovation.
+// rate (stage S4), e.g. a lower charge of Whirling Ovation. Since ADR 0018 B3a step 2 the weapon lists
+// its playstyles, the parts carry the condition `playstyle` and the rate is a `modifyStat` rule.
 
 import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
-import { playstylesOf } from "../src/engine/playstyle";
+import { playstylesOf, plainShotLabel } from "../src/engine/playstyle";
 import { simulate } from "../src/engine/simulate";
 import { testWeapon, withPartRules } from "./support/testWeapon";
 
@@ -13,34 +14,44 @@ const sourced = (value: number): SourcedNumber => ({
   source: { name: "test", url: "", retrieved: "2026-10-30", status: "unverified" },
 });
 
-const sniper: Weapon = withPartRules({
-  ...testWeapon,
-  magazine: sourced(3),
-  damageInstances: [
-    testWeapon.damageInstances[0],
+const sniper: Weapon = {
+  ...withPartRules(
     {
-      ...testWeapon.damageInstances[0],
-      id: "goldenGun",
-      damagePerTick: sourced(2000),
-      ticks: sourced(3),
-      tickIntervalMs: sourced(500),
-      tickFactors: [sourced(1), sourced(1.5), sourced(2)],
-      playstyle: { id: "golden-gun", replaces: "shot" },
+      ...testWeapon,
+      magazine: sourced(3),
+      damageInstances: [
+        testWeapon.damageInstances[0],
+        {
+          ...testWeapon.damageInstances[0],
+          id: "goldenGun",
+          damagePerTick: sourced(2000),
+          ticks: sourced(3),
+          tickIntervalMs: sourced(500),
+          tickFactors: [sourced(1), sourced(1.5), sourced(2)],
+        },
+        {
+          ...testWeapon.damageInstances[0],
+          id: "quickShot",
+          name: "Quick shot",
+          damagePerTick: sourced(400),
+        },
+      ],
     },
     {
-      ...testWeapon.damageInstances[0],
-      id: "quickShot",
-      name: "Quick shot",
-      damagePerTick: sourced(400),
-      playstyle: {
-        id: "quick",
-        replaces: "shot",
-        fireRateRpm: sourced(120),
-        selectable: true,
+      parts: {
+        shot: { except: ["golden-gun", "quick"] },
+        goldenGun: { only: "golden-gun" },
+        quickShot: { only: "quick" },
       },
+      rates: { quick: 120 },
     },
+  ),
+  playstyles: [
+    { id: "default", label: "Plain" },
+    { id: "golden-gun", label: "Golden Gun" },
+    { id: "quick", label: "Quick shot", selectable: true },
   ],
-});
+};
 
 describe("playstyle sequence", () => {
   const run = simulate;
@@ -68,6 +79,11 @@ describe("playstyle sequence", () => {
     expect(hits.map((d) => d.timeMs)).toEqual([0, 500, 1000]);
   });
 
+  it("keeps the rate of the weapon in the plain shot", () => {
+    const hits = run(sniper, 1.2, [], [], {}).damageInstances;
+    expect(hits.map((d) => d.timeMs)).toEqual([0, 1000]);
+  });
+
   it("ignores a playstyle the weapon does not have", () => {
     expect(damages("shot", { playstyle: "other" }).map((d) => d.damage)).toEqual([1000]);
   });
@@ -76,5 +92,10 @@ describe("playstyle sequence", () => {
 describe("playstylesOf", () => {
   it("offers only the selectable playstyles", () => {
     expect(playstylesOf(sniper)).toEqual([{ id: "quick", name: "Quick shot" }]);
+  });
+
+  it("labels the plain shot with the entry default", () => {
+    expect(plainShotLabel(sniper)).toBe("Plain");
+    expect(plainShotLabel({})).toBeUndefined();
   });
 });

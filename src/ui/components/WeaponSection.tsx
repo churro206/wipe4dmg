@@ -1,5 +1,5 @@
 import type { Weapon } from "../../data/schema";
-import { playstylesOf } from "../../engine/playstyle";
+import { plainShotLabel, playstylesOf } from "../../engine/playstyle";
 import { hasCatalyst } from "../../engine/weaponInfo";
 import { weapons } from "../data";
 import { describeCatalyst } from "../describe";
@@ -84,7 +84,7 @@ export function WeaponSection({
         <SegmentedControl
           label="Playstyle"
           options={[
-            { value: "", label: weapon.playstyleBaseName ?? "Default" },
+            { value: "", label: plainShotLabel(weapon) ?? "Default" },
             ...playstyles.map((p) => ({ value: p.id, label: p.name })),
           ]}
           value={playstyles.some((p) => p.id === playstyle) ? playstyle! : ""}

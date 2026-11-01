@@ -30,7 +30,6 @@ import type {
   SimulationResult,
   TimedDamageInstance,
 } from "./types";
-import { withPlaystyle } from "../playstyle";
 import { createContext, type ShotHistory } from "./context";
 import { damageOf } from "./formula";
 import {
@@ -47,13 +46,12 @@ const SHOT_GROUP = -1;
 const PHASE_START_GROUP = -2;
 
 export function simulate(
-  plainWeapon: Weapon,
+  weapon: Weapon,
   damagePhaseSeconds: number,
   effects: Effect[] = [],
   buckets: Bucket[] = [],
   options: SimulationOptions = {},
 ): SimulationResult {
-  const weapon = withPlaystyle(plainWeapon, options.playstyle);
   const history: ShotHistory = { shots: [], holdFactors: [], partHitsMs: [] };
   const superWindows = superWindowsOf(options.abilities ?? []);
   const context = createContext(
@@ -76,6 +74,8 @@ export function simulate(
     abilities: options.abilities ?? [],
     superWindows,
     partsAt,
+    // The rules come after the actor and need it (refill); they are asked only once a shot is planned
+    statModifiersAt: (timeMs) => ruleEngine.statModifiersAt(weapon.id, timeMs),
   });
   const { isInPhase } = actor;
 
