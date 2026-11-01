@@ -224,9 +224,10 @@ export function simulate(
         const instance = partsById.get(part);
         if (!instance) throw new Error(`A rule spawns the unknown part "${part}"`);
         const damage = requireValue(instance.damagePerTick, "damagePerTick");
-        const first = timeMs + (delayMs ?? requireValue(instance.delayMs, "delayMs"));
-        const every = intervalMs ?? requireValue(instance.tickIntervalMs, "tickIntervalMs");
-        const hits = count ?? requireValue(instance.ticks, "ticks");
+        // What the rule omits is 0 ms delay, one hit, no interval (section 6); never the part's own
+        const first = timeMs + (delayMs ?? 0);
+        const every = intervalMs ?? 0;
+        const hits = count ?? 1;
         const { schedule } = current();
         for (let tick = 0; tick < hits; tick++) {
           const atMs = first + tick * every;

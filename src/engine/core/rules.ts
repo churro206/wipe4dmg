@@ -88,8 +88,8 @@ export type RuleContext = {
 
 /** What the actions change in the world; times are absolute (event time plus delay). */
 export type RuleHost = {
-  // Hits of one of the owner's parts. What the rule omits (delay, count, interval) the host takes
-  // from the part itself; timeMs is the time of the event.
+  // Hits of one of the owner's parts. What the rule omits (delay, count, interval) is 0 ms, one
+  // hit and no interval (section 6); timeMs is the time of the event.
   spawn: (spawn: {
     ownerId: string;
     part: string;

@@ -185,6 +185,28 @@ describe("Polaris Lance as rules (section 11)", () => {
     expect(() => run(empty, 3, false)).toThrow(/B3b/);
   });
 
+  it("spawn: what the rule omits is 0 ms delay and one hit, not the values of the part", () => {
+    const spawned = (action: Rule["do"][number]) =>
+      Weapon.parse({
+        ...base,
+        damageInstances: [
+          { ...part("shot", 100, true), delayMs: n(300), ticks: n(3), tickIntervalMs: n(50) },
+        ],
+        rules: [{ id: "s", on: { on: "phaseStart" }, do: [action] }],
+      });
+    expect(timesOf(run(spawned({ type: "spawn", part: "shot" }), 1, false), "shot")).toEqual([0]);
+    expect(
+      timesOf(
+        run(
+          spawned({ type: "spawn", part: "shot", delayMs: n(300), count: n(3), intervalMs: n(50) }),
+          1,
+          false,
+        ),
+        "shot",
+      ),
+    ).toEqual([300, 350, 400]);
+  });
+
   it("uses no rules for a weapon without them", () => {
     const result = run(Weapon.parse({ ...base, damageInstances: [part("shot", 100, true)] }), 2, false);
     expect(timesOf(result, "shot")).toEqual([0, 400, 800, 1200, 1600, 2000]);
