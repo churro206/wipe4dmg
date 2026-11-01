@@ -279,7 +279,7 @@ export function simulate(
             ),
         });
       },
-      refill: notYet("The action refill"),
+      refill: ({ rounds, timeMs }) => actor.refill(timeMs, rounds),
       damage: notYet("The action damage"),
       addResource: notYet("The action addResource"),
       // A timer of the engine itself, e.g. the end of a mode: it comes back as an event

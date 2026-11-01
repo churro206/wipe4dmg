@@ -57,6 +57,7 @@ const base = {
 const precisionHit = { on: "hit", part: "shot", precision: true } as const;
 const rules: Rule[] = [
   { id: "shot", on: { on: "shot" }, do: [{ type: "spawn", part: "shot" }] },
+  { id: "refill", on: precisionHit, do: [{ type: "refill", rounds: n(1) }] },
   {
     id: "count",
     on: precisionHit,
@@ -151,6 +152,37 @@ describe("Polaris Lance as rules (section 11)", () => {
     expect(key(run(withRules, seconds, withEmber))).toEqual(
       key(run(legacy, seconds, withEmber)),
     );
+  });
+
+  it("refill: a precision hit gives a round back, so a small magazine never runs dry", () => {
+    const small = (rulesOfWeapon: Rule[]) =>
+      Weapon.parse({
+        ...base,
+        magazine: n(2),
+        reloadTimeMs: n(2000),
+        damageInstances: [part("shot", 100, true)],
+        rules: rulesOfWeapon,
+      });
+    const shotRule = rules[0];
+    const refillRule = rules[1];
+    expect(timesOf(run(small([shotRule, refillRule]), 2, false), "shot")).toEqual([
+      0, 400, 800, 1200, 1600, 2000,
+    ]);
+    // without the refill the magazine empties after two shots and the reload takes 2 s
+    expect(timesOf(run(small([shotRule]), 3, false), "shot")).toEqual([
+      0, 400, 2800,
+    ]);
+  });
+
+  it("refill during a reload that is planned already is an error until B3b", () => {
+    const empty = Weapon.parse({
+      ...base,
+      magazine: n(1),
+      reloadTimeMs: n(2000),
+      damageInstances: [part("shot", 100, true)],
+      rules: [rules[0], rules[1]],
+    });
+    expect(() => run(empty, 3, false)).toThrow(/B3b/);
   });
 
   it("uses no rules for a weapon without them", () => {

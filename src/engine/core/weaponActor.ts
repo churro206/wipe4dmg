@@ -196,6 +196,22 @@ export function createWeaponActor(input: ActorInput) {
   let shotMs = chargeTimeMs;
   let leftInMagazine = magazine;
   let done = false;
+  let reloadEndMs = -Infinity; // the end of the last reload that was planned
+
+  /**
+   * A refill by a rule (e.g. Polaris Lance's precision hit): `rounds` more rounds, or a full
+   * magazine. It reaches the shots that are not planned yet; a refill during a reload that is
+   * already planned would have to cancel it, which needs the generation of B3b.
+   */
+  function refill(timeMs: number, rounds?: number) {
+    if (timeMs < reloadEndMs) {
+      throw new Error(
+        `A refill at ${timeMs} ms falls into a planned reload (until ${reloadEndMs} ms); not supported by the core yet (B3b)`,
+      );
+    }
+    leftInMagazine =
+      rounds === undefined ? magazine : Math.min(magazine, leftInMagazine + rounds);
+  }
 
   /** The next shot, or a step without a shot once the ammo, the limit or the phase ends them. */
   function next(): ActorStep {
@@ -210,7 +226,10 @@ export function createWeaponActor(input: ActorInput) {
       if (leftInMagazine === 0 && !noReloadAt(previousMs)) {
         const readyMs = shotMs + reloadMsAt(previousMs);
         const refillMs = refillBefore(previousMs, readyMs);
-        if (refillMs === undefined) reloadStartMs = previousMs;
+        if (refillMs === undefined) {
+          reloadStartMs = previousMs;
+          reloadEndMs = readyMs;
+        }
         shotMs = refillMs === undefined ? readyMs : Math.max(shotMs, refillMs);
         leftInMagazine = magazine;
       } else if (
@@ -243,5 +262,5 @@ export function createWeaponActor(input: ActorInput) {
     };
   }
 
-  return { next, isInPhase };
+  return { next, refill, isInPhase };
 }
