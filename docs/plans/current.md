@@ -2,31 +2,26 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen in `docs/known-inaccuracies.md`. Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Block: B3a Teil 2 (Sonnet), abgeschlossen
+## Block: B3b Effects und Abilities (Sonnet), freigegeben 2026-11-01
 
-Branch `ground-up-model`, kein Merge ohne Ansage. Jede Abweichung vom Bauplan vorher mit dem Inhaber klären. Gate je Commit: Suite, `tsc -b`, `lint`; `scenario-bench.md` und `mechanics-baseline` unverändert. Test zuerst.
+Ein Block, je Schritt ein Commit (Inhaber 2026-11-01). Kein Merge. Gate je Commit: Suite, `tsc -b`, `lint`; `scenario-bench.md`, `mechanics-baseline` unverändert (außer Schritt 5). Test zuerst. Lesen: Bauplan 6, `core/*.ts`, `effectParts.ts`.
 
-Korrekturen K1–K4 erledigt (2026-11-01, Changelog): Bedingungen sehen den Zustand vor dem Ereignis, `refill` im Host (Fehler bei geplantem Reload bis B3b), `spawn` ohne Rückfall, Weaken als Status in `keywords.json`. Teil 2 darf nun auf `refill`, `spawn`-Zeiten und `modifiersOnTarget` bauen.
-
-**Teil 2** (Rest von Schritt 3; lesen: Bauplan 6, `core/rules.ts`, `core/simulateCore.ts` „Rules of the weapon“, `tests/polarisGolden.test.ts`; `weapon-packages.json` nie direkt lesen), je ein Commit:
-
-1. ~~Teile~~ erledigt (2026-11-01, Changelog): `partRules.ts`, `hitEvents` weg. Übergang: `partHitsMs` bis B3b.
-2. ~~Spielweisen~~ erledigt (2026-11-01, Changelog): `Weapon.playstyles`, Bedingung `playstyle`, Takt per `modifyStat` auf `phaseStart`; `withPlaystyle` weg.
-3. ~~Hierarchy~~ erledigt (2026-11-01, Changelog): `setupRules`, Annahmen `pre-stacked`/`setup-stands` über `SimulationOptions.assumptions`, Catalyst-Takt als Regel. Der Actor liest nur den Takt aus Regeln; `reload` und `drawHold` kommen mit B3b (Inhaber 2026-11-01).
-4. ~~Catalyst-Fenster~~ erledigt (2026-11-01, Changelog): `catalystWindowRules`, `buffPartsAt` in `multiplierAt`; Grenze halboffen (`t < Ende`) wie alle Buffs.
-5. ~~Scorch der Waffe~~ erledigt (2026-11-01, Changelog): `statusOnHitRules`, `IntrinsicPart.appliesKeyword` weg, `REMAINING` ohne die Waffen-Felder `windowSeconds`, `appliesKeyword`. Offen auf der Waffenseite: `IntrinsicPart.counter/threshold/damageOverTime` (nur das Hand-Modell, Fixture), `Weapon.intrinsicParts`, `everyNthShot`, `tickFactors`, `requiresCatalyst`, `hitStacks` (Zählung über `partHitsMs`) — mit B3b klären.
-
-**Teil 2 ist fertig.** Nächster Block: B3b (`ground-up-model.md` Zeile 63), Plan zuerst, Modell für den Plan: Opus.
+1. **Modifier:** `Effect.parts` → `Effect.modifiers: Modifier[]` (`parts` heißt im Item-Format Schadensteile). `timing` → `stat reload` (0 = kein Reload, ohne Buchung), `holdDraw` → `stat drawHold`, `counterModifier` → `ActionModifier` (`passiveActionModifiers`, Ausschluss `includedEffectIds` wie heute). Actor liest Stat-Modifier aus Effects und Regeln. Generatoren, `effects.json`, Oberfläche ziehen mit; neu bauen per Skill `nach-patch`.
+2. **Effects als Besitzer:** `Effect.rules`/`buffs`, Besitzer mit `activeAt` (Fenster), Regeln feuern nur im Fenster. `hitStacks` → Buff (`perStack` plus `bossFactor` im Bucket, Dauer `refreshMs`) mit `on hit` (weapon, Waffentyp) → `grantBuff`/`addStacks`; `partHitsMs`, `stacksAt` weg. Ändert `on hit` statt Schuss die Baseline: Befund, Rückfrage.
+3. **`appliesKeyword`, `periodicDamage`:** `on hit` → `applyStatus`; `timer.everyMs` + `damage` (Host: `damage`, Ticks im Fenster wie `periodicEvents`). `keywordPartsAt` weg.
+4. **Abilities:** `on cast` an die Regeln, Treffer mit `part` = Komponente; `keywordParts` → Regeln (Loader). `refillsMagazine` → `on cast → refill`, Waffe plant neu (Generation): Fehler aus K2 und `refillsMs` weg; `nextCastFor` fragt die Regel. Gleichstand wie heute.
+5. **Waffenseite:** `requiresCatalyst`, `everyNthShot`, `tickFactors` in einen Import-Typ; `intrinsicParts` weg. Fixture OTV übersetzen (Inhaber 2026-11-01): Detonation ohne Schaden (9×, 66,7 ms, ab 700 ms) → `applyStatus scorch 10`; Ignition aus `keywords.json` statt 890; Seeker-Grenze 5 per Zähler (+1, −1 beim Ablauf per Hilfsteil). Baseline des Handmodells ändert sich gewollt, Liste im Commit.
+6. **Abschluss:** `REMAINING` leer, Optimizer ≤ 306 ms, Bauplan, Changelog, Roadmap.
 
 ## Stand
 
-- 2026-11-01: B3a Teil 1 plus K1–K4 (Changelog): Regel-Engine, Status-Container, `Weapon.rules`/`buffs`, Golden Polaris nach Bauplan. Suite 2130 grün (nach Teil 2, Schritt 5). Planmäßig noch nicht im Host: `damage`, `addResource`, `actor`; `refill` bei geplantem Reload und die Wirkung von Weaken auf die Formel kommen mit B3b.
+- 2026-11-01: B3a fertig (Teil 1, K1–K4, Teil 2 Schritte 1–5; Changelog). Suite 2130 grün.
 - B3.0, B2, B1 erledigt. Bauplan (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - Offen ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk auf Still Hunt.
 
 ## Reihenfolge
 
-B3a → B3b → B4 (Format, Polaris/Truth/Hierarchy) → Aufräumen → P (Prüfstand: Sustained, Swap, Abilities, Testing) → B6 (Breite als Item-Dateien) → C (Casts und Energie) → B5 (Eichung zuletzt). Begründung und Kennzahl (Abdeckung je Gruppe) in `ground-up-model.md`, „Reihenfolge“ (Review 2026-11-01). Danach `sources-2026-10.md`; 2.0 in `docs/product.md`.
+B3a → B3b → B4 (Format, Polaris/Truth/Hierarchy) → Aufräumen → P (Prüfstand: Sustained, Swap, Abilities, Testing) → B6 (Breite als Item-Dateien) → C (Casts und Energie) → B5 (Eichung zuletzt). Begründung und Kennzahl in `ground-up-model.md`, „Reihenfolge“. Danach `sources-2026-10.md`; 2.0 in `docs/product.md`.
 
 ## Entscheidungen des Inhabers
 
