@@ -52,21 +52,21 @@ const base = {
   reloadTimeMs: n(0),
 };
 
-// The rules of one event run in file order and later rules see what earlier ones did: `count` adds
-// the hit first, so `fifth` sees 5 on the fifth precision hit. (Section 5.4 first counted to 4 and
-// fired at 4; under file order that is every fourth hit. Finding of B3a, section 5.4 is adapted.)
+// The rules of section 5.4: all conditions of an event see the state before the event, so `count`
+// counts the first four precision hits and `fifth` fires on the fifth (counter = 4).
 const precisionHit = { on: "hit", part: "shot", precision: true } as const;
 const rules: Rule[] = [
   { id: "shot", on: { on: "shot" }, do: [{ type: "spawn", part: "shot" }] },
   {
     id: "count",
     on: precisionHit,
+    if: [{ type: "counter", id: "fifth", op: "<", value: n(4) }],
     do: [{ type: "addStacks", counter: "fifth" }],
   },
   {
     id: "fifth",
     on: precisionHit,
-    if: [{ type: "counter", id: "fifth", op: "=", value: n(5) }],
+    if: [{ type: "counter", id: "fifth", op: "=", value: n(4) }],
     do: [
       { type: "resetCounter", counter: "fifth" },
       { type: "spawn", part: "perfect-fifth", delayMs: n(500) },

@@ -158,12 +158,13 @@ describe("golden example (architecture section 5.4)", () => {
       {
         id: "count",
         on: precisionHit,
+        if: [{ type: "counter", id: "fifth", op: "<", value: n(4) }],
         do: [{ type: "addStacks", counter: "fifth" }],
       },
       {
         id: "fifth",
         on: precisionHit,
-        if: [{ type: "counter", id: "fifth", op: "=", value: n(5) }],
+        if: [{ type: "counter", id: "fifth", op: "=", value: n(4) }],
         do: [
           { type: "resetCounter", counter: "fifth" },
           { type: "spawn", part: "perfect-fifth", delayMs: n(500) },

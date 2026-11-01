@@ -143,15 +143,14 @@ rules:
   - on: hit { part: shot, precision: true }
     do: [ refill { ammo: 1 } ]
   - on: hit { part: shot, precision: true }
+    if: [ counter fifth < 4 ]
     do: [ addStacks { counter: fifth } ]
   - on: hit { part: shot, precision: true }
-    if: [ counter fifth = 5 ]
+    if: [ counter fifth = 4 ]
     do: [ resetCounter { counter: fifth }, spawn { part: perfect-fifth, delayMs: { value: 500, note: "Clarity ?", status: estimate } } ]
   - on: hit { part: perfect-fifth }
     do: [ applyStatus { status: scorch, stacks: $clarity.scorch } ]   # 40, mit Ember of Ashes 60
 ```
-
-Hinweis (Befund 2026-11-01): Dieses Beispiel ist in B3a Teil 1 irrtümlich geändert worden (zählen immer, zünden bei 5). Es gilt das Original (`counter fifth < 4` zählt, `= 4` zündet), weil alle Regeln eines Ereignisses den Zustand vor dem Ereignis sehen; Rücknahme mit Korrektur K1 (`docs/plans/current.md`).
 
 ## 6 Regeln: Auslöser, Bedingungen, Aktionen
 

@@ -1,6 +1,7 @@
 // Rule engine of the core (docs/architecture.md section 6, ADR 0018, stage B3a): Event - Condition -
 // Action. An event is matched against the rules of every owner; the conditions of a rule are checked
-// before its actions, the rules of one event run in file order (owner order, then rule order). The
+// before the actions of any rule of the event (all against the state before the event); the actions
+// then run in file order (owner order, then rule order). The
 // engine keeps the state of the owners (counters, modes, buffs, modifiers) and changes the world only
 // through the host (spawns hits, applies statuses, refills, ...). New engine code only for a new type
 // of trigger, condition or action (I3, tests/ruleTypes.test.ts).
@@ -516,8 +517,12 @@ export function createRuleEngine(
     }
   };
 
-  /** Runs the rules that the event matches: per owner and rule in file order, conditions first. */
+  /**
+   * Runs the rules that the event matches. All conditions (and cooldowns) are checked against the
+   * state before the event; then the actions run in file order (owner order, then rule order).
+   */
   const fire = (event: RuleEvent) => {
+    const firing: { rule: Rule; ownerId: string }[] = [];
     for (const owner of owners) {
       const state = stateOf(owner.id);
       for (const rule of owner.rules) {
@@ -530,9 +535,12 @@ export function createRuleEngine(
           : 0;
         const last = state.lastFiredMs.get(rule.id);
         if (last !== undefined && event.timeMs < last + cooldownMs) continue;
-        state.lastFiredMs.set(rule.id, event.timeMs);
-        for (const action of rule.do) act(action, owner.id, event.timeMs);
+        firing.push({ rule, ownerId: owner.id });
       }
+    }
+    for (const { rule, ownerId } of firing) {
+      stateOf(ownerId).lastFiredMs.set(rule.id, event.timeMs);
+      for (const action of rule.do) act(action, ownerId, event.timeMs);
     }
   };
 

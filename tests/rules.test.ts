@@ -591,17 +591,22 @@ describe("rule order and cooldown", () => {
     expect(calls.map((c) => c.part)).toEqual(["first", "second"]);
   });
 
-  it("an earlier rule's action is visible to a later rule of the same event", () => {
+  it("a later rule checks its conditions against the state before the event", () => {
     const { engine, calls } = setup([
       owner([
         rule("count", { on: "shot" }, [{ type: "addStacks", counter: "c" }]),
         rule("see", { on: "shot" }, [refill], {
           if: [{ type: "counter", id: "c", op: "=", value: n(1) }],
         }),
+        rule("see-before", { on: "shot" }, [refill], {
+          if: [{ type: "counter", id: "c", op: "=", value: n(0) }],
+        }),
       ]),
     ]);
     engine.fire({ on: "shot", timeMs: 0, ownerId: "w" });
-    expect(calls).toHaveLength(1);
+    expect(calls).toHaveLength(1); // only the rule that sees the counter at 0
+    engine.fire({ on: "shot", timeMs: 1, ownerId: "w" });
+    expect(calls).toHaveLength(2); // now `see` sees 1, `see-before` no longer 0
   });
 
   it("cooldown: the rule does not fire again within the time", () => {
