@@ -2,16 +2,16 @@ import { describe, expect, it } from "vitest";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import type { Weapon } from "../src/data/schema";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 import { hasCatalyst } from "../src/engine/weaponInfo";
 
 // A catalyst that changes magazine, ammo or reload replaces the weapon's timing while it is on,
 // e.g. Telesto 4 → 7 rounds per magazine. Test inputs, not game data.
-const base = { ...loadWeapon(raw), intrinsicParts: [] };
+const base = shotsOnly(loadWeapon(raw));
 const source = base.magazine.source;
 const weapon: Weapon = {
   ...base,
-  damageInstances: base.damageInstances.filter((i) => !i.requiresCatalyst),
   catalyst: {
     name: "Deeper Pockets",
     description: "Increases Magazine Size by 3 (4🠚7)",

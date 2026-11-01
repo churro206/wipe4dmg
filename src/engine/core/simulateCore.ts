@@ -6,10 +6,9 @@
 import type {
   Bucket,
   Effect,
-  KeywordId,
   Weapon,
 } from "../../data/schema";
-import { KEYWORD_COUNTERS, productOf, type Factors } from "../effectParts";
+import { productOf } from "../effectParts";
 import {
   runEvents,
   type OnHit,
@@ -42,7 +41,6 @@ import { createStatusContainer, KEYWORD_EVENT_GROUP } from "./status";
 import {
   createWeaponActor,
   type ActorStep,
-  type PlannedShot,
 } from "./weaponActor";
 
 // A shot comes before every other event of its time: the hits it sets off see the shot history.
@@ -86,65 +84,6 @@ export function simulate(
     ],
   });
   const { isInPhase } = actor;
-
-  const thresholds = weapon.intrinsicParts.flatMap((part) =>
-    part.type === "threshold"
-      ? [
-          {
-            part,
-            threshold: requireValue(part.threshold, "threshold"),
-            cooldownMs: requireValue(part.cooldownMs, "cooldownMs"),
-            damage: requireValue(part.damage, "damage"),
-          },
-        ]
-      : [],
-  );
-  const counterParts = weapon.intrinsicParts.flatMap((part) =>
-    part.type === "counter"
-      ? [
-          {
-            part,
-            stacks: requireValue(part.stacks, "stacks"),
-            count: requireValue(
-              part.applicationsPerTrigger,
-              "applicationsPerTrigger",
-            ),
-            firstDelayMs: requireValue(part.firstDelayMs, "firstDelayMs"),
-            intervalMs: requireValue(part.intervalMs, "intervalMs"),
-          },
-        ]
-      : [],
-  );
-  const dotParts = weapon.intrinsicParts.flatMap((part) =>
-    part.type === "damageOverTime" && (catalyst || !part.requiresCatalyst)
-      ? [
-          {
-            part,
-            count: requireValue(
-              part.applicationsPerTrigger,
-              "applicationsPerTrigger",
-            ),
-            firstDelayMs: requireValue(part.firstDelayMs, "firstDelayMs"),
-            intervalMs: requireValue(part.intervalMs, "intervalMs"),
-            sourceScale: part.sourceScale
-              ? requireValue(part.sourceScale, "sourceScale")
-              : 1,
-            impactDamage: requireValue(part.impactDamage, "impactDamage"),
-            tickDamage: requireValue(part.tickDamage, "tickDamage"),
-            ticks: requireValue(part.ticks, "ticks"),
-            tickIntervalMs: requireValue(part.tickIntervalMs, "tickIntervalMs"),
-            firstTickDelayMs: requireValue(
-              part.firstTickDelayMs,
-              "firstTickDelayMs",
-            ),
-            maxActive: requireValue(
-              part.maxActivePerTarget,
-              "maxActivePerTarget",
-            ),
-          },
-        ]
-      : [],
-  );
 
   // Statuses on the target and the burn of their stacks (status container, ADR 0018 B3a).
   const statusContainer = createStatusContainer({
@@ -393,96 +332,6 @@ export function simulate(
     );
   };
 
-  /** Stacks a shot adds to the counters; at a threshold a damage instance follows. */
-  const counterEvents = (shot: PlannedShot): RunEvent[] =>
-    counterParts.flatMap(({ part, stacks, count, firstDelayMs, intervalMs }) =>
-      Array.from({ length: count }, (_, i) => {
-        const timeMs = shot.timeMs + firstDelayMs + i * intervalMs;
-        return {
-          timeMs,
-          group: EVENT_GROUP.threshold,
-          handle: (target, emit, later) => {
-            const reached = thresholds.find(
-              (t) => t.part.counterId === part.counterId,
-            );
-            const outcome = statusContainer.addStacks(target, part.counterId, {
-              stacks,
-              timeMs,
-              threshold: reached?.threshold ?? Number.POSITIVE_INFINITY,
-              cooldownMs: reached?.cooldownMs ?? 0,
-              source: scorchSource(timeMs),
-              schedule: later,
-            });
-            if (outcome !== "threshold" || !reached) return;
-            const keywordId = (Object.keys(KEYWORD_COUNTERS) as KeywordId[]).find(
-              (id) => KEYWORD_COUNTERS[id] === reached.part.counterId,
-            );
-            const factors = multiplierAt(
-              timeMs,
-              reached.part.element,
-              keywordId,
-            );
-            emit({
-              id: reached.part.damageInstanceId,
-              timeMs,
-              damage: damageOf(reached.damage, factors),
-              damageSource: "weapon",
-              element: reached.part.element,
-              weaponType: weapon.weaponType,
-              factors,
-            });
-          },
-        } satisfies RunEvent;
-      }).filter((event) => isInPhase(event.timeMs)),
-    );
-
-  /** Releases of the damage over time sources after a shot: an impact, then ticks. */
-  const dotEvents = (shot: PlannedShot): RunEvent[] =>
-    dotParts.flatMap((dot) => {
-      const impactDamage = dot.impactDamage * dot.sourceScale;
-      const tickDamage = dot.tickDamage * dot.sourceScale;
-      const hit = (timeMs: number, damage: number): TimedDamageInstance => {
-        const factors: Factors = multiplierAt(timeMs, weapon.element);
-        return {
-          id: dot.part.id,
-          timeMs,
-          damage: damageOf(damage, factors),
-          damageSource: "weapon",
-          element: weapon.element,
-          weaponType: weapon.weaponType,
-          factors,
-        };
-      };
-      return Array.from({ length: dot.count }, (_, i) => ({
-        releaseMs: shot.timeMs + dot.firstDelayMs + i * dot.intervalMs,
-      }))
-        .filter(({ releaseMs }) => isInPhase(releaseMs))
-        .map(
-          ({ releaseMs }): RunEvent => ({
-            timeMs: releaseMs,
-            group: EVENT_GROUP.damageOverTime,
-            handle: (target, emit) => {
-              const activeUntilMs = (
-                target.activeSourcesUntilMs.get(dot.part.id) ?? []
-              ).filter((untilMs) => untilMs >= releaseMs);
-              target.activeSourcesUntilMs.set(dot.part.id, activeUntilMs);
-              emit(hit(releaseMs, impactDamage));
-              if (activeUntilMs.length >= dot.maxActive) return;
-              activeUntilMs.push(
-                releaseMs +
-                  dot.firstTickDelayMs +
-                  (dot.ticks - 1) * dot.tickIntervalMs,
-              );
-              for (let tick = 0; tick < dot.ticks; tick++) {
-                const timeMs =
-                  releaseMs + dot.firstTickDelayMs + tick * dot.tickIntervalMs;
-                if (isInPhase(timeMs)) emit(hit(timeMs, tickDamage));
-              }
-            },
-          }),
-        );
-    });
-
   const shots: Shot[] = history.shots;
   const reloadsMs: number[] = [];
   // The step planned last, and a number that tells its event from one a refill made stale
@@ -502,7 +351,7 @@ export function simulate(
       group: SHOT_GROUP,
       handle: (target, __, later) => {
         if (mine !== generation) return; // a refill planned the step anew
-        // The rules see the shot first: the hits they set off come before the counter and dot events.
+        // The rules see the shot first: the hits they set off come before the next shot's event.
         fireRules(
           {
             on: "shot",
@@ -517,12 +366,6 @@ export function simulate(
           target,
           later,
         );
-        for (const event of [
-          ...counterEvents(shot),
-          ...dotEvents(shot),
-        ]) {
-          later(event);
-        }
         planNext(later);
       },
     });

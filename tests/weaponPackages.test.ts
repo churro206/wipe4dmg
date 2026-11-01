@@ -24,6 +24,13 @@ import { simulate } from "../src/engine/simulate";
 const result = buildWeaponImport(loadWeaponImportInputs());
 const byName = (name: string) => result.packages.find((w) => w.name === name);
 const value = (n: { value: number | null }) => n.value;
+/** Every Nth shot sets a part off: the counter of its rule counts N - 1 shots (partRules). */
+const nthShotOf = (weapon: Weapon, partId: string) => {
+  const count = weapon.rules!.find((rule) => rule.id === `${partId}-count`)!;
+  const condition = count.if!.find((c) => c.type === "counter")!;
+  if (condition.type !== "counter") throw new Error("no counter");
+  return condition.value.value! + 1;
+};
 // Aegis' time to empty contains the first charge where the row has the note "…ms charge" (charge +
 // intervals + reloads; 21 of 22 such rows fit); Quantum's and a row without the note count from the
 // first shot, which waits for the charge.
@@ -52,7 +59,7 @@ describe("Barrow-Dyad", () => {
     const seekers = barrow.damageInstances[1];
     expect(value(seekers.damagePerTick)).toBeCloseTo((1172 + 97) / 3.17, 2);
     expect(value(seekers.ticks)).toBe(6);
-    expect(value(seekers.everyNthShot!)).toBe(39);
+    expect(nthShotOf(barrow, seekers.id)).toBe(39);
     expect(value(barrow.magazine)).toBe(39);
     const cycleMs = 39 * (60_000 / value(barrow.fireRateRpm)!) + value(barrow.reloadTimeMs)!;
     expect(cycleMs).toBeCloseTo(4600, -1);
@@ -82,7 +89,7 @@ describe("Truth (expected from the hand table of 2026-10-20)", () => {
     const cluster = truth.damageInstances[1];
     expect(value(cluster.damagePerTick)).toBeCloseTo(490 / 3.16, 3);
     expect(value(cluster.ticks)).toBe(8);
-    expect(value(cluster.everyNthShot!)).toBe(3);
+    expect(nthShotOf(truth, cluster.id)).toBe(3);
   });
 
   // Override (meta probe 2026-10-23): Aegis before Quantum, 14 instead of 20 rockets.
@@ -226,7 +233,6 @@ describe("weapons with scorch (ADR 0015, U4a-4)", () => {
       );
     expect(stacks(fox)).toEqual([["scorch", 60]]);
     expect(stacks(otv)).toEqual([["scorch", 90]]);
-    expect(otv.intrinsicParts.filter((p) => (p.type as string) === "appliesKeyword")).toEqual([]);
   });
 
   it("take the ignition bonus of One Thousand Voices from its text", () => {

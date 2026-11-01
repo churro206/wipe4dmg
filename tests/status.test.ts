@@ -166,7 +166,7 @@ describe("status without damage (weaken)", () => {
       stackFactorAt: () => 1,
       isInPhase: () => true,
     });
-  const target = () => ({ statuses: new Map(), activeSourcesUntilMs: new Map() });
+  const target = () => ({ statuses: new Map() });
   const apply = (
     status: ReturnType<typeof withWeaken>,
     t: ReturnType<typeof target>,
@@ -238,7 +238,7 @@ describe("stacks with a threshold (scorch)", () => {
       source: hit(timeMs),
       schedule: () => {},
     });
-  const target = () => ({ statuses: new Map(), activeSourcesUntilMs: new Map() });
+  const target = () => ({ statuses: new Map() });
 
   it("stacks below the threshold, resets at it, and blocks during the cooldown", () => {
     const status = container([ignition]);

@@ -5,13 +5,15 @@ import type { Effect, StatusId, Weapon } from "../data/schema";
 import { effectAppliesToWeapon } from "./effectParts";
 import { hasOwnDamage, statusRulesOf } from "./effectRules";
 
-/** A catalyst exists as parts of a hand model or as catalyst options of an imported package. */
+/** A catalyst exists as rules that ask for it (hasItem catalyst) or as catalyst options of a package. */
 export function hasCatalyst(weapon: Weapon): boolean {
   return (
     weapon.catalyst !== undefined ||
-    weapon.damageInstances.some((i) => i.requiresCatalyst) ||
-    weapon.intrinsicParts.some(
-      (p) => p.type === "damageOverTime" && p.requiresCatalyst,
+    (weapon.rules ?? []).some((rule) =>
+      (rule.if ?? []).some(
+        (condition) =>
+          condition.type === "hasItem" && condition.id === "catalyst" && !condition.not,
+      ),
     ) ||
     (weapon.options ?? []).some((o) => o.kind === "catalyst")
   );

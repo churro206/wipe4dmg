@@ -35,8 +35,6 @@ export type StatusState = {
 
 export type TargetState = {
   statuses: Map<TargetStatusId, StatusState>;
-  // End time of the last tick of each active damage over time source, per part id.
-  activeSourcesUntilMs: Map<string, number[]>;
 };
 
 /** The state of a status on the target; a status nobody applied yet is empty. */
@@ -90,10 +88,7 @@ export function runEvents(
   events: RunEvent[],
   onHit?: OnHit,
 ): TimedDamageInstance[] {
-  const target: TargetState = {
-    statuses: new Map(),
-    activeSourcesUntilMs: new Map(),
-  };
+  const target: TargetState = { statuses: new Map() };
   const hits: TimedDamageInstance[] = [];
   let seq = 0;
   const queue: Queued[] = events

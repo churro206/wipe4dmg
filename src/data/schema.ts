@@ -62,12 +62,6 @@ export const DamageInstance = z.object({
   ticks: SourcedNumber, // number of ticks; 1 for a single hit
   tickIntervalMs: SourcedNumber, // 0 for a single hit
   canPrecision: z.boolean(),
-  requiresCatalyst: z.boolean(),
-  // Only every Nth shot of the weapon sets it off (the Nth, 2Nth, ...), e.g. the cluster of every
-  // third rocket with Prototype Trueseeker
-  everyNthShot: SourcedNumber.optional(),
-  // A factor per tick (the length of `ticks`), e.g. the three Golden Gun shots x1, x1.45, x1.9
-  tickFactors: z.array(SourcedNumber).optional(),
   delivery: Delivery.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
@@ -242,64 +236,6 @@ export type KeywordData = z.infer<typeof KeywordData>;
 
 export const Keyword = KeywordData.extend({ damage: SourcedNumber });
 export type Keyword = z.infer<typeof Keyword>;
-/** Part that adds stacks to a counter, here a number of applications after each shot (ADR 0006). */
-export const CounterPart = z.object({
-  type: z.literal("counter"),
-  counterId: CounterId,
-  trigger: z.literal("shot"),
-  stacks: SourcedNumber, // stacks per application
-  applicationsPerTrigger: SourcedNumber,
-  firstDelayMs: SourcedNumber, // from the shot to the first application
-  intervalMs: SourcedNumber, // between two applications
-});
-export type CounterPart = z.infer<typeof CounterPart>;
-
-/** Part that creates a damage instance when a counter reaches a threshold, then resets it (ADR 0006). */
-export const ThresholdPart = z.object({
-  type: z.literal("threshold"),
-  counterId: CounterId,
-  threshold: SourcedNumber,
-  cooldownMs: SourcedNumber, // after the threshold no stacks can be applied
-  damageInstanceId: z.string(), // e.g. "ignition"
-  damage: SourcedNumber,
-  element: Element,
-});
-export type ThresholdPart = z.infer<typeof ThresholdPart>;
-
-/**
- * Part that releases a damage over time source after each shot, e.g. the Taken Seekers of the
- * One Thousand Voices catalyst: one impact, then ticks (ADR 0006, category Damage over Time).
- */
-export const DamageOverTimePart = z.object({
-  type: z.literal("damageOverTime"),
-  id: z.string(), // damage instance id, e.g. "takenSeeker"
-  requiresCatalyst: z.boolean(),
-  trigger: z.literal("shot"),
-  applicationsPerTrigger: SourcedNumber, // sources released per shot
-  firstDelayMs: SourcedNumber, // from the shot to the first release
-  intervalMs: SourcedNumber, // between two releases
-  impactDamage: SourcedNumber,
-  tickDamage: SourcedNumber,
-  ticks: SourcedNumber,
-  tickIntervalMs: SourcedNumber,
-  firstTickDelayMs: SourcedNumber, // from the impact to the first tick
-  maxActivePerTarget: SourcedNumber, // further releases deal their impact, but no ticks
-  // Factor from the value source's scale to the main source's scale (ADR 0011); 1 if omitted.
-  sourceScale: SourcedNumber.optional(),
-});
-export type DamageOverTimePart = z.infer<typeof DamageOverTimePart>;
-
-/**
- * Fixed parts of a weapon that work without any selected effect. The scorch of its explosions is
- * a rule of the weapon (`on hit → applyStatus`), not a part.
- */
-export const IntrinsicPart = z.discriminatedUnion("type", [
-  CounterPart,
-  ThresholdPart,
-  DamageOverTimePart,
-]);
-export type IntrinsicPart = z.infer<typeof IntrinsicPart>;
-
 /**
  * A selectable catalyst, perk or mod of an imported weapon (ADR 0013, point 8): a factor on the
  * weapon's damage for the whole damage phase. Duration and condition from the Compendium tell
@@ -710,7 +646,6 @@ export const Weapon = z.object({
   // with Rally Barricade); a reloadDuration part counts only beyond it. Omitted: none.
   reloadDurationIncluded: SourcedNumber.optional(),
   damageInstances: z.array(DamageInstance).min(1),
-  intrinsicParts: z.array(IntrinsicPart),
   // Rules of the weapon (architecture section 6): the weapon owns them and its counters, modes and
   // buffs. A part that a `spawn` action names is set off by the rules only (B3a, step by step).
   rules: z.array(Rule).optional(),

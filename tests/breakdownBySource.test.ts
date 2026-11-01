@@ -13,9 +13,10 @@ import {
   loadEffects,
 } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate, type SimulationOptions } from "../src/engine/simulate";
 
-const weapon = loadWeapon(raw);
+const weapon = shotsOnly(loadWeapon(raw));
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const superStat = loadAbilityStats(rawAbilityStats).find(

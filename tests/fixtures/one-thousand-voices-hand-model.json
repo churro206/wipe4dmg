@@ -95,196 +95,148 @@
           "status": "verified"
         }
       },
-      "canPrecision": false,
-      "requiresCatalyst": false
+      "canPrecision": false
+    },
+    {
+      "id": "detonation",
+      "name": "Detonation (marked spot, no damage of its own; applies scorch)",
+      "delayMs": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified", "note": "The rule places it 700 ms after the shot, 9 times, 66.7 ms apart." } },
+      "damagePerTick": { "value": 0, "source": { "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)", "url": "https://destiny2.science/data-compendium", "retrieved": "2026-11-01", "status": "unverified", "note": "The explosion's damage is in the shot (Quantum Body Damage); the detonation applies scorch and releases a seeker." } },
+      "ticks": { "value": 1, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "tickIntervalMs": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "canPrecision": false
+    },
+    {
+      "id": "takenSeeker",
+      "name": "Taken Seeker impact",
+      "delayMs": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified", "note": "Seeker travel time is not modeled: impact at the detonation." } },
+      "damagePerTick": {
+        "value": 66.612,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace); Quantum Damage-ics",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "Compendium impact 84 x 0.793 (ADR 0011 rule 1: ratio of Quantum's shot 2,180 to the Compendium's shot 10 x 22 + 9 x 281 = 2,749; Compendium weapon values are about 1.26 x Quantum). Gate: catalyst x1.392 vs Aegis x1.371."
+        }
+      },
+      "ticks": { "value": 1, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "tickIntervalMs": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "canPrecision": false
+    },
+    {
+      "id": "takenSeekerTick",
+      "name": "Taken Seeker tick",
+      "delayMs": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified", "note": "The rule places the first tick 150 ms after the impact, 22 ticks 250 ms apart." } },
+      "damagePerTick": {
+        "value": 10.309,
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace); Quantum Damage-ics",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-18",
+          "status": "unverified",
+          "note": "Compendium tick 13 x 0.793 (see the impact). Blighted targets take +100% tick damage (not modeled yet)."
+        }
+      },
+      "ticks": { "value": 1, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "tickIntervalMs": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "canPrecision": false
+    },
+    {
+      "id": "takenSeekerEnd",
+      "name": "End of a Taken Seeker (no damage; frees its place of five)",
+      "delayMs": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "damagePerTick": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified", "note": "Helper hit at the last tick: its rule takes the seeker off the counter." } },
+      "ticks": { "value": 1, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "tickIntervalMs": { "value": 0, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified" } },
+      "canPrecision": false
     }
   ],
-  "rules": [{ "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "shot" }] }],
-  "intrinsicParts": [
+  "keywordBonuses": [
     {
-      "type": "counter",
-      "counterId": "scorch",
-      "trigger": "shot",
-      "stacks": {
-        "value": 10,
+      "keywordId": "ignition",
+      "factor": {
+        "value": 1.316,
         "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices: Solar Effects that are initially applied by One Thousand Voices deal 31.6% increased damage)",
           "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
+          "retrieved": "2026-11-01",
           "status": "verified",
-          "note": "Each explosion inflicts x10+5 scorch (+5 with Ember of Ashes)."
-        }
-      },
-      "applicationsPerTrigger": {
-        "value": 9,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "verified",
-          "note": "The beam ticks 10 times and marks 9 explosion spots; the last tick marks none."
-        }
-      },
-      "firstDelayMs": {
-        "value": 700,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "verified",
-          "note": "Marked spots detonate 0.7 s after being created. The first spot is created by the first beam tick at the shot time."
-        }
-      },
-      "intervalMs": {
-        "value": 66.7,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices: beam of 10 ticks in 0.6 s, marked spots detonate 0.7 s after being created); own measurement 2026-10-20",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-20",
-          "status": "measured",
-          "note": "In-game test 2: the explosions come staggered, about 30 to 40 frames from the first to the last. 0.6 s / 9 = 66.7 ms (32 frames over 8 gaps)."
+          "note": "Compendium 676 x 1.316 = 890, the ignition the hand model held before (Quantum 890; Aegis 2814 / 3.16 = 890.5)."
         }
       }
+    }
+  ],
+  "rules": [
+    { "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "shot" }] },
+    {
+      "id": "detonations",
+      "on": { "on": "shot" },
+      "do": [
+        {
+          "type": "spawn",
+          "part": "detonation",
+          "delayMs": { "value": 700, "source": { "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)", "url": "https://destiny2.science/data-compendium", "retrieved": "2026-10-18", "status": "verified", "note": "Marked spots detonate 0.7 s after being created. The first spot is created by the first beam tick at the shot time." } },
+          "count": { "value": 9, "source": { "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)", "url": "https://destiny2.science/data-compendium", "retrieved": "2026-10-18", "status": "verified", "note": "The beam ticks 10 times and marks 9 explosion spots; the last tick marks none." } },
+          "intervalMs": { "value": 66.7, "source": { "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices: beam of 10 ticks in 0.6 s, marked spots detonate 0.7 s after being created); own measurement 2026-10-20", "url": "https://destiny2.science/data-compendium", "retrieved": "2026-10-20", "status": "measured", "note": "In-game test 2: the explosions come staggered, about 30 to 40 frames from the first to the last. 0.6 s / 9 = 66.7 ms (32 frames over 8 gaps)." } }
+        }
+      ]
     },
     {
-      "type": "threshold",
-      "counterId": "scorch",
-      "threshold": {
-        "value": 100,
-        "source": {
-          "name": "Destiny Data Compendium, Solar (Ignition)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "verified",
-          "note": "All scorch is removed upon reaching x100 scorch to trigger an ignition."
+      "id": "scorch",
+      "on": { "on": "hit", "part": "detonation" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": { "value": 10, "source": { "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)", "url": "https://destiny2.science/data-compendium", "retrieved": "2026-10-18", "status": "verified", "note": "Each explosion inflicts x10+5 scorch (+5 with Ember of Ashes)." } }
         }
-      },
-      "cooldownMs": {
-        "value": 1300,
-        "source": {
-          "name": "Destiny Data Compendium, Solar (Ignition: \"Ignitions incur a 1.6 second cooldown before scorch can be reapplied.\"); own measurement 2026-10-20; Aegis",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-20",
-          "status": "unverified",
-          "note": "1.6 s contradicts the measurements: with staggered explosions, one ignition per shot with Ember of Ashes (test 1, Aegis, Quantum) needs a cooldown up to about 1.3 s; 2 of 4 without Ember needs at least about 0.55 s. 1.3 s is the value closest to the Compendium within that range (ADR 0011, rule 3; gate tests/weaponEffectGate.test.ts and tests/scorch.test.ts)."
-        }
-      },
-      "damageInstanceId": "ignition",
-      "damage": {
-        "value": 890,
-        "source": {
-          "name": "Quantum Damage-ics (One Thousand Voices, Special Ignition)",
-          "url": "https://destiny2.science/quantum-damage-ics",
-          "retrieved": "2026-10-18",
-          "status": "verified",
-          "note": "Cross-checked: Compendium 676 x 1.316 (One Thousand Voices solar effect bonus) = 890; Aegis 2814 / 3.16 = 890.5."
-        }
-      },
-      "element": "solar"
+      ]
     },
     {
-      "type": "damageOverTime",
-      "id": "takenSeeker",
-      "requiresCatalyst": true,
-      "trigger": "shot",
-      "applicationsPerTrigger": {
-        "value": 9,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "verified",
-          "note": "Each detonation releases a Taken Seeker; 9 detonations per shot (see counter part)."
+      "id": "seeker-impact",
+      "on": { "on": "hit", "part": "detonation" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "spawn", "part": "takenSeeker" }]
+    },
+    {
+      "id": "seeker-ticks",
+      "on": { "on": "hit", "part": "detonation" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "seekers",
+          "op": "<",
+          "value": { "value": 5, "source": { "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)", "url": "https://destiny2.science/data-compendium", "retrieved": "2026-10-18", "status": "unverified", "note": "\"An enemy can be afflicted by up to ~5 seekers at once.\" Assumption: beyond the limit a seeker still deals its impact, but no ticks: reconstructed from Aegis (catalyst x1.371, with Ember x1.305), no source states it (docs/mechanics/taken-seeker.md, ADR 0011 rule 4)." } }
         }
-      },
-      "firstDelayMs": {
-        "value": 700,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "verified",
-          "note": "Marked spots detonate 0.7 s after being created. The first spot is created by the first beam tick at the shot time."
+      ],
+      "do": [
+        { "type": "addStacks", "counter": "seekers" },
+        {
+          "type": "spawn",
+          "part": "takenSeekerTick",
+          "delayMs": { "value": 150, "source": { "name": "derived from Clarity via light.gg", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "unverified", "note": "Total duration 5.65 s minus 22 ticks x 0.25 s = 0.15 s. Assumes the duration starts at the impact." } },
+          "count": { "value": 22, "source": { "name": "Clarity community research via light.gg; Destiny Data Compendium", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "verified" } },
+          "intervalMs": { "value": 250, "source": { "name": "Clarity community research via light.gg; Destiny Data Compendium", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-10-18", "status": "verified" } }
+        },
+        {
+          "type": "spawn",
+          "part": "takenSeekerEnd",
+          "delayMs": { "value": 5400, "source": { "name": "derived from Clarity via light.gg", "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/", "retrieved": "2026-11-01", "status": "unverified", "note": "The last tick: 150 ms + 21 x 250 ms after the impact; the seeker then leaves the limit of five." } }
         }
-      },
-      "intervalMs": {
-        "value": 66.7,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices: beam of 10 ticks in 0.6 s, marked spots detonate 0.7 s after being created); own measurement 2026-10-20",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-20",
-          "status": "measured",
-          "note": "In-game test 2: the explosions come staggered, about 30 to 40 frames from the first to the last. 0.6 s / 9 = 66.7 ms (32 frames over 8 gaps)."
+      ]
+    },
+    {
+      "id": "seeker-end",
+      "on": { "on": "hit", "part": "takenSeekerEnd" },
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "seekers",
+          "by": { "value": -1, "source": { "name": "definition", "retrieved": "2026-11-01", "status": "verified", "note": "The seeker has ended." } }
         }
-      },
-      "impactDamage": {
-        "value": 84,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "unverified",
-          "note": "Compendium scale, converted with sourceScale (ADR 0011). Seeker travel time is not modeled: impact at the detonation."
-        }
-      },
-      "tickDamage": {
-        "value": 13,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "unverified",
-          "note": "Compendium scale, converted with sourceScale (ADR 0011). Blighted targets take +100% tick damage (not modeled yet)."
-        }
-      },
-      "ticks": {
-        "value": 22,
-        "source": {
-          "name": "Clarity community research via light.gg; Destiny Data Compendium",
-          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
-          "retrieved": "2026-10-18",
-          "status": "verified"
-        }
-      },
-      "tickIntervalMs": {
-        "value": 250,
-        "source": {
-          "name": "Clarity community research via light.gg; Destiny Data Compendium",
-          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
-          "retrieved": "2026-10-18",
-          "status": "verified"
-        }
-      },
-      "firstTickDelayMs": {
-        "value": 150,
-        "source": {
-          "name": "derived from Clarity via light.gg",
-          "url": "https://www.light.gg/db/items/2069224589/one-thousand-voices/",
-          "retrieved": "2026-10-18",
-          "status": "unverified",
-          "note": "Total duration 5.65 s minus 22 ticks x 0.25 s = 0.15 s. Assumes the duration starts at the impact."
-        }
-      },
-      "maxActivePerTarget": {
-        "value": 5,
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices, Fall From Grace)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "unverified",
-          "note": "\"An enemy can be afflicted by up to ~5 seekers at once.\" Assumption: further seekers deal neither impact nor ticks. Beyond the limit a seeker still deals its impact, but no ticks: reconstructed from Aegis (catalyst x1.371, with Ember x1.305), no source states it (docs/mechanics/taken-seeker.md, ADR 0011 rule 4)."
-        }
-      },
-      "sourceScale": {
-        "value": 0.793,
-        "source": {
-          "name": "Quantum Damage-ics (One Thousand Voices shot 2,180) / Destiny Data Compendium, Exotic Weapons (shot 10 x 22 beam + 9 x 281 explosion = 2,749)",
-          "url": "https://destiny2.science/quantum-damage-ics",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "2,180 / 2,749 = 0.793. Compendium weapon values are about 1.26 x Quantum; only the ignition matches 1:1. Ratio within one source per ADR 0011 rule 1. Gate: catalyst x1.392 vs Aegis x1.371."
-        }
-      }
+      ]
     }
   ],
   "intrinsics": [

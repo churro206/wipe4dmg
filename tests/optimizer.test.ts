@@ -4,11 +4,12 @@ import rawEffects from "../src/data/effects.json";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { optimize, type OptimizerInput } from "../src/engine/optimizer";
 import { canProvide } from "../src/engine/providers";
 import { simulate } from "../src/engine/simulate";
 
-const weapon = loadWeapon(raw);
+const weapon = shotsOnly(loadWeapon(raw));
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const byId = (id: string) => effects.find((e) => e.id === id)!;

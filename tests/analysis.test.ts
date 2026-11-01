@@ -7,12 +7,17 @@ import {
   damageCurve,
   dpsByDamagePhase,
 } from "../src/engine/analysis";
-import { Ability, type AbilityKind, type KeywordId } from "../src/data/schema";
+import {
+  Ability,
+  type AbilityKind,
+  type KeywordId,
+  type Weapon,
+} from "../src/data/schema";
 import { loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 
-const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
 const DAMAGE_PHASE_SECONDS = 30;
 
@@ -22,6 +27,19 @@ const source = {
   status: "verified",
 } as const;
 const n = (value: number) => ({ value, source });
+// The shots plus a second part 300 ms after each shot: two entries of the weapon. A test input.
+const shots = shotsOnly(loadWeapon(raw));
+const weapon: Weapon = {
+  ...shots,
+  damageInstances: [
+    ...shots.damageInstances,
+    { ...structuredClone(shots.damageInstances[0]), id: "echo", name: "Echo" },
+  ],
+  rules: [
+    ...shots.rules!,
+    { id: "echo", on: { on: "shot" }, do: [{ type: "spawn", part: "echo", delayMs: n(300) }] },
+  ],
+};
 const component = (id: string, damage: number) => ({
   id,
   name: id,

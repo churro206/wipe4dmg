@@ -112,11 +112,9 @@
             "row": "hand-cannon-ace-of-spades"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "memento-mori",
@@ -256,11 +254,9 @@
             "row": "trace-rifle-ager-s-scepter"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "ager-s-call",
@@ -460,11 +456,9 @@
             "row": "grenade-launcher-alethonym-average"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "harvester-spike",
@@ -604,11 +598,9 @@
             "row": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "arc-traps",
@@ -769,11 +761,9 @@
             "row": "linear-fusion-rifle-arbalest"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "compounding-force",
@@ -952,11 +942,9 @@
             "row": "pulse-rifle-bad-juju-burst"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "string-of-curses",
@@ -1094,8 +1082,7 @@
             "row": "smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "nthShot",
@@ -1138,20 +1125,9 @@
             "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
           }
         },
-        "everyNthShot": {
-          "value": 39,
-          "source": {
-            "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
-          }
-        },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "panic-response",
@@ -1409,11 +1385,9 @@
             "row": "fusion-rifle-bastion"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "saint-s-fists",
@@ -1554,11 +1528,9 @@
             "row": "sword-black-talon-light"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "crow-s-wings",
@@ -1698,11 +1670,9 @@
             "row": "sniper-rifle-borealis"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "the-fundamentals",
@@ -1882,11 +1852,9 @@
             "row": "sidearm-buried-bloodline"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "hungering-quarrel",
@@ -2026,11 +1994,9 @@
             "row": "auto-rifle-centrifuse"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "overcharge-capacitor",
@@ -2170,11 +2136,9 @@
             "row": "auto-rifle-cerberus-1-point-blank"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "four-headed-dog",
@@ -2315,11 +2279,9 @@
             "row": "auto-rifle-choir-of-one-projectile-spaced-9m"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "command-frame",
@@ -2492,11 +2454,9 @@
             "row": "sniper-rifle-cloudstrike-average-with-lightning-strikes"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "mortal-polarity",
@@ -2675,11 +2635,9 @@
             "row": "trace-rifle-coldheart-average-no-initial-trace"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "cold-fusion",
@@ -2859,11 +2817,9 @@
             "row": "pulse-rifle-collective-obligation-burst"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "void-leech",
@@ -3003,11 +2959,9 @@
             "row": "shotgun-conditional-finality-average-body-both-modes"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "split-decision",
@@ -3147,11 +3101,9 @@
             "row": "hand-cannon-crimson-burst"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "banned-weapon",
@@ -3291,11 +3243,9 @@
             "row": "sidearm-cryosthesia-77k"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "ln2-burst",
@@ -3435,11 +3385,9 @@
             "row": "fusion-rifle-cull-s-shadow-average-with-corruption"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "soulburn",
@@ -3574,11 +3522,9 @@
             "row": "sniper-rifle-d-a-r-c-i-average-target-acquired-networked-targeting-x5-with-spaced-jolt"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "personal-assistant",
@@ -3739,11 +3685,9 @@
             "row": "scout-rifle-dead-man-s-tale-vorpal-weapon"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "cranial-spike",
@@ -3978,11 +3922,9 @@
             "row": "grenade-launcher-dead-messenger"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "trinary-vision",
@@ -4122,11 +4064,9 @@
             "row": "rocket-launcher-deathbringer-max-height"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "dark-deliverance",
@@ -4265,11 +4205,9 @@
             "row": "fusion-rifle-delicate-tomb-hipfire"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "traitor-s-vessel",
@@ -4409,11 +4347,9 @@
             "row": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "vexadecimal",
@@ -4574,11 +4510,9 @@
             "row": "sidearm-devil-s-ruin"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "close-the-gap",
@@ -4739,11 +4673,9 @@
             "row": "trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "judgment",
@@ -4883,11 +4815,9 @@
             "row": "rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "composite-propellant",
@@ -5027,11 +4957,9 @@
             "row": "shotgun-duality-ads"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "compression-chamber",
@@ -5210,11 +5138,9 @@
             "row": "glaive-edge-of-action-projectile"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "edge-of-action",
@@ -5354,11 +5280,9 @@
             "row": "glaive-edge-of-concurrence-projectile"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "edge-of-concurrence",
@@ -5498,11 +5422,9 @@
             "row": "glaive-edge-of-intent-projectile"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "edge-of-intent",
@@ -5643,11 +5565,9 @@
             "row": "sword-ergo-sum-jagged-edge-64-impact-light"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "arc-conductor",
@@ -5864,11 +5784,9 @@
             "row": "hand-cannon-eriana-s-vow-death-at-first-glance"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "looks-can-kill",
@@ -6046,11 +5964,9 @@
             "row": "linear-fusion-rifle-euphony-burst-without-threadlings"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "unwound",
@@ -6191,11 +6107,9 @@
             "row": "grenade-launcher-ex-diris-average-with-moth"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "corrupted-nucleosynthesis",
@@ -6335,11 +6249,9 @@
             "row": "rocket-launcher-eyes-of-tomorrow-volley"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "eyes-on-all",
@@ -6477,11 +6389,9 @@
             "row": "linear-fusion-rifle-fafnir"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "quantum-nova",
@@ -6621,11 +6531,9 @@
             "row": "grenade-launcher-fighting-lion-average-with-volatile-damage"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "delayed-gratification",
@@ -6765,11 +6673,9 @@
             "row": "sidearm-final-warning-ads-tap-fire"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "all-at-once",
@@ -6909,11 +6815,9 @@
             "row": "linear-fusion-rifle-finality-s-auger-linear-fusion-mode"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "ruinscribe-s-forge",
@@ -7053,11 +6957,9 @@
             "row": "sidearm-forerunner"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "full-stop",
@@ -7197,11 +7099,9 @@
             "row": "rocket-launcher-gjallarhorn"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "wolfpack-rounds",
@@ -7381,11 +7281,9 @@
             "row": "machine-gun-grand-overture-missile-loaded-volley-ready"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "wrath-of-the-colossus",
@@ -7525,11 +7423,9 @@
             "row": "pulse-rifle-graviton-lance-burst-vorpal-weapon"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "black-hole",
@@ -7690,11 +7586,9 @@
             "row": "hand-cannon-graviton-spike-stasis-mode"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "temporal-manipulation",
@@ -7867,11 +7761,9 @@
             "row": "auto-rifle-hard-light"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "volatile-light",
@@ -8011,11 +7903,9 @@
             "row": "hand-cannon-hawkmoon"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "paracausal-shot",
@@ -8193,11 +8083,9 @@
             "row": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "exhumation",
@@ -8376,11 +8264,9 @@
             "row": "machine-gun-heir-apparent"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "heavy-slug-thrower",
@@ -8521,11 +8407,9 @@
             "row": "bow-heirloom-uncharged"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "bolt-thrower",
@@ -8660,8 +8544,7 @@
             "status": "unverified"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "setupHits",
@@ -8703,8 +8586,7 @@
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "setupHits-two-rings",
@@ -8746,11 +8628,9 @@
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "guidance-ring",
@@ -9219,11 +9099,9 @@
             "row": "sniper-rifle-ice-breaker"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "no-backpack",
@@ -9358,11 +9236,9 @@
             "row": "sniper-rifle-izanagi-s-burden"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "honed-edge",
@@ -9562,11 +9438,9 @@
             "row": "fusion-rifle-j-tunn-average-successive-shots"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "charge-shot",
@@ -9706,11 +9580,9 @@
             "row": "auto-rifle-khvostov-7g-0x-average-with-ricochetting-bullets"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "the-right-choice",
@@ -9849,11 +9721,9 @@
             "row": "bow-le-monarque-average-with-poison"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "poison-arrows",
@@ -10034,11 +9904,9 @@
             "row": "shotgun-legend-of-acrius-body"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "shock-blast",
@@ -10216,11 +10084,9 @@
             "row": "bow-leviathan-s-breath"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "big-game-hunter",
@@ -10399,11 +10265,9 @@
             "row": "trace-rifle-lodestar-hipfire"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "starlight-beam",
@@ -10543,11 +10407,9 @@
             "row": "shotgun-lord-of-wolves-average-includes-ignition-scorch"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "shrapnel-launcher",
@@ -10726,11 +10588,9 @@
             "row": "linear-fusion-rifle-lorentz-driver"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "lagrangian-sight",
@@ -10865,11 +10725,9 @@
             "row": "hand-cannon-lumina"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "noble-rounds",
@@ -11009,11 +10867,9 @@
             "row": "hand-cannon-malfeasance-average-with-slugs-vorpal-weapon"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "explosive-shadow",
@@ -11174,11 +11030,9 @@
             "row": "fusion-rifle-merciless-conserve-momentum-x15-full-mag"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "conserve-momentum",
@@ -11319,11 +11173,9 @@
             "row": "trace-rifle-microcosm"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "paracausal-beam",
@@ -11463,11 +11315,9 @@
             "row": "scout-rifle-mida-multi-tool"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "mida-multi-tool",
@@ -11607,11 +11457,9 @@
             "row": "auto-rifle-monte-carlo"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "monte-carlo-method",
@@ -11751,11 +11599,9 @@
             "row": "auto-rifle-necrochasm"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "cursebringer",
@@ -11895,11 +11741,9 @@
             "row": "sniper-rifle-new-land-beyond-no-stacks"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "the-master",
@@ -12040,11 +11884,9 @@
             "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "atomizing-rounds",
@@ -12184,11 +12026,9 @@
             "row": "pulse-rifle-no-time-to-explain-burst"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "rewind-again",
@@ -12327,11 +12167,9 @@
             "row": "fusion-rifle-one-thousand-voices-average"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "keywordBonuses": [
       {
         "keywordId": "ignition",
@@ -12535,11 +12373,9 @@
             "row": "smg-osteo-striga-average-with-successive-poison"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "screaming-swarm",
@@ -12720,11 +12556,9 @@
             "row": "pulse-rifle-outbreak-perfected-average-per-burst-max-nanites"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "the-corruption-spreads",
@@ -12918,11 +12752,9 @@
             "row": "grenade-launcher-parasite"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "worm-s-hunger",
@@ -13062,8 +12894,7 @@
             "row": "scout-rifle-polaris-lance-average-with-ignition"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "nthShot",
@@ -13106,20 +12937,9 @@
             "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
           }
         },
-        "everyNthShot": {
-          "value": 5,
-          "source": {
-            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-          }
-        },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "the-perfect-fifth",
@@ -13339,11 +13159,9 @@
             "row": "trace-rifle-prometheus-lens-average-with-ignition"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "prismatic-inferno",
@@ -13483,11 +13301,9 @@
             "row": "auto-rifle-quicksilver-storm-average-with-tracking-rockets"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "missile-tracers",
@@ -13627,11 +13443,9 @@
             "row": "sidearm-rat-king"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "rat-pack",
@@ -13771,11 +13585,9 @@
             "row": "pulse-rifle-red-death-reformed-burst-undamaged"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "redemption",
@@ -13915,11 +13727,9 @@
             "row": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "hunter-s-trace",
@@ -14132,11 +13942,9 @@
             "row": "smg-riskrunner"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "arc-conductor",
@@ -14276,11 +14084,9 @@
             "row": "trace-rifle-ruinous-effigy"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "transmutation",
@@ -14441,11 +14247,9 @@
             "row": "grenade-launcher-salvation-s-grip"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "cryocannon",
@@ -14585,11 +14389,9 @@
             "row": "machine-gun-service-of-luzaku"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "dichotomous-thinking",
@@ -14729,11 +14531,9 @@
             "row": "scout-rifle-skyburner-s-oath-ads-cabal"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "slug-rifle",
@@ -14873,11 +14673,9 @@
             "row": "shotgun-slayer-s-fang-average-includes-submunitions-nightsworn-ticks-include-weaken"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "nightsworn-sight",
@@ -15050,11 +14848,9 @@
             "row": "linear-fusion-rifle-sleeper-simulant"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "dornr-schen",
@@ -15233,8 +15029,7 @@
             "row": "sniper-rifle-still-hunt"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "cayde-s-retribution",
@@ -15277,46 +15072,9 @@
             "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung.; the shots follow at the weapon's interval (60000 ÷ rpm)"
           }
         },
-        "tickFactors": [
-          {
-            "value": 1,
-            "source": {
-              "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-20",
-              "status": "fitted",
-              "row": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
-              "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
-            }
-          },
-          {
-            "value": 1.45,
-            "source": {
-              "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-20",
-              "status": "fitted",
-              "row": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
-              "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
-            }
-          },
-          {
-            "value": 1.9,
-            "source": {
-              "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-20",
-              "status": "fitted",
-              "row": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
-              "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
-            }
-          }
-        ],
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "cayde-s-retribution",
@@ -15538,11 +15296,9 @@
             "row": "hand-cannon-sturm"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "accomplice",
@@ -15682,11 +15438,9 @@
             "row": "hand-cannon-sunshot"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "sunburn",
@@ -15826,11 +15580,9 @@
             "row": "auto-rifle-suros-regime-average-spinning-up"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "suros-legacy",
@@ -15970,11 +15722,9 @@
             "row": "auto-rifle-sweet-business-average-with-explosive-rounds"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "payday",
@@ -16114,11 +15864,9 @@
             "row": "scout-rifle-symmetry"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "revolution",
@@ -16299,11 +16047,9 @@
             "row": "smg-tarrabah"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "ravenous-beast",
@@ -16442,11 +16188,9 @@
             "row": "fusion-rifle-telesto"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "unplanned-reprieve",
@@ -16625,11 +16369,9 @@
             "row": "fusion-rifle-tessellation-property-irreducible"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "property-undecidable",
@@ -16769,11 +16511,9 @@
             "row": "shotgun-the-chaperone"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "precision-slug",
@@ -16953,11 +16693,9 @@
             "row": "grenade-launcher-the-colony-direct-impact"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "insectoid-robot-grenades",
@@ -17136,11 +16874,9 @@
             "row": "shotgun-the-fourth-horseman-body-full-mag"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "thunderer",
@@ -17320,11 +17056,9 @@
             "row": "scout-rifle-the-jade-rabbit"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "the-fate-of-all-fools",
@@ -17465,11 +17199,9 @@
             "row": "sword-the-lament-average-2l1h1r"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "banshee-s-wail",
@@ -17630,11 +17362,9 @@
             "row": "hand-cannon-the-last-word-hipfire"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "fan-fire",
@@ -17774,11 +17504,9 @@
             "row": "smg-the-manticore-average-hover-mode"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "soaring-fang",
@@ -17918,11 +17646,9 @@
             "row": "trace-rifle-the-navigator"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "protective-weave",
@@ -18063,11 +17789,9 @@
             "row": "grenade-launcher-the-prospector-average-direct-impact-standard-target-model"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "excavation",
@@ -18207,11 +17931,9 @@
             "row": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "wire-rifle",
@@ -18390,11 +18112,9 @@
             "row": "rocket-launcher-the-wardcliff-coil-average-volley-excludes-bolt-charge"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "mad-scientist",
@@ -18534,11 +18254,9 @@
             "row": "scout-rifle-third-iteration-precision"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "tri-planar-mass-driver",
@@ -18678,11 +18396,9 @@
             "row": "hand-cannon-thorn-average-with-poison"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "mark-of-the-devourer",
@@ -18822,11 +18538,9 @@
             "row": "machine-gun-thunderlord-average-with-lightning-strikes-excludes-bolt-charge"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "reign-havoc",
@@ -19004,11 +18718,9 @@
             "row": "bow-ticuu-s-divination-average-alternating-modes-6-stacks"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "sacred-flame",
@@ -19169,11 +18881,9 @@
             "row": "auto-rifle-tommy-s-matchbook-average-with-ignition"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "ignition-trigger",
@@ -19313,11 +19023,9 @@
             "row": "scout-rifle-touch-of-malice"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "touch-of-malice",
@@ -19478,11 +19186,9 @@
             "row": "shotgun-tractor-cannon-body"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "repulsor-force",
@@ -19661,11 +19367,9 @@
             "row": "sidearm-traveler-s-chosen"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "gathering-light",
@@ -19845,11 +19549,9 @@
             "row": "sidearm-trespasser"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "unrepentant",
@@ -19988,11 +19690,9 @@
             "row": "bow-trinity-ghoul"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "split-electron",
@@ -20173,8 +19873,7 @@
             "row": "rocket-launcher-truth-average-prototype-truthseeker"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "nthShot",
@@ -20217,20 +19916,9 @@
             "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
           }
         },
-        "everyNthShot": {
-          "value": 3,
-          "source": {
-            "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-          }
-        },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "prototype-trueseeker",
@@ -20517,11 +20205,9 @@
             "row": "hand-cannon-turncoat-average"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "latent-power",
@@ -20661,11 +20347,9 @@
             "row": "rocket-launcher-two-tailed-fox-average"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "twintails",
@@ -20827,11 +20511,9 @@
             "row": "bow-verglas-curve"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "hail-barrage",
@@ -20971,11 +20653,9 @@
             "row": "fusion-rifle-vex-mythoclast"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "timeless-mythoclast",
@@ -21154,11 +20834,9 @@
             "row": "glaive-vexcalibur-projectile"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "m1r-distribution-matrix",
@@ -21331,11 +21009,9 @@
             "row": "pulse-rifle-vigilance-wing-burst"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "harsh-truths",
@@ -21475,11 +21151,9 @@
             "row": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "harmonic-laser",
@@ -21620,8 +21294,7 @@
             "row": "rocket-launcher-whirling-ovation-full-charge"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "two-thirds-charge",
@@ -21664,8 +21337,7 @@
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "one-third-charge",
@@ -21708,8 +21380,7 @@
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       },
       {
         "id": "no-charge",
@@ -21752,11 +21423,9 @@
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "coronal-culmination",
@@ -21994,11 +21663,9 @@
             "row": "sniper-rifle-whisper-of-the-worm-whispered-breathing"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "white-nail",
@@ -22192,11 +21859,9 @@
             "row": "scout-rifle-wicked-implement-average-with-manual-shatters"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "creeping-attrition",
@@ -22337,11 +22002,9 @@
             "row": "glaive-winterbite-average-projectile-with-shatter"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "big-frigid-glaive",
@@ -22480,11 +22143,9 @@
             "row": "bow-wish-ender"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "queen-s-wrath",
@@ -22623,11 +22284,9 @@
             "row": "bow-wish-keeper-vorpal-weapon"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "snareweaver",
@@ -22821,11 +22480,9 @@
             "row": "grenade-launcher-witherhoard-direct-impact"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "primeval-s-torment",
@@ -23005,11 +22662,9 @@
             "row": "machine-gun-xenophage"
           }
         },
-        "canPrecision": false,
-        "requiresCatalyst": false
+        "canPrecision": false
       }
     ],
-    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "pyrotoxin-rounds",

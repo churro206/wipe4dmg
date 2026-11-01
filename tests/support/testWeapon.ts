@@ -2,8 +2,13 @@
 // type and element. It checks that the engine does not depend on One Thousand Voices.
 // Its numbers are not game values and never leave the tests.
 
-import type { SourcedNumber, Weapon } from "../../src/data/schema";
-import { partRules, playstyleRateRule, type PartPlaystyle } from "../../scripts/lib/partRules";
+import type { Action, SourcedNumber, Weapon } from "../../src/data/schema";
+import {
+  partRules,
+  playstyleRateRule,
+  type ImportPart,
+  type PartPlaystyle,
+} from "../../scripts/lib/partRules";
 
 const testValue = (value: number): SourcedNumber => ({
   value,
@@ -24,12 +29,56 @@ export const withPartRules = (
 ): Weapon => ({
   ...weapon,
   rules: [
-    ...weapon.damageInstances.flatMap((part) => partRules(part, playstyles.parts?.[part.id])),
+    // The import fields (requiresCatalyst, ...) a test sets on a part are read here, like the import does
+    ...(weapon.damageInstances as ImportPart[]).flatMap((part) =>
+      partRules(part, playstyles.parts?.[part.id]),
+    ),
     ...Object.entries(playstyles.rates ?? {}).map(([id, rpm]) =>
       playstyleRateRule(id, testValue(rpm)),
     ),
   ],
 });
+
+/** The weapon without scorch, ignition and seekers: the shots only (the part and rule "shot"). */
+export const shotsOnly = (weapon: Weapon): Weapon => ({
+  ...weapon,
+  damageInstances: weapon.damageInstances.filter((part) => part.id === "shot"),
+  rules: (weapon.rules ?? []).filter((rule) => rule.id === "shot"),
+});
+
+/** The action of type `type` in the rule `ruleId` of a weapon (for tests that change a rule's numbers). */
+export function actionOf<T extends Action["type"]>(
+  weapon: Weapon,
+  ruleId: string,
+  type: T,
+  part?: string,
+): Extract<Action, { type: T }> {
+  const rule = weapon.rules?.find((r) => r.id === ruleId);
+  const action = rule?.do.find(
+    (a) => a.type === type && (part === undefined || (a.type === "spawn" && a.part === part)),
+  );
+  if (!action) throw new Error(`No ${type} in the rule "${ruleId}"`);
+  return action as Extract<Action, { type: T }>;
+}
+
+/**
+ * Copy of the hand model of One Thousand Voices with simple scorch: `applications` explosions at
+ * `delayMs` after the shot, each of `stacks`. Test inputs, not game values.
+ */
+export function withScorchHits(
+  weapon: Weapon,
+  stacks: number,
+  applications: number,
+  delayMs = 0,
+): Weapon {
+  const copy = structuredClone(weapon);
+  const detonations = actionOf(copy, "detonations", "spawn");
+  detonations.delayMs!.value = delayMs;
+  detonations.count!.value = applications;
+  detonations.intervalMs!.value = 0;
+  actionOf(copy, "scorch", "applyStatus").stacks!.value = stacks;
+  return copy;
+}
 
 export const testWeapon: Weapon = {
   id: "test-rocket",
@@ -54,10 +103,8 @@ export const testWeapon: Weapon = {
       ticks: testValue(1),
       tickIntervalMs: testValue(0),
       canPrecision: false,
-      requiresCatalyst: false,
     },
   ],
   rules: [{ id: "shot", on: { on: "shot" }, do: [{ type: "spawn", part: "shot" }] }],
-  intrinsicParts: [],
   intrinsics: [],
 };

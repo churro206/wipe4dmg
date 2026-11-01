@@ -54,7 +54,6 @@ describe("gate: total damage", () => {
         ? weapon
         : {
             ...weapon,
-            intrinsicParts: [],
             rules: weapon.rules?.filter(
               (rule) => !rule.do.some((action) => action.type === "applyStatus"),
             ),

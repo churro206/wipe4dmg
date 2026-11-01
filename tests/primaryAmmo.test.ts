@@ -1,11 +1,12 @@
 import { describe, expect, it } from "vitest";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 
 // Primary ammo is unlimited (Quantum "Primaries": reserves "inf"): the weapon fires with reloads
 // until the end of the damage phase instead of stopping after totalShots.
-const special = { ...loadWeapon(raw), intrinsicParts: [] };
+const special = shotsOnly(loadWeapon(raw));
 const primary = {
   ...special,
   ammo: "primary" as const,

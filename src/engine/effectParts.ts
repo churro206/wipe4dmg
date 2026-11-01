@@ -88,11 +88,8 @@ export function appliesToWeaponType(
  * of the weapon (e.g. Ember of Ashes needs scorch), or a keyword its hits apply.
  */
 export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
-  // Counters the weapon fills: its counter parts and the statuses its rules apply (scorch)
+  // Counters the weapon fills: the statuses its rules apply (scorch)
   const counterIds = new Set<CounterId>([
-    ...weapon.intrinsicParts.flatMap((part) =>
-      part.type === "damageOverTime" ? [] : [part.counterId],
-    ),
     ...(weapon.rules ?? []).flatMap((rule) =>
       rule.do.flatMap((action) => {
         if (action.type !== "applyStatus") return [];

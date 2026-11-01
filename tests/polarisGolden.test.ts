@@ -13,8 +13,8 @@ import { AegisAbilityRow, Weapon, type Rule } from "../src/data/schema";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate } from "../src/engine/simulate";
-import { statusOnHitRules } from "../scripts/lib/partRules";
-import { testWeapon, withPartRules } from "./support/testWeapon";
+import { type ImportPart, partRules, statusOnHitRules } from "../scripts/lib/partRules";
+import { testWeapon } from "./support/testWeapon";
 
 const source = {
   name: "docs/architecture.md, section 11",
@@ -39,7 +39,6 @@ const part = (id: string, damage: number, canPrecision: boolean) => ({
   ticks: n(1),
   tickIntervalMs: n(0),
   canPrecision,
-  requiresCatalyst: false,
 });
 // 150 rpm: a shot every 0.4 s from 0 s, primary ammo, no reload (section 11)
 const base = {
@@ -86,28 +85,29 @@ const withRules: Weapon = Weapon.parse({
   rules,
 });
 
-// The legacy construction of the same weapon: a part every 5th shot that applies the keyword
-const legacy: Weapon = withPartRules(Weapon.parse({
-  ...base,
-  damageInstances: [
-    part("shot", 100, true),
-    {
-      ...part("perfect-fifth", 200, false),
-      delayMs: n(500),
-      everyNthShot: n(5),
-    },
-  ],
-}));
-legacy.rules = [
-  ...legacy.rules!,
-  ...statusOnHitRules({
-    id: "scorch",
-    status: "scorch",
-    stacks: n(40),
-    parts: ["perfect-fifth"],
-    source,
-  }),
+// The import's construction of the same weapon: a part every 5th shot (an import field that
+// partRules turns into a counter) that applies the keyword
+const importParts: ImportPart[] = [
+  part("shot", 100, true),
+  {
+    ...part("perfect-fifth", 200, false),
+    delayMs: n(500),
+    everyNthShot: n(5),
+  },
 ];
+const legacy: Weapon = {
+  ...Weapon.parse({ ...base, damageInstances: importParts }),
+  rules: [
+    ...importParts.flatMap((p) => partRules(p)),
+    ...statusOnHitRules({
+      id: "scorch",
+      status: "scorch",
+      stacks: n(40),
+      parts: ["perfect-fifth"],
+      source,
+    }),
+  ],
+};
 
 const run = (weapon: Weapon, seconds: number, withEmber: boolean) =>
   simulate(weapon, seconds, withEmber ? [ember] : [], buckets, { keywords });

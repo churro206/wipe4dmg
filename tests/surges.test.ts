@@ -8,12 +8,13 @@ import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { decodeLink, encodeLink } from "../src/engine/buildLink";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 import { effectIconKey, replacedMessage } from "../src/ui/describe";
 
 // Surges (docs/mechanics/damage-stacking.md, rules 4 and 5): armor mods on the legs give 1x to 3x;
 // 4x only comes from exotics. Assumption: the player wears the mods matching the weapon element.
-const weapon = loadWeapon(raw);
+const weapon = shotsOnly(loadWeapon(raw));
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const byId = (id: string) => effects.find((e) => e.id === id)!;

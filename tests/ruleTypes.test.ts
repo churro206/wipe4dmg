@@ -11,7 +11,6 @@ import {
   BuffDefinition,
   Condition,
   DamageInstance,
-  IntrinsicPart,
   Modifier,
   MultiplierPart,
   Rule,
@@ -98,13 +97,10 @@ const SPECIAL_FIELDS = [
   "DamageInstance.requiresCatalyst",
   "DamageInstance.everyNthShot",
   "DamageInstance.tickFactors",
-  "IntrinsicPart.counter",
-  "IntrinsicPart.threshold",
-  "IntrinsicPart.damageOverTime",
 ];
 
-// B3a removes the weapon side, B3b the effect and ability side; empty at the end of B3.
-const REMAINING = SPECIAL_FIELDS;
+// B3b step 5 removed the weapon side: empty, as planned for the end of B3.
+const REMAINING: string[] = [];
 
 const present = (): string[] => {
   const fields: Record<string, string[]> = {
@@ -113,7 +109,6 @@ const present = (): string[] => {
     WeaponOption: Object.keys(WeaponOption.shape),
     MultiplierPart: Object.keys(MultiplierPart.shape),
     Ability: Object.keys(Ability.shape),
-    IntrinsicPart: IntrinsicPart.options.map((o) => o.shape.type.value),
   };
   return SPECIAL_FIELDS.filter((entry) => {
     const [schema, field] = entry.split(".");

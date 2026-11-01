@@ -1357,483 +1357,483 @@
   },
   "abilities": {
     "thundercrash": {
-      "stat 100": 38881.54,
-      "stat 200": 43442.78
+      "stat 100": 38974.15,
+      "stat 200": 43535.39
     },
     "arc-staff": {
-      "stat 100": 37828.06,
-      "stat 200": 41915.23
+      "stat 100": 37920.67,
+      "stat 200": 42007.84
     },
     "gathering-storm": {
-      "stat 100": 36448.06,
-      "stat 200": 38642.58
+      "stat 100": 36738.93,
+      "stat 200": 38933.45
     },
     "storms-edge": {
-      "stat 100": 38159.36,
-      "stat 200": 42395.62
+      "stat 100": 38251.97,
+      "stat 200": 42488.23
     },
     "fists-of-havoc": {
-      "stat 100": 43537.62,
-      "stat 200": 50194.1
+      "stat 100": 43630.23,
+      "stat 200": 50286.71
     },
     "chaos-reach": {
-      "stat 100": 39650.23,
-      "stat 200": 44414.58
+      "stat 100": 39742.84,
+      "stat 200": 44507.19
     },
     "stormtrance": {
-      "stat 100": 40601.1,
-      "stat 200": 45527.71
+      "stat 100": 40693.71,
+      "stat 200": 45620.32
     },
     "blade-barrage": {
-      "stat 100": 38080.23,
-      "stat 200": 42280.89
+      "stat 100": 38172.84,
+      "stat 200": 42373.5
     },
     "golden-gun-deadshot": {
-      "stat 100": 34096.75,
-      "stat 200": 36504.84
+      "stat 100": 34189.36,
+      "stat 200": 36597.45
     },
     "golden-gun-marksman": {
-      "stat 100": 36532.99,
-      "stat 200": 40037.38
+      "stat 100": 36625.6,
+      "stat 200": 40129.99
     },
     "burning-maul": {
-      "stat 100": 41514.69,
-      "stat 200": 45687.3
+      "stat 100": 41607.3,
+      "stat 200": 45779.91
     },
     "hammer-of-sol": {
-      "stat 100": 37988.93,
-      "stat 200": 42148.49
+      "stat 100": 38081.54,
+      "stat 200": 42241.1
     },
     "daybreak": {
-      "stat 100": 38904.58,
-      "stat 200": 43476.19
+      "stat 100": 38997.19,
+      "stat 200": 43568.8
     },
     "song-of-flame": {
-      "stat 100": 46253.95,
-      "stat 200": 53761.93
+      "stat 100": 46324.32,
+      "stat 200": 53832.3
     },
     "well-of-radiance": {
-      "stat 100": 28745.45,
-      "stat 200": 28745.45
+      "stat 100": 28838.06,
+      "stat 200": 28838.06
     },
     "spectral-blades": {
-      "stat 100": 40748.93,
-      "stat 200": 46150.49
+      "stat 100": 40841.54,
+      "stat 200": 46243.1
     },
     "shadowshot-deadfall": {
-      "stat 100": 30820.49,
-      "stat 200": 31754.26
+      "stat 100": 30913.1,
+      "stat 200": 31846.87
     },
     "shadowshot-moebius-quiver": {
-      "stat 100": 33679.56,
-      "stat 200": 35899.92
+      "stat 100": 33772.17,
+      "stat 200": 35992.53
     },
     "sentinel-shield": {
-      "stat 100": 38889.8,
-      "stat 200": 43454.75
+      "stat 100": 38982.41,
+      "stat 200": 43547.36
     },
     "twilight-arsenal": {
-      "stat 100": 38483.91,
-      "stat 200": 42866.22
+      "stat 100": 38576.52,
+      "stat 200": 42958.83
     },
     "nova-bomb-cataclysm": {
-      "stat 100": 38034.58,
-      "stat 200": 42214.69
+      "stat 100": 38127.19,
+      "stat 200": 42307.3
     },
     "nova-bomb-vortex": {
-      "stat 100": 37970.23,
-      "stat 200": 42076.32
+      "stat 100": 38062.84,
+      "stat 200": 42168.93
     },
     "nova-warp": {
-      "stat 100": 45141.54,
-      "stat 200": 52390.93
+      "stat 100": 45234.15,
+      "stat 200": 52483.54
     },
     "silence-and-squall": {
-      "stat 100": 40235.88,
-      "stat 200": 43260.67
+      "stat 100": 40328.5,
+      "stat 200": 43353.28
     },
     "winters-wrath": {
-      "stat 100": 48247.62,
-      "stat 200": 52023.71
+      "stat 100": 48340.23,
+      "stat 200": 52116.32
     },
     "glacial-quake": {
-      "stat 100": 73535.45,
-      "stat 200": 87602.45
+      "stat 100": 73628.06,
+      "stat 200": 87695.06
     },
     "silkstrike": {
-      "stat 100": 41038.93,
-      "stat 200": 46570.99
+      "stat 100": 41131.54,
+      "stat 200": 46663.6
     },
     "bladefury": {
-      "stat 100": 42866.92,
-      "stat 200": 49221.58
+      "stat 100": 42959.53,
+      "stat 200": 49314.19
     },
     "needlestorm": {
-      "stat 100": 38665.01,
-      "stat 200": 43128.82
+      "stat 100": 38757.63,
+      "stat 200": 43221.43
     },
     "arcbolt-grenade": {
-      "stat 100": 29369.8,
-      "stat 200": 29775.62
+      "stat 100": 29462.41,
+      "stat 200": 29868.23
     },
     "flashbang-grenade": {
-      "stat 100": 29561.97,
-      "stat 200": 30092.71
+      "stat 100": 29654.58,
+      "stat 200": 30185.32
     },
     "flux-grenade": {
-      "stat 100": 30528.93,
-      "stat 200": 31688.19
+      "stat 100": 30621.54,
+      "stat 200": 31780.8
     },
     "lightning-grenade": {
-      "stat 100": 30280.67,
-      "stat 200": 31278.56
+      "stat 100": 30373.28,
+      "stat 200": 31371.17
     },
     "pulse-grenade": {
-      "stat 100": 30181.97,
-      "stat 200": 31115.71
+      "stat 100": 30274.58,
+      "stat 200": 31208.32
     },
     "skip-grenade": {
-      "stat 100": 29218.06,
-      "stat 200": 29525.25
+      "stat 100": 29310.67,
+      "stat 200": 29617.86
     },
     "storm-grenade": {
-      "stat 100": 29635.45,
-      "stat 200": 30213.95
+      "stat 100": 29728.06,
+      "stat 200": 30306.56
     },
     "firebolt-grenade": {
-      "stat 100": 30031.35,
-      "stat 200": 30322.93
+      "stat 100": 30105.89,
+      "stat 200": 30397.48
     },
     "fusion-grenade": {
-      "stat 100": 30390.66,
-      "stat 200": 30912.39
+      "stat 100": 30466.86,
+      "stat 200": 30988.59
     },
     "incendiary-grenade": {
-      "stat 100": 30749.21,
-      "stat 200": 31515.99
+      "stat 100": 30819.58,
+      "stat 200": 31586.36
     },
     "solar-grenade": {
-      "stat 100": 30857.03,
-      "stat 200": 31687.93
+      "stat 100": 30930.3,
+      "stat 200": 31761.2
     },
     "swarm-grenade": {
-      "stat 100": 30293.21,
-      "stat 200": 30751.03
+      "stat 100": 30369.69,
+      "stat 200": 30827.51
     },
     "thermite-grenade": {
-      "stat 100": 31433.53,
-      "stat 200": 32496.97
+      "stat 100": 31509.73,
+      "stat 200": 32573.17
     },
     "tripmine-grenade": {
-      "stat 100": 30503.7,
-      "stat 200": 31098.91
+      "stat 100": 30579.91,
+      "stat 200": 31175.11
     },
     "axion-bolt-grenade": {
-      "stat 100": 29371.97,
-      "stat 200": 29779.21
+      "stat 100": 29464.58,
+      "stat 200": 29871.82
     },
     "magnetic-grenade": {
-      "stat 100": 29755.89,
-      "stat 200": 30412.67
+      "stat 100": 29848.5,
+      "stat 200": 30505.28
     },
     "scatter-grenade": {
-      "stat 100": 29695.28,
-      "stat 200": 30312.68
+      "stat 100": 29787.89,
+      "stat 200": 30405.29
     },
     "suppressor-grenade": {
-      "stat 100": 29764.15,
-      "stat 200": 30426.3
+      "stat 100": 29856.76,
+      "stat 200": 30518.91
     },
     "void-spike-grenade": {
-      "stat 100": 30453.71,
-      "stat 200": 31564.08
+      "stat 100": 30546.32,
+      "stat 200": 31656.69
     },
     "void-wall-grenade": {
-      "stat 100": 31953.71,
-      "stat 200": 34039.08
+      "stat 100": 32046.32,
+      "stat 200": 34131.69
     },
     "vortex-grenade": {
-      "stat 100": 29867.19,
-      "stat 200": 30596.32
+      "stat 100": 29959.8,
+      "stat 200": 30688.93
     },
     "glacier-grenade": {
-      "stat 100": 30027.08,
-      "stat 200": 30538.39
+      "stat 100": 30119.69,
+      "stat 200": 30631
     },
     "shatter-grenade": {
-      "stat 100": 31442.41,
-      "stat 200": 32647.28
+      "stat 100": 31535.02,
+      "stat 200": 32739.89
     },
     "shackle-grenade": {
-      "stat 100": 29219.36,
-      "stat 200": 29527.41
+      "stat 100": 29311.97,
+      "stat 200": 29620.02
     },
     "slicewire-grenade": {
-      "stat 100": 29870.23,
-      "stat 200": 30601.34
+      "stat 100": 29962.84,
+      "stat 200": 30693.95
     },
     "threadling-grenade": {
-      "stat 100": 29610.23,
-      "stat 200": 30172.34
+      "stat 100": 29702.84,
+      "stat 200": 30264.95
     },
     "disorienting-blow": {
-      "stat 100": 29810.67,
-      "stat 200": 30130.23
+      "stat 100": 29903.28,
+      "stat 200": 30222.84
     },
     "ballistic-slam": {
-      "stat 100": 29107.62,
-      "stat 200": 29216.28
+      "stat 100": 29200.23,
+      "stat 200": 29308.89
     },
     "seismic-strike": {
-      "stat 100": 30208.49,
-      "stat 200": 30647.41
+      "stat 100": 30301.1,
+      "stat 200": 30740.02
     },
     "thunderclap": {
-      "stat 100": 30149.8,
-      "stat 200": 30571.1
+      "stat 100": 30242.41,
+      "stat 200": 30663.71
     },
     "ball-lightning": {
-      "stat 100": 28944.15,
-      "stat 200": 29003.75
+      "stat 100": 29036.76,
+      "stat 200": 29096.36
     },
     "knife-trick": {
-      "stat 100": 30382.91,
-      "stat 200": 30502.91
+      "stat 100": 30453.28,
+      "stat 200": 30573.28
     },
     "lightweight-knife": {
-      "stat 100": 29153.28,
-      "stat 200": 29275.62
+      "stat 100": 29245.89,
+      "stat 200": 29368.23
     },
     "proximity-explosive-knife": {
-      "stat 100": 29281.1,
-      "stat 200": 29441.8
+      "stat 100": 29373.71,
+      "stat 200": 29534.41
     },
     "weighted-throwing-knife": {
-      "stat 100": 29316.32,
-      "stat 200": 29487.58
+      "stat 100": 29408.93,
+      "stat 200": 29580.19
     },
     "hammer-strike": {
-      "stat 100": 31211.75,
-      "stat 200": 31653.05
+      "stat 100": 31287.95,
+      "stat 200": 31729.25
     },
     "throwing-hammer": {
-      "stat 100": 29309.36,
-      "stat 200": 29478.54
+      "stat 100": 29401.97,
+      "stat 200": 29571.15
     },
     "celestial-fire": {
-      "stat 100": 30140.12,
-      "stat 200": 30215.05
+      "stat 100": 30215.77,
+      "stat 200": 30290.7
     },
     "incinerator-snap": {
-      "stat 100": 29889.36,
-      "stat 200": 30015.01
+      "stat 100": 29981.97,
+      "stat 200": 30107.62
     },
     "phantom-surge": {
-      "stat 100": 29339.8,
-      "stat 200": 29518.1
+      "stat 100": 29432.41,
+      "stat 200": 29610.71
     },
     "snare-bomb": {
-      "stat 100": 28977.21,
-      "stat 200": 29046.02
+      "stat 100": 29069.82,
+      "stat 200": 29138.63
     },
     "shield-bash": {
-      "stat 100": 30208.49,
-      "stat 200": 30647.41
+      "stat 100": 30301.1,
+      "stat 200": 30740.02
     },
     "shield-throw": {
-      "stat 100": 28980.23,
-      "stat 200": 29050.67
+      "stat 100": 29072.84,
+      "stat 200": 29143.28
     },
     "pocket-singularity": {
-      "stat 100": 29265.02,
-      "stat 200": 29392.71
+      "stat 100": 29357.63,
+      "stat 200": 29485.32
     },
     "withering-blade": {
-      "stat 100": 29233.06,
-      "stat 200": 29322.19
+      "stat 100": 29325.67,
+      "stat 200": 29414.8
     },
     "shiver-strike": {
-      "stat 100": 29226.75,
-      "stat 200": 29305.89
+      "stat 100": 29319.36,
+      "stat 200": 29398.5
     },
     "penumbral-blast": {
-      "stat 100": 29283.71,
-      "stat 200": 29333.71
+      "stat 100": 29376.32,
+      "stat 200": 29426.32
     },
     "threaded-spike": {
-      "stat 100": 29456.32,
-      "stat 200": 29669.58
+      "stat 100": 29548.93,
+      "stat 200": 29762.19
     },
     "frenzied-blade": {
-      "stat 100": 29257.62,
-      "stat 200": 29411.28
+      "stat 100": 29350.23,
+      "stat 200": 29503.89
     },
     "arcane-needle": {
-      "stat 100": 29198.93,
-      "stat 200": 29334.97
+      "stat 100": 29291.54,
+      "stat 200": 29427.58
     },
     "hailfire-spike": {
-      "stat 100": 30922.41,
-      "stat 200": 32084.15
+      "stat 100": 31015.02,
+      "stat 200": 32176.76
     },
     "electrified-snare": {
-      "stat 100": 29994.15,
-      "stat 200": 30793.28
+      "stat 100": 30086.76,
+      "stat 200": 30885.89
     },
     "freezing-singularity": {
-      "stat 100": 29996.32,
-      "stat 200": 30548.93
+      "stat 100": 30088.93,
+      "stat 200": 30641.54
     }
   },
   "exoticArmorOnOneThousandVoices": {
-    "abeyant-leap": 28430,
-    "acd-0-feedback-fence": 28430,
-    "actium-war-rig": 28430,
-    "an-insurmountable-skullfort": 28430,
-    "antaeus-wards": 28430,
-    "apotheosis-veil": 28430,
-    "arbor-warden": 28430,
-    "ashen-wake": 28430,
-    "astrocyte-verse": 28430,
-    "balance-of-power": 28430,
-    "ballidorse-wrathweavers": 28430,
-    "blastwave-striders": 28430,
-    "blight-ranger": 28430,
-    "boots-of-the-assembler": 28430,
-    "briarbinds": 28430,
-    "cadmus-ridge-lancecap": 28430,
-    "calibans-hand": 28430,
-    "celestial-nighthawk": 28430,
-    "chromatic-fire": 28430,
-    "citans-ramparts": 28430,
-    "claws-of-ahamkara": 28430,
-    "contraverse-hold": 28430,
-    "crest-of-alpha-lupi": 28430,
-    "crown-of-tempests": 28430,
-    "cuirass-of-the-falling-star": 28430,
-    "dawn-chorus": 32880,
-    "deimosuffusion": 28430,
-    "doom-fang-pauldron": 28430,
-    "dunemarchers": 28430,
-    "eternal-warrior": 28430,
-    "eunoia": 28430,
-    "eye-of-another-world": 28430,
-    "fallen-sunstar": 28430,
-    "felwinters-helm": 28430,
-    "foetracer": 28430,
-    "fortunes-favor": 32694.5,
-    "fr0st-ee5": 28430,
-    "geomag-stabilizers": 28430,
-    "getaway-artist": 28430,
-    "gifted-conviction": 28430,
-    "graviton-forfeit": 28430,
-    "gwisin-vest": 28430,
-    "gyrfalcons-hauberk": 28430,
-    "hallowfire-heart": 28430,
-    "hazardous-propulsion": 28430,
-    "heart-of-inmost-light": 28430,
-    "hoarfrost-z": 28430,
-    "icefall-mantle": 28430,
-    "khepris-horn": 28430,
-    "khepris-sting": 28430,
-    "knucklehead-radar": 28430,
-    "loreley-splendor-helm": 28430,
-    "lucky-pants": 28430,
-    "lucky-raspberry": 28430,
-    "lunafaction-boots": 28430,
-    "mantle-of-battle-harmony": 28430,
-    "mask-of-bakris": 28430,
-    "mask-of-fealty": 28430,
-    "mask-of-the-quiet-one": 28430,
-    "mataiodox-a": 28430,
-    "mechaneers-tricksleeves": 28430,
-    "melas-panoplia": 28430,
-    "mk-44-stand-asides": 28430,
-    "moirai": 28430,
-    "mothkeepers-wraps": 28430,
-    "necrotic-grip": 28430,
-    "nezarecs-sin": 28430,
-    "no-backup-plans": 28430,
-    "nothing-manacles": 28430,
-    "oathkeeper": 28430,
-    "omnioculus": 28430,
-    "orpheus-rig": 28430,
-    "osmiomancy-gloves": 28430,
-    "peacekeepers": 28430,
-    "peregrine-greaves": 28430,
-    "phoenix-cradle": 28430,
-    "phoenix-protocol": 28430,
-    "praxic-vestment": 28430,
-    "promethium-spur": 34116,
-    "pyrogale-gauntlets": 28430,
-    "radiant-dance-machines": 28430,
-    "raiden-flux": 28430,
-    "raijus-harness": 28430,
-    "rain-of-fire": 34116,
-    "renewal-grasps": 28430,
-    "rime-coat-raiment": 28430,
-    "sanguine-alchemy": 28430,
-    "sealed-ahamkara-grasps": 28430,
-    "secant-filaments": 28430,
-    "second-chance": 28430,
-    "severance-enclosure": 28430,
-    "shards-of-galanor": 28430,
-    "shinobus-vow": 28430,
-    "skull-of-dire-ahamkara": 28430,
-    "solipsism": 28430,
-    "speakers-sight": 28430,
-    "speedloader-slacks": 28430,
-    "spirit-of-alpha-lupi": 28430,
-    "spirit-of-apotheosis": 28430,
-    "spirit-of-caliban": 28430,
-    "spirit-of-contact": 28430,
-    "spirit-of-galanor": 28430,
-    "spirit-of-harmony": 28430,
-    "spirit-of-osmiomancy": 28430,
-    "spirit-of-renewal": 28430,
-    "spirit-of-severance": 28430,
-    "spirit-of-starfire": 28430,
-    "spirit-of-the-abeyant": 28430,
-    "spirit-of-the-bear": 28430,
-    "spirit-of-the-eternal-warrior": 28430,
-    "spirit-of-the-filaments": 28430,
-    "spirit-of-the-foetracer": 28430,
-    "spirit-of-the-horn": 28430,
-    "spirit-of-the-necrotic": 28430,
-    "spirit-of-the-star-eater": 28430,
-    "spirit-of-the-swarm": 28430,
-    "spirit-of-verity": 28430,
-    "spirit-of-vesper": 28430,
-    "star-eater-scales": 28430,
-    "starfire-protocol": 28430,
-    "stoicism": 28430,
-    "stormdancers-brace": 28430,
-    "stronghold": 28430,
-    "sunbracers": 28430,
-    "swarmers": 28430,
-    "synthoceps": 28430,
-    "the-bombardiers": 28430,
-    "the-path-of-burning-steps": 28430,
-    "the-stag": 28430,
-    "ursa-furiosa": 28430,
-    "veritys-brow": 28430,
-    "vesper-of-radius": 28430,
-    "wormgod-caress": 28430,
-    "wormhusk-crown": 28430,
-    "young-ahamkaras-spine": 28430
+    "abeyant-leap": 28838.06,
+    "acd-0-feedback-fence": 28838.06,
+    "actium-war-rig": 28838.06,
+    "an-insurmountable-skullfort": 28838.06,
+    "antaeus-wards": 28838.06,
+    "apotheosis-veil": 28838.06,
+    "arbor-warden": 28838.06,
+    "ashen-wake": 28838.06,
+    "astrocyte-verse": 28838.06,
+    "balance-of-power": 28838.06,
+    "ballidorse-wrathweavers": 28838.06,
+    "blastwave-striders": 28838.06,
+    "blight-ranger": 28838.06,
+    "boots-of-the-assembler": 28838.06,
+    "briarbinds": 28838.06,
+    "cadmus-ridge-lancecap": 28838.06,
+    "calibans-hand": 28838.06,
+    "celestial-nighthawk": 28838.06,
+    "chromatic-fire": 28838.06,
+    "citans-ramparts": 28838.06,
+    "claws-of-ahamkara": 28838.06,
+    "contraverse-hold": 28838.06,
+    "crest-of-alpha-lupi": 28838.06,
+    "crown-of-tempests": 28838.06,
+    "cuirass-of-the-falling-star": 28838.06,
+    "dawn-chorus": 33696.12,
+    "deimosuffusion": 28838.06,
+    "doom-fang-pauldron": 28838.06,
+    "dunemarchers": 28838.06,
+    "eternal-warrior": 28838.06,
+    "eunoia": 28838.06,
+    "eye-of-another-world": 28838.06,
+    "fallen-sunstar": 28838.06,
+    "felwinters-helm": 28838.06,
+    "foetracer": 28838.06,
+    "fortunes-favor": 33163.77,
+    "fr0st-ee5": 28838.06,
+    "geomag-stabilizers": 28838.06,
+    "getaway-artist": 28838.06,
+    "gifted-conviction": 28838.06,
+    "graviton-forfeit": 28838.06,
+    "gwisin-vest": 28838.06,
+    "gyrfalcons-hauberk": 28838.06,
+    "hallowfire-heart": 28838.06,
+    "hazardous-propulsion": 28838.06,
+    "heart-of-inmost-light": 28838.06,
+    "hoarfrost-z": 28838.06,
+    "icefall-mantle": 28838.06,
+    "khepris-horn": 28838.06,
+    "khepris-sting": 28838.06,
+    "knucklehead-radar": 28838.06,
+    "loreley-splendor-helm": 28838.06,
+    "lucky-pants": 28838.06,
+    "lucky-raspberry": 28838.06,
+    "lunafaction-boots": 28838.06,
+    "mantle-of-battle-harmony": 28838.06,
+    "mask-of-bakris": 28838.06,
+    "mask-of-fealty": 28838.06,
+    "mask-of-the-quiet-one": 28838.06,
+    "mataiodox-a": 28838.06,
+    "mechaneers-tricksleeves": 28838.06,
+    "melas-panoplia": 28838.06,
+    "mk-44-stand-asides": 28838.06,
+    "moirai": 28838.06,
+    "mothkeepers-wraps": 28838.06,
+    "necrotic-grip": 28838.06,
+    "nezarecs-sin": 28838.06,
+    "no-backup-plans": 28838.06,
+    "nothing-manacles": 28838.06,
+    "oathkeeper": 28838.06,
+    "omnioculus": 28838.06,
+    "orpheus-rig": 28838.06,
+    "osmiomancy-gloves": 28838.06,
+    "peacekeepers": 28838.06,
+    "peregrine-greaves": 28838.06,
+    "phoenix-cradle": 28838.06,
+    "phoenix-protocol": 28838.06,
+    "praxic-vestment": 28838.06,
+    "promethium-spur": 34605.67,
+    "pyrogale-gauntlets": 28838.06,
+    "radiant-dance-machines": 28838.06,
+    "raiden-flux": 28838.06,
+    "raijus-harness": 28838.06,
+    "rain-of-fire": 34605.67,
+    "renewal-grasps": 28838.06,
+    "rime-coat-raiment": 28838.06,
+    "sanguine-alchemy": 28838.06,
+    "sealed-ahamkara-grasps": 28838.06,
+    "secant-filaments": 28838.06,
+    "second-chance": 28838.06,
+    "severance-enclosure": 28838.06,
+    "shards-of-galanor": 28838.06,
+    "shinobus-vow": 28838.06,
+    "skull-of-dire-ahamkara": 28838.06,
+    "solipsism": 28838.06,
+    "speakers-sight": 28838.06,
+    "speedloader-slacks": 28838.06,
+    "spirit-of-alpha-lupi": 28838.06,
+    "spirit-of-apotheosis": 28838.06,
+    "spirit-of-caliban": 28838.06,
+    "spirit-of-contact": 28838.06,
+    "spirit-of-galanor": 28838.06,
+    "spirit-of-harmony": 28838.06,
+    "spirit-of-osmiomancy": 28838.06,
+    "spirit-of-renewal": 28838.06,
+    "spirit-of-severance": 28838.06,
+    "spirit-of-starfire": 28838.06,
+    "spirit-of-the-abeyant": 28838.06,
+    "spirit-of-the-bear": 28838.06,
+    "spirit-of-the-eternal-warrior": 28838.06,
+    "spirit-of-the-filaments": 28838.06,
+    "spirit-of-the-foetracer": 28838.06,
+    "spirit-of-the-horn": 28838.06,
+    "spirit-of-the-necrotic": 28838.06,
+    "spirit-of-the-star-eater": 28838.06,
+    "spirit-of-the-swarm": 28838.06,
+    "spirit-of-verity": 28838.06,
+    "spirit-of-vesper": 28838.06,
+    "star-eater-scales": 28838.06,
+    "starfire-protocol": 28838.06,
+    "stoicism": 28838.06,
+    "stormdancers-brace": 28838.06,
+    "stronghold": 28838.06,
+    "sunbracers": 28838.06,
+    "swarmers": 28838.06,
+    "synthoceps": 28838.06,
+    "the-bombardiers": 28838.06,
+    "the-path-of-burning-steps": 28838.06,
+    "the-stag": 28838.06,
+    "ursa-furiosa": 28838.06,
+    "veritys-brow": 28838.06,
+    "vesper-of-radius": 28838.06,
+    "wormgod-caress": 28838.06,
+    "wormhusk-crown": 28838.06,
+    "young-ahamkaras-spine": 28838.06
   },
   "exoticArmorPreBuiltOnOneThousandVoices": {
-    "chromatic-fire": 28430,
-    "doom-fang-pauldron": 28430,
-    "eternal-warrior": 28430,
-    "gyrfalcons-hauberk": 31030.5,
-    "hallowfire-heart": 28430,
-    "hazardous-propulsion": 28430,
-    "khepris-sting": 31446.5,
-    "sealed-ahamkara-grasps": 32105,
-    "spirit-of-verity": 28430,
-    "veritys-brow": 28430,
-    "wormgod-caress": 29956,
-    "wormhusk-crown": 28430
+    "chromatic-fire": 28838.06,
+    "doom-fang-pauldron": 28838.06,
+    "eternal-warrior": 28838.06,
+    "gyrfalcons-hauberk": 31461.95,
+    "hallowfire-heart": 28838.06,
+    "hazardous-propulsion": 28838.06,
+    "khepris-sting": 31881.68,
+    "sealed-ahamkara-grasps": 32544.45,
+    "spirit-of-verity": 28838.06,
+    "veritys-brow": 28838.06,
+    "wormgod-caress": 30371.75,
+    "wormhusk-crown": 28838.06
   }
 }

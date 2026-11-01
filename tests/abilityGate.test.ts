@@ -31,6 +31,7 @@ import {
   loadEffects,
 } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 
 const TOLERANCE = COMPONENT_TOLERANCE; // ±15 % (owner, 2026-10-23; ADR 0009 had ±10 %)
@@ -40,9 +41,8 @@ const LONG_DAMAGE_PHASE_SECONDS = 120;
 // the ability and only its own hits set off Jolt or Volatile, as in the Aegis measurement.
 const standBy = loadWeapon(raw);
 const weapon = {
-  ...standBy,
-  intrinsicParts: [],
-  damageInstances: standBy.damageInstances.map((d) => ({
+  ...shotsOnly(standBy),
+  damageInstances: shotsOnly(standBy).damageInstances.map((d) => ({
     ...d,
     damagePerTick: { ...d.damagePerTick, value: 0 },
   })),

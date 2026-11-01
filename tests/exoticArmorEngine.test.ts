@@ -26,13 +26,14 @@ import {
 } from "../src/engine/exoticArmor";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { abilitiesFor } from "../src/engine/providers";
 import { simulate } from "../src/engine/simulate";
 
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const armor = ExoticArmorEntrySchema.array().parse(rawArmor);
-const weapon = { ...loadWeapon(raw), intrinsicParts: [] }; // solar fusion rifle
+const weapon = shotsOnly(loadWeapon(raw)); // solar fusion rifle
 const DAMAGE_PHASE_SECONDS = 600;
 const source = {
   name: "test",

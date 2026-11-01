@@ -730,8 +730,7 @@ function App() {
                   )}
                   <InfoTip>
                     Effects apply in their window from the Rotation.{" "}
-                    {weapon.intrinsicParts.length > 0 ||
-                    weapon.rules?.some((rule) =>
+                    {weapon.rules?.some((rule) =>
                       rule.do.some((action) => action.type === "applyStatus"),
                     )
                       ? "Ignitions and Taken Seeker are included, burn damage not yet."

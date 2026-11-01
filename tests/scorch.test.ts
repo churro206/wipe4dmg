@@ -1,65 +1,61 @@
 import { describe, expect, it } from "vitest";
+import rawRows from "../src/data/aegis-abilities.json";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import type { Weapon } from "../src/data/schema";
+import rawKeywords from "../src/data/keywords.json";
+import { AegisAbilityRow, type Keyword } from "../src/data/schema";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
+import { loadKeywords } from "../src/engine/loadKeywords";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
+import { actionOf, withScorchHits } from "./support/testWeapon";
 
 const weapon = loadWeapon(raw);
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
+const keywords = loadKeywords(rawKeywords, AegisAbilityRow.array().parse(rawRows));
 const byId = (id: string) => effects.find((e) => e.id === id)!;
 const LONG_DAMAGE_PHASE_SECONDS = 600;
 
+const ignitionData = keywords.find((k) => k.id === "ignition")!;
+/** The ignition with another cooldown; a test input, not a game value. */
+const withCooldown = (cooldownMs: number): Keyword[] =>
+  keywords.map((k) =>
+    k.id === "ignition"
+      ? { ...k, cooldownMs: { ...k.cooldownMs!, value: cooldownMs } }
+      : k,
+  );
+
+const run = (
+  w = weapon,
+  selected: ReturnType<typeof byId>[] = [],
+  options: { keywords?: Keyword[]; phaseSeconds?: number } = {},
+) =>
+  simulate(w, options.phaseSeconds ?? LONG_DAMAGE_PHASE_SECONDS, selected, buckets, {
+    keywords: options.keywords ?? keywords,
+  });
 const ignitionsOf = (result: ReturnType<typeof simulate>) =>
   result.damageInstances.filter((d) => d.id === "ignition");
 
-const counterOf = (w: Weapon) => {
-  const part = w.intrinsicParts.find((p) => p.type === "counter")!;
-  if (part.type !== "counter") throw new Error("no counter part");
-  return part;
-};
-const thresholdOf = (w: Weapon) => {
-  const part = w.intrinsicParts.find((p) => p.type === "threshold")!;
-  if (part.type !== "threshold") throw new Error("no threshold part");
-  return part;
-};
-
-/**
- * Copy of the weapon with simple scorch values: one application per shot right at the shot.
- * The numbers are test inputs, not game values.
- */
-function withScorch(
-  stacks: number,
-  applications: number,
-  cooldownMs: number,
-): Weapon {
-  const copy = structuredClone(weapon);
-  const counter = counterOf(copy);
-  counter.stacks.value = stacks;
-  counter.applicationsPerTrigger.value = applications;
-  counter.firstDelayMs.value = 0;
-  counter.intervalMs.value = 0;
-  thresholdOf(copy).cooldownMs.value = cooldownMs;
-  return copy;
-}
+// The ignition of the hand model is the keyword of keywords.json with the bonus of the weapon
+const ignitionDamage =
+  ignitionData.damage.value! * weapon.keywordBonuses![0].factor.value!;
 
 describe("simulate: scorch and ignition", () => {
-  it("creates ignitions as weapon damage of their element", () => {
-    const ignitions = ignitionsOf(simulate(weapon, LONG_DAMAGE_PHASE_SECONDS));
+  it("creates ignitions as solar keyword damage with the bonus of the weapon", () => {
+    const ignitions = ignitionsOf(run());
     expect(ignitions.length).toBeGreaterThan(0);
     for (const ignition of ignitions) {
-      expect(ignition.damageSource).toBe("weapon");
-      expect(ignition.element).toBe(thresholdOf(weapon).element);
-      expect(ignition.damage).toBe(thresholdOf(weapon).damage.value);
+      expect(ignition.damageSource).toBe("keyword");
+      expect(ignition.element).toBe(ignitionData.element);
+      expect(ignition.damage).toBeCloseTo(ignitionDamage, 3);
     }
   });
 
   it("triggers an ignition when the stacks reach the threshold", () => {
     // 50 stacks per shot: shots 2, 4, 6, ... reach 100.
-    const result = simulate(withScorch(50, 1, 0), LONG_DAMAGE_PHASE_SECONDS);
+    const result = run(withScorchHits(weapon, 50, 1));
     const ignitions = ignitionsOf(result);
     expect(ignitions).toHaveLength(Math.floor(result.shots.length / 2));
     expect(ignitions[0].timeMs).toBe(result.shots[1].timeMs);
@@ -67,40 +63,30 @@ describe("simulate: scorch and ignition", () => {
 
   it("applies no stacks during the cooldown after an ignition", () => {
     // 100 stacks per shot, but the cooldown blocks the next shot.
-    const noCooldown = simulate(
-      withScorch(100, 1, 0),
-      LONG_DAMAGE_PHASE_SECONDS,
-    );
+    const test = withScorchHits(weapon, 100, 1);
+    const noCooldown = run(test, [], { keywords: withCooldown(0) });
     const shotIntervalMs =
       noCooldown.shots[1].timeMs - noCooldown.shots[0].timeMs;
-    const withCooldown = simulate(
-      withScorch(100, 1, shotIntervalMs + 1),
-      LONG_DAMAGE_PHASE_SECONDS,
-    );
+    const blocked = run(test, [], {
+      keywords: withCooldown(shotIntervalMs + 1),
+    });
     expect(ignitionsOf(noCooldown)).toHaveLength(noCooldown.shots.length);
-    expect(ignitionsOf(withCooldown).length).toBeLessThan(
-      noCooldown.shots.length,
-    );
+    expect(ignitionsOf(blocked).length).toBeLessThan(noCooldown.shots.length);
   });
 
   it("ignores ignitions after the end of the damage phase", () => {
-    const delayed = withScorch(100, 1, 0);
-    counterOf(delayed).firstDelayMs.value = 500;
+    const delayed = withScorchHits(weapon, 100, 1, 500);
     const firstShotSeconds = weapon.chargeTimeMs.value! / 1000;
-    expect(ignitionsOf(simulate(delayed, firstShotSeconds))).toEqual([]);
+    expect(
+      ignitionsOf(run(delayed, [], { phaseSeconds: firstShotSeconds })),
+    ).toEqual([]);
   });
 
   it("increases scorch stacks with Ember of Ashes, rounded up", () => {
     // 20 applications of 3 stacks: 60 without Ember, 20 x ceil(4.5) = 100 with Ember.
-    const test = withScorch(3, 20, 0);
-    const ember = byId("ember-of-ashes");
-    const without = simulate(test, LONG_DAMAGE_PHASE_SECONDS, [], buckets);
-    const withEmber = simulate(
-      test,
-      LONG_DAMAGE_PHASE_SECONDS,
-      [ember],
-      buckets,
-    );
+    const test = withScorchHits(weapon, 3, 20);
+    const without = run(test);
+    const withEmber = run(test, [byId("ember-of-ashes")]);
     expect(ignitionsOf(withEmber)).toHaveLength(withEmber.shots.length);
     expect(ignitionsOf(without).length).toBeLessThan(without.shots.length);
   });
@@ -109,44 +95,37 @@ describe("simulate: scorch and ignition", () => {
     const surge = byId("surge-3x");
     const surgePart = surge.modifiers[0];
     if (surgePart.type !== "multiplier") throw new Error("expected multiplier");
-    const ignitions = ignitionsOf(
-      simulate(weapon, LONG_DAMAGE_PHASE_SECONDS, [surge], buckets),
-    );
-    expect(ignitions[0].damage).toBeCloseTo(
-      thresholdOf(weapon).damage.value! * surgePart.multiplier.value!,
+    const [ignition] = ignitionsOf(run(weapon, [surge]));
+    expect(ignition.damage).toBeCloseTo(
+      ignitionDamage * surgePart.multiplier.value!,
+      3,
     );
   });
 
-  it.each(["threshold", "cooldownMs", "damage"] as const)(
-    "rejects a threshold part whose %s is missing",
-    (field) => {
+  it.each([
+    ["count", "ticks"],
+    ["delayMs", "delayMs"],
+    ["intervalMs", "tickIntervalMs"],
+  ] as const)(
+    "rejects a detonation whose %s is missing",
+    (field, name) => {
       const incomplete = structuredClone(weapon);
-      thresholdOf(incomplete)[field].value = null;
-      expect(() => simulate(incomplete, 30)).toThrow(field);
+      actionOf(incomplete, "detonations", "spawn")[field]!.value = null;
+      expect(() => run(incomplete, [], { phaseSeconds: 30 })).toThrow(name);
     },
   );
 
-  it.each([
-    "stacks",
-    "applicationsPerTrigger",
-    "firstDelayMs",
-    "intervalMs",
-  ] as const)("rejects a counter part whose %s is missing", (field) => {
+  it("rejects scorch whose stacks are missing", () => {
     const incomplete = structuredClone(weapon);
-    counterOf(incomplete)[field].value = null;
-    expect(() => simulate(incomplete, 30)).toThrow(field);
+    actionOf(incomplete, "scorch", "applyStatus").stacks!.value = null;
+    expect(() => run(incomplete, [], { phaseSeconds: 30 })).toThrow("stacks");
   });
 });
 
 // In-game measurements of 2026-10-20 (docs/data-sources.md, Messprotokoll; docs/guides/measurements.md).
 describe("One Thousand Voices against the in-game measurements", () => {
   const firstMagazine = (effectIds: string[]) => {
-    const result = simulate(
-      weapon,
-      LONG_DAMAGE_PHASE_SECONDS,
-      effectIds.map(byId),
-      buckets,
-    );
+    const result = run(weapon, effectIds.map(byId));
     const lastShotMs = result.shots[3].timeMs;
     // Explosions of the 4th shot come after it, so count until the next shot.
     const endMs = result.shots[4].timeMs;
@@ -165,16 +144,11 @@ describe("One Thousand Voices against the in-game measurements", () => {
   });
 
   it("staggers the explosions of a shot (test 2)", () => {
-    expect(counterOf(weapon).intervalMs.value).toBeGreaterThan(0);
+    expect(actionOf(weapon, "detonations", "spawn").intervalMs!.value).toBeGreaterThan(0);
   });
 
   it("fires a shot about every 1.75 s (test 3: 1 s 45 frames)", () => {
-    const { shots } = simulate(
-      weapon,
-      LONG_DAMAGE_PHASE_SECONDS,
-      [byId("particle-reconstruction")],
-      buckets,
-    );
+    const { shots } = run(weapon, [byId("particle-reconstruction")]);
     const measuredMs = 1750;
     const oneFrameMs = 1000 / 60;
     expect(

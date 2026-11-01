@@ -31,9 +31,11 @@ import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
 import {
   catalystWindowRules,
+  type ImportPart,
   type PartPlaystyle,
   partRules,
   playstyleRateRule,
+  runtimePart,
   SETUP_UP,
   setupRules,
   statusOnHitRules,
@@ -2103,8 +2105,7 @@ export function buildWeaponImport(
                 requiresCatalyst: false,
               }))
           : []),
-      ],
-      intrinsicParts: [],
+      ] as ImportPart[],
       ...(scorch?.bonus
         ? {
             keywordBonuses: [
@@ -2230,8 +2231,10 @@ export function buildWeaponImport(
     });
     if (windows.length > 0) weapon.buffs = windows.map(({ buff }) => buff);
     // The parts are set off by rules (architecture section 6): one `spawn` per part on every shot
+    const importParts = weapon.damageInstances as ImportPart[];
+    weapon.damageInstances = importParts.map(runtimePart);
     weapon.rules = [
-      ...weapon.damageInstances.flatMap((part) => partRules(part, partPlaystyles[part.id])),
+      ...importParts.flatMap((part) => partRules(part, partPlaystyles[part.id])),
       ...playstyles.flatMap(({ rule }) =>
         rule.intervalSeconds
           ? [

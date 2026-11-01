@@ -7,9 +7,10 @@ import { Ability, AegisAbilityRow, type AbilityKind } from "../src/data/schema";
 import { abilityStatMultiplier } from "../src/engine/abilityStats";
 import { loadAbilityStats, loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 
-const weapon = loadWeapon(raw);
+const weapon = shotsOnly(loadWeapon(raw));
 const buckets = loadBuckets(rawBuckets);
 const abilityStats = loadAbilityStats(rawAbilityStats);
 const scalingOf = (kind: AbilityKind) =>

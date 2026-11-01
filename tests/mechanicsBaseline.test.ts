@@ -141,6 +141,7 @@ function exoticArmorTotals(preBuilt = false): Record<string, number | string> {
               600,
               exoticArmorEffects(entry, effects, generated, { preBuilt }),
               buckets,
+              { keywords },
             ).totalDamage,
         ),
       ]),

@@ -8,6 +8,7 @@ import { spaceCasts } from "../src/engine/castTimes";
 import { buildSimulation, nextCastFor } from "../src/engine/buildSimulation";
 import { loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 import { gameData, weaponById, weapons } from "../src/ui/data";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
@@ -78,7 +79,7 @@ describe("spaceCasts", () => {
 });
 
 describe("simulate: the weapon during a cast", () => {
-  const weapon = { ...loadWeapon(raw), intrinsicParts: [] };
+  const weapon = shotsOnly(loadWeapon(raw));
   const plain = simulate(weapon, 60, [], buckets).shots.map((s) => s.timeMs);
 
   it("does not fire while the cast lasts", () => {

@@ -6,9 +6,10 @@ import { Ability } from "../src/data/schema";
 import { grantedEffectWindows } from "../src/engine/grantedEffects";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 
-const weapon = { ...loadWeapon(raw), intrinsicParts: [] };
+const weapon = shotsOnly(loadWeapon(raw));
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const byId = (id: string) => effects.find((e) => e.id === id)!;

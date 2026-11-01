@@ -4,15 +4,15 @@
 // catalyst`, and a part with a factor per tick spawns once per tick. A setup that the shots build
 // and deploy (Guidance Ring) is a counter and a mode (setupRules).
 
-import type {
-  BuffDefinition,
-  Condition,
+import {
   DamageInstance,
-  Rule,
-  Source,
-  SourcedNumber,
-  TargetStatusId,
-  WeaponOption,
+  type BuffDefinition,
+  type Condition,
+  type Rule,
+  type Source,
+  type SourcedNumber,
+  type TargetStatusId,
+  type WeaponOption,
 } from "../../src/data/schema.ts";
 
 const sameNumber = (value: number | null, from: SourcedNumber): SourcedNumber => ({
@@ -198,8 +198,23 @@ export function playstyleRateRule(id: string, rpm: SourcedNumber): Rule {
   };
 }
 
+/**
+ * A part as the import sees it (B3b step 5): the runtime part plus what only the rules need. These
+ * fields never reach a Data File; `runtimePart` takes them off and `partRules` turns them into rules.
+ */
+export type ImportPart = DamageInstance & {
+  requiresCatalyst?: boolean; // the rule has the condition `hasItem catalyst`
+  everyNthShot?: SourcedNumber; // only every Nth shot sets it off (a counter of its own)
+  tickFactors?: SourcedNumber[]; // a factor per tick (one spawn per tick)
+};
+
+/** The part without the import fields: what a weapon file holds. */
+export function runtimePart(part: ImportPart): DamageInstance {
+  return DamageInstance.parse(part);
+}
+
 /** The rules for one part; the shot is the trigger, so a part is set off by the shot of its weapon. */
-export function partRules(part: DamageInstance, playstyle: PartPlaystyle = {}): Rule[] {
+export function partRules(part: ImportPart, playstyle: PartPlaystyle = {}): Rule[] {
   const inPlaystyle: Condition[] = [
     ...(playstyle.only ? [{ type: "playstyle" as const, id: playstyle.only }] : []),
     ...(playstyle.except ?? []).map((id) => ({

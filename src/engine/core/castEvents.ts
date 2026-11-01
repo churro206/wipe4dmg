@@ -12,8 +12,6 @@ import type { AbilityCast, SuperWindow, TimedDamageInstance } from "./types";
 // Order of events at equal times in the event run (eventRun.ts). A cast comes before its hits.
 export const EVENT_GROUP = {
   weaponHit: 0,
-  threshold: 1,
-  damageOverTime: 2,
   cast: 2.5,
   abilityHit: 3,
   periodic: 4,

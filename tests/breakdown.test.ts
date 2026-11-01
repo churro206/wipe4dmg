@@ -6,9 +6,10 @@ import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { breakdown } from "../src/engine/breakdown";
 import { loadBosses, loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 
-const weapon = loadWeapon(raw);
+const weapon = shotsOnly(loadWeapon(raw));
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const pick = (...ids: string[]) => effects.filter((e) => ids.includes(e.id));

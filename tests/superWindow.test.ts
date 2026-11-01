@@ -4,10 +4,11 @@ import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { Ability, type SuperUsage } from "../src/data/schema";
 import { loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 import { superWindowMs } from "../src/engine/superWindow";
 
-const weapon = loadWeapon(raw);
+const weapon = shotsOnly(loadWeapon(raw));
 const buckets = loadBuckets(rawBuckets);
 const chargeTimeMs = weapon.chargeTimeMs.value!;
 const DAMAGE_PHASE_SECONDS = 30;

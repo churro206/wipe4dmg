@@ -1,16 +1,21 @@
 import { describe, expect, it } from "vitest";
 import rawBuckets from "../src/data/buckets.json";
 import rawEffects from "../src/data/effects.json";
-import type { Effect } from "../src/data/schema";
+import rawKeywords from "../src/data/keywords.json";
+import rawRows from "../src/data/aegis-abilities.json";
+import { AegisAbilityRow, type Effect } from "../src/data/schema";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { effectWindows } from "../src/engine/effectWindows";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
+import { loadKeywords } from "../src/engine/loadKeywords";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 
+const keywords = loadKeywords(rawKeywords, AegisAbilityRow.array().parse(rawRows));
 const fullWeapon = loadWeapon(raw);
 // Shots only: every damage instance is a shot with the same base damage.
-const weapon = { ...fullWeapon, intrinsicParts: [] };
+const weapon = shotsOnly(fullWeapon);
 const baseDamage = weapon.damageInstances[0].damagePerTick.value!;
 const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
@@ -177,6 +182,7 @@ describe("effect windows", () => {
       [ember],
       buckets,
       {
+        keywords,
         effectWindows: { "ember-of-ashes": { startMs: 999_000 } },
       },
     );
@@ -185,6 +191,7 @@ describe("effect windows", () => {
       LONG_DAMAGE_PHASE_SECONDS,
       [],
       buckets,
+      { keywords },
     );
     expect(lateEmber.totalDamage).toBeCloseTo(noEmber.totalDamage);
   });

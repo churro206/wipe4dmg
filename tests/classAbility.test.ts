@@ -8,12 +8,13 @@ import type { Ability, Build } from "../src/data/schema";
 import { buildSimulation, nextCastFor } from "../src/engine/buildSimulation";
 import { loadBuckets } from "../src/engine/loadData";
 import { loadWeapon } from "../src/engine/loadWeapon";
+import { shotsOnly } from "./support/testWeapon";
 import { simulate } from "../src/engine/simulate";
 import { gameData, weaponById } from "../src/ui/data";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 
 // Without intrinsic parts (scorch, ignition): only the shot plan matters here.
-const weapon = { ...loadWeapon(raw), intrinsicParts: [] };
+const weapon = shotsOnly(loadWeapon(raw));
 const buckets = loadBuckets(rawBuckets);
 const shotIntervalMs = 60_000 / weapon.fireRateRpm.value!;
 const magazine = weapon.magazine.value!;

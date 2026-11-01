@@ -3,11 +3,12 @@ import { describe, expect, it } from "vitest";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
-import { withPartRules } from "./support/testWeapon";
+import type { ImportPart } from "../scripts/lib/partRules";
+import { shotsOnly as shotsOnlyOf, withPartRules } from "./support/testWeapon";
 
-const weapon = loadWeapon(raw);
-// Without intrinsic parts (scorch, ignition): these tests check the damage of the shots only.
-const shotsOnly = { ...weapon, intrinsicParts: [] };
+// Without scorch, ignition and seekers: these tests check the damage of the shots only.
+const weapon = shotsOnlyOf(loadWeapon(raw));
+const shotsOnly = weapon;
 // Expected values come from the data files, so the tests contain no game values.
 const chargeTimeMs = weapon.chargeTimeMs.value!;
 const shotIntervalMs = 60_000 / weapon.fireRateRpm.value!;
@@ -154,11 +155,12 @@ describe("simulate: damage", () => {
 
   it("ignores damage instances that require the catalyst", () => {
     const withCatalystInstance = structuredClone(weapon);
-    withCatalystInstance.damageInstances.push({
+    const catalystOnly: ImportPart = {
       ...structuredClone(weapon.damageInstances[0]),
       id: "catalystOnly",
       requiresCatalyst: true,
-    });
+    };
+    withCatalystInstance.damageInstances.push(catalystOnly);
     expect(simulate(withPartRules(withCatalystInstance), 10)).toEqual(
       simulate(weapon, 10),
     );
@@ -166,11 +168,12 @@ describe("simulate: damage", () => {
 
   it("includes damage instances that require the catalyst when it is selected", () => {
     const withCatalystInstance = structuredClone(shotsOnly);
-    withCatalystInstance.damageInstances.push({
+    const catalystOnly: ImportPart = {
       ...structuredClone(weapon.damageInstances[0]),
       id: "catalystOnly",
       requiresCatalyst: true,
-    });
+    };
+    withCatalystInstance.damageInstances.push(catalystOnly);
     const { damageInstances } = simulate(withPartRules(withCatalystInstance), 10, [], [], {
       catalyst: true,
     });
