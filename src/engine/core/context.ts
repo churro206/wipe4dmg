@@ -11,7 +11,6 @@ import type {
   MultiplierPart,
   TargetStatusId,
   Weapon,
-  AppliesKeywordPart,
   DamageSource,
 } from "../../data/schema";
 import { abilityStatParts } from "../abilityStats";
@@ -253,12 +252,6 @@ export function createContext(
       ...(keywordBonus !== 1 ? { keywordBonus } : {}),
     };
   };
-  // Keyword parts of the abilities in the build are always active (ADR 0015); those of the weapon
-  // are rules (`on hit → applyStatus`).
-  const abilityKeywordParts: AppliesKeywordPart[] = (
-    options.abilities ?? []
-  ).flatMap((cast) => cast.ability.keywordParts ?? []);
-
   return {
     catalyst,
     damageSource,
@@ -269,7 +262,6 @@ export function createContext(
     multiplierAt,
     counterFactorAt,
     keywordMultiplierAt,
-    abilityKeywordParts,
   };
 }
 

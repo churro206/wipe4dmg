@@ -8,7 +8,7 @@
 //    damage follows after the delay, the cooldown starts, and a status removed on trigger is gone.
 // 2. A status with player stacks (Bolt Charge) at its stack count goes off after its delay if the hit
 //    is one that discharges it; the stacks are used up.
-// 3. Every active appliesKeyword part that matches the hit applies its status:
+// 3. Rules that apply a status (`on hit → applyStatus`, run by the core after steps 1 and 2) apply it:
 //    - damage taken: applies it or refreshes the duration. While the cooldown runs, a status
 //      removed on trigger cannot be applied again. A fresh application counts the applying hit only
 //      if the keyword says so (Jolt yes, Volatile no).
@@ -22,15 +22,12 @@
 // stacks on a clean target start the ticks, a tick without stacks ends them.
 
 import type {
-  AppliesKeywordPart,
   Keyword,
-  KeywordId,
   MultiplierPart,
-  SourcedNumber,
   StatusModifierData,
   TargetStatusId,
 } from "../../data/schema";
-import { appliesToWeaponType, productOf, type Factors } from "../effectParts";
+import { productOf, type Factors } from "../effectParts";
 import {
   statusState,
   type OnHit,
@@ -161,7 +158,6 @@ export type StatusContext = {
   keywords: Keyword[];
   // Statuses without damage and trigger (Weaken); their multipliers join the formula with B3b
   modifierStatuses?: StatusModifierData[];
-  keywordPartsAt: (timeMs: number) => AppliesKeywordPart[];
   // The multiplier for the damage of a keyword; source is the hit that applied it (Ignition).
   multiplierAt: (
     timeMs: number,
@@ -182,34 +178,18 @@ type StatusApplication = {
 /** What adding stacks did: nothing (cooldown), stacks below the threshold, or the threshold was reached. */
 export type StackOutcome = "blocked" | "stacked" | "threshold";
 
-const matches = (part: AppliesKeywordPart, hit: TimedDamageInstance) =>
-  part.damageSources.includes(hit.damageSource) &&
-  (part.elements === undefined || part.elements.includes(hit.element)) &&
-  appliesToWeaponType(part.weaponTypes, hit.weaponType) &&
-  (part.damageInstanceIds === undefined ||
-    part.damageInstanceIds.includes(hit.id)) &&
-  (part.abilityIds === undefined ||
-    (hit.abilityId !== undefined && part.abilityIds.includes(hit.abilityId)));
-
 const optionalMs = (value: Keyword["delayMs"], field: string) =>
   value ? requireValue(value, field) : 0;
 
 export function createStatusContainer({
   keywords,
   modifierStatuses = [],
-  keywordPartsAt,
   multiplierAt,
   stackFactorAt,
   isInPhase,
 }: StatusContext) {
-  const byId = new Map(keywords.map((k) => [k.id, k]));
   const byStatus = new Map(keywords.map((k) => [k.status, k]));
   const modifierOf = new Map(modifierStatuses.map((s) => [s.id, s]));
-  const keywordOf = (id: KeywordId) => {
-    const keyword = byId.get(id);
-    if (!keyword) throw new Error(`Unknown keyword "${id}"`);
-    return keyword;
-  };
   // Burn of the stacks of a status, from the keyword that is set off by it.
   const burns = new Map(
     keywords.flatMap((keyword) => {
@@ -219,12 +199,6 @@ export function createStatusContainer({
         : [];
     }),
   );
-  const stacksOf = (part: AppliesKeywordPart) => {
-    if (!part.stacks) {
-      throw new Error(`Keyword "${part.keywordId}" needs stacks`);
-    }
-    return requireValue(part.stacks, "stacks");
-  };
 
   /**
    * Adds stacks to a status with a threshold. The stacks are scaled by the action modifiers and
@@ -360,7 +334,7 @@ export function createStatusContainer({
 
   /** The handler for the event run that applies statuses and sets them off. */
   const onHit: OnHit = (hit, target, schedule) => {
-    const { goOff, takeDamage, apply } = session(hit, schedule);
+    const { goOff, takeDamage } = session(hit, schedule);
     const timeMs = hit.timeMs;
 
     // 1. damage taken
@@ -388,24 +362,11 @@ export function createStatusContainer({
       goOff(keyword, hit);
     }
 
-    // 3. applications
-    for (const part of keywordPartsAt(timeMs)) {
-      if (!matches(part, hit)) continue;
-      apply(target, keywordOf(part.keywordId), {
-        ...(part.stacks ? { stacks: () => stacksOf(part) } : {}),
-        ...(part.durationMs
-          ? {
-              durationMs: () =>
-                requireValue(part.durationMs as SourcedNumber, "durationMs"),
-            }
-          : {}),
-      });
-    }
   };
 
   /**
-   * Applies a status by a rule (action applyStatus): the same as a hit with an appliesKeyword part,
-   * with `source` as the hit whose bonuses the status inherits.
+   * Applies a status by a rule (action applyStatus), step 3 of the order above, with `source` as the
+   * hit whose bonuses the status inherits.
    */
   const applyStatus = (
     target: TargetState,

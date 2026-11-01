@@ -20,6 +20,7 @@ import { requireValue } from "../requireValue";
 import { bucketFactors } from "../effectParts";
 import {
   abilityHitEvents,
+  castEvents,
   EVENT_GROUP,
   periodicEvents,
   superWindowsOf,
@@ -145,8 +146,6 @@ export function simulate(
   const statusContainer = createStatusContainer({
     keywords: options.keywords ?? [],
     modifierStatuses: options.statusModifiers ?? [],
-    // The keywords of abilities; those of effects are rules (until step 4 moves these too)
-    keywordPartsAt: () => context.abilityKeywordParts,
     multiplierAt: context.keywordMultiplierAt,
     stackFactorAt: counterFactorAt,
     isInPhase,
@@ -167,9 +166,20 @@ export function simulate(
   // action names is set off by the rules only: a part without a `spawn` rule does no damage.
   const WEAPON = weapon.id;
   const rules = weapon.rules ?? [];
+  // The abilities of the build own rules too (their keywords, a refill); their casts and the hits of
+  // their components reach them. The id differs from an effect's of the same name.
+  const abilityOwnerId = (abilityId: string) => `ability:${abilityId}`;
+  const abilityOwners = [
+    ...new Map(
+      (options.abilities ?? []).map(({ ability }) => [ability.id, ability]),
+    ).values(),
+  ]
+    .filter((ability) => (ability.rules?.length ?? 0) > 0)
+    .map((ability) => ({ id: abilityOwnerId(ability.id), rules: ability.rules! }));
   // The effects own rules and buffs too; they act only inside the windows of the effect
   const owners = [
     { id: WEAPON, rules, buffs: weapon.buffs ?? [] },
+    ...abilityOwners,
     ...effects
       .filter((effect) => (effect.rules?.length ?? 0) + (effect.buffs?.length ?? 0) > 0)
       .map((effect) => ({
@@ -189,6 +199,8 @@ export function simulate(
     TimedDamageInstance,
     { part: string; precision: boolean }
   >();
+  /** The component of an ability that a hit is, for the rules of the ability. */
+  const abilityParts = new WeakMap<TimedDamageInstance, string>();
   const statusOfKeyword = new Map(
     (options.keywords ?? []).map((keyword) => [keyword.id, keyword.status]),
   );
@@ -343,6 +355,7 @@ export function simulate(
     statusContainer.onHit(hit, target, schedule);
     if (!hasRules) return;
     const own = ruleHits.get(hit);
+    const abilityPart = abilityParts.get(hit);
     const status = hit.keywordId ? statusOfKeyword.get(hit.keywordId) : undefined;
     const attributes: HitAttributes = {
       damageSource: hit.damageSource,
@@ -355,8 +368,16 @@ export function simulate(
       {
         on: "hit",
         timeMs: hit.timeMs,
-        ownerId: own ? WEAPON : (hit.abilityId ?? hit.damageSource),
-        ...(own ? { part: own.part, precision: own.precision } : {}),
+        ownerId: own
+          ? WEAPON
+          : abilityPart
+            ? abilityOwnerId(hit.abilityId as string)
+            : (hit.abilityId ?? hit.damageSource),
+        ...(own
+          ? { part: own.part, precision: own.precision }
+          : abilityPart
+            ? { part: abilityPart }
+            : {}),
         attributes,
       },
       target,
@@ -506,20 +527,29 @@ export function simulate(
   }
   planNext((event) => events.push(event));
   for (const cast of options.abilities ?? []) {
+    if (hasRules) {
+      events.push(
+        ...castEvents(cast, abilityOwnerId(cast.ability.id), isInPhase, fireRules),
+      );
+    }
     events.push(
-      ...abilityHitEvents(cast, isInPhase, (timeMs, component) =>
-        bucketFactors(
-          [
-            ...partsAt(timeMs, component.includedEffectIds).multiplierParts,
-            ...(component.scalesWithAbilityStat ? context.statParts : []),
-          ],
-          buckets,
-          {
-            damageSource: cast.ability.kind,
-            element: cast.ability.element,
-            abilityId: cast.ability.id,
-          },
-        ),
+      ...abilityHitEvents(
+        cast,
+        isInPhase,
+        (timeMs, component) =>
+          bucketFactors(
+            [
+              ...partsAt(timeMs, component.includedEffectIds).multiplierParts,
+              ...(component.scalesWithAbilityStat ? context.statParts : []),
+            ],
+            buckets,
+            {
+              damageSource: cast.ability.kind,
+              element: cast.ability.element,
+              abilityId: cast.ability.id,
+            },
+          ),
+        (hit, part) => abilityParts.set(hit, part),
       ),
     );
   }

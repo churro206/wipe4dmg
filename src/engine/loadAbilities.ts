@@ -36,6 +36,7 @@ import {
 import { elementItem, itemsOfAbility } from "./abilityNames";
 import { nameKey, variantRows } from "./abilityVariants";
 import { activeParts, combinedMultiplier } from "./effectParts";
+import { statusOfKeywordId } from "./effectRules";
 import { requireValue } from "./requireValue";
 
 // Shares closer to 0 or 1 than this are treated as 0 or 1: Aegis rounds measured damage to whole
@@ -212,29 +213,35 @@ export function loadAbilities(
           ? {}
           : manifestProviders(ability, manifestAbilities)),
         components: loaded,
-        ...(own.length > 0
+        ...(own.length > 0 || ability.rules
           ? {
-              keywordParts: own.map((k) => ({
-                type: "appliesKeyword",
-                keywordId: k.keywordId,
-                damageSources: [ability.kind],
-                abilityIds: [ability.id],
-                // once per cast: only the first component applies it
-                damageInstanceIds: [`${ability.id}.${loaded[0].id}`],
-                // spread over the hits like the damage, e.g. x120 scorch per Golden Gun = x40 per shot
-                ...(k.stacksPerUse
-                  ? {
-                      stacks: {
-                        ...k.stacksPerUse,
-                        value:
-                          k.stacksPerUse.value === null
-                            ? null
-                            : k.stacksPerUse.value / hits,
-                      },
-                    }
-                  : {}),
-                source: k.source,
-              })),
+              rules: [
+                ...(ability.rules ?? []),
+                ...own.map((k) => ({
+                  id: `applies-${k.keywordId}`,
+                  // once per cast: only the first component applies it
+                  on: { on: "hit" as const, part: loaded[0].id },
+                  do: [
+                    {
+                      type: "applyStatus" as const,
+                      status: statusOfKeywordId(k.keywordId),
+                      // spread over the hits like the damage, e.g. x120 scorch per Golden Gun = x40 per shot
+                      ...(k.stacksPerUse
+                        ? {
+                            stacks: {
+                              ...k.stacksPerUse,
+                              value:
+                                k.stacksPerUse.value === null
+                                  ? null
+                                  : k.stacksPerUse.value / hits,
+                            },
+                          }
+                        : {}),
+                    },
+                  ],
+                  source: k.source,
+                })),
+              ],
             }
           : {}),
       });

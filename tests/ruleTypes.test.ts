@@ -99,7 +99,6 @@ const SPECIAL_FIELDS = [
   "DamageInstance.everyNthShot",
   "DamageInstance.tickFactors",
   "Ability.refillsMagazine",
-  "Ability.keywordParts",
   "IntrinsicPart.counter",
   "IntrinsicPart.threshold",
   "IntrinsicPart.damageOverTime",

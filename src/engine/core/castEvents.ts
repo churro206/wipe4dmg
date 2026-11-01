@@ -7,13 +7,14 @@ import type { RunEvent, TargetState } from "../eventRun";
 import { requireValue } from "../requireValue";
 import { superWindowMs } from "../superWindow";
 import type { RuleEvent } from "./rules";
-import type { AbilityCast, SuperWindow } from "./types";
+import type { AbilityCast, SuperWindow, TimedDamageInstance } from "./types";
 
-// Order of events at equal times in the event run (eventRun.ts).
+// Order of events at equal times in the event run (eventRun.ts). A cast comes before its hits.
 export const EVENT_GROUP = {
   weaponHit: 0,
   threshold: 1,
   damageOverTime: 2,
+  cast: 2.5,
   abilityHit: 3,
   periodic: 4,
 } as const;
@@ -39,6 +40,8 @@ export function abilityHitEvents(
   { ability, castsMs }: AbilityCast,
   isInPhase: (timeMs: number) => boolean,
   multiplierAt: (timeMs: number, component: AbilityComponent) => Factors,
+  // Tells which component of the ability a hit is, for the `part` of the rules that see it
+  markPart: (hit: TimedDamageInstance, part: string) => void = () => {},
 ): RunEvent[] {
   const components = ability.components.map((component) => ({
     id: `${ability.id}.${component.id}`,
@@ -60,7 +63,7 @@ export function abilityHitEvents(
           group: EVENT_GROUP.abilityHit,
           handle: (_, emit) => {
             const factors = multiplierAt(timeMs, component.component);
-            emit({
+            const hit: TimedDamageInstance = {
               id: component.id,
               timeMs,
               damage: component.damage * productOf(factors),
@@ -71,13 +74,40 @@ export function abilityHitEvents(
                 ? { delivery: component.component.delivery }
                 : {}),
               factors,
-            });
+            };
+            markPart(hit, component.component.id);
+            emit(hit);
           },
         });
       }
     }
   }
   return result;
+}
+
+/** The casts of an ability inside the phase as events; each fires the rules `on cast` of its owner. */
+export function castEvents(
+  { ability, castsMs }: AbilityCast,
+  ownerId: string,
+  isInPhase: (timeMs: number) => boolean,
+  fire: (
+    event: RuleEvent,
+    target: TargetState,
+    schedule: (event: RunEvent) => void,
+  ) => void,
+): RunEvent[] {
+  return castsMs
+    .filter(isInPhase)
+    .map((timeMs): RunEvent => ({
+      timeMs,
+      group: EVENT_GROUP.cast,
+      handle: (target, _, schedule) =>
+        fire(
+          { on: "cast", timeMs, ownerId, kind: ability.kind, abilityId: ability.id },
+          target,
+          schedule,
+        ),
+    }));
 }
 
 /**

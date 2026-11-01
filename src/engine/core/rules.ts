@@ -320,6 +320,10 @@ export function createRuleEngine(
       }
       case "cast": {
         const e = event as Extract<RuleEvent, { on: "cast" }>;
+        // Without a filter a cast means the owner's own, like a shot or a hit
+        if (trigger.kinds === undefined && trigger.abilityIds === undefined) {
+          return e.ownerId === ownerId;
+        }
         return (
           (trigger.kinds === undefined || trigger.kinds.includes(e.kind)) &&
           (trigger.abilityIds === undefined ||

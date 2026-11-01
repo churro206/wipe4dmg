@@ -3,13 +3,13 @@
 import {
   DamageSource,
   type Ability,
-  type AppliesKeywordPart,
   type Effect,
   type Element,
   type ExoticArmorEffect,
   type ExoticArmorEntry,
   type FormerCodeReason,
   type ProviderKind,
+  type Rule,
   type StatModifier,
   type StatusId,
   type Weapon,
@@ -186,13 +186,6 @@ const SOURCE_HITS: Record<DamageSource, string> = {
   classAbility: "Class Abilities",
   keyword: "Keywords",
 };
-const KEYWORD_LABELS: Record<string, string> = {
-  ignition: "Scorch",
-  jolt: "Jolt",
-  volatile: "Volatile",
-  unravel: "Unravel",
-  boltCharge: "Bolt Charge",
-};
 const STATE_LABELS: Record<StatusId, string> = {
   amplified: "Amplified",
   frostArmor: "Frost Armor",
@@ -257,8 +250,9 @@ const STATUS_LABELS: Record<string, string> = {
 const hitsOf = (
   damageSources: readonly DamageSource[] | undefined,
   elements: readonly Element[] | undefined,
+  own: DamageSource = "weapon",
 ) =>
-  (damageSources ?? ["weapon"])
+  (damageSources ?? [own])
     .map((s) =>
       elements?.length
         ? `${list(elements.map((e) => ELEMENT_LABELS[e]))} ${SOURCE_HITS[s]}`
@@ -269,14 +263,20 @@ const hitsOf = (
 const secondsText = (ms: number) =>
   new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(ms / 1000);
 
-/** What the rules of an effect do that its modifiers do not: keywords it applies, damage of its own. */
-function describeRules(effect: Effect): string[] {
-  return (effect.rules ?? []).flatMap((rule) =>
+/**
+ * What the rules of an effect or ability do that its modifiers do not: statuses it applies, damage of
+ * its own. `own` is the damage source of the hits of an owner without a filter (an ability's kind).
+ */
+function describeRules(
+  rules: readonly Rule[] | undefined,
+  own: DamageSource = "weapon",
+): string[] {
+  return (rules ?? []).flatMap((rule) =>
     rule.do.flatMap((action) => {
       if (action.type === "applyStatus" && rule.on.on === "hit") {
         const stacks = action.stacks?.value ? `x${action.stacks.value} ` : "";
         return [
-          `Applies ${stacks}${STATUS_LABELS[action.status] ?? action.status} on hits from ${hitsOf(rule.on.filter?.damageSources, rule.on.filter?.elements)}`,
+          `Applies ${stacks}${STATUS_LABELS[action.status] ?? action.status} on hits from ${hitsOf(rule.on.filter?.damageSources, rule.on.filter?.elements, own)}`,
         ];
       }
       if (action.type === "damage" && rule.on.on === "timer" && rule.on.everyMs) {
@@ -289,9 +289,7 @@ function describeRules(effect: Effect): string[] {
   );
 }
 
-function describePart(
-  part: Effect["modifiers"][number] | AppliesKeywordPart,
-): string {
+function describePart(part: Effect["modifiers"][number]): string {
   switch (part.type) {
     case "multiplier": {
       const conditions = [
@@ -317,17 +315,6 @@ function describePart(
       return describeStat(part);
     case "action":
       return `+${percentOf(part.factor.value)}% ${part.status === "scorch" ? "Scorch" : part.status} stacks`;
-    case "appliesKeyword": {
-      const hits = part.damageSources
-        .map((s) =>
-          part.elements?.length
-            ? `${list(part.elements.map((e) => ELEMENT_LABELS[e]))} ${SOURCE_HITS[s]}`
-            : SOURCE_HITS[s],
-        )
-        .join(", ");
-      const stacks = part.stacks?.value ? `x${part.stacks.value} ` : "";
-      return `Applies ${stacks}${KEYWORD_LABELS[part.keywordId] ?? part.keywordId} on hits from ${hits}`;
-    }
   }
 }
 
@@ -352,7 +339,7 @@ function variantLines(isVariant: (a: Ability) => boolean): string[] {
 export function describeEffect(effect: Effect): string[] {
   return [
     ...effect.modifiers.map(describePart),
-    ...describeRules(effect),
+    ...describeRules(effect.rules),
     // The bonus of a buff per stack, e.g. "+45% ... per stack"; the boss factor is no line of its own
     ...(effect.buffs ?? []).flatMap((buff) =>
       buff.modifiers
@@ -479,9 +466,7 @@ export function describeAbility(ability: Ability, effects: Effect[]): string[] {
       `${integer.format((scaling / total) * 100)}% of it scales with the stat`,
     );
   }
-  if (ability.keywordParts?.length) {
-    lines.push(...ability.keywordParts.map(describePart));
-  }
+  lines.push(...describeRules(ability.rules, ability.kind));
   if (ability.grantsEffectIds?.length) {
     lines.push(`Includes: ${ability.grantsEffectIds.map(nameOf).join(", ")}`);
   }

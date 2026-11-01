@@ -64,7 +64,8 @@ describe("super timings", () => {
       durationMs: 3230,
       exact: true,
     });
-    expect(marksman.keywordParts?.[0].stacks?.value).toBe(40);
+    const apply = marksman.rules?.[0].do[0];
+    expect(apply?.type === "applyStatus" && apply.stacks?.value).toBe(40);
   });
 
   it("give Celestial Nighthawk its own single shot", () => {

@@ -4,12 +4,17 @@
 
 import { describe, expect, it } from "vitest";
 import type {
-  AppliesKeywordPart,
   Keyword,
   StatusModifierData,
   TargetStatusId,
 } from "../src/data/schema";
-import { runEvents, statusState, type RunEvent } from "../src/engine/eventRun";
+import { statusOfKeywordId } from "../src/engine/effectRules";
+import {
+  runEvents,
+  statusState,
+  type OnHit,
+  type RunEvent,
+} from "../src/engine/eventRun";
 import { createStatusContainer } from "../src/engine/core/status";
 import type { TimedDamageInstance } from "../src/engine/core/types";
 
@@ -84,29 +89,43 @@ const hit = (
   factors: {},
   ...extra,
 });
+/** What a rule `on hit → applyStatus` does to a hit of these tests (the core runs the rules). */
+type Applies = {
+  keywordId: "ignition" | "jolt" | "volatile" | "unravel" | "boltCharge";
+  damageSources: TimedDamageInstance["damageSource"][];
+  stacks?: ReturnType<typeof n>;
+};
 const appliesKeyword = (
-  keywordId: AppliesKeywordPart["keywordId"],
-  extra: Partial<AppliesKeywordPart> = {},
-): AppliesKeywordPart => ({
-  type: "appliesKeyword",
-  keywordId,
-  damageSources: ["weapon"],
-  source,
-  ...extra,
-});
+  keywordId: Applies["keywordId"],
+  extra: Partial<Applies> = {},
+): Applies => ({ keywordId, damageSources: ["weapon"], ...extra });
 
 const container = (
   keywords: Keyword[],
-  parts: AppliesKeywordPart[] = [],
+  parts: Applies[] = [],
   stackFactor: (status: TargetStatusId, timeMs: number) => number = () => 1,
-) =>
-  createStatusContainer({
+) => {
+  const status = createStatusContainer({
     keywords,
-    keywordPartsAt: () => parts,
     multiplierAt: () => ({}),
     stackFactorAt: stackFactor,
     isInPhase: (timeMs) => timeMs <= 30_000,
   });
+  const onHit: OnHit = (hit, target, schedule) => {
+    status.onHit(hit, target, schedule);
+    for (const part of parts) {
+      if (!part.damageSources.includes(hit.damageSource)) continue;
+      status.applyStatus(
+        target,
+        statusOfKeywordId(part.keywordId),
+        part.stacks ? { stacks: part.stacks.value } : {},
+        hit,
+        schedule,
+      );
+    }
+  };
+  return { ...status, onHit };
+};
 
 /** Runs `hits` as events that pass through the container's onHit. */
 const run = (
@@ -143,7 +162,6 @@ describe("status without damage (weaken)", () => {
     createStatusContainer({
       keywords: [],
       modifierStatuses: [weaken],
-      keywordPartsAt: () => [],
       multiplierAt: () => ({}),
       stackFactorAt: () => 1,
       isInPhase: () => true,

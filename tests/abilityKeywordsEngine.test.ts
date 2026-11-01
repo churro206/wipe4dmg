@@ -65,14 +65,12 @@ describe("loading abilities with their keywords", () => {
     );
   });
 
-  it("gives the ability a keyword part for its own hits", () => {
-    expect(ability(withKeywords, "fusion-grenade").keywordParts).toMatchObject([
+  it("gives the ability a rule for the hits of its first component", () => {
+    const fusion = ability(withKeywords, "fusion-grenade");
+    expect(fusion.rules).toMatchObject([
       {
-        type: "appliesKeyword",
-        keywordId: "ignition",
-        damageSources: ["grenade"],
-        abilityIds: ["fusion-grenade"],
-        stacks: { value: 40 },
+        on: { on: "hit", part: fusion.components[0].id },
+        do: [{ type: "applyStatus", status: "scorch", stacks: { value: 40 } }],
       },
     ]);
   });

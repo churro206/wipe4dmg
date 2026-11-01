@@ -290,26 +290,6 @@ export const DamageOverTimePart = z.object({
 export type DamageOverTimePart = z.infer<typeof DamageOverTimePart>;
 
 /**
- * Part of an ability that applies a keyword to the target with its hits (until B3b step 4 turns it
- * into rules); the effects use a rule `on hit → applyStatus` instead. The filters work like those of
- * a multiplier part.
- */
-export const AppliesKeywordPart = z.object({
-  type: z.literal("appliesKeyword"),
-  keywordId: KeywordId,
-  damageSources: z.array(DamageSource).min(1),
-  elements: z.array(Element).optional(),
-  weaponTypes: z.array(WeaponType).optional(),
-  abilityIds: z.array(z.string()).optional(),
-  durationMs: SourcedNumber.optional(), // replaces the duration of the keyword, e.g. of Unravel
-  // Only these damage instances apply it, e.g. "fusion-grenade.package"; omitted: all matching hits.
-  damageInstanceIds: z.array(z.string()).optional(),
-  stacks: SourcedNumber.optional(), // for keywords with stacks, e.g. x40 scorch or x4 bolt charge
-  source: Source,
-});
-export type AppliesKeywordPart = z.infer<typeof AppliesKeywordPart>;
-
-/**
  * Fixed parts of a weapon that work without any selected effect. The scorch of its explosions is
  * a rule of the weapon (`on hit → applyStatus`), not a part.
  */
@@ -1030,8 +1010,10 @@ const AbilityFields = z.object({
   refillsMagazine: z.literal(true).optional(),
   // Empty only for supers that just grant effects, e.g. Ward of Dawn.
   components: z.array(AbilityComponent),
-  // Keywords its hits apply (ADR 0015, U5); set when loading from ability-keywords.json.
-  keywordParts: z.array(AppliesKeywordPart).optional(),
+  // Rules of the ability (architecture section 6): it owns them. Hits of its components are parts
+  // (`on hit` with `part`); the keywords of ability-keywords.json become `on hit → applyStatus` when
+  // loading.
+  rules: z.array(Rule).optional(),
 });
 const usageOnlyForSupers = (ability: {
   kind: AbilityKind;
