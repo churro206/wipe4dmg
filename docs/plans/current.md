@@ -4,20 +4,21 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 ## Nächster Block: B6, Spielweisen der Exotic-Waffen (freigegeben 2026-11-01; Sonnet)
 
-Befund (`tmp/playstyle-inventory.test.ts`): Im Reiter Weapons gelten Spielweise-Wörter (`isExecution`) als „kein Schalter nötig“, die Zeile rechnet mit der einen Spielweise des Modells (Heirloom 1/3 −36 %, Lament 4L −21 %). Bei Sustained bleiben sie fehlende Schalter.
+Befund: Spielweise-Wörter (`isExecution`) gelten bei Weapons als „kein Schalter“, die Zeile rechnet mit einer Spielweise (Heirloom 1/3 −36 %, Lament 4L −21 %).
 
-**Regel:** Eine Ausführungsart, die Aegis als eigene Zeile misst (Ladestufe, Kombo, Modus, ADS/Hipfire, Zustand), ist ein Eintrag in `playstyles` des Items, Label = Aegis-Wort; Regeln mit Bedingung `playstyle` tragen den Unterschied. Werte aus Text, Quantum oder `$aegis` der Basiszeile, nie aus der Zeile der Spielweise (sie bleibt Prüfung). Lücke unter 2 % (Revision Zero 1,3 %): `known-inaccuracies`.
+**Regel:** Eine Ausführungsart, die Aegis als eigene Zeile misst (Ladestufe, Kombo, Modus, ADS/Hipfire), ist ein Eintrag in `playstyles` des Items, Label = Aegis-Wort; Regeln mit Bedingung `playstyle` tragen den Unterschied. Werte aus Text, Quantum oder `$aegis` der Basiszeile (sie bleibt Prüfung). Lücke unter 2 %: `known-inaccuracies`.
 
 Reihenfolge nach Lücke zwischen den Zeilen: The Lament, Heirloom, Whirling Ovation, Choir of One, Salvation's Grip, Black Talon, Symmetry, Grand Overture, Graviton Spike, Lodestar, Duality, Delicate Tomb, Witherhoard, Cull's Shadow, Hawkmoon, Eriana's Vow, D.A.R.C.I.; Ergo Sum, Heartshadow prüfen.
 
-1. Test zuerst: Der Generator ordnet ein Wort, das eine Spielweise des Items benennt, dieser zu (Weapons, Sustained); sonst wie heute. Szenarien Heirloom, Lament rot.
-2. Generator und Kern: Spielweise der Zeile in den Build (prüfen, ob der Kern `playstyle` oder `assumptions` liest).
+1+2. Generator ordnet Wort → Spielweise (erledigt).
 3. Item-Dateien in obiger Reihenfolge; ihre Pakete und Overrides fallen weg. Neuer Typ nur mit Test (I3).
 4. Snapshot, Kennzahlen je Gruppe, `docs/weapon-import.md`, Changelog, Roadmap.
 
+**Stand 2026-11-01:** Schritt 1+2 erledigt (Commit 5c94c12): `playstyleNamed` (tests/lib/scenarioGen.ts) ordnet ein Wort dem Label einer Spielweise zu (erste = Grundschuss, kein `build.playstyle`; zweites Wort = fehlender Schalter); der Kern liest `Build.playstyle` schon. Schritt 3 offen: Lament (Combos) und Heirloom (Ladestufen) sind aus Clarity nicht herleitbar, beide ohne Quantum. **Entscheidung Inhaber:** Wert je Spielweise als Verweis auf deren Zeile (`fitted`, ADR 0018), Basiszeile bleibt Prüfung. Entwurf: neuer Verweis `$aegis[row].perShot` (refs.ts, mit Test), je Spielweise ein Part, Takt per `modifyStat rpm` aus `$aegisSustained[row].peakRateSeconds`; `totalShots` fix (Lücke bei 10 gegen 16 Combos nach known-inaccuracies); Scorch/Ignition des Katalysators per `applyStatus`.
+
 Gate: Delta-Paare und Spearman Weapons nicht schlechter, Abdeckung Heavy/Special steigt, jedes Item löst auf. Offenes am Sitzungsende bleibt in B6.
 
-Kandidaten danach: Stapelzähler und Zustände als Schalter (`Roaring Flames x3` 17, `Transcendent` 17 Treffer), Testing-Reiter, Stasis-Shatter (Whisper of Fissures, Facet of Ruin; Katalog sagt fälschlich „No damage effect“). Aus B4: `pickBaseRow`, `blockingReason`, `options` neben `buffs`.
+Danach: Stapelzähler als Schalter (`Roaring Flames x3`, `Transcendent`), Testing-Reiter, Stasis-Shatter (Katalog sagt fälschlich „No damage effect“). Aus B4: `pickBaseRow`, `blockingReason`, `options` neben `buffs`.
 
 ## Offen aus P
 
