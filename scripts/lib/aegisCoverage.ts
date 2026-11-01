@@ -12,7 +12,7 @@ import type {
   Effect,
 } from "../../src/data/schema.ts";
 import { hasOwnDamage } from "../../src/engine/effectRules.ts";
-import type { ReportWeapon } from "./weaponPackages.ts";
+import type { ReportWeapon } from "./weaponReport.ts";
 
 export type Verdict = "model" | "skipped" | "missing";
 export type AegisTab = "weapons" | "sustained" | "swap";

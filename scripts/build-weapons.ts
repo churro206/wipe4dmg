@@ -6,7 +6,8 @@
 import { writeFileSync } from "node:fs";
 import { format } from "prettier";
 import { loadWeaponImportInputs } from "./lib/weaponImportInputs.ts";
-import { buildWeaponImport, renderWeaponImport } from "./lib/weaponPackages.ts";
+import { buildWeaponImport } from "./lib/weaponPackages.ts";
+import { renderWeaponImport } from "./lib/weaponReport.ts";
 
 const ROOT = new URL("../", import.meta.url);
 const result = buildWeaponImport(loadWeaponImportInputs());

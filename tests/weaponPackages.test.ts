@@ -4,11 +4,8 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { loadWeaponImportInputs } from "../scripts/lib/weaponImportInputs";
-import {
-  bossParagraphs,
-  buildWeaponImport,
-  renderWeaponImport,
-} from "../scripts/lib/weaponPackages";
+import { bossParagraphs, buildWeaponImport } from "../scripts/lib/weaponPackages";
+import { renderWeaponImport } from "../scripts/lib/weaponReport";
 import rawBuckets from "../src/data/buckets.json";
 import rawCodes from "../src/data/weapon-codes.json";
 import rawGaps from "../src/data/weapon-gaps.json";

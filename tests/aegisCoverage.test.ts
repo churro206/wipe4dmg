@@ -3,7 +3,7 @@
 
 import { describe, expect, it } from "vitest";
 import type { Ability, AegisTotalRow, AegisWeaponRow, Effect } from "../src/data/schema";
-import type { ReportWeapon } from "../scripts/lib/weaponPackages";
+import type { ReportWeapon } from "../scripts/lib/weaponReport";
 import {
   aegisCoverage,
   countVerdicts,
