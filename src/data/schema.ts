@@ -413,16 +413,6 @@ export const MultiplierPart = z.object({
   requiresStatus: z.array(StatusId).min(1).optional(),
   // Only while one of these other effects is active, e.g. Expanding Abyss raises Weaken
   requiresEffectIds: z.array(z.string()).min(1).optional(),
-  // Stacks per weapon hit, e.g. Lucky Pants, Peacekeepers: `multiplier` is the factor of one stack
-  // (1.45 = +45 %), hit n has n - 1 stacks. A longer gap than refreshMs ends the run (omitted: never).
-  // Bosses take bossFactor times the damage of a buffed shot (one stack or more).
-  hitStacks: z
-    .object({
-      maxStacks: SourcedNumber,
-      refreshMs: SourcedNumber.optional(),
-      bossFactor: SourcedNumber,
-    })
-    .optional(),
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 
@@ -912,6 +902,11 @@ export const Effect = z
     modifiers: z.array(
       z.union([Modifier, AppliesKeywordPart, PeriodicDamagePart]),
     ),
+    // Rules and buffs of the effect (B3b step 2): the effect owns them and its counters; its rules
+    // fire only inside its windows, and its buffs count only inside them. E.g. the stacks per weapon
+    // hit of Lucky Pants: a buff with `perStack`, granted and raised by rules on `hit`.
+    rules: z.array(Rule).optional(),
+    buffs: z.array(BuffDefinition).optional(),
     // States the player has while the effect is active, e.g. Amplified (ADR 0015, U6-2)
     grantsStatus: z.array(StatusId).min(1).optional(),
     // Abilities with a variant measured with this aspect or fragment, e.g. Knock 'Em Down changes
@@ -930,11 +925,12 @@ export const Effect = z
   .refine(
     (e) =>
       e.modifiers.length > 0 ||
+      (e.buffs?.length ?? 0) > 0 ||
       e.grantsStatus !== undefined ||
       e.changesAbilityIds !== undefined,
     {
       message:
-        "an effect needs modifiers, a state it grants or abilities it changes",
+        "an effect needs modifiers, buffs, a state it grants or abilities it changes",
       path: ["modifiers"],
     },
   );

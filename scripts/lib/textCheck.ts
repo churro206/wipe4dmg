@@ -9,7 +9,7 @@
 // - unused: percentages in the text no part uses (information, no deviation).
 // Review table: docs/text-check.md; every deviation needs a reason in tests/fixtures/text-check.json.
 
-import type { AbilityGrant, Effect, MultiplierPart, Source, Weapon, WeaponType } from "../../src/data/schema.ts";
+import type { AbilityGrant, Effect, MultiplierModifier, MultiplierPart, Source, Weapon, WeaponType } from "../../src/data/schema.ts";
 import {
   COURT_SECONDS,
   courtQuote,
@@ -94,10 +94,16 @@ const SOURCE_WORDS: Record<MultiplierPart["damageSources"][number], RegExp> = {
   keyword: /\b(ignitions?|jolts?|volatile|unravel|bolt charge|scorch|explosions?)\b/,
 };
 
+/** The multipliers an effect checks against its text: its own and the per-stack ones of its buffs. */
+const multipliersOf = (effect: Effect): MultiplierPart[] => [
+  ...effect.modifiers.filter((p): p is MultiplierPart => p.type === "multiplier"),
+  ...(effect.buffs ?? []).flatMap((buff) => buff.modifiers.filter((p) => p.perStack)),
+];
+
 /** Texts of an effect: its source quotes, its Court rows, Compendium and Clarity. */
 function effectTexts(effect: Effect, sources: ItemTextSources): ItemText[] {
   const quotes = [
-    ...effect.modifiers.flatMap((p) => (p.type === "multiplier" ? [p.multiplier.source] : [])),
+    ...multipliersOf(effect).map((p) => p.multiplier.source),
     ...(effect.durationMs ? [effect.durationMs.source] : []),
   ].flatMap((s) => (s.quote ? [{ from: "quote", text: s.quote }] : []));
   const court = courtRowsOf(effect.name, sources).map((r) => ({
@@ -243,7 +249,7 @@ const describePart = (p: MultiplierPart) =>
     p.damageSources.join("/"),
     p.elements?.join("/"),
     p.weaponTypes?.join("/"),
-    p.hitStacks ? "pro Stapel" : undefined,
+    (p as MultiplierModifier).perStack ? "pro Stapel" : undefined,
   ]
     .filter(Boolean)
     .join(", ");
@@ -256,7 +262,7 @@ export function textCheckRows(inputs: TextCheckInputs): TextCheckRow[] {
   const via = inputs.effects
     .filter(({ file }) => file === "effects.json" || file === "buff-effects.json")
     .map(({ effect }) => {
-      const parts = effect.modifiers.filter((p): p is MultiplierPart => p.type === "multiplier" && p.multiplier.value !== null);
+      const parts = multipliersOf(effect).filter((p) => p.multiplier.value !== null);
       return {
         name: effect.name.replace(/\s*\(.*\)$/, "").replace(/\s+x\d+$/i, ""),
         values: parts.map((p) => pctOf(p.multiplier.value!)),
@@ -266,7 +272,7 @@ export function textCheckRows(inputs: TextCheckInputs): TextCheckRow[] {
 
   for (const { effect } of inputs.effects) {
     const texts = effectTexts(effect, inputs);
-    const parts = effect.modifiers.filter((p): p is MultiplierPart => p.type === "multiplier" && p.multiplier.value !== null);
+    const parts = multipliersOf(effect).filter((p) => p.multiplier.value !== null);
     const used = parts.map((p) => pctOf(p.multiplier.value!));
     const others = via.filter((v) => v.name !== effect.name.replace(/\s*\(.*\)$/, "").replace(/\s+x\d+$/i, ""));
     parts.forEach((part, i) => {

@@ -307,6 +307,12 @@ function variantLines(isVariant: (a: Ability) => boolean): string[] {
 export function describeEffect(effect: Effect): string[] {
   return [
     ...effect.modifiers.map(describePart),
+    // The bonus of a buff per stack, e.g. "+45% ... per stack"; the boss factor is no line of its own
+    ...(effect.buffs ?? []).flatMap((buff) =>
+      buff.modifiers
+        .filter((part) => part.perStack)
+        .map((part) => `${describePart(part)} per hit, up to ${buff.maxStacks?.value ?? 1} stacks`),
+    ),
     ...(effect.grantsStatus
       ? [`Grants ${list(effect.grantsStatus.map((s) => STATE_LABELS[s]))}`]
       : []),

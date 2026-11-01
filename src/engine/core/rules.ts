@@ -33,7 +33,13 @@ import { requireValue } from "../requireValue";
 const ROUNDING_TOLERANCE = 1e-9;
 
 /** What the owner of a rule is: a weapon, an effect or an ability, with its rules and buffs. */
-export type RuleOwner = { id: string; rules: Rule[]; buffs?: BuffDefinition[] };
+export type RuleOwner = {
+  id: string;
+  rules: Rule[];
+  buffs?: BuffDefinition[];
+  /** The windows of an effect: its rules fire and its buffs count only while it is active. Omitted: always. */
+  activeAt?: (timeMs: number) => boolean;
+};
 
 /** What a shot or hit is, for the filter of a trigger. */
 export type HitAttributes = {
@@ -186,7 +192,9 @@ export function createRuleEngine(
 ) {
   const states = new Map<string, OwnerState>();
   const buffDefinitions = new Map<string, Map<string, BuffDefinition>>();
+  const activeAtOf = new Map<string, (timeMs: number) => boolean>();
   for (const owner of owners) {
+    if (owner.activeAt) activeAtOf.set(owner.id, owner.activeAt);
     states.set(owner.id, {
       counters: new Map(),
       modes: new Map(),
@@ -234,9 +242,17 @@ export function createRuleEngine(
       .statModifiers.filter((m) => timeMs < m.untilMs)
       .map((m) => m.modifier);
 
+  const isActive = (ownerId: string, timeMs: number) =>
+    activeAtOf.get(ownerId)?.(timeMs) ?? true;
+
+  /** The multiplier parts of the active buffs of all active owners. */
+  const allBuffPartsAt = (timeMs: number): MultiplierPart[] =>
+    owners.flatMap((owner) => buffPartsAt(owner.id, timeMs));
+
   /** The multiplier parts of the active buffs of an owner; a `perStack` multiplier scales with stacks. */
   const buffPartsAt = (ownerId: string, timeMs: number): MultiplierPart[] => {
     const parts: MultiplierPart[] = [];
+    if (!isActive(ownerId, timeMs)) return parts;
     for (const [id, definition] of buffDefinitions.get(ownerId) ?? []) {
       const stacks = buffStacks(ownerId, id, timeMs);
       if (stacks === 0) continue;
@@ -526,6 +542,9 @@ export function createRuleEngine(
   const fire = (event: RuleEvent) => {
     const firing: { rule: Rule; ownerId: string }[] = [];
     for (const owner of owners) {
+      // The end of a buff or mode still reaches an owner whose window is over
+      const ends = event.on === "timer" && event.expires !== undefined;
+      if (!ends && !isActive(owner.id, event.timeMs)) continue;
       const state = stateOf(owner.id);
       for (const rule of owner.rules) {
         if (!matches(rule, owner.id, event)) continue;
@@ -568,6 +587,7 @@ export function createRuleEngine(
     modeOf,
     buffStacks,
     buffPartsAt,
+    allBuffPartsAt,
     statModifiersAt,
     periodicRules,
   };

@@ -311,20 +311,23 @@ describe("rules for the exotic damage buffs", () => {
 
   it("stacks per weapon hit: Lucky Pants has a 6 s window, Peacekeepers refreshes per hit", () => {
     const lucky = effectOf("lucky-pants").effect;
-    const pants = lucky.modifiers[0];
-    if (pants.type !== "multiplier") throw new Error("multiplier expected");
-    expect(pants.weaponTypes).toEqual(["handCannon"]);
-    expect(pants.multiplier.value).toBeCloseTo(1.45, 10);
-    expect(pants.hitStacks?.maxStacks.value).toBe(10);
-    expect(pants.hitStacks?.bossFactor.value).toBeCloseTo(0.67, 10);
-    expect(pants.hitStacks?.refreshMs).toBeUndefined();
+    const pants = lucky.buffs![0];
+    const [perStack, boss] = pants.modifiers;
+    expect(lucky.modifiers).toEqual([]);
+    expect(perStack.weaponTypes).toEqual(["handCannon"]);
+    expect(perStack.perStack).toBe(true);
+    expect(perStack.multiplier.value).toBeCloseTo(1.45, 10);
+    expect(boss.multiplier.value).toBeCloseTo(0.67, 10);
+    expect(boss.bucketId).toBe(perStack.bucketId);
+    expect(pants.maxStacks?.value).toBe(10);
+    expect(pants.durationMs).toBeUndefined();
     expect(lucky.durationMs?.value).toBe(6000);
+    expect(lucky.rules!.map((r) => r.on.on)).toEqual(["hit", "hit"]);
 
-    const keepers = effectOf("peacekeepers").effect.modifiers[0];
-    if (keepers.type !== "multiplier") throw new Error("multiplier expected");
-    expect(keepers.weaponTypes).toEqual(["submachineGun"]);
-    expect(keepers.hitStacks?.maxStacks.value).toBe(20);
-    expect(keepers.hitStacks?.refreshMs?.value).toBe(1000);
+    const keepers = effectOf("peacekeepers").effect.buffs![0];
+    expect(keepers.modifiers[0].weaponTypes).toEqual(["submachineGun"]);
+    expect(keepers.maxStacks?.value).toBe(20);
+    expect(keepers.durationMs?.value).toBe(1000);
   });
 });
 

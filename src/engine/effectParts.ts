@@ -109,7 +109,12 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
       }),
     ),
   ]);
-  return effect.modifiers.some((part) => {
+  // The multipliers of its buffs count like its own (e.g. the stacks of Lucky Pants)
+  const modifiers = [
+    ...effect.modifiers,
+    ...(effect.buffs ?? []).flatMap((buff) => buff.modifiers),
+  ];
+  return modifiers.some((part) => {
     switch (part.type) {
       case "multiplier":
         // keyword damage of the weapon's own counters, e.g. the ignitions of scorch

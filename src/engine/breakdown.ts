@@ -117,6 +117,21 @@ function withoutBucket(effects: Effect[], bucketId: string): Effect[] {
       modifiers: effect.modifiers.filter(
         (part) => !(part.type === "multiplier" && part.bucketId === bucketId),
       ),
+      // A buff keeps its rules; its multipliers of that bucket become neutral
+      ...(effect.buffs
+        ? {
+            buffs: effect.buffs.map((buff) => ({
+              ...buff,
+              modifiers: buff.modifiers.map((part) =>
+                part.bucketId === bucketId
+                  ? { ...part, multiplier: { ...part.multiplier, value: 1 } }
+                  : part,
+              ),
+            })),
+          }
+        : {}),
     }))
-    .filter((effect) => effect.modifiers.length > 0);
+    .filter(
+      (effect) => effect.modifiers.length > 0 || (effect.buffs?.length ?? 0) > 0,
+    );
 }

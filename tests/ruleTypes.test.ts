@@ -100,7 +100,6 @@ const SPECIAL_FIELDS = [
   "DamageInstance.requiresCatalyst",
   "DamageInstance.everyNthShot",
   "DamageInstance.tickFactors",
-  "MultiplierPart.hitStacks",
   "Ability.refillsMagazine",
   "Ability.keywordParts",
   "EffectPart.appliesKeyword",

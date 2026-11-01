@@ -52,7 +52,7 @@ export function simulate(
   buckets: Bucket[] = [],
   options: SimulationOptions = {},
 ): SimulationResult {
-  const history: ShotHistory = { shots: [], holdFactors: [], partHitsMs: [] };
+  const history: ShotHistory = { shots: [], holdFactors: [] };
   const superWindows = superWindowsOf(options.abilities ?? []);
   const context = createContext(
     weapon,
@@ -62,7 +62,7 @@ export function simulate(
     superWindows,
     history,
     // The rules come after the context and need it; they are asked only once the loop runs
-    (timeMs) => ruleEngine.buffPartsAt(weapon.id, timeMs),
+    (timeMs) => ruleEngine.allBuffPartsAt(timeMs),
   );
   const { catalyst, damageSource, multiplierAt, counterFactorAt, partsAt } =
     context;
@@ -169,6 +169,22 @@ export function simulate(
   // action names is set off by the rules only: a part without a `spawn` rule does no damage.
   const WEAPON = weapon.id;
   const rules = weapon.rules ?? [];
+  // The effects own rules and buffs too; they act only inside the windows of the effect
+  const owners = [
+    { id: WEAPON, rules, buffs: weapon.buffs ?? [] },
+    ...effects
+      .filter((effect) => (effect.rules?.length ?? 0) + (effect.buffs?.length ?? 0) > 0)
+      .map((effect) => ({
+        id: effect.id,
+        rules: effect.rules ?? [],
+        buffs: effect.buffs ?? [],
+        activeAt: (timeMs: number) =>
+          context.windows
+            .get(effect.id)!
+            .some((w) => w.startMs <= timeMs && timeMs < w.endMs),
+      })),
+  ];
+  const hasRules = owners.some((owner) => owner.rules.length > 0);
   const partsById = new Map(weapon.damageInstances.map((i) => [i.id, i]));
   /** The hits the rules set off: their part and whether it counts as a precision hit. */
   const ruleHits = new WeakMap<
@@ -194,7 +210,7 @@ export function simulate(
     throw new Error(`${what} is not supported by the core yet (B3b)`);
   };
   const ruleEngine = createRuleEngine(
-    [{ id: WEAPON, rules, buffs: weapon.buffs ?? [] }],
+    owners,
     {
       statusStacks: (status, timeMs) =>
         statusContainer.stacksOnTarget(current().target, status, timeMs),
@@ -217,14 +233,9 @@ export function simulate(
         const first = timeMs + (delayMs ?? 0);
         const every = intervalMs ?? 0;
         const hits = count ?? 1;
-        const nth = instance.everyNthShot
-          ? requireValue(instance.everyNthShot, "everyNthShot")
-          : 1;
         for (let tick = 0; tick < hits; tick++) {
           const atMs = first + tick * every;
           if (!isInPhase(atMs)) continue;
-          // hitStacks count the hits of such a part (until B3b)
-          if (nth > 1) history.partHitsMs.push(atMs);
           schedule({
             timeMs: atMs,
             group: EVENT_GROUP.weaponHit,
@@ -292,7 +303,7 @@ export function simulate(
     schedule: (event: RunEvent) => void,
     hit?: TimedDamageInstance,
   ) {
-    if (rules.length === 0) return;
+    if (!hasRules) return;
     const previous = firing;
     firing = {
       timeMs: event.timeMs,
@@ -309,7 +320,7 @@ export function simulate(
   /** A hit seen by the statuses first, then by the rules. */
   const onHit: OnHit = (hit, target, schedule) => {
     statusContainer.onHit(hit, target, schedule);
-    if (rules.length === 0) return;
+    if (!hasRules) return;
     const own = ruleHits.get(hit);
     const status = hit.keywordId ? statusOfKeyword.get(hit.keywordId) : undefined;
     const attributes: HitAttributes = {
@@ -464,7 +475,7 @@ export function simulate(
   };
 
   const events: RunEvent[] = [];
-  if (rules.length > 0) {
+  if (hasRules) {
     events.push({
       timeMs: 0,
       group: PHASE_START_GROUP,

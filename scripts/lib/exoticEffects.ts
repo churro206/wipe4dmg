@@ -10,7 +10,7 @@
 //   (U6-1b); the class ability triggers it → U7
 // 5 it needs another buff, e.g. Roaring Flames or Frost Armor → U6-2
 // 6 the bonus names one ability: an ability of the model gets it the whole damage phase, otherwise gap
-// 7 stacks per weapon hit → MultiplierPart.hitStacks, counted from the hits of the rotation; a
+// 7 stacks per weapon hit → a buff with rules on hit (B3b), counted from the hits of the rotation; a
 //   buff that grows while holding a draw (Oathkeeper) → HoldDrawPart, held only when it pays
 // 8 no text → gap
 
@@ -24,7 +24,9 @@ import {
   type Element,
   type ExoticArmorEffect,
   type ExoticArmorEntry,
+  type BuffDefinition,
   type MultiplierPart,
+  type Rule,
   type StatModifier,
   type StatusId,
   type WeaponType,
@@ -159,6 +161,8 @@ const flat = (text: string) => text.replace(/\s+/g, " ").trim();
 
 export type Verdict = Omit<ExoticEffectRow, "exoticArmorId" | "name" | "effectId"> & {
   part?: MultiplierPart | HoldDrawModifier;
+  // Stacks per weapon hit: the effect owns a buff and the rules on hit that grant and raise it
+  stacks?: { buff: BuffDefinition; rules: Rule[] };
   durationMs?: { value: number; source: Source };
   trigger?: EffectTrigger;
 };
@@ -584,26 +588,42 @@ function hitStacksVerdict(
     ...inputs.sources.compendium,
     note: `„${quote}“; stacks counted from the weapon hits of the rotation (hit n has n - 1 stacks)`,
   });
+  const bucketId = entry.bonusBucket?.bucketId ?? "exoticIntrinsic";
   const part: MultiplierPart = {
     type: "multiplier",
-    bucketId: entry.bonusBucket?.bucketId ?? "exoticIntrinsic",
+    bucketId,
     multiplier: { value: factorOf(Number(bonus[1])), source: source(bonus[0]) },
     damageSources: ["weapon"],
     weaponTypes,
-    hitStacks: {
-      maxStacks: { value: Number(max[1]), source: source(max[0]) },
-      ...(refresh && seconds !== undefined
-        ? { refreshMs: { value: seconds * MS_PER_SECOND, source: source(duration![0]) } }
-        : {}),
-      bossFactor: { value: (PERCENT - Number(boss[1])) / PERCENT, source: source(boss[0]) },
-    },
   };
+  // One stack per hit of the weapon type; hit n sees n - 1 stacks (the rule runs after the hit's
+  // damage). A gap longer than the refresh time ends the run (the buff's duration). Bosses take
+  // less damage from buffed shots: a second multiplier of the buff in the same bucket.
+  const BUFF = "stacks";
+  const onHit = { on: "hit" as const, filter: { damageSources: ["weapon" as const], weaponTypes } };
+  const buff: BuffDefinition = {
+    id: BUFF,
+    name: entry.name,
+    modifiers: [
+      { ...part, perStack: true },
+      { ...part, multiplier: { value: (PERCENT - Number(boss[1])) / PERCENT, source: source(boss[0]) } },
+    ],
+    maxStacks: { value: Number(max[1]), source: source(max[0]) },
+    ...(refresh && seconds !== undefined
+      ? { durationMs: { value: seconds * MS_PER_SECOND, source: source(duration![0]) } }
+      : {}),
+  };
+  const rules: Rule[] = [
+    { id: "start", on: onHit, if: [{ type: "buff", id: BUFF, not: true }], do: [{ type: "grantBuff", buff: BUFF }] },
+    { id: "raise", on: onHit, if: [{ type: "buff", id: BUFF }], do: [{ type: "addStacks", buff: BUFF }] },
+  ];
   return {
     rule: 7,
     kind: "hitStacks",
     reason: `+${bonus[1]} % pro Stapel, höchstens ${max[1]}, auf ${weaponTypes.join(", ")}; Boss nimmt ${boss[1]} % weniger Schaden von gebufften Schüssen${refresh ? `; Lücke über ${seconds} s beendet die Serie` : seconds !== undefined ? `; Fenster ${seconds} s ab Beginn` : ""}`,
     check,
     part,
+    stacks: { buff, rules },
     ...(!refresh && seconds !== undefined
       ? { durationMs: { value: seconds * MS_PER_SECOND, source: source(duration![0]) } }
       : {}),
@@ -838,7 +858,7 @@ export function exoticEffects(inputs: ExoticEffectInputs): {
         : [textVerdict(entry, text, inputs)];
     const superEnd = textSuperEnd(entry, text, inputs);
     if (superEnd) verdicts.push(superEnd);
-    for (const { part, durationMs, trigger, ...verdict } of verdicts) {
+    for (const { part, stacks, durationMs, trigger, ...verdict } of verdicts) {
       const row: ExoticEffectRow = { exoticArmorId: entry.id, name: entry.name, ...verdict };
       if (part && GENERATES.includes(verdict.kind)) {
         const count = effects.filter((e) => e.exoticArmorId === entry.id).length;
@@ -848,7 +868,8 @@ export function exoticEffects(inputs: ExoticEffectInputs): {
           code: entry.hash, // not part of build links; the exotic itself is
           shortName: entry.name,
           providers: [{ kind: "armor", slot: "exotic" }],
-          modifiers: part.type === "multiplier" ? withCaps(part, entry, inputs) : [part],
+          modifiers: stacks ? [] : part.type === "multiplier" ? withCaps(part, entry, inputs) : [part],
+          ...(stacks ? { buffs: [stacks.buff], rules: stacks.rules } : {}),
           ...(durationMs ? { durationMs } : {}),
           ...(trigger ? { trigger } : {}),
         };

@@ -57,11 +57,14 @@ const isTimed = (p: Effect["modifiers"][number]) =>
   (p.type === "stat" && p.stat === "reload");
 
 function worksPerEvent(effect: Effect): boolean {
-  return effect.modifiers.every(
-    (p) =>
-      !isTimed(p) ||
-      (p.type === "multiplier" &&
-        (p.hitStacks !== undefined || p.abilityIds !== undefined || p.requiresEffectIds !== undefined)),
+  // Its buffs are granted by rules on hits, so they work per event
+  return (
+    (effect.buffs?.length ?? 0) > 0 ||
+    effect.modifiers.every(
+      (p) =>
+        !isTimed(p) ||
+        (p.type === "multiplier" && (p.abilityIds !== undefined || p.requiresEffectIds !== undefined)),
+    )
   );
 }
 
@@ -90,7 +93,8 @@ export function uptimeRows(inputs: UptimeInputs): UptimeRow[] {
     if (effect.providers.some((p) => p.kind === "fireteamSupport"))
       return { ...base, verdict: "fireteam" as const };
     if (HELD[effect.id]) return { ...base, verdict: "held" as const, quote: HELD[effect.id] };
-    if (effect.modifiers.length === 0) return { ...base, verdict: "state" as const };
+    if (effect.modifiers.length === 0 && !effect.buffs?.length)
+      return { ...base, verdict: "state" as const };
     if (worksPerEvent(effect)) return { ...base, verdict: "event" as const };
     const found = durationInText(effect, inputs);
     return found ? { ...base, verdict: "open" as const, ...found } : { ...base, verdict: "none" as const };

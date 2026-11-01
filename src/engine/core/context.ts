@@ -34,14 +34,10 @@ import { weaponStatPart } from "../weaponStats";
 
 const ABILITY_DAMAGE_SOURCES: DamageSource[] = ["grenade", "melee", "super"];
 
-/**
- * The shots made so far and the held draw factor of each; the times of the hits of parts that every
- * Nth shot sets off (S4 part C, e.g. Barrow-Dyad's seekers), which count as hits for stacks.
- */
+/** The shots made so far and the held draw factor of each. */
 export type ShotHistory = {
   shots: Shot[];
   holdFactors: number[];
-  partHitsMs: number[];
 };
 
 export function createContext(
@@ -51,7 +47,8 @@ export function createContext(
   options: SimulationOptions,
   superWindows: SuperWindow[],
   history: ShotHistory,
-  // The multiplier parts of the weapon's active buffs (rule engine, asked once the loop runs)
+  // The multiplier parts of the active buffs of the weapon and the effects (rule engine, asked once
+  // the loop runs)
   buffPartsAt: (timeMs: number) => MultiplierPart[] = () => [],
 ) {
   const catalyst = options.catalyst ?? false;
@@ -140,49 +137,6 @@ export function createContext(
     }
     return 1;
   };
-  // Stacks of a hit: the hits of the current run before it (shots and the hits of every-Nth-shot
-  // parts until its time); a gap longer than refreshMs ends the run.
-  const stacksAt = (timeMs: number, refreshMs: number) => {
-    const shotsMs = history.shots.map((shot) => shot.timeMs);
-    const hitsMs = (
-      history.partHitsMs.length === 0
-        ? shotsMs
-        : [...shotsMs, ...history.partHitsMs].sort((a, b) => a - b)
-    ).filter((hitMs) => hitMs <= timeMs);
-    let stacks = 0;
-    let previousMs: number | undefined;
-    for (const hitMs of hitsMs) {
-      stacks =
-        previousMs !== undefined && hitMs - previousMs > refreshMs
-          ? 1
-          : stacks + 1;
-      previousMs = hitMs;
-    }
-    return Math.max(0, stacks - 1);
-  };
-  const resolveHitStacks = (
-    part: MultiplierPart,
-    timeMs: number,
-  ): MultiplierPart => {
-    const { hitStacks, ...plain } = part;
-    if (hitStacks === undefined) return part;
-    const stacks = Math.min(
-      stacksAt(
-        timeMs,
-        hitStacks.refreshMs
-          ? requireValue(hitStacks.refreshMs, "refreshMs")
-          : Number.POSITIVE_INFINITY,
-      ),
-      requireValue(hitStacks.maxStacks, "maxStacks"),
-    );
-    const factor =
-      stacks === 0
-        ? 1
-        : (1 + (requireValue(part.multiplier, "multiplier") - 1) * stacks) *
-          requireValue(hitStacks.bossFactor, "bossFactor");
-    return { ...plain, multiplier: { ...part.multiplier, value: factor } };
-  };
-
   const statPart = weaponStatPart(options.weaponStat, weapon.ammo);
   const multiplierAt = (
     timeMs: number,
@@ -193,9 +147,7 @@ export function createContext(
     return {
       ...bucketFactors(
         [
-          ...partsAt(timeMs, included).multiplierParts.map((part) =>
-            resolveHitStacks(part, timeMs),
-          ),
+          ...partsAt(timeMs, included).multiplierParts,
           ...optionParts,
           ...buffPartsAt(timeMs),
           ...(statPart ? [statPart] : []),
