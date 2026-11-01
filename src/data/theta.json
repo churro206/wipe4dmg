@@ -1,0 +1,13 @@
+{
+  "source": {
+    "name": "Starting value of the global parameters θ (docs/architecture.md I6, I9)",
+    "retrieved": "2026-11-01",
+    "status": "unverified",
+    "note": "All factors 1: no conversion between the scales is assumed yet (median of Quantum to Aegis in B4a step 1 is +0.36 %, inside the dead zone). npm run calibrate (B5) sets them."
+  },
+  "factors": {
+    "aegisVisual": { "weapon": 1, "grenade": 1, "melee": 1, "super": 1, "classAbility": 1, "keyword": 1 },
+    "quantum": { "weapon": 1, "grenade": 1, "melee": 1, "super": 1, "classAbility": 1, "keyword": 1 },
+    "compendium": { "weapon": 1, "grenade": 1, "melee": 1, "super": 1, "classAbility": 1, "keyword": 1 }
+  }
+}

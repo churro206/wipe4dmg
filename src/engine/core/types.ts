@@ -8,6 +8,7 @@ import type {
   Keyword,
   KeywordId,
   StatusModifierData,
+  Theta,
   WeaponType,
 } from "../../data/schema";
 import type { AbilityStatValue } from "../abilityStats";
@@ -55,6 +56,7 @@ export type SimulationOptions = EffectWindowOptions & {
   assumptions?: string[];
   playstyle?: string; // Build.playstyle (playstyle.ts)
   shotLimit?: number; // the weapon fires at most this many shots, e.g. those of a measurement
+  theta?: Theta; // theta.json; default: every factor 1, i.e. the values are used as they are
 };
 
 /** Time in which a super keeps the player busy; exact is false if a value of the super is missing. */

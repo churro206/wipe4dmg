@@ -1,7 +1,7 @@
 // Scale of a damage value (ADR 0015, point 7): it follows from the source the value comes from.
 // The engine does not convert yet; the bridge between scales comes with the keywords (U4).
 
-import type { DamageScale, SourcedNumber } from "../data/schema";
+import type { DamageScale, SourcedNumber } from "../data/schema.ts";
 
 const SCALE_BY_SOURCE: [prefix: string, scale: DamageScale][] = [
   ["Aegis", "aegisVisual"],

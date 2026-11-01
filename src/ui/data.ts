@@ -19,6 +19,7 @@ import rawKeywords from "../data/keywords.json";
 import rawManifestAbilities from "../data/manifest-abilities.json";
 import rawSubclassEffects from "../data/subclass-effects.json";
 import rawSuperTimings from "../data/super-timings.json";
+import rawTheta from "../data/theta.json";
 import rawPackages from "../data/weapon-packages.json";
 import rawWeaponStats from "../data/weapon-stats.json";
 import rawExoticArmorEffects from "../data/exotic-armor-effects.json";
@@ -34,6 +35,7 @@ import {
   ExoticArmorEffect,
   ExoticArmorEntry,
   SuperTiming,
+  Theta,
   type Weapon,
 } from "../data/schema";
 import type { LinkRegistry } from "../engine/buildLink";
@@ -123,6 +125,8 @@ export const gameData: GameData = {
   abilityGrants: AbilityGrant.array().parse(rawAbilityGrants),
   // How long a cast keeps the player busy (cast-times.json)
   castTimes: CastTimes.parse(rawCastTimes),
+  // Factor per scale and damage source (theta.json; set by npm run calibrate, B5)
+  theta: Theta.parse(rawTheta),
 };
 export const linkRegistry: LinkRegistry = {
   weapons,

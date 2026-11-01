@@ -12,6 +12,7 @@ import {
   Weapon,
   WeaponItem,
 } from "../../../src/data/schema.ts";
+import { damageScaleOf } from "../../../src/engine/damageScale.ts";
 import { slug } from "../aegisBosses.ts";
 import { textHash } from "../hash.ts";
 import {
@@ -72,6 +73,7 @@ function partInstance(
       note: "Derived: one hit; the rule that spawns the part sets its time and count",
     },
   });
+  const scale = damageScaleOf(damage);
   return {
     id,
     name: part.name,
@@ -81,6 +83,7 @@ function partInstance(
     tickIntervalMs: structure(0),
     canPrecision: part.precision ?? false,
     delivery: part.delivery,
+    ...(scale ? { scale } : {}),
   };
 }
 

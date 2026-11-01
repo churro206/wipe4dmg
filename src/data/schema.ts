@@ -64,6 +64,9 @@ export const DamageInstance = z.object({
   tickIntervalMs: SourcedNumber, // 0 for a single hit
   canPrecision: z.boolean(),
   delivery: Delivery.optional(),
+  // Scale of `damagePerTick` (I6); the import writes it from the source of the value. Absent is the
+  // canonical scale, so no factor of theta.json applies.
+  scale: DamageScale.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
 
@@ -144,6 +147,22 @@ export const DamageSource = z.enum([
   "keyword", // e.g. ignition, jolt, volatile (ADR 0015, point 5)
 ]);
 export type DamageSource = z.infer<typeof DamageSource>;
+
+/**
+ * The global parameters θ (docs/architecture.md I6, I9; theta.json): one factor per scale and
+ * damage source that the core multiplies onto the base value of a part. Only the calibration script
+ * (B5) changes them. Aegis visual is the canonical scale and stays 1.
+ */
+export const Theta = z
+  .object({
+    source: Source, // one source for the file: the factors are parameters, not values of an item
+    factors: z.record(DamageScale, z.record(DamageSource, z.number().positive())),
+  })
+  .refine(
+    (theta) => Object.values(theta.factors.aegisVisual).every((factor) => factor === 1),
+    { message: "the canonical scale (aegisVisual) has the factor 1", path: ["factors", "aegisVisual"] },
+  );
+export type Theta = z.infer<typeof Theta>;
 
 /** Damage source of an ability; the weapon is not an ability. */
 export const AbilityKind = z.enum(["super", "grenade", "melee", "classAbility"]);

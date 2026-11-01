@@ -15,6 +15,7 @@ import type {
   ExoticArmorEffect,
   ExoticArmorEntry,
   Keyword,
+  Theta,
   Weapon,
   WeaponStatScaling,
 } from "../data/schema";
@@ -38,6 +39,7 @@ export type GameData = {
   energy: EnergyData; // ability-energy.json: the casts the energy allows (block 3)
   abilityGrants: AbilityGrant[]; // ability-grants.json: effects at every cast or hit, e.g. Radiant
   castTimes: CastTimes; // cast-times.json: how long a cast keeps the player busy
+  theta: Theta; // theta.json: factor per scale and damage source (I6)
 };
 
 /**
@@ -95,6 +97,7 @@ export function buildSimulation(
             weaponStat: { scalings: data.weaponStats, value: build.weaponsStat },
           }),
       keywords: data.keywords,
+      theta: data.theta,
     },
   };
 }

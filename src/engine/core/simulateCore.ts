@@ -180,7 +180,10 @@ export function simulate(
       spawn: ({ part, timeMs, delayMs, count, intervalMs, factor }) => {
         const instance = partsById.get(part);
         if (!instance) throw new Error(`A rule spawns the unknown part "${part}"`);
-        const damage = requireValue(instance.damagePerTick, "damagePerTick");
+        // θ: the factor of the part's scale and damage source (I6); a part without a scale is canonical
+        const damage =
+          requireValue(instance.damagePerTick, "damagePerTick") *
+          (options.theta?.factors[instance.scale ?? "aegisVisual"][damageSource] ?? 1);
         const { schedule } = current();
         // What the rule omits is 0 ms delay, one hit, no interval (section 6); never the part's own
         const first = timeMs + (delayMs ?? 0);

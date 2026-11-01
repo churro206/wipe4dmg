@@ -14,6 +14,7 @@ import {
   type TargetStatusId,
   type WeaponOption,
 } from "../../src/data/schema.ts";
+import { damageScaleOf } from "../../src/engine/damageScale.ts";
 
 const sameNumber = (value: number | null, from: SourcedNumber): SourcedNumber => ({
   value,
@@ -208,9 +209,10 @@ export type ImportPart = DamageInstance & {
   tickFactors?: SourcedNumber[]; // a factor per tick (one spawn per tick)
 };
 
-/** The part without the import fields: what a weapon file holds. */
+/** The part without the import fields: what a weapon file holds, with the scale of its value (I6). */
 export function runtimePart(part: ImportPart): DamageInstance {
-  return DamageInstance.parse(part);
+  const scale = part.scale ?? damageScaleOf(part.damagePerTick);
+  return DamageInstance.parse({ ...part, ...(scale ? { scale } : {}) });
 }
 
 /** The rules for one part; the shot is the trigger, so a part is set off by the shot of its weapon. */

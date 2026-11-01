@@ -112,7 +112,8 @@
             "row": "hand-cannon-ace-of-spades"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -254,7 +255,8 @@
             "row": "trace-rifle-ager-s-scepter"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -456,7 +458,8 @@
             "row": "grenade-launcher-alethonym-average"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -598,7 +601,8 @@
             "row": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -761,7 +765,8 @@
             "row": "linear-fusion-rifle-arbalest"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -942,7 +947,8 @@
             "row": "pulse-rifle-bad-juju-burst"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -1082,7 +1088,8 @@
             "row": "smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       },
       {
         "id": "nthShot",
@@ -1125,7 +1132,8 @@
             "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -1385,7 +1393,8 @@
             "row": "fusion-rifle-bastion"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -1528,7 +1537,8 @@
             "row": "sword-black-talon-light"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -1670,7 +1680,8 @@
             "row": "sniper-rifle-borealis"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -1852,7 +1863,8 @@
             "row": "sidearm-buried-bloodline"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -1994,7 +2006,8 @@
             "row": "auto-rifle-centrifuse"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -2136,7 +2149,8 @@
             "row": "auto-rifle-cerberus-1-point-blank"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -2279,7 +2293,8 @@
             "row": "auto-rifle-choir-of-one-projectile-spaced-9m"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -2454,7 +2469,8 @@
             "row": "sniper-rifle-cloudstrike-average-with-lightning-strikes"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -2635,7 +2651,8 @@
             "row": "trace-rifle-coldheart-average-no-initial-trace"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -2817,7 +2834,8 @@
             "row": "pulse-rifle-collective-obligation-burst"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -2959,7 +2977,8 @@
             "row": "shotgun-conditional-finality-average-body-both-modes"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -3101,7 +3120,8 @@
             "row": "hand-cannon-crimson-burst"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -3243,7 +3263,8 @@
             "row": "sidearm-cryosthesia-77k"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -3385,7 +3406,8 @@
             "row": "fusion-rifle-cull-s-shadow-average-with-corruption"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -3522,7 +3544,8 @@
             "row": "sniper-rifle-d-a-r-c-i-average-target-acquired-networked-targeting-x5-with-spaced-jolt"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -3685,7 +3708,8 @@
             "row": "scout-rifle-dead-man-s-tale-vorpal-weapon"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -3922,7 +3946,8 @@
             "row": "grenade-launcher-dead-messenger"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -4064,7 +4089,8 @@
             "row": "rocket-launcher-deathbringer-max-height"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -4205,7 +4231,8 @@
             "row": "fusion-rifle-delicate-tomb-hipfire"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -4347,7 +4374,8 @@
             "row": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -4510,7 +4538,8 @@
             "row": "sidearm-devil-s-ruin"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -4673,7 +4702,8 @@
             "row": "trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -4815,7 +4845,8 @@
             "row": "rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -4957,7 +4988,8 @@
             "row": "shotgun-duality-ads"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -5138,7 +5170,8 @@
             "row": "glaive-edge-of-action-projectile"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -5280,7 +5313,8 @@
             "row": "glaive-edge-of-concurrence-projectile"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -5422,7 +5456,8 @@
             "row": "glaive-edge-of-intent-projectile"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -5565,7 +5600,8 @@
             "row": "sword-ergo-sum-jagged-edge-64-impact-light"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -5784,7 +5820,8 @@
             "row": "hand-cannon-eriana-s-vow-death-at-first-glance"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -5964,7 +6001,8 @@
             "row": "linear-fusion-rifle-euphony-burst-without-threadlings"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -6107,7 +6145,8 @@
             "row": "grenade-launcher-ex-diris-average-with-moth"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -6249,7 +6288,8 @@
             "row": "rocket-launcher-eyes-of-tomorrow-volley"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -6389,7 +6429,8 @@
             "row": "linear-fusion-rifle-fafnir"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -6531,7 +6572,8 @@
             "row": "grenade-launcher-fighting-lion-average-with-volatile-damage"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -6673,7 +6715,8 @@
             "row": "sidearm-final-warning-ads-tap-fire"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -6815,7 +6858,8 @@
             "row": "linear-fusion-rifle-finality-s-auger-linear-fusion-mode"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -6957,7 +7001,8 @@
             "row": "sidearm-forerunner"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -7099,7 +7144,8 @@
             "row": "rocket-launcher-gjallarhorn"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -7281,7 +7327,8 @@
             "row": "machine-gun-grand-overture-missile-loaded-volley-ready"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -7423,7 +7470,8 @@
             "row": "pulse-rifle-graviton-lance-burst-vorpal-weapon"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -7586,7 +7634,8 @@
             "row": "hand-cannon-graviton-spike-stasis-mode"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -7761,7 +7810,8 @@
             "row": "auto-rifle-hard-light"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -7903,7 +7953,8 @@
             "row": "hand-cannon-hawkmoon"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -8083,7 +8134,8 @@
             "row": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -8264,7 +8316,8 @@
             "row": "machine-gun-heir-apparent"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -8407,7 +8460,8 @@
             "row": "bow-heirloom-uncharged"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -8544,7 +8598,8 @@
             "status": "unverified"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "quantum"
       },
       {
         "id": "setupHits",
@@ -8586,7 +8641,8 @@
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "quantum"
       },
       {
         "id": "setupHits-two-rings",
@@ -8628,7 +8684,8 @@
             "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "quantum"
       }
     ],
     "intrinsics": [
@@ -9099,7 +9156,8 @@
             "row": "sniper-rifle-ice-breaker"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -9236,7 +9294,8 @@
             "row": "sniper-rifle-izanagi-s-burden"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -9438,7 +9497,8 @@
             "row": "fusion-rifle-j-tunn-average-successive-shots"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -9580,7 +9640,8 @@
             "row": "auto-rifle-khvostov-7g-0x-average-with-ricochetting-bullets"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -9721,7 +9782,8 @@
             "row": "bow-le-monarque-average-with-poison"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -9904,7 +9966,8 @@
             "row": "shotgun-legend-of-acrius-body"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -10084,7 +10147,8 @@
             "row": "bow-leviathan-s-breath"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -10265,7 +10329,8 @@
             "row": "trace-rifle-lodestar-hipfire"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -10407,7 +10472,8 @@
             "row": "shotgun-lord-of-wolves-average-includes-ignition-scorch"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -10588,7 +10654,8 @@
             "row": "linear-fusion-rifle-lorentz-driver"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -10725,7 +10792,8 @@
             "row": "hand-cannon-lumina"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -10867,7 +10935,8 @@
             "row": "hand-cannon-malfeasance-average-with-slugs-vorpal-weapon"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -11030,7 +11099,8 @@
             "row": "fusion-rifle-merciless-conserve-momentum-x15-full-mag"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -11173,7 +11243,8 @@
             "row": "trace-rifle-microcosm"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -11315,7 +11386,8 @@
             "row": "scout-rifle-mida-multi-tool"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -11457,7 +11529,8 @@
             "row": "auto-rifle-monte-carlo"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -11599,7 +11672,8 @@
             "row": "auto-rifle-necrochasm"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -11741,7 +11815,8 @@
             "row": "sniper-rifle-new-land-beyond-no-stacks"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -11884,7 +11959,8 @@
             "row": "pulse-rifle-new-malpais-average-3-bursts-includes-suspend-excludes-unravel"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -12026,7 +12102,8 @@
             "row": "pulse-rifle-no-time-to-explain-burst"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -12167,7 +12244,8 @@
             "row": "fusion-rifle-one-thousand-voices-average"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "keywordBonuses": [
@@ -12373,7 +12451,8 @@
             "row": "smg-osteo-striga-average-with-successive-poison"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -12556,7 +12635,8 @@
             "row": "pulse-rifle-outbreak-perfected-average-per-burst-max-nanites"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -12752,7 +12832,8 @@
             "row": "grenade-launcher-parasite"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -12894,7 +12975,8 @@
             "row": "scout-rifle-polaris-lance-average-with-ignition"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       },
       {
         "id": "nthShot",
@@ -12937,7 +13019,8 @@
             "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -13159,7 +13242,8 @@
             "row": "trace-rifle-prometheus-lens-average-with-ignition"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -13301,7 +13385,8 @@
             "row": "auto-rifle-quicksilver-storm-average-with-tracking-rockets"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -13443,7 +13528,8 @@
             "row": "sidearm-rat-king"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -13585,7 +13671,8 @@
             "row": "pulse-rifle-red-death-reformed-burst-undamaged"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -13727,7 +13814,8 @@
             "row": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -13942,7 +14030,8 @@
             "row": "smg-riskrunner"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -14084,7 +14173,8 @@
             "row": "trace-rifle-ruinous-effigy"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -14247,7 +14337,8 @@
             "row": "grenade-launcher-salvation-s-grip"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -14389,7 +14480,8 @@
             "row": "machine-gun-service-of-luzaku"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -14531,7 +14623,8 @@
             "row": "scout-rifle-skyburner-s-oath-ads-cabal"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -14673,7 +14766,8 @@
             "row": "shotgun-slayer-s-fang-average-includes-submunitions-nightsworn-ticks-include-weaken"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -14848,7 +14942,8 @@
             "row": "linear-fusion-rifle-sleeper-simulant"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -15029,7 +15124,8 @@
             "row": "sniper-rifle-still-hunt"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       },
       {
         "id": "cayde-s-retribution",
@@ -15072,7 +15168,8 @@
             "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung.; the shots follow at the weapon's interval (60000 ÷ rpm)"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -15296,7 +15393,8 @@
             "row": "hand-cannon-sturm"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -15438,7 +15536,8 @@
             "row": "hand-cannon-sunshot"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -15580,7 +15679,8 @@
             "row": "auto-rifle-suros-regime-average-spinning-up"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -15722,7 +15822,8 @@
             "row": "auto-rifle-sweet-business-average-with-explosive-rounds"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -15864,7 +15965,8 @@
             "row": "scout-rifle-symmetry"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -16047,7 +16149,8 @@
             "row": "smg-tarrabah"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -16188,7 +16291,8 @@
             "row": "fusion-rifle-telesto"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -16369,7 +16473,8 @@
             "row": "fusion-rifle-tessellation-property-irreducible"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -16511,7 +16616,8 @@
             "row": "shotgun-the-chaperone"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -16693,7 +16799,8 @@
             "row": "grenade-launcher-the-colony-direct-impact"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -16874,7 +16981,8 @@
             "row": "shotgun-the-fourth-horseman-body-full-mag"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -17056,7 +17164,8 @@
             "row": "scout-rifle-the-jade-rabbit"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -17199,7 +17308,8 @@
             "row": "sword-the-lament-average-2l1h1r"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -17362,7 +17472,8 @@
             "row": "hand-cannon-the-last-word-hipfire"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -17504,7 +17615,8 @@
             "row": "smg-the-manticore-average-hover-mode"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -17646,7 +17758,8 @@
             "row": "trace-rifle-the-navigator"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -17789,7 +17902,8 @@
             "row": "grenade-launcher-the-prospector-average-direct-impact-standard-target-model"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -17931,7 +18045,8 @@
             "row": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -18112,7 +18227,8 @@
             "row": "rocket-launcher-the-wardcliff-coil-average-volley-excludes-bolt-charge"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -18254,7 +18370,8 @@
             "row": "scout-rifle-third-iteration-precision"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -18396,7 +18513,8 @@
             "row": "hand-cannon-thorn-average-with-poison"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -18538,7 +18656,8 @@
             "row": "machine-gun-thunderlord-average-with-lightning-strikes-excludes-bolt-charge"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -18718,7 +18837,8 @@
             "row": "bow-ticuu-s-divination-average-alternating-modes-6-stacks"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -18881,7 +19001,8 @@
             "row": "auto-rifle-tommy-s-matchbook-average-with-ignition"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -19023,7 +19144,8 @@
             "row": "scout-rifle-touch-of-malice"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -19186,7 +19308,8 @@
             "row": "shotgun-tractor-cannon-body"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -19367,7 +19490,8 @@
             "row": "sidearm-traveler-s-chosen"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -19549,7 +19673,8 @@
             "row": "sidearm-trespasser"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -19690,7 +19815,8 @@
             "row": "bow-trinity-ghoul"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -19873,7 +19999,8 @@
             "row": "rocket-launcher-truth-average-prototype-truthseeker"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       },
       {
         "id": "nthShot",
@@ -19916,7 +20043,8 @@
             "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -20205,7 +20333,8 @@
             "row": "hand-cannon-turncoat-average"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -20347,7 +20476,8 @@
             "row": "rocket-launcher-two-tailed-fox-average"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -20511,7 +20641,8 @@
             "row": "bow-verglas-curve"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -20653,7 +20784,8 @@
             "row": "fusion-rifle-vex-mythoclast"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -20834,7 +20966,8 @@
             "row": "glaive-vexcalibur-projectile"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -21009,7 +21142,8 @@
             "row": "pulse-rifle-vigilance-wing-burst"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -21151,7 +21285,8 @@
             "row": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -21294,7 +21429,8 @@
             "row": "rocket-launcher-whirling-ovation-full-charge"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       },
       {
         "id": "two-thirds-charge",
@@ -21337,7 +21473,8 @@
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       },
       {
         "id": "one-third-charge",
@@ -21380,7 +21517,8 @@
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       },
       {
         "id": "no-charge",
@@ -21423,7 +21561,8 @@
             "note": "Derived (override): Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s."
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -21663,7 +21802,8 @@
             "row": "sniper-rifle-whisper-of-the-worm-whispered-breathing"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -21859,7 +21999,8 @@
             "row": "scout-rifle-wicked-implement-average-with-manual-shatters"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -22002,7 +22143,8 @@
             "row": "glaive-winterbite-average-projectile-with-shatter"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -22143,7 +22285,8 @@
             "row": "bow-wish-ender"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -22284,7 +22427,8 @@
             "row": "bow-wish-keeper-vorpal-weapon"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -22480,7 +22624,8 @@
             "row": "grenade-launcher-witherhoard-direct-impact"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
@@ -22662,7 +22807,8 @@
             "row": "machine-gun-xenophage"
           }
         },
-        "canPrecision": false
+        "canPrecision": false,
+        "scale": "aegisVisual"
       }
     ],
     "intrinsics": [
