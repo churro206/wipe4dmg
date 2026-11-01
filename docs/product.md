@@ -49,10 +49,10 @@ PvP, Adds und Clear; Armor-Stats- und Tuning-Optimizer (Stats gibt der Spieler v
 
 ## Rangfolge-Gate (Vorschlag)
 
-Baut auf der Gesamtprobe auf (`tests/metaProbe*.test.ts`, Quotient zum Median ±15 %). Die geprüften Aegis-Zeilen in Gruppen (Spalte „Prüft“); pro Gruppe ab 5 Zeilen:
+Baut auf dem Prüfstand auf (`tests/scenarioBench.test.ts`, Stand in `tests/__snapshots__/scenario-bench.md`, Bauplan 12): ganze Builds aus den Aegis-Reitern Sustained und Swap, Szenarien aus Weapons und Abilities. Die geprüften Aegis-Zeilen (nicht `fitted`, Weapons und Abilities mit Los) in Gruppen (Weapons, Supers, Heavy, Special, Abilities; Spalte „Prüft“); pro Gruppe ab 5 Zeilen. Die Schwellen erzwingt der Test für Supers, Heavy und Special; Weapons und Abilities melden, bis der Inhaber ihre Zahlen bestätigt hat:
 
 - Spearman zwischen unserer und der Aegis-Rangfolge ≥ 0,9;
 - die Top 3 nach Aegis stehen bei uns in den Top 5;
 - Delta-Paare (zwei Aegis-Zeilen, die sich nur um ein Item unterscheiden): unser Delta liegt höchstens 2 Prozentpunkte neben dem von Aegis.
 
-Dazu ein Abdeckungsziel pro Gruppe: Anteil der Zeilen „im Modell“. Er zeigt, wie weit Abnahme 3 ist.
+Dazu ein Abdeckungsziel pro Gruppe: Anteil der Aegis-Zeilen mit einem Szenario, das der Kern rechnet (alle Annahmen haben einen Schalter). Er zeigt, wie weit Abnahme 3 ist; die Liste der fehlenden Schalter je Gruppe steht im Snapshot.
