@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import type {
   AppliesKeywordPart,
   Keyword,
+  StatusModifierData,
   TargetStatusId,
 } from "../src/data/schema";
 import { runEvents, statusState, type RunEvent } from "../src/engine/eventRun";
@@ -122,6 +123,87 @@ const run = (
     ),
     status.onHit,
   );
+
+describe("status without damage (weaken)", () => {
+  const weaken: StatusModifierData = {
+    id: "weaken",
+    name: "Weaken",
+    compendium: { tab: "Void", entry: "Weaken" },
+    durationMs: n(6000),
+    modifiers: [
+      {
+        type: "multiplier",
+        bucketId: "debuff",
+        multiplier: n(1.15),
+        damageSources: ["weapon", "keyword"],
+      },
+    ],
+  };
+  const withWeaken = () =>
+    createStatusContainer({
+      keywords: [],
+      modifierStatuses: [weaken],
+      keywordPartsAt: () => [],
+      multiplierAt: () => ({}),
+      stackFactorAt: () => 1,
+      isInPhase: () => true,
+    });
+  const target = () => ({ statuses: new Map(), activeSourcesUntilMs: new Map() });
+  const apply = (
+    status: ReturnType<typeof withWeaken>,
+    t: ReturnType<typeof target>,
+    timeMs: number,
+    durationMs?: number,
+  ) =>
+    status.applyStatus(
+      t,
+      "weaken",
+      durationMs === undefined ? {} : { durationMs },
+      hit(timeMs),
+      () => {},
+    );
+  const multipliers = (
+    status: ReturnType<typeof withWeaken>,
+    t: ReturnType<typeof target>,
+    timeMs: number,
+  ) => status.modifiersOnTarget(t, timeMs).map((m) => m.multiplier.value);
+
+  it("modifies the damage for its duration and then ends", () => {
+    const status = withWeaken();
+    const t = target();
+    expect(multipliers(status, t, 0)).toEqual([]);
+    apply(status, t, 1000);
+    expect(multipliers(status, t, 1000)).toEqual([1.15]);
+    expect(multipliers(status, t, 6999)).toEqual([1.15]);
+    expect(multipliers(status, t, 7000)).toEqual([]);
+  });
+
+  it("is refreshed by a new application, never shortened", () => {
+    const status = withWeaken();
+    const t = target();
+    apply(status, t, 0);
+    apply(status, t, 4000);
+    expect(multipliers(status, t, 9999)).toEqual([1.15]);
+    expect(multipliers(status, t, 10_000)).toEqual([]);
+    apply(status, t, 5000, 1000); // a shorter application does not cut the running one
+    expect(multipliers(status, t, 9999)).toEqual([1.15]);
+  });
+
+  it("takes the duration of the application if it names one", () => {
+    const status = withWeaken();
+    const t = target();
+    apply(status, t, 0, 30_000);
+    expect(multipliers(status, t, 29_999)).toEqual([1.15]);
+    expect(multipliers(status, t, 30_000)).toEqual([]);
+  });
+
+  it("is a status of its own on each target", () => {
+    const status = withWeaken();
+    const [a, b] = [target(), target()];
+    apply(status, a, 0);
+    expect(multipliers(status, b, 100)).toEqual([]);
+  });
+});
 
 describe("stacks with a threshold (scorch)", () => {
   const add = (

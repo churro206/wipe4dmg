@@ -156,6 +156,7 @@ export function simulate(
   // Statuses on the target and the burn of their stacks (status container, ADR 0018 B3a).
   const statusContainer = createStatusContainer({
     keywords: options.keywords ?? [],
+    modifierStatuses: options.statusModifiers ?? [],
     keywordPartsAt: (timeMs) => [
       ...context.weaponKeywordParts,
       ...partsAt(timeMs).keywordParts,

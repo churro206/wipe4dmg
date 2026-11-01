@@ -270,7 +270,6 @@ export type KeywordData = z.infer<typeof KeywordData>;
 
 export const Keyword = KeywordData.extend({ damage: SourcedNumber });
 export type Keyword = z.infer<typeof Keyword>;
-
 /** Part that adds stacks to a counter, here a number of applications after each shot (ADR 0006). */
 export const CounterPart = z.object({
   type: z.literal("counter"),
@@ -633,6 +632,39 @@ export const MultiplierModifier = MultiplierPart.extend({
   perStack: z.boolean().optional(),
 });
 export type MultiplierModifier = z.infer<typeof MultiplierModifier>;
+
+/**
+ * A status without damage of its own and without a trigger, as written in keywords.json (Weaken):
+ * while it lasts, its modifiers (multipliers in one bucket) apply to the damage the target takes.
+ */
+export const StatusModifierData = z
+  .object({
+    id: TargetStatusId,
+    name: z.string(),
+    compendium: z.object({ tab: z.string(), entry: z.string() }), // source of the quotes
+    durationMs: SourcedNumber, // of an application that names none
+    modifiers: z.array(MultiplierPart).min(1),
+  })
+  .refine((s) => new Set(s.modifiers.map((m) => m.bucketId)).size === 1, {
+    message: "a status lands in exactly one bucket",
+    path: ["modifiers"],
+  });
+export type StatusModifierData = z.infer<typeof StatusModifierData>;
+
+/**
+ * keywords.json holds keywords (with trigger and damage) and statuses without damage (Weaken); the
+ * statuses are told apart by their `modifiers`. These read one kind each.
+ */
+const isModifierStatus = (entry: unknown) =>
+  typeof entry === "object" && entry !== null && "modifiers" in entry;
+const entriesOf = (raw: unknown): unknown[] => {
+  if (!Array.isArray(raw)) throw new Error("keywords.json must be an array");
+  return raw;
+};
+export const keywordDataOf = (raw: unknown): KeywordData[] =>
+  KeywordData.array().parse(entriesOf(raw).filter((e) => !isModifierStatus(e)));
+export const statusModifiersOf = (raw: unknown): StatusModifierData[] =>
+  StatusModifierData.array().parse(entriesOf(raw).filter(isModifierStatus));
 
 /** Timing of a weapon: rate, reload (factor; 0 skips it), charge, or a draw that grows while held. */
 export const StatModifier = z.discriminatedUnion("stat", [

@@ -7,6 +7,7 @@ import type {
   Element,
   Keyword,
   KeywordId,
+  StatusModifierData,
   WeaponType,
 } from "../../data/schema";
 import type { AbilityStatValue } from "../abilityStats";
@@ -47,6 +48,7 @@ export type SimulationOptions = EffectWindowOptions & {
   abilityStats?: AbilityStatValue[]; // default: no stat bonus
   weaponStat?: WeaponStatValue; // Weapons stat; default: no stat bonus
   keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
+  statusModifiers?: StatusModifierData[]; // keywords.json: Weaken; its effect on the formula is B3b
   setupPreBuilt?: boolean; // the weapon's setup charges are built before the phase ("Pre-stacked")
   // The setup stands at the start of the phase, e.g. in an Aegis measurement without the deploying shot
   setupDeployed?: boolean;

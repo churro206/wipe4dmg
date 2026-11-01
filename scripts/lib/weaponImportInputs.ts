@@ -8,7 +8,7 @@ import {
   ClaritySnapshot,
   CompendiumSnapshot,
   Effect,
-  KeywordData,
+  keywordDataOf,
   ManifestArmor,
   ManifestTerms,
   ManifestWeapons,
@@ -36,7 +36,7 @@ export function loadWeaponImportInputs(): WeaponImportInputs {
     compendium: CompendiumSnapshot.parse(read("compendium-weapons.json"))
       .entries,
     effects: Effect.array().parse(read("effects.json")),
-    keywords: KeywordData.array().parse(read("keywords.json")),
+    keywords: keywordDataOf(read("keywords.json")),
     clarity: ClaritySnapshot.parse(read("clarity.json")).entries,
     overrides: WeaponOverride.array().parse(read("weapon-overrides.json")),
     reloadFormulas: ReloadFormulaSnapshot.parse(read("reload-formulas.json")),

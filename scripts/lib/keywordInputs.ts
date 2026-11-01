@@ -6,7 +6,7 @@ import {
   AbilityData,
   AegisAbilityRow,
   CompendiumSnapshot,
-  KeywordData,
+  keywordDataOf,
   SuperTiming,
 } from "../../src/data/schema.ts";
 import type { KeywordInputs } from "./keywordSources.ts";
@@ -21,7 +21,7 @@ export function loadKeywordInputs(): KeywordInputs {
       .entries,
     abilities: AbilityData.array().parse(read("abilities.json")),
     aegisRows: AegisAbilityRow.array().parse(read("aegis-abilities.json")),
-    keywords: KeywordData.array().parse(read("keywords.json")),
+    keywords: keywordDataOf(read("keywords.json")),
     superTimings: SuperTiming.array().parse(read("super-timings.json")),
   };
 }

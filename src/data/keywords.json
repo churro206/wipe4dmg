@@ -300,5 +300,47 @@
     },
     "removedOnTrigger": true,
     "damageCategory": "generic"
+  },
+  {
+    "id": "weaken",
+    "name": "Weaken",
+    "compendium": {
+      "tab": "Void",
+      "entry": "Weaken"
+    },
+    "durationMs": {
+      "value": 6000,
+      "source": {
+        "name": "Destiny Data Compendium, Void (Weaken)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-11-01",
+        "status": "verified",
+        "quote": "for 6 [2.5] seconds"
+      }
+    },
+    "modifiers": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "multiplier": {
+          "value": 1.15,
+          "source": {
+            "name": "Destiny Data Compendium, Void (Weaken); Court Stacking Guide (Weaken, PvE 15%)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-11-01",
+            "status": "verified",
+            "quote": "Weakened Enemies receive 15% [7.5%] increased damage"
+          }
+        },
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ]
+      }
+    ]
   }
 ]

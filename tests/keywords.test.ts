@@ -4,21 +4,22 @@
 import { describe, expect, it } from "vitest";
 import rawRows from "../src/data/aegis-abilities.json";
 import rawCompendium from "../src/data/compendium-abilities.json";
+import rawEffects from "../src/data/effects.json";
 import rawKeywords from "../src/data/keywords.json";
 import { hasQuote } from "../scripts/lib/compendiumAbilities";
 import {
   AegisAbilityRow,
   CompendiumSnapshot,
-  KeywordData,
+  keywordDataOf,
   type KeywordData as KeywordDataType,
   type SourcedNumber,
 } from "../src/data/schema";
 import { KEYWORD_COUNTERS } from "../src/engine/effectParts";
-import { loadKeywords } from "../src/engine/loadKeywords";
+import { loadKeywords, loadStatusModifiers } from "../src/engine/loadKeywords";
 
 const rows = AegisAbilityRow.array().parse(rawRows);
 const compendium = CompendiumSnapshot.parse(rawCompendium);
-const data = KeywordData.array().parse(rawKeywords);
+const data = keywordDataOf(rawKeywords);
 const keywords = loadKeywords(rawKeywords, rows);
 const keyword = (id: string) => keywords.find((k) => k.id === id)!;
 
@@ -77,6 +78,40 @@ describe("keywords.json", () => {
         entry.id,
       ).toBe(true);
     }
+  });
+});
+
+describe("status without damage (Weaken, architecture section 6)", () => {
+  const [weaken, ...others] = loadStatusModifiers(rawKeywords);
+
+  it("is one entry with a multiplier in the debuff bucket and a duration", () => {
+    expect(others).toEqual([]);
+    expect(weaken.id).toBe("weaken");
+    expect(weaken.durationMs.value).toBe(6000);
+    expect(weaken.modifiers.map((m) => [m.bucketId, m.multiplier.value])).toEqual([
+      ["debuff", 1.15],
+    ]);
+  });
+
+  it("takes the multiplier from the Weaken effect of the buff table", () => {
+    const effect = rawEffects.find((e) => e.id === "weaken")!;
+    const part = effect.parts[0] as { multiplier: SourcedNumber; damageSources: string[] };
+    expect(weaken.modifiers[0].multiplier.value).toBe(part.multiplier.value);
+    expect(weaken.modifiers[0].damageSources).toEqual(part.damageSources);
+  });
+
+  it("quotes the duration and the multiplier from the Compendium", () => {
+    for (const value of [weaken.durationMs, weaken.modifiers[0].multiplier]) {
+      expect(
+        hasQuote(compendium.entries, { ...weaken.compendium, quote: value.source.quote! }),
+        value.source.name,
+      ).toBe(true);
+    }
+  });
+
+  it("stays out of the keywords with damage", () => {
+    expect(data.map((k) => k.id)).not.toContain("weaken");
+    expect(keywords.map((k) => k.id)).not.toContain("weaken");
   });
 });
 

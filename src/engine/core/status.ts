@@ -25,7 +25,9 @@ import type {
   AppliesKeywordPart,
   Keyword,
   KeywordId,
+  MultiplierPart,
   SourcedNumber,
+  StatusModifierData,
   TargetStatusId,
 } from "../../data/schema";
 import { appliesToWeaponType, productOf, type Factors } from "../effectParts";
@@ -157,6 +159,8 @@ function createBurn(
 
 export type StatusContext = {
   keywords: Keyword[];
+  // Statuses without damage and trigger (Weaken); their multipliers join the formula with B3b
+  modifierStatuses?: StatusModifierData[];
   keywordPartsAt: (timeMs: number) => AppliesKeywordPart[];
   // The multiplier for the damage of a keyword; source is the hit that applied it (Ignition).
   multiplierAt: (
@@ -192,6 +196,7 @@ const optionalMs = (value: Keyword["delayMs"], field: string) =>
 
 export function createStatusContainer({
   keywords,
+  modifierStatuses = [],
   keywordPartsAt,
   multiplierAt,
   stackFactorAt,
@@ -199,6 +204,7 @@ export function createStatusContainer({
 }: StatusContext) {
   const byId = new Map(keywords.map((k) => [k.id, k]));
   const byStatus = new Map(keywords.map((k) => [k.status, k]));
+  const modifierOf = new Map(modifierStatuses.map((s) => [s.id, s]));
   const keywordOf = (id: KeywordId) => {
     const keyword = byId.get(id);
     if (!keyword) throw new Error(`Unknown keyword "${id}"`);
@@ -408,6 +414,15 @@ export function createStatusContainer({
     source: TimedDamageInstance,
     schedule: (event: RunEvent) => void,
   ) => {
+    const modifier = modifierOf.get(status);
+    if (modifier) {
+      // Applied again, the duration is refreshed, never shortened
+      const state = statusState(target, status);
+      const lastsMs =
+        application.durationMs ?? requireValue(modifier.durationMs, "durationMs");
+      state.activeUntilMs = Math.max(state.activeUntilMs, source.timeMs + lastsMs);
+      return;
+    }
     const keyword = byStatus.get(status);
     if (!keyword) throw new Error(`No definition for status "${status}"`);
     const { stacks, durationMs } = application;
@@ -427,7 +442,18 @@ export function createStatusContainer({
     return burns.get(status)?.stacksAt(state, timeMs) ?? state.stacks;
   };
 
-  return { onHit, addStacks, applyStatus, stacksOnTarget };
+  /** The multipliers of the statuses without damage that are active on the target at a time. */
+  const modifiersOnTarget = (
+    target: TargetState,
+    timeMs: number,
+  ): MultiplierPart[] =>
+    [...modifierOf.values()].flatMap((definition) =>
+      statusState(target, definition.id).activeUntilMs > timeMs
+        ? definition.modifiers
+        : [],
+    );
+
+  return { onHit, addStacks, applyStatus, stacksOnTarget, modifiersOnTarget };
 }
 
 export type StatusContainer = ReturnType<typeof createStatusContainer>;
