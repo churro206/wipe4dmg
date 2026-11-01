@@ -2,16 +2,11 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen in `docs/known-inaccuracies.md`. Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Nächster Block: B3a, Korrekturen, dann Teil 2 (Sonnet)
+## Nächster Block: B3a Teil 2 (Sonnet)
 
 Branch `ground-up-model`, kein Merge ohne Ansage. Jede Abweichung vom Bauplan vorher mit dem Inhaber klären. Gate je Commit: Suite, `tsc -b`, `lint`; `scenario-bench.md` und `mechanics-baseline` unverändert. Test zuerst.
 
-**Korrekturen** (Befund 2026-11-01: Teil 1 wich ohne Not vom Bauplan ab), je ein Commit:
-
-- K1 Alle Regeln eines Ereignisses prüfen ihre Bedingungen gegen den Zustand **vor** dem Ereignis, dann laufen die Aktionen in Dateireihenfolge (nur so passen 5.4 und Abschnitt 11). Bauplan 5.4 und `ruleTypes.test.ts` zurück aufs Original (`< 4` zählt, `= 4` zündet), Hinweis unter 5.4 streichen, Golden-Test auf diese Regeln, Unit-Test „spätere Regel sieht frühere“ umdrehen.
-- K2 `refill` im Host: füllt auf, solange kein Reload geplant ist, sonst Fehler bis zur Generation (B3b); Golden-Test mit der `refill`-Regel aus 5.4.
-- K3 `spawn` ohne Rückfall auf den Teil: ohne Angabe Verzögerung 0, Anzahl 1, Abstand 0 (Abschnitt 6).
-- K4 Weaken als Eintrag in `keywords.json` (Status-ID, Multiplier im Bucket `debuff`, Dauer, Quelle wie der Weaken-Effect); Zustand im Container mit Test; Wirkung auf die Formel mit dem ersten Nutzer in B3b.
+Korrekturen K1–K4 erledigt (2026-11-01, Changelog): Bedingungen sehen den Zustand vor dem Ereignis, `refill` im Host (Fehler bei geplantem Reload bis B3b), `spawn` ohne Rückfall, Weaken als Status in `keywords.json`. Teil 2 darf nun auf `refill`, `spawn`-Zeiten und `modifiersOnTarget` bauen.
 
 **Teil 2** (Rest von Schritt 3; lesen: Bauplan 6, `core/rules.ts`, `core/simulateCore.ts` „Rules of the weapon“, `tests/polarisGolden.test.ts`; `weapon-packages.json` nie direkt lesen), je ein Commit:
 
@@ -23,7 +18,7 @@ Branch `ground-up-model`, kein Merge ohne Ansage. Jede Abweichung vom Bauplan vo
 
 ## Stand
 
-- 2026-10-31: B3a Teil 1 (Changelog): Regel-Engine, Status-Container, `Weapon.rules`/`buffs`, Golden Polaris. Suite 2099 grün. Planmäßig noch nicht im Host: `damage`, `addResource`, `actor`.
+- 2026-11-01: B3a Teil 1 plus K1–K4 (Changelog): Regel-Engine, Status-Container, `Weapon.rules`/`buffs`, Golden Polaris nach Bauplan. Suite 2110 grün. Planmäßig noch nicht im Host: `damage`, `addResource`, `actor`; `refill` bei geplantem Reload und die Wirkung von Weaken auf die Formel kommen mit B3b.
 - B3.0, B2, B1 erledigt. Bauplan (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - Offen ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk auf Still Hunt.
 
