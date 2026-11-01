@@ -69,7 +69,7 @@ function triggeredWindows(
 ): Window[] {
   const trigger = effect.trigger!;
   const lengthMs = durationMs ?? Infinity;
-  const ownElement = effect.parts.some(
+  const ownElement = effect.modifiers.some(
     (part) =>
       part.type === "multiplier" &&
       part.condition === "weaponMatchesTriggerElement",

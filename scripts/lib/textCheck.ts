@@ -97,7 +97,7 @@ const SOURCE_WORDS: Record<MultiplierPart["damageSources"][number], RegExp> = {
 /** Texts of an effect: its source quotes, its Court rows, Compendium and Clarity. */
 function effectTexts(effect: Effect, sources: ItemTextSources): ItemText[] {
   const quotes = [
-    ...effect.parts.flatMap((p) => (p.type === "multiplier" ? [p.multiplier.source] : [])),
+    ...effect.modifiers.flatMap((p) => (p.type === "multiplier" ? [p.multiplier.source] : [])),
     ...(effect.durationMs ? [effect.durationMs.source] : []),
   ].flatMap((s) => (s.quote ? [{ from: "quote", text: s.quote }] : []));
   const court = courtRowsOf(effect.name, sources).map((r) => ({
@@ -256,7 +256,7 @@ export function textCheckRows(inputs: TextCheckInputs): TextCheckRow[] {
   const via = inputs.effects
     .filter(({ file }) => file === "effects.json" || file === "buff-effects.json")
     .map(({ effect }) => {
-      const parts = effect.parts.filter((p): p is MultiplierPart => p.type === "multiplier" && p.multiplier.value !== null);
+      const parts = effect.modifiers.filter((p): p is MultiplierPart => p.type === "multiplier" && p.multiplier.value !== null);
       return {
         name: effect.name.replace(/\s*\(.*\)$/, "").replace(/\s+x\d+$/i, ""),
         values: parts.map((p) => pctOf(p.multiplier.value!)),
@@ -266,7 +266,7 @@ export function textCheckRows(inputs: TextCheckInputs): TextCheckRow[] {
 
   for (const { effect } of inputs.effects) {
     const texts = effectTexts(effect, inputs);
-    const parts = effect.parts.filter((p): p is MultiplierPart => p.type === "multiplier" && p.multiplier.value !== null);
+    const parts = effect.modifiers.filter((p): p is MultiplierPart => p.type === "multiplier" && p.multiplier.value !== null);
     const used = parts.map((p) => pctOf(p.multiplier.value!));
     const others = via.filter((v) => v.name !== effect.name.replace(/\s*\(.*\)$/, "").replace(/\s+x\d+$/i, ""));
     parts.forEach((part, i) => {

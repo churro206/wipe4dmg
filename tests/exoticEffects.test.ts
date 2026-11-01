@@ -73,7 +73,7 @@ describe("rules for the exotic damage buffs", () => {
   it.each([["star-eater-scales"], ["spirit-of-the-star-eater"]])(
     "%s: Nova Bomb, Thundercrash and Twilight Arsenal get +50 %, Needlestorm +35 %, the rest +70 %",
     (id) => {
-      const parts = effectOf(id).effect.parts.flatMap((p) =>
+      const parts = effectOf(id).effect.modifiers.flatMap((p) =>
         p.type === "multiplier" ? [p] : [],
       );
       const factorOf = (abilityId: string) =>
@@ -117,7 +117,7 @@ describe("rules for the exotic damage buffs", () => {
       activation: "preBuilt",
       effect: {
         durationMs: { value: 10000 },
-        parts: [
+        modifiers: [
           { bucketId: "empowering", multiplier: { value: 1.35 }, weaponTypes: ["rocketLauncher"] },
         ],
       },
@@ -131,7 +131,7 @@ describe("rules for the exotic damage buffs", () => {
       trigger: { on: "cast", abilityKinds: ["super"] },
       durationMs: { value: 14000 },
       // the base part, then the capped supers (Feast of Light)
-      parts: [
+      modifiers: [
         { multiplier: { value: 1.7 }, damageSources: ["super"] },
         { multiplier: { value: 1.5 } },
         { multiplier: { value: 1.35 } },
@@ -140,7 +140,7 @@ describe("rules for the exotic damage buffs", () => {
     expect(effect("foetracer")[0]).toMatchObject({
       trigger: { on: "hit", refresh: false },
       durationMs: { value: 16000 },
-      parts: [{ bucketId: "surge", condition: "weaponMatchesTriggerElement" }],
+      modifiers: [{ bucketId: "surge", condition: "weaponMatchesTriggerElement" }],
     });
     expect(effect("contraverse-hold")[0].trigger).toMatchObject({
       on: "hit",
@@ -157,27 +157,27 @@ describe("rules for the exotic damage buffs", () => {
     expect(effect("sanguine-alchemy")[0]).toMatchObject({
       trigger: { on: "cast", abilityIds: ["well-of-radiance"] },
       durationMs: { value: 30000 },
-      parts: [{ condition: "weaponMatchesSuperElement" }],
+      modifiers: [{ condition: "weaponMatchesSuperElement" }],
     });
     const [untilCast, superEnd] = effect("mantle-of-battle-harmony");
     expect(untilCast).toMatchObject({
       trigger: { on: "untilSuperCast" },
       durationMs: { value: 11000 },
-      parts: [{ condition: "weaponMatchesSuperElement" }],
+      modifiers: [{ condition: "weaponMatchesSuperElement" }],
     });
     expect(superEnd.trigger).toEqual({ on: "superEnd", refresh: true });
-    expect(superEnd.parts[0]).not.toHaveProperty("elements");
+    expect(superEnd.modifiers[0]).not.toHaveProperty("elements");
     expect(effect("eternal-warrior")[1]).toMatchObject({
       trigger: { on: "superEnd", abilityIds: ["fists-of-havoc"] },
       durationMs: { value: 30000 },
-      parts: [{ elements: ["arc"], multiplier: { value: 1.25 } }],
+      modifiers: [{ elements: ["arc"], multiplier: { value: 1.25 } }],
     });
   });
 
   it("Chromatic Fire: Weaken only with a Void super", () => {
     expect(effectOf("chromatic-fire")).toMatchObject({
       activation: "preBuilt",
-      effect: { parts: [{ bucketId: "debuff", superElements: ["void"] }] },
+      effect: { modifiers: [{ bucketId: "debuff", superElements: ["void"] }] },
     });
   });
 
@@ -185,7 +185,7 @@ describe("rules for the exotic damage buffs", () => {
     expect(effectOf("wormgod-caress")).toMatchObject({
       activation: "preBuilt",
       effect: {
-        parts: [
+        modifiers: [
           {
             bucketId: "empowering",
             multiplier: { value: 1.35 },
@@ -199,7 +199,7 @@ describe("rules for the exotic damage buffs", () => {
 
   it("a surge from kills applies to weapons of its element", () => {
     expect(effectOf("doom-fang-pauldron").effect).toMatchObject({
-      parts: [
+      modifiers: [
         {
           bucketId: "surge",
           multiplier: { value: 1.25 },
@@ -212,7 +212,7 @@ describe("rules for the exotic damage buffs", () => {
   });
 
   it("a debuff from kills applies to every damage source", () => {
-    expect(effectOf("khepris-sting").effect.parts[0]).toMatchObject({
+    expect(effectOf("khepris-sting").effect.modifiers[0]).toMatchObject({
       bucketId: "debuff",
       multiplier: { value: 1.15 },
       damageSources: [
@@ -230,13 +230,13 @@ describe("rules for the exotic damage buffs", () => {
     expect(effectOf("gwisin-vest").effect).toMatchObject({
       trigger: { on: "cast", abilityKinds: ["classAbility"] },
       durationMs: { value: 10000 },
-      parts: [{ bucketId: "debuff", multiplier: { value: 1.15 } }],
+      modifiers: [{ bucketId: "debuff", multiplier: { value: 1.15 } }],
     });
     expect(effectOf("mask-of-bakris").effect).toMatchObject({
       trigger: { on: "cast", abilityKinds: ["classAbility"] },
       durationMs: { value: 11000 },
       // one cast is one stack: the first of the stages 10 / 21 / 33 %
-      parts: [
+      modifiers: [
         { bucketId: "amplification", multiplier: { value: 1.1 }, elements: ["arc", "stasis"] },
       ],
     });
@@ -244,7 +244,7 @@ describe("rules for the exotic damage buffs", () => {
 
   it("a kill buff from the text takes the target, element and duration from it", () => {
     expect(effectOf("hallowfire-heart").effect).toMatchObject({
-      parts: [
+      modifiers: [
         {
           multiplier: { value: 2.5 },
           damageSources: ["super"],
@@ -254,10 +254,10 @@ describe("rules for the exotic damage buffs", () => {
       durationMs: { value: 20000 },
     });
     expect(effectOf("veritys-brow").effect).toMatchObject({
-      parts: [{ multiplier: { value: 2 }, damageSources: ["grenade"] }],
+      modifiers: [{ multiplier: { value: 2 }, damageSources: ["grenade"] }],
       durationMs: { value: 4000 },
     });
-    expect(effectOf("wormhusk-crown").effect.parts[0]).toMatchObject({
+    expect(effectOf("wormhusk-crown").effect.modifiers[0]).toMatchObject({
       multiplier: { value: 1.15 },
       damageSources: ["grenade", "super", "classAbility"],
       elements: ["solar"],
@@ -265,14 +265,14 @@ describe("rules for the exotic damage buffs", () => {
   });
 
   it("leaves out bonuses for heat weapons (none in the import)", () => {
-    expect(effectOf("fortunes-favor").effect.parts[0]).toMatchObject({
+    expect(effectOf("fortunes-favor").effect.modifiers[0]).toMatchObject({
       multiplier: { value: 1.15 },
       damageSources: ["weapon"],
     });
   });
 
   it("buffs that need a state of the player (U6-2)", () => {
-    expect(effectOf("no-backup-plans").effect.parts[0]).toMatchObject({
+    expect(effectOf("no-backup-plans").effect.modifiers[0]).toMatchObject({
       bucketId: "empowering",
       multiplier: { value: 1.35 },
       weaponTypes: ["shotgun"],
@@ -284,12 +284,12 @@ describe("rules for the exotic damage buffs", () => {
         "restoration",
       ],
     });
-    expect(effectOf("the-path-of-burning-steps").effect.parts[0]).toMatchObject({
+    expect(effectOf("the-path-of-burning-steps").effect.modifiers[0]).toMatchObject({
       elements: ["solar"],
       requiresStatus: ["roaringFlames"],
     });
     // Fr0st-EE5 grants Frost Armor itself while sprinting
-    expect(effectOf("fr0st-ee5").effect.parts[0]).not.toHaveProperty("requiresStatus");
+    expect(effectOf("fr0st-ee5").effect.modifiers[0]).not.toHaveProperty("requiresStatus");
   });
 
   it("creates effects only for the generating kinds", () => {
@@ -311,7 +311,7 @@ describe("rules for the exotic damage buffs", () => {
 
   it("stacks per weapon hit: Lucky Pants has a 6 s window, Peacekeepers refreshes per hit", () => {
     const lucky = effectOf("lucky-pants").effect;
-    const pants = lucky.parts[0];
+    const pants = lucky.modifiers[0];
     if (pants.type !== "multiplier") throw new Error("multiplier expected");
     expect(pants.weaponTypes).toEqual(["handCannon"]);
     expect(pants.multiplier.value).toBeCloseTo(1.45, 10);
@@ -320,7 +320,7 @@ describe("rules for the exotic damage buffs", () => {
     expect(pants.hitStacks?.refreshMs).toBeUndefined();
     expect(lucky.durationMs?.value).toBe(6000);
 
-    const keepers = effectOf("peacekeepers").effect.parts[0];
+    const keepers = effectOf("peacekeepers").effect.modifiers[0];
     if (keepers.type !== "multiplier") throw new Error("multiplier expected");
     expect(keepers.weaponTypes).toEqual(["submachineGun"]);
     expect(keepers.hitStacks?.maxStacks.value).toBe(20);

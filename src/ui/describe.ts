@@ -4,12 +4,12 @@ import {
   DamageSource,
   type Ability,
   type Effect,
-  type EffectPart,
   type Element,
   type ExoticArmorEffect,
   type ExoticArmorEntry,
   type FormerCodeReason,
   type ProviderKind,
+  type StatModifier,
   type StatusId,
   type Weapon,
   type WeaponType,
@@ -229,7 +229,22 @@ function targetOf(part: {
   return detail.length ? `${base} (${detail.join(", ")})` : base;
 }
 
-function describePart(part: EffectPart): string {
+function describeStat(part: StatModifier): string {
+  switch (part.stat) {
+    case "reload":
+      return part.factor.value === 0
+        ? "The weapon does not need to reload"
+        : `Reloading takes only ${integer.format((part.factor.value ?? 1) * 100)}%; weapon reloads here already assume Rally Barricade, so only a factor stronger than Rally's counts`;
+    case "drawHold":
+      return `Holding a perfect draw adds +${percentOf(part.stepFactor.value)}% damage every ${integer.format((part.stepMs.value ?? 0) / 1000)} s (up to +${percentOf(part.maxFactor.value)}%), only when the hold pays off`;
+    case "rpm":
+      return `Fire rate ${integer.format(part.value.value ?? 0)} RPM`;
+    case "chargeMs":
+      return `Charge time ${integer.format(part.value.value ?? 0)} ms`;
+  }
+}
+
+function describePart(part: Effect["modifiers"][number]): string {
   switch (part.type) {
     case "multiplier": {
       const conditions = [
@@ -251,14 +266,10 @@ function describePart(part: EffectPart): string {
         bucket ? ` (${bucket})` : ""
       }${conditions.length ? `, ${conditions.join(", ")}` : ""}`;
     }
-    case "timing":
-      return part.change === "noReload"
-        ? "The weapon does not need to reload"
-        : `Reloading takes only ${integer.format((part.factor ?? 1) * 100)}%; weapon reloads here already assume Rally Barricade, so only a factor stronger than Rally's counts`;
-    case "counterModifier":
-      return `+${percentOf(part.factor.value)}% Scorch stacks`;
-    case "holdDraw":
-      return `Holding a perfect draw adds +${percentOf(part.stepFactor.value)}% damage every ${integer.format((part.stepMs.value ?? 0) / 1000)} s (up to +${percentOf(part.maxFactor.value)}%), only when the hold pays off`;
+    case "stat":
+      return describeStat(part);
+    case "action":
+      return `+${percentOf(part.factor.value)}% ${part.status === "scorch" ? "Scorch" : part.status} stacks`;
     case "appliesKeyword": {
       const hits = part.damageSources
         .map((s) =>
@@ -295,7 +306,7 @@ function variantLines(isVariant: (a: Ability) => boolean): string[] {
 /** What an effect does, one line per part, state and changed ability. */
 export function describeEffect(effect: Effect): string[] {
   return [
-    ...effect.parts.map(describePart),
+    ...effect.modifiers.map(describePart),
     ...(effect.grantsStatus
       ? [`Grants ${list(effect.grantsStatus.map((s) => STATE_LABELS[s]))}`]
       : []),

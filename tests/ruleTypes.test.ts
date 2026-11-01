@@ -8,13 +8,14 @@ import { describe, expect, it } from "vitest";
 import {
   Ability,
   Action,
+  AppliesKeywordPart,
   BuffDefinition,
   Condition,
   DamageInstance,
-  EffectPart,
   IntrinsicPart,
   Modifier,
   MultiplierPart,
+  PeriodicDamagePart,
   Rule,
   StatModifier,
   TargetStatusId,
@@ -102,9 +103,6 @@ const SPECIAL_FIELDS = [
   "MultiplierPart.hitStacks",
   "Ability.refillsMagazine",
   "Ability.keywordParts",
-  "EffectPart.holdDraw",
-  "EffectPart.timing",
-  "EffectPart.counterModifier",
   "EffectPart.appliesKeyword",
   "EffectPart.periodicDamage",
   "IntrinsicPart.counter",
@@ -122,7 +120,8 @@ const present = (): string[] => {
     WeaponOption: Object.keys(WeaponOption.shape),
     MultiplierPart: Object.keys(MultiplierPart.shape),
     Ability: Object.keys(Ability.shape),
-    EffectPart: EffectPart.options.map((o) => o.shape.type.value),
+    // what Effect.modifiers still carries beside the Modifier types (until B3b step 3)
+    EffectPart: [AppliesKeywordPart, PeriodicDamagePart].map((o) => o.shape.type.value),
     IntrinsicPart: IntrinsicPart.options.map((o) => o.shape.type.value),
   };
   return SPECIAL_FIELDS.filter((entry) => {

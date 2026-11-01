@@ -53,7 +53,7 @@ const applies = (keywordId: KeywordId, durationMs?: number): Effect => ({
   code: 9101,
   shortName: "test",
   providers: [{ kind: "fireteamSupport" }],
-  parts: [
+  modifiers: [
     {
       type: "appliesKeyword",
       keywordId,
@@ -143,7 +143,7 @@ const stacksOf = (
   code: 9102,
   shortName: "test",
   providers: [{ kind: "fireteamSupport" }],
-  parts: [
+  modifiers: [
     {
       type: "appliesKeyword",
       keywordId,
@@ -216,7 +216,7 @@ describe("ignition through scorch stacks", () => {
       code: 9104,
       shortName: "test",
       providers: [{ kind: "fireteamSupport" }],
-      parts: [
+      modifiers: [
         {
           type: "multiplier",
           bucketId: "empowering",

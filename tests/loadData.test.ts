@@ -25,8 +25,8 @@ describe("loadEffects", () => {
     expect(loadEffects(rawEffects).length).toBeGreaterThan(0);
   });
 
-  it("rejects an effect without parts", () => {
-    expect(() => loadEffects([{ ...rawEffects[0], parts: [] }])).toThrow();
+  it("rejects an effect without modifiers", () => {
+    expect(() => loadEffects([{ ...rawEffects[0], modifiers: [] }])).toThrow();
   });
 });
 

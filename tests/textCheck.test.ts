@@ -22,7 +22,7 @@ const effect = (over: Partial<Effect> & { multiplier?: number; sourceName?: stri
   code: 1,
   shortName: "Probe",
   providers: [{ kind: "fireteamSupport" }],
-  parts: [
+  modifiers: [
     {
       type: "multiplier",
       bucketId: "empowering",
@@ -70,7 +70,7 @@ describe("text check rule", () => {
 
   it("flags a target the text does not name and a narrowing the part misses", () => {
     const perk = effect({});
-    perk.parts = [{ ...(perk.parts[0] as Extract<Effect["parts"][number], { type: "multiplier" }>), bucketId: "weaponPerk" }];
+    perk.modifiers = [{ ...(perk.modifiers[0] as Extract<Effect["modifiers"][number], { type: "multiplier" }>), bucketId: "weaponPerk" }];
     expect(verdict(only(perk, "Grenades deal 25% more damage."), "target")).toBe("deviation");
     expect(verdict(only(effect({}), "Solar weapons deal 25% more damage."), "target")).toBe("deviation");
     expect(verdict(only(effect({}), "Weapons deal 25% more damage."), "target")).toBe("ok");
@@ -85,10 +85,10 @@ describe("text check rule", () => {
   it("takes weapon from an empowering or surge bucket and from a named weapon type", () => {
     expect(verdict(only(effect({}), "Rift grants 25% increased damage."), "target")).toBe("ok");
     const shotgun = effect({});
-    shotgun.parts = [{ ...(shotgun.parts[0] as Extract<Effect["parts"][number], { type: "multiplier" }>), bucketId: "weaponPerk", weaponTypes: ["shotgun"] }];
+    shotgun.modifiers = [{ ...(shotgun.modifiers[0] as Extract<Effect["modifiers"][number], { type: "multiplier" }>), bucketId: "weaponPerk", weaponTypes: ["shotgun"] }];
     expect(verdict(only(shotgun, "25% increased Shotgun damage."), "target")).toBe("ok");
     const amp = effect({});
-    amp.parts = [{ ...(amp.parts[0] as Extract<Effect["parts"][number], { type: "multiplier" }>), bucketId: "amplification" }];
+    amp.modifiers = [{ ...(amp.modifiers[0] as Extract<Effect["modifiers"][number], { type: "multiplier" }>), bucketId: "amplification" }];
     expect(verdict(only(amp, "Grants 25% increased damage."), "target")).toBe("deviation");
   });
 
@@ -121,7 +121,7 @@ describe("text check rule", () => {
 
   it("skips the target of a debuff on every damage source", () => {
     const debuff = effect({});
-    debuff.parts = [{ ...(debuff.parts[0] as Extract<Effect["parts"][number], { type: "multiplier" }>), damageSources: ["weapon", "grenade", "melee", "super", "classAbility", "keyword"] }];
+    debuff.modifiers = [{ ...(debuff.modifiers[0] as Extract<Effect["modifiers"][number], { type: "multiplier" }>), damageSources: ["weapon", "grenade", "melee", "super", "classAbility", "keyword"] }];
     expect(verdict(only(debuff, "Trace rifle hits weaken targets by 25%."), "target")).toBe("ok");
   });
 });
@@ -138,7 +138,7 @@ describe("text check of the data", () => {
     // Star-Eater: the bonus is on every super, the subject of another line (Thundercrash) is wrong
     const starEater = probe("exotic-armor:star-eater-scales", (e) => ({
       ...e,
-      parts: e.parts.map((p) => (p.type === "multiplier" ? { ...p, abilityIds: ["thundercrash"] } : p)),
+      modifiers: e.modifiers.map((p) => (p.type === "multiplier" ? { ...p, abilityIds: ["thundercrash"] } : p)),
     }));
     expect(starEater.find((r) => r.check === "target")?.verdict).toBe("deviation");
   });

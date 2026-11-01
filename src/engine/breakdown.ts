@@ -114,9 +114,9 @@ function withoutBucket(effects: Effect[], bucketId: string): Effect[] {
   return effects
     .map((effect) => ({
       ...effect,
-      parts: effect.parts.filter(
+      modifiers: effect.modifiers.filter(
         (part) => !(part.type === "multiplier" && part.bucketId === bucketId),
       ),
     }))
-    .filter((effect) => effect.parts.length > 0);
+    .filter((effect) => effect.modifiers.length > 0);
 }

@@ -20,7 +20,7 @@ export function hasCatalyst(weapon: Weapon): boolean {
 export function neededStatuses(effects: Effect[]): Set<StatusId> {
   return new Set(
     effects.flatMap((e) =>
-      e.parts.flatMap((p) => (p.type === "multiplier" ? (p.requiresStatus ?? []) : [])),
+      e.modifiers.flatMap((p) => (p.type === "multiplier" ? (p.requiresStatus ?? []) : [])),
     ),
   );
 }
@@ -42,8 +42,8 @@ export function effectRelevantTo(
     // changes an ability, e.g. Knock 'Em Down for Blade Barrage (U6-2 rule G)
     effect.changesAbilityIds !== undefined ||
     // damage of its own, e.g. Storm's Keep
-    effect.parts.some((part) => part.type === "periodicDamage") ||
-    effect.parts.some(
+    effect.modifiers.some((part) => part.type === "periodicDamage") ||
+    effect.modifiers.some(
       (part) =>
         (part.type === "multiplier" || part.type === "appliesKeyword") &&
         part.damageSources.some((source) => source !== "weapon"),

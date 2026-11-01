@@ -20,7 +20,7 @@ const baseTotal = simulate(weapon, DAMAGE_PHASE_SECONDS).totalDamage;
 
 const particleReconstruction = byId("particle-reconstruction");
 const debuffOf = (effect: Effect) => {
-  const part = effect.parts.find((p) => p.type === "multiplier")!;
+  const part = effect.modifiers.find((p) => p.type === "multiplier")!;
   return part.type === "multiplier" ? part.multiplier.value! : NaN;
 };
 
@@ -31,14 +31,57 @@ const noReloadFor = (weaponType: "rocketLauncher"): Effect => ({
   code: 9001,
   shortName: "test",
   providers: [{ kind: "artifact" }],
-  parts: [
+  modifiers: [
     {
-      type: "timing",
-      change: "noReload",
+      type: "stat",
+      stat: "reload",
+      factor: {
+        value: 0,
+        source: { name: "test", retrieved: "2026-10-18", status: "verified" },
+      },
       weaponTypes: [weaponType],
-      source: { name: "test", retrieved: "2026-10-18", status: "verified" },
     },
   ],
+});
+
+describe("simulate: stat modifiers of the rules (B3b step 1)", () => {
+  // The actor reads the stat modifiers of the effects and of the weapon's rules alike
+  const withReloadRule = (factor: number) => {
+    const source = { name: "test", retrieved: "2026-11-01", status: "verified" as const };
+    return {
+      ...weapon,
+      rules: [
+        ...(weapon.rules ?? []),
+        {
+          id: "reload-rule",
+          on: { on: "phaseStart" as const },
+          do: [
+            {
+              type: "modifyStat" as const,
+              modifier: {
+                type: "stat" as const,
+                stat: "reload" as const,
+                factor: { value: factor, source },
+              },
+            },
+          ],
+        },
+      ],
+    };
+  };
+  const gapOf = (w: typeof weapon) => {
+    const { shots } = simulate(w, DAMAGE_PHASE_SECONDS);
+    return shots[magazine].timeMs - shots[magazine - 1].timeMs;
+  };
+
+  it("a reload factor 0 of a rule skips the reload", () => {
+    expect(gapOf(withReloadRule(0))).toBeCloseTo(shotIntervalMs);
+  });
+
+  it("a reload factor of a rule shortens the reload", () => {
+    const reloadMs = gapOf(weapon) - shotIntervalMs;
+    expect(gapOf(withReloadRule(0.5))).toBeCloseTo(shotIntervalMs + reloadMs * 0.5);
+  });
 });
 
 describe("simulate: timing effects", () => {
@@ -87,7 +130,7 @@ describe("simulate: timing effects", () => {
       ...structuredClone(byId("weaken")),
       id: "rocket-only",
     };
-    const part = rocketOnly.parts[0];
+    const part = rocketOnly.modifiers[0];
     if (part.type === "multiplier") part.weaponTypes = ["rocketLauncher"];
     expect(
       simulate(weapon, DAMAGE_PHASE_SECONDS, [rocketOnly], buckets).totalDamage,

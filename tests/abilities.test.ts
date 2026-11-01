@@ -140,8 +140,8 @@ describe("simulate with abilities", () => {
       cast([0]),
     );
     const factor =
-      weaken.parts[0].type === "multiplier"
-        ? weaken.parts[0].multiplier.value!
+      weaken.modifiers[0].type === "multiplier"
+        ? weaken.modifiers[0].multiplier.value!
         : NaN;
     expect(abilityInstances(result)[0].damage).toBeCloseTo(1000 * factor);
   });
@@ -162,7 +162,7 @@ describe("simulate with abilities", () => {
     const fusionOnly: Effect = {
       ...byId("weaken"),
       id: "fusion-only",
-      parts: [
+      modifiers: [
         {
           type: "multiplier",
           bucketId: "debuff",

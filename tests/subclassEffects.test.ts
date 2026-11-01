@@ -34,10 +34,10 @@ describe("rules for aspects and fragments", () => {
     expect(generated.code).toBe(kept.code);
     expect(generated.manifestRef).toEqual(kept.manifestRef);
     expect(generated.providers).toEqual(kept.providers);
-    expect(generated.parts.map((p) => ({ ...p, factor: undefined }))).toEqual(
-      kept.parts.map((p) => ({ ...p, factor: undefined })),
+    expect(generated.modifiers.map((p) => ({ ...p, factor: undefined }))).toEqual(
+      kept.modifiers.map((p) => ({ ...p, factor: undefined })),
     );
-    expect(generated.parts[0]).toMatchObject({ factor: { value: 1.5 } });
+    expect(generated.modifiers[0]).toMatchObject({ factor: { value: 1.5 } });
   });
 
   it.each([
@@ -66,7 +66,7 @@ describe("rules for aspects and fragments", () => {
 
   it("a state from an aspect holds the whole damage phase", () => {
     expect(generatedOf("ascension").effect).toMatchObject({
-      parts: [],
+      modifiers: [],
       grantsStatus: ["amplified"],
     });
     expect(generatedOf("ascension").effect.durationMs).toBeUndefined();
@@ -83,13 +83,13 @@ describe("rules for aspects and fragments", () => {
     expect(generatedOf("echo-of-undermining").effect).toMatchObject({
       trigger: { on: "hit", abilityKinds: ["grenade"], elements: ["void"] },
       durationMs: { value: 5000 },
-      parts: [{ bucketId: "debuff", multiplier: { value: 1.15 } }],
+      modifiers: [{ bucketId: "debuff", multiplier: { value: 1.15 } }],
     });
     const radiant = effects.find((e) => e.id === "radiant")!;
     expect(generatedOf("ember-of-torches").effect).toMatchObject({
       trigger: { on: "hit", abilityKinds: ["melee"] },
       durationMs: { value: 8000 },
-      parts: radiant.parts,
+      modifiers: radiant.modifiers,
     });
   });
 
@@ -99,27 +99,27 @@ describe("rules for aspects and fragments", () => {
       activation: "preBuilt",
       effect: {
         durationMs: { value: 6000 },
-        parts: [{ bucketId: "melee", multiplier: { value: 2.6 }, damageSources: ["melee"] }],
+        modifiers: [{ bucketId: "melee", multiplier: { value: 2.6 }, damageSources: ["melee"] }],
       },
     });
     expect(generatedOf("offensive-bulwark")).toMatchObject({
       activation: "always",
-      effect: { parts: [{ bucketId: "melee", multiplier: { value: 2.6 } }] },
+      effect: { modifiers: [{ bucketId: "melee", multiplier: { value: 2.6 } }] },
     });
     // "67% | 133% | 200%": optimal play holds the third stack
-    expect(generatedOf("roaring-flames-2").effect.parts[0]).toMatchObject({
+    expect(generatedOf("roaring-flames-2").effect.modifiers[0]).toMatchObject({
       bucketId: "melee",
       multiplier: { value: 3 },
     });
   });
 
   it("bonuses on grenades and supers: scope from the words, own bucket", () => {
-    expect(generatedOf("roaring-flames-3").effect.parts).toMatchObject([
+    expect(generatedOf("roaring-flames-3").effect.modifiers).toMatchObject([
       { bucketId: "aspectBonus", multiplier: { value: 1.73 }, damageSources: ["grenade", "super"], elements: ["solar"] },
     ]);
     const facet = result.effects
       .filter((e) => e.subclassItemId === "facet-of-courage")
-      .flatMap((e) => e.effect.parts);
+      .flatMap((e) => e.effect.modifiers);
     // "Light Powered Melee Abilities deal 50%": Light melees only, and instead of the 10 % (Clarity:
     // "Light Melee Abilities in PVE instead deal an additional 50%") (K6)
     expect(facet).toMatchObject([
@@ -134,7 +134,7 @@ describe("rules for aspects and fragments", () => {
   });
 
   it("keyword parts on named hits and prebuilt rounds (U4b)", () => {
-    expect(generatedOf("spark-of-shock").effect.parts).toMatchObject([
+    expect(generatedOf("spark-of-shock").effect.modifiers).toMatchObject([
       {
         type: "appliesKeyword",
         keywordId: "jolt",
@@ -145,7 +145,7 @@ describe("rules for aspects and fragments", () => {
     expect(generatedOf("echo-of-instability")).toMatchObject({
       activation: "preBuilt",
       effect: {
-        parts: [
+        modifiers: [
           { type: "appliesKeyword", keywordId: "volatile", damageSources: ["weapon"], elements: ["void"] },
         ],
         durationMs: { value: 11250 },
@@ -159,7 +159,7 @@ describe("rules for aspects and fragments", () => {
     expect(stormsKeep).toMatchObject({
       activation: "always",
       effect: {
-        parts: [
+        modifiers: [
           {
             type: "periodicDamage",
             id: "storms-keep",
@@ -172,7 +172,7 @@ describe("rules for aspects and fragments", () => {
     });
     expect(stormsKeep.effect.durationMs).toBeUndefined();
     const periodic = result.effects
-      .filter((e) => e.effect.parts.some((p) => p.type === "periodicDamage"))
+      .filter((e) => e.effect.modifiers.some((p) => p.type === "periodicDamage"))
       .map((e) => e.subclassItemId)
       .sort();
     expect(periodic).toEqual([
@@ -184,7 +184,7 @@ describe("rules for aspects and fragments", () => {
     ]);
     // Hellion: Ember of Ashes (one assumption) rather than Consul's Pitch, spaced range, …
     expect(
-      result.effects.find((e) => e.subclassItemId === "hellion")!.effect.parts[0],
+      result.effects.find((e) => e.subclassItemId === "hellion")!.effect.modifiers[0],
     ).toMatchObject({ element: "solar", damage: { value: 466 }, intervalMs: { value: 1317 } });
     // the measurement replaces the open rows: no damage, class ability trigger, keyword without model
     expect(kindsOf("Weaver's Call")).toEqual(["ownDamage"]);

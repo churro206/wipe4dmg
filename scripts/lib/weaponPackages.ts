@@ -721,11 +721,15 @@ export function buildWeaponImport(
   // K1: both sources reload with Rally Barricade, so its factor is in every weapon's reload.
   const rallyPart = inputs.effects
     .find((e) => e.id === RALLY_EFFECT_ID)
-    ?.parts.find((p) => p.type === "timing" && p.change === "reloadDuration");
-  if (rallyPart?.type !== "timing" || rallyPart.factor === undefined)
-    throw new Error(`${RALLY_EFFECT_ID}: no reloadDuration factor`);
+    ?.modifiers.find((p) => p.type === "stat" && p.stat === "reload");
+  if (
+    rallyPart?.type !== "stat" ||
+    rallyPart.stat !== "reload" ||
+    !rallyPart.factor.value
+  )
+    throw new Error(`${RALLY_EFFECT_ID}: no reload factor`);
   const reloadDurationIncluded = {
-    value: rallyPart.factor,
+    value: rallyPart.factor.value,
     source: {
       name: "Quantum Damage-ics, Home (Assumptions Made)",
       url: "https://destiny2.science/quantum-damage-ics",
@@ -933,9 +937,9 @@ export function buildWeaponImport(
     let normaliseFactor = 1;
     for (const effectId of included) {
       const effect = inputs.effects.find((e) => e.id === effectId);
-      if (!effect || effect.parts.some((p) => p.type !== "multiplier"))
+      if (!effect || effect.modifiers.some((p) => p.type !== "multiplier"))
         continue;
-      const factor = effect.parts.reduce(
+      const factor = effect.modifiers.reduce(
         (product, p) =>
           p.type === "multiplier" &&
           p.damageSources.includes("weapon") &&

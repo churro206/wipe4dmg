@@ -669,13 +669,13 @@ describe("buffs, debuffs and artifact perks from Court (2026-10-23)", () => {
       // improving parts and parts that need a Void Super (Debilitating Wave) have their own tests
       .filter(
         (e) =>
-          !e.parts.some(
+          !e.modifiers.some(
             (p) =>
               p.type === "multiplier" && (p.requiresEffectIds || p.superElements),
           ),
       )
       .map((effect) => {
-        const part = effect.parts.find(
+        const part = effect.modifiers.find(
           (p) => p.type === "multiplier" && p.damageSources.includes("weapon"),
         );
         if (part?.type !== "multiplier") throw new Error(effect.id);
@@ -1303,7 +1303,7 @@ describe("the UI offers what works", () => {
     const stateOnly = subclassEffects.filter(
       (effect) =>
         weapons.some((w) => effectRelevantTo(effect, w)) &&
-        effect.parts.length === 0 &&
+        effect.modifiers.length === 0 &&
         effect.changesAbilityIds === undefined,
     );
     note(

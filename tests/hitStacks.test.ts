@@ -18,7 +18,7 @@ const effect = (hitStacks: NonNullable<MultiplierPart["hitStacks"]>): Effect => 
   code: 9999,
   shortName: "Stk",
   providers: [{ kind: "armor", slot: "exotic" }],
-  parts: [
+  modifiers: [
     {
       type: "multiplier",
       bucketId: "exoticIntrinsic",

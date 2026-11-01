@@ -19,11 +19,11 @@ import type {
   AbilityData,
   AegisAbilityRow,
   AegisTotalRow,
+  AppliesKeywordPart,
   CompendiumEntry,
   CourtEntry,
   DamageSource,
   Effect,
-  EffectPart,
   Element,
   EffectProvider,
   ManifestSubclassItem,
@@ -161,7 +161,7 @@ function sentencesOf(text: string): { sentence: string; header: string }[] {
 }
 
 type Found = Pick<SubclassEffectRow, "rule" | "kind" | "reason" | "check"> & {
-  parts?: EffectPart[];
+  parts?: Effect["modifiers"];
   grantsStatus?: StatusId[];
   durationMs?: Effect["durationMs"];
   trigger?: Effect["trigger"];
@@ -218,7 +218,7 @@ function findAll(
       kind: "always",
       reason: `Scorch-Stapel ×${factorOf(Number(counter[1]))} („${counter[0]}“)`,
       check: "Text",
-      parts: [{ type: "counterModifier", counterId: "scorch", factor: { value: factorOf(Number(counter[1])), source: quote(counter[0]) } }],
+      parts: [{ type: "action", action: "applyStatus", status: "scorch", factor: { value: factorOf(Number(counter[1])), source: quote(counter[0]) } }],
     });
 
   // C: keyword sources (U4b)
@@ -237,7 +237,7 @@ function findAll(
       });
       continue;
     }
-    const part = (damageSources: DamageSource[], elements: string[]): EffectPart => ({
+    const part = (damageSources: DamageSource[], elements: string[]): AppliesKeywordPart => ({
       type: "appliesKeyword",
       keywordId: k.keywordId,
       damageSources,
@@ -285,7 +285,7 @@ function findAll(
       check: "Text",
       ...(melee
         ? {
-            parts: effect.parts,
+            parts: effect.modifiers,
             durationMs: { value: Number(grants[3]) * MS_PER_SECOND, source: quote(grants[0]) },
             trigger: { on: "hit" as const, refresh: true, abilityKinds: ["melee" as const] },
             suffix: `(${effect.name})`,
@@ -463,7 +463,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
             shortName: name,
             manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
             providers,
-            parts: f.parts ?? [],
+            modifiers: f.parts ?? [],
             ...(f.grantsStatus ? { grantsStatus: f.grantsStatus } : {}),
             ...(f.durationMs ? { durationMs: f.durationMs } : {}),
             ...(f.trigger ? { trigger: f.trigger } : {}),
@@ -479,7 +479,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
   // An item whose effect only grants a state, e.g. Sol Invictus (Restoration), can change abilities
   // too: the effect gets the abilities.
   const withDamage = new Set(
-    effects.filter((e) => e.effect.parts.length > 0).map((e) => e.subclassItemId),
+    effects.filter((e) => e.effect.modifiers.length > 0).map((e) => e.subclassItemId),
   );
   const eligible = new Map(
     names
@@ -523,7 +523,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
           shortName: name,
           manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
           providers: providersOf(items),
-          parts: [],
+          modifiers: [],
           changesAbilityIds: abilityIds,
         },
       });
@@ -583,7 +583,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
         shortName: name,
         manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
         providers: providersOf(items),
-        parts: [
+        modifiers: [
           {
             type: "periodicDamage",
             id: effectId,

@@ -426,40 +426,6 @@ export const MultiplierPart = z.object({
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
 
-/** Effect part that scales the stacks of every application to a counter, rounded up. */
-export const CounterModifierPart = z.object({
-  type: z.literal("counterModifier"),
-  counterId: CounterId,
-  factor: SourcedNumber, // e.g. 1.5 for +50%
-});
-export type CounterModifierPart = z.infer<typeof CounterModifierPart>;
-
-/** Effect part that changes the shot plan instead of damage (ADR 0006). */
-export const TimingPart = z.object({
-  type: z.literal("timing"),
-  // noReload: skips reloads; reloadDuration: reload time × factor (ADR 0014)
-  change: z.enum(["noReload", "reloadDuration"]),
-  factor: z.number().positive().optional(), // required for reloadDuration, e.g. 0.9
-  weaponTypes: z.array(WeaponType).optional(), // omitted: all weapon types
-  source: Source,
-});
-export type TimingPart = z.infer<typeof TimingPart>;
-
-/**
- * Effect part for a draw that grows while held (Oathkeeper): each step of stepMs held makes the
- * shot stepFactor stronger (1.375 = +37.5 %), up to maxFactor. The engine takes, per shot, the
- * hold with the most damage per second, so a hold that costs more time than it brings is not taken.
- * Primary ammo weapons only.
- */
-export const HoldDrawPart = z.object({
-  type: z.literal("holdDraw"),
-  weaponTypes: z.array(WeaponType).min(1),
-  stepMs: SourcedNumber,
-  stepFactor: SourcedNumber,
-  maxFactor: SourcedNumber,
-});
-export type HoldDrawPart = z.infer<typeof HoldDrawPart>;
-
 /**
  * Effect part with damage of its own at a fixed rate while the effect is active, e.g. the Bolt
  * Charge discharges of Storm's Keep or the turret of Hellion: the first hit one interval after the
@@ -474,16 +440,6 @@ export const PeriodicDamagePart = z.object({
   intervalMs: SourcedNumber,
 });
 export type PeriodicDamagePart = z.infer<typeof PeriodicDamagePart>;
-
-export const EffectPart = z.discriminatedUnion("type", [
-  MultiplierPart,
-  HoldDrawPart,
-  TimingPart,
-  CounterModifierPart,
-  AppliesKeywordPart,
-  PeriodicDamagePart,
-]);
-export type EffectPart = z.infer<typeof EffectPart>;
 
 // ---------------------------------------------------------------------------------------------
 // Rules: trigger, conditions, actions (docs/architecture.md section 6, ADR 0018, stage B3).
@@ -950,7 +906,12 @@ export const Effect = z
     // A build provides at most one effect of a group itself, e.g. one surge level or one super.
     // Effects from teammates are not limited by groups.
     exclusiveGroup: z.string().optional(),
-    parts: z.array(EffectPart), // empty only for an effect that grants a state or changes abilities
+    // Passive while the effect is active (docs/architecture.md section 6). Until B3b step 3 this list
+    // also carries appliesKeyword and periodicDamage, which become rules there.
+    // Empty only for an effect that grants a state or changes abilities.
+    modifiers: z.array(
+      z.union([Modifier, AppliesKeywordPart, PeriodicDamagePart]),
+    ),
     // States the player has while the effect is active, e.g. Amplified (ADR 0015, U6-2)
     grantsStatus: z.array(StatusId).min(1).optional(),
     // Abilities with a variant measured with this aspect or fragment, e.g. Knock 'Em Down changes
@@ -968,13 +929,13 @@ export const Effect = z
   })
   .refine(
     (e) =>
-      e.parts.length > 0 ||
+      e.modifiers.length > 0 ||
       e.grantsStatus !== undefined ||
       e.changesAbilityIds !== undefined,
     {
       message:
-        "an effect needs parts, a state it grants or abilities it changes",
-      path: ["parts"],
+        "an effect needs modifiers, a state it grants or abilities it changes",
+      path: ["modifiers"],
     },
   );
 export type Effect = z.infer<typeof Effect>;

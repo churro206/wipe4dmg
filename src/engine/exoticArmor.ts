@@ -144,19 +144,21 @@ export function exoticArmorEffects(
     code: entry.hash, // not part of build links; the exotic itself is
     shortName: entry.name,
     providers: [{ kind: "armor", slot: "exotic" }],
-    parts: [
+    modifiers: [
       {
-        type: "timing",
-        change: entry.timing.change,
-        factor: entry.timing.factor,
-        source: {
-          name:
-            entry.timing.source === "compendium"
-              ? "Destiny Data Compendium (tab Exotic Armors)"
-              : "Clarity (Live-Clarity-Database)",
-          retrieved: "2026-10-21",
-          status: "verified",
-          note: `„${entry.timing.quote}“; several reload factors: only the strongest counts (no source for stacking)`,
+        type: "stat",
+        stat: "reload",
+        factor: {
+          value: entry.timing.factor,
+          source: {
+            name:
+              entry.timing.source === "compendium"
+                ? "Destiny Data Compendium (tab Exotic Armors)"
+                : "Clarity (Live-Clarity-Database)",
+            retrieved: "2026-10-21",
+            status: "verified",
+            note: `„${entry.timing.quote}“; several reload factors: only the strongest counts (no source for stacking)`,
+          },
         },
       },
     ],

@@ -70,7 +70,7 @@ describe("neededStatuses", () => {
     const surge = effect("surge-3x");
     const needing = {
       ...surge,
-      parts: surge.parts.map((p) => ({ ...p, requiresStatus: ["amplified" as const] })),
+      modifiers: surge.modifiers.map((p) => ({ ...p, requiresStatus: ["amplified" as const] })),
     };
     expect([...neededStatuses([effect("weaken"), needing])]).toEqual(["amplified"]);
   });

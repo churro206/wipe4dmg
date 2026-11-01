@@ -5,7 +5,7 @@
     "code": 62,
     "shortName": "Abyss",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -89,7 +89,7 @@
     "code": 63,
     "shortName": "Debilitating Wave",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -131,7 +131,7 @@
     "code": 64,
     "shortName": "Maligned Harvest",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -172,7 +172,7 @@
     "code": 65,
     "shortName": "Singularity Blade",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -213,7 +213,7 @@
     "code": 66,
     "shortName": "Supernova",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -254,7 +254,7 @@
     "code": 67,
     "shortName": "Void Infestation",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -295,7 +295,7 @@
     "code": 68,
     "shortName": "Weakened Clear",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -336,7 +336,7 @@
     "code": 69,
     "shortName": "Orbs",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -389,7 +389,7 @@
       { "kind": "artifact", "slot": "artifact" },
       { "kind": "fireteamSupport" }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -442,7 +442,7 @@
       { "kind": "artifact", "slot": "artifact" },
       { "kind": "fireteamSupport" }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -476,7 +476,7 @@
     "code": 72,
     "shortName": "Weapons of Light",
     "providers": [{ "kind": "fireteamSupport" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -511,7 +511,7 @@
     "shortName": "Equity",
     "elementIconKey": "surge",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "surge",
@@ -546,7 +546,7 @@
     "shortName": "Bullet Smell",
     "elementIconKey": "surge",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "surge",
@@ -582,7 +582,7 @@
     "shortName": "Void Channel",
     "elementIconKey": "surge",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "surge",
@@ -617,7 +617,7 @@
     "code": 76,
     "shortName": "Argent Blade",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -652,7 +652,7 @@
     "code": 77,
     "shortName": "Ordnance",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -687,7 +687,7 @@
     "code": 78,
     "shortName": "Quiver",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -713,7 +713,7 @@
     "code": 79,
     "shortName": "Meditation",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -748,7 +748,7 @@
     "code": 80,
     "shortName": "Autoloader",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -783,7 +783,7 @@
     "code": 81,
     "shortName": "Arc Compound",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -816,7 +816,7 @@
     "code": 82,
     "shortName": "Remote Shield",
     "providers": [{ "kind": "fireteamSupport" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -850,7 +850,7 @@
     "code": 83,
     "shortName": "Banner of War",
     "providers": [{ "kind": "fireteamSupport" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",

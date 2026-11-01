@@ -51,19 +51,22 @@ const HELD: Record<string, string> = {
 };
 
 // Parts that last while their effect is active; the others work per hit or cast.
-const TIMED_PARTS = new Set(["multiplier", "timing", "periodicDamage"]);
+const isTimed = (p: Effect["modifiers"][number]) =>
+  p.type === "multiplier" ||
+  p.type === "periodicDamage" ||
+  (p.type === "stat" && p.stat === "reload");
 
 function worksPerEvent(effect: Effect): boolean {
-  return effect.parts.every(
+  return effect.modifiers.every(
     (p) =>
-      !TIMED_PARTS.has(p.type) ||
+      !isTimed(p) ||
       (p.type === "multiplier" &&
         (p.hitStacks !== undefined || p.abilityIds !== undefined || p.requiresEffectIds !== undefined)),
   );
 }
 
 const sourceNames = (effect: Effect): string[] =>
-  effect.parts.flatMap((p) => (p.type === "multiplier" ? [p.multiplier.source.name] : []));
+  effect.modifiers.flatMap((p) => (p.type === "multiplier" ? [p.multiplier.source.name] : []));
 
 function durationInText(
   effect: Effect,
@@ -87,7 +90,7 @@ export function uptimeRows(inputs: UptimeInputs): UptimeRow[] {
     if (effect.providers.some((p) => p.kind === "fireteamSupport"))
       return { ...base, verdict: "fireteam" as const };
     if (HELD[effect.id]) return { ...base, verdict: "held" as const, quote: HELD[effect.id] };
-    if (effect.parts.length === 0) return { ...base, verdict: "state" as const };
+    if (effect.modifiers.length === 0) return { ...base, verdict: "state" as const };
     if (worksPerEvent(effect)) return { ...base, verdict: "event" as const };
     const found = durationInText(effect, inputs);
     return found ? { ...base, verdict: "open" as const, ...found } : { ...base, verdict: "none" as const };

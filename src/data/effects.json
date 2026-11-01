@@ -20,7 +20,7 @@
       }
     ],
     "exclusiveGroup": "super",
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -82,7 +82,7 @@
         "kind": "fireteamSupport"
       }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -127,7 +127,7 @@
         "kind": "fireteamSupport"
       }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -181,7 +181,7 @@
       }
     ],
     "exclusiveGroup": "super",
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -212,7 +212,7 @@
         "kind": "fireteamSupport"
       }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",
@@ -258,7 +258,7 @@
         "kind": "fireteamSupport"
       }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -296,7 +296,7 @@
         "kind": "fireteamSupport"
       }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -336,7 +336,7 @@
         "kind": "fireteamSupport"
       }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -391,7 +391,7 @@
       }
     ],
     "exclusiveGroup": "super",
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -447,7 +447,7 @@
       }
     ],
     "exclusiveGroup": "super",
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "debuff",
@@ -495,7 +495,7 @@
       }
     ],
     "exclusiveGroup": "surge",
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "surge",
@@ -526,7 +526,7 @@
       }
     ],
     "exclusiveGroup": "surge",
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "surge",
@@ -564,7 +564,7 @@
       }
     ],
     "exclusiveGroup": "surge",
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "surge",
@@ -597,7 +597,7 @@
         "slot": "artifact"
       }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -640,18 +640,21 @@
         "slot": "artifact"
       }
     ],
-    "parts": [
+    "modifiers": [
       {
-        "type": "timing",
-        "change": "noReload",
-        "weaponTypes": ["fusionRifle", "linearFusionRifle"],
-        "source": {
-          "name": "Destiny Data Compendium, Artifact Perks (Particle Reconstruction)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-18",
-          "status": "unverified",
-          "note": "Hits refill 10% of the magazine, rounded up. Aegis measures One Thousand Voices without reloads (Distribution 11). See docs/mechanics/particle-reconstruction.md."
-        }
+        "type": "stat",
+        "stat": "reload",
+        "factor": {
+          "value": 0,
+          "source": {
+            "name": "Destiny Data Compendium, Artifact Perks (Particle Reconstruction)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-18",
+            "status": "unverified",
+            "note": "Hits refill 10% of the magazine, rounded up. Aegis measures One Thousand Voices without reloads (Distribution 11). See docs/mechanics/particle-reconstruction.md."
+          }
+        },
+        "weaponTypes": ["fusionRifle", "linearFusionRifle"]
       },
       {
         "type": "multiplier",
@@ -687,10 +690,11 @@
         "subclasses": ["solar"]
       }
     ],
-    "parts": [
+    "modifiers": [
       {
-        "type": "counterModifier",
-        "counterId": "scorch",
+        "type": "action",
+        "action": "applyStatus",
+        "status": "scorch",
         "factor": {
           "value": 1.5,
           "source": {
@@ -716,7 +720,7 @@
         "subclasses": ["prismatic"]
       }
     ],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "transcendence",
@@ -757,18 +761,20 @@
         "classes": ["titan"]
       }
     ],
-    "parts": [
+    "modifiers": [
       {
-        "type": "timing",
-        "change": "reloadDuration",
-        "factor": 0.9,
-        "source": {
-          "name": "Destiny Data Compendium, Class Abilities (Rally Barricade)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-24",
-          "status": "verified",
-          "quote": "While within ? meters behind the Rally Barricade: … +30 Stability, +100 Reload Speed, 0.9x Reload Duration Multiplier",
-          "note": "The player stands behind the barricade for its whole duration (owner, 2026-10-24). Quantum and Aegis already reload with Rally (+100 Reload Speed and 0.9x, K1), so every weapon's reload contains this factor (reloadDurationIncluded) and Rally adds nothing to it; stronger multipliers count only beyond it."
+        "type": "stat",
+        "stat": "reload",
+        "factor": {
+          "value": 0.9,
+          "source": {
+            "name": "Destiny Data Compendium, Class Abilities (Rally Barricade)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "verified",
+            "quote": "While within ? meters behind the Rally Barricade: … +30 Stability, +100 Reload Speed, 0.9x Reload Duration Multiplier",
+            "note": "The player stands behind the barricade for its whole duration (owner, 2026-10-24). Quantum and Aegis already reload with Rally (+100 Reload Speed and 0.9x, K1), so every weapon's reload contains this factor (reloadDurationIncluded) and Rally adds nothing to it; stronger multipliers count only beyond it."
+          }
         }
       }
     ],
@@ -789,7 +795,7 @@
     "name": "Limit Break",
     "shortName": "Limit Break",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -814,7 +820,7 @@
     "name": "Thunderous Retort",
     "shortName": "Retort",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -840,7 +846,7 @@
     "name": "Shieldcrush",
     "shortName": "Shieldcrush",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "melee",
@@ -883,7 +889,7 @@
     "name": "Transference",
     "shortName": "Transference",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "amplification",
@@ -926,7 +932,7 @@
     "name": "Fever and Chill",
     "shortName": "Fever",
     "providers": [{ "kind": "artifact", "slot": "artifact" }],
-    "parts": [
+    "modifiers": [
       {
         "type": "multiplier",
         "bucketId": "empowering",

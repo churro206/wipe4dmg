@@ -22,7 +22,7 @@ const granting = (durationMs?: number): Effect => ({
   code: 9201,
   shortName: "test",
   providers: [{ kind: "fireteamSupport" }],
-  parts: [],
+  modifiers: [],
   grantsStatus: ["amplified"],
   ...(durationMs ? { durationMs: { value: durationMs, source } } : {}),
 });
@@ -32,7 +32,7 @@ const requiring: Effect = {
   code: 9202,
   shortName: "test",
   providers: [{ kind: "fireteamSupport" }],
-  parts: [
+  modifiers: [
     {
       type: "multiplier",
       bucketId: "empowering",

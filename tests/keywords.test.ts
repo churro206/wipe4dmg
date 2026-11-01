@@ -95,7 +95,7 @@ describe("status without damage (Weaken, architecture section 6)", () => {
 
   it("takes the multiplier from the Weaken effect of the buff table", () => {
     const effect = rawEffects.find((e) => e.id === "weaken")!;
-    const part = effect.parts[0] as { multiplier: SourcedNumber; damageSources: string[] };
+    const part = effect.modifiers[0] as { multiplier: SourcedNumber; damageSources: string[] };
     expect(weaken.modifiers[0].multiplier.value).toBe(part.multiplier.value);
     expect(weaken.modifiers[0].damageSources).toEqual(part.damageSources);
   });

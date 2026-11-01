@@ -13,7 +13,7 @@ const buckets = loadBuckets(rawBuckets);
 const effects = loadEffects(rawEffects);
 const byId = (id: string) => effects.find((e) => e.id === id)!;
 const multiplierOf = (id: string) => {
-  const part = byId(id).parts.find((p) => p.type === "multiplier");
+  const part = byId(id).modifiers.find((p) => p.type === "multiplier");
   if (!part || part.type !== "multiplier")
     throw new Error(`No multiplier in ${id}`);
   return part.multiplier.value!;

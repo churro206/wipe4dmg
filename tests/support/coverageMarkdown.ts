@@ -101,7 +101,7 @@ export function coverageMarkdown(
     "| --- | --- | --- | --- | --- |",
   );
   for (const effect of effects) {
-    const multipliers = effect.parts.map((part) => {
+    const multipliers = effect.modifiers.map((part) => {
       switch (part.type) {
         case "multiplier":
           return {
@@ -110,15 +110,23 @@ export function coverageMarkdown(
               part.damageSources.join(", ") +
               (part.abilityIds ? ` (only ${part.abilityIds.join(", ")})` : ""),
           };
-        case "timing":
-          return { text: `Timing: ${part.change}`, sources: "weapon" };
-        case "counterModifier":
+        case "stat":
           return {
-            text: `${part.counterId} ×${part.factor.value}`,
+            text:
+              part.stat === "reload"
+                ? part.factor.value === 0
+                  ? "Timing: noReload"
+                  : "Timing: reloadDuration"
+                : part.stat === "drawHold"
+                  ? "Hold the draw"
+                  : `Stat: ${part.stat}`,
             sources: "weapon",
           };
-        case "holdDraw":
-          return { text: "Hold the draw", sources: "weapon" };
+        case "action":
+          return {
+            text: `${part.status} ×${part.factor.value}`,
+            sources: "weapon",
+          };
         case "appliesKeyword":
           return { text: "Applies a keyword", sources: "weapon" };
         case "periodicDamage":
@@ -129,7 +137,7 @@ export function coverageMarkdown(
       ? `${effect.durationMs.value / 1000} s`
       : "whole phase or Rotation";
     lines.push(
-      `| ${effect.name} | ${[...new Set(effect.parts.map((p) => (p.type === "multiplier" ? p.bucketId : "–")))].join(", ")} | ${multipliers.map((m) => m.text).join("; ")} | ${[...new Set(multipliers.map((m) => m.sources))].join("; ")} | ${duration} |`,
+      `| ${effect.name} | ${[...new Set(effect.modifiers.map((p) => (p.type === "multiplier" ? p.bucketId : "–")))].join(", ")} | ${multipliers.map((m) => m.text).join("; ")} | ${[...new Set(multipliers.map((m) => m.sources))].join("; ")} | ${duration} |`,
     );
   }
   return lines.join("\n") + "\n";

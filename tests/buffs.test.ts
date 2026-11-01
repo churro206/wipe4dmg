@@ -45,7 +45,7 @@ describe("effects from the Court rows", () => {
       "banner-of-war",
     ]);
     for (const effect of result.effects) {
-      for (const part of effect.parts) {
+      for (const part of effect.modifiers) {
         if (part.type !== "multiplier") continue;
         expect(part.multiplier.source.status).toBe("verified");
         expect(part.multiplier.source.quote).toBeTruthy();
@@ -66,14 +66,14 @@ describe("effects from the Court rows", () => {
     ["banner-of-war", "amplification", 1.1, undefined],
   ])("%s: %s ×%s for %s ms", (id, bucketId, factor, durationMs) => {
     const effect = effectOf(id);
-    const part = effect.parts[0];
+    const part = effect.modifiers[0];
     expect(part.type === "multiplier" && part.bucketId).toBe(bucketId);
     expect(part.type === "multiplier" && part.multiplier.value).toBe(factor);
     expect(effect.durationMs?.value).toBe(durationMs);
   });
 
   it("Radiant from a perk gives Golden Gun the same value as the weapon", () => {
-    const parts = effectOf("radiant-orbs").parts;
+    const parts = effectOf("radiant-orbs").modifiers;
     expect(parts).toHaveLength(2);
     expect(parts[1]).toMatchObject({
       damageSources: ["super"],
@@ -82,7 +82,7 @@ describe("effects from the Court rows", () => {
   });
 
   it("Expanding Abyss raises Weaken, the tethers and Deadfall, for Void only", () => {
-    const parts = effectOf("expanding-abyss").parts.flatMap((p) =>
+    const parts = effectOf("expanding-abyss").modifiers.flatMap((p) =>
       p.type === "multiplier"
         ? [[p.requiresEffectIds, p.multiplier.value, p.elements]]
         : [],

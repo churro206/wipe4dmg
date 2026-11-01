@@ -24,13 +24,15 @@ import {
   type Element,
   type ExoticArmorEffect,
   type ExoticArmorEntry,
-  type HoldDrawPart,
   type MultiplierPart,
+  type StatModifier,
   type StatusId,
   type WeaponType,
   type Source,
 } from "../../src/data/schema.ts";
 import { MS_PER_SECOND } from "../../src/engine/units.ts";
+
+type HoldDrawModifier = Extract<StatModifier, { stat: "drawHold" }>;
 import { NOT_AGAINST_BOSS, sameName } from "./exoticArmor.ts";
 
 export type ExoticEffectInputs = {
@@ -156,7 +158,7 @@ const elementOf = (text: string): Element | undefined =>
 const flat = (text: string) => text.replace(/\s+/g, " ").trim();
 
 export type Verdict = Omit<ExoticEffectRow, "exoticArmorId" | "name" | "effectId"> & {
-  part?: MultiplierPart | HoldDrawPart;
+  part?: MultiplierPart | HoldDrawModifier;
   durationMs?: { value: number; source: Source };
   trigger?: EffectTrigger;
 };
@@ -537,8 +539,9 @@ function heldDrawVerdict(
     ...inputs.sources.clarity,
     note: `„${flat(held[0])}“; the engine holds only when damage per second rises (primary ammo bows)`,
   };
-  const part: HoldDrawPart = {
-    type: "holdDraw",
+  const part: HoldDrawModifier = {
+    type: "stat",
+    stat: "drawHold",
     weaponTypes: ["bow"],
     stepMs: { value: Number(held[2]) * MS_PER_SECOND, source },
     stepFactor: { value: factorOf(Number(held[1])), source },
@@ -845,7 +848,7 @@ export function exoticEffects(inputs: ExoticEffectInputs): {
           code: entry.hash, // not part of build links; the exotic itself is
           shortName: entry.name,
           providers: [{ kind: "armor", slot: "exotic" }],
-          parts: part.type === "multiplier" ? withCaps(part, entry, inputs) : [part],
+          modifiers: part.type === "multiplier" ? withCaps(part, entry, inputs) : [part],
           ...(durationMs ? { durationMs } : {}),
           ...(trigger ? { trigger } : {}),
         };
@@ -897,7 +900,7 @@ function keywordBonusEffects(
       code: entry.hash,
       shortName: entry.name,
       providers: [{ kind: "armor", slot: "exotic" }],
-      parts: [
+      modifiers: [
         {
           type: "multiplier",
           bucketId,

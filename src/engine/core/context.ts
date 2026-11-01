@@ -213,7 +213,10 @@ export function createContext(
   };
   const counterFactorAt = (status: TargetStatusId, timeMs: number) =>
     partsAt(timeMs, included)
-      .counterModifierParts.filter((part) => part.counterId === status)
+      .actionModifiers.filter(
+        (modifier) =>
+          modifier.action === "applyStatus" && modifier.status === status,
+      )
       .reduce(
         (product, part) => product * requireValue(part.factor, "factor"),
         1,

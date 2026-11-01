@@ -3,7 +3,7 @@
 // left; timing rules are those of simulate.ts (ADR 0001), so both cores plan the same shots.
 
 import type { StatModifier, Weapon } from "../../data/schema";
-import { appliesToWeaponType, type ActiveParts } from "../effectParts";
+import { appliesToWeaponType } from "../effectParts";
 import { requireValue } from "../requireValue";
 import type { AbilityCast, SuperWindow } from "./types";
 import { MS_PER_SECOND } from "../units";
@@ -26,13 +26,14 @@ export type ActorInput = {
   damagePhaseSeconds: number;
   abilities: AbilityCast[];
   superWindows: SuperWindow[];
-  partsAt: (timeMs: number) => ActiveParts;
-  // The stat modifiers of the weapon's rules that are on at a time (e.g. the rate of a playstyle)
+  // The stat modifiers on at a time: those of the active effects, then those of the weapon's rules
+  // (e.g. the rate of a playstyle)
   statModifiersAt?: (timeMs: number) => StatModifier[];
 };
 
 export function createWeaponActor(input: ActorInput) {
-  const { weapon, catalyst, partsAt } = input;
+  const { weapon, catalyst } = input;
+  const statsAt = (timeMs: number) => input.statModifiersAt?.(timeMs) ?? [];
   // A catalyst that changes magazine, ammo or reload replaces the timing while it is on.
   const timing = (catalyst && weapon.catalyst?.timing) || weapon;
   const chargeTimeMs = requireValue(weapon.chargeTimeMs, "chargeTimeMs");
@@ -67,7 +68,7 @@ export function createWeaponActor(input: ActorInput) {
   }
   // The rate: the latest `rpm` modifier of the rules that is on, else the weapon's (with its catalyst)
   const rpmAt = (timeMs: number, own: number) => {
-    const modifiers = (input.statModifiersAt?.(timeMs) ?? []).filter(
+    const modifiers = statsAt(timeMs).filter(
       (m) =>
         m.stat === "rpm" && appliesToWeaponType(m.weaponTypes, weapon.weaponType),
     );
@@ -79,27 +80,19 @@ export function createWeaponActor(input: ActorInput) {
   const damagePhaseMs = input.damagePhaseSeconds * MS_PER_SECOND;
   const isInPhase = (timeMs: number) => timeMs <= damagePhaseMs;
 
-  const noReloadAt = (timeMs: number) =>
-    partsAt(timeMs).timingParts.some(
-      (part) =>
-        part.change === "noReload" &&
-        appliesToWeaponType(part.weaponTypes, weapon.weaponType),
+  // The reload modifiers on at a time: factor 0 skips the reload (no reload to book)
+  const reloadFactorsAt = (timeMs: number) =>
+    statsAt(timeMs).flatMap((m) =>
+      m.stat === "reload" && appliesToWeaponType(m.weaponTypes, weapon.weaponType)
+        ? [requireValue(m.factor, "reload factor")]
+        : [],
     );
-  // Reload time × factor of the strongest active reloadDuration part (ADR 0014); the weapon's
+  const noReloadAt = (timeMs: number) => reloadFactorsAt(timeMs).includes(0);
+  // Reload time × factor of the strongest active reload modifier (ADR 0014); the weapon's
   // reload may already contain a factor (K1): only the part beyond it counts.
   const includedReloadFactor = weapon.reloadDurationIncluded?.value ?? 1;
   const reloadMsAt = (timeMs: number) => {
-    const factors = partsAt(timeMs)
-      .timingParts.filter(
-        (part) =>
-          part.change === "reloadDuration" &&
-          appliesToWeaponType(part.weaponTypes, weapon.weaponType),
-      )
-      .map((part) => {
-        if (part.factor === undefined)
-          throw new Error("reloadDuration needs a factor");
-        return part.factor;
-      });
+    const factors = reloadFactorsAt(timeMs).filter((factor) => factor > 0);
     return (
       reloadTimeMs * Math.min(1, Math.min(1, ...factors) / includedReloadFactor)
     );
@@ -146,8 +139,10 @@ export function createWeaponActor(input: ActorInput) {
       )
     )
       return none;
-    const part = partsAt(timeMs).holdDrawParts.find((p) =>
-      appliesToWeaponType(p.weaponTypes, weapon.weaponType),
+    const part = statsAt(timeMs).find(
+      (m): m is Extract<StatModifier, { stat: "drawHold" }> =>
+        m.stat === "drawHold" &&
+        appliesToWeaponType(m.weaponTypes, weapon.weaponType),
     );
     if (!part) return none;
     const stepMs = requireValue(part.stepMs, "stepMs");

@@ -34,7 +34,7 @@ function testEffect(
     code: 9001,
     shortName: "test",
     providers: [{ kind: "subclass" }],
-    parts: [
+    modifiers: [
       {
         type: "multiplier",
         bucketId: "empowering",
@@ -155,8 +155,8 @@ describe("effect windows", () => {
         effectWindows: { divinity: { startMs: 0, durationMs: 5000 } },
       },
     );
-    const prPart = pr.parts.find((p) => p.type === "multiplier")!;
-    const divinityPart = divinity.parts[0];
+    const prPart = pr.modifiers.find((p) => p.type === "multiplier")!;
+    const divinityPart = divinity.modifiers[0];
     if (prPart.type !== "multiplier" || divinityPart.type !== "multiplier") {
       throw new Error("expected multipliers");
     }

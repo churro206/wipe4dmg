@@ -25,7 +25,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["amplified"]
     }
   },
@@ -49,7 +49,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "melee",
@@ -98,7 +98,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["voidOvershield"]
     }
   },
@@ -122,7 +122,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -183,7 +183,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "appliesKeyword",
           "keywordId": "volatile",
@@ -226,7 +226,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["frostArmor"]
     }
   },
@@ -245,7 +245,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "appliesKeyword",
           "keywordId": "volatile",
@@ -287,7 +287,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -344,7 +344,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["voidOvershield"]
     }
   },
@@ -368,7 +368,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["amplified"]
     }
   },
@@ -387,7 +387,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["solar"] }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["restoration"]
     }
   },
@@ -406,7 +406,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["solar"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "empowering",
@@ -471,7 +471,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["wovenMail"]
     }
   },
@@ -490,7 +490,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "appliesKeyword",
           "keywordId": "volatile",
@@ -532,7 +532,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "appliesKeyword",
           "keywordId": "unravel",
@@ -574,7 +574,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "aspectBonus",
@@ -609,7 +609,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "melee",
@@ -644,7 +644,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "empowering",
@@ -704,7 +704,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -761,7 +761,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "appliesKeyword",
           "keywordId": "jolt",
@@ -793,7 +793,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["restoration"]
     }
   },
@@ -817,7 +817,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["frostArmor"]
     }
   },
@@ -841,7 +841,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["frostArmor"]
     }
   },
@@ -865,7 +865,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["frostArmor"]
     }
   },
@@ -889,7 +889,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["restoration"]
     }
   },
@@ -913,7 +913,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["wovenMail"]
     }
   },
@@ -943,7 +943,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "melee",
@@ -998,7 +998,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["amplified"]
     }
   },
@@ -1022,7 +1022,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "melee",
@@ -1061,7 +1061,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -1117,7 +1117,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["restoration"],
       "durationMs": {
         "value": 3000,
@@ -1151,7 +1151,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["roaringFlames"],
       "durationMs": {
         "value": 20000,
@@ -1185,7 +1185,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "melee",
@@ -1234,7 +1234,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "aspectBonus",
@@ -1284,7 +1284,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["frostArmor"]
     }
   },
@@ -1309,7 +1309,7 @@
         },
         { "kind": "fireteamSupport" }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["restoration"],
       "changesAbilityIds": ["chaos-reach"]
     }
@@ -1334,7 +1334,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["voidOvershield"]
     }
   },
@@ -1353,7 +1353,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["arc"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "melee",
@@ -1397,7 +1397,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["arc"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "appliesKeyword",
           "keywordId": "jolt",
@@ -1434,7 +1434,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["frostArmor"]
     }
   },
@@ -1453,7 +1453,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["strand"] }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "appliesKeyword",
           "keywordId": "unravel",
@@ -1495,7 +1495,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["strand"] }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["wovenMail"]
     }
   },
@@ -1519,7 +1519,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["restoration"],
       "changesAbilityIds": ["fusion-grenade"]
     }
@@ -1544,7 +1544,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -1611,7 +1611,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["voidOvershield"]
     }
   },
@@ -1635,7 +1635,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["wovenMail"]
     }
   },
@@ -1654,7 +1654,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["stasis"] }
       ],
-      "parts": [],
+      "modifiers": [],
       "grantsStatus": ["frostArmor"]
     }
   },
@@ -1678,7 +1678,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "changesAbilityIds": ["blade-barrage"]
     }
   },
@@ -1697,7 +1697,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["strand"] }
       ],
-      "parts": [],
+      "modifiers": [],
       "changesAbilityIds": ["needlestorm", "threadling-grenade"]
     }
   },
@@ -1716,7 +1716,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["arc"] }
       ],
-      "parts": [],
+      "modifiers": [],
       "changesAbilityIds": ["pulse-grenade"]
     }
   },
@@ -1740,7 +1740,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "changesAbilityIds": [
         "axion-bolt-grenade",
         "scatter-grenade",
@@ -1763,7 +1763,7 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
       ],
-      "parts": [],
+      "modifiers": [],
       "changesAbilityIds": ["vortex-grenade"]
     }
   },
@@ -1787,7 +1787,7 @@
           "classes": ["hunter"]
         }
       ],
-      "parts": [],
+      "modifiers": [],
       "changesAbilityIds": ["glacier-grenade", "shatter-grenade"]
     }
   },
@@ -1811,7 +1811,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "periodicDamage",
           "id": "arc-soul",
@@ -1883,7 +1883,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "periodicDamage",
           "id": "hellion",
@@ -1949,7 +1949,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "periodicDamage",
           "id": "ionic-sentry",
@@ -2010,7 +2010,7 @@
           "classes": ["titan"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "periodicDamage",
           "id": "storms-keep",
@@ -2067,7 +2067,7 @@
           "classes": ["warlock"]
         }
       ],
-      "parts": [
+      "modifiers": [
         {
           "type": "periodicDamage",
           "id": "weavers-call",

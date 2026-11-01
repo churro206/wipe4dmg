@@ -15,7 +15,7 @@ const DAMAGE_PHASE_SECONDS = 600;
 const baseTotal = simulate(weapon, DAMAGE_PHASE_SECONDS).totalDamage;
 const byId = (id: string) => effects.find((e) => e.id === id)!;
 const multiplierPartsOf = (effect: Effect) =>
-  effect.parts.filter((p): p is MultiplierPart => p.type === "multiplier");
+  effect.modifiers.filter((p): p is MultiplierPart => p.type === "multiplier");
 const multiplierOf = (effect: Effect) =>
   multiplierPartsOf(effect)[0].multiplier.value!;
 
@@ -32,7 +32,7 @@ function testEffect(
     code: 9001,
     shortName: "test",
     providers: [{ kind: "subclass" }],
-    parts: [
+    modifiers: [
       {
         type: "multiplier",
         bucketId,

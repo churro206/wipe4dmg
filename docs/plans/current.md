@@ -6,7 +6,7 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 Ein Block, je Schritt ein Commit (Inhaber 2026-11-01). Kein Merge. Gate je Commit: Suite, `tsc -b`, `lint`; `scenario-bench.md`, `mechanics-baseline` unverändert (außer Schritt 5). Test zuerst. Lesen: Bauplan 6, `core/*.ts`, `effectParts.ts`.
 
-1. **Modifier:** `Effect.parts` → `Effect.modifiers: Modifier[]` (`parts` heißt im Item-Format Schadensteile). `timing` → `stat reload` (0 = kein Reload, ohne Buchung), `holdDraw` → `stat drawHold`, `counterModifier` → `ActionModifier` (`passiveActionModifiers`, Ausschluss `includedEffectIds` wie heute). Actor liest Stat-Modifier aus Effects und Regeln. Generatoren, `effects.json`, Oberfläche ziehen mit; neu bauen per Skill `nach-patch`.
+1. **Modifier (erledigt 2026-11-01; `appliesKeyword`/`periodicDamage` liegen bis Schritt 3 noch in `Effect.modifiers`, `passiveActionModifiers` ungenutzt, siehe Changelog):** `Effect.parts` → `Effect.modifiers: Modifier[]` (`parts` heißt im Item-Format Schadensteile). `timing` → `stat reload` (0 = kein Reload, ohne Buchung), `holdDraw` → `stat drawHold`, `counterModifier` → `ActionModifier` (`passiveActionModifiers`, Ausschluss `includedEffectIds` wie heute). Actor liest Stat-Modifier aus Effects und Regeln. Generatoren, `effects.json`, Oberfläche ziehen mit; neu bauen per Skill `nach-patch`.
 2. **Effects als Besitzer:** `Effect.rules`/`buffs`, Besitzer mit `activeAt` (Fenster), Regeln feuern nur im Fenster. `hitStacks` → Buff (`perStack` plus `bossFactor` im Bucket, Dauer `refreshMs`) mit `on hit` (weapon, Waffentyp) → `grantBuff`/`addStacks`; `partHitsMs`, `stacksAt` weg. Ändert `on hit` statt Schuss die Baseline: Befund, Rückfrage.
 3. **`appliesKeyword`, `periodicDamage`:** `on hit` → `applyStatus`; `timer.everyMs` + `damage` (Host: `damage`, Ticks im Fenster wie `periodicEvents`). `keywordPartsAt` weg.
 4. **Abilities:** `on cast` an die Regeln, Treffer mit `part` = Komponente; `keywordParts` → Regeln (Loader). `refillsMagazine` → `on cast → refill`, Waffe plant neu (Generation): Fehler aus K2 und `refillsMs` weg; `nextCastFor` fragt die Regel. Gleichstand wie heute.
@@ -15,7 +15,7 @@ Ein Block, je Schritt ein Commit (Inhaber 2026-11-01). Kein Merge. Gate je Commi
 
 ## Stand
 
-- 2026-11-01: B3a fertig (Teil 1, K1–K4, Teil 2 Schritte 1–5; Changelog). Suite 2130 grün.
+- 2026-11-01: B3a fertig (Teil 1, K1–K4, Teil 2 Schritte 1–5; Changelog). B3b Schritt 1 fertig. Suite 2132 grün.
 - B3.0, B2, B1 erledigt. Bauplan (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - Offen ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk auf Still Hunt.
 

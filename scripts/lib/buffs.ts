@@ -368,7 +368,7 @@ function buildEffect(spec: BuffSpec, row: CourtEntry, inputs: BuffInputs, code: 
     ...(spec.elements ? { elements: spec.elements } : {}),
     ...(spec.superElements ? { superElements: spec.superElements } : {}),
   };
-  const parts: Effect["parts"] = [];
+  const parts: Effect["modifiers"] = [];
   if (spec.improves) {
     // "15%->25%": the value after the arrow of each line, for the effects named in the spec
     const lines = pve.split("\n").filter((l) => l.includes("->"));
@@ -401,7 +401,7 @@ function buildEffect(spec: BuffSpec, row: CourtEntry, inputs: BuffInputs, code: 
     shortName: spec.shortName,
     ...(spec.elementIconKey ? { elementIconKey: spec.elementIconKey } : {}),
     providers: spec.providers,
-    parts,
+    modifiers: parts,
     ...(seconds !== undefined
       ? {
           durationMs: {
@@ -453,7 +453,7 @@ function bannerOfWar(inputs: BuffInputs, code: number): Effect {
     code,
     shortName: "Banner of War",
     providers: FIRETEAM,
-    parts: [
+    modifiers: [
       {
         type: "multiplier",
         bucketId: "amplification",
@@ -482,7 +482,7 @@ export function buffEffects(inputs: BuffInputs): { effects: Effect[]; rows: Buff
     .filter((e) => e.category !== "Exotic Intrinsics")
     .map((e) => ({ category: e.category, group: e.group, name: e.name, ...classify(e) }));
   for (const effect of effects) {
-    for (const part of effect.parts) {
+    for (const part of effect.modifiers) {
       if (part.type !== "multiplier") continue;
       for (const id of part.requiresEffectIds ?? []) {
         if (!inputs.existingEffectIds.has(id)) throw new Error(`${effect.id} requires unknown effect ${id}`);

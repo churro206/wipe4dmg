@@ -2,16 +2,15 @@
 
 import {
   CounterId,
+  type ActionModifier,
   type AppliesKeywordPart,
   type Bucket,
-  type CounterModifierPart,
   type DamageSource,
   type Effect,
   type Element,
-  type HoldDrawPart,
   type KeywordId,
   type MultiplierPart,
-  type TimingPart,
+  type StatModifier,
   type Weapon,
   type WeaponType,
 } from "../data/schema";
@@ -24,10 +23,9 @@ export const KEYWORD_COUNTERS: Partial<Record<KeywordId, CounterId>> = {
 
 export type ActiveParts = {
   multiplierParts: MultiplierPart[];
-  timingParts: TimingPart[];
-  counterModifierParts: CounterModifierPart[];
+  statModifiers: StatModifier[];
+  actionModifiers: ActionModifier[];
   keywordParts: AppliesKeywordPart[];
-  holdDrawParts: HoldDrawPart[];
 };
 
 /** What a damage instance is, as far as multiplier parts care. */
@@ -46,33 +44,28 @@ export type DamageTarget = {
 export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
   const bucketIds = new Set(buckets.map((bucket) => bucket.id));
   const multiplierParts: MultiplierPart[] = [];
-  const timingParts: TimingPart[] = [];
-  const counterModifierParts: CounterModifierPart[] = [];
+  const statModifiers: StatModifier[] = [];
+  const actionModifiers: ActionModifier[] = [];
   const keywordParts: AppliesKeywordPart[] = [];
-  const holdDrawParts: HoldDrawPart[] = [];
 
   for (const effect of effects) {
     const overriddenBuckets = new Set(
       effects
         .filter((other) => other.overrides?.includes(effect.id))
-        .flatMap((other) => other.parts)
+        .flatMap((other) => other.modifiers)
         .flatMap((part) => (part.type === "multiplier" ? [part.bucketId] : [])),
     );
-    for (const part of effect.parts) {
-      if (part.type === "timing") {
-        timingParts.push(part);
+    for (const part of effect.modifiers) {
+      if (part.type === "stat") {
+        statModifiers.push(part);
         continue;
       }
-      if (part.type === "counterModifier") {
-        counterModifierParts.push(part);
+      if (part.type === "action") {
+        actionModifiers.push(part);
         continue;
       }
       if (part.type === "appliesKeyword") {
         keywordParts.push(part);
-        continue;
-      }
-      if (part.type === "holdDraw") {
-        holdDrawParts.push(part);
         continue;
       }
       // damage of its own; the simulator reads it from the windows of the effect
@@ -83,13 +76,7 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
       if (!overriddenBuckets.has(part.bucketId)) multiplierParts.push(part);
     }
   }
-  return {
-    multiplierParts,
-    timingParts,
-    counterModifierParts,
-    keywordParts,
-    holdDrawParts,
-  };
+  return { multiplierParts, statModifiers, actionModifiers, keywordParts };
 }
 
 /** A part without weapon types applies to everything; a part with weapon types only to those weapons. */
@@ -122,7 +109,7 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
       }),
     ),
   ]);
-  return effect.parts.some((part) => {
+  return effect.modifiers.some((part) => {
     switch (part.type) {
       case "multiplier":
         // keyword damage of the weapon's own counters, e.g. the ignitions of scorch
@@ -137,15 +124,15 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
             part.elements.includes(weapon.element)) &&
           appliesToWeaponType(part.weaponTypes, weapon.weaponType)
         );
-      case "timing":
-        return appliesToWeaponType(part.weaponTypes, weapon.weaponType);
-      case "holdDraw":
-        return (
-          weapon.ammo === "primary" &&
-          appliesToWeaponType(part.weaponTypes, weapon.weaponType)
-        );
-      case "counterModifier":
-        return counterIds.has(part.counterId);
+      case "stat":
+        return part.stat === "drawHold"
+          ? weapon.ammo === "primary" &&
+              appliesToWeaponType(part.weaponTypes, weapon.weaponType)
+          : appliesToWeaponType(part.weaponTypes, weapon.weaponType);
+      case "action": {
+        const counterId = CounterId.safeParse(part.status);
+        return counterId.success && counterIds.has(counterId.data);
+      }
       case "appliesKeyword":
         return (
           part.damageSources.includes("weapon") &&

@@ -28,7 +28,7 @@ describe("surge levels", () => {
       "surge-3x",
     ]);
     expect(
-      surges.map((e) => (e.parts[0] as MultiplierPart).multiplier.value),
+      surges.map((e) => (e.modifiers[0] as MultiplierPart).multiplier.value),
     ).toEqual([1.1, 1.17, 1.22]);
     for (const surge of surges) {
       expect(surge.providers).toEqual([{ kind: "armor", slot: "mod" }]);
@@ -38,7 +38,7 @@ describe("surge levels", () => {
 
   it("have no element filter and work for a weapon of any element", () => {
     for (const surge of surges) {
-      for (const part of surge.parts) {
+      for (const part of surge.modifiers) {
         expect("elements" in part).toBe(false);
       }
     }

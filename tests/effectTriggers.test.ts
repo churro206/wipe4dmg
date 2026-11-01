@@ -51,7 +51,7 @@ const triggered = (
   code: 9102,
   shortName: "test",
   providers: [{ kind: "fireteamSupport" }],
-  parts: [
+  modifiers: [
     {
       type: "multiplier",
       bucketId: "debuff",
@@ -183,7 +183,7 @@ describe("simulate with triggered effects", () => {
       ...triggered({}),
       trigger: undefined,
       durationMs: undefined,
-      parts: [
+      modifiers: [
         {
           type: "multiplier",
           bucketId: "debuff",

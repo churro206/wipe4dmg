@@ -213,8 +213,8 @@ describe("effects of exotic armor", () => {
       }),
       effects,
     );
-    expect(effect.parts).toMatchObject([
-      { type: "timing", change: "reloadDuration", factor: 0.9 },
+    expect(effect.modifiers).toMatchObject([
+      { type: "stat", stat: "reload", factor: { value: 0.9 } },
     ]);
   });
 });
@@ -226,7 +226,9 @@ describe("simulate: reload duration", () => {
     code: 9003,
     shortName: "test",
     providers: [{ kind: "fireteamSupport" }],
-    parts: [{ type: "timing", change: "reloadDuration", factor, source }],
+    modifiers: [
+      { type: "stat", stat: "reload", factor: { value: factor, source } },
+    ],
   });
   const magazine = weapon.magazine.value!;
   const reloadGap = (selected: Effect[]) => {
@@ -271,7 +273,7 @@ describe("simulate: weapon matches super element", () => {
     code: 9004,
     shortName: "test",
     providers: [{ kind: "fireteamSupport" }],
-    parts: [
+    modifiers: [
       {
         type: "multiplier",
         bucketId: "surge",

@@ -19,7 +19,7 @@ const turret: Effect = {
   code: 9999,
   shortName: "Tur",
   providers: [{ kind: "subclass", slot: "aspect" }],
-  parts: [
+  modifiers: [
     {
       type: "periodicDamage",
       id: "turret",
@@ -41,7 +41,7 @@ const multiplier = (
   code: 9998,
   shortName: id,
   providers: [{ kind: "armor", slot: "mod" }],
-  parts: [
+  modifiers: [
     { type: "multiplier", bucketId, multiplier: sourced(value), damageSources },
   ],
 });

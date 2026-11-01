@@ -19,9 +19,10 @@ const holder: Effect = {
   code: 9998,
   shortName: "Hld",
   providers: [{ kind: "armor", slot: "exotic" }],
-  parts: [
+  modifiers: [
     {
-      type: "holdDraw",
+      type: "stat",
+      stat: "drawHold",
       weaponTypes: ["bow"],
       stepMs: sourced(500),
       stepFactor: sourced(1.375), // +37.5 % per step

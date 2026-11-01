@@ -73,9 +73,12 @@ export function simulate(
     damagePhaseSeconds,
     abilities: options.abilities ?? [],
     superWindows,
-    partsAt,
-    // The rules come after the actor and need it (refill); they are asked only once a shot is planned
-    statModifiersAt: (timeMs) => ruleEngine.statModifiersAt(weapon.id, timeMs),
+    // The rules come after the actor and need it (refill); they are asked only once a shot is planned.
+    // Stat modifiers of the active effects come first, so a rule's rate is the latest.
+    statModifiersAt: (timeMs) => [
+      ...partsAt(timeMs).statModifiers,
+      ...ruleEngine.statModifiersAt(weapon.id, timeMs),
+    ],
   });
   const { isInPhase } = actor;
 
@@ -490,7 +493,7 @@ export function simulate(
   }
   // Damage of its own at a fixed rate in each window of its effect, e.g. Storm's Keep.
   for (const effect of effects) {
-    for (const part of effect.parts) {
+    for (const part of effect.modifiers) {
       if (part.type !== "periodicDamage") continue;
       events.push(
         ...periodicEvents(

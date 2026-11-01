@@ -8,7 +8,7 @@
       "code": 863908533,
       "shortName": "Blight Ranger",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -52,7 +52,7 @@
       "code": 3545094011,
       "shortName": "Chromatic Fire",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -98,7 +98,7 @@
       "code": 3261527845,
       "shortName": "Contraverse Hold",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -149,7 +149,7 @@
       "code": 2002759682,
       "shortName": "Doom Fang Pauldron",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -188,7 +188,7 @@
       "code": 3692827145,
       "shortName": "Eternal Warrior",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -227,7 +227,7 @@
       "code": 3692827145,
       "shortName": "Eternal Warrior",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -271,7 +271,7 @@
       "code": 728668916,
       "shortName": "Felwinter's Helm",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -317,7 +317,7 @@
       "code": 671504994,
       "shortName": "Foetracer",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -357,7 +357,7 @@
       "code": 4010324161,
       "shortName": "Fortune's Favor",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -385,7 +385,7 @@
       "code": 1737050140,
       "shortName": "Fr0st-EE5",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -414,7 +414,7 @@
       "code": 1168370783,
       "shortName": "Gwisin Vest",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -464,7 +464,7 @@
       "code": 2447096246,
       "shortName": "Gyrfalcon's Hauberk",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "empowering",
@@ -502,7 +502,7 @@
       "code": 2094927311,
       "shortName": "Hallowfire Heart",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -541,7 +541,7 @@
       "code": 3050442980,
       "shortName": "Hazardous Propulsion",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "empowering",
@@ -580,7 +580,7 @@
       "code": 4002939008,
       "shortName": "Khepri's Sting",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -625,7 +625,7 @@
       "code": 2405271939,
       "shortName": "Lucky Pants",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -686,7 +686,7 @@
       "code": 2732820041,
       "shortName": "Mantle of Battle Harmony",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -726,7 +726,7 @@
       "code": 2732820041,
       "shortName": "Mantle of Battle Harmony",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -765,7 +765,7 @@
       "code": 508515818,
       "shortName": "Mask of Bakris",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "amplification",
@@ -809,7 +809,7 @@
       "code": 730200061,
       "shortName": "No Backup Plans",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "empowering",
@@ -845,9 +845,10 @@
       "code": 3883286571,
       "shortName": "Oathkeeper",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
-          "type": "holdDraw",
+          "type": "stat",
+          "stat": "drawHold",
           "weaponTypes": ["bow"],
           "stepMs": {
             "value": 500,
@@ -892,7 +893,7 @@
       "code": 53126580,
       "shortName": "Peacekeepers",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -953,7 +954,7 @@
       "code": 2966741808,
       "shortName": "Sanguine Alchemy",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -997,7 +998,7 @@
       "code": 3987871714,
       "shortName": "Sealed Ahamkara Grasps",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "empowering",
@@ -1035,7 +1036,7 @@
       "code": 4268030601,
       "shortName": "Second Chance",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "debuff",
@@ -1085,7 +1086,7 @@
       "code": 3573490511,
       "shortName": "Spirit of the Eternal Warrior",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -1124,7 +1125,7 @@
       "code": 3751917997,
       "shortName": "Spirit of the Foetracer",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "surge",
@@ -1164,7 +1165,7 @@
       "code": 1476923955,
       "shortName": "Spirit of the Star-Eater",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -1247,7 +1248,7 @@
       "code": 1476923957,
       "shortName": "Spirit of Verity",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -1285,7 +1286,7 @@
       "code": 1006498763,
       "shortName": "Star-Eater Scales",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -1368,7 +1369,7 @@
       "code": 4119704973,
       "shortName": "The Path of Burning Steps",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "amplification",
@@ -1398,7 +1399,7 @@
       "code": 2553961985,
       "shortName": "Verity's Brow",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -1436,7 +1437,7 @@
       "code": 1203306856,
       "shortName": "Wormgod Caress",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "empowering",
@@ -1474,7 +1475,7 @@
       "code": 3721047650,
       "shortName": "Wormhusk Crown",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",
@@ -1513,7 +1514,7 @@
       "code": 3767088557,
       "shortName": "Dawn Chorus",
       "providers": [{ "kind": "armor", "slot": "exotic" }],
-      "parts": [
+      "modifiers": [
         {
           "type": "multiplier",
           "bucketId": "exoticIntrinsic",

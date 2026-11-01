@@ -66,7 +66,7 @@ export function aegisCoverage(input: CoverageInput): CoverageRow[] {
     );
   const ownDamage = new Map(
     input.effects
-      .filter((e) => e.parts.some((p) => p.type === "periodicDamage"))
+      .filter((e) => e.modifiers.some((p) => p.type === "periodicDamage"))
       .map((e) => [norm(e.name), e]),
   );
   const entryOf = new Map(input.probe.entries.map((e) => [e.aegisId, e]));

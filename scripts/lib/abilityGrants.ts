@@ -88,7 +88,7 @@ export function abilityGrants(inputs: GrantInputs): { grants: AbilityGrant[]; ro
 }
 
 const bucketsOf = (effect: Effect | undefined): string[] =>
-  (effect?.parts ?? []).flatMap((p) => (p.type === "multiplier" ? [p.bucketId] : []));
+  (effect?.modifiers ?? []).flatMap((p) => (p.type === "multiplier" ? [p.bucketId] : []));
 
 function linesOf(ability: AbilityData, line: string, inputs: GrantInputs): GrantRow[] {
   const base = { abilityId: ability.id, abilityName: ability.name, line };

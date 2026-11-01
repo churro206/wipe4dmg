@@ -40,7 +40,7 @@ describe("breakdown", () => {
       selected,
       buckets,
     );
-    const well = selected.find((e) => e.id === "well-of-radiance")!.parts[0];
+    const well = selected.find((e) => e.id === "well-of-radiance")!.modifiers[0];
     if (well.type !== "multiplier") throw new Error("expected multiplier");
     expect(empowering.multiplier).toBe(well.multiplier.value);
   });
@@ -66,7 +66,7 @@ describe("breakdown", () => {
     );
     const timingOnly = particleReconstruction.map((e) => ({
       ...e,
-      parts: e.parts.filter((p) => p.type !== "multiplier"),
+      modifiers: e.modifiers.filter((p) => p.type !== "multiplier"),
     }));
     expect(debuff.totalDamageWithout).toBeCloseTo(
       simulate(weapon, DAMAGE_PHASE_SECONDS, timingOnly, buckets).totalDamage,

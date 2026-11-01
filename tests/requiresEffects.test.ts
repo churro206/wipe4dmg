@@ -22,7 +22,7 @@ const debuff = (id: string, multiplier: number, requires?: string[]): Effect => 
   code: 9301 + id.length,
   shortName: id,
   providers: [{ kind: "fireteamSupport" }],
-  parts: [
+  modifiers: [
     {
       type: "multiplier",
       bucketId: "debuff",

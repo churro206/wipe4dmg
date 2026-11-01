@@ -272,7 +272,9 @@ export function timingImpact(
     (e) => e.id === assumptionClass.effectId || normalize(e.name) === key,
   );
   if (effect)
-    return effect.parts.some((part) => part.type === "timing")
+    return effect.modifiers.some(
+      (part) => part.type === "stat" && part.stat === "reload",
+    )
       ? "timing"
       : "neutral";
   const texts = [
