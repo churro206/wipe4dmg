@@ -49,7 +49,7 @@ Prüfstand (`tests/scenarios/`, `tests/scenarioBench.test.ts`, 26 von 30, Verhä
 
 Zu beachten: Gleichstände wie heute (Schuss vor Treffern; Hierarchy: Schuss genau beim Ablauf baut neu auf); `stacksAt` zählt heute Schüsse zur Schusszeit und Treffer der N-ten Teile zur Trefferzeit; Grenze des Catalyst-Fensters heute einschließlich (`<=`); Reload-Faktor 0 bucht keinen Reload (wie `noReload`). Ein Treffer gilt als Präzisionstreffer, wenn sein Teil `canPrecision` hat.
 
-**B3a Stand (2026-10-31):** Teil 1 erledigt (Schritte 1, 2, 4 und der Kern-Teil von 3: Regeln und Status im Kern, `Weapon.rules`/`buffs`, Golden Polaris). Teil 2 (Rest von Schritt 3: der Import schreibt die Regeln, die Sonderfelder der Waffe fallen weg) in `docs/plans/current.md`. Weaken als Status-Definition mit `modifiers` (Schritt 2) kommt mit seinem ersten Nutzer in B3b.
+**B3a Stand (2026-10-31):** Teil 1 erledigt (Schritte 1, 2, 4 und der Kern-Teil von 3: Regeln und Status im Kern, `Weapon.rules`/`buffs`, Golden Polaris). Teil 2 (Rest von Schritt 3: der Import schreibt die Regeln, die Sonderfelder der Waffe fallen weg) in `docs/plans/current.md`. Vorher Korrekturen K1–K4 (ebenda): Teil 1 wich vom Bauplan ab (Auswertung der Bedingungen, `refill` im Golden-Test, Zeiten von `spawn`, Weaken).
 
 **B3b – Effects und Abilities (Sonnet, ein Block):**
 

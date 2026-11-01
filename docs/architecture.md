@@ -151,7 +151,7 @@ rules:
     do: [ applyStatus { status: scorch, stacks: $clarity.scorch } ]   # 40, mit Ember of Ashes 60
 ```
 
-Die Regeln eines Ereignisses laufen in Dateireihenfolge, und eine spätere Regel sieht, was eine frühere getan hat (B3a, `tests/rules.test.ts`). Deshalb zählt die erste Regel jeden Treffer und die zweite zündet bei 5; die erste Fassung (zählen bis 4, zünden bei 4) hätte jeden vierten Treffer gezündet. `tests/polarisGolden.test.ts` belegt die Fassung gegen Abschnitt 11 und gegen den bisherigen Weg.
+Hinweis (Befund 2026-11-01): Dieses Beispiel ist in B3a Teil 1 irrtümlich geändert worden (zählen immer, zünden bei 5). Es gilt das Original (`counter fifth < 4` zählt, `= 4` zündet), weil alle Regeln eines Ereignisses den Zustand vor dem Ereignis sehen; Rücknahme mit Korrektur K1 (`docs/plans/current.md`).
 
 ## 6 Regeln: Auslöser, Bedingungen, Aktionen
 
