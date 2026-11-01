@@ -219,11 +219,14 @@ describe("weapons with scorch (ADR 0015, U4a-4)", () => {
 
   it("apply scorch per shot: x60 from the text, x90 from 9 explosions (override)", () => {
     const stacks = (weapon: Weapon) =>
-      weapon.intrinsicParts.flatMap((p) =>
-        p.type === "appliesKeyword" ? [[p.keywordId, value(p.stacks!)]] : [],
+      weapon.rules!.flatMap((r) =>
+        r.do.flatMap((a) =>
+          a.type === "applyStatus" ? [[a.status, value(a.stacks!)]] : [],
+        ),
       );
-    expect(stacks(fox)).toEqual([["ignition", 60]]);
-    expect(stacks(otv)).toEqual([["ignition", 90]]);
+    expect(stacks(fox)).toEqual([["scorch", 60]]);
+    expect(stacks(otv)).toEqual([["scorch", 90]]);
+    expect(otv.intrinsicParts.filter((p) => (p.type as string) === "appliesKeyword")).toEqual([]);
   });
 
   it("take the ignition bonus of One Thousand Voices from its text", () => {

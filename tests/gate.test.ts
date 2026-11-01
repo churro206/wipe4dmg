@@ -49,9 +49,16 @@ describe("gate: total damage", () => {
     (_, reference) => {
       const scenario = reference.scenario!;
       const weapon = weaponById(reference.weaponId);
+      // Shots only: without the intrinsic parts and the scorch the weapon applies by its rules
       const scenarioWeapon = scenario.withIntrinsicParts
         ? weapon
-        : { ...weapon, intrinsicParts: [] };
+        : {
+            ...weapon,
+            intrinsicParts: [],
+            rules: weapon.rules?.filter(
+              (rule) => !rule.do.some((action) => action.type === "applyStatus"),
+            ),
+          };
       const { damageInstances } = simulate(
         scenarioWeapon,
         scenario.damagePhaseSeconds,

@@ -13,6 +13,7 @@ import { AegisAbilityRow, Weapon, type Rule } from "../src/data/schema";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate } from "../src/engine/simulate";
+import { statusOnHitRules } from "../scripts/lib/partRules";
 import { testWeapon, withPartRules } from "./support/testWeapon";
 
 const source = {
@@ -96,17 +97,17 @@ const legacy: Weapon = withPartRules(Weapon.parse({
       everyNthShot: n(5),
     },
   ],
-  intrinsicParts: [
-    {
-      type: "appliesKeyword",
-      keywordId: "ignition",
-      damageSources: ["weapon"],
-      damageInstanceIds: ["perfect-fifth"],
-      stacks: n(40),
-      source,
-    },
-  ],
 }));
+legacy.rules = [
+  ...legacy.rules!,
+  ...statusOnHitRules({
+    id: "scorch",
+    status: "scorch",
+    stacks: n(40),
+    parts: ["perfect-fifth"],
+    source,
+  }),
+];
 
 const run = (weapon: Weapon, seconds: number, withEmber: boolean) =>
   simulate(weapon, seconds, withEmber ? [ember] : [], buckets, { keywords });

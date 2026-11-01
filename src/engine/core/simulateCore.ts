@@ -143,7 +143,7 @@ export function simulate(
     keywords: options.keywords ?? [],
     modifierStatuses: options.statusModifiers ?? [],
     keywordPartsAt: (timeMs) => [
-      ...context.weaponKeywordParts,
+      ...context.abilityKeywordParts,
       ...partsAt(timeMs).keywordParts,
     ],
     multiplierAt: context.keywordMultiplierAt,

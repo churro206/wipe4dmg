@@ -308,12 +308,14 @@ export const AppliesKeywordPart = z.object({
 });
 export type AppliesKeywordPart = z.infer<typeof AppliesKeywordPart>;
 
-/** Fixed parts of a weapon that work without any selected effect, e.g. scorch from explosions. */
+/**
+ * Fixed parts of a weapon that work without any selected effect. The scorch of its explosions is
+ * a rule of the weapon (`on hit → applyStatus`), not a part.
+ */
 export const IntrinsicPart = z.discriminatedUnion("type", [
   CounterPart,
   ThresholdPart,
   DamageOverTimePart,
-  AppliesKeywordPart,
 ]);
 export type IntrinsicPart = z.infer<typeof IntrinsicPart>;
 
@@ -1539,7 +1541,8 @@ export const ReferenceValue = z.object({
     .object({
       effectIds: z.array(z.string()),
       damagePhaseSeconds: z.number().nonnegative(),
-      withIntrinsicParts: z.boolean(), // false: shots only, e.g. "without ignition"
+      // false: shots only, e.g. "without ignition" (no intrinsic parts, no rule that applies a status)
+      withIntrinsicParts: z.boolean(),
     })
     .optional(),
   source: Source,

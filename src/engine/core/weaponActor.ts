@@ -140,7 +140,11 @@ export function createWeaponActor(input: ActorInput) {
     const shotIntervalMs = shotIntervalMsAt(timeMs);
     if (weapon.ammo !== "primary") return none;
     // Keyword damage per shot cannot be weighed by the rate below (see simulate.ts).
-    if (weapon.intrinsicParts.some((p) => p.type === "appliesKeyword"))
+    if (
+      weapon.rules?.some((rule) =>
+        rule.do.some((action) => action.type === "applyStatus"),
+      )
+    )
       return none;
     const part = partsAt(timeMs).holdDrawParts.find((p) =>
       appliesToWeaponType(p.weaponTypes, weapon.weaponType),

@@ -9,7 +9,9 @@ import type {
   Condition,
   DamageInstance,
   Rule,
+  Source,
   SourcedNumber,
+  TargetStatusId,
   WeaponOption,
 } from "../../src/data/schema.ts";
 
@@ -160,6 +162,30 @@ export function catalystWindowRules(
       },
     ],
   };
+}
+
+/**
+ * Hits of the weapon that apply a status (scorch from explosions): `on hit → applyStatus`. With
+ * `parts` the hits of these parts apply it (one rule each), else every hit of the weapon does.
+ */
+export function statusOnHitRules(input: {
+  id: string; // prefix of the rule ids
+  status: TargetStatusId;
+  stacks: SourcedNumber;
+  parts?: string[];
+  source?: Source;
+}): Rule[] {
+  const { id, status, stacks, parts, source } = input;
+  const apply = [{ type: "applyStatus" as const, status, stacks }];
+  const rule = (ruleId: string, on: Rule["on"]): Rule => ({
+    id: ruleId,
+    on,
+    do: apply,
+    ...(source ? { source } : {}),
+  });
+  return parts
+    ? parts.map((part) => rule(`${id}-${part}`, { on: "hit", part }))
+    : [rule(id, { on: "hit", filter: { damageSources: ["weapon"] } })];
 }
 
 /** The rate of a playstyle: a stat modifier from the start of the phase on, only in that playstyle. */

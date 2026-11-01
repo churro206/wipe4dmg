@@ -110,7 +110,6 @@ const SPECIAL_FIELDS = [
   "IntrinsicPart.counter",
   "IntrinsicPart.threshold",
   "IntrinsicPart.damageOverTime",
-  "IntrinsicPart.appliesKeyword",
 ];
 
 // B3a removes the weapon side, B3b the effect and ability side; empty at the end of B3.

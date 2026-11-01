@@ -8750,29 +8750,7 @@
         "requiresCatalyst": false
       }
     ],
-    "intrinsicParts": [
-      {
-        "type": "appliesKeyword",
-        "keywordId": "ignition",
-        "damageSources": ["weapon"],
-        "damageInstanceIds": ["setupHits", "setupHits-two-rings"],
-        "stacks": {
-          "value": 15,
-          "source": {
-            "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %).; Scorch per hit before Ember of Ashes"
-          }
-        },
-        "source": {
-          "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
-          "retrieved": "2026-10-20",
-          "status": "unverified",
-          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
-        }
-      }
-    ],
+    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "guidance-ring",
@@ -8894,6 +8872,56 @@
             }
           }
         ]
+      },
+      {
+        "id": "scorch-setupHits",
+        "on": { "on": "hit", "part": "setupHits" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 15,
+              "source": {
+                "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %).; Scorch per hit before Ember of Ashes"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+          "retrieved": "2026-10-20",
+          "status": "unverified",
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+        }
+      },
+      {
+        "id": "scorch-setupHits-two-rings",
+        "on": { "on": "hit", "part": "setupHits-two-rings" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 15,
+              "source": {
+                "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %).; Scorch per hit before Ember of Ashes"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+          "retrieved": "2026-10-20",
+          "status": "unverified",
+          "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+        }
       },
       {
         "id": "guidance-ring-pre-stacked",
@@ -12303,31 +12331,7 @@
         "requiresCatalyst": false
       }
     ],
-    "intrinsicParts": [
-      {
-        "type": "appliesKeyword",
-        "keywordId": "ignition",
-        "damageSources": ["weapon"],
-        "stacks": {
-          "value": 90,
-          "source": {
-            "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
-            "url": "https://destiny2.science/data-compendium",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "quote": "inflicting x10+5 Scorch",
-            "note": "Per shot: Der Text nennt Scorch pro Explosion; ein Shot hat 9 Explosionen à x10, also x90 pro Shot."
-          }
-        },
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "quote": "inflicting x10+5 Scorch"
-        }
-      }
-    ],
+    "intrinsicParts": [],
     "keywordBonuses": [
       {
         "keywordId": "ignition",
@@ -12387,6 +12391,34 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "scorch",
+        "on": { "on": "hit", "filter": { "damageSources": ["weapon"] } },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 90,
+              "source": {
+                "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-20",
+                "status": "verified",
+                "quote": "inflicting x10+5 Scorch",
+                "note": "Per shot: Der Text nennt Scorch pro Explosion; ein Shot hat 9 Explosionen à x10, also x90 pro Shot."
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (One Thousand Voices)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "quote": "inflicting x10+5 Scorch"
+        }
       }
     ]
   },
@@ -13087,29 +13119,7 @@
         "requiresCatalyst": false
       }
     ],
-    "intrinsicParts": [
-      {
-        "type": "appliesKeyword",
-        "keywordId": "ignition",
-        "damageSources": ["weapon"],
-        "damageInstanceIds": ["nthShot"],
-        "stacks": {
-          "value": 40,
-          "source": {
-            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %.; Scorch per hit before Ember of Ashes"
-          }
-        },
-        "source": {
-          "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-          "retrieved": "2026-10-20",
-          "status": "unverified",
-          "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-        }
-      }
-    ],
+    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "the-perfect-fifth",
@@ -13190,6 +13200,31 @@
             }
           }
         ]
+      },
+      {
+        "id": "scorch-nthShot",
+        "on": { "on": "hit", "part": "nthShot" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 40,
+              "source": {
+                "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %.; Scorch per hit before Ember of Ashes"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+          "retrieved": "2026-10-20",
+          "status": "unverified",
+          "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+        }
       }
     ]
   },
@@ -20630,31 +20665,7 @@
         "requiresCatalyst": false
       }
     ],
-    "intrinsicParts": [
-      {
-        "type": "appliesKeyword",
-        "keywordId": "ignition",
-        "damageSources": ["weapon"],
-        "stacks": {
-          "value": 60,
-          "source": {
-            "name": "Destiny Data Compendium, Exotic Weapons (Two-Tailed Fox)",
-            "url": "https://destiny2.science/data-compendium",
-            "retrieved": "2026-10-20",
-            "status": "verified",
-            "quote": "inflicts x60+30 Scorch",
-            "note": "Base stacks before Ember of Ashes"
-          }
-        },
-        "source": {
-          "name": "Destiny Data Compendium, Exotic Weapons (Two-Tailed Fox)",
-          "url": "https://destiny2.science/data-compendium",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "quote": "inflicts x60+30 Scorch"
-        }
-      }
-    ],
+    "intrinsicParts": [],
     "intrinsics": [
       {
         "id": "twintails",
@@ -20673,6 +20684,34 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "scorch",
+        "on": { "on": "hit", "filter": { "damageSources": ["weapon"] } },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 60,
+              "source": {
+                "name": "Destiny Data Compendium, Exotic Weapons (Two-Tailed Fox)",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-20",
+                "status": "verified",
+                "quote": "inflicts x60+30 Scorch",
+                "note": "Base stacks before Ember of Ashes"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Destiny Data Compendium, Exotic Weapons (Two-Tailed Fox)",
+          "url": "https://destiny2.science/data-compendium",
+          "retrieved": "2026-10-20",
+          "status": "verified",
+          "quote": "inflicts x60+30 Scorch"
+        }
       }
     ]
   },

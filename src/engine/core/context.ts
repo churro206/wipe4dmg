@@ -298,15 +298,11 @@ export function createContext(
       ...(keywordBonus !== 1 ? { keywordBonus } : {}),
     };
   };
-  // Keyword parts of the weapon and of the abilities in the build are always active (ADR 0015).
-  const weaponKeywordParts = [
-    ...weapon.intrinsicParts.filter(
-      (part): part is AppliesKeywordPart => part.type === "appliesKeyword",
-    ),
-    ...(options.abilities ?? []).flatMap(
-      (cast) => cast.ability.keywordParts ?? [],
-    ),
-  ];
+  // Keyword parts of the abilities in the build are always active (ADR 0015); those of the weapon
+  // are rules (`on hit → applyStatus`).
+  const abilityKeywordParts: AppliesKeywordPart[] = (
+    options.abilities ?? []
+  ).flatMap((cast) => cast.ability.keywordParts ?? []);
 
   return {
     catalyst,
@@ -318,7 +314,7 @@ export function createContext(
     multiplierAt,
     counterFactorAt,
     keywordMultiplierAt,
-    weaponKeywordParts,
+    abilityKeywordParts,
   };
 }
 

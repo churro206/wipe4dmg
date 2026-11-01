@@ -36,6 +36,7 @@ import {
   playstyleRateRule,
   SETUP_UP,
   setupRules,
+  statusOnHitRules,
 } from "./partRules.ts";
 import { catalystReloadFactor, reloadFormulaOf } from "./reloadFormulas.ts";
 import {
@@ -2099,62 +2100,7 @@ export function buildWeaponImport(
               }))
           : []),
       ],
-      intrinsicParts: [
-        ...(nthRule?.scorchPerHit
-          ? [
-              {
-                type: "appliesKeyword" as const,
-                keywordId: "ignition" as const,
-                damageSources: ["weapon" as const],
-                damageInstanceIds: [NTH_SHOT_ID],
-                stacks: {
-                  value: nthRule.scorchPerHit,
-                  source: setupSource("Scorch per hit before Ember of Ashes"),
-                },
-                source: setupSource(),
-              },
-            ]
-          : []),
-        ...(setupRule?.scorchPerHit
-          ? [
-              {
-                type: "appliesKeyword" as const,
-                keywordId: "ignition" as const,
-                damageSources: ["weapon" as const],
-                damageInstanceIds: [
-                  SETUP_HITS_ID,
-                  ...(setupRule.playstyle
-                    ? [`${SETUP_HITS_ID}-${setupRule.playstyle.id}`]
-                    : []),
-                ],
-                stacks: {
-                  value: setupRule.scorchPerHit,
-                  source: setupSource("Scorch per hit before Ember of Ashes"),
-                },
-                source: setupSource(),
-              },
-            ]
-          : []),
-        ...(scorch
-          ? [
-              {
-                type: "appliesKeyword" as const,
-                keywordId: "ignition" as const,
-                damageSources: ["weapon" as const],
-                stacks: {
-                  value: scorch.stacksPerShot,
-                  source: scorchSource(
-                    scorch.quote,
-                    override?.scorchStacksPerShot
-                      ? `Per shot: ${override.reason}`
-                      : "Base stacks before Ember of Ashes",
-                  ),
-                },
-                source: scorchSource(scorch.quote),
-              },
-            ]
-          : []),
-      ],
+      intrinsicParts: [],
       ...(scorch?.bonus
         ? {
             keywordBonuses: [
@@ -2293,6 +2239,53 @@ export function buildWeaponImport(
           : [],
       ),
       ...windows.flatMap(({ rules }) => rules),
+      // Scorch from explosions: `on hit → applyStatus`, before Ember of Ashes (the hits of a part of
+      // the nth shot or of a setup, and every hit of the weapon)
+      ...(nthRule?.scorchPerHit
+        ? statusOnHitRules({
+            id: "scorch",
+            status: "scorch",
+            stacks: {
+              value: nthRule.scorchPerHit,
+              source: setupSource("Scorch per hit before Ember of Ashes"),
+            },
+            parts: [NTH_SHOT_ID],
+            source: setupSource(),
+          })
+        : []),
+      ...(setupRule?.scorchPerHit
+        ? statusOnHitRules({
+            id: "scorch",
+            status: "scorch",
+            stacks: {
+              value: setupRule.scorchPerHit,
+              source: setupSource("Scorch per hit before Ember of Ashes"),
+            },
+            parts: [
+              SETUP_HITS_ID,
+              ...(setupRule.playstyle
+                ? [`${SETUP_HITS_ID}-${setupRule.playstyle.id}`]
+                : []),
+            ],
+            source: setupSource(),
+          })
+        : []),
+      ...(scorch
+        ? statusOnHitRules({
+            id: "scorch",
+            status: "scorch",
+            stacks: {
+              value: scorch.stacksPerShot,
+              source: scorchSource(
+                scorch.quote,
+                override?.scorchStacksPerShot
+                  ? `Per shot: ${override.reason}`
+                  : "Base stacks before Ember of Ashes",
+              ),
+            },
+            source: scorchSource(scorch.quote),
+          })
+        : []),
       // A setup the shots build and deploy: a counter and a mode (the hits of the setup are above)
       ...(setupRule
         ? setupRules({

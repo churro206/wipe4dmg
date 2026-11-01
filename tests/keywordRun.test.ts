@@ -17,6 +17,7 @@ import { effectAppliesToWeapon } from "../src/engine/effectParts";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate, type SimulationOptions } from "../src/engine/simulate";
+import { statusOnHitRules } from "../scripts/lib/partRules";
 import { testWeapon } from "./support/testWeapon";
 
 const buckets = loadBuckets(rawBuckets);
@@ -258,14 +259,14 @@ describe("bolt charge", () => {
 describe("keywords of a weapon", () => {
   const scorchWeapon = (bonus?: number) => ({
     ...quick,
-    intrinsicParts: [
-      {
-        type: "appliesKeyword" as const,
-        keywordId: "ignition" as const,
-        damageSources: ["weapon" as const],
+    rules: [
+      ...(quick.rules ?? []),
+      ...statusOnHitRules({
+        id: "scorch",
+        status: "scorch",
         stacks: { value: 40, source },
         source,
-      },
+      }),
     ],
     ...(bonus
       ? {
@@ -313,14 +314,14 @@ describe("weapon options and keyword damage", () => {
   it("a catalyst factor stays with the shots and does not scale the ignitions", () => {
     const scorched = {
       ...weapon,
-      intrinsicParts: [
-        {
-          type: "appliesKeyword" as const,
-          keywordId: "ignition" as const,
-          damageSources: ["weapon" as const],
+      rules: [
+        ...(weapon.rules ?? []),
+        ...statusOnHitRules({
+          id: "scorch",
+          status: "scorch",
           stacks: { value: 100, source },
           source,
-        },
+        }),
       ],
       options: [
         {

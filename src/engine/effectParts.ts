@@ -1,19 +1,19 @@
 // Effect parts (ADR 0006): splitting by type, overrides and the multiplier per bucket.
 
-import type {
-  AppliesKeywordPart,
-  Bucket,
+import {
   CounterId,
-  CounterModifierPart,
-  DamageSource,
-  Effect,
-  Element,
-  HoldDrawPart,
-  KeywordId,
-  MultiplierPart,
-  TimingPart,
-  Weapon,
-  WeaponType,
+  type AppliesKeywordPart,
+  type Bucket,
+  type CounterModifierPart,
+  type DamageSource,
+  type Effect,
+  type Element,
+  type HoldDrawPart,
+  type KeywordId,
+  type MultiplierPart,
+  type TimingPart,
+  type Weapon,
+  type WeaponType,
 } from "../data/schema";
 import { requireValue } from "./requireValue";
 
@@ -109,16 +109,19 @@ export function appliesToWeaponType(
  * of the weapon (e.g. Ember of Ashes needs scorch), or a keyword its hits apply.
  */
 export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
-  const counterIds = new Set(
-    weapon.intrinsicParts.flatMap((part) => {
-      if (part.type === "damageOverTime") return [];
-      if (part.type === "appliesKeyword") {
-        const counterId = KEYWORD_COUNTERS[part.keywordId];
-        return counterId ? [counterId] : [];
-      }
-      return [part.counterId];
-    }),
-  );
+  // Counters the weapon fills: its counter parts and the statuses its rules apply (scorch)
+  const counterIds = new Set<CounterId>([
+    ...weapon.intrinsicParts.flatMap((part) =>
+      part.type === "damageOverTime" ? [] : [part.counterId],
+    ),
+    ...(weapon.rules ?? []).flatMap((rule) =>
+      rule.do.flatMap((action) => {
+        if (action.type !== "applyStatus") return [];
+        const counterId = CounterId.safeParse(action.status);
+        return counterId.success ? [counterId.data] : [];
+      }),
+    ),
+  ]);
   return effect.parts.some((part) => {
     switch (part.type) {
       case "multiplier":
