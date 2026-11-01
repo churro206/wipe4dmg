@@ -1,0 +1,16 @@
+[
+  {
+    "id": "sustained-xenophage",
+    "tab": "sustained",
+    "aegisRow": "sustained-xenophage",
+    "wipe": 67645,
+    "system": "base",
+    "build": {
+      "weaponId": "xenophage",
+      "effectIds": ["surge-3x", "lumina-noble-rounds", "tractor-cannon"],
+      "weaponsStat": 200
+    },
+    "playstyle": [],
+    "note": "Aegis standard factors (surge x3, Lumina, Tractor Cannon) as switches, Weapons stat 200, as tests/lib/probe.ts. Gesamtprobe: 67,645 (1.000)."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "abilities-gathering-storm",
+    "tab": "abilities",
+    "aegisRow": "super-gathering-storm",
+    "wipe": 7206.957,
+    "system": "base",
+    "build": {
+      "weaponId": "one-thousand-voices",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "abilityId": "gathering-storm",
+      "abilityStat": 100
+    },
+    "playstyle": [],
+    "note": "Damage per use at stat 100: difference with and without the cast, burn not counted."
+  }
+]

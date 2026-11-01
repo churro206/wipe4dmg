@@ -1,0 +1,19 @@
+[
+  {
+    "id": "swap-gathering-storm-limit-break",
+    "tab": "swap",
+    "aegisRow": "swap-gathering-storm-limit-break",
+    "wipe": 14122,
+    "system": "base",
+    "build": {
+      "weaponId": "one-thousand-voices",
+      "guardianClass": "hunter",
+      "subclass": "arc",
+      "abilityId": "gathering-storm",
+      "abilityStat": 200,
+      "effectIds": ["tractor-cannon", "limit-break"]
+    },
+    "playstyle": ["Limit Break"],
+    "note": "Limit Break is a switch (effects.json), not taken out of the Aegis total. Gesamtprobe: 12,866 without Limit Break (1.048)."
+  }
+]

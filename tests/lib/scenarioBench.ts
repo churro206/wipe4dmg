@@ -7,9 +7,10 @@
 // check set (I10) count. Key figure: delta pairs (I11), then rank, absolute values are information.
 
 import { z } from "zod";
-import type { Build } from "../../src/data/schema";
+import { GuardianClass, Subclass, type Build } from "../../src/data/schema";
+import { fitArtifact } from "../../src/engine/artifacts";
 import { buildSimulation } from "../../src/engine/buildSimulation";
-import { simulate } from "../../src/engine/simulate";
+import { simulate, type SimulationResult } from "../../src/engine/simulate";
 import { buckets, effects, exoticArmor, gameData, weapons } from "../../src/ui/data";
 import { deltaPairs, spearman, type DeltaPair, type Item } from "./ranking";
 import { lotOf, type Lot, type MissingSwitch, type Skipped } from "./scenarioGen";
@@ -36,14 +37,29 @@ export const ScenarioSystem = z.enum([
 ]);
 export type ScenarioSystem = z.infer<typeof ScenarioSystem>;
 
+/** The tab of the Aegis sheet a scenario comes from (block P). */
+export const ScenarioTab = z.enum(["weapons", "sustained", "swap", "abilities"]);
+export type ScenarioTab = z.infer<typeof ScenarioTab>;
+
 export const Scenario = z.object({
   id: z.string(),
-  aegisRow: z.string(), // id of the row in aegis-weapons.json
-  wipe: z.number().positive(), // copied from the row; the bench checks it against the snapshot
-  fullModifiers: z.number().positive(), // ditto
+  // Omitted: "weapons". The other tabs measure by their own rule (see `modelTotal`).
+  tab: ScenarioTab.optional(),
+  aegisRow: z.string(), // id of the row in its Aegis snapshot (aegis-weapons, -totals or -abilities)
+  // Copied from the row; the bench checks it against the snapshot. Weapons: Wipe; Sustained and
+  // Swap: Total; Abilities: damage per use at `build.abilityStat`.
+  wipe: z.number().positive(),
+  fullModifiers: z.number().positive().default(1), // Weapons only
   system: ScenarioSystem,
   build: z.object({
-    weaponId: z.string(),
+    weaponId: z.string(), // Sustained: the weapon; Swap and Abilities: the weapon that stands by
+    weaponsStat: z.number().nonnegative().optional(), // Sustained: the Weapons stat of the row
+    // Swap and Abilities: the ability of the row, cast once at the start
+    abilityId: z.string().optional(),
+    guardianClass: GuardianClass.optional(),
+    subclass: Subclass.optional(),
+    // Swap and Abilities: the stat of super, grenade and melee (Aegis: 200, or 100 per use)
+    abilityStat: z.number().nonnegative().optional(),
     catalyst: z.boolean().optional(), // omitted: off
     effectIds: z.array(z.string()).optional(), // effects.json, active the whole phase
     exoticArmorId: z.string().optional(),
@@ -53,22 +69,33 @@ export const Scenario = z.object({
     playstyle: z.string().optional(), // Build.playstyle, e.g. the Golden Gun shots of Still Hunt
   }),
   playstyle: z.array(z.string()), // the assumptions of the Aegis row, as written there
-  shots: z.number().int().positive(), // shots of the measurement; the cadence follows the build
+  // Weapons: shots of the measurement; the cadence follows the build. Other tabs: none.
+  shots: z.number().int().positive().optional(),
   comparesTo: z.string().optional(), // scenario of the same weapon (hand-made: the paper probe's pair)
   excluded: z.string().optional(), // why the scenario does not count
   note: z.string().optional(), // what the paper probe found (docs/plans/r0-paper-probe.md)
 });
 export type Scenario = z.infer<typeof Scenario>;
 
-/** Measured value on the scale of Aegis "visual". */
+export const tabOf = (s: Scenario): ScenarioTab => s.tab ?? "weapons";
+
+/** Rules a scenario file must keep; the bench test checks them. */
+export function scenarioProblems(s: Scenario): string[] {
+  const tab = tabOf(s);
+  const problems: string[] = [];
+  if (tab === "weapons" && s.shots === undefined) problems.push("a Weapons scenario needs `shots`");
+  if (tab !== "weapons" && s.fullModifiers !== 1) problems.push("only Weapons rows have Full Modifiers");
+  if ((tab === "swap" || tab === "abilities") && (!s.build.abilityId || s.build.abilityStat === undefined)) {
+    problems.push("a Swap or Abilities scenario needs `abilityId` and `abilityStat`");
+  }
+  return problems;
+}
+
+/** Measured value: Weapons on the scale of Aegis "visual" (wipe by full modifiers), the others as the row says. */
 export const measured = (s: Scenario) => s.wipe / s.fullModifiers;
 
-/** Total Damage of the scenario's shots and everything they set off; null if the core cannot run it. */
-export function modelTotal(
-  s: Scenario,
-  run: typeof simulate = simulate,
-): number | null {
-  if (!weapons.some((w) => w.id === s.build.weaponId)) return null;
+/** The build of a scenario; `withAbility` false leaves the cast out (Swap and Abilities take the difference). */
+function scenarioBuild(s: Scenario, withAbility: boolean): Build {
   const effectIds = s.build.effectIds ?? [];
   for (const id of effectIds) {
     if (!effects.some((e) => e.id === id)) throw new Error(`Unknown effect "${id}" in ${s.id}`);
@@ -77,34 +104,73 @@ export function modelTotal(
   if (s.build.exoticArmorId && !armor) {
     throw new Error(`Unknown exotic armor "${s.build.exoticArmorId}" in ${s.id}`);
   }
-  const build: Build = {
+  const stat = s.build.abilityStat;
+  const selections = effectIds.map((effectId) => ({
+    effectId,
+    provider: effects.find((e) => e.id === effectId)!.providers[0].kind,
+  }));
+  // Artifact perks (e.g. Limit Break) need the artifact that holds them
+  const { artifactId } = fitArtifact(gameData.artifacts, undefined, selections);
+  return {
     weaponId: s.build.weaponId,
-    guardianClass: armor?.guardianClass ?? "titan",
-    subclass: "arc",
+    guardianClass: s.build.guardianClass ?? armor?.guardianClass ?? "titan",
+    subclass: s.build.subclass ?? "arc",
     catalyst: s.build.catalyst ?? false,
     ...(s.build.playstyle ? { playstyle: s.build.playstyle } : {}),
     ...(armor ? { exoticArmorId: armor.id } : {}),
     ...(s.build.exoticPreBuilt ? { exoticPreBuilt: true } : {}),
-    selections: effectIds.map((effectId) => ({
-      effectId,
-      provider: effects.find((e) => e.id === effectId)!.providers[0].kind,
-    })),
+    ...(artifactId === undefined ? {} : { artifactId }),
+    selections,
     // Aegis holds the effects of a measurement the whole time.
     effectWindows: Object.fromEntries(
       effectIds.map((id) => [id, { startMs: 0, durationMs: PHASE_SECONDS * 1000 }]),
     ),
     damagePhaseSeconds: PHASE_SECONDS,
-  };
-  const { selected, options } = buildSimulation(build, gameData);
-  const weapon = weapons.find((w) => w.id === s.build.weaponId)!;
-  return run(weapon, PHASE_SECONDS, selected, buckets, {
-    ...options,
-    shotLimit: s.shots,
-    // An assumption of the scenario, read by the rules of the weapon (condition `playstyle`)
-    ...(s.build.setupDeployed
-      ? { assumptions: [...(options.assumptions ?? []), "setup-stands"] }
+    ...(s.build.weaponsStat === undefined ? {} : { weaponsStat: s.build.weaponsStat }),
+    ...(stat === undefined ? {} : { abilityStats: { super: stat, grenade: stat, melee: stat } }),
+    ...(withAbility && s.build.abilityId
+      ? { abilities: [{ abilityId: s.build.abilityId, castsMs: [0] }] }
       : {}),
-  }).totalDamage;
+  };
+}
+
+type Instance = SimulationResult["damageInstances"][number];
+
+/**
+ * Total Damage of the scenario as its tab measures it; null if the core cannot run it.
+ * - Weapons: the shots and everything they set off (shot limit of the row).
+ * - Sustained: the weapon and its keyword damage over the phase (as the Aegis tab Sustained).
+ * - Swap: what the cast adds besides the weapon's own damage (difference with and without the cast).
+ * - Abilities: the same, without the burn of scorch (the Aegis package holds the ignitions, ADR 0015).
+ */
+export function modelTotal(
+  s: Scenario,
+  run: typeof simulate = simulate,
+): number | null {
+  if (!weapons.some((w) => w.id === s.build.weaponId)) return null;
+  const tab = tabOf(s);
+  const damage = (withAbility: boolean) => {
+    const { selected, options } = buildSimulation(scenarioBuild(s, withAbility), gameData);
+    const weapon = weapons.find((w) => w.id === s.build.weaponId)!;
+    return run(weapon, PHASE_SECONDS, selected, buckets, {
+      ...options,
+      ...(s.shots === undefined ? {} : { shotLimit: s.shots }),
+      // An assumption of the scenario, read by the rules of the weapon (condition `playstyle`)
+      ...(s.build.setupDeployed
+        ? { assumptions: [...(options.assumptions ?? []), "setup-stands"] }
+        : {}),
+    });
+  };
+  if (tab === "weapons") return damage(true).totalDamage;
+  const sum = (keep: (d: Instance) => boolean, withAbility: boolean) =>
+    damage(withAbility)
+      .damageInstances.filter(keep)
+      .reduce((total, d) => total + d.damage, 0);
+  if (tab === "sustained") {
+    return sum((d) => d.damageSource === "weapon" || d.damageSource === "keyword", true);
+  }
+  const keep = (d: Instance) => d.damageSource !== "weapon" && (tab === "swap" || d.id !== "burn");
+  return sum(keep, true) - sum(keep, false);
 }
 
 export type BenchRow = {
@@ -134,7 +200,8 @@ export const judge = (rows: BenchRow[], fitted: Set<string>): Judged[] =>
   rows.map((r) => ({
     ...r,
     fitted: fitted.has(r.scenario.aegisRow),
-    lot: lotOf(r.scenario.aegisRow),
+    // Sustained and Swap have no lot: every row that no value came from is checked (plan P).
+    lot: ["sustained", "swap"].includes(tabOf(r.scenario)) ? "check" : lotOf(r.scenario.aegisRow),
   }));
 
 /** Rows that count: a value, not excluded. */
@@ -146,8 +213,8 @@ export const checkSet = (rows: Judged[]) =>
 
 const toItem = (r: Judged): Item => ({
   id: r.scenario.aegisRow,
-  tab: "weapons",
-  name: r.scenario.build.weaponId,
+  tab: tabOf(r.scenario),
+  name: r.scenario.build.abilityId ?? r.scenario.build.weaponId,
   assumptions: r.scenario.playstyle,
   aegis: r.measured,
   ours: r.model!,
