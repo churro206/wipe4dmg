@@ -134,7 +134,14 @@
       "name": "Funeral Pyre, Ace of Spades Catalyst",
       "description": "Firefly's explosion damage is increased by 50% while Memento Mori is active.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "ager-s-scepter",
@@ -331,7 +338,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "alethonym",
@@ -468,7 +482,14 @@
       "name": "Alethonym Catalyst",
       "description": "Grants the One For All trait:\nScoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "anarchy",
@@ -626,7 +647,14 @@
       "name": "Jolting Feedback, Anarchy Catalyst",
       "description": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt.\nBeing Amplified decreases the number of hits required to 2.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "arbalest",
@@ -802,7 +830,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "bad-juju",
@@ -939,7 +974,14 @@
       "name": "Unending Curse, Bad Juju Catalyst",
       "description": "String of Curses's maximum duration is increased by 2 seconds (5.5🠚7.5).",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "barrow-dyad",
@@ -1171,7 +1213,89 @@
       "name": "Target Lock Refit, One for All Refit, Hatchling Refit, High-Impact Reserves Refit",
       "description": "Grants the Target Lock trait:\nSuccessive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.\nGrants the One For All trait:\nScoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.\nGrants the Hatchling trait:\nScoring a Precision Kill or 3 kills within 3 seconds of each other spawns a Threadling at the target's location.\nGrants the High-Impact Reserves trait:\nIncreases damage by 12.1% [3%] to 25.6% [6%] as the Magazine drops from 50% of its base capacity to empty.\nThe buff in PVE ranges between 10.3% and 22.9% instead on Fusion Rifles and Aggressive Frame Linear Fusion Rifles.\nDoes not buff the Splash/Explosive damage elements of other perks.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "nthShot-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "nthShot-shots",
+            "op": "<",
+            "value": {
+              "value": 38,
+              "source": {
+                "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "nthShot-shots" }]
+      },
+      {
+        "id": "nthShot",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "nthShot-shots",
+            "op": "=",
+            "value": {
+              "value": 38,
+              "source": {
+                "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "nthShot-shots" },
+          {
+            "type": "spawn",
+            "part": "nthShot",
+            "delayMs": {
+              "value": 850,
+              "source": {
+                "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+              }
+            },
+            "count": {
+              "value": 6,
+              "source": {
+                "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+              }
+            },
+            "intervalMs": {
+              "value": 83.333,
+              "source": {
+                "name": "Weapon override for Barrow-Dyad (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34)."
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "bastion",
@@ -1307,7 +1431,14 @@
       "name": "Cast No Shadows, Bastion Catalyst",
       "description": "Dealing Melee Damage refills 20% of the Magazine (rounded up) and grants ? Handling for ? seconds.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "black-talon",
@@ -1445,7 +1576,14 @@
       "name": "Reversal, Black Talon Catalyst",
       "description": "Due to an unresolved bug, this catalyst does not function.\nThe intended behavior was that damage against Void-Debuffed enemies is increased per unique Void-Debuff applied to the target, at a rate of 10% per debuff.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "borealis",
@@ -1622,7 +1760,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "buried-bloodline",
@@ -1759,7 +1904,14 @@
       "name": "Splitvein Lineage, Buried Bloodline Catalyst",
       "description": "While Devour is active, grants the following benefits:\n• Hits apply Weaken for 6 seconds\n• ? Reload Speed\n• ? Decreased Reload Animation Duration",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "centrifuse",
@@ -1896,7 +2048,14 @@
       "name": "Static Buildup, Centrifuse Catalyst",
       "description": "While you are Amplified, Overcharge Capacitor will continuously build at a rate of 7% charge per second and no longer passively decay.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "cerberus-1",
@@ -2033,7 +2192,14 @@
       "name": "Focused Fire, Cerberus+1 Catalyst",
       "description": "Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds:\n• 50% [10%] increased damage\n• 30% decreased Pellet Spread\nStowing the weapon removes the buff.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "choir-of-one",
@@ -2204,7 +2370,14 @@
       "name": "Subsistence Refit, Destabilizing Rounds Refit, Onslaught Refit",
       "description": "Grants the Subsistence trait:\nWeapon Kills refill 10% of the magazine (rounded up) from reserves.\nSubmachine Gun and Auto Rifle Kills refill 17% of the magazine.\nGrants the Destablizing Rounds trait:\nWeapon Kills apply Volatile to enemies in a 7 meter radius around the target and grant Volatile Rounds for 3 seconds.\n1.5 second cooldown between activations.\nGrants the Onslaught trait:\nWeapon Kills grant a Stack of 'Onslaught' for 4.5 seconds. Maximum of 3 Stacks.\nBenefits at 1|2|3 Stacks of Onslaught:\n• 16.7% | 28.6% | 37.5% decreased Firing Delay\n• 15 | 25 | 35 Reload Speed",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "cloudstrike",
@@ -2380,7 +2553,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "coldheart",
@@ -2557,7 +2737,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "collective-obligation",
@@ -2694,7 +2881,14 @@
       "name": "Repulsor Brace, Collective Obligation Catalyst",
       "description": "",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "conditional-finality",
@@ -2831,7 +3025,14 @@
       "name": "Heal Clip, Rimestealer, Conditional Finality Catalyst",
       "description": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.\nKilling Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "crimson",
@@ -2968,7 +3169,14 @@
       "name": "To the Pain, Crimson Catalyst",
       "description": "Passively grants 20 Range.\nEvery 30 points of damage taken with the weapon readied grants a Stack of 'To the Pain'. Maximum of 10 Stacks. Stowing the weapon removes all Stacks.\nEach Stack grants ? Handling and 2 Aim Assist, maxing out at ? Handling and 20 Aim Assist.\nSelf-damage and environmental damage do not count.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "cryosthesia-77k",
@@ -3105,7 +3313,14 @@
       "name": "Cold Efficiency, Cryosthesia 77K Catalyst",
       "description": "Shattering a Frozen enemy instantly refills the magazine.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "cull-s-shadow",
@@ -3236,6 +3451,13 @@
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
       }
     ]
   },
@@ -3395,7 +3617,14 @@
       "name": "Networked Targeting, D.A.R.C.I. Catalyst",
       "description": "Passively grants 20 Stability.\nHits on Highlighted targets grants one stack of 'Networked Targeting' to you and allies within a 15 meter radius for 10.5 seconds. Maximum of 5 stacks.\nNetworked Targeting buffs D.A.R.C.I and Non-Exotic Sniper Rifles.\nBenefits at 1|2|3|4|5 Stacks:\n• 2.8%|6.1%|9.1%|12.5%|15.9% increased damage\n• ? Stability, Handling, Aim Assist, Flinch Resistance\nGranting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "dead-man-s-tale",
@@ -3626,7 +3855,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "dead-messenger",
@@ -3764,7 +4000,14 @@
       "name": "Turnabout, Dead Messenger Catalyst",
       "description": "Grants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "deathbringer",
@@ -3901,7 +4144,14 @@
       "name": "Dead Weight, Deathbringer Catalyst",
       "description": "The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "delicate-tomb",
@@ -4037,7 +4287,14 @@
       "name": "Ionic Interment, Delicate Tomb Catalyst",
       "description": "Picking up Ionic Traces refill 4 ammo from reserves.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "deterministic-chaos",
@@ -4195,7 +4452,14 @@
       "name": "Target Lock, Deterministic Chaos Catalyst",
       "description": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "devil-s-ruin",
@@ -4353,7 +4617,14 @@
       "name": "Collective Action, Devil's Ruin Catalyst",
       "description": "Elemental Pickup Interactions grant 30% [10%] increased damage for a variable duration based on the pickup. Can be activated while stowed.\nIonic Traces, Stasis Shards, and Tangle Detonations grant the buff for 4 seconds. Throwing a held Tangle grants 4 additional seconds. Firesprites and Void Breaches grant the buff for 8 seconds.\nAdditional Pickups can extend the duration up to the maximum of 16 seconds.\nElemental Pickup Interactions:\n• Destroying a Tangle (or Elemental Orbs), either by shooting or throwing.\n• Collecting Firesprites, Ionic Traces, Stasis Shards, or Void Breaches\nDoes not trigger with Stasis Shards generated from Facet of Awakening or Facet of Command.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "divinity",
@@ -4490,7 +4761,14 @@
       "name": "Jolting Feedback, Focused Fury, Divinity Catalyst",
       "description": "Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits required to 13.\nScoring 68 Precision Hits grants 25% increased damage for 11 seconds. Stowing or Reloading the weapon resets the Precision Hit counter.\nBuff remains active while stowed.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "dragon-s-breath",
@@ -4627,7 +4905,14 @@
       "name": "Pyromancer, Dragon's Breath Catalyst",
       "description": "Doubles the rate of passive Composite Propellant generation (6🠚3 Seconds per stack).\nKills generate Firesprites. These kills ignore the global Firesprite spawning cooldown.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "duality",
@@ -4803,7 +5088,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "edge-of-action",
@@ -4940,7 +5232,14 @@
       "name": "Repulsor Brace, Edge of Action Catalyst",
       "description": "Kills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence).",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "edge-of-concurrence",
@@ -5077,7 +5376,14 @@
       "name": "Eddy Current, Edge of Concurrence Catalyst",
       "description": "Grants the following after sprinting for 1.5 seconds with the weapon readied:\n• 20 Reload Speed\n• 0.95x Reload Duration Multiplier\n• ? Handling\n• 0.95x Handling Animation Duration Multiplier\nSprinting refreshes the buff duration.\nBeing Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "edge-of-intent",
@@ -5214,7 +5520,14 @@
       "name": "Heal Clip, Edge of Intent Catalyst",
       "description": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "ergo-sum",
@@ -5429,7 +5742,14 @@
       "name": "Transcendent Steel, Ergo Sum Catalyst",
       "description": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "eriana-s-vow",
@@ -5605,7 +5925,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "euphony",
@@ -5741,7 +6068,14 @@
       "name": "Enlightened Action, Euphony Catalyst",
       "description": "Weapon Hits grant Stacks of Enlightened Action for 2 seconds. Maximum of 12 Stacks.\nStat bonuses at 1|2|…|12 Stacks:\n2|7|12|15|20|25|30|35|38|40|45|50 Handling and Reload Speed\nStacks granted per hit by Weapon Type:\n• Hand Cannons: 3 Stacks\n• Bows: ? Stacks\n• Automatic Weapons: 1 Stack",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "ex-diris",
@@ -5879,7 +6213,14 @@
       "name": "Berserk Rush, Ex Diris Catalyst",
       "description": "Weapon Kills grant Amplified for 15 seconds.\nWhile Amplified, Direct Hits charge Enrage twice as fast (25%🠚50% per hit).",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "eyes-of-tomorrow",
@@ -6016,7 +6357,14 @@
       "name": "Demolitionist, Blast Distributor, Eyes of Tomorrow Catalyst",
       "description": "Dealing damage grants a stack of 'Blast Distributor' for 5 seconds, increasing your Grenade Stat by 10 per stack. Maximum of 5 stacks.\nKills grant 10% Grenade Ability Energy.\nUsing your Grenade Ability refills the Magazine with a 3 second cooldown.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "fafnir",
@@ -6151,7 +6499,14 @@
       "name": "Fafnir Catalyst",
       "description": "Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no longer ADS.\nTimer starts as soon as the ADS input is pressed.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "fighting-lion",
@@ -6288,7 +6643,14 @@
       "name": "Chimera, Fighting Lion Catalyst",
       "description": "Grants 30 Reload Speed.\nFiring this gun grants equipped Kinetic and Heavy ammo weapons the following benefits for 3 seconds:\n• 100 Handling\n• 30% decreased Accuracy Cone Size",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "final-warning",
@@ -6425,7 +6787,14 @@
       "name": "String Theory, Final Warning Catalyst",
       "description": "Grants 10% increased damage to marked targets. Minibosses and Bosses only receive 5% more damage.\nHits against marked Minors and Elites|Minibosses and Bosses have an 85%|25% chance to refund one ammo into the magazine.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "finality-s-auger",
@@ -6562,7 +6931,14 @@
       "name": "Bait and Switch, Finality's Auger Catalyst",
       "description": "Grants the Bait and Switch trait:\nDealing damage with a weapon starts a 7 second timer. Dealing additional weapon damage resets the timer to 7 seconds.\nDealing damage with all 3 of your weapons without letting the timer run out grants you 'Bait and Switch' for 10 seconds, granting 30% increased damage.\nTimer is disabled while Bait and Switch is active, requiring a full activation sequence once the buff expires.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "forerunner",
@@ -6699,7 +7075,14 @@
       "name": "The Rock, Forerunner Catalyst",
       "description": "Holding [Reload] within 4 seconds of a kill consumes 4 ammo, refills the magazine, and grants 'The Rock'.\nThe Rock replaces your grenade ability with a tossed Kinetic grenade that explodes for 2072 [181] damage in a 9 meter radius, dealing 20% damage at the edge of its radius. Detonates 0.6 seconds after it slows down enough.\nThe Rock counts as a grenade ability and is buffed by, and triggers, grenade-associated effects.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "gjallarhorn",
@@ -6875,7 +7258,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "grand-overture",
@@ -7013,7 +7403,14 @@
       "name": "Grand Overture Catalyst",
       "description": "Grants 20 Handling and 20 Stability.\nArc Missiles apply Blind for 2 seconds. Kills trigger an explosion dealing ? damage in a ? meter radius.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "graviton-lance",
@@ -7171,7 +7568,14 @@
       "name": "Vorpal Weapon, Turnabout, Graviton Lance Catalyst",
       "description": "Grants 20 Range.\nGrants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nAlso grants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "graviton-spike",
@@ -7341,7 +7745,14 @@
       "name": "Temporal Alignment Refit, Transcendent Zen Refit, Subsistence Refit, Rapid Hit Refit",
       "description": "Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another.\nNo time limit between the two activations.\nGrants the Transcendent Moment trait:\nWeapon Kills grant stat benefits based on the weapon's elemental alignment for ? seconds.\nLight Alignment grants ? Stability and ? Handling.\nDark Alignment grants ? Range and ? Aim Assist.\nKills while Transcendent activate both bonuses.\nLight Alignment: Arc, Solar, Void\nDarkness Alignment: Stasis, Strand\nGrants the Subsistence trait:\nWeapon Kills refill 10% of the magazine (rounded up) from reserves.\nSubmachine Gun and Auto Rifle Kills refill 17% of the magazine.\nGrants the Rapid Hit trait:\n\"Buffed Hits\" grant 1 Stack of Rapid Hit for 2 seconds. Maximum of 5 Stacks.\n\"Buffed Hits\" refer to any \"Yellow Number\" Hits such as Precision Hits or Hits against debuffed targets.\nBenefits at 1|2|3|4|5 Stacks:\n• 2|12|14|18|25 Stability\n• 5|30|35|42|60 Reload Speed\n• 0.99x|0.96x|0.95x|0.945x|0.92x Reload Duration Multiplier",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "hard-light",
@@ -7478,7 +7889,14 @@
       "name": "Light Touch, Hard Light Catalyst",
       "description": "Grants 25 Stability.\nWhile Amplified, Radiant, or Devour is active:\n• ? Handling\n• ? Reload Speed\n• ?% decreased Reload Animation Duration\n• ?% decreased ADS Animation Duration",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "hawkmoon",
@@ -7655,7 +8073,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "heartshadow",
@@ -7829,7 +8254,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "heir-apparent",
@@ -7966,7 +8398,14 @@
       "name": "Legion's Bulwark, Heir Apparent Catalyst",
       "description": "Arc Shield gains 75% [25%] Damage Resistance.\nRefills 50% of the magazine upon Arc Shield being depleted.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "heirloom",
@@ -8104,7 +8543,14 @@
       "name": "Heirloom Catalyst",
       "description": "Scorch and Ignitions that originate from this weapon deal 5% increased damage.\nDirect Hits with Charged Shots apply 20|40|60 Scorch Stacks at Charge Level 1|2|3. Scorch application is unaffected by Ember of Ashes.\nGrants 10% increased damage to Scorched enemies.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "hierarchy-of-needs",
@@ -8423,7 +8869,70 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "setupHits",
+        "on": { "on": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "setupHits",
+            "count": {
+              "value": 3,
+              "source": {
+                "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+              }
+            },
+            "intervalMs": {
+              "value": 0,
+              "source": {
+                "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "setupHits-two-rings",
+        "on": { "on": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "setupHits-two-rings",
+            "count": {
+              "value": 6,
+              "source": {
+                "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+              }
+            },
+            "intervalMs": {
+              "value": 0,
+              "source": {
+                "name": "Weapon override for Hierarchy of Needs (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Guidance Ring: 3 Präzisionstreffer laden ihn, der nächste Hüftschuss setzt ihn (ohne Seeker), ab dem 5. Pfeil 3 Seeker pro Pfeil; mit „Pre-stacked“ (Ladungen bleiben beim Wegstecken) setzt ihn der 1. Pfeil. Er hält 20 s; danach setzt ihn ein Hüftschuss neu, dazwischen wird gezielt geschossen (Inhaber, 2026-10-26). Pfeil 223 aus Quantum ohne Ring, Seeker (664 − 223) ÷ 3 = 147 aus Quantum mit Ring; je Seeker x15 Scorch, die Ignitions rechnet das Keyword. Catalyst: Ring und Seeker-Treffer halbieren 5 s lang die Draw Time, also ab dem Setzen des Rings; Timing aus Quantums „Guidance Ring, cata“ (61 statt 44 rpm). Gate: Aegis „average, one ring“ 917 pro Pfeil mit Ignitions. Spielweise „Through two rings“: bis zu 3 Ringe im Fireteam, sie stapeln (Clarity); ein Pfeil durch den eigenen und den Ring eines Teammates löst 2 × 3 = 6 Seeker aus (Aegis „2 rings“, Papierprobe 9 × 735 + 54 × 485 + 3 Ignitions + Burn = +0,3 %)."
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "ice-breaker",
@@ -8555,6 +9064,13 @@
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
       }
     ]
   },
@@ -8753,7 +9269,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "j-tunn",
@@ -8890,7 +9413,14 @@
       "name": "Cornered, Incandescent, Jötunn Catalyst",
       "description": "Grants the Cornered trait:\nGrants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies.\nBuff lingers for 1.5 seconds once no longer surrounded.\nAlso grants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "khvostov-7g-0x",
@@ -9027,7 +9557,14 @@
       "name": "Khvostov Catalyst",
       "description": "Scoring 25 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 🡅0.8% Super Energy.\nDoes not require Direct Hits. Hit counter persists through stow.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "le-monarque",
@@ -9204,7 +9741,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "legend-of-acrius",
@@ -9380,7 +9924,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "leviathan-s-breath",
@@ -9555,7 +10106,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "lodestar",
@@ -9692,7 +10250,14 @@
       "name": "Supercharged Matrix, Lodestar Catalyst",
       "description": "While Amplified:\n• 10 Aim Assist\n• ? Reload Speed\n• ?% decreased ADS Movement Speed Penalty",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "lord-of-wolves",
@@ -9869,7 +10434,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "lorentz-driver",
@@ -9999,6 +10571,13 @@
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
       }
     ]
   },
@@ -10137,7 +10716,14 @@
       "name": "Resonant Virtue, Lumina Catalyst",
       "description": "Kills create an additional Remnant (1🠚2).",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "malfeasance",
@@ -10295,7 +10881,14 @@
       "name": "Vorpal Weapon, Malfeasance Catalyst",
       "description": "Grants 20 Range.\nGrants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "merciless",
@@ -10432,7 +11025,14 @@
       "name": "Heal Clip, Merciless Catalyst",
       "description": "Grants 40 Range and 40 Stability.\nFinishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "microcosm",
@@ -10570,7 +11170,14 @@
       "name": "Thresh, Stopping Power, Microcosm Catalyst",
       "description": "Weapon Kills grant an additional 1% Super Energy.\nGrants the following benefits against low (under 30%) Health targets. Ignores Shield HP:\n• Increased Stagger Force\n• 7% to 15% increased damage, scaling with remaining Health\n• ? Increased Target Acquisition",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "mida-multi-tool",
@@ -10707,7 +11314,14 @@
       "name": "Vital Intel, MIDA Multi-Tool Catalyst",
       "description": "While within 15 meters of an enemy, grants an Enhanced Radar, 20 Reload Speed, and 15% decreased Reload Animation Duration.\nBuff lingers for 4 seconds once the condition is no longer met.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "monte-carlo",
@@ -10844,7 +11458,14 @@
       "name": "Stochastic Vengeance, Monte Carlo Catalyst",
       "description": "Hold [Reload] while at maximum Markov Chain stacks to lock the bayonet.\nWhile Monte Carlo is held, it replaces your Melee Ability with a powerful glaive-like stab that deals 2,772 [140] melee damage. Stab can reach up to 7 meters away and grants 50% Melee Ability Energy on hit.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "necrochasm",
@@ -10981,7 +11602,14 @@
       "name": "One for Thrall, Necrochasm Catalyst",
       "description": "Damaging 3 enemies within 3 seconds of each other grants the following benefits for 10 seconds:\n• 35% increased damage\n• ? Handling\n• ? Range\n• ? Aim Assist\nBuff can be refreshed.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "new-land-beyond",
@@ -11118,7 +11746,14 @@
       "name": "Top Tier Mastery, New Land Beyond Catalyst",
       "description": "While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on each shot.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "new-malpais",
@@ -11256,7 +11891,14 @@
       "name": "Unraveling Blast, New Malpais Catalyst",
       "description": "Embedded projectiles Unravel targets for 8 seconds upon detonation.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "no-time-to-explain",
@@ -11393,7 +12035,14 @@
       "name": "Blast from the Side, No Time to Explain Catalyst",
       "description": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "one-thousand-voices",
@@ -11589,7 +12238,14 @@
       "name": "Fall from Grace, One Thousand Voices Catalyst",
       "description": "I gain 30 Stability and 20 Ammo Generation.\nEach of my detonations release a Taken Seeker which aggressively tracks and burrows into nearby targets, dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds.\nMy Taken Seekers can stun Overload Champions.\nMy foes can be afflicted by up to 5 seekers at once, and Blighted Enemies (directly impacted by Witherhoard) take 100% increased tick damage.\nI do not interact with Malfeasance or Wish-Ender.\n▛ Most of those who bargain with me do not win... ▟",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "osteo-striga",
@@ -11767,7 +12423,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "outbreak-perfected",
@@ -11958,7 +12621,14 @@
       "name": "Disease Vector, Outbreak Perfected Catalyst",
       "description": "Nanite Damage is increased by 25%.\nEnemies that die with Nanites attached to them release four Nanites around them, each dealing 13 [4] damage.\nNanite Damage is increased by 25%.\nEnemies that die with Nanites attached to them release four Nanites around them, each dealing 13 [4] damage.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "parasite",
@@ -12095,7 +12765,14 @@
       "name": "Envious Arsenal, Parasite Catalyst",
       "description": "Dealing any damage with both of your other weapons refills the magazine from reserves upon readying the weapon.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "polaris-lance",
@@ -12307,7 +12984,71 @@
       "name": "Dragonfly, Polaris Lance Catalyst",
       "description": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "nthShot-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "nthShot-shots",
+            "op": "<",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "nthShot-shots" }]
+      },
+      {
+        "id": "nthShot",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "nthShot-shots",
+            "op": "=",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "nthShot-shots" },
+          {
+            "type": "spawn",
+            "part": "nthShot",
+            "delayMs": {
+              "value": 500,
+              "source": {
+                "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "prometheus-lens",
@@ -12442,7 +13183,14 @@
       "name": "Prometheus Catalyst",
       "description": "Grants 20 Stability and 20 Handling.\nGrants the Incandescent trait:\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "quicksilver-storm",
@@ -12579,7 +13327,14 @@
       "name": "Nano-entanglement, Quicksilver Storm Catalyst",
       "description": "Converts this weapon's element into Strand damage.\nKills with Grenade Chaser grenades spawn a Tangle.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "rat-king",
@@ -12716,7 +13471,14 @@
       "name": "Infestation, Rat King Catalyst",
       "description": "Grants 20 Aim Assist and 20 Recoil Direction.\nFinishing a reload within 6 seconds of a kill begins Health Regeneration.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "red-death-reformed",
@@ -12853,7 +13615,14 @@
       "name": "Helping Hand, Red Death Reformed Catalyst",
       "description": "Scoring 2 [1] kills grants 'Red Death Charged'.\nYour next kill with Red Death Reformed consumes this buff and triggers a burst of healing, granting 120 HP (Cure x2) to allies within a 7.5 meter radius of you.\nThis kill also spawns a Restoration Orb at your feet, granting you and allies Restoration x2 for 4 seconds (6 with Ember of Solace) on pickup.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "revision-zero",
@@ -13063,7 +13832,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "riskrunner",
@@ -13200,7 +13976,14 @@
       "name": "Chain Reaction, Riskrunner Catalyst",
       "description": "Grants 30 Range.\nWeapon Kills trigger an elemental explosion, dealing up to 114 [?] damage in a 3 meter radius.\nThis explosion can deal self-damage and trigger Arc Conductor.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "ruinous-effigy",
@@ -13357,7 +14140,14 @@
       "name": "Deconstruction, Ruinous Effigy Catalyst",
       "description": "Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] increased weapon damage for 7 seconds.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "salvation-s-grip",
@@ -13495,7 +14285,14 @@
       "name": "Rimestealer, Salvation's Grip Catalyst",
       "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "service-of-luzaku",
@@ -13632,7 +14429,14 @@
       "name": "Service of Luzaku Catalyst",
       "description": "Teeming Nests can be harvested into a collectible Tangle after spawning 6 Threadlings. This destroys the nest.\nThese tangles ignore the global Tangle cooldown.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "skyburner-s-oath",
@@ -13769,7 +14573,14 @@
       "name": "Skyburner Catalyst",
       "description": "Grants 20 Reload Speed.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.\nDirect Hits against Scorched Enemies apply 10 [4] additional Scorch per Direct Hit (15 [9?] with Ember of Ashes) on a 0.5 second cooldown.\nScoring 11 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. Hit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "slayer-s-fang",
@@ -13939,7 +14750,14 @@
       "name": "Stats for All Refit, Cascade Point Refit, Repulsor Brace Refit, Loose Change Refit",
       "description": "Grants the Stats For All trait:\nUpon damaging 3 Separate Enemies within 3 seconds of each, for 10 seconds:\n• 35 Handling and Reload Speed\n• 10 Stability and Range\n• 5% increased Damage Falloff Distance\n• 0.95x Reload Duration Multiplier\nBuff duration cannot be refreshed.\nGrants the Cascade Point trait:\nAfter scoring a kill or multiple Precision Hits within 5 seconds of each with a different weapon:\nReadying this weapon reduces its Firing Delay for 2.5 seconds.\nFiring Delay is reduced by 30% on SMGs and Machine Guns and by 40% on other archetypes.\nPrecision Hits requried per weapon archetype:\n• Bows, Linear Fusion/Sniper Rifles, Shotguns, Glaive Projectiles: 2 hits\n• Hand Cannons, Scout Rifles: 4 hits\n• Auto/Trace/Pulse Rifles, SMGs, Machine Guns, Sidearms: 6 hits\nGrants the Repulsor Brace trait:\nKills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence).\nGrants the Loose Change trait:\nApplying an Elemental Debuff grants the following benefits for 9 seconds:\n• 50 Reload Speed and 20 Aim Assist\n• 20% decreased ADS Movement Speed Penalty\nBuff can be activated while stowed.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "sleeper-simulant",
@@ -14115,7 +14933,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "still-hunt",
@@ -14332,7 +15157,92 @@
       "name": "Lucky Shot, Still Hunt Catalyst",
       "description": "Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'.\nScoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer. Additional precision hits during this timer continue to refill the magazine from reserves.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "cayde-s-retribution",
+        "on": { "on": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "cayde-s-retribution",
+            "delayMs": {
+              "value": 0,
+              "source": {
+                "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
+              }
+            },
+            "factor": {
+              "value": 1,
+              "source": {
+                "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-20",
+                "status": "fitted",
+                "row": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+                "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
+              }
+            }
+          },
+          {
+            "type": "spawn",
+            "part": "cayde-s-retribution",
+            "delayMs": {
+              "value": 1361,
+              "source": {
+                "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
+              }
+            },
+            "factor": {
+              "value": 1.45,
+              "source": {
+                "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-20",
+                "status": "fitted",
+                "row": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+                "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
+              }
+            }
+          },
+          {
+            "type": "spawn",
+            "part": "cayde-s-retribution",
+            "delayMs": {
+              "value": 2722,
+              "source": {
+                "name": "Weapon override for Still Hunt (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung."
+              }
+            },
+            "factor": {
+              "value": 1.9,
+              "source": {
+                "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-20",
+                "status": "fitted",
+                "row": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
+                "note": "tick ÷ hit of \"6412 2nd, 8402 3rd\""
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sturm",
@@ -14469,7 +15379,14 @@
       "name": "Helping Hands, Sturm Catalyst",
       "description": "Grants 40 Handling and 20 Range.\nKills with Overcharged Rounds grants 2 stacks of 'Helping Hands'. Maximum of 6 stacks.\nHelping Hands grants 50% decreased Stow/Ready Animation Speed while active. Readying Sturm or a Together Forevever weapon consumes one stack.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "sunshot",
@@ -14606,7 +15523,14 @@
       "name": "Loose Change, Sunshot Catalyst",
       "description": "Grants 30 Range and 20 Stability.\nApplying an Elemental Debuff grants the following benefits for 9 seconds:\n• 50 Reload Speed and 20 Aim Assist\n• 20% decreased ADS Movement Speed Penalty\nBuff can be activated while stowed.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "suros-regime",
@@ -14743,7 +15667,14 @@
       "name": "SUROS Ascendance, SUROS Regime Catalyst",
       "description": "Grants 50 Recoil Direction and doubles the healing chance (25%🠚50%).",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "sweet-business",
@@ -14880,7 +15811,14 @@
       "name": "Serious Business, Sweet Business Catalyst",
       "description": "Grants 25% increased Flinch Resistance while at maximum Rate of Fire.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "symmetry",
@@ -15058,7 +15996,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "tarrabah",
@@ -15195,7 +16140,14 @@
       "name": "Ambitious Assassin, Tarrabah Catalyst",
       "description": "Reloading after scoring kills with Tarrabah overfills the magazine from reserves based on the number of Kills scored.\nTarrabah overfills the next magazine by 20% per kill scored, up to a maximum of 150% Base Magazine Capacity. Always rounds up.\nKill counter persists through stow.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "telesto",
@@ -15370,7 +16322,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "tessellation",
@@ -15507,7 +16466,14 @@
       "name": "Property: Unavoidable, Tessellation Catalyst",
       "description": "Your explosive [projectile | shape | language] inherents subclass debuffs based on its element.\nDeals an additional instance of 165 [10] damage in a 10 meter radius and applies a debuff matching its element:\n•70 Scorch Stacks (80 with Ember of Ashes)\n•Weaken for 6 [2.5] seconds\n•Blind for 9 seconds\n•80 Slow Stacks\n•Sever for 5 seconds (7.5 with Thread of Continuity)\nEffects are applied after the explosion.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-chaperone",
@@ -15683,7 +16649,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-colony",
@@ -15860,7 +16833,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-fourth-horseman",
@@ -16037,7 +17017,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-jade-rabbit",
@@ -16174,7 +17161,14 @@
       "name": "Jade Rabbit Catalyst",
       "description": "Grants 30 Stability.\nHold [Reload] to consume all Fate of All Fools stacks and load a Micro-Missile. Missile has a blast radius of 8 meters with a maximum damage falloff of 45%, and deals increased damage based on the number of stacks consumed.\nDeals 293 damage (122 impact/171 explosive) [?] at base, becoming heavily weighted towards explosive damage as the stacks increase.\nDamage is increased by 107%|157%|193%|223%|315%|345% at 2|3|4|5|10|15 Stacks, with a fully charged missile dealing 1304 (281 impact/1023 explosive) [?] damage.\nMicro-Missile deals no self damage and can be used for rocket jumping.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-lament",
@@ -16333,7 +17327,14 @@
       "name": "Burning Ambition, The Lament Catalyst",
       "description": "Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown\nScoring 3 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. This allows The Lament to Scorch through a singular revved attack.\nHit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage, and thus, triggers Revved Consumption's healing, granting 7HP per tick.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-last-word",
@@ -16470,7 +17471,14 @@
       "name": "Killing Wind, Envious Assassin, The Last Word Catalyst",
       "description": "Upon readying the weapon after scoring kills with your other Weapons:\nRefills and/or overfills the Magazine from reserves based on the amount of Weapon Kills scored.\nLoads 1 Ammo per kill achieved with other weapons.\nMaximum total overfill amount is 200% of the Magazine Capacity. Each activation can only load up to 100% of the Magazine Capacity into the magazine.\nOn Weapon Kill, for 5 seconds:\n• 50 Mobility\n• 40 Handling and 20 Range\n• 5% increased Damage Falloff Distance\nAdditional Kills extend the duration by 5 seconds, up to 8 seconds. Buff is removed on stow.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-manticore",
@@ -16607,7 +17615,14 @@
       "name": "Flying Monster, The Manticore Catalyst",
       "description": "While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield for 6 seconds (9 seconds with Echo of Persistance).\n1 second cooldown when activated by hits.\nNo cooldown when activated by kills.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-navigator",
@@ -16744,7 +17759,14 @@
       "name": "Gordian Knot, The Navigator Catalyst",
       "description": "Hold [Reload] to activate Grapple Tangle mode.\nFires a floating Grapple Point to where the reticle previews at approximately 23.5 meters away. Identical to those made by the Widow's Silk aspect.\n30 second cooldown, starting only once grounded.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-prospector",
@@ -16882,7 +17904,14 @@
       "name": "Prospector Catalyst",
       "description": "Grants 40 Blast Radius and 50 Reload Speed.\nIncreases Blast Radius by ?% and decreases Self-Damage by 40% while within 15 meters of 3 enemies.\nEffect lingers for 3.5 seconds once no longer surrounded.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-queenbreaker",
@@ -17058,7 +18087,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "the-wardcliff-coil",
@@ -17195,7 +18231,14 @@
       "name": "Wardcliff Coil Catalyst",
       "description": "Grants some tracking to the rockets I guess?\n(Good luck on figuring that one out!)",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "third-iteration",
@@ -17332,7 +18375,14 @@
       "name": "Third Iteration Catalyst",
       "description": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.\nExplosive damage deals 20% damage at the edge of its radius.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "thorn",
@@ -17469,7 +18519,14 @@
       "name": "Refined Soul, Thorn Catalyst",
       "description": "Passively grants 15 Range, 5 Stability, and 5 Airborne Effectiveness.\nKills or collecting Remnants grants 'Refined Soul' for 7 seconds. Additional kills or Remnants can extend this timer up to 11 seconds.\nRefined Soul grants 10 Range, 15 Handling, and 50 Mobility.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "thunderlord",
@@ -17645,7 +18702,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "ticuu-s-divination",
@@ -17802,7 +18866,14 @@
       "name": "Causality Quiver, Ticuu's Divination Catalyst",
       "description": "Triggering Sacred Flame explosions grants one stack of 'Causality Quiver' for 5.5 seconds. Marking enemies with Sacred Flame refreshes the buff. Maximum of 6 stacks.\nCausality Quiver increases the impact damage of your arrows (not the explosion) at 1|2|3|4|5|6 stacks:\n• PvE: 16%|31%|49%|67.5%|87%|87%\n• PvP: 3.6%|11%|12%|16%|23%|23%",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "tommy-s-matchbook",
@@ -17939,7 +19010,14 @@
       "name": "Heat of the Moment, Tommy's Matchbook Catalyst",
       "description": "While Ignition Trigger is active, kills grant 60 HP (Cure x1) and every 5th shot applies 15 [10] Scorch. Ember of Ashes increases this to 20 for both PvE and PvP.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "touch-of-malice",
@@ -18097,7 +19175,14 @@
       "name": "Precision Instrument, Touch of Malice Catalyst",
       "description": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or missing removes all stacks...usually.\nPrecision damage increase at 1|2|3... stacks:\n4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "tractor-cannon",
@@ -18273,7 +19358,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "traveler-s-chosen",
@@ -18450,7 +19542,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "trespasser",
@@ -18587,7 +19686,14 @@
       "name": "Tunnel Vision, Trespasser Catalyst",
       "description": "Grants the Tunnel Vision trait:\nGrants the following for 5 seconds upon finishing a Reload within 3.6 seconds of a Weapon Kill:\n• 20 Aim Assist\n• ? ADS Handling\n• ?% decreased Accuracy Cone Growth\nBe The Danger's automatic reload activates this perk.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "trinity-ghoul",
@@ -18763,7 +19869,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "truth",
@@ -18986,7 +20099,80 @@
       "name": "Reaper's Tithe, Truth Catalyst",
       "description": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "nthShot-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "nthShot-shots",
+            "op": "<",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "nthShot-shots" }]
+      },
+      {
+        "id": "nthShot",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "nthShot-shots",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "nthShot-shots" },
+          {
+            "type": "spawn",
+            "part": "nthShot",
+            "count": {
+              "value": 8,
+              "source": {
+                "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+              }
+            },
+            "intervalMs": {
+              "value": 0,
+              "source": {
+                "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
+                "retrieved": "2026-10-20",
+                "status": "unverified",
+                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
+              }
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "turncoat",
@@ -19121,7 +20307,14 @@
       "name": "Turncoat Catalyst",
       "description": "Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence).\nThe amount of Void Overshield granted is determined by how long you were empowered. 3 HP is granted for for each second that Empowerment lasted, capping at 40 HP for 13 seconds of Empowerment.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "two-tailed-fox",
@@ -19277,6 +20470,13 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
     ]
   },
   {
@@ -19413,7 +20613,14 @@
       "name": "Shiver Quiver, Verglas Curve Catalyst",
       "description": "Applying Freeze or Slow to a target decreases Draw Time by 35% (567ms🠚368ms) for ? seconds.",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "vex-mythoclast",
@@ -19589,7 +20796,14 @@
       "name": "Calculated Balance, Vex Mythoclast Catalyst",
       "description": "Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds.\nBuff applies to Auto Rifle mode only.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "vexcalibur",
@@ -19759,7 +20973,14 @@
       "name": "Robber Refit, Immovable Refit, Feedback Refit",
       "description": "Grants the Grave Robber trait:\nPowered Melee Hits and (Glaive) Melee Kills refill the magazine from reserves.\n3 second cooldown between activations.\nGrants the Immovable Object trait:\nWhile blocking and stationary:\nGlaive Projectiles Hits grant 90% increased Weapon Energy.\nGrants the Replenishing Aegis trait:\nRefills 1 round into the Magazine from reserves upon blocking damage.\n1 second cooldown after activation. Does not work while the magazine is overfilled (assumed).",
       "effect": "unknown"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "vigilance-wing",
@@ -19896,7 +21117,14 @@
       "name": "Ensemble, Vigilance Wing Catalyst",
       "description": "Grants the Ensemble trait:\nGrants 30 Handling and 40 Reload Speed while within 15 meters of an ally.\nBuff lingers for 1.5 seconds once you're no longer near allies.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "wavesplitter",
@@ -20033,7 +21261,14 @@
       "name": "Detonator Beam, Attrition Orbs, Wavesplitter Catalyst",
       "description": "Grants 10 Range and 30 Ammo Generation.\nScoring 25 Hits within ? seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.\nScoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy. Hit counter persists through stow.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "whirling-ovation",
@@ -20346,7 +21581,29 @@
       "name": "Whirling Ovation Catalyst",
       "description": "Fully charged rockets overpenetrate through Minor and Elite combatants, leaving a Solar Grenade behind at each combatant's death location for 2? seconds.\nSolar Grenade can benefit from the Touch of Flame Aspect, but not from Sunbracers.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "two-thirds-charge",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "two-thirds-charge" }]
+      },
+      {
+        "id": "one-third-charge",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "one-third-charge" }]
+      },
+      {
+        "id": "no-charge",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "no-charge" }]
+      }
+    ]
   },
   {
     "id": "whisper-of-the-worm",
@@ -20537,7 +21794,14 @@
       "name": "Whisper Catalyst, Whispered Breathing",
       "description": "Grants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without shooting grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against combatants.\nGrants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without firing grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against PvE Combatants.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "wicked-implement",
@@ -20674,7 +21938,14 @@
       "name": "Hadopelagic Tribute, Headstone, Wicked Implement Catalyst",
       "description": "Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity.\nDue Tithing Harvest refilling the entire magazine on Stasis Shard pickup, the overfill effect only activates if your current magazine is above 13 shots remaining.\nGrants the Headstone trait:\nPrecision Kills create a Large Stasis Crystal at the target's location.\nTier 1-2 Minor and Tier 1 Elite Combatants only spawn a Medium Stasis Crystal.\nCreating 5 Crystals within ? seconds prevents the perk from activating for 5 seconds.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "winterbite",
@@ -20812,7 +22083,14 @@
       "name": "Rimestealer, Winterbite Catalyst",
       "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "wish-ender",
@@ -20948,7 +22226,14 @@
       "name": "One for All, Wish-Ender Catalyst",
       "description": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "wish-keeper",
@@ -21138,7 +22423,14 @@
       "name": "Enduring Snare Refit, Multi-Threaded Snare Refit, Vorpal Weapon Refit, Hatchling Refit",
       "description": "Increases Snareweaver Trap duration by 10 seconds (15🠚25).\nIncreases the maximum number of Suspensions per linked trap wire up to 3.\nGrants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]\nGrants the Hatchling trait:\nScoring a Precision Kill or 3 kills within 3 seconds of each other spawns a Threadling at the target's location.",
       "effect": "damage"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "witherhoard",
@@ -21314,7 +22606,14 @@
           }
         }
       }
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   },
   {
     "id": "xenophage",
@@ -21452,6 +22751,13 @@
       "name": "Chain Reaction, Rampage, Xenophage Catalyst",
       "description": "Weapon Kills grant a Stack of Rampage. Maximum of 3 Stacks. Stacks expire one at a time every 🡅4.5 seconds.\nGrants a 10%|21%|33.1% damage increase at 1|2|3 Stacks.\nWeapon Kills trigger a solar elemental explosion, dealing up to 109 [72.8] damage in a 3 meter radius.",
       "effect": "none"
-    }
+    },
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ]
   }
 ]

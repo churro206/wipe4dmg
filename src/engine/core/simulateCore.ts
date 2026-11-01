@@ -79,21 +79,6 @@ export function simulate(
   });
   const { isInPhase } = actor;
 
-  const instances = weapon.damageInstances
-    .filter((instance) => catalyst || !instance.requiresCatalyst)
-    .map((instance) => ({
-      tickFactors: (instance.tickFactors ?? []).map((f) => requireValue(f, "tickFactors")),
-      id: instance.id,
-      delivery: instance.delivery,
-      delayMs: requireValue(instance.delayMs, "delayMs"),
-      damage: requireValue(instance.damagePerTick, "damagePerTick"),
-      ticks: requireValue(instance.ticks, "ticks"),
-      tickIntervalMs: requireValue(instance.tickIntervalMs, "tickIntervalMs"),
-      requiresSetup: instance.requiresSetup ?? false,
-      everyNthShot: instance.everyNthShot
-        ? requireValue(instance.everyNthShot, "everyNthShot")
-        : 1,
-    }));
   const thresholds = weapon.intrinsicParts.flatMap((part) =>
     part.type === "threshold"
       ? [
@@ -178,14 +163,9 @@ export function simulate(
 
   // --- Rules of the weapon (docs/architecture.md section 6, ADR 0018 B3a) --------------------------
   // The engine decides when; what the actions do in the world is done here. A part that a `spawn`
-  // action names is set off by the rules only; the other parts still by the shot (hitEvents).
+  // action names is set off by the rules only: a part without a `spawn` rule does no damage.
   const WEAPON = weapon.id;
   const rules = weapon.rules ?? [];
-  const ruleParts = new Set(
-    rules.flatMap((rule) =>
-      rule.do.flatMap((action) => (action.type === "spawn" ? [action.part] : [])),
-    ),
-  );
   const partsById = new Map(weapon.damageInstances.map((i) => [i.id, i]));
   /** The hits the rules set off: their part and whether it counts as a precision hit. */
   const ruleHits = new WeakMap<
@@ -201,6 +181,7 @@ export function simulate(
     target: TargetState;
     schedule: (event: RunEvent) => void;
     hit?: TimedDamageInstance;
+    shot?: PlannedShot; // the shot of an `on shot` event (setup state, until step 3)
   };
   let firing: Firing | undefined;
   const current = (): Firing => {
@@ -225,14 +206,21 @@ export function simulate(
         const instance = partsById.get(part);
         if (!instance) throw new Error(`A rule spawns the unknown part "${part}"`);
         const damage = requireValue(instance.damagePerTick, "damagePerTick");
+        const { schedule, shot } = current();
+        // Only shots fired while the setup stands deal such a part (moves to a counter in step 3)
+        if (instance.requiresSetup && !shot?.withSetup) return;
         // What the rule omits is 0 ms delay, one hit, no interval (section 6); never the part's own
         const first = timeMs + (delayMs ?? 0);
         const every = intervalMs ?? 0;
         const hits = count ?? 1;
-        const { schedule } = current();
+        const nth = instance.everyNthShot
+          ? requireValue(instance.everyNthShot, "everyNthShot")
+          : 1;
         for (let tick = 0; tick < hits; tick++) {
           const atMs = first + tick * every;
           if (!isInPhase(atMs)) continue;
+          // hitStacks count the hits of such a part (until B3b)
+          if (nth > 1) history.partHitsMs.push(atMs);
           schedule({
             timeMs: atMs,
             group: EVENT_GROUP.weaponHit,
@@ -299,10 +287,17 @@ export function simulate(
     target: TargetState,
     schedule: (event: RunEvent) => void,
     hit?: TimedDamageInstance,
+    shot?: PlannedShot,
   ) {
     if (rules.length === 0) return;
     const previous = firing;
-    firing = { timeMs: event.timeMs, target, schedule, ...(hit ? { hit } : {}) };
+    firing = {
+      timeMs: event.timeMs,
+      target,
+      schedule,
+      ...(hit ? { hit } : {}),
+      ...(shot ? { shot } : {}),
+    };
     try {
       ruleEngine.fire(event);
     } finally {
@@ -334,43 +329,6 @@ export function simulate(
       schedule,
       hit,
     );
-  };
-
-  /** Direct hits of the weapon's damage instances after a shot. */
-  const hitEvents = (shot: PlannedShot): RunEvent[] => {
-    const result: RunEvent[] = [];
-    for (const instance of instances) {
-      if (ruleParts.has(instance.id)) continue;
-      if (instance.requiresSetup && !shot.withSetup) continue;
-      if ((shot.index + 1) % instance.everyNthShot !== 0) continue;
-      for (let tick = 0; tick < instance.ticks; tick++) {
-        const timeMs =
-          shot.timeMs + instance.delayMs + tick * instance.tickIntervalMs;
-        if (!isInPhase(timeMs)) continue;
-        if (instance.everyNthShot > 1) history.partHitsMs.push(timeMs);
-        result.push({
-          timeMs,
-          group: EVENT_GROUP.weaponHit,
-          handle: (_, emit) => {
-            const factors = multiplierAt(timeMs, weapon.element);
-            emit({
-              id: instance.id,
-              timeMs,
-              damage: damageOf(
-                instance.damage * (instance.tickFactors[tick] ?? 1),
-                factors,
-              ),
-              damageSource,
-              element: weapon.element,
-              weaponType: weapon.weaponType,
-              ...(instance.delivery ? { delivery: instance.delivery } : {}),
-              factors,
-            });
-          },
-        });
-      }
-    }
-    return result;
   };
 
   /** Stacks a shot adds to the counters; at a threshold a damage instance follows. */
@@ -477,7 +435,7 @@ export function simulate(
       timeMs: shot.timeMs,
       group: SHOT_GROUP,
       handle: (target, __, later) => {
-        // The rules see the shot first: the hits they set off come before the part hits below.
+        // The rules see the shot first: the hits they set off come before the counter and dot events.
         fireRules(
           {
             on: "shot",
@@ -491,9 +449,10 @@ export function simulate(
           },
           target,
           later,
+          undefined,
+          shot,
         );
         for (const event of [
-          ...hitEvents(shot),
           ...counterEvents(shot),
           ...dotEvents(shot),
         ]) {

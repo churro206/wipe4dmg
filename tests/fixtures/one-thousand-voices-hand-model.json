@@ -99,6 +99,7 @@
       "requiresCatalyst": false
     }
   ],
+  "rules": [{ "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "shot" }] }],
   "intrinsicParts": [
     {
       "type": "counter",

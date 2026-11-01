@@ -4,7 +4,7 @@
 import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
 import { simulate } from "../src/engine/simulate";
-import { testWeapon } from "./support/testWeapon";
+import { testWeapon, withPartRules } from "./support/testWeapon";
 
 const sourced = (value: number): SourcedNumber => ({
   value,
@@ -12,7 +12,7 @@ const sourced = (value: number): SourcedNumber => ({
 });
 
 // 60 rpm, every third shot adds a cluster of 4 hits of 10
-const rocket: Weapon = {
+const rocket: Weapon = withPartRules({
   ...testWeapon,
   ammo: "primary",
   fireRateRpm: sourced(60),
@@ -28,7 +28,7 @@ const rocket: Weapon = {
       everyNthShot: sourced(3),
     },
   ],
-};
+});
 
 describe("every Nth shot", () => {
   const run = simulate;

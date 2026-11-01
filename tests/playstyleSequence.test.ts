@@ -6,14 +6,14 @@ import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
 import { playstylesOf } from "../src/engine/playstyle";
 import { simulate } from "../src/engine/simulate";
-import { testWeapon } from "./support/testWeapon";
+import { testWeapon, withPartRules } from "./support/testWeapon";
 
 const sourced = (value: number): SourcedNumber => ({
   value,
   source: { name: "test", url: "", retrieved: "2026-10-30", status: "unverified" },
 });
 
-const sniper: Weapon = {
+const sniper: Weapon = withPartRules({
   ...testWeapon,
   magazine: sourced(3),
   damageInstances: [
@@ -40,7 +40,7 @@ const sniper: Weapon = {
       },
     },
   ],
-};
+});
 
 describe("playstyle sequence", () => {
   const run = simulate;

@@ -6,7 +6,7 @@
 import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
 import { simulate } from "../src/engine/simulate";
-import { testWeapon } from "./support/testWeapon";
+import { testWeapon, withPartRules } from "./support/testWeapon";
 
 const sourced = (value: number): SourcedNumber => ({
   value,
@@ -14,7 +14,7 @@ const sourced = (value: number): SourcedNumber => ({
 });
 
 // 60 rpm (1 s per shot), with the catalyst 120 rpm; the ring stands 5 s
-const ringBow: Weapon = {
+const ringBow: Weapon = withPartRules({
   ...testWeapon,
   weaponType: "bow",
   ammo: "primary",
@@ -49,7 +49,7 @@ const ringBow: Weapon = {
       reloadTimeMs: sourced(0),
     },
   },
-};
+});
 
 const seekerShots = (result: ReturnType<typeof simulate>) =>
   result.shots

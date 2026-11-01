@@ -11,12 +11,19 @@ export function withPlaystyle(weapon: Weapon, playstyle?: string): Weapon {
   const replaced = active.flatMap((instance) => instance.playstyle?.replaces ?? []);
   const fireRateRpm = active.find((instance) => instance.playstyle?.fireRateRpm)?.playstyle
     ?.fireRateRpm;
+  const damageInstances = weapon.damageInstances.filter((instance) =>
+    instance.playstyle ? active.includes(instance) : !replaced.includes(instance.id),
+  );
+  const kept = new Set(damageInstances.map((instance) => instance.id));
+  // A rule that spawns a part of another playstyle is dropped with it (step 2 makes it a condition)
+  const rules = weapon.rules?.filter((rule) =>
+    rule.do.every((action) => action.type !== "spawn" || kept.has(action.part)),
+  );
   return {
     ...weapon,
     ...(fireRateRpm ? { fireRateRpm } : {}),
-    damageInstances: weapon.damageInstances.filter((instance) =>
-      instance.playstyle ? active.includes(instance) : !replaced.includes(instance.id),
-    ),
+    damageInstances,
+    ...(rules ? { rules } : {}),
   };
 }
 

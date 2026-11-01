@@ -13,7 +13,7 @@ import { AegisAbilityRow, Weapon, type Rule } from "../src/data/schema";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate } from "../src/engine/simulate";
-import { testWeapon } from "./support/testWeapon";
+import { testWeapon, withPartRules } from "./support/testWeapon";
 
 const source = {
   name: "docs/architecture.md, section 11",
@@ -86,7 +86,7 @@ const withRules: Weapon = Weapon.parse({
 });
 
 // The legacy construction of the same weapon: a part every 5th shot that applies the keyword
-const legacy: Weapon = Weapon.parse({
+const legacy: Weapon = withPartRules(Weapon.parse({
   ...base,
   damageInstances: [
     part("shot", 100, true),
@@ -106,7 +106,7 @@ const legacy: Weapon = Weapon.parse({
       source,
     },
   ],
-});
+}));
 
 const run = (weapon: Weapon, seconds: number, withEmber: boolean) =>
   simulate(weapon, seconds, withEmber ? [ember] : [], buckets, { keywords });

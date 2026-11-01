@@ -377,8 +377,8 @@ export function createRuleEngine(
 
   // --- Actions -----------------------------------------------------------------------------------
 
-  const ms = (value: RuleValue | undefined) =>
-    value === undefined ? undefined : requireValue(value, "duration");
+  const ms = (value: RuleValue | undefined, name = "duration") =>
+    value === undefined ? undefined : requireValue(value, name);
 
   const endOf = (timeMs: number, durationMs: number | undefined) =>
     durationMs === undefined ? Infinity : timeMs + durationMs;
@@ -391,9 +391,11 @@ export function createRuleEngine(
           ownerId,
           part: action.part,
           timeMs,
-          ...(action.delayMs ? { delayMs: ms(action.delayMs) } : {}),
-          ...(action.count ? { count: requireValue(action.count, "count") } : {}),
-          ...(action.intervalMs ? { intervalMs: ms(action.intervalMs) } : {}),
+          ...(action.delayMs ? { delayMs: ms(action.delayMs, "delayMs") } : {}),
+          ...(action.count ? { count: requireValue(action.count, "ticks") } : {}),
+          ...(action.intervalMs
+            ? { intervalMs: ms(action.intervalMs, "tickIntervalMs") }
+            : {}),
           factor: action.factor ? requireValue(action.factor, "factor") : 1,
         });
         return;

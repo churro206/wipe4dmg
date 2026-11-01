@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import raw from "./fixtures/one-thousand-voices-hand-model.json";
 import { loadWeapon } from "../src/engine/loadWeapon";
 import { simulate } from "../src/engine/simulate";
+import { withPartRules } from "./support/testWeapon";
 
 const weapon = loadWeapon(raw);
 // Without intrinsic parts (scorch, ignition): these tests check the damage of the shots only.
@@ -102,7 +103,7 @@ describe("simulate: damage", () => {
     const withDelay = structuredClone(shotsOnly);
     withDelay.damageInstances[0].delayMs.value = 500;
     const { shots, damageInstances } = simulate(
-      withDelay,
+      withPartRules(withDelay),
       LONG_DAMAGE_PHASE_SECONDS,
     );
     expect(damageInstances).toHaveLength(shots.length);
@@ -119,7 +120,7 @@ describe("simulate: damage", () => {
     withTicks.damageInstances[0].ticks.value = 3;
     withTicks.damageInstances[0].tickIntervalMs.value = 250;
     const { shots, damageInstances } = simulate(
-      withTicks,
+      withPartRules(withTicks),
       LONG_DAMAGE_PHASE_SECONDS,
     );
     expect(damageInstances).toHaveLength(shots.length * 3);
@@ -133,7 +134,7 @@ describe("simulate: damage", () => {
   it("counts a shot whose delayed damage falls after the damage phase, but not its damage", () => {
     const withDelay = structuredClone(shotsOnly);
     withDelay.damageInstances[0].delayMs.value = 500;
-    const result = simulate(withDelay, chargeTimeMs / 1000);
+    const result = simulate(withPartRules(withDelay), chargeTimeMs / 1000);
     expect(result.shots).toHaveLength(1);
     expect(result.damageInstances).toEqual([]);
     expect(result.totalDamage).toBe(0);
@@ -158,7 +159,9 @@ describe("simulate: damage", () => {
       id: "catalystOnly",
       requiresCatalyst: true,
     });
-    expect(simulate(withCatalystInstance, 10)).toEqual(simulate(weapon, 10));
+    expect(simulate(withPartRules(withCatalystInstance), 10)).toEqual(
+      simulate(weapon, 10),
+    );
   });
 
   it("includes damage instances that require the catalyst when it is selected", () => {
@@ -168,7 +171,7 @@ describe("simulate: damage", () => {
       id: "catalystOnly",
       requiresCatalyst: true,
     });
-    const { damageInstances } = simulate(withCatalystInstance, 10, [], [], {
+    const { damageInstances } = simulate(withPartRules(withCatalystInstance), 10, [], [], {
       catalyst: true,
     });
     expect(damageInstances.some((d) => d.id === "catalystOnly")).toBe(true);
@@ -193,7 +196,7 @@ describe("simulate: invalid data", () => {
     (field) => {
       const incomplete = structuredClone(weapon);
       incomplete.damageInstances[0][field].value = null;
-      expect(() => simulate(incomplete, 30)).toThrow(field);
+      expect(() => simulate(withPartRules(incomplete), 30)).toThrow(field);
     },
   );
 

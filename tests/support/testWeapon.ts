@@ -3,6 +3,7 @@
 // Its numbers are not game values and never leave the tests.
 
 import type { SourcedNumber, Weapon } from "../../src/data/schema";
+import { partRules } from "../../scripts/lib/partRules";
 
 const testValue = (value: number): SourcedNumber => ({
   value,
@@ -11,6 +12,12 @@ const testValue = (value: number): SourcedNumber => ({
     retrieved: "2026-10-20",
     status: "unverified",
   },
+});
+
+/** The weapon with the rules that set off its parts, like the import writes them (partRules). */
+export const withPartRules = (weapon: Weapon): Weapon => ({
+  ...weapon,
+  rules: weapon.damageInstances.flatMap(partRules),
 });
 
 export const testWeapon: Weapon = {
@@ -39,6 +46,7 @@ export const testWeapon: Weapon = {
       requiresCatalyst: false,
     },
   ],
+  rules: [{ id: "shot", on: { on: "shot" }, do: [{ type: "spawn", part: "shot" }] }],
   intrinsicParts: [],
   intrinsics: [],
 };

@@ -28,6 +28,7 @@ import type {
 } from "../../src/data/schema.ts";
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
+import { partRules } from "./partRules.ts";
 import { catalystReloadFactor, reloadFormulaOf } from "./reloadFormulas.ts";
 import {
   abilityKindsNamed,
@@ -2259,6 +2260,8 @@ export function buildWeaponImport(
         : {}),
     };
 
+    // The parts are set off by rules (architecture section 6): one `spawn` per part on every shot
+    weapon.rules = weapon.damageInstances.flatMap(partRules);
     entry.status = "package";
     packages.push(weapon);
   }

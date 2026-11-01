@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 import type { Effect, MultiplierPart, SourcedNumber, Weapon } from "../src/data/schema";
 import { simulate } from "../src/engine/simulate";
 import { buckets } from "../src/ui/data";
-import { testWeapon } from "./support/testWeapon";
+import { testWeapon, withPartRules } from "./support/testWeapon";
 
 const sourced = (value: number): SourcedNumber => ({
   value,
@@ -63,7 +63,7 @@ describe("hitStacks", () => {
 // Blighted Seekers of Barrow-Dyad that fill the reload ("overwriting regular shots", Compendium).
 describe("hitStacks with every-Nth-shot parts", () => {
   // 60 rpm, magazine 2, reload 2 s: shots at 0, 1, 4 and 5 s; every 2nd shot a seeker 1.5 s later.
-  const seekerWeapon: Weapon = {
+  const seekerWeapon: Weapon = withPartRules({
     ...testWeapon,
     ammo: "primary",
     fireRateRpm: sourced(60),
@@ -79,7 +79,7 @@ describe("hitStacks with every-Nth-shot parts", () => {
         everyNthShot: sourced(2),
       },
     ],
-  };
+  });
   const run = () =>
     simulate(
       seekerWeapon,
