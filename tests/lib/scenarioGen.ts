@@ -162,7 +162,7 @@ type MappedAssumptions = Pick<Scenario["build"], "catalyst" | "exoticArmorId" | 
  */
 function assumptionMapper(
   data: Pick<TotalGenData, "effects" | "exoticArmor" | "artifactPerks" | "ignored">,
-): (assumptions: string[], weapon?: Weapon) => MappedAssumptions {
+): (assumptions: string[], weapon?: Weapon, execution?: boolean) => MappedAssumptions {
   const effectByName = new Map<string, string>();
   for (const e of data.effects) {
     const key = norm(withoutNote(e.name));
@@ -180,7 +180,10 @@ function assumptionMapper(
   }
   const ignored = new Set(Object.keys(data.ignored).map(norm));
 
-  return (assumptions, weapon) => {
+  // `execution`: words that say how Aegis played ("heavy attacks", "fully charged") need no switch.
+  // That holds where the model plays the item by its own plan (tab Weapons, an ability that links
+  // the row); a super or weapon of the totals has no such plan, so the word stays a missing switch.
+  return (assumptions, weapon, execution = false) => {
     const mapped: MappedAssumptions = { effectIds: [], unmapped: [] };
     const intrinsics = new Set((weapon?.intrinsics ?? []).map((i) => norm(i.name)));
     const catalystOptions = new Set(
@@ -197,7 +200,10 @@ function assumptionMapper(
     for (const assumption of assumptions) {
       const name = assumptionName(assumption);
       const key = norm(name);
-      const effectId = effectByName.get(norm(withoutNote(assumption))) ?? effectByName.get(key);
+      // "Roaring Flames x3" is the effect with 3 stacks; without the stack count in the model it is
+      // no switch, unless the item plays by its own plan (see `execution`).
+      const effectId =
+        effectByName.get(norm(withoutNote(assumption))) ?? (execution ? effectByName.get(key) : undefined);
       const armor = armorByName.get(key);
       const stacked = intrinsicArmor.get(norm(assumption.replace(/\s+x\d+$/, "")));
       if (key === "catalyst" || catalystOptions.has(key) || catalystPerks.has(key)) {
@@ -214,7 +220,7 @@ function assumptionMapper(
         // "Feast of Light x6": the intrinsic of an exotic, with its stacks built up before.
         mapped.exoticArmorId = stacked.id;
         mapped.exoticPreBuilt = true;
-      } else if (ignored.has(key) || isExecution(name)) continue;
+      } else if (ignored.has(key) || (execution && isExecution(name))) continue;
       else mapped.unmapped.push(assumption);
     }
     return mapped;
@@ -343,7 +349,7 @@ export function generateAbilityScenarios(
       skipped.push({ row, reason: "no measured value" });
       continue;
     }
-    const { effectIds, unmapped, ...mapped } = map(row.assumptions);
+    const { effectIds, unmapped, ...mapped } = map(row.assumptions, undefined, linked.has(row.id));
     if (unmapped.length > 0) {
       missing.push({ row, unmapped });
       continue;

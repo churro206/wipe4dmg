@@ -6,11 +6,12 @@ import { buildWeaponImport } from "../../scripts/lib/weaponPackages";
 import rawTotals from "../../src/data/aegis-totals.json";
 import { AegisTotalsSnapshot } from "../../src/data/schema";
 import { abilities, artifactData, effects, exoticArmor, weapons } from "../../src/ui/data";
-import auto from "../fixtures/meta-probe-auto.json";
-import probe from "../fixtures/meta-probe.json";
+import switches from "../fixtures/scenario-switches.json";
 import { aegisCoverage, type CoverageRow } from "../../scripts/lib/aegisCoverage";
 import type { MeasuredRow } from "../../scripts/lib/missingImpact";
 import { autoEntries } from "../../scripts/lib/probeAuto";
+import { tabOf } from "./scenarioBench";
+import { handMadeScenarios } from "./scenarioFiles";
 
 /** The measured value of every Aegis row, for the impact of what is missing (scripts/lib/missingImpact.ts). */
 export function realMeasured(): MeasuredRow[] {
@@ -25,14 +26,19 @@ export function realMeasured(): MeasuredRow[] {
 
 export function realCoverage(): CoverageRow[] {
   const { rows: totals } = AegisTotalsSnapshot.parse(rawTotals);
-  const manual = new Set(probe.entries.map((e) => e.aegisId));
+  // the rows of Sustained and Swap that a scenario made by hand covers
+  const manual = new Set(
+    handMadeScenarios()
+      .filter((s) => tabOf(s) === "sustained" || tabOf(s) === "swap")
+      .map((s) => s.aegisRow),
+  );
   const { entries, skipped } = autoEntries(totals, {
     weapons,
     abilities,
     effects,
     exoticArmor,
     artifactPerks: artifactData.artifacts.flatMap((a) => a.perks),
-    ignored: auto.ignored,
+    ignored: switches.ignoredTotals,
     covered: manual,
   });
   const inputs = loadWeaponImportInputs();

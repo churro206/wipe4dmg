@@ -20,4 +20,4 @@ Import-Befehle laden herunter, Build-Befehle schreiben Data Files und Prüftabel
 
 - `tests/uiIcons.test.ts` ist rot, wenn die UI für etwas kein Icon hat. Varianten erben das Icon ihrer Ability, Einzelfälle ohne Manifest-Item kommen von Hand in `icon-refs.json`.
 - `import:icons` muss manchmal zweimal laufen, weil der erste Lauf `icons.json` nicht neu schreibt.
-- Danach prüfen mit dem Skill `pruefen`. Geänderte Zahlen in `docs/meta-probe*.md` nennen und begründen.
+- Danach prüfen mit dem Skill `pruefen`. Geänderte Zahlen in `tests/__snapshots__/scenario-bench.md` (Gruppen, `npm run probe`) nennen und begründen.

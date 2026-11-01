@@ -3,8 +3,6 @@
 // the key figures is frozen in a file snapshot; a stage may change it only where it intends to
 // (update with `npx vitest -u`, explain the change in the commit).
 
-import { readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import rawAbilityRows from "../src/data/aegis-abilities.json";
 import rawAegis from "../src/data/aegis-weapons.json";
@@ -15,16 +13,28 @@ import { AegisAbilityRow, AegisTotalsSnapshot, AegisWeaponSnapshot } from "../sr
 import { abilities, artifactData, effects, exoticArmor, weapons } from "../src/ui/data";
 import switches from "./fixtures/scenario-switches.json";
 import { fittedRows } from "./lib/fittedRows";
+import { handMadeScenarios } from "./lib/scenarioFiles";
+import deviations from "./fixtures/ranking-gate.json";
 import {
   benchMarkdown,
   checkPairs,
   checkSet,
+  DELTA_LIMIT,
+  GATED,
+  groupFigures,
+  groupMarkdown,
+  groupOf,
+  GROUPS,
   judge,
   keyFigures,
+  pairKey,
   runBench,
-  Scenario,
   scenarioProblems,
+  SPEARMAN_MIN,
   tabOf,
+  TOP,
+  WITHIN,
+  type Group,
 } from "./lib/scenarioBench";
 import {
   generateAbilityScenarios,
@@ -34,15 +44,9 @@ import {
   STAT_200,
 } from "./lib/scenarioGen";
 
-const DIR = "tests/scenarios";
 const SNAPSHOT = "./__snapshots__/scenario-bench.md";
 
-const handMade = readdirSync(DIR)
-  .filter((file) => file.endsWith(".json"))
-  .sort()
-  .flatMap((file) =>
-    Scenario.array().parse(JSON.parse(readFileSync(join(DIR, file), "utf8"))),
-  );
+const handMade = handMadeScenarios();
 const aegis = AegisWeaponSnapshot.parse(rawAegis).rows;
 const totals = AegisTotalsSnapshot.parse(rawTotals).rows;
 const abilityRows = AegisAbilityRow.array().parse(rawAbilityRows);
@@ -83,8 +87,13 @@ const all = [
 ];
 const scenarios = all.filter((s) => tabOf(s) === "weapons");
 const otherTabs = all.filter((s) => tabOf(s) !== "weapons");
-const fitted = fittedRows(rawPackages, abilities).weaponRows;
-const judged = judge(runBench(scenarios), fitted);
+const { weaponRows, abilityRows: fittedAbilityRows } = fittedRows(rawPackages, abilities);
+// Rows the model took a value from: Weapons and Sustained rows of the item files, rows of ability packages.
+const fitted = new Set([...weaponRows, ...fittedAbilityRows]);
+const judgedAll = judge(runBench(all), fitted);
+const judged = judgedAll.filter((r) => tabOf(r.scenario) === "weapons");
+const rowTypes = new Map(totals.map((r) => [r.id, r.type]));
+const rowType = (aegisRow: string) => rowTypes.get(aegisRow);
 
 describe("scenarios", () => {
   it("have unique ids and rows, and compare only to scenarios of the same weapon", () => {
@@ -120,7 +129,7 @@ describe("scenarios", () => {
 });
 
 describe("scenarios of the other tabs (block P)", () => {
-  const others = runBench(otherTabs);
+  const others = judgedAll.filter((r) => tabOf(r.scenario) !== "weapons");
   const byId = (id: string) => others.find((r) => r.scenario.id === id)!;
 
   it.each(otherTabs.map((s) => [s.id, s] as const))("%s quotes its Aegis row", (_, s) => {
@@ -227,10 +236,79 @@ describe("check set", () => {
   });
 });
 
+// ---- Groups: the ranking gate of docs/product.md, on the scenarios of all tabs ----
+
+const aegisRowCount: Record<Group, number> = {
+  Weapons: aegis.filter((r) => r.wipe > 0 && r.perShot > 0).length,
+  Supers: totals.filter((r) => r.tab === "swap" && r.type === "super" && r.total !== null).length,
+  Heavy: totals.filter((r) => r.tab === "sustained" && r.type === "power" && r.total !== null).length,
+  Special: totals.filter((r) => r.tab === "sustained" && r.type === "special" && r.total !== null).length,
+  Abilities: abilityRows.filter((r) => r.perUseStat100.value !== null).length,
+};
+const figures = GROUPS.map((g) => groupFigures(judgedAll, g, rowType, aegisRowCount[g]));
+const groupOfTotal = (type: string, tab: string): Group | null =>
+  groupOf({ tab, aegisRow: "" } as Scenario, () => type);
+const missingByGroup: Record<string, { unmapped: string[] }[]> = {
+  Weapons: generated.missing,
+  Abilities: generatedAbilities.missing,
+  ...Object.fromEntries(
+    (["Supers", "Heavy", "Special"] as const).map((g) => [
+      g,
+      generatedTotals.missing.filter((m) => groupOfTotal(m.row.type, m.row.tab) === g),
+    ]),
+  ),
+};
+const topHitDeviations: Record<string, string> = deviations.topHits;
+const pairDeviations: Record<string, string> = deviations.pairs;
+
 describe("scenario bench", () => {
   it("keeps the frozen table and key figures", async () => {
     await expect(
-      benchMarkdown(judged, generated.missing, generated.skipped),
+      benchMarkdown(judged, generated.missing, generated.skipped) +
+        groupMarkdown(figures, pairDeviations, missingByGroup),
     ).toMatchFileSnapshot(SNAPSHOT);
+  });
+});
+
+describe.each(figures.filter((f) => GATED.includes(f.group)).map((f) => [f.group, f] as const))(
+  "ranking gate: %s",
+  (group, f) => {
+    it(`has a Spearman of at least ${SPEARMAN_MIN}`, () => {
+      if (!f.rank) return;
+      expect(f.rank.rho).toBeGreaterThanOrEqual(SPEARMAN_MIN);
+    });
+
+    it(`has the Aegis top ${TOP} in our top ${WITHIN} or a known deviation`, () => {
+      if (!f.rank) return;
+      if (f.rank.hits < TOP) {
+        expect(topHitDeviations[group], `hits: ${f.rank.hits}/${TOP}`).toBeDefined();
+      } else {
+        expect(topHitDeviations[group], "listed as deviation but all hits").toBeUndefined();
+      }
+    });
+
+    it.each(f.pairs.map((p) => [pairKey(group, p), p] as const))(
+      "%s lies within the limit or is a known deviation",
+      (key, p) => {
+        if (Math.abs(p.gap) > DELTA_LIMIT) {
+          expect(pairDeviations[key], `gap: ${p.gap.toFixed(1)}`).toBeDefined();
+        } else {
+          expect(pairDeviations[key], "listed as deviation but inside the limit").toBeUndefined();
+        }
+      },
+    );
+  },
+);
+
+describe("ranking gate", () => {
+  it("lists no deviation that no longer exists", () => {
+    const keys = new Set(figures.flatMap((f) => f.pairs.map((p) => pairKey(f.group, p))));
+    for (const key of Object.keys(pairDeviations)) expect(keys.has(key), key).toBe(true);
+    for (const group of Object.keys(topHitDeviations)) expect(GATED.includes(group as Group), group).toBe(true);
+  });
+
+  it("measures every group", () => {
+    expect(figures.map((f) => f.group)).toEqual([...GROUPS]);
+    for (const f of figures) expect(f.covered, f.group).toBeGreaterThan(0);
   });
 });

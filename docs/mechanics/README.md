@@ -29,9 +29,8 @@ Die einzige Liste. Die Konstante im Code gilt; ändert sie sich, diese Tabelle m
 | Ability aus Teilen gegen Aegis | ±15 % | `COMPONENT_TOLERANCE` (`scripts/lib/abilityComponents.ts`) | ADR 0009, Ergänzung (vorher ±10 %) |
 | Keyword-Anteil in Ability-Paketen | ±2,5 % | `BAKED_TOLERANCE` (`tests/abilityGate.test.ts`) | Keywords zählen nicht doppelt |
 | Waffen-Paket, Timing, Option, Waffen-Effect | ±3 % | `TOLERANCE` (`scripts/lib/weaponPackages.ts`, `tests/weaponEffectGate.test.ts`) | ADR 0011, 0012, 0013 |
-| Gesamtprobe gegen Aegis Sustained/Swap | ±15 % um den Median | `TOLERANCE` (`tests/metaProbe.test.ts`, `tests/metaProbeAuto.test.ts`) | Skala von Aegis kürzt sich heraus |
 | Text-Abgleich: gemessener Wert gegen Prozent im Text | ±25 % | `MEASURED_TOLERANCE` (`scripts/lib/textCheck.ts`) | Text nennt oft nur den Grundwert |
-| Rangfolge-Gate | Spearman ≥ 0,9; Aegis-Top-3 in unseren Top 5; Delta-Paare ±2 Prozentpunkte | `tests/rankingGate.test.ts` | `docs/product.md`, Stand in `docs/ranking-gate.md` |
+| Rangfolge-Gate | Spearman ≥ 0,9; Aegis-Top-3 in unseren Top 5; Delta-Paare ±2 Prozentpunkte | `SPEARMAN_MIN`, `DELTA_LIMIT`, `TOP`, `WITHIN` (`tests/lib/scenarioBench.ts`, Test `tests/scenarioBench.test.ts`) | `docs/product.md`; gilt für Supers, Heavy, Special; Stand in `tests/__snapshots__/scenario-bench.md` |
 | Prüfstand: Szenario gegen Aegis-Zeile | ±3 % | `TOLERANCE` (`tests/lib/scenarioBench.ts`) | ADR 0017; ab B2 zählen nur Zeilen der Prüfmenge, Hauptkennzahl Delta-Paare ±2 Prozentpunkte (ADR 0018) |
 | Totzone der Eichung | 2 % | ab B5 (`npm run calibrate`) | ADR 0018; kleinere Abweichungen nach `docs/known-inaccuracies.md` |
 

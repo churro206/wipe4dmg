@@ -11,8 +11,8 @@ import { GuardianClass, Subclass, type Build } from "../../src/data/schema";
 import { fitArtifact } from "../../src/engine/artifacts";
 import { buildSimulation } from "../../src/engine/buildSimulation";
 import { simulate, type SimulationResult } from "../../src/engine/simulate";
-import { buckets, effects, exoticArmor, gameData, weapons } from "../../src/ui/data";
-import { deltaPairs, spearman, type DeltaPair, type Item } from "./ranking";
+import { abilities, buckets, effects, exoticArmor, gameData, weapons } from "../../src/ui/data";
+import { deltaPairs, spearman, topHits, type DeltaPair, type Item } from "./ranking";
 import { lotOf, type Lot, type MissingSwitch, type Skipped } from "./scenarioGen";
 
 /** Share of the measurement a row may miss and still count as an absolute hit (information only). */
@@ -215,10 +215,17 @@ export const checkSet = (rows: Judged[]) =>
 export const itemId = (s: Scenario) =>
   tabOf(s) === "abilities" && s.build.abilityStat === 200 ? `${s.aegisRow}@stat-200` : s.aegisRow;
 
+/** Weapons are labelled by id (frozen in the snapshot); the other tabs by the name of weapon or ability. */
+const nameOf = (s: Scenario): string => {
+  if (tabOf(s) === "weapons") return s.build.weaponId;
+  if (s.build.abilityId) return abilities.find((a) => a.id === s.build.abilityId)?.name ?? s.build.abilityId;
+  return weapons.find((w) => w.id === s.build.weaponId)?.name ?? s.build.weaponId;
+};
+
 const toItem = (r: Judged): Item => ({
   id: itemId(r.scenario),
   tab: tabOf(r.scenario),
-  name: r.scenario.build.abilityId ?? r.scenario.build.weaponId,
+  name: nameOf(r.scenario),
   assumptions: r.scenario.playstyle,
   aegis: r.measured,
   ours: r.model!,
@@ -269,6 +276,140 @@ export function keyFigures(rows: Judged[]) {
   };
 }
 
+// ---- Groups (block P, step 4): what the rows check, column "Prüft" of docs/product.md ----
+
+export const GROUPS = ["Weapons", "Supers", "Heavy", "Special", "Abilities"] as const;
+export type Group = (typeof GROUPS)[number];
+/** Groups that the ranking gate enforces (the thresholds of the former gate); the others report. */
+export const GATED: readonly Group[] = ["Supers", "Heavy", "Special"];
+export const SPEARMAN_MIN = 0.9;
+export const TOP = 3;
+export const WITHIN = 5;
+
+/** The group of a scenario; `rowType` is the column "Type" of the Aegis row (Sustained, Swap). */
+export function groupOf(s: Scenario, rowType: (aegisRow: string) => string | undefined): Group | null {
+  const type = rowType(s.aegisRow);
+  switch (tabOf(s)) {
+    case "weapons":
+      return "Weapons";
+    case "abilities":
+      return "Abilities";
+    case "swap":
+      return type === "super" ? "Supers" : null;
+    case "sustained":
+      return type === "power" ? "Heavy" : type === "special" ? "Special" : null;
+  }
+}
+
+/** The scenario at stat 200 repeats its row; it counts for pairs, not for rank and coverage. */
+const isStatVariant = (s: Scenario) => tabOf(s) === "abilities" && s.build.abilityStat === 200;
+
+export type GroupFigures = {
+  group: Group;
+  aegisRows: number; // rows of the group in the Aegis sheet that hold a value
+  covered: number; // of them with a scenario the core can run
+  fitted: number; // of the covered, rows the model took a value from (information)
+  check: number; // rows of the check set
+  rank: { rho: number; hits: number } | null; // from 5 rows of the check set
+  pairs: DeltaPair[]; // delta pairs of the check set
+  rows: Judged[]; // the check set (without the scenarios at stat 200)
+};
+
+export function groupFigures(
+  rows: Judged[],
+  group: Group,
+  rowType: (aegisRow: string) => string | undefined,
+  aegisRows: number,
+): GroupFigures {
+  const inGroup = rows.filter((r) => groupOf(r.scenario, rowType) === group);
+  const base = counted(inGroup).filter((r) => !isStatVariant(r.scenario));
+  const check = checkSet(inGroup).filter((r) => !isStatVariant(r.scenario));
+  const aegis = check.map((r) => r.measured);
+  const ours = check.map((r) => r.model!);
+  return {
+    group,
+    aegisRows,
+    covered: new Set(base.map((r) => r.scenario.aegisRow)).size,
+    fitted: new Set(base.filter((r) => r.fitted).map((r) => r.scenario.aegisRow)).size,
+    check: check.length,
+    rank:
+      check.length >= MIN_RANK_ROWS
+        ? { rho: spearman(aegis, ours), hits: topHits(aegis, ours, TOP, WITHIN) }
+        : null,
+    pairs: checkPairs(inGroup),
+    rows: check,
+  };
+}
+
+/** Key of a delta pair in `tests/fixtures/ranking-gate.json`. */
+export const pairKey = (group: Group, p: DeltaPair) => `${group}: ${p.item} + ${p.added}`;
+
+/** The groups as Markdown: the table of figures, the delta pairs with the reason of a known deviation. */
+export function groupMarkdown(
+  figures: GroupFigures[],
+  pairDeviations: Record<string, string>,
+  missingByGroup: Record<string, { unmapped: string[] }[]>,
+): string {
+  const cell = (f: GroupFigures) =>
+    f.rank ? `${f.rank.rho.toFixed(2)} | ${f.rank.hits}/${TOP}` : "< 5 rows | —";
+  return [
+    "",
+    "## Groups",
+    "",
+    `Rows by what they check (column "Prüft" of \`docs/product.md\`). Coverage: Aegis rows with a scenario the core can run. Fitted: of them, rows the model took a value from (information, not in the check set). Rank (check set, from ${MIN_RANK_ROWS} rows): Spearman, and how many of the Aegis top ${TOP} stand in our top ${WITHIN}. Thresholds for the groups ${GATED.join(", ")}: Spearman ≥ ${SPEARMAN_MIN}, ${TOP} of ${TOP}, delta pairs ±${DELTA_LIMIT}; known deviations with their reason in \`tests/fixtures/ranking-gate.json\`. The other groups report until the owner has confirmed their numbers.`,
+    "",
+    "| Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |",
+    "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ...figures.map(
+      (f) =>
+        `| ${f.group} | ${f.aegisRows} | ${f.covered} | ${f.aegisRows === 0 ? "—" : `${Math.round((f.covered / f.aegisRows) * 100)} %`} | ${f.fitted} | ${f.check} | ${cell(f)} | ${f.pairs.filter((p) => Math.abs(p.gap) <= DELTA_LIMIT).length} of ${f.pairs.length} |`,
+    ),
+    "",
+    "## Delta pairs by group (check set)",
+    "",
+    "| Group | Row | Extra assumption | Aegis | Model | Gap | Reason of the deviation |",
+    "| --- | --- | --- | ---: | ---: | ---: | --- |",
+    ...figures.flatMap((f) =>
+      [...f.pairs]
+        .sort((a, b) => Math.abs(b.gap) - Math.abs(a.gap) || a.item.localeCompare(b.item))
+        .map(
+          (p) =>
+            `| ${f.group} | ${p.item} | ${p.added} | ${points(p.aegisDelta)} | ${points(p.ourDelta)} | ${points(p.gap)} | ${pairDeviations[pairKey(f.group, p)] ?? ""} |`,
+        ),
+    ),
+    "",
+    "## Rows of the check set by group",
+    "",
+    "Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full modifiers).",
+    "",
+    "| Group | Aegis row | Aegis | Model | Deviation |",
+    "| --- | --- | ---: | ---: | ---: |",
+    ...figures.flatMap((f) =>
+      [...f.rows]
+        .sort((a, b) => a.scenario.aegisRow.localeCompare(b.scenario.aegisRow))
+        .map(
+          (r) =>
+            `| ${f.group} | ${r.scenario.aegisRow} | ${amount(r.measured)} | ${amount(r.model)} | ${percent(r.deviation)} |`,
+        ),
+    ),
+    "",
+    "## Missing switches by group",
+    "",
+    "Assumptions of Aegis without a switch, with the number of rows of the group that name them.",
+    ...figures.flatMap((f) => {
+      const wanted = missingByAssumption(missingByGroup[f.group] ?? []);
+      return [
+        "",
+        `### ${f.group} (${(missingByGroup[f.group] ?? []).length} rows)`,
+        "",
+        ...wanted.slice(0, 15).map(([a, n]) => `- ${a}: ${n}`),
+        ...(wanted.length > 15 ? [`- … and ${wanted.length - 15} more`] : []),
+      ];
+    }),
+    "",
+  ].join("\n");
+}
+
 const percent = (value: number | null) =>
   value === null ? "—" : `${value >= 0 ? "+" : "−"}${Math.abs(value * 100).toFixed(1)} %`;
 const points = (value: number) => `${value >= 0 ? "+" : "−"}${Math.abs(value).toFixed(1)}`;
@@ -276,7 +417,7 @@ const amount = (value: number | null) => (value === null ? "—" : value.toFixed
 const MAX_LISTED = 40;
 
 /** Assumptions without a switch, with the number of rows that name them, the most frequent first. */
-export function missingByAssumption(missing: MissingSwitch[]): [string, number][] {
+export function missingByAssumption(missing: { unmapped: string[] }[]): [string, number][] {
   const count = new Map<string, number>();
   for (const m of missing) for (const a of new Set(m.unmapped)) count.set(a, (count.get(a) ?? 0) + 1);
   return [...count.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
