@@ -1943,3 +1943,86 @@ export const WeaponOverride = z.object({
     .optional(),
 });
 export type WeaponOverride = z.infer<typeof WeaponOverride>;
+
+// ---------------------------------------------------------------------------------------------
+// Items (docs/architecture.md section 5, ADR 0018, stage B4): one file per item, weapons under
+// src/data/items/weapons/<id>.json. The author writes the structure; a number is a `$` reference
+// to a snapshot, an expression of references, or a SourcedNumber with its source. The import
+// (scripts/lib/items/) resolves them and the runtime schema (Weapon) checks the result, so rules and
+// timing have no second schema here. The status of a value follows from its reference, never from
+// the file; a text whose hash changed makes the item a review, not an error.
+// ---------------------------------------------------------------------------------------------
+
+/**
+ * A reference to one number of a snapshot, grammar in scripts/lib/items/refs.ts, e.g.
+ * `$quantum[<row>].precisionDamage`, `$aegis[<row>].tick("Perfect Fifth")`,
+ * `$clarity[<entry>]("<quote with exactly one number>")`.
+ */
+export const ItemRef = z.string().startsWith("$");
+export type ItemRef = z.infer<typeof ItemRef>;
+
+/** A calculation of references and numbers (+ - * /, brackets) and why it holds. */
+export const ItemExpression = z
+  .object({ expr: z.string().min(1), note: z.string().min(1) })
+  .strict();
+export type ItemExpression = z.infer<typeof ItemExpression>;
+
+export const ItemValue = z.union([ItemRef, ItemExpression, SourcedNumber]);
+export type ItemValue = z.infer<typeof ItemValue>;
+
+/** A text the item's structure follows, with its FNV-1a hash when the file was written (I5). */
+export const ItemText = z
+  .object({
+    source: z.enum(["clarity", "compendium"]),
+    entry: z.string(), // Clarity entry name, or the Compendium entry name or its start
+    hash: z.string().regex(/^[0-9a-f]{8}$/),
+  })
+  .strict();
+export type ItemText = z.infer<typeof ItemText>;
+
+/** A part of a weapon item: one hit. Its time and count come from the rule that spawns it. */
+export const ItemPart = z
+  .object({
+    name: z.string(),
+    damage: ItemValue,
+    precision: z.boolean().optional(), // the hit can be a precision hit (canPrecision)
+    delivery: Delivery,
+  })
+  .strict();
+export type ItemPart = z.infer<typeof ItemPart>;
+
+/** Weapon fields the import takes from the manifest and the link codes, never from the file. */
+export const WEAPON_ITEM_FROM_IMPORT = [
+  "code",
+  "manifestHash",
+  "gameVersion",
+  "weaponType",
+  "element",
+  "ammo",
+  "intrinsics",
+  "damageInstances",
+] as const;
+
+/**
+ * An exotic weapon as an item file. Besides these fields it holds Weapon fields (timing, rules,
+ * buffs, playstyles, catalyst) with ItemValues where Weapon has SourcedNumbers.
+ */
+export const WeaponItem = z
+  .object({
+    id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), // kebab-case, the id of the weapon
+    kind: z.literal("exoticWeapon"),
+    name: z.string(), // manifest name
+    texts: z.array(ItemText).min(1),
+    parts: z.record(z.string(), ItemPart),
+  })
+  .catchall(z.unknown())
+  .superRefine((item, ctx) => {
+    for (const key of WEAPON_ITEM_FROM_IMPORT)
+      if (key in item)
+        ctx.addIssue({
+          code: "custom",
+          path: [key],
+          message: `${key} comes from the import (manifest, link codes, parts), not from the item file`,
+        });
+  });
+export type WeaponItem = z.infer<typeof WeaponItem>;

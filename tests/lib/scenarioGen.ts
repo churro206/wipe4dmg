@@ -6,6 +6,7 @@
 // hand are fixtures and win over a generated one for the same row.
 
 import { assumptionName } from "../../scripts/lib/aegisWeapons";
+import { fnv1a } from "../../scripts/lib/hash";
 import { isExecution } from "../../scripts/lib/weaponAssumptions";
 import type { AegisWeaponRow, Effect, ExoticArmorEntry, Weapon } from "../../src/data/schema";
 import type { Scenario } from "./scenarioBench";
@@ -116,14 +117,7 @@ export function generateScenarios(
 }
 
 /** Fixed lot (I10): the hash of the row id decides, so new rows never move the old ones. */
-export function fnv1a(text: string): number {
-  let hash = 0x811c9dc5;
-  for (let i = 0; i < text.length; i++) {
-    hash ^= text.charCodeAt(i);
-    hash = Math.imul(hash, 0x01000193) >>> 0;
-  }
-  return hash >>> 0;
-}
+export { fnv1a };
 
 export type Lot = "calibration" | "check";
 
