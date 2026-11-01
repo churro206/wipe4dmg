@@ -2,29 +2,38 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen in `docs/known-inaccuracies.md`. Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Nächster Block: B6, Breite (Opus plant, Sonnet setzt um)
+## Nächster Block: B6, Spielweisen der Exotic-Waffen (freigegeben 2026-11-01; Sonnet)
 
-Noch kein Plan; zuerst vorschlagen und freigeben lassen. Inhalt laut `ground-up-model.md`: fehlende Items kategorieweise als Item-Dateien, dazu der Reiter Testing im Prüfstand (kein Import bisher). Arbeitsliste: Abschnitt „Missing switches by group“ in `tests/__snapshots__/scenario-bench.md`, häufigste zuerst. Aus B4 offen: `pickBaseRow`, `blockingReason` (Paket-Zweig), `options` der Waffe neben `buffs`; `nthShotPart` bleibt (Barrow-Dyad).
+Befund (`tmp/playstyle-inventory.test.ts`): Im Reiter Weapons gelten Spielweise-Wörter (`isExecution`) als „kein Schalter nötig“, die Zeile rechnet mit der einen Spielweise des Modells (Heirloom 1/3 −36 %, Lament 4L −21 %). Bei Sustained bleiben sie fehlende Schalter.
 
-## Block P erledigt (2026-11-01)
+**Regel:** Eine Ausführungsart, die Aegis als eigene Zeile misst (Ladestufe, Kombo, Modus, ADS/Hipfire, Zustand), ist ein Eintrag in `playstyles` des Items, Label = Aegis-Wort; Regeln mit Bedingung `playstyle` tragen den Unterschied. Werte aus Text, Quantum oder `$aegis` der Basiszeile, nie aus der Zeile der Spielweise (sie bleibt Prüfung). Lücke unter 2 % (Revision Zero 1,3 %): `known-inaccuracies`.
 
-Ein Prüfstand für Weapons, Sustained, Swap, Abilities (`tests/lib/scenarioBench.ts`, `scenarioGen.ts`, `tests/scenarioBench.test.ts`, `npm run probe`); Rangfolge-Gate und Gesamtprobe gingen darin auf. Einzelheiten: Changelog, Bauplan 12.
+Reihenfolge nach Lücke zwischen den Zeilen: The Lament, Heirloom, Whirling Ovation, Choir of One, Salvation's Grip, Black Talon, Symmetry, Grand Overture, Graviton Spike, Lodestar, Duality, Delicate Tomb, Witherhoard, Cull's Shadow, Hawkmoon, Eriana's Vow, D.A.R.C.I.; Ergo Sum, Heartshadow prüfen.
 
-Offen aus P:
-- Weapons und Abilities melden nur; Schwellen erzwingt der Test für Supers, Heavy, Special. Weapons: Spearman 0,89 über 11 Zeilen, 1 von 3 Paaren. Abilities: 0,83 über 6 Zeilen, 4 von 8 Paaren (größte Lücke: Biotic Enhancements bei Sentinel Shield, Aegis +50 %, Modell 0). Schwellen für beide: Inhaber entscheidet.
-- Ability-Wert = Differenz mit und ohne Cast, One Thousand Voices im Build; die Waffe ändert ihn um einige Prozent (Gathering Storm 7 703 mit Xenophage, 7 901 mit OTV). Ursache nicht untersucht.
-- Stapelzähler (`Roaring Flames x3`) und Spielweise-Wörter bei Sustained und Swap sind fehlende Schalter (Hammer of Sol, Burning Maul mit Sol Invictus fehlen).
-- `scripts/lib/probeAuto.ts` lebt nur noch für die Abdeckungstabelle (`aegisCoverage`): Aufräum-Schritt.
+1. Test zuerst: Der Generator ordnet ein Wort, das eine Spielweise des Items benennt, dieser zu (Weapons, Sustained); sonst wie heute. Szenarien Heirloom, Lament rot.
+2. Generator und Kern: Spielweise der Zeile in den Build (prüfen, ob der Kern `playstyle` oder `assumptions` liest).
+3. Item-Dateien in obiger Reihenfolge; ihre Pakete und Overrides fallen weg. Neuer Typ nur mit Test (I3).
+4. Snapshot, Kennzahlen je Gruppe, `docs/weapon-import.md`, Changelog, Roadmap.
+
+Gate: Delta-Paare und Spearman Weapons nicht schlechter, Abdeckung Heavy/Special steigt, jedes Item löst auf. Offenes am Sitzungsende bleibt in B6.
+
+Kandidaten danach: Stapelzähler und Zustände als Schalter (`Roaring Flames x3` 17, `Transcendent` 17 Treffer), Testing-Reiter, Stasis-Shatter (Whisper of Fissures, Facet of Ruin; Katalog sagt fälschlich „No damage effect“). Aus B4: `pickBaseRow`, `blockingReason`, `options` neben `buffs`.
+
+## Offen aus P
+
+- Weapons und Abilities melden nur (Weapons Spearman 0,89 über 11 Zeilen, 1 von 3 Paaren; Abilities 0,83, 4 von 8). Schwellen: Inhaber.
+- Ability-Wert hängt um einige Prozent an der Waffe im Build (Gathering Storm 7 703 mit Xenophage, 7 901 mit OTV), Ursache offen.
+- `scripts/lib/probeAuto.ts` nur noch für `aegisCoverage`: Aufräum-Schritt.
 
 ## Stand
 
-- Bauplan: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8> (Stand vor B4b; Quelle ist `docs/architecture.md`).
-- Offen ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk auf Still Hunt. Argent Ordnance ohne Reload-Teil (Compendium „+?“), wirkt bei Truth unter 15 s.
-- Offen beim Inhaber: Nullschaden-Treffer in der Aufschlüsselung; Polaris-Schuss aus Quantum (97) statt Aegis (96,677).
+- Bauplan: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8> (Stand vor B4b; Quelle `docs/architecture.md`).
+- Ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk auf Still Hunt; Argent Ordnance ohne Reload-Teil.
+- Beim Inhaber: Nullschaden-Treffer in der Aufschlüsselung; Polaris-Schuss Quantum (97) statt Aegis (96,677).
 
 ## Reihenfolge
 
-B6 (Breite, mit Testing-Reiter) → C (Casts, Energie) → B5 (Eichung). Begründung in `ground-up-model.md`. Nach drei Funktions-Blöcken ein Aufräum-Block (letzter: nach B4).
+B6 (Breite) → C (Casts, Energie) → B5 (Eichung), Begründung `ground-up-model.md`. Aufräum-Block nach drei Funktions-Blöcken (letzter nach B4).
 
 ## Entscheidungen des Inhabers
 
@@ -32,4 +41,4 @@ B6 (Breite, mit Testing-Reiter) → C (Casts, Energie) → B5 (Eichung). Begrün
 - Aktionen für bekannte Mechaniken sind kein Vorrat. Exotics ohne Schadenswirkung fallen weg. Ein Boss, keine Adds. Kill-Buffs nur mit „Vorher aufgebaut“.
 - Eigene Quellen nur für die Dauer aus ihrem Text; Buffs von Teammates die ganze Phase; Teammates dürfen eigene Abilities ändern.
 - Energie-Mods abgelehnt. Links ohne Rückwärtskompatibilität. Legendary Frames für 2.0. Commit je Teil.
-- „±15 % zum Median“ der Gesamtprobe ist weggefallen (2026-11-01); der Prüfstand rechnet absolut nur als Information.
+- „±15 % zum Median“ ist weggefallen; der Prüfstand rechnet absolut nur als Information.
