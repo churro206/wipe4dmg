@@ -16,6 +16,7 @@ import {
   ReloadFormulaSnapshot,
   WeaponOverride,
 } from "../../src/data/schema.ts";
+import { loadWeaponItems } from "./items/loadItems.ts";
 import type { WeaponImportInputs } from "./weaponPackages.ts";
 
 const DATA = new URL("../../src/data/", import.meta.url);
@@ -25,23 +26,29 @@ const read = (file: string): unknown =>
 export function loadWeaponImportInputs(): WeaponImportInputs {
   const manifest = ManifestWeapons.parse(read("manifest-weapons.json"));
   const codesFile = new URL("weapon-codes.json", DATA);
+  const aegis = AegisWeaponSnapshot.parse(read("aegis-weapons.json"));
+  const sustained = AegisSustainedSnapshot.parse(read("aegis-sustained.json"));
+  const quantum = QuantumWeaponSnapshot.parse(read("quantum-weapons.json"));
+  const compendium = CompendiumSnapshot.parse(read("compendium-weapons.json"));
+  const clarity = ClaritySnapshot.parse(read("clarity.json"));
+  const codes: Record<string, number> = existsSync(codesFile)
+    ? (read("weapon-codes.json") as Record<string, number>)
+    : {};
   return {
-    aegis: AegisWeaponSnapshot.parse(read("aegis-weapons.json")),
-    sustained: AegisSustainedSnapshot.parse(read("aegis-sustained.json")),
-    quantum: QuantumWeaponSnapshot.parse(read("quantum-weapons.json")),
+    aegis,
+    sustained,
+    quantum,
     manifestVersion: manifest.manifestVersion,
     manifest: manifest.weapons,
     armor: ManifestArmor.parse(read("manifest-armor.json")).armor,
     terms: ManifestTerms.parse(read("manifest-terms.json")).terms,
-    compendium: CompendiumSnapshot.parse(read("compendium-weapons.json"))
-      .entries,
+    compendium: compendium.entries,
     effects: Effect.array().parse(read("effects.json")),
     keywords: keywordDataOf(read("keywords.json")),
-    clarity: ClaritySnapshot.parse(read("clarity.json")).entries,
+    clarity: clarity.entries,
     overrides: WeaponOverride.array().parse(read("weapon-overrides.json")),
     reloadFormulas: ReloadFormulaSnapshot.parse(read("reload-formulas.json")),
-    codes: existsSync(codesFile)
-      ? (read("weapon-codes.json") as Record<string, number>)
-      : {},
+    codes,
+    items: loadWeaponItems({ aegis, sustained, quantum, manifest, clarity, compendium, codes }),
   };
 }

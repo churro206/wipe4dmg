@@ -1,0 +1,92 @@
+{
+  "id": "polaris-lance",
+  "kind": "exoticWeapon",
+  "name": "Polaris Lance",
+  "texts": [{ "source": "clarity", "entry": "The Perfect Fifth", "hash": "e875c333" }],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file polaris-lance",
+      "retrieved": "2026-11-01",
+      "status": "derived",
+      "note": "Derived: a hitscan scout rifle has no charge; the time to empty counts from the first shot (Quantum)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-polaris-lance].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-polaris-lance].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-polaris-lance].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-polaris-lance].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Dragonfly, Polaris Lance Catalyst",
+    "description": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-scout-rifle-polaris-lance].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "perfect-fifth": {
+      "name": "Perfect Fifth",
+      "damage": "$aegis[scout-rifle-polaris-lance-average-with-ignition].tick(\"Perfect Fifth\")",
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    { "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "shot" }] },
+    {
+      "id": "refill",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "do": [{ "type": "refill", "rounds": "$clarity[The Perfect Fifth](\"refill 1 ammo\")" }]
+    },
+    {
+      "id": "count",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "fifth",
+          "op": "<",
+          "value": "$clarity[The Perfect Fifth](\"Scoring 4 Precision Hits\")"
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "fifth" }]
+    },
+    {
+      "id": "fifth",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "fifth",
+          "op": "=",
+          "value": "$clarity[The Perfect Fifth](\"Scoring 4 Precision Hits\")"
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "fifth" },
+        {
+          "type": "spawn",
+          "part": "perfect-fifth",
+          "delayMs": {
+            "expr": "$clarity[The Perfect Fifth](\"after a 0.5? second delay\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "scorch",
+      "on": { "on": "hit", "part": "perfect-fifth" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[The Perfect Fifth](\"applying 40 Scorch stacks\")"
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen in `docs/known-inaccuracies.md`. Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Block: B4a Format, freigegeben 2026-11-01 (Schritte 1–4 fertig; 5 mit Sonnet)
+## Block: B4a Format, freigegeben 2026-11-01 (Schritte 1–5 fertig)
 
 Je Schritt ein Commit, Test zuerst. Gate je Commit: Suite, `tsc -b`, `lint`; `scenario-bench.md`, `mechanics-baseline` nur gewollt geändert (Liste im Commit). Lesen: Bauplan 5, 6, 12, 13; `scripts/lib/partRules.ts`, `timingFromQuantum`/`timingFromAegis` in `weaponPackages.ts`.
 
@@ -10,7 +10,7 @@ Je Schritt ein Commit, Test zuerst. Gate je Commit: Suite, `tsc -b`, `lint`; `sc
 2. **ERLEDIGT (aedfcee):** Status `derived` in `Source`, Generator und `superWindow.ts`; Test `tests/derivedStatus.test.ts`. Suite 2128 grün.
 3. **ERLEDIGT:** Item-Schema (`schema.ts`, „Items“), `scripts/lib/items/refs.ts` (Grammatik oben in der Datei), `weaponItem.ts` (`resolveWeaponItem` → `{ weapon, review }`), `scripts/lib/hash.ts`; Test `tests/itemResolve.test.ts`. Manifest-Stat als `.stat("<Stat>")`. Teile der Datei sind Einzeltreffer (`parts`: Name, Schaden, `precision`, `delivery`), Identität und Intrinsics aus dem Manifest, Code aus `weapon-codes.json`. Für Schritt 5 offen: Loader für `src/data/items/weapons/*.json` (Dateiname = `id`), `review` in `docs/weapon-import.md` und der Konsole von `build:weapons`; `ItemSources` aus den Snapshots laden; verschachtelte Objekte prüft `Weapon` nicht strikt (Tippfehler in Regeln fallen still weg, im Test nachsehen).
 4. **ERLEDIGT:** `DamageInstance.scale` (optional, fehlt = kanonisch; der Import schreibt es aus der Quelle), `Theta` und `src/data/theta.json` (alles 1, `aegisVisual` erzwungen 1), `GameData.theta` → `SimulationOptions.theta`, der Kern multipliziert beim `spawn`. Nur Waffenteile; Ability-Komponenten haben noch keine Skala (P/C). Test `tests/theta.test.ts`, Suite 2160, Bench und Baseline unverändert.
-5. **Polaris Lance als Item:** `build-weapons` ersetzt das Paket durch das Item (`code` stabil); kein Reload über `on hit precision → refill 1` statt `noReloads`; Override weg; `tests/itemFiles.test.ts` (jedes Item löst auf, kein Override zu einem Item). Gewollt: Schuss aus Quantum (+0,3 %); Perfect Fifth bleibt `$aegis`.
+5. **ERLEDIGT:** Polaris Lance als Item (`src/data/items/weapons/polaris-lance.json`), Loader `scripts/lib/items/loadItems.ts`, `buildWeaponImport` nimmt `inputs.items` statt des Pakets (Berichtsstatus `item`, Abschnitt „Items“ und `Review:`-Zeilen), Override gestrichen, `refill` statt `noReloads`; Test `tests/itemFiles.test.ts`. Gewollt: Baseline Polaris +0,2 %, Bench −2,3 → −2,1 % (Ember −1,9 → −1,8 %). Suite 2163. Offen beim Inhaber: bleibt der Polaris-Schuss aus Quantum (97) statt Aegis (96,677)?
 
 Danach B4b (Truth, Hierarchy, Abschluss): Schritte 6–8 in `ground-up-model.md`, Abschnitt B4.
 

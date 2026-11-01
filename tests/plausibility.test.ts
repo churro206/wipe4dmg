@@ -975,7 +975,7 @@ describe("every Nth shot (2026-10-30, ADR 0017 S3)", () => {
       r.damageInstances.filter(pick).length;
     const plain = polaris(false);
     const ember = polaris(true);
-    const fifths = count(plain, (d) => d.id === "nthShot");
+    const fifths = count(plain, (d) => d.id === "perfect-fifth"); // the item file's part (B4a)
     const ignitions = (r: SimulationResult) => count(r, isIgnition);
     note(
       "Polaris 30 s: Schüsse / Perfect Fifth / Ignitions ohne, mit Ember",

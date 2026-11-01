@@ -12874,49 +12874,269 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file polaris-lance",
+        "retrieved": "2026-11-01",
+        "status": "derived",
+        "note": "Derived: a hitscan scout rifle has no charge; the time to empty counts from the first shot (Quantum)"
       }
     },
     "fireRateRpm": {
       "value": 150,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-polaris-lance",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf), no reload (override)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 14,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-polaris-lance",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-polaris-lance",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "reloadTimeMs": {
-      "value": 0,
+      "value": 1240,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-polaris-lance",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-polaris-lance",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file polaris-lance",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 97,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-polaris-lance",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file polaris-lance",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file polaris-lance",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "perfect-fifth",
+        "name": "Perfect Fifth",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file polaris-lance",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 93.656,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "scout-rifle-polaris-lance-average-with-ignition",
+            "note": "tick \"310 Perfect Fifth\" ÷ Full Modifiers 3.31"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file polaris-lance",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file polaris-lance",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "refill",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "do": [
+          {
+            "type": "refill",
+            "rounds": {
+              "value": 1,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): The Perfect Fifth",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "refill 1 ammo"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "count",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          {
+            "type": "counter",
+            "id": "fifth",
+            "op": "<",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): The Perfect Fifth",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Scoring 4 Precision Hits"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "fifth" }]
+      },
+      {
+        "id": "fifth",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          {
+            "type": "counter",
+            "id": "fifth",
+            "op": "=",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): The Perfect Fifth",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Scoring 4 Precision Hits"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "fifth" },
+          {
+            "type": "spawn",
+            "part": "perfect-fifth",
+            "delayMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Perfect Fifth",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Perfect Fifth](\"after a 0.5? second delay\") * 1000 (seconds to milliseconds); $clarity[The Perfect Fifth](\"after a 0.5? second delay\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Perfect Fifth)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "scorch",
+        "on": { "on": "hit", "part": "perfect-fifth" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 40,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): The Perfect Fifth",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "applying 40 Scorch stacks"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "the-perfect-fifth",
+        "name": "The Perfect Fifth",
+        "description": "Precision hits return ammo to the mag. Landing 4 precision hits loads a delayed Solar explosive round that scorches targets for your next shot.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Dragonfly, Polaris Lance Catalyst",
+      "description": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -12928,208 +13148,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis single hit)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-polaris-lance-average-with-ignition",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 96.677,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-polaris-lance-average-with-ignition",
-            "note": "visual Value; assumptions: average, with ignition"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-polaris-lance-average-with-ignition"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-polaris-lance-average-with-ignition"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      },
-      {
-        "id": "nthShot",
-        "name": "Perfect Fifth",
-        "delayMs": {
-          "value": 500,
-          "source": {
-            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-          }
-        },
-        "damagePerTick": {
-          "value": 93.656,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-polaris-lance-average-with-ignition",
-            "note": "Tick \"310 Perfect Fifth, 2345 ignition\" ÷ Full Modifiers"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "the-perfect-fifth",
-        "name": "The Perfect Fifth",
-        "description": "Precision hits return ammo to the mag. Landing 4 precision hits loads a delayed Solar explosive round that scorches targets for your next shot.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Dragonfly, Polaris Lance Catalyst",
-      "description": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      },
-      {
-        "id": "nthShot-count",
-        "on": { "on": "shot" },
-        "if": [
-          {
-            "type": "counter",
-            "id": "nthShot-shots",
-            "op": "<",
-            "value": {
-              "value": 4,
-              "source": {
-                "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-                "retrieved": "2026-10-20",
-                "status": "derived",
-                "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-              }
-            }
-          }
-        ],
-        "do": [{ "type": "addStacks", "counter": "nthShot-shots" }]
-      },
-      {
-        "id": "nthShot",
-        "on": { "on": "shot" },
-        "if": [
-          {
-            "type": "counter",
-            "id": "nthShot-shots",
-            "op": "=",
-            "value": {
-              "value": 4,
-              "source": {
-                "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-                "retrieved": "2026-10-20",
-                "status": "derived",
-                "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-              }
-            }
-          }
-        ],
-        "do": [
-          { "type": "resetCounter", "counter": "nthShot-shots" },
-          {
-            "type": "spawn",
-            "part": "nthShot",
-            "delayMs": {
-              "value": 500,
-              "source": {
-                "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-                "retrieved": "2026-10-20",
-                "status": "derived",
-                "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "scorch-nthShot",
-        "on": { "on": "hit", "part": "nthShot" },
-        "do": [
-          {
-            "type": "applyStatus",
-            "status": "scorch",
-            "stacks": {
-              "value": 40,
-              "source": {
-                "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-                "retrieved": "2026-10-20",
-                "status": "derived",
-                "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %.; Scorch per hit before Ember of Ashes"
-              }
-            }
-          }
-        ],
-        "source": {
-          "name": "Weapon override for Polaris Lance (Clarity, Compendium, Quantum)",
-          "retrieved": "2026-10-20",
-          "status": "derived",
-          "note": "Derived (override): Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %."
-        }
-      }
-    ]
+    }
   },
   {
     "id": "prometheus-lens",

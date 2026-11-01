@@ -1307,45 +1307,6 @@
     }
   },
   {
-    "weapon": "Polaris Lance",
-    "reason": "Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "The Perfect Fifth",
-        "text": "Scoring 4 Precision Hits loads a delayed Solar Explosive."
-      },
-      {
-        "source": "clarity",
-        "entry": "The Perfect Fifth",
-        "text": "Precision Hits refill 1 ammo."
-      },
-      {
-        "source": "clarity",
-        "entry": "The Perfect Fifth",
-        "text": "Solar Explosive detonates after a 0.5? second delay, dealing 215 [78] damage and applying 40 Scorch stacks (60 with Ember of Ashes)"
-      },
-      {
-        "source": "aegis",
-        "entry": "scout-rifle-polaris-lance-average-with-ignition",
-        "text": "310 Perfect Fifth"
-      }
-    ],
-    "nthShotPart": {
-      "name": "Perfect Fifth",
-      "every": 5,
-      "hits": 1,
-      "tick": "Perfect Fifth",
-      "delaySeconds": 0.5,
-      "scorchPerHit": 40
-    },
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-scout-rifle-polaris-lance",
-      "noReloads": true
-    }
-  },
-  {
     "weapon": "Truth",
     "reason": "Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %).",
     "quotes": [

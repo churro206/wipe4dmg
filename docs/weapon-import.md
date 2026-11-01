@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **137 Pakete**, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **136 Pakete**, 1 Items, 4 Lücken.
 
 ## Pakete
 
@@ -90,7 +90,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Osteo Striga | submachineGun | kinetic | average, with successive poison (136 Shots) | 61,9 | Quantum |  | 29 | 1,19 s | – | 600 → 600 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; Katalysator-Timing: ∞ Shots, Magazin 29, Zeit bis leer – |
 | Outbreak Perfected | pulseRifle | kinetic | average per burst - max nanites (26 Shots) | 80,0 | Quantum |  | 36 | 1,16 s | – | 450 → 450 | 0,0 % | Override: Konflikt ohne klare Einheit: Aegis' Werte pro Burst liegen schon ohne Nanites beim Vierfachen von Quantum (398,1 ÷ 3 = 133 gegen 32 pro Kugel). Quantum nennt seine Annahme klar (4 Nanites alle 12 Schuss) und gilt deshalb: 80 pro Kugel (Precision). Catalyst: Nanites +25 % (Clarity); von 80 sind 48 Nanites (Quantum ohne Nanites 32): 32 + 48 × 1,25 = 92, also ×1,15.; Timing aus Zeile primaries-pulse-rifle-outbreak-perfected-x4-nanites (Override); Timing nur aus Quantum; Schaden pro Shot 80,0 (Override) |
 | Parasite | grenadeLauncher | solar | keine (1 Shot) | 2.133,4 | Quantum | 18 | 1 | 2,08 s | 35,4 s | 120 → 25.500 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
-| Polaris Lance | scoutRifle | solar | average, with ignition (15 Shots) | 96,7 | Quantum |  | 14 | 1,24 s | – | 150 → 150 | 0,3 % | Override: Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt mit Ignition). 4 Präzisionstreffer laden das Solar Explosive, der 5. Schuss feuert es: alle 5 Schüsse Perfect Fifth 310 (Aegis „310 Perfect Fifth“), 0,5 s verzögert, x40 Scorch (x60 mit Ember of Ashes, Clarity); die Ignitions rechnet das Keyword. Präzisionstreffer füllen das Magazin wieder auf (Clarity), also kein Reload; Takt 150 rpm aus Quantum (Aegis Sustained: 0,4 s). Gate: Papierprobe 15 × 320 + 3 × 310 + 1 Ignition + Burn = −0,8 %, mit Ember 10 × 320 + 2 × 310 + 1 Ignition + Burn = −0,1 %.; Perfect Fifth: Treffer 320 aus scout-rifle-polaris-lance-average-with-ignition, alle 5 Schüsse 1 × 310 („310 Perfect Fifth, 2345 ignition“), x40 Scorch (Override); Timing aus Zeile primaries-scout-rifle-polaris-lance (Override); Timing nur aus Quantum |
 | Prometheus Lens | traceRifle | solar | average, with ignition (95 Shots) | 36,5 | Quantum | 500 | 100 | 1,44 s | 39,0 s | – → 900 | – | Override: Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Quicksilver Storm | autoRifle | kinetic | average, with tracking rockets (14 Shots) | 27,8 | Quantum |  | 51 | 1,10 s | – | 720 → 720 | 1,5 % | Timing nur aus Quantum |
 | Rat King | sidearm | kinetic | keine (1 Shot) | 78,5 | Quantum |  | 15 | 1,03 s | – | 300 → 300 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
@@ -149,6 +148,14 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Wish-Keeper | bow | strand | Vorpal Weapon (1 Shot) | 213,8 | Quantum |  | 1 | 0,60 s | – | 50 → 50 | 0,1 % | Override: Aegis misst mit dem Katalysator Vorpal Weapon (+20 % für Primaries laut Clarity): 256,5 ÷ 1,2 = 213,75; Quantum ohne Katalysator bestätigt 214. Der Katalysator gibt ×1,2.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-bow-wish-keeper (Override); Timing nur aus Quantum; Schaden pro Shot 213,8 (Override) |
 | Witherhoard | grenadeLauncher | kinetic | direct impact (1 Shot) | 2.046,1 | Quantum | 20 | 1 | 1,62 s | 90,0 s | – → 19 | 0,6 % | Override: Aegis' „direct impact“ zählt die volle Blight pro Schuss; dazu passt Quantums „passive“ (neu schießen, wenn die Blight ausläuft: 20 × 2046 = 40.920 gegen Quantum 41.180). Mit Katalysator lädt die Waffe weggesteckt nach (Quantum „cata, single blight, boss“, 50 s).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-grenade-launcher-witherhoard-passive (Override); Timing nur aus Quantum; Katalysator-Timing: 20 Shots, Magazin 1, Zeit bis leer 50,0 s |
 | Xenophage | machineGun | solar | keine (1 Shot) | 736,4 | Aegis | 39 | 13 | 2,82 s | 23,6 s | 120 → 120 | 0,1 % | Override: Die Rampage-Stacks des Katalysators kommen nur aus Weapon Kills; der Absatz mit dem Bonus nennt das Wort „Kill“ nicht, deshalb hier von Hand: keine Wirkung gegen einen Boss ohne Adds.; ⚠ Timing: Aegis 39 Shots in 23,6 s, Quantum 29 Shots in 20,1 s; Aegis gilt |
+
+## Items
+
+Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
+
+| Waffe | Datei | Prüfen |
+| --- | --- | --- |
+| Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
 
 ## Optionen
 
@@ -258,7 +265,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Osteo Striga | primary | Timing | Magazin 29 → 29, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 600 → 600 | Grants 30 Reload and 20 Stability. |
 | Outbreak Perfected | primary | Schaden | – | Nanite Damage is increased by 25%. |
 | Parasite | heavy | unbekannt | – | Dealing any damage with both of your other weapons refills the magazine from reserves upon readying the weapon. |
-| Polaris Lance | primary | keine | – | Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter ra |
 | Prometheus Lens | special | keine | – | Grants 20 Stability and 20 Handling. |
 | Quicksilver Storm | primary | unbekannt | – | Converts this weapon's element into Strand damage. |
 | Rat King | primary | keine | – | Grants 20 Aim Assist and 20 Recoil Direction. |
@@ -378,7 +384,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | One Thousand Voices | average, Ember of Ashes, blighted, catalyst | nicht modelliert: blighted; Katalysator: catalyst |
 | Osteo Striga | average, with successive poison, Peacekeepers | Exotic-Rüstung: Peacekeepers |
 | Outbreak Perfected | average per burst - no nanites, Appended Mag, up to Rewind end | nicht modelliert: up to Rewind end |
-| Polaris Lance | average, with ignitions, Ember of Ashes | ohne with ignition der Basiszeile |
+| Polaris Lance | average, with ignitions, Ember of Ashes | the item file uses another row |
 | Praxic Blade | average, 3L1H, Offensive Form, Forceful Blade III, Impact Core (solar), Ember of Ashes | gleiche Annahmen wie die Basiszeile |
 | Praxic Blade | average, 3L1H, Offensive Form, Forceful Blade III, Impact Core (solar) | gleiche Annahmen wie die Basiszeile |
 | Praxic Blade | average, double hit throw, Offensive Form, Forceful Blade III, Gyro Core (solar) | ohne 3L1H der Basiszeile |

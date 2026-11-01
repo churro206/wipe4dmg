@@ -29,6 +29,7 @@ import type {
 } from "../../src/data/schema.ts";
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
+import type { ResolvedItem } from "./items/weaponItem.ts";
 import {
   catalystWindowRules,
   type ImportPart,
@@ -67,6 +68,8 @@ export type WeaponImportInputs = {
   clarity: ClarityEntry[];
   overrides: WeaponOverride[];
   reloadFormulas: ReloadFormulaSnapshot;
+  /** Weapon item files, resolved (B4a): an item takes the place of the package of its weapon. */
+  items: ResolvedItem[];
 };
 
 // Spellings of a source that differ from the manifest beyond case, e.g. Quantum's typo.
@@ -162,8 +165,10 @@ export type ReportWeapon = {
   weaponType: string;
   element: string;
   ammo: string;
-  status: "package" | "gap";
+  status: "package" | "gap" | "item"; // item: from an item file, not built from rows (B4a)
   gapReason: string | null;
+  itemFile?: string; // the item file of an item
+  itemReview?: string[]; // texts of the item that changed since the file was written
   baseRow: AegisWeaponRow | null;
   perShot: number | null;
   magazine: number | null;
@@ -815,6 +820,31 @@ export function buildWeaponImport(
       terms: inputs.terms,
       clarity: inputs.clarity,
     };
+    // An item file replaces the package: its structure is written by hand, its numbers resolved
+    // from the snapshots. Every source's reload contains Rally Barricade (K1), so an item that does
+    // not state it gets the same factor.
+    const item = inputs.items.find((i) => i.weapon.name === manifest.name);
+    if (item) {
+      packages.push({
+        ...item.weapon,
+        reloadDurationIncluded: item.weapon.reloadDurationIncluded ?? reloadDurationIncluded,
+      });
+      entry.status = "item";
+      entry.itemFile = `src/data/items/weapons/${item.weapon.id}.json`;
+      entry.itemReview = item.review;
+      const rowId = item.weapon.damageInstances
+        .map((d) => d.damagePerTick.source.row)
+        .find((row) => row !== undefined);
+      entry.baseRow = inputs.aegis.rows.find((r) => r.id === rowId) ?? null;
+      entry.unusedRows = inputs.aegis.rows
+        .filter((r) => sameName(r.name, manifest.name) && r.id !== rowId)
+        .map((r) => ({
+          rowId: r.id,
+          assumptions: r.assumptions,
+          reason: "the item file uses another row",
+        }));
+      continue;
+    }
     const override = inputs.overrides.find((o) => o.weapon === manifest.name);
     if (override) entry.notes.push(`Override: ${override.reason}`);
     if (override?.gap) {
@@ -2359,6 +2389,7 @@ const percent = (n: number | null) =>
 export function renderWeaponImport(report: WeaponReport): string {
   const packages = report.weapons.filter((w) => w.status === "package");
   const gaps = report.weapons.filter((w) => w.status === "gap");
+  const items = report.weapons.filter((w) => w.status === "item");
   const lines: string[] = [
     "# Waffen-Import: Prüftabelle",
     "",
@@ -2366,7 +2397,7 @@ export function renderWeaponImport(report: WeaponReport): string {
     "",
     `Stand: Aegis ${report.aegisRetrieved}, Quantum ${report.quantumRetrieved} (Quantum nennt keinen Patch pro Zeile), Manifest ${report.manifestVersion}.`,
     "",
-    `Umfang: exotische Special- und Heavy-Waffen. **${packages.length} Pakete**, ${gaps.length} Lücken.`,
+    `Umfang: exotische Special- und Heavy-Waffen. **${packages.length} Pakete**, ${items.length} Items, ${gaps.length} Lücken.`,
     "",
     "## Pakete",
     "",
@@ -2403,6 +2434,17 @@ export function renderWeaponImport(report: WeaponReport): string {
         ].join(" | "),
       )
       .map((row) => `| ${row} |`),
+    "",
+    "## Items",
+    "",
+    "Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.",
+    "",
+    "| Waffe | Datei | Prüfen |",
+    "| --- | --- | --- |",
+    ...items.map(
+      (w) =>
+        `| ${w.name} | \`${w.itemFile}\` | ${cell((w.itemReview ?? []).join("; ") || "–")} |`,
+    ),
     "",
     "## Optionen",
     "",

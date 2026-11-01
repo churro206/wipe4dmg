@@ -57,8 +57,8 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | one-thousand-voices-ember | scorch | 11550 | 11617 | +0.6 % |  | check |  |
 | one-thousand-voices-catalyst | parts | 27000 | 27187 | +0.7 % | fitted | check |  |
 | one-thousand-voices-ember-catalyst | scorch | 30144 | 30547 | +1.3 % |  | calibration |  |
-| polaris-lance | scorch | 2543 | 2486 | −2.3 % | fitted | calibration |  |
-| polaris-lance-ember | scorch | 1906 | 1869 | −1.9 % |  | calibration |  |
+| polaris-lance | scorch | 2543 | 2490 | −2.1 % | fitted | calibration |  |
+| polaris-lance-ember | scorch | 1906 | 1872 | −1.8 % |  | calibration |  |
 | salvation-s-grip | base | 796 | 795 | −0.1 % | fitted | calibration |  |
 | salvation-s-grip-charged | parts | 15157 | 9539 | −37.1 % |  | calibration | not counted: Aegis notes "insane number variance" |
 | salvation-s-grip-hail-the-storm | factor | 17114 | 9539 | −44.3 % |  | calibration | not counted: Aegis notes "insane number variance" |

@@ -26,3 +26,6 @@ writeFileSync(
 console.log(
   `Wrote ${result.packages.length} weapon packages and ${result.gaps.length} gaps; review docs/weapon-import.md`,
 );
+// Items whose text changed since the file was written (B4a)
+for (const weapon of result.report.weapons)
+  for (const line of weapon.itemReview ?? []) console.log(`Review: ${line}`);

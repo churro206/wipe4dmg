@@ -404,7 +404,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | High-impact frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Lightweight frame | übersprungen | legendary frame (owner 2026-10-25) |
 | MIDA Multi-Tool | im Modell | base row of the package |
-| Polaris Lance, average, with ignitions, Ember of Ashes | übersprungen | ohne with ignition der Basiszeile |
+| Polaris Lance, average, with ignitions, Ember of Ashes | übersprungen | the item file uses another row |
 | Polaris Lance, average, with ignition | im Modell | base row of the package |
 | Precision frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Rapid-fire frame | übersprungen | legendary frame (owner 2026-10-25) |
