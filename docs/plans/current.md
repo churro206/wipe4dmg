@@ -2,15 +2,13 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen in `docs/known-inaccuracies.md`. Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
-## Nächster Block: Aufräumen nach B4 (Sonnet, noch nicht geplant)
+## Nächster Block: P, Prüfstand ganzer Builds (Opus plant)
 
-Laut `ground-up-model.md`: was B1–B4 hinterlassen haben (tote Pfade im Import, doppelte Typen, Dateien über 1000 Zeilen, die beim Arbeiten stören). Kandidaten aus B4:
+Plan noch nicht geschrieben. Grundlage: `ground-up-model.md` und Bauplan Abschnitt zum Prüfstand (Aegis Sustained und Swap als Prüfmenge).
 
-- `weaponPackages.ts` (über 2500 Zeilen): Item-Zweig und Bericht (`pickBaseRow`, `catalystBuffs`, `blockingReason`) in `scripts/lib/items/` ziehen; Override-Felder, die kein Override mehr nutzt (`setup`, `nthShotPart`, `catalystWindowSeconds`?), mit ihrem Code streichen. Vorher per Grep prüfen, wer sie noch nutzt.
-- Zirkulärer Import `weaponPackages.ts` ↔ `items/weaponItem.ts` (über `refs.ts` → `timingFromQuantum`): Timing-Funktionen in eine eigene Datei.
-- `options` der Waffe (Paket-Optionen) neben `buffs` und `catalystBuffs`: nach B6 eine Form.
+## Aufräumen nach B4 erledigt (2026-11-01)
 
-Danach P (Prüfstand ganzer Builds, Opus plant).
+Drei Commits, nur Umbau: `scripts/lib/timing.ts` (Zirkel weg), `setup` und `catalystWindowSeconds` gestrichen (Test-Helfer in `tests/support/ruleBuilders.ts`), `scripts/lib/weaponReport.ts`. `weaponPackages.ts` 2570 → 1930 Zeilen. Offen für B6: `pickBaseRow`, `blockingReason` (hängen am Paket-Zweig) und `options` der Waffe neben `buffs`. `nthShotPart` bleibt (Barrow-Dyad).
 
 ## B4 erledigt (2026-11-01)
 
@@ -24,7 +22,7 @@ B4a (Schritte 1–5) und B4b (6 Truth, 7 Hierarchy of Needs, 8 Abschluss) fertig
 
 ## Reihenfolge
 
-Aufräumen → P (Prüfstand) → B6 (Breite) → C (Casts, Energie) → B5 (Eichung). Begründung in `ground-up-model.md`.
+P (Prüfstand) → B6 (Breite) → C (Casts, Energie) → B5 (Eichung). Begründung in `ground-up-model.md`.
 
 ## Entscheidungen des Inhabers
 
