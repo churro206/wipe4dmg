@@ -50,6 +50,12 @@ describe("catalyst hover card", () => {
     );
   });
 
+  it("names a rate that a rule of the weapon sets for the catalyst (Guidance Ring)", () => {
+    expect(describeCatalyst(weaponById("hierarchy-of-needs"))).toContain(
+      "rate of fire 44 → 61",
+    );
+  });
+
   it("shows the whole game text, not only its first line", () => {
     const lines = describeCatalyst(weaponById("hierarchy-of-needs"));
     expect(lines).toContain(

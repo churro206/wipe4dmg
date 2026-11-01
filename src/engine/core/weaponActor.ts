@@ -1,5 +1,5 @@
-// Layer 4 of the core (ADR 0017): the state of one weapon (magazine, reload, charge, held draw,
-// setup) as a state machine. Each call of next() makes the next shot from the state the last one
+// Layer 4 of the core (ADR 0017): the state of one weapon (magazine, reload, charge, held draw)
+// as a state machine. Each call of next() makes the next shot from the state the last one
 // left; timing rules are those of simulate.ts (ADR 0001), so both cores plan the same shots.
 
 import type { StatModifier, Weapon } from "../../data/schema";
@@ -14,7 +14,6 @@ export type PlannedShot = {
   index: number; // 0 for the first shot of the weapon
   timeMs: number;
   holdFactor: number;
-  withSetup: boolean; // the shot works with a deployed setup (WeaponSetup)
 };
 
 /** What one step makes: the start of a full reload before the shot, and the shot if it is in the phase. */
@@ -24,8 +23,6 @@ export type ActorInput = {
   weapon: Weapon;
   catalyst: boolean;
   totalShotsLimit?: number;
-  setupPreBuilt?: boolean;
-  setupDeployed?: boolean;
   damagePhaseSeconds: number;
   abilities: AbilityCast[];
   superWindows: SuperWindow[];
@@ -39,7 +36,11 @@ export function createWeaponActor(input: ActorInput) {
   // A catalyst that changes magazine, ammo or reload replaces the timing while it is on.
   const timing = (catalyst && weapon.catalyst?.timing) || weapon;
   const chargeTimeMs = requireValue(weapon.chargeTimeMs, "chargeTimeMs");
-  const fireRateRpm = requireValue(timing.fireRateRpm, "fireRateRpm");
+  // A catalyst timing without a rate leaves the weapon's own (a rule may set the catalyst's later)
+  const fireRateRpm = requireValue(
+    timing.fireRateRpm ?? weapon.fireRateRpm,
+    "fireRateRpm",
+  );
   const magazine = requireValue(timing.magazine, "magazine");
   const ammoShots =
     weapon.ammo === "primary"
@@ -186,28 +187,6 @@ export function createWeaponActor(input: ActorInput) {
     return atMs;
   };
 
-  // A setup the shots build and deploy (WeaponSetup), e.g. a Guidance Ring.
-  const setup = weapon.setup;
-  const setupShotsBefore = setup
-    ? requireValue(
-        input.setupPreBuilt ? setup.shotsBeforePreBuilt : setup.shotsBefore,
-        "shotsBefore",
-      )
-    : 0;
-  const setupDurationMs = setup
-    ? requireValue(setup.durationMs, "durationMs")
-    : 0;
-  const ownRpm = requireValue(weapon.fireRateRpm, "fireRateRpm");
-  let deployedMs: number | undefined = setup && input.setupDeployed ? 0 : undefined;
-  const intervalMs = (timeMs: number) =>
-    MS_PER_MINUTE /
-    rpmAt(
-      timeMs,
-      setup?.catalystTimingOnceDeployed && deployedMs === undefined
-        ? ownRpm
-        : fireRateRpm,
-    );
-
   let index = 0;
   let shotMs = chargeTimeMs;
   let leftInMagazine = magazine;
@@ -238,7 +217,7 @@ export function createWeaponActor(input: ActorInput) {
     let reloadStartMs: number | undefined;
     if (index > 0) {
       const previousMs = shotMs;
-      shotMs += intervalMs(previousMs);
+      shotMs += shotIntervalMsAt(previousMs);
       if (leftInMagazine === 0 && !noReloadAt(previousMs)) {
         const readyMs = shotMs + reloadMsAt(previousMs);
         const refillMs = refillBefore(previousMs, readyMs);
@@ -263,18 +242,9 @@ export function createWeaponActor(input: ActorInput) {
       done = true;
       return { reloadStartMs };
     }
-    let withSetup = false;
-    if (setup) {
-      const deploys =
-        deployedMs === undefined
-          ? shotIndex === setupShotsBefore - 1
-          : shotMs >= deployedMs + setupDurationMs;
-      if (deploys) deployedMs = shotMs;
-      withSetup = !deploys && deployedMs !== undefined;
-    }
     return {
       reloadStartMs,
-      shot: { index: shotIndex, timeMs: shotMs, holdFactor: hold.factor, withSetup },
+      shot: { index: shotIndex, timeMs: shotMs, holdFactor: hold.factor },
     };
   }
 

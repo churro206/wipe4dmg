@@ -100,7 +100,10 @@ export function modelTotal(
   return run(weapon, PHASE_SECONDS, selected, buckets, {
     ...options,
     shotLimit: s.shots,
-    ...(s.build.setupDeployed ? { setupDeployed: true } : {}),
+    // An assumption of the scenario, read by the rules of the weapon (condition `playstyle`)
+    ...(s.build.setupDeployed
+      ? { assumptions: [...(options.assumptions ?? []), "setup-stands"] }
+      : {}),
   }).totalDamage;
 }
 

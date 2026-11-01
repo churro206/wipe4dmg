@@ -1,5 +1,9 @@
 import type { Weapon } from "../../data/schema";
-import { plainShotLabel, playstylesOf } from "../../engine/playstyle";
+import {
+  plainShotLabel,
+  playstylesOf,
+  readsAssumption,
+} from "../../engine/playstyle";
 import { hasCatalyst } from "../../engine/weaponInfo";
 import { weapons } from "../data";
 import { describeCatalyst } from "../describe";
@@ -60,13 +64,13 @@ export function WeaponSection({
             </span>
           </span>
         )}
-        {weapon.setup && (
+        {readsAssumption(weapon, "pre-stacked") && (
           <span className="tile-wrap">
             <button
               type="button"
               className="tile"
               aria-pressed={preBuilt}
-              title={`${weapon.setup.name} charges built before the Damage Phase: the first shot deploys it.`}
+              title="Charges built before the Damage Phase: the first shot sets it."
               onClick={onTogglePreBuilt}
             >
               <span

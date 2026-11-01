@@ -68,8 +68,6 @@ export function simulate(
     weapon,
     catalyst,
     totalShotsLimit: options.shotLimit,
-    setupPreBuilt: options.setupPreBuilt,
-    setupDeployed: options.setupDeployed,
     damagePhaseSeconds,
     abilities: options.abilities ?? [],
     superWindows,
@@ -181,7 +179,6 @@ export function simulate(
     target: TargetState;
     schedule: (event: RunEvent) => void;
     hit?: TimedDamageInstance;
-    shot?: PlannedShot; // the shot of an `on shot` event (setup state, until step 3)
   };
   let firing: Firing | undefined;
   const current = (): Firing => {
@@ -199,17 +196,18 @@ export function simulate(
       actorState: notYet("The condition on the state of the weapon"),
       hasItem: (id) =>
         id === "catalyst" ? catalyst : effects.some((effect) => effect.id === id),
-      // Without a playstyle the plain shot is played: the first entry of the weapon's list
-      playstyle: (id) => (options.playstyle ?? weapon.playstyles?.[0]?.id) === id,
+      // Without a playstyle the plain shot is played: the first entry of the weapon's list; the
+      // assumptions of the build or scenario read the same way
+      playstyle: (id) =>
+        (options.playstyle ?? weapon.playstyles?.[0]?.id) === id ||
+        (options.assumptions ?? []).includes(id),
     },
     {
       spawn: ({ part, timeMs, delayMs, count, intervalMs, factor }) => {
         const instance = partsById.get(part);
         if (!instance) throw new Error(`A rule spawns the unknown part "${part}"`);
         const damage = requireValue(instance.damagePerTick, "damagePerTick");
-        const { schedule, shot } = current();
-        // Only shots fired while the setup stands deal such a part (moves to a counter in step 3)
-        if (instance.requiresSetup && !shot?.withSetup) return;
+        const { schedule } = current();
         // What the rule omits is 0 ms delay, one hit, no interval (section 6); never the part's own
         const first = timeMs + (delayMs ?? 0);
         const every = intervalMs ?? 0;
@@ -288,7 +286,6 @@ export function simulate(
     target: TargetState,
     schedule: (event: RunEvent) => void,
     hit?: TimedDamageInstance,
-    shot?: PlannedShot,
   ) {
     if (rules.length === 0) return;
     const previous = firing;
@@ -297,7 +294,6 @@ export function simulate(
       target,
       schedule,
       ...(hit ? { hit } : {}),
-      ...(shot ? { shot } : {}),
     };
     try {
       ruleEngine.fire(event);
@@ -450,8 +446,6 @@ export function simulate(
           },
           target,
           later,
-          undefined,
-          shot,
         );
         for (const event of [
           ...counterEvents(shot),

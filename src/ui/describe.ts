@@ -44,6 +44,17 @@ export function describeCatalyst(weapon: Weapon): string[] {
   ))
     lines.push(`${bonusPercent(option.factor.value)}% weapon damage`);
   const timing = catalyst?.timing;
+  // The rate that a rule sets for the catalyst, e.g. once a Guidance Ring stands
+  const ruleRpm = (weapon.rules ?? [])
+    .filter((rule) =>
+      (rule.if ?? []).some((c) => c.type === "hasItem" && c.id === "catalyst" && !c.not),
+    )
+    .flatMap((rule) => rule.do)
+    .flatMap((action) =>
+      action.type === "modifyStat" && action.modifier.stat === "rpm"
+        ? [action.modifier.value.value]
+        : [],
+    )[0];
   if (timing) {
     const change = (
       label: string,
@@ -58,11 +69,14 @@ export function describeCatalyst(weapon: Weapon): string[] {
       weapon.ammo === "primary"
         ? null
         : change("ammo", weapon.totalShots.value, timing.totalShots.value),
-      change(
-        "rate of fire",
-        round(weapon.fireRateRpm.value),
-        round(timing.fireRateRpm.value),
-      ),
+      // No rate in the timing: a rule of the weapon sets the catalyst's (e.g. once a ring stands)
+      timing.fireRateRpm || ruleRpm !== undefined
+        ? change(
+            "rate of fire",
+            round(weapon.fireRateRpm.value),
+            round(timing.fireRateRpm?.value ?? ruleRpm ?? null),
+          )
+        : null,
       change("reload ms", weapon.reloadTimeMs.value, timing.reloadTimeMs.value),
     ].filter((c): c is string => c !== null);
     if (changes.length > 0) lines.push(changes.join(", "));

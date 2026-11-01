@@ -321,7 +321,7 @@ describe("catalysts", () => {
     const result = simulate(hierarchy, 17.5, [], loadBuckets(rawBuckets), {
       catalyst: false,
       keywords,
-      setupPreBuilt: true,
+      assumptions: ["pre-stacked"],
     });
     // arrows with the ring: from the 2nd on, before the ring is set again after 20 s
     const ringArrows = result.shots.length - 1;

@@ -63,8 +63,6 @@ export const DamageInstance = z.object({
   tickIntervalMs: SourcedNumber, // 0 for a single hit
   canPrecision: z.boolean(),
   requiresCatalyst: z.boolean(),
-  // Only shots fired while the weapon's setup stands deal it, e.g. the seekers of a Guidance Ring
-  requiresSetup: z.boolean().optional(),
   // Only every Nth shot of the weapon sets it off (the Nth, 2Nth, ...), e.g. the cluster of every
   // third rocket with Prototype Trueseeker
   everyNthShot: SourcedNumber.optional(),
@@ -73,21 +71,6 @@ export const DamageInstance = z.object({
   delivery: Delivery.optional(),
 });
 export type DamageInstance = z.infer<typeof DamageInstance>;
-
-/**
- * Something a weapon's shots build up and then deploy, e.g. the Guidance Ring of Hierarchy of Needs:
- * the shots before it stand without its damage, it lasts a while, then the next shot deploys it
- * again (that shot without its damage either).
- */
-export const WeaponSetup = z.object({
-  name: z.string(),
-  shotsBefore: SourcedNumber, // shots until it stands, the deploying shot included
-  shotsBeforePreBuilt: SourcedNumber, // the same with charges built before the damage phase
-  durationMs: SourcedNumber,
-  // The catalyst's timing only once it stands (e.g. "Deploying a Guidance Ring … decreased Draw Time")
-  catalystTimingOnceDeployed: z.boolean(),
-});
-export type WeaponSetup = z.infer<typeof WeaponSetup>;
 
 export const Element = z.enum([
   "kinetic",
@@ -355,7 +338,8 @@ export type WeaponOption = z.infer<typeof WeaponOption>;
 
 /** Shots, magazine and reload of a weapon with its catalyst; replaces the weapon's own timing. */
 export const CatalystTiming = z.object({
-  fireRateRpm: SourcedNumber,
+  // Omitted: the weapon's own rate holds; a rule sets the catalyst's (e.g. once a Guidance Ring stands)
+  fireRateRpm: SourcedNumber.optional(),
   magazine: SourcedNumber,
   totalShots: SourcedNumber, // null for primary ammo (unlimited)
   reloadTimeMs: SourcedNumber,
@@ -831,7 +815,6 @@ export const Weapon = z.object({
       source: Source,
     }),
   ),
-  setup: WeaponSetup.optional(),
   // The playstyles the build picker offers (Build.playstyle), e.g. the charge levels of Whirling
   // Ovation; the first entry is the plain shot and the default. Assumptions of a scenario that no
   // player picks (Build.playstyle "cayde-s-retribution") need no entry. The rules read the playstyle
@@ -1632,8 +1615,8 @@ export const Build = z.object({
   guardianClass: GuardianClass,
   subclass: Subclass,
   catalyst: z.boolean(),
-  // The weapon's setup charges are built before the damage phase (WeaponSetup, e.g. Guidance Ring
-  // charges persist through stow); omitted: off.
+  // The weapon's setup charges are built before the damage phase (assumption "pre-stacked" of the
+  // weapon's rules, e.g. Guidance Ring charges persist through stow); omitted: off.
   weaponPreBuilt: z.boolean().optional(),
   // How the weapon is played where its shots differ (DamageInstance.playstyle), e.g. "cayde-s-retribution"
   // for the Golden Gun shots of Still Hunt; omitted: the plain shot. The link carries only the

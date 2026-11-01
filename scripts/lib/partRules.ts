@@ -1,7 +1,8 @@
 // The rules that set off the parts of a weapon (docs/architecture.md section 6, ADR 0018 B3a step 3):
 // on every shot a `spawn` per part, with the times in the action. A part with `everyNthShot` counts
 // the shots in a counter of its own, a part that needs the catalyst has the condition `hasItem
-// catalyst`, and a part with a factor per tick spawns once per tick.
+// catalyst`, and a part with a factor per tick spawns once per tick. A setup that the shots build
+// and deploy (Guidance Ring) is a counter and a mode (setupRules).
 
 import type {
   Condition,
@@ -19,7 +20,103 @@ const sameNumber = (value: number | null, from: SourcedNumber): SourcedNumber =>
  * Where a part belongs to a playstyle (Weapon.playstyles): `only` is the playstyle whose shot it is,
  * `except` the playstyles whose parts take its place.
  */
-export type PartPlaystyle = { only?: string; except?: string[] };
+export type PartPlaystyle = {
+  only?: string;
+  except?: string[];
+  // The part is dealt only while a mode of the weapon has this value, e.g. the seekers while the ring stands
+  mode?: { id: string; is: string };
+};
+
+/** Assumptions of a build or scenario that a setup reads (condition `playstyle`). */
+export const PRE_STACKED = "pre-stacked";
+export const SETUP_STANDS = "setup-stands";
+/** The value of the mode of a setup while it stands. */
+export const SETUP_UP = "up";
+
+export type SetupRuleInput = {
+  mode: string; // id of the mode and prefix of the rules, e.g. "guidance-ring"
+  shotsBefore: SourcedNumber; // shots until it stands, the deploying shot included
+  shotsBeforePreBuilt: SourcedNumber; // the same with the charges built before the phase
+  durationMs: SourcedNumber;
+  catalystRpm?: SourcedNumber; // the catalyst's rate once it stands
+};
+
+/**
+ * The rules of a setup that the shots build and deploy, e.g. a Guidance Ring: the first N-1 shots count
+ * in a counter, the next shot sets the mode for its duration, and again whenever the mode has run
+ * out (the counter stays full). "Pre-stacked" fills the counter, "setup stands" fills it and sets the
+ * mode at the start of the phase. The catalyst's rate holds from the first deployment on.
+ */
+export function setupRules(setup: SetupRuleInput): Rule[] {
+  const { mode, shotsBefore, shotsBeforePreBuilt, durationMs, catalystRpm } = setup;
+  const counter = `${mode}-shots`;
+  const full = sameNumber(
+    shotsBefore.value === null ? null : shotsBefore.value - 1,
+    shotsBefore,
+  );
+  const preStacked = sameNumber(
+    shotsBefore.value === null || shotsBeforePreBuilt.value === null
+      ? null
+      : shotsBefore.value - shotsBeforePreBuilt.value,
+    shotsBeforePreBuilt,
+  );
+  const up = { type: "mode" as const, id: mode, is: SETUP_UP };
+  const setUp = { type: "setMode" as const, mode, to: SETUP_UP, durationMs };
+  const catalyst = { type: "hasItem" as const, id: "catalyst" };
+  const rate = catalystRpm
+    ? [
+        {
+          type: "modifyStat" as const,
+          modifier: { type: "stat" as const, stat: "rpm" as const, value: catalystRpm },
+        },
+      ]
+    : [];
+  const deploys: Condition[] = [
+    { type: "counter", id: counter, op: ">=", value: full },
+    { ...up, not: true },
+  ];
+  return [
+    {
+      id: `${mode}-pre-stacked`,
+      on: { on: "phaseStart" },
+      if: [{ type: "playstyle", id: PRE_STACKED }],
+      do: [{ type: "addStacks", counter, by: preStacked }],
+    },
+    {
+      id: `${mode}-stands`,
+      on: { on: "phaseStart" },
+      if: [{ type: "playstyle", id: SETUP_STANDS }],
+      do: [{ type: "addStacks", counter, by: full }, setUp],
+    },
+    ...(rate.length > 0
+      ? [
+          {
+            id: `${mode}-stands-rate`,
+            on: { on: "phaseStart" as const },
+            if: [{ type: "playstyle" as const, id: SETUP_STANDS }, catalyst],
+            do: rate,
+          },
+        ]
+      : []),
+    {
+      id: `${mode}-count`,
+      on: { on: "shot" },
+      if: [{ type: "counter", id: counter, op: "<", value: full }],
+      do: [{ type: "addStacks", counter }],
+    },
+    { id: `${mode}-deploy`, on: { on: "shot" }, if: deploys, do: [setUp] },
+    ...(rate.length > 0
+      ? [
+          {
+            id: `${mode}-deploy-rate`,
+            on: { on: "shot" as const },
+            if: [...deploys, catalyst],
+            do: rate,
+          },
+        ]
+      : []),
+  ];
+}
 
 /** The rate of a playstyle: a stat modifier from the start of the phase on, only in that playstyle. */
 export function playstyleRateRule(id: string, rpm: SourcedNumber): Rule {
@@ -40,6 +137,9 @@ export function partRules(part: DamageInstance, playstyle: PartPlaystyle = {}): 
       id,
       not: true,
     })),
+    ...(playstyle.mode
+      ? [{ type: "mode" as const, id: playstyle.mode.id, is: playstyle.mode.is }]
+      : []),
   ];
   const delay = part.delayMs;
   const interval = part.tickIntervalMs;

@@ -48,14 +48,14 @@ describe("buildSimulation", () => {
     expect(ids(true)).toContain("exotic-armor:doom-fang-pauldron");
   });
 
-  it("passes the weapon's Pre-stacked switch", () => {
-    const preBuilt = (weaponPreBuilt?: boolean) =>
+  it("passes the weapon's Pre-stacked switch as an assumption", () => {
+    const assumptions = (weaponPreBuilt?: boolean) =>
       buildSimulation(
         build({ weaponId: "hierarchy-of-needs", weaponPreBuilt }),
         gameData,
-      ).options.setupPreBuilt;
-    expect(preBuilt(true)).toBe(true);
-    expect(preBuilt(undefined)).toBeUndefined();
+      ).options.assumptions;
+    expect(assumptions(true)).toEqual(["pre-stacked"]);
+    expect(assumptions(undefined)).toBeUndefined();
   });
 
   it("passes catalyst, windows and keywords", () => {

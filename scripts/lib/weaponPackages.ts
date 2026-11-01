@@ -21,6 +21,7 @@ import type {
   QuantumWeaponSnapshot,
   ReloadFormulaSnapshot,
   Source,
+  SourcedNumber,
   Weapon,
   WeaponGap,
   WeaponOption,
@@ -28,7 +29,13 @@ import type {
 } from "../../src/data/schema.ts";
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
-import { type PartPlaystyle, partRules, playstyleRateRule } from "./partRules.ts";
+import {
+  type PartPlaystyle,
+  partRules,
+  playstyleRateRule,
+  SETUP_UP,
+  setupRules,
+} from "./partRules.ts";
 import { catalystReloadFactor, reloadFormulaOf } from "./reloadFormulas.ts";
 import {
   abilityKindsNamed,
@@ -1925,6 +1932,15 @@ export function buildWeaponImport(
       : timingSource(
           `Aegis Sustained note "${aegisChargeMs}ms charge"; the interval contains it`,
         );
+    // The rate of the catalyst's timing; a setup whose catalyst timing holds only once it stands
+    // (catalystTimingOnceDeployed) carries it in a rule, and the timing leaves the rate out
+    const catalystRate: SourcedNumber | undefined =
+      timingDiffers && catalystTiming
+        ? {
+            value: Number((60 / catalystTiming.intervalSeconds).toFixed(3)),
+            source: timingSourceOf(catalystTiming, catalystTiming.note),
+          }
+        : undefined;
     const weapon: Weapon = {
       id,
       code: codes[id] ?? 0, // set below
@@ -2079,30 +2095,9 @@ export function buildWeaponImport(
                 tickIntervalMs: { value: 0, source: setupSource() },
                 canPrecision: false,
                 requiresCatalyst: false,
-                requiresSetup: true,
               }))
           : []),
       ],
-      ...(setupRule
-        ? {
-            setup: {
-              name: setupRule.name,
-              shotsBefore: {
-                value: setupRule.shotsBefore,
-                source: setupSource(),
-              },
-              shotsBeforePreBuilt: {
-                value: setupRule.shotsBeforePreBuilt,
-                source: setupSource(),
-              },
-              durationMs: {
-                value: setupRule.durationSeconds * 1000,
-                source: setupSource(),
-              },
-              catalystTimingOnceDeployed: setupRule.catalystTimingOnceDeployed,
-            },
-          }
-        : {}),
       intrinsicParts: [
         ...(nthRule?.scorchPerHit
           ? [
@@ -2199,15 +2194,9 @@ export function buildWeaponImport(
               ...(timingDiffers && catalystTiming
                 ? {
                     timing: {
-                      fireRateRpm: {
-                        value: Number(
-                          (60 / catalystTiming.intervalSeconds).toFixed(3),
-                        ),
-                        source: timingSourceOf(
-                          catalystTiming,
-                          catalystTiming.note,
-                        ),
-                      },
+                      ...(catalystRate && !setupRule?.catalystTimingOnceDeployed
+                        ? { fireRateRpm: catalystRate }
+                        : {}),
                       magazine: {
                         value: catalystTiming.magazine,
                         source: timingSourceOf(catalystTiming),
@@ -2259,13 +2248,26 @@ export function buildWeaponImport(
           ]
         : [];
     const shotPlaystyles = playstyles.map(({ rule }) => rule.id);
+    const setupModeId = slug(setupRule?.name ?? "");
+    const setupMode = { id: setupModeId, is: SETUP_UP };
     const partPlaystyles: Record<string, PartPlaystyle> = {
       ...(shotPlaystyles.length > 0 ? { shot: { except: shotPlaystyles } } : {}),
       ...Object.fromEntries(shotPlaystyles.map((id) => [id, { only: id }])),
-      ...(setupRule?.playstyle
+      // The hits of a setup are dealt only while it stands
+      ...(setupRule
         ? {
-            [SETUP_HITS_ID]: { except: [setupRule.playstyle.id] },
-            [`${SETUP_HITS_ID}-${setupRule.playstyle.id}`]: { only: setupRule.playstyle.id },
+            [SETUP_HITS_ID]: {
+              ...(setupRule.playstyle ? { except: [setupRule.playstyle.id] } : {}),
+              mode: setupMode,
+            },
+            ...(setupRule.playstyle
+              ? {
+                  [`${SETUP_HITS_ID}-${setupRule.playstyle.id}`]: {
+                    only: setupRule.playstyle.id,
+                    mode: setupMode,
+                  },
+                }
+              : {}),
           }
         : {}),
     };
@@ -2283,6 +2285,24 @@ export function buildWeaponImport(
             ]
           : [],
       ),
+      // A setup the shots build and deploy: a counter and a mode (the hits of the setup are above)
+      ...(setupRule
+        ? setupRules({
+            mode: setupModeId,
+            shotsBefore: { value: setupRule.shotsBefore, source: setupSource() },
+            shotsBeforePreBuilt: {
+              value: setupRule.shotsBeforePreBuilt,
+              source: setupSource(),
+            },
+            durationMs: {
+              value: setupRule.durationSeconds * 1000,
+              source: setupSource(),
+            },
+            ...(setupRule.catalystTimingOnceDeployed && catalystRate
+              ? { catalystRpm: catalystRate }
+              : {}),
+          })
+        : []),
     ];
     entry.status = "package";
     packages.push(weapon);

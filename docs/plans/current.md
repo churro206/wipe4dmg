@@ -10,15 +10,15 @@ Korrekturen K1–K4 erledigt (2026-11-01, Changelog): Bedingungen sehen den Zust
 
 **Teil 2** (Rest von Schritt 3; lesen: Bauplan 6, `core/rules.ts`, `core/simulateCore.ts` „Rules of the weapon“, `tests/polarisGolden.test.ts`; `weapon-packages.json` nie direkt lesen), je ein Commit:
 
-1. ~~Teile~~ erledigt (2026-11-01, Changelog): `partRules.ts`, `hitEvents` weg. Übergang: `requiresSetup` prüft der `spawn` (bis Schritt 3), `partHitsMs` bis B3b.
-2. ~~Spielweisen~~ erledigt (2026-11-01, Changelog): `Weapon.playstyles`, Bedingung `playstyle`, Takt per `modifyStat` auf `phaseStart`; `withPlaystyle` weg. `requiresSetup` auf den Ring-Treffern bleibt bis Schritt 3.
-3. Hierarchy: `setup`, `requiresSetup` → Zähler, `setMode`, `phaseStart` („Pre-stacked“, „Setup steht“), Bedingung `mode`; `weaponActor` liest Takt, Reload, Halten aus `StatModifier`.
+1. ~~Teile~~ erledigt (2026-11-01, Changelog): `partRules.ts`, `hitEvents` weg. Übergang: `partHitsMs` bis B3b.
+2. ~~Spielweisen~~ erledigt (2026-11-01, Changelog): `Weapon.playstyles`, Bedingung `playstyle`, Takt per `modifyStat` auf `phaseStart`; `withPlaystyle` weg.
+3. ~~Hierarchy~~ erledigt (2026-11-01, Changelog): `setupRules`, Annahmen `pre-stacked`/`setup-stands` über `SimulationOptions.assumptions`, Catalyst-Takt als Regel. Der Actor liest nur den Takt aus Regeln; `reload` und `drawHold` kommen mit B3b (Inhaber 2026-11-01).
 4. Catalyst-Fenster: `windowSeconds` → `grantBuff`; `buffPartsAt` in `multiplierAt` (Grenze `<=`).
 5. `IntrinsicPart.appliesKeyword` → `on hit → applyStatus`. Entfernte Felder aus `REMAINING` streichen.
 
 ## Stand
 
-- 2026-11-01: B3a Teil 1 plus K1–K4 (Changelog): Regel-Engine, Status-Container, `Weapon.rules`/`buffs`, Golden Polaris nach Bauplan. Suite 2120 grün (nach Teil 2, Schritt 2). Planmäßig noch nicht im Host: `damage`, `addResource`, `actor`; `refill` bei geplantem Reload und die Wirkung von Weaken auf die Formel kommen mit B3b.
+- 2026-11-01: B3a Teil 1 plus K1–K4 (Changelog): Regel-Engine, Status-Container, `Weapon.rules`/`buffs`, Golden Polaris nach Bauplan. Suite 2126 grün (nach Teil 2, Schritt 3). Planmäßig noch nicht im Host: `damage`, `addResource`, `actor`; `refill` bei geplantem Reload und die Wirkung von Weaken auf die Formel kommen mit B3b.
 - B3.0, B2, B1 erledigt. Bauplan (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - Offen ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk auf Still Hunt.
 

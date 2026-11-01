@@ -95,10 +95,8 @@ describe("rule types (I3)", () => {
 // Special fields of the runtime schema (docs/plans/ground-up-model.md, B3). Each becomes a rule or a
 // modifier; remove an entry from REMAINING when its field is gone.
 const SPECIAL_FIELDS = [
-  "Weapon.setup",
   "Weapon.intrinsicParts",
   "DamageInstance.requiresCatalyst",
-  "DamageInstance.requiresSetup",
   "DamageInstance.everyNthShot",
   "DamageInstance.tickFactors",
   "WeaponOption.windowSeconds",

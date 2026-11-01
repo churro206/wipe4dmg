@@ -49,9 +49,10 @@ export type SimulationOptions = EffectWindowOptions & {
   weaponStat?: WeaponStatValue; // Weapons stat; default: no stat bonus
   keywords?: Keyword[]; // keywords.json; needed once a part applies a keyword
   statusModifiers?: StatusModifierData[]; // keywords.json: Weaken; its effect on the formula is B3b
-  setupPreBuilt?: boolean; // the weapon's setup charges are built before the phase ("Pre-stacked")
-  // The setup stands at the start of the phase, e.g. in an Aegis measurement without the deploying shot
-  setupDeployed?: boolean;
+  // Assumptions of the build or scenario that the rules of the weapon read with the condition
+  // `playstyle`: "pre-stacked" (setup charges built before the phase), "setup-stands" (the setup
+  // stands at the start, e.g. in an Aegis measurement without the deploying shot)
+  assumptions?: string[];
   playstyle?: string; // Build.playstyle (playstyle.ts)
   shotLimit?: number; // the weapon fires at most this many shots, e.g. those of a measurement
 };

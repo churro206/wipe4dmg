@@ -11,6 +11,18 @@ export function playstylesOf(
   return (weapon.playstyles ?? []).slice(1).map((p) => ({ id: p.id, name: p.label }));
 }
 
+/**
+ * Whether the rules of the weapon read an assumption of the build (condition `playstyle`), e.g.
+ * "pre-stacked" for the charges of a setup. The build offers a switch only for such a weapon.
+ */
+export const readsAssumption = (
+  weapon: Pick<Weapon, "rules">,
+  id: string,
+): boolean =>
+  (weapon.rules ?? []).some((rule) =>
+    (rule.if ?? []).some((c) => c.type === "playstyle" && c.id === id),
+  );
+
 /** What the picker calls the plain shot, e.g. "Full charge". */
 export const plainShotLabel = (weapon: Pick<Weapon, "playstyles">): string | undefined =>
   weapon.playstyles?.[0]?.label;

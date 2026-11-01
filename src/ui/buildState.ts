@@ -13,7 +13,7 @@ import { fitArtifact } from "../engine/artifacts";
 import { decodeLink, encodeLink } from "../engine/buildLink";
 import type { EffectWindowInput } from "../engine/effectWindows";
 import { classPerksFor } from "../engine/exoticArmor";
-import { playstylesOf } from "../engine/playstyle";
+import { playstylesOf, readsAssumption } from "../engine/playstyle";
 import { abilitiesFor, canProvide } from "../engine/providers";
 import {
   abilities,
@@ -287,7 +287,8 @@ export function buildOfState(state: {
     guardianClass: state.guardianClass,
     subclass: state.subclass,
     catalyst: state.catalyst,
-    ...(state.weaponPreBuilt && weaponById(state.weaponId).setup
+    ...(state.weaponPreBuilt &&
+    readsAssumption(weaponById(state.weaponId), "pre-stacked")
       ? { weaponPreBuilt: true }
       : {}),
     ...(state.playstyle &&
