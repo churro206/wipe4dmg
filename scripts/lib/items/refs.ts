@@ -29,7 +29,7 @@ import type {
   Source,
   SourcedNumber,
 } from "../../../src/data/schema.ts";
-import { type Timing, timingFromQuantum } from "../weaponPackages.ts";
+import { type Timing, timingFromQuantum } from "../timing.ts";
 
 /** The snapshots an item reads, and the link codes of the weapons. */
 export type ItemSources = {
