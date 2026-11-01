@@ -6,6 +6,7 @@
 //                                           magazine, totalShots, reloadTimeMs
 //   $aegis[<row>].critShot                  precision hit ÷ Full Modifiers          fitted (row)
 //   $aegis[<row>].tick("<name>")            named tick ÷ Full Modifiers             fitted (row)
+//   $aegis[<row>].perShot                   the row's value per shot (a playstyle)  fitted (row)
 //   $aegisSustained[<row>].<field>          Sustained row, a number field           fitted (row)
 //   $manifest[<weapon>].stat("<stat>")      displayed stat of the manifest          verified
 //   $clarity[<entry>]("<quote>")            the one number of a quote in the text   derived
@@ -187,6 +188,23 @@ function resolveRef(ref: ParsedRef, ctx: RefContext): SourcedNumber {
         expectShape(ref, 1, false, ".critShot");
         raw = row.critShot ?? fail(ref, "the row has no precision hit");
         note = `critShot ${raw} ÷ Full Modifiers ${row.fullModifiers}`;
+      } else if (ref.path[0] === "perShot") {
+        expectShape(ref, 1, false, ".perShot");
+        // Aegis' own value per shot of the row: already divided by Full Modifiers
+        raw = row.perShot;
+        note = `perShot ${raw} of the row (Full Modifiers ${row.fullModifiers} already out)`;
+        ctx.fittedRows.push(row.id);
+        return {
+          value: round(raw),
+          source: {
+            name: `${snapshot.source.name}, row ${row.id}`,
+            url: snapshot.source.url,
+            retrieved: snapshot.source.retrieved,
+            status: "fitted",
+            row: row.id,
+            note,
+          },
+        };
       } else if (ref.path[0] === "tick") {
         expectShape(ref, 1, true, '.tick("<name>")');
         const tick = new RegExp(`\\b(\\d+(?:\\.\\d+)?)(?:\\/\\d+(?:\\.\\d+)?)? ${escapeRegExp(ref.arg!)}\\b`, "i").exec(
@@ -196,7 +214,7 @@ function resolveRef(ref: ParsedRef, ctx: RefContext): SourcedNumber {
         raw = Number(tick[1]);
         note = `tick "${tick[0]}" ÷ Full Modifiers ${row.fullModifiers}`;
       } else {
-        return fail(ref, `unknown field ${ref.path.join(".")}; use .critShot or .tick("<name>")`);
+        return fail(ref, `unknown field ${ref.path.join(".")}; use .critShot, .perShot or .tick("<name>")`);
       }
       ctx.fittedRows.push(row.id);
       return {

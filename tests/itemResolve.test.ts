@@ -180,6 +180,13 @@ describe("references", () => {
     expect(n.source.row).toBe(AEGIS_ROW);
   });
 
+  it("$aegis .perShot: the value per shot of the row (already without modifiers), fitted", () => {
+    const n = value(`$aegis[${AEGIS_ROW}].perShot`);
+    expect(n.value).toBe(169.719);
+    expect(n.source.status).toBe("fitted");
+    expect(n.source.row).toBe(AEGIS_ROW);
+  });
+
   it("$aegis .tick: a named tick ÷ Full Modifiers", () => {
     const n = value(`$aegis[${AEGIS_ROW}].tick("Perfect Fifth")`);
     expect(n.value).toBe(93.656); // 310 ÷ 3.31
