@@ -91,6 +91,8 @@ Was B1–B4 hinterlassen: tote Pfade im Import, doppelte Typen, Dateien über 10
 - Kennzahlen je Gruppe (Spalte „Prüft“ in `docs/product.md`): Abdeckung, Spearman, Delta-Paare.
 - Gate: Kennzahlen der Weapons-Zeilen unverändert; Zeilen mit fehlendem Schalter auf der Liste.
 
+**Plan P (Opus, freigegeben 2026-11-01):** fünf Schritte in `docs/plans/current.md`. Ein Prüfstand für Weapons, Sustained, Swap und Abilities; Rangfolge-Gate und Gesamtprobe gehen darin auf. Testing-Reiter wandert nach B6 (kein Import).
+
 ### C – Casts und Energie (Opus plant, Sonnet setzt um; nach B6)
 
 - Policy für Casts und Energie im Lauf statt vorab geplanter Casts (Bauplan Abschnitt 7, 13); `addResource` im Host. Trägt die Fragen 3, 6 und 13.
