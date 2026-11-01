@@ -1199,14 +1199,14 @@
       "600s buffed catalyst": 176719.01
     },
     "truth": {
-      "30s plain": 30135.43,
-      "30s buffed": 50736.01,
-      "30s plain catalyst": 42189.6,
-      "30s buffed catalyst": 71030.41,
-      "600s plain": 30135.43,
-      "600s buffed": 50736.01,
-      "600s plain catalyst": 42189.6,
-      "600s buffed catalyst": 71030.41
+      "30s plain": 30120.02,
+      "30s buffed": 50710.06,
+      "30s plain catalyst": 42168.02,
+      "30s buffed catalyst": 70994.08,
+      "600s plain": 30120.02,
+      "600s buffed": 50710.06,
+      "600s plain catalyst": 42168.02,
+      "600s buffed catalyst": 70994.08
     },
     "turncoat": {
       "30s plain": 7008.93,

@@ -8,7 +8,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 - **Delta pairs (check set): 1 of 3 within 2 percentage points**
 - Rank (check set): Spearman 0.89 over 11 rows
 - Absolute, information only: within ±3 % 2 of 11 (check set), 121 of 181 (all counted rows, mostly Eichung)
-- Rows: 183 scenarios (32 by hand, 151 generated); fitted 129; calibration set 41; check set 11; not counted 2; core cannot run 0
+- Rows: 183 scenarios (32 by hand, 151 generated); fitted 128; calibration set 42; check set 11; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -65,9 +65,9 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | still-hunt | base | 658 | 658 | +0.1 % | fitted | calibration |  |
 | still-hunt-caydes-retribution | factor | 5811 | 5811 | −0.0 % | fitted | calibration |  |
 | still-hunt-celestial-nighthawk | factor | 8350 | 658 | −92.1 % |  | calibration |  |
-| truth | base | 1798 | 1798 | −0.0 % |  | calibration |  |
-| truth-trueseeker | hitShare | 19629 | 19904 | +1.4 % | fitted | calibration |  |
-| truth-trueseeker-reapers-tithe | hitShare | 37891 | 37155 | −1.9 % | fitted | calibration |  |
+| truth | base | 1798 | 1797 | −0.1 % |  | calibration |  |
+| truth-trueseeker | hitShare | 19629 | 19895 | +1.4 % | fitted | calibration |  |
+| truth-trueseeker-reapers-tithe | hitShare | 37891 | 37136 | −2.0 % |  | calibration |  |
 | whirling-ovation-no-charge | base | 1016 | 1015 | −0.1 % | fitted | calibration |  |
 | whirling-ovation-1-3-charge | factor | 3118 | 3116 | −0.1 % | fitted | check |  |
 | whirling-ovation-2-3-charge | factor | 4216 | 4212 | −0.1 % | fitted | calibration |  |

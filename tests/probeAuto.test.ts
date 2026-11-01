@@ -43,6 +43,32 @@ describe("autoEntries", () => {
     expect(entry.unmapped).toEqual([]);
   });
 
+  it("takes a buff that a catalyst rule grants as the catalyst switch (item files, B4b)", () => {
+    const withBuff = {
+      ...lament,
+      buffs: [{ id: "tithe", name: "Reaper's Tithe x4", modifiers: [] }],
+      rules: [
+        {
+          id: "tithe",
+          on: { on: "shot" },
+          if: [{ type: "hasItem", id: "catalyst" }],
+          do: [{ type: "grantBuff", buff: "tithe" }],
+        },
+      ],
+    } as unknown as Weapon;
+    const entry = autoEntries([row(["Reaper's Tithe x4"])], {
+      weapons: [withBuff],
+      abilities: [],
+      effects: [],
+      exoticArmor: [],
+      artifactPerks: [],
+      ignored: {},
+      covered: new Set(),
+    }).entries[0];
+    expect(entry.build.catalyst).toBe(true);
+    expect(entry.unmapped).toEqual([]);
+  });
+
   it("takes an artifact perk as the effect it switches on", () => {
     const entry = entryOf(["Combination Argent Blade"]);
     expect(entry.selections).toEqual(["argent-blade"]);

@@ -26,7 +26,8 @@ export function sourcesOf(json: unknown): Source[] {
 }
 
 /**
- * Rows used as input: Weapons rows named by a `fitted` source of the weapon packages, and the rows
+ * Rows used as input: Weapons rows (and Sustained rows of an item's `$aegisSustained`) named by a
+ * `fitted` source of the weapon packages, and the rows
  * of ability packages and of variants of abilities from components (ratio to the base row).
  */
 export function fittedRows(

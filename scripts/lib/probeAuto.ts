@@ -11,6 +11,7 @@ import type {
   ExoticArmorEntry,
   Weapon,
 } from "../../src/data/schema.ts";
+import { catalystBuffs } from "./items/weaponItem.ts";
 
 /** One row of the Aegis tabs "Sustained" and "Swap" rebuilt as a build. */
 export type Entry = {
@@ -107,8 +108,12 @@ export function autoEntries(
       ...(weapon?.options ?? []).map((o) => norm(o.name)),
       ...(weapon?.intrinsics ?? []).map((i) => norm(i.name)),
     ]);
-    // "Burning Ambition, The Lament Catalyst": the perk names of the catalyst.
-    const catalystPerks = new Set((weapon?.catalyst?.name ?? "").split(/,\s*/).map(norm));
+    // "Burning Ambition, The Lament Catalyst": the perk names of the catalyst, and the buffs its
+    // rules grant (an item file, e.g. Reaper's Tithe x4 of Truth).
+    const catalystPerks = new Set([
+      ...(weapon?.catalyst?.name ?? "").split(/,\s*/).map(norm),
+      ...(weapon ? catalystBuffs(weapon) : []).map((b) => norm(b.name)),
+    ]);
     for (const assumption of row.assumptions) {
       const key = norm(assumption);
       const effectId = effectByName.get(key);

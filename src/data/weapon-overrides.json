@@ -1307,42 +1307,6 @@
     }
   },
   {
-    "weapon": "Truth",
-    "reason": "Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %).",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "rocket-launcher-truth-average-prototype-truthseeker",
-        "text": "490/36 cluster"
-      },
-      {
-        "source": "aegis",
-        "entry": "truth-prototype-truthseeker-argent-ordnance",
-        "text": "\"shots\":14"
-      },
-      {
-        "source": "clarity",
-        "entry": "Prototype Trueseeker",
-        "text": "Dealing damage with 3 rockets without reloading generates 1 Ammo"
-      },
-      {
-        "source": "clarity",
-        "entry": "Truth Catalyst",
-        "text": "for 15 seconds"
-      }
-    ],
-    "catalystWindowSeconds": 15,
-    "nthShotPart": {
-      "name": "Trueseeker cluster",
-      "every": 3,
-      "hits": 8
-    },
-    "timing": {
-      "from": "Aegis",
-      "row": "truth-prototype-truthseeker-argent-ordnance"
-    }
-  },
-  {
     "weapon": "Ager's Scepter",
     "reason": "Catalyst Will Given Form: +80 % (Clarity). Aegis' Einzeltreffer bestätigen das: 222 ÷ 3,31 gegen 561 ÷ 15,09 = ×1,804. Quantums 67 ÷ 38 = ×1,763 rundet auf ganze Zahlen. Die Aegis-Zeilen mit Catalyst bleiben ungenutzt, weil der Catalyst das Timing ändert.",
     "quotes": [

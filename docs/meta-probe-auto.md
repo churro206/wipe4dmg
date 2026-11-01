@@ -2,7 +2,7 @@
 
 Erzeugt mit `npm run probe` (`tests/metaProbeAuto.test.ts`, Regel in `scripts/lib/probeAuto.ts`). Alle Aegis-Zeilen mit exotischer Waffe (Tab Sustained) oder Super (Tab Swap). Bezug ist der Median der handgebauten Zeilen (`docs/meta-probe.md`): 1.000. Grenze ±15 %.
 
-Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 111, davon innerhalb der Grenze 42. Nicht vergleichbar (übersprungen): 45.
+Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichungen stehen mit Grund in `tests/fixtures/meta-probe-auto.json` und blockieren nichts. Mit Annahme ohne Schalter (nur berichtet): 111, davon innerhalb der Grenze 43. Nicht vergleichbar (übersprungen): 45.
 
 ## Vollständig abgebildet
 
@@ -80,7 +80,6 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | Glacial Quake | 113,223 | 76,514 | 0.676 | heavy attacks |
 | Edge of Concurrence | 50,199 | 34,161 | 0.681 | pre-stacked; Lightning Seeker into six shot cycle |
 | Bladefury | 39,040 | 26,619 | 0.682 | HLLLHLLLLHLLLH; Thread of Continuity |
-| Truth | 119,636 | 81,622 | 0.682 | Prototype Truthseeker |
 | Song of Flame | 77,545 | 53,227 | 0.686 | snap spam |
 | Bastion | 119,327 | 82,294 | 0.690 | Saint's Fury; includes melee time |
 | Song of Flame | 47,106 | 32,804 | 0.696 | snap spam |
@@ -115,6 +114,7 @@ Vollständig abgebildet (geprüft): 29, davon innerhalb der Grenze 26. Abweichun
 | D.A.R.C.I. | 73,429 | 69,253 | 0.943 | Target Acquired; includes jolt |
 | Ergo Sum | 98,852 | 93,245 | 0.943 | lightweight frame; Jagged Edge; 1H2L combo; Transcendent; excludes Transcendence 5% bonus |
 | Parasite | 95,708 | 90,445 | 0.945 | x20 first shot |
+| Truth | 119,636 | 114,212 | 0.955 | Prototype Truthseeker |
 | Whisper of the Worm | 134,672 | 128,750 | 0.956 | Incendiary Rifle Rounds; Solar Fulmination |
 | Cloudstrike | 86,535 | 82,773 | 0.957 | excludes Bolt Charge |
 | Black Talon | 79,745 | 76,566 | 0.960 | 2H2L combo |

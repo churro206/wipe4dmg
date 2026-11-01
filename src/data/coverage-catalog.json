@@ -2109,7 +2109,7 @@
         "group": "Power",
         "inGame": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
         "iconHash": 726894353,
-        "inCalculator": "+40% weapon damage",
+        "inCalculator": "Adds weapon damage.",
         "status": "full",
         "iconKey": "named:truth-catalyst"
       },

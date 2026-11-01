@@ -4,6 +4,7 @@
 // the result. A text whose hash changed is a review: the item still resolves, the report shows it.
 
 import {
+  type BuffDefinition,
   type DamageInstance,
   type ItemPart,
   type ItemText,
@@ -24,6 +25,21 @@ import {
 } from "./refs.ts";
 
 export type ResolvedItem = { weapon: Weapon; review: string[] };
+
+/**
+ * The buffs a rule grants only with the catalyst (`hasItem catalyst`), e.g. Reaper's Tithe x4 of
+ * Truth: an Aegis assumption of that name means the catalyst.
+ */
+export function catalystBuffs(weapon: Pick<Weapon, "buffs" | "rules">): BuffDefinition[] {
+  const granted = new Set(
+    (weapon.rules ?? [])
+      .filter((rule) =>
+        (rule.if ?? []).some((c) => c.type === "hasItem" && c.id === "catalyst" && !c.not),
+      )
+      .flatMap((rule) => rule.do.flatMap((a) => (a.type === "grantBuff" ? [a.buff] : []))),
+  );
+  return (weapon.buffs ?? []).filter((buff) => granted.has(buff.id));
+}
 
 /** Fields of the item itself; the others are Weapon fields. */
 const ITEM_FIELDS = ["id", "kind", "name", "texts", "parts"];

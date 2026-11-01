@@ -390,7 +390,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Precision frame, Impact Casing, Cluster Bomb, standard boss model | übersprungen | legendary frame (owner 2026-10-25) |
 | Precision frame, Impact Casing, Pack Hunter | übersprungen | legendary frame (owner 2026-10-25) |
 | The Wardcliff Coil, average, volley, excludes Bolt Charge | im Modell | base row of the package |
-| Truth | übersprungen | ohne average, Prototype Truthseeker der Basiszeile |
+| Truth | übersprungen | the item file uses another row |
 | Truth, average, Prototype Truthseeker | im Modell | base row of the package |
 | Truth, average, Prototype Truthseeker, Reaper's Tithe x4 | im Modell | option "Reaper's Tithe x4" |
 | Two-Tailed Fox, average | im Modell | base row of the package |

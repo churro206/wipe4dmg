@@ -3,14 +3,16 @@
 // those rows, and the bench leaves them out of the check set.
 
 import { describe, expect, it } from "vitest";
+import rawSustainedRows from "../src/data/aegis-sustained.json";
 import rawWeaponRows from "../src/data/aegis-weapons.json";
 import rawPackages from "../src/data/weapon-packages.json";
-import { AegisWeaponSnapshot, Source } from "../src/data/schema";
+import { AegisSustainedSnapshot, AegisWeaponSnapshot, Source } from "../src/data/schema";
 import { abilities, aegisRows } from "../src/ui/data";
 import { fittedRows, sourcesOf } from "./lib/fittedRows";
 
 const WEAPON_TAB = "Aegis Boss Damage sheet (tab Weapons";
 const weaponIds = new Set(AegisWeaponSnapshot.parse(rawWeaponRows).rows.map((r) => r.id));
+const sustainedIds = new Set(AegisSustainedSnapshot.parse(rawSustainedRows).rows.map((r) => r.id));
 const abilityIds = new Set(aegisRows.map((r) => r.id));
 
 describe("status fitted", () => {
@@ -35,7 +37,9 @@ describe("status fitted", () => {
   it("collects the rows of weapon packages and ability packages, and nothing else", () => {
     const { weaponRows, abilityRows } = fittedRows(rawPackages, abilities);
     expect(weaponRows.size).toBeGreaterThan(50);
-    for (const id of weaponRows) expect(weaponIds.has(id), id).toBe(true);
+    // An item file can also take a number of a Sustained row ($aegisSustained, e.g. Truth's 14 shots)
+    for (const id of weaponRows) expect(weaponIds.has(id) || sustainedIds.has(id), id).toBe(true);
+    expect(weaponRows.has("truth-prototype-truthseeker-argent-ordnance")).toBe(true);
     // A package takes its value from the row; a variant of an ability from components takes the
     // ratio of its row to the base row.
     const input = abilities.filter((a) => a.package !== undefined || a.variantOf !== undefined);

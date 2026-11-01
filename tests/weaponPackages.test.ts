@@ -66,7 +66,7 @@ describe("Barrow-Dyad", () => {
   });
 });
 
-describe("Truth (expected from the hand table of 2026-10-20)", () => {
+describe("Truth (item file src/data/items/weapons/truth.json, B4b)", () => {
   const truth = byName("Truth")!;
 
   it("takes type, element and ammo from the manifest", () => {
@@ -78,56 +78,37 @@ describe("Truth (expected from the hand table of 2026-10-20)", () => {
     });
   });
 
-  // S3 (ADR 0017): the hit of the Aegis row and the cluster of every third rocket (8 × 490) instead
-  // of the row's average 2179.289.
-  it("takes the single hit of the Aegis row per rocket and a cluster of every third", () => {
+  // The rocket from Quantum (1797, Aegis 5682 ÷ 3.16 = 1798.1), the cluster of every third rocket
+  // (8 × 490 ÷ 3.16) from Aegis.
+  it("takes the rocket from Quantum and a cluster of every third from Aegis", () => {
     expect(truth.damageInstances).toHaveLength(2);
-    expect(value(truth.damageInstances[0].damagePerTick)).toBeCloseTo(
-      5682 / 3.16,
-      3,
-    );
+    expect(value(truth.damageInstances[0].damagePerTick)).toBe(1797);
     const cluster = truth.damageInstances[1];
     expect(value(cluster.damagePerTick)).toBeCloseTo(490 / 3.16, 3);
-    expect(value(cluster.ticks)).toBe(8);
     expect(nthShotOf(truth, cluster.id)).toBe(3);
   });
 
-  // Override (meta probe 2026-10-23): Aegis before Quantum, 14 instead of 20 rockets.
-  it("takes magazine and rockets from Aegis Sustained", () => {
+  it("takes magazine from Quantum and rockets from Aegis Sustained (14, not Quantum's 20)", () => {
     expect(value(truth.magazine)).toBe(3);
     expect(value(truth.totalShots)).toBe(14);
   });
 
-  it("fires 3-3-3-3-2 with a 2134 ms gap per reload, the last rocket at 13.333 s", () => {
+  // Without Argent Ordnance: Quantum's reload 2.35 s in place of Aegis' 2.134 s
+  it("fires 3-3-3-3-2 with a 2350 ms gap per reload, the last rocket at 14.197 s", () => {
     const buckets = loadBuckets(rawBuckets);
     const shots = simulate(truth, 30, [], buckets).shots;
     expect(shots).toHaveLength(14);
-    expect(shots[3].timeMs - shots[2].timeMs).toBeCloseTo(2134, 0);
-    expect(shots.at(-1)!.timeMs).toBeCloseTo(13_333, 0);
+    expect(shots[1].timeMs - shots[0].timeMs).toBeCloseTo(533, 0);
+    expect(shots[3].timeMs - shots[2].timeMs).toBeCloseTo(2350, 0);
+    expect(shots.at(-1)!.timeMs).toBeCloseTo(9 * 533 + 4 * 2350, -1);
   });
 
-  it("offers the catalyst Reaper's Tithe x4 with factor 1.40, duration and condition", () => {
-    expect(truth.options).toEqual([
-      expect.objectContaining({
-        id: "reaper-s-tithe-x4",
-        name: "Reaper's Tithe x4",
-        kind: "catalyst",
-        durationSeconds: 15,
-      }),
-    ]);
-    const tithe = truth.options![0];
-    expect(value(tithe.factor)).toBeCloseTo(1.4, 3);
-    expect(tithe.condition).toContain("simultaneously killed enemies");
-  });
-
-  // Clarity: "for 15 seconds … Timer only starts after firing" (override, 2026-10-24).
-  it("limits Reaper's Tithe x4 to 15 s from the first rocket", () => {
-    const tithe = truth.options![0];
-    expect(tithe).not.toHaveProperty("windowSeconds");
-    const buff = truth.buffs!.find((b) => b.id === tithe.id)!;
+  // Clarity: "40% increased damage for 15 seconds … Timer only starts after firing"
+  it("limits Reaper's Tithe x4 (×1.4) to 15 s from the first rocket", () => {
+    expect(truth.options).toBeUndefined();
+    const buff = truth.buffs!.find((b) => b.name === "Reaper's Tithe x4")!;
     expect(value(buff.durationMs!)).toBe(15_000);
     expect(value(buff.modifiers[0].multiplier)).toBeCloseTo(1.4, 3);
-    expect(truth.rules!.some((r) => r.id === `${tithe.id}-window`)).toBe(true);
     const buckets = loadBuckets(rawBuckets);
     const long = {
       ...truth,

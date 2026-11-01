@@ -79,3 +79,82 @@ describe("Polaris Lance as an item", () => {
     expect(apply?.type === "applyStatus" && apply.stacks?.value).toBe(40);
   });
 });
+
+/** The Aegis rows a value of the package names (status fitted): they no longer check it (I1). */
+function fittedRows(value: unknown): Set<string> {
+  const rows = new Set<string>();
+  const walk = (v: unknown) => {
+    if (Array.isArray(v)) v.forEach(walk);
+    else if (v !== null && typeof v === "object") {
+      const o = v as Record<string, unknown>;
+      if (o.status === "fitted" && typeof o.row === "string") rows.add(o.row);
+      Object.values(o).forEach(walk);
+    }
+  };
+  walk(value);
+  return rows;
+}
+
+describe("Truth as an item (B4b step 6)", () => {
+  const truth = result.packages.find((p) => p.id === "truth")!;
+  const SUSTAINED = "truth-prototype-truthseeker-argent-ordnance";
+  const CLUSTER_ROW = "rocket-launcher-truth-average-prototype-truthseeker";
+
+  it("the rocket comes from Quantum, the 8 cluster munitions of every 3rd rocket from Aegis", () => {
+    const [rocket, cluster] = truth.damageInstances;
+    expect(rocket).toMatchObject({ id: "shot", canPrecision: false, delivery: "splash", scale: "quantum" });
+    expect(rocket.damagePerTick.value).toBe(1797);
+    expect(rocket.damagePerTick.source.status).toBe("verified");
+    expect(cluster).toMatchObject({ id: "cluster", canPrecision: false, delivery: "splash", scale: "aegisVisual" });
+    expect(cluster.damagePerTick.value).toBe(155.063);
+    expect(cluster.damagePerTick.source.row).toBe(CLUSTER_ROW);
+    const rules = truth.rules ?? [];
+    const fire = rules.find((r) => r.do.some((a) => a.type === "spawn" && a.part === "cluster"));
+    const spawn = fire?.do.find((a) => a.type === "spawn");
+    expect(spawn?.type === "spawn" && spawn.count?.value).toBe(8);
+    const every = fire?.if?.find((c) => c.type === "counter");
+    expect(every?.type === "counter" && every.value.value).toBe(2); // the 3rd rocket: counter 0, 1, 2
+  });
+
+  it("timing without Argent Ordnance: Aegis rate and shots, Quantum reload minus one interval", () => {
+    expect(truth.fireRateRpm.value).toBe(112.57);
+    expect(truth.fireRateRpm.source.row).toBe(SUSTAINED);
+    expect(truth.magazine.value).toBe(3);
+    expect(truth.totalShots.value).toBe(14);
+    expect(truth.totalShots.source.row).toBe(SUSTAINED);
+    // Quantum 2.35 s (with Rally, without Argent Ordnance) − 0.533 s: the simulator waits one
+    // interval before the reload, Aegis reloads right after the last shot
+    expect(truth.reloadTimeMs.value).toBe(1817);
+    expect(truth.reloadDurationIncluded?.value).toBe(0.9);
+  });
+
+  it("Reaper's Tithe x4 comes from Clarity: ×1.4 for 15 s from the first shot, with the catalyst", () => {
+    const [tithe] = truth.buffs ?? [];
+    expect(tithe.modifiers[0]).toMatchObject({ bucketId: "weaponPerk", damageSources: ["weapon"] });
+    expect(tithe.modifiers[0].multiplier.value).toBe(1.4);
+    expect(tithe.modifiers[0].multiplier.source.status).toBe("derived");
+    expect(tithe.durationMs?.value).toBe(15000);
+    const grant = (truth.rules ?? []).find((r) => r.do.some((a) => a.type === "grantBuff"));
+    expect(grant?.on).toEqual({ on: "shot" });
+    expect(grant?.if).toContainEqual({ type: "hasItem", id: "catalyst" });
+    expect(truth.options).toBeUndefined();
+  });
+
+  it("the report counts the Tithe row as modelled: its one extra assumption is the catalyst buff", () => {
+    const report = result.report.weapons.find((w) => w.name === "Truth")!;
+    expect(report.options).toEqual([
+      expect.objectContaining({
+        rowId: "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
+        name: "Reaper's Tithe x4",
+        kind: "catalyst",
+        factor: 1.4,
+        durationSeconds: 15,
+      }),
+    ]);
+    expect(report.unusedRows.map((u) => u.rowId)).toEqual(["rocket-launcher-truth"]);
+  });
+
+  it("frees the single-rocket row and the Tithe row as checks", () => {
+    expect([...fittedRows(truth)].sort()).toEqual([CLUSTER_ROW, SUSTAINED].sort());
+  });
+});

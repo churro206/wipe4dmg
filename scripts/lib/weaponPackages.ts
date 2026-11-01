@@ -29,7 +29,7 @@ import type {
 } from "../../src/data/schema.ts";
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
-import type { ResolvedItem } from "./items/weaponItem.ts";
+import { catalystBuffs, type ResolvedItem } from "./items/weaponItem.ts";
 import {
   catalystWindowRules,
   type ImportPart,
@@ -835,14 +835,39 @@ export function buildWeaponImport(
       const rowId = item.weapon.damageInstances
         .map((d) => d.damagePerTick.source.row)
         .find((row) => row !== undefined);
-      entry.baseRow = inputs.aegis.rows.find((r) => r.id === rowId) ?? null;
-      entry.unusedRows = inputs.aegis.rows
-        .filter((r) => sameName(r.name, manifest.name) && r.id !== rowId)
-        .map((r) => ({
-          rowId: r.id,
-          assumptions: r.assumptions,
-          reason: "the item file uses another row",
-        }));
+      const baseRow = inputs.aegis.rows.find((r) => r.id === rowId) ?? null;
+      entry.baseRow = baseRow;
+      // A row with the base row's assumptions and one more that names a catalyst buff of the item is
+      // the item with its catalyst, e.g. Truth with Reaper's Tithe x4.
+      const buffs = catalystBuffs(item.weapon);
+      for (const row of inputs.aegis.rows) {
+        if (!sameName(row.name, manifest.name) || row.id === rowId) continue;
+        const own = new Set(row.assumptions.map(nameKey));
+        const base = new Set((baseRow?.assumptions ?? []).map(nameKey));
+        const extra = row.assumptions.filter((a) => !base.has(nameKey(a)));
+        const buff =
+          baseRow !== null && [...base].every((b) => own.has(b)) && extra.length === 1
+            ? buffs.find((b) => nameKey(b.name) === nameKey(extra[0]))
+            : undefined;
+        const multiplier = buff?.modifiers[0].multiplier.value;
+        if (buff && multiplier) {
+          entry.options.push({
+            rowId: row.id,
+            name: buff.name,
+            kind: "catalyst",
+            factor: multiplier,
+            durationSeconds: buff.durationMs?.value ? buff.durationMs.value / 1000 : null,
+            condition: null,
+            notes: ["buff of the item file, granted with the catalyst"],
+          });
+        } else {
+          entry.unusedRows.push({
+            rowId: row.id,
+            assumptions: row.assumptions,
+            reason: "the item file uses another row",
+          });
+        }
+      }
       continue;
     }
     const override = inputs.overrides.find((o) => o.weapon === manifest.name);

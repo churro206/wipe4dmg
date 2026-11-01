@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **136 Pakete**, 1 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **135 Pakete**, 2 Items, 4 Lücken.
 
 ## Pakete
 
@@ -132,7 +132,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Traveler's Chosen | sidearm | kinetic | keine (1 Shot) | 78,5 | Quantum |  | 15 | 1,03 s | – | – → 300 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by 2 (15🠚17)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Quantum; Katalysator-Timing: ∞ Shots, Magazin 17, Zeit bis leer – |
 | Trespasser | sidearm | arc | keine (1 Shot) | 50,6 | Quantum |  | 30 | 1,03 s | – | 491 → 491 | 0,9 % | Aegis misst einen Burst aus 3 Kugeln (wipe 2.289 = 3 × 763); Paket pro Kugel wie Quantums Magazin; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Trinity Ghoul | bow | arc | keine (1 Shot) | 218,7 | Quantum |  | 1 | 0,60 s | – | – → 44 | 0,2 % | Override: Quantum misst nur mit Catalyst. Der Catalyst senkt die Draw Time von 756 auf 633 ms (Clarity): ohne ihn 0,123 s mehr pro Pfeil.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-bow-trinity-ghoul-cata (Override); Timing nur aus Quantum; Katalysator-Timing: ∞ Shots, Magazin 1, Zeit bis leer – |
-| Truth | rocketLauncher | void | average, Prototype Truthseeker (9 Shots) | 1.798,1 | Aegis | 14 | 3 | 2,13 s | 13,3 s | 47 → 113 | 0,1 % | Override: Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %).; Trueseeker cluster: Treffer 5682 aus rocket-launcher-truth-average-prototype-truthseeker, alle 3 Schüsse 8 × 490 („490/36 cluster“) (Override); Timing aus Zeile truth-prototype-truthseeker-argent-ordnance (Override); Timing nur aus Aegis; abgeleitete Feuerrate 113 statt 47 rpm |
 | Turncoat | handCannon | void | average (12 Shots) | 127,4 | Quantum |  | 13 | 1,64 s | – | – → 140 | – | Override: Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Two-Tailed Fox | rocketLauncher | void | average (2 Shots) | 2.839,9 | Quantum | 10 | 1 | 2,35 s | 24,1 s | 40 → 183 | 36,4 % | Scorch: x60 pro Shot („inflicts x60+30 Scorch“); Shot aus Aegis ohne Ignitions („2243 ignition“): 2.839,9; Quantum ohne Ignitions 2.340,0; Timing nur aus Quantum; Skala: Shot aus Aegis, keine Prüfung gegen Quantum (Quantum weicht beim Shot ab) |
 | Verglas Curve | bow | stasis | keine (1 Shot) | 208,7 | Quantum |  | 1 | 0,60 s | – | 51 → 51 | 0,3 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
@@ -156,6 +155,7 @@ Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf di
 | Waffe | Datei | Prüfen |
 | --- | --- | --- |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
+| Truth | `src/data/items/weapons/truth.json` | – |
 
 ## Optionen
 
@@ -178,7 +178,6 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | The Lament | ⚠ Burning Ambition | Katalysator | ×1,113 | – | Direct Hits against Scorched Enemies apply additional Scorch on a 0.5 second cooldown: | – |
 | Ticuu's Divination | Catalyst | Katalysator | ×1,871 | – | – | Faktor aus dem Text (Override) |
 | Touch of Malice | Catalyst | Katalysator | ×1,250 | – | – | Faktor aus dem Text (Override) |
-| Truth | ⚠ Reaper's Tithe x4 | Katalysator | ×1,400 | 15 s | Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks) | Faktor aus Einzeltreffern; Mittelwert pro Shot wäre ×1,448 (9 gegen 12 Shots); Fenster 15 s ab dem ersten Shot (Override) |
 | Vex Mythoclast | ⚠ Temporal Unlimiter | Perk | ×12,503 | – | Kills in Auto Rifle mode grant 'Overcharge' stacks. Maximum of 6 Stacks. | – |
 | Vex Mythoclast | ⚠ Catalyst | Katalysator | ×1,204 | 5 s | Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds. | Faktor aus Quantum (cata / ohne) |
 | Whisper of the Worm | ⚠ Whispered Breathing | Katalysator | ×1,472 | 1 s | – | – |
@@ -307,7 +306,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Traveler's Chosen | primary | Timing | Magazin 15 → 17, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 300 → 300 | Increases Magazine Size by 2 (15🠚17) |
 | Trespasser | primary | keine | – | Grants the Tunnel Vision trait: |
 | Trinity Ghoul | primary | Timing | Magazin 1 → 1, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 44 → 48 | Decreases Draw Time by 15% (756ms🠚633ms). |
-| Truth | heavy | Schaden | – | Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. tripl |
 | Turncoat | primary | keine | – | Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence). |
 | Verglas Curve | primary | unbekannt | – | Applying Freeze or Slow to a target decreases Draw Time by 35% (567ms🠚368ms) for ? seconds. |
 | Vex Mythoclast | primary | Schaden | – | Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced  |
@@ -427,7 +425,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Third Iteration | Amalgamation Round | ohne precision der Basiszeile |
 | Thorn | Illegally Modded Holster, with poison, Soul Devourer, 14 shots | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Touch of Malice | blight | nicht modelliert: blight |
-| Truth |  | ohne average, Prototype Truthseeker der Basiszeile |
+| Truth |  | the item file uses another row |
 | Turncoat | Overwhelming Power | nicht modelliert: Overwhelming Power |
 | Wavesplitter | average, Supercharged Battery, Detonator Beam | Katalysator: Detonator Beam |
 | Whirling Ovation | no charge | ohne full charge der Basiszeile |
@@ -462,7 +460,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | The Last Word | 1 mag | nicht modelliert, ohne Beleg |
 | Third Iteration | Amalgamation Round | Perk „Amalgamation Rounds“ (ähnliche Schreibweise) |
 | Touch of Malice | blight | nicht modelliert, ohne Beleg |
-| Truth | Prototype Truthseeker | Intrinsic „Prototype Trueseeker“ (ähnliche Schreibweise) |
 | Turncoat | Overwhelming Power | nicht modelliert, ohne Beleg |
 | Worldline Zero | Temporal Sprint | nicht modelliert, ohne Beleg |
 

@@ -19916,30 +19916,30 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file truth",
+        "retrieved": "2026-11-01",
+        "status": "derived",
+        "note": "Derived: a rocket launcher has no charge; the time to empty counts from the first shot (Aegis Sustained)"
       }
     },
     "fireRateRpm": {
       "value": 112.57,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 13.333 s − 4 reloads × 2.134 s) ÷ 9 intervals within magazines (ADR 0013)"
+        "status": "fitted",
+        "row": "truth-prototype-truthseeker-argent-ordnance",
+        "note": "Derived: 60 / $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds (seconds between rockets within a magazine to rounds per minute; Argent Ordnance changes only the reload); $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds = 0.533 (Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance)"
       }
     },
     "magazine": {
       "value": 3,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "verified",
+        "note": "magazine"
       }
     },
     "totalShots": {
@@ -19948,18 +19948,258 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "truth-prototype-truthseeker-argent-ordnance",
+        "note": "shots"
       }
     },
     "reloadTimeMs": {
-      "value": 1601,
+      "value": 1817,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth; Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 2.134 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "fitted",
+        "row": "truth-prototype-truthseeker-argent-ordnance",
+        "note": "Derived: $quantum[heavies-rocket-launcher-truth].reloadSeconds * 1000 - $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds * 1000 (Quantum's reload is without Argent Ordnance; the rate is Aegis', and Aegis reloads right after the last shot while the simulator waits one interval first, so one interval less); $quantum[heavies-rocket-launcher-truth].reloadSeconds = 2.35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth); $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds = 0.533 (Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Rocket",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file truth",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1797,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "bodyDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file truth",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file truth",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "quantum"
+      },
+      {
+        "id": "cluster",
+        "name": "Trueseeker cluster",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file truth",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 155.063,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "rocket-launcher-truth-average-prototype-truthseeker",
+            "note": "tick \"490/36 cluster\" ÷ Full Modifiers 3.16"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file truth",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file truth",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "cluster-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "rockets",
+            "op": "<",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Prototype Trueseeker",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Prototype Trueseeker](\"Dealing damage with 3 rockets\") - 1 (the counter stands at 0, 1, 2 for the rockets of a magazine); $clarity[Prototype Trueseeker](\"Dealing damage with 3 rockets\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Prototype Trueseeker)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "rockets" }]
+      },
+      {
+        "id": "cluster",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "rockets",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Prototype Trueseeker",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Prototype Trueseeker](\"Dealing damage with 3 rockets\") - 1 (the 3rd rocket); $clarity[Prototype Trueseeker](\"Dealing damage with 3 rockets\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Prototype Trueseeker)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "rockets" },
+          {
+            "type": "spawn",
+            "part": "cluster",
+            "count": {
+              "value": 8,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Prototype Trueseeker",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "explode into 8 cluster munitions"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file truth (paper probe 2026-10-30)",
+          "retrieved": "2026-10-30",
+          "status": "derived",
+          "note": "Derived: every rocket under Trueseeker bursts into 8 munitions (Clarity), about a third of them hit one boss; 9 × 5682 + 3 × 8 × 490 meets the Aegis row rocket-launcher-truth-average-prototype-truthseeker at +1.4 %. As 8 munitions of every 3rd rocket."
+        }
+      },
+      {
+        "id": "reapers-tithe",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "tithe-started",
+            "op": "<",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file truth",
+                "retrieved": "2026-11-01",
+                "status": "derived",
+                "note": "Derived: built up before the phase (kill buff); the window opens once, with the first rocket",
+                "quote": "Timer only starts after firing."
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "addStacks", "counter": "tithe-started" },
+          { "type": "grantBuff", "buff": "reapers-tithe" }
+        ]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "reapers-tithe",
+        "name": "Reaper's Tithe x4",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Truth Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Truth Catalyst](\"40% increased damage\") / 100 (percent to factor, 4 stacks); $clarity[Truth Catalyst](\"40% increased damage\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Truth Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 15000,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Truth Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Truth Catalyst](\"for 15 seconds\") * 1000 (seconds to milliseconds); $clarity[Truth Catalyst](\"for 15 seconds\") = 15 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Truth Catalyst)"
+          }
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "prototype-trueseeker",
+        "name": "Prototype Trueseeker",
+        "description": "This weapon's rockets have tracking. Lock onto targets when aiming down sights. Landing hits with a full magazine grants ammo and boosts the next magazine with increased tracking strength, stability, fire rate, and cluster bombs.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Reaper's Tithe, Truth Catalyst",
+      "description": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -19971,275 +20211,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis single hit)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1798.101,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker",
-            "note": "visual Value; assumptions: average, Prototype Truthseeker"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      },
-      {
-        "id": "nthShot",
-        "name": "Trueseeker cluster",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-          }
-        },
-        "damagePerTick": {
-          "value": 155.063,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker",
-            "note": "Tick \"490/36 cluster\" ÷ Full Modifiers"
-          }
-        },
-        "ticks": {
-          "value": 8,
-          "source": {
-            "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "prototype-trueseeker",
-        "name": "Prototype Trueseeker",
-        "description": "This weapon's rockets have tracking. Lock onto targets when aiming down sights. Landing hits with a full magazine grants ammo and boosts the next magazine with increased tracking strength, stability, fire rate, and cluster bombs.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "options": [
-      {
-        "id": "reaper-s-tithe-x4",
-        "name": "Reaper's Tithe x4",
-        "kind": "catalyst",
-        "bucketId": "weaponPerk",
-        "factor": {
-          "value": 1.4,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-            "note": "Single hit 7955 / 5682 (base row rocket-launcher-truth-average-prototype-truthseeker)"
-          }
-        },
-        "durationSeconds": 15,
-        "condition": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)"
-      }
-    ],
-    "catalyst": {
-      "name": "Reaper's Tithe, Truth Catalyst",
-      "description": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
-      "effect": "damage"
-    },
-    "buffs": [
-      {
-        "id": "reaper-s-tithe-x4",
-        "name": "Reaper's Tithe x4",
-        "modifiers": [
-          {
-            "type": "multiplier",
-            "bucketId": "weaponPerk",
-            "multiplier": {
-              "value": 1.4,
-              "source": {
-                "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-                "url": "https://destiny2.science/boss-damage",
-                "retrieved": "2026-10-20",
-                "status": "fitted",
-                "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-                "note": "Single hit 7955 / 5682 (base row rocket-launcher-truth-average-prototype-truthseeker)"
-              }
-            },
-            "damageSources": ["weapon"]
-          }
-        ],
-        "durationMs": {
-          "value": 15000,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-            "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-          }
-        }
-      }
-    ],
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      },
-      {
-        "id": "nthShot-count",
-        "on": { "on": "shot" },
-        "if": [
-          {
-            "type": "counter",
-            "id": "nthShot-shots",
-            "op": "<",
-            "value": {
-              "value": 2,
-              "source": {
-                "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
-                "retrieved": "2026-10-20",
-                "status": "derived",
-                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-              }
-            }
-          }
-        ],
-        "do": [{ "type": "addStacks", "counter": "nthShot-shots" }]
-      },
-      {
-        "id": "nthShot",
-        "on": { "on": "shot" },
-        "if": [
-          {
-            "type": "counter",
-            "id": "nthShot-shots",
-            "op": "=",
-            "value": {
-              "value": 2,
-              "source": {
-                "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
-                "retrieved": "2026-10-20",
-                "status": "derived",
-                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-              }
-            }
-          }
-        ],
-        "do": [
-          { "type": "resetCounter", "counter": "nthShot-shots" },
-          {
-            "type": "spawn",
-            "part": "nthShot",
-            "count": {
-              "value": 8,
-              "source": {
-                "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
-                "retrieved": "2026-10-20",
-                "status": "derived",
-                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-              }
-            },
-            "intervalMs": {
-              "value": 0,
-              "source": {
-                "name": "Weapon override for Truth (Clarity, Compendium, Quantum)",
-                "retrieved": "2026-10-20",
-                "status": "derived",
-                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "reaper-s-tithe-x4-window",
-        "on": { "on": "shot" },
-        "if": [
-          { "type": "hasItem", "id": "catalyst" },
-          {
-            "type": "counter",
-            "id": "reaper-s-tithe-x4-started",
-            "op": "<",
-            "value": {
-              "value": 1,
-              "source": {
-                "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-                "url": "https://destiny2.science/boss-damage",
-                "retrieved": "2026-10-20",
-                "status": "fitted",
-                "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
-                "note": "Derived (override): Aegis vor Quantum (Gesamtprobe 2026-10-23): Aegis „Sustained“ zählt 14 Shots (3-3-3-3-2, mit dem Ammo-Refund von Prototype Trueseeker), Quantum 20. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis und Whirling Ovation. Schuss = Einzeltreffer der Aegis-Zeile (nicht der Durchschnitt), alle 3 Raketen ein Cluster aus 8 Bomblets zu je 490 (Aegis „490/36 cluster“, Trueseeker nach 3 Raketen ohne Reload; 8 Bomblets hergeleitet aus der Papierprobe 2026-10-30: 9 × 5682 + 3 × 8 × 490 trifft die Zeile auf +1,4 %)."
-              }
-            }
-          }
-        ],
-        "do": [
-          { "type": "addStacks", "counter": "reaper-s-tithe-x4-started" },
-          { "type": "grantBuff", "buff": "reaper-s-tithe-x4" }
-        ]
-      }
-    ]
+    }
   },
   {
     "id": "turncoat",

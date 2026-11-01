@@ -2,7 +2,7 @@
 
 Generiert mit `npm run check:text` (Regel in `scripts/lib/textCheck.ts`). Jeder Multiplier-Part, Catalyst und Grant neben den Texten seines Items (Clarity, Compendium, Court, Zitat der Quelle). Wert: (m − 1) × 100 steht im Text; Aegis- und Quantum-Messungen zählen als gemessen, eine Prozentzahl im Text trotzdem auf ±25 %. Dauer: eine Dauer aus dem Text. Ziel: Quellen, Elemente und Waffentypen gegen die Wörter im Text. „Ungenutzt“: Prozentzahlen im Text, die kein Part des Items nutzt (nur zur Info). Gründe für Abweichungen: `tests/fixtures/text-check.json`.
 
-Zeilen 312: ok 286, über Effect 5, gemessen 6, kein Text 3, Abweichung 12 (davon ohne Grund 0).
+Zeilen 310: ok 284, über Effect 5, gemessen 6, kein Text 3, Abweichung 12 (davon ohne Grund 0).
 
 ## Abweichungen
 
@@ -325,8 +325,6 @@ Zeilen 312: ok 286, über Effect 5, gemessen 6, kein Text 3, Abweichung 12 (davo
 | The Lament: Burning Ambition | value | +11.34 % weaponPerk | gemessen | Messung mit und ohne Catalyst |  |
 | Ticuu's Divination: Catalyst | value | +87.1 % weaponPerk | ok | Catalyst Causality Quiver, Ticuu's Divination Catalyst: • PvE: 16%\|31%\|49%\|67.5%\|87%\|87% |  |
 | Touch of Malice: Catalyst | value | +25 % weaponPerk | ok | Catalyst Precision Instrument, Touch of Malice Catalyst: 4.17% \| 8.33% \| 12.5% \| 16.67% \| 20.83% \| 25% |  |
-| Truth: Reaper's Tithe x4 | value | +40 % weaponPerk | ok | Catalyst Reaper's Tithe, Truth Catalyst: 'Reaper's Tithe' grants 20%\|30%\|40% increased damage for 15 seconds at 2\|3\|4 stacks (1st stack does not exist). Timer only starts after firing. |  |
-| Truth: Reaper's Tithe x4 | duration | 15 s | ok | Catalyst Reaper's Tithe, Truth Catalyst: 'Reaper's Tithe' grants 20%\|30%\|40% increased damage for 15 seconds at 2\|3\|4 stacks (1st stack does not exist). Timer only starts after firing. |  |
 | Vex Mythoclast: Catalyst | value | +20.35 % weaponPerk | ok | Catalyst Calculated Balance, Vex Mythoclast Catalyst: Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds. |  |
 | Vex Mythoclast: Catalyst | duration | 5 s | ok | Catalyst Calculated Balance, Vex Mythoclast Catalyst: Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds. |  |
 | Whisper of the Worm: Whispered Breathing | value | +47.18 % weaponPerk | gemessen | Messung mit und ohne Catalyst |  |
