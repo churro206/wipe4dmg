@@ -1,0 +1,24 @@
+[
+  {
+    "id": "swap-nova-bomb-vortex-limit-break",
+    "tab": "swap",
+    "aegisRow": "swap-nova-bomb-vortex-limit-break",
+    "wipe": 19930,
+    "system": "base",
+    "build": {
+      "weaponId": "one-thousand-voices",
+      "guardianClass": "warlock",
+      "subclass": "void",
+      "abilityId": "nova-bomb-vortex",
+      "abilityStat": 200,
+      "effectIds": [
+        "tractor-cannon",
+        "limit-break"
+      ]
+    },
+    "playstyle": [
+      "Limit Break"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

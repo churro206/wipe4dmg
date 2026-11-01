@@ -1,0 +1,25 @@
+[
+  {
+    "id": "sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation",
+    "tab": "sustained",
+    "aegisRow": "sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation",
+    "wipe": 128747,
+    "system": "base",
+    "build": {
+      "weaponId": "whisper-of-the-worm",
+      "catalyst": true,
+      "effectIds": [
+        "surge-3x",
+        "lumina-noble-rounds",
+        "tractor-cannon",
+        "sniper-meditation"
+      ],
+      "weaponsStat": 200
+    },
+    "playstyle": [
+      "Whispered Breathing",
+      "Sniper's Meditation"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

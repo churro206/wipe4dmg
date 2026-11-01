@@ -1,0 +1,23 @@
+[
+  {
+    "id": "sustained-the-queenbreaker-rewind-rounds-combat-sights",
+    "tab": "sustained",
+    "aegisRow": "sustained-the-queenbreaker-rewind-rounds-combat-sights",
+    "wipe": 97261,
+    "system": "base",
+    "build": {
+      "weaponId": "the-queenbreaker",
+      "effectIds": [
+        "surge-3x",
+        "lumina-noble-rounds",
+        "tractor-cannon"
+      ],
+      "weaponsStat": 200
+    },
+    "playstyle": [
+      "Rewind Rounds",
+      "Combat Sights"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

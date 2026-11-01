@@ -1,0 +1,21 @@
+[
+  {
+    "id": "sustained-sleeper-simulant",
+    "tab": "sustained",
+    "aegisRow": "sustained-sleeper-simulant",
+    "wipe": 87747,
+    "system": "base",
+    "build": {
+      "weaponId": "sleeper-simulant",
+      "catalyst": true,
+      "effectIds": [
+        "surge-3x",
+        "lumina-noble-rounds",
+        "tractor-cannon"
+      ],
+      "weaponsStat": 200
+    },
+    "playstyle": [],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

@@ -1,4 +1,8 @@
 {
-  "note": "Assumptions of the Aegis tab Weapons that need no switch in a generated scenario (tests/lib/scenarioGen.ts), with the reason. Patterns for how Aegis fired are in scripts/lib/weaponAssumptions.ts (EXECUTION). An assumption that is neither here, nor in the weapon, nor a modelled effect makes its rows a 'missing switch' (listed in the bench snapshot).",
-  "ignored": {}
+  "note": "Assumptions of the Aegis tabs that need no switch in a generated scenario (tests/lib/scenarioGen.ts), with the reason. Patterns for how Aegis fired are in scripts/lib/weaponAssumptions.ts (EXECUTION). An assumption that is neither here, nor in the weapon, nor a modelled effect makes its rows a 'missing switch' (listed in the bench snapshot). ignored: tab Weapons; ignoredTotals: tabs Sustained and Swap.",
+  "ignored": {},
+  "ignoredTotals": {
+    "Lucent Blades x3": "charge rate only; the sword packages take their timing from the Aegis rows with Lucent Blades x3 (weapon-overrides.json: The Lament, Black Talon, Ergo Sum, Heartshadow); rows with it and no other missing switch fit x1.00 (The Lament 2L1H1R, Heartshadow)",
+    "Pack Hunter": "handling and reload next to allies only (Clarity); swords do not reload (weapon-overrides.json, Ergo Sum)"
+  }
 }

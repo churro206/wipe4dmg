@@ -1,0 +1,26 @@
+[
+  {
+    "id": "swap-blade-barrage-knock-em-down-limit-break",
+    "tab": "swap",
+    "aegisRow": "swap-blade-barrage-knock-em-down-limit-break",
+    "wipe": 28346,
+    "system": "base",
+    "build": {
+      "weaponId": "one-thousand-voices",
+      "guardianClass": "hunter",
+      "subclass": "solar",
+      "abilityId": "blade-barrage",
+      "abilityStat": 200,
+      "effectIds": [
+        "tractor-cannon",
+        "knock-em-down",
+        "limit-break"
+      ]
+    },
+    "playstyle": [
+      "Knock 'Em Down",
+      "Limit Break"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

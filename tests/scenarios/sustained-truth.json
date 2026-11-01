@@ -1,0 +1,24 @@
+[
+  {
+    "id": "sustained-truth-prototype-truthseeker-argent-ordnance",
+    "tab": "sustained",
+    "aegisRow": "sustained-truth-prototype-truthseeker-argent-ordnance",
+    "wipe": 85454,
+    "system": "base",
+    "build": {
+      "weaponId": "truth",
+      "effectIds": [
+        "surge-3x",
+        "lumina-noble-rounds",
+        "tractor-cannon",
+        "argent-ordnance"
+      ],
+      "weaponsStat": 200
+    },
+    "playstyle": [
+      "Prototype Truthseeker",
+      "Argent Ordnance"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

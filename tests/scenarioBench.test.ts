@@ -12,7 +12,7 @@ import rawTotals from "../src/data/aegis-totals.json";
 import rawPackages from "../src/data/weapon-packages.json";
 import { COMPONENT_TOLERANCE } from "../scripts/lib/abilityComponents";
 import { AegisAbilityRow, AegisTotalsSnapshot, AegisWeaponSnapshot } from "../src/data/schema";
-import { abilities, effects, exoticArmor, weapons } from "../src/ui/data";
+import { abilities, artifactData, effects, exoticArmor, weapons } from "../src/ui/data";
 import switches from "./fixtures/scenario-switches.json";
 import { fittedRows } from "./lib/fittedRows";
 import {
@@ -26,7 +26,7 @@ import {
   scenarioProblems,
   tabOf,
 } from "./lib/scenarioBench";
-import { generateScenarios, lotOf } from "./lib/scenarioGen";
+import { generateScenarios, generateTotalScenarios, lotOf } from "./lib/scenarioGen";
 
 const DIR = "tests/scenarios";
 const SNAPSHOT = "./__snapshots__/scenario-bench.md";
@@ -45,8 +45,20 @@ const generated = generateScenarios(
   { weapons, effects, exoticArmor, ignored: switches.ignored },
   new Set(handMade.map((s) => s.aegisRow)),
 );
+const generatedTotals = generateTotalScenarios(
+  totals,
+  {
+    weapons,
+    abilities,
+    effects,
+    exoticArmor,
+    artifactPerks: artifactData.artifacts.flatMap((a) => a.perks),
+    ignored: switches.ignoredTotals,
+  },
+  new Set(handMade.map((s) => s.aegisRow)),
+);
 // The Weapons figures stay as they were (block P, step 1): the other tabs have their own tests below.
-const all = [...handMade, ...generated.scenarios];
+const all = [...handMade, ...generated.scenarios, ...generatedTotals.scenarios];
 const scenarios = all.filter((s) => tabOf(s) === "weapons");
 const otherTabs = all.filter((s) => tabOf(s) !== "weapons");
 const fitted = fittedRows(rawPackages, abilities).weaponRows;
@@ -106,17 +118,41 @@ describe("scenarios of the other tabs (block P)", () => {
     }
   });
 
-  // Today's values of the meta probe (docs/meta-probe.md), the same build through the one scenario path.
-  it("Sustained: Xenophage gives the value of the meta probe", () => {
-    expect(byId("sustained-xenophage").model!).toBeCloseTo(67645, -2);
+  // The 14 hand-made entries of the former meta probe (docs/meta-probe.md, column "Modell") are
+  // fixtures now: the same build through the one scenario path gives the same value.
+  const PROBE_SUSTAINED: Record<string, number> = {
+    "sustained-leviathan-s-breath-archer-s-tempo": 71555,
+    "sustained-truth-prototype-truthseeker-argent-ordnance": 81580,
+    "sustained-gjallarhorn-argent-ordnance": 56374,
+    "sustained-sleeper-simulant": 87747,
+    "sustained-thunderlord-assumes-only-one-reload-post-nerf": 101659,
+    "sustained-grand-overture-volleys-when-available": 144662,
+    "sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation": 128750,
+    "sustained-one-thousand-voices-catalyst-particle-reconstruction": 87320,
+    "sustained-xenophage": 67645,
+    "sustained-the-queenbreaker-rewind-rounds-combat-sights": 97261,
+  };
+  it.each(Object.entries(PROBE_SUSTAINED))("Sustained %s gives the value of the meta probe", (id, expected) => {
+    expect(byId(id).model! / expected).toBeCloseTo(1, 2);
   });
 
-  it("Swap: Gathering Storm with Limit Break as a switch gives the probe value times at most 1.15", () => {
-    // Meta probe: 12,866 with Limit Break taken out of the Aegis total. The perk raises damage of the
-    // source "super" only (effects.json), so the keyword damage of the super (jolt) stays out: less than 1.15.
-    const ratio = byId("swap-gathering-storm-limit-break").model! / 12866;
+  // The probe took Limit Break (and only that) out of the Aegis total. Limit Break raises damage of the
+  // source "super" only (effects.json), so the keyword damage of a super stays out: at most 1.15.
+  const PROBE_SWAP: Record<string, number> = {
+    "swap-blade-barrage-knock-em-down-limit-break": 24118,
+    "swap-nova-bomb-vortex-limit-break": 17330,
+    "swap-gathering-storm-limit-break": 12866,
+    "swap-golden-gun-marksman-celestial-nighthawk-radiant-facet-of-courage-limit-break": 33042,
+  };
+  it.each(Object.entries(PROBE_SWAP))("Swap %s gives the probe value times at most 1.15", (id, expected) => {
+    const ratio = byId(id).model! / expected;
     expect(ratio).toBeGreaterThan(1.13);
-    expect(ratio).toBeLessThanOrEqual(1.15);
+    expect(ratio).toBeLessThanOrEqual(1.15 * (1 + 1e-4)); // the probe values are rounded to whole numbers
+  });
+
+  it("runs every generated scenario of Sustained and Swap", () => {
+    expect(generatedTotals.scenarios.length).toBeGreaterThan(20);
+    for (const r of others) expect(r.model, r.scenario.id).not.toBeNull();
   });
 
   it("Abilities: Gathering Storm lies within the tolerance of the ability gate", () => {

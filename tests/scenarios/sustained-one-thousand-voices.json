@@ -1,0 +1,24 @@
+[
+  {
+    "id": "sustained-one-thousand-voices-catalyst-particle-reconstruction",
+    "tab": "sustained",
+    "aegisRow": "sustained-one-thousand-voices-catalyst-particle-reconstruction",
+    "wipe": 87367,
+    "system": "base",
+    "build": {
+      "weaponId": "one-thousand-voices",
+      "catalyst": true,
+      "effectIds": [
+        "surge-3x",
+        "lumina-noble-rounds",
+        "tractor-cannon"
+      ],
+      "weaponsStat": 200
+    },
+    "playstyle": [
+      "catalyst",
+      "Particle Reconstruction"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

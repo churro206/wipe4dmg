@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sustained-grand-overture-volleys-when-available",
+    "tab": "sustained",
+    "aegisRow": "sustained-grand-overture-volleys-when-available",
+    "wipe": 144658,
+    "system": "base",
+    "build": {
+      "weaponId": "grand-overture",
+      "effectIds": [
+        "surge-3x",
+        "lumina-noble-rounds",
+        "tractor-cannon"
+      ],
+      "weaponsStat": 200
+    },
+    "playstyle": [
+      "volleys when available"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

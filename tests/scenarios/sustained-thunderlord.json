@@ -1,0 +1,22 @@
+[
+  {
+    "id": "sustained-thunderlord-assumes-only-one-reload-post-nerf",
+    "tab": "sustained",
+    "aegisRow": "sustained-thunderlord-assumes-only-one-reload-post-nerf",
+    "wipe": 101659,
+    "system": "base",
+    "build": {
+      "weaponId": "thunderlord",
+      "effectIds": [
+        "surge-3x",
+        "lumina-noble-rounds",
+        "tractor-cannon"
+      ],
+      "weaponsStat": 200
+    },
+    "playstyle": [
+      "assumes only one reload post-nerf"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

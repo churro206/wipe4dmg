@@ -1,0 +1,30 @@
+[
+  {
+    "id": "swap-golden-gun-marksman-celestial-nighthawk-radiant-facet-of-courage-limit-break",
+    "tab": "swap",
+    "aegisRow": "swap-golden-gun-marksman-celestial-nighthawk-radiant-facet-of-courage-limit-break",
+    "wipe": 37998,
+    "system": "base",
+    "build": {
+      "weaponId": "one-thousand-voices",
+      "guardianClass": "hunter",
+      "subclass": "prismatic",
+      "abilityId": "golden-gun-marksman",
+      "abilityStat": 200,
+      "exoticArmorId": "celestial-nighthawk",
+      "effectIds": [
+        "tractor-cannon",
+        "radiant",
+        "facet-of-courage",
+        "limit-break"
+      ]
+    },
+    "playstyle": [
+      "Celestial Nighthawk",
+      "Radiant",
+      "Facet of Courage",
+      "Limit Break"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "sustained-gjallarhorn-argent-ordnance",
+    "tab": "sustained",
+    "aegisRow": "sustained-gjallarhorn-argent-ordnance",
+    "wipe": 56374,
+    "system": "base",
+    "build": {
+      "weaponId": "gjallarhorn",
+      "catalyst": true,
+      "effectIds": [
+        "surge-3x",
+        "lumina-noble-rounds",
+        "tractor-cannon",
+        "argent-ordnance"
+      ],
+      "weaponsStat": 200
+    },
+    "playstyle": [
+      "Argent Ordnance"
+    ],
+    "note": "From the hand-made entries of the former meta probe (block P): Aegis standard factors as switches, as tests/lib/probe.ts did."
+  }
+]

@@ -8,7 +8,16 @@
 import { assumptionName } from "../../scripts/lib/aegisWeapons";
 import { fnv1a } from "../../scripts/lib/hash";
 import { isExecution } from "../../scripts/lib/weaponAssumptions";
-import type { AegisWeaponRow, Effect, ExoticArmorEntry, Weapon } from "../../src/data/schema";
+import { catalystBuffs } from "../../scripts/lib/items/weaponItem";
+import type {
+  Ability,
+  AegisTotalRow,
+  AegisWeaponRow,
+  ArtifactPerk,
+  Effect,
+  ExoticArmorEntry,
+  Weapon,
+} from "../../src/data/schema";
 import type { Scenario } from "./scenarioBench";
 
 export type GenData = {
@@ -111,6 +120,157 @@ export function generateScenarios(
       build,
       playstyle: row.assumptions,
       shots: row.shots,
+    });
+  }
+  return { scenarios, missing, skipped };
+}
+
+// Standard of the Aegis tabs Sustained and Swap (block P): surge x3 (Surge 1.22), Lumina (Buff 1.35) and
+// Tractor Cannon (Debuff 1.3) on the weapon, Tractor Cannon on a super, the Weapons stat 200 and the
+// ability stats 200. All held the whole phase, like Aegis does.
+export const STANDARD_WEAPON_EFFECTS = ["surge-3x", "lumina-noble-rounds", "tractor-cannon"];
+export const STANDARD_ABILITY_EFFECTS = ["tractor-cannon"];
+/** The weapon that stands by while a Swap row is cast (what the meta probe used). */
+export const STANDING_BY_WEAPON = "one-thousand-voices";
+export const AEGIS_STAT = 200;
+const STANDARD_FACTORS = { surge: 1.22, buff: 1.35, debuff: 1.3 };
+const WEAPON_TYPES = ["power", "special", "primary"];
+
+export type TotalGenData = {
+  weapons: Weapon[];
+  abilities: Ability[];
+  effects: Pick<Effect, "id" | "name">[];
+  exoticArmor: ExoticArmorEntry[];
+  /** Perks of the seasonal artifacts: a perk name stands for its effect ("Combination Argent Blade"). */
+  artifactPerks: ArtifactPerk[];
+  /** Assumptions that need no switch, with the reason. */
+  ignored: Record<string, string>;
+};
+export type MissingTotalSwitch = { row: AegisTotalRow; unmapped: string[] };
+export type SkippedTotal = { row: AegisTotalRow; reason: string };
+
+/**
+ * Scenarios for the rows of exotic weapons (tab Sustained) and supers (tab Swap) of the Aegis totals.
+ * The mapping of the assumptions is the one of the Weapons tab, plus the artifact perks by name;
+ * "Limit Break" is a switch like any other (no factor is taken out of the Aegis total). A row with an
+ * assumption that has no switch is reported in `missing` and makes no scenario.
+ */
+export function generateTotalScenarios(
+  rows: AegisTotalRow[],
+  data: TotalGenData,
+  /** Aegis rows that a scenario made by hand covers already. */
+  covered: Set<string>,
+): { scenarios: Scenario[]; missing: MissingTotalSwitch[]; skipped: SkippedTotal[] } {
+  const scenarios: Scenario[] = [];
+  const missing: MissingTotalSwitch[] = [];
+  const skipped: SkippedTotal[] = [];
+  const weaponByName = new Map(data.weapons.map((w) => [norm(w.name), w]));
+  const abilityByName = new Map(
+    data.abilities.filter((a) => a.kind === "super").map((a) => [norm(a.name), a]),
+  );
+  const effectByName = new Map<string, string>();
+  for (const e of data.effects) {
+    const key = norm(withoutNote(e.name));
+    if (!effectByName.has(key)) effectByName.set(key, e.id);
+  }
+  for (const perk of data.artifactPerks) {
+    if (!effectByName.has(norm(perk.name))) effectByName.set(norm(perk.name), perk.effectId);
+  }
+  const armorByName = new Map(data.exoticArmor.map((a) => [norm(a.name), a]));
+  const intrinsicArmor = new Map<string, ExoticArmorEntry>();
+  for (const a of data.exoticArmor) {
+    if (a.intrinsic && !intrinsicArmor.has(norm(a.intrinsic))) {
+      intrinsicArmor.set(norm(a.intrinsic), a);
+    }
+  }
+  const ignored = new Set(Object.keys(data.ignored).map(norm));
+
+  for (const row of rows) {
+    if (covered.has(row.id)) continue;
+    const isWeapon = row.tab === "sustained" && WEAPON_TYPES.includes(row.type);
+    const isSuper = row.tab === "swap" && row.type === "super";
+    const weapon = isWeapon ? weaponByName.get(norm(row.name)) : undefined;
+    const ability = isSuper ? abilityByName.get(norm(row.name)) : undefined;
+    if (!weapon && !ability) continue;
+    if (row.total === null) {
+      skipped.push({ row, reason: "no total (INF)" });
+      continue;
+    }
+    if (
+      weapon &&
+      (row.surge !== STANDARD_FACTORS.surge ||
+        row.buff !== STANDARD_FACTORS.buff ||
+        row.debuff !== STANDARD_FACTORS.debuff)
+    ) {
+      skipped.push({ row, reason: "factors differ from the standard of Aegis" });
+      continue;
+    }
+
+    const effectIds: string[] = [];
+    const unmapped: string[] = [];
+    const build: Scenario["build"] = { weaponId: STANDING_BY_WEAPON };
+    const intrinsics = new Set((weapon?.intrinsics ?? []).map((i) => norm(i.name)));
+    const catalystOptions = new Set(
+      (weapon?.options ?? [])
+        .filter((o) => o.kind === "catalyst")
+        .map((o) => norm(assumptionName(o.name))),
+    );
+    // "Burning Ambition, The Lament Catalyst": the perk names of the catalyst, and the buffs its
+    // rules grant (an item file, e.g. Reaper's Tithe x4 of Truth).
+    const catalystPerks = new Set([
+      ...(weapon?.catalyst?.name ?? "").split(/,\s*/).map(norm),
+      ...(weapon ? catalystBuffs(weapon) : []).map((b) => norm(b.name)),
+    ]);
+    for (const assumption of row.assumptions) {
+      const name = assumptionName(assumption);
+      const key = norm(name);
+      const effectId = effectByName.get(norm(withoutNote(assumption))) ?? effectByName.get(key);
+      const armor = armorByName.get(key);
+      const stacked = intrinsicArmor.get(norm(assumption.replace(/\s+x\d+$/, "")));
+      if (key === "catalyst" || catalystOptions.has(key) || catalystPerks.has(key)) {
+        build.catalyst = true;
+      } else if (intrinsics.has(key)) continue;
+      else if (effectId) effectIds.push(effectId);
+      else if (armor) {
+        build.exoticArmorId = armor.id;
+        // Damage of its own or an effect without value is not modelled (ADR 0014).
+        if (armor.kind === "ownDamage" || armor.kind === "gap") {
+          unmapped.push(`${armor.name} (${armor.kind})`);
+        }
+      } else if (stacked) {
+        // "Feast of Light x6": the intrinsic of an exotic, with its stacks built up before.
+        build.exoticArmorId = stacked.id;
+        build.exoticPreBuilt = true;
+      } else if (ignored.has(key) || isExecution(name)) continue;
+      else unmapped.push(assumption);
+    }
+    if (unmapped.length > 0) {
+      missing.push({ row, unmapped });
+      continue;
+    }
+
+    if (weapon) {
+      build.weaponId = weapon.id;
+      // Aegis holds the Weapons stat at 200; a row with factor 1 has no stat bonus.
+      build.weaponsStat = row.stat === 1 ? 100 : AEGIS_STAT;
+    } else if (ability) {
+      const provider = ability.providers[0];
+      build.abilityId = ability.id;
+      build.guardianClass = provider.classes?.[0] ?? "titan";
+      build.subclass = provider.subclasses?.[0] ?? "arc";
+      build.abilityStat = AEGIS_STAT;
+    }
+    const standard = weapon ? STANDARD_WEAPON_EFFECTS : STANDARD_ABILITY_EFFECTS;
+    build.effectIds = [...new Set([...standard, ...effectIds])];
+    scenarios.push({
+      id: generatedId(row),
+      tab: row.tab,
+      aegisRow: row.id,
+      wipe: row.total,
+      fullModifiers: 1,
+      system: "generated",
+      build,
+      playstyle: row.assumptions,
     });
   }
   return { scenarios, missing, skipped };
