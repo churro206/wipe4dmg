@@ -8865,8 +8865,8 @@
       }
     },
     "playstyles": [
-      { "id": "default", "label": "One ring" },
-      { "id": "two-rings", "label": "Through two rings", "selectable": true }
+      { "id": "one-ring", "label": "One ring" },
+      { "id": "two-rings", "label": "Through two rings" }
     ],
     "rules": [
       {
@@ -15157,12 +15157,6 @@
       "description": "Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'.\nScoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer. Additional precision hits during this timer continue to refill the magazine from reserves.",
       "effect": "none"
     },
-    "playstyles": [
-      {
-        "id": "cayde-s-retribution",
-        "label": "Cayde's Retribution (Golden Gun shots)"
-      }
-    ],
     "rules": [
       {
         "id": "shot",
@@ -21549,10 +21543,10 @@
       "effect": "none"
     },
     "playstyles": [
-      { "id": "default", "label": "Full charge" },
-      { "id": "two-thirds-charge", "label": "2/3 charge", "selectable": true },
-      { "id": "one-third-charge", "label": "1/3 charge", "selectable": true },
-      { "id": "no-charge", "label": "No charge", "selectable": true }
+      { "id": "full-charge", "label": "Full charge" },
+      { "id": "two-thirds-charge", "label": "2/3 charge" },
+      { "id": "one-third-charge", "label": "1/3 charge" },
+      { "id": "no-charge", "label": "No charge" }
     ],
     "rules": [
       {

@@ -26,7 +26,6 @@ import type {
   WeaponOption,
   WeaponType,
 } from "../../src/data/schema.ts";
-import { PLAIN_SHOT_ID } from "../../src/data/schema.ts";
 import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
 import { type PartPlaystyle, partRules, playstyleRateRule } from "./partRules.ts";
@@ -2240,16 +2239,25 @@ export function buildWeaponImport(
 
     // The playstyles (Weapon.playstyles): the shots of a playstyle take the place of the plain shot,
     // an arrow through two rings that of the hits through one ring; the rate is a rule
-    const playstyleList = [
-      ...playstyles.map(({ rule }) => ({
-        id: rule.id,
-        label: rule.name,
-        ...(rule.selectable ? { selectable: true } : {}),
-      })),
+    // The picker offers the selectable ones; the others are assumptions of a scenario and need no entry
+    const pickable = [
+      ...playstyles.flatMap(({ rule }) =>
+        rule.selectable ? [{ id: rule.id, label: rule.name }] : [],
+      ),
       ...(setupRule?.playstyle
-        ? [{ id: setupRule.playstyle.id, label: setupRule.playstyle.name, selectable: true }]
+        ? [{ id: setupRule.playstyle.id, label: setupRule.playstyle.name }]
         : []),
     ];
+    if (pickable.length > 0 && !override?.playstyleBaseName) {
+      throw new Error(`${manifest.name}: playstyles in the picker need playstyleBaseName`);
+    }
+    const playstyleList =
+      pickable.length > 0
+        ? [
+            { id: slug(override!.playstyleBaseName!), label: override!.playstyleBaseName! },
+            ...pickable,
+          ]
+        : [];
     const shotPlaystyles = playstyles.map(({ rule }) => rule.id);
     const partPlaystyles: Record<string, PartPlaystyle> = {
       ...(shotPlaystyles.length > 0 ? { shot: { except: shotPlaystyles } } : {}),
@@ -2261,9 +2269,6 @@ export function buildWeaponImport(
           }
         : {}),
     };
-    if (playstyleList.length > 0 && override?.playstyleBaseName) {
-      playstyleList.unshift({ id: PLAIN_SHOT_ID, label: override.playstyleBaseName });
-    }
     if (playstyleList.length > 0) weapon.playstyles = playstyleList;
     // The parts are set off by rules (architecture section 6): one `spawn` per part on every shot
     weapon.rules = [

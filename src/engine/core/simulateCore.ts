@@ -199,7 +199,8 @@ export function simulate(
       actorState: notYet("The condition on the state of the weapon"),
       hasItem: (id) =>
         id === "catalyst" ? catalyst : effects.some((effect) => effect.id === id),
-      playstyle: (id) => options.playstyle === id,
+      // Without a playstyle the plain shot is played: the first entry of the weapon's list
+      playstyle: (id) => (options.playstyle ?? weapon.playstyles?.[0]?.id) === id,
     },
     {
       spawn: ({ part, timeMs, delayMs, count, intervalMs, factor }) => {

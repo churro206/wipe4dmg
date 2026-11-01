@@ -85,7 +85,7 @@ describe("encodeLink and decodeLink", () => {
       weapons: [
         {
           ...weapon,
-          playstyles: ["low", "high"].map((id) => ({ id, label: id, selectable: true })),
+          playstyles: ["plain", "low", "high"].map((id) => ({ id, label: id })),
         },
       ],
     };

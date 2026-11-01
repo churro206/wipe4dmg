@@ -795,9 +795,6 @@ export const Rule = z.object({
 });
 export type Rule = z.infer<typeof Rule>;
 
-/** The entry of `Weapon.playstyles` that only labels the plain shot in the build picker. */
-export const PLAIN_SHOT_ID = "default";
-
 export const Weapon = z.object({
   id: z.string(),
   code: z.number().int().positive(), // short code for build links; never reused
@@ -835,13 +832,13 @@ export const Weapon = z.object({
     }),
   ),
   setup: WeaponSetup.optional(),
-  // The playstyles of the weapon (Build.playstyle), e.g. the charge levels of Whirling Ovation. The
-  // rules read them with the condition `playstyle`; a playstyle's shot takes the place of the plain
-  // one by `playstyle not` on the rule of the shot, its rate is a `modifyStat` on `phaseStart`.
-  // `selectable`: the build picker offers it. The entry `default` only labels the plain shot there.
-  playstyles: z
-    .array(z.object({ id: z.string(), label: z.string(), selectable: z.boolean().optional() }))
-    .optional(),
+  // The playstyles the build picker offers (Build.playstyle), e.g. the charge levels of Whirling
+  // Ovation; the first entry is the plain shot and the default. Assumptions of a scenario that no
+  // player picks (Build.playstyle "cayde-s-retribution") need no entry. The rules read the playstyle
+  // with the condition `playstyle`: a playstyle's shot takes the place of the plain one by
+  // `playstyle not` on the rule of the shot; its rate is a `modifyStat` on `phaseStart` and wins
+  // over the timing of a catalyst.
+  playstyles: z.array(z.object({ id: z.string(), label: z.string() })).min(2).optional(),
   // Imported packages (ADR 0013): modelled effects Aegis measured inside the value per shot.
   includedEffectIds: z.array(z.string()).optional(),
   // Imported packages: catalyst, perks and mods as factors from the "with / without" rows.

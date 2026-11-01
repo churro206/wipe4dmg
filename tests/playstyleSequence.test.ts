@@ -47,9 +47,8 @@ const sniper: Weapon = {
     },
   ),
   playstyles: [
-    { id: "default", label: "Plain" },
-    { id: "golden-gun", label: "Golden Gun" },
-    { id: "quick", label: "Quick shot", selectable: true },
+    { id: "plain", label: "Plain" },
+    { id: "quick", label: "Quick shot" },
   ],
 };
 
@@ -84,6 +83,49 @@ describe("playstyle sequence", () => {
     expect(hits.map((d) => d.timeMs)).toEqual([0, 1000]);
   });
 
+  it("lets the rate of the playstyle win over the timing of a catalyst", () => {
+    const withCatalyst: Weapon = {
+      ...sniper,
+      catalyst: {
+        name: "Test catalyst",
+        description: "",
+        effect: "timing",
+        timing: {
+          fireRateRpm: sourced(30),
+          magazine: sourced(3),
+          totalShots: sourced(3),
+          reloadTimeMs: sourced(2000),
+        },
+      },
+    };
+    const hits = run(withCatalyst, 1.2, [], [], { playstyle: "quick", catalyst: true })
+      .damageInstances;
+    expect(hits.map((d) => d.timeMs)).toEqual([0, 500, 1000]);
+  });
+
+  it("plays the first entry of the list when the build picks none", () => {
+    const onlyPlain: Weapon = {
+      ...sniper,
+      rules: [
+        {
+          id: "plain-only",
+          on: { on: "shot" },
+          if: [{ type: "playstyle", id: "plain" }],
+          do: [{ type: "spawn", part: "shot" }],
+        },
+      ],
+    };
+    const shots = (playstyle?: string) =>
+      run(onlyPlain, 2.5, [], [], { shotLimit: 1, ...(playstyle ? { playstyle } : {}) })
+        .damageInstances.length;
+    expect(shots()).toBe(1);
+    expect(shots("quick")).toBe(0);
+  });
+
+  it("plays a playstyle that is no entry of the list (a scenario's assumption)", () => {
+    expect(damages("goldenGun", { playstyle: "golden-gun" })).toHaveLength(3);
+  });
+
   it("ignores a playstyle the weapon does not have", () => {
     expect(damages("shot", { playstyle: "other" }).map((d) => d.damage)).toEqual([1000]);
   });
@@ -94,7 +136,7 @@ describe("playstylesOf", () => {
     expect(playstylesOf(sniper)).toEqual([{ id: "quick", name: "Quick shot" }]);
   });
 
-  it("labels the plain shot with the entry default", () => {
+  it("labels the plain shot with the first entry", () => {
     expect(plainShotLabel(sniper)).toBe("Plain");
     expect(plainShotLabel({})).toBeUndefined();
   });
