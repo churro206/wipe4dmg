@@ -8,7 +8,7 @@ import rawBuckets from "../src/data/buckets.json";
 import { Weapon, type WeaponOption } from "../src/data/schema";
 import { loadBuckets } from "../src/engine/loadData";
 import { simulate } from "../src/engine/simulate";
-import { catalystWindowRules } from "../scripts/lib/partRules";
+import { catalystWindowRules } from "./support/ruleBuilders";
 import { testWeapon } from "./support/testWeapon";
 
 const source = {

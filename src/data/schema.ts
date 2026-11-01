@@ -1867,8 +1867,6 @@ export const WeaponOverride = z.object({
   catalystFactor: z.number().min(1).optional(),
   // What the catalyst does against one boss, where the text rule cannot tell (reason says why)
   catalystEffect: z.enum(["none", "unknown"]).optional(),
-  // The catalyst option counts only this long from the weapon's first shot (WeaponOption.windowSeconds)
-  catalystWindowSeconds: z.number().positive().optional(),
   // Scorch per shot where the text gives it per explosion, e.g. 9 x 10 for One Thousand Voices
   scorchStacksPerShot: z.number().int().positive().optional(),
   // The shot is the single hit of the base row (not its average); every Nth shot adds `hits` of the
@@ -1906,25 +1904,6 @@ export const WeaponOverride = z.object({
     .optional(),
   // Label of the plain shot in the build picker, where it offers playstyles
   playstyleBaseName: z.string().optional(),
-  // A setup the shots build and deploy (WeaponSetup): the shot from a Quantum row without it, the
-  // extra hits from the row with it; the reason derives the numbers from the quotes.
-  setup: z
-    .object({
-      name: z.string(),
-      shotsBefore: z.number().int().positive(),
-      shotsBeforePreBuilt: z.number().int().positive(),
-      durationSeconds: z.number().positive(),
-      shotRow: z.string(), // Quantum row without the setup
-      setupRow: z.string(), // Quantum row with it
-      hits: z.number().int().positive(), // extra hits per shot, e.g. 3 seekers
-      scorchPerHit: z.number().int().positive().optional(),
-      catalystTimingOnceDeployed: z.boolean(),
-      // A playstyle with more of these hits per shot (Build.playstyle), e.g. an arrow through two rings
-      playstyle: z
-        .object({ id: z.string(), name: z.string(), hits: z.number().int().positive() })
-        .optional(),
-    })
-    .optional(),
   timing: z
     .object({
       from: z.enum(["Aegis", "Quantum"]), // use this source even if a rule would not

@@ -31,14 +31,11 @@ import { slug } from "./aegisBosses.ts";
 import { assumptionName } from "./aegisWeapons.ts";
 import { catalystBuffs, type ResolvedItem } from "./items/weaponItem.ts";
 import {
-  catalystWindowRules,
   type ImportPart,
   type PartPlaystyle,
   partRules,
   playstyleRateRule,
   runtimePart,
-  SETUP_UP,
-  setupRules,
   statusOnHitRules,
 } from "./partRules.ts";
 import { catalystReloadFactor, reloadFormulaOf } from "./reloadFormulas.ts";
@@ -100,7 +97,6 @@ const sameName = (rowName: string, manifestName: string) =>
 const OPTION_BUCKET = "weaponPerk";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 and ADR 0013
 const OVERRIDE_TIMING = "override"; // row id of a timing whose values an override states
-const SETUP_HITS_ID = "setupHits"; // damage instance of the hits a setup adds, e.g. seekers
 const NTH_SHOT_ID = "nthShot"; // damage instance of every Nth shot, e.g. a Trueseeker cluster
 const RALLY_EFFECT_ID = "rally-barricade";
 const RPM_HINT = 0.25; // a derived fire rate this far from the Quantum rpm is worth a look
@@ -833,25 +829,6 @@ export function buildWeaponImport(
         );
     }
 
-    // A setup the shots build and deploy (override): the shot from Quantum's row without it, the
-    // extra hits from the difference to the row with it, e.g. 3 seekers through a Guidance Ring.
-    const setupRule = override?.setup;
-    const setupRows = setupRule && {
-      shot: inputs.quantum.rows.find((r) => r.id === setupRule.shotRow),
-      withSetup: inputs.quantum.rows.find((r) => r.id === setupRule.setupRow),
-    };
-    if (setupRule && setupRows) {
-      const { shot, withSetup } = setupRows;
-      if (!shot?.precisionDamage || !withSetup?.precisionDamage)
-        throw new Error(
-          `${manifest.name}: setup rows ${setupRule.shotRow}, ${setupRule.setupRow} without precision damage`,
-        );
-      entry.perShot = shot.precisionDamage;
-      entry.notes.push(
-        `${setupRule.name}: Shot aus Quantum ${shot.id} (${shot.precisionDamage}), ${setupRule.hits} Treffer aus ${withSetup.id} (${withSetup.precisionDamage} − ${shot.precisionDamage}) (Override)`,
-      );
-    }
-
     // The single hit of the row and the cluster of every Nth shot instead of the row's average
     // (override), on the scale of Aegis "visual".
     const nthRule = override?.nthShotPart;
@@ -893,8 +870,6 @@ export function buildWeaponImport(
 
     // Options: rows that add only catalyst, perk or mod assumptions to the base row.
     const options: WeaponOption[] = [];
-    // The options that count only for a window from the first shot (a buff with rules, not a factor)
-    const windowsMs = new Map<string, SourcedNumber>();
     for (const row of rows) {
       if (row === base) continue;
       const classes = classesOf.get(row)!;
@@ -980,17 +955,6 @@ export function buildWeaponImport(
       );
       const text = perkText(perkNames, inputs.compendium, inputs.clarity);
       if (!text) notes.push("keine Dauer im Compendium gefunden");
-      const window =
-        kind === "catalyst" && override?.catalystWindowSeconds
-          ? override.catalystWindowSeconds
-          : null;
-      if (window !== null) {
-        notes.push(`Fenster ${window} s ab dem ersten Shot (Override)`);
-        windowsMs.set(id, {
-          value: window * 1000,
-          source: aegisSource(row, `Derived (override): ${override!.reason}`),
-        });
-      }
       options.push({
         id,
         name,
@@ -1632,31 +1596,13 @@ export function buildWeaponImport(
     const shotSource = (note?: string): Source =>
       scorch && scorchShotFromAegis === null
         ? quantumSource(scorch.quantumRow, note)
-        : setupRows?.shot
-          ? quantumSource(setupRows.shot, note)
-          : aegisSource(base, note);
+        : aegisSource(base, note);
     const setupSource = (note?: string): Source => ({
       name: `Weapon override for ${manifest.name} (Clarity, Compendium, Quantum)`,
       retrieved: inputs.aegis.source.retrieved,
       status: "derived",
       note: `Derived (override): ${override?.reason ?? ""}${note ? `; ${note}` : ""}`,
     });
-    // One hit of a setup, e.g. a seeker: the difference of Quantum's rows with and without it.
-    const setupHitDamage =
-      setupRule && setupRows?.shot && setupRows.withSetup
-        ? {
-            value: Number(
-              (
-                (setupRows.withSetup.precisionDamage! - setupRows.shot.precisionDamage!) /
-                setupRule.hits
-              ).toFixed(3),
-            ),
-            source: quantumSource(
-              setupRows.withSetup,
-              `(Precision damage ${setupRows.withSetup.precisionDamage} − ${setupRows.shot.precisionDamage} of row ${setupRows.shot.id}) ÷ ${setupRule.hits} hits`,
-            ),
-          }
-        : undefined;
     const scorchSource = (quote: string, note?: string): Source => ({
       name: `Destiny Data Compendium, Exotic Weapons (${manifest.name})`,
       url: "https://destiny2.science/data-compendium",
@@ -1787,11 +1733,9 @@ export function buildWeaponImport(
           id: "shot",
           name: scorch
             ? `Shot (${scorchShotFromAegis !== null ? "Aegis" : "Quantum"}, without ignitions)`
-            : setupRule
-              ? `Shot (Quantum, without ${setupRule.name})`
-              : nthRule
-                ? "Shot (Aegis single hit)"
-                : "Shot (Aegis average)",
+            : nthRule
+              ? "Shot (Aegis single hit)"
+              : "Shot (Aegis average)",
           delayMs: {
             value: 0,
             source: shotSource("Package: one value per shot"),
@@ -1807,12 +1751,10 @@ export function buildWeaponImport(
                     scorch.quantumRow,
                     `Total Damage / total shots; ${scorch.quantumRow.note}`,
                   )
-              : setupRows?.shot
-                ? quantumSource(setupRows.shot, "Precision damage")
-                : aegisSource(
-                    base,
-                    `visual Value; assumptions: ${base.assumptions.join(", ") || "none"}`,
-                  ),
+              : aegisSource(
+                  base,
+                  `visual Value; assumptions: ${base.assumptions.join(", ") || "none"}`,
+                ),
           },
           ticks: { value: 1, source: shotSource() },
           tickIntervalMs: { value: 0, source: shotSource() },
@@ -1879,33 +1821,6 @@ export function buildWeaponImport(
           canPrecision: false,
           requiresCatalyst: false,
         })),
-        ...(setupRule && setupHitDamage
-          ? [
-              {
-                id: SETUP_HITS_ID,
-                name: `${setupRule.name} hits`,
-                hits: setupRule.hits,
-              },
-              ...(setupRule.playstyle
-                ? [
-                    {
-                      id: `${SETUP_HITS_ID}-${setupRule.playstyle.id}`,
-                      name: setupRule.playstyle.name,
-                      hits: setupRule.playstyle.hits,
-                    },
-                  ]
-                : []),
-            ].map(({ id, name, hits }) => ({
-                id,
-                name,
-                delayMs: { value: 0, source: setupSource() },
-                damagePerTick: setupHitDamage,
-                ticks: { value: hits, source: setupSource() },
-                tickIntervalMs: { value: 0, source: setupSource() },
-                canPrecision: false,
-                requiresCatalyst: false,
-              }))
-          : []),
       ] as ImportPart[],
       ...(scorch?.bonus
         ? {
@@ -1947,9 +1862,7 @@ export function buildWeaponImport(
               ...(timingDiffers && catalystTiming
                 ? {
                     timing: {
-                      ...(catalystRate && !setupRule?.catalystTimingOnceDeployed
-                        ? { fireRateRpm: catalystRate }
-                        : {}),
+                      ...(catalystRate ? { fireRateRpm: catalystRate } : {}),
                       magazine: {
                         value: catalystTiming.magazine,
                         source: timingSourceOf(catalystTiming),
@@ -1986,9 +1899,6 @@ export function buildWeaponImport(
       ...playstyles.flatMap(({ rule }) =>
         rule.selectable ? [{ id: rule.id, label: rule.name }] : [],
       ),
-      ...(setupRule?.playstyle
-        ? [{ id: setupRule.playstyle.id, label: setupRule.playstyle.name }]
-        : []),
     ];
     if (pickable.length > 0 && !override?.playstyleBaseName) {
       throw new Error(`${manifest.name}: playstyles in the picker need playstyleBaseName`);
@@ -2001,36 +1911,11 @@ export function buildWeaponImport(
           ]
         : [];
     const shotPlaystyles = playstyles.map(({ rule }) => rule.id);
-    const setupModeId = slug(setupRule?.name ?? "");
-    const setupMode = { id: setupModeId, is: SETUP_UP };
     const partPlaystyles: Record<string, PartPlaystyle> = {
       ...(shotPlaystyles.length > 0 ? { shot: { except: shotPlaystyles } } : {}),
       ...Object.fromEntries(shotPlaystyles.map((id) => [id, { only: id }])),
-      // The hits of a setup are dealt only while it stands
-      ...(setupRule
-        ? {
-            [SETUP_HITS_ID]: {
-              ...(setupRule.playstyle ? { except: [setupRule.playstyle.id] } : {}),
-              mode: setupMode,
-            },
-            ...(setupRule.playstyle
-              ? {
-                  [`${SETUP_HITS_ID}-${setupRule.playstyle.id}`]: {
-                    only: setupRule.playstyle.id,
-                    mode: setupMode,
-                  },
-                }
-              : {}),
-          }
-        : {}),
     };
     if (playstyleList.length > 0) weapon.playstyles = playstyleList;
-    // The window of a catalyst option: a buff from the first shot (catalystWindowRules)
-    const windows = options.flatMap((option) => {
-      const windowMs = windowsMs.get(option.id);
-      return windowMs ? [catalystWindowRules(option, windowMs)] : [];
-    });
-    if (windows.length > 0) weapon.buffs = windows.map(({ buff }) => buff);
     // The parts are set off by rules (architecture section 6): one `spawn` per part on every shot
     const importParts = weapon.damageInstances as ImportPart[];
     weapon.damageInstances = importParts.map(runtimePart);
@@ -2046,7 +1931,6 @@ export function buildWeaponImport(
             ]
           : [],
       ),
-      ...windows.flatMap(({ rules }) => rules),
       // Scorch from explosions: `on hit → applyStatus`, before Ember of Ashes (the hits of a part of
       // the nth shot or of a setup, and every hit of the weapon)
       ...(nthRule?.scorchPerHit
@@ -2058,23 +1942,6 @@ export function buildWeaponImport(
               source: setupSource("Scorch per hit before Ember of Ashes"),
             },
             parts: [NTH_SHOT_ID],
-            source: setupSource(),
-          })
-        : []),
-      ...(setupRule?.scorchPerHit
-        ? statusOnHitRules({
-            id: "scorch",
-            status: "scorch",
-            stacks: {
-              value: setupRule.scorchPerHit,
-              source: setupSource("Scorch per hit before Ember of Ashes"),
-            },
-            parts: [
-              SETUP_HITS_ID,
-              ...(setupRule.playstyle
-                ? [`${SETUP_HITS_ID}-${setupRule.playstyle.id}`]
-                : []),
-            ],
             source: setupSource(),
           })
         : []),
@@ -2092,24 +1959,6 @@ export function buildWeaponImport(
               ),
             },
             source: scorchSource(scorch.quote),
-          })
-        : []),
-      // A setup the shots build and deploy: a counter and a mode (the hits of the setup are above)
-      ...(setupRule
-        ? setupRules({
-            mode: setupModeId,
-            shotsBefore: { value: setupRule.shotsBefore, source: setupSource() },
-            shotsBeforePreBuilt: {
-              value: setupRule.shotsBeforePreBuilt,
-              source: setupSource(),
-            },
-            durationMs: {
-              value: setupRule.durationSeconds * 1000,
-              source: setupSource(),
-            },
-            ...(setupRule.catalystTimingOnceDeployed && catalystRate
-              ? { catalystRpm: catalystRate }
-              : {}),
           })
         : []),
     ];

@@ -7,7 +7,8 @@
 import { describe, expect, it } from "vitest";
 import type { SourcedNumber, Weapon } from "../src/data/schema";
 import { simulate } from "../src/engine/simulate";
-import { partRules, setupRules } from "../scripts/lib/partRules";
+import { partRules } from "../scripts/lib/partRules";
+import { setupRules } from "./support/ruleBuilders";
 import { testWeapon } from "./support/testWeapon";
 
 const sourced = (value: number): SourcedNumber => ({
