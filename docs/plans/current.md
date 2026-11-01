@@ -11,11 +11,11 @@ Ein Block, je Schritt ein Commit (Inhaber 2026-11-01). Kein Merge. Gate je Commi
 3. **`appliesKeyword`, `periodicDamage` (erledigt 2026-11-01, Baseline unverändert, siehe Changelog):** `on hit` → `applyStatus`; `timer.everyMs` + `damage`. `keywordPartsAt` im Container bleibt für Ability-Teile bis Schritt 4.
 4. **Abilities (erledigt 2026-11-01, Baseline unverändert, siehe Changelog):** `Ability.rules`, Treffer mit `part`, `on cast`; `keywordParts` und `refillsMagazine` weg; Waffe plant per Generation neu (`actor.refill`).
 5. **Waffenseite (erledigt 2026-11-01, Baseline des Handmodells gewollt geändert, siehe Changelog):** `ImportPart` (`partRules.ts`) trägt `requiresCatalyst`, `everyNthShot`, `tickFactors`; `intrinsicParts` weg; Fixture OTV als Regeln (Detonation, Scorch, Ignition aus `keywords.json`, Seeker-Grenze per Zähler).
-6. **Abschluss:** `REMAINING` ist schon leer (Schritt 5). Offen: Optimizer ≤ 306 ms messen, Bauplan (Abschnitte 5.x/6, Tabelle Sonderfelder Zeile 66 und 187) nachziehen, Roadmap, Entscheidung zu Nullschaden-Treffern in der Aufschlüsselung.
+6. **Abschluss (erledigt 2026-11-01, siehe Changelog):** `REMAINING` leer, Optimizer 24 ms (Grenze 306), Bauplan-Tabelle und Roadmap nachgezogen. Offen: Entscheidung des Inhabers zu Nullschaden-Treffern (Detonation, Seeker-Ende) in der Aufschlüsselung.
 
 ## Stand
 
-- 2026-11-01: B3a fertig (Teil 1, K1–K4, Teil 2 Schritte 1–5; Changelog). B3b Schritte 1–5 fertig. Suite 2126 grün.
+- 2026-11-01: B3a fertig (Teil 1, K1–K4, Teil 2 Schritte 1–5; Changelog). B3b fertig (Schritte 1–6). Suite 2126 grün. Nächster Block: B4 (Format, Polaris/Truth/Hierarchy), Plan mit Opus.
 - B3.0, B2, B1 erledigt. Bauplan (ADR 0018), Ansicht: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 - Offen ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk auf Still Hunt.
 
