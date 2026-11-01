@@ -11,6 +11,7 @@ import type {
 import { compareResults, dpsByDamagePhase } from "../engine/analysis";
 import { nextCastFor } from "../engine/buildSimulation";
 import { buildSimulation } from "../engine/buildSimulation";
+import { refillsOnCast } from "../engine/effectRules";
 import { rotationWindows } from "../engine/effectWindows";
 import { optimize, type OptimizerEntry } from "../engine/optimizer";
 import { fitArtifact } from "../engine/artifacts";
@@ -331,7 +332,8 @@ function App() {
   // A build has one super: the super slot and own effects of the super group exclude each other.
   // An ability that refills the magazine starts at the first reload instead of 0 s (U7).
   const firstCastMs = (kind: AbilityKind, abilityId: string) => {
-    if (!abilities.find((a) => a.id === abilityId)?.refillsMagazine) return 0;
+    const ability = abilities.find((a) => a.id === abilityId);
+    if (!ability || !refillsOnCast(ability)) return 0;
     const picks = abilitiesOfChoice({ ...abilityChoice, [kind]: { abilityId, castsMs: [] } });
     const build = { ...currentBuild, abilities: picks, abilityStats: abilityStatInputs };
     return nextCastFor(build, kind, gameData, weapon, buckets) ?? 0;

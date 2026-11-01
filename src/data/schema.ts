@@ -1006,13 +1006,12 @@ const AbilityFields = z.object({
   // Castable only while this effect is active, in the window of the rotation, e.g. the Prismatic
   // grenades while Transcendence lasts; casts outside are dropped.
   duringEffectId: z.string().optional(),
-  // Each cast reloads the weapon at once, e.g. Marksman's Dodge "reloads all weapons" (U7).
-  refillsMagazine: z.literal(true).optional(),
   // Empty only for supers that just grant effects, e.g. Ward of Dawn.
   components: z.array(AbilityComponent),
   // Rules of the ability (architecture section 6): it owns them. Hits of its components are parts
   // (`on hit` with `part`); the keywords of ability-keywords.json become `on hit → applyStatus` when
-  // loading.
+  // loading. Each cast that reloads the weapon at once, e.g. Marksman's Dodge "reloads all weapons"
+  // (U7), is a rule `on cast → refill`.
   rules: z.array(Rule).optional(),
 });
 const usageOnlyForSupers = (ability: {

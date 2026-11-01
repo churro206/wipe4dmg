@@ -29,7 +29,7 @@ const dodge: Ability = {
   element: "kinetic",
   providers: [{ kind: "subclass" }],
   components: [],
-  refillsMagazine: true,
+  rules: [{ id: "refill", on: { on: "cast" }, do: [{ type: "refill" }] }],
 };
 const shotsWith = (castsMs: number[]) =>
   simulate(weapon, DAMAGE_PHASE_SECONDS, [], buckets, {

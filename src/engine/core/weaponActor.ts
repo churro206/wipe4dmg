@@ -4,6 +4,7 @@
 
 import type { StatModifier, Weapon } from "../../data/schema";
 import { appliesToWeaponType } from "../effectParts";
+import { refillsOnCast } from "../effectRules";
 import { requireValue } from "../requireValue";
 import type { AbilityCast, SuperWindow } from "./types";
 import { MS_PER_SECOND } from "../units";
@@ -99,14 +100,15 @@ export function createWeaponActor(input: ActorInput) {
   };
 
   // A cast at the very time of a shot comes first and the shot waits for its end; a cast that
-  // reloads the weapon (a dodge) follows a shot that empties the magazine, so the reload is skipped.
+  // reloads the weapon (a dodge, a rule `on cast → refill`) follows a shot that empties the magazine,
+  // so the reload is skipped.
   const blockingWindows = [
     ...input.superWindows.map((w) => ({ ...w, refills: false })),
     ...input.abilities.flatMap(({ ability, castsMs, castMs = 0 }) =>
       castsMs.map((startMs) => ({
         startMs,
         endMs: startMs + castMs,
-        refills: Boolean(ability.refillsMagazine),
+        refills: refillsOnCast(ability),
       })),
     ),
   ]
@@ -170,45 +172,56 @@ export function createWeaponActor(input: ActorInput) {
       : none;
   };
 
-  // Casts that reload the weapon at once (U7): a cast during a reload ends it, a cast while the
-  // magazine is not empty fills it up. Casts before the previous shot are spent.
-  const refillsMs = input.abilities
-    .filter((cast) => cast.ability.refillsMagazine)
-    .flatMap((cast) => cast.castsMs)
-    .sort((a, b) => a - b);
-  let refillIndex = 0;
-  const refillBefore = (fromMs: number, untilMs: number): number | undefined => {
-    while (refillIndex < refillsMs.length && refillsMs[refillIndex] < fromMs)
-      refillIndex++;
-    const atMs = refillsMs[refillIndex];
-    if (atMs === undefined || atMs >= untilMs) return undefined;
-    refillIndex++;
-    return atMs;
-  };
-
   let index = 0;
   let shotMs = chargeTimeMs;
   let leftInMagazine = magazine;
   let done = false;
-  let reloadEndMs = -Infinity; // the end of the last reload that was planned
+
+  // The step that was planned last and the state before it, so that a refill can plan it anew
+  // (generation, ADR 0018 B3b). A refill is reported at the time of its event, which is never before
+  // the last shot that was handled: it falls between that shot and the planned one.
+  type State = { index: number; shotMs: number; left: number; done: boolean };
+  type Refill = { atMs: number; rounds?: number };
+  let before: State = { index, shotMs, left: leftInMagazine, done };
+  let refills: Refill[] = []; // reported since `before`
+  const applyRefill = (r: Refill) => {
+    leftInMagazine =
+      r.rounds === undefined ? magazine : Math.min(magazine, leftInMagazine + r.rounds);
+  };
+  /** The first refill in [fromMs, untilMs): later ones in the same stretch of time are spent. */
+  const refillBefore = (fromMs: number, untilMs: number): Refill | undefined =>
+    refills.find((r) => r.atMs >= fromMs && r.atMs < untilMs);
 
   /**
-   * A refill by a rule (e.g. Polaris Lance's precision hit): `rounds` more rounds, or a full
-   * magazine. It reaches the shots that are not planned yet; a refill during a reload that is
-   * already planned would have to cancel it, which needs the generation of B3b.
+   * A refill, by a rule: a cast that reloads the weapon at once (U7; during a reload it ends it, else
+   * it fills the magazine up) or `rounds` more rounds (e.g. Polaris Lance's precision hit). Returns the
+   * step planned anew if the refill changes the step that was planned last, else undefined.
    */
-  function refill(timeMs: number, rounds?: number) {
-    if (timeMs < reloadEndMs) {
-      throw new Error(
-        `A refill at ${timeMs} ms falls into a planned reload (until ${reloadEndMs} ms); not supported by the core yet (B3b)`,
-      );
+  function refill(atMs: number, rounds?: number): ActorStep | undefined {
+    const report: Refill = { atMs, ...(rounds === undefined ? {} : { rounds }) };
+    // A few more rounds while the magazine is not empty change the state, not the planned shot
+    if (rounds !== undefined && before.left > 0) {
+      applyRefill(report);
+      before.left = Math.min(magazine, before.left + rounds);
+      return undefined;
     }
-    leftInMagazine =
-      rounds === undefined ? magazine : Math.min(magazine, leftInMagazine + rounds);
+    if (before.index === 0) return undefined; // nothing before the first shot
+    refills.push(report);
+    index = before.index;
+    shotMs = before.shotMs;
+    leftInMagazine = before.left;
+    done = before.done;
+    return plan();
   }
 
   /** The next shot, or a step without a shot once the ammo, the limit or the phase ends them. */
   function next(): ActorStep {
+    refills = [];
+    before = { index, shotMs, left: leftInMagazine, done };
+    return plan();
+  }
+
+  function plan(): ActorStep {
     if (done || index >= totalShots) {
       done = true;
       return {};
@@ -219,18 +232,20 @@ export function createWeaponActor(input: ActorInput) {
       shotMs += shotIntervalMsAt(previousMs);
       if (leftInMagazine === 0 && !noReloadAt(previousMs)) {
         const readyMs = shotMs + reloadMsAt(previousMs);
-        const refillMs = refillBefore(previousMs, readyMs);
-        if (refillMs === undefined) {
+        const refilled = refillBefore(previousMs, readyMs);
+        if (refilled === undefined) {
           reloadStartMs = previousMs;
-          reloadEndMs = readyMs;
+        } else {
+          applyRefill(refilled);
         }
-        shotMs = refillMs === undefined ? readyMs : Math.max(shotMs, refillMs);
+        shotMs =
+          refilled === undefined ? readyMs : Math.max(shotMs, refilled.atMs);
+        if (refilled === undefined) leftInMagazine = magazine;
+      } else if (leftInMagazine === 0) {
         leftInMagazine = magazine;
-      } else if (
-        leftInMagazine === 0 ||
-        refillBefore(previousMs, shotMs) !== undefined
-      ) {
-        leftInMagazine = magazine;
+      } else {
+        const refilled = refillBefore(previousMs, shotMs);
+        if (refilled !== undefined) applyRefill(refilled);
       }
     }
     leftInMagazine--;

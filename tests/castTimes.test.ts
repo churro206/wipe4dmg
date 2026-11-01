@@ -98,7 +98,11 @@ describe("simulate: the weapon during a cast", () => {
     expect(shots.some((ms) => ms >= plain[2] && ms < plain[2] + 1000)).toBe(false);
   });
 
-  const dodge = { ...grenade, id: "dodge", refillsMagazine: true };
+  const dodge: Ability = {
+    ...grenade,
+    id: "dodge",
+    rules: [{ id: "refill", on: { on: "cast" }, do: [{ type: "refill" }] }],
+  };
   const last = weapon.magazine.value! - 1; // index of the shot that empties the first magazine
 
   it("fires the last shot of a magazine first when a dodge is cast at its time (reload skipped)", () => {

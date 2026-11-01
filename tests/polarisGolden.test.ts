@@ -175,7 +175,7 @@ describe("Polaris Lance as rules (section 11)", () => {
     ]);
   });
 
-  it("refill during a reload that is planned already is an error until B3b", () => {
+  it("refill during a reload that is planned already cancels it (the weapon plans anew)", () => {
     const empty = Weapon.parse({
       ...base,
       magazine: n(1),
@@ -183,7 +183,11 @@ describe("Polaris Lance as rules (section 11)", () => {
       damageInstances: [part("shot", 100, true)],
       rules: [rules[0], rules[1]],
     });
-    expect(() => run(empty, 3, false)).toThrow(/B3b/);
+    // every shot empties the magazine and its precision hit gives the round back at once
+    const result = run(empty, 3, false);
+    expect(timesOf(result, "shot")).toEqual([0, 400, 800, 1200, 1600, 2000, 2400, 2800]);
+    expect(result.shots.map((s) => s.timeMs)).toEqual(timesOf(result, "shot"));
+    expect(result.reloadsMs).toEqual([]);
   });
 
   it("spawn: what the rule omits is 0 ms delay and one hit, not the values of the part", () => {

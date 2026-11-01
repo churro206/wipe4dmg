@@ -20,6 +20,7 @@ import type {
 } from "../data/schema";
 import { artifactPerksOf } from "./artifacts";
 import { abilitySimulation, nextCastOf } from "./buildAbilities";
+import { refillsOnCast } from "./effectRules";
 import { classPerksOf, exoticArmorEffects } from "./exoticArmor";
 import { castGrantEffects } from "./grantedEffects";
 import { simulate, type SimulationOptions } from "./simulate";
@@ -115,7 +116,9 @@ export function nextCastFor(
     (p) => data.abilities.find((a) => a.id === p.abilityId)?.kind === kind,
   );
   const ability = data.abilities.find((a) => a.id === pick?.abilityId);
-  if (earliestMs === undefined || !ability?.refillsMagazine) return earliestMs;
+  if (earliestMs === undefined || !ability || !refillsOnCast(ability)) {
+    return earliestMs;
+  }
   const { selected, options } = buildSimulation(build, data);
   const { reloadsMs } = simulate(weapon, build.damagePhaseSeconds, selected, buckets, options);
   return reloadsMs.find((ms) => ms >= earliestMs) ?? earliestMs;

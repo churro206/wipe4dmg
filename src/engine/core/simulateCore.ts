@@ -39,7 +39,11 @@ import {
   type RuleEvent,
 } from "./rules";
 import { createStatusContainer, KEYWORD_EVENT_GROUP } from "./status";
-import { createWeaponActor, type PlannedShot } from "./weaponActor";
+import {
+  createWeaponActor,
+  type ActorStep,
+  type PlannedShot,
+} from "./weaponActor";
 
 // A shot comes before every other event of its time: the hits it sets off see the shot history.
 const SHOT_GROUP = -1;
@@ -294,7 +298,10 @@ export function simulate(
             ),
         });
       },
-      refill: ({ rounds, timeMs }) => actor.refill(timeMs, rounds),
+      refill: ({ rounds, timeMs }) => {
+        const step = actor.refill(timeMs, rounds);
+        if (step) replan(step, current().schedule);
+      },
       // Damage of its own, e.g. a Storm's Keep discharge: generic damage like Bolt Charge, so only
       // multipliers for keyword damage apply (Aegis applies only the debuff to these rows)
       damage: ({ id, damage, element, damageSource, delivery, timeMs }) => {
@@ -478,9 +485,13 @@ export function simulate(
 
   const shots: Shot[] = history.shots;
   const reloadsMs: number[] = [];
-  /** Asks the actor for the next shot and queues its event; the shot joins the history now. */
-  const planNext = (schedule: (event: RunEvent) => void) => {
-    const step = actor.next();
+  // The step planned last, and a number that tells its event from one a refill made stale
+  let planned: ActorStep = {};
+  let generation = 0;
+  /** Queues the event of a step; the shot joins the history now. */
+  const plan = (step: ActorStep, schedule: (event: RunEvent) => void) => {
+    planned = step;
+    const mine = ++generation;
     if (step.reloadStartMs !== undefined) reloadsMs.push(step.reloadStartMs);
     const shot = step.shot;
     if (!shot) return;
@@ -490,6 +501,7 @@ export function simulate(
       timeMs: shot.timeMs,
       group: SHOT_GROUP,
       handle: (target, __, later) => {
+        if (mine !== generation) return; // a refill planned the step anew
         // The rules see the shot first: the hits they set off come before the counter and dot events.
         fireRules(
           {
@@ -514,6 +526,18 @@ export function simulate(
         planNext(later);
       },
     });
+  };
+  /** Asks the actor for the next shot and queues its event. */
+  const planNext = (schedule: (event: RunEvent) => void) =>
+    plan(actor.next(), schedule);
+  /** A refill changed the step that was planned last: takes it back and queues the new one. */
+  const replan = (step: ActorStep, schedule: (event: RunEvent) => void) => {
+    if (planned.reloadStartMs !== undefined) reloadsMs.pop();
+    if (planned.shot) {
+      shots.pop();
+      history.holdFactors.pop();
+    }
+    plan(step, schedule);
   };
 
   const events: RunEvent[] = [];
