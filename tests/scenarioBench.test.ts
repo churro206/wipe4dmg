@@ -26,7 +26,13 @@ import {
   scenarioProblems,
   tabOf,
 } from "./lib/scenarioBench";
-import { generateScenarios, generateTotalScenarios, lotOf } from "./lib/scenarioGen";
+import {
+  generateAbilityScenarios,
+  generateScenarios,
+  generateTotalScenarios,
+  lotOf,
+  STAT_200,
+} from "./lib/scenarioGen";
 
 const DIR = "tests/scenarios";
 const SNAPSHOT = "./__snapshots__/scenario-bench.md";
@@ -57,8 +63,24 @@ const generatedTotals = generateTotalScenarios(
   },
   new Set(handMade.map((s) => s.aegisRow)),
 );
+const generatedAbilities = generateAbilityScenarios(
+  abilityRows,
+  {
+    abilities,
+    effects,
+    exoticArmor,
+    artifactPerks: artifactData.artifacts.flatMap((a) => a.perks),
+    ignored: switches.ignoredTotals,
+  },
+  new Set(handMade.map((s) => s.aegisRow)),
+);
 // The Weapons figures stay as they were (block P, step 1): the other tabs have their own tests below.
-const all = [...handMade, ...generated.scenarios, ...generatedTotals.scenarios];
+const all = [
+  ...handMade,
+  ...generated.scenarios,
+  ...generatedTotals.scenarios,
+  ...generatedAbilities.scenarios,
+];
 const scenarios = all.filter((s) => tabOf(s) === "weapons");
 const otherTabs = all.filter((s) => tabOf(s) !== "weapons");
 const fitted = fittedRows(rawPackages, abilities).weaponRows;
@@ -108,7 +130,9 @@ describe("scenarios of the other tabs (block P)", () => {
       expect(row, s.aegisRow).toBeDefined();
       const perUse = s.build.abilityStat === 200 ? row!.perUseStat200 : row!.perUseStat100;
       expect(s.wipe).toBe(perUse.value);
-      expect(s.playstyle).toEqual(row!.assumptions);
+      expect(s.playstyle).toEqual(
+        s.build.abilityStat === 200 ? [...row!.assumptions, STAT_200] : row!.assumptions,
+      );
     } else {
       const row = totals.find((r) => r.id === s.aegisRow);
       expect(row, s.aegisRow).toBeDefined();
@@ -155,9 +179,24 @@ describe("scenarios of the other tabs (block P)", () => {
     for (const r of others) expect(r.model, r.scenario.id).not.toBeNull();
   });
 
-  it("Abilities: Gathering Storm lies within the tolerance of the ability gate", () => {
-    const r = byId("abilities-gathering-storm");
-    expect(Math.abs(r.deviation!)).toBeLessThanOrEqual(COMPONENT_TOLERANCE);
+  it("Abilities: Gathering Storm lies within the tolerance of the ability gate, at stat 100 and 200", () => {
+    for (const id of ["gen-super-gathering-storm", "gen-super-gathering-storm-stat-200"]) {
+      expect(Math.abs(byId(id).deviation!), id).toBeLessThanOrEqual(COMPONENT_TOLERANCE);
+    }
+  });
+
+  it("Abilities: the scenario at stat 200 is a delta pair with the one at stat 100", () => {
+    const judgedAbilities = judge(
+      others.filter((r) => tabOf(r.scenario) === "abilities"),
+      new Set(),
+    );
+    const pairs = checkPairs(judgedAbilities);
+    // other pairs exist too: rows of Aegis that differ by one assumption
+    expect(pairs.some((p) => p.added === STAT_200)).toBe(true);
+  });
+
+  it("runs every generated scenario of Abilities", () => {
+    expect(generatedAbilities.scenarios.length).toBeGreaterThan(100);
   });
 
   it("Sustained and Swap rows have no lot, Abilities rows keep theirs", () => {

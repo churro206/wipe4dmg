@@ -211,8 +211,12 @@ const counted = (rows: Judged[]) =>
 export const checkSet = (rows: Judged[]) =>
   counted(rows).filter((r) => !r.fitted && r.lot === "check");
 
+/** The id of a row in the pairs: the scenario at stat 200 is a row of its own beside the one at stat 100. */
+export const itemId = (s: Scenario) =>
+  tabOf(s) === "abilities" && s.build.abilityStat === 200 ? `${s.aegisRow}@stat-200` : s.aegisRow;
+
 const toItem = (r: Judged): Item => ({
-  id: r.scenario.aegisRow,
+  id: itemId(r.scenario),
   tab: tabOf(r.scenario),
   name: r.scenario.build.abilityId ?? r.scenario.build.weaponId,
   assumptions: r.scenario.playstyle,
@@ -225,7 +229,7 @@ const toItem = (r: Judged): Item => ({
  * without it may be any counted row (its value cancels in the delta).
  */
 export function checkPairs(rows: Judged[]): DeltaPair[] {
-  const ids = new Set(checkSet(rows).map((r) => r.scenario.aegisRow));
+  const ids = new Set(checkSet(rows).map((r) => itemId(r.scenario)));
   return deltaPairs(counted(rows).map(toItem)).filter((p) => ids.has(p.id));
 }
 

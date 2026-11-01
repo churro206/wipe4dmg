@@ -1,9 +1,18 @@
 import { describe, expect, it } from "vitest";
-import type { Ability, AegisTotalRow, AegisWeaponRow, ExoticArmorEntry, Weapon } from "../src/data/schema";
+import type {
+  Ability,
+  AegisAbilityRow,
+  AegisTotalRow,
+  AegisWeaponRow,
+  ExoticArmorEntry,
+  Weapon,
+} from "../src/data/schema";
 import {
   fnv1a,
+  generateAbilityScenarios,
   generateScenarios,
   generateTotalScenarios,
+  type AbilityGenData,
   lotOf,
   STANDARD_ABILITY_EFFECTS,
   STANDARD_WEAPON_EFFECTS,
@@ -205,6 +214,117 @@ describe("scenario generator for the tabs Sustained and Swap", () => {
       ["i", "no total (INF)"],
       ["f", "factors differ from the standard of Aegis"],
     ]);
+  });
+});
+
+const abilityRow = (
+  id: string,
+  name: string,
+  assumptions: string[],
+  fields: Partial<AegisAbilityRow> = {},
+): AegisAbilityRow => {
+  const sourced = (value: number | null) => ({ value, source: { status: "verified" } });
+  return {
+    id,
+    category: "super",
+    name,
+    assumptions,
+    includedEffectIds: [],
+    primaryTick: "",
+    secondaryTicks: "",
+    perUseStat100: sourced(1000),
+    perUseStat200: sourced(1450),
+    gameVersion: "9",
+    ...fields,
+  } as unknown as AegisAbilityRow;
+};
+
+const abilityData: AbilityGenData = {
+  abilities: [
+    { id: "gathering-storm", name: "Gathering Storm", kind: "super", aegisRowId: "gs", providers: [{ kind: "subclass", classes: ["hunter"], subclasses: ["arc"] }] },
+    { id: "thundercrash", name: "Thundercrash", kind: "super", providers: [{ kind: "subclass", classes: ["titan"], subclasses: ["arc"] }] },
+    {
+      id: "thundercrash-cuirass",
+      name: "Thundercrash",
+      kind: "super",
+      aegisRowId: "tc-cuirass",
+      variantOf: "thundercrash",
+      exoticArmorId: "own",
+      requiresEffectIds: ["radiant"],
+      providers: [{ kind: "subclass", classes: ["titan"], subclasses: ["arc"] }],
+    },
+  ] as unknown as Ability[],
+  effects: totalData.effects,
+  exoticArmor: data.exoticArmor,
+  artifactPerks: totalData.artifactPerks,
+  ignored: { "Odd Note": "no effect" },
+};
+
+describe("scenario generator for the tab Abilities", () => {
+  it("makes a scenario for stat 100 and one for stat 200 with the extra assumption", () => {
+    const { scenarios, missing } = generateAbilityScenarios(
+      [abilityRow("gs", "Gathering Storm", ["Odd Note"], { includedEffectIds: ["radiant"] })],
+      abilityData,
+      new Set(),
+    );
+    expect(missing).toEqual([]);
+    const [low, high] = scenarios;
+    expect([low.id, high.id]).toEqual(["gen-gs", "gen-gs-stat-200"]);
+    expect([low.wipe, high.wipe]).toEqual([1000, 1450]);
+    expect([low.aegisRow, high.aegisRow]).toEqual(["gs", "gs"]);
+    expect([low.tab, low.system, low.fullModifiers]).toEqual(["abilities", "generated", 1]);
+    expect(low.playstyle).toEqual(["Odd Note"]);
+    expect(high.playstyle).toEqual(["Odd Note", "stat 200"]);
+    expect(low.build).toEqual({
+      weaponId: STANDING_BY_WEAPON,
+      guardianClass: "hunter",
+      subclass: "arc",
+      abilityId: "gathering-storm",
+      abilityStat: 100,
+      effectIds: ["radiant"],
+    });
+    expect(high.build).toEqual({ ...low.build, abilityStat: 200 });
+  });
+
+  it("builds a variant as its base ability with the armor and the effects it requires", () => {
+    const { scenarios } = generateAbilityScenarios(
+      [abilityRow("tc-cuirass", "Thundercrash", ["Own Damage Helm"])],
+      { ...abilityData, exoticArmor: [{ id: "own", name: "Own Damage Helm", kind: "buff" }] as unknown as ExoticArmorEntry[] },
+      new Set(),
+    );
+    expect(scenarios[0].build).toMatchObject({
+      abilityId: "thundercrash",
+      exoticArmorId: "own",
+      effectIds: ["radiant"],
+    });
+  });
+
+  it("reports an assumption without a switch, skips rows without an ability and without a value", () => {
+    const { scenarios, missing, skipped } = generateAbilityScenarios(
+      [
+        abilityRow("gs", "Gathering Storm", ["Mystery Perk"]),
+        abilityRow("x", "Unknown Super", []),
+        abilityRow("c", "Thundercrash", []),
+        abilityRow("n", "Thundercrash", [], { perUseStat100: { value: null, source: {} } as never, perUseStat200: { value: null, source: {} } as never }),
+      ],
+      abilityData,
+      new Set(["c"]),
+    );
+    expect(missing.map((m) => [m.row.id, m.unmapped])).toEqual([["gs", ["Mystery Perk"]]]);
+    expect(skipped.map((s) => [s.row.id, s.reason])).toEqual([
+      ["x", "no ability of the model"],
+      ["n", "no measured value"],
+    ]);
+    expect(scenarios).toEqual([]);
+  });
+
+  it("makes only the scenario for the stat that has a value", () => {
+    const { scenarios } = generateAbilityScenarios(
+      [abilityRow("gs", "Gathering Storm", [], { perUseStat200: { value: null, source: {} } as never })],
+      abilityData,
+      new Set(),
+    );
+    expect(scenarios.map((s) => s.id)).toEqual(["gen-gs"]);
   });
 });
 
