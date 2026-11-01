@@ -467,30 +467,6 @@
     "timing": { "from": "Aegis", "row": "salvation-s-grip-uncharged" }
   },
   {
-    "weapon": "The Lament",
-    "reason": "Aegis Sustained zählt Munition (65), der Grundwert gilt pro Combo „2L1H1R“ (Base 4561 = Weapons „average, 2L1H1R“ 4560,9): 13 Combos in 40,5 s. Timing mit Lucent Blades x3 und Argent Blade (Charge Rate) wie bei Aegis; ihr Schaden steckt nicht im Grundwert.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
-        "text": "13 combos"
-      },
-      {
-        "source": "aegis",
-        "entry": "sword-the-lament-average-2l1h1r",
-        "text": "\"perShot\":4560.949"
-      }
-    ],
-    "aegisWins": true,
-    "perShotFromTiming": true,
-    "timing": {
-      "from": "Aegis",
-      "row": "the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
-      "noReloads": true,
-      "shots": 13
-    }
-  },
-  {
     "weapon": "Black Talon",
     "reason": "Aegis Sustained zählt Munition (73), der Grundwert gilt pro Combo „2H2L“ (3141): 9 Combos plus ein Heavy in 25,1 s; der letzte Heavy fällt weg. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
     "quotes": [

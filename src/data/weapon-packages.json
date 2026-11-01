@@ -17245,50 +17245,375 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file the-lament",
+        "retrieved": "2026-11-01",
+        "status": "derived",
+        "note": "Derived: a sword has no charge; the time to empty counts from the first combo (Aegis Sustained)"
       }
     },
     "fireRateRpm": {
       "value": 19.255,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 40.508 s − 0 reloads × 0 s) ÷ 64 intervals within magazines (ADR 0013); 13 shots in 40.508 s (override)"
+        "status": "fitted",
+        "row": "the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "note": "Derived: 60 / $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds (seconds per combo to combos per minute; one shot of the model is one combo (2L1H1R)); $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds = 3.116 (Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade)"
       }
     },
     "magazine": {
       "value": 13,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "note": "Derived: $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds (Aegis' 13 combos (the row counts ammunition, 65): time to empty over the time per combo); $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].timeToEmptySeconds = 40.508 (Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade); $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds = 3.116 (Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade)"
       }
     },
     "totalShots": {
       "value": 13,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
+        "note": "Derived: $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds (the same 13 combos; the other playstyles keep it (their rows hold 16, 10 and 9 combos, known-inaccuracies)); $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].timeToEmptySeconds = 40.508 (Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade); $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds = 3.116 (Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade)"
       }
     },
     "reloadTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "name": "Item file the-lament",
+        "retrieved": "2026-11-01",
+        "status": "derived",
+        "note": "Derived: the magazine is the whole ammunition, a sword does not reload (Aegis Sustained, noReloads)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "combo",
+        "name": "Combo 2L1H1R",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 4560.949,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "sword-the-lament-average-2l1h1r",
+            "note": "perShot 4560.949 of the row (Full Modifiers 3.16 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "combo-2l1h",
+        "name": "Combo 2L1H",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 4031.565,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h-burning-ambition",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "sword-the-lament-average-2l1h-burning-ambition",
+            "note": "Derived: $aegis[sword-the-lament-average-2l1h-burning-ambition].perShot / 1.1134 (Aegis measures this combo only with Burning Ambition; the catalyst's share (5077.945 / 4560.949 of the pair 2L1H1R, with and without) is taken out, the catalyst itself comes as Scorch); $aegis[sword-the-lament-average-2l1h-burning-ambition].perShot = 4488.744 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h-burning-ambition)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "combo-3l1h1r",
+        "name": "Combo 3L1H1R",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 5024.74,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-3l1h1r-burning-ambition",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "sword-the-lament-average-3l1h1r-burning-ambition",
+            "note": "Derived: $aegis[sword-the-lament-average-3l1h1r-burning-ambition].perShot / 1.1134 (as 2L1H: the catalyst's share of the pair 2L1H1R is taken out); $aegis[sword-the-lament-average-3l1h1r-burning-ambition].perShot = 5594.545 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-3l1h1r-burning-ambition)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "combo-4l1h1r",
+        "name": "Combo 4L1H1R",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 5769.529,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-4l1h1r-burning-ambition",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "sword-the-lament-average-4l1h1r-burning-ambition",
+            "note": "Derived: $aegis[sword-the-lament-average-4l1h1r-burning-ambition].perShot / 1.1134 (as 2L1H: the catalyst's share of the pair 2L1H1R is taken out); $aegis[sword-the-lament-average-4l1h1r-burning-ambition].perShot = 6423.794 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-4l1h1r-burning-ambition)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-lament",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "2l1h", "not": true },
+          { "type": "playstyle", "id": "3l1h1r", "not": true },
+          { "type": "playstyle", "id": "4l1h1r", "not": true }
+        ],
+        "do": [{ "type": "spawn", "part": "combo" }]
+      },
+      {
+        "id": "shot-2l1h",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "2l1h" }],
+        "do": [{ "type": "spawn", "part": "combo-2l1h" }]
+      },
+      {
+        "id": "shot-3l1h1r",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "3l1h1r" }],
+        "do": [{ "type": "spawn", "part": "combo-3l1h1r" }]
+      },
+      {
+        "id": "shot-4l1h1r",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "4l1h1r" }],
+        "do": [{ "type": "spawn", "part": "combo-4l1h1r" }]
+      },
+      {
+        "id": "rate-2l1h",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "2l1h" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 23.943,
+                "source": {
+                  "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h-combo-lucent-blades-x3-burning-ambition-argent-blade-solar-fulmination",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "the-lament-2l1h-combo-lucent-blades-x3-burning-ambition-argent-blade-solar-fulmination",
+                  "note": "Derived: 60 / $aegisSustained[the-lament-2l1h-combo-lucent-blades-x3-burning-ambition-argent-blade-solar-fulmination].peakRateSeconds (seconds per combo to combos per minute); $aegisSustained[the-lament-2l1h-combo-lucent-blades-x3-burning-ambition-argent-blade-solar-fulmination].peakRateSeconds = 2.506 (Aegis Boss Damage sheet (tab Sustained), row the-lament-2l1h-combo-lucent-blades-x3-burning-ambition-argent-blade-solar-fulmination)"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rate-3l1h1r",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "3l1h1r" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 16.746,
+                "source": {
+                  "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row the-lament-3l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "the-lament-3l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo",
+                  "note": "Derived: 60 / $aegisSustained[the-lament-3l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo].peakRateSeconds (seconds per combo to combos per minute); $aegisSustained[the-lament-3l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo].peakRateSeconds = 3.583 (Aegis Boss Damage sheet (tab Sustained), row the-lament-3l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo)"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rate-4l1h1r",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "4l1h1r" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 14.399,
+                "source": {
+                  "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row the-lament-4l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "the-lament-4l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo",
+                  "note": "Derived: 60 / $aegisSustained[the-lament-4l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo].peakRateSeconds (seconds per combo to combos per minute); $aegisSustained[the-lament-4l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo].peakRateSeconds = 4.167 (Aegis Boss Damage sheet (tab Sustained), row the-lament-4l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo)"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "burning-ambition",
+        "on": { "on": "hit" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 120,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Lament Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Lament Catalyst](\"apply 20 additional Scorch\") * 6 (20 Scorch per Direct Hit, one per 0.5 s cooldown; a combo of about 3 s has 6 hits (Aegis row 2L1H1R, 6 shots)); $clarity[The Lament Catalyst](\"apply 20 additional Scorch\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Lament Catalyst)"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "banshee-s-wail",
+        "name": "Banshee's Wail",
+        "description": "[Block]  : Hold to rev the blade.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "playstyles": [
+      { "id": "2l1h1r", "label": "2L1H1R" },
+      { "id": "2l1h", "label": "2L1H" },
+      { "id": "3l1h1r", "label": "3L1H1R" },
+      { "id": "4l1h1r", "label": "4L1H1R" }
+    ],
+    "catalyst": {
+      "name": "Burning Ambition, The Lament Catalyst",
+      "description": "Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown\nScoring 3 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. This allows The Lament to Scorch through a singular revved attack.\nHit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage, and thus, triggers Revved Consumption's healing, granting 7HP per tick.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -17300,103 +17625,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-the-lament-average-2l1h1r",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 4561,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-the-lament-average-2l1h1r",
-            "note": "visual Value; assumptions: average, 2L1H1R"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-the-lament-average-2l1h1r"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-the-lament-average-2l1h1r"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "banshee-s-wail",
-        "name": "Banshee's Wail",
-        "description": "[Block]  : Hold to rev the blade.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "options": [
-      {
-        "id": "burning-ambition",
-        "name": "Burning Ambition",
-        "kind": "catalyst",
-        "bucketId": "weaponPerk",
-        "factor": {
-          "value": 1.1134,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-the-lament-average-2l1h1r-burning-ambition",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-the-lament-average-2l1h1r-burning-ambition",
-            "note": "visual Value 5077.945 / 4560.949 (base row sword-the-lament-average-2l1h1r)"
-          }
-        },
-        "durationSeconds": null,
-        "condition": "Direct Hits against Scorched Enemies apply additional Scorch on a 0.5 second cooldown:"
-      }
-    ],
-    "catalyst": {
-      "name": "Burning Ambition, The Lament Catalyst",
-      "description": "Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown\nScoring 3 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. This allows The Lament to Scorch through a singular revved attack.\nHit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage, and thus, triggers Revved Consumption's healing, granting 7HP per tick.",
-      "effect": "damage"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "the-last-word",

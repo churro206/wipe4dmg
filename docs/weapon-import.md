@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **134 Pakete**, 3 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **133 Pakete**, 4 Items, 4 Lücken.
 
 ## Pakete
 
@@ -114,7 +114,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | The Colony | grenadeLauncher | void | direct impact (1 Shot) | 833,8 | Aegis | 24 | 7 | 2,05 s | 14,8 s | – → 139 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by 1 (7🠚8)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Aegis; Katalysator-Timing: 25 Shots, Magazin 8, Zeit bis leer 15,2 s |
 | The Fourth Horseman | shotgun | arc | body, full mag (1 Shot) | 1.049,4 | Quantum | 20 | 4 | 0,43 s | 12,2 s | 300 → 109 | 55,2 % | Override: Aegis misst ein ganzes Magazin als einen Shot („full mag“, vier Werte 3085/3578/4102/4655); pro Schuss 4197,6 ÷ 4 = 1049,4. Quantum (612 body) zählt den Anstieg pro Schuss nicht; Aegis gilt.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; abgeleitete Feuerrate 109 statt 300 rpm; Schaden pro Shot 1.049,4 (Override); Skala weicht um 55.2 % ab; Aegis gilt (Override); Katalysator-Timing: 20 Shots, Magazin 5, Zeit bis leer 11,7 s |
 | The Jade Rabbit | scoutRifle | kinetic | keine (1 Shot) | 96,6 | Quantum |  | 15 | 1,24 s | – | 150 → 150 | 0,4 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing nur aus Quantum |
-| The Lament | sword | solar | average, 2L1H1R (6 Shots) | 4.561,0 | Aegis | 13 | 13 | 0,00 s | 37,4 s | – → 19 | – | Override: Aegis Sustained zählt Munition (65), der Grundwert gilt pro Combo „2L1H1R“ (Base 4561 = Weapons „average, 2L1H1R“ 4560,9): 13 Combos in 40,5 s. Timing mit Lucent Blades x3 und Argent Blade (Charge Rate) wie bei Aegis; ihr Schaden steckt nicht im Grundwert.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade (Override); Timing nur aus Aegis; Schaden pro Shot aus „Base“ der Sustained-Zeile the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade (Override) |
 | The Last Word | handCannon | kinetic | hipfire (1 Shot) | 175,5 | Quantum |  | 8 | 1,64 s | – | 225 → 225 | 0,2 % | Override: Nachladen und Buffs brauchen Kills; gegen einen Boss ohne Adds keine Wirkung.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | The Manticore | submachineGun | void | average, Hover Mode (104 Shots) | 41,9 | Quantum |  | 42 | 1,19 s | – | 900 → 900 | 2,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „Grounded“; Timing nur aus Quantum |
 | The Navigator | traceRifle | strand | keine (1 Shot) | 28,6 | Quantum | 485 | 97 | 1,44 s | 37,8 s | 900 → 906 | 1,3 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
@@ -155,6 +154,7 @@ Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf di
 | --- | --- | --- |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
+| The Lament | `src/data/items/weapons/the-lament.json` | – |
 | Truth | `src/data/items/weapons/truth.json` | – |
 
 ## Optionen
@@ -175,7 +175,6 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | One Thousand Voices | catalyst | Katalysator | ×1,454 | – | – | – |
 | Outbreak Perfected | Catalyst | Katalysator | ×1,150 | – | – | Faktor aus dem Text (Override) |
 | Ruinous Effigy | ⚠ Catalyst | Katalysator | ×1,293 | 7 s | Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] increased weapon damage for 7 seconds. | Faktor aus Quantum (cata / ohne) |
-| The Lament | ⚠ Burning Ambition | Katalysator | ×1,113 | – | Direct Hits against Scorched Enemies apply additional Scorch on a 0.5 second cooldown: | – |
 | Ticuu's Divination | Catalyst | Katalysator | ×1,871 | – | – | Faktor aus dem Text (Override) |
 | Touch of Malice | Catalyst | Katalysator | ×1,250 | – | – | Faktor aus dem Text (Override) |
 | Vex Mythoclast | ⚠ Temporal Unlimiter | Perk | ×12,503 | – | Kills in Auto Rifle mode grant 'Overcharge' stacks. Maximum of 6 Stacks. | – |
@@ -288,7 +287,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | The Colony | heavy | Timing | Magazin 7 → 8, Shots 24 → 25, Zeit bis leer 14,8 → 15,2 s, rpm 139 → 139 | Increases Magazine Size by 1 (7🠚8) and grants 30 Ammo Generation. |
 | The Fourth Horseman | special | Timing | Magazin 4 → 5, Shots 20 → 20, Zeit bis leer 12,2 → 11,7 s, rpm 109 → 105 | Grants 40 Reload Speed and Increases Magazine Size by 1 (4🠚5) |
 | The Jade Rabbit | primary | unbekannt | – | Grants 30 Stability. |
-| The Lament | heavy | Schaden | – | Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown |
 | The Last Word | primary | keine | – | Upon readying the weapon after scoring kills with your other Weapons: |
 | The Manticore | primary | keine | – | While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield |
 | The Navigator | special | keine | – | Hold [Reload] to activate Grapple Tangle mode. |
@@ -409,7 +407,8 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | The Huckleberry | average, Bull Rider | nicht modelliert: Bull Rider |
 | The Huckleberry | average, Bull Rider, Peacekeepers | nicht modelliert: Bull Rider; Exotic-Rüstung: Peacekeepers |
 | The Jade Rabbit | Fated Missile x15 | nicht modelliert: Fated Missile x15 |
-| The Lament | heavy | ohne average, 2L1H1R der Basiszeile |
+| The Lament | heavy | the item file uses another row |
+| The Lament | average, 2L1H1R, Burning Ambition | Katalysator: Burning Ambition |
 | The Lament | average, 2L1H1R, Burning Ambition, Ember of Ashes | Katalysator: Burning Ambition |
 | The Lament | average, 2L1H, Burning Ambition | Katalysator: Burning Ambition |
 | The Lament | average, 2L1H, Burning Ambition, Ember of Ashes | Katalysator: Burning Ambition |

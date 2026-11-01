@@ -1012,6 +1012,39 @@ describe("playstyles (2026-10-30, ADR 0017 S4)", () => {
   });
 });
 
+describe("sword combos as playstyles (B6)", () => {
+  const lament = (fields: Partial<Build>) =>
+    run({ subclass: "solar", damagePhaseSeconds: 30, ...fields }, weaponById("the-lament"));
+
+  it("The Lament: a longer combo is slower (Aegis Sustained 2.506 / 3.116 / 3.583 / 4.167 s) and hits harder", () => {
+    const styles = ["2l1h", undefined, "3l1h1r", "4l1h1r"].map((playstyle) =>
+      lament(playstyle ? { playstyle } : {}),
+    );
+    note(
+      "The Lament 30 s: Combos 2L1H / 2L1H1R / 3L1H1R / 4L1H1R",
+      styles.map((r) => r.shots.length).join(" / "),
+      "30 s ÷ 2,5 / 3,1 / 3,6 / 4,2 s je Combo",
+    );
+    const counts = styles.map((r) => r.shots.length);
+    expect(counts[0]).toBeGreaterThan(counts[1]);
+    expect(counts[1]).toBeGreaterThan(counts[2]);
+    expect(counts[2]).toBeGreaterThan(counts[3]);
+    const intervalS = (styles[3].shots[1].timeMs - styles[3].shots[0].timeMs) / 1000;
+    expect(intervalS).toBeCloseTo(4.167, 1);
+    const perCombo = (r: SimulationResult) => r.totalDamage / r.shots.length;
+    expect(perCombo(styles[3])).toBeGreaterThan(perCombo(styles[1]));
+  });
+
+  it("The Lament: Burning Ambition adds Scorch and with it ignitions, about +10 to +15 %", () => {
+    const plain = lament({ catalyst: false });
+    const catalyst = lament({ catalyst: true });
+    const gain = catalyst.totalDamage / plain.totalDamage;
+    note("The Lament 30 s: mit / ohne Katalysator", fmt(gain), "Aegis ×1,113");
+    expect(gain).toBeGreaterThan(1.08);
+    expect(gain).toBeLessThan(1.16);
+  });
+});
+
 describe("bows (2026-10-26)", () => {
   const hierarchy = (fields: Partial<Build>) =>
     run({ guardianClass: "hunter", subclass: "solar", catalyst: true, ...fields }, weaponById("hierarchy-of-needs"));

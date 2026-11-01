@@ -1,0 +1,180 @@
+{
+  "id": "the-lament",
+  "kind": "exoticWeapon",
+  "name": "The Lament",
+  "texts": [
+    { "source": "clarity", "entry": "The Lament Catalyst", "hash": "393c7ef3" },
+    { "source": "clarity", "entry": "Banshee's Wail", "hash": "dec27510" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-lament",
+      "retrieved": "2026-11-01",
+      "status": "derived",
+      "note": "Derived: a sword has no charge; the time to empty counts from the first combo (Aegis Sustained)"
+    }
+  },
+  "fireRateRpm": {
+    "expr": "60 / $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds",
+    "note": "seconds per combo to combos per minute; one shot of the model is one combo (2L1H1R)"
+  },
+  "magazine": {
+    "expr": "$aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds",
+    "note": "Aegis' 13 combos (the row counts ammunition, 65): time to empty over the time per combo"
+  },
+  "totalShots": {
+    "expr": "$aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[the-lament-2l1h1r-combo-lucent-blades-x3-argent-blade].peakRateSeconds",
+    "note": "the same 13 combos; the other playstyles keep it (their rows hold 16, 10 and 9 combos, known-inaccuracies)"
+  },
+  "reloadTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-lament",
+      "retrieved": "2026-11-01",
+      "status": "derived",
+      "note": "Derived: the magazine is the whole ammunition, a sword does not reload (Aegis Sustained, noReloads)"
+    }
+  },
+  "catalyst": {
+    "name": "Burning Ambition, The Lament Catalyst",
+    "description": "Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown\nScoring 3 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. This allows The Lament to Scorch through a singular revved attack.\nHit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage, and thus, triggers Revved Consumption's healing, granting 7HP per tick.",
+    "effect": "damage"
+  },
+  "playstyles": [
+    { "id": "2l1h1r", "label": "2L1H1R" },
+    { "id": "2l1h", "label": "2L1H" },
+    { "id": "3l1h1r", "label": "3L1H1R" },
+    { "id": "4l1h1r", "label": "4L1H1R" }
+  ],
+  "parts": {
+    "combo": {
+      "name": "Combo 2L1H1R",
+      "damage": "$aegis[sword-the-lament-average-2l1h1r].perShot",
+      "delivery": "impact"
+    },
+    "combo-2l1h": {
+      "name": "Combo 2L1H",
+      "damage": {
+        "expr": "$aegis[sword-the-lament-average-2l1h-burning-ambition].perShot / 1.1134",
+        "note": "Aegis measures this combo only with Burning Ambition; the catalyst's share (5077.945 / 4560.949 of the pair 2L1H1R, with and without) is taken out, the catalyst itself comes as Scorch"
+      },
+      "delivery": "impact"
+    },
+    "combo-3l1h1r": {
+      "name": "Combo 3L1H1R",
+      "damage": {
+        "expr": "$aegis[sword-the-lament-average-3l1h1r-burning-ambition].perShot / 1.1134",
+        "note": "as 2L1H: the catalyst's share of the pair 2L1H1R is taken out"
+      },
+      "delivery": "impact"
+    },
+    "combo-4l1h1r": {
+      "name": "Combo 4L1H1R",
+      "damage": {
+        "expr": "$aegis[sword-the-lament-average-4l1h1r-burning-ambition].perShot / 1.1134",
+        "note": "as 2L1H: the catalyst's share of the pair 2L1H1R is taken out"
+      },
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "2l1h", "not": true },
+        { "type": "playstyle", "id": "3l1h1r", "not": true },
+        { "type": "playstyle", "id": "4l1h1r", "not": true }
+      ],
+      "do": [{ "type": "spawn", "part": "combo" }]
+    },
+    {
+      "id": "shot-2l1h",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "2l1h" }],
+      "do": [{ "type": "spawn", "part": "combo-2l1h" }]
+    },
+    {
+      "id": "shot-3l1h1r",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "3l1h1r" }],
+      "do": [{ "type": "spawn", "part": "combo-3l1h1r" }]
+    },
+    {
+      "id": "shot-4l1h1r",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "4l1h1r" }],
+      "do": [{ "type": "spawn", "part": "combo-4l1h1r" }]
+    },
+    {
+      "id": "rate-2l1h",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "2l1h" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "60 / $aegisSustained[the-lament-2l1h-combo-lucent-blades-x3-burning-ambition-argent-blade-solar-fulmination].peakRateSeconds",
+              "note": "seconds per combo to combos per minute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rate-3l1h1r",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "3l1h1r" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "60 / $aegisSustained[the-lament-3l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo].peakRateSeconds",
+              "note": "seconds per combo to combos per minute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rate-4l1h1r",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "4l1h1r" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "60 / $aegisSustained[the-lament-4l1h1r-combo-lucent-blades-x3-burning-ambition-combination-argent-blade-sword-storm-combo].peakRateSeconds",
+              "note": "seconds per combo to combos per minute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "burning-ambition",
+      "on": { "on": "hit" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": {
+            "expr": "$clarity[The Lament Catalyst](\"apply 20 additional Scorch\") * 6",
+            "note": "20 Scorch per Direct Hit, one per 0.5 s cooldown; a combo of about 3 s has 6 hits (Aegis row 2L1H1R, 6 shots)"
+          }
+        }
+      ]
+    }
+  ]
+}

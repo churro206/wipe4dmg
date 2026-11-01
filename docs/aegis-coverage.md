@@ -7,7 +7,7 @@ Generiert von `npm run coverage` (`scripts/lib/aegisCoverage.ts`), nicht von Han
 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 144 | 248 | 25 |
+| Weapons | 417 | 143 | 249 | 25 |
 | Sustained | 261 | 38 | 132 | 91 |
 | Swap | 204 | 47 | 102 | 55 |
 
@@ -559,9 +559,9 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Praxic Blade, average, 3L1H, Offensive Form, Forceful Blade III, Impact Core (solar) | übersprungen | gleiche Annahmen wie die Basiszeile |
 | Praxic Blade, average, double hit throw, Offensive Form, Forceful Blade III, Gyro Core (solar) | übersprungen | ohne 3L1H der Basiszeile |
 | Praxic Blade, average, double hit throw, Offensive Form, Forceful Blade III, Gyro Core (solar), Upper Hand | übersprungen | ohne 3L1H der Basiszeile |
-| The Lament, heavy | übersprungen | ohne average, 2L1H1R der Basiszeile |
+| The Lament, heavy | übersprungen | the item file uses another row |
 | The Lament, average, 2L1H1R | im Modell | base row of the package |
-| The Lament, average, 2L1H1R, Burning Ambition | im Modell | option "Burning Ambition" |
+| The Lament, average, 2L1H1R, Burning Ambition | übersprungen | Katalysator: Burning Ambition |
 | The Lament, average, 2L1H1R, Burning Ambition, Ember of Ashes | übersprungen | Katalysator: Burning Ambition |
 | The Lament, average, 2L1H, Burning Ambition | übersprungen | Katalysator: Burning Ambition |
 | The Lament, average, 2L1H, Burning Ambition, Ember of Ashes | übersprungen | Katalysator: Burning Ambition |
