@@ -14,6 +14,7 @@ import {
   type KeywordId,
 } from "../src/data/schema";
 import { effectAppliesToWeapon } from "../src/engine/effectParts";
+import { statusOfKeywordId } from "../src/engine/effectRules";
 import { loadBuckets, loadEffects } from "../src/engine/loadData";
 import { loadKeywords } from "../src/engine/loadKeywords";
 import { simulate, type SimulationOptions } from "../src/engine/simulate";
@@ -53,13 +54,18 @@ const applies = (keywordId: KeywordId, durationMs?: number): Effect => ({
   code: 9101,
   shortName: "test",
   providers: [{ kind: "fireteamSupport" }],
-  modifiers: [
+  modifiers: [],
+  rules: [
     {
-      type: "appliesKeyword",
-      keywordId,
-      damageSources: ["weapon"],
-      ...(durationMs ? { durationMs: { value: durationMs, source } } : {}),
-      source,
+      id: "apply",
+      on: { on: "hit", filter: { damageSources: ["weapon"] } },
+      do: [
+        {
+          type: "applyStatus",
+          status: statusOfKeywordId(keywordId),
+          ...(durationMs ? { durationMs: { value: durationMs, source } } : {}),
+        },
+      ],
     },
   ],
 });
@@ -143,13 +149,18 @@ const stacksOf = (
   code: 9102,
   shortName: "test",
   providers: [{ kind: "fireteamSupport" }],
-  modifiers: [
+  modifiers: [],
+  rules: [
     {
-      type: "appliesKeyword",
-      keywordId,
-      damageSources,
-      stacks: { value: stacks, source },
-      source,
+      id: "apply",
+      on: { on: "hit", filter: { damageSources } },
+      do: [
+        {
+          type: "applyStatus",
+          status: statusOfKeywordId(keywordId),
+          stacks: { value: stacks, source },
+        },
+      ],
     },
   ],
 });

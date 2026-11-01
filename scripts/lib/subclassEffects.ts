@@ -19,7 +19,6 @@ import type {
   AbilityData,
   AegisAbilityRow,
   AegisTotalRow,
-  AppliesKeywordPart,
   CompendiumEntry,
   CourtEntry,
   DamageSource,
@@ -27,9 +26,11 @@ import type {
   Element,
   EffectProvider,
   ManifestSubclassItem,
+  Rule,
   Source,
   StatusId,
 } from "../../src/data/schema.ts";
+import { statusOfKeywordId } from "../../src/engine/effectRules.ts";
 import {
   BUCKET_OF_CATEGORY,
   bonusQuotes,
@@ -162,6 +163,7 @@ function sentencesOf(text: string): { sentence: string; header: string }[] {
 
 type Found = Pick<SubclassEffectRow, "rule" | "kind" | "reason" | "check"> & {
   parts?: Effect["modifiers"];
+  rules?: Rule[];
   grantsStatus?: StatusId[];
   durationMs?: Effect["durationMs"];
   trigger?: Effect["trigger"];
@@ -237,12 +239,23 @@ function findAll(
       });
       continue;
     }
-    const part = (damageSources: DamageSource[], elements: string[]): AppliesKeywordPart => ({
-      type: "appliesKeyword",
-      keywordId: k.keywordId,
-      damageSources,
-      ...(elements.length ? { elements: elements as never } : {}),
-      ...(k.stacks ? { stacks: { value: k.stacks, source: quote(k.quote) } } : {}),
+    // The keyword is applied by a rule on the hits it names (architecture section 6)
+    const rule = (damageSources: DamageSource[], elements: string[]): Rule => ({
+      id: `apply-${k.keywordId}`,
+      on: {
+        on: "hit",
+        filter: {
+          damageSources,
+          ...(elements.length ? { elements: elements as never } : {}),
+        },
+      },
+      do: [
+        {
+          type: "applyStatus",
+          status: statusOfKeywordId(k.keywordId),
+          ...(k.stacks ? { stacks: { value: k.stacks, source: quote(k.quote) } } : {}),
+        },
+      ],
       source: quote(k.quote),
     });
     if (k.kind === "hitFilter" && k.filter)
@@ -251,7 +264,7 @@ function findAll(
         kind: "always",
         reason: `${k.keywordId} auf Treffer von ${k.filter.elements.join("/")} ${k.filter.damageSources.join(", ")} („${k.quote}“)`,
         check: "Text",
-        parts: [part(k.filter.damageSources, k.filter.elements)],
+        rules: [rule(k.filter.damageSources, k.filter.elements)],
       });
     else if (k.kind === "preBuilt" && k.filter && k.durationSeconds)
       found.push({
@@ -259,7 +272,7 @@ function findAll(
         kind: "preBuilt",
         reason: `vorher aufgebaut: ${k.keywordId} auf ${k.filter.elements.join("/")} Waffen für ${k.durationSeconds} s („${k.quote}“)`,
         check: "Text",
-        parts: [part(k.filter.damageSources, k.filter.elements)],
+        rules: [rule(k.filter.damageSources, k.filter.elements)],
         durationMs: { value: k.durationSeconds * MS_PER_SECOND, source: quote(k.quote) },
       });
     else
@@ -447,7 +460,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
     let count = 0;
     for (const f of found) {
       const row: SubclassEffectRow = { ...base, rule: f.rule, kind: f.kind, reason: f.reason, check: f.check };
-      if (GENERATES.includes(f.kind) && (f.parts?.length || f.grantsStatus)) {
+      if (GENERATES.includes(f.kind) && (f.parts?.length || f.rules?.length || f.grantsStatus)) {
         const effectId = count === 0 ? id : `${id}-${count + 1}`;
         count++;
         // an effect kept in effects.json keeps its code there, e.g. Ember of Ashes
@@ -464,6 +477,7 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
             manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
             providers,
             modifiers: f.parts ?? [],
+            ...(f.rules ? { rules: f.rules } : {}),
             ...(f.grantsStatus ? { grantsStatus: f.grantsStatus } : {}),
             ...(f.durationMs ? { durationMs: f.durationMs } : {}),
             ...(f.trigger ? { trigger: f.trigger } : {}),
@@ -479,7 +493,9 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
   // An item whose effect only grants a state, e.g. Sol Invictus (Restoration), can change abilities
   // too: the effect gets the abilities.
   const withDamage = new Set(
-    effects.filter((e) => e.effect.modifiers.length > 0).map((e) => e.subclassItemId),
+    effects
+      .filter((e) => e.effect.modifiers.length > 0 || (e.effect.rules?.length ?? 0) > 0)
+      .map((e) => e.subclassItemId),
   );
   const eligible = new Map(
     names
@@ -583,13 +599,21 @@ export function subclassEffects(inputs: SubclassEffectInputs): {
         shortName: name,
         manifestRef: { table: "DestinyInventoryItemDefinition", hash: items[0].hash },
         providers: providersOf(items),
-        modifiers: [
+        modifiers: [],
+        // Damage of its own at the measured rate: a tick of the rule per interval (section 6)
+        rules: [
           {
-            type: "periodicDamage",
-            id: effectId,
-            element,
-            damage: source(row.base!),
-            intervalMs: source(Math.round(row.rateSeconds! * MS_PER_SECOND)),
+            id: "tick",
+            on: { on: "timer", everyMs: source(Math.round(row.rateSeconds! * MS_PER_SECOND)) },
+            do: [
+              {
+                type: "damage",
+                id: effectId,
+                damage: source(row.base!),
+                element,
+                damageSource: "keyword",
+              },
+            ],
           },
         ],
         ...(window ? { durationMs: window.durationMs } : {}),

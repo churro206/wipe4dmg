@@ -134,19 +134,22 @@ describe("rules for aspects and fragments", () => {
   });
 
   it("keyword parts on named hits and prebuilt rounds (U4b)", () => {
-    expect(generatedOf("spark-of-shock").effect.modifiers).toMatchObject([
+    expect(generatedOf("spark-of-shock").effect.modifiers).toEqual([]);
+    expect(generatedOf("spark-of-shock").effect.rules).toMatchObject([
       {
-        type: "appliesKeyword",
-        keywordId: "jolt",
-        damageSources: ["grenade"],
-        elements: ["arc"],
+        on: { on: "hit", filter: { damageSources: ["grenade"], elements: ["arc"] } },
+        do: [{ type: "applyStatus", status: "jolt" }],
       },
     ]);
     expect(generatedOf("echo-of-instability")).toMatchObject({
       activation: "preBuilt",
       effect: {
-        modifiers: [
-          { type: "appliesKeyword", keywordId: "volatile", damageSources: ["weapon"], elements: ["void"] },
+        modifiers: [],
+        rules: [
+          {
+            on: { on: "hit", filter: { damageSources: ["weapon"], elements: ["void"] } },
+            do: [{ type: "applyStatus", status: "volatile" }],
+          },
         ],
         durationMs: { value: 11250 },
       },
@@ -159,20 +162,26 @@ describe("rules for aspects and fragments", () => {
     expect(stormsKeep).toMatchObject({
       activation: "always",
       effect: {
-        modifiers: [
+        modifiers: [],
+        rules: [
           {
-            type: "periodicDamage",
-            id: "storms-keep",
-            element: "arc",
-            damage: { value: 678 },
-            intervalMs: { value: 1460 },
+            on: { on: "timer", everyMs: { value: 1460 } },
+            do: [
+              {
+                type: "damage",
+                id: "storms-keep",
+                element: "arc",
+                damage: { value: 678 },
+                damageSource: "keyword",
+              },
+            ],
           },
         ],
       },
     });
     expect(stormsKeep.effect.durationMs).toBeUndefined();
     const periodic = result.effects
-      .filter((e) => e.effect.modifiers.some((p) => p.type === "periodicDamage"))
+      .filter((e) => e.effect.rules?.some((r) => r.on.on === "timer"))
       .map((e) => e.subclassItemId)
       .sort();
     expect(periodic).toEqual([
@@ -184,8 +193,11 @@ describe("rules for aspects and fragments", () => {
     ]);
     // Hellion: Ember of Ashes (one assumption) rather than Consul's Pitch, spaced range, …
     expect(
-      result.effects.find((e) => e.subclassItemId === "hellion")!.effect.modifiers[0],
-    ).toMatchObject({ element: "solar", damage: { value: 466 }, intervalMs: { value: 1317 } });
+      result.effects.find((e) => e.subclassItemId === "hellion")!.effect.rules![0],
+    ).toMatchObject({
+      on: { everyMs: { value: 1317 } },
+      do: [{ element: "solar", damage: { value: 466 } }],
+    });
     // the measurement replaces the open rows: no damage, class ability trigger, keyword without model
     expect(kindsOf("Weaver's Call")).toEqual(["ownDamage"]);
     expect(kindsOf("Storm's Keep")).toEqual(["ownDamage"]);

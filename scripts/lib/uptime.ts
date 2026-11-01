@@ -6,6 +6,7 @@
 // Review table: docs/uptime-import.md.
 
 import type { Effect } from "../../src/data/schema.ts";
+import { hasOwnDamage } from "../../src/engine/effectRules.ts";
 import {
   COURT_SECONDS,
   courtQuote,
@@ -52,12 +53,11 @@ const HELD: Record<string, string> = {
 
 // Parts that last while their effect is active; the others work per hit or cast.
 const isTimed = (p: Effect["modifiers"][number]) =>
-  p.type === "multiplier" ||
-  p.type === "periodicDamage" ||
-  (p.type === "stat" && p.stat === "reload");
+  p.type === "multiplier" || (p.type === "stat" && p.stat === "reload");
 
 function worksPerEvent(effect: Effect): boolean {
-  // Its buffs are granted by rules on hits, so they work per event
+  // Its buffs are granted by rules on hits, so they work per event; damage of its own ticks while it lasts
+  if (hasOwnDamage(effect)) return false;
   return (
     (effect.buffs?.length ?? 0) > 0 ||
     effect.modifiers.every(
@@ -93,7 +93,7 @@ export function uptimeRows(inputs: UptimeInputs): UptimeRow[] {
     if (effect.providers.some((p) => p.kind === "fireteamSupport"))
       return { ...base, verdict: "fireteam" as const };
     if (HELD[effect.id]) return { ...base, verdict: "held" as const, quote: HELD[effect.id] };
-    if (effect.modifiers.length === 0 && !effect.buffs?.length)
+    if (effect.modifiers.length === 0 && !effect.buffs?.length && !effect.rules?.length)
       return { ...base, verdict: "state" as const };
     if (worksPerEvent(effect)) return { ...base, verdict: "event" as const };
     const found = durationInText(effect, inputs);

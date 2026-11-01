@@ -19,13 +19,20 @@ const turret: Effect = {
   code: 9999,
   shortName: "Tur",
   providers: [{ kind: "subclass", slot: "aspect" }],
-  modifiers: [
+  modifiers: [],
+  rules: [
     {
-      type: "periodicDamage",
-      id: "turret",
-      element: "arc",
-      damage: sourced(100),
-      intervalMs: sourced(1500),
+      id: "tick",
+      on: { on: "timer", everyMs: sourced(1500) },
+      do: [
+        {
+          type: "damage",
+          id: "turret",
+          damage: sourced(100),
+          element: "arc",
+          damageSource: "keyword",
+        },
+      ],
     },
   ],
 };
@@ -51,7 +58,7 @@ const turretHits = (effects: Effect[], options = {}) =>
     (d) => d.id === "turret",
   );
 
-describe("periodicDamage", () => {
+describe("damage of its own (rule on timer everyMs, action damage)", () => {
   it("hits every interval from one interval after the start up to the end of the phase", () => {
     const hits = turretHits([turret]);
     expect(hits.map((d) => d.timeMs)).toEqual([1500, 3000, 4500]);

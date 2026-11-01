@@ -11,6 +11,7 @@ import type {
   AegisWeaponRow,
   Effect,
 } from "../../src/data/schema.ts";
+import { hasOwnDamage } from "../../src/engine/effectRules.ts";
 import type { ReportWeapon } from "./weaponPackages.ts";
 
 export type Verdict = "model" | "skipped" | "missing";
@@ -66,7 +67,7 @@ export function aegisCoverage(input: CoverageInput): CoverageRow[] {
     );
   const ownDamage = new Map(
     input.effects
-      .filter((e) => e.modifiers.some((p) => p.type === "periodicDamage"))
+      .filter(hasOwnDamage)
       .map((e) => [norm(e.name), e]),
   );
   const entryOf = new Map(input.probe.entries.map((e) => [e.aegisId, e]));

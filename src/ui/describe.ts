@@ -3,6 +3,7 @@
 import {
   DamageSource,
   type Ability,
+  type AppliesKeywordPart,
   type Effect,
   type Element,
   type ExoticArmorEffect,
@@ -244,7 +245,53 @@ function describeStat(part: StatModifier): string {
   }
 }
 
-function describePart(part: Effect["modifiers"][number]): string {
+const STATUS_LABELS: Record<string, string> = {
+  scorch: "Scorch",
+  volatile: "Volatile",
+  jolt: "Jolt",
+  unravel: "Unravel",
+  boltCharge: "Bolt Charge",
+  weaken: "Weaken",
+};
+
+const hitsOf = (
+  damageSources: readonly DamageSource[] | undefined,
+  elements: readonly Element[] | undefined,
+) =>
+  (damageSources ?? ["weapon"])
+    .map((s) =>
+      elements?.length
+        ? `${list(elements.map((e) => ELEMENT_LABELS[e]))} ${SOURCE_HITS[s]}`
+        : SOURCE_HITS[s],
+    )
+    .join(", ");
+
+const secondsText = (ms: number) =>
+  new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(ms / 1000);
+
+/** What the rules of an effect do that its modifiers do not: keywords it applies, damage of its own. */
+function describeRules(effect: Effect): string[] {
+  return (effect.rules ?? []).flatMap((rule) =>
+    rule.do.flatMap((action) => {
+      if (action.type === "applyStatus" && rule.on.on === "hit") {
+        const stacks = action.stacks?.value ? `x${action.stacks.value} ` : "";
+        return [
+          `Applies ${stacks}${STATUS_LABELS[action.status] ?? action.status} on hits from ${hitsOf(rule.on.filter?.damageSources, rule.on.filter?.elements)}`,
+        ];
+      }
+      if (action.type === "damage" && rule.on.on === "timer" && rule.on.everyMs) {
+        return [
+          `Deals ${integer.format(action.damage.value ?? 0)} ${ELEMENT_LABELS[action.element]} damage every ${secondsText(rule.on.everyMs.value ?? 0)} s`,
+        ];
+      }
+      return [];
+    }),
+  );
+}
+
+function describePart(
+  part: Effect["modifiers"][number] | AppliesKeywordPart,
+): string {
   switch (part.type) {
     case "multiplier": {
       const conditions = [
@@ -281,8 +328,6 @@ function describePart(part: Effect["modifiers"][number]): string {
       const stacks = part.stacks?.value ? `x${part.stacks.value} ` : "";
       return `Applies ${stacks}${KEYWORD_LABELS[part.keywordId] ?? part.keywordId} on hits from ${hits}`;
     }
-    case "periodicDamage":
-      return `Deals ${integer.format(part.damage.value ?? 0)} ${ELEMENT_LABELS[part.element]} damage every ${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format((part.intervalMs.value ?? 0) / 1000)} s`;
   }
 }
 
@@ -307,6 +352,7 @@ function variantLines(isVariant: (a: Ability) => boolean): string[] {
 export function describeEffect(effect: Effect): string[] {
   return [
     ...effect.modifiers.map(describePart),
+    ...describeRules(effect),
     // The bonus of a buff per stack, e.g. "+45% ... per stack"; the boss factor is no line of its own
     ...(effect.buffs ?? []).flatMap((buff) =>
       buff.modifiers

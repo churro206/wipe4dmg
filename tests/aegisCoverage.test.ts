@@ -36,7 +36,13 @@ const report = (extra: Partial<ReportWeapon>) =>
   }) as ReportWeapon;
 const ability = (name: string, kind: string) => ({ name, kind }) as Ability;
 const ownDamageEffect = (name: string) =>
-  ({ name, modifiers: [{ type: "periodicDamage" }] }) as unknown as Effect;
+  ({
+    name,
+    modifiers: [],
+    rules: [
+      { id: "tick", on: { on: "timer", everyMs: {} }, do: [{ type: "damage" }] },
+    ],
+  }) as unknown as Effect;
 
 const input = (extra: Partial<CoverageInput>): CoverageInput => ({
   weaponRows: [],

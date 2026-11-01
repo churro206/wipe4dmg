@@ -9,7 +9,7 @@ import type {
   KeywordId,
   Weapon,
 } from "../../data/schema";
-import { KEYWORD_COUNTERS, type Factors } from "../effectParts";
+import { KEYWORD_COUNTERS, productOf, type Factors } from "../effectParts";
 import {
   runEvents,
   type OnHit,
@@ -145,10 +145,8 @@ export function simulate(
   const statusContainer = createStatusContainer({
     keywords: options.keywords ?? [],
     modifierStatuses: options.statusModifiers ?? [],
-    keywordPartsAt: (timeMs) => [
-      ...context.abilityKeywordParts,
-      ...partsAt(timeMs).keywordParts,
-    ],
+    // The keywords of abilities; those of effects are rules (until step 4 moves these too)
+    keywordPartsAt: () => context.abilityKeywordParts,
     multiplierAt: context.keywordMultiplierAt,
     stackFactorAt: counterFactorAt,
     isInPhase,
@@ -285,7 +283,30 @@ export function simulate(
         });
       },
       refill: ({ rounds, timeMs }) => actor.refill(timeMs, rounds),
-      damage: notYet("The action damage"),
+      // Damage of its own, e.g. a Storm's Keep discharge: generic damage like Bolt Charge, so only
+      // multipliers for keyword damage apply (Aegis applies only the debuff to these rows)
+      damage: ({ id, damage, element, damageSource, delivery, timeMs }) => {
+        if (!isInPhase(timeMs)) return;
+        current().schedule({
+          timeMs,
+          group: EVENT_GROUP.periodic,
+          handle: (_, emit) => {
+            const factors = bucketFactors(partsAt(timeMs).multiplierParts, buckets, {
+              damageSource,
+              element,
+            });
+            emit({
+              id,
+              timeMs,
+              damage: damage * productOf(factors),
+              damageSource,
+              element,
+              ...(delivery ? { delivery } : {}),
+              factors,
+            });
+          },
+        });
+      },
       addResource: notYet("The action addResource"),
       // A timer of the engine itself, e.g. the end of a mode: it comes back as an event
       schedule: (event) =>
@@ -502,22 +523,11 @@ export function simulate(
       ),
     );
   }
-  // Damage of its own at a fixed rate in each window of its effect, e.g. Storm's Keep.
-  for (const effect of effects) {
-    for (const part of effect.modifiers) {
-      if (part.type !== "periodicDamage") continue;
-      events.push(
-        ...periodicEvents(
-          part,
-          context.windows.get(effect.id)!,
-          isInPhase,
-          (timeMs) =>
-            bucketFactors(partsAt(timeMs).multiplierParts, buckets, {
-              damageSource: "keyword",
-              element: part.element,
-            }),
-        ),
-      );
+  // The rules with `timer everyMs` tick in each window of their effect, first one interval after its
+  // start, e.g. Storm's Keep.
+  for (const { ownerId, ruleId, everyMs } of ruleEngine.periodicRules()) {
+    for (const window of context.windows.get(ownerId) ?? []) {
+      events.push(...periodicEvents(ownerId, ruleId, everyMs, window, isInPhase, fireRules));
     }
   }
   const damageInstances = runEvents(events, onHit);

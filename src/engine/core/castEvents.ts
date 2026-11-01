@@ -1,11 +1,12 @@
-// Events planned in advance, until the strategy stage (ADR 0018, B3): hits of ability casts, periodic
-// damage of effects and the super windows. Weapon shots are not planned here; the actor makes them.
+// Events planned in advance, until the strategy stage (ADR 0018, B3): hits of ability casts, the ticks
+// of periodic rules of effects and the super windows. Weapon shots are not planned here; the actor makes them.
 
-import type { AbilityComponent, PeriodicDamagePart } from "../../data/schema";
+import type { AbilityComponent } from "../../data/schema";
 import { productOf, type Factors } from "../effectParts";
-import type { RunEvent } from "../eventRun";
+import type { RunEvent, TargetState } from "../eventRun";
 import { requireValue } from "../requireValue";
 import { superWindowMs } from "../superWindow";
+import type { RuleEvent } from "./rules";
 import type { AbilityCast, SuperWindow } from "./types";
 
 // Order of events at equal times in the event run (eventRun.ts).
@@ -79,42 +80,38 @@ export function abilityHitEvents(
   return result;
 }
 
-/** Hits of a periodic damage part: one interval after each window start, then every interval. */
+/**
+ * The ticks of a rule with `timer everyMs` in one window of its owner: one interval after the window
+ * start, then every interval. Each tick fires the rule; what it does is up to its actions.
+ */
 export function periodicEvents(
-  part: PeriodicDamagePart,
-  windows: { startMs: number; endMs: number }[],
+  ownerId: string,
+  ruleId: string,
+  intervalMs: number,
+  window: { startMs: number; endMs: number },
   isInPhase: (timeMs: number) => boolean,
-  multiplierAt: (timeMs: number) => Factors,
+  fire: (
+    event: RuleEvent,
+    target: TargetState,
+    schedule: (event: RunEvent) => void,
+  ) => void,
 ): RunEvent[] {
-  const intervalMs = requireValue(part.intervalMs, "intervalMs");
-  const damage = requireValue(part.damage, "damage");
   if (intervalMs <= 0) {
     throw new Error(`intervalMs must be positive, got ${intervalMs}`);
   }
   const result: RunEvent[] = [];
-  for (const window of windows) {
-    for (
-      let timeMs = window.startMs + intervalMs;
-      timeMs < window.endMs && isInPhase(timeMs);
-      timeMs += intervalMs
-    ) {
-      const atMs = timeMs;
-      result.push({
-        timeMs: atMs,
-        group: EVENT_GROUP.periodic,
-        handle: (_, emit) => {
-          const factors = multiplierAt(atMs);
-          emit({
-            id: part.id,
-            timeMs: atMs,
-            damage: damage * productOf(factors),
-            damageSource: "keyword",
-            element: part.element,
-            factors,
-          });
-        },
-      });
-    }
+  for (
+    let timeMs = window.startMs + intervalMs;
+    timeMs < window.endMs && isInPhase(timeMs);
+    timeMs += intervalMs
+  ) {
+    const atMs = timeMs;
+    result.push({
+      timeMs: atMs,
+      group: EVENT_GROUP.periodic,
+      handle: (target, _, schedule) =>
+        fire({ on: "timer", timeMs: atMs, ownerId, ruleId }, target, schedule),
+    });
   }
   return result;
 }

@@ -132,6 +132,9 @@ function withoutBucket(effects: Effect[], bucketId: string): Effect[] {
         : {}),
     }))
     .filter(
-      (effect) => effect.modifiers.length > 0 || (effect.buffs?.length ?? 0) > 0,
+      (effect) =>
+        effect.modifiers.length > 0 ||
+        (effect.rules?.length ?? 0) > 0 ||
+        (effect.buffs?.length ?? 0) > 0,
     );
 }

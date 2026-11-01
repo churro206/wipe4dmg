@@ -3,6 +3,7 @@
 
 import type { Effect, StatusId, Weapon } from "../data/schema";
 import { effectAppliesToWeapon } from "./effectParts";
+import { hasOwnDamage, statusRulesOf } from "./effectRules";
 
 /** A catalyst exists as parts of a hand model or as catalyst options of an imported package. */
 export function hasCatalyst(weapon: Weapon): boolean {
@@ -42,11 +43,17 @@ export function effectRelevantTo(
     // changes an ability, e.g. Knock 'Em Down for Blade Barrage (U6-2 rule G)
     effect.changesAbilityIds !== undefined ||
     // damage of its own, e.g. Storm's Keep
-    effect.modifiers.some((part) => part.type === "periodicDamage") ||
+    hasOwnDamage(effect) ||
     effect.modifiers.some(
       (part) =>
-        (part.type === "multiplier" || part.type === "appliesKeyword") &&
+        part.type === "multiplier" &&
         part.damageSources.some((source) => source !== "weapon"),
+    ) ||
+    // a keyword it applies with the hits of abilities, e.g. Jolt on grenades
+    statusRulesOf(effect).some(
+      (rule) =>
+        rule.on.on === "hit" &&
+        rule.on.filter?.damageSources?.some((source) => source !== "weapon"),
     )
   );
 }

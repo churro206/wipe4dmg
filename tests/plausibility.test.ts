@@ -1304,6 +1304,7 @@ describe("the UI offers what works", () => {
       (effect) =>
         weapons.some((w) => effectRelevantTo(effect, w)) &&
         effect.modifiers.length === 0 &&
+        (effect.rules?.length ?? 0) === 0 &&
         effect.changesAbilityIds === undefined,
     );
     note(

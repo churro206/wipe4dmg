@@ -183,12 +183,18 @@
           "classes": ["titan"]
         }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "appliesKeyword",
-          "keywordId": "volatile",
-          "damageSources": ["grenade", "melee", "super", "classAbility"],
-          "elements": ["void"],
+          "id": "apply-volatile",
+          "on": {
+            "on": "hit",
+            "filter": {
+              "damageSources": ["grenade", "melee", "super", "classAbility"],
+              "elements": ["void"]
+            }
+          },
+          "do": [{ "type": "applyStatus", "status": "volatile" }],
           "source": {
             "name": "Destiny Data Compendium (subclass tabs)",
             "url": "https://destiny2.science/data-compendium",
@@ -245,12 +251,15 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["void"] }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "appliesKeyword",
-          "keywordId": "volatile",
-          "damageSources": ["weapon"],
-          "elements": ["void"],
+          "id": "apply-volatile",
+          "on": {
+            "on": "hit",
+            "filter": { "damageSources": ["weapon"], "elements": ["void"] }
+          },
+          "do": [{ "type": "applyStatus", "status": "volatile" }],
           "source": {
             "name": "Destiny Data Compendium (subclass tabs)",
             "url": "https://destiny2.science/data-compendium",
@@ -490,12 +499,15 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "appliesKeyword",
-          "keywordId": "volatile",
-          "damageSources": ["weapon"],
-          "elements": ["void"],
+          "id": "apply-volatile",
+          "on": {
+            "on": "hit",
+            "filter": { "damageSources": ["weapon"], "elements": ["void"] }
+          },
+          "do": [{ "type": "applyStatus", "status": "volatile" }],
           "source": {
             "name": "Destiny Data Compendium (subclass tabs)",
             "url": "https://destiny2.science/data-compendium",
@@ -532,12 +544,15 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "appliesKeyword",
-          "keywordId": "unravel",
-          "damageSources": ["weapon"],
-          "elements": ["strand"],
+          "id": "apply-unravel",
+          "on": {
+            "on": "hit",
+            "filter": { "damageSources": ["weapon"], "elements": ["strand"] }
+          },
+          "do": [{ "type": "applyStatus", "status": "unravel" }],
           "source": {
             "name": "Destiny Data Compendium (subclass tabs)",
             "url": "https://destiny2.science/data-compendium",
@@ -761,12 +776,15 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["prismatic"] }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "appliesKeyword",
-          "keywordId": "jolt",
-          "damageSources": ["grenade"],
-          "elements": ["arc"],
+          "id": "apply-jolt",
+          "on": {
+            "on": "hit",
+            "filter": { "damageSources": ["grenade"], "elements": ["arc"] }
+          },
+          "do": [{ "type": "applyStatus", "status": "jolt" }],
           "source": {
             "name": "Destiny Data Compendium (subclass tabs)",
             "url": "https://destiny2.science/data-compendium",
@@ -1397,12 +1415,15 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["arc"] }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "appliesKeyword",
-          "keywordId": "jolt",
-          "damageSources": ["grenade"],
-          "elements": ["arc"],
+          "id": "apply-jolt",
+          "on": {
+            "on": "hit",
+            "filter": { "damageSources": ["grenade"], "elements": ["arc"] }
+          },
+          "do": [{ "type": "applyStatus", "status": "jolt" }],
           "source": {
             "name": "Destiny Data Compendium (subclass tabs)",
             "url": "https://destiny2.science/data-compendium",
@@ -1453,12 +1474,15 @@
       "providers": [
         { "kind": "subclass", "slot": "fragment", "subclasses": ["strand"] }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "appliesKeyword",
-          "keywordId": "unravel",
-          "damageSources": ["weapon"],
-          "elements": ["strand"],
+          "id": "apply-unravel",
+          "on": {
+            "on": "hit",
+            "filter": { "damageSources": ["weapon"], "elements": ["strand"] }
+          },
+          "do": [{ "type": "applyStatus", "status": "unravel" }],
           "source": {
             "name": "Destiny Data Compendium (subclass tabs)",
             "url": "https://destiny2.science/data-compendium",
@@ -1811,33 +1835,43 @@
           "classes": ["warlock"]
         }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "periodicDamage",
-          "id": "arc-soul",
-          "element": "arc",
-          "damage": {
-            "value": 163,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Arc Soul (Facet of Courage): Base 163, peak Rate 1.833 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "id": "tick",
+          "on": {
+            "on": "timer",
+            "everyMs": {
+              "value": 1833,
+              "source": {
+                "name": "Aegis Boss Damage, tab Sustained",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-24",
+                "status": "verified",
+                "quote": "Arc Soul (Facet of Courage): Base 163, peak Rate 1.833 s",
+                "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+              }
             }
           },
-          "intervalMs": {
-            "value": 1833,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Arc Soul (Facet of Courage): Base 163, peak Rate 1.833 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "do": [
+            {
+              "type": "damage",
+              "id": "arc-soul",
+              "damage": {
+                "value": 163,
+                "source": {
+                  "name": "Aegis Boss Damage, tab Sustained",
+                  "url": "https://destiny2.science/boss-damage",
+                  "retrieved": "2026-10-24",
+                  "status": "verified",
+                  "quote": "Arc Soul (Facet of Courage): Base 163, peak Rate 1.833 s",
+                  "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+                }
+              },
+              "element": "arc",
+              "damageSource": "keyword"
             }
-          }
+          ]
         }
       ],
       "durationMs": {
@@ -1883,33 +1917,43 @@
           "classes": ["warlock"]
         }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "periodicDamage",
-          "id": "hellion",
-          "element": "solar",
-          "damage": {
-            "value": 466,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Hellion (Ember of Ashes): Base 466, peak Rate 1.317 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "id": "tick",
+          "on": {
+            "on": "timer",
+            "everyMs": {
+              "value": 1317,
+              "source": {
+                "name": "Aegis Boss Damage, tab Sustained",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-24",
+                "status": "verified",
+                "quote": "Hellion (Ember of Ashes): Base 466, peak Rate 1.317 s",
+                "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+              }
             }
           },
-          "intervalMs": {
-            "value": 1317,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Hellion (Ember of Ashes): Base 466, peak Rate 1.317 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "do": [
+            {
+              "type": "damage",
+              "id": "hellion",
+              "damage": {
+                "value": 466,
+                "source": {
+                  "name": "Aegis Boss Damage, tab Sustained",
+                  "url": "https://destiny2.science/boss-damage",
+                  "retrieved": "2026-10-24",
+                  "status": "verified",
+                  "quote": "Hellion (Ember of Ashes): Base 466, peak Rate 1.317 s",
+                  "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+                }
+              },
+              "element": "solar",
+              "damageSource": "keyword"
             }
-          }
+          ]
         }
       ],
       "durationMs": {
@@ -1949,33 +1993,43 @@
           "classes": ["warlock"]
         }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "periodicDamage",
-          "id": "ionic-sentry",
-          "element": "arc",
-          "damage": {
-            "value": 181,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Ionic Sentry (Spark of Frequency, excludes Bolt Charge): Base 181, peak Rate 1 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "id": "tick",
+          "on": {
+            "on": "timer",
+            "everyMs": {
+              "value": 1000,
+              "source": {
+                "name": "Aegis Boss Damage, tab Sustained",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-24",
+                "status": "verified",
+                "quote": "Ionic Sentry (Spark of Frequency, excludes Bolt Charge): Base 181, peak Rate 1 s",
+                "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+              }
             }
           },
-          "intervalMs": {
-            "value": 1000,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Ionic Sentry (Spark of Frequency, excludes Bolt Charge): Base 181, peak Rate 1 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "do": [
+            {
+              "type": "damage",
+              "id": "ionic-sentry",
+              "damage": {
+                "value": 181,
+                "source": {
+                  "name": "Aegis Boss Damage, tab Sustained",
+                  "url": "https://destiny2.science/boss-damage",
+                  "retrieved": "2026-10-24",
+                  "status": "verified",
+                  "quote": "Ionic Sentry (Spark of Frequency, excludes Bolt Charge): Base 181, peak Rate 1 s",
+                  "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+                }
+              },
+              "element": "arc",
+              "damageSource": "keyword"
             }
-          }
+          ]
         }
       ],
       "durationMs": {
@@ -2010,33 +2064,43 @@
           "classes": ["titan"]
         }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "periodicDamage",
-          "id": "storms-keep",
-          "element": "arc",
-          "damage": {
-            "value": 678,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Storm's Keep (max practical Bolt Charge rate): Base 678, peak Rate 1.46 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "id": "tick",
+          "on": {
+            "on": "timer",
+            "everyMs": {
+              "value": 1460,
+              "source": {
+                "name": "Aegis Boss Damage, tab Sustained",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-24",
+                "status": "verified",
+                "quote": "Storm's Keep (max practical Bolt Charge rate): Base 678, peak Rate 1.46 s",
+                "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+              }
             }
           },
-          "intervalMs": {
-            "value": 1460,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Storm's Keep (max practical Bolt Charge rate): Base 678, peak Rate 1.46 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "do": [
+            {
+              "type": "damage",
+              "id": "storms-keep",
+              "damage": {
+                "value": 678,
+                "source": {
+                  "name": "Aegis Boss Damage, tab Sustained",
+                  "url": "https://destiny2.science/boss-damage",
+                  "retrieved": "2026-10-24",
+                  "status": "verified",
+                  "quote": "Storm's Keep (max practical Bolt Charge rate): Base 678, peak Rate 1.46 s",
+                  "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+                }
+              },
+              "element": "arc",
+              "damageSource": "keyword"
             }
-          }
+          ]
         }
       ]
     }
@@ -2067,33 +2131,43 @@
           "classes": ["warlock"]
         }
       ],
-      "modifiers": [
+      "modifiers": [],
+      "rules": [
         {
-          "type": "periodicDamage",
-          "id": "weavers-call",
-          "element": "strand",
-          "damage": {
-            "value": 1120,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Weaver's Call (maximum practical rate, Thread of Evolution): Base 1120, peak Rate 2.15 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "id": "tick",
+          "on": {
+            "on": "timer",
+            "everyMs": {
+              "value": 2150,
+              "source": {
+                "name": "Aegis Boss Damage, tab Sustained",
+                "url": "https://destiny2.science/boss-damage",
+                "retrieved": "2026-10-24",
+                "status": "verified",
+                "quote": "Weaver's Call (maximum practical rate, Thread of Evolution): Base 1120, peak Rate 2.15 s",
+                "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+              }
             }
           },
-          "intervalMs": {
-            "value": 2150,
-            "source": {
-              "name": "Aegis Boss Damage, tab Sustained",
-              "url": "https://destiny2.science/boss-damage",
-              "retrieved": "2026-10-24",
-              "status": "verified",
-              "quote": "Weaver's Call (maximum practical rate, Thread of Evolution): Base 1120, peak Rate 2.15 s",
-              "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+          "do": [
+            {
+              "type": "damage",
+              "id": "weavers-call",
+              "damage": {
+                "value": 1120,
+                "source": {
+                  "name": "Aegis Boss Damage, tab Sustained",
+                  "url": "https://destiny2.science/boss-damage",
+                  "retrieved": "2026-10-24",
+                  "status": "verified",
+                  "quote": "Weaver's Call (maximum practical rate, Thread of Evolution): Base 1120, peak Rate 2.15 s",
+                  "note": "Base is one hit before the factors of Aegis (only Debuff 1.3 and the stat, both left out); peak Rate is the time between two hits at the practical rate of Aegis."
+                }
+              },
+              "element": "strand",
+              "damageSource": "keyword"
             }
-          }
+          ]
         }
       ]
     }

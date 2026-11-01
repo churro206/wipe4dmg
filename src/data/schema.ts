@@ -290,8 +290,9 @@ export const DamageOverTimePart = z.object({
 export type DamageOverTimePart = z.infer<typeof DamageOverTimePart>;
 
 /**
- * Effect part that applies a keyword to the target with every matching hit, e.g. Volatile Rounds
- * (ADR 0015, point 1). The filters work like those of a multiplier part.
+ * Part of an ability that applies a keyword to the target with its hits (until B3b step 4 turns it
+ * into rules); the effects use a rule `on hit → applyStatus` instead. The filters work like those of
+ * a multiplier part.
  */
 export const AppliesKeywordPart = z.object({
   type: z.literal("appliesKeyword"),
@@ -415,21 +416,6 @@ export const MultiplierPart = z.object({
   requiresEffectIds: z.array(z.string()).min(1).optional(),
 });
 export type MultiplierPart = z.infer<typeof MultiplierPart>;
-
-/**
- * Effect part with damage of its own at a fixed rate while the effect is active, e.g. the Bolt
- * Charge discharges of Storm's Keep or the turret of Hellion: the first hit one interval after the
- * start of the window. Generic damage like Bolt Charge: only multipliers for keyword damage apply,
- * as Aegis applies only the debuff to these rows.
- */
-export const PeriodicDamagePart = z.object({
-  type: z.literal("periodicDamage"),
-  id: z.string(), // damage instance id, e.g. "storms-keep"
-  element: Element,
-  damage: SourcedNumber, // per hit, Aegis visual scale, without the factors of Aegis
-  intervalMs: SourcedNumber,
-});
-export type PeriodicDamagePart = z.infer<typeof PeriodicDamagePart>;
 
 // ---------------------------------------------------------------------------------------------
 // Rules: trigger, conditions, actions (docs/architecture.md section 6, ADR 0018, stage B3).
@@ -896,15 +882,14 @@ export const Effect = z
     // A build provides at most one effect of a group itself, e.g. one surge level or one super.
     // Effects from teammates are not limited by groups.
     exclusiveGroup: z.string().optional(),
-    // Passive while the effect is active (docs/architecture.md section 6). Until B3b step 3 this list
-    // also carries appliesKeyword and periodicDamage, which become rules there.
-    // Empty only for an effect that grants a state or changes abilities.
-    modifiers: z.array(
-      z.union([Modifier, AppliesKeywordPart, PeriodicDamagePart]),
-    ),
-    // Rules and buffs of the effect (B3b step 2): the effect owns them and its counters; its rules
-    // fire only inside its windows, and its buffs count only inside them. E.g. the stacks per weapon
-    // hit of Lucky Pants: a buff with `perStack`, granted and raised by rules on `hit`.
+    // Passive while the effect is active (docs/architecture.md section 6).
+    // Empty for an effect that only has rules, buffs, a state or changed abilities.
+    modifiers: z.array(Modifier),
+    // Rules and buffs of the effect (B3b steps 2 and 3): the effect owns them and its counters; its
+    // rules fire only inside its windows, and its buffs count only inside them. E.g. the stacks per
+    // weapon hit of Lucky Pants (a buff with `perStack`, granted and raised by rules on `hit`), a
+    // keyword it applies (`on hit → applyStatus`) or damage of its own at a fixed rate
+    // (`timer everyMs → damage`, e.g. Storm's Keep).
     rules: z.array(Rule).optional(),
     buffs: z.array(BuffDefinition).optional(),
     // States the player has while the effect is active, e.g. Amplified (ADR 0015, U6-2)
@@ -925,12 +910,13 @@ export const Effect = z
   .refine(
     (e) =>
       e.modifiers.length > 0 ||
+      (e.rules?.length ?? 0) > 0 ||
       (e.buffs?.length ?? 0) > 0 ||
       e.grantsStatus !== undefined ||
       e.changesAbilityIds !== undefined,
     {
       message:
-        "an effect needs modifiers, buffs, a state it grants or abilities it changes",
+        "an effect needs modifiers, rules, buffs, a state it grants or abilities it changes",
       path: ["modifiers"],
     },
   );

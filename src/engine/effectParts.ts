@@ -3,7 +3,6 @@
 import {
   CounterId,
   type ActionModifier,
-  type AppliesKeywordPart,
   type Bucket,
   type DamageSource,
   type Effect,
@@ -14,6 +13,7 @@ import {
   type Weapon,
   type WeaponType,
 } from "../data/schema";
+import { statusRulesOf } from "./effectRules";
 import { requireValue } from "./requireValue";
 
 /** Counter that the stacks of a keyword fill (keywords.json, trigger "counter"). */
@@ -25,7 +25,6 @@ export type ActiveParts = {
   multiplierParts: MultiplierPart[];
   statModifiers: StatModifier[];
   actionModifiers: ActionModifier[];
-  keywordParts: AppliesKeywordPart[];
 };
 
 /** What a damage instance is, as far as multiplier parts care. */
@@ -46,7 +45,6 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
   const multiplierParts: MultiplierPart[] = [];
   const statModifiers: StatModifier[] = [];
   const actionModifiers: ActionModifier[] = [];
-  const keywordParts: AppliesKeywordPart[] = [];
 
   for (const effect of effects) {
     const overriddenBuckets = new Set(
@@ -64,19 +62,13 @@ export function activeParts(effects: Effect[], buckets: Bucket[]): ActiveParts {
         actionModifiers.push(part);
         continue;
       }
-      if (part.type === "appliesKeyword") {
-        keywordParts.push(part);
-        continue;
-      }
-      // damage of its own; the simulator reads it from the windows of the effect
-      if (part.type === "periodicDamage") continue;
       if (!bucketIds.has(part.bucketId)) {
         throw new Error(`Unknown bucket "${part.bucketId}"`);
       }
       if (!overriddenBuckets.has(part.bucketId)) multiplierParts.push(part);
     }
   }
-  return { multiplierParts, statModifiers, actionModifiers, keywordParts };
+  return { multiplierParts, statModifiers, actionModifiers };
 }
 
 /** A part without weapon types applies to everything; a part with weapon types only to those weapons. */
@@ -114,6 +106,18 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
     ...effect.modifiers,
     ...(effect.buffs ?? []).flatMap((buff) => buff.modifiers),
   ];
+  // A status its rules apply with weapon hits (e.g. Volatile Rounds)
+  const appliesWithWeapon = statusRulesOf(effect).some((rule) => {
+    const filter = rule.on.on === "hit" ? rule.on.filter : undefined;
+    return (
+      (filter?.damageSources === undefined ||
+        filter.damageSources.includes("weapon")) &&
+      (filter?.elements === undefined ||
+        filter.elements.includes(weapon.element)) &&
+      appliesToWeaponType(filter?.weaponTypes, weapon.weaponType)
+    );
+  });
+  if (appliesWithWeapon) return true;
   return modifiers.some((part) => {
     switch (part.type) {
       case "multiplier":
@@ -138,15 +142,6 @@ export function effectAppliesToWeapon(effect: Effect, weapon: Weapon): boolean {
         const counterId = CounterId.safeParse(part.status);
         return counterId.success && counterIds.has(counterId.data);
       }
-      case "appliesKeyword":
-        return (
-          part.damageSources.includes("weapon") &&
-          (part.elements === undefined ||
-            part.elements.includes(weapon.element)) &&
-          appliesToWeaponType(part.weaponTypes, weapon.weaponType)
-        );
-      case "periodicDamage":
-        return false;
     }
   });
 }

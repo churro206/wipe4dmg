@@ -127,17 +127,24 @@ export function coverageMarkdown(
             text: `${part.status} ×${part.factor.value}`,
             sources: "weapon",
           };
-        case "appliesKeyword":
-          return { text: "Applies a keyword", sources: "weapon" };
-        case "periodicDamage":
-          return { text: `Own damage: ${part.id}`, sources: "own damage" };
       }
     });
+    // what its rules do: a keyword it applies, damage of its own
+    const ruleEntries = (effect.rules ?? []).flatMap((rule) =>
+      rule.do.flatMap((action) =>
+        action.type === "applyStatus" && rule.on.on === "hit"
+          ? [{ text: "Applies a keyword", sources: "weapon" }]
+          : action.type === "damage" && rule.on.on === "timer"
+            ? [{ text: `Own damage: ${action.id}`, sources: "own damage" }]
+            : [],
+      ),
+    );
+    multipliers.push(...ruleEntries);
     const duration = effect.durationMs?.value
       ? `${effect.durationMs.value / 1000} s`
       : "whole phase or Rotation";
     lines.push(
-      `| ${effect.name} | ${[...new Set(effect.modifiers.map((p) => (p.type === "multiplier" ? p.bucketId : "–")))].join(", ")} | ${multipliers.map((m) => m.text).join("; ")} | ${[...new Set(multipliers.map((m) => m.sources))].join("; ")} | ${duration} |`,
+      `| ${effect.name} | ${[...new Set([...effect.modifiers.map((p) => (p.type === "multiplier" ? p.bucketId : "–")), ...ruleEntries.map(() => "–")])].join(", ")} | ${multipliers.map((m) => m.text).join("; ")} | ${[...new Set(multipliers.map((m) => m.sources))].join("; ")} | ${duration} |`,
     );
   }
   return lines.join("\n") + "\n";
