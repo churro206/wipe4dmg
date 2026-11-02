@@ -420,19 +420,6 @@
     }
   },
   {
-    "weapon": "Salvation's Grip",
-    "reason": "Ungeladen ist optimal (mehr Schaden pro Sekunde als geladen); Aegis Sustained „uncharged“ (Base 795 = Weapons 794,9).",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "salvation-s-grip-uncharged",
-        "text": "2117ms reload"
-      }
-    ],
-    "base": "grenade-launcher-salvation-s-grip",
-    "timing": { "from": "Aegis", "row": "salvation-s-grip-uncharged" }
-  },
-  {
     "weapon": "Black Talon",
     "reason": "Aegis Sustained zählt Munition (73), der Grundwert gilt pro Combo „2H2L“ (3141): 9 Combos plus ein Heavy in 25,1 s; der letzte Heavy fällt weg. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
     "quotes": [

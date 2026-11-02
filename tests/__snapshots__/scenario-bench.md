@@ -8,7 +8,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 - **Delta pairs (check set): 1 of 3 within 2 percentage points**
 - Rank (check set): Spearman 0.96 over 7 rows
 - Absolute, information only: within ±3 % 2 of 7 (check set), 125 of 181 (all counted rows, mostly Eichung)
-- Rows: 183 scenarios (32 by hand, 151 generated); fitted 132; calibration set 42; check set 7; not counted 2; core cannot run 0
+- Rows: 183 scenarios (32 by hand, 151 generated); fitted 133; calibration set 42; check set 7; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -56,7 +56,7 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | polaris-lance | scorch | 2543 | 2490 | −2.1 % | fitted | calibration |  |
 | polaris-lance-ember | scorch | 1906 | 1872 | −1.8 % |  | calibration |  |
 | salvation-s-grip | base | 796 | 795 | −0.1 % | fitted | calibration |  |
-| salvation-s-grip-charged | parts | 15157 | 9539 | −37.1 % |  | calibration | not counted: Aegis notes "insane number variance" |
+| salvation-s-grip-charged | parts | 15157 | 9539 | −37.1 % | fitted | calibration | not counted: Aegis notes "insane number variance" |
 | salvation-s-grip-hail-the-storm | factor | 17114 | 9539 | −44.3 % |  | calibration | not counted: Aegis notes "insane number variance" |
 | still-hunt | base | 658 | 658 | +0.1 % | fitted | calibration |  |
 | still-hunt-caydes-retribution | factor | 5811 | 5811 | −0.0 % | fitted | calibration |  |
@@ -127,7 +127,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Weapons | 417 | 181 | 43 % | 132 | 7 | 0.96 | 3/3 | 1 of 3 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
-| Heavy | 95 | 19 | 20 % | 0 | 19 | 1.00 | 3/3 | 5 of 5 |
+| Heavy | 95 | 20 | 21 % | 0 | 20 | 1.00 | 3/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 0 | 10 | 0.99 | 3/3 | 0 of 0 |
 | Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
@@ -199,6 +199,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Heavy | sustained-one-thousand-voices-ember-of-ashes-catalyst-particle-reconstruction | 97543 | 98923 | +1.4 % |
 | Heavy | sustained-one-thousand-voices-ember-of-ashes-particle-reconstruction | 74750 | 75241 | +0.7 % |
 | Heavy | sustained-one-thousand-voices-particle-reconstruction | 63705 | 63638 | −0.1 % |
+| Heavy | sustained-salvation-s-grip-uncharged | 46806 | 46806 | +0.0 % |
 | Heavy | sustained-service-of-luzaku | 110752 | 110752 | +0.0 % |
 | Heavy | sustained-sleeper-simulant | 87747 | 87747 | +0.0 % |
 | Heavy | sustained-the-colony | 49096 | 47133 | −4.0 % |
@@ -267,7 +268,7 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - max distance: 2
 - … and 22 more
 
-### Heavy (27 rows)
+### Heavy (26 rows)
 
 - Lucent Blades x3: 9
 - Solar Fulmination: 3
@@ -281,10 +282,10 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - 4L1H1R combo: 1
 - 9 ammo consumed: 1
 - body: 1
-- charged: 1
 - excludes Bolt Charge: 1
 - Hail the Storm: 1
-- … and 19 more
+- Harsh Refraction: 1
+- … and 17 more
 
 ### Special (34 rows)
 

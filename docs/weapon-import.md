@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **130 Pakete**, 7 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **129 Pakete**, 8 Items, 4 Lücken.
 
 ## Pakete
 
@@ -94,7 +94,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Revision Zero | pulseRifle | kinetic | burst - heavy 2-burst mode, Vorpal Weapon (1 Shot) | 76,2 | Quantum |  | 26 | 1,16 s | – | 450 → 324 | 17,4 % | Override: Aegis misst den schweren 2er-Burst mit Vorpal Weapon (wipe 2298 = 2 × 1149); pro Kugel 76,2 gegen Quantum 64 ohne Vorpal (×1,15 = 73,6); Aegis gilt. Catalyst: von vier Refits ist Fourth Time's The Charm der einzige, der am Boss wirkt (4 Precision Hits laden 2 Schuss nach); Timing aus Quantums „2-burst, mix, FTTC“ (Magazin 50 statt 26).; Aegis misst einen Burst aus 2 Kugeln (Override); Paket pro Kugel; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-pulse-rifle-revision-zero-2-burst (Override); Timing nur aus Quantum; abgeleitete Feuerrate 324 statt 450 rpm; Skala weicht um 17.4 % ab; Aegis gilt (Override); Katalysator-Timing: ∞ Shots, Magazin 50, Zeit bis leer – |
 | Riskrunner | submachineGun | arc | keine (1 Shot) | 27,0 | Quantum |  | 47 | 1,19 s | – | 900 → 900 | 3,4 % | Override: Aegis 27,0 gegen Quantum 28 (3,4 %); Aegis gilt.; Timing aus Zeile primaries-submachine-gun-riskrunner (Override); Timing nur aus Quantum; Skala weicht um 3.4 % ab; Aegis gilt (Override) |
 | Ruinous Effigy | traceRifle | void | keine (1 Shot) | 40,1 | Quantum | 470 | 94 | 1,44 s | 36,8 s | 900 → 907 | 0,4 % | Timing nur aus Quantum |
-| Salvation's Grip | grenadeLauncher | stasis | keine (1 Shot) | 794,9 | Aegis | 25 | 8 | 2,12 s | 19,3 s | – → 97 | 0,0 % | Override: Ungeladen ist optimal (mehr Schaden pro Sekunde als geladen); Aegis Sustained „uncharged“ (Base 795 = Weapons 794,9).; Timing aus Zeile salvation-s-grip-uncharged (Override); Timing nur aus Aegis |
 | Service of Luzaku | machineGun | strand | keine (1 Shot) | 156,7 | Quantum | 300 | 47 | 3,57 s | 70,3 s | 360 → 367 | 0,2 % | Timing nur aus Quantum |
 | Skyburner's Oath | scoutRifle | solar | ADS, Cabal (1 Shot) | 114,3 | Quantum |  | 20 | 1,24 s | – | 150 → 150 | 31,2 % | Override: ADS ohne Ignitions: Aegis 114,3 = Quantum „ADS“ 116 (1,5 %); „Cabal“ ändert diesen Wert also nicht.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-skyburner-s-oath-ads (Override); Timing nur aus Quantum; Skala weicht um 31.2 % ab; Aegis gilt (Override) |
 | Slayer's Fang | shotgun | void | average, includes submunitions, Nightsworn ticks include weaken (9 Shots) | 1.048,6 | Quantum | 27 | 10 | 1,41 s | 23,4 s | 70 → 76 | 0,0 % | herausgerechnet: Weaken ×1,150 (wirkt nur, wenn der Build ihn hat); Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
@@ -153,6 +152,7 @@ Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf di
 | Heirloom | `src/data/items/weapons/heirloom.json` | – |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
+| Salvation's Grip | `src/data/items/weapons/salvation-s-grip.json` | – |
 | The Lament | `src/data/items/weapons/the-lament.json` | – |
 | Truth | `src/data/items/weapons/truth.json` | – |
 | Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | – |
@@ -267,7 +267,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Revision Zero | primary | Timing | Magazin 26 → 50, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 324 → 324 | Grants the Under Pressure trait: |
 | Riskrunner | primary | keine | – | Grants 30 Range. |
 | Ruinous Effigy | special | Schaden | – | Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] in |
-| Salvation's Grip | heavy | keine | – | Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor. |
 | Service of Luzaku | heavy | keine | – | Teeming Nests can be harvested into a collectible Tangle after spawning 6 Threadlings. This destroys the nest. |
 | Skyburner's Oath | primary | unbekannt | – | Grants 20 Reload Speed. |
 | Slayer's Fang | special | unbekannt | – | Grants the Stats For All trait: |
@@ -388,7 +387,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Riskrunner | Arc Conductor, no chains | nicht modelliert: no chains |
 | Riskrunner | average, Arc Conductor, Peacekeepers | Exotic-Rüstung: Peacekeepers |
 | Ruinous Effigy |  | gleiche Annahmen wie die Basiszeile |
-| Salvation's Grip | average, charged | gleiche Annahmen wie die Basiszeile |
+| Salvation's Grip | average, charged | the item file uses another row |
 | Salvation's Grip | average, charged, Hail the Storm | Artefakt: Hail the Storm |
 | Skyburner's Oath | average, hipfire, with ignitions, Burning Ambition, Cabal | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Skyburner's Oath | average, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Cabal | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
@@ -475,7 +474,6 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 | Celestial Nighthawk | Exotic-Rüstung | Still Hunt |
 | Fated Missile | nicht modelliert | The Jade Rabbit |
 | Grenades Prepped | nicht modelliert | Quicksilver Storm |
-| Hail the Storm | Artefakt | Salvation's Grip |
 | Harsh Refraction | Artefakt | Ager's Scepter |
 | marked | nicht modelliert | Finality's Auger |
 | no chains | nicht modelliert | Riskrunner |

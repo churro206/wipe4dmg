@@ -1037,6 +1037,31 @@ describe("Choir of One modes as playstyles (B6)", () => {
   });
 });
 
+describe("Salvation's Grip charge as playstyle (B6)", () => {
+  const grip = (playstyle?: string) =>
+    run({ subclass: "stasis", damagePhaseSeconds: 120, ...(playstyle ? { playstyle } : {}) }, weaponById("salvation-s-grip"));
+
+  it("Salvation's Grip: 25 shots either way; charged takes about twice as long and deals about ×1.6 per shot", () => {
+    const uncharged = grip();
+    const charged = grip("charged");
+    const lastS = (r: SimulationResult) => r.shots.at(-1)!.timeMs / 1000;
+    const ratio = charged.totalDamage / uncharged.totalDamage;
+    note(
+      "Salvation's Grip 120 s: Schüsse, letzter Schuss, Verhältnis geladen ÷ ungeladen",
+      `${uncharged.shots.length} / ${charged.shots.length}, ${fmt(lastS(uncharged))} s / ${fmt(lastS(charged))} s, ×${fmt(ratio)}`,
+      "Aegis Sustained 19,3 s / 35,5 s, Gesamtschaden 46 806 / 83 906 (mit Hail the Storm; ohne ×1,59 pro Schuss laut Weapons)",
+    );
+    expect(uncharged.shots.length).toBe(25);
+    expect(charged.shots.length).toBe(25);
+    expect(lastS(uncharged)).toBeGreaterThan(16);
+    expect(lastS(uncharged)).toBeLessThan(20);
+    expect(lastS(charged)).toBeGreaterThan(28);
+    expect(lastS(charged)).toBeLessThan(36);
+    expect(ratio).toBeGreaterThan(1.3);
+    expect(ratio).toBeLessThan(1.9);
+  });
+});
+
 describe("sword combos as playstyles (B6)", () => {
   const lament = (fields: Partial<Build>) =>
     run({ subclass: "solar", damagePhaseSeconds: 30, ...fields }, weaponById("the-lament"));

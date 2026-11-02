@@ -985,7 +985,7 @@
         "name": "Salvation's Grip",
         "group": "Power",
         "inGame": "Cryocannon: Deals 25% increased damage to Frozen Enemies and always destroys Stasis Crystals on hit.\nCharging this weapon makes your next shot create a triangular pattern of Stasis Crystals on impact with the top pointed towards you.\nStasis Crystals spread outwards as one Small Crystal at the front, two Medium Crystals in the middle, then three Large Crystals in the back.\nShatter Shot: Uncharged shots destroy all Stasis Crystals in a ? meter radius on hit.\nShattering three Stasis Crystals within ? seconds of each instantly refills the magazine.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:salvation-s-grip",
         "status": "full"
       },

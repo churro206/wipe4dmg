@@ -14657,30 +14657,30 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file salvation-s-grip",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: the time to empty counts from the first shot (Aegis Sustained)"
       }
     },
     "fireRateRpm": {
       "value": 97.245,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 19.308 s − 3 reloads × 2.117 s) ÷ 21 intervals within magazines (ADR 0013)"
+        "status": "fitted",
+        "row": "salvation-s-grip-uncharged",
+        "note": "Derived: 60 / $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds (seconds per shot to shots per minute); $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds = 0.617 (Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged)"
       }
     },
     "magazine": {
       "value": 8,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-no-charge-spamming",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "verified",
+        "note": "magazine"
       }
     },
     "totalShots": {
@@ -14689,18 +14689,172 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "salvation-s-grip-uncharged",
+        "note": "shots"
       }
     },
     "reloadTimeMs": {
       "value": 1500,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 2.117 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "fitted",
+        "row": "salvation-s-grip-uncharged",
+        "note": "Derived: $aegisSustained[salvation-s-grip-uncharged].reloadMs - 1000 * $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds (Aegis reloads right after the last shot, the simulator waits one interval first, so one interval less); $aegisSustained[salvation-s-grip-uncharged].reloadMs = 2117 (Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged); $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds = 0.617 (Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Grenade",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file salvation-s-grip",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 794.941,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "grenade-launcher-salvation-s-grip",
+            "note": "perShot 794.941 of the row (Full Modifiers 3.16 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file salvation-s-grip",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file salvation-s-grip",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-charged",
+        "name": "Charged shot, impact and crystals",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file salvation-s-grip",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1262.082,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip-average-charged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "grenade-launcher-salvation-s-grip-average-charged",
+            "note": "perShot 1262.082 of the row (Full Modifiers 3.16 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file salvation-s-grip",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file salvation-s-grip",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "charged", "not": true }],
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-charged",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "charged" }],
+        "do": [{ "type": "spawn", "part": "shot-charged" }]
+      },
+      {
+        "id": "rate-charged",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "charged" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 46.765,
+                "source": {
+                  "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-charged-hail-the-storm",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "salvation-s-grip-charged-hail-the-storm",
+                  "note": "Derived: 60 / $aegisSustained[salvation-s-grip-charged-hail-the-storm].peakRateSeconds (seconds per charged shot (charge time inside) to shots per minute; Aegis measures it only with Hail the Storm); $aegisSustained[salvation-s-grip-charged-hail-the-storm].peakRateSeconds = 1.283 (Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-charged-hail-the-storm)"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "cryocannon",
+        "name": "Cryocannon",
+        "description": "[Shoot]  : Hold to charge; release to fire.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "playstyles": [
+      { "id": "uncharged", "label": "Uncharged" },
+      { "id": "charged", "label": "Charged" }
+    ],
+    "catalyst": {
+      "name": "Rimestealer, Salvation's Grip Catalyst",
+      "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -14712,82 +14866,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-salvation-s-grip",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 794.941,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-salvation-s-grip",
-            "note": "visual Value; assumptions: none"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-salvation-s-grip"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-salvation-s-grip"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "cryocannon",
-        "name": "Cryocannon",
-        "description": "[Shoot]  : Hold to charge; release to fire.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Rimestealer, Salvation's Grip Catalyst",
-      "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "service-of-luzaku",

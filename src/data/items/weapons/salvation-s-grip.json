@@ -1,0 +1,81 @@
+{
+  "id": "salvation-s-grip",
+  "kind": "exoticWeapon",
+  "name": "Salvation's Grip",
+  "texts": [
+    { "source": "clarity", "entry": "Cryocannon", "hash": "38a9d4ae" },
+    { "source": "clarity", "entry": "Salvation's Grip Catalyst", "hash": "3efc354e" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file salvation-s-grip",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: the time to empty counts from the first shot (Aegis Sustained)"
+    }
+  },
+  "fireRateRpm": {
+    "expr": "60 / $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds",
+    "note": "seconds per shot to shots per minute"
+  },
+  "magazine": "$quantum[heavies-grenade-launcher-salvation-s-grip-no-charge-spamming].magazine",
+  "totalShots": "$aegisSustained[salvation-s-grip-uncharged].shots",
+  "reloadTimeMs": {
+    "expr": "$aegisSustained[salvation-s-grip-uncharged].reloadMs - 1000 * $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds",
+    "note": "Aegis reloads right after the last shot, the simulator waits one interval first, so one interval less"
+  },
+  "catalyst": {
+    "name": "Rimestealer, Salvation's Grip Catalyst",
+    "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
+    "effect": "none"
+  },
+  "playstyles": [
+    { "id": "uncharged", "label": "Uncharged" },
+    { "id": "charged", "label": "Charged" }
+  ],
+  "parts": {
+    "shot": {
+      "name": "Grenade",
+      "damage": "$aegis[grenade-launcher-salvation-s-grip].perShot",
+      "delivery": "impact"
+    },
+    "shot-charged": {
+      "name": "Charged shot, impact and crystals",
+      "damage": "$aegis[grenade-launcher-salvation-s-grip-average-charged].perShot",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "charged", "not": true }],
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-charged",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "charged" }],
+      "do": [{ "type": "spawn", "part": "shot-charged" }]
+    },
+    {
+      "id": "rate-charged",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "charged" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "60 / $aegisSustained[salvation-s-grip-charged-hail-the-storm].peakRateSeconds",
+              "note": "seconds per charged shot (charge time inside) to shots per minute; Aegis measures it only with Hail the Storm"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
