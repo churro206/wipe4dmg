@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **132 Pakete**, 5 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **131 Pakete**, 6 Items, 4 Lücken.
 
 ## Pakete
 
@@ -136,7 +136,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Vexcalibur | glaive | void | projectile (1 Shot) | 573,2 | Quantum | 33 | 6 | 1,57 s | 28,1 s | 80 → 95 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Vigilance Wing | pulseRifle | kinetic | burst (1 Shot) | 34,5 | Quantum |  | 50 | 1,16 s | – | 530 → 530 | 1,4 % | Aegis misst einen Burst aus 5 Kugeln (wipe 2.605 = 5 × 521); Paket pro Kugel wie Quantums Magazin; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Wavesplitter | traceRifle | void | average, power cycling, Detonator Beam (100 Shots) | 39,0 | Quantum | 500 | 100 | 1,44 s | 38,8 s | 900 → 906 | 0,0 % | Override: Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-wavesplitter-average (Override); Timing nur aus Quantum; Schaden pro Shot 39,0 (Override) |
-| Whirling Ovation | rocketLauncher | strand | full charge (1 Shot) | 6.344,3 | Aegis | 7 | 7 | 0,00 s | 41,9 s | – → 9 | 0,0 % | Override: Optimal voll geladen (Sustained Base 6344 = Weapons „full charge“ 6344,3): 7 Raketen in 41,9 s. Timing mit Argent Ordnance (Reload Speed) wie bei Aegis. Ladestufen als Spielweise, Schaden aus den Weapons-Zeilen; Takt hergeleitet: Zyklus voll 60 ÷ 8,592 = 6,983 s, davon Laden 4,85 s (Compendium, 0 % Anticipation wie Aegis „no Anticipation“), Rest 2,133 s je Schuss. Laden linear angenommen: 1/3 ab 34 % = 1,649 s → 3,782 s, 2/3 ab 67 % = 3,250 s → 5,383 s, ohne Ladung 2,133 s.; 2/3 charge: Schuss 4.212,2 aus rocket-launcher-whirling-ovation-2-3-charge, alle 5,383 s (Override); 1/3 charge: Schuss 3.115,6 aus rocket-launcher-whirling-ovation-1-3-charge, alle 3,782 s (Override); No charge: Schuss 1.015,3 aus rocket-launcher-whirling-ovation-no-charge, alle 2,133 s (Override); Timing aus Zeile whirling-ovation-no-anticipation-fully-charged-argent-ordnance (Override); Timing nur aus Aegis |
 | Whisper of the Worm | sniperRifle | solar | keine (1 Shot) | 849,9 | Quantum | 38 | 38 | 1,98 s | 31,7 s | 72 → 70 | 0,0 % | Aegis misst nur mit Katalysator: Basis = 1.250,9 ÷ 1,472 (Quantum mit / ohne Katalysator); Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing nur aus Quantum |
 | Wicked Implement | scoutRifle | stasis | average, with manual shatters (60 Shots) | 93,3 | Quantum |  | 20 | 1,24 s | – | 260 → 260 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Winterbite | glaive | stasis | average, projectile, with shatter (18 Shots) | 1.469,0 | Aegis | 17 | 4 | 1,50 s | 24,0 s | 45 → 40 | 0,0 % | ⚠ Timing: Aegis 17 Shots in 24,0 s, Quantum 18 Shots in 23,9 s; Aegis gilt |
@@ -156,6 +155,7 @@ Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf di
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
 | The Lament | `src/data/items/weapons/the-lament.json` | – |
 | Truth | `src/data/items/weapons/truth.json` | – |
+| Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | – |
 
 ## Optionen
 
@@ -308,7 +308,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Vexcalibur | special | unbekannt | – | Grants the Grave Robber trait: |
 | Vigilance Wing | primary | keine | – | Grants the Ensemble trait: |
 | Wavesplitter | special | keine | – | Grants 10 Range and 30 Ammo Generation. |
-| Whirling Ovation | heavy | keine | – | Fully charged rockets overpenetrate through Minor and Elite combatants, leaving a Solar Grenade behind at each combatant |
 | Whisper of the Worm | heavy | Schaden | – | Grants 30 Reload Speed. |
 | Wicked Implement | primary | keine | – | Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity. |
 | Winterbite | heavy | keine | – | Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor. |
@@ -425,9 +424,9 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Truth |  | the item file uses another row |
 | Turncoat | Overwhelming Power | nicht modelliert: Overwhelming Power |
 | Wavesplitter | average, Supercharged Battery, Detonator Beam | Katalysator: Detonator Beam |
-| Whirling Ovation | no charge | ohne full charge der Basiszeile |
-| Whirling Ovation | 2/3 charge | ohne full charge der Basiszeile |
-| Whirling Ovation | 1/3 charge | ohne full charge der Basiszeile |
+| Whirling Ovation | no charge | the item file uses another row |
+| Whirling Ovation | 2/3 charge | the item file uses another row |
+| Whirling Ovation | 1/3 charge | the item file uses another row |
 | Witherhoard | ground pool | ohne direct impact der Basiszeile |
 | Wolfsbane | Honed Edge, Jagged Edge, Nano-Assault HLLHLLHLLHLLH, Burning Ambition, includes ignition | gleiche Annahmen wie die Basiszeile |
 | Wolfsbane | average, Honed Edge, Jagged Edge, light, Burning Ambition, includes ignition | ohne Nano-Assault HLLHLLHLLHLLH der Basiszeile |

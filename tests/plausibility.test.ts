@@ -996,7 +996,7 @@ describe("playstyles (2026-10-30, ADR 0017 S4)", () => {
 
   it("Whirling Ovation: full charge deals the most with its 7 rockets, a lower charge fires them faster", () => {
     const full = ovation();
-    const lower = ["two-thirds-charge", "one-third-charge", "no-charge"].map(ovation);
+    const lower = ["2-3-charge", "1-3-charge", "no-charge"].map(ovation);
     note(
       "Whirling Ovation 60 s: voll / 2/3 / 1/3 / ohne",
       [full, ...lower].map((r) => Math.round(r.totalDamage)).join(" / "),

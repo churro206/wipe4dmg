@@ -394,10 +394,10 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Truth, average, Prototype Truthseeker | im Modell | base row of the package |
 | Truth, average, Prototype Truthseeker, Reaper's Tithe x4 | im Modell | option "Reaper's Tithe x4" |
 | Two-Tailed Fox, average | im Modell | base row of the package |
-| Whirling Ovation, no charge | übersprungen | ohne full charge der Basiszeile |
+| Whirling Ovation, no charge | übersprungen | the item file uses another row |
 | Whirling Ovation, full charge | im Modell | base row of the package |
-| Whirling Ovation, 2/3 charge | übersprungen | ohne full charge der Basiszeile |
-| Whirling Ovation, 1/3 charge | übersprungen | ohne full charge der Basiszeile |
+| Whirling Ovation, 2/3 charge | übersprungen | the item file uses another row |
+| Whirling Ovation, 1/3 charge | übersprungen | the item file uses another row |
 | Aggressive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Balanced heat weapon - 260RPM primary | übersprungen | legendary frame (owner 2026-10-25) |
 | Dead Man's Tale, Vorpal Weapon | im Modell | base row of the package |
