@@ -1435,50 +1435,170 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file black-talon",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: a sword has no charge; the time to empty counts from the first combo (Aegis Sustained)"
       }
     },
     "fireRateRpm": {
-      "value": 21.499,
+      "value": 21.818,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 25.117 s − 0 reloads × 0 s) ÷ 72 intervals within magazines (ADR 0013); 9 shots in 25.117 s (override)"
+        "status": "fitted",
+        "row": "black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
+        "note": "Derived: 60 / $aegisSustained[black-talon-2h2l-combo-lucent-blades-x3-argent-blade].peakRateSeconds (seconds per combo to combos per minute; one shot of the model is one combo (2H2L)); $aegisSustained[black-talon-2h2l-combo-lucent-blades-x3-argent-blade].peakRateSeconds = 2.75 (Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade)"
       }
     },
     "magazine": {
       "value": 9,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified"
+        "name": "Item file black-talon",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: Aegis Sustained row black-talon-2h2l-combo-lucent-blades-x3-argent-blade: \"9 combos + 1H\" (the row counts ammunition, 73); the last heavy falls away"
       }
     },
     "totalShots": {
       "value": 9,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified"
+        "name": "Item file black-talon",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: the same 9 combos"
       }
     },
     "reloadTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "name": "Item file black-talon",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: the magazine is the whole ammunition, a sword does not reload (Aegis Sustained, noReloads)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "heavy",
+        "name": "Heavy projectile",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file black-talon",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1177.549,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-single-projectile",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "sword-black-talon-single-projectile",
+            "note": "perShot 1177.549 of the row (Full Modifiers 3.16 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file black-talon",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file black-talon",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "light",
+        "name": "Light attack",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file black-talon",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 392.727,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "sword-black-talon-light",
+            "note": "perShot 392.727 of the row (Full Modifiers 3.16 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file black-talon",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file black-talon",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [
+          { "type": "spawn", "part": "heavy" },
+          { "type": "spawn", "part": "heavy" },
+          { "type": "spawn", "part": "light" },
+          { "type": "spawn", "part": "light" }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "crow-s-wings",
+        "name": "Crow's Wings",
+        "description": "[Heavy Attack]  : Fire a Heavy projectile attack that suppresses targets. Hitting a target already suppressed spreads the effect to nearby targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Reversal, Black Talon Catalyst",
+      "description": "Due to an unresolved bug, this catalyst does not function.\nThe intended behavior was that damage against Void-Debuffed enemies is increased per unique Void-Debuff applied to the target, at a rate of 10% per debuff.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -1490,82 +1610,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-black-talon-light",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 3141,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-black-talon-light",
-            "note": "visual Value; assumptions: light"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-black-talon-light"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-black-talon-light",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-black-talon-light"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "crow-s-wings",
-        "name": "Crow's Wings",
-        "description": "[Heavy Attack]  : Fire a Heavy projectile attack that suppresses targets. Hitting a target already suppressed spreads the effect to nearby targets.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Reversal, Black Talon Catalyst",
-      "description": "Due to an unresolved bug, this catalyst does not function.\nThe intended behavior was that damage against Void-Debuffed enemies is increased per unique Void-Debuff applied to the target, at a rate of 10% per debuff.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "borealis",

@@ -857,7 +857,7 @@
         "name": "Black Talon",
         "group": "Power",
         "inGame": "Crow's Wings: Intrinsically deals 30% increased damage to Minor combatants.\nCharged Heavy Attacks consume 50% Sword Energy to launch a Suppressing Void projectile.\nProjectile hits on Suppressed targets Suppresses nearby enemies in an 8 meter radius.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:black-talon",
         "status": "full"
       },

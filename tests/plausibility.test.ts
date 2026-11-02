@@ -1062,6 +1062,24 @@ describe("Salvation's Grip charge as playstyle (B6)", () => {
   });
 });
 
+describe("Black Talon combo from its Aegis rows (B6)", () => {
+  it("Black Talon: one shot is a 2H2L combo of two heavy projectiles and two light attacks (Aegis base 3141)", () => {
+    const r = run({ subclass: "void", damagePhaseSeconds: 60 }, weaponById("black-talon"));
+    const lastS = r.shots.at(-1)!.timeMs / 1000;
+    const perCombo = r.totalDamage / r.shots.length;
+    note(
+      "Black Talon 60 s: Schüsse (Combos), letzter Schuss, Schaden pro Combo",
+      `${r.shots.length}, ${fmt(lastS)} s, ${fmt(perCombo)}`,
+      "Aegis Sustained 9 Combos + 1H in 25,1 s, Grundwert 3141 pro Combo (vor Buffs)",
+    );
+    // Without buffs the combo is 2 × 1177.5 + 2 × 392.7 = 3141, plus Void's own multipliers
+    expect(perCombo).toBeGreaterThan(3000);
+    expect(r.shots.length).toBe(9);
+    expect(lastS).toBeGreaterThan(20);
+    expect(lastS).toBeLessThan(26);
+  });
+});
+
 describe("sword combos as playstyles (B6)", () => {
   const lament = (fields: Partial<Build>) =>
     run({ subclass: "solar", damagePhaseSeconds: 30, ...fields }, weaponById("the-lament"));

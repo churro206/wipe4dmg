@@ -1,0 +1,78 @@
+{
+  "id": "black-talon",
+  "kind": "exoticWeapon",
+  "name": "Black Talon",
+  "texts": [
+    { "source": "clarity", "entry": "Crow's Wings", "hash": "45c9fc03" },
+    { "source": "clarity", "entry": "Black Talon Catalyst", "hash": "439068b8" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file black-talon",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: a sword has no charge; the time to empty counts from the first combo (Aegis Sustained)"
+    }
+  },
+  "fireRateRpm": {
+    "expr": "60 / $aegisSustained[black-talon-2h2l-combo-lucent-blades-x3-argent-blade].peakRateSeconds",
+    "note": "seconds per combo to combos per minute; one shot of the model is one combo (2H2L)"
+  },
+  "magazine": {
+    "value": 9,
+    "source": {
+      "name": "Item file black-talon",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: Aegis Sustained row black-talon-2h2l-combo-lucent-blades-x3-argent-blade: \"9 combos + 1H\" (the row counts ammunition, 73); the last heavy falls away"
+    }
+  },
+  "totalShots": {
+    "value": 9,
+    "source": {
+      "name": "Item file black-talon",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: the same 9 combos"
+    }
+  },
+  "reloadTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file black-talon",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: the magazine is the whole ammunition, a sword does not reload (Aegis Sustained, noReloads)"
+    }
+  },
+  "catalyst": {
+    "name": "Reversal, Black Talon Catalyst",
+    "description": "Due to an unresolved bug, this catalyst does not function.\nThe intended behavior was that damage against Void-Debuffed enemies is increased per unique Void-Debuff applied to the target, at a rate of 10% per debuff.",
+    "effect": "none"
+  },
+  "parts": {
+    "heavy": {
+      "name": "Heavy projectile",
+      "damage": "$aegis[sword-black-talon-single-projectile].perShot",
+      "delivery": "impact"
+    },
+    "light": {
+      "name": "Light attack",
+      "damage": "$aegis[sword-black-talon-light].perShot",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [
+        { "type": "spawn", "part": "heavy" },
+        { "type": "spawn", "part": "heavy" },
+        { "type": "spawn", "part": "light" },
+        { "type": "spawn", "part": "light" }
+      ]
+    }
+  ]
+}

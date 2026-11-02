@@ -420,25 +420,6 @@
     }
   },
   {
-    "weapon": "Black Talon",
-    "reason": "Aegis Sustained zählt Munition (73), der Grundwert gilt pro Combo „2H2L“ (3141): 9 Combos plus ein Heavy in 25,1 s; der letzte Heavy fällt weg. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
-        "text": "9 combos + 1H"
-      }
-    ],
-    "aegisWins": true,
-    "perShotFromTiming": true,
-    "timing": {
-      "from": "Aegis",
-      "row": "black-talon-2h2l-combo-lucent-blades-x3-argent-blade",
-      "noReloads": true,
-      "shots": 9
-    }
-  },
-  {
     "weapon": "Ergo Sum",
     "reason": "Lightweight Frame mit Unplanned Reprieve, 1H2L: Grundwert pro Combo 3293 (Aegis Sustained, ohne den 5 % Transcendence-Bonus: Weapons 3458,1 ÷ 1,05 = 3293), 10 Combos plus ein Heavy in 20,4 s. Pack Hunter gibt nur Handling und Reload neben Verbündeten. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
     "quotes": [

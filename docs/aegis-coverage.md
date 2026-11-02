@@ -523,8 +523,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Aggressive frame, Enduring Blade, Enhanced Impact, 78 impact, heavy | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive frame, Enduring Blade, 74 impact, light | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive frame, Enduring Blade, 74 impact, heavy | übersprungen | legendary frame (owner 2026-10-25) |
-| Black Talon, light | im Modell | base row of the package |
-| Black Talon, single projectile | übersprungen | ohne light der Basiszeile |
+| Black Talon, light | übersprungen | the item file uses another row |
+| Black Talon, single projectile | im Modell | base row of the package |
 | Caster frame, Jagged Edge, 68 impact, light | übersprungen | legendary frame (owner 2026-10-25) |
 | Caster frame, Jagged Edge, 68 impact, heavy | übersprungen | legendary frame (owner 2026-10-25) |
 | Caster frame, Jagged Edge, Enhanced Impact, 72 impact, light | übersprungen | legendary frame (owner 2026-10-25) |
