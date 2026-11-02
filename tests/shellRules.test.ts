@@ -32,6 +32,7 @@ describe("shell rules hook", () => {
     "npm run probe | grep Truth",
     "npm run probe; git status",
     "node tmp/x.ts <<EOF",
+    'git grep -n "chargeTimeMs" -- src/data',
   ])("blocks Bash %s", (command) => {
     expect(run("Bash", command)).toBe(2);
   });

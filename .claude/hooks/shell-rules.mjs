@@ -39,6 +39,7 @@ function check(tool, command) {
     return "one command per call: no &&, ||, ;, |, $(), backticks or heredocs.";
   }
   if (/^cd\b/.test(bare)) return "no cd; use absolute paths.";
+  if (/^git grep\b/.test(bare)) return "no git grep; search with the Grep tool.";
   if (!ALLOWED.some((pattern) => pattern.test(bare))) {
     return (
       "Bash only for `npm run …`, `npx tsc -b`, `git`, `curl -o` and `node tmp/<file>.ts`. " +
