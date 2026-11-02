@@ -473,7 +473,7 @@
         "name": "Delicate Tomb",
         "group": "Energy",
         "inGame": "Traitor's Vessel: Fires a wide 16-bolt volley. Aiming Down Sights tightens the spread, overlapping into 8 bolts (with 2 in each group).\nHip-Fired Bolts deal 20% increased damage.\nKills spawn Ionic Traces based off Combatant Rank:\n• Minors: 10%\n• Elites, Minibosses, and Bosses: 100%\n• Players: 100%\nTempest Cascade: Collecting an Ionic Trace increases the next shot's damage by 100% [7%] and applies Jolt.\nBuff can be triggered while stowed.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:delicate-tomb",
         "status": "full"
       },

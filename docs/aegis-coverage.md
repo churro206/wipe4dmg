@@ -229,7 +229,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Cull's Shadow, average, with corruption | im Modell | base row of the package |
 | Cull's Shadow, with corruption | übersprungen | ohne average der Basiszeile |
 | Delicate Tomb, hipfire | im Modell | base row of the package |
-| Delicate Tomb, ADS | übersprungen | ohne hipfire der Basiszeile |
+| Delicate Tomb, ADS | übersprungen | the item file uses another row |
 | High-impact frame, Charge MW, Accelerated Coils | übersprungen | legendary frame (owner 2026-10-25) |
 | Jötunn, average, successive shots | im Modell | base row of the package |
 | Merciless, Conserve Momentum x15, full mag | im Modell | base row of the package |

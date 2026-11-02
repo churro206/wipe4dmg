@@ -4253,47 +4253,177 @@
       "value": 533,
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Delicate Tomb",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
+        "retrieved": "2026-10-31",
+        "status": "verified"
       }
     },
     "fireRateRpm": {
       "value": 56.138,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 6,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine: Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
       }
     },
     "totalShots": {
       "value": 26,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots: Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
       }
     },
     "reloadTimeMs": {
       "value": 1320,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs: Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Volley, hipfire",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file delicate-tomb",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 890.435,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-delicate-tomb-hipfire",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "fusion-rifle-delicate-tomb-hipfire",
+            "note": "perShot 890.435 of the row (Full Modifiers 3.31 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file delicate-tomb",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file delicate-tomb",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-ads",
+        "name": "Volley, ADS",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file delicate-tomb",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 745.255,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-delicate-tomb-ads",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "fusion-rifle-delicate-tomb-ads",
+            "note": "perShot 745.255 of the row (Full Modifiers 3.31 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file delicate-tomb",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file delicate-tomb",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "ads", "not": true }],
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-ads",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "ads" }],
+        "do": [{ "type": "spawn", "part": "shot-ads" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "traitor-s-vessel",
+        "name": "Traitor's Vessel",
+        "description": "Fires a wide horizontal spread when shot from the hip.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "playstyles": [
+      { "id": "hipfire", "label": "Hipfire" },
+      { "id": "ads", "label": "ADS" }
+    ],
+    "catalyst": {
+      "name": "Ionic Interment, Delicate Tomb Catalyst",
+      "description": "Picking up Ionic Traces refill 4 ammo from reserves.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -4305,82 +4435,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-delicate-tomb-hipfire",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-delicate-tomb-hipfire",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 890.435,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-delicate-tomb-hipfire",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-delicate-tomb-hipfire",
-            "note": "visual Value; assumptions: hipfire"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-delicate-tomb-hipfire",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-delicate-tomb-hipfire"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-delicate-tomb-hipfire",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-delicate-tomb-hipfire"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "traitor-s-vessel",
-        "name": "Traitor's Vessel",
-        "description": "Fires a wide horizontal spread when shot from the hip.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Ionic Interment, Delicate Tomb Catalyst",
-      "description": "Picking up Ionic Traces refill 4 ammo from reserves.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "deterministic-chaos",

@@ -1,0 +1,46 @@
+{
+  "id": "delicate-tomb",
+  "kind": "exoticWeapon",
+  "name": "Delicate Tomb",
+  "texts": [{ "source": "clarity", "entry": "Traitor's Vessel", "hash": "26b679d9" }],
+  "chargeTimeMs": "$manifest[Delicate Tomb].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[specials-fusion-rifle-delicate-tomb-hip-fire].timing.fireRateRpm",
+  "magazine": "$quantum[specials-fusion-rifle-delicate-tomb-hip-fire].timing.magazine",
+  "totalShots": "$quantum[specials-fusion-rifle-delicate-tomb-hip-fire].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-fusion-rifle-delicate-tomb-hip-fire].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Ionic Interment, Delicate Tomb Catalyst",
+    "description": "Picking up Ionic Traces refill 4 ammo from reserves.",
+    "effect": "none"
+  },
+  "playstyles": [
+    { "id": "hipfire", "label": "Hipfire" },
+    { "id": "ads", "label": "ADS" }
+  ],
+  "parts": {
+    "shot": {
+      "name": "Volley, hipfire",
+      "damage": "$aegis[fusion-rifle-delicate-tomb-hipfire].perShot",
+      "delivery": "impact"
+    },
+    "shot-ads": {
+      "name": "Volley, ADS",
+      "damage": "$aegis[fusion-rifle-delicate-tomb-ads].perShot",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "ads", "not": true }],
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-ads",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "ads" }],
+      "do": [{ "type": "spawn", "part": "shot-ads" }]
+    }
+  ]
+}

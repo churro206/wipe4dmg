@@ -1062,6 +1062,29 @@ describe("Salvation's Grip charge as playstyle (B6)", () => {
   });
 });
 
+describe("Delicate Tomb hipfire and ADS as playstyles (B6)", () => {
+  const tomb = (playstyle?: string) =>
+    run({ subclass: "arc", damagePhaseSeconds: 60, ...(playstyle ? { playstyle } : {}) }, weaponById("delicate-tomb"));
+
+  it("Delicate Tomb: hipfire is the base shot, ADS deals about 0.84 per shot (Aegis 745 / 890), same timing", () => {
+    const hip = tomb();
+    const ads = tomb("ads");
+    const ratio = ads.totalDamage / hip.totalDamage;
+    const lastS = hip.shots.at(-1)!.timeMs / 1000;
+    note(
+      "Delicate Tomb 60 s: Schüsse hipfire / ADS, letzter Schuss, ADS ÷ hipfire",
+      `${hip.shots.length} / ${ads.shots.length}, ${fmt(lastS)} s, ×${fmt(ratio)}`,
+      "Aegis Weapons 890,4 / 745,3 pro Schuss (×0,837); Quantum 26 Schüsse, Zeit bis leer 32 s",
+    );
+    expect(hip.shots.length).toBe(26);
+    expect(ads.shots.length).toBe(26);
+    expect(lastS).toBeGreaterThan(26);
+    expect(lastS).toBeLessThan(36);
+    expect(ratio).toBeGreaterThan(0.8);
+    expect(ratio).toBeLessThan(0.87);
+  });
+});
+
 describe("Black Talon combo from its Aegis rows (B6)", () => {
   it("Black Talon: one shot is a 2H2L combo of two heavy projectiles and two light attacks (Aegis base 3141)", () => {
     const r = run({ subclass: "void", damagePhaseSeconds: 60 }, weaponById("black-talon"));

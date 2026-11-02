@@ -6,9 +6,9 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 3 within 2 percentage points**
-- Rank (check set): Spearman 0.96 over 7 rows
-- Absolute, information only: within ±3 % 2 of 7 (check set), 125 of 181 (all counted rows, mostly Eichung)
-- Rows: 183 scenarios (32 by hand, 151 generated); fitted 134; calibration set 41; check set 7; not counted 2; core cannot run 0
+- Rank (check set): Spearman 0.94 over 6 rows
+- Absolute, information only: within ±3 % 2 of 6 (check set), 126 of 181 (all counted rows, mostly Eichung)
+- Rows: 183 scenarios (32 by hand, 151 generated); fitted 135; calibration set 41; check set 6; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -26,7 +26,6 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | hierarchy-of-needs-two-rings | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
 | one-thousand-voices-ember | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 11617 | +0.6 % |
 | gen-fusion-rifle-cull-s-shadow | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
-| gen-fusion-rifle-delicate-tomb-ads | fusion-rifle-delicate-tomb-ads | 13399 | 16028 | +19.6 % |
 | gen-smg-riskrunner-average-arc-conductor-peacekeepers | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2609 | −32.2 % |
 | gen-trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 2445 | −9.2 % |
 
@@ -125,7 +124,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 181 | 43 % | 133 | 7 | 0.96 | 3/3 | 1 of 3 |
+| Weapons | 417 | 181 | 43 % | 134 | 6 | 0.94 | 3/3 | 1 of 3 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 20 | 21 % | 0 | 20 | 1.00 | 3/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 0 | 10 | 0.99 | 3/3 | 0 of 0 |
@@ -166,7 +165,6 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | --- | --- | ---: | ---: | ---: |
 | Weapons | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
 | Weapons | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
-| Weapons | fusion-rifle-delicate-tomb-ads | 13399 | 16028 | +19.6 % |
 | Weapons | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 11617 | +0.6 % |
 | Weapons | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 5230 | −4.6 % |
 | Weapons | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2609 | −32.2 % |

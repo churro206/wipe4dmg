@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **128 Pakete**, 9 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **127 Pakete**, 10 Items, 4 Lücken.
 
 ## Pakete
 
@@ -35,7 +35,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Dead Man's Tale | scoutRifle | kinetic | Vorpal Weapon (1 Shot) | 188,7 | Quantum |  | 14 | 0,33 s | – | 120 → 120 | 19,4 % | Override: Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt. Catalyst aus der Hüfte: +27 % bei x5 Cranial Spike (Clarity), Timing aus Quantums Zeile „cata, x5 Cranial Spike“ (140 rpm, Reload 0,29 s).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-dead-man-s-tale-base (Override); Timing nur aus Quantum; Skala weicht um 19.4 % ab; Aegis gilt (Override); Katalysator-Timing: ∞ Shots, Magazin 14, Zeit bis leer – |
 | Dead Messenger | grenadeLauncher | void | keine (1 Shot) | 1.383,7 | Aegis | 20 | 1 | 1,55 s | 29,5 s | 90 → 39 | 0,0 % | ⚠ Timing: Aegis 20 Shots in 29,5 s, Quantum 20 Shots in 32,4 s; Aegis gilt |
 | Deathbringer | rocketLauncher | void | max height (1 Shot) | 3.900,1 | Quantum | 11 | 1 | 2,35 s | 23,5 s | 46 → 60.000 | 0,0 % | Override: Aegis misst „max height“ (3900); dazu passt Quantums „max distance damage“ (3899), nicht „direct impact“. Der Catalyst lässt den Höchstschaden nur 1 s früher erreichen; gemessen wird schon der Höchstschaden: keine Wirkung.; Timing aus Zeile heavies-rocket-launcher-deathbringer-max-distance-damage (Override); Timing nur aus Quantum |
-| Delicate Tomb | fusionRifle | arc | hipfire (18 Shots) | 890,4 | Quantum | 26 | 6 | 1,32 s | 32,0 s | 56 → 56 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „Hip-fire“; Timing nur aus Quantum |
 | Deterministic Chaos | machineGun | void | average, with volatile damage, excludes weaken (48 Shots) | 126,5 | Quantum | 376 | 48 | 3,57 s | 86,3 s | 360 → 367 | 0,0 % | Override: Catalyst gibt Target Lock; Clarity: ohne Fehlschuss im Mittel etwa +25 % über ein volles Magazin.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „w/o weaken“; Timing nur aus Quantum |
 | Devil's Ruin | sidearm | solar | keine (1 Shot) | 78,5 | Quantum |  | 20 | 1,03 s | – | 300 → 300 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Divinity | traceRifle | arc | average, Penance, excludes debuff, Jolting Feedback, Focused Fury (194 Shots) | 15,0 | Quantum | 470 | 194 | 1,44 s | 34,0 s | 900 → 904 | 0,0 % | Override: Aegis misst nur mit beiden Katalysator-Perks (Jolting Feedback, Focused Fury) und Jolt; Quantum „base damage, no buffs“ (mit Penance) gilt: 15 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-divinity-base-damage-no-buffs (Override); Timing nur aus Quantum; Schaden pro Shot 15,0 (Override) |
@@ -149,6 +148,7 @@ Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf di
 | --- | --- | --- |
 | Black Talon | `src/data/items/weapons/black-talon.json` | – |
 | Choir of One | `src/data/items/weapons/choir-of-one.json` | – |
+| Delicate Tomb | `src/data/items/weapons/delicate-tomb.json` | – |
 | Heirloom | `src/data/items/weapons/heirloom.json` | – |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
@@ -210,7 +210,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Dead Man's Tale | primary | Schaden und Timing | Magazin 14 → 14, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 120 → 140 | While not Aiming Down Sights: |
 | Dead Messenger | special | keine | – | Grants the Turnabout trait: |
 | Deathbringer | heavy | keine | – | The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner. |
-| Delicate Tomb | special | keine | – | Picking up Ionic Traces refill 4 ammo from reserves. |
 | Deterministic Chaos | heavy | Schaden | – | Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as h |
 | Devil's Ruin | primary | keine | – | Elemental Pickup Interactions grant 30% [10%] increased damage for a variable duration based on the pickup. Can be activ |
 | Divinity | special | unbekannt | – | Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits |
@@ -335,7 +334,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Cull's Shadow |  | ohne average, with corruption der Basiszeile |
 | Cull's Shadow | with corruption | ohne average der Basiszeile |
 | D.A.R.C.I. | average, Target Acquired, Networked Targeting x5, with spaced jolt, first mag | Katalysator: Networked Targeting x5 |
-| Delicate Tomb | ADS | ohne hipfire der Basiszeile |
+| Delicate Tomb | ADS | the item file uses another row |
 | Deterministic Chaos | average, with volatile damage, excludes weaken, Target Lock, single mag | Katalysator: Target Lock |
 | Devil's Ruin | Pyrogenesis, Collective Action | Katalysator-Zeile mit kleinerem Wert (×0,350): anderer Modus |
 | Duality | hipfire, body | ohne ADS der Basiszeile |
