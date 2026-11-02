@@ -7,8 +7,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 - **Delta pairs (check set): 1 of 3 within 2 percentage points**
 - Rank (check set): Spearman 0.94 over 6 rows
-- Absolute, information only: within ±3 % 2 of 6 (check set), 126 of 181 (all counted rows, mostly Eichung)
-- Rows: 183 scenarios (32 by hand, 151 generated); fitted 135; calibration set 41; check set 6; not counted 2; core cannot run 0
+- Absolute, information only: within ±3 % 2 of 6 (check set), 130 of 183 (all counted rows, mostly Eichung)
+- Rows: 185 scenarios (32 by hand, 153 generated); fitted 139; calibration set 39; check set 6; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -68,7 +68,7 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | whirling-ovation-2-3-charge | factor | 4216 | 4212 | −0.1 % | fitted | calibration |  |
 | whirling-ovation-full-charge | factor | 6349 | 6344 | −0.1 % | fitted | calibration |  |
 
-## Missing switches (51 rows)
+## Missing switches (49 rows)
 
 Rows of the tab Weapons with an assumption the core has no switch for; they make no scenario. Assumption and number of rows.
 
@@ -90,14 +90,12 @@ Rows of the tab Weapons with an assumption the core has no switch for; they make
 - Amalgamation Round: 1
 - Appended Mag: 1
 - blight: 1
-- Combat Sights: 1
 - Dual Speed Receiver: 1
 - Enduring Blade: 1
 - Fated Missile x15: 1
 - Grenades Prepped: 1
 - Lightning Seeker: 1
 - marked: 1
-- Marksman Sights: 1
 - Nightsworn ticks include weaken: 1
 - no chains: 1
 - Overwhelming Power: 1
@@ -112,7 +110,7 @@ Rows of the tab Weapons with an assumption the core has no switch for; they make
 - Temporal Unlimiter: 1
 - up to Rewind end: 1
 - vortex frame: 1
-- … and 1 more
+- wave sword frame: 1
 
 ## Skipped rows (183)
 
@@ -124,9 +122,9 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 181 | 43 % | 134 | 6 | 0.94 | 3/3 | 1 of 3 |
+| Weapons | 417 | 183 | 44 % | 138 | 6 | 0.94 | 3/3 | 1 of 3 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
-| Heavy | 95 | 20 | 21 % | 0 | 20 | 1.00 | 3/3 | 5 of 5 |
+| Heavy | 95 | 21 | 22 % | 0 | 21 | 1.00 | 3/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 0 | 10 | 0.99 | 3/3 | 0 of 0 |
 | Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
@@ -202,6 +200,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Heavy | sustained-sleeper-simulant | 87747 | 87747 | +0.0 % |
 | Heavy | sustained-the-colony | 49096 | 47133 | −4.0 % |
 | Heavy | sustained-the-queenbreaker-rewind-rounds-combat-sights | 97261 | 97261 | +0.0 % |
+| Heavy | sustained-the-queenbreaker-rewind-rounds-marksman-sights | 74475 | 74475 | −0.0 % |
 | Heavy | sustained-thunderlord-assumes-only-one-reload-post-nerf | 101659 | 101659 | +0.0 % |
 | Heavy | sustained-tractor-cannon | 22149 | 18458 | −16.7 % |
 | Heavy | sustained-truth-prototype-truthseeker-argent-ordnance | 85454 | 81580 | −4.5 % |
@@ -228,7 +227,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 
 Assumptions of Aegis without a switch, with the number of rows of the group that name them.
 
-### Weapons (51 rows)
+### Weapons (49 rows)
 
 - Transcendent: 6
 - Jagged Edge: 5
@@ -245,7 +244,7 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - Pyrogenesis: 2
 - Target Acquired: 2
 - ADS tap fire: 1
-- … and 26 more
+- … and 24 more
 
 ### Supers (46 rows)
 
@@ -266,7 +265,7 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - max distance: 2
 - … and 22 more
 
-### Heavy (26 rows)
+### Heavy (25 rows)
 
 - Lucent Blades x3: 9
 - Solar Fulmination: 3
@@ -283,7 +282,7 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - excludes Bolt Charge: 1
 - Hail the Storm: 1
 - Harsh Refraction: 1
-- … and 17 more
+- … and 16 more
 
 ### Special (34 rows)
 

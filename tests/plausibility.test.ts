@@ -1085,6 +1085,94 @@ describe("Delicate Tomb hipfire and ADS as playstyles (B6)", () => {
   });
 });
 
+describe("Catalyst timing from a row with the catalyst (B6.2)", () => {
+  const duality = (fields: Partial<Build> = {}) =>
+    run({ subclass: "solar", damagePhaseSeconds: 60, ...fields }, weaponById("duality"));
+  const queenbreaker = (fields: Partial<Build> = {}) =>
+    run({ subclass: "arc", damagePhaseSeconds: 60, ...fields }, weaponById("the-queenbreaker"));
+  const graviton = (fields: Partial<Build> = {}) =>
+    run({ subclass: "arc", damagePhaseSeconds: 60, ...fields }, weaponById("graviton-spike"));
+  const lastS = (r: SimulationResult) => r.shots.at(-1)!.timeMs / 1000;
+
+  it("Duality: magazine 6 and 15 shots without the catalyst, 17 with it (Quantum measures only with it)", () => {
+    const off = duality();
+    const on = duality({ catalyst: true });
+    note(
+      "Duality 60 s: Schüsse und letzter Schuss ohne / mit Katalysator",
+      `${off.shots.length} / ${on.shots.length}, ${fmt(lastS(off))} s / ${fmt(lastS(on))} s`,
+      "Clarity „Magazine Size by 2 (6🠚8)“; mit Katalysator Quantum 14,3 s (Quelle des Takts, nur Verdrahtung), Gegenprobe Aegis Sustained 15,0 s für 17 Schüsse",
+    );
+    expect(off.shots.length).toBe(15);
+    expect(on.shots.length).toBe(17);
+    // Quantums 14,3 s ist die Quelle des Takts (Verdrahtung); Aegis Sustained (15,0 s, Reload 1,1 s) liegt darüber
+    expect(lastS(on)).toBeGreaterThan(13.3);
+    expect(lastS(on)).toBeLessThan(15.3);
+    expect(lastS(off)).toBeLessThan(lastS(on));
+  });
+
+  it("Duality: hipfire pellets deal about 0.66 of the ADS slug per shot at the same timing", () => {
+    const ads = duality();
+    const hip = duality({ playstyle: "hipfire" });
+    const ratio = hip.totalDamage / ads.totalDamage;
+    note(
+      "Duality 60 s: Hipfire ÷ ADS",
+      `×${fmt(ratio)}, ${hip.shots.length} / ${ads.shots.length} Schüsse`,
+      "Aegis 829,9 / 1262 (×0,66); Quantum Pellet Body 828 gegen Slug Precision 1263",
+    );
+    expect(hip.shots.length).toBe(ads.shots.length);
+    expect(ratio).toBeGreaterThan(0.6);
+    expect(ratio).toBeLessThan(0.72);
+  });
+
+  it("The Queenbreaker: magazine 5 without the catalyst (4 reloads), the Aegis row's 11 with it (1 reload)", () => {
+    const off = queenbreaker();
+    const on = queenbreaker({ catalyst: true });
+    note(
+      "The Queenbreaker 60 s: Schüsse, letzter Schuss ohne / mit Katalysator",
+      `${off.shots.length} / ${on.shots.length}, ${fmt(lastS(off))} s / ${fmt(lastS(on))} s`,
+      "mit Katalysator Aegis Sustained 26,3 s (Quelle des Takts, nur Verdrahtung); ohne: Quantum Magazin 5, 33 s bei 42 rpm (Gegenprobe)",
+    );
+    expect(off.shots.length).toBe(21);
+    expect(on.shots.length).toBe(21);
+    expect(lastS(on)).toBeGreaterThan(24.5);
+    expect(lastS(on)).toBeLessThan(28);
+    // 3 Reloads mehr à etwa 1,05 s + Zwischenschuss, zwischen Aegis mit und Quantum (33 s)
+    expect(lastS(off)).toBeGreaterThan(lastS(on) + 2);
+    expect(lastS(off)).toBeLessThan(33);
+  });
+
+  it("The Queenbreaker: Marksman Sights deal about 0.77 of Combat Sights (Aegis Sustained 74475 / 97261)", () => {
+    const combat = queenbreaker();
+    const marksman = queenbreaker({ playstyle: "marksman-sights" });
+    const ratio = marksman.totalDamage / combat.totalDamage;
+    note(
+      "The Queenbreaker 60 s: Marksman ÷ Combat Sights",
+      `×${fmt(ratio)}`,
+      "Quantum 31626 / 41328 (×0,77), Aegis Sustained 74475 / 97261 (×0,77)",
+    );
+    expect(marksman.shots.length).toBe(21);
+    expect(ratio).toBeGreaterThan(0.7);
+    expect(ratio).toBeLessThan(0.83);
+  });
+
+  it("Graviton Spike: Stasis mode is the base shot, Arc mode deals about 0.76 of it (Quantum per magazine)", () => {
+    const stasis = graviton();
+    const arc = graviton({ playstyle: "arc-mode" });
+    const ratio = arc.totalDamage / stasis.totalDamage;
+    note(
+      "Graviton Spike 60 s: Schüsse Stasis / Arc, Arc ÷ Stasis",
+      `${stasis.shots.length} / ${arc.shots.length}, ×${fmt(ratio)}`,
+      "Quantum je Magazin 2314 (95 rpm) gegen 1222 (150 rpm), 13 Schuss, Reload 1,61 s: etwa ×0,76",
+    );
+    expect(stasis.shots.length).toBeGreaterThan(70);
+    expect(stasis.shots.length).toBeLessThan(90);
+    expect(arc.shots.length).toBeGreaterThan(105);
+    expect(arc.shots.length).toBeLessThan(125);
+    expect(ratio).toBeGreaterThan(0.7);
+    expect(ratio).toBeLessThan(0.85);
+  });
+});
+
 describe("Black Talon combo from its Aegis rows (B6)", () => {
   it("Black Talon: one shot is a 2H2L combo of two heavy projectiles and two light attacks (Aegis base 3141)", () => {
     const r = run({ subclass: "void", damagePhaseSeconds: 60 }, weaponById("black-talon"));

@@ -279,6 +279,108 @@ describe("expressions", () => {
   });
 });
 
+// A row that plays with the catalyst, the value without it (B6.2): Duality's Quantum row is measured
+// only with the catalyst (magazine 8), Clarity names the gain; The Queenbreaker's Sustained row has
+// the catalyst's magazine, the magazine without it comes from the Quantum row.
+const CATALYST_QUANTUM_ROW = "specials-shotgun-duality-cata-slug";
+const CATALYST_SUSTAINED_ROW = "the-queenbreaker-rewind-rounds-combat-sights";
+const catalystSources: ItemSources = {
+  ...sources,
+  quantum: {
+    ...sources.quantum,
+    rows: [
+      {
+        id: CATALYST_QUANTUM_ROW,
+        tab: "specials",
+        weaponType: "shotgun",
+        name: "Duality",
+        variant: "cata, slug",
+        totalDamage: 21471,
+        magDamage: 10104,
+        magazine: 8,
+        totalShots: 17,
+        rpm: 65,
+        reloadSeconds: 0.68,
+        timeToEmptySeconds: 14.3,
+        bodyDamage: 720,
+        precisionDamage: 1263,
+        textCells: {},
+        note: "",
+      },
+    ],
+  },
+  sustained: {
+    ...sources.sustained,
+    rows: [
+      {
+        id: CATALYST_SUSTAINED_ROW,
+        name: "The Queenbreaker",
+        assumptions: ["Rewind Rounds", "Combat Sights"],
+        ammo: "heavy",
+        family: "linear",
+        shots: 21,
+        magazines: [11, 10],
+        repeating: false,
+        reloadMs: 2283,
+        chargeMs: 550,
+        swapMs: null,
+        notes: "550ms charge; 2283ms reload",
+        peakRateSeconds: 1.233,
+        timeToEmptySeconds: 26.26,
+        base: 1966,
+      },
+    ],
+  },
+  clarity: {
+    ...sources.clarity,
+    entries: [
+      {
+        hash: 2,
+        name: "Duality Catalyst",
+        type: "Weapon Catalyst Exotic",
+        itemName: "Duality",
+        text: "Grants 20 Range and increases Magazine Size by 2 (6🠚8)",
+      },
+    ],
+  },
+};
+const catalystValue = (ref: string | { expr: string; note: string }) =>
+  resolveValue(ref, { sources: catalystSources, itemName: "Duality", fittedRows: [] });
+
+describe("a row with the catalyst, the value without it (B6.2)", () => {
+  it("a Quantum row measured with the catalyst: the gain Clarity names comes off in an expression", () => {
+    const withCatalyst = catalystValue(`$quantum[${CATALYST_QUANTUM_ROW}].timing.magazine`);
+    const magazine = catalystValue({
+      expr: `$quantum[${CATALYST_QUANTUM_ROW}].timing.magazine - $clarity[Duality Catalyst]("Magazine Size by 2")`,
+      note: "the catalyst adds 2",
+    });
+    const shots = catalystValue({
+      expr: `$quantum[${CATALYST_QUANTUM_ROW}].timing.totalShots - $clarity[Duality Catalyst]("Magazine Size by 2")`,
+      note: "the extra rounds count to the ammunition",
+    });
+    expect(withCatalyst.value).toBe(8);
+    expect(magazine.value).toBe(6);
+    expect(shots.value).toBe(15);
+    // no Aegis row in it: a derived value, the row is no Eichung
+    expect(magazine.source.status).toBe("derived");
+    expect(magazine.source.name).toContain(CATALYST_QUANTUM_ROW);
+    expect(catalystValue(`$quantum[${CATALYST_QUANTUM_ROW}].timing.fireRateRpm`).value).toBe(74.189);
+    expect(catalystValue(`$quantum[${CATALYST_QUANTUM_ROW}].timing.reloadTimeMs`).value).toBe(680);
+  });
+
+  it("$aegisSustained .timing: the timing of the row, with the catalyst, fitted with its row", () => {
+    const at = (field: string) => catalystValue(`$aegisSustained[${CATALYST_SUSTAINED_ROW}].timing.${field}`);
+    expect(at("magazine").value).toBe(11);
+    expect(at("totalShots").value).toBe(21);
+    expect(at("fireRateRpm").value).toBe(48.662); // (26.26 - 0.55 - 2.283) / 19 intervals
+    expect(at("reloadTimeMs").value).toBe(1050); // 2283 minus the interval
+    expect(at("magazine").source.status).toBe("fitted");
+    expect(at("magazine").source.row).toBe(CATALYST_SUSTAINED_ROW);
+    expect(() => at("chargeMs")).toThrow(/chargeMs/);
+    expect(() => catalystValue(`$aegisSustained[${CATALYST_SUSTAINED_ROW}].timing`)).toThrow(/timing/);
+  });
+});
+
 // The rules of architecture section 5.4 with references
 const precisionHit = { on: "hit", part: "shot", precision: true };
 const polarisItem = (hash = textHash(FIFTH_TEXT)) => ({

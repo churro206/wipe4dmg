@@ -497,7 +497,7 @@
         "name": "Duality",
         "group": "Energy",
         "inGame": "Compression Chamber: Reloads its entire magazine at once.\nPassive 5% increased damage falloff distance compared to similar shotguns.\nWhile Hip-Firing, this gun fires a spread of 12 pellets in the pattern of a Precision Frame shotgun, each pellet dealing 104 [?] damage.\nWhile Aiming Down Sights, this gun fires a single slug round, dealing 1891 [?] precision damage.\nOn Black Wings: Scoring a pellet kill or landing 10 pellets grants one stack of 'On Black Wings' for 10 seconds. Maximum of 3 stacks.\nOn Black Wings grants the following at 1|2|3| stacks:\n• 15.6%|39%|54.7% increased Slug Precision damage\n• 3.5%|8.8%|12.4% increased Pellet Precision Damage\n• ? Reload Speed\n• ? Reload Speed Animation Duration\nPrecision Hits with slug rounds refresh buff duration.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:duality",
         "status": "full"
       },
@@ -569,7 +569,7 @@
         "name": "Graviton Spike",
         "group": "Energy",
         "inGame": "Temporal Manipulation: Hold [Reload] to refill 3 ammo and switch between firing modes:\n• Arc Mode fires at 150 RPM\n• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.\nScoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode. Overcharge drains at a rate of 4.5% per second once earned.\nBuff is removed if you swap off the mode matching its element.\nTemporal Manipulation II: Hold [Reload] to refill 3 ammo and switch between firing modes:\n• Arc Mode fires at 150 RPM\n• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.\nScoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode. Overcharge drains at a rate of 4.5% per second once earned.\nBuff is removed if you swap off the mode matching its element.\nTemporal Manipulation III: Hold [Reload] to refill 3 ammo and switch between firing modes:\n• Arc Mode fires at 150 RPM\n• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.\nScoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode. Overcharge drains at a rate of 4.5% per second once earned.\nBuff is removed if you swap off the mode matching its element.\nTemporal Manipulation IV: Hold [Reload] to refill 3 ammo and switch between firing modes:\n• Arc Mode fires at 150 RPM\n• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.\nScoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode. Overcharge drains at a rate of 4.5% per second once earned.\nBuff is removed if you swap off the mode matching its element.\nTemporal Anomaly: While in Arc Mode with Arc Overcharge active:\nPrecision Hits and Kills call down a lightning strike, consuming 34% Overcharge energy and dealing 502 [?] Arc Damage in a ? meter radius\nWhile in Stasis Mode with Stasis Overcharge active:\nPrecision Hits and Kills trigger a Stasis Explosion, consuming 34% Overcharge energy and dealing 126 [?] damage in a ? meter radius. The explosion creates two Medium Stasis Crystals that spawn 4 meters away on either side of the target at a 45 degree angle.",
-        "inCalculator": "1 damage instance(s), 4 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 4 intrinsic effect(s).",
         "iconKey": "weapon:graviton-spike",
         "status": "full"
       },
@@ -1041,7 +1041,7 @@
         "name": "The Queenbreaker",
         "group": "Power",
         "inGame": "Wire Rifle: Hold [Reload] to switch between Combat Sights and Marksman's Sights.\nReview this weapon's scopes to learn their behavior.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:the-queenbreaker",
         "status": "full"
       },

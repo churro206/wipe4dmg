@@ -95,27 +95,6 @@
     }
   },
   {
-    "weapon": "Duality",
-    "reason": "Quantum misst nur mit Katalysator; „cata, slug“ passt zu Aegis' ADS (Precision 1263 gegen 1262). Ohne Katalysator aus Clarity: Magazin 6 statt 8.",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "specials-shotgun-duality-cata-slug",
-        "text": "cata, slug"
-      },
-      {
-        "source": "clarity",
-        "entry": "Duality Catalyst",
-        "text": "increases Magazine Size by 2 (6🠚8)"
-      }
-    ],
-    "timing": {
-      "from": "Quantum",
-      "row": "specials-shotgun-duality-cata-slug",
-      "rowHasCatalyst": true
-    }
-  },
-  {
     "weapon": "Ice Breaker",
     "reason": "Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).",
     "quotes": [
@@ -140,34 +119,6 @@
     "timing": {
       "from": "Aegis",
       "row": "finality-s-auger-bait-and-switch-linear-fusion-mode"
-    }
-  },
-  {
-    "weapon": "The Queenbreaker",
-    "reason": "Optimal gespielt: Combat Sights macht mehr Gesamtschaden (Quantum 41.328 gegen 31.626). Aegis Sustained misst mit Rewind Rounds (Katalysator, Magazin 11); ohne ihn Magazin 5 wie bei Quantum.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "the-queenbreaker-rewind-rounds-combat-sights",
-        "text": "550ms charge; 2283ms reload"
-      },
-      {
-        "source": "quantum",
-        "entry": "heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
-        "text": "\"magazine\":5"
-      },
-      {
-        "source": "clarity",
-        "entry": "The Queenbreaker Catalyst",
-        "text": "Refills 60% of the number of Hits landed"
-      }
-    ],
-    "base": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
-    "timing": {
-      "from": "Aegis",
-      "row": "the-queenbreaker-rewind-rounds-combat-sights",
-      "rowHasCatalyst": true,
-      "magazine": 5
     }
   },
   {
@@ -303,21 +254,6 @@
       "from": "Aegis",
       "row": "grand-overture-volleys-when-available",
       "noReloads": true
-    }
-  },
-  {
-    "weapon": "Graviton Spike",
-    "reason": "Aegis misst den Stasis-Modus (176,6); dazu passt Quantums „Stasis mode“ (Precision 178), nicht der Arc-Modus. Stasis macht mehr Schaden pro Sekunde.",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "primaries-hand-cannon-graviton-spike-stasis-mode",
-        "text": "Stasis mode"
-      }
-    ],
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-hand-cannon-graviton-spike-stasis-mode"
     }
   },
   {

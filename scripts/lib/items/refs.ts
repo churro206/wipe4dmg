@@ -8,6 +8,7 @@
 //   $aegis[<row>].tick("<name>")            named tick ÷ Full Modifiers             fitted (row)
 //   $aegis[<row>].perShot                   the row's value per shot (a playstyle)  fitted (row)
 //   $aegisSustained[<row>].<field>          Sustained row, a number field           fitted (row)
+//   $aegisSustained[<row>].timing.<field>   timingFromAegis, fields as for Quantum  fitted (row)
 //   $manifest[<weapon>].stat("<stat>")      displayed stat of the manifest          verified
 //   $clarity[<entry>]("<quote>")            the one number of a quote in the text   derived
 //   $compendium[<entry>]("<quote>")         the same; entry by name or its start    derived
@@ -30,7 +31,7 @@ import type {
   Source,
   SourcedNumber,
 } from "../../../src/data/schema.ts";
-import { type Timing, timingFromQuantum } from "../timing.ts";
+import { type Timing, timingFromAegis, timingFromQuantum } from "../timing.ts";
 
 /** The snapshots an item reads, and the link codes of the weapons. */
 export type ItemSources = {
@@ -232,8 +233,21 @@ function resolveRef(ref: ParsedRef, ctx: RefContext): SourcedNumber {
     case "aegisSustained": {
       const snapshot = sources.sustained;
       const row = snapshot.rows.find((r) => r.id === ref.key) ?? fail(ref, `no Aegis Sustained row ${ref.key}`);
-      expectShape(ref, 1, false, ".<field>");
-      const value = numberField(ref, row, ref.path[0]);
+      let value: number | null;
+      let note: string;
+      if (ref.path[0] === "timing") {
+        expectShape(ref, 2, false, `.timing.<${Object.keys(QUANTUM_TIMING).join("|")}>`);
+        const field = ref.path[1];
+        const of = QUANTUM_TIMING[field] ?? fail(ref, `unknown timing field ${field}`);
+        const timing = timingFromAegis(row);
+        if ("problem" in timing) return fail(ref, timing.problem);
+        value = of(timing);
+        note = `timing.${field}: ${timing.note}`;
+      } else {
+        expectShape(ref, 1, false, ".<field> or .timing.<field>");
+        value = numberField(ref, row, ref.path[0]);
+        note = ref.path[0];
+      }
       ctx.fittedRows.push(row.id);
       return {
         value,
@@ -243,7 +257,7 @@ function resolveRef(ref: ParsedRef, ctx: RefContext): SourcedNumber {
           retrieved: snapshot.source.retrieved,
           status: "fitted",
           row: row.id,
-          note: ref.path[0],
+          note,
         },
       };
     }

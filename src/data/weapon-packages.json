@@ -5063,48 +5063,218 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file duality",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: a shotgun has no charge; the time to empty counts from the first shot (Quantum)"
       }
     },
     "fireRateRpm": {
       "value": 74.189,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013); without catalyst from Clarity: Magazine Size by 2 (6🠚8)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 6,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug; Clarity (Live-Clarity-Database, descriptions/clarity.json): Duality Catalyst",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-shotgun-duality-cata-slug].timing.magazine - $clarity[Duality Catalyst](\"Magazine Size by 2\") (Quantum measures only with the catalyst (\"cata\", magazine 8); the catalyst adds 2 (Clarity 6 to 8), so 6 without it); $quantum[specials-shotgun-duality-cata-slug].timing.magazine = 8 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug); $clarity[Duality Catalyst](\"Magazine Size by 2\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Duality Catalyst)"
       }
     },
     "totalShots": {
       "value": 15,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug; Clarity (Live-Clarity-Database, descriptions/clarity.json): Duality Catalyst",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-shotgun-duality-cata-slug].timing.totalShots - $clarity[Duality Catalyst](\"Magazine Size by 2\") (the 2 extra rounds of the magazine count to the ammunition (Quantum 17 with the catalyst, coverage 15 to 17), so 15 without it); $quantum[specials-shotgun-duality-cata-slug].timing.totalShots = 17 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug); $clarity[Duality Catalyst](\"Magazine Size by 2\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Duality Catalyst)"
       }
     },
     "reloadTimeMs": {
       "value": 680,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Slug, ADS",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file duality",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1262.155,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-duality-ads",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "shotgun-duality-ads",
+            "note": "perShot 1262.155 of the row (Full Modifiers 3.31 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file duality",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file duality",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-hipfire",
+        "name": "Pellets, hipfire",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file duality",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 829.897,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-duality-hipfire-body",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "shotgun-duality-hipfire-body",
+            "note": "perShot 829.897 of the row (Full Modifiers 4.3 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file duality",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file duality",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "hipfire", "not": true }],
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-hipfire",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "hipfire" }],
+        "do": [{ "type": "spawn", "part": "shot-hipfire" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "compression-chamber",
+        "name": "Compression Chamber",
+        "description": "Fires a pellet spread in hip-fire or a single high-damage slug while aiming.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "playstyles": [
+      { "id": "ads", "label": "ADS" },
+      { "id": "hipfire", "label": "Hipfire" }
+    ],
+    "catalyst": {
+      "name": "Duality Catalyst",
+      "description": "Grants 20 Range and increases Magazine Size by 2 (6🠚8)",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 74.189,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 8,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+          }
+        },
+        "totalShots": {
+          "value": 17,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 680,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+          }
+        }
       }
     },
     "reloadDurationIncluded": {
@@ -5117,121 +5287,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-duality-ads",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-duality-ads",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1262.155,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-duality-ads",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-duality-ads",
-            "note": "visual Value; assumptions: ADS"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-duality-ads",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-duality-ads"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-duality-ads",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-duality-ads"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "compression-chamber",
-        "name": "Compression Chamber",
-        "description": "Fires a pellet spread in hip-fire or a single high-damage slug while aiming.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Duality Catalyst",
-      "description": "Grants 20 Range and increases Magazine Size by 2 (6🠚8)",
-      "effect": "timing",
-      "timing": {
-        "fireRateRpm": {
-          "value": 74.189,
-          "source": {
-            "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
-          }
-        },
-        "magazine": {
-          "value": 8,
-          "source": {
-            "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        },
-        "totalShots": {
-          "value": 17,
-          "source": {
-            "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        },
-        "reloadTimeMs": {
-          "value": 680,
-          "source": {
-            "name": "Quantum Damage-ics (specials), row specials-shotgun-duality-cata-slug",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        }
-      }
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "edge-of-action",
@@ -7709,49 +7765,236 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file graviton-spike",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: a hand cannon has no charge; primary ammo, the time counts from the first shot (Quantum)"
       }
     },
     "fireRateRpm": {
       "value": 95,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 13,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "reloadTimeMs": {
       "value": 1610,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot, Stasis mode",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file graviton-spike",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 176.645,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-graviton-spike-stasis-mode",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "hand-cannon-graviton-spike-stasis-mode",
+            "note": "perShot 176.645 of the row (Full Modifiers 15.09 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file graviton-spike",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file graviton-spike",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-arc",
+        "name": "Shot, Arc mode",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file graviton-spike",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 93.857,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-graviton-spike-arc-mode",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "hand-cannon-graviton-spike-arc-mode",
+            "note": "perShot 93.857 of the row (Full Modifiers 15.09 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file graviton-spike",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file graviton-spike",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "arc-mode", "not": true }],
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-arc",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "arc-mode" }],
+        "do": [{ "type": "spawn", "part": "shot-arc" }]
+      },
+      {
+        "id": "rate-arc",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "arc-mode" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 150,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-graviton-spike-arc-mode",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "temporal-manipulation",
+        "name": "Temporal Manipulation",
+        "description": "[Alternate Weapon Action]  to swap between fast-firing Arc mode or slow-firing Stasis mode. Final blows and precision hits overcharge the opposing mode to enable additional effects.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "temporal-manipulation-ii",
+        "name": "Temporal Manipulation II",
+        "description": "[Alternate Weapon Action]  to swap between fast-firing Arc mode or slow-firing Stasis mode. Final blows and precision hits overcharge the opposing mode to enable additional effects.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "temporal-manipulation-iii",
+        "name": "Temporal Manipulation III",
+        "description": "[Alternate Weapon Action]  to swap between fast-firing Arc mode or slow-firing Stasis mode. Final blows and precision hits overcharge the opposing mode to enable additional effects.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "temporal-manipulation-iv",
+        "name": "Temporal Manipulation IV",
+        "description": "[Alternate Weapon Action]  to swap between fast-firing Arc mode or slow-firing Stasis mode. Final blows and precision hits overcharge the opposing mode to enable additional effects.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "playstyles": [
+      { "id": "stasis-mode", "label": "Stasis mode" },
+      { "id": "arc-mode", "label": "Arc mode" }
+    ],
+    "catalyst": {
+      "name": "Temporal Alignment Refit, Transcendent Zen Refit, Subsistence Refit, Rapid Hit Refit",
+      "description": "Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another.\nNo time limit between the two activations.\nGrants the Transcendent Moment trait:\nWeapon Kills grant stat benefits based on the weapon's elemental alignment for ? seconds.\nLight Alignment grants ? Stability and ? Handling.\nDark Alignment grants ? Range and ? Aim Assist.\nKills while Transcendent activate both bonuses.\nLight Alignment: Arc, Solar, Void\nDarkness Alignment: Stasis, Strand\nGrants the Subsistence trait:\nWeapon Kills refill 10% of the magazine (rounded up) from reserves.\nSubmachine Gun and Auto Rifle Kills refill 17% of the magazine.\nGrants the Rapid Hit trait:\n\"Buffed Hits\" grant 1 Stack of Rapid Hit for 2 seconds. Maximum of 5 Stacks.\n\"Buffed Hits\" refer to any \"Yellow Number\" Hits such as Precision Hits or Hits against debuffed targets.\nBenefits at 1|2|3|4|5 Stacks:\n• 2|12|14|18|25 Stability\n• 5|30|35|42|60 Reload Speed\n• 0.99x|0.96x|0.95x|0.945x|0.92x Reload Duration Multiplier",
+      "effect": "unknown"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -7763,115 +8006,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-graviton-spike-stasis-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "hand-cannon-graviton-spike-stasis-mode",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 176.645,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-graviton-spike-stasis-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "hand-cannon-graviton-spike-stasis-mode",
-            "note": "visual Value; assumptions: stasis mode"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-graviton-spike-stasis-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "hand-cannon-graviton-spike-stasis-mode"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-graviton-spike-stasis-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "hand-cannon-graviton-spike-stasis-mode"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "temporal-manipulation",
-        "name": "Temporal Manipulation",
-        "description": "[Alternate Weapon Action]  to swap between fast-firing Arc mode or slow-firing Stasis mode. Final blows and precision hits overcharge the opposing mode to enable additional effects.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "temporal-manipulation-ii",
-        "name": "Temporal Manipulation II",
-        "description": "[Alternate Weapon Action]  to swap between fast-firing Arc mode or slow-firing Stasis mode. Final blows and precision hits overcharge the opposing mode to enable additional effects.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "temporal-manipulation-iii",
-        "name": "Temporal Manipulation III",
-        "description": "[Alternate Weapon Action]  to swap between fast-firing Arc mode or slow-firing Stasis mode. Final blows and precision hits overcharge the opposing mode to enable additional effects.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "temporal-manipulation-iv",
-        "name": "Temporal Manipulation IV",
-        "description": "[Alternate Weapon Action]  to swap between fast-firing Arc mode or slow-firing Stasis mode. Final blows and precision hits overcharge the opposing mode to enable additional effects.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Temporal Alignment Refit, Transcendent Zen Refit, Subsistence Refit, Rapid Hit Refit",
-      "description": "Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another.\nNo time limit between the two activations.\nGrants the Transcendent Moment trait:\nWeapon Kills grant stat benefits based on the weapon's elemental alignment for ? seconds.\nLight Alignment grants ? Stability and ? Handling.\nDark Alignment grants ? Range and ? Aim Assist.\nKills while Transcendent activate both bonuses.\nLight Alignment: Arc, Solar, Void\nDarkness Alignment: Stasis, Strand\nGrants the Subsistence trait:\nWeapon Kills refill 10% of the magazine (rounded up) from reserves.\nSubmachine Gun and Auto Rifle Kills refill 17% of the magazine.\nGrants the Rapid Hit trait:\n\"Buffed Hits\" grant 1 Stack of Rapid Hit for 2 seconds. Maximum of 5 Stacks.\n\"Buffed Hits\" refer to any \"Yellow Number\" Hits such as Precision Hits or Hits against debuffed targets.\nBenefits at 1|2|3|4|5 Stacks:\n• 2|12|14|18|25 Stability\n• 5|30|35|42|60 Reload Speed\n• 0.99x|0.96x|0.95x|0.945x|0.92x Reload Duration Multiplier",
-      "effect": "unknown"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "hard-light",
@@ -18775,9 +18910,8 @@
       "value": 633,
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of The Queenbreaker",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
+        "retrieved": "2026-10-31",
+        "status": "verified"
       }
     },
     "fireRateRpm": {
@@ -18786,26 +18920,29 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013); without catalyst: magazine 5 (override)"
+        "status": "fitted",
+        "row": "the-queenbreaker-rewind-rounds-combat-sights",
+        "note": "timing.fireRateRpm: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
       }
     },
     "magazine": {
       "value": 5,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "verified",
+        "note": "timing.magazine: Derived: (Time to Empty 33 s − 4 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
       }
     },
     "totalShots": {
       "value": 21,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "verified",
+        "note": "timing.totalShots: Derived: (Time to Empty 33 s − 4 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
       }
     },
     "reloadTimeMs": {
@@ -18814,34 +18951,22 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 2.283 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
-      }
-    },
-    "reloadDurationIncluded": {
-      "value": 0.9,
-      "source": {
-        "name": "Quantum Damage-ics, Home (Assumptions Made)",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-25",
-        "status": "verified",
-        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
-        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+        "status": "fitted",
+        "row": "the-queenbreaker-rewind-rounds-combat-sights",
+        "note": "timing.reloadTimeMs: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
       }
     },
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot (Aegis average)",
+        "name": "Burst, Combat Sights",
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file the-queenbreaker",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
-            "note": "Package: one value per shot"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "damagePerTick": {
@@ -18852,31 +18977,114 @@
             "retrieved": "2026-10-20",
             "status": "fitted",
             "row": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
-            "note": "visual Value; assumptions: burst, Combat Sights"
+            "note": "perShot 1966.482 of the row (Full Modifiers 3.16 already out)"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file the-queenbreaker",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file the-queenbreaker",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "canPrecision": false,
+        "delivery": "impact",
         "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-marksman",
+        "name": "Bolt, Marksman Sights",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-queenbreaker",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1505.771,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-the-queenbreaker-marksman-sights",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "linear-fusion-rifle-the-queenbreaker-marksman-sights",
+            "note": "perShot 1505.771 of the row (Full Modifiers 3.16 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-queenbreaker",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-queenbreaker",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "marksman-sights", "not": true }],
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-marksman",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "marksman-sights" }],
+        "do": [{ "type": "spawn", "part": "shot-marksman" }]
+      },
+      {
+        "id": "rate-marksman",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "marksman-sights" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 52.174,
+                "source": {
+                  "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-marksman-sights",
+                  "url": "https://destiny2.science/boss-damage",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "the-queenbreaker-rewind-rounds-marksman-sights",
+                  "note": "timing.fireRateRpm: Derived: (TtE 24.366 s − 0.633 s charge − 1 reloads × 1.883 s) ÷ 19 intervals within magazines (ADR 0013)"
+                }
+              }
+            }
+          }
+        ]
       }
     ],
     "intrinsics": [
@@ -18886,11 +19094,15 @@
         "description": "[Alternate Weapon Action]  to swap between scopes and alter this weapon's firing behavior. Strong against [Stagger] Unstoppable Champions.",
         "source": {
           "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
+          "retrieved": "2026-10-31",
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
+    ],
+    "playstyles": [
+      { "id": "combat-sights", "label": "Combat Sights" },
+      { "id": "marksman-sights", "label": "Marksman Sights" }
     ],
     "catalyst": {
       "name": "Rewind Rounds, The Queenbreaker Catalyst",
@@ -18903,8 +19115,9 @@
             "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
             "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
+            "status": "fitted",
+            "row": "the-queenbreaker-rewind-rounds-combat-sights",
+            "note": "timing.fireRateRpm: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
           }
         },
         "magazine": {
@@ -18913,7 +19126,9 @@
             "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
             "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "verified"
+            "status": "fitted",
+            "row": "the-queenbreaker-rewind-rounds-combat-sights",
+            "note": "timing.magazine: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
           }
         },
         "totalShots": {
@@ -18922,7 +19137,9 @@
             "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
             "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "verified"
+            "status": "fitted",
+            "row": "the-queenbreaker-rewind-rounds-combat-sights",
+            "note": "timing.totalShots: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
           }
         },
         "reloadTimeMs": {
@@ -18931,18 +19148,24 @@
             "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
             "url": "https://destiny2.science/boss-damage",
             "retrieved": "2026-10-20",
-            "status": "verified"
+            "status": "fitted",
+            "row": "the-queenbreaker-rewind-rounds-combat-sights",
+            "note": "timing.reloadTimeMs: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
           }
         }
       }
     },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    ]
+    }
   },
   {
     "id": "the-wardcliff-coil",

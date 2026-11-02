@@ -1,0 +1,71 @@
+{
+  "id": "graviton-spike",
+  "kind": "exoticWeapon",
+  "name": "Graviton Spike",
+  "texts": [
+    { "source": "clarity", "entry": "Temporal Alignment Refit", "hash": "961ef2f4" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file graviton-spike",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: a hand cannon has no charge; primary ammo, the time counts from the first shot (Quantum)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-graviton-spike-stasis-mode].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-graviton-spike-stasis-mode].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-graviton-spike-stasis-mode].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-graviton-spike-stasis-mode].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Temporal Alignment Refit, Transcendent Zen Refit, Subsistence Refit, Rapid Hit Refit",
+    "description": "Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another.\nNo time limit between the two activations.\nGrants the Transcendent Moment trait:\nWeapon Kills grant stat benefits based on the weapon's elemental alignment for ? seconds.\nLight Alignment grants ? Stability and ? Handling.\nDark Alignment grants ? Range and ? Aim Assist.\nKills while Transcendent activate both bonuses.\nLight Alignment: Arc, Solar, Void\nDarkness Alignment: Stasis, Strand\nGrants the Subsistence trait:\nWeapon Kills refill 10% of the magazine (rounded up) from reserves.\nSubmachine Gun and Auto Rifle Kills refill 17% of the magazine.\nGrants the Rapid Hit trait:\n\"Buffed Hits\" grant 1 Stack of Rapid Hit for 2 seconds. Maximum of 5 Stacks.\n\"Buffed Hits\" refer to any \"Yellow Number\" Hits such as Precision Hits or Hits against debuffed targets.\nBenefits at 1|2|3|4|5 Stacks:\n• 2|12|14|18|25 Stability\n• 5|30|35|42|60 Reload Speed\n• 0.99x|0.96x|0.95x|0.945x|0.92x Reload Duration Multiplier",
+    "effect": "unknown"
+  },
+  "playstyles": [
+    { "id": "stasis-mode", "label": "Stasis mode" },
+    { "id": "arc-mode", "label": "Arc mode" }
+  ],
+  "parts": {
+    "shot": {
+      "name": "Shot, Stasis mode",
+      "damage": "$aegis[hand-cannon-graviton-spike-stasis-mode].perShot",
+      "delivery": "impact"
+    },
+    "shot-arc": {
+      "name": "Shot, Arc mode",
+      "damage": "$aegis[hand-cannon-graviton-spike-arc-mode].perShot",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "arc-mode", "not": true }],
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-arc",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "arc-mode" }],
+      "do": [{ "type": "spawn", "part": "shot-arc" }]
+    },
+    {
+      "id": "rate-arc",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "arc-mode" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": "$quantum[primaries-hand-cannon-graviton-spike-arc-mode].timing.fireRateRpm"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -301,8 +301,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Eriana's Vow, Illegally Modded Holster, Death At First Glance, 7 shots, pre-stacked using heavy burst | übersprungen | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Eriana's Vow, Illegally Modded Holster, Death At First Glance, full mag | übersprungen | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Graviton Spike, stasis mode | im Modell | base row of the package |
-| Graviton Spike, arc mode | übersprungen | ohne stasis mode der Basiszeile |
-| Graviton Spike, average, overcharging both modes, typical boss model, Temporal Alignment | übersprungen | ohne stasis mode der Basiszeile |
+| Graviton Spike, arc mode | übersprungen | the item file uses another row |
+| Graviton Spike, average, overcharging both modes, typical boss model, Temporal Alignment | übersprungen | the item file uses another row |
 | Hawkmoon | im Modell | base row of the package |
 | Hawkmoon, Illegally Modded Holster, Paracausal Shot, full mag | übersprungen | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Hawkmoon, Illegally Modded Holster, Paracausal Shot, full mag, pre-stacked using heavy burst | übersprungen | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
@@ -337,7 +337,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Lorentz Driver | im Modell | base row of the package |
 | Precision frame, Charge MW, Accelerated Coils | übersprungen | legendary frame (owner 2026-10-25) |
 | Sleeper Simulant | im Modell | base row of the package |
-| The Queenbreaker, Marksman Sights | übersprungen | ohne burst, Combat Sights der Basiszeile |
+| The Queenbreaker, Marksman Sights | übersprungen | the item file uses another row |
 | The Queenbreaker, burst, Combat Sights | im Modell | base row of the package |
 | Adaptive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive frame | übersprungen | legendary frame (owner 2026-10-25) |
@@ -423,7 +423,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Wicked Implement, average, with manual shatters | im Modell | base row of the package |
 | Aggressive frame, body | übersprungen | legendary frame (owner 2026-10-25) |
 | Conditional Finality, average, body, both modes | im Modell | base row of the package |
-| Duality, hipfire, body | übersprungen | ohne ADS der Basiszeile |
+| Duality, hipfire, body | übersprungen | the item file uses another row |
 | Duality, ADS | im Modell | base row of the package |
 | Heavy burst frame, burst | übersprungen | legendary frame (owner 2026-10-25) |
 | Legend of Acrius, body | im Modell | base row of the package |

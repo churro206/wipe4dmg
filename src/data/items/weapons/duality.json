@@ -1,0 +1,69 @@
+{
+  "id": "duality",
+  "kind": "exoticWeapon",
+  "name": "Duality",
+  "texts": [
+    { "source": "clarity", "entry": "Compression Chamber", "hash": "7147c920" },
+    { "source": "clarity", "entry": "Duality Catalyst", "hash": "88770622" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file duality",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: a shotgun has no charge; the time to empty counts from the first shot (Quantum)"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-shotgun-duality-cata-slug].timing.fireRateRpm",
+  "magazine": {
+    "expr": "$quantum[specials-shotgun-duality-cata-slug].timing.magazine - $clarity[Duality Catalyst](\"Magazine Size by 2\")",
+    "note": "Quantum measures only with the catalyst (\"cata\", magazine 8); the catalyst adds 2 (Clarity 6 to 8), so 6 without it"
+  },
+  "totalShots": {
+    "expr": "$quantum[specials-shotgun-duality-cata-slug].timing.totalShots - $clarity[Duality Catalyst](\"Magazine Size by 2\")",
+    "note": "the 2 extra rounds of the magazine count to the ammunition (Quantum 17 with the catalyst, coverage 15 to 17), so 15 without it"
+  },
+  "reloadTimeMs": "$quantum[specials-shotgun-duality-cata-slug].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Duality Catalyst",
+    "description": "Grants 20 Range and increases Magazine Size by 2 (6🠚8)",
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-shotgun-duality-cata-slug].timing.fireRateRpm",
+      "magazine": "$quantum[specials-shotgun-duality-cata-slug].timing.magazine",
+      "totalShots": "$quantum[specials-shotgun-duality-cata-slug].timing.totalShots",
+      "reloadTimeMs": "$quantum[specials-shotgun-duality-cata-slug].timing.reloadTimeMs"
+    }
+  },
+  "playstyles": [
+    { "id": "ads", "label": "ADS" },
+    { "id": "hipfire", "label": "Hipfire" }
+  ],
+  "parts": {
+    "shot": {
+      "name": "Slug, ADS",
+      "damage": "$aegis[shotgun-duality-ads].perShot",
+      "delivery": "impact"
+    },
+    "shot-hipfire": {
+      "name": "Pellets, hipfire",
+      "damage": "$aegis[shotgun-duality-hipfire-body].perShot",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "hipfire", "not": true }],
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-hipfire",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "hipfire" }],
+      "do": [{ "type": "spawn", "part": "shot-hipfire" }]
+    }
+  ]
+}

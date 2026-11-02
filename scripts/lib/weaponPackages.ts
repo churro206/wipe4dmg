@@ -49,7 +49,6 @@ import {
 import {
   adjustTiming,
   CATALYST_MAGAZINE,
-  chargeSeconds,
   type Timing,
   type TimingProblem,
   timingFromAegis,
@@ -1115,41 +1114,8 @@ export function buildWeaponImport(
         timingOverride.row,
         timingOverride.noReloads === true,
       );
-      if (timingOverride.rowHasCatalyst) {
-        derivedFrom = fromRow;
-        if (timingOverride.magazine) {
-          const magazine = timingOverride.magazine;
-          const shots = fromRow.totalShots;
-          const reloads = shots === null ? 0 : Math.ceil(shots / magazine) - 1;
-          timing = {
-            ...fromRow,
-            magazine,
-            timeToEmptySeconds:
-              shots === null
-                ? null
-                : (shots - 1) * fromRow.intervalSeconds +
-                  reloads * fromRow.engineReloadSeconds +
-                  chargeSeconds(fromRow),
-            note: `${fromRow.note}; without catalyst: magazine ${magazine} (override)`,
-          };
-        } else {
-          const derived = timingWithoutCatalyst(
-            fromRow,
-            catalysts.map((c) => c.text),
-          );
-          if (!derived)
-            throw new Error(
-              `${manifest.name}: Clarity names no magazine or reserves of the catalyst`,
-            );
-          timing = derived.timing;
-        }
-        entry.notes.push(
-          `Timing-Zeile ${timingOverride.row} spielt mit Katalysator; ohne ihn ${timingOverride.magazine ? `Magazin ${timingOverride.magazine} (Override)` : "aus Clarity zurückgerechnet"}`,
-        );
-      } else {
-        timing = fromRow;
-        entry.notes.push(`Timing aus Zeile ${timingOverride.row} (Override)`);
-      }
+      timing = fromRow;
+      entry.notes.push(`Timing aus Zeile ${timingOverride.row} (Override)`);
     }
     if (timingOverride?.values) {
       // Values the reason derives, e.g. from manifest stats and Quantum's reload per weapon type.

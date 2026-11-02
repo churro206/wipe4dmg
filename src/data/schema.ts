@@ -1908,10 +1908,6 @@ export const WeaponOverride = z.object({
     .object({
       from: z.enum(["Aegis", "Quantum"]), // use this source even if a rule would not
       row: z.string().optional(), // id of the Sustained or Quantum row of the timing
-      // The row plays with the catalyst: it is the timing with it; without it from "magazine",
-      // else from the numbers Clarity names ("6🠚8").
-      rowHasCatalyst: z.boolean().optional(),
-      magazine: z.number().int().positive().optional(),
       catalystRow: z.string().optional(), // Quantum or Sustained row of the timing with catalyst
       noReloads: z.boolean().optional(), // all ammo is one magazine (no reload, or inside the rate)
       // One shot uses this much ammo, the row counts ammo (e.g. Choir of One: 5 per projectile)
