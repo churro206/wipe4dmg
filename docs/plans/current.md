@@ -6,6 +6,8 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 Format für den Skill `abarbeiten`: Überschrift „Checkliste (freigegeben <Datum>)“, ein Kästchen pro Block in Reihenfolge, `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`.
 
+**Pause (Inhaber, 2026-11-02):** B6.2 ist committet (349c824), das Review fehlt. Weiter mit `/abarbeiten`: zuerst den Reviewer für 349c824 starten, dann B6.3. Der Worker meldet zu B6.2: Tests nach der Datei geschrieben.
+
 - [x] B6.1 Delicate Tomb als Item-Datei: Hipfire (Grundschuss, 890 pro Schuss) und ADS (745), je 18 Schuss, Muster `salvation-s-grip.json`. Gate: B6-Gate. (f95e747)
 - [ ] B6.2 Katalysator-Timing im Item-Verweis: Form für „Zeile mit Katalysator, Wert ohne“ (heute Override `rowHasCatalyst`, `scripts/lib/weaponPackages.ts` ab Zeile 1118), Test in `itemResolve`; damit Duality (Magazin 6 statt 8), Graviton Spike (Sustained wechselt die Modi, ohne Schusszahl) und The Queenbreaker (zweite Nutzerin, Magazin 5) als Item-Datei, `rowHasCatalyst` gestrichen. Gate: B6-Gate.
 - [ ] B6.3 Schwerter mit Sustained-Combo wie Black Talon: Ergo Sum, Heartshadow als Item-Datei, Muster `black-talon.json`. Gate: B6-Gate.
@@ -30,6 +32,7 @@ Danach: Stapelzähler als Schalter (`Roaring Flames x3`, `Transcendent`), Testin
 
 - Weapons und Abilities melden nur (Abilities 0,83, 4 von 8). Schwellen: Inhaber.
 - Ability-Wert hängt an der Waffe im Build (Gathering Storm 7 703 / 7 901), Ursache offen.
+- Aus B6.2, über 2 %, ohne Block (B6.5 aufnehmen? Inhaber): Duality ohne On Black Wings (Slug +55 %), Graviton Spike ohne Moduswechsel (Overcharge, Temporal Alignment, Lightning Strike; bis etwa +75 %). Queenbreaker: Katalysator-Magazin 11 gegen Clarity „Cannot load the Magazine beyond its base capacity“.
 - Review B6.1: `weapon-packages.json` kopiert die Takt-Notiz auf `magazine`, `totalShots`, `reloadTimeMs`, `fireRateRpm` steht `verified` statt `derived` (Generator, älter).
 - `tmp/playstyleLink.test.ts` veraltet, löscht der Inhaber (Hook erlaubt kein `rm`).
 - Ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk; Argent Ordnance ohne Reload-Teil. Beim Inhaber: Nullschaden-Treffer in der Aufschlüsselung.
