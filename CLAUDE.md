@@ -31,20 +31,19 @@ Einziger Weg vom Build zur Simulation: `buildSimulation(build, gameData)`.
 
 ## Arbeitsweise
 
-1. Plan vorschlagen, auf Freigabe warten; einen freigegebenen Block ohne Zwischenfragen durcharbeiten.
+1. Opus schreibt die Checkliste in `docs/plans/current.md`, der Inhaber gibt sie als Ganzes frei, der Skill `abarbeiten` setzt sie mit Worker und Reviewer um.
 2. Tests zuerst; jede Änderung an `src/engine` braucht einen Test. Prüfen mit dem Skill `pruefen`.
-3. Vertikale Scheiben (Daten, Engine, Oberfläche). Aufräumen getrennt von Verhaltensänderungen.
-4. Ein Block pro Sitzung. Am Ende `docs/plans/current.md` pflegen (höchstens 4 KB), dann `/clear` vorschlagen. Nach drei Funktions-Blöcken ein Aufräum-Block.
+3. Vertikale Scheiben (Daten, Engine, Oberfläche). Aufräumen getrennt von Verhaltensänderungen, nach drei Funktions-Blöcken ein Aufräum-Block.
+4. Kein neuer Plan, solange der aktuelle nicht fertig oder vom Inhaber gestoppt ist. Ein Plan verlangt keine Funktion ohne Nutzer. Einen solchen Planteil meldet jeder als Widerspruch.
 
-- Modell: Pläne und schwierige Herleitungen mit Opus, Umsetzung mit Sonnet. Jede Antwort, die einen Schritt vorschlägt oder abschließt, nennt das Modell für den nächsten.
-- Online nur im Budget des Skills `recherche`. Keine Subagents. Commit-Betreff höchstens 72 Zeichen.
+- Online nur im Budget des Skills `recherche`. Commit-Betreff höchstens 72 Zeichen. Merge nur auf Ansage.
 
 ## Definition of Done
 
 - `npm run test:quiet`, `npx tsc -b` und `npm run lint` grün (die CI prüft dasselbe). Die Vergleichsbasis ist nur gewollt geändert.
 - Neue Daten-Art oder Mechanik: Szenario in `tests/plausibility.test.ts`, ohne die Änderung rot.
 - Beleg nennen, sonst „ungeprüft“. Der Abschlussbericht endet mit **Geeicht / Gelockert / Gestrichen / Unsicher** (je Liste oder „keine“). Planteile streichen und Gates lockern nur nach Rückfrage.
-- Commit und Push; `docs/roadmap.md`, `docs/plans/current.md` und `docs/changelog.md` aktualisiert.
+- Urteil des Reviewers: OK. Commit und Push; `docs/roadmap.md`, `docs/plans/current.md` und `docs/changelog.md` aktualisiert.
 
 ## Befehle und Shell
 

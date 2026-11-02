@@ -2,6 +2,10 @@
 
 Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen in `docs/known-inaccuracies.md`. Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
 
+## Checkliste (noch keine)
+
+Format für den Skill `abarbeiten`: Überschrift „Checkliste (freigegeben <Datum>)“, ein Kästchen pro Block in Reihenfolge, `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`.
+
 ## B6, Spielweisen der Exotic-Waffen (freigegeben 2026-11-01)
 
 Befund: Spielweise-Wörter (`isExecution`) gelten bei Weapons als „kein Schalter“, die Zeile rechnet mit einer Spielweise.
