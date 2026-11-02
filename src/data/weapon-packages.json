@@ -8358,21 +8358,20 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file heirloom",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: the draw is inside the time per arrow (Aegis Sustained, peakRateSeconds)"
       }
     },
     "fireRateRpm": {
-      "value": 50.705,
+      "value": 55.402,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 22.483 s − 0 reloads × 0 s) ÷ 19 intervals within magazines (ADR 0013)"
+        "status": "fitted",
+        "row": "heirloom-uncharged-argent-quiver",
+        "note": "Derived: 60 / $aegisSustained[heirloom-uncharged-argent-quiver].peakRateSeconds (seconds per arrow to arrows per minute); $aegisSustained[heirloom-uncharged-argent-quiver].peakRateSeconds = 1.083 (Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver)"
       }
     },
     "magazine": {
@@ -8381,7 +8380,9 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "heirloom-uncharged-argent-quiver",
+        "note": "shots"
       }
     },
     "totalShots": {
@@ -8390,18 +8391,399 @@
         "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
         "url": "https://destiny2.science/boss-damage",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "heirloom-uncharged-argent-quiver",
+        "note": "shots"
       }
     },
     "reloadTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row heirloom-uncharged-argent-quiver",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "name": "Item file heirloom",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: the magazine is the whole ammunition, a bow does not reload (Aegis Sustained, noReloads)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Arrow",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 855.652,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "bow-heirloom-uncharged",
+            "note": "perShot 855.652 of the row (Full Modifiers 3.31 already out)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-1-charge",
+        "name": "Arrow, 1 charge",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1213.625,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-average-1-3-charge-with-ignition-catalyst; Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "bow-heirloom-average-1-3-charge-with-ignition-catalyst",
+            "note": "Derived: $aegis[bow-heirloom-average-1-3-charge-with-ignition-catalyst].perShot / (1 + $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") / 100) (Aegis measures the charged arrow only with the catalyst; its 10 % on Scorched enemies are taken out, the catalyst itself comes as Scorch); $aegis[bow-heirloom-average-1-3-charge-with-ignition-catalyst].perShot = 1334.987 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-average-1-3-charge-with-ignition-catalyst); $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-2-charges",
+        "name": "Arrow, 2 charges",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1904.657,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-average-2-3-charge-with-ignition-catalyst; Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "bow-heirloom-average-2-3-charge-with-ignition-catalyst",
+            "note": "Derived: $aegis[bow-heirloom-average-2-3-charge-with-ignition-catalyst].perShot / (1 + $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") / 100) (as 1 charge); $aegis[bow-heirloom-average-2-3-charge-with-ignition-catalyst].perShot = 2095.123 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-average-2-3-charge-with-ignition-catalyst); $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-fully-charged",
+        "name": "Arrow, fully charged",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 2280.117,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-average-fully-charged-with-ignition-catalyst; Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "bow-heirloom-average-fully-charged-with-ignition-catalyst",
+            "note": "Derived: $aegis[bow-heirloom-average-fully-charged-with-ignition-catalyst].perShot / (1 + $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") / 100) (as 1 charge); $aegis[bow-heirloom-average-fully-charged-with-ignition-catalyst].perShot = 2508.129 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-average-fully-charged-with-ignition-catalyst); $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file heirloom",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "1-charge", "not": true },
+          { "type": "playstyle", "id": "2-charges", "not": true },
+          { "type": "playstyle", "id": "fully-charged", "not": true }
+        ],
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-1-charge",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "1-charge" }],
+        "do": [{ "type": "spawn", "part": "shot-1-charge" }]
+      },
+      {
+        "id": "shot-2-charges",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "2-charges" }],
+        "do": [{ "type": "spawn", "part": "shot-2-charges" }]
+      },
+      {
+        "id": "shot-fully-charged",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "fully-charged" }],
+        "do": [{ "type": "spawn", "part": "shot-fully-charged" }]
+      },
+      {
+        "id": "rate-1-charge",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "1-charge" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 44.444,
+                "source": {
+                  "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heirloom-1-charge-catalyst-argent-quiver",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "heirloom-1-charge-catalyst-argent-quiver",
+                  "note": "Derived: 60 / $aegisSustained[heirloom-1-charge-catalyst-argent-quiver].peakRateSeconds (seconds per arrow to arrows per minute); $aegisSustained[heirloom-1-charge-catalyst-argent-quiver].peakRateSeconds = 1.35 (Aegis Boss Damage sheet (tab Sustained), row heirloom-1-charge-catalyst-argent-quiver)"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rate-2-charges",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "2-charges" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 30,
+                "source": {
+                  "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heirloom-2-charges-catalyst-argent-quiver",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "heirloom-2-charges-catalyst-argent-quiver",
+                  "note": "Derived: 60 / $aegisSustained[heirloom-2-charges-catalyst-argent-quiver].peakRateSeconds (seconds per arrow to arrows per minute); $aegisSustained[heirloom-2-charges-catalyst-argent-quiver].peakRateSeconds = 2 (Aegis Boss Damage sheet (tab Sustained), row heirloom-2-charges-catalyst-argent-quiver)"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rate-fully-charged",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "fully-charged" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 19.887,
+                "source": {
+                  "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heirloom-fully-charged-catalyst-argent-quiver",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "heirloom-fully-charged-catalyst-argent-quiver",
+                  "note": "Derived: 60 / $aegisSustained[heirloom-fully-charged-catalyst-argent-quiver].peakRateSeconds (seconds per arrow to arrows per minute); $aegisSustained[heirloom-fully-charged-catalyst-argent-quiver].peakRateSeconds = 3.017 (Aegis Boss Damage sheet (tab Sustained), row heirloom-fully-charged-catalyst-argent-quiver)"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "scorch-1-charge",
+        "on": { "on": "hit" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "playstyle", "id": "1-charge" }
+        ],
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 20,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Charged Shots apply 20"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "scorch-2-charges",
+        "on": { "on": "hit" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "playstyle", "id": "2-charges" }
+        ],
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 40,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "|40|"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "scorch-fully-charged",
+        "on": { "on": "hit" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "playstyle", "id": "fully-charged" }
+        ],
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 60,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Heirloom Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "|60 Scorch"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "bolt-thrower",
+        "name": "Bolt Thrower",
+        "description": "This weapon fires high-powered explosive bolts. Strong against [Stagger] Unstoppable Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "playstyles": [
+      { "id": "uncharged", "label": "Uncharged" },
+      { "id": "1-charge", "label": "1 charge" },
+      { "id": "2-charges", "label": "2 charges" },
+      { "id": "fully-charged", "label": "Fully charged" }
+    ],
+    "catalyst": {
+      "name": "Heirloom Catalyst",
+      "description": "Scorch and Ignitions that originate from this weapon deal 5% increased damage.\nDirect Hits with Charged Shots apply 20|40|60 Scorch Stacks at Charge Level 1|2|3. Scorch application is unaffected by Ember of Ashes.\nGrants 10% increased damage to Scorched enemies.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -8413,82 +8795,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "bow-heirloom-uncharged",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 855.652,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "bow-heirloom-uncharged",
-            "note": "visual Value; assumptions: uncharged"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "bow-heirloom-uncharged"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row bow-heirloom-uncharged",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "bow-heirloom-uncharged"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "bolt-thrower",
-        "name": "Bolt Thrower",
-        "description": "This weapon fires high-powered explosive bolts. Strong against [Stagger] Unstoppable Champions.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Heirloom Catalyst",
-      "description": "Scorch and Ignitions that originate from this weapon deal 5% increased damage.\nDirect Hits with Charged Shots apply 20|40|60 Scorch Stacks at Charge Level 1|2|3. Scorch application is unaffected by Ember of Ashes.\nGrants 10% increased damage to Scorched enemies.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "hierarchy-of-needs",

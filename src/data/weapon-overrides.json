@@ -505,23 +505,6 @@
     }
   },
   {
-    "weapon": "Heirloom",
-    "reason": "Ungeladen wie die Basiszeile (Sustained Base 856 = Weapons 855,7): 20 Pfeile in 22,5 s, Bogen ohne Reload. Timing mit Argent Quiver (Reload Speed) wie bei Aegis.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "heirloom-uncharged-argent-quiver",
-        "text": "\"base\":856"
-      }
-    ],
-    "aegisWins": true,
-    "timing": {
-      "from": "Aegis",
-      "row": "heirloom-uncharged-argent-quiver",
-      "noReloads": true
-    }
-  },
-  {
     "weapon": "Tessellation",
     "reason": "Schaden aus Weapons „Property: Irreducible“ (2557,6, ohne Transcendent); Timing aus Aegis Sustained (22 Schuss, 4567 ms Reload, volle Granaten-Energie).",
     "quotes": [

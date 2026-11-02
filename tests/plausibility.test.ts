@@ -1045,6 +1045,43 @@ describe("sword combos as playstyles (B6)", () => {
   });
 });
 
+describe("bow charge levels as playstyles (B6)", () => {
+  const heirloom = (fields: Partial<Build>) =>
+    run({ subclass: "solar", damagePhaseSeconds: 30, ...fields }, weaponById("heirloom"));
+
+  it("Heirloom: a higher charge level is slower per arrow (Aegis Sustained 1.083 / 1.35 / 2 / 3.017 s) and hits harder", () => {
+    const styles = [undefined, "1-charge", "2-charges", "fully-charged"].map((playstyle) =>
+      heirloom({ catalyst: true, ...(playstyle ? { playstyle } : {}) }),
+    );
+    note(
+      "Heirloom 30 s: Pfeile uncharged / 1 / 2 / voll",
+      styles.map((r) => r.shots.length).join(" / "),
+      "höchstens 20 Pfeile (Munition); 30 s ÷ 2,0 / 3,0 s bei 2 / 3 Ladungen",
+    );
+    // 20 arrows are all the ammunition: the first two levels use it up inside 30 s
+    const intervals = styles.map((r) => (r.shots[1].timeMs - r.shots[0].timeMs) / 1000);
+    expect(intervals[0]).toBeCloseTo(1.083, 1);
+    expect(intervals[1]).toBeCloseTo(1.35, 1);
+    expect(intervals[2]).toBeCloseTo(2, 1);
+    expect(intervals[3]).toBeCloseTo(3.017, 1);
+    expect(styles[0].shots.length).toBe(20);
+    expect(styles[2].shots.length).toBeGreaterThan(styles[3].shots.length);
+    const perArrow = (r: SimulationResult) => r.totalDamage / r.shots.length;
+    expect(perArrow(styles[3])).toBeGreaterThan(perArrow(styles[2]));
+    expect(perArrow(styles[2])).toBeGreaterThan(perArrow(styles[1]));
+    expect(perArrow(styles[1])).toBeGreaterThan(perArrow(styles[0]));
+  });
+
+  it("Heirloom: the catalyst adds Scorch on a charged arrow, about +5 to +25 %", () => {
+    const plain = heirloom({ playstyle: "fully-charged", catalyst: false });
+    const catalyst = heirloom({ playstyle: "fully-charged", catalyst: true });
+    const gain = catalyst.totalDamage / plain.totalDamage;
+    note("Heirloom 30 s voll geladen: mit / ohne Katalysator", fmt(gain), "Aegis-Zeile misst nur mit (×1,1 herausgerechnet)");
+    expect(gain).toBeGreaterThan(1.05);
+    expect(gain).toBeLessThan(1.25);
+  });
+});
+
 describe("bows (2026-10-26)", () => {
   const hierarchy = (fields: Partial<Build>) =>
     run({ guardianClass: "hunter", subclass: "solar", catalyst: true, ...fields }, weaponById("hierarchy-of-needs"));

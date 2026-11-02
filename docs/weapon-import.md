@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **133 Pakete**, 4 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **132 Pakete**, 5 Items, 4 Lücken.
 
 ## Pakete
 
@@ -64,7 +64,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Hawkmoon | handCannon | kinetic | keine (1 Shot) | 96,2 | Quantum |  | 8 | 1,64 s | – | – → 140 | 0,6 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing ohne Katalysator aus Clarity zurückgerechnet („Magazine Size by 1 (8🠚9)“); Annahme: das Magazin zählt zur Munition; Timing nur aus Quantum; Katalysator-Timing: ∞ Shots, Magazin 9, Zeit bis leer – |
 | Heartshadow | sword | void | heavy, Shot in the Dark, weaken excluded (1 Shot) | 2.754,9 | Quantum | 14 | 14 | 0,00 s | 26,2 s | – → 30 | – | Override: Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum; Katalysator-Timing: 15 Shots, Magazin 15, Zeit bis leer 28,2 s |
 | Heir Apparent | machineGun | solar | keine (1 Shot) | 56,1 | Quantum | 440 | 200 | 3,57 s | 36,3 s | 900 → 903 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
-| Heirloom | bow | solar | uncharged (1 Shot) | 855,7 | Aegis | 20 | 20 | 0,00 s | 22,5 s | – → 51 | 0,0 % | Override: Ungeladen wie die Basiszeile (Sustained Base 856 = Weapons 855,7): 20 Pfeile in 22,5 s, Bogen ohne Reload. Timing mit Argent Quiver (Reload Speed) wie bei Aegis.; Timing aus Zeile heirloom-uncharged-argent-quiver (Override); Timing nur aus Aegis |
 | Ice Breaker | sniperRifle | solar | keine (1 Shot) | 1.223,4 | Aegis | 10 | 10 | 0,00 s | 11,1 s | 49 → 49 | 0,0 % | Override: Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).; Timing aus Zeile ice-breaker-sniper-s-meditation (Override); Timing nur aus Aegis |
 | Izanagi's Burden | sniperRifle | kinetic | keine (1 Shot) | 658,5 | Quantum | 20 | 4 | 1,98 s | 17,9 s | 90 → 114 | 0,1 % | Override: Catalyst: Honed Edge x4 +20 % (Clarity). Optimal gespielt schießt man damit Honed-Edge-Schüsse: Quantum „cata, 4x Honed Edge“ 14.910 gegen 13.180 normal, je 20 Shots, also ×1,131 pro Shot; Timing aus derselben Zeile (Reload 3,2 s).; Timing aus Zeile specials-sniper-rifle-izanagi-s-burden (Override); Timing nur aus Quantum; abgeleitete Feuerrate 114 statt 90 rpm; Katalysator-Timing: 20 Shots, Magazin 4, Zeit bis leer 22,8 s |
 | Jötunn | fusionRifle | solar | average, successive shots (10 Shots) | 1.048,3 | Aegis | 24 | 5 | 2,07 s | 31,7 s | – → 50 | 0,0 % | Override: Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; ⚠ Timing mit Katalysator: keine Quelle ohne; der Katalysator ändert laut Clarity Magazin oder Reload, nicht die Munition; Timing nur aus Aegis |
@@ -152,6 +151,7 @@ Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf di
 
 | Waffe | Datei | Prüfen |
 | --- | --- | --- |
+| Heirloom | `src/data/items/weapons/heirloom.json` | – |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
 | The Lament | `src/data/items/weapons/the-lament.json` | – |
@@ -239,7 +239,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Hawkmoon | primary | Timing | Magazin 8 → 9, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 140 → 140 | Increases Magazine Size by 1 (8🠚9). |
 | Heartshadow | heavy | Timing | Magazin 14 → 15, Shots 14 → 15, Zeit bis leer 26,2 → 28,2 s, rpm 30 → 30 | Increases reserves by 6 (57🠚63). |
 | Heir Apparent | heavy | keine | – | Arc Shield gains 75% [25%] Damage Resistance. |
-| Heirloom | special | keine | – | Scorch and Ignitions that originate from this weapon deal 5% increased damage. |
 | Izanagi's Burden | special | Schaden und Timing | Magazin 4 → 4, Shots 20 → 20, Zeit bis leer 17,9 → 22,8 s, rpm 114 → 114 | Increases the damage bonus of Honed Edge x4 by 20%, granting the following values: |
 | Jötunn | special | keine | – | Grants the Cornered trait: |
 | Khvostov 7G-0X | primary | keine | – | Scoring 25 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 🡅0.8% Super Energy. |

@@ -6,9 +6,9 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 3 within 2 percentage points**
-- Rank (check set): Spearman 0.80 over 9 rows
-- Absolute, information only: within ±3 % 2 of 9 (check set), 125 of 181 (all counted rows, mostly Eichung)
-- Rows: 183 scenarios (32 by hand, 151 generated); fitted 130; calibration set 42; check set 9; not counted 2; core cannot run 0
+- Rank (check set): Spearman 0.96 over 7 rows
+- Absolute, information only: within ±3 % 2 of 7 (check set), 125 of 181 (all counted rows, mostly Eichung)
+- Rows: 183 scenarios (32 by hand, 151 generated); fitted 133; calibration set 41; check set 7; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -25,8 +25,6 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | barrow-dyad-peacekeepers | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 5230 | −4.6 % |
 | hierarchy-of-needs-two-rings | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
 | one-thousand-voices-ember | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 11617 | +0.6 % |
-| gen-bow-heirloom-average-1-3-charge-with-ignition-catalyst | bow-heirloom-average-1-3-charge-with-ignition-catalyst | 6667 | 4278 | −35.8 % |
-| gen-bow-heirloom-average-2-3-charge-with-ignition-catalyst | bow-heirloom-average-2-3-charge-with-ignition-catalyst | 6278 | 2567 | −59.1 % |
 | gen-fusion-rifle-cull-s-shadow | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
 | gen-fusion-rifle-delicate-tomb-ads | fusion-rifle-delicate-tomb-ads | 13399 | 16028 | +19.6 % |
 | gen-smg-riskrunner-average-arc-conductor-peacekeepers | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2609 | −32.2 % |
@@ -127,10 +125,10 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 181 | 43 % | 130 | 9 | 0.80 | 3/3 | 1 of 3 |
+| Weapons | 417 | 181 | 43 % | 133 | 7 | 0.96 | 3/3 | 1 of 3 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 19 | 20 % | 0 | 19 | 1.00 | 3/3 | 5 of 5 |
-| Special | 84 | 6 | 7 % | 0 | 6 | 1.00 | 3/3 | 0 of 0 |
+| Special | 84 | 10 | 12 % | 0 | 10 | 0.99 | 3/3 | 0 of 0 |
 | Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
 ## Delta pairs by group (check set)
@@ -166,8 +164,6 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 
 | Group | Aegis row | Aegis | Model | Deviation |
 | --- | --- | ---: | ---: | ---: |
-| Weapons | bow-heirloom-average-1-3-charge-with-ignition-catalyst | 6667 | 4278 | −35.8 % |
-| Weapons | bow-heirloom-average-2-3-charge-with-ignition-catalyst | 6278 | 2567 | −59.1 % |
 | Weapons | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
 | Weapons | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
 | Weapons | fusion-rifle-delicate-tomb-ads | 13399 | 16028 | +19.6 % |
@@ -214,6 +210,10 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Heavy | sustained-xenophage | 67645 | 67645 | −0.0 % |
 | Special | sustained-arbalest | 58835 | 56161 | −4.5 % |
 | Special | sustained-forerunner | 51349 | 51349 | +0.0 % |
+| Special | sustained-heirloom-1-charge-catalyst-argent-quiver | 88751 | 91148 | +2.7 % |
+| Special | sustained-heirloom-2-charges-catalyst-argent-quiver | 139286 | 142150 | +2.1 % |
+| Special | sustained-heirloom-fully-charged-catalyst-argent-quiver | 166743 | 175750 | +5.4 % |
+| Special | sustained-heirloom-uncharged-argent-quiver | 56885 | 56885 | −0.0 % |
 | Special | sustained-ice-breaker-sniper-s-meditation | 34643 | 34643 | −0.0 % |
 | Special | sustained-j-tunn | 61950 | 61950 | −0.0 % |
 | Special | sustained-merciless | 54552 | 54549 | −0.0 % |
@@ -286,7 +286,7 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - Hail the Storm: 1
 - … and 19 more
 
-### Special (38 rows)
+### Special (34 rows)
 
 - excludes Transcendence 5% bonus: 5
 - Lucent Blades x3: 5
@@ -303,7 +303,7 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - Pack Tactics (simplified underestimate of 3 stack start): 2
 - precision: 2
 - projectile: 2
-- … and 45 more
+- … and 41 more
 
 ### Abilities (80 rows)
 

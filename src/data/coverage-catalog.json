@@ -585,7 +585,7 @@
         "name": "Heirloom",
         "group": "Energy",
         "inGame": "Bolt Thrower: Adopts the profile of a Balanced 'Perfect Vent' Heat Weapon.\nAiming down sights charges explosive bolts that deal high damage in a 4 meter radius. Detonation damage falls off to 50% at the edge of the radius.\nBullwhacker: Aiming Down Sights generates 3% Heat per second, building up to Charge Level x1|x2|x3 after 0.5|1.2|1.8 seconds.\nEach Charge Level generates 20%|30%|34% heat upon firing and increases impact damage, explosion damage, and detonation radius.\nBenefits at Charge Level x1|x2|x3:\n• 36.5%|91%|145% increased Impact damage\n• 17%|27%|91% increased Explosion damage\n• 5|6|9.5 meter Detonation Radius",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "4 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:heirloom",
         "status": "full"
       },

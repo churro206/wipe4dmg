@@ -1,0 +1,205 @@
+{
+  "id": "heirloom",
+  "kind": "exoticWeapon",
+  "name": "Heirloom",
+  "texts": [
+    { "source": "clarity", "entry": "Heirloom Catalyst", "hash": "89c8fc82" },
+    { "source": "clarity", "entry": "Bolt Thrower", "hash": "4e287333" },
+    { "source": "clarity", "entry": "Bullwhacker", "hash": "e70614f1" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file heirloom",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: the draw is inside the time per arrow (Aegis Sustained, peakRateSeconds)"
+    }
+  },
+  "fireRateRpm": {
+    "expr": "60 / $aegisSustained[heirloom-uncharged-argent-quiver].peakRateSeconds",
+    "note": "seconds per arrow to arrows per minute"
+  },
+  "magazine": "$aegisSustained[heirloom-uncharged-argent-quiver].shots",
+  "totalShots": "$aegisSustained[heirloom-uncharged-argent-quiver].shots",
+  "reloadTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file heirloom",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: the magazine is the whole ammunition, a bow does not reload (Aegis Sustained, noReloads)"
+    }
+  },
+  "catalyst": {
+    "name": "Heirloom Catalyst",
+    "description": "Scorch and Ignitions that originate from this weapon deal 5% increased damage.\nDirect Hits with Charged Shots apply 20|40|60 Scorch Stacks at Charge Level 1|2|3. Scorch application is unaffected by Ember of Ashes.\nGrants 10% increased damage to Scorched enemies.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.",
+    "effect": "damage"
+  },
+  "playstyles": [
+    { "id": "uncharged", "label": "Uncharged" },
+    { "id": "1-charge", "label": "1 charge" },
+    { "id": "2-charges", "label": "2 charges" },
+    { "id": "fully-charged", "label": "Fully charged" }
+  ],
+  "parts": {
+    "shot": {
+      "name": "Arrow",
+      "damage": "$aegis[bow-heirloom-uncharged].perShot",
+      "delivery": "impact"
+    },
+    "shot-1-charge": {
+      "name": "Arrow, 1 charge",
+      "damage": {
+        "expr": "$aegis[bow-heirloom-average-1-3-charge-with-ignition-catalyst].perShot / (1 + $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") / 100)",
+        "note": "Aegis measures the charged arrow only with the catalyst; its 10 % on Scorched enemies are taken out, the catalyst itself comes as Scorch"
+      },
+      "delivery": "impact"
+    },
+    "shot-2-charges": {
+      "name": "Arrow, 2 charges",
+      "damage": {
+        "expr": "$aegis[bow-heirloom-average-2-3-charge-with-ignition-catalyst].perShot / (1 + $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") / 100)",
+        "note": "as 1 charge"
+      },
+      "delivery": "impact"
+    },
+    "shot-fully-charged": {
+      "name": "Arrow, fully charged",
+      "damage": {
+        "expr": "$aegis[bow-heirloom-average-fully-charged-with-ignition-catalyst].perShot / (1 + $clarity[Heirloom Catalyst](\"Grants 10% increased damage\") / 100)",
+        "note": "as 1 charge"
+      },
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "1-charge", "not": true },
+        { "type": "playstyle", "id": "2-charges", "not": true },
+        { "type": "playstyle", "id": "fully-charged", "not": true }
+      ],
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-1-charge",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "1-charge" }],
+      "do": [{ "type": "spawn", "part": "shot-1-charge" }]
+    },
+    {
+      "id": "shot-2-charges",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "2-charges" }],
+      "do": [{ "type": "spawn", "part": "shot-2-charges" }]
+    },
+    {
+      "id": "shot-fully-charged",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "fully-charged" }],
+      "do": [{ "type": "spawn", "part": "shot-fully-charged" }]
+    },
+    {
+      "id": "rate-1-charge",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "1-charge" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "60 / $aegisSustained[heirloom-1-charge-catalyst-argent-quiver].peakRateSeconds",
+              "note": "seconds per arrow to arrows per minute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rate-2-charges",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "2-charges" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "60 / $aegisSustained[heirloom-2-charges-catalyst-argent-quiver].peakRateSeconds",
+              "note": "seconds per arrow to arrows per minute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rate-fully-charged",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "fully-charged" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "60 / $aegisSustained[heirloom-fully-charged-catalyst-argent-quiver].peakRateSeconds",
+              "note": "seconds per arrow to arrows per minute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scorch-1-charge",
+      "on": { "on": "hit" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "playstyle", "id": "1-charge" }
+      ],
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Heirloom Catalyst](\"Charged Shots apply 20\")"
+        }
+      ]
+    },
+    {
+      "id": "scorch-2-charges",
+      "on": { "on": "hit" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "playstyle", "id": "2-charges" }
+      ],
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Heirloom Catalyst](\"|40|\")"
+        }
+      ]
+    },
+    {
+      "id": "scorch-fully-charged",
+      "on": { "on": "hit" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "playstyle", "id": "fully-charged" }
+      ],
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Heirloom Catalyst](\"|60 Scorch\")"
+        }
+      ]
+    }
+  ]
+}
