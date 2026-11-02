@@ -197,40 +197,6 @@
     }
   },
   {
-    "weapon": "Choir of One",
-    "reason": "Aegis misst den Projektil-Modus auf Abstand in zwei Reitern unterschiedlich (Weapons 661,4, Sustained 692); Schaden und Timing aus derselben Sustained-Zeile. Ein Projektil verbraucht 5 Munition (Clarity), Aegis und Quantum zählen Munition: 225 Munition = 45 Projektile, Magazin 25 = 5 (Quantum: 45 × 570 = 25.650 Total Damage). Quantum 570 gegen Aegis 692 pro Projektil; Aegis gilt. Catalyst: man wählt einen von drei Refits (Subsistence, Destabilizing Rounds, Onslaught), alle brauchen Weapon Kills; gegen einen Boss ohne Adds keine Wirkung.",
-    "catalystEffect": "none",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Onslaught Refit",
-        "text": "Weapon Kills grant a Stack of 'Onslaught'"
-      },
-      {
-        "source": "aegis",
-        "entry": "choir-of-one-projectile-mode-spaced",
-        "text": "1017ms reload"
-      },
-      {
-        "source": "clarity",
-        "entry": "Fanatical Lance",
-        "text": "Firing this gun consumes 5 ammo and launches a slow-traveling projectile"
-      },
-      {
-        "source": "quantum",
-        "entry": "specials-auto-rifle-choir-of-one",
-        "text": "\"totalDamage\":25650"
-      }
-    ],
-    "aegisWins": true,
-    "perShotFromTiming": true,
-    "timing": {
-      "from": "Aegis",
-      "row": "choir-of-one-projectile-mode-spaced",
-      "ammoPerShot": 5
-    }
-  },
-  {
     "weapon": "Cull's Shadow",
     "reason": "Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).",
     "quotes": [

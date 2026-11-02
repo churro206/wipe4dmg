@@ -184,8 +184,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Balanced heat weapon - 450RPM primary | übersprungen | legendary frame (owner 2026-10-25) |
 | Centrifuse | im Modell | base row of the package |
 | Cerberus+1, point blank | im Modell | base row of the package |
-| Choir of One, hitscan | übersprungen | ohne projectile - spaced (~9m) der Basiszeile |
-| Choir of One, projectile - point blank | übersprungen | ohne projectile - spaced (~9m) der Basiszeile |
+| Choir of One, hitscan | übersprungen | the item file uses another row |
+| Choir of One, projectile - point blank | übersprungen | the item file uses another row |
 | Choir of One, projectile - spaced (~9m) | im Modell | base row of the package |
 | Hard Light | im Modell | base row of the package |
 | High-impact frame | übersprungen | legendary frame (owner 2026-10-25) |

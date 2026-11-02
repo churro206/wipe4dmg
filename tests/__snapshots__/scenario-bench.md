@@ -8,7 +8,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 - **Delta pairs (check set): 1 of 3 within 2 percentage points**
 - Rank (check set): Spearman 0.96 over 7 rows
 - Absolute, information only: within ±3 % 2 of 7 (check set), 125 of 181 (all counted rows, mostly Eichung)
-- Rows: 183 scenarios (32 by hand, 151 generated); fitted 133; calibration set 41; check set 7; not counted 2; core cannot run 0
+- Rows: 183 scenarios (32 by hand, 151 generated); fitted 132; calibration set 42; check set 7; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -125,7 +125,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 181 | 43 % | 133 | 7 | 0.96 | 3/3 | 1 of 3 |
+| Weapons | 417 | 181 | 43 % | 132 | 7 | 0.96 | 3/3 | 1 of 3 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 19 | 20 % | 0 | 19 | 1.00 | 3/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 0 | 10 | 0.99 | 3/3 | 0 of 0 |
@@ -303,7 +303,7 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - Pack Tactics (simplified underestimate of 3 stack start): 2
 - precision: 2
 - projectile: 2
-- … and 41 more
+- … and 39 more
 
 ### Abilities (80 rows)
 

@@ -1012,6 +1012,31 @@ describe("playstyles (2026-10-30, ADR 0017 S4)", () => {
   });
 });
 
+describe("Choir of One modes as playstyles (B6)", () => {
+  const choir = (playstyle?: string) =>
+    run({ subclass: "void", damagePhaseSeconds: 120, ...(playstyle ? { playstyle } : {}) }, weaponById("choir-of-one"));
+
+  it("Choir of One: all ammo is 45 projectiles or 45 shots of five hitscan rounds; hitscan deals about ×1.9 in about 66 s", () => {
+    const projectile = choir();
+    const hitscan = choir("hitscan-mode");
+    const ratio = hitscan.totalDamage / projectile.totalDamage;
+    const lastS = (r: SimulationResult) => r.shots.at(-1)!.timeMs / 1000;
+    note(
+      "Choir of One 120 s: Schüsse, letzter Schuss, Verhältnis hitscan ÷ Projektil",
+      `${projectile.shots.length} / ${hitscan.shots.length}, ${fmt(lastS(projectile))} s / ${fmt(lastS(hitscan))} s, ×${fmt(ratio)}`,
+      "225 Munition ÷ 5; Aegis Sustained 17,7 s / 65,8 s, Gesamtschaden 76 676 / 144 867 = ×1,89",
+    );
+    expect(projectile.shots.length).toBe(45);
+    expect(hitscan.shots.length).toBe(45);
+    expect(lastS(projectile)).toBeGreaterThan(14);
+    expect(lastS(projectile)).toBeLessThan(18.5);
+    expect(lastS(hitscan)).toBeGreaterThan(60);
+    expect(lastS(hitscan)).toBeLessThan(67);
+    expect(ratio).toBeGreaterThan(1.7);
+    expect(ratio).toBeLessThan(2.1);
+  });
+});
+
 describe("sword combos as playstyles (B6)", () => {
   const lament = (fields: Partial<Build>) =>
     run({ subclass: "solar", damagePhaseSeconds: 30, ...fields }, weaponById("the-lament"));

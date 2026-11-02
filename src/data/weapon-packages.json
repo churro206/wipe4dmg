@@ -2184,57 +2184,241 @@
     "code": 102,
     "name": "Choir of One",
     "manifestHash": 3698448090,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "autoRifle",
     "element": "void",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file choir-of-one",
+        "retrieved": "2026-11-02",
+        "status": "derived",
+        "note": "Derived: the time to empty counts from the first shot (Aegis Sustained)"
       }
     },
     "fireRateRpm": {
       "value": 269.663,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance; Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 17.748 s − 8 reloads × 1.017 s) ÷ 216 intervals within magazines (ADR 0013); 5 ammo per shot (override)"
+        "status": "fitted",
+        "row": "choir-of-one-projectile-mode-spaced",
+        "note": "Derived: 60 / ($clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds - ($aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs / 1000) / ($aegisSustained[choir-of-one-projectile-mode-spaced].shots - $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine)) (seconds per projectile to projectiles per minute: the time to empty without the reloads, over the intervals of ammo within the magazines (ADR 0013), times the 5 ammo of a projectile); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance); $aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds = 17.748 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs = 1017 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one)"
       }
     },
     "magazine": {
       "value": 5,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-auto-rifle-choir-of-one].magazine / $clarity[Fanatical Lance](\"consumes 5 ammo\") (ammo of the magazine to projectiles, 5 ammo each (Clarity)); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
       }
     },
     "totalShots": {
       "value": 45,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "fitted",
+        "row": "choir-of-one-projectile-mode-spaced",
+        "note": "Derived: $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $clarity[Fanatical Lance](\"consumes 5 ammo\") (ammo of the row to projectiles, 5 ammo each (Clarity)); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
       }
     },
     "reloadTimeMs": {
-      "value": 794,
+      "value": 794.5,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 1.017 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "fitted",
+        "row": "choir-of-one-projectile-mode-spaced",
+        "note": "Derived: $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs - 1000 * $clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds - ($aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs / 1000) / ($aegisSustained[choir-of-one-projectile-mode-spaced].shots - $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine) (Aegis reloads right after the last shot, the simulator waits one interval first, so one interval less); $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs = 1017 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance); $aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds = 17.748 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs = 1017 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Projectile",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file choir-of-one",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 692,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "choir-of-one-projectile-mode-spaced",
+            "note": "base"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file choir-of-one",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file choir-of-one",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      },
+      {
+        "id": "shot-hitscan-mode",
+        "name": "Hitscan, 5 rounds",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file choir-of-one",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1305,
+          "source": {
+            "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "choir-of-one-hitscan-mode-precision",
+            "note": "Derived: $aegisSustained[choir-of-one-hitscan-mode-precision].base * $clarity[Fanatical Lance](\"consumes 5 ammo\") (one hitscan round per ammo; a shot of the item is the 5 ammo of a projectile); $aegisSustained[choir-of-one-hitscan-mode-precision].base = 261 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file choir-of-one",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file choir-of-one",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "hitscan-mode", "not": true }],
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-hitscan-mode",
+        "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "hitscan-mode" }],
+        "do": [{ "type": "spawn", "part": "shot-hitscan-mode" }]
+      },
+      {
+        "id": "rate-hitscan-mode",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "hitscan-mode" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 44.944,
+                "source": {
+                  "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance; Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one",
+                  "retrieved": "2026-10-20",
+                  "status": "fitted",
+                  "row": "choir-of-one-hitscan-mode-precision",
+                  "note": "Derived: 60 / ($clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-hitscan-mode-precision].timeToEmptySeconds - ($aegisSustained[choir-of-one-hitscan-mode-precision].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-hitscan-mode-precision].reloadMs / 1000) / ($aegisSustained[choir-of-one-hitscan-mode-precision].shots - $aegisSustained[choir-of-one-hitscan-mode-precision].shots / $quantum[specials-auto-rifle-choir-of-one].magazine)) (as the base rate, from the hitscan row: one round per ammo, so five rounds (the magazine of 5 shots) per shot; the slower ADS rate is inside the time to empty); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance); $aegisSustained[choir-of-one-hitscan-mode-precision].timeToEmptySeconds = 65.808 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $aegisSustained[choir-of-one-hitscan-mode-precision].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $aegisSustained[choir-of-one-hitscan-mode-precision].reloadMs = 1017 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $aegisSustained[choir-of-one-hitscan-mode-precision].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $aegisSustained[choir-of-one-hitscan-mode-precision].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one)"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "command-frame",
+        "name": "Command Frame",
+        "description": "Fires extended-range, heavy-caliber projectiles at a reduced rate of fire. Deals increased precision damage when aiming down sights.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "command-frame-ii",
+        "name": "Command Frame II",
+        "description": "Fires extended-range, heavy-caliber projectiles at a reduced rate of fire. Deals increased precision damage when aiming down sights.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "command-frame-iii",
+        "name": "Command Frame III",
+        "description": "Fires extended-range, heavy-caliber projectiles at a reduced rate of fire. Deals increased precision damage when aiming down sights.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "command-frame-iv",
+        "name": "Command Frame IV",
+        "description": "Fires extended-range, heavy-caliber projectiles at a reduced rate of fire. Deals increased precision damage when aiming down sights.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "playstyles": [
+      { "id": "projectile-mode", "label": "Projectile mode" },
+      { "id": "hitscan-mode", "label": "Hitscan mode" }
+    ],
+    "catalyst": {
+      "name": "Refit",
+      "description": "One of three Refits to choose: Subsistence (Weapon Kills refill the magazine from reserves), Destabilizing Rounds (Weapon Kills apply Volatile around the target and grant Volatile Rounds), Onslaught (Weapon Kills grant stacks of Onslaught). All need Weapon Kills; against a boss without adds there is no effect.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -2246,115 +2430,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-choir-of-one-projectile-spaced-9m",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-choir-of-one-projectile-spaced-9m",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 692,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-choir-of-one-projectile-spaced-9m",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-choir-of-one-projectile-spaced-9m",
-            "note": "visual Value; assumptions: projectile - spaced (~9m)"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-choir-of-one-projectile-spaced-9m",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-choir-of-one-projectile-spaced-9m"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-choir-of-one-projectile-spaced-9m",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-choir-of-one-projectile-spaced-9m"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "command-frame",
-        "name": "Command Frame",
-        "description": "Fires extended-range, heavy-caliber projectiles at a reduced rate of fire. Deals increased precision damage when aiming down sights.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "command-frame-ii",
-        "name": "Command Frame II",
-        "description": "Fires extended-range, heavy-caliber projectiles at a reduced rate of fire. Deals increased precision damage when aiming down sights.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "command-frame-iii",
-        "name": "Command Frame III",
-        "description": "Fires extended-range, heavy-caliber projectiles at a reduced rate of fire. Deals increased precision damage when aiming down sights.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "command-frame-iv",
-        "name": "Command Frame IV",
-        "description": "Fires extended-range, heavy-caliber projectiles at a reduced rate of fire. Deals increased precision damage when aiming down sights.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Subsistence Refit, Destabilizing Rounds Refit, Onslaught Refit",
-      "description": "Grants the Subsistence trait:\nWeapon Kills refill 10% of the magazine (rounded up) from reserves.\nSubmachine Gun and Auto Rifle Kills refill 17% of the magazine.\nGrants the Destablizing Rounds trait:\nWeapon Kills apply Volatile to enemies in a 7 meter radius around the target and grant Volatile Rounds for 3 seconds.\n1.5 second cooldown between activations.\nGrants the Onslaught trait:\nWeapon Kills grant a Stack of 'Onslaught' for 4.5 seconds. Maximum of 3 Stacks.\nBenefits at 1|2|3 Stacks of Onslaught:\n• 16.7% | 28.6% | 37.5% decreased Firing Delay\n• 15 | 25 | 35 Reload Speed",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "cloudstrike",

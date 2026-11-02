@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **131 Pakete**, 6 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **130 Pakete**, 7 Items, 4 Lücken.
 
 ## Pakete
 
@@ -25,7 +25,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Buried Bloodline | sidearm | void | keine (1 Shot) | 322,4 | Quantum | 50 | 11 | 1,02 s | 31,1 s | 100 → 109 | 0,1 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum |
 | Centrifuse | autoRifle | arc | keine (1 Shot) | 34,3 | Quantum |  | 45 | 0,50 s | – | 450 → 450 | 1,9 % | Timing nur aus Quantum |
 | Cerberus+1 | autoRifle | kinetic | point blank (1 Shot) | 92,6 | Quantum |  | 31 | 1,12 s | – | – → 360 | 0,5 % | Override: Aegis misst „point blank“; dazu passt Quantums „normal, close range“ (Precision 93 gegen Aegis 92,6 pro Schuss).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-auto-rifle-cerberus-1-normal-close-range-2 (Override); Timing nur aus Quantum |
-| Choir of One | autoRifle | void | projectile - spaced (~9m) (90 Shots) | 692,0 | Aegis | 45 | 5 | 1,02 s | 16,1 s | 225 → 270 | 21,4 % | Override: Aegis misst den Projektil-Modus auf Abstand in zwei Reitern unterschiedlich (Weapons 661,4, Sustained 692); Schaden und Timing aus derselben Sustained-Zeile. Ein Projektil verbraucht 5 Munition (Clarity), Aegis und Quantum zählen Munition: 225 Munition = 45 Projektile, Magazin 25 = 5 (Quantum: 45 × 570 = 25.650 Total Damage). Quantum 570 gegen Aegis 692 pro Projektil; Aegis gilt. Catalyst: man wählt einen von drei Refits (Subsistence, Destabilizing Rounds, Onslaught), alle brauchen Weapon Kills; gegen einen Boss ohne Adds keine Wirkung.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile choir-of-one-projectile-mode-spaced (Override); ⚠ Timing: Aegis 225 Shots in 17,7 s, Quantum 225 Shots in 18,6 s; Aegis gilt; Schaden pro Shot aus „Base“ der Sustained-Zeile choir-of-one-projectile-mode-spaced (Override); Skala weicht um 21.4 % ab; Aegis gilt (Override) |
 | Cloudstrike | sniperRifle | arc | average, with lightning strikes (36 Shots) | 664,4 | Quantum | 31 | 7 | 1,68 s | 17,9 s | 140 → 161 | 0,9 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; Katalysator-Timing: 44 Shots, Magazin 10, Zeit bis leer 23,4 s |
 | Coldheart | traceRifle | arc | average, no initial trace (202 Shots) | 35,3 | Quantum | 505 | 101 | 1,44 s | 39,1 s | 900 → 907 | 1,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing nur aus Quantum; Katalysator-Timing: 505 Shots, Magazin 101, Zeit bis leer 38,5 s |
 | Collective Obligation | pulseRifle | void | burst (1 Shot) | 38,8 | Quantum |  | 36 | 1,16 s | – | 390 → 390 | 0,6 % | Aegis misst einen Burst aus 3 Kugeln (wipe 1.755 = 3 × 585); Paket pro Kugel wie Quantums Magazin; Timing nur aus Quantum |
@@ -150,6 +149,7 @@ Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf di
 
 | Waffe | Datei | Prüfen |
 | --- | --- | --- |
+| Choir of One | `src/data/items/weapons/choir-of-one.json` | – |
 | Heirloom | `src/data/items/weapons/heirloom.json` | – |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | – |
@@ -201,7 +201,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Buried Bloodline | special | unbekannt | – | While Devour is active, grants the following benefits: |
 | Centrifuse | primary | keine | – | While you are Amplified, Overcharge Capacitor will continuously build at a rate of 7% charge per second and no longer pa |
 | Cerberus+1 | primary | keine | – | Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds: |
-| Choir of One | special | keine | – | Grants the Subsistence trait: |
 | Cloudstrike | special | Timing | Magazin 7 → 10, Shots 31 → 44, Zeit bis leer 17,9 → 23,4 s, rpm 161 → 155 | Passively grants 25 Handling. |
 | Coldheart | special | Timing | Magazin 101 → 101, Shots 505 → 505, Zeit bis leer 39,1 → 38,5 s, rpm 907 → 907 | Passively grants 20 Stability and 20 Reload Speed. |
 | Collective Obligation | primary | keine | – | – |
@@ -333,8 +332,8 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Ager's Scepter | average, Will Given Form, Harsh Refraction | Katalysator: Will Given Form; Artefakt: Harsh Refraction |
 | Barrow-Dyad | average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Exotic-Rüstung: Peacekeepers |
 | Black Talon | single projectile | ohne light der Basiszeile |
-| Choir of One | hitscan | ohne projectile - spaced (~9m) der Basiszeile |
-| Choir of One | projectile - point blank | ohne projectile - spaced (~9m) der Basiszeile |
+| Choir of One | hitscan | the item file uses another row |
+| Choir of One | projectile - point blank | the item file uses another row |
 | Cull's Shadow |  | ohne average, with corruption der Basiszeile |
 | Cull's Shadow | with corruption | ohne average der Basiszeile |
 | D.A.R.C.I. | average, Target Acquired, Networked Targeting x5, with spaced jolt, first mag | Katalysator: Networked Targeting x5 |

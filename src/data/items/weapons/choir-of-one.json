@@ -1,0 +1,90 @@
+{
+  "id": "choir-of-one",
+  "kind": "exoticWeapon",
+  "name": "Choir of One",
+  "texts": [
+    { "source": "clarity", "entry": "Fanatical Lance", "hash": "31f67ba5" },
+    { "source": "compendium", "entry": "Choir of One", "hash": "316ac4e8" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file choir-of-one",
+      "retrieved": "2026-11-02",
+      "status": "derived",
+      "note": "Derived: the time to empty counts from the first shot (Aegis Sustained)"
+    }
+  },
+  "fireRateRpm": {
+    "expr": "60 / ($clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds - ($aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs / 1000) / ($aegisSustained[choir-of-one-projectile-mode-spaced].shots - $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine))",
+    "note": "seconds per projectile to projectiles per minute: the time to empty without the reloads, over the intervals of ammo within the magazines (ADR 0013), times the 5 ammo of a projectile"
+  },
+  "magazine": {
+    "expr": "$quantum[specials-auto-rifle-choir-of-one].magazine / $clarity[Fanatical Lance](\"consumes 5 ammo\")",
+    "note": "ammo of the magazine to projectiles, 5 ammo each (Clarity)"
+  },
+  "totalShots": {
+    "expr": "$aegisSustained[choir-of-one-projectile-mode-spaced].shots / $clarity[Fanatical Lance](\"consumes 5 ammo\")",
+    "note": "ammo of the row to projectiles, 5 ammo each (Clarity)"
+  },
+  "reloadTimeMs": {
+    "expr": "$aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs - 1000 * $clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds - ($aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs / 1000) / ($aegisSustained[choir-of-one-projectile-mode-spaced].shots - $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine)",
+    "note": "Aegis reloads right after the last shot, the simulator waits one interval first, so one interval less"
+  },
+  "catalyst": {
+    "name": "Refit",
+    "description": "One of three Refits to choose: Subsistence (Weapon Kills refill the magazine from reserves), Destabilizing Rounds (Weapon Kills apply Volatile around the target and grant Volatile Rounds), Onslaught (Weapon Kills grant stacks of Onslaught). All need Weapon Kills; against a boss without adds there is no effect.",
+    "effect": "none"
+  },
+  "playstyles": [
+    { "id": "projectile-mode", "label": "Projectile mode" },
+    { "id": "hitscan-mode", "label": "Hitscan mode" }
+  ],
+  "parts": {
+    "shot": {
+      "name": "Projectile",
+      "damage": "$aegisSustained[choir-of-one-projectile-mode-spaced].base",
+      "delivery": "impact"
+    },
+    "shot-hitscan-mode": {
+      "name": "Hitscan, 5 rounds",
+      "damage": {
+        "expr": "$aegisSustained[choir-of-one-hitscan-mode-precision].base * $clarity[Fanatical Lance](\"consumes 5 ammo\")",
+        "note": "one hitscan round per ammo; a shot of the item is the 5 ammo of a projectile"
+      },
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "hitscan-mode", "not": true }],
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-hitscan-mode",
+      "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "hitscan-mode" }],
+      "do": [{ "type": "spawn", "part": "shot-hitscan-mode" }]
+    },
+    {
+      "id": "rate-hitscan-mode",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "hitscan-mode" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "60 / ($clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-hitscan-mode-precision].timeToEmptySeconds - ($aegisSustained[choir-of-one-hitscan-mode-precision].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-hitscan-mode-precision].reloadMs / 1000) / ($aegisSustained[choir-of-one-hitscan-mode-precision].shots - $aegisSustained[choir-of-one-hitscan-mode-precision].shots / $quantum[specials-auto-rifle-choir-of-one].magazine))",
+              "note": "as the base rate, from the hitscan row: one round per ammo, so five rounds (the magazine of 5 shots) per shot; the slower ADS rate is inside the time to empty"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
