@@ -4,6 +4,8 @@
 
 import type { Ability, Source } from "../../src/data/schema";
 
+const SUSTAINED_TAB = "Aegis Boss Damage sheet (tab Sustained)";
+
 /** Every object of a JSON value that has the shape of a Source (name, retrieved and status). */
 export function sourcesOf(json: unknown): Source[] {
   const found: Source[] = [];
@@ -34,10 +36,11 @@ export function fittedRows(
   weaponPackages: unknown,
   abilities: Pick<Ability, "package" | "variantOf" | "aegisRowId">[],
 ): { weaponRows: Set<string>; abilityRows: Set<string> } {
+  // A Sustained row has the id of the totals (tab Sustained): the slug starts with the tab
   const weaponRows = new Set(
     sourcesOf(weaponPackages)
       .filter((s) => s.status === "fitted" && s.row !== undefined)
-      .map((s) => s.row!),
+      .map((s) => (s.name.includes(SUSTAINED_TAB) ? `sustained-${s.row}` : s.row!)),
   );
   const abilityRows = new Set(
     abilities

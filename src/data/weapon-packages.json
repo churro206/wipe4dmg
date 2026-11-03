@@ -4274,7 +4274,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.magazine: Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
@@ -4284,7 +4284,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.totalShots: Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
@@ -4294,7 +4294,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.reloadTimeMs: Derived: (Time to Empty 32 s − 4 reloads × 1.32 s) ÷ 25 intervals (ADR 0013)"
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
@@ -5104,7 +5104,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.reloadTimeMs: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
@@ -5252,7 +5252,7 @@
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "timing.magazine: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+            "note": "timing.magazine"
           }
         },
         "totalShots": {
@@ -5262,7 +5262,7 @@
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "timing.totalShots: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+            "note": "timing.totalShots"
           }
         },
         "reloadTimeMs": {
@@ -5272,7 +5272,7 @@
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "timing.reloadTimeMs: Derived: (Time to Empty 14.3 s − 2 reloads × 0.68 s) ÷ 16 intervals (ADR 0013)"
+            "note": "timing.reloadTimeMs"
           }
         }
       }
@@ -7788,7 +7788,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.magazine: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
@@ -7798,7 +7798,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.totalShots: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
@@ -7808,7 +7808,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.reloadTimeMs: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
@@ -9142,7 +9142,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.magazine: Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
@@ -9152,7 +9152,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.totalShots: Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
@@ -9162,7 +9162,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.reloadTimeMs: Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
@@ -9643,7 +9643,7 @@
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "timing.magazine: Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; primary ammo is unlimited (Quantum: inf)"
+            "note": "timing.magazine"
           }
         },
         "totalShots": {
@@ -9653,7 +9653,7 @@
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "timing.totalShots: Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; primary ammo is unlimited (Quantum: inf)"
+            "note": "timing.totalShots"
           }
         },
         "reloadTimeMs": {
@@ -9663,7 +9663,7 @@
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "timing.reloadTimeMs: Quantum fire rate of a bow: the draw and the nock after each arrow are inside it; primary ammo is unlimited (Quantum: inf)"
+            "note": "timing.reloadTimeMs"
           }
         }
       }
@@ -13535,7 +13535,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.magazine: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
@@ -13545,7 +13545,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.totalShots: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
@@ -13555,7 +13555,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.reloadTimeMs: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
@@ -18932,7 +18932,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.magazine: Derived: (Time to Empty 33 s − 4 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
@@ -18942,7 +18942,7 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.totalShots: Derived: (Time to Empty 33 s − 4 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
@@ -18953,7 +18953,7 @@
         "retrieved": "2026-10-20",
         "status": "fitted",
         "row": "the-queenbreaker-rewind-rounds-combat-sights",
-        "note": "timing.reloadTimeMs: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
@@ -19128,7 +19128,7 @@
             "retrieved": "2026-10-20",
             "status": "fitted",
             "row": "the-queenbreaker-rewind-rounds-combat-sights",
-            "note": "timing.magazine: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
+            "note": "timing.magazine"
           }
         },
         "totalShots": {
@@ -19139,7 +19139,7 @@
             "retrieved": "2026-10-20",
             "status": "fitted",
             "row": "the-queenbreaker-rewind-rounds-combat-sights",
-            "note": "timing.totalShots: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
+            "note": "timing.totalShots"
           }
         },
         "reloadTimeMs": {
@@ -19150,7 +19150,7 @@
             "retrieved": "2026-10-20",
             "status": "fitted",
             "row": "the-queenbreaker-rewind-rounds-combat-sights",
-            "note": "timing.reloadTimeMs: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
+            "note": "timing.reloadTimeMs"
           }
         }
       }

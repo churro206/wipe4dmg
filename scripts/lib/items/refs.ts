@@ -156,6 +156,25 @@ const QUANTUM_TIMING: Record<string, (t: Timing) => number | null> = {
   reloadTimeMs: (t) => Math.round(t.engineReloadSeconds * 1000),
 };
 
+/**
+ * One field of a row's timing. Only the rate carries the derivation of the interval (`timing.note`);
+ * the other fields are read off the row and name just themselves.
+ */
+function timingField(
+  ref: ParsedRef,
+  timingOf: () => Timing | { problem: string },
+): { value: number | null; note: string } {
+  expectShape(ref, 2, false, `.timing.<${Object.keys(QUANTUM_TIMING).join("|")}>`);
+  const field = ref.path[1];
+  const of = QUANTUM_TIMING[field] ?? fail(ref, `unknown timing field ${field}`);
+  const timing = timingOf();
+  if ("problem" in timing) return fail(ref, timing.problem);
+  return {
+    value: of(timing),
+    note: field === "fireRateRpm" ? `timing.${field}: ${timing.note}` : `timing.${field}`,
+  };
+}
+
 function resolveRef(ref: ParsedRef, ctx: RefContext): SourcedNumber {
   const { sources } = ctx;
   switch (ref.source) {
@@ -170,12 +189,8 @@ function resolveRef(ref: ParsedRef, ctx: RefContext): SourcedNumber {
         note,
       });
       if (ref.path[0] === "timing") {
-        expectShape(ref, 2, false, `.timing.<${Object.keys(QUANTUM_TIMING).join("|")}>`);
-        const field = ref.path[1];
-        const of = QUANTUM_TIMING[field] ?? fail(ref, `unknown timing field ${field}`);
-        const timing = timingFromQuantum(row);
-        if ("problem" in timing) return fail(ref, timing.problem);
-        return { value: of(timing), source: source(`timing.${field}: ${timing.note}`) };
+        const { value, note } = timingField(ref, () => timingFromQuantum(row));
+        return { value, source: source(note) };
       }
       expectShape(ref, 1, false, ".<field> or .timing.<field>");
       return { value: numberField(ref, row, ref.path[0]), source: source(ref.path[0]) };
@@ -236,13 +251,7 @@ function resolveRef(ref: ParsedRef, ctx: RefContext): SourcedNumber {
       let value: number | null;
       let note: string;
       if (ref.path[0] === "timing") {
-        expectShape(ref, 2, false, `.timing.<${Object.keys(QUANTUM_TIMING).join("|")}>`);
-        const field = ref.path[1];
-        const of = QUANTUM_TIMING[field] ?? fail(ref, `unknown timing field ${field}`);
-        const timing = timingFromAegis(row);
-        if ("problem" in timing) return fail(ref, timing.problem);
-        value = of(timing);
-        note = `timing.${field}: ${timing.note}`;
+        ({ value, note } = timingField(ref, () => timingFromAegis(row)));
       } else {
         expectShape(ref, 1, false, ".<field> or .timing.<field>");
         value = numberField(ref, row, ref.path[0]);

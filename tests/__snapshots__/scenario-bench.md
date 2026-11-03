@@ -124,8 +124,8 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Weapons | 417 | 183 | 44 % | 138 | 6 | 0.94 | 3/3 | 1 of 3 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
-| Heavy | 95 | 21 | 22 % | 0 | 21 | 1.00 | 3/3 | 5 of 5 |
-| Special | 84 | 10 | 12 % | 0 | 10 | 0.99 | 3/3 | 0 of 0 |
+| Heavy | 95 | 21 | 22 % | 4 | 17 | 1.00 | 3/3 | 5 of 5 |
+| Special | 84 | 10 | 12 % | 4 | 6 | 1.00 | 3/3 | 0 of 0 |
 | Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
 ## Delta pairs by group (check set)
@@ -195,23 +195,15 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Heavy | sustained-one-thousand-voices-ember-of-ashes-catalyst-particle-reconstruction | 97543 | 98923 | +1.4 % |
 | Heavy | sustained-one-thousand-voices-ember-of-ashes-particle-reconstruction | 74750 | 75241 | +0.7 % |
 | Heavy | sustained-one-thousand-voices-particle-reconstruction | 63705 | 63638 | −0.1 % |
-| Heavy | sustained-salvation-s-grip-uncharged | 46806 | 46806 | +0.0 % |
 | Heavy | sustained-service-of-luzaku | 110752 | 110752 | +0.0 % |
 | Heavy | sustained-sleeper-simulant | 87747 | 87747 | +0.0 % |
 | Heavy | sustained-the-colony | 49096 | 47133 | −4.0 % |
-| Heavy | sustained-the-queenbreaker-rewind-rounds-combat-sights | 97261 | 97261 | +0.0 % |
-| Heavy | sustained-the-queenbreaker-rewind-rounds-marksman-sights | 74475 | 74475 | −0.0 % |
 | Heavy | sustained-thunderlord-assumes-only-one-reload-post-nerf | 101659 | 101659 | +0.0 % |
 | Heavy | sustained-tractor-cannon | 22149 | 18458 | −16.7 % |
-| Heavy | sustained-truth-prototype-truthseeker-argent-ordnance | 85454 | 81580 | −4.5 % |
 | Heavy | sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation | 128747 | 128750 | +0.0 % |
 | Heavy | sustained-xenophage | 67645 | 67645 | −0.0 % |
 | Special | sustained-arbalest | 58835 | 56161 | −4.5 % |
 | Special | sustained-forerunner | 51349 | 51349 | +0.0 % |
-| Special | sustained-heirloom-1-charge-catalyst-argent-quiver | 88751 | 91148 | +2.7 % |
-| Special | sustained-heirloom-2-charges-catalyst-argent-quiver | 139286 | 142150 | +2.1 % |
-| Special | sustained-heirloom-fully-charged-catalyst-argent-quiver | 166743 | 175750 | +5.4 % |
-| Special | sustained-heirloom-uncharged-argent-quiver | 56885 | 56885 | −0.0 % |
 | Special | sustained-ice-breaker-sniper-s-meditation | 34643 | 34643 | −0.0 % |
 | Special | sustained-j-tunn | 61950 | 61950 | −0.0 % |
 | Special | sustained-merciless | 54552 | 54549 | −0.0 % |

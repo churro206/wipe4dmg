@@ -37,9 +37,15 @@ describe("status fitted", () => {
   it("collects the rows of weapon packages and ability packages, and nothing else", () => {
     const { weaponRows, abilityRows } = fittedRows(rawPackages, abilities);
     expect(weaponRows.size).toBeGreaterThan(50);
-    // An item file can also take a number of a Sustained row ($aegisSustained, e.g. Truth's 14 shots)
-    for (const id of weaponRows) expect(weaponIds.has(id) || sustainedIds.has(id), id).toBe(true);
-    expect(weaponRows.has("truth-prototype-truthseeker-argent-ordnance")).toBe(true);
+    // An item file can also take a number of a Sustained row ($aegisSustained, e.g. Truth's 14 shots).
+    // The bench knows that row by its id in the totals, with the prefix of the tab.
+    const sustainedRows = [...weaponRows].filter((id) => !weaponIds.has(id));
+    expect(sustainedRows.length).toBeGreaterThan(0);
+    for (const id of sustainedRows)
+      expect(id.startsWith("sustained-") && sustainedIds.has(id.slice("sustained-".length)), id).toBe(true);
+    expect(weaponRows.has("sustained-truth-prototype-truthseeker-argent-ordnance")).toBe(true);
+    expect(weaponRows.has("truth-prototype-truthseeker-argent-ordnance")).toBe(false);
+    expect(weaponRows.has("sustained-the-queenbreaker-rewind-rounds-combat-sights")).toBe(true);
     // A package takes its value from the row; a variant of an ability from components takes the
     // ratio of its row to the base row.
     const input = abilities.filter((a) => a.package !== undefined || a.variantOf !== undefined);

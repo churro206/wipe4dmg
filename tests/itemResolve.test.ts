@@ -379,6 +379,17 @@ describe("a row with the catalyst, the value without it (B6.2)", () => {
     expect(() => at("chargeMs")).toThrow(/chargeMs/);
     expect(() => catalystValue(`$aegisSustained[${CATALYST_SUSTAINED_ROW}].timing`)).toThrow(/timing/);
   });
+
+  it("each timing field carries only its own note, the derivation of the interval stays with the rate", () => {
+    for (const ref of [`$aegisSustained[${CATALYST_SUSTAINED_ROW}]`, `$quantum[${CATALYST_QUANTUM_ROW}]`]) {
+      const note = (field: string) => catalystValue(`${ref}.timing.${field}`).source.note ?? "";
+      expect(note("fireRateRpm")).toMatch(/intervals/);
+      for (const field of ["magazine", "totalShots", "reloadTimeMs"]) {
+        expect(note(field)).toContain(`timing.${field}`);
+        expect(note(field)).not.toMatch(/intervals|Derived/);
+      }
+    }
+  });
 });
 
 // The rules of architecture section 5.4 with references
