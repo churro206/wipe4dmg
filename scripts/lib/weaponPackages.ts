@@ -529,6 +529,7 @@ export function buildWeaponImport(
       entry.status = "item";
       entry.itemFile = `src/data/items/weapons/${item.weapon.id}.json`;
       entry.itemReview = item.review;
+      entry.itemUncovered = item.uncovered.length;
       // The base row is the row a part takes its number from; an item without one (Hierarchy of
       // Needs) has the base row a package would have.
       const weaponRows = inputs.aegis.rows.filter((r) => sameName(r.name, manifest.name));

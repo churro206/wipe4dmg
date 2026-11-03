@@ -16,6 +16,7 @@ import {
 import { damageScaleOf } from "../../../src/engine/damageScale.ts";
 import { slug } from "../aegisBosses.ts";
 import { textHash } from "../hash.ts";
+import { itemQuotes, uncoveredSentences } from "./uncovered.ts";
 import {
   clarityEntry,
   compendiumEntry,
@@ -24,7 +25,8 @@ import {
   resolveValue,
 } from "./refs.ts";
 
-export type ResolvedItem = { weapon: Weapon; review: string[] };
+/** `uncovered`: sentences of the texts with a number that no quote covers (ADR 0019, point 5). */
+export type ResolvedItem = { weapon: Weapon; review: string[]; uncovered: string[] };
 
 /**
  * The buffs a rule grants only with the catalyst (`hasItem catalyst`), e.g. Reaper's Tithe x4 of
@@ -178,5 +180,5 @@ export function resolveWeaponItem(raw: unknown, sources: ItemSources): ResolvedI
     })),
   });
   if (!weapon.success) throw new Error(`item ${id}: ${issuesText(weapon.error.issues)}`);
-  return { weapon: weapon.data, review };
+  return { weapon: weapon.data, review, uncovered: uncoveredSentences(current, itemQuotes(raw)) };
 }

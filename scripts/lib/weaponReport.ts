@@ -28,6 +28,7 @@ export type ReportWeapon = {
   gapReason: string | null;
   itemFile?: string; // the item file of an item
   itemReview?: string[]; // texts of the item that changed since the file was written
+  itemUncovered?: number; // sentences with a number that no $clarity or notModelled quote covers
   baseRow: AegisWeaponRow | null;
   perShot: number | null;
   magazine: number | null;
@@ -145,11 +146,13 @@ export function renderWeaponImport(report: WeaponReport): string {
     "",
     "Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.",
     "",
-    "| Waffe | Datei | Prüfen |",
-    "| --- | --- | --- |",
+    `Sätze mit Zahl ohne \`$clarity\`- oder \`notModelled\`-Zitat (ADR 0019): **${items.reduce((sum, w) => sum + (w.itemUncovered ?? 0), 0)}**. Die Zahl sinkt je Block.`,
+    "",
+    "| Waffe | Datei | Sätze ohne Regel | Prüfen |",
+    "| --- | --- | ---: | --- |",
     ...items.map(
       (w) =>
-        `| ${w.name} | \`${w.itemFile}\` | ${cell((w.itemReview ?? []).join("; ") || "–")} |`,
+        `| ${w.name} | \`${w.itemFile}\` | ${w.itemUncovered ?? 0} | ${cell((w.itemReview ?? []).join("; ") || "–")} |`,
     ),
     "",
     "## Optionen",
