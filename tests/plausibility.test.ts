@@ -1218,8 +1218,12 @@ describe("Sustained-combo swords as item files (B6.3)", () => {
     );
     expect(off.shots.length).toBe(14);
     expect(on.shots.length).toBe(15);
+    // 13 intervals of 2,016 s without the catalyst, 14 with it
+    expect(lastS(off)).toBeGreaterThan(24);
+    expect(lastS(off)).toBeLessThan(28);
     expect(lastS(on)).toBeGreaterThan(26);
     expect(lastS(on)).toBeLessThan(31);
+    expect(lastS(off)).toBeLessThan(lastS(on));
     expect(off.totalDamage / off.shots.length).toBeGreaterThan(2500);
   });
 });

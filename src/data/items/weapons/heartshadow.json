@@ -20,12 +20,23 @@
     "note": "seconds per heavy to heavies per minute"
   },
   "magazine": {
-    "expr": "$aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds - 1",
-    "note": "Aegis' 15 heavies (the row counts ammunition, 63, with the catalyst); the catalyst's 6 reserves (Clarity 57 to 63) are 1 heavy of 4 ammo (57 / 4 = 14)"
+    "value": 14,
+    "source": {
+      "name": "Item file heartshadow",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "quote": "Increases reserves by 6 (57🠚63).",
+      "note": "Derived: Clarity 57 / 4 ammo per heavy (Aegis Sustained magazines 4-4-4), rounded down = 14 heavies without the catalyst"
+    }
   },
   "totalShots": {
-    "expr": "$aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds - 1",
-    "note": "the same heavies, the magazine is the whole ammunition"
+    "value": 14,
+    "source": {
+      "name": "Item file heartshadow",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the same 14 heavies, the magazine is the whole ammunition"
+    }
   },
   "reloadTimeMs": {
     "value": 0,
@@ -46,12 +57,22 @@
         "note": "as without the catalyst"
       },
       "magazine": {
-        "expr": "$aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds",
-        "note": "Aegis' 15 heavies with the catalyst"
+        "value": 15,
+        "source": {
+          "name": "Item file heartshadow",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: Aegis Sustained row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade, 15 heavies in 30,24 s (63 ammo, with the catalyst)"
+        }
       },
       "totalShots": {
-        "expr": "$aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds",
-        "note": "the same 15 heavies"
+        "value": 15,
+        "source": {
+          "name": "Item file heartshadow",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: the same 15 heavies"
+        }
       },
       "reloadTimeMs": {
         "value": 0,

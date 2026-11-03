@@ -5920,7 +5920,7 @@
     "catalyst": {
       "name": "Transcendent Steel, Ergo Sum Catalyst",
       "description": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
-      "effect": "none"
+      "effect": "unknown"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -8360,21 +8360,20 @@
     "magazine": {
       "value": 14,
       "source": {
-        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-        "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-        "note": "Derived: $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds - 1 (Aegis' 15 heavies (the row counts ammunition, 63, with the catalyst); the catalyst's 6 reserves (Clarity 57 to 63) are 1 heavy of 4 ammo (57 / 4 = 14)); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds = 30.24 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
+        "name": "Item file heartshadow",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: Clarity 57 / 4 ammo per heavy (Aegis Sustained magazines 4-4-4), rounded down = 14 heavies without the catalyst",
+        "quote": "Increases reserves by 6 (57🠚63)."
       }
     },
     "totalShots": {
       "value": 14,
       "source": {
-        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-        "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-        "note": "Derived: $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds - 1 (the same heavies, the magazine is the whole ammunition); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds = 30.24 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
+        "name": "Item file heartshadow",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: the same 14 heavies, the magazine is the whole ammunition"
       }
     },
     "reloadTimeMs": {
@@ -8471,21 +8470,19 @@
         "magazine": {
           "value": 15,
           "source": {
-            "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-            "note": "Derived: $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds (Aegis' 15 heavies with the catalyst); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds = 30.24 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
+            "name": "Item file heartshadow",
+            "retrieved": "2026-11-03",
+            "status": "derived",
+            "note": "Derived: Aegis Sustained row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade, 15 heavies in 30,24 s (63 ammo, with the catalyst)"
           }
         },
         "totalShots": {
           "value": 15,
           "source": {
-            "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-            "note": "Derived: $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds (the same 15 heavies); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds = 30.24 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
+            "name": "Item file heartshadow",
+            "retrieved": "2026-11-03",
+            "status": "derived",
+            "note": "Derived: the same 15 heavies"
           }
         },
         "reloadTimeMs": {

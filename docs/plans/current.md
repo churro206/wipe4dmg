@@ -22,7 +22,7 @@ Befund: Spielweise-Wörter (`isExecution`) gelten bei Weapons als „kein Schalt
 
 **Erledigt (Item-Datei, Override gestrichen):** The Lament, Heirloom, Whirling Ovation, Choir of One, Salvation's Grip, Black Talon (ca8681a). Muster: `salvation-s-grip.json` (zwei Spielweisen), `the-lament.json` (Takt je Spielweise per `modifyStat rpm` aus `$aegisSustained[…].peakRateSeconds`). Ablauf je Item: Datei schreiben, `npm run build:weapons` (Text-Hash zuerst `00000000`, die Ausgabe nennt den echten), Override streichen, `npm run coverage`, Tests, Snapshots (`mechanicsBaseline`, `scenarioBench`) bewusst `--update`. **Nie `npm run import:weapons`** (lädt aus dem Netz, überschreibt Snapshots).
 
-**B6-Gate:** Delta-Paare (1 von 3) und Spearman Weapons (0,96 über 7 Zeilen) nicht schlechter auf den Zeilen, die vorher und nachher in der Prüfmenge sind (Inhaber 2026-11-02; eine Zeile, die `fitted` wird, fällt nach ADR 0018 heraus), Abdeckung Heavy/Special steigt, jedes Item löst auf, Plausibilität je Spielweise.
+**B6-Gate:** Delta-Paare (1 von 3) und Spearman Weapons (0,96 über 7 Zeilen) nicht schlechter auf den Zeilen, die vorher und nachher in der Prüfmenge sind (Inhaber 2026-11-02; eine Zeile, die `fitted` wird, fällt nach ADR 0018 heraus), Abdeckung Heavy/Special steigt (Inhaber 2026-11-03: entfällt bei Blöcken, die nur die Herkunft schon gezählter Zeilen ändern), jedes Item löst auf, Plausibilität je Spielweise.
 
 Danach: Stapelzähler als Schalter (`Roaring Flames x3`, `Transcendent`), Testing-Reiter, Stasis-Shatter. Aus B4: `pickBaseRow`, `blockingReason`, `options` neben `buffs`.
 

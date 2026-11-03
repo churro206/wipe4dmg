@@ -49,7 +49,7 @@
   "catalyst": {
     "name": "Transcendent Steel, Ergo Sum Catalyst",
     "description": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
-    "effect": "none"
+    "effect": "unknown"
   },
   "parts": {
     "combo": {
