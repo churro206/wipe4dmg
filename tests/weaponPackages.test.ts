@@ -122,7 +122,7 @@ describe("primaries", () => {
     Alethonym:
       "Aegis' average holds impact and impale ticks (337 impact, 237 tick), Quantum only the impact",
   };
-  it("rule: one round of a primary package deals 0.5 to 2 times the round of its Quantum timing row", () => {
+  it("lock until A2: one round of a primary package deals 0.5 to 2 times the round of its Quantum timing row", () => {
     const inputs = loadWeaponImportInputs();
     const primaries = remainingPackages().filter((w) => w.ammo === "primary" && !(w.name in KNOWN_OFF));
     expect(primaries.length).toBeGreaterThan(0);
@@ -308,8 +308,9 @@ describe("catalyst paragraphs against one boss without adds", () => {
     expect(bossParagraphs(text)).toBe(text);
   });
 
-  // 15 of the 29 packages left after Q1 (the Aegis path); before Q1 it was about 30 of 137.
-  it("rule: about half of the remaining packages have a catalyst without effect against one boss", () => {
+  // Value after Q1 (15 of the 29 packages left; before Q1 about 30 of 137), a lock until A2 removes
+  // the Aegis path: no reason is claimed for "15", the classification must not silently drop.
+  it("lock until A2: at least 15 of the remaining packages keep a catalyst without effect (value after Q1)", () => {
     const none = remainingPackages().filter((w) => w.catalyst?.effect === "none");
     expect(none.length).toBeGreaterThanOrEqual(15);
   });
