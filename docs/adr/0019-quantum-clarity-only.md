@@ -1,6 +1,6 @@
 # ADR 0019: Waffen aus Quantum und Clarity, Mechanik nach Regelvorlagen
 
-Status: vorgeschlagen (Q0, 2026-11-03), wartet auf Freigabe des Inhabers · Bauplan `docs/architecture.md` (Abschnitte 3, 5.2, 5.3, 5.5, 12, 13) · Plan Q in `docs/plans/current.md`, Hintergrund `docs/plans/history-2026-11.md`
+Status: vorgeschlagen (Q0, 2026-11-03), wartet auf Freigabe des Inhabers · Bauplan `docs/architecture.md` (Abschnitte 3, 5.2 mit den Regelvorlagen, 5.3, 12, 13) · Plan Q in `docs/plans/current.md`, Hintergrund `docs/plans/history-2026-11.md`
 
 ## Kontext
 
@@ -14,7 +14,7 @@ Status: vorgeschlagen (Q0, 2026-11-03), wartet auf Freigabe des Inhabers · Baup
 1. **Einzige Quelle für Waffen-Items:** Zahlen aus Quantum (`$quantum`, Schaden und Takt), Mechanik und Zahlen im Text aus Clarity (`$clarity`), wo Clarity schweigt aus dem Compendium (`$compendium`), Ladezeit aus dem Manifest. Kein neuer `$aegis`- oder `$aegisSustained`-Verweis. Bestehende bleiben, bis ihr Item migriert ist (M5) oder in der Gegenprobe einen Nachtrag bekommt (Waffen ohne Quantum-Zeile).
 2. **Aegis ist bis zur Gegenprobe nur Bericht.** Der Prüfstand rechnet weiter und schreibt seine Kennzahlen, ist aber kein Gate. In der Gegenprobe wird er wieder Gate (Delta-Paare, Rangfolge), dann folgt die Eichung (B5).
 3. **Gerüst per Skript, einmalig (Q1):** je Exotic mit Quantum-Zeile eine Item-Datei mit Basiszeile (Treffer, Takt, Katalysator). Danach gehört die Datei dem Autor; das Skript läuft nicht wieder.
-4. **Mechanik von Hand nach Vorlage (M1–M5):** Der Autor setzt jeden Satz mit Wirkung auf den Schaden gegen einen Boss als Regel nach einer Vorlage aus dem Katalog (Bauplan 5.5) um; jede Zahl ist ein Verweis mit Zitat. Ein Skript, das Struktur aus dem Text rät, ist verworfen (Freitext braucht ständig Sonderfälle).
+4. **Mechanik von Hand nach Vorlage (M1–M5):** Der Autor setzt jeden Satz mit Wirkung auf den Schaden gegen einen Boss als Regel nach einer Vorlage aus dem Katalog (Bauplan 5.2) um; jede Zahl ist ein Verweis mit Zitat. Ein Skript, das Struktur aus dem Text rät, ist verworfen (Freitext braucht ständig Sonderfälle).
 5. **`notModelled`:** Jeder Satz mit Zahl, den keine Regel trägt, steht im Item mit Zitat und Grund. Das Zitat muss in einem Text des Items stehen (sonst Fehler beim Import). Der Bericht zählt Sätze mit Zahl, die weder ein `$clarity`-Zitat noch ein `notModelled`-Zitat enthalten; diese Zahl sinkt je Block.
 6. **Neue Typen statt Sonderfelder:** Passt ein Satz mit über 2 % Wirkung in keine Vorlage, kommt er in `notModelled` mit Grund „needs …“ und in die Q-Bilanz; ein neuer Auslöser-, Aktions- oder Status-Typ ist ein eigener Block (I3).
 
