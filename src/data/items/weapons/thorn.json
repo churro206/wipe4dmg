@@ -79,6 +79,27 @@
             "expr": "$clarity[Soul Devourer](\"extending the duration up to 11 seconds\") * 1000",
             "note": "seconds to milliseconds; several Remnants collected before the phase give the longest window"
           }
+        },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reload",
+            "factor": {
+              "value": 0,
+              "source": {
+                "name": "Item file thorn",
+                "retrieved": "2026-11-03",
+                "status": "derived",
+                "quote": "extending the duration up to 11 seconds and the magazine up to 350% capacity (40 rounds)",
+                "note": "Derived: the overfilled magazine as no reload while its rounds last"
+              }
+            }
+          },
+          "durationMs": {
+            "expr": "$clarity[Soul Devourer](\"(40 rounds)\") * 60000 / $quantum[primaries-hand-cannon-thorn].timing.fireRateRpm",
+            "note": "the time of 40 rounds (60000 ms per minute / rpm each); the magazine of 9 then empties at shot 45, not 40 (known-inaccuracies)"
+          }
         }
       ]
     },

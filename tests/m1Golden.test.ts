@@ -95,6 +95,17 @@ describe("Status template: Weaken of Deterministic Chaos", () => {
   });
 });
 
+describe("Thorn pre-stacked: the magazine of 40 rounds (Clarity: up to 350% capacity (40 rounds))", () => {
+  // 140 rpm: a round every 428.6 ms; magazine 9, reload 1.64 s
+  it("fires 36 rounds in a row, where the plain magazine of 9 reloads after the 9th", () => {
+    const stacked = only(run("thorn", 30, false, ["pre-stacked"]), "shot");
+    const plain = only(run("thorn", 30), "shot");
+    expect(stacked[9].timeMs - stacked[8].timeMs).toBeLessThan(500);
+    expect(plain[9].timeMs - plain[8].timeMs).toBeGreaterThan(2000);
+    expect(stacked.length).toBeGreaterThan(plain.length + 8);
+  });
+});
+
 describe("Thorn without the playstyle pre-stacked", () => {
   it("has no Soul Devourer: every tick is 30", () => {
     const result = run("thorn", 5);

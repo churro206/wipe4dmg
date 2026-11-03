@@ -19553,6 +19553,32 @@
                 "note": "Derived: $clarity[Soul Devourer](\"extending the duration up to 11 seconds\") * 1000 (seconds to milliseconds; several Remnants collected before the phase give the longest window); $clarity[Soul Devourer](\"extending the duration up to 11 seconds\") = 11 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soul Devourer)"
               }
             }
+          },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reload",
+              "factor": {
+                "value": 0,
+                "source": {
+                  "name": "Item file thorn",
+                  "retrieved": "2026-11-03",
+                  "status": "derived",
+                  "note": "Derived: the overfilled magazine as no reload while its rounds last",
+                  "quote": "extending the duration up to 11 seconds and the magazine up to 350% capacity (40 rounds)"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 17142.857,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soul Devourer; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-thorn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soul Devourer](\"(40 rounds)\") * 60000 / $quantum[primaries-hand-cannon-thorn].timing.fireRateRpm (the time of 40 rounds (60000 ms per minute / rpm each); the magazine of 9 then empties at shot 45, not 40 (known-inaccuracies)); $clarity[Soul Devourer](\"(40 rounds)\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soul Devourer); $quantum[primaries-hand-cannon-thorn].timing.fireRateRpm = 140 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-thorn)"
+              }
+            }
           }
         ]
       },
