@@ -6,7 +6,7 @@ Höchstens 4 KB. Nach jedem Block: `docs/changelog.md`, `docs/known-inaccuracies
 
 Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`.
 
-- [ ] A1 Aufräumen: `scripts/lib/probeAuto.ts` dient nur `tests/lib/aegisCoverageData.ts`; dorthin verschieben oder umbenennen. Gate: Berichte byte-gleich.
+- [x] A1 Aufräumen: `scripts/lib/probeAuto.ts` dient nur `tests/lib/aegisCoverageData.ts`; dorthin verschieben oder umbenennen. Gate: Berichte byte-gleich. (709e41c)
 - [ ] Q0 (Opus) Entscheidung: ADR 0019; Bauplan (3, 5.2, 5.3, 12, 13) mit Katalog der Regelvorlagen (Treffer, Takt, Katalysator, bedingter Buff, Ramp, Status, N-ter Treffer, Zusatzteil, DoT); `notModelled` (Zitat, Grund) im Item-Schema; Quellenregel in CLAUDE.md. Gate: Freigabe Inhaber.
 - [ ] Q1 Gerüst per Skript, einmalig: Item-Datei je Exotic mit Quantum-Basiszeile (Treffer `precisionDamage`, sonst `bodyDamage`; `.timing.*`; Katalysator aus `cata`-Zeile, sonst `unknown`; nur `cata`: eingebaut); Aliasdatei (`tesselation`); Bericht zählt Clarity-Sätze mit Zahl ohne `$clarity` oder `notModelled`. Gate: alle lösen auf, Plausibilität je Waffentyp, Fourth Horseman 5 Schuss je Magazin mit Katalysator.
 - [ ] A2 Aufräumen: Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
