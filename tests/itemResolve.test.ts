@@ -549,6 +549,23 @@ describe("weapon item", () => {
     expect(at(`$clarity[The Perfect Fifth]("applying 40 Scorch stacks")`)).toBe(40);
   });
 
+  it("notModelled (ADR 0019): a quote of the item's texts with its reason, not a Weapon field", () => {
+    const notModelled = [
+      { quote: "dealing 215 [78] damage", reason: "the damage of the part comes from its reference" },
+    ];
+    const { weapon } = resolveWeaponItem({ ...polarisItem(), notModelled }, sources);
+    expect(weapon).not.toHaveProperty("notModelled");
+    expect(() =>
+      resolveWeaponItem(
+        { ...polarisItem(), notModelled: [{ quote: "deals 1000 damage", reason: "typo" }] },
+        sources,
+      ),
+    ).toThrow(/notModelled\[0\].*deals 1000 damage/);
+    expect(() =>
+      resolveWeaponItem({ ...polarisItem(), notModelled: [{ quote: "Precision Hits", reason: "" }] }, sources),
+    ).toThrow(/reason/);
+  });
+
   it("names the path of a reference that does not resolve", () => {
     const item = polarisItem();
     item.fireRateRpm = "$quantum[gone].rpm";

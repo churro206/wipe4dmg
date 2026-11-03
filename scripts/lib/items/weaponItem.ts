@@ -42,7 +42,7 @@ export function catalystBuffs(weapon: Pick<Weapon, "buffs" | "rules">): BuffDefi
 }
 
 /** Fields of the item itself; the others are Weapon fields. */
-const ITEM_FIELDS = ["id", "kind", "name", "texts", "parts"];
+const ITEM_FIELDS = ["id", "kind", "name", "texts", "parts", "notModelled"];
 
 type Issue = { path: PropertyKey[]; message: string };
 const issuesText = (issues: Issue[]) =>
@@ -103,17 +103,19 @@ function partInstance(
   };
 }
 
-/** A review line if the text changed since the file was written; throws if the entry is gone. */
-function checkText(text: ItemText, sources: ItemSources, itemName: string, itemId: string) {
-  let current: string;
+/** The current text of an entry; throws if the entry is gone. */
+function currentText(text: ItemText, sources: ItemSources, itemName: string, itemId: string) {
   try {
-    current =
-      text.source === "clarity"
-        ? clarityEntry(sources, text.entry, itemName).text
-        : compendiumEntry(sources, text.entry).text;
+    return text.source === "clarity"
+      ? clarityEntry(sources, text.entry, itemName).text
+      : compendiumEntry(sources, text.entry).text;
   } catch (error) {
     throw new Error(`item ${itemId}: texts: ${(error as Error).message}`, { cause: error });
   }
+}
+
+/** A review line if the text changed since the file was written. */
+function checkText(text: ItemText, current: string, itemId: string) {
   const hash = textHash(current);
   return hash === text.hash
     ? null
@@ -136,7 +138,12 @@ export function resolveWeaponItem(raw: unknown, sources: ItemSources): ResolvedI
   const code = sources.codes[id];
   if (code === undefined) throw new Error(`item ${id}: code: no link code for ${id} (weapon-codes.json)`);
 
-  const review = texts.flatMap((t) => checkText(t, sources, name, id) ?? []);
+  const current = texts.map((t) => currentText(t, sources, name, id));
+  const review = texts.flatMap((t, i) => checkText(t, current[i], id) ?? []);
+  (parsed.data.notModelled ?? []).forEach(({ quote }, i) => {
+    if (!current.some((text) => text.includes(quote)))
+      throw new Error(`item ${id}: notModelled[${i}]: quote "${quote}" is in none of the item's texts`);
+  });
   const ctx: RefContext = { sources, itemName: name, fittedRows: [] };
   const resolved = resolveTree(body, "", ctx, id) as Record<string, unknown>;
   const damageInstances = Object.entries(parts).map(([partId, part]) =>

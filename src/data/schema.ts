@@ -1985,6 +1985,15 @@ export const ItemPart = z
   .strict();
 export type ItemPart = z.infer<typeof ItemPart>;
 
+/**
+ * A sentence of the item's texts that no rule models, with why (ADR 0019), e.g. a kill effect
+ * against adds. The quote stands in one of the item's texts.
+ */
+export const ItemNotModelled = z
+  .object({ quote: z.string().min(1), reason: z.string().min(1) })
+  .strict();
+export type ItemNotModelled = z.infer<typeof ItemNotModelled>;
+
 /** Weapon fields the import takes from the manifest and the link codes, never from the file. */
 export const WEAPON_ITEM_FROM_IMPORT = [
   "code",
@@ -2008,6 +2017,7 @@ export const WeaponItem = z
     name: z.string(), // manifest name
     texts: z.array(ItemText).min(1),
     parts: z.record(z.string(), ItemPart),
+    notModelled: z.array(ItemNotModelled).optional(),
   })
   .catchall(z.unknown())
   .superRefine((item, ctx) => {
