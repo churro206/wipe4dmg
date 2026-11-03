@@ -1,6 +1,6 @@
 # Bauplan des Rechners
 
-Status: angenommen vom Inhaber am 2026-10-31 (ADR 0018) · Umsetzung auf Branch `ground-up-model`, Stufen in `docs/plans/ground-up-model.md` · Ansicht mit zwölf Abbildungen: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>
+Status: angenommen vom Inhaber am 2026-10-31 (ADR 0018), Quellen der Waffen nach ADR 0019 (Plan Q, vorgeschlagen 2026-11-03) · Umsetzung auf Branch `ground-up-model`, Stufen in `docs/plans/ground-up-model.md` · Ansicht mit zwölf Abbildungen: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>
 
 Diese Datei ist die maßgebliche, maschinenlesbare Fassung; die Ansicht folgt ihr. Lesen vor jedem Block an Engine, Daten, Import oder Prüfstand. Abschnitte tragen die Nummer der Abbildung in der Ansicht (Abb. n).
 
@@ -68,6 +68,9 @@ Es gibt genau eine Rückkopplung: Kennzahlen → Eichung → θ. Keine Kante fü
 | Skala je Fall (ADR 0011) | kanonische Skala, ein Faktor je Quelle und Kategorie | B4, B5 |
 | Globale Parameter von Hand an einzelnen Zeilen gestellt | Eichung per Skript über alle Szenarien | B5 |
 | Kennzahl: Szenarien innerhalb ±3 % | Delta-Paare der Prüfmenge | B2 |
+| Waffenzahlen je Feld aus Quantum oder `$aegis` (B4), Pakete und Overrides für die übrigen Exotics | Zahlen nur aus Quantum, Mechanik nur aus Clarity (ADR 0019); kein neuer `$aegis`-Verweis | Plan Q |
+| Item-Dateien einzeln von Hand (B6: zwei bis drei je Block) | Gerüst je Exotic per Skript (Basiszeile), Mechanik von Hand nach Vorlage (5.5), Rest in `notModelled` | Q1, M1–M5 |
+| Prüfstand als Gate | bis zur Gegenprobe nur Bericht (Abschnitt 12) | Plan Q |
 
 ## 4 Schichten und Abhängigkeiten (Abb. 3)
 
@@ -106,11 +109,14 @@ interface WeaponItem {
   name: string;                  // Name im Manifest
   texts: { source: "clarity" | "compendium"; entry: string; hash: string }[];  // FNV-1a des Textes (I5)
   parts: Record<string, { name: string; damage: ItemValue; precision?: boolean; delivery: "impact" | "splash" | "dot" }>;
+  notModelled?: { quote: string; reason: string }[];  // Sätze ohne Regel (ADR 0019), Zitat steht in einem der texts
   // sonst Weapon-Felder mit ItemValue statt SourcedNumber: chargeTimeMs, fireRateRpm, magazine,
   // totalShots, reloadTimeMs, catalyst, buffs, rules, playstyles
 }
 ```
 
+- **Gerüst (Q1, einmalig per Skript):** je Exotic mit Quantum-Zeile `texts` (alle Clarity-Einträge der Waffe), Teil `shot` aus der Basiszeile (`precisionDamage`, wo die Waffe Präzision kennt, sonst `bodyDamage`), Takt aus `.timing.*`, `chargeTimeMs` aus dem Manifest oder 0 (`derived`), Katalysator aus der `cata`-Zeile (`catalyst.timing`), ohne sie `effect: "unknown"`; hat eine Waffe nur `cata`-Zeilen, ist der Katalysator eingebaut (Basiszeile = `cata`). Namensabweichungen zwischen Quantum und Manifest stehen in einer Aliasdatei (`tesselation`). Danach schreibt nur der Autor.
+- **`notModelled` (ADR 0019):** jeder Satz mit Zahl, den keine Regel trägt, mit Zitat und Grund. Gründe in fester Schreibweise, damit die Bilanz sie zählen kann: `no adds (ADR 0015)` (auch Kills in der Phase; Kill-Buffs selbst gelten als vorher aufgebaut), `PvP only`, `no damage against a boss` (Handling, Reichweite, Heilung, Munition aufheben), `below 2 %` (mit Eintrag in `docs/known-inaccuracies.md`), `needs <Typ>` (neuer Auslöser, Aktion oder Status; Q-Bilanz). Ein Zitat, das in keinem Text steht, ist ein Fehler des Imports.
 - **Status rechnet der Import, nicht die Datei:** Er folgt aus dem Verweis (5.3). Hat sich ein Text geändert (Hash), rechnet das Item weiter und erscheint als Review (`Review:`-Zeile von `build:weapons`, Spalte in `docs/weapon-import.md`); ein Verweis, der nicht auflöst, ist ein Fehler.
 - **Vom Import, nie aus der Datei:** `code`, `manifestHash`, `gameVersion`, `weaponType`, `element`, `ammo`, `intrinsics` (Manifest, `weapon-codes.json`), `damageInstances` (aus `parts`: ein Treffer je Teil, Zeit und Anzahl setzt die `spawn`-Regel), `reloadDurationIncluded` (Rally, K1), `scale` je Teil (aus der Quelle).
 - **Bericht:** Basiszeile ist die Aegis-Zeile eines Teils, sonst die Zeile, die ein Paket bekäme (`pickBaseRow`); eine Zeile mit genau einer Zusatzannahme, die einen Katalysator-Buff des Items nennt, zählt als Option (`catalystBuffs`); die übrigen behalten ihren Grund.
@@ -126,6 +132,8 @@ interface WeaponItem {
 | `$aegis[<Zeile>].critShot`, `.tick("<Name>")` | Aegis Weapons, ÷ Full Modifiers | `fitted` mit Zeilen-ID; die Zeile prüft nicht mehr (I1) |
 | `$aegisSustained[<Zeile>].<Feld>` | Aegis Sustained | `fitted` mit Zeilen-ID |
 | `{ expr, note }` | + − × ÷ und Klammern über Verweise und Zahlen | `derived`, mit höchstens einer Aegis-Zeile `fitted`; als Schaden die Skala der ersten Quelle |
+
+**Seit ADR 0019 (Plan Q):** Waffen-Items bekommen keinen neuen `$aegis`- oder `$aegisSustained`-Verweis. Zahlen kommen aus `$quantum` (Schaden, Takt; auch Differenzen zweier Quantum-Zeilen als `expr`), `$manifest` (Ladezeit) und aus dem Text (`$clarity`, wo Clarity schweigt `$compendium`). Kennt nur Aegis eine Zahl, steht der Satz in `notModelled`. Bestehende Aegis-Verweise bleiben bis M5 (Hand-Items mit Quantum-Zeile) oder bis zur Gegenprobe (Hand-Items ohne Quantum-Zeile).
 
 Ein Literal ohne Verweis braucht `source` mit Notiz („Derived: …“) und, wo es geht, Zitat; nie geraten. `$court` kommt mit den Artifact-Perks und Buffs (B6).
 
@@ -150,6 +158,25 @@ rules:
   - on: hit { part: perfect-fifth }
     do: [ applyStatus { status: scorch, stacks: $clarity[The Perfect Fifth]("applying 40 Scorch stacks") } ]
 ```
+
+### 5.5 Regelvorlagen (ADR 0019)
+
+Der Autor ordnet jeden Satz eines Clarity-Texts mit Wirkung auf den Schaden gegen einen Boss genau einer Vorlage zu und schreibt sie mit den Typen aus Abschnitt 6; jede Zahl ist ein Verweis mit Zitat, Einheiten rechnet ein `expr` um (`* 1000`, `1 + p / 100`). Passt keine Vorlage, steht der Satz in `notModelled` (`needs <Typ>`). Mehrere Vorlagen in einem Item sind normal (Polaris: Treffer, Takt, N-ter Treffer, Zusatzteil, Status). Je Vorlage hält eine Golden-Waffe den Wert von Hand aus dem Text als Test fest (M-Gate); der Block, der die Vorlage zuerst braucht, legt sie an.
+
+| Vorlage | Text sagt etwa | Bausteine | Zahlen | Golden (Kandidat) |
+| --- | --- | --- | --- | --- |
+| Treffer | – (jede Waffe) | Teil `shot` (`precision`, `delivery`), Regel `shot → spawn shot` | `$quantum[<Basis>].precisionDamage`, ohne Präzision `.bodyDamage` | Polaris Lance (vorhanden) |
+| Takt | „fires a burst“, Ladezeit | `fireRateRpm`, `magazine`, `totalShots`, `reloadTimeMs`, `chargeTimeMs`; Salven als `spawn count, intervalMs` | `$quantum[<Basis>].timing.*`, `$manifest[…].stat("Charge Time"\|"Draw Time")` | The Fourth Horseman (Q1-Gate) |
+| Katalysator | Catalyst-Eintrag | `catalyst` (`effect`, `timing` aus der `cata`-Zeile); Wirkung als Regel mit `hasItem catalyst` | `$quantum[<Basis>-cata].timing.*`; Schaden nach einer anderen Vorlage | Hierarchy of Needs (vorhanden), M4 |
+| Bedingter Buff | „X% increased damage for N seconds after …“ | `buffs[]` (ein Bucket, Dauer) und Regel `grantBuff` auf Auslöser (`hit`, `shot`, `reload`, `status`; Kill-Buff: `phaseStart`, vorher aufgebaut) | `1 + $clarity("X%")/100`, `$clarity("N seconds") * 1000` | Truth, Reaper's Tithe (vorhanden), M4 |
+| Ramp | „stacks up to N“, „X% per stack“, Stufen „a\|b\|c“ | linear: Buff mit `perStack`, `maxStacks`, `addStacks` je Auslöser; Stufen: je Stufe ein Buff mit Bedingung `stacks`; vorher aufgebaut: Spielweise `pre-stacked` | Stacks, Prozent, Dauer aus dem Zitat | M3 |
+| Status | „applies N Scorch/Jolt/Volatile …“, „weakens“ | `applyStatus` auf `hit` eines Teils; der Status-Container rechnet Burn, Ignition, Weaken (Abschnitt 8) | Stacks und Dauer aus dem Zitat, Werte des Status aus `keywords.json` | Polaris Lance Scorch (vorhanden), M1 |
+| N-ter Treffer | „every Nth shot“, „after N hits“ | Zähler: `addStacks counter` mit `counter <`, dann `counter =` → `resetCounter` + Aktion | N aus dem Zitat (`- 1`, wenn der Zähler bei 0 beginnt) | Polaris Lance Perfect Fifth, Truth (vorhanden) |
+| Zusatzteil | „explodes“, „releases seekers“, „detonates for X% of …“ | eigener Teil (`splash`) und Regel `spawn` mit `count`, `delayMs` | Differenz zweier Quantum-Zeilen (Zeile mit Zusatz − Basis, ÷ Anzahl) oder Anteil am Grundschaden aus dem Text; sonst `notModelled` | Hierarchy of Needs Seeker (vorhanden), M2 |
+| DoT | „deals damage over N seconds“, „poison“, Ticks | Teil mit `delivery: "dot"` und `spawn count, intervalMs`; ohne Teil `timer everyMs → damage` im Fenster eines Buffs | Ticks, Abstand, Dauer aus dem Zitat; Schaden je Tick aus Quantum oder als Anteil aus dem Text | M1 |
+
+- **Spielweisen:** Misst Aegis oder nennt der Text eine Ausführungsart (Ladestufe, ADS/Hipfire, Modus), ist sie ein Eintrag in `playstyles`; die erste ist die optimale (Regel aus B6, Archiv). Sie ist keine eigene Vorlage, sondern die Bedingung `playstyle` an Regeln der Vorlagen.
+- **Was nie Regel wird:** Wirkung nur mit Adds, Kills in der Phase, PvP, Handling, Reichweite, Heilung, Munition aufheben; Grund in `notModelled`.
 
 ## 6 Regeln: Auslöser, Bedingungen, Aktionen
 
@@ -351,6 +378,7 @@ flowchart LR
   PM --> A["Absolut: nur Information"]
 ```
 
+- **Bis zur Gegenprobe nur Bericht (ADR 0019, Inhaber 2026-11-03):** Der Prüfstand rechnet und schreibt seine Kennzahlen (Snapshot `scenario-bench.md`, Rangfolge), seine Schwellen sind kein Gate. Gate der Blöcke M1–M5 ist das M-Gate (`docs/plans/current.md`): Golden-Waffe je Vorlage, Plausibilität, Sätze ohne Regel sinken. In der Gegenprobe wird der Prüfstand wieder Gate, danach folgt die Eichung.
 - Los: fester Hash der Zeilen-ID (Vorschlag FNV-1a, Rest mod 10 < 7 → Eichmenge), damit neue Zeilen die Aufteilung der alten nicht verschieben. Sustained und Swap haben kein Los: jede Zeile, aus der kein Wert stammt, ist Prüfmenge (Stufe P, 2026-11-01); Abilities haben das Los wie Weapons.
 - Delta-Paar besteht, wenn |Δ Modell − Δ Aegis| ≤ 2 Prozentpunkte (wie im Rangfolge-Gate). Ein Paar zählt in der Prüfmenge, wenn die Zeile **mit** der zusätzlichen Annahme nicht verwiesen (`fitted`) ist und in der Prüfmenge liegt; die Zeile ohne sie darf verwiesen sein, ihr Wert kürzt sich im Delta heraus (B2, entschieden 2026-10-31).
 - Umgesetzt in B2: `tests/lib/scenarioGen.ts` (Generator, Los), `tests/lib/fittedRows.ts`, `tests/lib/scenarioBench.ts` (Kennzahlen); Snapshot `tests/__snapshots__/scenario-bench.md`. In Stufe P kamen die Reiter Sustained, Swap und Abilities dazu (`Scenario.tab`; Fixtures in `tests/scenarios/`, `generateTotalScenarios`, `generateAbilityScenarios`), das Rangfolge-Gate und die Gesamtprobe gingen im Prüfstand auf.
@@ -377,7 +405,8 @@ Regelkreis der Eichung (Wirkungsplan nach DIN IEC 60050-351):
 
 - Grenzen von θ (B5). Entschieden in B4: Dateiformat und Ordner der Items (Abschnitt 5.2, 5.3); drei Items (Polaris Lance, Truth, Hierarchy of Needs) ersetzen ihre Overrides, die übrigen Waffen rechnen mit Paketen bis B6. Entschieden in B2: Los FNV-1a der Zeilen-ID, Rest mod 10 < 7 → Eichmenge. Entschieden in B3: Aktionsliste und Schema der Regeln (Abschnitt 6).
 - Szenarien aus Aegis Testing (B6, kein Import bisher). Der Ability-Gate prüft weiter den Rückweg der Pakete (`tests/abilityGate.test.ts`, ohne Burn-Ticks); er ist keine Prüfung. Offen aus P: Der Ability-Wert ist die Differenz mit und ohne Cast mit der Waffe One Thousand Voices im Build; die Waffe beeinflusst die Differenz um einige Prozent (Gathering Storm: 7 703 mit Xenophage, 7 901 mit One Thousand Voices), Ursache nicht untersucht.
-- Quelle der Waffen-Grundwerte (B4a, Schritt 1, 2026-11-01, `tmp/quantum-vs-aegis.ts`, 123 Exotics mit beiden Quellen, Aegis-Zeile mit den wenigsten Annahmen): Kriterium (≥ 90 % innerhalb 2 %) **verfehlt**. Präzisionsschaden 58 von 92 (63 %, Median +0,36 %), Körperschaden 57 von 123 (46 %), Takt 6 von 36, Magazin 20 von 36, Schüsse 28 von 36 (78 %), Reload 3 von 26. Ausreißer sind Waffen mit eigener Mechanik (Wish-Ender, Euphony, Leviathan's Breath: Quantum zählt Zusatzschaden mit; Magazin 1 bei Linear Fusion/Rockets) und Zeilen mit anderer Annahme; Stichprobe Polaris (Präzision +0,33 %), Hierarchy (+0,43 %), Truth (Körper −0,06 %) liegt unter 0,5 %, Truth-Takt dagegen −67 %. Folge: Grundwerte der Item-Dateien kommen per `$aegis` (`fitted`); `$quantum` bleibt als Verweisart für einzelne Felder, die eine Stichprobe trägt (Schritt 5: Polaris-Schuss). Pakete unverändert bis B6. **Umgesetzt in B4 (endgültig):** je Feld die Quelle mit Stichprobe oder ohne Alternative. Schaden: Quantum, wo die Stichprobe unter 0,5 % liegt (Polaris-Schuss, Truth-Rakete, Hierarchy-Pfeil und -Seeker), sonst `$aegis` (Perfect Fifth, Truth-Cluster). Takt: Aegis Sustained, wo Quantums Takt nicht passt (Truth −67 %), sonst Quantum. Reload ohne fremde Annahmen (Truth: Quantum statt Aegis mit Argent Ordnance; Aegis-Konvention, wenn der Takt von Aegis kommt). Zahlen aus dem Text (Zähler, Dauer, Anzahl, Faktor) per `$clarity`/`$compendium`; eine Aegis-Zeile, aus der kein Wert kommt, bleibt Prüfung (Truth-Tithe, Hierarchy).
+- Quelle der Waffen-Grundwerte (B4a, Schritt 1, 2026-11-01, `tmp/quantum-vs-aegis.ts`, 123 Exotics mit beiden Quellen, Aegis-Zeile mit den wenigsten Annahmen): Kriterium (≥ 90 % innerhalb 2 %) **verfehlt**. Präzisionsschaden 58 von 92 (63 %, Median +0,36 %), Körperschaden 57 von 123 (46 %), Takt 6 von 36, Magazin 20 von 36, Schüsse 28 von 36 (78 %), Reload 3 von 26. Ausreißer sind Waffen mit eigener Mechanik (Wish-Ender, Euphony, Leviathan's Breath: Quantum zählt Zusatzschaden mit; Magazin 1 bei Linear Fusion/Rockets) und Zeilen mit anderer Annahme; Stichprobe Polaris (Präzision +0,33 %), Hierarchy (+0,43 %), Truth (Körper −0,06 %) liegt unter 0,5 %, Truth-Takt dagegen −67 %. Folge: Grundwerte der Item-Dateien kommen per `$aegis` (`fitted`); `$quantum` bleibt als Verweisart für einzelne Felder, die eine Stichprobe trägt (Schritt 5: Polaris-Schuss). Pakete unverändert bis B6. **Umgesetzt in B4 (endgültig):** je Feld die Quelle mit Stichprobe oder ohne Alternative. Schaden: Quantum, wo die Stichprobe unter 0,5 % liegt (Polaris-Schuss, Truth-Rakete, Hierarchy-Pfeil und -Seeker), sonst `$aegis` (Perfect Fifth, Truth-Cluster). Takt: Aegis Sustained, wo Quantums Takt nicht passt (Truth −67 %), sonst Quantum. Reload ohne fremde Annahmen (Truth: Quantum statt Aegis mit Argent Ordnance; Aegis-Konvention, wenn der Takt von Aegis kommt). Zahlen aus dem Text (Zähler, Dauer, Anzahl, Faktor) per `$clarity`/`$compendium`; eine Aegis-Zeile, aus der kein Wert kommt, bleibt Prüfung (Truth-Tithe, Hierarchy). **Abgelöst durch ADR 0019 (2026-11-03):** Der Befund galt dem Mittelwert der Zeilen mit Mechanik; Einzeltreffer liegen auf ±2 % (zehn Waffen, Archiv). Schaden und Takt kommen nur aus Quantum, Mechanik aus Clarity (Abschnitt 5.3, 5.5); weicht Quantums Takt ab (Truth −67 %), ist das ein Befund für die Gegenprobe, kein `$aegisSustained`.
+- Offen aus Plan Q: Quantum-Zeilen, die Zusatzschaden mitzählen (Wish-Ender, Euphony, Leviathan's Breath) oder Magazin 1 melden (Linear Fusion, Rockets), prüft der Block der Waffe gegen den Text; Waffen ohne Quantum-Zeile, B6.4 und der Prüfstand als Gate kommen in der Gegenprobe.
 - Policy für Casts und Energie im Lauf: erst mit dem Optimizer für Abilities (2.0).
 
 ## Methoden
