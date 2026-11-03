@@ -28,13 +28,22 @@ describe("catalyst hover card", () => {
     expect(lines.some((line) => line.startsWith("Magazine 4 → 5"))).toBe(true);
   });
 
+  it("names the damage bonus without the internal option id", () => {
+    const lines = describeCatalyst(weaponById("touch-of-malice"));
+    expect(lines).toContain("+25% weapon damage");
+    expect(lines.join(" ")).not.toContain("catalyst ×");
+  });
+
   it("keeps the game text out of the first person", () => {
     const text = describeCatalyst(weaponById("one-thousand-voices")).join(" ");
     expect(text).toContain("In game: Gain 30 Stability and 20 Ammo Generation.");
     expect(text).not.toMatch(/\b(I|my|me)\b/);
   });
 
-  it("says when a catalyst is not modelled yet", () => {
+  it("says when a catalyst does nothing against one boss, or is not modelled yet", () => {
+    expect(describeCatalyst(weaponById("suros-regime"))).toContain(
+      "No effect against one boss without adds",
+    );
     expect(describeCatalyst(weaponById("fighting-lion"))).toContain(
       "Not in the calculator yet: no source measured it",
     );

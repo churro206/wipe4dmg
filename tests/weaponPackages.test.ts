@@ -20,6 +20,9 @@ import { simulate } from "../src/engine/simulate";
 const result = buildWeaponImport(loadWeaponImportInputs());
 const byName = (name: string) => result.packages.find((w) => w.name === name);
 const value = (n: { value: number | null }) => n.value;
+/** The packages that are no item file: the Aegis path (ADR 0019, until A2). */
+const remainingPackages = () =>
+  result.packages.filter((w) => result.report.weapons.find((r) => r.name === w.name)?.status !== "item");
 /** Every Nth shot sets a part off: the counter of its rule counts N - 1 shots (partRules). */
 const nthShotOf = (weapon: Weapon, partId: string) => {
   const count = weapon.rules!.find((rule) => rule.id === `${partId}-count`)!;
@@ -110,6 +113,26 @@ describe("primaries", () => {
     expect(value(juju.totalShots)).toBeNull();
     expect(value(juju.magazine)).toBe(31);
     expect(value(juju.fireRateRpm)).toBe(450);
+  });
+
+  // Catches a burst counted as one bullet (×3, ×5) and a shot of several projectiles divided by
+  // mistake; extra damage in the Aegis average (poison, ignitions) stays inside. Since Q1 (ADR 0019)
+  // only the packages that are no item (the Aegis path) are checked.
+  const KNOWN_OFF: Record<string, string> = {
+    Alethonym:
+      "Aegis' average holds impact and impale ticks (337 impact, 237 tick), Quantum only the impact",
+  };
+  it("rule: one round of a primary package deals 0.5 to 2 times the round of its Quantum timing row", () => {
+    const inputs = loadWeaponImportInputs();
+    const primaries = remainingPackages().filter((w) => w.ammo === "primary" && !(w.name in KNOWN_OFF));
+    expect(primaries.length).toBeGreaterThan(0);
+    const off = primaries.flatMap((w) => {
+      const row = inputs.quantum.rows.find((r) => r.id === w.magazine.source.name.split("row ")[1]);
+      if (!row?.magDamage || !row.magazine) return [];
+      const ratio = value(w.damageInstances[0].damagePerTick)! / (row.magDamage / row.magazine);
+      return ratio > 2 || ratio < 0.5 ? [`${w.name} ${ratio.toFixed(2)}`] : [];
+    });
+    expect(off).toEqual([]);
   });
 });
 
@@ -283,6 +306,12 @@ describe("catalyst paragraphs against one boss without adds", () => {
   it("keeps a condition one boss can meet (within 15 meters of an enemy)", () => {
     const text = "While within 15 meters of an enemy, grants 20 Reload Speed.";
     expect(bossParagraphs(text)).toBe(text);
+  });
+
+  // 15 of the 29 packages left after Q1 (the Aegis path); before Q1 it was about 30 of 137.
+  it("rule: about half of the remaining packages have a catalyst without effect against one boss", () => {
+    const none = remainingPackages().filter((w) => w.catalyst?.effect === "none");
+    expect(none.length).toBeGreaterThanOrEqual(15);
   });
 });
 

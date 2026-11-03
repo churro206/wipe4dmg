@@ -565,6 +565,20 @@ describe("all weapons (2026-10-23)", () => {
     expect(off).toEqual([]);
   });
 
+  // Q1 counter-test (red before Q1: the package took 1049.4 from Aegis, 15 items only): the hit of a
+  // scaffold item is Quantum's precision hit, `verified`, and 90 or more weapons take it from Quantum.
+  it("rule: the hit of a scaffold item is Quantum's, for 90 or more weapons", () => {
+    const horseman = weaponById("the-fourth-horseman").damageInstances[0].damagePerTick;
+    note("Fourth Horseman Treffer", String(horseman.value), "676 (Quantum precisionDamage)");
+    expect(horseman.value).toBe(676);
+    expect(horseman.source.status).toBe("verified");
+    const fromQuantum = weapons.filter((w) =>
+      w.damageInstances[0].damagePerTick.source.name.startsWith("Quantum"),
+    ).length;
+    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "≥ 90 (96 nach Q1)");
+    expect(fromQuantum).toBeGreaterThanOrEqual(90);
+  });
+
   // Fourth Horseman (Q1 gate): the cata row of Quantum gives the catalyst magazine of 5 (4 without).
   it("The Fourth Horseman fires 5 shots per magazine with the catalyst, 4 without", () => {
     const horseman = weaponById("the-fourth-horseman");
