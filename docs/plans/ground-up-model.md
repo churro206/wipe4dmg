@@ -17,6 +17,8 @@ Prüfstand (`tests/scenarios/`, `tests/scenarioBench.test.ts`, 26 von 30, Verhä
 
 B3a → B3b → B4 (Format, drei Items) → P (Prüfstand ganzer Builds) → B6 (Breite als Item-Dateien) → C (Casts und Energie) → B5 (Eichung). Kein Merge, bis der Inhaber es sagt.
 
+**Änderung 2026-11-03 (Inhaber):** B6 endet nach B6.3. Es folgt Plan Q (`docs/plans/current.md`): Quantum und Clarity sind die einzige Quelle; ein Skript legt einmalig das Gerüst je Exotic an, die Mechanik schreiben Worker von Hand nach Vorlage. Aegis ist bis zur Gegenprobe nur Bericht. Neue Reihenfolge: Q → C → Gegenprobe (Prüfstand als Gate, Nachtrag der Waffen ohne Quantum) → B5. Entscheidung in ADR 0019 (Block Q0).
+
 - Bauplan und Aktionsliste bleiben: jede Aktion bildet eine Mechanik ab, die es im Spiel gibt (`addResource` = Energie für Frage 13), das ist kein Vorrat.
 - **Breite vor Eichung:** Die Eichung stellt θ gegen eine feste Regelstrecke (Bauplan Abschnitt 12). Fehlen Mechaniken (Lament 3L und 4L gleich, Heirloom-Ladestufen −36/−59 %, Still Hunt Celestial −92 %), würde θ sie verdecken. Deshalb B6 und C vor B5.
 - **Kennzahl über alle Pläne:** Abdeckung je Gruppe (`docs/product.md`, Rangfolge-Gate: Anteil der Aegis-Zeilen im Modell). Sie misst den Fortschritt zu Abnahme 3; Delta-Paare (I11) und Rangfolge messen die Qualität. Jeder Abschluss nennt beide.

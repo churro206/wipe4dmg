@@ -1,48 +1,36 @@
 # Aktueller Stand
 
-Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Abweichungen in `docs/known-inaccuracies.md`. Archiv: `docs/plans/history-2026-10.md` (nur per Grep).
+Höchstens 4 KB. Nach jedem Block: `docs/changelog.md`, `docs/known-inaccuracies.md`. Archiv per Grep: `docs/plans/history-2026-11.md`, `history-2026-10.md`.
 
-## Checkliste (freigegeben 2026-11-02)
+## Checkliste (freigegeben 2026-11-03)
 
-Format für den Skill `abarbeiten`: Überschrift „Checkliste (freigegeben <Datum>)“, ein Kästchen pro Block in Reihenfolge, `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`.
+Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`.
 
-- [x] B6.1 Delicate Tomb als Item-Datei: Hipfire (Grundschuss, 890 pro Schuss) und ADS (745), je 18 Schuss, Muster `salvation-s-grip.json`. Gate: B6-Gate. (f95e747)
-- [x] B6.2 Katalysator-Timing im Item-Verweis: Form für „Zeile mit Katalysator, Wert ohne“ (heute Override `rowHasCatalyst`, `scripts/lib/weaponPackages.ts` ab Zeile 1118), Test in `itemResolve`; damit Duality (Magazin 6 statt 8), Graviton Spike (Sustained wechselt die Modi, ohne Schusszahl) und The Queenbreaker (zweite Nutzerin, Magazin 5) als Item-Datei, `rowHasCatalyst` gestrichen. Gate: B6-Gate. (349c824, 985d12d, 6b4a779)
-- [x] B6.3 Schwerter mit Sustained-Combo wie Black Talon: Ergo Sum, Heartshadow als Item-Datei, Muster `black-talon.json`. Gate: B6-Gate. (4d115d9, 6188268, 97dc934)
-- [ ] A1 Aufräumen: `scripts/lib/probeAuto.ts` dient nur noch `tests/lib/aegisCoverageData.ts`; dorthin verschieben oder umbenennen, nur Umbau. Gate: Berichte byte-gleich.
-- [ ] B6.4 Bei Items mit `playstyles` zählt ein Ausführungswort ohne Spielweise als fehlender Schalter (`tests/lib/scenarioGen.ts`; Fall: Lament-Zeile „heavy“, +191 %). Gate: Test, Prüfmenge ohne diese Zeilen.
-- [ ] B6.5 (Opus) Sichtung der Mechanik-Waffen: Symmetry (Paket ohne Dynamic Charge: Schuss 61 statt 173 bei x10, 302 bei x20; Sustained „INF“; Zyklus aus dem Text), Lodestar (ADS-Zeile 3er-Burst, wipe 2145 = 3 × 715; Schuss × Takt ≈ 1 280/s gegen Sustained ≈ 375/s), Grand Overture, Hawkmoon, Eriana's Vow, D.A.R.C.I., Witherhoard, Cull's Shadow. Je Item Mechanik, Quelle, Wirkung nach der 2-%-Regel; Ergebnis als Blöcke vor B6.6, dann Stopp zur Freigabe.
-- [ ] B6.6 Abschluss B6: Snapshot, Kennzahlen je Gruppe, `docs/weapon-import.md`, Roadmap.
+- [ ] A1 Aufräumen: `scripts/lib/probeAuto.ts` dient nur `tests/lib/aegisCoverageData.ts`; dorthin verschieben oder umbenennen. Gate: Berichte byte-gleich.
+- [ ] Q0 (Opus) Entscheidung: ADR 0019; Bauplan (3, 5.2, 5.3, 12, 13) mit Katalog der Regelvorlagen (Treffer, Takt, Katalysator, bedingter Buff, Ramp, Status, N-ter Treffer, Zusatzteil, DoT); `notModelled` (Zitat, Grund) im Item-Schema; Quellenregel in CLAUDE.md. Gate: Freigabe Inhaber.
+- [ ] Q1 Gerüst per Skript, einmalig: Item-Datei je Exotic mit Quantum-Basiszeile (Treffer `precisionDamage`, sonst `bodyDamage`; `.timing.*`; Katalysator aus `cata`-Zeile, sonst `unknown`; nur `cata`: eingebaut); Aliasdatei (`tesselation`); Bericht zählt Clarity-Sätze mit Zahl ohne `$clarity` oder `notModelled`. Gate: alle lösen auf, Plausibilität je Waffentyp, Fourth Horseman 5 Schuss je Magazin mit Katalysator.
+- [ ] A2 Aufräumen: Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
+- [ ] M1 DoT und Status: Le Monarque, Thorn, Osteo Striga, Witherhoard, Jötunn, Two-Tailed Fox, One Thousand Voices, Fighting Lion, Deterministic Chaos, Conditional Finality, Winterbite, Dragon's Breath. Gate: M-Gate.
+- [ ] M2 Zusatzteile: Malfeasance, Ex Diris, Cloudstrike, Alethonym, Euphony, Quicksilver Storm, Khvostov 7G-0X, Grand Overture, Slayer's Fang, Vex Mythoclast, Outbreak Perfected. Gate: M-Gate.
+- [ ] M3 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate.
+- [ ] A3 Aufräumen nach M1–M3. Gate: Berichte gleich.
+- [ ] M4 Bedingte Buffs, Katalysatoren: Ace of Spades, Microcosm, Monte Carlo, Sturm, The Last Word, Third Iteration, Xenophage, Sleeper Simulant, Izanagi's Burden, Anarchy, The Chaperone, Barrow-Dyad, Still Hunt. Gate: M-Gate.
+- [ ] M5 Hand-Items von `$aegis` auf `$quantum`/`$clarity`: Polaris Lance, Truth, Hierarchy of Needs, Choir of One, Delicate Tomb, Duality, Graviton Spike, Salvation's Grip, The Queenbreaker. Gate: M-Gate je Spielweise.
+- [ ] Q-Bilanz (Opus): Waffen mit Item, Sätze ohne Regel nach Häufigkeit, Aegis-Bericht; nächste Blöcke oder Gegenprobe. Stopp zur Freigabe.
 
-## B6, Spielweisen der Exotic-Waffen (freigegeben 2026-11-01)
+## Plan Q (Inhaber 2026-11-03)
 
-Befund: Spielweise-Wörter (`isExecution`) gelten bei Weapons als „kein Schalter“, die Zeile rechnet mit einer Spielweise.
+Quantum (Zahlen) und Clarity (Mechanik) sind die einzige Quelle, kein neues `$aegis`. Aegis-Prüfstand nur Bericht bis zur Gegenprobe. Gerüst per Skript, Mechanik von Hand nach Vorlage, Zahlen nur als Verweis. Befund: Einzeltreffer Quantum ≈ Aegis ±2 %, Abweichungen sind Mechaniken (Archiv).
 
-**Regel:** Eine Ausführungsart, die Aegis als eigene Zeile misst (Ladestufe, Kombo, Modus, ADS/Hipfire), ist ein Eintrag in `playstyles` des Items, Label = Aegis-Wort; Regeln mit Bedingung `playstyle` tragen den Unterschied. Die erste Spielweise ist der Grundschuss (die optimale). Werte aus Text, Quantum oder `$aegis` der Basiszeile (sie bleibt Prüfung). Lücke unter 2 %: `known-inaccuracies`.
+**M-Gate:** Regeln nach Vorlage mit `$clarity`-Zitat, Rest in `notModelled`; je Vorlage eine Golden-Waffe (Wert von Hand aus dem Text); Plausibilität; Sätze ohne Regel sinken. Je Block einmal `build:weapons`, `coverage`, Tests, Snapshots `--update`. **Nie `import:weapons`.**
 
-**Erledigt (Item-Datei, Override gestrichen):** The Lament, Heirloom, Whirling Ovation, Choir of One, Salvation's Grip, Black Talon (ca8681a). Muster: `salvation-s-grip.json` (zwei Spielweisen), `the-lament.json` (Takt je Spielweise per `modifyStat rpm` aus `$aegisSustained[…].peakRateSeconds`). Ablauf je Item: Datei schreiben, `npm run build:weapons` (Text-Hash zuerst `00000000`, die Ausgabe nennt den echten), Override streichen, `npm run coverage`, Tests, Snapshots (`mechanicsBaseline`, `scenarioBench`) bewusst `--update`. **Nie `npm run import:weapons`** (lädt aus dem Netz, überschreibt Snapshots).
-
-**B6-Gate:** Delta-Paare (1 von 3) und Spearman Weapons (0,96 über 7 Zeilen) nicht schlechter auf den Zeilen, die vorher und nachher in der Prüfmenge sind (Inhaber 2026-11-02; eine Zeile, die `fitted` wird, fällt nach ADR 0018 heraus), Abdeckung Heavy/Special steigt (Inhaber 2026-11-03: entfällt bei Blöcken, die nur die Herkunft schon gezählter Zeilen ändern), jedes Item löst auf, Plausibilität je Spielweise.
-
-Danach: Stapelzähler als Schalter (`Roaring Flames x3`, `Transcendent`), Testing-Reiter, Stasis-Shatter. Aus B4: `pickBaseRow`, `blockingReason`, `options` neben `buffs`.
-
-## Offen aus P
-
-- Weapons und Abilities melden nur (Abilities 0,83, 4 von 8). Schwellen: Inhaber.
-- Ability-Wert hängt an der Waffe im Build (Gathering Storm 7 703 / 7 901), Ursache offen.
-- Aus B6.2, über 2 %, ohne Block (B6.5 aufnehmen? Inhaber): Duality ohne On Black Wings (Slug +55 %), Graviton Spike ohne Moduswechsel (Overcharge, Temporal Alignment, Lightning Strike; bis etwa +75 %). Queenbreaker: Katalysator-Magazin 11 gegen Clarity „Cannot load the Magazine beyond its base capacity“.
-- Review B6.1: `fireRateRpm` steht bei Quantum-Timing `verified` statt `derived` (Generator, älter). Die Notiz auf `magazine` usw. ist behoben.
-- Queenbreaker, Marksman-Reload (317 ms je Reload zu lang, 0 % bei 10/30/60 s): Inhaber 2026-11-03 Abweichung statt Umbau, in `known-inaccuracies`.
-- `tmp/playstyleLink.test.ts` veraltet, löscht der Inhaber (Hook erlaubt kein `rm`).
-- Ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk; Argent Ordnance ohne Reload-Teil. Beim Inhaber: Nullschaden-Treffer in der Aufschlüsselung.
+Gestrichen: B6.5, B6.6. In die Gegenprobe verschoben: B6.4, Nachtrag der Exotics ohne Quantum (Archiv). Gelockert: Prüfstand-Schwellen bis zur Gegenprobe nur Bericht.
 
 ## Reihenfolge
 
-B6 → C (Casts, Energie) → B5 (Eichung), Begründung `ground-up-model.md`. Aufräum-Block nach drei Funktions-Blöcken. Bauplan: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
+Q → C (Casts, Energie) → Gegenprobe (Prüfstand als Gate, B6.4, Nachtrag) → B5 (Eichung). Offenes im Archiv. Bauplan: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>.
 
 ## Entscheidungen des Inhabers
 
-- Bauplan und ADR 0018 eng folgen. Merge nur auf Ansage. Ein Boss, keine Adds. Kill-Buffs nur mit „Vorher aufgebaut“.
-- Aktionen für bekannte Mechaniken sind kein Vorrat. Exotics ohne Schadenswirkung fallen weg. Energie-Mods abgelehnt. Legendary Frames für 2.0. Commit je Teil.
-- Eigene Quellen nur für die Dauer aus ihrem Text; Buffs von Teammates die ganze Phase.
-- 2026-11-02: „einfache zuerst“; Mechaniken (Symmetry, Lodestar, Grand Overture …) in eigenem Opus-Block.
+- Bauplan eng folgen, Abweichungen per ADR. Merge nur auf Ansage. Ein Boss, keine Adds. Kill-Buffs nur „Vorher aufgebaut“. Commit je Teil. Energie-Mods abgelehnt, Legendary Frames 2.0.
+- 2026-11-03: Quantum und Clarity einzige Quelle, Aegis erst Gegenprobe; Gerüst per Skript, Mechanik von Hand.
