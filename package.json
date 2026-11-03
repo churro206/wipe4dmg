@@ -23,6 +23,7 @@
     "notify": "node scripts/notify.ts",
     "import:court": "node scripts/import-court.ts",
     "build:weapons": "node scripts/build-weapons.ts",
+    "scaffold:weapons": "node scripts/scaffold-weapons.ts",
     "build:armor": "node scripts/build-armor.ts",
     "build:buffs": "node scripts/build-buffs.ts",
     "build:artifacts": "node scripts/build-artifacts.ts",

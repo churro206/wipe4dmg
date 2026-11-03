@@ -122,6 +122,8 @@ function numberField(ref: ParsedRef, row: object, field: string): number {
 export function clarityEntry(sources: ItemSources, name: string, itemName: string): ClarityEntry {
   let entries = sources.clarity.entries.filter((e) => e.name === name);
   if (entries.length > 1) entries = entries.filter((e) => e.itemName === itemName);
+  // Clarity lists a perk once per socket it sits in (Dead Messenger's Trinary Vision three times)
+  if (entries.length > 1 && entries.every((e) => e.text === entries[0].text)) entries = [entries[0]];
   if (entries.length !== 1)
     throw new Error(`${entries.length} Clarity entries named "${name}" (of ${itemName})`);
   return entries[0];
