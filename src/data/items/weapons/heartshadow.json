@@ -1,0 +1,75 @@
+{
+  "id": "heartshadow",
+  "kind": "exoticWeapon",
+  "name": "Heartshadow",
+  "texts": [
+    { "source": "clarity", "entry": "Heartshadow Catalyst", "hash": "51820167" },
+    { "source": "clarity", "entry": "Shot in the Dark", "hash": "02889757" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file heartshadow",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: a sword has no charge; the time to empty counts from the first heavy (Aegis Sustained)"
+    }
+  },
+  "fireRateRpm": {
+    "expr": "60 / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds",
+    "note": "seconds per heavy to heavies per minute"
+  },
+  "magazine": {
+    "expr": "$aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds - 1",
+    "note": "Aegis' 15 heavies (the row counts ammunition, 63, with the catalyst); the catalyst's 6 reserves (Clarity 57 to 63) are 1 heavy of 4 ammo (57 / 4 = 14)"
+  },
+  "totalShots": {
+    "expr": "$aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds - 1",
+    "note": "the same heavies, the magazine is the whole ammunition"
+  },
+  "reloadTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file heartshadow",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the magazine is the whole ammunition, a sword does not reload (Aegis Sustained, noReloads)"
+    }
+  },
+  "catalyst": {
+    "name": "Wraithwalk, Heartshadow Catalyst",
+    "description": "Increases reserves by 6 (57🠚63).\nGrants 50% increased movement speed while under the effects of Void Invisibility.",
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": {
+        "expr": "60 / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds",
+        "note": "as without the catalyst"
+      },
+      "magazine": {
+        "expr": "$aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds",
+        "note": "Aegis' 15 heavies with the catalyst"
+      },
+      "totalShots": {
+        "expr": "$aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds",
+        "note": "the same 15 heavies"
+      },
+      "reloadTimeMs": {
+        "value": 0,
+        "source": {
+          "name": "Item file heartshadow",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: a sword does not reload"
+        }
+      }
+    }
+  },
+  "parts": {
+    "heavy": {
+      "name": "Heavy attack",
+      "damage": "$aegis[sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded].perShot",
+      "delivery": "impact"
+    }
+  },
+  "rules": [{ "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "heavy" }] }]
+}

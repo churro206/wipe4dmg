@@ -1191,6 +1191,39 @@ describe("Black Talon combo from its Aegis rows (B6)", () => {
   });
 });
 
+describe("Sustained-combo swords as item files (B6.3)", () => {
+  const lastS = (r: SimulationResult) => r.shots.at(-1)!.timeMs / 1000;
+
+  it("Ergo Sum: 10 combos 1H2L of 3293 (Aegis Sustained base), one per 2,04 s", () => {
+    const r = run({ subclass: "arc", damagePhaseSeconds: 60 }, weaponById("ergo-sum"));
+    const perCombo = r.totalDamage / r.shots.length;
+    note(
+      "Ergo Sum 60 s: Schüsse (Combos), letzter Schuss, Schaden pro Combo",
+      `${r.shots.length}, ${fmt(lastS(r))} s, ${fmt(perCombo)}`,
+      "Aegis Sustained 10 Combos + 1H in 20,4 s, Grundwert 3293 pro Combo (vor Buffs)",
+    );
+    expect(r.shots.length).toBe(10);
+    expect(lastS(r)).toBeGreaterThan(17);
+    expect(lastS(r)).toBeLessThan(21);
+    expect(perCombo).toBeGreaterThan(3000);
+  });
+
+  it("Heartshadow: 14 heavies without the catalyst, 15 with it (Aegis Sustained 63 ammo, reserves +6)", () => {
+    const off = run({ subclass: "void", damagePhaseSeconds: 60 }, weaponById("heartshadow"));
+    const on = run({ subclass: "void", damagePhaseSeconds: 60, catalyst: true }, weaponById("heartshadow"));
+    note(
+      "Heartshadow 60 s: Schüsse und letzter Schuss ohne / mit Katalysator",
+      `${off.shots.length} / ${on.shots.length}, ${fmt(lastS(off))} s / ${fmt(lastS(on))} s`,
+      "Aegis Sustained 15 Heavies in 30,24 s (2,016 s je Heavy); Clarity „Increases reserves by 6 (57🠚63)“",
+    );
+    expect(off.shots.length).toBe(14);
+    expect(on.shots.length).toBe(15);
+    expect(lastS(on)).toBeGreaterThan(26);
+    expect(lastS(on)).toBeLessThan(31);
+    expect(off.totalDamage / off.shots.length).toBeGreaterThan(2500);
+  });
+});
+
 describe("sword combos as playstyles (B6)", () => {
   const lament = (fields: Partial<Build>) =>
     run({ subclass: "solar", damagePhaseSeconds: 30, ...fields }, weaponById("the-lament"));

@@ -5723,57 +5723,204 @@
     "code": 122,
     "name": "Ergo Sum",
     "manifestHash": 1681583613,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "sword",
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file ergo-sum",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: a sword has no charge; the time to empty counts from the first combo (Aegis Sustained)"
       }
     },
     "fireRateRpm": {
-      "value": 29.39,
+      "value": 29.383,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Derived: (TtE 20.415 s − 0 reloads × 0 s) ÷ 50 intervals within magazines (ADR 0013); 10 shots in 20.415 s (override)"
+        "status": "fitted",
+        "row": "ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+        "note": "Derived: 60 / $aegisSustained[ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade].peakRateSeconds (seconds per combo to combos per minute; one shot of the model is one combo (1H2L)); $aegisSustained[ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade].peakRateSeconds = 2.042 (Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade)"
       }
     },
     "magazine": {
       "value": 10,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified"
+        "name": "Item file ergo-sum",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: Aegis Sustained row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade: \"10 combos + 1H\" (the row counts ammunition, 51); the last heavy falls away"
       }
     },
     "totalShots": {
       "value": 10,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified"
+        "name": "Item file ergo-sum",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: the same 10 combos"
       }
     },
     "reloadTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "name": "Item file ergo-sum",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: the magazine is the whole ammunition, a sword does not reload (Aegis Sustained, noReloads)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "combo",
+        "name": "Combo 1H2L",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file ergo-sum",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 3293,
+          "source": {
+            "name": "Aegis Boss Damage sheet (tab Sustained), row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+            "url": "https://destiny2.science/boss-damage",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
+            "note": "base"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file ergo-sum",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file ergo-sum",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "combo" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "arc-conductor",
+        "name": "Arc Conductor",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "gathering-light",
+        "name": "Gathering Light",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "insectoid-robot-grenades",
+        "name": "Insectoid Robot Grenades",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "sacred-flame",
+        "name": "Sacred Flame",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "stormbringer",
+        "name": "Stormbringer",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "the-perfect-fifth",
+        "name": "The Perfect Fifth",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "unplanned-reprieve",
+        "name": "Unplanned Reprieve",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "wolfpack-rounds",
+        "name": "Wolfpack Rounds",
+        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Transcendent Steel, Ergo Sum Catalyst",
+      "description": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -5785,159 +5932,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-ergo-sum-jagged-edge-64-impact-light",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-ergo-sum-jagged-edge-64-impact-light",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 3293,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-ergo-sum-jagged-edge-64-impact-light",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-ergo-sum-jagged-edge-64-impact-light",
-            "note": "visual Value; assumptions: Jagged Edge, 64 impact, light"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-ergo-sum-jagged-edge-64-impact-light",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-ergo-sum-jagged-edge-64-impact-light"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-ergo-sum-jagged-edge-64-impact-light",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-ergo-sum-jagged-edge-64-impact-light"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "arc-conductor",
-        "name": "Arc Conductor",
-        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "gathering-light",
-        "name": "Gathering Light",
-        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "insectoid-robot-grenades",
-        "name": "Insectoid Robot Grenades",
-        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "sacred-flame",
-        "name": "Sacred Flame",
-        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "stormbringer",
-        "name": "Stormbringer",
-        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "the-perfect-fifth",
-        "name": "The Perfect Fifth",
-        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "unplanned-reprieve",
-        "name": "Unplanned Reprieve",
-        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "wolfpack-rounds",
-        "name": "Wolfpack Rounds",
-        "description": "Final blows with this weapon grant stacks of Gathering Light, improving guard stats and lunge range.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Transcendent Steel, Ergo Sum Catalyst",
-      "description": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
-      "effect": "unknown"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "eriana-s-vow",
@@ -8346,72 +8341,62 @@
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
-        "retrieved": "2026-10-20",
+        "name": "Item file heartshadow",
+        "retrieved": "2026-11-03",
         "status": "derived",
-        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; The time to empty counts from the first shot"
+        "note": "Derived: a sword has no charge; the time to empty counts from the first heavy (Aegis Sustained)"
       }
     },
     "fireRateRpm": {
       "value": 29.762,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.; Values of the override"
+        "status": "fitted",
+        "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
+        "note": "Derived: 60 / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds (seconds per heavy to heavies per minute); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
       }
     },
     "magazine": {
       "value": 14,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
+        "status": "fitted",
+        "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
+        "note": "Derived: $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds - 1 (Aegis' 15 heavies (the row counts ammunition, 63, with the catalyst); the catalyst's 6 reserves (Clarity 57 to 63) are 1 heavy of 4 ammo (57 / 4 = 14)); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds = 30.24 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
       }
     },
     "totalShots": {
       "value": 14,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
+        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
+        "status": "fitted",
+        "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
+        "note": "Derived: $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds - 1 (the same heavies, the magazine is the whole ammunition); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds = 30.24 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
       }
     },
     "reloadTimeMs": {
       "value": 0,
       "source": {
-        "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137 and Quantum, override for Heartshadow",
-        "retrieved": "2026-10-20",
+        "name": "Item file heartshadow",
+        "retrieved": "2026-11-03",
         "status": "derived",
-        "note": "Derived (override): Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis."
-      }
-    },
-    "reloadDurationIncluded": {
-      "value": 0.9,
-      "source": {
-        "name": "Quantum Damage-ics, Home (Assumptions Made)",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-25",
-        "status": "verified",
-        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
-        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+        "note": "Derived: the magazine is the whole ammunition, a sword does not reload (Aegis Sustained, noReloads)"
       }
     },
     "damageInstances": [
       {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
+        "id": "heavy",
+        "name": "Heavy attack",
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file heartshadow",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
-            "note": "Package: one value per shot"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "damagePerTick": {
@@ -8422,31 +8407,37 @@
             "retrieved": "2026-10-20",
             "status": "fitted",
             "row": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
-            "note": "visual Value; assumptions: heavy, Shot in the Dark, weaken excluded"
+            "note": "perShot 2754.88 of the row (Full Modifiers 4.11 already out)"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file heartshadow",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file heartshadow",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "canPrecision": false,
+        "delivery": "impact",
         "scale": "aegisVisual"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "heavy" }]
       }
     ],
     "intrinsics": [
@@ -8456,7 +8447,7 @@
         "description": "Heavy attacks made with full Sword energy turn you invisible and fire exploding Void projectiles.",
         "source": {
           "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
+          "retrieved": "2026-10-31",
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
@@ -8470,49 +8461,55 @@
         "fireRateRpm": {
           "value": 29.762,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row override",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
             "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "Values of the override; with the catalyst: magazine 15, 15 shots (override)"
+            "status": "fitted",
+            "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
+            "note": "Derived: 60 / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds (as without the catalyst); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
           }
         },
         "magazine": {
           "value": 15,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row override",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
             "retrieved": "2026-10-20",
-            "status": "verified"
+            "status": "fitted",
+            "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
+            "note": "Derived: $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds (Aegis' 15 heavies with the catalyst); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds = 30.24 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
           }
         },
         "totalShots": {
           "value": 15,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row override",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
             "retrieved": "2026-10-20",
-            "status": "verified"
+            "status": "fitted",
+            "row": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
+            "note": "Derived: $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds / $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds (the same 15 heavies); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].timeToEmptySeconds = 30.24 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade); $aegisSustained[heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade].peakRateSeconds = 2.016 (Aegis Boss Damage sheet (tab Sustained), row heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade)"
           }
         },
         "reloadTimeMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row override",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "verified"
+            "name": "Item file heartshadow",
+            "retrieved": "2026-11-03",
+            "status": "derived",
+            "note": "Derived: a sword does not reload"
           }
         }
       }
     },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    ]
+    }
   },
   {
     "id": "heir-apparent",

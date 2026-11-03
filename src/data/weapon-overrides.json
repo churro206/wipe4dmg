@@ -356,25 +356,6 @@
     }
   },
   {
-    "weapon": "Ergo Sum",
-    "reason": "Lightweight Frame mit Unplanned Reprieve, 1H2L: Grundwert pro Combo 3293 (Aegis Sustained, ohne den 5 % Transcendence-Bonus: Weapons 3458,1 ÷ 1,05 = 3293), 10 Combos plus ein Heavy in 20,4 s. Pack Hunter gibt nur Handling und Reload neben Verbündeten. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
-        "text": "10 combos + 1H"
-      }
-    ],
-    "aegisWins": true,
-    "perShotFromTiming": true,
-    "timing": {
-      "from": "Aegis",
-      "row": "ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade",
-      "noReloads": true,
-      "shots": 10
-    }
-  },
-  {
     "weapon": "Tessellation",
     "reason": "Schaden aus Weapons „Property: Irreducible“ (2557,6, ohne Transcendent); Timing aus Aegis Sustained (22 Schuss, 4567 ms Reload, volle Granaten-Energie).",
     "quotes": [
@@ -698,34 +679,6 @@
         "intervalSeconds": 1.6,
         "reloadSeconds": 1.7665
       }
-    }
-  },
-  {
-    "weapon": "Heartshadow",
-    "reason": "Aegis Sustained misst Heavy-Angriffe mit Catalyst: 63 Munition, 4 pro Heavy (Magazin-Folge 4-4-4), 15 Heavies in 30,24 s = 2,016 s pro Heavy (Peak Rate). Ohne Catalyst 6 Munition weniger (Destinypedia 50 → 56; Gemini 60 → 66, beide +6): 57 Munition = 14 Heavies. Grundwert pro Heavy 2754,9 (Weapons „heavy, Shot in the Dark, weaken excluded“ = Sustained Base 2755); Shot in the Dark ist ein Perk der Waffe. Timing mit Lucent Blades x3 und Argent Blade wie bei Aegis.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "heartshadow-heavy-attacks-shot-in-the-dark-lucent-blades-x3-argent-blade",
-        "text": "\"peakRateSeconds\":2.016"
-      },
-      {
-        "source": "aegis",
-        "entry": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
-        "text": "weaken excluded"
-      }
-    ],
-    "aegisWins": true,
-    "base": "sword-heartshadow-heavy-shot-in-the-dark-weaken-excluded",
-    "timing": {
-      "from": "Aegis",
-      "values": {
-        "magazine": 14,
-        "totalShots": 14,
-        "intervalSeconds": 2.016,
-        "reloadSeconds": 0
-      },
-      "catalystValues": { "magazine": 15, "totalShots": 15 }
     }
   },
   {

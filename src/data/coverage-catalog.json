@@ -1641,8 +1641,8 @@
         "group": "Energy",
         "inGame": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
         "iconHash": 1497627200,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "No effect against one boss without adds",
+        "status": "leftOut",
         "iconKey": "named:ergo-sum-catalyst"
       },
       {

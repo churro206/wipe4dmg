@@ -534,13 +534,13 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Caster frame, Enduring Blade, 62 impact, light | übersprungen | legendary frame (owner 2026-10-25) |
 | Caster frame, Enduring Blade, 62 impact, heavy | übersprungen | legendary frame (owner 2026-10-25) |
 | Ergo Sum, Jagged Edge, 64 impact, light | im Modell | base row of the package |
-| Ergo Sum, lightweight frame, Jagged Edge, 64 impact, heavy | übersprungen | ohne light der Basiszeile |
+| Ergo Sum, lightweight frame, Jagged Edge, 64 impact, heavy | übersprungen | the item file uses another row |
 | Ergo Sum, The Perfect Fifth, caster frame, Pack Hunter, Transcendent, Enduring Blade, 58 impact, 1H2L | fehlt | fremder Perk: Pack Hunter; nicht modelliert: Transcendent |
 | Ergo Sum, The Perfect Fifth, caster frame, Pack Hunter, Transcendent, Jagged Edge, 62 impact, 1H2L | fehlt | fremder Perk: Pack Hunter; nicht modelliert: Transcendent |
 | Ergo Sum, Unplanned Reprieve, wave sword frame, Pack Hunter, Transcendent, Jagged Edge, 62 impact, heavy | fehlt | fremder Perk: Pack Hunter; nicht modelliert: Transcendent |
 | Ergo Sum, Unplanned Reprieve, lightweight frame, Pack Hunter, Transcendent, Jagged Edge, 62 impact, 1H2L | fehlt | fremder Perk: Pack Hunter; nicht modelliert: Transcendent |
 | Ergo Sum, Unplanned Reprieve, vortex frame, Pack Hunter, Transcendent, Tempered Edge, 61 impact, heavy | fehlt | fremder Perk: Pack Hunter; nicht modelliert: Transcendent |
-| Heartshadow, light | übersprungen | ohne heavy, Shot in the Dark, weaken excluded der Basiszeile |
+| Heartshadow, light | übersprungen | the item file uses another row |
 | Heartshadow, heavy, Shot in the Dark, weaken excluded | im Modell | base row of the package |
 | Lightweight frame, Jagged Edge, 70 impact, heavy, aerial | übersprungen | legendary frame (owner 2026-10-25) |
 | Lightweight frame, Jagged Edge, 70 impact, heavy | übersprungen | legendary frame (owner 2026-10-25) |

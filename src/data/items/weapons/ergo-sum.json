@@ -1,0 +1,62 @@
+{
+  "id": "ergo-sum",
+  "kind": "exoticWeapon",
+  "name": "Ergo Sum",
+  "texts": [
+    { "source": "clarity", "entry": "Ergo Sum Catalyst", "hash": "9bfe29e6" },
+    { "source": "clarity", "entry": "The Perfect Fifth", "hash": "b591dea2" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ergo-sum",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: a sword has no charge; the time to empty counts from the first combo (Aegis Sustained)"
+    }
+  },
+  "fireRateRpm": {
+    "expr": "60 / $aegisSustained[ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade].peakRateSeconds",
+    "note": "seconds per combo to combos per minute; one shot of the model is one combo (1H2L)"
+  },
+  "magazine": {
+    "value": 10,
+    "source": {
+      "name": "Item file ergo-sum",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: Aegis Sustained row ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade: \"10 combos + 1H\" (the row counts ammunition, 51); the last heavy falls away"
+    }
+  },
+  "totalShots": {
+    "value": 10,
+    "source": {
+      "name": "Item file ergo-sum",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the same 10 combos"
+    }
+  },
+  "reloadTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ergo-sum",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the magazine is the whole ammunition, a sword does not reload (Aegis Sustained, noReloads)"
+    }
+  },
+  "catalyst": {
+    "name": "Transcendent Steel, Ergo Sum Catalyst",
+    "description": "Generates 3 [1] ammo from thin air upon dealing damage with your Prismatic grenade.",
+    "effect": "none"
+  },
+  "parts": {
+    "combo": {
+      "name": "Combo 1H2L",
+      "damage": "$aegisSustained[ergo-sum-lightweight-frame-unplanned-reprieve-jagged-edge-1h2l-combo-lucent-blades-x3-pack-hunter-transcendent-excludes-transcendence-5-bonus-argent-blade].base",
+      "delivery": "impact"
+    }
+  },
+  "rules": [{ "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "combo" }] }]
+}
