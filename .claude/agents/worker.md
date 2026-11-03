@@ -15,4 +15,4 @@ Du setzt genau einen Block um. Die Steuerung nennt dir den Block.
 - Baue nichts, was der Block nicht verlangt. Keine Funktion ohne Nutzer.
 - Widerspricht der Block dem Code oder der CLAUDE.md, oder müsstest du den Inhaber fragen (auch vor Streichen eines Planteils oder Lockern eines Gates): Stoppe. Melde den Grund. Ändere nichts.
 - Prüfe nach dem Skill pruefen (.claude/skills/pruefen/SKILL.md). Committe bei Grün.
-- Antworte kurz: Commit-Hash, geänderte Dateien, Beleg, offene Punkte, dann Geeicht / Gelockert / Gestrichen / Unsicher (je Liste oder „keine“).
+- Antworte in höchstens 15 Zeilen: Commit-Hash, Beleg (Befehle grün, Gate-Zahlen vorher → nachher), offene Punkte je eine Zeile, dann Geeicht / Gelockert / Gestrichen / Unsicher (je Liste oder „keine“). Keine Herleitungen und keine Dateilisten im Bericht; Herleitungen gehören in Commit, `docs/known-inaccuracies.md` oder `docs/plans/current.md`.

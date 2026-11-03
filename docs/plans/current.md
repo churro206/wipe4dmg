@@ -6,10 +6,8 @@ Höchstens 4 KB. Nach jedem Block pflegen: Erledigtes in `docs/changelog.md`, Ab
 
 Format für den Skill `abarbeiten`: Überschrift „Checkliste (freigegeben <Datum>)“, ein Kästchen pro Block in Reihenfolge, `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`.
 
-**Pause (Inhaber, 2026-11-02):** B6.2 ist committet (349c824), das Review fehlt. Weiter mit `/abarbeiten`: zuerst den Reviewer für 349c824 starten, dann B6.3. Der Worker meldet zu B6.2: Tests nach der Datei geschrieben.
-
 - [x] B6.1 Delicate Tomb als Item-Datei: Hipfire (Grundschuss, 890 pro Schuss) und ADS (745), je 18 Schuss, Muster `salvation-s-grip.json`. Gate: B6-Gate. (f95e747)
-- [ ] B6.2 Katalysator-Timing im Item-Verweis: Form für „Zeile mit Katalysator, Wert ohne“ (heute Override `rowHasCatalyst`, `scripts/lib/weaponPackages.ts` ab Zeile 1118), Test in `itemResolve`; damit Duality (Magazin 6 statt 8), Graviton Spike (Sustained wechselt die Modi, ohne Schusszahl) und The Queenbreaker (zweite Nutzerin, Magazin 5) als Item-Datei, `rowHasCatalyst` gestrichen. Gate: B6-Gate.
+- [x] B6.2 Katalysator-Timing im Item-Verweis: Form für „Zeile mit Katalysator, Wert ohne“ (heute Override `rowHasCatalyst`, `scripts/lib/weaponPackages.ts` ab Zeile 1118), Test in `itemResolve`; damit Duality (Magazin 6 statt 8), Graviton Spike (Sustained wechselt die Modi, ohne Schusszahl) und The Queenbreaker (zweite Nutzerin, Magazin 5) als Item-Datei, `rowHasCatalyst` gestrichen. Gate: B6-Gate. (349c824, 985d12d, 6b4a779)
 - [ ] B6.3 Schwerter mit Sustained-Combo wie Black Talon: Ergo Sum, Heartshadow als Item-Datei, Muster `black-talon.json`. Gate: B6-Gate.
 - [ ] A1 Aufräumen: `scripts/lib/probeAuto.ts` dient nur noch `tests/lib/aegisCoverageData.ts`; dorthin verschieben oder umbenennen, nur Umbau. Gate: Berichte byte-gleich.
 - [ ] B6.4 Bei Items mit `playstyles` zählt ein Ausführungswort ohne Spielweise als fehlender Schalter (`tests/lib/scenarioGen.ts`; Fall: Lament-Zeile „heavy“, +191 %). Gate: Test, Prüfmenge ohne diese Zeilen.

@@ -18,7 +18,8 @@ Prüfe:
 4. Verletzt der Diff eine Regel aus CLAUDE.md?
 5. Ist der Block selbst unnötig für die Top-20-Fragen in docs/product.md?
 
-Antworte nur in dieser Form:
+Antworte nur in dieser Form, höchstens 15 Zeilen:
 - Urteil: OK oder NACHBESSERN oder STOPP
-- Mängel: höchstens fünf Punkte, je mit Datei und Zeile
+- Mängel: höchstens fünf Punkte, je eine Zeile mit Datei:Zeile, Mangel und Behebung
+- Ungeprüft: was du nicht selbst ausführen konntest, eine Zeile
 STOPP bedeutet: Der Plan ist falsch. Nur der Inhaber entscheidet dann.
