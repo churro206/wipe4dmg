@@ -20,6 +20,7 @@
     "import:weapons": "node scripts/import-weapons.ts",
     "import:reload": "node scripts/import-reload-formulas.ts",
     "facts": "node scripts/facts.ts",
+    "notify": "node scripts/notify.ts",
     "import:court": "node scripts/import-court.ts",
     "build:weapons": "node scripts/build-weapons.ts",
     "build:armor": "node scripts/build-armor.ts",

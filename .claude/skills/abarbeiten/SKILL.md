@@ -13,4 +13,5 @@ Arbeite die offenen Blöcke der Checkliste in docs/plans/current.md der Reihe na
 6. Bei STOPP: Stoppe sofort und zeige dem Inhaber die Begründung.
 
 Stoppe außerdem vor jedem Merge, vor jedem Streichen eines Planteils und vor jedem Lockern eines Gates.
+Unmittelbar vor jedem Stopp (Frage, Tabelle, STOPP), nie während ein Subagent läuft: `npm run notify -- "<Block>: <Grund in wenigen Worten>"`. Subagents rufen `notify` nie auf.
 Lies selbst keinen Code. Gib am Ende eine Tabelle aus: Block, Commit, Urteil, Runden. Darunter Geeicht / Gelockert / Gestrichen / Unsicher aus den Berichten des Workers.
