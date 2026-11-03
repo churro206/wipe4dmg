@@ -127,14 +127,14 @@ export function scaffoldWeaponItems(inputs: ScaffoldInputs): ScaffoldResult {
     // without such a row is a catalyst whose effect no source quantifies
     const catalystEntries = unique.filter((e) => e.type === CATALYST_TYPE);
     const builtIn = plainRow === undefined;
-    const hasCatalyst =
-      !builtIn && (weapon.catalyst !== null || catalystEntries.length > 0 || cataRow !== undefined);
+    // Built in: the base row has the catalyst already, so its timing is not a difference (unknown)
+    const hasCatalyst = weapon.catalyst !== null || catalystEntries.length > 0 || cataRow !== undefined;
     let catalyst: Record<string, unknown> | undefined;
     if (hasCatalyst) {
       const names = [...new Set([...(weapon.catalyst?.perks ?? []), ...catalystEntries.map((e) => e.name)])];
-      const cataTiming = cataRow ? timed(cataRow) : null;
+      const cataTiming = cataRow && !builtIn ? timed(cataRow) : null;
       const timing = cataRow && cataTiming ? catalystTiming(baseTiming, cataTiming, cataRow.id) : null;
-      const damageSame = cataRow ? hitOf(cataRow) === hitOf(base) : false;
+      const damageSame = cataRow && !builtIn ? hitOf(cataRow) === hitOf(base) : false;
       catalyst = {
         name: names.join(", ") || weapon.catalyst?.name || "Catalyst",
         description: catalystEntries.map((e) => e.text).join("\n"),

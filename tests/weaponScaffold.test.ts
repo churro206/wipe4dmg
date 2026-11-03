@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any -- the items are untyped JSON here */
 // The scaffold of the weapon items (ADR 0019, Q1): one item file per exotic from its Quantum base
 // row. Fixtures here; the generated files are checked in tests/itemFiles.test.ts.
 
@@ -171,7 +172,9 @@ describe("scaffoldWeaponItems", () => {
     const { items } = scaffold([row({ id: "specials-shotgun-test-gun-cata", variant: "cata" })]);
     const item = items[0] as any;
     expect(item.fireRateRpm).toBe("$quantum[specials-shotgun-test-gun-cata].timing.fireRateRpm");
-    expect(item.catalyst).toBeUndefined();
+    // the switch stays, its effect is unknown: the base has the catalyst already
+    expect(item.catalyst).toMatchObject({ effect: "unknown" });
+    expect(item.catalyst.timing).toBeUndefined();
   });
 
   it("finds a weapon under a spelling of the alias file and skips existing items", () => {
