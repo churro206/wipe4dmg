@@ -9,7 +9,7 @@ import { abilities, artifactData, effects, exoticArmor, weapons } from "../../sr
 import switches from "../fixtures/scenario-switches.json";
 import { aegisCoverage, type CoverageRow } from "../../scripts/lib/aegisCoverage";
 import type { MeasuredRow } from "../../scripts/lib/missingImpact";
-import { autoEntries } from "../../scripts/lib/probeAuto";
+import { autoEntries } from "./probeAuto";
 import { tabOf } from "./scenarioBench";
 import { handMadeScenarios } from "./scenarioFiles";
 

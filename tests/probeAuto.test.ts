@@ -1,8 +1,8 @@
-// Rule of the meta probe by rule (scripts/lib/probeAuto.ts): which assumption of Aegis becomes which switch.
+// Rule of the meta probe by rule (tests/lib/probeAuto.ts): which assumption of Aegis becomes which switch.
 
 import { describe, expect, it } from "vitest";
 import type { AegisTotalRow, Weapon } from "../src/data/schema";
-import { autoEntries } from "../scripts/lib/probeAuto";
+import { autoEntries } from "./lib/probeAuto";
 
 const row = (assumptions: string[]) =>
   ({

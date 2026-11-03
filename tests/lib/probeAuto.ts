@@ -11,7 +11,7 @@ import type {
   ExoticArmorEntry,
   Weapon,
 } from "../../src/data/schema.ts";
-import { catalystBuffs } from "./items/weaponItem.ts";
+import { catalystBuffs } from "../../scripts/lib/items/weaponItem.ts";
 
 /** One row of the Aegis tabs "Sustained" and "Swap" rebuilt as a build. */
 export type Entry = {
