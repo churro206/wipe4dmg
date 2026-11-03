@@ -34,7 +34,7 @@ Danach: Stapelzähler als Schalter (`Roaring Flames x3`, `Transcendent`), Testin
 - Ability-Wert hängt an der Waffe im Build (Gathering Storm 7 703 / 7 901), Ursache offen.
 - Aus B6.2, über 2 %, ohne Block (B6.5 aufnehmen? Inhaber): Duality ohne On Black Wings (Slug +55 %), Graviton Spike ohne Moduswechsel (Overcharge, Temporal Alignment, Lightning Strike; bis etwa +75 %). Queenbreaker: Katalysator-Magazin 11 gegen Clarity „Cannot load the Magazine beyond its base capacity“.
 - Review B6.1: `fireRateRpm` steht bei Quantum-Timing `verified` statt `derived` (Generator, älter). Die Notiz auf `magazine` usw. ist behoben.
-- Nachbesserung B6.2, offen (Rückfrage): The Queenbreaker, Marksman Sights nimmt den Reload der Combat Sights (Aegis 1883 statt 2283 ms). Ein `modifyStat reload` braucht den Faktor 1883 / 2283, beide Sustained-Zeilen; `resolveExpression` erlaubt nur eine Aegis-Zeile je Ausdruck (`itemResolve.test.ts:272`). Entscheidung: Regel auf mehrere Zeilen lockern (`row` = erste, beide in `fittedRows`), oder Abweichung nach `known-inaccuracies`.
+- Queenbreaker, Marksman-Reload (317 ms je Reload zu lang, 0 % bei 10/30/60 s): Inhaber 2026-11-03 Abweichung statt Umbau, in `known-inaccuracies`.
 - `tmp/playstyleLink.test.ts` veraltet, löscht der Inhaber (Hook erlaubt kein `rm`).
 - Ohne Quelle: Dragon's Breath, Ager's Scepter, Celestial Nighthawk; Argent Ordnance ohne Reload-Teil. Beim Inhaber: Nullschaden-Treffer in der Aufschlüsselung.
 
