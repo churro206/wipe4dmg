@@ -15,6 +15,7 @@ import type {
   ExoticArmorEffect,
   ExoticArmorEntry,
   Keyword,
+  StatusModifierData,
   Theta,
   Weapon,
   WeaponStatScaling,
@@ -33,6 +34,7 @@ export type GameData = {
   abilityStats: AbilityStatScaling[];
   weaponStats: WeaponStatScaling[]; // weapon-stats.json
   keywords: Keyword[];
+  statusModifiers: StatusModifierData[]; // keywords.json: statuses without damage (Weaken)
   exoticArmor: ExoticArmorEntry[];
   exoticArmorEffects: ExoticArmorEffect[];
   artifacts: ArtifactData; // artifacts.json: perks per tier and the slots of the game screen
@@ -97,6 +99,7 @@ export function buildSimulation(
             weaponStat: { scalings: data.weaponStats, value: build.weaponsStat },
           }),
       keywords: data.keywords,
+      statusModifiers: data.statusModifiers,
       theta: data.theta,
     },
   };

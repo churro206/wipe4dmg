@@ -32,6 +32,20 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "scorch",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Play with Your Prey](\"applies 60 Scorch\")"
+        }
+      ]
     }
+  ],
+  "notModelled": [
+    { "quote": "Void Rocket applies Suppression for 10 seconds", "reason": "no damage against a boss" }
   ]
 }

@@ -2818,6 +2818,74 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shell",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "shell",
+            "op": "<",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file conditional-finality",
+                "retrieved": "2026-11-03",
+                "status": "derived",
+                "note": "Derived: two shells, the counter stands at 0 for the first (Stasis) and 1 for the second (Solar)",
+                "quote": "Reloads both shells at once."
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "shell" }]
+      },
+      {
+        "id": "ignite",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "shell",
+            "op": "=",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file conditional-finality",
+                "retrieved": "2026-11-03",
+                "status": "derived",
+                "note": "Derived: the second shell (Solar) ignites",
+                "quote": "Reloads both shells at once."
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "shell" },
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 100,
+              "source": {
+                "name": "Destiny Data Compendium, Solar (Scorch)",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-21",
+                "status": "verified",
+                "note": "The stacks that trigger an ignition at once",
+                "quote": "All Scorch is removed upon reaching x100 Scorch to trigger an Ignition."
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file conditional-finality",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: the first of the two shells is Stasis (freeze, none on a boss), the second Solar (ignition); all pellets hit the boss",
+          "quote": "Landing 10 out of 12 pellets instantly Freezes or Ignites the target, matching on the element of the shot."
+        }
       }
     ],
     "intrinsics": [
@@ -4176,56 +4244,268 @@
     "code": 21,
     "name": "Deterministic Chaos",
     "manifestHash": 449318888,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "machineGun",
     "element": "void",
     "ammo": "heavy",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file deterministic-chaos",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 366.987,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 86.3 s − 7 reloads × 3.57 s) ÷ 375 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 86.3 s − 7 reloads × 3.57 s) ÷ 375 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 48,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 376,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 3570,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file deterministic-chaos",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 118,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-deterministic-chaos-w-o-weaken",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file deterministic-chaos",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file deterministic-chaos",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "target-lock",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [{ "type": "grantBuff", "buff": "target-lock" }],
+        "source": {
+          "name": "Item file deterministic-chaos",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: the average buff of a magazine holds for the whole phase (no misses, the ramp starts again with every magazine)",
+          "quote": "Assuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity."
+        }
+      },
+      {
+        "id": "heavy-metal-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "heavy-metal",
+            "op": "<",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Heavy Metal",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Heavy Metal](\"for 4 rounds\") - 1 (the counter stands at 0 to 3 for the rounds before the 4th); $clarity[Heavy Metal](\"for 4 rounds\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Heavy Metal)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "heavy-metal" }]
+      },
+      {
+        "id": "heavy-metal",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "heavy-metal",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Heavy Metal",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Heavy Metal](\"for 4 rounds\") - 1 (the 4th round); $clarity[Heavy Metal](\"for 4 rounds\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Heavy Metal)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "heavy-metal" },
+          { "type": "applyStatus", "status": "volatile" }
+        ],
+        "source": {
+          "name": "Item file deterministic-chaos",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: the trigger stays down (the Weaken playstyle); the duration is the keyword's",
+          "quote": "Holding down the trigger for 4 rounds makes the 4th round apply Volatile for 10 Seconds."
+        }
+      },
+      {
+        "id": "weaken-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "vexadecimal",
+            "op": "<",
+            "value": {
+              "value": 31,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Vexadecimal",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Vexadecimal](\"after 32 uninterrupted rounds\") - 1 (the counter stands at 0 to 30 for the rounds before the 32nd); $clarity[Vexadecimal](\"after 32 uninterrupted rounds\") = 32 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Vexadecimal)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "vexadecimal" }]
+      },
+      {
+        "id": "weaken",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "vexadecimal",
+            "op": "=",
+            "value": {
+              "value": 31,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Vexadecimal",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Vexadecimal](\"after 32 uninterrupted rounds\") - 1 (the 32nd round); $clarity[Vexadecimal](\"after 32 uninterrupted rounds\") = 32 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Vexadecimal)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "vexadecimal" },
+          { "type": "applyStatus", "status": "weaken" }
+        ],
+        "source": {
+          "name": "Item file deterministic-chaos",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: because of the bug of the next sentence the 32nd round weakens; the trigger stays down",
+          "quote": "Holding down the trigger for 16 rounds (is supposed to) make the 16th round Weaken for 6 Seconds."
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "target-lock",
+        "name": "Target Lock",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.25,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Deterministic Chaos Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Deterministic Chaos Catalyst](\"roughly a 25%\") / 100 (percent to factor; the average over a magazine without a missed shot); $clarity[Deterministic Chaos Catalyst](\"roughly a 25%\") = 25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Deterministic Chaos Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "vexadecimal",
+        "name": "Vexadecimal",
+        "description": "Strong against [Shield-Piercing] Barrier Champions. While holding down the trigger, every fourth Heavy Metal projectile also weakenstargets on impact. Releasing the trigger after a Vexadecimal projectile partially reloads this weapon's magazine from reserves.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Target Lock, Deterministic Chaos Catalyst",
+      "description": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -4237,103 +4517,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 126.513,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
-            "note": "visual Value; assumptions: average, with volatile damage, excludes weaken"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "vexadecimal",
-        "name": "Vexadecimal",
-        "description": "Strong against [Shield-Piercing] Barrier Champions. While holding down the trigger, every fourth Heavy Metal projectile also weakenstargets on impact. Releasing the trigger after a Vexadecimal projectile partially reloads this weapon's magazine from reserves.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "options": [
-      {
-        "id": "catalyst",
-        "name": "Catalyst",
-        "kind": "catalyst",
-        "bucketId": "weaponPerk",
-        "factor": {
-          "value": 1.25,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken",
-            "note": "Derived (override): Catalyst gibt Target Lock; Clarity: ohne Fehlschuss im Mittel etwa +25 % über ein volles Magazin."
-          }
-        },
-        "durationSeconds": null,
-        "condition": null
-      }
-    ],
-    "catalyst": {
-      "name": "Target Lock, Deterministic Chaos Catalyst",
-      "description": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
-      "effect": "damage"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "devil-s-ruin",
@@ -4721,6 +4905,135 @@
         "canPrecision": false,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "embed-1x",
+        "name": "Embedded rocket, 1 fuel",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1210,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[heavies-rocket-launcher-dragon-s-breath].magDamage - $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage (Quantum's rocket at 1 fuel minus its impact: bursts and pools); $quantum[heavies-rocket-launcher-dragon-s-breath].magDamage = 1399 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath); $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage = 189 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "quantum"
+      },
+      {
+        "id": "embed-3x",
+        "name": "Embedded rocket, 3 fuel",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 2215,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath-2; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[heavies-rocket-launcher-dragon-s-breath-2].magDamage - $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage (Quantum's rocket at 3 fuel (refuelled by ignitions) minus its impact); $quantum[heavies-rocket-launcher-dragon-s-breath-2].magDamage = 2404 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath-2); $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage = 189 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "quantum"
+      },
+      {
+        "id": "embed-5x",
+        "name": "Embedded rocket, 5 fuel",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 3220,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath-3; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[heavies-rocket-launcher-dragon-s-breath-3].magDamage - $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage (Quantum's rocket at 5 fuel (refuelled by ignitions) minus its impact); $quantum[heavies-rocket-launcher-dragon-s-breath-3].magDamage = 3409 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath-3); $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage = 189 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file dragon-s-breath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -4728,6 +5041,171 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "fuel-from-ignition",
+        "on": { "on": "status", "status": "scorch", "event": "threshold" },
+        "do": [
+          {
+            "type": "addStacks",
+            "counter": "fuel",
+            "by": {
+              "value": 2,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): High Octane",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "grant 2 stacks"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "embed-1x",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "fuel",
+            "op": "<",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): High Octane",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "grant 2 stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "spawn", "part": "embed-1x" }],
+        "source": {
+          "name": "Item file dragon-s-breath",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: no ignition since the last shot, the rocket has its one fuel",
+          "quote": "Always has x1 Fuel."
+        }
+      },
+      {
+        "id": "embed-3x",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "fuel",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): High Octane",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "grant 2 stacks"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "fuel" },
+          { "type": "spawn", "part": "embed-3x" }
+        ]
+      },
+      {
+        "id": "embed-5x",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "fuel",
+            "op": ">=",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): High Octane",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[High Octane](\"grant 2 stacks\") * 2 (two ignitions since the last shot); $clarity[High Octane](\"grant 2 stacks\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): High Octane)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "fuel" },
+          { "type": "spawn", "part": "embed-5x" }
+        ],
+        "source": {
+          "name": "Item file dragon-s-breath",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: one fuel from the start plus two ignitions of 2 fuel each is the maximum of 5",
+          "quote": "Maximum of 5 stacks."
+        }
+      },
+      {
+        "id": "pools-scorch",
+        "on": { "on": "hit", "part": "embed-1x" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 120,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Composite Propellant",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Composite Propellant](\"rapidly apply 40 Scorch\") * 3 (the three Napalm Pools of the first burst (Clarity: spewing three Napalm Pools)); $clarity[Composite Propellant](\"rapidly apply 40 Scorch\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Composite Propellant)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "pools-scorch-3x",
+        "on": { "on": "hit", "part": "embed-3x" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 120,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Composite Propellant",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Composite Propellant](\"rapidly apply 40 Scorch\") * 3 (the three Napalm Pools of the first burst (Clarity: spewing three Napalm Pools)); $clarity[Composite Propellant](\"rapidly apply 40 Scorch\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Composite Propellant)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "pools-scorch-5x",
+        "on": { "on": "hit", "part": "embed-5x" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 120,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Composite Propellant",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Composite Propellant](\"rapidly apply 40 Scorch\") * 3 (the three Napalm Pools of the first burst (Clarity: spewing three Napalm Pools)); $clarity[Composite Propellant](\"rapidly apply 40 Scorch\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Composite Propellant)"
+              }
+            }
+          }
+        ]
       }
     ],
     "intrinsics": [
@@ -4746,7 +5224,7 @@
     "catalyst": {
       "name": "Pyromancer, Dragon's Breath Catalyst",
       "description": "Doubles the rate of passive Composite Propellant generation (6🠚3 Seconds per stack).\nKills generate Firesprites. These kills ignore the global Firesprite spawning cooldown.",
-      "effect": "unknown"
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -6453,6 +6931,18 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "volatile",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [{ "type": "applyStatus", "status": "volatile" }],
+        "source": {
+          "name": "Item file fighting-lion",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: every grenade hits the boss directly; the radius only reaches adds",
+          "quote": "Direct Hits apply Volatile to the target and enemies in a 7.5 meter radius."
+        }
       }
     ],
     "intrinsics": [
@@ -9881,6 +10371,51 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "poison",
+        "name": "Poison",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file le-monarque",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 70,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Poison Arrows",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "Poison deals 70"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file le-monarque",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file le-monarque",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "compendium"
       }
     ],
     "rules": [
@@ -9888,6 +10423,50 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "poison",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "poison",
+            "delayMs": {
+              "value": 250,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Poison Arrows",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Poison Arrows](\"every 0.25 seconds\") * 1000 (the first tick one interval after the hit, seconds to milliseconds); $clarity[Poison Arrows](\"every 0.25 seconds\") = 0.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Poison Arrows)"
+              }
+            },
+            "count": {
+              "value": 6,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Poison Arrows",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Poison Arrows](\"totalling 420\") / $clarity[Poison Arrows](\"Poison deals 70\") (total damage divided by the damage of one tick); $clarity[Poison Arrows](\"totalling 420\") = 420 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Poison Arrows); $clarity[Poison Arrows](\"Poison deals 70\") = 70 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Poison Arrows)"
+              }
+            },
+            "intervalMs": {
+              "value": 250,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Poison Arrows",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Poison Arrows](\"every 0.25 seconds\") * 1000 (seconds to milliseconds); $clarity[Poison Arrows](\"every 0.25 seconds\") = 0.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Poison Arrows)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file le-monarque",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: every arrow is drawn perfectly (optimal play)",
+          "quote": "Arrows released within the Perfect Draw window apply poison on hit."
+        }
       }
     ],
     "intrinsics": [
@@ -12214,6 +12793,94 @@
         "canPrecision": false,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "seeker-impact",
+        "name": "Taken Seeker impact",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file one-thousand-voices",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 84,
+          "source": {
+            "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): One Thousand Voices 1KV Ahamkara's Eye Unforeseen Repercussions ↑Fall From Grace",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "dealing 84"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file one-thousand-voices",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file one-thousand-voices",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "compendium"
+      },
+      {
+        "id": "seeker-ticks",
+        "name": "Taken Seeker ticks",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file one-thousand-voices",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 65,
+          "source": {
+            "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): One Thousand Voices 1KV Ahamkara's Eye Unforeseen Repercussions ↑Fall From Grace",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: $compendium[One Thousand Voices](\"Each tick deals 13\") * $compendium[One Thousand Voices](\"afflicted by up to ~5 seekers\") (one tick of every seeker an enemy can carry at once); $compendium[One Thousand Voices](\"Each tick deals 13\") = 13 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): One Thousand Voices 1KV Ahamkara's Eye Unforeseen Repercussions ↑Fall From Grace); $compendium[One Thousand Voices](\"afflicted by up to ~5 seekers\") = 5 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): One Thousand Voices 1KV Ahamkara's Eye Unforeseen Repercussions ↑Fall From Grace)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file one-thousand-voices",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file one-thousand-voices",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "compendium"
       }
     ],
     "rules": [
@@ -12221,6 +12888,90 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "scorch",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 90,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Unforeseen Repercussions",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Unforeseen Repercussions](\"marking 9 spots\") * $clarity[Unforeseen Repercussions](\"applies 10 Scorch\") (every one of the spots applies its Scorch to the boss); $clarity[Unforeseen Repercussions](\"marking 9 spots\") = 9 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unforeseen Repercussions); $clarity[Unforeseen Repercussions](\"applies 10 Scorch\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unforeseen Repercussions)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "seekers",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [
+          {
+            "type": "spawn",
+            "part": "seeker-impact",
+            "count": {
+              "value": 5,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): One Thousand Voices Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "afflicted by up to 5 seekers"
+              }
+            }
+          },
+          {
+            "type": "spawn",
+            "part": "seeker-ticks",
+            "count": {
+              "value": 7.28,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-fusion-rifle-one-thousand-voices; Clarity (Live-Clarity-Database, descriptions/clarity.json): One Thousand Voices Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 60 / $quantum[heavies-fusion-rifle-one-thousand-voices].timing.fireRateRpm / $clarity[One Thousand Voices Catalyst](\"one tick every 0.25 seconds\") (ticks within one shot interval (60 / rpm seconds), rounded up by the spawn); $quantum[heavies-fusion-rifle-one-thousand-voices].timing.fireRateRpm = 32.967 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-fusion-rifle-one-thousand-voices); $clarity[One Thousand Voices Catalyst](\"one tick every 0.25 seconds\") = 0.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): One Thousand Voices Catalyst)"
+              }
+            },
+            "intervalMs": {
+              "value": 250,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): One Thousand Voices Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[One Thousand Voices Catalyst](\"one tick every 0.25 seconds\") * 1000 (seconds to milliseconds); $clarity[One Thousand Voices Catalyst](\"one tick every 0.25 seconds\") = 0.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): One Thousand Voices Catalyst)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file one-thousand-voices",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: nine seekers a shot but at most 5 on the boss at once; at the shot rate the 5 stay alive (5.65 s against 1.8 s), so 5 impacts and the ticks of 5 seekers per shot interval",
+          "quote": "My foes can be afflicted by up to 5 seekers at once"
+        }
+      }
+    ],
+    "keywordBonuses": [
+      {
+        "keywordId": "ignition",
+        "factor": {
+          "value": 1.316,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ahamkara's Eye",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: 1 + $clarity[Ahamkara's Eye](\"deal 31.6% increased damage\") / 100 (percent to factor); $clarity[Ahamkara's Eye](\"deal 31.6% increased damage\") = 31.6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ahamkara's Eye)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -12239,7 +12990,7 @@
     "catalyst": {
       "name": "Fall from Grace, One Thousand Voices Catalyst",
       "description": "I gain 30 Stability and 20 Ammo Generation.\nEach of my detonations release a Taken Seeker which aggressively tracks and burrows into nearby targets, dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds.\nMy Taken Seekers can stun Overload Champions.\nMy foes can be afflicted by up to 5 seekers at once, and Blighted Enemies (directly impacted by Witherhoard) take 100% increased tick damage.\nI do not interact with Malfeasance or Wish-Ender.\n▛ Most of those who bargain with me do not win... ▟",
-      "effect": "unknown"
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -12355,13 +13106,75 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "corruption",
+        "name": "Potent Corruption",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file osteo-striga",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 17.034,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga-only-poison-dot; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[primaries-submachine-gun-osteo-striga-only-poison-dot].magDamage / $quantum[primaries-submachine-gun-osteo-striga].magazine (the poison of a magazine as Quantum counts it (re-proc resets the ramp) shared by its rounds); $quantum[primaries-submachine-gun-osteo-striga-only-poison-dot].magDamage = 494 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga-only-poison-dot); $quantum[primaries-submachine-gun-osteo-striga].magazine = 29 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file osteo-striga",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file osteo-striga",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "quantum"
       }
     ],
     "rules": [
       {
         "id": "shot",
         "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
+        "do": [{ "type": "spawn", "part": "shot" }],
+        "source": {
+          "name": "Item file osteo-striga",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: Quantum's hit damage already holds the 10 % of the frame",
+          "quote": "Deals 10% more damage than other Precision Frame SMGs."
+        }
+      },
+      {
+        "id": "corruption",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [{ "type": "spawn", "part": "corruption" }],
+        "source": {
+          "name": "Item file osteo-striga",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: every round brings its share of the poison that Quantum's row \"only poison DoT\" measures for a magazine; at 10 rounds per second the proc comes every second and resets the ramp, which no Clarity number gives",
+          "quote": "Landing 14 Hits or 7 Precision Hits within 3 seconds of each other, or scoring a kill, triggers a burst of Potent Corruption (Poison) at the target's location in a 5 meter radius."
+        }
       }
     ],
     "intrinsics": [
@@ -12380,7 +13193,38 @@
     "catalyst": {
       "name": "Osteo Striga Catalyst",
       "description": "Grants 30 Reload and 20 Stability.\nPoison Kills instantly refill the magazine and can overfill it up to 300% total capacity.\n0.5 second cooldown between activations.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "magazine": {
+          "value": 29,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 955.655,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga; Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga; Clarity (Live-Clarity-Database, descriptions/clarity.json): Osteo Striga Catalyst",
+            "retrieved": "2026-10-31",
+            "status": "derived",
+            "note": "Derived: $quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs * ((0.0000608642 * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) - 0.0191345 * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) + 2.62769) / (0.0000608642 * $manifest[Osteo Striga].stat(\"Reload Speed\") * $manifest[Osteo Striga].stat(\"Reload Speed\") - 0.0191345 * $manifest[Osteo Striga].stat(\"Reload Speed\") + 2.62769)) (reload time times the d2foundry reload formula (snapshot reload-formulas, submachineGun / Osteo Striga: evpp 0.0000608642, vpp -0.0191345, offset 2.62769) at the reload stat with the catalyst divided by the stat without it; the stat from the manifest, the catalyst's from the text); $quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs = 1190 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\") = 30 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Osteo Striga Catalyst); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\") = 30 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Osteo Striga Catalyst); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\") = 30 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Osteo Striga Catalyst); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga)"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -18363,6 +19207,51 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "corruption",
+        "name": "Corruption",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file thorn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 30,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "dealing 30"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file thorn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file thorn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "compendium"
       }
     ],
     "rules": [
@@ -18370,6 +19259,131 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "soul-devourer-up",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "soul-devourer-started",
+            "op": "<",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file thorn",
+                "retrieved": "2026-11-03",
+                "status": "derived",
+                "note": "Derived: built up before the phase (kill buff); the window opens once, with the first shot",
+                "quote": "Soul Devourer persists through stow."
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "addStacks", "counter": "soul-devourer-started" },
+          {
+            "type": "setMode",
+            "mode": "soul-devourer",
+            "to": "on",
+            "durationMs": {
+              "value": 11000,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soul Devourer",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Soul Devourer](\"extending the duration up to 11 seconds\") * 1000 (seconds to milliseconds; several Remnants collected before the phase give the longest window); $clarity[Soul Devourer](\"extending the duration up to 11 seconds\") = 11 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soul Devourer)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "corruption",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "mode", "id": "soul-devourer", "is": "on", "not": true }
+        ],
+        "do": [
+          {
+            "type": "spawn",
+            "part": "corruption",
+            "delayMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Mark of the Devourer](\"every 0.5 seconds\") * 1000 (the first tick one interval after the hit, seconds to milliseconds); $clarity[Mark of the Devourer](\"every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer)"
+              }
+            },
+            "count": {
+              "value": 4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Mark of the Devourer](\"for 2 seconds\") / $clarity[Mark of the Devourer](\"every 0.5 seconds\") (duration divided by the interval); $clarity[Mark of the Devourer](\"for 2 seconds\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer); $clarity[Mark of the Devourer](\"every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer)"
+              }
+            },
+            "intervalMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Mark of the Devourer](\"every 0.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Mark of the Devourer](\"every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "corruption-soul-devourer",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [{ "type": "mode", "id": "soul-devourer", "is": "on" }],
+        "do": [
+          {
+            "type": "spawn",
+            "part": "corruption",
+            "delayMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Mark of the Devourer](\"every 0.5 seconds\") * 1000 (the first tick one interval after the hit, seconds to milliseconds); $clarity[Mark of the Devourer](\"every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer)"
+              }
+            },
+            "count": {
+              "value": 4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Mark of the Devourer](\"for 2 seconds\") / $clarity[Mark of the Devourer](\"every 0.5 seconds\") (duration divided by the interval); $clarity[Mark of the Devourer](\"for 2 seconds\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer); $clarity[Mark of the Devourer](\"every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer)"
+              }
+            },
+            "intervalMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Mark of the Devourer](\"every 0.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Mark of the Devourer](\"every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Mark of the Devourer)"
+              }
+            },
+            "factor": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Soul Devourer",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Soul Devourer](\"increases poison damage by 200%\") / 100 (percent to factor); $clarity[Soul Devourer](\"increases poison damage by 200%\") = 200 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Soul Devourer)"
+              }
+            }
+          }
+        ]
       }
     ],
     "intrinsics": [
@@ -20110,6 +21124,27 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "scorch",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 60,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Play with Your Prey",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "applies 60 Scorch"
+              }
+            }
+          }
+        ]
       }
     ],
     "intrinsics": [
@@ -22030,116 +23065,109 @@
     "code": 100,
     "name": "Witherhoard",
     "manifestHash": 2357297366,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "grenadeLauncher",
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-passive",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file witherhoard",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 19.25,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-passive",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-passive",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 90 s − 19 reloads × 1.62 s) ÷ 19 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 90 s − 19 reloads × 1.62 s) ÷ 19 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 1,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-passive",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-passive",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 20,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-passive",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-passive",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1620,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-passive",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-passive",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
-      }
-    },
-    "reloadDurationIncluded": {
-      "value": 0.9,
-      "source": {
-        "name": "Quantum Damage-ics, Home (Assumptions Made)",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-25",
         "status": "verified",
-        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
-        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
       {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
+        "id": "blight",
+        "name": "Blighted",
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-witherhoard-direct-impact",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file witherhoard",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-witherhoard-direct-impact",
-            "note": "Package: one value per shot"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "damagePerTick": {
-          "value": 2046.125,
+          "value": 2059,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-witherhoard-direct-impact",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-passive",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-witherhoard-direct-impact",
-            "note": "visual Value; assumptions: direct impact"
+            "status": "derived",
+            "note": "Derived: $quantum[specials-grenade-launcher-witherhoard-passive].totalDamage / $quantum[specials-grenade-launcher-witherhoard-passive].totalShots (Quantum's row \"passive\" (the frame is reapplied when the DoT has expired): the damage of all shots shared by their number, i.e. one direct hit with its whole Blighted DoT); $quantum[specials-grenade-launcher-witherhoard-passive].totalDamage = 41180 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-passive); $quantum[specials-grenade-launcher-witherhoard-passive].totalShots = 20 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-passive)"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-witherhoard-direct-impact",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file witherhoard",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-witherhoard-direct-impact"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-witherhoard-direct-impact",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file witherhoard",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-witherhoard-direct-impact"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "canPrecision": false,
-        "scale": "aegisVisual"
+        "delivery": "dot",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "blight" }]
       }
     ],
     "intrinsics": [
@@ -22149,7 +23177,7 @@
         "description": "Projectiles fired by this weapon blight the target or nearby area on impact.",
         "source": {
           "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
+          "retrieved": "2026-10-31",
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
@@ -22163,49 +23191,56 @@
         "fireRateRpm": {
           "value": 59.313,
           "source": {
-            "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived: (Time to Empty 50 s − 19 reloads × 1.62 s) ÷ 19 intervals (ADR 0013)"
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 50 s − 19 reloads × 1.62 s) ÷ 19 intervals (ADR 0013)"
           }
         },
         "magazine": {
           "value": 1,
           "source": {
-            "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified"
+            "status": "verified",
+            "note": "timing.magazine"
           }
         },
         "totalShots": {
           "value": 20,
           "source": {
-            "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified"
+            "status": "verified",
+            "note": "timing.totalShots"
           }
         },
         "reloadTimeMs": {
           "value": 1620,
           "source": {
-            "name": "Quantum Damage-ics (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "unverified"
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
           }
         }
       }
     },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    ]
+    }
   },
   {
     "id": "xenophage",

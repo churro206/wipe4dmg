@@ -267,12 +267,13 @@ describe("gaps closed by overrides and rules (2026-10-23)", () => {
     expect(value(w.catalyst!.timing!.magazine)).toBe(11);
   });
 
-  it("Witherhoard: a full blight per shot (Quantum 'passive', 20 shots in 90 s); the catalyst reloads while stowed (50 s)", () => {
+  it("Witherhoard (item, M1): a full blight per shot (Quantum 'passive', 41180 in 20 shots); the catalyst reloads while stowed (50 s)", () => {
     const w = byName("Witherhoard")!;
     expect(value(w.totalShots)).toBe(20);
-    const report = result.report.weapons.find((r) => r.name === "Witherhoard")!;
-    expect(report.timeToEmptySeconds).toBeCloseTo(90, 0);
-    expect(report.catalystTiming!.timeToEmptySeconds).toBeCloseTo(50, 0);
+    expect(value(w.damageInstances[0].damagePerTick)).toBeCloseTo(41180 / 20, 1);
+    // (90 s − 19 reloads × 1.62 s) ÷ 19 intervals, with the catalyst (50 s) ÷ the same
+    expect(value(w.fireRateRpm)).toBeCloseTo(19.25, 1);
+    expect(value(w.catalyst!.timing!.fireRateRpm)).toBeCloseTo(59.31, 1);
   });
 });
 

@@ -42,6 +42,81 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shell",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "shell",
+          "op": "<",
+          "value": {
+            "value": 1,
+            "source": {
+              "name": "Item file conditional-finality",
+              "retrieved": "2026-11-03",
+              "status": "derived",
+              "quote": "Reloads both shells at once.",
+              "note": "Derived: two shells, the counter stands at 0 for the first (Stasis) and 1 for the second (Solar)"
+            }
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "shell" }]
+    },
+    {
+      "id": "ignite",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "shell",
+          "op": "=",
+          "value": {
+            "value": 1,
+            "source": {
+              "name": "Item file conditional-finality",
+              "retrieved": "2026-11-03",
+              "status": "derived",
+              "quote": "Reloads both shells at once.",
+              "note": "Derived: the second shell (Solar) ignites"
+            }
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "shell" },
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": {
+            "value": 100,
+            "source": {
+              "name": "Destiny Data Compendium, Solar (Scorch)",
+              "url": "https://destiny2.science/data-compendium",
+              "retrieved": "2026-10-21",
+              "status": "verified",
+              "quote": "All Scorch is removed upon reaching x100 Scorch to trigger an Ignition.",
+              "note": "The stacks that trigger an ignition at once"
+            }
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file conditional-finality",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Landing 10 out of 12 pellets instantly Freezes or Ignites the target, matching on the element of the shot.",
+        "note": "Derived: the first of the two shells is Stasis (freeze, none on a boss), the second Solar (ignition); all pellets hit the boss"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "Finishing a reload within 5.3?", "reason": "no damage against a boss" },
+    {
+      "quote": "seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters",
+      "reason": "no damage against a boss"
     }
   ]
 }

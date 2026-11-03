@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **29 Pakete**, 108 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **27 Pakete**, 110 Items, 4 Lücken.
 
 ## Pakete
 
@@ -18,7 +18,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Cull's Shadow | fusionRifle | kinetic | average, with corruption (6 Shots) | 1.095,8 | Aegis | 24 | 6 | 1,98 s | 27,3 s | – → 58 | 0,0 % | Override: Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).; Timing aus Zeile cull-s-shadow-with-corruption (Override); Timing nur aus Aegis |
 | Dead Man's Tale | scoutRifle | kinetic | Vorpal Weapon (1 Shot) | 188,7 | Quantum |  | 14 | 0,33 s | – | 120 → 120 | 19,4 % | Override: Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt. Catalyst aus der Hüfte: +27 % bei x5 Cranial Spike (Clarity), Timing aus Quantums Zeile „cata, x5 Cranial Spike“ (140 rpm, Reload 0,29 s).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-dead-man-s-tale-base (Override); Timing nur aus Quantum; Skala weicht um 19.4 % ab; Aegis gilt (Override); Katalysator-Timing: ∞ Shots, Magazin 14, Zeit bis leer – |
 | Deathbringer | rocketLauncher | void | max height (1 Shot) | 3.900,1 | Quantum | 11 | 1 | 2,35 s | 23,5 s | 46 → 60.000 | 0,0 % | Override: Aegis misst „max height“ (3900); dazu passt Quantums „max distance damage“ (3899), nicht „direct impact“. Der Catalyst lässt den Höchstschaden nur 1 s früher erreichen; gemessen wird schon der Höchstschaden: keine Wirkung.; Timing aus Zeile heavies-rocket-launcher-deathbringer-max-distance-damage (Override); Timing nur aus Quantum |
-| Deterministic Chaos | machineGun | void | average, with volatile damage, excludes weaken (48 Shots) | 126,5 | Quantum | 376 | 48 | 3,57 s | 86,3 s | 360 → 367 | 0,0 % | Override: Catalyst gibt Target Lock; Clarity: ohne Fehlschuss im Mittel etwa +25 % über ein volles Magazin.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „w/o weaken“; Timing nur aus Quantum |
 | Divinity | traceRifle | arc | average, Penance, excludes debuff, Jolting Feedback, Focused Fury (194 Shots) | 15,0 | Quantum | 470 | 194 | 1,44 s | 34,0 s | 900 → 904 | 0,0 % | Override: Aegis misst nur mit beiden Katalysator-Perks (Jolting Feedback, Focused Fury) und Jolt; Quantum „base damage, no buffs“ (mit Penance) gilt: 15 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-divinity-base-damage-no-buffs (Override); Timing nur aus Quantum; Schaden pro Shot 15,0 (Override) |
 | Ex Diris | grenadeLauncher | arc | average, with moth (30 Shots) | 694,9 | Aegis | 35 | 35 | 0,00 s | 22,1 s | – → 92 | 0,0 % | Timing nur aus Aegis |
 | Fafnir | linearFusionRifle | void | keine (1 Shot) | 2.528,4 | Quantum | 9 | 3 | 1,77 s | 16,3 s | – → 38 | 0,0 % | Override: Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
@@ -40,13 +39,12 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Touch of Malice | scoutRifle | kinetic | keine (1 Shot) | 141,5 | Quantum |  | 11 | 1,24 s | – | 260 → 260 | 0,4 % | Override: Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“). Katalysator: Precision Instrument erreicht nach 6 Treffern +25 %; die letzte Patrone feuert ohne Reload, die Stacks bleiben (Clarity), also ×1,25.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-touch-of-malice-touch-of-malice-tom (Override); Timing nur aus Quantum; Schaden pro Shot 141,5 (Override) |
 | Turncoat | handCannon | void | average (12 Shots) | 127,4 | Quantum |  | 13 | 1,64 s | – | – → 140 | – | Override: Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Wavesplitter | traceRifle | void | average, power cycling, Detonator Beam (100 Shots) | 39,0 | Quantum | 500 | 100 | 1,44 s | 38,8 s | 900 → 906 | 0,0 % | Override: Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-wavesplitter-average (Override); Timing nur aus Quantum; Schaden pro Shot 39,0 (Override) |
-| Witherhoard | grenadeLauncher | kinetic | direct impact (1 Shot) | 2.046,1 | Quantum | 20 | 1 | 1,62 s | 90,0 s | – → 19 | 0,6 % | Override: Aegis' „direct impact“ zählt die volle Blight pro Schuss; dazu passt Quantums „passive“ (neu schießen, wenn die Blight ausläuft: 20 × 2046 = 40.920 gegen Quantum 41.180). Mit Katalysator lädt die Waffe weggesteckt nach (Quantum „cata, single blight, boss“, 50 s).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-grenade-launcher-witherhoard-passive (Override); Timing nur aus Quantum; Katalysator-Timing: 20 Shots, Magazin 1, Zeit bis leer 50,0 s |
 
 ## Items
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **1030**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **961**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -64,14 +62,15 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **1030**. 
 | Cloudstrike | `src/data/items/weapons/cloudstrike.json` | 9 | – |
 | Coldheart | `src/data/items/weapons/coldheart.json` | 12 | – |
 | Collective Obligation | `src/data/items/weapons/collective-obligation.json` | 5 | – |
-| Conditional Finality | `src/data/items/weapons/conditional-finality.json` | 3 | – |
+| Conditional Finality | `src/data/items/weapons/conditional-finality.json` | 0 | – |
 | Crimson | `src/data/items/weapons/crimson.json` | 7 | – |
 | Cryosthesia 77K | `src/data/items/weapons/cryosthesia-77k.json` | 2 | – |
 | D.A.R.C.I. | `src/data/items/weapons/d-a-r-c-i.json` | 12 | – |
 | Dead Messenger | `src/data/items/weapons/dead-messenger.json` | 3 | – |
 | Delicate Tomb | `src/data/items/weapons/delicate-tomb.json` | 6 | – |
+| Deterministic Chaos | `src/data/items/weapons/deterministic-chaos.json` | 0 | – |
 | Devil's Ruin | `src/data/items/weapons/devil-s-ruin.json` | 8 | – |
-| Dragon's Breath | `src/data/items/weapons/dragon-s-breath.json` | 15 | – |
+| Dragon's Breath | `src/data/items/weapons/dragon-s-breath.json` | 0 | – |
 | Duality | `src/data/items/weapons/duality.json` | 3 | – |
 | Edge of Action | `src/data/items/weapons/edge-of-action.json` | 10 | – |
 | Edge of Concurrence | `src/data/items/weapons/edge-of-concurrence.json` | 10 | – |
@@ -80,7 +79,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **1030**. 
 | Eriana's Vow | `src/data/items/weapons/eriana-s-vow.json` | 6 | – |
 | Euphony | `src/data/items/weapons/euphony.json` | 9 | – |
 | Eyes of Tomorrow | `src/data/items/weapons/eyes-of-tomorrow.json` | 7 | – |
-| Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 11 | – |
+| Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 0 | – |
 | Final Warning | `src/data/items/weapons/final-warning.json` | 9 | – |
 | Forerunner | `src/data/items/weapons/forerunner.json` | 5 | – |
 | Gjallarhorn | `src/data/items/weapons/gjallarhorn.json` | 9 | – |
@@ -94,7 +93,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **1030**. 
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | 19 | – |
 | Izanagi's Burden | `src/data/items/weapons/izanagi-s-burden.json` | 13 | – |
 | Khvostov 7G-0X | `src/data/items/weapons/khvostov-7g-0x.json` | 4 | – |
-| Le Monarque | `src/data/items/weapons/le-monarque.json` | 7 | – |
+| Le Monarque | `src/data/items/weapons/le-monarque.json` | 0 | – |
 | Legend of Acrius | `src/data/items/weapons/legend-of-acrius.json` | 8 | – |
 | Leviathan's Breath | `src/data/items/weapons/leviathan-s-breath.json` | 2 | – |
 | Lodestar | `src/data/items/weapons/lodestar.json` | 12 | – |
@@ -106,8 +105,8 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **1030**. 
 | MIDA Multi-Tool | `src/data/items/weapons/mida-multi-tool.json` | 11 | – |
 | Monte Carlo | `src/data/items/weapons/monte-carlo.json` | 10 | – |
 | Necrochasm | `src/data/items/weapons/necrochasm.json` | 10 | – |
-| One Thousand Voices | `src/data/items/weapons/one-thousand-voices.json` | 6 | – |
-| Osteo Striga | `src/data/items/weapons/osteo-striga.json` | 8 | – |
+| One Thousand Voices | `src/data/items/weapons/one-thousand-voices.json` | 0 | – |
+| Osteo Striga | `src/data/items/weapons/osteo-striga.json` | 0 | – |
 | Outbreak Perfected | `src/data/items/weapons/outbreak-perfected.json` | 33 | – |
 | Parasite | `src/data/items/weapons/parasite.json` | 6 | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | 3 | – |
@@ -137,7 +136,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **1030**. 
 | The Prospector | `src/data/items/weapons/the-prospector.json` | 5 | – |
 | The Queenbreaker | `src/data/items/weapons/the-queenbreaker.json` | 4 | – |
 | The Wardcliff Coil | `src/data/items/weapons/the-wardcliff-coil.json` | 3 | – |
-| Thorn | `src/data/items/weapons/thorn.json` | 10 | – |
+| Thorn | `src/data/items/weapons/thorn.json` | 0 | – |
 | Thunderlord | `src/data/items/weapons/thunderlord.json` | 7 | – |
 | Ticuu's Divination | `src/data/items/weapons/ticuu-s-divination.json` | 10 | – |
 | Tommy's Matchbook | `src/data/items/weapons/tommy-s-matchbook.json` | 9 | – |
@@ -146,7 +145,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **1030**. 
 | Trespasser | `src/data/items/weapons/trespasser.json` | 5 | – |
 | Trinity Ghoul | `src/data/items/weapons/trinity-ghoul.json` | 2 | – |
 | Truth | `src/data/items/weapons/truth.json` | 5 | – |
-| Two-Tailed Fox | `src/data/items/weapons/two-tailed-fox.json` | 2 | – |
+| Two-Tailed Fox | `src/data/items/weapons/two-tailed-fox.json` | 0 | – |
 | Verglas Curve | `src/data/items/weapons/verglas-curve.json` | 4 | – |
 | Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 10 | – |
 | Vexcalibur | `src/data/items/weapons/vexcalibur.json` | 26 | – |
@@ -154,9 +153,10 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **1030**. 
 | Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | 15 | – |
 | Whisper of the Worm | `src/data/items/weapons/whisper-of-the-worm.json` | 24 | – |
 | Wicked Implement | `src/data/items/weapons/wicked-implement.json` | 8 | – |
-| Winterbite | `src/data/items/weapons/winterbite.json` | 7 | – |
+| Winterbite | `src/data/items/weapons/winterbite.json` | 0 | – |
 | Wish-Ender | `src/data/items/weapons/wish-ender.json` | 9 | – |
 | Wish-Keeper | `src/data/items/weapons/wish-keeper.json` | 49 | – |
+| Witherhoard | `src/data/items/weapons/witherhoard.json` | 0 | – |
 | Xenophage | `src/data/items/weapons/xenophage.json` | 6 | – |
 
 ## Optionen
@@ -167,7 +167,6 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 | --- | --- | --- | --- | --- | --- | --- |
 | Anarchy | Catalyst | Katalysator | ×1,157 | – | – | Faktor aus dem Text (Override) |
 | Dead Man's Tale | Catalyst | Katalysator | ×1,270 | – | – | Faktor aus dem Text (Override) |
-| Deterministic Chaos | Catalyst | Katalysator | ×1,250 | – | – | Faktor aus dem Text (Override) |
 | Touch of Malice | Catalyst | Katalysator | ×1,250 | – | – | Faktor aus dem Text (Override) |
 
 ## Katalysatoren
@@ -181,7 +180,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Cerberus+1 | primary | keine | – | Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds: |
 | Dead Man's Tale | primary | Schaden und Timing | Magazin 14 → 14, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 120 → 140 | While not Aiming Down Sights: |
 | Deathbringer | heavy | keine | – | The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner. |
-| Deterministic Chaos | heavy | Schaden | – | Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as h |
 | Divinity | special | unbekannt | – | Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits |
 | Ex Diris | special | keine | – | Weapon Kills grant Amplified for 15 seconds. |
 | Fafnir | heavy | keine | – | Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no l |
@@ -202,7 +200,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Touch of Malice | primary | Schaden | – | Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or  |
 | Turncoat | primary | keine | – | Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence). |
 | Wavesplitter | special | keine | – | Grants 10 Range and 30 Ammo Generation. |
-| Witherhoard | special | Timing | Magazin 1 → 1, Shots 20 → 20, Zeit bis leer 90,0 → 50,0 s, rpm 19 → 59 | Grants 40 Handling. |
 
 ## Lücken
 
@@ -322,7 +319,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Whirling Ovation | 2/3 charge | the item file uses another row |
 | Whirling Ovation | 1/3 charge | the item file uses another row |
 | Whisper of the Worm | Whispered Breathing | Katalysator: Whispered Breathing |
-| Witherhoard | ground pool | ohne direct impact der Basiszeile |
+| Witherhoard | ground pool | the item file uses another row |
 | Wolfsbane | Honed Edge, Jagged Edge, Nano-Assault HLLHLLHLLHLLH, Burning Ambition, includes ignition | gleiche Annahmen wie die Basiszeile |
 | Wolfsbane | average, Honed Edge, Jagged Edge, light, Burning Ambition, includes ignition | ohne Nano-Assault HLLHLLHLLHLLH der Basiszeile |
 | Worldline Zero | Temporal Sprint, heavy | nicht modelliert: Temporal Sprint |

@@ -38,5 +38,20 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Glaive Melee Attacks deal 50% increased damage", "reason": "needs glaive melee (Quantum has melee rows)" },
+    { "quote": "Bosses only receive 20% increased damage", "reason": "needs glaive melee (Quantum has melee rows)" },
+    { "quote": "travels for 6 seconds", "reason": "below 2 %" },
+    {
+      "quote": "fires Freezing projectiles every 0.5 seconds",
+      "reason": "needs freeze state of the boss (Quantum's hit assumes a freeze between shots)"
+    },
+    {
+      "quote": "Projectiles deal 60",
+      "reason": "needs freeze state of the boss (Quantum's hit assumes a freeze between shots)"
+    },
+    { "quote": "Freezing Orb deals 1282", "reason": "needs Slow status" },
+    { "quote": "Grants 25% Glaive Energy", "reason": "no damage against a boss" }
   ]
 }

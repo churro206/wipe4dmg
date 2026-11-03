@@ -256,7 +256,7 @@
         "name": "Osteo Striga",
         "group": "Kinetic",
         "inGame": "Screaming Swarm: This is a Weapon of Sorrow.\nDeals 10% more damage than other Precision Frame SMGs.\nFires slow seeking projectiles that track targets within the reticle from up to ? meters away.\nToxic Overload: Landing 14 Hits or 7 Precision Hits within 3 seconds of each other, or scoring a kill, triggers a burst of Potent Corruption (Poison) at the target's location in a 5 meter radius.\nPotent Corruption deals 32.35 [5?] damage on the first tick, then increases in damage every 0.52 [0.7] seconds for a total of 19 [?] ticks over 10 [?] seconds.\nPotent Corruption damage increases by 11% per tick for the first 14 ticks, then by an average of 41% per tick for the last 5 ticks, dealing 1366 [?] damage over the entire duration.\nTargets that die to the corruption trigger another burst of poison around them. Cooldown of 2 seconds.\nOsteo Striga's poison counts as weapon damage and benefits from all related buffs. Reapplying the poison resets it back to the first stack.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:osteo-striga",
         "status": "full"
       },
@@ -337,7 +337,7 @@
         "name": "Thorn",
         "group": "Kinetic",
         "inGame": "Mark of the Devourer: This is a Weapon of Sorrow.\nShots fired overpenetrate unlimited targets.\nDirect hits with this weapon apply Corruption (DoT Poison), dealing 30 [0.4] damage every 0.5 seconds for 2 seconds. Multiple instances of Corruption can be stacked on the same target.\nKills create a Remnant which tracks towards you when within a 15 meter radius. Remnants last for 8 seconds in the world before despawning.\nSoul Devourer: Collecting a Remnant grants 'Soul Devourer' for 7 seconds and refills 4 ammo.\nCollecting additional Remnants can overflow both the timer and magazine, extending the duration up to 11 seconds and the magazine up to 350% capacity (40 rounds).\nSoul Devourer increases poison damage by 200% [1750%?] while active.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:thorn",
         "status": "full"
       },
@@ -617,7 +617,7 @@
         "name": "Le Monarque",
         "group": "Energy",
         "inGame": "Poison Arrows: Grants Lightweight Frame bonuses.\nOnly the Poision Burst is intrinsically Anti-Overload. Regular arrows do not stun Champions.\nArrows released within the Perfect Draw window apply poison on hit. Poison deals 70 [2.5] damage every 0.25 seconds for 1.35 seconds, totalling 420 [15] damage.\nPrecision Hits within the Perfect Draw window trigger a burst of poison in a 5 meter radius around the target.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:le-monarque",
         "status": "full"
       },
@@ -889,7 +889,7 @@
         "name": "Dragon's Breath",
         "group": "Power",
         "inGame": "Composite Propellant: Rockets embed into targets, spewing three Napalm Pools every 0.75 seconds until detonation. Napalm Pools rapidly apply 40 Scorch (60 with Ember of Ashes) every ? seconds for 5 seconds.\nGain one stack of 'Composite Propellant' every 6 seconds. Maximum of 5 stacks. Firing this weapon triggers a 3 second cooldown on passive stack generation.\nComposite Propellant benefits at 1|2|3|4|5 stacks:\n• 1.5|2.25|3|3.75|4.5 second delay before detonation\n• 3|6|9|12|15 released incendiary pools\n• 0%|7%|14%|21%|29% increased detonation damage\nAt 5 stacks of Composite Propellant, rockets leave a trail of Napalm behind them, applying 50 Scorch (70 with Ember of Ashes) every ? seconds for 2 seconds.\nHigh Octane: Ignitions that occur within a 70 meter radius of you grant 2 stacks of Composite Propellant.\nReaching 5 stacks of Composite Propellant refills the magazine from reserves.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "4 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:dragon-s-breath",
         "status": "full"
       },
@@ -977,7 +977,7 @@
         "name": "One Thousand Voices",
         "group": "Power",
         "inGame": "Ahamkara's Eye: Scorch granted by me and Ignitions that started from me deal 31.6% increased damage.\n▛ I see you, O Seeker of Knowledge Mine. Reading this somewhere [Real]. My Eye is a Chorus of coalesced Will and Desire...were my [Voices] not enough to [satiate] your ravenous tastes? ▟\nUnforeseen Repercussions: My beam fires for 0.6 seconds, marking 9 spots that detonate in a 7 meter radius after my 0.7 second delay.\nEach of my detonations applies 10 Scorch (15 with the Ember of Ashes) to all enemies struck.\n▛ These insights grant us such a feast, O Researcher Mine. You stand [rich] with Desire to [grow] your knowledge. Do you not Wish to [understand] me more...? ▟",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:one-thousand-voices",
         "status": "full"
       },
@@ -1371,8 +1371,8 @@
         "group": "Kinetic",
         "inGame": "Grants 30 Reload and 20 Stability.\nPoison Kills instantly refill the magazine and can overfill it up to 300% total capacity.\n0.5 second cooldown between activations.",
         "iconHash": 2132353550,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "reload ms 1,190 → 956",
+        "status": "full",
         "iconKey": "named:osteo-striga-catalyst"
       },
       {
@@ -1947,7 +1947,7 @@
         "group": "Power",
         "inGame": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
         "iconHash": 3638234982,
-        "inCalculator": "+25% weapon damage",
+        "inCalculator": "Adds weapon damage.",
         "status": "full",
         "iconKey": "named:deterministic-chaos-catalyst"
       },
@@ -1956,8 +1956,8 @@
         "group": "Power",
         "inGame": "Doubles the rate of passive Composite Propellant generation (6🠚3 Seconds per stack).\nKills generate Firesprites. These kills ignore the global Firesprite spawning cooldown.",
         "iconHash": 2924294393,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "No effect against one boss without adds",
+        "status": "leftOut",
         "iconKey": "named:dragons-breath-catalyst"
       },
       {
@@ -2037,8 +2037,8 @@
         "group": "Power",
         "inGame": "I gain 30 Stability and 20 Ammo Generation.\nEach of my detonations release a Taken Seeker which aggressively tracks and burrows into nearby targets, dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds.\nMy Taken Seekers can stun Overload Champions.\nMy foes can be afflicted by up to 5 seekers at once, and Blighted Enemies (directly impacted by Witherhoard) take 100% increased tick damage.\nI do not interact with Malfeasance or Wish-Ender.\n▛ Most of those who bargain with me do not win... ▟",
         "iconHash": 82994288,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "Adds weapon damage.",
+        "status": "full",
         "iconKey": "named:one-thousand-voices-catalyst"
       },
       {

@@ -7,6 +7,8 @@ const SCALE_BY_SOURCE: [prefix: string, scale: DamageScale][] = [
   ["Aegis", "aegisVisual"],
   ["Quantum", "quantum"],
   ["Destiny Data Compendium", "compendium"],
+  // Clarity's numbers are tooltip values like the Compendium's (ADR 0019, M1): the same scale
+  ["Clarity", "compendium"],
 ];
 
 /** An item's expression names its sources in order of their references (scripts/lib/items/refs.ts). */

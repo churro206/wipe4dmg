@@ -31,20 +31,193 @@
   "catalyst": {
     "name": "Pyromancer, Dragon's Breath Catalyst",
     "description": "Doubles the rate of passive Composite Propellant generation (6🠚3 Seconds per stack).\nKills generate Firesprites. These kills ignore the global Firesprite spawning cooldown.",
-    "effect": "unknown"
+    "effect": "none"
   },
   "parts": {
     "shot": {
       "name": "Shot",
       "damage": "$quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage",
       "delivery": "impact"
+    },
+    "embed-1x": {
+      "name": "Embedded rocket, 1 fuel",
+      "damage": {
+        "expr": "$quantum[heavies-rocket-launcher-dragon-s-breath].magDamage - $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage",
+        "note": "Quantum's rocket at 1 fuel minus its impact: bursts and pools"
+      },
+      "delivery": "splash"
+    },
+    "embed-3x": {
+      "name": "Embedded rocket, 3 fuel",
+      "damage": {
+        "expr": "$quantum[heavies-rocket-launcher-dragon-s-breath-2].magDamage - $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage",
+        "note": "Quantum's rocket at 3 fuel (refuelled by ignitions) minus its impact"
+      },
+      "delivery": "splash"
+    },
+    "embed-5x": {
+      "name": "Embedded rocket, 5 fuel",
+      "damage": {
+        "expr": "$quantum[heavies-rocket-launcher-dragon-s-breath-3].magDamage - $quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage",
+        "note": "Quantum's rocket at 5 fuel (refuelled by ignitions) minus its impact"
+      },
+      "delivery": "splash"
     }
   },
   "rules": [
+    { "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "shot" }] },
     {
-      "id": "shot",
-      "on": { "on": "shot" },
-      "do": [{ "type": "spawn", "part": "shot" }]
+      "id": "fuel-from-ignition",
+      "on": { "on": "status", "status": "scorch", "event": "threshold" },
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "fuel",
+          "by": "$clarity[High Octane](\"grant 2 stacks\")"
+        }
+      ]
+    },
+    {
+      "id": "embed-1x",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "fuel",
+          "op": "<",
+          "value": "$clarity[High Octane](\"grant 2 stacks\")"
+        }
+      ],
+      "do": [{ "type": "spawn", "part": "embed-1x" }],
+      "source": {
+        "name": "Item file dragon-s-breath",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Always has x1 Fuel.",
+        "note": "Derived: no ignition since the last shot, the rocket has its one fuel"
+      }
+    },
+    {
+      "id": "embed-3x",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "fuel",
+          "op": "=",
+          "value": "$clarity[High Octane](\"grant 2 stacks\")"
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "fuel" },
+        { "type": "spawn", "part": "embed-3x" }
+      ]
+    },
+    {
+      "id": "embed-5x",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "fuel",
+          "op": ">=",
+          "value": {
+            "expr": "$clarity[High Octane](\"grant 2 stacks\") * 2",
+            "note": "two ignitions since the last shot"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "fuel" },
+        { "type": "spawn", "part": "embed-5x" }
+      ],
+      "source": {
+        "name": "Item file dragon-s-breath",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Maximum of 5 stacks.",
+        "note": "Derived: one fuel from the start plus two ignitions of 2 fuel each is the maximum of 5"
+      }
+    },
+    {
+      "id": "pools-scorch",
+      "on": { "on": "hit", "part": "embed-1x" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": {
+            "expr": "$clarity[Composite Propellant](\"rapidly apply 40 Scorch\") * 3",
+            "note": "the three Napalm Pools of the first burst (Clarity: spewing three Napalm Pools)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pools-scorch-3x",
+      "on": { "on": "hit", "part": "embed-3x" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": {
+            "expr": "$clarity[Composite Propellant](\"rapidly apply 40 Scorch\") * 3",
+            "note": "the three Napalm Pools of the first burst (Clarity: spewing three Napalm Pools)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pools-scorch-5x",
+      "on": { "on": "hit", "part": "embed-5x" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": {
+            "expr": "$clarity[Composite Propellant](\"rapidly apply 40 Scorch\") * 3",
+            "note": "the three Napalm Pools of the first burst (Clarity: spewing three Napalm Pools)"
+          }
+        }
+      ]
     }
+  ],
+  "notModelled": [
+    {
+      "quote": "every 0.75 seconds until detonation",
+      "reason": "needs fuel-dependent embed bursts (Quantum's fuel rows carry them)"
+    },
+    { "quote": "every 6 seconds", "reason": "below 2 %" },
+    { "quote": "3 second cooldown on passive stack generation", "reason": "below 2 %" },
+    {
+      "quote": "benefits at 1|2|3|4|5 stacks",
+      "reason": "needs fuel-dependent embed bursts (Quantum's fuel rows carry them)"
+    },
+    {
+      "quote": "second delay before detonation",
+      "reason": "needs fuel-dependent embed bursts (Quantum's fuel rows carry them)"
+    },
+    {
+      "quote": "released incendiary pools",
+      "reason": "needs fuel-dependent embed bursts (Quantum's fuel rows carry them)"
+    },
+    {
+      "quote": "increased detonation damage",
+      "reason": "needs fuel-dependent embed bursts (Quantum's fuel rows carry them)"
+    },
+    {
+      "quote": "rockets leave a trail of Napalm",
+      "reason": "needs trail scorch (the interval is unknown in Clarity)"
+    },
+    {
+      "quote": "seconds for 5 seconds",
+      "reason": "needs pool scorch interval (the interval is unknown in Clarity)"
+    },
+    {
+      "quote": "seconds for 2 seconds",
+      "reason": "needs trail scorch (the interval is unknown in Clarity)"
+    },
+    { "quote": "Reaching 5 stacks of Composite Propellant refills", "reason": "below 2 %" },
+    { "quote": "Doubles the rate of passive Composite Propellant", "reason": "below 2 %" }
   ]
 }

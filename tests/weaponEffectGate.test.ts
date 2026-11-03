@@ -18,15 +18,6 @@ import { weaponById } from "./support/weapons";
 const TOLERANCE = 0.03; // ±3 %, ADR 0011 (Aegis and Quantum agree within 2 % on Ember of Ashes)
 const FULL_AMMO_SECONDS = 600;
 
-// Known model errors from the research on 2026-10-20 (docs/mechanics). Remove an id once
-// its correction lands; the test then has to pass.
-// OTV (Q1, ADR 0019): the scaffold has no scorch and no catalyst damage; M1 puts them back.
-const KNOWN_DEVIATIONS = new Set<string>([
-  "aegis-otv-ember-of-ashes",
-  "aegis-otv-catalyst",
-  "aegis-otv-catalyst-with-ember-of-ashes",
-]);
-
 const buckets = loadBuckets(rawBuckets);
 const keywords = loadKeywords(
   rawKeywords,
@@ -64,11 +55,7 @@ describe("gate: weapon effect factors", () => {
   });
 
   for (const reference of references) {
-    const known = KNOWN_DEVIATIONS.has(reference.id);
-    const test = known ? it.fails : it;
-    test(`${reference.id} matches ×${reference.factor} within ${TOLERANCE * 100}%${
-      known ? " (known deviation)" : ""
-    }`, () => {
+    it(`${reference.id} matches ×${reference.factor} within ${TOLERANCE * 100}%`, () => {
       const factor = modelFactor(reference);
       expect(factor).toBeGreaterThanOrEqual(reference.factor * (1 - TOLERANCE));
       expect(factor).toBeLessThanOrEqual(reference.factor * (1 + TOLERANCE));

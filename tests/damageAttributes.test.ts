@@ -128,7 +128,9 @@ describe("scale of a damage value", () => {
     expect(
       damageScaleOf(value("Expression over Quantum Damage-ics (primaries), row a; Destiny Data Compendium: b")),
     ).toBe("quantum");
-    expect(damageScaleOf(value("Expression over Clarity: c"))).toBeUndefined();
+    // Clarity's tooltip numbers count on the Compendium's scale (M1)
+    expect(damageScaleOf(value("Expression over Clarity: c"))).toBe("compendium");
+    expect(damageScaleOf(value("Expression over Court: c"))).toBeUndefined();
   });
 
   it("is known for every damage value of weapons and abilities", () => {

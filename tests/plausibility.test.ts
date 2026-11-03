@@ -519,10 +519,10 @@ describe("all weapons (2026-10-23)", () => {
   // longer counted twice (2026-10-26). Barrow-Dyad deals about 1.4× (2026-10-31): Aegis Sustained
   // measures 4150 per 4.6 s (902 per second on the scale "visual", Tarrabah 607), Gjallarhorn's 11
   // rockets of 1892 about 20 800 in 30 s.
-  // Q1 (ADR 0019) exceptions until their mechanics are back: Dragon's Breath is only its direct hit
-  // (the lingering explosion comes with M1); Divinity lies at 0.30 on the edge, since Gjallarhorn
-  // now comes from Quantum (no Aegis value), its own mechanics follow when it gets its item (Q-Bilanz).
-  const UNTIL_MECHANICS = ["Dragon's Breath", "Divinity"];
+  // Q1 (ADR 0019) exception until its mechanics are back: Divinity lies at 0.30 on the edge, since
+  // Gjallarhorn now comes from Quantum (no Aegis value); Gjallarhorn's own mechanics follow in the
+  // Q-Bilanz. Dragon's Breath is back since M1 (embedded rocket from Quantum's fuel rows).
+  const UNTIL_MECHANICS = ["Divinity"];
   it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1.5×", () => {
     const gjally = run({}, weaponById("gjallarhorn")).totalDamage;
     const ratios = weapons.map(
@@ -566,8 +566,8 @@ describe("all weapons (2026-10-23)", () => {
   });
 
   // Q1 counter-test (red before Q1: the package took 1049.4 from Aegis, 15 items only): the hit of a
-  // scaffold item is Quantum's precision hit, `verified`; 96 weapons take it from Quantum.
-  it("the hit of a scaffold item is Quantum's: 96 weapons (93 scaffold + 3 older items)", () => {
+  // scaffold item is Quantum's precision hit, `verified`; 97 weapons take it from Quantum.
+  it("the hit of a scaffold item is Quantum's: 97 weapons (93 scaffold + 4 older items)", () => {
     const horseman = weaponById("the-fourth-horseman").damageInstances[0].damagePerTick;
     note("Fourth Horseman Treffer", String(horseman.value), "676 (Quantum precisionDamage)");
     expect(horseman.value).toBe(676);
@@ -575,10 +575,11 @@ describe("all weapons (2026-10-23)", () => {
     const fromQuantum = weapons.filter((w) =>
       w.damageInstances[0].damagePerTick.source.name.startsWith("Quantum"),
     ).length;
-    // 96 = the 93 files of the scaffold + Polaris Lance, Truth and Hierarchy of Needs (older items
-    // with a Quantum hit); the other older items and the 33 packages take theirs from Aegis
-    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "96 = 93 Gerüst + 3 ältere Items");
-    expect(fromQuantum).toBe(96);
+    // 97 = the 93 files of the scaffold + Polaris Lance, Truth, Hierarchy of Needs and (M1) the
+    // hand-made Deterministic Chaos (older items with a Quantum hit); Witherhoard takes the sum of
+    // a direct hit from a Quantum expression; the other older items and the packages take theirs from Aegis
+    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "97 = 93 Gerüst + 4 ältere Items");
+    expect(fromQuantum).toBe(97);
   });
 
   // Fourth Horseman (Q1 gate): the cata row of Quantum gives the catalyst magazine of 5 (4 without).
@@ -624,8 +625,8 @@ describe("catalysts from texts (2026-10-23)", () => {
     expect(on / off).toBeCloseTo(1.25, 2);
   });
 
-  // Q1 (ADR 0019): the scaffold has no catalyst effect on damage; each test below is `it.fails`
-  // until its M-block (Chaperone, M4; Osteo Striga, M1) writes the rule. Then turn it back into `it`.
+  // Q1 (ADR 0019): the scaffold has no catalyst effect on damage; the Chaperone test below is
+  // `it.fails` until its M-block (M4) writes the rule. Then turn it back into `it`.
   it.fails("The Chaperone: precision hits refill the magazine, 27 slugs instead of 18", () => {
     const off = run({}, weaponById("the-chaperone")).totalDamage;
     const on = run({ catalyst: true }, weaponById("the-chaperone")).totalDamage;
@@ -637,7 +638,7 @@ describe("catalysts from texts (2026-10-23)", () => {
     expect(on / off).toBeGreaterThan(1.3);
   });
 
-  it.fails("Osteo Striga: the catalyst's reload stat reloads faster, a few percent more damage", () => {
+  it("Osteo Striga: the catalyst's reload stat reloads faster, a few percent more damage", () => {
     const off = run({}, weaponById("osteo-striga")).totalDamage;
     const on = run({ catalyst: true }, weaponById("osteo-striga")).totalDamage;
     note(
@@ -968,8 +969,7 @@ describe("exotic effects from the rotation", () => {
     expect(ratio).toBeCloseTo(79840 / 54572, 2);
   });
 
-  // Q1: OTV has no ignitions until M1 writes its scorch.
-  it.fails("Dawn Chorus: Ignitions of One Thousand Voices ×2, its shots unchanged", () => {
+  it("Dawn Chorus: Ignitions of One Thousand Voices ×2, its shots unchanged", () => {
     const warlock = { guardianClass: "warlock" as const, subclass: "solar" as const };
     const plain = run(warlock);
     const worn = run({ ...warlock, exoticArmorId: "dawn-chorus" });
@@ -1490,8 +1490,7 @@ describe("donut by multiplier (2026-10-24)", () => {
     expect(empowering.damage / covered).toBeCloseTo(1 - 1 / 1.2);
     expect(shares.reduce((s, x) => s + x.damage, 0)).toBeCloseTo(result.totalDamage);
   });
-  // Q1: OTV's catalyst has no damage until M1.
-  it.fails("the catalyst slice is the damage the catalyst adds", () => {
+  it("the catalyst slice is the damage the catalyst adds", () => {
     const withCatalyst = run({ ...radiant, catalyst: true }, otv);
     const without = run(radiant, otv);
     const shares = damageByMultiplier(withCatalyst, without);

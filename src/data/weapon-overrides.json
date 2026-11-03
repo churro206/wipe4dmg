@@ -89,32 +89,6 @@
     }
   },
   {
-    "weapon": "Witherhoard",
-    "reason": "Aegis' „direct impact“ zählt die volle Blight pro Schuss; dazu passt Quantums „passive“ (neu schießen, wenn die Blight ausläuft: 20 × 2046 = 40.920 gegen Quantum 41.180). Mit Katalysator lädt die Waffe weggesteckt nach (Quantum „cata, single blight, boss“, 50 s).",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "specials-grenade-launcher-witherhoard-passive",
-        "text": "reapply the frame after the DOT expires"
-      },
-      {
-        "source": "quantum",
-        "entry": "specials-grenade-launcher-witherhoard-cata-single-blight-boss",
-        "text": "auto-reload > boss before DOT expires"
-      },
-      {
-        "source": "clarity",
-        "entry": "Witherhoard Catalyst",
-        "text": "automatically loaded from reserves after 2 seconds of being stowed"
-      }
-    ],
-    "timing": {
-      "from": "Quantum",
-      "row": "specials-grenade-launcher-witherhoard-passive",
-      "catalystRow": "specials-grenade-launcher-witherhoard-cata-single-blight-boss"
-    }
-  },
-  {
     "weapon": "Cull's Shadow",
     "reason": "Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).",
     "quotes": [
@@ -421,18 +395,6 @@
       "from": "Quantum",
       "row": "heavies-grenade-launcher-anarchy-double-stick"
     }
-  },
-  {
-    "weapon": "Deterministic Chaos",
-    "reason": "Catalyst gibt Target Lock; Clarity: ohne Fehlschuss im Mittel etwa +25 % über ein volles Magazin.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Target Lock",
-        "text": "roughly a 25% [15.85%] Damage Buff on average"
-      }
-    ],
-    "catalystFactor": 1.25
   },
   {
     "weapon": "Jötunn",

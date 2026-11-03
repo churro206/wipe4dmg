@@ -13,7 +13,8 @@
       "source": "clarity",
       "entry": "Unforeseen Repercussions",
       "hash": "83552326"
-    }
+    },
+    { "source": "compendium", "entry": "One Thousand Voices", "hash": "b7fb0691" }
   ],
   "chargeTimeMs": "$manifest[One Thousand Voices].stat(\"Charge Time\")",
   "fireRateRpm": "$quantum[heavies-fusion-rifle-one-thousand-voices].timing.fireRateRpm",
@@ -23,20 +24,102 @@
   "catalyst": {
     "name": "Fall from Grace, One Thousand Voices Catalyst",
     "description": "I gain 30 Stability and 20 Ammo Generation.\nEach of my detonations release a Taken Seeker which aggressively tracks and burrows into nearby targets, dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds.\nMy Taken Seekers can stun Overload Champions.\nMy foes can be afflicted by up to 5 seekers at once, and Blighted Enemies (directly impacted by Witherhoard) take 100% increased tick damage.\nI do not interact with Malfeasance or Wish-Ender.\n▛ Most of those who bargain with me do not win... ▟",
-    "effect": "unknown"
+    "effect": "damage"
   },
+  "keywordBonuses": [
+    {
+      "keywordId": "ignition",
+      "factor": {
+        "expr": "1 + $clarity[Ahamkara's Eye](\"deal 31.6% increased damage\") / 100",
+        "note": "percent to factor"
+      }
+    }
+  ],
   "parts": {
     "shot": {
       "name": "Shot",
       "damage": "$quantum[heavies-fusion-rifle-one-thousand-voices].bodyDamage",
       "delivery": "impact"
+    },
+    "seeker-impact": {
+      "name": "Taken Seeker impact",
+      "damage": "$compendium[One Thousand Voices](\"dealing 84\")",
+      "delivery": "splash"
+    },
+    "seeker-ticks": {
+      "name": "Taken Seeker ticks",
+      "damage": {
+        "expr": "$compendium[One Thousand Voices](\"Each tick deals 13\") * $compendium[One Thousand Voices](\"afflicted by up to ~5 seekers\")",
+        "note": "one tick of every seeker an enemy can carry at once"
+      },
+      "delivery": "dot"
     }
   },
   "rules": [
+    { "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "shot" }] },
     {
-      "id": "shot",
-      "on": { "on": "shot" },
-      "do": [{ "type": "spawn", "part": "shot" }]
+      "id": "scorch",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": {
+            "expr": "$clarity[Unforeseen Repercussions](\"marking 9 spots\") * $clarity[Unforeseen Repercussions](\"applies 10 Scorch\")",
+            "note": "every one of the spots applies its Scorch to the boss"
+          }
+        }
+      ]
+    },
+    {
+      "id": "seekers",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [
+        {
+          "type": "spawn",
+          "part": "seeker-impact",
+          "count": "$clarity[One Thousand Voices Catalyst](\"afflicted by up to 5 seekers\")"
+        },
+        {
+          "type": "spawn",
+          "part": "seeker-ticks",
+          "count": {
+            "expr": "60 / $quantum[heavies-fusion-rifle-one-thousand-voices].timing.fireRateRpm / $clarity[One Thousand Voices Catalyst](\"one tick every 0.25 seconds\")",
+            "note": "ticks within one shot interval (60 / rpm seconds), rounded up by the spawn"
+          },
+          "intervalMs": {
+            "expr": "$clarity[One Thousand Voices Catalyst](\"one tick every 0.25 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file one-thousand-voices",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "My foes can be afflicted by up to 5 seekers at once",
+        "note": "Derived: nine seekers a shot but at most 5 on the boss at once; at the shot rate the 5 stay alive (5.65 s against 1.8 s), so 5 impacts and the ticks of 5 seekers per shot interval"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "ticks 10 times",
+      "reason": "needs beam parts (Quantum's shot row carries the sum)"
+    },
+    {
+      "quote": "Marked spots detonate after 0.7 seconds",
+      "reason": "needs beam parts (Quantum's shot row carries the sum)"
+    },
+    { "quote": "I gain 30 Stability", "reason": "no damage against a boss" },
+    {
+      "quote": "Blighted Enemies (directly impacted by Witherhoard) take 100% increased tick damage",
+      "reason": "needs cross-weapon status (Blighted)"
+    },
+    {
+      "quote": "Blighted Enemies (Witherhoard Direct Hit) receive 100% increased tick damage",
+      "reason": "needs cross-weapon status (Blighted)"
     }
   ]
 }

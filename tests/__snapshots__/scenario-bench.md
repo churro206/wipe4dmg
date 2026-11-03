@@ -5,29 +5,29 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 ## Key figures
 
-- **Delta pairs (check set): 0 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.93 over 39 rows
-- Absolute, information only: within ±3 % 19 of 39 (check set), 99 of 183 (all counted rows, mostly Eichung)
-- Rows: 185 scenarios (32 by hand, 153 generated); fitted 50; calibration set 95; check set 39; not counted 2; core cannot run 0
+- **Delta pairs (check set): 1 of 4 within 2 percentage points**
+- Rank (check set): Spearman 0.95 over 40 rows
+- Absolute, information only: within ±3 % 20 of 40 (check set), 98 of 183 (all counted rows, mostly Eichung)
+- Rows: 185 scenarios (32 by hand, 153 generated); fitted 48; calibration set 96; check set 40; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
 | Row with the extra assumption | Extra | Aegis | Model | Gap |
 | --- | --- | ---: | ---: | ---: |
-| one-thousand-voices, average, catalyst | catalyst | +174.3 | +100.0 | −74.3 |
 | barrow-dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Peacekeepers | +32.0 | +11.3 | −20.7 |
-| one-thousand-voices, average, Ember of Ashes | Ember of Ashes | +17.3 | +0.0 | −17.3 |
 | prometheus-lens, average, with ignition, Ember of Ashes | Ember of Ashes | −22.2 | −29.5 | −7.2 |
+| one-thousand-voices, average, catalyst | catalyst | +174.3 | +171.0 | −3.3 |
+| one-thousand-voices, average, Ember of Ashes | Ember of Ashes | +17.3 | +15.9 | −1.5 |
 
 ## Rows of the check set
 
 | Scenario | Aegis row | Source | Model | Deviation |
 | --- | --- | ---: | ---: | ---: |
 | barrow-dyad-peacekeepers | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 1476 | −73.1 % |
-| dragon-s-breath | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 1512 | −94.9 % |
+| dragon-s-breath | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 23629 | −20.8 % |
 | hierarchy-of-needs-two-rings | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
-| one-thousand-voices-ember | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 8720 | −24.5 % |
-| one-thousand-voices-catalyst | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 17440 | −35.4 % |
+| one-thousand-voices-ember | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 12274 | +6.3 % |
+| one-thousand-voices-catalyst | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 28709 | +6.3 % |
 | gen-auto-rifle-necrochasm | auto-rifle-necrochasm | 23 | 24 | +2.6 % |
 | gen-auto-rifle-quicksilver-storm-average-with-tracking-rockets | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 336 | −13.8 % |
 | gen-bow-trinity-ghoul | bow-trinity-ghoul | 218 | 73 | −66.6 % |
@@ -40,6 +40,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-glaive-edge-of-intent-projectile | glaive-edge-of-intent-projectile | 553 | 554 | +0.1 % |
 | gen-grenade-launcher-parasite | grenade-launcher-parasite | 2135 | 2134 | −0.1 % |
 | gen-grenade-launcher-the-prospector-average-direct-impact-standard-target-model | grenade-launcher-the-prospector-average-direct-impact-standard-target-model | 18647 | 12150 | −34.8 % |
+| gen-grenade-launcher-witherhoard-direct-impact | grenade-launcher-witherhoard-direct-impact | 2044 | 2059 | +0.7 % |
 | gen-hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | 934 | 430 | −53.9 % |
 | gen-hand-cannon-sunshot | hand-cannon-sunshot | 87 | 102 | +17.9 % |
 | gen-linear-fusion-rifle-arbalest | linear-fusion-rifle-arbalest | 1085 | 1086 | +0.1 % |
@@ -50,14 +51,14 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-pulse-rifle-vigilance-wing-burst | pulse-rifle-vigilance-wing-burst | 173 | 35 | −79.7 % |
 | gen-scout-rifle-mida-multi-tool | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | gen-scout-rifle-symmetry | scout-rifle-symmetry | 61 | 61 | +0.1 % |
-| gen-shotgun-conditional-finality-average-body-both-modes | shotgun-conditional-finality-average-body-both-modes | 17047 | 12228 | −28.3 % |
+| gen-shotgun-conditional-finality-average-body-both-modes | shotgun-conditional-finality-average-body-both-modes | 17047 | 16279 | −4.5 % |
 | gen-shotgun-the-chaperone | shotgun-the-chaperone | 748 | 749 | +0.2 % |
 | gen-sidearm-buried-bloodline | sidearm-buried-bloodline | 322 | 322 | −0.0 % |
 | gen-sidearm-cryosthesia-77k | sidearm-cryosthesia-77k | 87 | 88 | +0.9 % |
 | gen-sidearm-forerunner | sidearm-forerunner | 298 | 298 | +0.1 % |
 | gen-sidearm-rat-king | sidearm-rat-king | 79 | 79 | +0.6 % |
 | gen-sidearm-trespasser | sidearm-trespasser | 152 | 51 | −66.4 % |
-| gen-smg-osteo-striga-average-with-successive-poison | smg-osteo-striga-average-with-successive-poison | 8413 | 5712 | −32.1 % |
+| gen-smg-osteo-striga-average-with-successive-poison | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
 | gen-smg-riskrunner-average-arc-conductor-peacekeepers | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |
 | gen-sniper-rifle-borealis | sniper-rifle-borealis | 831 | 833 | +0.2 % |
 | gen-trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 2445 | −9.2 % |
@@ -74,18 +75,18 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | ager-s-scepter-harsh-refraction | factor | 19631 | 7372 | −62.4 % |  | calibration |  |
 | barrow-dyad | parts | 4155 | 1326 | −68.1 % |  | calibration |  |
 | barrow-dyad-peacekeepers | factor | 5483 | 1476 | −73.1 % |  | check |  |
-| deterministic-chaos | volatile | 6074 | 6073 | −0.0 % | fitted | calibration |  |
-| deterministic-chaos-target-lock | factor | 7479 | 7591 | +1.5 % |  | calibration |  |
-| dragon-s-breath | scorch | 29828 | 1512 | −94.9 % |  | check |  |
+| deterministic-chaos | volatile | 6074 | 6323 | +4.1 % |  | calibration |  |
+| deterministic-chaos-target-lock | factor | 7479 | 7810 | +4.4 % |  | calibration |  |
+| dragon-s-breath | scorch | 29828 | 23629 | −20.8 % |  | check |  |
 | gjallarhorn | parts | 15149 | 15008 | −0.9 % |  | calibration |  |
 | hierarchy-of-needs-two-rings | scorch | 12062 | 12026 | −0.3 % |  | check |  |
 | hierarchy-of-needs-one-ring | scorch | 5495 | 5466 | −0.5 % |  | calibration |  |
 | lord-of-wolves | scorch | 22355 | 22327 | −0.1 % | fitted | check |  |
 | lord-of-wolves-ember | scorch | 17249 | 16745 | −2.9 % |  | calibration |  |
-| one-thousand-voices | scorch | 9844 | 8720 | −11.4 % |  | calibration |  |
-| one-thousand-voices-ember | scorch | 11550 | 8720 | −24.5 % |  | check |  |
-| one-thousand-voices-catalyst | parts | 27000 | 17440 | −35.4 % |  | check |  |
-| one-thousand-voices-ember-catalyst | scorch | 30144 | 17440 | −42.1 % |  | calibration |  |
+| one-thousand-voices | scorch | 9844 | 10594 | +7.6 % |  | calibration |  |
+| one-thousand-voices-ember | scorch | 11550 | 12274 | +6.3 % |  | check |  |
+| one-thousand-voices-catalyst | parts | 27000 | 28709 | +6.3 % |  | check |  |
+| one-thousand-voices-ember-catalyst | scorch | 30144 | 32069 | +6.4 % |  | calibration |  |
 | polaris-lance | scorch | 2543 | 2490 | −2.1 % | fitted | calibration |  |
 | polaris-lance-ember | scorch | 1906 | 1872 | −1.8 % |  | calibration |  |
 | salvation-s-grip | base | 796 | 795 | −0.1 % | fitted | calibration |  |
@@ -156,38 +157,38 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 183 | 44 % | 49 | 39 | 0.93 | 2/3 | 0 of 4 |
+| Weapons | 417 | 183 | 44 % | 47 | 40 | 0.95 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
-| Heavy | 95 | 21 | 22 % | 4 | 17 | 0.80 | 2/3 | 0 of 5 |
+| Heavy | 95 | 21 | 22 % | 4 | 17 | 0.92 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
-| Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 5 of 8 |
+| Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
 ## Delta pairs by group (check set)
 
 | Group | Row | Extra assumption | Aegis | Model | Gap | Reason of the deviation |
 | --- | --- | --- | ---: | ---: | ---: | --- |
-| Weapons | one-thousand-voices, average, catalyst | catalyst | +174.3 | +100.0 | −74.3 |  |
 | Weapons | barrow-dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Peacekeepers | +32.0 | +11.3 | −20.7 |  |
-| Weapons | one-thousand-voices, average, Ember of Ashes | Ember of Ashes | +17.3 | +0.0 | −17.3 |  |
 | Weapons | prometheus-lens, average, with ignition, Ember of Ashes | Ember of Ashes | −22.2 | −29.5 | −7.2 |  |
+| Weapons | one-thousand-voices, average, catalyst | catalyst | +174.3 | +171.0 | −3.3 |  |
+| Weapons | one-thousand-voices, average, Ember of Ashes | Ember of Ashes | +17.3 | +15.9 | −1.5 |  |
 | Supers | Gathering Storm, Feast of Light x6, Limit Break | Feast of Light x6 | +77.3 | +66.3 | −11.0 | Aegis contradicts itself: tab Swap +77.3 % (25038 / 14122), tab Abilities +63.3 % (11767 / 7207), and the text allows at most +70 % (Compendium: 'up to 70% increased Super Damage'). The model gives +66.3 % (+65.8 % before block P made Limit Break a switch: it lifts the super's own hits, not the Jolt share; Jolt share unscaled; 66.5 % before the 1 s charge of One Thousand Voices, the probe's weapon, shifted its keyword damage), between the tabs and within the text. |
 | Supers | Blade Barrage, Knock 'Em Down, Shards of Galanor, Limit Break | Shards of Galanor | +77.0 | +80.9 | +3.9 | Aegis contradicts itself: tab Swap +77.0 % (23150 / 13076), tab Abilities +102.2 % (25864 / 12795); the model gives +80.9 %, 3.9 points above Swap and 21 below Abilities. The cause of the tab difference is not known; the 25 % of Sharp Edges alone cannot explain either. |
 | Supers | Blade Barrage, Knock 'Em Down, Feast of Light x6, Limit Break | Feast of Light x6 | +68.7 | +70.0 | +1.3 |  |
 | Supers | Nova Bomb: Cataclysm, Feast of Light x6, Facet of Courage, Limit Break | Feast of Light x6 | +50.0 | +50.0 | +0.0 |  |
 | Supers | Twilight Arsenal, Feast of Light x6, Facet of Courage, Limit Break | Feast of Light x6 | +50.0 | +50.0 | +0.0 |  |
 | Supers | Chaos Reach, Geomag Stabilizers, Sol Invictus, Thunderous Retort | Sol Invictus | +46.3 | +46.3 | −0.0 |  |
-| Heavy | One Thousand Voices, catalyst, Particle Reconstruction | catalyst | +37.1 | +0.0 | −37.1 |  |
-| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | catalyst | +30.5 | +0.0 | −30.5 |  |
-| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | Dawn Chorus | +23.7 | +0.0 | −23.7 |  |
-| Heavy | One Thousand Voices, Ember of Ashes, Particle Reconstruction | Ember of Ashes | +17.3 | +0.0 | −17.3 |  |
-| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | Ember of Ashes | +11.6 | +0.0 | −11.6 |  |
+| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Dawn Chorus, Particle Reconstruction | Dawn Chorus | +23.7 | +22.2 | −1.5 |  |
+| Heavy | One Thousand Voices, catalyst, Particle Reconstruction | catalyst | +37.1 | +35.9 | −1.3 |  |
+| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | Ember of Ashes | +11.6 | +12.6 | +0.9 |  |
+| Heavy | One Thousand Voices, Ember of Ashes, Particle Reconstruction | Ember of Ashes | +17.3 | +17.1 | −0.2 |  |
+| Heavy | One Thousand Voices, Ember of Ashes, catalyst, Particle Reconstruction | catalyst | +30.5 | +30.6 | +0.1 |  |
+| Abilities | Lightweight Knife, precision, stat 200 | stat 200 | +30.1 | +16.0 | −14.0 |  |
 | Abilities | Blade Barrage, Knock Em Down, Feast of Light x6 | Feast of Light x6 | +75.1 | +70.0 | −5.1 |  |
 | Abilities | Hammer Strike, Ember of Ashes, stat 200 | stat 200 | +27.5 | +30.0 | +2.5 |  |
 | Abilities | Blade Barrage, Knock Em Down, Feast of Light x6, stat 200 | stat 200 | +42.8 | +45.0 | +2.2 |  |
 | Abilities | Blade Barrage, Knock Em Down, Feast of Light x6, stat 200 | Feast of Light x6 | +68.7 | +70.0 | +1.3 |  |
 | Abilities | Tripmine Grenade, average, Ember of Ashes, with ignition, stat 200 | stat 200 | +64.6 | +65.0 | +0.4 |  |
 | Abilities | Vortex Grenade, stat 200 | stat 200 | +65.2 | +65.0 | −0.2 |  |
-| Abilities | Lightweight Knife, precision, stat 200 | stat 200 | +30.1 | +30.0 | −0.1 |  |
 | Abilities | Disorienting Blow, stat 200 | stat 200 | +30.0 | +30.0 | −0.0 |  |
 
 ## Rows of the check set by group
@@ -203,14 +204,15 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | bow-verglas-curve | 208 | 209 | +0.3 % |
 | Weapons | fusion-rifle-bastion | 6359 | 6384 | +0.4 % |
 | Weapons | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
-| Weapons | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 17440 | −35.4 % |
-| Weapons | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 8720 | −24.5 % |
+| Weapons | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 28709 | +6.3 % |
+| Weapons | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 12274 | +6.3 % |
 | Weapons | fusion-rifle-telesto | 7653 | 7938 | +3.7 % |
 | Weapons | fusion-rifle-vex-mythoclast | 93 | 113 | +21.0 % |
 | Weapons | glaive-edge-of-action-projectile | 482 | 483 | +0.2 % |
 | Weapons | glaive-edge-of-intent-projectile | 553 | 554 | +0.1 % |
 | Weapons | grenade-launcher-parasite | 2135 | 2134 | −0.1 % |
 | Weapons | grenade-launcher-the-prospector-average-direct-impact-standard-target-model | 18647 | 12150 | −34.8 % |
+| Weapons | grenade-launcher-witherhoard-direct-impact | 2044 | 2059 | +0.7 % |
 | Weapons | hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | 934 | 430 | −53.9 % |
 | Weapons | hand-cannon-sunshot | 87 | 102 | +17.9 % |
 | Weapons | linear-fusion-rifle-arbalest | 1085 | 1086 | +0.1 % |
@@ -219,10 +221,10 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | pulse-rifle-graviton-lance-burst-vorpal-weapon | 146 | 71 | −51.3 % |
 | Weapons | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 832 | −94.0 % |
 | Weapons | pulse-rifle-vigilance-wing-burst | 173 | 35 | −79.7 % |
-| Weapons | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 1512 | −94.9 % |
+| Weapons | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 23629 | −20.8 % |
 | Weapons | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | Weapons | scout-rifle-symmetry | 61 | 61 | +0.1 % |
-| Weapons | shotgun-conditional-finality-average-body-both-modes | 17047 | 12228 | −28.3 % |
+| Weapons | shotgun-conditional-finality-average-body-both-modes | 17047 | 16279 | −4.5 % |
 | Weapons | shotgun-the-chaperone | 748 | 749 | +0.2 % |
 | Weapons | sidearm-buried-bloodline | 322 | 322 | −0.0 % |
 | Weapons | sidearm-cryosthesia-77k | 87 | 88 | +0.9 % |
@@ -230,7 +232,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | sidearm-rat-king | 79 | 79 | +0.6 % |
 | Weapons | sidearm-trespasser | 152 | 51 | −66.4 % |
 | Weapons | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 1476 | −73.1 % |
-| Weapons | smg-osteo-striga-average-with-successive-poison | 8413 | 5712 | −32.1 % |
+| Weapons | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
 | Weapons | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |
 | Weapons | sniper-rifle-borealis | 831 | 833 | +0.2 % |
 | Weapons | trace-rifle-prometheus-lens-average-with-ignition-ember-of-ashes | 2692 | 2445 | −9.2 % |
@@ -253,16 +255,16 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Supers | swap-stormtrance-feast-of-light-x6-facet-of-courage-thunderous-retort | 54444 | 54914 | +0.9 % |
 | Supers | swap-twilight-arsenal-facet-of-courage-limit-break | 23219 | 23222 | +0.0 % |
 | Supers | swap-twilight-arsenal-feast-of-light-x6-facet-of-courage-limit-break | 34828 | 34832 | +0.0 % |
-| Heavy | sustained-deterministic-chaos-target-lock | 137936 | 140043 | +1.5 % |
+| Heavy | sustained-deterministic-chaos-target-lock | 137936 | 136358 | −1.1 % |
 | Heavy | sustained-gjallarhorn-argent-ordnance | 56374 | 55892 | −0.9 % |
 | Heavy | sustained-grand-overture-volleys-when-available | 144658 | 144662 | +0.0 % |
 | Heavy | sustained-heir-apparent | 58096 | 59069 | +1.7 % |
 | Heavy | sustained-leviathan-s-breath-archer-s-tempo | 71555 | 72475 | +1.3 % |
-| Heavy | sustained-one-thousand-voices-catalyst-particle-reconstruction | 87367 | 56478 | −35.4 % |
-| Heavy | sustained-one-thousand-voices-ember-of-ashes-catalyst-dawn-chorus-particle-reconstruction | 120613 | 56478 | −53.2 % |
-| Heavy | sustained-one-thousand-voices-ember-of-ashes-catalyst-particle-reconstruction | 97543 | 56478 | −42.1 % |
-| Heavy | sustained-one-thousand-voices-ember-of-ashes-particle-reconstruction | 74750 | 56478 | −24.4 % |
-| Heavy | sustained-one-thousand-voices-particle-reconstruction | 63705 | 56478 | −11.3 % |
+| Heavy | sustained-one-thousand-voices-catalyst-particle-reconstruction | 87367 | 92248 | +5.6 % |
+| Heavy | sustained-one-thousand-voices-ember-of-ashes-catalyst-dawn-chorus-particle-reconstruction | 120613 | 126873 | +5.2 % |
+| Heavy | sustained-one-thousand-voices-ember-of-ashes-catalyst-particle-reconstruction | 97543 | 103852 | +6.5 % |
+| Heavy | sustained-one-thousand-voices-ember-of-ashes-particle-reconstruction | 74750 | 79499 | +6.4 % |
+| Heavy | sustained-one-thousand-voices-particle-reconstruction | 63705 | 67895 | +6.6 % |
 | Heavy | sustained-service-of-luzaku | 110752 | 110930 | +0.2 % |
 | Heavy | sustained-sleeper-simulant | 87747 | 87765 | +0.0 % |
 | Heavy | sustained-the-colony | 49096 | 49165 | +0.1 % |
@@ -280,7 +282,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Abilities | grenade-vortex | 1122 | 1185 | +5.6 % |
 | Abilities | melee-disorienting-blow | 1065 | 1138 | +6.8 % |
 | Abilities | melee-hammer-strike-ember-of-ashes | 1604 | 1464 | −8.7 % |
-| Abilities | melee-lightweight-knife-precision | 408 | 408 | +0.0 % |
+| Abilities | melee-lightweight-knife-precision | 408 | 763 | +87.2 % |
 | Abilities | super-blade-barrage-knock-em-down-feast-of-light-x6 | 22406 | 21751 | −2.9 % |
 
 ## Missing switches by group

@@ -92,6 +92,9 @@ export function simulate(
     multiplierAt: context.keywordMultiplierAt,
     stackFactorAt: counterFactorAt,
     isInPhase,
+    // The rules with the trigger `status` (an ignition feeds Dragon's Breath's fuel)
+    onThreshold: (status, timeMs, target, schedule) =>
+      fireRules({ on: "status", timeMs, status, event: "threshold" }, target, schedule),
   });
   /** The weapon as source of scorch that its own parts apply; burn inherits its bonuses. */
   const scorchSource = (timeMs: number): TimedDamageInstance => ({
@@ -195,8 +198,13 @@ export function simulate(
           schedule({
             timeMs: atMs,
             group: EVENT_GROUP.weaponHit,
-            handle: (_, emit) => {
-              const factors = multiplierAt(atMs, weapon.element);
+            handle: (target, emit) => {
+              const factors = multiplierAt(
+                atMs,
+                weapon.element,
+                undefined,
+                statusContainer.modifiersOnTarget(target, atMs),
+              );
               const hit: TimedDamageInstance = {
                 id: instance.id,
                 timeMs: atMs,

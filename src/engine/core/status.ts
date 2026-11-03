@@ -167,6 +167,14 @@ export type StatusContext = {
   // Factor of the action modifiers on the stacks an application brings (Ember of Ashes)
   stackFactorAt: (status: TargetStatusId, timeMs: number) => number;
   isInPhase: (timeMs: number) => boolean;
+  // A status went off (its threshold was reached, e.g. an ignition): the rules with the trigger
+  // `status` see it; the callback runs inside the event that set it off
+  onThreshold?: (
+    status: TargetStatusId,
+    timeMs: number,
+    target: TargetState,
+    schedule: (event: RunEvent) => void,
+  ) => void;
 };
 
 /** What an application brings: stacks (read when the status has stacks) and a duration. */
@@ -187,6 +195,7 @@ export function createStatusContainer({
   multiplierAt,
   stackFactorAt,
   isInPhase,
+  onThreshold,
 }: StatusContext) {
   const byStatus = new Map(keywords.map((k) => [k.status, k]));
   const modifierOf = new Map(modifierStatuses.map((s) => [s.id, s]));
@@ -239,10 +248,12 @@ export function createStatusContainer({
   const session = (
     hit: TimedDamageInstance,
     schedule: (event: RunEvent) => void,
+    target: TargetState,
   ) => {
     const timeMs = hit.timeMs;
     /** Queues the damage of a keyword; source is the hit whose bonuses it may inherit. */
     const goOff = (keyword: Keyword, source: TimedDamageInstance) => {
+      onThreshold?.(keyword.status, timeMs, target, schedule);
       const hitMs = timeMs + optionalMs(keyword.delayMs, "delayMs");
       if (!isInPhase(hitMs)) return;
       schedule({
@@ -334,7 +345,7 @@ export function createStatusContainer({
 
   /** The handler for the event run that applies statuses and sets them off. */
   const onHit: OnHit = (hit, target, schedule) => {
-    const { goOff, takeDamage } = session(hit, schedule);
+    const { goOff, takeDamage } = session(hit, schedule, target);
     const timeMs = hit.timeMs;
 
     // 1. damage taken
@@ -387,7 +398,7 @@ export function createStatusContainer({
     const keyword = byStatus.get(status);
     if (!keyword) throw new Error(`No definition for status "${status}"`);
     const { stacks, durationMs } = application;
-    session(source, schedule).apply(target, keyword, {
+    session(source, schedule, target).apply(target, keyword, {
       ...(stacks === undefined ? {} : { stacks: () => stacks }),
       ...(durationMs === undefined ? {} : { durationMs: () => durationMs }),
     });

@@ -27,7 +27,15 @@
   "catalyst": {
     "name": "Osteo Striga Catalyst",
     "description": "Grants 30 Reload and 20 Stability.\nPoison Kills instantly refill the magazine and can overfill it up to 300% total capacity.\n0.5 second cooldown between activations.",
-    "effect": "unknown"
+    "effect": "timing",
+    "timing": {
+      "magazine": "$quantum[primaries-submachine-gun-osteo-striga].timing.magazine",
+      "totalShots": "$quantum[primaries-submachine-gun-osteo-striga].timing.totalShots",
+      "reloadTimeMs": {
+        "expr": "$quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs * ((0.0000608642 * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) - 0.0191345 * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) + 2.62769) / (0.0000608642 * $manifest[Osteo Striga].stat(\"Reload Speed\") * $manifest[Osteo Striga].stat(\"Reload Speed\") - 0.0191345 * $manifest[Osteo Striga].stat(\"Reload Speed\") + 2.62769))",
+        "note": "reload time times the d2foundry reload formula (snapshot reload-formulas, submachineGun / Osteo Striga: evpp 0.0000608642, vpp -0.0191345, offset 2.62769) at the reload stat with the catalyst divided by the stat without it; the stat from the manifest, the catalyst's from the text"
+      }
+    }
   },
   "parts": {
     "shot": {
@@ -35,13 +43,53 @@
       "damage": "$quantum[primaries-submachine-gun-osteo-striga].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "corruption": {
+      "name": "Potent Corruption",
+      "damage": {
+        "expr": "$quantum[primaries-submachine-gun-osteo-striga-only-poison-dot].magDamage / $quantum[primaries-submachine-gun-osteo-striga].magazine",
+        "note": "the poison of a magazine as Quantum counts it (re-proc resets the ramp) shared by its rounds"
+      },
+      "delivery": "dot"
     }
   },
   "rules": [
     {
       "id": "shot",
       "on": { "on": "shot" },
-      "do": [{ "type": "spawn", "part": "shot" }]
+      "do": [{ "type": "spawn", "part": "shot" }],
+      "source": {
+        "name": "Item file osteo-striga",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Deals 10% more damage than other Precision Frame SMGs.",
+        "note": "Derived: Quantum's hit damage already holds the 10 % of the frame"
+      }
+    },
+    {
+      "id": "corruption",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [{ "type": "spawn", "part": "corruption" }],
+      "source": {
+        "name": "Item file osteo-striga",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Landing 14 Hits or 7 Precision Hits within 3 seconds of each other, or scoring a kill, triggers a burst of Potent Corruption (Poison) at the target's location in a 5 meter radius.",
+        "note": "Derived: every round brings its share of the poison that Quantum's row \"only poison DoT\" measures for a magazine; at 10 rounds per second the proc comes every second and resets the ramp, which no Clarity number gives"
+      }
     }
+  ],
+  "notModelled": [
+    {
+      "quote": "Potent Corruption deals 32.35",
+      "reason": "needs poison ramp with reset (Quantum's poison row per round carries it)"
+    },
+    {
+      "quote": "Potent Corruption damage increases by 11% per tick",
+      "reason": "needs poison ramp with reset (Quantum's poison row per round carries it)"
+    },
+    { "quote": "Poison Kills instantly refill the magazine", "reason": "no adds (ADR 0015)" },
+    { "quote": "0.5 second cooldown between activations", "reason": "no adds (ADR 0015)" },
+    { "quote": "Cooldown of 2 seconds", "reason": "no adds (ADR 0015)" }
   ]
 }

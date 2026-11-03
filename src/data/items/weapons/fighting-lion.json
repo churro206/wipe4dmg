@@ -45,6 +45,30 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "volatile",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [{ "type": "applyStatus", "status": "volatile" }],
+      "source": {
+        "name": "Item file fighting-lion",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Direct Hits apply Volatile to the target and enemies in a 7.5 meter radius.",
+        "note": "Derived: every grenade hits the boss directly; the radius only reaches adds"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "remotely detonated after 0.3 seconds", "reason": "below 2 %" },
+    { "quote": "Has a 4.5 meter blast radius", "reason": "below 2 %" },
+    { "quote": "Deals 40% increased damage against Minor Combatants", "reason": "no adds (ADR 0015)" },
+    { "quote": "Grants 30 Reload Speed", "reason": "needs reload stat" },
+    { "quote": "Firing this gun grants equipped Kinetic and Heavy ammo weapons", "reason": "no damage against a boss" },
+    { "quote": "100 Handling", "reason": "no damage against a boss" },
+    { "quote": "30% decreased Accuracy Cone Size", "reason": "no damage against a boss" },
+    { "quote": "Deal 24.5% increased impact damage to Combatant Shields", "reason": "no adds (ADR 0015)" },
+    { "quote": "Dealing damage grants 70 Reload Speed", "reason": "needs reload stat" },
+    { "quote": "For 6 seconds after either scoring a kill", "reason": "no adds (ADR 0015)" }
   ]
 }

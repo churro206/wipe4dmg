@@ -290,7 +290,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | The Prospector, average, direct impact, standard target model | im Modell | base row of the package |
 | Wave frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Witherhoard, direct impact | im Modell | base row of the package |
-| Witherhoard, ground pool | übersprungen | ohne direct impact der Basiszeile |
+| Witherhoard, ground pool | übersprungen | the item file uses another row |
 | Ace of Spades | im Modell | base row of the package |
 | Adaptive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive frame | übersprungen | legendary frame (owner 2026-10-25) |

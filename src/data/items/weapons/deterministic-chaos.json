@@ -1,0 +1,175 @@
+{
+  "id": "deterministic-chaos",
+  "kind": "exoticWeapon",
+  "name": "Deterministic Chaos",
+  "texts": [
+    { "source": "clarity", "entry": "Vexadecimal", "hash": "b5928bc2" },
+    { "source": "clarity", "entry": "Heavy Metal", "hash": "ba08f3a2" },
+    { "source": "clarity", "entry": "Deterministic Chaos Catalyst", "hash": "91d66272" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file deterministic-chaos",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-machine-gun-deterministic-chaos-w-o-weaken].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-machine-gun-deterministic-chaos-w-o-weaken].timing.magazine",
+  "totalShots": "$quantum[heavies-machine-gun-deterministic-chaos-w-o-weaken].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-machine-gun-deterministic-chaos-w-o-weaken].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Target Lock, Deterministic Chaos Catalyst",
+    "description": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
+    "effect": "damage"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-machine-gun-deterministic-chaos-w-o-weaken].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "buffs": [
+    {
+      "id": "target-lock",
+      "name": "Target Lock",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Deterministic Chaos Catalyst](\"roughly a 25%\") / 100",
+            "note": "percent to factor; the average over a magazine without a missed shot"
+          },
+          "damageSources": ["weapon"]
+        }
+      ]
+    }
+  ],
+  "rules": [
+    { "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "shot" }] },
+    {
+      "id": "target-lock",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "grantBuff", "buff": "target-lock" }],
+      "source": {
+        "name": "Item file deterministic-chaos",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Assuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
+        "note": "Derived: the average buff of a magazine holds for the whole phase (no misses, the ramp starts again with every magazine)"
+      }
+    },
+    {
+      "id": "heavy-metal-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "heavy-metal",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Heavy Metal](\"for 4 rounds\") - 1",
+            "note": "the counter stands at 0 to 3 for the rounds before the 4th"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "heavy-metal" }]
+    },
+    {
+      "id": "heavy-metal",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "heavy-metal",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[Heavy Metal](\"for 4 rounds\") - 1",
+            "note": "the 4th round"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "heavy-metal" },
+        { "type": "applyStatus", "status": "volatile" }
+      ],
+      "source": {
+        "name": "Item file deterministic-chaos",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Holding down the trigger for 4 rounds makes the 4th round apply Volatile for 10 Seconds.",
+        "note": "Derived: the trigger stays down (the Weaken playstyle); the duration is the keyword's"
+      }
+    },
+    {
+      "id": "weaken-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "vexadecimal",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Vexadecimal](\"after 32 uninterrupted rounds\") - 1",
+            "note": "the counter stands at 0 to 30 for the rounds before the 32nd"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "vexadecimal" }]
+    },
+    {
+      "id": "weaken",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "vexadecimal",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[Vexadecimal](\"after 32 uninterrupted rounds\") - 1",
+            "note": "the 32nd round"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "vexadecimal" },
+        { "type": "applyStatus", "status": "weaken" }
+      ],
+      "source": {
+        "name": "Item file deterministic-chaos",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Holding down the trigger for 16 rounds (is supposed to) make the 16th round Weaken for 6 Seconds.",
+        "note": "Derived: because of the bug of the next sentence the 32nd round weakens; the trigger stays down"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "refills 12 ammo from reserves on trigger release",
+      "reason": "needs trigger-release refill playstyle"
+    },
+    {
+      "quote": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff",
+      "reason": "needs ramp by magazine fraction (the average buff of the text is used)"
+    },
+    {
+      "quote": "Reaches maximum strength at 5 Stacks",
+      "reason": "needs ramp by magazine fraction (the average buff of the text is used)"
+    },
+    {
+      "quote": "% of the Magazine Capacity as Hits required for each Visual Stack",
+      "reason": "needs ramp by magazine fraction (the average buff of the text is used)"
+    },
+    {
+      "quote": "Damage Buff ramps up from 16.73%",
+      "reason": "needs ramp by magazine fraction (the average buff of the text is used)"
+    }
+  ]
+}

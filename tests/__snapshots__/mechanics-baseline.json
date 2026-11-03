@@ -171,14 +171,14 @@
       "600s buffed catalyst": 212017.43
     },
     "conditional-finality": {
-      "30s plain": 19361,
-      "30s buffed": 32596.18,
-      "30s plain catalyst": 19361,
-      "30s buffed catalyst": 32596.18,
-      "600s plain": 19361,
-      "600s buffed": 32596.18,
-      "600s plain catalyst": 19361,
-      "600s buffed catalyst": 32596.18
+      "30s plain": 25437.95,
+      "30s buffed": 42827.34,
+      "30s plain catalyst": 25437.95,
+      "30s buffed catalyst": 42827.34,
+      "600s plain": 25437.95,
+      "600s buffed": 42827.34,
+      "600s plain catalyst": 25437.95,
+      "600s buffed catalyst": 42827.34
     },
     "crimson": {
       "30s plain": 5904,
@@ -257,14 +257,14 @@
       "600s buffed catalyst": 38977.55
     },
     "deterministic-chaos": {
-      "30s plain": 17711.82,
-      "30s buffed": 29819.62,
-      "30s plain catalyst": 22139.78,
-      "30s buffed catalyst": 37274.53,
-      "600s plain": 47568.89,
-      "600s buffed": 80086.98,
-      "600s plain catalyst": 59461.11,
-      "600s buffed catalyst": 100108.72
+      "30s plain": "error: No definition for status \"weaken\"",
+      "30s buffed": "error: No definition for status \"weaken\"",
+      "30s plain catalyst": "error: No definition for status \"weaken\"",
+      "30s buffed catalyst": "error: No definition for status \"weaken\"",
+      "600s plain": "error: No definition for status \"weaken\"",
+      "600s buffed": "error: No definition for status \"weaken\"",
+      "600s plain catalyst": "error: No definition for status \"weaken\"",
+      "600s buffed catalyst": "error: No definition for status \"weaken\""
     },
     "devil-s-ruin": {
       "30s plain": 9480,
@@ -287,14 +287,14 @@
       "600s buffed catalyst": 11869.38
     },
     "dragon-s-breath": {
-      "30s plain": 2079,
-      "30s buffed": 3500.2,
-      "30s plain catalyst": 2079,
-      "30s buffed catalyst": 3500.2,
-      "600s plain": 2079,
-      "600s buffed": 3500.2,
-      "600s plain catalyst": 2079,
-      "600s buffed catalyst": 3500.2
+      "30s plain": 32866.39,
+      "30s buffed": 55333.85,
+      "30s plain catalyst": 32866.39,
+      "30s buffed catalyst": 55333.85,
+      "600s plain": 32866.39,
+      "600s buffed": 55333.85,
+      "600s plain catalyst": 32866.39,
+      "600s buffed catalyst": 55333.85
     },
     "duality": {
       "30s plain": 18932.33,
@@ -397,14 +397,14 @@
       "600s buffed catalyst": 38311.01
     },
     "fighting-lion": {
-      "30s plain": 8134,
-      "30s buffed": 13694.4,
-      "30s plain catalyst": 8134,
-      "30s buffed catalyst": 13694.4,
-      "600s plain": 152803,
-      "600s buffed": 257259.13,
-      "600s plain catalyst": 152803,
-      "600s buffed catalyst": 257259.13
+      "30s plain": 8791.39,
+      "30s buffed": 14450.4,
+      "30s plain catalyst": 8791.39,
+      "30s buffed catalyst": 14450.4,
+      "600s plain": 165105.6,
+      "600s buffed": 271407.12,
+      "600s plain catalyst": 165105.6,
+      "600s buffed catalyst": 271407.12
     },
     "final-warning": {
       "30s plain": 17600,
@@ -573,14 +573,14 @@
       "600s buffed catalyst": 224814.48
     },
     "le-monarque": {
-      "30s plain": 5050,
-      "30s buffed": 8502.18,
-      "30s plain catalyst": 5050,
-      "30s buffed catalyst": 8502.18,
-      "600s plain": 101000,
-      "600s buffed": 170043.6,
-      "600s plain catalyst": 101000,
-      "600s buffed catalyst": 170043.6
+      "30s plain": 15270,
+      "30s buffed": 25708.57,
+      "30s plain catalyst": 15270,
+      "30s buffed catalyst": 25708.57,
+      "600s plain": 310720,
+      "600s buffed": 523128.19,
+      "600s plain catalyst": 310720,
+      "600s buffed catalyst": 523128.19
     },
     "legend-of-acrius": {
       "30s plain": 30544,
@@ -725,24 +725,24 @@
       "600s buffed catalyst": 553513.89
     },
     "one-thousand-voices": {
-      "30s plain": 23980,
-      "30s buffed": 40372.73,
-      "30s plain catalyst": 23980,
-      "30s buffed catalyst": 40372.73,
-      "600s plain": 23980,
-      "600s buffed": 40372.73,
-      "600s plain catalyst": 23980,
-      "600s buffed catalyst": 40372.73
+      "30s plain": 28827.6,
+      "30s buffed": 48534.14,
+      "30s plain catalyst": 39167.6,
+      "30s buffed catalyst": 65942.57,
+      "600s plain": 28827.6,
+      "600s buffed": 48534.14,
+      "600s plain catalyst": 39167.6,
+      "600s buffed catalyst": 65942.57
     },
     "osteo-striga": {
-      "30s plain": 9114,
-      "30s buffed": 15344.33,
-      "30s plain catalyst": 9114,
-      "30s buffed catalyst": 15344.33,
-      "600s plain": 179046,
-      "600s buffed": 301441.85,
-      "600s plain catalyst": 179046,
-      "600s buffed catalyst": 301441.85
+      "30s plain": 12810.38,
+      "30s buffed": 21567.55,
+      "30s plain catalyst": 13695.89,
+      "30s buffed catalyst": 23058.4,
+      "600s plain": 251661.94,
+      "600s buffed": 423698.05,
+      "600s plain catalyst": 266774.65,
+      "600s buffed catalyst": 449141.79
     },
     "outbreak-perfected": {
       "30s plain": 5824,
@@ -1097,14 +1097,14 @@
       "600s buffed catalyst": 222021.95
     },
     "thorn": {
-      "30s plain": 4947,
-      "30s buffed": 8328.77,
-      "30s plain catalyst": 4947,
-      "30s buffed catalyst": 8328.77,
-      "600s plain": 95351,
-      "600s buffed": 160532.94,
-      "600s plain catalyst": 95351,
-      "600s buffed catalyst": 160532.94
+      "30s plain": 15327,
+      "30s buffed": 25804.54,
+      "30s plain catalyst": 15327,
+      "30s buffed catalyst": 25804.54,
+      "600s plain": 217661,
+      "600s buffed": 366454.06,
+      "600s plain catalyst": 217661,
+      "600s buffed catalyst": 366454.06
     },
     "thunderlord": {
       "30s plain": 20402,
@@ -1207,14 +1207,14 @@
       "600s buffed catalyst": 232357.18
     },
     "two-tailed-fox": {
-      "30s plain": 23400,
-      "30s buffed": 39396.24,
-      "30s plain catalyst": 23400,
-      "30s buffed catalyst": 39396.24,
-      "600s plain": 23400,
-      "600s buffed": 39396.24,
-      "600s plain catalyst": 23400,
-      "600s buffed catalyst": 39396.24
+      "30s plain": 27034.84,
+      "30s buffed": 45515.85,
+      "30s plain catalyst": 27034.84,
+      "30s buffed catalyst": 45515.85,
+      "600s plain": 27034.84,
+      "600s buffed": 45515.85,
+      "600s plain catalyst": 27034.84,
+      "600s buffed catalyst": 45515.85
     },
     "verglas-curve": {
       "30s plain": 5434,
@@ -1327,14 +1327,14 @@
       "600s buffed catalyst": 180145.2
     },
     "witherhoard": {
-      "30s plain": 14322.88,
-      "30s buffed": 24113.99,
-      "30s plain catalyst": 24553.5,
-      "30s buffed catalyst": 41338.27,
-      "600s plain": 40922.5,
-      "600s buffed": 68897.12,
-      "600s plain catalyst": 40922.5,
-      "600s buffed catalyst": 68897.12
+      "30s plain": 14413,
+      "30s buffed": 24265.73,
+      "30s plain catalyst": 24708,
+      "30s buffed catalyst": 41598.39,
+      "600s plain": 41180,
+      "600s buffed": 69330.65,
+      "600s plain catalyst": 41180,
+      "600s buffed catalyst": 69330.65
     },
     "xenophage": {
       "30s plain": 21373,

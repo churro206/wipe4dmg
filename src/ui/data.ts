@@ -41,7 +41,7 @@ import {
 import type { LinkRegistry } from "../engine/buildLink";
 import type { GameData } from "../engine/buildSimulation";
 import { loadAbilities } from "../engine/loadAbilities";
-import { loadKeywords } from "../engine/loadKeywords";
+import { loadKeywords, loadStatusModifiers } from "../engine/loadKeywords";
 import {
   loadAbilityStats,
   loadAegisAbilityRows,
@@ -116,6 +116,8 @@ export const gameData: GameData = {
   abilityStats,
   weaponStats,
   keywords,
+  // Weaken, set by rules of items (keywords.json)
+  statusModifiers: loadStatusModifiers(rawKeywords),
   exoticArmor,
   exoticArmorEffects: generatedExoticEffects,
   artifacts: artifactData,

@@ -1,0 +1,70 @@
+{
+  "id": "witherhoard",
+  "kind": "exoticWeapon",
+  "name": "Witherhoard",
+  "texts": [
+    { "source": "clarity", "entry": "Break the Bank", "hash": "b7909155" },
+    { "source": "clarity", "entry": "Witherhoard Catalyst", "hash": "5be11655" },
+    { "source": "clarity", "entry": "Primeval's Torment", "hash": "d8275cbd" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file witherhoard",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-grenade-launcher-witherhoard-passive].timing.fireRateRpm",
+  "magazine": "$quantum[specials-grenade-launcher-witherhoard-passive].timing.magazine",
+  "totalShots": "$quantum[specials-grenade-launcher-witherhoard-passive].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-grenade-launcher-witherhoard-passive].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Silent Alarm, Witherhoard Catalyst",
+    "description": "Grants 40 Handling.\nThis weapon is automatically loaded from reserves after 2 seconds of being stowed.",
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].timing.fireRateRpm",
+      "magazine": "$quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].timing.magazine",
+      "totalShots": "$quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].timing.totalShots",
+      "reloadTimeMs": "$quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].timing.reloadTimeMs"
+    }
+  },
+  "parts": {
+    "blight": {
+      "name": "Blighted",
+      "damage": {
+        "expr": "$quantum[specials-grenade-launcher-witherhoard-passive].totalDamage / $quantum[specials-grenade-launcher-witherhoard-passive].totalShots",
+        "note": "Quantum's row \"passive\" (the frame is reapplied when the DoT has expired): the damage of all shots shared by their number, i.e. one direct hit with its whole Blighted DoT"
+      },
+      "delivery": "dot"
+    }
+  },
+  "rules": [
+    { "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "blight" }] }
+  ],
+  "notModelled": [
+    {
+      "quote": "for 9.5 seconds",
+      "reason": "needs Blighted ticks (Quantum's row \"passive\" carries the sum of a direct hit)"
+    },
+    {
+      "quote": "25% increased damage from Malfeasance and Wish-Ender",
+      "reason": "needs cross-weapon status (Blighted)"
+    },
+    { "quote": "Grants 40 Handling", "reason": "no damage against a boss" },
+    {
+      "quote": "after 2 seconds of being stowed",
+      "reason": "needs auto-reload after stow (the timing comes from Quantum's cata row)"
+    },
+    {
+      "quote": "Blighted Pool in a 4.5 meter radius",
+      "reason": "needs ground pool (Quantum's row \"passive, ground\" is lower)"
+    },
+    {
+      "quote": "damage every 0.3 seconds",
+      "reason": "needs ground pool (Quantum's row \"passive, ground\" is lower)"
+    }
+  ]
+}

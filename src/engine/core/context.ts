@@ -137,10 +137,13 @@ export function createContext(
     return 1;
   };
   const statPart = weaponStatPart(options.weaponStat, weapon.ammo);
+  // `onTarget`: the multiplier parts of the statuses without damage that the target carries then
+  // (Weaken set by a rule), asked by the caller that knows the target
   const multiplierAt = (
     timeMs: number,
     element: Element,
     keywordId?: KeywordId,
+    onTarget: readonly MultiplierPart[] = [],
   ): Factors => {
     const holdDraw = holdFactorAt(timeMs);
     return {
@@ -149,6 +152,7 @@ export function createContext(
           ...partsAt(timeMs, included).multiplierParts,
           ...optionParts,
           ...buffPartsAt(timeMs),
+          ...onTarget,
           ...(statPart ? [statPart] : []),
         ],
         buckets,

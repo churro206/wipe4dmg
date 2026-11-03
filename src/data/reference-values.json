@@ -3,15 +3,15 @@
     "id": "aegis-no-effects",
     "weaponId": "one-thousand-voices",
     "description": "Total damage of all shots without effects and without ignition",
-    "totalDamageMin": 22172,
-    "totalDamageMax": 22173,
+    "totalDamageMin": 23979,
+    "totalDamageMax": 23981,
     "conditions": ["no effects", "no catalyst", "no ignition", "full ammo"],
     "source": {
-      "name": "Aegis Boss Damage sheet (tab Weapons), row fusion-rifle-one-thousand-voices-average",
-      "url": "https://destiny2.science/boss-damage",
-      "retrieved": "2026-10-20",
+      "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices-2",
+      "url": "https://destiny2.science/quantum-damage-ics",
+      "retrieved": "2026-11-03",
       "status": "verified",
-      "note": "11 shots x (31106 - 2 ignitions x 2814) / 3.16 / 4 = 2015.665. Aegis before Quantum: Quantum's 2180 per shot (23980) lies 8 % higher."
+      "note": "Total Damage 23980 without ignition, 11 shots of 2180 (M1, ADR 0019: Quantum is the source of the weapon values; before it Aegis' 22172 = 11 x (31106 - 2 ignitions x 2814) / 3.16 / 4, 8 % lower)."
     },
     "scenario": {
       "effectIds": [],
@@ -23,15 +23,15 @@
     "id": "aegis-with-ignition",
     "weaponId": "one-thousand-voices",
     "description": "Total damage of all shots without effects, with ignitions",
-    "totalDamageMin": 26359,
-    "totalDamageMax": 26891,
+    "totalDamageMin": 28146,
+    "totalDamageMax": 28714,
     "conditions": ["no effects", "no catalyst", "with ignition", "full ammo"],
     "source": {
-      "name": "Aegis Boss Damage sheet (tab Weapons), row fusion-rifle-one-thousand-voices-average",
-      "url": "https://destiny2.science/boss-damage",
-      "retrieved": "2026-10-20",
+      "name": "Quantum Damage-ics (heavies), row heavies-fusion-rifle-one-thousand-voices",
+      "url": "https://destiny2.science/quantum-damage-ics",
+      "retrieved": "2026-11-03",
       "status": "verified",
-      "note": "11 shots x 2015.665 plus 5 ignitions x 2814 / 3.16 = 26625. Range ±1 %: the ignition comes from keywords.json (Aegis 675.2 x 1.316 from the Compendium = 888.6) instead of 890.5. Every second shot ignites, as Quantum counts (5 of 11)."
+      "note": "Total Damage 28430 with ignition, range ±1 % as before (M1, ADR 0019: Quantum is the source of the weapon values; before it Aegis' 26625 = 11 x 2015.665 + 5 ignitions x 2814 / 3.16). The ignition comes from keywords.json (888.6)."
     },
     "scenario": {
       "effectIds": [],
