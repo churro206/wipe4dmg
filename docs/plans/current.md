@@ -7,7 +7,7 @@ Höchstens 4 KB. Nach jedem Block: `docs/changelog.md`, `docs/known-inaccuracies
 Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`. „Wiederherstellen“: von Q1 abgeschaltete Tests (Liste: `known-inaccuracies`, Abschnitt Q1) wieder einschalten.
 
 - [x] A1 `probeAuto` (709e41c). [x] Q0 ADR 0019 (7107447, a3ff3f5, fc7e91b)
-- [ ] Q1 Gerüst (2626745, 6920e29, b673757, cf8bcb8, d24143c, 96b0139, Nachbesserung 2; Review läuft): 93 Items (108 von 141), Bericht „Sätze ohne Zitat“. 33 Pakete bleiben (10 ohne Quantum, 21 nur benannte Varianten, 2 N/A): von Hand im M-Block oder Q-Bilanz.
+- [ ] Q1 Gerüst (2626745, 6920e29, b673757, cf8bcb8, d24143c, 96b0139, 5cdc5f7; Review läuft): 93 Items (108 von 141), Bericht „Sätze ohne Zitat“. 33 Pakete bleiben (10 ohne Quantum, 21 nur benannte Varianten, 2 N/A): von Hand im M-Block oder Q-Bilanz.
 - [ ] A2 Aufräumen: Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
 - [ ] M1 DoT und Status: Le Monarque, Thorn, Osteo Striga, Witherhoard, Jötunn, Two-Tailed Fox, One Thousand Voices, Fighting Lion, Deterministic Chaos, Conditional Finality, Winterbite, Dragon's Breath. Gate: M-Gate. Wiederherstellen: OTV, Two-Tailed Fox (Scorch), Osteo Striga, Dragon's Breath, Winterbite, Divinity.
 - [ ] M2 Zusatzteile: Malfeasance, Ex Diris, Cloudstrike, Alethonym, Euphony, Quicksilver Storm, Khvostov 7G-0X, Grand Overture, Slayer's Fang, Vex Mythoclast, Outbreak Perfected. Gate: M-Gate.
