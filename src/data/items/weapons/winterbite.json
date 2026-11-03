@@ -23,7 +23,7 @@
   "catalyst": {
     "name": "Rimestealer, Winterbite Catalyst",
     "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
-    "effect": "unknown"
+    "effect": "none"
   },
   "parts": {
     "shot": {

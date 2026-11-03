@@ -44,6 +44,9 @@ describe("catalyst hover card", () => {
     expect(describeCatalyst(weaponById("suros-regime"))).toContain(
       "No effect against one boss without adds",
     );
+    expect(describeCatalyst(weaponById("winterbite"))).toContain(
+      "No effect against one boss without adds",
+    );
     expect(describeCatalyst(weaponById("fighting-lion"))).toContain(
       "Not in the calculator yet: no source measured it",
     );

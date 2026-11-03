@@ -10,7 +10,8 @@
 //   $aegisSustained[<row>].<field>          Sustained row, a number field           fitted (row)
 //   $aegisSustained[<row>].timing.<field>   timingFromAegis, fields as for Quantum  fitted (row)
 //   $manifest[<weapon>].stat("<stat>")      displayed stat of the manifest          verified
-//   $clarity[<entry>]("<quote>")            the one number of a quote in the text   derived
+//   $reload[<weapon>].catalystFactor        reload time with the catalyst ÷ without  derived
+//   $clarity[<entry>]("<quote>")          the one number of a quote in the text   derived
 //   $compendium[<entry>]("<quote>")         the same; entry by name or its start    derived
 //
 // An expression { expr, note } computes + - * / with brackets over references and numbers: derived,
@@ -28,9 +29,11 @@ import type {
   ItemExpression,
   ManifestWeapons,
   QuantumWeaponSnapshot,
+  ReloadFormulaSnapshot,
   Source,
   SourcedNumber,
 } from "../../../src/data/schema.ts";
+import { catalystReloadFactor, reloadFormulaOf } from "../reloadFormulas.ts";
 import { type Timing, timingFromAegis, timingFromQuantum } from "../timing.ts";
 
 /** The snapshots an item reads, and the link codes of the weapons. */
@@ -41,6 +44,7 @@ export type ItemSources = {
   manifest: ManifestWeapons;
   clarity: ClaritySnapshot;
   compendium: CompendiumSnapshot;
+  reload: ReloadFormulaSnapshot; // d2foundry's reload formulas
   codes: Record<string, number>;
 };
 
@@ -284,6 +288,30 @@ function resolveRef(ref: ParsedRef, ctx: RefContext): SourcedNumber {
           name: `Bungie manifest ${manifest.manifestVersion}, stat "${ref.arg}" of ${weapon.name}`,
           retrieved: manifest.retrieved,
           status: "verified",
+        },
+      };
+    }
+    case "reload": {
+      // The factor the reload time takes with the catalyst: d2foundry's formula at the reload stat
+      // of the manifest plus the catalyst's, divided by the formula at the stat alone
+      expectShape(ref, 1, false, ".catalystFactor");
+      if (ref.path[0] !== "catalystFactor") fail(ref, `unknown field ${ref.path[0]}; use .catalystFactor`);
+      const weapon = sources.manifest.weapons.find((w) => w.name === ref.key) ?? fail(ref, `no manifest weapon "${ref.key}"`);
+      const stat = weapon.stats["Reload Speed"] ?? fail(ref, `${weapon.name} has no stat "Reload Speed"`);
+      const delta =
+        weapon.catalyst?.stats["Reload Speed"] ?? fail(ref, `the catalyst of ${weapon.name} has no stat "Reload Speed"`);
+      const formula =
+        reloadFormulaOf(sources.reload.types, weapon.weaponType, weapon.name) ??
+        fail(ref, `no reload formula for ${weapon.weaponType}`);
+      const { source } = sources.reload;
+      return {
+        value: round(catalystReloadFactor(formula, stat, delta, "")),
+        source: {
+          name: source.name,
+          ...(source.url ? { url: source.url } : {}),
+          retrieved: source.retrieved,
+          status: "derived",
+          note: `Derived: formula of ${weapon.weaponType} at reload stat ${stat} + ${delta} (catalyst) ÷ at ${stat}; stats from the manifest`,
         },
       };
     }

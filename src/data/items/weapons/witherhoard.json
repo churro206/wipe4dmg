@@ -23,7 +23,7 @@
   "catalyst": {
     "name": "Silent Alarm, Witherhoard Catalyst",
     "description": "Grants 40 Handling.\nThis weapon is automatically loaded from reserves after 2 seconds of being stowed.",
-    "effect": "timing",
+    "effect": "damageAndTiming",
     "timing": {
       "fireRateRpm": "$quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].timing.fireRateRpm",
       "magazine": "$quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].timing.magazine",
@@ -39,10 +39,29 @@
         "note": "Quantum's row \"passive\" (the frame is reapplied when the DoT has expired): the damage of all shots shared by their number, i.e. one direct hit with its whole Blighted DoT"
       },
       "delivery": "dot"
+    },
+    "blight-cata": {
+      "name": "Blighted (catalyst)",
+      "damage": {
+        "expr": "$quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].totalDamage / $quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].totalShots",
+        "note": "Quantum's row \"cata, single blight, boss\" (the auto-reload before the DoT expires): its damage shared by its shots, 23 % above \"passive\" per shot since the auto-reload reapplies the frame before the DoT expires"
+      },
+      "delivery": "dot"
     }
   },
   "rules": [
-    { "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "blight" }] }
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "if": [{ "type": "hasItem", "id": "catalyst", "not": true }],
+      "do": [{ "type": "spawn", "part": "blight" }]
+    },
+    {
+      "id": "shot-catalyst",
+      "on": { "on": "shot" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "spawn", "part": "blight-cata" }]
+    }
   ],
   "notModelled": [
     {

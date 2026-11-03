@@ -21,7 +21,7 @@ Every row of the Aegis sheets (Weapons, Sustained, Swap) has a verdict: in the m
 
 | Sheet | Rows | In the model | Skipped | Missing |
 | --- | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 136 | 255 | 26 |
+| Weapons | 417 | 135 | 256 | 26 |
 | Sustained | 261 | 38 | 132 | 91 |
 | Swap | 204 | 47 | 102 | 55 |
 

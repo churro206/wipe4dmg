@@ -401,7 +401,7 @@
         "name": "Witherhoard",
         "group": "Kinetic",
         "inGame": "Primeval's Torment: Fires a Taken projectile that creates a Blighted Pool in a 4.5 meter radius for 4.5 seconds upon impact with the ground.\nEnemies within the pool take damage every 0.3 seconds.\nBreak the Bank: Direct Hits apply 'Blighted' to the target, dealing twice as much tick damage as Blighted Pools at half the rate for 9.5 seconds. Killing Blighted enemies causes them to drop a Blighted Pool.\nTargets can only take damage from a single instance of Blighted at a time.\nEnemies that are Blighted can take simultaneous damage from a Blighted Pool, and also take 25% increased damage from Malfeasance and Wish-Ender.\nBlighted targets are STILL NOT CONSIDERED \"TAKEN COMBATANTS\".",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:witherhoard",
         "status": "full"
       },
@@ -489,7 +489,7 @@
         "name": "Divinity",
         "group": "Energy",
         "inGame": "Judgment: Deals 50% less damage than Legendary Trace Rifles.\nDealing 10 [5] hits within 0.15 seconds of each creates a 'Vex Cage' around the target for 1.25 seconds. At maximum rate of fire, this cage forms in 0.67 seconds.\nMaintaining the cage does not require continuous fire.\nTargets within a Vex Cage receive 15% increased damage from all sources (30% for Divinity). For sources that can deal precision damage, any damage dealt to a Vex Cage is treated as a Precision Hit.\nPenance: Maintaining the Vex Cage for 3.75 seconds creates a burst of 1060 [520] damage to targets within it. Timer increases to 3 seconds after the first burst of damage.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:divinity",
         "status": "full"
       },
@@ -1596,8 +1596,8 @@
         "group": "Energy",
         "inGame": "Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits required to 13.\nScoring 68 Precision Hits grants 25% increased damage for 11 seconds. Stowing or Reloading the weapon resets the Precision Hit counter.\nBuff remains active while stowed.",
         "iconHash": 1517802577,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "Adds weapon damage.",
+        "status": "full",
         "iconKey": "named:divinity-catalyst"
       },
       {
@@ -1713,8 +1713,8 @@
         "group": "Energy",
         "inGame": "Grants 20 Reload Speed and 30 Stability.\nGrants the Unrelenting trait:\nStarts Health Regeneration and restores 65 HP upon reaching 100% Activation Progress with Weapon Kills within 5 seconds of each.\nActivation Progress by Enemy Rank:\n• Minor Combatants: 34%\n• Players: 67%\n• Elites, Minibosses, and Bosses: 100%",
         "iconHash": 466834938,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "Changes magazine, ammo or reload.",
+        "status": "full",
         "iconKey": "named:le-monarque-catalyst"
       },
       {
@@ -2118,8 +2118,8 @@
         "group": "Power",
         "inGame": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
         "iconHash": 580005458,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "No effect against one boss without adds",
+        "status": "leftOut",
         "iconKey": "named:winterbite-catalyst"
       },
       {

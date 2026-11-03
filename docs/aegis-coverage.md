@@ -7,7 +7,7 @@ Generiert von `npm run coverage` (`scripts/lib/aegisCoverage.ts`), nicht von Han
 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 136 | 255 | 26 |
+| Weapons | 417 | 135 | 256 | 26 |
 | Sustained | 261 | 38 | 132 | 91 |
 | Swap | 204 | 47 | 102 | 55 |
 
@@ -588,7 +588,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Ager's Scepter, average, Will Given Form | übersprungen | Katalysator: Will Given Form |
 | Ager's Scepter, average, Will Given Form, Harsh Refraction | übersprungen | Katalysator: Will Given Form; Artefakt: Harsh Refraction |
 | Coldheart, average, no initial trace | im Modell | base row of the package |
-| Divinity, average, Penance, excludes debuff, Jolting Feedback, Focused Fury | im Modell | base row of the package |
+| Divinity, average, Penance, excludes debuff, Jolting Feedback, Focused Fury | übersprungen | Katalysator: Jolting Feedback; Katalysator: Focused Fury |
 | Lodestar, ADS, burst | übersprungen | the item file uses another row |
 | Lodestar, hipfire | im Modell | base row of the package |
 | Microcosm | im Modell | base row of the package |

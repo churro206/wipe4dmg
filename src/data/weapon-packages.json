@@ -4665,56 +4665,357 @@
     "code": 121,
     "name": "Divinity",
     "manifestHash": 4103414242,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "traceRifle",
     "element": "arc",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file divinity",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 904.242,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 34 s − 2 reloads × 1.44 s) ÷ 469 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 34 s − 2 reloads × 1.44 s) ÷ 469 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 194,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 470,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1440,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-divinity-base-damage-no-buffs",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file divinity",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 19.5,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-divinity-base-damage-no-buffs; Clarity (Live-Clarity-Database, descriptions/clarity.json): Judgment",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[specials-trace-rifle-divinity-base-damage-no-buffs].precisionDamage * (1 + $clarity[Judgment](\"30% for Divinity\") / 100) (Quantum's precision hit times the Vex Cage's bonus for Divinity (Quantum's row \"with Judgement\" has 20)); $quantum[specials-trace-rifle-divinity-base-damage-no-buffs].precisionDamage = 15 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-divinity-base-damage-no-buffs); $clarity[Judgment](\"30% for Divinity\") = 30 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Judgment)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file divinity",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file divinity",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "penance",
+        "name": "Penance",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file divinity",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1060,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Penance",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "burst of 1060"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file divinity",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file divinity",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "compendium"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }],
+        "source": {
+          "name": "Item file divinity",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: Quantum's hit already holds the frame",
+          "quote": "Deals 50% less damage than Legendary Trace Rifles."
+        }
+      },
+      {
+        "id": "penance",
+        "on": { "on": "phaseStart" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "penance",
+            "delayMs": {
+              "value": 3750,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Penance",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Penance](\"for 3.75 seconds\") * 1000 (the first burst after the cage stood for 3.75 s, seconds to milliseconds); $clarity[Penance](\"for 3.75 seconds\") = 3.75 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Penance)"
+              }
+            },
+            "count": {
+              "value": 10.083,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-divinity-base-damage-no-buffs; Clarity (Live-Clarity-Database, descriptions/clarity.json): Penance",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: ($quantum[specials-trace-rifle-divinity-base-damage-no-buffs].timeToEmptySeconds - $clarity[Penance](\"for 3.75 seconds\")) / $clarity[Penance](\"Timer increases to 3 seconds\") (bursts while the weapon fires (its time to empty after the first one), one every 3 s); $quantum[specials-trace-rifle-divinity-base-damage-no-buffs].timeToEmptySeconds = 34 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-divinity-base-damage-no-buffs); $clarity[Penance](\"for 3.75 seconds\") = 3.75 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Penance); $clarity[Penance](\"Timer increases to 3 seconds\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Penance)"
+              }
+            },
+            "intervalMs": {
+              "value": 3000,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Penance",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Penance](\"Timer increases to 3 seconds\") * 1000 (seconds to milliseconds); $clarity[Penance](\"Timer increases to 3 seconds\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Penance)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file divinity",
+          "retrieved": "2026-11-03",
+          "status": "derived",
+          "note": "Derived: the cage stands while the weapon fires; the first burst at 3.75 s, then every 3 s until the magazines are empty",
+          "quote": "Maintaining the cage does not require continuous fire."
+        }
+      },
+      {
+        "id": "precision-count",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "precision",
+            "op": "<",
+            "value": {
+              "value": 68,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Divinity Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Scoring 68 Precision Hits"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "precision" }]
+      },
+      {
+        "id": "focused-fury",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "precision",
+            "op": "=",
+            "value": {
+              "value": 68,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Divinity Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Scoring 68 Precision Hits"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "precision" },
+          { "type": "grantBuff", "buff": "focused-fury" }
+        ]
+      },
+      {
+        "id": "jolt-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "jolting-feedback",
+            "op": "<",
+            "value": {
+              "value": 18,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Divinity Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Scoring 18 hits"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "jolting-feedback" }]
+      },
+      {
+        "id": "jolt",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "jolting-feedback",
+            "op": "=",
+            "value": {
+              "value": 18,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Divinity Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Scoring 18 hits"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "jolting-feedback" },
+          { "type": "applyStatus", "status": "jolt" }
+        ]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "focused-fury",
+        "name": "Focused Fury",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.25,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Divinity Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Divinity Catalyst](\"grants 25% increased damage\") / 100 (percent to factor); $clarity[Divinity Catalyst](\"grants 25% increased damage\") = 25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Divinity Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 11000,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Divinity Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Divinity Catalyst](\"for 11 seconds\") * 1000 (seconds to milliseconds); $clarity[Divinity Catalyst](\"for 11 seconds\") = 11 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Divinity Catalyst)"
+          }
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "judgment",
+        "name": "Judgment",
+        "description": "Sustained damage with this weapon envelops the target in a field that weakens and stuns them. Strong against [Disruption] Overload Champions.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Focused Fury, Jolting Feedback, Divinity Catalyst",
+      "description": "Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits required to 13.\nScoring 68 Precision Hits grants 25% increased damage for 11 seconds. Stowing or Reloading the weapon resets the Precision Hit counter.\nBuff remains active while stowed.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -4726,82 +5027,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 15,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
-            "note": "visual Value; assumptions: average, Penance, excludes debuff, Jolting Feedback, Focused Fury"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "judgment",
-        "name": "Judgment",
-        "description": "Sustained damage with this weapon envelops the target in a field that weakens and stuns them. Strong against [Disruption] Overload Champions.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Jolting Feedback, Focused Fury, Divinity Catalyst",
-      "description": "Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits required to 13.\nScoring 68 Precision Hits grants 25% increased damage for 11 seconds. Stowing or Reloading the weapon resets the Precision Hit counter.\nBuff remains active while stowed.",
-      "effect": "unknown"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "dragon-s-breath",
@@ -4822,19 +5048,19 @@
       }
     },
     "fireRateRpm": {
-      "value": 60000,
+      "value": 38.71,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "timing.fireRateRpm: Derived: (Time to Empty 23.5 s − 10 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 39 s − 10 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 1,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
@@ -4844,7 +5070,7 @@
     "totalShots": {
       "value": 11,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
@@ -4854,7 +5080,7 @@
     "reloadTimeMs": {
       "value": 2350,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-dragon-s-breath-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
@@ -10485,7 +10711,38 @@
     "catalyst": {
       "name": "Unrelenting, Le Monarque Catalyst",
       "description": "Grants 20 Reload Speed and 30 Stability.\nGrants the Unrelenting trait:\nStarts Health Regeneration and restores 65 HP upon reaching 100% Activation Progress with Weapon Kills within 5 seconds of each.\nActivation Progress by Enemy Rank:\n• Minor Combatants: 34%\n• Players: 67%\n• Elites, Minibosses, and Bosses: 100%",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "magazine": {
+          "value": 1,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-bow-le-monarque",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-bow-le-monarque",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 0,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-bow-le-monarque; d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "retrieved": "2026-10-23",
+            "status": "derived",
+            "note": "Derived: $quantum[primaries-bow-le-monarque].timing.reloadTimeMs * $reload[Le Monarque].catalystFactor (reload time times the factor of the reload formula for the stat of the manifest plus the catalyst's (Clarity: Grants 20 Reload Speed)); $quantum[primaries-bow-le-monarque].timing.reloadTimeMs = 0 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-bow-le-monarque); $reload[Le Monarque].catalystFactor = 0.874 (d2foundry oracle_engine (build_resources/weapon_formulas.json, reload))"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -13216,12 +13473,12 @@
           }
         },
         "reloadTimeMs": {
-          "value": 955.655,
+          "value": 955.57,
           "source": {
-            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga; Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga; Clarity (Live-Clarity-Database, descriptions/clarity.json): Osteo Striga Catalyst",
-            "retrieved": "2026-10-31",
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga; d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
+            "retrieved": "2026-10-23",
             "status": "derived",
-            "note": "Derived: $quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs * ((0.0000608642 * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) - 0.0191345 * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) + 2.62769) / (0.0000608642 * $manifest[Osteo Striga].stat(\"Reload Speed\") * $manifest[Osteo Striga].stat(\"Reload Speed\") - 0.0191345 * $manifest[Osteo Striga].stat(\"Reload Speed\") + 2.62769)) (reload time times the d2foundry reload formula (snapshot reload-formulas, submachineGun / Osteo Striga: evpp 0.0000608642, vpp -0.0191345, offset 2.62769) at the reload stat with the catalyst divided by the stat without it; the stat from the manifest, the catalyst's from the text); $quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs = 1190 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\") = 30 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Osteo Striga Catalyst); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\") = 30 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Osteo Striga Catalyst); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\") = 30 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Osteo Striga Catalyst); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga); $manifest[Osteo Striga].stat(\"Reload Speed\") = 18 (Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Reload Speed\" of Osteo Striga)"
+            "note": "Derived: $quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs * $reload[Osteo Striga].catalystFactor (reload time times the factor of the reload formula for the stat of the manifest plus the catalyst's (Clarity: Grants 30 Reload)); $quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs = 1190 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-osteo-striga); $reload[Osteo Striga].catalystFactor = 0.803 (d2foundry oracle_engine (build_resources/weapon_formulas.json, reload))"
           }
         }
       }
@@ -19264,6 +19521,7 @@
         "id": "soul-devourer-up",
         "on": { "on": "shot" },
         "if": [
+          { "type": "playstyle", "id": "pre-stacked" },
           {
             "type": "counter",
             "id": "soul-devourer-started",
@@ -19274,8 +19532,8 @@
                 "name": "Item file thorn",
                 "retrieved": "2026-11-03",
                 "status": "derived",
-                "note": "Derived: built up before the phase (kill buff); the window opens once, with the first shot",
-                "quote": "Soul Devourer persists through stow."
+                "note": "Derived: the playstyle \"pre-stacked\" (Remnants collected before the phase, Soul Devourer persists through stow); the window opens once, with the first shot",
+                "quote": "Collecting a Remnant grants 'Soul Devourer' for 7 seconds and refills 4 ammo."
               }
             }
           }
@@ -22733,7 +22991,7 @@
     "catalyst": {
       "name": "Rimestealer, Winterbite Catalyst",
       "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
-      "effect": "unknown"
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -23161,13 +23419,63 @@
         "canPrecision": false,
         "delivery": "dot",
         "scale": "quantum"
+      },
+      {
+        "id": "blight-cata",
+        "name": "Blighted (catalyst)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file witherhoard",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 2530.3,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].totalDamage / $quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].totalShots (Quantum's row \"cata, single blight, boss\" (the auto-reload before the DoT expires): its damage shared by its shots, 23 % above \"passive\" per shot since the auto-reload reapplies the frame before the DoT expires); $quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].totalDamage = 50606 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss); $quantum[specials-grenade-launcher-witherhoard-cata-single-blight-boss].totalShots = 20 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-grenade-launcher-witherhoard-cata-single-blight-boss)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file witherhoard",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file witherhoard",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "quantum"
       }
     ],
     "rules": [
       {
         "id": "shot",
         "on": { "on": "shot" },
+        "if": [{ "type": "hasItem", "id": "catalyst", "not": true }],
         "do": [{ "type": "spawn", "part": "blight" }]
+      },
+      {
+        "id": "shot-catalyst",
+        "on": { "on": "shot" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [{ "type": "spawn", "part": "blight-cata" }]
       }
     ],
     "intrinsics": [
@@ -23186,7 +23494,7 @@
     "catalyst": {
       "name": "Silent Alarm, Witherhoard Catalyst",
       "description": "Grants 40 Handling.\nThis weapon is automatically loaded from reserves after 2 seconds of being stowed.",
-      "effect": "timing",
+      "effect": "damageAndTiming",
       "timing": {
         "fireRateRpm": {
           "value": 59.313,

@@ -277,20 +277,20 @@
       "600s buffed catalyst": 317614.51
     },
     "divinity": {
-      "30s plain": 6135,
-      "30s buffed": 10328.89,
-      "30s plain catalyst": 6135,
-      "30s buffed catalyst": 10328.89,
-      "600s plain": 7050,
-      "600s buffed": 11869.38,
-      "600s plain catalyst": 7050,
-      "600s buffed catalyst": 11869.38
+      "30s plain": 17515.5,
+      "30s buffed": 29489.1,
+      "30s plain catalyst": 24465.16,
+      "30s buffed catalyst": 39496.88,
+      "600s plain": 20825,
+      "600s buffed": 35060.97,
+      "600s plain catalyst": 28998.56,
+      "600s buffed catalyst": 47031.72
     },
     "dragon-s-breath": {
-      "30s plain": 32866.39,
-      "30s buffed": 55333.85,
-      "30s plain catalyst": 32866.39,
-      "30s buffed catalyst": 55333.85,
+      "30s plain": 23628.74,
+      "30s buffed": 39781.34,
+      "30s plain catalyst": 23628.74,
+      "30s buffed catalyst": 39781.34,
       "600s plain": 32866.39,
       "600s buffed": 55333.85,
       "600s plain catalyst": 32866.39,
@@ -1097,14 +1097,14 @@
       "600s buffed catalyst": 222021.95
     },
     "thorn": {
-      "30s plain": 15327,
-      "30s buffed": 25804.54,
-      "30s plain catalyst": 15327,
-      "30s buffed catalyst": 25804.54,
-      "600s plain": 217661,
-      "600s buffed": 366454.06,
-      "600s plain catalyst": 217661,
-      "600s buffed catalyst": 366454.06
+      "30s plain": 10767,
+      "30s buffed": 18127.32,
+      "30s plain catalyst": 10767,
+      "30s buffed catalyst": 18127.32,
+      "600s plain": 213101,
+      "600s buffed": 358776.84,
+      "600s plain catalyst": 213101,
+      "600s buffed catalyst": 358776.84
     },
     "thunderlord": {
       "30s plain": 20402,
@@ -1329,12 +1329,12 @@
     "witherhoard": {
       "30s plain": 14413,
       "30s buffed": 24265.73,
-      "30s plain catalyst": 24708,
-      "30s buffed catalyst": 41598.39,
+      "30s plain catalyst": 30363.6,
+      "30s buffed catalyst": 51120.16,
       "600s plain": 41180,
       "600s buffed": 69330.65,
-      "600s plain catalyst": 41180,
-      "600s buffed catalyst": 69330.65
+      "600s plain catalyst": 50606,
+      "600s buffed catalyst": 85200.26
     },
     "xenophage": {
       "30s plain": 21373,

@@ -519,10 +519,9 @@ describe("all weapons (2026-10-23)", () => {
   // longer counted twice (2026-10-26). Barrow-Dyad deals about 1.4× (2026-10-31): Aegis Sustained
   // measures 4150 per 4.6 s (902 per second on the scale "visual", Tarrabah 607), Gjallarhorn's 11
   // rockets of 1892 about 20 800 in 30 s.
-  // Q1 (ADR 0019) exception until its mechanics are back: Divinity lies at 0.30 on the edge, since
-  // Gjallarhorn now comes from Quantum (no Aegis value); Gjallarhorn's own mechanics follow in the
-  // Q-Bilanz. Dragon's Breath is back since M1 (embedded rocket from Quantum's fuel rows).
-  const UNTIL_MECHANICS = ["Divinity"];
+  // Q1 (ADR 0019) exceptions are gone since M1: Dragon's Breath has its embedded rocket (Quantum's
+  // fuel rows), Divinity its item (Penance bursts, Vex Cage hit).
+  const UNTIL_MECHANICS: string[] = [];
   it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1.5×", () => {
     const gjally = run({}, weaponById("gjallarhorn")).totalDamage;
     const ratios = weapons.map(
@@ -597,7 +596,9 @@ describe("all weapons (2026-10-23)", () => {
   // Catches a catalyst timing that skips a unit fix of the base (Choir of One ×5 with the catalyst,
   // 2026-10-23); no catalyst more than doubles the damage in 30 s.
   // Ager's Scepter: Will Given Form spends the Super for +80 % damage and a magazine of 192.
-  const STRONG_CATALYSTS = ["ager-s-scepter"];
+  // Witherhoard: the catalyst reloads the stowed weapon, Quantum's rows give 41 180 in 90 s without
+  // and 50 606 in 50 s with it (×2.1 over 30 s).
+  const STRONG_CATALYSTS = ["ager-s-scepter", "witherhoard"];
   it("rule: the catalyst changes the damage in 30 s by at most ×2", () => {
     const off = weapons
       .filter((w) => w.catalyst && !STRONG_CATALYSTS.includes(w.id))

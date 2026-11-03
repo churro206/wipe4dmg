@@ -8,7 +8,7 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 
 - [x] A1 `probeAuto` (709e41c). [x] Q0 ADR 0019 (7107447, a3ff3f5, fc7e91b)
 - [x] Q1 Gerüst (2626745, 6920e29, b673757, cf8bcb8, d24143c, 96b0139, 5cdc5f7, faeb633; Review OK nach drei Prüfungen): 93 Items (108 von 141), Bericht „Sätze ohne Zitat“. 33 Pakete bleiben (10 ohne Quantum, 21 nur benannte Varianten, 2 N/A): von Hand im M-Block oder Q-Bilanz.
-- [x] M1 DoT und Status (11 von 12; Jötunn offen: keine Quantum-Zeile, Takt nur Aegis, Rückfrage; Divinity bleibt Ausnahme, hängt an Gjallarhorn).
+- [ ] M1 DoT und Status (6ca5481; Review läuft; 11 von 12; Jötunn bleibt Paket bis zur Gegenprobe, Inhaber 2026-11-03: keine Quantum-Zeile; OTV-Gate gegen Quantums Totals, Aegis nur Bericht, Inhaber 2026-11-03; Nachbesserung Runde 1: Divinity als Item, Ausnahme weg; Reload-Katalysatoren per `$reload`).
 - [ ] M2 Zusatzteile: Malfeasance, Ex Diris, Cloudstrike, Alethonym, Euphony, Quicksilver Storm, Khvostov 7G-0X, Grand Overture, Slayer's Fang, Vex Mythoclast, Outbreak Perfected. Gate: M-Gate.
 - [ ] M3 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate. Wiederherstellen: Thunderlord.
 - [ ] A3 Aufräumen nach M1–M3. Gate: Berichte gleich.

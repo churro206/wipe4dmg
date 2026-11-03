@@ -31,6 +31,7 @@ export function loadWeaponImportInputs(): WeaponImportInputs {
   const quantum = QuantumWeaponSnapshot.parse(read("quantum-weapons.json"));
   const compendium = CompendiumSnapshot.parse(read("compendium-weapons.json"));
   const clarity = ClaritySnapshot.parse(read("clarity.json"));
+  const reload = ReloadFormulaSnapshot.parse(read("reload-formulas.json"));
   const codes: Record<string, number> = existsSync(codesFile)
     ? (read("weapon-codes.json") as Record<string, number>)
     : {};
@@ -47,8 +48,8 @@ export function loadWeaponImportInputs(): WeaponImportInputs {
     keywords: keywordDataOf(read("keywords.json")),
     clarity: clarity.entries,
     overrides: WeaponOverride.array().parse(read("weapon-overrides.json")),
-    reloadFormulas: ReloadFormulaSnapshot.parse(read("reload-formulas.json")),
+    reloadFormulas: reload,
     codes,
-    items: loadWeaponItems({ aegis, sustained, quantum, manifest, clarity, compendium, codes }),
+    items: loadWeaponItems({ aegis, sustained, quantum, manifest, clarity, compendium, reload, codes }),
   };
 }

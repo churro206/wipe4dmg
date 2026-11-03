@@ -193,23 +193,6 @@
     }
   },
   {
-    "weapon": "Divinity",
-    "reason": "Aegis misst nur mit beiden Katalysator-Perks (Jolting Feedback, Focused Fury) und Jolt; Quantum „base damage, no buffs“ (mit Penance) gilt: 15 pro Schuss (Precision).",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "specials-trace-rifle-divinity-base-damage-no-buffs",
-        "text": "Still assumes Penance"
-      }
-    ],
-    "base": "trace-rifle-divinity-average-penance-excludes-debuff-jolting-feedback-focused-fury",
-    "perShot": 15,
-    "timing": {
-      "from": "Quantum",
-      "row": "specials-trace-rifle-divinity-base-damage-no-buffs"
-    }
-  },
-  {
     "weapon": "Wavesplitter",
     "reason": "Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).",
     "quotes": [

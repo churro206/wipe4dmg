@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **27 Pakete**, 110 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **26 Pakete**, 111 Items, 4 Lücken.
 
 ## Pakete
 
@@ -18,7 +18,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Cull's Shadow | fusionRifle | kinetic | average, with corruption (6 Shots) | 1.095,8 | Aegis | 24 | 6 | 1,98 s | 27,3 s | – → 58 | 0,0 % | Override: Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).; Timing aus Zeile cull-s-shadow-with-corruption (Override); Timing nur aus Aegis |
 | Dead Man's Tale | scoutRifle | kinetic | Vorpal Weapon (1 Shot) | 188,7 | Quantum |  | 14 | 0,33 s | – | 120 → 120 | 19,4 % | Override: Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt. Catalyst aus der Hüfte: +27 % bei x5 Cranial Spike (Clarity), Timing aus Quantums Zeile „cata, x5 Cranial Spike“ (140 rpm, Reload 0,29 s).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-dead-man-s-tale-base (Override); Timing nur aus Quantum; Skala weicht um 19.4 % ab; Aegis gilt (Override); Katalysator-Timing: ∞ Shots, Magazin 14, Zeit bis leer – |
 | Deathbringer | rocketLauncher | void | max height (1 Shot) | 3.900,1 | Quantum | 11 | 1 | 2,35 s | 23,5 s | 46 → 60.000 | 0,0 % | Override: Aegis misst „max height“ (3900); dazu passt Quantums „max distance damage“ (3899), nicht „direct impact“. Der Catalyst lässt den Höchstschaden nur 1 s früher erreichen; gemessen wird schon der Höchstschaden: keine Wirkung.; Timing aus Zeile heavies-rocket-launcher-deathbringer-max-distance-damage (Override); Timing nur aus Quantum |
-| Divinity | traceRifle | arc | average, Penance, excludes debuff, Jolting Feedback, Focused Fury (194 Shots) | 15,0 | Quantum | 470 | 194 | 1,44 s | 34,0 s | 900 → 904 | 0,0 % | Override: Aegis misst nur mit beiden Katalysator-Perks (Jolting Feedback, Focused Fury) und Jolt; Quantum „base damage, no buffs“ (mit Penance) gilt: 15 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-divinity-base-damage-no-buffs (Override); Timing nur aus Quantum; Schaden pro Shot 15,0 (Override) |
 | Ex Diris | grenadeLauncher | arc | average, with moth (30 Shots) | 694,9 | Aegis | 35 | 35 | 0,00 s | 22,1 s | – → 92 | 0,0 % | Timing nur aus Aegis |
 | Fafnir | linearFusionRifle | void | keine (1 Shot) | 2.528,4 | Quantum | 9 | 3 | 1,77 s | 16,3 s | – → 38 | 0,0 % | Override: Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Finality's Auger | linearFusionRifle | solar | Linear Fusion Mode (1 Shot) | 1.277,8 | Aegis | 21 | 6 | 1,80 s | 23,5 s | 58 → 56 | 0,0 % | Override: Aegis Sustained misst 21 Schuss in Magazinen à 6 mit 1800 ms Reload; Bait and Switch (Katalysator) steckt nicht im Grundwert (Sustained 1278 = Weapons 1277,8) und ändert das Timing nicht.; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing aus Zeile finality-s-auger-bait-and-switch-linear-fusion-mode (Override); Timing nur aus Aegis |
@@ -70,6 +69,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **961**. D
 | Delicate Tomb | `src/data/items/weapons/delicate-tomb.json` | 6 | – |
 | Deterministic Chaos | `src/data/items/weapons/deterministic-chaos.json` | 0 | – |
 | Devil's Ruin | `src/data/items/weapons/devil-s-ruin.json` | 8 | – |
+| Divinity | `src/data/items/weapons/divinity.json` | 0 | – |
 | Dragon's Breath | `src/data/items/weapons/dragon-s-breath.json` | 0 | – |
 | Duality | `src/data/items/weapons/duality.json` | 3 | – |
 | Edge of Action | `src/data/items/weapons/edge-of-action.json` | 10 | – |
@@ -180,7 +180,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Cerberus+1 | primary | keine | – | Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds: |
 | Dead Man's Tale | primary | Schaden und Timing | Magazin 14 → 14, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 120 → 140 | While not Aiming Down Sights: |
 | Deathbringer | heavy | keine | – | The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner. |
-| Divinity | special | unbekannt | – | Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits |
 | Ex Diris | special | keine | – | Weapon Kills grant Amplified for 15 seconds. |
 | Fafnir | heavy | keine | – | Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no l |
 | Finality's Auger | heavy | unbekannt | – | Grants the Bait and Switch trait: |
@@ -228,6 +227,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Deterministic Chaos | average, with volatile damage, excludes weaken, Target Lock, single mag | Katalysator: Target Lock |
 | Devil's Ruin | Pyrogenesis, Collective Action | Katalysator: Collective Action |
 | Devil's Ruin | Pyrogenesis | the item file uses another row |
+| Divinity | average, Penance, excludes debuff, Jolting Feedback, Focused Fury | Katalysator: Jolting Feedback; Katalysator: Focused Fury |
 | Duality | hipfire, body | the item file uses another row |
 | Edge of Concurrence | Lightning Seeker | the item file uses another row |
 | Ergo Sum | lightweight frame, Jagged Edge, 64 impact, heavy | the item file uses another row |

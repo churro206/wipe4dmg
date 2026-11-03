@@ -15,8 +15,8 @@ const buckets = loadBuckets(rawBuckets);
 const keywords = loadKeywords(rawKeywords, AegisAbilityRow.array().parse(rawAbilityRows));
 const statusModifiers = loadStatusModifiers(rawKeywords);
 
-const run = (id: string, seconds: number, catalyst = false) =>
-  simulate(weaponById(id), seconds, [], buckets, { keywords, statusModifiers, catalyst });
+const run = (id: string, seconds: number, catalyst = false, assumptions: string[] = []) =>
+  simulate(weaponById(id), seconds, [], buckets, { keywords, statusModifiers, catalyst, assumptions });
 const only = (result: ReturnType<typeof run>, id: string) =>
   result.damageInstances.filter((d) => d.id === id);
 const ignitions = (result: ReturnType<typeof run>) =>
@@ -41,7 +41,7 @@ describe("DoT template: Thorn (Corruption, Soul Devourer)", () => {
   // Clarity: "dealing 30 [0.4] damage every 0.5 seconds for 2 seconds" (4 ticks); Soul Devourer
   // "increases poison damage by 200%" for up to 11 seconds
   it("an early shot corrupts for 4 ticks of 90, a late one for 4 ticks of 30", () => {
-    const result = run("thorn", 20);
+    const result = run("thorn", 20, false, ["pre-stacked"]);
     const shots = only(result, "shot");
     const early = shots[0];
     const late = shots.find((s) => s.timeMs > 12000)!;
@@ -92,6 +92,50 @@ describe("Status template: Weaken of Deterministic Chaos", () => {
     expect(shots.length).toBeGreaterThan(34);
     expect(shots[32].damage / shots[30].damage).toBeCloseTo(1.15, 3);
     expect(shots[31].damage / shots[30].damage).toBeCloseTo(1, 3);
+  });
+});
+
+describe("Thorn without the playstyle pre-stacked", () => {
+  it("has no Soul Devourer: every tick is 30", () => {
+    const result = run("thorn", 5);
+    only(result, "corruption").forEach((d) => expect(d.damage).toBeCloseTo(30));
+  });
+});
+
+describe("Reload stat of a catalyst (reference $reload, d2foundry formula)", () => {
+  // Osteo Striga: reload stat 18 + 30 with the catalyst; submachine gun formula
+  // 0.0000608642 s² - 0.0191345 s + 2.62769 -> 1.84947 / 2.30299 = 0.8031 of the reload time
+  it("Osteo Striga's catalyst reloads in 0.803 of the time", () => {
+    const base = weaponById("osteo-striga");
+    const factor = base.catalyst!.timing!.reloadTimeMs.value! / base.reloadTimeMs.value!;
+    expect(factor).toBeCloseTo(0.8031, 3);
+  });
+});
+
+describe("Witherhoard: the catalyst brings Quantum's row \"cata, single blight, boss\"", () => {
+  // 41180 / 20 = 2059 per blight, with the catalyst 50606 / 20 = 2530.3
+  it("a shot deals 2059 without and 2530.3 with the catalyst", () => {
+    expect(only(run("witherhoard", 30), "blight")[0].damage).toBeCloseTo(2059);
+    expect(only(run("witherhoard", 30, true), "blight-cata")[0].damage).toBeCloseTo(2530.3);
+  });
+});
+
+describe("Dragon's Breath: the cadence is the one of the 3-fuel row", () => {
+  it("fires as often as the 3-fuel row does (39 s for 11 rockets), not like the 1-fuel row", () => {
+    const shots = run("dragon-s-breath", 60).shots;
+    expect(shots.length).toBeGreaterThanOrEqual(11);
+    expect(shots[10].timeMs).toBeGreaterThan(30000);
+  });
+});
+
+describe("Divinity: Penance bursts (Clarity: 1060, first after 3.75 s, then every 3 s)", () => {
+  it("bursts of 1060 at 3750, 6750, 9750 ms", () => {
+    const penance = only(run("divinity", 12), "penance");
+    expect(penance.slice(0, 3).map((d) => d.timeMs)).toEqual([3750, 6750, 9750]);
+    penance.forEach((d) => expect(d.damage).toBeCloseTo(1060));
+  });
+  it("the hit is Quantum's 15 with the cage's 30 % for Divinity", () => {
+    expect(only(run("divinity", 2), "shot")[0].damage).toBeCloseTo(19.5);
   });
 });
 

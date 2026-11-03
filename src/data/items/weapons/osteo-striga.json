@@ -32,8 +32,8 @@
       "magazine": "$quantum[primaries-submachine-gun-osteo-striga].timing.magazine",
       "totalShots": "$quantum[primaries-submachine-gun-osteo-striga].timing.totalShots",
       "reloadTimeMs": {
-        "expr": "$quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs * ((0.0000608642 * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) - 0.0191345 * ($manifest[Osteo Striga].stat(\"Reload Speed\") + $clarity[Osteo Striga Catalyst](\"Grants 30 Reload\")) + 2.62769) / (0.0000608642 * $manifest[Osteo Striga].stat(\"Reload Speed\") * $manifest[Osteo Striga].stat(\"Reload Speed\") - 0.0191345 * $manifest[Osteo Striga].stat(\"Reload Speed\") + 2.62769))",
-        "note": "reload time times the d2foundry reload formula (snapshot reload-formulas, submachineGun / Osteo Striga: evpp 0.0000608642, vpp -0.0191345, offset 2.62769) at the reload stat with the catalyst divided by the stat without it; the stat from the manifest, the catalyst's from the text"
+        "expr": "$quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs * $reload[Osteo Striga].catalystFactor",
+        "note": "reload time times the factor of the reload formula for the stat of the manifest plus the catalyst's (Clarity: Grants 30 Reload)"
       }
     }
   },
@@ -80,6 +80,7 @@
     }
   ],
   "notModelled": [
+    { "quote": "20 Stability", "reason": "no damage against a boss" },
     {
       "quote": "Potent Corruption deals 32.35",
       "reason": "needs poison ramp with reset (Quantum's poison row per round carries it)"

@@ -18,7 +18,15 @@
   "catalyst": {
     "name": "Unrelenting, Le Monarque Catalyst",
     "description": "Grants 20 Reload Speed and 30 Stability.\nGrants the Unrelenting trait:\nStarts Health Regeneration and restores 65 HP upon reaching 100% Activation Progress with Weapon Kills within 5 seconds of each.\nActivation Progress by Enemy Rank:\n• Minor Combatants: 34%\n• Players: 67%\n• Elites, Minibosses, and Bosses: 100%",
-    "effect": "unknown"
+    "effect": "timing",
+    "timing": {
+      "magazine": "$quantum[primaries-bow-le-monarque].timing.magazine",
+      "totalShots": "$quantum[primaries-bow-le-monarque].timing.totalShots",
+      "reloadTimeMs": {
+        "expr": "$quantum[primaries-bow-le-monarque].timing.reloadTimeMs * $reload[Le Monarque].catalystFactor",
+        "note": "reload time times the factor of the reload formula for the stat of the manifest plus the catalyst's (Clarity: Grants 20 Reload Speed)"
+      }
+    }
   },
   "parts": {
     "shot": {
@@ -74,7 +82,7 @@
       "quote": "trigger a burst of poison in a 5 meter radius",
       "reason": "no adds (ADR 0015)"
     },
-    { "quote": "Grants 20 Reload Speed and 30 Stability", "reason": "needs reload stat" },
+    { "quote": "30 Stability", "reason": "no damage against a boss" },
     {
       "quote": "restores 65 HP upon reaching 100% Activation Progress",
       "reason": "no damage against a boss"

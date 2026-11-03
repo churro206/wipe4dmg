@@ -1,0 +1,188 @@
+{
+  "id": "divinity",
+  "kind": "exoticWeapon",
+  "name": "Divinity",
+  "texts": [
+    { "source": "clarity", "entry": "Penance", "hash": "82e838d2" },
+    { "source": "clarity", "entry": "Divinity Catalyst", "hash": "426cb72f" },
+    { "source": "clarity", "entry": "Judgment", "hash": "ff2ae5b7" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file divinity",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-trace-rifle-divinity-base-damage-no-buffs].timing.fireRateRpm",
+  "magazine": "$quantum[specials-trace-rifle-divinity-base-damage-no-buffs].timing.magazine",
+  "totalShots": "$quantum[specials-trace-rifle-divinity-base-damage-no-buffs].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-trace-rifle-divinity-base-damage-no-buffs].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Focused Fury, Jolting Feedback, Divinity Catalyst",
+    "description": "Scoring 18 hits within 3 seconds of each causes the next hit to apply Jolt. Being Amplified decreases the number of hits required to 13.\nScoring 68 Precision Hits grants 25% increased damage for 11 seconds. Stowing or Reloading the weapon resets the Precision Hit counter.\nBuff remains active while stowed.",
+    "effect": "damage"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": {
+        "expr": "$quantum[specials-trace-rifle-divinity-base-damage-no-buffs].precisionDamage * (1 + $clarity[Judgment](\"30% for Divinity\") / 100)",
+        "note": "Quantum's precision hit times the Vex Cage's bonus for Divinity (Quantum's row \"with Judgement\" has 20)"
+      },
+      "precision": true,
+      "delivery": "impact"
+    },
+    "penance": {
+      "name": "Penance",
+      "damage": "$clarity[Penance](\"burst of 1060\")",
+      "delivery": "splash"
+    }
+  },
+  "buffs": [
+    {
+      "id": "focused-fury",
+      "name": "Focused Fury",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Divinity Catalyst](\"grants 25% increased damage\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Divinity Catalyst](\"for 11 seconds\") * 1000",
+        "note": "seconds to milliseconds"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }],
+      "source": {
+        "name": "Item file divinity",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Deals 50% less damage than Legendary Trace Rifles.",
+        "note": "Derived: Quantum's hit already holds the frame"
+      }
+    },
+    {
+      "id": "penance",
+      "on": { "on": "phaseStart" },
+      "do": [
+        {
+          "type": "spawn",
+          "part": "penance",
+          "delayMs": {
+            "expr": "$clarity[Penance](\"for 3.75 seconds\") * 1000",
+            "note": "the first burst after the cage stood for 3.75 s, seconds to milliseconds"
+          },
+          "count": {
+            "expr": "($quantum[specials-trace-rifle-divinity-base-damage-no-buffs].timeToEmptySeconds - $clarity[Penance](\"for 3.75 seconds\")) / $clarity[Penance](\"Timer increases to 3 seconds\")",
+            "note": "bursts while the weapon fires (its time to empty after the first one), one every 3 s"
+          },
+          "intervalMs": {
+            "expr": "$clarity[Penance](\"Timer increases to 3 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file divinity",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "quote": "Maintaining the cage does not require continuous fire.",
+        "note": "Derived: the cage stands while the weapon fires; the first burst at 3.75 s, then every 3 s until the magazines are empty"
+      }
+    },
+    {
+      "id": "precision-count",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "precision",
+          "op": "<",
+          "value": "$clarity[Divinity Catalyst](\"Scoring 68 Precision Hits\")"
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "precision" }]
+    },
+    {
+      "id": "focused-fury",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "precision",
+          "op": "=",
+          "value": "$clarity[Divinity Catalyst](\"Scoring 68 Precision Hits\")"
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "precision" },
+        { "type": "grantBuff", "buff": "focused-fury" }
+      ]
+    },
+    {
+      "id": "jolt-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "jolting-feedback",
+          "op": "<",
+          "value": "$clarity[Divinity Catalyst](\"Scoring 18 hits\")"
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "jolting-feedback" }]
+    },
+    {
+      "id": "jolt",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "jolting-feedback",
+          "op": "=",
+          "value": "$clarity[Divinity Catalyst](\"Scoring 18 hits\")"
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "jolting-feedback" },
+        { "type": "applyStatus", "status": "jolt" }
+      ]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Being Amplified decreases the number of hits required to 13",
+      "reason": "needs Amplified state"
+    },
+    {
+      "quote": "creates a 'Vex Cage' around the target for 1.25 seconds",
+      "reason": "needs Vex Cage upkeep (the cage is assumed to stand while the weapon fires)"
+    },
+    {
+      "quote": "this cage forms in 0.67 seconds",
+      "reason": "needs Vex Cage upkeep (the cage is assumed to stand while the weapon fires)"
+    },
+    {
+      "quote": "Targets within a Vex Cage receive 15% increased damage from all sources",
+      "reason": "needs Vex Cage upkeep (the cage is assumed to stand while the weapon fires)"
+    }
+  ]
+}

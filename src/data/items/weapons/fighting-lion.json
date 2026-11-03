@@ -63,12 +63,12 @@
     { "quote": "remotely detonated after 0.3 seconds", "reason": "below 2 %" },
     { "quote": "Has a 4.5 meter blast radius", "reason": "below 2 %" },
     { "quote": "Deals 40% increased damage against Minor Combatants", "reason": "no adds (ADR 0015)" },
-    { "quote": "Grants 30 Reload Speed", "reason": "needs reload stat" },
+    { "quote": "Grants 30 Reload Speed", "reason": "needs reload stat (the manifest has no Reload Speed stat of Fighting Lion)" },
     { "quote": "Firing this gun grants equipped Kinetic and Heavy ammo weapons", "reason": "no damage against a boss" },
     { "quote": "100 Handling", "reason": "no damage against a boss" },
     { "quote": "30% decreased Accuracy Cone Size", "reason": "no damage against a boss" },
     { "quote": "Deal 24.5% increased impact damage to Combatant Shields", "reason": "no adds (ADR 0015)" },
-    { "quote": "Dealing damage grants 70 Reload Speed", "reason": "needs reload stat" },
+    { "quote": "Dealing damage grants 70 Reload Speed", "reason": "needs reload stat (the manifest has no Reload Speed stat of Fighting Lion)" },
     { "quote": "For 6 seconds after either scoring a kill", "reason": "no adds (ADR 0015)" }
   ]
 }

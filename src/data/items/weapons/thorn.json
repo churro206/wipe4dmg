@@ -52,6 +52,7 @@
       "id": "soul-devourer-up",
       "on": { "on": "shot" },
       "if": [
+        { "type": "playstyle", "id": "pre-stacked" },
         {
           "type": "counter",
           "id": "soul-devourer-started",
@@ -62,8 +63,8 @@
               "name": "Item file thorn",
               "retrieved": "2026-11-03",
               "status": "derived",
-              "quote": "Soul Devourer persists through stow.",
-              "note": "Derived: built up before the phase (kill buff); the window opens once, with the first shot"
+              "quote": "Collecting a Remnant grants 'Soul Devourer' for 7 seconds and refills 4 ammo.",
+              "note": "Derived: the playstyle \"pre-stacked\" (Remnants collected before the phase, Soul Devourer persists through stow); the window opens once, with the first shot"
             }
           }
         }
@@ -135,8 +136,6 @@
   "notModelled": [
     { "quote": "Kills create a Remnant", "reason": "no adds (ADR 0015)" },
     { "quote": "Remnants last for 8 seconds", "reason": "no adds (ADR 0015)" },
-    { "quote": "Collecting a Remnant grants", "reason": "no adds (ADR 0015)" },
-    { "quote": "magazine up to 350% capacity", "reason": "no adds (ADR 0015)" },
     { "quote": "Passively grants 15 Range", "reason": "no damage against a boss" },
     { "quote": "Kills or collecting Remnants grants", "reason": "no adds (ADR 0015)" },
     { "quote": "Additional kills or Remnants can extend", "reason": "no adds (ADR 0015)" },
