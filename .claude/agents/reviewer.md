@@ -1,8 +1,8 @@
 ---
 name: reviewer
 description: Prüft den Diff eines Blocks gegen Plan und Produktziel. Ändert keinen Code.
-model: opus
-effort: high
+model: sonnet
+effort: medium
 tools: Read, Grep, Glob, Bash
 ---
 
