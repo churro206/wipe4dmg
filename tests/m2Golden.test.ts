@@ -89,6 +89,38 @@ describe("Ex Diris: Enrage after 4 Direct Hits, Hive Moth every 2 Direct Hits wi
   });
 });
 
+describe("Alethonym: impale (Compendium: 79 every 0.8 s up to 6 times, explosion of 697 on the sixth tick)", () => {
+  it("an impact of 43, six ticks of 79 at 800 ms and the explosion of 697 with the sixth tick", () => {
+    const result = run("alethonym", 6);
+    const shot = only(result, "shot")[0];
+    // impales stack without limit: the ticks of later shots overlap, the first six belong to the first shot
+    const ticks = only(result, "impale")
+      .map((d) => d)
+      .filter((d) => d.timeMs <= shot.timeMs + 4000 && d.timeMs % 800 === shot.timeMs % 800)
+      .slice(0, 6);
+    expect(shot.damage).toBeCloseTo(43);
+    expect(ticks).toHaveLength(6);
+    ticks.forEach((d) => expect(d.damage).toBeCloseTo(79));
+    expect(ticks[5].timeMs - ticks[0].timeMs).toBe(4000);
+    const explosion = only(result, "explosion")[0];
+    expect(explosion.damage).toBeCloseTo(697);
+    expect(explosion.timeMs).toBe(ticks[5].timeMs);
+  });
+});
+
+describe("Euphony: Unwound spawns 3 Threadlings per 6 hits, each Threadling hit is a Spindle stack (+2 % damage)", () => {
+  it("the 6th hit brings 3 Threadlings of Quantum's difference (4277 / 3)", () => {
+    const result = run("euphony", 8);
+    const threadlings = only(result, "threadling");
+    expect(threadlings.slice(0, 3).map((d) => d.timeMs)).toEqual(Array(3).fill(only(result, "shot")[5].timeMs));
+    threadlings.forEach((d) => expect(d.damage).toBeCloseTo((11117 - 6840) / 3, 0));
+  });
+  it("Spindle: three stacks after the first set raise the next shot by 3 x 2 %", () => {
+    const shots = only(run("euphony", 12), "shot");
+    expect(shots[6].damage / shots[0].damage).toBeCloseTo(1.06, 3);
+  });
+});
+
 describe("Slayer's Fang: Nightsworn Sight, built up before (pre-stacked)", () => {
   it("the first shot deals 15 % more, later hits are weakened (+15 %) on top", () => {
     const stacked = only(run("slayer-s-fang", 6, false, ["pre-stacked"]), "shot");

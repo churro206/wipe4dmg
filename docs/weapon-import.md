@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **24 Pakete**, 113 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **23 Pakete**, 114 Items, 4 Lücken.
 
 ## Pakete
 
@@ -12,7 +12,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 | Waffe | Typ | Element | Basiszeile (Annahmen) | pro Shot | Timing | Shots | Magazin | Reload | Zeit bis leer | rpm Quantum → abgeleitet | Skala | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Alethonym | grenadeLauncher | stasis | average (15 Shots) | 872,8 | Quantum |  | 1 | 1,62 s | – | – → 90 | 370,6 % | Override: Quantum hat nur „Passive“ und „Spam“ mit gleichem Timing; „Spam“ ist das schnellste Feuern wie Aegis' „average“. Skala: Aegis zählt Einschlag und Impale-Ticks pro Granate (337 impact, 237 tick), Quantum nur den Einschlag (102); Aegis gilt.; Timing aus Zeile primaries-grenade-launcher-alethonym-spam (Override); Timing nur aus Quantum; Skala weicht um 370.6 % ab; Aegis gilt (Override) |
 | Anarchy | grenadeLauncher | arc | average, per trap, double stick, Jolting Feedback (2 Shots) | 2.912,3 | Quantum | 29 | 6 | 2,08 s | 150,0 s | – → 12 | 13.768,3 % | Override: Aegis misst nur mit Katalysator (Jolting Feedback). Quantum ohne ihn: „double-stick“, 84.458 für 29 Granaten = 2912 pro Granate, zwei Fallen kleben, neu schießen, wenn sie auslaufen. Katalysator: Aegis 3368,5 ÷ Quantum 2912 = ×1,157 (Jolt).; Timing aus Zeile heavies-grenade-launcher-anarchy-double-stick (Override); Timing nur aus Quantum; Schaden pro Shot 2.912,3 (Override); Skala weicht um 13768.3 % ab; Aegis gilt (Override) |
 | Cerberus+1 | autoRifle | kinetic | point blank (1 Shot) | 92,6 | Quantum |  | 31 | 1,12 s | – | – → 360 | 0,5 % | Override: Aegis misst „point blank“; dazu passt Quantums „normal, close range“ (Precision 93 gegen Aegis 92,6 pro Schuss).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-auto-rifle-cerberus-1-normal-close-range-2 (Override); Timing nur aus Quantum |
 | Cull's Shadow | fusionRifle | kinetic | average, with corruption (6 Shots) | 1.095,8 | Aegis | 24 | 6 | 1,98 s | 27,3 s | – → 58 | 0,0 % | Override: Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).; Timing aus Zeile cull-s-shadow-with-corruption (Override); Timing nur aus Aegis |
@@ -41,12 +40,13 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **899**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **898**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
 | Ace of Spades | `src/data/items/weapons/ace-of-spades.json` | 7 | – |
 | Ager's Scepter | `src/data/items/weapons/ager-s-scepter.json` | 7 | – |
+| Alethonym | `src/data/items/weapons/alethonym.json` | 3 | – |
 | Arbalest | `src/data/items/weapons/arbalest.json` | 2 | – |
 | Bad Juju | `src/data/items/weapons/bad-juju.json` | 8 | – |
 | Barrow-Dyad | `src/data/items/weapons/barrow-dyad.json` | 65 | – |
@@ -75,7 +75,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **899**. D
 | Edge of Intent | `src/data/items/weapons/edge-of-intent.json` | 9 | – |
 | Ergo Sum | `src/data/items/weapons/ergo-sum.json` | 4 | – |
 | Eriana's Vow | `src/data/items/weapons/eriana-s-vow.json` | 6 | – |
-| Euphony | `src/data/items/weapons/euphony.json` | 9 | – |
+| Euphony | `src/data/items/weapons/euphony.json` | 5 | – |
 | Ex Diris | `src/data/items/weapons/ex-diris.json` | 0 | – |
 | Eyes of Tomorrow | `src/data/items/weapons/eyes-of-tomorrow.json` | 7 | – |
 | Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 0 | – |
@@ -175,7 +175,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 
 | Waffe | Munition | Wirkung | Timing ohne → mit | Text (Anfang) |
 | --- | --- | --- | --- | --- |
-| Alethonym | primary | keine | – | Grants the One For All trait: |
 | Anarchy | heavy | Schaden | – | Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt. |
 | Cerberus+1 | primary | keine | – | Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds: |
 | Dead Man's Tale | primary | Schaden und Timing | Magazin 14 → 14, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 120 → 140 | While not Aiming Down Sights: |

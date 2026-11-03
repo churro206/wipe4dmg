@@ -1,0 +1,94 @@
+{
+  "id": "alethonym",
+  "kind": "exoticWeapon",
+  "name": "Alethonym",
+  "texts": [
+    { "source": "clarity", "entry": "Harvester Spike", "hash": "0fa57312" },
+    { "source": "clarity", "entry": "Vestigial Alchemy", "hash": "d616be8f" },
+    { "source": "clarity", "entry": "Alethonym Catalyst", "hash": "92e49d9f" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file alethonym",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-grenade-launcher-alethonym-spam].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-grenade-launcher-alethonym-spam].timing.magazine",
+  "totalShots": "$quantum[primaries-grenade-launcher-alethonym-spam].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-grenade-launcher-alethonym-spam].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "One For All, Alethonym Catalyst",
+    "description": "Grants the One For All trait:\nScoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Harvester Spike (impact)",
+      "damage": "$compendium[Alethonym](\"dealing 43\")",
+      "delivery": "impact"
+    },
+    "impale": {
+      "name": "Impale tick",
+      "damage": "$compendium[Alethonym](\"being dealt 79 Damage\")",
+      "delivery": "dot"
+    },
+    "explosion": {
+      "name": "Harvester Spike explosion",
+      "damage": "$compendium[Alethonym](\"up to 697\")",
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "impale",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [
+        {
+          "type": "spawn",
+          "part": "impale",
+          "count": "$compendium[Alethonym](\"up to 6 times\")",
+          "intervalMs": {
+            "expr": "$compendium[Alethonym](\"every 0.8 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        },
+        {
+          "type": "spawn",
+          "part": "explosion",
+          "delayMs": {
+            "expr": "($compendium[Alethonym](\"up to 6 times\") - 1) * $compendium[Alethonym](\"every 0.8 seconds\") * 1000",
+            "note": "the explosion comes with the sixth tick (the first tick at the hit), seconds to milliseconds"
+          }
+        }
+      ]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Deals 40% increased damage against Minor Combatants",
+      "reason": "no adds (ADR 0015)"
+    },
+    { "quote": "Kills create a Vestige that travels up to 40 meters towards you", "reason": "no adds (ADR 0015)" },
+    {
+      "quote": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds",
+      "reason": "no adds (ADR 0015)"
+    },
+    {
+      "quote": "granting 10% of your Total Special Ammo Reserves",
+      "reason": "no damage against a boss"
+    },
+    {
+      "quote": "granting 10% of your Total Heavy Ammo Reserves",
+      "reason": "no damage against a boss"
+    }
+  ]
+}

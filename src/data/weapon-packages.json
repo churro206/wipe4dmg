@@ -328,56 +328,263 @@
     "code": 101,
     "name": "Alethonym",
     "manifestHash": 2350354266,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "grenadeLauncher",
     "element": "stasis",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-grenade-launcher-alethonym-spam",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file alethonym",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own"
       }
     },
     "fireRateRpm": {
       "value": 90,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-grenade-launcher-alethonym-spam",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-grenade-launcher-alethonym-spam",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 1,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-grenade-launcher-alethonym-spam",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-grenade-launcher-alethonym-spam",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-grenade-launcher-alethonym-spam",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-grenade-launcher-alethonym-spam",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1620,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-grenade-launcher-alethonym-spam",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-grenade-launcher-alethonym-spam",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Harvester Spike (impact)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 43,
+          "source": {
+            "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "dealing 43"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "compendium"
+      },
+      {
+        "id": "impale",
+        "name": "Impale tick",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 79,
+          "source": {
+            "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "being dealt 79 Damage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "compendium"
+      },
+      {
+        "id": "explosion",
+        "name": "Harvester Spike explosion",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 697,
+          "source": {
+            "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "up to 697"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file alethonym",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "compendium"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "impale",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "impale",
+            "count": {
+              "value": 6,
+              "source": {
+                "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "up to 6 times"
+              }
+            },
+            "intervalMs": {
+              "value": 800,
+              "source": {
+                "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: $compendium[Alethonym](\"every 0.8 seconds\") * 1000 (seconds to milliseconds); $compendium[Alethonym](\"every 0.8 seconds\") = 0.8 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All)"
+              }
+            }
+          },
+          {
+            "type": "spawn",
+            "part": "explosion",
+            "delayMs": {
+              "value": 4000,
+              "source": {
+                "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: ($compendium[Alethonym](\"up to 6 times\") - 1) * $compendium[Alethonym](\"every 0.8 seconds\") * 1000 (the explosion comes with the sixth tick (the first tick at the hit), seconds to milliseconds); $compendium[Alethonym](\"up to 6 times\") = 6 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All); $compendium[Alethonym](\"every 0.8 seconds\") = 0.8 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All)"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "harvester-spike",
+        "name": "Harvester Spike",
+        "description": "This weapon fires a Harvester Spike projectile. Dealing final blows with this weapon creates a single Vestige at the target's location. Impaling more powerful combatants with the projectile creates a steady stream of Vestiges from the target.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "One For All, Alethonym Catalyst",
+      "description": "Grants the One For All trait:\nScoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -389,82 +596,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-alethonym-average",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-alethonym-average",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 872.832,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-alethonym-average",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-alethonym-average",
-            "note": "visual Value; assumptions: average"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-alethonym-average",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-alethonym-average"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-alethonym-average",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-alethonym-average"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "harvester-spike",
-        "name": "Harvester Spike",
-        "description": "This weapon fires a Harvester Spike projectile. Dealing final blows with this weapon creates a single Vestige at the target's location. Impaling more powerful combatants with the projectile creates a steady stream of Vestiges from the target.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Alethonym Catalyst",
-      "description": "Grants the One For All trait:\nScoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "anarchy",
@@ -6764,6 +6896,49 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "threadling",
+        "name": "Threadling",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file euphony",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1425.667,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony-2; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony; Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: ($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage) / ($quantum[specials-linear-fusion-rifle-euphony].magazine / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\")) (Quantum's magazine of 'with Threadlings' (they detonate instantly) minus 'without', shared by the Threadlings of one magazine: a magazine of 6 hits spawns one set of 3 (1426 each). One Quantum shot counts as one hit); $quantum[specials-linear-fusion-rifle-euphony-2].magDamage = 11117 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony-2); $quantum[specials-linear-fusion-rifle-euphony].magDamage = 6840 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $quantum[specials-linear-fusion-rifle-euphony].magazine = 6 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound); $compendium[Euphony](\"spawns 3 Threadlings\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file euphony",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file euphony",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -6771,6 +6946,140 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "threadling-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "unwound",
+            "op": "<",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Unwound](\"Landing 6 hits\") - 1 (the counter stands at 0 to 4 for the hits before the 6th); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "unwound" }]
+      },
+      {
+        "id": "threadlings",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "unwound",
+            "op": "=",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Unwound](\"Landing 6 hits\") - 1 (the 6th hit); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "unwound" },
+          {
+            "type": "spawn",
+            "part": "threadling",
+            "count": {
+              "value": 3,
+              "source": {
+                "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "spawns 3 Threadlings"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "spindle-refresh",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [{ "type": "buff", "id": "spindle" }],
+        "do": [
+          {
+            "type": "addStacks",
+            "buff": "spindle",
+            "by": {
+              "value": 0,
+              "source": {
+                "name": "Item file euphony",
+                "retrieved": "2026-11-03",
+                "status": "derived",
+                "note": "Derived: Clarity Spindle \"Weapon hits refresh this buff\" - a refresh brings no stack"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "spindle-add",
+        "on": { "on": "hit", "part": "threadling" },
+        "if": [{ "type": "buff", "id": "spindle" }],
+        "do": [{ "type": "addStacks", "buff": "spindle" }]
+      },
+      {
+        "id": "spindle-start",
+        "on": { "on": "hit", "part": "threadling" },
+        "if": [{ "type": "buff", "id": "spindle", "not": true }],
+        "do": [{ "type": "grantBuff", "buff": "spindle" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "spindle",
+        "name": "Spindle",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.02,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Spindle",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Spindle](\"2% Increased Damage\") / 100 (percent to factor, per stack (perStack)); $clarity[Spindle](\"2% Increased Damage\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Spindle)"
+              }
+            },
+            "damageSources": ["weapon"],
+            "perStack": true
+          }
+        ],
+        "durationMs": {
+          "value": 10000,
+          "source": {
+            "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: $compendium[Euphony](\"stacks for 10 seconds\") * 1000 (seconds to milliseconds); $compendium[Euphony](\"stacks for 10 seconds\") = 10 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action)"
+          }
+        },
+        "maxStacks": {
+          "value": 25,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Spindle",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "Maximum of 25 stacks"
+          }
+        }
       }
     ],
     "intrinsics": [

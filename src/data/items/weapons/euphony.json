@@ -23,13 +23,131 @@
       "damage": "$quantum[specials-linear-fusion-rifle-euphony].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "threadling": {
+      "name": "Threadling",
+      "damage": {
+        "expr": "($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage) / ($quantum[specials-linear-fusion-rifle-euphony].magazine / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\"))",
+        "note": "Quantum's magazine of 'with Threadlings' (they detonate instantly) minus 'without', shared by the Threadlings of one magazine: a magazine of 6 hits spawns one set of 3 (1426 each). One Quantum shot counts as one hit"
+      },
+      "delivery": "splash"
     }
   },
+  "buffs": [
+    {
+      "id": "spindle",
+      "name": "Spindle",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Spindle](\"2% Increased Damage\") / 100",
+            "note": "percent to factor, per stack (perStack)"
+          },
+          "damageSources": ["weapon"],
+          "perStack": true
+        }
+      ],
+      "durationMs": {
+        "expr": "$compendium[Euphony](\"stacks for 10 seconds\") * 1000",
+        "note": "seconds to milliseconds"
+      },
+      "maxStacks": "$clarity[Spindle](\"Maximum of 25 stacks\")"
+    }
+  ],
   "rules": [
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "threadling-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "unwound",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Unwound](\"Landing 6 hits\") - 1",
+            "note": "the counter stands at 0 to 4 for the hits before the 6th"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "unwound" }]
+    },
+    {
+      "id": "threadlings",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "unwound",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[Unwound](\"Landing 6 hits\") - 1",
+            "note": "the 6th hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "unwound" },
+        {
+          "type": "spawn",
+          "part": "threadling",
+          "count": "$compendium[Euphony](\"spawns 3 Threadlings\")"
+        }
+      ]
+    },
+    {
+      "id": "spindle-refresh",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "buff", "id": "spindle" }],
+      "do": [
+        {
+          "type": "addStacks",
+          "buff": "spindle",
+          "by": {
+            "value": 0,
+            "source": {
+              "name": "Item file euphony",
+              "retrieved": "2026-11-03",
+              "status": "derived",
+              "note": "Derived: Clarity Spindle \"Weapon hits refresh this buff\" - a refresh brings no stack"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spindle-add",
+      "on": { "on": "hit", "part": "threadling" },
+      "if": [{ "type": "buff", "id": "spindle" }],
+      "do": [{ "type": "addStacks", "buff": "spindle" }]
+    },
+    {
+      "id": "spindle-start",
+      "on": { "on": "hit", "part": "threadling" },
+      "if": [{ "type": "buff", "id": "spindle", "not": true }],
+      "do": [{ "type": "grantBuff", "buff": "spindle" }]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Precision Kills spawn one Threadling",
+      "reason": "no adds (ADR 0015)"
+    },
+    {
+      "quote": "within 3? seconds of each other",
+      "reason": "below 2 % (the window of 3 s is not met at the pace of one shot per 1.4 s only after the reload; Quantum's rows count 6 hits per magazine)"
+    },
+    { "quote": "? Handling", "reason": "no damage against a boss" },
+    { "quote": "? Reload Speed", "reason": "no damage against a boss (Quantum's reload time stays)" },
+    {
+      "quote": "Weapon Hits grant Stacks of Enlightened Action for 2 seconds",
+      "reason": "no damage against a boss (Handling and Reload Speed, catalyst)"
     }
   ]
 }

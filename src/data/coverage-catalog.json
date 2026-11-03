@@ -23,7 +23,7 @@
         "name": "Alethonym",
         "group": "Kinetic",
         "inGame": "Harvester Spike: Grants Lightweight Frame bonuses.\nDeals 40% increased damage against Minor Combatants (Exotic Primary bonus is typically 30%).\nFires a micro-missile-like projectile that explodes in a 5 meter radius. Kills create a Vestige that travels up to 40 meters towards you.\nShots fired into Champions, Minibosses, or Bosses impale them, damaging them once every 0.8 seconds for 4 seconds and creating a Vestige on each tick (6 Vestiges total).\nImpaled Spikes can be stacked.\nVestigial Alchemy: Vestiges collected by Harvester Spikes charge up 'Vestigial Alchemy'.\nAfter collecting 7 Vestiges (50% charge):\nEnables a Hold [Reload] interaction that makes your next shot fired spawn a Special Ammo Brick at the point of impact for you and your allies, granting 10% of your Total Special Ammo Reserves\nAfter collecting 17 Vestiges (100% charge):\nAllows you to cycle Hold [Reload] a second time, making your next shot fired spawn a Heavy Ammo Brick at the point of impact for you and your allies on impact, granting 10% of your Total Heavy Ammo Reserves\nCreating ammo bricks consumes the energy it cost to reach that level on the meter. Ammo-Spawning spikes cannot impale targets.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:alethonym",
         "status": "full"
       },
@@ -119,7 +119,7 @@
         "name": "Euphony",
         "group": "Kinetic",
         "inGame": "Unwound: Precision Kills spawn one Threadling.\nLanding 6 hits within 3? seconds of each other spawns three Threadlings at the target's location. Hit progress persists through stow.\nSpindle: Dealing damage with any Threadling grants one stack of 'Spindle'. Maximum of 25 stacks.\nSpindle linearly grants the following benefits per stack:\n• 2% Increased Damage (up to 50%)\n• ? Handling\n• ? Reload Speed\nWeapon hits refresh this buff.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:euphony",
         "status": "full"
       },

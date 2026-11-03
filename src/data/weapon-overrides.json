@@ -1,26 +1,5 @@
 [
   {
-    "weapon": "Alethonym",
-    "reason": "Quantum hat nur „Passive“ und „Spam“ mit gleichem Timing; „Spam“ ist das schnellste Feuern wie Aegis' „average“. Skala: Aegis zählt Einschlag und Impale-Ticks pro Granate (337 impact, 237 tick), Quantum nur den Einschlag (102); Aegis gilt.",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "primaries-grenade-launcher-alethonym-spam",
-        "text": "\"variant\":\"Spam\""
-      },
-      {
-        "source": "aegis",
-        "entry": "grenade-launcher-alethonym-average",
-        "text": "337 impact, 237 tick"
-      }
-    ],
-    "aegisWins": true,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-grenade-launcher-alethonym-spam"
-    }
-  },
-  {
     "weapon": "Cerberus+1",
     "reason": "Aegis misst „point blank“; dazu passt Quantums „normal, close range“ (Precision 93 gegen Aegis 92,6 pro Schuss).",
     "quotes": [
