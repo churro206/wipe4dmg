@@ -1,0 +1,64 @@
+{
+  "id": "grand-overture",
+  "kind": "exoticWeapon",
+  "name": "Grand Overture",
+  "texts": [
+    { "source": "clarity", "entry": "Omega Strike", "hash": "2bd8f929" },
+    { "source": "clarity", "entry": "Grand Overture Catalyst", "hash": "11f969c6" },
+    { "source": "clarity", "entry": "Wrath of the Colossus", "hash": "4da9764c" }
+  ],
+  "chargeTimeMs": {
+    "expr": "$compendium[Grand Overture](\"over 1 second\") * 1000",
+    "note": "seconds to milliseconds; the Compendium: the slug launcher charges up over 1 second"
+  },
+  "fireRateRpm": "$quantum[heavies-machine-gun-grand-overture-w-rockets].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-machine-gun-grand-overture-w-rockets].timing.magazine",
+  "totalShots": "$quantum[heavies-machine-gun-grand-overture-w-rockets].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-machine-gun-grand-overture-w-rockets].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Grand Overture Catalyst",
+    "description": "Grants 20 Handling and 20 Stability.\nArc Missiles apply Blind for 2 seconds. Kills trigger an explosion dealing ? damage in a ? meter radius.",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Slug",
+      "damage": "$quantum[heavies-machine-gun-grand-overture-w-o-rockets].bodyDamage",
+      "delivery": "impact"
+    },
+    "missile": {
+      "name": "Arc Missile",
+      "damage": {
+        "expr": "($quantum[heavies-machine-gun-grand-overture-w-rockets].magDamage - $quantum[heavies-machine-gun-grand-overture-w-o-rockets].magDamage) / $clarity[Omega Strike](\"Maximum of 20 stacks\")",
+        "note": "Quantum's magazine with rockets minus the one without, shared by the 20 missiles of a magazine (494 each); the timing of the row with rockets holds the volleys"
+      },
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "missile",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [{ "type": "spawn", "part": "missile" }],
+      "source": {
+        "name": "Item file grand-overture",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: every hit grants one stack and every stack is converted into a missile (Quantum's row \"w/ rockets\": 58 slugs and 58 missiles)"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "dealing 1138 [237] damage each",
+      "reason": "needs missile number from Quantum (494 each from the rows with and without rockets; the tooltip 1138 is on another scale)"
+    },
+    { "quote": "Grants 20 Handling and 20 Stability", "reason": "no damage against a boss" },
+    { "quote": "Arc Missiles apply Blind for 2 seconds", "reason": "no damage against a boss" }
+  ]
+}

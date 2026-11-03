@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **26 Pakete**, 111 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **24 Pakete**, 113 Items, 4 Lücken.
 
 ## Pakete
 
@@ -18,10 +18,8 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Cull's Shadow | fusionRifle | kinetic | average, with corruption (6 Shots) | 1.095,8 | Aegis | 24 | 6 | 1,98 s | 27,3 s | – → 58 | 0,0 % | Override: Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).; Timing aus Zeile cull-s-shadow-with-corruption (Override); Timing nur aus Aegis |
 | Dead Man's Tale | scoutRifle | kinetic | Vorpal Weapon (1 Shot) | 188,7 | Quantum |  | 14 | 0,33 s | – | 120 → 120 | 19,4 % | Override: Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt. Catalyst aus der Hüfte: +27 % bei x5 Cranial Spike (Clarity), Timing aus Quantums Zeile „cata, x5 Cranial Spike“ (140 rpm, Reload 0,29 s).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-dead-man-s-tale-base (Override); Timing nur aus Quantum; Skala weicht um 19.4 % ab; Aegis gilt (Override); Katalysator-Timing: ∞ Shots, Magazin 14, Zeit bis leer – |
 | Deathbringer | rocketLauncher | void | max height (1 Shot) | 3.900,1 | Quantum | 11 | 1 | 2,35 s | 23,5 s | 46 → 60.000 | 0,0 % | Override: Aegis misst „max height“ (3900); dazu passt Quantums „max distance damage“ (3899), nicht „direct impact“. Der Catalyst lässt den Höchstschaden nur 1 s früher erreichen; gemessen wird schon der Höchstschaden: keine Wirkung.; Timing aus Zeile heavies-rocket-launcher-deathbringer-max-distance-damage (Override); Timing nur aus Quantum |
-| Ex Diris | grenadeLauncher | arc | average, with moth (30 Shots) | 694,9 | Aegis | 35 | 35 | 0,00 s | 22,1 s | – → 92 | 0,0 % | Timing nur aus Aegis |
 | Fafnir | linearFusionRifle | void | keine (1 Shot) | 2.528,4 | Quantum | 9 | 3 | 1,77 s | 16,3 s | – → 38 | 0,0 % | Override: Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Finality's Auger | linearFusionRifle | solar | Linear Fusion Mode (1 Shot) | 1.277,8 | Aegis | 21 | 6 | 1,80 s | 23,5 s | 58 → 56 | 0,0 % | Override: Aegis Sustained misst 21 Schuss in Magazinen à 6 mit 1800 ms Reload; Bait and Switch (Katalysator) steckt nicht im Grundwert (Sustained 1278 = Weapons 1277,8) und ändert das Timing nicht.; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing aus Zeile finality-s-auger-bait-and-switch-linear-fusion-mode (Override); Timing nur aus Aegis |
-| Grand Overture | machineGun | arc | Missile Loaded, Volley Ready (20 Shots) | 1.059,0 | Aegis | 58 | 58 | 0,00 s | 49,1 s | 100 → 71 | 87,1 % | Override: Optimal gespielt mit Raketen-Salven, wie Aegis Sustained „volleys when available“ (58 Schuss in 49,1 s, Quantum „w/ rockets“ 49 s); Schaden pro Schuss aus derselben Zeile (Mittel aus Kugeln und Raketen).; Timing aus Zeile grand-overture-volleys-when-available (Override); Timing nur aus Aegis; abgeleitete Feuerrate 71 statt 100 rpm; Schaden pro Shot aus „Base“ der Sustained-Zeile grand-overture-volleys-when-available (Override); Skala weicht um 87.1 % ab; Aegis gilt (Override) |
 | Ice Breaker | sniperRifle | solar | keine (1 Shot) | 1.223,4 | Aegis | 10 | 10 | 0,00 s | 11,1 s | 49 → 49 | 0,0 % | Override: Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).; Timing aus Zeile ice-breaker-sniper-s-meditation (Override); Timing nur aus Aegis |
 | Jötunn | fusionRifle | solar | average, successive shots (10 Shots) | 1.048,3 | Aegis | 24 | 5 | 2,07 s | 31,7 s | – → 50 | 0,0 % | Override: Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; ⚠ Timing mit Katalysator: keine Quelle ohne; der Katalysator ändert laut Clarity Magazin oder Reload, nicht die Munition; Timing nur aus Aegis |
 | Lord of Wolves | shotgun | solar | average, includes ignition/scorch (120 Shots) | 186,1 | Quantum | 189 | 30 | 0,92 s | 22,6 s | 640 → 660 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „ADS“; Timing nur aus Quantum; Katalysator-Timing: 189 Shots, Magazin 30, Zeit bis leer 21,3 s |
@@ -43,7 +41,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **961**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **899**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -58,7 +56,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **961**. D
 | Buried Bloodline | `src/data/items/weapons/buried-bloodline.json` | 5 | – |
 | Centrifuse | `src/data/items/weapons/centrifuse.json` | 9 | – |
 | Choir of One | `src/data/items/weapons/choir-of-one.json` | 15 | – |
-| Cloudstrike | `src/data/items/weapons/cloudstrike.json` | 9 | – |
+| Cloudstrike | `src/data/items/weapons/cloudstrike.json` | 0 | – |
 | Coldheart | `src/data/items/weapons/coldheart.json` | 12 | – |
 | Collective Obligation | `src/data/items/weapons/collective-obligation.json` | 5 | – |
 | Conditional Finality | `src/data/items/weapons/conditional-finality.json` | 0 | – |
@@ -78,11 +76,13 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **961**. D
 | Ergo Sum | `src/data/items/weapons/ergo-sum.json` | 4 | – |
 | Eriana's Vow | `src/data/items/weapons/eriana-s-vow.json` | 6 | – |
 | Euphony | `src/data/items/weapons/euphony.json` | 9 | – |
+| Ex Diris | `src/data/items/weapons/ex-diris.json` | 0 | – |
 | Eyes of Tomorrow | `src/data/items/weapons/eyes-of-tomorrow.json` | 7 | – |
 | Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 0 | – |
 | Final Warning | `src/data/items/weapons/final-warning.json` | 9 | – |
 | Forerunner | `src/data/items/weapons/forerunner.json` | 5 | – |
 | Gjallarhorn | `src/data/items/weapons/gjallarhorn.json` | 9 | – |
+| Grand Overture | `src/data/items/weapons/grand-overture.json` | 0 | – |
 | Graviton Lance | `src/data/items/weapons/graviton-lance.json` | 9 | – |
 | Graviton Spike | `src/data/items/weapons/graviton-spike.json` | 1 | – |
 | Hard Light | `src/data/items/weapons/hard-light.json` | 3 | – |
@@ -92,14 +92,14 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **961**. D
 | Heirloom | `src/data/items/weapons/heirloom.json` | 11 | – |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | 19 | – |
 | Izanagi's Burden | `src/data/items/weapons/izanagi-s-burden.json` | 13 | – |
-| Khvostov 7G-0X | `src/data/items/weapons/khvostov-7g-0x.json` | 4 | – |
+| Khvostov 7G-0X | `src/data/items/weapons/khvostov-7g-0x.json` | 0 | – |
 | Le Monarque | `src/data/items/weapons/le-monarque.json` | 0 | – |
 | Legend of Acrius | `src/data/items/weapons/legend-of-acrius.json` | 8 | – |
 | Leviathan's Breath | `src/data/items/weapons/leviathan-s-breath.json` | 2 | – |
 | Lodestar | `src/data/items/weapons/lodestar.json` | 12 | – |
 | Lorentz Driver | `src/data/items/weapons/lorentz-driver.json` | 9 | – |
 | Lumina | `src/data/items/weapons/lumina.json` | 7 | – |
-| Malfeasance | `src/data/items/weapons/malfeasance.json` | 6 | – |
+| Malfeasance | `src/data/items/weapons/malfeasance.json` | 0 | – |
 | Merciless | `src/data/items/weapons/merciless.json` | 8 | – |
 | Microcosm | `src/data/items/weapons/microcosm.json` | 5 | – |
 | MIDA Multi-Tool | `src/data/items/weapons/mida-multi-tool.json` | 11 | – |
@@ -117,7 +117,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **961**. D
 | Ruinous Effigy | `src/data/items/weapons/ruinous-effigy.json` | 11 | – |
 | Salvation's Grip | `src/data/items/weapons/salvation-s-grip.json` | 1 | – |
 | Service of Luzaku | `src/data/items/weapons/service-of-luzaku.json` | 13 | – |
-| Slayer's Fang | `src/data/items/weapons/slayer-s-fang.json` | 43 | – |
+| Slayer's Fang | `src/data/items/weapons/slayer-s-fang.json` | 0 | – |
 | Sleeper Simulant | `src/data/items/weapons/sleeper-simulant.json` | 3 | – |
 | Still Hunt | `src/data/items/weapons/still-hunt.json` | 10 | – |
 | Sturm | `src/data/items/weapons/sturm.json` | 13 | – |
@@ -180,10 +180,8 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Cerberus+1 | primary | keine | – | Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds: |
 | Dead Man's Tale | primary | Schaden und Timing | Magazin 14 → 14, Shots ∞ → ∞, Zeit bis leer – → – s, rpm 120 → 140 | While not Aiming Down Sights: |
 | Deathbringer | heavy | keine | – | The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner. |
-| Ex Diris | special | keine | – | Weapon Kills grant Amplified for 15 seconds. |
 | Fafnir | heavy | keine | – | Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no l |
 | Finality's Auger | heavy | unbekannt | – | Grants the Bait and Switch trait: |
-| Grand Overture | heavy | keine | – | Grants 20 Handling and 20 Stability. |
 | Jötunn | special | keine | – | Grants the Cornered trait: |
 | Lord of Wolves | special | Timing | Magazin 30 → 30, Shots 189 → 189, Zeit bis leer 22,6 → 21,3 s, rpm 660 → 660 | Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration. |
 | New Land Beyond | special | unbekannt | – | While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on |
@@ -241,7 +239,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Final Warning | ADS tap fire | nicht modelliert: ADS tap fire |
 | Finality's Auger | Ruinscribe Turret Mode, marked, entire turret duration | nicht modelliert: marked |
 | Forerunner | The Rock, excludes impact | Katalysator: The Rock |
-| Grand Overture |  | ohne Missile Loaded, Volley Ready der Basiszeile |
+| Grand Overture |  | the item file uses another row |
 | Graviton Lance | burst, Vorpal Weapon | Katalysator: Vorpal Weapon |
 | Graviton Spike | arc mode | the item file uses another row |
 | Graviton Spike | average, overcharging both modes, typical boss model, Temporal Alignment | the item file uses another row |

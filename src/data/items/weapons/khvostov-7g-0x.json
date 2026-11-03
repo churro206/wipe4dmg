@@ -23,12 +23,21 @@
   "catalyst": {
     "name": "Khvostov Catalyst",
     "description": "Scoring 25 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 🡅0.8% Super Energy.\nDoes not require Direct Hits. Hit counter persists through stow.",
-    "effect": "unknown"
+    "effect": "none"
   },
   "parts": {
     "shot": {
       "name": "Shot",
       "damage": "$quantum[primaries-auto-rifle-khvostov-7g-0x].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "seventh": {
+      "name": "Every 7th shot (increased damage)",
+      "damage": {
+        "expr": "$quantum[primaries-auto-rifle-khvostov-7g-0x].precisionDamage * $clarity[The Right Choice](\"252.52%\") / 100",
+        "note": "the extra damage of the 7th shot: 252.52 % of the shot (Quantum's magazine of 43 holds 6 of them: 43 x 28 + 6 x 70.7 = 1627)"
+      },
       "precision": true,
       "delivery": "impact"
     }
@@ -38,6 +47,63 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "seventh-reset",
+      "on": { "on": "reload", "edge": "start" },
+      "do": [{ "type": "resetCounter", "counter": "seventh" }]
+    },
+    {
+      "id": "seventh-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "seventh",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[The Right Choice](\"Every 7th shot\") - 1",
+            "note": "the counter stands at 0 to 5 for the shots before the 7th of a magazine"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "seventh" }]
+    },
+    {
+      "id": "seventh",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "seventh",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[The Right Choice](\"Every 7th shot\") - 1",
+            "note": "the 7th shot"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "seventh" },
+        { "type": "spawn", "part": "seventh" }
+      ],
+      "source": {
+        "name": "Item file khvostov-7g-0x",
+        "retrieved": "2026-11-03",
+        "status": "derived",
+        "note": "Derived: the rest of the sentence (Auto Aim cone, ricochet to the nearest target within 8 meters) gives no damage against one boss"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "Collecting an Orb of Power grants 7 stacks", "reason": "no damage against a boss" },
+    {
+      "quote": "increasing the number of richochets to 7",
+      "reason": "no damage against a boss"
+    },
+    {
+      "quote": "Scoring 25 Hits against enemies within 5 seconds",
+      "reason": "needs orb energy (Plan C)"
     }
   ]
 }

@@ -3,11 +3,7 @@
   "kind": "exoticWeapon",
   "name": "Cloudstrike",
   "texts": [
-    {
-      "source": "clarity",
-      "entry": "Cloudstrike Catalyst",
-      "hash": "be2bb0e1"
-    },
+    { "source": "clarity", "entry": "Cloudstrike Catalyst", "hash": "be2bb0e1" },
     { "source": "clarity", "entry": "Mortal Polarity", "hash": "9ff5c1f8" },
     { "source": "clarity", "entry": "Stormbringer", "hash": "a551405b" }
   ],
@@ -41,6 +37,16 @@
       "damage": "$quantum[specials-sniper-rifle-cloudstrike].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "strike": {
+      "name": "Lightning strike",
+      "damage": "$clarity[Stormbringer](\"dealing 973\")",
+      "delivery": "splash"
+    },
+    "storm": {
+      "name": "Lightning storm",
+      "damage": "$clarity[Stormbringer](\"dealing 584\")",
+      "delivery": "splash"
     }
   },
   "rules": [
@@ -48,6 +54,86 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "storm-count",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "stormbringer",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Stormbringer](\"On 3 Precision Hits\") - 1",
+            "note": "the counter stands at 0 to 1 for the hits before the 3rd"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "stormbringer" }]
+    },
+    {
+      "id": "storm",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "stormbringer",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[Stormbringer](\"On 3 Precision Hits\") - 1",
+            "note": "the 3rd precision hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "stormbringer" },
+        {
+          "type": "spawn",
+          "part": "strike",
+          "delayMs": {
+            "expr": "$clarity[Stormbringer](\"after 1.1 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        },
+        {
+          "type": "spawn",
+          "part": "storm",
+          "delayMs": {
+            "expr": "($clarity[Stormbringer](\"after 1.1 seconds\") + $clarity[Stormbringer](\"0.5 seconds later\")) * 1000",
+            "note": "the storm comes 0.5 s after the strike, seconds to milliseconds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bolt-charge",
+      "on": { "on": "hit", "part": "strike" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "boltCharge",
+          "stacks": "$clarity[Stormbringer](\"Grants x1 Bolt Charge\")"
+        }
+      ]
+    }
+  ],
+  "notModelled": [
+    { "quote": "Passively grants 25 Handling", "reason": "no damage against a boss" },
+    {
+      "quote": "Scoring 3 Precision Hits within 2 seconds",
+      "reason": "needs nothing more (Quantum's row cata carries the refill as magazine and ammo)"
+    },
+    {
+      "quote": "Precision Kills summon a lightning strike",
+      "reason": "no adds (ADR 0015)"
+    },
+    {
+      "quote": "deals 0% damage at the edge of its radius",
+      "reason": "below 2 %"
+    },
+    {
+      "quote": "deals 25% damage at the edge of its radius",
+      "reason": "below 2 %"
     }
   ]
 }

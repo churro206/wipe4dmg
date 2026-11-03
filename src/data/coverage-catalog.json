@@ -176,7 +176,7 @@
         "name": "Khvostov 7G-0X",
         "group": "Kinetic",
         "inGame": "The Right Choice: Counts as a \"Dealer's Choice\" origin trait weapon, but does not benefit from the trait itself.\nEvery 7th shot in the magazine deals 252.52% [5%] increased damage, has 50% increased Auto Aim cone size, and ricochets to the nearest target within an 8 [5] meter radius.\nEyes Up, Guardian: Collecting an Orb of Power grants 7 stacks of 'Eyes Up, Guardian'.\nFiring a ricochet round consumes one stack, increasing the number of richochets to 7 and the seeking radius to a 12 meters. Enemies can only be damaged by the same ricochet twice.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:khvostov-7g-0x",
         "status": "full"
       },
@@ -200,7 +200,7 @@
         "name": "Malfeasance",
         "group": "Kinetic",
         "inGame": "Explosive Shadow: Intrinsically Anti-Unstoppable, but only Slug explosions stun Unstoppable champions.\nHits embed Explosive Slugs into the target. Target death or embedding a fifth slug causes all slugs to explode, each dealing 203 [45] damage in a 1? meter radius.\nTaken Predator: Deals 25% increased damage against Taken combatants, Invaders in Gambit, and targets blighted by Witherhoard.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "4 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:malfeasance",
         "status": "full"
       },
@@ -441,7 +441,7 @@
         "name": "Cloudstrike",
         "group": "Energy",
         "inGame": "Mortal Polarity: Precision Kills summon a lightning strike that deals 973 [300] damage in a 7 meter radius and grants x5 Bolt Charge.\nLightning strike has damage falloff and deals 0% damage at the edge of its radius.\nStormbringer: On 3 Precision Hits within 6 seconds of each:\n• Grants x1 Bolt Charge\n• Summons a lightning strike after 1.1 seconds, dealing 973 [300] damage in a 7 meter radius\n• Summons a lightning storm 0.5 seconds later, dealing 584 [180] damage in a spread-X pattern in a 5 meter radius.\nLightning storm staggers enemies and deals 25% damage at the edge of its radius. Enemies can only take damage from the storm once.\nPrecision Hit progress is removed on stow.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:cloudstrike",
         "status": "full"
       },
@@ -545,7 +545,7 @@
         "name": "Ex Diris",
         "group": "Energy",
         "inGame": "Corrupted Nucleosynthesis: Each Direct Hit grants 25% progress to your 'Enrage'. Enrage linearly increases your rate of fire up to 126 RPM (40% increase) at maximum level.\nEntering Critical Health instantly grants max Enrage.\nEnrage's progress constantly decays at a rate of ?% per second over 9.5 seconds. While you are at Critical Health, Enrage does not decay.\nLoyal Moths: Kills or 2 Direct Hits within ? seconds of each other spawn a seeking Hive Moth.\nHive Moths deal 525 [31] damage with a blast radius of 7 meters and Blind for 10 seconds.\nWearing Mothkeeper's Wraps spawns an additional Hive Moth that grants 22.5 HP Void Overshield to the nearest ally.\n3 second cooldown between activations.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:ex-diris",
         "status": "full"
       },
@@ -929,7 +929,7 @@
         "name": "Grand Overture",
         "group": "Power",
         "inGame": "Wrath of the Colossus: Requires a one-second charge time before entering full-auto at the listed RPM.\nOmega Strike: Dealing damage grants one stack of 'Missiles Loaded'. Maximum of 20 stacks.\nHold [Reload] to convert these stacks into an equal number of Arc Missiles that fire on next trigger pull, dealing 1138 [237] damage each.\nMissiles can be fired in groups of five or all at once.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:grand-overture",
         "status": "full"
       },
@@ -1308,8 +1308,8 @@
         "group": "Kinetic",
         "inGame": "Grants 20 Range.\nGrants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
         "iconHash": 1234111636,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "Adds weapon damage.",
+        "status": "full",
         "iconKey": "named:malfeasance-catalyst"
       },
       {

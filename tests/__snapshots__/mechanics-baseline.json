@@ -141,14 +141,14 @@
       "600s buffed catalyst": 52427.3
     },
     "cloudstrike": {
-      "30s plain": 13950,
-      "30s buffed": 23486.22,
-      "30s plain catalyst": 19800,
-      "30s buffed catalyst": 33335.28,
-      "600s plain": 13950,
-      "600s buffed": 23486.22,
-      "600s plain catalyst": 19800,
-      "600s buffed catalyst": 33335.28
+      "30s plain": 29520,
+      "30s buffed": 49699.87,
+      "30s plain catalyst": 41598,
+      "30s buffed catalyst": 70034.39,
+      "600s plain": 29520,
+      "600s buffed": 49699.87,
+      "600s plain catalyst": 41598,
+      "600s buffed catalyst": 70034.39
     },
     "coldheart": {
       "30s plain": 11281,
@@ -367,14 +367,14 @@
       "600s buffed catalyst": 40305.38
     },
     "ex-diris": {
-      "30s plain": 24323.11,
-      "30s buffed": 40950.39,
-      "30s plain catalyst": 24323.11,
-      "30s buffed catalyst": 40950.39,
-      "600s plain": 24323.11,
-      "600s buffed": 40950.39,
-      "600s plain catalyst": 24323.11,
-      "600s buffed catalyst": 40950.39
+      "30s plain": 25795,
+      "30s buffed": 43428.46,
+      "30s plain catalyst": 25795,
+      "30s buffed catalyst": 43428.46,
+      "600s plain": 25795,
+      "600s buffed": 43428.46,
+      "600s plain catalyst": 25795,
+      "600s buffed catalyst": 43428.46
     },
     "eyes-of-tomorrow": {
       "30s plain": 27060,
@@ -447,14 +447,14 @@
       "600s buffed catalyst": 34742.77
     },
     "grand-overture": {
-      "30s plain": 37065,
-      "30s buffed": 62402.63,
-      "30s plain catalyst": 37065,
-      "30s buffed catalyst": 62402.63,
-      "600s plain": 61422,
-      "600s buffed": 103410.08,
-      "600s plain catalyst": 61422,
-      "600s buffed catalyst": 103410.08
+      "30s plain": 37100,
+      "30s buffed": 62461.56,
+      "30s plain catalyst": 37100,
+      "30s buffed catalyst": 62461.56,
+      "600s plain": 61480,
+      "600s buffed": 103507.73,
+      "600s plain catalyst": 61480,
+      "600s buffed catalyst": 103507.73
     },
     "graviton-lance": {
       "30s plain": 9017,
@@ -563,14 +563,14 @@
       "600s buffed catalyst": 42358.76
     },
     "khvostov-7g-0x": {
-      "30s plain": 6860,
-      "30s buffed": 11549.5,
-      "30s plain catalyst": 6860,
-      "30s buffed catalyst": 11549.5,
-      "600s plain": 133532,
-      "600s buffed": 224814.48,
-      "600s plain catalyst": 133532,
-      "600s buffed catalyst": 224814.48
+      "30s plain": 9334.71,
+      "30s buffed": 15715.92,
+      "30s plain catalyst": 9334.71,
+      "30s buffed catalyst": 15715.92,
+      "600s plain": 181682.79,
+      "600s buffed": 305881.14,
+      "600s plain catalyst": 181682.79,
+      "600s buffed catalyst": 305881.14
     },
     "le-monarque": {
       "30s plain": 15270,
@@ -635,14 +635,14 @@
       "600s buffed catalyst": 176863.86
     },
     "malfeasance": {
-      "30s plain": 6536,
-      "30s buffed": 11004.01,
-      "30s plain catalyst": 6536,
-      "30s buffed catalyst": 11004.01,
-      "600s plain": 124356,
-      "600s buffed": 209365.76,
-      "600s plain catalyst": 124356,
-      "600s buffed catalyst": 209365.76
+      "30s plain": 11861,
+      "30s buffed": 19969.18,
+      "30s plain catalyst": 14233,
+      "30s buffed catalyst": 23962.68,
+      "600s plain": 226951,
+      "600s buffed": 382094.7,
+      "600s plain catalyst": 272341,
+      "600s buffed catalyst": 458513.31
     },
     "merciless": {
       "30s plain": 21945,

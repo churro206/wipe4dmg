@@ -6,9 +6,9 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.95 over 40 rows
-- Absolute, information only: within ±3 % 20 of 40 (check set), 98 of 183 (all counted rows, mostly Eichung)
-- Rows: 185 scenarios (32 by hand, 153 generated); fitted 48; calibration set 96; check set 40; not counted 2; core cannot run 0
+- Rank (check set): Spearman 0.95 over 41 rows
+- Absolute, information only: within ±3 % 21 of 41 (check set), 98 of 183 (all counted rows, mostly Eichung)
+- Rows: 185 scenarios (32 by hand, 153 generated); fitted 46; calibration set 97; check set 41; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -38,10 +38,11 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-fusion-rifle-vex-mythoclast | fusion-rifle-vex-mythoclast | 93 | 113 | +21.0 % |
 | gen-glaive-edge-of-action-projectile | glaive-edge-of-action-projectile | 482 | 483 | +0.2 % |
 | gen-glaive-edge-of-intent-projectile | glaive-edge-of-intent-projectile | 553 | 554 | +0.1 % |
+| gen-grenade-launcher-ex-diris-average-with-moth | grenade-launcher-ex-diris-average-with-moth | 20825 | 22185 | +6.5 % |
 | gen-grenade-launcher-parasite | grenade-launcher-parasite | 2135 | 2134 | −0.1 % |
 | gen-grenade-launcher-the-prospector-average-direct-impact-standard-target-model | grenade-launcher-the-prospector-average-direct-impact-standard-target-model | 18647 | 12150 | −34.8 % |
 | gen-grenade-launcher-witherhoard-direct-impact | grenade-launcher-witherhoard-direct-impact | 2044 | 2059 | +0.7 % |
-| gen-hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | 934 | 430 | −53.9 % |
+| gen-hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | 934 | 942 | +0.9 % |
 | gen-hand-cannon-sunshot | hand-cannon-sunshot | 87 | 102 | +17.9 % |
 | gen-linear-fusion-rifle-arbalest | linear-fusion-rifle-arbalest | 1085 | 1086 | +0.1 % |
 | gen-machine-gun-service-of-luzaku | machine-gun-service-of-luzaku | 157 | 157 | +0.2 % |
@@ -157,7 +158,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 183 | 44 % | 47 | 40 | 0.95 | 3/3 | 1 of 4 |
+| Weapons | 417 | 183 | 44 % | 45 | 41 | 0.95 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 4 | 17 | 0.92 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
@@ -210,10 +211,11 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | fusion-rifle-vex-mythoclast | 93 | 113 | +21.0 % |
 | Weapons | glaive-edge-of-action-projectile | 482 | 483 | +0.2 % |
 | Weapons | glaive-edge-of-intent-projectile | 553 | 554 | +0.1 % |
+| Weapons | grenade-launcher-ex-diris-average-with-moth | 20825 | 22185 | +6.5 % |
 | Weapons | grenade-launcher-parasite | 2135 | 2134 | −0.1 % |
 | Weapons | grenade-launcher-the-prospector-average-direct-impact-standard-target-model | 18647 | 12150 | −34.8 % |
 | Weapons | grenade-launcher-witherhoard-direct-impact | 2044 | 2059 | +0.7 % |
-| Weapons | hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | 934 | 430 | −53.9 % |
+| Weapons | hand-cannon-malfeasance-average-with-slugs-vorpal-weapon | 934 | 942 | +0.9 % |
 | Weapons | hand-cannon-sunshot | 87 | 102 | +17.9 % |
 | Weapons | linear-fusion-rifle-arbalest | 1085 | 1086 | +0.1 % |
 | Weapons | machine-gun-service-of-luzaku | 157 | 157 | +0.2 % |
@@ -257,7 +259,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Supers | swap-twilight-arsenal-feast-of-light-x6-facet-of-courage-limit-break | 34828 | 34832 | +0.0 % |
 | Heavy | sustained-deterministic-chaos-target-lock | 137936 | 136358 | −1.1 % |
 | Heavy | sustained-gjallarhorn-argent-ordnance | 56374 | 55892 | −0.9 % |
-| Heavy | sustained-grand-overture-volleys-when-available | 144658 | 144662 | +0.0 % |
+| Heavy | sustained-grand-overture-volleys-when-available | 144658 | 144798 | +0.1 % |
 | Heavy | sustained-heir-apparent | 58096 | 59069 | +1.7 % |
 | Heavy | sustained-leviathan-s-breath-archer-s-tempo | 71555 | 72475 | +1.3 % |
 | Heavy | sustained-one-thousand-voices-catalyst-particle-reconstruction | 87367 | 92248 | +5.6 % |

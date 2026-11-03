@@ -566,7 +566,7 @@ describe("all weapons (2026-10-23)", () => {
 
   // Q1 counter-test (red before Q1: the package took 1049.4 from Aegis, 15 items only): the hit of a
   // scaffold item is Quantum's precision hit, `verified`; 97 weapons take it from Quantum.
-  it("the hit of a scaffold item is Quantum's: 97 weapons (93 scaffold + 4 older items)", () => {
+  it("the hit of a scaffold item is Quantum's: 99 weapons (93 scaffold + 6 older items)", () => {
     const horseman = weaponById("the-fourth-horseman").damageInstances[0].damagePerTick;
     note("Fourth Horseman Treffer", String(horseman.value), "676 (Quantum precisionDamage)");
     expect(horseman.value).toBe(676);
@@ -577,8 +577,9 @@ describe("all weapons (2026-10-23)", () => {
     // 97 = the 93 files of the scaffold + Polaris Lance, Truth, Hierarchy of Needs and (M1) the
     // hand-made Deterministic Chaos (older items with a Quantum hit); Witherhoard takes the sum of
     // a direct hit from a Quantum expression; the other older items and the packages take theirs from Aegis
-    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "97 = 93 Gerüst + 4 ältere Items");
-    expect(fromQuantum).toBe(97);
+    // 99 = 97 + Ex Diris and Grand Overture (M2, hand-made items with a Quantum hit)
+    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "99 = 93 Gerüst + 6 ältere Items");
+    expect(fromQuantum).toBe(99);
   });
 
   // Fourth Horseman (Q1 gate): the cata row of Quantum gives the catalyst magazine of 5 (4 without).

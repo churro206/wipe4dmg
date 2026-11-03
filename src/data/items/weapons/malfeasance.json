@@ -3,11 +3,7 @@
   "kind": "exoticWeapon",
   "name": "Malfeasance",
   "texts": [
-    {
-      "source": "clarity",
-      "entry": "Malfeasance Catalyst",
-      "hash": "2b4fbc69"
-    },
+    { "source": "clarity", "entry": "Malfeasance Catalyst", "hash": "2b4fbc69" },
     { "source": "clarity", "entry": "Explosive Shadow", "hash": "98444c99" },
     { "source": "clarity", "entry": "Taken Predator", "hash": "c8008a0e" }
   ],
@@ -27,7 +23,7 @@
   "catalyst": {
     "name": "Vorpal Weapon, Malfeasance Catalyst",
     "description": "Grants 20 Range.\nGrants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
-    "effect": "unknown"
+    "effect": "damage"
   },
   "parts": {
     "shot": {
@@ -35,13 +31,143 @@
       "damage": "$quantum[primaries-hand-cannon-malfeasance].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "slug": {
+      "name": "Explosive Slug",
+      "damage": {
+        "expr": "($quantum[primaries-hand-cannon-malfeasance].magDamage - $quantum[primaries-hand-cannon-malfeasance].magazine * $quantum[primaries-hand-cannon-malfeasance].precisionDamage) / $quantum[primaries-hand-cannon-malfeasance].magazine",
+        "note": "Quantum's magazine total minus its precision shots, shared by the slugs (one per shot): 71 per slug"
+      },
+      "delivery": "splash"
+    },
+    "shot-cata": {
+      "name": "Shot (Vorpal Weapon)",
+      "damage": "$quantum[primaries-hand-cannon-malfeasance-cata].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "slug-cata": {
+      "name": "Explosive Slug (Vorpal Weapon)",
+      "damage": {
+        "expr": "($quantum[primaries-hand-cannon-malfeasance-cata].magDamage - $quantum[primaries-hand-cannon-malfeasance-cata].magazine * $quantum[primaries-hand-cannon-malfeasance-cata].precisionDamage) / $quantum[primaries-hand-cannon-malfeasance-cata].magazine",
+        "note": "the same from Quantum's row \"cata\" (Vorpal Weapon +20 % for primaries)"
+      },
+      "delivery": "splash"
     }
   },
   "rules": [
     {
       "id": "shot",
       "on": { "on": "shot" },
+      "if": [{ "type": "hasItem", "id": "catalyst", "not": true }],
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-catalyst",
+      "on": { "on": "shot" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "spawn", "part": "shot-cata" }]
+    },
+    {
+      "id": "slug-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "slugs",
+          "op": "<",
+          "value": {
+            "expr": "$compendium[Malfeasance](\"Embedding 5 slugs\") - 1",
+            "note": "the counter stands at 0 to 3 for the slugs before the 5th"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "slugs" }]
+    },
+    {
+      "id": "slug-count-catalyst",
+      "on": { "on": "hit", "part": "shot-cata" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "slugs",
+          "op": "<",
+          "value": {
+            "expr": "$compendium[Malfeasance](\"Embedding 5 slugs\") - 1",
+            "note": "the counter stands at 0 to 3 for the slugs before the 5th"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "slugs" }]
+    },
+    {
+      "id": "slugs-explode",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "slugs",
+          "op": "=",
+          "value": {
+            "expr": "$compendium[Malfeasance](\"Embedding 5 slugs\") - 1",
+            "note": "the 5th slug"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "slugs" },
+        {
+          "type": "spawn",
+          "part": "slug",
+          "count": "$compendium[Malfeasance](\"Embedding 5 slugs\")"
+        }
+      ]
+    },
+    {
+      "id": "slugs-explode-catalyst",
+      "on": { "on": "hit", "part": "shot-cata" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "slugs",
+          "op": "=",
+          "value": {
+            "expr": "$compendium[Malfeasance](\"Embedding 5 slugs\") - 1",
+            "note": "the 5th slug"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "slugs" },
+        {
+          "type": "spawn",
+          "part": "slug-cata",
+          "count": "$compendium[Malfeasance](\"Embedding 5 slugs\")"
+        }
+      ]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "each dealing 203 [45] damage",
+      "reason": "needs slug number from Quantum (71 per slug from the magazine total; Clarity's 203 and the Compendium's 216 are tooltip values, two measurements agree on 71)"
+    },
+    { "quote": "Grants 20 Range", "reason": "no damage against a boss" },
+    {
+      "quote": "Primary Weapons: 20% [60%]",
+      "reason": "needs nothing more (Quantum's row cata carries the +20 % for primaries)"
+    },
+    {
+      "quote": "Special Weapons: 15% [20%]",
+      "reason": "no damage against a boss (ammo type of other weapons)"
+    },
+    {
+      "quote": "Power Weapons: 10% [20%]",
+      "reason": "no damage against a boss (ammo type of other weapons)"
+    },
+    {
+      "quote": "Deals 25% increased damage against Taken combatants",
+      "reason": "needs cross-weapon status (Blighted); about +25 % while a Witherhoard blight stands"
     }
   ]
 }

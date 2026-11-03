@@ -1,0 +1,154 @@
+{
+  "id": "ex-diris",
+  "kind": "exoticWeapon",
+  "name": "Ex Diris",
+  "texts": [
+    { "source": "clarity", "entry": "Ex Diris Catalyst", "hash": "e04d7b8f" },
+    { "source": "clarity", "entry": "Loyal Moths", "hash": "225f7988" },
+    { "source": "clarity", "entry": "Nucleosynthetic Magazine", "hash": "73df76dd" },
+    { "source": "clarity", "entry": "Corrupted Nucleosynthesis", "hash": "fd4a3774" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ex-diris",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-grenade-launcher-ex-diris-no-enrage].rpm",
+  "magazine": "$quantum[specials-grenade-launcher-ex-diris-no-enrage].totalShots",
+  "totalShots": "$quantum[specials-grenade-launcher-ex-diris-no-enrage].totalShots",
+  "reloadTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ex-diris",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the Compendium says \"Does not require reloading\"; Quantum's row has no reload (the interval of a shot holds it), so all ammo is one magazine"
+    }
+  },
+  "catalyst": {
+    "name": "Ex Diris Catalyst",
+    "description": "Weapon Kills grant Amplified for 15 seconds.\nWhile Amplified, Direct Hits charge Enrage twice as fast (25%🠚50% per hit).",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Arc projectile",
+      "damage": "$quantum[specials-grenade-launcher-ex-diris-no-enrage].bodyDamage",
+      "delivery": "impact"
+    },
+    "moth": {
+      "name": "Hive Moth",
+      "damage": "$clarity[Loyal Moths](\"deal 525\")",
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "enrage-max",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "enrage",
+          "op": "=",
+          "value": {
+            "expr": "100 / $clarity[Corrupted Nucleosynthesis](\"Each Direct Hit grants 25%\") - 1",
+            "note": "100 % progress at 25 % per hit: the 4th hit; the counter stands one lower"
+          }
+        }
+      ],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": "$quantum[specials-grenade-launcher-ex-diris-max-enrage].rpm"
+          }
+        }
+      ]
+    },
+    {
+      "id": "enrage-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "enrage",
+          "op": "<",
+          "value": {
+            "expr": "100 / $clarity[Corrupted Nucleosynthesis](\"Each Direct Hit grants 25%\")",
+            "note": "hits to 100 % progress"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "enrage" }]
+    },
+    {
+      "id": "moth-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "moth",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Loyal Moths](\"2 Direct Hits\") - 1",
+            "note": "the counter stands at 0 for the hits before the 2nd"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "moth" }]
+    },
+    {
+      "id": "moth",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "moth",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[Loyal Moths](\"2 Direct Hits\") - 1",
+            "note": "the 2nd direct hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "moth" },
+        { "type": "spawn", "part": "moth" }
+      ],
+      "cooldownMs": {
+        "expr": "$clarity[Loyal Moths](\"3 second cooldown\") * 1000",
+        "note": "seconds to milliseconds"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Fires Hive-Knight Arc Projectiles that deal 372 [21]",
+      "reason": "needs projectile number from Quantum (617 per shot, impact and explosion together)"
+    },
+    { "quote": "Damage is decreased by 70% at the edge", "reason": "below 2 %" },
+    {
+      "quote": "up to 126 RPM (40% increase)",
+      "reason": "needs enrage ramp (the rule jumps to Quantum's row max enrage after the 4th hit)"
+    },
+    {
+      "quote": "decays at a rate of ?% per second over 9.5 seconds",
+      "reason": "below 2 %"
+    },
+    { "quote": "grants 22.5 HP Void Overshield", "reason": "no damage against a boss" },
+    { "quote": "Weapon Kills grant Amplified for 15 seconds", "reason": "no adds (ADR 0015)" },
+    { "quote": "While Amplified, Direct Hits charge Enrage", "reason": "no adds (ADR 0015)" }
+  ]
+}

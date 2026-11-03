@@ -347,7 +347,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Deterministic Chaos, average, with volatile damage, excludes weaken | im Modell | base row of the package |
 | Deterministic Chaos, average, with volatile damage, excludes weaken, Target Lock, single mag | übersprungen | Katalysator: Target Lock |
 | Grand Overture, Missile Loaded, Volley Ready | im Modell | base row of the package |
-| Grand Overture | übersprungen | ohne Missile Loaded, Volley Ready der Basiszeile |
+| Grand Overture | übersprungen | the item file uses another row |
 | Heir Apparent | im Modell | base row of the package |
 | High-impact frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Rapid-fire frame | übersprungen | legendary frame (owner 2026-10-25) |

@@ -141,29 +141,6 @@
     }
   },
   {
-    "weapon": "Grand Overture",
-    "reason": "Optimal gespielt mit Raketen-Salven, wie Aegis Sustained „volleys when available“ (58 Schuss in 49,1 s, Quantum „w/ rockets“ 49 s); Schaden pro Schuss aus derselben Zeile (Mittel aus Kugeln und Raketen).",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "grand-overture-volleys-when-available",
-        "text": "volleys when available"
-      },
-      {
-        "source": "quantum",
-        "entry": "heavies-machine-gun-grand-overture-w-rockets",
-        "text": "shoot 20 rounds > swap mode > shoot 20 rockets > reload"
-      }
-    ],
-    "aegisWins": true,
-    "perShotFromTiming": true,
-    "timing": {
-      "from": "Aegis",
-      "row": "grand-overture-volleys-when-available",
-      "noReloads": true
-    }
-  },
-  {
     "weapon": "Revision Zero",
     "reason": "Aegis misst den schweren 2er-Burst mit Vorpal Weapon (wipe 2298 = 2 × 1149); pro Kugel 76,2 gegen Quantum 64 ohne Vorpal (×1,15 = 73,6); Aegis gilt. Catalyst: von vier Refits ist Fourth Time's The Charm der einzige, der am Boss wirkt (4 Precision Hits laden 2 Schuss nach); Timing aus Quantums „2-burst, mix, FTTC“ (Magazin 50 statt 26).",
     "quotes": [
