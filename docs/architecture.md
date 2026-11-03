@@ -1,6 +1,6 @@
 # Bauplan des Rechners
 
-Status: angenommen vom Inhaber am 2026-10-31 (ADR 0018), Quellen der Waffen nach ADR 0019 (Plan Q, vorgeschlagen 2026-11-03) · Umsetzung auf Branch `ground-up-model`, Stufen in `docs/plans/ground-up-model.md` · Ansicht mit zwölf Abbildungen: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>
+Status: angenommen vom Inhaber am 2026-10-31 (ADR 0018), Quellen der Waffen nach ADR 0019 (Plan Q, angenommen 2026-11-03) · Umsetzung auf Branch `ground-up-model`, Stufen in `docs/plans/ground-up-model.md` · Ansicht mit zwölf Abbildungen: <https://claude.ai/artifact/2pmKihDrFaJvRdtDwJzBR8>
 
 Diese Datei ist die maßgebliche, maschinenlesbare Fassung; die Ansicht folgt ihr. Lesen vor jedem Block an Engine, Daten, Import oder Prüfstand. Abschnitte tragen die Nummer der Abbildung in der Ansicht (Abb. n).
 

@@ -1,6 +1,6 @@
 # ADR 0019: Waffen aus Quantum und Clarity, Mechanik nach Regelvorlagen
 
-Status: vorgeschlagen (Q0, 2026-11-03), wartet auf Freigabe des Inhabers · Bauplan `docs/architecture.md` (Abschnitte 3, 5.2 mit den Regelvorlagen, 5.3, 12, 13) · Plan Q in `docs/plans/current.md`, Hintergrund `docs/plans/history-2026-11.md`
+Status: angenommen vom Inhaber (Q0, 2026-11-03) · Bauplan `docs/architecture.md` (Abschnitte 3, 5.2 mit den Regelvorlagen, 5.3, 12, 13) · Plan Q in `docs/plans/current.md`, Hintergrund `docs/plans/history-2026-11.md`
 
 ## Kontext
 
