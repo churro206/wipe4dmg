@@ -1,0 +1,42 @@
+{
+  "id": "parasite",
+  "kind": "exoticWeapon",
+  "name": "Parasite",
+  "texts": [
+    { "source": "clarity", "entry": "Worm's Hunger", "hash": "bfb46cc7" },
+    { "source": "clarity", "entry": "Worm Byproduct", "hash": "56ac3ff2" },
+    { "source": "clarity", "entry": "Parasite Catalyst", "hash": "748f8329" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file parasite",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-grenade-launcher-parasite].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-grenade-launcher-parasite].timing.magazine",
+  "totalShots": "$quantum[heavies-grenade-launcher-parasite].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-grenade-launcher-parasite].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Envious Arsenal, Parasite Catalyst",
+    "description": "Dealing any damage with both of your other weapons refills the magazine from reserves upon readying the weapon.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-grenade-launcher-parasite].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

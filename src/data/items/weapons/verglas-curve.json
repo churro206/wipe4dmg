@@ -1,0 +1,39 @@
+{
+  "id": "verglas-curve",
+  "kind": "exoticWeapon",
+  "name": "Verglas Curve",
+  "texts": [
+    { "source": "clarity", "entry": "Hail Storm", "hash": "4a89ad5a" },
+    { "source": "clarity", "entry": "Hail Barrage", "hash": "c256840c" },
+    {
+      "source": "clarity",
+      "entry": "Verglas Curve Catalyst",
+      "hash": "bcae126e"
+    }
+  ],
+  "chargeTimeMs": "$manifest[Verglas Curve].stat(\"Draw Time\")",
+  "fireRateRpm": "$quantum[primaries-bow-verglass-curve].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-bow-verglass-curve].timing.magazine",
+  "totalShots": "$quantum[primaries-bow-verglass-curve].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-bow-verglass-curve].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Shiver Quiver, Verglas Curve Catalyst",
+    "description": "Applying Freeze or Slow to a target decreases Draw Time by 35% (567ms🠚368ms) for ? seconds.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-bow-verglass-curve].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

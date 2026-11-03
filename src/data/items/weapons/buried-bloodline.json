@@ -1,0 +1,47 @@
+{
+  "id": "buried-bloodline",
+  "kind": "exoticWeapon",
+  "name": "Buried Bloodline",
+  "texts": [
+    { "source": "clarity", "entry": "Hungering Quarrel", "hash": "c51d1cb9" },
+    { "source": "clarity", "entry": "Violent Reanimation", "hash": "ca7b2ac3" },
+    {
+      "source": "clarity",
+      "entry": "Buried Bloodline Catalyst",
+      "hash": "67e11d44"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file buried-bloodline",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-sidearm-buried-bloodline].timing.fireRateRpm",
+  "magazine": "$quantum[specials-sidearm-buried-bloodline].timing.magazine",
+  "totalShots": "$quantum[specials-sidearm-buried-bloodline].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-sidearm-buried-bloodline].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Splitvein Lineage, Buried Bloodline Catalyst",
+    "description": "While Devour is active, grants the following benefits:\n• Hits apply Weaken for 6 seconds\n• ? Reload Speed\n• ? Decreased Reload Animation Duration",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-sidearm-buried-bloodline].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

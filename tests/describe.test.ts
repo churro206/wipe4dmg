@@ -24,15 +24,8 @@ const effect = (id: string) => effects.find((e) => e.id === id)!;
 
 describe("catalyst hover card", () => {
   it("names the timing it changes, in game words", () => {
-    expect(describeCatalyst(weaponById("telesto"))).toContain(
-      "Magazine 4 → 7, ammo 16 → 19",
-    );
-  });
-
-  it("names the damage bonus without the internal option id", () => {
-    const lines = describeCatalyst(weaponById("one-thousand-voices"));
-    expect(lines).toContain("+45% weapon damage");
-    expect(lines.join(" ")).not.toContain("catalyst ×");
+    const lines = describeCatalyst(weaponById("the-fourth-horseman"));
+    expect(lines.some((line) => line.startsWith("Magazine 4 → 5"))).toBe(true);
   });
 
   it("keeps the game text out of the first person", () => {
@@ -41,10 +34,7 @@ describe("catalyst hover card", () => {
     expect(text).not.toMatch(/\b(I|my|me)\b/);
   });
 
-  it("says when a catalyst does nothing against one boss, or is not modelled yet", () => {
-    expect(describeCatalyst(weaponById("winterbite"))).toContain(
-      "No effect against one boss without adds",
-    );
+  it("says when a catalyst is not modelled yet", () => {
     expect(describeCatalyst(weaponById("fighting-lion"))).toContain(
       "Not in the calculator yet: no source measured it",
     );

@@ -1,0 +1,64 @@
+{
+  "id": "outbreak-perfected",
+  "kind": "exoticWeapon",
+  "name": "Outbreak Perfected",
+  "texts": [
+    { "source": "clarity", "entry": "Rewind Rounds", "hash": "ffb7ca83" },
+    { "source": "clarity", "entry": "Headseeker", "hash": "73e05f60" },
+    { "source": "clarity", "entry": "Rapid Hit", "hash": "35b36647" },
+    {
+      "source": "clarity",
+      "entry": "Outbreak Perfected Catalyst",
+      "hash": "29c166d8"
+    },
+    {
+      "source": "clarity",
+      "entry": "The Corruption Spreads II",
+      "hash": "e41ba92d"
+    },
+    {
+      "source": "clarity",
+      "entry": "The Corruption Spreads III",
+      "hash": "e41ba92d"
+    },
+    {
+      "source": "clarity",
+      "entry": "The Corruption Spreads IV",
+      "hash": "e41ba92d"
+    },
+    { "source": "clarity", "entry": "Disease Vector", "hash": "29c166d8" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file outbreak-perfected",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-pulse-rifle-outbreak-perfected].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-pulse-rifle-outbreak-perfected].timing.magazine",
+  "totalShots": "$quantum[primaries-pulse-rifle-outbreak-perfected].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-pulse-rifle-outbreak-perfected].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Disease Vector, Outbreak Perfected Catalyst",
+    "description": "Nanite Damage is increased by 25%.\nEnemies that die with Nanites attached to them release four Nanites around them, each dealing 13 [4] damage.\nNanite Damage is increased by 25%.\nEnemies that die with Nanites attached to them release four Nanites around them, each dealing 13 [4] damage.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-pulse-rifle-outbreak-perfected].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

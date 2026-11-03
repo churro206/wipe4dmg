@@ -1,0 +1,43 @@
+{
+  "id": "crimson",
+  "kind": "exoticWeapon",
+  "name": "Crimson",
+  "texts": [
+    { "source": "clarity", "entry": "Banned Weapon", "hash": "85a9362e" },
+    { "source": "clarity", "entry": "Crimson Catalyst", "hash": "6fc68597" },
+    { "source": "clarity", "entry": "Cruel Remedy", "hash": "3e5ce120" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file crimson",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-crimson].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-crimson].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-crimson].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-crimson].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "To the Pain, Crimson Catalyst",
+    "description": "Passively grants 20 Range.\nEvery 30 points of damage taken with the weapon readied grants a Stack of 'To the Pain'. Maximum of 10 Stacks. Stowing the weapon removes all Stacks.\nEach Stack grants ? Handling and 2 Aim Assist, maxing out at ? Handling and 20 Aim Assist.\nSelf-damage and environmental damage do not count.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-crimson].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

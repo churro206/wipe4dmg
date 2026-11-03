@@ -1,0 +1,51 @@
+{
+  "id": "heir-apparent",
+  "kind": "exoticWeapon",
+  "name": "Heir Apparent",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Armor of the Colossus",
+      "hash": "3661f232"
+    },
+    {
+      "source": "clarity",
+      "entry": "Heir Apparent Catalyst",
+      "hash": "128d4599"
+    },
+    { "source": "clarity", "entry": "Heavy Slug Thrower", "hash": "d21f9ca2" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file heir-apparent",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-machine-gun-heir-apparent].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-machine-gun-heir-apparent].timing.magazine",
+  "totalShots": "$quantum[heavies-machine-gun-heir-apparent].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-machine-gun-heir-apparent].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Legion's Bulwark, Heir Apparent Catalyst",
+    "description": "Arc Shield gains 75% [25%] Damage Resistance.\nRefills 50% of the magazine upon Arc Shield being depleted.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-machine-gun-heir-apparent].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

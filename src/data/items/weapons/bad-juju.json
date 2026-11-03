@@ -1,0 +1,42 @@
+{
+  "id": "bad-juju",
+  "kind": "exoticWeapon",
+  "name": "Bad Juju",
+  "texts": [
+    { "source": "clarity", "entry": "Bad Juju Catalyst", "hash": "b5cce70b" },
+    { "source": "clarity", "entry": "String of Curses", "hash": "dc35ec56" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file bad-juju",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-pulse-rifle-bad-juju].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-pulse-rifle-bad-juju].timing.magazine",
+  "totalShots": "$quantum[primaries-pulse-rifle-bad-juju].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-pulse-rifle-bad-juju].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Unending Curse, Bad Juju Catalyst",
+    "description": "String of Curses's maximum duration is increased by 2 seconds (5.5🠚7.5).",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-pulse-rifle-bad-juju].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

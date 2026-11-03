@@ -1,0 +1,43 @@
+{
+  "id": "sturm",
+  "kind": "exoticWeapon",
+  "name": "Sturm",
+  "texts": [
+    { "source": "clarity", "entry": "Accomplice", "hash": "97232c06" },
+    { "source": "clarity", "entry": "Sturm Catalyst", "hash": "f6778c07" },
+    { "source": "clarity", "entry": "Storm and Stress", "hash": "4677368f" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file sturm",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-sturm].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-sturm].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-sturm].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-sturm].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Helping Hands, Sturm Catalyst",
+    "description": "Grants 40 Handling and 20 Range.\nKills with Overcharged Rounds grants 2 stacks of 'Helping Hands'. Maximum of 6 stacks.\nHelping Hands grants 50% decreased Stow/Ready Animation Speed while active. Readying Sturm or a Together Forevever weapon consumes one stack.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-sturm].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

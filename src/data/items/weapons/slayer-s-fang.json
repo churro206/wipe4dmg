@@ -1,0 +1,57 @@
+{
+  "id": "slayer-s-fang",
+  "kind": "exoticWeapon",
+  "name": "Slayer's Fang",
+  "texts": [
+    { "source": "clarity", "entry": "Nightsworn Sight", "hash": "dd85bab2" },
+    { "source": "clarity", "entry": "Heart Piercer", "hash": "937eb3c6" },
+    { "source": "clarity", "entry": "Stats for All Refit", "hash": "e14330c5" },
+    { "source": "clarity", "entry": "Cascade Point Refit", "hash": "884a17ac" },
+    {
+      "source": "clarity",
+      "entry": "Repulsor Brace Refit",
+      "hash": "74db3d11"
+    },
+    { "source": "clarity", "entry": "Loose Change Refit", "hash": "eac1c349" },
+    {
+      "source": "clarity",
+      "entry": "Nightsworn Sight III",
+      "hash": "dd85bab2"
+    },
+    { "source": "clarity", "entry": "Nightsworn Sight II", "hash": "dd85bab2" },
+    { "source": "clarity", "entry": "Nightsworn Sight IV", "hash": "dd85bab2" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file slayer-s-fang",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-shotgun-slayer-s-fang].timing.fireRateRpm",
+  "magazine": "$quantum[specials-shotgun-slayer-s-fang].timing.magazine",
+  "totalShots": "$quantum[specials-shotgun-slayer-s-fang].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-shotgun-slayer-s-fang].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Stats for All Refit, Cascade Point Refit, Repulsor Brace Refit, Loose Change Refit",
+    "description": "Grants the Stats For All trait:\nUpon damaging 3 Separate Enemies within 3 seconds of each, for 10 seconds:\n• 35 Handling and Reload Speed\n• 10 Stability and Range\n• 5% increased Damage Falloff Distance\n• 0.95x Reload Duration Multiplier\nBuff duration cannot be refreshed.\nGrants the Cascade Point trait:\nAfter scoring a kill or multiple Precision Hits within 5 seconds of each with a different weapon:\nReadying this weapon reduces its Firing Delay for 2.5 seconds.\nFiring Delay is reduced by 30% on SMGs and Machine Guns and by 40% on other archetypes.\nPrecision Hits requried per weapon archetype:\n• Bows, Linear Fusion/Sniper Rifles, Shotguns, Glaive Projectiles: 2 hits\n• Hand Cannons, Scout Rifles: 4 hits\n• Auto/Trace/Pulse Rifles, SMGs, Machine Guns, Sidearms: 6 hits\nGrants the Repulsor Brace trait:\nKills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence).\nGrants the Loose Change trait:\nApplying an Elemental Debuff grants the following benefits for 9 seconds:\n• 50 Reload Speed and 20 Aim Assist\n• 20% decreased ADS Movement Speed Penalty\nBuff can be activated while stowed.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-shotgun-slayer-s-fang].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

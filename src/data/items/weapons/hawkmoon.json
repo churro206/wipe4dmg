@@ -1,0 +1,42 @@
+{
+  "id": "hawkmoon",
+  "kind": "exoticWeapon",
+  "name": "Hawkmoon",
+  "texts": [
+    { "source": "clarity", "entry": "Paracausal Shot", "hash": "7687742b" },
+    { "source": "clarity", "entry": "Hawkmoon Catalyst", "hash": "8e3dbb1d" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file hawkmoon",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-hawkmoon-cata].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-hawkmoon-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-hawkmoon-cata].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Hunter's Trance, Hawkmoon Catalyst",
+    "description": "Increases Magazine Size by 1 (8🠚9).\nGrants the following benefits at 1|2|3|...|7| stacks of Paracausal Charge:\n• 8|14|22|26|28|29|30 Range\n• 15|25|35|40|50|50|50 Reload Speed\n• ? Handling\nClarity's Exotic Weapon Insights built by Hawkmoona Matata. Enjoy! ♥",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-hawkmoon-cata].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

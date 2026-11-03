@@ -1,0 +1,49 @@
+{
+  "id": "d-a-r-c-i",
+  "kind": "exoticWeapon",
+  "name": "D.A.R.C.I.",
+  "texts": [
+    { "source": "clarity", "entry": "Personal Assistant", "hash": "da0584d9" },
+    { "source": "clarity", "entry": "Target Acquired", "hash": "d40cdee2" },
+    { "source": "clarity", "entry": "D.A.R.C.I. Catalyst", "hash": "fa9ef7ae" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file d-a-r-c-i",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-sniper-rifle-d-a-r-c-i].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-sniper-rifle-d-a-r-c-i].timing.magazine",
+  "totalShots": "$quantum[heavies-sniper-rifle-d-a-r-c-i].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-sniper-rifle-d-a-r-c-i].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Networked Targeting, D.A.R.C.I. Catalyst",
+    "description": "Passively grants 20 Stability.\nHits on Highlighted targets grants one stack of 'Networked Targeting' to you and allies within a 15 meter radius for 10.5 seconds. Maximum of 5 stacks.\nNetworked Targeting buffs D.A.R.C.I and Non-Exotic Sniper Rifles.\nBenefits at 1|2|3|4|5 Stacks:\n• 2.8%|6.1%|9.1%|12.5%|15.9% increased damage\n• ? Stability, Handling, Aim Assist, Flinch Resistance\nGranting the 5th stack to an ally increases D.A.R.C.I's damage by an additional 15%.",
+    "effect": "unknown",
+    "timing": {
+      "fireRateRpm": "$quantum[heavies-sniper-rifle-d-a-r-c-i-cata].timing.fireRateRpm",
+      "magazine": "$quantum[heavies-sniper-rifle-d-a-r-c-i-cata].timing.magazine",
+      "totalShots": "$quantum[heavies-sniper-rifle-d-a-r-c-i-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[heavies-sniper-rifle-d-a-r-c-i-cata].timing.reloadTimeMs"
+    }
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-sniper-rifle-d-a-r-c-i].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

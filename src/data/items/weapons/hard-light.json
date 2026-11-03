@@ -1,0 +1,42 @@
+{
+  "id": "hard-light",
+  "kind": "exoticWeapon",
+  "name": "Hard Light",
+  "texts": [
+    { "source": "clarity", "entry": "Hard Light Catalyst", "hash": "2fc0c4b5" },
+    { "source": "clarity", "entry": "Volatile Light", "hash": "a5a9c82f" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file hard-light",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-hard-light].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-hard-light].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-hard-light].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-hard-light].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Light Touch, Hard Light Catalyst",
+    "description": "Grants 25 Stability.\nWhile Amplified, Radiant, or Devour is active:\n• ? Handling\n• ? Reload Speed\n• ?% decreased Reload Animation Duration\n• ?% decreased ADS Animation Duration",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-hard-light].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

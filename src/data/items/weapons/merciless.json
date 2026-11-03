@@ -1,0 +1,34 @@
+{
+  "id": "merciless",
+  "kind": "exoticWeapon",
+  "name": "Merciless",
+  "texts": [
+    { "source": "clarity", "entry": "Conserve Momentum", "hash": "e5964d14" },
+    { "source": "clarity", "entry": "Merciless Catalyst", "hash": "5a13edd2" },
+    { "source": "clarity", "entry": "Impetus", "hash": "a4e46823" }
+  ],
+  "chargeTimeMs": "$manifest[Merciless].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[specials-fusion-rifle-merciless].timing.fireRateRpm",
+  "magazine": "$quantum[specials-fusion-rifle-merciless].timing.magazine",
+  "totalShots": "$quantum[specials-fusion-rifle-merciless].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-fusion-rifle-merciless].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Heal Clip, Merciless Catalyst",
+    "description": "Grants 40 Range and 40 Stability.\nFinishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-fusion-rifle-merciless].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

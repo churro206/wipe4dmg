@@ -1,0 +1,53 @@
+{
+  "id": "ager-s-scepter",
+  "kind": "exoticWeapon",
+  "name": "Ager's Scepter",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Ager's Scepter Catalyst",
+      "hash": "d1fa026c"
+    },
+    { "source": "clarity", "entry": "Rega's Refrain", "hash": "c55b8033" },
+    { "source": "clarity", "entry": "Ager's Call", "hash": "33ca1098" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ager-s-scepter",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-trace-rifle-ager-s-scepter].timing.fireRateRpm",
+  "magazine": "$quantum[specials-trace-rifle-ager-s-scepter].timing.magazine",
+  "totalShots": "$quantum[specials-trace-rifle-ager-s-scepter].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-trace-rifle-ager-s-scepter].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Will Given Form, Ager's Scepter Catalyst",
+    "description": "While at full Super Energy, Hold [Reload] to activate Will Given Form.\nWill Given Form immediately takes away 20% Super Energy, then drains at a rate of 4% Super Energy per second to grant the following benefits:\n• Overfills the magazine from reserves to 192\n• 80% increased damage\n• 20 [0] slow stacks per hit\nEffect lasts until deactivated by holding [Reload] again, or until the magazine is emptied, super energy is drained, or the weapon is stowed.\nDoes not count as a super for related effects or buffs.",
+    "effect": "unknown",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timing.fireRateRpm",
+      "magazine": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timing.magazine",
+      "totalShots": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[specials-trace-rifle-ager-s-scepter-cata].timing.reloadTimeMs"
+    }
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-trace-rifle-ager-s-scepter].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

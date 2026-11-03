@@ -1,0 +1,43 @@
+{
+  "id": "coldheart",
+  "kind": "exoticWeapon",
+  "name": "Coldheart",
+  "texts": [
+    { "source": "clarity", "entry": "Cold Fusion", "hash": "db9c2d9c" },
+    { "source": "clarity", "entry": "Coldheart Catalyst", "hash": "0ddf41f7" },
+    { "source": "clarity", "entry": "Longest Winter", "hash": "b162785b" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file coldheart",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-trace-rifle-coldheart].timing.fireRateRpm",
+  "magazine": "$quantum[specials-trace-rifle-coldheart].timing.magazine",
+  "totalShots": "$quantum[specials-trace-rifle-coldheart].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-trace-rifle-coldheart].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Supercharged Magazine, Coldheart Catalyst",
+    "description": "Passively grants 20 Stability and 20 Reload Speed.\n(Yes, these are the same stats that are set to 100 when at 100% Fusion Energy)\nRefills 5% of the magazine (rounded up) every 1.5 seconds while Amplified.\nActivating Speed Booster increases this rate to once every 0.25 seconds, and allows the perk to overfill the magazine up to double its base capacity.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-trace-rifle-coldheart].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

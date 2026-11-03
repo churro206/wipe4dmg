@@ -1,0 +1,42 @@
+{
+  "id": "one-thousand-voices",
+  "kind": "exoticWeapon",
+  "name": "One Thousand Voices",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "One Thousand Voices Catalyst",
+      "hash": "a0be86c7"
+    },
+    { "source": "clarity", "entry": "Ahamkara's Eye", "hash": "38ee2681" },
+    {
+      "source": "clarity",
+      "entry": "Unforeseen Repercussions",
+      "hash": "83552326"
+    }
+  ],
+  "chargeTimeMs": "$manifest[One Thousand Voices].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[heavies-fusion-rifle-one-thousand-voices].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-fusion-rifle-one-thousand-voices].timing.magazine",
+  "totalShots": "$quantum[heavies-fusion-rifle-one-thousand-voices].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-fusion-rifle-one-thousand-voices].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Fall from Grace, One Thousand Voices Catalyst",
+    "description": "I gain 30 Stability and 20 Ammo Generation.\nEach of my detonations release a Taken Seeker which aggressively tracks and burrows into nearby targets, dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds.\nMy Taken Seekers can stun Overload Champions.\nMy foes can be afflicted by up to 5 seekers at once, and Blighted Enemies (directly impacted by Witherhoard) take 100% increased tick damage.\nI do not interact with Malfeasance or Wish-Ender.\n▛ Most of those who bargain with me do not win... ▟",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-fusion-rifle-one-thousand-voices].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

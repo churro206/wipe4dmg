@@ -20,7 +20,12 @@ const FULL_AMMO_SECONDS = 600;
 
 // Known model errors from the research on 2026-10-20 (docs/mechanics). Remove an id once
 // its correction lands; the test then has to pass.
-const KNOWN_DEVIATIONS = new Set<string>([]);
+// OTV (Q1, ADR 0019): the scaffold has no scorch and no catalyst damage; M1 puts them back.
+const KNOWN_DEVIATIONS = new Set<string>([
+  "aegis-otv-ember-of-ashes",
+  "aegis-otv-catalyst",
+  "aegis-otv-catalyst-with-ember-of-ashes",
+]);
 
 const buckets = loadBuckets(rawBuckets);
 const keywords = loadKeywords(

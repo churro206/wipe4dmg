@@ -2,7 +2,7 @@
 
 Generiert mit `npm run check:text` (Regel in `scripts/lib/textCheck.ts`). Jeder Multiplier-Part, Catalyst und Grant neben den Texten seines Items (Clarity, Compendium, Court, Zitat der Quelle). Wert: (m − 1) × 100 steht im Text; Aegis- und Quantum-Messungen zählen als gemessen, eine Prozentzahl im Text trotzdem auf ±25 %. Dauer: eine Dauer aus dem Text. Ziel: Quellen, Elemente und Waffentypen gegen die Wörter im Text. „Ungenutzt“: Prozentzahlen im Text, die kein Part des Items nutzt (nur zur Info). Gründe für Abweichungen: `tests/fixtures/text-check.json`.
 
-Zeilen 309: ok 284, über Effect 5, gemessen 5, kein Text 3, Abweichung 12 (davon ohne Grund 0).
+Zeilen 294: ok 274, über Effect 5, gemessen 2, kein Text 3, Abweichung 10 (davon ohne Grund 0).
 
 ## Abweichungen
 
@@ -18,8 +18,6 @@ Zeilen 309: ok 284, über Effect 5, gemessen 5, kein Text 3, Abweichung 12 (davo
 | Star-Eater Scales | target | +50 % exoticIntrinsic, super | Thundercrash/Twilight Arsenal/Nova Bomb/Nova Bomb nicht im Text | Siehe #1:value; die Supers stehen im Eintrag des Class Items. |
 | Star-Eater Scales | value | +35 % exoticIntrinsic, super | Text: 2, 0.5, 18.2, 36.4, 54.6, 59.7, 64.8, 70 % | Die Obergrenze steht nur im Eintrag des Exotic Class Items (Compendium): „Needlestorm receives up to 35% Increased Super Damage“. |
 | Star-Eater Scales | target | +35 % exoticIntrinsic, super | Needlestorm nicht im Text | Siehe #2:value; Needlestorm steht im Eintrag des Class Items. |
-| Izanagi's Burden: Catalyst | value | +13.1 % weaponPerk | Text: 20, 155, 370 % | Override: Clarity +20 % gilt auf Honed Edge x4 (291 % → 370 % Crit). Ohne Catalyst ist Honed Edge pro Munition schwächer als normale Schüsse (14910 ÷ 1,20 = 12404 < 13180, Quantum), mit Catalyst stärker: Wirkung des Catalysts = 14910 ÷ 13180 = ×1,131. |
-| Outbreak Perfected: Catalyst | value | +15 % weaponPerk | Text: 25 % | Override: Clarity +25 % gilt nur dem Nanite-Anteil (48 von 80 pro Kugel, Quantum): 32 + 48 × 1,25 = 92, also ×1,15. |
 
 ## Alle Zeilen
 
@@ -310,25 +308,10 @@ Zeilen 309: ok 284, über Effect 5, gemessen 5, kein Text 3, Abweichung 12 (davo
 | Wormhusk Crown | duration | 10 s | ok | Compendium Exotic Armors: Grants a stack of Burning Souls for 10 seconds, up to a maximum of 3 stacks. |  |
 | Dawn Chorus | value | +100 % exoticIntrinsic, keyword | ok | Compendium Exotic Armors: Ignitions deal 100% increased damage. | 40 %, 5 % |
 | Dawn Chorus | target | +100 % exoticIntrinsic, keyword | ok |  |  |
-| Ager's Scepter: Catalyst | value | +80 % weaponPerk | ok | Catalyst Will Given Form, Ager's Scepter Catalyst: • 80% increased damage |  |
 | Anarchy: Catalyst | value | +15.7 % weaponPerk | gemessen | Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback |  |
-| D.A.R.C.I.: Networked Targeting x5 | value | +6.03 % weaponPerk | ok | Catalyst Networked Targeting, D.A.R.C.I. Catalyst: • 2.8%\|6.1%\|9.1%\|12.5%\|15.9% increased damage |  |
 | Dead Man's Tale: Catalyst | value | +27 % weaponPerk | ok | Catalyst Dark-Forged Trigger, Dead Man's Tale Catalyst: • 27% [15%] increased damage at x5 Cranial Spike |  |
 | Deterministic Chaos: Catalyst | value | +25 % weaponPerk | ok | Catalyst Target Lock, Deterministic Chaos Catalyst: Assuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity. |  |
-| Graviton Lance: Catalyst | value | +20 % weaponPerk | ok | Catalyst Vorpal Weapon, Turnabout, Graviton Lance Catalyst: • Primary Weapons: 20% [60%] |  |
-| Izanagi's Burden: Catalyst | value | +13.1 % weaponPerk | **Abweichung** | Text: 20, 155, 370 % |  |
-| Malfeasance: Vorpal Weapon | value | +19.77 % weaponPerk | ok | Catalyst Vorpal Weapon, Malfeasance Catalyst: • Primary Weapons: 20% [60%] |  |
-| One Thousand Voices: catalyst | value | +45.35 % weaponPerk | gemessen | Messung mit und ohne Catalyst |  |
-| Outbreak Perfected: Catalyst | value | +15 % weaponPerk | **Abweichung** | Text: 25 % |  |
-| Ruinous Effigy: Catalyst | value | +29.27 % weaponPerk | gemessen | 30 % im Text |  |
-| Ruinous Effigy: Catalyst | duration | 7 s | ok | Catalyst Deconstruction, Ruinous Effigy Catalyst: Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] increased weapon damage for 7 seconds. |  |
-| Ticuu's Divination: Catalyst | value | +87.1 % weaponPerk | ok | Catalyst Causality Quiver, Ticuu's Divination Catalyst: • PvE: 16%\|31%\|49%\|67.5%\|87%\|87% |  |
 | Touch of Malice: Catalyst | value | +25 % weaponPerk | ok | Catalyst Precision Instrument, Touch of Malice Catalyst: 4.17% \| 8.33% \| 12.5% \| 16.67% \| 20.83% \| 25% |  |
-| Vex Mythoclast: Catalyst | value | +20.35 % weaponPerk | ok | Catalyst Calculated Balance, Vex Mythoclast Catalyst: Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds. |  |
-| Vex Mythoclast: Catalyst | duration | 5 s | ok | Catalyst Calculated Balance, Vex Mythoclast Catalyst: Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds. |  |
-| Whisper of the Worm: Whispered Breathing | value | +47.18 % weaponPerk | gemessen | Messung mit und ohne Catalyst |  |
-| Whisper of the Worm: Whispered Breathing | duration | 1.2 s | ok | Catalyst Whisper Catalyst, Whispered Breathing: Aiming Down Sights for 1.2 seconds without shooting grants 'Whispered Breathing' until you leave ADS. |  |
-| Wish-Keeper: Catalyst | value | +20 % weaponPerk | ok | Catalyst Enduring Snare Refit, Multi-Threaded Snare Refit, Vorpal Weapon Refit, Hatchling Refit: • Primary Weapons: 20% [60%] |  |
 | Twilight Arsenal → weaken | duration | 6 s | ok | Court:  \| 6s |  |
 | Nova Warp → weaken | duration | 6 s | ok | Court:  \| 6s |  |
 | Lightweight Knife → radiant | duration | 10 s | ok | quote: Precision Hits grant Radiant for 10 seconds. |  |

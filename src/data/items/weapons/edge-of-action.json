@@ -1,0 +1,46 @@
+{
+  "id": "edge-of-action",
+  "kind": "exoticWeapon",
+  "name": "Edge of Action",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Edge of Action Catalyst",
+      "hash": "20c7cb96"
+    },
+    { "source": "clarity", "entry": "Edge of Action", "hash": "dc69fd9d" },
+    { "source": "clarity", "entry": "Remote Shield", "hash": "6bc48cc5" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file edge-of-action",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-glaive-edge-of-action].timing.fireRateRpm",
+  "magazine": "$quantum[specials-glaive-edge-of-action].timing.magazine",
+  "totalShots": "$quantum[specials-glaive-edge-of-action].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-glaive-edge-of-action].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Repulsor Brace, Edge of Action Catalyst",
+    "description": "Kills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence).",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-glaive-edge-of-action].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

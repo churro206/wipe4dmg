@@ -1,0 +1,51 @@
+{
+  "id": "service-of-luzaku",
+  "kind": "exoticWeapon",
+  "name": "Service of Luzaku",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Service of Luzaku Catalyst",
+      "hash": "8d68fa5b"
+    },
+    {
+      "source": "clarity",
+      "entry": "Dichotomous Thinking",
+      "hash": "463a3cf4"
+    },
+    { "source": "clarity", "entry": "Meaning-Making", "hash": "ca8e9083" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file service-of-luzaku",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-machine-gun-service-of-luzaku].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-machine-gun-service-of-luzaku].timing.magazine",
+  "totalShots": "$quantum[heavies-machine-gun-service-of-luzaku].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-machine-gun-service-of-luzaku].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Service of Luzaku Catalyst",
+    "description": "Teeming Nests can be harvested into a collectible Tangle after spawning 6 Threadlings. This destroys the nest.\nThese tangles ignore the global Tangle cooldown.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-machine-gun-service-of-luzaku].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "thorn",
+  "kind": "exoticWeapon",
+  "name": "Thorn",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Mark of the Devourer",
+      "hash": "1f208e6a"
+    },
+    { "source": "clarity", "entry": "Soul Devourer", "hash": "15227e6f" },
+    { "source": "clarity", "entry": "Thorn Catalyst", "hash": "c816bbdd" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file thorn",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-thorn].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-thorn].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-thorn].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-thorn].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Refined Soul, Thorn Catalyst",
+    "description": "Passively grants 15 Range, 5 Stability, and 5 Airborne Effectiveness.\nKills or collecting Remnants grants 'Refined Soul' for 7 seconds. Additional kills or Remnants can extend this timer up to 11 seconds.\nRefined Soul grants 10 Range, 15 Handling, and 50 Mobility.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-thorn].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

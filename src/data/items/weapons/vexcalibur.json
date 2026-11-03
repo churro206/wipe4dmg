@@ -1,0 +1,63 @@
+{
+  "id": "vexcalibur",
+  "kind": "exoticWeapon",
+  "name": "Vexcalibur",
+  "texts": [
+    { "source": "clarity", "entry": "Perpetual Loophole", "hash": "b8afc25d" },
+    {
+      "source": "clarity",
+      "entry": "M1R Distribution Matrix",
+      "hash": "addb5fae"
+    },
+    {
+      "source": "clarity",
+      "entry": "M1R Distribution Matrix IV",
+      "hash": "addb5fae"
+    },
+    {
+      "source": "clarity",
+      "entry": "M1R Distribution Matrix III",
+      "hash": "addb5fae"
+    },
+    {
+      "source": "clarity",
+      "entry": "M1R Distribution Matrix II",
+      "hash": "addb5fae"
+    },
+    { "source": "clarity", "entry": "Robber Refit", "hash": "1059f304" },
+    { "source": "clarity", "entry": "Immovable Refit", "hash": "0a706c3b" },
+    { "source": "clarity", "entry": "Feedback Refit", "hash": "bd779948" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file vexcalibur",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-glaive-vexcalibur].timing.fireRateRpm",
+  "magazine": "$quantum[specials-glaive-vexcalibur].timing.magazine",
+  "totalShots": "$quantum[specials-glaive-vexcalibur].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-glaive-vexcalibur].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Robber Refit, Immovable Refit, Feedback Refit",
+    "description": "Grants the Grave Robber trait:\nPowered Melee Hits and (Glaive) Melee Kills refill the magazine from reserves.\n3 second cooldown between activations.\nGrants the Immovable Object trait:\nWhile blocking and stationary:\nGlaive Projectiles Hits grant 90% increased Weapon Energy.\nGrants the Replenishing Aegis trait:\nRefills 1 round into the Magazine from reserves upon blocking damage.\n1 second cooldown after activation. Does not work while the magazine is overfilled (assumed).",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-glaive-vexcalibur].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

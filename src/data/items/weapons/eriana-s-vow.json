@@ -1,0 +1,51 @@
+{
+  "id": "eriana-s-vow",
+  "kind": "exoticWeapon",
+  "name": "Eriana's Vow",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Death at First Glance",
+      "hash": "ac019e2a"
+    },
+    {
+      "source": "clarity",
+      "entry": "Eriana's Vow Catalyst",
+      "hash": "532a7726"
+    },
+    { "source": "clarity", "entry": "Looks Can Kill", "hash": "f1e93c7b" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file eriana-s-vow",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-hand-cannon-eriana-s-vow].timing.fireRateRpm",
+  "magazine": "$quantum[specials-hand-cannon-eriana-s-vow].timing.magazine",
+  "totalShots": "$quantum[specials-hand-cannon-eriana-s-vow].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-hand-cannon-eriana-s-vow].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "More to Give, Eriana's Vow Catalyst",
+    "description": "Increases the magazine size by 3 (6🠚9).\nRefills stowed weapon from reserves after 3.5 seconds of it being stowed.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-hand-cannon-eriana-s-vow].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

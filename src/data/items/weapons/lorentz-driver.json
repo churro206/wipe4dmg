@@ -1,0 +1,29 @@
+{
+  "id": "lorentz-driver",
+  "kind": "exoticWeapon",
+  "name": "Lorentz Driver",
+  "texts": [
+    { "source": "clarity", "entry": "EM Anomaly", "hash": "0bd2b919" },
+    { "source": "clarity", "entry": "Lagrangian Sight", "hash": "7cc07d8c" }
+  ],
+  "chargeTimeMs": "$manifest[Lorentz Driver].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[specials-linear-fusion-rifle-lorentz-driver].timing.fireRateRpm",
+  "magazine": "$quantum[specials-linear-fusion-rifle-lorentz-driver].timing.magazine",
+  "totalShots": "$quantum[specials-linear-fusion-rifle-lorentz-driver].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-linear-fusion-rifle-lorentz-driver].timing.reloadTimeMs",
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-linear-fusion-rifle-lorentz-driver].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

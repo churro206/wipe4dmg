@@ -1,38 +1,5 @@
 [
   {
-    "weapon": "Sleeper Simulant",
-    "reason": "Aegis und Quantum messen nur mit Katalysator (16 Schuss, kürzere Charge Time). Ohne Katalysator: 14 Schuss und 250 ms längere Charge Time pro Schuss.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Sleeper Simulant Catalyst",
-        "text": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774)"
-      }
-    ],
-    "timing": {
-      "from": "Aegis",
-      "totalShots": 14,
-      "addIntervalSeconds": 0.25
-    }
-  },
-  {
-    "weapon": "One Thousand Voices",
-    "reason": "Der Text nennt Scorch pro Explosion; ein Shot hat 9 Explosionen à x10, also x90 pro Shot.",
-    "quotes": [
-      {
-        "source": "compendium",
-        "entry": "One Thousand Voices",
-        "text": "marks 9 delayed explosion spots"
-      },
-      {
-        "source": "compendium",
-        "entry": "One Thousand Voices",
-        "text": "inflicting x10+5 Scorch"
-      }
-    ],
-    "scorchStacksPerShot": 90
-  },
-  {
     "weapon": "Alethonym",
     "reason": "Quantum hat nur „Passive“ und „Spam“ mit gleichem Timing; „Spam“ ist das schnellste Feuern wie Aegis' „average“. Skala: Aegis zählt Einschlag und Impale-Ticks pro Granate (337 impact, 237 tick), Quantum nur den Einschlag (102); Aegis gilt.",
     "quotes": [
@@ -200,40 +167,6 @@
     }
   },
   {
-    "weapon": "Fighting Lion",
-    "reason": "Aegis' Mittel enthält Sekundärschaden und Volatile (388 secondary, 216 volatile), Quantums Einschlag nicht (581); Aegis gilt.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "grenade-launcher-fighting-lion-average-with-volatile-damage",
-        "text": "388 secondary, 216 volatile"
-      }
-    ],
-    "aegisWins": true,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-grenade-launcher-fighting-lion"
-    }
-  },
-  {
-    "weapon": "Final Warning",
-    "reason": "Der geladene Burst („ADS charged mark“, 230,5) braucht eine Ladezeit, die keine Quelle misst; Quantums 450 rpm gelten für Tap Fire. Deshalb Tap Fire: Aegis 109,8 = Quantum Precision 110.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "sidearm-final-warning-ads-tap-fire",
-        "text": "ADS tap fire"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-sidearm-final-warning",
-        "text": "\"precisionDamage\":110"
-      }
-    ],
-    "base": "sidearm-final-warning-ads-tap-fire",
-    "timing": { "from": "Quantum", "row": "primaries-sidearm-final-warning" }
-  },
-  {
     "weapon": "Grand Overture",
     "reason": "Optimal gespielt mit Raketen-Salven, wie Aegis Sustained „volleys when available“ (58 Schuss in 49,1 s, Quantum „w/ rockets“ 49 s); Schaden pro Schuss aus derselben Zeile (Mittel aus Kugeln und Raketen).",
     "quotes": [
@@ -254,64 +187,6 @@
       "from": "Aegis",
       "row": "grand-overture-volleys-when-available",
       "noReloads": true
-    }
-  },
-  {
-    "weapon": "Malfeasance",
-    "reason": "Aegis' Mittel enthält die Slug-Explosionen (280 slug), Quantums Kugel nicht (86); Aegis gilt.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "hand-cannon-malfeasance-average-with-slugs-vorpal-weapon",
-        "text": "280 slug"
-      }
-    ],
-    "aegisWins": true,
-    "timing": { "from": "Quantum", "row": "primaries-hand-cannon-malfeasance" }
-  },
-  {
-    "weapon": "Merciless",
-    "reason": "Aegis' Weapons-Zeilen messen ein ganzes Magazin als einen Shot („full mag“); Schaden pro Bolzen und Timing aus Sustained (Base 1166, Quantum 1155).",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "merciless",
-        "text": "1000ms charge; 1317ms reload"
-      }
-    ],
-    "perShotFromTiming": true,
-    "timing": { "from": "Aegis", "row": "merciless" }
-  },
-  {
-    "weapon": "Outbreak Perfected",
-    "reason": "Konflikt ohne klare Einheit: Aegis' Werte pro Burst liegen schon ohne Nanites beim Vierfachen von Quantum (398,1 ÷ 3 = 133 gegen 32 pro Kugel). Quantum nennt seine Annahme klar (4 Nanites alle 12 Schuss) und gilt deshalb: 80 pro Kugel (Precision). Catalyst: Nanites +25 % (Clarity); von 80 sind 48 Nanites (Quantum ohne Nanites 32): 32 + 48 × 1,25 = 92, also ×1,15.",
-    "catalystFactor": 1.15,
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Outbreak Perfected Catalyst",
-        "text": "Nanite Damage is increased by 25%"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-pulse-rifle-outbreak-perfected",
-        "text": "\"precisionDamage\":32"
-      },
-      {
-        "source": "aegis",
-        "entry": "pulse-rifle-outbreak-perfected-average-per-burst-no-nanites-appended-mag-up-to-rewind-end",
-        "text": "average per burst - no nanites"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-pulse-rifle-outbreak-perfected-x4-nanites",
-        "text": "Assumes 4 nanites spawn every 12 shots."
-      }
-    ],
-    "perShot": 80,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-pulse-rifle-outbreak-perfected-x4-nanites"
     }
   },
   {
@@ -341,40 +216,6 @@
       "from": "Quantum",
       "row": "primaries-pulse-rifle-revision-zero-2-burst",
       "catalystRow": "primaries-pulse-rifle-revision-zero-2-burst-mix-fttc"
-    }
-  },
-  {
-    "weapon": "Riskrunner",
-    "reason": "Aegis 27,0 gegen Quantum 28 (3,4 %); Aegis gilt.",
-    "quotes": [
-      { "source": "aegis", "entry": "smg-riskrunner", "text": "\"perShot\":27" }
-    ],
-    "aegisWins": true,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-submachine-gun-riskrunner"
-    }
-  },
-  {
-    "weapon": "Tessellation",
-    "reason": "Schaden aus Weapons „Property: Irreducible“ (2557,6, ohne Transcendent); Timing aus Aegis Sustained (22 Schuss, 4567 ms Reload, volle Granaten-Energie).",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "fusion-rifle-tessellation-property-irreducible",
-        "text": "Property: Irreducible"
-      },
-      {
-        "source": "aegis",
-        "entry": "tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated",
-        "text": "666ms charge; 4567ms reload"
-      }
-    ],
-    "base": "fusion-rifle-tessellation-property-irreducible",
-    "aegisWins": true,
-    "timing": {
-      "from": "Aegis",
-      "row": "tessellation-full-grenade-uptime-property-irreducible-transcendent-but-excludes-5-simulated"
     }
   },
   {
@@ -412,41 +253,6 @@
     }
   },
   {
-    "weapon": "Xenophage",
-    "reason": "Die Rampage-Stacks des Katalysators kommen nur aus Weapon Kills; der Absatz mit dem Bonus nennt das Wort „Kill“ nicht, deshalb hier von Hand: keine Wirkung gegen einen Boss ohne Adds.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Xenophage Catalyst",
-        "text": "Weapon Kills grant a Stack of Rampage."
-      }
-    ],
-    "catalystEffect": "none"
-  },
-  {
-    "weapon": "Graviton Lance",
-    "reason": "Aegis misst nur mit Katalysator (Vorpal Weapon); Quantum ohne gilt: 71 pro Kugel (Precision). Der Katalysator gibt Vorpal Weapon, +20 % für Primaries gegen Bosse (Clarity).",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "primaries-pulse-rifle-graviton-lance",
-        "text": "\"precisionDamage\":71"
-      },
-      {
-        "source": "clarity",
-        "entry": "Vorpal Weapon",
-        "text": "Primary Weapons: 20% [60%]"
-      }
-    ],
-    "base": "pulse-rifle-graviton-lance-burst-vorpal-weapon",
-    "perShot": 71,
-    "catalystFactor": 1.2,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-pulse-rifle-graviton-lance"
-    }
-  },
-  {
     "weapon": "Skyburner's Oath",
     "reason": "ADS ohne Ignitions: Aegis 114,3 = Quantum „ADS“ 116 (1,5 %); „Cabal“ ändert diesen Wert also nicht.",
     "quotes": [
@@ -466,57 +272,6 @@
     "timing": {
       "from": "Quantum",
       "row": "primaries-scout-rifle-skyburner-s-oath-ads"
-    }
-  },
-  {
-    "weapon": "Wish-Keeper",
-    "reason": "Aegis misst mit dem Katalysator Vorpal Weapon (+20 % für Primaries laut Clarity): 256,5 ÷ 1,2 = 213,75; Quantum ohne Katalysator bestätigt 214. Der Katalysator gibt ×1,2.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "bow-wish-keeper-vorpal-weapon",
-        "text": "416 seeker (2)"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-bow-wish-keeper",
-        "text": "\"precisionDamage\":214"
-      }
-    ],
-    "base": "bow-wish-keeper-vorpal-weapon",
-    "perShot": 213.75,
-    "catalystFactor": 1.2,
-    "timing": { "from": "Quantum", "row": "primaries-bow-wish-keeper" }
-  },
-  {
-    "weapon": "The Prospector",
-    "reason": "Aegis Sustained misst mit derselben Ausführung wie die Basiszeile (Base 1035 = Weapons 1035,2); Quantum hat nur Zeilen mit Katalysator.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "the-prospector-typical-boss-model-arc-compounding-kinetic-impacts",
-        "text": "2083ms reload"
-      }
-    ],
-    "timing": {
-      "from": "Aegis",
-      "row": "the-prospector-typical-boss-model-arc-compounding-kinetic-impacts"
-    }
-  },
-  {
-    "weapon": "Tommy's Matchbook",
-    "reason": "Aegis' Mittel enthält den Ramp-up und die Ignitions (154/91 ramped, 2345 ignition); Aegis gilt.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "auto-rifle-tommy-s-matchbook-average-with-ignition",
-        "text": "2345 ignition"
-      }
-    ],
-    "aegisWins": true,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-auto-rifle-tommy-s-matchbook"
     }
   },
   {
@@ -545,49 +300,6 @@
       "from": "Quantum",
       "row": "primaries-scout-rifle-touch-of-malice-touch-of-malice-tom"
     }
-  },
-  {
-    "weapon": "Vex Mythoclast",
-    "reason": "Aegis 93,4 gegen Quantum 113 (Quantum ohne Linear-Schüsse, Ursache offen); Aegis gilt.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "fusion-rifle-vex-mythoclast",
-        "text": "Calculated Balance"
-      }
-    ],
-    "aegisWins": true,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-fusion-rifle-vex-mythoclast"
-    }
-  },
-  {
-    "weapon": "The Fourth Horseman",
-    "reason": "Aegis misst ein ganzes Magazin als einen Shot („full mag“, vier Werte 3085/3578/4102/4655); pro Schuss 4197,6 ÷ 4 = 1049,4. Quantum (612 body) zählt den Anstieg pro Schuss nicht; Aegis gilt.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "shotgun-the-fourth-horseman-body-full-mag",
-        "text": "3085/3578/4102/4655 body"
-      },
-      {
-        "source": "quantum",
-        "entry": "specials-shotgun-the-fourth-horseman",
-        "text": "\"magazine\":4"
-      }
-    ],
-    "aegisWins": true,
-    "perShot": 1049.41
-  },
-  {
-    "weapon": "Wish-Ender",
-    "reason": "Aegis' Mittel 522,9 entspricht Quantums Precision 523; die Skala-Prüfung über den Einzeltreffer passt nicht, weil Aegis Pierce und Seeker mitzählt.",
-    "quotes": [
-      { "source": "aegis", "entry": "bow-wish-ender", "text": "555 pierce" }
-    ],
-    "aegisWins": true,
-    "timing": { "from": "Quantum", "row": "primaries-bow-wish-ender" }
   },
   {
     "weapon": "Turncoat",
@@ -711,78 +423,6 @@
     }
   },
   {
-    "weapon": "Izanagi's Burden",
-    "reason": "Catalyst: Honed Edge x4 +20 % (Clarity). Optimal gespielt schießt man damit Honed-Edge-Schüsse: Quantum „cata, 4x Honed Edge“ 14.910 gegen 13.180 normal, je 20 Shots, also ×1,131 pro Shot; Timing aus derselben Zeile (Reload 3,2 s).",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
-        "text": "\"totalDamage\":14910"
-      },
-      {
-        "source": "quantum",
-        "entry": "specials-sniper-rifle-izanagi-s-burden",
-        "text": "\"totalDamage\":13180"
-      }
-    ],
-    "catalystFactor": 1.131,
-    "timing": {
-      "from": "Quantum",
-      "row": "specials-sniper-rifle-izanagi-s-burden",
-      "catalystRow": "specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge"
-    }
-  },
-  {
-    "weapon": "Ticuu's Divination",
-    "reason": "Catalyst: x6 Causality Quiver +87 % Impact (Clarity); Quantum „cata, x6 Causality Arrows“ 391 gegen 209 Precision = ×1,871, passt zu Clarity.",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "primaries-bow-ticuu-s-divination-cata-x6-causality-arrows",
-        "text": "\"precisionDamage\":391"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-bow-ticuu-s-divination",
-        "text": "\"precisionDamage\":209"
-      }
-    ],
-    "catalystFactor": 1.871
-  },
-  {
-    "weapon": "Trinity Ghoul",
-    "reason": "Quantum misst nur mit Catalyst. Der Catalyst senkt die Draw Time von 756 auf 633 ms (Clarity): ohne ihn 0,123 s mehr pro Pfeil.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Trinity Ghoul Catalyst",
-        "text": "756ms🠚633ms"
-      }
-    ],
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-bow-trinity-ghoul-cata",
-      "addIntervalSeconds": 0.123,
-      "catalystRow": "primaries-bow-trinity-ghoul-cata"
-    }
-  },
-  {
-    "weapon": "The Chaperone",
-    "reason": "Catalyst: 3 Precision Hits laden 1 Schuss aus dem Nichts nach, nicht über das Grundmagazin (Clarity). Mit Slug-Precision: Munition 18 × 1,5 = 27, ein Magazin reicht für 6 + 2 + 1 = 9 Schuss.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "The Chaperone Catalyst",
-        "text": "Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air"
-      }
-    ],
-    "timing": {
-      "from": "Quantum",
-      "row": "specials-shotgun-the-chaperone",
-      "catalystValues": { "magazine": 9, "totalShots": 27 }
-    }
-  },
-  {
     "weapon": "Deterministic Chaos",
     "reason": "Catalyst gibt Target Lock; Clarity: ohne Fehlschuss im Mittel etwa +25 % über ein volles Magazin.",
     "quotes": [
@@ -795,18 +435,6 @@
     "catalystFactor": 1.25
   },
   {
-    "weapon": "Ace of Spades",
-    "reason": "Catalyst verstärkt Firefly, das Precision Kills braucht; gegen einen Boss ohne Adds keine Wirkung.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Ace of Spades Catalyst",
-        "text": "Firefly's explosion damage is increased by 50%"
-      }
-    ],
-    "catalystEffect": "none"
-  },
-  {
     "weapon": "Jötunn",
     "reason": "Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.",
     "quotes": [
@@ -814,78 +442,6 @@
         "source": "clarity",
         "entry": "Jötunn Catalyst",
         "text": "Weapon Kills trigger a Solar explosion"
-      }
-    ],
-    "catalystEffect": "none"
-  },
-  {
-    "weapon": "Microcosm",
-    "reason": "Der Bonus wirkt nur gegen Ziele unter 30 % Leben; der Rechner führt kein Boss-Leben, Annahme: keine Wirkung.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Microcosm Catalyst",
-        "text": "low (under 30%) Health targets"
-      }
-    ],
-    "catalystEffect": "none"
-  },
-  {
-    "weapon": "Monte Carlo",
-    "reason": "Der Bajonett-Stich braucht volle Markov-Chain-Stacks, die nur Kills geben; gegen einen Boss ohne Adds keine Wirkung.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Monte Carlo Catalyst",
-        "text": "at maximum Markov Chain stacks"
-      }
-    ],
-    "catalystEffect": "none"
-  },
-  {
-    "weapon": "Still Hunt",
-    "reason": "Lucky Shot braucht einen Precision Kill; gegen einen Boss ohne Adds keine Wirkung.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Still Hunt Catalyst",
-        "text": "within ? seconds of a Precision Kill"
-      },
-      {
-        "source": "aegis",
-        "entry": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots",
-        "text": "6412 2nd, 8402 3rd"
-      }
-    ],
-    "catalystEffect": "none",
-    "playstyleParts": [
-      {
-        "id": "cayde-s-retribution",
-        "name": "Cayde's Retribution (Golden Gun shots)",
-        "row": "sniper-rifle-still-hunt-cayde-s-retribution-all-three-shots"
-      }
-    ]
-  },
-  {
-    "weapon": "Sturm",
-    "reason": "Handling und Range ändern den Boss-Schaden nicht, Helping Hands braucht Kills.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Sturm Catalyst",
-        "text": "Kills with Overcharged Rounds grants 2 stacks"
-      }
-    ],
-    "catalystEffect": "none"
-  },
-  {
-    "weapon": "The Last Word",
-    "reason": "Nachladen und Buffs brauchen Kills; gegen einen Boss ohne Adds keine Wirkung.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "The Last Word Catalyst",
-        "text": "after scoring kills with your other Weapons"
       }
     ],
     "catalystEffect": "none"
@@ -901,73 +457,5 @@
       }
     ],
     "catalystEffect": "none"
-  },
-  {
-    "weapon": "Barrow-Dyad",
-    "reason": "Aegis misst 39 Kugeln mit Target Lock (Refit) und 6 Blighted Seekers. Kugel = Einzeltreffer 112 × 1,25 (Target Lock im Mittel über ein volles Magazin, Clarity; wie Deterministic Chaos) ÷ 3,17 = 44,164. Je Magazin 6 Seeker (Compendium: höchstens 6; Taken Ambition braucht 24 Treffer), jeder Seeker Explosion plus Aufprall 1172 + 97 (Verhältnis 2,16 zu Compendium 542 und 45 bei beiden Teilen). Takt aus Aegis Sustained (sustained-barrow-dyad-target-lock-taken-ambition: Base 4150 = Wipe ÷ 3,17, Rate 4,6 s): 39 Kugeln bei 720 rpm (Quantum) = 3,25 s, Rest 1,35 s für Reload und Seeker. Die Seeker kommen nach dem Reload im Takt der Kugeln („fired at a rate of … 720RPM ADS, overwriting regular shots“, Compendium): 1,35 − 6 × 0,0833 = 0,85 s nach der letzten Kugel, also ein Reload von 0,85 s (Quantum 1,18 s ohne Blight; schneller laut „increased Reload Speed based on the amount of Blight Seekers prepared“). So reißt keine Lücke über 1 s, Peacekeepers-Stapel halten wie bei Aegis (×1,34 auf alles: 4124 × 1,34 = 5526 gegen 5483, +0,8 %). Gate: Papierprobe 39 × 112 × 1,25 + 6 × 1269 = 13 074 gegen 13 171 (−0,7 %). Skala: Aegis gilt; der Wert enthält Target Lock, Quantum nicht (Einzeltreffer 112 ÷ 3,17 = 35,3 gegen Quantum 34).",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Target Lock",
-        "text": "roughly a 25% [15.85%] Damage Buff on average"
-      },
-      {
-        "source": "compendium",
-        "entry": "Barrow-Dyad",
-        "text": "up to a maximum of 6 Seekers"
-      },
-      {
-        "source": "compendium",
-        "entry": "Barrow-Dyad",
-        "text": "dealing 45 [9?] Impact Damage and 542 [21?] Explosive Damage"
-      },
-      {
-        "source": "aegis",
-        "entry": "smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-target-lock",
-        "text": "1172/97 seeker"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-submachine-gun-barrow-dyad",
-        "text": "720"
-      }
-    ],
-    "aegisWins": true,
-    "perShot": 44.164,
-    "nthShotPart": {
-      "name": "Blighted Seekers",
-      "every": 39,
-      "hits": 6,
-      "tick": "seeker",
-      "sumTick": true,
-      "delaySeconds": 0.85,
-      "tickIntervalSeconds": 0.083333
-    },
-    "timing": {
-      "from": "Aegis",
-      "values": {
-        "magazine": 39,
-        "totalShots": null,
-        "intervalSeconds": 0.083333,
-        "reloadSeconds": 1.35
-      }
-    }
-  },
-  {
-    "weapon": "Ager's Scepter",
-    "reason": "Catalyst Will Given Form: +80 % (Clarity). Aegis' Einzeltreffer bestätigen das: 222 ÷ 3,31 gegen 561 ÷ 15,09 = ×1,804. Quantums 67 ÷ 38 = ×1,763 rundet auf ganze Zahlen. Die Aegis-Zeilen mit Catalyst bleiben ungenutzt, weil der Catalyst das Timing ändert.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Ager's Scepter Catalyst",
-        "text": "80% increased damage"
-      },
-      {
-        "source": "aegis",
-        "entry": "trace-rifle-ager-s-scepter-average-will-given-form",
-        "text": "\"critShot\":222"
-      }
-    ],
-    "catalystFactor": 1.8
   }
 ]

@@ -1,0 +1,39 @@
+{
+  "id": "ticuu-s-divination",
+  "kind": "exoticWeapon",
+  "name": "Ticuu's Divination",
+  "texts": [
+    { "source": "clarity", "entry": "Sacred Flame", "hash": "0262a35a" },
+    { "source": "clarity", "entry": "Causality Arrows", "hash": "8bb8d3bf" },
+    {
+      "source": "clarity",
+      "entry": "Ticuu's Divination Catalyst",
+      "hash": "3b7ac0d9"
+    }
+  ],
+  "chargeTimeMs": "$manifest[Ticuu's Divination].stat(\"Draw Time\")",
+  "fireRateRpm": "$quantum[primaries-bow-ticuu-s-divination].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-bow-ticuu-s-divination].timing.magazine",
+  "totalShots": "$quantum[primaries-bow-ticuu-s-divination].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-bow-ticuu-s-divination].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Causality Quiver, Ticuu's Divination Catalyst",
+    "description": "Triggering Sacred Flame explosions grants one stack of 'Causality Quiver' for 5.5 seconds. Marking enemies with Sacred Flame refreshes the buff. Maximum of 6 stacks.\nCausality Quiver increases the impact damage of your arrows (not the explosion) at 1|2|3|4|5|6 stacks:\n• PvE: 16%|31%|49%|67.5%|87%|87%\n• PvP: 3.6%|11%|12%|16%|23%|23%",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-bow-ticuu-s-divination].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

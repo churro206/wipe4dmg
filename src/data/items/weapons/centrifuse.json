@@ -1,0 +1,47 @@
+{
+  "id": "centrifuse",
+  "kind": "exoticWeapon",
+  "name": "Centrifuse",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Overcharge Capacitor",
+      "hash": "d73834bc"
+    },
+    { "source": "clarity", "entry": "Centrifuse Catalyst", "hash": "0a5b10a3" },
+    { "source": "clarity", "entry": "Regenerative Motion", "hash": "38900b1f" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file centrifuse",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-centrifuse].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-centrifuse].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-centrifuse].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-centrifuse].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Static Buildup, Centrifuse Catalyst",
+    "description": "While you are Amplified, Overcharge Capacitor will continuously build at a rate of 7% charge per second and no longer passively decay.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-centrifuse].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "ruinous-effigy",
+  "kind": "exoticWeapon",
+  "name": "Ruinous Effigy",
+  "texts": [
+    { "source": "clarity", "entry": "Evolution", "hash": "055a7b31" },
+    {
+      "source": "clarity",
+      "entry": "Ruinous Effigy Catalyst",
+      "hash": "2b3599f5"
+    },
+    { "source": "clarity", "entry": "Transmutation", "hash": "98921b84" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ruinous-effigy",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-trace-rifle-ruinous-effigy].timing.fireRateRpm",
+  "magazine": "$quantum[specials-trace-rifle-ruinous-effigy].timing.magazine",
+  "totalShots": "$quantum[specials-trace-rifle-ruinous-effigy].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-trace-rifle-ruinous-effigy].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Deconstruction, Ruinous Effigy Catalyst",
+    "description": "Kills, or damaging Champions, Minibosses, or Bosses, with your Transmutation Sphere (inconsistently) grants 30% [15%] increased weapon damage for 7 seconds.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-trace-rifle-ruinous-effigy].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

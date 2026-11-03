@@ -1,0 +1,43 @@
+{
+  "id": "riskrunner",
+  "kind": "exoticWeapon",
+  "name": "Riskrunner",
+  "texts": [
+    { "source": "clarity", "entry": "Riskrunner Catalyst", "hash": "3d66b555" },
+    { "source": "clarity", "entry": "Superconductor", "hash": "349ab7ea" },
+    { "source": "clarity", "entry": "Arc Conductor", "hash": "9ae91e89" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file riskrunner",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-submachine-gun-riskrunner].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-submachine-gun-riskrunner].timing.magazine",
+  "totalShots": "$quantum[primaries-submachine-gun-riskrunner].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-submachine-gun-riskrunner].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Chain Reaction, Riskrunner Catalyst",
+    "description": "Grants 30 Range.\nWeapon Kills trigger an elemental explosion, dealing up to 114 [?] damage in a 3 meter radius.\nThis explosion can deal self-damage and trigger Arc Conductor.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-submachine-gun-riskrunner].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

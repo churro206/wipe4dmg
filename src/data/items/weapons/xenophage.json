@@ -1,0 +1,41 @@
+{
+  "id": "xenophage",
+  "kind": "exoticWeapon",
+  "name": "Xenophage",
+  "texts": [
+    { "source": "clarity", "entry": "Xenophage Catalyst", "hash": "b18d8e33" },
+    { "source": "clarity", "entry": "Pyrotoxin Rounds", "hash": "7a0b4886" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file xenophage",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-machine-gun-xenophage].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-machine-gun-xenophage].timing.magazine",
+  "totalShots": "$quantum[heavies-machine-gun-xenophage].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-machine-gun-xenophage].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Chain Reaction, Rampage, Xenophage Catalyst",
+    "description": "Weapon Kills grant a Stack of Rampage. Maximum of 3 Stacks. Stacks expire one at a time every 🡅4.5 seconds.\nGrants a 10%|21%|33.1% damage increase at 1|2|3 Stacks.\nWeapon Kills trigger a solar elemental explosion, dealing up to 109 [72.8] damage in a 3 meter radius.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-machine-gun-xenophage].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

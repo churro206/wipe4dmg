@@ -10,8 +10,6 @@
     "exotic-armor:star-eater-scales#1:value": "Die Obergrenzen stehen nur im Eintrag des Exotic Class Items (Compendium): „Nova Bomb, Thundercrash, and Twilight Arsenal receive up to 50% Increased Super Damage“; Feast of Light ist dieselbe Fähigkeit.",
     "exotic-armor:star-eater-scales#1:target": "Siehe #1:value; die Supers stehen im Eintrag des Class Items.",
     "exotic-armor:star-eater-scales#2:value": "Die Obergrenze steht nur im Eintrag des Exotic Class Items (Compendium): „Needlestorm receives up to 35% Increased Super Damage“.",
-    "exotic-armor:star-eater-scales#2:target": "Siehe #2:value; Needlestorm steht im Eintrag des Class Items.",
-    "catalyst:izanagi-s-burden:catalyst:value": "Override: Clarity +20 % gilt auf Honed Edge x4 (291 % → 370 % Crit). Ohne Catalyst ist Honed Edge pro Munition schwächer als normale Schüsse (14910 ÷ 1,20 = 12404 < 13180, Quantum), mit Catalyst stärker: Wirkung des Catalysts = 14910 ÷ 13180 = ×1,131.",
-    "catalyst:outbreak-perfected:catalyst:value": "Override: Clarity +25 % gilt nur dem Nanite-Anteil (48 von 80 pro Kugel, Quantum): 32 + 48 × 1,25 = 92, also ×1,15."
+    "exotic-armor:star-eater-scales#2:target": "Siehe #2:value; Needlestorm steht im Eintrag des Class Items."
   }
 }

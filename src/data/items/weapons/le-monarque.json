@@ -1,0 +1,38 @@
+{
+  "id": "le-monarque",
+  "kind": "exoticWeapon",
+  "name": "Le Monarque",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Le Monarque Catalyst",
+      "hash": "122a9460"
+    },
+    { "source": "clarity", "entry": "Poison Arrows", "hash": "078f0439" }
+  ],
+  "chargeTimeMs": "$manifest[Le Monarque].stat(\"Draw Time\")",
+  "fireRateRpm": "$quantum[primaries-bow-le-monarque].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-bow-le-monarque].timing.magazine",
+  "totalShots": "$quantum[primaries-bow-le-monarque].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-bow-le-monarque].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Unrelenting, Le Monarque Catalyst",
+    "description": "Grants 20 Reload Speed and 30 Stability.\nGrants the Unrelenting trait:\nStarts Health Regeneration and restores 65 HP upon reaching 100% Activation Progress with Weapon Kills within 5 seconds of each.\nActivation Progress by Enemy Rank:\n• Minor Combatants: 34%\n• Players: 67%\n• Elites, Minibosses, and Bosses: 100%",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-bow-le-monarque].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "leviathan-s-breath",
+  "kind": "exoticWeapon",
+  "name": "Leviathan's Breath",
+  "texts": [
+    { "source": "clarity", "entry": "Big-Game Hunter", "hash": "4b304a13" },
+    {
+      "source": "clarity",
+      "entry": "Leviathan's Breath Catalyst",
+      "hash": "dd9d5eaf"
+    },
+    { "source": "clarity", "entry": "Leviathan's Sigh", "hash": "6a1abb2b" }
+  ],
+  "chargeTimeMs": "$manifest[Leviathan's Breath].stat(\"Draw Time\")",
+  "fireRateRpm": "$quantum[heavies-bow-leviathan-s-breath].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-bow-leviathan-s-breath].timing.magazine",
+  "totalShots": "$quantum[heavies-bow-leviathan-s-breath].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-bow-leviathan-s-breath].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Colossal Quiver, Archer's Tempo, Leviathan's Breath Catalyst",
+    "description": "Increases Reserves by 5 (9🠚14) and Ammo Generation by 80.\nPrecision Hits grant 43.7% decreased Draw Animation Speed for 3 seconds.",
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[heavies-bow-leviathan-s-breath-cata].timing.fireRateRpm",
+      "magazine": "$quantum[heavies-bow-leviathan-s-breath-cata].timing.magazine",
+      "totalShots": "$quantum[heavies-bow-leviathan-s-breath-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[heavies-bow-leviathan-s-breath-cata].timing.reloadTimeMs"
+    }
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-bow-leviathan-s-breath].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

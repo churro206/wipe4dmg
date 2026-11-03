@@ -1,0 +1,38 @@
+{
+  "id": "legend-of-acrius",
+  "kind": "exoticWeapon",
+  "name": "Legend of Acrius",
+  "texts": [
+    { "source": "clarity", "entry": "Shock Blast", "hash": "a09b68f5" },
+    { "source": "clarity", "entry": "Acrius Catalyst", "hash": "8fcec80c" },
+    { "source": "clarity", "entry": "Long March", "hash": "78040143" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file legend-of-acrius",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-shotgun-legend-of-acrius-cata].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-shotgun-legend-of-acrius-cata].timing.magazine",
+  "totalShots": "$quantum[heavies-shotgun-legend-of-acrius-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-shotgun-legend-of-acrius-cata].timing.reloadTimeMs",
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-shotgun-legend-of-acrius-cata].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

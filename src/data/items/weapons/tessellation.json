@@ -1,0 +1,46 @@
+{
+  "id": "tessellation",
+  "kind": "exoticWeapon",
+  "name": "Tessellation",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Property: Irreducible",
+      "hash": "a0b7efb6"
+    },
+    {
+      "source": "clarity",
+      "entry": "Tessellation Catalyst",
+      "hash": "84316e6e"
+    },
+    {
+      "source": "clarity",
+      "entry": "Property: Undecidable",
+      "hash": "c51b4f52"
+    }
+  ],
+  "chargeTimeMs": "$manifest[Tessellation].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[specials-fusion-rifle-tesselation].timing.fireRateRpm",
+  "magazine": "$quantum[specials-fusion-rifle-tesselation].timing.magazine",
+  "totalShots": "$quantum[specials-fusion-rifle-tesselation].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-fusion-rifle-tesselation].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Property: Unavoidable, Tessellation Catalyst",
+    "description": "Your explosive [projectile | shape | language] inherents subclass debuffs based on its element.\nDeals an additional instance of 165 [10] damage in a 10 meter radius and applies a debuff matching its element:\n•70 Scorch Stacks (80 with Ember of Ashes)\n•Weaken for 6 [2.5] seconds\n•Blind for 9 seconds\n•80 Slow Stacks\n•Sever for 5 seconds (7.5 with Thread of Continuity)\nEffects are applied after the explosion.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-fusion-rifle-tesselation].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

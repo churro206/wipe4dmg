@@ -43,10 +43,12 @@ const referenceMultipliers = ReferenceMultiplier.array().parse(
   rawReferenceMultipliers,
 );
 
+// Q1 (ADR 0019): the OTV scaffold has no scorch and no ignitions; `it.fails` until M1 writes them.
+const UNTIL_M1 = new Set(["aegis-no-effects", "aegis-with-ignition"]);
+
 describe("gate: total damage", () => {
-  it.each(referenceValues.map((r) => [r.id, r] as const))(
-    "matches %s",
-    (_, reference) => {
+  for (const reference of referenceValues) {
+    (UNTIL_M1.has(reference.id) ? it.fails : it)(`matches ${reference.id}`, () => {
       const scenario = reference.scenario!;
       const weapon = weaponById(reference.weaponId);
       // Shots only: without the intrinsic parts and the scorch the weapon applies by its rules
@@ -71,8 +73,8 @@ describe("gate: total damage", () => {
         .reduce((sum, d) => sum + d.damage, 0);
       expect(totalDamage).toBeGreaterThanOrEqual(reference.totalDamageMin);
       expect(totalDamage).toBeLessThanOrEqual(reference.totalDamageMax);
-    },
-  );
+    });
+  }
 });
 
 describe("gate: multipliers", () => {

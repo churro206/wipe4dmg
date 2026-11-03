@@ -1,0 +1,47 @@
+{
+  "id": "quicksilver-storm",
+  "kind": "exoticWeapon",
+  "name": "Quicksilver Storm",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Quicksilver Storm Catalyst",
+      "hash": "4c60f37b"
+    },
+    { "source": "clarity", "entry": "Grenade Chaser", "hash": "05a86869" },
+    { "source": "clarity", "entry": "Missile Tracers", "hash": "6712aa60" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file quicksilver-storm",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-quicksilver-storm].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-quicksilver-storm].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-quicksilver-storm].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-quicksilver-storm].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Nano-entanglement, Quicksilver Storm Catalyst",
+    "description": "Converts this weapon's element into Strand damage.\nKills with Grenade Chaser grenades spawn a Tangle.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

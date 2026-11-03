@@ -1,0 +1,44 @@
+{
+  "id": "lodestar",
+  "kind": "exoticWeapon",
+  "name": "Lodestar",
+  "texts": [
+    { "source": "clarity", "entry": "Phase Converter", "hash": "a1b53eb3" },
+    { "source": "clarity", "entry": "Lodestar Catalyst", "hash": "3d7eeaa8" },
+    { "source": "clarity", "entry": "Arc Alignment", "hash": "88342142" },
+    { "source": "clarity", "entry": "Starlight Beam", "hash": "8e870597" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file lodestar",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-trace-rifle-lodestar].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-trace-rifle-lodestar].timing.magazine",
+  "totalShots": "$quantum[primaries-trace-rifle-lodestar].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-trace-rifle-lodestar].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Supercharged Matrix, Lodestar Catalyst",
+    "description": "While Amplified:\n• 10 Aim Assist\n• ? Reload Speed\n• ?% decreased ADS Movement Speed Penalty",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-trace-rifle-lodestar].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

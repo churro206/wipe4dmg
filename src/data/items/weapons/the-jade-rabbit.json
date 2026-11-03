@@ -1,0 +1,50 @@
+{
+  "id": "the-jade-rabbit",
+  "kind": "exoticWeapon",
+  "name": "The Jade Rabbit",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Jade Rabbit Catalyst",
+      "hash": "ae8d2d34"
+    },
+    {
+      "source": "clarity",
+      "entry": "The Fate of All Fools",
+      "hash": "6a732f10"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-jade-rabbit",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-the-jade-rabbit].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-the-jade-rabbit].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-the-jade-rabbit].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-the-jade-rabbit].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Jade Rabbit Catalyst",
+    "description": "Grants 30 Stability.\nHold [Reload] to consume all Fate of All Fools stacks and load a Micro-Missile. Missile has a blast radius of 8 meters with a maximum damage falloff of 45%, and deals increased damage based on the number of stacks consumed.\nDeals 293 damage (122 impact/171 explosive) [?] at base, becoming heavily weighted towards explosive damage as the stacks increase.\nDamage is increased by 107%|157%|193%|223%|315%|345% at 2|3|4|5|10|15 Stacks, with a fully charged missile dealing 1304 (281 impact/1023 explosive) [?] damage.\nMicro-Missile deals no self damage and can be used for rocket jumping.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-scout-rifle-the-jade-rabbit].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

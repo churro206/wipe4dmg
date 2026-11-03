@@ -1,0 +1,47 @@
+{
+  "id": "thunderlord",
+  "kind": "exoticWeapon",
+  "name": "Thunderlord",
+  "texts": [
+    { "source": "clarity", "entry": "Lightning Rounds", "hash": "afd91164" },
+    {
+      "source": "clarity",
+      "entry": "Thunderlord Catalyst",
+      "hash": "b612385b"
+    },
+    { "source": "clarity", "entry": "Reign Havoc", "hash": "c122a0d4" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file thunderlord",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-machine-gun-thunderlord].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-machine-gun-thunderlord].timing.magazine",
+  "totalShots": "$quantum[heavies-machine-gun-thunderlord].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-machine-gun-thunderlord].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Return Stroke, Thunderlord Catalyst",
+    "description": "Triggering a Lightning Strike refills 5 ammo from reserves.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-machine-gun-thunderlord].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

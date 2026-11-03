@@ -1,0 +1,47 @@
+{
+  "id": "collective-obligation",
+  "kind": "exoticWeapon",
+  "name": "Collective Obligation",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Collective Obligation Catalyst",
+      "hash": "811c9dc5"
+    },
+    { "source": "clarity", "entry": "Umbral Sustenance", "hash": "cf346974" },
+    { "source": "clarity", "entry": "Void Leech", "hash": "3aafb1d5" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file collective-obligation",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-pulse-rifle-collective-obligation].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-pulse-rifle-collective-obligation].timing.magazine",
+  "totalShots": "$quantum[primaries-pulse-rifle-collective-obligation].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-pulse-rifle-collective-obligation].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Repulsor Brace, Collective Obligation Catalyst",
+    "description": "",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-pulse-rifle-collective-obligation].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

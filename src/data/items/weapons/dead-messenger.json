@@ -1,0 +1,46 @@
+{
+  "id": "dead-messenger",
+  "kind": "exoticWeapon",
+  "name": "Dead Messenger",
+  "texts": [
+    { "source": "clarity", "entry": "Turnabout", "hash": "381dcc53" },
+    { "source": "clarity", "entry": "Trinary Vision", "hash": "137f476e" },
+    {
+      "source": "clarity",
+      "entry": "Dead Messenger Catalyst",
+      "hash": "c0efe247"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file dead-messenger",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-grenade-launcher-dead-messenger].timing.fireRateRpm",
+  "magazine": "$quantum[specials-grenade-launcher-dead-messenger].timing.magazine",
+  "totalShots": "$quantum[specials-grenade-launcher-dead-messenger].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-grenade-launcher-dead-messenger].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Turnabout, Dead Messenger Catalyst",
+    "description": "Grants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-grenade-launcher-dead-messenger].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

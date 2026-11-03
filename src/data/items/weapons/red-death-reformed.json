@@ -1,0 +1,51 @@
+{
+  "id": "red-death-reformed",
+  "kind": "exoticWeapon",
+  "name": "Red Death Reformed",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Red Death Reformed Catalyst",
+      "hash": "397aec62"
+    },
+    {
+      "source": "clarity",
+      "entry": "Inverse Relationship",
+      "hash": "da93bac1"
+    },
+    { "source": "clarity", "entry": "Redemption", "hash": "592ae5c4" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file red-death-reformed",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-pulse-rifle-red-death-reformed].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-pulse-rifle-red-death-reformed].timing.magazine",
+  "totalShots": "$quantum[primaries-pulse-rifle-red-death-reformed].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-pulse-rifle-red-death-reformed].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Helping Hand, Red Death Reformed Catalyst",
+    "description": "Scoring 2 [1] kills grants 'Red Death Charged'.\nYour next kill with Red Death Reformed consumes this buff and triggers a burst of healing, granting 120 HP (Cure x2) to allies within a 7.5 meter radius of you.\nThis kill also spawns a Restoration Orb at your feet, granting you and allies Restoration x2 for 4 seconds (6 with Ember of Solace) on pickup.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-pulse-rifle-red-death-reformed].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

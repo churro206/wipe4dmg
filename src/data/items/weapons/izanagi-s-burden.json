@@ -1,0 +1,46 @@
+{
+  "id": "izanagi-s-burden",
+  "kind": "exoticWeapon",
+  "name": "Izanagi's Burden",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Izanagi's Burden Catalyst",
+      "hash": "06453e23"
+    },
+    { "source": "clarity", "entry": "Honed Edge", "hash": "2d6b6d12" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file izanagi-s-burden",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-sniper-rifle-izanagi-s-burden].timing.fireRateRpm",
+  "magazine": "$quantum[specials-sniper-rifle-izanagi-s-burden].timing.magazine",
+  "totalShots": "$quantum[specials-sniper-rifle-izanagi-s-burden].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-sniper-rifle-izanagi-s-burden].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Peerless Edge, Izanagi's Burden Catalyst",
+    "description": "Increases the damage bonus of Honed Edge x4 by 20%, granting the following values:\n• 155% [218%] increased bodyshot damage\n• 370% [487%] increased critical damage",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-sniper-rifle-izanagi-s-burden].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "bastion",
+  "kind": "exoticWeapon",
+  "name": "Bastion",
+  "texts": [
+    { "source": "clarity", "entry": "Saint's Fists", "hash": "90681411" },
+    { "source": "clarity", "entry": "Breakthrough", "hash": "9553856a" },
+    { "source": "clarity", "entry": "Bastion Catalyst", "hash": "83b133b4" }
+  ],
+  "chargeTimeMs": "$manifest[Bastion].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[specials-fusion-rifle-bastion].timing.fireRateRpm",
+  "magazine": "$quantum[specials-fusion-rifle-bastion].timing.magazine",
+  "totalShots": "$quantum[specials-fusion-rifle-bastion].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-fusion-rifle-bastion].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Cast No Shadows, Bastion Catalyst",
+    "description": "Dealing Melee Damage refills 20% of the Magazine (rounded up) and grants ? Handling for ? seconds.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-fusion-rifle-bastion].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

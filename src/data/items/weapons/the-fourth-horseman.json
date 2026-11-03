@@ -1,0 +1,53 @@
+{
+  "id": "the-fourth-horseman",
+  "kind": "exoticWeapon",
+  "name": "The Fourth Horseman",
+  "texts": [
+    { "source": "clarity", "entry": "Broadside", "hash": "f6122f11" },
+    { "source": "clarity", "entry": "Thunderer", "hash": "de04d712" },
+    {
+      "source": "clarity",
+      "entry": "The Fourth Horseman Catalyst",
+      "hash": "9441b193"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-fourth-horseman",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-shotgun-the-fourth-horseman].timing.fireRateRpm",
+  "magazine": "$quantum[specials-shotgun-the-fourth-horseman].timing.magazine",
+  "totalShots": "$quantum[specials-shotgun-the-fourth-horseman].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-shotgun-the-fourth-horseman].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "And Its Name Was Death, The Fourth Horseman Catalyst",
+    "description": "Grants 40 Reload Speed and Increases Magazine Size by 1 (4🠚5)",
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-shotgun-the-fourth-horseman-cata].timing.fireRateRpm",
+      "magazine": "$quantum[specials-shotgun-the-fourth-horseman-cata].timing.magazine",
+      "totalShots": "$quantum[specials-shotgun-the-fourth-horseman-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[specials-shotgun-the-fourth-horseman-cata].timing.reloadTimeMs"
+    }
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-shotgun-the-fourth-horseman].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

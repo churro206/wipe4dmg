@@ -1,0 +1,47 @@
+{
+  "id": "conditional-finality",
+  "kind": "exoticWeapon",
+  "name": "Conditional Finality",
+  "texts": [
+    { "source": "clarity", "entry": "Paracausal Pellets", "hash": "cd077ce7" },
+    {
+      "source": "clarity",
+      "entry": "Conditional Finality Catalyst",
+      "hash": "7c63c1b3"
+    },
+    { "source": "clarity", "entry": "Split Decision", "hash": "e3444a2c" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file conditional-finality",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-shotgun-conditional-finality].timing.fireRateRpm",
+  "magazine": "$quantum[specials-shotgun-conditional-finality].timing.magazine",
+  "totalShots": "$quantum[specials-shotgun-conditional-finality].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-shotgun-conditional-finality].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Heal Clip, Rimestealer, Conditional Finality Catalyst",
+    "description": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.\nKilling Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-shotgun-conditional-finality].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "gjallarhorn",
+  "kind": "exoticWeapon",
+  "name": "Gjallarhorn",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Gjallarhorn Catalyst",
+      "hash": "1933585c"
+    },
+    { "source": "clarity", "entry": "Wolfpack Rounds", "hash": "63c0b225" },
+    { "source": "clarity", "entry": "Pack Hunter", "hash": "c0bcb13c" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file gjallarhorn",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.magazine",
+  "totalShots": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "More Wolves, Gjallarhorn Catalyst",
+    "description": "Increases Magazine Size by 1 (1🠚2).\nKills with Wolfpack Rounds spawn an upgraded Wolfpack Round that seeks targets ?% faster and deals 126.5% increased damage.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-rocket-launcher-gjallarhorn].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "whisper-of-the-worm",
+  "kind": "exoticWeapon",
+  "name": "Whisper of the Worm",
+  "texts": [
+    { "source": "clarity", "entry": "No Distractions", "hash": "ff000df1" },
+    { "source": "clarity", "entry": "Enlightened Action", "hash": "7ba89029" },
+    { "source": "clarity", "entry": "Field Prep", "hash": "60f9f015" },
+    { "source": "clarity", "entry": "Whisper Catalyst", "hash": "e052f83d" },
+    { "source": "clarity", "entry": "Whispered Breathing", "hash": "b8863a22" },
+    { "source": "clarity", "entry": "White Nail IV", "hash": "93dc334f" },
+    { "source": "clarity", "entry": "White Nail III", "hash": "93dc334f" },
+    { "source": "clarity", "entry": "White Nail II", "hash": "93dc334f" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file whisper-of-the-worm",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].timing.magazine",
+  "totalShots": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Whisper Catalyst, Whispered Breathing",
+    "description": "Grants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without shooting grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against combatants.\nGrants 30 Reload Speed.\nAiming Down Sights for 1.2 seconds without firing grants 'Whispered Breathing' until you leave ADS.\nWhispered Breathing grants 35% increased precision damage, and an additional 10.77% increased damage against PvE Combatants.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-sniper-rifle-whisper-of-the-worm].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

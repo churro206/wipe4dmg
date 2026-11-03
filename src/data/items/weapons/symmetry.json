@@ -1,0 +1,43 @@
+{
+  "id": "symmetry",
+  "kind": "exoticWeapon",
+  "name": "Symmetry",
+  "texts": [
+    { "source": "clarity", "entry": "Dynamic Charge", "hash": "78018f54" },
+    { "source": "clarity", "entry": "Revolution", "hash": "12e5e018" },
+    { "source": "clarity", "entry": "Symmetry Catalyst", "hash": "44f46332" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file symmetry",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-symmetry].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-symmetry].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-symmetry].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-symmetry].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Eddy Current, Electric Styx, Symmetry Catalyst",
+    "description": "Grants 10 Reload Speed and 10 Handling.\nDynamic Charge's maximum stack count is is increased by 5 (15🠚20), allowing for up to 600% increased damage and 100% increased radius.\nGrants the Eddy Current trait:\nGrants the following after sprinting for 1.5 seconds with the weapon readied:\n• 20 Reload Speed\n• 0.95x Reload Duration Multiplier\n• ? Handling\n• 0.95x Handling Animation Duration Multiplier\nSprinting refreshes the buff duration.\nBeing Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-scout-rifle-symmetry].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

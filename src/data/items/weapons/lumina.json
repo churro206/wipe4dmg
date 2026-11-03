@@ -1,0 +1,43 @@
+{
+  "id": "lumina",
+  "kind": "exoticWeapon",
+  "name": "Lumina",
+  "texts": [
+    { "source": "clarity", "entry": "Blessing of the Sky", "hash": "5bbd3b63" },
+    { "source": "clarity", "entry": "Noble Rounds", "hash": "825d3c7f" },
+    { "source": "clarity", "entry": "Lumina Catalyst", "hash": "81cea3f9" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file lumina",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-lumina].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-lumina].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-lumina].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-lumina].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Resonant Virtue, Lumina Catalyst",
+    "description": "Kills create an additional Remnant (1🠚2).",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-lumina].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "the-chaperone",
+  "kind": "exoticWeapon",
+  "name": "The Chaperone",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "The Chaperone Catalyst",
+      "hash": "4e78a82f"
+    },
+    { "source": "clarity", "entry": "Precision Slug", "hash": "0f00b63c" },
+    { "source": "clarity", "entry": "The Roadborn", "hash": "d1102801" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-chaperone",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-shotgun-the-chaperone].timing.fireRateRpm",
+  "magazine": "$quantum[specials-shotgun-the-chaperone].timing.magazine",
+  "totalShots": "$quantum[specials-shotgun-the-chaperone].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-shotgun-the-chaperone].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Triple Tap, The Chaperone Catalyst",
+    "description": "Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-shotgun-the-chaperone].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

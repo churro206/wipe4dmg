@@ -1,0 +1,44 @@
+{
+  "id": "still-hunt",
+  "kind": "exoticWeapon",
+  "name": "Still Hunt",
+  "texts": [
+    { "source": "clarity", "entry": "Cayde's Retribution", "hash": "bbeeb378" },
+    { "source": "clarity", "entry": "Sharpshooter", "hash": "d32dc9e6" },
+    { "source": "clarity", "entry": "Golden Munitions", "hash": "9b5b4471" },
+    { "source": "clarity", "entry": "Still Hunt Catalyst", "hash": "4a605fb5" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file still-hunt",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-sniper-rifle-still-hunt].timing.fireRateRpm",
+  "magazine": "$quantum[specials-sniper-rifle-still-hunt].timing.magazine",
+  "totalShots": "$quantum[specials-sniper-rifle-still-hunt].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-sniper-rifle-still-hunt].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Lucky Shot, Still Hunt Catalyst",
+    "description": "Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'.\nScoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer. Additional precision hits during this timer continue to refill the magazine from reserves.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-sniper-rifle-still-hunt].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

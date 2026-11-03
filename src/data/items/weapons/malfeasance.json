@@ -1,0 +1,47 @@
+{
+  "id": "malfeasance",
+  "kind": "exoticWeapon",
+  "name": "Malfeasance",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Malfeasance Catalyst",
+      "hash": "2b4fbc69"
+    },
+    { "source": "clarity", "entry": "Explosive Shadow", "hash": "98444c99" },
+    { "source": "clarity", "entry": "Taken Predator", "hash": "c8008a0e" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file malfeasance",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-malfeasance].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-malfeasance].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-malfeasance].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-malfeasance].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Vorpal Weapon, Malfeasance Catalyst",
+    "description": "Grants 20 Range.\nGrants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-malfeasance].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "dragon-s-breath",
+  "kind": "exoticWeapon",
+  "name": "Dragon's Breath",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Composite Propellant",
+      "hash": "19d04abc"
+    },
+    { "source": "clarity", "entry": "High Octane", "hash": "5b9d71f5" },
+    {
+      "source": "clarity",
+      "entry": "Dragon's Breath Catalyst",
+      "hash": "53db5e4f"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file dragon-s-breath",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-rocket-launcher-dragon-s-breath].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-rocket-launcher-dragon-s-breath].timing.magazine",
+  "totalShots": "$quantum[heavies-rocket-launcher-dragon-s-breath].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-rocket-launcher-dragon-s-breath].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Pyromancer, Dragon's Breath Catalyst",
+    "description": "Doubles the rate of passive Composite Propellant generation (6🠚3 Seconds per stack).\nKills generate Firesprites. These kills ignore the global Firesprite spawning cooldown.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-rocket-launcher-dragon-s-breath].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

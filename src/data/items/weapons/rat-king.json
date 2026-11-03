@@ -1,0 +1,43 @@
+{
+  "id": "rat-king",
+  "kind": "exoticWeapon",
+  "name": "Rat King",
+  "texts": [
+    { "source": "clarity", "entry": "Vermin", "hash": "89bae6a2" },
+    { "source": "clarity", "entry": "Rat King Catalyst", "hash": "34e6a0e0" },
+    { "source": "clarity", "entry": "Rat Pack", "hash": "5ccfe23f" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file rat-king",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-sidearm-rat-king].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-sidearm-rat-king].timing.magazine",
+  "totalShots": "$quantum[primaries-sidearm-rat-king].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-sidearm-rat-king].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Infestation, Rat King Catalyst",
+    "description": "Grants 20 Aim Assist and 20 Recoil Direction.\nFinishing a reload within 6 seconds of a kill begins Health Regeneration.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-sidearm-rat-king].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "arbalest",
+  "kind": "exoticWeapon",
+  "name": "Arbalest",
+  "texts": [
+    { "source": "clarity", "entry": "Arbalest Catalyst", "hash": "637596e7" },
+    { "source": "clarity", "entry": "Compounding Force", "hash": "2732f1cf" }
+  ],
+  "chargeTimeMs": "$manifest[Arbalest].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.fireRateRpm",
+  "magazine": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.magazine",
+  "totalShots": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Genesis, Arbalest Catalyst",
+    "description": "Passively grants:\n• 20 Handling\n• Increases Magazine Size by one (5🠚6)\nRefills magazine from reserves upon breaking a PVE Combatant, Barrier Champion, or Player Shield.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-linear-fusion-rifle-arbalest-cata].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

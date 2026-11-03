@@ -1,0 +1,47 @@
+{
+  "id": "ace-of-spades",
+  "kind": "exoticWeapon",
+  "name": "Ace of Spades",
+  "texts": [
+    { "source": "clarity", "entry": "Memento Mori", "hash": "4f02ed8f" },
+    { "source": "clarity", "entry": "Firefly", "hash": "c2b1dcbe" },
+    {
+      "source": "clarity",
+      "entry": "Ace of Spades Catalyst",
+      "hash": "bf805200"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ace-of-spades",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-ace-of-spades].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-ace-of-spades].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-ace-of-spades].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-ace-of-spades].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Funeral Pyre, Ace of Spades Catalyst",
+    "description": "Firefly's explosion damage is increased by 50% while Memento Mori is active.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-ace-of-spades].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

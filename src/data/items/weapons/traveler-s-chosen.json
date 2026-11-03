@@ -1,0 +1,51 @@
+{
+  "id": "traveler-s-chosen",
+  "kind": "exoticWeapon",
+  "name": "Traveler's Chosen",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Gift of the Traveler",
+      "hash": "b03b4110"
+    },
+    { "source": "clarity", "entry": "Gathering Light", "hash": "c1dc7db9" },
+    {
+      "source": "clarity",
+      "entry": "Traveler's Chosen Catalyst",
+      "hash": "301f5c1c"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file traveler-s-chosen",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.magazine",
+  "totalShots": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Osmosis, Surplus, Traveler's Chosen Catalyst",
+    "description": "Increases Magazine Size by 2 (15🠚17)\nGrants the Surplus trait:\nGrants Stat Bonuses depending on the number of Charged Abilities.\nStat Bonuses with 1|2|3+ Charged Abilities:\n• 5|15|25 Stability\n• 5|25|60 Handling\n• 10|25|60 Reload Speed\nAlso grants the Osmosis trait:\nGrenade Ability usage refills 50% of your Magazine (rounded up) from reserves and changes the weapon's element to match your equipped Grenade Ability until stowed.\nMagazine Refill cannot be triggered again without stowing the weapon first.\nKinetic weapons lose their Passive Damage Bonus against non-Boss PVE Combatants (10% on Primary, 15% on Special).\nPerks that replace your Grenade Ability (such as Gunpowder Gamble or Transcendence Grenades) will also trigger Osmosis.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-sidearm-traveler-s-chosen-cata].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

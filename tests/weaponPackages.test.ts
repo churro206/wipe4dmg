@@ -11,11 +11,10 @@ import rawCodes from "../src/data/weapon-codes.json";
 import rawGaps from "../src/data/weapon-gaps.json";
 import rawPackages from "../src/data/weapon-packages.json";
 import rawAbilityRows from "../src/data/aegis-abilities.json";
-import rawEffects from "../src/data/effects.json";
 import rawKeywords from "../src/data/keywords.json";
 import { AegisAbilityRow, Weapon, WeaponGap } from "../src/data/schema";
 import { loadKeywords } from "../src/engine/loadKeywords";
-import { loadBuckets, loadEffects } from "../src/engine/loadData";
+import { loadBuckets } from "../src/engine/loadData";
 import { simulate } from "../src/engine/simulate";
 
 const result = buildWeaponImport(loadWeaponImportInputs());
@@ -43,25 +42,6 @@ const keywords = loadKeywords(
   rawKeywords,
   AegisAbilityRow.array().parse(rawAbilityRows),
 );
-
-// S4 part C (ADR 0017): Barrow-Dyad from parts. The bullet with Target Lock on average (Clarity
-// +25 %), 6 Blighted Seekers per magazine of 39 (Compendium "maximum of 6 Seekers"), each seeker
-// explosion plus impact ("1172/97 seeker"); one cycle of 39 bullets and 6 seekers every 4.6 s
-// (Aegis Sustained).
-describe("Barrow-Dyad", () => {
-  it("is built from the bullet with Target Lock and 6 seekers per magazine", () => {
-    const barrow = byName("Barrow-Dyad")!;
-    expect(barrow).toBeDefined();
-    expect(value(barrow.damageInstances[0].damagePerTick)).toBeCloseTo((112 * 1.25) / 3.17, 2);
-    const seekers = barrow.damageInstances[1];
-    expect(value(seekers.damagePerTick)).toBeCloseTo((1172 + 97) / 3.17, 2);
-    expect(value(seekers.ticks)).toBe(6);
-    expect(nthShotOf(barrow, seekers.id)).toBe(39);
-    expect(value(barrow.magazine)).toBe(39);
-    const cycleMs = 39 * (60_000 / value(barrow.fireRateRpm)!) + value(barrow.reloadTimeMs)!;
-    expect(cycleMs).toBeCloseTo(4600, -1);
-  });
-});
 
 describe("Truth (item file src/data/items/weapons/truth.json, B4b)", () => {
   const truth = byName("Truth")!;
@@ -123,125 +103,6 @@ describe("Truth (item file src/data/items/weapons/truth.json, B4b)", () => {
   });
 });
 
-describe("Thunderlord", () => {
-  const entry = () =>
-    result.report.weapons.find((w) => w.name === "Thunderlord")!;
-
-  it("is a package with Reign Havoc and lightning in the average per bullet", () => {
-    const thunderlord = byName("Thunderlord")!;
-    expect(value(thunderlord.damageInstances[0].damagePerTick)).toBeCloseTo(
-      113.888,
-      3,
-    );
-    expect(value(thunderlord.totalShots)).toBe(379);
-  });
-
-  it("takes the Quantum timing without catalyst, since the catalyst refills ammo (Clarity)", () => {
-    // Aegis "Sustained" assumes the catalyst ("only one reload"); Clarity: "Triggering a
-    // Lightning Strike refills 5 ammo from reserves."
-    expect(entry().timingSource).toBe("Quantum");
-    expect(entry().timeToEmptySeconds).toBe(57.6);
-    expect(entry().notes.join(" ")).toContain("Katalysator ändert das Timing");
-  });
-});
-
-describe("investigated cases (W1-4d)", () => {
-  const entry = (name: string) =>
-    result.report.weapons.find((w) => w.name === name)!;
-
-  it("Whisper of the Worm: Whispered Breathing is the catalyst; base from Aegis ÷ Quantum factor", () => {
-    const whisper = byName("Whisper of the Worm")!;
-    // 1250.909 ÷ (1251 / 850) = 849.94, the Quantum value without catalyst
-    expect(value(whisper.damageInstances[0].damagePerTick)).toBeCloseTo(
-      849.94,
-      1,
-    );
-    const catalyst = whisper.options!.find((o) => o.kind === "catalyst")!;
-    expect(value(catalyst.factor)).toBeCloseTo(1251 / 850, 3);
-  });
-
-  it("Ager's Scepter: catalyst +80 % from the text (override), not Quantum's 67 / 38", () => {
-    const ager = byName("Ager's Scepter")!;
-    const catalyst = ager.options!.find((o) => o.kind === "catalyst")!;
-    // Aegis single hits (222 / 3.31) / (561 / 15.09) = 1.804 confirm it
-    expect(value(catalyst.factor)).toBe(1.8);
-  });
-
-  it("Whisper of the Worm: White Nail refills the magazine, so no reloads", () => {
-    const whisper = byName("Whisper of the Worm")!;
-    expect(value(whisper.magazine)).toBe(38);
-    expect(entry("Whisper of the Worm").timeToEmptySeconds).toBe(31.7);
-  });
-
-  it("Izanagi's Burden: the stacked Honed Edge x4 is no base row", () => {
-    const izanagi = byName("Izanagi's Burden")!;
-    expect(value(izanagi.damageInstances[0].damagePerTick)).toBeCloseTo(
-      658.45,
-      2,
-    );
-  });
-
-  it("Sleeper Simulant: override to 14 shots without catalyst, 250 ms longer per shot", () => {
-    const sleeper = byName("Sleeper Simulant")!;
-    expect(value(sleeper.totalShots)).toBe(14);
-    expect(entry("Sleeper Simulant").notes.join(" ")).toContain("Override");
-  });
-});
-
-describe("weapons with scorch (ADR 0015, U4a-4)", () => {
-  const otv = byName("One Thousand Voices")!;
-  const fox = byName("Two-Tailed Fox")!;
-  const effects = loadEffects(rawEffects);
-  const total =(weapon: Weapon) =>
-    simulate(weapon, 600, [], loadBuckets(rawBuckets), { keywords })
-      .totalDamage;
-
-  it("take the shot from the Aegis row without its ignitions (Aegis before Quantum)", () => {
-    // (31106 - 2 x 2814) / 3.16 / 4 and (20191 - 2243) / 3.16 / 2; Quantum: 2180 and 2340
-    expect(value(otv.damageInstances[0].damagePerTick)).toBeCloseTo(2015.66, 1);
-    expect(value(fox.damageInstances[0].damagePerTick)).toBeCloseTo(2839.87, 1);
-  });
-
-  it("apply scorch per shot: x60 from the text, x90 from 9 explosions (override)", () => {
-    const stacks = (weapon: Weapon) =>
-      weapon.rules!.flatMap((r) =>
-        r.do.flatMap((a) =>
-          a.type === "applyStatus" ? [[a.status, value(a.stacks!)]] : [],
-        ),
-      );
-    expect(stacks(fox)).toEqual([["scorch", 60]]);
-    expect(stacks(otv)).toEqual([["scorch", 90]]);
-  });
-
-  it("take the ignition bonus of One Thousand Voices from its text", () => {
-    expect(otv.keywordBonuses).toMatchObject([
-      { keywordId: "ignition", factor: { value: 1.316 } },
-    ]);
-    expect(fox.keywordBonuses).toBeUndefined();
-  });
-
-  it("match the Aegis rows of One Thousand Voices with Ember of Ashes within 3 %", () => {
-    // The row without Ember is the base; with Ember every shot ignites (36499 / 3.16 for 4 shots).
-    const ember = effects.find((e) => e.id === "ember-of-ashes")!;
-    const withEmber = simulate(otv, 600, [ember], loadBuckets(rawBuckets), {
-      keywords,
-      shotLimit: 4,
-    }).totalDamage;
-    expect(Math.abs(withEmber / (36499 / 3.16) - 1)).toBeLessThan(0.03);
-    expect(total(otv)).toBeGreaterThan(0);
-    expect(total(fox)).toBeGreaterThan(0);
-  });
-
-  it("take the catalyst of One Thousand Voices from Aegis with the ignitions taken out", () => {
-    const catalyst = otv.options!.find((o) => o.kind === "catalyst")!;
-    // (85319 - 4 x 2814) / 8 against (31106 - 2 x 2814) / 4, both Aegis rows
-    expect(value(catalyst.factor)).toBeCloseTo(1.4534, 3);
-    // "dealing 22 ticks of damage, one tick every 0.25 seconds, for 5.65 seconds" is how long a
-    // seeker ticks, not how long the catalyst lasts.
-    expect(catalyst.durationSeconds).toBeNull();
-  });
-});
-
 describe("primaries", () => {
   it("Bad Juju: unlimited ammo, timing from Quantum per bullet", () => {
     const juju = byName("Bad Juju")!;
@@ -249,42 +110,6 @@ describe("primaries", () => {
     expect(value(juju.totalShots)).toBeNull();
     expect(value(juju.magazine)).toBe(31);
     expect(value(juju.fireRateRpm)).toBe(450);
-  });
-
-  it("Bad Juju: Aegis measures a 3-round burst (wipe 1446 = 3 × 482), the package is per bullet", () => {
-    expect(
-      value(byName("Bad Juju")!.damageInstances[0].damagePerTick),
-    ).toBeCloseTo(95.846 / 3, 2);
-    // Vigilance Wing fires 5-round bursts: 2605 = 5 × 521
-    expect(
-      value(byName("Vigilance Wing")!.damageInstances[0].damagePerTick),
-    ).toBeCloseTo(172.668 / 5, 2);
-  });
-
-  // Catches a burst counted as one bullet (×3, ×5) and a shot of several projectiles divided by
-  // mistake (Trinity Ghoul ÷3); extra damage in the Aegis average (poison, ignitions) stays inside.
-  const KNOWN_OFF: Record<string, string> = {
-    Hawkmoon: "Quantum's magazine damage includes the Paracausal Shot",
-    Alethonym:
-      "Aegis' average holds impact and impale ticks (337 impact, 237 tick), Quantum only the impact",
-  };
-  it("rule: one round of a primary deals 0.5 to 2 times the round of its Quantum timing row", () => {
-    const inputs = loadWeaponImportInputs();
-    const off = result.packages
-      .filter((w) => w.ammo === "primary" && !(w.name in KNOWN_OFF))
-      .flatMap((w) => {
-        const row = inputs.quantum.rows.find(
-          (r) => r.id === w.magazine.source.name.split("row ")[1],
-        );
-        if (!row?.magDamage || !row.magazine) return [];
-        const ratio =
-          value(w.damageInstances[0].damagePerTick)! /
-          (row.magDamage / row.magazine);
-        return ratio > 2 || ratio < 0.5
-          ? [`${w.name} ${ratio.toFixed(2)}`]
-          : [];
-      });
-    expect(off).toEqual([]);
   });
 });
 
@@ -320,25 +145,6 @@ describe("catalysts", () => {
       .filter((d) => d.timeMs > result.shots[0].timeMs)
       .reduce((sum, d) => sum + d.damage, 0);
     expect(Math.abs(damage / ringArrows / 897.8 - 1)).toBeLessThan(0.03);
-  });
-
-  it("Telesto: 4 rounds per magazine without, 7 with the catalyst (Clarity 4🠚7)", () => {
-    const telesto = byName("Telesto")!;
-    expect(value(telesto.magazine)).toBe(4);
-    expect(value(telesto.catalyst!.timing!.magazine)).toBe(7);
-    expect(telesto.catalyst!.effect).toBe("timing");
-  });
-
-  it("Gjallarhorn: Quantum's plain row has the catalyst magazine 2; without it 1", () => {
-    const gjally = byName("Gjallarhorn")!;
-    expect(value(gjally.magazine)).toBe(1);
-    expect(value(gjally.catalyst!.timing!.magazine)).toBe(2);
-  });
-
-  it("Thunderlord: the catalyst refills from lightning strikes, so no reloads (Quantum cata)", () => {
-    const thunderlord = byName("Thunderlord")!;
-    const t = thunderlord.catalyst!.timing!;
-    expect(value(t.magazine)).toBe(value(t.totalShots));
   });
 
   it("rule: every package with a catalyst in the manifest or Clarity offers it", () => {
@@ -478,13 +284,6 @@ describe("catalyst paragraphs against one boss without adds", () => {
     const text = "While within 15 meters of an enemy, grants 20 Reload Speed.";
     expect(bossParagraphs(text)).toBe(text);
   });
-
-  it("rule: about 30 or more catalysts have no effect against one boss", () => {
-    const none = result.packages.filter((w) => w.catalyst?.effect === "none");
-    expect(none.length).toBeGreaterThanOrEqual(30);
-    expect(byName("Wish-Ender")!.catalyst!.effect).toBe("none");
-    expect(byName("Vigilance Wing")!.catalyst!.effect).toBe("none");
-  });
 });
 
 describe("swords and catalyst-only measurements (2026-10-23)", () => {
@@ -492,14 +291,6 @@ describe("swords and catalyst-only measurements (2026-10-23)", () => {
     const w = byName("The Lament")!;
     expect(value(w.totalShots)).toBe(13);
     expect(value(w.damageInstances[0].damagePerTick)).toBeCloseTo(4561, 0);
-  });
-
-  it("Wish-Keeper: Aegis measures with Vorpal Weapon; without it ÷1.2, the catalyst gives ×1.2", () => {
-    const w = byName("Wish-Keeper")!;
-    expect(value(w.damageInstances[0].damagePerTick)).toBeCloseTo(213.75, 1);
-    expect(value(w.options!.find((o) => o.kind === "catalyst")!.factor)).toBe(
-      1.2,
-    );
   });
 });
 

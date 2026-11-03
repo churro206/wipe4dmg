@@ -1,0 +1,50 @@
+{
+  "id": "tractor-cannon",
+  "kind": "exoticWeapon",
+  "name": "Tractor Cannon",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "The Scientific Method",
+      "hash": "f4f1cb11"
+    },
+    {
+      "source": "clarity",
+      "entry": "Tractor Cannon Catalyst",
+      "hash": "4480c462"
+    },
+    { "source": "clarity", "entry": "Repulsor Force", "hash": "abbd8d76" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file tractor-cannon",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-shotgun-tractor-cannon].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-shotgun-tractor-cannon].timing.magazine",
+  "totalShots": "$quantum[heavies-shotgun-tractor-cannon].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-shotgun-tractor-cannon].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Deeper Pockets, Tractor Cannon Catalyst",
+    "description": "Increases Magazine Size by 3 (4🠚7) and grants 50 Ammo Generation.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-shotgun-tractor-cannon].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -12,12 +12,8 @@ import { abilities } from "../src/ui/data";
 import { fittedRows } from "./lib/fittedRows";
 
 /** Quoted rows that give no value (checked 2026-10-31), with the reason. They stay checks. */
-const NO_VALUE: Record<string, string> = {
-  "pulse-rifle-outbreak-perfected-average-per-burst-no-nanites-appended-mag-up-to-rewind-end":
-    "Aegis' unit differs by a factor of four; the override takes Quantum's 80 per bullet and quotes the row only for the conflict",
-  "trace-rifle-ager-s-scepter-average-will-given-form":
-    "cross-check of the catalyst factor +80 % from Clarity (critShot 222 against 561 ÷ 15.09), not its source",
-};
+// Empty since Q1 (ADR 0019): the overrides of Outbreak Perfected and Ager's Scepter went with their items.
+const NO_VALUE: Record<string, string> = {};
 
 const weaponRowIds = new Set(AegisWeaponSnapshot.parse(rawWeaponRows).rows.map((r) => r.id));
 const fitted = fittedRows(rawPackages, abilities).weaponRows;

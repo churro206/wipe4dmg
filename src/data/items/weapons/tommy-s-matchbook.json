@@ -1,0 +1,47 @@
+{
+  "id": "tommy-s-matchbook",
+  "kind": "exoticWeapon",
+  "name": "Tommy's Matchbook",
+  "texts": [
+    { "source": "clarity", "entry": "Ignition Trigger", "hash": "384b6b4c" },
+    { "source": "clarity", "entry": "Heat Sink", "hash": "dbb87c1c" },
+    {
+      "source": "clarity",
+      "entry": "Tommy's Matchbook Catalyst",
+      "hash": "7b2527f1"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file tommy-s-matchbook",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-tommy-s-matchbook].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-tommy-s-matchbook].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-tommy-s-matchbook].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-tommy-s-matchbook].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Heat of the Moment, Tommy's Matchbook Catalyst",
+    "description": "While Ignition Trigger is active, kills grant 60 HP (Cure x1) and every 5th shot applies 15 [10] Scorch. Ember of Ashes increases this to 20 for both PvE and PvP.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-tommy-s-matchbook].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

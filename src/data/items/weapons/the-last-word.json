@@ -1,0 +1,46 @@
+{
+  "id": "the-last-word",
+  "kind": "exoticWeapon",
+  "name": "The Last Word",
+  "texts": [
+    { "source": "clarity", "entry": "Fan Fire", "hash": "0b3dab91" },
+    {
+      "source": "clarity",
+      "entry": "The Last Word Catalyst",
+      "hash": "684fb87e"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-last-word",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-the-last-word].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-the-last-word].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-the-last-word].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-the-last-word].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Killing Wind, Envious Assassin, The Last Word Catalyst",
+    "description": "Upon readying the weapon after scoring kills with your other Weapons:\nRefills and/or overfills the Magazine from reserves based on the amount of Weapon Kills scored.\nLoads 1 Ammo per kill achieved with other weapons.\nMaximum total overfill amount is 200% of the Magazine Capacity. Each activation can only load up to 100% of the Magazine Capacity into the magazine.\nOn Weapon Kill, for 5 seconds:\n• 50 Mobility\n• 40 Handling and 20 Range\n• 5% increased Damage Falloff Distance\nAdditional Kills extend the duration by 5 seconds, up to 8 seconds. Buff is removed on stow.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-the-last-word].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

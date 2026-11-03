@@ -1,0 +1,47 @@
+{
+  "id": "final-warning",
+  "kind": "exoticWeapon",
+  "name": "Final Warning",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Final Warning Catalyst",
+      "hash": "d7f7f264"
+    },
+    { "source": "clarity", "entry": "Pick Your Poison", "hash": "25fe2be2" },
+    { "source": "clarity", "entry": "All at Once", "hash": "8d5df9a0" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file final-warning",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-sidearm-final-warning].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-sidearm-final-warning].timing.magazine",
+  "totalShots": "$quantum[primaries-sidearm-final-warning].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-sidearm-final-warning].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "String Theory, Final Warning Catalyst",
+    "description": "Grants 10% increased damage to marked targets. Minibosses and Bosses only receive 5% more damage.\nHits against marked Minors and Elites|Minibosses and Bosses have an 85%|25% chance to refund one ammo into the magazine.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-sidearm-final-warning].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

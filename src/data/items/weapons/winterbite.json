@@ -1,0 +1,42 @@
+{
+  "id": "winterbite",
+  "kind": "exoticWeapon",
+  "name": "Winterbite",
+  "texts": [
+    { "source": "clarity", "entry": "Weighted Edge", "hash": "754f3c82" },
+    { "source": "clarity", "entry": "Winterbite Catalyst", "hash": "3efc354e" },
+    { "source": "clarity", "entry": "Big Frigid Glaive", "hash": "08d64222" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file winterbite",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-glaive-winterbite].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-glaive-winterbite].timing.magazine",
+  "totalShots": "$quantum[heavies-glaive-winterbite].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-glaive-winterbite].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Rimestealer, Winterbite Catalyst",
+    "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-glaive-winterbite].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

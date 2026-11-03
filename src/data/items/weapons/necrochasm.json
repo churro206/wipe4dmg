@@ -1,0 +1,43 @@
+{
+  "id": "necrochasm",
+  "kind": "exoticWeapon",
+  "name": "Necrochasm",
+  "texts": [
+    { "source": "clarity", "entry": "Desperation", "hash": "66399da6" },
+    { "source": "clarity", "entry": "Necrochasm Catalyst", "hash": "a98cb84c" },
+    { "source": "clarity", "entry": "Cursebringer", "hash": "6f8b09eb" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file necrochasm",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-necrochasm].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-necrochasm].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-necrochasm].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-necrochasm].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "One for Thrall, Necrochasm Catalyst",
+    "description": "Damaging 3 enemies within 3 seconds of each other grants the following benefits for 10 seconds:\n• 35% increased damage\n• ? Handling\n• ? Range\n• ? Aim Assist\nBuff can be refreshed.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-necrochasm].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

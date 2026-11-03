@@ -1,0 +1,50 @@
+{
+  "id": "fighting-lion",
+  "kind": "exoticWeapon",
+  "name": "Fighting Lion",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Delayed Gratification",
+      "hash": "c1af71aa"
+    },
+    {
+      "source": "clarity",
+      "entry": "Fighting Lion Catalyst",
+      "hash": "0f8aba50"
+    },
+    { "source": "clarity", "entry": "Thin the Herd", "hash": "4c4aacbd" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file fighting-lion",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-grenade-launcher-fighting-lion].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-grenade-launcher-fighting-lion].timing.magazine",
+  "totalShots": "$quantum[primaries-grenade-launcher-fighting-lion].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-grenade-launcher-fighting-lion].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Chimera, Fighting Lion Catalyst",
+    "description": "Grants 30 Reload Speed.\nFiring this gun grants equipped Kinetic and Heavy ammo weapons the following benefits for 3 seconds:\n• 100 Handling\n• 30% decreased Accuracy Cone Size",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-grenade-launcher-fighting-lion].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

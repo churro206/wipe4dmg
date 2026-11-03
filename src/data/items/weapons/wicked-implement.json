@@ -1,0 +1,47 @@
+{
+  "id": "wicked-implement",
+  "kind": "exoticWeapon",
+  "name": "Wicked Implement",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Wicked Implement Catalyst",
+      "hash": "7aa5a48a"
+    },
+    { "source": "clarity", "entry": "Creeping Attrition", "hash": "435078a0" },
+    { "source": "clarity", "entry": "Tithing Harvest", "hash": "edacec55" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file wicked-implement",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-wicked-implement].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-wicked-implement].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-wicked-implement].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-wicked-implement].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Hadopelagic Tribute, Headstone, Wicked Implement Catalyst",
+    "description": "Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity.\nDue Tithing Harvest refilling the entire magazine on Stasis Shard pickup, the overfill effect only activates if your current magazine is above 13 shots remaining.\nGrants the Headstone trait:\nPrecision Kills create a Large Stasis Crystal at the target's location.\nTier 1-2 Minor and Tier 1 Elite Combatants only spawn a Medium Stasis Crystal.\nCreating 5 Crystals within ? seconds prevents the perk from activating for 5 seconds.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-scout-rifle-wicked-implement].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

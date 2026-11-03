@@ -1,0 +1,46 @@
+{
+  "id": "eyes-of-tomorrow",
+  "kind": "exoticWeapon",
+  "name": "Eyes of Tomorrow",
+  "texts": [
+    { "source": "clarity", "entry": "Adaptive Ordnance", "hash": "64c5060e" },
+    { "source": "clarity", "entry": "Eyes on All", "hash": "b36439ce" },
+    {
+      "source": "clarity",
+      "entry": "Eyes of Tomorrow Catalyst",
+      "hash": "1bd3c78c"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file eyes-of-tomorrow",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-rocket-launcher-eyes-of-tomorrow].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-rocket-launcher-eyes-of-tomorrow].timing.magazine",
+  "totalShots": "$quantum[heavies-rocket-launcher-eyes-of-tomorrow].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-rocket-launcher-eyes-of-tomorrow].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Demolitionist, Blast Distributor, Eyes of Tomorrow Catalyst",
+    "description": "Dealing damage grants a stack of 'Blast Distributor' for 5 seconds, increasing your Grenade Stat by 10 per stack. Maximum of 5 stacks.\nKills grant 10% Grenade Ability Energy.\nUsing your Grenade Ability refills the Magazine with a 3 second cooldown.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-rocket-launcher-eyes-of-tomorrow].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

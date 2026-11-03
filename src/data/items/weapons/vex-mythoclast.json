@@ -1,0 +1,48 @@
+{
+  "id": "vex-mythoclast",
+  "kind": "exoticWeapon",
+  "name": "Vex Mythoclast",
+  "texts": [
+    { "source": "clarity", "entry": "Volatile Battery", "hash": "aca0fa0f" },
+    { "source": "clarity", "entry": "Temporal Unlimiter", "hash": "11ed48ae" },
+    {
+      "source": "clarity",
+      "entry": "Vex Mythoclast Catalyst",
+      "hash": "5a9412ec"
+    },
+    { "source": "clarity", "entry": "Timeless Mythoclast", "hash": "02ea8e46" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file vex-mythoclast",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-fusion-rifle-vex-mythoclast].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-fusion-rifle-vex-mythoclast].timing.magazine",
+  "totalShots": "$quantum[primaries-fusion-rifle-vex-mythoclast].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-fusion-rifle-vex-mythoclast].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Calculated Balance, Vex Mythoclast Catalyst",
+    "description": "Landing 15 hits within 3 seconds of each, or scoring a kill, grants 20% increased damage, 20 Stability, and 20% reduced Accuracy Cone Size for 5 seconds.\nBuff applies to Auto Rifle mode only.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-fusion-rifle-vex-mythoclast].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

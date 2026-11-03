@@ -1,0 +1,47 @@
+{
+  "id": "microcosm",
+  "kind": "exoticWeapon",
+  "name": "Microcosm",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Paracausal Imbuement",
+      "hash": "a41c2889"
+    },
+    { "source": "clarity", "entry": "Microcosm Catalyst", "hash": "3159444d" },
+    { "source": "clarity", "entry": "Paracausal Beam", "hash": "441345fe" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file microcosm",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-trace-rifle-microcosm].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-trace-rifle-microcosm].timing.magazine",
+  "totalShots": "$quantum[heavies-trace-rifle-microcosm].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-trace-rifle-microcosm].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Thresh, Stopping Power, Microcosm Catalyst",
+    "description": "Weapon Kills grant an additional 1% Super Energy.\nGrants the following benefits against low (under 30%) Health targets. Ignores Shield HP:\n• Increased Stagger Force\n• 7% to 15% increased damage, scaling with remaining Health\n• ? Increased Target Acquisition",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-trace-rifle-microcosm].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

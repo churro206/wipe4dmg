@@ -1,0 +1,53 @@
+{
+  "id": "cloudstrike",
+  "kind": "exoticWeapon",
+  "name": "Cloudstrike",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Cloudstrike Catalyst",
+      "hash": "be2bb0e1"
+    },
+    { "source": "clarity", "entry": "Mortal Polarity", "hash": "9ff5c1f8" },
+    { "source": "clarity", "entry": "Stormbringer", "hash": "a551405b" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file cloudstrike",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-sniper-rifle-cloudstrike].timing.fireRateRpm",
+  "magazine": "$quantum[specials-sniper-rifle-cloudstrike].timing.magazine",
+  "totalShots": "$quantum[specials-sniper-rifle-cloudstrike].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-sniper-rifle-cloudstrike].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Triple Tap, Cloudstrike Catalyst",
+    "description": "Passively grants 25 Handling.\nGrants the Triple Tap trait:\nScoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-sniper-rifle-cloudstrike-cata].timing.fireRateRpm",
+      "magazine": "$quantum[specials-sniper-rifle-cloudstrike-cata].timing.magazine",
+      "totalShots": "$quantum[specials-sniper-rifle-cloudstrike-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[specials-sniper-rifle-cloudstrike-cata].timing.reloadTimeMs"
+    }
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-sniper-rifle-cloudstrike].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

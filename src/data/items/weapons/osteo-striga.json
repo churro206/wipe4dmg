@@ -1,0 +1,47 @@
+{
+  "id": "osteo-striga",
+  "kind": "exoticWeapon",
+  "name": "Osteo Striga",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Osteo Striga Catalyst",
+      "hash": "aac926ee"
+    },
+    { "source": "clarity", "entry": "Screaming Swarm", "hash": "5316383b" },
+    { "source": "clarity", "entry": "Toxic Overload", "hash": "69da8508" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file osteo-striga",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-submachine-gun-osteo-striga].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-submachine-gun-osteo-striga].timing.magazine",
+  "totalShots": "$quantum[primaries-submachine-gun-osteo-striga].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-submachine-gun-osteo-striga].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Osteo Striga Catalyst",
+    "description": "Grants 30 Reload and 20 Stability.\nPoison Kills instantly refill the magazine and can overfill it up to 300% total capacity.\n0.5 second cooldown between activations.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-submachine-gun-osteo-striga].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

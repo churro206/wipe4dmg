@@ -1,0 +1,43 @@
+{
+  "id": "trespasser",
+  "kind": "exoticWeapon",
+  "name": "Trespasser",
+  "texts": [
+    { "source": "clarity", "entry": "Be the Danger", "hash": "c2bf544f" },
+    { "source": "clarity", "entry": "Unrepentant", "hash": "d0f37e04" },
+    { "source": "clarity", "entry": "Trespasser Catalyst", "hash": "e0e5a9ff" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file trespasser",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-sidearm-trespasser].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-sidearm-trespasser].timing.magazine",
+  "totalShots": "$quantum[primaries-sidearm-trespasser].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-sidearm-trespasser].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Tunnel Vision, Trespasser Catalyst",
+    "description": "Grants the Tunnel Vision trait:\nGrants the following for 5 seconds upon finishing a Reload within 3.6 seconds of a Weapon Kill:\n• 20 Aim Assist\n• ? ADS Handling\n• ?% decreased Accuracy Cone Growth\nBe The Danger's automatic reload activates this perk.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-sidearm-trespasser].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

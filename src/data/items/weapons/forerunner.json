@@ -1,0 +1,43 @@
+{
+  "id": "forerunner",
+  "kind": "exoticWeapon",
+  "name": "Forerunner",
+  "texts": [
+    { "source": "clarity", "entry": "Forerunner Catalyst", "hash": "9dfa9b9b" },
+    { "source": "clarity", "entry": "Pace Yourself", "hash": "3c3b30a4" },
+    { "source": "clarity", "entry": "Full Stop", "hash": "ee797dd9" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file forerunner",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-sidearm-forerunner].timing.fireRateRpm",
+  "magazine": "$quantum[specials-sidearm-forerunner].timing.magazine",
+  "totalShots": "$quantum[specials-sidearm-forerunner].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-sidearm-forerunner].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "The Rock, Forerunner Catalyst",
+    "description": "Holding [Reload] within 4 seconds of a kill consumes 4 ammo, refills the magazine, and grants 'The Rock'.\nThe Rock replaces your grenade ability with a tossed Kinetic grenade that explodes for 2072 [181] damage in a 9 meter radius, dealing 20% damage at the edge of its radius. Detonates 0.6 seconds after it slows down enough.\nThe Rock counts as a grenade ability and is buffed by, and triggers, grenade-associated effects.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-sidearm-forerunner].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "borealis",
+  "kind": "exoticWeapon",
+  "name": "Borealis",
+  "texts": [
+    { "source": "clarity", "entry": "Ionic Return", "hash": "ee240224" },
+    { "source": "clarity", "entry": "Borealis Catalyst", "hash": "55683997" },
+    { "source": "clarity", "entry": "The Fundamentals", "hash": "511f85e3" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file borealis",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-sniper-rifle-borealis].timing.fireRateRpm",
+  "magazine": "$quantum[specials-sniper-rifle-borealis].timing.magazine",
+  "totalShots": "$quantum[specials-sniper-rifle-borealis].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-sniper-rifle-borealis].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Shield Disorient, Borealis Catalyst",
+    "description": "Passively grants 20 Reload Speed.\nOn Matching Elemental Shield Break:\nExplosion disorients enemies within 7 meters for 5 seconds.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-sniper-rifle-borealis].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

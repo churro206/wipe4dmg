@@ -1,0 +1,35 @@
+{
+  "id": "euphony",
+  "kind": "exoticWeapon",
+  "name": "Euphony",
+  "texts": [
+    { "source": "clarity", "entry": "Spindle", "hash": "0c4ff801" },
+    { "source": "clarity", "entry": "Euphony Catalyst", "hash": "7ba89029" },
+    { "source": "clarity", "entry": "Unwound", "hash": "0ac6307a" }
+  ],
+  "chargeTimeMs": "$manifest[Euphony].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[specials-linear-fusion-rifle-euphony].timing.fireRateRpm",
+  "magazine": "$quantum[specials-linear-fusion-rifle-euphony].timing.magazine",
+  "totalShots": "$quantum[specials-linear-fusion-rifle-euphony].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-linear-fusion-rifle-euphony].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Enlightened Action, Euphony Catalyst",
+    "description": "Weapon Hits grant Stacks of Enlightened Action for 2 seconds. Maximum of 12 Stacks.\nStat bonuses at 1|2|…|12 Stacks:\n2|7|12|15|20|25|30|35|38|40|45|50 Handling and Reload Speed\nStacks granted per hit by Weapon Type:\n• Hand Cannons: 3 Stacks\n• Bows: ? Stacks\n• Automatic Weapons: 1 Stack",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-linear-fusion-rifle-euphony].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

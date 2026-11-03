@@ -1,0 +1,38 @@
+{
+  "id": "sleeper-simulant",
+  "kind": "exoticWeapon",
+  "name": "Sleeper Simulant",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Sleeper Simulant Catalyst",
+      "hash": "3ac9ce34"
+    },
+    { "source": "clarity", "entry": "Dornröschen", "hash": "292aafe4" }
+  ],
+  "chargeTimeMs": "$manifest[Sleeper Simulant].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[heavies-linear-fusion-rifle-sleeper-simulant-cata].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-linear-fusion-rifle-sleeper-simulant-cata].timing.magazine",
+  "totalShots": "$quantum[heavies-linear-fusion-rifle-sleeper-simulant-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-linear-fusion-rifle-sleeper-simulant-cata].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Accelerated Coils, Deeper Pockets, Sleeper Simulant Catalyst",
+    "description": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774) without reducing damage.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-linear-fusion-rifle-sleeper-simulant-cata].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

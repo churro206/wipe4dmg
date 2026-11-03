@@ -1,0 +1,46 @@
+{
+  "id": "edge-of-concurrence",
+  "kind": "exoticWeapon",
+  "name": "Edge of Concurrence",
+  "texts": [
+    { "source": "clarity", "entry": "Lightning Seeker", "hash": "7e51f021" },
+    {
+      "source": "clarity",
+      "entry": "Edge of Concurrence Catalyst",
+      "hash": "a0307da4"
+    },
+    { "source": "clarity", "entry": "Edge of Concurrence", "hash": "18bd78fd" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file edge-of-concurrence",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-glaive-edge-of-concurrence].timing.fireRateRpm",
+  "magazine": "$quantum[specials-glaive-edge-of-concurrence].timing.magazine",
+  "totalShots": "$quantum[specials-glaive-edge-of-concurrence].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-glaive-edge-of-concurrence].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Eddy Current, Edge of Concurrence Catalyst",
+    "description": "Grants the following after sprinting for 1.5 seconds with the weapon readied:\n• 20 Reload Speed\n• 0.95x Reload Duration Multiplier\n• ? Handling\n• 0.95x Handling Animation Duration Multiplier\nSprinting refreshes the buff duration.\nBeing Amplified removes the sprinting requirement and increases the Reload Speed stat bonus to 60.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-glaive-edge-of-concurrence].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "wish-ender",
+  "kind": "exoticWeapon",
+  "name": "Wish-Ender",
+  "texts": [
+    { "source": "clarity", "entry": "Queen's Wrath", "hash": "0d1e4cf0" },
+    {
+      "source": "clarity",
+      "entry": "Anti-Taken Fletching",
+      "hash": "8af23558"
+    },
+    { "source": "clarity", "entry": "Broadhead", "hash": "48a1ff64" },
+    { "source": "clarity", "entry": "Wish-Ender Catalyst", "hash": "f19778cf" }
+  ],
+  "chargeTimeMs": "$manifest[Wish-Ender].stat(\"Draw Time\")",
+  "fireRateRpm": "$quantum[primaries-bow-wish-ender].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-bow-wish-ender].timing.magazine",
+  "totalShots": "$quantum[primaries-bow-wish-ender].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-bow-wish-ender].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "One for All, Wish-Ender Catalyst",
+    "description": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-bow-wish-ender].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

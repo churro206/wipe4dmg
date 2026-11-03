@@ -1,0 +1,43 @@
+{
+  "id": "sunshot",
+  "kind": "exoticWeapon",
+  "name": "Sunshot",
+  "texts": [
+    { "source": "clarity", "entry": "Sunshot Catalyst", "hash": "44fc531a" },
+    { "source": "clarity", "entry": "Sunburn", "hash": "e063726e" },
+    { "source": "clarity", "entry": "Sun Blast", "hash": "c4dd33e8" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file sunshot",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-hand-cannon-sunshot].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-hand-cannon-sunshot].timing.magazine",
+  "totalShots": "$quantum[primaries-hand-cannon-sunshot].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-hand-cannon-sunshot].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Loose Change, Sunshot Catalyst",
+    "description": "Grants 30 Range and 20 Stability.\nApplying an Elemental Debuff grants the following benefits for 9 seconds:\n• 50 Reload Speed and 20 Aim Assist\n• 20% decreased ADS Movement Speed Penalty\nBuff can be activated while stowed.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-hand-cannon-sunshot].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

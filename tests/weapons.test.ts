@@ -64,7 +64,7 @@ describe("effectAppliesToWeapon", () => {
   it("applies every own weapon effect to One Thousand Voices", () => {
     for (const id of [
       "particle-reconstruction",
-      "ember-of-ashes",
+      // "ember-of-ashes" needs scorch: back with the scorch of OTV in M1 (Q1 scaffold has none)
       "surge-3x",
       "elemental-overdrive-solar",
     ]) {

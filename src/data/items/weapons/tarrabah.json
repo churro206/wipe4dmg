@@ -1,0 +1,43 @@
+{
+  "id": "tarrabah",
+  "kind": "exoticWeapon",
+  "name": "Tarrabah",
+  "texts": [
+    { "source": "clarity", "entry": "Ravenous Beast", "hash": "5e056331" },
+    { "source": "clarity", "entry": "Bottomless Appetite", "hash": "528ca304" },
+    { "source": "clarity", "entry": "Tarrabah Catalyst", "hash": "fa1ead7b" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file tarrabah",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-submachine-gun-tarrabah].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-submachine-gun-tarrabah].timing.magazine",
+  "totalShots": "$quantum[primaries-submachine-gun-tarrabah].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-submachine-gun-tarrabah].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Ambitious Assassin, Tarrabah Catalyst",
+    "description": "Reloading after scoring kills with Tarrabah overfills the magazine from reserves based on the number of Kills scored.\nTarrabah overfills the next magazine by 20% per kill scored, up to a maximum of 150% Base Magazine Capacity. Always rounds up.\nKill counter persists through stow.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-submachine-gun-tarrabah].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

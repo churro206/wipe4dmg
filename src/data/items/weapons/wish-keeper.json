@@ -1,0 +1,49 @@
+{
+  "id": "wish-keeper",
+  "kind": "exoticWeapon",
+  "name": "Wish-Keeper",
+  "texts": [
+    { "source": "clarity", "entry": "Snareweaver", "hash": "62038744" },
+    {
+      "source": "clarity",
+      "entry": "Enduring Snare Refit",
+      "hash": "126c26ad"
+    },
+    {
+      "source": "clarity",
+      "entry": "Multi-Threaded Snare Refit",
+      "hash": "cec5137c"
+    },
+    { "source": "clarity", "entry": "Vorpal Weapon Refit", "hash": "c0ee6341" },
+    { "source": "clarity", "entry": "Hatchling Refit", "hash": "24486a4e" },
+    { "source": "clarity", "entry": "Snareweaver IV", "hash": "62038744" },
+    { "source": "clarity", "entry": "Snareweaver II", "hash": "62038744" },
+    { "source": "clarity", "entry": "Snareweaver III", "hash": "62038744" },
+    { "source": "clarity", "entry": "Silkbound Slayer", "hash": "ddb75c9a" }
+  ],
+  "chargeTimeMs": "$manifest[Wish-Keeper].stat(\"Draw Time\")",
+  "fireRateRpm": "$quantum[primaries-bow-wish-keeper].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-bow-wish-keeper].timing.magazine",
+  "totalShots": "$quantum[primaries-bow-wish-keeper].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-bow-wish-keeper].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Enduring Snare Refit, Multi-Threaded Snare Refit, Vorpal Weapon Refit, Hatchling Refit",
+    "description": "Increases Snareweaver Trap duration by 10 seconds (15🠚25).\nIncreases the maximum number of Suspensions per linked trap wire up to 3.\nGrants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]\nGrants the Hatchling trait:\nScoring a Precision Kill or 3 kills within 3 seconds of each other spawns a Threadling at the target's location.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-bow-wish-keeper].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

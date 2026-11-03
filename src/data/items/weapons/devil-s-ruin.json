@@ -1,0 +1,47 @@
+{
+  "id": "devil-s-ruin",
+  "kind": "exoticWeapon",
+  "name": "Devil's Ruin",
+  "texts": [
+    { "source": "clarity", "entry": "Close the Gap", "hash": "db7eae5d" },
+    { "source": "clarity", "entry": "Pyrogenesis", "hash": "f1bae625" },
+    {
+      "source": "clarity",
+      "entry": "Devil's Ruin Catalyst",
+      "hash": "02534b9e"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file devil-s-ruin",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-sidearm-devil-s-ruin].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-sidearm-devil-s-ruin].timing.magazine",
+  "totalShots": "$quantum[primaries-sidearm-devil-s-ruin].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-sidearm-devil-s-ruin].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Collective Action, Devil's Ruin Catalyst",
+    "description": "Elemental Pickup Interactions grant 30% [10%] increased damage for a variable duration based on the pickup. Can be activated while stowed.\nIonic Traces, Stasis Shards, and Tangle Detonations grant the buff for 4 seconds. Throwing a held Tangle grants 4 additional seconds. Firesprites and Void Breaches grant the buff for 8 seconds.\nAdditional Pickups can extend the duration up to the maximum of 16 seconds.\nElemental Pickup Interactions:\n• Destroying a Tangle (or Elemental Orbs), either by shooting or throwing.\n• Collecting Firesprites, Ionic Traces, Stasis Shards, or Void Breaches\nDoes not trigger with Stasis Shards generated from Facet of Awakening or Facet of Command.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-sidearm-devil-s-ruin].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

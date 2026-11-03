@@ -1,0 +1,47 @@
+{
+  "id": "vigilance-wing",
+  "kind": "exoticWeapon",
+  "name": "Vigilance Wing",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Vigilance Wing Catalyst",
+      "hash": "afc0887d"
+    },
+    { "source": "clarity", "entry": "Harsh Truths", "hash": "0f0538bb" },
+    { "source": "clarity", "entry": "Last Stand", "hash": "97188b1f" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file vigilance-wing",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-pulse-rifle-vigilance-wing].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-pulse-rifle-vigilance-wing].timing.magazine",
+  "totalShots": "$quantum[primaries-pulse-rifle-vigilance-wing].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-pulse-rifle-vigilance-wing].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Ensemble, Vigilance Wing Catalyst",
+    "description": "Grants the Ensemble trait:\nGrants 30 Handling and 40 Reload Speed while within 15 meters of an ally.\nBuff lingers for 1.5 seconds once you're no longer near allies.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-pulse-rifle-vigilance-wing].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

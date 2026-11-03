@@ -1,0 +1,47 @@
+{
+  "id": "cryosthesia-77k",
+  "kind": "exoticWeapon",
+  "name": "Cryosthesia 77K",
+  "texts": [
+    { "source": "clarity", "entry": "LN2 Burst", "hash": "8c6a0772" },
+    {
+      "source": "clarity",
+      "entry": "Cryosthesia 77K Catalyst",
+      "hash": "47cc1881"
+    },
+    { "source": "clarity", "entry": "Liquid Cooling", "hash": "80976db6" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file cryosthesia-77k",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-sidearm-cryosthesia-77k].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-sidearm-cryosthesia-77k].timing.magazine",
+  "totalShots": "$quantum[primaries-sidearm-cryosthesia-77k].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-sidearm-cryosthesia-77k].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Cold Efficiency, Cryosthesia 77K Catalyst",
+    "description": "Shattering a Frozen enemy instantly refills the magazine.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-sidearm-cryosthesia-77k].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

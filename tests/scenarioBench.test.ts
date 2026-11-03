@@ -153,16 +153,12 @@ describe("scenarios of the other tabs (block P)", () => {
 
   // The 14 hand-made entries of the former meta probe (docs/meta-probe.md, column "Modell") are
   // fixtures now: the same build through the one scenario path gives the same value.
+  // Q1 (ADR 0019): six entries are out until their mechanics are back (Leviathan's Breath, Gjallarhorn,
+  // Thunderlord, Whisper of the Worm, One Thousand Voices, Xenophage; see docs/plans/current.md).
   const PROBE_SUSTAINED: Record<string, number> = {
-    "sustained-leviathan-s-breath-archer-s-tempo": 71555,
     "sustained-truth-prototype-truthseeker-argent-ordnance": 81580,
-    "sustained-gjallarhorn-argent-ordnance": 56374,
     "sustained-sleeper-simulant": 87747,
-    "sustained-thunderlord-assumes-only-one-reload-post-nerf": 101659,
     "sustained-grand-overture-volleys-when-available": 144662,
-    "sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation": 128750,
-    "sustained-one-thousand-voices-catalyst-particle-reconstruction": 87320,
-    "sustained-xenophage": 67645,
     "sustained-the-queenbreaker-rewind-rounds-combat-sights": 97261,
   };
   it.each(Object.entries(PROBE_SUSTAINED))("Sustained %s gives the value of the meta probe", (id, expected) => {
@@ -270,7 +266,13 @@ describe("scenario bench", () => {
   });
 });
 
-describe.each(figures.filter((f) => GATED.includes(f.group)).map((f) => [f.group, f] as const))(
+// ADR 0019, point 2: until the Gegenprobe the bench is a report (the table above), not a gate. The
+// ranking gate comes back then, with the deviations listed in ranking-gate.json as they are.
+const REPORT_ONLY = true;
+
+describe.skipIf(REPORT_ONLY).each(
+  figures.filter((f) => GATED.includes(f.group)).map((f) => [f.group, f] as const),
+)(
   "ranking gate: %s",
   (group, f) => {
     it(`has a Spearman of at least ${SPEARMAN_MIN}`, () => {

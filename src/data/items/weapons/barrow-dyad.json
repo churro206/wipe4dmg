@@ -1,0 +1,56 @@
+{
+  "id": "barrow-dyad",
+  "kind": "exoticWeapon",
+  "name": "Barrow-Dyad",
+  "texts": [
+    { "source": "clarity", "entry": "Taken Ambition", "hash": "e515d3c8" },
+    { "source": "clarity", "entry": "Taken Resolution", "hash": "1e58e9bb" },
+    { "source": "clarity", "entry": "Panic Response IV", "hash": "71eb4dc8" },
+    { "source": "clarity", "entry": "Panic Response V", "hash": "71eb4dc8" },
+    { "source": "clarity", "entry": "Panic Response II", "hash": "71eb4dc8" },
+    { "source": "clarity", "entry": "Panic Response III", "hash": "71eb4dc8" },
+    { "source": "clarity", "entry": "Taken Divergence", "hash": "811c9dc5" },
+    { "source": "clarity", "entry": "Panic Response", "hash": "71eb4dc8" },
+    { "source": "clarity", "entry": "Target Lock Refit", "hash": "9bf0581e" },
+    { "source": "clarity", "entry": "One for All Refit", "hash": "92e49d9f" },
+    { "source": "clarity", "entry": "Hatchling Refit", "hash": "24486a4e" },
+    {
+      "source": "clarity",
+      "entry": "High-Impact Reserves Refit",
+      "hash": "5e34ee55"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file barrow-dyad",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-submachine-gun-barrow-dyad].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-submachine-gun-barrow-dyad].timing.magazine",
+  "totalShots": "$quantum[primaries-submachine-gun-barrow-dyad].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-submachine-gun-barrow-dyad].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Target Lock Refit, One for All Refit, Hatchling Refit, High-Impact Reserves Refit",
+    "description": "Grants the Target Lock trait:\nSuccessive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits. Missing deactivates the buff.\nStacks displayed on-screen are only visual aides, the buff ramps up with each shot once active. Reaches maximum strength at 5 Stacks.\n% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%\nDamage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.\nAssuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.\nGrants the One For All trait:\nScoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.\nGrants the Hatchling trait:\nScoring a Precision Kill or 3 kills within 3 seconds of each other spawns a Threadling at the target's location.\nGrants the High-Impact Reserves trait:\nIncreases damage by 12.1% [3%] to 25.6% [6%] as the Magazine drops from 50% of its base capacity to empty.\nThe buff in PVE ranges between 10.3% and 22.9% instead on Fusion Rifles and Aggressive Frame Linear Fusion Rifles.\nDoes not buff the Splash/Explosive damage elements of other perks.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-submachine-gun-barrow-dyad].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

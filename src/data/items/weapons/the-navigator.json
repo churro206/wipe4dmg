@@ -1,0 +1,47 @@
+{
+  "id": "the-navigator",
+  "kind": "exoticWeapon",
+  "name": "The Navigator",
+  "texts": [
+    { "source": "clarity", "entry": "Weft Cutter", "hash": "764e3bc8" },
+    {
+      "source": "clarity",
+      "entry": "The Navigator Catalyst",
+      "hash": "44726c55"
+    },
+    { "source": "clarity", "entry": "Protective Weave", "hash": "a32a4620" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-navigator",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-trace-rifle-the-navigator].timing.fireRateRpm",
+  "magazine": "$quantum[specials-trace-rifle-the-navigator].timing.magazine",
+  "totalShots": "$quantum[specials-trace-rifle-the-navigator].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-trace-rifle-the-navigator].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Gordian Knot, The Navigator Catalyst",
+    "description": "Hold [Reload] to activate Grapple Tangle mode.\nFires a floating Grapple Point to where the reticle previews at approximately 23.5 meters away. Identical to those made by the Widow's Silk aspect.\n30 second cooldown, starting only once grounded.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-trace-rifle-the-navigator].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

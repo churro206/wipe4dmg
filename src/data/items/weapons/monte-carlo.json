@@ -1,0 +1,43 @@
+{
+  "id": "monte-carlo",
+  "kind": "exoticWeapon",
+  "name": "Monte Carlo",
+  "texts": [
+    { "source": "clarity", "entry": "Monte Carlo Method", "hash": "09619c4e" },
+    { "source": "clarity", "entry": "Markov Chain", "hash": "ec4ea2c1" },
+    { "source": "clarity", "entry": "Monte Carlo Catalyst", "hash": "b272a30a" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file monte-carlo",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-monte-carlo].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-monte-carlo].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-monte-carlo].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-monte-carlo].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Stochastic Vengeance, Monte Carlo Catalyst",
+    "description": "Hold [Reload] while at maximum Markov Chain stacks to lock the bayonet.\nWhile Monte Carlo is held, it replaces your Melee Ability with a powerful glaive-like stab that deals 2,772 [140] melee damage. Stab can reach up to 7 meters away and grants 50% Melee Ability Energy on hit.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-monte-carlo].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

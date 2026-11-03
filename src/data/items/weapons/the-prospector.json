@@ -1,0 +1,36 @@
+{
+  "id": "the-prospector",
+  "kind": "exoticWeapon",
+  "name": "The Prospector",
+  "texts": [
+    { "source": "clarity", "entry": "Prospector Catalyst", "hash": "f0c46cc7" },
+    { "source": "clarity", "entry": "Excavation", "hash": "9e0b42e2" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-prospector",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-grenade-launcher-the-prospector-cata].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-grenade-launcher-the-prospector-cata].timing.magazine",
+  "totalShots": "$quantum[heavies-grenade-launcher-the-prospector-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-grenade-launcher-the-prospector-cata].timing.reloadTimeMs",
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-grenade-launcher-the-prospector-cata].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

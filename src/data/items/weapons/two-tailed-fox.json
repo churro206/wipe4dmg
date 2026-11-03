@@ -1,0 +1,37 @@
+{
+  "id": "two-tailed-fox",
+  "kind": "exoticWeapon",
+  "name": "Two-Tailed Fox",
+  "texts": [
+    { "source": "clarity", "entry": "Play with Your Prey", "hash": "bb0fbf50" },
+    { "source": "clarity", "entry": "Twintails", "hash": "675b4b8e" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file two-tailed-fox",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-rocket-launcher-two-tailed-fox].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-rocket-launcher-two-tailed-fox].timing.magazine",
+  "totalShots": "$quantum[heavies-rocket-launcher-two-tailed-fox].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-rocket-launcher-two-tailed-fox].timing.reloadTimeMs",
+  "catalyst": { "name": "Catalyst", "description": "", "effect": "unknown" },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-rocket-launcher-two-tailed-fox].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

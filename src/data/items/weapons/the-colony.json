@@ -1,0 +1,41 @@
+{
+  "id": "the-colony",
+  "kind": "exoticWeapon",
+  "name": "The Colony",
+  "texts": [
+    { "source": "clarity", "entry": "Colony Catalyst", "hash": "d546d354" },
+    { "source": "clarity", "entry": "Serve the Colony", "hash": "4ca50c72" },
+    {
+      "source": "clarity",
+      "entry": "Insectoid Robot Grenades",
+      "hash": "83092436"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-colony",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-grenade-launcher-the-colony-cata].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-grenade-launcher-the-colony-cata].timing.magazine",
+  "totalShots": "$quantum[heavies-grenade-launcher-the-colony-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-grenade-launcher-the-colony-cata].timing.reloadTimeMs",
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-grenade-launcher-the-colony-cata].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

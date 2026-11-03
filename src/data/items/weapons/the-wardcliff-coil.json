@@ -1,0 +1,50 @@
+{
+  "id": "the-wardcliff-coil",
+  "kind": "exoticWeapon",
+  "name": "The Wardcliff Coil",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Mechanized Autoloader",
+      "hash": "580056ea"
+    },
+    {
+      "source": "clarity",
+      "entry": "Wardcliff Coil Catalyst",
+      "hash": "5a6eb33e"
+    },
+    { "source": "clarity", "entry": "Mad Scientist", "hash": "f6d5f564" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-wardcliff-coil",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-rocket-launcher-the-wardcliff-coil].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-rocket-launcher-the-wardcliff-coil].timing.magazine",
+  "totalShots": "$quantum[heavies-rocket-launcher-the-wardcliff-coil].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-rocket-launcher-the-wardcliff-coil].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Wardcliff Coil Catalyst",
+    "description": "Grants some tracking to the rockets I guess?\n(Good luck on figuring that one out!)",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[heavies-rocket-launcher-the-wardcliff-coil].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

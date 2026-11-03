@@ -7,7 +7,7 @@ Generiert von `npm run coverage` (`scripts/lib/aegisCoverage.ts`), nicht von Han
 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 143 | 249 | 25 |
+| Weapons | 417 | 136 | 255 | 26 |
 | Sustained | 261 | 38 | 132 | 91 |
 | Swap | 204 | 47 | 102 | 55 |
 
@@ -64,6 +64,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Pack Tactics (simplified underestimate of 3 stack start) | 2 | kein Paar, Wert aus Text |  |  |
 | Pack Tactics x2 | 2 | kein Paar, Wert aus Text |  |  |
 | Thread of Continuity | 2 | kein Paar, Wert aus Text |  |  |
+| ADS tap fire | 1 | kein Paar, Wert aus Text |  |  |
 | Assault Mag | 1 | kein Paar, Wert aus Text |  |  |
 | Claws of Ahamkara + Necrotic Grip | 1 | kein Paar, Wert aus Text |  |  |
 | Facet of Command | 1 | kein Paar, Wert aus Text |  |  |
@@ -79,6 +80,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Linear Fusion Mode | 1 | kein Paar, Wert aus Text |  |  |
 | Marksman Sights | 1 | kein Paar, Wert aus Text |  |  |
 | Moebius Quiver | 1 | kein Paar, Wert aus Text |  |  |
+| Networked Targeting x5 | 1 | kein Paar, Wert aus Text |  |  |
 | Overwhelming Power | 1 | kein Paar, Wert aus Text |  |  |
 | Paracausal Imbuement | 1 | kein Paar, Wert aus Text |  |  |
 | Property: Irreducible | 1 | kein Paar, Wert aus Text |  |  |
@@ -233,10 +235,10 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | High-impact frame, Charge MW, Accelerated Coils | übersprungen | legendary frame (owner 2026-10-25) |
 | Jötunn, average, successive shots | im Modell | base row of the package |
 | Merciless, Conserve Momentum x15, full mag | im Modell | base row of the package |
-| Merciless, Conserve Momentum x0, full mag | übersprungen | ohne Conserve Momentum x15 der Basiszeile |
+| Merciless, Conserve Momentum x0, full mag | übersprungen | the item file uses another row |
 | One Thousand Voices, average | im Modell | base row of the package |
-| One Thousand Voices, average, Ember of Ashes | übersprungen | gleiche Annahmen wie die Basiszeile |
-| One Thousand Voices, average, catalyst | im Modell | option "catalyst" |
+| One Thousand Voices, average, Ember of Ashes | übersprungen | the item file uses another row |
+| One Thousand Voices, average, catalyst | übersprungen | Katalysator: catalyst |
 | One Thousand Voices, average, Ember of Ashes, catalyst | übersprungen | Katalysator: catalyst |
 | One Thousand Voices, average, blighted, catalyst | fehlt | nicht modelliert: blighted; Katalysator: catalyst |
 | One Thousand Voices, average, Ember of Ashes, blighted, catalyst | fehlt | nicht modelliert: blighted; Katalysator: catalyst |
@@ -244,14 +246,14 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Rapid-fire frame, Charge MW, Accelerated Coils | übersprungen | legendary frame (owner 2026-10-25) |
 | Telesto | im Modell | base row of the package |
 | Tessellation, Property: Irreducible, Transcendent, Transcendence bonus included | fehlt | nicht modelliert: Transcendent |
-| Tessellation, Property: Irreducible | im Modell | base row of the package |
-| Tessellation | übersprungen | ohne Property: Irreducible der Basiszeile |
+| Tessellation, Property: Irreducible | übersprungen | the item file uses another row |
+| Tessellation | im Modell | base row of the package |
 | Vex Mythoclast | im Modell | base row of the package |
-| Vex Mythoclast, Temporal Unlimiter | im Modell | option "Temporal Unlimiter" |
+| Vex Mythoclast, Temporal Unlimiter | übersprungen | the item file uses another row |
 | Adaptive frame, projectile | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive frame, projectile | übersprungen | legendary frame (owner 2026-10-25) |
 | Edge of Action, projectile | im Modell | base row of the package |
-| Edge of Concurrence, Lightning Seeker | übersprungen | ohne projectile der Basiszeile |
+| Edge of Concurrence, Lightning Seeker | übersprungen | the item file uses another row |
 | Edge of Concurrence, projectile | im Modell | base row of the package |
 | Edge of Intent, projectile | im Modell | base row of the package |
 | Rapid-fire frame, projectile | übersprungen | legendary frame (owner 2026-10-25) |
@@ -310,7 +312,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Heavy burst frame, Illegally Modded Holster, 13 bursts, e. Precision Instrument | übersprungen | legendary frame (owner 2026-10-25) |
 | Heavy burst frame, Illegally Modded Holster, 13 bursts | übersprungen | legendary frame (owner 2026-10-25) |
 | Lumina | im Modell | base row of the package |
-| Malfeasance, average, with slugs, Vorpal Weapon | im Modell | option "Vorpal Weapon" |
+| Malfeasance, average, with slugs, Vorpal Weapon | übersprungen | Katalysator: Vorpal Weapon |
 | Malfeasance, Illegally Modded Holster, 17 shots, with slugs, blighted, Vorpal Weapon | fehlt | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants); nicht modelliert: blighted; Katalysator: Vorpal Weapon |
 | Malfeasance, Illegally Modded Holster, 17 shots, with slugs, Vorpal Weapon | übersprungen | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants); Katalysator: Vorpal Weapon |
 | Precision frame | übersprungen | legendary frame (owner 2026-10-25) |
@@ -358,7 +360,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Balanced heat weapon - 540RPM primary, burst | übersprungen | legendary frame (owner 2026-10-25) |
 | Collective Obligation, burst | im Modell | base row of the package |
 | Dynamic heat weapon - 540RPM primary, burst | übersprungen | legendary frame (owner 2026-10-25) |
-| Graviton Lance, burst, Vorpal Weapon | im Modell | base row of the package |
+| Graviton Lance, burst, Vorpal Weapon | übersprungen | Katalysator: Vorpal Weapon |
 | Heavy burst frame, burst | übersprungen | legendary frame (owner 2026-10-25) |
 | High-impact frame, burst | übersprungen | legendary frame (owner 2026-10-25) |
 | Lightweight frame, burst | übersprungen | legendary frame (owner 2026-10-25) |
@@ -411,8 +413,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Skyburner's Oath, ADS, Cabal | im Modell | base row of the package |
 | Skyburner's Oath, average, hipfire, with ignitions, Burning Ambition, Cabal | fehlt | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Skyburner's Oath, average, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Cabal | fehlt | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
-| Symmetry, Arc Seeker Mode, Dynamic Charge x10 | übersprungen | gleiche Annahmen wie die Basiszeile |
-| Symmetry, Arc Seeker Mode, Dynamic Charge x20 | übersprungen | gleiche Annahmen wie die Basiszeile |
+| Symmetry, Arc Seeker Mode, Dynamic Charge x10 | übersprungen | the item file uses another row |
+| Symmetry, Arc Seeker Mode, Dynamic Charge x20 | übersprungen | the item file uses another row |
 | Symmetry | im Modell | base row of the package |
 | The Jade Rabbit | im Modell | base row of the package |
 | The Jade Rabbit, Fated Missile x15 | fehlt | nicht modelliert: Fated Missile x15 |
@@ -443,11 +445,11 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Buried Bloodline | im Modell | base row of the package |
 | Cryosthesia 77K | im Modell | base row of the package |
 | Devil's Ruin | im Modell | base row of the package |
-| Devil's Ruin, Pyrogenesis, Collective Action | übersprungen | Katalysator-Zeile mit kleinerem Wert (×0,350): anderer Modus |
-| Devil's Ruin, Pyrogenesis | im Modell | option "Pyrogenesis" |
+| Devil's Ruin, Pyrogenesis, Collective Action | übersprungen | Katalysator: Collective Action |
+| Devil's Ruin, Pyrogenesis | übersprungen | the item file uses another row |
 | Dynamic heat weapon - 360RPM primary | übersprungen | legendary frame (owner 2026-10-25) |
-| Final Warning, ADS charged mark | übersprungen | ohne ADS tap fire der Basiszeile |
-| Final Warning, ADS tap fire | im Modell | base row of the package |
+| Final Warning, ADS charged mark | im Modell | base row of the package |
+| Final Warning, ADS tap fire | fehlt | nicht modelliert: ADS tap fire |
 | Forerunner, The Rock, excludes impact | übersprungen | Katalysator: The Rock |
 | Forerunner | im Modell | base row of the package |
 | Heavy burst frame, burst | übersprungen | legendary frame (owner 2026-10-25) |
@@ -480,7 +482,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Riskrunner, Arc Conductor, no chains | fehlt | nicht modelliert: no chains |
 | Riskrunner, average, Arc Conductor, Peacekeepers | übersprungen | Exotic-Rüstung: Peacekeepers |
 | Tarrabah | im Modell | base row of the package |
-| Tarrabah, Ravenous Beast | übersprungen | gleiche Annahmen wie die Basiszeile |
+| Tarrabah, Ravenous Beast | übersprungen | the item file uses another row |
 | Tarrabah, average, Ravenous Beast, Peacekeepers | übersprungen | Exotic-Rüstung: Peacekeepers |
 | The Huckleberry, average, Bull Rider | fehlt | nicht modelliert: Bull Rider |
 | The Huckleberry, average, Bull Rider, Peacekeepers | fehlt | nicht modelliert: Bull Rider; Exotic-Rüstung: Peacekeepers |
@@ -490,7 +492,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Aggressive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Borealis | im Modell | base row of the package |
 | Cloudstrike, average, with lightning strikes | im Modell | base row of the package |
-| D.A.R.C.I., average, Target Acquired, Networked Targeting x5, with spaced jolt | im Modell | option "Networked Targeting x5" |
+| D.A.R.C.I., average, Target Acquired, Networked Targeting x5, with spaced jolt | übersprungen | Katalysator: Networked Targeting x5 |
 | D.A.R.C.I., average, Target Acquired, Networked Targeting x5, with spaced jolt, first mag | übersprungen | Katalysator: Networked Targeting x5 |
 | Disruption weapon | übersprungen | legendary frame (owner 2026-10-25) |
 | Dynamic heat weapon - 140RPM special | übersprungen | legendary frame (owner 2026-10-25) |
@@ -498,13 +500,13 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Ice Breaker, shatter ignition, includes shatter and frozen bonuses | fehlt | nicht modelliert: shatter ignition |
 | Ice Breaker | im Modell | base row of the package |
 | Izanagi's Burden | im Modell | base row of the package |
-| Izanagi's Burden, Honed Edge x4 | übersprungen | gleiche Annahmen wie die Basiszeile |
+| Izanagi's Burden, Honed Edge x4 | übersprungen | the item file uses another row |
 | New Land Beyond, no stacks | im Modell | base row of the package |
 | Rapid-fire frame | übersprungen | legendary frame (owner 2026-10-25) |
-| Still Hunt, Cayde's Retribution, all three shots | übersprungen | gleiche Annahmen wie die Basiszeile |
+| Still Hunt, Cayde's Retribution, all three shots | übersprungen | the item file uses another row |
 | Still Hunt, Cayde's Retribution, Celestial Nighthawk | übersprungen | Exotic-Rüstung: Celestial Nighthawk |
 | Still Hunt | im Modell | base row of the package |
-| Whisper of the Worm, Whispered Breathing | im Modell | option "Whispered Breathing" |
+| Whisper of the Worm, Whispered Breathing | übersprungen | Katalysator: Whispered Breathing |
 | Adaptive frame, Jagged Edge, 70 impact, light | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive frame, Jagged Edge, 70 impact, heavy | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive frame, Jagged Edge, Enhanced Impact, 74 impact, light | übersprungen | legendary frame (owner 2026-10-25) |
@@ -587,13 +589,13 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Ager's Scepter, average, Will Given Form, Harsh Refraction | übersprungen | Katalysator: Will Given Form; Artefakt: Harsh Refraction |
 | Coldheart, average, no initial trace | im Modell | base row of the package |
 | Divinity, average, Penance, excludes debuff, Jolting Feedback, Focused Fury | im Modell | base row of the package |
-| Lodestar, ADS, burst | übersprungen | ohne hipfire der Basiszeile |
+| Lodestar, ADS, burst | übersprungen | the item file uses another row |
 | Lodestar, hipfire | im Modell | base row of the package |
 | Microcosm | im Modell | base row of the package |
 | Prometheus Lens, average, with ignition, Ember of Ashes | übersprungen | gleiche Annahmen wie die Basiszeile |
 | Prometheus Lens, average, with ignition | im Modell | base row of the package |
 | Ruinous Effigy | im Modell | base row of the package |
-| Ruinous Effigy | übersprungen | gleiche Annahmen wie die Basiszeile |
+| Ruinous Effigy | übersprungen | the item file uses another row |
 | The Navigator | im Modell | base row of the package |
 | Wavesplitter, average, power cycling, Detonator Beam | im Modell | base row of the package |
 | Wavesplitter, average, Supercharged Battery, Detonator Beam | übersprungen | Katalysator: Detonator Beam |
@@ -733,7 +735,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | The Queenbreaker, Rewind Rounds, Combat Sights | im Modell | gate: hand-made probe entry |
 | Still Hunt, pre-popped into 6 shot cycle, Sniper's Meditation | fehlt | no switch for: pre-popped into 6 shot cycle |
 | Fafnir, includes Quantum Nova windup and splash, 9 ammo consumed | fehlt | no switch for: includes Quantum Nova windup and splash; 9 ammo consumed |
-| D.A.R.C.I., Networked Targeting x5, Target Acquired, includes jolt, Sniper's Meditation | fehlt | no switch for: Target Acquired; includes jolt |
+| D.A.R.C.I., Networked Targeting x5, Target Acquired, includes jolt, Sniper's Meditation | fehlt | no switch for: Networked Targeting x5; Target Acquired; includes jolt |
 | New Land Beyond, starts at The Master x0, Rally Barricade, manual reloads until The Grandmaster, Sniper's Meditation | fehlt | no switch for: starts at The Master x0; manual reloads until The Grandmaster |
 | Microcosm, Paracausal Imbuement, Harsh Refraction | fehlt | no switch for: Paracausal Imbuement; Harsh Refraction |
 | Slayer's Fang, Assault Mag, includes submunitions | fehlt | no switch for: Assault Mag; includes submunitions |

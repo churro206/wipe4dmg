@@ -1,0 +1,39 @@
+{
+  "id": "trinity-ghoul",
+  "kind": "exoticWeapon",
+  "name": "Trinity Ghoul",
+  "texts": [
+    { "source": "clarity", "entry": "Lightning Rod", "hash": "81247630" },
+    { "source": "clarity", "entry": "Split Electron", "hash": "4dbbb4b4" },
+    {
+      "source": "clarity",
+      "entry": "Trinity Ghoul Catalyst",
+      "hash": "f1c2859c"
+    }
+  ],
+  "chargeTimeMs": "$manifest[Trinity Ghoul].stat(\"Draw Time\")",
+  "fireRateRpm": "$quantum[primaries-bow-trinity-ghoul-cata].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-bow-trinity-ghoul-cata].timing.magazine",
+  "totalShots": "$quantum[primaries-bow-trinity-ghoul-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-bow-trinity-ghoul-cata].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Forked Lightning, Trinity Ghoul Catalyst",
+    "description": "Decreases Draw Time by 15% (756ms🠚633ms).\nLightning Rod is now granted after scoring any Arc kill. Trinity Ghoul must be held in order to receive Lightning Rod.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-bow-trinity-ghoul-cata].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

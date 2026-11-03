@@ -1,0 +1,51 @@
+{
+  "id": "mida-multi-tool",
+  "kind": "exoticWeapon",
+  "name": "MIDA Multi-Tool",
+  "texts": [
+    { "source": "clarity", "entry": "MIDA Multi-Tool", "hash": "3b0126de" },
+    {
+      "source": "clarity",
+      "entry": "MIDA Software Package",
+      "hash": "14ea01bd"
+    },
+    {
+      "source": "clarity",
+      "entry": "MIDA Multi-Tool Catalyst",
+      "hash": "20d2f592"
+    }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file mida-multi-tool",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-mida-multi-tool].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-mida-multi-tool].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-mida-multi-tool].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-mida-multi-tool].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Vital Intel, MIDA Multi-Tool Catalyst",
+    "description": "While within 15 meters of an enemy, grants an Enhanced Radar, 20 Reload Speed, and 15% decreased Reload Animation Duration.\nBuff lingers for 4 seconds once the condition is no longer met.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-scout-rifle-mida-multi-tool].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

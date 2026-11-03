@@ -1,0 +1,43 @@
+{
+  "id": "khvostov-7g-0x",
+  "kind": "exoticWeapon",
+  "name": "Khvostov 7G-0X",
+  "texts": [
+    { "source": "clarity", "entry": "The Right Choice", "hash": "3a52817f" },
+    { "source": "clarity", "entry": "Eyes Up, Guardian", "hash": "5eba376b" },
+    { "source": "clarity", "entry": "Khvostov Catalyst", "hash": "9d75d254" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file khvostov-7g-0x",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-khvostov-7g-0x].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-khvostov-7g-0x].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-khvostov-7g-0x].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-khvostov-7g-0x].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Khvostov Catalyst",
+    "description": "Scoring 25 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 🡅0.8% Super Energy.\nDoes not require Direct Hits. Hit counter persists through stow.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-khvostov-7g-0x].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

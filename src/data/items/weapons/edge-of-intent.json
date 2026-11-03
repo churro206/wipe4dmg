@@ -1,0 +1,46 @@
+{
+  "id": "edge-of-intent",
+  "kind": "exoticWeapon",
+  "name": "Edge of Intent",
+  "texts": [
+    {
+      "source": "clarity",
+      "entry": "Edge of Intent Catalyst",
+      "hash": "dee47146"
+    },
+    { "source": "clarity", "entry": "Edge of Intent", "hash": "ba4ac100" },
+    { "source": "clarity", "entry": "Restorative Turret", "hash": "a47ef180" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file edge-of-intent",
+      "retrieved": "2026-11-03",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-glaive-edge-of-intent].timing.fireRateRpm",
+  "magazine": "$quantum[specials-glaive-edge-of-intent].timing.magazine",
+  "totalShots": "$quantum[specials-glaive-edge-of-intent].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-glaive-edge-of-intent].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Heal Clip, Edge of Intent Catalyst",
+    "description": "Finishing a reload within 5.3? seconds of a Kill grants Cure x2 to you and Cure x1 to allies within 15 meters.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-glaive-edge-of-intent].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ]
+}

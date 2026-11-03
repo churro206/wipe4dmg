@@ -72,11 +72,12 @@ const hunter = (fields: Partial<Build>): Build => ({
   damagePhaseSeconds: 30,
   ...fields,
 });
-// Time of the second rocket: Gjallarhorn reloads after each shot.
+// Time of the first rocket after the first reload (Gjallarhorn: the magazine is 2 rockets).
 const secondShotMs = (b: Build) => {
   const { selected, options } = buildSimulation(b, gameData);
-  return simulate(weaponById(b.weaponId), b.damagePhaseSeconds, selected, buckets, options)
-    .shots[1].timeMs;
+  const gun = weaponById(b.weaponId);
+  return simulate(gun, b.damagePhaseSeconds, selected, buckets, options).shots[gun.magazine.value!]
+    .timeMs;
 };
 const byId = (id: string) => gameData.abilities.find((a) => a.id === id)!;
 
