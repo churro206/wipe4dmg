@@ -27,8 +27,8 @@
     "threadling": {
       "name": "Threadling",
       "damage": {
-        "expr": "($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage) / ($quantum[specials-linear-fusion-rifle-euphony].magazine * $compendium[Euphony](\"Fires a 3-round burst\") / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\"))",
-        "note": "Quantum's magazine of 'with Threadlings' (they detonate instantly) minus 'without', shared by the Threadlings of one magazine: a shot is a burst of 3 hits (Compendium), so a magazine of 6 shots is 18 hits, 3 sets of 3 Threadlings (475 each)"
+        "expr": "($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage * $compendium[Euphony](\"Fires a 3-round burst\") * $clarity[Spindle](\"2% Increased Damage\") / 100) / ($quantum[specials-linear-fusion-rifle-euphony].magazine * $compendium[Euphony](\"Fires a 3-round burst\") / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\") * (1 + $compendium[Euphony](\"spawns 3 Threadlings\") * $clarity[Spindle](\"2% Increased Damage\") / 100))",
+        "note": "Quantum's magazine of 'with Threadlings' minus 'without' also holds the Spindle ramp of the shots (46943 / 11117 = 4.22 magazines at 3.5 real): take it out (6840 x 0.06 = 410), share the rest by the 9 Threadlings of a magazine (3 sets of 3, a burst is 3 hits) at their mean Spindle factor 1.06: about 405 each. 600 s about 45957, -2.1 % against Quantum"
       },
       "delivery": "splash"
     }
@@ -155,7 +155,7 @@
     },
     {
       "quote": "within 3? seconds of each other",
-      "reason": "below 2 % (the window of 3 s is not met at the pace of one shot per 1.4 s only after the reload; Quantum's rows count 6 hits per magazine)"
+      "reason": "below 2 % (the window of 3 s is not met at the pace of one shot per 1.4 s only after the reload; Quantum's rows count 18 hits per magazine)"
     },
     { "quote": "? Handling", "reason": "no damage against a boss" },
     { "quote": "? Reload Speed", "reason": "no damage against a boss (Quantum's reload time stays)" },

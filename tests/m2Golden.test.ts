@@ -67,10 +67,10 @@ describe("N-th hit with delayed parts: Cloudstrike (Clarity: 3 Precision Hits, s
     const storm = only(result, "storm")[0];
     expect(strike.timeMs - third.timeMs).toBe(1100);
     expect(storm.timeMs - third.timeMs).toBeCloseTo(1600, 3);
-    // Quantum: (5088 - 7 x 450) / 2 series = 969 per series, split 973 : 584
-    expect(strike.damage).toBeCloseTo((969 * 973) / (973 + 584), 1);
-    expect(storm.damage).toBeCloseTo((969 * 584) / (973 + 584), 1);
-    expect(strike.damage + storm.damage).toBeCloseTo(969, 1);
+    // Quantum: (7084 - 10 x 450) - (5088 - 7 x 450) = 646 per series, split 973 : 584
+    expect(strike.damage).toBeCloseTo((646 * 973) / (973 + 584), 1);
+    expect(storm.damage).toBeCloseTo((646 * 584) / (973 + 584), 1);
+    expect(strike.damage + storm.damage).toBeCloseTo(646, 1);
     expect(only(result, "strike").every((d) => d.timeMs >= only(result, "shot")[2].timeMs)).toBe(true);
   });
 });
@@ -120,14 +120,14 @@ describe("Alethonym: impale (Compendium: 79 every 0.8 s up to 6 times, explosion
 });
 
 describe("Euphony: a shot is a burst of 3 hits (Compendium), Unwound spawns 3 Threadlings per 6 hits, each Threadling hit is a Spindle stack (+2 % damage)", () => {
-  it("every 2nd shot brings 3 Threadlings of Quantum's difference (4277 / 9: 3 sets in a magazine of 6 shots)", () => {
+  it("every 2nd shot brings 3 Threadlings of Quantum's difference without the Spindle ramp (about 405: 3 sets in a magazine of 6 shots)", () => {
     const result = run("euphony", 8);
     const threadlings = only(result, "threadling");
     const shots = only(result, "shot");
     expect(threadlings.slice(0, 3).map((d) => d.timeMs)).toEqual(Array(3).fill(shots[1].timeMs));
     expect(threadlings.slice(3, 6).map((d) => d.timeMs)).toEqual(Array(3).fill(shots[3].timeMs));
     // the first set has no Spindle yet; the later ones carry it
-    threadlings.slice(0, 3).forEach((d) => expect(d.damage).toBeCloseTo((11117 - 6840) / 9, 0));
+    threadlings.slice(0, 3).forEach((d) => expect(d.damage).toBeCloseTo((11117 - 6840 - 6840 * 3 * 0.02) / (9 * 1.06), 0));
   });
   it("Spindle: three stacks after the first set raise the next shot by 3 x 2 %", () => {
     const shots = only(run("euphony", 12), "shot");
@@ -136,7 +136,7 @@ describe("Euphony: a shot is a burst of 3 hits (Compendium), Unwound spawns 3 Th
   });
 });
 
-describe("Quicksilver Storm: Missile Tracers every 13 hits, Grenades Prepped per missile hit", () => {
+describe("Quicksilver Storm: Missile Tracers every 13 hits (the Grenades Prepped grenade is not modelled)", () => {
   it("the 13th hit loads a missile of Quantum's difference ((1560 - 51 x 24) / 3 = 112)", () => {
     const result = run("quicksilver-storm", 4);
     const missiles = only(result, "missile");

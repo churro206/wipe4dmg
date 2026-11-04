@@ -74,8 +74,8 @@
   ],
   "notModelled": [
     { "quote": "explodes in a 5 meter radius", "reason": "radius only; the damage of the explosion is the Compendium's 697 (rule explosion)" },
-    { "quote": "After collecting 7 Vestiges", "reason": "Vestiges come from kills (no adds, ADR 0015)" },
-    { "quote": "After collecting 17 Vestiges", "reason": "Vestiges come from kills (no adds, ADR 0015)" },
+    { "quote": "After collecting 7 Vestiges", "reason": "Vestiges only load ammo bricks, no damage of the weapon" },
+    { "quote": "After collecting 17 Vestiges", "reason": "Vestiges only load ammo bricks, no damage of the weapon" },
     {
       "quote": "Deals 40% increased damage against Minor Combatants",
       "reason": "no adds (ADR 0015)"

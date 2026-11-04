@@ -141,14 +141,14 @@
       "600s buffed catalyst": 52427.3
     },
     "cloudstrike": {
-      "30s plain": 23640,
-      "30s buffed": 39800.3,
-      "30s plain catalyst": 33366,
-      "30s buffed catalyst": 56175,
-      "600s plain": 23640,
-      "600s buffed": 39800.3,
-      "600s plain catalyst": 33366,
-      "600s buffed catalyst": 56175
+      "30s plain": 20410,
+      "30s buffed": 34362.28,
+      "30s plain catalyst": 28844,
+      "30s buffed catalyst": 48561.76,
+      "600s plain": 20410,
+      "600s buffed": 34362.28,
+      "600s plain catalyst": 28844,
+      "600s buffed catalyst": 48561.76
     },
     "coldheart": {
       "30s plain": 11281,
@@ -357,14 +357,14 @@
       "600s buffed catalyst": 28932.67
     },
     "euphony": {
-      "30s plain": 43065.23,
-      "30s buffed": 72504.63,
-      "30s plain catalyst": 43065.23,
-      "30s buffed catalyst": 72504.63,
-      "600s plain": 48623.73,
-      "600s buffed": 81862.91,
-      "600s plain catalyst": 48623.73,
-      "600s buffed catalyst": 81862.91
+      "30s plain": 40724.38,
+      "30s buffed": 68563.56,
+      "30s plain catalyst": 40724.38,
+      "30s buffed catalyst": 68563.56,
+      "600s plain": 45968.25,
+      "600s buffed": 77392.14,
+      "600s plain catalyst": 45968.25,
+      "600s buffed catalyst": 77392.14
     },
     "ex-diris": {
       "30s plain": 25795,
