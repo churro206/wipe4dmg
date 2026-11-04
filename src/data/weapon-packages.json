@@ -6910,12 +6910,12 @@
           }
         },
         "damagePerTick": {
-          "value": 1425.667,
+          "value": 475.222,
           "source": {
-            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony-2; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony; Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action",
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony-2; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action; Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound",
             "retrieved": "2026-10-24",
             "status": "derived",
-            "note": "Derived: ($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage) / ($quantum[specials-linear-fusion-rifle-euphony].magazine / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\")) (Quantum's magazine of 'with Threadlings' (they detonate instantly) minus 'without', shared by the Threadlings of one magazine: a magazine of 6 hits spawns one set of 3 (1426 each). One Quantum shot counts as one hit); $quantum[specials-linear-fusion-rifle-euphony-2].magDamage = 11117 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony-2); $quantum[specials-linear-fusion-rifle-euphony].magDamage = 6840 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $quantum[specials-linear-fusion-rifle-euphony].magazine = 6 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound); $compendium[Euphony](\"spawns 3 Threadlings\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action)"
+            "note": "Derived: ($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage) / ($quantum[specials-linear-fusion-rifle-euphony].magazine * $compendium[Euphony](\"Fires a 3-round burst\") / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\")) (Quantum's magazine of 'with Threadlings' (they detonate instantly) minus 'without', shared by the Threadlings of one magazine: a shot is a burst of 3 hits (Compendium), so a magazine of 6 shots is 18 hits, 3 sets of 3 Threadlings (475 each)); $quantum[specials-linear-fusion-rifle-euphony-2].magDamage = 11117 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony-2); $quantum[specials-linear-fusion-rifle-euphony].magDamage = 6840 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $quantum[specials-linear-fusion-rifle-euphony].magazine = 6 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $compendium[Euphony](\"Fires a 3-round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound); $compendium[Euphony](\"spawns 3 Threadlings\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action)"
           }
         },
         "ticks": {
@@ -6956,17 +6956,31 @@
             "id": "unwound",
             "op": "<",
             "value": {
-              "value": 5,
+              "value": 3,
               "source": {
-                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound",
-                "retrieved": "2026-10-20",
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action",
+                "retrieved": "2026-10-24",
                 "status": "derived",
-                "note": "Derived: $clarity[Unwound](\"Landing 6 hits\") - 1 (the counter stands at 0 to 4 for the hits before the 6th); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound)"
+                "note": "Derived: $clarity[Unwound](\"Landing 6 hits\") - $compendium[Euphony](\"Fires a 3-round burst\") (the counter stands at 0 for the shot before the one with the 6th hit (rules see the state before the shot)); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound); $compendium[Euphony](\"Fires a 3-round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action)"
               }
             }
           }
         ],
-        "do": [{ "type": "addStacks", "counter": "unwound" }]
+        "do": [
+          {
+            "type": "addStacks",
+            "counter": "unwound",
+            "by": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: $compendium[Euphony](\"Fires a 3-round burst\") (a shot is a burst of 3 hits); $compendium[Euphony](\"Fires a 3-round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action)"
+              }
+            }
+          }
+        ]
       },
       {
         "id": "threadlings",
@@ -6975,14 +6989,14 @@
           {
             "type": "counter",
             "id": "unwound",
-            "op": "=",
+            "op": ">=",
             "value": {
-              "value": 5,
+              "value": 3,
               "source": {
-                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound",
-                "retrieved": "2026-10-20",
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action",
+                "retrieved": "2026-10-24",
                 "status": "derived",
-                "note": "Derived: $clarity[Unwound](\"Landing 6 hits\") - 1 (the 6th hit); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound)"
+                "note": "Derived: $clarity[Unwound](\"Landing 6 hits\") - $compendium[Euphony](\"Fires a 3-round burst\") (the shot with the 6th hit (every 2nd shot)); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound); $compendium[Euphony](\"Fires a 3-round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action)"
               }
             }
           }

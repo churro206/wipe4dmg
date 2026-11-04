@@ -27,8 +27,8 @@
     "threadling": {
       "name": "Threadling",
       "damage": {
-        "expr": "($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage) / ($quantum[specials-linear-fusion-rifle-euphony].magazine / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\"))",
-        "note": "Quantum's magazine of 'with Threadlings' (they detonate instantly) minus 'without', shared by the Threadlings of one magazine: a magazine of 6 hits spawns one set of 3 (1426 each). One Quantum shot counts as one hit"
+        "expr": "($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage) / ($quantum[specials-linear-fusion-rifle-euphony].magazine * $compendium[Euphony](\"Fires a 3-round burst\") / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\"))",
+        "note": "Quantum's magazine of 'with Threadlings' (they detonate instantly) minus 'without', shared by the Threadlings of one magazine: a shot is a burst of 3 hits (Compendium), so a magazine of 6 shots is 18 hits, 3 sets of 3 Threadlings (475 each)"
       },
       "delivery": "splash"
     }
@@ -71,12 +71,21 @@
           "id": "unwound",
           "op": "<",
           "value": {
-            "expr": "$clarity[Unwound](\"Landing 6 hits\") - 1",
-            "note": "the counter stands at 0 to 4 for the hits before the 6th"
+            "expr": "$clarity[Unwound](\"Landing 6 hits\") - $compendium[Euphony](\"Fires a 3-round burst\")",
+            "note": "the counter stands at 0 for the shot before the one with the 6th hit (rules see the state before the shot)"
           }
         }
       ],
-      "do": [{ "type": "addStacks", "counter": "unwound" }]
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "unwound",
+          "by": {
+            "expr": "$compendium[Euphony](\"Fires a 3-round burst\")",
+            "note": "a shot is a burst of 3 hits"
+          }
+        }
+      ]
     },
     {
       "id": "threadlings",
@@ -85,10 +94,10 @@
         {
           "type": "counter",
           "id": "unwound",
-          "op": "=",
+          "op": ">=",
           "value": {
-            "expr": "$clarity[Unwound](\"Landing 6 hits\") - 1",
-            "note": "the 6th hit"
+            "expr": "$clarity[Unwound](\"Landing 6 hits\") - $compendium[Euphony](\"Fires a 3-round burst\")",
+            "note": "the shot with the 6th hit (every 2nd shot)"
           }
         }
       ],

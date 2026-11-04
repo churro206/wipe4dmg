@@ -117,16 +117,20 @@ describe("Alethonym: impale (Compendium: 79 every 0.8 s up to 6 times, explosion
   });
 });
 
-describe("Euphony: Unwound spawns 3 Threadlings per 6 hits, each Threadling hit is a Spindle stack (+2 % damage)", () => {
-  it("the 6th hit brings 3 Threadlings of Quantum's difference (4277 / 3)", () => {
+describe("Euphony: a shot is a burst of 3 hits (Compendium), Unwound spawns 3 Threadlings per 6 hits, each Threadling hit is a Spindle stack (+2 % damage)", () => {
+  it("every 2nd shot brings 3 Threadlings of Quantum's difference (4277 / 9: 3 sets in a magazine of 6 shots)", () => {
     const result = run("euphony", 8);
     const threadlings = only(result, "threadling");
-    expect(threadlings.slice(0, 3).map((d) => d.timeMs)).toEqual(Array(3).fill(only(result, "shot")[5].timeMs));
-    threadlings.forEach((d) => expect(d.damage).toBeCloseTo((11117 - 6840) / 3, 0));
+    const shots = only(result, "shot");
+    expect(threadlings.slice(0, 3).map((d) => d.timeMs)).toEqual(Array(3).fill(shots[1].timeMs));
+    expect(threadlings.slice(3, 6).map((d) => d.timeMs)).toEqual(Array(3).fill(shots[3].timeMs));
+    // the first set has no Spindle yet; the later ones carry it
+    threadlings.slice(0, 3).forEach((d) => expect(d.damage).toBeCloseTo((11117 - 6840) / 9, 0));
   });
   it("Spindle: three stacks after the first set raise the next shot by 3 x 2 %", () => {
     const shots = only(run("euphony", 12), "shot");
-    expect(shots[6].damage / shots[0].damage).toBeCloseTo(1.06, 3);
+    expect(shots[2].damage / shots[0].damage).toBeCloseTo(1.06, 3);
+    expect(shots[4].damage / shots[0].damage).toBeCloseTo(1.12, 3);
   });
 });
 
