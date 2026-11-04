@@ -35,6 +35,15 @@ describe("N-th shot: Khvostov 7G-0X (Clarity: every 7th shot deals 252.52 % incr
   });
 });
 
+describe("N-th shot restarts with the reload: Khvostov 7G-0X (the reload resets the count)", () => {
+  it("the first 7th shot of the second magazine is its own 7th, not the 8th of the count", () => {
+    const result = run("khvostov-7g-0x", 12);
+    const shots = only(result, "shot");
+    const sevenths = only(result, "seventh");
+    expect(sevenths[6].timeMs).toBe(shots[43 + 6].timeMs);
+  });
+});
+
 describe("N-th hit with extra parts: Malfeasance (Compendium: embedding 5 slugs makes them explode)", () => {
   it("the 5th hit sets off 5 slugs of Quantum's 71 each", () => {
     const result = run("malfeasance", 3);
@@ -144,6 +153,22 @@ describe("Vex Mythoclast: Temporal Unlimiter, 6 Overcharge stacks built up befor
     const linear = only(run("vex-mythoclast", 3, false, ["pre-stacked"]), "linear");
     expect(linear).toHaveLength(3);
     expect(linear[0].damage).toBeCloseTo((1475 * 113) / (66 * 1.8), 0);
+  });
+});
+
+describe("Vex Mythoclast: Timeless Mythoclast (Clarity: emptying refills 80 % of the hits (rounded up), at least 9 hits)", () => {
+  it("the magazine of 25 gets 20, then 16, 13, 11, 9, 8 without a reload; 8 hits are too few: the reload follows", () => {
+    const shots = only(run("vex-mythoclast", 20), "shot");
+    const gap = (i: number) => shots[i + 1].timeMs - shots[i].timeMs;
+    // 25 + 20 + 16 + 13 + 11 + 9 + 8 = 102 shots in a chain
+    const chain = [25, 20, 16, 13, 11, 9, 8];
+    let end = -1;
+    chain.forEach((n, k) => {
+      end += n;
+      if (k < chain.length - 1) expect(gap(end)).toBe(150);
+    });
+    expect(end).toBe(101);
+    expect(gap(101)).toBeGreaterThanOrEqual(150 + 1120);
   });
 });
 

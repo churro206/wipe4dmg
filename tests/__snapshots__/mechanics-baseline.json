@@ -563,14 +563,14 @@
       "600s buffed catalyst": 42358.76
     },
     "khvostov-7g-0x": {
-      "30s plain": 9334.71,
-      "30s buffed": 15715.92,
-      "30s plain catalyst": 9334.71,
-      "30s buffed catalyst": 15715.92,
-      "600s plain": 181682.79,
-      "600s buffed": 305881.14,
-      "600s plain catalyst": 181682.79,
-      "600s buffed catalyst": 305881.14
+      "30s plain": 9264,
+      "30s buffed": 15596.88,
+      "30s plain catalyst": 9264,
+      "30s buffed catalyst": 15596.88,
+      "600s plain": 180551.49,
+      "600s buffed": 303976.49,
+      "600s plain catalyst": 180551.49,
+      "600s buffed catalyst": 303976.49
     },
     "le-monarque": {
       "30s plain": 15270,
@@ -1227,14 +1227,14 @@
       "600s buffed catalyst": 179454.92
     },
     "vex-mythoclast": {
-      "30s plain": 17628,
-      "30s buffed": 29678.5,
-      "30s plain catalyst": 17628,
-      "30s buffed catalyst": 29678.5,
-      "600s plain": 348266,
-      "600s buffed": 586340.64,
-      "600s plain catalyst": 348266,
-      "600s buffed catalyst": 586340.64
+      "30s plain": 21131,
+      "30s buffed": 35576.15,
+      "30s plain catalyst": 21131,
+      "30s buffed catalyst": 35576.15,
+      "600s plain": 421716,
+      "600s buffed": 710001.06,
+      "600s plain catalyst": 421716,
+      "600s buffed catalyst": 710001.06
     },
     "vexcalibur": {
       "30s plain": 18975,

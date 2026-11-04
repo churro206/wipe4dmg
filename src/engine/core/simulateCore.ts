@@ -349,11 +349,26 @@ export function simulate(
   let planned: ActorStep = {};
   let generation = 0;
   /** Queues the event of a step; the shot joins the history now. */
-  const plan = (step: ActorStep, schedule: (event: RunEvent) => void) => {
+  const plan = (
+    step: ActorStep,
+    schedule: (event: RunEvent) => void,
+    target?: TargetState,
+  ) => {
     planned = step;
     const mine = ++generation;
     if (step.reloadStartMs !== undefined) reloadsMs.push(step.reloadStartMs);
     const shot = step.shot;
+    // The reload starts with the last shot of the magazine, which was just handled: its rules
+    // (a refill, e.g. Rewind) may plan the step anew, so the shot below goes stale by generation.
+    const fireReloadStart = () => {
+      if (step.reloadStartMs !== undefined && target) {
+        fireRules(
+          { on: "reload", edge: "start", timeMs: step.reloadStartMs, ownerId: WEAPON },
+          target,
+          schedule,
+        );
+      }
+    };
     if (!shot) return;
     shots.push({ timeMs: shot.timeMs });
     history.holdFactors.push(shot.holdFactor);
@@ -377,13 +392,14 @@ export function simulate(
           target,
           later,
         );
-        planNext(later);
+        planNext(later, target);
       },
     });
+    fireReloadStart();
   };
   /** Asks the actor for the next shot and queues its event. */
-  const planNext = (schedule: (event: RunEvent) => void) =>
-    plan(actor.next(), schedule);
+  const planNext = (schedule: (event: RunEvent) => void, target?: TargetState) =>
+    plan(actor.next(), schedule, target);
   /** A refill changed the step that was planned last: takes it back and queues the new one. */
   const replan = (step: ActorStep, schedule: (event: RunEvent) => void) => {
     if (planned.reloadStartMs !== undefined) reloadsMs.pop();

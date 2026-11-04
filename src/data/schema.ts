@@ -604,8 +604,13 @@ export const Action = z.discriminatedUnion("type", [
     stacks: RuleValue.optional(),
     durationMs: RuleValue.optional(),
   }),
-  // Fills the magazine of the owner's weapon (or all weapons for an ability); omitted rounds: full
-  z.object({ type: z.literal("refill"), rounds: RuleValue.optional() }),
+  // Fills the magazine of the owner's weapon (or all weapons for an ability); omitted rounds: full.
+  // `ofCounter`: instead `share` of a counter's value, rounded up (e.g. Rewind: 80 % of the hits).
+  z.object({
+    type: z.literal("refill"),
+    rounds: RuleValue.optional(),
+    ofCounter: z.object({ counter: z.string(), share: RuleValue }).optional(),
+  }),
   // A stat modifier for a while; omitted durationMs: until the end of the phase
   z.object({
     type: z.literal("modifyStat"),

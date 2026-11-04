@@ -486,6 +486,19 @@ export function createRuleEngine(
         host.refill({
           ownerId,
           ...(action.rounds ? { rounds: requireValue(action.rounds, "rounds") } : {}),
+          ...(action.ofCounter
+            ? {
+                // toFixed: 0.8 x 15 must not become 12.000000000000002 and round up to 13
+                rounds: Math.ceil(
+                  Number(
+                    (
+                      requireValue(action.ofCounter.share, "share") *
+                      counter(ownerId, action.ofCounter.counter)
+                    ).toFixed(9),
+                  ),
+                ),
+              }
+            : {}),
           timeMs,
         });
         return;
