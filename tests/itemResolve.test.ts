@@ -23,6 +23,8 @@ const FIFTH_TEXT = [
   "Precision Hits refill 1 ammo.",
   "Scoring 4 Precision Hits loads a delayed Solar Explosive.",
   "Solar Explosive detonates after a 0.5? second delay, dealing 215 [78] damage and applying 40 Scorch stacks (60 with Ember of Ashes)",
+  "Grenades deal 1,308 damage.",
+  "Grenades deal 1,308.5 damage.",
 ].join("\n");
 
 const QUANTUM_ROW = "primaries-scout-rifle-polaris-lance";
@@ -216,6 +218,11 @@ describe("references", () => {
     expect(n.source.status).toBe("derived");
     expect(n.source.quote).toBe("applying 40 Scorch stacks");
     expect(value(`$clarity[The Perfect Fifth]("after a 0.5? second delay")`).value).toBe(0.5);
+  });
+
+  it("$clarity: a number with a thousands comma is one number", () => {
+    expect(value(`$clarity[The Perfect Fifth]("Grenades deal 1,308 damage")`).value).toBe(1308);
+    expect(value(`$clarity[The Perfect Fifth]("Grenades deal 1,308.5 damage")`).value).toBe(1308.5);
   });
 
   it("$clarity: a quote outside the text, or with no or several numbers, is an error", () => {
