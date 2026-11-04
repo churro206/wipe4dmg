@@ -121,6 +121,32 @@ describe("Euphony: Unwound spawns 3 Threadlings per 6 hits, each Threadling hit 
   });
 });
 
+describe("Quicksilver Storm: Missile Tracers every 13 hits, Grenades Prepped per missile hit", () => {
+  it("the 13th hit loads a missile of Quantum's difference ((1560 - 51 x 24) / 3 = 112)", () => {
+    const result = run("quicksilver-storm", 4);
+    const missiles = only(result, "missile");
+    expect(missiles[0].damage).toBeCloseTo(112, 0);
+    expect(missiles[0].timeMs).toBe(only(result, "shot")[12].timeMs);
+    expect(missiles[1].timeMs).toBe(only(result, "shot")[25].timeMs);
+  });
+  it("without the playstyle there are no grenades; with it each missile hit brings one of 112 x 1308 / 160", () => {
+    expect(only(run("quicksilver-storm", 4), "grenade")).toHaveLength(0);
+    const result = run("quicksilver-storm", 4, false, ["Grenades Prepped"]);
+    const grenades = only(result, "grenade");
+    expect(grenades.length).toBeGreaterThan(0);
+    expect(grenades[0].damage).toBeCloseTo((112 * 1308) / 160, 0);
+  });
+});
+
+describe("Vex Mythoclast: Temporal Unlimiter, 6 Overcharge stacks built up before (pre-stacked)", () => {
+  it("three linear shots of 1475 x Quantum's scale at the start, none without", () => {
+    expect(only(run("vex-mythoclast", 3), "linear")).toHaveLength(0);
+    const linear = only(run("vex-mythoclast", 3, false, ["pre-stacked"]), "linear");
+    expect(linear).toHaveLength(3);
+    expect(linear[0].damage).toBeCloseTo((1475 * 113) / (66 * 1.8), 0);
+  });
+});
+
 describe("Slayer's Fang: Nightsworn Sight, built up before (pre-stacked)", () => {
   it("the first shot deals 15 % more, later hits are weakened (+15 %) on top", () => {
     const stacked = only(run("slayer-s-fang", 6, false, ["pre-stacked"]), "shot");

@@ -29,7 +29,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | one-thousand-voices-ember | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 12274 | +6.3 % |
 | one-thousand-voices-catalyst | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 28709 | +6.3 % |
 | gen-auto-rifle-necrochasm | auto-rifle-necrochasm | 23 | 24 | +2.6 % |
-| gen-auto-rifle-quicksilver-storm-average-with-tracking-rockets | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 336 | −13.8 % |
+| gen-auto-rifle-quicksilver-storm-average-with-tracking-rockets | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 448 | +14.9 % |
 | gen-bow-trinity-ghoul | bow-trinity-ghoul | 218 | 73 | −66.6 % |
 | gen-bow-verglas-curve | bow-verglas-curve | 208 | 209 | +0.3 % |
 | gen-fusion-rifle-bastion | fusion-rifle-bastion | 6359 | 6384 | +0.4 % |
@@ -199,7 +199,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Group | Aegis row | Aegis | Model | Deviation |
 | --- | --- | ---: | ---: | ---: |
 | Weapons | auto-rifle-necrochasm | 23 | 24 | +2.6 % |
-| Weapons | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 336 | −13.8 % |
+| Weapons | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 448 | +14.9 % |
 | Weapons | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
 | Weapons | bow-trinity-ghoul | 218 | 73 | −66.6 % |
 | Weapons | bow-verglas-curve | 208 | 209 | +0.3 % |

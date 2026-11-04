@@ -35,6 +35,22 @@
       "damage": "$quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "missile": {
+      "name": "Tracking Missile",
+      "damage": {
+        "expr": "($quantum[primaries-auto-rifle-quicksilver-storm].magDamage - $quantum[primaries-auto-rifle-quicksilver-storm].magazine * $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage) / 3",
+        "note": "Quantum's magazine (bullets + rockets) minus the bullets, shared by the 3 missiles of a magazine (51 hits / 13, rounded down)"
+      },
+      "delivery": "splash"
+    },
+    "grenade": {
+      "name": "Grenade",
+      "damage": {
+        "expr": "($quantum[primaries-auto-rifle-quicksilver-storm].magDamage - $quantum[primaries-auto-rifle-quicksilver-storm].magazine * $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage) / 3 * $clarity[Grenade Chaser](\"Grenades deal 1,308\") / $clarity[Missile Tracers](\"deal 160\")",
+        "note": "Quantum's missile (see there) carried to the grenade by the ratio of both Clarity numbers (1308 / 160)"
+      },
+      "delivery": "splash"
     }
   },
   "rules": [
@@ -42,6 +58,71 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "tracers-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "tracers",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Missile Tracers](\"Scoring 13 Hits\") - 1",
+            "note": "the counter stands at 0 to 11 for the hits before the 13th"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "tracers" }]
+    },
+    {
+      "id": "tracers-missile",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "tracers",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[Missile Tracers](\"Scoring 13 Hits\") - 1",
+            "note": "the 13th hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "tracers" },
+        { "type": "spawn", "part": "missile" }
+      ]
+    },
+    {
+      "id": "grenades-prepped",
+      "on": { "on": "hit", "part": "missile" },
+      "if": [{ "type": "playstyle", "id": "Grenades Prepped" }],
+      "do": [{ "type": "spawn", "part": "grenade" }],
+      "source": {
+        "name": "Item file quicksilver-storm",
+        "retrieved": "2026-11-04",
+        "status": "derived",
+        "note": "Derived: Aegis' assumption \"Grenades Prepped\"; every missile hit prepares one grenade, fired at once (the time of the mode change is not counted), the stack limit of 3 is met by the reload"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "deal 160 [22.7] damage on impact",
+      "reason": "needs missile number from Quantum (derived from the row's magazine; the tooltip 160 is on another scale)"
+    },
+    {
+      "quote": "maximum range of 50 meters",
+      "reason": "no damage against a boss"
+    },
+    {
+      "quote": "up to 30% fall off at the edges",
+      "reason": "boss in the centre of the radius"
+    },
+    {
+      "quote": "Kills with Grenade Chaser grenades spawn a Tangle",
+      "reason": "no adds (ADR 0015)"
     }
   ]
 }

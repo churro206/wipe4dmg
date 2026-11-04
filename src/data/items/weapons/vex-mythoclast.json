@@ -36,6 +36,15 @@
       "damage": "$quantum[primaries-fusion-rifle-vex-mythoclast].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "linear": {
+      "name": "Linear shot",
+      "damage": {
+        "expr": "$clarity[Temporal Unlimiter](\"deal 1475\") * $quantum[primaries-fusion-rifle-vex-mythoclast].precisionDamage / ($compendium[Vex Mythoclast](\"Fusion Bolts deal 66\") * $compendium[Vex Mythoclast](\"1.8x Precision Multiplier\"))",
+        "note": "Clarity's linear shot (1475) carried to Quantum's scale by the ratio of Quantum's precision hit to the Compendium's bolt (66 x 1.8)"
+      },
+      "precision": true,
+      "delivery": "impact"
     }
   },
   "rules": [
@@ -43,6 +52,32 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "overcharge",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "pre-stacked" }],
+      "do": [{ "type": "spawn", "part": "linear", "count": { "value": 3, "source": { "name": "Item file vex-mythoclast", "retrieved": "2026-11-04", "status": "derived", "note": "Derived: Clarity \"Grants three Hobgoblin-like shots\" (the number is a word, no quote can hold it)" } } }],
+      "source": {
+        "name": "Item file vex-mythoclast",
+        "retrieved": "2026-11-04",
+        "status": "derived",
+        "note": "Derived: the playstyle \"pre-stacked\" (6 Overcharge stacks built before, kills only built up) gives the 3 linear shots at the start; Aegis' swap row has 3 shots too"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Kills in Auto Rifle mode grant 'Overcharge' stacks",
+      "reason": "no adds (ADR 0015); only built up before (pre-stacked)"
+    },
+    {
+      "quote": "Precision Kills while in this mode trigger a Solar Ignition that deals 5% more damage than base",
+      "reason": "no adds (ADR 0015)"
+    },
+    {
+      "quote": "200% increased damage against Champions",
+      "reason": "no Champion as a boss"
     }
   ]
 }

@@ -40,7 +40,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **898**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **893**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -110,7 +110,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **898**. D
 | Outbreak Perfected | `src/data/items/weapons/outbreak-perfected.json` | 33 | – |
 | Parasite | `src/data/items/weapons/parasite.json` | 6 | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | 3 | – |
-| Quicksilver Storm | `src/data/items/weapons/quicksilver-storm.json` | 4 | – |
+| Quicksilver Storm | `src/data/items/weapons/quicksilver-storm.json` | 1 | – |
 | Rat King | `src/data/items/weapons/rat-king.json` | 8 | – |
 | Red Death Reformed | `src/data/items/weapons/red-death-reformed.json` | 12 | – |
 | Riskrunner | `src/data/items/weapons/riskrunner.json` | 9 | – |
@@ -147,7 +147,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **898**. D
 | Truth | `src/data/items/weapons/truth.json` | 5 | – |
 | Two-Tailed Fox | `src/data/items/weapons/two-tailed-fox.json` | 0 | – |
 | Verglas Curve | `src/data/items/weapons/verglas-curve.json` | 4 | – |
-| Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 10 | – |
+| Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 8 | – |
 | Vexcalibur | `src/data/items/weapons/vexcalibur.json` | 26 | – |
 | Vigilance Wing | `src/data/items/weapons/vigilance-wing.json` | 9 | – |
 | Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | 15 | – |

@@ -281,7 +281,7 @@
         "name": "Quicksilver Storm",
         "group": "Kinetic",
         "inGame": "Missile Tracers: Scoring 13 Hits loads a Tracking Missile which fires on the next shot. Missiles are removed on reload.\nTracking Missiles aggressively seek targets to a maximum range of 50 meters and deal 160 [22.7] damage on impact.\nGrenade Chaser: Scoring hits with Tracking Missiles grant one stack of 'Grenades Prepped'. Maximum of 3 stacks.\nHold [Reload] to switch the gun to Grenade Launcher mode, loading a grenade for each stack gained.\nGrenades deal 1,308 [134] damage on impact in a 5 meter radius with up to 30% fall off at the edges. Grenades deal no self-damage.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:quicksilver-storm",
         "status": "full"
       },
@@ -833,7 +833,7 @@
         "name": "Vex Mythoclast",
         "group": "Energy",
         "inGame": "Timeless Mythoclast: This Fusion Rifle fires its bolts one at a time, behaving like a High-Impact Auto Rifle.\nEmptying the magazine refills 80% of the number of Hits landed (rounded up) into the magazine from reserves. Requires at least 9 hits to activate.\nUnlike traditional Rewind Rounds, this refill has no cooldown.\nTemporal Unlimiter: Kills in Auto Rifle mode grant 'Overcharge' stacks. Maximum of 6 Stacks.\nTier 1 and 2 Minors, as well as Tier 1 Elites grant 1 stack. All other enemy tiers and players grant 2 stacks.\nAt 6 stacks, hold [Reload] to change this Fusion Rifle into a Linear Fusion Rifle. Grants three Hobgoblin-like shots that deal 1475 [537] precision damage and 200% increased damage against Champions. Stowing after activation removes all charged shots.\nPrecision Kills while in this mode trigger a Solar Ignition that deals 5% more damage than base.\nExiting Linear Mode refills the magazine.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:vex-mythoclast",
         "status": "full"
       },

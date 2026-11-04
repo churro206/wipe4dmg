@@ -64,7 +64,8 @@ type ParsedRef = {
 
 const IDENT = /[A-Za-z]\w*/y;
 const NUMBER = /\d+(?:\.\d+)?/y;
-const NUMBERS = /\d+(?:\.\d+)?/g;
+// "1,308" is one number (thousands separator of the Clarity texts)
+const NUMBERS = /\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?/g;
 
 /** Reads one reference at `start` (a "$"); returns it and the position after it. */
 function scanRef(input: string, start: number): { ref: ParsedRef; end: number } {
@@ -152,7 +153,7 @@ function quoteNumber(ref: ParsedRef, text: string): number {
   const numbers = quote.match(NUMBERS) ?? [];
   if (numbers.length !== 1)
     fail(ref, `quote "${quote}" needs exactly one number, has ${numbers.length}`);
-  return Number(numbers[0]);
+  return Number(numbers[0]?.replaceAll(",", ""));
 }
 
 const QUANTUM_TIMING: Record<string, (t: Timing) => number | null> = {

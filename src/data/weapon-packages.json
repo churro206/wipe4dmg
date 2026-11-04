@@ -15391,6 +15391,92 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "missile",
+        "name": "Tracking Missile",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file quicksilver-storm",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 112,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: ($quantum[primaries-auto-rifle-quicksilver-storm].magDamage - $quantum[primaries-auto-rifle-quicksilver-storm].magazine * $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage) / 3 (Quantum's magazine (bullets + rockets) minus the bullets, shared by the 3 missiles of a magazine (51 hits / 13, rounded down)); $quantum[primaries-auto-rifle-quicksilver-storm].magDamage = 1560 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm); $quantum[primaries-auto-rifle-quicksilver-storm].magazine = 51 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm); $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage = 24 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file quicksilver-storm",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file quicksilver-storm",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "quantum"
+      },
+      {
+        "id": "grenade",
+        "name": "Grenade",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file quicksilver-storm",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 915.6,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm; Clarity (Live-Clarity-Database, descriptions/clarity.json): Grenade Chaser; Clarity (Live-Clarity-Database, descriptions/clarity.json): Missile Tracers",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: ($quantum[primaries-auto-rifle-quicksilver-storm].magDamage - $quantum[primaries-auto-rifle-quicksilver-storm].magazine * $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage) / 3 * $clarity[Grenade Chaser](\"Grenades deal 1,308\") / $clarity[Missile Tracers](\"deal 160\") (Quantum's missile (see there) carried to the grenade by the ratio of both Clarity numbers (1308 / 160)); $quantum[primaries-auto-rifle-quicksilver-storm].magDamage = 1560 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm); $quantum[primaries-auto-rifle-quicksilver-storm].magazine = 51 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm); $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage = 24 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm); $clarity[Grenade Chaser](\"Grenades deal 1,308\") = 1308 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Grenade Chaser); $clarity[Missile Tracers](\"deal 160\") = 160 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Missile Tracers)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file quicksilver-storm",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file quicksilver-storm",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -15398,6 +15484,63 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "tracers-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "tracers",
+            "op": "<",
+            "value": {
+              "value": 12,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Missile Tracers",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Missile Tracers](\"Scoring 13 Hits\") - 1 (the counter stands at 0 to 11 for the hits before the 13th); $clarity[Missile Tracers](\"Scoring 13 Hits\") = 13 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Missile Tracers)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "tracers" }]
+      },
+      {
+        "id": "tracers-missile",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "tracers",
+            "op": "=",
+            "value": {
+              "value": 12,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Missile Tracers",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Missile Tracers](\"Scoring 13 Hits\") - 1 (the 13th hit); $clarity[Missile Tracers](\"Scoring 13 Hits\") = 13 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Missile Tracers)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "tracers" },
+          { "type": "spawn", "part": "missile" }
+        ]
+      },
+      {
+        "id": "grenades-prepped",
+        "on": { "on": "hit", "part": "missile" },
+        "if": [{ "type": "playstyle", "id": "Grenades Prepped" }],
+        "do": [{ "type": "spawn", "part": "grenade" }],
+        "source": {
+          "name": "Item file quicksilver-storm",
+          "retrieved": "2026-11-04",
+          "status": "derived",
+          "note": "Derived: Aegis' assumption \"Grenades Prepped\"; every missile hit prepares one grenade, fired at once (the time of the mode change is not counted), the stack limit of 3 is met by the reload"
+        }
       }
     ],
     "intrinsics": [
@@ -22825,6 +22968,49 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "linear",
+        "name": "Linear shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file vex-mythoclast",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1402.988,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Temporal Unlimiter; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-fusion-rifle-vex-mythoclast; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Vex Mythoclast Timeless Mythoclast Temporal Unlimiter ↑Calculated Balance",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: $clarity[Temporal Unlimiter](\"deal 1475\") * $quantum[primaries-fusion-rifle-vex-mythoclast].precisionDamage / ($compendium[Vex Mythoclast](\"Fusion Bolts deal 66\") * $compendium[Vex Mythoclast](\"1.8x Precision Multiplier\")) (Clarity's linear shot (1475) carried to Quantum's scale by the ratio of Quantum's precision hit to the Compendium's bolt (66 x 1.8)); $clarity[Temporal Unlimiter](\"deal 1475\") = 1475 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Temporal Unlimiter); $quantum[primaries-fusion-rifle-vex-mythoclast].precisionDamage = 113 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-fusion-rifle-vex-mythoclast); $compendium[Vex Mythoclast](\"Fusion Bolts deal 66\") = 66 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Vex Mythoclast Timeless Mythoclast Temporal Unlimiter ↑Calculated Balance); $compendium[Vex Mythoclast](\"1.8x Precision Multiplier\") = 1.8 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Vex Mythoclast Timeless Mythoclast Temporal Unlimiter ↑Calculated Balance)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file vex-mythoclast",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file vex-mythoclast",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "compendium"
       }
     ],
     "rules": [
@@ -22832,6 +23018,32 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "overcharge",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "pre-stacked" }],
+        "do": [
+          {
+            "type": "spawn",
+            "part": "linear",
+            "count": {
+              "value": 3,
+              "source": {
+                "name": "Item file vex-mythoclast",
+                "retrieved": "2026-11-04",
+                "status": "derived",
+                "note": "Derived: Clarity \"Grants three Hobgoblin-like shots\" (the number is a word, no quote can hold it)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file vex-mythoclast",
+          "retrieved": "2026-11-04",
+          "status": "derived",
+          "note": "Derived: the playstyle \"pre-stacked\" (6 Overcharge stacks built before, kills only built up) gives the 3 linear shots at the start; Aegis' swap row has 3 shots too"
+        }
       }
     ],
     "intrinsics": [
