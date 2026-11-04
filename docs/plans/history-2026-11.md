@@ -2,6 +2,29 @@
 
 Nur per Grep lesen. Neueste Einträge oben.
 
+## Setup und Plan V (Inhaber 2026-11-04)
+
+Anlass: Das Wochenlimit des Pro-Plans war mit Worker und Reviewer je Block nicht tragbar (M2: Worker 79, 90, 91, 160, 58 Aufrufe; Reviewer 111, 30, 18); die Vorgabe „etwa 40 Aufrufe“ hielt kein Worker ein. Der Inhaber liest keinen Code und braucht den Stand als Spieler lesbar.
+
+**S0 Setup:** Ein Skript startet je offenem Block eine frische Sonnet-Sitzung (`claude -p`, `--max-turns`) und stoppt beim ersten roten Gate. Keine Worker- und Orchestrator-Sitzung mehr. Enger Opus-Review mit fester Aufrufgrenze nur bei Engine-Änderungen, sonst alle drei Blöcke. Vorschläge eines Reviewers sind Hypothesen, bis das Modell sie bestätigt (M2: 969 und 475 aus dem ersten Review waren falsch). Berichte beginnen mit „Was sich im Spiel ändert“, je Waffe ein Satz; Hashes und Listen danach. Anzupassen: `abarbeiten`, `worker`, `reviewer`, CLAUDE.md (Arbeitsweise). M3 misst das Setup per `/usage` vorher und nachher.
+
+**V1 Daten:** `npm run coverage` erzeugt `src/data/weapon-status.json` nach dem Muster von `coverage-catalog.json` (`toMatchFileSnapshot`). Je Waffe: jeder Clarity-Satz mit Zustand (Regel, `notModelled` mit Grund, offen); Schaden über 10, 30 und 60 s, mit und ohne Katalysator; Abweichung zu Quantum und Aegis samt Zeile und Annahmen; Vertrauensstufe (measured, derived, estimated) aus den Quellenangaben; `$aegis`-Werte als „no independent check“; berechneter Status statt „full“ trotz fehlender Teile; Plan-Block per Namenssuche in `current.md`. Dieselben Daten treiben die Skript-Prüfung gegen Quantum und auf Sätze ohne Regel.
+
+**V2 Tabelle:** Coverage-Seite, Reiter Weapons: Spalten Weapon, Status, Schaden, vs Quantum, vs Aegis, Trust, Not in yet; sortierbar und filterbar; Umschalter 10, 30, 60 s (Rangliste: „Würde ich diese Reihenfolge erwarten?“); Ampel für die Abweichung, Grenzen in einer Data File; „Comes in M3“ bei fehlenden Waffen. Oberfläche englisch, `docs/ui-inspiration.md` lesen.
+
+**V3 Zeitachse:** Zeile aufklappen: Clarity-Sätze mit Zustand, Aegis-Annahmen, Zeitachse aus `buildSimulation` im Browser (Schüsse, Reloads, Auffüllungen, Buffs, Schadenskurve), `RotationTimeline` und `DamageCurveChart` wiederverwenden. Erst beim Aufklappen rechnen.
+
+**V4 What changed:** Oben auf der Seite Abweichungen zum vorigen Stand der Datei aus git, etwa „Outbreak 30 s: 5824 → 21266“.
+
+Aegis bleibt in Tabelle und Zeitachse nur Bericht, kein Gate (ADR 0018). Später, nur bei Bedarf: Knopf „Looks wrong“.
+
+## Erledigte Blöcke von Plan Q (Stand 2026-11-04)
+
+- A1 `probeAuto` (709e41c). Q0 ADR 0019 (7107447, a3ff3f5, fc7e91b).
+- Q1 Gerüst (2626745, 6920e29, b673757, cf8bcb8, d24143c, 96b0139, 5cdc5f7, faeb633; Review OK nach drei Prüfungen): 93 Items (108 von 141), Bericht „Sätze ohne Zitat“. 33 Pakete bleiben (10 ohne Quantum, 21 nur benannte Varianten, 2 N/A): von Hand im M-Block oder Q-Bilanz.
+- M1 DoT und Status (6ca5481, 2cb88af, 031376e; Review OK nach drei Prüfungen, Doku-Rest vom Orchestrator): 11 von 12; Jötunn bleibt Paket bis zur Gegenprobe (keine Quantum-Zeile); OTV-Gate gegen Quantums Totals, Aegis nur Bericht; Divinity als Item, Ausnahme weg; Reload-Katalysatoren per `$reload`; Witherhoard in `STRONG_CATALYSTS` und Thorn-Magazin als Näherung (alles Inhaber 2026-11-03).
+- M2 Zusatzteile (6414b0f, 46b6861, 341a428, 4a48cdc, cabb8ed, 463aaf2, 348c263, 31d2c6b, 8305f8c, 287a151, c61ea80, ecacfa8; Review OK nach drei Prüfungen): Malfeasance, Ex Diris, Cloudstrike, Alethonym, Euphony, Quicksilver Storm, Khvostov 7G-0X, Grand Overture, Slayer's Fang, Vex Mythoclast, Outbreak Perfected. Outbreak-Stufen aus dem Compendium, Zählsperre 15 → 12, Quicksilvers Granate vorerst weg (Inhaber 2026-11-04).
+
 ## Plan Q, Hintergrund (Inhaber 2026-11-03)
 
 Anlass: Der Import war zu langsam (51 Overrides, B6 schaffte 2–3 Waffen je Block). Der Inhaber entschied: Quantum und Clarity sind die einzige Quelle der Wahrheit, Aegis dient erst als Gegenprobe. Ein Gerüst entsteht per Skript, die Mechanik schreiben Worker von Hand nach Vorlage. Ein Skript, das Struktur aus Clarity-Text rät, wurde verworfen: Freitext braucht ständig Sonderfälle, wie bei `weaponPackages.ts` und den Overrides.

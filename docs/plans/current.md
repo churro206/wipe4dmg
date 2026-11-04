@@ -2,20 +2,25 @@
 
 Höchstens 4 KB. Nach jedem Block: `docs/changelog.md`, `docs/known-inaccuracies.md`. Archiv per Grep: `docs/plans/history-2026-11.md`, `history-2026-10.md`.
 
-## Checkliste (freigegeben 2026-11-03)
+## Checkliste (freigegeben 2026-11-03; S0, V1–V4 am 2026-11-04)
 
 Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`. „Wiederherstellen“: von Q1 abgeschaltete Tests (Liste: `known-inaccuracies`, Abschnitt Q1) wieder einschalten.
 
-- [x] A1 `probeAuto` (709e41c). [x] Q0 ADR 0019 (7107447, a3ff3f5, fc7e91b)
-- [x] Q1 Gerüst (2626745, 6920e29, b673757, cf8bcb8, d24143c, 96b0139, 5cdc5f7, faeb633; Review OK nach drei Prüfungen): 93 Items (108 von 141), Bericht „Sätze ohne Zitat“. 33 Pakete bleiben (10 ohne Quantum, 21 nur benannte Varianten, 2 N/A): von Hand im M-Block oder Q-Bilanz.
-- [x] M1 DoT und Status (6ca5481, 2cb88af, 031376e; Review OK nach drei Prüfungen, Doku-Rest vom Orchestrator): 11 von 12; Jötunn bleibt Paket bis zur Gegenprobe (keine Quantum-Zeile); OTV-Gate gegen Quantums Totals, Aegis nur Bericht; Divinity als Item, Ausnahme weg; Reload-Katalysatoren per `$reload`; Witherhoard in `STRONG_CATALYSTS` und Thorn-Magazin als Näherung (alles Inhaber 2026-11-03).
-- [x] M2 Zusatzteile (6414b0f, 46b6861, 341a428, 4a48cdc, cabb8ed, 463aaf2, 348c263, 31d2c6b, 8305f8c, 287a151, c61ea80, ecacfa8; Review OK nach drei Prüfungen): 11 Waffen. Outbreak-Stufen aus dem Compendium, Zählsperre 15 → 12, Quicksilvers Granate vorerst weg (Inhaber 2026-11-04). Reste für die nächste Änderung: Zitat und Notiz in `euphony.json:30-31`, Runde 1 in `docs/changelog.md:19`.
-- [ ] M3 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate. Wiederherstellen: Thunderlord.
+- [x] A1, Q0, Q1, M1, M2 (Commits, Entscheidungen: `history-2026-11.md`). 33 Pakete bleiben: von Hand im M-Block oder Q-Bilanz. Reste bei der nächsten Änderung dort: Zitat und Notiz in `euphony.json:30-31`, Runde 1 in `docs/changelog.md:19`.
+
+**Weiter erst nach dem Limit-Reset am 6. November, 1 Uhr.** Details zu S0 und V1–V4: `history-2026-11.md`, Abschnitt „Setup und Plan V“.
+
+- [ ] S0 Setup (`chore`): frische Sonnet-Sitzung je Block per Skript, enger Review, Berichte als Spieler lesbar. Gate: Probelauf mit Mini-Auftrag, `tests/shellRules.test.ts` grün, CLAUDE.md und Skills passen.
+- [ ] V1 Waffenstatus, Daten: `src/data/weapon-status.json` aus `npm run coverage`. Gate: Test rot bei veralteter Datei; Cloudstrike 0 % gegen Quantum; `$aegis`-Waffe zeigt „no independent check“; Status berechnet.
+- [ ] V2 Tabelle in der Coverage-Seite, Rangliste 10/30/60 s. Gate: Test Sortierung und Filter, Screenshot, Ampel aus Data File.
+- [ ] V3 Zeitachse beim Aufklappen. Gate: Vex zeigt die Kette 25, 20, 16, 13, 11, 9, 8; Screenshot.
+- [ ] M3 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate, `/usage` vorher und nachher. Wiederherstellen: Thunderlord.
+- [ ] V4 „What changed“ auf der Seite. Gate: Test gegen einen Stand aus git.
 - [ ] A3 Aufräumen nach M1–M3. Gate: Berichte gleich.
 - [ ] M4 Bedingte Buffs, Katalysatoren: Ace of Spades, Microcosm, Monte Carlo, Sturm, The Last Word, Third Iteration, Xenophage, Sleeper Simulant, Izanagi's Burden, Anarchy, The Chaperone, Barrow-Dyad, Still Hunt. Gate: M-Gate. Wiederherstellen: Chaperone, Barrow-Dyad, Izanagi, Xenophage, Sleeper.
 - [ ] M5 Hand-Items von `$aegis` auf `$quantum`/`$clarity`: Polaris Lance, Truth, Hierarchy of Needs, Choir of One, Delicate Tomb, Duality, Graviton Spike, Salvation's Grip, The Queenbreaker. Gate: M-Gate je Spielweise.
 - [ ] Q-Bilanz (Opus): Waffen mit Item, Sätze ohne Regel nach Häufigkeit, Aegis-Bericht; nächste Blöcke oder Gegenprobe. Stopp zur Freigabe. Wiederherstellen ohne M-Block: Gjallarhorn, Telesto, Wish-Ender, Wish-Keeper, Vigilance Wing, Whisper of the Worm, Ager's Scepter, Leviathan's Breath, Burst-Primaries. Entscheidet über die dann übrigen Pakete (Voraussetzung für A2).
-- [ ] A2 Aufräumen (verschoben hinter die Q-Bilanz, Inhaber 2026-11-03: der Paketpfad trägt noch 33 Exotics ohne Item): Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
+- [ ] A2 Aufräumen (hinter der Q-Bilanz, Inhaber 2026-11-03): Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
 
 ## Plan Q (Inhaber 2026-11-03)
 
@@ -31,4 +36,4 @@ Q → C (Casts, Energie) → Gegenprobe (Prüfstand als Gate, B6.4, Nachtrag) �
 
 ## Entscheidungen des Inhabers
 
-Bauplan eng folgen, Abweichungen per ADR. Merge nur auf Ansage. Ein Boss, keine Adds. Kill-Buffs nur „Vorher aufgebaut“. Commit je Teil. Energie-Mods abgelehnt, Legendary Frames 2.0. M3 als gemessener Test im neuen Setup, nach dem Limit-Reset am 6. November: frische Sonnet-Sitzung je Block, Skript-Prüfungen gegen Quantum und auf Sätze ohne Regel, enger Opus-Review bei Engine-Änderungen oder alle drei Blöcke, `/usage` vorher und nachher (2026-11-04). Umbau als eigener `chore`-Commit davor.
+Bauplan eng folgen, Abweichungen per ADR. Merge nur auf Ansage. Ein Boss, keine Adds. Kill-Buffs nur „Vorher aufgebaut“. Commit je Teil. Energie-Mods abgelehnt, Legendary Frames 2.0.
