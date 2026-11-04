@@ -14647,6 +14647,51 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "nanite",
+        "name": "Nanite",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file outbreak-perfected",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 77,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "Nanites deal 77"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file outbreak-perfected",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file outbreak-perfected",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "compendium"
       }
     ],
     "rules": [
@@ -14654,6 +14699,349 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "spread-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "spread",
+            "op": "<",
+            "value": {
+              "value": 11,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Corruption Spreads II](\"Scoring 12 Hits\") - 1 (the counter stands at 0 to 10 for the hits before the 12th); $clarity[The Corruption Spreads II](\"Scoring 12 Hits\") = 12 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "spread" }]
+      },
+      {
+        "id": "spread",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst", "not": true },
+          {
+            "type": "counter",
+            "id": "spread",
+            "op": "=",
+            "value": {
+              "value": 11,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Corruption Spreads II](\"Scoring 12 Hits\") - 1 (the 12th hit); $clarity[The Corruption Spreads II](\"Scoring 12 Hits\") = 12 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "spread" },
+          {
+            "type": "spawn",
+            "part": "nanite",
+            "factor": {
+              "value": 2.5,
+              "source": {
+                "name": "Item file outbreak-perfected",
+                "retrieved": "2026-11-04",
+                "status": "derived",
+                "note": "Derived: Clarity \"spawns 2 to 3 SIVA Nanites\" - the mean of the range, one hit stands for all nanites of a trigger (a range, no quote can hold it)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "spread-catalyst",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "spread",
+            "op": "=",
+            "value": {
+              "value": 11,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Corruption Spreads II](\"Scoring 12 Hits\") - 1 (the 12th hit); $clarity[The Corruption Spreads II](\"Scoring 12 Hits\") = 12 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "spread" },
+          {
+            "type": "spawn",
+            "part": "nanite",
+            "factor": {
+              "value": 3.125,
+              "source": {
+                "name": "Item file outbreak-perfected",
+                "retrieved": "2026-11-04",
+                "status": "derived",
+                "note": "Derived: 2.5 nanites (mean of Clarity \"2 to 3\") x 1.25 (Clarity catalyst \"Nanite Damage is increased by 25%\")",
+                "quote": "Nanite Damage is increased by 25%"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "nanites-more",
+        "on": { "on": "hit", "part": "nanite" },
+        "if": [
+          {
+            "type": "stacks",
+            "buff": "nanites",
+            "op": ">=",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: $compendium[Outbreak Perfected](\"= 150%\") / $compendium[Outbreak Perfected](\"= 30%\") (x5 = 150 % in stacks of 30 %: 5); $compendium[Outbreak Perfected](\"= 150%\") = 150 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector); $compendium[Outbreak Perfected](\"= 30%\") = 30 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "addStacks",
+            "buff": "nanites",
+            "by": {
+              "value": 0.175,
+              "source": {
+                "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: $compendium[Outbreak Perfected](\"buff by 2.1%\") / $compendium[Outbreak Perfected](\"= 30%\") * 2.5 (after the fifth nanite 2.1 % each instead of 30 %, x 2.5 nanites of a trigger (mean of Clarity \"2 to 3\")); $compendium[Outbreak Perfected](\"buff by 2.1%\") = 2.1 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector); $compendium[Outbreak Perfected](\"= 30%\") = 30 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file outbreak-perfected",
+          "retrieved": "2026-11-04",
+          "status": "derived",
+          "note": "Derived: Compendium \"Each Nanite after the fifth increases the damage buff by 2.1%\"; a stack is 30 % (one nanite up to 5), so a nanite after the fifth is 0.07 of a stack; 2.5 nanites a trigger bring the count from 0 to 2.5 to 5 exactly"
+        }
+      },
+      {
+        "id": "nanites-first",
+        "on": { "on": "hit", "part": "nanite" },
+        "if": [
+          {
+            "type": "stacks",
+            "buff": "nanites",
+            "op": "<",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: $compendium[Outbreak Perfected](\"= 150%\") / $compendium[Outbreak Perfected](\"= 30%\") (x5 = 150 % in stacks of 30 %: 5); $compendium[Outbreak Perfected](\"= 150%\") = 150 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector); $compendium[Outbreak Perfected](\"= 30%\") = 30 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "addStacks",
+            "buff": "nanites",
+            "by": {
+              "value": 2.5,
+              "source": {
+                "name": "Item file outbreak-perfected",
+                "retrieved": "2026-11-04",
+                "status": "derived",
+                "note": "Derived: Clarity \"spawns 2 to 3 SIVA Nanites\" - the mean of the range"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "nanites-start",
+        "on": { "on": "hit", "part": "nanite" },
+        "if": [{ "type": "buff", "id": "nanites", "not": true }],
+        "do": [
+          {
+            "type": "grantBuff",
+            "buff": "nanites",
+            "stacks": {
+              "value": 2.5,
+              "source": {
+                "name": "Item file outbreak-perfected",
+                "retrieved": "2026-11-04",
+                "status": "derived",
+                "note": "Derived: Clarity \"spawns 2 to 3 SIVA Nanites\" - the mean of the range"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rewind-count",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "mode", "id": "rewind-lock", "is": "locked", "not": true }
+        ],
+        "do": [{ "type": "addStacks", "counter": "hits" }]
+      },
+      {
+        "id": "rewind-count-nanites",
+        "on": { "on": "hit", "part": "nanite" },
+        "if": [
+          { "type": "mode", "id": "rewind-lock", "is": "locked", "not": true }
+        ],
+        "do": [
+          {
+            "type": "addStacks",
+            "counter": "hits",
+            "by": {
+              "value": 2.5,
+              "source": {
+                "name": "Item file outbreak-perfected",
+                "retrieved": "2026-11-04",
+                "status": "derived",
+                "note": "Derived: Clarity \"Nanite Hits count as Hits with the weapon\"; 2.5 nanites a trigger (mean of Clarity \"2 to 3\")"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rewind",
+        "on": { "on": "reload", "edge": "start" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "hits",
+            "op": ">=",
+            "value": {
+              "value": 10.35,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Rewind Rounds; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-outbreak-perfected",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Rewind Rounds](\"Requires firing 28.75%\") / 100 * $quantum[primaries-pulse-rifle-outbreak-perfected].timing.magazine (28.75 % of the magazine capacity, in hits); $clarity[Rewind Rounds](\"Requires firing 28.75%\") = 28.75 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Rewind Rounds); $quantum[primaries-pulse-rifle-outbreak-perfected].timing.magazine = 36 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-outbreak-perfected)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "refill",
+            "ofCounter": {
+              "counter": "hits",
+              "share": {
+                "value": 0.6,
+                "source": {
+                  "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Rewind Rounds",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: $clarity[Rewind Rounds](\"Refills 60%\") / 100 (60 % of the hits landed, rounded up); $clarity[Rewind Rounds](\"Refills 60%\") = 60 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Rewind Rounds)"
+                }
+              }
+            }
+          },
+          { "type": "resetCounter", "counter": "hits" },
+          {
+            "type": "setMode",
+            "mode": "rewind-lock",
+            "to": "locked",
+            "durationMs": {
+              "value": 1000,
+              "source": {
+                "name": "Item file outbreak-perfected",
+                "retrieved": "2026-11-04",
+                "status": "derived",
+                "note": "Derived: Clarity \"Hits after triggering a refill do not count while the Rewind Rounds buff is active (1? second)\" - the digit stands, the question mark says Clarity is unsure",
+                "quote": "Hits after triggering a refill do not count"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file outbreak-perfected",
+          "retrieved": "2026-11-04",
+          "status": "derived",
+          "note": "Derived: \"Upon emptying the Magazine\" is the start of the reload; the hits count from the last empty magazine (template: Vex Mythoclast)"
+        }
+      },
+      {
+        "id": "rewind-reset",
+        "on": { "on": "reload", "edge": "start" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "hits",
+            "op": "<",
+            "value": {
+              "value": 10.35,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Rewind Rounds; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-outbreak-perfected",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Rewind Rounds](\"Requires firing 28.75%\") / 100 * $quantum[primaries-pulse-rifle-outbreak-perfected].timing.magazine (28.75 % of the magazine capacity, in hits); $clarity[Rewind Rounds](\"Requires firing 28.75%\") = 28.75 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Rewind Rounds); $quantum[primaries-pulse-rifle-outbreak-perfected].timing.magazine = 36 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-outbreak-perfected)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "resetCounter", "counter": "hits" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "nanites",
+        "name": "Nanites",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.3,
+              "source": {
+                "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: 1 + $compendium[Outbreak Perfected](\"= 30%\") / 100 (percent to factor, per stack (perStack); one stack is one nanite up to 5, then 2.1 / 30 of a stack per nanite (the rules)); $compendium[Outbreak Perfected](\"= 30%\") = 30 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector)"
+              }
+            },
+            "damageSources": ["weapon"],
+            "perStack": true
+          }
+        ],
+        "durationMs": {
+          "value": 9000,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[The Corruption Spreads II](\"9 seconds when attached\") * 1000 (seconds to milliseconds; new nanites refresh it); $clarity[The Corruption Spreads II](\"9 seconds when attached\") = 9 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Corruption Spreads II)"
+          }
+        },
+        "maxStacks": {
+          "value": 10,
+          "source": {
+            "name": "Expression over Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: $compendium[Outbreak Perfected](\"= 300%\") / $compendium[Outbreak Perfected](\"= 30%\") (up to 300 % at x100, in stacks of 30 %); $compendium[Outbreak Perfected](\"= 300%\") = 300 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector); $compendium[Outbreak Perfected](\"= 30%\") = 30 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Outbreak Perfected The Corruption Spreads Craftable Trait Parasitism ↑Disease Vector)"
+          }
+        }
       }
     ],
     "intrinsics": [

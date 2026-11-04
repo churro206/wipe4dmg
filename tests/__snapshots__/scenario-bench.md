@@ -6,7 +6,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.95 over 41 rows
+- Rank (check set): Spearman 0.96 over 41 rows
 - Absolute, information only: within ±3 % 21 of 41 (check set), 97 of 183 (all counted rows, mostly Eichung)
 - Rows: 185 scenarios (32 by hand, 153 generated); fitted 45; calibration set 98; check set 41; not counted 2; core cannot run 0
 
@@ -48,7 +48,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-machine-gun-service-of-luzaku | machine-gun-service-of-luzaku | 157 | 157 | +0.2 % |
 | gen-machine-gun-xenophage | machine-gun-xenophage | 737 | 737 | −0.0 % |
 | gen-pulse-rifle-graviton-lance-burst-vorpal-weapon | pulse-rifle-graviton-lance-burst-vorpal-weapon | 146 | 71 | −51.3 % |
-| gen-pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 832 | −94.0 % |
+| gen-pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 1745 | −87.4 % |
 | gen-pulse-rifle-vigilance-wing-burst | pulse-rifle-vigilance-wing-burst | 173 | 35 | −79.7 % |
 | gen-scout-rifle-mida-multi-tool | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | gen-scout-rifle-symmetry | scout-rifle-symmetry | 61 | 61 | +0.1 % |
@@ -158,7 +158,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 183 | 44 % | 44 | 41 | 0.95 | 3/3 | 1 of 4 |
+| Weapons | 417 | 183 | 44 % | 44 | 41 | 0.96 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 4 | 17 | 0.92 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
@@ -221,7 +221,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | machine-gun-service-of-luzaku | 157 | 157 | +0.2 % |
 | Weapons | machine-gun-xenophage | 737 | 737 | −0.0 % |
 | Weapons | pulse-rifle-graviton-lance-burst-vorpal-weapon | 146 | 71 | −51.3 % |
-| Weapons | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 832 | −94.0 % |
+| Weapons | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 1745 | −87.4 % |
 | Weapons | pulse-rifle-vigilance-wing-burst | 173 | 35 | −79.7 % |
 | Weapons | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 23629 | −20.8 % |
 | Weapons | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |

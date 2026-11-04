@@ -52,13 +52,347 @@
       "damage": "$quantum[primaries-pulse-rifle-outbreak-perfected].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "nanite": {
+      "name": "Nanite",
+      "damage": "$clarity[The Corruption Spreads II](\"Nanites deal 77\")",
+      "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "nanites",
+      "name": "Nanites",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $compendium[Outbreak Perfected](\"= 30%\") / 100",
+            "note": "percent to factor, per stack (perStack); one stack is one nanite up to 5, then 2.1 / 30 of a stack per nanite (the rules)"
+          },
+          "damageSources": ["weapon"],
+          "perStack": true
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[The Corruption Spreads II](\"9 seconds when attached\") * 1000",
+        "note": "seconds to milliseconds; new nanites refresh it"
+      },
+      "maxStacks": {
+        "expr": "$compendium[Outbreak Perfected](\"= 300%\") / $compendium[Outbreak Perfected](\"= 30%\")",
+        "note": "up to 300 % at x100, in stacks of 30 %"
+      }
+    }
+  ],
   "rules": [
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "spread-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "spread",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[The Corruption Spreads II](\"Scoring 12 Hits\") - 1",
+            "note": "the counter stands at 0 to 10 for the hits before the 12th"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "spread" }]
+    },
+    {
+      "id": "spread",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst", "not": true },
+        {
+          "type": "counter",
+          "id": "spread",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[The Corruption Spreads II](\"Scoring 12 Hits\") - 1",
+            "note": "the 12th hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "spread" },
+        {
+          "type": "spawn",
+          "part": "nanite",
+          "factor": {
+            "value": 2.5,
+            "source": {
+              "name": "Item file outbreak-perfected",
+              "retrieved": "2026-11-04",
+              "status": "derived",
+              "note": "Derived: Clarity \"spawns 2 to 3 SIVA Nanites\" - the mean of the range, one hit stands for all nanites of a trigger (a range, no quote can hold it)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spread-catalyst",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "spread",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[The Corruption Spreads II](\"Scoring 12 Hits\") - 1",
+            "note": "the 12th hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "spread" },
+        {
+          "type": "spawn",
+          "part": "nanite",
+          "factor": {
+            "value": 3.125,
+            "source": {
+              "name": "Item file outbreak-perfected",
+              "retrieved": "2026-11-04",
+              "status": "derived",
+              "quote": "Nanite Damage is increased by 25%",
+              "note": "Derived: 2.5 nanites (mean of Clarity \"2 to 3\") x 1.25 (Clarity catalyst \"Nanite Damage is increased by 25%\")"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "nanites-more",
+      "on": { "on": "hit", "part": "nanite" },
+      "if": [{ "type": "stacks", "buff": "nanites", "op": ">=", "value": { "expr": "$compendium[Outbreak Perfected](\"= 150%\") / $compendium[Outbreak Perfected](\"= 30%\")", "note": "x5 = 150 % in stacks of 30 %: 5" } }],
+      "do": [
+        {
+          "type": "addStacks",
+          "buff": "nanites",
+          "by": {
+            "expr": "$compendium[Outbreak Perfected](\"buff by 2.1%\") / $compendium[Outbreak Perfected](\"= 30%\") * 2.5",
+            "note": "after the fifth nanite 2.1 % each instead of 30 %, x 2.5 nanites of a trigger (mean of Clarity \"2 to 3\")"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file outbreak-perfected",
+        "retrieved": "2026-11-04",
+        "status": "derived",
+        "note": "Derived: Compendium \"Each Nanite after the fifth increases the damage buff by 2.1%\"; a stack is 30 % (one nanite up to 5), so a nanite after the fifth is 0.07 of a stack; 2.5 nanites a trigger bring the count from 0 to 2.5 to 5 exactly"
+      }
+    },
+    {
+      "id": "nanites-first",
+      "on": { "on": "hit", "part": "nanite" },
+      "if": [{ "type": "stacks", "buff": "nanites", "op": "<", "value": { "expr": "$compendium[Outbreak Perfected](\"= 150%\") / $compendium[Outbreak Perfected](\"= 30%\")", "note": "x5 = 150 % in stacks of 30 %: 5" } }],
+      "do": [
+        {
+          "type": "addStacks",
+          "buff": "nanites",
+          "by": {
+            "value": 2.5,
+            "source": {
+              "name": "Item file outbreak-perfected",
+              "retrieved": "2026-11-04",
+              "status": "derived",
+              "note": "Derived: Clarity \"spawns 2 to 3 SIVA Nanites\" - the mean of the range"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "nanites-start",
+      "on": { "on": "hit", "part": "nanite" },
+      "if": [{ "type": "buff", "id": "nanites", "not": true }],
+      "do": [
+        {
+          "type": "grantBuff",
+          "buff": "nanites",
+          "stacks": {
+            "value": 2.5,
+            "source": {
+              "name": "Item file outbreak-perfected",
+              "retrieved": "2026-11-04",
+              "status": "derived",
+              "note": "Derived: Clarity \"spawns 2 to 3 SIVA Nanites\" - the mean of the range"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rewind-count",
+      "on": { "on": "shot" },
+      "if": [{ "type": "mode", "id": "rewind-lock", "is": "locked", "not": true }],
+      "do": [{ "type": "addStacks", "counter": "hits" }]
+    },
+    {
+      "id": "rewind-count-nanites",
+      "on": { "on": "hit", "part": "nanite" },
+      "if": [{ "type": "mode", "id": "rewind-lock", "is": "locked", "not": true }],
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "hits",
+          "by": {
+            "value": 2.5,
+            "source": {
+              "name": "Item file outbreak-perfected",
+              "retrieved": "2026-11-04",
+              "status": "derived",
+              "note": "Derived: Clarity \"Nanite Hits count as Hits with the weapon\"; 2.5 nanites a trigger (mean of Clarity \"2 to 3\")"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rewind",
+      "on": { "on": "reload", "edge": "start" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "hits",
+          "op": ">=",
+          "value": {
+            "expr": "$clarity[Rewind Rounds](\"Requires firing 28.75%\") / 100 * $quantum[primaries-pulse-rifle-outbreak-perfected].timing.magazine",
+            "note": "28.75 % of the magazine capacity, in hits"
+          }
+        }
+      ],
+      "do": [
+        {
+          "type": "refill",
+          "ofCounter": {
+            "counter": "hits",
+            "share": {
+              "expr": "$clarity[Rewind Rounds](\"Refills 60%\") / 100",
+              "note": "60 % of the hits landed, rounded up"
+            }
+          }
+        },
+        { "type": "resetCounter", "counter": "hits" },
+        {
+          "type": "setMode",
+          "mode": "rewind-lock",
+          "to": "locked",
+          "durationMs": {
+            "value": 1000,
+            "source": {
+              "name": "Item file outbreak-perfected",
+              "retrieved": "2026-11-04",
+              "status": "derived",
+              "quote": "Hits after triggering a refill do not count",
+              "note": "Derived: Clarity \"Hits after triggering a refill do not count while the Rewind Rounds buff is active (1? second)\" - the digit stands, the question mark says Clarity is unsure"
+            }
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file outbreak-perfected",
+        "retrieved": "2026-11-04",
+        "status": "derived",
+        "note": "Derived: \"Upon emptying the Magazine\" is the start of the reload; the hits count from the last empty magazine (template: Vex Mythoclast)"
+      }
+    },
+    {
+      "id": "rewind-reset",
+      "on": { "on": "reload", "edge": "start" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "hits",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Rewind Rounds](\"Requires firing 28.75%\") / 100 * $quantum[primaries-pulse-rifle-outbreak-perfected].timing.magazine",
+            "note": "28.75 % of the magazine capacity, in hits"
+          }
+        }
+      ],
+      "do": [{ "type": "resetCounter", "counter": "hits" }]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Precision Kills spawn 9 Nanites",
+      "reason": "no adds (ADR 0015); the kills of a boss fight are no precision kills of the weapon"
+    },
+    {
+      "quote": "Nanites last for 3 seconds while airborne",
+      "reason": "below 2 % (the flight of 3 s ends in the 9 s on the target; the hit lands at once)"
+    },
+    {
+      "quote": "each dealing 13",
+      "reason": "no adds (ADR 0015): Disease Vector nanites come from enemies that die with nanites"
+    },
+    {
+      "quote": "uniquely 14%",
+      "reason": "only for Adaptive Burst Linear Fusion Rifles, not for this weapon"
+    },
+    {
+      "quote": "for 0.55 seconds",
+      "reason": "optimal play lands precision hits only; Headseeker needs a non-precision direct hit"
+    },
+    {
+      "quote": "20% increased Precision Bonus",
+      "reason": "optimal play lands precision hits only; Headseeker needs a non-precision direct hit"
+    },
+    {
+      "quote": "3% increased Aim Assist",
+      "reason": "no damage against a boss (aim assist)"
+    },
+    {
+      "quote": "Pulse Rifles: Adaptive",
+      "reason": "optimal play lands precision hits only; Headseeker needs a non-precision direct hit"
+    },
+    {
+      "quote": "Sidearms: Adaptive Burst",
+      "reason": "not a pulse rifle"
+    },
+    {
+      "quote": "Scout Rifles: Precision",
+      "reason": "not a pulse rifle"
+    },
+    {
+      "quote": "Heavy Burst Hand Cannons: 7%",
+      "reason": "not a pulse rifle"
+    },
+    {
+      "quote": "grant 1 Stack of Rapid Hit",
+      "reason": "below 2 % (Rapid Hit shortens the reload by at most 8 % of 1.16 s, 1.6 % of a magazine cycle, less with Rewind Rounds)"
+    },
+    {
+      "quote": "Maximum of 5 Stacks",
+      "reason": "below 2 % (Rapid Hit, see above)"
+    },
+    {
+      "quote": "Benefits at 1|2|3|4|5 Stacks",
+      "reason": "below 2 % (Rapid Hit, see above)"
+    },
+    {
+      "quote": "2|12|14|18|25 Stability",
+      "reason": "no damage against a boss (stability)"
+    },
+    {
+      "quote": "5|30|35|42|60 Reload Speed",
+      "reason": "below 2 % (Rapid Hit, see above)"
+    },
+    {
+      "quote": "Reload Duration Multiplier",
+      "reason": "below 2 % (Rapid Hit, see above)"
     }
   ]
 }

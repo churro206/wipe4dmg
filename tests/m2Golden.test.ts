@@ -172,6 +172,47 @@ describe("Vex Mythoclast: Timeless Mythoclast (Clarity: emptying refills 80 % of
   });
 });
 
+// Outbreak Perfected. By hand from the texts: Clarity "Scoring 12 Hits ... spawns 2 to 3 SIVA Nanites"
+// (mean 2.5), "Nanites deal 77"; Compendium "x1 = 30%" ... "x5 = 150%", then 2.1 % per nanite up to 300 %.
+describe("Outbreak Perfected: The Corruption Spreads (Clarity: 12 hits spawn 2 to 3 nanites of 77, 9 seconds)", () => {
+  it("every 12th shot brings 2.5 nanites of 77 on top", () => {
+    const result = run("outbreak-perfected", 4);
+    const nanites = only(result, "nanite");
+    expect(nanites.length).toBeGreaterThanOrEqual(2);
+    expect(nanites[0].timeMs).toBe(only(result, "shot")[11].timeMs);
+    expect(nanites[0].damage).toBeCloseTo(2.5 * 77, 0);
+  });
+  it("Compendium: +30 % per nanite up to 5, then +2.1 % per nanite; the shots after the 12th, 24th, 36th hit carry it", () => {
+    const shots = only(run("outbreak-perfected", 8), "shot");
+    expect(shots[11].damage / shots[0].damage).toBeCloseTo(1, 3);
+    expect(shots[12].damage / shots[0].damage).toBeCloseTo(1 + 0.3 * 2.5, 3);
+    expect(shots[24].damage / shots[0].damage).toBeCloseTo(1 + 0.3 * 5, 3);
+    expect(shots[36].damage / shots[0].damage).toBeCloseTo(1 + 0.3 * 5 + 0.021 * 2.5, 3);
+  });
+  it("up to +300 % (x100): the multiplier never passes 4", () => {
+    const shots = only(run("outbreak-perfected", 60), "shot");
+    expect(Math.max(...shots.map((d) => d.damage)) / shots[0].damage).toBeCloseTo(4, 3);
+  });
+  it("the catalyst raises the nanite damage by 25 %", () => {
+    const plain = only(run("outbreak-perfected", 3), "nanite")[0].damage;
+    const cata = only(run("outbreak-perfected", 3, true), "nanite")[0].damage;
+    expect(cata / plain).toBeCloseTo(1.25, 3);
+  });
+});
+
+describe("Outbreak Perfected: Rewind Rounds (Clarity: emptying refills 60 % of the hits (rounded up), at least 28.75 % of the magazine)", () => {
+  it("the magazine of 36 gets 27 (36 shots + 3 x 2.5 nanite hits = 43.5 hits), then more without a reload; the chain ends with a reload", () => {
+    const shots = only(run("outbreak-perfected", 16), "shot");
+    const gaps = shots.slice(0, -1).map((d, i) => shots[i + 1].timeMs - d.timeMs);
+    const reload = gaps.findIndex((g) => g > 1000);
+    expect(gaps[35]).toBeLessThan(150);
+    expect(gaps[35 + 27]).toBeLessThan(150);
+    // the 1 second after a refill does not count (Clarity), so the chain is shorter than without the lock
+    expect(reload).toBeGreaterThan(35 + 27);
+    expect(reload).toBeLessThan(100);
+  });
+});
+
 describe("Slayer's Fang: Nightsworn Sight, built up before (pre-stacked)", () => {
   it("the first shot deals 15 % more, later hits are weakened (+15 %) on top", () => {
     const stacked = only(run("slayer-s-fang", 6, false, ["pre-stacked"]), "shot");

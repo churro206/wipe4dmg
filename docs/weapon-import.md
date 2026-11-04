@@ -40,7 +40,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **891**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **858**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -107,7 +107,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **891**. D
 | Necrochasm | `src/data/items/weapons/necrochasm.json` | 10 | – |
 | One Thousand Voices | `src/data/items/weapons/one-thousand-voices.json` | 0 | – |
 | Osteo Striga | `src/data/items/weapons/osteo-striga.json` | 0 | – |
-| Outbreak Perfected | `src/data/items/weapons/outbreak-perfected.json` | 33 | – |
+| Outbreak Perfected | `src/data/items/weapons/outbreak-perfected.json` | 0 | – |
 | Parasite | `src/data/items/weapons/parasite.json` | 6 | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | 3 | – |
 | Quicksilver Storm | `src/data/items/weapons/quicksilver-storm.json` | 1 | – |

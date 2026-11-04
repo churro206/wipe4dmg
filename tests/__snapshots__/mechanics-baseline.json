@@ -745,14 +745,14 @@
       "600s buffed catalyst": 449141.79
     },
     "outbreak-perfected": {
-      "30s plain": 5824,
-      "30s buffed": 9805.29,
-      "30s plain catalyst": 5824,
-      "30s buffed catalyst": 9805.29,
-      "600s plain": 116192,
-      "600s buffed": 195620.85,
-      "600s plain catalyst": 116192,
-      "600s buffed catalyst": 195620.85
+      "30s plain": 26802.88,
+      "30s buffed": 45125.33,
+      "30s plain catalyst": 29005.2,
+      "30s buffed catalyst": 48833.16,
+      "600s plain": 764507.72,
+      "600s buffed": 1287125.2,
+      "600s plain catalyst": 828252.41,
+      "600s buffed catalyst": 1394445.76
     },
     "parasite": {
       "30s plain": 32010,

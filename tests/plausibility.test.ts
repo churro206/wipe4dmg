@@ -58,6 +58,19 @@ const fmt = (x: number) => x.toFixed(2);
 const isIgnition = (d: { id: string; keywordId?: string }) =>
   d.keywordId === "ignition" && d.id !== "burn";
 
+describe("Outbreak Perfected: nanites (ADR 0019, M2)", () => {
+  it("nanites raise the weapon's damage over a long phase: 60 s deal clearly more per second than 10 s (x100 up to +300 %)", () => {
+    const weapon = weaponById("outbreak-perfected");
+    const total = (seconds: number) =>
+      run({ damagePhaseSeconds: seconds }, weapon).totalDamage;
+    const perSecond10 = total(10) / 10;
+    const perSecond60 = total(60) / 60;
+    note("Outbreak Perfected, Schaden/s 60 s zu 10 s", fmt(perSecond60 / perSecond10), "über 1.2 (ohne Nanites um 1.0)");
+    expect(perSecond60 / perSecond10).toBeGreaterThan(1.2);
+    expect(damageOf(run({ damagePhaseSeconds: 10 }, weapon), "weapon")).toBeGreaterThan(0);
+  });
+});
+
 describe("exotic armor changes its abilities", () => {
   it("Cuirass of the Falling Star makes Thundercrash much stronger", () => {
     const cast = { abilities: [{ abilityId: "thundercrash", castsMs: [0] }] };
