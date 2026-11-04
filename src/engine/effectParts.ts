@@ -34,6 +34,7 @@ export type DamageTarget = {
   weaponType?: WeaponType; // omitted for abilities
   abilityId?: string; // set for damage of an ability
   keywordId?: KeywordId; // set for keyword damage, whatever source set it off
+  partId?: string; // set for the hit of a part of a weapon item
 };
 
 /**
@@ -168,6 +169,10 @@ export function bucketMultipliers(
           !(
             target.abilityId !== undefined &&
             part.excludeAbilityIds?.includes(target.abilityId)
+          ) &&
+          !(
+            target.partId !== undefined &&
+            part.excludePartIds?.includes(target.partId)
           ),
       )
       .map((part) => requireValue(part.multiplier, "multiplier"));

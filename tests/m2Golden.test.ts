@@ -197,6 +197,11 @@ describe("Outbreak Perfected: The Corruption Spreads (Clarity: 12 hits spawn 2 t
     const shots = only(run("outbreak-perfected", 60), "shot");
     expect(Math.max(...shots.map((d) => d.damage)) / shots[0].damage).toBeCloseTo(4, 3);
   });
+  it("the Nanites buff does not touch the nanite hit itself (Aegis: 132 nanite with and without)", () => {
+    const nanites = only(run("outbreak-perfected", 30), "nanite");
+    expect(nanites.length).toBeGreaterThan(3);
+    nanites.forEach((d) => expect(d.damage).toBeCloseTo(nanites[0].damage, 6));
+  });
   it("the catalyst raises the nanite damage by 25 %", () => {
     const plain = only(run("outbreak-perfected", 3), "nanite")[0].damage;
     const cata = only(run("outbreak-perfected", 3, true), "nanite")[0].damage;
@@ -206,14 +211,14 @@ describe("Outbreak Perfected: The Corruption Spreads (Clarity: 12 hits spawn 2 t
 
 describe("Outbreak Perfected: Rewind Rounds (Clarity: emptying refills 60 % of the hits (rounded up), at least 28.75 % of the magazine)", () => {
   it("the magazine of 36 gets 27 (36 shots + 3 x 2.5 nanite hits = 43.5 hits), then more without a reload; the chain ends with a reload", () => {
-    const shots = only(run("outbreak-perfected", 16), "shot");
+    const shots = only(run("outbreak-perfected", 30), "shot");
     const gaps = shots.slice(0, -1).map((d, i) => shots[i + 1].timeMs - d.timeMs);
-    const reload = gaps.findIndex((g) => g > 1000);
+    const reloads = gaps.flatMap((g, i) => (g > 1000 ? [i] : []));
+    // the hit of the 36th shot is still in the queue when the reload starts (by hand: 36, 25, 14 = 75
+    // shots, then a reload; 36, 27, 15 = 78 shots). The 1 second after a refill does not count (Clarity).
+    expect(reloads.slice(0, 2)).toEqual([74, 74 + 78]);
     expect(gaps[35]).toBeLessThan(150);
-    expect(gaps[35 + 27]).toBeLessThan(150);
-    // the 1 second after a refill does not count (Clarity), so the chain is shorter than without the lock
-    expect(reload).toBeGreaterThan(35 + 27);
-    expect(reload).toBeLessThan(100);
+    expect(gaps[35 + 25]).toBeLessThan(150);
   });
 });
 

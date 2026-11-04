@@ -48,7 +48,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-machine-gun-service-of-luzaku | machine-gun-service-of-luzaku | 157 | 157 | +0.2 % |
 | gen-machine-gun-xenophage | machine-gun-xenophage | 737 | 737 | −0.0 % |
 | gen-pulse-rifle-graviton-lance-burst-vorpal-weapon | pulse-rifle-graviton-lance-burst-vorpal-weapon | 146 | 71 | −51.3 % |
-| gen-pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 1745 | −87.4 % |
+| gen-pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 1601 | −88.5 % |
 | gen-pulse-rifle-vigilance-wing-burst | pulse-rifle-vigilance-wing-burst | 173 | 35 | −79.7 % |
 | gen-scout-rifle-mida-multi-tool | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | gen-scout-rifle-symmetry | scout-rifle-symmetry | 61 | 61 | +0.1 % |
@@ -221,7 +221,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | machine-gun-service-of-luzaku | 157 | 157 | +0.2 % |
 | Weapons | machine-gun-xenophage | 737 | 737 | −0.0 % |
 | Weapons | pulse-rifle-graviton-lance-burst-vorpal-weapon | 146 | 71 | −51.3 % |
-| Weapons | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 1745 | −87.4 % |
+| Weapons | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 1601 | −88.5 % |
 | Weapons | pulse-rifle-vigilance-wing-burst | 173 | 35 | −79.7 % |
 | Weapons | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 23629 | −20.8 % |
 | Weapons | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |

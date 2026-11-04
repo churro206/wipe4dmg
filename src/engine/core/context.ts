@@ -144,6 +144,7 @@ export function createContext(
     element: Element,
     keywordId?: KeywordId,
     onTarget: readonly MultiplierPart[] = [],
+    partId?: string,
   ): Factors => {
     const holdDraw = holdFactorAt(timeMs);
     return {
@@ -161,6 +162,7 @@ export function createContext(
           element,
           weaponType: weapon.weaponType,
           ...(keywordId ? { keywordId } : {}),
+          ...(partId ? { partId } : {}),
         },
       ),
       ...(holdDraw !== 1 ? { holdDraw } : {}),

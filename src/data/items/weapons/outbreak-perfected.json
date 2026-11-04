@@ -72,6 +72,7 @@
             "note": "percent to factor, per stack (perStack); one stack is one nanite up to 5, then 2.1 / 30 of a stack per nanite (the rules)"
           },
           "damageSources": ["weapon"],
+          "excludePartIds": ["nanite"],
           "perStack": true
         }
       ],

@@ -204,6 +204,7 @@ export function simulate(
                 weapon.element,
                 undefined,
                 statusContainer.modifiersOnTarget(target, atMs),
+                instance.id,
               );
               const hit: TimedDamageInstance = {
                 id: instance.id,

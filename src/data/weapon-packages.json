@@ -15021,6 +15021,7 @@
               }
             },
             "damageSources": ["weapon"],
+            "excludePartIds": ["nanite"],
             "perStack": true
           }
         ],
