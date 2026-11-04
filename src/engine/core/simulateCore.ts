@@ -369,7 +369,10 @@ export function simulate(
         );
       }
     };
-    if (!shot) return;
+    if (!shot) {
+      fireReloadStart(); // the reload may still refill (Rewind) and bring the shot back into the phase
+      return;
+    }
     shots.push({ timeMs: shot.timeMs });
     history.holdFactors.push(shot.holdFactor);
     schedule({

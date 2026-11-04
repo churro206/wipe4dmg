@@ -170,6 +170,10 @@ describe("Vex Mythoclast: Timeless Mythoclast (Clarity: emptying refills 80 % of
     expect(end).toBe(101);
     expect(gap(101)).toBeGreaterThanOrEqual(150 + 1120);
   });
+  it("the refill also comes when the reload pushes the next shot out of the phase: 67 shots in 10 s, 193 in 30 s", () => {
+    expect(only(run("vex-mythoclast", 10), "shot")).toHaveLength(67);
+    expect(only(run("vex-mythoclast", 30), "shot")).toHaveLength(193);
+  });
 });
 
 // Outbreak Perfected. By hand from the texts: Clarity "Scoring 12 Hits ... spawns 2 to 3 SIVA Nanites"
