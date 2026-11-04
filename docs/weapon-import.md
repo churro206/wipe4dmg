@@ -40,13 +40,13 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **858**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **843**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
 | Ace of Spades | `src/data/items/weapons/ace-of-spades.json` | 7 | – |
 | Ager's Scepter | `src/data/items/weapons/ager-s-scepter.json` | 7 | – |
-| Alethonym | `src/data/items/weapons/alethonym.json` | 3 | – |
+| Alethonym | `src/data/items/weapons/alethonym.json` | 0 | – |
 | Arbalest | `src/data/items/weapons/arbalest.json` | 2 | – |
 | Bad Juju | `src/data/items/weapons/bad-juju.json` | 8 | – |
 | Barrow-Dyad | `src/data/items/weapons/barrow-dyad.json` | 65 | – |
@@ -75,7 +75,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **858**. D
 | Edge of Intent | `src/data/items/weapons/edge-of-intent.json` | 9 | – |
 | Ergo Sum | `src/data/items/weapons/ergo-sum.json` | 4 | – |
 | Eriana's Vow | `src/data/items/weapons/eriana-s-vow.json` | 6 | – |
-| Euphony | `src/data/items/weapons/euphony.json` | 5 | – |
+| Euphony | `src/data/items/weapons/euphony.json` | 0 | – |
 | Ex Diris | `src/data/items/weapons/ex-diris.json` | 0 | – |
 | Eyes of Tomorrow | `src/data/items/weapons/eyes-of-tomorrow.json` | 7 | – |
 | Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 0 | – |
@@ -110,7 +110,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **858**. D
 | Outbreak Perfected | `src/data/items/weapons/outbreak-perfected.json` | 0 | – |
 | Parasite | `src/data/items/weapons/parasite.json` | 6 | – |
 | Polaris Lance | `src/data/items/weapons/polaris-lance.json` | 3 | – |
-| Quicksilver Storm | `src/data/items/weapons/quicksilver-storm.json` | 1 | – |
+| Quicksilver Storm | `src/data/items/weapons/quicksilver-storm.json` | 0 | – |
 | Rat King | `src/data/items/weapons/rat-king.json` | 8 | – |
 | Red Death Reformed | `src/data/items/weapons/red-death-reformed.json` | 12 | – |
 | Riskrunner | `src/data/items/weapons/riskrunner.json` | 9 | – |
@@ -147,7 +147,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **858**. D
 | Truth | `src/data/items/weapons/truth.json` | 5 | – |
 | Two-Tailed Fox | `src/data/items/weapons/two-tailed-fox.json` | 0 | – |
 | Verglas Curve | `src/data/items/weapons/verglas-curve.json` | 4 | – |
-| Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 6 | – |
+| Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 0 | – |
 | Vexcalibur | `src/data/items/weapons/vexcalibur.json` | 26 | – |
 | Vigilance Wing | `src/data/items/weapons/vigilance-wing.json` | 9 | – |
 | Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | 15 | – |

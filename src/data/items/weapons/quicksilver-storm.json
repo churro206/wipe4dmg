@@ -43,14 +43,6 @@
         "note": "Quantum's magazine (bullets + rockets) minus the bullets, shared by the 3 missiles of a magazine (51 hits / 13, rounded down)"
       },
       "delivery": "splash"
-    },
-    "grenade": {
-      "name": "Grenade",
-      "damage": {
-        "expr": "($quantum[primaries-auto-rifle-quicksilver-storm].magDamage - $quantum[primaries-auto-rifle-quicksilver-storm].magazine * $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage) / 3 * $clarity[Grenade Chaser](\"Grenades deal 1,308\") / $clarity[Missile Tracers](\"deal 160\")",
-        "note": "Quantum's missile (see there) carried to the grenade by the ratio of both Clarity numbers (1308 / 160)"
-      },
-      "delivery": "splash"
     }
   },
   "rules": [
@@ -93,21 +85,17 @@
         { "type": "resetCounter", "counter": "tracers" },
         { "type": "spawn", "part": "missile" }
       ]
-    },
-    {
-      "id": "grenades-prepped",
-      "on": { "on": "hit", "part": "missile" },
-      "if": [{ "type": "playstyle", "id": "Grenades Prepped" }],
-      "do": [{ "type": "spawn", "part": "grenade" }],
-      "source": {
-        "name": "Item file quicksilver-storm",
-        "retrieved": "2026-11-04",
-        "status": "derived",
-        "note": "Derived: Aegis' assumption \"Grenades Prepped\"; every missile hit prepares one grenade, fired at once (the time of the mode change is not counted), the stack limit of 3 is met by the reload"
-      }
     }
   ],
   "notModelled": [
+    {
+      "quote": "Grenades deal 1,308",
+      "reason": "the grenade of Grenades Prepped is not modelled: the ratio to the missile (1308 / 160 = 8.2) fails against Aegis (5.8; 916 against 500), and no playstyle had it (ADR 0018: no fit to a row); known-inaccuracies.md"
+    },
+    {
+      "quote": "Maximum of 3 stacks",
+      "reason": "stack limit of the grenade (Grenades Prepped), see above"
+    },
     {
       "quote": "deal 160 [22.7] damage on impact",
       "reason": "needs missile number from Quantum (derived from the row's magazine; the tooltip 160 is on another scale)"

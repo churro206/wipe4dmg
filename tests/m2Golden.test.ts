@@ -144,13 +144,6 @@ describe("Quicksilver Storm: Missile Tracers every 13 hits, Grenades Prepped per
     expect(missiles[0].timeMs).toBe(only(result, "shot")[12].timeMs);
     expect(missiles[1].timeMs).toBe(only(result, "shot")[25].timeMs);
   });
-  it("without the playstyle there are no grenades; with it each missile hit brings one of 112 x 1308 / 160", () => {
-    expect(only(run("quicksilver-storm", 4), "grenade")).toHaveLength(0);
-    const result = run("quicksilver-storm", 4, false, ["Grenades Prepped"]);
-    const grenades = only(result, "grenade");
-    expect(grenades.length).toBeGreaterThan(0);
-    expect(grenades[0].damage).toBeCloseTo((112 * 1308) / 160, 0);
-  });
 });
 
 describe("Vex Mythoclast: Temporal Unlimiter, 6 Overcharge stacks built up before (pre-stacked)", () => {
@@ -159,6 +152,17 @@ describe("Vex Mythoclast: Temporal Unlimiter, 6 Overcharge stacks built up befor
     const linear = only(run("vex-mythoclast", 3, false, ["pre-stacked"]), "linear");
     expect(linear).toHaveLength(3);
     expect(linear[0].damage).toBeCloseTo((1475 * 113) / (66 * 1.8), 0);
+  });
+});
+
+describe("Vex Mythoclast: catalyst Calculated Balance (Clarity: landing 15 hits within 3 seconds of each grants 20 % increased damage for 5 seconds)", () => {
+  it("the shots after the 15th carry +20 % for 5 s, renewed by every further 15 hits; without the catalyst nothing", () => {
+    const shots = only(run("vex-mythoclast", 10, true), "shot");
+    const plain = only(run("vex-mythoclast", 10), "shot");
+    expect(shots[14].damage / plain[14].damage).toBeCloseTo(1, 3);
+    expect(shots[15].damage / plain[15].damage).toBeCloseTo(1.2, 3);
+    // 15 hits take 2.25 s at the pace of 150 ms, the buff of 5 s is renewed before it ends
+    expect(shots[40].damage / plain[40].damage).toBeCloseTo(1.2, 3);
   });
 });
 

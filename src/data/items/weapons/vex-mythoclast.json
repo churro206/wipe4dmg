@@ -47,11 +47,75 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "calculated-balance",
+      "name": "Calculated Balance",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Vex Mythoclast Catalyst](\"grants 20% increased damage\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Vex Mythoclast Catalyst](\"for 5 seconds\") * 1000",
+        "note": "seconds to milliseconds; every further 15 hits renew it"
+      }
+    }
+  ],
   "rules": [
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "balance-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "balance",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Vex Mythoclast Catalyst](\"Landing 15 hits\") - 1",
+            "note": "the counter stands at 0 to 13 for the hits before the 15th"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "balance" }]
+    },
+    {
+      "id": "balance",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "balance",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[Vex Mythoclast Catalyst](\"Landing 15 hits\") - 1",
+            "note": "the 15th hit"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "balance" },
+        { "type": "grantBuff", "buff": "calculated-balance" }
+      ],
+      "source": {
+        "name": "Item file vex-mythoclast",
+        "retrieved": "2026-11-04",
+        "status": "derived",
+        "note": "Derived: the 3 seconds between hits are met at the pace of 150 ms and in the reload of 1.1 s (the counter runs through); Clarity's \"or scoring a kill\" needs adds (ADR 0015)"
+      }
     },
     {
       "id": "rewind-count",
@@ -127,6 +191,14 @@
     {
       "quote": "200% increased damage against Champions",
       "reason": "no Champion as a boss"
-    }
+    },
+    {
+      "quote": "Sets the Magazine Size to 33",
+      "reason": "Linear mode: modelled as the 3 linear shots at the start (rule overcharge); the rest of the phase is the Auto Rifle row of Quantum"
+    },
+    { "quote": "Maximum of 6 Stacks", "reason": "stacks come from kills (no adds, ADR 0015); only built up before (pre-stacked)" },
+    { "quote": "Tier 1 and 2 Minors", "reason": "stacks come from kills (no adds, ADR 0015)" },
+    { "quote": "All other enemy tiers and players grant 2 stacks", "reason": "stacks come from kills (no adds, ADR 0015)" },
+    { "quote": "At 6 stacks, hold", "reason": "the playstyle pre-stacked has the 6 stacks built before; the rule overcharge gives the 3 shots" }
   ]
 }

@@ -15832,49 +15832,6 @@
         "canPrecision": false,
         "delivery": "splash",
         "scale": "quantum"
-      },
-      {
-        "id": "grenade",
-        "name": "Grenade",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Item file quicksilver-storm",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
-          }
-        },
-        "damagePerTick": {
-          "value": 915.6,
-          "source": {
-            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm; Clarity (Live-Clarity-Database, descriptions/clarity.json): Grenade Chaser; Clarity (Live-Clarity-Database, descriptions/clarity.json): Missile Tracers",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived: ($quantum[primaries-auto-rifle-quicksilver-storm].magDamage - $quantum[primaries-auto-rifle-quicksilver-storm].magazine * $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage) / 3 * $clarity[Grenade Chaser](\"Grenades deal 1,308\") / $clarity[Missile Tracers](\"deal 160\") (Quantum's missile (see there) carried to the grenade by the ratio of both Clarity numbers (1308 / 160)); $quantum[primaries-auto-rifle-quicksilver-storm].magDamage = 1560 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm); $quantum[primaries-auto-rifle-quicksilver-storm].magazine = 51 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm); $quantum[primaries-auto-rifle-quicksilver-storm].precisionDamage = 24 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-quicksilver-storm); $clarity[Grenade Chaser](\"Grenades deal 1,308\") = 1308 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Grenade Chaser); $clarity[Missile Tracers](\"deal 160\") = 160 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Missile Tracers)"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Item file quicksilver-storm",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Item file quicksilver-storm",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
-          }
-        },
-        "canPrecision": false,
-        "delivery": "splash",
-        "scale": "quantum"
       }
     ],
     "rules": [
@@ -15927,18 +15884,6 @@
           { "type": "resetCounter", "counter": "tracers" },
           { "type": "spawn", "part": "missile" }
         ]
-      },
-      {
-        "id": "grenades-prepped",
-        "on": { "on": "hit", "part": "missile" },
-        "if": [{ "type": "playstyle", "id": "Grenades Prepped" }],
-        "do": [{ "type": "spawn", "part": "grenade" }],
-        "source": {
-          "name": "Item file quicksilver-storm",
-          "retrieved": "2026-11-04",
-          "status": "derived",
-          "note": "Derived: Aegis' assumption \"Grenades Prepped\"; every missile hit prepares one grenade, fired at once (the time of the mode change is not counted), the stack limit of 3 is met by the reload"
-        }
       }
     ],
     "intrinsics": [
@@ -23418,6 +23363,59 @@
         "do": [{ "type": "spawn", "part": "shot" }]
       },
       {
+        "id": "balance-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "balance",
+            "op": "<",
+            "value": {
+              "value": 14,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Vex Mythoclast Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Vex Mythoclast Catalyst](\"Landing 15 hits\") - 1 (the counter stands at 0 to 13 for the hits before the 15th); $clarity[Vex Mythoclast Catalyst](\"Landing 15 hits\") = 15 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Vex Mythoclast Catalyst)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "balance" }]
+      },
+      {
+        "id": "balance",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "balance",
+            "op": "=",
+            "value": {
+              "value": 14,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Vex Mythoclast Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Vex Mythoclast Catalyst](\"Landing 15 hits\") - 1 (the 15th hit); $clarity[Vex Mythoclast Catalyst](\"Landing 15 hits\") = 15 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Vex Mythoclast Catalyst)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "balance" },
+          { "type": "grantBuff", "buff": "calculated-balance" }
+        ],
+        "source": {
+          "name": "Item file vex-mythoclast",
+          "retrieved": "2026-11-04",
+          "status": "derived",
+          "note": "Derived: the 3 seconds between hits are met at the pace of 150 ms and in the reload of 1.1 s (the counter runs through); Clarity's \"or scoring a kill\" needs adds (ADR 0015)"
+        }
+      },
+      {
         "id": "rewind-count",
         "on": { "on": "shot" },
         "do": [{ "type": "addStacks", "counter": "hits" }]
@@ -23515,6 +23513,37 @@
           "retrieved": "2026-11-04",
           "status": "derived",
           "note": "Derived: the playstyle \"pre-stacked\" (6 Overcharge stacks built before, kills only built up) gives the 3 linear shots at the start; Aegis' swap row has 3 shots too"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "calculated-balance",
+        "name": "Calculated Balance",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Vex Mythoclast Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Vex Mythoclast Catalyst](\"grants 20% increased damage\") / 100 (percent to factor); $clarity[Vex Mythoclast Catalyst](\"grants 20% increased damage\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Vex Mythoclast Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 5000,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Vex Mythoclast Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Vex Mythoclast Catalyst](\"for 5 seconds\") * 1000 (seconds to milliseconds; every further 15 hits renew it); $clarity[Vex Mythoclast Catalyst](\"for 5 seconds\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Vex Mythoclast Catalyst)"
+          }
         }
       }
     ],

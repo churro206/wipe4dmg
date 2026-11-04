@@ -1229,12 +1229,12 @@
     "vex-mythoclast": {
       "30s plain": 21809,
       "30s buffed": 36717.63,
-      "30s plain catalyst": 21809,
-      "30s buffed catalyst": 36717.63,
+      "30s plain catalyst": 25831.8,
+      "30s buffed catalyst": 43490.42,
       "600s plain": 421716,
       "600s buffed": 710001.06,
-      "600s plain catalyst": 421716,
-      "600s buffed catalyst": 710001.06
+      "600s plain catalyst": 505720.2,
+      "600s buffed catalyst": 851430.53
     },
     "vexcalibur": {
       "30s plain": 18975,

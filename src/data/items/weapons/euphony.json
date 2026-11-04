@@ -144,6 +144,11 @@
     }
   ],
   "notModelled": [
+    { "quote": "Maximum of 12 Stacks", "reason": "no damage against a boss (Handling and Reload Speed, catalyst)" },
+    { "quote": "Stat bonuses at 1", "reason": "no damage against a boss (Handling and Reload Speed, catalyst)" },
+    { "quote": "2|7|12|15|20|25|30|35|38|40|45|50 Handling and Reload Speed", "reason": "no damage against a boss (Handling and Reload Speed, catalyst)" },
+    { "quote": "Hand Cannons: 3 Stacks", "reason": "not a linear fusion rifle (stacks per weapon type of the catalyst)" },
+    { "quote": "Automatic Weapons: 1 Stack", "reason": "not a linear fusion rifle (stacks per weapon type of the catalyst)" },
     {
       "quote": "Precision Kills spawn one Threadling",
       "reason": "no adds (ADR 0015)"

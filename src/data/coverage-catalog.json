@@ -281,7 +281,7 @@
         "name": "Quicksilver Storm",
         "group": "Kinetic",
         "inGame": "Missile Tracers: Scoring 13 Hits loads a Tracking Missile which fires on the next shot. Missiles are removed on reload.\nTracking Missiles aggressively seek targets to a maximum range of 50 meters and deal 160 [22.7] damage on impact.\nGrenade Chaser: Scoring hits with Tracking Missiles grant one stack of 'Grenades Prepped'. Maximum of 3 stacks.\nHold [Reload] to switch the gun to Grenade Launcher mode, loading a grenade for each stack gained.\nGrenades deal 1,308 [134] damage on impact in a 5 meter radius with up to 30% fall off at the edges. Grenades deal no self-damage.",
-        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:quicksilver-storm",
         "status": "full"
       },
