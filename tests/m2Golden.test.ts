@@ -67,8 +67,10 @@ describe("N-th hit with delayed parts: Cloudstrike (Clarity: 3 Precision Hits, s
     const storm = only(result, "storm")[0];
     expect(strike.timeMs - third.timeMs).toBe(1100);
     expect(storm.timeMs - third.timeMs).toBeCloseTo(1600, 3);
-    expect(strike.damage).toBeCloseTo(973);
-    expect(storm.damage).toBeCloseTo(584);
+    // Quantum: (5088 - 7 x 450) / 2 series = 969 per series, split 973 : 584
+    expect(strike.damage).toBeCloseTo((969 * 973) / (973 + 584), 1);
+    expect(storm.damage).toBeCloseTo((969 * 584) / (973 + 584), 1);
+    expect(strike.damage + storm.damage).toBeCloseTo(969, 1);
     expect(only(result, "strike").every((d) => d.timeMs >= only(result, "shot")[2].timeMs)).toBe(true);
   });
 });
@@ -99,7 +101,7 @@ describe("Ex Diris: Enrage after 4 Direct Hits, Hive Moth every 2 Direct Hits wi
 });
 
 describe("Alethonym: impale (Compendium: 79 every 0.8 s up to 6 times, explosion of 697 on the sixth tick)", () => {
-  it("an impact of 43, six ticks of 79 at 800 ms and the explosion of 697 with the sixth tick", () => {
+  it("an impact of Quantum's 102, six ticks of 79 at 800 ms and the explosion of 697 with the sixth tick", () => {
     const result = run("alethonym", 6);
     const shot = only(result, "shot")[0];
     // impales stack without limit: the ticks of later shots overlap, the first six belong to the first shot
@@ -107,7 +109,7 @@ describe("Alethonym: impale (Compendium: 79 every 0.8 s up to 6 times, explosion
       .map((d) => d)
       .filter((d) => d.timeMs <= shot.timeMs + 4000 && d.timeMs % 800 === shot.timeMs % 800)
       .slice(0, 6);
-    expect(shot.damage).toBeCloseTo(43);
+    expect(shot.damage).toBeCloseTo(102);
     expect(ticks).toHaveLength(6);
     ticks.forEach((d) => expect(d.damage).toBeCloseTo(79));
     expect(ticks[5].timeMs - ticks[0].timeMs).toBe(4000);

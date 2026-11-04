@@ -591,8 +591,9 @@ describe("all weapons (2026-10-23)", () => {
     // hand-made Deterministic Chaos (older items with a Quantum hit); Witherhoard takes the sum of
     // a direct hit from a Quantum expression; the other older items and the packages take theirs from Aegis
     // 99 = 97 + Ex Diris and Grand Overture (M2, hand-made items with a Quantum hit)
-    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "99 = 93 Gerüst + 6 ältere Items");
-    expect(fromQuantum).toBe(99);
+    // 100 = 99 + Alethonym (M2, impact from Quantum's row)
+    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "100 = 93 Gerüst + 7 ältere Items");
+    expect(fromQuantum).toBe(100);
   });
 
   // Fourth Horseman (Q1 gate): the cata row of Quantum gives the catalyst magazine of 5 (4 without).

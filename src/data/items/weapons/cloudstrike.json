@@ -40,12 +40,18 @@
     },
     "strike": {
       "name": "Lightning strike",
-      "damage": "$clarity[Stormbringer](\"dealing 973\")",
+      "damage": {
+        "expr": "($quantum[specials-sniper-rifle-cloudstrike].magDamage - $quantum[specials-sniper-rifle-cloudstrike].magazine * $quantum[specials-sniper-rifle-cloudstrike].precisionDamage) / 2 * $clarity[Stormbringer](\"dealing 973\") / ($clarity[Stormbringer](\"dealing 973\") + $clarity[Stormbringer](\"dealing 584\"))",
+        "note": "ADR 0019: Quantum's magazine minus its shots is the strikes of 2 series (7 precision hits = 2 series of 3), 969 each; split in the ratio of Clarity's 973 : 584"
+      },
       "delivery": "splash"
     },
     "storm": {
       "name": "Lightning storm",
-      "damage": "$clarity[Stormbringer](\"dealing 584\")",
+      "damage": {
+        "expr": "($quantum[specials-sniper-rifle-cloudstrike].magDamage - $quantum[specials-sniper-rifle-cloudstrike].magazine * $quantum[specials-sniper-rifle-cloudstrike].precisionDamage) / 2 * $clarity[Stormbringer](\"dealing 584\") / ($clarity[Stormbringer](\"dealing 973\") + $clarity[Stormbringer](\"dealing 584\"))",
+        "note": "ADR 0019: as the strike, the share of the storm in 969 per series"
+      },
       "delivery": "splash"
     }
   },

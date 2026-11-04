@@ -28,7 +28,7 @@
   "parts": {
     "shot": {
       "name": "Harvester Spike (impact)",
-      "damage": "$compendium[Alethonym](\"dealing 43\")",
+      "damage": "$quantum[primaries-grenade-launcher-alethonym-spam].bodyDamage",
       "delivery": "impact"
     },
     "impale": {

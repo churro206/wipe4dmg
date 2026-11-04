@@ -389,27 +389,26 @@
           "value": 0,
           "source": {
             "name": "Item file alethonym",
-            "retrieved": "2026-10-24",
+            "retrieved": "2026-10-20",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "damagePerTick": {
-          "value": 43,
+          "value": 102,
           "source": {
-            "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Alethonym Harvester Spike Vestigial Alchemy ↑One For All",
-            "url": "https://destiny2.science/data-compendium",
-            "retrieved": "2026-10-24",
-            "status": "derived",
-            "note": "Derived: the number in the quote",
-            "quote": "dealing 43"
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-grenade-launcher-alethonym-spam",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "bodyDamage"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
             "name": "Item file alethonym",
-            "retrieved": "2026-10-24",
+            "retrieved": "2026-10-20",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
@@ -418,14 +417,14 @@
           "value": 0,
           "source": {
             "name": "Item file alethonym",
-            "retrieved": "2026-10-24",
+            "retrieved": "2026-10-20",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "compendium"
+        "scale": "quantum"
       },
       {
         "id": "impale",
@@ -2492,14 +2491,12 @@
           }
         },
         "damagePerTick": {
-          "value": 973,
+          "value": 605.547,
           "source": {
-            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer",
-            "url": "https://www.d2clarity.com",
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-cloudstrike; Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer",
             "retrieved": "2026-10-20",
             "status": "derived",
-            "note": "Derived: the number in the quote",
-            "quote": "dealing 973"
+            "note": "Derived: ($quantum[specials-sniper-rifle-cloudstrike].magDamage - $quantum[specials-sniper-rifle-cloudstrike].magazine * $quantum[specials-sniper-rifle-cloudstrike].precisionDamage) / 2 * $clarity[Stormbringer](\"dealing 973\") / ($clarity[Stormbringer](\"dealing 973\") + $clarity[Stormbringer](\"dealing 584\")) (ADR 0019: Quantum's magazine minus its shots is the strikes of 2 series (7 precision hits = 2 series of 3), 969 each; split in the ratio of Clarity's 973 : 584); $quantum[specials-sniper-rifle-cloudstrike].magDamage = 5088 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-cloudstrike); $quantum[specials-sniper-rifle-cloudstrike].magazine = 7 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-cloudstrike); $quantum[specials-sniper-rifle-cloudstrike].precisionDamage = 450 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-cloudstrike); $clarity[Stormbringer](\"dealing 973\") = 973 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer); $clarity[Stormbringer](\"dealing 973\") = 973 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer); $clarity[Stormbringer](\"dealing 584\") = 584 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer)"
           }
         },
         "ticks": {
@@ -2522,7 +2519,7 @@
         },
         "canPrecision": false,
         "delivery": "splash",
-        "scale": "compendium"
+        "scale": "quantum"
       },
       {
         "id": "storm",
@@ -2537,14 +2534,12 @@
           }
         },
         "damagePerTick": {
-          "value": 584,
+          "value": 363.453,
           "source": {
-            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer",
-            "url": "https://www.d2clarity.com",
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-cloudstrike; Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer",
             "retrieved": "2026-10-20",
             "status": "derived",
-            "note": "Derived: the number in the quote",
-            "quote": "dealing 584"
+            "note": "Derived: ($quantum[specials-sniper-rifle-cloudstrike].magDamage - $quantum[specials-sniper-rifle-cloudstrike].magazine * $quantum[specials-sniper-rifle-cloudstrike].precisionDamage) / 2 * $clarity[Stormbringer](\"dealing 584\") / ($clarity[Stormbringer](\"dealing 973\") + $clarity[Stormbringer](\"dealing 584\")) (ADR 0019: as the strike, the share of the storm in 969 per series); $quantum[specials-sniper-rifle-cloudstrike].magDamage = 5088 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-cloudstrike); $quantum[specials-sniper-rifle-cloudstrike].magazine = 7 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-cloudstrike); $quantum[specials-sniper-rifle-cloudstrike].precisionDamage = 450 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-cloudstrike); $clarity[Stormbringer](\"dealing 584\") = 584 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer); $clarity[Stormbringer](\"dealing 973\") = 973 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer); $clarity[Stormbringer](\"dealing 584\") = 584 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Stormbringer)"
           }
         },
         "ticks": {
@@ -2567,7 +2562,7 @@
         },
         "canPrecision": false,
         "delivery": "splash",
-        "scale": "compendium"
+        "scale": "quantum"
       }
     ],
     "rules": [

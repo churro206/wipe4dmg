@@ -7,7 +7,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
 - Rank (check set): Spearman 0.96 over 41 rows
-- Absolute, information only: within ±3 % 21 of 41 (check set), 97 of 183 (all counted rows, mostly Eichung)
+- Absolute, information only: within ±3 % 21 of 41 (check set), 98 of 183 (all counted rows, mostly Eichung)
 - Rows: 185 scenarios (32 by hand, 153 generated); fitted 45; calibration set 98; check set 41; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
