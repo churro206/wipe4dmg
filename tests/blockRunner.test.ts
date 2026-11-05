@@ -108,6 +108,13 @@ describe("block runner", () => {
     expect(reportProblems("Was sich im Spiel ändert: X.\nGeeicht: keine. Gelockert: keine")).toEqual([]);
   });
 
+  it("takes 'keine.' with an explaining sentence as empty, unless a next label names something", () => {
+    expect(reportProblems("Was sich im Spiel ändert: X.\nGelockert: keine. Die Grenze von 2 % bleibt.")).toEqual([]);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nGelockert: keine. Gestrichen: keine")).toEqual([]);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nGelockert: keine. Gestrichen: Teil 2")).toHaveLength(1);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nRest: keine offenen Punkte")).toHaveLength(1);
+  });
+
   it("takes singular and plural labels and the next non-empty line", () => {
     expect(reportProblems("Was sich im Spiel ändert: X.\nOffene Frage: x")).toHaveLength(1);
     expect(reportProblems("Was sich im Spiel ändert: X.\nOffener Punkt: x")).toHaveLength(1);

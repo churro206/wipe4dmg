@@ -51,7 +51,18 @@ export function parseVerdict(review: string): Verdict | undefined {
 
 const PLAYER_SECTION = "Was sich im Spiel ändert";
 const NONE_WORD = /^\W*(kein|keine|keiner|keines|none|nichts|entfällt)\W*$/i;
+const NONE_THEN_SENTENCE = /^\W*(?:kein|keine|keiner|keines|none|nichts|entfällt)[.;]\s+(.*)$/i;
 const LIST_ITEM = /^\s*(?:[-*•]|\d+[.)])\s+\S/;
+const REPORT_LABEL = /(?:^\W*|[.;]\s+)(Rest|Widerspruch|Fragen?|Offene[rs]?\s+(?:Fragen?|Punkte?)|STOPP|Gelockert|Gestrichen)\b[^:\n]*:\s*(.*)$/i;
+
+/** "keine", also "keine. <explanation>"; a further label in that sentence counts on its own. */
+function isNone(answer: string): boolean {
+  if (NONE_WORD.test(answer)) return true;
+  const rest = NONE_THEN_SENTENCE.exec(answer);
+  if (!rest) return false;
+  const next = REPORT_LABEL.exec(rest[1]);
+  return next ? isNone(next[2]) : true;
+}
 
 /**
  * Problems a worker report names itself: Rest, Widerspruch, Frage, a loosened or
@@ -63,10 +74,10 @@ export function reportProblems(report: string): string[] {
   const problems: string[] = [];
   const lines = report.split(/\r?\n/);
   lines.forEach((line, at) => {
-    const match = /(?:^\W*|[.;]\s+)(Rest|Widerspruch|Fragen?|Offene[rs]?\s+(?:Fragen?|Punkte?)|STOPP|Gelockert|Gestrichen)\b[^:\n]*:\s*(.*)$/i.exec(line);
+    const match = REPORT_LABEL.exec(line);
     if (!match) return;
     const answer = match[2];
-    if (NONE_WORD.test(answer)) return;
+    if (isNone(answer)) return;
     if (/^\W*$/.test(answer)) {
       const next = lines.slice(at + 1).find((l) => l.trim() !== "") ?? "";
       if (!LIST_ITEM.test(next)) return;
