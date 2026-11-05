@@ -20,6 +20,7 @@ describe("shell rules hook", () => {
     'git commit -m "fix: a; b | c && d" -m "Co-Authored-By: x"',
     "curl -o C:/scratch/page.html https://example.com",
     "node tmp/eval.ts",
+    'npm run blocks -- --mini "Say OK" --max-turns 2',
   ])("lets Bash run %s", (command) => {
     expect(run("Bash", command)).toBe(0);
   });

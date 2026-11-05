@@ -8,7 +8,7 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 
 - [x] A1, Q0, Q1, M1, M2 (Commits, Entscheidungen: `history-2026-11.md`). 33 Pakete bleiben: von Hand im M-Block oder Q-Bilanz. Reste bei der nächsten Änderung dort: Zitat und Notiz in `euphony.json:30-31`, Runde 1 in `docs/changelog.md:19`.
 
-**Weiter erst nach dem Limit-Reset am 6. November, 1 Uhr.** Details zu S0 und V1–V4: `history-2026-11.md`, Abschnitt „Setup und Plan V“.
+Details zu S0 und V1–V4: `history-2026-11.md`, Abschnitt „Setup und Plan V“. M3 misst das Setup per `/usage` vorher und nachher.
 
 - [ ] S0 Setup (`chore`): frische Sonnet-Sitzung je Block per Skript, enger Review, Berichte als Spieler lesbar. Gate: Probelauf mit Mini-Auftrag, `tests/shellRules.test.ts` grün, CLAUDE.md und Skills passen.
 - [ ] V1 Waffenstatus, Daten: `src/data/weapon-status.json` aus `npm run coverage`. Gate: Test rot bei veralteter Datei; Cloudstrike 0 % gegen Quantum; `$aegis`-Waffe zeigt „no independent check“; Status berechnet.

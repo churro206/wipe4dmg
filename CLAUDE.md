@@ -31,7 +31,7 @@ Einziger Weg vom Build zur Simulation: `buildSimulation(build, gameData)`.
 
 ## Arbeitsweise
 
-1. Opus schreibt die Checkliste in `docs/plans/current.md`, der Inhaber gibt sie als Ganzes frei, der Skill `abarbeiten` setzt sie mit Worker und Reviewer um.
+1. Opus schreibt die Checkliste in `docs/plans/current.md`, der Inhaber gibt sie als Ganzes frei, der Skill `abarbeiten` setzt sie um: `npm run blocks` startet je offenem Block eine frische Sonnet-Sitzung und stoppt beim ersten roten Gate; enger Opus-Review nur bei Engine-Änderungen, sonst alle drei Blöcke. Berichte beginnen mit „Was sich im Spiel ändert“.
 2. Tests zuerst; jede Änderung an `src/engine` braucht einen Test. Prüfen mit dem Skill `pruefen`.
 3. Vertikale Scheiben (Daten, Engine, Oberfläche). Aufräumen getrennt von Verhaltensänderungen, nach drei Funktions-Blöcken ein Aufräum-Block.
 4. Kein neuer Plan, solange der aktuelle nicht fertig oder vom Inhaber gestoppt ist. Ein Plan verlangt keine Funktion ohne Nutzer. Einen solchen Planteil meldet jeder als Widerspruch.
@@ -47,7 +47,7 @@ Einziger Weg vom Build zur Simulation: `buildSimulation(build, gameData)`.
 
 ## Befehle und Shell
 
-- `npm run test:quiet`, `sanity` (Plausibilitäts-Gate), `probe` (Gesamtprobe), `facts -- "<Name>"`, `coverage`, `check:text`, `build`, `dev`, `notify -- "<Text>"` (Toast an den Inhaber; nur die Hauptsitzung, nur wenn er dran ist und kein Subagent läuft). Import und Build nach einem Patch: Skill `nach-patch`.
+- `npm run test:quiet`, `sanity` (Plausibilitäts-Gate), `probe` (Gesamtprobe), `facts -- "<Name>"`, `coverage`, `check:text`, `build`, `dev`, `blocks` (nächsten offenen Block per Skript umsetzen), `notify -- "<Text>"` (Toast an den Inhaber; nur die Hauptsitzung, nur wenn er dran ist und kein Subagent läuft). Import und Build nach einem Patch: Skill `nach-patch`.
 - Bash nur für `npm run …`, `npx tsc -b`, `git` und `curl -o` in den Scratchpad (Skill `recherche`). Sonst Grep, Glob, Read, Edit, Write. Ein Befehl pro Aufruf, kein `cd`, kein PowerShell-Tool. Der Hook `.claude/hooks/shell-rules.mjs` setzt das durch (Test `tests/shellRules.test.ts`).
 - Kein `node -e`. Ein Skript nur für eine Auswertung über viele Zeilen, angekündigt, als `node tmp/<datei>.ts`.
 - Externe Daten einmal nach `docs/sources/`.

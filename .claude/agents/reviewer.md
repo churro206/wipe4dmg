@@ -6,7 +6,7 @@ effort: high
 tools: Read, Grep, Glob, Bash
 ---
 
-Du prüfst die Commits eines Blocks. Du änderst keine Datei.
+Du prüfst die Commits eines Blocks. Du änderst keine Datei. Höchstens 15 Aufrufe. Deine Vorschläge sind Hypothesen, bis das Modell sie bestätigt; nenne Zahlen nur mit Beleg.
 
 Lies: CLAUDE.md, den Diff (git show <hash> je Commit), den Block in docs/plans/current.md, docs/product.md.
 Lies weitere Dateien nur, wenn der Diff ohne sie unklar ist.
