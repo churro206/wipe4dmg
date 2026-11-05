@@ -7,11 +7,13 @@ import rawTotals from "../../src/data/aegis-totals.json";
 import rawClarity from "../../src/data/clarity.json";
 import rawPackages from "../../src/data/weapon-packages.json";
 import rawQuantum from "../../src/data/quantum-weapons.json";
+import rawLimits from "../../src/data/status-limits.json";
 import {
   AegisTotalsSnapshot,
   AegisWeaponSnapshot,
   ClaritySnapshot,
   QuantumWeaponSnapshot,
+  StatusLimits,
   type Build,
   type WeaponStatusFile,
 } from "../../src/data/schema";
@@ -89,6 +91,7 @@ function aegisJudged() {
 export function realWeaponStatus(): WeaponStatusFile {
   const clarity = ClaritySnapshot.parse(rawClarity).entries;
   const quantum = QuantumWeaponSnapshot.parse(rawQuantum).rows;
+  const limits = StatusLimits.parse(rawLimits);
   const judged = aegisJudged();
   const plan = readFileSync(new URL("../../docs/plans/current.md", import.meta.url), "utf8");
   const items = new Map(
@@ -127,6 +130,7 @@ export function realWeaponStatus(): WeaponStatusFile {
             open: sentences.filter((s) => s.state === "open").length,
             quoteDeviation: deviation,
             estimated: trust === "estimated",
+            tolerance: limits.quantumDeviation,
           }),
           trust,
           damage: { base: over(w.id, false), catalyst: w.catalyst ? over(w.id, true) : null },

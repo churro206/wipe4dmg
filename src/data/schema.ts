@@ -1709,6 +1709,13 @@ export const AegisWeaponSnapshot = z.object({
 });
 export type AegisWeaponSnapshot = z.infer<typeof AegisWeaponSnapshot>;
 
+/** Limits of the weapon status (src/data/status-limits.json): what counts as "within Quantum". */
+export const StatusLimits = z.object({
+  source: Source,
+  quantumDeviation: z.number().positive(), // |model ÷ Quantum − 1| above this is a deviation, e.g. 0.02
+});
+export type StatusLimits = z.infer<typeof StatusLimits>;
+
 /** Damage of a weapon over 10, 30 and 60 s (src/data/weapon-status.json). */
 const StatusDamage = z.object({ s10: z.number(), s30: z.number(), s60: z.number() });
 

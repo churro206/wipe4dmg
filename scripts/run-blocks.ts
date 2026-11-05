@@ -2,7 +2,8 @@
 // Usage: npm run blocks -- [--block ID] [--fix <defects file>] [--max-turns N] [--dry-run]
 //        npm run blocks -- --mini "<prompt>" [--max-turns N]   [--review]   (probe: read-only, no gates; --review = flags of the review session)
 // Exit 0 only when the block is really done: new commit, clean report, gates green and,
-// where a review runs, "Urteil: OK". Ticking the block off stays with the main session.
+// where a review runs, "Urteil: OK", and the weapons the block names pass the weapon status
+// (Quantum within the limit, no open sentence, a row each). Ticking the block off stays with the main session.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import {
@@ -22,6 +23,8 @@ import {
   type GateResult,
   type Verdict,
 } from "./lib/blockRunner.ts";
+import { ManifestWeapons, StatusLimits, WeaponStatusFile } from "../src/data/schema.ts";
+import { blockWeaponProblems } from "./lib/weaponStatus.ts";
 
 const args = process.argv.slice(2);
 const option = (name: string): string | undefined => {
@@ -115,6 +118,19 @@ for (const [name, command, commandArgs] of GATES) {
 }
 const red = firstRedGate(results);
 if (red) fail(`gate "${red.name}" is red after ${block.id}.`);
+
+// The weapons of the block's target against the weapon status. The file is current here: the snapshot
+// test of the gate above fails on a stale one (tests/weaponStatus.test.ts).
+const readJson = (path: string) => JSON.parse(readFileSync(path, "utf8"));
+const weaponCheck = blockWeaponProblems(
+  block.line,
+  WeaponStatusFile.parse(readJson("src/data/weapon-status.json")).weapons,
+  ManifestWeapons.parse(readJson("src/data/manifest-weapons.json")).weapons.map((weapon) => weapon.name),
+  readFileSync("docs/known-inaccuracies.md", "utf8"),
+  StatusLimits.parse(readJson("src/data/status-limits.json")).quantumDeviation,
+);
+for (const note of weaponCheck.reported) console.log(`Reported: ${note}`);
+if (weaponCheck.problems.length > 0) fail(`${block.id}, weapon status:\n- ${weaponCheck.problems.join("\n- ")}`);
 
 const changed = capture("git", ["diff", "--name-only", `${state.reviewed}..HEAD`]).split("\n").filter(Boolean);
 const reviewNeeded = needsReview(changed, state.blocks + 1);
