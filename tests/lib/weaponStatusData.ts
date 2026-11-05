@@ -14,12 +14,11 @@ import {
   ClaritySnapshot,
   QuantumWeaponSnapshot,
   StatusLimits,
-  type Build,
+  type Source,
   type WeaponStatusFile,
 } from "../../src/data/schema";
-import { buildSimulation } from "../../src/engine/buildSimulation";
-import { simulate } from "../../src/engine/simulate";
-import { abilities, artifactData, buckets, effects, exoticArmor, gameData, weapons } from "../../src/ui/data";
+import { abilities, artifactData, effects, exoticArmor, weapons } from "../../src/ui/data";
+import { bareWeaponRun } from "../../src/ui/weaponBuild";
 import { ITEM_WEAPONS_DIR } from "../../scripts/lib/items/loadItems";
 import { planBlockOf, sentenceStates, statusOf, trustOf } from "../../scripts/lib/weaponStatus";
 import switches from "../fixtures/scenario-switches.json";
@@ -35,23 +34,10 @@ const round = (x: number, digits: number) => Math.round(x * 10 ** digits) / 10 *
 const SECONDS = [10, 30, 60] as const;
 const ALL_AMMO_SECONDS = 120;
 
-const buildOf = (weaponId: string, catalyst: boolean, seconds: number): Build => ({
-  weaponId,
-  guardianClass: "titan",
-  subclass: "arc",
-  catalyst,
-  selections: [],
-  effectWindows: {},
-  damagePhaseSeconds: seconds,
-});
-
+// The build is the one of the expanded row (src/ui/weaponBuild.ts)
 function run(weaponId: string, catalyst: boolean, seconds: number, shotLimit?: number): number {
   const weapon = weapons.find((w) => w.id === weaponId)!;
-  const { selected, options } = buildSimulation(buildOf(weaponId, catalyst, seconds), gameData);
-  return simulate(weapon, seconds, selected, buckets, {
-    ...options,
-    ...(shotLimit === undefined ? {} : { shotLimit }),
-  }).totalDamage;
+  return bareWeaponRun(weapon, catalyst, seconds, shotLimit).totalDamage;
 }
 
 const over = (weaponId: string, catalyst: boolean) => {
@@ -84,8 +70,14 @@ function aegisJudged() {
   const all = [...handMade, ...generated.scenarios, ...totals.scenarios, ...abilityRows.scenarios].filter(
     (s) => tabOf(s) === "weapons" || tabOf(s) === "sustained",
   );
-  const { weaponRows } = fittedRows(rawPackages, abilities);
+  // The rows a package or an item (hand-made, `$aegis` refs resolve to `fitted` sources) takes values from
+  const { weaponRows } = fittedRows([rawPackages, weapons], abilities);
   return judge(runBench(all), weaponRows);
+}
+
+/** The sources of a weapon: those of its package (until A2) and those the item's refs resolved to. */
+export function weaponSources(weapon: unknown, pkg: unknown): Source[] {
+  return [...sourcesOf(pkg), ...sourcesOf(weapon)];
 }
 
 export function realWeaponStatus(): WeaponStatusFile {
@@ -106,7 +98,7 @@ export function realWeaponStatus(): WeaponStatusFile {
       .sort((a, b) => (a.id < b.id ? -1 : 1))
       .map((w) => {
         const item = items.get(w.id) ?? null;
-        const sources = sourcesOf(packages.get(w.id));
+        const sources = weaponSources(w, packages.get(w.id));
         const trust = trustOf(sources);
         const texts = clarity.filter((c) => c.itemName === w.name).map((c) => c.text);
         const sentences = sentenceStates(texts, item);

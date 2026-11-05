@@ -68,12 +68,21 @@ export function namedWeapons(line: string, names: string[]): string[] {
   return names.filter((name) => mentions(target, name));
 }
 
+/** The lines of the section "## Quantum-Abweichungen" of known-inaccuracies.md; only they explain a deviation. */
+function quantumSection(inaccuracies: string): string[] {
+  const lines = inaccuracies.split("\n");
+  const start = lines.findIndex((l) => /^##\s+Quantum-Abweichungen\b/.test(l));
+  if (start < 0) return [];
+  const end = lines.findIndex((l, i) => i > start && /^##\s/.test(l));
+  return lines.slice(start + 1, end < 0 ? undefined : end);
+}
+
 export type StatusRow = Pick<WeaponStatusFile["weapons"][number], "name" | "sentences" | "quantum">;
 
 /**
  * The check of `npm run blocks` after the gates: the weapons the block's target names, against the
  * weapon status. Red: no row, open sentences, Quantum off by more than `tolerance`. A deviation that a
- * line of known-inaccuracies explains (it names the weapon) is only reported.
+ * line in the section "Quantum-Abweichungen" of known-inaccuracies names the weapon in is only reported.
  */
 export function blockWeaponProblems(
   line: string,
@@ -96,7 +105,7 @@ export function blockWeaponProblems(
     const deviation = row.quantum?.deviation;
     if (deviation !== undefined && Math.abs(deviation) > tolerance) {
       const text = `${name}: ${deviation > 0 ? "+" : ""}${(deviation * 100).toFixed(1)} % against Quantum (limit ${tolerance * 100} %).`;
-      if (inaccuracies.split("\n").some((l) => mentions(l, name))) {
+      if (quantumSection(inaccuracies).some((l) => mentions(l, name))) {
         reported.push(`${text} Explained in docs/known-inaccuracies.md.`);
       } else {
         problems.push(text);

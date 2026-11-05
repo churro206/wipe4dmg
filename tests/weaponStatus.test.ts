@@ -14,7 +14,9 @@ import {
   trustOf,
   type StatusRow,
 } from "../scripts/lib/weaponStatus";
-import { realWeaponStatus } from "./lib/weaponStatusData";
+import { weapons } from "../src/ui/data";
+import { fittedRows } from "./lib/fittedRows";
+import { realWeaponStatus, weaponSources } from "./lib/weaponStatusData";
 
 const limits = StatusLimits.parse(rawLimits);
 
@@ -105,6 +107,7 @@ describe("blockWeaponProblems", () => {
     quantum: { row: "q", measured: 100, model: 100, deviation: 0 },
     ...over,
   });
+  const section = (body: string) => `## Quantum-Abweichungen\n\n${body}\n\n## Offene Lücken\n\n- Alpha: x\n`;
   const check = (line: string, rows: StatusRow[], inaccuracies = "") =>
     blockWeaponProblems(line, rows, ["Alpha", "Beta", "Gamma"], inaccuracies, 0.02);
 
@@ -141,10 +144,17 @@ describe("blockWeaponProblems", () => {
 
   it("reports but keeps green a deviation that known-inaccuracies explains", () => {
     const quantum = { row: "q", measured: 100, model: 90, deviation: -0.1 };
-    const result = check("M3: Alpha. Gate: x.", [row("Alpha", { quantum })], "- **M1:** Alpha: Fernzuendung fehlt.");
+    const result = check("M3: Alpha. Gate: x.", [row("Alpha", { quantum })], section("- **M1:** Alpha: Fernzuendung fehlt."));
     expect(result.problems).toEqual([]);
     expect(result.reported).toHaveLength(1);
     expect(result.reported[0]).toContain("Alpha");
+  });
+
+  it("does not excuse a deviation with a line outside the Quantum section", () => {
+    const quantum = { row: "q", measured: 100, model: 90, deviation: -0.1 };
+    const outside = "## Ungenauigkeiten\n\n- **Q1 abgeschaltete Tests:** Alpha, Beta.\n\n" + section("- Beta: anders.");
+    expect(check("M3: Alpha. Gate: x.", [row("Alpha", { quantum })], outside).problems).toHaveLength(1);
+    expect(check("M3: Alpha. Gate: x.", [row("Alpha", { quantum })], "").problems).toHaveLength(1);
   });
 
   it("does not excuse open sentences with known-inaccuracies", () => {
@@ -188,6 +198,22 @@ describe("src/data/weapon-status.json", () => {
     for (const w of rows) {
       expect(w.trust).toBe("estimated");
       expect(w.status).toBe("estimated");
+    }
+  });
+
+  it("the sources of a hand-made item with $aegis (Truth) count even without a package", () => {
+    const truth = weapons.find((w) => w.id === "truth")!;
+    const sources = weaponSources(truth, undefined);
+    expect(sources.some((s) => s.status === "fitted")).toBe(true);
+    expect(trustOf(sources)).toBe("estimated");
+  });
+
+  it("a hand-made item never lists a row it fits as an independent check", () => {
+    for (const id of ["truth", "polaris-lance", "choir-of-one"]) {
+      const w = status.weapons.find((x) => x.id === id)!;
+      const fitted = fittedRows(weapons.filter((x) => x.id === id), []).weaponRows;
+      expect(w.trust, id).toBe("estimated");
+      expect(w.aegis.rows.filter((r) => fitted.has(r.row)), id).toEqual([]);
     }
   });
 

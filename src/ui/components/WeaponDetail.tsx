@@ -1,10 +1,8 @@
 import { useMemo } from "react";
-import type { Build } from "../../data/schema";
 import { damageCurve } from "../../engine/analysis";
-import { buildSimulation } from "../../engine/buildSimulation";
-import { simulate } from "../../engine/simulate";
 import { DamageCurveChart, RotationTimeline } from "../Charts";
-import { buckets, gameData, weaponById } from "../data";
+import { weaponById } from "../data";
+import { bareWeaponRun } from "../weaponBuild";
 import { magazineChain } from "../weaponTimeline";
 import type { WeaponRow } from "../weaponRanking";
 
@@ -19,17 +17,7 @@ export function WeaponDetail({ weapon: row, seconds }: { weapon: WeaponRow; seco
   const run = useMemo(() => {
     const weapon = weaponById(row.id);
     if (weapon.id !== row.id) return null; // an unknown id falls back to the default weapon
-    const build: Build = {
-      weaponId: row.id,
-      guardianClass: "hunter",
-      subclass: "solar",
-      catalyst: false,
-      selections: [],
-      effectWindows: {},
-      damagePhaseSeconds: seconds,
-    };
-    const { selected, options } = buildSimulation(build, gameData);
-    return simulate(weapon, seconds, selected, buckets, options);
+    return bareWeaponRun(weapon, false, seconds); // the build of the table, see weaponBuild.ts
   }, [row.id, seconds]);
 
   const chain = run ? magazineChain(run) : [];

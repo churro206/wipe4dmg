@@ -55,13 +55,17 @@ const NONE_THEN_SENTENCE = /^\W*(?:kein|keine|keiner|keines|none|nichts|entfäll
 const LIST_ITEM = /^\s*(?:[-*•]|\d+[.)])\s+\S/;
 const REPORT_LABEL = /(?:^\W*|[.;]\s+)(Rest|Widerspruch|Fragen?|Offene[rs]?\s+(?:Fragen?|Punkte?)|STOPP|Gelockert|Gestrichen)\b[^:\n]*:\s*(.*)$/i;
 
-/** "keine", also "keine. <explanation>"; a further label in that sentence counts on its own. */
-function isNone(answer: string): boolean {
+/** Labels after which "keine. <explanation>" is empty; after Rest, Widerspruch, Frage, Offene Punkte and STOPP it is not. */
+const EXPLAINABLE = /^(Gelockert|Gestrichen)$/i;
+
+/** "keine", also "keine. <explanation>" after Gelockert or Gestrichen; a further label in that sentence counts on its own. */
+function isNone(label: string, answer: string): boolean {
   if (NONE_WORD.test(answer)) return true;
+  if (!EXPLAINABLE.test(label)) return false;
   const rest = NONE_THEN_SENTENCE.exec(answer);
   if (!rest) return false;
   const next = REPORT_LABEL.exec(rest[1]);
-  return next ? isNone(next[2]) : true;
+  return next ? isNone(next[1], next[2]) : true;
 }
 
 /**
@@ -77,7 +81,7 @@ export function reportProblems(report: string): string[] {
     const match = REPORT_LABEL.exec(line);
     if (!match) return;
     const answer = match[2];
-    if (isNone(answer)) return;
+    if (isNone(match[1], answer)) return;
     if (/^\W*$/.test(answer)) {
       const next = lines.slice(at + 1).find((l) => l.trim() !== "") ?? "";
       if (!LIST_ITEM.test(next)) return;
