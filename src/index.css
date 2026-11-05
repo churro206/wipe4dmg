@@ -903,8 +903,8 @@ header > .segmented {
 }
 
 /* The # column is as narrow as its number */
-.ranking-table th:first-child,
-.ranking-table td:first-child {
+.ranking-table thead th:first-child,
+.ranking-table .ranking-row > :first-child {
   width: 1%;
   white-space: nowrap;
   padding-left: 0.5rem;
