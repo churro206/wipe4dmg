@@ -1709,6 +1709,45 @@ export const AegisWeaponSnapshot = z.object({
 });
 export type AegisWeaponSnapshot = z.infer<typeof AegisWeaponSnapshot>;
 
+/** Damage of a weapon over 10, 30 and 60 s (src/data/weapon-status.json). */
+const StatusDamage = z.object({ s10: z.number(), s30: z.number(), s60: z.number() });
+
+/** The weapon status (V1): what the model does with a weapon and how sure we are of it. */
+export const WeaponStatusFile = z.object({
+  weapons: z.array(
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      status: z.enum(["complete", "partial", "estimated"]), // computed, never claimed
+      trust: z.enum(["measured", "derived", "estimated"]), // from the source statuses
+      damage: z.object({ base: StatusDamage, catalyst: StatusDamage.nullable() }),
+      sentences: z.array(
+        z.object({
+          text: z.string(),
+          state: z.enum(["rule", "notModelled", "open"]),
+          reason: z.string().optional(),
+        }),
+      ),
+      // All ammo of the weapon against Quantum's "Theoretical Total Damage"; null without such a row.
+      quantum: z.object({ row: z.string(), measured: z.number(), model: z.number(), deviation: z.number() }).nullable(),
+      aegis: z.object({
+        check: z.enum(["checked", "no independent check", "no row"]),
+        rows: z.array(
+          z.object({
+            row: z.string(),
+            assumptions: z.array(z.string()),
+            measured: z.number(),
+            model: z.number().nullable(),
+            deviation: z.number().nullable(),
+          }),
+        ),
+      }),
+      planBlock: z.string().nullable(), // the open block of docs/plans/current.md that names the weapon
+    }),
+  ),
+});
+export type WeaponStatusFile = z.infer<typeof WeaponStatusFile>;
+
 /** One row of the Quantum tabs Primaries, Specials and Heavies (ADR 0013). */
 export const QuantumWeaponRow = z.object({
   id: z.string(), // kebab-case from tab, weapon type, name and variant
