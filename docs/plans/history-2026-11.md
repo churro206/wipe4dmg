@@ -2,6 +2,15 @@
 
 Nur per Grep lesen. Neueste Einträge oben.
 
+## S0, V1 bis V3 erledigt (2026-11-05)
+
+- S0 (955a7a1, cd0e1f7, bd61fdb, 4047294): letzter Review NACHBESSERN; Inhaber: Randfälle beheben, kein weiterer Review.
+- V1 (4cb0b44, 5dd808e, 0ebb96e): Skript-Prüfung gegen Quantum in V1 auf Ansage des Inhabers; kein Review im eigenen Lauf.
+- V2 (fde147f, 6f9996f): erster Lauf kannte die Plan-Details nicht, Auftrag korrigiert (5973603); Screenshot Hauptsitzung.
+- V3 (b6c4ccd, 0d0b5b0, b8b5cfe, 05ce07e, 4a2d528): Reviews 1 und 2 NACHBESSERN (Mängel behoben, ein Vorschlag widerlegt: das 120-s-Limit schneidet nichts ab); Inhaber: Buffs jetzt, Schalter „Catalyst“ für die ganze Tabelle, dritte Runde ohne Review (`--no-review`). Screenshots Hauptsitzung; dabei einen Layout-Fehler gefunden, den kein Test sah (`#`-Spalte schaltete den Umbruch der Aufklappzeile ab).
+
+Erfahrungen fürs Setup: Das 5-Stunden-Fenster reichte für V1 bis V3 nicht ganz. Jeder Review fand Neues, weil er den ganzen Bereich mit 15 Aufrufen sieht. Oberflächen-Fehler zeigt nur der Browser.
+
 ## Setup und Plan V (Inhaber 2026-11-04)
 
 Anlass: Das Wochenlimit des Pro-Plans war mit Worker und Reviewer je Block nicht tragbar (M2: Worker 79, 90, 91, 160, 58 Aufrufe; Reviewer 111, 30, 18); die Vorgabe „etwa 40 Aufrufe“ hielt kein Worker ein. Der Inhaber liest keinen Code und braucht den Stand als Spieler lesbar.
