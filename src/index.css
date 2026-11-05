@@ -872,6 +872,43 @@ header > .segmented {
   color: var(--muted);
 }
 
+/* Weapon ranking: controls, sortable headings, traffic light (status of weapon-status.json) */
+.ranking-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.6rem 0.9rem;
+}
+
+.ranking-sort {
+  all: unset;
+  cursor: pointer;
+  font: inherit;
+}
+
+.ranking-number {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.ranking-light {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.ranking-light[data-light="green"] {
+  color: var(--series-3);
+}
+
+.ranking-light[data-light="yellow"] {
+  color: var(--series-4);
+}
+
+.ranking-light[data-light="red"] {
+  color: var(--series-2);
+}
+
 /*
  * Strength of the emphasis, strongest first: category (large, bold, on the surface colour), column
  * headings (small capitals, muted), group (bold on the surface colour, with its count), row.

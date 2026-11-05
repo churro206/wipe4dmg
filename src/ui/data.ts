@@ -22,6 +22,7 @@ import rawSuperTimings from "../data/super-timings.json";
 import rawTheta from "../data/theta.json";
 import rawPackages from "../data/weapon-packages.json";
 import rawWeaponStats from "../data/weapon-stats.json";
+import rawWeaponStatus from "../data/weapon-status.json";
 import rawExoticArmorEffects from "../data/exotic-armor-effects.json";
 import rawExoticArmor from "../data/exotic-armor.json";
 import {
@@ -31,6 +32,7 @@ import {
   ArtifactData,
   CastTimes,
   CoverageCatalog,
+  WeaponStatusFile,
   EnergyData,
   ExoticArmorEffect,
   ExoticArmorEntry,
@@ -109,6 +111,7 @@ export const generatedExoticEffects = ExoticArmorEffect.array().parse(
 export const artifactData = ArtifactData.parse(rawArtifacts);
 // What the calculator covers, for the wiki page "Coverage of the calculator" (npm run coverage).
 export const coverageCatalog = CoverageCatalog.parse(rawCoverageCatalog);
+export const weaponStatus = WeaponStatusFile.parse(rawWeaponStatus).weapons;
 // Everything a build refers to, for buildSimulation (src/engine/buildSimulation.ts).
 export const gameData: GameData = {
   effects,

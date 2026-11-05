@@ -1,5 +1,6 @@
 import type { CatalogEntry, CatalogStatus } from "../../data/schema";
-import { coverageCatalog, iconUrl } from "../data";
+import { coverageCatalog, iconUrl, weaponStatus } from "../data";
+import { lightOf, rankWeapons, type SortKey, type WeaponState } from "../weaponRanking";
 import { isLongText } from "../coverageText";
 import { Icon } from "./Icon";
 import { useState } from "react";
@@ -146,6 +147,111 @@ function Category({
   );
 }
 
+const TIMES: { key: "s10" | "s30" | "s60"; label: string }[] = [
+  { key: "s10", label: "10 s" },
+  { key: "s30", label: "30 s" },
+  { key: "s60", label: "60 s" },
+];
+
+const nf = new Intl.NumberFormat("en-US");
+
+/** Ranking of the exotic weapons by damage over 10, 30 and 60 s; the light is the status of the data file. */
+function WeaponRanking() {
+  const [open, setOpen] = useState(false);
+  const [sort, setSort] = useState<SortKey>("s60");
+  const [ascending, setAscending] = useState(false);
+  const [status, setStatus] = useState<WeaponState | "all">("all");
+  const [text, setText] = useState("");
+  const ranked = rankWeapons(weaponStatus, { sort, ascending, status, text });
+
+  const head = (key: SortKey, label: string) => (
+    <th scope="col" aria-sort={sort === key ? (ascending ? "ascending" : "descending") : "none"}>
+      <button
+        type="button"
+        className="ranking-sort"
+        onClick={() => {
+          if (sort === key) setAscending(!ascending);
+          else {
+            setSort(key);
+            setAscending(key === "name");
+          }
+        }}
+      >
+        {label}
+        {sort === key && <span aria-hidden="true">{ascending ? " ▲" : " ▼"}</span>}
+      </button>
+    </th>
+  );
+
+  return (
+    <details
+      className="coverage-category"
+      open={open}
+      onToggle={(event) => setOpen(event.currentTarget.open)}
+    >
+      <summary>
+        <strong>Weapon ranking</strong>
+        <span className="coverage-counts">{weaponStatus.length} exotic weapons · damage over 10, 30 and 60 s</span>
+      </summary>
+      {open && (
+        <div className="ranking">
+          <div className="ranking-controls">
+            <input
+              type="search"
+              placeholder="Filter by name"
+              aria-label="Filter by name"
+              value={text}
+              onChange={(event) => setText(event.target.value)}
+            />
+            <select
+              aria-label="Filter by status"
+              value={status}
+              onChange={(event) => setStatus(event.target.value as WeaponState | "all")}
+            >
+              <option value="all">All statuses</option>
+              {(["complete", "partial", "estimated"] as const).map((s) => (
+                <option key={s} value={s}>
+                  {lightOf(s).label}
+                </option>
+              ))}
+            </select>
+            <span className="coverage-counts">{ranked.length} shown</span>
+          </div>
+          <table className="coverage-table ranking-table">
+            <thead>
+              <tr>
+                {head("name", "Weapon")}
+                {head("status", "Status")}
+                {TIMES.map(({ key, label }) => head(key, label))}
+              </tr>
+            </thead>
+            <tbody>
+              {ranked.map((weapon) => {
+                const light = lightOf(weapon.status);
+                return (
+                  <tr key={weapon.id}>
+                    <th scope="row">{weapon.name}</th>
+                    <td data-label="Status">
+                      <span className="ranking-light" data-light={light.color}>
+                        <span aria-hidden="true">●</span> {light.label}
+                      </span>
+                    </td>
+                    {TIMES.map(({ key, label }) => (
+                      <td key={key} data-label={label} className="ranking-number">
+                        {nf.format(Math.round(weapon.damage.base[key]))}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </details>
+  );
+}
+
 /** Wiki page "Coverage of the calculator" (US-15): what the game has, what the calculator does with it. */
 export function CoveragePage() {
   return (
@@ -162,6 +268,7 @@ export function CoveragePage() {
           </li>
         ))}
       </ul>
+      <WeaponRanking />
       {coverageCatalog.map((category) => (
         <Category key={category.id} id={category.id} title={category.title} entries={category.entries} />
       ))}
