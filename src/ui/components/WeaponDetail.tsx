@@ -3,7 +3,7 @@ import { damageCurve } from "../../engine/analysis";
 import { DamageCurveChart, RotationTimeline } from "../Charts";
 import { weaponById } from "../data";
 import { bareWeaponRun } from "../weaponBuild";
-import { magazineChain } from "../weaponTimeline";
+import { buffRows, magazineChain, magazineNote } from "../weaponTimeline";
 import type { WeaponRow } from "../weaponRanking";
 
 const STATE_LABEL = { rule: "In the model", notModelled: "Left out", open: "Not in yet" } as const;
@@ -56,11 +56,11 @@ export function WeaponDetail({ weapon: row, seconds }: { weapon: WeaponRow; seco
           {chain.length > 1 && (
             <p className="ranking-chain">
               Magazines in {seconds} s: {chain.join(", ")} shots
-              {run.refillsMs.length > 0 && ` (${run.refillsMs.length} refills without a reload)`}
+              {` (${magazineNote(run.refillsMs.length, run.reloadsMs.length)})`}
             </p>
           )}
           <RotationTimeline
-            rows={[]}
+            rows={buffRows(run.buffLog, seconds)}
             abilityRows={[]}
             shotsMs={run.shots.map((s) => s.timeMs)}
             procRows={[

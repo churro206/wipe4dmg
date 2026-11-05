@@ -83,6 +83,7 @@ export type StatusRow = Pick<WeaponStatusFile["weapons"][number], "name" | "sent
  * The check of `npm run blocks` after the gates: the weapons the block's target names, against the
  * weapon status. Red: no row, open sentences, Quantum off by more than `tolerance`. A deviation that a
  * line in the section "Quantum-Abweichungen" of known-inaccuracies names the weapon in is only reported.
+ * It applies to M blocks only (the line starts with "M").
  */
 export function blockWeaponProblems(
   line: string,
@@ -93,6 +94,8 @@ export function blockWeaponProblems(
 ): { problems: string[]; reported: string[] } {
   const problems: string[] = [];
   const reported: string[] = [];
+  // Only M blocks bring weapons in. Other lines (Q-Bilanz, no Gate) list weapons that they only decide on.
+  if (!/^M\S*/.test(line)) return { problems, reported };
   const names = [...new Set([...knownNames, ...rows.map((r) => r.name)])];
   for (const name of namedWeapons(line, names)) {
     const row = rows.find((r) => r.name === name);

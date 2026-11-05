@@ -67,8 +67,20 @@ export type SuperWindow = {
   exact: boolean;
 };
 
+/** A stretch in which a buff of a rule owner stood (display only; endMs is Infinity without a duration). */
+export type BuffWindow = {
+  ownerId: string;
+  buffId: string;
+  name: string;
+  startMs: number;
+  endMs: number;
+  stacks: number;
+  factor: number; // the product of the buff's multipliers at these stacks, e.g. 1.2 for +20 %
+};
+
 export type SimulationResult = {
   shots: Shot[];
+  buffLog: BuffWindow[]; // every window of a buff, in the order they were granted
   reloadsMs: number[]; // start of each full reload, i.e. the last shot of its magazine
   refillsMs: number[]; // time of each refill that changed the shot plan (a magazine that went on without a reload)
   damageInstances: TimedDamageInstance[];

@@ -1,7 +1,31 @@
 // The timeline of an expanded row of the weapon table (V3): the simulation of the bare weapon and the
 // magazines it fires.
 
-import type { SimulationResult } from "../engine/core/types";
+import type { BuffWindow, SimulationResult } from "../engine/core/types";
+
+/** "11 refills, 1 reload": the refills (a magazine that went on) and the reloads, counted apart. */
+export function magazineNote(refills: number, reloads: number): string {
+  const part = (n: number, word: string) => (n === 0 ? [] : [`${n} ${word}${n === 1 ? "" : "s"}`]);
+  return [...part(refills, "refill"), ...part(reloads, "reload")].join(", ");
+}
+
+/** One timeline row per buff: its windows, cut at the end of the damage phase. */
+export function buffRows(
+  log: BuffWindow[],
+  damagePhaseSeconds: number,
+): { label: string; windows: { startMs: number; endMs: number; uptime: number }[] }[] {
+  const phaseMs = damagePhaseSeconds * 1000;
+  const rows = new Map<string, { label: string; windows: { startMs: number; endMs: number; uptime: number }[] }>();
+  for (const w of log) {
+    if (w.startMs >= phaseMs) continue;
+    const percent = Math.round((w.factor - 1) * 1000) / 10;
+    const label = `${w.name} ${percent >= 0 ? "+" : ""}${percent} %`;
+    const row = rows.get(w.buffId) ?? { label, windows: [] };
+    row.windows.push({ startMs: w.startMs, endMs: Math.min(w.endMs, phaseMs), uptime: 1 });
+    rows.set(w.buffId, row);
+  }
+  return [...rows.values()];
+}
 
 /**
  * Shots per magazine: a magazine ends at a reload or at a refill that lets the weapon go on (Vex

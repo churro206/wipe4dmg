@@ -25,6 +25,7 @@ describe("simulate: shots", () => {
       shots: [],
       reloadsMs: [],
       refillsMs: [],
+      buffLog: [],
       damageInstances: [],
       superWindows: [],
       totalDamage: 0,

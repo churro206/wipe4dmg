@@ -28,6 +28,7 @@ import type {
   WeaponType,
 } from "../../data/schema";
 import { requireValue } from "../requireValue";
+import type { BuffWindow } from "./types";
 
 // Guards rounding up against floating point noise, e.g. 40 x 1.5 = 60.00000000000001.
 const ROUNDING_TOLERANCE = 1e-9;
@@ -140,7 +141,12 @@ export type RuleEngineOptions = {
   }[];
 };
 
-type BuffState = { stacks: number; untilMs: number; durationMs?: number };
+type BuffState = {
+  stacks: number;
+  untilMs: number;
+  durationMs?: number;
+  window: BuffWindow; // its entry in the buff log
+};
 type TimedModifier<M> = { modifier: M; untilMs: number };
 
 type OwnerState = {
@@ -208,6 +214,8 @@ export function createRuleEngine(
       new Map((owner.buffs ?? []).map((buff) => [buff.id, buff])),
     );
   }
+  /** Every window of a buff (display only, the damage does not read it). */
+  const buffLog: BuffWindow[] = [];
   const stateOf = (ownerId: string): OwnerState => {
     const state = states.get(ownerId);
     if (!state) throw new Error(`Unknown rule owner "${ownerId}"`);
@@ -270,6 +278,13 @@ export function createRuleEngine(
     }
     return parts;
   };
+
+  /** The product of the multipliers of a buff at the given stacks (a `perStack` one scales with them). */
+  const buffFactor = (definition: BuffDefinition, stacks: number) =>
+    definition.modifiers.reduce((product, modifier) => {
+      const multiplier = requireValue(modifier.multiplier, "multiplier");
+      return product * ((modifier as MultiplierModifier).perStack ? 1 + (multiplier - 1) * stacks : multiplier);
+    }, 1);
 
   /** Stacks an applyStatus brings, scaled by the active action modifiers and rounded up. */
   const stacksOfApply = (
@@ -434,6 +449,9 @@ export function createRuleEngine(
           buff.stacks + by,
         );
         buff.untilMs = endOf(timeMs, buff.durationMs);
+        buff.window.stacks = buff.stacks;
+        buff.window.endMs = buff.untilMs;
+        buff.window.factor = buffFactor(buffDefinition(ownerId, id), buff.stacks);
         return;
       }
       case "resetCounter":
@@ -467,10 +485,28 @@ export function createRuleEngine(
         const given = action.stacks ? requireValue(action.stacks, "stacks") : 1;
         const current = state.buffs.get(action.buff);
         const active = current !== undefined && timeMs < current.untilMs;
+        const stacks = Math.min(max, active ? Math.max(current.stacks, given) : given);
+        // A renewal while the buff stands goes on in the same window
+        const window: BuffWindow = active
+          ? current.window
+          : {
+              ownerId,
+              buffId: action.buff,
+              name: definition.name,
+              startMs: timeMs,
+              endMs: 0,
+              stacks,
+              factor: 1,
+            };
+        window.endMs = endOf(timeMs, durationMs);
+        window.stacks = stacks;
+        window.factor = buffFactor(definition, stacks);
+        if (!active) buffLog.push(window);
         state.buffs.set(action.buff, {
-          stacks: Math.min(max, active ? Math.max(current.stacks, given) : given),
+          stacks,
           untilMs: endOf(timeMs, durationMs),
           durationMs,
+          window,
         });
         if (durationMs !== undefined && expiryRule(ownerId, action.buff)) {
           host.schedule({
@@ -607,6 +643,7 @@ export function createRuleEngine(
     allBuffPartsAt,
     statModifiersAt,
     periodicRules,
+    buffLog,
   };
 }
 

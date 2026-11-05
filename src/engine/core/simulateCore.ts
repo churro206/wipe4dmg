@@ -466,5 +466,14 @@ export function simulate(
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;
-  return { shots, reloadsMs, refillsMs, damageInstances, superWindows, totalDamage, dps };
+  return {
+    shots,
+    reloadsMs,
+    refillsMs,
+    buffLog: ruleEngine.buffLog,
+    damageInstances,
+    superWindows,
+    totalDamage,
+    dps,
+  };
 }

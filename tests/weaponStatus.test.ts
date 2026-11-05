@@ -115,6 +115,16 @@ describe("blockWeaponProblems", () => {
     expect(check("V2 Tabelle, Rangliste. Gate: Test.", [])).toEqual({ problems: [], reported: [] });
   });
 
+  it("checks only M blocks: a line without Gate that is not an M block (Q-Bilanz) stays green", () => {
+    const open = { text: "x", state: "open" as const };
+    const rows = [row("Alpha", { sentences: [open] })];
+    expect(check("Q-Bilanz (Opus): Waffen mit Item. Wiederherstellen ohne M-Block: Alpha.", rows)).toEqual({
+      problems: [],
+      reported: [],
+    });
+    expect(check("M3: Alpha.", rows).problems).toHaveLength(1);
+  });
+
   it("is green for weapons within the limit and without open sentences", () => {
     const sentence = { text: "x", state: "rule" as const };
     expect(check("M3: Alpha, Beta. Gate: x.", [row("Alpha"), row("Beta", { sentences: [sentence] })]).problems).toEqual([]);
