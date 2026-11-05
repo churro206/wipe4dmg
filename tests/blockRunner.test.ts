@@ -103,10 +103,26 @@ describe("block runner", () => {
     expect(reportProblems("Was sich im Spiel ändert: X.\nGelockert: keine\nGestrichen: keine")).toEqual([]);
   });
 
+  it("finds Gelockert and Gestrichen anywhere in the line", () => {
+    expect(reportProblems("Was sich im Spiel ändert: X.\nGeeicht: keine. Gelockert: Gate Z")).toHaveLength(1);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nGeeicht: keine. Gelockert: keine")).toEqual([]);
+  });
+
+  it("takes singular and plural labels and the next non-empty line", () => {
+    expect(reportProblems("Was sich im Spiel ändert: X.\nOffene Frage: x")).toHaveLength(1);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nOffener Punkt: x")).toHaveLength(1);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nOffene Punkte:\n\n- x")).toHaveLength(1);
+  });
+
+  it("treats CRLF like LF", () => {
+    expect(reportProblems("Was sich im Spiel ändert: X.\r\nRest: x\r\n")).toHaveLength(1);
+    expect(reportProblems("Was sich im Spiel ändert: X.\r\nRest: keine\r\n")).toEqual([]);
+  });
+
   it("keeps Agent out of block sessions and writers out of review sessions", () => {
     expect(BLOCK_FLAGS).toEqual(["--disallowedTools", "Agent"]);
     expect(REVIEW_FLAGS).toContain("Bash(git show:*)");
-    expect(REVIEW_FLAGS).toContain("plan"); // a deny rule does not catch `> file`; plan mode does
+    expect(REVIEW_FLAGS).toContain("plan"); // plan mode, no hard write lock proven (a deny rule does not catch `> file`)
   });
 
   it("calls a work tree dirty when git status lists anything", () => {

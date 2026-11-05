@@ -61,19 +61,22 @@ const LIST_ITEM = /^\s*(?:[-*•]|\d+[.)])\s+\S/;
 export function reportProblems(report: string): string[] {
   if (!report.includes(PLAYER_SECTION)) return ["Kein Bericht mit „Was sich im Spiel ändert“ (Limit erreicht?)."];
   const problems: string[] = [];
-  const lines = report.split("\n");
+  const lines = report.split(/\r?\n/);
   lines.forEach((line, at) => {
-    const match = /^\W*(Rest|Widerspruch|Frage|Fragen|Offene Fragen|Offene Punkte|STOPP|Gelockert|Gestrichen)\b[^:\n]*:\s*(.*)$/i.exec(line);
+    const match = /(?:^\W*|[.;]\s+)(Rest|Widerspruch|Fragen?|Offene[rs]?\s+(?:Fragen?|Punkte?)|STOPP|Gelockert|Gestrichen)\b[^:\n]*:\s*(.*)$/i.exec(line);
     if (!match) return;
     const answer = match[2];
     if (NONE_WORD.test(answer)) return;
-    if (/^\W*$/.test(answer) && !LIST_ITEM.test(lines[at + 1] ?? "")) return;
+    if (/^\W*$/.test(answer)) {
+      const next = lines.slice(at + 1).find((l) => l.trim() !== "") ?? "";
+      if (!LIST_ITEM.test(next)) return;
+    }
     problems.push(line.trim());
   });
   return problems;
 }
 
-/** Read-only flags of a review session (and of a probe run): only reading git commands, nothing that writes. */
+/** Read-only flags of a review session (and of a probe run): only reading git commands; plan mode plus deny rules, no hard write lock proven. */
 export const REVIEW_WRITERS = ["Edit", "Write", "NotebookEdit", "Bash(npm *)", "Bash(npx *)", "Bash(node *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push*)", "Bash(*--output*)"];
 export function readOnlyFlags(tools: string): string[] {
   return ["--tools", tools, "--disallowedTools", ...REVIEW_WRITERS];
