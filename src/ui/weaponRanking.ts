@@ -9,10 +9,10 @@ export type Time = "s10" | "s30" | "s60";
 export type SortKey = "name" | "status" | "damage" | "quantum" | "aegis" | "trust" | "open";
 export type Light = { color: "green" | "yellow" | "red" | null; label: string };
 
-export const TIMES: { key: Time; label: string }[] = [
-  { key: "s10", label: "10 s" },
-  { key: "s30", label: "30 s" },
-  { key: "s60", label: "60 s" },
+export const TIMES: { key: Time; label: string; seconds: number }[] = [
+  { key: "s10", label: "10 s", seconds: 10 },
+  { key: "s30", label: "30 s", seconds: 30 },
+  { key: "s60", label: "60 s", seconds: 60 },
 ];
 
 const STATUS_LABEL: Record<WeaponState, string> = {

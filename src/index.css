@@ -907,6 +907,31 @@ header > .segmented {
   color: var(--muted);
 }
 
+.ranking-detail-row > td {
+  padding: 0.5rem 0.75rem 1rem;
+  text-align: left;
+}
+
+.ranking-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1rem;
+}
+
+.ranking-detail h4 {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.ranking-detail ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.ranking-chain {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
 .ranking-sort {
   all: unset;
   cursor: pointer;

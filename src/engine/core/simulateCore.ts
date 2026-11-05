@@ -251,7 +251,10 @@ export function simulate(
       },
       refill: ({ rounds, timeMs }) => {
         const step = actor.refill(timeMs, rounds);
-        if (step) replan(step, current().schedule);
+        if (step) {
+          refillsMs.push(timeMs);
+          replan(step, current().schedule);
+        }
       },
       // Damage of its own, e.g. a Storm's Keep discharge: generic damage like Bolt Charge, so only
       // multipliers for keyword damage apply (Aegis applies only the debuff to these rows)
@@ -346,6 +349,7 @@ export function simulate(
 
   const shots: Shot[] = history.shots;
   const reloadsMs: number[] = [];
+  const refillsMs: number[] = [];
   // The step planned last, and a number that tells its event from one a refill made stale
   let planned: ActorStep = {};
   let generation = 0;
@@ -462,5 +466,5 @@ export function simulate(
 
   const totalDamage = damageInstances.reduce((sum, d) => sum + d.damage, 0);
   const dps = damagePhaseSeconds > 0 ? totalDamage / damagePhaseSeconds : 0;
-  return { shots, reloadsMs, damageInstances, superWindows, totalDamage, dps };
+  return { shots, reloadsMs, refillsMs, damageInstances, superWindows, totalDamage, dps };
 }

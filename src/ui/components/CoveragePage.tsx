@@ -16,7 +16,8 @@ import {
 import { isLongText } from "../coverageText";
 import { Icon } from "./Icon";
 import { Tabs } from "./Tabs";
-import { useState } from "react";
+import { WeaponDetail } from "./WeaponDetail";
+import { Fragment, useState } from "react";
 
 const STATUSES: { status: CatalogStatus; mark: string; label: string; meaning: string }[] = [
   { status: "full", mark: "✓", label: "Implemented", meaning: "Its damage or its effect counts in a build." },
@@ -179,6 +180,7 @@ function WeaponTable() {
   const [ascending, setAscending] = useState(false);
   const [status, setStatus] = useState<WeaponState | "all">("all");
   const [text, setText] = useState("");
+  const [openId, setOpenId] = useState<string | null>(null); // the expanded row; it is only computed while open
   const ranked = rankWeapons(weaponStatus, { sort, time, ascending, status, text });
   const ranks = damageRanks(weaponStatus, time);
   const timeLabel = TIMES.find((t) => t.key === time)!.label;
@@ -259,12 +261,24 @@ function WeaponTable() {
             const light = quantumLight(weapon.quantum?.deviation ?? null, statusLimits);
             const aegis = aegisCell(weapon);
             const comes = comesIn(weapon);
+            const expanded = openId === weapon.id;
             return (
-              <tr key={weapon.id} className="ranking-row">
+              <Fragment key={weapon.id}>
+              <tr className="ranking-row">
                 <td data-label="#" className="ranking-number">
                   {ranks.get(weapon.id)}
                 </td>
-                <th scope="row">{weapon.name}</th>
+                <th scope="row">
+                  <button
+                    type="button"
+                    className="ranking-sort"
+                    aria-expanded={expanded}
+                    onClick={() => setOpenId(expanded ? null : weapon.id)}
+                  >
+                    <span aria-hidden="true">{expanded ? "▾ " : "▸ "}</span>
+                    {weapon.name}
+                  </button>
+                </th>
                 <td data-label="Status">{statusLabel(weapon.status)}</td>
                 <td data-label={`Damage ${timeLabel}`} className="ranking-number">
                   {nf.format(Math.round(weapon.damage.base[time]))}
@@ -287,6 +301,14 @@ function WeaponTable() {
                   {comes && <span className="ranking-comes"> · {comes}</span>}
                 </td>
               </tr>
+              {expanded && (
+                <tr className="ranking-detail-row">
+                  <td colSpan={8}>
+                    <WeaponDetail weapon={weapon} seconds={TIMES.find((t) => t.key === time)!.seconds} />
+                  </td>
+                </tr>
+              )}
+              </Fragment>
             );
           })}
         </tbody>

@@ -70,6 +70,7 @@ export type SuperWindow = {
 export type SimulationResult = {
   shots: Shot[];
   reloadsMs: number[]; // start of each full reload, i.e. the last shot of its magazine
+  refillsMs: number[]; // time of each refill that changed the shot plan (a magazine that went on without a reload)
   damageInstances: TimedDamageInstance[];
   superWindows: SuperWindow[];
   totalDamage: number;
