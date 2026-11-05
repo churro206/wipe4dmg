@@ -1,5 +1,5 @@
 // Plan S0: one fresh Sonnet session per open block, stops at the first red gate.
-// Usage: npm run blocks -- [--block ID] [--fix <defects file>] [--max-turns N] [--dry-run]
+// Usage: npm run blocks -- [--block ID] [--fix <defects file>] [--max-turns N] [--dry-run] [--no-review]
 //        npm run blocks -- --mini "<prompt>" [--max-turns N]   [--review]   (probe: read-only, no gates; --review = flags of the review session)
 // Exit 0 only when the block is really done: new commit, clean report, gates green and,
 // where a review runs, "Urteil: OK", and the weapons the block names pass the weapon status
@@ -133,7 +133,8 @@ for (const note of weaponCheck.reported) console.log(`Reported: ${note}`);
 if (weaponCheck.problems.length > 0) fail(`${block.id}, weapon status:\n- ${weaponCheck.problems.join("\n- ")}`);
 
 const changed = capture("git", ["diff", "--name-only", `${state.reviewed}..HEAD`]).split("\n").filter(Boolean);
-const reviewNeeded = needsReview(changed, state.blocks + 1);
+// --no-review only on the owner's word; the review base stays, so the next review covers this block too.
+const reviewNeeded = !args.includes("--no-review") && needsReview(changed, state.blocks + 1);
 let verdict: Verdict | undefined;
 if (reviewNeeded) {
   const review = claude(buildReviewPrompt(state.reviewed), ["--model", "opus", "--max-turns", reviewTurns, ...REVIEW_FLAGS]);
