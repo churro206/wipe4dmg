@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  BLOCK_FLAGS,
+  REVIEW_FLAGS,
+  isDirty,
   buildBlockPrompt,
   firstRedGate,
   needsReview,
@@ -82,6 +85,33 @@ describe("block runner", () => {
     expect(reportProblems("Was sich im Spiel ändert: X.\n- Widerspruch: Plan sagt A")).toHaveLength(1);
     expect(reportProblems("Was sich im Spiel ändert: X.\nFrage an den Inhaber: B?")).toHaveLength(1);
     expect(reportProblems("Was sich im Spiel ändert: X.\nOffene Fragen: keine.")).toEqual([]);
+  });
+
+  it("accepts one-word 'none' answers, also keiner and keines", () => {
+    expect(reportProblems("Was sich im Spiel ändert: X.\nRest: keiner\nWiderspruch: keiner.\nFrage: keines")).toEqual([]);
+  });
+
+  it("flags a label with a list below it, not an empty label", () => {
+    const withList = "Was sich im Spiel ändert: X.\nOffene Punkte:\n- Waffe Y fehlt";
+    expect(reportProblems(withList)).toHaveLength(1);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nRest:\nGeeicht: keine")).toEqual([]);
+  });
+
+  it("is red on a non-empty Gelockert or Gestrichen, green on keine", () => {
+    expect(reportProblems("Was sich im Spiel ändert: X.\nGelockert: Gate Z\nGestrichen: keine")).toHaveLength(1);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nGelockert: keine\nGestrichen: Teil 2")).toHaveLength(1);
+    expect(reportProblems("Was sich im Spiel ändert: X.\nGelockert: keine\nGestrichen: keine")).toEqual([]);
+  });
+
+  it("keeps Agent out of block sessions and writers out of review sessions", () => {
+    expect(BLOCK_FLAGS).toEqual(["--disallowedTools", "Agent"]);
+    expect(REVIEW_FLAGS).toContain("Bash(git show:*)");
+    expect(REVIEW_FLAGS).toContain("plan"); // a deny rule does not catch `> file`; plan mode does
+  });
+
+  it("calls a work tree dirty when git status lists anything", () => {
+    expect(isDirty("")).toBe(false);
+    expect(isDirty(" M src/a.ts\n")).toBe(true);
   });
 
   it("treats a report without the player section as a missing report", () => {

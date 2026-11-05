@@ -1,13 +1,17 @@
 // Plan S0: one fresh Sonnet session per open block, stops at the first red gate.
 // Usage: npm run blocks -- [--block ID] [--fix <defects file>] [--max-turns N] [--dry-run]
-//        npm run blocks -- --mini "<prompt>" [--max-turns N]   (probe: read-only, no gates)
+//        npm run blocks -- --mini "<prompt>" [--max-turns N]   [--review]   (probe: read-only, no gates; --review = flags of the review session)
 // Exit 0 only when the block is really done: new commit, clean report, gates green and,
 // where a review runs, "Urteil: OK". Ticking the block off stays with the main session.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import {
+  BLOCK_FLAGS,
+  REVIEW_FLAGS,
   buildBlockPrompt,
   buildReviewPrompt,
+  isDirty,
+  readOnlyFlags,
   firstRedGate,
   needsReview,
   nextOpenBlock,
@@ -48,12 +52,11 @@ function claude(prompt: string, flags: string[]): { status: number; text: string
 
 // Read-only sessions: only the listed tools exist, and writing commands are denied on top
 // (deny beats the allow rules of .claude/settings.json such as `npm run` and `git commit`).
-const WRITERS = ["Edit", "Write", "NotebookEdit", "Bash(npm *)", "Bash(npx *)", "Bash(node *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push*)", "Bash(*--output*)"];
-const readOnly = (tools: string): string[] => ["--tools", tools, "--disallowedTools", ...WRITERS];
-
+// --mini with --review probes the review flags (git show allowed, writing denied).
 const mini = option("--mini");
 if (mini) {
-  const result = claude(mini, ["--model", "sonnet", "--max-turns", maxTurns, ...readOnly("Read")]);
+  const tools = args.includes("--review") ? REVIEW_FLAGS : readOnlyFlags("Read");
+  const result = claude(mini, ["--model", "sonnet", "--max-turns", maxTurns, ...tools]);
   process.exit(result.status);
 }
 
@@ -70,8 +73,6 @@ interface State {
   blocks: number;
 }
 const head = () => capture("git", ["rev-parse", "HEAD"]);
-const state: State = existsSync(STATE_FILE) ? (JSON.parse(readFileSync(STATE_FILE, "utf8")) as State) : { reviewed: head(), blocks: 0 };
-
 const fail = (message: string): never => {
   console.error(`NOT DONE: ${message}`);
   process.exit(1);
@@ -79,8 +80,11 @@ const fail = (message: string): never => {
 
 // One block per call: the checklist is ticked off by hand after the report.
 const plan = readFileSync("docs/plans/current.md", "utf8");
-const block = nextOpenBlock(parseOpenBlocks(plan), option("--block"));
+const only = option("--block");
+const openBlocks = parseOpenBlocks(plan);
+const block = nextOpenBlock(openBlocks, only);
 if (!block) {
+  if (only) fail(`unknown block "${only}" (open: ${openBlocks.map((open) => open.id).join(", ") || "none"}).`);
   console.log("No open block.");
   process.exit(0);
 }
@@ -92,8 +96,14 @@ if (args.includes("--dry-run")) {
   console.log(prompt);
   process.exit(0);
 }
+// A fix run may find leftovers of the previous session; every other run starts clean.
+if (!fixFile && isDirty(capture("git", ["status", "--porcelain"]))) fail("work tree is not clean (commit or stash first).");
+
+// The review base must exist before the session, or a failed first run would lose its commit.
+if (!existsSync(STATE_FILE)) writeFileSync(STATE_FILE, JSON.stringify({ reviewed: head(), blocks: 0 } satisfies State));
+const state = JSON.parse(readFileSync(STATE_FILE, "utf8")) as State;
 const before = head();
-const session = claude(prompt, ["--model", block.opus ? "opus" : "sonnet", "--max-turns", maxTurns, "--permission-mode", "acceptEdits"]);
+const session = claude(prompt, ["--model", block.opus ? "opus" : "sonnet", "--max-turns", maxTurns, "--permission-mode", "acceptEdits", ...BLOCK_FLAGS]);
 if (session.status !== 0) fail(`session for ${block.id} ended with exit ${session.status} (turn limit?).`);
 
 const committed = head() !== before;
@@ -110,7 +120,7 @@ const changed = capture("git", ["diff", "--name-only", `${state.reviewed}..HEAD`
 const reviewNeeded = needsReview(changed, state.blocks + 1);
 let verdict: Verdict | undefined;
 if (reviewNeeded) {
-  const review = claude(buildReviewPrompt(state.reviewed), ["--model", "opus", "--max-turns", reviewTurns, ...readOnly("Read,Grep,Glob,Bash"), "--allowedTools", "Bash(git show:*)", "Bash(git diff:*)", "Bash(git log:*)"]);
+  const review = claude(buildReviewPrompt(state.reviewed), ["--model", "opus", "--max-turns", reviewTurns, ...REVIEW_FLAGS]);
   verdict = review.status === 0 ? parseVerdict(review.text) : undefined;
 }
 

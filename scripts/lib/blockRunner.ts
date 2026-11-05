@@ -50,17 +50,42 @@ export function parseVerdict(review: string): Verdict | undefined {
 }
 
 const PLAYER_SECTION = "Was sich im Spiel ändert";
-const EMPTY_ANSWER = /^\W*(keine?|none|entfällt|-|—|–)?\W*$/i;
+const NONE_WORD = /^\W*(kein|keine|keiner|keines|none|nichts|entfällt)\W*$/i;
+const LIST_ITEM = /^\s*(?:[-*•]|\d+[.)])\s+\S/;
 
-/** Problems a worker report names itself: Rest, Widerspruch, Frage, or no report at all. */
+/**
+ * Problems a worker report names itself: Rest, Widerspruch, Frage, a loosened or
+ * dropped plan part, or no report at all. A label counts as empty only with a word
+ * like "keine"; a label with a list below it is not empty.
+ */
 export function reportProblems(report: string): string[] {
   if (!report.includes(PLAYER_SECTION)) return ["Kein Bericht mit „Was sich im Spiel ändert“ (Limit erreicht?)."];
   const problems: string[] = [];
-  for (const line of report.split("\n")) {
-    const match = /^\W*(Rest|Widerspruch|Frage|Fragen|Offene Fragen|Offene Punkte|STOPP)\b[^:\n]*:\s*(.*)$/i.exec(line);
-    if (match && !EMPTY_ANSWER.test(match[2])) problems.push(line.trim());
-  }
+  const lines = report.split("\n");
+  lines.forEach((line, at) => {
+    const match = /^\W*(Rest|Widerspruch|Frage|Fragen|Offene Fragen|Offene Punkte|STOPP|Gelockert|Gestrichen)\b[^:\n]*:\s*(.*)$/i.exec(line);
+    if (!match) return;
+    const answer = match[2];
+    if (NONE_WORD.test(answer)) return;
+    if (/^\W*$/.test(answer) && !LIST_ITEM.test(lines[at + 1] ?? "")) return;
+    problems.push(line.trim());
+  });
   return problems;
+}
+
+/** Read-only flags of a review session (and of a probe run): only reading git commands, nothing that writes. */
+export const REVIEW_WRITERS = ["Edit", "Write", "NotebookEdit", "Bash(npm *)", "Bash(npx *)", "Bash(node *)", "Bash(git add *)", "Bash(git commit *)", "Bash(git push*)", "Bash(*--output*)"];
+export function readOnlyFlags(tools: string): string[] {
+  return ["--tools", tools, "--disallowedTools", ...REVIEW_WRITERS];
+}
+export const REVIEW_FLAGS = [...readOnlyFlags("Read,Grep,Glob,Bash"), "--permission-mode", "plan", "--allowedTools", "Bash(git show:*)", "Bash(git diff:*)", "Bash(git log:*)"];
+
+/** Block sessions may not start subagents (`claude -p` ignores worker.md's setting). */
+export const BLOCK_FLAGS = ["--disallowedTools", "Agent"];
+
+/** True when `git status --porcelain` lists anything (ignored files such as tmp/ are not listed). */
+export function isDirty(porcelain: string): boolean {
+  return porcelain.trim().length > 0;
 }
 
 export interface RunFacts {
