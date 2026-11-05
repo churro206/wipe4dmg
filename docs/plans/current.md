@@ -11,7 +11,7 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 Details zu S0 und V1–V4: `history-2026-11.md`, Abschnitt „Setup und Plan V“. M3 misst das Setup per `/usage` vorher und nachher.
 
 - [x] S0 Setup (`chore`): frische Sonnet-Sitzung je Block per Skript, enger Review, Berichte als Spieler lesbar. Gate: Probelauf mit Mini-Auftrag, `tests/shellRules.test.ts` grün, CLAUDE.md und Skills passen. (955a7a1, cd0e1f7, bd61fdb, 4047294; letzter Review NACHBESSERN, Inhaber 2026-11-05: Randfälle beheben, kein weiterer Review)
-- [ ] V1 Waffenstatus, Daten: `src/data/weapon-status.json` aus `npm run coverage`. Gate: Test rot bei veralteter Datei; Cloudstrike 0 % gegen Quantum; `$aegis`-Waffe zeigt „no independent check“; Status berechnet.
+- [x] V1 Waffenstatus, Daten: `src/data/weapon-status.json` aus `npm run coverage`. Gate: Test rot bei veralteter Datei; Cloudstrike 0 % gegen Quantum; `$aegis`-Waffe zeigt „no independent check“; Status berechnet. (4cb0b44, 5dd808e; Skript-Prüfung gegen Quantum in V1, Inhaber 2026-11-05)
 - [ ] V2 Tabelle in der Coverage-Seite, Rangliste 10/30/60 s. Gate: Test Sortierung und Filter, Screenshot, Ampel aus Data File.
 - [ ] V3 Zeitachse beim Aufklappen. Gate: Vex zeigt die Kette 25, 20, 16, 13, 11, 9, 8; Screenshot.
 - [ ] M3 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate, `/usage` vorher und nachher. Wiederherstellen: Thunderlord.
