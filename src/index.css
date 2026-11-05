@@ -881,6 +881,32 @@ header > .segmented {
   padding: 0.6rem 0.9rem;
 }
 
+.ranking-times {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.ranking-time {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ranking-time[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.ranking-none,
+.ranking-comes {
+  color: var(--muted);
+}
+
 .ranking-sort {
   all: unset;
   cursor: pointer;

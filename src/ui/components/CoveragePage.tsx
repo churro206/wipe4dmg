@@ -1,8 +1,21 @@
 import type { CatalogEntry, CatalogStatus } from "../../data/schema";
-import { coverageCatalog, iconUrl, weaponStatus } from "../data";
-import { lightOf, rankWeapons, type SortKey, type WeaponState } from "../weaponRanking";
+import { coverageCatalog, iconUrl, statusLimits, weaponStatus } from "../data";
+import {
+  TIMES,
+  aegisCell,
+  comesIn,
+  damageRanks,
+  openCount,
+  quantumLight,
+  rankWeapons,
+  statusLabel,
+  type SortKey,
+  type Time,
+  type WeaponState,
+} from "../weaponRanking";
 import { isLongText } from "../coverageText";
 import { Icon } from "./Icon";
+import { Tabs } from "./Tabs";
 import { useState } from "react";
 
 const STATUSES: { status: CatalogStatus; mark: string; label: string; meaning: string }[] = [
@@ -147,22 +160,28 @@ function Category({
   );
 }
 
-const TIMES: { key: "s10" | "s30" | "s60"; label: string }[] = [
-  { key: "s10", label: "10 s" },
-  { key: "s30", label: "30 s" },
-  { key: "s60", label: "60 s" },
-];
-
 const nf = new Intl.NumberFormat("en-US");
 
-/** Ranking of the exotic weapons by damage over 10, 30 and 60 s; the light is the status of the data file. */
-function WeaponRanking() {
-  const [open, setOpen] = useState(false);
-  const [sort, setSort] = useState<SortKey>("s60");
+type PageTab = "catalog" | "weapons";
+const PAGE_TABS: { id: PageTab; label: string }[] = [
+  { id: "catalog", label: "Catalog" },
+  { id: "weapons", label: "Weapons" },
+];
+
+/**
+ * Table of the exotic weapons: damage over the chosen time (default sort, with rank), the deviation
+ * against Quantum with a traffic light (limits: status-limits.json), the check against Aegis (report
+ * only, ADR 0018), the trust and the open sentences.
+ */
+function WeaponTable() {
+  const [time, setTime] = useState<Time>("s30");
+  const [sort, setSort] = useState<SortKey>("damage");
   const [ascending, setAscending] = useState(false);
   const [status, setStatus] = useState<WeaponState | "all">("all");
   const [text, setText] = useState("");
-  const ranked = rankWeapons(weaponStatus, { sort, ascending, status, text });
+  const ranked = rankWeapons(weaponStatus, { sort, time, ascending, status, text });
+  const ranks = damageRanks(weaponStatus, time);
+  const timeLabel = TIMES.find((t) => t.key === time)!.label;
 
   const head = (key: SortKey, label: string) => (
     <th scope="col" aria-sort={sort === key ? (ascending ? "ascending" : "descending") : "none"}>
@@ -184,94 +203,126 @@ function WeaponRanking() {
   );
 
   return (
-    <details
-      className="coverage-category"
-      open={open}
-      onToggle={(event) => setOpen(event.currentTarget.open)}
-    >
-      <summary>
-        <strong>Weapon ranking</strong>
-        <span className="coverage-counts">{weaponStatus.length} exotic weapons · damage over 10, 30 and 60 s</span>
-      </summary>
-      {open && (
-        <div className="ranking">
-          <div className="ranking-controls">
-            <input
-              type="search"
-              placeholder="Filter by name"
-              aria-label="Filter by name"
-              value={text}
-              onChange={(event) => setText(event.target.value)}
-            />
-            <select
-              aria-label="Filter by status"
-              value={status}
-              onChange={(event) => setStatus(event.target.value as WeaponState | "all")}
+    <div className="ranking">
+      <div className="ranking-controls">
+        <div className="ranking-times" role="group" aria-label="Time">
+          {TIMES.map(({ key, label }) => (
+            <button
+              key={key}
+              type="button"
+              className="ranking-time"
+              aria-pressed={time === key}
+              onClick={() => setTime(key)}
             >
-              <option value="all">All statuses</option>
-              {(["complete", "partial", "estimated"] as const).map((s) => (
-                <option key={s} value={s}>
-                  {lightOf(s).label}
-                </option>
-              ))}
-            </select>
-            <span className="coverage-counts">{ranked.length} shown</span>
-          </div>
-          <table className="coverage-table ranking-table">
-            <thead>
-              <tr>
-                {head("name", "Weapon")}
-                {head("status", "Status")}
-                {TIMES.map(({ key, label }) => head(key, label))}
-              </tr>
-            </thead>
-            <tbody>
-              {ranked.map((weapon) => {
-                const light = lightOf(weapon.status);
-                return (
-                  <tr key={weapon.id}>
-                    <th scope="row">{weapon.name}</th>
-                    <td data-label="Status">
-                      <span className="ranking-light" data-light={light.color}>
-                        <span aria-hidden="true">●</span> {light.label}
-                      </span>
-                    </td>
-                    {TIMES.map(({ key, label }) => (
-                      <td key={key} data-label={label} className="ranking-number">
-                        {nf.format(Math.round(weapon.damage.base[key]))}
-                      </td>
-                    ))}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+              {label}
+            </button>
+          ))}
         </div>
-      )}
-    </details>
+        <input
+          type="search"
+          placeholder="Filter by name"
+          aria-label="Filter by name"
+          value={text}
+          onChange={(event) => setText(event.target.value)}
+        />
+        <select
+          aria-label="Filter by status"
+          value={status}
+          onChange={(event) => setStatus(event.target.value as WeaponState | "all")}
+        >
+          <option value="all">All statuses</option>
+          {(["complete", "partial", "estimated"] as const).map((s) => (
+            <option key={s} value={s}>
+              {statusLabel(s)}
+            </option>
+          ))}
+        </select>
+        <span className="coverage-counts">
+          {ranked.length} of {weaponStatus.length} exotic weapons
+        </span>
+      </div>
+      <table className="coverage-table ranking-table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            {head("name", "Weapon")}
+            {head("status", "Status")}
+            {head("damage", `Damage ${timeLabel}`)}
+            {head("quantum", "vs Quantum")}
+            {head("aegis", "vs Aegis")}
+            {head("trust", "Trust")}
+            {head("open", "Not in yet")}
+          </tr>
+        </thead>
+        <tbody>
+          {ranked.map((weapon) => {
+            const light = quantumLight(weapon.quantum?.deviation ?? null, statusLimits);
+            const aegis = aegisCell(weapon);
+            const comes = comesIn(weapon);
+            return (
+              <tr key={weapon.id} className="ranking-row">
+                <td data-label="#" className="ranking-number">
+                  {ranks.get(weapon.id)}
+                </td>
+                <th scope="row">{weapon.name}</th>
+                <td data-label="Status">{statusLabel(weapon.status)}</td>
+                <td data-label={`Damage ${timeLabel}`} className="ranking-number">
+                  {nf.format(Math.round(weapon.damage.base[time]))}
+                </td>
+                <td data-label="vs Quantum" className="ranking-number">
+                  {light.color === null ? (
+                    <span className="ranking-none">{light.label}</span>
+                  ) : (
+                    <span className="ranking-light" data-light={light.color}>
+                      <span aria-hidden="true">●</span> {light.label}
+                    </span>
+                  )}
+                </td>
+                <td data-label="vs Aegis" className="ranking-number">
+                  <span className={aegis.deviation === null ? "ranking-none" : undefined}>{aegis.text}</span>
+                </td>
+                <td data-label="Trust">{weapon.trust}</td>
+                <td data-label="Not in yet" className="ranking-number">
+                  {openCount(weapon)}
+                  {comes && <span className="ranking-comes"> · {comes}</span>}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
 /** Wiki page "Coverage of the calculator" (US-15): what the game has, what the calculator does with it. */
 export function CoveragePage() {
+  const [tab, setTab] = useState<PageTab>("catalog");
   return (
     <div className="coverage">
-      <p>
-        Everything in Destiny 2 that can change the damage of a build, by category: what it does in the
-        game and what the calculator does with it. Open a category to see its entries. Legendary weapons
-        are not listed; they come with the Legendary Frames in 2.0.
-      </p>
-      <ul className="coverage-legend">
-        {STATUSES.map(({ status, meaning }) => (
-          <li key={status}>
-            <StatusMark status={status} /> {meaning}
-          </li>
-        ))}
-      </ul>
-      <WeaponRanking />
-      {coverageCatalog.map((category) => (
-        <Category key={category.id} id={category.id} title={category.title} entries={category.entries} />
-      ))}
+      <Tabs tabs={PAGE_TABS} active={tab} onChange={setTab}>
+        {tab === "weapons" ? (
+          <WeaponTable />
+        ) : (
+          <>
+            <p>
+              Everything in Destiny 2 that can change the damage of a build, by category: what it does in
+              the game and what the calculator does with it. Open a category to see its entries. Legendary
+              weapons are not listed; they come with the Legendary Frames in 2.0.
+            </p>
+            <ul className="coverage-legend">
+              {STATUSES.map(({ status, meaning }) => (
+                <li key={status}>
+                  <StatusMark status={status} /> {meaning}
+                </li>
+              ))}
+            </ul>
+            {coverageCatalog.map((category) => (
+              <Category key={category.id} id={category.id} title={category.title} entries={category.entries} />
+            ))}
+          </>
+        )}
+      </Tabs>
     </div>
   );
 }

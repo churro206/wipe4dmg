@@ -1713,6 +1713,8 @@ export type AegisWeaponSnapshot = z.infer<typeof AegisWeaponSnapshot>;
 export const StatusLimits = z.object({
   source: Source,
   quantumDeviation: z.number().positive(), // |model ÷ Quantum − 1| above this is a deviation, e.g. 0.02
+  quantumRed: z.number().positive(), // above this the traffic light of the table turns red, e.g. 0.03
+  quantumRedSource: Source, // where quantumRed comes from (derived)
 });
 export type StatusLimits = z.infer<typeof StatusLimits>;
 

@@ -5,5 +5,12 @@
     "status": "verified",
     "note": "The weapon status (V1) and the check of npm run blocks use the same limit for the deviation against Quantum."
   },
-  "quantumDeviation": 0.02
+  "quantumDeviation": 0.02,
+  "quantumRed": 0.03,
+  "quantumRedSource": {
+    "name": "Tolerance of the weapon packages and of the bench, ±3 % (docs/mechanics/README.md, ADR 0011, 0017)",
+    "retrieved": "2026-11-05",
+    "status": "derived",
+    "note": "Traffic light of the weapon table (V2): green up to the dead zone of 2 %, yellow up to the old tolerance of 3 %, red above."
+  }
 }
