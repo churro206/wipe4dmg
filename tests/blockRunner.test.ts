@@ -66,6 +66,15 @@ describe("block runner", () => {
     expect(prompt).not.toContain("Mängelliste");
   });
 
+  it("makes the plan details part of the block and keeps Rest for open work", () => {
+    const [block] = parseOpenBlocks(PLAN);
+    const prompt = buildBlockPrompt(block);
+    expect(prompt).toContain("docs/plans/history-2026-11.md");
+    expect(prompt).toContain("gehört zum Block");
+    expect(prompt).toContain("Rest: keiner");
+    expect(prompt).toContain("Screenshot");
+  });
+
   it("adds a defect list for a fix run", () => {
     const [block] = parseOpenBlocks(PLAN);
     expect(buildBlockPrompt(block, "1. foo.ts:3 falsch")).toContain("1. foo.ts:3 falsch");

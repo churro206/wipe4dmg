@@ -127,9 +127,11 @@ export function buildBlockPrompt(block: PlanBlock, defects?: string): string {
   return [
     `Setze genau diesen Block aus docs/plans/current.md um, folge dem Subagent-Vorbild .claude/agents/worker.md:`,
     block.line,
+    `Lies zuerst docs/plans/current.md. Alles, was dort oder in den dort genannten Abschnitten (etwa docs/plans/history-2026-11.md, „Setup und Plan V“) zu diesem Block steht, gehört zum Block.`,
     `Hake den Block nicht ab. Committe bei Grün (Branch ground-up-model, kein Merge). Pushe nicht. Rufe notify nicht auf.`,
+    `Einen Screenshot im Gate macht die Hauptsitzung nach deinem Lauf: Versuche ihn nicht, nenne ihn nicht als Rest, und nenne unter „Unsicher“, wie man die Ansicht öffnet.`,
     ...(defects ? [`Bessere nach. Mängelliste:`, defects] : []),
-    `Dein Bericht beginnt mit „${PLAYER_SECTION}“, je Waffe ein Satz in Spielersprache. Danach Commit-Hashes, Beleg, „Rest: …“, Geeicht / Gelockert / Gestrichen / Unsicher.`,
+    `Dein Bericht beginnt mit „${PLAYER_SECTION}“, je Waffe ein Satz in Spielersprache. Danach Commit-Hashes, Beleg, „Rest: …“ nur für offene Arbeit am Block, sonst „Rest: keiner“ (Hinweise unter „Unsicher“), Geeicht / Gelockert / Gestrichen / Unsicher.`,
   ].join("\n");
 }
 
