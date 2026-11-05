@@ -9,7 +9,10 @@ export function magazineNote(refills: number, reloads: number): string {
   return [...part(refills, "refill"), ...part(reloads, "reload")].join(", ");
 }
 
-/** One timeline row per buff: its windows, cut at the end of the damage phase. */
+/**
+ * One timeline row per buff and factor: its windows, cut at the end of the damage phase. A ramp buff
+ * has a window per change of stacks, each labelled with its own factor, so it gets a row per step.
+ */
 export function buffRows(
   log: BuffWindow[],
   damagePhaseSeconds: number,
@@ -20,9 +23,10 @@ export function buffRows(
     if (w.startMs >= phaseMs) continue;
     const percent = Math.round((w.factor - 1) * 1000) / 10;
     const label = `${w.name} ${percent >= 0 ? "+" : ""}${percent} %`;
-    const row = rows.get(w.buffId) ?? { label, windows: [] };
+    const key = `${w.buffId}|${label}`;
+    const row = rows.get(key) ?? { label, windows: [] };
     row.windows.push({ startMs: w.startMs, endMs: Math.min(w.endMs, phaseMs), uptime: 1 });
-    rows.set(w.buffId, row);
+    rows.set(key, row);
   }
   return [...rows.values()];
 }

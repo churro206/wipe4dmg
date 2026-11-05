@@ -56,9 +56,15 @@ export function aegisCell(row: WeaponRow): { text: string; deviation: number | n
 const STATUS_ORDER: Record<WeaponState, number> = { complete: 0, partial: 1, estimated: 2 };
 const TRUST_ORDER: Record<WeaponRow["trust"], number> = { measured: 0, derived: 1, estimated: 2 };
 
+/** The damage of a weapon over a time; with the catalyst switch on, a weapon without a catalyst keeps its base value. */
+export const damageOf = (row: WeaponRow, time: Time, catalyst = false): number =>
+  (catalyst && row.damage.catalyst ? row.damage.catalyst : row.damage.base)[time];
+
 /** The rank of every weapon (1 = most damage) over the chosen time, independent of sort and filter. */
-export function damageRanks(rows: WeaponRow[], time: Time): Map<string, number> {
-  const sorted = [...rows].sort((a, b) => b.damage.base[time] - a.damage.base[time] || a.name.localeCompare(b.name));
+export function damageRanks(rows: WeaponRow[], time: Time, catalyst = false): Map<string, number> {
+  const sorted = [...rows].sort(
+    (a, b) => damageOf(b, time, catalyst) - damageOf(a, time, catalyst) || a.name.localeCompare(b.name),
+  );
   return new Map(sorted.map((r, i) => [r.id, i + 1]));
 }
 
@@ -69,7 +75,7 @@ export function damageRanks(rows: WeaponRow[], time: Time): Map<string, number> 
  */
 export function rankWeapons(
   rows: WeaponRow[],
-  opts: { sort: SortKey; time: Time; ascending?: boolean; status?: WeaponState | "all"; text?: string },
+  opts: { sort: SortKey; time: Time; catalyst?: boolean; ascending?: boolean; status?: WeaponState | "all"; text?: string },
 ): WeaponRow[] {
   const text = (opts.text ?? "").trim().toLowerCase();
   const kept = rows.filter(
@@ -84,7 +90,7 @@ export function rankWeapons(
       case "status":
         return STATUS_ORDER[r.status];
       case "damage":
-        return r.damage.base[opts.time];
+        return damageOf(r, opts.time, opts.catalyst);
       case "quantum":
         return r.quantum === null ? null : Math.abs(r.quantum.deviation);
       case "aegis": {

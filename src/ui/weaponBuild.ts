@@ -24,7 +24,9 @@ export function bareWeaponRun(
   seconds: number,
   shotLimit?: number,
 ): SimulationResult {
-  const { selected, options } = buildSimulation(bareWeaponBuild(weapon.id, catalyst, seconds), gameData);
+  // A weapon without a catalyst runs the same in both positions of the switch
+  const build = bareWeaponBuild(weapon.id, catalyst && Boolean(weapon.catalyst), seconds);
+  const { selected, options } = buildSimulation(build, gameData);
   return simulate(weapon, seconds, selected, buckets, {
     ...options,
     ...(shotLimit === undefined ? {} : { shotLimit }),

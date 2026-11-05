@@ -13,12 +13,20 @@ const STATE_LABEL = { rule: "In the model", notModelled: "Left out", open: "Not 
  * the Aegis rows, and the timeline of the bare weapon (shots, reloads, refills, keyword damage and
  * the damage curve) from buildSimulation. It is only built once the row is open.
  */
-export function WeaponDetail({ weapon: row, seconds }: { weapon: WeaponRow; seconds: number }) {
+export function WeaponDetail({
+  weapon: row,
+  seconds,
+  catalyst,
+}: {
+  weapon: WeaponRow;
+  seconds: number;
+  catalyst: boolean;
+}) {
   const run = useMemo(() => {
     const weapon = weaponById(row.id);
     if (weapon.id !== row.id) return null; // an unknown id falls back to the default weapon
-    return bareWeaponRun(weapon, false, seconds); // the build of the table, see weaponBuild.ts
-  }, [row.id, seconds]);
+    return bareWeaponRun(weapon, catalyst, seconds); // the build of the table, see weaponBuild.ts
+  }, [row.id, seconds, catalyst]);
 
   const chain = run ? magazineChain(run) : [];
 

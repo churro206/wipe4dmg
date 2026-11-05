@@ -902,6 +902,15 @@ header > .segmented {
   font-weight: 600;
 }
 
+/* The # column is as narrow as its number */
+.ranking-table th:first-child,
+.ranking-table td:first-child {
+  width: 1%;
+  white-space: nowrap;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .ranking-none,
 .ranking-comes {
   color: var(--muted);

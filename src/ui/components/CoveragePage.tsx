@@ -4,6 +4,7 @@ import {
   TIMES,
   aegisCell,
   comesIn,
+  damageOf,
   damageRanks,
   openCount,
   quantumLight,
@@ -181,15 +182,17 @@ function WeaponTable() {
   const [status, setStatus] = useState<WeaponState | "all">("all");
   const [text, setText] = useState("");
   const [openId, setOpenId] = useState<string | null>(null); // the expanded row; it is only computed while open
-  const ranked = rankWeapons(weaponStatus, { sort, time, ascending, status, text });
-  const ranks = damageRanks(weaponStatus, time);
+  const [catalyst, setCatalyst] = useState(false); // the Catalyst switch: damage, rank and expanded row
+  const ranked = rankWeapons(weaponStatus, { sort, time, catalyst, ascending, status, text });
+  const ranks = damageRanks(weaponStatus, time, catalyst);
   const timeLabel = TIMES.find((t) => t.key === time)!.label;
 
-  const head = (key: SortKey, label: string) => (
+  const head = (key: SortKey, label: string, hint?: string) => (
     <th scope="col" aria-sort={sort === key ? (ascending ? "ascending" : "descending") : "none"}>
       <button
         type="button"
         className="ranking-sort"
+        title={hint}
         onClick={() => {
           if (sort === key) setAscending(!ascending);
           else {
@@ -220,6 +223,15 @@ function WeaponTable() {
             </button>
           ))}
         </div>
+        <button
+          type="button"
+          className="ranking-time ranking-catalyst"
+          aria-pressed={catalyst}
+          title="Damage, rank and the expanded row with the weapon's catalyst; weapons without one stay the same"
+          onClick={() => setCatalyst(!catalyst)}
+        >
+          Catalyst
+        </button>
         <input
           type="search"
           placeholder="Filter by name"
@@ -250,8 +262,8 @@ function WeaponTable() {
             {head("name", "Weapon")}
             {head("status", "Status")}
             {head("damage", `Damage ${timeLabel}`)}
-            {head("quantum", "vs Quantum")}
-            {head("aegis", "vs Aegis")}
+            {head("quantum", "vs Quantum", "Deviation of the weapon without the catalyst (Quantum's base row); the Catalyst switch does not change it")}
+            {head("aegis", "vs Aegis", "Largest deviation of the Aegis rows, each with its own assumptions (some include the catalyst); the Catalyst switch does not change it")}
             {head("trust", "Trust")}
             {head("open", "Not in yet")}
           </tr>
@@ -281,7 +293,7 @@ function WeaponTable() {
                 </th>
                 <td data-label="Status">{statusLabel(weapon.status)}</td>
                 <td data-label={`Damage ${timeLabel}`} className="ranking-number">
-                  {nf.format(Math.round(weapon.damage.base[time]))}
+                  {nf.format(Math.round(damageOf(weapon, time, catalyst)))}
                 </td>
                 <td data-label="vs Quantum" className="ranking-number">
                   {light.color === null ? (
@@ -304,7 +316,11 @@ function WeaponTable() {
               {expanded && (
                 <tr className="ranking-detail-row">
                   <td colSpan={8}>
-                    <WeaponDetail weapon={weapon} seconds={TIMES.find((t) => t.key === time)!.seconds} />
+                    <WeaponDetail
+                      weapon={weapon}
+                      seconds={TIMES.find((t) => t.key === time)!.seconds}
+                      catalyst={catalyst}
+                    />
                   </td>
                 </tr>
               )}

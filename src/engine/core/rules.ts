@@ -265,26 +265,58 @@ export function createRuleEngine(
       const stacks = buffStacks(ownerId, id, timeMs);
       if (stacks === 0) continue;
       for (const modifier of definition.modifiers) {
-        const { perStack, ...part } = modifier as MultiplierModifier;
-        const multiplier = requireValue(modifier.multiplier, "multiplier");
+        const part: Partial<MultiplierModifier> = { ...(modifier as MultiplierModifier) };
+        delete part.perStack;
         parts.push({
-          ...part,
-          multiplier: {
-            ...modifier.multiplier,
-            value: perStack ? 1 + (multiplier - 1) * stacks : multiplier,
-          },
+          ...(part as MultiplierModifier),
+          multiplier: { ...modifier.multiplier, value: multiplierAt(modifier, stacks) },
         });
       }
     }
     return parts;
   };
 
-  /** The product of the multipliers of a buff at the given stacks (a `perStack` one scales with them). */
+  /** The value of one multiplier at the given stacks: a `perStack` one scales with them. */
+  const multiplierAt = (modifier: BuffDefinition["modifiers"][number], stacks: number) => {
+    const multiplier = requireValue(modifier.multiplier, "multiplier");
+    return (modifier as MultiplierModifier).perStack ? 1 + (multiplier - 1) * stacks : multiplier;
+  };
+
+  /** The product of the multipliers of a buff at the given stacks. */
   const buffFactor = (definition: BuffDefinition, stacks: number) =>
-    definition.modifiers.reduce((product, modifier) => {
-      const multiplier = requireValue(modifier.multiplier, "multiplier");
-      return product * ((modifier as MultiplierModifier).perStack ? 1 + (multiplier - 1) * stacks : multiplier);
-    }, 1);
+    definition.modifiers.reduce((product, modifier) => product * multiplierAt(modifier, stacks), 1);
+
+  /**
+   * Puts a buff's stand into the log: a window that goes on while the stacks stay, a new one at every
+   * change of stacks (a ramp), so each window carries the factor it had.
+   */
+  const logWindow = (
+    ownerId: string,
+    id: string,
+    definition: BuffDefinition,
+    previous: BuffState | undefined,
+    timeMs: number,
+    stacks: number,
+    endMs: number,
+  ): BuffWindow => {
+    const active = previous !== undefined && timeMs < previous.untilMs;
+    if (active && previous.window.stacks === stacks) {
+      previous.window.endMs = endMs;
+      return previous.window;
+    }
+    if (active) previous.window.endMs = timeMs;
+    const window: BuffWindow = {
+      ownerId,
+      buffId: id,
+      name: definition.name,
+      startMs: timeMs,
+      endMs,
+      stacks,
+      factor: buffFactor(definition, stacks),
+    };
+    buffLog.push(window);
+    return window;
+  };
 
   /** Stacks an applyStatus brings, scaled by the active action modifiers and rounded up. */
   const stacksOfApply = (
@@ -444,14 +476,11 @@ export function createRuleEngine(
         const buff = state.buffs.get(id);
         if (!buff || timeMs >= buff.untilMs) return; // only an active buff
         const max = buffDefinition(ownerId, id).maxStacks;
-        buff.stacks = Math.min(
-          max ? requireValue(max, "maxStacks") : 1,
-          buff.stacks + by,
-        );
-        buff.untilMs = endOf(timeMs, buff.durationMs);
-        buff.window.stacks = buff.stacks;
-        buff.window.endMs = buff.untilMs;
-        buff.window.factor = buffFactor(buffDefinition(ownerId, id), buff.stacks);
+        const stacks = Math.min(max ? requireValue(max, "maxStacks") : 1, buff.stacks + by);
+        const untilMs = endOf(timeMs, buff.durationMs);
+        buff.window = logWindow(ownerId, id, buffDefinition(ownerId, id), buff, timeMs, stacks, untilMs);
+        buff.stacks = stacks;
+        buff.untilMs = untilMs;
         return;
       }
       case "resetCounter":
@@ -486,22 +515,8 @@ export function createRuleEngine(
         const current = state.buffs.get(action.buff);
         const active = current !== undefined && timeMs < current.untilMs;
         const stacks = Math.min(max, active ? Math.max(current.stacks, given) : given);
-        // A renewal while the buff stands goes on in the same window
-        const window: BuffWindow = active
-          ? current.window
-          : {
-              ownerId,
-              buffId: action.buff,
-              name: definition.name,
-              startMs: timeMs,
-              endMs: 0,
-              stacks,
-              factor: 1,
-            };
-        window.endMs = endOf(timeMs, durationMs);
-        window.stacks = stacks;
-        window.factor = buffFactor(definition, stacks);
-        if (!active) buffLog.push(window);
+        // A renewal while the buff stands goes on in the same window, as long as the stacks stay
+        const window = logWindow(ownerId, action.buff, definition, current, timeMs, stacks, endOf(timeMs, durationMs));
         state.buffs.set(action.buff, {
           stacks,
           untilMs: endOf(timeMs, durationMs),
