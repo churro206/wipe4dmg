@@ -2,7 +2,7 @@
 
 Höchstens 4 KB. Nach jedem Block: `docs/changelog.md`, `docs/known-inaccuracies.md`. Archiv per Grep: `docs/plans/history-2026-11.md`, `history-2026-10.md`.
 
-## Checkliste (freigegeben 2026-11-03; S0, V1–V4 am 2026-11-04)
+## Checkliste (Inhalt freigegeben 2026-11-03/04; seit 2026-11-06 jeden Block einzeln vorschlagen, Skill `abarbeiten`)
 
 Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`. „Wiederherstellen“: von Q1 abgeschaltete Tests (Liste: `known-inaccuracies`, Abschnitt Q1) wieder einschalten.
 
@@ -12,9 +12,9 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 
 - [x] P0 Prüfung reparieren (Inhaber 2026-11-06; c8f26aa): Vergleichszeilen, Einheiten, Ausreißer eingeordnet (`known-inaccuracies`, Abschnitt P0). Spielschaden unverändert.
 
-**Nächste Sitzung, zuerst (Inhaber 2026-11-06), vor jeder Arbeit am Rechner:**
-1. Arbeitsweise zurückbauen: Orchestrator, Worker, Reviewer und `npm run blocks` verbrauchen zu viele Token. In der Commit-Historie das frühere System ohne Extra-Agents suchen (Block für Block in der Hauptsitzung, Abschluss mit `/clear`), vorschlagen und nach Freigabe hier, in `CLAUDE.md` und im Skill `abarbeiten` festhalten.
-2. Inhaber fragen: Korrekturblock vor M3 (Empfehlung: Trinity Ghoul, Gift von Thorn und Le Monarque, dann zu hohe Modellwerte) oder direkt M3?
+- [x] Arbeitsweise zurückgebaut (Inhaber 2026-11-06; Details: `docs/changelog.md`).
+
+**Vor M3 mit dem Inhaber besprechen (er will das nach dem Rückbau klären):** Korrekturblock vor M3 (Empfehlung: Trinity Ghoul, Gift von Thorn und Le Monarque, dann zu hohe Modellwerte) oder direkt M3?
 
 M3 wartet solange. Offen beim Inhaber: Probe Euphony : Arbalest im Spiel. Die Änderungen an `docs/sources/sheets/quantum/*.tsv` im Arbeitsbaum stammen nicht aus P0 und sind nicht committet.
 
@@ -30,7 +30,7 @@ M3 wartet solange. Offen beim Inhaber: Probe Euphony : Arbalest im Spiel. Die Ä
 
 Quantum und Clarity einzige Quelle (ADR 0019), Prüfstand nur Bericht bis zur Gegenprobe.
 
-**M-Gate:** Regeln nach Vorlage mit `$clarity`-Zitat, Rest in `notModelled`; je Vorlage eine Golden-Waffe; Plausibilität; Sätze ohne Regel sinken. Je Block `build:weapons`, `coverage`, Tests, Snapshots `--update`. **Nie `import:weapons`.**
+**M-Gate:** Regeln nach Vorlage mit `$clarity`-Zitat, Rest in `notModelled`; je Vorlage eine Golden-Waffe; Plausibilität; Sätze ohne Regel sinken. Je Block `build:weapons`, `coverage`, Tests, Snapshots `--update`, danach `check:block -- <ID>`. **Nie `import:weapons`.**
 
 Gestrichen: B6.5, B6.6. Verschoben in die Gegenprobe: B6.4, Nachtrag der Exotics ohne Quantum.
 

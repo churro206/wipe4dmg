@@ -1,15 +1,18 @@
 ---
 name: abarbeiten
-description: Setzt den nächsten offenen Block der freigegebenen Checkliste in docs/plans/current.md per Skript in einer frischen Sonnet-Sitzung um.
+description: Schlägt den nächsten offenen Block aus docs/plans/current.md vor und setzt ihn nach Freigabe in der Hauptsitzung um, ohne Subagents, bis zum Abschluss mit Bericht und /clear.
 ---
 
-Ist die Checkliste in docs/plans/current.md nicht freigegeben, stoppe. Lies selbst keinen Code.
+Ein Block pro Sitzung, in der Hauptsitzung. Keine Subagents, kein Review (außer der Inhaber sagt es an).
 
-1. Starte den nächsten offenen Block: `npm run blocks` (ein Block je Aufruf; `-- --block <ID>` wählt, `-- --dry-run` zeigt nur den Auftrag, `-- --max-turns <N>` begrenzt, `-- --fix <Datei>` übergibt bei Nachbesserungen die Mängelliste, `-- --no-review` lässt den Review nur auf Ansage des Inhabers aus, der nächste prüft dann mit). Ein Block dauert länger als das Bash-Zeitlimit von 600 s: immer mit `run_in_background` starten und auf das Ende warten, nicht pollen. Das Skript startet eine frische Sitzung (Sonnet, bei „(Opus)“ Opus), prüft danach `test:quiet`, `tsc -b`, `lint` und stoppt beim ersten roten Gate. Es gibt keine Worker- und Orchestrator-Sitzung mehr.
-2. Enger Opus-Review (höchstens 15 Aufrufe, nur lesen) läuft im Skript, wenn seit dem letzten Review `src/engine/` geändert wurde oder drei Blöcke ohne Review vergangen sind; geprüft wird alles seit dem letzten Review. Vorschläge eines Reviewers sind Hypothesen, bis das Modell sie bestätigt.
-3. Das Skript endet mit Exit 0 nur, wenn ein neuer Commit entstand, der Bericht weder Rest, Widerspruch noch Frage nennt und „Gelockert“ und „Gestrichen“ leer sind (nicht leer = rot), alle Gates grün sind und ein laufender Review mit „Urteil: OK“ endet. Sonst ist es rot (Exit 1, Grund in „NOT DONE“): Lies den Bericht. Bei NACHBESSERN: Mängelliste in eine Datei in tmp/, `npm run blocks -- --block <ID> --fix <Datei>`, höchstens zwei Nachbesserungen je Block, jede mit frischer Sitzung. Bei Widerspruch, Frage, „Rest: …“, STOPP (der Plan ist falsch), rotem Gate oder dem Gate „Freigabe Inhaber“ (Q-Bilanz): Stopp und den Inhaber fragen.
-4. Bei Exit 0: Block in docs/plans/current.md abhaken, committen, pushen. Ändert der Block die Oberfläche oder verlangt das Gate einen Screenshot, prüft die Hauptsitzung vorher im Browser (`npm run build`, Skript unter `tmp/`, `npm run preview`): Die Sitzung darf es wegen des Hooks nicht, und nur der Browser zeigt Layout-Fehler. Dafür darf sie auch kleine CSS-Fehler selbst beheben.
-5. Der Bericht beginnt mit „Was sich im Spiel ändert“ (je Waffe ein Satz); Hashes, Beleg und die Listen Geeicht / Gelockert / Gestrichen / Unsicher folgen.
-
-Stoppe vor jedem Merge, vor jedem Streichen eines Planteils und vor jedem Lockern eines Gates.
-Vor jedem Stopp, nie während eine Sitzung läuft: `npm run notify -- "<Block>: <Grund in wenigen Worten>"`. Sitzungen des Skripts rufen `notify` nie auf.
+1. **Vorschlagen:** Lies `docs/plans/current.md`. Nenne den nächsten offenen Block in zwei bis drei Sätzen (Umfang, Gate, Modell: Sonnet, bei „(Opus)“ Opus) und warte auf die Freigabe. Nennt der Inhaber den Block schon im Auftrag, ist er freigegeben.
+2. **Umsetzen:** Ein freigegebener Block läuft ohne Zwischenfragen. Test zuerst, dann der kleinste Code, der ihn grün macht; nichts, was der Block nicht verlangt.
+3. **Token sparen** (jeder Aufruf liest den ganzen Kontext neu):
+   - Erst Grep, dann Read mit offset/limit. Dateien über 200 Zeilen nie ganz, vom Bauplan nur den genannten Abschnitt. Keine Datei zweimal lesen, nach Edit nicht zur Kontrolle.
+   - Während der Arbeit nur den eigenen Test (`npm run test:quiet -- tests/<datei>`). Ganze Suite, `build:weapons`, `coverage`, Snapshots einmal vor dem Commit.
+   - `git diff` und `git show` nur mit `--stat`. JSON-Items mit Edit, nicht per Write neu.
+   - Höchstens 6 Items oder etwa 40 Tool-Aufrufe. Danach prüfen, committen, Rest in `current.md` festhalten und `/clear` vorschlagen; der Rest läuft ohne neue Freigabe in der nächsten Sitzung.
+4. **Prüfen** nach dem Skill `pruefen`: `npm run test:quiet`, `npx tsc -b`, `npm run lint`; bei M-Blöcken danach `npm run check:block -- <ID>`. Ändert der Block die Oberfläche, prüfe im Browser (nur dort zeigen sich Layout-Fehler).
+5. **Stoppen und fragen:** bei Widerspruch zwischen Block, Code und `CLAUDE.md`, vor jedem Streichen eines Planteils, Lockern eines Gates und Merge, und beim Gate „Freigabe Inhaber“. Mit Empfehlung.
+6. **Abschluss:** Block abhaken (`- [x] … (<Commit>)`), `current.md` (höchstens 4 KB) so pflegen, dass der nächste Block ohne Chat-Verlauf starten kann, `docs/changelog.md` und `docs/roadmap.md` nachziehen. Nur die Dateien des Blocks stagen, committen, pushen.
+7. **Bericht**, höchstens 15 Zeilen: zuerst „Was sich im Spiel ändert“ (je Waffe ein Satz in Spielersprache), dann Commit, Beleg (Gate-Zahlen vorher → nachher), offene Punkte, **Geeicht / Gelockert / Gestrichen / Unsicher**. Zuletzt `/clear` vorschlagen und das Modell für den nächsten Block nennen. Vor dem Ende: `npm run notify -- "<Block>: <Ergebnis in wenigen Worten>"`.

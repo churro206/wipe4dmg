@@ -3,7 +3,7 @@
     "name": "Dead zone of the calibration, 2 % (docs/mechanics/README.md, ADR 0018), set by the owner",
     "retrieved": "2026-11-05",
     "status": "verified",
-    "note": "The weapon status (V1) and the check of npm run blocks use the same limit for the deviation against Quantum."
+    "note": "The weapon status (V1) and the check of npm run check:block use the same limit for the deviation against Quantum."
   },
   "quantumDeviation": 0.02,
   "quantumRed": 0.03,

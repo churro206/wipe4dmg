@@ -6,6 +6,7 @@ import rawLimits from "../src/data/status-limits.json";
 import rawStatus from "../src/data/weapon-status.json";
 import { StatusLimits, WeaponStatusFile } from "../src/data/schema";
 import {
+  blockLine,
   blockWeaponProblems,
   namedWeapons,
   planBlockOf,
@@ -21,6 +22,20 @@ import { realWeaponStatus, weaponSources } from "./lib/weaponStatusData";
 const limits = StatusLimits.parse(rawLimits);
 
 const src = (status: string) => ({ name: "x", retrieved: "2026-11-05", status }) as never;
+
+describe("blockLine", () => {
+  const plan = "- [x] M2 Done: Vex Mythoclast. Gate: M-Gate. (abc)\r\n- [ ] M3 Ramp: Thunderlord. Gate: M-Gate.\r\nM4 is only text";
+
+  it("finds a checklist line by its block id, open or ticked off", () => {
+    expect(blockLine(plan, "M3")).toBe("M3 Ramp: Thunderlord. Gate: M-Gate.");
+    expect(blockLine(plan, "M2")).toBe("M2 Done: Vex Mythoclast. Gate: M-Gate. (abc)");
+  });
+
+  it("knows no block outside the checklist and no partial id", () => {
+    expect(blockLine(plan, "M4")).toBeUndefined();
+    expect(blockLine(plan, "M")).toBeUndefined();
+  });
+});
 
 describe("sentenceStates", () => {
   const item = {

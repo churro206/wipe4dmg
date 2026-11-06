@@ -115,8 +115,17 @@ function quantumSection(inaccuracies: string): string[] {
 
 export type StatusRow = Pick<WeaponStatusFile["weapons"][number], "name" | "sentences" | "quantum">;
 
+/** The checklist line of a block in docs/plans/current.md, without the checkbox; open or ticked off. */
+export function blockLine(plan: string, id: string): string | undefined {
+  for (const raw of plan.split("\n")) {
+    const match = /^- \[[ x]\] (\S+)/.exec(raw);
+    if (match?.[1] === id) return raw.slice(6).trim();
+  }
+  return undefined;
+}
+
 /**
- * The check of `npm run blocks` after the gates: the weapons the block's target names, against the
+ * The check of `npm run check:block` after the gates: the weapons the block's target names, against the
  * weapon status. Red: no row, open sentences, Quantum off by more than `tolerance`. A deviation that a
  * line in the section "Quantum-Abweichungen" of known-inaccuracies names the weapon in is only reported.
  * It applies to M blocks only (the line starts with "M").

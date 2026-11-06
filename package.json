@@ -21,7 +21,7 @@
     "import:reload": "node scripts/import-reload-formulas.ts",
     "facts": "node scripts/facts.ts",
     "notify": "node scripts/notify.ts",
-    "blocks": "node scripts/run-blocks.ts",
+    "check:block": "node scripts/check-block.ts",
     "import:court": "node scripts/import-court.ts",
     "build:weapons": "node scripts/build-weapons.ts",
     "scaffold:weapons": "node scripts/scaffold-weapons.ts",
