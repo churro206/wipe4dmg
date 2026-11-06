@@ -229,7 +229,7 @@ function mentions(text: string, name: string): boolean {
   return new RegExp(`(?<![A-Za-z0-9])${escaped}(?![A-Za-z0-9])`).test(text);
 }
 
-/** The first open block of the plan (`- [ ] M3 ...`) that names the weapon in its target, e.g. "M3". */
+/** The first open block of the plan (`- [ ] W3 ...`) that names the weapon in its target, e.g. "W3". */
 export function planBlockOf(name: string, plan: string): string | null {
   for (const line of plan.split("\n")) {
     const m = /^- \[ \] (\S+)/.exec(line);
@@ -268,7 +268,7 @@ export function blockLine(plan: string, id: string): string | undefined {
  * The check of `npm run check:block` after the gates: the weapons the block's target names, against the
  * weapon status. Red: no row, open sentences, Quantum off by more than `tolerance`. A deviation that a
  * line in the section "Quantum-Abweichungen" of known-inaccuracies names the weapon in is only reported.
- * It applies to the blocks that bring weapons in: M blocks and W1 to W4.
+ * It applies to the blocks that bring weapons in: W1 to W4 (and the old M names).
  */
 export function blockWeaponProblems(
   line: string,

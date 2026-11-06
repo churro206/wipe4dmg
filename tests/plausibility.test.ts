@@ -432,7 +432,7 @@ describe("exotic armor changes its abilities", () => {
 
   // S4 part C: Barrow-Dyad's seekers come after the reload at the bullets' rate ("overwriting
   // regular shots"), so no gap over 1 s ends the run; Aegis measures ×1.32 (17 381 / 13 171).
-  // Q1 (ADR 0019): the scaffold has no seekers; M4 (Barrow-Dyad) turns this back into `it`.
+  // Q1 (ADR 0019): the scaffold has no seekers; W3 (Barrow-Dyad) turns this back into `it`.
   it.fails("Peacekeepers on Barrow-Dyad: the seekers fill the reload, the stacks hold (core, Aegis ×1.32)", () => {
     const barrow = weaponById("barrow-dyad");
     const titan = { guardianClass: "titan" as const };
@@ -716,7 +716,7 @@ describe("catalysts from texts (2026-10-23)", () => {
   });
 
   // Q1 (ADR 0019): the scaffold has no catalyst effect on damage; the Chaperone test below is
-  // `it.fails` until its M-block (M4) writes the rule. Then turn it back into `it`.
+  // `it.fails` until its block (W3) writes the rule. Then turn it back into `it`.
   it.fails("The Chaperone: precision hits refill the magazine, 27 slugs instead of 18", () => {
     const off = run({}, weaponById("the-chaperone")).totalDamage;
     const on = run({ catalyst: true }, weaponById("the-chaperone")).totalDamage;
@@ -740,7 +740,7 @@ describe("catalysts from texts (2026-10-23)", () => {
     expect(on / off).toBeLessThan(1.15);
   });
 
-  // Wish-Ender is `unknown` at Q1; no M-block names it, so it goes to the Q-Bilanz.
+  // Wish-Ender is `unknown` at Q1; no block names it, so it goes to the balance (W5).
   it.fails("Wish-Ender: a catalyst that needs several enemies does nothing against one boss", () => {
     expect(weaponById("wish-ender").catalyst!.effect).toBe("none");
   });
@@ -748,7 +748,7 @@ describe("catalysts from texts (2026-10-23)", () => {
 
 describe("catalysts", () => {
   // Q1: Quantum's plain Gjallarhorn row has the catalyst magazine of 2 already, so the switch changes
-  // nothing; no M-block names Gjallarhorn (Q-Bilanz). Thunderlord is back on since W2 (Return Stroke).
+  // nothing; no block names Gjallarhorn (W5). Thunderlord is back on since W2 (Return Stroke).
   it.fails("Gjallarhorn: the catalyst's second rocket per magazine gives more damage in 30 s", () => {
     const off = run({}, weaponById("gjallarhorn")).totalDamage;
     const on = run({ catalyst: true }, weaponById("gjallarhorn")).totalDamage;

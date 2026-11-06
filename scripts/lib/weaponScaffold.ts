@@ -1,6 +1,6 @@
 // Scaffold of the weapon items (ADR 0019, Q1, docs/architecture.md section 5.2): one item file per
 // exotic from its Quantum base row, once. The file holds the template "hit" and "timing" and the
-// catalyst of the "cata" row; the author adds the mechanics (M1 to M5) and the file is his from then on.
+// catalyst of the "cata" row; the author adds the mechanics (W1 to W4) and the file is his from then on.
 // Every number is a `$quantum` or `$manifest` reference, so the file has no value of its own.
 
 import type {

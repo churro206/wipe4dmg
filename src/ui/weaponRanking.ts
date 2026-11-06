@@ -71,7 +71,7 @@ export const causeLabel = (row: WeaponRow): string => CAUSE_LABEL[row.cause.clas
 /** The open sentences of a weapon: what its texts say that the model does not carry yet. */
 export const openCount = (row: WeaponRow): number => row.sentences.filter((s) => s.state === "open").length;
 
-/** "Comes in M3" for a weapon that an open block of the plan names; null otherwise. */
+/** "Comes in W3" for a weapon that an open block of the plan names; null otherwise. */
 export const comesIn = (row: WeaponRow): string | null => (row.planBlock === null ? null : `Comes in ${row.planBlock}`);
 
 /** The independent check against Aegis: the largest deviation of its rows, or why there is none. */
