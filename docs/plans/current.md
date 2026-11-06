@@ -8,7 +8,7 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 
 - [x] A1, Q0, Q1, M1, M2, S0, V1–V3 (`history-2026-11.md`; zu V4 dort „Setup und Plan V“), P0 (c8f26aa), Arbeitsweise (453538e). 33 Pakete bleiben: im W-Block oder W5. Euphony auf Aegis (Ausnahme des Inhabers, ADR 0019).
 
-- [ ] W0 Abweichungen erklären (Opus): Ursachenklasse je Waffe, Spalte „Why off“, Kreisprüfung als „reads Quantum“ statt grün, `-cata`-Zeilen geprüft, Rangliste für W1 (alles: `ground-up-model.md`, „Plan W“). Spielschaden unverändert. Gate: Test je Tabellenzeile, jede Waffe genau eine Klasse, P0-Stichproben, Browser.
+- [ ] W0 Abweichungen erklären (Opus, freigegeben 2026-11-06, noch nicht begonnen): Ursachenklasse je Waffe, Spalte „Why off“, Kreisprüfung als „reads Quantum“ statt grün, `-cata`-Zeilen geprüft, Rangliste für W1 (alles: `ground-up-model.md`, „Plan W“). Spielschaden unverändert. Gate: Test je Tabellenzeile, jede Waffe genau eine Klasse, P0-Stichproben, Browser.
 - [ ] W1 Falsch Übernommenes korrigieren: Trinity Ghoul, Thorn, Le Monarque, Heartshadow, The Lament, Grand Overture, Witherhoard, Malfeasance, Alethonym (die Liste legt W0 fest), je Ursachenklasse eine Sitzung. Gate: M-Gate, Abweichung der Klasse sinkt.
 - [ ] W2 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate, `/usage` vorher und nachher. Wiederherstellen: Thunderlord.
 - [ ] V4 „What changed“ auf der Seite. Gate: Test gegen einen Stand aus git.
@@ -17,6 +17,8 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 - [ ] W4 Hand-Items von `$aegis` auf `$quantum`/`$clarity`: Polaris Lance, Truth, Hierarchy of Needs, Choir of One, Delicate Tomb, Duality, Graviton Spike, Salvation's Grip, The Queenbreaker. Gate: M-Gate je Spielweise.
 - [ ] W5 Bilanz Waffen (Opus): Rest nach Ursachenklasse, Sätze ohne Regel, Aegis-Bericht, übrige Pakete (Voraussetzung für A2). Stopp zur Freigabe. Wiederherstellen ohne eigenen Block: Gjallarhorn, Telesto, Wish-Ender, Wish-Keeper, Vigilance Wing, Whisper of the Worm, Ager's Scepter, Leviathan's Breath, Burst-Primaries.
 - [ ] A2 Aufräumen: Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
+
+**Für W0:** Quantums Autor besitzt laut To-do auch Whirling Ovation, Edge of Action, Edge of Concurrence und den Catalyst von One Thousand Voices nicht (`quantum/145238476-todo.tsv`:126-131): beim Quellenkonflikt prüfen, nichts umgestellt.
 
 **Offen beim Inhaber:** Ungeklärte Änderungen in `docs/sources/sheets/` (dort schrieb etwas mit): nicht committen.
 
