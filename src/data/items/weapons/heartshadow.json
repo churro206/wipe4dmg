@@ -4,7 +4,8 @@
   "name": "Heartshadow",
   "texts": [
     { "source": "clarity", "entry": "Heartshadow Catalyst", "hash": "51820167" },
-    { "source": "clarity", "entry": "Shot in the Dark", "hash": "02889757" }
+    { "source": "clarity", "entry": "Shot in the Dark", "hash": "02889757" },
+    { "source": "clarity", "entry": "Exhumation", "hash": "c29f0e85" }
   ],
   "chargeTimeMs": {
     "value": 0,
@@ -92,5 +93,35 @@
       "delivery": "impact"
     }
   },
+  "notModelled": [
+    {
+      "quote": "Lasts for 2.5 seconds upon exit.",
+      "reason": "inside the heavy's damage: the Aegis row it takes the value from assumes Shot in the Dark"
+    },
+    {
+      "quote": "• 25% increased damage",
+      "reason": "inside the heavy's damage: the Aegis row it takes the value from assumes Shot in the Dark"
+    },
+    {
+      "quote": "• Hits apply Weaken for 6 [3] seconds",
+      "reason": "Weaken is a debuff the build brings (Court debuff Heartshadow); the Aegis row is named 'weaken excluded', so the item leaves it out as Aegis does"
+    },
+    {
+      "quote": "While grounded, Charged Heavy Attacks grant Void Invisibility for 6.3 seconds and release four tracking orbs",
+      "reason": "invisibility is no damage; the orbs are inside the heavy's damage (Aegis row, 4 x 507 plus the strike)"
+    },
+    {
+      "quote": "Each orb deals 507 [363] damage in a",
+      "reason": "inside the heavy's damage (Aegis row); the item does not yet read Clarity's 507 (W5: Aegis to Clarity)"
+    },
+    {
+      "quote": "Void Orbs deal 30% increased damage to Minor combatants.",
+      "reason": "one boss without adds (ADR 0015)"
+    },
+    {
+      "quote": "Grants 50% increased movement speed while under the effects of Void Invisibility.",
+      "reason": "no damage against a boss (movement speed)"
+    }
+  ],
   "rules": [{ "id": "shot", "on": { "on": "shot" }, "do": [{ "type": "spawn", "part": "heavy" }] }]
 }

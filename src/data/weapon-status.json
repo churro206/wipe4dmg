@@ -2524,7 +2524,7 @@
     {
       "id": "deterministic-chaos",
       "name": "Deterministic Chaos",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -2540,7 +2540,7 @@
       },
       "cause": {
         "class": "wrong-row",
-        "why": "+15.6 % against a Quantum row that leaves out what the model carries."
+        "why": "Another Aegis row fits, \"machine-gun-deterministic-chaos-average-with-volatile-damage-excludes-weaken-target-lock-single-mag\" is +4.4 %: it measures something else than the model."
       },
       "ruleShares": [
         {
@@ -2604,19 +2604,19 @@
         }
       ],
       "quantum": {
-        "row": "heavies-machine-gun-deterministic-chaos-w-o-weaken",
-        "rowNote": "This assumes 0% weaken uptime",
+        "row": "heavies-machine-gun-deterministic-chaos-w-weaken",
+        "rowNote": "This assumes 100% weaken uptime",
         "basis": "total",
-        "measured": 44368,
+        "measured": 51023,
         "model": 51279.5,
-        "deviation": 0.1558,
+        "deviation": 0.005,
         "circular": false,
         "catalystRow": false,
-        "strippedRow": true,
+        "strippedRow": false,
         "factors": {
-          "shots": 1,
+          "shots": 1.0022146874938753,
           "hitsPerShot": 1,
-          "damagePerHit": 1,
+          "damagePerHit": 0.8676470588235294,
           "mechanic": 1.1557767535160444,
           "rowPlain": true
         }
@@ -5010,34 +5010,40 @@
         }
       },
       "cause": {
-        "class": "wrong-row",
-        "why": "Aegis +581.7 % with no rule that large: \"sword-heartshadow-light\" measures something else than the model."
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Lasts for 2.5 seconds upon exit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the heavy's damage: the Aegis row it takes the value from assumes Shot in the Dark"
         },
         {
           "text": "• 25% increased damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the heavy's damage: the Aegis row it takes the value from assumes Shot in the Dark"
         },
         {
           "text": "• Hits apply Weaken for 6 [3] seconds",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Weaken is a debuff the build brings (Court debuff Heartshadow); the Aegis row is named 'weaken excluded', so the item leaves it out as Aegis does"
         },
         {
           "text": "While grounded, Charged Heavy Attacks grant Void Invisibility for 6.3 seconds and release four tracking orbs 8?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "invisibility is no damage; the orbs are inside the heavy's damage (Aegis row, 4 x 507 plus the strike)"
         },
         {
           "text": "Each orb deals 507 [363] damage in a ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the heavy's damage (Aegis row); the item does not yet read Clarity's 507 (W5: Aegis to Clarity)"
         },
         {
           "text": "Void Orbs deal 30% increased damage to Minor combatants.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "one boss without adds (ADR 0015)"
         },
         {
           "text": "Increases reserves by 6 (57🠚63).",
@@ -5045,23 +5051,14 @@
         },
         {
           "text": "Grants 50% increased movement speed while under the effects of Void Invisibility.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (movement speed)"
         }
       ],
       "quantum": null,
       "aegis": {
-        "check": "checked",
-        "rows": [
-          {
-            "row": "sword-heartshadow-light",
-            "assumptions": [
-              "light"
-            ],
-            "measured": 404.1,
-            "model": 2754.9,
-            "deviation": 5.8171
-          }
-        ]
+        "check": "no independent check",
+        "rows": []
       },
       "planBlock": "W1"
     },
@@ -5925,7 +5922,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "leviathan-s-breath",
@@ -10353,13 +10350,14 @@
       },
       "cause": {
         "class": "wrong-row",
-        "why": "Another Aegis row fits, \"sword-the-lament-heavy\" is +191.2 %: it measures something else than the model."
+        "why": "Another Aegis row fits, \"sword-the-lament-average-2l1h-burning-ambition-ember-of-ashes\" is +5.0 %: it measures something else than the model."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Landing hits grants 7HP per damage instance.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "healing, no damage"
         },
         {
           "text": "Direct Hits against Scorched Enemies apply 20 additional Scorch (30 with Ember of Ashes) on a 0.5 second cooldown",
@@ -10367,54 +10365,54 @@
         },
         {
           "text": "Scoring 3 Direct Hits within 3?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the catalyst rule applies Scorch per hit with the 0.5 s cooldown of the first sentence; the 3-hit trigger only decides which hit carries it and every combo has six"
         },
         {
           "text": "Scorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage, and thus, triggers Revved Consumption's healing, granting 7HP per tick.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "healing, no damage"
         },
         {
           "text": "Maximum of 9 stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the damage of the combo parts: they take the damage of Aegis' averaged combo rows, which include the Banshee's Wail stacks"
         },
         {
           "text": "'Charged' Light Attacks consume 20% Sword Energy, dealing 539 [389] damage followed by two hits of 135 [95] damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
         },
         {
           "text": "Continued attacks increase the damage of the main hit by 33% and grant one stack of 'Banshee's Wail' per damage instance (3 stacks per landed swing).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
         },
         {
           "text": "Performing a Heavy Attack while Banshee's Wail is active consumes all stacks and performs an overhead strike, dealing 1054 [811] damage followed by two hits of 198 [152].",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
         },
         {
           "text": "• 1-3 Stacks: 0% increased damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
         },
         {
           "text": "• 4-6 Stacks: 54% increased damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
         },
         {
           "text": "• 7-9 Stacks: 109% increased damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
         }
       ],
       "quantum": null,
       "aegis": {
         "check": "checked",
         "rows": [
-          {
-            "row": "sword-the-lament-heavy",
-            "assumptions": [
-              "heavy"
-            ],
-            "measured": 1566.1,
-            "model": 4560.9,
-            "deviation": 1.9122
-          },
           {
             "row": "sword-the-lament-average-2l1h1r-burning-ambition",
             "assumptions": [
@@ -11892,7 +11890,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "truth",

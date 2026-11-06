@@ -4,7 +4,8 @@
   "name": "The Lament",
   "texts": [
     { "source": "clarity", "entry": "The Lament Catalyst", "hash": "393c7ef3" },
-    { "source": "clarity", "entry": "Banshee's Wail", "hash": "dec27510" }
+    { "source": "clarity", "entry": "Banshee's Wail", "hash": "dec27510" },
+    { "source": "clarity", "entry": "Revved Consumption", "hash": "0fcf758b" }
   ],
   "chargeTimeMs": {
     "value": 0,
@@ -78,6 +79,36 @@
       "delivery": "impact"
     }
   },
+  "notModelled": [
+    { "quote": "Landing hits grants 7HP per damage instance.", "reason": "healing, no damage" },
+    {
+      "quote": "Scorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage, and thus, triggers Revved Consumption's healing",
+      "reason": "healing, no damage"
+    },
+    {
+      "quote": "Scoring 3 Direct Hits within 3",
+      "reason": "the catalyst rule applies Scorch per hit with the 0.5 s cooldown of the first sentence; the 3-hit trigger only decides which hit carries it and every combo has six"
+    },
+    {
+      "quote": "Maximum of 9 stacks.",
+      "reason": "inside the damage of the combo parts: they take the damage of Aegis' averaged combo rows, which include the Banshee's Wail stacks"
+    },
+    {
+      "quote": "'Charged' Light Attacks consume 20% Sword Energy",
+      "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
+    },
+    {
+      "quote": "Continued attacks increase the damage of the main hit by 33%",
+      "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
+    },
+    {
+      "quote": "Performing a Heavy Attack while Banshee's Wail is active consumes all stacks",
+      "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)"
+    },
+    { "quote": "1-3 Stacks: 0% increased damage", "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)" },
+    { "quote": "4-6 Stacks: 54% increased damage", "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)" },
+    { "quote": "7-9 Stacks: 109% increased damage", "reason": "inside the damage of the combo parts (Aegis' averaged combo rows)" }
+  ],
   "rules": [
     {
       "id": "shot",

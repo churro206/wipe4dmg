@@ -157,6 +157,22 @@ describe("scenario generator", () => {
     expect(scenarios).toEqual([]);
     expect(skipped.map((s) => s.row.id)).toEqual(["l"]);
   });
+
+  it("leaves out a single swing of a sword: the item models its own plan, not one swing (W1)", () => {
+    const sword = { id: "blade", name: "Blade", intrinsics: [] } as unknown as Weapon;
+    const swing = (id: string, assumptions: string[], shots: number) =>
+      ({ ...row(id, "Blade", assumptions), weaponType: "sword", shots }) as AegisWeaponRow;
+    const { scenarios, skipped } = generateScenarios(
+      [swing("light", ["light"], 1), swing("heavy", ["heavy"], 1), swing("combo", ["average", "2L1H1R"], 6)],
+      { ...data, weapons: [sword] },
+      new Set(),
+    );
+    expect(scenarios.map((s) => s.aegisRow)).toEqual(["combo"]);
+    expect(skipped.map((s) => [s.row.id, s.reason])).toEqual([
+      ["light", "single swing of a sword"],
+      ["heavy", "single swing of a sword"],
+    ]);
+  });
 });
 
 const totalRow = (

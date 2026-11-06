@@ -7,8 +7,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
 - Rank (check set): Spearman 0.98 over 41 rows
-- Absolute, information only: within ±3 % 24 of 41 (check set), 107 of 183 (all counted rows, mostly Eichung)
-- Rows: 185 scenarios (32 by hand, 153 generated); fitted 46; calibration set 97; check set 41; not counted 2; core cannot run 0
+- Absolute, information only: within ±3 % 24 of 41 (check set), 107 of 180 (all counted rows, mostly Eichung)
+- Rows: 182 scenarios (32 by hand, 150 generated); fitted 45; calibration set 95; check set 41; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -148,9 +148,10 @@ Rows of the tab Weapons with an assumption the core has no switch for; they make
 - vortex frame: 1
 - wave sword frame: 1
 
-## Skipped rows (183)
+## Skipped rows (186)
 
 - no exotic weapon of the model: 183
+- single swing of a sword: 3
 
 ## Groups
 
@@ -158,7 +159,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 183 | 44 % | 45 | 41 | 0.98 | 3/3 | 1 of 4 |
+| Weapons | 417 | 180 | 43 % | 44 | 41 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 4 | 17 | 0.92 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |

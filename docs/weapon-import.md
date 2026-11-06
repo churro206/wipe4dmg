@@ -40,7 +40,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **833**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **820**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -87,7 +87,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **833**. D
 | Graviton Spike | `src/data/items/weapons/graviton-spike.json` | 1 | – |
 | Hard Light | `src/data/items/weapons/hard-light.json` | 3 | – |
 | Hawkmoon | `src/data/items/weapons/hawkmoon.json` | 10 | – |
-| Heartshadow | `src/data/items/weapons/heartshadow.json` | 4 | – |
+| Heartshadow | `src/data/items/weapons/heartshadow.json` | 0 | – |
 | Heir Apparent | `src/data/items/weapons/heir-apparent.json` | 8 | – |
 | Heirloom | `src/data/items/weapons/heirloom.json` | 11 | – |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | 19 | – |
@@ -130,7 +130,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **833**. D
 | The Colony | `src/data/items/weapons/the-colony.json` | 7 | – |
 | The Fourth Horseman | `src/data/items/weapons/the-fourth-horseman.json` | 6 | – |
 | The Jade Rabbit | `src/data/items/weapons/the-jade-rabbit.json` | 7 | – |
-| The Lament | `src/data/items/weapons/the-lament.json` | 9 | – |
+| The Lament | `src/data/items/weapons/the-lament.json` | 0 | – |
 | The Last Word | `src/data/items/weapons/the-last-word.json` | 14 | – |
 | The Navigator | `src/data/items/weapons/the-navigator.json` | 7 | – |
 | The Prospector | `src/data/items/weapons/the-prospector.json` | 5 | – |

@@ -150,6 +150,10 @@
       }
     }
   ],
+  "quantumCheck": {
+    "row": "heavies-machine-gun-deterministic-chaos-w-weaken",
+    "reason": "The item carries the Weaken rule (Vexadecimal), so the row with Weaken holds what it models; the row without it is the bare weapon (damage 118 against 136, 1.15 like the 15 % of Weaken)"
+  },
   "notModelled": [
     {
       "quote": "refills 12 ammo from reserves on trigger release",

@@ -108,6 +108,17 @@ export function generateScenarios(
       skipped.push({ row, reason: "no measured value" });
       continue;
     }
+    // A sword row of one swing ("light", "heavy") measures that swing; the item plays its own plan
+    // (a combo, the charged heavy), so the two are not the same thing (W1).
+    if (
+      row.weaponType === "sword" &&
+      row.shots === 1 &&
+      row.assumptions.length === 1 &&
+      /^(light|heavy)$/i.test(row.assumptions[0])
+    ) {
+      skipped.push({ row, reason: "single swing of a sword" });
+      continue;
+    }
     const build: Scenario["build"] = { weaponId: weapon.id };
     const effectIds: string[] = [];
     const unmapped: string[] = [];

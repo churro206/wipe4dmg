@@ -377,7 +377,7 @@ describe("src/data/weapon-status.json", () => {
       ["outbreak-perfected", "wrong-row"],
       ["deterministic-chaos", "wrong-row"],
       ["truth", "wrong-row"],
-      ["heartshadow", "wrong-row"],
+      ["heartshadow", "no-check"],
       ["the-lament", "wrong-row"],
       ["grand-overture", "wrong-row"],
       ["witherhoard", "wrong-row"],
