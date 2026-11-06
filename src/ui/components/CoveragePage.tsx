@@ -1,5 +1,6 @@
 import type { CatalogEntry, CatalogStatus } from "../../data/schema";
-import { coverageCatalog, iconUrl, statusLimits, weaponStatus } from "../data";
+import { coverageCatalog, iconUrl, statusLimits, weaponChanges, weaponStatus } from "../data";
+import { changeText } from "../weaponChanges";
 import {
   TIMES,
   aegisCell,
@@ -211,6 +212,19 @@ function WeaponTable() {
 
   return (
     <div className="ranking">
+      {weaponChanges.changes.length > 0 && (
+        <details className="weapon-changes">
+          <summary>
+            Changes since the previous version ({weaponChanges.changes.length})
+            {weaponChanges.baseline && <span className="coverage-counts"> · compared with {weaponChanges.baseline}</span>}
+          </summary>
+          <ul>
+            {weaponChanges.changes.map((change) => (
+              <li key={`${change.id}:${change.kind}`}>{changeText(change)}</li>
+            ))}
+          </ul>
+        </details>
+      )}
       <div className="ranking-controls">
         <div className="ranking-times" role="group" aria-label="Time">
           {TIMES.map(({ key, label }) => (

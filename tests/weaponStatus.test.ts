@@ -1,7 +1,10 @@
 // V1: the weapon status file (src/data/weapon-status.json). One row per weapon with what the model
 // does, how it ends against Quantum and Aegis, and a status that is computed, not claimed.
 
+import { writeFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { baselineFor } from "../scripts/lib/weaponChangesGit";
+import { diffWeaponStatus } from "../src/ui/weaponChanges";
 import rawLimits from "../src/data/status-limits.json";
 import rawQuantum from "../src/data/quantum-weapons.json";
 import rawStatus from "../src/data/weapon-status.json";
@@ -340,6 +343,12 @@ describe("src/data/weapon-status.json", () => {
       weapons: status.weapons.map((w) => (updating ? w : { ...w, planBlock: stored.get(w.id) ?? null })),
     };
     await expect(JSON.stringify(compared, null, 2) + "\n").toMatchFileSnapshot("../src/data/weapon-status.json");
+    // V4: `npm run coverage` also writes "What changed" against the newest stand in git that differs.
+    if (updating) {
+      const { weapons: before, commit } = baselineFor(compared.weapons, true);
+      const changes = { baseline: commit, changes: diffWeaponStatus(before, compared.weapons) };
+      writeFileSync("src/data/weapon-changes.json", JSON.stringify(changes, null, 2) + "\n");
+    }
   });
 
   it("follows the schema, one row per weapon", () => {

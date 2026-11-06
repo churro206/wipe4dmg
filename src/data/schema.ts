@@ -1798,6 +1798,25 @@ export const WeaponStatusFile = z.object({
 });
 export type WeaponStatusFile = z.infer<typeof WeaponStatusFile>;
 
+/** One change of a weapon against the previous stand of weapon-status.json (V4). */
+export const WeaponChange = z.object({
+  id: z.string(),
+  name: z.string(),
+  kind: z.enum(["new", "removed", "damage", "status"]),
+  time: z.enum(["s10", "s30", "s60"]).optional(), // damage: the time that moved most
+  catalyst: z.boolean().optional(), // damage: the value is the one with the catalyst
+  from: z.union([z.number(), z.string()]).optional(),
+  to: z.union([z.number(), z.string()]).optional(),
+});
+export type WeaponChange = z.infer<typeof WeaponChange>;
+
+/** "What changed" on the coverage page: the diff to the stand of `baseline` (commit), written by `npm run coverage`. */
+export const WeaponChangesFile = z.object({
+  baseline: z.string(), // short hash of the commit whose stand it is compared with; "" without one
+  changes: z.array(WeaponChange),
+});
+export type WeaponChangesFile = z.infer<typeof WeaponChangesFile>;
+
 /** One row of the Quantum tabs Primaries, Specials and Heavies (ADR 0013). */
 export const QuantumWeaponRow = z.object({
   id: z.string(), // kebab-case from tab, weapon type, name and variant

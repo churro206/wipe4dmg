@@ -1010,6 +1010,20 @@ header > .segmented {
   font-size: 0.85rem;
 }
 
+/* "What changed": the differences to the previous stand of the weapon status, above the table */
+.weapon-changes {
+  margin-bottom: 0.75rem;
+}
+.weapon-changes summary {
+  cursor: pointer;
+}
+.weapon-changes ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+  columns: 2 22rem;
+  font-size: 0.9rem;
+}
+
 /* One table per category: one header row, groups inside it; the two text columns are equally wide */
 .wiki-page table.coverage-table {
   display: table;

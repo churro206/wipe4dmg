@@ -23,6 +23,7 @@ import rawTheta from "../data/theta.json";
 import rawPackages from "../data/weapon-packages.json";
 import rawWeaponStats from "../data/weapon-stats.json";
 import rawWeaponStatus from "../data/weapon-status.json";
+import rawWeaponChanges from "../data/weapon-changes.json";
 import rawStatusLimits from "../data/status-limits.json";
 import rawExoticArmorEffects from "../data/exotic-armor-effects.json";
 import rawExoticArmor from "../data/exotic-armor.json";
@@ -33,6 +34,7 @@ import {
   ArtifactData,
   CastTimes,
   CoverageCatalog,
+  WeaponChangesFile,
   WeaponStatusFile,
   StatusLimits,
   EnergyData,
@@ -115,6 +117,8 @@ export const artifactData = ArtifactData.parse(rawArtifacts);
 export const coverageCatalog = CoverageCatalog.parse(rawCoverageCatalog);
 export const weaponStatus = WeaponStatusFile.parse(rawWeaponStatus).weapons;
 export const statusLimits = StatusLimits.parse(rawStatusLimits);
+// Changes against the previous version in git (npm run coverage).
+export const weaponChanges = WeaponChangesFile.parse(rawWeaponChanges);
 // Everything a build refers to, for buildSimulation (src/engine/buildSimulation.ts).
 export const gameData: GameData = {
   effects,

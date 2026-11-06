@@ -1,0 +1,133 @@
+{
+  "baseline": "ebdfdc1",
+  "changes": [
+    {
+      "id": "coldheart",
+      "name": "Coldheart",
+      "kind": "damage",
+      "time": "s60",
+      "catalyst": false,
+      "from": 14645,
+      "to": 23816.1
+    },
+    {
+      "id": "dead-man-s-tale",
+      "name": "Dead Man's Tale",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": true,
+      "from": 5512.2,
+      "to": 4550.2
+    },
+    {
+      "id": "dead-man-s-tale",
+      "name": "Dead Man's Tale",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Partial"
+    },
+    {
+      "id": "deathbringer",
+      "name": "Deathbringer",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "lord-of-wolves",
+      "name": "Lord of Wolves",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": true,
+      "from": 16745.3,
+      "to": 19990.8
+    },
+    {
+      "id": "lord-of-wolves",
+      "name": "Lord of Wolves",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "revision-zero",
+      "name": "Revision Zero",
+      "kind": "damage",
+      "time": "s60",
+      "catalyst": true,
+      "from": 22314.6,
+      "to": 64397.3
+    },
+    {
+      "id": "revision-zero",
+      "name": "Revision Zero",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "sunshot",
+      "name": "Sunshot",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "the-fourth-horseman",
+      "name": "The Fourth Horseman",
+      "kind": "damage",
+      "time": "s30",
+      "catalyst": true,
+      "from": 13520,
+      "to": 17062.6
+    },
+    {
+      "id": "the-fourth-horseman",
+      "name": "The Fourth Horseman",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "the-manticore",
+      "name": "The Manticore",
+      "kind": "damage",
+      "time": "s60",
+      "catalyst": true,
+      "from": 26522.1,
+      "to": 46633.8
+    },
+    {
+      "id": "the-manticore",
+      "name": "The Manticore",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Partial"
+    },
+    {
+      "id": "thunderlord",
+      "name": "Thunderlord",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": true,
+      "from": 6868,
+      "to": 14369
+    },
+    {
+      "id": "ticuu-s-divination",
+      "name": "Ticuu's Divination",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "tommy-s-matchbook",
+      "name": "Tommy's Matchbook",
+      "kind": "damage",
+      "time": "s60",
+      "catalyst": true,
+      "from": 30738,
+      "to": 44852.9
+    }
+  ]
+}

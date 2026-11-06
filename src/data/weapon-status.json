@@ -1679,7 +1679,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "collective-obligation",
@@ -2382,7 +2382,7 @@
         "check": "no row",
         "rows": []
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "dead-messenger",
@@ -2531,7 +2531,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "delicate-tomb",
@@ -6320,7 +6320,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "lorentz-driver",
@@ -8505,7 +8505,7 @@
         "check": "no row",
         "rows": []
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "riskrunner",
@@ -9586,7 +9586,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "suros-regime",
@@ -10464,7 +10464,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "the-jade-rabbit",
@@ -10925,7 +10925,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "the-navigator",
@@ -11547,7 +11547,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "ticuu-s-divination",
@@ -11653,7 +11653,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "tommy-s-matchbook",
@@ -11763,7 +11763,7 @@
           }
         ]
       },
-      "planBlock": "W2"
+      "planBlock": null
     },
     {
       "id": "touch-of-malice",
