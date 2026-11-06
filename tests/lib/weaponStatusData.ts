@@ -20,7 +20,7 @@ import {
 import { abilities, artifactData, effects, exoticArmor, weapons } from "../../src/ui/data";
 import { bareWeaponRun } from "../../src/ui/weaponBuild";
 import { ITEM_WEAPONS_DIR } from "../../scripts/lib/items/loadItems";
-import { planBlockOf, sentenceStates, statusOf, trustOf } from "../../scripts/lib/weaponStatus";
+import { planBlockOf, quantumRowFor, sentenceStates, statusOf, trustOf } from "../../scripts/lib/weaponStatus";
 import switches from "../fixtures/scenario-switches.json";
 import { fittedRows, sourcesOf } from "./fittedRows";
 import { handMadeScenarios } from "./scenarioFiles";
@@ -29,7 +29,6 @@ import { generateAbilityScenarios, generateScenarios, generateTotalScenarios } f
 import rawAbilityRows from "../../src/data/aegis-abilities.json";
 import { AegisAbilityRow } from "../../src/data/schema";
 
-const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 const round = (x: number, digits: number) => Math.round(x * 10 ** digits) / 10 ** digits;
 const SECONDS = [10, 30, 60] as const;
 const ALL_AMMO_SECONDS = 120;
@@ -103,11 +102,11 @@ export function realWeaponStatus(): WeaponStatusFile {
         const texts = clarity.filter((c) => c.itemName === w.name).map((c) => c.text);
         const sentences = sentenceStates(texts, item);
 
-        const q = quantum.find(
-          (r) => norm(r.name) === norm(w.name) && r.variant === "" && r.totalDamage !== null && r.totalShots,
-        );
-        const measured = q?.totalDamage ?? null;
-        const model = q ? run(w.id, false, ALL_AMMO_SECONDS, q.totalShots!) : null;
+        const compared = quantumRowFor(quantum, w.name, item);
+        const q = compared?.row;
+        const basis = compared?.basis ?? null;
+        const measured = q ? (basis === "total" ? q.totalDamage : q.magDamage) : null;
+        const model = q ? run(w.id, false, ALL_AMMO_SECONDS, (basis === "total" ? q.totalShots : q.magazine)!) : null;
 
         const rows = judged
           .filter((r) => r.scenario.build.weaponId === w.id)
@@ -128,8 +127,15 @@ export function realWeaponStatus(): WeaponStatusFile {
           damage: { base: over(w.id, false), catalyst: w.catalyst ? over(w.id, true) : null },
           sentences,
           quantum:
-            q && model !== null && measured !== null && deviation !== null
-              ? { row: q.id, measured: round(measured, 1), model: round(model, 1), deviation }
+            q && basis && model !== null && measured !== null && deviation !== null
+              ? {
+                  row: q.id,
+                  rowNote: q.note ?? "",
+                  basis,
+                  measured: round(measured, 1),
+                  model: round(model, 1),
+                  deviation,
+                }
               : null,
           aegis: {
             check: independent.length > 0 ? "checked" : hasFitted ? "no independent check" : "no row",

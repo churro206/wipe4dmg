@@ -36,6 +36,27 @@ const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 // "Lumina (Blessing of the Sky)" is found as "Lumina".
 const withoutNote = (s: string) => s.replace(/\(.*\)/, "");
 
+// Wipe by crit of a row is a whole number of hits, up to the rounding of the sheet.
+const HIT_COUNT_SLACK = 0.02;
+
+/** The hits of one shot of a row, if the shot has several: Wipe by Crit (Crimson 1821 / 607 = 3). */
+export function hitsPerRowShot(row: { wipe: number; critShot?: number | null; shots: number }): number | undefined {
+  if (row.shots !== 1 || !row.critShot) return undefined;
+  const hits = row.wipe / row.critShot;
+  const whole = Math.round(hits);
+  return whole >= 2 && Math.abs(hits - whole) <= HIT_COUNT_SLACK ? whole : undefined;
+}
+
+/** The shots a row names in its assumptions ("17 shots", "full mag") where its column says only 1. */
+export function shotsNamedByRow(assumptions: string[], magazine: number | null): number | undefined {
+  for (const assumption of assumptions) {
+    const count = /^(\d+) shots?$/i.exec(assumption.trim());
+    if (count) return Number(count[1]);
+    if (/^(full|1|single|first) mag$/i.test(assumption.trim()) && magazine) return magazine;
+  }
+  return undefined;
+}
+
 /** Id of a generated scenario; the Aegis row ids are unique, so are these. */
 export const generatedId = (row: { id: string }) => `gen-${row.id}`;
 
@@ -134,6 +155,8 @@ export function generateScenarios(
       continue;
     }
     if (effectIds.length > 0) build.effectIds = [...new Set(effectIds)];
+    const namedShots = row.shots === 1 ? shotsNamedByRow(row.assumptions, weapon.magazine.value) : undefined;
+    const hitsPerShot = namedShots === undefined ? hitsPerRowShot(row) : undefined;
     scenarios.push({
       id: generatedId(row),
       aegisRow: row.id,
@@ -142,7 +165,8 @@ export function generateScenarios(
       system: "generated",
       build,
       playstyle: row.assumptions,
-      shots: row.shots,
+      shots: namedShots ?? row.shots,
+      ...(hitsPerShot === undefined ? {} : { hitsPerShot }),
     });
   }
   return { scenarios, missing, skipped };

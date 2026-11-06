@@ -6,8 +6,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.96 over 41 rows
-- Absolute, information only: within ±3 % 21 of 41 (check set), 97 of 183 (all counted rows, mostly Eichung)
+- Rank (check set): Spearman 0.97 over 41 rows
+- Absolute, information only: within ±3 % 23 of 41 (check set), 105 of 183 (all counted rows, mostly Eichung)
 - Rows: 185 scenarios (32 by hand, 153 generated); fitted 45; calibration set 98; check set 41; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
@@ -49,7 +49,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-machine-gun-xenophage | machine-gun-xenophage | 737 | 737 | −0.0 % |
 | gen-pulse-rifle-graviton-lance-burst-vorpal-weapon | pulse-rifle-graviton-lance-burst-vorpal-weapon | 146 | 71 | −51.3 % |
 | gen-pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 1601 | −88.5 % |
-| gen-pulse-rifle-vigilance-wing-burst | pulse-rifle-vigilance-wing-burst | 173 | 35 | −79.7 % |
+| gen-pulse-rifle-vigilance-wing-burst | pulse-rifle-vigilance-wing-burst | 173 | 175 | +1.4 % |
 | gen-scout-rifle-mida-multi-tool | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | gen-scout-rifle-symmetry | scout-rifle-symmetry | 61 | 61 | +0.1 % |
 | gen-shotgun-conditional-finality-average-body-both-modes | shotgun-conditional-finality-average-body-both-modes | 17047 | 16279 | −4.5 % |
@@ -58,7 +58,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-sidearm-cryosthesia-77k | sidearm-cryosthesia-77k | 87 | 88 | +0.9 % |
 | gen-sidearm-forerunner | sidearm-forerunner | 298 | 298 | +0.1 % |
 | gen-sidearm-rat-king | sidearm-rat-king | 79 | 79 | +0.6 % |
-| gen-sidearm-trespasser | sidearm-trespasser | 152 | 51 | −66.4 % |
+| gen-sidearm-trespasser | sidearm-trespasser | 152 | 153 | +0.9 % |
 | gen-smg-osteo-striga-average-with-successive-poison | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
 | gen-smg-riskrunner-average-arc-conductor-peacekeepers | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |
 | gen-sniper-rifle-borealis | sniper-rifle-borealis | 831 | 833 | +0.2 % |
@@ -158,7 +158,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 183 | 44 % | 44 | 41 | 0.96 | 3/3 | 1 of 4 |
+| Weapons | 417 | 183 | 44 % | 44 | 41 | 0.97 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 4 | 17 | 0.92 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
@@ -222,7 +222,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | machine-gun-xenophage | 737 | 737 | −0.0 % |
 | Weapons | pulse-rifle-graviton-lance-burst-vorpal-weapon | 146 | 71 | −51.3 % |
 | Weapons | pulse-rifle-outbreak-perfected-average-per-burst-max-nanites | 13886 | 1601 | −88.5 % |
-| Weapons | pulse-rifle-vigilance-wing-burst | 173 | 35 | −79.7 % |
+| Weapons | pulse-rifle-vigilance-wing-burst | 173 | 175 | +1.4 % |
 | Weapons | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 23629 | −20.8 % |
 | Weapons | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | Weapons | scout-rifle-symmetry | 61 | 61 | +0.1 % |
@@ -232,7 +232,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | sidearm-cryosthesia-77k | 87 | 88 | +0.9 % |
 | Weapons | sidearm-forerunner | 298 | 298 | +0.1 % |
 | Weapons | sidearm-rat-king | 79 | 79 | +0.6 % |
-| Weapons | sidearm-trespasser | 152 | 51 | −66.4 % |
+| Weapons | sidearm-trespasser | 152 | 153 | +0.9 % |
 | Weapons | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 1476 | −73.1 % |
 | Weapons | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
 | Weapons | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |

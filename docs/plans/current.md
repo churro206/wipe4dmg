@@ -10,7 +10,9 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 
 - [x] S0, V1, V2, V3 (Commits, Entscheidungen: `history-2026-11.md`). Details zu V4: dort, Abschnitt „Setup und Plan V“.
 
-**Weiter mit M3:** Der Inhaber tippt zuerst `/usage` (Wert in den Bericht, nachher nochmal). Skill `abarbeiten`, also `npm run blocks` im Hintergrund. Der Review von M3 prüft V1 bis V3 mit (Bereich in `.git/blocks-state.json`).
+- [x] P0 Prüfung reparieren (Inhaber 2026-11-06, vor M3): Items nennen ihre Quantum-Vergleichszeile, Primaries vergleichen je Magazin, Aegis-Einheiten (Salve, ganzes Magazin) angeglichen, Ausreißer eingeordnet. Am Spielschaden ändert sich nichts. Gate: Tests, tsc, lint, Bericht.
+
+**Danach weiter mit M3:** Der Inhaber tippt zuerst `/usage` (Wert in den Bericht, nachher nochmal). Skill `abarbeiten`, also `npm run blocks` im Hintergrund. Der Review von M3 prüft V1 bis V3 und P0 mit (Bereich in `.git/blocks-state.json`).
 
 - [ ] M3 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate, `/usage` vorher und nachher. Wiederherstellen: Thunderlord.
 - [ ] V4 „What changed“ auf der Seite. Gate: Test gegen einen Stand aus git.

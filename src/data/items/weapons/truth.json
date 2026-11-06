@@ -6,6 +6,10 @@
     { "source": "clarity", "entry": "Prototype Trueseeker", "hash": "68ebb845" },
     { "source": "clarity", "entry": "Truth Catalyst", "hash": "5526e36b" }
   ],
+  "quantumCheck": {
+    "row": "heavies-rocket-launcher-truth-2",
+    "reason": "The item counts the Trueseeker clusters on the boss; this row has all bomblets hit. The other row has none."
+  },
   "chargeTimeMs": {
     "value": 0,
     "source": {

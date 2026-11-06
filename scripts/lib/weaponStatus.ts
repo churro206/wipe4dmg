@@ -1,8 +1,44 @@
 // The weapon status (V1): pure rules behind src/data/weapon-status.json. The numbers come from the
 // engine (tests/lib/weaponStatusData.ts); here are the sentences, the trust and the computed status.
 
-import type { Source, WeaponStatusFile } from "../../src/data/schema.ts";
+import type { QuantumWeaponRow, Source, WeaponStatusFile } from "../../src/data/schema.ts";
 import { itemQuotes, uncoveredSentences } from "./items/uncovered.ts";
+
+const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+export type QuantumBasis = "total" | "magazine";
+
+/** What a row can be compared by: all ammo, or one magazine where the ammo is unlimited. */
+function basisOf(row: QuantumWeaponRow): QuantumBasis | null {
+  if (row.totalDamage !== null && row.totalShots) return "total";
+  if (row.magDamage !== null && row.magazine) return "magazine";
+  return null;
+}
+
+/**
+ * The Quantum row a weapon is compared with: the row its item names (`quantumCheck`), else the row its
+ * timing comes from, else the first row without a variant. Never the row with the closest number.
+ */
+export function quantumRowFor(
+  rows: QuantumWeaponRow[],
+  name: string,
+  item: unknown,
+): { row: QuantumWeaponRow; basis: QuantumBasis } | null {
+  const usable = (row: QuantumWeaponRow | undefined) => {
+    const basis = row ? basisOf(row) : null;
+    return row && basis ? { row, basis } : null;
+  };
+  const named = (item as { quantumCheck?: { row: string } } | null)?.quantumCheck?.row;
+  if (named) {
+    const found = usable(rows.find((r) => r.id === named));
+    if (!found) throw new Error(`quantumCheck of ${name}: no usable Quantum row "${named}"`);
+    return found;
+  }
+  const timing = /\$quantum\[([^\]]+)\]\.timing\.totalShots/.exec(JSON.stringify(item ?? null))?.[1];
+  const fromTiming = usable(rows.find((r) => r.id === timing));
+  if (fromTiming) return fromTiming;
+  return usable(rows.find((r) => norm(r.name) === norm(name) && r.variant === "" && basisOf(r))) ?? null;
+}
 
 export type SentenceState = { text: string; state: "rule" | "notModelled" | "open"; reason?: string };
 

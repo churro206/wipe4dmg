@@ -47,7 +47,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-ace-of-spades",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1261,
+        "model": 1261,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -111,6 +118,8 @@
       ],
       "quantum": {
         "row": "specials-trace-rifle-ager-s-scepter",
+        "rowNote": "",
+        "basis": "total",
         "measured": 18430,
         "model": 18430,
         "deviation": 0
@@ -213,7 +222,14 @@
           "reason": "no adds (ADR 0015)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-grenade-launcher-alethonym-spam",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 102,
+        "model": 1273,
+        "deviation": 11.4804
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -315,7 +331,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-linear-fusion-rifle-arbalest-cata",
+        "rowNote": "",
+        "basis": "total",
+        "measured": 22806,
+        "model": 22806,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -388,7 +411,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-pulse-rifle-bad-juju",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 992,
+        "model": 992,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -398,8 +428,8 @@
               "burst"
             ],
             "measured": 95.8,
-            "model": 32,
-            "deviation": -0.6661
+            "model": 96,
+            "deviation": 0.0018
           }
         ]
       },
@@ -684,7 +714,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-submachine-gun-barrow-dyad",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1190,
+        "model": 1190,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -762,6 +799,8 @@
       ],
       "quantum": {
         "row": "specials-fusion-rifle-bastion",
+        "rowNote": "",
+        "basis": "total",
         "measured": 33516,
         "model": 33516,
         "deviation": 0
@@ -867,6 +906,8 @@
       ],
       "quantum": {
         "row": "specials-sniper-rifle-borealis",
+        "rowNote": "",
+        "basis": "total",
         "measured": 16660,
         "model": 16660,
         "deviation": 0
@@ -926,6 +967,8 @@
       ],
       "quantum": {
         "row": "specials-sidearm-buried-bloodline",
+        "rowNote": "Without weaken",
+        "basis": "total",
         "measured": 16100,
         "model": 16100,
         "deviation": 0
@@ -999,7 +1042,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-auto-rifle-centrifuse",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1575,
+        "model": 1575,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -1173,6 +1223,8 @@
       ],
       "quantum": {
         "row": "specials-auto-rifle-choir-of-one",
+        "rowNote": "Hip-fire, after splitting",
+        "basis": "total",
         "measured": 25650,
         "model": 31140,
         "deviation": 0.214
@@ -1273,6 +1325,8 @@
       ],
       "quantum": {
         "row": "specials-sniper-rifle-cloudstrike",
+        "rowNote": "Assumes precision hit counter is reset on every reload; Strikes occur every three precision hits",
+        "basis": "total",
         "measured": 20410,
         "model": 20410,
         "deviation": 0
@@ -1363,6 +1417,8 @@
       ],
       "quantum": {
         "row": "specials-trace-rifle-coldheart",
+        "rowNote": "",
+        "basis": "total",
         "measured": 14645,
         "model": 14645,
         "deviation": 0
@@ -1423,7 +1479,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-pulse-rifle-collective-obligation",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1404,
+        "model": 1404,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -1433,8 +1496,8 @@
               "burst"
             ],
             "measured": 116.3,
-            "model": 39,
-            "deviation": -0.6647
+            "model": 117,
+            "deviation": 0.006
           }
         ]
       },
@@ -1475,6 +1538,8 @@
       ],
       "quantum": {
         "row": "specials-shotgun-conditional-finality",
+        "rowNote": "Frozen targets do not benefit from precision damage",
+        "basis": "total",
         "measured": 28330,
         "model": 25438,
         "deviation": -0.1021
@@ -1544,7 +1609,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-crimson",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 984,
+        "model": 984,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -1554,8 +1626,8 @@
               "burst"
             ],
             "measured": 120.7,
-            "model": 41,
-            "deviation": -0.6602
+            "model": 123,
+            "deviation": 0.0193
           }
         ]
       },
@@ -1588,7 +1660,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-sidearm-cryosthesia-77k",
+        "rowNote": "Does not consider cryo shot",
+        "basis": "magazine",
+        "measured": 1056,
+        "model": 1056,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -1747,6 +1826,8 @@
       ],
       "quantum": {
         "row": "heavies-sniper-rifle-d-a-r-c-i",
+        "rowNote": "Considers 100% uptime on Target Acquired; considers jolt",
+        "basis": "total",
         "measured": 25676,
         "model": 24676,
         "deviation": -0.0389
@@ -1964,6 +2045,8 @@
       ],
       "quantum": {
         "row": "specials-grenade-launcher-dead-messenger",
+        "rowNote": "",
+        "basis": "total",
         "measured": 27660,
         "model": 27660,
         "deviation": 0
@@ -2071,7 +2154,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-fusion-rifle-delicate-tomb-hip-fire",
+        "rowNote": "Does not consider Jolt. Fires 16 bolts in a wide line, 2 bolts at a time",
+        "basis": "total",
+        "measured": 23296,
+        "model": 23151.3,
+        "deviation": -0.0062
+      },
       "aegis": {
         "check": "no independent check",
         "rows": []
@@ -2138,7 +2228,14 @@
           "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-machine-gun-deterministic-chaos-w-o-weaken",
+        "rowNote": "This assumes 0% weaken uptime",
+        "basis": "total",
+        "measured": 44368,
+        "model": 51279.5,
+        "deviation": 0.1558
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -2230,7 +2327,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-sidearm-devil-s-ruin",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1580,
+        "model": 1580,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -2303,7 +2407,14 @@
           "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-trace-rifle-divinity-base-damage-no-buffs",
+        "rowNote": "Still assumes Penance; Penance will benefit from any buffs or debuffs applied",
+        "basis": "total",
+        "measured": 7050,
+        "model": 20825,
+        "deviation": 1.9539
+      },
       "aegis": {
         "check": "no row",
         "rows": []
@@ -2402,10 +2513,12 @@
         }
       ],
       "quantum": {
-        "row": "heavies-rocket-launcher-dragon-s-breath",
-        "measured": 15389,
+        "row": "heavies-rocket-launcher-dragon-s-breath-2",
+        "rowNote": "3x fuel, refueled by ignitions",
+        "basis": "total",
+        "measured": 26444,
         "model": 32866.4,
-        "deviation": 1.1357
+        "deviation": 0.2429
       },
       "aegis": {
         "check": "checked",
@@ -2480,7 +2593,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-shotgun-duality-cata-slug",
+        "rowNote": "Assumes all precision hits",
+        "basis": "total",
+        "measured": 21471,
+        "model": 18932.3,
+        "deviation": -0.1182
+      },
       "aegis": {
         "check": "no independent check",
         "rows": []
@@ -2548,6 +2668,8 @@
       ],
       "quantum": {
         "row": "specials-glaive-edge-of-action",
+        "rowNote": "alt-fire is a small bubble with a STACKING +5% damage buff (multiplies with well, bubble, etc.)",
+        "basis": "total",
         "measured": 14007,
         "model": 14007,
         "deviation": 0
@@ -2629,6 +2751,8 @@
       ],
       "quantum": {
         "row": "specials-glaive-edge-of-concurrence",
+        "rowNote": "Currently, this does not implement alt-fire in this calculation",
+        "basis": "total",
         "measured": 13893,
         "model": 13893,
         "deviation": 0
@@ -2706,6 +2830,8 @@
       ],
       "quantum": {
         "row": "specials-glaive-edge-of-intent",
+        "rowNote": "",
+        "basis": "total",
         "measured": 17174,
         "model": 17174,
         "deviation": 0
@@ -2917,6 +3043,8 @@
       ],
       "quantum": {
         "row": "specials-hand-cannon-eriana-s-vow",
+        "rowNote": "Assumes First Glance + catalyst",
+        "basis": "total",
         "measured": 17185,
         "model": 17185,
         "deviation": 0
@@ -2989,10 +3117,12 @@
         }
       ],
       "quantum": {
-        "row": "specials-linear-fusion-rifle-euphony",
-        "measured": 23940,
+        "row": "specials-linear-fusion-rifle-euphony-2",
+        "rowNote": "With Threadlings, assumes Threadlings detonate instantly inside the boss when spawned",
+        "basis": "total",
+        "measured": 46943,
         "model": 45968.2,
-        "deviation": 0.9201
+        "deviation": -0.0208
       },
       "aegis": {
         "check": "checked",
@@ -3148,6 +3278,8 @@
       ],
       "quantum": {
         "row": "heavies-rocket-launcher-eyes-of-tomorrow",
+        "rowNote": "",
+        "basis": "total",
         "measured": 27060,
         "model": 27060,
         "deviation": 0
@@ -3221,7 +3353,7 @@
     {
       "id": "fighting-lion",
       "name": "Fighting Lion",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -3291,7 +3423,14 @@
           "reason": "no adds (ADR 0015)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-grenade-launcher-fighting-lion",
+        "rowNote": "Without Volatile",
+        "basis": "magazine",
+        "measured": 581,
+        "model": 581,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -3364,7 +3503,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-sidearm-final-warning",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 2200,
+        "model": 2200,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -3432,7 +3578,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-linear-fusion-rifle-finality-s-auger",
+        "rowNote": "Base",
+        "basis": "magazine",
+        "measured": 7668,
+        "model": 7666.7,
+        "deviation": -0.0002
+      },
       "aegis": {
         "check": "no independent check",
         "rows": []
@@ -3480,6 +3633,8 @@
       ],
       "quantum": {
         "row": "specials-sidearm-forerunner",
+        "rowNote": "",
+        "basis": "total",
         "measured": 20860,
         "model": 20860,
         "deviation": 0
@@ -3572,6 +3727,8 @@
       ],
       "quantum": {
         "row": "heavies-rocket-launcher-gjallarhorn",
+        "rowNote": "",
+        "basis": "total",
         "measured": 20636,
         "model": 20636,
         "deviation": 0
@@ -3602,7 +3759,7 @@
     {
       "id": "grand-overture",
       "name": "Grand Overture",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -3637,7 +3794,14 @@
           "reason": "no damage against a boss"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-machine-gun-grand-overture-w-rockets",
+        "rowNote": "Does not deal precision damage; shoot 20 rounds > swap mode > shoot 20 rockets > reload",
+        "basis": "total",
+        "measured": 61480,
+        "model": 61480,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -3726,7 +3890,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-pulse-rifle-graviton-lance",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 2115,
+        "model": 2130,
+        "deviation": 0.0071
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -3891,7 +4062,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-graviton-spike-stasis-mode",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 2314,
+        "model": 2296.4,
+        "deviation": -0.0076
+      },
       "aegis": {
         "check": "no independent check",
         "rows": []
@@ -3929,7 +4107,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-auto-rifle-hard-light",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1372,
+        "model": 1372,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -4003,7 +4188,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-hawkmoon-cata",
+        "rowNote": "x7 Paracausal Shot on final round",
+        "basis": "magazine",
+        "measured": 2785,
+        "model": 873,
+        "deviation": -0.6865
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -4022,8 +4214,8 @@
               "full mag"
             ],
             "measured": 4617.7,
-            "model": 97,
-            "deviation": -0.979
+            "model": 1669.8,
+            "deviation": -0.6384
           },
           {
             "row": "hand-cannon-hawkmoon-illegally-modded-holster-paracausal-shot-full-mag-pre-stacked-using-heavy-burst",
@@ -4034,8 +4226,8 @@
               "pre-stacked using heavy burst"
             ],
             "measured": 7947.3,
-            "model": 97,
-            "deviation": -0.9878
+            "model": 1669.8,
+            "deviation": -0.7899
           }
         ]
       },
@@ -4162,6 +4354,8 @@
       ],
       "quantum": {
         "row": "heavies-machine-gun-heir-apparent",
+        "rowNote": "",
+        "basis": "total",
         "measured": 25080,
         "model": 25080,
         "deviation": 0
@@ -4328,7 +4522,14 @@
           "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-bow-hierarchy-of-needs",
+        "rowNote": "Arrows are capable of overpenetrating targets",
+        "basis": "magazine",
+        "measured": 223,
+        "model": 223,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -4404,7 +4605,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-sniper-rifle-ice-breaker",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 12240,
+        "model": 12234.4,
+        "deviation": -0.0005
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -4494,6 +4702,8 @@
       ],
       "quantum": {
         "row": "specials-sniper-rifle-izanagi-s-burden",
+        "rowNote": "",
+        "basis": "total",
         "measured": 13180,
         "model": 13180,
         "deviation": 0
@@ -4586,7 +4796,7 @@
     {
       "id": "khvostov-7g-0x",
       "name": "Khvostov 7G-0X",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -4621,7 +4831,14 @@
           "reason": "needs orb energy (Plan C)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-auto-rifle-khvostov-7g-0x",
+        "rowNote": "with ricochet rounds",
+        "basis": "magazine",
+        "measured": 1627,
+        "model": 1628.2,
+        "deviation": 0.0008
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -4692,7 +4909,14 @@
           "reason": "no adds (ADR 0015)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-bow-le-monarque",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 202,
+        "model": 622,
+        "deviation": 2.0792
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -4757,7 +4981,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-shotgun-legend-of-acrius-cata",
+        "rowNote": "Considers reloading entire magazine",
+        "basis": "total",
+        "measured": 37200,
+        "model": 30544,
+        "deviation": -0.1789
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -4803,6 +5034,8 @@
       ],
       "quantum": {
         "row": "heavies-bow-leviathan-s-breath",
+        "rowNote": "Without catalyst",
+        "basis": "total",
         "measured": 19782,
         "model": 19782,
         "deviation": 0
@@ -4897,7 +5130,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-trace-rifle-lodestar",
+        "rowNote": "Hip-Fire",
+        "basis": "magazine",
+        "measured": 1875,
+        "model": 1875,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -5055,6 +5295,8 @@
       ],
       "quantum": {
         "row": "specials-linear-fusion-rifle-lorentz-driver",
+        "rowNote": "",
+        "basis": "total",
         "measured": 22806,
         "model": 22806,
         "deviation": 0
@@ -5120,7 +5362,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-lumina",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1261,
+        "model": 1261,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -5138,7 +5387,7 @@
     {
       "id": "malfeasance",
       "name": "Malfeasance",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -5184,7 +5433,14 @@
           "reason": "needs cross-weapon status (Blighted); about +25 % while a Witherhoard blight stands"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-malfeasance",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 3140,
+        "model": 3140,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -5208,8 +5464,8 @@
               "Vorpal Weapon"
             ],
             "measured": 6538.2,
-            "model": 103,
-            "deviation": -0.9842
+            "model": 9321,
+            "deviation": 0.4256
           }
         ]
       },
@@ -5268,6 +5524,8 @@
       ],
       "quantum": {
         "row": "specials-fusion-rifle-merciless",
+        "rowNote": "Damage decreases per bolt at higher stacks of Conserve Momentum",
+        "basis": "total",
         "measured": 22155,
         "model": 21945,
         "deviation": -0.0095
@@ -5282,8 +5540,8 @@
               "full mag"
             ],
             "measured": 9232.6,
-            "model": 1155,
-            "deviation": -0.8749
+            "model": 9240,
+            "deviation": 0.0008
           },
           {
             "row": "fusion-rifle-merciless-conserve-momentum-x0-full-mag",
@@ -5292,8 +5550,8 @@
               "full mag"
             ],
             "measured": 9435.3,
-            "model": 1155,
-            "deviation": -0.8776
+            "model": 9240,
+            "deviation": -0.0207
           },
           {
             "row": "sustained-merciless",
@@ -5347,6 +5605,8 @@
       ],
       "quantum": {
         "row": "heavies-trace-rifle-microcosm",
+        "rowNote": "",
+        "basis": "total",
         "measured": 31955,
         "model": 31955,
         "deviation": 0
@@ -5428,7 +5688,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-scout-rifle-mida-multi-tool",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1184,
+        "model": 1184,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -5502,7 +5769,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-auto-rifle-monte-carlo",
+        "rowNote": "Bayonet does 1386",
+        "basis": "magazine",
+        "measured": 1232,
+        "model": 1232,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -5576,7 +5850,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-auto-rifle-necrochasm",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1200,
+        "model": 1200,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -5795,6 +6076,8 @@
       ],
       "quantum": {
         "row": "heavies-fusion-rifle-one-thousand-voices",
+        "rowNote": "Does not consider Scorch; with ignition",
+        "basis": "total",
         "measured": 28430,
         "model": 28827.6,
         "deviation": 0.014
@@ -5955,7 +6238,14 @@
           "reason": "no adds (ADR 0015)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-submachine-gun-osteo-striga",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1218,
+        "model": 1712,
+        "deviation": 0.4056
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -6154,7 +6444,14 @@
           "reason": "no adds (ADR 0015): Disease Vector nanites come from enemies that die with nanites"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-pulse-rifle-outbreak-perfected",
+        "rowNote": "Collections roll",
+        "basis": "magazine",
+        "measured": 1152,
+        "model": 2593.5,
+        "deviation": 1.2513
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -6216,6 +6513,8 @@
       ],
       "quantum": {
         "row": "heavies-grenade-launcher-parasite",
+        "rowNote": "",
+        "basis": "total",
         "measured": 38412,
         "model": 38412,
         "deviation": 0
@@ -6377,7 +6676,7 @@
     {
       "id": "quicksilver-storm",
       "name": "Quicksilver Storm",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -6412,7 +6711,14 @@
           "reason": "needs missile number from Quantum (derived from the row's magazine; the tooltip 160 is on another scale)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-auto-rifle-quicksilver-storm",
+        "rowNote": "DPS assumes bullets + rockets.",
+        "basis": "magazine",
+        "measured": 1560,
+        "model": 1560,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -6481,7 +6787,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-sidearm-rat-king",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1185,
+        "model": 1185,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -6563,7 +6876,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-pulse-rifle-red-death-reformed",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1230,
+        "model": 1230,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -6574,8 +6894,8 @@
               "undamaged"
             ],
             "measured": 123.1,
-            "model": 41,
-            "deviation": -0.6668
+            "model": 123,
+            "deviation": -0.0005
           }
         ]
       },
@@ -6782,7 +7102,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-submachine-gun-riskrunner",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1316,
+        "model": 1316,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -6873,6 +7200,8 @@
       ],
       "quantum": {
         "row": "specials-trace-rifle-ruinous-effigy",
+        "rowNote": "",
+        "basis": "total",
         "measured": 19270,
         "model": 19270,
         "deviation": 0
@@ -7013,6 +7342,8 @@
       ],
       "quantum": {
         "row": "heavies-machine-gun-service-of-luzaku",
+        "rowNote": "",
+        "basis": "total",
         "measured": 47100,
         "model": 47100,
         "deviation": 0
@@ -7320,6 +7651,8 @@
       ],
       "quantum": {
         "row": "specials-shotgun-slayer-s-fang",
+        "rowNote": "Splits into 7 subprojectiles on hit, assumes all precision hits",
+        "basis": "total",
         "measured": 33615,
         "model": 33615,
         "deviation": 0
@@ -7361,7 +7694,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-linear-fusion-rifle-sleeper-simulant-cata",
+        "rowNote": "",
+        "basis": "total",
+        "measured": 37264,
+        "model": 37264,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -7444,6 +7784,8 @@
       ],
       "quantum": {
         "row": "specials-sniper-rifle-still-hunt",
+        "rowNote": "Magazine is reloaded on cast, but golden gun shots are from the magazine",
+        "basis": "total",
         "measured": 20940,
         "model": 13180,
         "deviation": -0.3706
@@ -7553,7 +7895,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-sturm",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 981,
+        "model": 981,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -7619,7 +7968,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-sunshot",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1224,
+        "model": 1224,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -7809,7 +8165,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-scout-rifle-symmetry",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1220,
+        "model": 1220,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -7935,7 +8298,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-submachine-gun-tarrabah",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1190,
+        "model": 1190,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -8013,7 +8383,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-fusion-rifle-telesto-cata",
+        "rowNote": "",
+        "basis": "total",
+        "measured": 21546,
+        "model": 21546,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -8102,7 +8479,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-fusion-rifle-tesselation",
+        "rowNote": "",
+        "basis": "total",
+        "measured": 20174,
+        "model": 20174,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -8182,6 +8566,8 @@
       ],
       "quantum": {
         "row": "specials-shotgun-the-chaperone",
+        "rowNote": "",
+        "basis": "total",
         "measured": 13482,
         "model": 13482,
         "deviation": 0
@@ -8243,7 +8629,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-grenade-launcher-the-colony-cata",
+        "rowNote": "",
+        "basis": "total",
+        "measured": 20875,
+        "model": 20875,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -8312,6 +8705,8 @@
       ],
       "quantum": {
         "row": "specials-shotgun-the-fourth-horseman",
+        "rowNote": "",
+        "basis": "total",
         "measured": 15627,
         "model": 13520,
         "deviation": -0.1348
@@ -8326,8 +8721,8 @@
               "full mag"
             ],
             "measured": 4195.8,
-            "model": 676,
-            "deviation": -0.8389
+            "model": 2704,
+            "deviation": -0.3555
           }
         ]
       },
@@ -8609,7 +9004,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-the-last-word",
+        "rowNote": "Hip-fire precision damage",
+        "basis": "magazine",
+        "measured": 1408,
+        "model": 1408,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -8761,6 +9163,8 @@
       ],
       "quantum": {
         "row": "specials-trace-rifle-the-navigator",
+        "rowNote": "",
+        "basis": "total",
         "measured": 14065,
         "model": 14065,
         "deviation": 0
@@ -8814,7 +9218,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-grenade-launcher-the-prospector-cata",
+        "rowNote": "Assumes no bomblets contact the boss (DPS minimum)",
+        "basis": "total",
+        "measured": 20250,
+        "model": 20250,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -8916,7 +9327,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+        "rowNote": "Fires in a burst, assumes 100% Charge Accelerant uptime",
+        "basis": "total",
+        "measured": 41328,
+        "model": 41296.1,
+        "deviation": -0.0008
+      },
       "aegis": {
         "check": "no independent check",
         "rows": []
@@ -8956,6 +9374,8 @@
       ],
       "quantum": {
         "row": "heavies-rocket-launcher-the-wardcliff-coil",
+        "rowNote": "",
+        "basis": "total",
         "measured": 19200,
         "model": 19200,
         "deviation": 0
@@ -9097,7 +9517,14 @@
           "reason": "no damage against a boss"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-hand-cannon-thorn",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 873,
+        "model": 1953,
+        "deviation": 1.2371
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -9164,6 +9591,8 @@
       ],
       "quantum": {
         "row": "heavies-machine-gun-thunderlord",
+        "rowNote": "",
+        "basis": "total",
         "measured": 39373,
         "model": 38279,
         "deviation": -0.0278
@@ -9254,7 +9683,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-bow-ticuu-s-divination",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 209,
+        "model": 209,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -9328,7 +9764,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-auto-rifle-tommy-s-matchbook",
+        "rowNote": "Assumes normal 20 bullets + 80 buffed while burning; considers ignitions and approx. scorch",
+        "basis": "magazine",
+        "measured": 5680,
+        "model": 4700,
+        "deviation": -0.1725
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -9465,6 +9908,8 @@
       ],
       "quantum": {
         "row": "heavies-shotgun-tractor-cannon",
+        "rowNote": "Assumes catalyst, base damage",
+        "basis": "total",
         "measured": 8928,
         "model": 8928,
         "deviation": 0
@@ -9551,7 +9996,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-sidearm-traveler-s-chosen-cata",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1343,
+        "model": 1343,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -9605,7 +10057,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-sidearm-trespasser",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1530,
+        "model": 1530,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -9613,8 +10072,8 @@
             "row": "sidearm-trespasser",
             "assumptions": [],
             "measured": 151.7,
-            "model": 51,
-            "deviation": -0.6638
+            "model": 153,
+            "deviation": 0.0086
           }
         ]
       },
@@ -9647,7 +10106,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-bow-trinity-ghoul-cata",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 219,
+        "model": 73,
+        "deviation": -0.6667
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -9718,10 +10184,12 @@
         }
       ],
       "quantum": {
-        "row": "heavies-rocket-launcher-truth",
-        "measured": 35940,
+        "row": "heavies-rocket-launcher-truth-2",
+        "rowNote": "Assumes starting with Prototype Trueseeker, all bomblets hit the boss",
+        "basis": "total",
+        "measured": 28752,
         "model": 30120,
-        "deviation": -0.1619
+        "deviation": 0.0476
       },
       "aegis": {
         "check": "checked",
@@ -9833,7 +10301,7 @@
     {
       "id": "two-tailed-fox",
       "name": "Two-Tailed Fox",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -9859,10 +10327,12 @@
         }
       ],
       "quantum": {
-        "row": "heavies-rocket-launcher-two-tailed-fox",
-        "measured": 23400,
+        "row": "heavies-rocket-launcher-two-tailed-fox-2",
+        "rowNote": "Approximates scorch; considers ignitions",
+        "basis": "total",
+        "measured": 26950,
         "model": 27034.8,
-        "deviation": 0.1553
+        "deviation": 0.0031
       },
       "aegis": {
         "check": "checked",
@@ -9915,7 +10385,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-bow-verglass-curve",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 209,
+        "model": 209,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -9933,7 +10410,7 @@
     {
       "id": "vex-mythoclast",
       "name": "Vex Mythoclast",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -9995,7 +10472,14 @@
           "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-fusion-rifle-vex-mythoclast",
+        "rowNote": "excludes linear shots",
+        "basis": "magazine",
+        "measured": 2825,
+        "model": 2825,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -10135,6 +10619,8 @@
       ],
       "quantum": {
         "row": "specials-glaive-vexcalibur",
+        "rowNote": "",
+        "basis": "total",
         "measured": 18975,
         "model": 18975,
         "deviation": 0
@@ -10210,7 +10696,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-pulse-rifle-vigilance-wing",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1750,
+        "model": 1750,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -10220,8 +10713,8 @@
               "burst"
             ],
             "measured": 172.6,
-            "model": 35,
-            "deviation": -0.7973
+            "model": 175,
+            "deviation": 0.0137
           }
         ]
       },
@@ -10484,6 +10977,8 @@
       ],
       "quantum": {
         "row": "heavies-sniper-rifle-whisper-of-the-worm",
+        "rowNote": "",
+        "basis": "total",
         "measured": 32300,
         "model": 32300,
         "deviation": 0
@@ -10565,7 +11060,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-scout-rifle-wicked-implement",
+        "rowNote": "Assumes Creeping Attrition from beginning shot, solo setting",
+        "basis": "magazine",
+        "measured": 1882,
+        "model": 1220,
+        "deviation": -0.3518
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -10639,6 +11141,8 @@
       ],
       "quantum": {
         "row": "heavies-glaive-winterbite",
+        "rowNote": "This assumes there is a freeze between every shot (standing far enough away)",
+        "basis": "total",
         "measured": 34218,
         "model": 34218,
         "deviation": 0
@@ -10716,7 +11220,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-bow-wish-ender",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 523,
+        "model": 523,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -10946,7 +11457,14 @@
           "state": "open"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-bow-wish-keeper",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 214,
+        "model": 214,
+        "deviation": 0
+      },
       "aegis": {
         "check": "no row",
         "rows": []
@@ -10956,7 +11474,7 @@
     {
       "id": "witherhoard",
       "name": "Witherhoard",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -11002,7 +11520,14 @@
           "reason": "needs ground pool (Quantum's row \"passive, ground\" is lower)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-grenade-launcher-witherhoard-passive",
+        "rowNote": "This assumes you reapply the frame after the DOT expires; reload during wait",
+        "basis": "total",
+        "measured": 41180,
+        "model": 41180,
+        "deviation": 0
+      },
       "aegis": {
         "check": "checked",
         "rows": [
@@ -11073,6 +11598,8 @@
       ],
       "quantum": {
         "row": "heavies-machine-gun-xenophage",
+        "rowNote": "Does not deal precision damage",
+        "basis": "total",
         "measured": 21373,
         "model": 21373,
         "deviation": 0

@@ -1737,8 +1737,18 @@ export const WeaponStatusFile = z.object({
           reason: z.string().optional(),
         }),
       ),
-      // All ammo of the weapon against Quantum's "Theoretical Total Damage"; null without such a row.
-      quantum: z.object({ row: z.string(), measured: z.number(), model: z.number(), deviation: z.number() }).nullable(),
+      // Against the Quantum row the weapon models: all ammo against "Theoretical Total Damage", or one
+      // magazine where the ammo is unlimited; null without such a row.
+      quantum: z
+        .object({
+          row: z.string(),
+          rowNote: z.string(), // the assumption of the row, as Quantum writes it
+          basis: z.enum(["total", "magazine"]),
+          measured: z.number(),
+          model: z.number(),
+          deviation: z.number(),
+        })
+        .nullable(),
       aegis: z.object({
         check: z.enum(["checked", "no independent check", "no row"]),
         rows: z.array(
@@ -2073,6 +2083,8 @@ export const WeaponItem = z
     texts: z.array(ItemText).min(1),
     parts: z.record(z.string(), ItemPart),
     notModelled: z.array(ItemNotModelled).optional(),
+    // The Quantum row that holds what the item models, where it is not the row of its timing.
+    quantumCheck: z.object({ row: z.string(), reason: z.string() }).optional(),
   })
   .catchall(z.unknown())
   .superRefine((item, ctx) => {

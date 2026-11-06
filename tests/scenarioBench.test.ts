@@ -41,6 +41,7 @@ import {
   generateScenarios,
   generateTotalScenarios,
   lotOf,
+  shotsNamedByRow,
   STAT_200,
 } from "./lib/scenarioGen";
 
@@ -115,7 +116,9 @@ describe("scenarios", () => {
       expect([s.wipe, s.fullModifiers]).toEqual([row!.wipe, row!.fullModifiers]);
       // The playstyle is the row's own list of assumptions.
       expect(s.playstyle).toEqual(row!.assumptions);
-      expect(s.shots).toBe(row!.shots);
+      // The shots of its column, or those its assumptions name where the column says 1 ("full mag").
+      const magazine = weapons.find((w) => w.id === s.build.weaponId)?.magazine.value ?? null;
+      expect([row!.shots, shotsNamedByRow(row!.assumptions, magazine)]).toContain(s.shots);
     },
   );
 

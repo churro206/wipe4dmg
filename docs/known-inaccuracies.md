@@ -6,7 +6,18 @@ Abweichungen des Modells, die bewusst stehen bleiben (Regel „Breite vor Genaui
 
 Nur eine Zeile hier, die den Waffennamen nennt, macht eine Abweichung gegen Quantum über der Grenze in `npm run blocks` grün (nur berichtet). Format: `- **<Waffe> (<Datum>):** <Abweichung in %, Grund>.` 
 - **Choir of One (2026-11-05):** +21,4 % (Modell 31 140 gegen Quantum 25 650; 45 Projektile statt 225 Schuss). Beide Zahlen kommen aus verschiedenen Zählungen: das Item rechnet 45 Projektile (225 Munition ÷ 5 je Projektil, Clarity) mit 692 je Projektil (Aegis Sustained, Basis), Quantum 225 Schuss mit 114 je Schuss (Hip-Fire, 570 je 5er-Projektil); 692 ÷ 570 = 1,214 ist genau die Abweichung. Warum die Skalen der beiden Quellen auseinanderliegen: offen, in M5 zu klären. Modell nicht geändert.
-- **Truth (2026-11-05):** −16,2 % (Modell 30 120 gegen Quantum 35 940; 14 von 20 Raketen). Die Schusszahl kommt aus Aegis Sustained (14 Raketen, Magazine 3, 3, 3, 3, 2), Quantums Zeile zählt 20 Raketen (Reserve); das Modell trägt je Rakete 2151 (30 120 ÷ 14: Rakete 1797 aus Quantum plus Cluster aus Aegis), Quantum 1797 je Rakete bei „no bomblets hit the boss“. Welche Zahl die Reserve im Spiel trifft: offen, in M5 zu klären. Modell nicht geändert.
+- **Truth (2026-11-06):** +4,8 % (Modell 30 120 gegen Quantum 28 752) gegen die Zeile „all bomblets hit the boss“, die das Item mit seinen Clustern abbildet; die alten −16,2 % kamen von der Zeile ohne Bomblets. Die Schusszahl kommt aus Aegis Sustained (14 Raketen), Quantums Zeile zählt 16: Welche Zahl im Spiel trifft, ist offen, in M5 zu klären. Modell nicht geändert.
+- **Euphony (2026-11-06):** −2,1 % (Modell 45 968 gegen Quantum 46 943), Zeile mit Threadlings. Quantum rechnet vermutlich 3,5 Magazine mit 31,5 Threadlings, das Modell 30 (ungeprüft). Modell nicht geändert.
+
+## Einordnung der Ausreißer (P0, 2026-11-06)
+
+Diese Einordnung entschuldigt keine Abweichung; sie sagt, was zu tun ist. Stand nach der Reparatur der Prüfung, der Spielschaden ist unverändert.
+
+- **Echter Fehler, belegt:** Trinity Ghoul trifft mit einem Schuss, das Spiel mit drei Pfeilen (Clarity „three arrows“, Quantum 219 bei Magazin 1, Aegis 723 = 3 × 241): −66,7 %. Thorn und Le Monarque sind in beiden Quellen zu hoch (Aegis +60,7 % und +58,0 %, Basis stimmt): das Gift ist zu stark.
+- **Fehlende Mechanik:** Hawkmoon (Paracausal Shot, −64 bis −79 %), Still Hunt (Golden Gun, M4), Izanagi's Burden (Honed Edge, M4), Barrow-Dyad (M4), Ager's Scepter (Q-Bilanz), Whisper of the Worm (Q-Bilanz), Tarrabah, Symmetry, Forerunner, Final Warning.
+- **Zeile hält das Modellierte nicht:** Divinity (Quantum 7050 = 15 × 470, ohne Penance), Osteo Striga (Modell 1712 = 1218 + 494 aus Quantums Zeile „only poison DoT“), Alethonym und Outbreak Perfected (Zeile nur Einschlag, ohne Nanites). Hier gilt die Aegis-Spalte.
+- **Modell zu hoch, Einheit oder Fehler, ungeprüft:** Heartshadow +582 %, The Lament +191 %, Choir of One hitscan +165 %, Grand Overture +115 %, Witherhoard +100 %, Malfeasance +43 %, Alethonym +46 %.
+- **Euphony:** Basis 1140 (Quantum, zuletzt 2025 gepflegt) gegen 1316 (Aegis), 1,154 bei sonst sauberen Zeilen um 1,00. Bleibt, bis die Probe im Spiel entscheidet (Euphony : Arbalest je Salve 1,05 oder 1,21).
 
 ## Ungenauigkeiten
 

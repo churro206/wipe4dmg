@@ -7,6 +7,10 @@
     { "source": "clarity", "entry": "Euphony Catalyst", "hash": "7ba89029" },
     { "source": "clarity", "entry": "Unwound", "hash": "0ac6307a" }
   ],
+  "quantumCheck": {
+    "row": "specials-linear-fusion-rifle-euphony-2",
+    "reason": "The item has Threadlings that hit when they spawn; this row assumes the same. The timing row is the one without Threadlings."
+  },
   "chargeTimeMs": "$manifest[Euphony].stat(\"Charge Time\")",
   "fireRateRpm": "$quantum[specials-linear-fusion-rifle-euphony].timing.fireRateRpm",
   "magazine": "$quantum[specials-linear-fusion-rifle-euphony].timing.magazine",

@@ -71,6 +71,8 @@ export const Scenario = z.object({
   playstyle: z.array(z.string()), // the assumptions of the Aegis row, as written there
   // Weapons: shots of the measurement; the cadence follows the build. Other tabs: none.
   shots: z.number().int().positive().optional(),
+  // Weapons: hits of one shot of the row (a burst). A model that fires single bullets fires this many.
+  hitsPerShot: z.number().int().min(2).optional(),
   comparesTo: z.string().optional(), // scenario of the same weapon (hand-made: the paper probe's pair)
   excluded: z.string().optional(), // why the scenario does not count
   note: z.string().optional(), // what the paper probe found (docs/plans/r0-paper-probe.md)
@@ -149,19 +151,31 @@ export function modelTotal(
 ): number | null {
   if (!weapons.some((w) => w.id === s.build.weaponId)) return null;
   const tab = tabOf(s);
-  const damage = (withAbility: boolean) => {
+  const damage = (withAbility: boolean, shots = s.shots) => {
     const { selected, options } = buildSimulation(scenarioBuild(s, withAbility), gameData);
     const weapon = weapons.find((w) => w.id === s.build.weaponId)!;
     return run(weapon, PHASE_SECONDS, selected, buckets, {
       ...options,
-      ...(s.shots === undefined ? {} : { shotLimit: s.shots }),
+      ...(shots === undefined ? {} : { shotLimit: shots }),
       // An assumption of the scenario, read by the rules of the weapon (condition `playstyle`)
       ...(s.build.setupDeployed
         ? { assumptions: [...(options.assumptions ?? []), "setup-stands"] }
         : {}),
     });
   };
-  if (tab === "weapons") return damage(true).totalDamage;
+  if (tab === "weapons") {
+    const total = damage(true).totalDamage;
+    // The row counts a burst as one shot. The model's shot is a single bullet only if the row's own hit
+    // count is what separates them (Crimson 3) and the magazine can hold a burst: a shot that already is
+    // the burst stays (Euphony), and so does a weapon that really fires too little (Trinity Ghoul, magazine 1).
+    const magazine = weapons.find((w) => w.id === s.build.weaponId)?.magazine.value ?? 0;
+    const singleBullets =
+      s.hitsPerShot !== undefined &&
+      total > 0 &&
+      magazine >= s.hitsPerShot &&
+      Math.round(measured(s) / total) === s.hitsPerShot;
+    return singleBullets ? damage(true, s.shots! * s.hitsPerShot!).totalDamage : total;
+  }
   const sum = (keep: (d: Instance) => boolean, withAbility: boolean) =>
     damage(withAbility)
       .damageInstances.filter(keep)

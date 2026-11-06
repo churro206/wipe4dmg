@@ -44,7 +44,7 @@ export function catalystBuffs(weapon: Pick<Weapon, "buffs" | "rules">): BuffDefi
 }
 
 /** Fields of the item itself; the others are Weapon fields. */
-const ITEM_FIELDS = ["id", "kind", "name", "texts", "parts", "notModelled"];
+const ITEM_FIELDS = ["id", "kind", "name", "texts", "parts", "notModelled", "quantumCheck"];
 
 type Issue = { path: PropertyKey[]; message: string };
 const issuesText = (issues: Issue[]) =>

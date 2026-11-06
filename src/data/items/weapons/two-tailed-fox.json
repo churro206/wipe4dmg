@@ -6,6 +6,10 @@
     { "source": "clarity", "entry": "Play with Your Prey", "hash": "bb0fbf50" },
     { "source": "clarity", "entry": "Twintails", "hash": "675b4b8e" }
   ],
+  "quantumCheck": {
+    "row": "heavies-rocket-launcher-two-tailed-fox-2",
+    "reason": "The item applies Scorch with its ignitions; this row considers them. The timing row does not."
+  },
   "chargeTimeMs": {
     "value": 0,
     "source": {
