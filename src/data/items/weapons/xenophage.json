@@ -31,11 +31,103 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "rampage-3",
+      "name": "Rampage x3",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Xenophage Catalyst](\"|33.1% damage\") / 100",
+            "note": "percent to factor, 3 stacks"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") * 1000",
+        "note": "seconds to milliseconds; one stack expires after this time"
+      }
+    },
+    {
+      "id": "rampage-2",
+      "name": "Rampage x2",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Xenophage Catalyst](\"|21%|\") / 100",
+            "note": "percent to factor, 2 stacks"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") * 1000",
+        "note": "seconds to milliseconds"
+      }
+    },
+    {
+      "id": "rampage-1",
+      "name": "Rampage x1",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Xenophage Catalyst](\"Grants a 10%\") / 100",
+            "note": "percent to factor, 1 stack"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") * 1000",
+        "note": "seconds to milliseconds"
+      }
+    }
+  ],
   "rules": [
+    {
+      "id": "rampage-start",
+      "on": { "on": "phaseStart" },
+      "if": [
+        { "type": "playstyle", "id": "pre-stacked" },
+        { "type": "hasItem", "id": "catalyst" }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "rampage-3" }],
+      "source": {
+        "name": "Item file xenophage",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Weapon Kills grant a Stack of Rampage.",
+        "note": "Derived: kill-buffs count as built before the phase (3 stacks); without adds no kill refreshes them, so the stacks run out one at a time"
+      }
+    },
+    {
+      "id": "rampage-3-to-2",
+      "on": { "on": "timer", "expires": "rampage-3" },
+      "do": [{ "type": "grantBuff", "buff": "rampage-2" }]
+    },
+    {
+      "id": "rampage-2-to-1",
+      "on": { "on": "timer", "expires": "rampage-2" },
+      "do": [{ "type": "grantBuff", "buff": "rampage-1" }]
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Maximum of 3 Stacks.", "reason": "carried by the three stage buffs rampage-3, -2, -1" },
+    { "quote": "Stacks expire one at a time every 🡅4.5 seconds.", "reason": "carried by the chain of stage buffs (timer expires), 4.5 s each" },
+    { "quote": "Weapon Kills trigger a solar elemental explosion, dealing up to 109 [72.8] damage in a 3 meter radius.", "reason": "no adds (ADR 0015)" },
+    { "quote": "Fires high-caliber explosive rounds with a splash radius of 3 meters.", "reason": "no damage against a boss (splash radius)" },
+    { "quote": "Damage is split into two portions (18% Impact and 82% Explosive), with the explosion damage having no falloff.", "reason": "no damage against a boss (split of one shot, the Quantum row holds the total)" }
   ]
 }

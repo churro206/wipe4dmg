@@ -33,11 +33,61 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "markov-chain",
+      "name": "Markov Chain",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Markov Chain](\"PvE: 13%\") / 100",
+            "note": "percent to factor, per stack (perStack): 13|26|39|52|65 is linear"
+          },
+          "damageSources": ["weapon"],
+          "perStack": true
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Markov Chain](\"stack of 'Markov Chain' for 4.5 seconds\") * 1000",
+        "note": "seconds to milliseconds"
+      },
+      "maxStacks": "$clarity[Markov Chain](\"Maximum of 5 stacks\")"
+    }
+  ],
   "rules": [
+    {
+      "id": "markov-chain-start",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "pre-stacked" }],
+      "do": [
+        {
+          "type": "grantBuff",
+          "buff": "markov-chain",
+          "stacks": "$clarity[Markov Chain](\"Maximum of 5 stacks\")"
+        }
+      ],
+      "source": {
+        "name": "Item file monte-carlo",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Melee kills while Monte Carlo is being held grant all 5 stacks of Markov Chain.",
+        "note": "Derived: kill-buffs count as built before the phase (5 stacks by a melee kill); without adds no kill renews them, so they last 4.5 s"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Dealing damage grants 2% Melee Ability Energy per hit.", "reason": "needs ability energy (Abilities block)" },
+    { "quote": "Kills have a 25% chance to grant 100% Melee Ability Energy.", "reason": "no adds (ADR 0015)" },
+    { "quote": "Damage increase at 1|2|3|4|5 stacks:", "reason": "carried by the buff markov-chain (perStack, 13 % each)" },
+    { "quote": "• PvP: 6.6%|13.2%|19.8%|26.4%|33%", "reason": "PvP only" },
+    { "quote": "While Monte Carlo is held, it replaces your Melee Ability with a powerful glaive-like stab that deals 2,772 [140] melee damage.", "reason": "needs ability replacement (melee stab of the catalyst stage; Abilities block)" },
+    { "quote": "Stab can reach up to 7 meters away and grants 50% Melee Ability Energy on hit.", "reason": "needs ability energy (Abilities block)" }
   ]
 }

@@ -38,9 +38,72 @@
   },
   "rules": [
     {
+      "id": "fan-fire-reload",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "fan-fire",
+          "op": ">=",
+          "value": {
+            "expr": "$clarity[Fan Fire](\"Maximum of 4 stacks\") - 1",
+            "note": "the counter runs one ahead of this rule: this is the 4th hit"
+          }
+        }
+      ],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reload",
+            "factor": {
+              "expr": "1 - $clarity[Fan Fire](\"|20 Reload Speed\") / 100",
+              "note": "reload speed 20 to a factor on the reload time (Aegis' cycle of 3.433 s = 2.133 s of fire + 1.30 s of reload = 1.64 s x 0.79)"
+            }
+          },
+          "durationMs": {
+            "expr": "$clarity[Fan Fire](\"for 4 seconds\") * 1000",
+            "note": "seconds to milliseconds; every hip-fired hit renews it"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file the-last-word",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Benefits at 1|2|3|4 stacks:",
+        "note": "Derived: a magazine of 8 hip-fired hits holds the 4 stacks when the reload starts; stage 4 only, stages 1 to 3 pass within the first shots"
+      }
+    },
+    {
+      "id": "fan-fire-count",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [{ "type": "addStacks", "counter": "fan-fire" }]
+    },
+    {
+      "id": "fan-fire-reset",
+      "on": { "on": "reload", "edge": "end" },
+      "do": [{ "type": "resetCounter", "counter": "fan-fire" }]
+    },
+    {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Hip-Fired Precision Hits deal 88% [?] increased damage.", "reason": "carried by the Quantum row (hip-fire precision damage: 52 x 1.79 x 1.88 = 175, Aegis 175.4)" },
+    { "quote": "Hip-Fired hits grant a stack of 'Fan Fire' for 4 seconds.", "reason": "carried by the counter fan-fire (reload speed of the 4th stack)" },
+    { "quote": "Benefits at 1|2|3|4 stacks:", "reason": "carried by the rule fan-fire-reload (stage 4)" },
+    { "quote": "• 5%|10%|15%|20% reduced Accuracy Cone Size", "reason": "no damage against a boss (accuracy)" },
+    { "quote": "Loads 1 Ammo per kill achieved with other weapons.", "reason": "no adds (ADR 0015); catalyst stage" },
+    { "quote": "Maximum total overfill amount is 200% of the Magazine Capacity.", "reason": "no adds (ADR 0015); catalyst stage" },
+    { "quote": "Each activation can only load up to 100% of the Magazine Capacity into the magazine.", "reason": "no adds (ADR 0015); catalyst stage" },
+    { "quote": "On Weapon Kill, for 5 seconds:", "reason": "no adds (ADR 0015); catalyst stage" },
+    { "quote": "• 50 Mobility", "reason": "no damage against a boss (mobility)" },
+    { "quote": "• 40 Handling and 20 Range", "reason": "no damage against a boss (handling, range)" },
+    { "quote": "• 5% increased Damage Falloff Distance", "reason": "no damage against a boss (range)" },
+    { "quote": "Additional Kills extend the duration by 5 seconds, up to 8 seconds.", "reason": "no adds (ADR 0015); catalyst stage" }
   ]
 }

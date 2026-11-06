@@ -11,6 +11,10 @@
     { "source": "clarity", "entry": "Precision Slug", "hash": "0f00b63c" },
     { "source": "clarity", "entry": "The Roadborn", "hash": "d1102801" }
   ],
+  "quantumCheck": {
+    "row": "specials-shotgun-the-chaperone-roadborn",
+    "reason": "The weapon is played with Roadborn (two precision hits), the row holds it at 100 % uptime."
+  },
   "chargeTimeMs": {
     "value": 0,
     "source": {
@@ -37,11 +41,138 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "roadborn",
+      "name": "Roadborn",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[The Roadborn](\"22% increased Precision Damage\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[The Roadborn](\"for 10 seconds\") * 1000",
+        "note": "seconds to milliseconds; every further precision hit renews it (it adds 3 s, the hits come within 1 s)"
+      }
+    }
+  ],
   "rules": [
+    {
+      "id": "roadborn",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "roadborn-hits",
+          "op": ">=",
+          "value": {
+            "value": 1,
+            "source": {
+              "name": "Item file the-chaperone",
+              "retrieved": "2026-11-06",
+              "status": "derived",
+              "quote": "two Precision Hits",
+              "note": "Derived: the number is a word in the text (two); the counter runs one ahead of this rule, so this is the 2nd precision hit"
+            }
+          }
+        }
+      ],
+      "do": [
+        { "type": "grantBuff", "buff": "roadborn" },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "$quantum[specials-shotgun-the-chaperone].timing.fireRateRpm * (1 + $clarity[The Roadborn](\"42% faster\") / 100)",
+              "note": "percent to factor on the rate of the Quantum row"
+            }
+          },
+          "durationMs": {
+            "expr": "$clarity[The Roadborn](\"for 10 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reload",
+            "factor": {
+              "expr": "1 - $clarity[The Roadborn](\"25% decreased Reload\") / 100",
+              "note": "percent to factor on the reload time (Quantum Roadborn row: 0.43 s to 0.32 s)"
+            }
+          },
+          "durationMs": {
+            "expr": "$clarity[The Roadborn](\"for 10 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "roadborn-count",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "do": [{ "type": "addStacks", "counter": "roadborn-hits" }],
+      "source": {
+        "name": "Item file the-chaperone",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Precision Kills or two Precision Hits grants 'Roadborn'",
+        "note": "Derived: two precision hits grant it against a boss (no kills without adds); the counter counts all precision hits and stays on after the buff is on"
+      }
+    },
+    {
+      "id": "triple-tap-count",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "addStacks", "counter": "triple-tap" }]
+    },
+    {
+      "id": "triple-tap",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "triple-tap",
+          "op": "=",
+          "value": { "expr": "$clarity[The Chaperone Catalyst](\"Scoring 3 Precision Hits\")", "note": "the 3rd precision hit" }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "triple-tap" },
+        { "type": "refill", "rounds": "$clarity[The Chaperone Catalyst](\"refills 1 Ammo\")" }
+      ],
+      "source": {
+        "name": "Item file the-chaperone",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "within 2 seconds of each",
+        "note": "Derived: the hits come 0.6 s apart (99 RPM with Roadborn), inside the 2 s of the text"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Uniquely deals 10% more damage than Precision Frame slug shotguns and has 5% increased damage falloff distance.", "reason": "carried by the Quantum row (damage per slug); range has no damage against a boss" },
+    { "quote": "Precision Kills or two Precision Hits grants 'Roadborn' for 10 seconds.", "reason": "carried by the rule roadborn (two precision hits; no kills without adds)" },
+    { "quote": "Additional Precision Hits add 3 seconds.", "reason": "carried by the rule roadborn (every hit renews the 10 s; the hits come within 1 s)" },
+    { "quote": "• 42% faster Rate of Fire", "reason": "carried by the rule roadborn (rate x 1.42)" },
+    { "quote": "• 10% increased Damage Falloff distance (stacks with Intrinsic benefit, granting a total increase of 15%)", "reason": "no damage against a boss (range)" },
+    { "quote": "• 20 Stability", "reason": "no damage against a boss (stability)" },
+    { "quote": "• 40 Reload Speed", "reason": "below 2 % (reload of 0.43 s; known-inaccuracies W3)" },
+    { "quote": "• 44% decreased Handling Animation Duration", "reason": "no damage against a boss (handling)" }
   ]
 }

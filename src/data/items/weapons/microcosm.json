@@ -37,11 +37,50 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "paracausal-imbuement",
+      "name": "Paracausal Imbuement",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Paracausal Imbuement](\"Grants 20% \") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Paracausal Imbuement](\"for 20 seconds\") * 1000",
+        "note": "seconds to milliseconds"
+      }
+    }
+  ],
   "rules": [
+    {
+      "id": "paracausal-imbuement",
+      "on": { "on": "cast", "kinds": ["super"] },
+      "do": [{ "type": "grantBuff", "buff": "paracausal-imbuement" }],
+      "source": {
+        "name": "Item file microcosm",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "once Super energy reaches 0%",
+        "note": "Derived: the Super energy reaches 0 % with the cast of the Super"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Weapon Kills grant an additional 1% Super Energy.", "reason": "no adds (ADR 0015)" },
+    { "quote": "Grants the following benefits against low (under 30%) Health targets.", "reason": "needs target health (catalyst stage; the engine knows no health of the boss)" },
+    { "quote": "• 7% to 15% increased damage, scaling with remaining Health", "reason": "needs target health (catalyst stage; the engine knows no health of the boss)" },
+    { "quote": "Deals 400% increased damage to Combatant Shields and Subjugator Bosses.", "reason": "needs enemy type (only Subjugator Bosses and Combatant Shields)" }
   ]
 }

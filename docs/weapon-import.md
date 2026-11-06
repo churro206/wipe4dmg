@@ -35,11 +35,11 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **768**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **699**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
-| Ace of Spades | `src/data/items/weapons/ace-of-spades.json` | 7 | – |
+| Ace of Spades | `src/data/items/weapons/ace-of-spades.json` | 0 | – |
 | Ager's Scepter | `src/data/items/weapons/ager-s-scepter.json` | 7 | – |
 | Alethonym | `src/data/items/weapons/alethonym.json` | 0 | – |
 | Arbalest | `src/data/items/weapons/arbalest.json` | 2 | – |
@@ -99,9 +99,9 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **768**. D
 | Lumina | `src/data/items/weapons/lumina.json` | 7 | – |
 | Malfeasance | `src/data/items/weapons/malfeasance.json` | 0 | – |
 | Merciless | `src/data/items/weapons/merciless.json` | 8 | – |
-| Microcosm | `src/data/items/weapons/microcosm.json` | 5 | – |
+| Microcosm | `src/data/items/weapons/microcosm.json` | 0 | – |
 | MIDA Multi-Tool | `src/data/items/weapons/mida-multi-tool.json` | 11 | – |
-| Monte Carlo | `src/data/items/weapons/monte-carlo.json` | 10 | – |
+| Monte Carlo | `src/data/items/weapons/monte-carlo.json` | 0 | – |
 | Necrochasm | `src/data/items/weapons/necrochasm.json` | 10 | – |
 | One Thousand Voices | `src/data/items/weapons/one-thousand-voices.json` | 0 | – |
 | Osteo Striga | `src/data/items/weapons/osteo-striga.json` | 0 | – |
@@ -117,20 +117,20 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **768**. D
 | Salvation's Grip | `src/data/items/weapons/salvation-s-grip.json` | 1 | – |
 | Service of Luzaku | `src/data/items/weapons/service-of-luzaku.json` | 13 | – |
 | Slayer's Fang | `src/data/items/weapons/slayer-s-fang.json` | 0 | – |
-| Sleeper Simulant | `src/data/items/weapons/sleeper-simulant.json` | 3 | – |
+| Sleeper Simulant | `src/data/items/weapons/sleeper-simulant.json` | 0 | – |
 | Still Hunt | `src/data/items/weapons/still-hunt.json` | 10 | – |
-| Sturm | `src/data/items/weapons/sturm.json` | 13 | – |
+| Sturm | `src/data/items/weapons/sturm.json` | 0 | – |
 | Sunshot | `src/data/items/weapons/sunshot.json` | 0 | – |
 | Symmetry | `src/data/items/weapons/symmetry.json` | 15 | – |
 | Tarrabah | `src/data/items/weapons/tarrabah.json` | 18 | – |
 | Telesto | `src/data/items/weapons/telesto.json` | 6 | – |
 | Tessellation | `src/data/items/weapons/tessellation.json` | 12 | – |
-| The Chaperone | `src/data/items/weapons/the-chaperone.json` | 11 | – |
+| The Chaperone | `src/data/items/weapons/the-chaperone.json` | 0 | – |
 | The Colony | `src/data/items/weapons/the-colony.json` | 7 | – |
 | The Fourth Horseman | `src/data/items/weapons/the-fourth-horseman.json` | 0 | – |
 | The Jade Rabbit | `src/data/items/weapons/the-jade-rabbit.json` | 7 | – |
 | The Lament | `src/data/items/weapons/the-lament.json` | 0 | – |
-| The Last Word | `src/data/items/weapons/the-last-word.json` | 14 | – |
+| The Last Word | `src/data/items/weapons/the-last-word.json` | 0 | – |
 | The Manticore | `src/data/items/weapons/the-manticore.json` | 0 | – |
 | The Navigator | `src/data/items/weapons/the-navigator.json` | 7 | – |
 | The Prospector | `src/data/items/weapons/the-prospector.json` | 5 | – |
@@ -157,7 +157,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **768**. D
 | Wish-Ender | `src/data/items/weapons/wish-ender.json` | 9 | – |
 | Wish-Keeper | `src/data/items/weapons/wish-keeper.json` | 49 | – |
 | Witherhoard | `src/data/items/weapons/witherhoard.json` | 0 | – |
-| Xenophage | `src/data/items/weapons/xenophage.json` | 6 | – |
+| Xenophage | `src/data/items/weapons/xenophage.json` | 0 | – |
 
 ## Optionen
 

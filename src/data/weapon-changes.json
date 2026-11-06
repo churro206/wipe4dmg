@@ -1,133 +1,72 @@
 {
-  "baseline": "ebdfdc1",
+  "baseline": "9a01240",
   "changes": [
     {
-      "id": "coldheart",
-      "name": "Coldheart",
-      "kind": "damage",
-      "time": "s60",
-      "catalyst": false,
-      "from": 14645,
-      "to": 23816.1
-    },
-    {
-      "id": "dead-man-s-tale",
-      "name": "Dead Man's Tale",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": true,
-      "from": 5512.2,
-      "to": 4550.2
-    },
-    {
-      "id": "dead-man-s-tale",
-      "name": "Dead Man's Tale",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Partial"
-    },
-    {
-      "id": "deathbringer",
-      "name": "Deathbringer",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "lord-of-wolves",
-      "name": "Lord of Wolves",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": true,
-      "from": 16745.3,
-      "to": 19990.8
-    },
-    {
-      "id": "lord-of-wolves",
-      "name": "Lord of Wolves",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "revision-zero",
-      "name": "Revision Zero",
-      "kind": "damage",
-      "time": "s60",
-      "catalyst": true,
-      "from": 22314.6,
-      "to": 64397.3
-    },
-    {
-      "id": "revision-zero",
-      "name": "Revision Zero",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "sunshot",
-      "name": "Sunshot",
+      "id": "ace-of-spades",
+      "name": "Ace of Spades",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"
     },
     {
-      "id": "the-fourth-horseman",
-      "name": "The Fourth Horseman",
+      "id": "microcosm",
+      "name": "Microcosm",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "monte-carlo",
+      "name": "Monte Carlo",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "sleeper-simulant",
+      "name": "Sleeper Simulant",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "sturm",
+      "name": "Sturm",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "the-chaperone",
+      "name": "The Chaperone",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 6741,
+      "to": 9722
+    },
+    {
+      "id": "the-last-word",
+      "name": "The Last Word",
       "kind": "damage",
       "time": "s30",
-      "catalyst": true,
-      "from": 13520,
-      "to": 17062.6
+      "catalyst": false,
+      "from": 11264,
+      "to": 12144
     },
     {
-      "id": "the-fourth-horseman",
-      "name": "The Fourth Horseman",
+      "id": "the-last-word",
+      "name": "The Last Word",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"
     },
     {
-      "id": "the-manticore",
-      "name": "The Manticore",
-      "kind": "damage",
-      "time": "s60",
-      "catalyst": true,
-      "from": 26522.1,
-      "to": 46633.8
-    },
-    {
-      "id": "the-manticore",
-      "name": "The Manticore",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Partial"
-    },
-    {
-      "id": "thunderlord",
-      "name": "Thunderlord",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": true,
-      "from": 6868,
-      "to": 14369
-    },
-    {
-      "id": "ticuu-s-divination",
-      "name": "Ticuu's Divination",
+      "id": "xenophage",
+      "name": "Xenophage",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"
-    },
-    {
-      "id": "tommy-s-matchbook",
-      "name": "Tommy's Matchbook",
-      "kind": "damage",
-      "time": "s60",
-      "catalyst": true,
-      "from": 30738,
-      "to": 44852.9
     }
   ]
 }

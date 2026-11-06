@@ -428,14 +428,13 @@ describe("src/data/weapon-status.json", () => {
     });
 
     it("a weapon that takes damage and count from its row is marked, a mechanic that lands on the row is not", () => {
-      expect(of("ace-of-spades").quantum?.circular).toBe(true);
-      expect(of("ace-of-spades").cause.class).toBe("reads-quantum");
+      expect(of("forerunner").quantum?.circular).toBe(true);
       expect(of("cloudstrike").quantum?.circular).toBe(false);
       expect(of("malfeasance").quantum?.circular).toBe(false);
     });
 
     it("a weapon without a rule has no rule shares, the rules of Thorn and Cloudstrike carry damage", () => {
-      expect(of("ace-of-spades").ruleShares).toEqual([]);
+      expect(of("forerunner").ruleShares).toEqual([]);
       const share = (id: string, rule: string) => of(id).ruleShares.find((r) => r.id === rule)?.share ?? 0;
       expect(share("thorn", "corruption")).toBeGreaterThan(0);
       expect(share("cloudstrike", "storm")).toBeGreaterThan(0);

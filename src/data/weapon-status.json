@@ -3,7 +3,7 @@
     {
       "id": "ace-of-spades",
       "name": "Ace of Spades",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -18,38 +18,44 @@
         }
       },
       "cause": {
-        "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+        "class": "ok",
+        "why": "Within the limit: Aegis +0.8 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Finishing a reload within 3.6 seconds of a kill grants 6 'Memento Mori' shots, each dealing 68% [29%] increased damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Ace of Spades has 15% Decreased Damage Falloff Distance while Memento Mori is active.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "• Target explodes, dealing 436 [80] Solar damage in a 7.5 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): Firefly needs a precision kill"
         },
         {
           "text": "Falloff begins at 3.75m.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): Firefly needs a precision kill"
         },
         {
           "text": "• Grants 50 Reload Speed for 6 seconds",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): Firefly needs a precision kill"
         },
         {
           "text": "(Ace of Spade's Firefly is 272% stronger than the Legendary trait in PvE)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): Firefly needs a precision kill"
         },
         {
           "text": "Firefly's explosion damage is increased by 50% while Memento Mori is active.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): Firefly needs a precision kill; catalyst stage, explosion not modelled"
         }
       ],
       "quantum": {
@@ -6716,7 +6722,7 @@
     {
       "id": "microcosm",
       "name": "Microcosm",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -6731,30 +6737,34 @@
         }
       },
       "cause": {
-        "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 5 sentences with numbers are still open."
+        "class": "ok",
+        "why": "Within the limit: Aegis +0.1 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 20% increased damage for 20 seconds once Super energy reaches 0%.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Weapon Kills grant an additional 1% Super Energy.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Grants the following benefits against low (under 30%) Health targets.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs target health (catalyst stage; the engine knows no health of the boss)"
         },
         {
           "text": "• 7% to 15% increased damage, scaling with remaining Health",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs target health (catalyst stage; the engine knows no health of the boss)"
         },
         {
           "text": "Deals 400% increased damage to Combatant Shields and Subjugator Bosses.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs enemy type (only Subjugator Bosses and Combatant Shields)"
         }
       ],
       "quantum": {
@@ -6892,7 +6902,7 @@
     {
       "id": "monte-carlo",
       "name": "Monte Carlo",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -6907,50 +6917,56 @@
         }
       },
       "cause": {
-        "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 10 sentences with numbers are still open."
+        "class": "ok",
+        "why": "Within the limit: Aegis +1.6 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Dealing damage grants 2% Melee Ability Energy per hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs ability energy (Abilities block)"
         },
         {
           "text": "Kills have a 25% chance to grant 100% Melee Ability Energy.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Weapon Kills grant a stack of 'Markov Chain' for 4.5 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 5 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Melee kills while Monte Carlo is being held grant all 5 stacks of Markov Chain.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Damage increase at 1|2|3|4|5 stacks:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the buff markov-chain (perStack, 13 % each)"
         },
         {
           "text": "• PvE: 13%|26%|39%|52%|65%",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• PvP: 6.6%|13.2%|19.8%|26.4%|33%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "PvP only"
         },
         {
           "text": "While Monte Carlo is held, it replaces your Melee Ability with a powerful glaive-like stab that deals 2,772 [140] melee damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs ability replacement (melee stab of the catalyst stage; Abilities block)"
         },
         {
           "text": "Stab can reach up to 7 meters away and grants 50% Melee Ability Energy on hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs ability energy (Abilities block)"
         }
       ],
       "quantum": {
@@ -9196,7 +9212,7 @@
     {
       "id": "sleeper-simulant",
       "name": "Sleeper Simulant",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -9211,22 +9227,25 @@
         }
       },
       "cause": {
-        "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 3 sentences with numbers are still open."
+        "class": "ok",
+        "why": "Within the limit: Aegis -0.1 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774) without reducing damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum cata row (timing and reserves); the catalyst is built into the base row and the Aegis rows agree within 0.1 %"
         },
         {
           "text": "Fires a massive overpenetrating laser that ricochets into five sub-lasers on impact with the environment, each dealing 369 [145] damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (the sub-lasers carry 5 % against a boss, see the next sentence; known-inaccuracies W3)"
         },
         {
           "text": "Bosses take 95% decreased damage from sub-lasers.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (5 sub-lasers x 369 x 5 % = 92 against a shot of several thousand; known-inaccuracies W3)"
         }
       ],
       "quantum": {
@@ -9387,7 +9406,7 @@
     {
       "id": "sturm",
       "name": "Sturm",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -9409,55 +9428,68 @@
       "sentences": [
         {
           "text": "Grants 40 Handling and 20 Range.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling, range)"
         },
         {
           "text": "Kills with Overcharged Rounds grants 2 stacks of 'Helping Hands'.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015); catalyst stage, the stacks only speed up stowing and readying"
         },
         {
           "text": "Maximum of 6 stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015); catalyst stage, Helping Hands"
         },
         {
           "text": "Helping Hands grants 50% decreased Stow/Ready Animation Speed while active.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (stow and ready animation); catalyst stage"
         },
         {
           "text": "Kills with Sturm overfill the magazine of Together Forever weapons by 1 round.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Maximum of 100% increased Magazine Size.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): the overfill needs kills"
         },
         {
           "text": "Maximum of 25 rounds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): the overfill needs kills"
         },
         {
           "text": "Chaining together Forever Weapon kills within 3 seconds of each grants additional stacks per kill.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "The second kill grants 2 rounds, and further kills in the chain grant 3 rounds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "• Minors and Elites: 300%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "• Minibosses and Champions: 280%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "• Bosses: 260%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): the overfill needs kills"
         },
         {
           "text": "• Players: 75%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "PvP only"
         }
       ],
       "quantum": {
@@ -10176,83 +10208,98 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 6741,
-          "s30": 13482,
-          "s60": 13482
+          "s10": 9722,
+          "s30": 16118.5,
+          "s60": 16118.5
         },
         "catalyst": {
-          "s10": 6741,
-          "s30": 13482,
-          "s60": 13482
+          "s10": 9722,
+          "s30": 16118.5,
+          "s60": 16118.5
         }
       },
       "cause": {
-        "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 11 sentences with numbers are still open."
+        "class": "wrong-row",
+        "why": "+4.9 % against Quantum, but Aegis agrees: this row does not hold what is modelled."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "roadborn",
+          "share": 0.1636
+        },
+        {
+          "id": "roadborn-count",
+          "share": 0.1636
+        }
+      ],
       "sentences": [
         {
           "text": "Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Uniquely deals 10% more damage than Precision Frame slug shotguns and has 5% increased damage falloff distance.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row (damage per slug); range has no damage against a boss"
         },
         {
           "text": "Precision Kills or two Precision Hits grants 'Roadborn' for 10 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Additional Precision Hits add 3 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the rule roadborn (every hit renews the 10 s; the hits come within 1 s)"
         },
         {
           "text": "• 22% increased Precision Damage",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 42% faster Rate of Fire",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 10% increased Damage Falloff distance (stacks with Intrinsic benefit, granting a total increase of 15%)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "• 20 Stability",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (stability)"
         },
         {
           "text": "• 40 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (reload of 0.43 s; known-inaccuracies W3)"
         },
         {
           "text": "• 25% decreased Reload Animation Duration",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 44% decreased Handling Animation Duration",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling)"
         }
       ],
       "quantum": {
-        "row": "specials-shotgun-the-chaperone",
-        "rowNote": "",
+        "row": "specials-shotgun-the-chaperone-roadborn",
+        "rowNote": "Assumes 100% Roadborn uptime, reload to full",
         "basis": "total",
-        "measured": 13482,
-        "model": 13482,
-        "deviation": 0,
-        "circular": true,
+        "measured": 15369,
+        "model": 16118.5,
+        "deviation": 0.0488,
+        "circular": false,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 1,
-          "mechanic": 1,
-          "rowPlain": true
+          "damagePerHit": 0.8194748358862144,
+          "mechanic": 1.2798021992322208,
+          "rowPlain": false
         }
       },
       "aegis": {
@@ -10681,81 +10728,101 @@
     {
       "id": "the-last-word",
       "name": "The Last Word",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
           "s10": 4224,
-          "s30": 11264,
-          "s60": 22528
+          "s30": 12144,
+          "s60": 23936
         },
         "catalyst": {
           "s10": 4224,
-          "s30": 11264,
-          "s60": 22528
+          "s30": 12144,
+          "s60": 23936
         }
       },
       "cause": {
-        "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 14 sentences with numbers are still open."
+        "class": "ok",
+        "why": "Within the limit: Aegis +0.3 %."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "fan-fire-reload",
+          "share": 0.0519
+        },
+        {
+          "id": "fan-fire-count",
+          "share": 0.0519
+        }
+      ],
       "sentences": [
         {
           "text": "Hip-Fired Precision Hits deal 88% [?] increased damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row (hip-fire precision damage: 52 x 1.79 x 1.88 = 175, Aegis 175.4)"
         },
         {
           "text": "Hip-Fired hits grant a stack of 'Fan Fire' for 4 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 4 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Benefits at 1|2|3|4 stacks:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the rule fan-fire-reload (stage 4)"
         },
         {
           "text": "• 5|10|15|20 Reload Speed",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 5%|10%|15%|20% reduced Accuracy Cone Size",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "Loads 1 Ammo per kill achieved with other weapons.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015); catalyst stage"
         },
         {
           "text": "Maximum total overfill amount is 200% of the Magazine Capacity.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015); catalyst stage"
         },
         {
           "text": "Each activation can only load up to 100% of the Magazine Capacity into the magazine.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015); catalyst stage"
         },
         {
           "text": "On Weapon Kill, for 5 seconds:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015); catalyst stage"
         },
         {
           "text": "• 50 Mobility",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (mobility)"
         },
         {
           "text": "• 40 Handling and 20 Range",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling, range)"
         },
         {
           "text": "• 5% increased Damage Falloff Distance",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "Additional Kills extend the duration by 5 seconds, up to 8 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015); catalyst stage"
         }
       ],
       "quantum": {
@@ -13821,7 +13888,7 @@
     {
       "id": "xenophage",
       "name": "Xenophage",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -13843,27 +13910,31 @@
       "sentences": [
         {
           "text": "Maximum of 3 Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the three stage buffs rampage-3, -2, -1"
         },
         {
           "text": "Stacks expire one at a time every 🡅4.5 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Grants a 10%|21%|33.1% damage increase at 1|2|3 Stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Weapon Kills trigger a solar elemental explosion, dealing up to 109 [72.8] damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Fires high-caliber explosive rounds with a splash radius of 3 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (splash radius)"
         },
         {
           "text": "Damage is split into two portions (18% Impact and 82% Explosive), with the explosion damage having no falloff.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (split of one shot, the Quantum row holds the total)"
         }
       ],
       "quantum": {

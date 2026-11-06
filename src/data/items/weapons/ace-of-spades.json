@@ -37,11 +37,53 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "memento-mori",
+      "name": "Memento Mori shots",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Memento Mori](\"each dealing 68% [\") / 100",
+            "note": "percent to factor (PvE value)"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "($clarity[Memento Mori](\"grants 6 \") - 0.5) * 60000 / $quantum[primaries-hand-cannon-ace-of-spades].timing.fireRateRpm",
+        "note": "the buff holds for the shots it grants: (shots - half an interval, so the next shot is plain) x 60000 / RPM, in milliseconds"
+      }
+    }
+  ],
   "rules": [
+    {
+      "id": "memento-mori",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "pre-stacked" }],
+      "do": [{ "type": "grantBuff", "buff": "memento-mori" }],
+      "source": {
+        "name": "Item file ace-of-spades",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Finishing a reload within 3.6 seconds of a kill grants 6",
+        "note": "Derived: kill-buffs count as built before the phase (owner decision); the first 6 shots of the phase carry it, later reloads have no kill"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Ace of Spades has 15% Decreased Damage Falloff Distance while Memento Mori is active.", "reason": "no damage against a boss (range)" },
+    { "quote": "• Target explodes, dealing 436 [80] Solar damage in a 7.5 meter radius.", "reason": "no adds (ADR 0015): Firefly needs a precision kill" },
+    { "quote": "Falloff begins at 3.75m.", "reason": "no adds (ADR 0015): Firefly needs a precision kill" },
+    { "quote": "• Grants 50 Reload Speed for 6 seconds", "reason": "no adds (ADR 0015): Firefly needs a precision kill" },
+    { "quote": "(Ace of Spade's Firefly is 272% stronger than the Legendary trait in PvE)", "reason": "no adds (ADR 0015): Firefly needs a precision kill" },
+    { "quote": "Firefly's explosion damage is increased by 50% while Memento Mori is active.", "reason": "no adds (ADR 0015): Firefly needs a precision kill; catalyst stage, explosion not modelled" }
   ]
 }

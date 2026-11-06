@@ -34,5 +34,19 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    {
+      "quote": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774) without reducing damage.",
+      "reason": "carried by the Quantum cata row (timing and reserves); the catalyst is built into the base row and the Aegis rows agree within 0.1 %"
+    },
+    {
+      "quote": "Fires a massive overpenetrating laser that ricochets into five sub-lasers on impact with the environment, each dealing 369 [145] damage.",
+      "reason": "below 2 % (the sub-lasers carry 5 % against a boss, see the next sentence; known-inaccuracies W3)"
+    },
+    {
+      "quote": "Bosses take 95% decreased damage from sub-lasers.",
+      "reason": "below 2 % (5 sub-lasers x 369 x 5 % = 92 against a shot of several thousand; known-inaccuracies W3)"
+    }
   ]
 }

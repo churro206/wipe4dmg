@@ -179,7 +179,7 @@ describe("the column Why off", () => {
     expect(of("Thorn")).toBe("Rule too strong");
     expect(of("Divinity")).toBe("Wrong row or variant");
     expect(of("Hawkmoon")).toBe("Mechanic missing");
-    expect(of("Ace of Spades")).toBe("Reads Quantum");
+    expect(of("The Colony")).toBe("Reads Quantum");
     expect(of("Anarchy")).toBe("No check");
   });
 

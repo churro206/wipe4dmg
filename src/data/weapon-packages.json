@@ -105,9 +105,53 @@
     ],
     "rules": [
       {
+        "id": "memento-mori",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "pre-stacked" }],
+        "do": [{ "type": "grantBuff", "buff": "memento-mori" }],
+        "source": {
+          "name": "Item file ace-of-spades",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: kill-buffs count as built before the phase (owner decision); the first 6 shots of the phase carry it, later reloads have no kill",
+          "quote": "Finishing a reload within 3.6 seconds of a kill grants 6"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "memento-mori",
+        "name": "Memento Mori shots",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.68,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Memento Mori",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Memento Mori](\"each dealing 68% [\") / 100 (percent to factor (PvE value)); $clarity[Memento Mori](\"each dealing 68% [\") = 68 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Memento Mori)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 2357.143,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Memento Mori; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-ace-of-spades",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: ($clarity[Memento Mori](\"grants 6 \") - 0.5) * 60000 / $quantum[primaries-hand-cannon-ace-of-spades].timing.fireRateRpm (the buff holds for the shots it grants: (shots - half an interval, so the next shot is plain) x 60000 / RPM, in milliseconds); $clarity[Memento Mori](\"grants 6 \") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Memento Mori); $quantum[primaries-hand-cannon-ace-of-spades].timing.fireRateRpm = 140 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-ace-of-spades)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -13337,9 +13381,52 @@
     ],
     "rules": [
       {
+        "id": "paracausal-imbuement",
+        "on": { "on": "cast", "kinds": ["super"] },
+        "do": [{ "type": "grantBuff", "buff": "paracausal-imbuement" }],
+        "source": {
+          "name": "Item file microcosm",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the Super energy reaches 0 % with the cast of the Super",
+          "quote": "once Super energy reaches 0%"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "paracausal-imbuement",
+        "name": "Paracausal Imbuement",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Imbuement",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Paracausal Imbuement](\"Grants 20% \") / 100 (percent to factor); $clarity[Paracausal Imbuement](\"Grants 20% \") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Imbuement)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 20000,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Imbuement",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Paracausal Imbuement](\"for 20 seconds\") * 1000 (seconds to milliseconds); $clarity[Paracausal Imbuement](\"for 20 seconds\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Paracausal Imbuement)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -13619,9 +13706,81 @@
     ],
     "rules": [
       {
+        "id": "markov-chain-start",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "pre-stacked" }],
+        "do": [
+          {
+            "type": "grantBuff",
+            "buff": "markov-chain",
+            "stacks": {
+              "value": 5,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Markov Chain",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 5 stacks"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file monte-carlo",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: kill-buffs count as built before the phase (5 stacks by a melee kill); without adds no kill renews them, so they last 4.5 s",
+          "quote": "Melee kills while Monte Carlo is being held grant all 5 stacks of Markov Chain."
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "markov-chain",
+        "name": "Markov Chain",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.13,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Markov Chain",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Markov Chain](\"PvE: 13%\") / 100 (percent to factor, per stack (perStack): 13|26|39|52|65 is linear); $clarity[Markov Chain](\"PvE: 13%\") = 13 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Markov Chain)"
+              }
+            },
+            "damageSources": ["weapon"],
+            "perStack": true
+          }
+        ],
+        "durationMs": {
+          "value": 4500,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Markov Chain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Markov Chain](\"stack of 'Markov Chain' for 4.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Markov Chain](\"stack of 'Markov Chain' for 4.5 seconds\") = 4.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Markov Chain)"
+          }
+        },
+        "maxStacks": {
+          "value": 5,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Markov Chain",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "Maximum of 5 stacks"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -19505,9 +19664,177 @@
     ],
     "rules": [
       {
+        "id": "roadborn",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          {
+            "type": "counter",
+            "id": "roadborn-hits",
+            "op": ">=",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file the-chaperone",
+                "retrieved": "2026-11-06",
+                "status": "derived",
+                "note": "Derived: the number is a word in the text (two); the counter runs one ahead of this rule, so this is the 2nd precision hit",
+                "quote": "two Precision Hits"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "grantBuff", "buff": "roadborn" },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 73.004,
+                "source": {
+                  "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-the-chaperone; Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: $quantum[specials-shotgun-the-chaperone].timing.fireRateRpm * (1 + $clarity[The Roadborn](\"42% faster\") / 100) (percent to factor on the rate of the Quantum row); $quantum[specials-shotgun-the-chaperone].timing.fireRateRpm = 51.411 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-the-chaperone); $clarity[The Roadborn](\"42% faster\") = 42 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn)"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 10000,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Roadborn](\"for 10 seconds\") * 1000 (seconds to milliseconds); $clarity[The Roadborn](\"for 10 seconds\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn)"
+              }
+            }
+          },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reload",
+              "factor": {
+                "value": 0.75,
+                "source": {
+                  "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: 1 - $clarity[The Roadborn](\"25% decreased Reload\") / 100 (percent to factor on the reload time (Quantum Roadborn row: 0.43 s to 0.32 s)); $clarity[The Roadborn](\"25% decreased Reload\") = 25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn)"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 10000,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Roadborn](\"for 10 seconds\") * 1000 (seconds to milliseconds); $clarity[The Roadborn](\"for 10 seconds\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "roadborn-count",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "do": [{ "type": "addStacks", "counter": "roadborn-hits" }],
+        "source": {
+          "name": "Item file the-chaperone",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: two precision hits grant it against a boss (no kills without adds); the counter counts all precision hits and stays on after the buff is on",
+          "quote": "Precision Kills or two Precision Hits grants 'Roadborn'"
+        }
+      },
+      {
+        "id": "triple-tap-count",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [{ "type": "addStacks", "counter": "triple-tap" }]
+      },
+      {
+        "id": "triple-tap",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "triple-tap",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Chaperone Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Chaperone Catalyst](\"Scoring 3 Precision Hits\") (the 3rd precision hit); $clarity[The Chaperone Catalyst](\"Scoring 3 Precision Hits\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Chaperone Catalyst)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "triple-tap" },
+          {
+            "type": "refill",
+            "rounds": {
+              "value": 1,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): The Chaperone Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "refills 1 Ammo"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file the-chaperone",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the hits come 0.6 s apart (99 RPM with Roadborn), inside the 2 s of the text",
+          "quote": "within 2 seconds of each"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "roadborn",
+        "name": "Roadborn",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.22,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[The Roadborn](\"22% increased Precision Damage\") / 100 (percent to factor); $clarity[The Roadborn](\"22% increased Precision Damage\") = 22 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 10000,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[The Roadborn](\"for 10 seconds\") * 1000 (seconds to milliseconds; every further precision hit renews it (it adds 3 s, the hits come within 1 s)); $clarity[The Roadborn](\"for 10 seconds\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Roadborn)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -20722,6 +21049,70 @@
       }
     ],
     "rules": [
+      {
+        "id": "fan-fire-reload",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "fan-fire",
+            "op": ">=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Fan Fire",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Fan Fire](\"Maximum of 4 stacks\") - 1 (the counter runs one ahead of this rule: this is the 4th hit); $clarity[Fan Fire](\"Maximum of 4 stacks\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fan Fire)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reload",
+              "factor": {
+                "value": 0.8,
+                "source": {
+                  "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Fan Fire",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: 1 - $clarity[Fan Fire](\"|20 Reload Speed\") / 100 (reload speed 20 to a factor on the reload time (Aegis' cycle of 3.433 s = 2.133 s of fire + 1.30 s of reload = 1.64 s x 0.79)); $clarity[Fan Fire](\"|20 Reload Speed\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fan Fire)"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 4000,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Fan Fire",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Fan Fire](\"for 4 seconds\") * 1000 (seconds to milliseconds; every hip-fired hit renews it); $clarity[Fan Fire](\"for 4 seconds\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fan Fire)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file the-last-word",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: a magazine of 8 hip-fired hits holds the 4 stacks when the reload starts; stage 4 only, stages 1 to 3 pass within the first shots",
+          "quote": "Benefits at 1|2|3|4 stacks:"
+        }
+      },
+      {
+        "id": "fan-fire-count",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [{ "type": "addStacks", "counter": "fan-fire" }]
+      },
+      {
+        "id": "fan-fire-reset",
+        "on": { "on": "reload", "edge": "end" },
+        "do": [{ "type": "resetCounter", "counter": "fan-fire" }]
+      },
       {
         "id": "shot",
         "on": { "on": "shot" },
@@ -26877,9 +27268,124 @@
     ],
     "rules": [
       {
+        "id": "rampage-start",
+        "on": { "on": "phaseStart" },
+        "if": [
+          { "type": "playstyle", "id": "pre-stacked" },
+          { "type": "hasItem", "id": "catalyst" }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "rampage-3" }],
+        "source": {
+          "name": "Item file xenophage",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: kill-buffs count as built before the phase (3 stacks); without adds no kill refreshes them, so the stacks run out one at a time",
+          "quote": "Weapon Kills grant a Stack of Rampage."
+        }
+      },
+      {
+        "id": "rampage-3-to-2",
+        "on": { "on": "timer", "expires": "rampage-3" },
+        "do": [{ "type": "grantBuff", "buff": "rampage-2" }]
+      },
+      {
+        "id": "rampage-2-to-1",
+        "on": { "on": "timer", "expires": "rampage-2" },
+        "do": [{ "type": "grantBuff", "buff": "rampage-1" }]
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "rampage-3",
+        "name": "Rampage x3",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.331,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Xenophage Catalyst](\"|33.1% damage\") / 100 (percent to factor, 3 stacks); $clarity[Xenophage Catalyst](\"|33.1% damage\") = 33.1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 4500,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") * 1000 (seconds to milliseconds; one stack expires after this time); $clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") = 4.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst)"
+          }
+        }
+      },
+      {
+        "id": "rampage-2",
+        "name": "Rampage x2",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.21,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Xenophage Catalyst](\"|21%|\") / 100 (percent to factor, 2 stacks); $clarity[Xenophage Catalyst](\"|21%|\") = 21 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 4500,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") = 4.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst)"
+          }
+        }
+      },
+      {
+        "id": "rampage-1",
+        "name": "Rampage x1",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.1,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Xenophage Catalyst](\"Grants a 10%\") / 100 (percent to factor, 1 stack); $clarity[Xenophage Catalyst](\"Grants a 10%\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 4500,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Xenophage Catalyst](\"every 🡅4.5 seconds\") = 4.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Xenophage Catalyst)"
+          }
+        }
       }
     ],
     "intrinsics": [

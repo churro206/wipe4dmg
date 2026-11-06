@@ -39,5 +39,20 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Grants 40 Handling and 20 Range.", "reason": "no damage against a boss (handling, range)" },
+    { "quote": "Kills with Overcharged Rounds grants 2 stacks of 'Helping Hands'.", "reason": "no adds (ADR 0015); catalyst stage, the stacks only speed up stowing and readying" },
+    { "quote": "Maximum of 6 stacks.", "reason": "no adds (ADR 0015); catalyst stage, Helping Hands" },
+    { "quote": "Helping Hands grants 50% decreased Stow/Ready Animation Speed while active.", "reason": "no damage against a boss (stow and ready animation); catalyst stage" },
+    { "quote": "Kills with Sturm overfill the magazine of Together Forever weapons by 1 round.", "reason": "no adds (ADR 0015)" },
+    { "quote": "Maximum of 100% increased Magazine Size.", "reason": "no adds (ADR 0015): the overfill needs kills" },
+    { "quote": "Maximum of 25 rounds.", "reason": "no adds (ADR 0015): the overfill needs kills" },
+    { "quote": "Chaining together Forever Weapon kills within 3 seconds of each grants additional stacks per kill.", "reason": "no adds (ADR 0015)" },
+    { "quote": "The second kill grants 2 rounds, and further kills in the chain grant 3 rounds.", "reason": "no adds (ADR 0015)" },
+    { "quote": "• Minors and Elites: 300%", "reason": "no adds (ADR 0015)" },
+    { "quote": "• Minibosses and Champions: 280%", "reason": "no adds (ADR 0015)" },
+    { "quote": "• Bosses: 260%", "reason": "no adds (ADR 0015): the overfill needs kills" },
+    { "quote": "• Players: 75%", "reason": "PvP only" }
   ]
 }
