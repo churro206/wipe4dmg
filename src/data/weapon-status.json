@@ -294,7 +294,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "anarchy",
@@ -3806,7 +3806,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "eyes-of-tomorrow",
@@ -4065,7 +4065,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "final-warning",
@@ -5831,58 +5831,66 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "legend-of-acrius",
       "name": "Legend of Acrius",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 15272,
-          "s30": 30544,
-          "s60": 30544
+          "s10": 18600,
+          "s30": 37200,
+          "s60": 37200
         },
         "catalyst": null
       },
       "cause": {
-        "class": "base-damage",
-        "why": "Damage per hit ×0.82 against the Quantum row."
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +16.8 % and no rule that large (\"shotgun-legend-of-acrius-body\")."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Fires 15 pellets in a wide blast with no damage falloff and unlimited overpenetration.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the Quantum value is one whole shot, all pellets"
         },
         {
           "text": "Max range of 18 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss in range"
         },
         {
           "text": "Hits against grounded enemies deal an additional instance of 135.2 [150] damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no separate hit: Quantum's value sits above its precision formula, adding it could count it twice; conflict with Aegis in known-inaccuracies"
         },
         {
           "text": "Grants 40 Reload Speed, 50 Ammo Generation, and increases Magazine Size by 2 (4🠚6).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Catalyst stage; the Quantum row already has it"
         },
         {
           "text": "Dealing Melee Damage grants the following for the next 3 shots within 5 seconds:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Catalyst stage (Trench Barrel)"
         },
         {
           "text": "• 30 Reload Speed and 30 Handling",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Catalyst stage (Trench Barrel)"
         },
         {
           "text": "• 50% increased damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Catalyst stage (Trench Barrel)"
         },
         {
           "text": "While held and loaded with at least 1 round, your outer Radar detection range is increased to 80 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss"
         }
       ],
       "quantum": {
@@ -5890,15 +5898,15 @@
         "rowNote": "Considers reloading entire magazine",
         "basis": "total",
         "measured": 37200,
-        "model": 30544,
-        "deviation": -0.1789,
-        "circular": false,
+        "model": 37200,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": true,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 0.8210752688172043,
+          "damagePerHit": 1,
           "mechanic": 1,
           "rowPlain": true
         }
@@ -5912,8 +5920,8 @@
               "body"
             ],
             "measured": 1991,
-            "model": 1909,
-            "deviation": -0.0412
+            "model": 2325,
+            "deviation": 0.1678
           }
         ]
       },
@@ -7292,7 +7300,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "osteo-striga",
@@ -7985,7 +7993,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "rat-king",
@@ -11186,7 +11194,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "thunderlord",
@@ -11823,33 +11831,35 @@
     {
       "id": "trinity-ghoul",
       "name": "Trinity Ghoul",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 584,
-          "s30": 1752,
-          "s60": 3504
+          "s10": 1752,
+          "s30": 5256,
+          "s60": 10512
         },
         "catalyst": {
-          "s10": 584,
-          "s30": 1752,
-          "s60": 3504
+          "s10": 1752,
+          "s30": 5256,
+          "s60": 10512
         }
       },
       "cause": {
-        "class": "counting",
-        "why": "Hits per shot ×0.33 against the Quantum row."
+        "class": "ok",
+        "why": "Within the limit: Aegis +0.3 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Lightning Rod arrows explode on impact and chain lightning in an 8 meter radius around their point of impact for 194 [50.3] damage each.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "granted by kills: no adds (ADR 0015)"
         },
         {
           "text": "Decreases Draw Time by 15% (756ms🠚633ms).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Catalyst stage"
         }
       ],
       "quantum": {
@@ -11857,14 +11867,14 @@
         "rowNote": "",
         "basis": "magazine",
         "measured": 219,
-        "model": 73,
-        "deviation": -0.6667,
-        "circular": false,
+        "model": 219,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": true,
         "strippedRow": false,
         "factors": {
           "shots": 1,
-          "hitsPerShot": 0.3333333333333333,
+          "hitsPerShot": 1,
           "damagePerHit": 1,
           "mechanic": 1,
           "rowPlain": false
@@ -11877,8 +11887,8 @@
             "row": "bow-trinity-ghoul",
             "assumptions": [],
             "measured": 218.4,
-            "model": 73,
-            "deviation": -0.6658
+            "model": 219,
+            "deviation": 0.0026
           }
         ]
       },

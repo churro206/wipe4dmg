@@ -79,9 +79,9 @@ describe("modelTotal with the hits of a row", () => {
     expect(modelTotal(crimson)! / (1821 / 15.09)).toBeCloseTo(1, 1);
   });
 
-  it("does not hide a weapon that fires too little: a magazine of 1 cannot hold three single bullets", () => {
-    // Trinity Ghoul fires three arrows per draw, the model one: a real error, not a unit.
-    expect(modelTotal(scenario("trinity-ghoul", 723, 3.31))).toBe(73);
+  it("does not multiply a shot that already holds its hits: a magazine of 1 cannot hold three single bullets", () => {
+    // Trinity Ghoul fires its three arrows in one draw; the row must not count them three times more.
+    expect(modelTotal(scenario("trinity-ghoul", 723, 3.31))).toBe(219);
   });
 
   it("leaves a weapon alone whose shot already is the burst", () => {

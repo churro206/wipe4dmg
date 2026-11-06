@@ -6,8 +6,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.97 over 41 rows
-- Absolute, information only: within ±3 % 23 of 41 (check set), 106 of 183 (all counted rows, mostly Eichung)
+- Rank (check set): Spearman 0.98 over 41 rows
+- Absolute, information only: within ±3 % 24 of 41 (check set), 107 of 183 (all counted rows, mostly Eichung)
 - Rows: 185 scenarios (32 by hand, 153 generated); fitted 46; calibration set 97; check set 41; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
@@ -30,7 +30,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | one-thousand-voices-catalyst | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 28709 | +6.3 % |
 | gen-auto-rifle-necrochasm | auto-rifle-necrochasm | 23 | 24 | +2.6 % |
 | gen-auto-rifle-quicksilver-storm-average-with-tracking-rockets | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 448 | +14.9 % |
-| gen-bow-trinity-ghoul | bow-trinity-ghoul | 218 | 73 | −66.6 % |
+| gen-bow-trinity-ghoul | bow-trinity-ghoul | 218 | 219 | +0.3 % |
 | gen-bow-verglas-curve | bow-verglas-curve | 208 | 209 | +0.3 % |
 | gen-fusion-rifle-bastion | fusion-rifle-bastion | 6359 | 6384 | +0.4 % |
 | gen-fusion-rifle-cull-s-shadow | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
@@ -158,7 +158,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 183 | 44 % | 45 | 41 | 0.97 | 3/3 | 1 of 4 |
+| Weapons | 417 | 183 | 44 % | 45 | 41 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 4 | 17 | 0.92 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
@@ -201,7 +201,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | auto-rifle-necrochasm | 23 | 24 | +2.6 % |
 | Weapons | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 448 | +14.9 % |
 | Weapons | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
-| Weapons | bow-trinity-ghoul | 218 | 73 | −66.6 % |
+| Weapons | bow-trinity-ghoul | 218 | 219 | +0.3 % |
 | Weapons | bow-verglas-curve | 208 | 209 | +0.3 % |
 | Weapons | fusion-rifle-bastion | 6359 | 6384 | +0.4 % |
 | Weapons | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |

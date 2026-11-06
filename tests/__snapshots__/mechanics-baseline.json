@@ -583,10 +583,10 @@
       "600s buffed catalyst": 523128.19
     },
     "legend-of-acrius": {
-      "30s plain": 30544,
-      "30s buffed": 51423.88,
-      "600s plain": 30544,
-      "600s buffed": 51423.88
+      "30s plain": 37200,
+      "30s buffed": 62629.92,
+      "600s plain": 37200,
+      "600s buffed": 62629.92
     },
     "leviathan-s-breath": {
       "30s plain": 19782,
@@ -1177,14 +1177,14 @@
       "600s buffed catalyst": 329716.22
     },
     "trinity-ghoul": {
-      "30s plain": 1752,
-      "30s buffed": 2949.67,
-      "30s plain catalyst": 1752,
-      "30s buffed catalyst": 2949.67,
-      "600s plain": 35040,
-      "600s buffed": 58993.34,
-      "600s plain catalyst": 35040,
-      "600s buffed catalyst": 58993.34
+      "30s plain": 5256,
+      "30s buffed": 8849,
+      "30s plain catalyst": 5256,
+      "30s buffed catalyst": 8849,
+      "600s plain": 105120,
+      "600s buffed": 176980.03,
+      "600s plain catalyst": 105120,
+      "600s buffed catalyst": 176980.03
     },
     "truth": {
       "30s plain": 30120.02,

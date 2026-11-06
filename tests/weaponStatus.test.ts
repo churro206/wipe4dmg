@@ -352,7 +352,7 @@ describe("src/data/weapon-status.json", () => {
     const of = (id: string) => status.weapons.find((w) => w.id === id)!;
 
     it("the samples of Plan W", () => {
-      expect(of("trinity-ghoul").cause.class).toBe("counting");
+      expect(of("duality").cause.class).toBe("counting");
       expect(of("thorn").cause.class).toBe("rule-too-strong");
       expect(of("divinity").cause.class).toBe("wrong-row");
       expect(of("hawkmoon").cause.class).toBe("mechanic-missing");
@@ -383,11 +383,25 @@ describe("src/data/weapon-status.json", () => {
       ["witherhoard", "wrong-row"],
       ["malfeasance", "wrong-row"],
       ["choir-of-one", "base-damage"],
-      ["legend-of-acrius", "base-damage"],
       ["duality", "counting"],
       ["dragon-s-breath", "source-conflict"],
     ])("P0 sample %s is %s", (id, cls) => {
       expect(of(id).cause.class).toBe(cls);
+    });
+
+    // W1 class 2. Trinity Ghoul: the 3 arrows come from the Compendium, the check from another cell and Aegis.
+    it("Trinity Ghoul fires three arrows per draw", () => {
+      const w = of("trinity-ghoul");
+      expect(w.quantum!.model).toBe(219);
+      expect(w.quantum!.deviation).toBeCloseTo(0, 2);
+      expect(Math.abs(w.aegis!.rows![0]!.deviation)).toBeLessThan(0.02);
+    });
+
+    // Quantum's History: the precision value of Acrius is a formula, its total counts the body value.
+    it("Legend of Acrius reads the value the Quantum row totals, not its precision formula", () => {
+      const w = of("legend-of-acrius");
+      expect(w.quantum!.model).toBe(37200);
+      expect(w.quantum!.deviation).toBeCloseTo(0, 2);
     });
 
     it("every weapon has exactly one class and a sentence", () => {

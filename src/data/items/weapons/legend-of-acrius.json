@@ -23,8 +23,7 @@
   "parts": {
     "shot": {
       "name": "Shot",
-      "damage": "$quantum[heavies-shotgun-legend-of-acrius-cata].precisionDamage",
-      "precision": true,
+      "damage": "$quantum[heavies-shotgun-legend-of-acrius-cata].bodyDamage",
       "delivery": "impact"
     }
   },
@@ -34,5 +33,18 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Fires 15 pellets", "reason": "the Quantum value is one whole shot, all pellets" },
+    { "quote": "Max range of 18 meters", "reason": "no damage against a boss in range" },
+    {
+      "quote": "Hits against grounded enemies deal",
+      "reason": "no separate hit: Quantum's value sits above its precision formula, adding it could count it twice; conflict with Aegis in known-inaccuracies"
+    },
+    { "quote": "Grants 40 Reload Speed", "reason": "Catalyst stage; the Quantum row already has it" },
+    { "quote": "Dealing Melee Damage grants", "reason": "Catalyst stage (Trench Barrel)" },
+    { "quote": "30 Reload Speed and 30 Handling", "reason": "Catalyst stage (Trench Barrel)" },
+    { "quote": "50% increased damage", "reason": "Catalyst stage (Trench Barrel)" },
+    { "quote": "While held and loaded", "reason": "no damage against a boss" }
   ]
 }

@@ -11633,13 +11633,13 @@
           }
         },
         "damagePerTick": {
-          "value": 1909,
+          "value": 2325,
           "source": {
             "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-shotgun-legend-of-acrius-cata",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "precisionDamage"
+            "note": "bodyDamage"
           }
         },
         "ticks": {
@@ -11660,7 +11660,7 @@
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
-        "canPrecision": true,
+        "canPrecision": false,
         "delivery": "impact",
         "scale": "quantum"
       }
@@ -22429,7 +22429,23 @@
       {
         "id": "shot",
         "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
+        "do": [
+          {
+            "type": "spawn",
+            "part": "shot",
+            "count": {
+              "value": 3,
+              "source": {
+                "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Trinity Ghoul Split Electron Lightning Rod ↑Forked Lightning",
+                "url": "https://destiny2.science/data-compendium",
+                "retrieved": "2026-10-24",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Fires 3 split arrows"
+              }
+            }
+          }
+        ]
       }
     ],
     "intrinsics": [

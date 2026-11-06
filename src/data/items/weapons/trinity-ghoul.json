@@ -33,7 +33,17 @@
     {
       "id": "shot",
       "on": { "on": "shot" },
-      "do": [{ "type": "spawn", "part": "shot" }]
+      "do": [
+        {
+          "type": "spawn",
+          "part": "shot",
+          "count": "$compendium[Trinity Ghoul](\"Fires 3 split arrows\")"
+        }
+      ]
     }
+  ],
+  "notModelled": [
+    { "quote": "Lightning Rod arrows explode on impact", "reason": "granted by kills: no adds (ADR 0015)" },
+    { "quote": "Decreases Draw Time by 15%", "reason": "Catalyst stage" }
   ]
 }

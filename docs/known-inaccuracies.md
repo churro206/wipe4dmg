@@ -28,11 +28,17 @@ Alle sieben Regeln gegen den Text geprüft: keine falsch übernommene Zahl, Daue
 - **Ex Diris** (+6,5 %): Moth-Fenster „within ? seconds“ in Clarity unbekannt, die Regel zählt jeden zweiten Treffer mit 3 s Abklingzeit; Enrage springt nach dem 4. Treffer auf das Maximum (Rampe steht in `notModelled`, die Abweichung ist ihre Vereinfachung).
 - **One Thousand Voices** (+5 bis 7 % in allen neun Zeilen) und **Fighting Lion** (+2,6 %): Regeln wie im Text (9 Orte × 10 Scorch, 31,6 %; Volatile im Radius). Die Abweichung ist in allen Zeilen gleich groß und gehört der Annahme von Aegis (Treffer je Ort).
 
+## W1 Klasse 2 „Zählung und Grundschaden“ (2026-11-06)
+
+- **Trinity Ghoul, behoben:** drei Pfeile je Schuss (Compendium „Fires 3 split arrows“), Modell 73 → 219. Quantum-Magazin 219 und Aegis 218,4 (+0,3 %) sind unabhängig von der Zahl der Pfeile. Lightning Rod braucht einen Kill und bleibt draußen (ADR 0015).
+- **Legend of Acrius, Quellenkonflikt:** Die Waffe las Quantums „Precision“ 1909; die Summe der Zeile rechnet aber 16 × 2325 („Body“), und Quantums History nennt den Precision-Wert eine eigene Formel. Jetzt 2325 und Treffer auf den Körper wie die Aegis-Zeile: Quantum −17,9 % → 0 % (Kreis: die Waffe liest die Zeile, die sie prüft), Aegis −4,1 % → +16,8 %. Aegis: Körper 1724 + Boden-Instanz 267 = 1990. Quantums 2325 lässt sich daraus nicht herleiten; ob die Boden-Instanz darin steckt, ist offen. Probe im Spiel.
+- Klassen danach: 1 Zählung (Duality), 1 Grundschaden (Choir of One, W4). Vor dem Block lag der Acrius-Schaden näher an Aegis, näher an der Regel „Zahlen aus Quantum“ liegt er jetzt.
+
 ## Einordnung der Ausreißer (P0, 2026-11-06)
 
 Diese Einordnung entschuldigt keine Abweichung; sie sagt, was zu tun ist. Stand nach der Reparatur der Prüfung, der Spielschaden ist unverändert.
 
-- **Echter Fehler, belegt:** Trinity Ghoul trifft mit einem Schuss, das Spiel mit drei Pfeilen (Clarity „three arrows“, Quantum 219 bei Magazin 1, Aegis 723 = 3 × 241): −66,7 %. Thorn und Le Monarque sind in beiden Quellen zu hoch (Aegis +60,7 % und +58,0 %, Basis stimmt): das Gift ist zu stark.
+- **Echter Fehler, belegt:** Trinity Ghoul (behoben, W1 Klasse 2). Thorn und Le Monarque sind in beiden Quellen zu hoch (Aegis +60,7 % und +58,0 %, Basis stimmt): das Gift ist zu stark.
 - **Fehlende Mechanik:** Hawkmoon (Paracausal Shot, −64 bis −79 %), Still Hunt (Golden Gun, M4), Izanagi's Burden (Honed Edge, M4), Barrow-Dyad (M4), Ager's Scepter (Q-Bilanz), Whisper of the Worm (Q-Bilanz), Tarrabah, Symmetry, Forerunner, Final Warning.
 - **Zeile hält das Modellierte nicht:** Divinity (Quantum 7050 = 15 × 470, ohne Penance), Osteo Striga (Modell 1712 = 1218 + 494 aus Quantums Zeile „only poison DoT“), Alethonym und Outbreak Perfected (Zeile nur Einschlag, ohne Nanites). Hier gilt die Aegis-Spalte.
 - **Modell zu hoch, Einheit oder Fehler, ungeprüft:** Heartshadow +582 %, The Lament +191 %, Choir of One hitscan +165 %, Grand Overture +115 %, Witherhoard +100 %, Malfeasance +43 %, Alethonym +46 %.

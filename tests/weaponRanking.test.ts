@@ -175,7 +175,7 @@ describe("the column Why off", () => {
 
   it("names the classes in plain words", () => {
     const of = (name: string) => causeLabel(rows.find((r) => r.name === name)!);
-    expect(of("Trinity Ghoul")).toBe("Counting");
+    expect(of("Duality")).toBe("Counting");
     expect(of("Thorn")).toBe("Rule too strong");
     expect(of("Divinity")).toBe("Wrong row or variant");
     expect(of("Hawkmoon")).toBe("Mechanic missing");
