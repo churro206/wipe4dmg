@@ -6,10 +6,13 @@ import { namedWeapons } from "../scripts/lib/weaponStatus";
 import { weapons } from "../src/ui/data";
 import {
   aegisCell,
+  causeLabel,
   comesIn,
   damageRanks,
   openCount,
+  quantumCell,
   quantumLight,
+  quantumTitle,
   rankWeapons,
   type WeaponRow,
 } from "../src/ui/weaponRanking";
@@ -137,6 +140,54 @@ describe("quantumLight (limits of status-limits.json)", () => {
   it("Cloudstrike is green, 0 % from Quantum", () => {
     const cloudstrike = rows.find((r) => r.name === "Cloudstrike");
     expect(quantumLight(cloudstrike?.quantum?.deviation ?? null, limits).color).toBe("green");
+  });
+});
+
+describe("quantumCell", () => {
+  const circular = (deviation: number) => ({
+    ...rows[0],
+    quantum: { ...quantum(deviation), rowNote: "", basis: "total" as const, circular: true, catalystRow: false, factors: null },
+  });
+
+  it("does not show a weapon that reads its row as green", () => {
+    expect(quantumCell(circular(0), limits)).toEqual({ color: null, label: "reads Quantum" });
+  });
+
+  it("keeps the light for a real comparison and for no row", () => {
+    expect(quantumCell(rows.find((r) => r.name === "Cloudstrike")!, limits).color).toBe("green");
+    expect(quantumCell(rows.find((r) => r.name === "Hawkmoon")!, limits).color).toBe("red");
+    expect(quantumCell(rows.find((r) => r.name === "Anarchy")!, limits)).toEqual({ color: null, label: "no row" });
+  });
+
+  it("the real file: no weapon that reads its row is green any more", () => {
+    const reading = rows.filter((r) => r.quantum?.circular);
+    expect(reading.length).toBeGreaterThan(0);
+    for (const r of reading) expect(quantumCell(r, limits).color, r.name).toBeNull();
+  });
+});
+
+describe("the column Why off", () => {
+  it("has a label for every class of the file and sorts by it", () => {
+    for (const r of rows) expect(causeLabel(r), r.name).not.toBe("");
+    const sorted = rankWeapons(rows, { sort: "cause", time: "s30", ascending: true }).map(causeLabel);
+    expect(sorted).toEqual([...sorted].sort((a, b) => a.localeCompare(b)));
+  });
+
+  it("names the classes in plain words", () => {
+    const of = (name: string) => causeLabel(rows.find((r) => r.name === name)!);
+    expect(of("Trinity Ghoul")).toBe("Counting");
+    expect(of("Thorn")).toBe("Rule too strong");
+    expect(of("Divinity")).toBe("Wrong row or variant");
+    expect(of("Hawkmoon")).toBe("Mechanic missing");
+    expect(of("Ace of Spades")).toBe("Reads Quantum");
+    expect(of("Anarchy")).toBe("No check");
+  });
+
+  it("tells in the tooltip when Quantum has only the catalyst row", () => {
+    const hawkmoon = rows.find((r) => r.name === "Hawkmoon")!;
+    expect(quantumTitle(hawkmoon)).toContain("catalyst");
+    expect(quantumTitle(rows.find((r) => r.name === "Cloudstrike")!)).not.toContain("only the catalyst");
+    expect(quantumTitle(rows.find((r) => r.name === "Anarchy")!)).toBeUndefined();
   });
 });
 

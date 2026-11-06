@@ -8,6 +8,15 @@ Nur eine Zeile hier, die den Waffennamen nennt, macht eine Abweichung gegen Quan
 - **Choir of One (2026-11-05):** +21,4 % (Modell 31 140 gegen Quantum 25 650; 45 Projektile statt 225 Schuss). Beide Zahlen kommen aus verschiedenen Zählungen: das Item rechnet 45 Projektile (225 Munition ÷ 5 je Projektil, Clarity) mit 692 je Projektil (Aegis Sustained, Basis), Quantum 225 Schuss mit 114 je Schuss (Hip-Fire, 570 je 5er-Projektil); 692 ÷ 570 = 1,214 ist genau die Abweichung. Warum die Skalen der beiden Quellen auseinanderliegen: offen, in M5 zu klären. Modell nicht geändert.
 - **Truth (2026-11-06):** +4,8 % (Modell 30 120 gegen Quantum 28 752) gegen die Zeile „all bomblets hit the boss“, die das Item mit seinen Clustern abbildet; die alten −16,2 % kamen von der Zeile ohne Bomblets. Die Schusszahl kommt aus Aegis Sustained (14 Raketen), Quantums Zeile zählt 16: Welche Zahl im Spiel trifft, ist offen, in M5 zu klären. Modell nicht geändert.
 
+## Ursachen je Waffe (W0, 2026-11-06)
+
+Jede Waffe hat eine Klasse in `src/data/weapon-status.json` (`cause`, Spalte „Why off“); sie entschuldigt nichts. Zahlen: 44 reads Quantum, 32 Mechanik fehlt, 20 ohne Prüfung, 10 Quellenkonflikt, 10 falsche Zeile oder Variante, 10 stimmt, 7 Regel zu stark, 2 Zählung, 2 Grundschaden.
+
+- **Kreisprüfung:** 70 Waffen zeigen „reads Quantum“ statt Grün: exakt 0 % mit nichts als den Treffern der Zeile, das belegt nur die Zählung. Davon 44 mit offenen Sätzen in dieser Klasse, die übrigen mit einer anderen Ursache oder ohne offenen Satz.
+- **`-cata`-Zeilen (Verdacht aus Plan W, geprüft):** Arbalest, Duality, Hawkmoon, Legend of Acrius, Sleeper Simulant, Telesto, The Colony, The Prospector, Traveler's Chosen und Trinity Ghoul haben bei Quantum nur die Catalyst-Zeile, es gibt keine bessere. Tooltip nennt es. Die Tabelle rechnet ohne Catalyst; Ammo und Schaden der Basis sind bis zur Catalyst-Stufe also ungeprüft.
+- **Quellenkonflikt, Probe im Spiel (Inhaber):** Vex Mythoclast (Quantum 113, Aegis 93,4 je Treffer), Sunshot (102 gegen 86,5), Sturm (109 gegen 114,5), Xenophage (Sustained −25,6 %), Dragon's Breath (Quantum +24,3 %, Aegis −20,8 %), Winterbite (Aegis +29,3 %); unter 5 %: Arbalest, Telesto, Necrochasm, Ruinous Effigy.
+- **Quantums Autor besitzt laut To-do nicht:** Edge of Action und Edge of Concurrence (Quantum und Aegis stimmen auf 0,3 %, kein Konflikt), Whirling Ovation (keine Quantum-Zeile, ohne Prüfung), Catalyst von One Thousand Voices (Modell mit und ohne Catalyst gleich +6 % über Aegis, also kein Fehler des Catalysts, W1).
+
 ## Einordnung der Ausreißer (P0, 2026-11-06)
 
 Diese Einordnung entschuldigt keine Abweichung; sie sagt, was zu tun ist. Stand nach der Reparatur der Prüfung, der Spielschaden ist unverändert.

@@ -3,11 +3,14 @@
 
 import { describe, expect, it } from "vitest";
 import rawLimits from "../src/data/status-limits.json";
+import rawQuantum from "../src/data/quantum-weapons.json";
 import rawStatus from "../src/data/weapon-status.json";
-import { StatusLimits, WeaponStatusFile } from "../src/data/schema";
+import { QuantumWeaponSnapshot, StatusLimits, WeaponStatusFile } from "../src/data/schema";
 import {
   blockLine,
   blockWeaponProblems,
+  causeOf,
+  factorsOf,
   namedWeapons,
   planBlockOf,
   sentenceStates,
@@ -78,6 +81,134 @@ describe("statusOf", () => {
 
   it("takes the limit as given", () => {
     expect(statusOf({ ...ok, quoteDeviation: 0.05, tolerance: 0.1 })).toBe("complete");
+  });
+});
+
+describe("factorsOf", () => {
+  const tolerance = limits.quantumDeviation;
+  const product = (f: NonNullable<ReturnType<typeof factorsOf>>) => f.shots * f.hitsPerShot * f.damagePerHit * f.mechanic;
+
+  it("finds the hits of Trinity Ghoul: three arrows per shot in the row, one in the model", () => {
+    const f = factorsOf({ measured: 219, rowShots: 1, rowDamages: [73, 56], modelShots: 1, modelHits: 1, modelDamage: 73, modelTotal: 73 }, tolerance)!;
+    expect(f.hitsPerShot).toBeCloseTo(1 / 3, 4);
+    expect(f.damagePerHit).toBe(1);
+    expect(f.mechanic).toBe(1);
+    expect(product(f)).toBeCloseTo(73 / 219, 6);
+  });
+
+  it("puts what the rules add on top of a plain row into the mechanic (Thorn)", () => {
+    const f = factorsOf({ measured: 873, rowShots: 9, rowDamages: [97, 54], modelShots: 9, modelHits: 9, modelDamage: 97, modelTotal: 1953 }, tolerance)!;
+    expect(f.rowPlain).toBe(true);
+    expect(f.mechanic).toBeCloseTo(1953 / 873, 4);
+    expect(product(f)).toBeCloseTo(1953 / 873, 6);
+  });
+
+  it("puts what a row holds beyond whole hits into the mechanic, below 1 (Hawkmoon)", () => {
+    const f = factorsOf({ measured: 2785, rowShots: 9, rowDamages: [97, 54], modelShots: 9, modelHits: 9, modelDamage: 97, modelTotal: 873 }, tolerance)!;
+    expect(f.rowPlain).toBe(false);
+    expect(f.hitsPerShot).toBe(1);
+    expect(f.damagePerHit).toBe(1);
+    expect(f.mechanic).toBeCloseTo(873 / 2785, 4);
+  });
+
+  it("takes the damage value of the row that fits its total, not the one nearest the model (Legend of Acrius)", () => {
+    const f = factorsOf({ measured: 37200, rowShots: 16, rowDamages: [1909, 2325], modelShots: 16, modelHits: 16, modelDamage: 1909, modelTotal: 30544 }, tolerance)!;
+    expect(f.damagePerHit).toBeCloseTo(1909 / 2325, 4);
+    expect(f.mechanic).toBe(1);
+  });
+
+  it("does not take a value the model does not read for several hits (Tommy's Matchbook: 28 × 2.03 is chance)", () => {
+    const f = factorsOf({ measured: 5680, rowShots: 100, rowDamages: [47, 28], modelShots: 100, modelHits: 100, modelDamage: 47, modelTotal: 4700 }, tolerance)!;
+    expect(f.hitsPerShot).toBe(1);
+    expect(f.damagePerHit).toBe(1);
+    expect(f.mechanic).toBeCloseTo(4700 / 5680, 4);
+  });
+
+  it("reads a row that counts ammo, not projectiles, by its total (Choir of One: 225 rounds, 45 projectiles)", () => {
+    const f = factorsOf({ measured: 25650, rowShots: 225, rowDamages: [570], modelShots: 45, modelHits: 45, modelDamage: 692, modelTotal: 31140 }, tolerance)!;
+    expect(f.shots).toBe(1);
+    expect(f.damagePerHit).toBeCloseTo(692 / 570, 4);
+  });
+
+  it("has no factors without a damage value of the row or without a hit of the model", () => {
+    const input = { measured: 100, rowShots: 1, rowDamages: [100], modelShots: 1, modelHits: 1, modelDamage: 100, modelTotal: 100 };
+    expect(factorsOf({ ...input, rowDamages: [] }, tolerance)).toBeNull();
+    expect(factorsOf({ ...input, modelHits: 0 }, tolerance)).toBeNull();
+  });
+});
+
+describe("causeOf (the table of Plan W)", () => {
+  const plain = { shots: 1, hitsPerShot: 1, damagePerHit: 1, mechanic: 1, rowPlain: true };
+  const quantum = (deviation: number, factors: Partial<typeof plain> | null = {}) => ({
+    deviation,
+    circular: false,
+    strippedRow: false,
+    factors: factors && { ...plain, ...factors },
+  });
+  const row = (deviation: number, assumptions = ["average"]) => ({ row: "a", deviation, assumptions });
+  const cause = (e: Partial<Parameters<typeof causeOf>[0]>) =>
+    causeOf({ quantum: null, aegis: [], open: 0, ruleShares: [], tolerance: limits.quantumDeviation, ...e }).class;
+  const circular = { ...quantum(0), circular: true };
+
+  it("Quantum ok but not 0, Aegis ok: matches", () => {
+    expect(cause({ quantum: quantum(0.01), aegis: [row(0.01)] })).toBe("ok");
+    expect(cause({ quantum: quantum(0.01), open: 8 })).toBe("ok");
+    expect(cause({ aegis: [row(0.01)] })).toBe("ok");
+  });
+
+  it("Quantum exactly 0 by reading the row, Aegis ok: reads Quantum while sentences are open", () => {
+    expect(cause({ quantum: circular, aegis: [row(0.01)], open: 3 })).toBe("reads-quantum");
+    expect(cause({ quantum: circular, open: 3 })).toBe("reads-quantum");
+    expect(cause({ quantum: circular, aegis: [row(0.01)] })).toBe("ok");
+  });
+
+  it("Quantum exactly 0, Aegis off: the assumptions of the row decide, the rest is a missing mechanic", () => {
+    expect(cause({ quantum: circular, aegis: [row(-0.3)] })).toBe("mechanic-missing");
+    expect(cause({ quantum: circular, aegis: [row(-0.05, [])] })).toBe("source-conflict");
+    expect(cause({ quantum: circular, aegis: [row(0.18, [])] })).toBe("source-conflict");
+    expect(cause({ aegis: [row(-0.44)] })).toBe("mechanic-missing");
+  });
+
+  it("the model above an Aegis row: a rule that large, another row that fits, or neither", () => {
+    expect(cause({ quantum: quantum(0), aegis: [row(0.15)], ruleShares: [{ id: "r", share: 0.2 }] })).toBe("rule-too-strong");
+    expect(cause({ quantum: quantum(0), aegis: [row(0.5)], ruleShares: [{ id: "r", share: 0.2 }] })).toBe("source-conflict");
+    expect(cause({ quantum: quantum(0), aegis: [row(0.01), row(0.99)] })).toBe("wrong-row");
+    expect(cause({ aegis: [row(5.8)] })).toBe("wrong-row");
+  });
+
+  it("Quantum off, Aegis ok: the Quantum row does not hold what is modelled", () => {
+    expect(cause({ quantum: quantum(0.05), aegis: [row(-0.01)] })).toBe("wrong-row");
+  });
+
+  it("a row that leaves out what the model carries is the wrong row (Divinity, Deterministic Chaos)", () => {
+    expect(cause({ quantum: { ...quantum(1.9, { mechanic: 2.9 }), strippedRow: true } })).toBe("wrong-row");
+    expect(cause({ quantum: { ...quantum(-0.1, { mechanic: 0.9 }), strippedRow: true } })).toBe("mechanic-missing");
+  });
+
+  it("Quantum and Aegis off in the same direction: our error, the largest factor names it", () => {
+    const a = (d: number) => [row(d)];
+    expect(cause({ quantum: quantum(-0.67, { hitsPerShot: 1 / 3 }), aegis: a(-0.66) })).toBe("counting");
+    expect(cause({ quantum: quantum(-0.12, { shots: 0.88 }) })).toBe("counting");
+    expect(cause({ quantum: quantum(0.21, { damagePerHit: 1.21 }), aegis: a(0.2) })).toBe("base-damage");
+    expect(cause({ quantum: quantum(1.2, { mechanic: 2.2 }), aegis: a(0.6) })).toBe("rule-too-strong");
+    expect(cause({ quantum: quantum(-0.69, { mechanic: 0.31 }), aegis: a(-0.79) })).toBe("mechanic-missing");
+    expect(cause({ quantum: quantum(-0.3, null), aegis: a(-0.2) })).toBe("mechanic-missing");
+    expect(cause({ quantum: quantum(0.3, null), aegis: a(0.2) })).toBe("rule-too-strong");
+  });
+
+  it("Quantum and Aegis off in opposite directions: sources disagree, unless the row is the bare weapon", () => {
+    const notPlain = { mechanic: 1.24, rowPlain: false };
+    expect(cause({ quantum: quantum(0.24, notPlain), aegis: [row(-0.2)] })).toBe("source-conflict");
+    expect(cause({ quantum: quantum(0.4, { mechanic: 1.4 }), aegis: [row(-0.11)] })).toBe("wrong-row");
+  });
+
+  it("neither Quantum nor Aegis: no check", () => {
+    expect(cause({ open: 8 })).toBe("no-check");
+  });
+
+  it("explains itself in a sentence for the tooltip", () => {
+    const why = causeOf({ quantum: quantum(-0.67, { hitsPerShot: 1 / 3 }), aegis: [], open: 0, ruleShares: [], tolerance: 0.02 }).why;
+    expect(why).toContain("×0.33");
   });
 });
 
@@ -215,6 +346,99 @@ describe("src/data/weapon-status.json", () => {
     const file = WeaponStatusFile.parse(rawStatus);
     expect(new Set(file.weapons.map((w) => w.id)).size).toBe(file.weapons.length);
     expect(file.weapons.length).toBeGreaterThan(100);
+  });
+
+  describe("the cause of every weapon (W0)", () => {
+    const of = (id: string) => status.weapons.find((w) => w.id === id)!;
+
+    it("the samples of Plan W", () => {
+      expect(of("trinity-ghoul").cause.class).toBe("counting");
+      expect(of("thorn").cause.class).toBe("rule-too-strong");
+      expect(of("divinity").cause.class).toBe("wrong-row");
+      expect(of("hawkmoon").cause.class).toBe("mechanic-missing");
+    });
+
+    // docs/known-inaccuracies.md, "Einordnung der Ausreißer (P0)"
+    it.each([
+      ["le-monarque", "rule-too-strong"],
+      ["alethonym", "rule-too-strong"],
+      ["still-hunt", "mechanic-missing"],
+      ["izanagi-s-burden", "mechanic-missing"],
+      ["barrow-dyad", "mechanic-missing"],
+      ["ager-s-scepter", "mechanic-missing"],
+      ["whisper-of-the-worm", "mechanic-missing"],
+      ["tarrabah", "mechanic-missing"],
+      ["symmetry", "mechanic-missing"],
+      ["forerunner", "mechanic-missing"],
+      ["final-warning", "mechanic-missing"],
+      ["tommy-s-matchbook", "mechanic-missing"],
+      ["wicked-implement", "mechanic-missing"],
+      ["osteo-striga", "wrong-row"],
+      ["outbreak-perfected", "wrong-row"],
+      ["deterministic-chaos", "wrong-row"],
+      ["truth", "wrong-row"],
+      ["heartshadow", "wrong-row"],
+      ["the-lament", "wrong-row"],
+      ["grand-overture", "wrong-row"],
+      ["witherhoard", "wrong-row"],
+      ["malfeasance", "wrong-row"],
+      ["choir-of-one", "base-damage"],
+      ["legend-of-acrius", "base-damage"],
+      ["duality", "counting"],
+      ["dragon-s-breath", "source-conflict"],
+    ])("P0 sample %s is %s", (id, cls) => {
+      expect(of(id).cause.class).toBe(cls);
+    });
+
+    it("every weapon has exactly one class and a sentence", () => {
+      for (const w of status.weapons) {
+        expect(typeof w.cause.class, w.id).toBe("string");
+        expect(w.cause.why, w.id).not.toBe("");
+      }
+    });
+
+    it("the factors multiply to the deviation", () => {
+      for (const w of status.weapons) {
+        const f = w.quantum?.factors;
+        if (!f) continue;
+        expect(f.shots * f.hitsPerShot * f.damagePerHit * f.mechanic, w.id).toBeCloseTo(1 + w.quantum!.deviation, 2);
+      }
+    });
+
+    it("a weapon that takes damage and count from its row is marked, a mechanic that lands on the row is not", () => {
+      expect(of("ace-of-spades").quantum?.circular).toBe(true);
+      expect(of("ace-of-spades").cause.class).toBe("reads-quantum");
+      expect(of("cloudstrike").quantum?.circular).toBe(false);
+      expect(of("malfeasance").quantum?.circular).toBe(false);
+    });
+
+    it("a weapon without a rule has no rule shares, the rules of Thorn and Cloudstrike carry damage", () => {
+      expect(of("ace-of-spades").ruleShares).toEqual([]);
+      const share = (id: string, rule: string) => of(id).ruleShares.find((r) => r.id === rule)?.share ?? 0;
+      expect(share("thorn", "corruption")).toBeGreaterThan(0);
+      expect(share("cloudstrike", "storm")).toBeGreaterThan(0);
+    });
+
+    it("the rows with 'cata' are the only rows Quantum has for these weapons", () => {
+      const quantum = QuantumWeaponSnapshot.parse(rawQuantum).rows;
+      const flagged = status.weapons.filter((w) => w.quantum?.catalystRow).map((w) => w.id);
+      expect(flagged).toEqual([
+        "arbalest",
+        "duality",
+        "hawkmoon",
+        "legend-of-acrius",
+        "sleeper-simulant",
+        "telesto",
+        "the-colony",
+        "the-prospector",
+        "traveler-s-chosen",
+        "trinity-ghoul",
+      ]);
+      for (const id of flagged) {
+        const rows = quantum.filter((r) => r.name === of(id).name);
+        expect(rows.every((r) => r.variant.includes("cata")), id).toBe(true);
+      }
+    });
   });
 
   it("Cloudstrike ends 0 % from Quantum's total damage", () => {

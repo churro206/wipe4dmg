@@ -6,7 +6,7 @@ import type { StatusLimits, WeaponStatusFile } from "../data/schema";
 export type WeaponRow = WeaponStatusFile["weapons"][number];
 export type WeaponState = WeaponRow["status"];
 export type Time = "s10" | "s30" | "s60";
-export type SortKey = "name" | "status" | "damage" | "quantum" | "aegis" | "trust" | "open";
+export type SortKey = "name" | "status" | "damage" | "quantum" | "aegis" | "cause" | "trust" | "open";
 export type Light = { color: "green" | "yellow" | "red" | null; label: string };
 
 export const TIMES: { key: Time; label: string; seconds: number }[] = [
@@ -33,6 +33,40 @@ export function quantumLight(deviation: number | null, limits: StatusLimits): Li
   const color = d <= limits.quantumDeviation ? "green" : d <= limits.quantumRed ? "yellow" : "red";
   return { color, label: `${deviation > 0 ? "+" : ""}${(deviation * 100).toFixed(1)} %` };
 }
+
+/**
+ * The cell "vs Quantum": a weapon that takes damage and count from the row it is compared with
+ * proves nothing but the count, so it gets no light.
+ */
+export function quantumCell(row: WeaponRow, limits: StatusLimits): Light {
+  if (row.quantum?.circular) return { color: null, label: "reads Quantum" };
+  return quantumLight(row.quantum?.deviation ?? null, limits);
+}
+
+/** The tooltip of "vs Quantum": what the comparison covers and what the row assumes. */
+export function quantumTitle(row: WeaponRow): string | undefined {
+  const q = row.quantum;
+  if (!q) return undefined;
+  const parts = [q.basis === "total" ? "All ammo" : "One magazine"];
+  if (q.rowNote) parts.push(q.rowNote);
+  if (q.catalystRow) parts.push("Quantum lists this weapon only with its catalyst; the model runs without");
+  return parts.join(": ");
+}
+
+const CAUSE_LABEL: Record<WeaponRow["cause"]["class"], string> = {
+  ok: "Matches",
+  "reads-quantum": "Reads Quantum",
+  counting: "Counting",
+  "base-damage": "Base damage",
+  "wrong-row": "Wrong row or variant",
+  "rule-too-strong": "Rule too strong",
+  "mechanic-missing": "Mechanic missing",
+  "source-conflict": "Sources disagree",
+  "no-check": "No check",
+};
+
+/** The cell "Why off". */
+export const causeLabel = (row: WeaponRow): string => CAUSE_LABEL[row.cause.class];
 
 /** The open sentences of a weapon: what its texts say that the model does not carry yet. */
 export const openCount = (row: WeaponRow): number => row.sentences.filter((s) => s.state === "open").length;
@@ -97,6 +131,8 @@ export function rankWeapons(
         const d = aegisCell(r).deviation;
         return d === null ? null : Math.abs(d);
       }
+      case "cause":
+        return causeLabel(r);
       case "trust":
         return TRUST_ORDER[r.trust];
       case "open":

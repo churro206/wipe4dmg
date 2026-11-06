@@ -43,6 +43,8 @@ W0 prüft je Waffe dreifach:
 
 Ergebnis je Waffe genau eine Klasse: Zählung, Grundschaden, falsche Zeile oder Variante, Regel zu stark, Mechanik fehlt, Quellenkonflikt, nur Kreisprüfung, stimmt. Klassifikation als reine Funktion in `scripts/lib/weaponStatus.ts`, Felder in `WeaponStatusFile`, Spalte in `src/ui/weaponRanking.ts` und `CoveragePage.tsx`. Prüfung: Schadenswerte in der Statusdatei bleiben gleich; Trinity Ghoul = Zählung, Thorn = Regel zu stark, Divinity = falsche Zeile, Hawkmoon = Mechanik fehlt.
 
+**Nachtrag W0 (erledigt 2026-11-06):** Neunte Klasse „ohne Prüfung“ für Waffen ohne Quantum-Zeile und ohne unabhängige Aegis-Zeile (20), sonst hätte die Tabelle für sie keine Antwort. Die Tabelle oben legt `causeOf` so aus: Aegis „daneben“ heißt die Zeile mit der größten Abweichung; Quantum ok und Aegis ohne Annahmen daneben ist Quellenkonflikt; Modell über Aegis ist „falsche Zeile“, wenn eine andere Aegis-Zeile passt, sonst „Regel zu stark“, wenn eine Regel so viel trägt.
+
 **Waffen fertig heißt:** keine offenen Sätze mit ≥ 2 % Wirkung; jede Abweichung über 2 % behoben oder in `known-inaccuracies.md` begründet; keine Waffe nur auf Kreisprüfung ohne Hinweis. Catalysts sind eine eigene Stufe danach: Vorhandene Catalyst-Regeln bleiben, neue kommen erst dort.
 
 - Bauplan und Aktionsliste bleiben: jede Aktion bildet eine Mechanik ab, die es im Spiel gibt (`addResource` = Energie für Frage 13), das ist kein Vorrat.

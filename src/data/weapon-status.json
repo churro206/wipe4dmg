@@ -17,6 +17,11 @@
           "s60": 10670
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Finishing a reload within 3.6 seconds of a kill grants 6 'Memento Mori' shots, each dealing 68% [29%] increased damage.",
@@ -53,7 +58,17 @@
         "basis": "magazine",
         "measured": 1261,
         "model": 1261,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -86,6 +101,11 @@
           "s60": 18430
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -62.5 % with average, Will Given Form, Harsh Refraction."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Will Given Form immediately takes away 20% Super Energy, then drains at a rate of 4% Super Energy per second to grant the following benefits:",
@@ -122,7 +142,17 @@
         "basis": "total",
         "measured": 18430,
         "model": 18430,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -176,6 +206,16 @@
           "s60": 32424
         }
       },
+      "cause": {
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×12.48 against the Quantum row."
+      },
+      "ruleShares": [
+        {
+          "id": "impale",
+          "share": 0.9177
+        }
+      ],
       "sentences": [
         {
           "text": "Deals 40% increased damage against Minor Combatants (Exotic Primary bonus is typically 30%).",
@@ -228,7 +268,17 @@
         "basis": "magazine",
         "measured": 102,
         "model": 1273,
-        "deviation": 11.4804
+        "deviation": 11.4804,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 12.480392156862745,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -263,6 +313,11 @@
           "s60": 40434.9
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grenades fired are Arc Traps that lay inactive for 30 seconds and connect to other bolts within 15 meters.",
@@ -321,6 +376,11 @@
           "s60": 22806
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis -4.6 % without any assumption (\"sustained-arbalest\")."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "• 20 Handling",
@@ -337,7 +397,17 @@
         "basis": "total",
         "measured": 22806,
         "model": 22806,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -377,6 +447,11 @@
           "s60": 11360
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 8 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "String of Curses's maximum duration is increased by 2 seconds (5.5🠚7.5).",
@@ -417,7 +492,17 @@
         "basis": "magazine",
         "measured": 992,
         "model": 992,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -452,6 +537,11 @@
           "s60": 17748
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -73.1 % with average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring 12 hits on a single target within ?",
@@ -720,7 +810,17 @@
         "basis": "magazine",
         "measured": 1190,
         "model": 1190,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -771,6 +871,11 @@
           "s60": 33516
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 6 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Hitting a target with 18 pellets in a burst grants your next Melee attack within 3 seconds 300% Additional Base Melee Damage.",
@@ -803,7 +908,17 @@
         "basis": "total",
         "measured": 33516,
         "model": 33516,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -836,6 +951,11 @@
           "s60": 28265
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "The intended behavior was that damage against Void-Debuffed enemies is increased per unique Void-Debuff applied to the target, at a rate of 10% per debuff.",
@@ -878,6 +998,11 @@
           "s60": 16660
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 6 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Breaking an elemental shield matching the currently selected element refills the magazine from reserves and grants 5 shots of 'Ionic Return'.",
@@ -910,7 +1035,17 @@
         "basis": "total",
         "measured": 16660,
         "model": 16660,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -943,6 +1078,11 @@
           "s60": 16100
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 5 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Fires two Void Bolts that heal on hit for 11 HP each.",
@@ -971,7 +1111,17 @@
         "basis": "total",
         "measured": 16100,
         "model": 16100,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1004,6 +1154,11 @@
           "s60": 14595
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "• Sliding grants 10% progress",
@@ -1048,7 +1203,17 @@
         "basis": "magazine",
         "measured": 1575,
         "model": 1575,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1081,6 +1246,11 @@
           "s60": 27779.7
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Aiming down sights decreases pellet spread by 25%.",
@@ -1135,6 +1305,11 @@
           "s60": 31140
         }
       },
+      "cause": {
+        "class": "base-damage",
+        "why": "Damage per hit ×1.21 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring kills in either mode triggers a 7.5 meter radius Void explosion, dealing 239 [?] damage and spawning a Radiolaria Pool at the target's location.",
@@ -1227,7 +1402,17 @@
         "basis": "total",
         "measured": 25650,
         "model": 31140,
-        "deviation": 0.214
+        "deviation": 0.214,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1.2140350877192982,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1280,6 +1465,20 @@
           "s60": 28844
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -14.8 % with average, with lightning strikes."
+      },
+      "ruleShares": [
+        {
+          "id": "storm-count",
+          "share": 0.3165
+        },
+        {
+          "id": "storm",
+          "share": 0.3165
+        }
+      ],
       "sentences": [
         {
           "text": "Passively grants 25 Handling.",
@@ -1329,7 +1528,17 @@
         "basis": "total",
         "measured": 20410,
         "model": 20410,
-        "deviation": 0
+        "deviation": 0,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1365,6 +1574,11 @@
           "s60": 14645
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -17.8 % with average, no initial trace."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Linearly grants up to 80% increased damage as the beam is charged to 100% power.",
@@ -1421,7 +1635,17 @@
         "basis": "total",
         "measured": 14645,
         "model": 14645,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1457,6 +1681,11 @@
           "s60": 12636
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 5 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring 27 Weapon Hits:",
@@ -1485,7 +1714,17 @@
         "basis": "magazine",
         "measured": 1404,
         "model": 1404,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1520,6 +1759,20 @@
           "s60": 25438
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Everything on top of the hits ×0.90 against the Quantum row."
+      },
+      "ruleShares": [
+        {
+          "id": "shell",
+          "share": 0.2389
+        },
+        {
+          "id": "ignite",
+          "share": 0.2389
+        }
+      ],
       "sentences": [
         {
           "text": "Landing 10 out of 12 pellets instantly Freezes or Ignites the target, matching on the element of the shot.",
@@ -1542,7 +1795,17 @@
         "basis": "total",
         "measured": 28330,
         "model": 25438,
-        "deviation": -0.1021
+        "deviation": -0.1021,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.8979157430285918,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1579,6 +1842,11 @@
           "s60": 11808
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Fires a 3-round burs-...",
@@ -1615,7 +1883,17 @@
         "basis": "magazine",
         "measured": 984,
         "model": 984,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1650,6 +1928,11 @@
           "s60": 16896
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 2 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Freezing Shot must charge for 533ms before firing.",
@@ -1666,7 +1949,17 @@
         "basis": "magazine",
         "measured": 1056,
         "model": 1056,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -1695,6 +1988,11 @@
         },
         "catalyst": null
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -49.8 % with with corruption."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Landing two Frontal Blade hits within 2 seconds of each other, or scoring a Frontal Blade kill, heals you for 40 HP and grants one stack of 'Soulfire Charge'.",
@@ -1774,6 +2072,11 @@
           "s60": 24676
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Everything on top of the hits ×0.96 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Aiming at a target for 0.5 seconds highlights them and reports their Health and Shield percentages, Distance, and Power Level into the scope.",
@@ -1830,7 +2133,17 @@
         "basis": "total",
         "measured": 25676,
         "model": 24676,
-        "deviation": -0.0389
+        "deviation": -0.0389,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.9610531235394922,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "no row",
@@ -1855,6 +2168,11 @@
           "s60": 32114.5
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "• Increases RPM to 130",
@@ -2021,6 +2339,11 @@
           "s60": 27660
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 5 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants a 30 HP Overshield for 10 seconds.",
@@ -2049,7 +2372,17 @@
         "basis": "total",
         "measured": 27660,
         "model": 27660,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -2082,6 +2415,11 @@
           "s60": 42900.9
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Release the trigger after firing to remotely detonate it into 7 submunitions.",
@@ -2120,6 +2458,11 @@
           "s60": 23151.3
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "-0.6 % against Quantum, no Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Collecting an Ionic Trace increases the next shot's damage by 100% [7%] and applies Jolt.",
@@ -2160,7 +2503,17 @@
         "basis": "total",
         "measured": 23296,
         "model": 23151.3,
-        "deviation": -0.0062
+        "deviation": -0.0062,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 0.9937890625,
+          "mechanic": 1.0000000000000002,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no independent check",
@@ -2185,6 +2538,28 @@
           "s60": 43262.8
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "+15.6 % against a Quantum row that leaves out what the model carries."
+      },
+      "ruleShares": [
+        {
+          "id": "heavy-metal-count",
+          "share": 0.0568
+        },
+        {
+          "id": "heavy-metal",
+          "share": 0.0568
+        },
+        {
+          "id": "weaken-count",
+          "share": 0.078
+        },
+        {
+          "id": "weaken",
+          "share": 0.078
+        }
+      ],
       "sentences": [
         {
           "text": "Holding down the trigger for 16 rounds (is supposed to) make the 16th round Weaken for 6 Seconds.",
@@ -2234,7 +2609,17 @@
         "basis": "total",
         "measured": 44368,
         "model": 51279.5,
-        "deviation": 0.1558
+        "deviation": 0.1558,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": true,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.1557767535160444,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -2274,7 +2659,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "devil-s-ruin",
@@ -2293,6 +2678,11 @@
           "s60": 18960
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 8 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Hits against Suspended enemies inflicts 20 Scorch (30 with Ember of Ashes).",
@@ -2333,7 +2723,17 @@
         "basis": "magazine",
         "measured": 1580,
         "model": 1580,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -2366,6 +2766,16 @@
           "s60": 28998.6
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "+195.4 % against a Quantum row that leaves out what the model carries."
+      },
+      "ruleShares": [
+        {
+          "id": "penance",
+          "share": 0.5599
+        }
+      ],
       "sentences": [
         {
           "text": "Maintaining the Vex Cage for 3.75 seconds creates a burst of 1060 [520] damage to targets within it.",
@@ -2413,13 +2823,23 @@
         "basis": "total",
         "measured": 7050,
         "model": 20825,
-        "deviation": 1.9539
+        "deviation": 1.9539,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": true,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1.3,
+          "mechanic": 2.272231314784506,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no row",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "dragon-s-breath",
@@ -2438,6 +2858,32 @@
           "s60": 32866.4
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum +24.3 %, Aegis -20.8 %: only a test in game can tell."
+      },
+      "ruleShares": [
+        {
+          "id": "fuel-from-ignition",
+          "share": 0.3058
+        },
+        {
+          "id": "embed-1x",
+          "share": 0.9367
+        },
+        {
+          "id": "embed-3x",
+          "share": 0.8794
+        },
+        {
+          "id": "pools-scorch",
+          "share": 0.5318
+        },
+        {
+          "id": "pools-scorch-3x",
+          "share": 0.2556
+        }
+      ],
       "sentences": [
         {
           "text": "Rockets embed into targets, spewing three Napalm Pools every 0.75 seconds until detonation.",
@@ -2518,7 +2964,17 @@
         "basis": "total",
         "measured": 26444,
         "model": 32866.4,
-        "deviation": 0.2429
+        "deviation": 0.2429,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.242867455755559,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -2555,6 +3011,11 @@
           "s60": 21456.6
         }
       },
+      "cause": {
+        "class": "counting",
+        "why": "Shots ×0.88 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Passive 5% increased damage falloff distance compared to similar shotguns.",
@@ -2599,7 +3060,17 @@
         "basis": "total",
         "measured": 21471,
         "model": 18932.3,
-        "deviation": -0.1182
+        "deviation": -0.1182,
+        "circular": false,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 0.8823529411764706,
+          "hitsPerShot": 1,
+          "damagePerHit": 0.9993309580364212,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no independent check",
@@ -2624,6 +3095,11 @@
           "s60": 14007
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 10 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Kills against Void Debuffed enemies grant a 45 HP Void Overshield for 8 seconds (12 with Echo of Persistence).",
@@ -2672,7 +3148,17 @@
         "basis": "total",
         "measured": 14007,
         "model": 14007,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -2707,6 +3193,11 @@
           "s60": 13893
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 10 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "• Aggresively tracks the closest enemy within a 32 meter radius, dealing 1634 [Death] damage and applying Jolt",
@@ -2755,7 +3246,17 @@
         "basis": "total",
         "measured": 13893,
         "model": 13893,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -2790,6 +3291,11 @@
           "s60": 17174
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Finishing a reload within 5.3?",
@@ -2834,7 +3340,17 @@
         "basis": "total",
         "measured": 17174,
         "model": 17174,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -2869,6 +3385,11 @@
           "s60": 32930
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "3 kills within 3?",
@@ -3015,6 +3536,11 @@
           "s60": 17185
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 6 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "While Aiming Down Sights, deal 32.5% increased damage for as long as you land Precision Hits or damage a Combatant Shield.",
@@ -3047,7 +3573,17 @@
         "basis": "total",
         "measured": 17185,
         "model": 17185,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no row",
@@ -3072,6 +3608,28 @@
           "s60": 46534.4
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "-0.9 % against Quantum, no Aegis row."
+      },
+      "ruleShares": [
+        {
+          "id": "threadling-count",
+          "share": 0.4054
+        },
+        {
+          "id": "threadlings",
+          "share": 0.4054
+        },
+        {
+          "id": "spindle-add",
+          "share": 0.2012
+        },
+        {
+          "id": "spindle-start",
+          "share": 0.2153
+        }
+      ],
       "sentences": [
         {
           "text": "Maximum of 25 stacks.",
@@ -3122,7 +3680,17 @@
         "basis": "total",
         "measured": 46943,
         "model": 46534.4,
-        "deviation": -0.0087
+        "deviation": -0.0087,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 0.5,
+          "damagePerHit": 1.1557061403508773,
+          "mechanic": 1.7154814587462972,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "no independent check",
@@ -3147,6 +3715,28 @@
           "s60": 25795
         }
       },
+      "cause": {
+        "class": "rule-too-strong",
+        "why": "Aegis +6.5 %; rule \"moth-count\" carries 16 % of the total."
+      },
+      "ruleShares": [
+        {
+          "id": "enrage-max",
+          "share": -0.0814
+        },
+        {
+          "id": "enrage-count",
+          "share": -0.0814
+        },
+        {
+          "id": "moth-count",
+          "share": 0.1628
+        },
+        {
+          "id": "moth",
+          "share": 0.1628
+        }
+      ],
       "sentences": [
         {
           "text": "Weapon Kills grant Amplified for 15 seconds.",
@@ -3216,7 +3806,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "eyes-of-tomorrow",
@@ -3235,6 +3825,11 @@
           "s60": 27060
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring 4 kills in a single volley grants 'Adaptive Ordnance' and generates one ammo out of thin air into your reserves.",
@@ -3271,7 +3866,17 @@
         "basis": "total",
         "measured": 27060,
         "model": 27060,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -3306,6 +3911,11 @@
           "s60": 22755.4
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Hold [Reload] to consume up to  9 Ammo from reserves and refill the magazine, activating 'Quantum Nova'.",
@@ -3356,6 +3966,16 @@
           "s60": 16907.9
         }
       },
+      "cause": {
+        "class": "rule-too-strong",
+        "why": "Aegis +2.6 %; rule \"volatile\" carries 7 % of the total."
+      },
+      "ruleShares": [
+        {
+          "id": "volatile",
+          "share": 0.0735
+        }
+      ],
       "sentences": [
         {
           "text": "Fires bouncing grenades that can be remotely detonated after 0.3 seconds.",
@@ -3418,7 +4038,17 @@
         "basis": "magazine",
         "measured": 581,
         "model": 581,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -3435,7 +4065,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "final-warning",
@@ -3454,6 +4084,11 @@
           "s60": 35200
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -52.2 % with ADS charged mark."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 10% increased damage to marked targets.",
@@ -3498,7 +4133,17 @@
         "basis": "magazine",
         "measured": 2200,
         "model": 2200,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -3533,6 +4178,11 @@
           "s60": 26833.5
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "-0.0 % against Quantum, no Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Costs 3 ammo.",
@@ -3573,7 +4223,17 @@
         "basis": "magazine",
         "measured": 7668,
         "model": 7666.7,
-        "deviation": -0.0002
+        "deviation": -0.0002,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 0.9998333333333334,
+          "mechanic": 1.0000000000000002,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no independent check",
@@ -3598,6 +4258,11 @@
           "s60": 20860
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -80.6 % with The Rock, excludes impact."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Holding [Reload] within 4 seconds of a kill consumes 4 ammo, refills the magazine, and grants 'The Rock'.",
@@ -3626,7 +4291,17 @@
         "basis": "total",
         "measured": 20860,
         "model": 20860,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -3676,6 +4351,11 @@
           "s60": 20636
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Increases Magazine Size by 1 (1🠚2).",
@@ -3720,7 +4400,17 @@
         "basis": "total",
         "measured": 20636,
         "model": 20636,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -3762,6 +4452,16 @@
           "s60": 61480
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "Another Aegis row fits, \"machine-gun-grand-overture-missile-loaded-volley-ready\" is +114.9 %: it measures something else than the model."
+      },
+      "ruleShares": [
+        {
+          "id": "missile",
+          "share": 0.466
+        }
+      ],
       "sentences": [
         {
           "text": "Maximum of 20 stacks.",
@@ -3789,7 +4489,17 @@
         "basis": "total",
         "measured": 61480,
         "model": 61480,
-        "deviation": 0
+        "deviation": 0,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -3841,6 +4551,11 @@
           "s60": 18034
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -51.3 % with burst, Vorpal Weapon."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Void Explosions deal 470 [?] damage in a 7 meter radius and spawn two seeking orbs, each dealing 51 [20] damage.",
@@ -3885,7 +4600,17 @@
         "basis": "magazine",
         "measured": 2115,
         "model": 2130,
-        "deviation": 0.0071
+        "deviation": 0.0071,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1.0070921985815604,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -3921,6 +4646,11 @@
           "s60": 14131.6
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "-0.8 % against Quantum, no Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another.",
@@ -4057,7 +4787,17 @@
         "basis": "magazine",
         "measured": 2314,
         "model": 2296.4,
-        "deviation": -0.0076
+        "deviation": -0.0076,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 0.9923876404494383,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no independent check",
@@ -4082,6 +4822,11 @@
           "s60": 13720
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 3 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 25 Stability.",
@@ -4102,7 +4847,17 @@
         "basis": "magazine",
         "measured": 1372,
         "model": 1372,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4135,6 +4890,11 @@
           "s60": 9603
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Everything on top of the hits ×0.31 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Maximum of 7 stacks.",
@@ -4183,7 +4943,17 @@
         "basis": "magazine",
         "measured": 2785,
         "model": 873,
-        "deviation": -0.6865
+        "deviation": -0.6865,
+        "circular": false,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.3134649910233393,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4239,6 +5009,11 @@
           "s60": 41323.2
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "Aegis +581.7 % with no rule that large: \"sword-heartshadow-light\" measures something else than the model."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Lasts for 2.5 seconds upon exit.",
@@ -4307,6 +5082,11 @@
           "s60": 25080
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 8 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "While fully spun up and at full HP, gain an 80HP Arc Shield over 1 second.",
@@ -4347,7 +5127,17 @@
         "basis": "total",
         "measured": 25080,
         "model": 25080,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4387,6 +5177,11 @@
           "s60": 17113
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scorch and Ignitions that originate from this weapon deal 5% increased damage.",
@@ -4465,6 +5260,28 @@
           "s60": 46359.7
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+      },
+      "ruleShares": [
+        {
+          "id": "seekers",
+          "share": 0.7342
+        },
+        {
+          "id": "scorch-seekers",
+          "share": 0.2624
+        },
+        {
+          "id": "guidance-ring-count",
+          "share": 0.7342
+        },
+        {
+          "id": "guidance-ring-deploy",
+          "share": 0.7342
+        }
+      ],
       "sentences": [
         {
           "text": "Deploying a Guidance Ring or Guidance Seeker Hits grants the following benefits for 5 seconds:",
@@ -4517,7 +5334,17 @@
         "basis": "magazine",
         "measured": 223,
         "model": 223,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4560,6 +5387,11 @@
         },
         "catalyst": null
       },
+      "cause": {
+        "class": "ok",
+        "why": "Within the limit: Aegis 0.0 %."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "This gun has no reserve ammo and fires at 49 RPM.",
@@ -4600,7 +5432,17 @@
         "basis": "magazine",
         "measured": 12240,
         "model": 12234.4,
-        "deviation": -0.0005
+        "deviation": -0.0005,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 0.9995424836601308,
+          "mechanic": 1.0000000000000002,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4635,6 +5477,11 @@
           "s60": 13180
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -77.9 % with Honed Edge x4."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Increases the damage bonus of Honed Edge x4 by 20%, granting the following values:",
@@ -4695,7 +5542,17 @@
         "basis": "total",
         "measured": 13180,
         "model": 13180,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4737,6 +5594,11 @@
           "s60": 25159.6
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "Within the limit: Aegis 0.0 %."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 15% decreased Charge/Draw Time while within 15 meters of 2 enemies.",
@@ -4799,6 +5661,24 @@
           "s60": 18022.6
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -8.0 % with average, with ricochetting bullets."
+      },
+      "ruleShares": [
+        {
+          "id": "seventh-reset",
+          "share": -0.0059
+        },
+        {
+          "id": "seventh-count",
+          "share": 0.2604
+        },
+        {
+          "id": "seventh",
+          "share": 0.2604
+        }
+      ],
       "sentences": [
         {
           "text": "Every 7th shot in the magazine deals 252.52% [5%] increased damage, has 50% increased Auto Aim cone size, and ricochets to the nearest target within an 8 [5] meter radius.",
@@ -4826,7 +5706,17 @@
         "basis": "magazine",
         "measured": 1627,
         "model": 1628.2,
-        "deviation": 0.0008
+        "deviation": 0.0008,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.000759680393362,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4862,6 +5752,16 @@
           "s60": 30820
         }
       },
+      "cause": {
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×3.08 against the Quantum row."
+      },
+      "ruleShares": [
+        {
+          "id": "poison",
+          "share": 0.6738
+        }
+      ],
       "sentences": [
         {
           "text": "Grants 20 Reload Speed and 30 Stability.",
@@ -4904,7 +5804,17 @@
         "basis": "magazine",
         "measured": 202,
         "model": 622,
-        "deviation": 2.0792
+        "deviation": 2.0792,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 3.0792079207920793,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4936,6 +5846,11 @@
         },
         "catalyst": null
       },
+      "cause": {
+        "class": "base-damage",
+        "why": "Damage per hit ×0.82 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Fires 15 pellets in a wide blast with no damage falloff and unlimited overpenetration.",
@@ -4976,7 +5891,17 @@
         "basis": "total",
         "measured": 37200,
         "model": 30544,
-        "deviation": -0.1789
+        "deviation": -0.1789,
+        "circular": false,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 0.8210752688172043,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -4992,7 +5917,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "leviathan-s-breath",
@@ -5011,6 +5936,11 @@
           "s60": 30772
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 2 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Increases Reserves by 5 (9🠚14) and Ammo Generation by 80.",
@@ -5027,7 +5957,17 @@
         "basis": "total",
         "measured": 19782,
         "model": 19782,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5069,6 +6009,11 @@
           "s60": 18600
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -82.4 % with ADS, burst."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "While Aiming Down Sights, this gun becomes a Rapid-Fire Pulse Rifle and deals 30% increased damage to Arc-Debuffed targets.",
@@ -5125,7 +6070,17 @@
         "basis": "magazine",
         "measured": 1875,
         "model": 1875,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5170,6 +6125,11 @@
           "s60": 35165.2
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -2.9 % with average, includes ignition/scorch, Ember of Ashes."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "While Aiming Down Sights, fires in 5 round bursts.",
@@ -5244,6 +6204,11 @@
         },
         "catalyst": null
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Precision Kills with this gun trigger a Void Implosion that pulls enemies within a 9 [?] meter radius and explodes for 341 [?] damage.",
@@ -5288,7 +6253,17 @@
         "basis": "total",
         "measured": 22806,
         "model": 22806,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5321,6 +6296,11 @@
           "s60": 10670
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Healing orbs restore 90HP to all allies within a ?",
@@ -5357,7 +6337,17 @@
         "basis": "magazine",
         "measured": 1261,
         "model": 1261,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5390,6 +6380,20 @@
           "s60": 27421
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "Another Aegis row fits, \"hand-cannon-malfeasance-illegally-modded-holster-17-shots-with-slugs-vorpal-weapon\" is +42.6 %: it measures something else than the model."
+      },
+      "ruleShares": [
+        {
+          "id": "slug-count",
+          "share": 0.4505
+        },
+        {
+          "id": "slugs-explode",
+          "share": 0.4505
+        }
+      ],
       "sentences": [
         {
           "text": "Grants 20 Range.",
@@ -5428,7 +6432,17 @@
         "basis": "magazine",
         "measured": 3140,
         "model": 3140,
-        "deviation": 0
+        "deviation": 0,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.9999999999999999,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5477,6 +6491,11 @@
           "s60": 21945
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -2.1 % with Conserve Momentum x0, full mag."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Kills grant 34% decreased Reload Animation Duration for 6 seconds.",
@@ -5517,7 +6536,17 @@
         "basis": "total",
         "measured": 22155,
         "model": 21945,
-        "deviation": -0.0095
+        "deviation": -0.0095,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.9905213270142179,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5570,6 +6599,11 @@
           "s60": 31955
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 5 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 20% increased damage for 20 seconds once Super energy reaches 0%.",
@@ -5598,7 +6632,17 @@
         "basis": "total",
         "measured": 31955,
         "model": 31955,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5631,6 +6675,11 @@
           "s60": 11840
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 11 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 12.5% increased Movement Speed while held.",
@@ -5683,7 +6732,17 @@
         "basis": "magazine",
         "measured": 1184,
         "model": 1184,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5716,6 +6775,11 @@
           "s60": 13552
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 10 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Dealing damage grants 2% Melee Ability Energy per hit.",
@@ -5764,7 +6828,17 @@
         "basis": "magazine",
         "measured": 1232,
         "model": 1232,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5797,6 +6871,11 @@
           "s60": 13608
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +2.6 % without any assumption (\"auto-rifle-necrochasm\")."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Kills with a Cursed Thrall Explosion, or finishing a reload within 5.2?",
@@ -5845,7 +6924,17 @@
         "basis": "magazine",
         "measured": 1200,
         "model": 1200,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -5878,6 +6967,11 @@
           "s60": 32926.7
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring a Precision Hit grants one stack of 'The Master' up to an infinite amount, with effective benefits ending after 20 stacks.",
@@ -5948,6 +7042,11 @@
           "s60": 31317.9
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Manually detonating at least 6 rounds that are embedded into a target Suspends them for 6 seconds (8 with Thread of Continuity).",
@@ -5986,6 +7085,11 @@
           "s60": 32987.6
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
@@ -6036,6 +7140,16 @@
           "s60": 39167.6
         }
       },
+      "cause": {
+        "class": "rule-too-strong",
+        "why": "Aegis +7.6 %; rule \"scorch\" carries 17 % of the total."
+      },
+      "ruleShares": [
+        {
+          "id": "scorch",
+          "share": 0.1682
+        }
+      ],
       "sentences": [
         {
           "text": "I gain 30 Stability and 20 Ammo Generation.",
@@ -6069,7 +7183,17 @@
         "basis": "total",
         "measured": 28430,
         "model": 28827.6,
-        "deviation": 0.014
+        "deviation": 0.014,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.0139851516004221,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -6168,7 +7292,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "osteo-striga",
@@ -6187,6 +7311,16 @@
           "s60": 26978.5
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "The Quantum row is the bare weapon (+40.6 %), Aegis says the opposite (-11.4 %)."
+      },
+      "ruleShares": [
+        {
+          "id": "corruption",
+          "share": 0.2885
+        }
+      ],
       "sentences": [
         {
           "text": "Grants 30 Reload and 20 Stability.",
@@ -6233,7 +7367,17 @@
         "basis": "magazine",
         "measured": 1218,
         "model": 1712,
-        "deviation": 0.4056
+        "deviation": 0.4056,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.4055714285714296,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -6261,7 +7405,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "outbreak-perfected",
@@ -6280,6 +7424,48 @@
           "s60": 49501.6
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "The Quantum row is the bare weapon (+125.1 %), Aegis says the opposite (-88.5 %)."
+      },
+      "ruleShares": [
+        {
+          "id": "spread-count",
+          "share": 0.7585
+        },
+        {
+          "id": "spread",
+          "share": 0.7585
+        },
+        {
+          "id": "nanites-more",
+          "share": 0.3309
+        },
+        {
+          "id": "nanites-first",
+          "share": 0.4653
+        },
+        {
+          "id": "nanites-start",
+          "share": 0.6345
+        },
+        {
+          "id": "rewind-count",
+          "share": 0.1172
+        },
+        {
+          "id": "rewind-count-nanites",
+          "share": 0.012
+        },
+        {
+          "id": "rewind",
+          "share": 0.1172
+        },
+        {
+          "id": "rewind-reset",
+          "share": -0.0114
+        }
+      ],
       "sentences": [
         {
           "text": "Refills 60% of the number of Hits landed (rounded up) into the Magazine from reserves.",
@@ -6439,7 +7625,17 @@
         "basis": "magazine",
         "measured": 1152,
         "model": 2593.5,
-        "deviation": 1.2513
+        "deviation": 1.2513,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 2.2513020833333335,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -6455,7 +7651,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "parasite",
@@ -6474,6 +7670,11 @@
           "s60": 38412
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 6 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Maximum of 20 stacks.",
@@ -6506,7 +7707,17 @@
         "basis": "total",
         "measured": 38412,
         "model": 38412,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -6539,6 +7750,28 @@
           "s60": 24232
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "Within the limit: Aegis -1.8 %."
+      },
+      "ruleShares": [
+        {
+          "id": "refill",
+          "share": 0.201
+        },
+        {
+          "id": "count",
+          "share": 0.4058
+        },
+        {
+          "id": "fifth",
+          "share": 0.4058
+        },
+        {
+          "id": "scorch",
+          "share": 0.2933
+        }
+      ],
       "sentences": [
         {
           "text": "Precision Hits refill 1 ammo.",
@@ -6605,6 +7838,11 @@
           "s60": 18243
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -9.2 % with average, with ignition, Ember of Ashes."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scorch and Ignitions that originate from this weapon deal 15% increased damage.",
@@ -6679,6 +7917,20 @@
           "s60": 18728
         }
       },
+      "cause": {
+        "class": "rule-too-strong",
+        "why": "Aegis +14.9 %; rule \"tracers-count\" carries 26 % of the total."
+      },
+      "ruleShares": [
+        {
+          "id": "tracers-count",
+          "share": 0.2631
+        },
+        {
+          "id": "tracers-missile",
+          "share": 0.2631
+        }
+      ],
       "sentences": [
         {
           "text": "Maximum of 3 stacks.",
@@ -6706,7 +7958,17 @@
         "basis": "magazine",
         "measured": 1560,
         "model": 1560,
-        "deviation": 0
+        "deviation": 0,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -6723,7 +7985,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W1"
     },
     {
       "id": "rat-king",
@@ -6742,6 +8004,11 @@
           "s60": 17775
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 8 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Finishing a reload within 3 seconds of a kill grants Void Invisibility for 5.8 seconds.",
@@ -6782,7 +8049,17 @@
         "basis": "magazine",
         "measured": 1185,
         "model": 1185,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -6815,6 +8092,11 @@
           "s60": 11603
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 12 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring 2 [1] kills grants 'Red Death Charged'.",
@@ -6871,7 +8153,17 @@
         "basis": "magazine",
         "measured": 1230,
         "model": 1230,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -6907,6 +8199,11 @@
           "s60": 22314.6
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Deals 100% increased damage against Champions at all times.",
@@ -7053,6 +8350,11 @@
           "s60": 18424
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -29.8 % with average, Arc Conductor, Peacekeepers."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 30 Range.",
@@ -7097,7 +8399,17 @@
         "basis": "magazine",
         "measured": 1316,
         "model": 1316,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -7141,6 +8453,11 @@
           "s60": 19270
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +2.3 % without any assumption (\"trace-rifle-ruinous-effigy\")."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Spheres last 30 seconds once on the ground, start with 30 ammo on pickup, and drain at a rate of 1 ammo per second.",
@@ -7193,7 +8510,17 @@
         "basis": "total",
         "measured": 19270,
         "model": 19270,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -7233,6 +8560,11 @@
           "s60": 19873.5
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -44.3 % with average, charged, Hail the Storm."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Deals 25% increased damage to Frozen Enemies and always destroys Stasis Crystals on hit.",
@@ -7275,6 +8607,11 @@
           "s60": 40506
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 13 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Teeming Nests can be harvested into a collectible Tangle after spawning 6 Threadlings.",
@@ -7335,7 +8672,17 @@
         "basis": "total",
         "measured": 47100,
         "model": 47100,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -7375,6 +8722,11 @@
           "s60": 15091.4
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Deals 11% increased damage against Cabal enemies and pierces through Phalanx Shields and Cabal Shield Domes.",
@@ -7433,6 +8785,11 @@
           "s60": 33615
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "0.0 % against Quantum, no Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Kills or collecting a Void Breach grants 'Nightsworn Sight' for 7 seconds and Truesight for 3 seconds.",
@@ -7644,7 +9001,17 @@
         "basis": "total",
         "measured": 33615,
         "model": 33615,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no row",
@@ -7669,6 +9036,11 @@
           "s60": 37264
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 3 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Increases Reserves by 2 (14🠚16) and decreases Charge Time by 33% (1024🠚774) without reducing damage.",
@@ -7689,7 +9061,17 @@
         "basis": "total",
         "measured": 37264,
         "model": 37264,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -7729,6 +9111,11 @@
           "s60": 13180
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Everything on top of the hits ×0.63 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Precision Hits grant 16.67% progress, and Orbs of Power grant 8.34% progress.",
@@ -7777,7 +9164,17 @@
         "basis": "total",
         "measured": 20940,
         "model": 13180,
-        "deviation": -0.3706
+        "deviation": -0.3706,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.6294173829990449,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -7830,6 +9227,11 @@
           "s60": 9810
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis -4.8 % without any assumption (\"hand-cannon-sturm\")."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 40 Handling and 20 Range.",
@@ -7890,7 +9292,17 @@
         "basis": "magazine",
         "measured": 981,
         "model": 981,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -7923,6 +9335,11 @@
           "s60": 11628
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +17.8 % without any assumption (\"hand-cannon-sunshot\")."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 30 Range and 20 Stability.",
@@ -7963,7 +9380,17 @@
         "basis": "magazine",
         "measured": 1224,
         "model": 1224,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -7996,6 +9423,11 @@
           "s60": 13731.5
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Kills have a 25% chance to grant 20 HP and begin Health Regeneration.",
@@ -8042,6 +9474,11 @@
           "s60": 24206.3
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 25% increased Flinch Resistance while at maximum Rate of Fire.",
@@ -8092,6 +9529,11 @@
           "s60": 13298
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -79.8 % with Arc Seeker Mode, Dynamic Charge x20."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Maximum of 15 stacks.",
@@ -8160,7 +9602,17 @@
         "basis": "magazine",
         "measured": 1220,
         "model": 1220,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -8213,6 +9665,11 @@
           "s60": 17714
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -53.4 % with average, Ravenous Beast, Peacekeepers."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Dealing damage with Tarrabah grants Raveneous Beast 2% [5%] charge for each hit.",
@@ -8293,7 +9750,17 @@
         "basis": "magazine",
         "measured": 1190,
         "model": 1190,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -8346,6 +9813,11 @@
           "s60": 21546
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +3.7 % without any assumption (\"fusion-rifle-telesto\")."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Increases the Magazine Size by 3 (4🠚7) and grants 40 Ammo Generation.",
@@ -8378,7 +9850,17 @@
         "basis": "total",
         "measured": 21546,
         "model": 21546,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -8418,6 +9900,11 @@
           "s60": 20174
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 12 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Hold [Reload] to consume your grenade charge over a 2.3 second animation that refills the magazine and prepares an explosive [projectile | shape | language].",
@@ -8474,7 +9961,17 @@
         "basis": "total",
         "measured": 20174,
         "model": 20174,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -8507,6 +10004,11 @@
           "s60": 13482
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 11 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring 3 Precision Hits within 2 seconds of each refills 1 Ammo into the Magazine from thin air.",
@@ -8559,7 +10061,17 @@
         "basis": "total",
         "measured": 13482,
         "model": 13482,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -8588,6 +10100,11 @@
         },
         "catalyst": null
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Increases Magazine Size by 1 (7🠚8) and grants 30 Ammo Generation.",
@@ -8624,7 +10141,17 @@
         "basis": "total",
         "measured": 20875,
         "model": 20875,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -8666,6 +10193,11 @@
           "s60": 13520
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Everything on top of the hits ×0.87 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Each successive shot fired within 0.5 seconds of each other deals increasingly higher damage and has a wider pellet spread.",
@@ -8698,7 +10230,17 @@
         "basis": "total",
         "measured": 15627,
         "model": 13520,
-        "deviation": -0.1348
+        "deviation": -0.1348,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.8651692583349331,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -8734,6 +10276,11 @@
           "s60": 12222
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "Within the limit: Aegis +0.4 %."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 30 Stability.",
@@ -8796,6 +10343,11 @@
           "s60": 68070.2
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "Another Aegis row fits, \"sword-the-lament-heavy\" is +191.2 %: it measures something else than the model."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Landing hits grants 7HP per damage instance.",
@@ -8935,6 +10487,11 @@
           "s60": 22528
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 14 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Hip-Fired Precision Hits deal 88% [?] increased damage.",
@@ -8999,7 +10556,17 @@
         "basis": "magazine",
         "measured": 1408,
         "model": 1408,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9034,6 +10601,11 @@
           "s60": 26522.1
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -33.5 % with average, Hover Mode, Peacekeepers."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "While grounded, hits grant 1.5% charge to your Anti-Grav Repulsors.",
@@ -9120,6 +10692,11 @@
           "s60": 14065
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "20 Direct Hits on a target within 1 second of each other applies Sever for 10 seconds (15 seconds with Thread of Continuity) and grants you Woven Mail for 10 seconds.",
@@ -9156,7 +10733,17 @@
         "basis": "total",
         "measured": 14065,
         "model": 14065,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9185,6 +10772,11 @@
         },
         "catalyst": null
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -34.8 % with average, direct impact, standard target model."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 40 Blast Radius and 50 Reload Speed.",
@@ -9213,7 +10805,17 @@
         "basis": "total",
         "measured": 20250,
         "model": 20250,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9250,6 +10852,11 @@
           "s60": 41296.1
         }
       },
+      "cause": {
+        "class": "ok",
+        "why": "-0.1 % against Quantum, no Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Refills 60% of the number of Hits landed (rounded up) into the Magazine from reserves.",
@@ -9322,7 +10929,17 @@
         "basis": "total",
         "measured": 41328,
         "model": 41296.1,
-        "deviation": -0.0008
+        "deviation": -0.0008,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 0.9992286585365854,
+          "mechanic": 1.0000000000000004,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no independent check",
@@ -9347,6 +10964,11 @@
           "s60": 19200
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 3 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Deals 80% decreased damage to Minibosses, Bosses, and Vehicles.",
@@ -9367,7 +10989,17 @@
         "basis": "total",
         "measured": 19200,
         "model": 19200,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9404,6 +11036,11 @@
           "s60": 13626.5
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.",
@@ -9458,6 +11095,16 @@
           "s60": 21453
         }
       },
+      "cause": {
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×2.24 against the Quantum row."
+      },
+      "ruleShares": [
+        {
+          "id": "corruption",
+          "share": 0.5517
+        }
+      ],
       "sentences": [
         {
           "text": "Direct hits with this weapon apply Corruption (DoT Poison), dealing 30 [0.4] damage every 0.5 seconds for 2 seconds.",
@@ -9512,7 +11159,17 @@
         "basis": "magazine",
         "measured": 873,
         "model": 1953,
-        "deviation": 1.2371
+        "deviation": 1.2371,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 2.2371134020618557,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9548,6 +11205,11 @@
           "s60": 38279
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Everything on top of the hits ×0.97 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "• Increases Rate of Fire by 25%|40% after 13|26 shots.",
@@ -9584,7 +11246,17 @@
         "basis": "total",
         "measured": 39373,
         "model": 38279,
-        "deviation": -0.0278
+        "deviation": -0.0278,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.9722144616869428,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9630,6 +11302,11 @@
           "s60": 10659
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -43.0 % with average, alternating modes, 6 stacks."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Drawing from the hip marks up to 3 enemies near the reticle.",
@@ -9678,7 +11355,17 @@
         "basis": "magazine",
         "measured": 209,
         "model": 209,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9715,6 +11402,11 @@
           "s60": 30738
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Everything on top of the hits ×0.83 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Hip-Firing grants 50% reduced recoil, which is carried into ADS if the trigger stays held down after initially hip-firing.",
@@ -9759,7 +11451,17 @@
         "basis": "magazine",
         "measured": 5680,
         "model": 4700,
-        "deviation": -0.1725
+        "deviation": -0.1725,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.8274647887323944,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9795,6 +11497,11 @@
           "s60": 31125.6
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds.",
@@ -9881,6 +11588,11 @@
           "s60": 8928
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -5.1 % with body."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Dealing damage grants 'Scientific Method' for 5 seconds, granting 35 Handling and maximized Movement Speed.",
@@ -9901,7 +11613,17 @@
         "basis": "total",
         "measured": 8928,
         "model": 8928,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -9943,6 +11665,11 @@
           "s60": 18486
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 10 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Gain 15 Handling, 15 Reload Speed, and 2 Aim Assist for each stack of Gathering Light.",
@@ -9991,7 +11718,17 @@
         "basis": "magazine",
         "measured": 1343,
         "model": 1343,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10024,6 +11761,11 @@
           "s60": 19890
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 5 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Finishing a reload within 3.6?",
@@ -10052,7 +11794,17 @@
         "basis": "magazine",
         "measured": 1530,
         "model": 1530,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10085,6 +11837,11 @@
           "s60": 3504
         }
       },
+      "cause": {
+        "class": "counting",
+        "why": "Hits per shot ×0.33 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Lightning Rod arrows explode on impact and chain lightning in an 8 meter radius around their point of impact for 194 [50.3] damage each.",
@@ -10101,7 +11858,17 @@
         "basis": "magazine",
         "measured": 219,
         "model": 73,
-        "deviation": -0.6667
+        "deviation": -0.6667,
+        "circular": false,
+        "catalystRow": true,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 0.3333333333333333,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10134,6 +11901,20 @@
           "s60": 42168
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "+4.8 % against Quantum, but Aegis agrees: this row does not hold what is modelled."
+      },
+      "ruleShares": [
+        {
+          "id": "cluster-count",
+          "share": 0.1647
+        },
+        {
+          "id": "cluster",
+          "share": 0.1647
+        }
+      ],
       "sentences": [
         {
           "text": "Maximum of 4 stacks.",
@@ -10178,7 +11959,17 @@
         "basis": "total",
         "measured": 28752,
         "model": 30120,
-        "deviation": 0.0476
+        "deviation": 0.0476,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 0.875,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.197234120359328,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10222,6 +12013,11 @@
           "s60": 14017.8
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring 2 hits within 3 seconds of each causes the next shot fired within 3 seconds to have an Explosive Payload.",
@@ -10304,6 +12100,16 @@
           "s60": 27034.8
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -15.4 % with average."
+      },
+      "ruleShares": [
+        {
+          "id": "scorch",
+          "share": 0.1345
+        }
+      ],
       "sentences": [
         {
           "text": "Void Rocket applies Suppression for 10 seconds.",
@@ -10321,7 +12127,17 @@
         "basis": "total",
         "measured": 26950,
         "model": 27034.8,
-        "deviation": 0.0031
+        "deviation": 0.0031,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.0031478664192954,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10356,6 +12172,11 @@
           "s60": 10659
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 4 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "In PvP, direct hits apply [50 Slow] for 1 second (2 seconds with Whisper of Durance).",
@@ -10380,7 +12201,17 @@
         "basis": "magazine",
         "measured": 209,
         "model": 209,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10413,6 +12244,24 @@
           "s60": 50917.8
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +21.0 % without any assumption (\"fusion-rifle-vex-mythoclast\")."
+      },
+      "ruleShares": [
+        {
+          "id": "rewind-count",
+          "share": 0.1698
+        },
+        {
+          "id": "rewind",
+          "share": 0.1698
+        },
+        {
+          "id": "rewind-reset",
+          "share": -0.0107
+        }
+      ],
       "sentences": [
         {
           "text": "Sets the Magazine Size to 33, greatly exceeding that of any other fusion rifle.",
@@ -10467,7 +12316,17 @@
         "basis": "magazine",
         "measured": 2825,
         "model": 2825,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10500,6 +12359,11 @@
           "s60": 18975
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 26 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "While Void Overshield is active, Glaive Melee attacks deal 20% increased damage.",
@@ -10612,7 +12476,17 @@
         "basis": "total",
         "measured": 18975,
         "model": 18975,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10647,6 +12521,11 @@
           "s60": 15715
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 30 Handling and 40 Reload Speed while within 15 meters of an ally.",
@@ -10691,7 +12570,17 @@
         "basis": "magazine",
         "measured": 1750,
         "model": 1750,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -10726,6 +12615,11 @@
           "s60": 19500
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Medium for 0.5 seconds 🠚 Low 1s 🠚 High 1s 🠚 Medium 1.5s 🠚 Low 1.5s 🠚 Medium 2s 🠚 High 1.25s 🠚 Low 1.25s 🠚 Repeats",
@@ -10792,6 +12686,11 @@
           "s60": 44410.4
         }
       },
+      "cause": {
+        "class": "no-check",
+        "why": "Neither a Quantum row nor an independent Aegis row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "At base, it takes 4.85 seconds to fully charge Whirling Ovation.",
@@ -10866,6 +12765,11 @@
           "s60": 32300
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Aegis -32.1 % with Whispered Breathing."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing.",
@@ -10970,7 +12874,17 @@
         "basis": "total",
         "measured": 32300,
         "model": 32300,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -11015,6 +12929,11 @@
           "s60": 12627
         }
       },
+      "cause": {
+        "class": "mechanic-missing",
+        "why": "Everything on top of the hits ×0.65 against the Quantum row."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Stasis Shards grant 7 ammo on pickup that can overfill the magazine, up to 100% capacity.",
@@ -11055,7 +12974,17 @@
         "basis": "magazine",
         "measured": 1882,
         "model": 1220,
-        "deviation": -0.3518
+        "deviation": -0.3518,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 0.6482465462274177,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -11091,6 +13020,11 @@
           "s60": 34218
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +29.3 % and no rule that large (\"glaive-winterbite-average-projectile-with-shatter\")."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "When the magazine has at least 1 round loaded, Glaive Melee Attacks deal 50% increased damage and apply 40 Slow for 4 [1.5] seconds (8 [1.5] with Whisper of Durance).",
@@ -11134,7 +13068,17 @@
         "basis": "total",
         "measured": 34218,
         "model": 34218,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -11171,6 +13115,11 @@
           "s60": 22489
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Truesight reaches 64 meters.",
@@ -11215,7 +13164,17 @@
         "basis": "magazine",
         "measured": 523,
         "model": 523,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",
@@ -11248,6 +13207,11 @@
           "s60": 10700
         }
       },
+      "cause": {
+        "class": "reads-quantum",
+        "why": "Damage and count come from the row it is compared with; 49 sentences with numbers are still open."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Maximum of 6 charges.",
@@ -11452,7 +13416,17 @@
         "basis": "magazine",
         "measured": 214,
         "model": 214,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "no row",
@@ -11477,6 +13451,11 @@
           "s60": 50606
         }
       },
+      "cause": {
+        "class": "wrong-row",
+        "why": "Another Aegis row fits, \"grenade-launcher-witherhoard-ground-pool\" is +99.7 %: it measures something else than the model."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Direct Hits apply 'Blighted' to the target, dealing twice as much tick damage as Blighted Pools at half the rate for 9.5 seconds.",
@@ -11515,7 +13494,17 @@
         "basis": "total",
         "measured": 41180,
         "model": 41180,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 0.017543859649122806,
+          "damagePerHit": 57.19444444444444,
+          "mechanic": 0.996600291403594,
+          "rowPlain": false
+        }
       },
       "aegis": {
         "check": "checked",
@@ -11559,6 +13548,11 @@
           "s60": 21373
         }
       },
+      "cause": {
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis -25.6 % without any assumption (\"sustained-xenophage\")."
+      },
+      "ruleShares": [],
       "sentences": [
         {
           "text": "Maximum of 3 Stacks.",
@@ -11591,7 +13585,17 @@
         "basis": "total",
         "measured": 21373,
         "model": 21373,
-        "deviation": 0
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
       "aegis": {
         "check": "checked",

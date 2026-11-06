@@ -1722,6 +1722,30 @@ export type StatusLimits = z.infer<typeof StatusLimits>;
 const StatusDamage = z.object({ s10: z.number(), s30: z.number(), s60: z.number() });
 
 /** The weapon status (V1): what the model does with a weapon and how sure we are of it. */
+/** Why a weapon is off (Plan W): exactly one class per weapon, see causeOf in scripts/lib/weaponStatus.ts. */
+export const WeaponCauseClass = z.enum([
+  "ok",
+  "reads-quantum", // damage and count come from the row it is compared with, sentences are still open
+  "counting", // shots or hits per shot
+  "base-damage",
+  "wrong-row", // the row or variant compared does not hold what is modelled
+  "rule-too-strong",
+  "mechanic-missing",
+  "source-conflict",
+  "no-check", // neither a Quantum row nor an independent Aegis row
+]);
+export type WeaponCauseClass = z.infer<typeof WeaponCauseClass>;
+
+/** Total = shots × hits per shot × damage per hit × mechanic; each factor is model / row. */
+export const WeaponFactors = z.object({
+  shots: z.number(),
+  hitsPerShot: z.number(),
+  damagePerHit: z.number(),
+  mechanic: z.number(),
+  rowPlain: z.boolean(), // the row is whole hits of one damage value, nothing on top
+});
+export type WeaponFactors = z.infer<typeof WeaponFactors>;
+
 export const WeaponStatusFile = z.object({
   weapons: z.array(
     z.object({
@@ -1730,6 +1754,9 @@ export const WeaponStatusFile = z.object({
       status: z.enum(["complete", "partial", "estimated"]), // computed, never claimed
       trust: z.enum(["measured", "derived", "estimated"]), // from the source statuses
       damage: z.object({ base: StatusDamage, catalyst: StatusDamage.nullable() }),
+      cause: z.object({ class: WeaponCauseClass, why: z.string() }),
+      // What the total loses without each rule (share of the total over all ammo); rules without effect left out.
+      ruleShares: z.array(z.object({ id: z.string(), share: z.number() })),
       sentences: z.array(
         z.object({
           text: z.string(),
@@ -1747,6 +1774,10 @@ export const WeaponStatusFile = z.object({
           measured: z.number(),
           model: z.number(),
           deviation: z.number(),
+          circular: z.boolean(), // exactly 0 with nothing but the hits the row names: proves only the count
+          catalystRow: z.boolean(), // Quantum has this weapon only with its catalyst; the model runs without
+          strippedRow: z.boolean(), // the row says it leaves something out, e.g. "w/o weaken"
+          factors: WeaponFactors.nullable(),
         })
         .nullable(),
       aegis: z.object({

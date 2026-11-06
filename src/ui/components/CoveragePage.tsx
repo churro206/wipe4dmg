@@ -3,11 +3,13 @@ import { coverageCatalog, iconUrl, statusLimits, weaponStatus } from "../data";
 import {
   TIMES,
   aegisCell,
+  causeLabel,
   comesIn,
   damageOf,
   damageRanks,
   openCount,
-  quantumLight,
+  quantumCell,
+  quantumTitle,
   rankWeapons,
   statusLabel,
   type SortKey,
@@ -264,13 +266,14 @@ function WeaponTable() {
             {head("damage", `Damage ${timeLabel}`)}
             {head("quantum", "vs Quantum", "Deviation of the weapon without the catalyst from the Quantum row with the same assumptions; hover a value for the row. The Catalyst switch does not change it")}
             {head("aegis", "vs Aegis", "Largest deviation of the Aegis rows, each with its own assumptions (some include the catalyst); the Catalyst switch does not change it")}
+            {head("cause", "Why off", "The one cause of what the comparison shows; hover a value for the reason")}
             {head("trust", "Trust")}
             {head("open", "Not in yet")}
           </tr>
         </thead>
         <tbody>
           {ranked.map((weapon) => {
-            const light = quantumLight(weapon.quantum?.deviation ?? null, statusLimits);
+            const light = quantumCell(weapon, statusLimits);
             const aegis = aegisCell(weapon);
             const comes = comesIn(weapon);
             const expanded = openId === weapon.id;
@@ -298,11 +301,7 @@ function WeaponTable() {
                 <td
                   data-label="vs Quantum"
                   className="ranking-number"
-                  title={
-                    weapon.quantum
-                      ? `${weapon.quantum.basis === "total" ? "All ammo" : "One magazine"}${weapon.quantum.rowNote ? `: ${weapon.quantum.rowNote}` : ""}`
-                      : undefined
-                  }
+                  title={quantumTitle(weapon)}
                 >
                   {light.color === null ? (
                     <span className="ranking-none">{light.label}</span>
@@ -315,6 +314,9 @@ function WeaponTable() {
                 <td data-label="vs Aegis" className="ranking-number">
                   <span className={aegis.deviation === null ? "ranking-none" : undefined}>{aegis.text}</span>
                 </td>
+                <td data-label="Why off" title={weapon.cause.why}>
+                  {causeLabel(weapon)}
+                </td>
                 <td data-label="Trust">{weapon.trust}</td>
                 <td data-label="Not in yet" className="ranking-number">
                   {openCount(weapon)}
@@ -323,7 +325,7 @@ function WeaponTable() {
               </tr>
               {expanded && (
                 <tr className="ranking-detail-row">
-                  <td colSpan={8}>
+                  <td colSpan={9}>
                     <WeaponDetail
                       weapon={weapon}
                       seconds={TIMES.find((t) => t.key === time)!.seconds}

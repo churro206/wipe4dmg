@@ -1,7 +1,13 @@
 // The weapon status (V1): pure rules behind src/data/weapon-status.json. The numbers come from the
 // engine (tests/lib/weaponStatusData.ts); here are the sentences, the trust and the computed status.
 
-import type { QuantumWeaponRow, Source, WeaponStatusFile } from "../../src/data/schema.ts";
+import type {
+  QuantumWeaponRow,
+  Source,
+  WeaponCauseClass,
+  WeaponFactors,
+  WeaponStatusFile,
+} from "../../src/data/schema.ts";
 import { itemQuotes, uncoveredSentences } from "./items/uncovered.ts";
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -78,6 +84,140 @@ export function statusOf(parts: {
     return "partial";
   }
   return "complete";
+}
+
+/** A row that says it leaves something out of the weapon: "w/o weaken", "base damage, no buffs". */
+export const isStrippedRow = (row: Pick<QuantumWeaponRow, "variant">): boolean =>
+  /no buffs|w\/o|without/i.test(row.variant);
+
+/** A row of Quantum with "cata" in its variant: the model runs without the catalyst. */
+export const isCatalystRow = (row: Pick<QuantumWeaponRow, "variant">): boolean => /\bcata\b/i.test(row.variant);
+
+export type FactorInput = {
+  measured: number; // the total of the row
+  rowShots: number; // shots the row counts over that total
+  rowDamages: number[]; // its damage values: precision, body
+  modelShots: number;
+  modelHits: number; // hits of the main part, the one that lands first
+  modelDamage: number; // the first of them
+  modelTotal: number;
+};
+
+/**
+ * Total = shots × hits per shot × damage per hit × mechanic, each factor model / row (Plan W).
+ * The damage value of the row is the one that gives whole hits per shot; without one, the one the model
+ * reads, and what remains of the row is its mechanic. The product of the factors is model / measured.
+ */
+export function factorsOf(input: FactorInput, tolerance: number): WeaponFactors | null {
+  const { measured, rowDamages, modelShots, modelHits, modelDamage, modelTotal } = input;
+  if (rowDamages.length === 0 || modelHits === 0 || modelShots === 0 || input.rowShots === 0) return null;
+  const nearest = (values: number[]) =>
+    values.reduce((a, b) => (Math.abs(b - modelDamage) < Math.abs(a - modelDamage) ? b : a));
+  const perShot = (damage: number) => measured / (damage * input.rowShots);
+  const whole = (x: number) => x >= 1 - tolerance && Math.abs(x / Math.round(x) - 1) <= tolerance;
+  // Several hits only of the value the model reads: 28 × 2.03 on Tommy's Matchbook is chance, not two hits
+  const read = nearest(rowDamages);
+  const fitting = rowDamages.filter((d) => whole(perShot(d)) && (d === read || Math.round(perShot(d)) === 1));
+  const rowDamage = fitting.includes(read) ? read : (fitting[0] ?? read);
+
+  // A row that counts ammo, not what lands: several of its shots make one hit (Choir of One)
+  const counted = whole(1 / perShot(rowDamage)) && perShot(rowDamage) < 1;
+  const rowShots = counted ? input.rowShots * perShot(rowDamage) : input.rowShots;
+  const rowPerShot = measured / (rowDamage * rowShots);
+  const rowHitsPerShot = whole(rowPerShot) ? Math.round(rowPerShot) : 1;
+  return {
+    shots: modelShots / rowShots,
+    hitsPerShot: modelHits / modelShots / rowHitsPerShot,
+    damagePerHit: modelDamage / rowDamage,
+    // What neither side counts as a hit; the rounding of whole hits stays here, so the product is model / measured
+    mechanic: (modelTotal / (modelHits * modelDamage)) * (rowHitsPerShot / rowPerShot),
+    rowPlain: rowHitsPerShot === 1 && whole(rowPerShot),
+  };
+}
+
+export type CauseInput = {
+  quantum: {
+    deviation: number;
+    circular: boolean;
+    strippedRow: boolean;
+    factors: WeaponFactors | null;
+  } | null;
+  aegis: { row: string; deviation: number; assumptions: string[] }[];
+  open: number; // sentences with a number that neither a rule nor notModelled carries
+  ruleShares: { id: string; share: number }[];
+  tolerance: number;
+};
+
+const times = (x: number) => `×${x.toFixed(2)}`;
+const signed = (x: number) => `${x > 0 ? "+" : ""}${(x * 100).toFixed(1)} %`;
+
+/** The largest factor of the Quantum comparison names the error. */
+function factorCause(deviation: number, factors: WeaponFactors | null): WeaponStatusFile["weapons"][number]["cause"] {
+  const mechanicClass: WeaponCauseClass = deviation > 0 ? "rule-too-strong" : "mechanic-missing";
+  if (!factors) return { class: mechanicClass, why: `${signed(deviation)} against Quantum; the row has no damage value to split it by.` };
+  const parts = [
+    { key: "shots", label: "Shots", value: factors.shots, cls: "counting" },
+    { key: "hits", label: "Hits per shot", value: factors.hitsPerShot, cls: "counting" },
+    { key: "damage", label: "Damage per hit", value: factors.damagePerHit, cls: "base-damage" },
+    { key: "mechanic", label: "Everything on top of the hits", value: factors.mechanic, cls: factors.mechanic > 1 ? "rule-too-strong" : "mechanic-missing" },
+  ] as const;
+  const largest = parts.reduce((a, b) => (Math.abs(Math.log(b.value)) > Math.abs(Math.log(a.value)) ? b : a));
+  return { class: largest.cls, why: `${largest.label} ${times(largest.value)} against the Quantum row.` };
+}
+
+/**
+ * The one class of a weapon (table in Plan W, docs/plans/ground-up-model.md): compares Quantum and Aegis,
+ * then the factors and the rule shares. Reports a cause; it does not excuse a deviation.
+ */
+export function causeOf(e: CauseInput): WeaponStatusFile["weapons"][number]["cause"] {
+  const off = (x: number) => Math.abs(x) > e.tolerance;
+  const worst = e.aegis.length === 0
+    ? null
+    : e.aegis.reduce((a, b) => (Math.abs(b.deviation) > Math.abs(a.deviation) ? b : a));
+  const q = e.quantum;
+
+  if (q && off(q.deviation)) {
+    if (q.strippedRow && q.deviation > 0) {
+      return { class: "wrong-row", why: `${signed(q.deviation)} against a Quantum row that leaves out what the model carries.` };
+    }
+    if (worst && !off(worst.deviation)) {
+      return { class: "wrong-row", why: `${signed(q.deviation)} against Quantum, but Aegis agrees: this row does not hold what is modelled.` };
+    }
+    if (worst && Math.sign(worst.deviation) !== Math.sign(q.deviation)) {
+      return q.factors?.rowPlain
+        ? { class: "wrong-row", why: `The Quantum row is the bare weapon (${signed(q.deviation)}), Aegis says the opposite (${signed(worst.deviation)}).` }
+        : { class: "source-conflict", why: `Quantum ${signed(q.deviation)}, Aegis ${signed(worst.deviation)}: only a test in game can tell.` };
+    }
+    return factorCause(q.deviation, q.factors);
+  }
+
+  const baseOnly = q?.circular && e.open > 0;
+  const readsQuantum = { class: "reads-quantum", why: `Damage and count come from the row it is compared with; ${e.open} sentences with numbers are still open.` } as const;
+  if (!worst) {
+    if (!q) return { class: "no-check", why: "Neither a Quantum row nor an independent Aegis row." };
+    return baseOnly ? readsQuantum : { class: "ok", why: `${signed(q.deviation)} against Quantum, no Aegis row.` };
+  }
+  if (!off(worst.deviation)) {
+    return baseOnly ? readsQuantum : { class: "ok", why: `Within the limit: Aegis ${signed(worst.deviation)}.` };
+  }
+  const row = `"${worst.row}"`;
+  if (q && worst.assumptions.length === 0) {
+    return { class: "source-conflict", why: `Quantum fits, Aegis ${signed(worst.deviation)} without any assumption (${row}).` };
+  }
+  if (worst.deviation < 0) {
+    return { class: "mechanic-missing", why: `Aegis ${signed(worst.deviation)} with ${worst.assumptions.join(", ") || "no assumption"}.` };
+  }
+  if (e.aegis.some((a) => !off(a.deviation))) {
+    return { class: "wrong-row", why: `Another Aegis row fits, ${row} is ${signed(worst.deviation)}: it measures something else than the model.` };
+  }
+  const excess = worst.deviation / (1 + worst.deviation);
+  const largest = e.ruleShares.reduce<{ id: string; share: number } | null>((a, b) => (a === null || b.share > a.share ? b : a), null);
+  if (largest && largest.share >= excess) {
+    return { class: "rule-too-strong", why: `Aegis ${signed(worst.deviation)}; rule "${largest.id}" carries ${(largest.share * 100).toFixed(0)} % of the total.` };
+  }
+  return q
+    ? { class: "source-conflict", why: `Quantum fits, Aegis ${signed(worst.deviation)} and no rule that large (${row}).` }
+    : { class: "wrong-row", why: `Aegis ${signed(worst.deviation)} with no rule that large: ${row} measures something else than the model.` };
 }
 
 /** The target of a checklist line: everything before "Gate:" (no Gate, no Wiederherstellen). */

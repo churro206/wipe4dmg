@@ -20,7 +20,17 @@ import {
 import { abilities, artifactData, effects, exoticArmor, weapons } from "../../src/ui/data";
 import { bareWeaponRun } from "../../src/ui/weaponBuild";
 import { ITEM_WEAPONS_DIR } from "../../scripts/lib/items/loadItems";
-import { planBlockOf, quantumRowFor, sentenceStates, statusOf, trustOf } from "../../scripts/lib/weaponStatus";
+import {
+  causeOf,
+  factorsOf,
+  isCatalystRow,
+  isStrippedRow,
+  planBlockOf,
+  quantumRowFor,
+  sentenceStates,
+  statusOf,
+  trustOf,
+} from "../../scripts/lib/weaponStatus";
 import switches from "../fixtures/scenario-switches.json";
 import { fittedRows, sourcesOf } from "./fittedRows";
 import { handMadeScenarios } from "./scenarioFiles";
@@ -43,6 +53,31 @@ const over = (weaponId: string, catalyst: boolean) => {
   const [s10, s30, s60] = SECONDS.map((s) => round(run(weaponId, catalyst, s), 1));
   return { s10, s30, s60 };
 };
+
+/** The part of the first hit: what the comparison splits into shots × hits × damage. */
+function mainPart(result: ReturnType<typeof bareWeaponRun>) {
+  const first = result.damageInstances.reduce<(typeof result.damageInstances)[number] | null>(
+    (a, b) => (a === null || b.timeMs < a.timeMs ? b : a),
+    null,
+  );
+  if (!first) return null;
+  const hits = result.damageInstances.filter((d) => d.id === first.id);
+  return { id: first.id, hits: hits.length, damage: first.damage, sum: hits.reduce((s, d) => s + d.damage, 0) };
+}
+
+/** What the total over all ammo loses without each rule; the rule that spawns the main part is the weapon itself. */
+function ruleSharesOf(weapon: (typeof weapons)[number]) {
+  const whole = bareWeaponRun(weapon, false, ALL_AMMO_SECONDS);
+  const main = mainPart(whole)?.id;
+  if (!main || whole.totalDamage === 0) return [];
+  return (weapon.rules ?? [])
+    .filter((rule) => !rule.do.some((action) => action.type === "spawn" && action.part === main))
+    .map((rule) => {
+      const without = bareWeaponRun({ ...weapon, rules: weapon.rules!.filter((r) => r !== rule) }, false, ALL_AMMO_SECONDS);
+      return { id: rule.id, share: round((whole.totalDamage - without.totalDamage) / whole.totalDamage, 4) };
+    })
+    .filter((rule) => rule.share !== 0);
+}
 
 /** Every Aegis row of the Weapons and Sustained tabs the bench runs, judged. */
 function aegisJudged() {
@@ -106,7 +141,10 @@ export function realWeaponStatus(): WeaponStatusFile {
         const q = compared?.row;
         const basis = compared?.basis ?? null;
         const measured = q ? (basis === "total" ? q.totalDamage : q.magDamage) : null;
-        const model = q ? run(w.id, false, ALL_AMMO_SECONDS, (basis === "total" ? q.totalShots : q.magazine)!) : null;
+        const rowShots = q ? (basis === "total" ? q.totalShots : q.magazine)! : null;
+        const compareRun = rowShots === null ? null : bareWeaponRun(w, false, ALL_AMMO_SECONDS, rowShots);
+        const model = compareRun?.totalDamage ?? null;
+        const main = compareRun ? mainPart(compareRun) : null;
 
         const rows = judged
           .filter((r) => r.scenario.build.weaponId === w.id)
@@ -114,38 +152,67 @@ export function realWeaponStatus(): WeaponStatusFile {
         const independent = rows.filter((r) => !r.fitted);
         const hasFitted = sources.some((s) => s.status === "fitted");
         const deviation = model !== null && measured ? round(model / measured - 1, 4) : null;
+        const open = sentences.filter((s) => s.state === "open").length;
+        const aegisRows = independent.map((r) => ({
+          row: r.scenario.aegisRow,
+          assumptions: r.scenario.playstyle ?? [],
+          measured: round(r.measured, 1),
+          model: r.model === null ? null : round(r.model, 1),
+          deviation: r.deviation === null ? null : round(r.deviation, 4),
+        }));
+        const ruleShares = ruleSharesOf(w);
+        const quantumStatus =
+          q && basis && model !== null && measured !== null && deviation !== null
+            ? {
+                row: q.id,
+                rowNote: q.note ?? "",
+                basis,
+                measured: round(measured, 1),
+                model: round(model, 1),
+                deviation,
+                circular: deviation === 0 && main !== null && round(main.sum, 1) === round(model, 1),
+                catalystRow: isCatalystRow(q),
+                strippedRow: isStrippedRow(q),
+                factors: main
+                  ? factorsOf(
+                      {
+                        measured,
+                        rowShots: rowShots!,
+                        rowDamages: [q.precisionDamage, q.bodyDamage].filter((d) => d !== null),
+                        modelShots: compareRun!.shots.length,
+                        modelHits: main.hits,
+                        modelDamage: main.damage,
+                        modelTotal: model,
+                      },
+                      limits.quantumDeviation,
+                    )
+                  : null,
+              }
+            : null;
         return {
           id: w.id,
           name: w.name,
           status: statusOf({
-            open: sentences.filter((s) => s.state === "open").length,
+            open,
             quoteDeviation: deviation,
             estimated: trust === "estimated",
             tolerance: limits.quantumDeviation,
           }),
           trust,
           damage: { base: over(w.id, false), catalyst: w.catalyst ? over(w.id, true) : null },
+          cause: causeOf({
+            quantum: quantumStatus,
+            aegis: aegisRows.flatMap((r) => (r.deviation === null ? [] : [{ ...r, deviation: r.deviation }])),
+            open,
+            ruleShares,
+            tolerance: limits.quantumDeviation,
+          }),
+          ruleShares,
           sentences,
-          quantum:
-            q && basis && model !== null && measured !== null && deviation !== null
-              ? {
-                  row: q.id,
-                  rowNote: q.note ?? "",
-                  basis,
-                  measured: round(measured, 1),
-                  model: round(model, 1),
-                  deviation,
-                }
-              : null,
+          quantum: quantumStatus,
           aegis: {
             check: independent.length > 0 ? "checked" : hasFitted ? "no independent check" : "no row",
-            rows: independent.map((r) => ({
-              row: r.scenario.aegisRow,
-              assumptions: r.scenario.playstyle ?? [],
-              measured: round(r.measured, 1),
-              model: r.model === null ? null : round(r.model, 1),
-              deviation: r.deviation === null ? null : round(r.deviation, 4),
-            })),
+            rows: aegisRows,
           },
           planBlock: planBlockOf(w.name, plan),
         };
