@@ -6,7 +6,7 @@ Höchstens 4 KB. Nach jedem Block: `docs/changelog.md`, `docs/known-inaccuracies
 
 Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`. „Wiederherstellen“: von Q1 abgeschaltete Tests (Liste: `known-inaccuracies`, Abschnitt Q1) wieder einschalten. Alte Namen: M3 = W2, M4 = W3, M5 = W4, Q-Bilanz = W5.
 
-- [x] A1, Q0, Q1, M1, M2, S0, V1–V3 (`history-2026-11.md`; zu V4 dort „Setup und Plan V“), P0 (c8f26aa), Arbeitsweise (453538e). 33 Pakete bleiben: im W-Block oder W5. Reste bei der nächsten Änderung dort: Zitat und Notiz in `euphony.json:30-31`.
+- [x] A1, Q0, Q1, M1, M2, S0, V1–V3 (`history-2026-11.md`; zu V4 dort „Setup und Plan V“), P0 (c8f26aa), Arbeitsweise (453538e). 33 Pakete bleiben: im W-Block oder W5. Euphony auf Aegis (Ausnahme des Inhabers, ADR 0019).
 
 - [ ] W0 Abweichungen erklären (Opus): Ursachenklasse je Waffe, Spalte „Why off“, Kreisprüfung als „reads Quantum“ statt grün, `-cata`-Zeilen geprüft, Rangliste für W1 (alles: `ground-up-model.md`, „Plan W“). Spielschaden unverändert. Gate: Test je Tabellenzeile, jede Waffe genau eine Klasse, P0-Stichproben, Browser.
 - [ ] W1 Falsch Übernommenes korrigieren: Trinity Ghoul, Thorn, Le Monarque, Heartshadow, The Lament, Grand Overture, Witherhoard, Malfeasance, Alethonym (die Liste legt W0 fest), je Ursachenklasse eine Sitzung. Gate: M-Gate, Abweichung der Klasse sinkt.
@@ -18,7 +18,7 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 - [ ] W5 Bilanz Waffen (Opus): Rest nach Ursachenklasse, Sätze ohne Regel, Aegis-Bericht, übrige Pakete (Voraussetzung für A2). Stopp zur Freigabe. Wiederherstellen ohne eigenen Block: Gjallarhorn, Telesto, Wish-Ender, Wish-Keeper, Vigilance Wing, Whisper of the Worm, Ager's Scepter, Leviathan's Breath, Burst-Primaries.
 - [ ] A2 Aufräumen: Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
 
-**Offen beim Inhaber:** Probe Euphony : Arbalest im Spiel. Ungeklärte Änderungen in `docs/sources/sheets/` (dort schrieb etwas mit): nicht committen.
+**Offen beim Inhaber:** Ungeklärte Änderungen in `docs/sources/sheets/` (dort schrieb etwas mit): nicht committen.
 
 ## M-Gate
 

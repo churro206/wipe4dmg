@@ -9,7 +9,7 @@
   ],
   "quantumCheck": {
     "row": "specials-linear-fusion-rifle-euphony-2",
-    "reason": "The item has Threadlings that hit when they spawn; this row assumes the same. The timing row is the one without Threadlings."
+    "reason": "The item has Threadlings that hit when they spawn; this row assumes the same. The timing row is the one without Threadlings. Damage comes from Aegis (owner's exception): Quantum's owner has no Euphony, so this row is a weak check."
   },
   "chargeTimeMs": "$manifest[Euphony].stat(\"Charge Time\")",
   "fireRateRpm": "$quantum[specials-linear-fusion-rifle-euphony].timing.fireRateRpm",
@@ -24,15 +24,18 @@
   "parts": {
     "shot": {
       "name": "Shot",
-      "damage": "$quantum[specials-linear-fusion-rifle-euphony].precisionDamage",
+      "damage": {
+        "expr": "$aegis[linear-fusion-rifle-euphony-burst-without-threadlings].perShot",
+        "note": "Owner's exception to ADR 0019: Quantum's owner has no Euphony (bounty board 2026-07-21, asks for this very number), so Aegis' in-game measure counts. Quantum 1140 is 0.693 of its own Adaptive Burst 1644; Aegis 1317.5 is 0.80, as Quantum's last entry 11172 / 13926"
+      },
       "precision": true,
       "delivery": "impact"
     },
     "threadling": {
       "name": "Threadling",
       "damage": {
-        "expr": "($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage * $compendium[Euphony](\"Fires a 3-round burst\") * $clarity[Spindle](\"2% Increased Damage\") / 100) / ($quantum[specials-linear-fusion-rifle-euphony].magazine * $compendium[Euphony](\"Fires a 3-round burst\") / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\") * (1 + $compendium[Euphony](\"spawns 3 Threadlings\") * $clarity[Spindle](\"2% Increased Damage\") / 100))",
-        "note": "Quantum's magazine of 'with Threadlings' minus 'without' also holds the Spindle ramp of the shots (46943 / 11117 = 4.22 magazines at 3.5 real): take it out (6840 x 0.06 = 410), share the rest by the 9 Threadlings of a magazine (3 sets of 3, a burst is 3 hits) at their mean Spindle factor 1.06: about 405 each. 600 s about 45957, -2.1 % against Quantum"
+        "expr": "$aegis[linear-fusion-rifle-euphony-burst-without-threadlings].tick(\"threadling\")",
+        "note": "Same exception: Aegis' measured tick, 976 / 3.31 = 295, without Thread of Evolution (1298 / 976 = 1.33, the 33 % of Clarity's fragment). Replaces the 405 from Quantum's row difference"
       },
       "delivery": "splash"
     }

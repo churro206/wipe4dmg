@@ -84,8 +84,8 @@ describe("modelTotal with the hits of a row", () => {
     expect(modelTotal(scenario("trinity-ghoul", 723, 3.31))).toBe(73);
   });
 
-  it("leaves a weapon alone whose shot already is the burst (the gap to Aegis stays visible)", () => {
-    expect(modelTotal(scenario("euphony", 4356, 3.31))).toBe(1140);
+  it("leaves a weapon alone whose shot already is the burst", () => {
+    expect(modelTotal(scenario("euphony", 4356, 3.31))).toBeCloseTo(1317.5, 0);
   });
 });
 

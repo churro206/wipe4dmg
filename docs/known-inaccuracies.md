@@ -7,7 +7,6 @@ Abweichungen des Modells, die bewusst stehen bleiben (Regel „Breite vor Genaui
 Nur eine Zeile hier, die den Waffennamen nennt, macht eine Abweichung gegen Quantum über der Grenze in `npm run check:block` grün (nur berichtet). Format: `- **<Waffe> (<Datum>):** <Abweichung in %, Grund>.` 
 - **Choir of One (2026-11-05):** +21,4 % (Modell 31 140 gegen Quantum 25 650; 45 Projektile statt 225 Schuss). Beide Zahlen kommen aus verschiedenen Zählungen: das Item rechnet 45 Projektile (225 Munition ÷ 5 je Projektil, Clarity) mit 692 je Projektil (Aegis Sustained, Basis), Quantum 225 Schuss mit 114 je Schuss (Hip-Fire, 570 je 5er-Projektil); 692 ÷ 570 = 1,214 ist genau die Abweichung. Warum die Skalen der beiden Quellen auseinanderliegen: offen, in M5 zu klären. Modell nicht geändert.
 - **Truth (2026-11-06):** +4,8 % (Modell 30 120 gegen Quantum 28 752) gegen die Zeile „all bomblets hit the boss“, die das Item mit seinen Clustern abbildet; die alten −16,2 % kamen von der Zeile ohne Bomblets. Die Schusszahl kommt aus Aegis Sustained (14 Raketen), Quantums Zeile zählt 16: Welche Zahl im Spiel trifft, ist offen, in M5 zu klären. Modell nicht geändert.
-- **Euphony (2026-11-06):** −2,1 % (Modell 45 968 gegen Quantum 46 943), Zeile mit Threadlings. Quantum rechnet vermutlich 3,5 Magazine mit 31,5 Threadlings, das Modell 30 (ungeprüft). Modell nicht geändert.
 
 ## Einordnung der Ausreißer (P0, 2026-11-06)
 
@@ -17,7 +16,7 @@ Diese Einordnung entschuldigt keine Abweichung; sie sagt, was zu tun ist. Stand 
 - **Fehlende Mechanik:** Hawkmoon (Paracausal Shot, −64 bis −79 %), Still Hunt (Golden Gun, M4), Izanagi's Burden (Honed Edge, M4), Barrow-Dyad (M4), Ager's Scepter (Q-Bilanz), Whisper of the Worm (Q-Bilanz), Tarrabah, Symmetry, Forerunner, Final Warning.
 - **Zeile hält das Modellierte nicht:** Divinity (Quantum 7050 = 15 × 470, ohne Penance), Osteo Striga (Modell 1712 = 1218 + 494 aus Quantums Zeile „only poison DoT“), Alethonym und Outbreak Perfected (Zeile nur Einschlag, ohne Nanites). Hier gilt die Aegis-Spalte.
 - **Modell zu hoch, Einheit oder Fehler, ungeprüft:** Heartshadow +582 %, The Lament +191 %, Choir of One hitscan +165 %, Grand Overture +115 %, Witherhoard +100 %, Malfeasance +43 %, Alethonym +46 %.
-- **Euphony:** Basis 1140 (Quantum, zuletzt 2025 gepflegt) gegen 1316 (Aegis), 1,154 bei sonst sauberen Zeilen um 1,00. Bleibt, bis die Probe im Spiel entscheidet (Euphony : Arbalest je Salve 1,05 oder 1,21).
+- **Euphony (entschieden 2026-11-06, Inhaber):** Schaden aus Aegis, nicht aus Quantum: Quantums Autor besitzt die Waffe nicht und sucht genau diese Werte (Bounty Board 2026-07-21). Beleg: Aegis 1316 : Adaptive Burst 1644 = 0,80 wie Quantums letzter Eintrag 11172 : 13926, Quantums heutige 1140 ergeben 0,693; Arbalest stimmt in beiden Quellen auf den Punkt (1086). Gegenstimme: Das Compendium nennt Euphony : Arbalest 522 : 582 = 0,90 (ungeklärt, Stand unbekannt).
 
 ## Ungenauigkeiten
 

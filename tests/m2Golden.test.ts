@@ -120,14 +120,17 @@ describe("Alethonym: impale (Compendium: 79 every 0.8 s up to 6 times, explosion
 });
 
 describe("Euphony: a shot is a burst of 3 hits (Compendium), Unwound spawns 3 Threadlings per 6 hits, each Threadling hit is a Spindle stack (+2 % damage)", () => {
-  it("every 2nd shot brings 3 Threadlings of Quantum's difference without the Spindle ramp (about 405: 3 sets in a magazine of 6 shots)", () => {
+  it("every 2nd shot brings 3 Threadlings of Aegis' measured tick (976 / 3.31: Quantum's owner has no Euphony)", () => {
     const result = run("euphony", 8);
     const threadlings = only(result, "threadling");
     const shots = only(result, "shot");
     expect(threadlings.slice(0, 3).map((d) => d.timeMs)).toEqual(Array(3).fill(shots[1].timeMs));
     expect(threadlings.slice(3, 6).map((d) => d.timeMs)).toEqual(Array(3).fill(shots[3].timeMs));
     // the first set has no Spindle yet; the later ones carry it
-    threadlings.slice(0, 3).forEach((d) => expect(d.damage).toBeCloseTo((11117 - 6840 - 6840 * 3 * 0.02) / (9 * 1.06), 0));
+    threadlings.slice(0, 3).forEach((d) => expect(d.damage).toBeCloseTo(976 / 3.31, 0));
+  });
+  it("the burst is Aegis' measured value (4356 in the game at Full Modifiers 3.31), not Quantum's 1140", () => {
+    expect(only(run("euphony", 2), "shot")[0].damage).toBeCloseTo(1317.5, 0);
   });
   it("Spindle: three stacks after the first set raise the next shot by 3 x 2 %", () => {
     const shots = only(run("euphony", 12), "shot");

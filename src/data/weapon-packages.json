@@ -6795,7 +6795,7 @@
     "code": 47,
     "name": "Euphony",
     "manifestHash": 3284383335,
-    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
+    "gameVersion": "9.7.0.3",
     "weaponType": "linearFusionRifle",
     "element": "strand",
     "ammo": "special",
@@ -6861,13 +6861,13 @@
           }
         },
         "damagePerTick": {
-          "value": 1140,
+          "value": 1317.505,
           "source": {
-            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony",
-            "url": "https://destiny2.science/quantum-damage-ics",
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-euphony-burst-without-threadlings",
             "retrieved": "2026-10-20",
-            "status": "verified",
-            "note": "precisionDamage"
+            "status": "fitted",
+            "row": "linear-fusion-rifle-euphony-burst-without-threadlings",
+            "note": "Derived: $aegis[linear-fusion-rifle-euphony-burst-without-threadlings].perShot (Owner's exception to ADR 0019: Quantum's owner has no Euphony (bounty board 2026-07-21, asks for this very number), so Aegis' in-game measure counts. Quantum 1140 is 0.693 of its own Adaptive Burst 1644; Aegis 1317.5 is 0.80, as Quantum's last entry 11172 / 13926); $aegis[linear-fusion-rifle-euphony-burst-without-threadlings].perShot = 1317.505 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-euphony-burst-without-threadlings)"
           }
         },
         "ticks": {
@@ -6890,7 +6890,7 @@
         },
         "canPrecision": true,
         "delivery": "impact",
-        "scale": "quantum"
+        "scale": "aegisVisual"
       },
       {
         "id": "threadling",
@@ -6899,25 +6899,26 @@
           "value": 0,
           "source": {
             "name": "Item file euphony",
-            "retrieved": "2026-10-24",
+            "retrieved": "2026-10-20",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "damagePerTick": {
-          "value": 405.304,
+          "value": 294.864,
           "source": {
-            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony-2; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action; Clarity (Live-Clarity-Database, descriptions/clarity.json): Spindle; Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound",
-            "retrieved": "2026-10-24",
-            "status": "derived",
-            "note": "Derived: ($quantum[specials-linear-fusion-rifle-euphony-2].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage - $quantum[specials-linear-fusion-rifle-euphony].magDamage * $compendium[Euphony](\"Fires a 3-round burst\") * $clarity[Spindle](\"2% Increased Damage\") / 100) / ($quantum[specials-linear-fusion-rifle-euphony].magazine * $compendium[Euphony](\"Fires a 3-round burst\") / $clarity[Unwound](\"Landing 6 hits\") * $compendium[Euphony](\"spawns 3 Threadlings\") * (1 + $compendium[Euphony](\"spawns 3 Threadlings\") * $clarity[Spindle](\"2% Increased Damage\") / 100)) (Quantum's magazine of 'with Threadlings' minus 'without' also holds the Spindle ramp of the shots (46943 / 11117 = 4.22 magazines at 3.5 real): take it out (6840 x 0.06 = 410), share the rest by the 9 Threadlings of a magazine (3 sets of 3, a burst is 3 hits) at their mean Spindle factor 1.06: about 405 each. 600 s about 45957, -2.1 % against Quantum); $quantum[specials-linear-fusion-rifle-euphony-2].magDamage = 11117 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony-2); $quantum[specials-linear-fusion-rifle-euphony].magDamage = 6840 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $quantum[specials-linear-fusion-rifle-euphony].magDamage = 6840 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $compendium[Euphony](\"Fires a 3-round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action); $clarity[Spindle](\"2% Increased Damage\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Spindle); $quantum[specials-linear-fusion-rifle-euphony].magazine = 6 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-euphony); $compendium[Euphony](\"Fires a 3-round burst\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action); $clarity[Unwound](\"Landing 6 hits\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Unwound); $compendium[Euphony](\"spawns 3 Threadlings\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action); $compendium[Euphony](\"spawns 3 Threadlings\") = 3 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Euphony Unwound Spindle ↑Enlightened Action); $clarity[Spindle](\"2% Increased Damage\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Spindle)"
+            "name": "Expression over Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-euphony-burst-without-threadlings",
+            "retrieved": "2026-10-20",
+            "status": "fitted",
+            "row": "linear-fusion-rifle-euphony-burst-without-threadlings",
+            "note": "Derived: $aegis[linear-fusion-rifle-euphony-burst-without-threadlings].tick(\"threadling\") (Same exception: Aegis' measured tick, 976 / 3.31 = 295, without Thread of Evolution (1298 / 976 = 1.33, the 33 % of Clarity's fragment). Replaces the 405 from Quantum's row difference); $aegis[linear-fusion-rifle-euphony-burst-without-threadlings].tick(\"threadling\") = 294.864 (Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-euphony-burst-without-threadlings)"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
             "name": "Item file euphony",
-            "retrieved": "2026-10-24",
+            "retrieved": "2026-10-20",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
@@ -6926,14 +6927,14 @@
           "value": 0,
           "source": {
             "name": "Item file euphony",
-            "retrieved": "2026-10-24",
+            "retrieved": "2026-10-20",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "canPrecision": false,
         "delivery": "splash",
-        "scale": "quantum"
+        "scale": "aegisVisual"
       }
     ],
     "rules": [
