@@ -2844,6 +2844,66 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "beam-energy-more",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [{ "type": "buff", "id": "beam-energy" }],
+        "do": [{ "type": "addStacks", "buff": "beam-energy" }]
+      },
+      {
+        "id": "beam-energy-start",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [{ "type": "buff", "id": "beam-energy", "not": true }],
+        "do": [{ "type": "grantBuff", "buff": "beam-energy" }],
+        "source": {
+          "name": "Item file coldheart",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: a hit is one stack, the energy of continuous fire is linear in the hits; the 0.267 s delay is spread over the ramp",
+          "quote": "Dealing damage grants 40% energy over 1 second"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "beam-energy",
+        "name": "Beam Energy",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.019,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-coldheart",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Cold Fusion](\"up to 80%\") / 100 / (($clarity[Cold Fusion](\"charged to 100%\") / $clarity[Cold Fusion](\"grants 40% energy\") + $clarity[Cold Fusion](\"a 0.267 second delay\")) * $quantum[specials-trace-rifle-coldheart].timing.fireRateRpm / 60) (per stack (perStack): the damage grows linearly with the energy, so 80 % over the hits that fill it (100 / 40 % per second plus the 0.267 s delay, times the hits per second)); $clarity[Cold Fusion](\"up to 80%\") = 80 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion); $clarity[Cold Fusion](\"charged to 100%\") = 100 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion); $clarity[Cold Fusion](\"grants 40% energy\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion); $clarity[Cold Fusion](\"a 0.267 second delay\") = 0.267 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion); $quantum[specials-trace-rifle-coldheart].timing.fireRateRpm = 907.019 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-coldheart)"
+              }
+            },
+            "damageSources": ["weapon"],
+            "perStack": true
+          }
+        ],
+        "durationMs": {
+          "value": 1050,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Cold Fusion](\"for 1.05 seconds\") * 1000 (seconds to milliseconds; every hit renews it, a pause of that length (a reload) cools the weapon down); $clarity[Cold Fusion](\"for 1.05 seconds\") = 1.05 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion)"
+          }
+        },
+        "maxStacks": {
+          "value": 41.829,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-coldheart",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: ($clarity[Cold Fusion](\"charged to 100%\") / $clarity[Cold Fusion](\"grants 40% energy\") + $clarity[Cold Fusion](\"a 0.267 second delay\")) * $quantum[specials-trace-rifle-coldheart].timing.fireRateRpm / 60 (hits until the energy is full: (100 % / 40 % per second + 0.267 s) x hits per second); $clarity[Cold Fusion](\"charged to 100%\") = 100 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion); $clarity[Cold Fusion](\"grants 40% energy\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion); $clarity[Cold Fusion](\"a 0.267 second delay\") = 0.267 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cold Fusion); $quantum[specials-trace-rifle-coldheart].timing.fireRateRpm = 907.019 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-coldheart)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -3834,56 +3894,309 @@
     "code": 104,
     "name": "Dead Man's Tale",
     "manifestHash": 2188764214,
-    "gameVersion": "9.7.0",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "scoutRifle",
     "element": "kinetic",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file dead-man-s-tale",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 120,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 14,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 330,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file dead-man-s-tale",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 158,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-dead-man-s-tale-base",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file dead-man-s-tale",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file dead-man-s-tale",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "cranial-spike-more",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [{ "type": "buff", "id": "cranial-spike" }],
+        "do": [{ "type": "addStacks", "buff": "cranial-spike" }],
+        "source": {
+          "name": "Item file dead-man-s-tale",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: at 2 precision hits per second the 5 stacks are full after 2.5 s and stay (4 s duration)",
+          "quote": "Cranial Spike's benefits at 1|2|3|4|5 stacks"
+        }
+      },
+      {
+        "id": "cranial-spike-start",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [{ "type": "buff", "id": "cranial-spike", "not": true }],
+        "do": [{ "type": "grantBuff", "buff": "cranial-spike" }]
+      },
+      {
+        "id": "dark-forged-trigger",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "stacks",
+            "buff": "cranial-spike",
+            "op": ">=",
+            "value": {
+              "value": 5,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 5 stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "dark-forged-trigger" }]
+      },
+      {
+        "id": "dark-forged-trigger-rate",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 130,
+                "source": {
+                  "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Dark-Forged Trigger",
+                  "url": "https://www.d2clarity.com",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: the number in the quote",
+                  "quote": "Increases RPM to 130"
+                }
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file dead-man-s-tale",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the catalyst is played from the hip (the Quantum rows and the Aegis row \"hip-fire\" say so)",
+          "quote": "While not Aiming Down Sights"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "cranial-spike",
+        "name": "Cranial Spike",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.034,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Cranial Spike III](\"|17% increased damage\") / 100 / $clarity[Cranial Spike III](\"Maximum of 5 stacks\") (percent to factor, per stack (perStack): the 5-stack value of the table in 5 equal steps (the table 3.5|7|10|14|17 differs by at most 0.5 points at 1 to 4 stacks)); $clarity[Cranial Spike III](\"|17% increased damage\") = 17 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III); $clarity[Cranial Spike III](\"Maximum of 5 stacks\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III)"
+              }
+            },
+            "damageSources": ["weapon"],
+            "perStack": true
+          }
+        ],
+        "durationMs": {
+          "value": 4000,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Cranial Spike III](\"for 4 seconds\") * 1000 (seconds to milliseconds; every precision hit renews it); $clarity[Cranial Spike III](\"for 4 seconds\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III)"
+          }
+        },
+        "maxStacks": {
+          "value": 5,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "Maximum of 5 stacks"
+          }
+        }
+      },
+      {
+        "id": "dark-forged-trigger",
+        "name": "Dark-Forged Trigger, x5 Cranial Spike",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.27,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Dark-Forged Trigger",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Dark-Forged Trigger](\"27% [\") / 100 (percent to factor (PvE value)); $clarity[Dark-Forged Trigger](\"27% [\") = 27 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Dark-Forged Trigger)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 4000,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Cranial Spike III](\"for 4 seconds\") * 1000 (as long as the 5 stacks last, renewed by every precision hit); $clarity[Cranial Spike III](\"for 4 seconds\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cranial Spike III)"
+          }
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "cranial-spike",
+        "name": "Cranial Spike",
+        "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "cranial-spike-ii",
+        "name": "Cranial Spike II",
+        "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "cranial-spike-iii",
+        "name": "Cranial Spike III",
+        "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "cranial-spike-iv",
+        "name": "Cranial Spike IV",
+        "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Dark-Forged Trigger, Dead Man's Tale Catalyst",
+      "description": "While not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -3895,176 +4208,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-dead-man-s-tale-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-dead-man-s-tale-vorpal-weapon",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 188.709,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-dead-man-s-tale-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-dead-man-s-tale-vorpal-weapon",
-            "note": "visual Value; assumptions: Vorpal Weapon"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-dead-man-s-tale-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-dead-man-s-tale-vorpal-weapon"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-dead-man-s-tale-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-dead-man-s-tale-vorpal-weapon"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "cranial-spike",
-        "name": "Cranial Spike",
-        "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "cranial-spike-ii",
-        "name": "Cranial Spike II",
-        "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "cranial-spike-iii",
-        "name": "Cranial Spike III",
-        "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "cranial-spike-iv",
-        "name": "Cranial Spike IV",
-        "description": "Chaining precision hits grants bonus target acquisition, range, rounds reloaded, and damage against combatants.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "options": [
-      {
-        "id": "catalyst",
-        "name": "Catalyst",
-        "kind": "catalyst",
-        "bucketId": "weaponPerk",
-        "factor": {
-          "value": 1.27,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-dead-man-s-tale-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-dead-man-s-tale-vorpal-weapon",
-            "note": "Derived (override): Aegis' Mittel enthält Vorpal Weapon und die Cranial-Spike-Stacks (188,7), Quantums „Base“ nicht (158); Aegis gilt. Catalyst aus der Hüfte: +27 % bei x5 Cranial Spike (Clarity), Timing aus Quantums Zeile „cata, x5 Cranial Spike“ (140 rpm, Reload 0,29 s)."
-          }
-        },
-        "durationSeconds": null,
-        "condition": null
-      }
-    ],
-    "catalyst": {
-      "name": "Dark-Forged Trigger, Dead Man's Tale Catalyst",
-      "description": "While not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.\nWhile not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.",
-      "effect": "damageAndTiming",
-      "timing": {
-        "fireRateRpm": {
-          "value": 140,
-          "source": {
-            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
-          }
-        },
-        "magazine": {
-          "value": 14,
-          "source": {
-            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        },
-        "totalShots": {
-          "value": null,
-          "source": {
-            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "unlimited (Quantum: inf)"
-          }
-        },
-        "reloadTimeMs": {
-          "value": 290,
-          "source": {
-            "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-dead-man-s-tale-cata-x5-cranial-spike",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        }
-      }
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "dead-messenger",
@@ -4212,56 +4356,129 @@
     "code": 105,
     "name": "Deathbringer",
     "manifestHash": 2232171099,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "rocketLauncher",
     "element": "void",
     "ammo": "heavy",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file deathbringer",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 60000,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 23.5 s − 10 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 23.5 s − 10 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 1,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 11,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 2350,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Orbs at maximum distance",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file deathbringer",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 3899,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-deathbringer-max-distance-damage",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "bodyDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file deathbringer",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file deathbringer",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "dark-deliverance",
+        "name": "Dark Deliverance",
+        "description": "Fires remotely detonated projectiles that drop Void orbs on combatants.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Dead Weight, Deathbringer Catalyst",
+      "description": "The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -4273,82 +4490,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-deathbringer-max-height",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-deathbringer-max-height",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 3900.079,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-deathbringer-max-height",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-deathbringer-max-height",
-            "note": "visual Value; assumptions: max height"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-deathbringer-max-height",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-deathbringer-max-height"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-deathbringer-max-height",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-deathbringer-max-height"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "dark-deliverance",
-        "name": "Dark Deliverance",
-        "description": "Fires remotely detonated projectiles that drop Void orbs on combatants.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Dead Weight, Deathbringer Catalyst",
-      "description": "The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "delicate-tomb",
@@ -12025,55 +12167,244 @@
     "code": 24,
     "name": "Lord of Wolves",
     "manifestHash": 3413860063,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "shotgun",
     "element": "solar",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file lord-of-wolves",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 660.422,
+      "value": 862.385,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 22.6 s − 6 reloads × 0.92 s) ÷ 188 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 18.6 s − 6 reloads × 0.92 s) ÷ 188 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 30,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 189,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 920,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot, hip-fire",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file lord-of-wolves",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 171,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file lord-of-wolves",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file lord-of-wolves",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "scorch-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "scorch-hits",
+            "op": "<",
+            "value": {
+              "value": 6.187,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Lord of Wolves Catalyst; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Lord of Wolves Catalyst](\"0.5 second cooldown\") * $quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.fireRateRpm / 60 - 1 (hits in the 0.5 s cooldown (at 833 RPM about 7), minus one); $clarity[Lord of Wolves Catalyst](\"0.5 second cooldown\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lord of Wolves Catalyst); $quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.fireRateRpm = 862.385 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "scorch-hits" }]
+      },
+      {
+        "id": "scorch",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "scorch-hits",
+            "op": ">=",
+            "value": {
+              "value": 6.187,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Lord of Wolves Catalyst; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Lord of Wolves Catalyst](\"0.5 second cooldown\") * $quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.fireRateRpm / 60 - 1 (the hit that ends the cooldown); $clarity[Lord of Wolves Catalyst](\"0.5 second cooldown\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lord of Wolves Catalyst); $quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.fireRateRpm = 862.385 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "scorch-hits" },
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 10,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Lord of Wolves Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "apply 10 Scorch"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "keywordBonuses": [
+      {
+        "keywordId": "ignition",
+        "factor": {
+          "value": 1.24,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Shrapnel Launcher",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: 1 + $clarity[Shrapnel Launcher](\"reduced to 24%\") / 100 (percent to factor; the value against Bosses); $clarity[Shrapnel Launcher](\"reduced to 24%\") = 24 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Shrapnel Launcher)"
+          }
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "shrapnel-launcher",
+        "name": "Shrapnel Launcher",
+        "description": "Fires a powerful short-range burst of Solar damage.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Fang and Claw, Lord of Wolves Catalyst",
+      "description": "Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration.\nHipfired shots apply 10 Scorch stacks (15 with Ember of Ashes) on hit with a 0.5 second cooldown.\nKills while ADS trigger a Solar explosion that applies 30 Scorch stacks (40 with Ember of Ashes) to enemies within an 8 meter radius.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 862.385,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 18.6 s − 6 reloads × 0.92 s) ÷ 188 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 30,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": 189,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 782,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2; Clarity (Live-Clarity-Database, descriptions/clarity.json): Lord of Wolves Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.reloadTimeMs * (1 - $clarity[Lord of Wolves Catalyst](\"15% decreased Reload Animation Duration\") / 100) (the decreased animation duration shortens the reload by 15 %); $quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.reloadTimeMs = 920 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-lord-of-wolves-hip-fire-2); $clarity[Lord of Wolves Catalyst](\"15% decreased Reload Animation Duration\") = 15 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lord of Wolves Catalyst)"
+          }
+        }
       }
     },
     "reloadDurationIncluded": {
@@ -12086,122 +12417,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-lord-of-wolves-average-includes-ignition-scorch",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-lord-of-wolves-average-includes-ignition-scorch",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 186.059,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-lord-of-wolves-average-includes-ignition-scorch",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-lord-of-wolves-average-includes-ignition-scorch",
-            "note": "visual Value; assumptions: average, includes ignition/scorch"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-lord-of-wolves-average-includes-ignition-scorch",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-lord-of-wolves-average-includes-ignition-scorch"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-lord-of-wolves-average-includes-ignition-scorch",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-lord-of-wolves-average-includes-ignition-scorch"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "shrapnel-launcher",
-        "name": "Shrapnel Launcher",
-        "description": "Fires a powerful short-range burst of Solar damage.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Fang and Claw, Lord of Wolves Catalyst",
-      "description": "Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration.\nHipfired shots apply 10 Scorch stacks (15 with Ember of Ashes) on hit with a 0.5 second cooldown.\nKills while ADS trigger a Solar explosion that applies 30 Scorch stacks (40 with Ember of Ashes) to enemies within an 8 meter radius.",
-      "effect": "timing",
-      "timing": {
-        "fireRateRpm": {
-          "value": 660.422,
-          "source": {
-            "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "derived",
-            "note": "Derived: (Time to Empty 22.6 s − 6 reloads × 0.92 s) ÷ 188 intervals (ADR 0013); Derived: reload 0.92 s × 0.765 = 0.70 s, d2foundry formula for reload stat 80 → 120 (manifest)"
-          }
-        },
-        "magazine": {
-          "value": 30,
-          "source": {
-            "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        },
-        "totalShots": {
-          "value": 189,
-          "source": {
-            "name": "Quantum Damage-ics (specials), row specials-shotgun-lord-of-wolves-ads",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        },
-        "reloadTimeMs": {
-          "value": 704,
-          "source": {
-            "name": "d2foundry oracle_engine (build_resources/weapon_formulas.json, reload)",
-            "url": "https://github.com/d2foundry/oracle_engine",
-            "retrieved": "2026-10-23",
-            "status": "derived",
-            "note": "Derived: reload 0.92 s × 0.765 = 0.70 s, d2foundry formula for reload stat 80 → 120 (manifest)"
-          }
-        }
-      }
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "lorentz-driver",
@@ -16204,55 +16420,521 @@
     "code": 113,
     "name": "Revision Zero",
     "manifestHash": 1473821207,
-    "gameVersion": "9.7.0",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "pulseRifle",
     "element": "kinetic",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file revision-zero",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 324,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 26,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1160,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
+      }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Bullet, heavy 2-burst",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 64,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "sniper",
+        "name": "Hunter's Trace sniper round",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1833,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "deal 1833"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "compendium"
+      },
+      {
+        "id": "shockwave",
+        "name": "Kinetic Shockwave",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 322,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "trigger a 322"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file revision-zero",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "compendium"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "targeting-data-count",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          {
+            "type": "counter",
+            "id": "targeting-hits",
+            "op": "<",
+            "value": {
+              "value": 11,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") - 1 (the counter stands at 0 to 10 for the precision hits before the 12th); $clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") = 12 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "targeting-hits" }]
+      },
+      {
+        "id": "targeting-data-charge",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          {
+            "type": "counter",
+            "id": "targeting-hits",
+            "op": "=",
+            "value": {
+              "value": 11,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") - 1 (the 12th precision hit); $clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") = 12 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace)"
+              }
+            }
+          },
+          {
+            "type": "counter",
+            "id": "targeting-charges",
+            "op": "<",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Hunter's Trace](\"Maximum of 4 charges\") - 1 (the counter stands at 0 to 2 for the charges before the 4th); $clarity[Hunter's Trace](\"Maximum of 4 charges\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "targeting-hits" },
+          { "type": "addStacks", "counter": "targeting-charges" }
+        ]
+      },
+      {
+        "id": "targeting-data-release",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          {
+            "type": "counter",
+            "id": "targeting-hits",
+            "op": "=",
+            "value": {
+              "value": 11,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") - 1 (the 12th precision hit); $clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") = 12 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace)"
+              }
+            }
+          },
+          {
+            "type": "counter",
+            "id": "targeting-charges",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Hunter's Trace](\"Maximum of 4 charges\") - 1 (the 4th charge: all of them are converted); $clarity[Hunter's Trace](\"Maximum of 4 charges\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "targeting-hits" },
+          { "type": "resetCounter", "counter": "targeting-charges" },
+          {
+            "type": "spawn",
+            "part": "sniper",
+            "count": {
+              "value": 4,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 4 charges"
+              }
+            },
+            "intervalMs": {
+              "value": 833.333,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 60 / $clarity[Hunter's Trace](\"fire at 72RPM\") * 1000 (rounds per minute to the milliseconds between two rounds); $clarity[Hunter's Trace](\"fire at 72RPM\") = 72 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace)"
+              }
+            },
+            "factor": {
+              "value": 0.843,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 - (60 / $clarity[Hunter's Trace](\"fire at 72RPM\")) * ($quantum[primaries-pulse-rifle-revision-zero-2-burst].timing.fireRateRpm / 60) * $quantum[primaries-pulse-rifle-revision-zero-2-burst].precisionDamage / $clarity[Hunter's Trace](\"deal 1833\") (the primary does not fire while reload is held: per sniper round (60 / 72 s) it loses its bullets of that time (rpm / 60 per second, precision damage each); the loss is taken from the sniper round); $clarity[Hunter's Trace](\"fire at 72RPM\") = 72 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace); $quantum[primaries-pulse-rifle-revision-zero-2-burst].timing.fireRateRpm = 324 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst); $quantum[primaries-pulse-rifle-revision-zero-2-burst].precisionDamage = 64 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst); $clarity[Hunter's Trace](\"deal 1833\") = 1833 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace)"
+              }
+            }
+          },
+          {
+            "type": "spawn",
+            "part": "shockwave",
+            "count": {
+              "value": 4,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 4 charges"
+              }
+            },
+            "intervalMs": {
+              "value": 833.333,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 60 / $clarity[Hunter's Trace](\"fire at 72RPM\") * 1000 (every sniper round trigger a shockwave); $clarity[Hunter's Trace](\"fire at 72RPM\") = 72 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hunter's Trace)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file revision-zero",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the best play converts all 4 charges at once (4 sniper rounds); the primary does not fire while reload is held (3.3 s for 4 rounds at 72 RPM): its lost damage is taken off the sniper rounds as a factor (the engine has no lock of the weapon)",
+          "quote": "Hold [Reload] to convert each fully charged stack of Targeting Data into a precision sniper round"
+        }
+      },
+      {
+        "id": "fourth-time-count",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "fttc-hits",
+            "op": "<",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): 4-Timer Refit",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[4-Timer Refit](\"Scoring 4 Precision Hits\") - 1 (the counter stands at 0 to 2 for the precision hits before the 4th); $clarity[4-Timer Refit](\"Scoring 4 Precision Hits\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): 4-Timer Refit)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "fttc-hits" }]
+      },
+      {
+        "id": "fourth-time",
+        "on": { "on": "hit", "part": "shot", "precision": true },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "fttc-hits",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): 4-Timer Refit",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[4-Timer Refit](\"Scoring 4 Precision Hits\") - 1 (the 4th precision hit); $clarity[4-Timer Refit](\"Scoring 4 Precision Hits\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): 4-Timer Refit)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "fttc-hits" },
+          {
+            "type": "refill",
+            "rounds": {
+              "value": 2,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): 4-Timer Refit",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "refills 2 Ammo"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file revision-zero",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: 4 precision hits at 5.4 bullets per second take 0.7 s, inside the 2 s window",
+          "quote": "within 2 seconds of each"
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "hunter-s-trace",
+        "name": "Hunter's Trace",
+        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "hunter-s-trace-ii",
+        "name": "Hunter's Trace II",
+        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "hunter-s-trace-iii",
+        "name": "Hunter's Trace III",
+        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      },
+      {
+        "id": "hunter-s-trace-iv",
+        "name": "Hunter's Trace IV",
+        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "4-Timer Refit (Fourth Time's The Charm)",
+      "description": "Grants the Fourth Time's The Charm trait:\nScoring 4 Precision Hits within 2 seconds of each refills 2 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 324,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 50,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1160,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
+          }
+        }
       }
     },
     "reloadDurationIncluded": {
@@ -16265,155 +16947,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 76.159,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
-            "note": "visual Value; assumptions: burst - heavy 2-burst mode, Vorpal Weapon"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-revision-zero-burst-heavy-2-burst-mode-vorpal-weapon"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "hunter-s-trace",
-        "name": "Hunter's Trace",
-        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "hunter-s-trace-ii",
-        "name": "Hunter's Trace II",
-        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "hunter-s-trace-iii",
-        "name": "Hunter's Trace III",
-        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      },
-      {
-        "id": "hunter-s-trace-iv",
-        "name": "Hunter's Trace IV",
-        "description": "This weapon fires special shield-piercing ammunition and is strong against [Shield-Piercing] Barrier Champions. Precision hits grant targeting data. [Alternate Weapon Action]  to swap to the alternate scope, loading high-damage rounds based on the amount of targeting data. High damage rounds create shockwaves around impacted targets, exhausting them.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Pressurized Refit, Frenzy Refit, 4-Timer Refit, Outlaw Refit",
-      "description": "Grants the Under Pressure trait:\nGrants linearly scaling benefits as the Magazine drops from 50% of its base capacity to empty:\n• 12.5% to 25% decreased Accuracy Cone Size\n• 0 to 30? Stability\nGrants the Feeding Frenzy trait:\nWeapon Kills grant 1 Stack of Feeding Frenzy for 3.5 seconds, increasing the Reload Speed of the weapon. Maximum of 5 Stacks.\nBonuses at 1|2|3|4|5 Stacks:\n• 8|50|60|75|100 Reload Speed\n• 2.5%|10%|13%|16%|20% decreased Reload Animation Duration\nGrants the Fourth Time's The Charm trait:\nScoring 4 Precision Hits within 2 seconds of each refills 2 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.\nGrants the Outlaw trait:\nPrecision Kills grant 70 Reload Speed with a 0.9x decreased Reload Animation Duration for 6 seconds.\nBuff is removed on stow.",
-      "effect": "timing",
-      "timing": {
-        "fireRateRpm": {
-          "value": 324,
-          "source": {
-            "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
-          }
-        },
-        "magazine": {
-          "value": 50,
-          "source": {
-            "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        },
-        "totalShots": {
-          "value": null,
-          "source": {
-            "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified",
-            "note": "unlimited (Quantum: inf)"
-          }
-        },
-        "reloadTimeMs": {
-          "value": 1160,
-          "source": {
-            "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-revision-zero-2-burst-mix-fttc",
-            "url": "https://destiny2.science/quantum-damage-ics",
-            "retrieved": "2026-10-20",
-            "status": "unverified"
-          }
-        }
-      }
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "riskrunner",
@@ -19214,13 +19748,13 @@
           }
         },
         "damagePerTick": {
-          "value": 676,
+          "value": 612,
           "source": {
             "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-the-fourth-horseman",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "precisionDamage"
+            "note": "bodyDamage"
           }
         },
         "ticks": {
@@ -19241,16 +19775,239 @@
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
-        "canPrecision": true,
+        "canPrecision": false,
         "delivery": "impact",
         "scale": "quantum"
       }
     ],
     "rules": [
       {
+        "id": "broadside-2",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "broadside",
+            "op": "=",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Broadside](\"2|\") - 1 (one shot before the 2nd); $clarity[Broadside](\"2|\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "broadside-2" }]
+      },
+      {
+        "id": "broadside-3",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "broadside",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Broadside](\"|3|\") - 1 (two shots before the 3rd); $clarity[Broadside](\"|3|\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "broadside-3" }]
+      },
+      {
+        "id": "broadside-4",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "broadside",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Broadside](\"|4|\") - 1 (three shots before the 4th); $clarity[Broadside](\"|4|\") = 4 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "broadside-4" }]
+      },
+      {
+        "id": "broadside-5",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "broadside",
+            "op": "=",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Broadside](\"|5th\") - 1 (four shots before the 5th (only with the catalyst magazine of 5)); $clarity[Broadside](\"|5th\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "broadside-5" }]
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "broadside-count",
+        "on": { "on": "shot" },
+        "do": [{ "type": "addStacks", "counter": "broadside" }]
+      },
+      {
+        "id": "broadside-reset",
+        "on": { "on": "reload", "edge": "start" },
+        "do": [{ "type": "resetCounter", "counter": "broadside" }],
+        "source": {
+          "name": "Item file the-fourth-horseman",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: shots 0.2 s apart (300 RPM) stay within 0.5 s; a reload (0.43 s Quantum plus the animation, and the shots wait for it) ends the series",
+          "quote": "within 0.5 seconds of each other"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "broadside-2",
+        "name": "Broadside, 2nd shot",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.18,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Broadside](\"by 18%\") / 100 (percent to factor); $clarity[Broadside](\"by 18%\") = 18 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-fourth-horseman",
+            "retrieved": "2026-11-06",
+            "status": "derived",
+            "note": "Derived: the buff belongs to its own shot only (the next shot has its own stage), so it lasts one millisecond",
+            "quote": "increases the damage of the 2|3|4|5th shot"
+          }
+        }
+      },
+      {
+        "id": "broadside-3",
+        "name": "Broadside, 3rd shot",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.39,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Broadside](\"|39%|\") / 100 (percent to factor); $clarity[Broadside](\"|39%|\") = 39 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-fourth-horseman",
+            "retrieved": "2026-11-06",
+            "status": "derived",
+            "note": "Derived: the buff belongs to its own shot only, so it lasts one millisecond",
+            "quote": "increases the damage of the 2|3|4|5th shot"
+          }
+        }
+      },
+      {
+        "id": "broadside-4",
+        "name": "Broadside, 4th shot",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.59,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Broadside](\"|59%|\") / 100 (percent to factor); $clarity[Broadside](\"|59%|\") = 59 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-fourth-horseman",
+            "retrieved": "2026-11-06",
+            "status": "derived",
+            "note": "Derived: the buff belongs to its own shot only, so it lasts one millisecond",
+            "quote": "increases the damage of the 2|3|4|5th shot"
+          }
+        }
+      },
+      {
+        "id": "broadside-5",
+        "name": "Broadside, 5th shot",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.81,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Broadside](\"|81%\") / 100 (percent to factor); $clarity[Broadside](\"|81%\") = 81 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Broadside)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-fourth-horseman",
+            "retrieved": "2026-11-06",
+            "status": "derived",
+            "note": "Derived: the buff belongs to its own shot only, so it lasts one millisecond",
+            "quote": "increases the damage of the 2|3|4|5th shot"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -20006,56 +20763,261 @@
     "code": 86,
     "name": "The Manticore",
     "manifestHash": 219145368,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "submachineGun",
     "element": "void",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file the-manticore",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 900,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 42,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1190,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-submachine-gun-the-manticore-grounded",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-manticore",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 29,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-manticore",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-manticore",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "swooping-talons-more",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [{ "type": "buff", "id": "swooping-talons" }],
+        "do": [
+          {
+            "type": "addStacks",
+            "buff": "swooping-talons",
+            "by": {
+              "value": 0.111,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne; Clarity (Live-Clarity-Database, descriptions/clarity.json): Swooping Talons",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 60 / $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm / $clarity[Swooping Talons](\"Cooldown of 0.6 seconds\") (one damage increase per 0.6 s: the share of a stack that one hit (60 / rpm seconds) brings); $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne); $clarity[Swooping Talons](\"Cooldown of 0.6 seconds\") = 0.6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Swooping Talons)"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "swooping-talons-start",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [{ "type": "buff", "id": "swooping-talons", "not": true }],
+        "do": [{ "type": "grantBuff", "buff": "swooping-talons" }],
+        "source": {
+          "name": "Item file the-manticore",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the weapon is played airborne in Hover Mode (the Quantum row and the Aegis rows say so); the ramp starts at the first hit and holds through the reload, since Hover Mode renews with every hit",
+          "quote": "While airborne, hits increase damage"
+        }
+      },
+      {
+        "id": "flying-monster-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "refill-hits",
+            "op": "<",
+            "value": {
+              "value": 14,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Manticore Catalyst; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Manticore Catalyst](\"1 second cooldown\") * $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm / 60 - 1 (hits in the 1 s cooldown, minus one: the cooldown is longer than 5 hits at 900 RPM (0.33 s), so it sets the rate of the refill); $clarity[The Manticore Catalyst](\"1 second cooldown\") = 1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Manticore Catalyst); $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "refill-hits" }]
+      },
+      {
+        "id": "flying-monster",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "refill-hits",
+            "op": "=",
+            "value": {
+              "value": 14,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): The Manticore Catalyst; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[The Manticore Catalyst](\"1 second cooldown\") * $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm / 60 - 1 (the hit that ends the cooldown); $clarity[The Manticore Catalyst](\"1 second cooldown\") = 1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Manticore Catalyst); $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-the-manticore-airborne)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "refill-hits" },
+          {
+            "type": "refill",
+            "rounds": {
+              "value": 12,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): The Manticore Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "refills 12 ammo"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file the-manticore",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: 5 hits trigger the refill, but hits have a 1 s cooldown; at 15 hits per second the cooldown rules, so 12 rounds per second of fire",
+          "quote": "5 hits against an Elite, Miniboss, or Boss"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "swooping-talons",
+        "name": "Swooping Talons",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.1,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Swooping Talons",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Swooping Talons](\"increase damage by 10%\") / 100 (percent to factor, per stack (perStack); one stack is one damage increase); $clarity[Swooping Talons](\"increase damage by 10%\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Swooping Talons)"
+              }
+            },
+            "damageSources": ["weapon"],
+            "perStack": true
+          }
+        ],
+        "maxStacks": {
+          "value": 10,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Swooping Talons",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Swooping Talons](\"up to a maximum of 100%\") / $clarity[Swooping Talons](\"increase damage by 10%\") (100 % in steps of 10 %); $clarity[Swooping Talons](\"up to a maximum of 100%\") = 100 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Swooping Talons); $clarity[Swooping Talons](\"increase damage by 10%\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Swooping Talons)"
+          }
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "soaring-fang",
+        "name": "Soaring Fang",
+        "description": "Dealing damage while grounded charges antigrav repulsors. Dealing damage while airborne extends antigrav repulsors.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Flying Monster, The Manticore Catalyst",
+      "description": "While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield for 6 seconds (9 seconds with Echo of Persistance).\n1 second cooldown when activated by hits.\nNo cooldown when activated by kills.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -20067,82 +21029,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-the-manticore-average-hover-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "smg-the-manticore-average-hover-mode",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 41.899,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-the-manticore-average-hover-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "smg-the-manticore-average-hover-mode",
-            "note": "visual Value; assumptions: average, Hover Mode"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-the-manticore-average-hover-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "smg-the-manticore-average-hover-mode"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row smg-the-manticore-average-hover-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "smg-the-manticore-average-hover-mode"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "soaring-fang",
-        "name": "Soaring Fang",
-        "description": "Dealing damage while grounded charges antigrav repulsors. Dealing damage while airborne extends antigrav repulsors.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Flying Monster, The Manticore Catalyst",
-      "description": "While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield for 6 seconds (9 seconds with Echo of Persistance).\n1 second cooldown when activated by hits.\nNo cooldown when activated by kills.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "the-navigator",
@@ -21415,6 +22302,51 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "strike",
+        "name": "Lightning Strike",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file thunderlord",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 232,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Reign Havoc",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "dealing 232"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file thunderlord",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file thunderlord",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "compendium"
       }
     ],
     "rules": [
@@ -21422,6 +22354,200 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "strike-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "strike-hits",
+            "op": "<",
+            "value": {
+              "value": 9,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Lightning Rounds](\"after 10 hits\") - 1 (the counter stands at 0 to 8 for the hits before the 10th); $clarity[Lightning Rounds](\"after 10 hits\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "strike-hits" }]
+      },
+      {
+        "id": "strike",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "strike-hits",
+            "op": "=",
+            "value": {
+              "value": 9,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Lightning Rounds](\"after 10 hits\") - 1 (the 10th hit); $clarity[Lightning Rounds](\"after 10 hits\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "strike-hits" },
+          { "type": "spawn", "part": "strike" }
+        ]
+      },
+      {
+        "id": "return-stroke",
+        "on": { "on": "hit", "part": "strike" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [
+          {
+            "type": "refill",
+            "rounds": {
+              "value": 5,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Thunderlord Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "refills 5 ammo"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rate-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "rate-shots",
+            "op": "<",
+            "value": {
+              "value": 26,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Lightning Rounds](\"|26 shots\") (count to the 26th shot, the last stage); $clarity[Lightning Rounds](\"|26 shots\") = 26 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "rate-shots" }]
+      },
+      {
+        "id": "rate-1",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "rate-shots",
+            "op": "=",
+            "value": {
+              "value": 13,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Lightning Rounds](\"after 13|\") (the 13th shot has been fired (count runs one ahead of this rule)); $clarity[Lightning Rounds](\"after 13|\") = 13 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 783.582,
+                "source": {
+                  "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-thunderlord; Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: $quantum[heavies-machine-gun-thunderlord].timing.fireRateRpm * (1 + $clarity[Lightning Rounds](\"by 25%|\") / 100) (percent to factor); $quantum[heavies-machine-gun-thunderlord].timing.fireRateRpm = 626.866 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-thunderlord); $clarity[Lightning Rounds](\"by 25%|\") = 25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds)"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rate-2",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "rate-shots",
+            "op": "=",
+            "value": {
+              "value": 26,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Lightning Rounds](\"|26 shots\") (the 26th shot has been fired); $clarity[Lightning Rounds](\"|26 shots\") = 26 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 877.612,
+                "source": {
+                  "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-thunderlord; Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: $quantum[heavies-machine-gun-thunderlord].timing.fireRateRpm * (1 + $clarity[Lightning Rounds](\"|40% after\") / 100) (percent to factor); $quantum[heavies-machine-gun-thunderlord].timing.fireRateRpm = 626.866 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-thunderlord); $clarity[Lightning Rounds](\"|40% after\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Lightning Rounds)"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "rate-reset",
+        "on": { "on": "reload", "edge": "start" },
+        "do": [
+          { "type": "resetCounter", "counter": "rate-shots" },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 626.866,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-machine-gun-thunderlord",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.fireRateRpm: Derived: (Time to Empty 57.6 s − 6 reloads × 3.57 s) ÷ 378 intervals (ADR 0013)"
+                }
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file thunderlord",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the rate ramp counts shots while the trigger is held; a reload releases it, so the next magazine starts at the base rate",
+          "quote": "While holding down the trigger"
+        }
       }
     ],
     "intrinsics": [
@@ -21562,6 +22688,85 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "causality-quiver-pre-stacked",
+        "on": { "on": "phaseStart" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "playstyle", "id": "pre-stacked" }
+        ],
+        "do": [
+          {
+            "type": "grantBuff",
+            "buff": "causality-quiver",
+            "stacks": {
+              "value": 6,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Ticuu's Divination Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 6 stacks"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file ticuu-s-divination",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the stacks come from explosions, which need kills (ADR 0015); the playstyle \"pre-stacked\" builds the 6 stacks before the phase (kill buffs only built up), the buff of 87 % is the 6-stack value",
+          "quote": "Causality Quiver increases the impact damage of your arrows (not the explosion)"
+        }
+      },
+      {
+        "id": "causality-quiver-refresh",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "buff", "id": "causality-quiver" }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "causality-quiver" }],
+        "source": {
+          "name": "Item file ticuu-s-divination",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: every shot marks the boss (hip draw), so the 5.5 s window renews with each shot",
+          "quote": "Marking enemies with Sacred Flame refreshes the buff"
+        }
+      }
+    ],
+    "buffs": [
+      {
+        "id": "causality-quiver",
+        "name": "Causality Quiver, 6 stacks",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.87,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ticuu's Divination Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Ticuu's Divination Catalyst](\"|87%|\") / 100 (percent to factor; the value of the 5th and 6th stack (the maximum), PvE); $clarity[Ticuu's Divination Catalyst](\"|87%|\") = 87 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ticuu's Divination Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 5500,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ticuu's Divination Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Ticuu's Divination Catalyst](\"for 5.5 seconds\") * 1000 (seconds to milliseconds; marking the boss renews it); $clarity[Ticuu's Divination Catalyst](\"for 5.5 seconds\") = 5.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ticuu's Divination Catalyst)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -21666,13 +22871,13 @@
           }
         },
         "damagePerTick": {
-          "value": 47,
+          "value": 28,
           "source": {
             "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-tommy-s-matchbook",
             "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
             "status": "verified",
-            "note": "precisionDamage"
+            "note": "bodyDamage"
           }
         },
         "ticks": {
@@ -21693,7 +22898,7 @@
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
-        "canPrecision": true,
+        "canPrecision": false,
         "delivery": "impact",
         "scale": "quantum"
       }
@@ -21703,6 +22908,140 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "ignition-trigger",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "ignition-rounds",
+            "op": "=",
+            "value": {
+              "value": 20,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ignition Trigger",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Ignition Trigger](\"Firing 20 rounds\") + 0 (the counter stands at 20 after the 20th round; the 21st shot is the first buffed (the hit of a shot takes the buffs its rules grant on the same shot)); $clarity[Ignition Trigger](\"Firing 20 rounds\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ignition Trigger)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "ignition-trigger" }],
+        "source": {
+          "name": "Item file tommy-s-matchbook",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the shots of continuous fire are 0.083 s apart (720 RPM), inside the 0.125 s; the buff lasts to the end of the phase, because holding the trigger builds 20 % heat per second and a reload drains only 25 % x 0.93 s",
+          "quote": "Firing 20 rounds within 0.125 seconds of each"
+        }
+      },
+      {
+        "id": "ignition-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "ignition-rounds",
+            "op": "<",
+            "value": {
+              "value": 20,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ignition Trigger",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Ignition Trigger](\"Firing 20 rounds\") (count up to the 20th round); $clarity[Ignition Trigger](\"Firing 20 rounds\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ignition Trigger)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "ignition-rounds" }]
+      },
+      {
+        "id": "scorch-count",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "buff", "id": "ignition-trigger" },
+          {
+            "type": "counter",
+            "id": "scorch-shots",
+            "op": "<",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Tommy's Matchbook Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Tommy's Matchbook Catalyst](\"every 5th shot\") - 1 (the counter stands at 0 to 3 for the shots before the 5th); $clarity[Tommy's Matchbook Catalyst](\"every 5th shot\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Tommy's Matchbook Catalyst)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "scorch-shots" }]
+      },
+      {
+        "id": "scorch",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "buff", "id": "ignition-trigger" },
+          {
+            "type": "counter",
+            "id": "scorch-shots",
+            "op": "=",
+            "value": {
+              "value": 4,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Tommy's Matchbook Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Tommy's Matchbook Catalyst](\"every 5th shot\") - 1 (the 5th shot); $clarity[Tommy's Matchbook Catalyst](\"every 5th shot\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Tommy's Matchbook Catalyst)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "scorch-shots" },
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 15,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Tommy's Matchbook Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "applies 15"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "ignition-trigger",
+        "name": "Ignition Trigger",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ignition Trigger",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Ignition Trigger](\"grants 100%\") / 100 (percent to factor); $clarity[Ignition Trigger](\"grants 100%\") = 100 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ignition Trigger)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ]
       }
     ],
     "intrinsics": [

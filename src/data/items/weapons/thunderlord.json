@@ -35,6 +35,11 @@
       "damage": "$quantum[heavies-machine-gun-thunderlord].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "strike": {
+      "name": "Lightning Strike",
+      "damage": "$clarity[Reign Havoc](\"dealing 232\")",
+      "delivery": "splash"
     }
   },
   "rules": [
@@ -42,6 +47,131 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "strike-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "strike-hits",
+          "op": "<",
+          "value": { "expr": "$clarity[Lightning Rounds](\"after 10 hits\") - 1", "note": "the counter stands at 0 to 8 for the hits before the 10th" }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "strike-hits" }]
+    },
+    {
+      "id": "strike",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "strike-hits",
+          "op": "=",
+          "value": { "expr": "$clarity[Lightning Rounds](\"after 10 hits\") - 1", "note": "the 10th hit" }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "strike-hits" },
+        { "type": "spawn", "part": "strike" }
+      ]
+    },
+    {
+      "id": "return-stroke",
+      "on": { "on": "hit", "part": "strike" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "refill", "rounds": "$clarity[Thunderlord Catalyst](\"refills 5 ammo\")" }]
+    },
+    {
+      "id": "rate-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "rate-shots",
+          "op": "<",
+          "value": { "expr": "$clarity[Lightning Rounds](\"|26 shots\")", "note": "count to the 26th shot, the last stage" }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "rate-shots" }]
+    },
+    {
+      "id": "rate-1",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "rate-shots",
+          "op": "=",
+          "value": { "expr": "$clarity[Lightning Rounds](\"after 13|\")", "note": "the 13th shot has been fired (count runs one ahead of this rule)" }
+        }
+      ],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "$quantum[heavies-machine-gun-thunderlord].timing.fireRateRpm * (1 + $clarity[Lightning Rounds](\"by 25%|\") / 100)",
+              "note": "percent to factor"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rate-2",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "rate-shots",
+          "op": "=",
+          "value": { "expr": "$clarity[Lightning Rounds](\"|26 shots\")", "note": "the 26th shot has been fired" }
+        }
+      ],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "$quantum[heavies-machine-gun-thunderlord].timing.fireRateRpm * (1 + $clarity[Lightning Rounds](\"|40% after\") / 100)",
+              "note": "percent to factor"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "rate-reset",
+      "on": { "on": "reload", "edge": "start" },
+      "do": [
+        { "type": "resetCounter", "counter": "rate-shots" },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": "$quantum[heavies-machine-gun-thunderlord].timing.fireRateRpm"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file thunderlord",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "While holding down the trigger",
+        "note": "Derived: the rate ramp counts shots while the trigger is held; a reload releases it, so the next magazine starts at the base rate"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "• 1 Stability", "reason": "no damage against a boss (stability)" },
+    { "quote": "10% decreased Accuracy Cone Growth", "reason": "no damage against a boss (handling)" },
+    { "quote": "Reaches maximum strength after 10 shots", "reason": "no damage against a boss (handling)" }
   ]
 }

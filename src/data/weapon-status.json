@@ -1564,69 +1564,86 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 3770,
-          "s30": 11281,
-          "s60": 14645
+          "s10": 5827.9,
+          "s30": 18272.2,
+          "s60": 23816.1
         },
         "catalyst": {
-          "s10": 3770,
-          "s30": 11281,
-          "s60": 14645
+          "s10": 5827.9,
+          "s30": 18272.2,
+          "s60": 23816.1
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Aegis -17.8 % with average, no initial trace."
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×1.63 against the Quantum row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "beam-energy-more",
+          "share": 0.3742
+        },
+        {
+          "id": "beam-energy-start",
+          "share": 0.3851
+        }
+      ],
       "sentences": [
         {
           "text": "Linearly grants up to 80% increased damage as the beam is charged to 100% power.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• Dealing damage grants 40% energy over 1 second.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Initially has a 0.267 second delay before this starts granting energy.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• Collecting an Ionic Trace grants 50% energy over 0.5 seconds",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (Quantum 4 873 against 4 781 per magazine after a pickup, +1.9 %; known-inaccuracies W2)"
         },
         {
           "text": "Not generating energy for 1.05 seconds rapidly cools the weapon down to 0% over 0.2 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Reaching maximum energy grants 100 Stability and 100 Reload Speed.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs reload stat (100 Reload Speed at full energy shortens the reload; the manifest has no reload stat; known-inaccuracies W2)"
         },
         {
           "text": "Passively grants 20 Stability and 20 Reload Speed.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (20 Reload Speed, about 0.06 s of 1.44 s per magazine; known-inaccuracies W2)"
         },
         {
           "text": "(Yes, these are the same stats that are set to 100 when at 100% Fusion Energy)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (explains the line above)"
         },
         {
           "text": "Refills 5% of the magazine (rounded up) every 1.5 seconds while Amplified.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs Amplified (a state of the player)"
         },
         {
           "text": "Activating Speed Booster increases this rate to once every 0.25 seconds, and allows the perk to overfill the magazine up to double its base capacity.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs Amplified (a state of the player)"
         },
         {
           "text": "At 100% Beam Energy, hits spawn an Ionic Trace.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (see the Ionic Trace pickup above)"
         },
         {
           "text": "2 second cooldown between spawns.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (see the Ionic Trace pickup above)"
         }
       ],
       "quantum": {
@@ -1634,16 +1651,16 @@
         "rowNote": "",
         "basis": "total",
         "measured": 14645,
-        "model": 14645,
-        "deviation": 0,
-        "circular": true,
+        "model": 23816.1,
+        "deviation": 0.6262,
+        "circular": false,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
           "damagePerHit": 1,
-          "mechanic": 1,
+          "mechanic": 1.6262307821782214,
           "rowPlain": true
         }
       },
@@ -1657,8 +1674,8 @@
               "no initial trace"
             ],
             "measured": 7130.2,
-            "model": 5858,
-            "deviation": -0.1784
+            "model": 9526.5,
+            "deviation": 0.3361
           }
         ]
       },
@@ -2154,170 +2171,215 @@
     {
       "id": "dead-man-s-tale",
       "name": "Dead Man's Tale",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 3774.2,
-          "s30": 10945.1,
-          "s60": 21701.5
+          "s10": 3616.6,
+          "s30": 10641.3,
+          "s60": 21178.3
         },
         "catalyst": {
-          "s10": 5512.2,
-          "s30": 16296.9,
-          "s60": 32114.5
+          "s10": 4550.2,
+          "s30": 14410.6,
+          "s60": 28966.5
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×1.13 against the Quantum row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "cranial-spike-more",
+          "share": 0.1182
+        },
+        {
+          "id": "cranial-spike-start",
+          "share": 0.1437
+        }
+      ],
       "sentences": [
         {
           "text": "• Increases RPM to 130",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 50% Reduced Accuracy Cone Size",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "• 50% Reduced Accuracy Cone Growth",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "• 27% [15%] increased damage at x5 Cranial Spike",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Precision Hits grant one stack of 'Cranial Spike' for 4 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 5 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Cranial Spike's benefits at 1|2|3|4|5 stacks:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 3.5%|7%|10%|14%|17% increased damage against Combatants",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 1|2|3|4|5 Rounds added each reload",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (5 rounds on 14 shorten the downtime of a 0.33 s reload by about 1 %; known-inaccuracies W2)"
         },
         {
           "text": "• 8|16|24|32|40 Range",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "• 2|4|6|8|10 Stability",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (stability)"
         },
         {
           "text": "• 4|8|12|16|20 Aim Assist",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (aim assist)"
         },
         {
           "text": "• 3%|6%|9%|11%|14% decreased Reload Animation Duration",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (reload of 0.33 s, see Rounds added each reload)"
         },
         {
           "text": "Precision Hits grant one stack of 'Cranial Spike' for 4 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 5 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Cranial Spike's benefits at 1|2|3|4|5 stacks:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 3.5%|7%|10%|14%|17% increased damage against Combatants",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 1|2|3|4|5 Rounds added each reload",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (5 rounds on 14 shorten the downtime of a 0.33 s reload by about 1 %; known-inaccuracies W2)"
         },
         {
           "text": "• 8|16|24|32|40 Range",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "• 2|4|6|8|10 Stability",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (stability)"
         },
         {
           "text": "• 4|8|12|16|20 Aim Assist",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (aim assist)"
         },
         {
           "text": "• 3%|6%|9%|11%|14% decreased Reload Animation Duration",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (reload of 0.33 s, see Rounds added each reload)"
         },
         {
           "text": "Precision Hits grant one stack of 'Cranial Spike' for 4 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 5 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Cranial Spike's benefits at 1|2|3|4|5 stacks:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 3.5%|7%|10%|14%|17% increased damage against Combatants",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 1|2|3|4|5 Rounds added each reload",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (5 rounds on 14 shorten the downtime of a 0.33 s reload by about 1 %; known-inaccuracies W2)"
         },
         {
           "text": "• 8|16|24|32|40 Range",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "• 2|4|6|8|10 Stability",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (stability)"
         },
         {
           "text": "• 4|8|12|16|20 Aim Assist",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (aim assist)"
         },
         {
           "text": "• 3%|6%|9%|11%|14% decreased Reload Animation Duration",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (reload of 0.33 s, see Rounds added each reload)"
         },
         {
           "text": "• Increases RPM to 130",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 50% Reduced Accuracy Cone Size",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "• 50% Reduced Accuracy Cone Growth",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "• 27% [15%] increased damage at x5 Cranial Spike",
-          "state": "open"
+          "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-scout-rifle-dead-man-s-tale-base",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 2212,
+        "model": 2507.5,
+        "deviation": 0.1336,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.133571428571429,
+          "rowPlain": true
+        }
+      },
       "aegis": {
-        "check": "no independent check",
+        "check": "no row",
         "rows": []
       },
       "planBlock": "W2"
@@ -2401,43 +2463,73 @@
     {
       "id": "deathbringer",
       "name": "Deathbringer",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 19500.4,
-          "s30": 42900.9,
-          "s60": 42900.9
+          "s10": 19495,
+          "s30": 42889,
+          "s60": 42889
         },
         "catalyst": {
-          "s10": 19500.4,
-          "s30": 42900.9,
-          "s60": 42900.9
+          "s10": 19495,
+          "s30": 42889,
+          "s60": 42889
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "ok",
+        "why": "Within the limit: Aegis -0.1 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Release the trigger after firing to remotely detonate it into 7 submunitions.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row (its 3 899 holds all seven orbs)"
         },
         {
           "text": "The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (the orbs of the max-distance row are at their maximum either way; the catalyst only gets there 1 s sooner)"
         },
         {
           "text": "Void Orbs linearly increase in damage as they fall, dealing up to 182.5% [47.7%] bonus damage after 3 seconds of being airborne.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row \"max distance damage\" (3 899 against 2 576 at \"direct impact\"; the orbs are at the maximum)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-rocket-launcher-deathbringer-max-distance-damage",
+        "rowNote": "Note that multiple people firing Deathbringer may cause projectiles to despawn",
+        "basis": "total",
+        "measured": 42889,
+        "model": 42889,
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
+      },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "rocket-launcher-deathbringer-max-height",
+            "assumptions": [
+              "max height"
+            ],
+            "measured": 3903.2,
+            "model": 3899,
+            "deviation": -0.0011
+          }
+        ]
       },
       "planBlock": "W2"
     },
@@ -2659,7 +2751,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "devil-s-ruin",
@@ -2839,7 +2931,7 @@
         "check": "no row",
         "rows": []
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "dragon-s-breath",
@@ -4532,7 +4624,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "graviton-lance",
@@ -5060,7 +5152,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "heir-apparent",
@@ -6116,71 +6208,105 @@
     {
       "id": "lord-of-wolves",
       "name": "Lord of Wolves",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 16745.3,
-          "s30": 35165.2,
-          "s60": 35165.2
+          "s10": 17955,
+          "s30": 32319,
+          "s60": 32319
         },
         "catalyst": {
-          "s10": 16745.3,
-          "s30": 35165.2,
-          "s60": 35165.2
+          "s10": 19990.8,
+          "s30": 34350.5,
+          "s60": 34350.5
         }
       },
       "cause": {
         "class": "mechanic-missing",
-        "why": "Aegis -2.9 % with average, includes ignition/scorch, Ember of Ashes."
+        "why": "Aegis -10.8 % with average, includes ignition/scorch, Ember of Ashes."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "While Aiming Down Sights, fires in 5 round bursts.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the playstyle: the item is played hip-fire (Quantum's hip-fire rows, the Aegis row \"hip-fire\")"
         },
         {
           "text": "• 60% increased Rate of Fire",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum timing (hip-fire 833 against 640 RPM ADS; known-inaccuracies W2)"
         },
         {
           "text": "• 200% increased Accuracy Cone Size",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "• 39% increased bodyshot damage and 20% increased precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row (hip-fire body 110 against ADS 98, precision 171 against 176: +10 % body, no precision bonus against bosses)"
         },
         {
           "text": "Bosses take 10% increased bodyshot damage and receive no increase to precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row (body 110 against ADS 98, no precision bonus against bosses)"
         },
         {
           "text": "Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hipfired shots apply 10 Scorch stacks (15 with Ember of Ashes) on hit with a 0.5 second cooldown.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Kills while ADS trigger a Solar explosion that applies 30 Scorch stacks (40 with Ember of Ashes) to enemies within an 8 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Scorch and Ignitions that originate from this weapon deal 53% increased damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the next sentence (24 % against Bosses)"
         },
         {
           "text": "This is reduced to 24% against Bosses.",
-          "state": "open"
+          "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-shotgun-lord-of-wolves-hip-fire-2",
+        "rowNote": "Assumes all precision hits",
+        "basis": "total",
+        "measured": 32319,
+        "model": 32319,
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
+      },
       "aegis": {
         "check": "checked",
         "rows": [
+          {
+            "row": "shotgun-lord-of-wolves-average-includes-ignition-scorch",
+            "assumptions": [
+              "average",
+              "includes ignition/scorch"
+            ],
+            "measured": 22355.2,
+            "model": 20520,
+            "deviation": -0.0821
+          },
           {
             "row": "shotgun-lord-of-wolves-average-includes-ignition-scorch-ember-of-ashes",
             "assumptions": [
@@ -6189,8 +6315,8 @@
               "Ember of Ashes"
             ],
             "measured": 17249.2,
-            "model": 16745.3,
-            "deviation": -0.0292
+            "model": 15390,
+            "deviation": -0.1078
           }
         ]
       },
@@ -6477,7 +6603,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "merciless",
@@ -7410,7 +7536,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "outbreak-perfected",
@@ -7656,7 +7782,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "parasite",
@@ -8190,150 +8316,193 @@
     {
       "id": "revision-zero",
       "name": "Revision Zero",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 3655.6,
-          "s30": 9976.8,
-          "s60": 19953.7
+          "s10": 4939.2,
+          "s30": 23321.8,
+          "s60": 54112.4
         },
         "catalyst": {
-          "s10": 3808,
-          "s30": 11423.8,
-          "s60": 22314.6
+          "s10": 7254.4,
+          "s30": 30523.4,
+          "s60": 64397.3
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "ok",
+        "why": "0.0 % against Quantum, no Aegis row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "targeting-data-count",
+          "share": 0.6905
+        },
+        {
+          "id": "targeting-data-charge",
+          "share": 0.6905
+        },
+        {
+          "id": "targeting-data-release",
+          "share": 0.6905
+        }
+      ],
       "sentences": [
         {
           "text": "Deals 100% increased damage against Champions at all times.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Scoring 12 Precision Hits grants a charge of 'Targeting Data'.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 4 charges.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Sniper rounds fire at 72RPM, have perfect accuracy (even from the hip), and deal 1833 [474] precision damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hits with sniper rounds trigger a 322 [20] damage Kinetic Shockwave that applies Exhaust for 5 seconds in a 6 meter radius.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Deals 100% increased damage against Champions at all times.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Scoring 12 Precision Hits grants a charge of 'Targeting Data'.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 4 charges.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Sniper rounds fire at 72RPM, have perfect accuracy (even from the hip), and deal 1833 [474] precision damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hits with sniper rounds trigger a 322 [20] damage Kinetic Shockwave that applies Exhaust for 5 seconds in a 6 meter radius.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Deals 100% increased damage against Champions at all times.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Scoring 12 Precision Hits grants a charge of 'Targeting Data'.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 4 charges.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Sniper rounds fire at 72RPM, have perfect accuracy (even from the hip), and deal 1833 [474] precision damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hits with sniper rounds trigger a 322 [20] damage Kinetic Shockwave that applies Exhaust for 5 seconds in a 6 meter radius.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Grants linearly scaling benefits as the Magazine drops from 50% of its base capacity to empty:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy, stability)"
         },
         {
           "text": "• 12.5% to 25% decreased Accuracy Cone Size",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "• 0 to 30?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (stability)"
         },
         {
           "text": "Weapon Kills grant 1 Stack of Feeding Frenzy for 3.5 seconds, increasing the Reload Speed of the weapon.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Maximum of 5 Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Bonuses at 1|2|3|4|5 Stacks:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "• 8|50|60|75|100 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "• 2.5%|10%|13%|16%|20% decreased Reload Animation Duration",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Scoring 4 Precision Hits within 2 seconds of each refills 2 Ammo into the Magazine from thin air.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Precision Kills grant 70 Reload Speed with a 0.9x decreased Reload Animation Duration for 6 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Deals 100% increased damage against Champions at all times.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Scoring 12 Precision Hits grants a charge of 'Targeting Data'.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 4 charges.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Sniper rounds fire at 72RPM, have perfect accuracy (even from the hip), and deal 1833 [474] precision damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hits with sniper rounds trigger a 322 [20] damage Kinetic Shockwave that applies Exhaust for 5 seconds in a 6 meter radius.",
-          "state": "open"
+          "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-pulse-rifle-revision-zero-2-burst",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 1664,
+        "model": 1664,
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
+      },
       "aegis": {
-        "check": "no independent check",
+        "check": "no row",
         "rows": []
       },
       "planBlock": "W2"
@@ -9326,7 +9495,7 @@
     {
       "id": "sunshot",
       "name": "Sunshot",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -9348,35 +9517,43 @@
       "sentences": [
         {
           "text": "Grants 30 Range and 20 Stability.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range, stability)"
         },
         {
           "text": "Applying an Elemental Debuff grants the following benefits for 9 seconds:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs reload stat (50 Reload Speed; the manifest has no Reload Speed stat of Sunshot; known-inaccuracies W2)"
         },
         {
           "text": "• 50 Reload Speed and 20 Aim Assist",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs reload stat (the manifest has no Reload Speed stat of Sunshot; known-inaccuracies W2)"
         },
         {
           "text": "• 20% decreased ADS Movement Speed Penalty",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (movement)"
         },
         {
           "text": "Fires explosive payloads that highlight targets for 1 second on direct impact.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (highlight)"
         },
         {
           "text": "In PvE, the explosive portion deals 14% more damage than the impact damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row: 59 body and 102 precision hold impact and explosion (27.6 + 1.14 x 27.6; known-inaccuracies W2)"
         },
         {
           "text": "Kills cause targets to explode, dealing 432 [160] damage and applying 10 Scorch (15 with Ember of Ashes) in a 6 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Explosion damage falls to 40% at the edge of its radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         }
       ],
       "quantum": {
@@ -10184,49 +10361,74 @@
     {
       "id": "the-fourth-horseman",
       "name": "The Fourth Horseman",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 10816,
-          "s30": 13520,
-          "s60": 13520
+          "s10": 12631.7,
+          "s30": 15789.6,
+          "s60": 15789.6
         },
         "catalyst": {
-          "s10": 10816,
-          "s30": 13520,
-          "s60": 13520
+          "s10": 13408.9,
+          "s30": 17062.6,
+          "s60": 17062.6
         }
       },
       "cause": {
         "class": "mechanic-missing",
-        "why": "Everything on top of the hits ×0.87 against the Quantum row."
+        "why": "Aegis -24.7 % with body, full mag."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "broadside-2",
+          "share": 0.0349
+        },
+        {
+          "id": "broadside-3",
+          "share": 0.0756
+        },
+        {
+          "id": "broadside-4",
+          "share": 0.1143
+        },
+        {
+          "id": "broadside-count",
+          "share": 0.2248
+        },
+        {
+          "id": "broadside-reset",
+          "share": 0.1484
+        }
+      ],
       "sentences": [
         {
           "text": "Each successive shot fired within 0.5 seconds of each other deals increasingly higher damage and has a wider pellet spread.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Broadside increases the damage of the 2|3|4|5th shot by 18%|39%|59%|81% damage in exchange for 25% increased pellet spread on the first shot and then 33% increased spread for all shots afterwards.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Fires at 300 RPM.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum timing (fireRateRpm)"
         },
         {
           "text": "• Minors: 1 ammo",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "• Elites: 0 ammo (???)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Grants 40 Reload Speed and Increases Magazine Size by 1 (4🠚5)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum cata row (timing)"
         }
       ],
       "quantum": {
@@ -10234,8 +10436,8 @@
         "rowNote": "",
         "basis": "total",
         "measured": 15627,
-        "model": 13520,
-        "deviation": -0.1348,
+        "model": 15789.6,
+        "deviation": 0.0104,
         "circular": false,
         "catalystRow": false,
         "strippedRow": false,
@@ -10243,7 +10445,7 @@
           "shots": 1,
           "hitsPerShot": 1,
           "damagePerHit": 1,
-          "mechanic": 0.8651692583349331,
+          "mechanic": 1.0104050681512766,
           "rowPlain": false
         }
       },
@@ -10257,8 +10459,8 @@
               "full mag"
             ],
             "measured": 4195.8,
-            "model": 2704,
-            "deviation": -0.3555
+            "model": 3157.9,
+            "deviation": -0.2474
           }
         ]
       },
@@ -10474,7 +10676,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "the-last-word",
@@ -10593,79 +10795,123 @@
     {
       "id": "the-manticore",
       "name": "The Manticore",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 4818.4,
-          "s30": 13659.1,
-          "s60": 26522.1
+          "s10": 5569.8,
+          "s30": 17807.8,
+          "s60": 35613.8
         },
         "catalyst": {
-          "s10": 4818.4,
-          "s30": 13659.1,
-          "s60": 26522.1
+          "s10": 7657.8,
+          "s30": 22969.8,
+          "s60": 46633.8
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Aegis -33.5 % with average, Hover Mode, Peacekeepers."
+        "class": "wrong-row",
+        "why": "The Quantum row is the bare weapon (+31.4 %), Aegis says the opposite (-24.4 %)."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "swooping-talons-more",
+          "share": 0.4417
+        },
+        {
+          "id": "swooping-talons-start",
+          "share": 0.4924
+        }
+      ],
       "sentences": [
         {
           "text": "While grounded, hits grant 1.5% charge to your Anti-Grav Repulsors.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (Hover Mode charge, movement; the weapon is played airborne)"
         },
         {
           "text": "Kills grant 10% charge.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Once you are above 3% charge, hits after being airborne for 0.5 seconds activate 'Hover Mode'.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (Hover Mode, movement)"
         },
         {
           "text": "Hover Mode is disengaged by Holding [Reload], reaching 0% charge, or stowing the weapon.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (Hover Mode, movement)"
         },
         {
           "text": "Hover Mode removes all airborne accuracy penalties, reduces combatant accuracy (similar to Amplified's effects), and grants complete aerial movement at a speed of 5.5 meters per second.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (Hover Mode, movement)"
         },
         {
           "text": "Hover Mode starts at 3 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (every hit restores 0.3 s, at 15 hits per second the timer stays full; known-inaccuracies W2)"
         },
         {
           "text": "Each hit restores 0.3 seconds to the timer.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (see Hover Mode timer above)"
         },
         {
           "text": "Timer cannot exceed 3 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (see Hover Mode timer above)"
         },
         {
           "text": "While airborne, hits increase damage by 10% [2%] per hit, up to a maximum of 100% [20%].",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Cooldown of 0.6 seconds between damage increases.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield for 6 seconds (9 seconds with Echo of Persistance).",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "1 second cooldown when activated by hits.",
-          "state": "open"
+          "state": "rule"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-submachine-gun-the-manticore-airborne",
+        "rowNote": "67 shots to fill (37 + reload + 30 + reload) > jump > 67 airborne shots",
+        "basis": "magazine",
+        "measured": 1218,
+        "model": 1600.9,
+        "deviation": 0.3143,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.3143333333333336,
+          "rowPlain": true
+        }
+      },
       "aegis": {
         "check": "checked",
         "rows": [
+          {
+            "row": "smg-the-manticore-average-hover-mode",
+            "assumptions": [
+              "average",
+              "Hover Mode"
+            ],
+            "measured": 4352.6,
+            "model": 4931.8,
+            "deviation": 0.1331
+          },
           {
             "row": "smg-the-manticore-average-hover-mode-peacekeepers",
             "assumptions": [
@@ -10674,8 +10920,8 @@
               "Peacekeepers"
             ],
             "measured": 7514.5,
-            "model": 4996.2,
-            "deviation": -0.3351
+            "model": 5677.8,
+            "deviation": -0.2444
           }
         ]
       },
@@ -11201,49 +11447,61 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 6868,
-          "s30": 20402,
-          "s60": 38279
+          "s10": 10138,
+          "s30": 30616,
+          "s60": 46863
         },
         "catalyst": {
-          "s10": 6868,
-          "s30": 20402,
-          "s60": 38279
+          "s10": 14369,
+          "s30": 39007,
+          "s60": 46863
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Everything on top of the hits ×0.97 against the Quantum row."
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×1.19 against the Quantum row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "strike-count",
+          "share": 0.1832
+        },
+        {
+          "id": "strike",
+          "share": 0.1832
+        }
+      ],
       "sentences": [
         {
           "text": "• Increases Rate of Fire by 25%|40% after 13|26 shots.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• Summons a Lightning Strike after 10 hits and grants x1 Bolt Charge.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 1 Stability",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (stability)"
         },
         {
           "text": "• 10% decreased Accuracy Cone Growth",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling)"
         },
         {
           "text": "Reaches maximum strength after 10 shots, granting 10 Stability, ?% decreased Accuracy Cone Size, and 100% decreased Accuracy Cone Growth.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling)"
         },
         {
           "text": "Triggering a Lightning Strike refills 5 ammo from reserves.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Kills spawn a Lightning Strike, dealing 232 [65] damage in a 5 meter radius and grant x1 Bolt Charge.",
-          "state": "open"
+          "state": "rule"
         }
       ],
       "quantum": {
@@ -11251,8 +11509,8 @@
         "rowNote": "",
         "basis": "total",
         "measured": 39373,
-        "model": 38279,
-        "deviation": -0.0278,
+        "model": 46863,
+        "deviation": 0.1902,
         "circular": false,
         "catalystRow": false,
         "strippedRow": false,
@@ -11260,7 +11518,7 @@
           "shots": 1,
           "hitsPerShot": 1,
           "damagePerHit": 1,
-          "mechanic": 0.9722144616869428,
+          "mechanic": 1.1902318847941482,
           "rowPlain": false
         }
       },
@@ -11273,8 +11531,8 @@
               "assumes only one reload post-nerf"
             ],
             "measured": 101659,
-            "model": 90155.1,
-            "deviation": -0.1132
+            "model": 110372.2,
+            "deviation": 0.0857
           },
           {
             "row": "machine-gun-thunderlord-average-with-lightning-strikes-excludes-bolt-charge",
@@ -11284,8 +11542,8 @@
               "excludes Bolt Charge"
             ],
             "measured": 14444.7,
-            "model": 12827,
-            "deviation": -0.112
+            "model": 15611,
+            "deviation": 0.0807
           }
         ]
       },
@@ -11294,7 +11552,7 @@
     {
       "id": "ticuu-s-divination",
       "name": "Ticuu's Divination",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -11316,43 +11574,49 @@
       "sentences": [
         {
           "text": "Drawing from the hip marks up to 3 enemies near the reticle.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Releasing the trigger fires lock-on arrows that apply 'Sacred Flame' to each marked target for [10] [5] seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (the mark only arms the death explosion; kills end the phase, ADR 0015)"
         },
         {
           "text": "Enemies marked by Sacred Flame explode on death, dealing 295 [137] damage in a 5.5 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Sacred Flame explosions are reduced by 50% damage at the edge of their radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Precision Hits that are fired within the Perfect Draw window increase this explosion's damage by 100%.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Triggering Sacred Flame explosions grants one stack of 'Causality Quiver' for 5.5 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 6 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Causality Quiver increases the impact damage of your arrows (not the explosion) at 1|2|3|4|5|6 stacks:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• PvE: 16%|31%|49%|67.5%|87%|87%",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• PvP: 3.6%|11%|12%|16%|23%|23%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "PvP only"
         }
       ],
       "quantum": {
@@ -11398,57 +11662,72 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 5123,
-          "s30": 15369,
-          "s60": 30738
+          "s10": 5544,
+          "s30": 17752,
+          "s60": 36064
         },
         "catalyst": {
-          "s10": 5123,
-          "s30": 15369,
-          "s60": 30738
+          "s10": 7002.7,
+          "s30": 22128,
+          "s60": 44852.9
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Everything on top of the hits ×0.83 against the Quantum row."
+        "class": "counting",
+        "why": "Hits per shot ×0.50 against the Quantum row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "ignition-trigger",
+          "share": 0.4961
+        },
+        {
+          "id": "ignition-count",
+          "share": 0.4961
+        }
+      ],
       "sentences": [
         {
           "text": "Hip-Firing grants 50% reduced recoil, which is carried into ADS if the trigger stays held down after initially hip-firing.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (recoil)"
         },
         {
           "text": "Firing 20 rounds within 0.125 seconds of each begins 'Ignition Trigger'.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Ignition Trigger grants 100% [50%] increased damage and 3% reduced Accuracy Cone Growth size while active.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "In exchange, it drains 15 HP every 0.4 seconds until you reach Critical Health.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (self damage)"
         },
         {
           "text": "While Ignition Trigger is active, firing builds its meter at a rate of 20% per second.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (the buff lasts over the reload, see the Ignition Trigger rule)"
         },
         {
           "text": "Meter drains at a rate of 25% per second when not firing.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (the buff lasts over the reload, see the Ignition Trigger rule)"
         },
         {
           "text": "HP Drain is reduced by 50% (15 HP🠚7.5 HP) while not Aiming Down Sights.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (self damage)"
         },
         {
           "text": "While Ignition Trigger is active, kills grant 60 HP (Cure x1) and every 5th shot applies 15 [10] Scorch.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Ember of Ashes increases this to 20 for both PvE and PvP.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs Ember of Ashes on the catalyst Scorch (20 instead of 15 stacks)"
         }
       ],
       "quantum": {
@@ -11456,16 +11735,16 @@
         "rowNote": "Assumes normal 20 bullets + 80 buffed while burning; considers ignitions and approx. scorch",
         "basis": "magazine",
         "measured": 5680,
-        "model": 4700,
-        "deviation": -0.1725,
+        "model": 5040,
+        "deviation": -0.1127,
         "circular": false,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
-          "hitsPerShot": 1,
+          "hitsPerShot": 0.5,
           "damagePerHit": 1,
-          "mechanic": 0.8274647887323944,
+          "mechanic": 1.7746478873239437,
           "rowPlain": false
         }
       },
@@ -11479,8 +11758,8 @@
               "with ignition"
             ],
             "measured": 5718.4,
-            "model": 4700,
-            "deviation": -0.1781
+            "model": 5040,
+            "deviation": -0.1186
           }
         ]
       },
@@ -13537,7 +13816,7 @@
           }
         ]
       },
-      "planBlock": "W1"
+      "planBlock": null
     },
     {
       "id": "xenophage",

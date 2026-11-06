@@ -1,0 +1,201 @@
+{
+  "id": "revision-zero",
+  "kind": "exoticWeapon",
+  "name": "Revision Zero",
+  "texts": [
+    { "source": "clarity", "entry": "Hunter's Trace", "hash": "977df7eb" },
+    { "source": "clarity", "entry": "Hunter's Trace II", "hash": "977df7eb" },
+    { "source": "clarity", "entry": "Hunter's Trace III", "hash": "977df7eb" },
+    { "source": "clarity", "entry": "Hunter's Trace IV", "hash": "977df7eb" },
+    { "source": "clarity", "entry": "Pressurized Refit", "hash": "979ce706" },
+    { "source": "clarity", "entry": "Frenzy Refit", "hash": "9ee66614" },
+    { "source": "clarity", "entry": "4-Timer Refit", "hash": "fe7f7fee" },
+    { "source": "clarity", "entry": "Outlaw Refit", "hash": "5bf85083" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file revision-zero",
+      "retrieved": "2026-11-06",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-pulse-rifle-revision-zero-2-burst].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-pulse-rifle-revision-zero-2-burst].timing.magazine",
+  "totalShots": "$quantum[primaries-pulse-rifle-revision-zero-2-burst].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-pulse-rifle-revision-zero-2-burst].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "4-Timer Refit (Fourth Time's The Charm)",
+    "description": "Grants the Fourth Time's The Charm trait:\nScoring 4 Precision Hits within 2 seconds of each refills 2 Ammo into the Magazine from thin air.\nCannot load the Magazine beyond its base capacity. Precision Hit counter persists through stow.",
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[primaries-pulse-rifle-revision-zero-2-burst-mix-fttc].timing.fireRateRpm",
+      "magazine": "$quantum[primaries-pulse-rifle-revision-zero-2-burst-mix-fttc].timing.magazine",
+      "totalShots": "$quantum[primaries-pulse-rifle-revision-zero-2-burst-mix-fttc].timing.totalShots",
+      "reloadTimeMs": "$quantum[primaries-pulse-rifle-revision-zero-2-burst-mix-fttc].timing.reloadTimeMs"
+    }
+  },
+  "parts": {
+    "shot": {
+      "name": "Bullet, heavy 2-burst",
+      "damage": "$quantum[primaries-pulse-rifle-revision-zero-2-burst].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "sniper": {
+      "name": "Hunter's Trace sniper round",
+      "damage": "$clarity[Hunter's Trace](\"deal 1833\")",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "shockwave": {
+      "name": "Kinetic Shockwave",
+      "damage": "$clarity[Hunter's Trace](\"trigger a 322\")",
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "targeting-data-count",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "targeting-hits",
+          "op": "<",
+          "value": { "expr": "$clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") - 1", "note": "the counter stands at 0 to 10 for the precision hits before the 12th" }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "targeting-hits" }]
+    },
+    {
+      "id": "targeting-data-charge",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "targeting-hits",
+          "op": "=",
+          "value": { "expr": "$clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") - 1", "note": "the 12th precision hit" }
+        },
+        {
+          "type": "counter",
+          "id": "targeting-charges",
+          "op": "<",
+          "value": { "expr": "$clarity[Hunter's Trace](\"Maximum of 4 charges\") - 1", "note": "the counter stands at 0 to 2 for the charges before the 4th" }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "targeting-hits" },
+        { "type": "addStacks", "counter": "targeting-charges" }
+      ]
+    },
+    {
+      "id": "targeting-data-release",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        {
+          "type": "counter",
+          "id": "targeting-hits",
+          "op": "=",
+          "value": { "expr": "$clarity[Hunter's Trace](\"Scoring 12 Precision Hits\") - 1", "note": "the 12th precision hit" }
+        },
+        {
+          "type": "counter",
+          "id": "targeting-charges",
+          "op": "=",
+          "value": { "expr": "$clarity[Hunter's Trace](\"Maximum of 4 charges\") - 1", "note": "the 4th charge: all of them are converted" }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "targeting-hits" },
+        { "type": "resetCounter", "counter": "targeting-charges" },
+        {
+          "type": "spawn",
+          "part": "sniper",
+          "count": "$clarity[Hunter's Trace](\"Maximum of 4 charges\")",
+          "factor": {
+            "expr": "1 - (60 / $clarity[Hunter's Trace](\"fire at 72RPM\")) * ($quantum[primaries-pulse-rifle-revision-zero-2-burst].timing.fireRateRpm / 60) * $quantum[primaries-pulse-rifle-revision-zero-2-burst].precisionDamage / $clarity[Hunter's Trace](\"deal 1833\")",
+            "note": "the primary does not fire while reload is held: per sniper round (60 / 72 s) it loses its bullets of that time (rpm / 60 per second, precision damage each); the loss is taken from the sniper round"
+          },
+          "intervalMs": {
+            "expr": "60 / $clarity[Hunter's Trace](\"fire at 72RPM\") * 1000",
+            "note": "rounds per minute to the milliseconds between two rounds"
+          }
+        },
+        {
+          "type": "spawn",
+          "part": "shockwave",
+          "count": "$clarity[Hunter's Trace](\"Maximum of 4 charges\")",
+          "intervalMs": {
+            "expr": "60 / $clarity[Hunter's Trace](\"fire at 72RPM\") * 1000",
+            "note": "every sniper round trigger a shockwave"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file revision-zero",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Hold [Reload] to convert each fully charged stack of Targeting Data into a precision sniper round",
+        "note": "Derived: the best play converts all 4 charges at once (4 sniper rounds); the primary does not fire while reload is held (3.3 s for 4 rounds at 72 RPM): its lost damage is taken off the sniper rounds as a factor (the engine has no lock of the weapon)"
+      }
+    },
+    {
+      "id": "fourth-time-count",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "fttc-hits",
+          "op": "<",
+          "value": { "expr": "$clarity[4-Timer Refit](\"Scoring 4 Precision Hits\") - 1", "note": "the counter stands at 0 to 2 for the precision hits before the 4th" }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "fttc-hits" }]
+    },
+    {
+      "id": "fourth-time",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "fttc-hits",
+          "op": "=",
+          "value": { "expr": "$clarity[4-Timer Refit](\"Scoring 4 Precision Hits\") - 1", "note": "the 4th precision hit" }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "fttc-hits" },
+        { "type": "refill", "rounds": "$clarity[4-Timer Refit](\"refills 2 Ammo\")" }
+      ],
+      "source": {
+        "name": "Item file revision-zero",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "within 2 seconds of each",
+        "note": "Derived: 4 precision hits at 5.4 bullets per second take 0.7 s, inside the 2 s window"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "Deals 100% increased damage against Champions", "reason": "no adds (ADR 0015)" },
+    { "quote": "Grants linearly scaling benefits as the Magazine drops", "reason": "no damage against a boss (accuracy, stability)" },
+    { "quote": "12.5% to 25% decreased Accuracy Cone Size", "reason": "no damage against a boss (accuracy)" },
+    { "quote": "0 to 30?", "reason": "no damage against a boss (stability)" },
+    { "quote": "Weapon Kills grant 1 Stack of Feeding Frenzy", "reason": "no adds (ADR 0015)" },
+    { "quote": "Maximum of 5 Stacks", "reason": "no adds (ADR 0015)" },
+    { "quote": "Bonuses at 1|2|3|4|5 Stacks", "reason": "no adds (ADR 0015)" },
+    { "quote": "8|50|60|75|100 Reload Speed", "reason": "no adds (ADR 0015)" },
+    { "quote": "2.5%|10%|13%|16%|20% decreased Reload Animation Duration", "reason": "no adds (ADR 0015)" },
+    { "quote": "Precision Kills grant 70 Reload Speed", "reason": "no adds (ADR 0015)" }
+  ]
+}

@@ -39,5 +39,15 @@
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Grants 30 Range and 20 Stability", "reason": "no damage against a boss (range, stability)" },
+    { "quote": "Applying an Elemental Debuff grants the following benefits for 9 seconds", "reason": "needs reload stat (50 Reload Speed; the manifest has no Reload Speed stat of Sunshot; known-inaccuracies W2)" },
+    { "quote": "50 Reload Speed and 20 Aim Assist", "reason": "needs reload stat (the manifest has no Reload Speed stat of Sunshot; known-inaccuracies W2)" },
+    { "quote": "20% decreased ADS Movement Speed Penalty", "reason": "no damage against a boss (movement)" },
+    { "quote": "highlight targets for 1 second", "reason": "no damage against a boss (highlight)" },
+    { "quote": "the explosive portion deals 14% more damage", "reason": "carried by the Quantum row: 59 body and 102 precision hold impact and explosion (27.6 + 1.14 x 27.6; known-inaccuracies W2)" },
+    { "quote": "Kills cause targets to explode", "reason": "no adds (ADR 0015)" },
+    { "quote": "Explosion damage falls to 40%", "reason": "no adds (ADR 0015)" }
   ]
 }

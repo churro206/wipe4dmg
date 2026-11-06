@@ -312,9 +312,10 @@ describe("catalyst paragraphs against one boss without adds", () => {
   // Value after Q1 (15 of the 29 packages left; before Q1 about 30 of 137), a lock until A2 removes
   // the Aegis path: no reason is claimed for "15", the classification must not silently drop.
   // M2: Ex Diris and Grand Overture (both "none") became items: 13 of 27 packages.
-  it("lock until A2: at least 12 of the remaining packages keep a catalyst without effect (value after M2)", () => {
+  // W2: Deathbringer and The Manticore (both "none") became items: 10 of 22 packages.
+  it("lock until A2: at least 10 of the remaining packages keep a catalyst without effect (value after W2)", () => {
     const none = remainingPackages().filter((w) => w.catalyst?.effect === "none");
-    expect(none.length).toBeGreaterThanOrEqual(12);
+    expect(none.length).toBeGreaterThanOrEqual(10);
   });
 });
 

@@ -29,11 +29,72 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "causality-quiver",
+      "name": "Causality Quiver, 6 stacks",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Ticuu's Divination Catalyst](\"|87%|\") / 100",
+            "note": "percent to factor; the value of the 5th and 6th stack (the maximum), PvE"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Ticuu's Divination Catalyst](\"for 5.5 seconds\") * 1000",
+        "note": "seconds to milliseconds; marking the boss renews it"
+      }
+    }
+  ],
   "rules": [
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "causality-quiver-pre-stacked",
+      "on": { "on": "phaseStart" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "playstyle", "id": "pre-stacked" }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "causality-quiver", "stacks": "$clarity[Ticuu's Divination Catalyst](\"Maximum of 6 stacks\")" }],
+      "source": {
+        "name": "Item file ticuu-s-divination",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Causality Quiver increases the impact damage of your arrows (not the explosion)",
+        "note": "Derived: the stacks come from explosions, which need kills (ADR 0015); the playstyle \"pre-stacked\" builds the 6 stacks before the phase (kill buffs only built up), the buff of 87 % is the 6-stack value"
+      }
+    },
+    {
+      "id": "causality-quiver-refresh",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "buff", "id": "causality-quiver" }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "causality-quiver" }],
+      "source": {
+        "name": "Item file ticuu-s-divination",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Marking enemies with Sacred Flame refreshes the buff",
+        "note": "Derived: every shot marks the boss (hip draw), so the 5.5 s window renews with each shot"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "marks up to 3 enemies", "reason": "no adds (ADR 0015)" },
+    { "quote": "apply 'Sacred Flame' to each marked target", "reason": "no damage against a boss (the mark only arms the death explosion; kills end the phase, ADR 0015)" },
+    { "quote": "explode on death, dealing 295", "reason": "no adds (ADR 0015)" },
+    { "quote": "reduced by 50% damage at the edge", "reason": "no adds (ADR 0015)" },
+    { "quote": "Perfect Draw window increase this explosion's damage", "reason": "no adds (ADR 0015)" },
+    { "quote": "• PvP: 3.6%", "reason": "PvP only" }
   ]
 }

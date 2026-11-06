@@ -371,9 +371,9 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Outbreak Perfected, average per burst - no nanites, Appended Mag, up to Rewind end | fehlt | nicht modelliert: up to Rewind end |
 | Rapid-fire frame, burst | übersprungen | legendary frame (owner 2026-10-25) |
 | Red Death Reformed, burst, undamaged | im Modell | base row of the package |
-| Revision Zero, Hunter's Trace, Vorpal Weapon, includes shockwave | übersprungen | ohne burst - heavy 2-burst mode der Basiszeile |
+| Revision Zero, Hunter's Trace, Vorpal Weapon, includes shockwave | übersprungen | the item file uses another row |
 | Revision Zero, burst - heavy 2-burst mode, Vorpal Weapon | im Modell | base row of the package |
-| Revision Zero, burst - light 4-burst mode, Vorpal Weapon | übersprungen | ohne burst - heavy 2-burst mode der Basiszeile |
+| Revision Zero, burst - light 4-burst mode, Vorpal Weapon | übersprungen | the item file uses another row |
 | Vigilance Wing, burst | im Modell | base row of the package |
 | Aggressive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive frame, Impact Casing | übersprungen | legendary frame (owner 2026-10-25) |
@@ -431,7 +431,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Legend of Acrius, body | im Modell | base row of the package |
 | Lightweight frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Lord of Wolves, average, includes ignition/scorch | im Modell | base row of the package |
-| Lord of Wolves, average, includes ignition/scorch, Ember of Ashes | übersprungen | gleiche Annahmen wie die Basiszeile |
+| Lord of Wolves, average, includes ignition/scorch, Ember of Ashes | übersprungen | the item file uses another row |
 | Pinpoint slug frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Precision frame, body | übersprungen | legendary frame (owner 2026-10-25) |
 | Rapid-fire frame, body | übersprungen | legendary frame (owner 2026-10-25) |

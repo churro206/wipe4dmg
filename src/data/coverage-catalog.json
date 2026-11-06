@@ -297,7 +297,7 @@
         "name": "Revision Zero",
         "group": "Kinetic",
         "inGame": "Hunter's Trace IV: Deals 100% increased damage against Champions at all times.\nScoring 12 Precision Hits grants a charge of 'Targeting Data'. Maximum of 4 charges.\nHold [Reload] to convert each fully charged stack of Targeting Data into a precision sniper round. Sniper rounds fire at 72RPM, have perfect accuracy (even from the hip), and deal 1833 [474] precision damage.\nHits with sniper rounds trigger a 322 [20] damage Kinetic Shockwave that applies Exhaust for 5 seconds in a 6 meter radius.\nHunter's Trace II: Deals 100% increased damage against Champions at all times.\nScoring 12 Precision Hits grants a charge of 'Targeting Data'. Maximum of 4 charges.\nHold [Reload] to convert each fully charged stack of Targeting Data into a precision sniper round. Sniper rounds fire at 72RPM, have perfect accuracy (even from the hip), and deal 1833 [474] precision damage.\nHits with sniper rounds trigger a 322 [20] damage Kinetic Shockwave that applies Exhaust for 5 seconds in a 6 meter radius.\nHunter's Trace III: Deals 100% increased damage against Champions at all times.\nScoring 12 Precision Hits grants a charge of 'Targeting Data'. Maximum of 4 charges.\nHold [Reload] to convert each fully charged stack of Targeting Data into a precision sniper round. Sniper rounds fire at 72RPM, have perfect accuracy (even from the hip), and deal 1833 [474] precision damage.\nHits with sniper rounds trigger a 322 [20] damage Kinetic Shockwave that applies Exhaust for 5 seconds in a 6 meter radius.\nHunter's Trace: Deals 100% increased damage against Champions at all times.\nScoring 12 Precision Hits grants a charge of 'Targeting Data'. Maximum of 4 charges.\nHold [Reload] to convert each fully charged stack of Targeting Data into a precision sniper round. Sniper rounds fire at 72RPM, have perfect accuracy (even from the hip), and deal 1833 [474] precision damage.\nHits with sniper rounds trigger a 322 [20] damage Kinetic Shockwave that applies Exhaust for 5 seconds in a 6 meter radius.",
-        "inCalculator": "1 damage instance(s), 4 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 4 intrinsic effect(s).",
         "iconKey": "weapon:revision-zero",
         "status": "full"
       },
@@ -1057,7 +1057,7 @@
         "name": "Thunderlord",
         "group": "Power",
         "inGame": "Reign Havoc: Kills spawn a Lightning Strike, dealing 232 [65] damage in a 5 meter radius and grant x1 Bolt Charge.\nLightning Rounds: While holding down the trigger:\n• Increases Rate of Fire by 25%|40% after 13|26 shots.\n• Summons a Lightning Strike after 10 hits and grants x1 Bolt Charge.\nThis weapon's reticle experiences less shake from continuous fire, and inherents benefits similiar to that of Dynamic Sway Reduction:\nEach shot while holding down the trigger grants the following benefits:\n• 1 Stability\n• ?% decreased Accuracy Cone Size\n• 10% decreased Accuracy Cone Growth\nReaches maximum strength after 10 shots, granting 10 Stability, ?% decreased Accuracy Cone Size, and 100% decreased Accuracy Cone Growth.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:thunderlord",
         "status": "full"
       },
@@ -1236,7 +1236,7 @@
         "group": "Kinetic",
         "inGame": "While not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.\nWhile not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.",
         "iconHash": 1301843770,
-        "inCalculator": "+27% weapon damage\nrate of fire 120 → 140, reload ms 330 → 290",
+        "inCalculator": "Adds weapon damage.",
         "status": "full",
         "iconKey": "named:dead-mans-tale-catalyst"
       },
@@ -1731,7 +1731,7 @@
         "group": "Energy",
         "inGame": "Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration.\nHipfired shots apply 10 Scorch stacks (15 with Ember of Ashes) on hit with a 0.5 second cooldown.\nKills while ADS trigger a Solar explosion that applies 30 Scorch stacks (40 with Ember of Ashes) to enemies within an 8 meter radius.",
         "iconHash": 431220296,
-        "inCalculator": "reload ms 920 → 704",
+        "inCalculator": "reload ms 920 → 782",
         "status": "full",
         "iconKey": "named:lord-of-wolves-catalyst"
       },
@@ -1848,8 +1848,8 @@
         "group": "Energy",
         "inGame": "While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield for 6 seconds (9 seconds with Echo of Persistance).\n1 second cooldown when activated by hits.\nNo cooldown when activated by kills.",
         "iconHash": 2797384170,
-        "inCalculator": "No effect against one boss without adds",
-        "status": "leftOut",
+        "inCalculator": "Adds weapon damage.",
+        "status": "full",
         "iconKey": "named:the-manticore-catalyst"
       },
       {

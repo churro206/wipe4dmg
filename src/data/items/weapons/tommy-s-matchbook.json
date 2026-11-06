@@ -32,16 +32,112 @@
   "parts": {
     "shot": {
       "name": "Shot",
-      "damage": "$quantum[primaries-auto-rifle-tommy-s-matchbook].precisionDamage",
-      "precision": true,
+      "damage": "$quantum[primaries-auto-rifle-tommy-s-matchbook].bodyDamage",
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "ignition-trigger",
+      "name": "Ignition Trigger",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Ignition Trigger](\"grants 100%\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ]
+    }
+  ],
   "rules": [
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "ignition-trigger",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "ignition-rounds",
+          "op": "=",
+          "value": { "expr": "$clarity[Ignition Trigger](\"Firing 20 rounds\") + 0", "note": "the counter stands at 20 after the 20th round; the 21st shot is the first buffed (the hit of a shot takes the buffs its rules grant on the same shot)" }
+        }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "ignition-trigger" }],
+      "source": {
+        "name": "Item file tommy-s-matchbook",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Firing 20 rounds within 0.125 seconds of each",
+        "note": "Derived: the shots of continuous fire are 0.083 s apart (720 RPM), inside the 0.125 s; the buff lasts to the end of the phase, because holding the trigger builds 20 % heat per second and a reload drains only 25 % x 0.93 s"
+      }
+    },
+    {
+      "id": "ignition-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "ignition-rounds",
+          "op": "<",
+          "value": { "expr": "$clarity[Ignition Trigger](\"Firing 20 rounds\")", "note": "count up to the 20th round" }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "ignition-rounds" }]
+    },
+    {
+      "id": "scorch-count",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "buff", "id": "ignition-trigger" },
+        {
+          "type": "counter",
+          "id": "scorch-shots",
+          "op": "<",
+          "value": { "expr": "$clarity[Tommy's Matchbook Catalyst](\"every 5th shot\") - 1", "note": "the counter stands at 0 to 3 for the shots before the 5th" }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "scorch-shots" }]
+    },
+    {
+      "id": "scorch",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "buff", "id": "ignition-trigger" },
+        {
+          "type": "counter",
+          "id": "scorch-shots",
+          "op": "=",
+          "value": { "expr": "$clarity[Tommy's Matchbook Catalyst](\"every 5th shot\") - 1", "note": "the 5th shot" }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "scorch-shots" },
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Tommy's Matchbook Catalyst](\"applies 15\")"
+        }
+      ]
     }
+  ],
+  "notModelled": [
+    { "quote": "Hip-Firing grants 50% reduced recoil", "reason": "no damage against a boss (recoil)" },
+    { "quote": "In exchange, it drains 15 HP", "reason": "no damage against a boss (self damage)" },
+    { "quote": "builds its meter at a rate of 20% per second", "reason": "below 2 % (the buff lasts over the reload, see the Ignition Trigger rule)" },
+    { "quote": "Meter drains at a rate of 25% per second", "reason": "below 2 % (the buff lasts over the reload, see the Ignition Trigger rule)" },
+    { "quote": "HP Drain is reduced by 50%", "reason": "no damage against a boss (self damage)" },
+    { "quote": "kills grant 60 HP", "reason": "no damage against a boss (healing)" },
+    { "quote": "3% reduced Accuracy Cone Growth", "reason": "no damage against a boss (handling)" },
+    { "quote": "Ember of Ashes increases this to 20", "reason": "needs Ember of Ashes on the catalyst Scorch (20 instead of 15 stacks)" }
   ]
 }

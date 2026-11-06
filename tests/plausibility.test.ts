@@ -58,6 +58,75 @@ const fmt = (x: number) => x.toFixed(2);
 const isIgnition = (d: { id: string; keywordId?: string }) =>
   d.keywordId === "ignition" && d.id !== "burn";
 
+// W2 (Plan W): the ramp template and the weapons of the block, values by hand from the Clarity quotes
+describe("W2: ramp, stages and playstyles", () => {
+  const hits = (r: SimulationResult, id: string) =>
+    r.damageInstances.filter((d) => d.id === id).sort((a, b) => a.timeMs - b.timeMs);
+  const horseman = () => hits(run({ damagePhaseSeconds: 30 }, weaponById("the-fourth-horseman")), "shot");
+
+  it("The Fourth Horseman (stages 18|39|59|81 %): shots 2 to 4 of a magazine deal 1.18, 1.39, 1.59 times the first, the 5th shot of the next magazine starts again", () => {
+    const shots = horseman();
+    const first = shots[0].damage;
+    const ratios = shots.slice(0, 5).map((s) => s.damage / first);
+    note("Fourth Horseman: Schüsse 1 bis 5 / erster", ratios.map(fmt).join(" "), "1,00 1,18 1,39 1,59 1,00 (Magazin 4)");
+    expect(ratios[1]).toBeCloseTo(1.18, 3);
+    expect(ratios[2]).toBeCloseTo(1.39, 3);
+    expect(ratios[3]).toBeCloseTo(1.59, 3);
+    expect(ratios[4]).toBeCloseTo(1, 3);
+  });
+
+  it("The Fourth Horseman: the catalyst's 5th shot deals 1.81 times the first", () => {
+    const shots = hits(run({ catalyst: true, damagePhaseSeconds: 30 }, weaponById("the-fourth-horseman")), "shot");
+    note("Fourth Horseman Catalyst: Schuss 5 / Schuss 1", fmt(shots[4].damage / shots[0].damage), "1,81");
+    expect(shots[4].damage / shots[0].damage).toBeCloseTo(1.81, 3);
+  });
+
+  it("Coldheart (80 % linear over the beam energy): the first magazine deals about 1.63 times 101 bare hits, the last hit 1.8 times the first", () => {
+    const shots = hits(run({ damagePhaseSeconds: 30 }, weaponById("coldheart")), "shot").slice(0, 101);
+    const first = shots[0].damage;
+    const mean = shots.reduce((s, h) => s + h.damage, 0) / shots.length / first;
+    note("Coldheart: Mittel Magazin 1 / erster Treffer", fmt(mean), "1,63 (Quantum 4 781 / 2 929 = 1,632)");
+    expect(mean).toBeCloseTo(1.63, 1);
+    expect(shots[100].damage / first).toBeCloseTo(1.8, 1);
+  });
+
+  it("Thunderlord: a Lightning Strike of 232 after every 10 hits, the rate rises by 25 % after the 13th shot", () => {
+    const r = run({ damagePhaseSeconds: 60 }, weaponById("thunderlord"));
+    const shots = hits(r, "shot");
+    const strikes = hits(r, "strike");
+    note("Thunderlord: Strikes / Schüsse", `${strikes.length} / ${shots.length}`, "1 je 10 Treffer");
+    expect(strikes.length).toBe(Math.floor(shots.length / 10));
+    expect(strikes[0].damage).toBe(232);
+    const base = shots[1].timeMs - shots[0].timeMs;
+    const fast = shots[20].timeMs - shots[19].timeMs;
+    expect(base / fast).toBeCloseTo(1.25, 1);
+  });
+
+  it("Tommy's Matchbook: Ignition Trigger doubles the damage from the 21st round on", () => {
+    const shots = hits(run({ damagePhaseSeconds: 10 }, weaponById("tommy-s-matchbook")), "shot");
+    note("Matchbook: Schuss 20 / 21 / erster", `${fmt(shots[19].damage / shots[0].damage)} / ${fmt(shots[20].damage / shots[0].damage)}`, "1,00 / 2,00");
+    expect(shots[19].damage).toBeCloseTo(shots[0].damage, 3);
+    expect(shots[20].damage / shots[0].damage).toBeCloseTo(2, 3);
+  });
+
+  it("Ticuu's Divination: Causality Quiver at 6 stacks (+87 %) only with the catalyst, pre-stacked", () => {
+    const base = hits(run({ playstyle: "pre-stacked" }, weaponById("ticuu-s-divination")), "shot")[0].damage;
+    const withCat = hits(run({ playstyle: "pre-stacked", catalyst: true }, weaponById("ticuu-s-divination")), "shot")[0].damage;
+    note("Ticuu's: Catalyst vorher aufgebaut / ohne", fmt(withCat / base), "1,87");
+    expect(withCat / base).toBeCloseTo(1.87, 3);
+  });
+
+  it("Revision Zero: 12 precision hits make a charge, 4 charges are converted into 4 sniper rounds of 1833", () => {
+    const r = run({ damagePhaseSeconds: 30 }, weaponById("revision-zero"));
+    const snipers = hits(r, "sniper");
+    note("Revision Zero: Sniper-Runden in 30 s", String(snipers.length), "4 je 48 Treffer");
+    expect(snipers.length % 4).toBe(0);
+    expect(snipers.length).toBeGreaterThanOrEqual(4);
+    // 1833 x the factor for the primary's lost time (1 - 60/72 x 324/60 x 64/1833)
+    expect(snipers[0].damage).toBeCloseTo(1833 * (1 - ((60 / 72) * (324 / 60) * 64) / 1833), 0);
+  });
+});
+
 describe("Outbreak Perfected: nanites (ADR 0019, M2)", () => {
   it("nanites raise the weapon's damage over a long phase: 60 s deal clearly more per second than 10 s (x100 up to +300 %)", () => {
     const weapon = weaponById("outbreak-perfected");
@@ -581,8 +650,10 @@ describe("all weapons (2026-10-23)", () => {
   // scaffold item is Quantum's precision hit, `verified`; 97 weapons take it from Quantum.
   it("the hit of a scaffold item is Quantum's: 99 weapons (93 scaffold + 6 older items)", () => {
     const horseman = weaponById("the-fourth-horseman").damageInstances[0].damagePerTick;
-    note("Fourth Horseman Treffer", String(horseman.value), "676 (Quantum precisionDamage)");
-    expect(horseman.value).toBe(676);
+    // W2: the shotgun is played on the body (Quantum and Aegis count body hits: 612 x ramp 5.16 = 3 158
+    // against Quantum's magazine 3 125), so the hit is Quantum's bodyDamage 612, no longer precision 676
+    note("Fourth Horseman Treffer", String(horseman.value), "612 (Quantum bodyDamage)");
+    expect(horseman.value).toBe(612);
     expect(horseman.source.status).toBe("verified");
     const fromQuantum = weapons.filter((w) =>
       w.damageInstances[0].damagePerTick.source.name.startsWith("Quantum"),
@@ -593,8 +664,10 @@ describe("all weapons (2026-10-23)", () => {
     // 99 = 97 + Ex Diris and Grand Overture (M2, hand-made items with a Quantum hit)
     // 100 = 99 + Alethonym (M2, impact from Quantum's row)
     // 99 = 100 - Euphony (owner's exception 2026-11-06: Quantum's owner has no Euphony, damage from Aegis)
-    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "99 = 93 Gerüst + 6 ältere Items");
-    expect(fromQuantum).toBe(99);
+    // 104 = 99 + The Manticore, Deathbringer, Revision Zero, Dead Man's Tale, Lord of Wolves (W2, hand-made
+    // items with a Quantum hit; their packages took it from Aegis)
+    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "104 = 99 + 5 Items aus W2");
+    expect(fromQuantum).toBe(104);
   });
 
   // Fourth Horseman (Q1 gate): the cata row of Quantum gives the catalyst magazine of 5 (4 without).
@@ -675,7 +748,7 @@ describe("catalysts from texts (2026-10-23)", () => {
 
 describe("catalysts", () => {
   // Q1: Quantum's plain Gjallarhorn row has the catalyst magazine of 2 already, so the switch changes
-  // nothing; no M-block names Gjallarhorn (Q-Bilanz). Same for Thunderlord (M3).
+  // nothing; no M-block names Gjallarhorn (Q-Bilanz). Thunderlord is back on since W2 (Return Stroke).
   it.fails("Gjallarhorn: the catalyst's second rocket per magazine gives more damage in 30 s", () => {
     const off = run({}, weaponById("gjallarhorn")).totalDamage;
     const on = run({ catalyst: true }, weaponById("gjallarhorn")).totalDamage;
@@ -687,7 +760,7 @@ describe("catalysts", () => {
     expect(on / off).toBeGreaterThan(1.05);
   });
 
-  it.fails("Thunderlord: lightning strikes refill, so the catalyst empties the ammo sooner", () => {
+  it("Thunderlord: lightning strikes refill, so the catalyst empties the ammo sooner", () => {
     const shots = (catalyst: boolean) =>
       run(
         { catalyst, damagePhaseSeconds: 50 },

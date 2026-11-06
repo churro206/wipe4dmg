@@ -371,7 +371,6 @@ describe("src/data/weapon-status.json", () => {
       ["symmetry", "mechanic-missing"],
       ["forerunner", "mechanic-missing"],
       ["final-warning", "mechanic-missing"],
-      ["tommy-s-matchbook", "mechanic-missing"],
       ["wicked-implement", "mechanic-missing"],
       ["osteo-striga", "wrong-row"],
       ["outbreak-perfected", "wrong-row"],

@@ -38,16 +38,194 @@
   "parts": {
     "shot": {
       "name": "Shot",
-      "damage": "$quantum[specials-shotgun-the-fourth-horseman].precisionDamage",
-      "precision": true,
+      "damage": "$quantum[specials-shotgun-the-fourth-horseman].bodyDamage",
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "broadside-2",
+      "name": "Broadside, 2nd shot",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Broadside](\"by 18%\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "value": 1,
+        "source": {
+          "name": "Item file the-fourth-horseman",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "quote": "increases the damage of the 2|3|4|5th shot",
+          "note": "Derived: the buff belongs to its own shot only (the next shot has its own stage), so it lasts one millisecond"
+        }
+      }
+    },
+    {
+      "id": "broadside-3",
+      "name": "Broadside, 3rd shot",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Broadside](\"|39%|\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "value": 1,
+        "source": {
+          "name": "Item file the-fourth-horseman",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "quote": "increases the damage of the 2|3|4|5th shot",
+          "note": "Derived: the buff belongs to its own shot only, so it lasts one millisecond"
+        }
+      }
+    },
+    {
+      "id": "broadside-4",
+      "name": "Broadside, 4th shot",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Broadside](\"|59%|\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "value": 1,
+        "source": {
+          "name": "Item file the-fourth-horseman",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "quote": "increases the damage of the 2|3|4|5th shot",
+          "note": "Derived: the buff belongs to its own shot only, so it lasts one millisecond"
+        }
+      }
+    },
+    {
+      "id": "broadside-5",
+      "name": "Broadside, 5th shot",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Broadside](\"|81%\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "value": 1,
+        "source": {
+          "name": "Item file the-fourth-horseman",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "quote": "increases the damage of the 2|3|4|5th shot",
+          "note": "Derived: the buff belongs to its own shot only, so it lasts one millisecond"
+        }
+      }
+    }
+  ],
   "rules": [
+    {
+      "id": "broadside-2",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "broadside",
+          "op": "=",
+          "value": { "expr": "$clarity[Broadside](\"2|\") - 1", "note": "one shot before the 2nd" }
+        }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "broadside-2" }]
+    },
+    {
+      "id": "broadside-3",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "broadside",
+          "op": "=",
+          "value": { "expr": "$clarity[Broadside](\"|3|\") - 1", "note": "two shots before the 3rd" }
+        }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "broadside-3" }]
+    },
+    {
+      "id": "broadside-4",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "broadside",
+          "op": "=",
+          "value": { "expr": "$clarity[Broadside](\"|4|\") - 1", "note": "three shots before the 4th" }
+        }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "broadside-4" }]
+    },
+    {
+      "id": "broadside-5",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "broadside",
+          "op": "=",
+          "value": { "expr": "$clarity[Broadside](\"|5th\") - 1", "note": "four shots before the 5th (only with the catalyst magazine of 5)" }
+        }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "broadside-5" }]
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "broadside-count",
+      "on": { "on": "shot" },
+      "do": [{ "type": "addStacks", "counter": "broadside" }]
+    },
+    {
+      "id": "broadside-reset",
+      "on": { "on": "reload", "edge": "start" },
+      "do": [{ "type": "resetCounter", "counter": "broadside" }],
+      "source": {
+        "name": "Item file the-fourth-horseman",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "within 0.5 seconds of each other",
+        "note": "Derived: shots 0.2 s apart (300 RPM) stay within 0.5 s; a reload (0.43 s Quantum plus the animation, and the shots wait for it) ends the series"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "within 0.5 seconds", "reason": "carried by the counter, reset on the reload (shots at 300 RPM are 0.2 s apart)" },
+    { "quote": "25% increased pellet spread", "reason": "no damage against a boss (spread)" },
+    { "quote": "Fires at 300 RPM", "reason": "carried by the Quantum timing (fireRateRpm)" },
+    { "quote": "• Minors: 1 ammo", "reason": "no adds (ADR 0015)" },
+    { "quote": "• Elites: 0 ammo", "reason": "no adds (ADR 0015)" },
+    { "quote": "Grants 40 Reload Speed", "reason": "carried by the Quantum cata row (timing)" }
   ]
 }

@@ -1,0 +1,151 @@
+{
+  "id": "dead-man-s-tale",
+  "kind": "exoticWeapon",
+  "name": "Dead Man's Tale",
+  "texts": [
+    { "source": "clarity", "entry": "Cranial Spike II", "hash": "cef92594" },
+    { "source": "clarity", "entry": "Cranial Spike III", "hash": "cef92594" },
+    { "source": "clarity", "entry": "Cranial Spike IV", "hash": "cef92594" },
+    { "source": "clarity", "entry": "Dark-Forged Trigger", "hash": "2423ecf7" },
+    { "source": "clarity", "entry": "Dead Man's Tale Catalyst", "hash": "2423ecf7" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file dead-man-s-tale",
+      "retrieved": "2026-11-06",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-dead-man-s-tale-base].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-dead-man-s-tale-base].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-dead-man-s-tale-base].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-dead-man-s-tale-base].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Dark-Forged Trigger, Dead Man's Tale Catalyst",
+    "description": "While not Aiming Down Sights:\n• Increases RPM to 130\n• 50% Reduced Accuracy Cone Size\n• 50% Reduced Accuracy Cone Growth\n• 27% [15%] increased damage at x5 Cranial Spike\nAim Assist Cone will favor precision hits in the case of overlapping regions.",
+    "effect": "damage"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-scout-rifle-dead-man-s-tale-base].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "buffs": [
+    {
+      "id": "cranial-spike",
+      "name": "Cranial Spike",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Cranial Spike III](\"|17% increased damage\") / 100 / $clarity[Cranial Spike III](\"Maximum of 5 stacks\")",
+            "note": "percent to factor, per stack (perStack): the 5-stack value of the table in 5 equal steps (the table 3.5|7|10|14|17 differs by at most 0.5 points at 1 to 4 stacks)"
+          },
+          "damageSources": ["weapon"],
+          "perStack": true
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Cranial Spike III](\"for 4 seconds\") * 1000",
+        "note": "seconds to milliseconds; every precision hit renews it"
+      },
+      "maxStacks": "$clarity[Cranial Spike III](\"Maximum of 5 stacks\")"
+    },
+    {
+      "id": "dark-forged-trigger",
+      "name": "Dark-Forged Trigger, x5 Cranial Spike",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Dark-Forged Trigger](\"27% [\") / 100",
+            "note": "percent to factor (PvE value)"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Cranial Spike III](\"for 4 seconds\") * 1000",
+        "note": "as long as the 5 stacks last, renewed by every precision hit"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "cranial-spike-more",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [{ "type": "buff", "id": "cranial-spike" }],
+      "do": [{ "type": "addStacks", "buff": "cranial-spike" }],
+      "source": {
+        "name": "Item file dead-man-s-tale",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Cranial Spike's benefits at 1|2|3|4|5 stacks",
+        "note": "Derived: at 2 precision hits per second the 5 stacks are full after 2.5 s and stay (4 s duration)"
+      }
+    },
+    {
+      "id": "cranial-spike-start",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [{ "type": "buff", "id": "cranial-spike", "not": true }],
+      "do": [{ "type": "grantBuff", "buff": "cranial-spike" }]
+    },
+    {
+      "id": "dark-forged-trigger",
+      "on": { "on": "hit", "part": "shot", "precision": true },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "stacks",
+          "buff": "cranial-spike",
+          "op": ">=",
+          "value": "$clarity[Cranial Spike III](\"Maximum of 5 stacks\")"
+        }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "dark-forged-trigger" }]
+    },
+    {
+      "id": "dark-forged-trigger-rate",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": "$clarity[Dark-Forged Trigger](\"Increases RPM to 130\")"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file dead-man-s-tale",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "While not Aiming Down Sights",
+        "note": "Derived: the catalyst is played from the hip (the Quantum rows and the Aegis row \"hip-fire\" say so)"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "Rounds added each reload", "reason": "below 2 % (5 rounds on 14 shorten the downtime of a 0.33 s reload by about 1 %; known-inaccuracies W2)" },
+    { "quote": "Range", "reason": "no damage against a boss (range)" },
+    { "quote": "Stability", "reason": "no damage against a boss (stability)" },
+    { "quote": "Aim Assist", "reason": "no damage against a boss (aim assist)" },
+    { "quote": "decreased Reload Animation Duration", "reason": "below 2 % (reload of 0.33 s, see Rounds added each reload)" },
+    { "quote": "50% Reduced Accuracy Cone Size", "reason": "no damage against a boss (accuracy)" },
+    { "quote": "50% Reduced Accuracy Cone Growth", "reason": "no damage against a boss (accuracy)" }
+  ]
+}

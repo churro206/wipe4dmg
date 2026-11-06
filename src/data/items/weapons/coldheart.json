@@ -33,11 +33,66 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "beam-energy",
+      "name": "Beam Energy",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Cold Fusion](\"up to 80%\") / 100 / (($clarity[Cold Fusion](\"charged to 100%\") / $clarity[Cold Fusion](\"grants 40% energy\") + $clarity[Cold Fusion](\"a 0.267 second delay\")) * $quantum[specials-trace-rifle-coldheart].timing.fireRateRpm / 60)",
+            "note": "per stack (perStack): the damage grows linearly with the energy, so 80 % over the hits that fill it (100 / 40 % per second plus the 0.267 s delay, times the hits per second)"
+          },
+          "damageSources": ["weapon"],
+          "perStack": true
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Cold Fusion](\"for 1.05 seconds\") * 1000",
+        "note": "seconds to milliseconds; every hit renews it, a pause of that length (a reload) cools the weapon down"
+      },
+      "maxStacks": {
+        "expr": "($clarity[Cold Fusion](\"charged to 100%\") / $clarity[Cold Fusion](\"grants 40% energy\") + $clarity[Cold Fusion](\"a 0.267 second delay\")) * $quantum[specials-trace-rifle-coldheart].timing.fireRateRpm / 60",
+        "note": "hits until the energy is full: (100 % / 40 % per second + 0.267 s) x hits per second"
+      }
+    }
+  ],
   "rules": [
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "beam-energy-more",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "buff", "id": "beam-energy" }],
+      "do": [{ "type": "addStacks", "buff": "beam-energy" }]
+    },
+    {
+      "id": "beam-energy-start",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "buff", "id": "beam-energy", "not": true }],
+      "do": [{ "type": "grantBuff", "buff": "beam-energy" }],
+      "source": {
+        "name": "Item file coldheart",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Dealing damage grants 40% energy over 1 second",
+        "note": "Derived: a hit is one stack, the energy of continuous fire is linear in the hits; the 0.267 s delay is spread over the ramp"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "Collecting an Ionic Trace grants 50% energy", "reason": "below 2 % (Quantum 4 873 against 4 781 per magazine after a pickup, +1.9 %; known-inaccuracies W2)" },
+    { "quote": "Reaching maximum energy grants 100 Stability", "reason": "needs reload stat (100 Reload Speed at full energy shortens the reload; the manifest has no reload stat; known-inaccuracies W2)" },
+    { "quote": "Passively grants 20 Stability", "reason": "below 2 % (20 Reload Speed, about 0.06 s of 1.44 s per magazine; known-inaccuracies W2)" },
+    { "quote": "same stats that are set to 100", "reason": "no damage against a boss (explains the line above)" },
+    { "quote": "every 1.5 seconds while Amplified", "reason": "needs Amplified (a state of the player)" },
+    { "quote": "Activating Speed Booster", "reason": "needs Amplified (a state of the player)" },
+    { "quote": "At 100% Beam Energy, hits spawn an Ionic Trace", "reason": "below 2 % (see the Ionic Trace pickup above)" },
+    { "quote": "2 second cooldown between spawns", "reason": "below 2 % (see the Ionic Trace pickup above)" }
   ]
 }

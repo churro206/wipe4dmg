@@ -6,9 +6,9 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.98 over 41 rows
-- Absolute, information only: within ±3 % 24 of 41 (check set), 107 of 180 (all counted rows, mostly Eichung)
-- Rows: 182 scenarios (32 by hand, 150 generated); fitted 45; calibration set 95; check set 41; not counted 2; core cannot run 0
+- Rank (check set): Spearman 0.98 over 42 rows
+- Absolute, information only: within ±3 % 24 of 42 (check set), 104 of 180 (all counted rows, mostly Eichung)
+- Rows: 182 scenarios (32 by hand, 150 generated); fitted 42; calibration set 97; check set 42; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -26,6 +26,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | barrow-dyad-peacekeepers | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 1476 | −73.1 % |
 | dragon-s-breath | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 23629 | −20.8 % |
 | hierarchy-of-needs-two-rings | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
+| lord-of-wolves | shotgun-lord-of-wolves-average-includes-ignition-scorch | 22355 | 20520 | −8.2 % |
 | one-thousand-voices-ember | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 12274 | +6.3 % |
 | one-thousand-voices-catalyst | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 28709 | +6.3 % |
 | gen-auto-rifle-necrochasm | auto-rifle-necrochasm | 23 | 24 | +2.6 % |
@@ -82,8 +83,8 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | gjallarhorn | parts | 15149 | 15008 | −0.9 % |  | calibration |  |
 | hierarchy-of-needs-two-rings | scorch | 12062 | 12026 | −0.3 % |  | check |  |
 | hierarchy-of-needs-one-ring | scorch | 5495 | 5466 | −0.5 % |  | calibration |  |
-| lord-of-wolves | scorch | 22355 | 22327 | −0.1 % | fitted | check |  |
-| lord-of-wolves-ember | scorch | 17249 | 16745 | −2.9 % |  | calibration |  |
+| lord-of-wolves | scorch | 22355 | 20520 | −8.2 % |  | check |  |
+| lord-of-wolves-ember | scorch | 17249 | 15390 | −10.8 % |  | calibration |  |
 | one-thousand-voices | scorch | 9844 | 10594 | +7.6 % |  | calibration |  |
 | one-thousand-voices-ember | scorch | 11550 | 12274 | +6.3 % |  | check |  |
 | one-thousand-voices-catalyst | parts | 27000 | 28709 | +6.3 % |  | check |  |
@@ -159,9 +160,9 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 180 | 43 % | 44 | 41 | 0.98 | 3/3 | 1 of 4 |
+| Weapons | 417 | 180 | 43 % | 41 | 42 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
-| Heavy | 95 | 21 | 22 % | 4 | 17 | 0.92 | 2/3 | 5 of 5 |
+| Heavy | 95 | 21 | 22 % | 4 | 17 | 0.93 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
 | Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
@@ -228,6 +229,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | Weapons | scout-rifle-symmetry | 61 | 61 | +0.1 % |
 | Weapons | shotgun-conditional-finality-average-body-both-modes | 17047 | 16279 | −4.5 % |
+| Weapons | shotgun-lord-of-wolves-average-includes-ignition-scorch | 22355 | 20520 | −8.2 % |
 | Weapons | shotgun-the-chaperone | 748 | 749 | +0.2 % |
 | Weapons | sidearm-buried-bloodline | 322 | 322 | −0.0 % |
 | Weapons | sidearm-cryosthesia-77k | 87 | 88 | +0.9 % |
@@ -271,7 +273,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Heavy | sustained-service-of-luzaku | 110752 | 110930 | +0.2 % |
 | Heavy | sustained-sleeper-simulant | 87747 | 87765 | +0.0 % |
 | Heavy | sustained-the-colony | 49096 | 49165 | +0.1 % |
-| Heavy | sustained-thunderlord-assumes-only-one-reload-post-nerf | 101659 | 90155 | −11.3 % |
+| Heavy | sustained-thunderlord-assumes-only-one-reload-post-nerf | 101659 | 110372 | +8.6 % |
 | Heavy | sustained-tractor-cannon | 22149 | 21027 | −5.1 % |
 | Heavy | sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation | 128747 | 87484 | −32.0 % |
 | Heavy | sustained-xenophage | 67645 | 50338 | −25.6 % |

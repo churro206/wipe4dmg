@@ -151,14 +151,14 @@
       "600s buffed catalyst": 48561.76
     },
     "coldheart": {
-      "30s plain": 11281,
-      "30s buffed": 18992.69,
-      "30s plain catalyst": 11281,
-      "30s buffed catalyst": 18992.69,
-      "600s plain": 14645,
-      "600s buffed": 24656.32,
-      "600s plain catalyst": 14645,
-      "600s buffed catalyst": 24656.32
+      "30s plain": 18272.2,
+      "30s buffed": 30763.08,
+      "30s plain catalyst": 18272.2,
+      "30s buffed catalyst": 30763.08,
+      "600s plain": 23816.15,
+      "600s buffed": 40096.87,
+      "600s plain catalyst": 23816.15,
+      "600s buffed catalyst": 40096.87
     },
     "collective-obligation": {
       "30s plain": 6435,
@@ -217,14 +217,14 @@
       "600s buffed catalyst": 41544.51
     },
     "dead-man-s-tale": {
-      "30s plain": 10945.12,
-      "30s buffed": 18427.21,
-      "30s plain catalyst": 16296.91,
-      "30s buffed catalyst": 27437.48,
-      "600s plain": 216449.22,
-      "600s buffed": 364413.91,
-      "600s plain catalyst": 320186.33,
-      "600s buffed catalyst": 539065.71
+      "30s plain": 10641.3,
+      "30s buffed": 17915.69,
+      "30s plain catalyst": 14410.6,
+      "30s buffed catalyst": 24261.68,
+      "600s plain": 211953.84,
+      "600s buffed": 356845.49,
+      "600s plain catalyst": 290267.93,
+      "600s buffed catalyst": 488695.09
     },
     "dead-messenger": {
       "30s plain": 24894,
@@ -237,14 +237,14 @@
       "600s buffed catalyst": 46568.38
     },
     "deathbringer": {
-      "30s plain": 42900.87,
-      "30s buffed": 72227.9,
-      "30s plain catalyst": 42900.87,
-      "30s buffed catalyst": 72227.9,
-      "600s plain": 42900.87,
-      "600s buffed": 72227.9,
-      "600s plain catalyst": 42900.87,
-      "600s buffed catalyst": 72227.9
+      "30s plain": 42889,
+      "30s buffed": 72207.92,
+      "30s plain catalyst": 42889,
+      "30s buffed catalyst": 72207.92,
+      "600s plain": 42889,
+      "600s buffed": 72207.92,
+      "600s plain catalyst": 42889,
+      "600s buffed catalyst": 72207.92
     },
     "delicate-tomb": {
       "30s plain": 21370.44,
@@ -609,14 +609,14 @@
       "600s buffed catalyst": 307804.17
     },
     "lord-of-wolves": {
-      "30s plain": 35165.15,
-      "30s buffed": 59204.05,
-      "30s plain catalyst": 35165.15,
-      "30s buffed catalyst": 59204.05,
-      "600s plain": 35165.15,
-      "600s buffed": 59204.05,
-      "600s plain catalyst": 35165.15,
-      "600s buffed catalyst": 59204.05
+      "30s plain": 32319,
+      "30s buffed": 54412.27,
+      "30s plain catalyst": 34350.53,
+      "30s buffed catalyst": 57832.56,
+      "600s plain": 32319,
+      "600s buffed": 54412.27,
+      "600s plain catalyst": 34350.53,
+      "600s buffed catalyst": 57832.56
     },
     "lorentz-driver": {
       "30s plain": 22806,
@@ -815,14 +815,14 @@
       "600s buffed catalyst": 193967.56
     },
     "revision-zero": {
-      "30s plain": 9976.83,
-      "30s buffed": 16796.99,
-      "30s plain catalyst": 11423.85,
-      "30s buffed catalyst": 19233.19,
-      "600s plain": 199079.63,
-      "600s buffed": 335170.46,
-      "600s plain catalyst": 219566.4,
-      "600s buffed catalyst": 369661.99
+      "30s plain": 23321.75,
+      "30s buffed": 39264.5,
+      "30s plain catalyst": 30523.41,
+      "30s buffed catalyst": 51389.21,
+      "600s plain": 570615.3,
+      "600s buffed": 960687.93,
+      "600s plain catalyst": 665931.19,
+      "600s buffed catalyst": 1121161.75
     },
     "riskrunner": {
       "30s plain": 9212,
@@ -1001,14 +1001,14 @@
       "600s buffed": 35145.15
     },
     "the-fourth-horseman": {
-      "30s plain": 13520,
-      "30s buffed": 22762.27,
-      "30s plain catalyst": 13520,
-      "30s buffed catalyst": 22762.27,
-      "600s plain": 13520,
-      "600s buffed": 22762.27,
-      "600s plain catalyst": 13520,
-      "600s buffed catalyst": 22762.27
+      "30s plain": 15789.6,
+      "30s buffed": 26583.37,
+      "30s plain catalyst": 17062.56,
+      "30s buffed catalyst": 28726.53,
+      "600s plain": 15789.6,
+      "600s buffed": 26583.37,
+      "600s plain catalyst": 17062.56,
+      "600s buffed catalyst": 28726.53
     },
     "the-jade-rabbit": {
       "30s plain": 6111,
@@ -1041,14 +1041,14 @@
       "600s buffed catalyst": 377207.21
     },
     "the-manticore": {
-      "30s plain": 13659.07,
-      "30s buffed": 22996.42,
-      "30s plain catalyst": 13659.07,
-      "30s buffed catalyst": 22996.42,
-      "600s plain": 264927.38,
-      "600s buffed": 446031.73,
-      "600s plain catalyst": 264927.38,
-      "600s buffed catalyst": 446031.73
+      "30s plain": 17807.83,
+      "30s buffed": 29981.26,
+      "30s plain catalyst": 22969.83,
+      "30s buffed catalyst": 38672.01,
+      "600s plain": 365633.83,
+      "600s buffed": 615581.12,
+      "600s plain catalyst": 470207.83,
+      "600s buffed catalyst": 791641.9
     },
     "the-navigator": {
       "30s plain": 11252,
@@ -1107,14 +1107,14 @@
       "600s buffed catalyst": 358776.84
     },
     "thunderlord": {
-      "30s plain": 20402,
-      "30s buffed": 34348.81,
-      "30s plain catalyst": 20402,
-      "30s buffed catalyst": 34348.81,
-      "600s plain": 38279,
-      "600s buffed": 64446.52,
-      "600s plain catalyst": 38279,
-      "600s buffed catalyst": 64446.52
+      "30s plain": 30616,
+      "30s buffed": 51545.1,
+      "30s plain catalyst": 39007,
+      "30s buffed catalyst": 65672.19,
+      "600s plain": 46863,
+      "600s buffed": 78898.55,
+      "600s plain catalyst": 46863,
+      "600s buffed catalyst": 78898.55
     },
     "ticuu-s-divination": {
       "30s plain": 5434,
@@ -1127,14 +1127,14 @@
       "600s buffed catalyst": 179454.92
     },
     "tommy-s-matchbook": {
-      "30s plain": 15369,
-      "30s buffed": 25875.25,
-      "30s plain catalyst": 15369,
-      "30s buffed catalyst": 25875.25,
-      "600s plain": 304842,
-      "600s buffed": 513231.99,
-      "600s plain catalyst": 304842,
-      "600s buffed catalyst": 513231.99
+      "30s plain": 17752,
+      "30s buffed": 29887.27,
+      "30s plain catalyst": 22127.98,
+      "30s buffed catalyst": 37254.66,
+      "600s plain": 362656,
+      "600s buffed": 610567.64,
+      "600s plain catalyst": 456730.32,
+      "600s buffed catalyst": 768951.16
     },
     "touch-of-malice": {
       "30s plain": 12450.24,

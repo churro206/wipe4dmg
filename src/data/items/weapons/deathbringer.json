@@ -1,0 +1,47 @@
+{
+  "id": "deathbringer",
+  "kind": "exoticWeapon",
+  "name": "Deathbringer",
+  "texts": [
+    { "source": "clarity", "entry": "Dark Deliverance", "hash": "6f7f2887" },
+    { "source": "clarity", "entry": "Deathbringer Catalyst", "hash": "2cfa2914" },
+    { "source": "clarity", "entry": "Dark Descent", "hash": "004f4c52" }
+  ],
+  "quantumCheck": {
+    "row": "heavies-rocket-launcher-deathbringer-max-distance-damage",
+    "reason": "Aegis measures the orbs at maximum height (3 900); Quantum's matching row is \"max distance damage\" (3 899), not \"direct impact\" (2 576)."
+  },
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file deathbringer",
+      "retrieved": "2026-11-06",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-rocket-launcher-deathbringer-max-distance-damage].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-rocket-launcher-deathbringer-max-distance-damage].timing.magazine",
+  "totalShots": "$quantum[heavies-rocket-launcher-deathbringer-max-distance-damage].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-rocket-launcher-deathbringer-max-distance-damage].timing.reloadTimeMs",
+  "catalyst": { "name": "Dead Weight, Deathbringer Catalyst", "description": "The initial Orb Damage is increased by 63%, allowing maximum damage to be reached 1 second sooner.", "effect": "none" },
+  "parts": {
+    "shot": {
+      "name": "Orbs at maximum distance",
+      "damage": "$quantum[heavies-rocket-launcher-deathbringer-max-distance-damage].bodyDamage",
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ],
+  "notModelled": [
+    { "quote": "detonate it into 7 submunitions", "reason": "carried by the Quantum row (its 3 899 holds all seven orbs)" },
+    { "quote": "bonus damage after 3 seconds", "reason": "carried by the Quantum row \"max distance damage\" (3 899 against 2 576 at \"direct impact\"; the orbs are at the maximum)" },
+    { "quote": "increased by 63%", "reason": "no damage against a boss (the orbs of the max-distance row are at their maximum either way; the catalyst only gets there 1 s sooner)" }
+  ]
+}

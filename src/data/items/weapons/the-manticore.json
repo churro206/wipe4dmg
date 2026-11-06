@@ -1,0 +1,152 @@
+{
+  "id": "the-manticore",
+  "kind": "exoticWeapon",
+  "name": "The Manticore",
+  "texts": [
+    { "source": "clarity", "entry": "Soaring Fang", "hash": "49420a84" },
+    { "source": "clarity", "entry": "Swooping Talons", "hash": "edc92dd8" },
+    { "source": "clarity", "entry": "The Manticore Catalyst", "hash": "609df060" }
+  ],
+  "quantumCheck": {
+    "row": "primaries-submachine-gun-the-manticore-airborne",
+    "reason": "The weapon is played airborne (Hover Mode), the row says so; its magazine counts no ramp."
+  },
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file the-manticore",
+      "retrieved": "2026-11-06",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-submachine-gun-the-manticore-airborne].timing.magazine",
+  "totalShots": "$quantum[primaries-submachine-gun-the-manticore-airborne].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-submachine-gun-the-manticore-airborne].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Flying Monster, The Manticore Catalyst",
+    "description": "While airborne, any kill or 5 hits against an Elite, Miniboss, or Boss refills 12 ammo and grants a 15HP Void Overshield for 6 seconds (9 seconds with Echo of Persistance).\n1 second cooldown when activated by hits.\nNo cooldown when activated by kills.",
+    "effect": "damage"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-submachine-gun-the-manticore-airborne].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "buffs": [
+    {
+      "id": "swooping-talons",
+      "name": "Swooping Talons",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Swooping Talons](\"increase damage by 10%\") / 100",
+            "note": "percent to factor, per stack (perStack); one stack is one damage increase"
+          },
+          "damageSources": ["weapon"],
+          "perStack": true
+        }
+      ],
+      "maxStacks": {
+        "expr": "$clarity[Swooping Talons](\"up to a maximum of 100%\") / $clarity[Swooping Talons](\"increase damage by 10%\")",
+        "note": "100 % in steps of 10 %"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "swooping-talons-more",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "buff", "id": "swooping-talons" }],
+      "do": [
+        {
+          "type": "addStacks",
+          "buff": "swooping-talons",
+          "by": {
+            "expr": "60 / $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm / $clarity[Swooping Talons](\"Cooldown of 0.6 seconds\")",
+            "note": "one damage increase per 0.6 s: the share of a stack that one hit (60 / rpm seconds) brings"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swooping-talons-start",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "buff", "id": "swooping-talons", "not": true }],
+      "do": [{ "type": "grantBuff", "buff": "swooping-talons" }],
+      "source": {
+        "name": "Item file the-manticore",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "While airborne, hits increase damage",
+        "note": "Derived: the weapon is played airborne in Hover Mode (the Quantum row and the Aegis rows say so); the ramp starts at the first hit and holds through the reload, since Hover Mode renews with every hit"
+      }
+    },
+    {
+      "id": "flying-monster-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "refill-hits",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[The Manticore Catalyst](\"1 second cooldown\") * $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm / 60 - 1",
+            "note": "hits in the 1 s cooldown, minus one: the cooldown is longer than 5 hits at 900 RPM (0.33 s), so it sets the rate of the refill"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "refill-hits" }]
+    },
+    {
+      "id": "flying-monster",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "refill-hits",
+          "op": "=",
+          "value": {
+            "expr": "$clarity[The Manticore Catalyst](\"1 second cooldown\") * $quantum[primaries-submachine-gun-the-manticore-airborne].timing.fireRateRpm / 60 - 1",
+            "note": "the hit that ends the cooldown"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "refill-hits" },
+        { "type": "refill", "rounds": "$clarity[The Manticore Catalyst](\"refills 12 ammo\")" }
+      ],
+      "source": {
+        "name": "Item file the-manticore",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "5 hits against an Elite, Miniboss, or Boss",
+        "note": "Derived: 5 hits trigger the refill, but hits have a 1 s cooldown; at 15 hits per second the cooldown rules, so 12 rounds per second of fire"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "hits grant 1.5% charge", "reason": "no damage against a boss (Hover Mode charge, movement; the weapon is played airborne)" },
+    { "quote": "Kills grant 10% charge", "reason": "no adds (ADR 0015)" },
+    { "quote": "above 3% charge", "reason": "no damage against a boss (Hover Mode, movement)" },
+    { "quote": "Hover Mode is disengaged by Holding", "reason": "no damage against a boss (Hover Mode, movement)" },
+    { "quote": "5.5 meters per second", "reason": "no damage against a boss (Hover Mode, movement)" },
+    { "quote": "Hover Mode starts at 3 seconds", "reason": "below 2 % (every hit restores 0.3 s, at 15 hits per second the timer stays full; known-inaccuracies W2)" },
+    { "quote": "Each hit restores 0.3 seconds", "reason": "below 2 % (see Hover Mode timer above)" },
+    { "quote": "Timer cannot exceed 3 seconds", "reason": "below 2 % (see Hover Mode timer above)" },
+    { "quote": "grants a 15HP Void Overshield", "reason": "no damage against a boss (overshield)" }
+  ]
+}

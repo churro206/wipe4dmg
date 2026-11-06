@@ -1,0 +1,113 @@
+{
+  "id": "lord-of-wolves",
+  "kind": "exoticWeapon",
+  "name": "Lord of Wolves",
+  "texts": [
+    { "source": "clarity", "entry": "Release the Wolves", "hash": "447c6f2c" },
+    { "source": "clarity", "entry": "Lord of Wolves Catalyst", "hash": "65b3f7e7" },
+    { "source": "clarity", "entry": "Shrapnel Launcher", "hash": "81e01ff8" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file lord-of-wolves",
+      "retrieved": "2026-11-06",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.fireRateRpm",
+  "magazine": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.magazine",
+  "totalShots": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Fang and Claw, Lord of Wolves Catalyst",
+    "description": "Grants 20 Stability, 60 Reload Speed, and 15% decreased Reload Animation Duration.\nHipfired shots apply 10 Scorch stacks (15 with Ember of Ashes) on hit with a 0.5 second cooldown.\nKills while ADS trigger a Solar explosion that applies 30 Scorch stacks (40 with Ember of Ashes) to enemies within an 8 meter radius.",
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.fireRateRpm",
+      "magazine": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.magazine",
+      "totalShots": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.totalShots",
+      "reloadTimeMs": {
+        "expr": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.reloadTimeMs * (1 - $clarity[Lord of Wolves Catalyst](\"15% decreased Reload Animation Duration\") / 100)",
+        "note": "the decreased animation duration shortens the reload by 15 %"
+      }
+    }
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot, hip-fire",
+      "damage": "$quantum[specials-shotgun-lord-of-wolves-hip-fire-2].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "keywordBonuses": [
+    {
+      "keywordId": "ignition",
+      "factor": {
+        "expr": "1 + $clarity[Shrapnel Launcher](\"reduced to 24%\") / 100",
+        "note": "percent to factor; the value against Bosses"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "scorch-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "scorch-hits",
+          "op": "<",
+          "value": {
+            "expr": "$clarity[Lord of Wolves Catalyst](\"0.5 second cooldown\") * $quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.fireRateRpm / 60 - 1",
+            "note": "hits in the 0.5 s cooldown (at 833 RPM about 7), minus one"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "scorch-hits" }]
+    },
+    {
+      "id": "scorch",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "scorch-hits",
+          "op": ">=",
+          "value": {
+            "expr": "$clarity[Lord of Wolves Catalyst](\"0.5 second cooldown\") * $quantum[specials-shotgun-lord-of-wolves-hip-fire-2].timing.fireRateRpm / 60 - 1",
+            "note": "the hit that ends the cooldown"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "scorch-hits" },
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Lord of Wolves Catalyst](\"apply 10 Scorch\")"
+        }
+      ]
+    }
+  ],
+  "notModelled": [
+    { "quote": "fires in 5 round bursts", "reason": "carried by the playstyle: the item is played hip-fire (Quantum's hip-fire rows, the Aegis row \"hip-fire\")" },
+    { "quote": "60% increased Rate of Fire", "reason": "carried by the Quantum timing (hip-fire 833 against 640 RPM ADS; known-inaccuracies W2)" },
+    { "quote": "200% increased Accuracy Cone Size", "reason": "no damage against a boss (accuracy)" },
+    { "quote": "39% increased bodyshot damage", "reason": "carried by the Quantum row (hip-fire body 110 against ADS 98, precision 171 against 176: +10 % body, no precision bonus against bosses)" },
+    { "quote": "Bosses take 10% increased bodyshot damage", "reason": "carried by the Quantum row (body 110 against ADS 98, no precision bonus against bosses)" },
+    { "quote": "deal 53% increased damage", "reason": "carried by the next sentence (24 % against Bosses)" },
+    { "quote": "Grants 20 Stability, 60 Reload Speed", "reason": "needs reload stat (60 Reload Speed; the manifest has no reload stat; the 15 % animation reduction is modelled; known-inaccuracies W2)" },
+    { "quote": "Kills while ADS trigger a Solar explosion", "reason": "no adds (ADR 0015)" },
+    { "quote": "15 with Ember of Ashes", "reason": "needs Ember of Ashes on the catalyst Scorch" }
+  ]
+}
