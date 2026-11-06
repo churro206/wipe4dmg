@@ -2,6 +2,7 @@
 
 ## Unveröffentlicht
 
+- W1 Klasse 1 „Regel zu stark“ (Inhaber 2026-11-06): Alethonym, Le Monarque, Thorn, Quicksilver Storm, One Thousand Voices, Ex Diris und Fighting Lion gegen die Texte geprüft, keine falsche Zahl gefunden, kein Item geändert, Spielschaden unverändert. Befund und Quellenkonflikte (Thorn: Clarity stapelt, Aegis nicht) in `known-inaccuracies.md`.
 - W0 Abweichungen erklären (Inhaber 2026-11-06): Spielschaden unverändert (137 Waffen gegen HEAD, Schaden, Status, Modell und Abweichungen gleich). Neu in `weapon-status.json`: `cause` (genau eine Klasse je Waffe, `causeOf`), `quantum.factors` (Schüsse × Treffer × Schaden × Mechanik, `factorsOf`), `ruleShares` (Lauf ohne jede Regel), `circular`, `catalystRow`, `strippedRow`. Coverage-Seite: Spalte „Why off“ mit Grund im Tooltip, sortierbar; „vs Quantum“ zeigt „reads Quantum“ statt Grün bei 70 Waffen, die nur ihre Zeile lesen. Zusätzlich zur Liste aus Plan W die Klasse „No check“ für 20 Waffen ohne jeden Vergleich. Die W1-Liste steht in `docs/plans/current.md`.
 - Skill `abarbeiten` (Inhaber 2026-11-06): Grenze von 6 Items oder 40 Tool-Aufrufen gestrichen, sie stammte aus der Zeit der Worker-Agents. Ein freigegebener Block läuft bis zum Ende. Spielschaden unverändert.
 - Euphony auf Aegis (Inhaber 2026-11-06, Ausnahme zu ADR 0019): Quantums Autor besitzt die Waffe nicht. Salve 1140 → 1317,5, Threadling 405 → 295, 30 s 40 724 → 41 255, 600 s 45 968 → 46 534. Die Salve zählt mehr, die Threadlings weniger.

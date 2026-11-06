@@ -17,6 +17,17 @@ Jede Waffe hat eine Klasse in `src/data/weapon-status.json` (`cause`, Spalte „
 - **Quellenkonflikt, Probe im Spiel (Inhaber):** Vex Mythoclast (Quantum 113, Aegis 93,4 je Treffer), Sunshot (102 gegen 86,5), Sturm (109 gegen 114,5), Xenophage (Sustained −25,6 %), Dragon's Breath (Quantum +24,3 %, Aegis −20,8 %), Winterbite (Aegis +29,3 %); unter 5 %: Arbalest, Telesto, Necrochasm, Ruinous Effigy.
 - **Quantums Autor besitzt laut To-do nicht:** Edge of Action und Edge of Concurrence (Quantum und Aegis stimmen auf 0,3 %, kein Konflikt), Whirling Ovation (keine Quantum-Zeile, ohne Prüfung), Catalyst von One Thousand Voices (Modell mit und ohne Catalyst gleich +6 % über Aegis, also kein Fehler des Catalysts, W1).
 
+## W1 Klasse 1 „Regel zu stark“ (2026-11-06)
+
+Alle sieben Regeln gegen den Text geprüft: keine falsch übernommene Zahl, Dauer oder Bedingung, kein Item geändert. Die Klasse zeigt nur, dass Regel und Aegis verschieden zählen. Je Waffe:
+
+- **Alethonym** (+46 % gegen Aegis): Compendium belegt 79 × 6 Ticks, Explosion „up to 697“ auf dem aufgespießten Ziel (kein Abstand) und die 102 aus Quantum. Aegis rechnet 337 (= 102 × 3,31) und 237 (= 3 × 79); wie es 873 je Schuss zusammensetzt, ist nicht herleitbar. Offen, Probe im Spiel.
+- **Thorn** (+61 %): Clarity schreibt „Multiple instances of Corruption can be stacked“, die Regel stapelt. Aegis passt rechnerisch zu nicht stapelndem Poison (rund 12 Ticks à 30 je Magazin gegen 9 × 4 Ticks). Quellenkonflikt Clarity gegen Aegis, Probe im Spiel.
+- **Le Monarque** (+58 %): 70 × 6 = 420 steht im Text; „1,35 s“ passt nicht zu 6 Ticks im Abstand 0,25 s (Text-Widerspruch, unter 2 %). Aegis-Annahme unbekannt.
+- **Quicksilver Storm** (+15 %): 13 Treffer je Rakete, 3 Raketen je Magazin (51 Treffer), „removed on reload“; Raketenschaden aus Quantums Magazin abgeleitet (Kreis, daher 0 % gegen die Zeile). Aegis zählt vermutlich weniger Raketen.
+- **Ex Diris** (+6,5 %): Moth-Fenster „within ? seconds“ in Clarity unbekannt, die Regel zählt jeden zweiten Treffer mit 3 s Abklingzeit; Enrage springt nach dem 4. Treffer auf das Maximum (Rampe steht in `notModelled`, die Abweichung ist ihre Vereinfachung).
+- **One Thousand Voices** (+5 bis 7 % in allen neun Zeilen) und **Fighting Lion** (+2,6 %): Regeln wie im Text (9 Orte × 10 Scorch, 31,6 %; Volatile im Radius). Die Abweichung ist in allen Zeilen gleich groß und gehört der Annahme von Aegis (Treffer je Ort).
+
 ## Einordnung der Ausreißer (P0, 2026-11-06)
 
 Diese Einordnung entschuldigt keine Abweichung; sie sagt, was zu tun ist. Stand nach der Reparatur der Prüfung, der Spielschaden ist unverändert.
