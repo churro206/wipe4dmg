@@ -19,6 +19,32 @@ B3a → B3b → B4 (Format, drei Items) → P (Prüfstand ganzer Builds) → B6 
 
 **Änderung 2026-11-03 (Inhaber):** B6 endet nach B6.3. Es folgt Plan Q (`docs/plans/current.md`): Quantum und Clarity sind die einzige Quelle; ein Skript legt einmalig das Gerüst je Exotic an, die Mechanik schreiben Worker von Hand nach Vorlage. Aegis ist bis zur Gegenprobe nur Bericht. Neue Reihenfolge: Q → C → Gegenprobe (Prüfstand als Gate, Nachtrag der Waffen ohne Quantum) → B5. Entscheidung in ADR 0019 (Block Q0).
 
+**Änderung 2026-11-06 (Inhaber):** Reihenfolge wie im Rechner, siehe „Plan W“ und `docs/plans/current.md`. Breite nach Kategorie (B6 ff.) gilt wieder, auch für Abilities und Buffs.
+
+### Plan W: Woher die Abweichungen der Waffen kommen (2026-11-06)
+
+Befund aus `src/data/weapon-status.json` gegen Quantum: 74 Waffen exakt 0, 10 bis 2 %, 22 über 2 %, 31 ohne Vergleich. **Die 74 sind eine Kreisprüfung:** Das Modell liest Schaden und Schusszahl aus derselben Zeile (Ace of Spades 0 % bei 7 offenen Sätzen), das belegt nur die Zählung der Schüsse. Verdacht, ungeprüft: 10 Waffen vergleichen gegen eine `-cata`-Zeile (Arbalest, Duality, Hawkmoon, Legend of Acrius, Sleeper Simulant, Telesto, The Colony, The Prospector, Traveler's Chosen, Trinity Ghoul), Hawkmoon und Legend of Acrius nehmen auch ihren Schaden von dort, die Tabelle rechnet aber ohne Catalyst.
+
+W0 prüft je Waffe dreifach:
+
+1. **Dreiecksvergleich** (Grenze 2 %):
+
+| vs Quantum | vs Aegis | Ursache | Vorgehen |
+| --- | --- | --- | --- |
+| ok, nicht 0 | ok | stimmt | nichts |
+| exakt 0 | ok | Grundwerte stimmen | Mechanik über offene Sätze prüfen |
+| exakt 0 | daneben | Mechanik fehlt, oder Aegis nimmt etwas an | Annahmen der Zeile lesen, Rest als fehlende Mechanik |
+| daneben | ok | Quantum-Zeile hält das Modellierte nicht | passende Zeile per `quantumCheck` nennen |
+| daneben | daneben, gleiche Richtung | unser Fehler | korrigieren |
+| daneben | daneben, Quellen uneins | Quellenkonflikt | Probe im Spiel durch den Inhaber |
+
+2. **Zerlegung:** Gesamt = Schüsse × Treffer je Schuss × Schaden je Treffer × Mechanik; jeder Faktor einzeln gegen die Zeile (Trinity Ghoul: Faktor 3 bei den Treffern).
+3. **Regeln einzeln abschalten:** je Regel ein Lauf ohne sie (`bareWeaponRun` in `tests/lib/weaponStatusData.ts`); das zeigt den Anteil jeder Regel und findet zu starke (Gift von Thorn und Le Monarque).
+
+Ergebnis je Waffe genau eine Klasse: Zählung, Grundschaden, falsche Zeile oder Variante, Regel zu stark, Mechanik fehlt, Quellenkonflikt, nur Kreisprüfung, stimmt. Klassifikation als reine Funktion in `scripts/lib/weaponStatus.ts`, Felder in `WeaponStatusFile`, Spalte in `src/ui/weaponRanking.ts` und `CoveragePage.tsx`. Prüfung: Schadenswerte in der Statusdatei bleiben gleich; Trinity Ghoul = Zählung, Thorn = Regel zu stark, Divinity = falsche Zeile, Hawkmoon = Mechanik fehlt.
+
+**Waffen fertig heißt:** keine offenen Sätze mit ≥ 2 % Wirkung; jede Abweichung über 2 % behoben oder in `known-inaccuracies.md` begründet; keine Waffe nur auf Kreisprüfung ohne Hinweis. Catalysts sind eine eigene Stufe danach: Vorhandene Catalyst-Regeln bleiben, neue kommen erst dort.
+
 - Bauplan und Aktionsliste bleiben: jede Aktion bildet eine Mechanik ab, die es im Spiel gibt (`addResource` = Energie für Frage 13), das ist kein Vorrat.
 - **Breite vor Eichung:** Die Eichung stellt θ gegen eine feste Regelstrecke (Bauplan Abschnitt 12). Fehlen Mechaniken (Lament 3L und 4L gleich, Heirloom-Ladestufen −36/−59 %, Still Hunt Celestial −92 %), würde θ sie verdecken. Deshalb B6 und C vor B5.
 - **Kennzahl über alle Pläne:** Abdeckung je Gruppe (`docs/product.md`, Rangfolge-Gate: Anteil der Aegis-Zeilen im Modell). Sie misst den Fortschritt zu Abnahme 3; Delta-Paare (I11) und Rangfolge messen die Qualität. Jeder Abschluss nennt beide.

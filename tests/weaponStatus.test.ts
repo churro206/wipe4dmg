@@ -140,6 +140,11 @@ describe("blockWeaponProblems", () => {
     expect(check("M3: Alpha.", rows).problems).toHaveLength(1);
   });
 
+  it("checks W1 to W4 like M blocks, not the balance W5 that only decides on weapons", () => {
+    expect(check("W2: Alpha, Gamma. Gate: x.", [row("Alpha")]).problems).toHaveLength(1);
+    expect(check("W5: Alpha, Gamma. Gate: x.", [row("Alpha")]).problems).toEqual([]);
+  });
+
   it("is green for weapons within the limit and without open sentences", () => {
     const sentence = { text: "x", state: "rule" as const };
     expect(check("M3: Alpha, Beta. Gate: x.", [row("Alpha"), row("Beta", { sentences: [sentence] })]).problems).toEqual([]);
