@@ -8,7 +8,7 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 
 - [x] A1, Q0, Q1, M1, M2, S0, V1–V3 (`history-2026-11.md`; zu V4 dort „Setup und Plan V“), P0 (c8f26aa), Arbeitsweise (453538e). 33 Pakete bleiben: im W-Block oder W5. Euphony auf Aegis (Ausnahme des Inhabers, ADR 0019).
 
-- [x] W0 Abweichungen erklären: Ursachenklasse je Waffe, Spalte „Why off“, Kreisprüfung als „reads Quantum“, `-cata`-Zeilen geprüft, Rangliste (COMMIT).
+- [x] W0 Abweichungen erklären: Ursachenklasse je Waffe, Spalte „Why off“, Kreisprüfung als „reads Quantum“, `-cata`-Zeilen geprüft, Rangliste (bead4ee).
 - [ ] W1 Falsch Übernommenes korrigieren, Reihenfolge aus W0, je Ursachenklasse eine Sitzung. (1) Regel zu stark: Alethonym, Le Monarque, Thorn, Quicksilver Storm, One Thousand Voices, Ex Diris, Fighting Lion. (2) Zählung und Grundschaden: Trinity Ghoul, Legend of Acrius. (3) Zeile oder Variante: Heartshadow, The Lament, Grand Overture, Witherhoard, Malfeasance, Divinity, Outbreak Perfected, Osteo Striga, Deterministic Chaos. Gate: M-Gate, Abweichung der Klasse sinkt.
 - [ ] W2 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate, `/usage` vorher und nachher. Wiederherstellen: Thunderlord.
 - [ ] V4 „What changed“ auf der Seite. Gate: Test gegen einen Stand aus git.
