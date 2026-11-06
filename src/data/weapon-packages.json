@@ -11065,13 +11065,168 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "honed-shot",
+        "name": "Honed Edge x4",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file izanagi-s-burden",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 2480.77,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge; Clarity (Live-Clarity-Database, descriptions/clarity.json): Honed Edge; Clarity (Live-Clarity-Database, descriptions/clarity.json): Izanagi's Burden Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge].precisionDamage * (1 + $clarity[Honed Edge](\"291%\") / 100) / (1 + $clarity[Izanagi's Burden Catalyst](\"370%\") / 100) (Quantum measured Honed Edge x4 only with the catalyst: the damage without it is that row times the ratio of the critical bonuses (+291 % to +370 %, the catalyst adds 20 % to the whole)); $quantum[specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge].precisionDamage = 2982 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge); $clarity[Honed Edge](\"291%\") = 291 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Honed Edge); $clarity[Izanagi's Burden Catalyst](\"370%\") = 370 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Izanagi's Burden Catalyst)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file izanagi-s-burden",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file izanagi-s-burden",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "honed-shot-catalyst",
+        "name": "Honed Edge x4, catalyst",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file izanagi-s-burden",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 2982,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file izanagi-s-burden",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file izanagi-s-burden",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
       }
     ],
     "rules": [
       {
         "id": "shot",
         "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "plain" }],
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "honed-shot",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "honed-edge-x4" },
+          { "type": "hasItem", "id": "catalyst", "not": true }
+        ],
+        "do": [{ "type": "spawn", "part": "honed-shot" }]
+      },
+      {
+        "id": "honed-shot-catalyst",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "honed-edge-x4" },
+          { "type": "hasItem", "id": "catalyst" }
+        ],
+        "do": [{ "type": "spawn", "part": "honed-shot-catalyst" }]
+      },
+      {
+        "id": "honed-edge",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "playstyle", "id": "honed-edge-x4" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "ammoPerShot",
+              "value": {
+                "value": 4,
+                "source": {
+                  "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Honed Edge",
+                  "url": "https://www.d2clarity.com",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: the number in the quote",
+                  "quote": "consume up to 4 ammo"
+                }
+              }
+            }
+          },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reloadMs",
+              "value": {
+                "value": 3200,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.reloadTimeMs"
+                }
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file izanagi-s-burden",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: the first shot is honed before the phase (the Aegis assumption 'hone before rally'); every later one takes the held reload of the Quantum row (3.2 s, also without the catalyst: no other row)",
+          "quote": "Hold [Reload] to consume up to 4 ammo."
+        }
       }
     ],
     "intrinsics": [
@@ -11086,6 +11241,10 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
+    ],
+    "playstyles": [
+      { "id": "plain", "label": "Plain shots" },
+      { "id": "honed-edge-x4", "label": "Honed Edge x4" }
     ],
     "catalyst": {
       "name": "Peerless Edge, Izanagi's Burden Catalyst",

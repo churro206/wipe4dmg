@@ -530,6 +530,20 @@ export const StatModifier = z.discriminatedUnion("stat", [
     value: RuleValue,
     weaponTypes: z.array(WeaponType).min(1).optional(),
   }),
+  // A shot consumes this many rounds of the magazine (at most what it holds), e.g. Honed Edge
+  z.object({
+    type: z.literal("stat"),
+    stat: z.literal("ammoPerShot"),
+    value: RuleValue,
+    weaponTypes: z.array(WeaponType).min(1).optional(),
+  }),
+  // The reload takes this long instead of the weapon's (a held reload); rate and factors do not apply
+  z.object({
+    type: z.literal("stat"),
+    stat: z.literal("reloadMs"),
+    value: RuleValue,
+    weaponTypes: z.array(WeaponType).min(1).optional(),
+  }),
   // The policy takes, per shot, the hold with the most damage per second (Oathkeeper)
   z.object({
     type: z.literal("stat"),

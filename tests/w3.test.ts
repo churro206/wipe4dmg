@@ -75,6 +75,35 @@ describe("W3: conditional buffs and reload", () => {
     expect(withCat[6].timeMs).toBeLessThan(without[6].timeMs);
   });
 
+  it("Izanagi's Burden: Honed Edge x4 turns 20 rounds into 5 shots, each after the held reload (3.2 s)", () => {
+    const plain = run({ damagePhaseSeconds: 60 }, weaponById("izanagi-s-burden"));
+    const honed = run(
+      { playstyle: "honed-edge-x4", damagePhaseSeconds: 60 },
+      weaponById("izanagi-s-burden"),
+    );
+    expect(hits(plain, "shot").length).toBe(20);
+    const shots = hits(honed, "honed-shot");
+    expect(shots.length).toBe(5);
+    // interval of the weapon's rate plus the held reload of 3 200 ms
+    const rpm = plain.shots[1].timeMs - plain.shots[0].timeMs;
+    expect(shots[1].timeMs - shots[0].timeMs).toBeCloseTo(rpm + 3200, 0);
+    // a precision shot of ~2 500 against 659 of the plain shot (+291 % critical damage)
+    expect(shots[0].damage / hits(plain, "shot")[0].damage).toBeCloseTo(
+      (2982 * (1 + 2.91)) / (1 + 3.7) / 659,
+      1,
+    );
+  });
+
+  it("Izanagi's Burden catalyst: the honed shot deals 20 % more (Quantum row 2 982)", () => {
+    const honed = { playstyle: "honed-edge-x4", damagePhaseSeconds: 60 };
+    const without = hits(run(honed, weaponById("izanagi-s-burden")), "honed-shot");
+    const catalystRun = run({ ...honed, catalyst: true }, weaponById("izanagi-s-burden"));
+    const withCat = hits(catalystRun, "honed-shot-catalyst");
+    expect(withCat[0].damage / without[0].damage).toBeCloseTo((1 + 3.7) / (1 + 2.91), 3);
+    // the check against Quantum (row "cata, 4x Honed Edge"): 5 shots, total damage 14 910
+    expect(catalystRun.totalDamage).toBeCloseTo(14910, 0);
+  });
+
   it("The Last Word: with 4 stacks of Fan Fire the reload takes 0.8 / 0.9 times as long (the stored reload already holds 0.9)", () => {
     const shots = hits(run({ damagePhaseSeconds: 30 }, weaponById("the-last-word")), "shot");
     const interval = shots[1].timeMs - shots[0].timeMs;

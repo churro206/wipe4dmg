@@ -1,69 +1,9 @@
 {
-  "baseline": "9a01240",
+  "baseline": "9d43a40",
   "changes": [
     {
-      "id": "ace-of-spades",
-      "name": "Ace of Spades",
-      "kind": "status",
-      "from": "Partial",
-      "to": "Complete"
-    },
-    {
-      "id": "microcosm",
-      "name": "Microcosm",
-      "kind": "status",
-      "from": "Partial",
-      "to": "Complete"
-    },
-    {
-      "id": "monte-carlo",
-      "name": "Monte Carlo",
-      "kind": "status",
-      "from": "Partial",
-      "to": "Complete"
-    },
-    {
-      "id": "sleeper-simulant",
-      "name": "Sleeper Simulant",
-      "kind": "status",
-      "from": "Partial",
-      "to": "Complete"
-    },
-    {
-      "id": "sturm",
-      "name": "Sturm",
-      "kind": "status",
-      "from": "Partial",
-      "to": "Complete"
-    },
-    {
-      "id": "the-chaperone",
-      "name": "The Chaperone",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 6741,
-      "to": 9722
-    },
-    {
-      "id": "the-last-word",
-      "name": "The Last Word",
-      "kind": "damage",
-      "time": "s30",
-      "catalyst": false,
-      "from": 11264,
-      "to": 12144
-    },
-    {
-      "id": "the-last-word",
-      "name": "The Last Word",
-      "kind": "status",
-      "from": "Partial",
-      "to": "Complete"
-    },
-    {
-      "id": "xenophage",
-      "name": "Xenophage",
+      "id": "izanagi-s-burden",
+      "name": "Izanagi's Burden",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"

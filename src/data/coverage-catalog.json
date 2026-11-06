@@ -160,7 +160,7 @@
         "name": "Izanagi's Burden",
         "group": "Kinetic",
         "inGame": "Honed Edge: Hold [Reload] to consume up to 4 ammo. Gain one stack of 'Honed Edge' per ammo consumed to create a single shot with increased damage.\nDamage increase based on stacks of Honed Edge:\nHoned Edge x2:\n• 12% [20%] bodyshot damage\n• 79% [91%] critical damage\nHoned Edge x3:\n• 25% [45%] bodyshot damage\n• 131% [167%] critical damage\nHoned Edge x4:\n• 112% [165%] bodyshot damage\n• 291% [389%] critical damage",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:izanagi-s-burden",
         "status": "full"
       },

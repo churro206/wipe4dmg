@@ -423,11 +423,16 @@ export function simulate(
     events.push({
       timeMs: 0,
       group: PHASE_START_GROUP,
-      handle: (target, _, schedule) =>
-        fireRules({ on: "phaseStart", timeMs: 0 }, target, schedule),
+      handle: (target, _, schedule) => {
+        fireRules({ on: "phaseStart", timeMs: 0 }, target, schedule);
+        // The first shot is planned after the rules of the phase start, so it sees their stats
+        // (e.g. the rounds a shot consumes)
+        planNext(schedule, target);
+      },
     });
+  } else {
+    planNext((event) => events.push(event));
   }
-  planNext((event) => events.push(event));
   for (const cast of options.abilities ?? []) {
     if (hasRules) {
       events.push(

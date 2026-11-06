@@ -235,6 +235,10 @@ function describeStat(part: StatModifier): string {
       return `Fire rate ${integer.format(part.value.value ?? 0)} RPM`;
     case "chargeMs":
       return `Charge time ${integer.format(part.value.value ?? 0)} ms`;
+    case "ammoPerShot":
+      return `Each shot consumes ${integer.format(part.value.value ?? 1)} rounds of the magazine`;
+    case "reloadMs":
+      return `Reloading takes ${integer.format(part.value.value ?? 0)} ms`;
   }
 }
 

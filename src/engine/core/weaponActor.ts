@@ -44,14 +44,12 @@ export function createWeaponActor(input: ActorInput) {
     "fireRateRpm",
   );
   const magazine = requireValue(timing.magazine, "magazine");
-  const ammoShots =
+  // The rounds of the weapon in all (a shot may consume several, ammoPerShot) and the cap on shots
+  const totalShots =
     weapon.ammo === "primary"
       ? Number.POSITIVE_INFINITY
       : requireValue(timing.totalShots, "totalShots");
-  const totalShots = Math.min(
-    ammoShots,
-    input.totalShotsLimit ?? Number.POSITIVE_INFINITY,
-  );
+  const shotLimit = input.totalShotsLimit ?? Number.POSITIVE_INFINITY;
   const reloadTimeMs = requireValue(timing.reloadTimeMs, "reloadTimeMs");
   if (fireRateRpm <= 0) {
     throw new Error(`fireRateRpm must be positive, got ${fireRateRpm}`);
@@ -92,7 +90,18 @@ export function createWeaponActor(input: ActorInput) {
   // Reload time × factor of the strongest active reload modifier (ADR 0014); the weapon's
   // reload may already contain a factor (K1): only the part beyond it counts.
   const includedReloadFactor = weapon.reloadDurationIncluded?.value ?? 1;
+  const latestStat = (timeMs: number, stat: "reloadMs" | "ammoPerShot") => {
+    const found = statsAt(timeMs).flatMap((m) =>
+      m.stat === stat && appliesToWeaponType(m.weaponTypes, weapon.weaponType)
+        ? [requireValue(m.value, stat)]
+        : [],
+    );
+    return found[found.length - 1];
+  };
+  const ammoPerShotAt = (timeMs: number) => latestStat(timeMs, "ammoPerShot") ?? 1;
   const reloadMsAt = (timeMs: number) => {
+    const own = latestStat(timeMs, "reloadMs");
+    if (own !== undefined) return own;
     const factors = reloadFactorsAt(timeMs).filter((factor) => factor > 0);
     return (
       reloadTimeMs * Math.min(1, Math.min(1, ...factors) / includedReloadFactor)
@@ -175,14 +184,15 @@ export function createWeaponActor(input: ActorInput) {
   let index = 0;
   let shotMs = chargeTimeMs;
   let leftInMagazine = magazine;
+  let spent = 0; // rounds fired so far, against the rounds of the weapon in all
   let done = false;
 
   // The step that was planned last and the state before it, so that a refill can plan it anew
   // (generation, ADR 0018 B3b). A refill is reported at the time of its event, which is never before
   // the last shot that was handled: it falls between that shot and the planned one.
-  type State = { index: number; shotMs: number; left: number; done: boolean };
+  type State = { index: number; shotMs: number; left: number; spent: number; done: boolean };
   type Refill = { atMs: number; rounds?: number };
-  let before: State = { index, shotMs, left: leftInMagazine, done };
+  let before: State = { index, shotMs, left: leftInMagazine, spent, done };
   let refills: Refill[] = []; // reported since `before`
   const applyRefill = (r: Refill) => {
     leftInMagazine =
@@ -210,6 +220,7 @@ export function createWeaponActor(input: ActorInput) {
     index = before.index;
     shotMs = before.shotMs;
     leftInMagazine = before.left;
+    spent = before.spent;
     done = before.done;
     return plan();
   }
@@ -217,12 +228,12 @@ export function createWeaponActor(input: ActorInput) {
   /** The next shot, or a step without a shot once the ammo, the limit or the phase ends them. */
   function next(): ActorStep {
     refills = [];
-    before = { index, shotMs, left: leftInMagazine, done };
+    before = { index, shotMs, left: leftInMagazine, spent, done };
     return plan();
   }
 
   function plan(): ActorStep {
-    if (done || index >= totalShots) {
+    if (done || index >= shotLimit || spent >= totalShots) {
       done = true;
       return {};
     }
@@ -248,7 +259,9 @@ export function createWeaponActor(input: ActorInput) {
         if (refilled !== undefined) applyRefill(refilled);
       }
     }
-    leftInMagazine--;
+    const consumed = Math.min(ammoPerShotAt(shotMs), leftInMagazine, totalShots - spent);
+    leftInMagazine -= consumed;
+    spent += consumed;
     const hold = holdAt(shotMs);
     shotMs = afterBlockingWindows(shotMs + hold.holdMs, leftInMagazine === 0);
     const shotIndex = index++;

@@ -74,6 +74,8 @@ describe("rule types (I3)", () => {
       "rpm",
       "reload",
       "chargeMs",
+      "ammoPerShot",
+      "reloadMs",
       "drawHold",
     ]);
   });

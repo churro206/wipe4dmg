@@ -35,7 +35,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **699**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **686**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -88,7 +88,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **699**. D
 | Heir Apparent | `src/data/items/weapons/heir-apparent.json` | 8 | – |
 | Heirloom | `src/data/items/weapons/heirloom.json` | 11 | – |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | 19 | – |
-| Izanagi's Burden | `src/data/items/weapons/izanagi-s-burden.json` | 13 | – |
+| Izanagi's Burden | `src/data/items/weapons/izanagi-s-burden.json` | 0 | – |
 | Khvostov 7G-0X | `src/data/items/weapons/khvostov-7g-0x.json` | 0 | – |
 | Le Monarque | `src/data/items/weapons/le-monarque.json` | 0 | – |
 | Legend of Acrius | `src/data/items/weapons/legend-of-acrius.json` | 0 | – |

@@ -28,10 +28,29 @@
     "description": "Increases the damage bonus of Honed Edge x4 by 20%, granting the following values:\n• 155% [218%] increased bodyshot damage\n• 370% [487%] increased critical damage",
     "effect": "unknown"
   },
+  "playstyles": [
+    { "id": "plain", "label": "Plain shots" },
+    { "id": "honed-edge-x4", "label": "Honed Edge x4" }
+  ],
   "parts": {
     "shot": {
       "name": "Shot",
       "damage": "$quantum[specials-sniper-rifle-izanagi-s-burden].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "honed-shot": {
+      "name": "Honed Edge x4",
+      "damage": {
+        "expr": "$quantum[specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge].precisionDamage * (1 + $clarity[Honed Edge](\"291%\") / 100) / (1 + $clarity[Izanagi's Burden Catalyst](\"370%\") / 100)",
+        "note": "Quantum measured Honed Edge x4 only with the catalyst: the damage without it is that row times the ratio of the critical bonuses (+291 % to +370 %, the catalyst adds 20 % to the whole)"
+      },
+      "precision": true,
+      "delivery": "impact"
+    },
+    "honed-shot-catalyst": {
+      "name": "Honed Edge x4, catalyst",
+      "damage": "$quantum[specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge].precisionDamage",
       "precision": true,
       "delivery": "impact"
     }
@@ -40,7 +59,68 @@
     {
       "id": "shot",
       "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "plain" }],
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "honed-shot",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "honed-edge-x4" },
+        { "type": "hasItem", "id": "catalyst", "not": true }
+      ],
+      "do": [{ "type": "spawn", "part": "honed-shot" }]
+    },
+    {
+      "id": "honed-shot-catalyst",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "honed-edge-x4" },
+        { "type": "hasItem", "id": "catalyst" }
+      ],
+      "do": [{ "type": "spawn", "part": "honed-shot-catalyst" }]
+    },
+    {
+      "id": "honed-edge",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "honed-edge-x4" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "ammoPerShot",
+            "value": "$clarity[Honed Edge](\"consume up to 4 ammo\")"
+          }
+        },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reloadMs",
+            "value": "$quantum[specials-sniper-rifle-izanagi-s-burden-cata-4x-honed-edge].timing.reloadTimeMs"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file izanagi-s-burden",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Hold [Reload] to consume up to 4 ammo.",
+        "note": "Derived: the first shot is honed before the phase (the Aegis assumption 'hone before rally'); every later one takes the held reload of the Quantum row (3.2 s, also without the catalyst: no other row)"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "Increases the damage bonus of Honed Edge x4 by 20%, granting the following values:", "reason": "carried by the part honed-shot-catalyst (the Quantum row holds the +20 %)" },
+    { "quote": "• 155% [218%] increased bodyshot damage", "reason": "not played: the shot is a precision shot" },
+    { "quote": "Honed Edge x2:", "reason": "not played: the optimal hold takes the whole magazine (x4)" },
+    { "quote": "• 12% [20%] bodyshot damage", "reason": "not played: the optimal hold takes the whole magazine (x4)" },
+    { "quote": "• 79% [91%] critical damage", "reason": "not played: the optimal hold takes the whole magazine (x4)" },
+    { "quote": "Honed Edge x3:", "reason": "not played: the optimal hold takes the whole magazine (x4)" },
+    { "quote": "• 25% [45%] bodyshot damage", "reason": "not played: the optimal hold takes the whole magazine (x4)" },
+    { "quote": "• 131% [167%] critical damage", "reason": "not played: the optimal hold takes the whole magazine (x4)" },
+    { "quote": "Honed Edge x4:", "reason": "carried by the part honed-shot" },
+    { "quote": "• 112% [165%] bodyshot damage", "reason": "not played: the shot is a precision shot" }
   ]
 }

@@ -5558,7 +5558,7 @@
     {
       "id": "izanagi-s-burden",
       "name": "Izanagi's Burden",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -5580,55 +5580,65 @@
       "sentences": [
         {
           "text": "Increases the damage bonus of Honed Edge x4 by 20%, granting the following values:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the part honed-shot-catalyst (the Quantum row holds the +20 %)"
         },
         {
           "text": "• 155% [218%] increased bodyshot damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the shot is a precision shot"
         },
         {
           "text": "• 370% [487%] increased critical damage",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hold [Reload] to consume up to 4 ammo.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Honed Edge x2:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the optimal hold takes the whole magazine (x4)"
         },
         {
           "text": "• 12% [20%] bodyshot damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the optimal hold takes the whole magazine (x4)"
         },
         {
           "text": "• 79% [91%] critical damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the optimal hold takes the whole magazine (x4)"
         },
         {
           "text": "Honed Edge x3:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the optimal hold takes the whole magazine (x4)"
         },
         {
           "text": "• 25% [45%] bodyshot damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the optimal hold takes the whole magazine (x4)"
         },
         {
           "text": "• 131% [167%] critical damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the optimal hold takes the whole magazine (x4)"
         },
         {
           "text": "Honed Edge x4:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the part honed-shot"
         },
         {
           "text": "• 112% [165%] bodyshot damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the shot is a precision shot"
         },
         {
           "text": "• 291% [389%] critical damage",
-          "state": "open"
+          "state": "rule"
         }
       ],
       "quantum": {
