@@ -18548,13 +18548,265 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "golden-shot",
+        "name": "Golden Gun shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file still-hunt",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 659,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-still-hunt",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file still-hunt",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file still-hunt",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
       }
     ],
     "rules": [
       {
         "id": "shot",
         "on": { "on": "shot" },
+        "if": [{ "type": "playstyle", "id": "plain" }],
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "golden-shot-3",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "cayde-s-retribution" },
+          {
+            "type": "counter",
+            "id": "golden",
+            "op": "=",
+            "value": {
+              "value": 2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Cayde's Retribution](\"for 3 shots\") - 1 (the 3rd shot); $clarity[Cayde's Retribution](\"for 3 shots\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "spawn",
+            "part": "golden-shot",
+            "factor": {
+              "value": 3.8,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: (1 + $clarity[Cayde's Retribution](\"100%\") / 100) * (1 + $clarity[Cayde's Retribution](\"90%\") / 100) (100 % more precision damage to bosses, times the 90 % of the 3rd shot); $clarity[Cayde's Retribution](\"100%\") = 100 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution); $clarity[Cayde's Retribution](\"90%\") = 90 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          },
+          { "type": "addStacks", "counter": "golden" }
+        ]
+      },
+      {
+        "id": "golden-shot-2",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "cayde-s-retribution" },
+          {
+            "type": "counter",
+            "id": "golden",
+            "op": "=",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Cayde's Retribution](\"for 3 shots\") - 2 (the 2nd shot); $clarity[Cayde's Retribution](\"for 3 shots\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "spawn",
+            "part": "golden-shot",
+            "factor": {
+              "value": 2.9,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: (1 + $clarity[Cayde's Retribution](\"100%\") / 100) * (1 + $clarity[Cayde's Retribution](\"45%\") / 100) (100 % more precision damage to bosses, times the 45 % of the 2nd shot); $clarity[Cayde's Retribution](\"100%\") = 100 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution); $clarity[Cayde's Retribution](\"45%\") = 45 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          },
+          { "type": "addStacks", "counter": "golden" }
+        ]
+      },
+      {
+        "id": "golden-shot-1",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "cayde-s-retribution" },
+          {
+            "type": "counter",
+            "id": "golden",
+            "op": "=",
+            "value": {
+              "value": 0,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Cayde's Retribution](\"for 3 shots\") - 3 (no Golden Gun shot fired yet); $clarity[Cayde's Retribution](\"for 3 shots\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": ">=",
+            "value": {
+              "value": 5.999,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 100 / $clarity[Cayde's Retribution](\"16.67%\") (a precision hit gives 16.67 % of the charge: 6 shots fill it); $clarity[Cayde's Retribution](\"16.67%\") = 16.67 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "spawn",
+            "part": "golden-shot",
+            "factor": {
+              "value": 2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Cayde's Retribution](\"100%\") / 100 (100 % more precision damage to bosses); $clarity[Cayde's Retribution](\"100%\") = 100 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          },
+          { "type": "addStacks", "counter": "golden" }
+        ],
+        "source": {
+          "name": "Item file still-hunt",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: all shots are precision shots, so the charge is full after 6 shots; the 3 Golden Gun shots follow at once, the cast takes the place of the reload (Aegis: 1 767 ms cast, 1 817 ms reload; a cast in the middle of a magazine costs its time too, not booked). Check against the Quantum total (20 shots, 20 940): 14 plain + 6 golden = 20 692, -1.2 %",
+          "quote": "Cayde's Retribution lasts 16 seconds and deals 100% increased precision damage to Bosses."
+        }
+      },
+      {
+        "id": "shot-cayde-s-retribution",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "cayde-s-retribution" },
+          {
+            "type": "counter",
+            "id": "golden",
+            "op": "=",
+            "value": {
+              "value": 0,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Cayde's Retribution](\"for 3 shots\") - 3 (no Golden Gun shot fired yet); $clarity[Cayde's Retribution](\"for 3 shots\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "<",
+            "value": {
+              "value": 5.999,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 100 / $clarity[Cayde's Retribution](\"16.67%\") (a precision hit gives 16.67 % of the charge: 6 shots fill it); $clarity[Cayde's Retribution](\"16.67%\") = 16.67 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "spawn", "part": "shot" },
+          { "type": "addStacks", "counter": "charge" }
+        ]
+      },
+      {
+        "id": "golden-reset",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "playstyle", "id": "cayde-s-retribution" },
+          {
+            "type": "counter",
+            "id": "golden",
+            "op": ">=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Cayde's Retribution",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "for 3 shots"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "golden" },
+          { "type": "resetCounter", "counter": "charge" },
+          { "type": "spawn", "part": "shot" },
+          { "type": "addStacks", "counter": "charge" }
+        ],
+        "source": {
+          "name": "Item file still-hunt",
+          "retrieved": "2026-11-06",
+          "status": "derived",
+          "note": "Derived: after the third Golden Gun shot the charge starts again; this shot is the first plain one of the next charge (last rule: the rules before it see the 3 as done)",
+          "quote": "Hold [Reload] at full charge to cast 'Cayde's Retribution' for 3 shots."
+        }
       }
     ],
     "intrinsics": [
@@ -18569,6 +18821,10 @@
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
+    ],
+    "playstyles": [
+      { "id": "cayde-s-retribution", "label": "Cayde's Retribution" },
+      { "id": "plain", "label": "Plain shots" }
     ],
     "catalyst": {
       "name": "Lucky Shot, Still Hunt Catalyst",

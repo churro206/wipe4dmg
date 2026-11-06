@@ -35,7 +35,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **686**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **676**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -118,7 +118,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **686**. D
 | Service of Luzaku | `src/data/items/weapons/service-of-luzaku.json` | 13 | – |
 | Slayer's Fang | `src/data/items/weapons/slayer-s-fang.json` | 0 | – |
 | Sleeper Simulant | `src/data/items/weapons/sleeper-simulant.json` | 0 | – |
-| Still Hunt | `src/data/items/weapons/still-hunt.json` | 10 | – |
+| Still Hunt | `src/data/items/weapons/still-hunt.json` | 0 | – |
 | Sturm | `src/data/items/weapons/sturm.json` | 0 | – |
 | Sunshot | `src/data/items/weapons/sunshot.json` | 0 | – |
 | Symmetry | `src/data/items/weapons/symmetry.json` | 15 | – |

@@ -26,9 +26,19 @@
     "description": "Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'.\nScoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer. Additional precision hits during this timer continue to refill the magazine from reserves.",
     "effect": "unknown"
   },
+  "playstyles": [
+    { "id": "cayde-s-retribution", "label": "Cayde's Retribution" },
+    { "id": "plain", "label": "Plain shots" }
+  ],
   "parts": {
     "shot": {
       "name": "Shot",
+      "damage": "$quantum[specials-sniper-rifle-still-hunt].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "golden-shot": {
+      "name": "Golden Gun shot",
       "damage": "$quantum[specials-sniper-rifle-still-hunt].precisionDamage",
       "precision": true,
       "delivery": "impact"
@@ -38,7 +48,136 @@
     {
       "id": "shot",
       "on": { "on": "shot" },
+      "if": [{ "type": "playstyle", "id": "plain" }],
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "golden-shot-3",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "cayde-s-retribution" },
+        { "type": "counter", "id": "golden", "op": "=", "value": { "expr": "$clarity[Cayde's Retribution](\"for 3 shots\") - 1", "note": "the 3rd shot" } }
+      ],
+      "do": [
+        {
+          "type": "spawn",
+          "part": "golden-shot",
+          "factor": {
+            "expr": "(1 + $clarity[Cayde's Retribution](\"100%\") / 100) * (1 + $clarity[Cayde's Retribution](\"90%\") / 100)",
+            "note": "100 % more precision damage to bosses, times the 90 % of the 3rd shot"
+          }
+        },
+        { "type": "addStacks", "counter": "golden" }
+      ]
+    },
+    {
+      "id": "golden-shot-2",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "cayde-s-retribution" },
+        { "type": "counter", "id": "golden", "op": "=", "value": { "expr": "$clarity[Cayde's Retribution](\"for 3 shots\") - 2", "note": "the 2nd shot" } }
+      ],
+      "do": [
+        {
+          "type": "spawn",
+          "part": "golden-shot",
+          "factor": {
+            "expr": "(1 + $clarity[Cayde's Retribution](\"100%\") / 100) * (1 + $clarity[Cayde's Retribution](\"45%\") / 100)",
+            "note": "100 % more precision damage to bosses, times the 45 % of the 2nd shot"
+          }
+        },
+        { "type": "addStacks", "counter": "golden" }
+      ]
+    },
+    {
+      "id": "golden-shot-1",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "cayde-s-retribution" },
+        { "type": "counter", "id": "golden", "op": "=", "value": { "expr": "$clarity[Cayde's Retribution](\"for 3 shots\") - 3", "note": "no Golden Gun shot fired yet" } },
+        {
+          "type": "counter",
+          "id": "charge",
+          "op": ">=",
+          "value": {
+            "expr": "100 / $clarity[Cayde's Retribution](\"16.67%\")",
+            "note": "a precision hit gives 16.67 % of the charge: 6 shots fill it"
+          }
+        }
+      ],
+      "do": [
+        {
+          "type": "spawn",
+          "part": "golden-shot",
+          "factor": {
+            "expr": "1 + $clarity[Cayde's Retribution](\"100%\") / 100",
+            "note": "100 % more precision damage to bosses"
+          }
+        },
+        { "type": "addStacks", "counter": "golden" }
+      ],
+      "source": {
+        "name": "Item file still-hunt",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Cayde's Retribution lasts 16 seconds and deals 100% increased precision damage to Bosses.",
+        "note": "Derived: all shots are precision shots, so the charge is full after 6 shots; the 3 Golden Gun shots follow at once, the cast takes the place of the reload (Aegis: 1 767 ms cast, 1 817 ms reload; a cast in the middle of a magazine costs its time too, not booked). Check against the Quantum total (20 shots, 20 940): 14 plain + 6 golden = 20 692, -1.2 %"
+      }
+    },
+    {
+      "id": "shot-cayde-s-retribution",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "cayde-s-retribution" },
+        { "type": "counter", "id": "golden", "op": "=", "value": { "expr": "$clarity[Cayde's Retribution](\"for 3 shots\") - 3", "note": "no Golden Gun shot fired yet" } },
+        {
+          "type": "counter",
+          "id": "charge",
+          "op": "<",
+          "value": {
+            "expr": "100 / $clarity[Cayde's Retribution](\"16.67%\")",
+            "note": "a precision hit gives 16.67 % of the charge: 6 shots fill it"
+          }
+        }
+      ],
+      "do": [
+        { "type": "spawn", "part": "shot" },
+        { "type": "addStacks", "counter": "charge" }
+      ]
+    },
+    {
+      "id": "golden-reset",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "playstyle", "id": "cayde-s-retribution" },
+        { "type": "counter", "id": "golden", "op": ">=", "value": "$clarity[Cayde's Retribution](\"for 3 shots\")" }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "golden" },
+        { "type": "resetCounter", "counter": "charge" },
+        { "type": "spawn", "part": "shot" },
+        { "type": "addStacks", "counter": "charge" }
+      ],
+      "source": {
+        "name": "Item file still-hunt",
+        "retrieved": "2026-11-06",
+        "status": "derived",
+        "quote": "Hold [Reload] at full charge to cast 'Cayde's Retribution' for 3 shots.",
+        "note": "Derived: after the third Golden Gun shot the charge starts again; this shot is the first plain one of the next charge (last rule: the rules before it see the 3 as done)"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "Precision Hits grant 16.67% progress, and Orbs of Power grant 8.34% progress.", "reason": "the precision hits carry the charge (rule golden-shot-1); orbs are not played (no source of orbs in the weapon's phase)" },
+    { "quote": "Hold [Reload] at full charge to cast 'Cayde's Retribution' for 3 shots.", "reason": "carried by the rules golden-shot-1 to golden-reset" },
+    { "quote": "Cayde's Retribution lasts 16 seconds and deals 100% increased precision damage to Bosses.", "reason": "carried by the factor of the golden shots; the 16 s are longer than the 3 shots (about 2 s)" },
+    { "quote": "Each Precision Hit with Cayde's Retribution grants 45%|90% increased damage for the 2nd|3rd shot.", "reason": "carried by the factors of golden-shot-2 and golden-shot-3" },
+    { "quote": "Wearing Celestial Nighthawk transforms Cayde's Retribution into a single high-powered shot that deals ~43% more damage than 3 successive precision shots and causes enemies to explode if defeated.", "reason": "exotic armor: belongs to the armor stage; the text does not fit the weapon (+28.6 % in Aegis)" },
+    { "quote": "• 18% increased Aim Assist Falloff Distance", "reason": "no damage effect on a boss" },
+    { "quote": "• 60% decreased Accuracy Cone Size", "reason": "no damage effect: all shots are precision shots" },
+    { "quote": "Generates 3 Ammo upon casting Cayde's Retribution.", "reason": "the Quantum total of 20 shots already holds the ammo of the casts (the 20 shots are the cap of the weapon)" },
+    { "quote": "Wearing Celestial Nighthawk generates 1 ammo.", "reason": "exotic armor: belongs to the armor stage" },
+    { "quote": "Scoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer.", "reason": "catalyst stage (Lucky Shot): the catalyst is not modelled yet" },
+    { "quote": "Finishing a reload within ? seconds of a Precision Kill grants 'Lucky Shot Ready'.", "reason": "catalyst stage (Lucky Shot): the time in the text is unknown (?)" }
   ]
 }

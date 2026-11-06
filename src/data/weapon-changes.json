@@ -1,9 +1,18 @@
 {
-  "baseline": "9d43a40",
+  "baseline": "3203ccf",
   "changes": [
     {
-      "id": "izanagi-s-burden",
-      "name": "Izanagi's Burden",
+      "id": "still-hunt",
+      "name": "Still Hunt",
+      "kind": "damage",
+      "time": "s30",
+      "catalyst": false,
+      "from": 11862,
+      "to": 19374.6
+    },
+    {
+      "id": "still-hunt",
+      "name": "Still Hunt",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"

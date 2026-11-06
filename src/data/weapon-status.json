@@ -9300,65 +9300,84 @@
     {
       "id": "still-hunt",
       "name": "Still Hunt",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
           "s10": 3954,
-          "s30": 11862,
-          "s60": 13180
+          "s30": 19374.6,
+          "s60": 20692.6
         },
         "catalyst": {
           "s10": 3954,
-          "s30": 11862,
-          "s60": 13180
+          "s30": 19374.6,
+          "s60": 20692.6
         }
       },
       "cause": {
         "class": "mechanic-missing",
-        "why": "Everything on top of the hits ×0.63 against the Quantum row."
+        "why": "Aegis -92.1 % with Cayde's Retribution, Celestial Nighthawk."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "golden-shot-3",
+          "share": 0.6529
+        },
+        {
+          "id": "golden-shot-2",
+          "share": 0.7452
+        },
+        {
+          "id": "golden-shot-1",
+          "share": 0.8089
+        }
+      ],
       "sentences": [
         {
           "text": "Precision Hits grant 16.67% progress, and Orbs of Power grant 8.34% progress.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hold [Reload] at full charge to cast 'Cayde's Retribution' for 3 shots.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Cayde's Retribution lasts 16 seconds and deals 100% increased precision damage to Bosses.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Each Precision Hit with Cayde's Retribution grants 45%|90% increased damage for the 2nd|3rd shot.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Wearing Celestial Nighthawk transforms Cayde's Retribution into a single high-powered shot that deals ~43% more damage than 3 successive precision shots and causes enemies to explode if defeated.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "exotic armor: belongs to the armor stage; the text does not fit the weapon (+28.6 % in Aegis)"
         },
         {
           "text": "• 18% increased Aim Assist Falloff Distance",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage effect on a boss"
         },
         {
           "text": "• 60% decreased Accuracy Cone Size",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage effect: all shots are precision shots"
         },
         {
           "text": "Generates 3 Ammo upon casting Cayde's Retribution.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the Quantum total of 20 shots already holds the ammo of the casts (the 20 shots are the cap of the weapon)"
         },
         {
           "text": "Wearing Celestial Nighthawk generates 1 ammo.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "exotic armor: belongs to the armor stage"
         },
         {
           "text": "Scoring a Precision Hit while you have Lucky Shot Ready refills the magazine by 1 from reserves and begins a 7 second timer.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "catalyst stage (Lucky Shot): the catalyst is not modelled yet"
         }
       ],
       "quantum": {
@@ -9366,16 +9385,16 @@
         "rowNote": "Magazine is reloaded on cast, but golden gun shots are from the magazine",
         "basis": "total",
         "measured": 20940,
-        "model": 13180,
-        "deviation": -0.3706,
+        "model": 20692.6,
+        "deviation": -0.0118,
         "circular": false,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
-          "hitsPerShot": 1,
+          "hitsPerShot": 0.7,
           "damagePerHit": 1,
-          "mechanic": 0.6294173829990449,
+          "mechanic": 1.411693273297858,
           "rowPlain": false
         }
       },

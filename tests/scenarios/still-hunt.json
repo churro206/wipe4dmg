@@ -5,7 +5,7 @@
     "wipe": 2177,
     "fullModifiers": 3.31,
     "system": "base",
-    "build": { "weaponId": "still-hunt" },
+    "build": { "weaponId": "still-hunt", "playstyle": "plain" },
     "playstyle": [],
     "shots": 1
   },

@@ -104,6 +104,25 @@ describe("W3: conditional buffs and reload", () => {
     expect(catalystRun.totalDamage).toBeCloseTo(14910, 0);
   });
 
+  it("Still Hunt, Cayde's Retribution: 6 shots charge, then 3 Golden Gun shots of 2, 2.9 and 3.8 times (20 shots: 14 plain + 6 golden)", () => {
+    // the first playstyle is the optimal one (Cayde's Retribution); the plain shot is the second
+    const plain = run({ playstyle: "plain", damagePhaseSeconds: 60 }, weaponById("still-hunt"));
+    const golden = run({ damagePhaseSeconds: 60 }, weaponById("still-hunt"));
+    const base = hits(plain, "shot")[0].damage;
+    expect(hits(plain, "shot").length).toBe(20);
+    const shots = hits(golden, "shot");
+    const gold = hits(golden, "golden-shot");
+    expect(shots.length).toBe(14);
+    expect(gold.length).toBe(6);
+    // order of the cycle: 6 plain, golden x3, 6 plain, golden x3, 2 plain
+    const all = [...shots, ...gold].sort((a, b) => a.timeMs - b.timeMs);
+    expect(all.slice(0, 9).map((s) => s.id)).toEqual([...Array(6).fill("shot"), ...Array(3).fill("golden-shot")]);
+    expect(gold.slice(0, 3).map((g) => g.damage / base)).toEqual([2, 2 * 1.45, 2 * 1.9].map((x) => expect.closeTo(x, 3)));
+    // the check against the Quantum total (20 940): -1.2 %
+    expect(golden.totalDamage / 20940 - 1).toBeGreaterThan(-0.02);
+    expect(golden.totalDamage / 20940 - 1).toBeLessThan(0.02);
+  });
+
   it("The Last Word: with 4 stacks of Fan Fire the reload takes 0.8 / 0.9 times as long (the stored reload already holds 0.9)", () => {
     const shots = hits(run({ damagePhaseSeconds: 30 }, weaponById("the-last-word")), "shot");
     const interval = shots[1].timeMs - shots[0].timeMs;

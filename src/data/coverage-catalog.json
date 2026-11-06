@@ -713,7 +713,7 @@
         "name": "Still Hunt",
         "group": "Energy",
         "inGame": "Cayde's Retribution: Counts as a \"Dealer's Choice\" origin trait weapon, but does not benefit from the trait itself.\nPrecision Hits and collecting Orbs of Power charge up a Golden Gun. Precision Hits grant 16.67% progress, and Orbs of Power grant 8.34% progress. Progress persists through death, and Rally Flags fully charge this perk.\nHold [Reload] at full charge to cast 'Cayde's Retribution' for 3 shots. Cayde's Retribution lasts 16 seconds and deals 100% increased precision damage to Bosses.\nEach Precision Hit with Cayde's Retribution grants 45%|90% increased damage for the 2nd|3rd shot.\nWearing Celestial Nighthawk transforms Cayde's Retribution into a single high-powered shot that deals ~43% more damage than 3 successive precision shots and causes enemies to explode if defeated.\nDoes not count as a super for related effects or buffs.\nSharpshooter: Possesses inherently increased weapon stats, which are boosted further during Cayde's Retribution.\nIncreased benefits while Cayde's Retribution is active:\n• 18% increased Aim Assist Falloff Distance\n• 60% decreased Accuracy Cone Size\n• ? Aim Assist, ?% decreased ADS Animation Duration, ?% Flinch Resistance",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:still-hunt",
         "status": "full"
       },
