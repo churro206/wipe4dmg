@@ -7,11 +7,10 @@ Ein Block pro Sitzung, in der Hauptsitzung. Keine Subagents, kein Review (außer
 
 1. **Vorschlagen:** Lies `docs/plans/current.md`. Nenne den nächsten offenen Block in zwei bis drei Sätzen (Umfang, Gate, Modell: Sonnet, bei „(Opus)“ Opus) und warte auf die Freigabe. Nennt der Inhaber den Block schon im Auftrag, ist er freigegeben.
 2. **Umsetzen:** Ein freigegebener Block läuft ohne Zwischenfragen. Test zuerst, dann der kleinste Code, der ihn grün macht; nichts, was der Block nicht verlangt.
-3. **Token sparen** (jeder Aufruf liest den ganzen Kontext neu):
-   - Erst Grep, dann Read mit offset/limit. Dateien über 200 Zeilen nie ganz, vom Bauplan nur den genannten Abschnitt. Keine Datei zweimal lesen, nach Edit nicht zur Kontrolle.
-   - Während der Arbeit nur den eigenen Test (`npm run test:quiet -- tests/<datei>`). Ganze Suite, `build:weapons`, `coverage`, Snapshots einmal vor dem Commit.
-   - `git diff` und `git show` nur mit `--stat`. JSON-Items mit Edit, nicht per Write neu.
-   - Höchstens 6 Items oder etwa 40 Tool-Aufrufe. Danach prüfen, committen, Rest in `current.md` festhalten und `/clear` vorschlagen; der Rest läuft ohne neue Freigabe in der nächsten Sitzung.
+3. **Kontext klein halten**, ohne Obergrenze für Aufrufe oder Items: Ein freigegebener Block läuft bis zum Ende.
+   - Erst Grep, dann Read mit offset/limit. Große Dateien in Teilen, vom Bauplan den genannten Abschnitt. Nach Edit nicht zur Kontrolle lesen.
+   - Während der Arbeit nur den eigenen Test (`npm run test:quiet -- tests/<datei>`). Ganze Suite, `coverage`, Snapshots vor dem Commit; `build:weapons`, sobald ein Test geänderte Items braucht.
+   - `git diff` und `git show` zuerst mit `--stat`. JSON-Items mit Edit, nicht per Write neu.
 4. **Prüfen** nach dem Skill `pruefen`: `npm run test:quiet`, `npx tsc -b`, `npm run lint`; bei W1–W4 danach `npm run check:block -- <ID>`. Ändert der Block die Oberfläche, prüfe im Browser (nur dort zeigen sich Layout-Fehler).
 5. **Stoppen und fragen:** bei Widerspruch zwischen Block, Code und `CLAUDE.md`, vor jedem Streichen eines Planteils, Lockern eines Gates und Merge, und beim Gate „Freigabe Inhaber“. Mit Empfehlung.
 6. **Abschluss:** Block abhaken (`- [x] … (<Commit>)`), `current.md` (höchstens 4 KB) so pflegen, dass der nächste Block ohne Chat-Verlauf starten kann, `docs/changelog.md` und `docs/roadmap.md` nachziehen. Nur die Dateien des Blocks stagen, committen, pushen.
