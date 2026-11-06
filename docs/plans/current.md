@@ -10,9 +10,13 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 
 - [x] S0, V1, V2, V3 (Commits, Entscheidungen: `history-2026-11.md`). Details zu V4: dort, Abschnitt „Setup und Plan V“.
 
-- [x] P0 Prüfung reparieren (Inhaber 2026-11-06, vor M3): Items nennen ihre Quantum-Vergleichszeile, Primaries vergleichen je Magazin, Aegis-Einheiten (Salve, ganzes Magazin) angeglichen, Ausreißer eingeordnet. Am Spielschaden ändert sich nichts. Gate: Tests, tsc, lint, Bericht.
+- [x] P0 Prüfung reparieren (Inhaber 2026-11-06; c8f26aa): Vergleichszeilen, Einheiten, Ausreißer eingeordnet (`known-inaccuracies`, Abschnitt P0). Spielschaden unverändert.
 
-**Danach weiter mit M3:** Der Inhaber tippt zuerst `/usage` (Wert in den Bericht, nachher nochmal). Skill `abarbeiten`, also `npm run blocks` im Hintergrund. Der Review von M3 prüft V1 bis V3 und P0 mit (Bereich in `.git/blocks-state.json`).
+**Nächste Sitzung, zuerst (Inhaber 2026-11-06), vor jeder Arbeit am Rechner:**
+1. Arbeitsweise zurückbauen: Orchestrator, Worker, Reviewer und `npm run blocks` verbrauchen zu viele Token. In der Commit-Historie das frühere System ohne Extra-Agents suchen (Block für Block in der Hauptsitzung, Abschluss mit `/clear`), vorschlagen und nach Freigabe hier, in `CLAUDE.md` und im Skill `abarbeiten` festhalten.
+2. Inhaber fragen: Korrekturblock vor M3 (Empfehlung: Trinity Ghoul, Gift von Thorn und Le Monarque, dann zu hohe Modellwerte) oder direkt M3?
+
+M3 wartet solange. Offen beim Inhaber: Probe Euphony : Arbalest im Spiel. Die Änderungen an `docs/sources/sheets/quantum/*.tsv` im Arbeitsbaum stammen nicht aus P0 und sind nicht committet.
 
 - [ ] M3 Ramp und Spielweisen: The Fourth Horseman, The Manticore, Tommy's Matchbook, Coldheart, Ticuu's Divination, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot. Gate: M-Gate, `/usage` vorher und nachher. Wiederherstellen: Thunderlord.
 - [ ] V4 „What changed“ auf der Seite. Gate: Test gegen einen Stand aus git.
