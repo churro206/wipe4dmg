@@ -6,9 +6,9 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.98 over 42 rows
-- Absolute, information only: within ±3 % 24 of 42 (check set), 102 of 180 (all counted rows, mostly Eichung)
-- Rows: 182 scenarios (32 by hand, 150 generated); fitted 40; calibration set 99; check set 42; not counted 2; core cannot run 0
+- Rank (check set): Spearman 0.98 over 44 rows
+- Absolute, information only: within ±3 % 26 of 44 (check set), 100 of 180 (all counted rows, mostly Eichung)
+- Rows: 182 scenarios (32 by hand, 150 generated); fitted 28; calibration set 108; check set 44; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -35,6 +35,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-bow-verglas-curve | bow-verglas-curve | 208 | 209 | +0.3 % |
 | gen-fusion-rifle-bastion | fusion-rifle-bastion | 6359 | 6384 | +0.4 % |
 | gen-fusion-rifle-cull-s-shadow | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
+| gen-fusion-rifle-delicate-tomb-ads | fusion-rifle-delicate-tomb-ads | 13399 | 13536 | +1.0 % |
 | gen-fusion-rifle-telesto | fusion-rifle-telesto | 7653 | 7938 | +3.7 % |
 | gen-fusion-rifle-vex-mythoclast | fusion-rifle-vex-mythoclast | 93 | 113 | +21.0 % |
 | gen-glaive-edge-of-action-projectile | glaive-edge-of-action-projectile | 482 | 483 | +0.2 % |
@@ -54,6 +55,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-scout-rifle-mida-multi-tool | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | gen-scout-rifle-symmetry | scout-rifle-symmetry | 61 | 61 | +0.1 % |
 | gen-shotgun-conditional-finality-average-body-both-modes | shotgun-conditional-finality-average-body-both-modes | 17047 | 16279 | −4.5 % |
+| gen-shotgun-duality-ads | shotgun-duality-ads | 1261 | 1263 | +0.2 % |
 | gen-shotgun-the-chaperone | shotgun-the-chaperone | 748 | 749 | +0.2 % |
 | gen-sidearm-buried-bloodline | sidearm-buried-bloodline | 322 | 322 | −0.0 % |
 | gen-sidearm-cryosthesia-77k | sidearm-cryosthesia-77k | 87 | 88 | +0.9 % |
@@ -89,17 +91,17 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | one-thousand-voices-ember | scorch | 11550 | 12274 | +6.3 % |  | check |  |
 | one-thousand-voices-catalyst | parts | 27000 | 28709 | +6.3 % |  | check |  |
 | one-thousand-voices-ember-catalyst | scorch | 30144 | 32069 | +6.4 % |  | calibration |  |
-| polaris-lance | scorch | 2543 | 2490 | −2.1 % | fitted | calibration |  |
-| polaris-lance-ember | scorch | 1906 | 1872 | −1.8 % |  | calibration |  |
-| salvation-s-grip | base | 796 | 795 | −0.1 % | fitted | calibration |  |
-| salvation-s-grip-charged | parts | 15157 | 9539 | −37.1 % | fitted | calibration | not counted: Aegis notes "insane number variance" |
-| salvation-s-grip-hail-the-storm | factor | 17114 | 9539 | −44.3 % |  | calibration | not counted: Aegis notes "insane number variance" |
+| polaris-lance | scorch | 2543 | 2854 | +12.3 % |  | calibration |  |
+| polaris-lance-ember | scorch | 1906 | 2115 | +11.0 % |  | calibration |  |
+| salvation-s-grip | base | 796 | 783 | −1.6 % |  | calibration |  |
+| salvation-s-grip-charged | parts | 15157 | 9396 | −38.0 % |  | calibration | not counted: Aegis notes "insane number variance" |
+| salvation-s-grip-hail-the-storm | factor | 17114 | 9396 | −45.1 % |  | calibration | not counted: Aegis notes "insane number variance" |
 | still-hunt | base | 658 | 659 | +0.2 % |  | calibration |  |
 | still-hunt-caydes-retribution | factor | 5811 | 659 | −88.7 % |  | calibration |  |
 | still-hunt-celestial-nighthawk | factor | 8350 | 659 | −92.1 % |  | calibration |  |
 | truth | base | 1798 | 1797 | −0.1 % |  | calibration |  |
-| truth-trueseeker | hitShare | 19629 | 19895 | +1.4 % | fitted | calibration |  |
-| truth-trueseeker-reapers-tithe | hitShare | 37891 | 37136 | −2.0 % |  | calibration |  |
+| truth-trueseeker | hitShare | 19629 | 20421 | +4.0 % |  | calibration |  |
+| truth-trueseeker-reapers-tithe | hitShare | 37891 | 38119 | +0.6 % |  | calibration |  |
 | whirling-ovation-no-charge | base | 1016 | 1015 | −0.1 % | fitted | calibration |  |
 | whirling-ovation-1-3-charge | factor | 3118 | 3116 | −0.1 % | fitted | check |  |
 | whirling-ovation-2-3-charge | factor | 4216 | 4212 | −0.1 % | fitted | calibration |  |
@@ -160,9 +162,9 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 180 | 43 % | 39 | 42 | 0.98 | 3/3 | 1 of 4 |
+| Weapons | 417 | 180 | 43 % | 28 | 44 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
-| Heavy | 95 | 21 | 22 % | 4 | 17 | 0.93 | 2/3 | 5 of 5 |
+| Heavy | 95 | 21 | 22 % | 0 | 21 | 0.94 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
 | Abilities | 239 | 95 | 40 % | 68 | 6 | 0.83 | 3/3 | 4 of 8 |
 
@@ -207,6 +209,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | bow-verglas-curve | 208 | 209 | +0.3 % |
 | Weapons | fusion-rifle-bastion | 6359 | 6384 | +0.4 % |
 | Weapons | fusion-rifle-cull-s-shadow | 4873 | 6575 | +34.9 % |
+| Weapons | fusion-rifle-delicate-tomb-ads | 13399 | 13536 | +1.0 % |
 | Weapons | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 28709 | +6.3 % |
 | Weapons | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 12274 | +6.3 % |
 | Weapons | fusion-rifle-telesto | 7653 | 7938 | +3.7 % |
@@ -229,6 +232,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | Weapons | scout-rifle-symmetry | 61 | 61 | +0.1 % |
 | Weapons | shotgun-conditional-finality-average-body-both-modes | 17047 | 16279 | −4.5 % |
+| Weapons | shotgun-duality-ads | 1261 | 1263 | +0.2 % |
 | Weapons | shotgun-lord-of-wolves-average-includes-ignition-scorch | 22355 | 20520 | −8.2 % |
 | Weapons | shotgun-the-chaperone | 748 | 749 | +0.2 % |
 | Weapons | sidearm-buried-bloodline | 322 | 322 | −0.0 % |
@@ -270,11 +274,15 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Heavy | sustained-one-thousand-voices-ember-of-ashes-catalyst-particle-reconstruction | 97543 | 103852 | +6.5 % |
 | Heavy | sustained-one-thousand-voices-ember-of-ashes-particle-reconstruction | 74750 | 79499 | +6.4 % |
 | Heavy | sustained-one-thousand-voices-particle-reconstruction | 63705 | 67895 | +6.6 % |
+| Heavy | sustained-salvation-s-grip-uncharged | 46806 | 46103 | −1.5 % |
 | Heavy | sustained-service-of-luzaku | 110752 | 110930 | +0.2 % |
 | Heavy | sustained-sleeper-simulant | 87747 | 87765 | +0.0 % |
 | Heavy | sustained-the-colony | 49096 | 49165 | +0.1 % |
+| Heavy | sustained-the-queenbreaker-rewind-rounds-combat-sights | 97261 | 97336 | +0.1 % |
+| Heavy | sustained-the-queenbreaker-rewind-rounds-marksman-sights | 74475 | 74486 | +0.0 % |
 | Heavy | sustained-thunderlord-assumes-only-one-reload-post-nerf | 101659 | 110372 | +8.6 % |
 | Heavy | sustained-tractor-cannon | 22149 | 21027 | −5.1 % |
+| Heavy | sustained-truth-prototype-truthseeker-argent-ordnance | 85454 | 97051 | +13.6 % |
 | Heavy | sustained-whisper-of-the-worm-whispered-breathing-sniper-s-meditation | 128747 | 87484 | −32.0 % |
 | Heavy | sustained-xenophage | 67645 | 50338 | −25.6 % |
 | Special | sustained-arbalest | 58835 | 56154 | −4.6 % |

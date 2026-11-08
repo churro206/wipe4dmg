@@ -2471,13 +2471,12 @@
       }
     },
     "fireRateRpm": {
-      "value": 269.663,
+      "value": 278.838,
       "source": {
-        "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance; Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "choir-of-one-projectile-mode-spaced",
-        "note": "Derived: 60 / ($clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds - ($aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs / 1000) / ($aegisSustained[choir-of-one-projectile-mode-spaced].shots - $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine)) (seconds per projectile to projectiles per minute: the time to empty without the reloads, over the intervals of ammo within the magazines (ADR 0013), times the 5 ammo of a projectile); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance); $aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds = 17.748 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs = 1017 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one)"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-auto-rifle-choir-of-one].timing.fireRateRpm / $clarity[Fanatical Lance](\"consumes 5 ammo\") (Quantum's rate is per ammo (time to empty without the reloads, over the intervals of ADR 0013); a projectile takes the 5 ammo of Clarity); $quantum[specials-auto-rifle-choir-of-one].timing.fireRateRpm = 1394.191 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
       }
     },
     "magazine": {
@@ -2492,21 +2491,19 @@
     "totalShots": {
       "value": 45,
       "source": {
-        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "choir-of-one-projectile-mode-spaced",
-        "note": "Derived: $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $clarity[Fanatical Lance](\"consumes 5 ammo\") (ammo of the row to projectiles, 5 ammo each (Clarity)); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-auto-rifle-choir-of-one].timing.totalShots / $clarity[Fanatical Lance](\"consumes 5 ammo\") (ammo of the row to projectiles, 5 ammo each (Clarity)); $quantum[specials-auto-rifle-choir-of-one].timing.totalShots = 225 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
       }
     },
     "reloadTimeMs": {
-      "value": 794.5,
+      "value": 947.857,
       "source": {
-        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "choir-of-one-projectile-mode-spaced",
-        "note": "Derived: $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs - 1000 * $clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds - ($aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs / 1000) / ($aegisSustained[choir-of-one-projectile-mode-spaced].shots - $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine) (Aegis reloads right after the last shot, the simulator waits one interval first, so one interval less); $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs = 1017 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance); $aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds = 17.748 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs = 1017 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $aegisSustained[choir-of-one-projectile-mode-spaced].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one)"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-auto-rifle-choir-of-one].timing.reloadTimeMs - ($clarity[Fanatical Lance](\"consumes 5 ammo\") - 1) * 60000 / $quantum[specials-auto-rifle-choir-of-one].timing.fireRateRpm (the simulator waits one projectile interval (5 ammo) before the reload; Quantum's reload leaves one ammo interval, so four more are taken off); $quantum[specials-auto-rifle-choir-of-one].timing.reloadTimeMs = 1120 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance); $quantum[specials-auto-rifle-choir-of-one].timing.fireRateRpm = 1394.191 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one)"
       }
     },
     "damageInstances": [
@@ -2523,14 +2520,13 @@
           }
         },
         "damagePerTick": {
-          "value": 692,
+          "value": 570,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row choir-of-one-projectile-mode-spaced",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "choir-of-one-projectile-mode-spaced",
-            "note": "base"
+            "status": "verified",
+            "note": "bodyDamage"
           }
         },
         "ticks": {
@@ -2553,7 +2549,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       },
       {
         "id": "shot-hitscan-mode",
@@ -2568,13 +2564,12 @@
           }
         },
         "damagePerTick": {
-          "value": 1305,
+          "value": 1310,
           "source": {
-            "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one-3; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "choir-of-one-hitscan-mode-precision",
-            "note": "Derived: $aegisSustained[choir-of-one-hitscan-mode-precision].base * $clarity[Fanatical Lance](\"consumes 5 ammo\") (one hitscan round per ammo; a shot of the item is the 5 ammo of a projectile); $aegisSustained[choir-of-one-hitscan-mode-precision].base = 261 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
+            "status": "derived",
+            "note": "Derived: $quantum[specials-auto-rifle-choir-of-one-3].precisionDamage * $clarity[Fanatical Lance](\"consumes 5 ammo\") (one hitscan round per ammo; a shot of the item is the 5 ammo of a projectile); $quantum[specials-auto-rifle-choir-of-one-3].precisionDamage = 262 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one-3); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
           }
         },
         "ticks": {
@@ -2597,7 +2592,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -2624,13 +2619,12 @@
               "type": "stat",
               "stat": "rpm",
               "value": {
-                "value": 44.944,
+                "value": 46.634,
                 "source": {
-                  "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance; Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one",
+                  "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one-3; Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance",
                   "retrieved": "2026-10-20",
-                  "status": "fitted",
-                  "row": "choir-of-one-hitscan-mode-precision",
-                  "note": "Derived: 60 / ($clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-hitscan-mode-precision].timeToEmptySeconds - ($aegisSustained[choir-of-one-hitscan-mode-precision].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-hitscan-mode-precision].reloadMs / 1000) / ($aegisSustained[choir-of-one-hitscan-mode-precision].shots - $aegisSustained[choir-of-one-hitscan-mode-precision].shots / $quantum[specials-auto-rifle-choir-of-one].magazine)) (as the base rate, from the hitscan row: one round per ammo, so five rounds (the magazine of 5 shots) per shot; the slower ADS rate is inside the time to empty); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance); $aegisSustained[choir-of-one-hitscan-mode-precision].timeToEmptySeconds = 65.808 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $aegisSustained[choir-of-one-hitscan-mode-precision].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one); $aegisSustained[choir-of-one-hitscan-mode-precision].reloadMs = 1017 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $aegisSustained[choir-of-one-hitscan-mode-precision].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $aegisSustained[choir-of-one-hitscan-mode-precision].shots = 225 (Aegis Boss Damage sheet (tab Sustained), row choir-of-one-hitscan-mode-precision); $quantum[specials-auto-rifle-choir-of-one].magazine = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one)"
+                  "status": "derived",
+                  "note": "Derived: $quantum[specials-auto-rifle-choir-of-one-3].timing.fireRateRpm / $clarity[Fanatical Lance](\"consumes 5 ammo\") (as the base rate, from the ADS row: one round per ammo, so five rounds per shot; the slower ADS rate is inside the time to empty); $quantum[specials-auto-rifle-choir-of-one-3].timing.fireRateRpm = 233.171 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-auto-rifle-choir-of-one-3); $clarity[Fanatical Lance](\"consumes 5 ammo\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Fanatical Lance)"
                 }
               }
             }
@@ -4827,7 +4821,7 @@
     "code": 31,
     "name": "Delicate Tomb",
     "manifestHash": 374573733,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "fusionRifle",
     "element": "arc",
     "ammo": "special",
@@ -4893,14 +4887,13 @@
           }
         },
         "damagePerTick": {
-          "value": 890.435,
+          "value": 896,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-delicate-tomb-hipfire",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-delicate-tomb-hip-fire",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-delicate-tomb-hipfire",
-            "note": "perShot 890.435 of the row (Full Modifiers 3.31 already out)"
+            "status": "verified",
+            "note": "bodyDamage"
           }
         },
         "ticks": {
@@ -4923,7 +4916,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       },
       {
         "id": "shot-ads",
@@ -4938,14 +4931,13 @@
           }
         },
         "damagePerTick": {
-          "value": 745.255,
+          "value": 752,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row fusion-rifle-delicate-tomb-ads",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-delicate-tomb-ads",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "fusion-rifle-delicate-tomb-ads",
-            "note": "perShot 745.255 of the row (Full Modifiers 3.31 already out)"
+            "status": "verified",
+            "note": "bodyDamage"
           }
         },
         "ticks": {
@@ -4968,7 +4960,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -6249,7 +6241,7 @@
     "code": 94,
     "name": "Duality",
     "manifestHash": 3460576091,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "shotgun",
     "element": "solar",
     "ammo": "special",
@@ -6314,14 +6306,13 @@
           }
         },
         "damagePerTick": {
-          "value": 1262.155,
+          "value": 1263,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-duality-ads",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-duality-ads",
-            "note": "perShot 1262.155 of the row (Full Modifiers 3.31 already out)"
+            "status": "verified",
+            "note": "precisionDamage"
           }
         },
         "ticks": {
@@ -6344,7 +6335,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       },
       {
         "id": "shot-hipfire",
@@ -6359,14 +6350,13 @@
           }
         },
         "damagePerTick": {
-          "value": 829.897,
+          "value": 828,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row shotgun-duality-hipfire-body",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-pellet",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "shotgun-duality-hipfire-body",
-            "note": "perShot 829.897 of the row (Full Modifiers 4.3 already out)"
+            "status": "verified",
+            "note": "bodyDamage"
           }
         },
         "ticks": {
@@ -6389,7 +6379,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -9235,7 +9225,7 @@
     "code": 109,
     "name": "Graviton Spike",
     "manifestHash": 648595258,
-    "gameVersion": "9.7.0",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "handCannon",
     "element": "arc",
     "ammo": "primary",
@@ -9302,14 +9292,13 @@
           }
         },
         "damagePerTick": {
-          "value": 176.645,
+          "value": 178,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-graviton-spike-stasis-mode",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-graviton-spike-stasis-mode",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "hand-cannon-graviton-spike-stasis-mode",
-            "note": "perShot 176.645 of the row (Full Modifiers 15.09 already out)"
+            "status": "verified",
+            "note": "precisionDamage"
           }
         },
         "ticks": {
@@ -9332,7 +9321,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       },
       {
         "id": "shot-arc",
@@ -9347,14 +9336,13 @@
           }
         },
         "damagePerTick": {
-          "value": 93.857,
+          "value": 94,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row hand-cannon-graviton-spike-arc-mode",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-graviton-spike-arc-mode",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "hand-cannon-graviton-spike-arc-mode",
-            "note": "perShot 93.857 of the row (Full Modifiers 15.09 already out)"
+            "status": "verified",
+            "note": "precisionDamage"
           }
         },
         "ticks": {
@@ -9377,7 +9365,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -16084,7 +16072,7 @@
     "code": 68,
     "name": "Polaris Lance",
     "manifestHash": 3413074534,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "scoutRifle",
     "element": "solar",
     "ammo": "primary",
@@ -16195,14 +16183,14 @@
           }
         },
         "damagePerTick": {
-          "value": 93.656,
+          "value": 215,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-polaris-lance-average-with-ignition",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): The Perfect Fifth",
+            "url": "https://www.d2clarity.com",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-polaris-lance-average-with-ignition",
-            "note": "tick \"310 Perfect Fifth\" ÷ Full Modifiers 3.31"
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "dealing 215"
           }
         },
         "ticks": {
@@ -16225,7 +16213,7 @@
         },
         "canPrecision": false,
         "delivery": "splash",
-        "scale": "aegisVisual"
+        "scale": "compendium"
       }
     ],
     "rules": [
@@ -17840,7 +17828,7 @@
     "code": 125,
     "name": "Salvation's Grip",
     "manifestHash": 370712896,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "grenadeLauncher",
     "element": "stasis",
     "ammo": "heavy",
@@ -17850,17 +17838,17 @@
         "name": "Item file salvation-s-grip",
         "retrieved": "2026-11-02",
         "status": "derived",
-        "note": "Derived: the time to empty counts from the first shot (Aegis Sustained)"
+        "note": "Derived: the time to empty counts from the first shot (Quantum)"
       }
     },
     "fireRateRpm": {
-      "value": 97.245,
+      "value": 137.143,
       "source": {
-        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-no-charge-spamming",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "salvation-s-grip-uncharged",
-        "note": "Derived: 60 / $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds (seconds per shot to shots per minute); $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds = 0.617 (Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 17.1 s − 3 reloads × 2.2 s) ÷ 24 intervals (ADR 0013)"
       }
     },
     "magazine": {
@@ -17870,28 +17858,27 @@
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "magazine"
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 25,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-no-charge-spamming",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "salvation-s-grip-uncharged",
-        "note": "shots"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
-      "value": 1500,
+      "value": 2200,
       "source": {
-        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-no-charge-spamming",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "salvation-s-grip-uncharged",
-        "note": "Derived: $aegisSustained[salvation-s-grip-uncharged].reloadMs - 1000 * $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds (Aegis reloads right after the last shot, the simulator waits one interval first, so one interval less); $aegisSustained[salvation-s-grip-uncharged].reloadMs = 2117 (Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged); $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds = 0.617 (Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-uncharged)"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
@@ -17908,14 +17895,13 @@
           }
         },
         "damagePerTick": {
-          "value": 794.941,
+          "value": 783,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-no-charge-spamming",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-salvation-s-grip",
-            "note": "perShot 794.941 of the row (Full Modifiers 3.16 already out)"
+            "status": "verified",
+            "note": "bodyDamage"
           }
         },
         "ticks": {
@@ -17938,7 +17924,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       },
       {
         "id": "shot-charged",
@@ -17953,14 +17939,12 @@
           }
         },
         "damagePerTick": {
-          "value": 1262.082,
+          "value": 1228,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-salvation-s-grip-average-charged",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-salvation-s-grip-average-charged",
-            "note": "perShot 1262.082 of the row (Full Modifiers 3.16 already out)"
+            "status": "derived",
+            "note": "Derived: $quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].totalDamage / $quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].timing.totalShots (damage per shot with the crystals: Quantum's total over its 25 shots; the row where every crystal shatters as it spawns (optimal play)); $quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].totalDamage = 30700 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2); $quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].timing.totalShots = 25 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2)"
           }
         },
         "ticks": {
@@ -17983,7 +17967,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -18010,13 +17994,12 @@
               "type": "stat",
               "stat": "rpm",
               "value": {
-                "value": 46.765,
+                "value": 68.571,
                 "source": {
-                  "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-charged-hail-the-storm",
+                  "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2",
                   "retrieved": "2026-10-20",
-                  "status": "fitted",
-                  "row": "salvation-s-grip-charged-hail-the-storm",
-                  "note": "Derived: 60 / $aegisSustained[salvation-s-grip-charged-hail-the-storm].peakRateSeconds (seconds per charged shot (charge time inside) to shots per minute; Aegis measures it only with Hail the Storm); $aegisSustained[salvation-s-grip-charged-hail-the-storm].peakRateSeconds = 1.283 (Aegis Boss Damage sheet (tab Sustained), row salvation-s-grip-charged-hail-the-storm)"
+                  "status": "derived",
+                  "note": "Derived: $quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].timing.fireRateRpm (the rate of the full-charge row (charge time inside)); $quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].timing.fireRateRpm = 68.571 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2)"
                 }
               }
             }
@@ -22405,7 +22388,7 @@
     "code": 99,
     "name": "The Queenbreaker",
     "manifestHash": 2044500762,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "linearFusionRifle",
     "element": "arc",
     "ammo": "heavy",
@@ -22418,14 +22401,13 @@
       }
     },
     "fireRateRpm": {
-      "value": 48.662,
+      "value": 43.29,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "the-queenbreaker-rewind-rounds-combat-sights",
-        "note": "timing.fireRateRpm: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 33 s − 4 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
       }
     },
     "magazine": {
@@ -22449,13 +22431,12 @@
       }
     },
     "reloadTimeMs": {
-      "value": 1050,
+      "value": 1320,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "the-queenbreaker-rewind-rounds-combat-sights",
+        "status": "verified",
         "note": "timing.reloadTimeMs"
       }
     },
@@ -22473,14 +22454,13 @@
           }
         },
         "damagePerTick": {
-          "value": 1966.482,
+          "value": 1968,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
-            "note": "perShot 1966.482 of the row (Full Modifiers 3.16 already out)"
+            "status": "verified",
+            "note": "precisionDamage"
           }
         },
         "ticks": {
@@ -22503,7 +22483,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       },
       {
         "id": "shot-marksman",
@@ -22518,14 +22498,13 @@
           }
         },
         "damagePerTick": {
-          "value": 1505.771,
+          "value": 1506,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-the-queenbreaker-marksman-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-marksman-sights",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-the-queenbreaker-marksman-sights",
-            "note": "perShot 1505.771 of the row (Full Modifiers 3.16 already out)"
+            "status": "verified",
+            "note": "precisionDamage"
           }
         },
         "ticks": {
@@ -22548,7 +22527,7 @@
         },
         "canPrecision": false,
         "delivery": "impact",
-        "scale": "aegisVisual"
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -22575,14 +22554,13 @@
               "type": "stat",
               "stat": "rpm",
               "value": {
-                "value": 52.174,
+                "value": 56.285,
                 "source": {
-                  "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-marksman-sights",
-                  "url": "https://destiny2.science/boss-damage",
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-marksman-sights",
+                  "url": "https://destiny2.science/quantum-damage-ics",
                   "retrieved": "2026-10-20",
-                  "status": "fitted",
-                  "row": "the-queenbreaker-rewind-rounds-marksman-sights",
-                  "note": "timing.fireRateRpm: Derived: (TtE 24.366 s − 0.633 s charge − 1 reloads × 1.883 s) ÷ 19 intervals within magazines (ADR 0013)"
+                  "status": "verified",
+                  "note": "timing.fireRateRpm: Derived: (Time to Empty 26.6 s − 4 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
                 }
               }
             }
@@ -22613,46 +22591,41 @@
       "effect": "timing",
       "timing": {
         "fireRateRpm": {
-          "value": 48.662,
+          "value": 43.29,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "the-queenbreaker-rewind-rounds-combat-sights",
-            "note": "timing.fireRateRpm: Derived: (TtE 26.26 s − 0.55 s charge − 1 reloads × 2.283 s) ÷ 19 intervals within magazines (ADR 0013)"
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 33 s − 4 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
           }
         },
         "magazine": {
-          "value": 11,
+          "value": 8,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights; Clarity (Live-Clarity-Database, descriptions/clarity.json): The Queenbreaker Catalyst",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "the-queenbreaker-rewind-rounds-combat-sights",
-            "note": "timing.magazine"
+            "status": "derived",
+            "note": "Derived: $quantum[heavies-linear-fusion-rifle-the-queenbreaker-combat-sights].timing.magazine * (1 + $clarity[The Queenbreaker Catalyst](\"Refills 60%\") / 100) (Rewind Rounds refill 60 % of the hits of an emptied magazine (5 hits, or 15 bolts at 14 % rounded up): 5 + 3 = 8 rounds before the reload; Aegis counts 11 (known-inaccuracies, W4 Queenbreaker)); $quantum[heavies-linear-fusion-rifle-the-queenbreaker-combat-sights].timing.magazine = 5 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights); $clarity[The Queenbreaker Catalyst](\"Refills 60%\") = 60 (Clarity (Live-Clarity-Database, descriptions/clarity.json): The Queenbreaker Catalyst)"
           }
         },
         "totalShots": {
           "value": 21,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "the-queenbreaker-rewind-rounds-combat-sights",
+            "status": "verified",
             "note": "timing.totalShots"
           }
         },
         "reloadTimeMs": {
-          "value": 1050,
+          "value": 1320,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Sustained), row the-queenbreaker-rewind-rounds-combat-sights",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-the-queenbreaker-combat-sights",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "the-queenbreaker-rewind-rounds-combat-sights",
+            "status": "verified",
             "note": "timing.reloadTimeMs"
           }
         }
@@ -25161,7 +25134,7 @@
     "code": 19,
     "name": "Truth",
     "manifestHash": 1201830623,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "rocketLauncher",
     "element": "void",
     "ammo": "heavy",
@@ -25171,48 +25144,47 @@
         "name": "Item file truth",
         "retrieved": "2026-11-01",
         "status": "derived",
-        "note": "Derived: a rocket launcher has no charge; the time to empty counts from the first shot (Aegis Sustained)"
+        "note": "Derived: a rocket launcher has no charge; the time to empty counts from the first shot (Quantum)"
       }
     },
     "fireRateRpm": {
-      "value": 112.57,
+      "value": 352.941,
       "source": {
-        "name": "Expression over Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth-2",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "truth-prototype-truthseeker-argent-ordnance",
-        "note": "Derived: 60 / $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds (seconds between rockets within a magazine to rounds per minute; Argent Ordnance changes only the reload); $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds = 0.533 (Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 14.3 s − 5 reloads × 2.35 s) ÷ 15 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 3,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "magazine"
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
-      "value": 14,
+      "value": 16,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth-2",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "truth-prototype-truthseeker-argent-ordnance",
-        "note": "shots"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
-      "value": 1817,
+      "value": 2350,
       "source": {
-        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth; Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth-2",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "fitted",
-        "row": "truth-prototype-truthseeker-argent-ordnance",
-        "note": "Derived: $quantum[heavies-rocket-launcher-truth].reloadSeconds * 1000 - $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds * 1000 (Quantum's reload is without Argent Ordnance; the rate is Aegis', and Aegis reloads right after the last shot while the simulator waits one interval first, so one interval less); $quantum[heavies-rocket-launcher-truth].reloadSeconds = 2.35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-truth); $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds = 0.533 (Aegis Boss Damage sheet (tab Sustained), row truth-prototype-truthseeker-argent-ordnance)"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
@@ -25267,27 +25239,27 @@
           "value": 0,
           "source": {
             "name": "Item file truth",
-            "retrieved": "2026-10-20",
+            "retrieved": "2026-10-24",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "damagePerTick": {
-          "value": 155.063,
+          "value": 177,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row rocket-launcher-truth-average-prototype-truthseeker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "rocket-launcher-truth-average-prototype-truthseeker",
-            "note": "tick \"490/36 cluster\" ÷ Full Modifiers 3.16"
+            "name": "Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Truth Prototype Trueseeker Grenades and Horseshoes ↑Reaper's Tithe",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "each deal 177"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
             "name": "Item file truth",
-            "retrieved": "2026-10-20",
+            "retrieved": "2026-10-24",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
@@ -25296,14 +25268,14 @@
           "value": 0,
           "source": {
             "name": "Item file truth",
-            "retrieved": "2026-10-20",
+            "retrieved": "2026-10-24",
             "status": "derived",
             "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "canPrecision": false,
         "delivery": "splash",
-        "scale": "aegisVisual"
+        "scale": "compendium"
       }
     ],
     "rules": [

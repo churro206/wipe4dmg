@@ -140,6 +140,7 @@ export type CauseInput = {
     deviation: number;
     circular: boolean;
     strippedRow: boolean;
+    catalystRow?: boolean;
     factors: WeaponFactors | null;
   } | null;
   aegis: { row: string; deviation: number; assumptions: string[] }[];
@@ -180,6 +181,8 @@ export function causeOf(e: CauseInput): WeaponStatusFile["weapons"][number]["cau
     if (q.strippedRow && q.deviation > 0) {
       return { class: "wrong-row", why: `${signed(q.deviation)} against a Quantum row that leaves out what the model carries.` };
     }
+    // The row is the catalyst's and the model runs without it: the shots differ by the catalyst's rounds
+    if (q.catalystRow && q.factors && q.factors.shots !== 1) return factorCause(q.deviation, q.factors);
     if (worst && !off(worst.deviation)) {
       return { class: "wrong-row", why: `${signed(q.deviation)} against Quantum, but Aegis agrees: this row does not hold what is modelled.` };
     }

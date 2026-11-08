@@ -131,14 +131,14 @@
       "600s buffed catalyst": 461774.84
     },
     "choir-of-one": {
-      "30s plain": 31140,
-      "30s buffed": 52427.3,
-      "30s plain catalyst": 31140,
-      "30s buffed catalyst": 52427.3,
-      "600s plain": 31140,
-      "600s buffed": 52427.3,
-      "600s plain catalyst": 31140,
-      "600s buffed catalyst": 52427.3
+      "30s plain": 25650,
+      "30s buffed": 43184.34,
+      "30s plain catalyst": 25650,
+      "30s buffed catalyst": 43184.34,
+      "600s plain": 25650,
+      "600s buffed": 43184.34,
+      "600s plain catalyst": 25650,
+      "600s buffed catalyst": 43184.34
     },
     "cloudstrike": {
       "30s plain": 20410,
@@ -247,14 +247,14 @@
       "600s buffed catalyst": 72207.92
     },
     "delicate-tomb": {
-      "30s plain": 21370.44,
-      "30s buffed": 35979.27,
-      "30s plain catalyst": 21370.44,
-      "30s buffed catalyst": 35979.27,
-      "600s plain": 23151.31,
-      "600s buffed": 38977.55,
-      "600s plain catalyst": 23151.31,
-      "600s buffed catalyst": 38977.55
+      "30s plain": 21504,
+      "30s buffed": 36204.13,
+      "30s plain catalyst": 21504,
+      "30s buffed catalyst": 36204.13,
+      "600s plain": 23296,
+      "600s buffed": 39221.15,
+      "600s plain catalyst": 23296,
+      "600s buffed catalyst": 39221.15
     },
     "deterministic-chaos": {
       "30s plain": "error: No definition for status \"weaken\"",
@@ -297,14 +297,14 @@
       "600s buffed catalyst": 55333.85
     },
     "duality": {
-      "30s plain": 18932.33,
-      "30s buffed": 31874.46,
-      "30s plain catalyst": 21456.64,
-      "30s buffed catalyst": 36124.39,
-      "600s plain": 18932.33,
-      "600s buffed": 31874.46,
-      "600s plain catalyst": 21456.64,
-      "600s buffed catalyst": 36124.39
+      "30s plain": 18945,
+      "30s buffed": 31895.8,
+      "30s plain catalyst": 21471,
+      "30s buffed catalyst": 36148.58,
+      "600s plain": 18945,
+      "600s buffed": 31895.8,
+      "600s plain catalyst": 21471,
+      "600s buffed catalyst": 36148.58
     },
     "edge-of-action": {
       "30s plain": 12558,
@@ -467,14 +467,14 @@
       "600s buffed catalyst": 301110.18
     },
     "graviton-spike": {
-      "30s plain": 7065.8,
-      "30s buffed": 11895.98,
-      "30s plain catalyst": 7065.8,
-      "30s buffed catalyst": 11895.98,
-      "600s plain": 140432.78,
-      "600s buffed": 236432.62,
-      "600s plain catalyst": 140432.78,
-      "600s buffed catalyst": 236432.62
+      "30s plain": 7120,
+      "30s buffed": 11987.23,
+      "30s plain catalyst": 7120,
+      "30s buffed catalyst": 11987.23,
+      "600s plain": 141510,
+      "600s buffed": 238246.24,
+      "600s plain catalyst": 141510,
+      "600s buffed catalyst": 238246.24
     },
     "hard-light": {
       "30s plain": 6860,
@@ -765,14 +765,14 @@
       "600s buffed catalyst": 64670.44
     },
     "polaris-lance": {
-      "30s plain": 11780.05,
-      "30s buffed": 19832.9,
-      "30s plain catalyst": 11780.05,
-      "30s buffed catalyst": 19832.9,
-      "600s plain": 248366.63,
-      "600s buffed": 418150.05,
-      "600s plain catalyst": 248366.63,
-      "600s buffed catalyst": 418150.05
+      "30s plain": 13478.87,
+      "30s buffed": 22693.02,
+      "30s plain catalyst": 13478.87,
+      "30s buffed catalyst": 22693.02,
+      "600s plain": 284648.48,
+      "600s buffed": 479234.19,
+      "600s plain catalyst": 284648.48,
+      "600s buffed catalyst": 479234.19
     },
     "prometheus-lens": {
       "30s plain": 14083.6,
@@ -845,14 +845,14 @@
       "600s buffed catalyst": 32442.97
     },
     "salvation-s-grip": {
-      "30s plain": 19873.53,
-      "30s buffed": 33459.07,
-      "30s plain catalyst": 19873.53,
-      "30s buffed catalyst": 33459.07,
-      "600s plain": 19873.53,
-      "600s buffed": 33459.07,
-      "600s plain catalyst": 19873.53,
-      "600s buffed catalyst": 33459.07
+      "30s plain": 19575,
+      "30s buffed": 32956.47,
+      "30s plain catalyst": 19575,
+      "30s buffed catalyst": 32956.47,
+      "600s plain": 19575,
+      "600s buffed": 32956.47,
+      "600s plain catalyst": 19575,
+      "600s buffed catalyst": 32956.47
     },
     "service-of-luzaku": {
       "30s plain": 21980,
@@ -1067,14 +1067,14 @@
       "600s buffed": 34092.9
     },
     "the-queenbreaker": {
-      "30s plain": 41296.12,
-      "30s buffed": 69526.15,
-      "30s plain catalyst": 41296.12,
-      "30s buffed catalyst": 69526.15,
-      "600s plain": 41296.12,
-      "600s buffed": 69526.15,
-      "600s plain catalyst": 41296.12,
-      "600s buffed catalyst": 69526.15
+      "30s plain": 37392,
+      "30s buffed": 62953.17,
+      "30s plain catalyst": 39360,
+      "30s buffed catalyst": 66266.5,
+      "600s plain": 41328,
+      "600s buffed": 69579.82,
+      "600s plain catalyst": 41328,
+      "600s buffed catalyst": 69579.82
     },
     "the-wardcliff-coil": {
       "30s plain": 19200,
@@ -1187,14 +1187,14 @@
       "600s buffed catalyst": 176980.03
     },
     "truth": {
-      "30s plain": 30120.02,
-      "30s buffed": 50710.06,
-      "30s plain catalyst": 42168.02,
-      "30s buffed catalyst": 70994.08,
-      "600s plain": 30120.02,
-      "600s buffed": 50710.06,
-      "600s plain catalyst": 42168.02,
-      "600s buffed catalyst": 70994.08
+      "30s plain": 35832,
+      "30s buffed": 60326.76,
+      "30s plain catalyst": 50164.8,
+      "30s buffed catalyst": 84457.46,
+      "600s plain": 35832,
+      "600s buffed": 60326.76,
+      "600s plain catalyst": 50164.8,
+      "600s buffed catalyst": 84457.46
     },
     "turncoat": {
       "30s plain": 7008.93,

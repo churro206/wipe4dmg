@@ -384,13 +384,13 @@ describe("src/data/weapon-status.json", () => {
       ["osteo-striga", "wrong-row"],
       ["outbreak-perfected", "wrong-row"],
       ["deterministic-chaos", "wrong-row"],
-      ["truth", "wrong-row"],
+      ["truth", "rule-too-strong"],
       ["heartshadow", "no-check"],
       ["the-lament", "wrong-row"],
       ["grand-overture", "wrong-row"],
       ["witherhoard", "wrong-row"],
       ["malfeasance", "wrong-row"],
-      ["choir-of-one", "base-damage"],
+      ["choir-of-one", "wrong-row"],
       ["duality", "counting"],
       ["dragon-s-breath", "source-conflict"],
     ])("P0 sample %s is %s", (id, cls) => {
@@ -477,14 +477,14 @@ describe("src/data/weapon-status.json", () => {
   });
 
   it("the sources of a hand-made item with $aegis (Truth) count even without a package", () => {
-    const truth = weapons.find((w) => w.id === "truth")!;
+    const truth = weapons.find((w) => w.id === "heirloom")!;
     const sources = weaponSources(truth, undefined);
     expect(sources.some((s) => s.status === "fitted")).toBe(true);
     expect(trustOf(sources)).toBe("estimated");
   });
 
   it("a hand-made item never lists a row it fits as an independent check", () => {
-    for (const id of ["truth", "polaris-lance", "choir-of-one"]) {
+    for (const id of ["heirloom"]) {
       const w = status.weapons.find((x) => x.id === id)!;
       const fitted = fittedRows(weapons.filter((x) => x.id === id), []).weaponRows;
       expect(w.trust, id).toBe("estimated");

@@ -2,7 +2,21 @@
   "id": "delicate-tomb",
   "kind": "exoticWeapon",
   "name": "Delicate Tomb",
-  "texts": [{ "source": "clarity", "entry": "Traitor's Vessel", "hash": "26b679d9" }],
+  "texts": [
+    { "source": "clarity", "entry": "Traitor's Vessel", "hash": "26b679d9" },
+    { "source": "clarity", "entry": "Tempest Cascade", "hash": "c4424e8c" },
+    { "source": "clarity", "entry": "Delicate Tomb Catalyst", "hash": "e6d935c6" }
+  ],
+  "notModelled": [
+    { "quote": "Collecting an Ionic Trace increases the next shot's damage by 100% [7%] and applies Jolt.", "reason": "needs a kill: Ionic Traces spawn from kills (Compendium), ADR 0015; Quantum's rows also leave Jolt out" },
+    { "quote": "Picking up Ionic Traces refill 4 ammo from reserves.", "reason": "needs an Ionic Trace from a kill, ADR 0015" },
+    { "quote": "Fires a wide 16-bolt volley.", "reason": "carried by the Quantum rows (damage per volley, 16 bolts)" },
+    { "quote": "Aiming Down Sights tightens the spread, overlapping into 8 bolts (with 2 in each group).", "reason": "carried by the playstyle ads (Quantum ADS row)" },
+    { "quote": "Hip-Fired Bolts deal 20% increased damage.", "reason": "carried by the Quantum hip-fire row" },
+    { "quote": "• Minors: 10%", "reason": "needs an Ionic Trace from a kill, ADR 0015" },
+    { "quote": "• Elites, Minibosses, and Bosses: 100%", "reason": "needs an Ionic Trace from a kill, ADR 0015" },
+    { "quote": "• Players: 100%", "reason": "needs an Ionic Trace from a kill, ADR 0015" }
+  ],
   "chargeTimeMs": "$manifest[Delicate Tomb].stat(\"Charge Time\")",
   "fireRateRpm": "$quantum[specials-fusion-rifle-delicate-tomb-hip-fire].timing.fireRateRpm",
   "magazine": "$quantum[specials-fusion-rifle-delicate-tomb-hip-fire].timing.magazine",
@@ -20,12 +34,12 @@
   "parts": {
     "shot": {
       "name": "Volley, hipfire",
-      "damage": "$aegis[fusion-rifle-delicate-tomb-hipfire].perShot",
+      "damage": "$quantum[specials-fusion-rifle-delicate-tomb-hip-fire].bodyDamage",
       "delivery": "impact"
     },
     "shot-ads": {
       "name": "Volley, ADS",
-      "damage": "$aegis[fusion-rifle-delicate-tomb-ads].perShot",
+      "damage": "$quantum[specials-fusion-rifle-delicate-tomb-ads].bodyDamage",
       "delivery": "impact"
     }
   },

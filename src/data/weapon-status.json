@@ -88,7 +88,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "ager-s-scepter",
@@ -399,7 +399,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "arbalest",
@@ -945,7 +945,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "bastion",
@@ -1384,41 +1384,45 @@
     {
       "id": "choir-of-one",
       "name": "Choir of One",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 19376,
-          "s30": 31140,
-          "s60": 31140
+          "s10": 14250,
+          "s30": 25650,
+          "s60": 25650
         },
         "catalyst": {
-          "s10": 19376,
-          "s30": 31140,
-          "s60": 31140
+          "s10": 14250,
+          "s30": 25650,
+          "s60": 25650
         }
       },
       "cause": {
-        "class": "base-damage",
-        "why": "Damage per hit ×1.21 against the Quantum row."
+        "class": "wrong-row",
+        "why": "Another Aegis row fits, \"auto-rifle-choir-of-one-hitscan\" is +118.0 %: it measures something else than the model."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring kills in either mode triggers a 7.5 meter radius Void explosion, dealing 239 [?] damage and spawning a Radiolaria Pool at the target's location.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Kills: the boss is not killed within the fight (ADR 0015)"
         },
         {
           "text": "Pool deals 123 [?] Arc damage in a 3 meter radius once per second for 5 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Radiolaria Pool), ADR 0015"
         },
         {
           "text": "• Minors: 3",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Radiolaria Pool), ADR 0015"
         },
         {
           "text": "• Elites and Higher: 1",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Radiolaria Pool), ADR 0015"
         },
         {
           "text": "Firing this gun consumes 5 ammo and launches a slow-traveling projectile, splitting into a plus (+) shaped volley of five projectiles after 7.5 meters.",
@@ -1426,67 +1430,83 @@
         },
         {
           "text": "meter radius, despawn after 100 meters, and cannot deal precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "one boss, centre hit; the split projectiles take the Quantum row, which holds no precision"
         },
         {
           "text": "Hitting an enemy with the projectile before it splits deals 947 [233] damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Quantum's row after splitting is 570 per projectile; point-blank play is not the optimal hold (known-inaccuracies, W4 Choir of One)"
         },
         {
           "text": "Split projectiles individually deal 187 [49] damage each, totalling for 985 [245] damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Quantum's 570 per projectile instead of Clarity's 985 for all five splits hitting (known-inaccuracies, W4 Choir of One)"
         },
         {
           "text": "Weapon Kills refill 10% of the magazine (rounded up) from reserves.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "Submachine Gun and Auto Rifle Kills refill 17% of the magazine.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "Weapon Kills apply Volatile to enemies in a 7 meter radius around the target and grant Volatile Rounds for 3 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "1.5 second cooldown between activations.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "Weapon Kills grant a Stack of 'Onslaught' for 4.5 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "Maximum of 3 Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "Benefits at 1|2|3 Stacks of Onslaught:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "• 16.7% | 28.6% | 37.5% decreased Firing Delay",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "• 15 | 25 | 35 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "Projectile deals 243 [40.25] bodyshot damage and 435 [72] precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Quantum's ADS row holds 146 body and 262 precision per round (known-inaccuracies, W4 Choir of One)"
         },
         {
           "text": "Projectile deals 243 [40.25] bodyshot damage and 435 [72] precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Quantum's ADS row holds 146 body and 262 precision per round (known-inaccuracies, W4 Choir of One)"
         },
         {
           "text": "Projectile deals 243 [40.25] bodyshot damage and 435 [72] precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Quantum's ADS row holds 146 body and 262 precision per round (known-inaccuracies, W4 Choir of One)"
         },
         {
           "text": "Projectile deals 243 [40.25] bodyshot damage and 435 [72] precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Quantum's ADS row holds 146 body and 262 precision per round (known-inaccuracies, W4 Choir of One)"
         }
       ],
       "quantum": {
@@ -1494,15 +1514,15 @@
         "rowNote": "Hip-fire, after splitting",
         "basis": "total",
         "measured": 25650,
-        "model": 31140,
-        "deviation": 0.214,
-        "circular": false,
+        "model": 25650,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 1.2140350877192982,
+          "damagePerHit": 1,
           "mechanic": 1,
           "rowPlain": true
         }
@@ -1516,8 +1536,8 @@
               "hitscan"
             ],
             "measured": 261.4,
-            "model": 692,
-            "deviation": 1.647
+            "model": 570,
+            "deviation": 1.1803
           },
           {
             "row": "auto-rifle-choir-of-one-projectile-point-blank",
@@ -1525,8 +1545,8 @@
               "projectile - point blank"
             ],
             "measured": 11377.6,
-            "model": 13840,
-            "deviation": 0.2164
+            "model": 11400,
+            "deviation": 0.002
           },
           {
             "row": "auto-rifle-choir-of-one-projectile-spaced-9m",
@@ -1534,8 +1554,8 @@
               "projectile - spaced (~9m)"
             ],
             "measured": 59455.3,
-            "model": 31140,
-            "deviation": -0.4762
+            "model": 25650,
+            "deviation": -0.5686
           }
         ]
       },
@@ -2629,57 +2649,65 @@
     {
       "id": "delicate-tomb",
       "name": "Delicate Tomb",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 7123.5,
-          "s30": 21370.4,
-          "s60": 23151.3
+          "s10": 7168,
+          "s30": 21504,
+          "s60": 23296
         },
         "catalyst": {
-          "s10": 7123.5,
-          "s30": 21370.4,
-          "s60": 23151.3
+          "s10": 7168,
+          "s30": 21504,
+          "s60": 23296
         }
       },
       "cause": {
         "class": "ok",
-        "why": "-0.6 % against Quantum, no Aegis row."
+        "why": "Within the limit: Aegis +1.0 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Collecting an Ionic Trace increases the next shot's damage by 100% [7%] and applies Jolt.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill: Ionic Traces spawn from kills (Compendium), ADR 0015; Quantum's rows also leave Jolt out"
         },
         {
           "text": "Picking up Ionic Traces refill 4 ammo from reserves.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs an Ionic Trace from a kill, ADR 0015"
         },
         {
           "text": "Fires a wide 16-bolt volley.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum rows (damage per volley, 16 bolts)"
         },
         {
           "text": "Aiming Down Sights tightens the spread, overlapping into 8 bolts (with 2 in each group).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the playstyle ads (Quantum ADS row)"
         },
         {
           "text": "Hip-Fired Bolts deal 20% increased damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum hip-fire row"
         },
         {
           "text": "• Minors: 10%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs an Ionic Trace from a kill, ADR 0015"
         },
         {
           "text": "• Elites, Minibosses, and Bosses: 100%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs an Ionic Trace from a kill, ADR 0015"
         },
         {
           "text": "• Players: 100%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs an Ionic Trace from a kill, ADR 0015"
         }
       ],
       "quantum": {
@@ -2687,22 +2715,41 @@
         "rowNote": "Does not consider Jolt. Fires 16 bolts in a wide line, 2 bolts at a time",
         "basis": "total",
         "measured": 23296,
-        "model": 23151.3,
-        "deviation": -0.0062,
-        "circular": false,
+        "model": 23296,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 0.9937890625,
-          "mechanic": 1.0000000000000002,
+          "damagePerHit": 1,
+          "mechanic": 1,
           "rowPlain": true
         }
       },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "fusion-rifle-delicate-tomb-hipfire",
+            "assumptions": [
+              "hipfire"
+            ],
+            "measured": 16009.7,
+            "model": 16128,
+            "deviation": 0.0074
+          },
+          {
+            "row": "fusion-rifle-delicate-tomb-ads",
+            "assumptions": [
+              "ADS"
+            ],
+            "measured": 13399.4,
+            "model": 13536,
+            "deviation": 0.0102
+          }
+        ]
       },
       "planBlock": "W4"
     },
@@ -3182,18 +3229,18 @@
     {
       "id": "duality",
       "name": "Duality",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 15145.9,
-          "s30": 18932.3,
-          "s60": 18932.3
+          "s10": 15156,
+          "s30": 18945,
+          "s60": 18945
         },
         "catalyst": {
-          "s10": 15145.9,
-          "s30": 21456.6,
-          "s60": 21456.6
+          "s10": 15156,
+          "s30": 21471,
+          "s60": 21471
         }
       },
       "cause": {
@@ -3204,15 +3251,18 @@
       "sentences": [
         {
           "text": "Passive 5% increased damage falloff distance compared to similar shotguns.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "one boss, point-blank play: no falloff"
         },
         {
           "text": "While Hip-Firing, this gun fires a spread of 12 pellets in the pattern of a Precision Frame shotgun, each pellet dealing 104 [?] damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum pellet row (828 per shot of 12 pellets)"
         },
         {
           "text": "While Aiming Down Sights, this gun fires a single slug round, dealing 1891 [?] precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Quantum's slug row holds 1263 precision (known-inaccuracies, W4 Duality)"
         },
         {
           "text": "Grants 20 Range and increases Magazine Size by 2 (6🠚8)",
@@ -3220,23 +3270,28 @@
         },
         {
           "text": "Scoring a pellet kill or landing 10 pellets grants one stack of 'On Black Wings' for 10 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 %: the Quantum x3 row is 29838 against 21471 (known-inaccuracies, W4 Duality)"
         },
         {
           "text": "Maximum of 3 stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (On Black Wings), known-inaccuracies, W4 Duality"
         },
         {
           "text": "On Black Wings grants the following at 1|2|3| stacks:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (On Black Wings), known-inaccuracies, W4 Duality"
         },
         {
           "text": "• 15.6%|39%|54.7% increased Slug Precision damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (On Black Wings), known-inaccuracies, W4 Duality"
         },
         {
           "text": "• 3.5%|8.8%|12.4% increased Pellet Precision Damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (On Black Wings), known-inaccuracies, W4 Duality"
         }
       ],
       "quantum": {
@@ -3244,22 +3299,42 @@
         "rowNote": "Assumes all precision hits",
         "basis": "total",
         "measured": 21471,
-        "model": 18932.3,
-        "deviation": -0.1182,
+        "model": 18945,
+        "deviation": -0.1176,
         "circular": false,
         "catalystRow": true,
         "strippedRow": false,
         "factors": {
           "shots": 0.8823529411764706,
           "hitsPerShot": 1,
-          "damagePerHit": 0.9993309580364212,
+          "damagePerHit": 1,
           "mechanic": 1,
           "rowPlain": true
         }
       },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "shotgun-duality-hipfire-body",
+            "assumptions": [
+              "hipfire",
+              "body"
+            ],
+            "measured": 829.5,
+            "model": 828,
+            "deviation": -0.0019
+          },
+          {
+            "row": "shotgun-duality-ads",
+            "assumptions": [
+              "ADS"
+            ],
+            "measured": 1260.7,
+            "model": 1263,
+            "deviation": 0.0018
+          }
+        ]
       },
       "planBlock": "W4"
     },
@@ -4817,153 +4892,185 @@
     {
       "id": "graviton-spike",
       "name": "Graviton Spike",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 2473,
-          "s30": 7065.8,
-          "s60": 14131.6
+          "s10": 2492,
+          "s30": 7120,
+          "s60": 14240
         },
         "catalyst": {
-          "s10": 2473,
-          "s30": 7065.8,
-          "s60": 14131.6
+          "s10": 2492,
+          "s30": 7120,
+          "s60": 14240
         }
       },
       "cause": {
         "class": "ok",
-        "why": "-0.8 % against Quantum, no Aegis row."
+        "why": "Within the limit: Aegis +0.8 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Weapon Kills refill 10% of the magazine (rounded up) from reserves.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "Submachine Gun and Auto Rifle Kills refill 17% of the magazine.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (Refit), ADR 0015"
         },
         {
           "text": "\"Buffed Hits\" grant 1 Stack of Rapid Hit for 2 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Refit chosen by the player; stability and reload only, no damage"
         },
         {
           "text": "Maximum of 5 Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Rapid Hit: stability and reload only, no damage"
         },
         {
           "text": "Benefits at 1|2|3|4|5 Stacks:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Rapid Hit: stability and reload only, no damage"
         },
         {
           "text": "• 2|12|14|18|25 Stability",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "stability does not change damage"
         },
         {
           "text": "• 5|30|35|42|60 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Rapid Hit: reload speed shortens the reload, below 2 % of the total"
         },
         {
           "text": "• 0.99x|0.96x|0.95x|0.945x|0.92x Reload Duration Multiplier",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Rapid Hit: reload speed shortens the reload, below 2 % of the total"
         },
         {
           "text": "Hold [Reload] to refill 3 ammo and switch between firing modes:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "mode swap: the playstyles stasis-mode and arc-mode, each from its Quantum row"
         },
         {
           "text": "• Arc Mode fires at 150 RPM",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum arc-mode row (rate 150)"
         },
         {
           "text": "• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum stasis-mode row (rate 95, damage per shot incl. splash)"
         },
         {
           "text": "Scoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Overcharge drains at a rate of 4.5% per second once earned.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Precision Hits and Kills call down a lightning strike, consuming 34% Overcharge energy and dealing 502 [?] Arc Damage in a ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Precision Hits and Kills trigger a Stasis Explosion, consuming 34% Overcharge energy and dealing 126 [?] damage in a ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "The explosion creates two Medium Stasis Crystals that spawn 4 meters away on either side of the target at a 45 degree angle.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Hold [Reload] to refill 3 ammo and switch between firing modes:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "mode swap: the playstyles stasis-mode and arc-mode, each from its Quantum row"
         },
         {
           "text": "• Arc Mode fires at 150 RPM",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum arc-mode row (rate 150)"
         },
         {
           "text": "• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum stasis-mode row (rate 95, damage per shot incl. splash)"
         },
         {
           "text": "Scoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Overcharge drains at a rate of 4.5% per second once earned.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Hold [Reload] to refill 3 ammo and switch between firing modes:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "mode swap: the playstyles stasis-mode and arc-mode, each from its Quantum row"
         },
         {
           "text": "• Arc Mode fires at 150 RPM",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum arc-mode row (rate 150)"
         },
         {
           "text": "• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum stasis-mode row (rate 95, damage per shot incl. splash)"
         },
         {
           "text": "Scoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Overcharge drains at a rate of 4.5% per second once earned.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Hold [Reload] to refill 3 ammo and switch between firing modes:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "mode swap: the playstyles stasis-mode and arc-mode, each from its Quantum row"
         },
         {
           "text": "• Arc Mode fires at 150 RPM",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum arc-mode row (rate 150)"
         },
         {
           "text": "• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum stasis-mode row (rate 95, damage per shot incl. splash)"
         },
         {
           "text": "Scoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         },
         {
           "text": "Overcharge drains at a rate of 4.5% per second once earned.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike"
         }
       ],
       "quantum": {
@@ -4971,22 +5078,41 @@
         "rowNote": "",
         "basis": "magazine",
         "measured": 2314,
-        "model": 2296.4,
-        "deviation": -0.0076,
-        "circular": false,
+        "model": 2314,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 0.9923876404494383,
+          "damagePerHit": 1,
           "mechanic": 1,
           "rowPlain": true
         }
       },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "hand-cannon-graviton-spike-stasis-mode",
+            "assumptions": [
+              "stasis mode"
+            ],
+            "measured": 176.6,
+            "model": 178,
+            "deviation": 0.0079
+          },
+          {
+            "row": "hand-cannon-graviton-spike-arc-mode",
+            "assumptions": [
+              "arc mode"
+            ],
+            "measured": 93.8,
+            "model": 94,
+            "deviation": 0.0017
+          }
+        ]
       },
       "planBlock": "W4"
     },
@@ -5428,7 +5554,7 @@
     {
       "id": "hierarchy-of-needs",
       "name": "Hierarchy of Needs",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -5443,8 +5569,8 @@
         }
       },
       "cause": {
-        "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
+        "class": "ok",
+        "why": "Within the limit: Aegis -0.5 %."
       },
       "ruleShares": [
         {
@@ -5471,15 +5597,18 @@
         },
         {
           "text": "• 40% reduced Hip-Fire Accuracy Cone",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "accuracy: one boss, centre hit"
         },
         {
           "text": "• 50% decreased Draw Time",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the catalyst timing (Quantum 'Guidance Ring, cata': rate 44 to 61)"
         },
         {
           "text": "• 100 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the catalyst timing; the bow has a magazine of one"
         },
         {
           "text": "While at 3 stacks, hip-firing a fully-drawn arrow spawns a Guidance Ring.",
@@ -5487,19 +5616,23 @@
         },
         {
           "text": "Guidance Ring lasts 20 seconds and will rotate in place to face you.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the duration is carried by the mode guidance-ring (Compendium: 20 seconds); rotation does not change damage"
         },
         {
           "text": "Only one Guidance Ring per-guardian can exist at a time, but up to 3 Guidance Rings can exist across a fireteam.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the playstyle two-rings (an arrow through the own ring and a teammate's)"
         },
         {
           "text": "Firing any fully-drawn arrow through the Guidance Ring triggers several additional seeking projectiles, each dealing 192 [15] damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Quantum's ring row gives (664 - 223) / 3 = 147 per seeker (known-inaccuracies, W4 Hierarchy of Needs)"
         },
         {
           "text": "Seekers gain 50% [15-20%] increased damage past 40 meters and have a maximum range of 80 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "one boss, close range: no distance bonus"
         },
         {
           "text": "Each seeker applies 15 Scorch (20 with Ember of Ashes) and deals Weapon-Element Matching Explosive Damage in a 4 meter radius.",
@@ -5767,7 +5900,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "j-tunn",
@@ -6894,7 +7027,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "mida-multi-tool",
@@ -7096,7 +7229,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "necrochasm",
@@ -7980,40 +8113,40 @@
     {
       "id": "polaris-lance",
       "name": "Polaris Lance",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 3670.4,
-          "s30": 11780.1,
-          "s60": 24232
+          "s10": 4155.8,
+          "s30": 13478.9,
+          "s60": 27751
         },
         "catalyst": {
-          "s10": 3670.4,
-          "s30": 11780.1,
-          "s60": 24232
+          "s10": 4155.8,
+          "s30": 13478.9,
+          "s60": 27751
         }
       },
       "cause": {
-        "class": "ok",
-        "why": "Within the limit: Aegis -1.8 %."
+        "class": "rule-too-strong",
+        "why": "Aegis +12.3 %; rule \"count\" carries 48 % of the total."
       },
       "ruleShares": [
         {
           "id": "refill",
-          "share": 0.201
+          "share": 0.197
         },
         {
           "id": "count",
-          "share": 0.4058
+          "share": 0.4814
         },
         {
           "id": "fifth",
-          "share": 0.4058
+          "share": 0.4814
         },
         {
           "id": "scorch",
-          "share": 0.2933
+          "share": 0.256
         }
       ],
       "sentences": [
@@ -8027,11 +8160,13 @@
         },
         {
           "text": "Solar Explosive is removed after 6 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the optimal hold detonates it 0.5 s after the fourth precision hit"
         },
         {
           "text": "Solar Explosive detonates after a 0.5?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the delayMs of the part perfect-fifth (the second half of the sentence is the rule)"
         },
         {
           "text": "second delay, dealing 215 [78] damage and applying 40 Scorch stacks (60 with Ember of Ashes) in a 4 meter radius.",
@@ -8039,17 +8174,29 @@
         },
         {
           "text": "Damage falls to 0% at the edge of the radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "one boss, centre hit: full damage (ADR 0015)"
         },
         {
           "text": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Precision Kills: the boss is not killed within the fight (ADR 0015)"
         }
       ],
       "quantum": null,
       "aegis": {
         "check": "checked",
         "rows": [
+          {
+            "row": "scout-rifle-polaris-lance-average-with-ignition",
+            "assumptions": [
+              "average",
+              "with ignition"
+            ],
+            "measured": 2542.9,
+            "model": 2854.4,
+            "deviation": 0.1225
+          },
           {
             "row": "scout-rifle-polaris-lance-average-with-ignitions-ember-of-ashes",
             "assumptions": [
@@ -8058,8 +8205,8 @@
               "Ember of Ashes"
             ],
             "measured": 1906,
-            "model": 1872.1,
-            "deviation": -0.0178
+            "model": 2114.8,
+            "deviation": 0.1095
           }
         ]
       },
@@ -8833,35 +8980,70 @@
     {
       "id": "salvation-s-grip",
       "name": "Salvation's Grip",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 11129.2,
-          "s30": 19873.5,
-          "s60": 19873.5
+          "s10": 12528,
+          "s30": 19575,
+          "s60": 19575
         },
         "catalyst": {
-          "s10": 11129.2,
-          "s30": 19873.5,
-          "s60": 19873.5
+          "s10": 12528,
+          "s30": 19575,
+          "s60": 19575
         }
       },
       "cause": {
         "class": "mechanic-missing",
-        "why": "Aegis -44.3 % with average, charged, Hail the Storm."
+        "why": "Aegis -45.1 % with average, charged, Hail the Storm."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Deals 25% increased damage to Frozen Enemies and always destroys Stasis Crystals on hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: the weapon does not freeze a boss by itself (Quantum rows assume no Frozen); crystals are carried by the charged part"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-grenade-launcher-salvation-s-grip-no-charge-spamming",
+        "rowNote": "",
+        "basis": "total",
+        "measured": 19575,
+        "model": 19575,
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
+      },
       "aegis": {
         "check": "checked",
         "rows": [
+          {
+            "row": "grenade-launcher-salvation-s-grip",
+            "assumptions": [],
+            "measured": 795.6,
+            "model": 783,
+            "deviation": -0.0158
+          },
+          {
+            "row": "grenade-launcher-salvation-s-grip-average-charged",
+            "assumptions": [
+              "average",
+              "charged"
+            ],
+            "measured": 15157,
+            "model": 9396,
+            "deviation": -0.3801
+          },
           {
             "row": "grenade-launcher-salvation-s-grip-average-charged-hail-the-storm",
             "assumptions": [
@@ -8870,8 +9052,17 @@
               "Hail the Storm"
             ],
             "measured": 17113.9,
-            "model": 9539.3,
-            "deviation": -0.4426
+            "model": 9396,
+            "deviation": -0.451
+          },
+          {
+            "row": "sustained-salvation-s-grip-uncharged",
+            "assumptions": [
+              "uncharged"
+            ],
+            "measured": 46806,
+            "model": 46103.2,
+            "deviation": -0.015
           }
         ]
       },
@@ -9382,7 +9573,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "still-hunt",
@@ -9517,7 +9708,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "sturm",
@@ -9638,7 +9829,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "sunshot",
@@ -10430,7 +10621,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "the-colony",
@@ -10973,7 +11164,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "the-manticore",
@@ -11273,89 +11464,104 @@
     {
       "id": "the-queenbreaker",
       "name": "The Queenbreaker",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 13765.4,
-          "s30": 41296.1,
-          "s60": 41296.1
+          "s10": 11808,
+          "s30": 37392,
+          "s60": 41328
         },
         "catalyst": {
-          "s10": 15731.9,
-          "s30": 41296.1,
-          "s60": 41296.1
+          "s10": 13776,
+          "s30": 39360,
+          "s60": 41328
         }
       },
       "cause": {
         "class": "ok",
-        "why": "-0.1 % against Quantum, no Aegis row."
+        "why": "Within the limit: Aegis +0.1 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Refills 60% of the number of Hits landed (rounded up) into the Magazine from reserves.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Requires firing 28.75% of the Magazine Capacity for the refill to activate.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "met: the optimal play empties the magazine"
         },
         {
           "text": "Hits after triggering a refill do not count while the Rewind Rounds buff is active (1?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the refill is counted once per emptied magazine (catalyst timing, magazine 8)"
         },
         {
           "text": "• Refill amount is uniquely 14% of the number of Hits rounded up (numbers are subject to change once we get more data points)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the catalyst timing: 15 bolts at 14 % rounded up give the same 3 rounds as 60 % of 5 hits"
         },
         {
           "text": "• 10 Handling",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "handling does not change damage"
         },
         {
           "text": "• 40 Aim Assist",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "aim assist does not change damage"
         },
         {
           "text": "• Charge Time is set to 533ms",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum combat-sights row (rate inside the time to empty)"
         },
         {
           "text": "Fires a 3-round burst of Arc Bolts.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum combat-sights row (damage per burst)"
         },
         {
           "text": "Scoring 6 hits within ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum combat-sights row, which assumes 100 % Charge Accelerant uptime"
         },
         {
           "text": "seconds of each grants 'Charge Accelerant' for 5.5 seconds and decreases Charge Time by 40%.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum combat-sights row, which assumes 100 % Charge Accelerant uptime"
         },
         {
           "text": "• 15 Range",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "range does not change damage"
         },
         {
           "text": "• 10 Zoom",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "zoom does not change damage"
         },
         {
           "text": "• Charge Time is set to 633ms",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum marksman-sights row (rate inside the time to empty)"
         },
         {
           "text": "Fires a single Bolt that chains up to 5 enemies within a 10 meter radius of the original target.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "one boss, no adds (ADR 0015): the chain finds no second target"
         },
         {
           "text": "Applies Arc Blind to all enemies hit for 9 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Arc Blind does not change the boss's damage taken"
         },
         {
           "text": "The chaining bolts deal 27% reduced damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "one boss, no adds (ADR 0015): the chain finds no second target"
         }
       ],
       "quantum": {
@@ -11363,22 +11569,62 @@
         "rowNote": "Fires in a burst, assumes 100% Charge Accelerant uptime",
         "basis": "total",
         "measured": 41328,
-        "model": 41296.1,
-        "deviation": -0.0008,
-        "circular": false,
+        "model": 41328,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 0.9992286585365854,
-          "mechanic": 1.0000000000000004,
+          "damagePerHit": 1,
+          "mechanic": 1,
           "rowPlain": true
         }
       },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "sustained-the-queenbreaker-rewind-rounds-combat-sights",
+            "assumptions": [
+              "Rewind Rounds",
+              "Combat Sights"
+            ],
+            "measured": 97261,
+            "model": 97336.1,
+            "deviation": 0.0008
+          },
+          {
+            "row": "linear-fusion-rifle-the-queenbreaker-marksman-sights",
+            "assumptions": [
+              "Marksman Sights"
+            ],
+            "measured": 1507,
+            "model": 1506,
+            "deviation": -0.0006
+          },
+          {
+            "row": "linear-fusion-rifle-the-queenbreaker-burst-combat-sights",
+            "assumptions": [
+              "burst",
+              "Combat Sights"
+            ],
+            "measured": 1968,
+            "model": 1968,
+            "deviation": 0
+          },
+          {
+            "row": "sustained-the-queenbreaker-rewind-rounds-marksman-sights",
+            "assumptions": [
+              "Rewind Rounds",
+              "Marksman Sights"
+            ],
+            "measured": 74475,
+            "model": 74485.9,
+            "deviation": 0.0001
+          }
+        ]
       },
       "planBlock": "W4"
     },
@@ -11556,7 +11802,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     },
     {
       "id": "thorn",
@@ -12402,42 +12648,44 @@
     {
       "id": "truth",
       "name": "Truth",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 19894.5,
-          "s30": 30120,
-          "s60": 30120
+          "s10": 27228,
+          "s30": 35832,
+          "s60": 35832
         },
         "catalyst": {
-          "s10": 27852.3,
-          "s30": 42168,
-          "s60": 42168
+          "s10": 38119.2,
+          "s30": 50164.8,
+          "s60": 50164.8
         }
       },
       "cause": {
-        "class": "wrong-row",
-        "why": "+4.8 % against Quantum, but Aegis agrees: this row does not hold what is modelled."
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×1.25 against the Quantum row."
       },
       "ruleShares": [
         {
           "id": "cluster-count",
-          "share": 0.1647
+          "share": 0.1976
         },
         {
           "id": "cluster",
-          "share": 0.1647
+          "share": 0.1976
         }
       ],
       "sentences": [
         {
           "text": "Maximum of 4 stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the buff reapers-tithe (x4, pre-stacked kill buff)"
         },
         {
           "text": "triple kill ⇒ 3 stacks)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: kill buffs are pre-stacked at x4, one boss without adds"
         },
         {
           "text": "'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist).",
@@ -12445,11 +12693,13 @@
         },
         {
           "text": "Additional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "not played: no kills on one boss; the buff runs its 15 seconds"
         },
         {
           "text": "This rocket's tracking capabilities are stronger than other traditional tracking rocket launchers, and have a blast radius of 11 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "tracking and radius: one boss, centre hit"
         },
         {
           "text": "Dealing damage with 3 rockets without reloading generates 1 Ammo.",
@@ -12457,7 +12707,8 @@
         },
         {
           "text": "• 80% Faster Rate of Fire",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row's fire rate, which assumes Trueseeker"
         },
         {
           "text": "• Rockets now explode into 8 cluster munitions upon detonation, each cluster having a blast radius of 3 meters.",
@@ -12465,7 +12716,8 @@
         },
         {
           "text": "Rockets gain proximity detonation, automatically exploding within a 2 meter radius of targets.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "detonation point: one boss, full damage"
         }
       ],
       "quantum": {
@@ -12473,16 +12725,16 @@
         "rowNote": "Assumes starting with Prototype Trueseeker, all bomblets hit the boss",
         "basis": "total",
         "measured": 28752,
-        "model": 30120,
-        "deviation": 0.0476,
+        "model": 35832,
+        "deviation": 0.2462,
         "circular": false,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
-          "shots": 0.875,
+          "shots": 1,
           "hitsPerShot": 1,
           "damagePerHit": 1,
-          "mechanic": 1.197234120359328,
+          "mechanic": 1.2462437395659431,
           "rowPlain": true
         }
       },
@@ -12490,11 +12742,31 @@
         "check": "checked",
         "rows": [
           {
+            "row": "sustained-truth-prototype-truthseeker-argent-ordnance",
+            "assumptions": [
+              "Prototype Truthseeker",
+              "Argent Ordnance"
+            ],
+            "measured": 85454,
+            "model": 97050.7,
+            "deviation": 0.1357
+          },
+          {
             "row": "rocket-launcher-truth",
             "assumptions": [],
             "measured": 1798.1,
             "model": 1797,
             "deviation": -0.0006
+          },
+          {
+            "row": "rocket-launcher-truth-average-prototype-truthseeker",
+            "assumptions": [
+              "average",
+              "Prototype Truthseeker"
+            ],
+            "measured": 19629.1,
+            "model": 20421,
+            "deviation": 0.0403
           },
           {
             "row": "rocket-launcher-truth-average-prototype-truthseeker-reaper-s-tithe-x4",
@@ -12504,8 +12776,8 @@
               "Reaper's Tithe x4"
             ],
             "measured": 37890.5,
-            "model": 37136.4,
-            "deviation": -0.0199
+            "model": 38119.2,
+            "deviation": 0.006
           }
         ]
       },
@@ -14135,7 +14407,7 @@
           }
         ]
       },
-      "planBlock": "W3"
+      "planBlock": null
     }
   ]
 }

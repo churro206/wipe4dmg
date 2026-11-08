@@ -283,8 +283,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Rapid-fire frame, Spike Grenades | übersprungen | legendary frame (owner 2026-10-25) |
 | Rapid-fire frame, Sticky Grenades, Explosive Light | übersprungen | legendary frame (owner 2026-10-25) |
 | Rapid-fire frame, Sticky Grenades, Explosive Light, Overwhelming Power | übersprungen | legendary frame (owner 2026-10-25) |
-| Salvation's Grip | im Modell | base row of the package |
-| Salvation's Grip, average, charged | übersprungen | the item file uses another row |
+| Salvation's Grip | übersprungen | the item file uses another row |
+| Salvation's Grip, average, charged | im Modell | base row of the package |
 | Salvation's Grip, average, charged, Hail the Storm | übersprungen | Artefakt: Hail the Storm |
 | The Colony, direct impact | im Modell | base row of the package |
 | The Prospector, average, direct impact, standard target model | im Modell | base row of the package |
@@ -339,8 +339,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Lorentz Driver | im Modell | base row of the package |
 | Precision frame, Charge MW, Accelerated Coils | übersprungen | legendary frame (owner 2026-10-25) |
 | Sleeper Simulant | im Modell | base row of the package |
-| The Queenbreaker, Marksman Sights | übersprungen | the item file uses another row |
-| The Queenbreaker, burst, Combat Sights | im Modell | base row of the package |
+| The Queenbreaker, Marksman Sights | im Modell | base row of the package |
+| The Queenbreaker, burst, Combat Sights | übersprungen | the item file uses another row |
 | Adaptive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Aggressive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Balanced heat weapon - 900RPM power | übersprungen | legendary frame (owner 2026-10-25) |

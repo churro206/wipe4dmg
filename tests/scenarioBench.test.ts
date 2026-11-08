@@ -159,7 +159,8 @@ describe("scenarios of the other tabs (block P)", () => {
   // Q1 (ADR 0019): six entries are out until their mechanics are back (Leviathan's Breath, Gjallarhorn,
   // Thunderlord, Whisper of the Worm, One Thousand Voices, Xenophage; see docs/plans/current.md).
   const PROBE_SUSTAINED: Record<string, number> = {
-    "sustained-truth-prototype-truthseeker-argent-ordnance": 81580,
+    // W4: 16 rockets (Quantum) and clusters of 177 (Compendium) instead of 14 and 155 (Aegis): 81 580 before; Aegis says 85 454 (+13,6 %)
+    "sustained-truth-prototype-truthseeker-argent-ordnance": 97051,
     "sustained-sleeper-simulant": 87747,
     "sustained-grand-overture-volleys-when-available": 144662,
     "sustained-the-queenbreaker-rewind-rounds-combat-sights": 97261,

@@ -12,19 +12,13 @@
       "name": "Item file salvation-s-grip",
       "retrieved": "2026-11-02",
       "status": "derived",
-      "note": "Derived: the time to empty counts from the first shot (Aegis Sustained)"
+      "note": "Derived: the time to empty counts from the first shot (Quantum)"
     }
   },
-  "fireRateRpm": {
-    "expr": "60 / $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds",
-    "note": "seconds per shot to shots per minute"
-  },
-  "magazine": "$quantum[heavies-grenade-launcher-salvation-s-grip-no-charge-spamming].magazine",
-  "totalShots": "$aegisSustained[salvation-s-grip-uncharged].shots",
-  "reloadTimeMs": {
-    "expr": "$aegisSustained[salvation-s-grip-uncharged].reloadMs - 1000 * $aegisSustained[salvation-s-grip-uncharged].peakRateSeconds",
-    "note": "Aegis reloads right after the last shot, the simulator waits one interval first, so one interval less"
-  },
+  "fireRateRpm": "$quantum[heavies-grenade-launcher-salvation-s-grip-no-charge-spamming].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-grenade-launcher-salvation-s-grip-no-charge-spamming].timing.magazine",
+  "totalShots": "$quantum[heavies-grenade-launcher-salvation-s-grip-no-charge-spamming].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-grenade-launcher-salvation-s-grip-no-charge-spamming].timing.reloadTimeMs",
   "catalyst": {
     "name": "Rimestealer, Salvation's Grip Catalyst",
     "description": "Killing Frozen Enemies or Shattering a Stasis Crystal with the weapon grants a Stack of Frost Armor.",
@@ -37,15 +31,21 @@
   "parts": {
     "shot": {
       "name": "Grenade",
-      "damage": "$aegis[grenade-launcher-salvation-s-grip].perShot",
+      "damage": "$quantum[heavies-grenade-launcher-salvation-s-grip-no-charge-spamming].bodyDamage",
       "delivery": "impact"
     },
     "shot-charged": {
       "name": "Charged shot, impact and crystals",
-      "damage": "$aegis[grenade-launcher-salvation-s-grip-average-charged].perShot",
+      "damage": {
+        "expr": "$quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].totalDamage / $quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].timing.totalShots",
+        "note": "damage per shot with the crystals: Quantum's total over its 25 shots; the row where every crystal shatters as it spawns (optimal play)"
+      },
       "delivery": "impact"
     }
   },
+  "notModelled": [
+    { "quote": "Deals 25% increased damage to Frozen Enemies and always destroys Stasis Crystals on hit.", "reason": "not played: the weapon does not freeze a boss by itself (Quantum rows assume no Frozen); crystals are carried by the charged part" }
+  ],
   "rules": [
     {
       "id": "shot",
@@ -70,8 +70,8 @@
             "type": "stat",
             "stat": "rpm",
             "value": {
-              "expr": "60 / $aegisSustained[salvation-s-grip-charged-hail-the-storm].peakRateSeconds",
-              "note": "seconds per charged shot (charge time inside) to shots per minute; Aegis measures it only with Hail the Storm"
+              "expr": "$quantum[heavies-grenade-launcher-salvation-s-grip-full-charge-spamming-2].timing.fireRateRpm",
+              "note": "the rate of the full-charge row (charge time inside)"
             }
           }
         }

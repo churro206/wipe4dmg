@@ -58,29 +58,28 @@ describe("Truth (item file src/data/items/weapons/truth.json, B4b)", () => {
     });
   });
 
-  // The rocket from Quantum (1797, Aegis 5682 ÷ 3.16 = 1798.1), the cluster of every third rocket
-  // (8 × 490 ÷ 3.16) from Aegis.
-  it("takes the rocket from Quantum and a cluster of every third from Aegis", () => {
+  // The rocket from Quantum (1797), the cluster of every third rocket (8 × 177) from the Compendium (W4).
+  it("takes the rocket from Quantum and a cluster of every third from the Compendium", () => {
     expect(truth.damageInstances).toHaveLength(2);
     expect(value(truth.damageInstances[0].damagePerTick)).toBe(1797);
     const cluster = truth.damageInstances[1];
-    expect(value(cluster.damagePerTick)).toBeCloseTo(490 / 3.16, 3);
+    expect(value(cluster.damagePerTick)).toBe(177);
     expect(nthShotOf(truth, cluster.id)).toBe(3);
   });
 
-  it("takes magazine from Quantum and rockets from Aegis Sustained (14, not Quantum's 20)", () => {
+  it("takes magazine and rockets from Quantum's row (16, not 20)", () => {
     expect(value(truth.magazine)).toBe(3);
-    expect(value(truth.totalShots)).toBe(14);
+    expect(value(truth.totalShots)).toBe(16);
   });
 
-  // Without Argent Ordnance: Quantum's reload 2.35 s in place of Aegis' 2.134 s
-  it("fires 3-3-3-3-2 with a 2350 ms gap per reload, the last rocket at 14.197 s", () => {
+  // Quantum: 16 rockets in 14.3 s with 5 reloads of 2.35 s: (14.3 − 11.75) / 15 = 0.17 s between rockets
+  it("fires 3-3-3-3-3-1 with a 2350 ms reload, the last rocket at 14.3 s", () => {
     const buckets = loadBuckets(rawBuckets);
     const shots = simulate(truth, 30, [], buckets).shots;
-    expect(shots).toHaveLength(14);
-    expect(shots[1].timeMs - shots[0].timeMs).toBeCloseTo(533, 0);
-    expect(shots[3].timeMs - shots[2].timeMs).toBeCloseTo(2350, 0);
-    expect(shots.at(-1)!.timeMs).toBeCloseTo(9 * 533 + 4 * 2350, -1);
+    expect(shots).toHaveLength(16);
+    expect(shots[1].timeMs - shots[0].timeMs).toBeCloseTo(170, -1);
+    expect(shots[3].timeMs - shots[2].timeMs).toBeCloseTo(2520, -1);
+    expect(shots.at(-1)!.timeMs).toBeCloseTo(14300, -2);
   });
 
   // Clarity: "40% increased damage for 15 seconds … Timer only starts after firing"
@@ -260,11 +259,11 @@ describe("gaps closed by overrides and rules (2026-10-23)", () => {
     expect(value(w.magazine)).toBe(6);
   });
 
-  it("The Queenbreaker: Combat Sights (more total damage); magazine 5 without Rewind Rounds, Aegis timing with it", () => {
+  it("The Queenbreaker: Combat Sights (Quantum 1968); magazine 5 without Rewind Rounds, 8 with it (5 + 60 %, Clarity)", () => {
     const w = byName("The Queenbreaker")!;
-    expect(perShot("The Queenbreaker")).toBeCloseTo(1966.5, 0);
+    expect(perShot("The Queenbreaker")).toBeCloseTo(1968, 0);
     expect(value(w.magazine)).toBe(5);
-    expect(value(w.catalyst!.timing!.magazine)).toBe(11);
+    expect(value(w.catalyst!.timing!.magazine)).toBe(8);
   });
 
   it("Witherhoard (item, M1): a full blight per shot (Quantum 'passive', 41180 in 20 shots); the catalyst reloads while stowed (50 s)", () => {

@@ -4,7 +4,18 @@
   "name": "Duality",
   "texts": [
     { "source": "clarity", "entry": "Compression Chamber", "hash": "7147c920" },
-    { "source": "clarity", "entry": "Duality Catalyst", "hash": "88770622" }
+    { "source": "clarity", "entry": "Duality Catalyst", "hash": "88770622" },
+    { "source": "clarity", "entry": "On Black Wings", "hash": "93a6e31c" }
+  ],
+  "notModelled": [
+    { "quote": "Passive 5% increased damage falloff distance compared to similar shotguns.", "reason": "one boss, point-blank play: no falloff" },
+    { "quote": "each pellet dealing 104 [?] damage.", "reason": "carried by the Quantum pellet row (828 per shot of 12 pellets)" },
+    { "quote": "this gun fires a single slug round, dealing 1891 [?] precision damage.", "reason": "source conflict: Quantum's slug row holds 1263 precision (known-inaccuracies, W4 Duality)" },
+    { "quote": "Scoring a pellet kill or landing 10 pellets grants one stack of 'On Black Wings' for 10 seconds.", "reason": "missing mechanic over 2 %: the Quantum x3 row is 29838 against 21471 (known-inaccuracies, W4 Duality)" },
+    { "quote": "Maximum of 3 stacks.", "reason": "missing mechanic over 2 % (On Black Wings), known-inaccuracies, W4 Duality" },
+    { "quote": "On Black Wings grants the following at 1|2|3| stacks:", "reason": "missing mechanic over 2 % (On Black Wings), known-inaccuracies, W4 Duality" },
+    { "quote": "• 15.6%|39%|54.7% increased Slug Precision damage", "reason": "missing mechanic over 2 % (On Black Wings), known-inaccuracies, W4 Duality" },
+    { "quote": "• 3.5%|8.8%|12.4% increased Pellet Precision Damage", "reason": "missing mechanic over 2 % (On Black Wings), known-inaccuracies, W4 Duality" }
   ],
   "chargeTimeMs": {
     "value": 0,
@@ -43,12 +54,12 @@
   "parts": {
     "shot": {
       "name": "Slug, ADS",
-      "damage": "$aegis[shotgun-duality-ads].perShot",
+      "damage": "$quantum[specials-shotgun-duality-cata-slug].precisionDamage",
       "delivery": "impact"
     },
     "shot-hipfire": {
       "name": "Pellets, hipfire",
-      "damage": "$aegis[shotgun-duality-hipfire-body].perShot",
+      "damage": "$quantum[specials-shotgun-duality-cata-pellet].bodyDamage",
       "delivery": "impact"
     }
   },

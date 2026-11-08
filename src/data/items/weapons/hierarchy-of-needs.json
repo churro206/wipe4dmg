@@ -8,6 +8,15 @@
     { "source": "clarity", "entry": "Hierarchy of Needs Catalyst", "hash": "fd4df069" },
     { "source": "compendium", "entry": "Hierarchy of Needs", "hash": "fb770e2b" }
   ],
+  "notModelled": [
+    { "quote": "• 40% reduced Hip-Fire Accuracy Cone", "reason": "accuracy: one boss, centre hit" },
+    { "quote": "• 50% decreased Draw Time", "reason": "carried by the catalyst timing (Quantum 'Guidance Ring, cata': rate 44 to 61)" },
+    { "quote": "• 100 Reload Speed", "reason": "carried by the catalyst timing; the bow has a magazine of one" },
+    { "quote": "Guidance Ring lasts 20 seconds and will rotate in place to face you.", "reason": "the duration is carried by the mode guidance-ring (Compendium: 20 seconds); rotation does not change damage" },
+    { "quote": "Only one Guidance Ring per-guardian can exist at a time, but up to 3 Guidance Rings can exist across a fireteam.", "reason": "carried by the playstyle two-rings (an arrow through the own ring and a teammate's)" },
+    { "quote": "Firing any fully-drawn arrow through the Guidance Ring triggers several additional seeking projectiles, each dealing 192 [15] damage.", "reason": "source conflict: Quantum's ring row gives (664 - 223) / 3 = 147 per seeker (known-inaccuracies, W4 Hierarchy of Needs)" },
+    { "quote": "Seekers gain 50% [15-20%] increased damage past 40 meters and have a maximum range of 80 meters.", "reason": "one boss, close range: no distance bonus" }
+  ],
   "chargeTimeMs": "$manifest[Hierarchy of Needs].stat(\"Draw Time\")",
   "fireRateRpm": "$quantum[primaries-bow-hierarchy-of-needs].timing.fireRateRpm",
   "magazine": "$quantum[primaries-bow-hierarchy-of-needs].timing.magazine",

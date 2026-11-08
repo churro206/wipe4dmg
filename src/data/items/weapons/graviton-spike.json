@@ -3,7 +3,33 @@
   "kind": "exoticWeapon",
   "name": "Graviton Spike",
   "texts": [
-    { "source": "clarity", "entry": "Temporal Alignment Refit", "hash": "961ef2f4" }
+    { "source": "clarity", "entry": "Temporal Alignment Refit", "hash": "961ef2f4" },
+    { "source": "clarity", "entry": "Subsistence Refit", "hash": "d3f92355" },
+    { "source": "clarity", "entry": "Rapid Hit Refit", "hash": "cda493fc" },
+    { "source": "clarity", "entry": "Temporal Manipulation", "hash": "16b1c589" },
+    { "source": "clarity", "entry": "Temporal Manipulation II", "hash": "16b1c589" },
+    { "source": "clarity", "entry": "Temporal Manipulation III", "hash": "16b1c589" },
+    { "source": "clarity", "entry": "Temporal Manipulation IV", "hash": "16b1c589" },
+    { "source": "clarity", "entry": "Temporal Anomaly", "hash": "2e044153" }
+  ],
+  "notModelled": [
+    { "quote": "Grants 20% increased damage for 16 seconds upon activating both Arc and Stasis Overcharge one after another.", "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike" },
+    { "quote": "Weapon Kills refill 10% of the magazine (rounded up) from reserves.", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "Submachine Gun and Auto Rifle Kills refill 17% of the magazine.", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "\"Buffed Hits\" grant 1 Stack of Rapid Hit for 2 seconds.", "reason": "Refit chosen by the player; stability and reload only, no damage" },
+    { "quote": "Maximum of 5 Stacks.", "reason": "Rapid Hit: stability and reload only, no damage" },
+    { "quote": "Benefits at 1|2|3|4|5 Stacks:", "reason": "Rapid Hit: stability and reload only, no damage" },
+    { "quote": "• 2|12|14|18|25 Stability", "reason": "stability does not change damage" },
+    { "quote": "• 5|30|35|42|60 Reload Speed", "reason": "Rapid Hit: reload speed shortens the reload, below 2 % of the total" },
+    { "quote": "• 0.99x|0.96x|0.95x|0.945x|0.92x Reload Duration Multiplier", "reason": "Rapid Hit: reload speed shortens the reload, below 2 % of the total" },
+    { "quote": "Hold [Reload] to refill 3 ammo and switch between firing modes:", "reason": "mode swap: the playstyles stasis-mode and arc-mode, each from its Quantum row" },
+    { "quote": "• Arc Mode fires at 150 RPM", "reason": "carried by the Quantum arc-mode row (rate 150)" },
+    { "quote": "• Stasis Mode fires at 95 RPM and deals explosive splash damage in a 3 meter radius.", "reason": "carried by the Quantum stasis-mode row (rate 95, damage per shot incl. splash)" },
+    { "quote": "Scoring 3 Kills or Precision Hits within 7 seconds of each grants 'Arc|Stasis Overcharge' when in Stasis|Arc firing mode.", "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike" },
+    { "quote": "Overcharge drains at a rate of 4.5% per second once earned.", "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike" },
+    { "quote": "Precision Hits and Kills call down a lightning strike, consuming 34% Overcharge energy and dealing 502 [?] Arc Damage in a ?", "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike" },
+    { "quote": "Precision Hits and Kills trigger a Stasis Explosion, consuming 34% Overcharge energy and dealing 126 [?] damage in a ?", "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike" },
+    { "quote": "The explosion creates two Medium Stasis Crystals that spawn 4 meters away on either side of the target at a 45 degree angle.", "reason": "missing mechanic over 2 % (Overcharge), known-inaccuracies, W4 Graviton Spike" }
   ],
   "chargeTimeMs": {
     "value": 0,
@@ -30,12 +56,12 @@
   "parts": {
     "shot": {
       "name": "Shot, Stasis mode",
-      "damage": "$aegis[hand-cannon-graviton-spike-stasis-mode].perShot",
+      "damage": "$quantum[primaries-hand-cannon-graviton-spike-stasis-mode].precisionDamage",
       "delivery": "impact"
     },
     "shot-arc": {
       "name": "Shot, Arc mode",
-      "damage": "$aegis[hand-cannon-graviton-spike-arc-mode].perShot",
+      "damage": "$quantum[primaries-hand-cannon-graviton-spike-arc-mode].precisionDamage",
       "delivery": "impact"
     }
   },

@@ -2,7 +2,9 @@
   "id": "polaris-lance",
   "kind": "exoticWeapon",
   "name": "Polaris Lance",
-  "texts": [{ "source": "clarity", "entry": "The Perfect Fifth", "hash": "e875c333" }],
+  "texts": [{ "source": "clarity", "entry": "The Perfect Fifth", "hash": "e875c333" },
+    { "source": "clarity", "entry": "Polaris Lance Catalyst", "hash": "0af27bf4" }
+  ],
   "chargeTimeMs": {
     "value": 0,
     "source": {
@@ -30,7 +32,7 @@
     },
     "perfect-fifth": {
       "name": "Perfect Fifth",
-      "damage": "$aegis[scout-rifle-polaris-lance-average-with-ignition].tick(\"Perfect Fifth\")",
+      "damage": "$clarity[The Perfect Fifth](\"dealing 215\")",
       "delivery": "splash"
     }
   },
@@ -88,5 +90,10 @@
         }
       ]
     }
-  ]
+  ],
+  "notModelled": [
+    { "quote": "Solar Explosive is removed after 6 seconds.", "reason": "not played: the optimal hold detonates it 0.5 s after the fourth precision hit" },
+    { "quote": "Solar Explosive detonates after a 0.5?", "reason": "carried by the delayMs of the part perfect-fifth (the second half of the sentence is the rule)" },
+    { "quote": "Precision Kills cause targets to explode, dealing up to 123.89 [95.3] weapon-matching elemental damage in a 4.5-meter radius.", "reason": "Precision Kills: the boss is not killed within the fight (ADR 0015)" },
+    { "quote": "Damage falls to 0% at the edge of the radius.", "reason": "one boss, centre hit: full damage (ADR 0015)" }  ]
 }

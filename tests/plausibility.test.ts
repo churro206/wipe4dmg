@@ -669,8 +669,10 @@ describe("all weapons (2026-10-23)", () => {
     // 104 = 99 + The Manticore, Deathbringer, Revision Zero, Dead Man's Tale, Lord of Wolves (W2, hand-made
     // items with a Quantum hit; their packages took it from Aegis)
     // 105 = 104 + Third Iteration (W3, hand-made item with Quantum hits; its package took Aegis)
-    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "105 = 99 + 5 Items aus W2 + Third Iteration (W3)");
-    expect(fromQuantum).toBe(105);
+    // 111 = 105 + Choir of One, Salvation's Grip, Delicate Tomb, Duality, Graviton Spike, The Queenbreaker (W4,
+    // hand-made items that took their hit from Aegis)
+    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "111 = 99 + 5 Items aus W2 + Third Iteration (W3) + 6 Items aus W4");
+    expect(fromQuantum).toBe(111);
   });
 
   // Fourth Horseman (Q1 gate): the cata row of Quantum gives the catalyst magazine of 5 (4 without).
@@ -1112,9 +1114,9 @@ describe("every Nth shot (2026-10-30, ADR 0017 S3)", () => {
     );
     const rockets = result.damageInstances.filter((d) => d.id === "shot").length;
     const clusters = result.damageInstances.filter((d) => d.id === "cluster").length;
-    note("Truth: Raketen / Cluster-Bomblets", `${rockets} / ${clusters}`, "14 Raketen, alle 3 acht Bomblets: 4 × 8 = 32");
-    expect(rockets).toBe(14);
-    expect(clusters).toBe(32);
+    note("Truth: Raketen / Cluster-Bomblets", `${rockets} / ${clusters}`, "16 Raketen (Quantum), alle 3 acht Bomblets: 5 × 8 = 40");
+    expect(rockets).toBe(16);
+    expect(clusters).toBe(40);
   });
 
   it("Polaris Lance: every 5th shot Perfect Fifth with x40 scorch, ignites; with Ember of Ashes more often", () => {
@@ -1190,7 +1192,8 @@ describe("Choir of One modes as playstyles (B6)", () => {
     expect(lastS(hitscan)).toBeGreaterThan(60);
     expect(lastS(hitscan)).toBeLessThan(67);
     expect(ratio).toBeGreaterThan(1.7);
-    expect(ratio).toBeLessThan(2.1);
+    // W4: Quantum's rows, 58 950 (ADS) / 25 650 (hip-fire) = ×2,30; Aegis has ×1,89
+    expect(ratio).toBeLessThan(2.4);
   });
 });
 
@@ -1212,7 +1215,8 @@ describe("Salvation's Grip charge as playstyle (B6)", () => {
     expect(charged.shots.length).toBe(25);
     expect(lastS(uncharged)).toBeGreaterThan(16);
     expect(lastS(uncharged)).toBeLessThan(20);
-    expect(lastS(charged)).toBeGreaterThan(28);
+    // W4: Quantum's full-charge row, 27,6 s (Aegis Sustained with Hail the Storm 35,5 s is only a check)
+    expect(lastS(charged)).toBeGreaterThan(26);
     expect(lastS(charged)).toBeLessThan(36);
     expect(ratio).toBeGreaterThan(1.3);
     expect(ratio).toBeLessThan(1.9);
@@ -1281,21 +1285,21 @@ describe("Catalyst timing from a row with the catalyst (B6.2)", () => {
     expect(ratio).toBeLessThan(0.72);
   });
 
-  it("The Queenbreaker: magazine 5 without the catalyst (4 reloads), the Aegis row's 11 with it (1 reload)", () => {
+  it("The Queenbreaker: magazine 5 without the catalyst (4 reloads), 8 with it (Rewind Rounds, 2 reloads)", () => {
     const off = queenbreaker();
     const on = queenbreaker({ catalyst: true });
     note(
       "The Queenbreaker 60 s: Schüsse, letzter Schuss ohne / mit Katalysator",
       `${off.shots.length} / ${on.shots.length}, ${fmt(lastS(off))} s / ${fmt(lastS(on))} s`,
-      "mit Katalysator Aegis Sustained 26,3 s (Quelle des Takts, nur Verdrahtung); ohne: Quantum Magazin 5, 33 s bei 42 rpm (Gegenprobe)",
+      "W4: Takt aus Quantum (33 s bei 42 rpm ohne Katalysator); mit Katalysator Magazin 8 (5 + 60 %, Clarity), 2 Reloads statt 4; Aegis Sustained mit Katalysator (11er-Magazin) 26,3 s nur noch Gegenprobe",
     );
     expect(off.shots.length).toBe(21);
     expect(on.shots.length).toBe(21);
-    expect(lastS(on)).toBeGreaterThan(24.5);
-    expect(lastS(on)).toBeLessThan(28);
-    // 3 Reloads mehr à etwa 1,05 s + Zwischenschuss, zwischen Aegis mit und Quantum (33 s)
-    expect(lastS(off)).toBeGreaterThan(lastS(on) + 2);
-    expect(lastS(off)).toBeLessThan(33);
+    // 2 Reloads weniger à etwa 1,3 s
+    expect(lastS(on)).toBeGreaterThan(29);
+    expect(lastS(on)).toBeLessThan(32);
+    expect(lastS(off)).toBeGreaterThan(lastS(on) + 1);
+    expect(lastS(off)).toBeLessThan(34);
   });
 
   it("The Queenbreaker: Marksman Sights deal about 0.77 of Combat Sights (Aegis Sustained 74475 / 97261)", () => {

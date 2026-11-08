@@ -55,9 +55,9 @@ describe("Polaris Lance as an item", () => {
     expect(shot).toMatchObject({ id: "shot", canPrecision: true });
     expect(shot.damagePerTick.value).toBe(97);
     expect(shot.damagePerTick.source.status).toBe("verified");
-    expect(fifth).toMatchObject({ id: "perfect-fifth", canPrecision: false, scale: "aegisVisual" });
-    expect(fifth.damagePerTick.value).toBe(93.656);
-    expect(fifth.damagePerTick.source.status).toBe("fitted");
+    expect(fifth).toMatchObject({ id: "perfect-fifth", canPrecision: false, scale: "compendium" });
+    expect(fifth.damagePerTick.value).toBe(215);
+    expect(fifth.damagePerTick.source.status).not.toBe("fitted");
     expect(polaris.fireRateRpm.value).toBe(150);
     expect(polaris.magazine.value).toBe(14);
     expect(polaris.reloadTimeMs.value).toBe(1240);
@@ -97,17 +97,14 @@ function fittedRows(value: unknown): Set<string> {
 
 describe("Truth as an item (B4b step 6)", () => {
   const truth = result.packages.find((p) => p.id === "truth")!;
-  const SUSTAINED = "truth-prototype-truthseeker-argent-ordnance";
-  const CLUSTER_ROW = "rocket-launcher-truth-average-prototype-truthseeker";
-
-  it("the rocket comes from Quantum, the 8 cluster munitions of every 3rd rocket from Aegis", () => {
+  it("the rocket comes from Quantum, the 8 cluster munitions of every 3rd rocket from the Compendium", () => {
     const [rocket, cluster] = truth.damageInstances;
     expect(rocket).toMatchObject({ id: "shot", canPrecision: false, delivery: "splash", scale: "quantum" });
     expect(rocket.damagePerTick.value).toBe(1797);
     expect(rocket.damagePerTick.source.status).toBe("verified");
-    expect(cluster).toMatchObject({ id: "cluster", canPrecision: false, delivery: "splash", scale: "aegisVisual" });
-    expect(cluster.damagePerTick.value).toBe(155.063);
-    expect(cluster.damagePerTick.source.row).toBe(CLUSTER_ROW);
+    expect(cluster).toMatchObject({ id: "cluster", canPrecision: false, delivery: "splash", scale: "compendium" });
+    expect(cluster.damagePerTick.value).toBe(177);
+    expect(cluster.damagePerTick.source.status).not.toBe("fitted");
     const rules = truth.rules ?? [];
     const fire = rules.find((r) => r.do.some((a) => a.type === "spawn" && a.part === "cluster"));
     const spawn = fire?.do.find((a) => a.type === "spawn");
@@ -116,15 +113,12 @@ describe("Truth as an item (B4b step 6)", () => {
     expect(every?.type === "counter" && every.value.value).toBe(2); // the 3rd rocket: counter 0, 1, 2
   });
 
-  it("timing without Argent Ordnance: Aegis rate and shots, Quantum reload minus one interval", () => {
-    expect(truth.fireRateRpm.value).toBe(112.57);
-    expect(truth.fireRateRpm.source.row).toBe(SUSTAINED);
+  it("timing from Quantum's 'all bomblets hit' row: 16 rockets, rate from its time to empty", () => {
+    // (14.3 s − 5 reloads × 2.35 s) / 15 intervals = 0.17 s; the cycle length fits, the split inside a magazine is Quantum's
+    expect(truth.fireRateRpm.value).toBe(352.941);
     expect(truth.magazine.value).toBe(3);
-    expect(truth.totalShots.value).toBe(14);
-    expect(truth.totalShots.source.row).toBe(SUSTAINED);
-    // Quantum 2.35 s (with Rally, without Argent Ordnance) − 0.533 s: the simulator waits one
-    // interval before the reload, Aegis reloads right after the last shot
-    expect(truth.reloadTimeMs.value).toBe(1817);
+    expect(truth.totalShots.value).toBe(16);
+    expect(truth.reloadTimeMs.value).toBe(2350);
     expect(truth.reloadDurationIncluded?.value).toBe(0.9);
   });
 
@@ -154,8 +148,8 @@ describe("Truth as an item (B4b step 6)", () => {
     expect(report.unusedRows.map((u) => u.rowId)).toEqual(["rocket-launcher-truth"]);
   });
 
-  it("frees the single-rocket row and the Tithe row as checks", () => {
-    expect([...fittedRows(truth)].sort()).toEqual([CLUSTER_ROW, SUSTAINED].sort());
+  it("takes no value from an Aegis row: all rows are checks", () => {
+    expect([...fittedRows(truth)]).toEqual([]);
   });
 });
 

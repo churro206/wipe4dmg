@@ -4,7 +4,14 @@
   "name": "Choir of One",
   "texts": [
     { "source": "clarity", "entry": "Fanatical Lance", "hash": "31f67ba5" },
-    { "source": "compendium", "entry": "Choir of One", "hash": "316ac4e8" }
+    { "source": "compendium", "entry": "Choir of One", "hash": "316ac4e8" },
+    { "source": "clarity", "entry": "Command Frame", "hash": "93dbc553" },
+    { "source": "clarity", "entry": "Command Frame II", "hash": "93dbc553" },
+    { "source": "clarity", "entry": "Command Frame III", "hash": "93dbc553" },
+    { "source": "clarity", "entry": "Command Frame IV", "hash": "93dbc553" },
+    { "source": "clarity", "entry": "Subsistence Refit", "hash": "d3f92355" },
+    { "source": "clarity", "entry": "Destabilizing Rounds Refit", "hash": "60390676" },
+    { "source": "clarity", "entry": "Onslaught Refit", "hash": "1dc6c913" }
   ],
   "chargeTimeMs": {
     "value": 0,
@@ -16,20 +23,20 @@
     }
   },
   "fireRateRpm": {
-    "expr": "60 / ($clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds - ($aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs / 1000) / ($aegisSustained[choir-of-one-projectile-mode-spaced].shots - $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine))",
-    "note": "seconds per projectile to projectiles per minute: the time to empty without the reloads, over the intervals of ammo within the magazines (ADR 0013), times the 5 ammo of a projectile"
+    "expr": "$quantum[specials-auto-rifle-choir-of-one].timing.fireRateRpm / $clarity[Fanatical Lance](\"consumes 5 ammo\")",
+    "note": "Quantum's rate is per ammo (time to empty without the reloads, over the intervals of ADR 0013); a projectile takes the 5 ammo of Clarity"
   },
   "magazine": {
     "expr": "$quantum[specials-auto-rifle-choir-of-one].magazine / $clarity[Fanatical Lance](\"consumes 5 ammo\")",
     "note": "ammo of the magazine to projectiles, 5 ammo each (Clarity)"
   },
   "totalShots": {
-    "expr": "$aegisSustained[choir-of-one-projectile-mode-spaced].shots / $clarity[Fanatical Lance](\"consumes 5 ammo\")",
+    "expr": "$quantum[specials-auto-rifle-choir-of-one].timing.totalShots / $clarity[Fanatical Lance](\"consumes 5 ammo\")",
     "note": "ammo of the row to projectiles, 5 ammo each (Clarity)"
   },
   "reloadTimeMs": {
-    "expr": "$aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs - 1000 * $clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-projectile-mode-spaced].timeToEmptySeconds - ($aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-projectile-mode-spaced].reloadMs / 1000) / ($aegisSustained[choir-of-one-projectile-mode-spaced].shots - $aegisSustained[choir-of-one-projectile-mode-spaced].shots / $quantum[specials-auto-rifle-choir-of-one].magazine)",
-    "note": "Aegis reloads right after the last shot, the simulator waits one interval first, so one interval less"
+    "expr": "$quantum[specials-auto-rifle-choir-of-one].timing.reloadTimeMs - ($clarity[Fanatical Lance](\"consumes 5 ammo\") - 1) * 60000 / $quantum[specials-auto-rifle-choir-of-one].timing.fireRateRpm",
+    "note": "the simulator waits one projectile interval (5 ammo) before the reload; Quantum's reload leaves one ammo interval, so four more are taken off"
   },
   "catalyst": {
     "name": "Refit",
@@ -43,18 +50,37 @@
   "parts": {
     "shot": {
       "name": "Projectile",
-      "damage": "$aegisSustained[choir-of-one-projectile-mode-spaced].base",
+      "damage": "$quantum[specials-auto-rifle-choir-of-one].bodyDamage",
       "delivery": "impact"
     },
     "shot-hitscan-mode": {
       "name": "Hitscan, 5 rounds",
       "damage": {
-        "expr": "$aegisSustained[choir-of-one-hitscan-mode-precision].base * $clarity[Fanatical Lance](\"consumes 5 ammo\")",
+        "expr": "$quantum[specials-auto-rifle-choir-of-one-3].precisionDamage * $clarity[Fanatical Lance](\"consumes 5 ammo\")",
         "note": "one hitscan round per ammo; a shot of the item is the 5 ammo of a projectile"
       },
       "delivery": "impact"
     }
   },
+  "notModelled": [
+    { "quote": "Scoring kills in either mode triggers a 7.5 meter radius Void explosion, dealing 239 [?] damage and spawning a Radiolaria Pool at the target's location.", "reason": "Kills: the boss is not killed within the fight (ADR 0015)" },
+    { "quote": "Pool deals 123 [?] Arc damage in a 3 meter radius once per second for 5 seconds.", "reason": "needs a kill (Radiolaria Pool), ADR 0015" },
+    { "quote": "• Minors: 3", "reason": "needs a kill (Radiolaria Pool), ADR 0015" },
+    { "quote": "• Elites and Higher: 1", "reason": "needs a kill (Radiolaria Pool), ADR 0015" },
+    { "quote": "meter radius, despawn after 100 meters, and cannot deal precision damage.", "reason": "one boss, centre hit; the split projectiles take the Quantum row, which holds no precision" },
+    { "quote": "Hitting an enemy with the projectile before it splits deals 947 [233] damage in a 3 meter radius.", "reason": "source conflict: Quantum's row after splitting is 570 per projectile; point-blank play is not the optimal hold (known-inaccuracies, W4 Choir of One)" },
+    { "quote": "Split projectiles individually deal 187 [49] damage each, totalling for 985 [245] damage in a 3 meter radius.", "reason": "source conflict: Quantum's 570 per projectile instead of Clarity's 985 for all five splits hitting (known-inaccuracies, W4 Choir of One)" },
+    { "quote": "Projectile deals 243 [40.25] bodyshot damage and 435 [72] precision damage.", "reason": "source conflict: Quantum's ADS row holds 146 body and 262 precision per round (known-inaccuracies, W4 Choir of One)" },
+    { "quote": "Weapon Kills refill 10% of the magazine (rounded up) from reserves.", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "Submachine Gun and Auto Rifle Kills refill 17% of the magazine.", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "Weapon Kills apply Volatile to enemies in a 7 meter radius around the target and grant Volatile Rounds for 3 seconds.", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "1.5 second cooldown between activations.", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "Weapon Kills grant a Stack of 'Onslaught' for 4.5 seconds.", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "Maximum of 3 Stacks.", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "Benefits at 1|2|3 Stacks of Onslaught:", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "• 16.7% | 28.6% | 37.5% decreased Firing Delay", "reason": "needs a kill (Refit), ADR 0015" },
+    { "quote": "• 15 | 25 | 35 Reload Speed", "reason": "needs a kill (Refit), ADR 0015" }
+  ],
   "rules": [
     {
       "id": "shot",
@@ -79,8 +105,8 @@
             "type": "stat",
             "stat": "rpm",
             "value": {
-              "expr": "60 / ($clarity[Fanatical Lance](\"consumes 5 ammo\") * ($aegisSustained[choir-of-one-hitscan-mode-precision].timeToEmptySeconds - ($aegisSustained[choir-of-one-hitscan-mode-precision].shots / $quantum[specials-auto-rifle-choir-of-one].magazine - 1) * $aegisSustained[choir-of-one-hitscan-mode-precision].reloadMs / 1000) / ($aegisSustained[choir-of-one-hitscan-mode-precision].shots - $aegisSustained[choir-of-one-hitscan-mode-precision].shots / $quantum[specials-auto-rifle-choir-of-one].magazine))",
-              "note": "as the base rate, from the hitscan row: one round per ammo, so five rounds (the magazine of 5 shots) per shot; the slower ADS rate is inside the time to empty"
+              "expr": "$quantum[specials-auto-rifle-choir-of-one-3].timing.fireRateRpm / $clarity[Fanatical Lance](\"consumes 5 ammo\")",
+              "note": "as the base rate, from the ADS row: one round per ammo, so five rounds per shot; the slower ADS rate is inside the time to empty"
             }
           }
         }

@@ -33,7 +33,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **611**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **574**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -49,7 +49,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **611**. D
 | Borealis | `src/data/items/weapons/borealis.json` | 6 | – |
 | Buried Bloodline | `src/data/items/weapons/buried-bloodline.json` | 5 | – |
 | Centrifuse | `src/data/items/weapons/centrifuse.json` | 9 | – |
-| Choir of One | `src/data/items/weapons/choir-of-one.json` | 15 | – |
+| Choir of One | `src/data/items/weapons/choir-of-one.json` | 8 | – |
 | Cloudstrike | `src/data/items/weapons/cloudstrike.json` | 0 | – |
 | Coldheart | `src/data/items/weapons/coldheart.json` | 0 | – |
 | Collective Obligation | `src/data/items/weapons/collective-obligation.json` | 5 | – |
@@ -60,12 +60,12 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **611**. D
 | Dead Man's Tale | `src/data/items/weapons/dead-man-s-tale.json` | 0 | – |
 | Dead Messenger | `src/data/items/weapons/dead-messenger.json` | 3 | – |
 | Deathbringer | `src/data/items/weapons/deathbringer.json` | 0 | – |
-| Delicate Tomb | `src/data/items/weapons/delicate-tomb.json` | 6 | – |
+| Delicate Tomb | `src/data/items/weapons/delicate-tomb.json` | 0 | – |
 | Deterministic Chaos | `src/data/items/weapons/deterministic-chaos.json` | 0 | – |
 | Devil's Ruin | `src/data/items/weapons/devil-s-ruin.json` | 8 | – |
 | Divinity | `src/data/items/weapons/divinity.json` | 0 | – |
 | Dragon's Breath | `src/data/items/weapons/dragon-s-breath.json` | 0 | – |
-| Duality | `src/data/items/weapons/duality.json` | 3 | – |
+| Duality | `src/data/items/weapons/duality.json` | 0 | – |
 | Edge of Action | `src/data/items/weapons/edge-of-action.json` | 10 | – |
 | Edge of Concurrence | `src/data/items/weapons/edge-of-concurrence.json` | 10 | – |
 | Edge of Intent | `src/data/items/weapons/edge-of-intent.json` | 9 | – |
@@ -80,13 +80,13 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **611**. D
 | Gjallarhorn | `src/data/items/weapons/gjallarhorn.json` | 9 | – |
 | Grand Overture | `src/data/items/weapons/grand-overture.json` | 0 | – |
 | Graviton Lance | `src/data/items/weapons/graviton-lance.json` | 9 | – |
-| Graviton Spike | `src/data/items/weapons/graviton-spike.json` | 1 | – |
+| Graviton Spike | `src/data/items/weapons/graviton-spike.json` | 0 | – |
 | Hard Light | `src/data/items/weapons/hard-light.json` | 3 | – |
 | Hawkmoon | `src/data/items/weapons/hawkmoon.json` | 10 | – |
 | Heartshadow | `src/data/items/weapons/heartshadow.json` | 0 | – |
 | Heir Apparent | `src/data/items/weapons/heir-apparent.json` | 8 | – |
 | Heirloom | `src/data/items/weapons/heirloom.json` | 11 | – |
-| Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | 19 | – |
+| Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | 12 | – |
 | Izanagi's Burden | `src/data/items/weapons/izanagi-s-burden.json` | 0 | – |
 | Khvostov 7G-0X | `src/data/items/weapons/khvostov-7g-0x.json` | 0 | – |
 | Le Monarque | `src/data/items/weapons/le-monarque.json` | 0 | – |
@@ -106,14 +106,14 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **611**. D
 | Osteo Striga | `src/data/items/weapons/osteo-striga.json` | 0 | – |
 | Outbreak Perfected | `src/data/items/weapons/outbreak-perfected.json` | 0 | – |
 | Parasite | `src/data/items/weapons/parasite.json` | 6 | – |
-| Polaris Lance | `src/data/items/weapons/polaris-lance.json` | 3 | – |
+| Polaris Lance | `src/data/items/weapons/polaris-lance.json` | 0 | – |
 | Quicksilver Storm | `src/data/items/weapons/quicksilver-storm.json` | 0 | – |
 | Rat King | `src/data/items/weapons/rat-king.json` | 8 | – |
 | Red Death Reformed | `src/data/items/weapons/red-death-reformed.json` | 12 | – |
 | Revision Zero | `src/data/items/weapons/revision-zero.json` | 0 | – |
 | Riskrunner | `src/data/items/weapons/riskrunner.json` | 9 | – |
 | Ruinous Effigy | `src/data/items/weapons/ruinous-effigy.json` | 11 | – |
-| Salvation's Grip | `src/data/items/weapons/salvation-s-grip.json` | 1 | – |
+| Salvation's Grip | `src/data/items/weapons/salvation-s-grip.json` | 0 | – |
 | Service of Luzaku | `src/data/items/weapons/service-of-luzaku.json` | 13 | – |
 | Slayer's Fang | `src/data/items/weapons/slayer-s-fang.json` | 0 | – |
 | Sleeper Simulant | `src/data/items/weapons/sleeper-simulant.json` | 0 | – |
@@ -133,7 +133,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **611**. D
 | The Manticore | `src/data/items/weapons/the-manticore.json` | 0 | – |
 | The Navigator | `src/data/items/weapons/the-navigator.json` | 7 | – |
 | The Prospector | `src/data/items/weapons/the-prospector.json` | 5 | – |
-| The Queenbreaker | `src/data/items/weapons/the-queenbreaker.json` | 4 | – |
+| The Queenbreaker | `src/data/items/weapons/the-queenbreaker.json` | 0 | – |
 | The Wardcliff Coil | `src/data/items/weapons/the-wardcliff-coil.json` | 3 | – |
 | Third Iteration | `src/data/items/weapons/third-iteration.json` | 0 | – |
 | Thorn | `src/data/items/weapons/thorn.json` | 0 | – |
@@ -144,7 +144,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **611**. D
 | Traveler's Chosen | `src/data/items/weapons/traveler-s-chosen.json` | 10 | – |
 | Trespasser | `src/data/items/weapons/trespasser.json` | 5 | – |
 | Trinity Ghoul | `src/data/items/weapons/trinity-ghoul.json` | 0 | – |
-| Truth | `src/data/items/weapons/truth.json` | 5 | – |
+| Truth | `src/data/items/weapons/truth.json` | 0 | – |
 | Two-Tailed Fox | `src/data/items/weapons/two-tailed-fox.json` | 0 | – |
 | Verglas Curve | `src/data/items/weapons/verglas-curve.json` | 4 | – |
 | Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 0 | – |
@@ -268,7 +268,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Riskrunner | Arc Conductor, no chains | nicht modelliert: no chains |
 | Riskrunner | average, Arc Conductor, Peacekeepers | Exotic-Rüstung: Peacekeepers |
 | Ruinous Effigy |  | the item file uses another row |
-| Salvation's Grip | average, charged | the item file uses another row |
+| Salvation's Grip |  | the item file uses another row |
 | Salvation's Grip | average, charged, Hail the Storm | Artefakt: Hail the Storm |
 | Skyburner's Oath | average, hipfire, with ignitions, Burning Ambition, Cabal | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Skyburner's Oath | average, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Cabal | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
@@ -296,7 +296,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | The Last Word | Illegally Modded Holster, hipfire, 1 mag, Envious Assassin | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants); nicht modelliert: 1 mag; Katalysator: Envious Assassin |
 | The Last Word | Illegally Modded Holster, hipfire, 1 mag | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants); nicht modelliert: 1 mag |
 | The Manticore | average, Hover Mode, Peacekeepers | Exotic-Rüstung: Peacekeepers |
-| The Queenbreaker | Marksman Sights | the item file uses another row |
+| The Queenbreaker | burst, Combat Sights | the item file uses another row |
 | Third Iteration | Amalgamation Round | the item file uses another row |
 | Thorn | Illegally Modded Holster, with poison, Soul Devourer, 14 shots | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Touch of Malice | blight | nicht modelliert: blight |

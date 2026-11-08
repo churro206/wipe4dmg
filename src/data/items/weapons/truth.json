@@ -4,7 +4,8 @@
   "name": "Truth",
   "texts": [
     { "source": "clarity", "entry": "Prototype Trueseeker", "hash": "68ebb845" },
-    { "source": "clarity", "entry": "Truth Catalyst", "hash": "5526e36b" }
+    { "source": "clarity", "entry": "Truth Catalyst", "hash": "5526e36b" },
+    { "source": "clarity", "entry": "Grenades and Horseshoes", "hash": "5b354617" }
   ],
   "quantumCheck": {
     "row": "heavies-rocket-launcher-truth-2",
@@ -16,19 +17,13 @@
       "name": "Item file truth",
       "retrieved": "2026-11-01",
       "status": "derived",
-      "note": "Derived: a rocket launcher has no charge; the time to empty counts from the first shot (Aegis Sustained)"
+      "note": "Derived: a rocket launcher has no charge; the time to empty counts from the first shot (Quantum)"
     }
   },
-  "fireRateRpm": {
-    "expr": "60 / $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds",
-    "note": "seconds between rockets within a magazine to rounds per minute; Argent Ordnance changes only the reload"
-  },
-  "magazine": "$quantum[heavies-rocket-launcher-truth].magazine",
-  "totalShots": "$aegisSustained[truth-prototype-truthseeker-argent-ordnance].shots",
-  "reloadTimeMs": {
-    "expr": "$quantum[heavies-rocket-launcher-truth].reloadSeconds * 1000 - $aegisSustained[truth-prototype-truthseeker-argent-ordnance].peakRateSeconds * 1000",
-    "note": "Quantum's reload is without Argent Ordnance; the rate is Aegis', and Aegis reloads right after the last shot while the simulator waits one interval first, so one interval less"
-  },
+  "fireRateRpm": "$quantum[heavies-rocket-launcher-truth-2].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-rocket-launcher-truth-2].timing.magazine",
+  "totalShots": "$quantum[heavies-rocket-launcher-truth-2].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-rocket-launcher-truth-2].timing.reloadTimeMs",
   "catalyst": {
     "name": "Reaper's Tithe, Truth Catalyst",
     "description": "Grants stacks of 'Reaper's Tithe' based on the number of simultaneously killed enemies. Maximum of 4 stacks. (e.g. triple kill ⇒ 3 stacks)\n'Reaper's Tithe' grants 20%|30%|40% increased damage for 15 seconds at 2|3|4 stacks (1st stack does not exist). Timer only starts after firing.\nAdditional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.\nScoring a higher number of simultaneous Kills than the currently active stack count will not \"upgrade\" the buff.",
@@ -42,7 +37,7 @@
     },
     "cluster": {
       "name": "Trueseeker cluster",
-      "damage": "$aegis[rocket-launcher-truth-average-prototype-truthseeker].tick(\"cluster\")",
+      "damage": "$compendium[Truth](\"each deal 177\")",
       "delivery": "splash"
     }
   },
@@ -140,5 +135,13 @@
         { "type": "grantBuff", "buff": "reapers-tithe" }
       ]
     }
+  ],
+  "notModelled": [
+    { "quote": "Maximum of 4 stacks.", "reason": "carried by the buff reapers-tithe (x4, pre-stacked kill buff)" },
+    { "quote": "triple kill ⇒ 3 stacks)", "reason": "not played: kill buffs are pre-stacked at x4, one boss without adds" },
+    { "quote": "Additional Weapon Kills extend the buff duration by 6 seconds, but not beyond the initial 15-second duration.", "reason": "not played: no kills on one boss; the buff runs its 15 seconds" },
+    { "quote": "This rocket's tracking capabilities are stronger than other traditional tracking rocket launchers, and have a blast radius of 11 meters.", "reason": "tracking and radius: one boss, centre hit" },
+    { "quote": "• 80% Faster Rate of Fire", "reason": "carried by the Quantum row's fire rate, which assumes Trueseeker" },
+    { "quote": "Rockets gain proximity detonation, automatically exploding within a 2 meter radius of targets.", "reason": "detonation point: one boss, full damage" }
   ]
 }

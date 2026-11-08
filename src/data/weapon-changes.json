@@ -1,21 +1,131 @@
 {
-  "baseline": "6f5e1f7",
+  "baseline": "02d94ff",
   "changes": [
     {
-      "id": "barrow-dyad",
-      "name": "Barrow-Dyad",
+      "id": "choir-of-one",
+      "name": "Choir of One",
       "kind": "damage",
-      "time": "s60",
-      "catalyst": true,
-      "from": 17748,
-      "to": 85463.7
+      "time": "s10",
+      "catalyst": false,
+      "from": 19376,
+      "to": 14250
     },
     {
-      "id": "barrow-dyad",
-      "name": "Barrow-Dyad",
+      "id": "choir-of-one",
+      "name": "Choir of One",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "delicate-tomb",
+      "name": "Delicate Tomb",
+      "kind": "damage",
+      "time": "s30",
+      "catalyst": false,
+      "from": 21370.4,
+      "to": 21504
+    },
+    {
+      "id": "delicate-tomb",
+      "name": "Delicate Tomb",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "duality",
+      "name": "Duality",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Partial"
+    },
+    {
+      "id": "graviton-spike",
+      "name": "Graviton Spike",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 2473,
+      "to": 2492
+    },
+    {
+      "id": "graviton-spike",
+      "name": "Graviton Spike",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "hierarchy-of-needs",
+      "name": "Hierarchy of Needs",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"
+    },
+    {
+      "id": "polaris-lance",
+      "name": "Polaris Lance",
+      "kind": "damage",
+      "time": "s60",
+      "catalyst": false,
+      "from": 24232,
+      "to": 27751
+    },
+    {
+      "id": "polaris-lance",
+      "name": "Polaris Lance",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Partial"
+    },
+    {
+      "id": "salvation-s-grip",
+      "name": "Salvation's Grip",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 11129.2,
+      "to": 12528
+    },
+    {
+      "id": "salvation-s-grip",
+      "name": "Salvation's Grip",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "the-queenbreaker",
+      "name": "The Queenbreaker",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 13765.4,
+      "to": 11808
+    },
+    {
+      "id": "the-queenbreaker",
+      "name": "The Queenbreaker",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "truth",
+      "name": "Truth",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 19894.5,
+      "to": 27228
+    },
+    {
+      "id": "truth",
+      "name": "Truth",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Partial"
     }
   ]
 }
