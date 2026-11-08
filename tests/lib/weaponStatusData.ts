@@ -142,7 +142,10 @@ export function realWeaponStatus(): WeaponStatusFile {
         const basis = compared?.basis ?? null;
         const measured = q ? (basis === "total" ? q.totalDamage : q.magDamage) : null;
         const rowShots = q ? (basis === "total" ? q.totalShots : q.magazine)! : null;
-        const compareRun = rowShots === null ? null : bareWeaponRun(w, false, ALL_AMMO_SECONDS, rowShots);
+        // The window holds all of the row's shots (Quantum's time to empty, e.g. Anarchy 150 s) and the
+        // damage over time of the last one (up to 15 s)
+        const compareSeconds = Math.max(ALL_AMMO_SECONDS, (q?.timeToEmptySeconds ?? 0) + 15);
+        const compareRun = rowShots === null ? null : bareWeaponRun(w, false, compareSeconds, rowShots);
         const model = compareRun?.totalDamage ?? null;
         const main = compareRun ? mainPart(compareRun) : null;
 

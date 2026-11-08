@@ -646,56 +646,216 @@
     "code": 132,
     "name": "Anarchy",
     "manifestHash": 2376481550,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "grenadeLauncher",
     "element": "arc",
     "ammo": "heavy",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file anarchy",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 11.858,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-anarchy-double-stick",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 150 s − 4 reloads × 2.08 s) ÷ 28 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 150 s − 4 reloads × 2.08 s) ÷ 28 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 6,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-anarchy-double-stick",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 29,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-anarchy-double-stick",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 2080,
       "source": {
-        "name": "Quantum Damage-ics (heavies), row heavies-grenade-launcher-anarchy-double-stick",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-anarchy-double-stick",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "trap-tick",
+        "name": "Arc Trap tick",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file anarchy",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 145.617,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-anarchy-double-stick; Clarity (Live-Clarity-Database, descriptions/clarity.json): Arc Traps",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $quantum[heavies-grenade-launcher-anarchy-double-stick].totalDamage / $quantum[heavies-grenade-launcher-anarchy-double-stick].totalShots / ($clarity[Arc Traps](\"detonate after 10 seconds\") / $clarity[Arc Traps](\"once every 0.5 seconds\")) (Quantum's row \"double-stick\" (two linked traps, wait out the damage): the damage of one grenade shared by the ticks of an activated trap (10 s lifetime / 0.5 s interval)); $quantum[heavies-grenade-launcher-anarchy-double-stick].totalDamage = 84458 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-anarchy-double-stick); $quantum[heavies-grenade-launcher-anarchy-double-stick].totalShots = 29 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-anarchy-double-stick); $clarity[Arc Traps](\"detonate after 10 seconds\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Arc Traps); $clarity[Arc Traps](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Arc Traps)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file anarchy",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file anarchy",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "dot",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "trap-tick",
+            "count": {
+              "value": 20,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Arc Traps",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Arc Traps](\"detonate after 10 seconds\") / $clarity[Arc Traps](\"once every 0.5 seconds\") (ticks of one activated trap until it detonates); $clarity[Arc Traps](\"detonate after 10 seconds\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Arc Traps); $clarity[Arc Traps](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Arc Traps)"
+              }
+            },
+            "intervalMs": {
+              "value": 500,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Arc Traps",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Arc Traps](\"once every 0.5 seconds\") * 1000 (seconds to milliseconds); $clarity[Arc Traps](\"once every 0.5 seconds\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Arc Traps)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file anarchy",
+          "retrieved": "2026-11-08",
+          "status": "derived",
+          "note": "Derived: Quantum gives one sum per grenade (no ticks); it is shared evenly over the 20 ticks, the total stays Quantum's. Playstyle double-stick as in Quantum and Aegis: two traps stuck together, shoot again when they run out",
+          "quote": "Activated traps deal damage once every 0.5 seconds and detonate after 10 seconds."
+        }
+      },
+      {
+        "id": "jolting-feedback-count",
+        "on": { "on": "hit", "part": "trap-tick" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "jolting-feedback",
+            "op": "<",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Anarchy Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Scoring 3 hits"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "jolting-feedback" }]
+      },
+      {
+        "id": "jolt",
+        "on": { "on": "hit", "part": "trap-tick" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "jolting-feedback",
+            "op": "=",
+            "value": {
+              "value": 3,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Anarchy Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Scoring 3 hits"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "jolting-feedback" },
+          { "type": "applyStatus", "status": "jolt" }
+        ],
+        "source": {
+          "name": "Item file anarchy",
+          "retrieved": "2026-11-08",
+          "status": "derived",
+          "note": "Derived: an activated trap ticks every 0.5 s, so 3 hits always fall within 3 s; the counter is not timed out",
+          "quote": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt."
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "arc-traps",
+        "name": "Arc Traps",
+        "description": "Grenades stick to surfaces and chain Arc bolts to other mines.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Jolting Feedback, Anarchy Catalyst",
+      "description": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt. Being Amplified decreases the number of hits required to 2.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -707,103 +867,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 2912.34,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-            "note": "visual Value; assumptions: average, per trap, double stick, Jolting Feedback"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "arc-traps",
-        "name": "Arc Traps",
-        "description": "Grenades stick to surfaces and chain Arc bolts to other mines.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "options": [
-      {
-        "id": "catalyst",
-        "name": "Catalyst",
-        "kind": "catalyst",
-        "bucketId": "weaponPerk",
-        "factor": {
-          "value": 1.157,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-            "note": "Derived (override): Aegis misst nur mit Katalysator (Jolting Feedback). Quantum ohne ihn: „double-stick“, 84.458 für 29 Granaten = 2912 pro Granate, zwei Fallen kleben, neu schießen, wenn sie auslaufen. Katalysator: Aegis 3368,5 ÷ Quantum 2912 = ×1,157 (Jolt)."
-          }
-        },
-        "durationSeconds": null,
-        "condition": null
-      }
-    ],
-    "catalyst": {
-      "name": "Jolting Feedback, Anarchy Catalyst",
-      "description": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt.\nBeing Amplified decreases the number of hits required to 2.",
-      "effect": "damage"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "arbalest",

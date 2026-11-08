@@ -239,35 +239,6 @@
     }
   },
   {
-    "weapon": "Anarchy",
-    "reason": "Aegis misst nur mit Katalysator (Jolting Feedback). Quantum ohne ihn: „double-stick“, 84.458 für 29 Granaten = 2912 pro Granate, zwei Fallen kleben, neu schießen, wenn sie auslaufen. Katalysator: Aegis 3368,5 ÷ Quantum 2912 = ×1,157 (Jolt).",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "heavies-grenade-launcher-anarchy-double-stick",
-        "text": "Assumes two grenades > wait out damage"
-      },
-      {
-        "source": "quantum",
-        "entry": "heavies-grenade-launcher-anarchy-double-stick",
-        "text": "\"totalDamage\":84458"
-      },
-      {
-        "source": "aegis",
-        "entry": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-        "text": "\"perShot\":3368.538"
-      }
-    ],
-    "aegisWins": true,
-    "base": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
-    "perShot": 2912.34,
-    "catalystFactor": 1.157,
-    "timing": {
-      "from": "Quantum",
-      "row": "heavies-grenade-launcher-anarchy-double-stick"
-    }
-  },
-  {
     "weapon": "Jötunn",
     "reason": "Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.",
     "quotes": [

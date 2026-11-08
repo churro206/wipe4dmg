@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **17 Pakete**, 120 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **16 Pakete**, 121 Items, 4 Lücken.
 
 ## Pakete
 
@@ -12,7 +12,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 | Waffe | Typ | Element | Basiszeile (Annahmen) | pro Shot | Timing | Shots | Magazin | Reload | Zeit bis leer | rpm Quantum → abgeleitet | Skala | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Anarchy | grenadeLauncher | arc | average, per trap, double stick, Jolting Feedback (2 Shots) | 2.912,3 | Quantum | 29 | 6 | 2,08 s | 150,0 s | – → 12 | 13.768,3 % | Override: Aegis misst nur mit Katalysator (Jolting Feedback). Quantum ohne ihn: „double-stick“, 84.458 für 29 Granaten = 2912 pro Granate, zwei Fallen kleben, neu schießen, wenn sie auslaufen. Katalysator: Aegis 3368,5 ÷ Quantum 2912 = ×1,157 (Jolt).; Timing aus Zeile heavies-grenade-launcher-anarchy-double-stick (Override); Timing nur aus Quantum; Schaden pro Shot 2.912,3 (Override); Skala weicht um 13768.3 % ab; Aegis gilt (Override) |
 | Cerberus+1 | autoRifle | kinetic | point blank (1 Shot) | 92,6 | Quantum |  | 31 | 1,12 s | – | – → 360 | 0,5 % | Override: Aegis misst „point blank“; dazu passt Quantums „normal, close range“ (Precision 93 gegen Aegis 92,6 pro Schuss).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-auto-rifle-cerberus-1-normal-close-range-2 (Override); Timing nur aus Quantum |
 | Cull's Shadow | fusionRifle | kinetic | average, with corruption (6 Shots) | 1.095,8 | Aegis | 24 | 6 | 1,98 s | 27,3 s | – → 58 | 0,0 % | Override: Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).; Timing aus Zeile cull-s-shadow-with-corruption (Override); Timing nur aus Aegis |
 | Fafnir | linearFusionRifle | void | keine (1 Shot) | 2.528,4 | Quantum | 9 | 3 | 1,77 s | 16,3 s | – → 38 | 0,0 % | Override: Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
@@ -41,6 +40,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **676**. D
 | Ace of Spades | `src/data/items/weapons/ace-of-spades.json` | 0 | – |
 | Ager's Scepter | `src/data/items/weapons/ager-s-scepter.json` | 7 | – |
 | Alethonym | `src/data/items/weapons/alethonym.json` | 0 | – |
+| Anarchy | `src/data/items/weapons/anarchy.json` | 0 | – |
 | Arbalest | `src/data/items/weapons/arbalest.json` | 2 | – |
 | Bad Juju | `src/data/items/weapons/bad-juju.json` | 8 | – |
 | Barrow-Dyad | `src/data/items/weapons/barrow-dyad.json` | 65 | – |
@@ -165,7 +165,6 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 
 | Waffe | Option | Art | Faktor | Dauer | Bedingung | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- |
-| Anarchy | Catalyst | Katalysator | ×1,157 | – | – | Faktor aus dem Text (Override) |
 | Touch of Malice | Catalyst | Katalysator | ×1,250 | – | – | Faktor aus dem Text (Override) |
 
 ## Katalysatoren
@@ -174,7 +173,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 
 | Waffe | Munition | Wirkung | Timing ohne → mit | Text (Anfang) |
 | --- | --- | --- | --- | --- |
-| Anarchy | heavy | Schaden | – | Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt. |
 | Cerberus+1 | primary | keine | – | Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds: |
 | Fafnir | heavy | keine | – | Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no l |
 | Finality's Auger | heavy | unbekannt | – | Grants the Bait and Switch trait: |
@@ -205,6 +203,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | --- | --- | --- |
 | Ager's Scepter | average, Will Given Form | Katalysator: Will Given Form |
 | Ager's Scepter | average, Will Given Form, Harsh Refraction | Katalysator: Will Given Form; Artefakt: Harsh Refraction |
+| Anarchy | average, per trap, double stick, Jolting Feedback | Katalysator: Jolting Feedback |
 | Barrow-Dyad | average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Exotic-Rüstung: Peacekeepers |
 | Black Talon | light | the item file uses another row |
 | Choir of One | hitscan | the item file uses another row |

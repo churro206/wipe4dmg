@@ -1911,7 +1911,7 @@
         "group": "Power",
         "inGame": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt.\nBeing Amplified decreases the number of hits required to 2.",
         "iconHash": 1178660677,
-        "inCalculator": "+16% weapon damage",
+        "inCalculator": "Adds weapon damage.",
         "status": "full",
         "iconKey": "named:anarchy-catalyst"
       },

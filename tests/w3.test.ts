@@ -147,6 +147,22 @@ describe("W3: conditional buffs and reload", () => {
     expect((570 + 15 * 220) / 3861 - 1).toBeLessThan(0.02);
   });
 
+  it("Anarchy: a grenade is 20 trap ticks every 0.5 s (Quantum 'double-stick' 2 912 per grenade), the catalyst adds Jolt (Aegis x1.157)", () => {
+    const base = run({ damagePhaseSeconds: 60 }, weaponById("anarchy"));
+    const ticks = hits(base, "trap-tick");
+    expect(ticks.length % 20).toBe(0);
+    expect(ticks[1].timeMs - ticks[0].timeMs).toBe(500);
+    expect(ticks[0].damage * 20).toBeCloseTo(84458 / 29, 1);
+    // Quantum's time to empty (150 s): 29 grenades, 84 458; the ticks of the last two are cut by the window
+    const whole = run({ damagePhaseSeconds: 150 }, weaponById("anarchy"));
+    expect(whole.totalDamage / 84458 - 1).toBeGreaterThan(-0.06);
+    expect(whole.totalDamage / 84458 - 1).toBeLessThan(0);
+    // check against Aegis ("average per trap, double stick, Jolting Feedback" 3 368.5 against Quantum 2 912.3)
+    const cata = run({ damagePhaseSeconds: 60, catalyst: true }, weaponById("anarchy"));
+    expect(cata.totalDamage / base.totalDamage / 1.157 - 1).toBeGreaterThan(-0.02);
+    expect(cata.totalDamage / base.totalDamage / 1.157 - 1).toBeLessThan(0.02);
+  });
+
   it("The Last Word: with 4 stacks of Fan Fire the reload takes 0.8 / 0.9 times as long (the stored reload already holds 0.9)", () => {
     const shots = hits(run({ damagePhaseSeconds: 30 }, weaponById("the-last-word")), "shot");
     const interval = shots[1].timeMs - shots[0].timeMs;

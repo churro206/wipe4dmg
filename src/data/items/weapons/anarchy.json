@@ -1,0 +1,111 @@
+{
+  "id": "anarchy",
+  "kind": "exoticWeapon",
+  "name": "Anarchy",
+  "texts": [
+    { "source": "clarity", "entry": "Arc Traps", "hash": "74c6aa3e" },
+    { "source": "clarity", "entry": "Anarchy Catalyst", "hash": "2d8898e6" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file anarchy",
+      "retrieved": "2026-11-08",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[heavies-grenade-launcher-anarchy-double-stick].timing.fireRateRpm",
+  "magazine": "$quantum[heavies-grenade-launcher-anarchy-double-stick].timing.magazine",
+  "totalShots": "$quantum[heavies-grenade-launcher-anarchy-double-stick].timing.totalShots",
+  "reloadTimeMs": "$quantum[heavies-grenade-launcher-anarchy-double-stick].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Jolting Feedback, Anarchy Catalyst",
+    "description": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt. Being Amplified decreases the number of hits required to 2.",
+    "effect": "damage"
+  },
+  "parts": {
+    "trap-tick": {
+      "name": "Arc Trap tick",
+      "damage": {
+        "expr": "$quantum[heavies-grenade-launcher-anarchy-double-stick].totalDamage / $quantum[heavies-grenade-launcher-anarchy-double-stick].totalShots / ($clarity[Arc Traps](\"detonate after 10 seconds\") / $clarity[Arc Traps](\"once every 0.5 seconds\"))",
+        "note": "Quantum's row \"double-stick\" (two linked traps, wait out the damage): the damage of one grenade shared by the ticks of an activated trap (10 s lifetime / 0.5 s interval)"
+      },
+      "delivery": "dot"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [
+        {
+          "type": "spawn",
+          "part": "trap-tick",
+          "count": {
+            "expr": "$clarity[Arc Traps](\"detonate after 10 seconds\") / $clarity[Arc Traps](\"once every 0.5 seconds\")",
+            "note": "ticks of one activated trap until it detonates"
+          },
+          "intervalMs": {
+            "expr": "$clarity[Arc Traps](\"once every 0.5 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file anarchy",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "quote": "Activated traps deal damage once every 0.5 seconds and detonate after 10 seconds.",
+        "note": "Derived: Quantum gives one sum per grenade (no ticks); it is shared evenly over the 20 ticks, the total stays Quantum's. Playstyle double-stick as in Quantum and Aegis: two traps stuck together, shoot again when they run out"
+      }
+    },
+    {
+      "id": "jolting-feedback-count",
+      "on": { "on": "hit", "part": "trap-tick" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "jolting-feedback",
+          "op": "<",
+          "value": "$clarity[Anarchy Catalyst](\"Scoring 3 hits\")"
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "jolting-feedback" }]
+    },
+    {
+      "id": "jolt",
+      "on": { "on": "hit", "part": "trap-tick" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "jolting-feedback",
+          "op": "=",
+          "value": "$clarity[Anarchy Catalyst](\"Scoring 3 hits\")"
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "jolting-feedback" },
+        { "type": "applyStatus", "status": "jolt" }
+      ],
+      "source": {
+        "name": "Item file anarchy",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "quote": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt.",
+        "note": "Derived: an activated trap ticks every 0.5 s, so 3 hits always fall within 3 s; the counter is not timed out"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "lay inactive for 30 seconds and connect to other bolts within 15 meters", "reason": "carried by the Quantum row 'double-stick' (two linked traps)" },
+    { "quote": "Up to 6 Arc Traps can exist at a time.", "reason": "the playstyle uses two traps at a time (Quantum 'double-stick')" },
+    { "quote": "Enemies within 2 meters of a trap activate all linked traps.", "reason": "carried by the Quantum row (the boss stands at the traps)" },
+    { "quote": "Unlinked Arc Bolts deal damage in a 4 meter radius after detecting an enemy within 5 meters.", "reason": "unlinked bolts are not played: the playstyle links two traps" },
+    { "quote": "Linked Arc Bolts only damage enemies touching the tripwire.", "reason": "carried by the Quantum row (the boss touches the tripwire)" },
+    { "quote": "Traps that are linked together deal 100% bonus tick damage (compared to a single bolt).", "reason": "carried by the Quantum row 'double-stick' (linked traps)" },
+    { "quote": "Being Amplified decreases the number of hits required to 2.", "reason": "needs Amplified state; the 3 hits are reached within 1.5 s anyway" }
+  ]
+}

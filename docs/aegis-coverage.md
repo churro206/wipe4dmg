@@ -7,7 +7,7 @@ Generiert von `npm run coverage` (`scripts/lib/aegisCoverage.ts`), nicht von Han
 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 135 | 256 | 26 |
+| Weapons | 417 | 134 | 257 | 26 |
 | Sustained | 261 | 38 | 132 | 91 |
 | Swap | 204 | 47 | 102 | 55 |
 
@@ -266,7 +266,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Adaptive frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Adaptive frame, Sticky Grenades | übersprungen | legendary frame (owner 2026-10-25) |
 | Alethonym, average | im Modell | base row of the package |
-| Anarchy, average, per trap, double stick, Jolting Feedback | im Modell | base row of the package |
+| Anarchy, average, per trap, double stick, Jolting Feedback | übersprungen | Katalysator: Jolting Feedback |
 | Area denial frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Compressed wave frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Dead Messenger | im Modell | base row of the package |

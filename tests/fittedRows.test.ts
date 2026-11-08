@@ -24,8 +24,8 @@ describe("status fitted", () => {
 
   it("marks every value that comes from a row of the Aegis tab Weapons", () => {
     const aegis = sourcesOf(rawPackages).filter((s) => s.name.startsWith(WEAPON_TAB));
-    // 95 after W2 (five packages became items, 100+ before); falls further with every item until A2
-    expect(aegis.length).toBeGreaterThan(90);
+    // 95 after W2 (five packages became items, 100+ before), 86 after W3 Anarchy; falls further with every item until A2
+    expect(aegis.length).toBeGreaterThan(80);
     for (const s of aegis) {
       expect(s.status, s.name).toBe("fitted");
       expect(s.row, s.name).toBeDefined();

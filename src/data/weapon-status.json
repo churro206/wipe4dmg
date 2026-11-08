@@ -305,63 +305,99 @@
     {
       "id": "anarchy",
       "name": "Anarchy",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 5824.7,
-          "s30": 17474,
-          "s60": 34948.1
+          "s10": 4368.5,
+          "s30": 16017.9,
+          "s60": 32035.7
         },
         "catalyst": {
-          "s10": 6739.2,
-          "s30": 20217.5,
-          "s60": 40434.9
+          "s10": 5260.7,
+          "s30": 18892.6,
+          "s60": 37785.3
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +7.0 % and no rule that large (\"grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback\")."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Grenades fired are Arc Traps that lay inactive for 30 seconds and connect to other bolts within 15 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row 'double-stick' (two linked traps)"
         },
         {
           "text": "Up to 6 Arc Traps can exist at a time.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the playstyle uses two traps at a time (Quantum 'double-stick')"
         },
         {
           "text": "Enemies within 2 meters of a trap activate all linked traps.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row (the boss stands at the traps)"
         },
         {
           "text": "Activated traps deal damage once every 0.5 seconds and detonate after 10 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Unlinked Arc Bolts deal damage in a 4 meter radius after detecting an enemy within 5 meters.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "unlinked bolts are not played: the playstyle links two traps"
         },
         {
           "text": "Traps that are linked together deal 100% bonus tick damage (compared to a single bolt).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum row 'double-stick' (linked traps)"
         },
         {
           "text": "Scoring 3 hits within 3 seconds of each causes the next damage instance to apply Jolt.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Being Amplified decreases the number of hits required to 2.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs Amplified state; the 3 hits are reached within 1.5 s anyway"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "heavies-grenade-launcher-anarchy-double-stick",
+        "rowNote": "Assumes two grenades > wait out damage, reloading while waiting",
+        "basis": "total",
+        "measured": 84458,
+        "model": 84457.9,
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 0.14388489208633093,
+          "damagePerHit": 6.934142857142857,
+          "mechanic": 1.002285159487547,
+          "rowPlain": false
+        }
+      },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "grenade-launcher-anarchy-average-per-trap-double-stick-jolting-feedback",
+            "assumptions": [
+              "average",
+              "per trap",
+              "double stick",
+              "Jolting Feedback"
+            ],
+            "measured": 6742.4,
+            "model": 7212.5,
+            "deviation": 0.0697
+          }
+        ]
       },
       "planBlock": "W3"
     },
