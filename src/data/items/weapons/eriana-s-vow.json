@@ -25,13 +25,22 @@
     }
   },
   "fireRateRpm": "$quantum[specials-hand-cannon-eriana-s-vow].timing.fireRateRpm",
-  "magazine": "$quantum[specials-hand-cannon-eriana-s-vow].timing.magazine",
+  "magazine": {
+    "expr": "$quantum[specials-hand-cannon-eriana-s-vow].timing.magazine - $clarity[Eriana's Vow Catalyst](\"magazine size by 3\")",
+    "note": "Quantum's row assumes the catalyst (magazine 9); the catalyst adds 3 (Clarity 6 to 9), so 6 without it (W5)"
+  },
   "totalShots": "$quantum[specials-hand-cannon-eriana-s-vow].timing.totalShots",
   "reloadTimeMs": "$quantum[specials-hand-cannon-eriana-s-vow].timing.reloadTimeMs",
   "catalyst": {
     "name": "More to Give, Eriana's Vow Catalyst",
     "description": "Increases the magazine size by 3 (6🠚9).\nRefills stowed weapon from reserves after 3.5 seconds of it being stowed.",
-    "effect": "unknown"
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-hand-cannon-eriana-s-vow].timing.fireRateRpm",
+      "magazine": "$quantum[specials-hand-cannon-eriana-s-vow].timing.magazine",
+      "totalShots": "$quantum[specials-hand-cannon-eriana-s-vow].timing.totalShots",
+      "reloadTimeMs": "$quantum[specials-hand-cannon-eriana-s-vow].timing.reloadTimeMs"
+    }
   },
   "parts": {
     "shot": {

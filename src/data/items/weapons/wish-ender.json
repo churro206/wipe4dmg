@@ -12,6 +12,9 @@
     { "source": "clarity", "entry": "Broadhead", "hash": "48a1ff64" },
     { "source": "clarity", "entry": "Wish-Ender Catalyst", "hash": "f19778cf" }
   ],
+  "notModelled": [
+    { "quote": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds.", "reason": "no adds (ADR 0015): needs 3 enemies" }
+  ],
   "chargeTimeMs": "$manifest[Wish-Ender].stat(\"Draw Time\")",
   "fireRateRpm": "$quantum[primaries-bow-wish-ender].timing.fireRateRpm",
   "magazine": "$quantum[primaries-bow-wish-ender].timing.magazine",
@@ -20,7 +23,7 @@
   "catalyst": {
     "name": "One for All, Wish-Ender Catalyst",
     "description": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
-    "effect": "unknown"
+    "effect": "none"
   },
   "parts": {
     "shot": {

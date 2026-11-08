@@ -25,13 +25,22 @@
     }
   },
   "fireRateRpm": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.fireRateRpm",
-  "magazine": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.magazine",
+  "magazine": {
+    "expr": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.magazine - $clarity[Traveler's Chosen Catalyst](\"Magazine Size by 2\")",
+    "note": "Quantum measures only with the catalyst (\"cata\", magazine 17); the catalyst adds 2 (Clarity 15 to 17), so 15 without it (W5)"
+  },
   "totalShots": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.totalShots",
   "reloadTimeMs": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.reloadTimeMs",
   "catalyst": {
     "name": "Osmosis, Surplus, Traveler's Chosen Catalyst",
     "description": "Increases Magazine Size by 2 (15🠚17)\nGrants the Surplus trait:\nGrants Stat Bonuses depending on the number of Charged Abilities.\nStat Bonuses with 1|2|3+ Charged Abilities:\n• 5|15|25 Stability\n• 5|25|60 Handling\n• 10|25|60 Reload Speed\nAlso grants the Osmosis trait:\nGrenade Ability usage refills 50% of your Magazine (rounded up) from reserves and changes the weapon's element to match your equipped Grenade Ability until stowed.\nMagazine Refill cannot be triggered again without stowing the weapon first.\nKinetic weapons lose their Passive Damage Bonus against non-Boss PVE Combatants (10% on Primary, 15% on Special).\nPerks that replace your Grenade Ability (such as Gunpowder Gamble or Transcendence Grenades) will also trigger Osmosis.",
-    "effect": "unknown"
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.fireRateRpm",
+      "magazine": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.magazine",
+      "totalShots": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[primaries-sidearm-traveler-s-chosen-cata].timing.reloadTimeMs"
+    }
   },
   "parts": {
     "shot": {

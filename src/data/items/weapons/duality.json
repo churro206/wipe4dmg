@@ -31,10 +31,7 @@
     "expr": "$quantum[specials-shotgun-duality-cata-slug].timing.magazine - $clarity[Duality Catalyst](\"Magazine Size by 2\")",
     "note": "Quantum measures only with the catalyst (\"cata\", magazine 8); the catalyst adds 2 (Clarity 6 to 8), so 6 without it"
   },
-  "totalShots": {
-    "expr": "$quantum[specials-shotgun-duality-cata-slug].timing.totalShots - $clarity[Duality Catalyst](\"Magazine Size by 2\")",
-    "note": "the 2 extra rounds of the magazine count to the ammunition (Quantum 17 with the catalyst, coverage 15 to 17), so 15 without it"
-  },
+  "totalShots": "$quantum[specials-shotgun-duality-cata-slug].timing.totalShots",
   "reloadTimeMs": "$quantum[specials-shotgun-duality-cata-slug].timing.reloadTimeMs",
   "catalyst": {
     "name": "Duality Catalyst",

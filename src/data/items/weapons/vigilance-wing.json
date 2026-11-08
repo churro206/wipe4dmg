@@ -11,6 +11,10 @@
     { "source": "clarity", "entry": "Harsh Truths", "hash": "0f0538bb" },
     { "source": "clarity", "entry": "Last Stand", "hash": "97188b1f" }
   ],
+  "notModelled": [
+    { "quote": "Grants 30 Handling and 40 Reload Speed while within 15 meters of an ally.", "reason": "no damage against a boss: handling, and the reload stat is 100 already (Rally, K1)" },
+    { "quote": "Buff lingers for 1.5 seconds once you're no longer near allies.", "reason": "no damage against a boss (duration of the buff above)" }
+  ],
   "chargeTimeMs": {
     "value": 0,
     "source": {
@@ -27,7 +31,7 @@
   "catalyst": {
     "name": "Ensemble, Vigilance Wing Catalyst",
     "description": "Grants the Ensemble trait:\nGrants 30 Handling and 40 Reload Speed while within 15 meters of an ally.\nBuff lingers for 1.5 seconds once you're no longer near allies.",
-    "effect": "unknown"
+    "effect": "none"
   },
   "parts": {
     "shot": {

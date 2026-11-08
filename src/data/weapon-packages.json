@@ -897,13 +897,12 @@
       }
     },
     "magazine": {
-      "value": 6,
+      "value": 5,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-arbalest-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Arbalest Catalyst",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "timing.magazine"
+        "status": "derived",
+        "note": "Derived: $clarity[Arbalest Catalyst](\"(5🠚\") (Quantum measures only with the catalyst (\"cata\", magazine 6); Clarity gives 5 without it (\"by one (5 to 6)\", the step is a word) (W5)); $clarity[Arbalest Catalyst](\"(5🠚\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Arbalest Catalyst)"
       }
     },
     "totalShots": {
@@ -995,7 +994,49 @@
     "catalyst": {
       "name": "Genesis, Arbalest Catalyst",
       "description": "Passively grants:\n• 20 Handling\n• Increases Magazine Size by one (5🠚6)\nRefills magazine from reserves upon breaking a PVE Combatant, Barrier Champion, or Player Shield.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 60.79,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-arbalest-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 23.7 s − 3 reloads × 1.32 s) ÷ 20 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 6,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-arbalest-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": 21,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-arbalest-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1320,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-arbalest-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -6274,12 +6315,13 @@
       }
     },
     "totalShots": {
-      "value": 15,
+      "value": 17,
       "source": {
-        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug; Clarity (Live-Clarity-Database, descriptions/clarity.json): Duality Catalyst",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: $quantum[specials-shotgun-duality-cata-slug].timing.totalShots - $clarity[Duality Catalyst](\"Magazine Size by 2\") (the 2 extra rounds of the magazine count to the ammunition (Quantum 17 with the catalyst, coverage 15 to 17), so 15 without it); $quantum[specials-shotgun-duality-cata-slug].timing.totalShots = 17 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-shotgun-duality-cata-slug); $clarity[Duality Catalyst](\"Magazine Size by 2\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Duality Catalyst)"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
@@ -7140,13 +7182,12 @@
       }
     },
     "magazine": {
-      "value": 9,
+      "value": 6,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-hand-cannon-eriana-s-vow",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-hand-cannon-eriana-s-vow; Clarity (Live-Clarity-Database, descriptions/clarity.json): Eriana's Vow Catalyst",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "timing.magazine"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-hand-cannon-eriana-s-vow].timing.magazine - $clarity[Eriana's Vow Catalyst](\"magazine size by 3\") (Quantum's row assumes the catalyst (magazine 9); the catalyst adds 3 (Clarity 6 to 9), so 6 without it (W5)); $quantum[specials-hand-cannon-eriana-s-vow].timing.magazine = 9 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-hand-cannon-eriana-s-vow); $clarity[Eriana's Vow Catalyst](\"magazine size by 3\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Eriana's Vow Catalyst)"
       }
     },
     "totalShots": {
@@ -7238,7 +7279,49 @@
     "catalyst": {
       "name": "More to Give, Eriana's Vow Catalyst",
       "description": "Increases the magazine size by 3 (6🠚9).\nRefills stowed weapon from reserves after 3.5 seconds of it being stowed.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 98.933,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-hand-cannon-eriana-s-vow",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 25.6 s − 3 reloads × 1.66 s) ÷ 34 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 9,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-hand-cannon-eriana-s-vow",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": 35,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-hand-cannon-eriana-s-vow",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1660,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-hand-cannon-eriana-s-vow",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -8772,13 +8855,12 @@
       }
     },
     "magazine": {
-      "value": 2,
+      "value": 1,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-gjallarhorn",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-gjallarhorn; Clarity (Live-Clarity-Database, descriptions/clarity.json): Gjallarhorn Catalyst",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "timing.magazine"
+        "status": "derived",
+        "note": "Derived: $quantum[heavies-rocket-launcher-gjallarhorn].timing.magazine - $clarity[Gjallarhorn Catalyst](\"Magazine Size by 1\") (Quantum's row has the catalyst magazine 2; the catalyst adds 1 (Clarity 1 to 2), so 1 without it (W5)); $quantum[heavies-rocket-launcher-gjallarhorn].timing.magazine = 2 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-gjallarhorn); $clarity[Gjallarhorn Catalyst](\"Magazine Size by 1\") = 1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Gjallarhorn Catalyst)"
       }
     },
     "totalShots": {
@@ -8870,7 +8952,49 @@
     "catalyst": {
       "name": "More Wolves, Gjallarhorn Catalyst",
       "description": "Increases Magazine Size by 1 (1🠚2).\nKills with Wolfpack Rounds spawn an upgraded Wolfpack Round that seeks targets ?% faster and deals 126.5% increased damage.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 93.023,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-gjallarhorn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 18.2 s − 5 reloads × 2.35 s) ÷ 10 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 2,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-gjallarhorn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": 11,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-gjallarhorn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 2350,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-rocket-launcher-gjallarhorn",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -9643,13 +9767,12 @@
       }
     },
     "magazine": {
-      "value": 9,
+      "value": 8,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata; Clarity (Live-Clarity-Database, descriptions/clarity.json): Hawkmoon Catalyst",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "timing.magazine"
+        "status": "derived",
+        "note": "Derived: $quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine - $clarity[Hawkmoon Catalyst](\"Magazine Size by 1\") (Quantum measures only with the catalyst (\"cata\", magazine 9); the catalyst adds 1 (Clarity 8 to 9), so 8 without it (W5)); $quantum[primaries-hand-cannon-hawkmoon-cata].timing.magazine = 9 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata); $clarity[Hawkmoon Catalyst](\"Magazine Size by 1\") = 1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Hawkmoon Catalyst)"
       }
     },
     "totalShots": {
@@ -9741,7 +9864,49 @@
     "catalyst": {
       "name": "Hunter's Trance, Hawkmoon Catalyst",
       "description": "Increases Magazine Size by 1 (8🠚9).\nGrants the following benefits at 1|2|3|...|7| stacks of Paracausal Charge:\n• 8|14|22|26|28|29|30 Range\n• 15|25|35|40|50|50|50 Reload Speed\n• ? Handling\nClarity's Exotic Weapon Insights built by Hawkmoona Matata. Enjoy! ♥",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 140,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 9,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1640,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-hand-cannon-hawkmoon-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -19990,13 +20155,12 @@
       }
     },
     "magazine": {
-      "value": 7,
+      "value": 4,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-telesto-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-telesto-cata; Clarity (Live-Clarity-Database, descriptions/clarity.json): Telesto Catalyst",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "timing.magazine"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-fusion-rifle-telesto-cata].timing.magazine - $clarity[Telesto Catalyst](\"Magazine Size by 3\") (Quantum measures only with the catalyst (\"cata\", magazine 7); the catalyst adds 3 (Clarity 4 to 7), so 4 without it (W5)); $quantum[specials-fusion-rifle-telesto-cata].timing.magazine = 7 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-telesto-cata); $clarity[Telesto Catalyst](\"Magazine Size by 3\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Telesto Catalyst)"
       }
     },
     "totalShots": {
@@ -20088,7 +20252,49 @@
     "catalyst": {
       "name": "Deeper Pockets, Harbinger Seethe, Telesto Catalyst",
       "description": "Increases the Magazine Size by 3 (4🠚7) and grants 40 Ammo Generation.\nTriggering Harbinger's Pulse three times will cause Telesto to start smoking and short circuiting, granting access to 'Harbinger's Seethe'.\nHold [Reload] to slap your malfunctioning Telesto. On its next direct hit, it will spawn a Wormhole from the Telesto Dimmension, wildly spraying 22 Telesto Bolts over 2.25 seconds.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 43.443,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-telesto-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 27.5 s − 2 reloads × 1.32 s) ÷ 18 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 7,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-telesto-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": 19,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-telesto-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1320,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-fusion-rifle-telesto-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -24579,13 +24785,12 @@
       }
     },
     "magazine": {
-      "value": 7,
+      "value": 4,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-shotgun-tractor-cannon",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-shotgun-tractor-cannon; Clarity (Live-Clarity-Database, descriptions/clarity.json): Tractor Cannon Catalyst",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "timing.magazine"
+        "status": "derived",
+        "note": "Derived: $quantum[heavies-shotgun-tractor-cannon].timing.magazine - $clarity[Tractor Cannon Catalyst](\"Magazine Size by 3\") (Quantum's row assumes the catalyst (magazine 7); the catalyst adds 3 (Clarity 4 to 7), so 4 without it (W5)); $quantum[heavies-shotgun-tractor-cannon].timing.magazine = 7 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-shotgun-tractor-cannon); $clarity[Tractor Cannon Catalyst](\"Magazine Size by 3\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Tractor Cannon Catalyst)"
       }
     },
     "totalShots": {
@@ -24677,7 +24882,49 @@
     "catalyst": {
       "name": "Deeper Pockets, Tractor Cannon Catalyst",
       "description": "Increases Magazine Size by 3 (4🠚7) and grants 50 Ammo Generation.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 90.586,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-shotgun-tractor-cannon",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Derived: (Time to Empty 14.2 s − 2 reloads × 1.47 s) ÷ 17 intervals (ADR 0013)"
+          }
+        },
+        "magazine": {
+          "value": 7,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-shotgun-tractor-cannon",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": 18,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-shotgun-tractor-cannon",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1470,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-shotgun-tractor-cannon",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -24720,13 +24967,12 @@
       }
     },
     "magazine": {
-      "value": 17,
+      "value": 15,
       "source": {
-        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-sidearm-traveler-s-chosen-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-sidearm-traveler-s-chosen-cata; Clarity (Live-Clarity-Database, descriptions/clarity.json): Traveler's Chosen Catalyst",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "timing.magazine"
+        "status": "derived",
+        "note": "Derived: $quantum[primaries-sidearm-traveler-s-chosen-cata].timing.magazine - $clarity[Traveler's Chosen Catalyst](\"Magazine Size by 2\") (Quantum measures only with the catalyst (\"cata\", magazine 17); the catalyst adds 2 (Clarity 15 to 17), so 15 without it (W5)); $quantum[primaries-sidearm-traveler-s-chosen-cata].timing.magazine = 17 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-sidearm-traveler-s-chosen-cata); $clarity[Traveler's Chosen Catalyst](\"Magazine Size by 2\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Traveler's Chosen Catalyst)"
       }
     },
     "totalShots": {
@@ -24818,7 +25064,49 @@
     "catalyst": {
       "name": "Osmosis, Surplus, Traveler's Chosen Catalyst",
       "description": "Increases Magazine Size by 2 (15🠚17)\nGrants the Surplus trait:\nGrants Stat Bonuses depending on the number of Charged Abilities.\nStat Bonuses with 1|2|3+ Charged Abilities:\n• 5|15|25 Stability\n• 5|25|60 Handling\n• 10|25|60 Reload Speed\nAlso grants the Osmosis trait:\nGrenade Ability usage refills 50% of your Magazine (rounded up) from reserves and changes the weapon's element to match your equipped Grenade Ability until stowed.\nMagazine Refill cannot be triggered again without stowing the weapon first.\nKinetic weapons lose their Passive Damage Bonus against non-Boss PVE Combatants (10% on Primary, 15% on Special).\nPerks that replace your Grenade Ability (such as Gunpowder Gamble or Transcendence Grenades) will also trigger Osmosis.",
-      "effect": "unknown"
+      "effect": "timing",
+      "timing": {
+        "fireRateRpm": {
+          "value": 300,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+          }
+        },
+        "magazine": {
+          "value": 17,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.magazine"
+          }
+        },
+        "totalShots": {
+          "value": null,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.totalShots"
+          }
+        },
+        "reloadTimeMs": {
+          "value": 1030,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-sidearm-traveler-s-chosen-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "timing.reloadTimeMs"
+          }
+        }
+      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -26545,7 +26833,7 @@
     "catalyst": {
       "name": "Ensemble, Vigilance Wing Catalyst",
       "description": "Grants the Ensemble trait:\nGrants 30 Handling and 40 Reload Speed while within 15 meters of an ally.\nBuff lingers for 1.5 seconds once you're no longer near allies.",
-      "effect": "unknown"
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -27663,7 +27951,7 @@
     "catalyst": {
       "name": "One for All, Wish-Ender Catalyst",
       "description": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds. Does not require Direct Hits.\nBuff duration cannot be refreshed.",
-      "effect": "unknown"
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,

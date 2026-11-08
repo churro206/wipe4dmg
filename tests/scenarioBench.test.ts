@@ -156,9 +156,19 @@ describe("scenarios of the other tabs (block P)", () => {
 
   // The 14 hand-made entries of the former meta probe (docs/meta-probe.md, column "Modell") are
   // fixtures now: the same build through the one scenario path gives the same value.
-  // Q1 (ADR 0019): six entries are out until their mechanics are back (Leviathan's Breath, Gjallarhorn,
-  // Thunderlord, Whisper of the Worm, One Thousand Voices, Xenophage; see docs/plans/current.md).
+  // Q1 (ADR 0019) took six entries out; W5 brings five back at today's value (the old probe value and
+  // the reason in the comment). Whisper of the Worm stays out until its mechanics are back (−32 %).
   const PROBE_SUSTAINED: Record<string, number> = {
+    // probe 71 555 (= Aegis); Quantum timing and arrow damage now, Aegis +1,3 %
+    "sustained-leviathan-s-breath-archer-s-tempo": 72475,
+    // probe 56 374 (= Aegis); Quantum's 1876 per rocket, Aegis −0,9 %
+    "sustained-gjallarhorn-argent-ordnance": 55892,
+    // probe 101 659; Lightning Strikes from the text (W2), Aegis +8,6 % (known-inaccuracies, Thunderlord)
+    "sustained-thunderlord-assumes-only-one-reload-post-nerf": 110372,
+    // probe 87 320; rules from the text (M1), Aegis +5,6 % (known-inaccuracies, W1 class 1)
+    "sustained-one-thousand-voices-catalyst-particle-reconstruction": 92248,
+    // probe 67 645 (= Aegis); Quantum's damage, source conflict −25,6 % (known-inaccuracies, W0)
+    "sustained-xenophage": 50338,
     // W4: 16 rockets (Quantum) and clusters of 177 (Compendium) instead of 14 and 155 (Aegis): 81 580 before; Aegis says 85 454 (+13,6 %)
     "sustained-truth-prototype-truthseeker-argent-ordnance": 97051,
     "sustained-sleeper-simulant": 87747,

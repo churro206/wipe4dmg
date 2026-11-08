@@ -745,24 +745,25 @@ describe("catalysts from texts (2026-10-23)", () => {
     expect(on / off).toBeLessThan(1.15);
   });
 
-  // Wish-Ender is `unknown` at Q1; no block names it, so it goes to the balance (W5).
-  it.fails("Wish-Ender: a catalyst that needs several enemies does nothing against one boss", () => {
+  // Back since W5 (switched off at Q1).
+  it("Wish-Ender: a catalyst that needs several enemies does nothing against one boss", () => {
     expect(weaponById("wish-ender").catalyst!.effect).toBe("none");
   });
 });
 
 describe("catalysts", () => {
-  // Q1: Quantum's plain Gjallarhorn row has the catalyst magazine of 2 already, so the switch changes
-  // nothing; no block names Gjallarhorn (W5). Thunderlord is back on since W2 (Return Stroke).
-  it.fails("Gjallarhorn: the catalyst's second rocket per magazine gives more damage in 30 s", () => {
-    const off = run({}, weaponById("gjallarhorn")).totalDamage;
-    const on = run({ catalyst: true }, weaponById("gjallarhorn")).totalDamage;
+  // Back since W5: Quantum's plain row has the catalyst magazine 2, the item takes 1 without it
+  // (Clarity 1🠚2). Thunderlord is back on since W2 (Return Stroke).
+  // The 11 rockets (Quantum) leave in 30 s with either magazine, so the check is the time of the last one.
+  it("Gjallarhorn: the catalyst's second rocket per magazine empties the ammo much sooner", () => {
+    const last = (catalyst: boolean) =>
+      run({ catalyst }, weaponById("gjallarhorn")).shots.at(-1)!.timeMs;
     note(
-      "Gjallarhorn Catalyst an / aus (30 s)",
-      fmt(on / off),
-      "> 1 (Magazin 1 → 2)",
+      "Gjallarhorn letzte Rakete ohne / mit Catalyst",
+      `${fmt(last(false) / 1000)} s / ${fmt(last(true) / 1000)} s`,
+      "mit 2er-Magazin halb so viele Reloads (10 → 5); Aegis Sustained mit Catalyst 17,25 s",
     );
-    expect(on / off).toBeGreaterThan(1.05);
+    expect(last(true)).toBeLessThan(0.75 * last(false));
   });
 
   it("Thunderlord: lightning strikes refill, so the catalyst empties the ammo sooner", () => {
@@ -1255,7 +1256,9 @@ describe("Catalyst timing from a row with the catalyst (B6.2)", () => {
     run({ subclass: "arc", damagePhaseSeconds: 60, ...fields }, weaponById("graviton-spike"));
   const lastS = (r: SimulationResult) => r.shots.at(-1)!.timeMs / 1000;
 
-  it("Duality: magazine 6 and 15 shots without the catalyst, 17 with it (Quantum measures only with it)", () => {
+  // W5: the total ammo stays 17 without the catalyst (Quantum's two Fourth Horseman rows: 20 shots with
+  // magazine 4 and 5); the smaller magazine only adds reloads.
+  it("Duality: magazine 6 without the catalyst, 8 with it, 17 shots both (Quantum measures only with it)", () => {
     const off = duality();
     const on = duality({ catalyst: true });
     note(
@@ -1263,12 +1266,13 @@ describe("Catalyst timing from a row with the catalyst (B6.2)", () => {
       `${off.shots.length} / ${on.shots.length}, ${fmt(lastS(off))} s / ${fmt(lastS(on))} s`,
       "Clarity „Magazine Size by 2 (6🠚8)“; mit Katalysator Quantum 14,3 s (Quelle des Takts, nur Verdrahtung), Gegenprobe Aegis Sustained 15,0 s für 17 Schüsse",
     );
-    expect(off.shots.length).toBe(15);
+    expect(off.shots.length).toBe(17);
     expect(on.shots.length).toBe(17);
     // Quantums 14,3 s ist die Quelle des Takts (Verdrahtung); Aegis Sustained (15,0 s, Reload 1,1 s) liegt darüber
     expect(lastS(on)).toBeGreaterThan(13.3);
     expect(lastS(on)).toBeLessThan(15.3);
-    expect(lastS(off)).toBeLessThan(lastS(on));
+    // 6+6+5 and 8+8+1: two reloads both ways, so the last shot comes at the same time
+    expect(lastS(off)).toBeCloseTo(lastS(on), 3);
   });
 
   it("Duality: hipfire pellets deal about 0.66 of the ADS slug per shot at the same timing", () => {

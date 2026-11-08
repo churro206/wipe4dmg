@@ -9,13 +9,22 @@
   ],
   "chargeTimeMs": "$manifest[Telesto].stat(\"Charge Time\")",
   "fireRateRpm": "$quantum[specials-fusion-rifle-telesto-cata].timing.fireRateRpm",
-  "magazine": "$quantum[specials-fusion-rifle-telesto-cata].timing.magazine",
+  "magazine": {
+    "expr": "$quantum[specials-fusion-rifle-telesto-cata].timing.magazine - $clarity[Telesto Catalyst](\"Magazine Size by 3\")",
+    "note": "Quantum measures only with the catalyst (\"cata\", magazine 7); the catalyst adds 3 (Clarity 4 to 7), so 4 without it (W5)"
+  },
   "totalShots": "$quantum[specials-fusion-rifle-telesto-cata].timing.totalShots",
   "reloadTimeMs": "$quantum[specials-fusion-rifle-telesto-cata].timing.reloadTimeMs",
   "catalyst": {
     "name": "Deeper Pockets, Harbinger Seethe, Telesto Catalyst",
     "description": "Increases the Magazine Size by 3 (4🠚7) and grants 40 Ammo Generation.\nTriggering Harbinger's Pulse three times will cause Telesto to start smoking and short circuiting, granting access to 'Harbinger's Seethe'.\nHold [Reload] to slap your malfunctioning Telesto. On its next direct hit, it will spawn a Wormhole from the Telesto Dimmension, wildly spraying 22 Telesto Bolts over 2.25 seconds.",
-    "effect": "unknown"
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-fusion-rifle-telesto-cata].timing.fireRateRpm",
+      "magazine": "$quantum[specials-fusion-rifle-telesto-cata].timing.magazine",
+      "totalShots": "$quantum[specials-fusion-rifle-telesto-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[specials-fusion-rifle-telesto-cata].timing.reloadTimeMs"
+    }
   },
   "parts": {
     "shot": {

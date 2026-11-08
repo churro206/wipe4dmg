@@ -33,7 +33,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **574**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **564**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -41,7 +41,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **574**. D
 | Ager's Scepter | `src/data/items/weapons/ager-s-scepter.json` | 7 | – |
 | Alethonym | `src/data/items/weapons/alethonym.json` | 0 | – |
 | Anarchy | `src/data/items/weapons/anarchy.json` | 0 | – |
-| Arbalest | `src/data/items/weapons/arbalest.json` | 2 | – |
+| Arbalest | `src/data/items/weapons/arbalest.json` | 1 | – |
 | Bad Juju | `src/data/items/weapons/bad-juju.json` | 8 | – |
 | Barrow-Dyad | `src/data/items/weapons/barrow-dyad.json` | 0 | – |
 | Bastion | `src/data/items/weapons/bastion.json` | 6 | – |
@@ -70,19 +70,19 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **574**. D
 | Edge of Concurrence | `src/data/items/weapons/edge-of-concurrence.json` | 10 | – |
 | Edge of Intent | `src/data/items/weapons/edge-of-intent.json` | 9 | – |
 | Ergo Sum | `src/data/items/weapons/ergo-sum.json` | 4 | – |
-| Eriana's Vow | `src/data/items/weapons/eriana-s-vow.json` | 6 | – |
+| Eriana's Vow | `src/data/items/weapons/eriana-s-vow.json` | 5 | – |
 | Euphony | `src/data/items/weapons/euphony.json` | 0 | – |
 | Ex Diris | `src/data/items/weapons/ex-diris.json` | 0 | – |
 | Eyes of Tomorrow | `src/data/items/weapons/eyes-of-tomorrow.json` | 7 | – |
 | Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 0 | – |
 | Final Warning | `src/data/items/weapons/final-warning.json` | 9 | – |
 | Forerunner | `src/data/items/weapons/forerunner.json` | 5 | – |
-| Gjallarhorn | `src/data/items/weapons/gjallarhorn.json` | 9 | – |
+| Gjallarhorn | `src/data/items/weapons/gjallarhorn.json` | 8 | – |
 | Grand Overture | `src/data/items/weapons/grand-overture.json` | 0 | – |
 | Graviton Lance | `src/data/items/weapons/graviton-lance.json` | 9 | – |
 | Graviton Spike | `src/data/items/weapons/graviton-spike.json` | 0 | – |
 | Hard Light | `src/data/items/weapons/hard-light.json` | 3 | – |
-| Hawkmoon | `src/data/items/weapons/hawkmoon.json` | 10 | – |
+| Hawkmoon | `src/data/items/weapons/hawkmoon.json` | 9 | – |
 | Heartshadow | `src/data/items/weapons/heartshadow.json` | 0 | – |
 | Heir Apparent | `src/data/items/weapons/heir-apparent.json` | 8 | – |
 | Heirloom | `src/data/items/weapons/heirloom.json` | 11 | – |
@@ -122,7 +122,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **574**. D
 | Sunshot | `src/data/items/weapons/sunshot.json` | 0 | – |
 | Symmetry | `src/data/items/weapons/symmetry.json` | 15 | – |
 | Tarrabah | `src/data/items/weapons/tarrabah.json` | 18 | – |
-| Telesto | `src/data/items/weapons/telesto.json` | 6 | – |
+| Telesto | `src/data/items/weapons/telesto.json` | 5 | – |
 | Tessellation | `src/data/items/weapons/tessellation.json` | 12 | – |
 | The Chaperone | `src/data/items/weapons/the-chaperone.json` | 0 | – |
 | The Colony | `src/data/items/weapons/the-colony.json` | 7 | – |
@@ -140,8 +140,8 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **574**. D
 | Thunderlord | `src/data/items/weapons/thunderlord.json` | 0 | – |
 | Ticuu's Divination | `src/data/items/weapons/ticuu-s-divination.json` | 0 | – |
 | Tommy's Matchbook | `src/data/items/weapons/tommy-s-matchbook.json` | 0 | – |
-| Tractor Cannon | `src/data/items/weapons/tractor-cannon.json` | 3 | – |
-| Traveler's Chosen | `src/data/items/weapons/traveler-s-chosen.json` | 10 | – |
+| Tractor Cannon | `src/data/items/weapons/tractor-cannon.json` | 2 | – |
+| Traveler's Chosen | `src/data/items/weapons/traveler-s-chosen.json` | 9 | – |
 | Trespasser | `src/data/items/weapons/trespasser.json` | 5 | – |
 | Trinity Ghoul | `src/data/items/weapons/trinity-ghoul.json` | 0 | – |
 | Truth | `src/data/items/weapons/truth.json` | 0 | – |
@@ -149,12 +149,12 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **574**. D
 | Verglas Curve | `src/data/items/weapons/verglas-curve.json` | 4 | – |
 | Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 0 | – |
 | Vexcalibur | `src/data/items/weapons/vexcalibur.json` | 26 | – |
-| Vigilance Wing | `src/data/items/weapons/vigilance-wing.json` | 9 | – |
+| Vigilance Wing | `src/data/items/weapons/vigilance-wing.json` | 7 | – |
 | Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | 15 | – |
 | Whisper of the Worm | `src/data/items/weapons/whisper-of-the-worm.json` | 24 | – |
 | Wicked Implement | `src/data/items/weapons/wicked-implement.json` | 8 | – |
 | Winterbite | `src/data/items/weapons/winterbite.json` | 0 | – |
-| Wish-Ender | `src/data/items/weapons/wish-ender.json` | 9 | – |
+| Wish-Ender | `src/data/items/weapons/wish-ender.json` | 8 | – |
 | Wish-Keeper | `src/data/items/weapons/wish-keeper.json` | 49 | – |
 | Witherhoard | `src/data/items/weapons/witherhoard.json` | 0 | – |
 | Xenophage | `src/data/items/weapons/xenophage.json` | 0 | – |

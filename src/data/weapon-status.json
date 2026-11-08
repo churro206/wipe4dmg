@@ -193,7 +193,7 @@
           }
         ]
       },
-      "planBlock": "W5"
+      "planBlock": null
     },
     {
       "id": "alethonym",
@@ -430,7 +430,7 @@
         },
         {
           "text": "• Increases Magazine Size by one (5🠚6)",
-          "state": "open"
+          "state": "rule"
         }
       ],
       "quantum": {
@@ -1559,7 +1559,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "cloudstrike",
@@ -2751,7 +2751,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "deterministic-chaos",
@@ -3229,13 +3229,13 @@
     {
       "id": "duality",
       "name": "Duality",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
           "s10": 15156,
-          "s30": 18945,
-          "s60": 18945
+          "s30": 21471,
+          "s60": 21471
         },
         "catalyst": {
           "s10": 15156,
@@ -3244,8 +3244,8 @@
         }
       },
       "cause": {
-        "class": "counting",
-        "why": "Shots ×0.88 against the Quantum row."
+        "class": "ok",
+        "why": "Within the limit: Aegis -0.2 %."
       },
       "ruleShares": [],
       "sentences": [
@@ -3299,13 +3299,13 @@
         "rowNote": "Assumes all precision hits",
         "basis": "total",
         "measured": 21471,
-        "model": 18945,
-        "deviation": -0.1176,
-        "circular": false,
+        "model": 21471,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": true,
         "strippedRow": false,
         "factors": {
-          "shots": 0.8823529411764706,
+          "shots": 1,
           "hitsPerShot": 1,
           "damagePerHit": 1,
           "mechanic": 1,
@@ -3336,7 +3336,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "edge-of-action",
@@ -3786,7 +3786,7 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 6874,
+          "s10": 5892,
           "s30": 17185,
           "s60": 17185
         },
@@ -3798,7 +3798,7 @@
       },
       "cause": {
         "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 6 sentences with numbers are still open."
+        "why": "Damage and count come from the row it is compared with; 5 sentences with numbers are still open."
       },
       "ruleShares": [],
       "sentences": [
@@ -3812,7 +3812,7 @@
         },
         {
           "text": "Increases the magazine size by 3 (6🠚9).",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Refills stowed weapon from reserves after 3.5 seconds of it being stowed.",
@@ -4601,7 +4601,7 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 11256,
+          "s10": 7504,
           "s30": 20636,
           "s60": 20636
         },
@@ -4613,13 +4613,13 @@
       },
       "cause": {
         "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+        "why": "Damage and count come from the row it is compared with; 8 sentences with numbers are still open."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Increases Magazine Size by 1 (1🠚2).",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Kills with Wolfpack Rounds spawn an upgraded Wolfpack Round that seeks targets ?% faster and deals 126.5% increased damage.",
@@ -4693,7 +4693,7 @@
           }
         ]
       },
-      "planBlock": "W5"
+      "planBlock": null
     },
     {
       "id": "grand-overture",
@@ -5114,7 +5114,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "hard-light",
@@ -5191,9 +5191,9 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 1746,
-          "s30": 4947,
-          "s60": 9603
+          "s10": 1552,
+          "s30": 4656,
+          "s60": 9312
         },
         "catalyst": {
           "s10": 1746,
@@ -5233,7 +5233,7 @@
         },
         {
           "text": "Increases Magazine Size by 1 (8🠚9).",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Grants the following benefits at 1|2|3|...|7| stacks of Paracausal Charge:",
@@ -5284,8 +5284,8 @@
               "full mag"
             ],
             "measured": 4617.7,
-            "model": 1669.8,
-            "deviation": -0.6384
+            "model": 1370.8,
+            "deviation": -0.7031
           },
           {
             "row": "hand-cannon-hawkmoon-illegally-modded-holster-paracausal-shot-full-mag-pre-stacked-using-heavy-burst",
@@ -5296,8 +5296,8 @@
               "pre-stacked using heavy burst"
             ],
             "measured": 7947.3,
-            "model": 1669.8,
-            "deviation": -0.7899
+            "model": 1370.8,
+            "deviation": -0.8275
           }
         ]
       },
@@ -5687,7 +5687,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "ice-breaker",
@@ -6323,7 +6323,7 @@
           }
         ]
       },
-      "planBlock": "W5"
+      "planBlock": null
     },
     {
       "id": "lodestar",
@@ -8210,7 +8210,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "prometheus-lens",
@@ -9066,7 +9066,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "service-of-luzaku",
@@ -10324,8 +10324,8 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 7938,
-          "s30": 21546,
+          "s10": 6804,
+          "s30": 20412,
           "s60": 21546
         },
         "catalyst": {
@@ -10342,7 +10342,7 @@
       "sentences": [
         {
           "text": "Increases the Magazine Size by 3 (4🠚7) and grants 40 Ammo Generation.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "On its next direct hit, it will spawn a Wormhole from the Telesto Dimmension, wildly spraying 22 Telesto Bolts over 2.25 seconds.",
@@ -10402,7 +10402,7 @@
           }
         ]
       },
-      "planBlock": "W5"
+      "planBlock": null
     },
     {
       "id": "tessellation",
@@ -11626,7 +11626,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "the-wardcliff-coil",
@@ -12337,7 +12337,7 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 6448,
+          "s10": 5456,
           "s30": 8928,
           "s60": 8928
         },
@@ -12359,7 +12359,7 @@
         },
         {
           "text": "Increases Magazine Size by 3 (4🠚7) and grants 50 Ammo Generation.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hits apply Suppression as well as a higher tier Weaken that increases all damage dealt to the target by 30% for 10 seconds.",
@@ -12415,8 +12415,8 @@
       "damage": {
         "base": {
           "s10": 3160,
-          "s30": 9401,
-          "s60": 18486
+          "s30": 9006,
+          "s60": 17775
         },
         "catalyst": {
           "s10": 3160,
@@ -12426,7 +12426,7 @@
       },
       "cause": {
         "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 10 sentences with numbers are still open."
+        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
       },
       "ruleShares": [],
       "sentences": [
@@ -12444,7 +12444,7 @@
         },
         {
           "text": "Increases Magazine Size by 2 (15🠚17)",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Stat Bonuses with 1|2|3+ Charged Abilities:",
@@ -12781,7 +12781,7 @@
           }
         ]
       },
-      "planBlock": "W4"
+      "planBlock": null
     },
     {
       "id": "turncoat",
@@ -13310,17 +13310,19 @@
       },
       "cause": {
         "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+        "why": "Damage and count come from the row it is compared with; 7 sentences with numbers are still open."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Grants 30 Handling and 40 Reload Speed while within 15 meters of an ally.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss: handling, and the reload stat is 100 already (Rally, K1)"
         },
         {
           "text": "Buff lingers for 1.5 seconds once you're no longer near allies.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (duration of the buff above)"
         },
         {
           "text": "5-Round Burst Pulse Rifle.",
@@ -13697,7 +13699,7 @@
           }
         ]
       },
-      "planBlock": "W5"
+      "planBlock": null
     },
     {
       "id": "wicked-implement",
@@ -13904,7 +13906,7 @@
       },
       "cause": {
         "class": "reads-quantum",
-        "why": "Damage and count come from the row it is compared with; 9 sentences with numbers are still open."
+        "why": "Damage and count come from the row it is compared with; 8 sentences with numbers are still open."
       },
       "ruleShares": [],
       "sentences": [
@@ -13942,7 +13944,8 @@
         },
         {
           "text": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): needs 3 enemies"
         }
       ],
       "quantum": {
@@ -14219,7 +14222,7 @@
         "check": "no row",
         "rows": []
       },
-      "planBlock": "W5"
+      "planBlock": null
     },
     {
       "id": "witherhoard",

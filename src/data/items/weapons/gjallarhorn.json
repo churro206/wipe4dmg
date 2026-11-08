@@ -21,13 +21,22 @@
     }
   },
   "fireRateRpm": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.fireRateRpm",
-  "magazine": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.magazine",
+  "magazine": {
+    "expr": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.magazine - $clarity[Gjallarhorn Catalyst](\"Magazine Size by 1\")",
+    "note": "Quantum's row has the catalyst magazine 2; the catalyst adds 1 (Clarity 1 to 2), so 1 without it (W5)"
+  },
   "totalShots": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.totalShots",
   "reloadTimeMs": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.reloadTimeMs",
   "catalyst": {
     "name": "More Wolves, Gjallarhorn Catalyst",
     "description": "Increases Magazine Size by 1 (1🠚2).\nKills with Wolfpack Rounds spawn an upgraded Wolfpack Round that seeks targets ?% faster and deals 126.5% increased damage.",
-    "effect": "unknown"
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.fireRateRpm",
+      "magazine": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.magazine",
+      "totalShots": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.totalShots",
+      "reloadTimeMs": "$quantum[heavies-rocket-launcher-gjallarhorn].timing.reloadTimeMs"
+    }
   },
   "parts": {
     "shot": {

@@ -1,131 +1,75 @@
 {
-  "baseline": "02d94ff",
+  "baseline": "880269d",
   "changes": [
     {
-      "id": "choir-of-one",
-      "name": "Choir of One",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 19376,
-      "to": 14250
-    },
-    {
-      "id": "choir-of-one",
-      "name": "Choir of One",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "delicate-tomb",
-      "name": "Delicate Tomb",
+      "id": "duality",
+      "name": "Duality",
       "kind": "damage",
       "time": "s30",
       "catalyst": false,
-      "from": 21370.4,
-      "to": 21504
-    },
-    {
-      "id": "delicate-tomb",
-      "name": "Delicate Tomb",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
+      "from": 18945,
+      "to": 21471
     },
     {
       "id": "duality",
       "name": "Duality",
       "kind": "status",
-      "from": "Estimated",
-      "to": "Partial"
-    },
-    {
-      "id": "graviton-spike",
-      "name": "Graviton Spike",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 2473,
-      "to": 2492
-    },
-    {
-      "id": "graviton-spike",
-      "name": "Graviton Spike",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "hierarchy-of-needs",
-      "name": "Hierarchy of Needs",
-      "kind": "status",
       "from": "Partial",
       "to": "Complete"
     },
     {
-      "id": "polaris-lance",
-      "name": "Polaris Lance",
-      "kind": "damage",
-      "time": "s60",
-      "catalyst": false,
-      "from": 24232,
-      "to": 27751
-    },
-    {
-      "id": "polaris-lance",
-      "name": "Polaris Lance",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Partial"
-    },
-    {
-      "id": "salvation-s-grip",
-      "name": "Salvation's Grip",
+      "id": "eriana-s-vow",
+      "name": "Eriana's Vow",
       "kind": "damage",
       "time": "s10",
       "catalyst": false,
-      "from": 11129.2,
-      "to": 12528
+      "from": 6874,
+      "to": 5892
     },
     {
-      "id": "salvation-s-grip",
-      "name": "Salvation's Grip",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "the-queenbreaker",
-      "name": "The Queenbreaker",
+      "id": "gjallarhorn",
+      "name": "Gjallarhorn",
       "kind": "damage",
       "time": "s10",
       "catalyst": false,
-      "from": 13765.4,
-      "to": 11808
+      "from": 11256,
+      "to": 7504
     },
     {
-      "id": "the-queenbreaker",
-      "name": "The Queenbreaker",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "truth",
-      "name": "Truth",
+      "id": "hawkmoon",
+      "name": "Hawkmoon",
       "kind": "damage",
       "time": "s10",
       "catalyst": false,
-      "from": 19894.5,
-      "to": 27228
+      "from": 1746,
+      "to": 1552
     },
     {
-      "id": "truth",
-      "name": "Truth",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Partial"
+      "id": "telesto",
+      "name": "Telesto",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 7938,
+      "to": 6804
+    },
+    {
+      "id": "tractor-cannon",
+      "name": "Tractor Cannon",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 6448,
+      "to": 5456
+    },
+    {
+      "id": "traveler-s-chosen",
+      "name": "Traveler's Chosen",
+      "kind": "damage",
+      "time": "s30",
+      "catalyst": false,
+      "from": 9401,
+      "to": 9006
     }
   ]
 }

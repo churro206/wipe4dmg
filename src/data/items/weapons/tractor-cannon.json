@@ -25,13 +25,22 @@
     }
   },
   "fireRateRpm": "$quantum[heavies-shotgun-tractor-cannon].timing.fireRateRpm",
-  "magazine": "$quantum[heavies-shotgun-tractor-cannon].timing.magazine",
+  "magazine": {
+    "expr": "$quantum[heavies-shotgun-tractor-cannon].timing.magazine - $clarity[Tractor Cannon Catalyst](\"Magazine Size by 3\")",
+    "note": "Quantum's row assumes the catalyst (magazine 7); the catalyst adds 3 (Clarity 4 to 7), so 4 without it (W5)"
+  },
   "totalShots": "$quantum[heavies-shotgun-tractor-cannon].timing.totalShots",
   "reloadTimeMs": "$quantum[heavies-shotgun-tractor-cannon].timing.reloadTimeMs",
   "catalyst": {
     "name": "Deeper Pockets, Tractor Cannon Catalyst",
     "description": "Increases Magazine Size by 3 (4🠚7) and grants 50 Ammo Generation.",
-    "effect": "unknown"
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[heavies-shotgun-tractor-cannon].timing.fireRateRpm",
+      "magazine": "$quantum[heavies-shotgun-tractor-cannon].timing.magazine",
+      "totalShots": "$quantum[heavies-shotgun-tractor-cannon].timing.totalShots",
+      "reloadTimeMs": "$quantum[heavies-shotgun-tractor-cannon].timing.reloadTimeMs"
+    }
   },
   "parts": {
     "shot": {

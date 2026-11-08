@@ -361,7 +361,8 @@ describe("src/data/weapon-status.json", () => {
     const of = (id: string) => status.weapons.find((w) => w.id === id)!;
 
     it("the samples of Plan W", () => {
-      expect(of("duality").cause.class).toBe("counting");
+      // Duality was the sample until W5 fixed its count (17 shots without the catalyst too)
+      expect(of("tommy-s-matchbook").cause.class).toBe("counting");
       expect(of("thorn").cause.class).toBe("rule-too-strong");
       expect(of("divinity").cause.class).toBe("wrong-row");
       expect(of("hawkmoon").cause.class).toBe("mechanic-missing");
@@ -391,7 +392,7 @@ describe("src/data/weapon-status.json", () => {
       ["witherhoard", "wrong-row"],
       ["malfeasance", "wrong-row"],
       ["choir-of-one", "wrong-row"],
-      ["duality", "counting"],
+      ["duality", "ok"], // W5: counting fixed, 17 shots without the catalyst too
       ["dragon-s-breath", "source-conflict"],
     ])("P0 sample %s is %s", (id, cls) => {
       expect(of(id).cause.class).toBe(cls);

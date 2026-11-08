@@ -2,6 +2,16 @@
 
 Nur per Grep lesen. Neueste Einträge oben.
 
+## W0 bis W4, V4, A3, P0 erledigt (2026-11-06 bis 2026-11-08, aus `current.md` verschoben in W5)
+
+- P0 (c8f26aa), Arbeitsweise (453538e). 33 Pakete blieben nach Q1: im W-Block oder W5.
+- W0 Abweichungen erklären: Ursachenklasse je Waffe, Spalte „Why off“, Kreisprüfung als „reads Quantum“, `-cata`-Zeilen geprüft, Rangliste (bead4ee).
+- W1 Falsch Übernommenes, je Ursachenklasse eine Sitzung: (1) Regel zu stark: Befund. (2) Trinity Ghoul, Legend of Acrius. (3) Schwerthiebe nicht gegen das Kombo-Modell, Deterministic Chaos gegen „w/ weaken“. Falsche Zeile 10 → 9.
+- W2 Ramp und Spielweisen: Fourth Horseman, Manticore, Matchbook, Coldheart, Ticuu's, Revision Zero, Lord of Wolves, Deathbringer, Dead Man's Tale, Thunderlord, Sunshot; fünf neue Item-Dateien, Golden-Tests „W2“ (61c1fc8). Revision Zero: Zeit des Primärs bei gehaltenem Reload als Faktor (Engine kennt keine Waffensperre).
+- V4 „What changed“: `weapon-changes.json` gegen den neuesten abweichenden Stand in git; CI mit `fetch-depth: 0` (9a01240). A3: nur veraltete Blocknamen in Kommentaren.
+- W3 Bedingte Perks, 13 Waffen in sechs Teilen (`tests/w3.test.ts`, Kill-Buffs nur `pre-stacked`), bis Barrow-Dyad (02d94ff). Lehren: Regeln im selben Schuss sehen einen `resetCounter` der Vorgängerregel nicht (Reset als letzte Regel mit eigenem `spawn`); die Engine sendet nur `reload start`, nie `end` (Last Word `fan-fire-reset` feuert nie), `start` kommt vor den Regeln des letzten Schusses (Zähler mit dem letzten Schuss zurücksetzen, Spawns mit `delayMs`). Gate Primary einzeln bis 1,7× Gjallarhorn (Inhaber 2026-11-08).
+- W4 Hand-Items von `$aegis` auf `$quantum`/`$clarity`: Polaris Lance, Truth, Hierarchy of Needs, Choir of One, Delicate Tomb, Duality, Graviton Spike, Salvation's Grip, The Queenbreaker (880269d). Noch `$aegis`: Black Talon, Ergo Sum, Euphony, Heartshadow, Heirloom, The Lament, Whirling Ovation.
+
 ## S0, V1 bis V3 erledigt (2026-11-05)
 
 - S0 (955a7a1, cd0e1f7, bd61fdb, 4047294): letzter Review NACHBESSERN; Inhaber: Randfälle beheben, kein weiterer Review.

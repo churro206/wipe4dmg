@@ -297,12 +297,12 @@
       "600s buffed catalyst": 55333.85
     },
     "duality": {
-      "30s plain": 18945,
-      "30s buffed": 31895.8,
+      "30s plain": 21471,
+      "30s buffed": 36148.58,
       "30s plain catalyst": 21471,
       "30s buffed catalyst": 36148.58,
-      "600s plain": 18945,
-      "600s buffed": 31895.8,
+      "600s plain": 21471,
+      "600s buffed": 36148.58,
       "600s plain catalyst": 21471,
       "600s buffed catalyst": 36148.58
     },
@@ -487,12 +487,12 @@
       "600s buffed catalyst": 230612.79
     },
     "hawkmoon": {
-      "30s plain": 4947,
-      "30s buffed": 8328.77,
+      "30s plain": 4656,
+      "30s buffed": 7838.84,
       "30s plain catalyst": 4947,
       "30s buffed catalyst": 8328.77,
-      "600s plain": 95351,
-      "600s buffed": 160532.94,
+      "600s plain": 92053,
+      "600s buffed": 154980.43,
       "600s plain catalyst": 95351,
       "600s buffed catalyst": 160532.94
     },
@@ -965,8 +965,8 @@
       "600s buffed catalyst": 292852.12
     },
     "telesto": {
-      "30s plain": 21546,
-      "30s buffed": 36274.85,
+      "30s plain": 20412,
+      "30s buffed": 34365.64,
       "30s plain catalyst": 21546,
       "30s buffed catalyst": 36274.85,
       "600s plain": 21546,
@@ -1157,12 +1157,12 @@
       "600s buffed catalyst": 15031.18
     },
     "traveler-s-chosen": {
-      "30s plain": 9401,
-      "30s buffed": 15827.52,
+      "30s plain": 9006,
+      "30s buffed": 15162.5,
       "30s plain catalyst": 9401,
       "30s buffed catalyst": 15827.52,
-      "600s plain": 182095,
-      "600s buffed": 306575.14,
+      "600s plain": 176565,
+      "600s buffed": 297264.83,
       "600s plain catalyst": 182095,
       "600s buffed catalyst": 306575.14
     },

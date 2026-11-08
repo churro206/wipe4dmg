@@ -8,13 +8,22 @@
   ],
   "chargeTimeMs": "$manifest[Arbalest].stat(\"Charge Time\")",
   "fireRateRpm": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.fireRateRpm",
-  "magazine": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.magazine",
+  "magazine": {
+    "expr": "$clarity[Arbalest Catalyst](\"(5🠚\")",
+    "note": "Quantum measures only with the catalyst (\"cata\", magazine 6); Clarity gives 5 without it (\"by one (5 to 6)\", the step is a word) (W5)"
+  },
   "totalShots": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.totalShots",
   "reloadTimeMs": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.reloadTimeMs",
   "catalyst": {
     "name": "Genesis, Arbalest Catalyst",
     "description": "Passively grants:\n• 20 Handling\n• Increases Magazine Size by one (5🠚6)\nRefills magazine from reserves upon breaking a PVE Combatant, Barrier Champion, or Player Shield.",
-    "effect": "unknown"
+    "effect": "timing",
+    "timing": {
+      "fireRateRpm": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.fireRateRpm",
+      "magazine": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.magazine",
+      "totalShots": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.totalShots",
+      "reloadTimeMs": "$quantum[specials-linear-fusion-rifle-arbalest-cata].timing.reloadTimeMs"
+    }
   },
   "parts": {
     "shot": {
