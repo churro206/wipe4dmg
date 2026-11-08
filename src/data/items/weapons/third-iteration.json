@@ -1,0 +1,197 @@
+{
+  "id": "third-iteration",
+  "kind": "exoticWeapon",
+  "name": "Third Iteration",
+  "texts": [
+    { "source": "clarity", "entry": "Tri-Planar Mass Driver", "hash": "5278d789" },
+    { "source": "clarity", "entry": "Amalgamation Rounds", "hash": "2f0fa47a" },
+    { "source": "clarity", "entry": "Modified Heatsink", "hash": "cebe86f7" },
+    { "source": "clarity", "entry": "Third Iteration Catalyst", "hash": "0a379d97" }
+  ],
+  "quantumCheck": {
+    "row": "primaries-scout-rifle-third-iteration-base-buffed",
+    "reason": "The weapon is played on a marked target; this row holds a magazine of marked spread shots (16 × 220). The item fires the first of them as an Amalgamation Round (570 instead of 220), +10 %. No Quantum row holds the mix."
+  },
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file third-iteration",
+      "retrieved": "2026-11-08",
+      "status": "derived",
+      "note": "Derived: the first Amalgamation Round is charged before the phase (aiming down sights costs no ammo)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-third-iteration-base].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-third-iteration-base].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-third-iteration-base].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-third-iteration-base].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Third Iteration Catalyst",
+    "description": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.\nExplosive damage deals 20% damage at the edge of its radius.",
+    "effect": "none"
+  },
+  "parts": {
+    "amalgamation-round": {
+      "name": "Amalgamation Round",
+      "damage": "$quantum[primaries-scout-rifle-third-iteration-amalgamation-round].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "spread-shot-marked": {
+      "name": "Spread shot, marked target",
+      "damage": "$quantum[primaries-scout-rifle-third-iteration-base-buffed].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "spread-shot": {
+      "name": "Spread shot",
+      "damage": "$quantum[primaries-scout-rifle-third-iteration-base].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "amalgamation-round",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "magazine-shot",
+          "op": "=",
+          "value": {
+            "value": 0,
+            "source": {
+              "name": "Item file third-iteration",
+              "retrieved": "2026-11-08",
+              "status": "derived",
+              "note": "Derived: no shot of the magazine fired yet"
+            }
+          }
+        }
+      ],
+      "do": [
+        { "type": "spawn", "part": "amalgamation-round" },
+        {
+          "type": "setMode",
+          "mode": "mark",
+          "to": "on",
+          "durationMs": {
+            "expr": "$clarity[Amalgamation Rounds](\"for 5 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file third-iteration",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "quote": "When charged, fire an extremely dense shot that deals 290% [18%] increased damage and marks the target for all allies for 5 seconds.",
+        "note": "Derived: the first shot of each magazine is a charged round (Aegis 'Amalgamation Round into 15 marked shots'); 15 spread shots at 200 rpm take 4.5 s and stay inside the mark. Pure Amalgamation Rounds (52 rpm) deal about 3 % less per second"
+      }
+    },
+    {
+      "id": "spread-shot-marked",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "magazine-shot",
+          "op": ">",
+          "value": {
+            "value": 0,
+            "source": {
+              "name": "Item file third-iteration",
+              "retrieved": "2026-11-08",
+              "status": "derived",
+              "note": "Derived: not the first shot of the magazine (that one is the Amalgamation Round)"
+            }
+          }
+        },
+        { "type": "mode", "id": "mark", "is": "on" }
+      ],
+      "do": [{ "type": "spawn", "part": "spread-shot-marked" }]
+    },
+    {
+      "id": "spread-shot",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "magazine-shot",
+          "op": ">",
+          "value": {
+            "value": 0,
+            "source": {
+              "name": "Item file third-iteration",
+              "retrieved": "2026-11-08",
+              "status": "derived",
+              "note": "Derived: not the first shot of the magazine (that one is the Amalgamation Round)"
+            }
+          }
+        },
+        { "type": "mode", "id": "mark", "is": "on", "not": true }
+      ],
+      "do": [{ "type": "spawn", "part": "spread-shot" }]
+    },
+    {
+      "id": "charge-next-round",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "magazine-shot",
+          "op": ">=",
+          "value": {
+            "expr": "$quantum[primaries-scout-rifle-third-iteration-base].timing.magazine - 1",
+            "note": "the last shot of the magazine"
+          }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "magazine-shot" },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": "$quantum[primaries-scout-rifle-third-iteration-amalgamation-round].timing.fireRateRpm"
+          },
+          "durationMs": "$quantum[primaries-scout-rifle-third-iteration-base].timing.reloadTimeMs"
+        }
+      ],
+      "source": {
+        "name": "Item file third-iteration",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "quote": "Aiming Down Sights charges an 'Amalgamation Round' over the course of 1 second.",
+        "note": "Derived: after the last shot the next one waits for the reload and the charge; the gap before the round takes the round's own rate (Quantum 52 rpm, 1.15 s with the 1 s charge). The rate is on only until the reload ends, so the spread shots keep 200 rpm. Check against Aegis: 9.06 s per cycle against 9.05 s"
+      }
+    },
+    {
+      "id": "count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "magazine-shot",
+          "op": "<",
+          "value": {
+            "expr": "$quantum[primaries-scout-rifle-third-iteration-base].timing.magazine - 1",
+            "note": "the last shot resets instead (charge-next-round)"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "magazine-shot" }]
+    }
+  ],
+  "notModelled": [
+    { "quote": "Fires a spread of four Void projectiles per shot.", "reason": "carried by the Quantum rows (damage per shot, all four projectiles)" },
+    { "quote": "Aiming Down Sights tightens the spread into a compressed high-damage shot.", "reason": "carried by the Quantum rows (damage per shot while aiming)" },
+    { "quote": "This gun deals 95% [6.7%] increased Spread Shot damage and 30% [6.7%] increased Amalgamation Round damage to marked targets", "reason": "carried by the Quantum rows 'Base, buffed' (113 → 220) and 'Amalgamation Round' (buffed by the mark)" },
+    { "quote": "Passively refills 1 round every 5 seconds.", "reason": "no effect: firing resets the timer, and the weapon fires without a pause of 5 s" },
+    { "quote": "Defeating a marked target with this gun or scoring a precision kill with an Amalgamation Round grants Void Invisibility for 7 seconds (10.5 with Echo of Persistence) and Truesight for 4 seconds.", "reason": "needs kills: one boss, no adds (ADR 0015)" },
+    { "quote": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.", "reason": "catalyst stage, needs kills: one boss, no adds (ADR 0015)" },
+    { "quote": "Explosive damage deals 20% damage at the edge of its radius.", "reason": "catalyst stage, needs kills: one boss, no adds (ADR 0015)" }
+  ]
+}

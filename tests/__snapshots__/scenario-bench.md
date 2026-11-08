@@ -7,8 +7,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
 - Rank (check set): Spearman 0.98 over 42 rows
-- Absolute, information only: within ±3 % 24 of 42 (check set), 104 of 180 (all counted rows, mostly Eichung)
-- Rows: 182 scenarios (32 by hand, 150 generated); fitted 42; calibration set 97; check set 42; not counted 2; core cannot run 0
+- Absolute, information only: within ±3 % 24 of 42 (check set), 103 of 180 (all counted rows, mostly Eichung)
+- Rows: 182 scenarios (32 by hand, 150 generated); fitted 41; calibration set 98; check set 42; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -160,7 +160,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 180 | 43 % | 41 | 42 | 0.98 | 3/3 | 1 of 4 |
+| Weapons | 417 | 180 | 43 % | 40 | 42 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 4 | 17 | 0.93 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |

@@ -1087,14 +1087,14 @@
       "600s buffed catalyst": 32325.12
     },
     "third-iteration": {
-      "30s plain": 7207.42,
-      "30s buffed": 12134.42,
-      "30s plain catalyst": 7207.42,
-      "30s buffed catalyst": 12134.42,
-      "600s plain": 131873.34,
-      "600s buffed": 222021.95,
-      "600s plain catalyst": 131873.34,
-      "600s buffed catalyst": 222021.95
+      "30s plain": 14160,
+      "30s buffed": 23839.78,
+      "30s plain catalyst": 14160,
+      "30s buffed catalyst": 23839.78,
+      "600s plain": 257090,
+      "600s buffed": 432836.72,
+      "600s plain catalyst": 257090,
+      "600s buffed catalyst": 432836.72
     },
     "thorn": {
       "30s plain": 10767,

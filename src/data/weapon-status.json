@@ -11370,59 +11370,104 @@
     {
       "id": "third-iteration",
       "name": "Third Iteration",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 2477.6,
-          "s30": 7207.4,
-          "s60": 13626.5
+          "s10": 5100,
+          "s30": 14160,
+          "s60": 27090
         },
         "catalyst": {
-          "s10": 2477.6,
-          "s30": 7207.4,
-          "s60": 13626.5
+          "s10": 5100,
+          "s30": 14160,
+          "s60": 27090
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "counting",
+        "why": "Hits per shot ×0.06 against the Quantum row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "spread-shot-marked",
+          "share": 0.8478
+        },
+        {
+          "id": "charge-next-round",
+          "share": 0.4433
+        },
+        {
+          "id": "count",
+          "share": -1.6097
+        }
+      ],
       "sentences": [
         {
           "text": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "catalyst stage, needs kills: one boss, no adds (ADR 0015)"
         },
         {
           "text": "Explosive damage deals 20% damage at the edge of its radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "catalyst stage, needs kills: one boss, no adds (ADR 0015)"
         },
         {
           "text": "Passively refills 1 round every 5 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no effect: firing resets the timer, and the weapon fires without a pause of 5 s"
         },
         {
           "text": "Aiming Down Sights charges an 'Amalgamation Round' over the course of 1 second.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "When charged, fire an extremely dense shot that deals 290% [18%] increased damage and marks the target for all allies for 5 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "This gun deals 95% [6.7%] increased Spread Shot damage and 30% [6.7%] increased Amalgamation Round damage to marked targets",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum rows 'Base, buffed' (113 → 220) and 'Amalgamation Round' (buffed by the mark)"
         },
         {
           "text": "Defeating a marked target with this gun or scoring a precision kill with an Amalgamation Round grants Void Invisibility for 7 seconds (10.5 with Echo of Persistence) and Truesight for 4 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs kills: one boss, no adds (ADR 0015)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-scout-rifle-third-iteration-base-buffed",
+        "rowNote": "Only base rounds, buffed by Amalgamation Rounds",
+        "basis": "magazine",
+        "measured": 3520,
+        "model": 3870,
+        "deviation": 0.0994,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 0.0625,
+          "damagePerHit": 2.590909090909091,
+          "mechanic": 6.7894736842105265,
+          "rowPlain": true
+        }
+      },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "scout-rifle-third-iteration-precision",
+            "assumptions": [
+              "precision"
+            ],
+            "measured": 112.6,
+            "model": 570,
+            "deviation": 4.0626
+          }
+        ]
       },
       "planBlock": "W3"
     },

@@ -22530,56 +22530,378 @@
     "code": 87,
     "name": "Third Iteration",
     "manifestHash": 2973900274,
-    "gameVersion": "9.7.0",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "scoutRifle",
     "element": "void",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file third-iteration",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "note": "Derived: the first Amalgamation Round is charged before the phase (aiming down sights costs no ammo)"
       }
     },
     "fireRateRpm": {
       "value": 200,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 16,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 3410,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-third-iteration-base",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "amalgamation-round",
+        "name": "Amalgamation Round",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 570,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-amalgamation-round",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "spread-shot-marked",
+        "name": "Spread shot, marked target",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 220,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base-buffed",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "spread-shot",
+        "name": "Spread shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 113,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file third-iteration",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "amalgamation-round",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "magazine-shot",
+            "op": "=",
+            "value": {
+              "value": 0,
+              "source": {
+                "name": "Item file third-iteration",
+                "retrieved": "2026-11-08",
+                "status": "derived",
+                "note": "Derived: no shot of the magazine fired yet"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "spawn", "part": "amalgamation-round" },
+          {
+            "type": "setMode",
+            "mode": "mark",
+            "to": "on",
+            "durationMs": {
+              "value": 5000,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Amalgamation Rounds",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Amalgamation Rounds](\"for 5 seconds\") * 1000 (seconds to milliseconds); $clarity[Amalgamation Rounds](\"for 5 seconds\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Amalgamation Rounds)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file third-iteration",
+          "retrieved": "2026-11-08",
+          "status": "derived",
+          "note": "Derived: the first shot of each magazine is a charged round (Aegis 'Amalgamation Round into 15 marked shots'); 15 spread shots at 200 rpm take 4.5 s and stay inside the mark. Pure Amalgamation Rounds (52 rpm) deal about 3 % less per second",
+          "quote": "When charged, fire an extremely dense shot that deals 290% [18%] increased damage and marks the target for all allies for 5 seconds."
+        }
+      },
+      {
+        "id": "spread-shot-marked",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "magazine-shot",
+            "op": ">",
+            "value": {
+              "value": 0,
+              "source": {
+                "name": "Item file third-iteration",
+                "retrieved": "2026-11-08",
+                "status": "derived",
+                "note": "Derived: not the first shot of the magazine (that one is the Amalgamation Round)"
+              }
+            }
+          },
+          { "type": "mode", "id": "mark", "is": "on" }
+        ],
+        "do": [{ "type": "spawn", "part": "spread-shot-marked" }]
+      },
+      {
+        "id": "spread-shot",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "magazine-shot",
+            "op": ">",
+            "value": {
+              "value": 0,
+              "source": {
+                "name": "Item file third-iteration",
+                "retrieved": "2026-11-08",
+                "status": "derived",
+                "note": "Derived: not the first shot of the magazine (that one is the Amalgamation Round)"
+              }
+            }
+          },
+          { "type": "mode", "id": "mark", "is": "on", "not": true }
+        ],
+        "do": [{ "type": "spawn", "part": "spread-shot" }]
+      },
+      {
+        "id": "charge-next-round",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "magazine-shot",
+            "op": ">=",
+            "value": {
+              "value": 15,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-scout-rifle-third-iteration-base].timing.magazine - 1 (the last shot of the magazine); $quantum[primaries-scout-rifle-third-iteration-base].timing.magazine = 16 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "magazine-shot" },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 52,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-amalgamation-round",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 3410,
+              "source": {
+                "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base",
+                "url": "https://destiny2.science/quantum-damage-ics",
+                "retrieved": "2026-10-20",
+                "status": "verified",
+                "note": "timing.reloadTimeMs"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file third-iteration",
+          "retrieved": "2026-11-08",
+          "status": "derived",
+          "note": "Derived: after the last shot the next one waits for the reload and the charge; the gap before the round takes the round's own rate (Quantum 52 rpm, 1.15 s with the 1 s charge). The rate is on only until the reload ends, so the spread shots keep 200 rpm. Check against Aegis: 9.06 s per cycle against 9.05 s",
+          "quote": "Aiming Down Sights charges an 'Amalgamation Round' over the course of 1 second."
+        }
+      },
+      {
+        "id": "count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "magazine-shot",
+            "op": "<",
+            "value": {
+              "value": 15,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-scout-rifle-third-iteration-base].timing.magazine - 1 (the last shot resets instead (charge-next-round)); $quantum[primaries-scout-rifle-third-iteration-base].timing.magazine = 16 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-third-iteration-base)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "magazine-shot" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "tri-planar-mass-driver",
+        "name": "Tri-Planar Mass Driver",
+        "description": "Fires a spread of Void energy projectiles. Aiming down sights narrows the spread.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Third Iteration Catalyst",
+      "description": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.\nExplosive damage deals 20% damage at the edge of its radius.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -22591,82 +22913,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-third-iteration-precision",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-third-iteration-precision",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 112.616,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-third-iteration-precision",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-third-iteration-precision",
-            "note": "visual Value; assumptions: precision"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-third-iteration-precision",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-third-iteration-precision"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-third-iteration-precision",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-third-iteration-precision"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "tri-planar-mass-driver",
-        "name": "Tri-Planar Mass Driver",
-        "description": "Fires a spread of Void energy projectiles. Aiming down sights narrows the spread.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Third Iteration Catalyst",
-      "description": "Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also applying Weaken to all enemies within an 8 meter radius for 6 seconds.\nExplosive damage deals 20% damage at the edge of its radius.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "thorn",

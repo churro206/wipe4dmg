@@ -419,7 +419,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | The Jade Rabbit | im Modell | base row of the package |
 | The Jade Rabbit, Fated Missile x15 | fehlt | nicht modelliert: Fated Missile x15 |
 | Third Iteration, precision | im Modell | base row of the package |
-| Third Iteration, Amalgamation Round | übersprungen | ohne precision der Basiszeile |
+| Third Iteration, Amalgamation Round | übersprungen | the item file uses another row |
 | Touch of Malice | im Modell | base row of the package |
 | Touch of Malice, blight | fehlt | nicht modelliert: blight |
 | Wicked Implement, average, with manual shatters | im Modell | base row of the package |

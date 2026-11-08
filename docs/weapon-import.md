@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **18 Pakete**, 119 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **17 Pakete**, 120 Items, 4 Lücken.
 
 ## Pakete
 
@@ -26,7 +26,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | Skyburner's Oath | scoutRifle | solar | ADS, Cabal (1 Shot) | 114,3 | Quantum |  | 20 | 1,24 s | – | 150 → 150 | 31,2 % | Override: ADS ohne Ignitions: Aegis 114,3 = Quantum „ADS“ 116 (1,5 %); „Cabal“ ändert diesen Wert also nicht.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-skyburner-s-oath-ads (Override); Timing nur aus Quantum; Skala weicht um 31.2 % ab; Aegis gilt (Override) |
 | SUROS Regime | autoRifle | kinetic | average, Spinning Up (36 Shots) | 26,8 | Quantum |  | 34 | 1,12 s | – | – → 712 | 0,1 % | Override: Optimal gespielt: Spinning Up macht mehr Schaden pro Sekunde (26,8 × 712 rpm) als Dual Speed Receiver (41,3 × 400 rpm); Timing aus Quantums Zeile desselben Modus.; Timing aus Zeile primaries-auto-rifle-suros-regime-spinning-up (Override); Timing nur aus Quantum |
 | Sweet Business | autoRifle | kinetic | average, with explosive rounds (150 Shots) | 32,6 | Quantum |  | 150 | 2,00 s | – | 856 → 856 | 1,3 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing aus der Quantum-Zeile „average per mag“; Timing nur aus Quantum |
-| Third Iteration | scoutRifle | void | precision (1 Shot) | 112,6 | Quantum |  | 16 | 3,41 s | – | 200 → 200 | 0,4 % | Override: Die Explosion braucht Precision Kills; gegen einen Boss ohne Adds keine Wirkung.; Timing aus der Quantum-Zeile „Base“; Timing nur aus Quantum |
 | Touch of Malice | scoutRifle | kinetic | keine (1 Shot) | 141,5 | Quantum |  | 11 | 1,24 s | – | 260 → 260 | 0,4 % | Override: Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“). Katalysator: Precision Instrument erreicht nach 6 Treffern +25 %; die letzte Patrone feuert ohne Reload, die Stacks bleiben (Clarity), also ×1,25.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-touch-of-malice-touch-of-malice-tom (Override); Timing nur aus Quantum; Schaden pro Shot 141,5 (Override) |
 | Turncoat | handCannon | void | average (12 Shots) | 127,4 | Quantum |  | 13 | 1,64 s | – | – → 140 | – | Override: Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Wavesplitter | traceRifle | void | average, power cycling, Detonator Beam (100 Shots) | 39,0 | Quantum | 500 | 100 | 1,44 s | 38,8 s | 900 → 906 | 0,0 % | Override: Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-wavesplitter-average (Override); Timing nur aus Quantum; Schaden pro Shot 39,0 (Override) |
@@ -136,6 +135,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **676**. D
 | The Prospector | `src/data/items/weapons/the-prospector.json` | 5 | – |
 | The Queenbreaker | `src/data/items/weapons/the-queenbreaker.json` | 4 | – |
 | The Wardcliff Coil | `src/data/items/weapons/the-wardcliff-coil.json` | 3 | – |
+| Third Iteration | `src/data/items/weapons/third-iteration.json` | 0 | – |
 | Thorn | `src/data/items/weapons/thorn.json` | 0 | – |
 | Thunderlord | `src/data/items/weapons/thunderlord.json` | 0 | – |
 | Ticuu's Divination | `src/data/items/weapons/ticuu-s-divination.json` | 0 | – |
@@ -186,7 +186,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Skyburner's Oath | primary | unbekannt | – | Grants 20 Reload Speed. |
 | SUROS Regime | primary | keine | – | Grants 50 Recoil Direction and doubles the healing chance (25%🠚50%). |
 | Sweet Business | primary | keine | – | Grants 25% increased Flinch Resistance while at maximum Rate of Fire. |
-| Third Iteration | primary | keine | – | Precision Kills with Amalgamation Rounds trigger an explosion dealing 145 [?] damage in a 5 meter radius, while also app |
 | Touch of Malice | primary | Schaden | – | Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or  |
 | Turncoat | primary | keine | – | Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence). |
 | Wavesplitter | special | keine | – | Grants 10 Range and 30 Ammo Generation. |
@@ -299,7 +298,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | The Last Word | Illegally Modded Holster, hipfire, 1 mag | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants); nicht modelliert: 1 mag |
 | The Manticore | average, Hover Mode, Peacekeepers | Exotic-Rüstung: Peacekeepers |
 | The Queenbreaker | Marksman Sights | the item file uses another row |
-| Third Iteration | Amalgamation Round | ohne precision der Basiszeile |
+| Third Iteration | Amalgamation Round | the item file uses another row |
 | Thorn | Illegally Modded Holster, with poison, Soul Devourer, 14 shots | Exotic-Rüstung: Illegally Modded Holster (Lucky Pants) |
 | Touch of Malice | blight | nicht modelliert: blight |
 | Truth |  | the item file uses another row |
@@ -325,7 +324,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Ice Breaker | shatter ignition | nicht modelliert, ohne Beleg |
 | Skyburner's Oath | Cabal | nicht modelliert, ohne Beleg |
 | The Huckleberry | Bull Rider | nicht modelliert, ohne Beleg |
-| Third Iteration | Amalgamation Round | Perk „Amalgamation Rounds“ (ähnliche Schreibweise) |
 | Touch of Malice | blight | nicht modelliert, ohne Beleg |
 | Turncoat | Overwhelming Power | nicht modelliert, ohne Beleg |
 | Worldline Zero | Temporal Sprint | nicht modelliert, ohne Beleg |

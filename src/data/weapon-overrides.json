@@ -278,17 +278,5 @@
       }
     ],
     "catalystEffect": "none"
-  },
-  {
-    "weapon": "Third Iteration",
-    "reason": "Die Explosion braucht Precision Kills; gegen einen Boss ohne Adds keine Wirkung.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Third Iteration Catalyst",
-        "text": "Precision Kills with Amalgamation Rounds trigger an explosion"
-      }
-    ],
-    "catalystEffect": "none"
   }
 ]

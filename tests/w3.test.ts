@@ -123,6 +123,30 @@ describe("W3: conditional buffs and reload", () => {
     expect(golden.totalDamage / 20940 - 1).toBeLessThan(0.02);
   });
 
+  it("Third Iteration: an Amalgamation Round marks the boss, then 15 marked spread shots, reload and charge (Aegis cycle 9.05 s)", () => {
+    const r = run({ damagePhaseSeconds: 30 }, weaponById("third-iteration"));
+    const rounds = hits(r, "amalgamation-round");
+    const marked = hits(r, "spread-shot-marked");
+    expect(hits(r, "spread-shot").length).toBe(0);
+    // Quantum: Amalgamation Round 570, spread shot on a marked target 220
+    expect(rounds[0].damage).toBe(570);
+    expect(marked[0].damage).toBe(220);
+    // one magazine: the round first, then 15 spread shots at 200 rpm, all inside the 5 s mark
+    const firstCycle = [...rounds, ...marked].sort((a, b) => a.timeMs - b.timeMs).slice(0, 17);
+    expect(firstCycle.map((h) => h.id)).toEqual([
+      "amalgamation-round",
+      ...Array(15).fill("spread-shot-marked"),
+      "amalgamation-round",
+    ]);
+    expect(marked[14].timeMs - rounds[0].timeMs).toBeCloseTo(15 * 300, 0);
+    // the next round after the reload (3 410 ms) and the charge (the round's rate of 52 rpm)
+    const cycleMs = rounds[1].timeMs - rounds[0].timeMs;
+    expect(cycleMs).toBeCloseTo(15 * 300 + 60000 / 52 + 3410, 0);
+    // check against Aegis ("Amalgamation Round into 15 marked shots": 3 861 every 9.05 s)
+    expect(cycleMs / 9050 - 1).toBeLessThan(0.02);
+    expect((570 + 15 * 220) / 3861 - 1).toBeLessThan(0.02);
+  });
+
   it("The Last Word: with 4 stacks of Fan Fire the reload takes 0.8 / 0.9 times as long (the stored reload already holds 0.9)", () => {
     const shots = hits(run({ damagePhaseSeconds: 30 }, weaponById("the-last-word")), "shot");
     const interval = shots[1].timeMs - shots[0].timeMs;

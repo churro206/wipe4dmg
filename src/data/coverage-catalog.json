@@ -777,7 +777,7 @@
         "name": "Third Iteration",
         "group": "Energy",
         "inGame": "Tri-Planar Mass Driver: Fires a spread of four Void projectiles per shot.\nAiming Down Sights tightens the spread into a compressed high-damage shot.\nAmalgamation Rounds: Aiming Down Sights charges an 'Amalgamation Round' over the course of 1 second. When charged, fire an extremely dense shot that deals 290% [18%] increased damage and marks the target for all allies for 5 seconds.\nThis gun deals 95% [6.7%] increased Spread Shot damage and 30% [6.7%] increased Amalgamation Round damage to marked targets\nDefeating a marked target with this gun or scoring a precision kill with an Amalgamation Round grants Void Invisibility for 7 seconds (10.5 with Echo of Persistence) and Truesight for 4 seconds.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:third-iteration",
         "status": "full"
       },

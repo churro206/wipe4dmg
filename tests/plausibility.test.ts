@@ -666,8 +666,9 @@ describe("all weapons (2026-10-23)", () => {
     // 99 = 100 - Euphony (owner's exception 2026-11-06: Quantum's owner has no Euphony, damage from Aegis)
     // 104 = 99 + The Manticore, Deathbringer, Revision Zero, Dead Man's Tale, Lord of Wolves (W2, hand-made
     // items with a Quantum hit; their packages took it from Aegis)
-    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "104 = 99 + 5 Items aus W2");
-    expect(fromQuantum).toBe(104);
+    // 105 = 104 + Third Iteration (W3, hand-made item with Quantum hits; its package took Aegis)
+    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "105 = 99 + 5 Items aus W2 + Third Iteration (W3)");
+    expect(fromQuantum).toBe(105);
   });
 
   // Fourth Horseman (Q1 gate): the cata row of Quantum gives the catalyst magazine of 5 (4 without).
