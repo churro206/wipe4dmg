@@ -14,16 +14,16 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 | Row with the extra assumption | Extra | Aegis | Model | Gap |
 | --- | --- | ---: | ---: | ---: |
-| barrow-dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Peacekeepers | +32.0 | +11.3 | −20.7 |
 | prometheus-lens, average, with ignition, Ember of Ashes | Ember of Ashes | −22.2 | −29.5 | −7.2 |
 | one-thousand-voices, average, catalyst | catalyst | +174.3 | +171.0 | −3.3 |
+| barrow-dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Peacekeepers | +32.0 | +29.3 | −2.7 |
 | one-thousand-voices, average, Ember of Ashes | Ember of Ashes | +17.3 | +15.9 | −1.5 |
 
 ## Rows of the check set
 
 | Scenario | Aegis row | Source | Model | Deviation |
 | --- | --- | ---: | ---: | ---: |
-| barrow-dyad-peacekeepers | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 1476 | −73.1 % |
+| barrow-dyad-peacekeepers | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 6268 | +14.3 % |
 | dragon-s-breath | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 23629 | −20.8 % |
 | hierarchy-of-needs-two-rings | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
 | lord-of-wolves | shotgun-lord-of-wolves-average-includes-ignition-scorch | 22355 | 20520 | −8.2 % |
@@ -75,8 +75,8 @@ Fixtures from `tests/scenarios/`. Fitted rows are the Eichung of their item and 
 | ager-s-scepter | base | 37 | 38 | +2.2 % |  | calibration |  |
 | ager-s-scepter-will-given-form | factor | 15516 | 7372 | −52.5 % |  | calibration |  |
 | ager-s-scepter-harsh-refraction | factor | 19631 | 7372 | −62.4 % |  | calibration |  |
-| barrow-dyad | parts | 4155 | 1326 | −68.1 % |  | calibration |  |
-| barrow-dyad-peacekeepers | factor | 5483 | 1476 | −73.1 % |  | check |  |
+| barrow-dyad | parts | 4155 | 4848 | +16.7 % |  | calibration |  |
+| barrow-dyad-peacekeepers | factor | 5483 | 6268 | +14.3 % |  | check |  |
 | deterministic-chaos | volatile | 6074 | 6323 | +4.1 % |  | calibration |  |
 | deterministic-chaos-target-lock | factor | 7479 | 7810 | +4.4 % |  | calibration |  |
 | dragon-s-breath | scorch | 29828 | 23629 | −20.8 % |  | check |  |
@@ -170,9 +170,9 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Row | Extra assumption | Aegis | Model | Gap | Reason of the deviation |
 | --- | --- | --- | ---: | ---: | ---: | --- |
-| Weapons | barrow-dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Peacekeepers | +32.0 | +11.3 | −20.7 |  |
 | Weapons | prometheus-lens, average, with ignition, Ember of Ashes | Ember of Ashes | −22.2 | −29.5 | −7.2 |  |
 | Weapons | one-thousand-voices, average, catalyst | catalyst | +174.3 | +171.0 | −3.3 |  |
+| Weapons | barrow-dyad, average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock | Peacekeepers | +32.0 | +29.3 | −2.7 |  |
 | Weapons | one-thousand-voices, average, Ember of Ashes | Ember of Ashes | +17.3 | +15.9 | −1.5 |  |
 | Supers | Gathering Storm, Feast of Light x6, Limit Break | Feast of Light x6 | +77.3 | +66.3 | −11.0 | Aegis contradicts itself: tab Swap +77.3 % (25038 / 14122), tab Abilities +63.3 % (11767 / 7207), and the text allows at most +70 % (Compendium: 'up to 70% increased Super Damage'). The model gives +66.3 % (+65.8 % before block P made Limit Break a switch: it lifts the super's own hits, not the Jolt share; Jolt share unscaled; 66.5 % before the 1 s charge of One Thousand Voices, the probe's weapon, shifted its keyword damage), between the tabs and within the text. |
 | Supers | Blade Barrage, Knock 'Em Down, Shards of Galanor, Limit Break | Shards of Galanor | +77.0 | +80.9 | +3.9 | Aegis contradicts itself: tab Swap +77.0 % (23150 / 13076), tab Abilities +102.2 % (25864 / 12795); the model gives +80.9 %, 3.9 points above Swap and 21 below Abilities. The cause of the tab difference is not known; the 25 % of Sharp Edges alone cannot explain either. |
@@ -236,7 +236,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | sidearm-forerunner | 298 | 298 | +0.1 % |
 | Weapons | sidearm-rat-king | 79 | 79 | +0.6 % |
 | Weapons | sidearm-trespasser | 152 | 153 | +0.9 % |
-| Weapons | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 1476 | −73.1 % |
+| Weapons | smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock | 5483 | 6268 | +14.3 % |
 | Weapons | smg-osteo-striga-average-with-successive-poison | 8413 | 8029 | −4.6 % |
 | Weapons | smg-riskrunner-average-arc-conductor-peacekeepers | 3849 | 2701 | −29.8 % |
 | Weapons | sniper-rifle-borealis | 831 | 833 | +0.2 % |

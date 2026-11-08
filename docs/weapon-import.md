@@ -33,7 +33,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **676**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **611**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -43,7 +43,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **676**. D
 | Anarchy | `src/data/items/weapons/anarchy.json` | 0 | – |
 | Arbalest | `src/data/items/weapons/arbalest.json` | 2 | – |
 | Bad Juju | `src/data/items/weapons/bad-juju.json` | 8 | – |
-| Barrow-Dyad | `src/data/items/weapons/barrow-dyad.json` | 65 | – |
+| Barrow-Dyad | `src/data/items/weapons/barrow-dyad.json` | 0 | – |
 | Bastion | `src/data/items/weapons/bastion.json` | 6 | – |
 | Black Talon | `src/data/items/weapons/black-talon.json` | 4 | – |
 | Borealis | `src/data/items/weapons/borealis.json` | 6 | – |

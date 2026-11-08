@@ -61,14 +61,14 @@
       "600s buffed catalyst": 189479.08
     },
     "barrow-dyad": {
-      "30s plain": 8874,
-      "30s buffed": 14940.27,
-      "30s plain catalyst": 8874,
-      "30s buffed catalyst": 14940.27,
-      "600s plain": 174522,
-      "600s buffed": 293825.24,
-      "600s plain catalyst": 174522,
-      "600s buffed catalyst": 293825.24
+      "30s plain": 33528,
+      "30s buffed": 56447.74,
+      "30s plain catalyst": 42675.91,
+      "30s buffed catalyst": 71849.15,
+      "600s plain": 688734,
+      "600s buffed": 1159552.56,
+      "600s plain catalyst": 876932.04,
+      "600s buffed catalyst": 1476402.78
     },
     "bastion": {
       "30s plain": 25536,

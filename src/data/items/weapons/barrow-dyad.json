@@ -44,13 +44,176 @@
       "damage": "$quantum[primaries-submachine-gun-barrow-dyad].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "blighted-seeker": {
+      "name": "Blighted Seeker (Taken Ambition)",
+      "damage": {
+        "expr": "$clarity[Taken Ambition](\"each dealing 587\")",
+        "note": "damage of one Seeker detonation on impact (Taken Ambition)"
+      },
+      "precision": false,
+      "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "target-lock",
+      "name": "Target Lock",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Target Lock Refit](\"roughly a 25%\") / 100",
+            "note": "percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Target Lock Refit](\"Successive Hits within 0.2 seconds\") * 1000",
+        "note": "seconds to milliseconds; each shot of the magazine renews it"
+      }
+    },
+    {
+      "id": "high-impact-reserves",
+      "name": "High-Impact Reserves",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + ($clarity[High-Impact Reserves Refit](\"Increases damage by 12.1%\") + $clarity[High-Impact Reserves Refit](\"to 25.6%\")) / 2 / 100",
+            "note": "mean of the ramp (linear over the lower half of the magazine), percent to factor"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Target Lock Refit](\"Successive Hits within 0.2 seconds\") * 1000",
+        "note": "seconds to milliseconds; each shot of the lower half renews it"
+      }
+    }
+  ],
   "rules": [
+    {
+      "id": "target-lock",
+      "on": { "on": "shot" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "grantBuff", "buff": "target-lock" }],
+      "source": {
+        "name": "Item file barrow-dyad",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "quote": "Assuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
+        "note": "Derived: the ramp (16.73 % to 40 % in PvE) is replaced by its average over the whole magazine, active from the first shot. The first number of Clarity is PvE, the one in brackets PvP (as in Ace of Spades: 436 [80])"
+      }
+    },
+    {
+      "id": "high-impact-reserves",
+      "on": { "on": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "counter",
+          "id": "magazine-shot",
+          "op": ">=",
+          "value": {
+            "expr": "$quantum[primaries-submachine-gun-barrow-dyad].timing.magazine / 2",
+            "note": "half of the magazine fired: 50 % of its capacity left"
+          }
+        }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "high-impact-reserves" }],
+      "source": {
+        "name": "Item file barrow-dyad",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "quote": "Increases damage by 12.1% [3%] to 25.6% [6%] as the Magazine drops from 50% of its base capacity to empty.",
+        "note": "Derived: the ramp is replaced by the mean of its ends for the lower half of the magazine; a magazine of 35 rounds counts from the 19th shot (17 rounds left, under 50 %)"
+      }
+    },
+    {
+      "id": "count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "magazine-shot",
+          "op": "<",
+          "value": {
+            "expr": "$quantum[primaries-submachine-gun-barrow-dyad].timing.magazine - 1",
+            "note": "the last shot resets instead (reset-count)"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "magazine-shot" }]
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "blighted-seekers",
+      "on": { "on": "reload", "edge": "start" },
+      "do": [
+        {
+          "type": "spawn",
+          "part": "blighted-seeker",
+          "count": {
+            "expr": "$clarity[Panic Response V](\"Maximum of 6 Seekers\")",
+            "note": "Seekers of full Blight"
+          },
+          "intervalMs": {
+            "expr": "60000 / $clarity[Panic Response V](\"720 RPM\")",
+            "note": "rpm to milliseconds between two Seekers (aiming down sights)"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file barrow-dyad",
+        "retrieved": "2026-11-08",
+        "status": "derived",
+        "quote": "Performing a manual reload creates Blighted Seekers for 7 seconds, granting 1 Seeker for every 16.7% Blight converted.",
+        "note": "Derived: every reload is played as a manual one. A magazine of 35 hits gives 35 x 2 % + 2 x 22 % (Taken Ambition, 12 hits each) = 114 % of Blight, so every reload makes the maximum of 6 Seekers; the 6 Seekers leave within 0.5 s of the 7 s. In the game they replace the first bullets after the reload (Aegis: at the bullets' rate); the engine knows no replaced shot, so they hit from the start of the reload: the gap to the next bullet is 0.7 s and the series of Peacekeepers holds (Aegis x1.32). The 6 replaced bullets (about 6 %) are not subtracted"
+      }
+    },
+    {
+      "id": "reset-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "magazine-shot",
+          "op": ">=",
+          "value": {
+            "expr": "$quantum[primaries-submachine-gun-barrow-dyad].timing.magazine - 1",
+            "note": "the last shot of the magazine"
+          }
+        }
+      ],
+      "do": [{ "type": "resetCounter", "counter": "magazine-shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Scoring 12 hits on a single target within ?", "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight" },
+    { "quote": "seconds of each other generates 22% Blight.", "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight" },
+    { "quote": "Damaging 3 enemies within ?", "reason": "path Taken Resolution; the playstyle is Taken Ambition (Aegis), and it needs 3 enemies (ADR 0015)" },
+    { "quote": "seconds of each generates 50% Blight.", "reason": "path Taken Resolution; the playstyle is Taken Ambition (Aegis), and it needs 3 enemies (ADR 0015)" },
+    { "quote": "Blighted Seekers deal 173 [6.85] damage in a 3 meter radius each and chain two additional times to enemies within a 10 meter radius.", "reason": "path Taken Resolution; the playstyle is Taken Ambition (Aegis)" },
+    { "quote": "Magazine is refilled every 0.2 seconds based on currently remaining ammo while not firing the weapon.", "reason": "only while not firing; the playstyle fires and reloads" },
+    { "quote": "• 1-2 Ammo: 4 shots", "reason": "only while not firing; the playstyle fires and reloads" },
+    { "quote": "• 3-8 Ammo: 3 shots", "reason": "only while not firing; the playstyle fires and reloads" },
+    { "quote": "• 9-16 Ammo: 2 shots", "reason": "only while not firing; the playstyle fires and reloads" },
+    { "quote": "• 17 Ammo: 1 shot", "reason": "only while not firing; the playstyle fires and reloads" },
+    { "quote": "Generates 2% Blight per hit.", "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight" },
+    { "quote": "Not firing for 1.3 seconds drains 3.33% Blight every 1.2 seconds.", "reason": "the reload (1.18 s) is shorter than 1.3 s, and a magazine fills the Blight anyway" },
+    { "quote": "Reaches maximum strength at 5 Stacks.", "reason": "carried by the average buff of the Target Lock rule (the ramp is not modelled)" },
+    { "quote": "% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%", "reason": "carried by the average buff of the Target Lock rule (the ramp is not modelled)" },
+    { "quote": "Damage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.", "reason": "carried by the average buff of the Target Lock rule (the ramp is not modelled)" },
+    { "quote": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds.", "reason": "needs 3 enemies: one boss, no adds (ADR 0015)" },
+    { "quote": "Scoring a Precision Kill or 3 kills within 3 seconds of each other spawns a Threadling at the target's location.", "reason": "needs kills: one boss, no adds (ADR 0015)" },
+    { "quote": "The buff in PVE ranges between 10.3% and 22.9% instead on Fusion Rifles and Aggressive Frame Linear Fusion Rifles.", "reason": "the weapon is a submachine gun" }
   ]
 }

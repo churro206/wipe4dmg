@@ -373,7 +373,7 @@ describe("src/data/weapon-status.json", () => {
       ["alethonym", "rule-too-strong"],
       ["still-hunt", "mechanic-missing"],
       ["izanagi-s-burden", "mechanic-missing"],
-      ["barrow-dyad", "mechanic-missing"],
+      ["barrow-dyad", "rule-too-strong"],
       ["ager-s-scepter", "mechanic-missing"],
       ["whisper-of-the-worm", "mechanic-missing"],
       ["tarrabah", "mechanic-missing"],

@@ -1252,13 +1252,235 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "blighted-seeker",
+        "name": "Blighted Seeker (Taken Ambition)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file barrow-dyad",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 587,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Taken Ambition",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Taken Ambition](\"each dealing 587\") (damage of one Seeker detonation on impact (Taken Ambition)); $clarity[Taken Ambition](\"each dealing 587\") = 587 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Taken Ambition)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file barrow-dyad",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file barrow-dyad",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "compendium"
       }
     ],
     "rules": [
       {
+        "id": "target-lock",
+        "on": { "on": "shot" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [{ "type": "grantBuff", "buff": "target-lock" }],
+        "source": {
+          "name": "Item file barrow-dyad",
+          "retrieved": "2026-11-08",
+          "status": "derived",
+          "note": "Derived: the ramp (16.73 % to 40 % in PvE) is replaced by its average over the whole magazine, active from the first shot. The first number of Clarity is PvE, the one in brackets PvP (as in Ace of Spades: 436 [80])",
+          "quote": "Assuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity."
+        }
+      },
+      {
+        "id": "high-impact-reserves",
+        "on": { "on": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "counter",
+            "id": "magazine-shot",
+            "op": ">=",
+            "value": {
+              "value": 17.5,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-barrow-dyad",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-submachine-gun-barrow-dyad].timing.magazine / 2 (half of the magazine fired: 50 % of its capacity left); $quantum[primaries-submachine-gun-barrow-dyad].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-barrow-dyad)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "high-impact-reserves" }],
+        "source": {
+          "name": "Item file barrow-dyad",
+          "retrieved": "2026-11-08",
+          "status": "derived",
+          "note": "Derived: the ramp is replaced by the mean of its ends for the lower half of the magazine; a magazine of 35 rounds counts from the 19th shot (17 rounds left, under 50 %)",
+          "quote": "Increases damage by 12.1% [3%] to 25.6% [6%] as the Magazine drops from 50% of its base capacity to empty."
+        }
+      },
+      {
+        "id": "count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "magazine-shot",
+            "op": "<",
+            "value": {
+              "value": 34,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-barrow-dyad",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-submachine-gun-barrow-dyad].timing.magazine - 1 (the last shot resets instead (reset-count)); $quantum[primaries-submachine-gun-barrow-dyad].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-barrow-dyad)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "magazine-shot" }]
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "blighted-seekers",
+        "on": { "on": "reload", "edge": "start" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "blighted-seeker",
+            "count": {
+              "value": 6,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Panic Response V",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Panic Response V](\"Maximum of 6 Seekers\") (Seekers of full Blight); $clarity[Panic Response V](\"Maximum of 6 Seekers\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Panic Response V)"
+              }
+            },
+            "intervalMs": {
+              "value": 83.333,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Panic Response V",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 60000 / $clarity[Panic Response V](\"720 RPM\") (rpm to milliseconds between two Seekers (aiming down sights)); $clarity[Panic Response V](\"720 RPM\") = 720 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Panic Response V)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file barrow-dyad",
+          "retrieved": "2026-11-08",
+          "status": "derived",
+          "note": "Derived: every reload is played as a manual one. A magazine of 35 hits gives 35 x 2 % + 2 x 22 % (Taken Ambition, 12 hits each) = 114 % of Blight, so every reload makes the maximum of 6 Seekers; the 6 Seekers leave within 0.5 s of the 7 s. In the game they replace the first bullets after the reload (Aegis: at the bullets' rate); the engine knows no replaced shot, so they hit from the start of the reload: the gap to the next bullet is 0.7 s and the series of Peacekeepers holds (Aegis x1.32). The 6 replaced bullets (about 6 %) are not subtracted",
+          "quote": "Performing a manual reload creates Blighted Seekers for 7 seconds, granting 1 Seeker for every 16.7% Blight converted."
+        }
+      },
+      {
+        "id": "reset-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "magazine-shot",
+            "op": ">=",
+            "value": {
+              "value": 34,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-barrow-dyad",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-submachine-gun-barrow-dyad].timing.magazine - 1 (the last shot of the magazine); $quantum[primaries-submachine-gun-barrow-dyad].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-barrow-dyad)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "resetCounter", "counter": "magazine-shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "target-lock",
+        "name": "Target Lock",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.25,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Target Lock Refit",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Target Lock Refit](\"roughly a 25%\") / 100 (percent to factor); $clarity[Target Lock Refit](\"roughly a 25%\") = 25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Target Lock Refit)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 200,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Target Lock Refit",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Target Lock Refit](\"Successive Hits within 0.2 seconds\") * 1000 (seconds to milliseconds; each shot of the magazine renews it); $clarity[Target Lock Refit](\"Successive Hits within 0.2 seconds\") = 0.2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Target Lock Refit)"
+          }
+        }
+      },
+      {
+        "id": "high-impact-reserves",
+        "name": "High-Impact Reserves",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.188,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): High-Impact Reserves Refit",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + ($clarity[High-Impact Reserves Refit](\"Increases damage by 12.1%\") + $clarity[High-Impact Reserves Refit](\"to 25.6%\")) / 2 / 100 (mean of the ramp (linear over the lower half of the magazine), percent to factor); $clarity[High-Impact Reserves Refit](\"Increases damage by 12.1%\") = 12.1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): High-Impact Reserves Refit); $clarity[High-Impact Reserves Refit](\"to 25.6%\") = 25.6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): High-Impact Reserves Refit)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 200,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Target Lock Refit",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Target Lock Refit](\"Successive Hits within 0.2 seconds\") * 1000 (seconds to milliseconds; each shot of the lower half renews it); $clarity[Target Lock Refit](\"Successive Hits within 0.2 seconds\") = 0.2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Target Lock Refit)"
+          }
+        }
       }
     ],
     "intrinsics": [

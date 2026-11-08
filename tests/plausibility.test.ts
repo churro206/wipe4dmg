@@ -432,8 +432,8 @@ describe("exotic armor changes its abilities", () => {
 
   // S4 part C: Barrow-Dyad's seekers come after the reload at the bullets' rate ("overwriting
   // regular shots"), so no gap over 1 s ends the run; Aegis measures ×1.32 (17 381 / 13 171).
-  // Q1 (ADR 0019): the scaffold has no seekers; W3 (Barrow-Dyad) turns this back into `it`.
-  it.fails("Peacekeepers on Barrow-Dyad: the seekers fill the reload, the stacks hold (core, Aegis ×1.32)", () => {
+  // W3: the seekers hit from the start of the reload, so the gap to the next bullet stays under 1 s.
+  it("Peacekeepers on Barrow-Dyad: the seekers fill the reload, the stacks hold (core, Aegis ×1.32)", () => {
     const barrow = weaponById("barrow-dyad");
     const titan = { guardianClass: "titan" as const };
     const total = (fields: Partial<Build>) => {
@@ -600,11 +600,13 @@ describe("all weapons (2026-10-23)", () => {
   // 1.0 to 1.4 s per arrow (Aegis peak rate 1.017 s, Quantum 44 rpm) once the bow's nock is no
   // longer counted twice (2026-10-26). Barrow-Dyad deals about 1.4× (2026-10-31): Aegis Sustained
   // measures 4150 per 4.6 s (902 per second on the scale "visual", Tarrabah 607), Gjallarhorn's 11
-  // rockets of 1892 about 20 800 in 30 s.
+  // rockets of 1892 about 20 800 in 30 s. W3 (2026-11-08, Inhaber): with its 6 Blighted Seekers per
+  // magazine (3 522 against 1 190 of the bullets) Barrow-Dyad deals 1.62×, so the single limit of a
+  // primary is 1.7× (the median rule below stays at 1.5×).
   // Q1 (ADR 0019) exceptions are gone since M1: Dragon's Breath has its embedded rocket (Quantum's
   // fuel rows), Divinity its item (Penance bursts, Vex Cage hit).
   const UNTIL_MECHANICS: string[] = [];
-  it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1.5×", () => {
+  it("rule: in 30 s every special and heavy deals 0.3 to 2.5 times Gjallarhorn, every primary at most 1.7×", () => {
     const gjally = run({}, weaponById("gjallarhorn")).totalDamage;
     const ratios = weapons.map(
       (w) => [w, run({}, w).totalDamage / gjally] as const,
@@ -612,7 +614,7 @@ describe("all weapons (2026-10-23)", () => {
     const off = ratios
       .filter(([w]) => !UNTIL_MECHANICS.includes(w.name))
       .filter(([w, r]) =>
-        w.ammo === "primary" ? r > 1.5 || r <= 0 : r < 0.3 || r > 2.5,
+        w.ammo === "primary" ? r > 1.7 || r <= 0 : r < 0.3 || r > 2.5,
       )
       .map(([w, r]) => `${w.name} ${fmt(r)}`);
     const top = [...ratios].sort((a, b) => b[1] - a[1])[0];

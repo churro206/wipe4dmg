@@ -1,20 +1,20 @@
 {
-  "baseline": "35a7fe6",
+  "baseline": "6f5e1f7",
   "changes": [
     {
-      "id": "anarchy",
-      "name": "Anarchy",
+      "id": "barrow-dyad",
+      "name": "Barrow-Dyad",
       "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 5824.7,
-      "to": 4368.5
+      "time": "s60",
+      "catalyst": true,
+      "from": 17748,
+      "to": 85463.7
     },
     {
-      "id": "anarchy",
-      "name": "Anarchy",
+      "id": "barrow-dyad",
+      "name": "Barrow-Dyad",
       "kind": "status",
-      "from": "Estimated",
+      "from": "Partial",
       "to": "Complete"
     }
   ]

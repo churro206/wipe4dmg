@@ -163,6 +163,27 @@ describe("W3: conditional buffs and reload", () => {
     expect(cata.totalDamage / base.totalDamage / 1.157 - 1).toBeLessThan(0.02);
   });
 
+  it("Barrow-Dyad: 6 Blighted Seekers of 587 after every reload, 83 ms apart; the catalyst adds Target Lock (25 %) and High-Impact Reserves (18.85 %) from the 19th shot (under 50 % of the magazine)", () => {
+    const weapon = weaponById("barrow-dyad");
+    const base = run({ damagePhaseSeconds: 30 }, weapon);
+    const seekers = hits(base, "blighted-seeker");
+    expect(seekers.length).toBeGreaterThan(0);
+    expect(seekers.length % 6).toBe(0);
+    expect(seekers[0].damage).toBeCloseTo(587, 0);
+    expect(seekers[1].timeMs - seekers[0].timeMs).toBeCloseTo(60000 / 720, 0);
+    // the first Seeker hits at the start of the reload, so the gap to the next bullet stays under 1 s
+    const lastBulletBeforeReload = hits(base, "shot")[34].timeMs;
+    expect(seekers[0].timeMs - lastBulletBeforeReload).toBeLessThan(100);
+    const cata = run({ damagePhaseSeconds: 30, catalyst: true }, weapon);
+    const plain = hits(base, "shot");
+    const buffed = hits(cata, "shot");
+    expect(buffed[0].damage / plain[0].damage).toBeCloseTo(1.25, 3);
+    expect(buffed[17].damage / plain[17].damage).toBeCloseTo(1.25, 3);
+    expect(buffed[18].damage / plain[18].damage).toBeCloseTo(1.25 * 1.1885, 2);
+    // the counter starts again with the next magazine
+    expect(buffed[35].damage / plain[35].damage).toBeCloseTo(1.25, 3);
+  });
+
   it("The Last Word: with 4 stacks of Fan Fire the reload takes 0.8 / 0.9 times as long (the stored reload already holds 0.9)", () => {
     const shots = hits(run({ damagePhaseSeconds: 30 }, weaponById("the-last-word")), "shot");
     const interval = shots[1].timeMs - shots[0].timeMs;

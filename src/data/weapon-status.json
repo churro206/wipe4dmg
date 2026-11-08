@@ -565,285 +565,336 @@
     {
       "id": "barrow-dyad",
       "name": "Barrow-Dyad",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 3128,
-          "s30": 8874,
-          "s60": 17748
+          "s10": 10172,
+          "s30": 33528,
+          "s60": 67056
         },
         "catalyst": {
-          "s10": 3128,
-          "s30": 8874,
-          "s60": 17748
+          "s10": 12965.8,
+          "s30": 42675.9,
+          "s60": 85463.7
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Aegis -73.1 % with average, Taken Ambition, with Blighted Seekers, Peacekeepers, Target Lock."
+        "class": "rule-too-strong",
+        "why": "Aegis +16.7 %; rule \"blighted-seekers\" carries 74 % of the total."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "blighted-seekers",
+          "share": 0.7447
+        }
+      ],
       "sentences": [
         {
           "text": "Scoring 12 hits on a single target within ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight"
         },
         {
           "text": "seconds of each other generates 22% Blight.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight"
         },
         {
           "text": "Blighted Seekers detonate on impact, each dealing 587 [30?] damage in a 0.25 meter radius.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Damaging 3 enemies within ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "path Taken Resolution; the playstyle is Taken Ambition (Aegis), and it needs 3 enemies (ADR 0015)"
         },
         {
           "text": "seconds of each generates 50% Blight.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "path Taken Resolution; the playstyle is Taken Ambition (Aegis), and it needs 3 enemies (ADR 0015)"
         },
         {
           "text": "Blighted Seekers deal 173 [6.85] damage in a 3 meter radius each and chain two additional times to enemies within a 10 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "path Taken Resolution; the playstyle is Taken Ambition (Aegis)"
         },
         {
           "text": "Magazine is refilled every 0.2 seconds based on currently remaining ammo while not firing the weapon.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 1-2 Ammo: 4 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 3-8 Ammo: 3 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 9-16 Ammo: 2 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 17 Ammo: 1 shot",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "Generates 2% Blight per hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight"
         },
         {
           "text": "Not firing for 1.3 seconds drains 3.33% Blight every 1.2 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the reload (1.18 s) is shorter than 1.3 s, and a magazine fills the Blight anyway"
         },
         {
           "text": "Performing a manual reload creates Blighted Seekers for 7 seconds, granting 1 Seeker for every 16.7% Blight converted.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 6 Seekers.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Blighted Seekers are fired at 720 RPM while aiming down sights or 450 RPM if fired from the hip.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Magazine is refilled every 0.2 seconds based on currently remaining ammo while not firing the weapon.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 1-2 Ammo: 4 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 3-8 Ammo: 3 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 9-16 Ammo: 2 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 17 Ammo: 1 shot",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "Generates 2% Blight per hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight"
         },
         {
           "text": "Not firing for 1.3 seconds drains 3.33% Blight every 1.2 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the reload (1.18 s) is shorter than 1.3 s, and a magazine fills the Blight anyway"
         },
         {
           "text": "Performing a manual reload creates Blighted Seekers for 7 seconds, granting 1 Seeker for every 16.7% Blight converted.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 6 Seekers.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Blighted Seekers are fired at 720 RPM while aiming down sights or 450 RPM if fired from the hip.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Magazine is refilled every 0.2 seconds based on currently remaining ammo while not firing the weapon.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 1-2 Ammo: 4 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 3-8 Ammo: 3 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 9-16 Ammo: 2 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 17 Ammo: 1 shot",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "Generates 2% Blight per hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight"
         },
         {
           "text": "Not firing for 1.3 seconds drains 3.33% Blight every 1.2 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the reload (1.18 s) is shorter than 1.3 s, and a magazine fills the Blight anyway"
         },
         {
           "text": "Performing a manual reload creates Blighted Seekers for 7 seconds, granting 1 Seeker for every 16.7% Blight converted.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 6 Seekers.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Blighted Seekers are fired at 720 RPM while aiming down sights or 450 RPM if fired from the hip.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Magazine is refilled every 0.2 seconds based on currently remaining ammo while not firing the weapon.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 1-2 Ammo: 4 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 3-8 Ammo: 3 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 9-16 Ammo: 2 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 17 Ammo: 1 shot",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "Generates 2% Blight per hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight"
         },
         {
           "text": "Not firing for 1.3 seconds drains 3.33% Blight every 1.2 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the reload (1.18 s) is shorter than 1.3 s, and a magazine fills the Blight anyway"
         },
         {
           "text": "Performing a manual reload creates Blighted Seekers for 7 seconds, granting 1 Seeker for every 16.7% Blight converted.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 6 Seekers.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Blighted Seekers are fired at 720 RPM while aiming down sights or 450 RPM if fired from the hip.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Magazine is refilled every 0.2 seconds based on currently remaining ammo while not firing the weapon.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 1-2 Ammo: 4 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 3-8 Ammo: 3 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 9-16 Ammo: 2 shots",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "• 17 Ammo: 1 shot",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only while not firing; the playstyle fires and reloads"
         },
         {
           "text": "Generates 2% Blight per hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Seekers of the reload rule: a magazine always gives more than 100 % Blight"
         },
         {
           "text": "Not firing for 1.3 seconds drains 3.33% Blight every 1.2 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the reload (1.18 s) is shorter than 1.3 s, and a magazine fills the Blight anyway"
         },
         {
           "text": "Performing a manual reload creates Blighted Seekers for 7 seconds, granting 1 Seeker for every 16.7% Blight converted.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 6 Seekers.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Blighted Seekers are fired at 720 RPM while aiming down sights or 450 RPM if fired from the hip.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Successive Hits within 0.2 seconds of each grant a ramping Damage Buff after scoring 12.5% of the Magazine Capacity as hits.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Reaches maximum strength at 5 Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the average buff of the Target Lock rule (the ramp is not modelled)"
         },
         {
           "text": "% of the Magazine Capacity as Hits required for each Visual Stack: 12.5%|35.5%|54.5%|74.5%|110.33%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the average buff of the Target Lock rule (the ramp is not modelled)"
         },
         {
           "text": "Damage Buff ramps up from 16.73% [10.46%] to 40% [25%] upon reaching maximum strength.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the average buff of the Target Lock rule (the ramp is not modelled)"
         },
         {
           "text": "Assuming no missed shots, it provides roughly a 25% [15.85%] Damage Buff on average after firing 100% of the Magazine Capacity.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Scoring Weapon Hits against 3 Separate Enemies within 3 seconds of each grants 35% increased damage for 10 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs 3 enemies: one boss, no adds (ADR 0015)"
         },
         {
           "text": "Scoring a Precision Kill or 3 kills within 3 seconds of each other spawns a Threadling at the target's location.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs kills: one boss, no adds (ADR 0015)"
         },
         {
           "text": "Increases damage by 12.1% [3%] to 25.6% [6%] as the Magazine drops from 50% of its base capacity to empty.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "The buff in PVE ranges between 10.3% and 22.9% instead on Fusion Rifles and Aggressive Frame Linear Fusion Rifles.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the weapon is a submachine gun"
         }
       ],
       "quantum": {
@@ -876,8 +927,8 @@
               "Target Lock"
             ],
             "measured": 4154.9,
-            "model": 1326,
-            "deviation": -0.6809
+            "model": 4848,
+            "deviation": 0.1668
           },
           {
             "row": "smg-barrow-dyad-average-taken-ambition-with-blighted-seekers-peacekeepers-target-lock",
@@ -889,8 +940,8 @@
               "Target Lock"
             ],
             "measured": 5483,
-            "model": 1475.8,
-            "deviation": -0.7308
+            "model": 6268.4,
+            "deviation": 0.1432
           }
         ]
       },
