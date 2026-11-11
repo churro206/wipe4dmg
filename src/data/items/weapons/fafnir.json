@@ -1,0 +1,129 @@
+{
+  "id": "fafnir",
+  "kind": "exoticWeapon",
+  "name": "Fafnir",
+  "texts": [
+    { "source": "clarity", "entry": "Quantum Nova", "hash": "fe0e4eb9" },
+    { "source": "clarity", "entry": "Subatomic Distortion", "hash": "a8da74c7" },
+    { "source": "clarity", "entry": "Fafnir Catalyst", "hash": "ff000df1" }
+  ],
+  "chargeTimeMs": "$manifest[Fafnir].stat(\"Charge Time\")",
+  "fireRateRpm": {
+    "expr": "60 / $aegisSustained[fafnir-includes-quantum-nova-windup-and-splash-9-ammo-consumed].peakRateSeconds",
+    "note": "seconds per shot to shots per minute; the interval contains the charge"
+  },
+  "magazine": "$manifest[Fafnir].stat(\"Magazine\")",
+  "totalShots": {
+    "value": 9,
+    "source": {
+      "name": "Item file fafnir",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: Aegis Sustained row fafnir-includes-quantum-nova-windup-and-splash-9-ammo-consumed fires magazines 3, 3, 3; its 18 counts the 9 shots and the 9 ammo Quantum Nova consumes"
+    }
+  },
+  "reloadTimeMs": {
+    "expr": "(($aegisSustained[fafnir-includes-quantum-nova-windup-and-splash-9-ammo-consumed].timeToEmptySeconds - 6 * $aegisSustained[fafnir-includes-quantum-nova-windup-and-splash-9-ammo-consumed].peakRateSeconds) / 2 - $aegisSustained[fafnir-includes-quantum-nova-windup-and-splash-9-ammo-consumed].peakRateSeconds) * 1000",
+    "note": "the row's time to empty is 6 intervals within the magazines and 2 gaps at the reloads; a gap less one interval is the reload the simulator adds, in milliseconds. The windup of Quantum Nova lies inside the row's time, so in these gaps"
+  },
+  "catalyst": {
+    "name": "No Distractions, Fafnir Catalyst",
+    "description": "Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no longer ADS.",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": {
+        "expr": "$aegis[linear-fusion-rifle-fafnir].critShot",
+        "note": "Owner's exception (ADR 0019, W6d): no Quantum row; Aegis' precision hit 4 408 / 3.16. Aegis' 7 996 per shot is this hit and three lacerations (4 408 + 3 x 1 196), the Compendium's total 2 297 on the same way (1 266 + 1 032)"
+      },
+      "precision": true,
+      "delivery": "impact"
+    },
+    "laceration": {
+      "name": "Laceration",
+      "damage": {
+        "expr": "$aegis[linear-fusion-rifle-fafnir].tick(\"detonation\")",
+        "note": "Owner's exception (ADR 0019, W6d): Aegis' tick per laceration, 1 196 / 3.16 (the Compendium's 344 on Aegis' scale)"
+      },
+      "delivery": "dot"
+    },
+    "nova": {
+      "name": "Quantum Nova detonation",
+      "damage": {
+        "expr": "$aegis[linear-fusion-rifle-fafnir].tick(\"Quantum Nova\")",
+        "note": "Owner's exception (ADR 0019, W6d): Aegis' tick 4 949 / 3.16 (Clarity's 1 420 on Aegis' scale)"
+      },
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    {
+      "id": "quantum-nova",
+      "on": { "on": "phaseStart" },
+      "do": [{ "type": "spawn", "part": "nova" }],
+      "source": {
+        "name": "Item file fafnir",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "refill the magazine, activating 'Quantum Nova'",
+        "note": "Derived: optimal play triggers Quantum Nova with all 9 reserve ammo at the start of the phase, as Aegis' row assumes (\"9 ammo consumed\"); the magazine is full, so it costs no shot"
+      }
+    },
+    {
+      "id": "nova-weaken",
+      "on": { "on": "hit", "part": "nova" },
+      "do": [{ "type": "applyStatus", "status": "strongWeaken" }],
+      "source": {
+        "name": "Item file fafnir",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Activating Quantum Nova triggers a 10 meter radius detonation around you",
+        "note": "Derived: the detonation hits the boss and weakens it before the first shot"
+      }
+    },
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "subatomic-distortion",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [
+        {
+          "type": "spawn",
+          "part": "laceration",
+          "count": "$compendium[Fafnir](\"Damage 3 times\")",
+          "delayMs": {
+            "expr": "$clarity[Subatomic Distortion](\"instances after 0.75 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ]
+    },
+    {
+      "id": "strong-weaken",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [{ "type": "applyStatus", "status": "strongWeaken" }],
+      "source": {
+        "name": "Item file fafnir",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "While active, this gun applies a Strong Weaken (30%) that lasts for 5 seconds on hit.",
+        "note": "Derived: Quantum Nova with 9 ammo lasts 20 s (\"Buff lasts for 4|8|14|20 seconds upon consuming 1|3|6|9 reserve ammo.\"), longer than the 16.3 s the weapon fires, so every shot is under it"
+      }
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Buff lasts for 4|8|14|20 seconds upon consuming 1|3|6|9 reserve ammo.",
+      "reason": "no effect: with 9 ammo the 20 s outlast the ammo (rule strong-weaken)"
+    },
+    {
+      "quote": "Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing.",
+      "reason": "no damage against a boss"
+    }
+  ]
+}

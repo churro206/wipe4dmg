@@ -88,6 +88,7 @@ describe("rule types (I3)", () => {
       "unravel",
       "boltCharge",
       "weaken",
+      "strongWeaken", // W6d: Fafnir
     ]);
   });
 });

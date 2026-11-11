@@ -4213,45 +4213,64 @@
       "trust": "estimated",
       "damage": {
         "base": {
-          "s10": 12641.9,
-          "s30": 22755.4,
-          "s60": 22755.4
+          "s10": 18013.6,
+          "s30": 31171.6,
+          "s60": 31171.6
         },
         "catalyst": {
-          "s10": 12641.9,
-          "s30": 22755.4,
-          "s60": 22755.4
+          "s10": 18013.6,
+          "s30": 31171.6,
+          "s60": 31171.6
         }
       },
       "cause": {
         "class": "no-check",
         "why": "Neither a Quantum row nor an independent Aegis row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "nova-weaken",
+          "share": 0.0134
+        },
+        {
+          "id": "shot",
+          "share": 0.9498
+        },
+        {
+          "id": "subatomic-distortion",
+          "share": 0.4262
+        },
+        {
+          "id": "strong-weaken",
+          "share": 0.157
+        }
+      ],
       "sentences": [
         {
           "text": "Hold [Reload] to consume up to  9 Ammo from reserves and refill the magazine, activating 'Quantum Nova'.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Buff lasts for 4|8|14|20 seconds upon consuming 1|3|6|9 reserve ammo.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no effect: with 9 ammo the 20 s outlast the ammo (rule strong-weaken)"
         },
         {
           "text": "While active, this gun applies a Strong Weaken (30%) that lasts for 5 seconds on hit.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss"
         },
         {
           "text": "Hits with this weapon deal three additional damage instances after 0.75 seconds, lacerating enemies for 1032 [?] bonus damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Activating Quantum Nova triggers a 10 meter radius detonation around you, applying a Strong Weaken (30%) for 5 seconds and dealing 1420 [?] damage.",
-          "state": "open"
+          "state": "rule"
         }
       ],
       "quantum": null,
@@ -13151,77 +13170,113 @@
       "trust": "estimated",
       "damage": {
         "base": {
-          "s10": 2548.7,
-          "s30": 7008.9,
-          "s60": 14017.8
+          "s10": 4217.8,
+          "s30": 12107.2,
+          "s60": 24372.3
         },
         "catalyst": {
-          "s10": 2548.7,
-          "s30": 7008.9,
-          "s60": 14017.8
+          "s10": 4217.8,
+          "s30": 12107.2,
+          "s60": 24372.3
         }
       },
       "cause": {
         "class": "no-check",
         "why": "Neither a Quantum row nor an independent Aegis row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "unleashed-power",
+          "share": 0.4334
+        },
+        {
+          "id": "power-surge-count",
+          "share": 0.0897
+        },
+        {
+          "id": "power-surge",
+          "share": 0.0897
+        },
+        {
+          "id": "latent-power-hit",
+          "share": 0.2214
+        },
+        {
+          "id": "latent-power-payload",
+          "share": 0.0321
+        },
+        {
+          "id": "unleashed-payload",
+          "share": 0.3231
+        },
+        {
+          "id": "unleashed-weaken",
+          "share": 0.1254
+        }
+      ],
       "sentences": [
         {
           "text": "Scoring 2 hits within 3 seconds of each causes the next shot fired within 3 seconds to have an Explosive Payload.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Explosive Payload deals 122 [?] additional damage over 4 meters, which deals 50% reduced damage at the edge of its radius.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hits with this Payload grant 8%?",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• Hits: 4%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "every shot is a precision hit (optimal play): 8 % per hit"
         },
         {
           "text": "• Precision Hits: 8%",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• Kills: 25%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs kills: one boss, no adds (ADR 0015)"
         },
         {
           "text": "Upon reaching 100% Progress towards Latent Power, hold [Reload] to enter 'Unleashed Power' and gain the following benefits for 13 seconds:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• Increase RPM to 225",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Every shot fired in this mode also Weakens targets for 6 seconds on hit and gain Explosive Payloads that deal an additional 87 [?] damage on hit.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "After 3 seconds, Unleashed Power changes into Overwhelming Power, which drains 13 HP every second for the remaining 10 seconds of the buff.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (health drain); Aegis' row Overwhelming Power has the same shot (366 / 3.8 = 319 / 3.31)"
         },
         {
           "text": "Special Note: While Empowerment is active and this weapon is readied, Rocket Launchers and Micro-Missile damage is increased by 30%.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only the damage of another weapon; a build simulates one weapon"
         },
         {
           "text": "Hazardous Propulsion Rockets deal 200% increased damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "only the damage of another weapon; a build simulates one weapon"
         },
         {
           "text": "Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "catalyst stage, no damage against a boss"
         },
         {
           "text": "3 HP is granted for for each second that Empowerment lasted, capping at 40 HP for 13 seconds of Empowerment.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "catalyst stage, no damage against a boss"
         }
       ],
       "quantum": null,

@@ -29,6 +29,10 @@ const cellsOf = (id: string) =>
   rows.filter((r) => r.id === id).map((r) => JSON.stringify(r));
 
 describe("weapon-overrides.json", () => {
+  it("is empty since W6d (Fafnir and Turncoat became items); A2 removes the file", () => {
+    expect(overrides).toEqual([]);
+  });
+
   it.each(overrides.map((o) => [o.weapon, o] as const))(
     "%s quotes text that is still in the snapshot",
     (_, override) => {

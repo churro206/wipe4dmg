@@ -127,6 +127,22 @@ describe("W2: ramp, stages and playstyles", () => {
   });
 });
 
+// W6d: Fafnir's own Strong Weaken (30 %) is a debuff; debuffs take the highest, so a weaker one adds nothing
+describe("Fafnir: Strong Weaken (W6d)", () => {
+  it("Divinity (15 %) adds nothing to Fafnir, whose Quantum Nova weakens by 30 %", () => {
+    const fafnir = weaponById("fafnir");
+    const plain = run({}, fafnir);
+    const divinity = run({ selections: [{ effectId: "divinity", provider: "fireteamSupport" }] }, fafnir);
+    note(
+      "Fafnir (30 s) mit / ohne Divinity",
+      `×${fmt(divinity.totalDamage / plain.totalDamage)}`,
+      "×1,01 (Court: Debuffs nehmen den höchsten; Fafnir: Strong Weaken 30 % auf jedem Treffer unter Quantum Nova, nur die Detonation davor gewinnt 15 %)",
+    );
+    const nova = plain.damageInstances.find((d) => d.id === "nova")!.damage;
+    expect(divinity.totalDamage - plain.totalDamage).toBeCloseTo(0.15 * nova, 3);
+  });
+});
+
 describe("Outbreak Perfected: nanites (ADR 0019, M2)", () => {
   it("nanites raise the weapon's damage over a long phase: 60 s deal clearly more per second than 10 s (x100 up to +300 %)", () => {
     const weapon = weaponById("outbreak-perfected");

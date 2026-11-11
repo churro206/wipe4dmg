@@ -31,7 +31,7 @@ import {
   loadEffects,
 } from "../src/engine/loadData";
 import { loadWeapon, loadWeapons } from "../src/engine/loadWeapon";
-import { loadKeywords } from "../src/engine/loadKeywords";
+import { loadKeywords, loadStatusModifiers } from "../src/engine/loadKeywords";
 import { simulate } from "../src/engine/simulate";
 import { hasCatalyst } from "../src/engine/weaponInfo";
 import rawHandModel from "./fixtures/one-thousand-voices-hand-model.json";
@@ -65,7 +65,9 @@ const keywords = loadKeywords(
   rawKeywords,
   AegisAbilityRow.array().parse(rawRows),
 );
-const buffed = BUFFED_EFFECT_IDS.map((id) => effects.find((e) => e.id === id)!);
+// Weaken and Strong Weaken, set by rules of items (W6d: before, Deterministic Chaos failed here)
+const statusModifiers = loadStatusModifiers(rawKeywords);
+const buffed =BUFFED_EFFECT_IDS.map((id) => effects.find((e) => e.id === id)!);
 
 const round = (value: number) => Math.round(value * 100) / 100;
 
@@ -90,7 +92,7 @@ function weaponTotals(weapon: Weapon): Record<string, number | string> {
         const key = `${seconds}s ${label}${catalyst ? " catalyst" : ""}`;
         result[key] = total(
           () =>
-            simulate(weapon, seconds, selected, buckets, { catalyst, keywords })
+            simulate(weapon, seconds, selected, buckets, { catalyst, keywords, statusModifiers })
               .totalDamage,
         );
       }

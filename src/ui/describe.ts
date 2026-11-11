@@ -249,6 +249,7 @@ const STATUS_LABELS: Record<string, string> = {
   unravel: "Unravel",
   boltCharge: "Bolt Charge",
   weaken: "Weaken",
+  strongWeaken: "Strong Weaken",
 };
 
 const hitsOf = (

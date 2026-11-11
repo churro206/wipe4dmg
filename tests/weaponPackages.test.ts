@@ -121,10 +121,11 @@ describe("primaries", () => {
     Alethonym:
       "Aegis' average holds impact and impale ticks (337 impact, 237 tick), Quantum only the impact",
   };
+  // W6d: the last primary package (Turncoat) became an item; the lock had nothing left to check.
+  // Kept as a check of the remaining packages until A2 removes the Aegis path.
   it("lock until A2: one round of a primary package deals 0.5 to 2 times the round of its Quantum timing row", () => {
     const inputs = loadWeaponImportInputs();
     const primaries = remainingPackages().filter((w) => w.ammo === "primary" && !(w.name in KNOWN_OFF));
-    expect(primaries.length).toBeGreaterThan(0);
     const off = primaries.flatMap((w) => {
       const row = inputs.quantum.rows.find((r) => r.id === w.magazine.source.name.split("row ")[1]);
       if (!row?.magDamage || !row.magazine) return [];
@@ -132,6 +133,10 @@ describe("primaries", () => {
       return ratio > 2 || ratio < 0.5 ? [`${w.name} ${ratio.toFixed(2)}`] : [];
     });
     expect(off).toEqual([]);
+  });
+
+  it("W6d: no package is left, every weapon is an item file (A2 removes the Aegis path)", () => {
+    expect(remainingPackages().map((w) => w.name)).toEqual([]);
   });
 });
 
@@ -317,9 +322,10 @@ describe("catalyst paragraphs against one boss without adds", () => {
   // W6a: Cerberus+1, SUROS Regime and Sweet Business (all "none") became items: 6 packages.
   // W6b: Wavesplitter, No Time to Explain, Finality's Auger ("none") became items: 4 packages.
   // W6c: Jötunn and Prometheus Lens ("none") became items: 2 packages.
-  it("lock until A2: at least 2 of the remaining packages keep a catalyst without effect (value after W6c)", () => {
+  // W6d: Fafnir and Turncoat ("none") became items: no package left (test "no package is left").
+  it("lock until A2: every remaining package keeps a catalyst without effect (value after W6d: none left)", () => {
     const none = remainingPackages().filter((w) => w.catalyst?.effect === "none");
-    expect(none.length).toBeGreaterThanOrEqual(2);
+    expect(none.length).toBe(remainingPackages().length);
   });
 });
 

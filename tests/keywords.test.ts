@@ -4,6 +4,7 @@
 import { describe, expect, it } from "vitest";
 import rawRows from "../src/data/aegis-abilities.json";
 import rawCompendium from "../src/data/compendium-abilities.json";
+import rawCompendiumWeapons from "../src/data/compendium-weapons.json";
 import rawEffects from "../src/data/effects.json";
 import rawKeywords from "../src/data/keywords.json";
 import { hasQuote } from "../scripts/lib/compendiumAbilities";
@@ -82,7 +83,8 @@ describe("keywords.json", () => {
 });
 
 describe("status without damage (Weaken, architecture section 6)", () => {
-  const [weaken, ...others] = loadStatusModifiers(rawKeywords);
+  const [weaken, strong, ...others] = loadStatusModifiers(rawKeywords);
+  const weaponCompendium = CompendiumSnapshot.parse(rawCompendiumWeapons);
 
   it("is one entry with a multiplier in the debuff bucket and a duration", () => {
     expect(others).toEqual([]);
@@ -112,6 +114,18 @@ describe("status without damage (Weaken, architecture section 6)", () => {
   it("stays out of the keywords with damage", () => {
     expect(data.map((k) => k.id)).not.toContain("weaken");
     expect(keywords.map((k) => k.id)).not.toContain("weaken");
+  });
+
+  it("Strong Weaken (Fafnir, W6d): 30 % for 5 s in the debuff bucket, quoted from the weapon's Compendium entry", () => {
+    expect(strong.id).toBe("strongWeaken");
+    expect(strong.durationMs.value).toBe(5000);
+    expect(strong.modifiers.map((m) => [m.bucketId, m.multiplier.value])).toEqual([["debuff", 1.3]]);
+    for (const value of [strong.durationMs, strong.modifiers[0].multiplier]) {
+      expect(
+        hasQuote(weaponCompendium.entries, { ...strong.compendium, quote: value.source.quote! }),
+        value.source.name,
+      ).toBe(true);
+    }
   });
 });
 

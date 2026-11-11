@@ -342,5 +342,47 @@
         ]
       }
     ]
+  },
+  {
+    "id": "strongWeaken",
+    "name": "Strong Weaken",
+    "compendium": {
+      "tab": "Exotic Weapons",
+      "entry": "Fafnir Orpheus Mark 6 Quantum Nova Subatomic Distortion ↑No Distractions"
+    },
+    "durationMs": {
+      "value": 5000,
+      "source": {
+        "name": "Destiny Data Compendium, Exotic Weapons (Fafnir); Court Stacking Guide (Powerful Weaken, Fafnir 5s)",
+        "url": "https://destiny2.science/data-compendium",
+        "retrieved": "2026-11-11",
+        "status": "verified",
+        "quote": "increases damage received by 30% [?%] for 5 seconds"
+      }
+    },
+    "modifiers": [
+      {
+        "type": "multiplier",
+        "bucketId": "debuff",
+        "multiplier": {
+          "value": 1.3,
+          "source": {
+            "name": "Destiny Data Compendium, Exotic Weapons (Fafnir); Court Stacking Guide (Powerful Weaken, Fafnir 30%)",
+            "url": "https://destiny2.science/data-compendium",
+            "retrieved": "2026-11-11",
+            "status": "verified",
+            "quote": "increases damage received by 30% [?%]"
+          }
+        },
+        "damageSources": [
+          "weapon",
+          "grenade",
+          "melee",
+          "super",
+          "classAbility",
+          "keyword"
+        ]
+      }
+    ]
   }
 ]

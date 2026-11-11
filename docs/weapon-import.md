@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **2 Pakete**, 135 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **0 Pakete**, 137 Items, 4 Lücken.
 
 ## Pakete
 
@@ -12,8 +12,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 | Waffe | Typ | Element | Basiszeile (Annahmen) | pro Shot | Timing | Shots | Magazin | Reload | Zeit bis leer | rpm Quantum → abgeleitet | Skala | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Fafnir | linearFusionRifle | void | keine (1 Shot) | 2.528,4 | Quantum | 9 | 3 | 1,77 s | 16,3 s | – → 38 | 0,0 % | Override: Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
-| Turncoat | handCannon | void | average (12 Shots) | 127,4 | Quantum |  | 13 | 1,64 s | – | – → 140 | – | Override: Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 
 ## Items
 
@@ -62,6 +60,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Euphony | `src/data/items/weapons/euphony.json` | 0 | – |
 | Ex Diris | `src/data/items/weapons/ex-diris.json` | 0 | – |
 | Eyes of Tomorrow | `src/data/items/weapons/eyes-of-tomorrow.json` | 7 | – |
+| Fafnir | `src/data/items/weapons/fafnir.json` | 0 | – |
 | Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 0 | – |
 | Final Warning | `src/data/items/weapons/final-warning.json` | 9 | – |
 | Finality's Auger | `src/data/items/weapons/finality-s-auger.json` | 0 | – |
@@ -144,6 +143,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Trespasser | `src/data/items/weapons/trespasser.json` | 5 | – |
 | Trinity Ghoul | `src/data/items/weapons/trinity-ghoul.json` | 0 | – |
 | Truth | `src/data/items/weapons/truth.json` | 0 | – |
+| Turncoat | `src/data/items/weapons/turncoat.json` | 0 | – |
 | Two-Tailed Fox | `src/data/items/weapons/two-tailed-fox.json` | 0 | – |
 | Verglas Curve | `src/data/items/weapons/verglas-curve.json` | 4 | – |
 | Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 0 | – |
@@ -172,8 +172,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 
 | Waffe | Munition | Wirkung | Timing ohne → mit | Text (Anfang) |
 | --- | --- | --- | --- | --- |
-| Fafnir | heavy | keine | – | Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no l |
-| Turncoat | primary | keine | – | Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence). |
 
 ## Lücken
 
@@ -309,7 +307,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Waffe | Annahme | Einordnung |
 | --- | --- | --- |
 | The Huckleberry | Bull Rider | nicht modelliert, ohne Beleg |
-| Turncoat | Overwhelming Power | nicht modelliert, ohne Beleg |
 | Worldline Zero | Temporal Sprint | nicht modelliert, ohne Beleg |
 
 ## Kandidaten für neue Effects
@@ -319,7 +316,6 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 | Annahme | Art | Waffen |
 | --- | --- | --- |
 | Bull Rider | nicht modelliert | The Huckleberry |
-| Overwhelming Power | nicht modelliert | Turncoat |
 | Peacekeepers | Exotic-Rüstung | The Huckleberry |
 | Temporal Sprint | nicht modelliert | Worldline Zero |
 

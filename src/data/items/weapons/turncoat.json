@@ -1,0 +1,257 @@
+{
+  "id": "turncoat",
+  "kind": "exoticWeapon",
+  "name": "Turncoat",
+  "texts": [
+    { "source": "clarity", "entry": "Power Surge", "hash": "1c9a0422" },
+    { "source": "clarity", "entry": "Latent Power", "hash": "25c7918d" },
+    { "source": "clarity", "entry": "Turncoat Catalyst", "hash": "5b6b24f7" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file turncoat",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: a hand cannon has no charge"
+    }
+  },
+  "fireRateRpm": "$manifest[Turncoat].stat(\"Rounds Per Minute\")",
+  "magazine": "$manifest[Turncoat].stat(\"Magazine\")",
+  "totalShots": {
+    "value": null,
+    "source": {
+      "name": "Item file turncoat",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: primary ammo, unlimited"
+    }
+  },
+  "reloadTimeMs": {
+    "expr": "$quantum[primaries-hand-cannon-lumina].timing.reloadTimeMs",
+    "note": "Derived: no Quantum row of Turncoat; Quantum gives every hand cannon of 140 rpm the same reload (Ace of Spades, Lumina, Thorn, Hawkmoon: 1.64 s), whatever its reload stat"
+  },
+  "catalyst": {
+    "name": "Turncoat Catalyst",
+    "description": "Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence).",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": {
+        "expr": "$aegis[hand-cannon-turncoat-average].critShot",
+        "note": "Owner's exception (ADR 0019, W6d): no Quantum row; Aegis' precision hit 319 / 3.31 (the row Overwhelming Power has the same, 366 / 3.8)"
+      },
+      "precision": true,
+      "delivery": "impact"
+    },
+    "payload": {
+      "name": "Explosive Payload",
+      "damage": {
+        "expr": "$aegis[hand-cannon-turncoat-average].tick(\"explosion\")",
+        "note": "Owner's exception (ADR 0019, W6d): Aegis' explosion 307 / 3.31 (Clarity's 122 on Aegis' scale); the boss stands at the centre, no falloff"
+      },
+      "delivery": "splash"
+    },
+    "unleashed-payload": {
+      "name": "Explosive Payload (Unleashed Power)",
+      "damage": {
+        "expr": "$aegis[hand-cannon-turncoat-average].tick(\"explosion\") * $clarity[Latent Power](\"deal an additional 87\") / $clarity[Power Surge](\"Explosive Payload deals 122\")",
+        "note": "Clarity's 87 on Aegis' scale of the payload (307 / 3.31 for 122): 66.1; Aegis' row Overwhelming Power has 252 / 3.8 = 66.3"
+      },
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    {
+      "id": "latent-power-pre-built",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "playstyle", "id": "pre-stacked" }],
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "latent-power",
+          "by": "$clarity[Latent Power](\"Upon reaching 100% Progress\")"
+        }
+      ],
+      "source": {
+        "name": "Item file turncoat",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the playstyle \"pre-stacked\": the bar was filled before the phase (hits and kills on adds)"
+      }
+    },
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "unleashed-power",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "latent-power",
+          "op": ">=",
+          "value": "$clarity[Latent Power](\"Upon reaching 100% Progress\")"
+        },
+        { "type": "mode", "id": "unleashed", "is": "on", "not": true }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "latent-power" },
+        {
+          "type": "setMode",
+          "mode": "unleashed",
+          "to": "on",
+          "durationMs": {
+            "expr": "$clarity[Latent Power](\"benefits for 13 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": "$clarity[Latent Power](\"Increase RPM to 225\")"
+          },
+          "durationMs": {
+            "expr": "$clarity[Latent Power](\"benefits for 13 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file turncoat",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: hold [Reload] as soon as the bar is full, between two shots; the hold costs no time the sources name, and the bar does not fill while the mode runs (the meter is spent)"
+      }
+    },
+    {
+      "id": "power-surge-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "power-surge",
+          "op": "<",
+          "value": {
+            "value": 2,
+            "source": {
+              "name": "Item file turncoat",
+              "retrieved": "2026-11-11",
+              "status": "derived",
+              "note": "Derived: \"Scoring 2 hits\"; a hit of the payload shot does not count for the next (Aegis' row average: 4 explosions in 12 shots, every 3rd shot); hits follow within 3 s, also across a reload (1.64 s + 0.43 s)"
+            }
+          }
+        },
+        { "type": "mode", "id": "unleashed", "is": "on", "not": true }
+      ],
+      "do": [{ "type": "addStacks", "counter": "power-surge" }]
+    },
+    {
+      "id": "power-surge",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "power-surge",
+          "op": ">=",
+          "value": {
+            "value": 2,
+            "source": {
+              "name": "Item file turncoat",
+              "retrieved": "2026-11-11",
+              "status": "derived",
+              "note": "Derived: the 3rd shot (see rule power-surge-count)"
+            }
+          }
+        },
+        { "type": "mode", "id": "unleashed", "is": "on", "not": true }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "power-surge" },
+        { "type": "spawn", "part": "payload" }
+      ],
+      "source": {
+        "name": "Item file turncoat",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "causes the next shot fired within 3 seconds to have an Explosive Payload",
+        "note": "Derived: in Unleashed Power every shot carries its own payload instead (Aegis' row Overwhelming Power: one explosion per shot)"
+      }
+    },
+    {
+      "id": "latent-power-hit",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "mode", "id": "unleashed", "is": "on", "not": true }],
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "latent-power",
+          "by": "$clarity[Latent Power](\"Precision Hits: 8%\")"
+        }
+      ]
+    },
+    {
+      "id": "latent-power-payload",
+      "on": { "on": "hit", "part": "payload" },
+      "if": [{ "type": "mode", "id": "unleashed", "is": "on", "not": true }],
+      "do": [
+        {
+          "type": "addStacks",
+          "counter": "latent-power",
+          "by": "$clarity[Power Surge](\"Hits with this Payload grant 8%\")"
+        }
+      ]
+    },
+    {
+      "id": "unleashed-payload",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "mode", "id": "unleashed", "is": "on" }],
+      "do": [{ "type": "spawn", "part": "unleashed-payload" }]
+    },
+    {
+      "id": "unleashed-weaken",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [{ "type": "mode", "id": "unleashed", "is": "on" }],
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "weaken",
+          "durationMs": {
+            "expr": "$clarity[Latent Power](\"Weakens targets for 6 seconds\") * 1000",
+            "note": "seconds to milliseconds"
+          }
+        }
+      ]
+    }
+  ],
+  "notModelled": [
+    { "quote": "• Hits: 4%", "reason": "every shot is a precision hit (optimal play): 8 % per hit" },
+    { "quote": "• Kills: 25%", "reason": "needs kills: one boss, no adds (ADR 0015)" },
+    {
+      "quote": "After 3 seconds, Unleashed Power changes into Overwhelming Power",
+      "reason": "no damage against a boss (health drain); Aegis' row Overwhelming Power has the same shot (366 / 3.8 = 319 / 3.31)"
+    },
+    {
+      "quote": "Rocket Launchers and Micro-Missile damage is increased by 30%",
+      "reason": "only the damage of another weapon; a build simulates one weapon"
+    },
+    {
+      "quote": "Hazardous Propulsion Rockets deal 200% increased damage.",
+      "reason": "only the damage of another weapon; a build simulates one weapon"
+    },
+    {
+      "quote": "Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds",
+      "reason": "catalyst stage, no damage against a boss"
+    },
+    {
+      "quote": "3 HP is granted for for each second that Empowerment lasted",
+      "reason": "catalyst stage, no damage against a boss"
+    }
+  ]
+}

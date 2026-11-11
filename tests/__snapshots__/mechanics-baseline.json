@@ -257,14 +257,14 @@
       "600s buffed catalyst": 39221.15
     },
     "deterministic-chaos": {
-      "30s plain": "error: No definition for status \"weaken\"",
-      "30s buffed": "error: No definition for status \"weaken\"",
-      "30s plain catalyst": "error: No definition for status \"weaken\"",
-      "30s buffed catalyst": "error: No definition for status \"weaken\"",
-      "600s plain": "error: No definition for status \"weaken\"",
-      "600s buffed": "error: No definition for status \"weaken\"",
-      "600s plain catalyst": "error: No definition for status \"weaken\"",
-      "600s buffed catalyst": "error: No definition for status \"weaken\""
+      "30s plain": 18956.76,
+      "30s buffed": 29649.07,
+      "30s plain catalyst": 23414.21,
+      "30s buffed catalyst": 36602.34,
+      "600s plain": 51279.5,
+      "600s buffed": 79773.96,
+      "600s plain catalyst": 63371.55,
+      "600s buffed catalyst": 98448.45
     },
     "devil-s-ruin": {
       "30s plain": 9480,
@@ -387,14 +387,14 @@
       "600s buffed catalyst": 45558.22
     },
     "fafnir": {
-      "30s plain": 22755.41,
-      "30s buffed": 38311.01,
-      "30s plain catalyst": 22755.41,
-      "30s buffed catalyst": 38311.01,
-      "600s plain": 22755.41,
-      "600s buffed": 38311.01,
-      "600s plain catalyst": 22755.41,
-      "600s buffed catalyst": 38311.01
+      "30s plain": 31171.59,
+      "30s buffed": 45979.12,
+      "30s plain catalyst": 31171.59,
+      "30s buffed catalyst": 45979.12,
+      "600s plain": 31171.59,
+      "600s buffed": 45979.12,
+      "600s plain catalyst": 31171.59,
+      "600s buffed catalyst": 45979.12
     },
     "fighting-lion": {
       "30s plain": 8791.39,
@@ -1197,14 +1197,14 @@
       "600s buffed catalyst": 84457.46
     },
     "turncoat": {
-      "30s plain": 7008.93,
-      "30s buffed": 11800.23,
-      "30s plain catalyst": 7008.93,
-      "30s buffed catalyst": 11800.23,
-      "600s plain": 138012.1,
-      "600s buffed": 232357.18,
-      "600s plain catalyst": 138012.1,
-      "600s buffed catalyst": 232357.18
+      "30s plain": 12107.17,
+      "30s buffed": 18018.8,
+      "30s plain catalyst": 12107.17,
+      "30s buffed catalyst": 18018.8,
+      "600s plain": 247344.95,
+      "600s buffed": 363015.09,
+      "600s plain catalyst": 247344.95,
+      "600s buffed catalyst": 363015.09
     },
     "two-tailed-fox": {
       "30s plain": 27034.84,

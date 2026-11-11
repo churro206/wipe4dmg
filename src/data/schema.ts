@@ -179,6 +179,7 @@ export const TargetStatusId = z.enum([
   "unravel",
   "boltCharge", // stacks on the player, discharged by a hit
   "weaken", // debuff: a multiplier in the debuff bucket while it lasts
+  "strongWeaken", // the same, stronger (Fafnir's Quantum Nova)
 ]);
 export type TargetStatusId = z.infer<typeof TargetStatusId>;
 
