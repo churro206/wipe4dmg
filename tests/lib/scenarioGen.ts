@@ -135,7 +135,8 @@ export function generateScenarios(
       const effectId = effectByName.get(norm(withoutNote(assumption))) ?? effectByName.get(key);
       const armor = armorByName.get(key);
       const stacked = intrinsicArmor.get(norm(assumption.replace(/\s+x\d+$/, "")));
-      const playstyle = playstyleNamed(weapon, name);
+      // The full word first: Izanagi's playstyle is "Honed Edge x4", its intrinsic "Honed Edge"
+      const playstyle = playstyleNamed(weapon, assumption) ?? playstyleNamed(weapon, name);
       // A playstyle named like the intrinsic wins (Riskrunner: "Arc Conductor" is the frame and the state)
       if (key === "catalyst" || catalystOptions.has(key) || catalystPerks.has(key)) {
         build.catalyst = true;
@@ -262,7 +263,7 @@ function assumptionMapper(
     for (const assumption of assumptions) {
       const name = assumptionName(assumption);
       const key = norm(name);
-      const playstyle = playstyleNamed(weapon, name);
+      const playstyle = playstyleNamed(weapon, assumption) ?? playstyleNamed(weapon, name);
       // "Roaring Flames x3" is the effect with 3 stacks; without the stack count in the model it is
       // no switch, unless the item plays by its own plan (see `execution`).
       const effectId =

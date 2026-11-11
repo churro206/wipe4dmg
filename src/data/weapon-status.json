@@ -5987,7 +5987,7 @@
       },
       "cause": {
         "class": "mechanic-missing",
-        "why": "Aegis -77.9 % with Honed Edge x4."
+        "why": "Aegis -72.2 % with Honed Edge x4."
       },
       "ruleShares": [],
       "sentences": [
@@ -6088,8 +6088,8 @@
               "Honed Edge x4"
             ],
             "measured": 44682.8,
-            "model": 9885,
-            "deviation": -0.7788
+            "model": 12403.9,
+            "deviation": -0.7224
           }
         ]
       },
