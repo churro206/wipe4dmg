@@ -1,85 +1,67 @@
 {
-  "baseline": "8977b7b",
+  "baseline": "227f6f1",
   "changes": [
     {
-      "id": "cerberus-1",
-      "name": "Cerberus+1",
+      "id": "finality-s-auger",
+      "name": "Finality's Auger",
       "kind": "damage",
       "time": "s10",
       "catalyst": false,
-      "from": 5000.3,
-      "to": 6048
+      "from": 11500.1,
+      "to": 10224
     },
     {
-      "id": "cerberus-1",
-      "name": "Cerberus+1",
+      "id": "finality-s-auger",
+      "name": "Finality's Auger",
       "kind": "status",
       "from": "Estimated",
       "to": "Complete"
     },
     {
-      "id": "skyburner-s-oath",
-      "name": "Skyburner's Oath",
+      "id": "ice-breaker",
+      "name": "Ice Breaker",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "new-land-beyond",
+      "name": "New Land Beyond",
       "kind": "damage",
-      "time": "s60",
+      "time": "s30",
       "catalyst": true,
-      "from": 15091.4,
-      "to": 22885.7
+      "from": 16463.4,
+      "to": 45474
     },
     {
-      "id": "skyburner-s-oath",
-      "name": "Skyburner's Oath",
+      "id": "new-land-beyond",
+      "name": "New Land Beyond",
       "kind": "status",
       "from": "Estimated",
       "to": "Partial"
     },
     {
-      "id": "suros-regime",
-      "name": "SUROS Regime",
+      "id": "no-time-to-explain",
+      "name": "No Time to Explain",
       "kind": "damage",
-      "time": "s60",
+      "time": "s10",
       "catalyst": false,
-      "from": 13731.5,
-      "to": 13835.3
+      "from": 5908.2,
+      "to": 3314.4
     },
     {
-      "id": "suros-regime",
-      "name": "SUROS Regime",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "sweet-business",
-      "name": "Sweet Business",
-      "kind": "damage",
-      "time": "s30",
-      "catalyst": false,
-      "from": 12103.1,
-      "to": 12386.6
-    },
-    {
-      "id": "sweet-business",
-      "name": "Sweet Business",
-      "kind": "status",
-      "from": "Estimated",
-      "to": "Complete"
-    },
-    {
-      "id": "touch-of-malice",
-      "name": "Touch of Malice",
-      "kind": "damage",
-      "time": "s30",
-      "catalyst": false,
-      "from": 12450.2,
-      "to": 18602
-    },
-    {
-      "id": "touch-of-malice",
-      "name": "Touch of Malice",
+      "id": "no-time-to-explain",
+      "name": "No Time to Explain",
       "kind": "status",
       "from": "Estimated",
       "to": "Partial"
+    },
+    {
+      "id": "wavesplitter",
+      "name": "Wavesplitter",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
     }
   ]
 }

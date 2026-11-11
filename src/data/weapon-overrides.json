@@ -1,32 +1,5 @@
 [
   {
-    "weapon": "Ice Breaker",
-    "reason": "Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "ice-breaker-sniper-s-meditation",
-        "text": "\"base\":1223"
-      }
-    ],
-    "timing": { "from": "Aegis", "row": "ice-breaker-sniper-s-meditation" }
-  },
-  {
-    "weapon": "Finality's Auger",
-    "reason": "Aegis Sustained misst 21 Schuss in Magazinen à 6 mit 1800 ms Reload; Bait and Switch (Katalysator) steckt nicht im Grundwert (Sustained 1278 = Weapons 1277,8) und ändert das Timing nicht.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "finality-s-auger-bait-and-switch-linear-fusion-mode",
-        "text": "1800ms reload"
-      }
-    ],
-    "timing": {
-      "from": "Aegis",
-      "row": "finality-s-auger-bait-and-switch-linear-fusion-mode"
-    }
-  },
-  {
     "weapon": "Cull's Shadow",
     "reason": "Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).",
     "quotes": [
@@ -38,23 +11,6 @@
     ],
     "base": "fusion-rifle-cull-s-shadow-average-with-corruption",
     "timing": { "from": "Aegis", "row": "cull-s-shadow-with-corruption" }
-  },
-  {
-    "weapon": "Wavesplitter",
-    "reason": "Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).",
-    "quotes": [
-      {
-        "source": "quantum",
-        "entry": "specials-trace-rifle-wavesplitter-average",
-        "text": "\"precisionDamage\":39"
-      }
-    ],
-    "base": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
-    "perShot": 39,
-    "timing": {
-      "from": "Quantum",
-      "row": "specials-trace-rifle-wavesplitter-average"
-    }
   },
   {
     "weapon": "Turncoat",

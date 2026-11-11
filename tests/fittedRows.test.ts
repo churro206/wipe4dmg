@@ -24,8 +24,8 @@ describe("status fitted", () => {
 
   it("marks every value that comes from a row of the Aegis tab Weapons", () => {
     const aegis = sourcesOf(rawPackages).filter((s) => s.name.startsWith(WEAPON_TAB));
-    // 95 after W2 (five packages became items, 100+ before), 86 after W3 Anarchy, 74 after W4, 53 after W6a (five packages lost their override); falls further with every item until A2
-    expect(aegis.length).toBeGreaterThan(45);
+    // 95 after W2 (five packages became items, 100+ before), 86 after W3 Anarchy, 74 after W4, 53 after W6a (five packages lost their override), 33 after W6b (five items, three overrides); falls further with every item until A2
+    expect(aegis.length).toBeGreaterThan(25);
     for (const s of aegis) {
       expect(s.status, s.name).toBe("fitted");
       expect(s.row, s.name).toBeDefined();
@@ -37,7 +37,7 @@ describe("status fitted", () => {
 
   it("collects the rows of weapon packages and ability packages, and nothing else", () => {
     const { weaponRows, abilityRows } = fittedRows(rawPackages, abilities);
-    expect(weaponRows.size).toBeGreaterThan(35); // 39 after W6a
+    expect(weaponRows.size).toBeGreaterThan(30); // 39 after W6a, 34 after W6b
     // An item file can also take a number of a Sustained row ($aegisSustained, e.g. Truth's 14 shots).
     // The bench knows that row by its id in the totals, with the prefix of the tab.
     const sustainedRows = [...weaponRows].filter((id) => !weaponIds.has(id));

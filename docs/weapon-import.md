@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **11 Pakete**, 126 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **6 Pakete**, 131 Items, 4 Lücken.
 
 ## Pakete
 
@@ -14,15 +14,10 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Cull's Shadow | fusionRifle | kinetic | average, with corruption (6 Shots) | 1.095,8 | Aegis | 24 | 6 | 1,98 s | 27,3 s | – → 58 | 0,0 % | Override: Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).; Timing aus Zeile cull-s-shadow-with-corruption (Override); Timing nur aus Aegis |
 | Fafnir | linearFusionRifle | void | keine (1 Shot) | 2.528,4 | Quantum | 9 | 3 | 1,77 s | 16,3 s | – → 38 | 0,0 % | Override: Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
-| Finality's Auger | linearFusionRifle | solar | Linear Fusion Mode (1 Shot) | 1.277,8 | Aegis | 21 | 6 | 1,80 s | 23,5 s | 58 → 56 | 0,0 % | Override: Aegis Sustained misst 21 Schuss in Magazinen à 6 mit 1800 ms Reload; Bait and Switch (Katalysator) steckt nicht im Grundwert (Sustained 1278 = Weapons 1277,8) und ändert das Timing nicht.; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing aus Zeile finality-s-auger-bait-and-switch-linear-fusion-mode (Override); Timing nur aus Aegis |
-| Ice Breaker | sniperRifle | solar | keine (1 Shot) | 1.223,4 | Aegis | 10 | 10 | 0,00 s | 11,1 s | 49 → 49 | 0,0 % | Override: Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).; Timing aus Zeile ice-breaker-sniper-s-meditation (Override); Timing nur aus Aegis |
 | Jötunn | fusionRifle | solar | average, successive shots (10 Shots) | 1.048,3 | Aegis | 24 | 5 | 2,07 s | 31,7 s | – → 50 | 0,0 % | Override: Cornered braucht 2 Gegner in der Nähe, Incandescent Kills; gegen einen Boss ohne Adds keine Wirkung.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; ⚠ Timing mit Katalysator: keine Quelle ohne; der Katalysator ändert laut Clarity Magazin oder Reload, nicht die Munition; Timing nur aus Aegis |
-| New Land Beyond | sniperRifle | kinetic | no stacks (20 Shots) | 1.029,0 | Quantum | 40 | 8 | 1,98 s | 72,7 s | 32 → 36 | 0,0 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus der Quantum-Zeile „The Master 0x“; Timing nur aus Quantum |
 | New Malpais | pulseRifle | strand | average, 3 bursts, includes suspend, excludes unravel (3 Shots) | 1.159,9 | Aegis | 27 | 7 | 1,38 s | 24,7 s | – → 67 | 0,0 % | Timing nur aus Aegis |
-| No Time to Explain | pulseRifle | kinetic | burst (1 Shot) | 123,1 | Quantum |  | 24 | 1,16 s | – | 340 → 340 | 0,1 % | ⚠ Timing aus der Quantum-Zeile „w/ Time-Slip Portal,cata“ mit Katalysator; Timing nur aus Quantum |
 | Prometheus Lens | traceRifle | solar | average, with ignition (95 Shots) | 36,5 | Quantum | 500 | 100 | 1,44 s | 39,0 s | – → 900 | – | Override: Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Turncoat | handCannon | void | average (12 Shots) | 127,4 | Quantum |  | 13 | 1,64 s | – | – → 140 | – | Override: Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
-| Wavesplitter | traceRifle | void | average, power cycling, Detonator Beam (100 Shots) | 39,0 | Quantum | 500 | 100 | 1,44 s | 38,8 s | 900 → 906 | 0,0 % | Override: Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-wavesplitter-average (Override); Timing nur aus Quantum; Schaden pro Shot 39,0 (Override) |
 
 ## Items
 
@@ -72,6 +67,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Eyes of Tomorrow | `src/data/items/weapons/eyes-of-tomorrow.json` | 7 | – |
 | Fighting Lion | `src/data/items/weapons/fighting-lion.json` | 0 | – |
 | Final Warning | `src/data/items/weapons/final-warning.json` | 9 | – |
+| Finality's Auger | `src/data/items/weapons/finality-s-auger.json` | 0 | – |
 | Forerunner | `src/data/items/weapons/forerunner.json` | 5 | – |
 | Gjallarhorn | `src/data/items/weapons/gjallarhorn.json` | 8 | – |
 | Grand Overture | `src/data/items/weapons/grand-overture.json` | 0 | – |
@@ -83,6 +79,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Heir Apparent | `src/data/items/weapons/heir-apparent.json` | 8 | – |
 | Heirloom | `src/data/items/weapons/heirloom.json` | 11 | – |
 | Hierarchy of Needs | `src/data/items/weapons/hierarchy-of-needs.json` | 12 | – |
+| Ice Breaker | `src/data/items/weapons/ice-breaker.json` | 0 | – |
 | Izanagi's Burden | `src/data/items/weapons/izanagi-s-burden.json` | 0 | – |
 | Khvostov 7G-0X | `src/data/items/weapons/khvostov-7g-0x.json` | 0 | – |
 | Le Monarque | `src/data/items/weapons/le-monarque.json` | 0 | – |
@@ -98,6 +95,8 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | MIDA Multi-Tool | `src/data/items/weapons/mida-multi-tool.json` | 11 | – |
 | Monte Carlo | `src/data/items/weapons/monte-carlo.json` | 0 | – |
 | Necrochasm | `src/data/items/weapons/necrochasm.json` | 10 | – |
+| New Land Beyond | `src/data/items/weapons/new-land-beyond.json` | 0 | – |
+| No Time to Explain | `src/data/items/weapons/no-time-to-explain.json` | 0 | – |
 | One Thousand Voices | `src/data/items/weapons/one-thousand-voices.json` | 0 | – |
 | Osteo Striga | `src/data/items/weapons/osteo-striga.json` | 0 | – |
 | Outbreak Perfected | `src/data/items/weapons/outbreak-perfected.json` | 0 | – |
@@ -150,6 +149,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. D
 | Vex Mythoclast | `src/data/items/weapons/vex-mythoclast.json` | 0 | – |
 | Vexcalibur | `src/data/items/weapons/vexcalibur.json` | 26 | – |
 | Vigilance Wing | `src/data/items/weapons/vigilance-wing.json` | 7 | – |
+| Wavesplitter | `src/data/items/weapons/wavesplitter.json` | 0 | – |
 | Whirling Ovation | `src/data/items/weapons/whirling-ovation.json` | 15 | – |
 | Whisper of the Worm | `src/data/items/weapons/whisper-of-the-worm.json` | 24 | – |
 | Wicked Implement | `src/data/items/weapons/wicked-implement.json` | 8 | – |
@@ -173,14 +173,10 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Waffe | Munition | Wirkung | Timing ohne → mit | Text (Anfang) |
 | --- | --- | --- | --- | --- |
 | Fafnir | heavy | keine | – | Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no l |
-| Finality's Auger | heavy | unbekannt | – | Grants the Bait and Switch trait: |
 | Jötunn | special | keine | – | Grants the Cornered trait: |
-| New Land Beyond | special | unbekannt | – | While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on |
 | New Malpais | special | unbekannt | – | Embedded projectiles Unravel targets for 8 seconds upon detonation. |
-| No Time to Explain | primary | keine | – | Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s). |
 | Prometheus Lens | special | keine | – | Grants 20 Stability and 20 Handling. |
 | Turncoat | primary | keine | – | Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence). |
-| Wavesplitter | special | keine | – | Grants 10 Range and 30 Ammo Generation. |
 
 ## Lücken
 
@@ -298,6 +294,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Truth |  | the item file uses another row |
 | Turncoat | Overwhelming Power | nicht modelliert: Overwhelming Power |
 | Vex Mythoclast | Temporal Unlimiter | the item file uses another row |
+| Wavesplitter | average, power cycling, Detonator Beam | Katalysator: Detonator Beam |
 | Wavesplitter | average, Supercharged Battery, Detonator Beam | Katalysator: Detonator Beam |
 | Whirling Ovation | no charge | the item file uses another row |
 | Whirling Ovation | 2/3 charge | the item file uses another row |
@@ -314,8 +311,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 
 | Waffe | Annahme | Einordnung |
 | --- | --- | --- |
-| Finality's Auger | marked | nicht modelliert, ohne Beleg |
-| Ice Breaker | shatter ignition | nicht modelliert, ohne Beleg |
 | The Huckleberry | Bull Rider | nicht modelliert, ohne Beleg |
 | Turncoat | Overwhelming Power | nicht modelliert, ohne Beleg |
 | Worldline Zero | Temporal Sprint | nicht modelliert, ohne Beleg |
@@ -327,10 +322,8 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 | Annahme | Art | Waffen |
 | --- | --- | --- |
 | Bull Rider | nicht modelliert | The Huckleberry |
-| marked | nicht modelliert | Finality's Auger |
 | Overwhelming Power | nicht modelliert | Turncoat |
 | Peacekeepers | Exotic-Rüstung | The Huckleberry |
-| shatter ignition | nicht modelliert | Ice Breaker |
 | Temporal Sprint | nicht modelliert | Worldline Zero |
 
 ## Wechselwirkungen

@@ -7,8 +7,8 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
 - Rank (check set): Spearman 0.98 over 46 rows
-- Absolute, information only: within ±3 % 26 of 46 (check set), 99 of 180 (all counted rows, mostly Eichung)
-- Rows: 182 scenarios (32 by hand, 150 generated); fitted 25; calibration set 109; check set 46; not counted 2; core cannot run 0
+- Absolute, information only: within ±3 % 26 of 46 (check set), 98 of 180 (all counted rows, mostly Eichung)
+- Rows: 182 scenarios (32 by hand, 150 generated); fitted 20; calibration set 114; check set 46; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -164,7 +164,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 180 | 43 % | 25 | 46 | 0.98 | 3/3 | 1 of 4 |
+| Weapons | 417 | 180 | 43 % | 20 | 46 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 0 | 21 | 0.94 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
@@ -291,7 +291,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Heavy | sustained-xenophage | 67645 | 50338 | −25.6 % |
 | Special | sustained-arbalest | 58835 | 56154 | −4.6 % |
 | Special | sustained-forerunner | 51349 | 51363 | +0.0 % |
-| Special | sustained-ice-breaker-sniper-s-meditation | 34643 | 34643 | −0.0 % |
+| Special | sustained-ice-breaker-sniper-s-meditation | 34643 | 34659 | +0.0 % |
 | Special | sustained-j-tunn | 61950 | 61950 | −0.0 % |
 | Special | sustained-merciless | 54552 | 54034 | −0.9 % |
 | Special | sustained-telesto | 51208 | 53052 | +3.6 % |
@@ -357,11 +357,11 @@ Assumptions of Aegis without a switch, with the number of rows of the group that
 - 2H2L combo: 1
 - 4L1H1R combo: 1
 - 9 ammo consumed: 1
+- Bait and Switch: 1
 - body: 1
 - excludes Bolt Charge: 1
 - Hail the Storm: 1
-- Harsh Refraction: 1
-- … and 16 more
+- … and 17 more
 
 ### Special (34 rows)
 

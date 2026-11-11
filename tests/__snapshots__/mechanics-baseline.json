@@ -417,14 +417,14 @@
       "600s buffed catalyst": 587626.91
     },
     "finality-s-auger": {
-      "30s plain": 26833.53,
-      "30s buffed": 45176.93,
-      "30s plain catalyst": 26833.53,
-      "30s buffed catalyst": 45176.93,
-      "600s plain": 26833.53,
-      "600s buffed": 45176.93,
-      "600s plain catalyst": 26833.53,
-      "600s buffed catalyst": 45176.93
+      "30s plain": 26838,
+      "30s buffed": 45184.46,
+      "30s plain catalyst": 26838,
+      "30s buffed catalyst": 45184.46,
+      "600s plain": 26838,
+      "600s buffed": 45184.46,
+      "600s plain catalyst": 26838,
+      "600s buffed catalyst": 45184.46
     },
     "forerunner": {
       "30s plain": 20860,
@@ -537,10 +537,10 @@
       "600s buffed catalyst": 827783.77
     },
     "ice-breaker": {
-      "30s plain": 12234.4,
-      "30s buffed": 20597.84,
-      "600s plain": 12234.4,
-      "600s buffed": 20597.84
+      "30s plain": 12240,
+      "30s buffed": 20607.26,
+      "600s plain": 12240,
+      "600s buffed": 20607.26
     },
     "izanagi-s-burden": {
       "30s plain": 13180,
@@ -695,14 +695,14 @@
       "600s buffed catalyst": 227932.5
     },
     "new-land-beyond": {
-      "30s plain": 16463.36,
-      "30s buffed": 27717.71,
-      "30s plain catalyst": 16463.36,
-      "30s buffed catalyst": 27717.71,
-      "600s plain": 41158.4,
-      "600s buffed": 69294.28,
-      "600s plain catalyst": 41158.4,
-      "600s buffed catalyst": 69294.28
+      "30s plain": 41976,
+      "30s buffed": 70670.79,
+      "30s plain catalyst": 45474,
+      "30s buffed catalyst": 76560.03,
+      "600s plain": 69960,
+      "600s buffed": 117784.66,
+      "600s plain catalyst": 69960,
+      "600s buffed catalyst": 117784.66
     },
     "new-malpais": {
       "30s plain": 31317.95,
@@ -715,14 +715,14 @@
       "600s buffed catalyst": 52726.9
     },
     "no-time-to-explain": {
-      "30s plain": 16986.14,
-      "30s buffed": 28597.87,
-      "30s plain catalyst": 16986.14,
-      "30s buffed catalyst": 28597.87,
-      "600s plain": 328768.05,
-      "600s buffed": 553513.89,
-      "600s plain catalyst": 328768.05,
-      "600s buffed catalyst": 553513.89
+      "30s plain": 10359,
+      "30s buffed": 17440.4,
+      "30s plain catalyst": 11934.54,
+      "30s buffed catalyst": 20092.99,
+      "600s plain": 209895.05,
+      "600s buffed": 353379.31,
+      "600s plain catalyst": 243069.59,
+      "600s buffed catalyst": 409231.96
     },
     "one-thousand-voices": {
       "30s plain": 28827.6,

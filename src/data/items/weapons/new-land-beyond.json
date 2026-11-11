@@ -1,0 +1,119 @@
+{
+  "id": "new-land-beyond",
+  "kind": "exoticWeapon",
+  "name": "New Land Beyond",
+  "texts": [
+    { "source": "clarity", "entry": "The Master", "hash": "d96780e1" },
+    { "source": "clarity", "entry": "Bullseye Bolster", "hash": "53e6c8a5" },
+    { "source": "clarity", "entry": "Horizon Ironsights", "hash": "8cffab10" },
+    { "source": "clarity", "entry": "New Land Beyond Catalyst", "hash": "88abff64" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file new-land-beyond",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-sniper-rifle-new-land-beyond-the-master-0x-2].timing.fireRateRpm",
+  "magazine": "$quantum[specials-sniper-rifle-new-land-beyond-the-master-0x-2].timing.magazine",
+  "totalShots": "$quantum[specials-sniper-rifle-new-land-beyond-the-master-0x-2].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-sniper-rifle-new-land-beyond-the-master-0x-2].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "New Land Beyond Catalyst",
+    "description": "While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on each shot.",
+    "effect": "timing"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot (The Master x20)",
+      "damage": "$quantum[specials-sniper-rifle-new-land-beyond-the-master-20x].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "bullseye-bolster",
+      "on": { "on": "phaseStart" },
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "rpm",
+            "value": {
+              "expr": "$quantum[specials-sniper-rifle-new-land-beyond-the-master-0x-2].timing.fireRateRpm * (1 + $clarity[Bullseye Bolster](\"5% increased Rate of Fire\") / 100)",
+              "note": "percent to factor"
+            }
+          }
+        },
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reload",
+            "factor": {
+              "expr": "1 - $clarity[Bullseye Bolster](\"40 Reload Speed\") / 100",
+              "note": "reload speed 40 to a factor on the reload time, the way of The Last Word (Aegis' cycle)"
+            }
+          }
+        }
+      ],
+      "source": {
+        "name": "Item file new-land-beyond",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Precision Hits grant the following benefits for 3 seconds.",
+        "note": "Derived: every shot is a precision hit (optimal play), so the buff of 3 seconds never ends; the shots come every 1.4 s"
+      }
+    },
+    {
+      "id": "catalyst-refill",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reload",
+            "factor": {
+              "value": 0,
+              "source": {
+                "name": "Item file new-land-beyond",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "quote": "the magazine is refilled on each shot",
+                "note": "Derived: The Master stands at 20 stacks before the phase (it persists until death), the first precision hit is the 21st, so the magazine is refilled on every shot and the weapon is never reloaded"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Scoring a Precision Hit grants one stack of 'The Master'",
+      "reason": "carried by the part shot: The Master stands at 20 stacks before the phase (\"Buff persists until death\"), Quantum's row 20x holds the +70 % (1 749 against 1 029; ramp-up of 20 precision hits not modelled, known-inaccuracies W6b)"
+    },
+    { "quote": "Shots visually explode after 20 stacks", "reason": "visual only" },
+    { "quote": "Grants diminishing increases to Precision Damage", "reason": "carried by the part shot (row 20x)" },
+    { "quote": "• Stacks 1-5:", "reason": "carried by the part shot (row 20x); the stacks 1 to 19 are not played" },
+    { "quote": "• Stacks 6-10:", "reason": "carried by the part shot (row 20x); the stacks 1 to 19 are not played" },
+    { "quote": "• Stacks 11-15:", "reason": "carried by the part shot (row 20x); the stacks 1 to 19 are not played" },
+    { "quote": "• Stacks 16-20:", "reason": "carried by the part shot (row 20x: 70 % at 20 stacks, Quantum 1 749 = 1 029 x 1.70)" },
+    {
+      "quote": "Bullseye Bolster duration is increased by ?",
+      "reason": "the duration of 3 seconds never ends with a precision hit every 1.4 s; the catalyst is the refill on each shot (rule catalyst-refill)"
+    }
+  ]
+}

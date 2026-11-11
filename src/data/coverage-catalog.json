@@ -248,7 +248,7 @@
         "name": "No Time to Explain",
         "group": "Kinetic",
         "inGame": "Rewind Again: Precision Hits and Hits against Stasis-Debuffed targets refill 1 ammo into the magazine.\nTime-Slip: Each Precision Hit or Hit against a Stasis-Debuffed target grants 1 stack of 'Rewind Again'. Maximum of 10 stacks.\nAt 10 stacks, summon a 'Time-Slip Portal' that hovers next to you and fires a three-round burst every 1.25 seconds, each bullet dealing 49.1 [10.2] damage.\nTime-Slip Portal has a range of 50 meters, experiences no damage falloff, and inherits the weapon's Combatant Damage Scaling.\nStowing the weapon removes your Time-Slip Portal.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "3 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:no-time-to-explain",
         "status": "full"
       },
@@ -1344,8 +1344,8 @@
         "group": "Kinetic",
         "inGame": "While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on each shot.",
         "iconHash": 2861049498,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "Changes magazine, ammo or reload.",
+        "status": "full",
         "iconKey": "named:new-land-beyond-catalyst"
       },
       {
@@ -1362,8 +1362,8 @@
         "group": "Kinetic",
         "inGame": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
         "iconHash": 2145198832,
-        "inCalculator": "No effect against one boss without adds",
-        "status": "leftOut",
+        "inCalculator": "Adds weapon damage.",
+        "status": "full",
         "iconKey": "named:no-time-to-explain-catalyst"
       },
       {
@@ -1893,8 +1893,8 @@
         "group": "Energy",
         "inGame": "Grants 10 Range and 30 Ammo Generation.\nScoring 25 Hits within ? seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.\nScoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy. Hit counter persists through stow.",
         "iconHash": 3156882011,
-        "inCalculator": "No effect against one boss without adds",
-        "status": "leftOut",
+        "inCalculator": "Not in the calculator yet: no source measured it",
+        "status": "missing",
         "iconKey": "named:wavesplitter-catalyst"
       },
       {

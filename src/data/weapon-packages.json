@@ -8545,7 +8545,7 @@
     "code": 96,
     "name": "Finality's Auger",
     "manifestHash": 331231237,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "linearFusionRifle",
     "element": "solar",
     "ammo": "heavy",
@@ -8553,48 +8553,118 @@
       "value": 533,
       "source": {
         "name": "Bungie manifest 245114.26.10.13.2000-1-bnet.66137, stat \"Charge Time\" of Finality's Auger",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The interval already contains it: the charge delays the first shot and every shot after a cast"
+        "retrieved": "2026-10-31",
+        "status": "verified"
       }
     },
     "fireRateRpm": {
-      "value": 56.232,
+      "value": 58,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row finality-s-auger-bait-and-switch-linear-fusion-mode",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-finality-s-auger",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Derived: (TtE 23.539 s − 3 reloads × 1.8 s) ÷ 17 intervals within magazines (ADR 0013)"
+        "note": "rpm"
       }
     },
     "magazine": {
       "value": 6,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row finality-s-auger-bait-and-switch-linear-fusion-mode",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-finality-s-auger",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "verified",
+        "note": "magazine"
       }
     },
     "totalShots": {
       "value": 21,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row finality-s-auger-bait-and-switch-linear-fusion-mode",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-lorentz-driver",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-linear-fusion-rifle-lorentz-driver].totalShots (Derived: Quantum's row of Finality's Auger has no total (\"???\"); the other linear fusion rifles carry 21 rounds (Lorentz Driver; Aegis Sustained counts 21 for Finality's Auger, too)); $quantum[specials-linear-fusion-rifle-lorentz-driver].totalShots = 21 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-linear-fusion-rifle-lorentz-driver)"
       }
     },
     "reloadTimeMs": {
-      "value": 733,
+      "value": 1320,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row finality-s-auger-bait-and-switch-linear-fusion-mode",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-finality-s-auger",
         "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 1.8 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "status": "derived",
+        "note": "Derived: $quantum[heavies-linear-fusion-rifle-finality-s-auger].reloadSeconds * 1000 (seconds to milliseconds); $quantum[heavies-linear-fusion-rifle-finality-s-auger].reloadSeconds = 1.32 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-finality-s-auger)"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (Linear Fusion Mode)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file finality-s-auger",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1278,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-linear-fusion-rifle-finality-s-auger",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file finality-s-auger",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file finality-s-auger",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "ruinscribe-s-forge",
+        "name": "Ruinscribe's Forge",
+        "description": "[Alternate Weapon Action]  to fire a special projectile that deploys a Ruinscribe Turret. This projectile costs 3 ammo to fire. Aim the projectile skyward to provide the clearest sight lines for the turret which will automatically shoot at nearby targets.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Finality's Auger Catalyst",
+      "description": "Grants the Bait and Switch trait:\nDealing damage with a weapon starts a 7 second timer. Dealing additional weapon damage resets the timer to 7 seconds.\nDealing damage with all 3 of your weapons without letting the timer run out grants you 'Bait and Switch' for 10 seconds, granting 30% increased damage.\nTimer is disabled while Bait and Switch is active, requiring a full activation sequence once the buff expires.",
+      "effect": "unknown"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -8606,82 +8676,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-finality-s-auger-linear-fusion-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-finality-s-auger-linear-fusion-mode",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1277.787,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-finality-s-auger-linear-fusion-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-finality-s-auger-linear-fusion-mode",
-            "note": "visual Value; assumptions: Linear Fusion Mode"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-finality-s-auger-linear-fusion-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-finality-s-auger-linear-fusion-mode"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row linear-fusion-rifle-finality-s-auger-linear-fusion-mode",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "linear-fusion-rifle-finality-s-auger-linear-fusion-mode"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "ruinscribe-s-forge",
-        "name": "Ruinscribe's Forge",
-        "description": "[Alternate Weapon Action]  to fire a special projectile that deploys a Ruinscribe Turret. This projectile costs 3 ammo to fire. Aim the projectile skyward to provide the clearest sight lines for the turret which will automatically shoot at nearby targets.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Bait and Switch, Finality's Auger Catalyst",
-      "description": "Grants the Bait and Switch trait:\nDealing damage with a weapon starts a 7 second timer. Dealing additional weapon damage resets the timer to 7 seconds.\nDealing damage with all 3 of your weapons without letting the timer run out grants you 'Bait and Switch' for 10 seconds, granting 30% increased damage.\nTimer is disabled while Bait and Switch is active, requiring a full activation sequence once the buff expires.",
-      "effect": "unknown"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "forerunner",
@@ -11266,58 +11261,124 @@
     "code": 97,
     "name": "Ice Breaker",
     "manifestHash": 1111334348,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "sniperRifle",
     "element": "solar",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ice-breaker-sniper-s-meditation",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file ice-breaker",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; Quantum's rate is the rate of fire"
       }
     },
     "fireRateRpm": {
-      "value": 48.662,
+      "value": 49,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ice-breaker-sniper-s-meditation",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-ice-breaker",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
         "status": "verified",
-        "note": "Derived: (TtE 11.097 s − 0 reloads × 0 s) ÷ 9 intervals within magazines (ADR 0013)"
+        "note": "rpm"
       }
     },
     "magazine": {
       "value": 10,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ice-breaker-sniper-s-meditation",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-ice-breaker",
+        "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "verified",
+        "note": "magazine"
       }
     },
     "totalShots": {
       "value": 10,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ice-breaker-sniper-s-meditation",
-        "url": "https://destiny2.science/boss-damage",
+        "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-ice-breaker",
         "retrieved": "2026-10-20",
-        "status": "verified"
+        "status": "derived",
+        "note": "Derived: $quantum[specials-sniper-rifle-ice-breaker].magazine (Clarity: \"no reserve ammo\", the magazine is the whole ammunition (Quantum's total damage 12 240 = 10 x 1 224)); $quantum[specials-sniper-rifle-ice-breaker].magazine = 10 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-ice-breaker)"
       }
     },
     "reloadTimeMs": {
       "value": 0,
       "source": {
-        "name": "Aegis Boss Damage sheet (tab Sustained), row ice-breaker-sniper-s-meditation",
-        "url": "https://destiny2.science/boss-damage",
-        "retrieved": "2026-10-20",
-        "status": "verified",
-        "note": "Reload 0 s minus the shot interval: Aegis reloads right after the last shot, the simulator counts one interval before the reload"
+        "name": "Item file ice-breaker",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: without reserves the magazine is never reloaded; Aegis Sustained counts 10 shots in one magazine without a reload, too",
+        "quote": "This gun has no reserve ammo"
       }
     },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file ice-breaker",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1224,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-ice-breaker",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file ice-breaker",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file ice-breaker",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "no-backpack",
+        "name": "No Backpack",
+        "description": "Final blows or assists with any other weapon or ability have a chance to create ammo for Ice Breaker. Defeating powerful combatants will create multiple rounds.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
     "reloadDurationIncluded": {
       "value": 0.9,
       "source": {
@@ -11328,77 +11389,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-ice-breaker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sniper-rifle-ice-breaker",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1223.44,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-ice-breaker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sniper-rifle-ice-breaker",
-            "note": "visual Value; assumptions: none"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-ice-breaker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sniper-rifle-ice-breaker"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-ice-breaker",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sniper-rifle-ice-breaker"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "no-backpack",
-        "name": "No Backpack",
-        "description": "Final blows or assists with any other weapon or ability have a chance to create ammo for Ice Breaker. Defeating powerful combatants will create multiple rounds.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "izanagi-s-burden",
@@ -14555,56 +14546,198 @@
     "code": 25,
     "name": "New Land Beyond",
     "manifestHash": 2581676735,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "sniperRifle",
     "element": "kinetic",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file new-land-beyond",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
-      "value": 36.122,
+      "value": 48.77,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 72.7 s − 4 reloads × 1.98 s) ÷ 39 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 55.9 s − 4 reloads × 1.98 s) ÷ 39 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 8,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 40,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1980,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (The Master x20)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file new-land-beyond",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 1749,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-new-land-beyond-the-master-20x",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file new-land-beyond",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file new-land-beyond",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "bullseye-bolster",
+        "on": { "on": "phaseStart" },
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 51.209,
+                "source": {
+                  "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x-2; Clarity (Live-Clarity-Database, descriptions/clarity.json): Bullseye Bolster",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: $quantum[specials-sniper-rifle-new-land-beyond-the-master-0x-2].timing.fireRateRpm * (1 + $clarity[Bullseye Bolster](\"5% increased Rate of Fire\") / 100) (percent to factor); $quantum[specials-sniper-rifle-new-land-beyond-the-master-0x-2].timing.fireRateRpm = 48.77 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-sniper-rifle-new-land-beyond-the-master-0x-2); $clarity[Bullseye Bolster](\"5% increased Rate of Fire\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Bullseye Bolster)"
+                }
+              }
+            }
+          },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reload",
+              "factor": {
+                "value": 0.6,
+                "source": {
+                  "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Bullseye Bolster",
+                  "retrieved": "2026-10-20",
+                  "status": "derived",
+                  "note": "Derived: 1 - $clarity[Bullseye Bolster](\"40 Reload Speed\") / 100 (reload speed 40 to a factor on the reload time, the way of The Last Word (Aegis' cycle)); $clarity[Bullseye Bolster](\"40 Reload Speed\") = 40 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Bullseye Bolster)"
+                }
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file new-land-beyond",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: every shot is a precision hit (optimal play), so the buff of 3 seconds never ends; the shots come every 1.4 s",
+          "quote": "Precision Hits grant the following benefits for 3 seconds."
+        }
+      },
+      {
+        "id": "catalyst-refill",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reload",
+              "factor": {
+                "value": 0,
+                "source": {
+                  "name": "Item file new-land-beyond",
+                  "retrieved": "2026-11-11",
+                  "status": "derived",
+                  "note": "Derived: The Master stands at 20 stacks before the phase (it persists until death), the first precision hit is the 21st, so the magazine is refilled on every shot and the weapon is never reloaded",
+                  "quote": "the magazine is refilled on each shot"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "the-master",
+        "name": "The Master",
+        "description": "Scoring precision hits increases this weapon's damage until the wielder's defeat.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "New Land Beyond Catalyst",
+      "description": "While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on each shot.",
+      "effect": "timing"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -14616,82 +14749,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-new-land-beyond-no-stacks",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sniper-rifle-new-land-beyond-no-stacks",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 1028.96,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-new-land-beyond-no-stacks",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sniper-rifle-new-land-beyond-no-stacks",
-            "note": "visual Value; assumptions: no stacks"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-new-land-beyond-no-stacks",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sniper-rifle-new-land-beyond-no-stacks"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row sniper-rifle-new-land-beyond-no-stacks",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "sniper-rifle-new-land-beyond-no-stacks"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "the-master",
-        "name": "The Master",
-        "description": "Scoring precision hits increases this weapon's damage until the wielder's defeat.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Top Tier Mastery, New Land Beyond Catalyst",
-      "description": "While above 20 stacks of The Master, Bullseye Bolster duration is increased by ? seconds and the magazine is refilled on each shot.",
-      "effect": "unknown"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "new-malpais",
@@ -14842,56 +14900,316 @@
     "code": 83,
     "name": "No Time to Explain",
     "manifestHash": 1594120904,
-    "gameVersion": "9.7.0",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "pulseRifle",
     "element": "kinetic",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file no-time-to-explain",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "fireRateRpm": {
       "value": 340,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 24,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1160,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 41,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "portal",
+        "name": "Time-Slip Portal (share per shot)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 20.795,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Time-Slip; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: 3 * $clarity[Time-Slip](\"dealing 49.1\") * (60 / $quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.fireRateRpm) / $clarity[Time-Slip](\"every 1.25 seconds\") (a burst of three bullets of 49.1 every 1.25 s, as the share of one shot interval (60 / rpm seconds): the portal fires while the weapon is drawn, so the share per shot gives its damage over the phase); $clarity[Time-Slip](\"dealing 49.1\") = 49.1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Time-Slip); $quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.fireRateRpm = 340 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata); $clarity[Time-Slip](\"every 1.25 seconds\") = 1.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Time-Slip)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "compendium"
+      },
+      {
+        "id": "portal-catalyst",
+        "name": "Time-Slip Portal (share per shot, catalyst)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 30.581,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Time-Slip; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata; Clarity (Live-Clarity-Database, descriptions/clarity.json): No Time to Explain Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: 3 * $clarity[Time-Slip](\"dealing 49.1\") * (60 / $quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.fireRateRpm) / $clarity[No Time to Explain Catalyst](\"0.85/s\") (as the part portal, with the delay of the catalyst: 0.85 s); $clarity[Time-Slip](\"dealing 49.1\") = 49.1 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Time-Slip); $quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.fireRateRpm = 340 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata); $clarity[No Time to Explain Catalyst](\"0.85/s\") = 0.85 (Clarity (Live-Clarity-Database, descriptions/clarity.json): No Time to Explain Catalyst)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file no-time-to-explain",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "impact",
+        "scale": "compendium"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "rewind-again-no-reload",
+        "on": { "on": "phaseStart" },
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reload",
+              "factor": {
+                "value": 0,
+                "source": {
+                  "name": "Item file no-time-to-explain",
+                  "retrieved": "2026-11-11",
+                  "status": "derived",
+                  "note": "Derived: every shot is a precision hit (optimal play) and refills the round it used, so the magazine never runs empty and the weapon is never reloaded",
+                  "quote": "refill 1 ammo into the magazine"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "time-slip-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "rewind-again",
+            "op": "<",
+            "value": {
+              "value": 10,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Time-Slip",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 10 stacks"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "rewind-again" }]
+      },
+      {
+        "id": "portal",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "rewind-again",
+            "op": ">=",
+            "value": {
+              "value": 10,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Time-Slip",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 10 stacks"
+              }
+            }
+          },
+          { "type": "hasItem", "id": "catalyst", "not": true }
+        ],
+        "do": [{ "type": "spawn", "part": "portal" }],
+        "source": {
+          "name": "Item file no-time-to-explain",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the portal comes with the 10th precision hit and fires as long as the weapon fires (it goes with a stow); its bursts are spread evenly over the shots",
+          "quote": "At 10 stacks, summon a 'Time-Slip Portal'"
+        }
+      },
+      {
+        "id": "portal-catalyst",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "rewind-again",
+            "op": ">=",
+            "value": {
+              "value": 10,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Time-Slip",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "Maximum of 10 stacks"
+              }
+            }
+          },
+          { "type": "hasItem", "id": "catalyst" }
+        ],
+        "do": [{ "type": "spawn", "part": "portal-catalyst" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "rewind-again",
+        "name": "Rewind Again",
+        "description": "Precision shots and shots against combatants slowed or frozen by Stasis will return to the magazine.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "No Time to Explain Catalyst",
+      "description": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -14903,82 +15221,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-no-time-to-explain-burst",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-no-time-to-explain-burst",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 123.088,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-no-time-to-explain-burst",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-no-time-to-explain-burst",
-            "note": "visual Value; assumptions: burst"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-no-time-to-explain-burst",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-no-time-to-explain-burst"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row pulse-rifle-no-time-to-explain-burst",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "pulse-rifle-no-time-to-explain-burst"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "rewind-again",
-        "name": "Rewind Again",
-        "description": "Precision shots and shots against combatants slowed or frozen by Stasis will return to the magazine.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Blast from the Side, No Time to Explain Catalyst",
-      "description": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "one-thousand-voices",
@@ -27161,56 +27404,129 @@
     "code": 128,
     "name": "Wavesplitter",
     "manifestHash": 1852863732,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "traceRifle",
     "element": "void",
     "ammo": "special",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file wavesplitter",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
       }
     },
     "fireRateRpm": {
       "value": 906.174,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-wavesplitter-average",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "derived",
-        "note": "Derived: (Time to Empty 38.8 s − 4 reloads × 1.44 s) ÷ 499 intervals (ADR 0013)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Derived: (Time to Empty 38.8 s − 4 reloads × 1.44 s) ÷ 499 intervals (ADR 0013)"
       }
     },
     "magazine": {
       "value": 100,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-wavesplitter-average",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": 500,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-wavesplitter-average",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1440,
       "source": {
-        "name": "Quantum Damage-ics (specials), row specials-trace-rifle-wavesplitter-average",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-wavesplitter-average",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (average of the power levels)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file wavesplitter",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 39,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (specials), row specials-trace-rifle-wavesplitter-average",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file wavesplitter",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file wavesplitter",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "harmonic-laser",
+        "name": "Harmonic Laser",
+        "description": "Laser damage has three power levels that oscillate while the trigger is held down.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Detonator Beam, Attrition Orbs, Wavesplitter Catalyst",
+      "description": "Grants 10 Range and 30 Ammo Generation.\nScoring 25 Hits within ? seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.\nScoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy. Hit counter persists through stow.",
+      "effect": "unknown"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -27222,82 +27538,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 39,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
-            "note": "visual Value; assumptions: average, power cycling, Detonator Beam"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "harmonic-laser",
-        "name": "Harmonic Laser",
-        "description": "Laser damage has three power levels that oscillate while the trigger is held down.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Detonator Beam, Attrition Orbs, Wavesplitter Catalyst",
-      "description": "Grants 10 Range and 30 Ammo Generation.\nScoring 25 Hits within ? seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.\nScoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy. Hit counter persists through stow.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "whirling-ovation",

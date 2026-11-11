@@ -470,7 +470,7 @@
           }
         ]
       },
-      "planBlock": "W6b"
+      "planBlock": null
     },
     {
       "id": "bad-juju",
@@ -1413,7 +1413,7 @@
           }
         ]
       },
-      "planBlock": "W6a"
+      "planBlock": null
     },
     {
       "id": "choir-of-one",
@@ -4458,57 +4458,65 @@
     {
       "id": "finality-s-auger",
       "name": "Finality's Auger",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 11500.1,
-          "s30": 26833.5,
-          "s60": 26833.5
+          "s10": 10224,
+          "s30": 26838,
+          "s60": 26838
         },
         "catalyst": {
-          "s10": 11500.1,
-          "s30": 26833.5,
-          "s60": 26833.5
+          "s10": 10224,
+          "s30": 26838,
+          "s60": 26838
         }
       },
       "cause": {
         "class": "ok",
-        "why": "-0.0 % against Quantum, no Aegis row."
+        "why": "Within the limit: Aegis -0.1 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Costs 3 ammo.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "see Turret Mode: open in W8"
         },
         {
           "text": "Turret lasts for 25 seconds and targets enemies in a 70 meter radius, firing a 359 [131] damage missile at the closest target every 2 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "see Turret Mode: open in W8"
         },
         {
           "text": "Dealing damage with a weapon starts a 7 second timer.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Catalyst stage (Bait and Switch needs all 3 weapons)"
         },
         {
           "text": "Dealing additional weapon damage resets the timer to 7 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Catalyst stage (Bait and Switch needs all 3 weapons)"
         },
         {
           "text": "Dealing damage with all 3 of your weapons without letting the timer run out grants you 'Bait and Switch' for 10 seconds, granting 30% increased damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Catalyst stage: +30 % for 10 s needs the weapon rotation, known-inaccuracies W6b"
         },
         {
           "text": "While a turret is deployed, Ruinscribe Turret Mode is replaced with a laser designator that marks enemies for 30 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "see Turret Mode: open in W8"
         },
         {
           "text": "Firing at a target marks them; firing at a surface marks all enemies within a 6 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "see Turret Mode: open in W8"
         },
         {
           "text": "Turret prioritizes marked targets, firing three 274 [?] damage missiles every 1.65 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "see Turret Mode: open in W8 (Aegis' row \"marked\", entire turret duration: 30 095)"
         }
       ],
       "quantum": {
@@ -4516,22 +4524,32 @@
         "rowNote": "Base",
         "basis": "magazine",
         "measured": 7668,
-        "model": 7666.7,
-        "deviation": -0.0002,
-        "circular": false,
+        "model": 7668,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 0.9998333333333334,
-          "mechanic": 1.0000000000000002,
+          "damagePerHit": 1,
+          "mechanic": 1,
           "rowPlain": true
         }
       },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "linear-fusion-rifle-finality-s-auger-linear-fusion-mode",
+            "assumptions": [
+              "Linear Fusion Mode"
+            ],
+            "measured": 1278.8,
+            "model": 1278,
+            "deviation": -0.0006
+          }
+        ]
       },
       "planBlock": "W6b"
     },
@@ -5726,53 +5744,60 @@
     {
       "id": "ice-breaker",
       "name": "Ice Breaker",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 11011,
-          "s30": 12234.4,
-          "s60": 12234.4
+          "s10": 11016,
+          "s30": 12240,
+          "s60": 12240
         },
         "catalyst": null
       },
       "cause": {
         "class": "ok",
-        "why": "Within the limit: Aegis 0.0 %."
+        "why": "Within the limit: Aegis +0.2 %."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "This gun has no reserve ammo and fires at 49 RPM.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Deals ~47% increased damage against PvE Combatants compared to an Aggressive-Frame Sniper Rifle.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside Quantum's shot (1 224)"
         },
         {
           "text": "Shots fired deal 2761 [497] precision damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "source conflict: Clarity 2 761 against Quantum 1 224 and Aegis 1 223; Quantum's scale holds (known-inaccuracies W6b)"
         },
         {
           "text": "• Minors: 1 Ammo (per 2 kills)",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs kills (one boss, no adds, ADR 0015)"
         },
         {
           "text": "• Elites: 2 Ammo",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs kills (one boss, no adds, ADR 0015)"
         },
         {
           "text": "• Miniboss and Bosses: 3 Ammo",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs kills; the 10 rounds of the magazine are the whole ammunition (ADR 0015)"
         },
         {
           "text": "• Guardians: 1?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "PvP, not played"
         },
         {
           "text": "Bodyshot Kills or Shattering a Stasis Crystal triggers a Solar Explosion, dealing 480 [40] damage in a ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill or a crystal (one boss, no adds, ADR 0015)"
         }
       ],
       "quantum": {
@@ -5780,16 +5805,16 @@
         "rowNote": "",
         "basis": "magazine",
         "measured": 12240,
-        "model": 12234.4,
-        "deviation": -0.0005,
-        "circular": false,
+        "model": 12240,
+        "deviation": 0,
+        "circular": true,
         "catalystRow": false,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 0.9995424836601308,
-          "mechanic": 1.0000000000000002,
+          "damagePerHit": 1,
+          "mechanic": 1,
           "rowPlain": true
         }
       },
@@ -5797,13 +5822,20 @@
         "check": "checked",
         "rows": [
           {
+            "row": "sniper-rifle-ice-breaker",
+            "assumptions": [],
+            "measured": 1222.1,
+            "model": 1224,
+            "deviation": 0.0016
+          },
+          {
             "row": "sustained-ice-breaker-sniper-s-meditation",
             "assumptions": [
               "Sniper's Meditation"
             ],
             "measured": 34643,
-            "model": 34643,
-            "deviation": 0
+            "model": 34658.8,
+            "deviation": 0.0005
           }
         ]
       },
@@ -6678,7 +6710,7 @@
           }
         ]
       },
-      "planBlock": "W6b"
+      "planBlock": null
     },
     {
       "id": "lumina",
@@ -7364,75 +7396,110 @@
     {
       "id": "new-land-beyond",
       "name": "New Land Beyond",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 7202.7,
-          "s30": 16463.4,
-          "s60": 32926.7
+          "s10": 13992,
+          "s30": 41976,
+          "s60": 69960
         },
         "catalyst": {
-          "s10": 7202.7,
-          "s30": 16463.4,
-          "s60": 32926.7
+          "s10": 15741,
+          "s30": 45474,
+          "s60": 69960
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "base-damage",
+        "why": "Damage per hit ×1.70 against the Quantum row."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Scoring a Precision Hit grants one stack of 'The Master' up to an infinite amount, with effective benefits ending after 20 stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the part shot: The Master stands at 20 stacks before the phase (\"Buff persists until death\"), Quantum's row 20x holds the +70 % (1 749 against 1 029; ramp-up of 20 precision hits not modelled, known-inaccuracies W6b)"
         },
         {
           "text": "Shots visually explode after 20 stacks with no added benefit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "visual only"
         },
         {
           "text": "Grants diminishing increases to Precision Damage across 1|2|3|....|20 stacks:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the part shot (row 20x)"
         },
         {
           "text": "• Stacks 1-5: 16%|22%|27%|31%|35%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the part shot (row 20x); the stacks 1 to 19 are not played"
         },
         {
           "text": "• Stacks 6-10: 38%|41%|44%|47%|49.5%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the part shot (row 20x); the stacks 1 to 19 are not played"
         },
         {
           "text": "• Stacks 11-15: 52%|54%|56.5%|59%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the part shot (row 20x); the stacks 1 to 19 are not played"
         },
         {
           "text": "• Stacks 16-20: 63%|64.5%|66%|68%|70%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the part shot (row 20x: 70 % at 20 stacks, Quantum 1 749 = 1 029 x 1.70)"
         },
         {
           "text": "Precision Hits grant the following benefits for 3 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 5% increased Rate of Fire",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 40 Reload Speed",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "While above 20 stacks of The Master, Bullseye Bolster duration is increased by ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the duration of 3 seconds never ends with a precision hit every 1.4 s; the catalyst is the refill on each shot (rule catalyst-refill)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-sniper-rifle-new-land-beyond-the-master-0x-2",
+        "rowNote": "Base damage, The Master 0x, with a Rally Barricade",
+        "basis": "total",
+        "measured": 41160,
+        "model": 69960,
+        "deviation": 0.6997,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1.6997084548104957,
+          "mechanic": 1,
+          "rowPlain": true
+        }
+      },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "sniper-rifle-new-land-beyond-no-stacks",
+            "assumptions": [
+              "no stacks"
+            ],
+            "measured": 20555.9,
+            "model": 34980,
+            "deviation": 0.7017
+          }
+        ]
       },
       "planBlock": "W6b"
     },
@@ -7482,55 +7549,80 @@
     {
       "id": "no-time-to-explain",
       "name": "No Time to Explain",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 5908.2,
-          "s30": 16986.1,
-          "s60": 32987.6
+          "s10": 3314.4,
+          "s30": 10359,
+          "s60": 20864.1
         },
         "catalyst": {
-          "s10": 5908.2,
-          "s30": 16986.1,
-          "s60": 32987.6
+          "s10": 3774.3,
+          "s30": 11934.5,
+          "s60": 24103.3
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "ok",
+        "why": "Within the limit: Aegis -0.1 %."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "rewind-again-no-reload",
+          "share": 0.2128
+        },
+        {
+          "id": "time-slip-count",
+          "share": 0.3332
+        },
+        {
+          "id": "portal",
+          "share": 0.3332
+        }
+      ],
       "sentences": [
         {
           "text": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Each Precision Hit or Hit against a Stasis-Debuffed target grants 1 stack of 'Rewind Again'.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the rule time-slip-count (every shot is a precision hit)"
         },
         {
           "text": "Maximum of 10 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "At 10 stacks, summon a 'Time-Slip Portal' that hovers next to you and fires a three-round burst every 1.25 seconds, each bullet dealing 49.1 [10.2] damage.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Time-Slip Portal has a range of 50 meters, experiences no damage falloff, and inherits the weapon's Combatant Damage Scaling.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "Precision Hits and Hits against Stasis-Debuffed targets refill 1 ammo into the magazine.",
-          "state": "open"
+          "state": "rule"
         }
       ],
       "quantum": null,
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "pulse-rifle-no-time-to-explain-burst",
+            "assumptions": [
+              "burst"
+            ],
+            "measured": 123.1,
+            "model": 123,
+            "deviation": -0.0005
+          }
+        ]
       },
       "planBlock": "W6b"
     },
@@ -9306,7 +9398,7 @@
         "check": "no row",
         "rows": []
       },
-      "planBlock": "W6a"
+      "planBlock": null
     },
     {
       "id": "slayer-s-fang",
@@ -10072,7 +10164,7 @@
         "check": "no row",
         "rows": []
       },
-      "planBlock": "W6a"
+      "planBlock": null
     },
     {
       "id": "sweet-business",
@@ -10168,7 +10260,7 @@
           }
         ]
       },
-      "planBlock": "W6a"
+      "planBlock": null
     },
     {
       "id": "symmetry",
@@ -12489,7 +12581,7 @@
           }
         ]
       },
-      "planBlock": "W6a"
+      "planBlock": null
     },
     {
       "id": "tractor-cannon",
@@ -13551,8 +13643,8 @@
     {
       "id": "wavesplitter",
       "name": "Wavesplitter",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
           "s10": 5070,
@@ -13566,56 +13658,95 @@
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "mechanic-missing",
+        "why": "Aegis -9.5 % with average, power cycling, Detonator Beam."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Medium for 0.5 seconds 🠚 Low 1s 🠚 High 1s 🠚 Medium 1.5s 🠚 Low 1.5s 🠚 Medium 2s 🠚 High 1.25s 🠚 Low 1.25s 🠚 Repeats",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside Quantum's row \"average\" (the mean of the power levels over the cycle)"
         },
         {
           "text": "• PvE: Base|32.2%|68.7%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside Quantum's row \"average\" (the mean of the power levels over the cycle)"
         },
         {
           "text": "• PvP: Base|3%|6.25%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "PvP value, not played"
         },
         {
           "text": "Collecting an Orb of Power grants 'Supercharged Battery' for 10 seconds and refills the magazine.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs an Orb of Power (one boss, no adds, ADR 0015); Quantum's row \"power level III\" (49 per shot, +26 %) is the High level of the buff, known-inaccuracies W6b"
         },
         {
           "text": "Additional orbs grant 10 seconds each, extending the duration up to 20 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs Orbs of Power (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Supercharged Battery sets the power level to High for the duration of the buff, and dealing sustained damage for 2 seconds applies Suppression for 7 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs an Orb of Power (one boss, no adds, ADR 0015); Suppression is no damage"
         },
         {
           "text": "Grants 10 Range and 30 Ammo Generation.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range), ammo generation is no need with 500 rounds"
         },
         {
           "text": "Scoring 25 Hits within ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Detonator Beam not modelled: the time \"?\" is no source's number (Clarity); the explosion (up to 250 in 8 m, 25 hits at 900 RPM = 1.7 s) is above 2 %, open, known-inaccuracies W6b"
         },
         {
           "text": "seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "see \"Scoring 25 Hits\": open, known-inaccuracies W6b"
         },
         {
           "text": "Scoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "an Orb of Power gives Super energy, no damage against a boss"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "specials-trace-rifle-wavesplitter-average",
+        "rowNote": "",
+        "basis": "total",
+        "measured": 19333,
+        "model": 19500,
+        "deviation": 0.0086,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1.008638079966896,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
+      },
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "trace-rifle-wavesplitter-average-power-cycling-detonator-beam",
+            "assumptions": [
+              "average",
+              "power cycling",
+              "Detonator Beam"
+            ],
+            "measured": 4309.7,
+            "model": 3900,
+            "deviation": -0.0951
+          }
+        ]
       },
       "planBlock": "W6b"
     },

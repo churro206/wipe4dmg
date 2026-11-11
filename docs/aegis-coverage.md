@@ -7,7 +7,7 @@ Generiert von `npm run coverage` (`scripts/lib/aegisCoverage.ts`), nicht von Han
 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 133 | 257 | 27 |
+| Weapons | 417 | 132 | 258 | 27 |
 | Sustained | 261 | 38 | 132 | 91 |
 | Swap | 204 | 47 | 102 | 55 |
 
@@ -66,6 +66,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Thread of Continuity | 2 | kein Paar, Wert aus Text |  |  |
 | ADS tap fire | 1 | kein Paar, Wert aus Text |  |  |
 | Assault Mag | 1 | kein Paar, Wert aus Text |  |  |
+| Bait and Switch | 1 | kein Paar, Wert aus Text |  |  |
 | Claws of Ahamkara + Necrotic Grip | 1 | kein Paar, Wert aus Text |  |  |
 | Facet of Command | 1 | kein Paar, Wert aus Text |  |  |
 | Facet of Ruin | 1 | kein Paar, Wert aus Text |  |  |
@@ -597,7 +598,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Ruinous Effigy | im Modell | base row of the package |
 | Ruinous Effigy | übersprungen | the item file uses another row |
 | The Navigator | im Modell | base row of the package |
-| Wavesplitter, average, power cycling, Detonator Beam | im Modell | base row of the package |
+| Wavesplitter, average, power cycling, Detonator Beam | übersprungen | Katalysator: Detonator Beam |
 | Wavesplitter, average, Supercharged Battery, Detonator Beam | übersprungen | Katalysator: Detonator Beam |
 
 ## Sustained
@@ -739,7 +740,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | New Land Beyond, starts at The Master x0, Rally Barricade, manual reloads until The Grandmaster, Sniper's Meditation | fehlt | no switch for: starts at The Master x0; manual reloads until The Grandmaster |
 | Microcosm, Paracausal Imbuement, Harsh Refraction | fehlt | no switch for: Paracausal Imbuement; Harsh Refraction |
 | Slayer's Fang, Assault Mag, includes submunitions | fehlt | no switch for: Assault Mag; includes submunitions |
-| Finality's Auger, Bait and Switch, Linear Fusion Mode | fehlt | no switch for: Linear Fusion Mode |
+| Finality's Auger, Bait and Switch, Linear Fusion Mode | fehlt | no switch for: Bait and Switch; Linear Fusion Mode |
 | One Thousand Voices, Particle Reconstruction | im Modell | gate: probe entry by rule |
 | Cloudstrike, Triple Tap, excludes Bolt Charge, Sniper's Meditation | fehlt | no switch for: excludes Bolt Charge |
 | Heartshadow, heavy attacks, Shot in the Dark, Lucent Blades x3, Argent Blade | fehlt | no switch for: heavy attacks; Shot in the Dark |

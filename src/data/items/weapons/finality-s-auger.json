@@ -1,0 +1,58 @@
+{
+  "id": "finality-s-auger",
+  "kind": "exoticWeapon",
+  "name": "Finality's Auger",
+  "texts": [
+    { "source": "clarity", "entry": "Ruinscribe's Forge", "hash": "01806282" },
+    { "source": "clarity", "entry": "Ruinscribe's Beacon", "hash": "20fef57a" },
+    { "source": "clarity", "entry": "Finality's Auger Catalyst", "hash": "809fc73f" }
+  ],
+  "chargeTimeMs": "$manifest[Finality's Auger].stat(\"Charge Time\")",
+  "fireRateRpm": "$quantum[heavies-linear-fusion-rifle-finality-s-auger].rpm",
+  "magazine": "$quantum[heavies-linear-fusion-rifle-finality-s-auger].magazine",
+  "totalShots": {
+    "expr": "$quantum[specials-linear-fusion-rifle-lorentz-driver].totalShots",
+    "note": "Derived: Quantum's row of Finality's Auger has no total (\"???\"); the other linear fusion rifles carry 21 rounds (Lorentz Driver; Aegis Sustained counts 21 for Finality's Auger, too)"
+  },
+  "reloadTimeMs": {
+    "expr": "$quantum[heavies-linear-fusion-rifle-finality-s-auger].reloadSeconds * 1000",
+    "note": "seconds to milliseconds"
+  },
+  "catalyst": {
+    "name": "Finality's Auger Catalyst",
+    "description": "Grants the Bait and Switch trait:\nDealing damage with a weapon starts a 7 second timer. Dealing additional weapon damage resets the timer to 7 seconds.\nDealing damage with all 3 of your weapons without letting the timer run out grants you 'Bait and Switch' for 10 seconds, granting 30% increased damage.\nTimer is disabled while Bait and Switch is active, requiring a full activation sequence once the buff expires.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot (Linear Fusion Mode)",
+      "damage": "$quantum[heavies-linear-fusion-rifle-finality-s-auger].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "Hold [Reload] to switch to Ruinscribe Turret Mode",
+      "reason": "Turret Mode not modelled: above 2 % (359 per 2 s for 25 s), open in W8, known-inaccuracies W6b"
+    },
+    { "quote": "Costs 3 ammo.", "reason": "see Turret Mode: open in W8" },
+    { "quote": "Deploying a turret refills the magazine.", "reason": "see Turret Mode: open in W8" },
+    { "quote": "Turret prioritizes marked targets", "reason": "see Turret Mode: open in W8 (Aegis' row \"marked\", entire turret duration: 30 095)" },
+    { "quote": "Dealing additional weapon damage resets the timer", "reason": "Catalyst stage (Bait and Switch needs all 3 weapons)" },
+    { "quote": "Turret lasts for 25 seconds", "reason": "see Turret Mode: open in W8" },
+    { "quote": "While a turret is deployed, Ruinscribe Turret Mode is replaced with a laser designator", "reason": "see Turret Mode: open in W8" },
+    { "quote": "Firing at a target marks them", "reason": "see Turret Mode: open in W8" },
+    { "quote": "Grants the Bait and Switch trait:", "reason": "Catalyst stage (Bait and Switch needs all 3 weapons)" },
+    { "quote": "Dealing damage with a weapon starts a 7 second timer.", "reason": "Catalyst stage (Bait and Switch needs all 3 weapons)" },
+    { "quote": "Dealing damage with all 3 of your weapons", "reason": "Catalyst stage: +30 % for 10 s needs the weapon rotation, known-inaccuracies W6b" },
+    { "quote": "Timer is disabled while Bait and Switch is active", "reason": "Catalyst stage" }
+  ]
+}

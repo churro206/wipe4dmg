@@ -1,0 +1,136 @@
+{
+  "id": "no-time-to-explain",
+  "kind": "exoticWeapon",
+  "name": "No Time to Explain",
+  "texts": [
+    { "source": "clarity", "entry": "Rewind Again", "hash": "0dc28df8" },
+    { "source": "clarity", "entry": "Time-Slip", "hash": "59934787" },
+    { "source": "clarity", "entry": "No Time to Explain Catalyst", "hash": "015c1de0" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file no-time-to-explain",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.magazine",
+  "totalShots": "$quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "No Time to Explain Catalyst",
+    "description": "Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s).",
+    "effect": "damage"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "portal": {
+      "name": "Time-Slip Portal (share per shot)",
+      "damage": {
+        "expr": "3 * $clarity[Time-Slip](\"dealing 49.1\") * (60 / $quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.fireRateRpm) / $clarity[Time-Slip](\"every 1.25 seconds\")",
+        "note": "a burst of three bullets of 49.1 every 1.25 s, as the share of one shot interval (60 / rpm seconds): the portal fires while the weapon is drawn, so the share per shot gives its damage over the phase"
+      },
+      "delivery": "impact"
+    },
+    "portal-catalyst": {
+      "name": "Time-Slip Portal (share per shot, catalyst)",
+      "damage": {
+        "expr": "3 * $clarity[Time-Slip](\"dealing 49.1\") * (60 / $quantum[primaries-pulse-rifle-no-time-to-explain-w-time-slip-portal-cata].timing.fireRateRpm) / $clarity[No Time to Explain Catalyst](\"0.85/s\")",
+        "note": "as the part portal, with the delay of the catalyst: 0.85 s"
+      },
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "rewind-again-no-reload",
+      "on": { "on": "phaseStart" },
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reload",
+            "factor": {
+              "value": 0,
+              "source": {
+                "name": "Item file no-time-to-explain",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "quote": "refill 1 ammo into the magazine",
+                "note": "Derived: every shot is a precision hit (optimal play) and refills the round it used, so the magazine never runs empty and the weapon is never reloaded"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "time-slip-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "rewind-again",
+          "op": "<",
+          "value": "$clarity[Time-Slip](\"Maximum of 10 stacks\")"
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "rewind-again" }]
+    },
+    {
+      "id": "portal",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "rewind-again",
+          "op": ">=",
+          "value": "$clarity[Time-Slip](\"Maximum of 10 stacks\")"
+        },
+        { "type": "hasItem", "id": "catalyst", "not": true }
+      ],
+      "do": [{ "type": "spawn", "part": "portal" }],
+      "source": {
+        "name": "Item file no-time-to-explain",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "At 10 stacks, summon a 'Time-Slip Portal'",
+        "note": "Derived: the portal comes with the 10th precision hit and fires as long as the weapon fires (it goes with a stow); its bursts are spread evenly over the shots"
+      }
+    },
+    {
+      "id": "portal-catalyst",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "rewind-again",
+          "op": ">=",
+          "value": "$clarity[Time-Slip](\"Maximum of 10 stacks\")"
+        },
+        { "type": "hasItem", "id": "catalyst" }
+      ],
+      "do": [{ "type": "spawn", "part": "portal-catalyst" }]
+    }
+  ],
+  "notModelled": [
+    { "quote": "Precision Hits and Hits against Stasis-Debuffed targets refill 1 ammo", "reason": "carried by the rule rewind-again-no-reload" },
+    { "quote": "Each Precision Hit or Hit against a Stasis-Debuffed target grants 1 stack", "reason": "carried by the rule time-slip-count (every shot is a precision hit)" },
+    { "quote": "Time-Slip Portal has a range of 50 meters", "reason": "no damage against a boss (range)" },
+    { "quote": "Stowing the weapon removes your Time-Slip Portal", "reason": "the weapon is drawn for the phase" }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "wavesplitter",
+  "kind": "exoticWeapon",
+  "name": "Wavesplitter",
+  "texts": [
+    { "source": "clarity", "entry": "Harmonic Laser", "hash": "15538a90" },
+    { "source": "clarity", "entry": "Supercharged Battery", "hash": "af749a69" },
+    { "source": "clarity", "entry": "Wavesplitter Catalyst", "hash": "ee18270b" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file wavesplitter",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; the Quantum time to empty counts from the first shot"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-trace-rifle-wavesplitter-average].timing.fireRateRpm",
+  "magazine": "$quantum[specials-trace-rifle-wavesplitter-average].timing.magazine",
+  "totalShots": "$quantum[specials-trace-rifle-wavesplitter-average].timing.totalShots",
+  "reloadTimeMs": "$quantum[specials-trace-rifle-wavesplitter-average].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Detonator Beam, Attrition Orbs, Wavesplitter Catalyst",
+    "description": "Grants 10 Range and 30 Ammo Generation.\nScoring 25 Hits within ? seconds of each triggers an explosion around the target, dealing up to 250 [?] weapon element-matching damage in an 8 meter radius.\nScoring 69 Hits against enemies within 5 seconds of each spawns an Orb of Power that grants 0.8% Super Energy. Hit counter persists through stow.",
+    "effect": "unknown"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot (average of the power levels)",
+      "damage": "$quantum[specials-trace-rifle-wavesplitter-average].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ],
+  "notModelled": [
+    { "quote": "Medium for 0.5 seconds", "reason": "inside Quantum's row \"average\" (the mean of the power levels over the cycle)" },
+    { "quote": "PvE: Base|32.2%|68.7%", "reason": "inside Quantum's row \"average\" (the mean of the power levels over the cycle)" },
+    { "quote": "PvP: Base|3%|6.25%", "reason": "PvP value, not played" },
+    {
+      "quote": "Collecting an Orb of Power grants 'Supercharged Battery'",
+      "reason": "needs an Orb of Power (one boss, no adds, ADR 0015); Quantum's row \"power level III\" (49 per shot, +26 %) is the High level of the buff, known-inaccuracies W6b"
+    },
+    { "quote": "Additional orbs grant 10 seconds each", "reason": "needs Orbs of Power (one boss, no adds, ADR 0015)" },
+    { "quote": "Supercharged Battery sets the power level to High", "reason": "needs an Orb of Power (one boss, no adds, ADR 0015); Suppression is no damage" },
+    { "quote": "Grants 10 Range and 30 Ammo Generation.", "reason": "no damage against a boss (range), ammo generation is no need with 500 rounds" },
+    {
+      "quote": "Scoring 25 Hits within ?",
+      "reason": "Detonator Beam not modelled: the time \"?\" is no source's number (Clarity); the explosion (up to 250 in 8 m, 25 hits at 900 RPM = 1.7 s) is above 2 %, open, known-inaccuracies W6b"
+    },
+    { "quote": "seconds of each triggers an explosion", "reason": "see \"Scoring 25 Hits\": open, known-inaccuracies W6b" },
+    { "quote": "Scoring 69 Hits against enemies", "reason": "an Orb of Power gives Super energy, no damage against a boss" }
+  ]
+}

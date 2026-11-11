@@ -1,0 +1,63 @@
+{
+  "id": "ice-breaker",
+  "kind": "exoticWeapon",
+  "name": "Ice Breaker",
+  "texts": [
+    { "source": "clarity", "entry": "No Backpack", "hash": "61e60758" },
+    { "source": "clarity", "entry": "Ice Breaker", "hash": "04669fea" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ice-breaker",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; Quantum's rate is the rate of fire"
+    }
+  },
+  "fireRateRpm": "$quantum[specials-sniper-rifle-ice-breaker].rpm",
+  "magazine": "$quantum[specials-sniper-rifle-ice-breaker].magazine",
+  "totalShots": {
+    "expr": "$quantum[specials-sniper-rifle-ice-breaker].magazine",
+    "note": "Clarity: \"no reserve ammo\", the magazine is the whole ammunition (Quantum's total damage 12 240 = 10 x 1 224)"
+  },
+  "reloadTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file ice-breaker",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "quote": "This gun has no reserve ammo",
+      "note": "Derived: without reserves the magazine is never reloaded; Aegis Sustained counts 10 shots in one magazine without a reload, too"
+    }
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[specials-sniper-rifle-ice-breaker].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ],
+  "notModelled": [
+    { "quote": "fires at 49 RPM", "reason": "Quantum's rate (rpm 49) is the same" },
+    { "quote": "Deals ~47% increased damage against PvE Combatants", "reason": "inside Quantum's shot (1 224)" },
+    {
+      "quote": "Shots fired deal 2761 [497] precision damage.",
+      "reason": "source conflict: Clarity 2 761 against Quantum 1 224 and Aegis 1 223; Quantum's scale holds (known-inaccuracies W6b)"
+    },
+    { "quote": "Kills or assists with abilities and other guns generate ammo", "reason": "needs kills (one boss, no adds, ADR 0015)" },
+    { "quote": "• Minors: 1 Ammo (per 2 kills)", "reason": "needs kills (one boss, no adds, ADR 0015)" },
+    { "quote": "• Elites: 2 Ammo", "reason": "needs kills (one boss, no adds, ADR 0015)" },
+    { "quote": "• Miniboss and Bosses: 3 Ammo", "reason": "needs kills; the 10 rounds of the magazine are the whole ammunition (ADR 0015)" },
+    { "quote": "• Guardians: 1", "reason": "PvP, not played" },
+    { "quote": "Bodyshot Kills or Shattering a Stasis Crystal triggers a Solar Explosion, dealing 480", "reason": "needs a kill or a crystal (one boss, no adds, ADR 0015)" }
+  ]
+}
