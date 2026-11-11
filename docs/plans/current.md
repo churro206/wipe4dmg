@@ -15,7 +15,7 @@ Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitung
 
 ## Folgeblöcke (freigegeben 2026-11-11)
 
-- W6 (neu 2026-11-11, Recherche): alle 16 Pakete sind Items (W6a–W6d). Vor `$aegis` erst Quantum unter abweichendem Namen suchen (`facts` mit Wortteil). **Entschieden:** Aegis als Ausnahmequelle für W6c/W6d. **Rückfrage Inhaber:** (2) `$aegis` der sechs Items (Heartshadow, Black Talon, Ergo Sum, Heirloom, Lament, Whirling Ovation): nur Aegis hat den Schaden, bleibt laut ADR 0019 bis zur Gegenprobe. A2 wartet auf (1) und (2).
+- W6: erledigt. Vor `$aegis` erst Quantum unter abweichendem Namen suchen (`facts` mit Wortteil). **Rückfrage Inhaber:** (2) `$aegis` der sechs Items (Heartshadow, Black Talon, Ergo Sum, Heirloom, Lament, Whirling Ovation): nur Aegis hat den Schaden, bleibt laut ADR 0019 bis zur Gegenprobe. A2 wartet auf (1) und (2).
 - W7 Gerüst-Sätze: die 37 Items der Klasse „liest Quantum“ (rund 300 offene Sätze) nach Vorlage oder `notModelled`, in Teilen je Vorlage. Gate: offene Sätze mit Zahl dieser Waffen 0, `check:block`.
 - W8 Fehlende Mechanik (Opus): 27 Waffen über 2 %, je neuer Typ ein Teil. Gate: Aegis-Zeile je Waffe gegengeprüft oder Befund. Gelernt: Bedingungen eines Ereignisses sehen den Zustand davor (ein `setMode` im selben Schuss wirkt erst beim nächsten); `reload start` kommt vor dem Treffer des letzten Schusses; Super-Energie fehlt (Q3).
 - Danach A2, dann Catalysts (eigene Stufe).
