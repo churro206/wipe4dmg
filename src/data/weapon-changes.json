@@ -1,75 +1,85 @@
 {
-  "baseline": "880269d",
+  "baseline": "8977b7b",
   "changes": [
     {
-      "id": "duality",
-      "name": "Duality",
+      "id": "cerberus-1",
+      "name": "Cerberus+1",
       "kind": "damage",
-      "time": "s30",
+      "time": "s10",
       "catalyst": false,
-      "from": 18945,
-      "to": 21471
+      "from": 5000.3,
+      "to": 6048
     },
     {
-      "id": "duality",
-      "name": "Duality",
+      "id": "cerberus-1",
+      "name": "Cerberus+1",
       "kind": "status",
-      "from": "Partial",
+      "from": "Estimated",
       "to": "Complete"
     },
     {
-      "id": "eriana-s-vow",
-      "name": "Eriana's Vow",
+      "id": "skyburner-s-oath",
+      "name": "Skyburner's Oath",
       "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 6874,
-      "to": 5892
+      "time": "s60",
+      "catalyst": true,
+      "from": 15091.4,
+      "to": 22885.7
     },
     {
-      "id": "gjallarhorn",
-      "name": "Gjallarhorn",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 11256,
-      "to": 7504
+      "id": "skyburner-s-oath",
+      "name": "Skyburner's Oath",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Partial"
     },
     {
-      "id": "hawkmoon",
-      "name": "Hawkmoon",
+      "id": "suros-regime",
+      "name": "SUROS Regime",
       "kind": "damage",
-      "time": "s10",
+      "time": "s60",
       "catalyst": false,
-      "from": 1746,
-      "to": 1552
+      "from": 13731.5,
+      "to": 13835.3
     },
     {
-      "id": "telesto",
-      "name": "Telesto",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 7938,
-      "to": 6804
+      "id": "suros-regime",
+      "name": "SUROS Regime",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
     },
     {
-      "id": "tractor-cannon",
-      "name": "Tractor Cannon",
-      "kind": "damage",
-      "time": "s10",
-      "catalyst": false,
-      "from": 6448,
-      "to": 5456
-    },
-    {
-      "id": "traveler-s-chosen",
-      "name": "Traveler's Chosen",
+      "id": "sweet-business",
+      "name": "Sweet Business",
       "kind": "damage",
       "time": "s30",
       "catalyst": false,
-      "from": 9401,
-      "to": 9006
+      "from": 12103.1,
+      "to": 12386.6
+    },
+    {
+      "id": "sweet-business",
+      "name": "Sweet Business",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Complete"
+    },
+    {
+      "id": "touch-of-malice",
+      "name": "Touch of Malice",
+      "kind": "damage",
+      "time": "s30",
+      "catalyst": false,
+      "from": 12450.2,
+      "to": 18602
+    },
+    {
+      "id": "touch-of-malice",
+      "name": "Touch of Malice",
+      "kind": "status",
+      "from": "Estimated",
+      "to": "Partial"
     }
   ]
 }

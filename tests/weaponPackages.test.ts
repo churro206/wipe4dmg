@@ -233,7 +233,8 @@ describe("gaps closed by overrides and rules (2026-10-23)", () => {
 
   it("SUROS Regime: Spinning Up (more damage per second than Dual Speed Receiver)", () => {
     const w = byName("SUROS Regime")!;
-    expect(perShot("SUROS Regime")).toBeCloseTo(26.8, 0);
+    // W6a: the item takes 26 (Quantum); the package without its override takes the same row, no longer Aegis' 26.8
+    expect(perShot("SUROS Regime")).toBeCloseTo(26, 0);
     expect(value(w.fireRateRpm)).toBe(712);
   });
 
@@ -313,9 +314,10 @@ describe("catalyst paragraphs against one boss without adds", () => {
   // M2: Ex Diris and Grand Overture (both "none") became items: 13 of 27 packages.
   // W2: Deathbringer and The Manticore (both "none") became items: 10 of 22 packages.
   // W3: Third Iteration ("none") became an item: 9 packages.
-  it("lock until A2: at least 9 of the remaining packages keep a catalyst without effect (value after W3)", () => {
+  // W6a: Cerberus+1, SUROS Regime and Sweet Business (all "none") became items: 6 packages.
+  it("lock until A2: at least 6 of the remaining packages keep a catalyst without effect (value after W6a)", () => {
     const none = remainingPackages().filter((w) => w.catalyst?.effect === "none");
-    expect(none.length).toBeGreaterThanOrEqual(9);
+    expect(none.length).toBeGreaterThanOrEqual(6);
   });
 });
 

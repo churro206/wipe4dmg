@@ -470,7 +470,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W6b"
     },
     {
       "id": "bad-juju",
@@ -1325,61 +1325,95 @@
     {
       "id": "cerberus-1",
       "name": "Cerberus+1",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 5000.3,
-          "s30": 14260.2,
-          "s60": 27779.7
+          "s10": 6048,
+          "s30": 17248,
+          "s60": 33600
         },
         "catalyst": {
-          "s10": 5000.3,
-          "s30": 14260.2,
-          "s60": 27779.7
+          "s10": 6048,
+          "s30": 17248,
+          "s60": 33600
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +21.0 % and no rule that large (\"auto-rifle-cerberus-1-point-blank\")."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Aiming down sights decreases pellet spread by 25%.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds:",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "• 50% [10%] increased damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "• 30% decreased Pellet Spread",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         },
         {
           "text": "Fires 3 evenly spread pellets around the center pellet in an alternating triangle pattern for each shot.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside Quantum's value per shot (Quantum 93 and Aegis 92.6 at point-blank agree within 0.4 %)"
         },
         {
           "text": "Pellets experience 'reverse range falloff' at close-mid range and deal less damage the closer you are to the target: Deal 16.67% decreased damage at point-blank, scaling up to base damage at 14 meters (22.4 when ADS).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "played beyond 14 meters: the Quantum row \"far range\" is the base damage (the row \"close range\" is 16.67 % lower, as the text says)"
         },
         {
           "text": "Beyond ~30 meters (~53 when ADS), damage starts experiencing regular falloff.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "played within 30 meters (no damage falloff)"
         }
       ],
-      "quantum": null,
-      "aegis": {
-        "check": "no independent check",
-        "rows": []
+      "quantum": {
+        "row": "primaries-auto-rifle-cerberus-1-normal-far-range-2",
+        "rowNote": "Reverse damage fall-off; all precision shots land for precision damage DPS (if it's even possible)",
+        "basis": "magazine",
+        "measured": 3472,
+        "model": 3472,
+        "deviation": 0,
+        "circular": true,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1,
+          "rowPlain": true
+        }
       },
-      "planBlock": null
+      "aegis": {
+        "check": "checked",
+        "rows": [
+          {
+            "row": "auto-rifle-cerberus-1-point-blank",
+            "assumptions": [
+              "point blank"
+            ],
+            "measured": 92.6,
+            "model": 112,
+            "deviation": 0.2101
+          }
+        ]
+      },
+      "planBlock": "W6a"
     },
     {
       "id": "choir-of-one",
@@ -2183,7 +2217,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W6c"
     },
     {
       "id": "d-a-r-c-i",
@@ -4207,7 +4241,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6d"
     },
     {
       "id": "fighting-lion",
@@ -4499,7 +4533,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6b"
     },
     {
       "id": "forerunner",
@@ -5773,7 +5807,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W6b"
     },
     {
       "id": "izanagi-s-burden",
@@ -5967,7 +6001,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W6c"
     },
     {
       "id": "khvostov-7g-0x",
@@ -6644,7 +6678,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W6b"
     },
     {
       "id": "lumina",
@@ -7400,7 +7434,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6b"
     },
     {
       "id": "new-malpais",
@@ -7443,7 +7477,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6c"
     },
     {
       "id": "no-time-to-explain",
@@ -7498,7 +7532,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6b"
     },
     {
       "id": "one-thousand-voices",
@@ -8289,7 +8323,7 @@
           }
         ]
       },
-      "planBlock": null
+      "planBlock": "W6c"
     },
     {
       "id": "quicksilver-storm",
@@ -9186,65 +9220,93 @@
     {
       "id": "skyburner-s-oath",
       "name": "Skyburner's Oath",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 2515.2,
-          "s30": 7545.7,
-          "s60": 15091.4
+          "s10": 3391,
+          "s30": 10177.4,
+          "s60": 20379.4
         },
         "catalyst": {
-          "s10": 2515.2,
-          "s30": 7545.7,
-          "s60": 15091.4
+          "s10": 3387.4,
+          "s30": 11441.5,
+          "s60": 22885.7
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "rule-too-strong",
+        "why": "Everything on top of the hits ×1.04 against the Quantum row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "scorch-hip",
+          "share": 0.2646
+        }
+      ],
       "sentences": [
         {
           "text": "Deals 11% increased damage against Cabal enemies and pierces through Phalanx Shields and Cabal Shield Domes.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs target faction (Cabal)"
         },
         {
           "text": "Grants 20 Reload Speed.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "below 2 % (it shortens the reload of 1.24 s by about 0.1 s on a cycle of 9.2 s; known-inaccuracies W6a)"
         },
         {
           "text": "Weapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Killing Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs a kill (one boss, no adds, ADR 0015)"
         },
         {
           "text": "Direct Hits against Scorched Enemies apply 10 [4] additional Scorch per Direct Hit (15 [9?] with Ember of Ashes) on a 0.5 second cooldown.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Scoring 11 Direct Hits within 3?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no effect: the hip-fired shot already scorches the target (rule scorch-hip), so the next direct hit scorching adds nothing"
         },
         {
           "text": "Hip-fired shots become slow traveling projectiles that deal up to 55 [?] splash damage in a 3.5 meter radius, down to 0% at the edge of the radius, and apply 5 Scorch stacks (10 with Ember of Ashes).",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Aiming Down Sights shoots hitscan projectiles that deal splash damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "mode not played: the weapon is hip-fired (scorch; Quantum 3 030 against 2 320 per magazine)"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-scout-rifle-skyburner-s-oath-hip-fire",
+        "rowNote": "Very approximately considers Scorch; considers ignitions",
+        "basis": "magazine",
+        "measured": 3030,
+        "model": 3154.6,
+        "deviation": 0.0411,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.0411112211221119,
+          "rowPlain": false
+        }
+      },
       "aegis": {
-        "check": "no independent check",
+        "check": "no row",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6a"
     },
     {
       "id": "slayer-s-fang",
@@ -9930,108 +9992,183 @@
     {
       "id": "suros-regime",
       "name": "SUROS Regime",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 2489.3,
-          "s30": 7039.7,
-          "s60": 13731.5
+          "s10": 2499.9,
+          "s30": 7085.6,
+          "s60": 13835.3
         },
         "catalyst": {
-          "s10": 2489.3,
-          "s30": 7039.7,
-          "s60": 13731.5
+          "s10": 2499.9,
+          "s30": 7085.6,
+          "s60": 13835.3
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "ok",
+        "why": "+0.0 % against Quantum, no Aegis row."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "legacy-count",
+          "share": 0.0359
+        },
+        {
+          "id": "legacy",
+          "share": 0.0359
+        },
+        {
+          "id": "legacy-reset",
+          "share": -0.0352
+        }
+      ],
       "sentences": [
         {
           "text": "Kills have a 25% chance to grant 20 HP and begin Health Regeneration.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (healing)"
         },
         {
           "text": "Linearly grants 5% to 10% increased damage as the magazine decreases from 50% capacity.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "While holding down the trigger, RPM increases by 17%|33% after 12|24 bullets.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside Quantum's rate 712 (the manifest says 600 RPM): the rate of the Quantum row is the mean over the magazine; the ramp gives about 694 by our count (known-inaccuracies W6a)"
         },
         {
           "text": "Grants 50 Recoil Direction and doubles the healing chance (25%🠚50%).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (recoil, healing)"
         },
         {
           "text": "Grants 30 Range, increases Zoom by 3, and kills generate ?% increased Heavy Ammo Progress.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range, zoom, ammo progress); the mode Dual Speed Receiver is not played"
         }
       ],
-      "quantum": null,
+      "quantum": {
+        "row": "primaries-auto-rifle-suros-regime-spinning-up",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 917,
+        "model": 917.2,
+        "deviation": 0.0002,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.0001635768811348,
+          "rowPlain": false
+        }
+      },
       "aegis": {
-        "check": "no independent check",
+        "check": "no row",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6a"
     },
     {
       "id": "sweet-business",
       "name": "Sweet Business",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "complete",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 4665.1,
-          "s30": 12103.1,
-          "s60": 24206.3
+          "s10": 4754.4,
+          "s30": 12386.6,
+          "s60": 24773.2
         },
         "catalyst": {
-          "s10": 4665.1,
-          "s30": 12103.1,
-          "s60": 24206.3
+          "s10": 4754.4,
+          "s30": 12386.6,
+          "s60": 24773.2
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "rule-too-strong",
+        "why": "Aegis +2.1 %; rule \"explosive-count\" carries 10 % of the total."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "explosive-count",
+          "share": 0.1022
+        },
+        {
+          "id": "explosive",
+          "share": 0.1022
+        }
+      ],
       "sentences": [
         {
           "text": "Grants 25% increased Flinch Resistance while at maximum Rate of Fire.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (flinch)"
         },
         {
           "text": "Holding down the trigger progressively grants up to 60% increased Rate of Fire and ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "inside Quantum's rate 856 (row \"average per mag\": the mean over the 150 rounds, the manifest 360 RPM x 2.5 = 900 at full spin-up)"
         },
         {
           "text": "Range after 1.38 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "As long as the trigger continues to be held, an explosive projectile is added every 18 shots, dealing 56 [21] damage with no damage falloff.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Achieving maximum fire rate increases the frequency of these projectiles to once every 8 shots.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "At maximum rate of fire, Hipfire Accuracy Cone Size is reduced by 15%.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (accuracy)"
         }
       ],
-      "quantum": null,
-      "aegis": {
-        "check": "no independent check",
-        "rows": []
+      "quantum": {
+        "row": "primaries-auto-rifle-sweet-business-average-per-mag",
+        "rowNote": "",
+        "basis": "magazine",
+        "measured": 4959,
+        "model": 4991.7,
+        "deviation": 0.0066,
+        "circular": false,
+        "catalystRow": false,
+        "strippedRow": false,
+        "factors": {
+          "shots": 1,
+          "hitsPerShot": 1,
+          "damagePerHit": 1,
+          "mechanic": 1.006595281306715,
+          "rowPlain": false
+        }
       },
-      "planBlock": null
+      "aegis": {
+        "check": "checked",
+        "rows": [
+          {
+            "row": "auto-rifle-sweet-business-average-with-explosive-rounds",
+            "assumptions": [
+              "average",
+              "with explosive rounds"
+            ],
+            "measured": 4887.9,
+            "model": 4991.7,
+            "deviation": 0.0212
+          }
+        ]
+      },
+      "planBlock": "W6a"
     },
     {
       "id": "symmetry",
@@ -12242,93 +12379,117 @@
     {
       "id": "touch-of-malice",
       "name": "Touch of Malice",
-      "status": "estimated",
-      "trust": "estimated",
+      "status": "partial",
+      "trust": "derived",
       "damage": {
         "base": {
-          "s10": 4668.8,
-          "s30": 12450.2,
-          "s60": 24900.5
+          "s10": 6248,
+          "s30": 18602,
+          "s60": 36920
         },
         "catalyst": {
-          "s10": 5836.1,
-          "s30": 15562.8,
-          "s60": 31125.6
+          "s10": 7697.3,
+          "s30": 23164.5,
+          "s60": 46098.6
         }
       },
       "cause": {
-        "class": "no-check",
-        "why": "Neither a Quantum row nor an independent Aegis row."
+        "class": "wrong-row",
+        "why": "Aegis +132.9 % with no rule that large: \"scout-rifle-touch-of-malice\" measures something else than the model."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "last-round-no-reload",
+          "share": 0.3231
+        }
+      ],
       "sentences": [
         {
           "text": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Maximum of 6 stacks.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Precision damage increase at 1|2|3...",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "the values stand in the next sentence (rule precision-instrument)"
         },
         {
           "text": "4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Reload Speed, up to a maximum of 10 stacks.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (reload speed, stability); part of Charged with Blight"
         },
         {
           "text": "At 10 stacks, hold [Reload] to load a 'Taken Blight'.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Charged with Blight not modelled: Quantum's row \"ToM+CwB\" (239 against 142, +68 %) assumes 100 % uptime without the time of the held reload, which no source gives (Clarity: scaled by the reload stat); open, known-inaccuracies W6a"
         },
         {
           "text": "Entering this mode immediately triggers the 105 HP heal and health regeneration.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (healing)"
         },
         {
           "text": "Taken Blight deals 220 [113] Arc Damage on direct impact with a poisoning field around it that inflicts Corruption and applies Blind in a ?",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Charged with Blight not modelled, see hold [Reload] to load a 'Taken Blight'"
         },
         {
           "text": "Corruption deals 27 [0.375] Kinetic Damage every 0.5 seconds for 3.5 [2] seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Charged with Blight not modelled, see hold [Reload] to load a 'Taken Blight'"
         },
         {
           "text": "Any target hit by the Blight takes 50% increased damage from all Weapons of Sorrow for 5 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "Charged with Blight not modelled, see hold [Reload] to load a 'Taken Blight'"
         },
         {
           "text": "The last round of this gun's magazine deals 132% [30%] increased damage, drains 7 HP, and is always refunded when shot.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Scoring kills or activating 'Charged With Blight' restores 105 HP and begins Health Regeneration.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (healing)"
         },
         {
           "text": "• Minors: 33.4%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (healing)"
         },
         {
           "text": "• Elites, Minibosses, and Bosses: 100%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (healing)"
         },
         {
           "text": "• Players: 66.7%",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (healing, PvP)"
         }
       ],
       "quantum": null,
       "aegis": {
-        "check": "no independent check",
-        "rows": []
+        "check": "checked",
+        "rows": [
+          {
+            "row": "scout-rifle-touch-of-malice",
+            "assumptions": [],
+            "measured": 61,
+            "model": 142,
+            "deviation": 1.3291
+          }
+        ]
       },
-      "planBlock": null
+      "planBlock": "W6a"
     },
     {
       "id": "tractor-cannon",
@@ -12868,7 +13029,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6d"
     },
     {
       "id": "two-tailed-fox",
@@ -13385,7 +13546,7 @@
           }
         ]
       },
-      "planBlock": "W5"
+      "planBlock": null
     },
     {
       "id": "wavesplitter",
@@ -13456,7 +13617,7 @@
         "check": "no independent check",
         "rows": []
       },
-      "planBlock": null
+      "planBlock": "W6b"
     },
     {
       "id": "whirling-ovation",
@@ -13978,7 +14139,7 @@
           }
         ]
       },
-      "planBlock": "W5"
+      "planBlock": null
     },
     {
       "id": "wish-keeper",

@@ -1,0 +1,99 @@
+{
+  "id": "sweet-business",
+  "kind": "exoticWeapon",
+  "name": "Sweet Business",
+  "texts": [
+    { "source": "clarity", "entry": "Payday", "hash": "c786f6a9" },
+    { "source": "clarity", "entry": "Business Time", "hash": "a8dc8341" },
+    { "source": "clarity", "entry": "Sweet Business Catalyst", "hash": "f9bb34aa" },
+    { "source": "compendium", "entry": "Sweet Business Payday Business Time ↑Serious Business", "hash": "945a12bc" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file sweet-business",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-sweet-business-average-per-mag].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-sweet-business-average-per-mag].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-sweet-business-average-per-mag].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-sweet-business-average-per-mag].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Sweet Business Catalyst",
+    "description": "Grants 25% increased Flinch Resistance while at maximum Rate of Fire.",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-sweet-business-average-per-mag].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    },
+    "explosive": {
+      "name": "Explosive round",
+      "damage": {
+        "expr": "$quantum[primaries-auto-rifle-sweet-business-average-per-mag].bodyDamage * $clarity[Business Time](\"dealing 56\") / $compendium[Sweet Business Payday Business Time](\"deal 41 [\")",
+        "note": "the Clarity damage of the explosive round (56) on Quantum's scale: Quantum's body damage 20 stands for the Compendium's 41 of a bullet (Quantum's magazine damage 4 959 = 150 x 30 + 17.7 x 27.3 confirms it within 0.5 %)"
+      },
+      "delivery": "splash"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "explosive-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "explosive-shots",
+          "op": "<",
+          "value": { "expr": "$clarity[Business Time](\"once every 8 shots\") - 1", "note": "the counter stands at 0 to 6 for the shots before the 8th" }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "explosive-shots" }]
+    },
+    {
+      "id": "explosive",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "explosive-shots",
+          "op": "=",
+          "value": { "expr": "$clarity[Business Time](\"once every 8 shots\") - 1", "note": "the 8th shot" }
+        }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "explosive-shots" },
+        { "type": "spawn", "part": "explosive" }
+      ],
+      "source": {
+        "name": "Item file sweet-business",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "once every 8 shots",
+        "note": "Derived: the rate of Quantum's row is the mean over the magazine (856 of 900 RPM at full spin-up), so the round comes every 8 shots from the first; the 18 shots before full spin-up are about 0.6 % of the damage (known-inaccuracies W6a)"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "Collecting an Ammo Brick refills the magazine", "reason": "needs an Ammo Brick (one boss, no adds, ADR 0015)" },
+    { "quote": "Grants 25% increased Flinch Resistance", "reason": "no damage against a boss (flinch)" },
+    {
+      "quote": "up to 60% increased Rate of Fire",
+      "reason": "inside Quantum's rate 856 (row \"average per mag\": the mean over the 150 rounds, the manifest 360 RPM x 2.5 = 900 at full spin-up)"
+    },
+    { "quote": "Range after 1.38 seconds", "reason": "no damage against a boss (range)" },
+    { "quote": "every 18 shots", "reason": "see the rule explosive: the rate is the mean over the magazine, so the round comes every 8 shots" },
+    { "quote": "Hipfire Accuracy Cone Size is reduced by 15%", "reason": "no damage against a boss (accuracy)" }
+  ]
+}

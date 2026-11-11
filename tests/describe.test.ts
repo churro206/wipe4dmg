@@ -28,9 +28,11 @@ describe("catalyst hover card", () => {
     expect(lines.some((line) => line.startsWith("Magazine 4 → 5"))).toBe(true);
   });
 
-  it("names the damage bonus without the internal option id", () => {
+  // W6a: Touch of Malice became an item; its catalyst is a buff with rules, no package option with a
+  // factor any more, so the card shows the game text (the "+25% weapon damage" line is gone until A2)
+  it("shows the game text of an item's damage catalyst without the internal option id", () => {
     const lines = describeCatalyst(weaponById("touch-of-malice"));
-    expect(lines).toContain("+25% weapon damage");
+    expect(lines.join(" ")).toContain("In game: Direct Weapon Hits grant a stack of Precision Instrument");
     expect(lines.join(" ")).not.toContain("catalyst ×");
   });
 

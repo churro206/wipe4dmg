@@ -25,11 +25,9 @@ const quoted = (rawOverrides as Override[]).flatMap((o) =>
     .map((q) => [`${o.weapon}: ${q.entry}`, q.entry] as const),
 );
 
+// W6a: the last overrides that quoted an Aegis Weapons row went with their items (Cerberus+1, SUROS Regime,
+// Skyburner's Oath, Touch of Malice); `quoted` is empty now. The guard stays for a new override until A2.
 describe("overrides that quote an Aegis Weapons row", () => {
-  it("exist", () => {
-    expect(quoted.length).toBeGreaterThan(0);
-  });
-
   it.each(quoted)("%s is fitted or listed as giving no value", (_, row) => {
     expect(fitted.has(row) || row in NO_VALUE).toBe(true);
   });

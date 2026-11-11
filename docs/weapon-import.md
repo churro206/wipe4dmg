@@ -4,7 +4,7 @@ Generiert von `npm run build:weapons` (ADR 0013), nicht von Hand bearbeiten.
 
 Stand: Aegis 2026-10-20, Quantum 2026-10-20 (Quantum nennt keinen Patch pro Zeile), Manifest 245114.26.10.13.2000-1-bnet.66137.
 
-Umfang: exotische Special- und Heavy-Waffen. **16 Pakete**, 121 Items, 4 Lücken.
+Umfang: exotische Special- und Heavy-Waffen. **11 Pakete**, 126 Items, 4 Lücken.
 
 ## Pakete
 
@@ -12,7 +12,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 | Waffe | Typ | Element | Basiszeile (Annahmen) | pro Shot | Timing | Shots | Magazin | Reload | Zeit bis leer | rpm Quantum → abgeleitet | Skala | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Cerberus+1 | autoRifle | kinetic | point blank (1 Shot) | 92,6 | Quantum |  | 31 | 1,12 s | – | – → 360 | 0,5 % | Override: Aegis misst „point blank“; dazu passt Quantums „normal, close range“ (Precision 93 gegen Aegis 92,6 pro Schuss).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-auto-rifle-cerberus-1-normal-close-range-2 (Override); Timing nur aus Quantum |
 | Cull's Shadow | fusionRifle | kinetic | average, with corruption (6 Shots) | 1.095,8 | Aegis | 24 | 6 | 1,98 s | 27,3 s | – → 58 | 0,0 % | Override: Optimal gespielt mit Corruption, wie Aegis Sustained (Base 1096 = Weapons „average, with corruption“ 1095,8).; Timing aus Zeile cull-s-shadow-with-corruption (Override); Timing nur aus Aegis |
 | Fafnir | linearFusionRifle | void | keine (1 Shot) | 2.528,4 | Quantum | 9 | 3 | 1,77 s | 16,3 s | – → 38 | 0,0 % | Override: Aegis Sustained zählt 18 Treffer (Detonation und Quantum Nova) für 9 Munition, Magazine 3-3-3, 1,6 s zwischen Schüssen, 16,333 s bis leer. Daraus der Reload: (16,333 − 6 × 1,6) ÷ 2 = 3,37 s nach dem letzten Schuss, also 1,77 s nach dessen Intervall. Grundwert 2528 pro Munition (Base = Weapons-Zeile).; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Finality's Auger | linearFusionRifle | solar | Linear Fusion Mode (1 Shot) | 1.277,8 | Aegis | 21 | 6 | 1,80 s | 23,5 s | 58 → 56 | 0,0 % | Override: Aegis Sustained misst 21 Schuss in Magazinen à 6 mit 1800 ms Reload; Bait and Switch (Katalysator) steckt nicht im Grundwert (Sustained 1278 = Weapons 1277,8) und ändert das Timing nicht.; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing aus Zeile finality-s-auger-bait-and-switch-linear-fusion-mode (Override); Timing nur aus Aegis |
@@ -22,10 +21,6 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 | New Malpais | pulseRifle | strand | average, 3 bursts, includes suspend, excludes unravel (3 Shots) | 1.159,9 | Aegis | 27 | 7 | 1,38 s | 24,7 s | – → 67 | 0,0 % | Timing nur aus Aegis |
 | No Time to Explain | pulseRifle | kinetic | burst (1 Shot) | 123,1 | Quantum |  | 24 | 1,16 s | – | 340 → 340 | 0,1 % | ⚠ Timing aus der Quantum-Zeile „w/ Time-Slip Portal,cata“ mit Katalysator; Timing nur aus Quantum |
 | Prometheus Lens | traceRifle | solar | average, with ignition (95 Shots) | 36,5 | Quantum | 500 | 100 | 1,44 s | 39,0 s | – → 900 | – | Override: Keine Timing-Zeile. Manifest: Magazin 100. Quantum misst Trace Rifles mit 1000 rpm laut Manifest durchweg mit 900 rpm und Reload 1,44 s; Special-Traces tragen 5 Magazine (Ruinous Effigy 94 → 470, The Navigator 97 → 485, Coldheart 101 → 505, Wavesplitter 100 → 500), also 500 Schuss. Aegis' Wert pro Schuss enthält die Ignitions („average, with ignition“). Catalyst: Stabilität, Handling und Kill-Explosionen, gegen einen Boss ohne Adds keine Wirkung.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
-| Skyburner's Oath | scoutRifle | solar | ADS, Cabal (1 Shot) | 114,3 | Quantum |  | 20 | 1,24 s | – | 150 → 150 | 31,2 % | Override: ADS ohne Ignitions: Aegis 114,3 = Quantum „ADS“ 116 (1,5 %); „Cabal“ ändert diesen Wert also nicht.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-skyburner-s-oath-ads (Override); Timing nur aus Quantum; Skala weicht um 31.2 % ab; Aegis gilt (Override) |
-| SUROS Regime | autoRifle | kinetic | average, Spinning Up (36 Shots) | 26,8 | Quantum |  | 34 | 1,12 s | – | – → 712 | 0,1 % | Override: Optimal gespielt: Spinning Up macht mehr Schaden pro Sekunde (26,8 × 712 rpm) als Dual Speed Receiver (41,3 × 400 rpm); Timing aus Quantums Zeile desselben Modus.; Timing aus Zeile primaries-auto-rifle-suros-regime-spinning-up (Override); Timing nur aus Quantum |
-| Sweet Business | autoRifle | kinetic | average, with explosive rounds (150 Shots) | 32,6 | Quantum |  | 150 | 2,00 s | – | 856 → 856 | 1,3 % | Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Intrinsic füllt das Magazin auf (Clarity): ohne Reload; Timing aus der Quantum-Zeile „average per mag“; Timing nur aus Quantum |
-| Touch of Malice | scoutRifle | kinetic | keine (1 Shot) | 141,5 | Quantum |  | 11 | 1,24 s | – | 260 → 260 | 0,4 % | Override: Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“). Katalysator: Precision Instrument erreicht nach 6 Treffern +25 %; die letzte Patrone feuert ohne Reload, die Stacks bleiben (Clarity), also ×1,25.; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile primaries-scout-rifle-touch-of-malice-touch-of-malice-tom (Override); Timing nur aus Quantum; Schaden pro Shot 141,5 (Override) |
 | Turncoat | handCannon | void | average (12 Shots) | 127,4 | Quantum |  | 13 | 1,64 s | – | – → 140 | – | Override: Keine Timing-Zeile. Manifest: 140 rpm, Magazin 13. Reload 1,64 s wie bei Quantum für jede Hand Cannon mit 140 rpm (Ace of Spades, Lumina, Thorn, Hawkmoon); Quantum rechnet den Reload pro Waffentyp, unabhängig vom Reload-Stat. Schaden aus Aegis „average“.; Timing aus Override-Werten (Manifest, Quantum); Timing nur aus Quantum |
 | Wavesplitter | traceRifle | void | average, power cycling, Detonator Beam (100 Shots) | 39,0 | Quantum | 500 | 100 | 1,44 s | 38,8 s | 900 → 906 | 0,0 % | Override: Aegis misst nur mit Katalysator (Detonator Beam); Quantum „average“ gilt: 39 pro Schuss (Precision).; Katalysator ändert das Timing (Clarity): Aegis „Sustained“ und Quantum-Zeilen mit Katalysator nicht genutzt; Timing aus Zeile specials-trace-rifle-wavesplitter-average (Override); Timing nur aus Quantum; Schaden pro Shot 39,0 (Override) |
 
@@ -33,7 +28,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **564**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **569**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -49,6 +44,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **564**. D
 | Borealis | `src/data/items/weapons/borealis.json` | 6 | – |
 | Buried Bloodline | `src/data/items/weapons/buried-bloodline.json` | 5 | – |
 | Centrifuse | `src/data/items/weapons/centrifuse.json` | 9 | – |
+| Cerberus+1 | `src/data/items/weapons/cerberus-1.json` | 0 | – |
 | Choir of One | `src/data/items/weapons/choir-of-one.json` | 8 | – |
 | Cloudstrike | `src/data/items/weapons/cloudstrike.json` | 0 | – |
 | Coldheart | `src/data/items/weapons/coldheart.json` | 0 | – |
@@ -115,11 +111,14 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **564**. D
 | Ruinous Effigy | `src/data/items/weapons/ruinous-effigy.json` | 11 | – |
 | Salvation's Grip | `src/data/items/weapons/salvation-s-grip.json` | 0 | – |
 | Service of Luzaku | `src/data/items/weapons/service-of-luzaku.json` | 13 | – |
+| Skyburner's Oath | `src/data/items/weapons/skyburner-s-oath.json` | 0 | – |
 | Slayer's Fang | `src/data/items/weapons/slayer-s-fang.json` | 0 | – |
 | Sleeper Simulant | `src/data/items/weapons/sleeper-simulant.json` | 0 | – |
 | Still Hunt | `src/data/items/weapons/still-hunt.json` | 0 | – |
 | Sturm | `src/data/items/weapons/sturm.json` | 0 | – |
 | Sunshot | `src/data/items/weapons/sunshot.json` | 0 | – |
+| SUROS Regime | `src/data/items/weapons/suros-regime.json` | 0 | – |
+| Sweet Business | `src/data/items/weapons/sweet-business.json` | 5 | – |
 | Symmetry | `src/data/items/weapons/symmetry.json` | 15 | – |
 | Tarrabah | `src/data/items/weapons/tarrabah.json` | 18 | – |
 | Telesto | `src/data/items/weapons/telesto.json` | 5 | – |
@@ -140,6 +139,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **564**. D
 | Thunderlord | `src/data/items/weapons/thunderlord.json` | 0 | – |
 | Ticuu's Divination | `src/data/items/weapons/ticuu-s-divination.json` | 0 | – |
 | Tommy's Matchbook | `src/data/items/weapons/tommy-s-matchbook.json` | 0 | – |
+| Touch of Malice | `src/data/items/weapons/touch-of-malice.json` | 0 | – |
 | Tractor Cannon | `src/data/items/weapons/tractor-cannon.json` | 2 | – |
 | Traveler's Chosen | `src/data/items/weapons/traveler-s-chosen.json` | 9 | – |
 | Trespasser | `src/data/items/weapons/trespasser.json` | 5 | – |
@@ -165,7 +165,6 @@ Eine Option gilt im Rechner die ganze Damage Phase. **Markiert (⚠)** sind Opti
 
 | Waffe | Option | Art | Faktor | Dauer | Bedingung | Hinweise |
 | --- | --- | --- | --- | --- | --- | --- |
-| Touch of Malice | Catalyst | Katalysator | ×1,250 | – | – | Faktor aus dem Text (Override) |
 
 ## Katalysatoren
 
@@ -173,7 +172,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 
 | Waffe | Munition | Wirkung | Timing ohne → mit | Text (Anfang) |
 | --- | --- | --- | --- | --- |
-| Cerberus+1 | primary | keine | – | Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds: |
 | Fafnir | heavy | keine | – | Grants 35% Flinch Resistance after 1 second of Aiming Down Sights (ADS) without firing. Remains active until you're no l |
 | Finality's Auger | heavy | unbekannt | – | Grants the Bait and Switch trait: |
 | Jötunn | special | keine | – | Grants the Cornered trait: |
@@ -181,10 +179,6 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | New Malpais | special | unbekannt | – | Embedded projectiles Unravel targets for 8 seconds upon detonation. |
 | No Time to Explain | primary | keine | – | Delay between Time-Slip Portal bursts is 47% shorter (1.25/s🠚0.85/s). |
 | Prometheus Lens | special | keine | – | Grants 20 Stability and 20 Handling. |
-| Skyburner's Oath | primary | unbekannt | – | Grants 20 Reload Speed. |
-| SUROS Regime | primary | keine | – | Grants 50 Recoil Direction and doubles the healing chance (25%🠚50%). |
-| Sweet Business | primary | keine | – | Grants 25% increased Flinch Resistance while at maximum Rate of Fire. |
-| Touch of Malice | primary | Schaden | – | Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or  |
 | Turncoat | primary | keine | – | Upon exiting Void Empowerment, gain a Void Overshield for 10 seconds (15 with Echo of Persistence). |
 | Wavesplitter | special | keine | – | Grants 10 Range and 30 Ammo Generation. |
 
@@ -270,11 +264,12 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | Ruinous Effigy |  | the item file uses another row |
 | Salvation's Grip |  | the item file uses another row |
 | Salvation's Grip | average, charged, Hail the Storm | Artefakt: Hail the Storm |
+| Skyburner's Oath | ADS, Cabal | nicht modelliert: Cabal |
 | Skyburner's Oath | average, hipfire, with ignitions, Burning Ambition, Cabal | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Skyburner's Oath | average, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Cabal | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Still Hunt | Cayde's Retribution, all three shots | the item file uses another row |
 | Still Hunt | Cayde's Retribution, Celestial Nighthawk | Exotic-Rüstung: Celestial Nighthawk |
-| SUROS Regime | average, Dual Speed Receiver | ohne Spinning Up der Basiszeile |
+| SUROS Regime | average, Spinning Up | the item file uses another row |
 | Symmetry | Arc Seeker Mode, Dynamic Charge x10 | the item file uses another row |
 | Symmetry | Arc Seeker Mode, Dynamic Charge x20 | the item file uses another row |
 | Tarrabah | Ravenous Beast | the item file uses another row |
@@ -321,9 +316,7 @@ Was der Katalysator gegen einen Boss tut, entscheiden die Quellen: **Schaden** (
 | --- | --- | --- |
 | Finality's Auger | marked | nicht modelliert, ohne Beleg |
 | Ice Breaker | shatter ignition | nicht modelliert, ohne Beleg |
-| Skyburner's Oath | Cabal | nicht modelliert, ohne Beleg |
 | The Huckleberry | Bull Rider | nicht modelliert, ohne Beleg |
-| Touch of Malice | blight | nicht modelliert, ohne Beleg |
 | Turncoat | Overwhelming Power | nicht modelliert, ohne Beleg |
 | Worldline Zero | Temporal Sprint | nicht modelliert, ohne Beleg |
 
@@ -333,10 +326,7 @@ Annahmen, die wir noch nicht abbilden, nach Zahl der Waffen.
 
 | Annahme | Art | Waffen |
 | --- | --- | --- |
-| blight | nicht modelliert | Touch of Malice |
 | Bull Rider | nicht modelliert | The Huckleberry |
-| Burning Ambition | fremder Perk | Skyburner's Oath |
-| Cabal | nicht modelliert | Skyburner's Oath |
 | marked | nicht modelliert | Finality's Auger |
 | Overwhelming Power | nicht modelliert | Turncoat |
 | Peacekeepers | Exotic-Rüstung | The Huckleberry |

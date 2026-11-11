@@ -1,46 +1,5 @@
 [
   {
-    "weapon": "Cerberus+1",
-    "reason": "Aegis misst „point blank“; dazu passt Quantums „normal, close range“ (Precision 93 gegen Aegis 92,6 pro Schuss).",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "auto-rifle-cerberus-1-point-blank",
-        "text": "point blank"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-auto-rifle-cerberus-1-normal-close-range-2",
-        "text": "Precision damage DPS"
-      }
-    ],
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-auto-rifle-cerberus-1-normal-close-range-2"
-    }
-  },
-  {
-    "weapon": "SUROS Regime",
-    "reason": "Optimal gespielt: Spinning Up macht mehr Schaden pro Sekunde (26,8 × 712 rpm) als Dual Speed Receiver (41,3 × 400 rpm); Timing aus Quantums Zeile desselben Modus.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "auto-rifle-suros-regime-average-spinning-up",
-        "text": "Spinning Up"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-auto-rifle-suros-regime-spinning-up",
-        "text": "\"rpm\":712"
-      }
-    ],
-    "base": "auto-rifle-suros-regime-average-spinning-up",
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-auto-rifle-suros-regime-spinning-up"
-    }
-  },
-  {
     "weapon": "Ice Breaker",
     "reason": "Aegis Sustained misst 10 Schuss ohne Reload (Ice Breaker hat keine Reserves); Sniper's Meditation (Artifact) steckt nicht im Grundwert (Sustained 1223 = Weapons 1223,4).",
     "quotes": [
@@ -95,55 +54,6 @@
     "timing": {
       "from": "Quantum",
       "row": "specials-trace-rifle-wavesplitter-average"
-    }
-  },
-  {
-    "weapon": "Skyburner's Oath",
-    "reason": "ADS ohne Ignitions: Aegis 114,3 = Quantum „ADS“ 116 (1,5 %); „Cabal“ ändert diesen Wert also nicht.",
-    "quotes": [
-      {
-        "source": "aegis",
-        "entry": "scout-rifle-skyburner-s-oath-ads-cabal",
-        "text": "114 impact"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-scout-rifle-skyburner-s-oath-ads",
-        "text": "\"variant\":\"ADS\""
-      }
-    ],
-    "base": "scout-rifle-skyburner-s-oath-ads-cabal",
-    "aegisWins": true,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-scout-rifle-skyburner-s-oath-ads"
-    }
-  },
-  {
-    "weapon": "Touch of Malice",
-    "reason": "Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“). Katalysator: Precision Instrument erreicht nach 6 Treffern +25 %; die letzte Patrone feuert ohne Reload, die Stacks bleiben (Clarity), also ×1,25.",
-    "quotes": [
-      {
-        "source": "clarity",
-        "entry": "Touch of Malice Catalyst",
-        "text": "4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%"
-      },
-      {
-        "source": "aegis",
-        "entry": "scout-rifle-touch-of-malice",
-        "text": "2135/1094 final"
-      },
-      {
-        "source": "quantum",
-        "entry": "primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
-        "text": "This assumes always at 1 round"
-      }
-    ],
-    "perShot": 141.48,
-    "catalystFactor": 1.25,
-    "timing": {
-      "from": "Quantum",
-      "row": "primaries-scout-rifle-touch-of-malice-touch-of-malice-tom"
     }
   },
   {

@@ -7,7 +7,7 @@ Generiert von `npm run coverage` (`scripts/lib/aegisCoverage.ts`), nicht von Han
 
 | Reiter | Zeilen | im Modell | übersprungen | fehlt |
 | --- | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 134 | 257 | 26 |
+| Weapons | 417 | 133 | 257 | 27 |
 | Sustained | 261 | 38 | 132 | 91 |
 | Swap | 204 | 47 | 102 | 55 |
 
@@ -52,11 +52,11 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Celestial Fire spam | 4 | kein Paar, Wert aus Text |  |  |
 | Harsh Refraction | 4 | kein Paar, Wert aus Text |  |  |
 | Jagged Edge | 4 | kein Paar, Wert aus Text |  |  |
+| Cabal | 3 | kein Paar, Wert aus Text |  |  |
 | Sword Storm Combo | 3 | kein Paar, Wert aus Text |  |  |
 | Warlord's Fury | 3 | kein Paar, Wert aus Text |  |  |
 | Bull Rider | 2 | kein Paar, Wert aus Text |  |  |
 | Burning Ambition | 2 | kein Paar, Wert aus Text |  |  |
-| Cabal | 2 | kein Paar, Wert aus Text |  |  |
 | Composite Propellant x5 | 2 | kein Paar, Wert aus Text |  |  |
 | Conductive Cosmic Needle x3 | 2 | kein Paar, Wert aus Text |  |  |
 | Hail the Storm | 2 | kein Paar, Wert aus Text |  |  |
@@ -199,8 +199,8 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Quicksilver Storm, average, with tracking rockets | im Modell | base row of the package |
 | Rapid-fire frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Support frame | übersprungen | legendary frame (owner 2026-10-25) |
-| SUROS Regime, average, Dual Speed Receiver | übersprungen | ohne Spinning Up der Basiszeile |
-| SUROS Regime, average, Spinning Up | im Modell | base row of the package |
+| SUROS Regime, average, Dual Speed Receiver | im Modell | base row of the package |
+| SUROS Regime, average, Spinning Up | übersprungen | the item file uses another row |
 | Sweet Business, average, with explosive rounds | im Modell | base row of the package |
 | Tommy's Matchbook, average, with ignition | im Modell | base row of the package |
 | Heirloom, uncharged | im Modell | base row of the package |
@@ -410,7 +410,7 @@ Item oder Annahme, mit der Zahl der Zeilen, die sie nennen, und der Wirkung (`sc
 | Polaris Lance, average, with ignition | im Modell | base row of the package |
 | Precision frame | übersprungen | legendary frame (owner 2026-10-25) |
 | Rapid-fire frame | übersprungen | legendary frame (owner 2026-10-25) |
-| Skyburner's Oath, ADS, Cabal | im Modell | base row of the package |
+| Skyburner's Oath, ADS, Cabal | fehlt | nicht modelliert: Cabal |
 | Skyburner's Oath, average, hipfire, with ignitions, Burning Ambition, Cabal | fehlt | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Skyburner's Oath, average, hipfire, with ignitions, Ember of Ashes, Burning Ambition, Cabal | fehlt | fremder Perk: Burning Ambition; nicht modelliert: Cabal |
 | Symmetry, Arc Seeker Mode, Dynamic Charge x10 | übersprungen | the item file uses another row |

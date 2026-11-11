@@ -671,8 +671,10 @@ describe("all weapons (2026-10-23)", () => {
     // 105 = 104 + Third Iteration (W3, hand-made item with Quantum hits; its package took Aegis)
     // 111 = 105 + Choir of One, Salvation's Grip, Delicate Tomb, Duality, Graviton Spike, The Queenbreaker (W4,
     // hand-made items that took their hit from Aegis)
-    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "111 = 99 + 5 Items aus W2 + Third Iteration (W3) + 6 Items aus W4");
-    expect(fromQuantum).toBe(111);
+    // 116 = 111 + Cerberus+1, Skyburner's Oath, SUROS Regime, Sweet Business, Touch of Malice (W6a, hand-made
+    // items with a Quantum hit; their packages took Aegis or an override)
+    note("Waffen mit Treffer aus Quantum", String(fromQuantum), "116 = 99 + 5 Items aus W2 + Third Iteration (W3) + 6 Items aus W4 + 5 Items aus W6a");
+    expect(fromQuantum).toBe(116);
   });
 
   // Fourth Horseman (Q1 gate): the cata row of Quantum gives the catalyst magazine of 5 (4 without).

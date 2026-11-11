@@ -1,0 +1,127 @@
+{
+  "id": "touch-of-malice",
+  "kind": "exoticWeapon",
+  "name": "Touch of Malice",
+  "texts": [
+    { "source": "clarity", "entry": "Touch of Malice", "hash": "58dc27e3" },
+    { "source": "clarity", "entry": "Charged with Blight", "hash": "610d2149" },
+    { "source": "clarity", "entry": "Touch of Malice Catalyst", "hash": "9db81465" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file touch-of-malice",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-touch-of-malice-touch-of-malice-tom].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-touch-of-malice-touch-of-malice-tom].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-touch-of-malice-touch-of-malice-tom].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-touch-of-malice-touch-of-malice-tom].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Touch of Malice Catalyst",
+    "description": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or missing removes all stacks...usually.\nPrecision damage increase at 1|2|3... stacks:\n4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%",
+    "effect": "damage"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot (last round)",
+      "damage": "$quantum[primaries-scout-rifle-touch-of-malice-touch-of-malice-tom].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "buffs": [
+    {
+      "id": "precision-instrument",
+      "name": "Precision Instrument",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Touch of Malice Catalyst](\"| 25%\") / 100 / $clarity[Touch of Malice Catalyst](\"Maximum of 6 stacks\")",
+            "note": "percent to factor, per stack (perStack): the 6-stack value of the table in 6 equal steps (4.17 % per stack; the table is linear)"
+          },
+          "damageSources": ["weapon"],
+          "perStack": true
+        }
+      ],
+      "durationMs": {
+        "expr": "$clarity[Touch of Malice Catalyst](\"for 1.25 seconds\") * 1000",
+        "note": "seconds to milliseconds; every direct hit renews it"
+      },
+      "maxStacks": "$clarity[Touch of Malice Catalyst](\"Maximum of 6 stacks\")"
+    }
+  ],
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "last-round-no-reload",
+      "on": { "on": "phaseStart" },
+      "do": [
+        {
+          "type": "modifyStat",
+          "modifier": {
+            "type": "stat",
+            "stat": "reload",
+            "factor": {
+              "value": 0,
+              "source": {
+                "name": "Item file touch-of-malice",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "quote": "is always refunded when shot",
+                "note": "Derived: the last round is refunded, so a magazine run down to it before the phase (like a pre-stacked buff) is never reloaded; Quantum's row says the same (\"always at 1 round\")"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "precision-instrument-more",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "buff", "id": "precision-instrument" }
+      ],
+      "do": [{ "type": "addStacks", "buff": "precision-instrument" }]
+    },
+    {
+      "id": "precision-instrument-start",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        { "type": "buff", "id": "precision-instrument", "not": true }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "precision-instrument" }]
+    }
+  ],
+  "notModelled": [
+    {
+      "quote": "The last round of this gun's magazine deals 132%",
+      "reason": "inside Quantum's value: the row \"Touch of Malice (ToM)\" is the last round (142 = 61 x 2.32, the Aegis rows 920 and 2 135 give the same ratio)"
+    },
+    { "quote": "Precision damage increase at 1|2|3", "reason": "the values stand in the next sentence (rule precision-instrument)" },
+    { "quote": "Reload Speed, up to a maximum of 10 stacks", "reason": "no damage against a boss (reload speed, stability); part of Charged with Blight" },
+    {
+      "quote": "hold [Reload] to load a 'Taken Blight'",
+      "reason": "Charged with Blight not modelled: Quantum's row \"ToM+CwB\" (239 against 142, +68 %) assumes 100 % uptime without the time of the held reload, which no source gives (Clarity: scaled by the reload stat); open, known-inaccuracies W6a"
+    },
+    { "quote": "triggers the 105 HP heal", "reason": "no damage against a boss (healing)" },
+    { "quote": "Taken Blight deals 220", "reason": "Charged with Blight not modelled, see hold [Reload] to load a 'Taken Blight'" },
+    { "quote": "Corruption deals 27", "reason": "Charged with Blight not modelled, see hold [Reload] to load a 'Taken Blight'" },
+    { "quote": "takes 50% increased damage from all Weapons of Sorrow", "reason": "Charged with Blight not modelled, see hold [Reload] to load a 'Taken Blight'" },
+    { "quote": "restores 105 HP", "reason": "no damage against a boss (healing)" },
+    { "quote": "Minors: 33.4%", "reason": "no damage against a boss (healing)" },
+    { "quote": "Elites, Minibosses, and Bosses: 100%", "reason": "no damage against a boss (healing)" },
+    { "quote": "Players: 66.7%", "reason": "no damage against a boss (healing, PvP)" }
+  ]
+}

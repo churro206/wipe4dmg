@@ -2,7 +2,7 @@
 
 Generiert mit `npm run check:text` (Regel in `scripts/lib/textCheck.ts`). Jeder Multiplier-Part, Catalyst und Grant neben den Texten seines Items (Clarity, Compendium, Court, Zitat der Quelle). Wert: (m − 1) × 100 steht im Text; Aegis- und Quantum-Messungen zählen als gemessen, eine Prozentzahl im Text trotzdem auf ±25 %. Dauer: eine Dauer aus dem Text. Ziel: Quellen, Elemente und Waffentypen gegen die Wörter im Text. „Ungenutzt“: Prozentzahlen im Text, die kein Part des Items nutzt (nur zur Info). Gründe für Abweichungen: `tests/fixtures/text-check.json`.
 
-Zeilen 291: ok 272, über Effect 5, gemessen 1, kein Text 3, Abweichung 10 (davon ohne Grund 0).
+Zeilen 290: ok 271, über Effect 5, gemessen 1, kein Text 3, Abweichung 10 (davon ohne Grund 0).
 
 ## Abweichungen
 
@@ -308,7 +308,6 @@ Zeilen 291: ok 272, über Effect 5, gemessen 1, kein Text 3, Abweichung 10 (davo
 | Wormhusk Crown | duration | 10 s | ok | Compendium Exotic Armors: Grants a stack of Burning Souls for 10 seconds, up to a maximum of 3 stacks. |  |
 | Dawn Chorus | value | +100 % exoticIntrinsic, keyword | ok | Compendium Exotic Armors: Ignitions deal 100% increased damage. | 40 %, 5 % |
 | Dawn Chorus | target | +100 % exoticIntrinsic, keyword | ok |  |  |
-| Touch of Malice: Catalyst | value | +25 % weaponPerk | ok | Catalyst Precision Instrument, Touch of Malice Catalyst: 4.17% \| 8.33% \| 12.5% \| 16.67% \| 20.83% \| 25% |  |
 | Twilight Arsenal → weaken | duration | 6 s | ok | Court:  \| 6s |  |
 | Nova Warp → weaken | duration | 6 s | ok | Court:  \| 6s |  |
 | Lightweight Knife → radiant | duration | 10 s | ok | quote: Precision Hits grant Radiant for 10 seconds. |  |

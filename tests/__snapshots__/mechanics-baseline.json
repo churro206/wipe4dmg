@@ -121,14 +121,14 @@
       "600s buffed catalyst": 244896.46
     },
     "cerberus-1": {
-      "30s plain": 14260.25,
-      "30s buffed": 24008.55,
-      "30s plain catalyst": 14260.25,
-      "30s buffed catalyst": 24008.55,
-      "600s plain": 274278.24,
-      "600s buffed": 461774.84,
-      "600s plain catalyst": 274278.24,
-      "600s buffed catalyst": 461774.84
+      "30s plain": 17248,
+      "30s buffed": 29038.73,
+      "30s plain catalyst": 17248,
+      "30s buffed catalyst": 29038.73,
+      "600s plain": 331744,
+      "600s buffed": 558524.2,
+      "600s plain catalyst": 331744,
+      "600s buffed catalyst": 558524.2
     },
     "choir-of-one": {
       "30s plain": 25650,
@@ -865,14 +865,14 @@
       "600s buffed catalyst": 79297.56
     },
     "skyburner-s-oath": {
-      "30s plain": 7545.71,
-      "30s buffed": 12703.96,
-      "30s plain catalyst": 7545.71,
-      "30s buffed catalyst": 12703.96,
-      "600s plain": 148627.7,
-      "600s buffed": 250229.6,
-      "600s plain catalyst": 148627.7,
-      "600s buffed catalyst": 250229.6
+      "30s plain": 10177.43,
+      "30s buffed": 17134.71,
+      "30s plain catalyst": 11441.51,
+      "30s buffed catalyst": 19262.93,
+      "600s plain": 205046.86,
+      "600s buffed": 345216.89,
+      "600s plain catalyst": 227746.58,
+      "600s buffed catalyst": 383434.15
     },
     "slayer-s-fang": {
       "30s plain": 33615,
@@ -925,24 +925,24 @@
       "600s buffed catalyst": 192162.74
     },
     "suros-regime": {
-      "30s plain": 7039.72,
-      "30s buffed": 11852.07,
-      "30s plain catalyst": 7039.72,
-      "30s buffed catalyst": 11852.07,
-      "600s plain": 137234.41,
-      "600s buffed": 231047.85,
-      "600s plain catalyst": 137234.41,
-      "600s buffed catalyst": 231047.85
+      "30s plain": 7085.65,
+      "30s buffed": 11929.4,
+      "30s plain catalyst": 7085.65,
+      "30s buffed catalyst": 11929.4,
+      "600s plain": 138294,
+      "600s buffed": 232831.78,
+      "600s plain catalyst": 138294,
+      "600s buffed catalyst": 232831.78
     },
     "sweet-business": {
-      "30s plain": 12103.13,
-      "30s buffed": 20376.83,
-      "30s plain catalyst": 12103.13,
-      "30s buffed catalyst": 20376.83,
-      "600s plain": 234885.6,
-      "600s buffed": 395453.4,
-      "600s plain catalyst": 234885.6,
-      "600s buffed catalyst": 395453.4
+      "30s plain": 12386.58,
+      "30s buffed": 20854.05,
+      "30s plain catalyst": 12386.58,
+      "30s buffed catalyst": 20854.05,
+      "600s plain": 240585.3,
+      "600s buffed": 405049.41,
+      "600s plain catalyst": 240585.3,
+      "600s buffed catalyst": 405049.41
     },
     "symmetry": {
       "30s plain": 6649,
@@ -1137,14 +1137,14 @@
       "600s buffed catalyst": 768951.16
     },
     "touch-of-malice": {
-      "30s plain": 12450.24,
-      "30s buffed": 20961.22,
-      "30s plain catalyst": 15562.8,
-      "30s buffed catalyst": 26201.53,
-      "600s plain": 247448.52,
-      "600s buffed": 416604.33,
-      "600s plain catalyst": 309310.65,
-      "600s buffed catalyst": 520755.41
+      "30s plain": 18602,
+      "30s buffed": 31318.33,
+      "30s plain catalyst": 23164.46,
+      "30s buffed catalyst": 38999.68,
+      "600s plain": 369200,
+      "600s buffed": 621585.12,
+      "600s plain catalyst": 462113.16,
+      "600s buffed catalyst": 778013.71
     },
     "tractor-cannon": {
       "30s plain": 8928,

@@ -279,6 +279,11 @@ describe("blockWeaponProblems", () => {
     expect(check("W5: Alpha, Gamma. Gate: x.", [row("Alpha")]).problems).toEqual([]);
   });
 
+  it("checks W6a to W6d like the blocks that bring weapons in", () => {
+    expect(check("W6a Fünf Primaries: Alpha, Gamma. Gate: x.", [row("Alpha")]).problems).toHaveLength(1);
+    expect(check("W6d (Opus): Alpha, Gamma. Gate: x.", [row("Alpha")]).problems).toHaveLength(1);
+  });
+
   it("is green for weapons within the limit and without open sentences", () => {
     const sentence = { text: "x", state: "rule" as const };
     expect(check("M3: Alpha, Beta. Gate: x.", [row("Alpha"), row("Beta", { sentences: [sentence] })]).problems).toEqual([]);

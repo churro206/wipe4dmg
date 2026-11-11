@@ -7,13 +7,17 @@ Höchstens 4 KB. Nach jedem Block: `docs/changelog.md`, `docs/known-inaccuracies
 Format: `- [ ] <Block>: <Ziel>. Gate: <Prüfung>.`, „(Opus)“ für Herleitungen; erledigt `- [x] … (<Commit>)`.
 
 - [x] A1, Q0, Q1, M1, M2, S0, V1–V4, P0, A3, W0–W4 (`history-2026-11.md`, `changelog.md`). Euphony auf Aegis (Ausnahme des Inhabers, ADR 0019).
-- [ ] W5 Bilanz Waffen (Opus). Teil 1 erledigt (siehe Commit): Bilanz in `known-inaccuracies.md` („W5 Bilanz Waffen“), Magazin-Catalysts (7 Waffen, Clarity a🠚b, Munition bleibt wie bei Fourth Horseman), Wish-Ender und Vigilance Wing Catalyst `none`, fünf Sustained-Proben und Burst-Primaries wieder an (Test `tests/w5.test.ts`). Folgeblöcke W6–W8 vom Inhaber freigegeben 2026-11-11, je Block eine frische Sitzung.
-- [ ] W6, W7, W8 (Ziel und Gate unten).
+- [ ] W5 Bilanz Waffen (Opus): Teil 1 erledigt (Bilanz in `known-inaccuracies.md`, Test `tests/w5.test.ts`). Folgeblöcke vom Inhaber freigegeben 2026-11-11, je Block eine frische Sitzung.
+- [x] W6a Fünf Primaries: Cerberus+1 (Zeile „far range“), Skyburner's Oath (Scorch-Regeln, +4,1 % gegen Quantum erklärt), SUROS Regime, Sweet Business, Touch of Malice (ohne Reload; Charged with Blight offen, über 2 %, Ladezeit unbekannt). `check:block` kennt W6a–W6d. Overrides der vier Waffen weg; `describeCatalyst` zeigt für Items keine „+25% weapon damage“-Zeile mehr (A2).
+- [ ] W6b Fünf mit Lücke (Recherche 2026-11-11): New Land Beyond, Wavesplitter (Zeilen vollständig); No Time to Explain (Quantum-Zeile = High-Impact-Schuss 41, Portal 49,1 je Kugel aus Clarity); Finality's Auger (Reserven 21 wie Lorentz Driver und Arbalest, `derived`); Ice Breaker (Clarity „no reserve ammo“: Gesamtschüsse = Magazin 10, kein Reload; Schuss 1224 aus Quantum). Gate: `check:block -- W6b`.
+- [ ] W6c Ausnahme Aegis (Inhaber 2026-11-11: fehlt Quantum und Compendium etwas, nimmt das Item es aus Aegis; Zeile wird `fitted`, das ist zirkulär und steht in ADR 0019 und `known-inaccuracies.md`): zuerst ADR-Zusatz und CLAUDE.md-Satz (freigegeben 2026-11-11), dann (Opus) Jötunn, Cull's Shadow, New Malpais, Prometheus Lens mit Takt aus Aegis Sustained bzw. Manifest, Schaden aus Aegis-Treffer ÷ Full Modifiers oder Compendium. Kein `$reload` nötig.
+- [ ] W6d (Opus): Fafnir (Quantum Nova mit 9 Munition, Aegis-Zeile enthält Windup und Splash) und Turncoat (Power Surge, Unleashed Power); Gate: Plausibilität, `check:block -- W6d`.
+- [ ] W7, W8 (Ziel und Gate unten).
 - [ ] A2 Aufräumen: Aegis-Paketpfad in `weaponPackages.ts`, `weapon-overrides.json`, `WeaponOverride` samt Tests weg; `pickBaseRow` nur für Szenarien. Gate: tsc, lint, Tests, Bericht gleich bis auf Entferntes.
 
 ## Folgeblöcke (freigegeben 2026-11-11)
 
-- W6 Pakete und Aegis-Items: 16 Pakete als Items (5 mit Quantum-Variante: Cull's Shadow, Finality's Auger, Ice Breaker, Jötunn, Prometheus Lens; 11 ohne Quantum aus Clarity/Compendium), `$aegis` raus bei Heartshadow (4 × 507 je Orb), Black Talon, Ergo Sum, Heirloom, The Lament, Whirling Ovation. Voraussetzung für A2. Widerspruch: die Reihenfolge legt „Exotics ohne Quantum“ in die Gegenprobe, A2 entfernt aber ihren Paketpfad. Gate: `check:block -- W6`, keine Waffe mehr als Paket.
+- W6 (neu 2026-11-11, Recherche): 10 von 16 Paketen werden Items (W6a, W6b). **Entschieden:** Aegis als Ausnahmequelle für W6c/W6d. **Rückfrage Inhaber:** (2) `$aegis` der sechs Items (Heartshadow, Black Talon, Ergo Sum, Heirloom, Lament, Whirling Ovation): nur Aegis hat den Schaden, bleibt laut ADR 0019 bis zur Gegenprobe. A2 wartet auf (1) und (2).
 - W7 Gerüst-Sätze: die 37 Items der Klasse „liest Quantum“ (rund 300 offene Sätze) nach Vorlage oder `notModelled`, in Teilen je Vorlage. Gate: offene Sätze mit Zahl dieser Waffen 0, `check:block`.
 - W8 Fehlende Mechanik (Opus): 27 Waffen über 2 %, je neuer Typ ein Teil (Ladung aus Treffern: Hawkmoon, Whisper; Super-Verbrauch: Ager's Scepter; Zielzustand; Moduswechsel: Graviton Spike). Gate: Aegis-Zeile je Waffe gegengeprüft oder Befund.
 - Danach A2, dann Catalysts (eigene Stufe).

@@ -1,0 +1,127 @@
+{
+  "id": "suros-regime",
+  "kind": "exoticWeapon",
+  "name": "SUROS Regime",
+  "texts": [
+    { "source": "clarity", "entry": "SUROS Legacy", "hash": "15388c6c" },
+    { "source": "clarity", "entry": "Spinning Up", "hash": "39cba878" },
+    { "source": "clarity", "entry": "SUROS Regime Catalyst", "hash": "cc322507" },
+    { "source": "clarity", "entry": "Dual Speed Receiver", "hash": "ebadafe6" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file suros-regime",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "SUROS Regime Catalyst",
+    "description": "Grants 50 Recoil Direction and doubles the healing chance (25%🠚50%).",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-suros-regime-spinning-up].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "buffs": [
+    {
+      "id": "suros-legacy",
+      "name": "SUROS Legacy, bottom half of the magazine",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "exoticIntrinsic",
+          "multiplier": {
+            "expr": "1 + ($clarity[SUROS Legacy](\"grants 5%\") + $clarity[SUROS Legacy](\"to 10%\")) / 2 / 100",
+            "note": "percent to factor; the mean of the linear 5 % to 10 % (Quantum's magazine damage 917 = 26 x (34 + 17 x 0.075) confirms the mean)"
+          },
+          "damageSources": ["weapon"]
+        }
+      ],
+      "durationMs": {
+        "expr": "60000 / $quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.fireRateRpm * 2",
+        "note": "two shot intervals: every shot of the bottom half renews it, a reload lets it run out"
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "legacy-count",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "mag-shots",
+          "op": "<",
+          "value": {
+            "expr": "$quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.magazine / 2",
+            "note": "half of the magazine: the counter stands at 17 after the 17th round"
+          }
+        }
+      ],
+      "do": [{ "type": "addStacks", "counter": "mag-shots" }]
+    },
+    {
+      "id": "legacy",
+      "on": { "on": "shot" },
+      "if": [
+        {
+          "type": "counter",
+          "id": "mag-shots",
+          "op": ">=",
+          "value": {
+            "expr": "$quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.magazine / 2",
+            "note": "from the 18th round on the magazine is below 50 % capacity"
+          }
+        }
+      ],
+      "do": [{ "type": "grantBuff", "buff": "suros-legacy" }],
+      "source": {
+        "name": "Item file suros-regime",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "as the magazine decreases from 50% capacity",
+        "note": "Derived: the linear 5 % to 10 % over the bottom half is one step at its mean (7.5 %); the reload sets the counter back"
+      }
+    },
+    {
+      "id": "legacy-reset",
+      "on": { "on": "reload", "edge": "start" },
+      "do": [{ "type": "resetCounter", "counter": "mag-shots" }]
+    }
+  ],
+  "notModelled": [
+    { "quote": "Kills have a 25% chance to grant 20 HP", "reason": "no damage against a boss (healing)" },
+    {
+      "quote": "RPM increases by 17%|33% after 12|24 bullets",
+      "reason": "inside Quantum's rate 712 (the manifest says 600 RPM): the rate of the Quantum row is the mean over the magazine; the ramp gives about 694 by our count (known-inaccuracies W6a)"
+    },
+    { "quote": "Grants 50 Recoil Direction", "reason": "no damage against a boss (recoil, healing)" },
+    {
+      "quote": "Grants 30 Range",
+      "reason": "no damage against a boss (range, zoom, ammo progress); the mode Dual Speed Receiver is not played"
+    },
+    {
+      "quote": "Hold [Reload] to switch to this mode",
+      "reason": "playstyle: Spinning Up does more damage per second than Dual Speed Receiver (Quantum rows: 26 x 712 RPM against 40 x 400 RPM)"
+    },
+    { "quote": "RPM and Damage Profile are set to the High Impact", "reason": "mode not played, see Hold [Reload] to switch" },
+    { "quote": "increased Special Ammo Progress", "reason": "no damage against a boss (ammo progress)" }
+  ]
+}

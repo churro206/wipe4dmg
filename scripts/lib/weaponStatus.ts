@@ -283,7 +283,7 @@ export function blockWeaponProblems(
   const problems: string[] = [];
   const reported: string[] = [];
   // Only these blocks bring weapons in. Other lines (W5, the balance) list weapons that they only decide on.
-  if (!/^(M\S*|W[1-4]\b)/.test(line)) return { problems, reported };
+  if (!/^(M\S*|W[1-4]\b|W6[a-d]\b)/.test(line)) return { problems, reported };
   const names = [...new Set([...knownNames, ...rows.map((r) => r.name)])];
   for (const name of namedWeapons(line, names)) {
     const row = rows.find((r) => r.name === name);

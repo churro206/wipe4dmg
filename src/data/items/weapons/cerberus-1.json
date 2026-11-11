@@ -1,0 +1,55 @@
+{
+  "id": "cerberus-1",
+  "kind": "exoticWeapon",
+  "name": "Cerberus+1",
+  "texts": [
+    { "source": "clarity", "entry": "Four-Headed Dog", "hash": "6a4c6206" },
+    { "source": "clarity", "entry": "Spread Shot Package", "hash": "e728b055" },
+    { "source": "clarity", "entry": "Cerberus+1 Catalyst", "hash": "8e8d48b0" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file cerberus-1",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-auto-rifle-cerberus-1-normal-far-range-2].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-auto-rifle-cerberus-1-normal-far-range-2].timing.magazine",
+  "totalShots": "$quantum[primaries-auto-rifle-cerberus-1-normal-far-range-2].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-auto-rifle-cerberus-1-normal-far-range-2].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Cerberus+1 Catalyst",
+    "description": "Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds:\n• 50% [10%] increased damage\n• 30% decreased Pellet Spread\nStowing the weapon removes the buff.",
+    "effect": "none"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-auto-rifle-cerberus-1-normal-far-range-2].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    }
+  ],
+  "notModelled": [
+    { "quote": "Aiming down sights decreases pellet spread", "reason": "no damage against a boss (accuracy)" },
+    { "quote": "within 7 seconds of scoring a kill", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    { "quote": "50% [10%] increased damage", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    { "quote": "30% decreased Pellet Spread", "reason": "no damage against a boss (accuracy)" },
+    { "quote": "Fires 3 evenly spread pellets", "reason": "inside Quantum's value per shot (Quantum 93 and Aegis 92.6 at point-blank agree within 0.4 %)" },
+    {
+      "quote": "Pellets experience 'reverse range falloff'",
+      "reason": "played beyond 14 meters: the Quantum row \"far range\" is the base damage (the row \"close range\" is 16.67 % lower, as the text says)"
+    },
+    { "quote": "Beyond ~30 meters", "reason": "played within 30 meters (no damage falloff)" }
+  ]
+}

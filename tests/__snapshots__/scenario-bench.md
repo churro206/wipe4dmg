@@ -6,9 +6,9 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 ## Key figures
 
 - **Delta pairs (check set): 1 of 4 within 2 percentage points**
-- Rank (check set): Spearman 0.98 over 44 rows
-- Absolute, information only: within ±3 % 26 of 44 (check set), 100 of 180 (all counted rows, mostly Eichung)
-- Rows: 182 scenarios (32 by hand, 150 generated); fitted 28; calibration set 108; check set 44; not counted 2; core cannot run 0
+- Rank (check set): Spearman 0.98 over 46 rows
+- Absolute, information only: within ±3 % 26 of 46 (check set), 99 of 180 (all counted rows, mostly Eichung)
+- Rows: 182 scenarios (32 by hand, 150 generated); fitted 25; calibration set 109; check set 46; not counted 2; core cannot run 0
 
 ## Delta pairs (check set)
 
@@ -29,6 +29,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | lord-of-wolves | shotgun-lord-of-wolves-average-includes-ignition-scorch | 22355 | 20520 | −8.2 % |
 | one-thousand-voices-ember | fusion-rifle-one-thousand-voices-average-ember-of-ashes | 11550 | 12274 | +6.3 % |
 | one-thousand-voices-catalyst | fusion-rifle-one-thousand-voices-average-catalyst | 27000 | 28709 | +6.3 % |
+| gen-auto-rifle-cerberus-1-point-blank | auto-rifle-cerberus-1-point-blank | 93 | 112 | +21.0 % |
 | gen-auto-rifle-necrochasm | auto-rifle-necrochasm | 23 | 24 | +2.6 % |
 | gen-auto-rifle-quicksilver-storm-average-with-tracking-rockets | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 448 | +14.9 % |
 | gen-bow-trinity-ghoul | bow-trinity-ghoul | 218 | 219 | +0.3 % |
@@ -54,6 +55,7 @@ Values on the scale of Aegis "visual" (wipe ÷ full modifiers). Only rows that t
 | gen-pulse-rifle-vigilance-wing-burst | pulse-rifle-vigilance-wing-burst | 173 | 175 | +1.4 % |
 | gen-scout-rifle-mida-multi-tool | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | gen-scout-rifle-symmetry | scout-rifle-symmetry | 61 | 61 | +0.1 % |
+| gen-scout-rifle-touch-of-malice | scout-rifle-touch-of-malice | 61 | 142 | +132.9 % |
 | gen-shotgun-conditional-finality-average-body-both-modes | shotgun-conditional-finality-average-body-both-modes | 17047 | 16279 | −4.5 % |
 | gen-shotgun-duality-ads | shotgun-duality-ads | 1261 | 1263 | +0.2 % |
 | gen-shotgun-the-chaperone | shotgun-the-chaperone | 748 | 749 | +0.2 % |
@@ -162,7 +164,7 @@ Rows by what they check (column "Prüft" of `docs/product.md`). Coverage: Aegis 
 
 | Group | Aegis rows | Covered | Coverage | Fitted | Check set | Spearman | Top 3 in 5 | Delta pairs |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Weapons | 417 | 180 | 43 % | 28 | 44 | 0.98 | 3/3 | 1 of 4 |
+| Weapons | 417 | 180 | 43 % | 25 | 46 | 0.98 | 3/3 | 1 of 4 |
 | Supers | 68 | 18 | 26 % | 0 | 18 | 0.99 | 3/3 | 4 of 6 |
 | Heavy | 95 | 21 | 22 % | 0 | 21 | 0.94 | 2/3 | 5 of 5 |
 | Special | 84 | 10 | 12 % | 4 | 6 | 0.94 | 3/3 | 0 of 0 |
@@ -202,6 +204,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 
 | Group | Aegis row | Aegis | Model | Deviation |
 | --- | --- | ---: | ---: | ---: |
+| Weapons | auto-rifle-cerberus-1-point-blank | 93 | 112 | +21.0 % |
 | Weapons | auto-rifle-necrochasm | 23 | 24 | +2.6 % |
 | Weapons | auto-rifle-quicksilver-storm-average-with-tracking-rockets | 390 | 448 | +14.9 % |
 | Weapons | bow-hierarchy-of-needs-average-2-rings-fireteam-scaling | 12062 | 12026 | −0.3 % |
@@ -231,6 +234,7 @@ Aegis in the scale of its tab (total, value per use at stat 100, or wipe by full
 | Weapons | rocket-launcher-dragon-s-breath-average-loaded-composite-propellant-x5 | 29828 | 23629 | −20.8 % |
 | Weapons | scout-rifle-mida-multi-tool | 74 | 74 | +0.2 % |
 | Weapons | scout-rifle-symmetry | 61 | 61 | +0.1 % |
+| Weapons | scout-rifle-touch-of-malice | 61 | 142 | +132.9 % |
 | Weapons | shotgun-conditional-finality-average-body-both-modes | 17047 | 16279 | −4.5 % |
 | Weapons | shotgun-duality-ads | 1261 | 1263 | +0.2 % |
 | Weapons | shotgun-lord-of-wolves-average-includes-ignition-scorch | 22355 | 20520 | −8.2 % |

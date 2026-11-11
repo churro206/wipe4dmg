@@ -321,7 +321,7 @@
         "name": "Sweet Business",
         "group": "Kinetic",
         "inGame": "Payday: Collecting an Ammo Brick refills the magazine.\nAt maximum rate of fire, Hipfire Accuracy Cone Size is reduced by 15%.\nBusiness Time: Holding down the trigger progressively grants up to 60% increased Rate of Fire and ? Range after 1.38 seconds.\nAs long as the trigger continues to be held, an explosive projectile is added every 18 shots, dealing 56 [21] damage with no damage falloff.\nAchieving maximum fire rate increases the frequency of these projectiles to once every 8 shots.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:sweet-business",
         "status": "full"
       },
@@ -1452,7 +1452,7 @@
         "group": "Kinetic",
         "inGame": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or missing removes all stacks...usually.\nPrecision damage increase at 1|2|3... stacks:\n4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%",
         "iconHash": 1557274655,
-        "inCalculator": "+25% weapon damage",
+        "inCalculator": "Adds weapon damage.",
         "status": "full",
         "iconKey": "named:touch-of-malice-catalyst"
       },

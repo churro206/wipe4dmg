@@ -1,0 +1,112 @@
+{
+  "id": "skyburner-s-oath",
+  "kind": "exoticWeapon",
+  "name": "Skyburner's Oath",
+  "texts": [
+    { "source": "clarity", "entry": "For the Empire", "hash": "f15d9960" },
+    { "source": "clarity", "entry": "Skyburner Catalyst", "hash": "8ebb8a76" },
+    { "source": "clarity", "entry": "Slug Rifle", "hash": "53235cb3" }
+  ],
+  "chargeTimeMs": {
+    "value": 0,
+    "source": {
+      "name": "Item file skyburner-s-oath",
+      "retrieved": "2026-11-11",
+      "status": "derived",
+      "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
+    }
+  },
+  "fireRateRpm": "$quantum[primaries-scout-rifle-skyburner-s-oath-hip-fire].timing.fireRateRpm",
+  "magazine": "$quantum[primaries-scout-rifle-skyburner-s-oath-hip-fire].timing.magazine",
+  "totalShots": "$quantum[primaries-scout-rifle-skyburner-s-oath-hip-fire].timing.totalShots",
+  "reloadTimeMs": "$quantum[primaries-scout-rifle-skyburner-s-oath-hip-fire].timing.reloadTimeMs",
+  "catalyst": {
+    "name": "Skyburner Catalyst",
+    "description": "Grants 20 Reload Speed.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.\nDirect Hits against Scorched Enemies apply 10 [4] additional Scorch per Direct Hit (15 [9?] with Ember of Ashes) on a 0.5 second cooldown.\nScoring 11 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. Hit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage.",
+    "effect": "damage"
+  },
+  "parts": {
+    "shot": {
+      "name": "Shot",
+      "damage": "$quantum[primaries-scout-rifle-skyburner-s-oath-hip-fire].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
+    }
+  },
+  "rules": [
+    {
+      "id": "shot",
+      "on": { "on": "shot" },
+      "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "scorch-direct-hit",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "hasItem", "id": "catalyst" },
+        {
+          "type": "stacks",
+          "status": "scorch",
+          "op": ">=",
+          "value": {
+            "value": 1,
+            "source": {
+              "name": "Item file skyburner-s-oath",
+              "retrieved": "2026-11-11",
+              "status": "derived",
+              "quote": "Direct Hits against Scorched Enemies",
+              "note": "Derived: scorched means at least one stack"
+            }
+          }
+        }
+      ],
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Skyburner Catalyst](\"apply 10 [\")"
+        }
+      ],
+      "cooldownMs": {
+        "expr": "$clarity[Skyburner Catalyst](\"on a 0.5 second cooldown\") * 1000",
+        "note": "seconds to milliseconds; at 150 RPM (0.4 s) every second shot"
+      }
+    },
+    {
+      "id": "scorch-hip",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [
+        {
+          "type": "applyStatus",
+          "status": "scorch",
+          "stacks": "$clarity[Slug Rifle](\"apply 5\")"
+        }
+      ],
+      "source": {
+        "name": "Item file skyburner-s-oath",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Hip-fired shots become slow traveling projectiles",
+        "note": "Derived: the weapon is hip-fired (Quantum: 3 030 against 2 320 per magazine in ADS)"
+      }
+    }
+  ],
+  "notModelled": [
+    { "quote": "Deals 11% increased damage against Cabal enemies", "reason": "needs target faction (Cabal)" },
+    {
+      "quote": "Grants 20 Reload Speed",
+      "reason": "below 2 % (it shortens the reload of 1.24 s by about 0.1 s on a cycle of 9.2 s; known-inaccuracies W6a)"
+    },
+    { "quote": "Weapon Kills trigger a Solar explosion", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    { "quote": "Killing Elite or higher tier Combatants", "reason": "needs a kill (one boss, no adds, ADR 0015)" },
+    {
+      "quote": "Scoring 11 Direct Hits",
+      "reason": "no effect: the hip-fired shot already scorches the target (rule scorch-hip), so the next direct hit scorching adds nothing"
+    },
+    {
+      "quote": "up to 55 [?] splash damage",
+      "reason": "inside Quantum's value per shot (116 in the ADS row with hitscan splash and in the hip-fire row with slug splash; known-inaccuracies W6a)"
+    },
+    { "quote": "Aiming Down Sights shoots hitscan projectiles", "reason": "mode not played: the weapon is hip-fired (scorch; Quantum 3 030 against 2 320 per magazine)" }
+  ]
+}

@@ -2355,56 +2355,129 @@
     "code": 93,
     "name": "Cerberus+1",
     "manifestHash": 1541131350,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "autoRifle",
     "element": "kinetic",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-cerberus-1-normal-close-range-2",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file cerberus-1",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "fireRateRpm": {
       "value": 360,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-cerberus-1-normal-close-range-2",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-cerberus-1-normal-far-range-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 31,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-cerberus-1-normal-close-range-2",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-cerberus-1-normal-far-range-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-cerberus-1-normal-close-range-2",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-cerberus-1-normal-far-range-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1120,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-cerberus-1-normal-close-range-2",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-cerberus-1-normal-far-range-2",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cerberus-1",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 112,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-cerberus-1-normal-far-range-2",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file cerberus-1",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file cerberus-1",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "four-headed-dog",
+        "name": "Four-Headed Dog",
+        "description": "Shoots erratic bullets from all gun barrels at the same time.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Cerberus+1 Catalyst",
+      "description": "Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds:\n• 50% [10%] increased damage\n• 30% decreased Pellet Spread\nStowing the weapon removes the buff.",
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -2416,82 +2489,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-cerberus-1-point-blank",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-cerberus-1-point-blank",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 92.599,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-cerberus-1-point-blank",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-cerberus-1-point-blank",
-            "note": "visual Value; assumptions: point blank"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-cerberus-1-point-blank",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-cerberus-1-point-blank"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-cerberus-1-point-blank",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-cerberus-1-point-blank"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "four-headed-dog",
-        "name": "Four-Headed Dog",
-        "description": "Shoots erratic bullets from all gun barrels at the same time.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Focused Fire, Cerberus+1 Catalyst",
-      "description": "Holding [Reload] within 7 seconds of scoring a kill grants the following benefits for 7 seconds:\n• 50% [10%] increased damage\n• 30% decreased Pellet Spread\nStowing the weapon removes the buff.",
-      "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "choir-of-one",
@@ -18352,56 +18350,205 @@
     "code": 131,
     "name": "Skyburner's Oath",
     "manifestHash": 4255268456,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "scoutRifle",
     "element": "solar",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file skyburner-s-oath",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "fireRateRpm": {
       "value": 150,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-skyburner-s-oath-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 20,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-skyburner-s-oath-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-skyburner-s-oath-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1240,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-skyburner-s-oath-ads",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-skyburner-s-oath-hip-fire",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file skyburner-s-oath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 116,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-skyburner-s-oath-hip-fire",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file skyburner-s-oath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file skyburner-s-oath",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "scorch-direct-hit",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          {
+            "type": "stacks",
+            "status": "scorch",
+            "op": ">=",
+            "value": {
+              "value": 1,
+              "source": {
+                "name": "Item file skyburner-s-oath",
+                "retrieved": "2026-11-11",
+                "status": "derived",
+                "note": "Derived: scorched means at least one stack",
+                "quote": "Direct Hits against Scorched Enemies"
+              }
+            }
+          }
+        ],
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 10,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Skyburner Catalyst",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "apply 10 ["
+              }
+            }
+          }
+        ],
+        "cooldownMs": {
+          "value": 500,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Skyburner Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Skyburner Catalyst](\"on a 0.5 second cooldown\") * 1000 (seconds to milliseconds; at 150 RPM (0.4 s) every second shot); $clarity[Skyburner Catalyst](\"on a 0.5 second cooldown\") = 0.5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Skyburner Catalyst)"
+          }
+        }
+      },
+      {
+        "id": "scorch-hip",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [
+          {
+            "type": "applyStatus",
+            "status": "scorch",
+            "stacks": {
+              "value": 5,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Slug Rifle",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "apply 5"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file skyburner-s-oath",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the weapon is hip-fired (Quantum: 3 030 against 2 320 per magazine in ADS)",
+          "quote": "Hip-fired shots become slow traveling projectiles"
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "slug-rifle",
+        "name": "Slug Rifle",
+        "description": "This weapon lobs explosive slugs. When you're aiming down sights, the slugs travel fast and straight. When you're firing from the hip, the explosion is larger and applies Scorch to the target.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Skyburner Catalyst",
+      "description": "Grants 20 Reload Speed.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.\nDirect Hits against Scorched Enemies apply 10 [4] additional Scorch per Direct Hit (15 [9?] with Ember of Ashes) on a 0.5 second cooldown.\nScoring 11 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. Hit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage.",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -18413,82 +18560,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-skyburner-s-oath-ads-cabal",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-skyburner-s-oath-ads-cabal",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 114.329,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-skyburner-s-oath-ads-cabal",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-skyburner-s-oath-ads-cabal",
-            "note": "visual Value; assumptions: ADS, Cabal"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-skyburner-s-oath-ads-cabal",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-skyburner-s-oath-ads-cabal"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-skyburner-s-oath-ads-cabal",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-skyburner-s-oath-ads-cabal"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "slug-rifle",
-        "name": "Slug Rifle",
-        "description": "This weapon lobs explosive slugs. When you're aiming down sights, the slugs travel fast and straight. When you're firing from the hip, the explosion is larger and applies Scorch to the target.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "catalyst": {
-      "name": "Skyburner Catalyst",
-      "description": "Grants 20 Reload Speed.\nWeapon Kills trigger a Solar explosion that applies 30 Scorch Stacks (40 with Ember of Ashes) and deals up to 30 damage to enemies within 4 meters of the target.\nKilling Elite or higher tier Combatants and Players increases the radius to 8 meters and applies 10 more Scorch Stacks.\nScorch damage can be increased through Weapon Damage Buffs.\nDirect Hits against Scorched Enemies apply 10 [4] additional Scorch per Direct Hit (15 [9?] with Ember of Ashes) on a 0.5 second cooldown.\nScoring 11 Direct Hits within 3? seconds of each causes the next Direct Hit to Scorch the target. Hit counter persists through stow.\nScorch applied by Burning Ambition to Unscorched targets counts as Weapon Damage.",
-      "effect": "unknown"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "slayer-s-fang",
@@ -19564,116 +19636,195 @@
     "code": 98,
     "name": "SUROS Regime",
     "manifestHash": 2856683562,
-    "gameVersion": "9.7.0.3",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "autoRifle",
     "element": "kinetic",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file suros-regime",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "fireRateRpm": {
       "value": 712,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 34,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1120,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
-      }
-    },
-    "reloadDurationIncluded": {
-      "value": 0.9,
-      "source": {
-        "name": "Quantum Damage-ics, Home (Assumptions Made)",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-25",
         "status": "verified",
-        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
-        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
+        "note": "timing.reloadTimeMs"
       }
     },
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot (Aegis average)",
+        "name": "Shot",
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-suros-regime-average-spinning-up",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file suros-regime",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-suros-regime-average-spinning-up",
-            "note": "Package: one value per shot"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "damagePerTick": {
-          "value": 26.767,
+          "value": 26,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-suros-regime-average-spinning-up",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-suros-regime-average-spinning-up",
-            "note": "visual Value; assumptions: average, Spinning Up"
+            "status": "verified",
+            "note": "precisionDamage"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-suros-regime-average-spinning-up",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file suros-regime",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-suros-regime-average-spinning-up"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-suros-regime-average-spinning-up",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file suros-regime",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-suros-regime-average-spinning-up"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
-        "canPrecision": false,
-        "scale": "aegisVisual"
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "legacy-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "mag-shots",
+            "op": "<",
+            "value": {
+              "value": 17,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.magazine / 2 (half of the magazine: the counter stands at 17 after the 17th round); $quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.magazine = 34 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "mag-shots" }]
+      },
+      {
+        "id": "legacy",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "mag-shots",
+            "op": ">=",
+            "value": {
+              "value": 17,
+              "source": {
+                "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.magazine / 2 (from the 18th round on the magazine is below 50 % capacity); $quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.magazine = 34 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "suros-legacy" }],
+        "source": {
+          "name": "Item file suros-regime",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the linear 5 % to 10 % over the bottom half is one step at its mean (7.5 %); the reload sets the counter back",
+          "quote": "as the magazine decreases from 50% capacity"
+        }
+      },
+      {
+        "id": "legacy-reset",
+        "on": { "on": "reload", "edge": "start" },
+        "do": [{ "type": "resetCounter", "counter": "mag-shots" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "suros-legacy",
+        "name": "SUROS Legacy, bottom half of the magazine",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "exoticIntrinsic",
+            "multiplier": {
+              "value": 1.075,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): SUROS Legacy",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + ($clarity[SUROS Legacy](\"grants 5%\") + $clarity[SUROS Legacy](\"to 10%\")) / 2 / 100 (percent to factor; the mean of the linear 5 % to 10 % (Quantum's magazine damage 917 = 26 x (34 + 17 x 0.075) confirms the mean)); $clarity[SUROS Legacy](\"grants 5%\") = 5 (Clarity (Live-Clarity-Database, descriptions/clarity.json): SUROS Legacy); $clarity[SUROS Legacy](\"to 10%\") = 10 (Clarity (Live-Clarity-Database, descriptions/clarity.json): SUROS Legacy)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ],
+        "durationMs": {
+          "value": 168.539,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: 60000 / $quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.fireRateRpm * 2 (two shot intervals: every shot of the bottom half renews it, a reload lets it run out); $quantum[primaries-auto-rifle-suros-regime-spinning-up].timing.fireRateRpm = 712 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-suros-regime-spinning-up)"
+          }
+        }
       }
     ],
     "intrinsics": [
@@ -19683,80 +19834,16 @@
         "description": "The bottom half of each magazine deals bonus damage and has a chance to return health on kill.",
         "source": {
           "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
+          "retrieved": "2026-10-31",
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
     ],
     "catalyst": {
-      "name": "SUROS Ascendance, SUROS Regime Catalyst",
+      "name": "SUROS Regime Catalyst",
       "description": "Grants 50 Recoil Direction and doubles the healing chance (25%🠚50%).",
       "effect": "none"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
-  },
-  {
-    "id": "sweet-business",
-    "code": 73,
-    "name": "Sweet Business",
-    "manifestHash": 1345867570,
-    "gameVersion": "9.7.0.3",
-    "weaponType": "autoRifle",
-    "element": "kinetic",
-    "ammo": "primary",
-    "chargeTimeMs": {
-      "value": 0,
-      "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
-      }
-    },
-    "fireRateRpm": {
-      "value": 856,
-      "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
-      }
-    },
-    "magazine": {
-      "value": 150,
-      "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified"
-      }
-    },
-    "totalShots": {
-      "value": null,
-      "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified"
-      }
-    },
-    "reloadTimeMs": {
-      "value": 2000,
-      "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified"
-      }
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -19768,55 +19855,212 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
+    }
+  },
+  {
+    "id": "sweet-business",
+    "code": 73,
+    "name": "Sweet Business",
+    "manifestHash": 1345867570,
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
+    "weaponType": "autoRifle",
+    "element": "kinetic",
+    "ammo": "primary",
+    "chargeTimeMs": {
+      "value": 0,
+      "source": {
+        "name": "Item file sweet-business",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "fireRateRpm": {
+      "value": 856,
+      "source": {
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+      }
+    },
+    "magazine": {
+      "value": 150,
+      "source": {
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "timing.magazine"
+      }
+    },
+    "totalShots": {
+      "value": null,
+      "source": {
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "timing.totalShots"
+      }
+    },
+    "reloadTimeMs": {
+      "value": 2000,
+      "source": {
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-20",
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
+      }
     },
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot (Aegis average)",
+        "name": "Shot",
         "delayMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-sweet-business-average-with-explosive-rounds",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file sweet-business",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-sweet-business-average-with-explosive-rounds",
-            "note": "Package: one value per shot"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "damagePerTick": {
-          "value": 32.623,
+          "value": 30,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-sweet-business-average-with-explosive-rounds",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-sweet-business-average-per-mag",
+            "url": "https://destiny2.science/quantum-damage-ics",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-sweet-business-average-with-explosive-rounds",
-            "note": "visual Value; assumptions: average, with explosive rounds"
+            "status": "verified",
+            "note": "precisionDamage"
           }
         },
         "ticks": {
           "value": 1,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-sweet-business-average-with-explosive-rounds",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file sweet-business",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-sweet-business-average-with-explosive-rounds"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "tickIntervalMs": {
           "value": 0,
           "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row auto-rifle-sweet-business-average-with-explosive-rounds",
-            "url": "https://destiny2.science/boss-damage",
+            "name": "Item file sweet-business",
             "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "auto-rifle-sweet-business-average-with-explosive-rounds"
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      },
+      {
+        "id": "explosive",
+        "name": "Explosive round",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file sweet-business",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 27.317,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-sweet-business-average-per-mag; Clarity (Live-Clarity-Database, descriptions/clarity.json): Business Time; Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Sweet Business Payday Business Time ↑Serious Business",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: $quantum[primaries-auto-rifle-sweet-business-average-per-mag].bodyDamage * $clarity[Business Time](\"dealing 56\") / $compendium[Sweet Business Payday Business Time](\"deal 41 [\") (the Clarity damage of the explosive round (56) on Quantum's scale: Quantum's body damage 20 stands for the Compendium's 41 of a bullet (Quantum's magazine damage 4 959 = 150 x 30 + 17.7 x 27.3 confirms it within 0.5 %)); $quantum[primaries-auto-rifle-sweet-business-average-per-mag].bodyDamage = 20 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-auto-rifle-sweet-business-average-per-mag); $clarity[Business Time](\"dealing 56\") = 56 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Business Time); $compendium[Sweet Business Payday Business Time](\"deal 41 [\") = 41 (Destiny Data Compendium (tabs Exotic Weapons, Weapon Perks): Sweet Business Payday Business Time ↑Serious Business)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file sweet-business",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file sweet-business",
+            "retrieved": "2026-10-24",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
           }
         },
         "canPrecision": false,
-        "scale": "aegisVisual"
+        "delivery": "splash",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "explosive-count",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "explosive-shots",
+            "op": "<",
+            "value": {
+              "value": 7,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Business Time",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Business Time](\"once every 8 shots\") - 1 (the counter stands at 0 to 6 for the shots before the 8th); $clarity[Business Time](\"once every 8 shots\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Business Time)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "explosive-shots" }]
+      },
+      {
+        "id": "explosive",
+        "on": { "on": "shot" },
+        "if": [
+          {
+            "type": "counter",
+            "id": "explosive-shots",
+            "op": "=",
+            "value": {
+              "value": 7,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Business Time",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Business Time](\"once every 8 shots\") - 1 (the 8th shot); $clarity[Business Time](\"once every 8 shots\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Business Time)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "explosive-shots" },
+          { "type": "spawn", "part": "explosive" }
+        ],
+        "source": {
+          "name": "Item file sweet-business",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the rate of Quantum's row is the mean over the magazine (856 of 900 RPM at full spin-up), so the round comes every 8 shots from the first; the 18 shots before full spin-up are about 0.6 % of the damage (known-inaccuracies W6a)",
+          "quote": "once every 8 shots"
+        }
       }
     ],
     "intrinsics": [
@@ -19826,24 +20070,28 @@
         "description": "Larger magazine. Increased accuracy when firing from the hip. Picking up Special or Heavy ammo immediately reloads this weapon.",
         "source": {
           "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
+          "retrieved": "2026-10-31",
           "status": "verified",
           "note": "245114.26.10.13.2000-1-bnet.66137"
         }
       }
     ],
     "catalyst": {
-      "name": "Serious Business, Sweet Business Catalyst",
+      "name": "Sweet Business Catalyst",
       "description": "Grants 25% increased Flinch Resistance while at maximum Rate of Fire.",
       "effect": "none"
     },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
+    "reloadDurationIncluded": {
+      "value": 0.9,
+      "source": {
+        "name": "Quantum Damage-ics, Home (Assumptions Made)",
+        "url": "https://destiny2.science/quantum-damage-ics",
+        "retrieved": "2026-10-25",
+        "status": "verified",
+        "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
+        "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    ]
+    }
   },
   {
     "id": "symmetry",
@@ -24597,56 +24845,213 @@
     "code": 117,
     "name": "Touch of Malice",
     "manifestHash": 1802135586,
-    "gameVersion": "9.7.0",
+    "gameVersion": "245114.26.10.13.2000-1-bnet.66137",
     "weaponType": "scoutRifle",
     "element": "kinetic",
     "ammo": "primary",
     "chargeTimeMs": {
       "value": 0,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
-        "url": "https://destiny2.science/quantum-damage-ics",
-        "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "The time to empty counts from the first shot"
+        "name": "Item file touch-of-malice",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "note": "Derived: the weapon has no charge of its own; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "fireRateRpm": {
       "value": 260,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified",
-        "note": "Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+        "status": "verified",
+        "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
       }
     },
     "magazine": {
       "value": 11,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.magazine"
       }
     },
     "totalShots": {
       "value": null,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.totalShots"
       }
     },
     "reloadTimeMs": {
       "value": 1240,
       "source": {
-        "name": "Quantum Damage-ics (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
+        "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
         "url": "https://destiny2.science/quantum-damage-ics",
         "retrieved": "2026-10-20",
-        "status": "unverified"
+        "status": "verified",
+        "note": "timing.reloadTimeMs"
       }
+    },
+    "damageInstances": [
+      {
+        "id": "shot",
+        "name": "Shot (last round)",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file touch-of-malice",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 142,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-scout-rifle-touch-of-malice-touch-of-malice-tom",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file touch-of-malice",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file touch-of-malice",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
+      }
+    ],
+    "rules": [
+      {
+        "id": "shot",
+        "on": { "on": "shot" },
+        "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "last-round-no-reload",
+        "on": { "on": "phaseStart" },
+        "do": [
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reload",
+              "factor": {
+                "value": 0,
+                "source": {
+                  "name": "Item file touch-of-malice",
+                  "retrieved": "2026-11-11",
+                  "status": "derived",
+                  "note": "Derived: the last round is refunded, so a magazine run down to it before the phase (like a pre-stacked buff) is never reloaded; Quantum's row says the same (\"always at 1 round\")",
+                  "quote": "is always refunded when shot"
+                }
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "precision-instrument-more",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "buff", "id": "precision-instrument" }
+        ],
+        "do": [{ "type": "addStacks", "buff": "precision-instrument" }]
+      },
+      {
+        "id": "precision-instrument-start",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "hasItem", "id": "catalyst" },
+          { "type": "buff", "id": "precision-instrument", "not": true }
+        ],
+        "do": [{ "type": "grantBuff", "buff": "precision-instrument" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "precision-instrument",
+        "name": "Precision Instrument",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.042,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Touch of Malice Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Touch of Malice Catalyst](\"| 25%\") / 100 / $clarity[Touch of Malice Catalyst](\"Maximum of 6 stacks\") (percent to factor, per stack (perStack): the 6-stack value of the table in 6 equal steps (4.17 % per stack; the table is linear)); $clarity[Touch of Malice Catalyst](\"| 25%\") = 25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Touch of Malice Catalyst); $clarity[Touch of Malice Catalyst](\"Maximum of 6 stacks\") = 6 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Touch of Malice Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"],
+            "perStack": true
+          }
+        ],
+        "durationMs": {
+          "value": 1250,
+          "source": {
+            "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Touch of Malice Catalyst",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: $clarity[Touch of Malice Catalyst](\"for 1.25 seconds\") * 1000 (seconds to milliseconds; every direct hit renews it); $clarity[Touch of Malice Catalyst](\"for 1.25 seconds\") = 1.25 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Touch of Malice Catalyst)"
+          }
+        },
+        "maxStacks": {
+          "value": 6,
+          "source": {
+            "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Touch of Malice Catalyst",
+            "url": "https://www.d2clarity.com",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: the number in the quote",
+            "quote": "Maximum of 6 stacks"
+          }
+        }
+      }
+    ],
+    "intrinsics": [
+      {
+        "id": "touch-of-malice",
+        "name": "Touch of Malice",
+        "description": "The final round in the magazine deals bonus damage, drawing from the wielder's life force, and then regenerates itself. Defeating powerful combatants or multiple targets rapidly restores health.",
+        "source": {
+          "name": "Bungie manifest",
+          "retrieved": "2026-10-31",
+          "status": "verified",
+          "note": "245114.26.10.13.2000-1-bnet.66137"
+        }
+      }
+    ],
+    "catalyst": {
+      "name": "Touch of Malice Catalyst",
+      "description": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or missing removes all stacks...usually.\nPrecision damage increase at 1|2|3... stacks:\n4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%",
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -24658,103 +25063,7 @@
         "quote": "All weapons assume the effects of Rally barricade/Lunafactions reload speed boosting to minimize reload speeds to a consistent amount.",
         "note": "Derived (gate tmp/reload-rally.ts, 2026-10-26): Quantum's reload equals d2foundry's formula at Reload Speed 100 × Rally's 0.9 for 87 of 117 weapons within ±10 % (median 1.002); Aegis Sustained's reload equals Quantum's (median 0.96, 28 weapons), not Quantum's without Rally (median 0.64). So both include Rally."
       }
-    },
-    "damageInstances": [
-      {
-        "id": "shot",
-        "name": "Shot (Aegis average)",
-        "delayMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-touch-of-malice",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-touch-of-malice",
-            "note": "Package: one value per shot"
-          }
-        },
-        "damagePerTick": {
-          "value": 141.48,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-touch-of-malice",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-touch-of-malice",
-            "note": "visual Value; assumptions: none"
-          }
-        },
-        "ticks": {
-          "value": 1,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-touch-of-malice",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-touch-of-malice"
-          }
-        },
-        "tickIntervalMs": {
-          "value": 0,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-touch-of-malice",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-touch-of-malice"
-          }
-        },
-        "canPrecision": false,
-        "scale": "aegisVisual"
-      }
-    ],
-    "intrinsics": [
-      {
-        "id": "touch-of-malice",
-        "name": "Touch of Malice",
-        "description": "The final round in the magazine deals bonus damage, drawing from the wielder's life force, and then regenerates itself. Defeating powerful combatants or multiple targets rapidly restores health.",
-        "source": {
-          "name": "Bungie manifest",
-          "retrieved": "2026-10-20",
-          "status": "verified",
-          "note": "245114.26.10.13.2000-1-bnet.66137"
-        }
-      }
-    ],
-    "options": [
-      {
-        "id": "catalyst",
-        "name": "Catalyst",
-        "kind": "catalyst",
-        "bucketId": "weaponPerk",
-        "factor": {
-          "value": 1.25,
-          "source": {
-            "name": "Aegis Boss Damage sheet (tab Weapons, column visual Value), row scout-rifle-touch-of-malice",
-            "url": "https://destiny2.science/boss-damage",
-            "retrieved": "2026-10-20",
-            "status": "fitted",
-            "row": "scout-rifle-touch-of-malice",
-            "note": "Derived (override): Optimal gespielt mit der letzten Patrone (Touch of Malice): Aegis nennt sie „2135 final“ bei 920 für eine normale Kugel; pro Shot 2135 ÷ 15,09 (full modifiers) = 141,5. Quantum bestätigt: 142 („always at 1 round“). Katalysator: Precision Instrument erreicht nach 6 Treffern +25 %; die letzte Patrone feuert ohne Reload, die Stacks bleiben (Clarity), also ×1,25."
-          }
-        },
-        "durationSeconds": null,
-        "condition": null
-      }
-    ],
-    "catalyst": {
-      "name": "Precision Instrument, Touch of Malice Catalyst",
-      "description": "Direct Weapon Hits grant a stack of Precision Instrument for 1.25 seconds. Maximum of 6 stacks. Reloading the weapon or missing removes all stacks...usually.\nPrecision damage increase at 1|2|3... stacks:\n4.17% | 8.33% | 12.5% | 16.67% | 20.83% | 25%",
-      "effect": "damage"
-    },
-    "rules": [
-      {
-        "id": "shot",
-        "on": { "on": "shot" },
-        "do": [{ "type": "spawn", "part": "shot" }]
-      }
-    ]
+    }
   },
   {
     "id": "tractor-cannon",
