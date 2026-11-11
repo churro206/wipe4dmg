@@ -94,6 +94,19 @@ describe("W8 part 3: states of the target and of the player", () => {
     expect(Math.abs(r.deviation!)).toBeLessThan(0.02);
   });
 
+  // Ravenous Beast, built before: Quantum's beast row (57, 900 RPM) for 8 s ÷ (1 − 1.75 ÷ 3.28) = 17.2 s,
+  // then 50 plain hits (2 % each) charge it again
+  it("Tarrabah: the beast holds about 17 s, then 50 plain shots charge the next", () => {
+    const hits = sorted(bareWeaponRun(weaponById("tarrabah"), false, 60));
+    const beast = hits.filter((h) => h.id === "shot-beast");
+    const firstPlain = hits.findIndex((h) => h.id === "shot");
+    expect(hits[0]!.damage).toBe(57);
+    expect(hits[firstPlain]!.timeMs / 1000).toBeGreaterThan(17);
+    expect(hits[firstPlain]!.timeMs / 1000).toBeLessThan(17.4);
+    expect(hits.slice(firstPlain).findIndex((h) => h.id === "shot-beast")).toBe(50);
+    expect(beast.every((h) => h.damage === 57)).toBe(true);
+  });
+
   // Superconductor while Arc Conductor: +10 % and a 33 % chance per shot to refill (so no reload)
   it("Riskrunner: Arc Conductor gives x1.1 per hit and no reload", () => {
     const riskrunner = weaponById("riskrunner");
@@ -102,5 +115,22 @@ describe("W8 part 3: states of the target and of the player", () => {
     expect(plain.reloadsMs.length).toBeGreaterThan(0);
     expect(conductor.reloadsMs).toHaveLength(0);
     expect(sorted(conductor)[0]!.damage / sorted(plain)[0]!.damage).toBeCloseTo(1.1, 6);
+  });
+});
+
+describe("W8 part 4: extra parts", () => {
+  // Excavation: 3 cluster bombs per grenade; Quantum's rows with and without them: (1080 − 675) ÷ 3
+  it("The Prospector: every grenade adds 3 cluster bombs of 135", () => {
+    const run = bareWeaponRun(weaponById("the-prospector"), false, 30, 1);
+    const clusters = run.damageInstances.filter((d) => d.id === "cluster");
+    expect(clusters).toHaveLength(3);
+    for (const c of clusters) expect(c.damage).toBeCloseTo(135, 6);
+  });
+
+  // Vorpal Weapon (catalyst): +20 % for a primary against a boss
+  it("Graviton Lance: the catalyst adds 20 % to every hit", () => {
+    const plain = bareWeaponRun(weaponById("graviton-lance"), false, 10, 1);
+    const vorpal = bareWeaponRun(weaponById("graviton-lance"), true, 10, 1);
+    expect(vorpal.totalDamage / plain.totalDamage).toBeCloseTo(1.2, 6);
   });
 });

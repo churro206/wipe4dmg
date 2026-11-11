@@ -1,44 +1,46 @@
 {
-  "baseline": "1f3aff2",
+  "baseline": "c8f7c0d",
   "changes": [
     {
-      "id": "final-warning",
-      "name": "Final Warning",
-      "kind": "status",
-      "from": "Partial",
-      "to": "Complete"
-    },
-    {
-      "id": "lodestar",
-      "name": "Lodestar",
+      "id": "graviton-lance",
+      "name": "Graviton Lance",
       "kind": "damage",
-      "time": "s60",
-      "catalyst": false,
-      "from": 18600,
-      "to": 22944
+      "time": "s10",
+      "catalyst": true,
+      "from": 3195,
+      "to": 3834
     },
     {
-      "id": "lodestar",
-      "name": "Lodestar",
+      "id": "graviton-lance",
+      "name": "Graviton Lance",
       "kind": "status",
       "from": "Partial",
       "to": "Complete"
     },
     {
-      "id": "riskrunner",
-      "name": "Riskrunner",
-      "kind": "status",
-      "from": "Partial",
-      "to": "Complete"
-    },
-    {
-      "id": "tractor-cannon",
-      "name": "Tractor Cannon",
+      "id": "tarrabah",
+      "name": "Tarrabah",
       "kind": "damage",
-      "time": "s30",
+      "time": "s10",
       "catalyst": false,
-      "from": 8928,
-      "to": 11457.6
+      "from": 3128,
+      "to": 6156
+    },
+    {
+      "id": "tarrabah",
+      "name": "Tarrabah",
+      "kind": "status",
+      "from": "Partial",
+      "to": "Complete"
+    },
+    {
+      "id": "the-prospector",
+      "name": "The Prospector",
+      "kind": "damage",
+      "time": "s10",
+      "catalyst": false,
+      "from": 12150,
+      "to": 19440
     }
   ]
 }

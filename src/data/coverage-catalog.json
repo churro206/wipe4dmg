@@ -737,7 +737,7 @@
         "name": "Tarrabah",
         "group": "Energy",
         "inGame": "Ravenous Beast: Dealing damage with Tarrabah grants Raveneous Beast 2% [5%] charge for each hit. Dealing damage to Scorched enemies grants 3%[6.7%] charge per hit.\nTaking damage grants it 1% charge per instance taken, and kills grant 10% charge.\nStowing Tarrabah subtracts 50% charge (E.g. 70%🠚20%).\nAt full power, hold [Reload] to 'Unleash The Beast' and refill the magazine, granting the following benefits for 8 seconds:\n• 187% [120%] increased Bodyshot Damage\n• 99% [52.7%] increased Precision Damage\n• 50% [15%] Solar Damage Resistance\n• 20% increased Rate of Fire\n• 100 Handling\n• 100 Mobility\n• 100 Reload Speed\n• 20% decreased Reload Animation Duration\n• 33% increased Slide Distance\nBottomless Appetite: Dealing damage extends Ravenous Beast's duration by 0.05 [0.06] seconds per hit (grants 1.75 seconds from a full magazine of damage).\nHits against Minor and Elite Combatants increase buff duration by 0.3 seconds when it's below 3 seconds.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:tarrabah",
         "status": "full"
       },
@@ -1033,7 +1033,7 @@
         "name": "The Prospector",
         "group": "Power",
         "inGame": "Excavation: Grenades fired explode into 3 additional cluster bombs, each dealing 158 [50] damage in a 4 meter radius.\nKills cause enemies to explode, dealing 109.2 [72.8] damage in a 3 meter radius.",
-        "inCalculator": "1 damage instance(s), 1 intrinsic effect(s).",
+        "inCalculator": "2 damage instance(s), 1 intrinsic effect(s).",
         "iconKey": "weapon:the-prospector",
         "status": "full"
       },
@@ -1677,8 +1677,8 @@
         "group": "Energy",
         "inGame": "Grants 20 Range.\nGrants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nAlso grants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
         "iconHash": 615063266,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "Adds weapon damage.",
+        "status": "full",
         "iconKey": "named:graviton-lance-catalyst"
       },
       {
@@ -1812,8 +1812,8 @@
         "group": "Energy",
         "inGame": "Reloading after scoring kills with Tarrabah overfills the magazine from reserves based on the number of Kills scored.\nTarrabah overfills the next magazine by 20% per kill scored, up to a maximum of 150% Base Magazine Capacity. Always rounds up.\nKill counter persists through stow.",
         "iconHash": 3759764174,
-        "inCalculator": "Not in the calculator yet: no source measured it",
-        "status": "missing",
+        "inCalculator": "No effect against one boss without adds",
+        "status": "leftOut",
         "iconKey": "named:tarrabah-catalyst"
       },
       {

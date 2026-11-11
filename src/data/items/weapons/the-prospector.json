@@ -19,11 +19,23 @@
   "magazine": "$quantum[heavies-grenade-launcher-the-prospector-cata].timing.magazine",
   "totalShots": "$quantum[heavies-grenade-launcher-the-prospector-cata].timing.totalShots",
   "reloadTimeMs": "$quantum[heavies-grenade-launcher-the-prospector-cata].timing.reloadTimeMs",
+  "quantumCheck": {
+    "row": "heavies-grenade-launcher-the-prospector-cata-2",
+    "reason": "Optimal play lands the cluster bombs on the boss (as Aegis' standard target model, 1 035 per shot); Quantum's row \"all bomblets contact\" holds that, the first row none"
+  },
   "parts": {
     "shot": {
-      "name": "Shot",
+      "name": "Grenade",
       "damage": "$quantum[heavies-grenade-launcher-the-prospector-cata].bodyDamage",
       "delivery": "impact"
+    },
+    "cluster": {
+      "name": "Cluster bomb",
+      "damage": {
+        "expr": "($quantum[heavies-grenade-launcher-the-prospector-cata-2].bodyDamage - $quantum[heavies-grenade-launcher-the-prospector-cata].bodyDamage) / $clarity[Excavation](\"into 3 additional cluster bombs\")",
+        "note": "Quantum's row with all bomblets (1 080) minus the one without (675), split over the 3 cluster bombs: 135 each (Clarity 158 on its own scale)"
+      },
+      "delivery": "splash"
     }
   },
   "rules": [
@@ -31,6 +43,25 @@
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "cluster",
+      "on": { "on": "hit", "part": "shot" },
+      "do": [{ "type": "spawn", "part": "cluster", "count": "$clarity[Excavation](\"into 3 additional cluster bombs\")" }],
+      "source": {
+        "name": "Item file the-prospector",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Grenades fired explode into 3 additional cluster bombs",
+        "note": "Derived: all three land on the boss (optimal play, as Aegis' standard target model); the delay of the bombs has no source and is left at 0"
+      }
     }
+  ],
+  "notModelled": [
+    { "quote": "Grants 40 Blast Radius and 50 Reload Speed", "reason": "carried by the Quantum cata row (timing); blast radius is no damage against a boss" },
+    { "quote": "decreases Self-Damage by 40%", "reason": "needs 3 enemies (one boss, ADR 0015)" },
+    { "quote": "Effect lingers for 3.5 seconds", "reason": "needs 3 enemies (one boss, ADR 0015)" },
+    { "quote": "each dealing 158 [50] damage", "reason": "carried by Quantum's two rows (135 each on Quantum's scale)" },
+    { "quote": "dealing 109.2 [72.8] damage", "reason": "no adds (ADR 0015): needs a kill" }
   ]
 }

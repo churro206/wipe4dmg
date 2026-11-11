@@ -4901,7 +4901,7 @@
     {
       "id": "graviton-lance",
       "name": "Graviton Lance",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
@@ -4910,52 +4910,60 @@
           "s60": 18034
         },
         "catalyst": {
-          "s10": 3195,
-          "s30": 9017,
-          "s60": 18034
+          "s10": 3834,
+          "s30": 10820.4,
+          "s60": 21640.8
         }
       },
       "cause": {
         "class": "mechanic-missing",
-        "why": "Aegis -51.3 % with burst, Vorpal Weapon."
+        "why": "Aegis -41.5 % with burst, Vorpal Weapon."
       },
       "ruleShares": [],
       "sentences": [
         {
           "text": "Void Explosions deal 470 [?] damage in a 7 meter radius and spawn two seeking orbs, each dealing 51 [20] damage.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): needs a kill"
         },
         {
           "text": "Explosion falls to 0% damage at the edge of its blast radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): needs a kill"
         },
         {
           "text": "Grants 20 Range.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (range)"
         },
         {
           "text": "Grants a 30 HP Overshield for 10 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (overshield)"
         },
         {
           "text": "• Primary Weapons: 20% [60%]",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• Special Weapons: 15% [20%]",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "other ammo types (the weapon is a primary)"
         },
         {
           "text": "• Power Weapons: 10% [20%]",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "other ammo types (the weapon is a primary)"
         },
         {
           "text": "• First shot deals 15% reduced damage with no recoil",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's damage per bullet, the mean of both shots of the burst (2 115 ÷ 30)"
         },
         {
           "text": "• Second shot deals 35.25% increased damage with increased recoil, and has no damage falloff",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's damage per bullet, the mean of both shots of the burst"
         }
       ],
       "quantum": {
@@ -4986,8 +4994,8 @@
               "Vorpal Weapon"
             ],
             "measured": 145.7,
-            "model": 71,
-            "deviation": -0.5126
+            "model": 85.2,
+            "deviation": -0.4151
           }
         ]
       },
@@ -10614,105 +10622,137 @@
     {
       "id": "tarrabah",
       "name": "Tarrabah",
-      "status": "partial",
+      "status": "complete",
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 3128,
-          "s30": 8874,
-          "s60": 17714
+          "s10": 6156,
+          "s30": 17090,
+          "s60": 34180
         },
         "catalyst": {
-          "s10": 3128,
-          "s30": 8874,
-          "s60": 17714
+          "s10": 6156,
+          "s30": 17090,
+          "s60": 34180
         }
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Aegis -53.4 % with average, Ravenous Beast, Peacekeepers."
+        "class": "source-conflict",
+        "why": "Quantum fits, Aegis +68.3 % without any assumption (\"smg-tarrabah\")."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "beast-start",
+          "share": 0.0208
+        },
+        {
+          "id": "charge-count",
+          "share": 0.3898
+        },
+        {
+          "id": "beast",
+          "share": 0.3898
+        },
+        {
+          "id": "shot",
+          "share": 0.8401
+        }
+      ],
       "sentences": [
         {
           "text": "Dealing damage with Tarrabah grants Raveneous Beast 2% [5%] charge for each hit.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Dealing damage to Scorched enemies grants 3%[6.7%] charge per hit.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs Scorch from the build (not linked; the charge takes 34 instead of 50 hits), known-inaccuracies W8"
         },
         {
           "text": "Taking damage grants it 1% charge per instance taken, and kills grant 10% charge.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage taken in the model; kills need adds (ADR 0015)"
         },
         {
           "text": "Stowing Tarrabah subtracts 50% charge (E.g.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no weapon swap in the model"
         },
         {
           "text": "70%🠚20%).",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no weapon swap in the model"
         },
         {
           "text": "At full power, hold [Reload] to 'Unleash The Beast' and refill the magazine, granting the following benefits for 8 seconds:",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "• 187% [120%] increased Bodyshot Damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's row Ravenous Beast (all hits precision)"
         },
         {
           "text": "• 99% [52.7%] increased Precision Damage",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's row Ravenous Beast: 57 = 34 × 1.68 (Aegis 56.1); Clarity's 99 % would give 68, source conflict, known-inaccuracies W8"
         },
         {
           "text": "• 50% [15%] Solar Damage Resistance",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (resistance)"
         },
         {
           "text": "• 20% increased Rate of Fire",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's row Ravenous Beast (900 RPM)"
         },
         {
           "text": "• 100 Handling",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (handling)"
         },
         {
           "text": "• 100 Mobility",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (mobility)"
         },
         {
           "text": "• 100 Reload Speed",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's row Ravenous Beast (reload 0.95 s)"
         },
         {
           "text": "• 20% decreased Reload Animation Duration",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by Quantum's row Ravenous Beast (reload 0.95 s)"
         },
         {
           "text": "• 33% increased Slide Distance",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no damage against a boss (movement)"
         },
         {
           "text": "Dealing damage extends Ravenous Beast's duration by 0.05 [0.06] seconds per hit (grants 1.75 seconds from a full magazine of damage).",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Hits against Minor and Elite Combatants increase buff duration by 0.3 seconds when it's below 3 seconds.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         },
         {
           "text": "Tarrabah overfills the next magazine by 20% per kill scored, up to a maximum of 150% Base Magazine Capacity.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015)"
         }
       ],
       "quantum": {
-        "row": "primaries-submachine-gun-tarrabah",
+        "row": "primaries-submachine-gun-tarrabah-ravenous-beast",
         "rowNote": "",
         "basis": "magazine",
-        "measured": 1190,
-        "model": 1190,
+        "measured": 1995,
+        "model": 1995,
         "deviation": 0,
         "circular": true,
         "catalystRow": false,
@@ -10732,8 +10772,8 @@
             "row": "smg-tarrabah",
             "assumptions": [],
             "measured": 33.9,
-            "model": 34,
-            "deviation": 0.004
+            "model": 57,
+            "deviation": 0.6832
           },
           {
             "row": "smg-tarrabah-ravenous-beast",
@@ -10741,8 +10781,8 @@
               "Ravenous Beast"
             ],
             "measured": 56.1,
-            "model": 34,
-            "deviation": -0.3935
+            "model": 57,
+            "deviation": 0.0167
           },
           {
             "row": "smg-tarrabah-average-ravenous-beast-peacekeepers",
@@ -10752,8 +10792,8 @@
               "Peacekeepers"
             ],
             "measured": 8794.6,
-            "model": 4099.9,
-            "deviation": -0.5338
+            "model": 6873.3,
+            "deviation": -0.2185
           }
         ]
       },
@@ -11834,55 +11874,64 @@
       "trust": "derived",
       "damage": {
         "base": {
-          "s10": 12150,
-          "s30": 20250,
-          "s60": 20250
+          "s10": 19440,
+          "s30": 32400,
+          "s60": 32400
         },
         "catalyst": null
       },
       "cause": {
-        "class": "mechanic-missing",
-        "why": "Aegis -34.8 % with average, direct impact, standard target model."
+        "class": "source-conflict",
+        "why": "Quantum -27.3 %, Aegis +4.3 %: only a test in game can tell."
       },
-      "ruleShares": [],
+      "ruleShares": [
+        {
+          "id": "cluster",
+          "share": 0.375
+        }
+      ],
       "sentences": [
         {
           "text": "Grants 40 Blast Radius and 50 Reload Speed.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "carried by the Quantum cata row (timing); blast radius is no damage against a boss"
         },
         {
           "text": "Increases Blast Radius by ?% and decreases Self-Damage by 40% while within 15 meters of 3 enemies.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs 3 enemies (one boss, ADR 0015)"
         },
         {
           "text": "Effect lingers for 3.5 seconds once no longer surrounded.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "needs 3 enemies (one boss, ADR 0015)"
         },
         {
           "text": "Grenades fired explode into 3 additional cluster bombs, each dealing 158 [50] damage in a 4 meter radius.",
-          "state": "open"
+          "state": "rule"
         },
         {
           "text": "Kills cause enemies to explode, dealing 109.2 [72.8] damage in a 3 meter radius.",
-          "state": "open"
+          "state": "notModelled",
+          "reason": "no adds (ADR 0015): needs a kill"
         }
       ],
       "quantum": {
-        "row": "heavies-grenade-launcher-the-prospector-cata",
-        "rowNote": "Assumes no bomblets contact the boss (DPS minimum)",
+        "row": "heavies-grenade-launcher-the-prospector-cata-2",
+        "rowNote": "Assumes all bomblets contact the boss (DPS maximum)",
         "basis": "total",
-        "measured": 20250,
-        "model": 20250,
-        "deviation": 0,
-        "circular": true,
+        "measured": 44550,
+        "model": 32400,
+        "deviation": -0.2727,
+        "circular": false,
         "catalystRow": true,
         "strippedRow": false,
         "factors": {
           "shots": 1,
           "hitsPerShot": 1,
-          "damagePerHit": 1,
-          "mechanic": 1,
-          "rowPlain": true
+          "damagePerHit": 0.625,
+          "mechanic": 1.1636363636363638,
+          "rowPlain": false
         }
       },
       "aegis": {
@@ -11896,8 +11945,8 @@
               "standard target model"
             ],
             "measured": 18647.5,
-            "model": 12150,
-            "deviation": -0.3484
+            "model": 19440,
+            "deviation": 0.0425
           }
         ]
       },

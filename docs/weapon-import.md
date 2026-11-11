@@ -17,7 +17,7 @@ Pro Shot: „visual Value“ der Aegis-Basiszeile. Shots, Magazin, Reload und Ze
 
 Waffen aus einer Item-Datei (B4a): Struktur von Hand, Zahlen als Verweise auf die Snapshots. **Prüfen**, wenn ein Text sich seit dem Schreiben der Datei geändert hat.
 
-Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **497**. Die Zahl sinkt je Block.
+Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **465**. Die Zahl sinkt je Block.
 
 | Waffe | Datei | Sätze ohne Regel | Prüfen |
 | --- | --- | ---: | --- |
@@ -67,7 +67,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **497**. D
 | Forerunner | `src/data/items/weapons/forerunner.json` | 5 | – |
 | Gjallarhorn | `src/data/items/weapons/gjallarhorn.json` | 8 | – |
 | Grand Overture | `src/data/items/weapons/grand-overture.json` | 0 | – |
-| Graviton Lance | `src/data/items/weapons/graviton-lance.json` | 9 | – |
+| Graviton Lance | `src/data/items/weapons/graviton-lance.json` | 0 | – |
 | Graviton Spike | `src/data/items/weapons/graviton-spike.json` | 0 | – |
 | Hard Light | `src/data/items/weapons/hard-light.json` | 3 | – |
 | Hawkmoon | `src/data/items/weapons/hawkmoon.json` | 0 | – |
@@ -118,7 +118,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **497**. D
 | SUROS Regime | `src/data/items/weapons/suros-regime.json` | 0 | – |
 | Sweet Business | `src/data/items/weapons/sweet-business.json` | 5 | – |
 | Symmetry | `src/data/items/weapons/symmetry.json` | 15 | – |
-| Tarrabah | `src/data/items/weapons/tarrabah.json` | 18 | – |
+| Tarrabah | `src/data/items/weapons/tarrabah.json` | 0 | – |
 | Telesto | `src/data/items/weapons/telesto.json` | 5 | – |
 | Tessellation | `src/data/items/weapons/tessellation.json` | 12 | – |
 | The Chaperone | `src/data/items/weapons/the-chaperone.json` | 0 | – |
@@ -129,7 +129,7 @@ Sätze mit Zahl ohne `$clarity`- oder `notModelled`-Zitat (ADR 0019): **497**. D
 | The Last Word | `src/data/items/weapons/the-last-word.json` | 0 | – |
 | The Manticore | `src/data/items/weapons/the-manticore.json` | 0 | – |
 | The Navigator | `src/data/items/weapons/the-navigator.json` | 7 | – |
-| The Prospector | `src/data/items/weapons/the-prospector.json` | 5 | – |
+| The Prospector | `src/data/items/weapons/the-prospector.json` | 0 | – |
 | The Queenbreaker | `src/data/items/weapons/the-queenbreaker.json` | 0 | – |
 | The Wardcliff Coil | `src/data/items/weapons/the-wardcliff-coil.json` | 3 | – |
 | Third Iteration | `src/data/items/weapons/third-iteration.json` | 0 | – |

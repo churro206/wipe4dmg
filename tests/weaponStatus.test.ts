@@ -384,7 +384,7 @@ describe("src/data/weapon-status.json", () => {
       ["barrow-dyad", "rule-too-strong"],
       ["ager-s-scepter", "mechanic-missing"],
       ["whisper-of-the-worm", "ok"], // W8: Whispered Breathing and White Nail from the text
-      ["tarrabah", "mechanic-missing"],
+      ["tarrabah", "source-conflict"], // W8: Ravenous Beast from Quantum (×1.68), Clarity says +99 %
       ["symmetry", "mechanic-missing"],
       ["forerunner", "mechanic-missing"],
       ["final-warning", "mechanic-missing"],

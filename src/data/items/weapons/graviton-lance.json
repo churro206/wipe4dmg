@@ -27,7 +27,7 @@
   "catalyst": {
     "name": "Vorpal Weapon, Turnabout, Graviton Lance Catalyst",
     "description": "Grants 20 Range.\nGrants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nAlso grants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
-    "effect": "unknown"
+    "effect": "damage"
   },
   "parts": {
     "shot": {
@@ -37,11 +37,51 @@
       "delivery": "impact"
     }
   },
+  "buffs": [
+    {
+      "id": "vorpal-weapon",
+      "name": "Vorpal Weapon",
+      "modifiers": [
+        {
+          "type": "multiplier",
+          "bucketId": "weaponPerk",
+          "multiplier": {
+            "expr": "1 + $clarity[Graviton Lance Catalyst](\"Primary Weapons: 20%\") / 100",
+            "note": "percent to factor; the target is a boss"
+          },
+          "damageSources": ["weapon"]
+        }
+      ]
+    }
+  ],
   "rules": [
+    {
+      "id": "vorpal-weapon",
+      "on": { "on": "phaseStart" },
+      "if": [{ "type": "hasItem", "id": "catalyst" }],
+      "do": [{ "type": "grantBuff", "buff": "vorpal-weapon" }],
+      "source": {
+        "name": "Item file graviton-lance",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Deals increased damage against Minibosses, Bosses, and Vehicles",
+        "note": "Derived: against the one boss Vorpal Weapon always holds"
+      }
+    },
     {
       "id": "shot",
       "on": { "on": "shot" },
       "do": [{ "type": "spawn", "part": "shot" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Void Explosions deal 470 [?] damage", "reason": "no adds (ADR 0015): needs a kill" },
+    { "quote": "Explosion falls to 0% damage", "reason": "no adds (ADR 0015): needs a kill" },
+    { "quote": "Grants 20 Range", "reason": "no damage against a boss (range)" },
+    { "quote": "Grants a 30 HP Overshield for 10 seconds", "reason": "no damage against a boss (overshield)" },
+    { "quote": "Special Weapons: 15% [20%]", "reason": "other ammo types (the weapon is a primary)" },
+    { "quote": "Power Weapons: 10% [20%]", "reason": "other ammo types (the weapon is a primary)" },
+    { "quote": "First shot deals 15% reduced damage", "reason": "carried by Quantum's damage per bullet, the mean of both shots of the burst (2 115 ÷ 30)" },
+    { "quote": "Second shot deals 35.25% increased damage", "reason": "carried by Quantum's damage per bullet, the mean of both shots of the burst" }
   ]
 }

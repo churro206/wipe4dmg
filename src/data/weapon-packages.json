@@ -9756,9 +9756,44 @@
     ],
     "rules": [
       {
+        "id": "vorpal-weapon",
+        "on": { "on": "phaseStart" },
+        "if": [{ "type": "hasItem", "id": "catalyst" }],
+        "do": [{ "type": "grantBuff", "buff": "vorpal-weapon" }],
+        "source": {
+          "name": "Item file graviton-lance",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: against the one boss Vorpal Weapon always holds",
+          "quote": "Deals increased damage against Minibosses, Bosses, and Vehicles"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      }
+    ],
+    "buffs": [
+      {
+        "id": "vorpal-weapon",
+        "name": "Vorpal Weapon",
+        "modifiers": [
+          {
+            "type": "multiplier",
+            "bucketId": "weaponPerk",
+            "multiplier": {
+              "value": 1.2,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Graviton Lance Catalyst",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 1 + $clarity[Graviton Lance Catalyst](\"Primary Weapons: 20%\") / 100 (percent to factor; the target is a boss); $clarity[Graviton Lance Catalyst](\"Primary Weapons: 20%\") = 20 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Graviton Lance Catalyst)"
+              }
+            },
+            "damageSources": ["weapon"]
+          }
+        ]
       }
     ],
     "intrinsics": [
@@ -9777,7 +9812,7 @@
     "catalyst": {
       "name": "Vorpal Weapon, Turnabout, Graviton Lance Catalyst",
       "description": "Grants 20 Range.\nGrants the Turnabout trait:\nUpon breaking a Combatant's Elemental Shield or the Shield of a Guardian in their Super:\nGrants a 30 HP Overshield for 10 seconds.\nAlso grants the Vorpal Weapon trait:\nDeals increased damage against Minibosses, Bosses, and Vehicles, as well as Players in their Super Ability.\nDamage increase by Ammo Type:\n• Primary Weapons: 20% [60%]\n• Special Weapons: 15% [20%]\n• Power Weapons: 10% [20%]",
-      "effect": "unknown"
+      "effect": "damage"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -22393,13 +22428,263 @@
         "canPrecision": true,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "shot-beast",
+        "name": "Shot, Ravenous Beast",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file tarrabah",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 57,
+          "source": {
+            "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+            "url": "https://destiny2.science/quantum-damage-ics",
+            "retrieved": "2026-10-20",
+            "status": "verified",
+            "note": "precisionDamage"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file tarrabah",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file tarrabah",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": true,
+        "delivery": "impact",
+        "scale": "quantum"
       }
     ],
     "rules": [
       {
+        "id": "beast-start",
+        "on": { "on": "phaseStart" },
+        "do": [
+          {
+            "type": "setMode",
+            "mode": "beast",
+            "to": "on",
+            "durationMs": {
+              "value": 17130.435,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast; Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000)) (8 s, and 0.05 s back per hit: a magazine (35 shots at 900 RPM, 2.33 s) gives 1.75 s, the reload (0.95 s) none, so the buff falls 1.53 s per 3.28 s cycle and lasts 8 ÷ (1 − 1.75 ÷ 3.28) = 17.2 s); $clarity[Ravenous Beast](\"benefits for 8 seconds\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast); $clarity[Bottomless Appetite](\"duration by 0.05\") = 0.05 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs = 950 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast)"
+              }
+            }
+          },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 900,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 17130.435,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast; Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000)) (as the mode beast); $clarity[Ravenous Beast](\"benefits for 8 seconds\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast); $clarity[Bottomless Appetite](\"duration by 0.05\") = 0.05 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs = 950 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast)"
+              }
+            }
+          },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reloadMs",
+              "value": {
+                "value": 950,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.reloadTimeMs"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 17130.435,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast; Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000)) (as the mode beast); $clarity[Ravenous Beast](\"benefits for 8 seconds\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast); $clarity[Bottomless Appetite](\"duration by 0.05\") = 0.05 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs = 950 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file tarrabah",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: the charge is built before the phase (it holds until stowed), so the beast starts with it; holding [Reload] costs no time (no source); timing and damage of the beast from Quantum's row Ravenous Beast",
+          "quote": "At full power, hold [Reload] to 'Unleash The Beast' and refill the magazine"
+        }
+      },
+      {
+        "id": "charge-count",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "mode", "id": "beast", "is": "on", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "<",
+            "value": {
+              "value": 49,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 100 / $clarity[Ravenous Beast](\"grants Raveneous Beast 2%\") - 1 (50 hits to full charge; the counter stands at 0 to 48 before the 50th); $clarity[Ravenous Beast](\"grants Raveneous Beast 2%\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast)"
+              }
+            }
+          }
+        ],
+        "do": [{ "type": "addStacks", "counter": "charge" }]
+      },
+      {
+        "id": "beast",
+        "on": { "on": "hit", "part": "shot" },
+        "if": [
+          { "type": "mode", "id": "beast", "is": "on", "not": true },
+          {
+            "type": "counter",
+            "id": "charge",
+            "op": "=",
+            "value": {
+              "value": 49,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: 100 / $clarity[Ravenous Beast](\"grants Raveneous Beast 2%\") - 1 (the 50th hit fills the charge); $clarity[Ravenous Beast](\"grants Raveneous Beast 2%\") = 2 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast)"
+              }
+            }
+          }
+        ],
+        "do": [
+          { "type": "resetCounter", "counter": "charge" },
+          { "type": "refill" },
+          {
+            "type": "setMode",
+            "mode": "beast",
+            "to": "on",
+            "durationMs": {
+              "value": 17130.435,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast; Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000)) (as in beast-start); $clarity[Ravenous Beast](\"benefits for 8 seconds\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast); $clarity[Bottomless Appetite](\"duration by 0.05\") = 0.05 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs = 950 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast)"
+              }
+            }
+          },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "rpm",
+              "value": {
+                "value": 900,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.fireRateRpm: Quantum fire rate; primary ammo is unlimited (Quantum: inf)"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 17130.435,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast; Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000)) (as in beast-start); $clarity[Ravenous Beast](\"benefits for 8 seconds\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast); $clarity[Bottomless Appetite](\"duration by 0.05\") = 0.05 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs = 950 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast)"
+              }
+            }
+          },
+          {
+            "type": "modifyStat",
+            "modifier": {
+              "type": "stat",
+              "stat": "reloadMs",
+              "value": {
+                "value": 950,
+                "source": {
+                  "name": "Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                  "url": "https://destiny2.science/quantum-damage-ics",
+                  "retrieved": "2026-10-20",
+                  "status": "verified",
+                  "note": "timing.reloadTimeMs"
+                }
+              }
+            },
+            "durationMs": {
+              "value": 17130.435,
+              "source": {
+                "name": "Expression over Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast; Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: $clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000)) (as in beast-start); $clarity[Ravenous Beast](\"benefits for 8 seconds\") = 8 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Ravenous Beast); $clarity[Bottomless Appetite](\"duration by 0.05\") = 0.05 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Bottomless Appetite); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine = 35 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm = 900 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast); $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs = 950 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (primaries), row primaries-submachine-gun-tarrabah-ravenous-beast)"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file tarrabah",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: hits outside the beast charge it, 50 hits to full; then the player unleashes it at once",
+          "quote": "Dealing damage with Tarrabah grants Raveneous Beast 2% [5%] charge for each hit"
+        }
+      },
+      {
         "id": "shot",
         "on": { "on": "shot" },
+        "if": [{ "type": "mode", "id": "beast", "is": "on", "not": true }],
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "shot-beast",
+        "on": { "on": "shot" },
+        "if": [{ "type": "mode", "id": "beast", "is": "on" }],
+        "do": [{ "type": "spawn", "part": "shot-beast" }]
       }
     ],
     "intrinsics": [
@@ -22418,7 +22703,7 @@
     "catalyst": {
       "name": "Ambitious Assassin, Tarrabah Catalyst",
       "description": "Reloading after scoring kills with Tarrabah overfills the magazine from reserves based on the number of Kills scored.\nTarrabah overfills the next magazine by 20% per kill scored, up to a maximum of 150% Base Magazine Capacity. Always rounds up.\nKill counter persists through stow.",
-      "effect": "unknown"
+      "effect": "none"
     },
     "reloadDurationIncluded": {
       "value": 0.9,
@@ -24819,7 +25104,7 @@
     "damageInstances": [
       {
         "id": "shot",
-        "name": "Shot",
+        "name": "Grenade",
         "delayMs": {
           "value": 0,
           "source": {
@@ -24860,6 +25145,49 @@
         "canPrecision": false,
         "delivery": "impact",
         "scale": "quantum"
+      },
+      {
+        "id": "cluster",
+        "name": "Cluster bomb",
+        "delayMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-prospector",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "damagePerTick": {
+          "value": 135,
+          "source": {
+            "name": "Expression over Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-the-prospector-cata-2; Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-the-prospector-cata; Clarity (Live-Clarity-Database, descriptions/clarity.json): Excavation",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: ($quantum[heavies-grenade-launcher-the-prospector-cata-2].bodyDamage - $quantum[heavies-grenade-launcher-the-prospector-cata].bodyDamage) / $clarity[Excavation](\"into 3 additional cluster bombs\") (Quantum's row with all bomblets (1 080) minus the one without (675), split over the 3 cluster bombs: 135 each (Clarity 158 on its own scale)); $quantum[heavies-grenade-launcher-the-prospector-cata-2].bodyDamage = 1080 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-the-prospector-cata-2); $quantum[heavies-grenade-launcher-the-prospector-cata].bodyDamage = 675 (Quantum Damage-ics (tabs Primaries, Specials, Heavies) (heavies), row heavies-grenade-launcher-the-prospector-cata); $clarity[Excavation](\"into 3 additional cluster bombs\") = 3 (Clarity (Live-Clarity-Database, descriptions/clarity.json): Excavation)"
+          }
+        },
+        "ticks": {
+          "value": 1,
+          "source": {
+            "name": "Item file the-prospector",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "tickIntervalMs": {
+          "value": 0,
+          "source": {
+            "name": "Item file the-prospector",
+            "retrieved": "2026-10-20",
+            "status": "derived",
+            "note": "Derived: one hit; the rule that spawns the part sets its time and count"
+          }
+        },
+        "canPrecision": false,
+        "delivery": "splash",
+        "scale": "quantum"
       }
     ],
     "rules": [
@@ -24867,6 +25195,34 @@
         "id": "shot",
         "on": { "on": "shot" },
         "do": [{ "type": "spawn", "part": "shot" }]
+      },
+      {
+        "id": "cluster",
+        "on": { "on": "hit", "part": "shot" },
+        "do": [
+          {
+            "type": "spawn",
+            "part": "cluster",
+            "count": {
+              "value": 3,
+              "source": {
+                "name": "Clarity (Live-Clarity-Database, descriptions/clarity.json): Excavation",
+                "url": "https://www.d2clarity.com",
+                "retrieved": "2026-10-20",
+                "status": "derived",
+                "note": "Derived: the number in the quote",
+                "quote": "into 3 additional cluster bombs"
+              }
+            }
+          }
+        ],
+        "source": {
+          "name": "Item file the-prospector",
+          "retrieved": "2026-11-11",
+          "status": "derived",
+          "note": "Derived: all three land on the boss (optimal play, as Aegis' standard target model); the delay of the bombs has no source and is left at 0",
+          "quote": "Grenades fired explode into 3 additional cluster bombs"
+        }
       }
     ],
     "intrinsics": [

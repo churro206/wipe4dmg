@@ -7,6 +7,10 @@
     { "source": "clarity", "entry": "Bottomless Appetite", "hash": "528ca304" },
     { "source": "clarity", "entry": "Tarrabah Catalyst", "hash": "fa1ead7b" }
   ],
+  "quantumCheck": {
+    "row": "primaries-submachine-gun-tarrabah-ravenous-beast",
+    "reason": "The charge is built before the phase, so the first magazines are the beast; Quantum's row Ravenous Beast holds them, the plain row only the shots between two beasts"
+  },
   "chargeTimeMs": {
     "value": 0,
     "source": {
@@ -23,7 +27,7 @@
   "catalyst": {
     "name": "Ambitious Assassin, Tarrabah Catalyst",
     "description": "Reloading after scoring kills with Tarrabah overfills the magazine from reserves based on the number of Kills scored.\nTarrabah overfills the next magazine by 20% per kill scored, up to a maximum of 150% Base Magazine Capacity. Always rounds up.\nKill counter persists through stow.",
-    "effect": "unknown"
+    "effect": "none"
   },
   "parts": {
     "shot": {
@@ -31,13 +35,90 @@
       "damage": "$quantum[primaries-submachine-gun-tarrabah].precisionDamage",
       "precision": true,
       "delivery": "impact"
+    },
+    "shot-beast": {
+      "name": "Shot, Ravenous Beast",
+      "damage": "$quantum[primaries-submachine-gun-tarrabah-ravenous-beast].precisionDamage",
+      "precision": true,
+      "delivery": "impact"
     }
   },
   "rules": [
     {
+      "id": "beast-start",
+      "on": { "on": "phaseStart" },
+      "do": [
+        { "type": "setMode", "mode": "beast", "to": "on", "durationMs": { "expr": "$clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000))", "note": "8 s, and 0.05 s back per hit: a magazine (35 shots at 900 RPM, 2.33 s) gives 1.75 s, the reload (0.95 s) none, so the buff falls 1.53 s per 3.28 s cycle and lasts 8 ÷ (1 − 1.75 ÷ 3.28) = 17.2 s" } },
+        { "type": "modifyStat", "modifier": { "type": "stat", "stat": "rpm", "value": "$quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm" }, "durationMs": { "expr": "$clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000))", "note": "as the mode beast" } },
+        { "type": "modifyStat", "modifier": { "type": "stat", "stat": "reloadMs", "value": "$quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs" }, "durationMs": { "expr": "$clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000))", "note": "as the mode beast" } }
+      ],
+      "source": {
+        "name": "Item file tarrabah",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "At full power, hold [Reload] to 'Unleash The Beast' and refill the magazine",
+        "note": "Derived: the charge is built before the phase (it holds until stowed), so the beast starts with it; holding [Reload] costs no time (no source); timing and damage of the beast from Quantum's row Ravenous Beast"
+      }
+    },
+    {
+      "id": "charge-count",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "mode", "id": "beast", "is": "on", "not": true },
+        { "type": "counter", "id": "charge", "op": "<", "value": { "expr": "100 / $clarity[Ravenous Beast](\"grants Raveneous Beast 2%\") - 1", "note": "50 hits to full charge; the counter stands at 0 to 48 before the 50th" } }
+      ],
+      "do": [{ "type": "addStacks", "counter": "charge" }]
+    },
+    {
+      "id": "beast",
+      "on": { "on": "hit", "part": "shot" },
+      "if": [
+        { "type": "mode", "id": "beast", "is": "on", "not": true },
+        { "type": "counter", "id": "charge", "op": "=", "value": { "expr": "100 / $clarity[Ravenous Beast](\"grants Raveneous Beast 2%\") - 1", "note": "the 50th hit fills the charge" } }
+      ],
+      "do": [
+        { "type": "resetCounter", "counter": "charge" },
+        { "type": "refill" },
+        { "type": "setMode", "mode": "beast", "to": "on", "durationMs": { "expr": "$clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000))", "note": "as in beast-start" } },
+        { "type": "modifyStat", "modifier": { "type": "stat", "stat": "rpm", "value": "$quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm" }, "durationMs": { "expr": "$clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000))", "note": "as in beast-start" } },
+        { "type": "modifyStat", "modifier": { "type": "stat", "stat": "reloadMs", "value": "$quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs" }, "durationMs": { "expr": "$clarity[Ravenous Beast](\"benefits for 8 seconds\") * 1000 / (1 - $clarity[Bottomless Appetite](\"duration by 0.05\") * $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine / ($quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.magazine * 60 / $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.fireRateRpm + $quantum[primaries-submachine-gun-tarrabah-ravenous-beast].timing.reloadTimeMs / 1000))", "note": "as in beast-start" } }
+      ],
+      "source": {
+        "name": "Item file tarrabah",
+        "retrieved": "2026-11-11",
+        "status": "derived",
+        "quote": "Dealing damage with Tarrabah grants Raveneous Beast 2% [5%] charge for each hit",
+        "note": "Derived: hits outside the beast charge it, 50 hits to full; then the player unleashes it at once"
+      }
+    },
+    {
       "id": "shot",
       "on": { "on": "shot" },
+      "if": [{ "type": "mode", "id": "beast", "is": "on", "not": true }],
       "do": [{ "type": "spawn", "part": "shot" }]
+    },
+    {
+      "id": "shot-beast",
+      "on": { "on": "shot" },
+      "if": [{ "type": "mode", "id": "beast", "is": "on" }],
+      "do": [{ "type": "spawn", "part": "shot-beast" }]
     }
+  ],
+  "notModelled": [
+    { "quote": "Dealing damage to Scorched enemies grants 3%[6.7%] charge", "reason": "needs Scorch from the build (not linked; the charge takes 34 instead of 50 hits), known-inaccuracies W8" },
+    { "quote": "Taking damage grants it 1% charge", "reason": "no damage taken in the model; kills need adds (ADR 0015)" },
+    { "quote": "Stowing Tarrabah subtracts 50% charge", "reason": "no weapon swap in the model" },
+    { "quote": "70%🠚20%", "reason": "no weapon swap in the model" },
+    { "quote": "187% [120%] increased Bodyshot Damage", "reason": "carried by Quantum's row Ravenous Beast (all hits precision)" },
+    { "quote": "99% [52.7%] increased Precision Damage", "reason": "carried by Quantum's row Ravenous Beast: 57 = 34 × 1.68 (Aegis 56.1); Clarity's 99 % would give 68, source conflict, known-inaccuracies W8" },
+    { "quote": "50% [15%] Solar Damage Resistance", "reason": "no damage against a boss (resistance)" },
+    { "quote": "20% increased Rate of Fire", "reason": "carried by Quantum's row Ravenous Beast (900 RPM)" },
+    { "quote": "100 Handling", "reason": "no damage against a boss (handling)" },
+    { "quote": "100 Mobility", "reason": "no damage against a boss (mobility)" },
+    { "quote": "100 Reload Speed", "reason": "carried by Quantum's row Ravenous Beast (reload 0.95 s)" },
+    { "quote": "20% decreased Reload Animation Duration", "reason": "carried by Quantum's row Ravenous Beast (reload 0.95 s)" },
+    { "quote": "33% increased Slide Distance", "reason": "no damage against a boss (movement)" },
+    { "quote": "increase buff duration by 0.3 seconds", "reason": "no adds (ADR 0015)" },
+    { "quote": "overfills the next magazine by 20% per kill", "reason": "no adds (ADR 0015)" }
   ]
 }

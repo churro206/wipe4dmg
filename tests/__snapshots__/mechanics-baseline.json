@@ -459,12 +459,12 @@
     "graviton-lance": {
       "30s plain": 9017,
       "30s buffed": 15181.02,
-      "30s plain catalyst": 9017,
-      "30s buffed catalyst": 15181.02,
+      "30s plain catalyst": 10820.4,
+      "30s buffed catalyst": 18217.23,
       "600s plain": 178849,
       "600s buffed": 301110.18,
-      "600s plain catalyst": 178849,
-      "600s buffed catalyst": 301110.18
+      "600s plain catalyst": 214618.8,
+      "600s buffed catalyst": 361332.21
     },
     "graviton-spike": {
       "30s plain": 7120,
@@ -955,14 +955,14 @@
       "600s buffed catalyst": 219879.84
     },
     "tarrabah": {
-      "30s plain": 8874,
-      "30s buffed": 14940.27,
-      "30s plain catalyst": 8874,
-      "30s buffed catalyst": 14940.27,
-      "600s plain": 173944,
-      "600s buffed": 292852.12,
-      "600s plain catalyst": 173944,
-      "600s buffed catalyst": 292852.12
+      "30s plain": 17090,
+      "30s buffed": 28772.72,
+      "30s plain catalyst": 17090,
+      "30s buffed catalyst": 28772.72,
+      "600s plain": 328516,
+      "600s buffed": 553089.54,
+      "600s plain catalyst": 328516,
+      "600s buffed catalyst": 553089.54
     },
     "telesto": {
       "30s plain": 20412,
@@ -1061,10 +1061,10 @@
       "600s buffed catalyst": 23679.83
     },
     "the-prospector": {
-      "30s plain": 20250,
-      "30s buffed": 34092.9,
-      "600s plain": 20250,
-      "600s buffed": 34092.9
+      "30s plain": 32400,
+      "30s buffed": 54548.64,
+      "600s plain": 32400,
+      "600s buffed": 54548.64
     },
     "the-queenbreaker": {
       "30s plain": 37392,
